@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "tr",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okur İçin Bir Not",
+      "text_markdown": "Okur İçin Bir Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, büyük bir yemek hakkında küçük bir kitap.",
+      "text_markdown": "Bu, büyük bir yemek hakkında küçük bir kitap.",
+      "tts": {
+        "text": "Bu, büyük bir yemek hakkında küçük bir kitap.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu yemek, Amerika Birleşik Devletleri'nin güneyinden gelen soul food.",
+      "text_markdown": "Bu yemek, Amerika Birleşik Devletleri'nin güneyinden gelen soul food.",
+      "tts": {
+        "text": "Bu yemek, Amerika Birleşik Devletleri'nin güneyinden gelen sol fud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food, gerçek yemektir.",
+      "text_markdown": "Soul food, gerçek yemektir.",
+      "tts": {
+        "text": "Sol fud, gerçek yemektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsanlar bunu evde pişirir.",
+      "text_markdown": "İnsanlar bunu evde pişirir.",
+      "tts": {
+        "text": "İnsanlar bunu evde pişirir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanlar bunu pazar günleri yer.",
+      "text_markdown": "İnsanlar bunu pazar günleri yer.",
+      "tts": {
+        "text": "İnsanlar bunu pazar günleri yer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Salı günü de yerler.",
+      "text_markdown": "Salı günü de yerler.",
+      "tts": {
+        "text": "Salı günü de yerler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İşe adından başlayacağız.",
+      "text_markdown": "İşe adından başlayacağız.",
+      "tts": {
+        "text": "İşe adından başlayacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonra bitkilere ve hayvanlara bakacağız.",
+      "text_markdown": "Sonra bitkilere ve hayvanlara bakacağız.",
+      "tts": {
+        "text": "Sonra bitkilere ve hayvanlara bakacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonra tencerelere ve tavalara bakacağız.",
+      "text_markdown": "Sonra tencerelere ve tavalara bakacağız.",
+      "tts": {
+        "text": "Sonra tencerelere ve tavalara bakacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonunda, tabakta ne olduğunu bileceksiniz ve onun nereden geldiğini de bileceksiniz.",
+      "text_markdown": "Sonunda, tabakta ne olduğunu bileceksiniz ve onun nereden geldiğini de bileceksiniz.",
+      "tts": {
+        "text": "Sonunda, tabakta ne olduğunu bileceksiniz ve onun nereden geldiğini de bileceksiniz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okur İçin Bir Not",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Benim adım Kym ve size bu hikayeyi anlatacağım.",
+      "text_markdown": "Kym adında bir arkadaş size bu hikayeyi anlatacak.",
+      "tts": {
+        "text": "Benim adım Kim ve size bu hikayeyi anlatacağım.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 1 — Soul Food Nedir",
+      "text_markdown": "Bölüm 1 — Soul Food Nedir"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food, Amerika'nın güneyindeki Siyah ailelerin günlük yemeğidir.",
+      "text_markdown": "Soul food, Amerika'nın güneyindeki Siyah ailelerin günlük yemeğidir.",
+      "tts": {
+        "text": "Sol fud, Amerika'nın güneyindeki Siyah ailelerin günlük yemeğidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "\"Soul food\" adı, on dokuz yüz altmışlı yıllarda yaygınlaştı.",
+      "text_markdown": "\"Soul food\" adı, on dokuz yüz altmışlı yıllarda yaygınlaştı.",
+      "tts": {
+        "text": "\"Sol fud\" adı, on dokuz yüz altmışlı yıllarda yaygınlaştı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "\"Soul\" sözcüğü müzikten ve kiliseden geldi.",
+      "text_markdown": "\"Soul\" sözcüğü müzikten ve kiliseden geldi.",
+      "tts": {
+        "text": "\"Sol\" sözcüğü müzikten ve kiliseden geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Derin ve gerçek bir şeyi anlatıyordu.",
+      "text_markdown": "Derin ve gerçek bir şeyi anlatıyordu.",
+      "tts": {
+        "text": "Derin ve gerçek bir şeyi anlatıyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Siyah ve gururlu bir şeyi anlatıyordu.",
+      "text_markdown": "Siyah ve gururlu bir şeyi anlatıyordu.",
+      "tts": {
+        "text": "Siyah ve gururlu bir şeyi anlatıyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama yemeğin kendisi çok daha eskidir.",
+      "text_markdown": "Ama yemeğin kendisi çok daha eskidir.",
+      "tts": {
+        "text": "Ama yemeğin kendisi çok daha eskidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kökeni, on sekizinci ve on dokuzuncu yüzyılların plantasyon mutfaklarına gider.",
+      "text_markdown": "Kökeni, on sekizinci ve on dokuzuncu yüzyılların plantasyon mutfaklarına gider.",
+      "tts": {
+        "text": "Kökeni, on sekizinci ve on dokuzuncu yüzyılların plantasyon mutfaklarına gider.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Köleleştirilmiş Afrikalı aşçılar, ellerindeki bitkileri ve hayvanları alıp akşam yemeği yaptı.",
+      "text_markdown": "Köleleştirilmiş Afrikalı aşçılar, ellerindeki bitkileri ve hayvanları alıp akşam yemeği yaptı.",
+      "tts": {
+        "text": "Köleleştirilmiş Afrikalı aşçılar, ellerindeki bitkileri ve hayvanları alıp akşam yemeği yaptı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu aşçılar çok becerikliydi.",
+      "text_markdown": "Bu aşçılar çok becerikliydi.",
+      "tts": {
+        "text": "Bu aşçılar çok becerikliydi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Az şeyle çalıştılar ve çok kişiyi doyurdular.",
+      "text_markdown": "Az şeyle çalıştılar ve çok kişiyi doyurdular.",
+      "tts": {
+        "text": "Az şeyle çalıştılar ve çok kişiyi doyurdular.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Domuzun her parçasını değerlendirdiler.",
+      "text_markdown": "Domuzun her parçasını değerlendirdiler.",
+      "tts": {
+        "text": "Domuzun her parçasını değerlendirdiler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yeşilliklere tatlımsı bir tat verdiler.",
+      "text_markdown": "Yeşilliklere tatlımsı bir tat verdiler.",
+      "tts": {
+        "text": "Yeşilliklere tatlımsı bir tat verdiler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mısır ununu ekmeğe, lapaya ve yüz türlü küçük şeye dönüştürdüler.",
+      "text_markdown": "Mısır ununu ekmeğe, lapaya ve yüz türlü küçük şeye dönüştürdüler.",
+      "tts": {
+        "text": "Mısır ununu ekmeğe, lapaya ve yüz türlü küçük şeye dönüştürdüler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siyah aileler yirminci yüzyılda kuzeye taşınınca, bu yemeği de yanlarında götürdüler.",
+      "text_markdown": "Siyah aileler yirminci yüzyılda kuzeye taşınınca, bu yemeği de yanlarında götürdüler.",
+      "tts": {
+        "text": "Siyah aileler yirminci yüzyılda kuzeye taşınınca, bu yemeği de yanlarında götürdüler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bugün soul food, Chicago'da, New York'ta, Detroit'te ve Güney'deki her kasabadadır.",
+      "text_markdown": "Bugün soul food, Chicago'da, New York'ta, Detroit'te ve Güney'deki her kasabadadır.",
+      "tts": {
+        "text": "Bugün sol fud, Şikago'da, Nyu York'ta, Ditroyt'ta ve Güney'deki her kasabadadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Soul Food Nedir",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ama merkezi hâlâ Güney'dedir.",
+      "text_markdown": "Ama merkezi hâlâ Güney'dedir.",
+      "tts": {
+        "text": "Ama merkezi hâlâ Güney'dedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 2 — Malzemeler",
+      "text_markdown": "Bölüm 2 — Malzemeler"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food'un iki büyük kökü vardır.",
+      "text_markdown": "Soul food'un iki büyük kökü vardır.",
+      "tts": {
+        "text": "Sol fudun iki büyük kökü vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir kök Batı Afrika'dır.",
+      "text_markdown": "Bir kök Batı Afrika'dır.",
+      "tts": {
+        "text": "Bir kök Batı Afrika'dır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğer kök de Amerika kıtalarıdır.",
+      "text_markdown": "Diğer kök de Amerika kıtalarıdır.",
+      "tts": {
+        "text": "Diğer kök de Amerika kıtalarıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Batı Afrika'dan bamya geldi.",
+      "text_markdown": "Batı Afrika'dan bamya geldi.",
+      "tts": {
+        "text": "Batı Afrika'dan bamya geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bamya, yeşil bir bakladır.",
+      "text_markdown": "Bamya, yeşil bir bakladır.",
+      "tts": {
+        "text": "Bamya, yeşil bir bakladır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uzun bir bitkide yetişir.",
+      "text_markdown": "Uzun bir bitkide yetişir.",
+      "tts": {
+        "text": "Uzun bir bitkide yetişir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pişirdiğinizde yumuşar ve biraz kaygan olur.",
+      "text_markdown": "Pişirdiğinizde yumuşar ve biraz kaygan olur.",
+      "tts": {
+        "text": "Pişirdiğinizde yumuşar ve biraz kaygan olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Gumbo'nun içinde olur, bir de mısır ununa bulanıp kızartılır.",
+      "text_markdown": "Gumbo'nun içinde olur, bir de mısır ununa bulanıp kızartılır.",
+      "tts": {
+        "text": "Gambo'nun içinde olur, bir de mısır ununa bulanıp kızartılır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Börülce de Batı Afrika'dan geldi.",
+      "text_markdown": "Börülce de Batı Afrika'dan geldi.",
+      "tts": {
+        "text": "Börülce de Batı Afrika'dan geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karpuz da oradan geldi.",
+      "text_markdown": "Karpuz da oradan geldi.",
+      "tts": {
+        "text": "Karpuz da oradan geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Susam tohumu da öyle.",
+      "text_markdown": "Susam tohumu da öyle.",
+      "tts": {
+        "text": "Susam tohumu da öyle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eski Güneyli aşçılar susama \"benne\" derdi. Benneyi kurabiyelerde ve ekmekte kullanırlardı.",
+      "text_markdown": "Eski Güneyli aşçılar susama \"benne\" derdi. Benneyi kurabiyelerde ve ekmekte kullanırlardı.",
+      "tts": {
+        "text": "Eski Güneyli aşçılar susama \"beni\" derdi. Onu kurabiyelerde ve ekmekte kullanırlardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pirinç de okyanusu aşarak geldi.",
+      "text_markdown": "Pirinç de okyanusu aşarak geldi.",
+      "tts": {
+        "text": "Pirinç de okyanusu aşarak geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrikalı çiftçiler bin yıldır pirinç yetiştiriyordu.",
+      "text_markdown": "Afrikalı çiftçiler bin yıldır pirinç yetiştiriyordu.",
+      "tts": {
+        "text": "Afrikalı çiftçiler bin yıldır pirinç yetiştiriyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Güney Carolina'da bu bilgi, koca kasabalar kurdu.",
+      "text_markdown": "Güney Carolina'da bu bilgi, koca kasabalar kurdu.",
+      "tts": {
+        "text": "Güney Kerolayna'da bu bilgi, koca kasabalar kurdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerika kıtalarından mısır geldi.",
+      "text_markdown": "Amerika kıtalarından mısır geldi.",
+      "tts": {
+        "text": "Amerika kıtalarından mısır geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mısırın anavatanı Meksika'dır.",
+      "text_markdown": "Mısırın anavatanı Meksika'dır.",
+      "tts": {
+        "text": "Mısırın anavatanı Meksika'dır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İspanyollar gelmeden çok önce kuzeye, Cherokee ve Choctaw halklarına kadar ulaştı.",
+      "text_markdown": "İspanyollar gelmeden çok önce kuzeye, Cherokee ve Choctaw halklarına kadar ulaştı.",
+      "tts": {
+        "text": "İspanyollar gelmeden çok önce kuzeye, Çeroki ve Çokto halklarına kadar ulaştı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerika kıtalarından ayrıca tatlı patates, yer fıstığı ve birçok fasulye türü geldi.",
+      "text_markdown": "Amerika kıtalarından ayrıca tatlı patates, yer fıstığı ve birçok fasulye türü geldi.",
+      "tts": {
+        "text": "Amerika kıtalarından ayrıca tatlı patates, yer fıstığı ve birçok fasulye türü geldi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Malzemeler",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food, bu iki erzak dünyası aynı mutfakta buluşunca ortaya çıkan şeydir.",
+      "text_markdown": "Soul food, bu iki erzak dünyası aynı mutfakta buluşunca ortaya çıkan şeydir.",
+      "tts": {
+        "text": "Sol fud, bu iki erzak dünyası aynı mutfakta buluşunca ortaya çıkan şeydir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 3 — Etler ve Balık",
+      "text_markdown": "Bölüm 3 — Etler ve Balık"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food'daki en önemli et domuz etidir.",
+      "text_markdown": "Soul food'daki en önemli et domuz etidir.",
+      "tts": {
+        "text": "Sol fuddaki en önemli et domuz etidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Küçük bir çiftlik bir domuz besleyebilirdi.",
+      "text_markdown": "Küçük bir çiftlik bir domuz besleyebilirdi.",
+      "tts": {
+        "text": "Küçük bir çiftlik bir domuz besleyebilirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Domuz artıkları yerdi.",
+      "text_markdown": "Domuz artıkları yerdi.",
+      "tts": {
+        "text": "Domuz artıkları yerdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonbaharda aile domuzu keser, her parçasını kullanırdı.",
+      "text_markdown": "Sonbaharda aile domuzu keser, her parçasını kullanırdı.",
+      "tts": {
+        "text": "Sonbaharda aile domuzu keser, her parçasını kullanırdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jambonu tütsülerlerdi.",
+      "text_markdown": "Jambonu tütsülerlerdi.",
+      "tts": {
+        "text": "Jambonu tütsülerlerdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Domuz pastırmasını tuzlayıp kuruturlardı.",
+      "text_markdown": "Domuz pastırmasını tuzlayıp kuruturlardı.",
+      "tts": {
+        "text": "Domuz pastırmasını tuzlayıp kuruturlardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ayakları sirkeyle pişirirlerdi.",
+      "text_markdown": "Ayakları sirkeyle pişirirlerdi.",
+      "tts": {
+        "text": "Ayakları sirkeyle pişirirlerdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Yağı çörekler için saklarlardı.",
+      "text_markdown": "Yağı çörekler için saklarlardı.",
+      "tts": {
+        "text": "Yağı çörekler için saklarlardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıradaki büyük et tavuktur.",
+      "text_markdown": "Sıradaki büyük et tavuktur.",
+      "tts": {
+        "text": "Sıradaki büyük et tavuktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tavuklar avluda yaşardı.",
+      "text_markdown": "Tavuklar avluda yaşardı.",
+      "tts": {
+        "text": "Tavuklar avluda yaşardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sabah yumurta verirlerdi, pazar yemeği de onlardan olurdu.",
+      "text_markdown": "Sabah yumurta verirlerdi, pazar yemeği de onlardan olurdu.",
+      "tts": {
+        "text": "Sabah yumurta verirlerdi, pazar yemeği de onlardan olurdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kızarmış tavuk, Güney'in en ünlü yemeğidir.",
+      "text_markdown": "Kızarmış tavuk, Güney'in en ünlü yemeğidir.",
+      "tts": {
+        "text": "Kızarmış tavuk, Güney'in en ünlü yemeğidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tavuk, una, tuza ve karabibere bulanır.",
+      "text_markdown": "Tavuk, una, tuza ve karabibere bulanır.",
+      "tts": {
+        "text": "Tavuk, una, tuza ve karabibere bulanır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonra kızgın yağa bırakılır.",
+      "text_markdown": "Sonra kızgın yağa bırakılır.",
+      "tts": {
+        "text": "Sonra kızgın yağa bırakılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deri çıtır ve altın rengi olur.",
+      "text_markdown": "Deri çıtır ve altın rengi olur.",
+      "tts": {
+        "text": "Deri çıtır ve altın rengi olur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yayın balığı nehirlerde ve göllerde yaşar.",
+      "text_markdown": "Yayın balığı nehirlerde ve göllerde yaşar.",
+      "tts": {
+        "text": "Yayın balığı nehirlerde ve göllerde yaşar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Güneyli aşçılar yayın balığını mısır ununa bulayıp kızartır.",
+      "text_markdown": "Güneyli aşçılar yayın balığını mısır ununa bulayıp kızartır.",
+      "tts": {
+        "text": "Güneyli aşçılar yayın balığını mısır ununa bulayıp kızartır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yanında, mısır unundan yapılmış küçük kızarmış toplar olan hush puppies ile yerler.",
+      "text_markdown": "Yanında, mısır unundan yapılmış küçük kızarmış toplar olan hush puppies ile yerler.",
+      "tts": {
+        "text": "Yanında, mısır unundan yapılmış küçük kızarmış toplar olan haş papiz ile yerler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Etler ve Balık",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Adı komik ama bu yemek ciddi iştir.",
+      "text_markdown": "Adı komik ama bu yemek ciddi iştir.",
+      "tts": {
+        "text": "Adı komik ama bu yemek ciddi iştir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 4 — Pişirme Yöntemleri",
+      "text_markdown": "Bölüm 4 — Pişirme Yöntemleri"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food'un büyük bölümünü üç pişirme yolu taşır: kızartma, ağır ağır tencerede pişirme ve tütsüleme.",
+      "text_markdown": "Soul food'un büyük bölümünü üç pişirme yolu taşır: kızartma, ağır ağır tencerede pişirme ve tütsüleme.",
+      "tts": {
+        "text": "Sol fudun büyük bölümünü üç pişirme yolu taşır, kızartma, ağır ağır tencerede pişirme ve tütsüleme.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kızartma, döküm demir tava denen ağır bir tavada yapılır.",
+      "text_markdown": "Kızartma, döküm demir tava denen ağır bir tavada yapılır.",
+      "tts": {
+        "text": "Kızartma, döküm demir tava denen ağır bir tavada yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Döküm demir ısıyı uzun süre tutar.",
+      "text_markdown": "Döküm demir ısıyı uzun süre tutar.",
+      "tts": {
+        "text": "Döküm demir ısıyı uzun süre tutar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İyi bir tava, onu kullanan aşçıdan daha yaşlıdır.",
+      "text_markdown": "İyi bir tava, onu kullanan aşçıdan daha yaşlıdır.",
+      "tts": {
+        "text": "İyi bir tava, onu kullanan aşçıdan daha yaşlıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anneden kıza geçer.",
+      "text_markdown": "Anneden kıza geçer.",
+      "tts": {
+        "text": "Anneden kıza geçer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağır ağır pişirme, ocağın arka gözündeki büyük bir tencerede olur.",
+      "text_markdown": "Ağır ağır pişirme, ocağın arka gözündeki büyük bir tencerede olur.",
+      "tts": {
+        "text": "Ağır ağır pişirme, ocağın arka gözündeki büyük bir tencerede olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yeşillikler tencerede iki ya da üç saat kalır.",
+      "text_markdown": "Yeşillikler tencerede iki ya da üç saat kalır.",
+      "tts": {
+        "text": "Yeşillikler tencerede iki ya da üç saat kalır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lezzet için içine bir parça tütsülenmiş domuz eti girer.",
+      "text_markdown": "Lezzet için içine bir parça tütsülenmiş domuz eti girer.",
+      "tts": {
+        "text": "Lezzet için içine bir parça tütsülenmiş domuz eti girer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Su koyu ve zengin bir et suyuna dönüşür.",
+      "text_markdown": "Su koyu ve zengin bir et suyuna dönüşür.",
+      "tts": {
+        "text": "Su koyu ve zengin bir et suyuna dönüşür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "İnsanlar bu et suyuna \"pot likker\" der ve onu mısır ekmeğinin üstüne döker.",
+      "text_markdown": "İnsanlar bu et suyuna \"pot likker\" der ve onu mısır ekmeğinin üstüne döker.",
+      "tts": {
+        "text": "İnsanlar bu et suyuna \"pat likır\" der ve onu mısır ekmeğinin üstüne döker.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tütsüleme dışarıda, bir tütsü kulübesinde ya da bir varilde olur.",
+      "text_markdown": "Tütsüleme dışarıda, bir tütsü kulübesinde ya da bir varilde olur.",
+      "tts": {
+        "text": "Tütsüleme dışarıda, bir tütsü kulübesinde ya da bir varilde olur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Odun, etin altında yavaş yavaş yanar.",
+      "text_markdown": "Odun, etin altında yavaş yavaş yanar.",
+      "tts": {
+        "text": "Odun, etin altında yavaş yavaş yanar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En sevilen odun hickory odunudur.",
+      "text_markdown": "En sevilen odun hickory odunudur.",
+      "tts": {
+        "text": "En sevilen odun hikıri odunudur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Duman ete kahverengi bir renk verir ve derin bir tat katar.",
+      "text_markdown": "Duman ete kahverengi bir renk verir ve derin bir tat katar.",
+      "tts": {
+        "text": "Duman ete kahverengi bir renk verir ve derin bir tat katar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Domuz omzu saatlerce tütsülenir, bazen bütün bir gün boyunca.",
+      "text_markdown": "Domuz omzu saatlerce tütsülenir, bazen bütün bir gün boyunca.",
+      "tts": {
+        "text": "Domuz omzu saatlerce tütsülenir, bazen bütün bir gün boyunca.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Pişirme Yöntemleri",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İyi bir Güney mutfağında ateş, zaman ve özen vardır.",
+      "text_markdown": "İyi bir Güney mutfağında ateş, zaman ve özen vardır.",
+      "tts": {
+        "text": "İyi bir Güney mutfağında ateş, zaman ve özen vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 5 — Bölgesel Barbekü",
+      "text_markdown": "Bölüm 5 — Bölgesel Barbekü"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney'de \"barbecue\", odun dumanında ağır ağır pişen et demektir.",
+      "text_markdown": "Güney'de \"barbecue\", odun dumanında ağır ağır pişen et demektir.",
+      "tts": {
+        "text": "Güney'de \"barbekü\", odun dumanında ağır ağır pişen et demektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her bölgenin kendi yolu vardır.",
+      "text_markdown": "Her bölgenin kendi yolu vardır.",
+      "tts": {
+        "text": "Her bölgenin kendi yolu vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Carolina eyaletlerinde barbekü, domuz etidir.",
+      "text_markdown": "Carolina eyaletlerinde barbekü, domuz etidir.",
+      "tts": {
+        "text": "Kerolayna eyaletlerinde barbekü, domuz etidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuzey Carolina'nın doğu kesiminde sos sirke ve biberle yapılır.",
+      "text_markdown": "Kuzey Carolina'nın doğu kesiminde sos sirke ve biberle yapılır.",
+      "tts": {
+        "text": "Kuzey Kerolayna'nın doğu kesiminde sos sirke ve biberle yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İncedir ve keskindir.",
+      "text_markdown": "İncedir ve keskindir.",
+      "tts": {
+        "text": "İncedir ve keskindir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Güney Carolina'da sos sarıdır, hardalla yapılır.",
+      "text_markdown": "Güney Carolina'da sos sarıdır, hardalla yapılır.",
+      "tts": {
+        "text": "Güney Kerolayna'da sos sarıdır, hardalla yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Biraz tatlıdır.",
+      "text_markdown": "Biraz tatlıdır.",
+      "tts": {
+        "text": "Biraz tatlıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tennessee eyaletindeki Memphis'te et, domuz kaburgasıdır.",
+      "text_markdown": "Tennessee eyaletindeki Memphis'te et, domuz kaburgasıdır.",
+      "tts": {
+        "text": "Tenısi eyaletindeki Memfis'te et, domuz kaburgasıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaburgalar, tuz, karabiber ve birçok baharat içeren kuru bir karışımla ovulur.",
+      "text_markdown": "Kaburgalar, tuz, karabiber ve birçok baharat içeren kuru bir karışımla ovulur.",
+      "tts": {
+        "text": "Kaburgalar, tuz, karabiber ve birçok baharat içeren kuru bir karışımla ovulur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yıldız etin kendisidir, sos geri plandadır.",
+      "text_markdown": "Yıldız etin kendisidir, sos geri plandadır.",
+      "tts": {
+        "text": "Yıldız etin kendisidir, sos geri plandadır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Texas'ta barbekü sığır etidir.",
+      "text_markdown": "Texas'ta barbekü sığır etidir.",
+      "tts": {
+        "text": "Teksas'ta barbekü sığır etidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kesime brisket denir.",
+      "text_markdown": "Bu kesime brisket denir.",
+      "tts": {
+        "text": "Bu kesime brisket denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Meşe odunu üstünde on iki ile on dört saat tütsülenir.",
+      "text_markdown": "Meşe odunu üstünde on iki ile on dört saat tütsülenir.",
+      "tts": {
+        "text": "Meşe odunu üstünde on iki ile on dört saat tütsülenir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Doğru piştiğinde, onu parmaklarınla lif lif ayırabilirsin.",
+      "text_markdown": "Doğru piştiğinde, onu parmaklarınla lif lif ayırabilirsin.",
+      "tts": {
+        "text": "Doğru piştiğinde, onu parmaklarınla lif lif ayırabilirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kansas City'de barbekü birçok etten yapılır: domuz, sığır, tavuk, hatta sosis.",
+      "text_markdown": "Kansas City'de barbekü birçok etten yapılır: domuz, sığır, tavuk, hatta sosis.",
+      "tts": {
+        "text": "Kenzıs Siti'de barbekü birçok etten yapılır, domuz, sığır, tavuk, hatta sosis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sos kalın, tatlı ve kırmızıdır, domates ve pekmezle yapılır.",
+      "text_markdown": "Sos kalın, tatlı ve kırmızıdır, domates ve pekmezle yapılır.",
+      "tts": {
+        "text": "Sos kalın, tatlı ve kırmızıdır, domates ve pekmezle yapılır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Bölgesel Barbekü",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney barbeküsünün haritası, bölgelerin ve nehirlerin haritasıdır.",
+      "text_markdown": "Güney barbeküsünün haritası, bölgelerin ve nehirlerin haritasıdır.",
+      "tts": {
+        "text": "Güney barbeküsünün haritası, bölgelerin ve nehirlerin haritasıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 6 — Klasik Tabak",
+      "text_markdown": "Bölüm 6 — Klasik Tabak"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir pazar yemeği tabağı dolu olur.",
+      "text_markdown": "Bir pazar yemeği tabağı dolu olur.",
+      "tts": {
+        "text": "Bir pazar yemeği tabağı dolu olur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ortada kızarmış tavuk vardır.",
+      "text_markdown": "Ortada kızarmış tavuk vardır.",
+      "tts": {
+        "text": "Ortada kızarmış tavuk vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tavuğun yanında kahverengi soslu bir kaşık patates püresi vardır.",
+      "text_markdown": "Tavuğun yanında kahverengi soslu bir kaşık patates püresi vardır.",
+      "tts": {
+        "text": "Tavuğun yanında kahverengi soslu bir kaşık patates püresi vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir yanda, tütsülenmiş domuz etiyle ağır ağır pişmiş bir yığın collard greens vardır.",
+      "text_markdown": "Bir yanda, tütsülenmiş domuz etiyle ağır ağır pişmiş bir yığın collard greens vardır.",
+      "tts": {
+        "text": "Bir yanda, tütsülenmiş domuz etiyle ağır ağır pişmiş bir yığın kalırd grinz vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yeşillikler koyu renkli ve yumuşaktır.",
+      "text_markdown": "Yeşillikler koyu renkli ve yumuşaktır.",
+      "tts": {
+        "text": "Yeşillikler koyu renkli ve yumuşaktır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Öbür yanda, üstü altın rengi ve çıtır olana kadar fırınlanmış makarna ve peynir vardır.",
+      "text_markdown": "Öbür yanda, üstü altın rengi ve çıtır olana kadar fırınlanmış makarna ve peynir vardır.",
+      "tts": {
+        "text": "Öbür yanda, üstü altın rengi ve çıtır olana kadar fırınlanmış makarna ve peynir vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok aşçı üste bir kat peynir ekler.",
+      "text_markdown": "Birçok aşçı üste bir kat peynir ekler.",
+      "tts": {
+        "text": "Birçok aşçı üste bir kat peynir ekler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Masada mısır ekmeği vardır.",
+      "text_markdown": "Masada mısır ekmeği vardır.",
+      "tts": {
+        "text": "Masada mısır ekmeği vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mısır ekmeği, sarı mısır unundan yapılır ve sıcak demir tavada pişirilir.",
+      "text_markdown": "Mısır ekmeği, sarı mısır unundan yapılır ve sıcak demir tavada pişirilir.",
+      "tts": {
+        "text": "Mısır ekmeği, sarı mısır unundan yapılır ve sıcak demir tavada pişirilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoğundur, biraz tatlıdır ve tereyağıyla çok iyi gider.",
+      "text_markdown": "Yoğundur, biraz tatlıdır ve tereyağıyla çok iyi gider.",
+      "tts": {
+        "text": "Yoğundur, biraz tatlıdır ve tereyağıyla çok iyi gider.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İçecek olarak tatlı çay vardır.",
+      "text_markdown": "İçecek olarak tatlı çay vardır.",
+      "tts": {
+        "text": "İçecek olarak tatlı çay vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tatlı çay, kuvvetli demlenen siyah çayın sıcakken şekerle karıştırılmasıyla yapılır.",
+      "text_markdown": "Tatlı çay, kuvvetli demlenen siyah çayın sıcakken şekerle karıştırılmasıyla yapılır.",
+      "tts": {
+        "text": "Tatlı çay, kuvvetli demlenen siyah çayın sıcakken şekerle karıştırılmasıyla yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Buz üstünde soğuk servis edilir.",
+      "text_markdown": "Buz üstünde soğuk servis edilir.",
+      "tts": {
+        "text": "Buz üstünde soğuk servis edilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yemekten sonra sıra turtaya gelir.",
+      "text_markdown": "Yemekten sonra sıra turtaya gelir.",
+      "tts": {
+        "text": "Yemekten sonra sıra turtaya gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tatlı patates turtası, Güney'in en tipik turtasıdır.",
+      "text_markdown": "Tatlı patates turtası, Güney'in en tipik turtasıdır.",
+      "tts": {
+        "text": "Tatlı patates turtası, Güney'in en tipik turtasıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kahverengidir, pürüzsüzdür ve içinde tarçınla muskatın sıcak tadı vardır.",
+      "text_markdown": "Kahverengidir, pürüzsüzdür ve içinde tarçınla muskatın sıcak tadı vardır.",
+      "tts": {
+        "text": "Kahverengidir, pürüzsüzdür ve içinde tarçınla muskatın sıcak tadı vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Klasik Tabak",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İşte klasik tabak budur.",
+      "text_markdown": "İşte klasik tabak budur.",
+      "tts": {
+        "text": "İşte klasik tabak budur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 7 — Sofra",
+      "text_markdown": "Bölüm 7 — Sofra"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney'de akşam yemeği, herkes bir aradayken sofrada olur.",
+      "text_markdown": "Güney'de akşam yemeği, herkes bir aradayken sofrada olur.",
+      "tts": {
+        "text": "Güney'de akşam yemeği, herkes bir aradayken sofrada olur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yemek, büyük kaselerde ve büyük tabaklarda sofraya gelir.",
+      "text_markdown": "Yemek, büyük kaselerde ve büyük tabaklarda sofraya gelir.",
+      "tts": {
+        "text": "Yemek, büyük kaselerde ve büyük tabaklarda sofraya gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buna \"aile usulü\" denir. Herkes kâseyi sıradaki kişiye uzatır.",
+      "text_markdown": "Buna \"aile usulü\" denir. Herkes kâseyi sıradaki kişiye uzatır.",
+      "tts": {
+        "text": "Buna \"aile usulü\" denir. Herkes kâseyi sıradaki kişiye uzatır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Herkes istediğini alır.",
+      "text_markdown": "Herkes istediğini alır.",
+      "tts": {
+        "text": "Herkes istediğini alır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çatallar ve bıçaklar sadedir.",
+      "text_markdown": "Çatallar ve bıçaklar sadedir.",
+      "tts": {
+        "text": "Çatallar ve bıçaklar sadedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Özel bir sıra yoktur.",
+      "text_markdown": "Özel bir sıra yoktur.",
+      "tts": {
+        "text": "Özel bir sıra yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tavuğu çatalla yersin ya da eline alırsın.",
+      "text_markdown": "Tavuğu çatalla yersin ya da eline alırsın.",
+      "tts": {
+        "text": "Tavuğu çatalla yersin ya da eline alırsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İkisi de olur.",
+      "text_markdown": "İkisi de olur.",
+      "tts": {
+        "text": "İkisi de olur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mısır ekmeği elle bölünür, bıçakla hiç kesilmez.",
+      "text_markdown": "Mısır ekmeği elle bölünür, bıçakla hiç kesilmez.",
+      "tts": {
+        "text": "Mısır ekmeği elle bölünür, bıçakla hiç kesilmez.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yemekten önce biri çoğu zaman kısa bir dua eder.",
+      "text_markdown": "Yemekten önce biri çoğu zaman kısa bir dua eder.",
+      "tts": {
+        "text": "Yemekten önce biri çoğu zaman kısa bir dua eder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yemek ve aşçılar için Tanrı'ya şükrederler.",
+      "text_markdown": "Yemek ve aşçılar için Tanrı'ya şükrederler.",
+      "tts": {
+        "text": "Yemek ve aşçılar için Tanrı'ya şükrederler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Misafirsen, sana daha alman söylenir, biraz daha, biraz daha, biraz daha.",
+      "text_markdown": "Misafirsen, sana daha alman söylenir, biraz daha, biraz daha, biraz daha.",
+      "tts": {
+        "text": "Misafirsen, sana daha alman söylenir, biraz daha, biraz daha, biraz daha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En az iki kez evet demelisin.",
+      "text_markdown": "En az iki kez evet demelisin.",
+      "tts": {
+        "text": "En az iki kez evet demelisin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aç kalkmak kabul edilmez.",
+      "text_markdown": "Aç kalkmak kabul edilmez.",
+      "tts": {
+        "text": "Aç kalkmak kabul edilmez.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yemeğin sonunda kimse ayağa kalkmak için acele etmez.",
+      "text_markdown": "Yemeğin sonunda kimse ayağa kalkmak için acele etmez.",
+      "tts": {
+        "text": "Yemeğin sonunda kimse ayağa kalkmak için acele etmez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Sofra",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sohbet, akşam yemeğinin yarısıdır.",
+      "text_markdown": "Sohbet, akşam yemeğinin yarısıdır.",
+      "tts": {
+        "text": "Sohbet, akşam yemeğinin yarısıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bu Kitap Hakkında",
+      "text_markdown": "Bu Kitap Hakkında"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Food of the World serisinin ilk kitabıdır.",
+      "text_markdown": "Bu, Food of the World serisinin ilk kitabıdır.",
+      "tts": {
+        "text": "Bu, Fud ov dı Vörld serisinin ilk kitabıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunu size ben, arkadaşınız Kym, sesli olarak okuyorum.",
+      "text_markdown": "Bu kitap Kym tarafından seslendirilir.",
+      "tts": {
+        "text": "Bunu size ben, arkadaşınız Kim, sesli olarak okuyorum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her cümle kısa ve açıktır, böylece istediğin dilde eşlik ederek okuyabilirsin.",
+      "text_markdown": "Her cümle kısa ve açıktır, böylece istediğin dilde eşlik ederek okuyabilirsin.",
+      "tts": {
+        "text": "Her cümle kısa ve açıktır, böylece istediğin dilde eşlik ederek okuyabilirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir cümlenin başka bir dilde nasıl duyulduğunu duymak istersen, aynı kitabı o dilde dinle.",
+      "text_markdown": "Bir cümlenin başka bir dilde nasıl duyulduğunu duymak istersen, aynı kitabı o dilde dinle.",
+      "tts": {
+        "text": "Bir cümlenin başka bir dilde nasıl duyulduğunu duymak istersen, aynı kitabı o dilde dinle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayfadaki kelimeler, duyduğun şeyle bire bir uyuşur.",
+      "text_markdown": "Sayfadaki kelimeler, duyduğun şeyle bire bir uyuşur.",
+      "tts": {
+        "text": "Sayfadaki kelimeler, duyduğun şeyle bire bir uyuşur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsan böyle öğrenir.",
+      "text_markdown": "İnsan böyle öğrenir.",
+      "tts": {
+        "text": "İnsan böyle öğrenir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şimdi git, güzel bir yemek bul ve onu paylaşacak bir arkadaş da bul.",
+      "text_markdown": "Şimdi git, güzel bir yemek bul ve onu paylaşacak bir arkadaş da bul.",
+      "tts": {
+        "text": "Şimdi git, güzel bir yemek bul ve onu paylaşacak bir arkadaş da bul.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

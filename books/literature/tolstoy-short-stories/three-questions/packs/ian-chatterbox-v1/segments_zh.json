@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "zh",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "三个问题",
+      "text_markdown": "三个问题",
+      "title": "三个问题"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "有一个国王想到，如果他总是能知道什么时候是做每件事的最重要时刻，知道哪些人是最需要的，最主要的是，总是能知道所有事情中哪件事最重要，——那么他就永远不会在任何事情上失败。",
+      "text_markdown": "有一个国王想到，如果他总是能知道什么时候是做每件事的最重要时刻，知道哪些人是最需要的，最主要的是，总是能知道所有事情中哪件事最重要，——那么他就永远不会在任何事情上失败。",
+      "title": "三个问题",
+      "tts": {
+        "text": "有一个国王想到，如果他总是能知道什么时候是做每件事的最重要时刻，知道哪些人是最需要的，最主要的是，总是能知道所有事情中哪件事最重要，——那么他就永远不会在任何事情上失败。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "想到这里，国王在他的王国里宣布，谁能教会他如何知道做每件事的正确时机，如何知道哪些人最需要，以及如何不在判断哪件事最重要时犯错，他就给谁巨大的奖赏。",
+      "text_markdown": "想到这里，国王在他的王国里宣布，谁能教会他如何知道做每件事的正确时机，如何知道哪些人最需要，以及如何不在判断哪件事最重要时犯错，他就给谁巨大的奖赏。",
+      "title": "三个问题",
+      "tts": {
+        "text": "想到这里，国王在他的王国里宣布，谁能教会他如何知道做每件事的正确时机，如何知道哪些人最需要，以及如何不在判断哪件事最重要时犯错，他就给谁巨大的奖赏。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "学者们开始来到国王面前，对他的问题给出了不同的回答。",
+      "text_markdown": "学者们开始来到国王面前，对他的问题给出了不同的回答。",
+      "title": "三个问题",
+      "tts": {
+        "text": "学者们开始来到国王面前，对他的问题给出了不同的回答。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "对于第一个问题，有些人说，要知道做每件事的正确时机，必须事先制定日、月、年的时间表，并严格遵守。",
+      "text_markdown": "对于第一个问题，有些人说，要知道做每件事的正确时机，必须事先制定日、月、年的时间表，并严格遵守。",
+      "title": "三个问题",
+      "tts": {
+        "text": "对于第一个问题，有些人说，要知道做每件事的正确时机，必须事先制定日、月、年的时间表，并严格遵守。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "他们说，只有这样，每件事才能在恰当的时候完成。",
+      "text_markdown": "他们说，只有这样，每件事才能在恰当的时候完成。",
+      "title": "三个问题",
+      "tts": {
+        "text": "他们说，只有这样，每件事才能在恰当的时候完成。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "另一些人说，不能事先决定什么时候是做哪件事的正确时机，而应该不被无聊的娱乐分心，始终专注于正在发生的一切，然后总是做最需要的事。",
+      "text_markdown": "另一些人说，不能事先决定什么时候是做哪件事的正确时机，而应该不被无聊的娱乐分心，始终专注于正在发生的一切，然后总是做最需要的事。",
+      "title": "三个问题",
+      "tts": {
+        "text": "另一些人说，不能事先决定什么时候是做哪件事的正确时机，而应该不被无聊的娱乐分心，始终专注于正在发生的一切，然后总是做最需要的事。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "第三种人说，无论国王对正在发生的一切多么专注，一个人不可能总是正确地决定每件事的时机，而应该有智者的建议，按照他们的建议来安排每件事的时间。",
+      "text_markdown": "第三种人说，无论国王对正在发生的一切多么专注，一个人不可能总是正确地决定每件事的时机，而应该有智者的建议，按照他们的建议来安排每件事的时间。",
+      "title": "三个问题",
+      "tts": {
+        "text": "第三种人说，无论国王对正在发生的一切多么专注，一个人不可能总是正确地决定每件事的时机，而应该有智者的建议，按照他们的建议来安排每件事的时间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "第四种人说，有些事情需要立即决定，不能等待商议，为了知道这些事情究竟什么时候发生，必须知道未来会发生什么。",
+      "text_markdown": "第四种人说，有些事情需要立即决定，不能等待商议，为了知道这些事情究竟什么时候发生，必须知道未来会发生什么。",
+      "title": "三个问题",
+      "tts": {
+        "text": "第四种人说，有些事情需要立即决定，不能等待商议，为了知道这些事情究竟什么时候发生，必须知道未来会发生什么。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "而只有魔法师才能知道这些。",
+      "text_markdown": "而只有魔法师才能知道这些。",
+      "title": "三个问题",
+      "tts": {
+        "text": "而只有魔法师才能知道这些。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "因此，要知道每件事的正确时机，就必须询问魔法师。",
+      "text_markdown": "因此，要知道每件事的正确时机，就必须询问魔法师。",
+      "title": "三个问题",
+      "tts": {
+        "text": "因此，要知道每件事的正确时机，就必须询问魔法师。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "对第二个问题也有不同的回答。",
+      "text_markdown": "对第二个问题也有不同的回答。",
+      "title": "三个问题",
+      "tts": {
+        "text": "对第二个问题也有不同的回答。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "有些人说，国王最需要的人是统治者，另一些人说是祭司，第三种人说是医生，第四种人说是战士。",
+      "text_markdown": "有些人说，国王最需要的人是统治者，另一些人说是祭司，第三种人说是医生，第四种人说是战士。",
+      "title": "三个问题",
+      "tts": {
+        "text": "有些人说，国王最需要的人是统治者，另一些人说是祭司，第三种人说是医生，第四种人说是战士。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "对第三个问题——什么事最重要？——有些人说，世界上最重要的是科学；另一些人说是军事，第三种人说是虔诚。",
+      "text_markdown": "对第三个问题——什么事最重要？——有些人说，世界上最重要的是科学；另一些人说是军事，第三种人说是虔诚。",
+      "title": "三个问题",
+      "tts": {
+        "text": "对第三个问题——什么事最重要？——有些人说，世界上最重要的是科学；另一些人说是军事，第三种人说是虔诚。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "所有的回答都不相同，因此国王不同意其中任何一个，也没有给任何人奖赏。",
+      "text_markdown": "所有的回答都不相同，因此国王不同意其中任何一个，也没有给任何人奖赏。",
+      "title": "三个问题",
+      "tts": {
+        "text": "所有的回答都不相同，因此国王不同意其中任何一个，也没有给任何人奖赏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "为了更好地了解他问题的答案，他决定去问一个隐士，传说这个隐士是个智者。",
+      "text_markdown": "为了更好地了解他问题的答案，他决定去问一个隐士，传说这个隐士是个智者。",
+      "title": "三个问题",
+      "tts": {
+        "text": "为了更好地了解他问题的答案，他决定去问一个隐士，传说这个隐士是个智者。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "隐士住在森林里，从不离开那里。",
+      "text_markdown": "隐士住在森林里，从不离开那里。",
+      "title": "三个问题",
+      "tts": {
+        "text": "隐士住在森林里，从不离开那里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "他只接见普通人，因此国王换上了朴素的衣服，在还没到达隐士住处之前就下了马，独自步行去见他。",
+      "text_markdown": "他只接见普通人，因此国王换上了朴素的衣服，在还没到达隐士住处之前就下了马，独自步行去见他。",
+      "title": "三个问题",
+      "tts": {
+        "text": "他只接见普通人，因此国王换上了朴素的衣服，在还没到达隐士住处之前就下了马，独自步行去见他。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "当国王走近他时，隐士正在自己的小屋前挖菜畦。",
+      "text_markdown": "当国王走近他时，隐士正在自己的小屋前挖菜畦。",
+      "title": "三个问题",
+      "tts": {
+        "text": "当国王走近他时，隐士正在自己的小屋前挖菜畦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "看见国王，隐士向他点了点头，继续挖土。",
+      "text_markdown": "看见国王，隐士向他点了点头，继续挖土。",
+      "title": "三个问题",
+      "tts": {
+        "text": "看见国王，隐士向他点了点头，继续挖土。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "隐士又瘦又弱，把铁锹插进土里，翻起小块泥土时，喘得很厉害。",
+      "text_markdown": "隐士又瘦又弱，把铁锹插进土里，翻起小块泥土时，喘得很厉害。",
+      "title": "三个问题",
+      "tts": {
+        "text": "隐士又瘦又弱，把铁锹插进土里，翻起小块泥土时，喘得很厉害。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "国王走到他跟前说：",
+      "text_markdown": "国王走到他跟前说：",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王走到他跟前说：",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "——我来找你，智慧的隐士，请你回答我三个问题：应该记住什么时候并且不能错过，以免以后后悔？",
+      "text_markdown": "——我来找你，智慧的隐士，请你回答我三个问题：应该记住什么时候并且不能错过，以免以后后悔？",
+      "title": "三个问题",
+      "tts": {
+        "text": "——我来找你，智慧的隐士，请你回答我三个问题：应该记住什么时候并且不能错过，以免以后后悔？",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "哪些人最需要？",
+      "text_markdown": "哪些人最需要？",
+      "title": "三个问题",
+      "tts": {
+        "text": "哪些人最需要？",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "什么事最重要？",
+      "text_markdown": "什么事最重要？",
+      "title": "三个问题",
+      "tts": {
+        "text": "什么事最重要？",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "隐士听了国王的话，但什么也没回答，而是往手上吐了口唾沫，又开始挖土。",
+      "text_markdown": "隐士听了国王的话，但什么也没回答，而是往手上吐了口唾沫，又开始挖土。",
+      "title": "三个问题",
+      "tts": {
+        "text": "隐士听了国王的话，但什么也没回答，而是往手上吐了口唾沫，又开始挖土。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "——你累了，——国王说。",
+      "text_markdown": "——你累了，——国王说。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——你累了，——国王说。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "——让我来帮你吧。",
+      "text_markdown": "——让我来帮你吧。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——让我来帮你吧。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "——谢谢，——隐士说着，把铁锹递给国王，坐在地上。",
+      "text_markdown": "——谢谢，——隐士说着，把铁锹递给国王，坐在地上。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——谢谢，——隐士说着，把铁锹递给国王，坐在地上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "挖了两个菜畦后，国王停下来，重复了他的问题。",
+      "text_markdown": "挖了两个菜畦后，国王停下来，重复了他的问题。",
+      "title": "三个问题",
+      "tts": {
+        "text": "挖了两个菜畦后，国王停下来，重复了他的问题。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "隐士又没有回答，而是站起来，伸手要铁锹：",
+      "text_markdown": "隐士又没有回答，而是站起来，伸手要铁锹：",
+      "title": "三个问题",
+      "tts": {
+        "text": "隐士又没有回答，而是站起来，伸手要铁锹：",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "——现在你休息一下，让我来，——他说。",
+      "text_markdown": "——现在你休息一下，让我来，——他说。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——现在你休息一下，让我来，——他说。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "但国王没有给他铁锹，继续挖土。",
+      "text_markdown": "但国王没有给他铁锹，继续挖土。",
+      "title": "三个问题",
+      "tts": {
+        "text": "但国王没有给他铁锹，继续挖土。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "过了一个小时，又过了一个小时。",
+      "text_markdown": "过了一个小时，又过了一个小时。",
+      "title": "三个问题",
+      "tts": {
+        "text": "过了一个小时，又过了一个小时。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "太阳落到树后面去了。",
+      "text_markdown": "太阳落到树后面去了。",
+      "title": "三个问题",
+      "tts": {
+        "text": "太阳落到树后面去了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "国王把铁锹插在地上，说：",
+      "text_markdown": "国王把铁锹插在地上，说：",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王把铁锹插在地上，说：",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "——我来找你，智者，是为了得到我问题的答案。",
+      "text_markdown": "——我来找你，智者，是为了得到我问题的答案。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——我来找你，智者，是为了得到我问题的答案。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "如果你不能回答我，就说出来，我就回家去。",
+      "text_markdown": "如果你不能回答我，就说出来，我就回家去。",
+      "title": "三个问题",
+      "tts": {
+        "text": "如果你不能回答我，就说出来，我就回家去。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "——看，有人在跑来，——隐士说。",
+      "text_markdown": "——看，有人在跑来，——隐士说。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——看，有人在跑来，——隐士说。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "——让我们看看是谁。",
+      "text_markdown": "——让我们看看是谁。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——让我们看看是谁。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "国王转身一看——只见一个胡须男人从树林里跑出来。",
+      "text_markdown": "国王转身一看——只见一个胡须男人从树林里跑出来。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王转身一看——只见一个胡须男人从树林里跑出来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "这个人用手按着腹部的伤口，鲜血从手指间流出。",
+      "text_markdown": "这个人用手按着腹部的伤口，鲜血从手指间流出。",
+      "title": "三个问题",
+      "tts": {
+        "text": "这个人用手按着腹部的伤口，鲜血从手指间流出。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "跑到国王面前，这人失去知觉倒在地上，躺在那里轻声呻吟。",
+      "text_markdown": "跑到国王面前，这人失去知觉倒在地上，躺在那里轻声呻吟。",
+      "title": "三个问题",
+      "tts": {
+        "text": "跑到国王面前，这人失去知觉倒在地上，躺在那里轻声呻吟。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "国王和隐士一起解开并脱下了这人的衣服。",
+      "text_markdown": "国王和隐士一起解开并脱下了这人的衣服。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王和隐士一起解开并脱下了这人的衣服。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "腹部有一个很大的伤口。",
+      "text_markdown": "腹部有一个很大的伤口。",
+      "title": "三个问题",
+      "tts": {
+        "text": "腹部有一个很大的伤口。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "国王尽其所能地清洗了伤口，用自己的手帕和隐士的毛巾包扎起来。",
+      "text_markdown": "国王尽其所能地清洗了伤口，用自己的手帕和隐士的毛巾包扎起来。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王尽其所能地清洗了伤口，用自己的手帕和隐士的毛巾包扎起来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "但血还是止不住。",
+      "text_markdown": "但血还是止不住。",
+      "title": "三个问题",
+      "tts": {
+        "text": "但血还是止不住。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "国王几次取下绷带，重新清洗和包扎伤口。",
+      "text_markdown": "国王几次取下绷带，重新清洗和包扎伤口。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王几次取下绷带，重新清洗和包扎伤口。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "最终，当血止住后，这人苏醒过来，要水喝。",
+      "text_markdown": "最终，当血止住后，这人苏醒过来，要水喝。",
+      "title": "三个问题",
+      "tts": {
+        "text": "最终，当血止住后，这人苏醒过来，要水喝。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "国王给他拿来清水，让他喝了。",
+      "text_markdown": "国王给他拿来清水，让他喝了。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王给他拿来清水，让他喝了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "这时太阳完全落下了，天气变得寒冷。",
+      "text_markdown": "这时太阳完全落下了，天气变得寒冷。",
+      "title": "三个问题",
+      "tts": {
+        "text": "这时太阳完全落下了，天气变得寒冷。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "国王在隐士的帮助下，把伤者抬进小屋，让他躺在床上。",
+      "text_markdown": "国王在隐士的帮助下，把伤者抬进小屋，让他躺在床上。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王在隐士的帮助下，把伤者抬进小屋，让他躺在床上。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "伤者闭上眼睛，安静下来。",
+      "text_markdown": "伤者闭上眼睛，安静下来。",
+      "title": "三个问题",
+      "tts": {
+        "text": "伤者闭上眼睛，安静下来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "国王因为走路和劳动太累了，就在门槛上躺下睡着了——睡得如此沉，整个短暂的夏夜都睡过去了，早上醒来时，很久都想不起自己在哪里，以及躺在床上用明亮的眼睛执拗地看着他的这个奇怪的胡须男人是谁。",
+      "text_markdown": "国王因为走路和劳动太累了，就在门槛上躺下睡着了——睡得如此沉，整个短暂的夏夜都睡过去了，早上醒来时，很久都想不起自己在哪里，以及躺在床上用明亮的眼睛执拗地看着他的这个奇怪的胡须男人是谁。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王因为走路和劳动太累了，就在门槛上躺下睡着了——睡得如此沉，整个短暂的夏夜都睡过去了，早上醒来时，很久都想不起自己在哪里，以及躺在床上用明亮的眼睛执拗地看着他的这个奇怪的胡须男人是谁。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "——请原谅我，——胡须男人看见国王醒来并看着他时，用虚弱的声音说道。",
+      "text_markdown": "——请原谅我，——胡须男人看见国王醒来并看着他时，用虚弱的声音说道。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——请原谅我，——胡须男人看见国王醒来并看着他时，用虚弱的声音说道。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "——我不认识你，也没有什么需要原谅你的，——国王说。",
+      "text_markdown": "——我不认识你，也没有什么需要原谅你的，——国王说。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——我不认识你，也没有什么需要原谅你的，——国王说。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "——你不认识我，但我认识你。",
+      "text_markdown": "——你不认识我，但我认识你。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——你不认识我，但我认识你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "我是你的敌人，就是那个发誓要报复你的人，因为你处死了我的兄弟，夺走了我的财产。",
+      "text_markdown": "我是你的敌人，就是那个发誓要报复你的人，因为你处死了我的兄弟，夺走了我的财产。",
+      "title": "三个问题",
+      "tts": {
+        "text": "我是你的敌人，就是那个发誓要报复你的人，因为你处死了我的兄弟，夺走了我的财产。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "我知道你独自一人去找隐士，就决定在你回来的路上杀死你。",
+      "text_markdown": "我知道你独自一人去找隐士，就决定在你回来的路上杀死你。",
+      "title": "三个问题",
+      "tts": {
+        "text": "我知道你独自一人去找隐士，就决定在你回来的路上杀死你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "但整整一天过去了，你还是没有出现。",
+      "text_markdown": "但整整一天过去了，你还是没有出现。",
+      "title": "三个问题",
+      "tts": {
+        "text": "但整整一天过去了，你还是没有出现。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "于是我从埋伏点出来寻找你，碰上了你的护卫。",
+      "text_markdown": "于是我从埋伏点出来寻找你，碰上了你的护卫。",
+      "title": "三个问题",
+      "tts": {
+        "text": "于是我从埋伏点出来寻找你，碰上了你的护卫。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "他们认出了我，把我打伤了。",
+      "text_markdown": "他们认出了我，把我打伤了。",
+      "title": "三个问题",
+      "tts": {
+        "text": "他们认出了我，把我打伤了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "我从他们那里逃脱了，但如果你没有给我包扎伤口，我就会死。",
+      "text_markdown": "我从他们那里逃脱了，但如果你没有给我包扎伤口，我就会死。",
+      "title": "三个问题",
+      "tts": {
+        "text": "我从他们那里逃脱了，但如果你没有给我包扎伤口，我就会死。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "我想要杀死你，而你却救了我的命。",
+      "text_markdown": "我想要杀死你，而你却救了我的命。",
+      "title": "三个问题",
+      "tts": {
+        "text": "我想要杀死你，而你却救了我的命。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "现在，如果我能活下来，而你愿意的话，我将像最忠实的奴仆一样为你服务，也会命令我的儿子们这样做。",
+      "text_markdown": "现在，如果我能活下来，而你愿意的话，我将像最忠实的奴仆一样为你服务，也会命令我的儿子们这样做。",
+      "title": "三个问题",
+      "tts": {
+        "text": "现在，如果我能活下来，而你愿意的话，我将像最忠实的奴仆一样为你服务，也会命令我的儿子们这样做。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "请原谅我。",
+      "text_markdown": "请原谅我。",
+      "title": "三个问题",
+      "tts": {
+        "text": "请原谅我。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "国王很高兴能够如此容易地与敌人和解并获得一个朋友，他原谅了他，并承诺归还他的财产，派遣自己的医生和仆人来照料他。",
+      "text_markdown": "国王很高兴能够如此容易地与敌人和解并获得一个朋友，他原谅了他，并承诺归还他的财产，派遣自己的医生和仆人来照料他。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王很高兴能够如此容易地与敌人和解并获得一个朋友，他原谅了他，并承诺归还他的财产，派遣自己的医生和仆人来照料他。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "与伤者告别后，国王走到门廊上，开始寻找隐士的身影。",
+      "text_markdown": "与伤者告别后，国王走到门廊上，开始寻找隐士的身影。",
+      "title": "三个问题",
+      "tts": {
+        "text": "与伤者告别后，国王走到门廊上，开始寻找隐士的身影。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "在离开之前，他想再次请求隐士回答他的问题。",
+      "text_markdown": "在离开之前，他想再次请求隐士回答他的问题。",
+      "title": "三个问题",
+      "tts": {
+        "text": "在离开之前，他想再次请求隐士回答他的问题。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "隐士在院子里，跪着在昨天挖好的畦垄里播种。",
+      "text_markdown": "隐士在院子里，跪着在昨天挖好的畦垄里播种。",
+      "title": "三个问题",
+      "tts": {
+        "text": "隐士在院子里，跪着在昨天挖好的畦垄里播种。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "国王走向他。",
+      "text_markdown": "国王走向他。",
+      "title": "三个问题",
+      "tts": {
+        "text": "国王走向他。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "——智者，我最后一次请求你：回答我的问题。",
+      "text_markdown": "——智者，我最后一次请求你：回答我的问题。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——智者，我最后一次请求你：回答我的问题。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "——你已经得到答案了，——隐士说，他蹲坐在瘦腿上，从下往上看着站在面前的国王。",
+      "text_markdown": "——你已经得到答案了，——隐士说，他蹲坐在瘦腿上，从下往上看着站在面前的国王。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——你已经得到答案了，——隐士说，他蹲坐在瘦腿上，从下往上看着站在面前的国王。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "——怎么得到答案了？——国王问。",
+      "text_markdown": "——怎么得到答案了？——国王问。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——怎么得到答案了？——国王问。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "——还用问吗？——隐士说。",
+      "text_markdown": "——还用问吗？——隐士说。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——还用问吗？——隐士说。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "——如果你昨天没有怜悯我，没有替我挖这些畦垄，而是回去了，那个人就会杀死你。",
+      "text_markdown": "——如果你昨天没有怜悯我，没有替我挖这些畦垄，而是回去了，那个人就会杀死你。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——如果你昨天没有怜悯我，没有替我挖这些畦垄，而是回去了，那个人就会杀死你。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "因此最重要的时间就是你挖畦垄的时候。",
+      "text_markdown": "因此最重要的时间就是你挖畦垄的时候。",
+      "title": "三个问题",
+      "tts": {
+        "text": "因此最重要的时间就是你挖畦垄的时候。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "最需要的人就是我。",
+      "text_markdown": "最需要的人就是我。",
+      "title": "三个问题",
+      "tts": {
+        "text": "最需要的人就是我。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "最重要的事就是——对我行善。",
+      "text_markdown": "最重要的事就是——对我行善。",
+      "title": "三个问题",
+      "tts": {
+        "text": "最重要的事就是——对我行善。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "后来，当那个人跑来时，最重要的时间就是你照料他的时候，因为如果你不清洗他的伤口，他就会死去，不能与你和解。",
+      "text_markdown": "后来，当那个人跑来时，最重要的时间就是你照料他的时候，因为如果你不清洗他的伤口，他就会死去，不能与你和解。",
+      "title": "三个问题",
+      "tts": {
+        "text": "后来，当那个人跑来时，最重要的时间就是你照料他的时候，因为如果你不清洗他的伤口，他就会死去，不能与你和解。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "因此，最需要的人就是他，最重要的事就是你为他做的事。",
+      "text_markdown": "因此，最需要的人就是他，最重要的事就是你为他做的事。",
+      "title": "三个问题",
+      "tts": {
+        "text": "因此，最需要的人就是他，最重要的事就是你为他做的事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "——那么请记住，——隐士说，——最重要的时间只有一个：现在，——它之所以最重要，是因为只有在现在这个时刻我们才能主宰自己；最需要的人就是你现在正在与之打交道的人，因为谁也不知道他是否还会与其他什么人打交道；最重要的事就是——对他行善，因为人被派到这个世界上来就是为了这个目的。",
+      "text_markdown": "——那么请记住，——隐士说，——最重要的时间只有一个：现在，——它之所以最重要，是因为只有在现在这个时刻我们才能主宰自己；最需要的人就是你现在正在与之打交道的人，因为谁也不知道他是否还会与其他什么人打交道；最重要的事就是——对他行善，因为人被派到这个世界上来就是为了这个目的。",
+      "title": "三个问题",
+      "tts": {
+        "text": "——那么请记住，——隐士说，——最重要的时间只有一个：现在，——它之所以最重要，是因为只有在现在这个时刻我们才能主宰自己；最需要的人就是你现在正在与之打交道的人，因为谁也不知道他是否还会与其他什么人打交道；最重要的事就是——对他行善，因为人被派到这个世界上来就是为了这个目的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

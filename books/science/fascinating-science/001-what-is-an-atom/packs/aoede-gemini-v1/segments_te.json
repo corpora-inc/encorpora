@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "te",
+  "total_segments": 300,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "ప్రతిదీ అణువులతో తయారైంది",
+      "text_markdown": "ప్రతిదీ అణువులతో తయారైంది",
+      "title": "ప్రతిదీ అణువులతో తయారైంది"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "sentence_index": 0,
+      "text": "మీ చుట్టూ చూడండి.",
+      "text_markdown": "మీ చుట్టూ చూడండి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీ చుట్టూ చూడండి.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-003",
+      "sentence_index": 1,
+      "text": "మీరు చూడగలిగే ప్రతిదీ అణువులతో తయారైంది.",
+      "text_markdown": "మీరు చూడగలిగే ప్రతిదీ అణువులతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీరు చూడగలిగే ప్రతిదీ అణువులతో తయారైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "sentence_index": 2,
+      "text": "మీరు పీల్చే గాలి అణువులతో తయారైంది.",
+      "text_markdown": "మీరు పీల్చే గాలి అణువులతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీరు పీల్చే గాలి అణువులతో తయారైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "sentence_index": 3,
+      "text": "మీరు తాగే నీరు అణువులతో తయారైంది.",
+      "text_markdown": "మీరు తాగే నీరు అణువులతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీరు తాగే నీరు అణువులతో తయారైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-006",
+      "sentence_index": 4,
+      "text": "మీ శరీరం అణువులతో తయారైంది.",
+      "text_markdown": "మీ శరీరం అణువులతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీ శరీరం అణువులతో తయారైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-007",
+      "sentence_index": 5,
+      "text": "మీ పాదాల క్రింద ఉన్న నేల అణువులతో తయారైంది.",
+      "text_markdown": "మీ పాదాల క్రింద ఉన్న నేల అణువులతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీ పాదాల క్రింద ఉన్న నేల అణువులతో తయారైంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-008",
+      "sentence_index": 0,
+      "text": "అణువు అనేది రసాయన గుర్తింపును కలిగి ఉన్న పదార్థం యొక్క అతి చిన్న భాగం.",
+      "text_markdown": "అణువు అనేది రసాయన గుర్తింపును కలిగి ఉన్న పదార్థం యొక్క అతి చిన్న భాగం.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అణువు అనేది రసాయన గుర్తింపును కలిగి ఉన్న పదార్థం యొక్క అతి చిన్న భాగం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-009",
+      "sentence_index": 1,
+      "text": "మీరు మీ కళ్ళతో ఒకే అణువును చూడలేరు.",
+      "text_markdown": "మీరు మీ కళ్ళతో ఒకే అణువును చూడలేరు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీరు మీ కళ్ళతో ఒకే అణువును చూడలేరు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-010",
+      "sentence_index": 2,
+      "text": "మీరు సాధారణ సూక్ష్మదర్శినితో ఒకే అణువును చూడలేరు.",
+      "text_markdown": "మీరు సాధారణ సూక్ష్మదర్శినితో ఒకే అణువును చూడలేరు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీరు సాధారణ సూక్ష్మదర్శినితో ఒకే అణువును చూడలేరు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-011",
+      "sentence_index": 3,
+      "text": "అణువులు అంత చిన్నవి.",
+      "text_markdown": "అణువులు అంత చిన్నవి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అణువులు అంత చిన్నవి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "sentence_index": 0,
+      "text": "ఒక ఇసుక రేణువులో సుమారు యాభై క్వింటిలియన్ అణువులు ఉంటాయి.",
+      "text_markdown": "ఒక ఇసుక రేణువులో సుమారు యాభై క్వింటిలియన్ అణువులు ఉంటాయి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "ఒక ఇసుక రేణువులో సుమారు యాభై క్వింటిలియన్ అణువులు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-013",
+      "sentence_index": 1,
+      "text": "ఆ సంఖ్య యాభై తర్వాత పద్దెనిమిది సున్నాలు.",
+      "text_markdown": "ఆ సంఖ్య యాభై తర్వాత పద్దెనిమిది సున్నాలు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "ఆ సంఖ్య యాభై తర్వాత పద్దెనిమిది సున్నాలు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "sentence_index": 2,
+      "text": "ఒక ఇసుక రేణువులో ఒక బీచ్‌లోని ఇసుక రేణువుల కంటే ఎక్కువ అణువులు ఉంటాయి.",
+      "text_markdown": "ఒక ఇసుక రేణువులో ఒక బీచ్‌లోని ఇసుక రేణువుల కంటే ఎక్కువ అణువులు ఉంటాయి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "ఒక ఇసుక రేణువులో ఒక బీచ్‌లోని ఇసుక రేణువుల కంటే ఎక్కువ అణువులు ఉంటాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "sentence_index": 0,
+      "text": "భౌతిక ప్రపంచంలోని ప్రతిదానికీ అణువులు నిర్మాణ విభాగాలు.",
+      "text_markdown": "భౌతిక ప్రపంచంలోని ప్రతిదానికీ అణువులు నిర్మాణ విభాగాలు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "భౌతిక ప్రపంచంలోని ప్రతిదానికీ అణువులు నిర్మాణ విభాగాలు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-016",
+      "sentence_index": 1,
+      "text": "ఒక గోడ ఇటుకలతో తయారైంది.",
+      "text_markdown": "ఒక గోడ ఇటుకలతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "ఒక గోడ ఇటుకలతో తయారైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "sentence_index": 2,
+      "text": "ఒక వాక్యం పదాలతో తయారైంది.",
+      "text_markdown": "ఒక వాక్యం పదాలతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "ఒక వాక్యం పదాలతో తయారైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-018",
+      "sentence_index": 3,
+      "text": "విశ్వం అణువులతో తయారైంది.",
+      "text_markdown": "విశ్వం అణువులతో తయారైంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "విశ్వం అణువులతో తయారైంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "sentence_index": 0,
+      "text": "అణువు అనే పదం పురాతన గ్రీకు నుండి వచ్చింది.",
+      "text_markdown": "అణువు అనే పదం పురాతన గ్రీకు నుండి వచ్చింది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అణువు అనే పదం పురాతన గ్రీకు నుండి వచ్చింది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-020",
+      "sentence_index": 1,
+      "text": "గ్రీకు పదం \"అటోమోస్\" అంటే \"కత్తిరించలేనిది\".",
+      "text_markdown": "గ్రీకు పదం \"అటోమోస్\" అంటే \"కత్తిరించలేనిది\".",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "గ్రీకు పదం \"అటోమోస్\" అంటే \"కత్తిరించలేనిది\".",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-021",
+      "sentence_index": 2,
+      "text": "పురాతన గ్రీకు తత్వవేత్తలు అణువులు పదార్థం యొక్క అతి చిన్న భాగాలు అని భావించారు.",
+      "text_markdown": "పురాతన గ్రీకు తత్వవేత్తలు అణువులు పదార్థం యొక్క అతి చిన్న భాగాలు అని భావించారు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "పురాతన గ్రీకు తత్వవేత్తలు అణువులు పదార్థం యొక్క అతి చిన్న భాగాలు అని భావించారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "sentence_index": 3,
+      "text": "వారు దాదాపు సరైనవారు.",
+      "text_markdown": "వారు దాదాపు సరైనవారు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "వారు దాదాపు సరైనవారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "sentence_index": 4,
+      "text": "అణువులు నిజంగా అతి చిన్న కణాలు కావు, కానీ అవి తమ రసాయన లక్షణాలను నిలుపుకునే అతి చిన్న విభాగాలు.",
+      "text_markdown": "అణువులు నిజంగా అతి చిన్న కణాలు కావు, కానీ అవి తమ రసాయన లక్షణాలను నిలుపుకునే అతి చిన్న విభాగాలు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అణువులు నిజంగా అతి చిన్న కణాలు కావు, కానీ అవి తమ రసాయన లక్షణాలను నిలుపుకునే అతి చిన్న విభాగాలు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-024",
+      "sentence_index": 0,
+      "text": "అణువులు చాలా మన్నికైనవి.",
+      "text_markdown": "అణువులు చాలా మన్నికైనవి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అణువులు చాలా మన్నికైనవి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-025",
+      "sentence_index": 1,
+      "text": "మీ శరీరంలోని అణువులు బిలియన్ల సంవత్సరాల నాటివి.",
+      "text_markdown": "మీ శరీరంలోని అణువులు బిలియన్ల సంవత్సరాల నాటివి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీ శరీరంలోని అణువులు బిలియన్ల సంవత్సరాల నాటివి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "sentence_index": 2,
+      "text": "మీరు ఈరోజు తాగిన నీటిలోని కొన్ని హైడ్రోజన్ అణువులు బిగ్ బ్యాంగ్ తర్వాత మొదటి నిమిషాల్లో సృష్టించబడ్డాయి.",
+      "text_markdown": "మీరు ఈరోజు తాగిన నీటిలోని కొన్ని హైడ్రోజన్ అణువులు బిగ్ బ్యాంగ్ తర్వాత మొదటి నిమిషాల్లో సృష్టించబడ్డాయి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీరు ఈరోజు తాగిన నీటిలోని కొన్ని హైడ్రోజన్ అణువులు బిగ్ బ్యాంగ్ తర్వాత మొదటి నిమిషాల్లో సృష్టించబడ్డాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "sentence_index": 3,
+      "text": "మీరు పురాతన పదార్థాలతో తయారయ్యారు.",
+      "text_markdown": "మీరు పురాతన పదార్థాలతో తయారయ్యారు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మీరు పురాతన పదార్థాలతో తయారయ్యారు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-028",
+      "sentence_index": 0,
+      "text": "సాధారణ జీవితంలో అణువులు ఎప్పుడూ సృష్టించబడవు లేదా నాశనం చేయబడవు.",
+      "text_markdown": "సాధారణ జీవితంలో అణువులు ఎప్పుడూ సృష్టించబడవు లేదా నాశనం చేయబడవు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "సాధారణ జీవితంలో అణువులు ఎప్పుడూ సృష్టించబడవు లేదా నాశనం చేయబడవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "sentence_index": 1,
+      "text": "అవి పునర్వ్యవస్థీకరించబడతాయి.",
+      "text_markdown": "అవి పునర్వ్యవస్థీకరించబడతాయి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అవి పునర్వ్యవస్థీకరించబడతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "sentence_index": 2,
+      "text": "కలప కాలిపోయినప్పుడు, అణువులు అదృశ్యం కావు.",
+      "text_markdown": "కలప కాలిపోయినప్పుడు, అణువులు అదృశ్యం కావు.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "కలప కాలిపోయినప్పుడు, అణువులు అదృశ్యం కావు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-031",
+      "sentence_index": 3,
+      "text": "అవి పొగ, బూడిద మరియు వాయువుగా తిరిగి అమర్చబడతాయి.",
+      "text_markdown": "అవి పొగ, బూడిద మరియు వాయువుగా తిరిగి అమర్చబడతాయి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అవి పొగ, బూడిద మరియు వాయువుగా తిరిగి అమర్చబడతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "sentence_index": 4,
+      "text": "మంచు కరిగినప్పుడు, అణువులు అలాగే ఉంటాయి.",
+      "text_markdown": "మంచు కరిగినప్పుడు, అణువులు అలాగే ఉంటాయి.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "మంచు కరిగినప్పుడు, అణువులు అలాగే ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "sentence_index": 5,
+      "text": "వాటి అమరిక మాత్రమే మారుతుంది.",
+      "text_markdown": "వాటి అమరిక మాత్రమే మారుతుంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "వాటి అమరిక మాత్రమే మారుతుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-034",
+      "sentence_index": 0,
+      "text": "అణువులను అర్థం చేసుకోవడం రసాయన శాస్త్రానికి పునాది.",
+      "text_markdown": "అణువులను అర్థం చేసుకోవడం రసాయన శాస్త్రానికి పునాది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "అణువులను అర్థం చేసుకోవడం రసాయన శాస్త్రానికి పునాది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-035",
+      "sentence_index": 1,
+      "text": "రసాయన శాస్త్రం అనేది అణువులు ఎలా కలిసిపోతాయి, తిరిగి అమర్చబడతాయి మరియు సంకర్షిస్తాయి అనే శాస్త్రం.",
+      "text_markdown": "రసాయన శాస్త్రం అనేది అణువులు ఎలా కలిసిపోతాయి, తిరిగి అమర్చబడతాయి మరియు సంకర్షిస్తాయి అనే శాస్త్రం.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "రసాయన శాస్త్రం అనేది అణువులు ఎలా కలిసిపోతాయి, తిరిగి అమర్చబడతాయి మరియు సంకర్షిస్తాయి అనే శాస్త్రం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-036",
+      "sentence_index": 2,
+      "text": "భౌతిక ప్రపంచంలో జరిగే ప్రతిదీ అణువులు మరియు అవి చేసే పనుల మీద ఆధారపడి ఉంటుంది.",
+      "text_markdown": "భౌతిక ప్రపంచంలో జరిగే ప్రతిదీ అణువులు మరియు అవి చేసే పనుల మీద ఆధారపడి ఉంటుంది.",
+      "title": "ప్రతిదీ అణువులతో తయారైంది",
+      "tts": {
+        "text": "భౌతిక ప్రపంచంలో జరిగే ప్రతిదీ అణువులు మరియు అవి చేసే పనుల మీద ఆధారపడి ఉంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch02-037",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "అణువు లోపల",
+      "text_markdown": "అణువు లోపల",
+      "title": "అణువు లోపల"
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-038",
+      "sentence_index": 0,
+      "text": "ఒక అణువులో మూడు రకాల కణాలు ఉంటాయి.",
+      "text_markdown": "ఒక అణువులో మూడు రకాల కణాలు ఉంటాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఒక అణువులో మూడు రకాల కణాలు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-039",
+      "sentence_index": 1,
+      "text": "ప్రోటాన్లు.",
+      "text_markdown": "ప్రోటాన్లు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ప్రోటాన్లు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-040",
+      "sentence_index": 2,
+      "text": "న్యూట్రాన్లు.",
+      "text_markdown": "న్యూట్రాన్లు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "న్యూట్రాన్లు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-041",
+      "sentence_index": 3,
+      "text": "ఎలక్ట్రాన్లు.",
+      "text_markdown": "ఎలక్ట్రాన్లు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఎలక్ట్రాన్లు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-042",
+      "sentence_index": 4,
+      "text": "ఈ మూడు కణాలు విశ్వంలోని ప్రతి అణువును తయారు చేస్తాయి.",
+      "text_markdown": "ఈ మూడు కణాలు విశ్వంలోని ప్రతి అణువును తయారు చేస్తాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఈ మూడు కణాలు విశ్వంలోని ప్రతి అణువును తయారు చేస్తాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-043",
+      "sentence_index": 0,
+      "text": "అణువు మధ్య భాగాన్ని కేంద్రకం అంటారు.",
+      "text_markdown": "అణువు మధ్య భాగాన్ని కేంద్రకం అంటారు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "అణువు మధ్య భాగాన్ని కేంద్రకం అంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-044",
+      "sentence_index": 1,
+      "text": "కేంద్రకంలో ప్రోటాన్లు మరియు న్యూట్రాన్లు ఉంటాయి.",
+      "text_markdown": "కేంద్రకంలో ప్రోటాన్లు మరియు న్యూట్రాన్లు ఉంటాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "కేంద్రకంలో ప్రోటాన్లు మరియు న్యూట్రాన్లు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-045",
+      "sentence_index": 2,
+      "text": "మొత్తం అణువుతో పోలిస్తే కేంద్రకం చాలా చిన్నది.",
+      "text_markdown": "మొత్తం అణువుతో పోలిస్తే కేంద్రకం చాలా చిన్నది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "మొత్తం అణువుతో పోలిస్తే కేంద్రకం చాలా చిన్నది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-046",
+      "sentence_index": 3,
+      "text": "అణువు ఒక ఫుట్‌బాల్ స్టేడియం పరిమాణంలో ఉంటే, కేంద్రకం యాభై-గజాల గీతపై ఉన్న గోళీ పరిమాణంలో ఉంటుంది.",
+      "text_markdown": "అణువు ఒక ఫుట్‌బాల్ స్టేడియం పరిమాణంలో ఉంటే, కేంద్రకం యాభై-గజాల గీతపై ఉన్న గోళీ పరిమాణంలో ఉంటుంది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "అణువు ఒక ఫుట్‌బాల్ స్టేడియం పరిమాణంలో ఉంటే, కేంద్రకం యాభై-గజాల గీతపై ఉన్న గోళీ పరిమాణంలో ఉంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-047",
+      "sentence_index": 0,
+      "text": "ప్రోటాన్లు ధనాత్మక విద్యుత్ ఆవేశాన్ని కలిగి ఉంటాయి.",
+      "text_markdown": "ప్రోటాన్లు ధనాత్మక విద్యుత్ ఆవేశాన్ని కలిగి ఉంటాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ప్రోటాన్లు ధనాత్మక విద్యుత్ ఆవేశాన్ని కలిగి ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-048",
+      "sentence_index": 1,
+      "text": "ప్రతి ప్రోటాన్ అదే మొత్తంలో ధనాత్మక ఆవేశాన్ని కలిగి ఉంటుంది.",
+      "text_markdown": "ప్రతి ప్రోటాన్ అదే మొత్తంలో ధనాత్మక ఆవేశాన్ని కలిగి ఉంటుంది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ప్రతి ప్రోటాన్ అదే మొత్తంలో ధనాత్మక ఆవేశాన్ని కలిగి ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-049",
+      "sentence_index": 2,
+      "text": "ఒక అణువులోని ప్రోటాన్ల సంఖ్య ఆ అణువు ఏ మూలకమో నిర్ణయిస్తుంది.",
+      "text_markdown": "ఒక అణువులోని ప్రోటాన్ల సంఖ్య ఆ అణువు ఏ మూలకమో నిర్ణయిస్తుంది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఒక అణువులోని ప్రోటాన్ల సంఖ్య ఆ అణువు ఏ మూలకమో నిర్ణయిస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-050",
+      "sentence_index": 3,
+      "text": "ఒక ప్రోటాన్ అంటే హైడ్రోజన్.",
+      "text_markdown": "ఒక ప్రోటాన్ అంటే హైడ్రోజన్.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఒక ప్రోటాన్ అంటే హైడ్రోజన్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-051",
+      "sentence_index": 4,
+      "text": "ఆరు ప్రోటాన్లు అంటే కార్బన్.",
+      "text_markdown": "ఆరు ప్రోటాన్లు అంటే కార్బన్.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఆరు ప్రోటాన్లు అంటే కార్బన్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-052",
+      "sentence_index": 5,
+      "text": "ఇరవై ఆరు ప్రోటాన్లు అంటే ఐరన్.",
+      "text_markdown": "ఇరవై ఆరు ప్రోటాన్లు అంటే ఐరన్.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఇరవై ఆరు ప్రోటాన్లు అంటే ఐరన్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-053",
+      "sentence_index": 6,
+      "text": "ప్రోటాన్ల సంఖ్య ఒక అణువు గురించి అత్యంత ముఖ్యమైన వాస్తవం.",
+      "text_markdown": "ప్రోటాన్ల సంఖ్య ఒక అణువు గురించి అత్యంత ముఖ్యమైన వాస్తవం.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ప్రోటాన్ల సంఖ్య ఒక అణువు గురించి అత్యంత ముఖ్యమైన వాస్తవం.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-054",
+      "sentence_index": 0,
+      "text": "న్యూట్రాన్లు ఎటువంటి విద్యుత్ ఆవేశాన్ని కలిగి ఉండవు.",
+      "text_markdown": "న్యూట్రాన్లు ఎటువంటి విద్యుత్ ఆవేశాన్ని కలిగి ఉండవు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "న్యూట్రాన్లు ఎటువంటి విద్యుత్ ఆవేశాన్ని కలిగి ఉండవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-055",
+      "sentence_index": 1,
+      "text": "న్యూట్రాన్లు తటస్థంగా ఉంటాయి.",
+      "text_markdown": "న్యూట్రాన్లు తటస్థంగా ఉంటాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "న్యూట్రాన్లు తటస్థంగా ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-056",
+      "sentence_index": 2,
+      "text": "న్యూట్రాన్లు కేంద్రకంలో ప్రోటాన్ల పక్కన ఉంటాయి.",
+      "text_markdown": "న్యూట్రాన్లు కేంద్రకంలో ప్రోటాన్ల పక్కన ఉంటాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "న్యూట్రాన్లు కేంద్రకంలో ప్రోటాన్ల పక్కన ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-057",
+      "sentence_index": 3,
+      "text": "న్యూట్రాన్లు కేంద్రకాన్ని కలిపి ఉంచడానికి సహాయపడతాయి.",
+      "text_markdown": "న్యూట్రాన్లు కేంద్రకాన్ని కలిపి ఉంచడానికి సహాయపడతాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "న్యూట్రాన్లు కేంద్రకాన్ని కలిపి ఉంచడానికి సహాయపడతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-058",
+      "sentence_index": 4,
+      "text": "న్యూట్రాన్లు లేకపోతే, ప్రోటాన్లు అన్నీ ఒకే ధనాత్మక ఆవేశాన్ని కలిగి ఉన్నందున ఒకదానికొకటి దూరంగా నెట్టబడతాయి.",
+      "text_markdown": "న్యూట్రాన్లు లేకపోతే, ప్రోటాన్లు అన్నీ ఒకే ధనాత్మక ఆవేశాన్ని కలిగి ఉన్నందున ఒకదానికొకటి దూరంగా నెట్టబడతాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "న్యూట్రాన్లు లేకపోతే, ప్రోటాన్లు అన్నీ ఒకే ధనాత్మక ఆవేశాన్ని కలిగి ఉన్నందున ఒకదానికొకటి దూరంగా నెట్టబడతాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-059",
+      "sentence_index": 0,
+      "text": "ఎలక్ట్రాన్లు రుణాత్మక విద్యుత్ ఆవేశాన్ని కలిగి ఉంటాయి.",
+      "text_markdown": "ఎలక్ట్రాన్లు రుణాత్మక విద్యుత్ ఆవేశాన్ని కలిగి ఉంటాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఎలక్ట్రాన్లు రుణాత్మక విద్యుత్ ఆవేశాన్ని కలిగి ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-060",
+      "sentence_index": 1,
+      "text": "ఎలక్ట్రాన్లు కేంద్రకం చుట్టూ ఒక మేఘంలా కదులుతాయి.",
+      "text_markdown": "ఎలక్ట్రాన్లు కేంద్రకం చుట్టూ ఒక మేఘంలా కదులుతాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఎలక్ట్రాన్లు కేంద్రకం చుట్టూ ఒక మేఘంలా కదులుతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-061",
+      "sentence_index": 2,
+      "text": "అవి సూర్యుని చుట్టూ గ్రహాల వలె పరిభ్రమించవు.",
+      "text_markdown": "అవి సూర్యుని చుట్టూ గ్రహాల వలె పరిభ్రమించవు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "అవి సూర్యుని చుట్టూ గ్రహాల వలె పరిభ్రమించవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-062",
+      "sentence_index": 3,
+      "text": "అవి కేంద్రకం చుట్టూ సంభావ్యత యొక్క అస్పష్టమైన ప్రాంతంలో ఉంటాయి.",
+      "text_markdown": "అవి కేంద్రకం చుట్టూ సంభావ్యత యొక్క అస్పష్టమైన ప్రాంతంలో ఉంటాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "అవి కేంద్రకం చుట్టూ సంభావ్యత యొక్క అస్పష్టమైన ప్రాంతంలో ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-063",
+      "sentence_index": 4,
+      "text": "ఎలక్ట్రాన్ మేఘం అనేది ఏ క్షణంలోనైనా మీరు ఎలక్ట్రాన్‌ను కనుగొనే అవకాశం ఉన్న ప్రదేశం.",
+      "text_markdown": "ఎలక్ట్రాన్ మేఘం అనేది ఏ క్షణంలోనైనా మీరు ఎలక్ట్రాన్‌ను కనుగొనే అవకాశం ఉన్న ప్రదేశం.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఎలక్ట్రాన్ మేఘం అనేది ఏ క్షణంలోనైనా మీరు ఎలక్ట్రాన్‌ను కనుగొనే అవకాశం ఉన్న ప్రదేశం.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-064",
+      "sentence_index": 0,
+      "text": "ప్రోటాన్ లేదా న్యూట్రాన్‌తో పోలిస్తే ఎలక్ట్రాన్‌కు దాదాపు ద్రవ్యరాశి ఉండదు.",
+      "text_markdown": "ప్రోటాన్ లేదా న్యూట్రాన్‌తో పోలిస్తే ఎలక్ట్రాన్‌కు దాదాపు ద్రవ్యరాశి ఉండదు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ప్రోటాన్ లేదా న్యూట్రాన్‌తో పోలిస్తే ఎలక్ట్రాన్‌కు దాదాపు ద్రవ్యరాశి ఉండదు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-065",
+      "sentence_index": 1,
+      "text": "ఒక ప్రోటాన్ ఎలక్ట్రాన్ కంటే సుమారు 1,836 రెట్లు బరువుగా ఉంటుంది.",
+      "text_markdown": "ఒక ప్రోటాన్ ఎలక్ట్రాన్ కంటే సుమారు 1,836 రెట్లు బరువుగా ఉంటుంది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఒక ప్రోటాన్ ఎలక్ట్రాన్ కంటే సుమారు వెయ్యి ఎనిమిది వందల ముప్పై ఆరు రెట్లు బరువుగా ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-066",
+      "sentence_index": 2,
+      "text": "ఒక అణువు యొక్క ద్రవ్యరాశి దాదాపు మొత్తం కేంద్రకంలోనే ఉంటుంది.",
+      "text_markdown": "ఒక అణువు యొక్క ద్రవ్యరాశి దాదాపు మొత్తం కేంద్రకంలోనే ఉంటుంది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఒక అణువు యొక్క ద్రవ్యరాశి దాదాపు మొత్తం కేంద్రకంలోనే ఉంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-067",
+      "sentence_index": 0,
+      "text": "తటస్థ అణువులో, ఎలక్ట్రాన్ల సంఖ్య ప్రోటాన్ల సంఖ్యకు సమానం.",
+      "text_markdown": "తటస్థ అణువులో, ఎలక్ట్రాన్ల సంఖ్య ప్రోటాన్ల సంఖ్యకు సమానం.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "తటస్థ అణువులో, ఎలక్ట్రాన్ల సంఖ్య ప్రోటాన్ల సంఖ్యకు సమానం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-068",
+      "sentence_index": 1,
+      "text": "ధనాత్మక ఆవేశాలు మరియు రుణాత్మక ఆవేశాలు సమతుల్యం అవుతాయి.",
+      "text_markdown": "ధనాత్మక ఆవేశాలు మరియు రుణాత్మక ఆవేశాలు సమతుల్యం అవుతాయి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ధనాత్మక ఆవేశాలు మరియు రుణాత్మక ఆవేశాలు సమతుల్యం అవుతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-069",
+      "sentence_index": 2,
+      "text": "అణువుకు మొత్తం ఆవేశం ఉండదు.",
+      "text_markdown": "అణువుకు మొత్తం ఆవేశం ఉండదు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "అణువుకు మొత్తం ఆవేశం ఉండదు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-070",
+      "sentence_index": 3,
+      "text": "ఈ సమతుల్యత ఒక అణువు యొక్క డిఫాల్ట్ స్థితి.",
+      "text_markdown": "ఈ సమతుల్యత ఒక అణువు యొక్క డిఫాల్ట్ స్థితి.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఈ సమతుల్యత ఒక అణువు యొక్క డిఫాల్ట్ స్థితి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-071",
+      "sentence_index": 0,
+      "text": "ఒక అణువులో ఎక్కువ భాగం ఖాళీ ప్రదేశం.",
+      "text_markdown": "ఒక అణువులో ఎక్కువ భాగం ఖాళీ ప్రదేశం.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఒక అణువులో ఎక్కువ భాగం ఖాళీ ప్రదేశం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-072",
+      "sentence_index": 1,
+      "text": "కేంద్రకం దట్టంగా మరియు చిన్నదిగా ఉంటుంది.",
+      "text_markdown": "కేంద్రకం దట్టంగా మరియు చిన్నదిగా ఉంటుంది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "కేంద్రకం దట్టంగా మరియు చిన్నదిగా ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-073",
+      "sentence_index": 2,
+      "text": "ఎలక్ట్రాన్ మేఘం పెద్దది మరియు ఎక్కువగా ఏమీ ఉండదు.",
+      "text_markdown": "ఎలక్ట్రాన్ మేఘం పెద్దది మరియు ఎక్కువగా ఏమీ ఉండదు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "ఎలక్ట్రాన్ మేఘం పెద్దది మరియు ఎక్కువగా ఏమీ ఉండదు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-074",
+      "sentence_index": 3,
+      "text": "మీ శరీరంలోని ప్రతి అణువు నుండి ఖాళీ ప్రదేశాన్ని తొలగించగలిగితే, మీరు ఉప్పు గింజ కంటే చిన్న పరిమాణానికి కుంచించుకుపోతారు.",
+      "text_markdown": "మీ శరీరంలోని ప్రతి అణువు నుండి ఖాళీ ప్రదేశాన్ని తొలగించగలిగితే, మీరు ఉప్పు గింజ కంటే చిన్న పరిమాణానికి కుంచించుకుపోతారు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "మీ శరీరంలోని ప్రతి అణువు నుండి ఖాళీ ప్రదేశాన్ని తొలగించగలిగితే, మీరు ఉప్పు గింజ కంటే చిన్న పరిమాణానికి కుంచించుకుపోతారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-075",
+      "sentence_index": 4,
+      "text": "మీ ద్రవ్యరాశి అలాగే ఉంటుంది.",
+      "text_markdown": "మీ ద్రవ్యరాశి అలాగే ఉంటుంది.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "మీ ద్రవ్యరాశి అలాగే ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-076",
+      "sentence_index": 5,
+      "text": "మీరు అద్భుతంగా దట్టంగా ఉంటారు.",
+      "text_markdown": "మీరు అద్భుతంగా దట్టంగా ఉంటారు.",
+      "title": "అణువు లోపల",
+      "tts": {
+        "text": "మీరు అద్భుతంగా దట్టంగా ఉంటారు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch03-077",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "మూలకాలు",
+      "text_markdown": "మూలకాలు",
+      "title": "మూలకాలు"
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-078",
+      "sentence_index": 0,
+      "text": "ఒక మూలకం అనేది ఒకే రకమైన అణువులతో తయారైన పదార్థం.",
+      "text_markdown": "ఒక మూలకం అనేది ఒకే రకమైన అణువులతో తయారైన పదార్థం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఒక మూలకం అనేది ఒకే రకమైన అణువులతో తయారైన పదార్థం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-079",
+      "sentence_index": 1,
+      "text": "శుద్ధ బంగారం ఒక మూలకం.",
+      "text_markdown": "శుద్ధ బంగారం ఒక మూలకం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "శుద్ధ బంగారం ఒక మూలకం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-080",
+      "sentence_index": 2,
+      "text": "శుద్ధ బంగారం కడ్డీలోని ప్రతి అణువులో డెబ్బై తొమ్మిది ప్రోటాన్లు ఉంటాయి.",
+      "text_markdown": "శుద్ధ బంగారం కడ్డీలోని ప్రతి అణువులో డెబ్బై తొమ్మిది ప్రోటాన్లు ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "శుద్ధ బంగారం కడ్డీలోని ప్రతి అణువులో డెబ్బై తొమ్మిది ప్రోటాన్లు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-081",
+      "sentence_index": 3,
+      "text": "శుద్ధ ఆక్సిజన్ ఒక మూలకం.",
+      "text_markdown": "శుద్ధ ఆక్సిజన్ ఒక మూలకం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "శుద్ధ ఆక్సిజన్ ఒక మూలకం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-082",
+      "sentence_index": 4,
+      "text": "శుద్ధ ఆక్సిజన్ ట్యాంక్‌లోని ప్రతి అణువులో ఎనిమిది ప్రోటాన్లు ఉంటాయి.",
+      "text_markdown": "శుద్ధ ఆక్సిజన్ ట్యాంక్‌లోని ప్రతి అణువులో ఎనిమిది ప్రోటాన్లు ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "శుద్ధ ఆక్సిజన్ ట్యాంక్‌లోని ప్రతి అణువులో ఎనిమిది ప్రోటాన్లు ఉంటాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-083",
+      "sentence_index": 0,
+      "text": "భూమిపై సహజంగా తొంభై రెండు మూలకాలు ఉన్నాయి.",
+      "text_markdown": "భూమిపై సహజంగా తొంభై రెండు మూలకాలు ఉన్నాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "భూమిపై సహజంగా తొంభై రెండు మూలకాలు ఉన్నాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-084",
+      "sentence_index": 1,
+      "text": "శాస్త్రవేత్తలు ప్రయోగశాలలలో అదనపు మూలకాలను సృష్టించారు.",
+      "text_markdown": "శాస్త్రవేత్తలు ప్రయోగశాలలలో అదనపు మూలకాలను సృష్టించారు.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "శాస్త్రవేత్తలు ప్రయోగశాలలలో అదనపు మూలకాలను సృష్టించారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-085",
+      "sentence_index": 2,
+      "text": "తెలిసిన మూలకాల మొత్తం సంఖ్య నూట పద్దెనిమిది కంటే ఎక్కువ.",
+      "text_markdown": "తెలిసిన మూలకాల మొత్తం సంఖ్య నూట పద్దెనిమిది కంటే ఎక్కువ.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "తెలిసిన మూలకాల మొత్తం సంఖ్య నూట పద్దెనిమిది కంటే ఎక్కువ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-086",
+      "sentence_index": 3,
+      "text": "ప్రతి మూలకానికి ప్రత్యేకమైన ప్రోటాన్ల సంఖ్య ఉంటుంది.",
+      "text_markdown": "ప్రతి మూలకానికి ప్రత్యేకమైన ప్రోటాన్ల సంఖ్య ఉంటుంది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ప్రతి మూలకానికి ప్రత్యేకమైన ప్రోటాన్ల సంఖ్య ఉంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-087",
+      "sentence_index": 0,
+      "text": "ప్రతి మూలకానికి ఒక పేరు మరియు ఒక చిహ్నం ఉంటుంది.",
+      "text_markdown": "ప్రతి మూలకానికి ఒక పేరు మరియు ఒక చిహ్నం ఉంటుంది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ప్రతి మూలకానికి ఒక పేరు మరియు ఒక చిహ్నం ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-088",
+      "sentence_index": 1,
+      "text": "హైడ్రోజన్ H. ఆక్సిజన్ O. కార్బన్ C. ఐరన్ Fe.",
+      "text_markdown": "హైడ్రోజన్ H. ఆక్సిజన్ O. కార్బన్ C. ఐరన్ Fe.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "హైడ్రోజన్ హెచ్. ఆక్సిజన్ ఓ. కార్బన్ సి. ఐరన్ ఎఫ్ ఈ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-089",
+      "sentence_index": 2,
+      "text": "బంగారం Au.",
+      "text_markdown": "బంగారం Au.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "బంగారం ఏ యూ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-090",
+      "sentence_index": 3,
+      "text": "ఈ చిహ్నాలు లాటిన్, గ్రీకు లేదా ఆంగ్ల పేర్ల నుండి వచ్చాయి.",
+      "text_markdown": "ఈ చిహ్నాలు లాటిన్, గ్రీకు లేదా ఆంగ్ల పేర్ల నుండి వచ్చాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఈ చిహ్నాలు లాటిన్, గ్రీకు లేదా ఆంగ్ల పేర్ల నుండి వచ్చాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-091",
+      "sentence_index": 4,
+      "text": "Fe లాటిన్ పదం ferrum నుండి వచ్చింది.",
+      "text_markdown": "Fe లాటిన్ పదం ferrum నుండి వచ్చింది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఎఫ్ ఈ లాటిన్ పదం ferrum నుండి వచ్చింది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-092",
+      "sentence_index": 5,
+      "text": "Au లాటిన్ పదం aurum నుండి వచ్చింది.",
+      "text_markdown": "Au లాటిన్ పదం aurum నుండి వచ్చింది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఏ యూ లాటిన్ పదం aurum నుండి వచ్చింది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-093",
+      "sentence_index": 0,
+      "text": "హైడ్రోజన్ సరళమైన మూలకం.",
+      "text_markdown": "హైడ్రోజన్ సరళమైన మూలకం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "హైడ్రోజన్ సరళమైన మూలకం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-094",
+      "sentence_index": 1,
+      "text": "ఒక హైడ్రోజన్ అణువుకు ఒక ప్రోటాన్ మరియు ఒక ఎలక్ట్రాన్ ఉంటాయి.",
+      "text_markdown": "ఒక హైడ్రోజన్ అణువుకు ఒక ప్రోటాన్ మరియు ఒక ఎలక్ట్రాన్ ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఒక హైడ్రోజన్ అణువుకు ఒక ప్రోటాన్ మరియు ఒక ఎలక్ట్రాన్ ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-095",
+      "sentence_index": 2,
+      "text": "విశ్వంలో హైడ్రోజన్ అత్యంత సాధారణ మూలకం.",
+      "text_markdown": "విశ్వంలో హైడ్రోజన్ అత్యంత సాధారణ మూలకం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "విశ్వంలో హైడ్రోజన్ అత్యంత సాధారణ మూలకం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-096",
+      "sentence_index": 3,
+      "text": "నక్షత్రాలు ఎక్కువగా హైడ్రోజన్‌తో తయారవుతాయి.",
+      "text_markdown": "నక్షత్రాలు ఎక్కువగా హైడ్రోజన్‌తో తయారవుతాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "నక్షత్రాలు ఎక్కువగా హైడ్రోజన్‌తో తయారవుతాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-097",
+      "sentence_index": 0,
+      "text": "కార్బన్ జీవానికి మూలకం.",
+      "text_markdown": "కార్బన్ జీవానికి మూలకం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "కార్బన్ జీవానికి మూలకం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-098",
+      "sentence_index": 1,
+      "text": "కార్బన్‌కు ఆరు ప్రోటాన్లు ఉంటాయి.",
+      "text_markdown": "కార్బన్‌కు ఆరు ప్రోటాన్లు ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "కార్బన్‌కు ఆరు ప్రోటాన్లు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-099",
+      "sentence_index": 2,
+      "text": "కార్బన్ అణువులు ఒకే సమయంలో అనేక ఇతర అణువులతో బంధాలను ఏర్పరచగలవు.",
+      "text_markdown": "కార్బన్ అణువులు ఒకే సమయంలో అనేక ఇతర అణువులతో బంధాలను ఏర్పరచగలవు.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "కార్బన్ అణువులు ఒకే సమయంలో అనేక ఇతర అణువులతో బంధాలను ఏర్పరచగలవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-100",
+      "sentence_index": 3,
+      "text": "ఈ సామర్థ్యం కార్బన్‌ను అన్ని జీవులకు వెన్నెముకగా చేస్తుంది.",
+      "text_markdown": "ఈ సామర్థ్యం కార్బన్‌ను అన్ని జీవులకు వెన్నెముకగా చేస్తుంది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఈ సామర్థ్యం కార్బన్‌ను అన్ని జీవులకు వెన్నెముకగా చేస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-101",
+      "sentence_index": 4,
+      "text": "మీ శరీరంలోని ప్రతి ప్రోటీన్, ప్రతి DNA పోగు మరియు ప్రతి చక్కెర అణువు కార్బన్‌ను కలిగి ఉంటుంది.",
+      "text_markdown": "మీ శరీరంలోని ప్రతి ప్రోటీన్, ప్రతి DNA పోగు మరియు ప్రతి చక్కెర అణువు కార్బన్‌ను కలిగి ఉంటుంది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "మీ శరీరంలోని ప్రతి ప్రోటీన్, ప్రతి డీ ఎన్ ఏ పోగు మరియు ప్రతి చక్కెర అణువు కార్బన్‌ను కలిగి ఉంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-102",
+      "sentence_index": 0,
+      "text": "ఆక్సిజన్‌కు ఎనిమిది ప్రోటాన్లు ఉంటాయి.",
+      "text_markdown": "ఆక్సిజన్‌కు ఎనిమిది ప్రోటాన్లు ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఆక్సిజన్‌కు ఎనిమిది ప్రోటాన్లు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-103",
+      "sentence_index": 1,
+      "text": "ఆక్సిజన్ మీరు పీల్చే మూలకం.",
+      "text_markdown": "ఆక్సిజన్ మీరు పీల్చే మూలకం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఆక్సిజన్ మీరు పీల్చే మూలకం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-104",
+      "sentence_index": 2,
+      "text": "మీ ఊపిరితిత్తులు గాలి నుండి ఆక్సిజన్‌ను గ్రహించి మీ రక్తంలోకి పంపుతాయి.",
+      "text_markdown": "మీ ఊపిరితిత్తులు గాలి నుండి ఆక్సిజన్‌ను గ్రహించి మీ రక్తంలోకి పంపుతాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "మీ ఊపిరితిత్తులు గాలి నుండి ఆక్సిజన్‌ను గ్రహించి మీ రక్తంలోకి పంపుతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-105",
+      "sentence_index": 3,
+      "text": "మీ కణాలు ఆహారం నుండి శక్తిని విడుదల చేయడానికి ఆక్సిజన్‌ను ఉపయోగిస్తాయి.",
+      "text_markdown": "మీ కణాలు ఆహారం నుండి శక్తిని విడుదల చేయడానికి ఆక్సిజన్‌ను ఉపయోగిస్తాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "మీ కణాలు ఆహారం నుండి శక్తిని విడుదల చేయడానికి ఆక్సిజన్‌ను ఉపయోగిస్తాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-106",
+      "sentence_index": 0,
+      "text": "ఇనుముకు ఇరవై ఆరు ప్రోటాన్లు ఉంటాయి.",
+      "text_markdown": "ఇనుముకు ఇరవై ఆరు ప్రోటాన్లు ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఇనుముకు ఇరవై ఆరు ప్రోటాన్లు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-107",
+      "sentence_index": 1,
+      "text": "ఇనుము మీ రక్తాన్ని ఎరుపు రంగులో ఉంచే మూలకం.",
+      "text_markdown": "ఇనుము మీ రక్తాన్ని ఎరుపు రంగులో ఉంచే మూలకం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఇనుము మీ రక్తాన్ని ఎరుపు రంగులో ఉంచే మూలకం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-108",
+      "sentence_index": 2,
+      "text": "ఉక్కులో ఇనుము ప్రధాన పదార్థం.",
+      "text_markdown": "ఉక్కులో ఇనుము ప్రధాన పదార్థం.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ఉక్కులో ఇనుము ప్రధాన పదార్థం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-109",
+      "sentence_index": 3,
+      "text": "భూమి యొక్క కేంద్రకం ఎక్కువగా ఇనుముతో ఉంటుంది.",
+      "text_markdown": "భూమి యొక్క కేంద్రకం ఎక్కువగా ఇనుముతో ఉంటుంది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "భూమి యొక్క కేంద్రకం ఎక్కువగా ఇనుముతో ఉంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-110",
+      "sentence_index": 0,
+      "text": "అత్యంత తేలికైన మూలకాలు విశ్వంలో అత్యంత సాధారణమైనవి.",
+      "text_markdown": "అత్యంత తేలికైన మూలకాలు విశ్వంలో అత్యంత సాధారణమైనవి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "అత్యంత తేలికైన మూలకాలు విశ్వంలో అత్యంత సాధారణమైనవి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-111",
+      "sentence_index": 1,
+      "text": "హైడ్రోజన్ మరియు హీలియం కలిసి విశ్వంలోని మొత్తం అణువులలో సుమారు తొంభై ఎనిమిది శాతం ఉంటాయి.",
+      "text_markdown": "హైడ్రోజన్ మరియు హీలియం కలిసి విశ్వంలోని మొత్తం అణువులలో సుమారు తొంభై ఎనిమిది శాతం ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "హైడ్రోజన్ మరియు హీలియం కలిసి విశ్వంలోని మొత్తం అణువులలో సుమారు తొంభై ఎనిమిది శాతం ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-112",
+      "sentence_index": 2,
+      "text": "పోలిస్తే భారీ మూలకాలు అరుదుగా ఉంటాయి.",
+      "text_markdown": "పోలిస్తే భారీ మూలకాలు అరుదుగా ఉంటాయి.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "పోలిస్తే భారీ మూలకాలు అరుదుగా ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-113",
+      "sentence_index": 3,
+      "text": "ప్రతి భారీ మూలకం యొక్క ప్రతి అణువు ఒక నక్షత్రం లోపల ఏర్పడింది.",
+      "text_markdown": "ప్రతి భారీ మూలకం యొక్క ప్రతి అణువు ఒక నక్షత్రం లోపల ఏర్పడింది.",
+      "title": "మూలకాలు",
+      "tts": {
+        "text": "ప్రతి భారీ మూలకం యొక్క ప్రతి అణువు ఒక నక్షత్రం లోపల ఏర్పడింది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch04-114",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "ఆవర్తన పట్టిక",
+      "text_markdown": "ఆవర్తన పట్టిక",
+      "title": "ఆవర్తన పట్టిక"
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-115",
+      "sentence_index": 0,
+      "text": "ఆవర్తన పట్టిక అనేది తెలిసిన ప్రతి మూలకాన్ని క్రమబద్ధీకరించే పట్టిక.",
+      "text_markdown": "ఆవర్తన పట్టిక అనేది తెలిసిన ప్రతి మూలకాన్ని క్రమబద్ధీకరించే పట్టిక.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఆవర్తన పట్టిక అనేది తెలిసిన ప్రతి మూలకాన్ని క్రమబద్ధీకరించే పట్టిక.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-116",
+      "sentence_index": 1,
+      "text": "ఈ పట్టిక మూలకాలను వాటి ప్రోటాన్ల సంఖ్య ఆధారంగా, చిన్న నుండి పెద్ద వరకు అమరుస్తుంది.",
+      "text_markdown": "ఈ పట్టిక మూలకాలను వాటి ప్రోటాన్ల సంఖ్య ఆధారంగా, చిన్న నుండి పెద్ద వరకు అమరుస్తుంది.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఈ పట్టిక మూలకాలను వాటి ప్రోటాన్ల సంఖ్య ఆధారంగా, చిన్న నుండి పెద్ద వరకు అమరుస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-117",
+      "sentence_index": 2,
+      "text": "హైడ్రోజన్ ఒక ప్రోటాన్‌తో మొదటి స్థానంలో ఉంది.",
+      "text_markdown": "హైడ్రోజన్ ఒక ప్రోటాన్‌తో మొదటి స్థానంలో ఉంది.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "హైడ్రోజన్ ఒక ప్రోటాన్‌తో మొదటి స్థానంలో ఉంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-118",
+      "sentence_index": 3,
+      "text": "హీలియం రెండు ప్రోటాన్‌లతో రెండవ స్థానంలో ఉంది.",
+      "text_markdown": "హీలియం రెండు ప్రోటాన్‌లతో రెండవ స్థానంలో ఉంది.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "హీలియం రెండు ప్రోటాన్‌లతో రెండవ స్థానంలో ఉంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-119",
+      "sentence_index": 4,
+      "text": "ఈ పట్టిక నూట పద్దెనిమిది ప్రోటాన్‌లతో ఓగనేసన్ వరకు కొనసాగుతుంది.",
+      "text_markdown": "ఈ పట్టిక నూట పద్దెనిమిది ప్రోటాన్‌లతో ఓగనేసన్ వరకు కొనసాగుతుంది.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఈ పట్టిక నూట పద్దెనిమిది ప్రోటాన్‌లతో ఓగనేసన్ వరకు కొనసాగుతుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-120",
+      "sentence_index": 0,
+      "text": "ఆవర్తన పట్టికకు అడ్డు వరుసలు మరియు నిలువు వరుసలు ఉంటాయి.",
+      "text_markdown": "ఆవర్తన పట్టికకు అడ్డు వరుసలు మరియు నిలువు వరుసలు ఉంటాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఆవర్తన పట్టికకు అడ్డు వరుసలు మరియు నిలువు వరుసలు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-121",
+      "sentence_index": 1,
+      "text": "అడ్డు వరుసలను పీరియడ్‌లు అంటారు.",
+      "text_markdown": "అడ్డు వరుసలను పీరియడ్‌లు అంటారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "అడ్డు వరుసలను పీరియడ్‌లు అంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-122",
+      "sentence_index": 2,
+      "text": "నిలువు వరుసలను గ్రూపులు అంటారు.",
+      "text_markdown": "నిలువు వరుసలను గ్రూపులు అంటారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "నిలువు వరుసలను గ్రూపులు అంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-123",
+      "sentence_index": 3,
+      "text": "ఒకే గ్రూపులోని మూలకాలు సారూప్య ధర్మాలను పంచుకుంటాయి.",
+      "text_markdown": "ఒకే గ్రూపులోని మూలకాలు సారూప్య ధర్మాలను పంచుకుంటాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఒకే గ్రూపులోని మూలకాలు సారూప్య ధర్మాలను పంచుకుంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-124",
+      "sentence_index": 4,
+      "text": "అందుకే ఈ పట్టికను ఆవర్తన పట్టిక అంటారు.",
+      "text_markdown": "అందుకే ఈ పట్టికను ఆవర్తన పట్టిక అంటారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "అందుకే ఈ పట్టికను ఆవర్తన పట్టిక అంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-125",
+      "sentence_index": 5,
+      "text": "ధర్మాలు క్రమబద్ధమైన నమూనాలో పునరావృతమవుతాయి.",
+      "text_markdown": "ధర్మాలు క్రమబద్ధమైన నమూనాలో పునరావృతమవుతాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ధర్మాలు క్రమబద్ధమైన నమూనాలో పునరావృతమవుతాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-126",
+      "sentence_index": 0,
+      "text": "పట్టికకు ఎడమ వైపున ఉన్న మూలకాలు లోహాలు.",
+      "text_markdown": "పట్టికకు ఎడమ వైపున ఉన్న మూలకాలు లోహాలు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "పట్టికకు ఎడమ వైపున ఉన్న మూలకాలు లోహాలు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-127",
+      "sentence_index": 1,
+      "text": "చాలా మూలకాలు లోహాలు.",
+      "text_markdown": "చాలా మూలకాలు లోహాలు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "చాలా మూలకాలు లోహాలు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-128",
+      "sentence_index": 2,
+      "text": "లోహాలు మెరుస్తూ ఉంటాయి.",
+      "text_markdown": "లోహాలు మెరుస్తూ ఉంటాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "లోహాలు మెరుస్తూ ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-129",
+      "sentence_index": 3,
+      "text": "లోహాలు విద్యుత్‌ను ప్రసరింపజేస్తాయి.",
+      "text_markdown": "లోహాలు విద్యుత్‌ను ప్రసరింపజేస్తాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "లోహాలు విద్యుత్‌ను ప్రసరింపజేస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-130",
+      "sentence_index": 4,
+      "text": "లోహాలు ఉష్ణాన్ని ప్రసరింపజేస్తాయి.",
+      "text_markdown": "లోహాలు ఉష్ణాన్ని ప్రసరింపజేస్తాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "లోహాలు ఉష్ణాన్ని ప్రసరింపజేస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-131",
+      "sentence_index": 5,
+      "text": "ఇనుము, రాగి, బంగారం మరియు అల్యూమినియం అన్నీ లోహాలే.",
+      "text_markdown": "ఇనుము, రాగి, బంగారం మరియు అల్యూమినియం అన్నీ లోహాలే.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఇనుము, రాగి, బంగారం మరియు అల్యూమినియం అన్నీ లోహాలే.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-132",
+      "sentence_index": 0,
+      "text": "పట్టికకు కుడి వైపున ఉన్న మూలకాలు అలోహాలు.",
+      "text_markdown": "పట్టికకు కుడి వైపున ఉన్న మూలకాలు అలోహాలు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "పట్టికకు కుడి వైపున ఉన్న మూలకాలు అలోహాలు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-133",
+      "sentence_index": 1,
+      "text": "అలోహాలలో ఆక్సిజన్, నైట్రోజన్, కార్బన్ మరియు సల్ఫర్ ఉన్నాయి.",
+      "text_markdown": "అలోహాలలో ఆక్సిజన్, నైట్రోజన్, కార్బన్ మరియు సల్ఫర్ ఉన్నాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "అలోహాలలో ఆక్సిజన్, నైట్రోజన్, కార్బన్ మరియు సల్ఫర్ ఉన్నాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-134",
+      "sentence_index": 2,
+      "text": "అలోహాలు విద్యుత్‌ను సరిగా ప్రసరింపజేయవు.",
+      "text_markdown": "అలోహాలు విద్యుత్‌ను సరిగా ప్రసరింపజేయవు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "అలోహాలు విద్యుత్‌ను సరిగా ప్రసరింపజేయవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-135",
+      "sentence_index": 3,
+      "text": "అలోహాలు గాలి, నీరు మరియు జీవులను తయారుచేసే మూలకాలు.",
+      "text_markdown": "అలోహాలు గాలి, నీరు మరియు జీవులను తయారుచేసే మూలకాలు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "అలోహాలు గాలి, నీరు మరియు జీవులను తయారుచేసే మూలకాలు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-136",
+      "sentence_index": 0,
+      "text": "కొన్ని మూలకాలు లోహాలు మరియు అలోహాల మధ్య సరిహద్దులో ఉంటాయి.",
+      "text_markdown": "కొన్ని మూలకాలు లోహాలు మరియు అలోహాల మధ్య సరిహద్దులో ఉంటాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "కొన్ని మూలకాలు లోహాలు మరియు అలోహాల మధ్య సరిహద్దులో ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-137",
+      "sentence_index": 1,
+      "text": "ఈ మూలకాలను మెటల్లాయిడ్లు అంటారు.",
+      "text_markdown": "ఈ మూలకాలను మెటల్లాయిడ్లు అంటారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఈ మూలకాలను మెటల్లాయిడ్లు అంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-138",
+      "sentence_index": 2,
+      "text": "సిలికాన్ ఒక మెటల్లాయిడ్.",
+      "text_markdown": "సిలికాన్ ఒక మెటల్లాయిడ్.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "సిలికాన్ ఒక మెటల్లాయిడ్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-139",
+      "sentence_index": 3,
+      "text": "సిలికాన్ కొద్దిగా విద్యుత్‌ను ప్రసరింపజేస్తుంది, కానీ లోహం వలె బాగా కాదు.",
+      "text_markdown": "సిలికాన్ కొద్దిగా విద్యుత్‌ను ప్రసరింపజేస్తుంది, కానీ లోహం వలె బాగా కాదు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "సిలికాన్ కొద్దిగా విద్యుత్‌ను ప్రసరింపజేస్తుంది, కానీ లోహం వలె బాగా కాదు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-140",
+      "sentence_index": 4,
+      "text": "ఈ ధర్మం కంప్యూటర్ చిప్‌లలో సిలికాన్‌ను ఉపయోగకరంగా చేస్తుంది.",
+      "text_markdown": "ఈ ధర్మం కంప్యూటర్ చిప్‌లలో సిలికాన్‌ను ఉపయోగకరంగా చేస్తుంది.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఈ ధర్మం కంప్యూటర్ చిప్‌లలో సిలికాన్‌ను ఉపయోగకరంగా చేస్తుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-141",
+      "sentence_index": 0,
+      "text": "నోబుల్ వాయువులు కుడి వైపున చివరి నిలువు వరుసలో ఉంటాయి.",
+      "text_markdown": "నోబుల్ వాయువులు కుడి వైపున చివరి నిలువు వరుసలో ఉంటాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "నోబుల్ వాయువులు కుడి వైపున చివరి నిలువు వరుసలో ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-142",
+      "sentence_index": 1,
+      "text": "హీలియం, నియాన్, ఆర్గాన్, క్రిప్టాన్, జినాన్ మరియు రాడాన్ నోబుల్ వాయువులు.",
+      "text_markdown": "హీలియం, నియాన్, ఆర్గాన్, క్రిప్టాన్, జినాన్ మరియు రాడాన్ నోబుల్ వాయువులు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "హీలియం, నియాన్, ఆర్గాన్, క్రిప్టాన్, జినాన్ మరియు రాడాన్ నోబుల్ వాయువులు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-143",
+      "sentence_index": 2,
+      "text": "నోబుల్ వాయువులు ఇతర మూలకాలతో దాదాపు ఎప్పుడూ చర్య జరపవు.",
+      "text_markdown": "నోబుల్ వాయువులు ఇతర మూలకాలతో దాదాపు ఎప్పుడూ చర్య జరపవు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "నోబుల్ వాయువులు ఇతర మూలకాలతో దాదాపు ఎప్పుడూ చర్య జరపవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-144",
+      "sentence_index": 3,
+      "text": "వాటి ఎలక్ట్రాన్ అమరికలు ఇప్పటికే స్థిరంగా ఉంటాయి.",
+      "text_markdown": "వాటి ఎలక్ట్రాన్ అమరికలు ఇప్పటికే స్థిరంగా ఉంటాయి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "వాటి ఎలక్ట్రాన్ అమరికలు ఇప్పటికే స్థిరంగా ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-145",
+      "sentence_index": 4,
+      "text": "అవి బంధాలను ఏర్పరచాల్సిన అవసరం లేదు.",
+      "text_markdown": "అవి బంధాలను ఏర్పరచాల్సిన అవసరం లేదు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "అవి బంధాలను ఏర్పరచాల్సిన అవసరం లేదు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-146",
+      "sentence_index": 0,
+      "text": "డిమిత్రి మెండలీవ్ అనే రష్యన్ శాస్త్రవేత్త 1869లో మొదటి ఆవర్తన పట్టికను రూపొందించారు.",
+      "text_markdown": "డిమిత్రి మెండలీవ్ అనే రష్యన్ శాస్త్రవేత్త 1869లో మొదటి ఆవర్తన పట్టికను రూపొందించారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "డిమిత్రి మెండలీవ్ అనే రష్యన్ శాస్త్రవేత్త పద్దెనిమిది వందల అరవై తొమ్మిదిలో మొదటి ఆవర్తన పట్టికను రూపొందించారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-147",
+      "sentence_index": 1,
+      "text": "మెండలీవ్ మూలకాలను వాటి ధర్మాల ఆధారంగా అమర్చి, పునరావృతమయ్యే నమూనాను గమనించారు.",
+      "text_markdown": "మెండలీవ్ మూలకాలను వాటి ధర్మాల ఆధారంగా అమర్చి, పునరావృతమయ్యే నమూనాను గమనించారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "మెండలీవ్ మూలకాలను వాటి ధర్మాల ఆధారంగా అమర్చి, పునరావృతమయ్యే నమూనాను గమనించారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-148",
+      "sentence_index": 2,
+      "text": "తెలియని మూలకాలు ఉండాలని ఆయన అంచనా వేసిన చోట తన పట్టికలో ఖాళీలను వదిలిపెట్టారు.",
+      "text_markdown": "తెలియని మూలకాలు ఉండాలని ఆయన అంచనా వేసిన చోట తన పట్టికలో ఖాళీలను వదిలిపెట్టారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "తెలియని మూలకాలు ఉండాలని ఆయన అంచనా వేసిన చోట తన పట్టికలో ఖాళీలను వదిలిపెట్టారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-149",
+      "sentence_index": 3,
+      "text": "శాస్త్రవేత్తలు తరువాత ఆ మూలకాలను కనుగొన్నారు.",
+      "text_markdown": "శాస్త్రవేత్తలు తరువాత ఆ మూలకాలను కనుగొన్నారు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "శాస్త్రవేత్తలు తరువాత ఆ మూలకాలను కనుగొన్నారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-150",
+      "sentence_index": 4,
+      "text": "ప్రతి అంచనా సరైనదే.",
+      "text_markdown": "ప్రతి అంచనా సరైనదే.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ప్రతి అంచనా సరైనదే.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-151",
+      "sentence_index": 0,
+      "text": "ఆవర్తన పట్టిక విజ్ఞాన శాస్త్రంలో అత్యంత శక్తివంతమైన సాధనాలలో ఒకటి.",
+      "text_markdown": "ఆవర్తన పట్టిక విజ్ఞాన శాస్త్రంలో అత్యంత శక్తివంతమైన సాధనాలలో ఒకటి.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఆవర్తన పట్టిక విజ్ఞాన శాస్త్రంలో అత్యంత శక్తివంతమైన సాధనాలలో ఒకటి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-152",
+      "sentence_index": 1,
+      "text": "ఒక మూలకం పట్టికలో ఎక్కడ ఉందో మీకు తెలిస్తే, అది ఎలా ప్రవర్తిస్తుందో మీరు అంచనా వేయవచ్చు.",
+      "text_markdown": "ఒక మూలకం పట్టికలో ఎక్కడ ఉందో మీకు తెలిస్తే, అది ఎలా ప్రవర్తిస్తుందో మీరు అంచనా వేయవచ్చు.",
+      "title": "ఆవర్తన పట్టిక",
+      "tts": {
+        "text": "ఒక మూలకం పట్టికలో ఎక్కడ ఉందో మీకు తెలిస్తే, అది ఎలా ప్రవర్తిస్తుందో మీరు అంచనా వేయవచ్చు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch05-153",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "text_markdown": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి"
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-154",
+      "sentence_index": 0,
+      "text": "పరమాణువులు అరుదుగా ఒంటరిగా ఉంటాయి.",
+      "text_markdown": "పరమాణువులు అరుదుగా ఒంటరిగా ఉంటాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "పరమాణువులు అరుదుగా ఒంటరిగా ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-155",
+      "sentence_index": 1,
+      "text": "చాలా పరమాణువులు అణువులను ఏర్పరచడానికి ఇతర పరమాణువులతో బంధించబడతాయి.",
+      "text_markdown": "చాలా పరమాణువులు అణువులను ఏర్పరచడానికి ఇతర పరమాణువులతో బంధించబడతాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "చాలా పరమాణువులు అణువులను ఏర్పరచడానికి ఇతర పరమాణువులతో బంధించబడతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-156",
+      "sentence_index": 2,
+      "text": "అణువు అనేది రసాయన బంధాల ద్వారా కలిసి ఉన్న పరమాణువుల సమూహం.",
+      "text_markdown": "అణువు అనేది రసాయన బంధాల ద్వారా కలిసి ఉన్న పరమాణువుల సమూహం.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "అణువు అనేది రసాయన బంధాల ద్వారా కలిసి ఉన్న పరమాణువుల సమూహం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-157",
+      "sentence_index": 3,
+      "text": "నీరు ఒక అణువు.",
+      "text_markdown": "నీరు ఒక అణువు.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "నీరు ఒక అణువు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-158",
+      "sentence_index": 4,
+      "text": "ఆక్సిజన్ వాయువు ఒక అణువు.",
+      "text_markdown": "ఆక్సిజన్ వాయువు ఒక అణువు.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఆక్సిజన్ వాయువు ఒక అణువు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-159",
+      "sentence_index": 5,
+      "text": "చక్కెర ఒక అణువు.",
+      "text_markdown": "చక్కెర ఒక అణువు.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "చక్కెర ఒక అణువు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-160",
+      "sentence_index": 0,
+      "text": "పరమాణువులు వాటి ఎలక్ట్రాన్ల కారణంగా బంధించబడతాయి.",
+      "text_markdown": "పరమాణువులు వాటి ఎలక్ట్రాన్ల కారణంగా బంధించబడతాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "పరమాణువులు వాటి ఎలక్ట్రాన్ల కారణంగా బంధించబడతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-161",
+      "sentence_index": 1,
+      "text": "ఒక పరమాణువు యొక్క బాహ్య కర్పరంలోని ఎలక్ట్రాన్లు ఆ పరమాణువు ఇతర పరమాణువులతో ఎలా సంకర్షిస్తుందో నిర్ణయిస్తాయి.",
+      "text_markdown": "ఒక పరమాణువు యొక్క బాహ్య కర్పరంలోని ఎలక్ట్రాన్లు ఆ పరమాణువు ఇతర పరమాణువులతో ఎలా సంకర్షిస్తుందో నిర్ణయిస్తాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఒక పరమాణువు యొక్క బాహ్య కర్పరంలోని ఎలక్ట్రాన్లు ఆ పరమాణువు ఇతర పరమాణువులతో ఎలా సంకర్షిస్తుందో నిర్ణయిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-162",
+      "sentence_index": 2,
+      "text": "ఈ బాహ్య ఎలక్ట్రాన్లను వేలెన్స్ ఎలక్ట్రాన్లు అంటారు.",
+      "text_markdown": "ఈ బాహ్య ఎలక్ట్రాన్లను వేలెన్స్ ఎలక్ట్రాన్లు అంటారు.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఈ బాహ్య ఎలక్ట్రాన్లను వేలెన్స్ ఎలక్ట్రాన్లు అంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-163",
+      "sentence_index": 3,
+      "text": "పూర్తి బాహ్య కర్పరం ఉన్న పరమాణువు స్థిరంగా ఉంటుంది.",
+      "text_markdown": "పూర్తి బాహ్య కర్పరం ఉన్న పరమాణువు స్థిరంగా ఉంటుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "పూర్తి బాహ్య కర్పరం ఉన్న పరమాణువు స్థిరంగా ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-164",
+      "sentence_index": 4,
+      "text": "పూర్తి బాహ్య కర్పరం లేని పరమాణువు దానిని నింపడానికి ప్రయత్నిస్తుంది.",
+      "text_markdown": "పూర్తి బాహ్య కర్పరం లేని పరమాణువు దానిని నింపడానికి ప్రయత్నిస్తుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "పూర్తి బాహ్య కర్పరం లేని పరమాణువు దానిని నింపడానికి ప్రయత్నిస్తుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-165",
+      "sentence_index": 0,
+      "text": "రసాయన బంధాలలో రెండు ప్రధాన రకాలు ఉన్నాయి.",
+      "text_markdown": "రసాయన బంధాలలో రెండు ప్రధాన రకాలు ఉన్నాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "రసాయన బంధాలలో రెండు ప్రధాన రకాలు ఉన్నాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-166",
+      "sentence_index": 1,
+      "text": "సమయోజనీయ బంధాలు మరియు అయానిక బంధాలు.",
+      "text_markdown": "సమయోజనీయ బంధాలు మరియు అయానిక బంధాలు.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "సమయోజనీయ బంధాలు మరియు అయానిక బంధాలు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-167",
+      "sentence_index": 0,
+      "text": "సమయోజనీయ బంధంలో, రెండు పరమాణువులు ఎలక్ట్రాన్లను పంచుకుంటాయి.",
+      "text_markdown": "సమయోజనీయ బంధంలో, రెండు పరమాణువులు ఎలక్ట్రాన్లను పంచుకుంటాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "సమయోజనీయ బంధంలో, రెండు పరమాణువులు ఎలక్ట్రాన్లను పంచుకుంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-168",
+      "sentence_index": 1,
+      "text": "రెండు పరమాణువులు పంచుకున్న జతకు ఎలక్ట్రాన్లను అందిస్తాయి.",
+      "text_markdown": "రెండు పరమాణువులు పంచుకున్న జతకు ఎలక్ట్రాన్లను అందిస్తాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "రెండు పరమాణువులు పంచుకున్న జతకు ఎలక్ట్రాన్లను అందిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-169",
+      "sentence_index": 2,
+      "text": "పంచుకున్న ఎలక్ట్రాన్లు రెండు కేంద్రకాల చుట్టూ తిరుగుతాయి.",
+      "text_markdown": "పంచుకున్న ఎలక్ట్రాన్లు రెండు కేంద్రకాల చుట్టూ తిరుగుతాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "పంచుకున్న ఎలక్ట్రాన్లు రెండు కేంద్రకాల చుట్టూ తిరుగుతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-170",
+      "sentence_index": 3,
+      "text": "ఈ భాగస్వామ్యం పరమాణువులను కలిపి ఉంచుతుంది.",
+      "text_markdown": "ఈ భాగస్వామ్యం పరమాణువులను కలిపి ఉంచుతుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఈ భాగస్వామ్యం పరమాణువులను కలిపి ఉంచుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-171",
+      "sentence_index": 4,
+      "text": "నీరు సమయోజనీయ బంధాల ద్వారా కలిసి ఉంటుంది.",
+      "text_markdown": "నీరు సమయోజనీయ బంధాల ద్వారా కలిసి ఉంటుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "నీరు సమయోజనీయ బంధాల ద్వారా కలిసి ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-172",
+      "sentence_index": 5,
+      "text": "ప్రతి హైడ్రోజన్ పరమాణువు ఆక్సిజన్ పరమాణువుతో ఒక ఎలక్ట్రాన్‌ను పంచుకుంటుంది.",
+      "text_markdown": "ప్రతి హైడ్రోజన్ పరమాణువు ఆక్సిజన్ పరమాణువుతో ఒక ఎలక్ట్రాన్‌ను పంచుకుంటుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ప్రతి హైడ్రోజన్ పరమాణువు ఆక్సిజన్ పరమాణువుతో ఒక ఎలక్ట్రాన్‌ను పంచుకుంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-173",
+      "sentence_index": 0,
+      "text": "అయానిక బంధంలో, ఒక పరమాణువు మరొక పరమాణువుకు ఎలక్ట్రాన్లను ఇస్తుంది.",
+      "text_markdown": "అయానిక బంధంలో, ఒక పరమాణువు మరొక పరమాణువుకు ఎలక్ట్రాన్లను ఇస్తుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "అయానిక బంధంలో, ఒక పరమాణువు మరొక పరమాణువుకు ఎలక్ట్రాన్లను ఇస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-174",
+      "sentence_index": 1,
+      "text": "ఎలక్ట్రాన్లను కోల్పోయిన పరమాణువు ధనావేశం పొందుతుంది.",
+      "text_markdown": "ఎలక్ట్రాన్లను కోల్పోయిన పరమాణువు ధనావేశం పొందుతుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఎలక్ట్రాన్లను కోల్పోయిన పరమాణువు ధనావేశం పొందుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-175",
+      "sentence_index": 2,
+      "text": "ఎలక్ట్రాన్లను పొందిన పరమాణువు రుణావేశం పొందుతుంది.",
+      "text_markdown": "ఎలక్ట్రాన్లను పొందిన పరమాణువు రుణావేశం పొందుతుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఎలక్ట్రాన్లను పొందిన పరమాణువు రుణావేశం పొందుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-176",
+      "sentence_index": 3,
+      "text": "వ్యతిరేక ఆవేశాలు ఆకర్షిస్తాయి.",
+      "text_markdown": "వ్యతిరేక ఆవేశాలు ఆకర్షిస్తాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "వ్యతిరేక ఆవేశాలు ఆకర్షిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-177",
+      "sentence_index": 4,
+      "text": "ఈ ఆకర్షణ రెండు పరమాణువులను కలిపి ఉంచుతుంది.",
+      "text_markdown": "ఈ ఆకర్షణ రెండు పరమాణువులను కలిపి ఉంచుతుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఈ ఆకర్షణ రెండు పరమాణువులను కలిపి ఉంచుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-178",
+      "sentence_index": 5,
+      "text": "టేబుల్ సాల్ట్ అయానిక బంధాల ద్వారా కలిసి ఉంటుంది.",
+      "text_markdown": "టేబుల్ సాల్ట్ అయానిక బంధాల ద్వారా కలిసి ఉంటుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "టేబుల్ సాల్ట్ అయానిక బంధాల ద్వారా కలిసి ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-179",
+      "sentence_index": 6,
+      "text": "సోడియం క్లోరిన్‌కు ఒక ఎలక్ట్రాన్‌ను ఇస్తుంది.",
+      "text_markdown": "సోడియం క్లోరిన్‌కు ఒక ఎలక్ట్రాన్‌ను ఇస్తుంది.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "సోడియం క్లోరిన్‌కు ఒక ఎలక్ట్రాన్‌ను ఇస్తుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-180",
+      "sentence_index": 0,
+      "text": "ఒక నీటి అణువులో రెండు హైడ్రోజన్ పరమాణువులు మరియు ఒక ఆక్సిజన్ పరమాణువు ఉంటాయి.",
+      "text_markdown": "ఒక నీటి అణువులో రెండు హైడ్రోజన్ పరమాణువులు మరియు ఒక ఆక్సిజన్ పరమాణువు ఉంటాయి.",
+      "title": "పరమాణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఒక నీటి అణువులో రెండు హైడ్రోజన్ పరమాణువులు మరియు ఒక ఆక్సిజన్ పరమాణువు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-181",
+      "sentence_index": 1,
+      "text": "శాస్త్రవేత్తలు దీనిని H2O అని వ్రాస్తారు.",
+      "text_markdown": "శాస్త్రవేత్తలు దీనిని H2O అని వ్రాస్తారు.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "శాస్త్రవేత్తలు దీనిని హెచ్ టూ ఓ అని వ్రాస్తారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-182",
+      "sentence_index": 2,
+      "text": "H అంటే హైడ్రోజన్.",
+      "text_markdown": "H అంటే హైడ్రోజన్.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "హెచ్ అంటే హైడ్రోజన్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-183",
+      "sentence_index": 3,
+      "text": "O అంటే ఆక్సిజన్.",
+      "text_markdown": "O అంటే ఆక్సిజన్.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "ఓ అంటే ఆక్సిజన్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-184",
+      "sentence_index": 4,
+      "text": "2 అంటే రెండు హైడ్రోజన్ అణువులు ఉన్నాయని అర్థం.",
+      "text_markdown": "2 అంటే రెండు హైడ్రోజన్ అణువులు ఉన్నాయని అర్థం.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "రెండు అంటే రెండు హైడ్రోజన్ అణువులు ఉన్నాయని అర్థం.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-185",
+      "sentence_index": 0,
+      "text": "కార్బన్ డయాక్సైడ్ అణువులో ఒక కార్బన్ అణువు మరియు రెండు ఆక్సిజన్ అణువులు ఉంటాయి.",
+      "text_markdown": "కార్బన్ డయాక్సైడ్ అణువులో ఒక కార్బన్ అణువు మరియు రెండు ఆక్సిజన్ అణువులు ఉంటాయి.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "కార్బన్ డయాక్సైడ్ అణువులో ఒక కార్బన్ అణువు మరియు రెండు ఆక్సిజన్ అణువులు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-186",
+      "sentence_index": 1,
+      "text": "శాస్త్రవేత్తలు దీనిని CO2 అని వ్రాస్తారు.",
+      "text_markdown": "శాస్త్రవేత్తలు దీనిని CO2 అని వ్రాస్తారు.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "శాస్త్రవేత్తలు దీనిని సీ ఓ టూ అని వ్రాస్తారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-187",
+      "sentence_index": 2,
+      "text": "మొక్కలు గాలి నుండి కార్బన్ డయాక్సైడ్‌ను గ్రహించి, చక్కెర అణువులను నిర్మించడానికి ఉపయోగిస్తాయి.",
+      "text_markdown": "మొక్కలు గాలి నుండి కార్బన్ డయాక్సైడ్‌ను గ్రహించి, చక్కెర అణువులను నిర్మించడానికి ఉపయోగిస్తాయి.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "మొక్కలు గాలి నుండి కార్బన్ డయాక్సైడ్‌ను గ్రహించి, చక్కెర అణువులను నిర్మించడానికి ఉపయోగిస్తాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-188",
+      "sentence_index": 0,
+      "text": "అణువుల మధ్య బంధాలు శక్తిని నిల్వ చేస్తాయి.",
+      "text_markdown": "అణువుల మధ్య బంధాలు శక్తిని నిల్వ చేస్తాయి.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "అణువుల మధ్య బంధాలు శక్తిని నిల్వ చేస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-189",
+      "sentence_index": 1,
+      "text": "బంధాలు విడిపోయినప్పుడు, శక్తి విడుదల అవుతుంది.",
+      "text_markdown": "బంధాలు విడిపోయినప్పుడు, శక్తి విడుదల అవుతుంది.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "బంధాలు విడిపోయినప్పుడు, శక్తి విడుదల అవుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-190",
+      "sentence_index": 2,
+      "text": "బంధాలు ఏర్పడినప్పుడు, శక్తి గ్రహించబడుతుంది.",
+      "text_markdown": "బంధాలు ఏర్పడినప్పుడు, శక్తి గ్రహించబడుతుంది.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "బంధాలు ఏర్పడినప్పుడు, శక్తి గ్రహించబడుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-191",
+      "sentence_index": 3,
+      "text": "విశ్వంలోని ప్రతి రసాయన ప్రతిచర్య పాత బంధాలను విచ్ఛిన్నం చేయడం మరియు కొత్త వాటిని ఏర్పరచడం కలిగి ఉంటుంది.",
+      "text_markdown": "విశ్వంలోని ప్రతి రసాయన ప్రతిచర్య పాత బంధాలను విచ్ఛిన్నం చేయడం మరియు కొత్త వాటిని ఏర్పరచడం కలిగి ఉంటుంది.",
+      "title": "అణువులు ఎలా బంధించబడతాయి",
+      "tts": {
+        "text": "విశ్వంలోని ప్రతి రసాయన ప్రతిచర్య పాత బంధాలను విచ్ఛిన్నం చేయడం మరియు కొత్త వాటిని ఏర్పరచడం కలిగి ఉంటుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch06-192",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "కదలికలో అణువులు",
+      "text_markdown": "కదలికలో అణువులు",
+      "title": "కదలికలో అణువులు"
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-193",
+      "sentence_index": 0,
+      "text": "అణువులు ఎల్లప్పుడూ కదులుతూ ఉంటాయి.",
+      "text_markdown": "అణువులు ఎల్లప్పుడూ కదులుతూ ఉంటాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అణువులు ఎల్లప్పుడూ కదులుతూ ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-194",
+      "sentence_index": 1,
+      "text": "అవి ఎప్పుడూ ఆగవు.",
+      "text_markdown": "అవి ఎప్పుడూ ఆగవు.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అవి ఎప్పుడూ ఆగవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-195",
+      "sentence_index": 2,
+      "text": "సంపూర్ణ సున్నా కంటే ఎక్కువ ఉష్ణోగ్రత వద్ద, అణువులు కంపించి, తిరుగుతూ, అంతరిక్షంలో ప్రయాణిస్తాయి.",
+      "text_markdown": "సంపూర్ణ సున్నా కంటే ఎక్కువ ఉష్ణోగ్రత వద్ద, అణువులు కంపించి, తిరుగుతూ, అంతరిక్షంలో ప్రయాణిస్తాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "సంపూర్ణ సున్నా కంటే ఎక్కువ ఉష్ణోగ్రత వద్ద, అణువులు కంపించి, తిరుగుతూ, అంతరిక్షంలో ప్రయాణిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-196",
+      "sentence_index": 3,
+      "text": "ఈ కదలికనే మనం వేడిగా అనుభవిస్తాము.",
+      "text_markdown": "ఈ కదలికనే మనం వేడిగా అనుభవిస్తాము.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "ఈ కదలికనే మనం వేడిగా అనుభవిస్తాము.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-197",
+      "sentence_index": 0,
+      "text": "ఘనపదార్థంలో, అణువులు స్థానంలో కంపించి ఉంటాయి.",
+      "text_markdown": "ఘనపదార్థంలో, అణువులు స్థానంలో కంపించి ఉంటాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "ఘనపదార్థంలో, అణువులు స్థానంలో కంపించి ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-198",
+      "sentence_index": 1,
+      "text": "అవి స్థిరమైన నిర్మాణంలో బంధించబడి ఉంటాయి.",
+      "text_markdown": "అవి స్థిరమైన నిర్మాణంలో బంధించబడి ఉంటాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అవి స్థిరమైన నిర్మాణంలో బంధించబడి ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-199",
+      "sentence_index": 2,
+      "text": "అవి ముందుకు వెనుకకు కదులుతాయి, కానీ వాటి స్థానాలను వదిలిపెట్టవు.",
+      "text_markdown": "అవి ముందుకు వెనుకకు కదులుతాయి, కానీ వాటి స్థానాలను వదిలిపెట్టవు.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అవి ముందుకు వెనుకకు కదులుతాయి, కానీ వాటి స్థానాలను వదిలిపెట్టవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-200",
+      "sentence_index": 3,
+      "text": "అందుకే ఘనపదార్థాలు వాటి ఆకారాన్ని నిలుపుకుంటాయి.",
+      "text_markdown": "అందుకే ఘనపదార్థాలు వాటి ఆకారాన్ని నిలుపుకుంటాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అందుకే ఘనపదార్థాలు వాటి ఆకారాన్ని నిలుపుకుంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-201",
+      "sentence_index": 4,
+      "text": "మంచు ముక్కలోని అణువులు కంపించి ఉంటాయి, కానీ అవి దృఢమైన స్ఫటిక నమూనాలో ఉంటాయి.",
+      "text_markdown": "మంచు ముక్కలోని అణువులు కంపించి ఉంటాయి, కానీ అవి దృఢమైన స్ఫటిక నమూనాలో ఉంటాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "మంచు ముక్కలోని అణువులు కంపించి ఉంటాయి, కానీ అవి దృఢమైన స్ఫటిక నమూనాలో ఉంటాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-202",
+      "sentence_index": 0,
+      "text": "ద్రవంలో, అణువులు మరింత స్వేచ్ఛగా కదులుతాయి.",
+      "text_markdown": "ద్రవంలో, అణువులు మరింత స్వేచ్ఛగా కదులుతాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "ద్రవంలో, అణువులు మరింత స్వేచ్ఛగా కదులుతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-203",
+      "sentence_index": 1,
+      "text": "అవి ఒకదానికొకటి జారిపోతాయి.",
+      "text_markdown": "అవి ఒకదానికొకటి జారిపోతాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అవి ఒకదానికొకటి జారిపోతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-204",
+      "sentence_index": 2,
+      "text": "అవి దగ్గరగా ఉంటాయి, కానీ స్థానంలో బంధించబడవు.",
+      "text_markdown": "అవి దగ్గరగా ఉంటాయి, కానీ స్థానంలో బంధించబడవు.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అవి దగ్గరగా ఉంటాయి, కానీ స్థానంలో బంధించబడవు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-205",
+      "sentence_index": 3,
+      "text": "అందుకే ద్రవాలు ప్రవహిస్తాయి.",
+      "text_markdown": "అందుకే ద్రవాలు ప్రవహిస్తాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అందుకే ద్రవాలు ప్రవహిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-206",
+      "sentence_index": 4,
+      "text": "ఒక గ్లాసు నీటిలోని అణువులు నిరంతరం కదులుతూ మరియు పునర్వ్యవస్థీకరించబడుతూ ఉంటాయి, కానీ అవి ఒకదానికొకటి దగ్గరగా ఉంటాయి.",
+      "text_markdown": "ఒక గ్లాసు నీటిలోని అణువులు నిరంతరం కదులుతూ మరియు పునర్వ్యవస్థీకరించబడుతూ ఉంటాయి, కానీ అవి ఒకదానికొకటి దగ్గరగా ఉంటాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "ఒక గ్లాసు నీటిలోని అణువులు నిరంతరం కదులుతూ మరియు పునర్వ్యవస్థీకరించబడుతూ ఉంటాయి, కానీ అవి ఒకదానికొకటి దగ్గరగా ఉంటాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-207",
+      "sentence_index": 0,
+      "text": "వాయువులో, అణువులు వేగంగా కదులుతాయి మరియు దూరంగా వ్యాపిస్తాయి.",
+      "text_markdown": "వాయువులో, అణువులు వేగంగా కదులుతాయి మరియు దూరంగా వ్యాపిస్తాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "వాయువులో, అణువులు వేగంగా కదులుతాయి మరియు దూరంగా వ్యాపిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-208",
+      "sentence_index": 1,
+      "text": "అవి మరొక అణువును లేదా గోడను ఢీకొనే వరకు సరళ రేఖలలో ప్రయాణిస్తాయి.",
+      "text_markdown": "అవి మరొక అణువును లేదా గోడను ఢీకొనే వరకు సరళ రేఖలలో ప్రయాణిస్తాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అవి మరొక అణువును లేదా గోడను ఢీకొనే వరకు సరళ రేఖలలో ప్రయాణిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-209",
+      "sentence_index": 2,
+      "text": "అవి ఒకదానికొకటి ఢీకొని దిశను మారుస్తాయి.",
+      "text_markdown": "అవి ఒకదానికొకటి ఢీకొని దిశను మారుస్తాయి.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అవి ఒకదానికొకటి ఢీకొని దిశను మారుస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-210",
+      "sentence_index": 3,
+      "text": "అందుకే వాయువు మీరు ఉంచిన ఏ కంటైనర్‌నైనా నింపుతుంది.",
+      "text_markdown": "అందుకే వాయువు మీరు ఉంచిన ఏ కంటైనర్‌నైనా నింపుతుంది.",
+      "title": "కదలికలో అణువులు",
+      "tts": {
+        "text": "అందుకే వాయువు మీరు ఉంచిన ఏ కంటైనర్‌నైనా నింపుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-211",
+      "sentence_index": 4,
+      "text": "గది నిండా ఉన్న గాలిలోని అణువులు సెకనుకు వందల మీటర్ల వేగంతో అన్ని దిశలలో కదులుతున్నాయి.",
+      "text_markdown": "గది నిండా ఉన్న గాలిలోని అణువులు సెకనుకు వందల మీటర్ల వేగంతో అన్ని దిశలలో కదులుతున్నాయి.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "గది నిండా ఉన్న గాలిలోని అణువులు సెకనుకు వందల మీటర్ల వేగంతో అన్ని దిశలలో కదులుతున్నాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-212",
+      "sentence_index": 0,
+      "text": "అణువులు ఎంత వేగంగా కదులుతున్నాయో కొలవడానికి ఉష్ణోగ్రత ఒక కొలమానం.",
+      "text_markdown": "అణువులు ఎంత వేగంగా కదులుతున్నాయో కొలవడానికి ఉష్ణోగ్రత ఒక కొలమానం.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "అణువులు ఎంత వేగంగా కదులుతున్నాయో కొలవడానికి ఉష్ణోగ్రత ఒక కొలమానం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-213",
+      "sentence_index": 1,
+      "text": "వేడి అంటే అణువులు వేగంగా కదులుతున్నాయని అర్థం.",
+      "text_markdown": "వేడి అంటే అణువులు వేగంగా కదులుతున్నాయని అర్థం.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "వేడి అంటే అణువులు వేగంగా కదులుతున్నాయని అర్థం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-214",
+      "sentence_index": 2,
+      "text": "చల్లదనం అంటే అణువులు నెమ్మదిగా కదులుతున్నాయని అర్థం.",
+      "text_markdown": "చల్లదనం అంటే అణువులు నెమ్మదిగా కదులుతున్నాయని అర్థం.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "చల్లదనం అంటే అణువులు నెమ్మదిగా కదులుతున్నాయని అర్థం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-215",
+      "sentence_index": 3,
+      "text": "మీరు స్టవ్ మీద నీటిని వేడి చేసినప్పుడు, మీరు నీటి అణువులను వేగంగా కదిలేలా చేస్తున్నారు.",
+      "text_markdown": "మీరు స్టవ్ మీద నీటిని వేడి చేసినప్పుడు, మీరు నీటి అణువులను వేగంగా కదిలేలా చేస్తున్నారు.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "మీరు స్టవ్ మీద నీటిని వేడి చేసినప్పుడు, మీరు నీటి అణువులను వేగంగా కదిలేలా చేస్తున్నారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-216",
+      "sentence_index": 4,
+      "text": "అణువులు తగినంత వేగంగా కదిలినప్పుడు, అవి ద్రవం నుండి బయటపడి ఆవిరిగా మారతాయి.",
+      "text_markdown": "అణువులు తగినంత వేగంగా కదిలినప్పుడు, అవి ద్రవం నుండి బయటపడి ఆవిరిగా మారతాయి.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "అణువులు తగినంత వేగంగా కదిలినప్పుడు, అవి ద్రవం నుండి బయటపడి ఆవిరిగా మారతాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-217",
+      "sentence_index": 0,
+      "text": "పరమ సున్నా అనేది సాధ్యమయ్యే అత్యంత శీతల ఉష్ణోగ్రత.",
+      "text_markdown": "పరమ సున్నా అనేది సాధ్యమయ్యే అత్యంత శీతల ఉష్ణోగ్రత.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "పరమ సున్నా అనేది సాధ్యమయ్యే అత్యంత శీతల ఉష్ణోగ్రత.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-218",
+      "sentence_index": 1,
+      "text": "ఇది సుమారు మైనస్ 273 డిగ్రీల సెల్సియస్.",
+      "text_markdown": "ఇది సుమారు మైనస్ 273 డిగ్రీల సెల్సియస్.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "ఇది సుమారు మైనస్ రెండు వందల డెబ్బై మూడు డిగ్రీల సెల్సియస్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-219",
+      "sentence_index": 2,
+      "text": "పరమ సున్నా వద్ద, అణువులు సాధ్యమయ్యే కనిష్ట శక్తిని కలిగి ఉంటాయి.",
+      "text_markdown": "పరమ సున్నా వద్ద, అణువులు సాధ్యమయ్యే కనిష్ట శక్తిని కలిగి ఉంటాయి.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "పరమ సున్నా వద్ద, అణువులు సాధ్యమయ్యే కనిష్ట శక్తిని కలిగి ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-220",
+      "sentence_index": 3,
+      "text": "పరమ సున్నా కంటే చల్లగా ఏదీ ఉండదు.",
+      "text_markdown": "పరమ సున్నా కంటే చల్లగా ఏదీ ఉండదు.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "పరమ సున్నా కంటే చల్లగా ఏదీ ఉండదు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-221",
+      "sentence_index": 4,
+      "text": "ప్రయోగశాలల్లో శాస్త్రవేత్తలు పరమ సున్నాకి చాలా దగ్గరగా వచ్చారు, కానీ ఎవరూ దానిని ఖచ్చితంగా చేరుకోలేదు.",
+      "text_markdown": "ప్రయోగశాలల్లో శాస్త్రవేత్తలు పరమ సున్నాకి చాలా దగ్గరగా వచ్చారు, కానీ ఎవరూ దానిని ఖచ్చితంగా చేరుకోలేదు.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "ప్రయోగశాలల్లో శాస్త్రవేత్తలు పరమ సున్నాకి చాలా దగ్గరగా వచ్చారు, కానీ ఎవరూ దానిని ఖచ్చితంగా చేరుకోలేదు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-222",
+      "sentence_index": 0,
+      "text": "అణువులు ఉపరితలాలను తాకడం వల్ల పీడనం ఏర్పడుతుంది.",
+      "text_markdown": "అణువులు ఉపరితలాలను తాకడం వల్ల పీడనం ఏర్పడుతుంది.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "అణువులు ఉపరితలాలను తాకడం వల్ల పీడనం ఏర్పడుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-223",
+      "sentence_index": 1,
+      "text": "టైరులోని గాలి బయటికి నెట్టబడుతుంది, ఎందుకంటే గాలి అణువులు నిరంతరం టైరు లోపలి గోడలను తాకుతూ ఉంటాయి.",
+      "text_markdown": "టైరులోని గాలి బయటికి నెట్టబడుతుంది, ఎందుకంటే గాలి అణువులు నిరంతరం టైరు లోపలి గోడలను తాకుతూ ఉంటాయి.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "టైరులోని గాలి బయటికి నెట్టబడుతుంది, ఎందుకంటే గాలి అణువులు నిరంతరం టైరు లోపలి గోడలను తాకుతూ ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-224",
+      "sentence_index": 2,
+      "text": "ఎక్కువ అణువులు లేదా వేగవంతమైన అణువులు ఎక్కువ పీడనాన్ని సూచిస్తాయి.",
+      "text_markdown": "ఎక్కువ అణువులు లేదా వేగవంతమైన అణువులు ఎక్కువ పీడనాన్ని సూచిస్తాయి.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "ఎక్కువ అణువులు లేదా వేగవంతమైన అణువులు ఎక్కువ పీడనాన్ని సూచిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-225",
+      "sentence_index": 3,
+      "text": "గాలి వేడిగా ఉన్నప్పుడు టైరు గట్టిగా అనిపించడానికి ఇదే కారణం.",
+      "text_markdown": "గాలి వేడిగా ఉన్నప్పుడు టైరు గట్టిగా అనిపించడానికి ఇదే కారణం.",
+      "title": "అణువుల కదలిక",
+      "tts": {
+        "text": "గాలి వేడిగా ఉన్నప్పుడు టైరు గట్టిగా అనిపించడానికి ఇదే కారణం.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch07-226",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "text_markdown": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి"
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-227",
+      "sentence_index": 0,
+      "text": "విశ్వంలోని హైడ్రోజన్ మరియు హీలియం బిగ్ బ్యాంగ్ తర్వాత మొదటి కొన్ని నిమిషాల్లో సృష్టించబడ్డాయి.",
+      "text_markdown": "విశ్వంలోని హైడ్రోజన్ మరియు హీలియం బిగ్ బ్యాంగ్ తర్వాత మొదటి కొన్ని నిమిషాల్లో సృష్టించబడ్డాయి.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "విశ్వంలోని హైడ్రోజన్ మరియు హీలియం బిగ్ బ్యాంగ్ తర్వాత మొదటి కొన్ని నిమిషాల్లో సృష్టించబడ్డాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-228",
+      "sentence_index": 1,
+      "text": "విశ్వం సుమారు 13.8 బిలియన్ సంవత్సరాల క్రితం విపరీతమైన వేడి, దట్టమైన బిందువుగా ప్రారంభమైంది.",
+      "text_markdown": "విశ్వం సుమారు 13.8 బిలియన్ సంవత్సరాల క్రితం విపరీతమైన వేడి, దట్టమైన బిందువుగా ప్రారంభమైంది.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "విశ్వం సుమారు పదమూడు పాయింట్ ఎనిమిది బిలియన్ సంవత్సరాల క్రితం విపరీతమైన వేడి, దట్టమైన బిందువుగా ప్రారంభమైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-229",
+      "sentence_index": 2,
+      "text": "అది విస్తరించి చల్లబడినప్పుడు, ప్రోటాన్లు మరియు న్యూట్రాన్లు ఏర్పడ్డాయి.",
+      "text_markdown": "అది విస్తరించి చల్లబడినప్పుడు, ప్రోటాన్లు మరియు న్యూట్రాన్లు ఏర్పడ్డాయి.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "అది విస్తరించి చల్లబడినప్పుడు, ప్రోటాన్లు మరియు న్యూట్రాన్లు ఏర్పడ్డాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-230",
+      "sentence_index": 3,
+      "text": "ఆ ప్రోటాన్లు మరియు న్యూట్రాన్లు కలిసి సరళమైన కేంద్రకాలుగా మారాయి.",
+      "text_markdown": "ఆ ప్రోటాన్లు మరియు న్యూట్రాన్లు కలిసి సరళమైన కేంద్రకాలుగా మారాయి.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఆ ప్రోటాన్లు మరియు న్యూట్రాన్లు కలిసి సరళమైన కేంద్రకాలుగా మారాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-231",
+      "sentence_index": 4,
+      "text": "హైడ్రోజన్ మరియు హీలియం మొదటి మూలకాలు.",
+      "text_markdown": "హైడ్రోజన్ మరియు హీలియం మొదటి మూలకాలు.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "హైడ్రోజన్ మరియు హీలియం మొదటి మూలకాలు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-232",
+      "sentence_index": 0,
+      "text": "లక్షల సంవత్సరాల పాటు, విశ్వం హైడ్రోజన్ మరియు హీలియం వాయువుల మేఘంగా ఉండేది.",
+      "text_markdown": "లక్షల సంవత్సరాల పాటు, విశ్వం హైడ్రోజన్ మరియు హీలియం వాయువుల మేఘంగా ఉండేది.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "లక్షల సంవత్సరాల పాటు, విశ్వం హైడ్రోజన్ మరియు హీలియం వాయువుల మేఘంగా ఉండేది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-233",
+      "sentence_index": 1,
+      "text": "తరువాత గురుత్వాకర్షణ వాయువును ముద్దలుగా లాగింది.",
+      "text_markdown": "తరువాత గురుత్వాకర్షణ వాయువును ముద్దలుగా లాగింది.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "తరువాత గురుత్వాకర్షణ వాయువును ముద్దలుగా లాగింది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-234",
+      "sentence_index": 2,
+      "text": "ముద్దలు మరింత దట్టంగా మరియు వేడిగా మారాయి.",
+      "text_markdown": "ముద్దలు మరింత దట్టంగా మరియు వేడిగా మారాయి.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ముద్దలు మరింత దట్టంగా మరియు వేడిగా మారాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-235",
+      "sentence_index": 3,
+      "text": "ఒక ముద్ద మధ్యభాగం సుమారు పది మిలియన్ డిగ్రీలకు చేరుకున్నప్పుడు, అణు సంలీనం ప్రారంభమైంది.",
+      "text_markdown": "ఒక ముద్ద మధ్యభాగం సుమారు పది మిలియన్ డిగ్రీలకు చేరుకున్నప్పుడు, అణు సంలీనం ప్రారంభమైంది.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఒక ముద్ద మధ్యభాగం సుమారు పది మిలియన్ డిగ్రీలకు చేరుకున్నప్పుడు, అణు సంలీనం ప్రారంభమైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-236",
+      "sentence_index": 4,
+      "text": "ఒక నక్షత్రం పుట్టింది.",
+      "text_markdown": "ఒక నక్షత్రం పుట్టింది.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఒక నక్షత్రం పుట్టింది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-237",
+      "sentence_index": 0,
+      "text": "నక్షత్రాలు అణువుల కర్మాగారాలు.",
+      "text_markdown": "నక్షత్రాలు అణువుల కర్మాగారాలు.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "నక్షత్రాలు అణువుల కర్మాగారాలు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-238",
+      "sentence_index": 1,
+      "text": "ఒక నక్షత్రం లోపల, హైడ్రోజన్ అణువులు కలిసి హీలియంను ఏర్పరుస్తాయి.",
+      "text_markdown": "ఒక నక్షత్రం లోపల, హైడ్రోజన్ అణువులు కలిసి హీలియంను ఏర్పరుస్తాయి.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఒక నక్షత్రం లోపల, హైడ్రోజన్ అణువులు కలిసి హీలియంను ఏర్పరుస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-239",
+      "sentence_index": 2,
+      "text": "ఈ సంలీనం అపారమైన శక్తిని విడుదల చేస్తుంది.",
+      "text_markdown": "ఈ సంలీనం అపారమైన శక్తిని విడుదల చేస్తుంది.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఈ సంలీనం అపారమైన శక్తిని విడుదల చేస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-240",
+      "sentence_index": 3,
+      "text": "ఈ శక్తి నక్షత్రాన్ని ప్రకాశింపజేస్తుంది.",
+      "text_markdown": "ఈ శక్తి నక్షత్రాన్ని ప్రకాశింపజేస్తుంది.",
+      "title": "అణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఈ శక్తి నక్షత్రాన్ని ప్రకాశింపజేస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-241",
+      "sentence_index": 4,
+      "text": "మన సూర్యుడు ప్రతి సెకనుకు సుమారు ఆరు వందల మిలియన్ టన్నుల హైడ్రోజన్‌ను హీలియంగా మారుస్తాడు.",
+      "text_markdown": "మన సూర్యుడు ప్రతి సెకనుకు సుమారు ఆరు వందల మిలియన్ టన్నుల హైడ్రోజన్‌ను హీలియంగా మారుస్తాడు.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "మన సూర్యుడు ప్రతి సెకనుకు సుమారు ఆరు వందల మిలియన్ టన్నుల హైడ్రోజన్‌ను హీలియంగా మారుస్తాడు.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-242",
+      "sentence_index": 0,
+      "text": "పెద్ద నక్షత్రాలు బరువైన మూలకాలను కలుపుతాయి.",
+      "text_markdown": "పెద్ద నక్షత్రాలు బరువైన మూలకాలను కలుపుతాయి.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "పెద్ద నక్షత్రాలు బరువైన మూలకాలను కలుపుతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-243",
+      "sentence_index": 1,
+      "text": "ఒక నక్షత్రం తన హైడ్రోజన్‌ను కాల్చిన తర్వాత, అది హీలియంను కార్బన్‌గా మార్చడం ప్రారంభిస్తుంది.",
+      "text_markdown": "ఒక నక్షత్రం తన హైడ్రోజన్‌ను కాల్చిన తర్వాత, అది హీలియంను కార్బన్‌గా మార్చడం ప్రారంభిస్తుంది.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఒక నక్షత్రం తన హైడ్రోజన్‌ను కాల్చిన తర్వాత, అది హీలియంను కార్బన్‌గా మార్చడం ప్రారంభిస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-244",
+      "sentence_index": 2,
+      "text": "తర్వాత కార్బన్‌ను ఆక్సిజన్‌గా.",
+      "text_markdown": "తర్వాత కార్బన్‌ను ఆక్సిజన్‌గా.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "తర్వాత కార్బన్‌ను ఆక్సిజన్‌గా.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-245",
+      "sentence_index": 3,
+      "text": "తర్వాత ఆక్సిజన్‌ను సిలికాన్‌గా.",
+      "text_markdown": "తర్వాత ఆక్సిజన్‌ను సిలికాన్‌గా.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "తర్వాత ఆక్సిజన్‌ను సిలికాన్‌గా.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-246",
+      "sentence_index": 4,
+      "text": "తర్వాత సిలికాన్‌ను ఇనుముగా.",
+      "text_markdown": "తర్వాత సిలికాన్‌ను ఇనుముగా.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "తర్వాత సిలికాన్‌ను ఇనుముగా.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-247",
+      "sentence_index": 5,
+      "text": "ప్రతి దశలో బరువైన మూలకం ఉత్పత్తి అవుతుంది.",
+      "text_markdown": "ప్రతి దశలో బరువైన మూలకం ఉత్పత్తి అవుతుంది.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ప్రతి దశలో బరువైన మూలకం ఉత్పత్తి అవుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-248",
+      "sentence_index": 6,
+      "text": "సాధారణ సంలీనం ద్వారా ఒక నక్షత్రం ఉత్పత్తి చేయగల అత్యంత బరువైన మూలకం ఇనుము.",
+      "text_markdown": "సాధారణ సంలీనం ద్వారా ఒక నక్షత్రం ఉత్పత్తి చేయగల అత్యంత బరువైన మూలకం ఇనుము.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "సాధారణ సంలీనం ద్వారా ఒక నక్షత్రం ఉత్పత్తి చేయగల అత్యంత బరువైన మూలకం ఇనుము.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-249",
+      "sentence_index": 0,
+      "text": "ఇనుము కంటే బరువైన మూలకాలు భారీ నక్షత్రాలు పేలినప్పుడు ఏర్పడతాయి.",
+      "text_markdown": "ఇనుము కంటే బరువైన మూలకాలు భారీ నక్షత్రాలు పేలినప్పుడు ఏర్పడతాయి.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఇనుము కంటే బరువైన మూలకాలు భారీ నక్షత్రాలు పేలినప్పుడు ఏర్పడతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-250",
+      "sentence_index": 1,
+      "text": "ఈ పేలుళ్లను సూపర్నోవాలు అంటారు.",
+      "text_markdown": "ఈ పేలుళ్లను సూపర్నోవాలు అంటారు.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఈ పేలుళ్లను సూపర్నోవాలు అంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-251",
+      "sentence_index": 2,
+      "text": "ఒక సూపర్నోవా కొన్ని సెకన్లలో సూర్యుడు తన జీవితకాలంలో ఉత్పత్తి చేసే దానికంటే ఎక్కువ శక్తిని విడుదల చేస్తుంది.",
+      "text_markdown": "ఒక సూపర్నోవా కొన్ని సెకన్లలో సూర్యుడు తన జీవితకాలంలో ఉత్పత్తి చేసే దానికంటే ఎక్కువ శక్తిని విడుదల చేస్తుంది.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఒక సూపర్నోవా కొన్ని సెకన్లలో సూర్యుడు తన జీవితకాలంలో ఉత్పత్తి చేసే దానికంటే ఎక్కువ శక్తిని విడుదల చేస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-252",
+      "sentence_index": 3,
+      "text": "ఒక సూపర్నోవా యొక్క తీవ్ర పరిస్థితులు బంగారం, వెండి, ప్లాటినం మరియు యురేనియం వంటి మూలకాలను సృష్టిస్తాయి.",
+      "text_markdown": "ఒక సూపర్నోవా యొక్క తీవ్ర పరిస్థితులు బంగారం, వెండి, ప్లాటినం మరియు యురేనియం వంటి మూలకాలను సృష్టిస్తాయి.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఒక సూపర్నోవా యొక్క తీవ్ర పరిస్థితులు బంగారం, వెండి, ప్లాటినం మరియు యురేనియం వంటి మూలకాలను సృష్టిస్తాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-253",
+      "sentence_index": 0,
+      "text": "ఈ పేలుడు ఈ బరువైన మూలకాలను అంతరిక్షంలో వెదజల్లుతుంది.",
+      "text_markdown": "ఈ పేలుడు ఈ బరువైన మూలకాలను అంతరిక్షంలో వెదజల్లుతుంది.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఈ పేలుడు ఈ బరువైన మూలకాలను అంతరిక్షంలో వెదజల్లుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-254",
+      "sentence_index": 1,
+      "text": "ఈ మూలకాలు హైడ్రోజన్ మరియు హీలియం వాయువుల మేఘాలతో కలుస్తాయి.",
+      "text_markdown": "ఈ మూలకాలు హైడ్రోజన్ మరియు హీలియం వాయువుల మేఘాలతో కలుస్తాయి.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఈ మూలకాలు హైడ్రోజన్ మరియు హీలియం వాయువుల మేఘాలతో కలుస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-255",
+      "sentence_index": 2,
+      "text": "చివరికి, గురుత్వాకర్షణ శక్తి ఈ సుసంపన్నమైన వాయువును కలిపి కొత్త నక్షత్రాలు మరియు గ్రహాలను ఏర్పరుస్తుంది.",
+      "text_markdown": "చివరికి, గురుత్వాకర్షణ శక్తి ఈ సుసంపన్నమైన వాయువును కలిపి కొత్త నక్షత్రాలు మరియు గ్రహాలను ఏర్పరుస్తుంది.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "చివరికి, గురుత్వాకర్షణ శక్తి ఈ సుసంపన్నమైన వాయువును కలిపి కొత్త నక్షత్రాలు మరియు గ్రహాలను ఏర్పరుస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-256",
+      "sentence_index": 3,
+      "text": "మన సౌర వ్యవస్థ సుమారు 4.6 బిలియన్ సంవత్సరాల క్రితం ఈ సుసంపన్నమైన మేఘాలలో ఒకదాని నుండి ఏర్పడింది.",
+      "text_markdown": "మన సౌర వ్యవస్థ సుమారు 4.6 బిలియన్ సంవత్సరాల క్రితం ఈ సుసంపన్నమైన మేఘాలలో ఒకదాని నుండి ఏర్పడింది.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "మన సౌర వ్యవస్థ సుమారు నాలుగు పాయింట్ ఆరు బిలియన్ సంవత్సరాల క్రితం ఈ సుసంపన్నమైన మేఘాలలో ఒకదాని నుండి ఏర్పడింది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-257",
+      "sentence_index": 0,
+      "text": "మీ శరీరంలోని హైడ్రోజన్ కంటే బరువైన ప్రతి పరమాణువు ఒక నక్షత్రం లోపల ఏర్పడింది.",
+      "text_markdown": "మీ శరీరంలోని హైడ్రోజన్ కంటే బరువైన ప్రతి పరమాణువు ఒక నక్షత్రం లోపల ఏర్పడింది.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "మీ శరీరంలోని హైడ్రోజన్ కంటే బరువైన ప్రతి పరమాణువు ఒక నక్షత్రం లోపల ఏర్పడింది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-258",
+      "sentence_index": 1,
+      "text": "మీ ఎముకలలోని కాల్షియం.",
+      "text_markdown": "మీ ఎముకలలోని కాల్షియం.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "మీ ఎముకలలోని కాల్షియం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-259",
+      "sentence_index": 2,
+      "text": "మీ రక్తంలోని ఇనుము.",
+      "text_markdown": "మీ రక్తంలోని ఇనుము.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "మీ రక్తంలోని ఇనుము.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-260",
+      "sentence_index": 3,
+      "text": "మీ చర్మంలోని కార్బన్.",
+      "text_markdown": "మీ చర్మంలోని కార్బన్.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "మీ చర్మంలోని కార్బన్.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-261",
+      "sentence_index": 4,
+      "text": "మీరు నక్షత్ర ధూళితో తయారయ్యారు.",
+      "text_markdown": "మీరు నక్షత్ర ధూళితో తయారయ్యారు.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "మీరు నక్షత్ర ధూళితో తయారయ్యారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-262",
+      "sentence_index": 5,
+      "text": "అది ఒక రూపకం కాదు.",
+      "text_markdown": "అది ఒక రూపకం కాదు.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "అది ఒక రూపకం కాదు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-263",
+      "sentence_index": 6,
+      "text": "ఇది అణు భౌతిక శాస్త్ర వాస్తవం.",
+      "text_markdown": "ఇది అణు భౌతిక శాస్త్ర వాస్తవం.",
+      "title": "పరమాణువులు ఎక్కడ నుండి వచ్చాయి",
+      "tts": {
+        "text": "ఇది అణు భౌతిక శాస్త్ర వాస్తవం.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p62",
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch08-264",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "పరమాణువులు అన్నీ",
+      "text_markdown": "పరమాణువులు అన్నీ",
+      "title": "పరమాణువులు అన్నీ"
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-265",
+      "sentence_index": 0,
+      "text": "మీకు ఇప్పుడు ప్రాథమిక అంశాలు తెలుసు.",
+      "text_markdown": "మీకు ఇప్పుడు ప్రాథమిక అంశాలు తెలుసు.",
+      "title": "పరమాణువులు అన్నీ",
+      "tts": {
+        "text": "మీకు ఇప్పుడు ప్రాథమిక అంశాలు తెలుసు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-266",
+      "sentence_index": 1,
+      "text": "ప్రతిదీ పరమాణువులతో తయారైంది.",
+      "text_markdown": "ప్రతిదీ పరమాణువులతో తయారైంది.",
+      "title": "పరమాణువులు అన్నీ",
+      "tts": {
+        "text": "ప్రతిదీ పరమాణువులతో తయారైంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-267",
+      "sentence_index": 2,
+      "text": "పరమాణువులలో ప్రోటాన్లు, న్యూట్రాన్లు మరియు ఎలక్ట్రాన్లు ఉంటాయి.",
+      "text_markdown": "పరమాణువులలో ప్రోటాన్లు, న్యూట్రాన్లు మరియు ఎలక్ట్రాన్లు ఉంటాయి.",
+      "title": "పరమాణువులు అన్నీ",
+      "tts": {
+        "text": "పరమాణువులలో ప్రోటాన్లు, న్యూట్రాన్లు మరియు ఎలక్ట్రాన్లు ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-268",
+      "sentence_index": 3,
+      "text": "ప్రోటాన్ల సంఖ్య మూలకాన్ని నిర్ణయిస్తుంది.",
+      "text_markdown": "ప్రోటాన్ల సంఖ్య మూలకాన్ని నిర్ణయిస్తుంది.",
+      "title": "పరమాణువులు అన్నీ",
+      "tts": {
+        "text": "ప్రోటాన్ల సంఖ్య మూలకాన్ని నిర్ణయిస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-269",
+      "sentence_index": 4,
+      "text": "పరమాణువులు కలిసి అణువులను ఏర్పరుస్తాయి.",
+      "text_markdown": "పరమాణువులు కలిసి అణువులను ఏర్పరుస్తాయి.",
+      "title": "పరమాణువులు అన్నీ",
+      "tts": {
+        "text": "పరమాణువులు కలిసి అణువులను ఏర్పరుస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-270",
+      "sentence_index": 5,
+      "text": "పరమాణువులు ఎల్లప్పుడూ కదలికలో ఉంటాయి.",
+      "text_markdown": "పరమాణువులు ఎల్లప్పుడూ కదలికలో ఉంటాయి.",
+      "title": "పరమాణువులు అన్నీ",
+      "tts": {
+        "text": "పరమాణువులు ఎల్లప్పుడూ కదలికలో ఉంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-271",
+      "sentence_index": 6,
+      "text": "నక్షత్రాలు మన ప్రపంచాన్ని రూపొందించే అణువులను సృష్టించాయి.",
+      "text_markdown": "నక్షత్రాలు మన ప్రపంచాన్ని రూపొందించే అణువులను సృష్టించాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "నక్షత్రాలు మన ప్రపంచాన్ని రూపొందించే అణువులను సృష్టించాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-272",
+      "sentence_index": 0,
+      "text": "ఈ జ్ఞానం రసాయన శాస్త్రం, జీవశాస్త్రం, భౌతిక శాస్త్రం మరియు వైద్యశాస్త్రానికి పునాది.",
+      "text_markdown": "ఈ జ్ఞానం రసాయన శాస్త్రం, జీవశాస్త్రం, భౌతిక శాస్త్రం మరియు వైద్యశాస్త్రానికి పునాది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఈ జ్ఞానం రసాయన శాస్త్రం, జీవశాస్త్రం, భౌతిక శాస్త్రం మరియు వైద్యశాస్త్రానికి పునాది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-273",
+      "sentence_index": 1,
+      "text": "ప్రతి శాస్త్ర రంగం అణువులతో ముడిపడి ఉంది.",
+      "text_markdown": "ప్రతి శాస్త్ర రంగం అణువులతో ముడిపడి ఉంది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ప్రతి శాస్త్ర రంగం అణువులతో ముడిపడి ఉంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-274",
+      "sentence_index": 0,
+      "text": "ఒక వైద్యుడు మందును సూచించినప్పుడు, ఆ మందు మీ శరీరంలోని అణువులతో సంకర్షణ చెందడానికి రూపొందించబడిన అణువుల యొక్క నిర్దిష్ట అమరిక.",
+      "text_markdown": "ఒక వైద్యుడు మందును సూచించినప్పుడు, ఆ మందు మీ శరీరంలోని అణువులతో సంకర్షణ చెందడానికి రూపొందించబడిన అణువుల యొక్క నిర్దిష్ట అమరిక.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఒక వైద్యుడు మందును సూచించినప్పుడు, ఆ మందు మీ శరీరంలోని అణువులతో సంకర్షణ చెందడానికి రూపొందించబడిన అణువుల యొక్క నిర్దిష్ట అమరిక.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-275",
+      "sentence_index": 1,
+      "text": "ఒక ఇంజనీర్ వంతెనను నిర్మించినప్పుడు, ఆ వంతెన బలం ఉక్కులోని ఇనుప అణువులు ఎలా అమర్చబడి ఉన్నాయో దానిపై ఆధారపడి ఉంటుంది.",
+      "text_markdown": "ఒక ఇంజనీర్ వంతెనను నిర్మించినప్పుడు, ఆ వంతెన బలం ఉక్కులోని ఇనుప అణువులు ఎలా అమర్చబడి ఉన్నాయో దానిపై ఆధారపడి ఉంటుంది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఒక ఇంజనీర్ వంతెనను నిర్మించినప్పుడు, ఆ వంతెన బలం ఉక్కులోని ఇనుప అణువులు ఎలా అమర్చబడి ఉన్నాయో దానిపై ఆధారపడి ఉంటుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-276",
+      "sentence_index": 2,
+      "text": "ఒక రైతు పంట పండించినప్పుడు, గాలిలోని కార్బన్ అణువులు ఆకుల లోపల నీరు మరియు సూర్యరశ్మితో కలిసిపోవడం వల్ల పంట పెరుగుతుంది.",
+      "text_markdown": "ఒక రైతు పంట పండించినప్పుడు, గాలిలోని కార్బన్ అణువులు ఆకుల లోపల నీరు మరియు సూర్యరశ్మితో కలిసిపోవడం వల్ల పంట పెరుగుతుంది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఒక రైతు పంట పండించినప్పుడు, గాలిలోని కార్బన్ అణువులు ఆకుల లోపల నీరు మరియు సూర్యరశ్మితో కలిసిపోవడం వల్ల పంట పెరుగుతుంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-277",
+      "sentence_index": 0,
+      "text": "వంట రసాయన శాస్త్రం.",
+      "text_markdown": "వంట రసాయన శాస్త్రం.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "వంట రసాయన శాస్త్రం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-278",
+      "sentence_index": 1,
+      "text": "మీరు రొట్టెను కాల్చినప్పుడు, వేడి పిండిలోని అణువులను పునర్వ్యవస్థీకరించడానికి కారణమవుతుంది.",
+      "text_markdown": "మీరు రొట్టెను కాల్చినప్పుడు, వేడి పిండిలోని అణువులను పునర్వ్యవస్థీకరించడానికి కారణమవుతుంది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మీరు రొట్టెను కాల్చినప్పుడు, వేడి పిండిలోని అణువులను పునర్వ్యవస్థీకరించడానికి కారణమవుతుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-279",
+      "sentence_index": 2,
+      "text": "ప్రోటీన్లు విప్పుకుంటాయి.",
+      "text_markdown": "ప్రోటీన్లు విప్పుకుంటాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ప్రోటీన్లు విప్పుకుంటాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-280",
+      "sentence_index": 3,
+      "text": "చక్కెరలు విడిపోయి తిరిగి కలుస్తాయి.",
+      "text_markdown": "చక్కెరలు విడిపోయి తిరిగి కలుస్తాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "చక్కెరలు విడిపోయి తిరిగి కలుస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-281",
+      "sentence_index": 4,
+      "text": "క్రస్ట్ యొక్క రంగు, ఆకృతి మరియు రుచిని సృష్టించే కొత్త అణువులు ఏర్పడతాయి.",
+      "text_markdown": "క్రస్ట్ యొక్క రంగు, ఆకృతి మరియు రుచిని సృష్టించే కొత్త అణువులు ఏర్పడతాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "క్రస్ట్ యొక్క రంగు, ఆకృతి మరియు రుచిని సృష్టించే కొత్త అణువులు ఏర్పడతాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-282",
+      "sentence_index": 5,
+      "text": "ప్రతి వంటకం అణువులను పునర్వ్యవస్థీకరించడానికి సూచనల సమితి.",
+      "text_markdown": "ప్రతి వంటకం అణువులను పునర్వ్యవస్థీకరించడానికి సూచనల సమితి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ప్రతి వంటకం అణువులను పునర్వ్యవస్థీకరించడానికి సూచనల సమితి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-283",
+      "sentence_index": 0,
+      "text": "శ్వాస తీసుకోవడం రసాయన శాస్త్రం.",
+      "text_markdown": "శ్వాస తీసుకోవడం రసాయన శాస్త్రం.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "శ్వాస తీసుకోవడం రసాయన శాస్త్రం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-284",
+      "sentence_index": 1,
+      "text": "మీరు ఆక్సిజన్ అణువులను పీల్చుకుంటారు.",
+      "text_markdown": "మీరు ఆక్సిజన్ అణువులను పీల్చుకుంటారు.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మీరు ఆక్సిజన్ అణువులను పీల్చుకుంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-285",
+      "sentence_index": 2,
+      "text": "మీ రక్తం ఆ అణువులను మీ కణాలకు చేరవేస్తుంది.",
+      "text_markdown": "మీ రక్తం ఆ అణువులను మీ కణాలకు చేరవేస్తుంది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మీ రక్తం ఆ అణువులను మీ కణాలకు చేరవేస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-286",
+      "sentence_index": 3,
+      "text": "మీ కణాల లోపల, ఆక్సిజన్ అణువులు ఆహారం నుండి కార్బన్ అణువులతో కలుస్తాయి.",
+      "text_markdown": "మీ కణాల లోపల, ఆక్సిజన్ అణువులు ఆహారం నుండి కార్బన్ అణువులతో కలుస్తాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మీ కణాల లోపల, ఆక్సిజన్ అణువులు ఆహారం నుండి కార్బన్ అణువులతో కలుస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-287",
+      "sentence_index": 4,
+      "text": "ఈ ప్రతిచర్య శక్తిని విడుదల చేస్తుంది.",
+      "text_markdown": "ఈ ప్రతిచర్య శక్తిని విడుదల చేస్తుంది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఈ ప్రతిచర్య శక్తిని విడుదల చేస్తుంది.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-288",
+      "sentence_index": 5,
+      "text": "మీరు కార్బన్ మరియు ఆక్సిజన్‌ను కార్బన్ డయాక్సైడ్‌గా బయటకు వదులుతారు.",
+      "text_markdown": "మీరు కార్బన్ మరియు ఆక్సిజన్‌ను కార్బన్ డయాక్సైడ్‌గా బయటకు వదులుతారు.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మీరు కార్బన్ మరియు ఆక్సిజన్‌ను కార్బన్ డయాక్సైడ్‌గా బయటకు వదులుతారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-289",
+      "sentence_index": 6,
+      "text": "ప్రతి శ్వాస ఒక రసాయన ప్రతిచర్య.",
+      "text_markdown": "ప్రతి శ్వాస ఒక రసాయన ప్రతిచర్య.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ప్రతి శ్వాస ఒక రసాయన ప్రతిచర్య.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-290",
+      "sentence_index": 0,
+      "text": "తుప్పు రసాయన శాస్త్రం.",
+      "text_markdown": "తుప్పు రసాయన శాస్త్రం.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "తుప్పు రసాయన శాస్త్రం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-291",
+      "sentence_index": 1,
+      "text": "మేకు ఉపరితలంపై ఉన్న ఇనుప అణువులు గాలిలోని ఆక్సిజన్ అణువులతో ప్రతిస్పందిస్తాయి.",
+      "text_markdown": "మేకు ఉపరితలంపై ఉన్న ఇనుప అణువులు గాలిలోని ఆక్సిజన్ అణువులతో ప్రతిస్పందిస్తాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మేకు ఉపరితలంపై ఉన్న ఇనుప అణువులు గాలిలోని ఆక్సిజన్ అణువులతో ప్రతిస్పందిస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-292",
+      "sentence_index": 2,
+      "text": "ఇనుము మరియు ఆక్సిజన్ కలిసి ఐరన్ ఆక్సైడ్ అనే కొత్త పదార్థాన్ని ఏర్పరుస్తాయి.",
+      "text_markdown": "ఇనుము మరియు ఆక్సిజన్ కలిసి ఐరన్ ఆక్సైడ్ అనే కొత్త పదార్థాన్ని ఏర్పరుస్తాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఇనుము మరియు ఆక్సిజన్ కలిసి ఐరన్ ఆక్సైడ్ అనే కొత్త పదార్థాన్ని ఏర్పరుస్తాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-293",
+      "sentence_index": 3,
+      "text": "ఐరన్ ఆక్సైడ్ అనేది మనం తుప్పు అని పిలిచే ఎరుపు-గోధుమ రంగు పదార్థం.",
+      "text_markdown": "ఐరన్ ఆక్సైడ్ అనేది మనం తుప్పు అని పిలిచే ఎరుపు-గోధుమ రంగు పదార్థం.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఐరన్ ఆక్సైడ్ అనేది మనం తుప్పు అని పిలిచే ఎరుపు-గోధుమ రంగు పదార్థం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-294",
+      "sentence_index": 4,
+      "text": "ఇనుప అణువులు ఇంకా అక్కడే ఉన్నాయి.",
+      "text_markdown": "ఇనుప అణువులు ఇంకా అక్కడే ఉన్నాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఇనుప అణువులు ఇంకా అక్కడే ఉన్నాయి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-295",
+      "sentence_index": 5,
+      "text": "అవి కేవలం ఆక్సిజన్‌తో బంధించబడ్డాయి.",
+      "text_markdown": "అవి కేవలం ఆక్సిజన్‌తో బంధించబడ్డాయి.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "అవి కేవలం ఆక్సిజన్‌తో బంధించబడ్డాయి.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-296",
+      "sentence_index": 0,
+      "text": "అణువులు నైరూప్యమైనవి కావు.",
+      "text_markdown": "అణువులు నైరూప్యమైనవి కావు.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "అణువులు నైరూప్యమైనవి కావు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-297",
+      "sentence_index": 1,
+      "text": "మీరు తాకే, రుచి చూసే, చూసే మరియు వాసన చూసే ప్రతిదాని భౌతిక వాస్తవికత అణువులు.",
+      "text_markdown": "మీరు తాకే, రుచి చూసే, చూసే మరియు వాసన చూసే ప్రతిదాని భౌతిక వాస్తవికత అణువులు.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మీరు తాకే, రుచి చూసే, చూసే మరియు వాసన చూసే ప్రతిదాని భౌతిక వాస్తవికత అణువులు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-298",
+      "sentence_index": 2,
+      "text": "మీరు అణువులను ఎంత ఎక్కువగా అర్థం చేసుకుంటే, ప్రపంచాన్ని అంత ఎక్కువగా అర్థం చేసుకుంటారు.",
+      "text_markdown": "మీరు అణువులను ఎంత ఎక్కువగా అర్థం చేసుకుంటే, ప్రపంచాన్ని అంత ఎక్కువగా అర్థం చేసుకుంటారు.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "మీరు అణువులను ఎంత ఎక్కువగా అర్థం చేసుకుంటే, ప్రపంచాన్ని అంత ఎక్కువగా అర్థం చేసుకుంటారు.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-299",
+      "sentence_index": 3,
+      "text": "ఇది ప్రారంభం.",
+      "text_markdown": "ఇది ప్రారంభం.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఇది ప్రారంభం.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-300",
+      "sentence_index": 4,
+      "text": "ఇంకా చాలా అన్వేషించాల్సింది ఉంది.",
+      "text_markdown": "ఇంకా చాలా అన్వేషించాల్సింది ఉంది.",
+      "title": "అణువులు సర్వస్వం",
+      "tts": {
+        "text": "ఇంకా చాలా అన్వేషించాల్సింది ఉంది.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

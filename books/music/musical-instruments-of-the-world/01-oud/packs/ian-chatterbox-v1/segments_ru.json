@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "ru",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Несколько слов для слушателя",
+      "text_markdown": "Несколько слов для слушателя"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это книга об уде, деревянном струнном музыкальном инструменте.",
+      "text_markdown": "Это книга об уде, деревянном струнном музыкальном инструменте.",
+      "tts": {
+        "text": "Это книга об уде, деревянном струнном музыкальном инструменте.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "На нём играют уже больше тысячи лет.",
+      "text_markdown": "На нём играют уже больше тысячи лет.",
+      "tts": {
+        "text": "На нём играют уже больше тысячи лет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уд можно услышать в приморских городах и в горных деревнях.",
+      "text_markdown": "Уд можно услышать в приморских городах и в горных деревнях.",
+      "tts": {
+        "text": "Уд можно услышать в приморских городах и в горных деревнях.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Его можно услышать в старых дворцах и на маленьких деревянных сценах.",
+      "text_markdown": "Его можно услышать в старых дворцах и на маленьких деревянных сценах.",
+      "tts": {
+        "text": "Его можно услышать в старых дворцах и на маленьких деревянных сценах.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В этой книге мы узнаем, как выглядит уд, как его делают и кто создал его историю.",
+      "text_markdown": "В этой книге мы узнаем, как выглядит уд, как его делают и кто создал его историю.",
+      "tts": {
+        "text": "В этой книге мы узнаем, как выглядит уд, как его делают и кто создал его историю.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "К концу книги вы поймёте, почему уд иногда называют королём всех струн.",
+      "text_markdown": "К концу книги вы поймёте, почему уд иногда называют королём всех струн.",
+      "tts": {
+        "text": "К концу книги вы поймёте, почему уд иногда называют королём всех струн.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 1 — Что такое уд?",
+      "text_markdown": "Глава 1 — Что такое уд?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уд относится к струнным инструментам.",
+      "text_markdown": "Уд относится к струнным инструментам.",
+      "tts": {
+        "text": "Уд относится к струнным инструментам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это вид лютни с корпусом, похожим на разрезанную пополам грушу.",
+      "text_markdown": "Это вид лютни с корпусом, похожим на разрезанную пополам грушу.",
+      "tts": {
+        "text": "Это вид лютни с корпусом, похожим на разрезанную пополам грушу.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Задняя часть уда круглая и глубокая, как деревянная чаша.",
+      "text_markdown": "Задняя часть уда круглая и глубокая, как деревянная чаша.",
+      "tts": {
+        "text": "Задняя часть уда круглая и глубокая, как деревянная чаша.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Передняя часть плоская.",
+      "text_markdown": "Передняя часть плоская.",
+      "tts": {
+        "text": "Передняя часть плоская.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Эту плоскую переднюю часть называют декой.",
+      "text_markdown": "Эту плоскую переднюю часть называют декой.",
+      "tts": {
+        "text": "Эту плоскую переднюю часть называют декой.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Гриф у уда короткий, и на нём нет ладов.",
+      "text_markdown": "Гриф у уда короткий, и на нём нет ладов.",
+      "tts": {
+        "text": "Гриф у уда короткий, и на нём нет ладов.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Лады это маленькие металлические полоски на гитаре.",
+      "text_markdown": "Лады это маленькие металлические полоски на гитаре.",
+      "tts": {
+        "text": "Лады это маленькие металлические полоски на гитаре.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Без ладов музыкант может очень плавно скользить между нотами.",
+      "text_markdown": "Без ладов музыкант может очень плавно скользить между нотами.",
+      "tts": {
+        "text": "Без ладов музыкант может очень плавно скользить между нотами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уд обычно имеет одиннадцать струн, собранных в шесть пар.",
+      "text_markdown": "Уд обычно имеет одиннадцать струн, собранных в шесть пар.",
+      "tts": {
+        "text": "Уд обычно имеет одиннадцать струн, собранных в шесть пар.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждую такую пару называют хором.",
+      "text_markdown": "Каждую такую пару называют хором.",
+      "tts": {
+        "text": "Каждую такую пару называют хором.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Пять хоров состоят из двух струн, настроенных одинаково.",
+      "text_markdown": "Пять хоров состоят из двух струн, настроенных одинаково.",
+      "tts": {
+        "text": "Пять хоров состоят из двух струн, настроенных одинаково.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "В шестом хоре только одна струна.",
+      "text_markdown": "В шестом хоре только одна струна.",
+      "tts": {
+        "text": "В шестом хоре только одна струна.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Вот так и получается одиннадцать.",
+      "text_markdown": "Вот так и получается одиннадцать.",
+      "tts": {
+        "text": "Вот так и получается одиннадцать.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Музыкант держит уд поперёк колен.",
+      "text_markdown": "Музыкант держит уд поперёк колен.",
+      "tts": {
+        "text": "Музыкант держит уд поперёк колен.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Одна рука прижимает струны на грифе.",
+      "text_markdown": "Одна рука прижимает струны на грифе.",
+      "tts": {
+        "text": "Одна рука прижимает струны на грифе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Другая рука щиплет их тонким медиатором, который называется риша.",
+      "text_markdown": "Другая рука щиплет их тонким медиатором, который называется риша.",
+      "tts": {
+        "text": "Другая рука щиплет их тонким медиатором, который называется риша.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Звук тёплый и глубокий.",
+      "text_markdown": "Звук тёплый и глубокий.",
+      "tts": {
+        "text": "Звук тёплый и глубокий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В нём сразу есть немного грусти и немного нежности.",
+      "text_markdown": "В нём сразу есть немного грусти и немного нежности.",
+      "tts": {
+        "text": "В нём сразу есть немного грусти и немного нежности.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 2 — Откуда взялось название",
+      "text_markdown": "Глава 2 — Откуда взялось название"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Слово уд пришло из арабского и означает дерево.",
+      "text_markdown": "Слово уд пришло из арабского и означает дерево.",
+      "tts": {
+        "text": "Слово уд пришло из арабского и означает дерево.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Инструмент назвали по материалу, из которого его делают.",
+      "text_markdown": "Инструмент назвали по материалу, из которого его делают.",
+      "tts": {
+        "text": "Инструмент назвали по материалу, из которого его делают.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Задолго до уда существовал его старший родственник, барбат.",
+      "text_markdown": "Задолго до уда существовал его старший родственник, барбат.",
+      "tts": {
+        "text": "Задолго до уда существовал его старший родственник, барбат.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "На барбате играли в древней Персии больше двух тысяч лет назад.",
+      "text_markdown": "На барбате играли в древней Персии больше двух тысяч лет назад.",
+      "tts": {
+        "text": "На барбате играли в древней Персии больше двух тысяч лет назад.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "У барбата был деревянный корпус и шёлковые струны.",
+      "text_markdown": "У барбата был деревянный корпус и шёлковые струны.",
+      "tts": {
+        "text": "У барбата был деревянный корпус и шёлковые струны.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Его звук был долгим и мягким.",
+      "text_markdown": "Его звук был долгим и мягким.",
+      "tts": {
+        "text": "Его звук был долгим и мягким.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "На нём играли при дворах царей.",
+      "text_markdown": "На нём играли при дворах царей.",
+      "tts": {
+        "text": "На нём играли при дворах царей.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Постепенно барбат менялся.",
+      "text_markdown": "Постепенно барбат менялся.",
+      "tts": {
+        "text": "Постепенно барбат менялся.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Корпус стал круглее, струны объединились в пары, а гриф укоротился.",
+      "text_markdown": "Корпус стал круглее, струны объединились в пары, а гриф укоротился.",
+      "tts": {
+        "text": "Корпус стал круглее, струны объединились в пары, а гриф укоротился.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Примерно к семисотому году нашей эры в арабском мире уже играли на том, что мы называем удом.",
+      "text_markdown": "Примерно к семисотому году нашей эры в арабском мире уже играли на том, что мы называем удом.",
+      "tts": {
+        "text": "Примерно к семисотому году нашей эры в арабском мире уже играли на том, что мы называем удом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Оттуда уд отправился дальше.",
+      "text_markdown": "Оттуда уд отправился дальше.",
+      "tts": {
+        "text": "Оттуда уд отправился дальше.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он пришёл в Египет и Северную Африку.",
+      "text_markdown": "Он пришёл в Египет и Северную Африку.",
+      "tts": {
+        "text": "Он пришёл в Египет и Северную Африку.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Через море он добрался до Испании.",
+      "text_markdown": "Через море он добрался до Испании.",
+      "tts": {
+        "text": "Через море он добрался до Испании.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Потом он пошёл на север, в Турцию и Грецию.",
+      "text_markdown": "Потом он пошёл на север, в Турцию и Грецию.",
+      "tts": {
+        "text": "Потом он пошёл на север, в Турцию и Грецию.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Каждое место добавило уду немного своего голоса.",
+      "text_markdown": "Каждое место добавило уду немного своего голоса.",
+      "tts": {
+        "text": "Каждое место добавило уду немного своего голоса.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но название осталось тем же.",
+      "text_markdown": "Но название осталось тем же.",
+      "tts": {
+        "text": "Но название осталось тем же.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Куда бы он ни пришёл, этот деревянный инструмент всё равно оставался удом.",
+      "text_markdown": "Куда бы он ни пришёл, этот деревянный инструмент всё равно оставался удом.",
+      "tts": {
+        "text": "Куда бы он ни пришёл, этот деревянный инструмент всё равно оставался удом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 3 — Как делают уд",
+      "text_markdown": "Глава 3 — Как делают уд"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На изготовление уда уходит много времени.",
+      "text_markdown": "На изготовление уда уходит много времени.",
+      "tts": {
+        "text": "На изготовление уда уходит много времени.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Хороший мастер может работать над одним инструментом много недель.",
+      "text_markdown": "Хороший мастер может работать над одним инструментом много недель.",
+      "tts": {
+        "text": "Хороший мастер может работать над одним инструментом много недель.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Чашу делают из тонких полосок дерева, обычно их от пятнадцати до двадцати пяти.",
+      "text_markdown": "Чашу делают из тонких полосок дерева, обычно их от пятнадцати до двадцати пяти.",
+      "tts": {
+        "text": "Чашу делают из тонких полосок дерева, обычно их от пятнадцати до двадцати пяти.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждую полоску сгибают и приклеивают к следующей.",
+      "text_markdown": "Каждую полоску сгибают и приклеивают к следующей.",
+      "tts": {
+        "text": "Каждую полоску сгибают и приклеивают к следующей.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Вместе они образуют глубокую круглую спинку уда.",
+      "text_markdown": "Вместе они образуют глубокую круглую спинку уда.",
+      "tts": {
+        "text": "Вместе они образуют глубокую круглую спинку уда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Порода дерева очень важна.",
+      "text_markdown": "Порода дерева очень важна.",
+      "tts": {
+        "text": "Порода дерева очень важна.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Орех даёт тёплый звук, красное дерево даёт более тёмный звук, а шелковица даёт звонкий и яркий.",
+      "text_markdown": "Орех даёт тёплый звук, красное дерево даёт более тёмный звук, а шелковица даёт звонкий и яркий.",
+      "tts": {
+        "text": "Орех даёт тёплый звук, красное дерево даёт более тёмный звук, а шелковица даёт звонкий и яркий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Мастер выбирает дерево под тот голос, который ему нужен.",
+      "text_markdown": "Мастер выбирает дерево под тот голос, который ему нужен.",
+      "tts": {
+        "text": "Мастер выбирает дерево под тот голос, который ему нужен.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Плоскую переднюю часть, деку, делают из ели.",
+      "text_markdown": "Плоскую переднюю часть, деку, делают из ели.",
+      "tts": {
+        "text": "Плоскую переднюю часть, деку, делают из ели.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ель лёгкая и прочная, и она позволяет дереву легко вибрировать.",
+      "text_markdown": "Ель лёгкая и прочная, и она позволяет дереву легко вибрировать.",
+      "tts": {
+        "text": "Ель лёгкая и прочная, и она позволяет дереву легко вибрировать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Именно эту вибрацию мы слышим как музыку.",
+      "text_markdown": "Именно эту вибрацию мы слышим как музыку.",
+      "tts": {
+        "text": "Именно эту вибрацию мы слышим как музыку.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В деке есть маленькие круглые отверстия, их называют розетками.",
+      "text_markdown": "В деке есть маленькие круглые отверстия, их называют розетками.",
+      "tts": {
+        "text": "В деке есть маленькие круглые отверстия, их называют розетками.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Их часто украшают красивой резьбой.",
+      "text_markdown": "Их часто украшают красивой резьбой.",
+      "tts": {
+        "text": "Их часто украшают красивой резьбой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Через розетки звук выходит из чаши.",
+      "text_markdown": "Через розетки звук выходит из чаши.",
+      "tts": {
+        "text": "Через розетки звук выходит из чаши.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Раньше струны делали из жил, то есть из высушенных животных сухожилий.",
+      "text_markdown": "Раньше струны делали из жил, то есть из высушенных животных сухожилий.",
+      "tts": {
+        "text": "Раньше струны делали из жил, то есть из высушенных животных сухожилий.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Сегодня большинство струн делают из нейлона, а нижние обматывают тонкой металлической проволокой.",
+      "text_markdown": "Сегодня большинство струн делают из нейлона, а нижние обматывают тонкой металлической проволокой.",
+      "tts": {
+        "text": "Сегодня большинство струн делают из нейлона, а нижние обматывают тонкой металлической проволокой.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Музыкант щиплет ришей струны.",
+      "text_markdown": "Музыкант щиплет ришей струны.",
+      "tts": {
+        "text": "Музыкант щиплет ришей струны.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Слово риша означает перо.",
+      "text_markdown": "Слово риша означает перо.",
+      "tts": {
+        "text": "Слово риша означает перо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Первые медиаторы делали из орлиных перьев.",
+      "text_markdown": "Первые медиаторы делали из орлиных перьев.",
+      "tts": {
+        "text": "Первые медиаторы делали из орлиных перьев.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Сегодня их делают из пластика, кости или черепахового панциря.",
+      "text_markdown": "Сегодня их делают из пластика, кости или черепахового панциря.",
+      "tts": {
+        "text": "Сегодня их делают из пластика, кости или черепахового панциря.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 4 — Где играют на уде",
+      "text_markdown": "Глава 4 — Где играют на уде"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На уде играют по всему арабскому миру.",
+      "text_markdown": "На уде играют по всему арабскому миру.",
+      "tts": {
+        "text": "На уде играют по всему арабскому миру.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Вы услышите его в Египте, Сирии, Ираке, Ливане, странах Залива и Северной Африке.",
+      "text_markdown": "Вы услышите его в Египте, Сирии, Ираке, Ливане, странах Залива и Северной Африке.",
+      "tts": {
+        "text": "Вы услышите его в Египте, Сирии, Ираке, Ливане, странах Залива и Северной Африке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На нём играют и за пределами арабского мира.",
+      "text_markdown": "На нём играют и за пределами арабского мира.",
+      "tts": {
+        "text": "На нём играют и за пределами арабского мира.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "У турок есть свой уд.",
+      "text_markdown": "У турок есть свой уд.",
+      "tts": {
+        "text": "У турок есть свой уд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "У греков тоже есть свой уд.",
+      "text_markdown": "У греков тоже есть свой уд.",
+      "tts": {
+        "text": "У греков тоже есть свой уд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Армяне и иранцы играют на его родственниках.",
+      "text_markdown": "Армяне и иранцы играют на его родственниках.",
+      "tts": {
+        "text": "Армяне и иранцы играют на его родственниках.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "В Испании на нём играли сотни лет.",
+      "text_markdown": "В Испании на нём играли сотни лет.",
+      "tts": {
+        "text": "В Испании на нём играли сотни лет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сегодня есть три основных вида уда.",
+      "text_markdown": "Сегодня есть три основных вида уда.",
+      "tts": {
+        "text": "Сегодня есть три основных вида уда.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Арабский уд большой и глубокий, с полным и неторопливым звуком.",
+      "text_markdown": "Арабский уд большой и глубокий, с полным и неторопливым звуком.",
+      "tts": {
+        "text": "Арабский уд большой и глубокий, с полным и неторопливым звуком.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это уд Египта и Леванта.",
+      "text_markdown": "Это уд Египта и Леванта.",
+      "tts": {
+        "text": "Это уд Египта и Леванта.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Турецкий уд меньше и ярче, и его настраивают чуть выше арабского уда.",
+      "text_markdown": "Турецкий уд меньше и ярче, и его настраивают чуть выше арабского уда.",
+      "tts": {
+        "text": "Турецкий уд меньше и ярче, и его настраивают чуть выше арабского уда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персидского родственника называют барбатом.",
+      "text_markdown": "Персидского родственника называют барбатом.",
+      "tts": {
+        "text": "Персидского родственника называют барбатом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он небольшой, звучит резче и использует другой набор нот.",
+      "text_markdown": "Он небольшой, звучит резче и использует другой набор нот.",
+      "tts": {
+        "text": "Он небольшой, звучит резче и использует другой набор нот.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уд это сердце классической арабской музыки и турецкой традиции макам.",
+      "text_markdown": "Уд это сердце классической арабской музыки и турецкой традиции макам.",
+      "tts": {
+        "text": "Уд это сердце классической арабской музыки и турецкой традиции макам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он звучит на свадьбах и похоронах, в концертных залах и дома с друзьями.",
+      "text_markdown": "Он звучит на свадьбах и похоронах, в концертных залах и дома с друзьями.",
+      "tts": {
+        "text": "Он звучит на свадьбах и похоронах, в концертных залах и дома с друзьями.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Где собираются люди и нужна музыка с душой, там может появиться уд.",
+      "text_markdown": "Где собираются люди и нужна музыка с душой, там может появиться уд.",
+      "tts": {
+        "text": "Где собираются люди и нужна музыка с душой, там может появиться уд.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 5 — Макам",
+      "text_markdown": "Глава 5 — Макам"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда вы играете на пианино, вы нажимаете белые и чёрные клавиши.",
+      "text_markdown": "Когда вы играете на пианино, вы нажимаете белые и чёрные клавиши.",
+      "tts": {
+        "text": "Когда вы играете на пианино, вы нажимаете белые и чёрные клавиши.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В каждой октаве двенадцать нот, и каждый шаг одинакового размера.",
+      "text_markdown": "В каждой октаве двенадцать нот, и каждый шаг одинакового размера.",
+      "tts": {
+        "text": "В каждой октаве двенадцать нот, и каждый шаг одинакового размера.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это называется равномерной темперацией.",
+      "text_markdown": "Это называется равномерной темперацией.",
+      "tts": {
+        "text": "Это называется равномерной темперацией.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "С удом всё устроено иначе.",
+      "text_markdown": "С удом всё устроено иначе.",
+      "tts": {
+        "text": "С удом всё устроено иначе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Уд использует гораздо более старую систему, она называется макам.",
+      "text_markdown": "Уд использует гораздо более старую систему, она называется макам.",
+      "tts": {
+        "text": "Уд использует гораздо более старую систему, она называется макам.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Макам это способ выбирать ноты, и таких макамов очень много.",
+      "text_markdown": "Макам это способ выбирать ноты, и таких макамов очень много.",
+      "tts": {
+        "text": "Макам это способ выбирать ноты, и таких макамов очень много.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "У каждого свой характер.",
+      "text_markdown": "У каждого свой характер.",
+      "tts": {
+        "text": "У каждого свой характер.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Одни звучат радостно, другие грустно, а третьи немного загадочно.",
+      "text_markdown": "Одни звучат радостно, другие грустно, а третьи немного загадочно.",
+      "tts": {
+        "text": "Одни звучат радостно, другие грустно, а третьи немного загадочно.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Главный секрет макама в том, что в нём больше нот, чем в пианино.",
+      "text_markdown": "Главный секрет макама в том, что в нём больше нот, чем в пианино.",
+      "tts": {
+        "text": "Главный секрет макама в том, что в нём больше нот, чем в пианино.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Между белыми и чёрными клавишами есть меньшие шаги, их называют четвертьтонами.",
+      "text_markdown": "Между белыми и чёрными клавишами есть меньшие шаги, их называют четвертьтонами.",
+      "tts": {
+        "text": "Между белыми и чёрными клавишами есть меньшие шаги, их называют четвертьтонами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Четвертьтон это половина полутона.",
+      "text_markdown": "Четвертьтон это половина полутона.",
+      "tts": {
+        "text": "Четвертьтон это половина полутона.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это крошечная нота, которая живёт между знакомыми вам нотами.",
+      "text_markdown": "Это крошечная нота, которая живёт между знакомыми вам нотами.",
+      "tts": {
+        "text": "Это крошечная нота, которая живёт между знакомыми вам нотами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "На пианино её сыграть нельзя.",
+      "text_markdown": "На пианино её сыграть нельзя.",
+      "tts": {
+        "text": "На пианино её сыграть нельзя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "На уде вы находите её, когда скользите пальцем.",
+      "text_markdown": "На уде вы находите её, когда скользите пальцем.",
+      "tts": {
+        "text": "На уде вы находите её, когда скользите пальцем.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Макам строится из маленьких групп нот.",
+      "text_markdown": "Макам строится из маленьких групп нот.",
+      "tts": {
+        "text": "Макам строится из маленьких групп нот.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждую такую группу называют джинсом.",
+      "text_markdown": "Каждую такую группу называют джинсом.",
+      "tts": {
+        "text": "Каждую такую группу называют джинсом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "У большинства аджнасов четыре ноты.",
+      "text_markdown": "У большинства аджнасов четыре ноты.",
+      "tts": {
+        "text": "У большинства аджнасов четыре ноты.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Можно представить джинс как маленький музыкальный кубик, и из таких кубиков строят макам.",
+      "text_markdown": "Можно представить джинс как маленький музыкальный кубик, и из таких кубиков строят макам.",
+      "tts": {
+        "text": "Можно представить джинс как маленький музыкальный кубик, и из таких кубиков строят макам.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Макам устроен мелодически, а не гармонически.",
+      "text_markdown": "Макам устроен мелодически, а не гармонически.",
+      "tts": {
+        "text": "Макам устроен мелодически, а не гармонически.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это значит, что музыка идёт по одной ноте, а не складывает их в аккорды, как гитара.",
+      "text_markdown": "Это значит, что музыка идёт по одной ноте, а не складывает их в аккорды, как гитара.",
+      "tts": {
+        "text": "Это значит, что музыка идёт по одной ноте, а не складывает их в аккорды, как гитара.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда уд играет медленное извилистое соло, музыкант движется внутри макама.",
+      "text_markdown": "Когда уд играет медленное извилистое соло, музыкант движется внутри макама.",
+      "tts": {
+        "text": "Когда уд играет медленное извилистое соло, музыкант движется внутри макама.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он берёт ноты из одного кубика, а потом скользит к следующему.",
+      "text_markdown": "Он берёт ноты из одного кубика, а потом скользит к следующему.",
+      "tts": {
+        "text": "Он берёт ноты из одного кубика, а потом скользит к следующему.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "У такого соло есть своё название.",
+      "text_markdown": "У такого соло есть своё название.",
+      "tts": {
+        "text": "У такого соло есть своё название.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Его называют таксимом.",
+      "text_markdown": "Его называют таксимом.",
+      "tts": {
+        "text": "Его называют таксимом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Хороший таксим может заставить вас смеяться, а может и плакать.",
+      "text_markdown": "Хороший таксим может заставить вас смеяться, а может и плакать.",
+      "tts": {
+        "text": "Хороший таксим может заставить вас смеяться, а может и плакать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В такие минуты уд звучит особенно красиво.",
+      "text_markdown": "В такие минуты уд звучит особенно красиво.",
+      "tts": {
+        "text": "В такие минуты уд звучит особенно красиво.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 6 — Великие мастера",
+      "text_markdown": "Глава 6 — Великие мастера"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На уде играют уже больше тысячи лет.",
+      "text_markdown": "На уде играют уже больше тысячи лет.",
+      "tts": {
+        "text": "На уде играют уже больше тысячи лет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "За это время несколько человек изменили его навсегда.",
+      "text_markdown": "За это время несколько человек изменили его навсегда.",
+      "tts": {
+        "text": "За это время несколько человек изменили его навсегда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первым был скорее мыслитель, чем музыкант, по имени аль-Фараби.",
+      "text_markdown": "Первым был скорее мыслитель, чем музыкант, по имени аль-Фараби.",
+      "tts": {
+        "text": "Первым был скорее мыслитель, чем музыкант, по имени аль Фараби.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он жил примерно с восемьсот семьдесят второго по девятьсот пятидесятый год и работал в великом городе Багдаде.",
+      "text_markdown": "Он жил примерно с восемьсот семьдесят второго по девятьсот пятидесятый год и работал в великом городе Багдаде.",
+      "tts": {
+        "text": "Он жил примерно с восемьсот семьдесят второго по девятьсот пятидесятый год и работал в великом городе Багдаде.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Аль-Фараби написал огромную книгу о музыке.",
+      "text_markdown": "Аль-Фараби написал огромную книгу о музыке.",
+      "tts": {
+        "text": "Аль Фараби написал огромную книгу о музыке.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он объяснил, как вибрируют струны.",
+      "text_markdown": "Он объяснил, как вибрируют струны.",
+      "tts": {
+        "text": "Он объяснил, как вибрируют струны.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он объяснил, почему некоторые ноты красиво звучат вместе.",
+      "text_markdown": "Он объяснил, почему некоторые ноты красиво звучат вместе.",
+      "tts": {
+        "text": "Он объяснил, почему некоторые ноты красиво звучат вместе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он объяснил, почему музыка может менять чувства человека.",
+      "text_markdown": "Он объяснил, почему музыка может менять чувства человека.",
+      "tts": {
+        "text": "Он объяснил, почему музыка может менять чувства человека.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Его книгу веками читали на арабском и на латыни.",
+      "text_markdown": "Его книгу веками читали на арабском и на латыни.",
+      "tts": {
+        "text": "Его книгу веками читали на арабском и на латыни.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вторым великим мастером уда был певец Зирьяб, который родился в Ираке примерно в семьсот восемьдесят девятом году.",
+      "text_markdown": "Вторым великим мастером уда был певец Зирьяб, который родился в Ираке примерно в семьсот восемьдесят девятом году.",
+      "tts": {
+        "text": "Вторым великим мастером уда был певец Зирьяб, который родился в Ираке примерно в семьсот восемьдесят девятом году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Молодым человеком он был вынужден спешно покинуть Багдад.",
+      "text_markdown": "Молодым человеком он был вынужден спешно покинуть Багдад.",
+      "tts": {
+        "text": "Молодым человеком он был вынужден спешно покинуть Багдад.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Зирьяб отправился на запад через всю Северную Африку.",
+      "text_markdown": "Зирьяб отправился на запад через всю Северную Африку.",
+      "tts": {
+        "text": "Зирьяб отправился на запад через всю Северную Африку.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В восемьсот двадцать втором году он прибыл в испанскую Кордову.",
+      "text_markdown": "В восемьсот двадцать втором году он прибыл в испанскую Кордову.",
+      "tts": {
+        "text": "В восемьсот двадцать втором году он прибыл в испанскую Кордову.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Правителю Кордовы так понравилась его музыка, что он дал ему дом, жалованье и время для преподавания.",
+      "text_markdown": "Правителю Кордовы так понравилась его музыка, что он дал ему дом, жалованье и время для преподавания.",
+      "tts": {
+        "text": "Правителю Кордовы так понравилась его музыка, что он дал ему дом, жалованье и время для преподавания.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В Испании Зирьяб открыл музыкальную школу.",
+      "text_markdown": "В Испании Зирьяб открыл музыкальную школу.",
+      "tts": {
+        "text": "В Испании Зирьяб открыл музыкальную школу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Некоторые говорят, что это была первая консерватория в мире.",
+      "text_markdown": "Некоторые говорят, что это была первая консерватория в мире.",
+      "tts": {
+        "text": "Некоторые говорят, что это была первая консерватория в мире.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он добавил к уду пятый хор струн и изменил способ изготовления медиаторов.",
+      "text_markdown": "Он добавил к уду пятый хор струн и изменил способ изготовления медиаторов.",
+      "tts": {
+        "text": "Он добавил к уду пятый хор струн и изменил способ изготовления медиаторов.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Много позже Зирьяба, уже в наше время, музыкант из Ирака поднял уд на новую высоту.",
+      "text_markdown": "Много позже Зирьяба, уже в наше время, музыкант из Ирака поднял уд на новую высоту.",
+      "tts": {
+        "text": "Много позже Зирьяба, уже в наше время, музыкант из Ирака поднял уд на новую высоту.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Его звали Мунир Башир, и люди называли его королём уда.",
+      "text_markdown": "Его звали Мунир Башир, и люди называли его королём уда.",
+      "tts": {
+        "text": "Его звали Мунир Башир, и люди называли его королём уда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "До Башира уд обычно звучал вместе с другими инструментами.",
+      "text_markdown": "До Башира уд обычно звучал вместе с другими инструментами.",
+      "tts": {
+        "text": "До Башира уд обычно звучал вместе с другими инструментами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Башир вывел его на сцену одного и играл долгие, тихие и глубокие соло.",
+      "text_markdown": "Башир вывел его на сцену одного и играл долгие, тихие и глубокие соло.",
+      "tts": {
+        "text": "Башир вывел его на сцену одного и играл долгие, тихие и глубокие соло.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Люди по всему миру услышали его и снова полюбили уд.",
+      "text_markdown": "Люди по всему миру услышали его и снова полюбили уд.",
+      "tts": {
+        "text": "Люди по всему миру услышали его и снова полюбили уд.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но были и многие другие.",
+      "text_markdown": "Но были и многие другие.",
+      "tts": {
+        "text": "Но были и многие другие.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Фарид аль-Атраш сделал уд голосом египетского кино.",
+      "text_markdown": "Фарид аль-Атраш сделал уд голосом египетского кино.",
+      "tts": {
+        "text": "Фарид аль Атраш сделал уд голосом египетского кино.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ануар Браем из Туниса играет на уде с джазовыми музыкантами из Европы и Америки.",
+      "text_markdown": "Ануар Браем из Туниса играет на уде с джазовыми музыкантами из Европы и Америки.",
+      "tts": {
+        "text": "Ануар Браем из Туниса играет на уде с джазовыми музыкантами из Европы и Америки.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уд жив до сих пор.",
+      "text_markdown": "Уд жив до сих пор.",
+      "tts": {
+        "text": "Уд жив до сих пор.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждый год в мире рождается новый мастер.",
+      "text_markdown": "Каждый год в мире рождается новый мастер.",
+      "tts": {
+        "text": "Каждый год в мире рождается новый мастер.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 7 — Уд и мир",
+      "text_markdown": "Глава 7 — Уд и мир"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уд не остался только в арабском мире.",
+      "text_markdown": "Уд не остался только в арабском мире.",
+      "tts": {
+        "text": "Уд не остался только в арабском мире.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Путешествуя, он менял форму, имя и свои песни.",
+      "text_markdown": "Путешествуя, он менял форму, имя и свои песни.",
+      "tts": {
+        "text": "Путешествуя, он менял форму, имя и свои песни.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда уд попал в средневековую Испанию, европейским музыкантам понравились деревянная чаша и глубокий звук.",
+      "text_markdown": "Когда уд попал в средневековую Испанию, европейским музыкантам понравились деревянная чаша и глубокий звук.",
+      "tts": {
+        "text": "Когда уд попал в средневековую Испанию, европейским музыкантам понравились деревянная чаша и глубокий звук.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Но им хотелось ладов, как у маленьких инструментов, которые они уже знали.",
+      "text_markdown": "Но им хотелось ладов, как у маленьких инструментов, которые они уже знали.",
+      "tts": {
+        "text": "Но им хотелось ладов, как у маленьких инструментов, которые они уже знали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Поэтому они добавили лады, немного распрямили спинку и назвали новый инструмент лютней.",
+      "text_markdown": "Поэтому они добавили лады, немного распрямили спинку и назвали новый инструмент лютней.",
+      "tts": {
+        "text": "Поэтому они добавили лады, немного распрямили спинку и назвали новый инструмент лютней.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Пятьсот лет лютня была любимым инструментом Европы.",
+      "text_markdown": "Пятьсот лет лютня была любимым инструментом Европы.",
+      "tts": {
+        "text": "Пятьсот лет лютня была любимым инструментом Европы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "На ней играли короли.",
+      "text_markdown": "На ней играли короли.",
+      "tts": {
+        "text": "На ней играли короли.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "На ней играли поэты.",
+      "text_markdown": "На ней играли поэты.",
+      "tts": {
+        "text": "На ней играли поэты.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Величайшие композиторы писали для неё пьесы.",
+      "text_markdown": "Величайшие композиторы писали для неё пьесы.",
+      "tts": {
+        "text": "Величайшие композиторы писали для неё пьесы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом лютня снова изменилась.",
+      "text_markdown": "Потом лютня снова изменилась.",
+      "tts": {
+        "text": "Потом лютня снова изменилась.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Музыканты добавили больше струн, ещё сильнее распрямили спинку и сделали корпус меньше и легче.",
+      "text_markdown": "Музыканты добавили больше струн, ещё сильнее распрямили спинку и сделали корпус меньше и легче.",
+      "tts": {
+        "text": "Музыканты добавили больше струн, ещё сильнее распрямили спинку и сделали корпус меньше и легче.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Примерно к началу девятнадцатого века в Испании у этого нового инструмента уже было имя, которое мы все знаем.",
+      "text_markdown": "Примерно к началу девятнадцатого века в Испании у этого нового инструмента уже было имя, которое мы все знаем.",
+      "tts": {
+        "text": "Примерно к началу девятнадцатого века в Испании у этого нового инструмента уже было имя, которое мы все знаем.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Это была гитара.",
+      "text_markdown": "Это была гитара.",
+      "tts": {
+        "text": "Это была гитара.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Значит, уд, лютня и гитара принадлежат к одной семье.",
+      "text_markdown": "Значит, уд, лютня и гитара принадлежат к одной семье.",
+      "tts": {
+        "text": "Значит, уд, лютня и гитара принадлежат к одной семье.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они как двоюродные братья, и у них общий дед.",
+      "text_markdown": "Они как двоюродные братья, и у них общий дед.",
+      "tts": {
+        "text": "Они как двоюродные братья, и у них общий дед.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Их общий дед это уд.",
+      "text_markdown": "Их общий дед это уд.",
+      "tts": {
+        "text": "Их общий дед это уд.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Сегодня уд и гитара играют вместе.",
+      "text_markdown": "Сегодня уд и гитара играют вместе.",
+      "tts": {
+        "text": "Сегодня уд и гитара играют вместе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ануар Браем играет на уде с джазовыми гитаристами.",
+      "text_markdown": "Ануар Браем играет на уде с джазовыми гитаристами.",
+      "tts": {
+        "text": "Ануар Браем играет на уде с джазовыми гитаристами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Мунир Башир играл с оркестрами.",
+      "text_markdown": "Мунир Башир играл с оркестрами.",
+      "tts": {
+        "text": "Мунир Башир играл с оркестрами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Молодые музыканты в Бейруте, Стамбуле, Париже и Нью-Йорке смешивают уд с роком, хип хопом и музыкой кино.",
+      "text_markdown": "Молодые музыканты в Бейруте, Стамбуле, Париже и Нью-Йорке смешивают уд с роком, хип хопом и музыкой кино.",
+      "tts": {
+        "text": "Молодые музыканты в Бейруте, Стамбуле, Париже и Нью Йорке смешивают уд с роком, хип хопом и музыкой кино.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Уд это нечто большее, чем инструмент.",
+      "text_markdown": "Уд это нечто большее, чем инструмент.",
+      "tts": {
+        "text": "Уд это нечто большее, чем инструмент.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это мост.",
+      "text_markdown": "Это мост.",
+      "tts": {
+        "text": "Это мост.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он несёт историю из Месопотамии через Персию и арабский мир в Испанию, в Европу, а потом дальше во все страны мира.",
+      "text_markdown": "Он несёт историю из Месопотамии через Персию и арабский мир в Испанию, в Европу, а потом дальше во все страны мира.",
+      "tts": {
+        "text": "Он несёт историю из Месопотамии через Персию и арабский мир в Испанию, в Европу, а потом дальше во все страны мира.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Всякий раз, когда вы слышите гитару, где-то глубоко под её звуком можно услышать мягкий и глубокий голос уда.",
+      "text_markdown": "Всякий раз, когда вы слышите гитару, где-то глубоко под её звуком можно услышать мягкий и глубокий голос уда.",
+      "tts": {
+        "text": "Всякий раз, когда вы слышите гитару, где то глубоко под её звуком можно услышать мягкий и глубокий голос уда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Об этой книге",
+      "text_markdown": "Об этой книге"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это первый том серии Музыкальные инструменты мира.",
+      "text_markdown": "Это первый том серии Музыкальные инструменты мира.",
+      "tts": {
+        "text": "Это первый том серии Музыкальные инструменты мира.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждая книга в этой серии рассказывает историю одного инструмента.",
+      "text_markdown": "Каждая книга в этой серии рассказывает историю одного инструмента.",
+      "tts": {
+        "text": "Каждая книга в этой серии рассказывает историю одного инструмента.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Каждая книга короткая, и каждая книга правдивая.",
+      "text_markdown": "Каждая книга короткая, и каждая книга правдивая.",
+      "tts": {
+        "text": "Каждая книга короткая, и каждая книга правдивая.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Следующая книга будет о ситаре, великой индийской длинногрифной лютне, с множеством струн и глубоким звонким голосом.",
+      "text_markdown": "Следующая книга будет о ситаре, великой индийской длинногрифной лютне, с множеством струн и глубоким звонким голосом.",
+      "tts": {
+        "text": "Следующая книга будет о ситаре, великой индийской длинногрифной лютне, с множеством струн и глубоким звонким голосом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "После ситара мы отправимся в Западную Африку к коре, а потом в Японию к сякухати.",
+      "text_markdown": "После ситара мы отправимся в Западную Африку к коре, а потом в Японию к сякухати.",
+      "tts": {
+        "text": "После ситара мы отправимся в Западную Африку к коре, а потом в Японию к сякухати.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Спасибо, что слушали.",
+      "text_markdown": "Спасибо, что слушали.",
+      "tts": {
+        "text": "Спасибо, что слушали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Найдите уд в сети или в своём городе и дайте ему сыграть для вас.",
+      "text_markdown": "Найдите уд в сети или в своём городе и дайте ему сыграть для вас.",
+      "tts": {
+        "text": "Найдите уд в сети или в своём городе и дайте ему сыграть для вас.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

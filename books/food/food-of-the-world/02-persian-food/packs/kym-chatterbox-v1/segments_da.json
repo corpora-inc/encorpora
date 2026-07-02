@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "language": "da",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En note til læseren",
+      "text_markdown": "En note til læseren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hej.",
+      "text_markdown": "Hej.",
+      "tts": {
+        "text": "Hej.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeg hedder Kym.",
+      "text_markdown": "Jeg hedder Kym.",
+      "tts": {
+        "text": "Jeg hedder Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jeg elsker mad.",
+      "text_markdown": "Jeg elsker mad.",
+      "tts": {
+        "text": "Jeg elsker mad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jeg elsker historier om mad.",
+      "text_markdown": "Jeg elsker historier om mad.",
+      "tts": {
+        "text": "Jeg elsker historier om mad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er en lille bog om en stor madtradition.",
+      "text_markdown": "Det er en lille bog om en stor madtradition.",
+      "tts": {
+        "text": "Det er en lille bog om en stor madtradition.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maden er persisk mad.",
+      "text_markdown": "Maden er persisk mad.",
+      "tts": {
+        "text": "Maden er persisk mad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er maden fra Iran.",
+      "text_markdown": "Det er maden fra Iran.",
+      "tts": {
+        "text": "Det er maden fra Iran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det er også maden fra et meget ældre land, der hed Persien.",
+      "text_markdown": "Det er også maden fra et meget ældre land, der hed Persien.",
+      "tts": {
+        "text": "Det er også maden fra et meget ældre land, der hed Persien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien er et af de ældste steder på jorden, hvor mennesker dyrkede afgrøder med vilje.",
+      "text_markdown": "Persien er et af de ældste steder på jorden, hvor mennesker dyrkede afgrøder med vilje.",
+      "tts": {
+        "text": "Persien er et af de ældste steder på jorden, hvor mennesker dyrkede afgrøder med vilje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hvede, byg, fersken, abrikos, granatæble, spinat og safran kommer derfra.",
+      "text_markdown": "Hvede, byg, fersken, abrikos, granatæble, spinat og safran kommer derfra.",
+      "tts": {
+        "text": "Hvede, byg, fersken, abrikos, granatæble, spinat og safran kommer derfra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vi begynder med landet.",
+      "text_markdown": "Vi begynder med landet.",
+      "tts": {
+        "text": "Vi begynder med landet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Så ser vi på det, der vokser der.",
+      "text_markdown": "Så ser vi på det, der vokser der.",
+      "tts": {
+        "text": "Så ser vi på det, der vokser der.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Så ser vi på ris, brød, kød og gryderetter.",
+      "text_markdown": "Så ser vi på ris, brød, kød og gryderetter.",
+      "tts": {
+        "text": "Så ser vi på ris, brød, kød og gryderetter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Til sidst ved du, hvad der står på et persisk bord, og hvor det kommer fra.",
+      "text_markdown": "Til sidst ved du, hvad der står på et persisk bord, og hvor det kommer fra.",
+      "tts": {
+        "text": "Til sidst ved du, hvad der står på et persisk bord, og hvor det kommer fra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sæt dig ned.",
+      "text_markdown": "Sæt dig ned.",
+      "tts": {
+        "text": "Sæt dig ned.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hæld noget te op.",
+      "text_markdown": "Hæld noget te op.",
+      "tts": {
+        "text": "Hæld noget te op.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lad os begynde.",
+      "text_markdown": "Lad os begynde.",
+      "tts": {
+        "text": "Lad os begynde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 1 - Landet, hvor landbruget begyndte",
+      "text_markdown": "Kapitel 1 - Landet, hvor landbruget begyndte"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien er et højt, tørt land.",
+      "text_markdown": "Persien er et højt, tørt land.",
+      "tts": {
+        "text": "Persien er et højt, tørt land.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det ligger mellem Det Kaspiske Hav i nord og Den Persiske Golf i syd.",
+      "text_markdown": "Det ligger mellem Det Kaspiske Hav i nord og Den Persiske Golf i syd.",
+      "tts": {
+        "text": "Det ligger mellem Det Kaspiske Hav i nord og Den Persiske Golf i syd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mod vest ligger Mesopotamien.",
+      "text_markdown": "Mod vest ligger Mesopotamien.",
+      "tts": {
+        "text": "Mod vest ligger Mesopotamien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mod øst ligger Indien.",
+      "text_markdown": "Mod øst ligger Indien.",
+      "tts": {
+        "text": "Mod øst ligger Indien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I midten ligger bjerge og ørkener.",
+      "text_markdown": "I midten ligger bjerge og ørkener.",
+      "tts": {
+        "text": "I midten ligger bjerge og ørkener.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lige ved siden af, for omkring ti tusind år siden, dyrkede mennesker først hvede og byg med vilje.",
+      "text_markdown": "Lige ved siden af, for omkring ti tusind år siden, dyrkede mennesker først hvede og byg med vilje.",
+      "tts": {
+        "text": "Lige ved siden af, for omkring ti tusind år siden, dyrkede mennesker først hvede og byg med vilje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Landbruget blev født der.",
+      "text_markdown": "Landbruget blev født der.",
+      "tts": {
+        "text": "Landbruget blev født der.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persien var et af de første steder, der lærte det.",
+      "text_markdown": "Persien var et af de første steder, der lærte det.",
+      "tts": {
+        "text": "Persien var et af de første steder, der lærte det.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det lange forspring kan smages på hver persisk tallerken.",
+      "text_markdown": "Det lange forspring kan smages på hver persisk tallerken.",
+      "tts": {
+        "text": "Det lange forspring kan smages på hver persisk tallerken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ferskenen kommer fra Persien.",
+      "text_markdown": "Ferskenen kommer fra Persien.",
+      "tts": {
+        "text": "Ferskenen kommer fra Persien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Romerne kaldte den Persica, \"den persiske frugt\". Vores ord \"fersken\" kommer fra det navn.",
+      "text_markdown": "Romerne kaldte den Persica, \"den persiske frugt\". Vores ord \"fersken\" kommer fra det navn.",
+      "tts": {
+        "text": "Romerne kaldte den Persika, den persiske frugt. Vores ord fersken kommer fra det navn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Abrikosen kommer også derfra.",
+      "text_markdown": "Abrikosen kommer også derfra.",
+      "tts": {
+        "text": "Abrikosen kommer også derfra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det samme gør granatæblet.",
+      "text_markdown": "Det samme gør granatæblet.",
+      "tts": {
+        "text": "Det samme gør granatæblet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det samme gør valnødden.",
+      "text_markdown": "Det samme gør valnødden.",
+      "tts": {
+        "text": "Det samme gør valnødden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det samme gør surkirsebærret.",
+      "text_markdown": "Det samme gør surkirsebærret.",
+      "tts": {
+        "text": "Det samme gør surkirsebærret.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det samme gør spinat, en af verdens første salatgrøntsager.",
+      "text_markdown": "Det samme gør spinat, en af verdens første salatgrøntsager.",
+      "tts": {
+        "text": "Det samme gør spinat, en af verdens første salatgrøntsager.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Det engelske ord \"spinach\" kommer fra det persiske ord esfanaj.",
+      "text_markdown": "Det engelske ord \"spinach\" kommer fra det persiske ord esfanaj.",
+      "tts": {
+        "text": "Det engelske ord spinatj kommer fra det persiske ord es fa nadj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selv ordet \"paradis\" er persisk.",
+      "text_markdown": "Selv ordet \"paradis\" er persisk.",
+      "tts": {
+        "text": "Selv ordet paradis er persisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det kommer fra pardis, en have med mur omkring.",
+      "text_markdown": "Det kommer fra pardis, en have med mur omkring.",
+      "tts": {
+        "text": "Det kommer fra par dis, en have med mur omkring.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det første paradis var en persisk frugthave fuld af granatæbletræer.",
+      "text_markdown": "Det første paradis var en persisk frugthave fuld af granatæbletræer.",
+      "tts": {
+        "text": "Det første paradis var en persisk frugthave fuld af granatæbletræer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien spiste ikke bare godt.",
+      "text_markdown": "Persien spiste ikke bare godt.",
+      "tts": {
+        "text": "Persien spiste ikke bare godt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persien lærte verden at spise godt.",
+      "text_markdown": "Persien lærte verden at spise godt.",
+      "tts": {
+        "text": "Persien lærte verden at spise godt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 2 - Det lokale spisekammer",
+      "text_markdown": "Kapitel 2 - Det lokale spisekammer"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Åbn et persisk spisekammer.",
+      "text_markdown": "Åbn et persisk spisekammer.",
+      "tts": {
+        "text": "Åbn et persisk spisekammer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Duftene fortæller historien.",
+      "text_markdown": "Duftene fortæller historien.",
+      "tts": {
+        "text": "Duftene fortæller historien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den første duft er safran.",
+      "text_markdown": "Den første duft er safran.",
+      "tts": {
+        "text": "Den første duft er safran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran dyrker omkring halvfems procent af verdens safran.",
+      "text_markdown": "Iran dyrker omkring halvfems procent af verdens safran.",
+      "tts": {
+        "text": "Iran dyrker omkring halvfems procent af verdens safran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det meste kommer fra en provins, der hedder Khorasan.",
+      "text_markdown": "Det meste kommer fra en provins, der hedder Khorasan.",
+      "tts": {
+        "text": "Det meste kommer fra en provins, der hedder Ko ra san.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "For at få ét gram håndplukker en landmand de røde tråde fra omkring to hundrede krokusblomster.",
+      "text_markdown": "For at få ét gram håndplukker en landmand de røde tråde fra omkring to hundrede krokusblomster.",
+      "tts": {
+        "text": "For at få ét gram håndplukker en landmand de røde tråde fra omkring to hundrede krokusblomster.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Arbejdet sker i kolde efterårsmorgener.",
+      "text_markdown": "Arbejdet sker i kolde efterårsmorgener.",
+      "tts": {
+        "text": "Arbejdet sker i kolde efterårsmorgener.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Safran er det dyreste krydderi i verden.",
+      "text_markdown": "Safran er det dyreste krydderi i verden.",
+      "tts": {
+        "text": "Safran er det dyreste krydderi i verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "En knivspids gør ris gyldne og vand til parfume.",
+      "text_markdown": "En knivspids gør ris gyldne og vand til parfume.",
+      "tts": {
+        "text": "En knivspids gør ris gyldne og vand til parfume.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den anden duft er granatæble.",
+      "text_markdown": "Den anden duft er granatæble.",
+      "tts": {
+        "text": "Den anden duft er granatæble.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persere har dyrket granatæbler i tusinder af år.",
+      "text_markdown": "Persere har dyrket granatæbler i tusinder af år.",
+      "tts": {
+        "text": "Persere har dyrket granatæbler i tusinder af år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Frugten er et symbol på kærlighed og paradis.",
+      "text_markdown": "Frugten er et symbol på kærlighed og paradis.",
+      "tts": {
+        "text": "Frugten er et symbol på kærlighed og paradis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saften presses ud til gryderetter.",
+      "text_markdown": "Saften presses ud til gryderetter.",
+      "tts": {
+        "text": "Saften presses ud til gryderetter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kernerne drysses over ris og salater.",
+      "text_markdown": "Kernerne drysses over ris og salater.",
+      "tts": {
+        "text": "Kernerne drysses over ris og salater.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så kommer pistacienødderne.",
+      "text_markdown": "Så kommer pistacienødderne.",
+      "tts": {
+        "text": "Så kommer pistacienødderne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran har pistacielunde, der er tre tusind år gamle.",
+      "text_markdown": "Iran har pistacielunde, der er tre tusind år gamle.",
+      "tts": {
+        "text": "Iran har pistacielunde, der er tre tusind år gamle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den pistacie, du spiser et sted i verden, er ofte en efterkommer af et persisk træ.",
+      "text_markdown": "Den pistacie, du spiser et sted i verden, er ofte en efterkommer af et persisk træ.",
+      "tts": {
+        "text": "Den pistacie, du spiser et sted i verden, er ofte en efterkommer af et persisk træ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er valnødder, surkirsebær, kvæder, meloner og dadler.",
+      "text_markdown": "Der er valnødder, surkirsebær, kvæder, meloner og dadler.",
+      "tts": {
+        "text": "Der er valnødder, surkirsebær, kvæder, meloner og dadler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der er sumak, et mørkerødt, surt krydderi fra en vild busk.",
+      "text_markdown": "Der er sumak, et mørkerødt, surt krydderi fra en vild busk.",
+      "tts": {
+        "text": "Der er sumak, et mørkerødt, surt krydderi fra en vild busk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Før citroner fandtes overalt, gav sumak maden frisk syre.",
+      "text_markdown": "Før citroner fandtes overalt, gav sumak maden frisk syre.",
+      "tts": {
+        "text": "Før citroner fandtes overalt, gav sumak maden frisk syre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det gør den stadig.",
+      "text_markdown": "Det gør den stadig.",
+      "tts": {
+        "text": "Det gør den stadig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et persisk spisekammer rummer halvdelen af frugtens historie.",
+      "text_markdown": "Et persisk spisekammer rummer halvdelen af frugtens historie.",
+      "tts": {
+        "text": "Et persisk spisekammer rummer halvdelen af frugtens historie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 3 - Ris, brød og den hellige skorpe",
+      "text_markdown": "Kapitel 3 - Ris, brød og den hellige skorpe"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ris kom til Persien fra Indien for omkring to tusind fem hundrede år siden.",
+      "text_markdown": "Ris kom til Persien fra Indien for omkring to tusind fem hundrede år siden.",
+      "tts": {
+        "text": "Ris kom til Persien fra Indien for omkring to tusind fem hundrede år siden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det blev bordets hjerte.",
+      "text_markdown": "Det blev bordets hjerte.",
+      "tts": {
+        "text": "Det blev bordets hjerte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persere tilbereder ris på to måder.",
+      "text_markdown": "Persere tilbereder ris på to måder.",
+      "tts": {
+        "text": "Persere tilbereder ris på to måder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ren ris kaldes chelo.",
+      "text_markdown": "Ren ris kaldes chelo.",
+      "tts": {
+        "text": "Ren ris kaldes tje lo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ris med urter, kød eller frugt kaldes polo.",
+      "text_markdown": "Ris med urter, kød eller frugt kaldes polo.",
+      "tts": {
+        "text": "Ris med urter, kød eller frugt kaldes po lo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Begge er lange, lette og adskilte, hvert korn for sig.",
+      "text_markdown": "Begge er lange, lette og adskilte, hvert korn for sig.",
+      "tts": {
+        "text": "Begge er lange, lette og adskilte, hvert korn for sig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men magien ligger i bunden af gryden.",
+      "text_markdown": "Men magien ligger i bunden af gryden.",
+      "tts": {
+        "text": "Men magien ligger i bunden af gryden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det kaldes tahdig.",
+      "text_markdown": "Det kaldes tahdig.",
+      "tts": {
+        "text": "Det kaldes ta dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kokken lægger et tyndt lag i bunden af gryden, nogle gange safranris, nogle gange en skive kartoffel, nogle gange et stykke brød.",
+      "text_markdown": "Kokken lægger et tyndt lag i bunden af gryden, nogle gange safranris, nogle gange en skive kartoffel, nogle gange et stykke brød.",
+      "tts": {
+        "text": "Kokken lægger et tyndt lag i bunden af gryden, nogle gange safranris, nogle gange en skive kartoffel, nogle gange et stykke brød.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Så kommer risene ovenpå.",
+      "text_markdown": "Så kommer risene ovenpå.",
+      "tts": {
+        "text": "Så kommer risene ovenpå.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Så kommer låget på, pakket ind i et viskestykke, og dampen gør resten.",
+      "text_markdown": "Så kommer låget på, pakket ind i et viskestykke, og dampen gør resten.",
+      "tts": {
+        "text": "Så kommer låget på, pakket ind i et viskestykke, og dampen gør resten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Efter en time er det nederste lag gyldent og sprødt.",
+      "text_markdown": "Efter en time er det nederste lag gyldent og sprødt.",
+      "tts": {
+        "text": "Efter en time er det nederste lag gyldent og sprødt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahdig er hellig.",
+      "text_markdown": "Tahdig er hellig.",
+      "tts": {
+        "text": "Tahdig er hellig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Familier kæmper om det.",
+      "text_markdown": "Familier kæmper om det.",
+      "tts": {
+        "text": "Familier kæmper om det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iransk tv har hele programmer om, hvem der laver den bedste.",
+      "text_markdown": "Iransk tv har hele programmer om, hvem der laver den bedste.",
+      "tts": {
+        "text": "Iransk tv har hele programmer om, hvem der laver den bedste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En perfekt tahdig kommer ud af gryden som én smuk rund skive.",
+      "text_markdown": "En perfekt tahdig kommer ud af gryden som én smuk rund skive.",
+      "tts": {
+        "text": "En perfekt ta dig kommer ud af gryden som én smuk rund skive.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så er der brødet.",
+      "text_markdown": "Så er der brødet.",
+      "tts": {
+        "text": "Så er der brødet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den mest kendte er sangak.",
+      "text_markdown": "Den mest kendte er sangak.",
+      "tts": {
+        "text": "Den mest kendte er san gak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangak bages på et leje af varme småsten, en metode der er fem tusind år gammel.",
+      "text_markdown": "Sangak bages på et leje af varme småsten, en metode der er fem tusind år gammel.",
+      "tts": {
+        "text": "Sangak bages på et leje af varme småsten, en metode der er fem tusind år gammel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Småstenene følger stadig med brødet.",
+      "text_markdown": "Småstenene følger stadig med brødet.",
+      "tts": {
+        "text": "Småstenene følger stadig med brødet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du piller dem ud ved bordet.",
+      "text_markdown": "Du piller dem ud ved bordet.",
+      "tts": {
+        "text": "Du piller dem ud ved bordet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre brød er barbari, lavash og taftoon.",
+      "text_markdown": "Andre brød er barbari, lavash og taftoon.",
+      "tts": {
+        "text": "Andre brød er bar ba ri, la vash og taf tun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En persisk morgenmad er brød, te og en blød hvid ost.",
+      "text_markdown": "En persisk morgenmad er brød, te og en blød hvid ost.",
+      "tts": {
+        "text": "En persisk morgenmad er brød, te og en blød hvid ost.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 4 - Kebaben og den tålmodige gryderet",
+      "text_markdown": "Kapitel 4 - Kebaben og den tålmodige gryderet"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ordet kebab er persisk.",
+      "text_markdown": "Ordet kebab er persisk.",
+      "tts": {
+        "text": "Ordet kebab er persisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er kabab, og det betyder kød tilberedt over ild.",
+      "text_markdown": "Det er kabab, og det betyder kød tilberedt over ild.",
+      "tts": {
+        "text": "Det er ka bab, og det betyder kød tilberedt over ild.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persere har stegt lam på lange flade spyd i tusinder af år.",
+      "text_markdown": "Persere har stegt lam på lange flade spyd i tusinder af år.",
+      "tts": {
+        "text": "Persere har stegt lam på lange flade spyd i tusinder af år.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den mest populære kebab i dag er koobideh.",
+      "text_markdown": "Den mest populære kebab i dag er koobideh.",
+      "tts": {
+        "text": "Den mest populære kebab i dag er ku bi de.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er hakket lam eller oksekød, blandet med løg og salt, presset på et bredt fladt spyd og grillet over trækul.",
+      "text_markdown": "Det er hakket lam eller oksekød, blandet med løg og salt, presset på et bredt fladt spyd og grillet over trækul.",
+      "tts": {
+        "text": "Det er hakket lam eller oksekød, blandet med løg og salt, presset på et bredt fladt spyd og grillet over trækul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det ser gammelt ud.",
+      "text_markdown": "Det ser gammelt ud.",
+      "tts": {
+        "text": "Det ser gammelt ud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det er det ikke.",
+      "text_markdown": "Det er det ikke.",
+      "tts": {
+        "text": "Det er det ikke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kødkværnen kom først til Iran sidst i attenhundredetallet.",
+      "text_markdown": "Kødkværnen kom først til Iran sidst i attenhundredetallet.",
+      "tts": {
+        "text": "Kødkværnen kom først til Iran sidst i attenhundredetallet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Koobideh, den mest persiske af alle kebaber, er knap mere end hundrede år gammel.",
+      "text_markdown": "Koobideh, den mest persiske af alle kebaber, er knap mere end hundrede år gammel.",
+      "tts": {
+        "text": "Ku bi de, den mest persiske af alle kebaber, er knap mere end hundrede år gammel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ældre kebaber laves af kød i skiver.",
+      "text_markdown": "Ældre kebaber laves af kød i skiver.",
+      "tts": {
+        "text": "Ældre kebaber laves af kød i skiver.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joojeh er kylling i safran og yoghurt.",
+      "text_markdown": "Joojeh er kylling i safran og yoghurt.",
+      "tts": {
+        "text": "Ju dje er kylling i safran og yoghurt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg er en tynd lammefilet.",
+      "text_markdown": "Barg er en tynd lammefilet.",
+      "tts": {
+        "text": "Barg er en tynd lammefilet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Begge serveres på en seng af safranris med en grillet tomat.",
+      "text_markdown": "Begge serveres på en seng af safranris med en grillet tomat.",
+      "tts": {
+        "text": "Begge serveres på en seng af safranris med en grillet tomat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu møder du den tålmodige ret: khoresh, den persiske gryderet.",
+      "text_markdown": "Nu møder du den tålmodige ret: khoresh, den persiske gryderet.",
+      "tts": {
+        "text": "Nu møder du den tålmodige ret, ko resh, den persiske gryderet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En khoresh simrer i timevis.",
+      "text_markdown": "En khoresh simrer i timevis.",
+      "tts": {
+        "text": "En ko resh simrer i timevis.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den mest kendte er fesenjan.",
+      "text_markdown": "Den mest kendte er fesenjan.",
+      "tts": {
+        "text": "Den mest kendte er fe sen djan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er kylling eller and, der langtidskoger i en tyk sauce af malede valnødder og granatæblesaft.",
+      "text_markdown": "Det er kylling eller and, der langtidskoger i en tyk sauce af malede valnødder og granatæblesaft.",
+      "tts": {
+        "text": "Det er kylling eller and, der langtidskoger i en tyk sauce af malede valnødder og granatæblesaft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Opskriften er en af de ældste gryderetopskrifter, man har fundet.",
+      "text_markdown": "Opskriften er en af de ældste gryderetopskrifter, man har fundet.",
+      "tts": {
+        "text": "Opskriften er en af de ældste gryderetopskrifter, man har fundet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En version står skrevet på kileskriftstavler fra ruinerne af Persepolis.",
+      "text_markdown": "En version står skrevet på kileskriftstavler fra ruinerne af Persepolis.",
+      "tts": {
+        "text": "En version står skrevet på kileskriftstavler fra ruinerne af Per se po lis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det gør den over to tusind fem hundrede år gammel.",
+      "text_markdown": "Det gør den over to tusind fem hundrede år gammel.",
+      "tts": {
+        "text": "Det gør den over to tusind fem hundrede år gammel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Folk laver den stadig på samme måde.",
+      "text_markdown": "Folk laver den stadig på samme måde.",
+      "tts": {
+        "text": "Folk laver den stadig på samme måde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En anden klassiker er ghormeh sabzi: lam, nyrebønner og et bjerg af friske urter, alt kogt ned med tørret lime.",
+      "text_markdown": "En anden klassiker er ghormeh sabzi: lam, nyrebønner og et bjerg af friske urter, alt kogt ned med tørret lime.",
+      "tts": {
+        "text": "En anden klassiker er gor me sab si, lam, nyrebønner og et bjerg af friske urter, alt kogt ned med tørret lime.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mange iranere kalder den nationalretten.",
+      "text_markdown": "Mange iranere kalder den nationalretten.",
+      "tts": {
+        "text": "Mange iranere kalder den nationalretten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 5 - Yoghurt, te og de ældste søde sager",
+      "text_markdown": "Kapitel 5 - Yoghurt, te og de ældste søde sager"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persere spiser yoghurt til alt.",
+      "text_markdown": "Persere spiser yoghurt til alt.",
+      "tts": {
+        "text": "Persere spiser yoghurt til alt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ren yoghurt kaldes mast.",
+      "text_markdown": "Ren yoghurt kaldes mast.",
+      "tts": {
+        "text": "Ren yoghurt kaldes mast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mast med agurk og tørret mynte kaldes mast o khiar.",
+      "text_markdown": "Mast med agurk og tørret mynte kaldes mast o khiar.",
+      "tts": {
+        "text": "Mast med agurk og tørret mynte kaldes mast o ki ar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En salt yoghurtdrik med mynte kaldes doogh.",
+      "text_markdown": "En salt yoghurtdrik med mynte kaldes doogh.",
+      "tts": {
+        "text": "En salt yoghurtdrik med mynte kaldes dug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Der er også kashk, en kraftig tørret valle, som bruges i supper.",
+      "text_markdown": "Der er også kashk, en kraftig tørret valle, som bruges i supper.",
+      "tts": {
+        "text": "Der er også kask, en kraftig tørret valle, som bruges i supper.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så er der te.",
+      "text_markdown": "Så er der te.",
+      "tts": {
+        "text": "Så er der te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persere drikker te morgen, middag og aften, brygget stærk i en høj kande på en samovar.",
+      "text_markdown": "Persere drikker te morgen, middag og aften, brygget stærk i en høj kande på en samovar.",
+      "tts": {
+        "text": "Persere drikker te morgen, middag og aften, brygget stærk i en høj kande på en samo var.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te står så centralt, at det overrasker mange at høre, at den kom sent.",
+      "text_markdown": "Te står så centralt, at det overrasker mange at høre, at den kom sent.",
+      "tts": {
+        "text": "Te står så centralt, at det overrasker mange at høre, at den kom sent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I det meste af Persiens historie var drikken kaffe.",
+      "text_markdown": "I det meste af Persiens historie var drikken kaffe.",
+      "tts": {
+        "text": "I det meste af Persiens historie var drikken kaffe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Te tog først over sidst i attenhundredetallet.",
+      "text_markdown": "Te tog først over sidst i attenhundredetallet.",
+      "tts": {
+        "text": "Te tog først over sidst i attenhundredetallet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "I dag er Iran et af de lande i verden, hvor man drikker mest te.",
+      "text_markdown": "I dag er Iran et af de lande i verden, hvor man drikker mest te.",
+      "tts": {
+        "text": "I dag er Iran et af de lande i verden, hvor man drikker mest te.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der hører et lille ritual til.",
+      "text_markdown": "Der hører et lille ritual til.",
+      "tts": {
+        "text": "Der hører et lille ritual til.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du holder en sukkerknald mellem tænderne.",
+      "text_markdown": "Du holder en sukkerknald mellem tænderne.",
+      "tts": {
+        "text": "Du holder en sukkerknald mellem tænderne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du nipper til teen gennem sukkerknalden.",
+      "text_markdown": "Du nipper til teen gennem sukkerknalden.",
+      "tts": {
+        "text": "Du nipper til teen gennem sukkerknalden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den smelter lidt.",
+      "text_markdown": "Den smelter lidt.",
+      "tts": {
+        "text": "Den smelter lidt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Teen er varm, mørk og sød på vej ned.",
+      "text_markdown": "Teen er varm, mørk og sød på vej ned.",
+      "tts": {
+        "text": "Teen er varm, mørk og sød på vej ned.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu kommer de søde sager.",
+      "text_markdown": "Nu kommer de søde sager.",
+      "tts": {
+        "text": "Nu kommer de søde sager.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persiske søde sager er gamle, fyldige og små.",
+      "text_markdown": "Persiske søde sager er gamle, fyldige og små.",
+      "tts": {
+        "text": "Persiske søde sager er gamle, fyldige og små.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den ældste er faloodeh.",
+      "text_markdown": "Den ældste er faloodeh.",
+      "tts": {
+        "text": "Den ældste er fa lu de.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er tynde risnudler, frosset i sirup med rosenvand, serveret med limesaft og pistacie.",
+      "text_markdown": "Det er tynde risnudler, frosset i sirup med rosenvand, serveret med limesaft og pistacie.",
+      "tts": {
+        "text": "Det er tynde risnudler, frosset i sirup med rosenvand, serveret med limesaft og pistacie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persiske forfattere beskriver den fra omkring fire hundrede år før Kristus.",
+      "text_markdown": "Persiske forfattere beskriver den fra omkring fire hundrede år før Kristus.",
+      "tts": {
+        "text": "Persiske forfattere beskriver den fra omkring fire hundrede år før Kristus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det gør faloodeh til en af de ældste frosne desserter i verden.",
+      "text_markdown": "Det gør faloodeh til en af de ældste frosne desserter i verden.",
+      "tts": {
+        "text": "Det gør fa lu de til en af de ældste frosne desserter i verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den er mere end to tusind år ældre end is.",
+      "text_markdown": "Den er mere end to tusind år ældre end is.",
+      "tts": {
+        "text": "Den er mere end to tusind år ældre end is.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre klassikere: baklava fra Tabriz, lettere end den tyrkiske slags, med valnødder og rosenvand.",
+      "text_markdown": "Andre klassikere: baklava fra Tabriz, lettere end den tyrkiske slags, med valnødder og rosenvand.",
+      "tts": {
+        "text": "Andre klassikere, baklava fra Ta bris, lettere end den tyrkiske slags, med valnødder og rosenvand.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halva, en tæt masse af sesam eller safran.",
+      "text_markdown": "Halva, en tæt masse af sesam eller safran.",
+      "tts": {
+        "text": "Halva, en tæt masse af sesam eller safran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gaz fra Esfahan, en blød nougat med pistacie.",
+      "text_markdown": "Gaz fra Esfahan, en blød nougat med pistacie.",
+      "tts": {
+        "text": "Gaz fra Es fa han, en blød nougat med pistacie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, en sprød, gylden safrankaramel.",
+      "text_markdown": "Sohan, en sprød, gylden safrankaramel.",
+      "tts": {
+        "text": "Sohan, en sprød, gylden safrankaramel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nokhodchi fra Qom, en lille småkage af kikærter.",
+      "text_markdown": "Nokhodchi fra Qom, en lille småkage af kikærter.",
+      "tts": {
+        "text": "Nokhodchi fra Kom, en lille småkage af kikærter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lille tallerken søde sager, en kop te, en langsom samtale.",
+      "text_markdown": "En lille tallerken søde sager, en kop te, en langsom samtale.",
+      "tts": {
+        "text": "En lille tallerken søde sager, en kop te, en langsom samtale.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er en persisk eftermiddag.",
+      "text_markdown": "Det er en persisk eftermiddag.",
+      "tts": {
+        "text": "Det er en persisk eftermiddag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 6 - Hvad Persien gav, og hvad Persien tog",
+      "text_markdown": "Kapitel 6 - Hvad Persien gav, og hvad Persien tog"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien lå midt i den gamle verden.",
+      "text_markdown": "Persien lå midt i den gamle verden.",
+      "tts": {
+        "text": "Persien lå midt i den gamle verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karavaner krydsede det.",
+      "text_markdown": "Karavaner krydsede det.",
+      "tts": {
+        "text": "Karavaner krydsede det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Imperier steg og faldt der.",
+      "text_markdown": "Imperier steg og faldt der.",
+      "tts": {
+        "text": "Imperier steg og faldt der.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mad rejste også gennem det, i begge retninger.",
+      "text_markdown": "Mad rejste også gennem det, i begge retninger.",
+      "tts": {
+        "text": "Mad rejste også gennem det, i begge retninger.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se på ordene.",
+      "text_markdown": "Se på ordene.",
+      "tts": {
+        "text": "Se på ordene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Engelsk tog dusinvis af madord fra persisk.",
+      "text_markdown": "Engelsk tog dusinvis af madord fra persisk.",
+      "tts": {
+        "text": "Engelsk tog dusinvis af madord fra persisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sukker, slik, citron, appelsin, jasmin, syren, tulipan, kiosk, sorbet og paradis har alle persisk oprindelse.",
+      "text_markdown": "Sukker, slik, citron, appelsin, jasmin, syren, tulipan, kiosk, sorbet og paradis har alle persisk oprindelse.",
+      "tts": {
+        "text": "Sukker, slik, citron, appelsin, jasmin, syren, tulipan, kiosk, sorbet og paradis har alle persisk oprindelse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det gælder også ordet skakmat, fra shah mat, \"kongen er hjælpeløs\". Persien lagde ord i munden på en halv verden.",
+      "text_markdown": "Det gælder også ordet skakmat, fra shah mat, \"kongen er hjælpeløs\". Persien lagde ord i munden på en halv verden.",
+      "tts": {
+        "text": "Det gælder også ordet skakmat, fra sha mat, kongen er hjælpeløs. Persien lagde ord i munden på en halv verden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persisk riskunst rejste østpå.",
+      "text_markdown": "Persisk riskunst rejste østpå.",
+      "tts": {
+        "text": "Persisk riskunst rejste østpå.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mughal-kongerne i Indien elskede persisk mad og tog persiske kokke med til deres hof.",
+      "text_markdown": "Mughal-kongerne i Indien elskede persisk mad og tog persiske kokke med til deres hof.",
+      "tts": {
+        "text": "Mu gal kongerne i Indien elskede persisk mad og tog persiske kokke med til deres hof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De kokke lavede biryani.",
+      "text_markdown": "De kokke lavede biryani.",
+      "tts": {
+        "text": "De kokke lavede bir jani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pilaf, den langkornede krydrede risret fra Middelhavet til Centralasiens stepper, har rødder i persisk ristradition.",
+      "text_markdown": "Pilaf, den langkornede krydrede risret fra Middelhavet til Centralasiens stepper, har rødder i persisk ristradition.",
+      "tts": {
+        "text": "Pi laf, den langkornede krydrede risret fra Middelhavet til Centralasiens stepper, har rødder i persisk ristradition.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persiske frugter rejste vestpå.",
+      "text_markdown": "Persiske frugter rejste vestpå.",
+      "tts": {
+        "text": "Persiske frugter rejste vestpå.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Romerne dyrkede ferskenen i Italien, fordi de fik den fra Persien.",
+      "text_markdown": "Romerne dyrkede ferskenen i Italien, fordi de fik den fra Persien.",
+      "tts": {
+        "text": "Romerne dyrkede ferskenen i Italien, fordi de fik den fra Persien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spinat nåede Europa gennem Spanien, bragt dertil af handlende fra den persiske verden.",
+      "text_markdown": "Spinat nåede Europa gennem Spanien, bragt dertil af handlende fra den persiske verden.",
+      "tts": {
+        "text": "Spinat nåede Europa gennem Spanien, bragt dertil af handlende fra den persiske verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tulipaner, symbolet på Nederlandene, blev først dyrket i Persien og Tyrkiet, før de nåede Holland.",
+      "text_markdown": "Tulipaner, symbolet på Nederlandene, blev først dyrket i Persien og Tyrkiet, før de nåede Holland.",
+      "tts": {
+        "text": "Tulipaner, symbolet på Nederlandene, blev først dyrket i Persien og Tyrkiet, før de nåede Holland.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien tog også ting ind.",
+      "text_markdown": "Persien tog også ting ind.",
+      "tts": {
+        "text": "Persien tog også ting ind.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mongolerne, som invaderede i det trettende århundrede, bragte en stærkere smag for grillet og stegt kød.",
+      "text_markdown": "Mongolerne, som invaderede i det trettende århundrede, bragte en stærkere smag for grillet og stegt kød.",
+      "tts": {
+        "text": "Mongolerne, som invaderede i det trettende århundrede, bragte en stærkere smag for grillet og stegt kød.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arabisk landbrug bragte sukkerrør, citrus og ris fra syd og øst.",
+      "text_markdown": "Arabisk landbrug bragte sukkerrør, citrus og ris fra syd og øst.",
+      "tts": {
+        "text": "Arabisk landbrug bragte sukkerrør, citrus og ris fra syd og øst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samovaren kom fra nord, fra Rusland, i det attende århundrede.",
+      "text_markdown": "Samovaren kom fra nord, fra Rusland, i det attende århundrede.",
+      "tts": {
+        "text": "Samo varen kom fra nord, fra Rusland, i det attende århundrede.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den græske historiker Herodot skrev for to tusind fem hundrede år siden, at perserne fejrede deres fødselsdage mere overdådigt end nogen anden dag på året.",
+      "text_markdown": "Den græske historiker Herodot skrev for to tusind fem hundrede år siden, at perserne fejrede deres fødselsdage mere overdådigt end nogen anden dag på året.",
+      "tts": {
+        "text": "Den græske historiker Herodot skrev for to tusind fem hundrede år siden, at perserne fejrede deres fødselsdage mere overdådigt end nogen anden dag på året.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den dag, skrev han, står der mere på bordet end ellers.",
+      "text_markdown": "Den dag, skrev han, står der mere på bordet end ellers.",
+      "tts": {
+        "text": "Den dag, skrev han, står der mere på bordet end ellers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nogle ting har ikke ændret sig.",
+      "text_markdown": "Nogle ting har ikke ændret sig.",
+      "tts": {
+        "text": "Nogle ting har ikke ændret sig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 7 - Ved det persiske bord",
+      "text_markdown": "Kapitel 7 - Ved det persiske bord"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu sætter vi os ned.",
+      "text_markdown": "Nu sætter vi os ned.",
+      "tts": {
+        "text": "Nu sætter vi os ned.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det persiske år begynder ved forårsjævndøgn, omkring den enogtyvende marts.",
+      "text_markdown": "Det persiske år begynder ved forårsjævndøgn, omkring den enogtyvende marts.",
+      "tts": {
+        "text": "Det persiske år begynder ved forårsjævndøgn, omkring den enogtyvende marts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Højtiden hedder Nowruz, den nye dag.",
+      "text_markdown": "Højtiden hedder Nowruz, den nye dag.",
+      "tts": {
+        "text": "Højtiden hedder No ruz, den nye dag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er årets vigtigste højtid.",
+      "text_markdown": "Det er årets vigtigste højtid.",
+      "tts": {
+        "text": "Det er årets vigtigste højtid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver familie dækker et særligt bord, som hedder haft-sin.",
+      "text_markdown": "Hver familie dækker et særligt bord, som hedder haft-sin.",
+      "tts": {
+        "text": "Hver familie dækker et særligt bord, som hedder haft sin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft betyder syv.",
+      "text_markdown": "Haft betyder syv.",
+      "tts": {
+        "text": "Haft betyder syv.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin er bogstavet S. På bordet står syv ting, der begynder med S på persisk.",
+      "text_markdown": "Sin er bogstavet S. På bordet står syv ting, der begynder med S på persisk.",
+      "tts": {
+        "text": "Sin er bogstavet S. På bordet står syv ting, der begynder med S på persisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der er sib, et æble.",
+      "text_markdown": "Der er sib, et æble.",
+      "tts": {
+        "text": "Der er sib, et æble.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekkeh, en mønt.",
+      "text_markdown": "Sekkeh, en mønt.",
+      "tts": {
+        "text": "Sek ke, en mønt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, en hyacintblomst.",
+      "text_markdown": "Sonbol, en hyacintblomst.",
+      "tts": {
+        "text": "Son bol, en hyacintblomst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, en sød hvedebudding.",
+      "text_markdown": "Samanu, en sød hvedebudding.",
+      "tts": {
+        "text": "Sa ma nu, en sød hvedebudding.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senjed, den tørrede frugt fra oleastertræet.",
+      "text_markdown": "Senjed, den tørrede frugt fra oleastertræet.",
+      "tts": {
+        "text": "Sen jed, den tørrede frugt fra oleastertræet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somagh, sumak.",
+      "text_markdown": "Somagh, sumak.",
+      "tts": {
+        "text": "So mag, sumak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serkeh, eddike.",
+      "text_markdown": "Serkeh, eddike.",
+      "tts": {
+        "text": "Ser ke, eddike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Hver ting står for noget: sundhed, rigdom, skønhed, tålmodighed, kærlighed, den stigende sol og tidens gang.",
+      "text_markdown": "Hver ting står for noget: sundhed, rigdom, skønhed, tålmodighed, kærlighed, den stigende sol og tidens gang.",
+      "tts": {
+        "text": "Hver ting står for noget, sundhed, rigdom, skønhed, tålmodighed, kærlighed, den stigende sol og tidens gang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nytårsmåltidet er sabzi polo med mahi.",
+      "text_markdown": "Nytårsmåltidet er sabzi polo med mahi.",
+      "tts": {
+        "text": "Nytårsmåltidet er sab zi po lo med ma hi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det er ris, dybgrønne af hakkede friske urter, serveret med hvid fisk.",
+      "text_markdown": "Det er ris, dybgrønne af hakkede friske urter, serveret med hvid fisk.",
+      "tts": {
+        "text": "Det er ris, dybgrønne af hakkede friske urter, serveret med hvid fisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Forår på en tallerken.",
+      "text_markdown": "Forår på en tallerken.",
+      "tts": {
+        "text": "Forår på en tallerken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En anden klassiker er ash reshteh, en tyk suppe af bønner, urter, stegt løg, kashk og nudler.",
+      "text_markdown": "En anden klassiker er ash reshteh, en tyk suppe af bønner, urter, stegt løg, kashk og nudler.",
+      "tts": {
+        "text": "En anden klassiker er ash resh te, en tyk suppe af bønner, urter, stegt løg, kask og nudler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persere siger, at man skal spise den før en svær beslutning.",
+      "text_markdown": "Persere siger, at man skal spise den før en svær beslutning.",
+      "tts": {
+        "text": "Persere siger, at man skal spise den før en svær beslutning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nudlerne, siger de, løser skæbnens tråde op.",
+      "text_markdown": "Nudlerne, siger de, løser skæbnens tråde op.",
+      "tts": {
+        "text": "Nudlerne, siger de, løser skæbnens tråde op.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tehuset er også en persisk opfindelse.",
+      "text_markdown": "Tehuset er også en persisk opfindelse.",
+      "tts": {
+        "text": "Tehuset er også en persisk opfindelse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det hedder qahveh-khaneh, bogstaveligt talt kaffehuset, selv om drikken nu er te.",
+      "text_markdown": "Det hedder qahveh-khaneh, bogstaveligt talt kaffehuset, selv om drikken nu er te.",
+      "tts": {
+        "text": "Det hedder ka ve ka ne, bogstaveligt talt kaffehuset, selv om drikken nu er te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I fem hundrede år har mænd og kvinder mødtes der for at spille backgammon, lytte til poesi og diskutere verden.",
+      "text_markdown": "I fem hundrede år har mænd og kvinder mødtes der for at spille backgammon, lytte til poesi og diskutere verden.",
+      "tts": {
+        "text": "I fem hundrede år har mænd og kvinder mødtes der for at spille backgammon, lytte til poesi og diskutere verden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mange store persiske historier blev først fortalt over et dampende glas te.",
+      "text_markdown": "Mange store persiske historier blev først fortalt over et dampende glas te.",
+      "tts": {
+        "text": "Mange store persiske historier blev først fortalt over et dampende glas te.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En berømt persisk læge, Avicenna, der levede for tusind år siden, lærte, at al mad er enten varm eller kold.",
+      "text_markdown": "En berømt persisk læge, Avicenna, der levede for tusind år siden, lærte, at al mad er enten varm eller kold.",
+      "tts": {
+        "text": "En berømt persisk læge, A vi sena, der levede for tusind år siden, lærte, at al mad er enten varm eller kold.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Safran, valnødder og lam er varme.",
+      "text_markdown": "Safran, valnødder og lam er varme.",
+      "tts": {
+        "text": "Safran, valnødder og lam er varme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoghurt, agurk og vandmelon er kolde.",
+      "text_markdown": "Yoghurt, agurk og vandmelon er kolde.",
+      "tts": {
+        "text": "Yoghurt, agurk og vandmelon er kolde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Et godt måltid balancerer dem.",
+      "text_markdown": "Et godt måltid balancerer dem.",
+      "tts": {
+        "text": "Et godt måltid balancerer dem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I mange persiske hjem lever den tanke stadig ved frokostbordet.",
+      "text_markdown": "I mange persiske hjem lever den tanke stadig ved frokostbordet.",
+      "tts": {
+        "text": "I mange persiske hjem lever den tanke stadig ved frokostbordet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persisk mad er tålmodig.",
+      "text_markdown": "Persisk mad er tålmodig.",
+      "tts": {
+        "text": "Persisk mad er tålmodig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den er gavmild.",
+      "text_markdown": "Den er gavmild.",
+      "tts": {
+        "text": "Den er gavmild.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den er gammel.",
+      "text_markdown": "Den er gammel.",
+      "tts": {
+        "text": "Den er gammel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Og den bliver stadig lavet hver dag på millioner af komfurer.",
+      "text_markdown": "Og den bliver stadig lavet hver dag på millioner af komfurer.",
+      "tts": {
+        "text": "Og den bliver stadig lavet hver dag på millioner af komfurer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Farvel",
+      "text_markdown": "Farvel"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det var enden på vores korte tur.",
+      "text_markdown": "Det var enden på vores korte tur.",
+      "tts": {
+        "text": "Det var enden på vores korte tur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeg håber, du lærte noget.",
+      "text_markdown": "Jeg håber, du lærte noget.",
+      "tts": {
+        "text": "Jeg håber, du lærte noget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeg håber, at noget på siden gjorde dig sulten.",
+      "text_markdown": "Jeg håber, at noget på siden gjorde dig sulten.",
+      "tts": {
+        "text": "Jeg håber, at noget på siden gjorde dig sulten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Safran og ris.",
+      "text_markdown": "Safran og ris.",
+      "tts": {
+        "text": "Safran og ris.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Granatæble og valnød.",
+      "text_markdown": "Granatæble og valnød.",
+      "tts": {
+        "text": "Granatæble og valnød.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "En lille sød bid på en lille tallerken.",
+      "text_markdown": "En lille sød bid på en lille tallerken.",
+      "tts": {
+        "text": "En lille sød bid på en lille tallerken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du kan, så find en persisk restaurant i nærheden.",
+      "text_markdown": "Hvis du kan, så find en persisk restaurant i nærheden.",
+      "tts": {
+        "text": "Hvis du kan, så find en persisk restaurant i nærheden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eller åbn en persisk kogebog.",
+      "text_markdown": "Eller åbn en persisk kogebog.",
+      "tts": {
+        "text": "Eller åbn en persisk kogebog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Prøv en gryderet.",
+      "text_markdown": "Prøv en gryderet.",
+      "tts": {
+        "text": "Prøv en gryderet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Prøv en kop te.",
+      "text_markdown": "Prøv en kop te.",
+      "tts": {
+        "text": "Prøv en kop te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Maden har ventet i tusinder af år.",
+      "text_markdown": "Maden har ventet i tusinder af år.",
+      "tts": {
+        "text": "Maden har ventet i tusinder af år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Den kan også vente på dig.",
+      "text_markdown": "Den kan også vente på dig.",
+      "tts": {
+        "text": "Den kan også vente på dig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tak fordi du lyttede.",
+      "text_markdown": "Tak fordi du lyttede.",
+      "tts": {
+        "text": "Tak fordi du lyttede.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lav noget mad.",
+      "text_markdown": "Lav noget mad.",
+      "tts": {
+        "text": "Lav noget mad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spis sammen med andre.",
+      "text_markdown": "Spis sammen med andre.",
+      "tts": {
+        "text": "Spis sammen med andre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeg hedder Kym.",
+      "text_markdown": "Jeg hedder Kym.",
+      "tts": {
+        "text": "Jeg hedder Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farvel.",
+      "text_markdown": "Farvel.",
+      "tts": {
+        "text": "Farvel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "sw",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ujumbe kwa Msomaji",
+      "text_markdown": "Ujumbe kwa Msomaji"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ni hadithi ya kweli ya Hayreddin Barbarossa, mtu aliyeufanya Dola ya Othmaniya kuwa nguvu kuu ya majini.",
+      "text_markdown": "Hii ni hadithi ya kweli ya Hayreddin Barbarossa, mtu aliyeufanya Dola ya Othmaniya kuwa nguvu kuu ya majini.",
+      "tts": {
+        "text": "Hii ni hadithi ya kweli ya Hayreddin Barbarossa, mtu aliyeufanya Dola ya Othmaniya kuwa nguvu kuu ya majini.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alianza maisha yake kama mwana wa fundi vyungu katika kisiwa cha Ugiriki.",
+      "text_markdown": "Alianza maisha yake kama mwana wa fundi vyungu katika kisiwa cha Ugiriki.",
+      "tts": {
+        "text": "Alianza maisha yake kama mwana wa fundi vyungu katika kisiwa cha Ugiriki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aliyamaliza akiwa Admirali Mkuu wa jeshi la majini lenye nguvu zaidi katika Bahari ya Mediterania.",
+      "text_markdown": "Aliyamaliza akiwa Admirali Mkuu wa jeshi la majini lenye nguvu zaidi katika Bahari ya Mediterania.",
+      "tts": {
+        "text": "Aliyamaliza akiwa Admirali Mkuu wa jeshi la majini lenye nguvu zaidi katika Bahari ya Mediterania.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hadithi yake inakumbatia karne ya migogoro kati ya Dola ya Othmaniya na Ulaya ya Kikristo.",
+      "text_markdown": "Hadithi yake inakumbatia karne ya migogoro kati ya Dola ya Othmaniya na Ulaya ya Kikristo.",
+      "tts": {
+        "text": "Hadithi yake inakumbatia karne ya migogoro kati ya Dola ya Othmaniya na Ulaya ya Kikristo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni hadithi ya ndugu, makorseri, masultani, na mapambano ya kudhibiti bahari.",
+      "text_markdown": "Ni hadithi ya ndugu, makorseri, masultani, na mapambano ya kudhibiti bahari.",
+      "tts": {
+        "text": "Ni hadithi ya ndugu, makorseri, masultani, na mapambano ya kudhibiti bahari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kila vita, muungano, na usaliti unaoelezwa katika kitabu hiki umetolewa kwenye kumbukumbu za kihistoria.",
+      "text_markdown": "Kila vita, muungano, na usaliti unaoelezwa katika kitabu hiki umetolewa kwenye kumbukumbu za kihistoria.",
+      "tts": {
+        "text": "Kila vita, muungano, na usaliti unaoelezwa katika kitabu hiki umetolewa kwenye kumbukumbu za kihistoria.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kazi ya Barbarossa ilibadilisha ramani ya ulimwengu wa Bahari ya Mediterania.",
+      "text_markdown": "Kazi ya Barbarossa ilibadilisha ramani ya ulimwengu wa Bahari ya Mediterania.",
+      "tts": {
+        "text": "Kazi ya Barbarossa ilibadilisha ramani ya ulimwengu wa Bahari ya Mediterania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeshi la majini alilolijenga liliitawala bahari kwa vizazi baada ya kifo chake.",
+      "text_markdown": "Jeshi la majini alilolijenga liliitawala bahari kwa vizazi baada ya kifo chake.",
+      "tts": {
+        "text": "Jeshi la majini alilolijenga liliitawala bahari kwa vizazi baada ya kifo chake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Urithi wake bado unaunda mwambao na tamaduni za Afrika Kaskazini hadi leo.",
+      "text_markdown": "Urithi wake bado unaunda mwambao na tamaduni za Afrika Kaskazini hadi leo.",
+      "tts": {
+        "text": "Urithi wake bado unaunda mwambao na tamaduni za Afrika Kaskazini hadi leo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pale ambapo kumbukumbu za kihistoria hazikamiliki, tunasema hivyo waziwazi.",
+      "text_markdown": "Pale ambapo kumbukumbu za kihistoria hazikamiliki, tunasema hivyo waziwazi.",
+      "tts": {
+        "text": "Pale ambapo kumbukumbu za kihistoria hazikamiliki, tunasema hivyo waziwazi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pale ambapo wanahistoria wanatofautiana juu ya tarehe au maelezo, tunawasilisha simulizi inayokubalika zaidi.",
+      "text_markdown": "Pale ambapo wanahistoria wanatofautiana juu ya tarehe au maelezo, tunawasilisha simulizi inayokubalika zaidi.",
+      "tts": {
+        "text": "Pale ambapo wanahistoria wanatofautiana juu ya tarehe au maelezo, tunawasilisha simulizi inayokubalika zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hii ni historia, si hekaya, na tunaishughulikia kwa uangalifu inaostahili.",
+      "text_markdown": "Hii ni historia, si hekaya, na tunaishughulikia kwa uangalifu inaostahili.",
+      "tts": {
+        "text": "Hii ni historia, si hekaya, na tunaishughulikia kwa uangalifu inaostahili.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ulimwengu wa Bahari ya Mediterania",
+      "text_markdown": "Ulimwengu wa Bahari ya Mediterania"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bahari ya Mediterania imeketi kwenye njia panda za mabara matatu.",
+      "text_markdown": "Bahari ya Mediterania imeketi kwenye njia panda za mabara matatu.",
+      "tts": {
+        "text": "Bahari ya Mediterania imeketi kwenye njia panda za mabara matatu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaskazini iko Ulaya, kusini Afrika, na mashariki iko Asia.",
+      "text_markdown": "Kaskazini iko Ulaya, kusini Afrika, na mashariki iko Asia.",
+      "tts": {
+        "text": "Kaskazini iko Ulaya, kusini Afrika, na mashariki iko Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa maelfu ya miaka, kila ustaarabu mkubwa kuzunguka mwambao wake umepigana ili kuidhibiti.",
+      "text_markdown": "Kwa maelfu ya miaka, kila ustaarabu mkubwa kuzunguka mwambao wake umepigana ili kuidhibiti.",
+      "tts": {
+        "text": "Kwa maelfu ya miaka, kila ustaarabu mkubwa kuzunguka mwambao wake umepigana ili kuidhibiti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kufikia mwishoni mwa karne ya kumi na tano, Bahari ya Mediterania ilikuwa uwanja wa vita kati ya nguvu mbili kubwa.",
+      "text_markdown": "Kufikia mwishoni mwa karne ya kumi na tano, Bahari ya Mediterania ilikuwa uwanja wa vita kati ya nguvu mbili kubwa.",
+      "tts": {
+        "text": "Kufikia mwishoni mwa karne ya kumi na tano, Bahari ya Mediterania ilikuwa uwanja wa vita kati ya nguvu mbili kubwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Upande wa mashariki, Dola ya Othmaniya ilikuwa ikipanuka kwa kasi chini ya mfululizo wa masultani wenye matarajio makubwa.",
+      "text_markdown": "Upande wa mashariki, Dola ya Othmaniya ilikuwa ikipanuka kwa kasi chini ya mfululizo wa masultani wenye matarajio makubwa.",
+      "tts": {
+        "text": "Upande wa mashariki, Dola ya Othmaniya ilikuwa ikipanuka kwa kasi chini ya mfululizo wa masultani wenye matarajio makubwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Upande wa magharibi, falme za Hispania na Dola Takatifu ya Kirumi chini ya Charles wa Tano zilijaribu kuirudisha nyuma.",
+      "text_markdown": "Upande wa magharibi, falme za Hispania na Dola Takatifu ya Kirumi chini ya Charles wa Tano zilijaribu kuirudisha nyuma.",
+      "tts": {
+        "text": "Upande wa magharibi, falme za Hispania na Dola Takatifu ya Kirumi chini ya Charles wa Tano zilijaribu kuirudisha nyuma.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dola ya Othmaniya iliuteka Konstantinopo katika mwaka wa elfu moja mia nne hamsini na tatu.",
+      "text_markdown": "Dola ya Othmaniya iliuteka Konstantinopo katika mwaka wa elfu moja mia nne hamsini na tatu.",
+      "tts": {
+        "text": "Dola ya Othmaniya iliuteka Konstantinopo katika mwaka wa elfu moja mia nne hamsini na tatu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ushindi huo uliimaliza Dola ya Byzantine na kuwapa Waothmaniya udhibiti wa Bahari ya Mediterania ya mashariki.",
+      "text_markdown": "Ushindi huo uliimaliza Dola ya Byzantine na kuwapa Waothmaniya udhibiti wa Bahari ya Mediterania ya mashariki.",
+      "tts": {
+        "text": "Ushindi huo uliimaliza Dola ya Byzantine na kuwapa Waothmaniya udhibiti wa Bahari ya Mediterania ya mashariki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mji uliopewa jina jipya la Istanbul ukawa mji mkuu wa dola kubwa na inayokua.",
+      "text_markdown": "Mji uliopewa jina jipya la Istanbul ukawa mji mkuu wa dola kubwa na inayokua.",
+      "tts": {
+        "text": "Mji uliopewa jina jipya la Istanbul ukawa mji mkuu wa dola kubwa na inayokua.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bandari yake, Pembe ya Dhahabu, ikawa kambi ya nyumbani ya meli za Othmaniya.",
+      "text_markdown": "Bandari yake, Pembe ya Dhahabu, ikawa kambi ya nyumbani ya meli za Othmaniya.",
+      "tts": {
+        "text": "Bandari yake, Pembe ya Dhahabu, ikawa kambi ya nyumbani ya meli za Othmaniya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wakati huo huo, Hispania ilikuwa imekamilisha Reconquista.",
+      "text_markdown": "Wakati huo huo, Hispania ilikuwa imekamilisha Reconquista.",
+      "tts": {
+        "text": "Wakati huo huo, Hispania ilikuwa imekamilisha Reconquista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mnamo mwaka wa 1492, wafalme wa Kihispania Ferdinand na Isabella waliiteka Granada, ufalme wa mwisho wa Kiislamu katika Rasi ya Iberia.",
+      "text_markdown": "Mnamo mwaka wa 1492, wafalme wa Kihispania Ferdinand na Isabella waliiteka Granada, ufalme wa mwisho wa Kiislamu katika Rasi ya Iberia.",
+      "tts": {
+        "text": "Mnamo mwaka wa elfu moja mia nne tisini na mbili, wafalme wa Kihispania Ferdinand na Isabella waliiteka Granada, ufalme wa mwisho wa Kiislamu katika Rasi ya Iberia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mamia ya maelfu ya Waislamu na Wayahudi walifukuzwa kutoka Hispania katika miaka iliyofuata.",
+      "text_markdown": "Mamia ya maelfu ya Waislamu na Wayahudi walifukuzwa kutoka Hispania katika miaka iliyofuata.",
+      "tts": {
+        "text": "Mamia ya maelfu ya Waislamu na Wayahudi walifukuzwa kutoka Hispania katika miaka iliyofuata.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wengi wao walikimbilia Afrika Kaskazini na Dola ya Othmaniya.",
+      "text_markdown": "Wengi wao walikimbilia Afrika Kaskazini na Dola ya Othmaniya.",
+      "tts": {
+        "text": "Wengi wao walikimbilia Afrika Kaskazini na Dola ya Othmaniya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pwani ya Afrika Kaskazini, inayojulikana kama Pwani ya Berbera, ikawa kimbilio kwa watu hao waliohamishwa.",
+      "text_markdown": "Pwani ya Afrika Kaskazini, inayojulikana kama Pwani ya Berbera, ikawa kimbilio kwa watu hao waliohamishwa.",
+      "tts": {
+        "text": "Pwani ya Afrika Kaskazini, inayojulikana kama Pwani ya Berbera, ikawa kimbilio kwa watu hao waliohamishwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miji kama Algiers, Tunis, na Tripoli iliyonyonya mawimbi ya wakimbizi kutoka Hispania.",
+      "text_markdown": "Miji kama Algiers, Tunis, na Tripoli iliyonyonya mawimbi ya wakimbizi kutoka Hispania.",
+      "tts": {
+        "text": "Miji kama Algiers, Tunis, na Tripoli iliyonyonya mawimbi ya wakimbizi kutoka Hispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jamii hizi zilizohamishwa zilibeba chuki kubwa dhidi ya Taji ya Hispania.",
+      "text_markdown": "Jamii hizi zilizohamishwa zilibeba chuki kubwa dhidi ya Taji ya Hispania.",
+      "tts": {
+        "text": "Jamii hizi zilizohamishwa zilibeba chuki kubwa dhidi ya Taji ya Hispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wengi waligeukia ukorseri kama riziki na kisasi pia.",
+      "text_markdown": "Wengi waligeukia ukorseri kama riziki na kisasi pia.",
+      "tts": {
+        "text": "Wengi waligeukia ukorseri kama riziki na kisasi pia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korseri alikuwa tofauti na maharamia wa kawaida.",
+      "text_markdown": "Korseri alikuwa tofauti na maharamia wa kawaida.",
+      "tts": {
+        "text": "Korseri alikuwa tofauti na maharamia wa kawaida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Makorseri walifanya kazi kwa idhini ya serikali au mtawala.",
+      "text_markdown": "Makorseri walifanya kazi kwa idhini ya serikali au mtawala.",
+      "tts": {
+        "text": "Makorseri walifanya kazi kwa idhini ya serikali au mtawala.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Walishambulia meli za adui na kugawana faida na taifa lao mlinzi.",
+      "text_markdown": "Walishambulia meli za adui na kugawana faida na taifa lao mlinzi.",
+      "tts": {
+        "text": "Walishambulia meli za adui na kugawana faida na taifa lao mlinzi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kwa njia hii, ukorseri ulikuwa aina ya vita vya majini vilivyofanywa na watu binafsi.",
+      "text_markdown": "Kwa njia hii, ukorseri ulikuwa aina ya vita vya majini vilivyofanywa na watu binafsi.",
+      "tts": {
+        "text": "Kwa njia hii, ukorseri ulikuwa aina ya vita vya majini vilivyofanywa na watu binafsi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nguvu za Kikristo na za Kiislamu zote zilitumia makorseri kwa wingi.",
+      "text_markdown": "Nguvu za Kikristo na za Kiislamu zote zilitumia makorseri kwa wingi.",
+      "tts": {
+        "text": "Nguvu za Kikristo na za Kiislamu zote zilitumia makorseri kwa wingi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mashujaa wa Mtakatifu Yohane, walioko katika visiwa vya Rhodes na baadaye Malta, walikuwa makorseri wa Kikristo waliovamia meli za Kiislamu.",
+      "text_markdown": "Mashujaa wa Mtakatifu Yohane, walioko katika visiwa vya Rhodes na baadaye Malta, walikuwa makorseri wa Kikristo waliovamia meli za Kiislamu.",
+      "tts": {
+        "text": "Mashujaa wa Mtakatifu Yohane, walioko katika visiwa vya Rhodes na baadaye Malta, walikuwa makorseri wa Kikristo waliovamia meli za Kiislamu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Makorseri wa Kiislamu walioko Afrika Kaskazini walivamia meli za Kikristo kwa kulipiza kisasi.",
+      "text_markdown": "Makorseri wa Kiislamu walioko Afrika Kaskazini walivamia meli za Kikristo kwa kulipiza kisasi.",
+      "tts": {
+        "text": "Makorseri wa Kiislamu walioko Afrika Kaskazini walivamia meli za Kikristo kwa kulipiza kisasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bahari ya Mediterania ilikuwa bahari ya vita vya kudumu, vya kiwango cha chini.",
+      "text_markdown": "Bahari ya Mediterania ilikuwa bahari ya vita vya kudumu, vya kiwango cha chini.",
+      "tts": {
+        "text": "Bahari ya Mediterania ilikuwa bahari ya vita vya kudumu, vya kiwango cha chini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biashara ndio ilikuwa zawadi iliyoendesha mgogoro huu.",
+      "text_markdown": "Biashara ndio ilikuwa zawadi iliyoendesha mgogoro huu.",
+      "tts": {
+        "text": "Biashara ndio ilikuwa zawadi iliyoendesha mgogoro huu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bahari ya Mediterania ilibeba hariri kutoka Uchina, viungo kutoka Uhindi, nafaka kutoka Misri, na sufu kutoka Ulaya.",
+      "text_markdown": "Bahari ya Mediterania ilibeba hariri kutoka Uchina, viungo kutoka Uhindi, nafaka kutoka Misri, na sufu kutoka Ulaya.",
+      "tts": {
+        "text": "Bahari ya Mediterania ilibeba hariri kutoka Uchina, viungo kutoka Uhindi, nafaka kutoka Misri, na sufu kutoka Ulaya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Udhibiti wa njia hizi za biashara ulimaanisha utajiri mkubwa sana.",
+      "text_markdown": "Udhibiti wa njia hizi za biashara ulimaanisha utajiri mkubwa sana.",
+      "tts": {
+        "text": "Udhibiti wa njia hizi za biashara ulimaanisha utajiri mkubwa sana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kila mji wa bandari ulitegemea bahari kwa ajili ya kuishi kwake.",
+      "text_markdown": "Kila mji wa bandari ulitegemea bahari kwa ajili ya kuishi kwake.",
+      "tts": {
+        "text": "Kila mji wa bandari ulitegemea bahari kwa ajili ya kuishi kwake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Visiwa vya Bahari ya Mediterania vilikuwa zawadi za kimkakati.",
+      "text_markdown": "Visiwa vya Bahari ya Mediterania vilikuwa zawadi za kimkakati.",
+      "tts": {
+        "text": "Visiwa vya Bahari ya Mediterania vilikuwa zawadi za kimkakati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aliyedhibiti visiwa alidhibiti njia za usafirishaji kati yao.",
+      "text_markdown": "Aliyedhibiti visiwa alidhibiti njia za usafirishaji kati yao.",
+      "tts": {
+        "text": "Aliyedhibiti visiwa alidhibiti njia za usafirishaji kati yao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rhodes, Kupro, Krete, Sicily, na Malta vilibadilisha mikono mara kwa mara kwa karne nyingi.",
+      "text_markdown": "Rhodes, Kupro, Krete, Sicily, na Malta vilibadilisha mikono mara kwa mara kwa karne nyingi.",
+      "tts": {
+        "text": "Rhodes, Kupro, Krete, Sicily, na Malta vilibadilisha mikono mara kwa mara kwa karne nyingi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nguvu ya majini iliamua ni dola gani iliyovimiliki.",
+      "text_markdown": "Nguvu ya majini iliamua ni dola gani iliyovimiliki.",
+      "tts": {
+        "text": "Nguvu ya majini iliamua ni dola gani iliyovimiliki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Galeri zilikuwa meli za vita za Bahari ya Mediterania katika kipindi hicho.",
+      "text_markdown": "Galeri zilikuwa meli za vita za Bahari ya Mediterania katika kipindi hicho.",
+      "tts": {
+        "text": "Galeri zilikuwa meli za vita za Bahari ya Mediterania katika kipindi hicho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galeri ilikuwa chombo kirefu na chembamba kilichoendeshwa kwa makasia na matanga.",
+      "text_markdown": "Galeri ilikuwa chombo kirefu na chembamba kilichoendeshwa kwa makasia na matanga.",
+      "tts": {
+        "text": "Galeri ilikuwa chombo kirefu na chembamba kilichoendeshwa kwa makasia na matanga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kila galeri ilibeba mamia ya wapiga makasia, wengi wao wakiwa watumwa au wafungwa wa vita.",
+      "text_markdown": "Kila galeri ilibeba mamia ya wapiga makasia, wengi wao wakiwa watumwa au wafungwa wa vita.",
+      "tts": {
+        "text": "Kila galeri ilibeba mamia ya wapiga makasia, wengi wao wakiwa watumwa au wafungwa wa vita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vitani, galeri ziligongana na meli za adui kisha kupeleka askari wenye silaha juu ya meli kupigana mkono kwa mkono.",
+      "text_markdown": "Vitani, galeri ziligongana na meli za adui kisha kupeleka askari wenye silaha juu ya meli kupigana mkono kwa mkono.",
+      "tts": {
+        "text": "Vitani, galeri ziligongana na meli za adui kisha kupeleka askari wenye silaha juu ya meli kupigana mkono kwa mkono.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mfumo wa utumwa wa galeri ulikuwa wa kikatili kupita maelezo.",
+      "text_markdown": "Mfumo wa utumwa wa galeri ulikuwa wa kikatili kupita maelezo.",
+      "tts": {
+        "text": "Mfumo wa utumwa wa galeri ulikuwa wa kikatili kupita maelezo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mateka kutoka vita na uvamizi walifungwa minyororo kwenye makasia na kulazimishwa kupiga makasia hadi walipokufa.",
+      "text_markdown": "Mateka kutoka vita na uvamizi walifungwa minyororo kwenye makasia na kulazimishwa kupiga makasia hadi walipokufa.",
+      "tts": {
+        "text": "Mateka kutoka vita na uvamizi walifungwa minyororo kwenye makasia na kulazimishwa kupiga makasia hadi walipokufa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wakristo waliwafanya Waislamu watumwa, na Waislamu waliwafanya Wakristo watumwa.",
+      "text_markdown": "Wakristo waliwafanya Waislamu watumwa, na Waislamu waliwafanya Wakristo watumwa.",
+      "tts": {
+        "text": "Wakristo waliwafanya Waislamu watumwa, na Waislamu waliwafanya Wakristo watumwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ukatili huu ulikuwa wa kawaida sana kiasi kwamba pande zote mbili ziliukubali kuwa wa kawaida.",
+      "text_markdown": "Ukatili huu ulikuwa wa kawaida sana kiasi kwamba pande zote mbili ziliukubali kuwa wa kawaida.",
+      "tts": {
+        "text": "Ukatili huu ulikuwa wa kawaida sana kiasi kwamba pande zote mbili ziliukubali kuwa wa kawaida.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papa huko Roma alijaribu mara kwa mara kuunganisha falme za Kikristo dhidi ya tishio la Othmaniya.",
+      "text_markdown": "Papa huko Roma alijaribu mara kwa mara kuunganisha falme za Kikristo dhidi ya tishio la Othmaniya.",
+      "tts": {
+        "text": "Papa huko Roma alijaribu mara kwa mara kuunganisha falme za Kikristo dhidi ya tishio la Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miungano hii, iliyoitwa Miungano Mitakatifu, ilikusanya pamoja meli kutoka Hispania, Venice, Genoa, na Mataifa ya Papa.",
+      "text_markdown": "Miungano hii, iliyoitwa Miungano Mitakatifu, ilikusanya pamoja meli kutoka Hispania, Venice, Genoa, na Mataifa ya Papa.",
+      "tts": {
+        "text": "Miungano hii, iliyoitwa Miungano Mitakatifu, ilikusanya pamoja meli kutoka Hispania, Venice, Genoa, na Mataifa ya Papa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lakini falme za Kikristo zilitilia shaka kati yao karibu sawa na walivyowahofu Waothmaniya.",
+      "text_markdown": "Lakini falme za Kikristo zilitilia shaka kati yao karibu sawa na walivyowahofu Waothmaniya.",
+      "tts": {
+        "text": "Lakini falme za Kikristo zilitilia shaka kati yao karibu sawa na walivyowahofu Waothmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Miungano hii ilikuwa dhaifu na mara nyingi ilianguka kabla ya kuweza kufikia matokeo ya kudumu.",
+      "text_markdown": "Miungano hii ilikuwa dhaifu na mara nyingi ilianguka kabla ya kuweza kufikia matokeo ya kudumu.",
+      "tts": {
+        "text": "Miungano hii ilikuwa dhaifu na mara nyingi ilianguka kabla ya kuweza kufikia matokeo ya kudumu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika ulimwengu huu wa vurugu na mabishano, ndugu wawili walizaliwa katika kisiwa cha Ugiriki chini ya utawala wa Othmaniya.",
+      "text_markdown": "Katika ulimwengu huu wa vurugu na mabishano, ndugu wawili walizaliwa katika kisiwa cha Ugiriki chini ya utawala wa Othmaniya.",
+      "tts": {
+        "text": "Katika ulimwengu huu wa vurugu na mabishano, ndugu wawili walizaliwa katika kisiwa cha Ugiriki chini ya utawala wa Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Majina yao yalikuwa Aruj na Hizir.",
+      "text_markdown": "Majina yao yalikuwa Aruj na Hizir.",
+      "tts": {
+        "text": "Majina yao yalikuwa Aruj na Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hizir baadaye angejulikana ulimwenguni kama Hayreddin Barbarossa.",
+      "text_markdown": "Hizir baadaye angejulikana ulimwenguni kama Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Hizir baadaye angejulikana ulimwenguni kama Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Ulimwengu wa Bahari ya Mediterania",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kwa pamoja, wangelibadilisha uwiano wa nguvu wa Bahari ya Mediterania nzima.",
+      "text_markdown": "Kwa pamoja, wangelibadilisha uwiano wa nguvu wa Bahari ya Mediterania nzima.",
+      "tts": {
+        "text": "Kwa pamoja, wangelibadilisha uwiano wa nguvu wa Bahari ya Mediterania nzima.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Asili",
+      "text_markdown": "Asili"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa alizaliwa karibu mwaka wa 1478 katika kisiwa cha Lesbos.",
+      "text_markdown": "Hayreddin Barbarossa alizaliwa karibu mwaka wa 1478 katika kisiwa cha Lesbos.",
+      "tts": {
+        "text": "Hayreddin Barbarossa alizaliwa karibu mwaka wa elfu moja mia nne sabini na nane katika kisiwa cha Lesbos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos ni kisiwa kikubwa cha Kigiriki katika Bahari ya Aegean ya kaskazini mashariki, karibu na pwani ya Uturuki ya kisasa.",
+      "text_markdown": "Lesbos ni kisiwa kikubwa cha Kigiriki katika Bahari ya Aegean ya kaskazini mashariki, karibu na pwani ya Uturuki ya kisasa.",
+      "tts": {
+        "text": "Lesbos ni kisiwa kikubwa cha Kigiriki katika Bahari ya Aegean ya kaskazini mashariki, karibu na pwani ya Uturuki ya kisasa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wakati wa kuzaliwa kwake, kisiwa hicho kilikuwa kimeingia tu chini ya udhibiti wa Othmaniya.",
+      "text_markdown": "Wakati wa kuzaliwa kwake, kisiwa hicho kilikuwa kimeingia tu chini ya udhibiti wa Othmaniya.",
+      "tts": {
+        "text": "Wakati wa kuzaliwa kwake, kisiwa hicho kilikuwa kimeingia tu chini ya udhibiti wa Othmaniya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baba yake alikuwa Yakup, askari wa zamani wa Othmaniya aliyekaa Lesbos baada ya utumishi wa kijeshi.",
+      "text_markdown": "Baba yake alikuwa Yakup, askari wa zamani wa Othmaniya aliyekaa Lesbos baada ya utumishi wa kijeshi.",
+      "tts": {
+        "text": "Baba yake alikuwa Yakup, askari wa zamani wa Othmaniya aliyekaa Lesbos baada ya utumishi wa kijeshi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakup alifanya kazi kama fundi vyungu na alikuwa, kwa simulizi nyingi, fundi wa kawaida.",
+      "text_markdown": "Yakup alifanya kazi kama fundi vyungu na alikuwa, kwa simulizi nyingi, fundi wa kawaida.",
+      "tts": {
+        "text": "Yakup alifanya kazi kama fundi vyungu na alikuwa, kwa simulizi nyingi, fundi wa kawaida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mama yake alikuwa mwanamke wa Kigiriki wa eneo hilo, yawezekana mwenye asili ya Kikristo, ambaye jina lake limeandikwa kama Katerina.",
+      "text_markdown": "Mama yake alikuwa mwanamke wa Kigiriki wa eneo hilo, yawezekana mwenye asili ya Kikristo, ambaye jina lake limeandikwa kama Katerina.",
+      "tts": {
+        "text": "Mama yake alikuwa mwanamke wa Kigiriki wa eneo hilo, yawezekana mwenye asili ya Kikristo, ambaye jina lake limeandikwa kama Katerina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Familia haikuwa tajiri, lakini pia haikuwa maskini hohehahe.",
+      "text_markdown": "Familia haikuwa tajiri, lakini pia haikuwa maskini hohehahe.",
+      "tts": {
+        "text": "Familia haikuwa tajiri, lakini pia haikuwa maskini hohehahe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakup na Katerina walikuwa na wana wanne.",
+      "text_markdown": "Yakup na Katerina walikuwa na wana wanne.",
+      "tts": {
+        "text": "Yakup na Katerina walikuwa na wana wanne.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mkubwa wao alikuwa Ishak, kisha Aruj, kisha Hizir, na hatimaye Ilyas.",
+      "text_markdown": "Mkubwa wao alikuwa Ishak, kisha Aruj, kisha Hizir, na hatimaye Ilyas.",
+      "tts": {
+        "text": "Mkubwa wao alikuwa Ishak, kisha Aruj, kisha Hizir, na hatimaye Ilyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mvulana ambaye angekuwa Hayreddin Barbarossa alikuwa Hizir.",
+      "text_markdown": "Mvulana ambaye angekuwa Hayreddin Barbarossa alikuwa Hizir.",
+      "tts": {
+        "text": "Mvulana ambaye angekuwa Hayreddin Barbarossa alikuwa Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ndugu wote wanne hatimaye wangeenda baharini.",
+      "text_markdown": "Ndugu wote wanne hatimaye wangeenda baharini.",
+      "tts": {
+        "text": "Ndugu wote wanne hatimaye wangeenda baharini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndugu hao walikulia katika ulimwengu uliojengwa na bahari.",
+      "text_markdown": "Ndugu hao walikulia katika ulimwengu uliojengwa na bahari.",
+      "tts": {
+        "text": "Ndugu hao walikulia katika ulimwengu uliojengwa na bahari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos ilitegemea uvuvi na biashara ya baharini kwa uchumi wake.",
+      "text_markdown": "Lesbos ilitegemea uvuvi na biashara ya baharini kwa uchumi wake.",
+      "tts": {
+        "text": "Lesbos ilitegemea uvuvi na biashara ya baharini kwa uchumi wake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kila mvulana katika kisiwa hicho alijifunza kuendesha mashua kabla ya kuweza kusoma.",
+      "text_markdown": "Kila mvulana katika kisiwa hicho alijifunza kuendesha mashua kabla ya kuweza kusoma.",
+      "tts": {
+        "text": "Kila mvulana katika kisiwa hicho alijifunza kuendesha mashua kabla ya kuweza kusoma.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bahari haikuwa dhana kwao; ilikuwa hali yao halisi ya kila siku.",
+      "text_markdown": "Bahari haikuwa dhana kwao; ilikuwa hali yao halisi ya kila siku.",
+      "tts": {
+        "text": "Bahari haikuwa dhana kwao; ilikuwa hali yao halisi ya kila siku.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wakiwa vijana, ndugu hao walianza kufanya kazi kama mabaharia na wafanyabiashara.",
+      "text_markdown": "Wakiwa vijana, ndugu hao walianza kufanya kazi kama mabaharia na wafanyabiashara.",
+      "tts": {
+        "text": "Wakiwa vijana, ndugu hao walianza kufanya kazi kama mabaharia na wafanyabiashara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walisafirisha bidhaa kati ya visiwa vya Aegean na bara la Othmaniya.",
+      "text_markdown": "Walisafirisha bidhaa kati ya visiwa vya Aegean na bara la Othmaniya.",
+      "tts": {
+        "text": "Walisafirisha bidhaa kati ya visiwa vya Aegean na bara la Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lakini biashara ilikuwa kazi ya hatari katika bahari iliyojaa makorseri.",
+      "text_markdown": "Lakini biashara ilikuwa kazi ya hatari katika bahari iliyojaa makorseri.",
+      "tts": {
+        "text": "Lakini biashara ilikuwa kazi ya hatari katika bahari iliyojaa makorseri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Katika mojawapo ya safari zao za awali, ndugu hao walishambuliwa na Mashujaa wa Mtakatifu Yohane.",
+      "text_markdown": "Katika mojawapo ya safari zao za awali, ndugu hao walishambuliwa na Mashujaa wa Mtakatifu Yohane.",
+      "tts": {
+        "text": "Katika mojawapo ya safari zao za awali, ndugu hao walishambuliwa na Mashujaa wa Mtakatifu Yohane.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mashujaa wa Mtakatifu Yohane walikuwa shirika la kijeshi la Kikristo lililoko katika kisiwa cha Rhodes.",
+      "text_markdown": "Mashujaa wa Mtakatifu Yohane walikuwa shirika la kijeshi la Kikristo lililoko katika kisiwa cha Rhodes.",
+      "tts": {
+        "text": "Mashujaa wa Mtakatifu Yohane walikuwa shirika la kijeshi la Kikristo lililoko katika kisiwa cha Rhodes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walikuwa miongoni mwa makorseri walioogopwa zaidi katika Bahari ya Mediterania.",
+      "text_markdown": "Walikuwa miongoni mwa makorseri walioogopwa zaidi katika Bahari ya Mediterania.",
+      "tts": {
+        "text": "Walikuwa miongoni mwa makorseri walioogopwa zaidi katika Bahari ya Mediterania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Walishambulia meli za Kiislamu bila kuchoka, wakikamata bidhaa na kuwafanya wafanyakazi watumwa.",
+      "text_markdown": "Walishambulia meli za Kiislamu bila kuchoka, wakikamata bidhaa na kuwafanya wafanyakazi watumwa.",
+      "tts": {
+        "text": "Walishambulia meli za Kiislamu bila kuchoka, wakikamata bidhaa na kuwafanya wafanyakazi watumwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wakati wa shambulizi kwenye chombo cha ndugu hao, Ilyas, ndugu mdogo zaidi, aliuawa.",
+      "text_markdown": "Wakati wa shambulizi kwenye chombo cha ndugu hao, Ilyas, ndugu mdogo zaidi, aliuawa.",
+      "tts": {
+        "text": "Wakati wa shambulizi kwenye chombo cha ndugu hao, Ilyas, ndugu mdogo zaidi, aliuawa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj, mkali zaidi miongoni mwa ndugu hao, alikamatwa na kufanywa mtumwa.",
+      "text_markdown": "Aruj, mkali zaidi miongoni mwa ndugu hao, alikamatwa na kufanywa mtumwa.",
+      "tts": {
+        "text": "Aruj, mkali zaidi miongoni mwa ndugu hao, alikamatwa na kufanywa mtumwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alikaa miaka kadhaa kama mtumwa wa galeri, akiwa amefungwa minyororo kwenye makasia ya meli ya vita ya Kikristo.",
+      "text_markdown": "Alikaa miaka kadhaa kama mtumwa wa galeri, akiwa amefungwa minyororo kwenye makasia ya meli ya vita ya Kikristo.",
+      "tts": {
+        "text": "Alikaa miaka kadhaa kama mtumwa wa galeri, akiwa amefungwa minyororo kwenye makasia ya meli ya vita ya Kikristo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tukio hilo lilimfanya awe mgumu kwa njia ambazo zingeshawishi maisha yake yote yaliyobaki.",
+      "text_markdown": "Tukio hilo lilimfanya awe mgumu kwa njia ambazo zingeshawishi maisha yake yote yaliyobaki.",
+      "tts": {
+        "text": "Tukio hilo lilimfanya awe mgumu kwa njia ambazo zingeshawishi maisha yake yote yaliyobaki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alipoachiwa hatimaye kwa fidia au kutoroka, alikuwa mtu aliyebadilika kabisa.",
+      "text_markdown": "Alipoachiwa hatimaye kwa fidia au kutoroka, alikuwa mtu aliyebadilika kabisa.",
+      "tts": {
+        "text": "Alipoachiwa hatimaye kwa fidia au kutoroka, alikuwa mtu aliyebadilika kabisa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj aliamua kuwa korseri mwenyewe.",
+      "text_markdown": "Aruj aliamua kuwa korseri mwenyewe.",
+      "tts": {
+        "text": "Aruj aliamua kuwa korseri mwenyewe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alipata meli na wafanyakazi na akaanza kuvamia meli za Kikristo katika Bahari ya Mediterania ya mashariki.",
+      "text_markdown": "Alipata meli na wafanyakazi na akaanza kuvamia meli za Kikristo katika Bahari ya Mediterania ya mashariki.",
+      "tts": {
+        "text": "Alipata meli na wafanyakazi na akaanza kuvamia meli za Kikristo katika Bahari ya Mediterania ya mashariki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ndugu yake mdogo Hizir alijiunga naye akiwa msaidizi wake.",
+      "text_markdown": "Ndugu yake mdogo Hizir alijiunga naye akiwa msaidizi wake.",
+      "tts": {
+        "text": "Ndugu yake mdogo Hizir alijiunga naye akiwa msaidizi wake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kwa pamoja, walithibitika kuwa wavamizi wa baharini wenye uwezo wa kipekee.",
+      "text_markdown": "Kwa pamoja, walithibitika kuwa wavamizi wa baharini wenye uwezo wa kipekee.",
+      "tts": {
+        "text": "Kwa pamoja, walithibitika kuwa wavamizi wa baharini wenye uwezo wa kipekee.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndugu hao walihamishia kambi yao ya shughuli katika Bahari ya Mediterania ya magharibi.",
+      "text_markdown": "Ndugu hao walihamishia kambi yao ya shughuli katika Bahari ya Mediterania ya magharibi.",
+      "tts": {
+        "text": "Ndugu hao walihamishia kambi yao ya shughuli katika Bahari ya Mediterania ya magharibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walijiimarisha katika kisiwa cha Djerba, mbali na pwani ya Tunisia ya kisasa.",
+      "text_markdown": "Walijiimarisha katika kisiwa cha Djerba, mbali na pwani ya Tunisia ya kisasa.",
+      "tts": {
+        "text": "Walijiimarisha katika kisiwa cha Djerba, mbali na pwani ya Tunisia ya kisasa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kutoka Djerba, waliweza kuvamia meli za Kihispania na Kiitaliano kwenye njia za biashara zenye shughuli nyingi.",
+      "text_markdown": "Kutoka Djerba, waliweza kuvamia meli za Kihispania na Kiitaliano kwenye njia za biashara zenye shughuli nyingi.",
+      "tts": {
+        "text": "Kutoka Djerba, waliweza kuvamia meli za Kihispania na Kiitaliano kwenye njia za biashara zenye shughuli nyingi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sifa yao ilikua haraka miongoni mwa washirika na maadui pia.",
+      "text_markdown": "Sifa yao ilikua haraka miongoni mwa washirika na maadui pia.",
+      "tts": {
+        "text": "Sifa yao ilikua haraka miongoni mwa washirika na maadui pia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj ndiye alikuwa uso wa hadhara wa ushirikiano wao.",
+      "text_markdown": "Aruj ndiye alikuwa uso wa hadhara wa ushirikiano wao.",
+      "tts": {
+        "text": "Aruj ndiye alikuwa uso wa hadhara wa ushirikiano wao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alikuwa shujaa, mwenye haiba, na mwenye umbo la kuvutia.",
+      "text_markdown": "Alikuwa shujaa, mwenye haiba, na mwenye umbo la kuvutia.",
+      "tts": {
+        "text": "Alikuwa shujaa, mwenye haiba, na mwenye umbo la kuvutia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vyanzo vya Kiulaya vinamuelezea kama mwenye ndevu nyekundu, hali iliyowapatia ndugu hao jina la utani la kifahari.",
+      "text_markdown": "Vyanzo vya Kiulaya vinamuelezea kama mwenye ndevu nyekundu, hali iliyowapatia ndugu hao jina la utani la kifahari.",
+      "tts": {
+        "text": "Vyanzo vya Kiulaya vinamuelezea kama mwenye ndevu nyekundu, hali iliyowapatia ndugu hao jina la utani la kifahari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jina Barbarossa, lenye maana ya ndevu nyekundu, awali lilitumika kwa Aruj na baadaye likahamishiwa kwa Hayreddin.",
+      "text_markdown": "Jina Barbarossa, lenye maana ya ndevu nyekundu, awali lilitumika kwa Aruj na baadaye likahamishiwa kwa Hayreddin.",
+      "tts": {
+        "text": "Jina Barbarossa, lenye maana ya ndevu nyekundu, awali lilitumika kwa Aruj na baadaye likahamishiwa kwa Hayreddin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir alikuwa mwanamkakati na mpangaji nyuma ya pazia.",
+      "text_markdown": "Hizir alikuwa mwanamkakati na mpangaji nyuma ya pazia.",
+      "tts": {
+        "text": "Hizir alikuwa mwanamkakati na mpangaji nyuma ya pazia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alisimamia mipango ya meli yao iliyokua na kudumisha miungano na watawala wa eneo.",
+      "text_markdown": "Alisimamia mipango ya meli yao iliyokua na kudumisha miungano na watawala wa eneo.",
+      "tts": {
+        "text": "Alisimamia mipango ya meli yao iliyokua na kudumisha miungano na watawala wa eneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wakati Aruj aliongoza uvamizi binafsi, Hizir alihakikisha shughuli inaendeshwa vizuri.",
+      "text_markdown": "Wakati Aruj aliongoza uvamizi binafsi, Hizir alihakikisha shughuli inaendeshwa vizuri.",
+      "tts": {
+        "text": "Wakati Aruj aliongoza uvamizi binafsi, Hizir alihakikisha shughuli inaendeshwa vizuri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ujuzi wao tofauti uliwafanya kuwa timu yenye nguvu.",
+      "text_markdown": "Ujuzi wao tofauti uliwafanya kuwa timu yenye nguvu.",
+      "tts": {
+        "text": "Ujuzi wao tofauti uliwafanya kuwa timu yenye nguvu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uvamizi wa ndugu hao ulitumikia kusudi zaidi ya faida binafsi.",
+      "text_markdown": "Uvamizi wa ndugu hao ulitumikia kusudi zaidi ya faida binafsi.",
+      "tts": {
+        "text": "Uvamizi wa ndugu hao ulitumikia kusudi zaidi ya faida binafsi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waliwaokoa wakimbizi wa Kiislamu wakikimbia Mahakama ya Hispania.",
+      "text_markdown": "Waliwaokoa wakimbizi wa Kiislamu wakikimbia Mahakama ya Hispania.",
+      "tts": {
+        "text": "Waliwaokoa wakimbizi wa Kiislamu wakikimbia Mahakama ya Hispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kati ya mwaka wa 1504 na 1510, walisafirisha maelfu ya Waislamu kutoka Hispania kwenda Afrika Kaskazini.",
+      "text_markdown": "Kati ya mwaka wa 1504 na 1510, walisafirisha maelfu ya Waislamu kutoka Hispania kwenda Afrika Kaskazini.",
+      "tts": {
+        "text": "Kati ya mwaka wa elfu moja mia tano na nne na elfu moja mia tano na kumi, walisafirisha maelfu ya Waislamu kutoka Hispania kwenda Afrika Kaskazini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hii iliwapatia heshima kubwa miongoni mwa jamii za Kiislamu za Pwani ya Berbera.",
+      "text_markdown": "Hii iliwapatia heshima kubwa miongoni mwa jamii za Kiislamu za Pwani ya Berbera.",
+      "tts": {
+        "text": "Hii iliwapatia heshima kubwa miongoni mwa jamii za Kiislamu za Pwani ya Berbera.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj aliweka macho yake kwenye zawadi kubwa zaidi ya uvamizi.",
+      "text_markdown": "Aruj aliweka macho yake kwenye zawadi kubwa zaidi ya uvamizi.",
+      "tts": {
+        "text": "Aruj aliweka macho yake kwenye zawadi kubwa zaidi ya uvamizi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alitaka kuteka mji na kuanzisha kambi inayoweza kupinga nguvu za Hispania.",
+      "text_markdown": "Alitaka kuteka mji na kuanzisha kambi inayoweza kupinga nguvu za Hispania.",
+      "tts": {
+        "text": "Alitaka kuteka mji na kuanzisha kambi inayoweza kupinga nguvu za Hispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lengo lake lilikuwa Algiers, mji wa bandari kwenye pwani ya Afrika Kaskazini wenye bandari ya asili yenye fahari.",
+      "text_markdown": "Lengo lake lilikuwa Algiers, mji wa bandari kwenye pwani ya Afrika Kaskazini wenye bandari ya asili yenye fahari.",
+      "tts": {
+        "text": "Lengo lake lilikuwa Algiers, mji wa bandari kwenye pwani ya Afrika Kaskazini wenye bandari ya asili yenye fahari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Asili",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuiteka Algiers kungewabadilisha ndugu hao kutoka kuwa makorseri kuwa watawala.",
+      "text_markdown": "Kuiteka Algiers kungewabadilisha ndugu hao kutoka kuwa makorseri kuwa watawala.",
+      "tts": {
+        "text": "Kuiteka Algiers kungewabadilisha ndugu hao kutoka kuwa makorseri kuwa watawala.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kupanda kwa Mamlaka",
+      "text_markdown": "Kupanda kwa Mamlaka"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mnamo mwaka wa 1516, Aruj aliuteka mji wa Algiers.",
+      "text_markdown": "Mnamo mwaka wa 1516, Aruj aliuteka mji wa Algiers.",
+      "tts": {
+        "text": "Mnamo mwaka wa elfu moja mia tano kumi na sita, Aruj aliuteka mji wa Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alimpindua mtawala wa eneo na akajitangaza kuwa Sultani wa Algiers.",
+      "text_markdown": "Alimpindua mtawala wa eneo na akajitangaza kuwa Sultani wa Algiers.",
+      "tts": {
+        "text": "Alimpindua mtawala wa eneo na akajitangaza kuwa Sultani wa Algiers.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ilikuwa hatua jasiri na ya ujasiri iliyolitisha Dola ya Hispania.",
+      "text_markdown": "Ilikuwa hatua jasiri na ya ujasiri iliyolitisha Dola ya Hispania.",
+      "tts": {
+        "text": "Ilikuwa hatua jasiri na ya ujasiri iliyolitisha Dola ya Hispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algiers sasa ilikuwa mikononi mwa kiongozi wa vita wa korseri.",
+      "text_markdown": "Algiers sasa ilikuwa mikononi mwa kiongozi wa vita wa korseri.",
+      "tts": {
+        "text": "Algiers sasa ilikuwa mikononi mwa kiongozi wa vita wa korseri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj alithibitika kuwa mtawala mwenye uwezo lakini mkatili.",
+      "text_markdown": "Aruj alithibitika kuwa mtawala mwenye uwezo lakini mkatili.",
+      "tts": {
+        "text": "Aruj alithibitika kuwa mtawala mwenye uwezo lakini mkatili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aliongeza eneo lake kwenye pwani ya Afrika Kaskazini.",
+      "text_markdown": "Aliongeza eneo lake kwenye pwani ya Afrika Kaskazini.",
+      "tts": {
+        "text": "Aliongeza eneo lake kwenye pwani ya Afrika Kaskazini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alijenga miungano na makabila ya Waberberi wa eneo na jamii za wakimbizi wa Kiislamu.",
+      "text_markdown": "Alijenga miungano na makabila ya Waberberi wa eneo na jamii za wakimbizi wa Kiislamu.",
+      "tts": {
+        "text": "Alijenga miungano na makabila ya Waberberi wa eneo na jamii za wakimbizi wa Kiislamu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lakini upanuzi wake mkali ulimwingiza katika mgogoro wa moja kwa moja na Hispania.",
+      "text_markdown": "Lakini upanuzi wake mkali ulimwingiza katika mgogoro wa moja kwa moja na Hispania.",
+      "tts": {
+        "text": "Lakini upanuzi wake mkali ulimwingiza katika mgogoro wa moja kwa moja na Hispania.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mnamo mwaka wa 1518, jeshi kubwa la Kihispania liliuzingira mji wa Tlemcen, ambapo Aruj alikuwa amejikita.",
+      "text_markdown": "Mnamo mwaka wa 1518, jeshi kubwa la Kihispania liliuzingira mji wa Tlemcen, ambapo Aruj alikuwa amejikita.",
+      "tts": {
+        "text": "Mnamo mwaka wa elfu moja mia tano kumi na nane, jeshi kubwa la Kihispania liliuzingira mji wa Tlemcen, ambapo Aruj alikuwa amejikita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aruj alijaribu kutoroka pamoja na kikosi kidogo.",
+      "text_markdown": "Aruj alijaribu kutoroka pamoja na kikosi kidogo.",
+      "tts": {
+        "text": "Aruj alijaribu kutoroka pamoja na kikosi kidogo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alikamatwa na kuuawa na askari wa Kihispania wakati wa mafungo.",
+      "text_markdown": "Alikamatwa na kuuawa na askari wa Kihispania wakati wa mafungo.",
+      "tts": {
+        "text": "Alikamatwa na kuuawa na askari wa Kihispania wakati wa mafungo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kifo chake kilimwacha Hizir kama ndugu pekee aliyebaki na kiongozi wa kila kitu ambacho Aruj alikuwa amejenga.",
+      "text_markdown": "Kifo chake kilimwacha Hizir kama ndugu pekee aliyebaki na kiongozi wa kila kitu ambacho Aruj alikuwa amejenga.",
+      "tts": {
+        "text": "Kifo chake kilimwacha Hizir kama ndugu pekee aliyebaki na kiongozi wa kila kitu ambacho Aruj alikuwa amejenga.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir, sasa akiwa katika miaka yake ya mapema ya arobaini, alijikuta katika hali ngumu isiyokuwa na suluhu.",
+      "text_markdown": "Hizir, sasa akiwa katika miaka yake ya mapema ya arobaini, alijikuta katika hali ngumu isiyokuwa na suluhu.",
+      "tts": {
+        "text": "Hizir, sasa akiwa katika miaka yake ya mapema ya arobaini, alijikuta katika hali ngumu isiyokuwa na suluhu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeshi la Hispania lilikuwa likisonga mbele, ndugu yake alikufa, na vikosi vyake vilipungukiwa kwa idadi.",
+      "text_markdown": "Jeshi la Hispania lilikuwa likisonga mbele, ndugu yake alikufa, na vikosi vyake vilipungukiwa kwa idadi.",
+      "tts": {
+        "text": "Jeshi la Hispania lilikuwa likisonga mbele, ndugu yake alikufa, na vikosi vyake vilipungukiwa kwa idadi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alihitaji mshirika mwenye nguvu au angepoteza kila kitu.",
+      "text_markdown": "Alihitaji mshirika mwenye nguvu au angepoteza kila kitu.",
+      "tts": {
+        "text": "Alihitaji mshirika mwenye nguvu au angepoteza kila kitu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aligeukia nguvu kubwa zaidi katika ulimwengu wa Kiislamu: Dola ya Othmaniya.",
+      "text_markdown": "Aligeukia nguvu kubwa zaidi katika ulimwengu wa Kiislamu: Dola ya Othmaniya.",
+      "tts": {
+        "text": "Aligeukia nguvu kubwa zaidi katika ulimwengu wa Kiislamu: Dola ya Othmaniya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir alituma wajumbe kwa Sultani Selim wa Kwanza huko Istanbul.",
+      "text_markdown": "Hizir alituma wajumbe kwa Sultani Selim wa Kwanza huko Istanbul.",
+      "tts": {
+        "text": "Hizir alituma wajumbe kwa Sultani Selim wa Kwanza huko Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alipendekeza kuiweka Algiers chini ya mamlaka ya Othmaniya kwa kubadilishana na msaada wa kijeshi.",
+      "text_markdown": "Alipendekeza kuiweka Algiers chini ya mamlaka ya Othmaniya kwa kubadilishana na msaada wa kijeshi.",
+      "tts": {
+        "text": "Alipendekeza kuiweka Algiers chini ya mamlaka ya Othmaniya kwa kubadilishana na msaada wa kijeshi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sultani alitambua thamani ya kimkakati ya kambi mwaminifu katika Bahari ya Mediterania ya magharibi.",
+      "text_markdown": "Sultani alitambua thamani ya kimkakati ya kambi mwaminifu katika Bahari ya Mediterania ya magharibi.",
+      "tts": {
+        "text": "Sultani alitambua thamani ya kimkakati ya kambi mwaminifu katika Bahari ya Mediterania ya magharibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alikubali pendekezo hilo na akatuma askari, mizinga, na meli za galeri kumuunga mkono Hizir.",
+      "text_markdown": "Alikubali pendekezo hilo na akatuma askari, mizinga, na meli za galeri kumuunga mkono Hizir.",
+      "tts": {
+        "text": "Alikubali pendekezo hilo na akatuma askari, mizinga, na meli za galeri kumuunga mkono Hizir.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuanzia hatua hii mbele, Hizir hakuwa tena korseri tu.",
+      "text_markdown": "Kuanzia hatua hii mbele, Hizir hakuwa tena korseri tu.",
+      "tts": {
+        "text": "Kuanzia hatua hii mbele, Hizir hakuwa tena korseri tu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alikuwa gavana wa Othmaniya, akitawala Algiers kwa jina la Sultani.",
+      "text_markdown": "Alikuwa gavana wa Othmaniya, akitawala Algiers kwa jina la Sultani.",
+      "tts": {
+        "text": "Alikuwa gavana wa Othmaniya, akitawala Algiers kwa jina la Sultani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alichukua jina la heshima la Hayreddin, lenye maana ya wema wa imani.",
+      "text_markdown": "Alichukua jina la heshima la Hayreddin, lenye maana ya wema wa imani.",
+      "tts": {
+        "text": "Alichukua jina la heshima la Hayreddin, lenye maana ya wema wa imani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mchanganyiko wa rasilimali za Othmaniya na busara yake mwenyewe ya majini ulimfanya asishindwe.",
+      "text_markdown": "Mchanganyiko wa rasilimali za Othmaniya na busara yake mwenyewe ya majini ulimfanya asishindwe.",
+      "tts": {
+        "text": "Mchanganyiko wa rasilimali za Othmaniya na busara yake mwenyewe ya majini ulimfanya asishindwe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin alitumia muongo uliofuata akiimarisha nguvu ya Othmaniya kwenye pwani ya Afrika Kaskazini.",
+      "text_markdown": "Hayreddin alitumia muongo uliofuata akiimarisha nguvu ya Othmaniya kwenye pwani ya Afrika Kaskazini.",
+      "tts": {
+        "text": "Hayreddin alitumia muongo uliofuata akiimarisha nguvu ya Othmaniya kwenye pwani ya Afrika Kaskazini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aliuteka Tunis, akawafukuza walinzi wa Hispania kutoka ngome muhimu, na akapanua meli za korseri.",
+      "text_markdown": "Aliuteka Tunis, akawafukuza walinzi wa Hispania kutoka ngome muhimu, na akapanua meli za korseri.",
+      "tts": {
+        "text": "Aliuteka Tunis, akawafukuza walinzi wa Hispania kutoka ngome muhimu, na akapanua meli za korseri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aliwafundisha kizazi kipya cha makamanda wa majini ambao wangeitumikia Dola ya Othmaniya kwa miongo kadhaa.",
+      "text_markdown": "Aliwafundisha kizazi kipya cha makamanda wa majini ambao wangeitumikia Dola ya Othmaniya kwa miongo kadhaa.",
+      "tts": {
+        "text": "Aliwafundisha kizazi kipya cha makamanda wa majini ambao wangeitumikia Dola ya Othmaniya kwa miongo kadhaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Meli zake zikawa nguvu kuu katika Bahari ya Mediterania ya magharibi.",
+      "text_markdown": "Meli zake zikawa nguvu kuu katika Bahari ya Mediterania ya magharibi.",
+      "tts": {
+        "text": "Meli zake zikawa nguvu kuu katika Bahari ya Mediterania ya magharibi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mnamo mwaka wa 1533, Sultani Suleiman Mtukufu alimuita Hayreddin kuja Istanbul.",
+      "text_markdown": "Mnamo mwaka wa 1533, Sultani Suleiman Mtukufu alimuita Hayreddin kuja Istanbul.",
+      "tts": {
+        "text": "Mnamo mwaka wa elfu moja mia tano thelathini na tatu, Sultani Suleiman Mtukufu alimuita Hayreddin kuja Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suleiman alikuwa mtawala mwenye nguvu zaidi duniani wakati huo.",
+      "text_markdown": "Suleiman alikuwa mtawala mwenye nguvu zaidi duniani wakati huo.",
+      "tts": {
+        "text": "Suleiman alikuwa mtawala mwenye nguvu zaidi duniani wakati huo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alitambua kwamba Dola ya Othmaniya ilihitaji jeshi la majini la kitaalamu kulingana na jeshi lake maarufu la kavu.",
+      "text_markdown": "Alitambua kwamba Dola ya Othmaniya ilihitaji jeshi la majini la kitaalamu kulingana na jeshi lake maarufu la kavu.",
+      "tts": {
+        "text": "Alitambua kwamba Dola ya Othmaniya ilihitaji jeshi la majini la kitaalamu kulingana na jeshi lake maarufu la kavu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alimteua Hayreddin kuwa Kapudan Pasha, Admirali Mkuu wa meli zote za Othmaniya.",
+      "text_markdown": "Alimteua Hayreddin kuwa Kapudan Pasha, Admirali Mkuu wa meli zote za Othmaniya.",
+      "tts": {
+        "text": "Alimteua Hayreddin kuwa Kapudan Pasha, Admirali Mkuu wa meli zote za Othmaniya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uteuzi huo ulikuwa kigeuko katika historia ya Bahari ya Mediterania.",
+      "text_markdown": "Uteuzi huo ulikuwa kigeuko katika historia ya Bahari ya Mediterania.",
+      "tts": {
+        "text": "Uteuzi huo ulikuwa kigeuko katika historia ya Bahari ya Mediterania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeshi la majini la Othmaniya lilikuwa lenye uwezo lakini si kuu.",
+      "text_markdown": "Jeshi la majini la Othmaniya lilikuwa lenye uwezo lakini si kuu.",
+      "tts": {
+        "text": "Jeshi la majini la Othmaniya lilikuwa lenye uwezo lakini si kuu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chini ya uongozi wa Hayreddin, lingekuwa nguvu ya majini iliyoogopwa zaidi duniani.",
+      "text_markdown": "Chini ya uongozi wa Hayreddin, lingekuwa nguvu ya majini iliyoogopwa zaidi duniani.",
+      "tts": {
+        "text": "Chini ya uongozi wa Hayreddin, lingekuwa nguvu ya majini iliyoogopwa zaidi duniani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aliijenga upya meli kutoka kwenye uwanja wa meli wa Istanbul, akitumia kila kitu alichojifunza katika miongo ya vita vya korseri.",
+      "text_markdown": "Aliijenga upya meli kutoka kwenye uwanja wa meli wa Istanbul, akitumia kila kitu alichojifunza katika miongo ya vita vya korseri.",
+      "tts": {
+        "text": "Aliijenga upya meli kutoka kwenye uwanja wa meli wa Istanbul, akitumia kila kitu alichojifunza katika miongo ya vita vya korseri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin alisasisha mbinu za ujenzi wa meli za Othmaniya.",
+      "text_markdown": "Hayreddin alisasisha mbinu za ujenzi wa meli za Othmaniya.",
+      "tts": {
+        "text": "Hayreddin alisasisha mbinu za ujenzi wa meli za Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aliunda galeri za haraka zaidi na zenye uwezo wa kuendeshwa kwa urahisi kwa msingi wa vyombo vya korseri.",
+      "text_markdown": "Aliunda galeri za haraka zaidi na zenye uwezo wa kuendeshwa kwa urahisi kwa msingi wa vyombo vya korseri.",
+      "tts": {
+        "text": "Aliunda galeri za haraka zaidi na zenye uwezo wa kuendeshwa kwa urahisi kwa msingi wa vyombo vya korseri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alianzisha programu za mafunzo kwa maafisa wa majini wa Othmaniya.",
+      "text_markdown": "Alianzisha programu za mafunzo kwa maafisa wa majini wa Othmaniya.",
+      "tts": {
+        "text": "Alianzisha programu za mafunzo kwa maafisa wa majini wa Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aliwaajiri makorseri wenye uzoefu kutoka kote Bahari ya Mediterania kutumikia kama manahodha.",
+      "text_markdown": "Aliwaajiri makorseri wenye uzoefu kutoka kote Bahari ya Mediterania kutumikia kama manahodha.",
+      "tts": {
+        "text": "Aliwaajiri makorseri wenye uzoefu kutoka kote Bahari ya Mediterania kutumikia kama manahodha.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kampeni yake kuu ya kwanza kama Admirali Mkuu ililenga pwani ya Italia.",
+      "text_markdown": "Kampeni yake kuu ya kwanza kama Admirali Mkuu ililenga pwani ya Italia.",
+      "tts": {
+        "text": "Kampeni yake kuu ya kwanza kama Admirali Mkuu ililenga pwani ya Italia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mnamo mwaka wa 1534, aliongoza meli za Othmaniya katika uvamizi mbaya kwenye pwani za kusini mwa Italia.",
+      "text_markdown": "Mnamo mwaka wa 1534, aliongoza meli za Othmaniya katika uvamizi mbaya kwenye pwani za kusini mwa Italia.",
+      "tts": {
+        "text": "Mnamo mwaka wa elfu moja mia tano thelathini na nne, aliongoza meli za Othmaniya katika uvamizi mbaya kwenye pwani za kusini mwa Italia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aliuteka mji wa Tunis na kuuanzisha kama kambi ya majini ya Othmaniya.",
+      "text_markdown": "Aliuteka mji wa Tunis na kuuanzisha kama kambi ya majini ya Othmaniya.",
+      "tts": {
+        "text": "Aliuteka mji wa Tunis na kuuanzisha kama kambi ya majini ya Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uvamizi huo uliogofya mataifa ya Kikristo na ulionyesha mawanda ya nguvu ya bahari ya Othmaniya.",
+      "text_markdown": "Uvamizi huo uliogofya mataifa ya Kikristo na ulionyesha mawanda ya nguvu ya bahari ya Othmaniya.",
+      "tts": {
+        "text": "Uvamizi huo uliogofya mataifa ya Kikristo na ulionyesha mawanda ya nguvu ya bahari ya Othmaniya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mtawala Charles wa Tano wa Dola Takatifu ya Kirumi alijibu kwa mashambulizi makubwa ya kulipiza kisasi.",
+      "text_markdown": "Mtawala Charles wa Tano wa Dola Takatifu ya Kirumi alijibu kwa mashambulizi makubwa ya kulipiza kisasi.",
+      "tts": {
+        "text": "Mtawala Charles wa Tano wa Dola Takatifu ya Kirumi alijibu kwa mashambulizi makubwa ya kulipiza kisasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mnamo mwaka wa 1535, Charles alikusanya mojawapo ya meli kubwa zaidi katika historia ya Ulaya ili kuiteka Tunis tena.",
+      "text_markdown": "Mnamo mwaka wa 1535, Charles alikusanya mojawapo ya meli kubwa zaidi katika historia ya Ulaya ili kuiteka Tunis tena.",
+      "tts": {
+        "text": "Mnamo mwaka wa elfu moja mia tano thelathini na tano, Charles alikusanya mojawapo ya meli kubwa zaidi katika historia ya Ulaya ili kuiteka Tunis tena.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Meli hiyo ilijumuisha meli kutoka Hispania, Italia, Ureno, na Mataifa ya Papa.",
+      "text_markdown": "Meli hiyo ilijumuisha meli kutoka Hispania, Italia, Ureno, na Mataifa ya Papa.",
+      "tts": {
+        "text": "Meli hiyo ilijumuisha meli kutoka Hispania, Italia, Ureno, na Mataifa ya Papa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Charles alifanikiwa kuiteka Tunis, lakini Hayreddin alitoroka pamoja na sehemu kuu ya meli zake bila kuharibika.",
+      "text_markdown": "Charles alifanikiwa kuiteka Tunis, lakini Hayreddin alitoroka pamoja na sehemu kuu ya meli zake bila kuharibika.",
+      "tts": {
+        "text": "Charles alifanikiwa kuiteka Tunis, lakini Hayreddin alitoroka pamoja na sehemu kuu ya meli zake bila kuharibika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kupoteza Tunis ilikuwa pigo, lakini haikuwa mwisho.",
+      "text_markdown": "Kupoteza Tunis ilikuwa pigo, lakini haikuwa mwisho.",
+      "tts": {
+        "text": "Kupoteza Tunis ilikuwa pigo, lakini haikuwa mwisho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin alijiondoa kwenda Algiers na kuanza kujenga upya vikosi vyake mara moja.",
+      "text_markdown": "Hayreddin alijiondoa kwenda Algiers na kuanza kujenga upya vikosi vyake mara moja.",
+      "tts": {
+        "text": "Hayreddin alijiondoa kwenda Algiers na kuanza kujenga upya vikosi vyake mara moja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alijua kwamba muungano wa Kikristo ulikuwa wa muda mfupi na ungesambaratika mara tu tishio la haraka lilipopita.",
+      "text_markdown": "Alijua kwamba muungano wa Kikristo ulikuwa wa muda mfupi na ungesambaratika mara tu tishio la haraka lilipopita.",
+      "tts": {
+        "text": "Alijua kwamba muungano wa Kikristo ulikuwa wa muda mfupi na ungesambaratika mara tu tishio la haraka lilipopita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alikuwa sahihi, na ndani ya miezi muungano ulianza kusambaratika.",
+      "text_markdown": "Alikuwa sahihi, na ndani ya miezi muungano ulianza kusambaratika.",
+      "tts": {
+        "text": "Alikuwa sahihi, na ndani ya miezi muungano ulianza kusambaratika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndani ya miaka miwili, Hayreddin alikuwa tayari kwa vita yake kubwa zaidi.",
+      "text_markdown": "Ndani ya miaka miwili, Hayreddin alikuwa tayari kwa vita yake kubwa zaidi.",
+      "tts": {
+        "text": "Ndani ya miaka miwili, Hayreddin alikuwa tayari kwa vita yake kubwa zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Makabiliano yatakayofafanua urithi wake yalikuwa yanakaribia.",
+      "text_markdown": "Makabiliano yatakayofafanua urithi wake yalikuwa yanakaribia.",
+      "tts": {
+        "text": "Makabiliano yatakayofafanua urithi wake yalikuwa yanakaribia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yangefanyika katika maji mbali na pwani ya magharibi ya Ugiriki.",
+      "text_markdown": "Yangefanyika katika maji mbali na pwani ya magharibi ya Ugiriki.",
+      "tts": {
+        "text": "Yangefanyika katika maji mbali na pwani ya magharibi ya Ugiriki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kupanda kwa Mamlaka",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jina la vita hivyo lilikuwa Preveza, na vingebadilisha Bahari ya Mediterania milele.",
+      "text_markdown": "Jina la vita hivyo lilikuwa Preveza, na vingebadilisha Bahari ya Mediterania milele.",
+      "tts": {
+        "text": "Jina la vita hivyo lilikuwa Preveza, na vingebadilisha Bahari ya Mediterania milele.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kileleni",
+      "text_markdown": "Kileleni"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vita vya Preveza vilifanyika tarehe 28 Septemba, 1538.",
+      "text_markdown": "Vita vya Preveza vilifanyika tarehe 28 Septemba, 1538.",
+      "tts": {
+        "text": "Vita vya Preveza vilifanyika tarehe ishirini na nane Septemba, elfu moja mia tano thelathini na nane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yalikuwa makabiliano ya kuamua ya majini ya Bahari ya Mediterania ya karne ya kumi na sita.",
+      "text_markdown": "Yalikuwa makabiliano ya kuamua ya majini ya Bahari ya Mediterania ya karne ya kumi na sita.",
+      "tts": {
+        "text": "Yalikuwa makabiliano ya kuamua ya majini ya Bahari ya Mediterania ya karne ya kumi na sita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Upande mmoja yalikuwa meli za Othmaniya chini ya Hayreddin Barbarossa.",
+      "text_markdown": "Upande mmoja yalikuwa meli za Othmaniya chini ya Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Upande mmoja yalikuwa meli za Othmaniya chini ya Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Upande mwingine yalikuwa meli za pamoja za Muungano Mtakatifu, muungano wa mataifa ya Kikristo.",
+      "text_markdown": "Upande mwingine yalikuwa meli za pamoja za Muungano Mtakatifu, muungano wa mataifa ya Kikristo.",
+      "tts": {
+        "text": "Upande mwingine yalikuwa meli za pamoja za Muungano Mtakatifu, muungano wa mataifa ya Kikristo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meli za Muungano Mtakatifu ziliongozwa na admirali wa Genoa Andrea Doria.",
+      "text_markdown": "Meli za Muungano Mtakatifu ziliongozwa na admirali wa Genoa Andrea Doria.",
+      "tts": {
+        "text": "Meli za Muungano Mtakatifu ziliongozwa na admirali wa Genoa Andrea Doria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zilijumuisha takriban meli 300 kutoka Hispania, Venice, Mataifa ya Papa, na Genoa.",
+      "text_markdown": "Zilijumuisha takriban meli 300 kutoka Hispania, Venice, Mataifa ya Papa, na Genoa.",
+      "tts": {
+        "text": "Zilijumuisha takriban meli mia tatu kutoka Hispania, Venice, Mataifa ya Papa, na Genoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwenye karatasi, meli za Kikristo zilikuwa kubwa zaidi kuliko kikosi cha Othmaniya.",
+      "text_markdown": "Kwenye karatasi, meli za Kikristo zilikuwa kubwa zaidi kuliko kikosi cha Othmaniya.",
+      "tts": {
+        "text": "Kwenye karatasi, meli za Kikristo zilikuwa kubwa zaidi kuliko kikosi cha Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lakini ukubwa peke yake hauwezi kushinda vita baharini.",
+      "text_markdown": "Lakini ukubwa peke yake hauwezi kushinda vita baharini.",
+      "tts": {
+        "text": "Lakini ukubwa peke yake hauwezi kushinda vita baharini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin aliamuru takriban galeri 150, pamoja na vyombo vidogo vya msaada.",
+      "text_markdown": "Hayreddin aliamuru takriban galeri 150, pamoja na vyombo vidogo vya msaada.",
+      "tts": {
+        "text": "Hayreddin aliamuru takriban galeri mia moja na hamsini, pamoja na vyombo vidogo vya msaada.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Meli zake zilipungukiwa kwa idadi lakini zilifunzwa vyema, ziliratibiwa vyema, na ziliongozwa vyema.",
+      "text_markdown": "Meli zake zilipungukiwa kwa idadi lakini zilifunzwa vyema, ziliratibiwa vyema, na ziliongozwa vyema.",
+      "tts": {
+        "text": "Meli zake zilipungukiwa kwa idadi lakini zilifunzwa vyema, ziliratibiwa vyema, na ziliongozwa vyema.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin alikuwa ametumia miongo kupigana katika maji haya na alijua kila mkondo, kila muundo wa upepo, na kila faida ya kimkakati ambayo mwambao ulitoa.",
+      "text_markdown": "Hayreddin alikuwa ametumia miongo kupigana katika maji haya na alijua kila mkondo, kila muundo wa upepo, na kila faida ya kimkakati ambayo mwambao ulitoa.",
+      "tts": {
+        "text": "Hayreddin alikuwa ametumia miongo kupigana katika maji haya na alijua kila mkondo, kila muundo wa upepo, na kila faida ya kimkakati ambayo mwambao ulitoa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vita vilifanyika karibu na mlango wa Ghuba ya Ambracia, mbali na pwani ya magharibi ya Ugiriki.",
+      "text_markdown": "Vita vilifanyika karibu na mlango wa Ghuba ya Ambracia, mbali na pwani ya magharibi ya Ugiriki.",
+      "tts": {
+        "text": "Vita vilifanyika karibu na mlango wa Ghuba ya Ambracia, mbali na pwani ya magharibi ya Ugiriki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin aliziweka meli zake ili kutumia faida ya pepo zilizokuwa zikivuma.",
+      "text_markdown": "Hayreddin aliziweka meli zake ili kutumia faida ya pepo zilizokuwa zikivuma.",
+      "tts": {
+        "text": "Hayreddin aliziweka meli zake ili kutumia faida ya pepo zilizokuwa zikivuma.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alipanga galeri zake katika muundo wa mwezi mwandamo uliowezesha mkusanyiko wa moto kwa makundi ya adui yaliyotengwa.",
+      "text_markdown": "Alipanga galeri zake katika muundo wa mwezi mwandamo uliowezesha mkusanyiko wa moto kwa makundi ya adui yaliyotengwa.",
+      "tts": {
+        "text": "Alipanga galeri zake katika muundo wa mwezi mwandamo uliowezesha mkusanyiko wa moto kwa makundi ya adui yaliyotengwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mpangilio wake wa kimkakati ulikuwa wa ustadi mkubwa.",
+      "text_markdown": "Mpangilio wake wa kimkakati ulikuwa wa ustadi mkubwa.",
+      "tts": {
+        "text": "Mpangilio wake wa kimkakati ulikuwa wa ustadi mkubwa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andrea Doria alisita katika wakati muhimu.",
+      "text_markdown": "Andrea Doria alisita katika wakati muhimu.",
+      "tts": {
+        "text": "Andrea Doria alisita katika wakati muhimu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Licha ya faida yake ya idadi, alikuwa mzito kujitolea meli zake zote katika makabiliano ya karibu.",
+      "text_markdown": "Licha ya faida yake ya idadi, alikuwa mzito kujitolea meli zake zote katika makabiliano ya karibu.",
+      "tts": {
+        "text": "Licha ya faida yake ya idadi, alikuwa mzito kujitolea meli zake zote katika makabiliano ya karibu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aliziweka meli zake bora akiba na akajaribu kujiweka katika nafasi nzuri zaidi.",
+      "text_markdown": "Aliziweka meli zake bora akiba na akajaribu kujiweka katika nafasi nzuri zaidi.",
+      "tts": {
+        "text": "Aliziweka meli zake bora akiba na akajaribu kujiweka katika nafasi nzuri zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tahadhari hiyo ilithibitika kuwa hatari kwa upande wa Kikristo.",
+      "text_markdown": "Tahadhari hiyo ilithibitika kuwa hatari kwa upande wa Kikristo.",
+      "tts": {
+        "text": "Tahadhari hiyo ilithibitika kuwa hatari kwa upande wa Kikristo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin alishambulia kwa nguvu, akilenga meli za Venice na za Papa zilizokuwa zimesonga mbele ya meli kuu.",
+      "text_markdown": "Hayreddin alishambulia kwa nguvu, akilenga meli za Venice na za Papa zilizokuwa zimesonga mbele ya meli kuu.",
+      "tts": {
+        "text": "Hayreddin alishambulia kwa nguvu, akilenga meli za Venice na za Papa zilizokuwa zimesonga mbele ya meli kuu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Galeri zake zilifunga umbali haraka na zilihusika kwa karibu.",
+      "text_markdown": "Galeri zake zilifunga umbali haraka na zilihusika kwa karibu.",
+      "tts": {
+        "text": "Galeri zake zilifunga umbali haraka na zilihusika kwa karibu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mapigano yalikuwa makali na ya kikatili, yakiwa na moto wa mizinga na mapambano ya mkono kwa mkono kwenye makumi ya meli.",
+      "text_markdown": "Mapigano yalikuwa makali na ya kikatili, yakiwa na moto wa mizinga na mapambano ya mkono kwa mkono kwenye makumi ya meli.",
+      "tts": {
+        "text": "Mapigano yalikuwa makali na ya kikatili, yakiwa na moto wa mizinga na mapambano ya mkono kwa mkono kwenye makumi ya meli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vikosi vya Kikristo vilivyotengwa vilizidiwa kimoja baada ya kingine.",
+      "text_markdown": "Vikosi vya Kikristo vilivyotengwa vilizidiwa kimoja baada ya kingine.",
+      "tts": {
+        "text": "Vikosi vya Kikristo vilivyotengwa vilizidiwa kimoja baada ya kingine.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kufikia mwisho wa siku, Muungano Mtakatifu ulikuwa umepata kushindwa kwa kuhuzunisha.",
+      "text_markdown": "Kufikia mwisho wa siku, Muungano Mtakatifu ulikuwa umepata kushindwa kwa kuhuzunisha.",
+      "tts": {
+        "text": "Kufikia mwisho wa siku, Muungano Mtakatifu ulikuwa umepata kushindwa kwa kuhuzunisha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vikosi vya Hayreddin vilikamata au kuzamisha makumi ya meli za vita za Kikristo.",
+      "text_markdown": "Vikosi vya Hayreddin vilikamata au kuzamisha makumi ya meli za vita za Kikristo.",
+      "tts": {
+        "text": "Vikosi vya Hayreddin vilikamata au kuzamisha makumi ya meli za vita za Kikristo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maelfu ya mabaharia na askari wa Kikristo waliuawa au walichukuliwa mateka.",
+      "text_markdown": "Maelfu ya mabaharia na askari wa Kikristo waliuawa au walichukuliwa mateka.",
+      "tts": {
+        "text": "Maelfu ya mabaharia na askari wa Kikristo waliuawa au walichukuliwa mateka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andrea Doria alirejea pamoja na mabaki ya meli zake, akiacha bahari kwa Waothmaniya.",
+      "text_markdown": "Andrea Doria alirejea pamoja na mabaki ya meli zake, akiacha bahari kwa Waothmaniya.",
+      "tts": {
+        "text": "Andrea Doria alirejea pamoja na mabaki ya meli zake, akiacha bahari kwa Waothmaniya.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vita vya Preveza vilianzisha ukuu wa majini wa Othmaniya katika Bahari ya Mediterania.",
+      "text_markdown": "Vita vya Preveza vilianzisha ukuu wa majini wa Othmaniya katika Bahari ya Mediterania.",
+      "tts": {
+        "text": "Vita vya Preveza vilianzisha ukuu wa majini wa Othmaniya katika Bahari ya Mediterania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kwa miongo kadhaa iliyofuata, hakuna meli za Kikristo zilizoweza kupinga udhibiti wa Othmaniya wa bahari ya mashariki na ya kati.",
+      "text_markdown": "Kwa miongo kadhaa iliyofuata, hakuna meli za Kikristo zilizoweza kupinga udhibiti wa Othmaniya wa bahari ya mashariki na ya kati.",
+      "tts": {
+        "text": "Kwa miongo kadhaa iliyofuata, hakuna meli za Kikristo zilizoweza kupinga udhibiti wa Othmaniya wa bahari ya mashariki na ya kati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dola ya Othmaniya sasa ingeweza kueneza nguvu za kijeshi kwenye pwani nzima ya Afrika Kaskazini na dhidi ya rasi ya Italia.",
+      "text_markdown": "Dola ya Othmaniya sasa ingeweza kueneza nguvu za kijeshi kwenye pwani nzima ya Afrika Kaskazini na dhidi ya rasi ya Italia.",
+      "tts": {
+        "text": "Dola ya Othmaniya sasa ingeweza kueneza nguvu za kijeshi kwenye pwani nzima ya Afrika Kaskazini na dhidi ya rasi ya Italia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ilikuwa ushindi muhimu zaidi wa majini wa karne ya kumi na sita.",
+      "text_markdown": "Ilikuwa ushindi muhimu zaidi wa majini wa karne ya kumi na sita.",
+      "tts": {
+        "text": "Ilikuwa ushindi muhimu zaidi wa majini wa karne ya kumi na sita.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin alirejea Istanbul kama shujaa aliyeshinda.",
+      "text_markdown": "Hayreddin alirejea Istanbul kama shujaa aliyeshinda.",
+      "tts": {
+        "text": "Hayreddin alirejea Istanbul kama shujaa aliyeshinda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sultani Suleiman alimpokea kwa heshima za juu zaidi ambazo dola ingeweza kuzipa.",
+      "text_markdown": "Sultani Suleiman alimpokea kwa heshima za juu zaidi ambazo dola ingeweza kuzipa.",
+      "tts": {
+        "text": "Sultani Suleiman alimpokea kwa heshima za juu zaidi ambazo dola ingeweza kuzipa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Admirali Mkuu alikuwa amefanya kile Sultani alichomuomba.",
+      "text_markdown": "Admirali Mkuu alikuwa amefanya kile Sultani alichomuomba.",
+      "tts": {
+        "text": "Admirali Mkuu alikuwa amefanya kile Sultani alichomuomba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aliifanya jeshi la majini la Othmaniya kuwa nguvu kuu katika Bahari ya Mediterania.",
+      "text_markdown": "Aliifanya jeshi la majini la Othmaniya kuwa nguvu kuu katika Bahari ya Mediterania.",
+      "tts": {
+        "text": "Aliifanya jeshi la majini la Othmaniya kuwa nguvu kuu katika Bahari ya Mediterania.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika miaka iliyofuata Preveza, Hayreddin aliendelea kuamuru meli za Othmaniya.",
+      "text_markdown": "Katika miaka iliyofuata Preveza, Hayreddin aliendelea kuamuru meli za Othmaniya.",
+      "tts": {
+        "text": "Katika miaka iliyofuata Preveza, Hayreddin aliendelea kuamuru meli za Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alifanya uvamizi dhidi ya miji ya pwani ya Kihispania na Kiitaliano.",
+      "text_markdown": "Alifanya uvamizi dhidi ya miji ya pwani ya Kihispania na Kiitaliano.",
+      "tts": {
+        "text": "Alifanya uvamizi dhidi ya miji ya pwani ya Kihispania na Kiitaliano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alijadiliana na Mfalme wa Ufaransa Francis wa Kwanza, ambaye aliungana na Waothmaniya dhidi ya adui yao wa pamoja, Charles wa Tano.",
+      "text_markdown": "Alijadiliana na Mfalme wa Ufaransa Francis wa Kwanza, ambaye aliungana na Waothmaniya dhidi ya adui yao wa pamoja, Charles wa Tano.",
+      "tts": {
+        "text": "Alijadiliana na Mfalme wa Ufaransa Francis wa Kwanza, ambaye aliungana na Waothmaniya dhidi ya adui yao wa pamoja, Charles wa Tano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Muungano huu kati ya dola ya Kiislamu na ufalme wa Kikristo uliishangaza Ulaya yote.",
+      "text_markdown": "Muungano huu kati ya dola ya Kiislamu na ufalme wa Kikristo uliishangaza Ulaya yote.",
+      "tts": {
+        "text": "Muungano huu kati ya dola ya Kiislamu na ufalme wa Kikristo uliishangaza Ulaya yote.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika msimu wa baridi wa mwaka wa 1543, Hayreddin alitia nanga meli zake katika bandari ya Kifaransa ya Toulon.",
+      "text_markdown": "Katika msimu wa baridi wa mwaka wa 1543, Hayreddin alitia nanga meli zake katika bandari ya Kifaransa ya Toulon.",
+      "tts": {
+        "text": "Katika msimu wa baridi wa mwaka wa elfu moja mia tano arobaini na tatu, Hayreddin alitia nanga meli zake katika bandari ya Kifaransa ya Toulon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mfalme wa Ufaransa alikuwa ametoa bandari hiyo kama kambi ya shughuli za pamoja dhidi ya Hispania.",
+      "text_markdown": "Mfalme wa Ufaransa alikuwa ametoa bandari hiyo kama kambi ya shughuli za pamoja dhidi ya Hispania.",
+      "tts": {
+        "text": "Mfalme wa Ufaransa alikuwa ametoa bandari hiyo kama kambi ya shughuli za pamoja dhidi ya Hispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa miezi kadhaa, meli za vita za Othmaniya zilifanya kazi kutoka bandari ya Kifaransa.",
+      "text_markdown": "Kwa miezi kadhaa, meli za vita za Othmaniya zilifanya kazi kutoka bandari ya Kifaransa.",
+      "tts": {
+        "text": "Kwa miezi kadhaa, meli za vita za Othmaniya zilifanya kazi kutoka bandari ya Kifaransa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ilikuwa kioja kilichoushangaza ulimwengu wa Kikristo na kuonyesha kwamba siasa za nguvu zinaweza kushinda migawanyiko ya kidini.",
+      "text_markdown": "Ilikuwa kioja kilichoushangaza ulimwengu wa Kikristo na kuonyesha kwamba siasa za nguvu zinaweza kushinda migawanyiko ya kidini.",
+      "tts": {
+        "text": "Ilikuwa kioja kilichoushangaza ulimwengu wa Kikristo na kuonyesha kwamba siasa za nguvu zinaweza kushinda migawanyiko ya kidini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Utawala wa Hayreddin wa Algiers uliendelea sambamba na kampeni zake za majini.",
+      "text_markdown": "Utawala wa Hayreddin wa Algiers uliendelea sambamba na kampeni zake za majini.",
+      "tts": {
+        "text": "Utawala wa Hayreddin wa Algiers uliendelea sambamba na kampeni zake za majini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alijenga misikiti, mabafu ya umma, na ngome katika mji.",
+      "text_markdown": "Alijenga misikiti, mabafu ya umma, na ngome katika mji.",
+      "tts": {
+        "text": "Alijenga misikiti, mabafu ya umma, na ngome katika mji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alihimiza biashara na akawavutia mafundi wenye ujuzi kutoka kote ulimwenguni wa Kiislamu.",
+      "text_markdown": "Alihimiza biashara na akawavutia mafundi wenye ujuzi kutoka kote ulimwenguni wa Kiislamu.",
+      "tts": {
+        "text": "Alihimiza biashara na akawavutia mafundi wenye ujuzi kutoka kote ulimwenguni wa Kiislamu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chini ya utawala wake, Algiers ilikua kutoka kuwa bandari ndogo hadi kuwa mojawapo ya miji muhimu zaidi katika Afrika Kaskazini.",
+      "text_markdown": "Chini ya utawala wake, Algiers ilikua kutoka kuwa bandari ndogo hadi kuwa mojawapo ya miji muhimu zaidi katika Afrika Kaskazini.",
+      "tts": {
+        "text": "Chini ya utawala wake, Algiers ilikua kutoka kuwa bandari ndogo hadi kuwa mojawapo ya miji muhimu zaidi katika Afrika Kaskazini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meli zake zililinda njia za biashara za Othmaniya zilizounganisha Istanbul na Bahari ya Mediterania ya magharibi.",
+      "text_markdown": "Meli zake zililinda njia za biashara za Othmaniya zilizounganisha Istanbul na Bahari ya Mediterania ya magharibi.",
+      "tts": {
+        "text": "Meli zake zililinda njia za biashara za Othmaniya zilizounganisha Istanbul na Bahari ya Mediterania ya magharibi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Meli za wafanyabiashara zilizobeba nafaka, nguo, na bidhaa zilizotengenezwa zilisafiri chini ya ulinzi wa meli zake za vita.",
+      "text_markdown": "Meli za wafanyabiashara zilizobeba nafaka, nguo, na bidhaa zilizotengenezwa zilisafiri chini ya ulinzi wa meli zake za vita.",
+      "tts": {
+        "text": "Meli za wafanyabiashara zilizobeba nafaka, nguo, na bidhaa zilizotengenezwa zilisafiri chini ya ulinzi wa meli zake za vita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ustawi wa kiuchumi wa Bahari ya Mediterania ya Othmaniya kwa kiwango kikubwa ulitegemea jeshi la majini ambalo Hayreddin alikuwa amejenga.",
+      "text_markdown": "Ustawi wa kiuchumi wa Bahari ya Mediterania ya Othmaniya kwa kiwango kikubwa ulitegemea jeshi la majini ambalo Hayreddin alikuwa amejenga.",
+      "tts": {
+        "text": "Ustawi wa kiuchumi wa Bahari ya Mediterania ya Othmaniya kwa kiwango kikubwa ulitegemea jeshi la majini ambalo Hayreddin alikuwa amejenga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kileleni",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alikuwa amebadilisha uvamizi wa korseri kuwa chombo cha nguvu ya kifalme.",
+      "text_markdown": "Alikuwa amebadilisha uvamizi wa korseri kuwa chombo cha nguvu ya kifalme.",
+      "tts": {
+        "text": "Alikuwa amebadilisha uvamizi wa korseri kuwa chombo cha nguvu ya kifalme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Mwisho",
+      "text_markdown": "Mwisho"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kufikia mwanzoni mwa miaka ya elfu moja mia tano arobaini, Hayreddin Barbarossa alikuwa katika miaka yake ya katikati ya sitini.",
+      "text_markdown": "Kufikia mwanzoni mwa miaka ya elfu moja mia tano arobaini, Hayreddin Barbarossa alikuwa katika miaka yake ya katikati ya sitini.",
+      "tts": {
+        "text": "Kufikia mwanzoni mwa miaka ya elfu moja mia tano arobaini, Hayreddin Barbarossa alikuwa katika miaka yake ya katikati ya sitini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alikuwa ametumia zaidi ya miongo minne baharini, akipigana, akijenga, na kuamuru.",
+      "text_markdown": "Alikuwa ametumia zaidi ya miongo minne baharini, akipigana, akijenga, na kuamuru.",
+      "tts": {
+        "text": "Alikuwa ametumia zaidi ya miongo minne baharini, akipigana, akijenga, na kuamuru.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mwili wake ulikuwa umechakaa kwa miongo ya vita, hali mbaya ya hewa, na mahitaji ya kimwili ya maisha ndani ya meli.",
+      "text_markdown": "Mwili wake ulikuwa umechakaa kwa miongo ya vita, hali mbaya ya hewa, na mahitaji ya kimwili ya maisha ndani ya meli.",
+      "tts": {
+        "text": "Mwili wake ulikuwa umechakaa kwa miongo ya vita, hali mbaya ya hewa, na mahitaji ya kimwili ya maisha ndani ya meli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lakini akili yake ilibaki kali na mamlaka yake bila kupingwa.",
+      "text_markdown": "Lakini akili yake ilibaki kali na mamlaka yake bila kupingwa.",
+      "tts": {
+        "text": "Lakini akili yake ilibaki kali na mamlaka yake bila kupingwa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baada ya kampeni ya Toulon ya mwaka wa 1543, Hayreddin alirejea Istanbul.",
+      "text_markdown": "Baada ya kampeni ya Toulon ya mwaka wa 1543, Hayreddin alirejea Istanbul.",
+      "tts": {
+        "text": "Baada ya kampeni ya Toulon ya mwaka wa elfu moja mia tano arobaini na tatu, Hayreddin alirejea Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alikuwa amekamilisha operesheni yake kuu ya mwisho ya majini.",
+      "text_markdown": "Alikuwa amekamilisha operesheni yake kuu ya mwisho ya majini.",
+      "tts": {
+        "text": "Alikuwa amekamilisha operesheni yake kuu ya mwisho ya majini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sultani hakumuomba kuongoza kampeni nyingine.",
+      "text_markdown": "Sultani hakumuomba kuongoza kampeni nyingine.",
+      "tts": {
+        "text": "Sultani hakumuomba kuongoza kampeni nyingine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Katika umri wake na kwa mafanikio yake, kustaafu kulikuwa kumestahili na pia kufaa.",
+      "text_markdown": "Katika umri wake na kwa mafanikio yake, kustaafu kulikuwa kumestahili na pia kufaa.",
+      "tts": {
+        "text": "Katika umri wake na kwa mafanikio yake, kustaafu kulikuwa kumestahili na pia kufaa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin alitumia miaka yake ya mwisho huko Istanbul, katika jumba kubwa lililoangalia Bosporasi.",
+      "text_markdown": "Hayreddin alitumia miaka yake ya mwisho huko Istanbul, katika jumba kubwa lililoangalia Bosporasi.",
+      "tts": {
+        "text": "Hayreddin alitumia miaka yake ya mwisho huko Istanbul, katika jumba kubwa lililoangalia Bosporasi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aliandika kumbukumbu zake kwa karani, akiunda mojawapo ya vyanzo muhimu zaidi vya msingi vya historia ya korseri wa Bahari ya Mediterania.",
+      "text_markdown": "Aliandika kumbukumbu zake kwa karani, akiunda mojawapo ya vyanzo muhimu zaidi vya msingi vya historia ya korseri wa Bahari ya Mediterania.",
+      "tts": {
+        "text": "Aliandika kumbukumbu zake kwa karani, akiunda mojawapo ya vyanzo muhimu zaidi vya msingi vya historia ya korseri wa Bahari ya Mediterania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kumbukumbu hizi, zinazojulikana kama Gazavat i Hayreddin Pasha, zimebaki katika muundo wa hati ya mkono.",
+      "text_markdown": "Kumbukumbu hizi, zinazojulikana kama Gazavat i Hayreddin Pasha, zimebaki katika muundo wa hati ya mkono.",
+      "tts": {
+        "text": "Kumbukumbu hizi, zinazojulikana kama Gazavat i Hayreddin Pasha, zimebaki katika muundo wa hati ya mkono.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zimechunguzwa na wanahistoria kwa karne nyingi.",
+      "text_markdown": "Zimechunguzwa na wanahistoria kwa karne nyingi.",
+      "tts": {
+        "text": "Zimechunguzwa na wanahistoria kwa karne nyingi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aliendelea kuhusika katika masuala ya majini ya Othmaniya katika nafasi ya ushauri.",
+      "text_markdown": "Aliendelea kuhusika katika masuala ya majini ya Othmaniya katika nafasi ya ushauri.",
+      "tts": {
+        "text": "Aliendelea kuhusika katika masuala ya majini ya Othmaniya katika nafasi ya ushauri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maadmirali wadogo walitafuta ushauri wake juu ya mkakati na ujenzi wa meli.",
+      "text_markdown": "Maadmirali wadogo walitafuta ushauri wake juu ya mkakati na ujenzi wa meli.",
+      "tts": {
+        "text": "Maadmirali wadogo walitafuta ushauri wake juu ya mkakati na ujenzi wa meli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alikuwa amefundisha kizazi kizima cha maafisa wa majini ambao wangeendeleza kazi yake.",
+      "text_markdown": "Alikuwa amefundisha kizazi kizima cha maafisa wa majini ambao wangeendeleza kazi yake.",
+      "tts": {
+        "text": "Alikuwa amefundisha kizazi kizima cha maafisa wa majini ambao wangeendeleza kazi yake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Maarifa ya kitaasisi aliyoyajenga katika jeshi la majini la Othmaniya yalikuwa mchango wake wa kudumu zaidi.",
+      "text_markdown": "Maarifa ya kitaasisi aliyoyajenga katika jeshi la majini la Othmaniya yalikuwa mchango wake wa kudumu zaidi.",
+      "tts": {
+        "text": "Maarifa ya kitaasisi aliyoyajenga katika jeshi la majini la Othmaniya yalikuwa mchango wake wa kudumu zaidi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa alikufa tarehe 4 Julai, 1546, huko Istanbul.",
+      "text_markdown": "Hayreddin Barbarossa alikufa tarehe 4 Julai, 1546, huko Istanbul.",
+      "tts": {
+        "text": "Hayreddin Barbarossa alikufa tarehe nne Julai, elfu moja mia tano arobaini na sita, huko Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alikuwa na umri wa takriban miaka sitini na nane.",
+      "text_markdown": "Alikuwa na umri wa takriban miaka sitini na nane.",
+      "tts": {
+        "text": "Alikuwa na umri wa takriban miaka sitini na nane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kifo chake kiliombolezwa kote katika Dola ya Othmaniya.",
+      "text_markdown": "Kifo chake kiliombolezwa kote katika Dola ya Othmaniya.",
+      "tts": {
+        "text": "Kifo chake kiliombolezwa kote katika Dola ya Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sultani Suleiman aliamuru kaburi la fahari lijengwe kwa ajili yake kwenye mwambao wa Bosporasi, huko Besiktas.",
+      "text_markdown": "Sultani Suleiman aliamuru kaburi la fahari lijengwe kwa ajili yake kwenye mwambao wa Bosporasi, huko Besiktas.",
+      "tts": {
+        "text": "Sultani Suleiman aliamuru kaburi la fahari lijengwe kwa ajili yake kwenye mwambao wa Bosporasi, huko Besiktas.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaburi hilo bado linasimama leo katika eneo la Besiktas la Istanbul.",
+      "text_markdown": "Kaburi hilo bado linasimama leo katika eneo la Besiktas la Istanbul.",
+      "tts": {
+        "text": "Kaburi hilo bado linasimama leo katika eneo la Besiktas la Istanbul.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni alama ya usanifu wa Othmaniya, iliyopambwa kwa vigae na khati nzuri.",
+      "text_markdown": "Ni alama ya usanifu wa Othmaniya, iliyopambwa kwa vigae na khati nzuri.",
+      "tts": {
+        "text": "Ni alama ya usanifu wa Othmaniya, iliyopambwa kwa vigae na khati nzuri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa karne nyingi, mabaharia wa Othmaniya walitembelea kaburi hilo kabla ya kuanza safari.",
+      "text_markdown": "Kwa karne nyingi, mabaharia wa Othmaniya walitembelea kaburi hilo kabla ya kuanza safari.",
+      "tts": {
+        "text": "Kwa karne nyingi, mabaharia wa Othmaniya walitembelea kaburi hilo kabla ya kuanza safari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Waliomba safari salama na kwa roho ya admirali mkuu kuwaongoza.",
+      "text_markdown": "Waliomba safari salama na kwa roho ya admirali mkuu kuwaongoza.",
+      "tts": {
+        "text": "Waliomba safari salama na kwa roho ya admirali mkuu kuwaongoza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Warithi wake katika jeshi la majini la Othmaniya walidumisha meli alizojenga.",
+      "text_markdown": "Warithi wake katika jeshi la majini la Othmaniya walidumisha meli alizojenga.",
+      "tts": {
+        "text": "Warithi wake katika jeshi la majini la Othmaniya walidumisha meli alizojenga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maadmirali kama Turgut Reis na Piyale Pasha waliendeleza ukuu wa majini wa Othmaniya kwa miongo kadhaa.",
+      "text_markdown": "Maadmirali kama Turgut Reis na Piyale Pasha waliendeleza ukuu wa majini wa Othmaniya kwa miongo kadhaa.",
+      "tts": {
+        "text": "Maadmirali kama Turgut Reis na Piyale Pasha waliendeleza ukuu wa majini wa Othmaniya kwa miongo kadhaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Walikuwa wamejifunza ufundi wao chini ya Hayreddin na walisonga mbele mafundisho yake ya kimkakati.",
+      "text_markdown": "Walikuwa wamejifunza ufundi wao chini ya Hayreddin na walisonga mbele mafundisho yake ya kimkakati.",
+      "tts": {
+        "text": "Walikuwa wamejifunza ufundi wao chini ya Hayreddin na walisonga mbele mafundisho yake ya kimkakati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vita vya Lepanto mwaka wa elfu moja mia tano sabini na moja vingelimaliza hatimaye ukuu wa Othmaniya baharini, lakini hata kushindwa huko hakuharibu jeshi la majini ambalo Hayreddin alikuwa ameliunda.",
+      "text_markdown": "Vita vya Lepanto mwaka wa elfu moja mia tano sabini na moja vingelimaliza hatimaye ukuu wa Othmaniya baharini, lakini hata kushindwa huko hakuharibu jeshi la majini ambalo Hayreddin alikuwa ameliunda.",
+      "tts": {
+        "text": "Vita vya Lepanto mwaka wa elfu moja mia tano sabini na moja vingelimaliza hatimaye ukuu wa Othmaniya baharini, lakini hata kushindwa huko hakuharibu jeshi la majini ambalo Hayreddin alikuwa ameliunda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maeneo ya Afrika Kaskazini ambayo Hayreddin alikuwa ameyaleta chini ya udhibiti wa Othmaniya yalibaki kuwa majimbo ya Othmaniya kwa karne nyingi.",
+      "text_markdown": "Maeneo ya Afrika Kaskazini ambayo Hayreddin alikuwa ameyaleta chini ya udhibiti wa Othmaniya yalibaki kuwa majimbo ya Othmaniya kwa karne nyingi.",
+      "tts": {
+        "text": "Maeneo ya Afrika Kaskazini ambayo Hayreddin alikuwa ameyaleta chini ya udhibiti wa Othmaniya yalibaki kuwa majimbo ya Othmaniya kwa karne nyingi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algiers, Tunis, na Tripoli zilibaki kuwa kambi za korseri hadi karne ya kumi na tisa.",
+      "text_markdown": "Algiers, Tunis, na Tripoli zilibaki kuwa kambi za korseri hadi karne ya kumi na tisa.",
+      "tts": {
+        "text": "Algiers, Tunis, na Tripoli zilibaki kuwa kambi za korseri hadi karne ya kumi na tisa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mapokeo ya korseri wa Pwani ya Berbera ambayo Hayreddin alisaidia kuanzisha yalidumu kwa miaka mia tatu.",
+      "text_markdown": "Mapokeo ya korseri wa Pwani ya Berbera ambayo Hayreddin alisaidia kuanzisha yalidumu kwa miaka mia tatu.",
+      "tts": {
+        "text": "Mapokeo ya korseri wa Pwani ya Berbera ambayo Hayreddin alisaidia kuanzisha yalidumu kwa miaka mia tatu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ingechukua nguvu za pamoja za Ufaransa na Uingereza ili hatimaye kuyamaliza.",
+      "text_markdown": "Ingechukua nguvu za pamoja za Ufaransa na Uingereza ili hatimaye kuyamaliza.",
+      "tts": {
+        "text": "Ingechukua nguvu za pamoja za Ufaransa na Uingereza ili hatimaye kuyamaliza.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin alikufa kama alivyoishi: katika utumishi wa serikali ya Othmaniya.",
+      "text_markdown": "Hayreddin alikufa kama alivyoishi: katika utumishi wa serikali ya Othmaniya.",
+      "tts": {
+        "text": "Hayreddin alikufa kama alivyoishi: katika utumishi wa serikali ya Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alikuwa ameanza kama mwana wa fundi vyungu katika kisiwa cha Ugiriki.",
+      "text_markdown": "Alikuwa ameanza kama mwana wa fundi vyungu katika kisiwa cha Ugiriki.",
+      "tts": {
+        "text": "Alikuwa ameanza kama mwana wa fundi vyungu katika kisiwa cha Ugiriki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alimaliza kama admirali aliyesherehekewa zaidi katika historia ya Dola ya Othmaniya.",
+      "text_markdown": "Alimaliza kama admirali aliyesherehekewa zaidi katika historia ya Dola ya Othmaniya.",
+      "tts": {
+        "text": "Alimaliza kama admirali aliyesherehekewa zaidi katika historia ya Dola ya Othmaniya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Mwisho",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Safari yake kutoka Lesbos hadi Uadmirali Mkuu ni mojawapo ya kazi za ajabu zaidi katika historia ya majini.",
+      "text_markdown": "Safari yake kutoka Lesbos hadi Uadmirali Mkuu ni mojawapo ya kazi za ajabu zaidi katika historia ya majini.",
+      "tts": {
+        "text": "Safari yake kutoka Lesbos hadi Uadmirali Mkuu ni mojawapo ya kazi za ajabu zaidi katika historia ya majini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Urithi",
+      "text_markdown": "Urithi"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa aliibadilisha Dola ya Othmaniya kutoka kuwa nguvu ya nchi kavu kuwa nguvu kuu ya majini.",
+      "text_markdown": "Hayreddin Barbarossa aliibadilisha Dola ya Othmaniya kutoka kuwa nguvu ya nchi kavu kuwa nguvu kuu ya majini.",
+      "tts": {
+        "text": "Hayreddin Barbarossa aliibadilisha Dola ya Othmaniya kutoka kuwa nguvu ya nchi kavu kuwa nguvu kuu ya majini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kabla ya kazi yake, Waothmaniya walikuwa wenye nguvu nchi kavu lakini wa pembezoni baharini.",
+      "text_markdown": "Kabla ya kazi yake, Waothmaniya walikuwa wenye nguvu nchi kavu lakini wa pembezoni baharini.",
+      "tts": {
+        "text": "Kabla ya kazi yake, Waothmaniya walikuwa wenye nguvu nchi kavu lakini wa pembezoni baharini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baada ya kazi yake, jeshi la majini la Othmaniya lilitawala Bahari ya Mediterania kwa vizazi.",
+      "text_markdown": "Baada ya kazi yake, jeshi la majini la Othmaniya lilitawala Bahari ya Mediterania kwa vizazi.",
+      "tts": {
+        "text": "Baada ya kazi yake, jeshi la majini la Othmaniya lilitawala Bahari ya Mediterania kwa vizazi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mabadiliko haya yanahesabiwa miongoni mwa mafanikio muhimu zaidi ya kijeshi ya karne ya kumi na sita.",
+      "text_markdown": "Mabadiliko haya yanahesabiwa miongoni mwa mafanikio muhimu zaidi ya kijeshi ya karne ya kumi na sita.",
+      "tts": {
+        "text": "Mabadiliko haya yanahesabiwa miongoni mwa mafanikio muhimu zaidi ya kijeshi ya karne ya kumi na sita.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ushindi wake wa Preveza unachunguzwa katika vyuo vya majini kote duniani hadi leo.",
+      "text_markdown": "Ushindi wake wa Preveza unachunguzwa katika vyuo vya majini kote duniani hadi leo.",
+      "tts": {
+        "text": "Ushindi wake wa Preveza unachunguzwa katika vyuo vya majini kote duniani hadi leo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unaonyesha jinsi uongozi bora na mbinu vinaweza kushinda hasara ya idadi.",
+      "text_markdown": "Unaonyesha jinsi uongozi bora na mbinu vinaweza kushinda hasara ya idadi.",
+      "tts": {
+        "text": "Unaonyesha jinsi uongozi bora na mbinu vinaweza kushinda hasara ya idadi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vita vilionyesha kwamba meli iliyoratibiwa vyema inaweza kushinda iliyokuwa kubwa lakini iliyoongozwa vibaya.",
+      "text_markdown": "Vita vilionyesha kwamba meli iliyoratibiwa vyema inaweza kushinda iliyokuwa kubwa lakini iliyoongozwa vibaya.",
+      "tts": {
+        "text": "Vita vilionyesha kwamba meli iliyoratibiwa vyema inaweza kushinda iliyokuwa kubwa lakini iliyoongozwa vibaya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bado inabaki kuwa mfano wa kawaida wa mkakati wa majini karne tano baadaye.",
+      "text_markdown": "Bado inabaki kuwa mfano wa kawaida wa mkakati wa majini karne tano baadaye.",
+      "tts": {
+        "text": "Bado inabaki kuwa mfano wa kawaida wa mkakati wa majini karne tano baadaye.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Athari ya Hayreddin kwa Afrika Kaskazini ilikuwa kubwa vile vile.",
+      "text_markdown": "Athari ya Hayreddin kwa Afrika Kaskazini ilikuwa kubwa vile vile.",
+      "tts": {
+        "text": "Athari ya Hayreddin kwa Afrika Kaskazini ilikuwa kubwa vile vile.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kwa kuleta Algiers na miji mingine chini ya utawala wa Othmaniya, aliunda muundo wa kisiasa uliodumu kwa karne nyingi.",
+      "text_markdown": "Kwa kuleta Algiers na miji mingine chini ya utawala wa Othmaniya, aliunda muundo wa kisiasa uliodumu kwa karne nyingi.",
+      "tts": {
+        "text": "Kwa kuleta Algiers na miji mingine chini ya utawala wa Othmaniya, aliunda muundo wa kisiasa uliodumu kwa karne nyingi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Idadi ya watu wa miji hii iliumbwa na sera zake za kuwakaribisha wakimbizi kutoka Hispania.",
+      "text_markdown": "Idadi ya watu wa miji hii iliumbwa na sera zake za kuwakaribisha wakimbizi kutoka Hispania.",
+      "tts": {
+        "text": "Idadi ya watu wa miji hii iliumbwa na sera zake za kuwakaribisha wakimbizi kutoka Hispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mchanganyiko wa kitamaduni wa ushawishi wa Waberberi, Waarabu, Waturuki, na Waandalusi unaofafanua Maghreb leo una mizizi katika ulimwengu ambao Hayreddin alisaidia kuunda.",
+      "text_markdown": "Mchanganyiko wa kitamaduni wa ushawishi wa Waberberi, Waarabu, Waturuki, na Waandalusi unaofafanua Maghreb leo una mizizi katika ulimwengu ambao Hayreddin alisaidia kuunda.",
+      "tts": {
+        "text": "Mchanganyiko wa kitamaduni wa ushawishi wa Waberberi, Waarabu, Waturuki, na Waandalusi unaofafanua Maghreb leo una mizizi katika ulimwengu ambao Hayreddin alisaidia kuunda.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchini Uturuki, Hayreddin Barbarossa ni shujaa wa kitaifa.",
+      "text_markdown": "Nchini Uturuki, Hayreddin Barbarossa ni shujaa wa kitaifa.",
+      "tts": {
+        "text": "Nchini Uturuki, Hayreddin Barbarossa ni shujaa wa kitaifa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeshi la Majini la Uturuki lilipa nyambizi yake ya kwanza jina lake.",
+      "text_markdown": "Jeshi la Majini la Uturuki lilipa nyambizi yake ya kwanza jina lake.",
+      "tts": {
+        "text": "Jeshi la Majini la Uturuki lilipa nyambizi yake ya kwanza jina lake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Picha yake inaonekana kwenye makumbusho, stempu, na sarafu.",
+      "text_markdown": "Picha yake inaonekana kwenye makumbusho, stempu, na sarafu.",
+      "tts": {
+        "text": "Picha yake inaonekana kwenye makumbusho, stempu, na sarafu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kila mtoto wa shule wa Uturuki anajifunza jina lake na hadithi yake.",
+      "text_markdown": "Kila mtoto wa shule wa Uturuki anajifunza jina lake na hadithi yake.",
+      "tts": {
+        "text": "Kila mtoto wa shule wa Uturuki anajifunza jina lake na hadithi yake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katika kumbukumbu ya kihistoria ya Ulaya, Barbarossa ni mtu mwenye umbo gumu zaidi.",
+      "text_markdown": "Katika kumbukumbu ya kihistoria ya Ulaya, Barbarossa ni mtu mwenye umbo gumu zaidi.",
+      "tts": {
+        "text": "Katika kumbukumbu ya kihistoria ya Ulaya, Barbarossa ni mtu mwenye umbo gumu zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kwa Wahispania na Waitaliano wa wakati wake, alikuwa adui aliyeogopwa na mvamizi mkatili.",
+      "text_markdown": "Kwa Wahispania na Waitaliano wa wakati wake, alikuwa adui aliyeogopwa na mvamizi mkatili.",
+      "tts": {
+        "text": "Kwa Wahispania na Waitaliano wa wakati wake, alikuwa adui aliyeogopwa na mvamizi mkatili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa Wafaransa, alikuwa mshirika asiyetarajiwa dhidi ya hasimu wao wa pamoja wa Kihispania.",
+      "text_markdown": "Kwa Wafaransa, alikuwa mshirika asiyetarajiwa dhidi ya hasimu wao wa pamoja wa Kihispania.",
+      "tts": {
+        "text": "Kwa Wafaransa, alikuwa mshirika asiyetarajiwa dhidi ya hasimu wao wa pamoja wa Kihispania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Urithi wake katika Ulaya unaakisi hali iliyogawanyika na yenye mabishano ya historia ya Bahari ya Mediterania.",
+      "text_markdown": "Urithi wake katika Ulaya unaakisi hali iliyogawanyika na yenye mabishano ya historia ya Bahari ya Mediterania.",
+      "tts": {
+        "text": "Urithi wake katika Ulaya unaakisi hali iliyogawanyika na yenye mabishano ya historia ya Bahari ya Mediterania.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanahistoria wanajadili kama Hayreddin anapaswa kuitwa maharamia kabisa.",
+      "text_markdown": "Wanahistoria wanajadili kama Hayreddin anapaswa kuitwa maharamia kabisa.",
+      "tts": {
+        "text": "Wanahistoria wanajadili kama Hayreddin anapaswa kuitwa maharamia kabisa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alifanya kazi kwa mamlaka wazi ya Sultani wa Othmaniya kwa sehemu kubwa ya kazi yake.",
+      "text_markdown": "Alifanya kazi kwa mamlaka wazi ya Sultani wa Othmaniya kwa sehemu kubwa ya kazi yake.",
+      "tts": {
+        "text": "Alifanya kazi kwa mamlaka wazi ya Sultani wa Othmaniya kwa sehemu kubwa ya kazi yake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Shughuli zake za korseri zilikuwa aina iliyotambulika ya vita vya majini katika Bahari ya Mediterania ya karne ya kumi na sita.",
+      "text_markdown": "Shughuli zake za korseri zilikuwa aina iliyotambulika ya vita vya majini katika Bahari ya Mediterania ya karne ya kumi na sita.",
+      "tts": {
+        "text": "Shughuli zake za korseri zilikuwa aina iliyotambulika ya vita vya majini katika Bahari ya Mediterania ya karne ya kumi na sita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mstari kati ya uharamia na vita vya majini vinavyofadhiliwa na serikali ulikuwa wa ukungu, na Hayreddin aliishi pande zote mbili.",
+      "text_markdown": "Mstari kati ya uharamia na vita vya majini vinavyofadhiliwa na serikali ulikuwa wa ukungu, na Hayreddin aliishi pande zote mbili.",
+      "tts": {
+        "text": "Mstari kati ya uharamia na vita vya majini vinavyofadhiliwa na serikali ulikuwa wa ukungu, na Hayreddin aliishi pande zote mbili.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kile kisicho na shaka ni kiwango cha mafanikio yake.",
+      "text_markdown": "Kile kisicho na shaka ni kiwango cha mafanikio yake.",
+      "tts": {
+        "text": "Kile kisicho na shaka ni kiwango cha mafanikio yake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mwana wa fundi vyungu kutoka kisiwa cha Ugiriki alijenga jeshi la majini lenye nguvu zaidi katika Bahari ya Mediterania.",
+      "text_markdown": "Mwana wa fundi vyungu kutoka kisiwa cha Ugiriki alijenga jeshi la majini lenye nguvu zaidi katika Bahari ya Mediterania.",
+      "tts": {
+        "text": "Mwana wa fundi vyungu kutoka kisiwa cha Ugiriki alijenga jeshi la majini lenye nguvu zaidi katika Bahari ya Mediterania.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aliwashinda meli za pamoja za nchi zenye nguvu zaidi za Kikristo katika Ulaya.",
+      "text_markdown": "Aliwashinda meli za pamoja za nchi zenye nguvu zaidi za Kikristo katika Ulaya.",
+      "tts": {
+        "text": "Aliwashinda meli za pamoja za nchi zenye nguvu zaidi za Kikristo katika Ulaya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alitawala mji mkubwa, akaunda siasa za bara, na akafa akiheshimiwa na dola yenye nguvu zaidi duniani.",
+      "text_markdown": "Alitawala mji mkubwa, akaunda siasa za bara, na akafa akiheshimiwa na dola yenye nguvu zaidi duniani.",
+      "tts": {
+        "text": "Alitawala mji mkubwa, akaunda siasa za bara, na akafa akiheshimiwa na dola yenye nguvu zaidi duniani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Urithi",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Maisha yake ni ushahidi wa kile ambacho matarajio, ujuzi, na fursa vinaweza kuzalisha vinapokutana wakati sahihi katika historia.",
+      "text_markdown": "Maisha yake ni ushahidi wa kile ambacho matarajio, ujuzi, na fursa vinaweza kuzalisha vinapokutana wakati sahihi katika historia.",
+      "tts": {
+        "text": "Maisha yake ni ushahidi wa kile ambacho matarajio, ujuzi, na fursa vinaweza kuzalisha vinapokutana wakati sahihi katika historia.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

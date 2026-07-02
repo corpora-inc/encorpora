@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "tr",
+  "total_segments": 62,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "AI This Week'e hoş geldiniz. Ben Vindy.",
+      "text_markdown": "AI This Week'e hoş geldiniz. Ben Vindy.",
+      "title": "",
+      "tts": {
+        "text": "AI This Week'e hoş geldiniz. Ben Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Benimle, her zamanki gibi, Ron var.",
+      "text_markdown": "Benimle, her zamanki gibi, Ron var.",
+      "title": "",
+      "tts": {
+        "text": "Benimle, her zamanki gibi, Ron var.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Burada olmak güzel.",
+      "text_markdown": "Burada olmak güzel.",
+      "title": "",
+      "tts": {
+        "text": "Burada olmak güzel.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Bugün Çarşamba, 13 Mayıs 2026. Gelecek konular: bu hafta piyasaya çıkan modeller. Sıralama tabloları ve neden bazılarına güvenmeyi bırakmanız gerektiği. Haftanın konsepti. Ve büyük resim — ABD yeni bir Federal Reserve başkanı aldı ve bu AI için sandığınızdan daha önemli.",
+      "text_markdown": "Bugün Çarşamba, 13 Mayıs 2026. Gelecek konular: bu hafta piyasaya çıkan modeller. Sıralama tabloları ve neden bazılarına güvenmeyi bırakmanız gerektiği. Haftanın konsepti. Ve büyük resim — ABD yeni bir Federal Reserve başkanı aldı ve bu AI için sandığınızdan daha önemli.",
+      "title": "",
+      "tts": {
+        "text": "Bugün Çarşamba, on üç Mayıs iki bin yirmi altı. Gelecek konular: bu hafta piyasaya çıkan modeller. Sıralama tabloları ve neden bazılarına güvenmeyi bırakmanız gerektiği. Haftanın konsepti. Ve büyük resim — ABD yeni bir Federal Reserve başkanı aldı ve bu AI için sandığınızdan daha önemli.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, bu haftanın en büyük model haberi nedir?",
+      "text_markdown": "Ron, bu haftanın en büyük model haberi nedir?",
+      "title": "",
+      "tts": {
+        "text": "Ron, bu haftanın en büyük model haberi nedir?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ChatGPT'nin içindeki varsayılan beyin değişti. OpenAI geçen hafta Salı günü, 5 Mayıs'ta, ücretsiz katmana GPT-5.5 Instant adında yeni bir model sundu. Eğer ücretsiz ChatGPT yanıtı daha kısa veya daha az emoji dolu geliyorsa, nedeni budur.",
+      "text_markdown": "ChatGPT'nin içindeki varsayılan beyin değişti. OpenAI geçen hafta Salı günü, 5 Mayıs'ta, ücretsiz katmana GPT-5.5 Instant adında yeni bir model sundu. Eğer ücretsiz ChatGPT yanıtı daha kısa veya daha az emoji dolu geliyorsa, nedeni budur.",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT'nin içindeki varsayılan beyin değişti. OpenAI geçen hafta Salı günü, beş Mayıs'ta, ücretsiz katmana GPT beş nokta beş Instant adında yeni bir model sundu. Eğer ücretsiz ChatGPT yanıtı daha kısa veya daha az emoji dolu geliyorsa, nedeni budur.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Nasıl daha kısa?",
+      "text_markdown": "Nasıl daha kısa?",
+      "title": "",
+      "tts": {
+        "text": "Nasıl daha kısa?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "OpenAI yeni varsayılanın değiştirdiği modele göre yaklaşık %30 daha az kelime ve %30 daha az satır yazdığını söylüyor. Ayrıca en zor soruşturmalarda halüsinasyon iddialarında %50 düşüş olduğunu iddia ediyorlar. Tıbbi sorular, hukuki sorular ve finansal sorular gibi şeyler.",
+      "text_markdown": "OpenAI yeni varsayılanın değiştirdiği modele göre yaklaşık %30 daha az kelime ve %30 daha az satır yazdığını söylüyor. Ayrıca en zor soruşturmalarda halüsinasyon iddialarında %50 düşüş olduğunu iddia ediyorlar. Tıbbi sorular, hukuki sorular ve finansal sorular gibi şeyler.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI yeni varsayılanın değiştirdiği modele göre yaklaşık yüzde otuz daha az kelime ve yüzde otuz daha az satır yazdığını söylüyor. Ayrıca en zor soruşturmalarda halüsinasyon iddialarında yüzde elli düşüş olduğunu iddia ediyorlar. Tıbbi sorular, hukuki sorular ve finansal sorular gibi şeyler.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "OpenAI dışında herhangi biri bu sayıları doğruladı mı?",
+      "text_markdown": "OpenAI dışında herhangi biri bu sayıları doğruladı mı?",
+      "title": "",
+      "tts": {
+        "text": "OpenAI dışında herhangi biri bu sayıları doğruladı mı?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Ölçekte değil. Artificial Analysis gibi bağımsız benchmark ekipleri yeni modeli genel zeka endekslerinin zirvesine koymuş durumda. Ama halüsinasyon iddialarını doğrulamak zaman alıyor. Bunlar insanlar modeli gerçekten kullandıkça haftalar içinde ortaya çıkıyor.",
+      "text_markdown": "Ölçekte değil. Artificial Analysis gibi bağımsız benchmark ekipleri yeni modeli genel zeka endekslerinin zirvesine koymuş durumda. Ama halüsinasyon iddialarını doğrulamak zaman alıyor. Bunlar insanlar modeli gerçekten kullandıkça haftalar içinde ortaya çıkıyor.",
+      "title": "",
+      "tts": {
+        "text": "Ölçekte değil. Artificial Analysis gibi bağımsız benchmark ekipleri yeni modeli genel zeka endekslerinin zirvesine koymuş durumda. Ama halüsinasyon iddialarını doğrulamak zaman alıyor. Bunlar insanlar modeli gerçekten kullandıkça haftalar içinde ortaya çıkıyor.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Peki açık ağırlıklar tarafında?",
+      "text_markdown": "Peki açık ağırlıklar tarafında?",
+      "title": "",
+      "tts": {
+        "text": "Peki açık ağırlıklar tarafında?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "İki büyük şey. Kimi modelinin arkasındaki Çinli laboratuvar Moonshot, geçen hafta 7 Mayıs'ta 20 milyar dolarlık değerlemeyle 2 milyar dolar yatırım aldı. Ve en son modelleri Kimi K 2.6, OpenRouter'da token hacmi açısından ilk sıraya yerleşti.",
+      "text_markdown": "İki büyük şey. Kimi modelinin arkasındaki Çinli laboratuvar Moonshot, geçen hafta 7 Mayıs'ta 20 milyar dolarlık değerlemeyle 2 milyar dolar yatırım aldı. Ve en son modelleri Kimi K 2.6, OpenRouter'da token hacmi açısından ilk sıraya yerleşti.",
+      "title": "",
+      "tts": {
+        "text": "İki büyük şey. Kimi modelinin arkasındaki Çinli laboratuvar Moonshot, geçen hafta yedi Mayıs'ta yirmi milyar dolarlık değerlemeyle iki milyar dolar yatırım aldı. Ve en son modelleri Kimi K iki nokta altı, OpenRouter'da token hacmi açısından ilk sıraya yerleşti.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "İlk sıra mı? Genel olarak mı?",
+      "text_markdown": "İlk sıra mı? Genel olarak mı?",
+      "title": "",
+      "tts": {
+        "text": "İlk sıra mı? Genel olarak mı?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Genel olarak. Bu büyük bir ticari yönlendiricede bir numarada olan Çinli açık ağırlıklar modeli. Altı ay önce bu düşünülemezdi.",
+      "text_markdown": "Genel olarak. Bu büyük bir ticari yönlendiricede bir numarada olan Çinli açık ağırlıklar modeli. Altı ay önce bu düşünülemezdi.",
+      "title": "",
+      "tts": {
+        "text": "Genel olarak. Bu büyük bir ticari yönlendiricede bir numarada olan Çinli açık ağırlıklar modeli. Altı ay önce bu düşünülemezdi.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "İşaretlemeye değer başka bir şey var mı?",
+      "text_markdown": "İşaretlemeye değer başka bir şey var mı?",
+      "title": "",
+      "tts": {
+        "text": "İşaretlemeye değer başka bir şey var mı?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Fransız laboratuvar Mistral, Nisan sonunda Medium 3.5'i piyasaya sürdü. Eski sohbet modeli, akıl yürütme modeli ve kodlama modeli arasındaki ayrımı tek bir ürünle birleştiriyorlar. OpenAI'nin GPT-5 ailesiyle başlattığı aynı trend. Tüm endüstri o yöne doğru gidiyor.",
+      "text_markdown": "Fransız laboratuvar Mistral, Nisan sonunda Medium 3.5'i piyasaya sürdü. Eski sohbet modeli, akıl yürütme modeli ve kodlama modeli arasındaki ayrımı tek bir ürünle birleştiriyorlar. OpenAI'nin GPT-5 ailesiyle başlattığı aynı trend. Tüm endüstri o yöne doğru gidiyor.",
+      "title": "",
+      "tts": {
+        "text": "Fransız laboratuvar Mistral, Nisan sonunda Medium üç nokta beş'i piyasaya sürdü. Eski sohbet modeli, akıl yürütme modeli ve kodlama modeli arasındaki ayrımı tek bir ürünle birleştiriyorlar. OpenAI'nin GPT beş ailesiyle başlattığı aynı trend. Tüm endüstri o yöne doğru gidiyor.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Peki sırada ne var?",
+      "text_markdown": "Peki sırada ne var?",
+      "title": "",
+      "tts": {
+        "text": "Peki sırada ne var?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Google I/O Salı günü. Herkes yeni bir Gemini bekliyor ve Gemini Omni adında bir video üretim modeli hakkında güvenilir dedikodular var. OpenAI'nin GPT-5.6'sı test aşamasında. Anthropic'in Mythos adında özel önizlemede bir modeli var. Gelecek hafta çok daha fazlasını öğreneceğiz.",
+      "text_markdown": "Google I/O Salı günü. Herkes yeni bir Gemini bekliyor ve Gemini Omni adında bir video üretim modeli hakkında güvenilir dedikodular var. OpenAI'nin GPT-5.6'sı test aşamasında. Anthropic'in Mythos adında özel önizlemede bir modeli var. Gelecek hafta çok daha fazlasını öğreneceğiz.",
+      "title": "",
+      "tts": {
+        "text": "Google I O Salı günü. Herkes yeni bir Gemini bekliyor ve Gemini Omni adında bir video üretim modeli hakkında güvenilir dedikodular var. OpenAI'nin GPT beş nokta altı'sı test aşamasında. Anthropic'in Mythos adında özel önizlemede bir modeli var. Gelecek hafta çok daha fazlasını öğreneceğiz.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Tamam, sıralama tablolarına geçelim.",
+      "text_markdown": "Tamam, sıralama tablolarına geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Tamam, sıralama tablolarına geçelim.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, bu hafta tablolarda ne hareket ediyor?",
+      "text_markdown": "Ron, bu hafta tablolarda ne hareket ediyor?",
+      "title": "",
+      "tts": {
+        "text": "Ron, bu hafta tablolarda ne hareket ediyor?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bu haftanın asıl hikayesi skorlar değil. Güvenmeyi bırakmanız gereken skorlar.",
+      "text_markdown": "Bu haftanın asıl hikayesi skorlar değil. Güvenmeyi bırakmanız gereken skorlar.",
+      "title": "",
+      "tts": {
+        "text": "Bu haftanın asıl hikayesi skorlar değil. Güvenmeyi bırakmanız gereken skorlar.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Bu konuda bize biraz daha anlat, Ron.",
+      "text_markdown": "Bu konuda bize biraz daha anlat, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bu konuda bize biraz daha anlat, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Berkeley'den bir grup makale yayınladı. Her büyük AI agent benchmark'ında mükemmele yakın puan alan otomatik bir tarayıcı geliştirdiler. Tek bir görevi gerçekten çözmeden. Benchmark'ların kendi yanıtlarını kontrol etme şeklini sömürdüler.",
+      "text_markdown": "Berkeley'den bir grup makale yayınladı. Her büyük AI agent benchmark'ında mükemmele yakın puan alan otomatik bir tarayıcı geliştirdiler. Tek bir görevi gerçekten çözmeden. Benchmark'ların kendi yanıtlarını kontrol etme şeklini sömürdüler.",
+      "title": "",
+      "tts": {
+        "text": "Berkeley'den bir grup makale yayınladı. Her büyük AI agent benchmark'ında mükemmele yakın puan alan otomatik bir tarayıcı geliştirdiler. Tek bir görevi gerçekten çözmeden. Benchmark'ların kendi yanıtlarını kontrol etme şeklini sömürdüler.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Hile yaptılar ve benchmark'lar bunu yakalamadı.",
+      "text_markdown": "Hile yaptılar ve benchmark'lar bunu yakalamadı.",
+      "title": "",
+      "tts": {
+        "text": "Hile yaptılar ve benchmark'lar bunu yakalamadı.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Doğru. Ve aynı hafta OpenAI, SWE bench Verified üzerindeki değerlendirmelerini emekliye ayırdıklarını duyurdu. Bu sürekli atıfta bulundukları bir kodlama benchmark'ı. Zor görevlerin yarısından fazlasının bozuk testlere sahip olduğu ortaya çıktığı için emekliye ayırdılar.",
+      "text_markdown": "Doğru. Ve aynı hafta OpenAI, SWE bench Verified üzerindeki değerlendirmelerini emekliye ayırdıklarını duyurdu. Bu sürekli atıfta bulundukları bir kodlama benchmark'ı. Zor görevlerin yarısından fazlasının bozuk testlere sahip olduğu ortaya çıktığı için emekliye ayırdılar.",
+      "title": "",
+      "tts": {
+        "text": "Doğru. Ve aynı hafta OpenAI, SWE bench Verified üzerindeki değerlendirmelerini emekliye ayırdıklarını duyurdu. Bu sürekli atıfta bulundukları bir kodlama benchmark'ı. Zor görevlerin yarısından fazlasının bozuk testlere sahip olduğu ortaya çıktığı için emekliye ayırdılar.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Yani geçen yıl boyunca duyduğumuz sayıların çoğu...",
+      "text_markdown": "Yani geçen yıl boyunca duyduğumuz sayıların çoğu...",
+      "title": "",
+      "tts": {
+        "text": "Yani geçen yıl boyunca duyduğumuz sayıların çoğu...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "En azından kısmen şişirilmiş. Her model değil. Her benchmark değil. Ama alan ölçüm bandını halkın gözü önünde yeniden inşa ediyor. SWE-bench Pro ve SWE-rebench adlı bir proje gibi daha yeni değerlendirmeler test kodunu gizli tutarak bunu düzeltmeye çalışıyor.",
+      "text_markdown": "En azından kısmen şişirilmiş. Her model değil. Her benchmark değil. Ama alan ölçüm bandını halkın gözü önünde yeniden inşa ediyor. SWE-bench Pro ve SWE-rebench adlı bir proje gibi daha yeni değerlendirmeler test kodunu gizli tutarak bunu düzeltmeye çalışıyor.",
+      "title": "",
+      "tts": {
+        "text": "En azından kısmen şişirilmiş. Her model değil. Her benchmark değil. Ama alan ölçüm bandını halkın gözü önünde yeniden inşa ediyor. SWE bench Pro ve SWE rebench adlı bir proje gibi daha yeni değerlendirmeler test kodunu gizli tutarak bunu düzeltmeye çalışıyor.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Temiz bir şekilde yükselen bir şey var mı?",
+      "text_markdown": "Temiz bir şekilde yükselen bir şey var mı?",
+      "title": "",
+      "tts": {
+        "text": "Temiz bir şekilde yükselen bir şey var mı?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Daha temiz tablolarda iki şey. Nisan ortasında Anthropic'in Claude Opus 4.7'si LM Arena kodlama sıralama tablosunda 1500 Elo'yu temiz bir şekilde aşan ilk model oldu. Opus 4.6 birkaç hafta önce 1500'e dokunmuştu. Bu hafta itibariyle Opus 4.7 hala zirvede, 1569 civarında. Anthropic'in ayrıca özel ortak önizlemede Mythos adında ayrı bir modeli var ve Anthropic'in ölçtüğü 18 agent benchmark'ından 17'sinde lider durumda.",
+      "text_markdown": "Daha temiz tablolarda iki şey. Nisan ortasında Anthropic'in Claude Opus 4.7'si LM Arena kodlama sıralama tablosunda 1500 Elo'yu temiz bir şekilde aşan ilk model oldu. Opus 4.6 birkaç hafta önce 1500'e dokunmuştu. Bu hafta itibariyle Opus 4.7 hala zirvede, 1569 civarında. Anthropic'in ayrıca özel ortak önizlemede Mythos adında ayrı bir modeli var ve Anthropic'in ölçtüğü 18 agent benchmark'ından 17'sinde lider durumda.",
+      "title": "",
+      "tts": {
+        "text": "Daha temiz tablolarda iki şey. Nisan ortasında Anthropic'in Claude Opus dört nokta yedi'si LM Arena kodlama sıralama tablosunda bin beş yüz Elo'yu temiz bir şekilde aşan ilk model oldu. Opus dört nokta altı birkaç hafta önce bin beş yüz'e dokunmuştu. Bu hafta itibariyle Opus dört nokta yedi hala zirvede, bin beş yüz altmış dokuz civarında. Anthropic'in ayrıca özel ortak önizlemede Mythos adında ayrı bir modeli var ve Anthropic'in ölçtüğü on sekiz agent benchmark'ından on yedi'sinde lider durumda.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Halkın kullanamadığı bir model tabloların zirvesinde.",
+      "text_markdown": "Halkın kullanamadığı bir model tabloların zirvesinde.",
+      "title": "",
+      "tts": {
+        "text": "Halkın kullanamadığı bir model tabloların zirvesinde.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "İşte bulunduğumuz yer burası. Diğer büyük trend açık karşı kapalı arasındaki fark. Hiç olmadığı kadar dar. DeepSeek V4 Pro ve Kimi K 2.6, çapraz değerlendirme zeka endeksinde GPT-5.5'in çok yakınında. Bu fark eskiden çok büyüktü. Şimdi küçük.",
+      "text_markdown": "İşte bulunduğumuz yer burası. Diğer büyük trend açık karşı kapalı arasındaki fark. Hiç olmadığı kadar dar. DeepSeek V4 Pro ve Kimi K 2.6, çapraz değerlendirme zeka endeksinde GPT-5.5'in çok yakınında. Bu fark eskiden çok büyüktü. Şimdi küçük.",
+      "title": "",
+      "tts": {
+        "text": "İşte bulunduğumuz yer burası. Diğer büyük trend açık karşı kapalı arasındaki fark. Hiç olmadığı kadar dar. DeepSeek V dört Pro ve Kimi K iki nokta altı, çapraz değerlendirme zeka endeksinde GPT beş nokta beş'in çok yakınında. Bu fark eskiden çok büyüktü. Şimdi küçük.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Tamam, haftanın konseptine geçelim.",
+      "text_markdown": "Tamam, haftanın konseptine geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Tamam, haftanın konseptine geçelim.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, bu haftanın konsepti mixture of experts. Neden mixture of experts'e odaklanıyoruz?",
+      "text_markdown": "Ron, bu haftanın konsepti mixture of experts. Neden mixture of experts'e odaklanıyoruz?",
+      "title": "",
+      "tts": {
+        "text": "Ron, bu haftanın konsepti mixture of experts. Neden mixture of experts'e odaklanıyoruz?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Çünkü az önce bahsettiğimiz açık ağırlıklar modeli Kimi K 2.6'nın toplam 1 trilyon parametresi var. Ama bu parametrelerin sadece 32 milyarı herhangi bir anda çalışıyor. İşte bu mixture of experts.",
+      "text_markdown": "Çünkü az önce bahsettiğimiz açık ağırlıklar modeli Kimi K 2.6'nın toplam 1 trilyon parametresi var. Ama bu parametrelerin sadece 32 milyarı herhangi bir anda çalışıyor. İşte bu mixture of experts.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü az önce bahsettiğimiz açık ağırlıklar modeli Kimi K iki nokta altı'nın toplam bir trilyon parametresi var. Ama bu parametrelerin sadece otuz iki milyarı herhangi bir anda çalışıyor. İşte bu mixture of experts.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Dinleyenler için bize açıklayabilir misin.",
+      "text_markdown": "Dinleyenler için bize açıklayabilir misin.",
+      "title": "",
+      "tts": {
+        "text": "Dinleyenler için bize açıklayabilir misin.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Normal bir AI model tek bir dev beyin gibidir. Ürettiği her kelime beynin her bölümünü kullanır. Mixture of experts model daha çok uzmanlarla dolu bir bina gibidir. Kapıda bir resepsiyonistle. Her kelime için resepsiyonist danışılacak iki ya da üç uzman seçer ve binanın geri kalanı sessiz kalır.",
+      "text_markdown": "Normal bir AI model tek bir dev beyin gibidir. Ürettiği her kelime beynin her bölümünü kullanır. Mixture of experts model daha çok uzmanlarla dolu bir bina gibidir. Kapıda bir resepsiyonistle. Her kelime için resepsiyonist danışılacak iki ya da üç uzman seçer ve binanın geri kalanı sessiz kalır.",
+      "title": "",
+      "tts": {
+        "text": "Normal bir AI model tek bir dev beyin gibidir. Ürettiği her kelime beynin her bölümünü kullanır. Mixture of experts model daha çok uzmanlarla dolu bir bina gibidir. Kapıda bir resepsiyonistle. Her kelime için resepsiyonist danışılacak iki ya da üç uzman seçer ve binanın geri kalanı sessiz kalır.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Yani model kağıt üzerinde devasa ama çalıştırması ucuz.",
+      "text_markdown": "Yani model kağıt üzerinde devasa ama çalıştırması ucuz.",
+      "title": "",
+      "tts": {
+        "text": "Yani model kağıt üzerinde devasa ama çalıştırması ucuz.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Kesinlikle. 1 trilyon parametre kapasitesi. Ama kelime başına sadece 32 milyar parametre hesaplaması. Hile burada. Resepsiyonist router adında minik bir kod parçası. Uzmanlar ise expert denen alt ağlar. Model router ve expertleri birlikte, baştan sona eğitiyor.",
+      "text_markdown": "Kesinlikle. 1 trilyon parametre kapasitesi. Ama kelime başına sadece 32 milyar parametre hesaplaması. Hile burada. Resepsiyonist router adında minik bir kod parçası. Uzmanlar ise expert denen alt ağlar. Model router ve expertleri birlikte, baştan sona eğitiyor.",
+      "title": "",
+      "tts": {
+        "text": "Kesinlikle. Bir trilyon parametre kapasitesi. Ama kelime başına sadece otuz iki milyar parametre hesaplaması. Hile burada. Resepsiyonist router adında minik bir kod parçası. Uzmanlar ise expert denen alt ağlar. Model router ve expertleri birlikte, baştan sona eğitiyor.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Her büyük öncü model bunu yapıyor mu?",
+      "text_markdown": "Her büyük öncü model bunu yapıyor mu?",
+      "title": "",
+      "tts": {
+        "text": "Her büyük öncü model bunu yapıyor mu?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Çoğu, evet. Gerçi laboratuvarlar bunu her zaman doğrulamıyor. GPT-4 bir mixture of experts modeldi. DeepSeek'in amiral gemisi bir mixture of experts model. Mistral 2023'ten beri mixture of experts modelleri piyasaya sürüyor. Çin'den gelen yeni dalga bu tasarımı sınırlarına kadar zorladı.",
+      "text_markdown": "Çoğu, evet. Gerçi laboratuvarlar bunu her zaman doğrulamıyor. GPT-4 bir mixture of experts modeldi. DeepSeek'in amiral gemisi bir mixture of experts model. Mistral 2023'ten beri mixture of experts modelleri piyasaya sürüyor. Çin'den gelen yeni dalga bu tasarımı sınırlarına kadar zorladı.",
+      "title": "",
+      "tts": {
+        "text": "Çoğu, evet. Gerçi laboratuvarlar bunu her zaman doğrulamıyor. GPT dört bir mixture of experts modeldi. DeepSeek'in amiral gemisi bir mixture of experts model. Mistral iki bin yirmi üç'ten beri mixture of experts modelleri piyasaya sürüyor. Çin'den gelen yeni dalga bu tasarımı sınırlarına kadar zorladı.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Sadece ChatGPT kullanan biri için neden önemli?",
+      "text_markdown": "Sadece ChatGPT kullanan biri için neden önemli?",
+      "title": "",
+      "tts": {
+        "text": "Sadece ChatGPT kullanan biri için neden önemli?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "İki neden var. Birincisi. Çin'deki açık ağırlıklı bir laboratuvarın bütçenin bir kısmıyla sınır sınıfı kalitede çalışabilmesinin ana nedeni bu. İkincisi. Tek bir API çağrısının dolar değil kuruş maliyetinde olmasının ana nedeni bu. Fiyatların düştüğünü ve kalitenin yüksek kaldığını gördüğünüzde, genellikle uzman karışımı bunun nedenidir.",
+      "text_markdown": "İki neden var. Birincisi. Çin'deki açık ağırlıklı bir laboratuvarın bütçenin bir kısmıyla sınır sınıfı kalitede çalışabilmesinin ana nedeni bu. İkincisi. Tek bir API çağrısının dolar değil kuruş maliyetinde olmasının ana nedeni bu. Fiyatların düştüğünü ve kalitenin yüksek kaldığını gördüğünüzde, genellikle uzman karışımı bunun nedenidir.",
+      "title": "",
+      "tts": {
+        "text": "İki neden var. Birincisi. Çin'deki açık ağırlıklı bir laboratuvarın bütçenin bir kısmıyla sınır sınıfı kalitede çalışabilmesinin ana nedeni bu. İkincisi. Tek bir API çağrısının dolar değil kuruş maliyetinde olmasının ana nedeni bu. Fiyatların düştüğünü ve kalitenin yüksek kaldığını gördüğünüzde, genellikle uzman karışımı bunun nedenidir.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Uzman karışımı. Yönlendirici. Uzmanlar. Seyrek aktivasyon. Yanınıza alacağınız üç kelime. Şimdi daha büyük resme geri çekilelim.",
+      "text_markdown": "Uzman karışımı. Yönlendirici. Uzmanlar. Seyrek aktivasyon. Yanınıza alacağınız üç kelime. Şimdi daha büyük resme geri çekilelim.",
+      "title": "",
+      "tts": {
+        "text": "Uzman karışımı. Yönlendirici. Uzmanlar. Seyrek aktivasyon. Yanınıza alacağınız üç kelime. Şimdi daha büyük resme geri çekilelim.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron, dünyamızın dışındaki bu haftanın büyük hikayesi Federal Rezerv.",
+      "text_markdown": "Ron, dünyamızın dışındaki bu haftanın büyük hikayesi Federal Rezerv.",
+      "title": "",
+      "tts": {
+        "text": "Ron, dünyamızın dışındaki bu haftanın büyük hikayesi Federal Rezerv.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bugün, ABD Senatosu Kevin Warsh'ı Federal Rezerv'in bir sonraki başkanı olarak onayladı. Oylama 54'e 45 oldu. Modern Amerikan tarihinde bir Fed başkanı için en dar oy farkı. Sadece bir Demokrat taraf değiştirdi.",
+      "text_markdown": "Bugün, ABD Senatosu Kevin Warsh'ı Federal Rezerv'in bir sonraki başkanı olarak onayladı. Oylama 54'e 45 oldu. Modern Amerikan tarihinde bir Fed başkanı için en dar oy farkı. Sadece bir Demokrat taraf değiştirdi.",
+      "title": "",
+      "tts": {
+        "text": "Bugün, ABD Senatosu Kevin Warsh'ı Federal Rezerv'in bir sonraki başkanı olarak onayladı. Oylama elli dörde kırk beş oldu. Modern Amerikan tarihinde bir Fed başkanı için en dar oy farkı. Sadece bir Demokrat taraf değiştirdi.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Bu AI için neden önemli?",
+      "text_markdown": "Bu AI için neden önemli?",
+      "title": "",
+      "tts": {
+        "text": "Bu AI için neden önemli?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Çünkü şu anda AI altyapı inşası iki şeyle sınırlı. Elektrik ve sermaye maliyeti. Fed sermaye maliyetini belirliyor. Ve yeni başkan, faiz oranlarını selefi yapacağından daha hızlı düşürmek istediğini kayda geçirmiş durumda.",
+      "text_markdown": "Çünkü şu anda AI altyapı inşası iki şeyle sınırlı. Elektrik ve sermaye maliyeti. Fed sermaye maliyetini belirliyor. Ve yeni başkan, faiz oranlarını selefi yapacağından daha hızlı düşürmek istediğini kayda geçirmiş durumda.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü şu anda AI altyapı inşası iki şeyle sınırlı. Elektrik ve sermaye maliyeti. Fed sermaye maliyetini belirliyor. Ve yeni başkan, faiz oranlarını selefi yapacağından daha hızlı düşürmek istediğini kayda geçirmiş durumda.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Daha hızlı faiz indirimleri AI yatırımını daha ucuz hale getiriyor.",
+      "text_markdown": "Daha hızlı faiz indirimleri AI yatırımını daha ucuz hale getiriyor.",
+      "title": "",
+      "tts": {
+        "text": "Daha hızlı faiz indirimleri AI yatırımını daha ucuz hale getiriyor.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Evet. Hiper ölçekleyiciler — Microsoft, Google, Amazon, Meta — bu yıl kabaca 700 milyar dolar sermaye harcaması yapma yolunda. Bunun çoğu GPU'lar ve veri merkezleri. Daha düşük bir iskonto oranı, bu çok yıllı altyapı inşalarının daha yüksek değerlemelerde kârlı çıkmasını sağlıyor.",
+      "text_markdown": "Evet. Hiper ölçekleyiciler — Microsoft, Google, Amazon, Meta — bu yıl kabaca 700 milyar dolar sermaye harcaması yapma yolunda. Bunun çoğu GPU'lar ve veri merkezleri. Daha düşük bir iskonto oranı, bu çok yıllı altyapı inşalarının daha yüksek değerlemelerde kârlı çıkmasını sağlıyor.",
+      "title": "",
+      "tts": {
+        "text": "Evet. Hiper ölçekleyiciler — Microsoft, Google, Amazon, Meta — bu yıl kabaca yedi yüz milyar dolar sermaye harcaması yapma yolunda. Bunun çoğu GPU'lar ve veri merkezleri. Daha düşük bir iskonto oranı, bu çok yıllı altyapı inşalarının daha yüksek değerlemelerde kârlı çıkmasını sağlıyor.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ve diğer yön. AI, Fed'in karar vermek zorunda olduğu konuları nasıl etkiliyor?",
+      "text_markdown": "Ve diğer yön. AI, Fed'in karar vermek zorunda olduğu konuları nasıl etkiliyor?",
+      "title": "",
+      "tts": {
+        "text": "Ve diğer yön. AI, Fed'in karar vermek zorunda olduğu konuları nasıl etkiliyor?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "İşte ilginç olan kısım bu. AI sermaye harcamaları artık makro bir sayı olacak kadar büyük. Sektör hikayesi değil. Wall Street analistleri, AI ile ilgili inşaat ve ekipman harcamalarının son birkaç çeyrektir ABD ekonomik büyümesinin çoğunluğunu oluşturduğunu söylüyor.",
+      "text_markdown": "İşte ilginç olan kısım bu. AI sermaye harcamaları artık makro bir sayı olacak kadar büyük. Sektör hikayesi değil. Wall Street analistleri, AI ile ilgili inşaat ve ekipman harcamalarının son birkaç çeyrektir ABD ekonomik büyümesinin çoğunluğunu oluşturduğunu söylüyor.",
+      "title": "",
+      "tts": {
+        "text": "İşte ilginç olan kısım bu. AI sermaye harcamaları artık makro bir sayı olacak kadar büyük. Sektör hikayesi değil. Wall Street analistleri, AI ile ilgili inşaat ve ekipman harcamalarının son birkaç çeyrektir ABD ekonomik büyümesinin çoğunluğunu oluşturduğunu söylüyor.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Büyümenin çoğunluğu.",
+      "text_markdown": "Büyümenin çoğunluğu.",
+      "title": "",
+      "tts": {
+        "text": "Büyümenin çoğunluğu.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Çoğunluğu. Ve Fed için iki yönde etkisi var. Uzun vadede, AI bir verimlilik rüzgarı. Bu deflasyonist. Fed'e indirim yapma alanı veriyor. Kısa vadede, güç üzerinde, bakır üzerinde, vasıflı işgücü üzerinde, soğutma için su üzerinde bir talep şoku. Bu enflasyonist. Özellikle Virginia ve Texas gibi veri merkezlerinin yoğunlaştığı yerlerde.",
+      "text_markdown": "Çoğunluğu. Ve Fed için iki yönde etkisi var. Uzun vadede, AI bir verimlilik rüzgarı. Bu deflasyonist. Fed'e indirim yapma alanı veriyor. Kısa vadede, güç üzerinde, bakır üzerinde, vasıflı işgücü üzerinde, soğutma için su üzerinde bir talep şoku. Bu enflasyonist. Özellikle Virginia ve Texas gibi veri merkezlerinin yoğunlaştığı yerlerde.",
+      "title": "",
+      "tts": {
+        "text": "Çoğunluğu. Ve Fed için iki yönde etkisi var. Uzun vadede, AI bir verimlilik rüzgarı. Bu deflasyonist. Fed'e indirim yapma alanı veriyor. Kısa vadede, güç üzerinde, bakır üzerinde, vasıflı işgücü üzerinde, soğutma için su üzerinde bir talep şoku. Bu enflasyonist. Özellikle Virginia ve Texas gibi veri merkezlerinin yoğunlaştığı yerlerde.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Yani yeni başkan, AI'nin enflasyonun çözümü mü yoksa enflasyonun nedeni mi olduğuna karar vermek zorunda.",
+      "text_markdown": "Yani yeni başkan, AI'nin enflasyonun çözümü mü yoksa enflasyonun nedeni mi olduğuna karar vermek zorunda.",
+      "title": "",
+      "tts": {
+        "text": "Yani yeni başkan, AI'nin enflasyonun çözümü mü yoksa enflasyonun nedeni mi olduğuna karar vermek zorunda.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "İkisi birden, aynı anda. Ve ilk kamu konuşmalarında söyleyeceği her şey Wall Street'teki her AI sermaye harcama modelini etkileyecek.",
+      "text_markdown": "İkisi birden, aynı anda. Ve ilk kamu konuşmalarında söyleyeceği her şey Wall Street'teki her AI sermaye harcama modelini etkileyecek.",
+      "title": "",
+      "tts": {
+        "text": "İkisi birden, aynı anda. Ve ilk kamu konuşmalarında söyleyeceği her şey Wall Street'teki her AI sermaye harcama modelini etkileyecek.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Microsoft'un güç nedeniyle yerine getirilmemiş 80 milyar dolarlık bulut siparişi var. Bu doğru sayı mı?",
+      "text_markdown": "Microsoft'un güç nedeniyle yerine getirilmemiş 80 milyar dolarlık bulut siparişi var. Bu doğru sayı mı?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft'un güç nedeniyle yerine getirilmemiş seksen milyar dolarlık bulut siparişi var. Bu doğru sayı mı?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bu Microsoft'un rapor ettiği sayı. Azure müşterileri kapasite için kuyrukta bekliyor. Darboğaz artık çipler değil. Elektrik şebekesi. Güç piyasaları veri merkezlerinin istediği hızda yeni kapasite inşa edemiyor.",
+      "text_markdown": "Bu Microsoft'un rapor ettiği sayı. Azure müşterileri kapasite için kuyrukta bekliyor. Darboğaz artık çipler değil. Elektrik şebekesi. Güç piyasaları veri merkezlerinin istediği hızda yeni kapasite inşa edemiyor.",
+      "title": "",
+      "tts": {
+        "text": "Bu Microsoft'un rapor ettiği sayı. Azure müşterileri kapasite için kuyrukta bekliyor. Darboğaz artık çipler değil. Elektrik şebekesi. Güç piyasaları veri merkezlerinin istediği hızda yeni kapasite inşa edemiyor.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Warsh'ın ilk toplantısı ne zaman?",
+      "text_markdown": "Warsh'ın ilk toplantısı ne zaman?",
+      "title": "",
+      "tts": {
+        "text": "Warsh'ın ilk toplantısı ne zaman?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "16 ve 17 Haziran. Bundan sonra faiz yolu hakkında çok daha fazla şey bileceğiz.",
+      "text_markdown": "16 ve 17 Haziran. Bundan sonra faiz yolu hakkında çok daha fazla şey bileceğiz.",
+      "title": "",
+      "tts": {
+        "text": "On altı ve on yedi Haziran. Bundan sonra faiz yolu hakkında çok daha fazla şey bileceğiz.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "İyi bir noktada bıraktık. Ron, teşekkür ederim.",
+      "text_markdown": "İyi bir noktada bıraktık. Ron, teşekkür ederim.",
+      "title": "",
+      "tts": {
+        "text": "İyi bir noktada bıraktık. Ron, teşekkür ederim.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Her zaman, Vindy.",
+      "text_markdown": "Her zaman, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Her zaman, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Bu 13 Mayıs 2026 tarihli AI This Week'ti. Yeni sayı gelecek Çarşamba. O zamana kadar, kendinize iyi bakın.",
+      "text_markdown": "Bu 13 Mayıs 2026 tarihli AI This Week'ti. Yeni sayı gelecek Çarşamba. O zamana kadar, kendinize iyi bakın.",
+      "title": "",
+      "tts": {
+        "text": "Bu on üç Mayıs iki bin yirmi altı tarihli AI This Week'ti. Yeni sayı gelecek Çarşamba. O zamana kadar, kendinize iyi bakın.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

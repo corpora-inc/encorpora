@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "hi",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पाठक के लिए एक नोट",
+      "text_markdown": "पाठक के लिए एक नोट"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह मोटरसाइकिल की कहानी है।",
+      "text_markdown": "यह मोटरसाइकिल की कहानी है।",
+      "tts": {
+        "text": "यह मोटरसाइकिल की कहानी है।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह एक सच्ची कहानी है।",
+      "text_markdown": "यह एक सच्ची कहानी है।",
+      "tts": {
+        "text": "यह एक सच्ची कहानी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बहुत समय पहले, किसी के पास मोटरसाइकिल नहीं थी।",
+      "text_markdown": "बहुत समय पहले, किसी के पास मोटरसाइकिल नहीं थी।",
+      "tts": {
+        "text": "बहुत समय पहले, किसी के पास मोटरसाइकिल नहीं थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अब, इनकी संख्या करोड़ों में है।",
+      "text_markdown": "अब, इनकी संख्या करोड़ों में है।",
+      "tts": {
+        "text": "अब, इनकी संख्या करोड़ों में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ये तेज़ आवाज़ करती हैं, तेज़ चलती हैं और चमकती हैं।",
+      "text_markdown": "ये तेज़ आवाज़ करती हैं, तेज़ चलती हैं और चमकती हैं।",
+      "tts": {
+        "text": "ये तेज़ आवाज़ करती हैं, तेज़ चलती हैं और चमकती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हम बिल्कुल शुरुआत से शुरू करेंगे।",
+      "text_markdown": "हम बिल्कुल शुरुआत से शुरू करेंगे।",
+      "tts": {
+        "text": "हम बिल्कुल शुरुआत से शुरू करेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हम पहले बनाने वाले से, पहले चालकों से और पहली दौड़ों से मिलेंगे।",
+      "text_markdown": "हम पहले बनाने वाले से, पहले चालकों से और पहली दौड़ों से मिलेंगे।",
+      "tts": {
+        "text": "हम पहले बनाने वाले से, पहले चालकों से और पहली दौड़ों से मिलेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फिर हम आज की दुनिया देखेंगे।",
+      "text_markdown": "फिर हम आज की दुनिया देखेंगे।",
+      "tts": {
+        "text": "फिर हम आज की दुनिया देखेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक नोट",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "अंत तक, आप जान जाएँगे कि इस छोटी मशीन ने सड़क को हमेशा के लिए कैसे बदल दिया।",
+      "text_markdown": "अंत तक, आप जान जाएँगे कि इस छोटी मशीन ने सड़क को हमेशा के लिए कैसे बदल दिया।",
+      "tts": {
+        "text": "अंत तक, आप जान जाएँगे कि इस छोटी मशीन ने सड़क को हमेशा के लिए कैसे बदल दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "text_markdown": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मोटरसाइकिल एक ऐसी साइकिल है जिसमें इंजन होता है।",
+      "text_markdown": "मोटरसाइकिल एक ऐसी साइकिल है जिसमें इंजन होता है।",
+      "tts": {
+        "text": "मोटरसाइकिल एक ऐसी साइकिल है जिसमें इंजन होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इंजन पहियों को आगे धकेलता है।",
+      "text_markdown": "इंजन पहियों को आगे धकेलता है।",
+      "tts": {
+        "text": "इंजन पहियों को आगे धकेलता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "चालक को पैडल नहीं मारने पड़ते।",
+      "text_markdown": "चालक को पैडल नहीं मारने पड़ते।",
+      "tts": {
+        "text": "चालक को पैडल नहीं मारने पड़ते।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बहुत समय पहले, मोटरसाइकिल नहीं थीं।",
+      "text_markdown": "बहुत समय पहले, मोटरसाइकिल नहीं थीं।",
+      "tts": {
+        "text": "बहुत समय पहले, मोटरसाइकिल नहीं थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लोग घोड़ों पर चलते थे।",
+      "text_markdown": "लोग घोड़ों पर चलते थे।",
+      "tts": {
+        "text": "लोग घोड़ों पर चलते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लोग साइकिल चलाते थे।",
+      "text_markdown": "लोग साइकिल चलाते थे।",
+      "tts": {
+        "text": "लोग साइकिल चलाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "साइकिल में दो पहिये होते हैं और कोई इंजन नहीं होता।",
+      "text_markdown": "साइकिल में दो पहिये होते हैं और कोई इंजन नहीं होता।",
+      "tts": {
+        "text": "साइकिल में दो पहिये होते हैं और कोई इंजन नहीं होता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "आपको पैरों से पैडल मारने पड़ते हैं।",
+      "text_markdown": "आपको पैरों से पैडल मारने पड़ते हैं।",
+      "tts": {
+        "text": "आपको पैरों से पैडल मारने पड़ते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "साल 1885 में, जर्मनी के एक आदमी के मन में एक बड़ा विचार आया।",
+      "text_markdown": "साल 1885 में, जर्मनी के एक आदमी के मन में एक बड़ा विचार आया।",
+      "tts": {
+        "text": "साल अठारह सौ पचासी में, जर्मनी के एक आदमी के मन में एक बड़ा विचार आया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसका नाम गोटलीब डेमलर था।",
+      "text_markdown": "उसका नाम गोटलीब डेमलर था।",
+      "tts": {
+        "text": "उसका नाम गोटलीब डेमलर था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसने एक छोटा पेट्रोल इंजन लिया और उसे एक लकड़ी की साइकिल पर लगा दिया।",
+      "text_markdown": "उसने एक छोटा पेट्रोल इंजन लिया और उसे एक लकड़ी की साइकिल पर लगा दिया।",
+      "tts": {
+        "text": "उसने एक छोटा पेट्रोल इंजन लिया और उसे एक लकड़ी की साइकिल पर लगा दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उसने अपनी मशीन का नाम Reitwagen रखा।",
+      "text_markdown": "उसने अपनी मशीन का नाम Reitwagen रखा।",
+      "tts": {
+        "text": "उसने अपनी मशीन का नाम राइट वागन रखा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इस शब्द का मतलब जर्मन में \"सवारी की गाड़ी\" है।",
+      "text_markdown": "इस शब्द का मतलब जर्मन में \"सवारी की गाड़ी\" है।",
+      "tts": {
+        "text": "इस शब्द का मतलब जर्मन में सवारी की गाड़ी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह दुनिया की पहली मोटरसाइकिल थी।",
+      "text_markdown": "यह दुनिया की पहली मोटरसाइकिल थी।",
+      "tts": {
+        "text": "यह दुनिया की पहली मोटरसाइकिल थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen बहुत तेज़ आवाज़ करती थी।",
+      "text_markdown": "Reitwagen बहुत तेज़ आवाज़ करती थी।",
+      "tts": {
+        "text": "राइट वागन बहुत तेज़ आवाज़ करती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह हिचकोले खाती थी।",
+      "text_markdown": "वह हिचकोले खाती थी।",
+      "tts": {
+        "text": "वह हिचकोले खाती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसकी सिर्फ़ एक रफ़्तार थी।",
+      "text_markdown": "उसकी सिर्फ़ एक रफ़्तार थी।",
+      "tts": {
+        "text": "उसकी सिर्फ़ एक रफ़्तार थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह करीब 7 मील प्रति घंटा चल सकती थी।",
+      "text_markdown": "वह करीब 7 मील प्रति घंटा चल सकती थी।",
+      "tts": {
+        "text": "वह करीब सात मील प्रति घंटा चल सकती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "यह आज साइकिल चलाने वाले एक इंसान से भी धीमी रफ़्तार है।",
+      "text_markdown": "यह आज साइकिल चलाने वाले एक इंसान से भी धीमी रफ़्तार है।",
+      "tts": {
+        "text": "यह आज साइकिल चलाने वाले एक इंसान से भी धीमी रफ़्तार है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "लेकिन वह बिना घोड़े के चल सकती थी, और वह बिना पैडल के चल सकती थी।",
+      "text_markdown": "लेकिन वह बिना घोड़े के चल सकती थी, और वह बिना पैडल के चल सकती थी।",
+      "tts": {
+        "text": "लेकिन वह बिना घोड़े के चल सकती थी, और वह बिना पैडल के चल सकती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय 1 — पहली दोपहिया जो भुर्र भुर्र चली",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मोटरसाइकिल का जन्म हो गया था।",
+      "text_markdown": "मोटरसाइकिल का जन्म हो गया था।",
+      "tts": {
+        "text": "मोटरसाइकिल का जन्म हो गया था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 2 — पहली कंपनियाँ",
+      "text_markdown": "अध्याय 2 — पहली कंपनियाँ"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "डेमलर के बाद, और भी लोग मोटरसाइकिल बनाना चाहते थे।",
+      "text_markdown": "डेमलर के बाद, और भी लोग मोटरसाइकिल बनाना चाहते थे।",
+      "tts": {
+        "text": "डेमलर के बाद, और भी लोग मोटरसाइकिल बनाना चाहते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "जल्द ही, दुनिया भर में छोटी छोटी कारीगरी की दुकानें खुल गईं।",
+      "text_markdown": "जल्द ही, दुनिया भर में छोटी छोटी कारीगरी की दुकानें खुल गईं।",
+      "tts": {
+        "text": "जल्द ही, दुनिया भर में छोटी छोटी कारीगरी की दुकानें खुल गईं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इंग्लैंड में, सीगफ्रीड बेटमान नाम के एक आदमी ने Triumph नाम की एक कंपनी शुरू की।",
+      "text_markdown": "इंग्लैंड में, सीगफ्रीड बेटमान नाम के एक आदमी ने Triumph नाम की एक कंपनी शुरू की।",
+      "tts": {
+        "text": "इंग्लैंड में, सीगफ्रीड बेटमान नाम के एक आदमी ने ट्रायम्फ नाम की एक कंपनी शुरू की।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "पहली Triumph मोटरसाइकिल साल 1902 में बनी थी।",
+      "text_markdown": "पहली Triumph मोटरसाइकिल साल 1902 में बनी थी।",
+      "tts": {
+        "text": "पहली ट्रायम्फ मोटरसाइकिल साल उन्नीस सौ दो में बनी थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अमेरिका में, विलियम हार्ले और आर्थर डेविडसन नाम के दो दोस्तों ने अपनी पहली बाइक एक छोटी सी लकड़ी की झोंपड़ी में बनाई।",
+      "text_markdown": "अमेरिका में, विलियम हार्ले और आर्थर डेविडसन नाम के दो दोस्तों ने अपनी पहली बाइक एक छोटी सी लकड़ी की झोंपड़ी में बनाई।",
+      "tts": {
+        "text": "अमेरिका में, विलियम हार्ले और आर्थर डेविडसन नाम के दो दोस्तों ने अपनी पहली बाइक एक छोटी सी लकड़ी की झोंपड़ी में बनाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह झोंपड़ी मिल्वौकी शहर में थी।",
+      "text_markdown": "वह झोंपड़ी मिल्वौकी शहर में थी।",
+      "tts": {
+        "text": "वह झोंपड़ी मिल्वौकी शहर में थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "साल 1903 था।",
+      "text_markdown": "साल 1903 था।",
+      "tts": {
+        "text": "साल उन्नीस सौ तीन था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उन्होंने कंपनी का नाम Harley-Davidson रखा।",
+      "text_markdown": "उन्होंने कंपनी का नाम Harley-Davidson रखा।",
+      "tts": {
+        "text": "उन्होंने कंपनी का नाम हार्ले डेविडसन रखा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक और अमेरिकी कंपनी कुछ साल पहले शुरू हुई थी।",
+      "text_markdown": "एक और अमेरिकी कंपनी कुछ साल पहले शुरू हुई थी।",
+      "tts": {
+        "text": "एक और अमेरिकी कंपनी कुछ साल पहले शुरू हुई थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "स्प्रिंगफील्ड, मैसाचुसेट्स के दो आदमियों ने अपनी पहली मशीन 1901 में बनाई।",
+      "text_markdown": "स्प्रिंगफील्ड, मैसाचुसेट्स के दो आदमियों ने अपनी पहली मशीन 1901 में बनाई।",
+      "tts": {
+        "text": "स्प्रिंगफील्ड, मैसाचुसेट्स के दो आदमियों ने अपनी पहली मशीन उन्नीस सौ एक में बनाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उन्होंने उसका नाम Indian रखा।",
+      "text_markdown": "उन्होंने उसका नाम Indian रखा।",
+      "tts": {
+        "text": "उन्होंने उसका नाम इंडियन रखा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "भारत में, Royal Enfield नाम की एक कंपनी ने भी 1901 में मोटरसाइकिल बनाना शुरू किया।",
+      "text_markdown": "भारत में, Royal Enfield नाम की एक कंपनी ने भी 1901 में मोटरसाइकिल बनाना शुरू किया।",
+      "tts": {
+        "text": "भारत में, रॉयल एनफील्ड नाम की एक कंपनी ने भी उन्नीस सौ एक में मोटरसाइकिल बनाना शुरू किया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आज, Royal Enfield दुनिया की सबसे पुरानी मोटरसाइकिल कंपनी है जो अब भी बाइक बना रही है।",
+      "text_markdown": "आज, Royal Enfield दुनिया की सबसे पुरानी मोटरसाइकिल कंपनी है जो अब भी बाइक बना रही है।",
+      "tts": {
+        "text": "आज, रॉयल एनफील्ड दुनिया की सबसे पुरानी मोटरसाइकिल कंपनी है जो अब भी बाइक बना रही है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जर्मनी में, BMW कंपनी ने थोड़ी देर से, 1923 में मोटरसाइकिल बनाना शुरू किया।",
+      "text_markdown": "जर्मनी में, BMW कंपनी ने थोड़ी देर से, 1923 में मोटरसाइकिल बनाना शुरू किया।",
+      "tts": {
+        "text": "जर्मनी में, बी एम डबल्यू कंपनी ने थोड़ी देर से, उन्नीस सौ तेईस में मोटरसाइकिल बनाना शुरू किया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW का मतलब जर्मन में \"बवेरियन मोटर वर्क्स\" है।",
+      "text_markdown": "BMW का मतलब जर्मन में \"बवेरियन मोटर वर्क्स\" है।",
+      "tts": {
+        "text": "बी एम डबल्यू का मतलब जर्मन में बवेरियन मोटर वर्क्स है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "साल 1910 तक, मोटरसाइकिल हर जगह थीं।",
+      "text_markdown": "साल 1910 तक, मोटरसाइकिल हर जगह थीं।",
+      "tts": {
+        "text": "साल उन्नीस सौ दस तक, मोटरसाइकिल हर जगह थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे शहर की गलियों में और गाँव की सड़कों पर थीं।",
+      "text_markdown": "वे शहर की गलियों में और गाँव की सड़कों पर थीं।",
+      "tts": {
+        "text": "वे शहर की गलियों में और गाँव की सड़कों पर थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय 2 — पहली कंपनियाँ",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "मोटरसाइकिल का ज़माना सच में शुरू हो चुका था।",
+      "text_markdown": "मोटरसाइकिल का ज़माना सच में शुरू हो चुका था।",
+      "tts": {
+        "text": "मोटरसाइकिल का ज़माना सच में शुरू हो चुका था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "text_markdown": "अध्याय 3 — मोटरसाइकिल युद्ध में"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मोटरसाइकिल तेज़ होती हैं।",
+      "text_markdown": "मोटरसाइकिल तेज़ होती हैं।",
+      "tts": {
+        "text": "मोटरसाइकिल तेज़ होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे छोटी पगडंडियों पर भी जा सकती हैं।",
+      "text_markdown": "वे छोटी पगडंडियों पर भी जा सकती हैं।",
+      "tts": {
+        "text": "वे छोटी पगडंडियों पर भी जा सकती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वे एक छावनी से दूसरी छावनी तक संदेश ले जा सकती हैं।",
+      "text_markdown": "वे एक छावनी से दूसरी छावनी तक संदेश ले जा सकती हैं।",
+      "tts": {
+        "text": "वे एक छावनी से दूसरी छावनी तक संदेश ले जा सकती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इसलिए जब युद्ध आए, तो सेनाओं को मोटरसाइकिल चाहिए थीं।",
+      "text_markdown": "इसलिए जब युद्ध आए, तो सेनाओं को मोटरसाइकिल चाहिए थीं।",
+      "tts": {
+        "text": "इसलिए जब युद्ध आए, तो सेनाओं को मोटरसाइकिल चाहिए थीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहला विश्व युद्ध 1914 में शुरू हुआ।",
+      "text_markdown": "पहला विश्व युद्ध 1914 में शुरू हुआ।",
+      "tts": {
+        "text": "पहला विश्व युद्ध उन्नीस सौ चौदह में शुरू हुआ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सैनिक आदेश पहुँचाने के लिए Triumph मोटरसाइकिल का इस्तेमाल करते थे।",
+      "text_markdown": "सैनिक आदेश पहुँचाने के लिए Triumph मोटरसाइकिल का इस्तेमाल करते थे।",
+      "tts": {
+        "text": "सैनिक आदेश पहुँचाने के लिए ट्रायम्फ मोटरसाइकिल का इस्तेमाल करते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H मज़बूत और शांत थी।",
+      "text_markdown": "Triumph Model H मज़बूत और शांत थी।",
+      "tts": {
+        "text": "ट्रायम्फ मॉडल एच मज़बूत और शांत थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह वहाँ भी जा सकती थी जहाँ घोड़े नहीं जा सकते थे।",
+      "text_markdown": "वह वहाँ भी जा सकती थी जहाँ घोड़े नहीं जा सकते थे।",
+      "tts": {
+        "text": "वह वहाँ भी जा सकती थी जहाँ घोड़े नहीं जा सकते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरा विश्व युद्ध 1939 में शुरू हुआ।",
+      "text_markdown": "दूसरा विश्व युद्ध 1939 में शुरू हुआ।",
+      "tts": {
+        "text": "दूसरा विश्व युद्ध उन्नीस सौ उनतालीस में शुरू हुआ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तब तक, मोटरसाइकिल और तेज़ और मज़बूत हो चुकी थीं।",
+      "text_markdown": "तब तक, मोटरसाइकिल और तेज़ और मज़बूत हो चुकी थीं।",
+      "tts": {
+        "text": "तब तक, मोटरसाइकिल और तेज़ और मज़बूत हो चुकी थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अमेरिकी सैनिक Harley-Davidson WLA चलाते थे।",
+      "text_markdown": "अमेरिकी सैनिक Harley-Davidson WLA चलाते थे।",
+      "tts": {
+        "text": "अमेरिकी सैनिक हार्ले डेविडसन डबल्यू एल ए चलाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "जर्मन सैनिक BMW R75 चलाते थे।",
+      "text_markdown": "जर्मन सैनिक BMW R75 चलाते थे।",
+      "tts": {
+        "text": "जर्मन सैनिक बी एम डबल्यू आर पचहत्तर चलाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75 में एक साइडकार होती थी, जिसमें तीसरा पहिया और एक और सैनिक के लिए सीट होती थी।",
+      "text_markdown": "R75 में एक साइडकार होती थी, जिसमें तीसरा पहिया और एक और सैनिक के लिए सीट होती थी।",
+      "tts": {
+        "text": "आर पचहत्तर में एक साइडकार होती थी, जिसमें तीसरा पहिया और एक और सैनिक के लिए सीट होती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "युद्ध के बाद, सैनिक घर लौट आए।",
+      "text_markdown": "युद्ध के बाद, सैनिक घर लौट आए।",
+      "tts": {
+        "text": "युद्ध के बाद, सैनिक घर लौट आए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे अपनी मोटरसाइकिल अपने साथ ले आए।",
+      "text_markdown": "वे अपनी मोटरसाइकिल अपने साथ ले आए।",
+      "tts": {
+        "text": "वे अपनी मोटरसाइकिल अपने साथ ले आए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उनमें से कई लोग चलाते रहना चाहते थे।",
+      "text_markdown": "उनमें से कई लोग चलाते रहना चाहते थे।",
+      "tts": {
+        "text": "उनमें से कई लोग चलाते रहना चाहते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उनमें से कुछ ने अपने खुद के मोटरसाइकिल क्लब शुरू किए।",
+      "text_markdown": "उनमें से कुछ ने अपने खुद के मोटरसाइकिल क्लब शुरू किए।",
+      "tts": {
+        "text": "उनमें से कुछ ने अपने खुद के मोटरसाइकिल क्लब शुरू किए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "युद्धों ने मोटरसाइकिल को मशहूर बना दिया।",
+      "text_markdown": "युद्धों ने मोटरसाइकिल को मशहूर बना दिया।",
+      "tts": {
+        "text": "युद्धों ने मोटरसाइकिल को मशहूर बना दिया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "करोड़ों लोगों ने पहली बार एक मोटरसाइकिल देखी थी।",
+      "text_markdown": "करोड़ों लोगों ने पहली बार एक मोटरसाइकिल देखी थी।",
+      "tts": {
+        "text": "करोड़ों लोगों ने पहली बार एक मोटरसाइकिल देखी थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय 3 — मोटरसाइकिल युद्ध में",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "बहुत लोग अपनी खुद की एक मोटरसाइकिल चाहते थे।",
+      "text_markdown": "बहुत लोग अपनी खुद की एक मोटरसाइकिल चाहते थे।",
+      "tts": {
+        "text": "बहुत लोग अपनी खुद की एक मोटरसाइकिल चाहते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 4 — जापान का उदय",
+      "text_markdown": "अध्याय 4 — जापान का उदय"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरे विश्व युद्ध के बाद, जापान गरीब था।",
+      "text_markdown": "दूसरे विश्व युद्ध के बाद, जापान गरीब था।",
+      "tts": {
+        "text": "दूसरे विश्व युद्ध के बाद, जापान गरीब था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ज़्यादातर कारें बहुत महँगी थीं।",
+      "text_markdown": "ज़्यादातर कारें बहुत महँगी थीं।",
+      "tts": {
+        "text": "ज़्यादातर कारें बहुत महँगी थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लोगों को इधर उधर जाने के लिए एक छोटा और सस्ता तरीका चाहिए था।",
+      "text_markdown": "लोगों को इधर उधर जाने के लिए एक छोटा और सस्ता तरीका चाहिए था।",
+      "tts": {
+        "text": "लोगों को इधर उधर जाने के लिए एक छोटा और सस्ता तरीका चाहिए था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक नौजवान जापानी आदमी ने यह मौका देखा।",
+      "text_markdown": "एक नौजवान जापानी आदमी ने यह मौका देखा।",
+      "tts": {
+        "text": "एक नौजवान जापानी आदमी ने यह मौका देखा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसका नाम सोइचिरो होंडा था।",
+      "text_markdown": "उसका नाम सोइचिरो होंडा था।",
+      "tts": {
+        "text": "उसका नाम सोइचिरो होंडा था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसने 1948 में एक छोटी कंपनी शुरू की।",
+      "text_markdown": "उसने 1948 में एक छोटी कंपनी शुरू की।",
+      "tts": {
+        "text": "उसने उन्नीस सौ अड़तालीस में एक छोटी कंपनी शुरू की।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उसने उसका नाम Honda रखा।",
+      "text_markdown": "उसने उसका नाम Honda रखा।",
+      "tts": {
+        "text": "उसने उसका नाम होंडा रखा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1958 में, Honda ने एक नन्ही सी मोटरसाइकिल बनाई जिसका नाम Super Cub था।",
+      "text_markdown": "1958 में, Honda ने एक नन्ही सी मोटरसाइकिल बनाई जिसका नाम Super Cub था।",
+      "tts": {
+        "text": "उन्नीस सौ अट्ठावन में, होंडा ने एक नन्ही सी मोटरसाइकिल बनाई जिसका नाम सुपर कब था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cub चलाने में आसान थी।",
+      "text_markdown": "Super Cub चलाने में आसान थी।",
+      "tts": {
+        "text": "सुपर कब चलाने में आसान थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसे ठीक करना आसान था।",
+      "text_markdown": "उसे ठीक करना आसान था।",
+      "tts": {
+        "text": "उसे ठीक करना आसान था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह बहुत बहुत सस्ती थी।",
+      "text_markdown": "वह बहुत बहुत सस्ती थी।",
+      "tts": {
+        "text": "वह बहुत बहुत सस्ती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया भर के लोगों ने Super Cub खरीदी।",
+      "text_markdown": "दुनिया भर के लोगों ने Super Cub खरीदी।",
+      "tts": {
+        "text": "दुनिया भर के लोगों ने सुपर कब खरीदी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आज तक, 10 करोड़ से ज़्यादा Super Cub बिक चुकी हैं।",
+      "text_markdown": "आज तक, 10 करोड़ से ज़्यादा Super Cub बिक चुकी हैं।",
+      "tts": {
+        "text": "आज तक, दस करोड़ से ज़्यादा सुपर कब बिक चुकी हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह अब तक का सबसे ज़्यादा बिकने वाला मोटर वाहन है।",
+      "text_markdown": "यह अब तक का सबसे ज़्यादा बिकने वाला मोटर वाहन है।",
+      "tts": {
+        "text": "यह अब तक का सबसे ज़्यादा बिकने वाला मोटर वाहन है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जल्द ही, तीन और जापानी कंपनियों ने Honda का पीछा किया।",
+      "text_markdown": "जल्द ही, तीन और जापानी कंपनियों ने Honda का पीछा किया।",
+      "tts": {
+        "text": "जल्द ही, तीन और जापानी कंपनियों ने होंडा का पीछा किया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे थीं Yamaha, Suzuki और Kawasaki।",
+      "text_markdown": "वे थीं Yamaha, Suzuki और Kawasaki।",
+      "tts": {
+        "text": "वे थीं यामाहा, सुजुकी और कावासाकी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Honda के साथ मिलकर, इन्हें Big Four कहा जाता है।",
+      "text_markdown": "Honda के साथ मिलकर, इन्हें Big Four कहा जाता है।",
+      "tts": {
+        "text": "होंडा के साथ मिलकर, इन्हें बिग फोर कहा जाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Big Four ने ऐसी मोटरसाइकिलें बनाईं जो तेज़, सस्ती और चलाने में आसान थीं।",
+      "text_markdown": "Big Four ने ऐसी मोटरसाइकिलें बनाईं जो तेज़, सस्ती और चलाने में आसान थीं।",
+      "tts": {
+        "text": "बिग फोर ने ऐसी मोटरसाइकिलें बनाईं जो तेज़, सस्ती और चलाने में आसान थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1960 के दशक तक, जापानी मोटरसाइकिल हर जगह थीं।",
+      "text_markdown": "1960 के दशक तक, जापानी मोटरसाइकिल हर जगह थीं।",
+      "tts": {
+        "text": "उन्नीस सौ साठ के दशक तक, जापानी मोटरसाइकिल हर जगह थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय 4 — जापान का उदय",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वे सड़कों के नए राजा थीं।",
+      "text_markdown": "वे सड़कों के नए राजा थीं।",
+      "tts": {
+        "text": "वे सड़कों के नए राजा थीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "text_markdown": "अध्याय 5 — और तेज़, और तेज़, और तेज़"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1960 के दशक में, चालक और तेज़ चलना चाहते थे।",
+      "text_markdown": "1960 के दशक में, चालक और तेज़ चलना चाहते थे।",
+      "tts": {
+        "text": "उन्नीस सौ साठ के दशक में, चालक और तेज़ चलना चाहते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बनाने वालों ने दुनिया की सबसे तेज़ मोटरसाइकिल बनाने की एक होड़ शुरू की।",
+      "text_markdown": "बनाने वालों ने दुनिया की सबसे तेज़ मोटरसाइकिल बनाने की एक होड़ शुरू की।",
+      "tts": {
+        "text": "बनाने वालों ने दुनिया की सबसे तेज़ मोटरसाइकिल बनाने की एक होड़ शुरू की।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इटली में, MV Agusta नाम की एक छोटी कंपनी ने सुंदर लाल बाइक बनाईं जो एक के बाद एक दौड़ जीतती गईं।",
+      "text_markdown": "इटली में, MV Agusta नाम की एक छोटी कंपनी ने सुंदर लाल बाइक बनाईं जो एक के बाद एक दौड़ जीतती गईं।",
+      "tts": {
+        "text": "इटली में, एम वी अगस्ता नाम की एक छोटी कंपनी ने सुंदर लाल बाइक बनाईं जो एक के बाद एक दौड़ जीतती गईं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इंग्लैंड में, Triumph और Norton ने भी ताक़तवर मशीनें बनाईं।",
+      "text_markdown": "इंग्लैंड में, Triumph और Norton ने भी ताक़तवर मशीनें बनाईं।",
+      "tts": {
+        "text": "इंग्लैंड में, ट्रायम्फ और नॉर्टन ने भी ताक़तवर मशीनें बनाईं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर, 1969 में, Honda ने कुछ कमाल का काम किया।",
+      "text_markdown": "फिर, 1969 में, Honda ने कुछ कमाल का काम किया।",
+      "tts": {
+        "text": "फिर, उन्नीस सौ उनहत्तर में, होंडा ने कुछ कमाल का काम किया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उन्होंने एक मोटरसाइकिल बनाई जिसका नाम CB 750 था।",
+      "text_markdown": "उन्होंने एक मोटरसाइकिल बनाई जिसका नाम CB 750 था।",
+      "tts": {
+        "text": "उन्होंने एक मोटरसाइकिल बनाई जिसका नाम सी बी सात सौ पचास था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसमें चार सिलेंडर और एक बड़ा इंजन था।",
+      "text_markdown": "उसमें चार सिलेंडर और एक बड़ा इंजन था।",
+      "tts": {
+        "text": "उसमें चार सिलेंडर और एक बड़ा इंजन था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह 120 मील प्रति घंटा से भी तेज़ चल सकती थी।",
+      "text_markdown": "वह 120 मील प्रति घंटा से भी तेज़ चल सकती थी।",
+      "tts": {
+        "text": "वह एक सौ बीस मील प्रति घंटा से भी तेज़ चल सकती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वह पहली असली सुपरबाइक थी।",
+      "text_markdown": "वह पहली असली सुपरबाइक थी।",
+      "tts": {
+        "text": "वह पहली असली सुपरबाइक थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "CB 750 के बाद, हर कंपनी एक सुपरबाइक बनाना चाहती थी।",
+      "text_markdown": "CB 750 के बाद, हर कंपनी एक सुपरबाइक बनाना चाहती थी।",
+      "tts": {
+        "text": "सी बी सात सौ पचास के बाद, हर कंपनी एक सुपरबाइक बनाना चाहती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बाइक और तेज़ और तेज़ होती गईं।",
+      "text_markdown": "बाइक और तेज़ और तेज़ होती गईं।",
+      "tts": {
+        "text": "बाइक और तेज़ और तेज़ होती गईं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "जल्द ही, उनमें चमकीली फेयरिंग आ गईं, यानी वे चिकने प्लास्टिक के खोल जो हवा को चीर देते हैं।",
+      "text_markdown": "जल्द ही, उनमें चमकीली फेयरिंग आ गईं, यानी वे चिकने प्लास्टिक के खोल जो हवा को चीर देते हैं।",
+      "tts": {
+        "text": "जल्द ही, उनमें चमकीली फेयरिंग आ गईं, यानी वे चिकने प्लास्टिक के खोल जो हवा को चीर देते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1990 में, Kawasaki ZX-11 नाम की एक जापानी मोटरसाइकिल दुनिया की सबसे तेज़ मोटरसाइकिल बन गई।",
+      "text_markdown": "1990 में, Kawasaki ZX-11 नाम की एक जापानी मोटरसाइकिल दुनिया की सबसे तेज़ मोटरसाइकिल बन गई।",
+      "tts": {
+        "text": "उन्नीस सौ नब्बे में, कावासाकी जेड एक्स ग्यारह नाम की एक जापानी मोटरसाइकिल दुनिया की सबसे तेज़ मोटरसाइकिल बन गई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह करीब 175 मील प्रति घंटा तक जा सकती थी।",
+      "text_markdown": "वह करीब 175 मील प्रति घंटा तक जा सकती थी।",
+      "tts": {
+        "text": "वह करीब एक सौ पचहत्तर मील प्रति घंटा तक जा सकती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ साल बाद, Suzuki Hayabusa और भी तेज़ चली।",
+      "text_markdown": "कुछ साल बाद, Suzuki Hayabusa और भी तेज़ चली।",
+      "tts": {
+        "text": "कुछ साल बाद, सुजुकी हायाबुसा और भी तेज़ चली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसने 194 मील प्रति घंटा की रफ़्तार छुई।",
+      "text_markdown": "उसने 194 मील प्रति घंटा की रफ़्तार छुई।",
+      "tts": {
+        "text": "उसने एक सौ चौरानवे मील प्रति घंटा की रफ़्तार छुई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय 5 — और तेज़, और तेज़, और तेज़",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह आज सड़क पर चलने वाली ज़्यादातर कारों से भी तेज़ है।",
+      "text_markdown": "यह आज सड़क पर चलने वाली ज़्यादातर कारों से भी तेज़ है।",
+      "tts": {
+        "text": "यह आज सड़क पर चलने वाली ज़्यादातर कारों से भी तेज़ है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "text_markdown": "अध्याय 6 — मोटरसाइकिल के कई प्रकार"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आज, मोटरसाइकिल कई आकारों में आती हैं।",
+      "text_markdown": "आज, मोटरसाइकिल कई आकारों में आती हैं।",
+      "tts": {
+        "text": "आज, मोटरसाइकिल कई आकारों में आती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर तरह की बाइक एक अलग काम के लिए बनी होती है।",
+      "text_markdown": "हर तरह की बाइक एक अलग काम के लिए बनी होती है।",
+      "tts": {
+        "text": "हर तरह की बाइक एक अलग काम के लिए बनी होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "स्पोर्ट बाइक बहुत तेज़ चलने के लिए बनी होती है।",
+      "text_markdown": "स्पोर्ट बाइक बहुत तेज़ चलने के लिए बनी होती है।",
+      "tts": {
+        "text": "स्पोर्ट बाइक बहुत तेज़ चलने के लिए बनी होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह हल्की और नीची होती है।",
+      "text_markdown": "वह हल्की और नीची होती है।",
+      "tts": {
+        "text": "वह हल्की और नीची होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "चालक आगे की ओर झुकता है।",
+      "text_markdown": "चालक आगे की ओर झुकता है।",
+      "tts": {
+        "text": "चालक आगे की ओर झुकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "स्पोर्ट बाइक चिकनी सड़कों और रेसट्रैक के लिए बनी होती हैं।",
+      "text_markdown": "स्पोर्ट बाइक चिकनी सड़कों और रेसट्रैक के लिए बनी होती हैं।",
+      "tts": {
+        "text": "स्पोर्ट बाइक चिकनी सड़कों और रेसट्रैक के लिए बनी होती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "डर्ट बाइक कीचड़ और मिट्टी के लिए बनी होती है।",
+      "text_markdown": "डर्ट बाइक कीचड़ और मिट्टी के लिए बनी होती है।",
+      "tts": {
+        "text": "डर्ट बाइक कीचड़ और मिट्टी के लिए बनी होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसके पहिये ऊँचे होते हैं और टायर बड़े होते हैं।",
+      "text_markdown": "उसके पहिये ऊँचे होते हैं और टायर बड़े होते हैं।",
+      "tts": {
+        "text": "उसके पहिये ऊँचे होते हैं और टायर बड़े होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "डर्ट बाइक पहाड़ियों के ऊपर से कूद सकती हैं।",
+      "text_markdown": "डर्ट बाइक पहाड़ियों के ऊपर से कूद सकती हैं।",
+      "tts": {
+        "text": "डर्ट बाइक पहाड़ियों के ऊपर से कूद सकती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "बहुत से नौजवान चालक पहले डर्ट बाइक पर ही चलाना सीखते हैं।",
+      "text_markdown": "बहुत से नौजवान चालक पहले डर्ट बाइक पर ही चलाना सीखते हैं।",
+      "tts": {
+        "text": "बहुत से नौजवान चालक पहले डर्ट बाइक पर ही चलाना सीखते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "क्रूज़र लंबी और नीची होती है।",
+      "text_markdown": "क्रूज़र लंबी और नीची होती है।",
+      "tts": {
+        "text": "क्रूज़र लंबी और नीची होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "चालक सीधा बैठता है और धीरे चलाता है।",
+      "text_markdown": "चालक सीधा बैठता है और धीरे चलाता है।",
+      "tts": {
+        "text": "चालक सीधा बैठता है और धीरे चलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson क्रूज़र के लिए मशहूर है।",
+      "text_markdown": "Harley-Davidson क्रूज़र के लिए मशहूर है।",
+      "tts": {
+        "text": "हार्ले डेविडसन क्रूज़र के लिए मशहूर है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Indian भी मशहूर है।",
+      "text_markdown": "Indian भी मशहूर है।",
+      "tts": {
+        "text": "इंडियन भी मशहूर है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एडवेंचर बाइक लंबी यात्राओं के लिए बनी होती है।",
+      "text_markdown": "एडवेंचर बाइक लंबी यात्राओं के लिए बनी होती है।",
+      "tts": {
+        "text": "एडवेंचर बाइक लंबी यात्राओं के लिए बनी होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह सड़कों पर और मिट्टी पर भी चल सकती है।",
+      "text_markdown": "वह सड़कों पर और मिट्टी पर भी चल सकती है।",
+      "tts": {
+        "text": "वह सड़कों पर और मिट्टी पर भी चल सकती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS एक मशहूर एडवेंचर बाइक है।",
+      "text_markdown": "BMW GS एक मशहूर एडवेंचर बाइक है।",
+      "tts": {
+        "text": "बी एम डबल्यू जी एस एक मशहूर एडवेंचर बाइक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "KTM भी एक मशहूर एडवेंचर बाइक है।",
+      "text_markdown": "KTM भी एक मशहूर एडवेंचर बाइक है।",
+      "tts": {
+        "text": "के टी एम भी एक मशहूर एडवेंचर बाइक है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनके अलावा चॉपर बाइक, स्कूटर बाइक, रेसिंग बाइक और इलेक्ट्रिक बाइक भी होती हैं।",
+      "text_markdown": "इनके अलावा चॉपर बाइक, स्कूटर बाइक, रेसिंग बाइक और इलेक्ट्रिक बाइक भी होती हैं।",
+      "tts": {
+        "text": "इनके अलावा चॉपर बाइक, स्कूटर बाइक, रेसिंग बाइक और इलेक्ट्रिक बाइक भी होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लगभग हर तरह की सड़क के लिए एक मोटरसाइकिल मौजूद है।",
+      "text_markdown": "लगभग हर तरह की सड़क के लिए एक मोटरसाइकिल मौजूद है।",
+      "tts": {
+        "text": "लगभग हर तरह की सड़क के लिए एक मोटरसाइकिल मौजूद है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय 6 — मोटरसाइकिल के कई प्रकार",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आज, आप दुनिया के हर देश में एक मोटरसाइकिल पा सकते हैं।",
+      "text_markdown": "आज, आप दुनिया के हर देश में एक मोटरसाइकिल पा सकते हैं।",
+      "tts": {
+        "text": "आज, आप दुनिया के हर देश में एक मोटरसाइकिल पा सकते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय 7 — एक नई सड़क",
+      "text_markdown": "अध्याय 7 — एक नई सड़क"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आज, मोटरसाइकिल में एक नई तरह का इंजन है।",
+      "text_markdown": "आज, मोटरसाइकिल में एक नई तरह का इंजन है।",
+      "tts": {
+        "text": "आज, मोटरसाइकिल में एक नई तरह का इंजन है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह बिजली का इंजन है।",
+      "text_markdown": "यह बिजली का इंजन है।",
+      "tts": {
+        "text": "यह बिजली का इंजन है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "बिजली से चलने वाली मोटरसाइकिल बिल्कुल चुप होती है।",
+      "text_markdown": "बिजली से चलने वाली मोटरसाइकिल बिल्कुल चुप होती है।",
+      "tts": {
+        "text": "बिजली से चलने वाली मोटरसाइकिल बिल्कुल चुप होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उसे पेट्रोल की ज़रूरत नहीं होती।",
+      "text_markdown": "उसे पेट्रोल की ज़रूरत नहीं होती।",
+      "tts": {
+        "text": "उसे पेट्रोल की ज़रूरत नहीं होती।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उसे बस फ़ोन की तरह चार्जिंग में लगाना पड़ता है।",
+      "text_markdown": "उसे बस फ़ोन की तरह चार्जिंग में लगाना पड़ता है।",
+      "tts": {
+        "text": "उसे बस फ़ोन की तरह चार्जिंग में लगाना पड़ता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zero नाम की एक कंपनी कैलिफ़ोर्निया में बिजली से चलने वाली मोटरसाइकिल बनाती है।",
+      "text_markdown": "Zero नाम की एक कंपनी कैलिफ़ोर्निया में बिजली से चलने वाली मोटरसाइकिल बनाती है।",
+      "tts": {
+        "text": "ज़ीरो नाम की एक कंपनी कैलिफ़ोर्निया में बिजली से चलने वाली मोटरसाइकिल बनाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson अब LiveWire नाम की एक बिजली वाली बाइक बनाती है।",
+      "text_markdown": "Harley-Davidson अब LiveWire नाम की एक बिजली वाली बाइक बनाती है।",
+      "tts": {
+        "text": "हार्ले डेविडसन अब लाइववायर नाम की एक बिजली वाली बाइक बनाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Energica नाम की एक इतालवी कंपनी बिजली वाली रेसिंग बाइक बनाती है।",
+      "text_markdown": "Energica नाम की एक इतालवी कंपनी बिजली वाली रेसिंग बाइक बनाती है।",
+      "tts": {
+        "text": "एनर्जिका नाम की एक इतालवी कंपनी बिजली वाली रेसिंग बाइक बनाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वे बहुत तेज़ हैं।",
+      "text_markdown": "वे बहुत तेज़ हैं।",
+      "tts": {
+        "text": "वे बहुत तेज़ हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहली मोटरसाइकिल, Reitwagen, सिर्फ़ 7 मील प्रति घंटा चल सकती थी।",
+      "text_markdown": "पहली मोटरसाइकिल, Reitwagen, सिर्फ़ 7 मील प्रति घंटा चल सकती थी।",
+      "tts": {
+        "text": "पहली मोटरसाइकिल, राइट वागन, सिर्फ़ सात मील प्रति घंटा चल सकती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आज की बिजली वाली मोटरसाइकिल 200 मील प्रति घंटा से भी तेज़ चल सकती हैं।",
+      "text_markdown": "आज की बिजली वाली मोटरसाइकिल 200 मील प्रति घंटा से भी तेज़ चल सकती हैं।",
+      "tts": {
+        "text": "आज की बिजली वाली मोटरसाइकिल दो सौ मील प्रति घंटा से भी तेज़ चल सकती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अब तक मोटरसाइकिल की कहानी यही है।",
+      "text_markdown": "अब तक मोटरसाइकिल की कहानी यही है।",
+      "tts": {
+        "text": "अब तक मोटरसाइकिल की कहानी यही है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह बड़ी कहानी थी।",
+      "text_markdown": "यह बड़ी कहानी थी।",
+      "tts": {
+        "text": "यह बड़ी कहानी थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अगली ग्यारह किताबें छोटी छोटी कहानियाँ सुनाएँगी।",
+      "text_markdown": "अगली ग्यारह किताबें छोटी छोटी कहानियाँ सुनाएँगी।",
+      "tts": {
+        "text": "अगली ग्यारह किताबें छोटी छोटी कहानियाँ सुनाएँगी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हर एक किताब मोटरसाइकिल की दुनिया के एक हिस्से के बारे में है।",
+      "text_markdown": "हर एक किताब मोटरसाइकिल की दुनिया के एक हिस्से के बारे में है।",
+      "tts": {
+        "text": "हर एक किताब मोटरसाइकिल की दुनिया के एक हिस्से के बारे में है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी किताब Harley-Davidson के बारे में है।",
+      "text_markdown": "दूसरी किताब Harley-Davidson के बारे में है।",
+      "tts": {
+        "text": "दूसरी किताब हार्ले डेविडसन के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तीसरी किताब Honda के बारे में है।",
+      "text_markdown": "तीसरी किताब Honda के बारे में है।",
+      "tts": {
+        "text": "तीसरी किताब होंडा के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "चौथी किताब इटली की Ducati के बारे में है।",
+      "text_markdown": "चौथी किताब इटली की Ducati के बारे में है।",
+      "tts": {
+        "text": "चौथी किताब इटली की डुकाटी के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पाँचवीं किताब जर्मनी की BMW के बारे में है।",
+      "text_markdown": "पाँचवीं किताब जर्मनी की BMW के बारे में है।",
+      "tts": {
+        "text": "पाँचवीं किताब जर्मनी की बी एम डबल्यू के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "छठी किताब इंग्लैंड की Triumph के बारे में है।",
+      "text_markdown": "छठी किताब इंग्लैंड की Triumph के बारे में है।",
+      "tts": {
+        "text": "छठी किताब इंग्लैंड की ट्रायम्फ के बारे में है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सातवीं किताब डर्ट बाइक के बारे में है।",
+      "text_markdown": "सातवीं किताब डर्ट बाइक के बारे में है।",
+      "tts": {
+        "text": "सातवीं किताब डर्ट बाइक के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आठवीं किताब स्पोर्ट बाइक के बारे में है।",
+      "text_markdown": "आठवीं किताब स्पोर्ट बाइक के बारे में है।",
+      "tts": {
+        "text": "आठवीं किताब स्पोर्ट बाइक के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "नौवीं किताब क्रूज़र और चॉपर के बारे में है।",
+      "text_markdown": "नौवीं किताब क्रूज़र और चॉपर के बारे में है।",
+      "tts": {
+        "text": "नौवीं किताब क्रूज़र और चॉपर के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "दसवीं किताब एडवेंचर बाइक के बारे में है।",
+      "text_markdown": "दसवीं किताब एडवेंचर बाइक के बारे में है।",
+      "tts": {
+        "text": "दसवीं किताब एडवेंचर बाइक के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ग्यारहवीं किताब रेसिंग के बारे में है।",
+      "text_markdown": "ग्यारहवीं किताब रेसिंग के बारे में है।",
+      "tts": {
+        "text": "ग्यारहवीं किताब रेसिंग के बारे में है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बारहवीं किताब बिजली वाली बाइक और भविष्य के बारे में है।",
+      "text_markdown": "बारहवीं किताब बिजली वाली बाइक और भविष्य के बारे में है।",
+      "tts": {
+        "text": "बारहवीं किताब बिजली वाली बाइक और भविष्य के बारे में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह चुनिए जो आपको सबसे मज़ेदार लगे।",
+      "text_markdown": "वह चुनिए जो आपको सबसे मज़ेदार लगे।",
+      "tts": {
+        "text": "वह चुनिए जो आपको सबसे मज़ेदार लगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय 7 — एक नई सड़क",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फिर सवारी के लिए साथ चलिए।",
+      "text_markdown": "फिर सवारी के लिए साथ चलिए।",
+      "tts": {
+        "text": "फिर सवारी के लिए साथ चलिए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "इस किताब के बारे में",
+      "text_markdown": "इस किताब के बारे में"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह मोटरसाइकिल सीरीज़ की पहली किताब है।",
+      "text_markdown": "यह मोटरसाइकिल सीरीज़ की पहली किताब है।",
+      "tts": {
+        "text": "यह मोटरसाइकिल सीरीज़ की पहली किताब है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इसे ऑगस्ट ने पढ़कर सुनाया है।",
+      "text_markdown": "इसे ऑगस्ट ने पढ़कर सुनाया है।",
+      "tts": {
+        "text": "इसे ऑगस्ट ने पढ़कर सुनाया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हर वाक्य छोटा और साफ़ है ताकि आप किसी भी भाषा में साथ साथ पढ़ सकें।",
+      "text_markdown": "हर वाक्य छोटा और साफ़ है ताकि आप किसी भी भाषा में साथ साथ पढ़ सकें।",
+      "tts": {
+        "text": "हर वाक्य छोटा और साफ़ है ताकि आप किसी भी भाषा में साथ साथ पढ़ सकें।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर आप सुनना चाहते हैं कि कोई वाक्य दूसरी भाषा में कैसा लगता है, तो वही किताब उस भाषा में सुनिए।",
+      "text_markdown": "अगर आप सुनना चाहते हैं कि कोई वाक्य दूसरी भाषा में कैसा लगता है, तो वही किताब उस भाषा में सुनिए।",
+      "tts": {
+        "text": "अगर आप सुनना चाहते हैं कि कोई वाक्य दूसरी भाषा में कैसा लगता है, तो वही किताब उस भाषा में सुनिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "पन्ने पर लिखे शब्द वही होंगे जो आप सुनेंगे।",
+      "text_markdown": "पन्ने पर लिखे शब्द वही होंगे जो आप सुनेंगे।",
+      "tts": {
+        "text": "पन्ने पर लिखे शब्द वही होंगे जो आप सुनेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इसी तरह आप सीखते हैं।",
+      "text_markdown": "इसी तरह आप सीखते हैं।",
+      "tts": {
+        "text": "इसी तरह आप सीखते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "इस किताब के बारे में",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अब जाइए, एक मोटरसाइकिल ढूँढिए और उसे भुर्र भुर्र करते सुनिए।",
+      "text_markdown": "अब जाइए, एक मोटरसाइकिल ढूँढिए और उसे भुर्र भुर्र करते सुनिए।",
+      "tts": {
+        "text": "अब जाइए, एक मोटरसाइकिल ढूँढिए और उसे भुर्र भुर्र करते सुनिए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

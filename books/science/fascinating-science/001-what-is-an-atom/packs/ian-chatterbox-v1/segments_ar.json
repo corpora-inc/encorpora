@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "ar",
+  "total_segments": 300,
+  "segments": [
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "paragraph_id": "p1",
+      "text": "كل شيء مصنوع من الذرات",
+      "text_markdown": "كل شيء مصنوع من الذرات",
+      "title": "كل شيء مصنوع من الذرات"
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "paragraph_id": "p2",
+      "text": "انظر حولك.",
+      "text_markdown": "انظر حولك.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "انظر حولك.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "paragraph_id": "p2",
+      "text": "كل شيء تراه مصنوع من الذرات.",
+      "text_markdown": "كل شيء تراه مصنوع من الذرات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "كل شيء تراه مصنوع من الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "paragraph_id": "p2",
+      "text": "الهواء الذي تتنفسه مصنوع من الذرات.",
+      "text_markdown": "الهواء الذي تتنفسه مصنوع من الذرات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الهواء الذي تتنفسه مصنوع من الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "paragraph_id": "p2",
+      "text": "الماء الذي تشربه مصنوع من الذرات.",
+      "text_markdown": "الماء الذي تشربه مصنوع من الذرات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الماء الذي تشربه مصنوع من الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "paragraph_id": "p2",
+      "text": "جسمك مصنوع من الذرات.",
+      "text_markdown": "جسمك مصنوع من الذرات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "جسمك مصنوع من الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "paragraph_id": "p2",
+      "text": "الارض تحت قدميك مصنوعة من الذرات.",
+      "text_markdown": "الارض تحت قدميك مصنوعة من الذرات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الارض تحت قدميك مصنوعة من الذرات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "paragraph_id": "p3",
+      "text": "الذرة هي اصغر قطعة من المادة لا تزال تحتفظ بهويتها الكيميائية.",
+      "text_markdown": "الذرة هي اصغر قطعة من المادة لا تزال تحتفظ بهويتها الكيميائية.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الذرة هي اصغر قطعة من المادة لا تزال تحتفظ بهويتها الكيميائية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "paragraph_id": "p3",
+      "text": "لا يمكنك رؤية ذرة واحدة بعينيك.",
+      "text_markdown": "لا يمكنك رؤية ذرة واحدة بعينيك.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "لا يمكنك رؤية ذرة واحدة بعينيك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "paragraph_id": "p3",
+      "text": "لا يمكنك رؤية ذرة واحدة بالمجهر العادي.",
+      "text_markdown": "لا يمكنك رؤية ذرة واحدة بالمجهر العادي.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "لا يمكنك رؤية ذرة واحدة بالمجهر العادي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "paragraph_id": "p3",
+      "text": "الذرات صغيرة الى هذا الحد.",
+      "text_markdown": "الذرات صغيرة الى هذا الحد.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الذرات صغيرة الى هذا الحد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "paragraph_id": "p4",
+      "text": "حبة رمل واحدة تحتوي على حوالي خمسين كوينتيليون ذرة.",
+      "text_markdown": "حبة رمل واحدة تحتوي على حوالي خمسين كوينتيليون ذرة.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "حبة رمل واحدة تحتوي على حوالي خمسين كوينتيليون ذرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "paragraph_id": "p4",
+      "text": "هذا الرقم هو خمسون متبوعا بثمانية عشر صفرا.",
+      "text_markdown": "هذا الرقم هو خمسون متبوعا بثمانية عشر صفرا.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "هذا الرقم هو خمسون متبوعا بثمانية عشر صفرا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "paragraph_id": "p4",
+      "text": "عدد الذرات في حبة رمل واحدة اكثر من عدد حبات الرمل على الشاطئ.",
+      "text_markdown": "عدد الذرات في حبة رمل واحدة اكثر من عدد حبات الرمل على الشاطئ.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "عدد الذرات في حبة رمل واحدة اكثر من عدد حبات الرمل على الشاطئ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "paragraph_id": "p5",
+      "text": "الذرات هي اللبنات الاساسية لكل شيء في العالم المادي.",
+      "text_markdown": "الذرات هي اللبنات الاساسية لكل شيء في العالم المادي.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الذرات هي اللبنات الاساسية لكل شيء في العالم المادي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p5",
+      "text": "الجدار مبني من الطوب.",
+      "text_markdown": "الجدار مبني من الطوب.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الجدار مبني من الطوب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "paragraph_id": "p5",
+      "text": "الجملة مكونة من كلمات.",
+      "text_markdown": "الجملة مكونة من كلمات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الجملة مكونة من كلمات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "paragraph_id": "p5",
+      "text": "الكون مصنوع من الذرات.",
+      "text_markdown": "الكون مصنوع من الذرات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الكون مصنوع من الذرات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "paragraph_id": "p6",
+      "text": "كلمة ذرة تاتي من اللغة اليونانية القديمة.",
+      "text_markdown": "كلمة ذرة تاتي من اللغة اليونانية القديمة.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "كلمة ذرة تاتي من اللغة اليونانية القديمة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "paragraph_id": "p6",
+      "text": "الكلمة اليونانية اتوموس تعني غير قابل للقطع.",
+      "text_markdown": "الكلمة اليونانية اتوموس تعني غير قابل للقطع.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الكلمة اليونانية اتوموس تعني غير قابل للقطع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "paragraph_id": "p6",
+      "text": "اعتقد الفلاسفة اليونانيون القدماء ان الذرات هي اصغر الاجزاء الممكنة من المادة.",
+      "text_markdown": "اعتقد الفلاسفة اليونانيون القدماء ان الذرات هي اصغر الاجزاء الممكنة من المادة.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "اعتقد الفلاسفة اليونانيون القدماء ان الذرات هي اصغر الاجزاء الممكنة من المادة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "paragraph_id": "p6",
+      "text": "كانوا قريبين من الصواب.",
+      "text_markdown": "كانوا قريبين من الصواب.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "كانوا قريبين من الصواب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "paragraph_id": "p6",
+      "text": "الذرات ليست في الحقيقة اصغر الجسيمات، لكنها اصغر الوحدات التي تحتفظ بخصائصها الكيميائية.",
+      "text_markdown": "الذرات ليست في الحقيقة اصغر الجسيمات، لكنها اصغر الوحدات التي تحتفظ بخصائصها الكيميائية.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الذرات ليست في الحقيقة اصغر الجسيمات، لكنها اصغر الوحدات التي تحتفظ بخصائصها الكيميائية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "paragraph_id": "p7",
+      "text": "الذرات متينة بشكل لا يصدق.",
+      "text_markdown": "الذرات متينة بشكل لا يصدق.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الذرات متينة بشكل لا يصدق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p7",
+      "text": "الذرات في جسمك عمرها مليارات السنين.",
+      "text_markdown": "الذرات في جسمك عمرها مليارات السنين.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الذرات في جسمك عمرها مليارات السنين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "paragraph_id": "p7",
+      "text": "بعض ذرات الهيدروجين في الماء الذي شربته اليوم تكونت في الدقائق الاولى بعد الانفجار العظيم.",
+      "text_markdown": "بعض ذرات الهيدروجين في الماء الذي شربته اليوم تكونت في الدقائق الاولى بعد الانفجار العظيم.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "بعض ذرات الهيدروجين في الماء الذي شربته اليوم تكونت في الدقائق الاولى بعد الانفجار العظيم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "paragraph_id": "p7",
+      "text": "انت مصنوع من مواد قديمة.",
+      "text_markdown": "انت مصنوع من مواد قديمة.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "انت مصنوع من مواد قديمة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "paragraph_id": "p8",
+      "text": "الذرات لا تخلق ولا تدمر في الحياة العادية.",
+      "text_markdown": "الذرات لا تخلق ولا تدمر في الحياة العادية.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الذرات لا تخلق ولا تدمر في الحياة العادية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p8",
+      "text": "انها تعيد ترتيب نفسها.",
+      "text_markdown": "انها تعيد ترتيب نفسها.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "انها تعيد ترتيب نفسها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "paragraph_id": "p8",
+      "text": "عندما يحترق الخشب، لا تختفي الذرات.",
+      "text_markdown": "عندما يحترق الخشب، لا تختفي الذرات.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "عندما يحترق الخشب، لا تختفي الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "paragraph_id": "p8",
+      "text": "انها تعيد ترتيب نفسها لتصبح دخانا ورمادا وغازا.",
+      "text_markdown": "انها تعيد ترتيب نفسها لتصبح دخانا ورمادا وغازا.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "انها تعيد ترتيب نفسها لتصبح دخانا ورمادا وغازا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "paragraph_id": "p8",
+      "text": "عندما يذوب الجليد، تبقى الذرات كما هي.",
+      "text_markdown": "عندما يذوب الجليد، تبقى الذرات كما هي.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "عندما يذوب الجليد، تبقى الذرات كما هي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "paragraph_id": "p8",
+      "text": "فقط ترتيبها هو الذي يتغير.",
+      "text_markdown": "فقط ترتيبها هو الذي يتغير.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "فقط ترتيبها هو الذي يتغير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "paragraph_id": "p9",
+      "text": "فهم الذرات هو اساس الكيمياء.",
+      "text_markdown": "فهم الذرات هو اساس الكيمياء.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "فهم الذرات هو اساس الكيمياء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "paragraph_id": "p9",
+      "text": "الكيمياء هي علم كيفية اتحاد الذرات واعادة ترتيبها وتفاعلها.",
+      "text_markdown": "الكيمياء هي علم كيفية اتحاد الذرات واعادة ترتيبها وتفاعلها.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "الكيمياء هي علم كيفية اتحاد الذرات واعادة ترتيبها وتفاعلها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "paragraph_id": "p9",
+      "text": "كل ما يحدث في العالم المادي يرجع الى الذرات وما تفعله.",
+      "text_markdown": "كل ما يحدث في العالم المادي يرجع الى الذرات وما تفعله.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "كل ما يحدث في العالم المادي يرجع الى الذرات وما تفعله.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "paragraph_id": "p10",
+      "text": "داخل الذرة",
+      "text_markdown": "داخل الذرة",
+      "title": "داخل الذرة"
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "paragraph_id": "p11",
+      "text": "تحتوي الذرة على ثلاثة انواع من الجسيمات بداخلها.",
+      "text_markdown": "تحتوي الذرة على ثلاثة انواع من الجسيمات بداخلها.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "تحتوي الذرة على ثلاثة انواع من الجسيمات بداخلها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "paragraph_id": "p11",
+      "text": "البروتونات.",
+      "text_markdown": "البروتونات.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "البروتونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "paragraph_id": "p11",
+      "text": "النيوترونات.",
+      "text_markdown": "النيوترونات.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "النيوترونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "paragraph_id": "p11",
+      "text": "الالكترونات.",
+      "text_markdown": "الالكترونات.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "الالكترونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "paragraph_id": "p11",
+      "text": "هذه الجسيمات الثلاثة تشكل كل ذرة في الكون.",
+      "text_markdown": "هذه الجسيمات الثلاثة تشكل كل ذرة في الكون.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "هذه الجسيمات الثلاثة تشكل كل ذرة في الكون.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "paragraph_id": "p12",
+      "text": "مركز الذرة يسمى النواة.",
+      "text_markdown": "مركز الذرة يسمى النواة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "مركز الذرة يسمى النواة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "paragraph_id": "p12",
+      "text": "تحتوي النواة على البروتونات والنيوترونات.",
+      "text_markdown": "تحتوي النواة على البروتونات والنيوترونات.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "تحتوي النواة على البروتونات والنيوترونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "paragraph_id": "p12",
+      "text": "النواة صغيرة جدا مقارنة بالذرة كلها.",
+      "text_markdown": "النواة صغيرة جدا مقارنة بالذرة كلها.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "النواة صغيرة جدا مقارنة بالذرة كلها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "paragraph_id": "p12",
+      "text": "لو كانت الذرة بحجم ملعب كرة قدم، لكانت النواة بحجم كرة زجاجية صغيرة في منتصف الملعب.",
+      "text_markdown": "لو كانت الذرة بحجم ملعب كرة قدم، لكانت النواة بحجم كرة زجاجية صغيرة في منتصف الملعب.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "لو كانت الذرة بحجم ملعب كرة قدم، لكانت النواة بحجم كرة زجاجية صغيرة في منتصف الملعب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "paragraph_id": "p13",
+      "text": "البروتونات تحمل شحنة كهربائية موجبة.",
+      "text_markdown": "البروتونات تحمل شحنة كهربائية موجبة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "البروتونات تحمل شحنة كهربائية موجبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "paragraph_id": "p13",
+      "text": "كل بروتون يحمل نفس المقدار من الشحنة الموجبة.",
+      "text_markdown": "كل بروتون يحمل نفس المقدار من الشحنة الموجبة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "كل بروتون يحمل نفس المقدار من الشحنة الموجبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "paragraph_id": "p13",
+      "text": "عدد البروتونات في الذرة يحدد نوع العنصر الذي تنتمي اليه الذرة.",
+      "text_markdown": "عدد البروتونات في الذرة يحدد نوع العنصر الذي تنتمي اليه الذرة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "عدد البروتونات في الذرة يحدد نوع العنصر الذي تنتمي اليه الذرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "paragraph_id": "p13",
+      "text": "بروتون واحد يعني هيدروجين.",
+      "text_markdown": "بروتون واحد يعني هيدروجين.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "بروتون واحد يعني هيدروجين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "paragraph_id": "p13",
+      "text": "ستة بروتونات تعني كربون.",
+      "text_markdown": "ستة بروتونات تعني كربون.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ستة بروتونات تعني كربون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "paragraph_id": "p13",
+      "text": "ستة وعشرون بروتونا تعني حديد.",
+      "text_markdown": "ستة وعشرون بروتونا تعني حديد.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ستة وعشرون بروتونا تعني حديد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "paragraph_id": "p13",
+      "text": "عدد البروتونات هو اهم حقيقة عن الذرة.",
+      "text_markdown": "عدد البروتونات هو اهم حقيقة عن الذرة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "عدد البروتونات هو اهم حقيقة عن الذرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "paragraph_id": "p14",
+      "text": "النيوترونات لا تحمل اي شحنة كهربائية.",
+      "text_markdown": "النيوترونات لا تحمل اي شحنة كهربائية.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "النيوترونات لا تحمل اي شحنة كهربائية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "paragraph_id": "p14",
+      "text": "النيوترونات متعادلة.",
+      "text_markdown": "النيوترونات متعادلة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "النيوترونات متعادلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "paragraph_id": "p14",
+      "text": "النيوترونات تجلس في النواة بجانب البروتونات.",
+      "text_markdown": "النيوترونات تجلس في النواة بجانب البروتونات.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "النيوترونات تجلس في النواة بجانب البروتونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "paragraph_id": "p14",
+      "text": "النيوترونات تساعد في تماسك النواة.",
+      "text_markdown": "النيوترونات تساعد في تماسك النواة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "النيوترونات تساعد في تماسك النواة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "paragraph_id": "p14",
+      "text": "بدون النيوترونات، ستدفع البروتونات بعضها البعض بعيدا لانها جميعا تحمل نفس الشحنة الموجبة.",
+      "text_markdown": "بدون النيوترونات، ستدفع البروتونات بعضها البعض بعيدا لانها جميعا تحمل نفس الشحنة الموجبة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "بدون النيوترونات، ستدفع البروتونات بعضها البعض بعيدا لانها جميعا تحمل نفس الشحنة الموجبة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "paragraph_id": "p15",
+      "text": "الالكترونات تحمل شحنة كهربائية سالبة.",
+      "text_markdown": "الالكترونات تحمل شحنة كهربائية سالبة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "الالكترونات تحمل شحنة كهربائية سالبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "paragraph_id": "p15",
+      "text": "الالكترونات تتحرك حول النواة في سحابة.",
+      "text_markdown": "الالكترونات تتحرك حول النواة في سحابة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "الالكترونات تتحرك حول النواة في سحابة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "paragraph_id": "p15",
+      "text": "انها لا تدور مثل الكواكب حول الشمس.",
+      "text_markdown": "انها لا تدور مثل الكواكب حول الشمس.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "انها لا تدور مثل الكواكب حول الشمس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "paragraph_id": "p15",
+      "text": "انها توجد في منطقة ضبابية من الاحتمالات حول النواة.",
+      "text_markdown": "انها توجد في منطقة ضبابية من الاحتمالات حول النواة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "انها توجد في منطقة ضبابية من الاحتمالات حول النواة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "paragraph_id": "p15",
+      "text": "سحابة الالكترون هي المكان الذي يحتمل ان تجد فيه الكترونا في اي لحظة.",
+      "text_markdown": "سحابة الالكترون هي المكان الذي يحتمل ان تجد فيه الكترونا في اي لحظة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "سحابة الالكترون هي المكان الذي يحتمل ان تجد فيه الكترونا في اي لحظة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "paragraph_id": "p16",
+      "text": "الالكترون ليس له كتلة تقريبا مقارنة بالبروتون او النيوترون.",
+      "text_markdown": "الالكترون ليس له كتلة تقريبا مقارنة بالبروتون او النيوترون.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "الالكترون ليس له كتلة تقريبا مقارنة بالبروتون او النيوترون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "paragraph_id": "p16",
+      "text": "البروتون اثقل من الالكترون بحوالي 1,836 مرة.",
+      "text_markdown": "البروتون اثقل من الالكترون بحوالي 1,836 مرة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "البروتون اثقل من الالكترون بحوالي الف وثمانمائة وستة وثلاثين مرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "paragraph_id": "p16",
+      "text": "تقريبا كل كتلة الذرة موجودة في النواة.",
+      "text_markdown": "تقريبا كل كتلة الذرة موجودة في النواة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "تقريبا كل كتلة الذرة موجودة في النواة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "paragraph_id": "p17",
+      "text": "في الذرة المتعادلة، عدد الالكترونات يساوي عدد البروتونات.",
+      "text_markdown": "في الذرة المتعادلة، عدد الالكترونات يساوي عدد البروتونات.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "في الذرة المتعادلة، عدد الالكترونات يساوي عدد البروتونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "paragraph_id": "p17",
+      "text": "الشحنات الموجبة والشحنات السالبة تتوازن.",
+      "text_markdown": "الشحنات الموجبة والشحنات السالبة تتوازن.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "الشحنات الموجبة والشحنات السالبة تتوازن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "paragraph_id": "p17",
+      "text": "الذرة ليس لها شحنة اجمالية.",
+      "text_markdown": "الذرة ليس لها شحنة اجمالية.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "الذرة ليس لها شحنة اجمالية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "paragraph_id": "p17",
+      "text": "هذا التوازن هو الحالة الطبيعية للذرة.",
+      "text_markdown": "هذا التوازن هو الحالة الطبيعية للذرة.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "هذا التوازن هو الحالة الطبيعية للذرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "paragraph_id": "p18",
+      "text": "معظم الذرة فراغ.",
+      "text_markdown": "معظم الذرة فراغ.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "معظم الذرة فراغ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "paragraph_id": "p18",
+      "text": "النواة كثيفة وصغيرة جدا.",
+      "text_markdown": "النواة كثيفة وصغيرة جدا.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "النواة كثيفة وصغيرة جدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "paragraph_id": "p18",
+      "text": "سحابة الالكترون كبيرة ومعظمها لا شيء.",
+      "text_markdown": "سحابة الالكترون كبيرة ومعظمها لا شيء.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "سحابة الالكترون كبيرة ومعظمها لا شيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "paragraph_id": "p18",
+      "text": "لو استطعت ازالة كل الفراغ من كل ذرة في جسمك، لتقلصت الى حجم اصغر من حبة ملح.",
+      "text_markdown": "لو استطعت ازالة كل الفراغ من كل ذرة في جسمك، لتقلصت الى حجم اصغر من حبة ملح.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "لو استطعت ازالة كل الفراغ من كل ذرة في جسمك، لتقلصت الى حجم اصغر من حبة ملح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "paragraph_id": "p18",
+      "text": "كتلتك ستبقى كما هي.",
+      "text_markdown": "كتلتك ستبقى كما هي.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "كتلتك ستبقى كما هي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "paragraph_id": "p18",
+      "text": "ستكون فقط كثيفا بشكل لا يصدق.",
+      "text_markdown": "ستكون فقط كثيفا بشكل لا يصدق.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ستكون فقط كثيفا بشكل لا يصدق.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "paragraph_id": "p19",
+      "text": "العناصر",
+      "text_markdown": "العناصر",
+      "title": "العناصر"
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "paragraph_id": "p20",
+      "text": "العنصر هو مادة مكونة من نوع واحد فقط من الذرات.",
+      "text_markdown": "العنصر هو مادة مكونة من نوع واحد فقط من الذرات.",
+      "title": "Elements",
+      "tts": {
+        "text": "العنصر هو مادة مكونة من نوع واحد فقط من الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "paragraph_id": "p20",
+      "text": "الذهب النقي عنصر.",
+      "text_markdown": "الذهب النقي عنصر.",
+      "title": "Elements",
+      "tts": {
+        "text": "الذهب النقي عنصر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "paragraph_id": "p20",
+      "text": "كل ذرة في قطعة من الذهب النقي تحتوي على تسعة وسبعين بروتونا.",
+      "text_markdown": "كل ذرة في قطعة من الذهب النقي تحتوي على تسعة وسبعين بروتونا.",
+      "title": "Elements",
+      "tts": {
+        "text": "كل ذرة في قطعة من الذهب النقي تحتوي على تسعة وسبعين بروتونا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "paragraph_id": "p20",
+      "text": "الاكسجين النقي عنصر.",
+      "text_markdown": "الاكسجين النقي عنصر.",
+      "title": "Elements",
+      "tts": {
+        "text": "الاكسجين النقي عنصر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "paragraph_id": "p20",
+      "text": "كل ذرة في خزان من الاكسجين النقي تحتوي على ثمانية بروتونات.",
+      "text_markdown": "كل ذرة في خزان من الاكسجين النقي تحتوي على ثمانية بروتونات.",
+      "title": "Elements",
+      "tts": {
+        "text": "كل ذرة في خزان من الاكسجين النقي تحتوي على ثمانية بروتونات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "paragraph_id": "p21",
+      "text": "هناك حوالي اثنان وتسعون عنصرا توجد بشكل طبيعي على الارض.",
+      "text_markdown": "هناك حوالي اثنان وتسعون عنصرا توجد بشكل طبيعي على الارض.",
+      "title": "Elements",
+      "tts": {
+        "text": "هناك حوالي اثنان وتسعون عنصرا توجد بشكل طبيعي على الارض.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "paragraph_id": "p21",
+      "text": "ابتكر العلماء عناصر اضافية في المختبرات.",
+      "text_markdown": "ابتكر العلماء عناصر اضافية في المختبرات.",
+      "title": "Elements",
+      "tts": {
+        "text": "ابتكر العلماء عناصر اضافية في المختبرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "paragraph_id": "p21",
+      "text": "العدد الاجمالي للعناصر المعروفة يزيد عن مائة وثمانية عشر.",
+      "text_markdown": "العدد الاجمالي للعناصر المعروفة يزيد عن مائة وثمانية عشر.",
+      "title": "Elements",
+      "tts": {
+        "text": "العدد الاجمالي للعناصر المعروفة يزيد عن مائة وثمانية عشر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "paragraph_id": "p21",
+      "text": "كل عنصر له عدد فريد من البروتونات.",
+      "text_markdown": "كل عنصر له عدد فريد من البروتونات.",
+      "title": "Elements",
+      "tts": {
+        "text": "كل عنصر له عدد فريد من البروتونات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "paragraph_id": "p22",
+      "text": "كل عنصر له اسم ورمز.",
+      "text_markdown": "كل عنصر له اسم ورمز.",
+      "title": "Elements",
+      "tts": {
+        "text": "كل عنصر له اسم ورمز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "paragraph_id": "p22",
+      "text": "الهيدروجين هو H. الاكسجين هو O. الكربون هو C. الحديد هو Fe.",
+      "text_markdown": "الهيدروجين هو H. الاكسجين هو O. الكربون هو C. الحديد هو Fe.",
+      "title": "Elements",
+      "tts": {
+        "text": "الهيدروجين هو اتش. الاكسجين هو او. الكربون هو سي. الحديد هو اف اي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "paragraph_id": "p22",
+      "text": "الذهب هو Au.",
+      "text_markdown": "الذهب هو Au.",
+      "title": "Elements",
+      "tts": {
+        "text": "الذهب هو ايه يو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "paragraph_id": "p22",
+      "text": "الرموز تاتي من اسماء لاتينية او يونانية او انجليزية.",
+      "text_markdown": "الرموز تاتي من اسماء لاتينية او يونانية او انجليزية.",
+      "title": "Elements",
+      "tts": {
+        "text": "الرموز تاتي من اسماء لاتينية او يونانية او انجليزية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "paragraph_id": "p22",
+      "text": "Fe ياتي من الكلمة اللاتينية فيروم.",
+      "text_markdown": "Fe ياتي من الكلمة اللاتينية فيروم.",
+      "title": "Elements",
+      "tts": {
+        "text": "اف اي ياتي من الكلمة اللاتينية فيروم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "paragraph_id": "p22",
+      "text": "Au ياتي من الكلمة اللاتينية اوروم.",
+      "text_markdown": "Au ياتي من الكلمة اللاتينية اوروم.",
+      "title": "Elements",
+      "tts": {
+        "text": "ايه يو ياتي من الكلمة اللاتينية اوروم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "paragraph_id": "p23",
+      "text": "الهيدروجين هو ابسط العناصر.",
+      "text_markdown": "الهيدروجين هو ابسط العناصر.",
+      "title": "Elements",
+      "tts": {
+        "text": "الهيدروجين هو ابسط العناصر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "paragraph_id": "p23",
+      "text": "ذرة الهيدروجين تحتوي على بروتون واحد والكترون واحد.",
+      "text_markdown": "ذرة الهيدروجين تحتوي على بروتون واحد والكترون واحد.",
+      "title": "Elements",
+      "tts": {
+        "text": "ذرة الهيدروجين تحتوي على بروتون واحد والكترون واحد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "paragraph_id": "p23",
+      "text": "الهيدروجين هو العنصر الاكثر شيوعا في الكون.",
+      "text_markdown": "الهيدروجين هو العنصر الاكثر شيوعا في الكون.",
+      "title": "Elements",
+      "tts": {
+        "text": "الهيدروجين هو العنصر الاكثر شيوعا في الكون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "paragraph_id": "p23",
+      "text": "النجوم مصنوعة في الغالب من الهيدروجين.",
+      "text_markdown": "النجوم مصنوعة في الغالب من الهيدروجين.",
+      "title": "Elements",
+      "tts": {
+        "text": "النجوم مصنوعة في الغالب من الهيدروجين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "paragraph_id": "p24",
+      "text": "الكربون هو عنصر الحياة.",
+      "text_markdown": "الكربون هو عنصر الحياة.",
+      "title": "Elements",
+      "tts": {
+        "text": "الكربون هو عنصر الحياة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "paragraph_id": "p24",
+      "text": "الكربون يحتوي على ستة بروتونات.",
+      "text_markdown": "الكربون يحتوي على ستة بروتونات.",
+      "title": "Elements",
+      "tts": {
+        "text": "الكربون يحتوي على ستة بروتونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "paragraph_id": "p24",
+      "text": "ذرات الكربون يمكنها تكوين روابط مع العديد من الذرات الاخرى في نفس الوقت.",
+      "text_markdown": "ذرات الكربون يمكنها تكوين روابط مع العديد من الذرات الاخرى في نفس الوقت.",
+      "title": "Elements",
+      "tts": {
+        "text": "ذرات الكربون يمكنها تكوين روابط مع العديد من الذرات الاخرى في نفس الوقت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "paragraph_id": "p24",
+      "text": "هذه القدرة تجعل الكربون العمود الفقري لجميع الكائنات الحية.",
+      "text_markdown": "هذه القدرة تجعل الكربون العمود الفقري لجميع الكائنات الحية.",
+      "title": "Elements",
+      "tts": {
+        "text": "هذه القدرة تجعل الكربون العمود الفقري لجميع الكائنات الحية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "paragraph_id": "p24",
+      "text": "كل بروتين وكل خيط من الحمض النووي وكل جزيء سكر في جسمك يحتوي على الكربون.",
+      "text_markdown": "كل بروتين وكل خيط من الحمض النووي وكل جزيء سكر في جسمك يحتوي على الكربون.",
+      "title": "Elements",
+      "tts": {
+        "text": "كل بروتين وكل خيط من الحمض النووي وكل جزيء سكر في جسمك يحتوي على الكربون.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "paragraph_id": "p25",
+      "text": "الاكسجين يحتوي على ثمانية بروتونات.",
+      "text_markdown": "الاكسجين يحتوي على ثمانية بروتونات.",
+      "title": "Elements",
+      "tts": {
+        "text": "الاكسجين يحتوي على ثمانية بروتونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "paragraph_id": "p25",
+      "text": "الاكسجين هو العنصر الذي تتنفسه.",
+      "text_markdown": "الاكسجين هو العنصر الذي تتنفسه.",
+      "title": "Elements",
+      "tts": {
+        "text": "الاكسجين هو العنصر الذي تتنفسه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "paragraph_id": "p25",
+      "text": "رئتاك تسحبان الاكسجين من الهواء وترسلانه الى دمك.",
+      "text_markdown": "رئتاك تسحبان الاكسجين من الهواء وترسلانه الى دمك.",
+      "title": "Elements",
+      "tts": {
+        "text": "رئتاك تسحبان الاكسجين من الهواء وترسلانه الى دمك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "paragraph_id": "p25",
+      "text": "خلاياك تستخدم الاكسجين لاطلاق الطاقة من الطعام.",
+      "text_markdown": "خلاياك تستخدم الاكسجين لاطلاق الطاقة من الطعام.",
+      "title": "Elements",
+      "tts": {
+        "text": "خلاياك تستخدم الاكسجين لاطلاق الطاقة من الطعام.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "paragraph_id": "p26",
+      "text": "الحديد يحتوي على ستة وعشرين بروتونا.",
+      "text_markdown": "الحديد يحتوي على ستة وعشرين بروتونا.",
+      "title": "Elements",
+      "tts": {
+        "text": "الحديد يحتوي على ستة وعشرين بروتونا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "paragraph_id": "p26",
+      "text": "الحديد هو العنصر الذي يجعل دمك احمر.",
+      "text_markdown": "الحديد هو العنصر الذي يجعل دمك احمر.",
+      "title": "Elements",
+      "tts": {
+        "text": "الحديد هو العنصر الذي يجعل دمك احمر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "paragraph_id": "p26",
+      "text": "الحديد هو المكون الرئيسي في الفولاذ.",
+      "text_markdown": "الحديد هو المكون الرئيسي في الفولاذ.",
+      "title": "Elements",
+      "tts": {
+        "text": "الحديد هو المكون الرئيسي في الفولاذ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "paragraph_id": "p26",
+      "text": "نواة الارض تتكون في الغالب من الحديد.",
+      "text_markdown": "نواة الارض تتكون في الغالب من الحديد.",
+      "title": "Elements",
+      "tts": {
+        "text": "نواة الارض تتكون في الغالب من الحديد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "paragraph_id": "p27",
+      "text": "العناصر الاخف هي الاكثر شيوعا في الكون.",
+      "text_markdown": "العناصر الاخف هي الاكثر شيوعا في الكون.",
+      "title": "Elements",
+      "tts": {
+        "text": "العناصر الاخف هي الاكثر شيوعا في الكون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "paragraph_id": "p27",
+      "text": "الهيدروجين والهيليوم معا يشكلان حوالي ثمانية وتسعين بالمائة من كل الذرات في الكون.",
+      "text_markdown": "الهيدروجين والهيليوم معا يشكلان حوالي ثمانية وتسعين بالمائة من كل الذرات في الكون.",
+      "title": "Elements",
+      "tts": {
+        "text": "الهيدروجين والهيليوم معا يشكلان حوالي ثمانية وتسعين بالمائة من كل الذرات في الكون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "paragraph_id": "p27",
+      "text": "العناصر الاثقل نادرة بالمقارنة.",
+      "text_markdown": "العناصر الاثقل نادرة بالمقارنة.",
+      "title": "Elements",
+      "tts": {
+        "text": "العناصر الاثقل نادرة بالمقارنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "paragraph_id": "p27",
+      "text": "كل ذرة من كل عنصر ثقيل صنعت داخل نجم.",
+      "text_markdown": "كل ذرة من كل عنصر ثقيل صنعت داخل نجم.",
+      "title": "Elements",
+      "tts": {
+        "text": "كل ذرة من كل عنصر ثقيل صنعت داخل نجم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "paragraph_id": "p28",
+      "text": "الجدول الدوري",
+      "text_markdown": "الجدول الدوري",
+      "title": "الجدول الدوري"
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "paragraph_id": "p29",
+      "text": "الجدول الدوري هو رسم بياني ينظم كل العناصر المعروفة.",
+      "text_markdown": "الجدول الدوري هو رسم بياني ينظم كل العناصر المعروفة.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الجدول الدوري هو رسم بياني ينظم كل العناصر المعروفة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "paragraph_id": "p29",
+      "text": "يرتب الجدول العناصر حسب عدد بروتوناتها، من الاصغر الى الاكبر.",
+      "text_markdown": "يرتب الجدول العناصر حسب عدد بروتوناتها، من الاصغر الى الاكبر.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "يرتب الجدول العناصر حسب عدد بروتوناتها، من الاصغر الى الاكبر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "paragraph_id": "p29",
+      "text": "الهيدروجين هو الاول ببروتون واحد.",
+      "text_markdown": "الهيدروجين هو الاول ببروتون واحد.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الهيدروجين هو الاول ببروتون واحد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "paragraph_id": "p29",
+      "text": "الهيليوم هو الثاني ببروتونين.",
+      "text_markdown": "الهيليوم هو الثاني ببروتونين.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الهيليوم هو الثاني ببروتونين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "paragraph_id": "p29",
+      "text": "يستمر الجدول حتى الاوغانيسون بمائة وثمانية عشر بروتونا.",
+      "text_markdown": "يستمر الجدول حتى الاوغانيسون بمائة وثمانية عشر بروتونا.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "يستمر الجدول حتى الاوغانيسون بمائة وثمانية عشر بروتونا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "paragraph_id": "p30",
+      "text": "الجدول الدوري يحتوي على صفوف واعمدة.",
+      "text_markdown": "الجدول الدوري يحتوي على صفوف واعمدة.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الجدول الدوري يحتوي على صفوف واعمدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "paragraph_id": "p30",
+      "text": "الصفوف تسمى الدورات.",
+      "text_markdown": "الصفوف تسمى الدورات.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الصفوف تسمى الدورات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "paragraph_id": "p30",
+      "text": "الاعمدة تسمى المجموعات.",
+      "text_markdown": "الاعمدة تسمى المجموعات.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الاعمدة تسمى المجموعات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "paragraph_id": "p30",
+      "text": "العناصر في نفس المجموعة تتشابه في خصائصها.",
+      "text_markdown": "العناصر في نفس المجموعة تتشابه في خصائصها.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "العناصر في نفس المجموعة تتشابه في خصائصها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "paragraph_id": "p30",
+      "text": "لهذا السبب يسمى الجدول بالدوري.",
+      "text_markdown": "لهذا السبب يسمى الجدول بالدوري.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "لهذا السبب يسمى الجدول بالدوري.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "paragraph_id": "p30",
+      "text": "الخصائص تتكرر في نمط منتظم.",
+      "text_markdown": "الخصائص تتكرر في نمط منتظم.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الخصائص تتكرر في نمط منتظم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "paragraph_id": "p31",
+      "text": "العناصر على الجانب الايسر من الجدول هي المعادن.",
+      "text_markdown": "العناصر على الجانب الايسر من الجدول هي المعادن.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "العناصر على الجانب الايسر من الجدول هي المعادن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "paragraph_id": "p31",
+      "text": "معظم العناصر هي معادن.",
+      "text_markdown": "معظم العناصر هي معادن.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "معظم العناصر هي معادن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "paragraph_id": "p31",
+      "text": "المعادن لامعة.",
+      "text_markdown": "المعادن لامعة.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "المعادن لامعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "paragraph_id": "p31",
+      "text": "المعادن توصل الكهرباء.",
+      "text_markdown": "المعادن توصل الكهرباء.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "المعادن توصل الكهرباء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "paragraph_id": "p31",
+      "text": "المعادن توصل الحرارة.",
+      "text_markdown": "المعادن توصل الحرارة.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "المعادن توصل الحرارة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "paragraph_id": "p31",
+      "text": "الحديد والنحاس والذهب والالومنيوم كلها معادن.",
+      "text_markdown": "الحديد والنحاس والذهب والالومنيوم كلها معادن.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الحديد والنحاس والذهب والالومنيوم كلها معادن.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "paragraph_id": "p32",
+      "text": "العناصر على الجانب الايمن من الجدول هي اللافلزات.",
+      "text_markdown": "العناصر على الجانب الايمن من الجدول هي اللافلزات.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "العناصر على الجانب الايمن من الجدول هي اللافلزات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "paragraph_id": "p32",
+      "text": "اللافلزات تشمل الاكسجين والنيتروجين والكربون والكبريت.",
+      "text_markdown": "اللافلزات تشمل الاكسجين والنيتروجين والكربون والكبريت.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "اللافلزات تشمل الاكسجين والنيتروجين والكربون والكبريت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "paragraph_id": "p32",
+      "text": "اللافلزات لا توصل الكهرباء بشكل جيد.",
+      "text_markdown": "اللافلزات لا توصل الكهرباء بشكل جيد.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "اللافلزات لا توصل الكهرباء بشكل جيد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "paragraph_id": "p32",
+      "text": "اللافلزات هي العناصر التي يتكون منها الهواء والماء والكائنات الحية.",
+      "text_markdown": "اللافلزات هي العناصر التي يتكون منها الهواء والماء والكائنات الحية.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "اللافلزات هي العناصر التي يتكون منها الهواء والماء والكائنات الحية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "paragraph_id": "p33",
+      "text": "بعض العناصر تقع على الحدود بين المعادن واللافلزات.",
+      "text_markdown": "بعض العناصر تقع على الحدود بين المعادن واللافلزات.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "بعض العناصر تقع على الحدود بين المعادن واللافلزات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "paragraph_id": "p33",
+      "text": "هذه العناصر تسمى اشباه الفلزات.",
+      "text_markdown": "هذه العناصر تسمى اشباه الفلزات.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "هذه العناصر تسمى اشباه الفلزات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "paragraph_id": "p33",
+      "text": "السيليكون هو شبه فلز.",
+      "text_markdown": "السيليكون هو شبه فلز.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "السيليكون هو شبه فلز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "paragraph_id": "p33",
+      "text": "السيليكون يوصل الكهرباء قليلا، لكن ليس بنفس كفاءة المعدن.",
+      "text_markdown": "السيليكون يوصل الكهرباء قليلا، لكن ليس بنفس كفاءة المعدن.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "السيليكون يوصل الكهرباء قليلا، لكن ليس بنفس كفاءة المعدن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "paragraph_id": "p33",
+      "text": "هذه الخاصية تجعل السيليكون مفيدا في رقائق الكمبيوتر.",
+      "text_markdown": "هذه الخاصية تجعل السيليكون مفيدا في رقائق الكمبيوتر.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "هذه الخاصية تجعل السيليكون مفيدا في رقائق الكمبيوتر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "paragraph_id": "p34",
+      "text": "الغازات النبيلة توجد في العمود الاخير على اليمين.",
+      "text_markdown": "الغازات النبيلة توجد في العمود الاخير على اليمين.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الغازات النبيلة توجد في العمود الاخير على اليمين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "paragraph_id": "p34",
+      "text": "الهيليوم والنيون والارغون والكريبتون والزينون والرادون هي غازات نبيلة.",
+      "text_markdown": "الهيليوم والنيون والارغون والكريبتون والزينون والرادون هي غازات نبيلة.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الهيليوم والنيون والارغون والكريبتون والزينون والرادون هي غازات نبيلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "paragraph_id": "p34",
+      "text": "الغازات النبيلة نادرا ما تتفاعل مع العناصر الاخرى.",
+      "text_markdown": "الغازات النبيلة نادرا ما تتفاعل مع العناصر الاخرى.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الغازات النبيلة نادرا ما تتفاعل مع العناصر الاخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "paragraph_id": "p34",
+      "text": "ترتيبات الكتروناتها مستقرة بالفعل.",
+      "text_markdown": "ترتيبات الكتروناتها مستقرة بالفعل.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ترتيبات الكتروناتها مستقرة بالفعل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "paragraph_id": "p34",
+      "text": "لا تحتاج الى تكوين روابط.",
+      "text_markdown": "لا تحتاج الى تكوين روابط.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "لا تحتاج الى تكوين روابط.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "paragraph_id": "p35",
+      "text": "عالم روسي يدعى ديمتري مندلييف ابتكر اول جدول دوري في عام 1869.",
+      "text_markdown": "عالم روسي يدعى ديمتري مندلييف ابتكر اول جدول دوري في عام 1869.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "عالم روسي يدعى ديمتري مندلييف ابتكر اول جدول دوري في عام الف وثمانمائة وتسعة وستين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "paragraph_id": "p35",
+      "text": "رتب مندلييف العناصر حسب خصائصها ولاحظ النمط المتكرر.",
+      "text_markdown": "رتب مندلييف العناصر حسب خصائصها ولاحظ النمط المتكرر.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "رتب مندلييف العناصر حسب خصائصها ولاحظ النمط المتكرر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "paragraph_id": "p35",
+      "text": "ترك فراغات في جدوله حيث توقع ان تكون عناصر غير معروفة.",
+      "text_markdown": "ترك فراغات في جدوله حيث توقع ان تكون عناصر غير معروفة.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ترك فراغات في جدوله حيث توقع ان تكون عناصر غير معروفة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "paragraph_id": "p35",
+      "text": "اكتشف العلماء لاحقا تلك العناصر.",
+      "text_markdown": "اكتشف العلماء لاحقا تلك العناصر.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "اكتشف العلماء لاحقا تلك العناصر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "paragraph_id": "p35",
+      "text": "كل توقع كان صحيحا.",
+      "text_markdown": "كل توقع كان صحيحا.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "كل توقع كان صحيحا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "paragraph_id": "p36",
+      "text": "الجدول الدوري هو واحد من اقوى الادوات في العلم.",
+      "text_markdown": "الجدول الدوري هو واحد من اقوى الادوات في العلم.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "الجدول الدوري هو واحد من اقوى الادوات في العلم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "paragraph_id": "p36",
+      "text": "اذا عرفت اين يقع العنصر في الجدول، يمكنك التنبؤ بكيفية تصرفه.",
+      "text_markdown": "اذا عرفت اين يقع العنصر في الجدول، يمكنك التنبؤ بكيفية تصرفه.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "اذا عرفت اين يقع العنصر في الجدول، يمكنك التنبؤ بكيفية تصرفه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "paragraph_id": "p37",
+      "text": "كيف ترتبط الذرات",
+      "text_markdown": "كيف ترتبط الذرات",
+      "title": "كيف ترتبط الذرات"
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "paragraph_id": "p38",
+      "text": "نادرا ما توجد الذرات بمفردها.",
+      "text_markdown": "نادرا ما توجد الذرات بمفردها.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "نادرا ما توجد الذرات بمفردها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "paragraph_id": "p38",
+      "text": "معظم الذرات ترتبط مع ذرات اخرى لتشكل جزيئات.",
+      "text_markdown": "معظم الذرات ترتبط مع ذرات اخرى لتشكل جزيئات.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "معظم الذرات ترتبط مع ذرات اخرى لتشكل جزيئات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "paragraph_id": "p38",
+      "text": "الجزيء هو مجموعة من الذرات مرتبطة معا بروابط كيميائية.",
+      "text_markdown": "الجزيء هو مجموعة من الذرات مرتبطة معا بروابط كيميائية.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الجزيء هو مجموعة من الذرات مرتبطة معا بروابط كيميائية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "paragraph_id": "p38",
+      "text": "الماء جزيء.",
+      "text_markdown": "الماء جزيء.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الماء جزيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "paragraph_id": "p38",
+      "text": "غاز الاكسجين جزيء.",
+      "text_markdown": "غاز الاكسجين جزيء.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "غاز الاكسجين جزيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "paragraph_id": "p38",
+      "text": "السكر جزيء.",
+      "text_markdown": "السكر جزيء.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "السكر جزيء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "paragraph_id": "p39",
+      "text": "الذرات ترتبط بسبب الكتروناتها.",
+      "text_markdown": "الذرات ترتبط بسبب الكتروناتها.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الذرات ترتبط بسبب الكتروناتها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "paragraph_id": "p39",
+      "text": "الالكترونات في الطبقة الخارجية للذرة تحدد كيفية تفاعل تلك الذرة مع الذرات الاخرى.",
+      "text_markdown": "الالكترونات في الطبقة الخارجية للذرة تحدد كيفية تفاعل تلك الذرة مع الذرات الاخرى.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الالكترونات في الطبقة الخارجية للذرة تحدد كيفية تفاعل تلك الذرة مع الذرات الاخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "paragraph_id": "p39",
+      "text": "هذه الالكترونات الخارجية تسمى الكترونات التكافؤ.",
+      "text_markdown": "هذه الالكترونات الخارجية تسمى الكترونات التكافؤ.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "هذه الالكترونات الخارجية تسمى الكترونات التكافؤ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "paragraph_id": "p39",
+      "text": "الذرة ذات الطبقة الخارجية المكتملة تكون مستقرة.",
+      "text_markdown": "الذرة ذات الطبقة الخارجية المكتملة تكون مستقرة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الذرة ذات الطبقة الخارجية المكتملة تكون مستقرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "paragraph_id": "p39",
+      "text": "الذرة التي ليس لها طبقة خارجية مكتملة ستسعى لملئها.",
+      "text_markdown": "الذرة التي ليس لها طبقة خارجية مكتملة ستسعى لملئها.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الذرة التي ليس لها طبقة خارجية مكتملة ستسعى لملئها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "paragraph_id": "p40",
+      "text": "هناك نوعان رئيسيان من الروابط الكيميائية.",
+      "text_markdown": "هناك نوعان رئيسيان من الروابط الكيميائية.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "هناك نوعان رئيسيان من الروابط الكيميائية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "paragraph_id": "p40",
+      "text": "الروابط التساهمية والروابط الايونية.",
+      "text_markdown": "الروابط التساهمية والروابط الايونية.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الروابط التساهمية والروابط الايونية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "paragraph_id": "p41",
+      "text": "في الرابطة التساهمية، تتشارك ذرتان في الالكترونات.",
+      "text_markdown": "في الرابطة التساهمية، تتشارك ذرتان في الالكترونات.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "في الرابطة التساهمية، تتشارك ذرتان في الالكترونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "paragraph_id": "p41",
+      "text": "كلتا الذرتين تساهمان بالكترونات في زوج مشترك.",
+      "text_markdown": "كلتا الذرتين تساهمان بالكترونات في زوج مشترك.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "كلتا الذرتين تساهمان بالكترونات في زوج مشترك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "paragraph_id": "p41",
+      "text": "الالكترونات المشتركة تدور حول كلتا النواتين.",
+      "text_markdown": "الالكترونات المشتركة تدور حول كلتا النواتين.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الالكترونات المشتركة تدور حول كلتا النواتين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "paragraph_id": "p41",
+      "text": "هذه المشاركة تبقي الذرات مرتبطة معا.",
+      "text_markdown": "هذه المشاركة تبقي الذرات مرتبطة معا.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "هذه المشاركة تبقي الذرات مرتبطة معا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "paragraph_id": "p41",
+      "text": "الماء مرتبط بروابط تساهمية.",
+      "text_markdown": "الماء مرتبط بروابط تساهمية.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الماء مرتبط بروابط تساهمية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "paragraph_id": "p41",
+      "text": "كل ذرة هيدروجين تتشارك في الكترون واحد مع ذرة الاكسجين.",
+      "text_markdown": "كل ذرة هيدروجين تتشارك في الكترون واحد مع ذرة الاكسجين.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "كل ذرة هيدروجين تتشارك في الكترون واحد مع ذرة الاكسجين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "paragraph_id": "p42",
+      "text": "في الرابطة الايونية، تعطي ذرة الكترونات لذرة اخرى.",
+      "text_markdown": "في الرابطة الايونية، تعطي ذرة الكترونات لذرة اخرى.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "في الرابطة الايونية، تعطي ذرة الكترونات لذرة اخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "paragraph_id": "p42",
+      "text": "الذرة التي تفقد الالكترونات تصبح موجبة الشحنة.",
+      "text_markdown": "الذرة التي تفقد الالكترونات تصبح موجبة الشحنة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الذرة التي تفقد الالكترونات تصبح موجبة الشحنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "paragraph_id": "p42",
+      "text": "الذرة التي تكسب الالكترونات تصبح سالبة الشحنة.",
+      "text_markdown": "الذرة التي تكسب الالكترونات تصبح سالبة الشحنة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الذرة التي تكسب الالكترونات تصبح سالبة الشحنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "paragraph_id": "p42",
+      "text": "الشحنات المتعاكسة تتجاذب.",
+      "text_markdown": "الشحنات المتعاكسة تتجاذب.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الشحنات المتعاكسة تتجاذب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "paragraph_id": "p42",
+      "text": "هذا التجاذب يبقي الذرتين مرتبطتين معا.",
+      "text_markdown": "هذا التجاذب يبقي الذرتين مرتبطتين معا.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "هذا التجاذب يبقي الذرتين مرتبطتين معا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "paragraph_id": "p42",
+      "text": "ملح الطعام مرتبط بروابط ايونية.",
+      "text_markdown": "ملح الطعام مرتبط بروابط ايونية.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "ملح الطعام مرتبط بروابط ايونية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "paragraph_id": "p42",
+      "text": "الصوديوم يعطي الكترونا للكلور.",
+      "text_markdown": "الصوديوم يعطي الكترونا للكلور.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الصوديوم يعطي الكترونا للكلور.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "paragraph_id": "p43",
+      "text": "جزيء الماء يحتوي على ذرتي هيدروجين وذرة اكسجين واحدة.",
+      "text_markdown": "جزيء الماء يحتوي على ذرتي هيدروجين وذرة اكسجين واحدة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "جزيء الماء يحتوي على ذرتي هيدروجين وذرة اكسجين واحدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "paragraph_id": "p43",
+      "text": "يكتبها العلماء H2O.",
+      "text_markdown": "يكتبها العلماء H2O.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "يكتبها العلماء اتش اثنان او.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "paragraph_id": "p43",
+      "text": "الحرف H يرمز للهيدروجين.",
+      "text_markdown": "الحرف H يرمز للهيدروجين.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الحرف اتش يرمز للهيدروجين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "paragraph_id": "p43",
+      "text": "الحرف O يرمز للاكسجين.",
+      "text_markdown": "الحرف O يرمز للاكسجين.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الحرف او يرمز للاكسجين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "paragraph_id": "p43",
+      "text": "الرقم 2 يعني ان هناك ذرتي هيدروجين.",
+      "text_markdown": "الرقم 2 يعني ان هناك ذرتي هيدروجين.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الرقم اثنان يعني ان هناك ذرتي هيدروجين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "paragraph_id": "p44",
+      "text": "جزيء ثاني اكسيد الكربون يحتوي على ذرة كربون واحدة وذرتي اكسجين.",
+      "text_markdown": "جزيء ثاني اكسيد الكربون يحتوي على ذرة كربون واحدة وذرتي اكسجين.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "جزيء ثاني اكسيد الكربون يحتوي على ذرة كربون واحدة وذرتي اكسجين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "paragraph_id": "p44",
+      "text": "يكتبها العلماء CO2.",
+      "text_markdown": "يكتبها العلماء CO2.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "يكتبها العلماء سي او اثنان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "paragraph_id": "p44",
+      "text": "النباتات تمتص ثاني اكسيد الكربون من الهواء وتستخدمه لبناء جزيئات السكر.",
+      "text_markdown": "النباتات تمتص ثاني اكسيد الكربون من الهواء وتستخدمه لبناء جزيئات السكر.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "النباتات تمتص ثاني اكسيد الكربون من الهواء وتستخدمه لبناء جزيئات السكر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "paragraph_id": "p45",
+      "text": "الروابط بين الذرات تخزن الطاقة.",
+      "text_markdown": "الروابط بين الذرات تخزن الطاقة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "الروابط بين الذرات تخزن الطاقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "paragraph_id": "p45",
+      "text": "عندما تنكسر الروابط، تنطلق الطاقة.",
+      "text_markdown": "عندما تنكسر الروابط، تنطلق الطاقة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "عندما تنكسر الروابط، تنطلق الطاقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "paragraph_id": "p45",
+      "text": "عندما تتكون الروابط، يتم امتصاص الطاقة.",
+      "text_markdown": "عندما تتكون الروابط، يتم امتصاص الطاقة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "عندما تتكون الروابط، يتم امتصاص الطاقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "paragraph_id": "p45",
+      "text": "كل تفاعل كيميائي في الكون يتضمن كسر روابط قديمة وتكوين روابط جديدة.",
+      "text_markdown": "كل تفاعل كيميائي في الكون يتضمن كسر روابط قديمة وتكوين روابط جديدة.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "كل تفاعل كيميائي في الكون يتضمن كسر روابط قديمة وتكوين روابط جديدة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "paragraph_id": "p46",
+      "text": "الذرات في حركة",
+      "text_markdown": "الذرات في حركة",
+      "title": "الذرات في حركة"
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "paragraph_id": "p47",
+      "text": "الذرات تتحرك دائما.",
+      "text_markdown": "الذرات تتحرك دائما.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الذرات تتحرك دائما.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "paragraph_id": "p47",
+      "text": "لا تتوقف ابدا.",
+      "text_markdown": "لا تتوقف ابدا.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "لا تتوقف ابدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "paragraph_id": "p47",
+      "text": "عند اي درجة حرارة فوق الصفر المطلق، تهتز الذرات وتدور وتسافر عبر الفضاء.",
+      "text_markdown": "عند اي درجة حرارة فوق الصفر المطلق، تهتز الذرات وتدور وتسافر عبر الفضاء.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "عند اي درجة حرارة فوق الصفر المطلق، تهتز الذرات وتدور وتسافر عبر الفضاء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "paragraph_id": "p47",
+      "text": "هذه الحركة هي ما نشعر به كحرارة.",
+      "text_markdown": "هذه الحركة هي ما نشعر به كحرارة.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "هذه الحركة هي ما نشعر به كحرارة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "paragraph_id": "p48",
+      "text": "في المادة الصلبة، تهتز الذرات في مكانها.",
+      "text_markdown": "في المادة الصلبة، تهتز الذرات في مكانها.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "في المادة الصلبة، تهتز الذرات في مكانها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "paragraph_id": "p48",
+      "text": "انها محبوسة في بنية ثابتة.",
+      "text_markdown": "انها محبوسة في بنية ثابتة.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "انها محبوسة في بنية ثابتة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "paragraph_id": "p48",
+      "text": "تتارجح ذهابا وايابا، لكنها لا تترك مواقعها.",
+      "text_markdown": "تتارجح ذهابا وايابا، لكنها لا تترك مواقعها.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "تتارجح ذهابا وايابا، لكنها لا تترك مواقعها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "paragraph_id": "p48",
+      "text": "لهذا تحافظ المواد الصلبة على شكلها.",
+      "text_markdown": "لهذا تحافظ المواد الصلبة على شكلها.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "لهذا تحافظ المواد الصلبة على شكلها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "paragraph_id": "p48",
+      "text": "الذرات في قطعة من الجليد تهتز، لكنها تبقى في نمط بلوري صلب.",
+      "text_markdown": "الذرات في قطعة من الجليد تهتز، لكنها تبقى في نمط بلوري صلب.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الذرات في قطعة من الجليد تهتز، لكنها تبقى في نمط بلوري صلب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "paragraph_id": "p49",
+      "text": "في السائل، تتحرك الذرات بحرية اكبر.",
+      "text_markdown": "في السائل، تتحرك الذرات بحرية اكبر.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "في السائل، تتحرك الذرات بحرية اكبر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "paragraph_id": "p49",
+      "text": "تنزلق فوق بعضها البعض.",
+      "text_markdown": "تنزلق فوق بعضها البعض.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "تنزلق فوق بعضها البعض.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "paragraph_id": "p49",
+      "text": "تبقى قريبة من بعضها، لكنها ليست محبوسة في مكانها.",
+      "text_markdown": "تبقى قريبة من بعضها، لكنها ليست محبوسة في مكانها.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "تبقى قريبة من بعضها، لكنها ليست محبوسة في مكانها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "paragraph_id": "p49",
+      "text": "لهذا تتدفق السوائل.",
+      "text_markdown": "لهذا تتدفق السوائل.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "لهذا تتدفق السوائل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "paragraph_id": "p49",
+      "text": "الذرات في كوب من الماء تتحرك وتعيد ترتيب نفسها باستمرار، لكنها تبقى قريبة من بعضها.",
+      "text_markdown": "الذرات في كوب من الماء تتحرك وتعيد ترتيب نفسها باستمرار، لكنها تبقى قريبة من بعضها.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الذرات في كوب من الماء تتحرك وتعيد ترتيب نفسها باستمرار، لكنها تبقى قريبة من بعضها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "paragraph_id": "p50",
+      "text": "في الغاز، تتحرك الذرات بسرعة وتتباعد.",
+      "text_markdown": "في الغاز، تتحرك الذرات بسرعة وتتباعد.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "في الغاز، تتحرك الذرات بسرعة وتتباعد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "paragraph_id": "p50",
+      "text": "تطير في خطوط مستقيمة حتى تصطدم بذرة اخرى او بجدار.",
+      "text_markdown": "تطير في خطوط مستقيمة حتى تصطدم بذرة اخرى او بجدار.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "تطير في خطوط مستقيمة حتى تصطدم بذرة اخرى او بجدار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "paragraph_id": "p50",
+      "text": "ترتد عن بعضها وتغير اتجاهها.",
+      "text_markdown": "ترتد عن بعضها وتغير اتجاهها.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "ترتد عن بعضها وتغير اتجاهها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "paragraph_id": "p50",
+      "text": "لهذا يملا الغاز اي وعاء تضعه فيه.",
+      "text_markdown": "لهذا يملا الغاز اي وعاء تضعه فيه.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "لهذا يملا الغاز اي وعاء تضعه فيه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "paragraph_id": "p50",
+      "text": "الذرات في غرفة مليئة بالهواء تندفع في كل اتجاه بسرعة مئات الامتار في الثانية.",
+      "text_markdown": "الذرات في غرفة مليئة بالهواء تندفع في كل اتجاه بسرعة مئات الامتار في الثانية.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الذرات في غرفة مليئة بالهواء تندفع في كل اتجاه بسرعة مئات الامتار في الثانية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "paragraph_id": "p51",
+      "text": "درجة الحرارة هي مقياس لمدى سرعة حركة الذرات.",
+      "text_markdown": "درجة الحرارة هي مقياس لمدى سرعة حركة الذرات.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "درجة الحرارة هي مقياس لمدى سرعة حركة الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "paragraph_id": "p51",
+      "text": "الحار يعني ان الذرات تتحرك بسرعة.",
+      "text_markdown": "الحار يعني ان الذرات تتحرك بسرعة.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الحار يعني ان الذرات تتحرك بسرعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "paragraph_id": "p51",
+      "text": "البارد يعني ان الذرات تتحرك ببطء.",
+      "text_markdown": "البارد يعني ان الذرات تتحرك ببطء.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "البارد يعني ان الذرات تتحرك ببطء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "paragraph_id": "p51",
+      "text": "عندما تسخن الماء على الموقد، فانت تجعل جزيئات الماء تتحرك بشكل اسرع.",
+      "text_markdown": "عندما تسخن الماء على الموقد، فانت تجعل جزيئات الماء تتحرك بشكل اسرع.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "عندما تسخن الماء على الموقد، فانت تجعل جزيئات الماء تتحرك بشكل اسرع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "paragraph_id": "p51",
+      "text": "عندما تتحرك الجزيئات بسرعة كافية، تهرب من السائل وتصبح بخارا.",
+      "text_markdown": "عندما تتحرك الجزيئات بسرعة كافية، تهرب من السائل وتصبح بخارا.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "عندما تتحرك الجزيئات بسرعة كافية، تهرب من السائل وتصبح بخارا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "paragraph_id": "p52",
+      "text": "الصفر المطلق هو ابرد درجة حرارة ممكنة.",
+      "text_markdown": "الصفر المطلق هو ابرد درجة حرارة ممكنة.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الصفر المطلق هو ابرد درجة حرارة ممكنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "paragraph_id": "p52",
+      "text": "وهي حوالي سالب 273 درجة مئوية.",
+      "text_markdown": "وهي حوالي سالب 273 درجة مئوية.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "وهي حوالي سالب مئتين وثلاثة وسبعين درجة مئوية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "paragraph_id": "p52",
+      "text": "عند الصفر المطلق، تمتلك الذرات اقل طاقة ممكنة.",
+      "text_markdown": "عند الصفر المطلق، تمتلك الذرات اقل طاقة ممكنة.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "عند الصفر المطلق، تمتلك الذرات اقل طاقة ممكنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "paragraph_id": "p52",
+      "text": "لا شيء يمكن ان يكون ابرد من الصفر المطلق.",
+      "text_markdown": "لا شيء يمكن ان يكون ابرد من الصفر المطلق.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "لا شيء يمكن ان يكون ابرد من الصفر المطلق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "paragraph_id": "p52",
+      "text": "اقترب العلماء كثيرا من الوصول الى الصفر المطلق في المختبرات، لكن لم يصل اليه احد بالضبط.",
+      "text_markdown": "اقترب العلماء كثيرا من الوصول الى الصفر المطلق في المختبرات، لكن لم يصل اليه احد بالضبط.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "اقترب العلماء كثيرا من الوصول الى الصفر المطلق في المختبرات، لكن لم يصل اليه احد بالضبط.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "paragraph_id": "p53",
+      "text": "الضغط ينتج من اصطدام الذرات بالاسطح.",
+      "text_markdown": "الضغط ينتج من اصطدام الذرات بالاسطح.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الضغط ينتج من اصطدام الذرات بالاسطح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "paragraph_id": "p53",
+      "text": "الهواء في الاطار يدفع للخارج لان جزيئات الهواء ترتد باستمرار عن الجدران الداخلية للاطار.",
+      "text_markdown": "الهواء في الاطار يدفع للخارج لان جزيئات الهواء ترتد باستمرار عن الجدران الداخلية للاطار.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "الهواء في الاطار يدفع للخارج لان جزيئات الهواء ترتد باستمرار عن الجدران الداخلية للاطار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "paragraph_id": "p53",
+      "text": "المزيد من الجزيئات او الجزيئات الاسرع يعني ضغطا اكبر.",
+      "text_markdown": "المزيد من الجزيئات او الجزيئات الاسرع يعني ضغطا اكبر.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "المزيد من الجزيئات او الجزيئات الاسرع يعني ضغطا اكبر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "paragraph_id": "p53",
+      "text": "لهذا يبدو الاطار اقسى عندما يكون الهواء ساخنا.",
+      "text_markdown": "لهذا يبدو الاطار اقسى عندما يكون الهواء ساخنا.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "لهذا يبدو الاطار اقسى عندما يكون الهواء ساخنا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "paragraph_id": "p54",
+      "text": "من اين تاتي الذرات",
+      "text_markdown": "من اين تاتي الذرات",
+      "title": "من اين تاتي الذرات"
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "paragraph_id": "p55",
+      "text": "الهيدروجين والهيليوم في الكون تكونا في الدقائق الاولى بعد الانفجار العظيم.",
+      "text_markdown": "الهيدروجين والهيليوم في الكون تكونا في الدقائق الاولى بعد الانفجار العظيم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الهيدروجين والهيليوم في الكون تكونا في الدقائق الاولى بعد الانفجار العظيم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "paragraph_id": "p55",
+      "text": "بدا الكون كنقطة حارة وكثيفة بشكل لا يصدق منذ حوالي 13.8 مليار سنة.",
+      "text_markdown": "بدا الكون كنقطة حارة وكثيفة بشكل لا يصدق منذ حوالي 13.8 مليار سنة.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "بدا الكون كنقطة حارة وكثيفة بشكل لا يصدق منذ حوالي ثلاثة عشر فاصلة ثمانية مليار سنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "paragraph_id": "p55",
+      "text": "مع تمدده وبرودته، تكونت البروتونات والنيوترونات.",
+      "text_markdown": "مع تمدده وبرودته، تكونت البروتونات والنيوترونات.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "مع تمدده وبرودته، تكونت البروتونات والنيوترونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "paragraph_id": "p55",
+      "text": "تلك البروتونات والنيوترونات اتحدت لتشكل ابسط الانوية.",
+      "text_markdown": "تلك البروتونات والنيوترونات اتحدت لتشكل ابسط الانوية.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "تلك البروتونات والنيوترونات اتحدت لتشكل ابسط الانوية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "paragraph_id": "p55",
+      "text": "الهيدروجين والهيليوم كانا اول العناصر.",
+      "text_markdown": "الهيدروجين والهيليوم كانا اول العناصر.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الهيدروجين والهيليوم كانا اول العناصر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "paragraph_id": "p56",
+      "text": "لملايين السنين، كان الكون سحابة من غاز الهيدروجين والهيليوم.",
+      "text_markdown": "لملايين السنين، كان الكون سحابة من غاز الهيدروجين والهيليوم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "لملايين السنين، كان الكون سحابة من غاز الهيدروجين والهيليوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "paragraph_id": "p56",
+      "text": "ثم سحبت الجاذبية الغاز معا في تكتلات.",
+      "text_markdown": "ثم سحبت الجاذبية الغاز معا في تكتلات.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "ثم سحبت الجاذبية الغاز معا في تكتلات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "paragraph_id": "p56",
+      "text": "التكتلات اصبحت اكثر كثافة وسخونة.",
+      "text_markdown": "التكتلات اصبحت اكثر كثافة وسخونة.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "التكتلات اصبحت اكثر كثافة وسخونة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "paragraph_id": "p56",
+      "text": "عندما وصل مركز التكتل الى حوالي عشرة ملايين درجة، اشتعل الاندماج النووي.",
+      "text_markdown": "عندما وصل مركز التكتل الى حوالي عشرة ملايين درجة، اشتعل الاندماج النووي.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "عندما وصل مركز التكتل الى حوالي عشرة ملايين درجة، اشتعل الاندماج النووي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "paragraph_id": "p56",
+      "text": "ولد نجم.",
+      "text_markdown": "ولد نجم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "ولد نجم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "paragraph_id": "p57",
+      "text": "النجوم هي مصانع الذرات.",
+      "text_markdown": "النجوم هي مصانع الذرات.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "النجوم هي مصانع الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "paragraph_id": "p57",
+      "text": "داخل النجم، تندمج ذرات الهيدروجين معا لتشكل الهيليوم.",
+      "text_markdown": "داخل النجم، تندمج ذرات الهيدروجين معا لتشكل الهيليوم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "داخل النجم، تندمج ذرات الهيدروجين معا لتشكل الهيليوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "paragraph_id": "p57",
+      "text": "هذا الاندماج يطلق طاقة هائلة.",
+      "text_markdown": "هذا الاندماج يطلق طاقة هائلة.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "هذا الاندماج يطلق طاقة هائلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "paragraph_id": "p57",
+      "text": "هذه الطاقة هي ما يجعل النجم يلمع.",
+      "text_markdown": "هذه الطاقة هي ما يجعل النجم يلمع.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "هذه الطاقة هي ما يجعل النجم يلمع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "paragraph_id": "p57",
+      "text": "شمسنا تدمج حوالي ستمائة مليون طن من الهيدروجين الى هيليوم كل ثانية.",
+      "text_markdown": "شمسنا تدمج حوالي ستمائة مليون طن من الهيدروجين الى هيليوم كل ثانية.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "شمسنا تدمج حوالي ستمائة مليون طن من الهيدروجين الى هيليوم كل ثانية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "paragraph_id": "p58",
+      "text": "النجوم الاكبر تدمج عناصر اثقل.",
+      "text_markdown": "النجوم الاكبر تدمج عناصر اثقل.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "النجوم الاكبر تدمج عناصر اثقل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "paragraph_id": "p58",
+      "text": "بعد ان ينفد هيدروجين النجم، يبدا بدمج الهيليوم الى كربون.",
+      "text_markdown": "بعد ان ينفد هيدروجين النجم، يبدا بدمج الهيليوم الى كربون.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "بعد ان ينفد هيدروجين النجم، يبدا بدمج الهيليوم الى كربون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "paragraph_id": "p58",
+      "text": "ثم الكربون الى اكسجين.",
+      "text_markdown": "ثم الكربون الى اكسجين.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "ثم الكربون الى اكسجين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "paragraph_id": "p58",
+      "text": "ثم الاكسجين الى سيليكون.",
+      "text_markdown": "ثم الاكسجين الى سيليكون.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "ثم الاكسجين الى سيليكون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "paragraph_id": "p58",
+      "text": "ثم السيليكون الى حديد.",
+      "text_markdown": "ثم السيليكون الى حديد.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "ثم السيليكون الى حديد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "paragraph_id": "p58",
+      "text": "كل مرحلة تنتج عنصرا اثقل.",
+      "text_markdown": "كل مرحلة تنتج عنصرا اثقل.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "كل مرحلة تنتج عنصرا اثقل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "paragraph_id": "p58",
+      "text": "الحديد هو اثقل عنصر يمكن للنجم انتاجه عن طريق الاندماج العادي.",
+      "text_markdown": "الحديد هو اثقل عنصر يمكن للنجم انتاجه عن طريق الاندماج العادي.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الحديد هو اثقل عنصر يمكن للنجم انتاجه عن طريق الاندماج العادي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "paragraph_id": "p59",
+      "text": "العناصر الاثقل من الحديد تتكون عندما تنفجر النجوم الضخمة.",
+      "text_markdown": "العناصر الاثقل من الحديد تتكون عندما تنفجر النجوم الضخمة.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "العناصر الاثقل من الحديد تتكون عندما تنفجر النجوم الضخمة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "paragraph_id": "p59",
+      "text": "هذه الانفجارات تسمى المستعرات العظمى.",
+      "text_markdown": "هذه الانفجارات تسمى المستعرات العظمى.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "هذه الانفجارات تسمى المستعرات العظمى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "paragraph_id": "p59",
+      "text": "المستعر الاعظم يطلق طاقة في ثوان قليلة اكثر مما ستنتجه الشمس في حياتها كلها.",
+      "text_markdown": "المستعر الاعظم يطلق طاقة في ثوان قليلة اكثر مما ستنتجه الشمس في حياتها كلها.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "المستعر الاعظم يطلق طاقة في ثوان قليلة اكثر مما ستنتجه الشمس في حياتها كلها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "paragraph_id": "p59",
+      "text": "الظروف القاسية للمستعر الاعظم تصنع عناصر مثل الذهب والفضة والبلاتين واليورانيوم.",
+      "text_markdown": "الظروف القاسية للمستعر الاعظم تصنع عناصر مثل الذهب والفضة والبلاتين واليورانيوم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الظروف القاسية للمستعر الاعظم تصنع عناصر مثل الذهب والفضة والبلاتين واليورانيوم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "paragraph_id": "p60",
+      "text": "الانفجار ينثر هذه العناصر الثقيلة عبر الفضاء.",
+      "text_markdown": "الانفجار ينثر هذه العناصر الثقيلة عبر الفضاء.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الانفجار ينثر هذه العناصر الثقيلة عبر الفضاء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "paragraph_id": "p60",
+      "text": "تختلط العناصر مع سحب من غاز الهيدروجين والهيليوم.",
+      "text_markdown": "تختلط العناصر مع سحب من غاز الهيدروجين والهيليوم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "تختلط العناصر مع سحب من غاز الهيدروجين والهيليوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "paragraph_id": "p60",
+      "text": "في النهاية، تسحب الجاذبية الغاز الغني معا لتشكل نجوما وكواكب جديدة.",
+      "text_markdown": "في النهاية، تسحب الجاذبية الغاز الغني معا لتشكل نجوما وكواكب جديدة.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "في النهاية، تسحب الجاذبية الغاز الغني معا لتشكل نجوما وكواكب جديدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "paragraph_id": "p60",
+      "text": "تشكل نظامنا الشمسي من احدى هذه السحب الغنية منذ حوالي 4.6 مليار سنة.",
+      "text_markdown": "تشكل نظامنا الشمسي من احدى هذه السحب الغنية منذ حوالي 4.6 مليار سنة.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "تشكل نظامنا الشمسي من احدى هذه السحب الغنية منذ حوالي اربعة فاصلة ستة مليار سنة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "paragraph_id": "p61",
+      "text": "كل ذرة في جسمك اثقل من الهيدروجين صنعت داخل نجم.",
+      "text_markdown": "كل ذرة في جسمك اثقل من الهيدروجين صنعت داخل نجم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "كل ذرة في جسمك اثقل من الهيدروجين صنعت داخل نجم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "paragraph_id": "p61",
+      "text": "الكالسيوم في عظامك.",
+      "text_markdown": "الكالسيوم في عظامك.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الكالسيوم في عظامك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "paragraph_id": "p61",
+      "text": "الحديد في دمك.",
+      "text_markdown": "الحديد في دمك.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الحديد في دمك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "paragraph_id": "p61",
+      "text": "الكربون في جلدك.",
+      "text_markdown": "الكربون في جلدك.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "الكربون في جلدك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "paragraph_id": "p61",
+      "text": "انت مصنوع من غبار النجوم.",
+      "text_markdown": "انت مصنوع من غبار النجوم.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "انت مصنوع من غبار النجوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "paragraph_id": "p61",
+      "text": "هذا ليس مجازا.",
+      "text_markdown": "هذا ليس مجازا.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "هذا ليس مجازا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "paragraph_id": "p61",
+      "text": "انها حقيقة من حقائق الفيزياء النووية.",
+      "text_markdown": "انها حقيقة من حقائق الفيزياء النووية.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "انها حقيقة من حقائق الفيزياء النووية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "paragraph_id": "p62",
+      "text": "الذرات هي كل شيء",
+      "text_markdown": "الذرات هي كل شيء",
+      "title": "الذرات هي كل شيء"
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "paragraph_id": "p63",
+      "text": "الان انت تعرف الاساسيات.",
+      "text_markdown": "الان انت تعرف الاساسيات.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الان انت تعرف الاساسيات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "paragraph_id": "p63",
+      "text": "كل شيء مصنوع من الذرات.",
+      "text_markdown": "كل شيء مصنوع من الذرات.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "كل شيء مصنوع من الذرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "paragraph_id": "p63",
+      "text": "الذرات تحتوي على بروتونات ونيوترونات والكترونات.",
+      "text_markdown": "الذرات تحتوي على بروتونات ونيوترونات والكترونات.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الذرات تحتوي على بروتونات ونيوترونات والكترونات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "paragraph_id": "p63",
+      "text": "عدد البروتونات يحدد العنصر.",
+      "text_markdown": "عدد البروتونات يحدد العنصر.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "عدد البروتونات يحدد العنصر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "paragraph_id": "p63",
+      "text": "الذرات ترتبط لتشكل جزيئات.",
+      "text_markdown": "الذرات ترتبط لتشكل جزيئات.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الذرات ترتبط لتشكل جزيئات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "paragraph_id": "p63",
+      "text": "الذرات في حركة دائمة.",
+      "text_markdown": "الذرات في حركة دائمة.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الذرات في حركة دائمة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "paragraph_id": "p63",
+      "text": "النجوم صنعت الذرات التي يتكون منها عالمنا.",
+      "text_markdown": "النجوم صنعت الذرات التي يتكون منها عالمنا.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "النجوم صنعت الذرات التي يتكون منها عالمنا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "paragraph_id": "p64",
+      "text": "هذه المعرفة هي اساس الكيمياء والاحياء والفيزياء والطب.",
+      "text_markdown": "هذه المعرفة هي اساس الكيمياء والاحياء والفيزياء والطب.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "هذه المعرفة هي اساس الكيمياء والاحياء والفيزياء والطب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "paragraph_id": "p64",
+      "text": "كل مجال من مجالات العلم يرتبط بالذرات.",
+      "text_markdown": "كل مجال من مجالات العلم يرتبط بالذرات.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "كل مجال من مجالات العلم يرتبط بالذرات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "paragraph_id": "p65",
+      "text": "عندما يصف الطبيب دواء، فان ذلك الدواء هو ترتيب محدد من الذرات مصمم للتفاعل مع الجزيئات في جسمك.",
+      "text_markdown": "عندما يصف الطبيب دواء، فان ذلك الدواء هو ترتيب محدد من الذرات مصمم للتفاعل مع الجزيئات في جسمك.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "عندما يصف الطبيب دواء، فان ذلك الدواء هو ترتيب محدد من الذرات مصمم للتفاعل مع الجزيئات في جسمك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "paragraph_id": "p65",
+      "text": "عندما يبني المهندس جسرا، فان قوة ذلك الجسر تعتمد على كيفية ترتيب ذرات الحديد في الفولاذ.",
+      "text_markdown": "عندما يبني المهندس جسرا، فان قوة ذلك الجسر تعتمد على كيفية ترتيب ذرات الحديد في الفولاذ.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "عندما يبني المهندس جسرا، فان قوة ذلك الجسر تعتمد على كيفية ترتيب ذرات الحديد في الفولاذ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "paragraph_id": "p65",
+      "text": "عندما يزرع المزارع محصولا، ينمو المحصول لان ذرات الكربون من الهواء تتحد مع الماء وضوء الشمس داخل الاوراق.",
+      "text_markdown": "عندما يزرع المزارع محصولا، ينمو المحصول لان ذرات الكربون من الهواء تتحد مع الماء وضوء الشمس داخل الاوراق.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "عندما يزرع المزارع محصولا، ينمو المحصول لان ذرات الكربون من الهواء تتحد مع الماء وضوء الشمس داخل الاوراق.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "paragraph_id": "p66",
+      "text": "الطبخ هو كيمياء.",
+      "text_markdown": "الطبخ هو كيمياء.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الطبخ هو كيمياء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "paragraph_id": "p66",
+      "text": "عندما تخبز الخبز، تجعل الحرارة الذرات في العجين تعيد ترتيب نفسها.",
+      "text_markdown": "عندما تخبز الخبز، تجعل الحرارة الذرات في العجين تعيد ترتيب نفسها.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "عندما تخبز الخبز، تجعل الحرارة الذرات في العجين تعيد ترتيب نفسها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "paragraph_id": "p66",
+      "text": "البروتينات تنفتح.",
+      "text_markdown": "البروتينات تنفتح.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "البروتينات تنفتح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "paragraph_id": "p66",
+      "text": "السكريات تتفكك وتتحد من جديد.",
+      "text_markdown": "السكريات تتفكك وتتحد من جديد.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "السكريات تتفكك وتتحد من جديد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "paragraph_id": "p66",
+      "text": "تتكون جزيئات جديدة تصنع لون وملمس ونكهة القشرة.",
+      "text_markdown": "تتكون جزيئات جديدة تصنع لون وملمس ونكهة القشرة.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "تتكون جزيئات جديدة تصنع لون وملمس ونكهة القشرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "paragraph_id": "p66",
+      "text": "كل وصفة هي مجموعة من التعليمات لاعادة ترتيب الذرات.",
+      "text_markdown": "كل وصفة هي مجموعة من التعليمات لاعادة ترتيب الذرات.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "كل وصفة هي مجموعة من التعليمات لاعادة ترتيب الذرات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "paragraph_id": "p67",
+      "text": "التنفس هو كيمياء.",
+      "text_markdown": "التنفس هو كيمياء.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "التنفس هو كيمياء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "paragraph_id": "p67",
+      "text": "انت تستنشق جزيئات الاكسجين.",
+      "text_markdown": "انت تستنشق جزيئات الاكسجين.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "انت تستنشق جزيئات الاكسجين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "paragraph_id": "p67",
+      "text": "دمك يحمل تلك الجزيئات الى خلاياك.",
+      "text_markdown": "دمك يحمل تلك الجزيئات الى خلاياك.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "دمك يحمل تلك الجزيئات الى خلاياك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "paragraph_id": "p67",
+      "text": "داخل خلاياك، تتحد ذرات الاكسجين مع ذرات الكربون من الطعام.",
+      "text_markdown": "داخل خلاياك، تتحد ذرات الاكسجين مع ذرات الكربون من الطعام.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "داخل خلاياك، تتحد ذرات الاكسجين مع ذرات الكربون من الطعام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "paragraph_id": "p67",
+      "text": "التفاعل يطلق الطاقة.",
+      "text_markdown": "التفاعل يطلق الطاقة.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "التفاعل يطلق الطاقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "paragraph_id": "p67",
+      "text": "انت تزفر الكربون والاكسجين على شكل ثاني اكسيد الكربون.",
+      "text_markdown": "انت تزفر الكربون والاكسجين على شكل ثاني اكسيد الكربون.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "انت تزفر الكربون والاكسجين على شكل ثاني اكسيد الكربون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "paragraph_id": "p67",
+      "text": "كل نفس هو تفاعل كيميائي.",
+      "text_markdown": "كل نفس هو تفاعل كيميائي.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "كل نفس هو تفاعل كيميائي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "paragraph_id": "p68",
+      "text": "الصدا هو كيمياء.",
+      "text_markdown": "الصدا هو كيمياء.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الصدا هو كيمياء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "paragraph_id": "p68",
+      "text": "ذرات الحديد على سطح المسمار تتفاعل مع ذرات الاكسجين في الهواء.",
+      "text_markdown": "ذرات الحديد على سطح المسمار تتفاعل مع ذرات الاكسجين في الهواء.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "ذرات الحديد على سطح المسمار تتفاعل مع ذرات الاكسجين في الهواء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "paragraph_id": "p68",
+      "text": "الحديد والاكسجين يتحدان لتكوين مادة جديدة تسمى اكسيد الحديد.",
+      "text_markdown": "الحديد والاكسجين يتحدان لتكوين مادة جديدة تسمى اكسيد الحديد.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الحديد والاكسجين يتحدان لتكوين مادة جديدة تسمى اكسيد الحديد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "paragraph_id": "p68",
+      "text": "اكسيد الحديد هو المادة البنية المحمرة التي نسميها الصدا.",
+      "text_markdown": "اكسيد الحديد هو المادة البنية المحمرة التي نسميها الصدا.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "اكسيد الحديد هو المادة البنية المحمرة التي نسميها الصدا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "paragraph_id": "p68",
+      "text": "ذرات الحديد لا تزال موجودة.",
+      "text_markdown": "ذرات الحديد لا تزال موجودة.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "ذرات الحديد لا تزال موجودة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "paragraph_id": "p68",
+      "text": "لقد ارتبطت فقط بالاكسجين.",
+      "text_markdown": "لقد ارتبطت فقط بالاكسجين.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "لقد ارتبطت فقط بالاكسجين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "paragraph_id": "p69",
+      "text": "الذرات ليست مجردة.",
+      "text_markdown": "الذرات ليست مجردة.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الذرات ليست مجردة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "paragraph_id": "p69",
+      "text": "الذرات هي الحقيقة المادية لكل شيء تلمسه وتتذوقه وتراه وتشمه.",
+      "text_markdown": "الذرات هي الحقيقة المادية لكل شيء تلمسه وتتذوقه وتراه وتشمه.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "الذرات هي الحقيقة المادية لكل شيء تلمسه وتتذوقه وتراه وتشمه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "paragraph_id": "p69",
+      "text": "كلما فهمت الذرات اكثر، فهمت العالم اكثر.",
+      "text_markdown": "كلما فهمت الذرات اكثر، فهمت العالم اكثر.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "كلما فهمت الذرات اكثر، فهمت العالم اكثر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "paragraph_id": "p69",
+      "text": "هذه هي البداية.",
+      "text_markdown": "هذه هي البداية.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "هذه هي البداية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "paragraph_id": "p69",
+      "text": "هناك الكثير لاستكشافه.",
+      "text_markdown": "هناك الكثير لاستكشافه.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "هناك الكثير لاستكشافه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

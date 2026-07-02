@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "da",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En note til læseren",
+      "text_markdown": "En note til læseren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I to hundrede år har toget været verdens jernvej.",
+      "text_markdown": "I to hundrede år har toget været verdens jernvej.",
+      "tts": {
+        "text": "I to hundrede år har toget været verdens jernvej.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tog transporterer mennesker.",
+      "text_markdown": "Tog transporterer mennesker.",
+      "tts": {
+        "text": "Tog transporterer mennesker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tog transporterer varer.",
+      "text_markdown": "Tog transporterer varer.",
+      "tts": {
+        "text": "Tog transporterer varer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Et langt tog kan fragte korn nok til en hel by.",
+      "text_markdown": "Et langt tog kan fragte korn nok til en hel by.",
+      "tts": {
+        "text": "Et langt tog kan fragte korn nok til en hel by.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Et hurtigt tog kan køre fra en bil på motorvejen.",
+      "text_markdown": "Et hurtigt tog kan køre fra en bil på motorvejen.",
+      "tts": {
+        "text": "Et hurtigt tog kan køre fra en bil på motorvejen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historien om toget begynder i England for næsten to hundrede år siden med en mand, en ild og en kedel med kogende vand.",
+      "text_markdown": "Historien om toget begynder i England for næsten to hundrede år siden med en mand, en ild og en kedel med kogende vand.",
+      "tts": {
+        "text": "Historien om toget begynder i England for næsten to hundrede år siden med en mand, en ild og en kedel med kogende vand.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 1 — Det første damptog",
+      "text_markdown": "Kapitel 1 — Det første damptog"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et tog er en række vogne, der kører på jernskinner.",
+      "text_markdown": "Et tog er en række vogne, der kører på jernskinner.",
+      "tts": {
+        "text": "Et tog er en række vogne, der kører på jernskinner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Forrest er lokomotivet.",
+      "text_markdown": "Forrest er lokomotivet.",
+      "tts": {
+        "text": "Forrest er lokomotivet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det trækker alle de andre.",
+      "text_markdown": "Det trækker alle de andre.",
+      "tts": {
+        "text": "Det trækker alle de andre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De første tog blev drevet af damp.",
+      "text_markdown": "De første tog blev drevet af damp.",
+      "tts": {
+        "text": "De første tog blev drevet af damp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En dampmaskine brænder kul for at koge vand.",
+      "text_markdown": "En dampmaskine brænder kul for at koge vand.",
+      "tts": {
+        "text": "En dampmaskine brænder kul for at koge vand.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den varme damp skubber stempler.",
+      "text_markdown": "Den varme damp skubber stempler.",
+      "tts": {
+        "text": "Den varme damp skubber stempler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Stemplerne drejer hjulene.",
+      "text_markdown": "Stemplerne drejer hjulene.",
+      "tts": {
+        "text": "Stemplerne drejer hjulene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hjulene ruller på skinnerne.",
+      "text_markdown": "Hjulene ruller på skinnerne.",
+      "tts": {
+        "text": "Hjulene ruller på skinnerne.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historien begynder i England.",
+      "text_markdown": "Historien begynder i England.",
+      "tts": {
+        "text": "Historien begynder i England.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I 1825 åbnede den første offentlige jernbane.",
+      "text_markdown": "I 1825 åbnede den første offentlige jernbane.",
+      "tts": {
+        "text": "I atten hundrede og femogtyve åbnede den første offentlige jernbane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den hed Stockton and Darlington Railway.",
+      "text_markdown": "Den hed Stockton and Darlington Railway.",
+      "tts": {
+        "text": "Den hed Stok ten ænd Dar ling ton rejlwej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den fragtede kul fra en mine til floden.",
+      "text_markdown": "Den fragtede kul fra en mine til floden.",
+      "tts": {
+        "text": "Den fragtede kul fra en mine til floden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En mand ved navn George Stephenson byggede lokomotiverne.",
+      "text_markdown": "En mand ved navn George Stephenson byggede lokomotiverne.",
+      "tts": {
+        "text": "En mand ved navn Djordsj Steffenson byggede lokomotiverne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Folk kaldte ham jernbanernes far.",
+      "text_markdown": "Folk kaldte ham jernbanernes far.",
+      "tts": {
+        "text": "Folk kaldte ham jernbanernes far.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 1829 byggede hans søn Robert Stephenson et berømt lokomotiv, som hed Rocket.",
+      "text_markdown": "I 1829 byggede hans søn Robert Stephenson et berømt lokomotiv, som hed Rocket.",
+      "tts": {
+        "text": "I atten hundrede og niogtyve byggede hans søn Robbert Steffenson et berømt lokomotiv, som hed Rokket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det vandt en konkurrence om at være det hurtigste tog.",
+      "text_markdown": "Det vandt en konkurrence om at være det hurtigste tog.",
+      "tts": {
+        "text": "Det vandt en konkurrence om at være det hurtigste tog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rocket kunne køre næsten 30 miles i timen.",
+      "text_markdown": "Rocket kunne køre næsten 30 miles i timen.",
+      "tts": {
+        "text": "Rokket kunne køre næsten tredive miles i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det var hurtigere, end nogen hest kunne løbe.",
+      "text_markdown": "Det var hurtigere, end nogen hest kunne løbe.",
+      "tts": {
+        "text": "Det var hurtigere, end nogen hest kunne løbe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det første damptog",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Togets tidsalder var begyndt.",
+      "text_markdown": "Togets tidsalder var begyndt.",
+      "tts": {
+        "text": "Togets tidsalder var begyndt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 2 — Jernvejen breder sig",
+      "text_markdown": "Kapitel 2 — Jernvejen breder sig"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter Rocket bredte jernbanerne sig hurtigt.",
+      "text_markdown": "Efter Rocket bredte jernbanerne sig hurtigt.",
+      "tts": {
+        "text": "Efter Rokket bredte jernbanerne sig hurtigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Storbritannien lagde tusindvis af miles af spor.",
+      "text_markdown": "Storbritannien lagde tusindvis af miles af spor.",
+      "tts": {
+        "text": "Storbritannien lagde tusindvis af miles af spor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Så fulgte resten af verden efter.",
+      "text_markdown": "Så fulgte resten af verden efter.",
+      "tts": {
+        "text": "Så fulgte resten af verden efter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 1830 åbnede den første store amerikanske jernbane.",
+      "text_markdown": "I 1830 åbnede den første store amerikanske jernbane.",
+      "tts": {
+        "text": "I atten hundrede og tredive åbnede den første store amerikanske jernbane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den hed Baltimore and Ohio.",
+      "text_markdown": "Den hed Baltimore and Ohio.",
+      "tts": {
+        "text": "Den hed Bålti mor ænd O hajo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den forbandt byen Baltimore med Ohiofloden.",
+      "text_markdown": "Den forbandt byen Baltimore med Ohiofloden.",
+      "tts": {
+        "text": "Den forbandt byen Bålti mor med Ohiofloden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Frankrig åbnede den første jernbane i 1832.",
+      "text_markdown": "I Frankrig åbnede den første jernbane i 1832.",
+      "tts": {
+        "text": "I Frankrig åbnede den første jernbane i atten hundrede og toogtredive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den fragtede kul, ligesom den britiske linje.",
+      "text_markdown": "Den fragtede kul, ligesom den britiske linje.",
+      "tts": {
+        "text": "Den fragtede kul, ligesom den britiske linje.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Tyskland åbnede den første lange jernbane i 1839.",
+      "text_markdown": "I Tyskland åbnede den første lange jernbane i 1839.",
+      "tts": {
+        "text": "I Tyskland åbnede den første lange jernbane i atten hundrede og niogtredive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kørte mellem to byer, Leipzig og Dresden.",
+      "text_markdown": "Den kørte mellem to byer, Leipzig og Dresden.",
+      "tts": {
+        "text": "Den kørte mellem to byer, Leipzig og Dresden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rusland byggede sin første jernbane i 1837.",
+      "text_markdown": "Rusland byggede sin første jernbane i 1837.",
+      "tts": {
+        "text": "Rusland byggede sin første jernbane i atten hundrede og syvogtredive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Linjen gik fra Sankt Petersborg til en by i nærheden.",
+      "text_markdown": "Linjen gik fra Sankt Petersborg til en by i nærheden.",
+      "tts": {
+        "text": "Linjen gik fra Sankt Petersborg til en by i nærheden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det var hårdt arbejde at bygge en jernbane.",
+      "text_markdown": "Det var hårdt arbejde at bygge en jernbane.",
+      "tts": {
+        "text": "Det var hårdt arbejde at bygge en jernbane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mænd gravede tunneler gennem bjerge.",
+      "text_markdown": "Mænd gravede tunneler gennem bjerge.",
+      "tts": {
+        "text": "Mænd gravede tunneler gennem bjerge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De byggede broer over floder.",
+      "text_markdown": "De byggede broer over floder.",
+      "tts": {
+        "text": "De byggede broer over floder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De lagde hver eneste skinne med håndkraft.",
+      "text_markdown": "De lagde hver eneste skinne med håndkraft.",
+      "tts": {
+        "text": "De lagde hver eneste skinne med håndkraft.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Byer voksede frem langs linjerne.",
+      "text_markdown": "Byer voksede frem langs linjerne.",
+      "tts": {
+        "text": "Byer voksede frem langs linjerne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En lille landsby med en station kunne blive til en by.",
+      "text_markdown": "En lille landsby med en station kunne blive til en by.",
+      "tts": {
+        "text": "En lille landsby med en station kunne blive til en by.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toget bragte mennesker.",
+      "text_markdown": "Toget bragte mennesker.",
+      "tts": {
+        "text": "Toget bragte mennesker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toget bragte varer.",
+      "text_markdown": "Toget bragte varer.",
+      "tts": {
+        "text": "Toget bragte varer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Jernvejen breder sig",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Toget bragte verden lidt tættere på.",
+      "text_markdown": "Toget bragte verden lidt tættere på.",
+      "tts": {
+        "text": "Toget bragte verden lidt tættere på.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 3 — De store linjer",
+      "text_markdown": "Kapitel 3 — De store linjer"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle jernbaner er korte.",
+      "text_markdown": "Nogle jernbaner er korte.",
+      "tts": {
+        "text": "Nogle jernbaner er korte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nogle er meget lange.",
+      "text_markdown": "Nogle er meget lange.",
+      "tts": {
+        "text": "Nogle er meget lange.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De længste linjer krydsede hele kontinenter.",
+      "text_markdown": "De længste linjer krydsede hele kontinenter.",
+      "tts": {
+        "text": "De længste linjer krydsede hele kontinenter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I USA byggede to selskaber en jernbane tværs over landet.",
+      "text_markdown": "I USA byggede to selskaber en jernbane tværs over landet.",
+      "tts": {
+        "text": "I u es a byggede to selskaber en jernbane tværs over landet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det ene begyndte i Californien og arbejdede mod øst.",
+      "text_markdown": "Det ene begyndte i Californien og arbejdede mod øst.",
+      "tts": {
+        "text": "Det ene begyndte i Californien og arbejdede mod øst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det andet begyndte i Nebraska og arbejdede mod vest.",
+      "text_markdown": "Det andet begyndte i Nebraska og arbejdede mod vest.",
+      "tts": {
+        "text": "Det andet begyndte i Nebraska og arbejdede mod vest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De mødtes et sted, der hed Promontory Summit, i Utah.",
+      "text_markdown": "De mødtes et sted, der hed Promontory Summit, i Utah.",
+      "tts": {
+        "text": "De mødtes et sted, der hed Prå mon tori Sammit, i Utah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det var i 1869.",
+      "text_markdown": "Det var i 1869.",
+      "tts": {
+        "text": "Det var i atten hundrede og niogtres.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den sidste skinnenagle var lavet af guld.",
+      "text_markdown": "Den sidste skinnenagle var lavet af guld.",
+      "tts": {
+        "text": "Den sidste skinnenagle var lavet af guld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Folk kaldte den Golden Spike.",
+      "text_markdown": "Folk kaldte den Golden Spike.",
+      "tts": {
+        "text": "Folk kaldte den Golden Spajk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Linjen blev kaldt den transkontinentale jernbane.",
+      "text_markdown": "Linjen blev kaldt den transkontinentale jernbane.",
+      "tts": {
+        "text": "Linjen blev kaldt den transkontinentale jernbane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nu kunne man køre med tog fra det ene ocean til det andet på omkring en uge.",
+      "text_markdown": "Nu kunne man køre med tog fra det ene ocean til det andet på omkring en uge.",
+      "tts": {
+        "text": "Nu kunne man køre med tog fra det ene ocean til det andet på omkring en uge.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rusland byggede en endnu længere linje.",
+      "text_markdown": "Rusland byggede en endnu længere linje.",
+      "tts": {
+        "text": "Rusland byggede en endnu længere linje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kaldes den transsibiriske jernbane.",
+      "text_markdown": "Den kaldes den transsibiriske jernbane.",
+      "tts": {
+        "text": "Den kaldes den transsibiriske jernbane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den går fra Moskva i vest til Vladivostok i øst.",
+      "text_markdown": "Den går fra Moskva i vest til Vladivostok i øst.",
+      "tts": {
+        "text": "Den går fra Moskva i vest til Vla di vo stok i øst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Linjen blev færdig i 1916.",
+      "text_markdown": "Linjen blev færdig i 1916.",
+      "tts": {
+        "text": "Linjen blev færdig i nitten hundrede og seksten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den er mere end ni tusind kilometer lang.",
+      "text_markdown": "Den er mere end ni tusind kilometer lang.",
+      "tts": {
+        "text": "Den er mere end ni tusind kilometer lang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "En hel rejse tager omkring syv dage.",
+      "text_markdown": "En hel rejse tager omkring syv dage.",
+      "tts": {
+        "text": "En hel rejse tager omkring syv dage.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De store linjer",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Den er stadig verdens længste jernbane.",
+      "text_markdown": "Den er stadig verdens længste jernbane.",
+      "tts": {
+        "text": "Den er stadig verdens længste jernbane.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 4 — Damp, diesel, elektricitet",
+      "text_markdown": "Kapitel 4 — Damp, diesel, elektricitet"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I omkring hundrede år var næsten alle tog damptog.",
+      "text_markdown": "I omkring hundrede år var næsten alle tog damptog.",
+      "tts": {
+        "text": "I omkring hundrede år var næsten alle tog damptog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Damplokomotiver var store og larmende.",
+      "text_markdown": "Damplokomotiver var store og larmende.",
+      "tts": {
+        "text": "Damplokomotiver var store og larmende.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De brændte kul.",
+      "text_markdown": "De brændte kul.",
+      "tts": {
+        "text": "De brændte kul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De sendte tyk røg op i himlen.",
+      "text_markdown": "De sendte tyk røg op i himlen.",
+      "tts": {
+        "text": "De sendte tyk røg op i himlen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så kom diesellokomotivet.",
+      "text_markdown": "Så kom diesellokomotivet.",
+      "tts": {
+        "text": "Så kom diesellokomotivet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En dieselmotor brænder olie i stedet for kul.",
+      "text_markdown": "En dieselmotor brænder olie i stedet for kul.",
+      "tts": {
+        "text": "En dieselmotor brænder olie i stedet for kul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den er mindre og renere.",
+      "text_markdown": "Den er mindre og renere.",
+      "tts": {
+        "text": "Den er mindre og renere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den behøver ikke ild og en tank med vand.",
+      "text_markdown": "Den behøver ikke ild og en tank med vand.",
+      "tts": {
+        "text": "Den behøver ikke ild og en tank med vand.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieseltog blev almindelige i fyrrerne og halvtredserne.",
+      "text_markdown": "Dieseltog blev almindelige i fyrrerne og halvtredserne.",
+      "tts": {
+        "text": "Dieseltog blev almindelige i fyrrerne og halvtredserne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Langsomt blev de store damplokomotiver taget ud af drift.",
+      "text_markdown": "Langsomt blev de store damplokomotiver taget ud af drift.",
+      "tts": {
+        "text": "Langsomt blev de store damplokomotiver taget ud af drift.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nogle få bliver stadig bevaret på museer og turistbaner.",
+      "text_markdown": "Nogle få bliver stadig bevaret på museer og turistbaner.",
+      "tts": {
+        "text": "Nogle få bliver stadig bevaret på museer og turistbaner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det næste skridt var det elektriske tog.",
+      "text_markdown": "Det næste skridt var det elektriske tog.",
+      "tts": {
+        "text": "Det næste skridt var det elektriske tog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Et elektrisk tog har ingen motor, der brænder brændstof.",
+      "text_markdown": "Et elektrisk tog har ingen motor, der brænder brændstof.",
+      "tts": {
+        "text": "Et elektrisk tog har ingen motor, der brænder brændstof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det får strøm fra en ledning over sporet eller fra en tredje skinne ved siden af sporet.",
+      "text_markdown": "Det får strøm fra en ledning over sporet eller fra en tredje skinne ved siden af sporet.",
+      "tts": {
+        "text": "Det får strøm fra en ledning over sporet eller fra en tredje skinne ved siden af sporet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elektriske tog er stille og meget rene.",
+      "text_markdown": "Elektriske tog er stille og meget rene.",
+      "tts": {
+        "text": "Elektriske tog er stille og meget rene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De er også meget kraftige.",
+      "text_markdown": "De er også meget kraftige.",
+      "tts": {
+        "text": "De er også meget kraftige.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De fleste tog i byer og de fleste hurtige tog i dag er elektriske.",
+      "text_markdown": "De fleste tog i byer og de fleste hurtige tog i dag er elektriske.",
+      "tts": {
+        "text": "De fleste tog i byer og de fleste hurtige tog i dag er elektriske.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Damp, diesel, elektricitet.",
+      "text_markdown": "Damp, diesel, elektricitet.",
+      "tts": {
+        "text": "Damp, diesel, elektricitet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Damp, diesel, elektricitet",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tre motorer, tre tidsaldre.",
+      "text_markdown": "Tre motorer, tre tidsaldre.",
+      "tts": {
+        "text": "Tre motorer, tre tidsaldre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "text_markdown": "Kapitel 5 — Lyntog og kapløbet om farten"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 1964 åbnede Japan en helt ny jernbane.",
+      "text_markdown": "I 1964 åbnede Japan en helt ny jernbane.",
+      "tts": {
+        "text": "I nitten hundrede og fireogtres åbnede Japan en helt ny jernbane.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den gik fra Tokyo til Osaka.",
+      "text_markdown": "Den gik fra Tokyo til Osaka.",
+      "tts": {
+        "text": "Den gik fra Tokyo til Osaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Togene lignede lange hvide kugler.",
+      "text_markdown": "Togene lignede lange hvide kugler.",
+      "tts": {
+        "text": "Togene lignede lange hvide kugler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Folk kaldte dem lyntog.",
+      "text_markdown": "Folk kaldte dem lyntog.",
+      "tts": {
+        "text": "Folk kaldte dem lyntog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det japanske navn på dem er Shinkansen.",
+      "text_markdown": "Det japanske navn på dem er Shinkansen.",
+      "tts": {
+        "text": "Det japanske navn på dem er Sjin kan sen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De første lyntog kørte 130 miles i timen.",
+      "text_markdown": "De første lyntog kørte 130 miles i timen.",
+      "tts": {
+        "text": "De første lyntog kørte et hundrede og tredive miles i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det var meget hurtigt for et tog i 1964.",
+      "text_markdown": "Det var meget hurtigt for et tog i 1964.",
+      "tts": {
+        "text": "Det var meget hurtigt for et tog i nitten hundrede og fireogtres.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Linjen åbnede lige i tide til de olympiske lege i Tokyo.",
+      "text_markdown": "Linjen åbnede lige i tide til de olympiske lege i Tokyo.",
+      "tts": {
+        "text": "Linjen åbnede lige i tide til de olympiske lege i Tokyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre lande fulgte efter.",
+      "text_markdown": "Andre lande fulgte efter.",
+      "tts": {
+        "text": "Andre lande fulgte efter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Frankrig åbnede sin højhastighedslinje i 1981.",
+      "text_markdown": "Frankrig åbnede sin højhastighedslinje i 1981.",
+      "tts": {
+        "text": "Frankrig åbnede sin højhastighedslinje i nitten hundrede og enogfirs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Togene hedder TGV.",
+      "text_markdown": "Togene hedder TGV.",
+      "tts": {
+        "text": "Togene hedder te ge ve.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tyskland fulgte efter med ICE.",
+      "text_markdown": "Tyskland fulgte efter med ICE.",
+      "tts": {
+        "text": "Tyskland fulgte efter med i se e.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Italien, Spanien og Korea byggede deres egne højhastighedslinjer.",
+      "text_markdown": "Italien, Spanien og Korea byggede deres egne højhastighedslinjer.",
+      "tts": {
+        "text": "Italien, Spanien og Korea byggede deres egne højhastighedslinjer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kina kom sidst i gang, men byggede hurtigt.",
+      "text_markdown": "Kina kom sidst i gang, men byggede hurtigt.",
+      "tts": {
+        "text": "Kina kom sidst i gang, men byggede hurtigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I dag har Kina verdens største højhastighedsnet.",
+      "text_markdown": "I dag har Kina verdens største højhastighedsnet.",
+      "tts": {
+        "text": "I dag har Kina verdens største højhastighedsnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der er titusinder af kilometer spor.",
+      "text_markdown": "Der er titusinder af kilometer spor.",
+      "tts": {
+        "text": "Der er titusinder af kilometer spor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moderne lyntog kan køre med mere end 200 miles i timen.",
+      "text_markdown": "Moderne lyntog kan køre med mere end 200 miles i timen.",
+      "tts": {
+        "text": "Moderne lyntog kan køre med mere end to hundrede miles i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De kører jævnt, stille og næsten altid til tiden.",
+      "text_markdown": "De kører jævnt, stille og næsten altid til tiden.",
+      "tts": {
+        "text": "De kører jævnt, stille og næsten altid til tiden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Lyntog og kapløbet om farten",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "På mange rejser er de hurtigere end at flyve.",
+      "text_markdown": "På mange rejser er de hurtigere end at flyve.",
+      "tts": {
+        "text": "På mange rejser er de hurtigere end at flyve.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 6 — Mange slags tog",
+      "text_markdown": "Kapitel 6 — Mange slags tog"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ikke alle tog er ens.",
+      "text_markdown": "Ikke alle tog er ens.",
+      "tts": {
+        "text": "Ikke alle tog er ens.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der findes mange slags.",
+      "text_markdown": "Der findes mange slags.",
+      "tts": {
+        "text": "Der findes mange slags.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et passagertog transporterer mennesker.",
+      "text_markdown": "Et passagertog transporterer mennesker.",
+      "tts": {
+        "text": "Et passagertog transporterer mennesker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det har sæder, vinduer og nogle gange en spisevogn eller en sovevogn.",
+      "text_markdown": "Det har sæder, vinduer og nogle gange en spisevogn eller en sovevogn.",
+      "tts": {
+        "text": "Det har sæder, vinduer og nogle gange en spisevogn eller en sovevogn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et godstog transporterer varer.",
+      "text_markdown": "Et godstog transporterer varer.",
+      "tts": {
+        "text": "Et godstog transporterer varer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vognene kaldes godsvogne.",
+      "text_markdown": "Vognene kaldes godsvogne.",
+      "tts": {
+        "text": "Vognene kaldes godsvogne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nogle fragter korn.",
+      "text_markdown": "Nogle fragter korn.",
+      "tts": {
+        "text": "Nogle fragter korn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nogle fragter olie.",
+      "text_markdown": "Nogle fragter olie.",
+      "tts": {
+        "text": "Nogle fragter olie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nogle fragter hele skibscontainere stablet to i højden.",
+      "text_markdown": "Nogle fragter hele skibscontainere stablet to i højden.",
+      "tts": {
+        "text": "Nogle fragter hele skibscontainere stablet to i højden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En metro er et underjordisk tog i en by.",
+      "text_markdown": "En metro er et underjordisk tog i en by.",
+      "tts": {
+        "text": "En metro er et underjordisk tog i en by.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den første metro åbnede i London i 1863.",
+      "text_markdown": "Den første metro åbnede i London i 1863.",
+      "tts": {
+        "text": "Den første metro åbnede i London i atten hundrede og treogtres.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I dag har store byer enorme metronet under deres gader.",
+      "text_markdown": "I dag har store byer enorme metronet under deres gader.",
+      "tts": {
+        "text": "I dag har store byer enorme metronet under deres gader.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En sporvogn eller letbane er et lille tog, der kører på byens gader.",
+      "text_markdown": "En sporvogn eller letbane er et lille tog, der kører på byens gader.",
+      "tts": {
+        "text": "En sporvogn eller letbane er et lille tog, der kører på byens gader.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den deler ofte vejen med biler og busser.",
+      "text_markdown": "Den deler ofte vejen med biler og busser.",
+      "tts": {
+        "text": "Den deler ofte vejen med biler og busser.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et bjergtog klatrer op ad stejle skråninger.",
+      "text_markdown": "Et bjergtog klatrer op ad stejle skråninger.",
+      "tts": {
+        "text": "Et bjergtog klatrer op ad stejle skråninger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nogle har en særlig tandet skinne midt i sporet, som kaldes en tandstang.",
+      "text_markdown": "Nogle har en særlig tandet skinne midt i sporet, som kaldes en tandstang.",
+      "tts": {
+        "text": "Nogle har en særlig tandet skinne midt i sporet, som kaldes en tandstang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lokomotivet griber fat i tandstangen for at køre op og komme sikkert ned.",
+      "text_markdown": "Lokomotivet griber fat i tandstangen for at køre op og komme sikkert ned.",
+      "tts": {
+        "text": "Lokomotivet griber fat i tandstangen for at køre op og komme sikkert ned.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle tog er også turisttog.",
+      "text_markdown": "Nogle tog er også turisttog.",
+      "tts": {
+        "text": "Nogle tog er også turisttog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Mange slags tog",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De kører gennem skove og bjerge, bare for udsigtens skyld.",
+      "text_markdown": "De kører gennem skove og bjerge, bare for udsigtens skyld.",
+      "tts": {
+        "text": "De kører gennem skove og bjerge, bare for udsigtens skyld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 7 — Fremtiden på skinnerne",
+      "text_markdown": "Kapitel 7 — Fremtiden på skinnerne"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historien om toget er ikke slut.",
+      "text_markdown": "Historien om toget er ikke slut.",
+      "tts": {
+        "text": "Historien om toget er ikke slut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lige nu bliver der bygget nye slags tog.",
+      "text_markdown": "Lige nu bliver der bygget nye slags tog.",
+      "tts": {
+        "text": "Lige nu bliver der bygget nye slags tog.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det mest fantastiske er maglevtoget.",
+      "text_markdown": "Det mest fantastiske er maglevtoget.",
+      "tts": {
+        "text": "Det mest fantastiske er mag lev toget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordet maglev er kort for magnetisk levitation.",
+      "text_markdown": "Ordet maglev er kort for magnetisk levitation.",
+      "tts": {
+        "text": "Ordet mag lev er kort for magnetisk levitation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Et maglevtog rører ikke sit spor.",
+      "text_markdown": "Et maglevtog rører ikke sit spor.",
+      "tts": {
+        "text": "Et mag lev tog rører ikke sit spor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det svæver på en pude af magneter.",
+      "text_markdown": "Det svæver på en pude af magneter.",
+      "tts": {
+        "text": "Det svæver på en pude af magneter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Der drejer ingen hjul.",
+      "text_markdown": "Der drejer ingen hjul.",
+      "tts": {
+        "text": "Der drejer ingen hjul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Der er ingen friktion.",
+      "text_markdown": "Der er ingen friktion.",
+      "tts": {
+        "text": "Der er ingen friktion.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I 2004 åbnede en maglevlinje i Shanghai i Kina.",
+      "text_markdown": "I 2004 åbnede en maglevlinje i Shanghai i Kina.",
+      "tts": {
+        "text": "I to tusind og fire åbnede en mag lev linje i Shanghai i Kina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toget kan nå mere end 250 miles i timen.",
+      "text_markdown": "Toget kan nå mere end 250 miles i timen.",
+      "tts": {
+        "text": "Toget kan nå mere end to hundrede og halvtreds miles i timen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I Japan har et testmaglevtog kørt hurtigere end 370 miles i timen.",
+      "text_markdown": "I Japan har et testmaglevtog kørt hurtigere end 370 miles i timen.",
+      "tts": {
+        "text": "I Japan har et test mag lev tog kørt hurtigere end tre hundrede og halvfjerds miles i timen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre ingeniører arbejder på brinttoget.",
+      "text_markdown": "Andre ingeniører arbejder på brinttoget.",
+      "tts": {
+        "text": "Andre ingeniører arbejder på brinttoget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Et brinttog laver elektricitet i en lille brændselscelle.",
+      "text_markdown": "Et brinttog laver elektricitet i en lille brændselscelle.",
+      "tts": {
+        "text": "Et brinttog laver elektricitet i en lille brændselscelle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det eneste, der kommer ud af motoren, er vanddamp.",
+      "text_markdown": "Det eneste, der kommer ud af motoren, er vanddamp.",
+      "tts": {
+        "text": "Det eneste, der kommer ud af motoren, er vanddamp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ingen røg.",
+      "text_markdown": "Ingen røg.",
+      "tts": {
+        "text": "Ingen røg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Intet kul.",
+      "text_markdown": "Intet kul.",
+      "tts": {
+        "text": "Intet kul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De første brinttog begyndte at køre i Tyskland i 2018.",
+      "text_markdown": "De første brinttog begyndte at køre i Tyskland i 2018.",
+      "tts": {
+        "text": "De første brinttog begyndte at køre i Tyskland i to tusind og atten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tog er meget gamle.",
+      "text_markdown": "Tog er meget gamle.",
+      "tts": {
+        "text": "Tog er meget gamle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De er også meget nye.",
+      "text_markdown": "De er også meget nye.",
+      "tts": {
+        "text": "De er også meget nye.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Fremtiden på skinnerne",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To hundrede år efter Rocket er skinnerne stadig fremtiden.",
+      "text_markdown": "To hundrede år efter Rocket er skinnerne stadig fremtiden.",
+      "tts": {
+        "text": "To hundrede år efter Rokket er skinnerne stadig fremtiden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Jernvejen fortsætter",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Jernvejen fortsætter",
+      "text_markdown": "Jernvejen fortsætter"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Jernvejen fortsætter",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fra Rocket til maglevtoget har toget ført verden fremad i næsten to hundrede år.",
+      "text_markdown": "Fra Rocket til maglevtoget har toget ført verden fremad i næsten to hundrede år.",
+      "tts": {
+        "text": "Fra Rokket til mag lev toget har toget ført verden fremad i næsten to hundrede år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Jernvejen fortsætter",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lige nu bliver der lagt nye linjer i ørkener, i bjerge og under byer.",
+      "text_markdown": "Lige nu bliver der lagt nye linjer i ørkener, i bjerge og under byer.",
+      "tts": {
+        "text": "Lige nu bliver der lagt nye linjer i ørkener, i bjerge og under byer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Jernvejen fortsætter",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den næste station ligger altid et sted forude.",
+      "text_markdown": "Den næste station ligger altid et sted forude.",
+      "tts": {
+        "text": "Den næste station ligger altid et sted forude.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

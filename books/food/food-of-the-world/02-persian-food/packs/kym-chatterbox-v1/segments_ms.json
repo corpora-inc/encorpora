@@ -1,0 +1,3492 @@
+{
+  "book_id": "book_persian_food",
+  "version": "2.0.0",
+  "language": "ms",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nota untuk Pembaca",
+      "text_markdown": "Nota untuk Pembaca"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hai.",
+      "text_markdown": "Hai.",
+      "tts": {
+        "text": "Hai.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saya Kym.",
+      "text_markdown": "Saya Kym.",
+      "tts": {
+        "text": "Saya Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Saya suka makanan.",
+      "text_markdown": "Saya suka makanan.",
+      "tts": {
+        "text": "Saya suka makanan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saya suka kisah tentang makanan.",
+      "text_markdown": "Saya suka kisah tentang makanan.",
+      "tts": {
+        "text": "Saya suka kisah tentang makanan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini buku kecil tentang dunia makanan yang besar.",
+      "text_markdown": "Ini buku kecil tentang dunia makanan yang besar.",
+      "tts": {
+        "text": "Ini buku kecil tentang dunia makanan yang besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Makanan itu ialah makanan Parsi.",
+      "text_markdown": "Makanan itu ialah makanan Parsi.",
+      "tts": {
+        "text": "Makanan itu ialah makanan Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia ialah makanan Iran.",
+      "text_markdown": "Ia ialah makanan Iran.",
+      "tts": {
+        "text": "Ia ialah makanan Iran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia juga makanan sebuah negeri yang jauh lebih tua, bernama Parsi.",
+      "text_markdown": "Ia juga makanan sebuah negeri yang jauh lebih tua, bernama Parsi.",
+      "tts": {
+        "text": "Ia juga makanan sebuah negeri yang jauh lebih tua, bernama Parsi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parsi ialah antara tempat tertua di bumi. Di sinilah orang mula menanam hasil makanan dengan sengaja.",
+      "text_markdown": "Parsi ialah antara tempat tertua di bumi. Di sinilah orang mula menanam hasil makanan dengan sengaja.",
+      "tts": {
+        "text": "Parsi ialah antara tempat tertua di bumi. Di sinilah orang mula menanam hasil makanan dengan sengaja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gandum, barli, pic, aprikot, delima, bayam dan safron datang dari sana. Banyak benda di pinggan anda lahir di situ.",
+      "text_markdown": "Gandum, barli, pic, aprikot, delima, bayam dan safron datang dari sana. Banyak benda di pinggan anda lahir di situ.",
+      "tts": {
+        "text": "Gandum, barli, pic, aprikot, delima, bayam dan safron datang dari sana. Banyak benda di pinggan anda lahir di situ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kita akan mula dengan tanahnya.",
+      "text_markdown": "Kita akan mula dengan tanahnya.",
+      "tts": {
+        "text": "Kita akan mula dengan tanahnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kemudian kita akan melihat apa yang tumbuh di sana.",
+      "text_markdown": "Kemudian kita akan melihat apa yang tumbuh di sana.",
+      "tts": {
+        "text": "Kemudian kita akan melihat apa yang tumbuh di sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kemudian kita akan melihat nasi, roti, daging dan rebusan.",
+      "text_markdown": "Kemudian kita akan melihat nasi, roti, daging dan rebusan.",
+      "tts": {
+        "text": "Kemudian kita akan melihat nasi, roti, daging dan rebusan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pada akhirnya, anda akan tahu apa yang ada di meja Parsi. Anda juga akan tahu dari mana asalnya.",
+      "text_markdown": "Pada akhirnya, anda akan tahu apa yang ada di meja Parsi. Anda juga akan tahu dari mana asalnya.",
+      "tts": {
+        "text": "Pada akhirnya, anda akan tahu apa yang ada di meja Parsi. Anda juga akan tahu dari mana asalnya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duduklah.",
+      "text_markdown": "Duduklah.",
+      "tts": {
+        "text": "Duduklah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tuang sedikit teh.",
+      "text_markdown": "Tuang sedikit teh.",
+      "tts": {
+        "text": "Tuang sedikit teh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mari kita mula.",
+      "text_markdown": "Mari kita mula.",
+      "tts": {
+        "text": "Mari kita mula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 1 — Tanah Tempat Pertanian Bermula",
+      "text_markdown": "Bab 1 — Tanah Tempat Pertanian Bermula"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parsi ialah tanah tinggi yang kering.",
+      "text_markdown": "Parsi ialah tanah tinggi yang kering.",
+      "tts": {
+        "text": "Parsi ialah tanah tinggi yang kering.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia terletak di antara Laut Kaspia di utara dan Teluk Parsi di selatan.",
+      "text_markdown": "Ia terletak di antara Laut Kaspia di utara dan Teluk Parsi di selatan.",
+      "tts": {
+        "text": "Ia terletak di antara Laut Kaspia di utara dan Teluk Parsi di selatan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Di barat ialah Mesopotamia.",
+      "text_markdown": "Di barat ialah Mesopotamia.",
+      "tts": {
+        "text": "Di barat ialah Mesopotamia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Di timur ialah India.",
+      "text_markdown": "Di timur ialah India.",
+      "tts": {
+        "text": "Di timur ialah India.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Di tengah ada gunung dan gurun.",
+      "text_markdown": "Di tengah ada gunung dan gurun.",
+      "tts": {
+        "text": "Di tengah ada gunung dan gurun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tepat di sebelahnya, kira-kira sepuluh ribu tahun lalu, manusia mula menanam gandum dan barli dengan sengaja.",
+      "text_markdown": "Tepat di sebelahnya, kira-kira sepuluh ribu tahun lalu, manusia mula menanam gandum dan barli dengan sengaja.",
+      "tts": {
+        "text": "Tepat di sebelahnya, kira kira sepuluh ribu tahun lalu, manusia mula menanam gandum dan barli dengan sengaja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pertanian lahir di sana.",
+      "text_markdown": "Pertanian lahir di sana.",
+      "tts": {
+        "text": "Pertanian lahir di sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Parsi ialah antara tempat terawal yang mempelajarinya.",
+      "text_markdown": "Parsi ialah antara tempat terawal yang mempelajarinya.",
+      "tts": {
+        "text": "Parsi ialah antara tempat terawal yang mempelajarinya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kelebihan awal yang panjang itu ada pada setiap pinggan Parsi.",
+      "text_markdown": "Kelebihan awal yang panjang itu ada pada setiap pinggan Parsi.",
+      "tts": {
+        "text": "Kelebihan awal yang panjang itu ada pada setiap pinggan Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buah pic berasal dari Parsi.",
+      "text_markdown": "Buah pic berasal dari Parsi.",
+      "tts": {
+        "text": "Buah pic berasal dari Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang Rom memanggilnya Persika, buah Parsi. Kata peach dalam bahasa Inggeris datang daripada nama itu.",
+      "text_markdown": "Orang Rom memanggilnya Persika, buah Parsi. Kata peach dalam bahasa Inggeris datang daripada nama itu.",
+      "tts": {
+        "text": "Orang Rom memanggilnya Per si ka, buah Parsi. Kata pic dalam bahasa Inggeris datang daripada nama itu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aprikot juga berasal dari sana.",
+      "text_markdown": "Aprikot juga berasal dari sana.",
+      "tts": {
+        "text": "Aprikot juga berasal dari sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Begitu juga delima.",
+      "text_markdown": "Begitu juga delima.",
+      "tts": {
+        "text": "Begitu juga delima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Begitu juga walnut.",
+      "text_markdown": "Begitu juga walnut.",
+      "tts": {
+        "text": "Begitu juga walnut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Begitu juga ceri masam.",
+      "text_markdown": "Begitu juga ceri masam.",
+      "tts": {
+        "text": "Begitu juga ceri masam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Begitu juga salah satu sayur salad terawal di dunia, bayam.",
+      "text_markdown": "Begitu juga salah satu sayur salad terawal di dunia, bayam.",
+      "tts": {
+        "text": "Begitu juga salah satu sayur salad terawal di dunia, bayam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kata spinach dalam bahasa Inggeris datang daripada kata Parsi esfanaj.",
+      "text_markdown": "Kata spinach dalam bahasa Inggeris datang daripada kata Parsi esfanaj.",
+      "tts": {
+        "text": "Kata spi nac dalam bahasa Inggeris datang daripada kata Parsi es fa naj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Malah kata paradise juga berasal daripada bahasa Parsi.",
+      "text_markdown": "Malah kata paradise juga berasal daripada bahasa Parsi.",
+      "tts": {
+        "text": "Malah kata pera dais juga berasal daripada bahasa Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia datang daripada pardis, taman berdinding.",
+      "text_markdown": "Ia datang daripada pardis, taman berdinding.",
+      "tts": {
+        "text": "Ia datang daripada par dis, taman berdinding.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Syurga pertama ialah dusun Parsi yang penuh dengan pokok delima.",
+      "text_markdown": "Syurga pertama ialah dusun Parsi yang penuh dengan pokok delima.",
+      "tts": {
+        "text": "Syurga pertama ialah dusun Parsi yang penuh dengan pokok delima.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parsi bukan sekadar makan dengan baik.",
+      "text_markdown": "Parsi bukan sekadar makan dengan baik.",
+      "tts": {
+        "text": "Parsi bukan sekadar makan dengan baik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parsi mengajar dunia cara makan dengan baik.",
+      "text_markdown": "Parsi mengajar dunia cara makan dengan baik.",
+      "tts": {
+        "text": "Parsi mengajar dunia cara makan dengan baik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 2 — Bahan Asal di Dapur",
+      "text_markdown": "Bab 2 — Bahan Asal di Dapur"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buka pantri Parsi.",
+      "text_markdown": "Buka pantri Parsi.",
+      "tts": {
+        "text": "Buka pantri Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baunya menceritakan segalanya.",
+      "text_markdown": "Baunya menceritakan segalanya.",
+      "tts": {
+        "text": "Baunya menceritakan segalanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bau pertama ialah safron.",
+      "text_markdown": "Bau pertama ialah safron.",
+      "tts": {
+        "text": "Bau pertama ialah safron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran menghasilkan kira-kira sembilan puluh peratus safron dunia.",
+      "text_markdown": "Iran menghasilkan kira-kira sembilan puluh peratus safron dunia.",
+      "tts": {
+        "text": "Iran menghasilkan kira kira sembilan puluh peratus safron dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kebanyakannya datang dari wilayah bernama Khorasan.",
+      "text_markdown": "Kebanyakannya datang dari wilayah bernama Khorasan.",
+      "tts": {
+        "text": "Kebanyakannya datang dari wilayah bernama Kho ra san.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Untuk mendapatkan satu gram, petani memetik benang merah daripada kira-kira dua ratus bunga krokus dengan tangan.",
+      "text_markdown": "Untuk mendapatkan satu gram, petani memetik benang merah daripada kira-kira dua ratus bunga krokus dengan tangan.",
+      "tts": {
+        "text": "Untuk mendapatkan satu gram, petani memetik benang merah daripada kira kira dua ratus bunga krokus dengan tangan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kerja itu dibuat pada fajar musim luruh yang sejuk.",
+      "text_markdown": "Kerja itu dibuat pada fajar musim luruh yang sejuk.",
+      "tts": {
+        "text": "Kerja itu dibuat pada fajar musim luruh yang sejuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Safron ialah rempah paling mahal di dunia.",
+      "text_markdown": "Safron ialah rempah paling mahal di dunia.",
+      "tts": {
+        "text": "Safron ialah rempah paling mahal di dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Secubit safron menjadikan nasi keemasan. Air pun jadi harum.",
+      "text_markdown": "Secubit safron menjadikan nasi keemasan. Air pun jadi harum.",
+      "tts": {
+        "text": "Secubit safron menjadikan nasi keemasan. Air pun jadi harum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bau kedua ialah delima.",
+      "text_markdown": "Bau kedua ialah delima.",
+      "tts": {
+        "text": "Bau kedua ialah delima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang Parsi telah menanam delima selama ribuan tahun.",
+      "text_markdown": "Orang Parsi telah menanam delima selama ribuan tahun.",
+      "tts": {
+        "text": "Orang Parsi telah menanam delima selama ribuan tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Buah itu lambang cinta dan syurga.",
+      "text_markdown": "Buah itu lambang cinta dan syurga.",
+      "tts": {
+        "text": "Buah itu lambang cinta dan syurga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jusnya diperah untuk rebusan.",
+      "text_markdown": "Jusnya diperah untuk rebusan.",
+      "tts": {
+        "text": "Jusnya diperah untuk rebusan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bijinya ditabur di atas nasi dan salad.",
+      "text_markdown": "Bijinya ditabur di atas nasi dan salad.",
+      "tts": {
+        "text": "Bijinya ditabur di atas nasi dan salad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian datang pistasio.",
+      "text_markdown": "Kemudian datang pistasio.",
+      "tts": {
+        "text": "Kemudian datang pis ta sio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran mempunyai dusun pistasio yang berusia tiga ribu tahun.",
+      "text_markdown": "Iran mempunyai dusun pistasio yang berusia tiga ribu tahun.",
+      "tts": {
+        "text": "Iran mempunyai dusun pis ta sio yang berusia tiga ribu tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pistasio yang anda makan hari ini sering datang daripada keturunan pokok Parsi.",
+      "text_markdown": "Pistasio yang anda makan hari ini sering datang daripada keturunan pokok Parsi.",
+      "tts": {
+        "text": "Pis ta sio yang anda makan hari ini sering datang daripada keturunan pokok Parsi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada walnut, ceri masam, kuins, tembikai dan kurma.",
+      "text_markdown": "Ada walnut, ceri masam, kuins, tembikai dan kurma.",
+      "tts": {
+        "text": "Ada walnut, ceri masam, kuins, tembikai dan kurma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ada sumak, rempah merah gelap yang masam daripada semak liar.",
+      "text_markdown": "Ada sumak, rempah merah gelap yang masam daripada semak liar.",
+      "tts": {
+        "text": "Ada sumak, rempah merah gelap yang masam daripada semak liar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sebelum lemon ada di mana-mana, sumak menjadikan rasa makanan lebih segar.",
+      "text_markdown": "Sebelum lemon ada di mana-mana, sumak menjadikan rasa makanan lebih segar.",
+      "tts": {
+        "text": "Sebelum lemon ada di mana mana, sumak menjadikan rasa makanan lebih segar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ia masih begitu.",
+      "text_markdown": "Ia masih begitu.",
+      "tts": {
+        "text": "Ia masih begitu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pantri Parsi menyimpan separuh sejarah buah-buahan.",
+      "text_markdown": "Pantri Parsi menyimpan separuh sejarah buah-buahan.",
+      "tts": {
+        "text": "Pantri Parsi menyimpan separuh sejarah buah buahan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 3 — Nasi, Roti dan Kerak Suci",
+      "text_markdown": "Bab 3 — Nasi, Roti dan Kerak Suci"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nasi datang ke Parsi dari India kira-kira dua ribu lima ratus tahun lalu.",
+      "text_markdown": "Nasi datang ke Parsi dari India kira-kira dua ribu lima ratus tahun lalu.",
+      "tts": {
+        "text": "Nasi datang ke Parsi dari India kira kira dua ribu lima ratus tahun lalu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia menjadi jantung meja makan.",
+      "text_markdown": "Ia menjadi jantung meja makan.",
+      "tts": {
+        "text": "Ia menjadi jantung meja makan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orang Parsi memasak nasi dengan dua cara.",
+      "text_markdown": "Orang Parsi memasak nasi dengan dua cara.",
+      "tts": {
+        "text": "Orang Parsi memasak nasi dengan dua cara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nasi kosong dipanggil chelo.",
+      "text_markdown": "Nasi kosong dipanggil chelo.",
+      "tts": {
+        "text": "Nasi kosong dipanggil ce lo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nasi yang dicampur herba, daging atau buah dipanggil polo.",
+      "text_markdown": "Nasi yang dicampur herba, daging atau buah dipanggil polo.",
+      "tts": {
+        "text": "Nasi yang dicampur herba, daging atau buah dipanggil po lo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kedua-duanya panjang, ringan dan berderai. Setiap biji berdiri sendiri.",
+      "text_markdown": "Kedua-duanya panjang, ringan dan berderai. Setiap biji berdiri sendiri.",
+      "tts": {
+        "text": "Kedua duanya panjang, ringan dan berderai. Setiap biji berdiri sendiri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi keajaibannya ada di dasar periuk.",
+      "text_markdown": "Tetapi keajaibannya ada di dasar periuk.",
+      "tts": {
+        "text": "Tetapi keajaibannya ada di dasar periuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia dipanggil tahdig.",
+      "text_markdown": "Ia dipanggil tahdig.",
+      "tts": {
+        "text": "Ia dipanggil tah dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tukang masak meletakkan lapisan nipis di dasar periuk. Kadang-kadang nasi safron, kadang-kadang hirisan kentang, kadang-kadang sekeping roti.",
+      "text_markdown": "Tukang masak meletakkan lapisan nipis di dasar periuk. Kadang-kadang nasi safron, kadang-kadang hirisan kentang, kadang-kadang sekeping roti.",
+      "tts": {
+        "text": "Tukang masak meletakkan lapisan nipis di dasar periuk. Kadang kadang nasi safron, kadang kadang hirisan kentang, kadang kadang sekeping roti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kemudian nasi diletakkan di atasnya.",
+      "text_markdown": "Kemudian nasi diletakkan di atasnya.",
+      "tts": {
+        "text": "Kemudian nasi diletakkan di atasnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kemudian penutup dipasang, dibalut dengan tuala teh. Selepas itu wap melakukan kerjanya.",
+      "text_markdown": "Kemudian penutup dipasang, dibalut dengan tuala teh. Selepas itu wap melakukan kerjanya.",
+      "tts": {
+        "text": "Kemudian penutup dipasang, dibalut dengan tuala teh. Selepas itu wap melakukan kerjanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Selepas sejam, lapisan bawah itu menjadi keemasan dan rangup.",
+      "text_markdown": "Selepas sejam, lapisan bawah itu menjadi keemasan dan rangup.",
+      "tts": {
+        "text": "Selepas sejam, lapisan bawah itu menjadi keemasan dan rangup.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahdig itu suci.",
+      "text_markdown": "Tahdig itu suci.",
+      "tts": {
+        "text": "Tah dig itu suci.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Keluarga boleh berebut kerananya.",
+      "text_markdown": "Keluarga boleh berebut kerananya.",
+      "tts": {
+        "text": "Keluarga boleh berebut kerananya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Televisyen Iran malah ada rancangan khas tentang siapa membuatnya paling baik.",
+      "text_markdown": "Televisyen Iran malah ada rancangan khas tentang siapa membuatnya paling baik.",
+      "tts": {
+        "text": "Televisyen Iran malah ada rancangan khas tentang siapa membuatnya paling baik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tahdig yang sempurna keluar dari periuk sebagai bulatan utuh yang cantik.",
+      "text_markdown": "Tahdig yang sempurna keluar dari periuk sebagai bulatan utuh yang cantik.",
+      "tts": {
+        "text": "Tah dig yang sempurna keluar dari periuk sebagai bulatan utuh yang cantik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian ada roti.",
+      "text_markdown": "Kemudian ada roti.",
+      "tts": {
+        "text": "Kemudian ada roti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yang paling terkenal ialah sangak.",
+      "text_markdown": "Yang paling terkenal ialah sangak.",
+      "tts": {
+        "text": "Yang paling terkenal ialah sangak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangak dibakar di atas lapik batu kerikil panas. Cara ini sudah berusia lima ribu tahun.",
+      "text_markdown": "Sangak dibakar di atas lapik batu kerikil panas. Cara ini sudah berusia lima ribu tahun.",
+      "tts": {
+        "text": "Sangak dibakar di atas lapik batu kerikil panas. Cara ini sudah berusia lima ribu tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Batu kecil itu masih keluar bersama roti.",
+      "text_markdown": "Batu kecil itu masih keluar bersama roti.",
+      "tts": {
+        "text": "Batu kecil itu masih keluar bersama roti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Anda keluarkannya satu demi satu di meja makan.",
+      "text_markdown": "Anda keluarkannya satu demi satu di meja makan.",
+      "tts": {
+        "text": "Anda keluarkannya satu demi satu di meja makan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Roti lain ialah barbari, lavash dan taftun.",
+      "text_markdown": "Roti lain ialah barbari, lavash dan taftun.",
+      "tts": {
+        "text": "Roti lain ialah barbari, la vash dan taf tun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sarapan Parsi ialah roti, teh dan keju putih yang lembut.",
+      "text_markdown": "Sarapan Parsi ialah roti, teh dan keju putih yang lembut.",
+      "tts": {
+        "text": "Sarapan Parsi ialah roti, teh dan keju putih yang lembut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 4 — Kebab dan Rebusan yang Dimasak Perlahan",
+      "text_markdown": "Bab 4 — Kebab dan Rebusan yang Dimasak Perlahan"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kata kebab berasal daripada bahasa Parsi.",
+      "text_markdown": "Kata kebab berasal daripada bahasa Parsi.",
+      "tts": {
+        "text": "Kata kebab berasal daripada bahasa Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bentuk asalnya ialah kabab, yang bermaksud daging yang dimasak di atas api.",
+      "text_markdown": "Bentuk asalnya ialah kabab, yang bermaksud daging yang dimasak di atas api.",
+      "tts": {
+        "text": "Bentuk asalnya ialah kabab, yang bermaksud daging yang dimasak di atas api.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Orang Parsi telah memasak daging kambing pada pencucuk leper yang panjang selama ribuan tahun.",
+      "text_markdown": "Orang Parsi telah memasak daging kambing pada pencucuk leper yang panjang selama ribuan tahun.",
+      "tts": {
+        "text": "Orang Parsi telah memasak daging kambing pada pencucuk leper yang panjang selama ribuan tahun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebab paling popular hari ini ialah kubideh.",
+      "text_markdown": "Kebab paling popular hari ini ialah kubideh.",
+      "tts": {
+        "text": "Kebab paling popular hari ini ialah ku bi deh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ialah daging kambing atau lembu kisar, dicampur bawang dan garam, ditekan pada pencucuk leper yang lebar, lalu dipanggang atas arang.",
+      "text_markdown": "Ia ialah daging kambing atau lembu kisar, dicampur bawang dan garam, ditekan pada pencucuk leper yang lebar, lalu dipanggang atas arang.",
+      "tts": {
+        "text": "Ia ialah daging kambing atau lembu kisar, dicampur bawang dan garam, ditekan pada pencucuk leper yang lebar, lalu dipanggang atas arang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia nampak sangat purba.",
+      "text_markdown": "Ia nampak sangat purba.",
+      "tts": {
+        "text": "Ia nampak sangat purba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sebenarnya tidak.",
+      "text_markdown": "Sebenarnya tidak.",
+      "tts": {
+        "text": "Sebenarnya tidak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mesin pengisar daging sampai ke Iran hanya pada akhir abad kesembilan belas.",
+      "text_markdown": "Mesin pengisar daging sampai ke Iran hanya pada akhir abad kesembilan belas.",
+      "tts": {
+        "text": "Mesin pengisar daging sampai ke Iran hanya pada akhir abad kesembilan belas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kubideh, kebab yang paling Parsi, baru berusia sedikit lebih daripada seratus tahun.",
+      "text_markdown": "Kubideh, kebab yang paling Parsi, baru berusia sedikit lebih daripada seratus tahun.",
+      "tts": {
+        "text": "Ku bi deh, kebab yang paling Parsi, baru berusia sedikit lebih daripada seratus tahun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebab yang lebih tua dibuat daripada hirisan daging.",
+      "text_markdown": "Kebab yang lebih tua dibuat daripada hirisan daging.",
+      "tts": {
+        "text": "Kebab yang lebih tua dibuat daripada hirisan daging.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jujeh ialah ayam dalam safron dan yogurt.",
+      "text_markdown": "Jujeh ialah ayam dalam safron dan yogurt.",
+      "tts": {
+        "text": "Ju jeh ialah ayam dalam safron dan yogurt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg ialah filet kambing yang nipis.",
+      "text_markdown": "Barg ialah filet kambing yang nipis.",
+      "tts": {
+        "text": "Barg ialah filet kambing yang nipis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kedua-duanya dihidangkan di atas nasi safron bersama tomato panggang.",
+      "text_markdown": "Kedua-duanya dihidangkan di atas nasi safron bersama tomato panggang.",
+      "tts": {
+        "text": "Kedua duanya dihidangkan di atas nasi safron bersama tomato panggang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sekarang kenali makanan yang sabar, khoresh, rebusan Parsi.",
+      "text_markdown": "Sekarang kenali makanan yang sabar, khoresh, rebusan Parsi.",
+      "tts": {
+        "text": "Sekarang kenali makanan yang sabar, kho resh, rebusan Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Satu khoresh dimasak selama berjam-jam.",
+      "text_markdown": "Satu khoresh dimasak selama berjam-jam.",
+      "tts": {
+        "text": "Satu kho resh dimasak selama berjam jam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yang paling terkenal ialah fesenjan.",
+      "text_markdown": "Yang paling terkenal ialah fesenjan.",
+      "tts": {
+        "text": "Yang paling terkenal ialah fe sen jan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ialah ayam atau itik yang dimasak perlahan dalam sos pekat daripada walnut kisar dan jus delima.",
+      "text_markdown": "Ia ialah ayam atau itik yang dimasak perlahan dalam sos pekat daripada walnut kisar dan jus delima.",
+      "tts": {
+        "text": "Ia ialah ayam atau itik yang dimasak perlahan dalam sos pekat daripada walnut kisar dan jus delima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Resipi ini ialah antara resipi rebusan tertua yang pernah ditemui.",
+      "text_markdown": "Resipi ini ialah antara resipi rebusan tertua yang pernah ditemui.",
+      "tts": {
+        "text": "Resipi ini ialah antara resipi rebusan tertua yang pernah ditemui.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Satu versinya tertulis pada tablet kuneiform dari runtuhan Persepolis.",
+      "text_markdown": "Satu versinya tertulis pada tablet kuneiform dari runtuhan Persepolis.",
+      "tts": {
+        "text": "Satu versinya tertulis pada tablet kuneiform dari runtuhan Per se po lis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Itu bermakna usianya lebih daripada dua ribu lima ratus tahun.",
+      "text_markdown": "Itu bermakna usianya lebih daripada dua ribu lima ratus tahun.",
+      "tts": {
+        "text": "Itu bermakna usianya lebih daripada dua ribu lima ratus tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Orang masih memasaknya dengan cara yang sama.",
+      "text_markdown": "Orang masih memasaknya dengan cara yang sama.",
+      "tts": {
+        "text": "Orang masih memasaknya dengan cara yang sama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Satu lagi klasik ialah gormeh sabzi. Ia dibuat dengan kambing, kacang merah, dan segunung herba segar, lalu dimasak bersama limau kering.",
+      "text_markdown": "Satu lagi klasik ialah gormeh sabzi. Ia dibuat dengan kambing, kacang merah, dan segunung herba segar, lalu dimasak bersama limau kering.",
+      "tts": {
+        "text": "Satu lagi klasik ialah gor meh sab zi. Ia dibuat dengan kambing, kacang merah, dan segunung herba segar, lalu dimasak bersama limau kering.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ramai orang Iran memanggilnya hidangan kebangsaan.",
+      "text_markdown": "Ramai orang Iran memanggilnya hidangan kebangsaan.",
+      "tts": {
+        "text": "Ramai orang Iran memanggilnya hidangan kebangsaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 5 — Yogurt, Teh dan Manisan Tertua",
+      "text_markdown": "Bab 5 — Yogurt, Teh dan Manisan Tertua"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orang Parsi makan yogurt dengan segala-galanya.",
+      "text_markdown": "Orang Parsi makan yogurt dengan segala-galanya.",
+      "tts": {
+        "text": "Orang Parsi makan yogurt dengan segala galanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yogurt kosong dipanggil mast.",
+      "text_markdown": "Yogurt kosong dipanggil mast.",
+      "tts": {
+        "text": "Yogurt kosong dipanggil mast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mast dengan timun dan pudina kering dipanggil mast o khiar.",
+      "text_markdown": "Mast dengan timun dan pudina kering dipanggil mast o khiar.",
+      "tts": {
+        "text": "Mast dengan timun dan pudina kering dipanggil mast o ki yar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Minuman yogurt masin dengan pudina dipanggil doogh.",
+      "text_markdown": "Minuman yogurt masin dengan pudina dipanggil doogh.",
+      "tts": {
+        "text": "Minuman yogurt masin dengan pudina dipanggil dug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ada juga kashk, dadih kering yang kuat rasanya, digunakan dalam sup.",
+      "text_markdown": "Ada juga kashk, dadih kering yang kuat rasanya, digunakan dalam sup.",
+      "tts": {
+        "text": "Ada juga kasyk, dadih kering yang kuat rasanya, digunakan dalam sup.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kemudian ada teh.",
+      "text_markdown": "Kemudian ada teh.",
+      "tts": {
+        "text": "Kemudian ada teh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang Parsi meminumnya pagi, tengah hari dan malam, diseduh pekat dalam teko tinggi di atas samovar.",
+      "text_markdown": "Orang Parsi meminumnya pagi, tengah hari dan malam, diseduh pekat dalam teko tinggi di atas samovar.",
+      "tts": {
+        "text": "Orang Parsi meminumnya pagi, tengah hari dan malam, diseduh pekat dalam teko tinggi di atas sa mo var.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Teh sangat penting sehingga orang terkejut apabila tahu ia datang agak lewat.",
+      "text_markdown": "Teh sangat penting sehingga orang terkejut apabila tahu ia datang agak lewat.",
+      "tts": {
+        "text": "Teh sangat penting sehingga orang terkejut apabila tahu ia datang agak lewat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Untuk sebahagian besar sejarah Parsi, minumannya ialah kopi.",
+      "text_markdown": "Untuk sebahagian besar sejarah Parsi, minumannya ialah kopi.",
+      "tts": {
+        "text": "Untuk sebahagian besar sejarah Parsi, minumannya ialah kopi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Teh mengambil tempat itu hanya pada akhir abad kesembilan belas.",
+      "text_markdown": "Teh mengambil tempat itu hanya pada akhir abad kesembilan belas.",
+      "tts": {
+        "text": "Teh mengambil tempat itu hanya pada akhir abad kesembilan belas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hari ini Iran ialah antara negara yang paling banyak minum teh di dunia.",
+      "text_markdown": "Hari ini Iran ialah antara negara yang paling banyak minum teh di dunia.",
+      "tts": {
+        "text": "Hari ini Iran ialah antara negara yang paling banyak minum teh di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ada sedikit adat kecil padanya.",
+      "text_markdown": "Ada sedikit adat kecil padanya.",
+      "tts": {
+        "text": "Ada sedikit adat kecil padanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anda pegang kiub gula di antara gigi.",
+      "text_markdown": "Anda pegang kiub gula di antara gigi.",
+      "tts": {
+        "text": "Anda pegang kiub gula di antara gigi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anda hirup teh melalui kiub itu.",
+      "text_markdown": "Anda hirup teh melalui kiub itu.",
+      "tts": {
+        "text": "Anda hirup teh melalui kiub itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kiub itu cair sedikit.",
+      "text_markdown": "Kiub itu cair sedikit.",
+      "tts": {
+        "text": "Kiub itu cair sedikit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Teh itu panas, gelap dan manis ketika turun ke tekak.",
+      "text_markdown": "Teh itu panas, gelap dan manis ketika turun ke tekak.",
+      "tts": {
+        "text": "Teh itu panas, gelap dan manis ketika turun ke tekak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sekarang manisannya.",
+      "text_markdown": "Sekarang manisannya.",
+      "tts": {
+        "text": "Sekarang manisannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Manisan Parsi itu tua, kaya rasa dan kecil.",
+      "text_markdown": "Manisan Parsi itu tua, kaya rasa dan kecil.",
+      "tts": {
+        "text": "Manisan Parsi itu tua, kaya rasa dan kecil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yang tertua ialah faludeh.",
+      "text_markdown": "Yang tertua ialah faludeh.",
+      "tts": {
+        "text": "Yang tertua ialah fa lu deh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ialah mi nasi halus yang dibekukan dalam sirap air mawar. Ia dihidangkan dengan jus limau dan pistasio.",
+      "text_markdown": "Ia ialah mi nasi halus yang dibekukan dalam sirap air mawar. Ia dihidangkan dengan jus limau dan pistasio.",
+      "tts": {
+        "text": "Ia ialah mi nasi halus yang dibekukan dalam sirap air mawar. Ia dihidangkan dengan jus limau dan pis ta sio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Penulis Parsi menyebutnya sekitar empat ratus tahun sebelum Masihi.",
+      "text_markdown": "Penulis Parsi menyebutnya sekitar empat ratus tahun sebelum Masihi.",
+      "tts": {
+        "text": "Penulis Parsi menyebutnya sekitar empat ratus tahun sebelum Masihi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Itu menjadikan faludeh antara pencuci mulut beku tertua di dunia.",
+      "text_markdown": "Itu menjadikan faludeh antara pencuci mulut beku tertua di dunia.",
+      "tts": {
+        "text": "Itu menjadikan fa lu deh antara pencuci mulut beku tertua di dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ia lebih tua lebih dua ribu tahun daripada ais krim.",
+      "text_markdown": "Ia lebih tua lebih dua ribu tahun daripada ais krim.",
+      "tts": {
+        "text": "Ia lebih tua lebih dua ribu tahun daripada ais krim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klasik lain: baklava dari Tabriz, lebih ringan daripada jenis Turki, dengan walnut dan air mawar.",
+      "text_markdown": "Klasik lain: baklava dari Tabriz, lebih ringan daripada jenis Turki, dengan walnut dan air mawar.",
+      "tts": {
+        "text": "Klasik lain, baklava dari Tab riz, lebih ringan daripada jenis Turki, dengan walnut dan air mawar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halva, pes padat daripada bijan atau safron.",
+      "text_markdown": "Halva, pes padat daripada bijan atau safron.",
+      "tts": {
+        "text": "Halva, pes padat daripada bijan atau safron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gaz dari Esfahan, nugat lembut dengan pistasio.",
+      "text_markdown": "Gaz dari Esfahan, nugat lembut dengan pistasio.",
+      "tts": {
+        "text": "Gaz dari Es fa han, nugat lembut dengan pis ta sio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, tofi safron yang rapuh dan keemasan.",
+      "text_markdown": "Sohan, tofi safron yang rapuh dan keemasan.",
+      "tts": {
+        "text": "Sohan, tofi safron yang rapuh dan keemasan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nokhodchi dari Qom, biskut kacang kuda yang kecil.",
+      "text_markdown": "Nokhodchi dari Qom, biskut kacang kuda yang kecil.",
+      "tts": {
+        "text": "No khod chi dari Kom, biskut kacang kuda yang kecil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sepiring kecil manisan. Secawan teh. Perbualan yang perlahan.",
+      "text_markdown": "Sepiring kecil manisan. Secawan teh. Perbualan yang perlahan.",
+      "tts": {
+        "text": "Sepiring kecil manisan. Secawan teh. Perbualan yang perlahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Itulah petang Parsi.",
+      "text_markdown": "Itulah petang Parsi.",
+      "tts": {
+        "text": "Itulah petang Parsi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 6 — Apa yang Parsi Beri, Apa yang Parsi Ambil",
+      "text_markdown": "Bab 6 — Apa yang Parsi Beri, Apa yang Parsi Ambil"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parsi berada di tengah dunia lama.",
+      "text_markdown": "Parsi berada di tengah dunia lama.",
+      "tts": {
+        "text": "Parsi berada di tengah dunia lama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kafilah melintasinya.",
+      "text_markdown": "Kafilah melintasinya.",
+      "tts": {
+        "text": "Kafilah melintasinya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Empayar bangkit dan jatuh di atasnya.",
+      "text_markdown": "Empayar bangkit dan jatuh di atasnya.",
+      "tts": {
+        "text": "Empayar bangkit dan jatuh di atasnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Makanan juga melintasinya, ke dua-dua arah.",
+      "text_markdown": "Makanan juga melintasinya, ke dua-dua arah.",
+      "tts": {
+        "text": "Makanan juga melintasinya, ke dua dua arah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lihat pada kata-katanya.",
+      "text_markdown": "Lihat pada kata-katanya.",
+      "tts": {
+        "text": "Lihat pada kata katanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bahasa Inggeris mengambil berpuluh-puluh kata makanan daripada bahasa Parsi.",
+      "text_markdown": "Bahasa Inggeris mengambil berpuluh-puluh kata makanan daripada bahasa Parsi.",
+      "tts": {
+        "text": "Bahasa Inggeris mengambil berpuluh puluh kata makanan daripada bahasa Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet dan paradise semuanya berasal daripada bahasa Parsi.",
+      "text_markdown": "Sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet dan paradise semuanya berasal daripada bahasa Parsi.",
+      "tts": {
+        "text": "syuger, kendi, lemon, oren, jasmin, lai lak, tulip, kiosk, sherbet dan pera dais semuanya berasal daripada bahasa Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Begitu juga kata checkmate, daripada syah mat, raja tidak berdaya. Parsi meletakkan kata ke dalam mulut separuh dunia.",
+      "text_markdown": "Begitu juga kata checkmate, daripada syah mat, raja tidak berdaya. Parsi meletakkan kata ke dalam mulut separuh dunia.",
+      "tts": {
+        "text": "Begitu juga kata cek mate, daripada syah mat, raja tidak berdaya. Parsi meletakkan kata ke dalam mulut separuh dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cara memasak nasi Parsi bergerak ke timur.",
+      "text_markdown": "Cara memasak nasi Parsi bergerak ke timur.",
+      "tts": {
+        "text": "Cara memasak nasi Parsi bergerak ke timur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Raja Mughal di India menyukai makanan Parsi dan membawa tukang masak Parsi ke istana mereka.",
+      "text_markdown": "Raja Mughal di India menyukai makanan Parsi dan membawa tukang masak Parsi ke istana mereka.",
+      "tts": {
+        "text": "Raja Mu gal di India menyukai makanan Parsi dan membawa tukang masak Parsi ke istana mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tukang masak itu membuat biryani.",
+      "text_markdown": "Tukang masak itu membuat biryani.",
+      "tts": {
+        "text": "Tukang masak itu membuat biryani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pilaf ialah hidangan nasi berempah berbiji panjang dari Mediterranean hingga stepa Asia Tengah. Akarnya ada pada tradisi nasi Parsi.",
+      "text_markdown": "Pilaf ialah hidangan nasi berempah berbiji panjang dari Mediterranean hingga stepa Asia Tengah. Akarnya ada pada tradisi nasi Parsi.",
+      "tts": {
+        "text": "Pi laf ialah hidangan nasi berempah berbiji panjang dari Mediterranean hingga stepa Asia Tengah. Akarnya ada pada tradisi nasi Parsi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buah-buahan Parsi bergerak ke barat.",
+      "text_markdown": "Buah-buahan Parsi bergerak ke barat.",
+      "tts": {
+        "text": "Buah buahan Parsi bergerak ke barat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang Rom menanam pic di Itali kerana mereka mendapatnya dari Parsi.",
+      "text_markdown": "Orang Rom menanam pic di Itali kerana mereka mendapatnya dari Parsi.",
+      "tts": {
+        "text": "Orang Rom menanam pic di Itali kerana mereka mendapatnya dari Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bayam sampai ke Eropah melalui Sepanyol, dibawa oleh pedagang dari dunia Parsi.",
+      "text_markdown": "Bayam sampai ke Eropah melalui Sepanyol, dibawa oleh pedagang dari dunia Parsi.",
+      "tts": {
+        "text": "Bayam sampai ke Eropah melalui Sepanyol, dibawa oleh pedagang dari dunia Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tulip, lambang Belanda, mula-mula ditanam di Parsi dan Turki sebelum sampai ke Belanda.",
+      "text_markdown": "Tulip, lambang Belanda, mula-mula ditanam di Parsi dan Turki sebelum sampai ke Belanda.",
+      "tts": {
+        "text": "Tulip, lambang Belanda, mula mula ditanam di Parsi dan Turki sebelum sampai ke Belanda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parsi juga mengambil benda dari luar.",
+      "text_markdown": "Parsi juga mengambil benda dari luar.",
+      "tts": {
+        "text": "Parsi juga mengambil benda dari luar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang Mongol, yang menyerang pada abad ketiga belas, membawa selera yang lebih kuat untuk daging panggang dan bakar.",
+      "text_markdown": "Orang Mongol, yang menyerang pada abad ketiga belas, membawa selera yang lebih kuat untuk daging panggang dan bakar.",
+      "tts": {
+        "text": "Orang Mongol, yang menyerang pada abad ketiga belas, membawa selera yang lebih kuat untuk daging panggang dan bakar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pertanian Arab membawa tebu, buah sitrus dan nasi dari selatan dan timur.",
+      "text_markdown": "Pertanian Arab membawa tebu, buah sitrus dan nasi dari selatan dan timur.",
+      "tts": {
+        "text": "Pertanian Arab membawa tebu, buah sitrus dan nasi dari selatan dan timur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samovar datang dari utara, dari Rusia, pada abad kelapan belas.",
+      "text_markdown": "Samovar datang dari utara, dari Rusia, pada abad kelapan belas.",
+      "tts": {
+        "text": "Sa mo var datang dari utara, dari Rusia, pada abad kelapan belas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sejarawan Yunani Herodotus menulis tentang hal ini dua ribu lima ratus tahun lalu. Katanya, orang Parsi menyambut hari lahir lebih mewah daripada hari lain dalam setahun.",
+      "text_markdown": "Sejarawan Yunani Herodotus menulis tentang hal ini dua ribu lima ratus tahun lalu. Katanya, orang Parsi menyambut hari lahir lebih mewah daripada hari lain dalam setahun.",
+      "tts": {
+        "text": "Sejarawan Yunani He ro do tus menulis tentang hal ini dua ribu lima ratus tahun lalu. Katanya, orang Parsi menyambut hari lahir lebih mewah daripada hari lain dalam setahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pada hari itu, tulisnya, meja diisi lebih banyak daripada biasa.",
+      "text_markdown": "Pada hari itu, tulisnya, meja diisi lebih banyak daripada biasa.",
+      "tts": {
+        "text": "Pada hari itu, tulisnya, meja diisi lebih banyak daripada biasa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ada hal yang tidak berubah.",
+      "text_markdown": "Ada hal yang tidak berubah.",
+      "tts": {
+        "text": "Ada hal yang tidak berubah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bab 7 — Di Meja Parsi",
+      "text_markdown": "Bab 7 — Di Meja Parsi"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sekarang kita duduk.",
+      "text_markdown": "Sekarang kita duduk.",
+      "tts": {
+        "text": "Sekarang kita duduk.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahun Parsi bermula pada ekuinoks musim bunga, sekitar dua puluh satu Mac.",
+      "text_markdown": "Tahun Parsi bermula pada ekuinoks musim bunga, sekitar dua puluh satu Mac.",
+      "tts": {
+        "text": "Tahun Parsi bermula pada ekuinoks musim bunga, sekitar dua puluh satu Mac.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perayaan itu dipanggil Nouruz, Hari Baharu.",
+      "text_markdown": "Perayaan itu dipanggil Nouruz, Hari Baharu.",
+      "tts": {
+        "text": "Perayaan itu dipanggil Nou ruz, Hari Baharu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia cuti paling penting dalam setahun.",
+      "text_markdown": "Ia cuti paling penting dalam setahun.",
+      "tts": {
+        "text": "Ia cuti paling penting dalam setahun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Setiap keluarga menyediakan meja khas yang dipanggil haft sin.",
+      "text_markdown": "Setiap keluarga menyediakan meja khas yang dipanggil haft sin.",
+      "tts": {
+        "text": "Setiap keluarga menyediakan meja khas yang dipanggil haft sin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft bermaksud tujuh.",
+      "text_markdown": "Haft bermaksud tujuh.",
+      "tts": {
+        "text": "Haft bermaksud tujuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin ialah huruf S. Di atas meja itu ada tujuh benda yang bermula dengan S dalam bahasa Parsi.",
+      "text_markdown": "Sin ialah huruf S. Di atas meja itu ada tujuh benda yang bermula dengan S dalam bahasa Parsi.",
+      "tts": {
+        "text": "Sin ialah huruf S. Di atas meja itu ada tujuh benda yang bermula dengan S dalam bahasa Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ada sib, sebiji epal.",
+      "text_markdown": "Ada sib, sebiji epal.",
+      "tts": {
+        "text": "Ada sib, sebiji epal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekkeh, syiling.",
+      "text_markdown": "Sekkeh, syiling.",
+      "tts": {
+        "text": "Sek keh, syiling.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, bunga hiasint.",
+      "text_markdown": "Sonbol, bunga hiasint.",
+      "tts": {
+        "text": "Son bol, bunga hia sint.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, puding gandum yang manis.",
+      "text_markdown": "Samanu, puding gandum yang manis.",
+      "tts": {
+        "text": "Sa ma nu, puding gandum yang manis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senjed, buah kering daripada pokok oleaster.",
+      "text_markdown": "Senjed, buah kering daripada pokok oleaster.",
+      "tts": {
+        "text": "Sen jed, buah kering daripada pokok o li as ter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somagh, sumak.",
+      "text_markdown": "Somagh, sumak.",
+      "tts": {
+        "text": "So mag, sumak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serkeh, cuka.",
+      "text_markdown": "Serkeh, cuka.",
+      "tts": {
+        "text": "Ser keh, cuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Setiap satunya melambangkan sesuatu. Kesihatan, kekayaan, kecantikan, kesabaran, cinta, matahari terbit dan perjalanan masa.",
+      "text_markdown": "Setiap satunya melambangkan sesuatu. Kesihatan, kekayaan, kecantikan, kesabaran, cinta, matahari terbit dan perjalanan masa.",
+      "tts": {
+        "text": "Setiap satunya melambangkan sesuatu. Kesihatan, kekayaan, kecantikan, kesabaran, cinta, matahari terbit dan perjalanan masa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hidangan tahun baharu ialah sabzi polo dengan mahi.",
+      "text_markdown": "Hidangan tahun baharu ialah sabzi polo dengan mahi.",
+      "tts": {
+        "text": "Hidangan tahun baharu ialah sab zi po lo dengan ma hi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia ialah nasi, hijau pekat daripada herba segar cincang, dihidangkan dengan ikan putih.",
+      "text_markdown": "Ia ialah nasi, hijau pekat daripada herba segar cincang, dihidangkan dengan ikan putih.",
+      "tts": {
+        "text": "Ia ialah nasi, hijau pekat daripada herba segar cincang, dihidangkan dengan ikan putih.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Musim bunga di atas pinggan.",
+      "text_markdown": "Musim bunga di atas pinggan.",
+      "tts": {
+        "text": "Musim bunga di atas pinggan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Satu lagi klasik ialah ash reshteh, sup pekat daripada kekacang, herba, bawang goreng, kashk dan mi.",
+      "text_markdown": "Satu lagi klasik ialah ash reshteh, sup pekat daripada kekacang, herba, bawang goreng, kashk dan mi.",
+      "tts": {
+        "text": "Satu lagi klasik ialah asy resh teh, sup pekat daripada kekacang, herba, bawang goreng, kasyk dan mi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Orang Parsi berkata anda patut memakannya sebelum membuat keputusan yang sukar.",
+      "text_markdown": "Orang Parsi berkata anda patut memakannya sebelum membuat keputusan yang sukar.",
+      "tts": {
+        "text": "Orang Parsi berkata anda patut memakannya sebelum membuat keputusan yang sukar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mi itu, kata mereka, meleraikan kusut benang takdir.",
+      "text_markdown": "Mi itu, kata mereka, meleraikan kusut benang takdir.",
+      "tts": {
+        "text": "Mi itu, kata mereka, meleraikan kusut benang takdir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumah teh juga ciptaan Parsi.",
+      "text_markdown": "Rumah teh juga ciptaan Parsi.",
+      "tts": {
+        "text": "Rumah teh juga ciptaan Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia dipanggil kahveh khaneh, secara harfiah rumah kopi, walaupun minumannya kini teh.",
+      "text_markdown": "Ia dipanggil kahveh khaneh, secara harfiah rumah kopi, walaupun minumannya kini teh.",
+      "tts": {
+        "text": "Ia dipanggil kah veh kha neh, secara harfiah rumah kopi, walaupun minumannya kini teh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Selama lima ratus tahun, lelaki dan wanita berkumpul di sana untuk bermain backgammon, mendengar puisi dan berdebat tentang dunia.",
+      "text_markdown": "Selama lima ratus tahun, lelaki dan wanita berkumpul di sana untuk bermain backgammon, mendengar puisi dan berdebat tentang dunia.",
+      "tts": {
+        "text": "Selama lima ratus tahun, lelaki dan wanita berkumpul di sana untuk bermain backgammon, mendengar puisi dan berdebat tentang dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Banyak kisah besar Parsi mula-mula diceritakan di hadapan gelas yang berwap.",
+      "text_markdown": "Banyak kisah besar Parsi mula-mula diceritakan di hadapan gelas yang berwap.",
+      "tts": {
+        "text": "Banyak kisah besar Parsi mula mula diceritakan di hadapan gelas yang berwap.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seorang tabib Parsi terkenal, Avicenna, yang hidup seribu tahun lalu, mengajar bahawa setiap makanan itu sama ada panas atau sejuk.",
+      "text_markdown": "Seorang tabib Parsi terkenal, Avicenna, yang hidup seribu tahun lalu, mengajar bahawa setiap makanan itu sama ada panas atau sejuk.",
+      "tts": {
+        "text": "Seorang tabib Parsi terkenal, A vi sen na, yang hidup seribu tahun lalu, mengajar bahawa setiap makanan itu sama ada panas atau sejuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Safron, walnut dan kambing itu panas.",
+      "text_markdown": "Safron, walnut dan kambing itu panas.",
+      "tts": {
+        "text": "Safron, walnut dan kambing itu panas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yogurt, timun dan tembikai itu sejuk.",
+      "text_markdown": "Yogurt, timun dan tembikai itu sejuk.",
+      "tts": {
+        "text": "Yogurt, timun dan tembikai itu sejuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hidangan yang baik menyeimbangkan kedua-duanya.",
+      "text_markdown": "Hidangan yang baik menyeimbangkan kedua-duanya.",
+      "tts": {
+        "text": "Hidangan yang baik menyeimbangkan kedua duanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Di banyak rumah Parsi, idea itu masih hidup ketika makan tengah hari.",
+      "text_markdown": "Di banyak rumah Parsi, idea itu masih hidup ketika makan tengah hari.",
+      "tts": {
+        "text": "Di banyak rumah Parsi, idea itu masih hidup ketika makan tengah hari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makanan Parsi itu sabar.",
+      "text_markdown": "Makanan Parsi itu sabar.",
+      "tts": {
+        "text": "Makanan Parsi itu sabar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ia murah hati.",
+      "text_markdown": "Ia murah hati.",
+      "tts": {
+        "text": "Ia murah hati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ia tua.",
+      "text_markdown": "Ia tua.",
+      "tts": {
+        "text": "Ia tua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dan ia masih dimasak setiap hari di atas berjuta-juta dapur.",
+      "text_markdown": "Dan ia masih dimasak setiap hari di atas berjuta-juta dapur.",
+      "tts": {
+        "text": "Dan ia masih dimasak setiap hari di atas berjuta juta dapur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Selamat tinggal",
+      "text_markdown": "Selamat tinggal"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Itulah akhir lawatan singkat kita.",
+      "text_markdown": "Itulah akhir lawatan singkat kita.",
+      "tts": {
+        "text": "Itulah akhir lawatan singkat kita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saya harap anda belajar sesuatu.",
+      "text_markdown": "Saya harap anda belajar sesuatu.",
+      "tts": {
+        "text": "Saya harap anda belajar sesuatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saya harap ada sesuatu pada halaman ini yang membuat anda lapar.",
+      "text_markdown": "Saya harap ada sesuatu pada halaman ini yang membuat anda lapar.",
+      "tts": {
+        "text": "Saya harap ada sesuatu pada halaman ini yang membuat anda lapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Safron dan nasi.",
+      "text_markdown": "Safron dan nasi.",
+      "tts": {
+        "text": "Safron dan nasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Delima dan walnut.",
+      "text_markdown": "Delima dan walnut.",
+      "tts": {
+        "text": "Delima dan walnut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Manisan kecil di atas pinggan kecil.",
+      "text_markdown": "Manisan kecil di atas pinggan kecil.",
+      "tts": {
+        "text": "Manisan kecil di atas pinggan kecil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika boleh, cari restoran Parsi berhampiran anda.",
+      "text_markdown": "Jika boleh, cari restoran Parsi berhampiran anda.",
+      "tts": {
+        "text": "Jika boleh, cari restoran Parsi berhampiran anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Atau buka buku resipi Parsi.",
+      "text_markdown": "Atau buka buku resipi Parsi.",
+      "tts": {
+        "text": "Atau buka buku resipi Parsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cuba satu rebusan.",
+      "text_markdown": "Cuba satu rebusan.",
+      "tts": {
+        "text": "Cuba satu rebusan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cuba secawan teh.",
+      "text_markdown": "Cuba secawan teh.",
+      "tts": {
+        "text": "Cuba secawan teh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Makanan itu telah menunggu selama ribuan tahun.",
+      "text_markdown": "Makanan itu telah menunggu selama ribuan tahun.",
+      "tts": {
+        "text": "Makanan itu telah menunggu selama ribuan tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ia juga boleh menunggu anda.",
+      "text_markdown": "Ia juga boleh menunggu anda.",
+      "tts": {
+        "text": "Ia juga boleh menunggu anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terima kasih kerana mendengar.",
+      "text_markdown": "Terima kasih kerana mendengar.",
+      "tts": {
+        "text": "Terima kasih kerana mendengar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Masak sesuatu.",
+      "text_markdown": "Masak sesuatu.",
+      "tts": {
+        "text": "Masak sesuatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Makan bersama orang lain.",
+      "text_markdown": "Makan bersama orang lain.",
+      "tts": {
+        "text": "Makan bersama orang lain.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saya Kym.",
+      "text_markdown": "Saya Kym.",
+      "tts": {
+        "text": "Saya Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Selamat tinggal.",
+      "text_markdown": "Selamat tinggal.",
+      "tts": {
+        "text": "Selamat tinggal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

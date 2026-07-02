@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "sw",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Maswali Matatu",
+      "text_markdown": "Maswali Matatu",
+      "title": "Maswali Matatu"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Mfalme mmoja aliwaza kwamba kama angalijua kila wakati wakati gani ni muhimu zaidi kwa kila kazi, na angalijua ni watu gani walio muhimu zaidi, na hasa, kama angalijua kila wakati ni kazi gani muhimu zaidi kati ya kazi zote — asingalishindwa katika chochote kamwe.",
+      "text_markdown": "Mfalme mmoja aliwaza kwamba kama angalijua kila wakati wakati gani ni muhimu zaidi kwa kila kazi, na angalijua ni watu gani walio muhimu zaidi, na hasa, kama angalijua kila wakati ni kazi gani muhimu zaidi kati ya kazi zote — asingalishindwa katika chochote kamwe.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme mmoja aliwaza kwamba kama angalijua kila wakati wakati gani ni muhimu zaidi kwa kila kazi, na angalijua ni watu gani walio muhimu zaidi, na hasa, kama angalijua kila wakati ni kazi gani muhimu zaidi kati ya kazi zote — asingalishindwa katika chochote kamwe.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "Na baada ya kufikiria hayo, mfalme alitangaza katika ufalme wake kwamba atampa tuzo kubwa yeyote atakayemfundisha jinsi ya kujua wakati sahihi wa kila kazi, jinsi ya kujua ni watu gani walio muhimu zaidi, na jinsi ya kutokosea katika kujua ni kazi gani muhimu zaidi kati ya zote.",
+      "text_markdown": "Na baada ya kufikiria hayo, mfalme alitangaza katika ufalme wake kwamba atampa tuzo kubwa yeyote atakayemfundisha jinsi ya kujua wakati sahihi wa kila kazi, jinsi ya kujua ni watu gani walio muhimu zaidi, na jinsi ya kutokosea katika kujua ni kazi gani muhimu zaidi kati ya zote.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na baada ya kufikiria hayo, mfalme alitangaza katika ufalme wake kwamba atampa tuzo kubwa yeyote atakayemfundisha jinsi ya kujua wakati sahihi wa kila kazi, jinsi ya kujua ni watu gani walio muhimu zaidi, na jinsi ya kutokosea katika kujua ni kazi gani muhimu zaidi kati ya zote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Watu wenye elimu wakaanza kuja kwa mfalme na wakajibu maswali yake kwa njia mbalimbali.",
+      "text_markdown": "Watu wenye elimu wakaanza kuja kwa mfalme na wakajibu maswali yake kwa njia mbalimbali.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Watu wenye elimu wakaanza kuja kwa mfalme na wakajibu maswali yake kwa njia mbalimbali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Kwa swali la kwanza baadhi yao walisema kwamba ili kujua wakati sahihi wa kila kazi, ni lazima kufanya ratiba ya mapema ya siku, miezi na miaka na kuifuata kwa ukarimu.",
+      "text_markdown": "Kwa swali la kwanza baadhi yao walisema kwamba ili kujua wakati sahihi wa kila kazi, ni lazima kufanya ratiba ya mapema ya siku, miezi na miaka na kuifuata kwa ukarimu.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Kwa swali la kwanza baadhi yao walisema kwamba ili kujua wakati sahihi wa kila kazi, ni lazima kufanya ratiba ya mapema ya siku, miezi na miaka na kuifuata kwa ukarimu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Tu hapo, walisema, kila kazi itafanywa katika wakati wake sahihi.",
+      "text_markdown": "Tu hapo, walisema, kila kazi itafanywa katika wakati wake sahihi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Tu hapo, walisema, kila kazi itafanywa katika wakati wake sahihi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Wengine walisema kwamba haiwezekani kuamua mapema ni wakati gani utakuwa sahihi kwa kazi gani, bali ni lazima, bila kutatizwa na mchezo wa upuzi, kuwa makini kila wakati kwa kila kinachofanyika, na hapo kufanya kila wakati kile kinachohitajika zaidi.",
+      "text_markdown": "Wengine walisema kwamba haiwezekani kuamua mapema ni wakati gani utakuwa sahihi kwa kazi gani, bali ni lazima, bila kutatizwa na mchezo wa upuzi, kuwa makini kila wakati kwa kila kinachofanyika, na hapo kufanya kila wakati kile kinachohitajika zaidi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Wengine walisema kwamba haiwezekani kuamua mapema ni wakati gani utakuwa sahihi kwa kazi gani, bali ni lazima, bila kutatizwa na mchezo wa upuzi, kuwa makini kila wakati kwa kila kinachofanyika, na hapo kufanya kila wakati kile kinachohitajika zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Watu wa tatu walisema kwamba haijalishi jinsi mfalme alivyo makini kwa kila kinachofanyika, mtu mmoja hawezi kuamua kwa usahihi kila wakati kuhusu kila kazi ni lini wakati wake, lakini ni lazima kuwa na shauri la wenye hekima na kufuatana na shauri lao kuweka wakati wa kila kazi.",
+      "text_markdown": "Watu wa tatu walisema kwamba haijalishi jinsi mfalme alivyo makini kwa kila kinachofanyika, mtu mmoja hawezi kuamua kwa usahihi kila wakati kuhusu kila kazi ni lini wakati wake, lakini ni lazima kuwa na shauri la wenye hekima na kufuatana na shauri lao kuweka wakati wa kila kazi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Watu wa tatu walisema kwamba haijalishi jinsi mfalme alivyo makini kwa kila kinachofanyika, mtu mmoja hawezi kuamua kwa usahihi kila wakati kuhusu kila kazi ni lini wakati wake, lakini ni lazima kuwa na shauri la wenye hekima na kufuatana na shauri lao kuweka wakati wa kila kazi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Watu wa nne walisema kwamba kuna kazi ambazo ni lazima kuamua haraka, bila kungojea majadiliano, na ili kujua ni lini hasa zinatokea, ni lazima kujua kile kitakachokuja mbele.",
+      "text_markdown": "Watu wa nne walisema kwamba kuna kazi ambazo ni lazima kuamua haraka, bila kungojea majadiliano, na ili kujua ni lini hasa zinatokea, ni lazima kujua kile kitakachokuja mbele.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Watu wa nne walisema kwamba kuna kazi ambazo ni lazima kuamua haraka, bila kungojea majadiliano, na ili kujua ni lini hasa zinatokea, ni lazima kujua kile kitakachokuja mbele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "Na haya yanajulikana na wachawi tu.",
+      "text_markdown": "Na haya yanajulikana na wachawi tu.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na haya yanajulikana na wachawi tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "Na kwa hiyo, ili kujua wakati sahihi wa kila kazi, ni lazima kuuliza wachawi.",
+      "text_markdown": "Na kwa hiyo, ili kujua wakati sahihi wa kila kazi, ni lazima kuuliza wachawi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na kwa hiyo, ili kujua wakati sahihi wa kila kazi, ni lazima kuuliza wachawi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Kwa swali la pili pia walijibu kwa njia tofauti.",
+      "text_markdown": "Kwa swali la pili pia walijibu kwa njia tofauti.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Kwa swali la pili pia walijibu kwa njia tofauti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Baadhi yao walisema kwamba watu walio muhimu zaidi kwa mfalme ni watawala, wengine walisema ni makuhani, wengine ni madaktari, wengine ni askari.",
+      "text_markdown": "Baadhi yao walisema kwamba watu walio muhimu zaidi kwa mfalme ni watawala, wengine walisema ni makuhani, wengine ni madaktari, wengine ni askari.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Baadhi yao walisema kwamba watu walio muhimu zaidi kwa mfalme ni watawala, wengine walisema ni makuhani, wengine ni madaktari, wengine ni askari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Kwa swali la tatu — ni kazi gani muhimu zaidi? — baadhi yao walisema kwamba kitu muhimu zaidi duniani ni elimu; wengine walisema — mambo ya kivita, wengine walisema — utawa.",
+      "text_markdown": "Kwa swali la tatu — ni kazi gani muhimu zaidi? — baadhi yao walisema kwamba kitu muhimu zaidi duniani ni elimu; wengine walisema — mambo ya kivita, wengine walisema — utawa.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Kwa swali la tatu — ni kazi gani muhimu zaidi? — baadhi yao walisema kwamba kitu muhimu zaidi duniani ni elimu; wengine walisema — mambo ya kivita, wengine walisema — utawa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Majibu yote yalikuwa tofauti, na kwa hiyo mfalme hakukubaliana na hata mmoja na hakumpa mtu yeyote tuzo.",
+      "text_markdown": "Majibu yote yalikuwa tofauti, na kwa hiyo mfalme hakukubaliana na hata mmoja na hakumpa mtu yeyote tuzo.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Majibu yote yalikuwa tofauti, na kwa hiyo mfalme hakukubaliana na hata mmoja na hakumpa mtu yeyote tuzo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Ili ajue vyema zaidi majibu ya maswali yake, aliamua kumuuliza mkimbizi, ambaye alikuwa na sifa ya kuwa mtu mwenye hekima.",
+      "text_markdown": "Ili ajue vyema zaidi majibu ya maswali yake, aliamua kumuuliza mkimbizi, ambaye alikuwa na sifa ya kuwa mtu mwenye hekima.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Ili ajue vyema zaidi majibu ya maswali yake, aliamua kumuuliza mkimbizi, ambaye alikuwa na sifa ya kuwa mtu mwenye hekima.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Mkimbizi aliishi msituni, na hakutoka pale kamwe.",
+      "text_markdown": "Mkimbizi aliishi msituni, na hakutoka pale kamwe.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mkimbizi aliishi msituni, na hakutoka pale kamwe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Alikuwa akipokea watu wa kawaida tu, na kwa hiyo mfalme alivaa nguo za kawaida na, kabla ya kufika makao ya mkimbizi, alishuka farasi na akaenda kwake peke yake.",
+      "text_markdown": "Alikuwa akipokea watu wa kawaida tu, na kwa hiyo mfalme alivaa nguo za kawaida na, kabla ya kufika makao ya mkimbizi, alishuka farasi na akaenda kwake peke yake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Alikuwa akipokea watu wa kawaida tu, na kwa hiyo mfalme alivaa nguo za kawaida na, kabla ya kufika makao ya mkimbizi, alishuka farasi na akaenda kwake peke yake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Mfalme alipofika kwake, mkimbizi alikuwa akichimba vitalu mbele ya kibanda chake.",
+      "text_markdown": "Mfalme alipofika kwake, mkimbizi alikuwa akichimba vitalu mbele ya kibanda chake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme alipofika kwake, mkimbizi alikuwa akichimba vitalu mbele ya kibanda chake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Alipomwona mfalme, mkimbizi alimwashiria kichwa na akaendelea kuchimba.",
+      "text_markdown": "Alipomwona mfalme, mkimbizi alimwashiria kichwa na akaendelea kuchimba.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Alipomwona mfalme, mkimbizi alimwashiria kichwa na akaendelea kuchimba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Mkimbizi alikuwa mwembamba na dhaifu na, akichoma jembe ardhini na kugeuzageua majongoo madogo ya udongo, alikuwa akihema kwa shida.",
+      "text_markdown": "Mkimbizi alikuwa mwembamba na dhaifu na, akichoma jembe ardhini na kugeuzageua majongoo madogo ya udongo, alikuwa akihema kwa shida.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mkimbizi alikuwa mwembamba na dhaifu na, akichoma jembe ardhini na kugeuzageua majongoo madogo ya udongo, alikuwa akihema kwa shida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Mfalme akamkaribia na akasema:",
+      "text_markdown": "Mfalme akamkaribia na akasema:",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme akamkaribia na akasema:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Nimekuja kwako, mkimbizi mwenye hekima, kukusihi unijibu maswali matatu: ni wakati gani ni lazima kukumbuka na kutopuuza, ili baadaye tusiojute?",
+      "text_markdown": "— Nimekuja kwako, mkimbizi mwenye hekima, kukusihi unijibu maswali matatu: ni wakati gani ni lazima kukumbuka na kutopuuza, ili baadaye tusiojute?",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Nimekuja kwako, mkimbizi mwenye hekima, kukusihi unijibu maswali matatu: ni wakati gani ni lazima kukumbuka na kutopuuza, ili baadaye tusiojute?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Ni watu gani walio muhimu zaidi?",
+      "text_markdown": "Ni watu gani walio muhimu zaidi?",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Ni watu gani walio muhimu zaidi?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "Na ni kazi gani muhimu zaidi?",
+      "text_markdown": "Na ni kazi gani muhimu zaidi?",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na ni kazi gani muhimu zaidi?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Mkimbizi alimsikiza mfalme, lakini hakujibu chochote, bali alitemea mkono wake na akaanza kuchimba tena.",
+      "text_markdown": "Mkimbizi alimsikiza mfalme, lakini hakujibu chochote, bali alitemea mkono wake na akaanza kuchimba tena.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mkimbizi alimsikiza mfalme, lakini hakujibu chochote, bali alitemea mkono wake na akaanza kuchimba tena.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Umechoka, — akasema mfalme.",
+      "text_markdown": "— Umechoka, — akasema mfalme.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Umechoka, — akasema mfalme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Acha nikusaidie.",
+      "text_markdown": "— Acha nikusaidie.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Acha nikusaidie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Asante, — akasema mkimbizi na, akimpa mfalme jembe, akaketi ardhini.",
+      "text_markdown": "— Asante, — akasema mkimbizi na, akimpa mfalme jembe, akaketi ardhini.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Asante, — akasema mkimbizi na, akimpa mfalme jembe, akaketi ardhini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Baada ya kuchimba vitalu viwili, mfalme akasimama na kurudia maswali yake.",
+      "text_markdown": "Baada ya kuchimba vitalu viwili, mfalme akasimama na kurudia maswali yake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Baada ya kuchimba vitalu viwili, mfalme akasimama na kurudia maswali yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Mkimbizi hakujibu tena, bali akasimama na kunyoosha mkono wake kuelekea jembe:",
+      "text_markdown": "Mkimbizi hakujibu tena, bali akasimama na kunyoosha mkono wake kuelekea jembe:",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mkimbizi hakujibu tena, bali akasimama na kunyoosha mkono wake kuelekea jembe:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Sasa pumzika, acha mimi, — akasema.",
+      "text_markdown": "— Sasa pumzika, acha mimi, — akasema.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Sasa pumzika, acha mimi, — akasema.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Lakini mfalme hakumpa jembe na akaendelea kuchimba.",
+      "text_markdown": "Lakini mfalme hakumpa jembe na akaendelea kuchimba.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Lakini mfalme hakumpa jembe na akaendelea kuchimba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Saa moja ikapita, nyingine ikapita.",
+      "text_markdown": "Saa moja ikapita, nyingine ikapita.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Saa moja ikapita, nyingine ikapita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Jua likachwea nyuma ya miti.",
+      "text_markdown": "Jua likachwea nyuma ya miti.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Jua likachwea nyuma ya miti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Mfalme akachoma jembe ardhini na akasema:",
+      "text_markdown": "Mfalme akachoma jembe ardhini na akasema:",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme akachoma jembe ardhini na akasema:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Nimekuja kwako, mwenye hekima, kutafuta jibu la maswali yangu.",
+      "text_markdown": "— Nimekuja kwako, mwenye hekima, kutafuta jibu la maswali yangu.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Nimekuja kwako, mwenye hekima, kutafuta jibu la maswali yangu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Kama huwezi kunijibu, sema hivyo, na nitarudi nyumbani.",
+      "text_markdown": "Kama huwezi kunijibu, sema hivyo, na nitarudi nyumbani.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Kama huwezi kunijibu, sema hivyo, na nitarudi nyumbani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— Kumbe kuna mtu anakuja mbio, — akasema mkimbizi.",
+      "text_markdown": "— Kumbe kuna mtu anakuja mbio, — akasema mkimbizi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Kumbe kuna mtu anakuja mbio, — akasema mkimbizi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Hebu tuone ni nani.",
+      "text_markdown": "— Hebu tuone ni nani.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Hebu tuone ni nani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Mfalme aligeuka na akaona — kutoka msituni alikuwa akimkimbia mtu mwenye ndevu.",
+      "text_markdown": "Mfalme aligeuka na akaona — kutoka msituni alikuwa akimkimbia mtu mwenye ndevu.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme aligeuka na akaona — kutoka msituni alikuwa akimkimbia mtu mwenye ndevu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Mtu huyu alikuwa akishikilia kidonda tumboni mwake kwa mikono yake, na damu ilikuwa ikitoka chini ya mikono yake.",
+      "text_markdown": "Mtu huyu alikuwa akishikilia kidonda tumboni mwake kwa mikono yake, na damu ilikuwa ikitoka chini ya mikono yake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mtu huyu alikuwa akishikilia kidonda tumboni mwake kwa mikono yake, na damu ilikuwa ikitoka chini ya mikono yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Alipofika kwa mfalme, mtu huyo alianguka chini bila fahamu na akalala akilia kwa uchungu kidogo.",
+      "text_markdown": "Alipofika kwa mfalme, mtu huyo alianguka chini bila fahamu na akalala akilia kwa uchungu kidogo.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Alipofika kwa mfalme, mtu huyo alianguka chini bila fahamu na akalala akilia kwa uchungu kidogo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Mfalme pamoja na yule mzee wa kienyeji alifungua na kumvua mtu huyo nguo zake.",
+      "text_markdown": "Mfalme pamoja na yule mzee wa kienyeji alifungua na kumvua mtu huyo nguo zake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme pamoja na yule mzee wa kienyeji alifungua na kumvua mtu huyo nguo zake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Tumboni palikuwa na kidonda kikubwa.",
+      "text_markdown": "Tumboni palikuwa na kidonda kikubwa.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Tumboni palikuwa na kidonda kikubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Mfalme, kwa kadri alivyoweza, aliondoa uchafu kidondani na akalifunga kwa kitambaa chake na taulo ya yule mzee wa kienyeji.",
+      "text_markdown": "Mfalme, kwa kadri alivyoweza, aliondoa uchafu kidondani na akalifunga kwa kitambaa chake na taulo ya yule mzee wa kienyeji.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme, kwa kadri alivyoweza, aliondoa uchafu kidondani na akalifunga kwa kitambaa chake na taulo ya yule mzee wa kienyeji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Lakini damu haikuacha kutoka.",
+      "text_markdown": "Lakini damu haikuacha kutoka.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Lakini damu haikuacha kutoka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Mfalme mara kadhaa alifungua kifungo na tena akaosha na kukifunga kidonda.",
+      "text_markdown": "Mfalme mara kadhaa alifungua kifungo na tena akaosha na kukifunga kidonda.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme mara kadhaa alifungua kifungo na tena akaosha na kukifunga kidonda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Wakati, mwishowe, damu ilipotulia, mtu huyo alipata fahamu na akaomba maji.",
+      "text_markdown": "Wakati, mwishowe, damu ilipotulia, mtu huyo alipata fahamu na akaomba maji.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Wakati, mwishowe, damu ilipotulia, mtu huyo alipata fahamu na akaomba maji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Mfalme akamletea maji safi na akamnywesha.",
+      "text_markdown": "Mfalme akamletea maji safi na akamnywesha.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme akamletea maji safi na akamnywesha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Hivi hivi jua lilikuwa limezama kabisa, na kulikuwa kumebaridi.",
+      "text_markdown": "Hivi hivi jua lilikuwa limezama kabisa, na kulikuwa kumebaridi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Hivi hivi jua lilikuwa limezama kabisa, na kulikuwa kumebaridi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Mfalme kwa msaada wa yule mzee wa kienyeji alimchukua yule mtu aliyejeruhiwa akamwingiza kibandani na akamweka kitandani.",
+      "text_markdown": "Mfalme kwa msaada wa yule mzee wa kienyeji alimchukua yule mtu aliyejeruhiwa akamwingiza kibandani na akamweka kitandani.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme kwa msaada wa yule mzee wa kienyeji alimchukua yule mtu aliyejeruhiwa akamwingiza kibandani na akamweka kitandani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Yule mtu aliyejeruhiwa akafumba macho na akanyamaza.",
+      "text_markdown": "Yule mtu aliyejeruhiwa akafumba macho na akanyamaza.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Yule mtu aliyejeruhiwa akafumba macho na akanyamaza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Mfalme alikuwa amechoka sana kutokana na kutembea na kufanya kazi, hivi hivi, kizingitini, akalala na akasinzia, — akasinzia kwa usingizi mzito kiasi kwamba alisinzia usiku mzima mfupi wa majira ya joto, na, alipozinduka asubuhi, hakuweza kuelewa kwa muda mrefu alikuwa wapi na ni nani yule mtu wa ajabu mwenye ndevu, aliyekuwa amelala kitandani na akimkazia macho mng'ao.",
+      "text_markdown": "Mfalme alikuwa amechoka sana kutokana na kutembea na kufanya kazi, hivi hivi, kizingitini, akalala na akasinzia, — akasinzia kwa usingizi mzito kiasi kwamba alisinzia usiku mzima mfupi wa majira ya joto, na, alipozinduka asubuhi, hakuweza kuelewa kwa muda mrefu alikuwa wapi na ni nani yule mtu wa ajabu mwenye ndevu, aliyekuwa amelala kitandani na akimkazia macho mng'ao.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme alikuwa amechoka sana kutokana na kutembea na kufanya kazi, hivi hivi, kizingitini, akalala na akasinzia, — akasinzia kwa usingizi mzito kiasi kwamba alisinzia usiku mzima mfupi wa majira ya joto, na, alipozinduka asubuhi, hakuweza kuelewa kwa muda mrefu alikuwa wapi na ni nani yule mtu wa ajabu mwenye ndevu, aliyekuwa amelala kitandani na akimkazia macho mng'ao.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Nisamehe, — alisema yule mtu mwenye ndevu kwa sauti dhaifu, alipoona kwamba mfalme amezinduka na anamkazia macho.",
+      "text_markdown": "— Nisamehe, — alisema yule mtu mwenye ndevu kwa sauti dhaifu, alipoona kwamba mfalme amezinduka na anamkazia macho.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Nisamehe, — alisema yule mtu mwenye ndevu kwa sauti dhaifu, alipoona kwamba mfalme amezinduka na anamkazia macho.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Sikujui wewe na sina cha kukusamehea, — alisema mfalme.",
+      "text_markdown": "— Sikujui wewe na sina cha kukusamehea, — alisema mfalme.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Sikujui wewe na sina cha kukusamehea, — alisema mfalme.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Wewe hunijui, lakini mimi nakujua.",
+      "text_markdown": "— Wewe hunijui, lakini mimi nakujua.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Wewe hunijui, lakini mimi nakujua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Mimi ni adui yako, yule yule ambaye niliapa kukulipiza kisasi kwa sababu ulimuua ndugu yangu na ukaninyangʼanya mali zangu.",
+      "text_markdown": "Mimi ni adui yako, yule yule ambaye niliapa kukulipiza kisasi kwa sababu ulimuua ndugu yangu na ukaninyangʼanya mali zangu.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mimi ni adui yako, yule yule ambaye niliapa kukulipiza kisasi kwa sababu ulimuua ndugu yangu na ukaninyangʼanya mali zangu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Nilijua kwamba wewe peke yako ulienda kwa yule mzee wa kienyeji, na niliamua kukuua njiani ukirudi.",
+      "text_markdown": "Nilijua kwamba wewe peke yako ulienda kwa yule mzee wa kienyeji, na niliamua kukuua njiani ukirudi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Nilijua kwamba wewe peke yako ulienda kwa yule mzee wa kienyeji, na niliamua kukuua njiani ukirudi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Lakini siku nzima ilipita, na wewe haukurudi.",
+      "text_markdown": "Lakini siku nzima ilipita, na wewe haukurudi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Lakini siku nzima ilipita, na wewe haukurudi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Ndipo nikatoka mahali nilipojificha ili nikutafute, na nikakutana na walinzi wako.",
+      "text_markdown": "Ndipo nikatoka mahali nilipojificha ili nikutafute, na nikakutana na walinzi wako.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Ndipo nikatoka mahali nilipojificha ili nikutafute, na nikakutana na walinzi wako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Wakanijua na wakanijerahi.",
+      "text_markdown": "Wakanijua na wakanijerahi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Wakanijua na wakanijerahi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Niliwatorokea, lakini kama ungekuwa haukufunga kidonda changu, ningekufa.",
+      "text_markdown": "Niliwatorokea, lakini kama ungekuwa haukufunga kidonda changu, ningekufa.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Niliwatorokea, lakini kama ungekuwa haukufunga kidonda changu, ningekufa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Nilitaka kukuua, na wewe uliokoa maisha yangu.",
+      "text_markdown": "Nilitaka kukuua, na wewe uliokoa maisha yangu.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Nilitaka kukuua, na wewe uliokoa maisha yangu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Sasa, ikiwa nitabaki hai na ukitaka hivyo, nitakutumikia kama mtumwa mwaminifu zaidi, na hilo hilo nitawaamuru wanagu wafanye.",
+      "text_markdown": "Sasa, ikiwa nitabaki hai na ukitaka hivyo, nitakutumikia kama mtumwa mwaminifu zaidi, na hilo hilo nitawaamuru wanagu wafanye.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Sasa, ikiwa nitabaki hai na ukitaka hivyo, nitakutumikia kama mtumwa mwaminifu zaidi, na hilo hilo nitawaamuru wanagu wafanye.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Nisamehe.",
+      "text_markdown": "Nisamehe.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Nisamehe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Mfalme alifurahi sana kwamba aliweza kwa urahisi kupatana na adui yake na kupata rafiki, na akamsamehe na akamwahidi kurudisha mali yake na kutuma madaktari wake na watumishi wake ili wamhudumie.",
+      "text_markdown": "Mfalme alifurahi sana kwamba aliweza kwa urahisi kupatana na adui yake na kupata rafiki, na akamsamehe na akamwahidi kurudisha mali yake na kutuma madaktari wake na watumishi wake ili wamhudumie.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme alifurahi sana kwamba aliweza kwa urahisi kupatana na adui yake na kupata rafiki, na akamsamehe na akamwahidi kurudisha mali yake na kutuma madaktari wake na watumishi wake ili wamhudumie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Baada ya kumuaga yule mtu aliyejeruhiwa, mfalme alitoka nje na akaanza kumtafuta yule mzee wa kienyeji.",
+      "text_markdown": "Baada ya kumuaga yule mtu aliyejeruhiwa, mfalme alitoka nje na akaanza kumtafuta yule mzee wa kienyeji.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Baada ya kumuaga yule mtu aliyejeruhiwa, mfalme alitoka nje na akaanza kumtafuta yule mzee wa kienyeji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Kabla ya kuondoka, alitaka mara nyingine tena kumwomba ajibu maswali yake.",
+      "text_markdown": "Kabla ya kuondoka, alitaka mara nyingine tena kumwomba ajibu maswali yake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Kabla ya kuondoka, alitaka mara nyingine tena kumwomba ajibu maswali yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Yule mzee wa kienyeji alikuwa uwandani na, akiwa amepiga magoti, alikuwa akipanda mbegu katika mabonde yaliyokuwa yamelimiwa jana.",
+      "text_markdown": "Yule mzee wa kienyeji alikuwa uwandani na, akiwa amepiga magoti, alikuwa akipanda mbegu katika mabonde yaliyokuwa yamelimiwa jana.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Yule mzee wa kienyeji alikuwa uwandani na, akiwa amepiga magoti, alikuwa akipanda mbegu katika mabonde yaliyokuwa yamelimiwa jana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Mfalme akamkaribia.",
+      "text_markdown": "Mfalme akamkaribia.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Mfalme akamkaribia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Mtu mwenye hekima, mara ya mwisho nakuomba: nijibu maswali yangu.",
+      "text_markdown": "— Mtu mwenye hekima, mara ya mwisho nakuomba: nijibu maswali yangu.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Mtu mwenye hekima, mara ya mwisho nakuomba: nijibu maswali yangu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Lakini wewe umeshapata jibu, — alisema yule mzee wa kienyeji, akiketi juu ya miguu yake nyembamba akimkazia macho mfalme aliyesimama mbele yake.",
+      "text_markdown": "— Lakini wewe umeshapata jibu, — alisema yule mzee wa kienyeji, akiketi juu ya miguu yake nyembamba akimkazia macho mfalme aliyesimama mbele yake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Lakini wewe umeshapata jibu, — alisema yule mzee wa kienyeji, akiketi juu ya miguu yake nyembamba akimkazia macho mfalme aliyesimama mbele yake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Nimepata jibu vipi? — akauliza mfalme.",
+      "text_markdown": "— Nimepata jibu vipi? — akauliza mfalme.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Nimepata jibu vipi? — akauliza mfalme.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— Vipi? — alisema yule mzee wa kienyeji.",
+      "text_markdown": "— Vipi? — alisema yule mzee wa kienyeji.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Vipi? — alisema yule mzee wa kienyeji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Kama ungekuwa jana hukuwa na huruma nami na hukuchimba mabonde haya badala yangu, na ungerudi nyumbani, yule mtu angekuwa amekuua.",
+      "text_markdown": "— Kama ungekuwa jana hukuwa na huruma nami na hukuchimba mabonde haya badala yangu, na ungerudi nyumbani, yule mtu angekuwa amekuua.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Kama ungekuwa jana hukuwa na huruma nami na hukuchimba mabonde haya badala yangu, na ungerudi nyumbani, yule mtu angekuwa amekuua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Na kwa hiyo wakati muhimu zaidi ulikuwa wakati ulipokuwa ukichimba mabonde.",
+      "text_markdown": "Na kwa hiyo wakati muhimu zaidi ulikuwa wakati ulipokuwa ukichimba mabonde.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na kwa hiyo wakati muhimu zaidi ulikuwa wakati ulipokuwa ukichimba mabonde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "Na mtu muhimu zaidi nilikuwa mimi.",
+      "text_markdown": "Na mtu muhimu zaidi nilikuwa mimi.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na mtu muhimu zaidi nilikuwa mimi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "Na jambo muhimu zaidi lilikuwa — kunifanyia mema.",
+      "text_markdown": "Na jambo muhimu zaidi lilikuwa — kunifanyia mema.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na jambo muhimu zaidi lilikuwa — kunifanyia mema.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "Na baadaye, yule mtu alipokimbilia hapa, wakati muhimu zaidi ulikuwa wakati ulipokuwa ukimhudumia, kwa sababu kama ungekuwa hukusafisha kidonda chake, angekufa bila kupatana nawe.",
+      "text_markdown": "Na baadaye, yule mtu alipokimbilia hapa, wakati muhimu zaidi ulikuwa wakati ulipokuwa ukimhudumia, kwa sababu kama ungekuwa hukusafisha kidonda chake, angekufa bila kupatana nawe.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na baadaye, yule mtu alipokimbilia hapa, wakati muhimu zaidi ulikuwa wakati ulipokuwa ukimhudumia, kwa sababu kama ungekuwa hukusafisha kidonda chake, angekufa bila kupatana nawe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "Na kwa hiyo mtu muhimu zaidi alikuwa yeye, na jambo muhimu zaidi lilikuwa lile ulilolifanya kwake.",
+      "text_markdown": "Na kwa hiyo mtu muhimu zaidi alikuwa yeye, na jambo muhimu zaidi lilikuwa lile ulilolifanya kwake.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "Na kwa hiyo mtu muhimu zaidi alikuwa yeye, na jambo muhimu zaidi lilikuwa lile ulilolifanya kwake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Basi kumbuka hayo, — alisema mtawa, — kwamba wakati muhimu zaidi ni mmoja tu: sasa hivi, — na ni muhimu zaidi kwa sababu ndani yake tu sisi tuna uwezo juu yetu wenyewe; na mtu muhimu zaidi ni yule ambaye sasa hivi unashughulika naye, kwa sababu hakuna anayeweza kujua kama ataendelea kushughulika na mtu mwingine yoyote; na jambo muhimu zaidi ni kumtendea mema, kwa sababu ni kwa ajili ya hilo tu mtu ametumwa duniani.",
+      "text_markdown": "— Basi kumbuka hayo, — alisema mtawa, — kwamba wakati muhimu zaidi ni mmoja tu: sasa hivi, — na ni muhimu zaidi kwa sababu ndani yake tu sisi tuna uwezo juu yetu wenyewe; na mtu muhimu zaidi ni yule ambaye sasa hivi unashughulika naye, kwa sababu hakuna anayeweza kujua kama ataendelea kushughulika na mtu mwingine yoyote; na jambo muhimu zaidi ni kumtendea mema, kwa sababu ni kwa ajili ya hilo tu mtu ametumwa duniani.",
+      "title": "Maswali Matatu",
+      "tts": {
+        "text": "— Basi kumbuka hayo, — alisema mtawa, — kwamba wakati muhimu zaidi ni mmoja tu: sasa hivi, — na ni muhimu zaidi kwa sababu ndani yake tu sisi tuna uwezo juu yetu wenyewe; na mtu muhimu zaidi ni yule ambaye sasa hivi unashughulika naye, kwa sababu hakuna anayeweza kujua kama ataendelea kushughulika na mtu mwingine yoyote; na jambo muhimu zaidi ni kumtendea mema, kwa sababu ni kwa ajili ya hilo tu mtu ametumwa duniani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

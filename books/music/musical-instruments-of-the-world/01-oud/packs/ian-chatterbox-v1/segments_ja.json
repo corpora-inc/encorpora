@@ -1,0 +1,2692 @@
+{
+  "book_id": "book_oud_history",
+  "language": "ja",
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "聞く人へのひとこと",
+      "text_markdown": "聞く人へのひとこと"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、ウードという木の弦楽器についての本です。",
+      "text_markdown": "これは、ウードという木の弦楽器についての本です。",
+      "tts": {
+        "text": "これは、ウードという木の弦楽器についての本です。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人々はそれを千年以上も弾いてきました。",
+      "text_markdown": "人々はそれを千年以上も弾いてきました。",
+      "tts": {
+        "text": "人々はそれを千年以上も弾いてきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海辺の町でも、山の村でも、ウードを耳にできます。",
+      "text_markdown": "海辺の町でも、山の村でも、ウードを耳にできます。",
+      "tts": {
+        "text": "海辺の町でも、山の村でも、ウードを耳にできます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "古い宮殿でも、小さな木の舞台でも、その音が聞こえます。",
+      "text_markdown": "古い宮殿でも、小さな木の舞台でも、その音が聞こえます。",
+      "tts": {
+        "text": "古い宮殿でも、小さな木の舞台でも、その音が聞こえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この本では、ウードの姿や作り方、そしてその物語を形づくった人たちの名を学びます。",
+      "text_markdown": "この本では、ウードの姿や作り方、そしてその物語を形づくった人たちの名を学びます。",
+      "tts": {
+        "text": "この本では、ウードの姿や作り方、そしてその物語を形づくった人たちの名を学びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "読み終わるころには、なぜウードが弦の王様と呼ばれるのか分かるでしょう。",
+      "text_markdown": "読み終わるころには、なぜウードが弦の王様と呼ばれるのか分かるでしょう。",
+      "tts": {
+        "text": "読み終わるころには、なぜウードが弦の王様と呼ばれるのか分かるでしょう。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第1章 ウードとは何だろう",
+      "text_markdown": "第1章 ウードとは何だろう"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは弦楽器です。",
+      "text_markdown": "ウードは弦楽器です。",
+      "tts": {
+        "text": "ウードは弦楽器です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "半分に切った洋梨のような胴を持つ、リュートの仲間です。",
+      "text_markdown": "半分に切った洋梨のような胴を持つ、リュートの仲間です。",
+      "tts": {
+        "text": "半分に切った洋梨のような胴を持つ、リュートの仲間です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードの裏側は、木の鉢のように丸くて深いです。",
+      "text_markdown": "ウードの裏側は、木の鉢のように丸くて深いです。",
+      "tts": {
+        "text": "ウードの裏側は、木の鉢のように丸くて深いです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "表側は平らです。",
+      "text_markdown": "表側は平らです。",
+      "tts": {
+        "text": "表側は平らです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この平らな前の板を、響板と呼びます。",
+      "text_markdown": "この平らな前の板を、響板と呼びます。",
+      "tts": {
+        "text": "この平らな前の板を、響板と呼びます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードの棹は短く、フレットがありません。",
+      "text_markdown": "ウードの棹は短く、フレットがありません。",
+      "tts": {
+        "text": "ウードの棹は短く、フレットがありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フレットは、ギターで見かける小さな金属の線です。",
+      "text_markdown": "フレットは、ギターで見かける小さな金属の線です。",
+      "tts": {
+        "text": "フレットは、ギターで見かける小さな金属の線です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それがないので、弾き手は指をなめらかに滑らせながら音から音へ移れます。",
+      "text_markdown": "それがないので、弾き手は指をなめらかに滑らせながら音から音へ移れます。",
+      "tts": {
+        "text": "それがないので、弾き手は指をなめらかに滑らせながら音から音へ移れます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "たいていのウードには十一本の弦があり、六つの組に分かれています。",
+      "text_markdown": "たいていのウードには十一本の弦があり、六つの組に分かれています。",
+      "tts": {
+        "text": "たいていのウードには十一本の弦があり、六つの組に分かれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この一組をコースと呼びます。",
+      "text_markdown": "この一組をコースと呼びます。",
+      "tts": {
+        "text": "この一組をコースと呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "五つのコースは、同じ高さに合わせた二本の弦です。",
+      "text_markdown": "五つのコースは、同じ高さに合わせた二本の弦です。",
+      "tts": {
+        "text": "五つのコースは、同じ高さに合わせた二本の弦です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "六つ目のコースには、弦が一本だけあります。",
+      "text_markdown": "六つ目のコースには、弦が一本だけあります。",
+      "tts": {
+        "text": "六つ目のコースには、弦が一本だけあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "だから全部で十一本になるのです。",
+      "text_markdown": "だから全部で十一本になるのです。",
+      "tts": {
+        "text": "だから全部で十一本になるのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弾く人は、ひざの上にウードを横向きに置きます。",
+      "text_markdown": "弾く人は、ひざの上にウードを横向きに置きます。",
+      "tts": {
+        "text": "弾く人は、ひざの上にウードを横向きに置きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "片方の手で、棹の上の弦を押さえます。",
+      "text_markdown": "片方の手で、棹の上の弦を押さえます。",
+      "tts": {
+        "text": "片方の手で、棹の上の弦を押さえます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "もう片方の手で、リシャという細い撥を使って弦をはじきます。",
+      "text_markdown": "もう片方の手で、リシャという細い撥を使って弦をはじきます。",
+      "tts": {
+        "text": "もう片方の手で、リシャという細い撥を使って弦をはじきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "音はあたたかく、深みがあります。",
+      "text_markdown": "音はあたたかく、深みがあります。",
+      "tts": {
+        "text": "音はあたたかく、深みがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "少し悲しくて、少し甘い音が、いちどに聞こえます。",
+      "text_markdown": "少し悲しくて、少し甘い音が、いちどに聞こえます。",
+      "tts": {
+        "text": "少し悲しくて、少し甘い音が、いちどに聞こえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第2章 名前の由来",
+      "text_markdown": "第2章 名前の由来"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードという名は、木を意味するアラビア語です。",
+      "text_markdown": "ウードという名は、木を意味するアラビア語です。",
+      "tts": {
+        "text": "ウードという名は、木を意味するアラビア語です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "楽器の名は、その材料から来ています。",
+      "text_markdown": "楽器の名は、その材料から来ています。",
+      "tts": {
+        "text": "楽器の名は、その材料から来ています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードよりずっと前に、バルバトという古い親類がありました。",
+      "text_markdown": "ウードよりずっと前に、バルバトという古い親類がありました。",
+      "tts": {
+        "text": "ウードよりずっと前に、バルバトという古い親類がありました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "バルバトは、二千年以上前の古代ペルシアで弾かれていました。",
+      "text_markdown": "バルバトは、二千年以上前の古代ペルシアで弾かれていました。",
+      "tts": {
+        "text": "バルバトは、二千年以上前の古代ペルシアで弾かれていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルバトには木の胴があり、弦は絹でできていました。",
+      "text_markdown": "バルバトには木の胴があり、弦は絹でできていました。",
+      "tts": {
+        "text": "バルバトには木の胴があり、弦は絹でできていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その音は長くのびて、やわらかでした。",
+      "text_markdown": "その音は長くのびて、やわらかでした。",
+      "tts": {
+        "text": "その音は長くのびて、やわらかでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王の宮廷では、人々がそれを弾いていました。",
+      "text_markdown": "王の宮廷では、人々がそれを弾いていました。",
+      "tts": {
+        "text": "王の宮廷では、人々がそれを弾いていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて、バルバトは少しずつ変わりました。",
+      "text_markdown": "やがて、バルバトは少しずつ変わりました。",
+      "tts": {
+        "text": "やがて、バルバトは少しずつ変わりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "胴はもっと丸くなり、弦は二本ずつの組になり、棹は短くなりました。",
+      "text_markdown": "胴はもっと丸くなり、弦は二本ずつの組になり、棹は短くなりました。",
+      "tts": {
+        "text": "胴はもっと丸くなり、弦は二本ずつの組になり、棹は短くなりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "七百年ごろには、アラブ世界の人々が弾いていたのは、今のウードと呼べるような楽器でした。",
+      "text_markdown": "七百年ごろには、アラブ世界の人々が弾いていたのは、今のウードと呼べるような楽器でした。",
+      "tts": {
+        "text": "七百年ごろには、アラブ世界の人々が弾いていたのは、今のウードと呼べるような楽器でした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そこから、ウードは旅を始めました。",
+      "text_markdown": "そこから、ウードは旅を始めました。",
+      "tts": {
+        "text": "そこから、ウードは旅を始めました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エジプトや北アフリカへ広まりました。",
+      "text_markdown": "エジプトや北アフリカへ広まりました。",
+      "tts": {
+        "text": "エジプトや北アフリカへ広まりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "海を渡って、スペインにも行きました。",
+      "text_markdown": "海を渡って、スペインにも行きました。",
+      "tts": {
+        "text": "海を渡って、スペインにも行きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "北へ進み、トルコやギリシアにも届きました。",
+      "text_markdown": "北へ進み、トルコやギリシアにも届きました。",
+      "tts": {
+        "text": "北へ進み、トルコやギリシアにも届きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "それぞれの土地が、ウードに少しずつ自分の声を与えました。",
+      "text_markdown": "それぞれの土地が、ウードに少しずつ自分の声を与えました。",
+      "tts": {
+        "text": "それぞれの土地が、ウードに少しずつ自分の声を与えました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それでも、名前は変わりませんでした。",
+      "text_markdown": "それでも、名前は変わりませんでした。",
+      "tts": {
+        "text": "それでも、名前は変わりませんでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "どこへ行っても、その木の楽器はやはりウードでした。",
+      "text_markdown": "どこへ行っても、その木の楽器はやはりウードでした。",
+      "tts": {
+        "text": "どこへ行っても、その木の楽器はやはりウードでした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第3章 ウードの作り方",
+      "text_markdown": "第3章 ウードの作り方"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウード作りには長い時間がかかります。",
+      "text_markdown": "ウード作りには長い時間がかかります。",
+      "tts": {
+        "text": "ウード作りには長い時間がかかります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "よい作り手は、一つの楽器に何週間もかけることがあります。",
+      "text_markdown": "よい作り手は、一つの楽器に何週間もかけることがあります。",
+      "tts": {
+        "text": "よい作り手は、一つの楽器に何週間もかけることがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "背の鉢は、たいてい十五枚から二十五枚ほどの細い木の板で作られます。",
+      "text_markdown": "背の鉢は、たいてい十五枚から二十五枚ほどの細い木の板で作られます。",
+      "tts": {
+        "text": "背の鉢は、たいてい十五枚から二十五枚ほどの細い木の板で作られます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "板は一枚ずつ曲げられ、隣の板に貼り合わせられます。",
+      "text_markdown": "板は一枚ずつ曲げられ、隣の板に貼り合わせられます。",
+      "tts": {
+        "text": "板は一枚ずつ曲げられ、隣の板に貼り合わせられます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そうして、ウードの深く丸い背ができます。",
+      "text_markdown": "そうして、ウードの深く丸い背ができます。",
+      "tts": {
+        "text": "そうして、ウードの深く丸い背ができます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木の種類は大切です。",
+      "text_markdown": "木の種類は大切です。",
+      "tts": {
+        "text": "木の種類は大切です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "くるみの木はあたたかい音、マホガニーは暗めの音、桑は明るくよく響く音を出します。",
+      "text_markdown": "くるみの木はあたたかい音、マホガニーは暗めの音、桑は明るくよく響く音を出します。",
+      "tts": {
+        "text": "くるみの木はあたたかい音、マホガニーは暗めの音、桑は明るくよく響く音を出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "作り手は、ほしい声に合わせて木を選びます。",
+      "text_markdown": "作り手は、ほしい声に合わせて木を選びます。",
+      "tts": {
+        "text": "作り手は、ほしい声に合わせて木を選びます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "平らな前の板、つまり響板は、トウヒ材でできています。",
+      "text_markdown": "平らな前の板、つまり響板は、トウヒ材でできています。",
+      "tts": {
+        "text": "平らな前の板、つまり響板は、トウヒ材でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トウヒは軽くて丈夫で、木が楽に震えるのを助けます。",
+      "text_markdown": "トウヒは軽くて丈夫で、木が楽に震えるのを助けます。",
+      "tts": {
+        "text": "トウヒは軽くて丈夫で、木が楽に震えるのを助けます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その震えが、私たちには音楽として聞こえます。",
+      "text_markdown": "その震えが、私たちには音楽として聞こえます。",
+      "tts": {
+        "text": "その震えが、私たちには音楽として聞こえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "響板には、ロゼットと呼ばれる小さな丸い穴があります。",
+      "text_markdown": "響板には、ロゼットと呼ばれる小さな丸い穴があります。",
+      "tts": {
+        "text": "響板には、ロゼットと呼ばれる小さな丸い穴があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこには、よく美しい模様が彫られます。",
+      "text_markdown": "そこには、よく美しい模様が彫られます。",
+      "tts": {
+        "text": "そこには、よく美しい模様が彫られます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロゼットは、鉢の中の音を外へ出します。",
+      "text_markdown": "ロゼットは、鉢の中の音を外へ出します。",
+      "tts": {
+        "text": "ロゼットは、鉢の中の音を外へ出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昔の弦は、ガットで作られていました。これは乾かした動物の筋です。",
+      "text_markdown": "昔の弦は、ガットで作られていました。これは乾かした動物の筋です。",
+      "tts": {
+        "text": "昔の弦は、ガットで作られていました。これは乾かした動物の筋です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今では、ほとんどの弦がナイロン製で、いちばん低い弦には細い金属線が巻かれています。",
+      "text_markdown": "今では、ほとんどの弦がナイロン製で、いちばん低い弦には細い金属線が巻かれています。",
+      "tts": {
+        "text": "今では、ほとんどの弦がナイロン製で、いちばん低い弦には細い金属線が巻かれています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弾き手は、リシャで弦をはじきます。",
+      "text_markdown": "弾き手は、リシャで弦をはじきます。",
+      "tts": {
+        "text": "弾き手は、リシャで弦をはじきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "リシャという言葉は、羽を意味します。",
+      "text_markdown": "リシャという言葉は、羽を意味します。",
+      "tts": {
+        "text": "リシャという言葉は、羽を意味します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いちばん初めの撥は、ワシの羽で作られていました。",
+      "text_markdown": "いちばん初めの撥は、ワシの羽で作られていました。",
+      "tts": {
+        "text": "いちばん初めの撥は、ワシの羽で作られていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "今では、プラスチックや骨、べっ甲で作られています。",
+      "text_markdown": "今では、プラスチックや骨、べっ甲で作られています。",
+      "tts": {
+        "text": "今では、プラスチックや骨、べっ甲で作られています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第4章 ウードはどこで弾かれるのか",
+      "text_markdown": "第4章 ウードはどこで弾かれるのか"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは、アラブ世界のあちこちで弾かれています。",
+      "text_markdown": "ウードは、アラブ世界のあちこちで弾かれています。",
+      "tts": {
+        "text": "ウードは、アラブ世界のあちこちで弾かれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "エジプト、シリア、イラク、レバノン、湾岸、北アフリカで、その音が聞こえます。",
+      "text_markdown": "エジプト、シリア、イラク、レバノン、湾岸、北アフリカで、その音が聞こえます。",
+      "tts": {
+        "text": "エジプト、シリア、イラク、レバノン、湾岸、北アフリカで、その音が聞こえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは、アラブ世界の外でも弾かれています。",
+      "text_markdown": "ウードは、アラブ世界の外でも弾かれています。",
+      "tts": {
+        "text": "ウードは、アラブ世界の外でも弾かれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トルコには、トルコのウードがあります。",
+      "text_markdown": "トルコには、トルコのウードがあります。",
+      "tts": {
+        "text": "トルコには、トルコのウードがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ギリシアにも、その土地のウードがあります。",
+      "text_markdown": "ギリシアにも、その土地のウードがあります。",
+      "tts": {
+        "text": "ギリシアにも、その土地のウードがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アルメニアの人々やイランの人々は、その親類の楽器を弾きます。",
+      "text_markdown": "アルメニアの人々やイランの人々は、その親類の楽器を弾きます。",
+      "tts": {
+        "text": "アルメニアの人々やイランの人々は、その親類の楽器を弾きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "スペインでは、それが何百年も弾かれていました。",
+      "text_markdown": "スペインでは、それが何百年も弾かれていました。",
+      "tts": {
+        "text": "スペインでは、それが何百年も弾かれていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今のウードには、大きく三つの型があります。",
+      "text_markdown": "今のウードには、大きく三つの型があります。",
+      "tts": {
+        "text": "今のウードには、大きく三つの型があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アラブのウードは大きくて深く、豊かでゆったりした音がします。",
+      "text_markdown": "アラブのウードは大きくて深く、豊かでゆったりした音がします。",
+      "tts": {
+        "text": "アラブのウードは大きくて深く、豊かでゆったりした音がします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは、エジプトやレヴァントのウードです。",
+      "text_markdown": "それは、エジプトやレヴァントのウードです。",
+      "tts": {
+        "text": "それは、エジプトやレヴァントのウードです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トルコのウードはもっと小さくて明るく、アラブのウードより少し高く調弦されます。",
+      "text_markdown": "トルコのウードはもっと小さくて明るく、アラブのウードより少し高く調弦されます。",
+      "tts": {
+        "text": "トルコのウードはもっと小さくて明るく、アラブのウードより少し高く調弦されます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシアの親類は、バルバトと呼ばれます。",
+      "text_markdown": "ペルシアの親類は、バルバトと呼ばれます。",
+      "tts": {
+        "text": "ペルシアの親類は、バルバトと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは小さくて鋭く、使う音の並びも違います。",
+      "text_markdown": "それは小さくて鋭く、使う音の並びも違います。",
+      "tts": {
+        "text": "それは小さくて鋭く、使う音の並びも違います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは、古典アラブ音楽とトルコのマカーム音楽の中心となる楽器です。",
+      "text_markdown": "ウードは、古典アラブ音楽とトルコのマカーム音楽の中心となる楽器です。",
+      "tts": {
+        "text": "ウードは、古典アラブ音楽とトルコのマカーム音楽の中心となる楽器です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "結婚式でも葬儀でも、演奏会場でも、友だちとくつろぐ居間でも、それは鳴ります。",
+      "text_markdown": "結婚式でも葬儀でも、演奏会場でも、友だちとくつろぐ居間でも、それは鳴ります。",
+      "tts": {
+        "text": "結婚式でも葬儀でも、演奏会場でも、友だちとくつろぐ居間でも、それは鳴ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人が集まり、魂のこもった音楽を求める場所なら、だれかがウードを取り出すこともありそうです。",
+      "text_markdown": "人が集まり、魂のこもった音楽を求める場所なら、だれかがウードを取り出すこともありそうです。",
+      "tts": {
+        "text": "人が集まり、魂のこもった音楽を求める場所なら、だれかがウードを取り出すこともありそうです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第5章 マカーム",
+      "text_markdown": "第5章 マカーム"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ピアノを弾くときは、白い鍵と黒い鍵を押します。",
+      "text_markdown": "ピアノを弾くときは、白い鍵と黒い鍵を押します。",
+      "tts": {
+        "text": "ピアノを弾くときは、白い鍵と黒い鍵を押します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一つのオクターブには十二の音があり、音の間隔はどれも同じです。",
+      "text_markdown": "一つのオクターブには十二の音があり、音の間隔はどれも同じです。",
+      "tts": {
+        "text": "一つのオクターブには十二の音があり、音の間隔はどれも同じです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これを平均律と呼びます。",
+      "text_markdown": "これを平均律と呼びます。",
+      "tts": {
+        "text": "これを平均律と呼びます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、ウードはそうではありません。",
+      "text_markdown": "でも、ウードはそうではありません。",
+      "tts": {
+        "text": "でも、ウードはそうではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ウードは、もっと古い仕組みを使います。それがマカームです。",
+      "text_markdown": "ウードは、もっと古い仕組みを使います。それがマカームです。",
+      "tts": {
+        "text": "ウードは、もっと古い仕組みを使います。それがマカームです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マカームとは音の選び方のことで、その種類、つまりマカーマートはたくさんあります。",
+      "text_markdown": "マカームとは音の選び方のことで、その種類、つまりマカーマートはたくさんあります。",
+      "tts": {
+        "text": "マカームとは音の選び方のことで、その種類、つまりマカーマートはたくさんあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それぞれに、固有の気分があります。",
+      "text_markdown": "それぞれに、固有の気分があります。",
+      "tts": {
+        "text": "それぞれに、固有の気分があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "明るいものもあれば、悲しいものもあり、少し不思議に聞こえるものもあります。",
+      "text_markdown": "明るいものもあれば、悲しいものもあり、少し不思議に聞こえるものもあります。",
+      "tts": {
+        "text": "明るいものもあれば、悲しいものもあり、少し不思議に聞こえるものもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マカームの大きな秘密は、ピアノより多くの音を持つことです。",
+      "text_markdown": "マカームの大きな秘密は、ピアノより多くの音を持つことです。",
+      "tts": {
+        "text": "マカームの大きな秘密は、ピアノより多くの音を持つことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "白い鍵と黒い鍵の間には、四分音と呼ぶもっと小さな段があります。",
+      "text_markdown": "白い鍵と黒い鍵の間には、四分音と呼ぶもっと小さな段があります。",
+      "tts": {
+        "text": "白い鍵と黒い鍵の間には、四分音と呼ぶもっと小さな段があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四分音は、半音のさらに半分です。",
+      "text_markdown": "四分音は、半音のさらに半分です。",
+      "tts": {
+        "text": "四分音は、半音のさらに半分です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは、知っている音と音のあいだに住む、とても小さな音です。",
+      "text_markdown": "それは、知っている音と音のあいだに住む、とても小さな音です。",
+      "tts": {
+        "text": "それは、知っている音と音のあいだに住む、とても小さな音です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ピアノでは、それを弾けません。",
+      "text_markdown": "ピアノでは、それを弾けません。",
+      "tts": {
+        "text": "ピアノでは、それを弾けません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "でもウードでは、指を滑らせてその音を見つけます。",
+      "text_markdown": "でもウードでは、指を滑らせてその音を見つけます。",
+      "tts": {
+        "text": "でもウードでは、指を滑らせてその音を見つけます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マカームは、小さな音の組でできています。",
+      "text_markdown": "マカームは、小さな音の組でできています。",
+      "tts": {
+        "text": "マカームは、小さな音の組でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その小さな組を、ジンスと呼びます。",
+      "text_markdown": "その小さな組を、ジンスと呼びます。",
+      "tts": {
+        "text": "その小さな組を、ジンスと呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "たいていのジンスは、四つの音を持っています。",
+      "text_markdown": "たいていのジンスは、四つの音を持っています。",
+      "tts": {
+        "text": "たいていのジンスは、四つの音を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ジンスは、音楽でできた小さな積み木のようなものです。それを重ねて、マカームを作ります。",
+      "text_markdown": "ジンスは、音楽でできた小さな積み木のようなものです。それを重ねて、マカームを作ります。",
+      "tts": {
+        "text": "ジンスは、音楽でできた小さな積み木のようなものです。それを重ねて、マカームを作ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "マカームは、和音より旋律でできています。",
+      "text_markdown": "マカームは、和音より旋律でできています。",
+      "tts": {
+        "text": "マカームは、和音より旋律でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "つまり、ギターのように音を重ねて和音にするのではなく、一音ずつ進んでいく音楽なのです。",
+      "text_markdown": "つまり、ギターのように音を重ねて和音にするのではなく、一音ずつ進んでいく音楽なのです。",
+      "tts": {
+        "text": "つまり、ギターのように音を重ねて和音にするのではなく、一音ずつ進んでいく音楽なのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードがゆっくりとうねる独奏を弾くとき、弾き手はマカームの中を動いています。",
+      "text_markdown": "ウードがゆっくりとうねる独奏を弾くとき、弾き手はマカームの中を動いています。",
+      "tts": {
+        "text": "ウードがゆっくりとうねる独奏を弾くとき、弾き手はマカームの中を動いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ひとつの積み木から音を選び、そこから次の積み木へ滑っていくのです。",
+      "text_markdown": "ひとつの積み木から音を選び、そこから次の積み木へ滑っていくのです。",
+      "tts": {
+        "text": "ひとつの積み木から音を選び、そこから次の積み木へ滑っていくのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その独奏には、名前があります。",
+      "text_markdown": "その独奏には、名前があります。",
+      "tts": {
+        "text": "その独奏には、名前があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それをタクシームと呼びます。",
+      "text_markdown": "それをタクシームと呼びます。",
+      "tts": {
+        "text": "それをタクシームと呼びます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "よいタクシームは、人を笑わせることも、泣かせることもできます。",
+      "text_markdown": "よいタクシームは、人を笑わせることも、泣かせることもできます。",
+      "tts": {
+        "text": "よいタクシームは、人を笑わせることも、泣かせることもできます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それが、いちばん美しいウードの姿です。",
+      "text_markdown": "それが、いちばん美しいウードの姿です。",
+      "tts": {
+        "text": "それが、いちばん美しいウードの姿です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第6章 偉大な名手たち",
+      "text_markdown": "第6章 偉大な名手たち"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは、千年以上にわたって弾かれてきました。",
+      "text_markdown": "ウードは、千年以上にわたって弾かれてきました。",
+      "tts": {
+        "text": "ウードは、千年以上にわたって弾かれてきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その長い時間の中で、少数の人たちがこの楽器の歴史を大きく変えました。",
+      "text_markdown": "その長い時間の中で、少数の人たちがこの楽器の歴史を大きく変えました。",
+      "tts": {
+        "text": "その長い時間の中で、少数の人たちがこの楽器の歴史を大きく変えました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の人は、奏者というより思想家でした。名はアルファーラービーです。",
+      "text_markdown": "最初の人は、奏者というより思想家でした。名はアルファーラービーです。",
+      "tts": {
+        "text": "最初の人は、奏者というより思想家でした。名はアルファーラービーです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は八百七十二年ごろから九百五十年ごろまで生き、バグダードという大きな都で働きました。",
+      "text_markdown": "彼は八百七十二年ごろから九百五十年ごろまで生き、バグダードという大きな都で働きました。",
+      "tts": {
+        "text": "彼は八百七十二年ごろから九百五十年ごろまで生き、バグダードという大きな都で働きました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルファーラービーは、音楽についての大きな本を書きました。",
+      "text_markdown": "アルファーラービーは、音楽についての大きな本を書きました。",
+      "tts": {
+        "text": "アルファーラービーは、音楽についての大きな本を書きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は、弦がどう震えるかを説明しました。",
+      "text_markdown": "彼は、弦がどう震えるかを説明しました。",
+      "tts": {
+        "text": "彼は、弦がどう震えるかを説明しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どんな音どうしが、いっしょに甘く聞こえるかも説明しました。",
+      "text_markdown": "どんな音どうしが、いっしょに甘く聞こえるかも説明しました。",
+      "tts": {
+        "text": "どんな音どうしが、いっしょに甘く聞こえるかも説明しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "音楽が人の気持ちをどう変えるかも説明しました。",
+      "text_markdown": "音楽が人の気持ちをどう変えるかも説明しました。",
+      "tts": {
+        "text": "音楽が人の気持ちをどう変えるかも説明しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "彼の本は、アラビア語とラテン語で、何世紀ものあいだ読まれました。",
+      "text_markdown": "彼の本は、アラビア語とラテン語で、何世紀ものあいだ読まれました。",
+      "tts": {
+        "text": "彼の本は、アラビア語とラテン語で、何世紀ものあいだ読まれました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二人目の偉大な人は、ズィルヤーブという歌い手でした。七百八十九年ごろ、イラクに生まれました。",
+      "text_markdown": "二人目の偉大な人は、ズィルヤーブという歌い手でした。七百八十九年ごろ、イラクに生まれました。",
+      "tts": {
+        "text": "二人目の偉大な人は、ズィルヤーブという歌い手でした。七百八十九年ごろ、イラクに生まれました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "若いころ、彼は急いでバグダードを去ることを余儀なくされました。",
+      "text_markdown": "若いころ、彼は急いでバグダードを去ることを余儀なくされました。",
+      "tts": {
+        "text": "若いころ、彼は急いでバグダードを去ることを余儀なくされました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ズィルヤーブは、北アフリカじゅうを西へ旅しました。",
+      "text_markdown": "ズィルヤーブは、北アフリカじゅうを西へ旅しました。",
+      "tts": {
+        "text": "ズィルヤーブは、北アフリカじゅうを西へ旅しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そして八百二十二年、スペインの町コルドバまでたどり着きました。",
+      "text_markdown": "そして八百二十二年、スペインの町コルドバまでたどり着きました。",
+      "tts": {
+        "text": "そして八百二十二年、スペインの町コルドバまでたどり着きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "コルドバの王は彼の音楽を愛し、家と給金、そして教える時間を与えました。",
+      "text_markdown": "コルドバの王は彼の音楽を愛し、家と給金、そして教える時間を与えました。",
+      "tts": {
+        "text": "コルドバの王は彼の音楽を愛し、家と給金、そして教える時間を与えました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スペインで、ズィルヤーブは音楽学校を開きました。",
+      "text_markdown": "スペインで、ズィルヤーブは音楽学校を開きました。",
+      "tts": {
+        "text": "スペインで、ズィルヤーブは音楽学校を開きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは世界で最初の音楽院だった、と言う人もいます。",
+      "text_markdown": "それは世界で最初の音楽院だった、と言う人もいます。",
+      "tts": {
+        "text": "それは世界で最初の音楽院だった、と言う人もいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はウードに五つ目のコースを加え、撥の作り方も変えました。",
+      "text_markdown": "彼はウードに五つ目のコースを加え、撥の作り方も変えました。",
+      "tts": {
+        "text": "彼はウードに五つ目のコースを加え、撥の作り方も変えました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジルヤーブよりずっと後の私たちの時代に、イラクのある奏者がウードを新たな高みへと引き上げました。",
+      "text_markdown": "ジルヤーブよりずっと後の私たちの時代に、イラクのある奏者がウードを新たな高みへと引き上げました。",
+      "tts": {
+        "text": "ジルヤーブよりずっと後の私たちの時代に、イラクのある奏者がウードを新たな高みへと引き上げました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その人の名はムニール・バシールです。人々は彼をウードの王と呼びました。",
+      "text_markdown": "その人の名はムニール・バシールです。人々は彼をウードの王と呼びました。",
+      "tts": {
+        "text": "その人の名はムニール・バシールです。人々は彼をウードの王と呼びました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バシールより前、ウードはふつう他の楽器といっしょに弾かれていました。",
+      "text_markdown": "バシールより前、ウードはふつう他の楽器といっしょに弾かれていました。",
+      "tts": {
+        "text": "バシールより前、ウードはふつう他の楽器といっしょに弾かれていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "けれどバシールは、それを一人で舞台に立たせ、長く静かで深い独奏を弾きました。",
+      "text_markdown": "けれどバシールは、それを一人で舞台に立たせ、長く静かで深い独奏を弾きました。",
+      "tts": {
+        "text": "けれどバシールは、それを一人で舞台に立たせ、長く静かで深い独奏を弾きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界じゅうの人々が彼の音を聞き、もう一度ウードに恋をしました。",
+      "text_markdown": "世界じゅうの人々が彼の音を聞き、もう一度ウードに恋をしました。",
+      "tts": {
+        "text": "世界じゅうの人々が彼の音を聞き、もう一度ウードに恋をしました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかにも、たくさんの人がいました。",
+      "text_markdown": "ほかにも、たくさんの人がいました。",
+      "tts": {
+        "text": "ほかにも、たくさんの人がいました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ファリード・アルアトラシュは、ウードをエジプト映画の声にしました。",
+      "text_markdown": "ファリード・アルアトラシュは、ウードをエジプト映画の声にしました。",
+      "tts": {
+        "text": "ファリード・アルアトラシュは、ウードをエジプト映画の声にしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "チュニジアのアヌアル・ブラヒムは、ヨーロッパやアメリカのジャズ音楽家とウードを弾きます。",
+      "text_markdown": "チュニジアのアヌアル・ブラヒムは、ヨーロッパやアメリカのジャズ音楽家とウードを弾きます。",
+      "tts": {
+        "text": "チュニジアのアヌアル・ブラヒムは、ヨーロッパやアメリカのジャズ音楽家とウードを弾きます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは、今も生きています。",
+      "text_markdown": "ウードは、今も生きています。",
+      "tts": {
+        "text": "ウードは、今も生きています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "毎年、世界のどこかで新しい名手が生まれます。",
+      "text_markdown": "毎年、世界のどこかで新しい名手が生まれます。",
+      "tts": {
+        "text": "毎年、世界のどこかで新しい名手が生まれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第7章 ウードと世界",
+      "text_markdown": "第7章 ウードと世界"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは、アラブ世界にとどまりませんでした。",
+      "text_markdown": "ウードは、アラブ世界にとどまりませんでした。",
+      "tts": {
+        "text": "ウードは、アラブ世界にとどまりませんでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "旅をするうちに、形も名前も、奏でる曲も変わっていきました。",
+      "text_markdown": "旅をするうちに、形も名前も、奏でる曲も変わっていきました。",
+      "tts": {
+        "text": "旅をするうちに、形も名前も、奏でる曲も変わっていきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードが中世のスペインに着くと、ヨーロッパの奏者たちは木の鉢と深い音を気に入りました。",
+      "text_markdown": "ウードが中世のスペインに着くと、ヨーロッパの奏者たちは木の鉢と深い音を気に入りました。",
+      "tts": {
+        "text": "ウードが中世のスペインに着くと、ヨーロッパの奏者たちは木の鉢と深い音を気に入りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "でも彼らは、すでに知っていた小さな楽器のように、フレットをほしがりました。",
+      "text_markdown": "でも彼らは、すでに知っていた小さな楽器のように、フレットをほしがりました。",
+      "tts": {
+        "text": "でも彼らは、すでに知っていた小さな楽器のように、フレットをほしがりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そこでフレットを付け、背を少し平らにし、新しい楽器をリュートと呼びました。",
+      "text_markdown": "そこでフレットを付け、背を少し平らにし、新しい楽器をリュートと呼びました。",
+      "tts": {
+        "text": "そこでフレットを付け、背を少し平らにし、新しい楽器をリュートと呼びました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "五百年のあいだ、リュートはヨーロッパでいちばん愛された楽器でした。",
+      "text_markdown": "五百年のあいだ、リュートはヨーロッパでいちばん愛された楽器でした。",
+      "tts": {
+        "text": "五百年のあいだ、リュートはヨーロッパでいちばん愛された楽器でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "王たちも弾きました。",
+      "text_markdown": "王たちも弾きました。",
+      "tts": {
+        "text": "王たちも弾きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "詩人たちも弾きました。",
+      "text_markdown": "詩人たちも弾きました。",
+      "tts": {
+        "text": "詩人たちも弾きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "偉大な作曲家たちが、そのために曲を書きました。",
+      "text_markdown": "偉大な作曲家たちが、そのために曲を書きました。",
+      "tts": {
+        "text": "偉大な作曲家たちが、そのために曲を書きました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それから、リュートはまた変わりました。",
+      "text_markdown": "それから、リュートはまた変わりました。",
+      "tts": {
+        "text": "それから、リュートはまた変わりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "奏者たちは弦をもっと増やし、背をさらに平らにし、もっと小さく軽い胴にしました。",
+      "text_markdown": "奏者たちは弦をもっと増やし、背をさらに平らにし、もっと小さく軽い胴にしました。",
+      "tts": {
+        "text": "奏者たちは弦をもっと増やし、背をさらに平らにし、もっと小さく軽い胴にしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "千八百年ごろのスペインで、この新しい楽器には、今ではだれもが知る名が付きました。",
+      "text_markdown": "千八百年ごろのスペインで、この新しい楽器には、今ではだれもが知る名が付きました。",
+      "tts": {
+        "text": "千八百年ごろのスペインで、この新しい楽器には、今ではだれもが知る名が付きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それが、ギターでした。",
+      "text_markdown": "それが、ギターでした。",
+      "tts": {
+        "text": "それが、ギターでした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、ウードとリュートとギターは、みな同じ家族の仲間です。",
+      "text_markdown": "だから、ウードとリュートとギターは、みな同じ家族の仲間です。",
+      "tts": {
+        "text": "だから、ウードとリュートとギターは、みな同じ家族の仲間です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは親類で、同じ祖父を持っています。",
+      "text_markdown": "彼らは親類で、同じ祖父を持っています。",
+      "tts": {
+        "text": "彼らは親類で、同じ祖父を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その祖父が、ウードです。",
+      "text_markdown": "その祖父が、ウードです。",
+      "tts": {
+        "text": "その祖父が、ウードです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日では、ウードとギターはいっしょに演奏します。",
+      "text_markdown": "今日では、ウードとギターはいっしょに演奏します。",
+      "tts": {
+        "text": "今日では、ウードとギターはいっしょに演奏します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アヌアル・ブラヒムは、ジャズのギタリストとウードを弾きます。",
+      "text_markdown": "アヌアル・ブラヒムは、ジャズのギタリストとウードを弾きます。",
+      "tts": {
+        "text": "アヌアル・ブラヒムは、ジャズのギタリストとウードを弾きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ムニール・バシールは、管弦楽団のためにも演奏しました。",
+      "text_markdown": "ムニール・バシールは、管弦楽団のためにも演奏しました。",
+      "tts": {
+        "text": "ムニール・バシールは、管弦楽団のためにも演奏しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ベイルートやイスタンブール、パリやニューヨークの若い奏者たちは、ウードをロックやヒップホップ、映画音楽と混ぜています。",
+      "text_markdown": "ベイルートやイスタンブール、パリやニューヨークの若い奏者たちは、ウードをロックやヒップホップ、映画音楽と混ぜています。",
+      "tts": {
+        "text": "ベイルートやイスタンブール、パリやニューヨークの若い奏者たちは、ウードをロックやヒップホップ、映画音楽と混ぜています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウードは、ただの楽器ではありません。",
+      "text_markdown": "ウードは、ただの楽器ではありません。",
+      "tts": {
+        "text": "ウードは、ただの楽器ではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは、橋です。",
+      "text_markdown": "それは、橋です。",
+      "tts": {
+        "text": "それは、橋です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはメソポタミアから、ペルシアを通り、アラブ世界を通り、スペインへ、ヨーロッパへ、そして世界中の国々へと続く物語を運びます。",
+      "text_markdown": "それはメソポタミアから、ペルシアを通り、アラブ世界を通り、スペインへ、ヨーロッパへ、そして世界中の国々へと続く物語を運びます。",
+      "tts": {
+        "text": "それはメソポタミアから、ペルシアを通り、アラブ世界を通り、スペインへ、ヨーロッパへ、そして世界中の国々へと続く物語を運びます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ギターの音を聞くたび、そのずっと奥に、ウードのやわらかく深い声が聞こえます。",
+      "text_markdown": "ギターの音を聞くたび、そのずっと奥に、ウードのやわらかく深い声が聞こえます。",
+      "tts": {
+        "text": "ギターの音を聞くたび、そのずっと奥に、ウードのやわらかく深い声が聞こえます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "この本について",
+      "text_markdown": "この本について"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、世界の楽器たちというシリーズの第一巻です。",
+      "text_markdown": "これは、世界の楽器たちというシリーズの第一巻です。",
+      "tts": {
+        "text": "これは、世界の楽器たちというシリーズの第一巻です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "このシリーズの各巻は、ひとつの楽器の物語を語ります。",
+      "text_markdown": "このシリーズの各巻は、ひとつの楽器の物語を語ります。",
+      "tts": {
+        "text": "このシリーズの各巻は、ひとつの楽器の物語を語ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "どの本も短く、どの本も本当のことを書いています。",
+      "text_markdown": "どの本も短く、どの本も本当のことを書いています。",
+      "tts": {
+        "text": "どの本も短く、どの本も本当のことを書いています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次の本は、シタールについてです。たくさんの弦と、深く鳴りひびく声を持つ、インドの偉大な長い棹のリュートです。",
+      "text_markdown": "次の本は、シタールについてです。たくさんの弦と、深く鳴りひびく声を持つ、インドの偉大な長い棹のリュートです。",
+      "tts": {
+        "text": "次の本は、シタールについてです。たくさんの弦と、深く鳴りひびく声を持つ、インドの偉大な長い棹のリュートです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "シタールの次は、西アフリカのコラへ旅し、そのあと日本の尺八へ向かいます。",
+      "text_markdown": "シタールの次は、西アフリカのコラへ旅し、そのあと日本の尺八へ向かいます。",
+      "tts": {
+        "text": "シタールの次は、西アフリカのコラへ旅し、そのあと日本の尺八へ向かいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "聞いてくださって、ありがとうございました。",
+      "text_markdown": "聞いてくださって、ありがとうございました。",
+      "tts": {
+        "text": "聞いてくださって、ありがとうございました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "町ででも、インターネットででも、ウードを探して、その音に耳をゆだねてください。",
+      "text_markdown": "町ででも、インターネットででも、ウードを探して、その音に耳をゆだねてください。",
+      "tts": {
+        "text": "町ででも、インターネットででも、ウードを探して、その音に耳をゆだねてください。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "total_segments": 170,
+  "version": "2.0.0"
+}

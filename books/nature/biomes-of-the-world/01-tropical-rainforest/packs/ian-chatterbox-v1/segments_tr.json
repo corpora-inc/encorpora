@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Tropikal Yağmur Ormanı",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tropikal Yağmur Ormanı",
+      "text_markdown": "Tropikal Yağmur Ormanı"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Yağmur Ormanları Nerede Yetişir",
+      "text_markdown": "Yağmur Ormanları Nerede Yetişir"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikal yağmur ormanına hoş geldin.",
+      "text_markdown": "Tropikal yağmur ormanına hoş geldin.",
+      "tts": {
+        "text": "Tropikal yağmur ormanına hoş geldin.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, dünyanın büyük biyomlarından biridir.",
+      "text_markdown": "Bu, dünyanın büyük biyomlarından biridir.",
+      "tts": {
+        "text": "Bu, dünyanın büyük biyomlarından biridir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biyom, Dünya'nın kendine özgü havası, bitkileri ve hayvanları olan bir bölümüdür.",
+      "text_markdown": "Biyom, Dünya'nın kendine özgü havası, bitkileri ve hayvanları olan bir bölümüdür.",
+      "tts": {
+        "text": "Biyom, Dünya'nın kendine özgü havası, bitkileri ve hayvanları olan bir bölümüdür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikal yağmur ormanı yıl boyunca sıcaktır.",
+      "text_markdown": "Tropikal yağmur ormanı yıl boyunca sıcaktır.",
+      "tts": {
+        "text": "Tropikal yağmur ormanı yıl boyunca sıcaktır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yıl boyunca yağmurludur.",
+      "text_markdown": "Yıl boyunca yağmurludur.",
+      "tts": {
+        "text": "Yıl boyunca yağmurludur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaşam doludur.",
+      "text_markdown": "Yaşam doludur.",
+      "tts": {
+        "text": "Yaşam doludur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ormanlarının çoğu ekvatorun yakınında yetişir.",
+      "text_markdown": "Yağmur ormanlarının çoğu ekvatorun yakınında yetişir.",
+      "tts": {
+        "text": "Yağmur ormanlarının çoğu ekvatorun yakınında yetişir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ekvator, Dünya'nın tam ortasından geçen çizgidir.",
+      "text_markdown": "Ekvator, Dünya'nın tam ortasından geçen çizgidir.",
+      "tts": {
+        "text": "Ekvator, Dünya'nın tam ortasından geçen çizgidir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ekvatorun yakınında güneş her gün güçlüdür.",
+      "text_markdown": "Ekvatorun yakınında güneş her gün güçlüdür.",
+      "tts": {
+        "text": "Ekvatorun yakınında güneş her gün güçlüdür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dünyanın en büyük yağmur ormanı, Güney Amerika'daki Amazon'dur.",
+      "text_markdown": "Dünyanın en büyük yağmur ormanı, Güney Amerika'daki Amazon'dur.",
+      "tts": {
+        "text": "Dünyanın en büyük yağmur ormanı, Güney Amerika'daki Amazon'dur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrika'da da, Kongo Nehri yakınında büyük yağmur ormanları vardır.",
+      "text_markdown": "Afrika'da da, Kongo Nehri yakınında büyük yağmur ormanları vardır.",
+      "tts": {
+        "text": "Afrika'da da, Kongo Nehri yakınında büyük yağmur ormanları vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güneydoğu Asya'da, birçok adada yağmur ormanları vardır.",
+      "text_markdown": "Güneydoğu Asya'da, birçok adada yağmur ormanları vardır.",
+      "tts": {
+        "text": "Güneydoğu Asya'da, birçok adada yağmur ormanları vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orta Amerika'da ve Pasifik'teki adalarda daha küçük yağmur ormanları vardır.",
+      "text_markdown": "Orta Amerika'da ve Pasifik'teki adalarda daha küçük yağmur ormanları vardır.",
+      "tts": {
+        "text": "Orta Amerika'da ve Pasifik'teki adalarda daha küçük yağmur ormanları vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu ormanların her biri, diğerlerinden uzakta, kendi başına büyümüştür.",
+      "text_markdown": "Bu ormanların her biri, diğerlerinden uzakta, kendi başına büyümüştür.",
+      "tts": {
+        "text": "Bu ormanların her biri, diğerlerinden uzakta, kendi başına büyümüştür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu yüzden bitkiler ve hayvanlar dünyanın her bölümünde farklıdır.",
+      "text_markdown": "Bu yüzden bitkiler ve hayvanlar dünyanın her bölümünde farklıdır.",
+      "tts": {
+        "text": "Bu yüzden bitkiler ve hayvanlar dünyanın her bölümünde farklıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amazon'daki bir maymun, Afrika'daki ya da Asya'daki bir maymunla aynı değildir.",
+      "text_markdown": "Amazon'daki bir maymun, Afrika'daki ya da Asya'daki bir maymunla aynı değildir.",
+      "tts": {
+        "text": "Amazon'daki bir maymun, Afrika'daki ya da Asya'daki bir maymunla aynı değildir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama hepsi aynı biyomun parçasıdır.",
+      "text_markdown": "Ama hepsi aynı biyomun parçasıdır.",
+      "tts": {
+        "text": "Ama hepsi aynı biyomun parçasıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir yağmur ormanının içinde dururken hava ağır ve sıcak hissedilir.",
+      "text_markdown": "Bir yağmur ormanının içinde dururken hava ağır ve sıcak hissedilir.",
+      "tts": {
+        "text": "Bir yağmur ormanının içinde dururken hava ağır ve sıcak hissedilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Işık yumuşak ve yeşildir.",
+      "text_markdown": "Işık yumuşak ve yeşildir.",
+      "tts": {
+        "text": "Işık yumuşak ve yeşildir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar o kadar uzundur ki gökyüzünü zar zor görebilirsin.",
+      "text_markdown": "Ağaçlar o kadar uzundur ki gökyüzünü zar zor görebilirsin.",
+      "tts": {
+        "text": "Ağaçlar o kadar uzundur ki gökyüzünü zar zor görebilirsin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etrafında kuşları ve böcekleri duyarsın.",
+      "text_markdown": "Etrafında kuşları ve böcekleri duyarsın.",
+      "tts": {
+        "text": "Etrafında kuşları ve böcekleri duyarsın.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yapraklardan damlayan suyu duyarsın.",
+      "text_markdown": "Yapraklardan damlayan suyu duyarsın.",
+      "tts": {
+        "text": "Yapraklardan damlayan suyu duyarsın.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sanki canlı bir odanın içindeymişsin gibi hissedersin.",
+      "text_markdown": "Sanki canlı bir odanın içindeymişsin gibi hissedersin.",
+      "tts": {
+        "text": "Sanki canlı bir odanın içindeymişsin gibi hissedersin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ormanı işte budur.",
+      "text_markdown": "Yağmur ormanı işte budur.",
+      "tts": {
+        "text": "Yağmur ormanı işte budur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Yağmur Ormanları Nerede Yetişir",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlardan ve yağmurdan yapılmış koca bir dünya.",
+      "text_markdown": "Ağaçlardan ve yağmurdan yapılmış koca bir dünya.",
+      "tts": {
+        "text": "Ağaçlardan ve yağmurdan yapılmış koca bir dünya.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hava",
+      "text_markdown": "Hava"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikal yağmur ormanındaki hava basittir.",
+      "text_markdown": "Tropikal yağmur ormanındaki hava basittir.",
+      "tts": {
+        "text": "Tropikal yağmur ormanındaki hava basittir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıcaktır ve çok yağmur yağar.",
+      "text_markdown": "Sıcaktır ve çok yağmur yağar.",
+      "tts": {
+        "text": "Sıcaktır ve çok yağmur yağar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıcaklık yıl boyunca hemen hemen aynı kalır.",
+      "text_markdown": "Sıcaklık yıl boyunca hemen hemen aynı kalır.",
+      "tts": {
+        "text": "Sıcaklık yıl boyunca hemen hemen aynı kalır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kışın soğumaz.",
+      "text_markdown": "Kışın soğumaz.",
+      "tts": {
+        "text": "Kışın soğumaz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yazın çok ısınmaz.",
+      "text_markdown": "Yazın çok ısınmaz.",
+      "tts": {
+        "text": "Yazın çok ısınmaz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Günlerin çoğu sıcak ve dengelidir.",
+      "text_markdown": "Günlerin çoğu sıcak ve dengelidir.",
+      "tts": {
+        "text": "Günlerin çoğu sıcak ve dengelidir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Neredeyse her gün yağmur yağar.",
+      "text_markdown": "Neredeyse her gün yağmur yağar.",
+      "tts": {
+        "text": "Neredeyse her gün yağmur yağar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı yerlere bir yılda iki metreden fazla yağmur düşer.",
+      "text_markdown": "Bazı yerlere bir yılda iki metreden fazla yağmur düşer.",
+      "tts": {
+        "text": "Bazı yerlere bir yılda iki metreden fazla yağmur düşer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, dünyanın çoğu yerinin hiç görmediği kadar çok yağmurdur.",
+      "text_markdown": "Bu, dünyanın çoğu yerinin hiç görmediği kadar çok yağmurdur.",
+      "tts": {
+        "text": "Bu, dünyanın çoğu yerinin hiç görmediği kadar çok yağmurdur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur genellikle öğleden sonra gelir.",
+      "text_markdown": "Yağmur genellikle öğleden sonra gelir.",
+      "tts": {
+        "text": "Yağmur genellikle öğleden sonra gelir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçların üstünde büyük bulutlar toplanır.",
+      "text_markdown": "Ağaçların üstünde büyük bulutlar toplanır.",
+      "tts": {
+        "text": "Ağaçların üstünde büyük bulutlar toplanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir iki saat boyunca şiddetli bir sağanak yağar.",
+      "text_markdown": "Bir iki saat boyunca şiddetli bir sağanak yağar.",
+      "tts": {
+        "text": "Bir iki saat boyunca şiddetli bir sağanak yağar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra güneş yine açar.",
+      "text_markdown": "Sonra güneş yine açar.",
+      "tts": {
+        "text": "Sonra güneş yine açar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yapraklar parlar ve yerden buharlar yükselir.",
+      "text_markdown": "Yapraklar parlar ve yerden buharlar yükselir.",
+      "tts": {
+        "text": "Yapraklar parlar ve yerden buharlar yükselir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burada dört mevsim yoktur.",
+      "text_markdown": "Burada dört mevsim yoktur.",
+      "tts": {
+        "text": "Burada dört mevsim yoktur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sadece daha yağmurlu bir dönem ve daha kurak bir dönem vardır.",
+      "text_markdown": "Sadece daha yağmurlu bir dönem ve daha kurak bir dönem vardır.",
+      "tts": {
+        "text": "Sadece daha yağmurlu bir dönem ve daha kurak bir dönem vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kurak dönemde bile sık sık yağmur yağar.",
+      "text_markdown": "Kurak dönemde bile sık sık yağmur yağar.",
+      "tts": {
+        "text": "Kurak dönemde bile sık sık yağmur yağar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Hava",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ormanının bitkileri ve hayvanları için her gün hemen hemen aynı hissedilir.",
+      "text_markdown": "Yağmur ormanının bitkileri ve hayvanları için her gün hemen hemen aynı hissedilir.",
+      "tts": {
+        "text": "Yağmur ormanının bitkileri ve hayvanları için her gün hemen hemen aynı hissedilir.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Toprak ve Su",
+      "text_markdown": "Toprak ve Su"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ormanının zemini yaşamla doludur, ama toprak incedir.",
+      "text_markdown": "Yağmur ormanının zemini yaşamla doludur, ama toprak incedir.",
+      "tts": {
+        "text": "Yağmur ormanının zemini yaşamla doludur, ama toprak incedir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Besinin çoğu en üstteki birkaç santimetrede bulunur.",
+      "text_markdown": "Besinin çoğu en üstteki birkaç santimetrede bulunur.",
+      "tts": {
+        "text": "Besinin çoğu en üstteki birkaç santimetrede bulunur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir yaprak düştüğünde, böcekler ve küçücük canlılar onu çok hızlı parçalar.",
+      "text_markdown": "Bir yaprak düştüğünde, böcekler ve küçücük canlılar onu çok hızlı parçalar.",
+      "tts": {
+        "text": "Bir yaprak düştüğünde, böcekler ve küçücük canlılar onu çok hızlı parçalar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar besini hemen geri alır.",
+      "text_markdown": "Ağaçlar besini hemen geri alır.",
+      "tts": {
+        "text": "Ağaçlar besini hemen geri alır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu yüzden kesilmiş bir yağmur ormanını geri getirmek zordur.",
+      "text_markdown": "Bu yüzden kesilmiş bir yağmur ormanını geri getirmek zordur.",
+      "tts": {
+        "text": "Bu yüzden kesilmiş bir yağmur ormanını geri getirmek zordur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar olmadan yağmur, ince toprağı alıp götürür.",
+      "text_markdown": "Ağaçlar olmadan yağmur, ince toprağı alıp götürür.",
+      "tts": {
+        "text": "Ağaçlar olmadan yağmur, ince toprağı alıp götürür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her yağmur ormanının içinden nehirler akar.",
+      "text_markdown": "Her yağmur ormanının içinden nehirler akar.",
+      "tts": {
+        "text": "Her yağmur ormanının içinden nehirler akar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı nehirler kocamandır.",
+      "text_markdown": "Bazı nehirler kocamandır.",
+      "tts": {
+        "text": "Bazı nehirler kocamandır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amazon Nehri, dünyadaki diğer tüm nehirlerden daha fazla su taşır.",
+      "text_markdown": "Amazon Nehri, dünyadaki diğer tüm nehirlerden daha fazla su taşır.",
+      "tts": {
+        "text": "Amazon Nehri, dünyadaki diğer tüm nehirlerden daha fazla su taşır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmurlu dönemde nehirler ormanın derinlerine kadar yayılır.",
+      "text_markdown": "Yağmurlu dönemde nehirler ormanın derinlerine kadar yayılır.",
+      "tts": {
+        "text": "Yağmurlu dönemde nehirler ormanın derinlerine kadar yayılır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar aylarca suyun içinde dururlar.",
+      "text_markdown": "Ağaçlar aylarca suyun içinde dururlar.",
+      "tts": {
+        "text": "Ağaçlar aylarca suyun içinde dururlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Balıklar gövdelerin arasında yüzer.",
+      "text_markdown": "Balıklar gövdelerin arasında yüzer.",
+      "tts": {
+        "text": "Balıklar gövdelerin arasında yüzer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Diğer nehirler küçük ve berraktır, dipleri taşlıdır.",
+      "text_markdown": "Diğer nehirler küçük ve berraktır, dipleri taşlıdır.",
+      "tts": {
+        "text": "Diğer nehirler küçük ve berraktır, dipleri taşlıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ormanın kendisi katmanlar halinde yetişir.",
+      "text_markdown": "Ormanın kendisi katmanlar halinde yetişir.",
+      "tts": {
+        "text": "Ormanın kendisi katmanlar halinde yetişir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En tepede, taçları güneşte yayılan en uzun ağaçlar vardır.",
+      "text_markdown": "En tepede, taçları güneşte yayılan en uzun ağaçlar vardır.",
+      "tts": {
+        "text": "En tepede, taçları güneşte yayılan en uzun ağaçlar vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onların altında kalın, yeşil bir yaprak çatısı vardır.",
+      "text_markdown": "Onların altında kalın, yeşil bir yaprak çatısı vardır.",
+      "tts": {
+        "text": "Onların altında kalın, yeşil bir yaprak çatısı vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O çatının altında hava gölgeli ve durgundur.",
+      "text_markdown": "O çatının altında hava gölgeli ve durgundur.",
+      "tts": {
+        "text": "O çatının altında hava gölgeli ve durgundur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aşağıda, yere yalnızca biraz ışık ulaşır.",
+      "text_markdown": "Aşağıda, yere yalnızca biraz ışık ulaşır.",
+      "tts": {
+        "text": "Aşağıda, yere yalnızca biraz ışık ulaşır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "Toprak ve Su",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her katman, biyomun hayvanları ve bitkileri için farklı bir yuvadır.",
+      "text_markdown": "Her katman, biyomun hayvanları ve bitkileri için farklı bir yuvadır.",
+      "tts": {
+        "text": "Her katman, biyomun hayvanları ve bitkileri için farklı bir yuvadır.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bitkiler",
+      "text_markdown": "Bitkiler"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikal yağmur ormanı, karadaki diğer tüm biyomlardan daha çok çeşit bitki barındırır.",
+      "text_markdown": "Tropikal yağmur ormanı, karadaki diğer tüm biyomlardan daha çok çeşit bitki barındırır.",
+      "tts": {
+        "text": "Tropikal yağmur ormanı, karadaki diğer tüm biyomlardan daha çok çeşit bitki barındırır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar onun kalbidir.",
+      "text_markdown": "Ağaçlar onun kalbidir.",
+      "tts": {
+        "text": "Ağaçlar onun kalbidir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı ağaçlar güneşe doğru uzanarak çok uzar.",
+      "text_markdown": "Bazı ağaçlar güneşe doğru uzanarak çok uzar.",
+      "tts": {
+        "text": "Bazı ağaçlar güneşe doğru uzanarak çok uzar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gövdeleri düz ve pürüzsüzdür.",
+      "text_markdown": "Gövdeleri düz ve pürüzsüzdür.",
+      "tts": {
+        "text": "Gövdeleri düz ve pürüzsüzdür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kökleri, ince toprakta kendilerini tutabilmek için aşağıda duvarlar gibi geniş yayılır.",
+      "text_markdown": "Kökleri, ince toprakta kendilerini tutabilmek için aşağıda duvarlar gibi geniş yayılır.",
+      "tts": {
+        "text": "Kökleri, ince toprakta kendilerini tutabilmek için aşağıda duvarlar gibi geniş yayılır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sarmaşıklar, ışığa doğru gövdelere tırmanır.",
+      "text_markdown": "Sarmaşıklar, ışığa doğru gövdelere tırmanır.",
+      "tts": {
+        "text": "Sarmaşıklar, ışığa doğru gövdelere tırmanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı sarmaşıklar kolun kadar kalındır.",
+      "text_markdown": "Bazı sarmaşıklar kolun kadar kalındır.",
+      "tts": {
+        "text": "Bazı sarmaşıklar kolun kadar kalındır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlara sarılır ve dallardan aşağı sarkar.",
+      "text_markdown": "Ağaçlara sarılır ve dallardan aşağı sarkar.",
+      "tts": {
+        "text": "Ağaçlara sarılır ve dallardan aşağı sarkar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bitkiler, havanın yükseklerinde, ağaçların üstünde de yetişir.",
+      "text_markdown": "Bitkiler, havanın yükseklerinde, ağaçların üstünde de yetişir.",
+      "tts": {
+        "text": "Bitkiler, havanın yükseklerinde, ağaçların üstünde de yetişir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toprakta hiç kökleri yoktur.",
+      "text_markdown": "Toprakta hiç kökleri yoktur.",
+      "tts": {
+        "text": "Toprakta hiç kökleri yoktur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaç kabuğundan aşağı süzülen yağmuru içerler.",
+      "text_markdown": "Ağaç kabuğundan aşağı süzülen yağmuru içerler.",
+      "tts": {
+        "text": "Ağaç kabuğundan aşağı süzülen yağmuru içerler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karanlık orman zemininde eğreltiotları ve yumuşak yeşil bitkiler yetişir.",
+      "text_markdown": "Karanlık orman zemininde eğreltiotları ve yumuşak yeşil bitkiler yetişir.",
+      "tts": {
+        "text": "Karanlık orman zemininde eğreltiotları ve yumuşak yeşil bitkiler yetişir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her ışık damlasını yakalamak için geniş, düz yaprakları vardır.",
+      "text_markdown": "Her ışık damlasını yakalamak için geniş, düz yaprakları vardır.",
+      "tts": {
+        "text": "Her ışık damlasını yakalamak için geniş, düz yaprakları vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aklına gelebilecek her renkte çiçek açar.",
+      "text_markdown": "Aklına gelebilecek her renkte çiçek açar.",
+      "tts": {
+        "text": "Aklına gelebilecek her renkte çiçek açar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazıları kırmızı, bazıları sarı, bazıları koyu mordur.",
+      "text_markdown": "Bazıları kırmızı, bazıları sarı, bazıları koyu mordur.",
+      "tts": {
+        "text": "Bazıları kırmızı, bazıları sarı, bazıları koyu mordur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çoğu geceleri açar.",
+      "text_markdown": "Çoğu geceleri açar.",
+      "tts": {
+        "text": "Çoğu geceleri açar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meyveler dallarda yıl boyunca asılı durur.",
+      "text_markdown": "Meyveler dallarda yıl boyunca asılı durur.",
+      "tts": {
+        "text": "Meyveler dallarda yıl boyunca asılı durur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tatlı meyveler, ekşi meyveler ve sert kabuklu meyveler vardır.",
+      "text_markdown": "Tatlı meyveler, ekşi meyveler ve sert kabuklu meyveler vardır.",
+      "tts": {
+        "text": "Tatlı meyveler, ekşi meyveler ve sert kabuklu meyveler vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Evde yediğimiz birçok besin ilk olarak yağmur ormanlarında yabani halde yetişti.",
+      "text_markdown": "Evde yediğimiz birçok besin ilk olarak yağmur ormanlarında yabani halde yetişti.",
+      "tts": {
+        "text": "Evde yediğimiz birçok besin ilk olarak yağmur ormanlarında yabani halde yetişti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bize çikolatayı veren bitki olan kakao, Güney Amerika'nın yağmur ormanlarından gelir.",
+      "text_markdown": "Bize çikolatayı veren bitki olan kakao, Güney Amerika'nın yağmur ormanlarından gelir.",
+      "tts": {
+        "text": "Bize çikolatayı veren bitki olan kakao, Güney Amerika'nın yağmur ormanlarından gelir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk muz bitkileri Güneydoğu Asya'nın yağmur ormanlarında yetişmiştir.",
+      "text_markdown": "İlk muz bitkileri Güneydoğu Asya'nın yağmur ormanlarında yetişmiştir.",
+      "tts": {
+        "text": "İlk muz bitkileri Güneydoğu Asya'nın yağmur ormanlarında yetişmiştir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sevdiğimiz her yiyeceğin, Dünya'nın bir köşesindeki bir ormanın hikâyesi vardır.",
+      "text_markdown": "Sevdiğimiz her yiyeceğin, Dünya'nın bir köşesindeki bir ormanın hikâyesi vardır.",
+      "tts": {
+        "text": "Sevdiğimiz her yiyeceğin, Dünya'nın bir köşesindeki bir ormanın hikâyesi vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir yağmur ormanı bitkisine baktığında, çoğu zaman yaşamak için akıllı bir yol bulmuştur.",
+      "text_markdown": "Bir yağmur ormanı bitkisine baktığında, çoğu zaman yaşamak için akıllı bir yol bulmuştur.",
+      "tts": {
+        "text": "Bir yağmur ormanı bitkisine baktığında, çoğu zaman yaşamak için akıllı bir yol bulmuştur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı yaprakların ucu uzun ve sivridir; böylece yağmur hızla akıp gider.",
+      "text_markdown": "Bazı yaprakların ucu uzun ve sivridir; böylece yağmur hızla akıp gider.",
+      "tts": {
+        "text": "Bazı yaprakların ucu uzun ve sivridir; böylece yağmur hızla akıp gider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı çiçekler doğru böceği çağırmak için yalnızca geceleri tatlı kokar.",
+      "text_markdown": "Bazı çiçekler doğru böceği çağırmak için yalnızca geceleri tatlı kokar.",
+      "tts": {
+        "text": "Bazı çiçekler doğru böceği çağırmak için yalnızca geceleri tatlı kokar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Bitkiler",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bütün orman, yeşilden yapılmış sessiz bir makinedir.",
+      "text_markdown": "Bütün orman, yeşilden yapılmış sessiz bir makinedir.",
+      "tts": {
+        "text": "Bütün orman, yeşilden yapılmış sessiz bir makinedir.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hayvanlar",
+      "text_markdown": "Hayvanlar"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikal yağmur ormanında, karadaki diğer her yerden daha çok çeşit hayvan yaşar.",
+      "text_markdown": "Tropikal yağmur ormanında, karadaki diğer her yerden daha çok çeşit hayvan yaşar.",
+      "tts": {
+        "text": "Tropikal yağmur ormanında, karadaki diğer her yerden daha çok çeşit hayvan yaşar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çoğu yerde değil, ağaçların yukarısında yaşar.",
+      "text_markdown": "Çoğu yerde değil, ağaçların yukarısında yaşar.",
+      "tts": {
+        "text": "Çoğu yerde değil, ağaçların yukarısında yaşar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yukarıda daha çok yiyecek ve daha çok ışık vardır.",
+      "text_markdown": "Yukarıda daha çok yiyecek ve daha çok ışık vardır.",
+      "tts": {
+        "text": "Yukarıda daha çok yiyecek ve daha çok ışık vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birçok yağmur ormanında maymunlar yaşar.",
+      "text_markdown": "Birçok yağmur ormanında maymunlar yaşar.",
+      "tts": {
+        "text": "Birçok yağmur ormanında maymunlar yaşar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daldan dala atlarlar ve ağaçların arasında birbirlerine seslenirler.",
+      "text_markdown": "Daldan dala atlarlar ve ağaçların arasında birbirlerine seslenirler.",
+      "tts": {
+        "text": "Daldan dala atlarlar ve ağaçların arasında birbirlerine seslenirler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney Amerika'nın yağmur ormanlarında bazı maymunların, fazladan bir el gibi kullandıkları uzun kuyrukları vardır.",
+      "text_markdown": "Güney Amerika'nın yağmur ormanlarında bazı maymunların, fazladan bir el gibi kullandıkları uzun kuyrukları vardır.",
+      "tts": {
+        "text": "Güney Amerika'nın yağmur ormanlarında bazı maymunların, fazladan bir el gibi kullandıkları uzun kuyrukları vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Papağanlar ve diğer parlak renkli kuşlar yüksek dallar arasında uçar.",
+      "text_markdown": "Papağanlar ve diğer parlak renkli kuşlar yüksek dallar arasında uçar.",
+      "tts": {
+        "text": "Papağanlar ve diğer parlak renkli kuşlar yüksek dallar arasında uçar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Meyve ve tohum yerler.",
+      "text_markdown": "Meyve ve tohum yerler.",
+      "tts": {
+        "text": "Meyve ve tohum yerler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tüyleri kırmızı, yeşil, mavi ve sarıdır.",
+      "text_markdown": "Tüyleri kırmızı, yeşil, mavi ve sarıdır.",
+      "tts": {
+        "text": "Tüyleri kırmızı, yeşil, mavi ve sarıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birçok yağmur ormanında büyük kediler geceleri yerde avlanır.",
+      "text_markdown": "Birçok yağmur ormanında büyük kediler geceleri yerde avlanır.",
+      "tts": {
+        "text": "Birçok yağmur ormanında büyük kediler geceleri yerde avlanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerika kıtalarında bu kedi jaguardır.",
+      "text_markdown": "Amerika kıtalarında bu kedi jaguardır.",
+      "tts": {
+        "text": "Amerika kıtalarında bu kedi jaguardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Asya'da bu kaplandır.",
+      "text_markdown": "Asya'da bu kaplandır.",
+      "tts": {
+        "text": "Asya'da bu kaplandır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrika'da bu lepardır.",
+      "text_markdown": "Afrika'da bu lepardır.",
+      "tts": {
+        "text": "Afrika'da bu lepardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hepsi güçlü ve sessizdir, kürklerinde benekler ya da çizgiler vardır.",
+      "text_markdown": "Hepsi güçlü ve sessizdir, kürklerinde benekler ya da çizgiler vardır.",
+      "tts": {
+        "text": "Hepsi güçlü ve sessizdir, kürklerinde benekler ya da çizgiler vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yılanlar yapraklar ve ağaçlar arasında süzülür.",
+      "text_markdown": "Yılanlar yapraklar ve ağaçlar arasında süzülür.",
+      "tts": {
+        "text": "Yılanlar yapraklar ve ağaçlar arasında süzülür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı yılanlar çok küçüktür, bazıları çok uzundur.",
+      "text_markdown": "Bazı yılanlar çok küçüktür, bazıları çok uzundur.",
+      "tts": {
+        "text": "Bazı yılanlar çok küçüktür, bazıları çok uzundur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çoğu utangaçtır ve insanlardan uzak durur.",
+      "text_markdown": "Çoğu utangaçtır ve insanlardan uzak durur.",
+      "tts": {
+        "text": "Çoğu utangaçtır ve insanlardan uzak durur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kurbağalar her gece, özellikle yağmurdan sonra şarkı söyler.",
+      "text_markdown": "Kurbağalar her gece, özellikle yağmurdan sonra şarkı söyler.",
+      "tts": {
+        "text": "Kurbağalar her gece, özellikle yağmurdan sonra şarkı söyler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı kurbağalar küçücük ve parlaktır.",
+      "text_markdown": "Bazı kurbağalar küçücük ve parlaktır.",
+      "tts": {
+        "text": "Bazı kurbağalar küçücük ve parlaktır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parlak renkler diğer hayvanlara onları yememeleri için uyarıdır.",
+      "text_markdown": "Parlak renkler diğer hayvanlara onları yememeleri için uyarıdır.",
+      "tts": {
+        "text": "Parlak renkler diğer hayvanlara onları yememeleri için uyarıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Böcekler ormanın her köşesini doldurur.",
+      "text_markdown": "Böcekler ormanın her köşesini doldurur.",
+      "tts": {
+        "text": "Böcekler ormanın her köşesini doldurur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ormanında, diğer her tür hayvandan daha çok böcek vardır.",
+      "text_markdown": "Yağmur ormanında, diğer her tür hayvandan daha çok böcek vardır.",
+      "tts": {
+        "text": "Yağmur ormanında, diğer her tür hayvandan daha çok böcek vardır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karıncalar orman zemininde uzun sıralar halinde yürür.",
+      "text_markdown": "Karıncalar orman zemininde uzun sıralar halinde yürür.",
+      "tts": {
+        "text": "Karıncalar orman zemininde uzun sıralar halinde yürür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kınkanatlılar gövdelere tırmanır.",
+      "text_markdown": "Kınkanatlılar gövdelere tırmanır.",
+      "tts": {
+        "text": "Kınkanatlılar gövdelere tırmanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kelebekler geniş, boyalı kanatlarıyla havada süzülür.",
+      "text_markdown": "Kelebekler geniş, boyalı kanatlarıyla havada süzülür.",
+      "tts": {
+        "text": "Kelebekler geniş, boyalı kanatlarıyla havada süzülür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nehirlerde, pek çok şekilde ve boyutta balıklar yaşar.",
+      "text_markdown": "Nehirlerde, pek çok şekilde ve boyutta balıklar yaşar.",
+      "tts": {
+        "text": "Nehirlerde, pek çok şekilde ve boyutta balıklar yaşar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı balıklar küçücük ve gümüşidir, bazıları bir çocuktan daha büyüktür.",
+      "text_markdown": "Bazı balıklar küçücük ve gümüşidir, bazıları bir çocuktan daha büyüktür.",
+      "tts": {
+        "text": "Bazı balıklar küçücük ve gümüşidir, bazıları bir çocuktan daha büyüktür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tüm bunların yüksekte, kartallar ormanın yeşil çatısının üstünde süzülür.",
+      "text_markdown": "Tüm bunların yüksekte, kartallar ormanın yeşil çatısının üstünde süzülür.",
+      "tts": {
+        "text": "Tüm bunların yüksekte, kartallar ormanın yeşil çatısının üstünde süzülür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aşağıdaki hareketi gözlerler.",
+      "text_markdown": "Aşağıdaki hareketi gözlerler.",
+      "tts": {
+        "text": "Aşağıdaki hareketi gözlerler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yarasalar gün batımında meyve ve böcek yemek için uçar.",
+      "text_markdown": "Yarasalar gün batımında meyve ve böcek yemek için uçar.",
+      "tts": {
+        "text": "Yarasalar gün batımında meyve ve böcek yemek için uçar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir yağmur ormanı ağacında, başka bir yerdeki koca bir kasabadakinden daha çok çeşit hayvan bulabilirsin.",
+      "text_markdown": "Bir yağmur ormanı ağacında, başka bir yerdeki koca bir kasabadakinden daha çok çeşit hayvan bulabilirsin.",
+      "tts": {
+        "text": "Bir yağmur ormanı ağacında, başka bir yerdeki koca bir kasabadakinden daha çok çeşit hayvan bulabilirsin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Hayvanlar",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu biyomun harikası işte budur.",
+      "text_markdown": "Bu biyomun harikası işte budur.",
+      "tts": {
+        "text": "Bu biyomun harikası işte budur.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "İnsanlar",
+      "text_markdown": "İnsanlar"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanlar çok uzun zamandır tropikal yağmur ormanında yaşıyor.",
+      "text_markdown": "İnsanlar çok uzun zamandır tropikal yağmur ormanında yaşıyor.",
+      "tts": {
+        "text": "İnsanlar çok uzun zamandır tropikal yağmur ormanında yaşıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlarla, yağmurla ve hayvanlarla iyi yaşamayı öğrenmişlerdir.",
+      "text_markdown": "Ağaçlarla, yağmurla ve hayvanlarla iyi yaşamayı öğrenmişlerdir.",
+      "tts": {
+        "text": "Ağaçlarla, yağmurla ve hayvanlarla iyi yaşamayı öğrenmişlerdir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ormanının insanlarının çoğu küçük köylerde yaşar.",
+      "text_markdown": "Yağmur ormanının insanlarının çoğu küçük köylerde yaşar.",
+      "tts": {
+        "text": "Yağmur ormanının insanlarının çoğu küçük köylerde yaşar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Evler genellikle yüksek tahta direkler üzerine inşa edilir; böylece ıslak topraktan yukarıda kalır.",
+      "text_markdown": "Evler genellikle yüksek tahta direkler üzerine inşa edilir; böylece ıslak topraktan yukarıda kalır.",
+      "tts": {
+        "text": "Evler genellikle yüksek tahta direkler üzerine inşa edilir; böylece ıslak topraktan yukarıda kalır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çatılar kalın sıralar halinde dizilmiş yapraklardan yapılır.",
+      "text_markdown": "Çatılar kalın sıralar halinde dizilmiş yapraklardan yapılır.",
+      "tts": {
+        "text": "Çatılar kalın sıralar halinde dizilmiş yapraklardan yapılır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İyi bir yaprak çatı şiddetli yağmuru dışarıda tutar.",
+      "text_markdown": "İyi bir yaprak çatı şiddetli yağmuru dışarıda tutar.",
+      "tts": {
+        "text": "İyi bir yaprak çatı şiddetli yağmuru dışarıda tutar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duvarlar, sıcak havanın geçmesi için genellikle açıktır.",
+      "text_markdown": "Duvarlar, sıcak havanın geçmesi için genellikle açıktır.",
+      "tts": {
+        "text": "Duvarlar, sıcak havanın geçmesi için genellikle açıktır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanlar nehirlerde balık tutar ve ormandan yiyecek toplar.",
+      "text_markdown": "İnsanlar nehirlerde balık tutar ve ormandan yiyecek toplar.",
+      "tts": {
+        "text": "İnsanlar nehirlerde balık tutar ve ormandan yiyecek toplar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yay ve mızraklarla küçük hayvanlar avlarlar.",
+      "text_markdown": "Yay ve mızraklarla küçük hayvanlar avlarlar.",
+      "tts": {
+        "text": "Yay ve mızraklarla küçük hayvanlar avlarlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlardan açılmış küçük bahçelerde yiyecek yetiştirirler.",
+      "text_markdown": "Ağaçlardan açılmış küçük bahçelerde yiyecek yetiştirirler.",
+      "tts": {
+        "text": "Ağaçlardan açılmış küçük bahçelerde yiyecek yetiştirirler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ne yetiştirdikleri, nerede yaşadıklarına bağlıdır.",
+      "text_markdown": "Ne yetiştirdikleri, nerede yaşadıklarına bağlıdır.",
+      "tts": {
+        "text": "Ne yetiştirdikleri, nerede yaşadıklarına bağlıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güney Amerika'nın yağmur ormanlarında insanlar binlerce yıldır manyok ve tatlı patates yetiştirmiştir.",
+      "text_markdown": "Güney Amerika'nın yağmur ormanlarında insanlar binlerce yıldır manyok ve tatlı patates yetiştirmiştir.",
+      "tts": {
+        "text": "Güney Amerika'nın yağmur ormanlarında insanlar binlerce yıldır manyok ve tatlı patates yetiştirmiştir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrika'nın yağmur ormanlarında insanlar yam ve palmiye meyvesi yetiştirmiştir.",
+      "text_markdown": "Afrika'nın yağmur ormanlarında insanlar yam ve palmiye meyvesi yetiştirmiştir.",
+      "tts": {
+        "text": "Afrika'nın yağmur ormanlarında insanlar yam ve palmiye meyvesi yetiştirmiştir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Güneydoğu Asya ve Pasifik'in yağmur ormanlarında insanlar taro, pirinç ve ekmek ağacı meyvesi yetiştirmiştir.",
+      "text_markdown": "Güneydoğu Asya ve Pasifik'in yağmur ormanlarında insanlar taro, pirinç ve ekmek ağacı meyvesi yetiştirmiştir.",
+      "tts": {
+        "text": "Güneydoğu Asya ve Pasifik'in yağmur ormanlarında insanlar taro, pirinç ve ekmek ağacı meyvesi yetiştirmiştir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birkaç yıl sonra bahçenin yeniden ormana dönüşmesine izin verirler ve başka bir yerde yenisini açarlar.",
+      "text_markdown": "Birkaç yıl sonra bahçenin yeniden ormana dönüşmesine izin verirler ve başka bir yerde yenisini açarlar.",
+      "tts": {
+        "text": "Birkaç yıl sonra bahçenin yeniden ormana dönüşmesine izin verirler ve başka bir yerde yenisini açarlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orman böylece sağlıklı kalır.",
+      "text_markdown": "Orman böylece sağlıklı kalır.",
+      "tts": {
+        "text": "Orman böylece sağlıklı kalır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yağmur ormanının insanları binlerce bitkiyi tanır.",
+      "text_markdown": "Yağmur ormanının insanları binlerce bitkiyi tanır.",
+      "tts": {
+        "text": "Yağmur ormanının insanları binlerce bitkiyi tanır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hangilerinin yiyecek verdiğini, hangilerinin ilaç verdiğini ve hangilerinin yenmesinin güvenli olmadığını bilirler.",
+      "text_markdown": "Hangilerinin yiyecek verdiğini, hangilerinin ilaç verdiğini ve hangilerinin yenmesinin güvenli olmadığını bilirler.",
+      "tts": {
+        "text": "Hangilerinin yiyecek verdiğini, hangilerinin ilaç verdiğini ve hangilerinin yenmesinin güvenli olmadığını bilirler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuşların şarkılarını öğrenirler.",
+      "text_markdown": "Kuşların şarkılarını öğrenirler.",
+      "tts": {
+        "text": "Kuşların şarkılarını öğrenirler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayvanların izlerini öğrenirler.",
+      "text_markdown": "Hayvanların izlerini öğrenirler.",
+      "tts": {
+        "text": "Hayvanların izlerini öğrenirler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu bilgi, yıllar boyunca anne babadan çocuklara aktarılır.",
+      "text_markdown": "Bu bilgi, yıllar boyunca anne babadan çocuklara aktarılır.",
+      "tts": {
+        "text": "Bu bilgi, yıllar boyunca anne babadan çocuklara aktarılır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "İnsanlar",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her yağmur ormanında bu yaşamın kendi dilleri, kendi hikâyeleri ve kendi müziği vardır.",
+      "text_markdown": "Her yağmur ormanında bu yaşamın kendi dilleri, kendi hikâyeleri ve kendi müziği vardır.",
+      "tts": {
+        "text": "Her yağmur ormanında bu yaşamın kendi dilleri, kendi hikâyeleri ve kendi müziği vardır.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bugünün Yağmur Ormanı",
+      "text_markdown": "Bugünün Yağmur Ormanı"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tropikal yağmur ormanı, Dünya'daki en önemli biyomlardan biridir.",
+      "text_markdown": "Tropikal yağmur ormanı, Dünya'daki en önemli biyomlardan biridir.",
+      "tts": {
+        "text": "Tropikal yağmur ormanı, Dünya'daki en önemli biyomlardan biridir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar topraktan suyu çeker ve onu gökyüzüne soluk olarak verir.",
+      "text_markdown": "Ağaçlar topraktan suyu çeker ve onu gökyüzüne soluk olarak verir.",
+      "tts": {
+        "text": "Ağaçlar topraktan suyu çeker ve onu gökyüzüne soluk olarak verir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ormanın üzerinde oluşan bulutlar uzaktaki topraklara yağmur taşır.",
+      "text_markdown": "Ormanın üzerinde oluşan bulutlar uzaktaki topraklara yağmur taşır.",
+      "tts": {
+        "text": "Ormanın üzerinde oluşan bulutlar uzaktaki topraklara yağmur taşır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar da soluk alır, ama bizimkine ters yönde.",
+      "text_markdown": "Ağaçlar da soluk alır, ama bizimkine ters yönde.",
+      "tts": {
+        "text": "Ağaçlar da soluk alır, ama bizimkine ters yönde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bizim verdiğimiz gazı alırlar ve büyümek için onu kullanırlar.",
+      "text_markdown": "Bizim verdiğimiz gazı alırlar ve büyümek için onu kullanırlar.",
+      "tts": {
+        "text": "Bizim verdiğimiz gazı alırlar ve büyümek için onu kullanırlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ve bizim soluduğumuz gazı geri verirler.",
+      "text_markdown": "Ve bizim soluduğumuz gazı geri verirler.",
+      "tts": {
+        "text": "Ve bizim soluduğumuz gazı geri verirler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama yağmur ormanı tehlikede.",
+      "text_markdown": "Ama yağmur ormanı tehlikede.",
+      "tts": {
+        "text": "Ama yağmur ormanı tehlikede.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birçok yerde insanlar ürün ekmek ya da hayvan yetiştirmek için ağaçları kesmiştir.",
+      "text_markdown": "Birçok yerde insanlar ürün ekmek ya da hayvan yetiştirmek için ağaçları kesmiştir.",
+      "tts": {
+        "text": "Birçok yerde insanlar ürün ekmek ya da hayvan yetiştirmek için ağaçları kesmiştir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ağaçlar gittiğinde toprak akıp gider ve yağmur eskisi gibi düşmez olur.",
+      "text_markdown": "Ağaçlar gittiğinde toprak akıp gider ve yağmur eskisi gibi düşmez olur.",
+      "tts": {
+        "text": "Ağaçlar gittiğinde toprak akıp gider ve yağmur eskisi gibi düşmez olur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Orada yaşayan hayvanlar ve insanlar yuvalarını kaybeder.",
+      "text_markdown": "Orada yaşayan hayvanlar ve insanlar yuvalarını kaybeder.",
+      "tts": {
+        "text": "Orada yaşayan hayvanlar ve insanlar yuvalarını kaybeder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dünyada birçok grup, kalan ormanları korumak için çalışıyor.",
+      "text_markdown": "Dünyada birçok grup, kalan ormanları korumak için çalışıyor.",
+      "tts": {
+        "text": "Dünyada birçok grup, kalan ormanları korumak için çalışıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yeni ağaçlar dikiyorlar.",
+      "text_markdown": "Yeni ağaçlar dikiyorlar.",
+      "tts": {
+        "text": "Yeni ağaçlar dikiyorlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ormanda yaşayan insanlara, ormana göz kulak olmaları için yardım ediyorlar.",
+      "text_markdown": "Ormanda yaşayan insanlara, ormana göz kulak olmaları için yardım ediyorlar.",
+      "tts": {
+        "text": "Ormanda yaşayan insanlara, ormana göz kulak olmaları için yardım ediyorlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha iyi anlayabilmemiz için ormanı inceliyorlar.",
+      "text_markdown": "Daha iyi anlayabilmemiz için ormanı inceliyorlar.",
+      "tts": {
+        "text": "Daha iyi anlayabilmemiz için ormanı inceliyorlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir yağmur ormanının yetişmesi yüzyıllar alır.",
+      "text_markdown": "Bir yağmur ormanının yetişmesi yüzyıllar alır.",
+      "tts": {
+        "text": "Bir yağmur ormanının yetişmesi yüzyıllar alır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama sağlıklı bir yağmur ormanı binlerce yıl büyümeye devam edebilir.",
+      "text_markdown": "Ama sağlıklı bir yağmur ormanı binlerce yıl büyümeye devam edebilir.",
+      "tts": {
+        "text": "Ama sağlıklı bir yağmur ormanı binlerce yıl büyümeye devam edebilir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "Bugünün Yağmur Ormanı",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bizim özenimize değer.",
+      "text_markdown": "Bizim özenimize değer.",
+      "tts": {
+        "text": "Bizim özenimize değer.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Kapanış",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kapanış",
+      "text_markdown": "Kapanış"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Kapanış",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İşte tropikal yağmur ormanı budur.",
+      "text_markdown": "İşte tropikal yağmur ormanı budur.",
+      "tts": {
+        "text": "İşte tropikal yağmur ormanı budur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Kapanış",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıcak, yağmurlu, yeşil, yaşam dolu bir dünya.",
+      "text_markdown": "Sıcak, yağmurlu, yeşil, yaşam dolu bir dünya.",
+      "tts": {
+        "text": "Sıcak, yağmurlu, yeşil, yaşam dolu bir dünya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Kapanış",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir gün böyle bir ormana girersen, bir dakika kıpırdamadan dur.",
+      "text_markdown": "Bir gün böyle bir ormana girersen, bir dakika kıpırdamadan dur.",
+      "tts": {
+        "text": "Bir gün böyle bir ormana girersen, bir dakika kıpırdamadan dur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Kapanış",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuşları, kurbağaları ve yapraklara düşen yağmuru dinle.",
+      "text_markdown": "Kuşları, kurbağaları ve yapraklara düşen yağmuru dinle.",
+      "tts": {
+        "text": "Kuşları, kurbağaları ve yapraklara düşen yağmuru dinle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Kapanış",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etrafında atan biyomun kalbini duyacaksın.",
+      "text_markdown": "Etrafında atan biyomun kalbini duyacaksın.",
+      "tts": {
+        "text": "Etrafında atan biyomun kalbini duyacaksın.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

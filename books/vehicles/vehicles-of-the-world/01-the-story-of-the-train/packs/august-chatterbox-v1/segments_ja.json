@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者のみなさんへ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者のみなさんへ",
+      "text_markdown": "読者のみなさんへ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者のみなさんへ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二百年ものあいだ、列車は世界の鉄の道でした。",
+      "text_markdown": "二百年ものあいだ、列車は世界の鉄の道でした。",
+      "tts": {
+        "text": "二百年ものあいだ、列車は世界の鉄の道でした。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者のみなさんへ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "列車は人を運びます。",
+      "text_markdown": "列車は人を運びます。",
+      "tts": {
+        "text": "列車は人を運びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者のみなさんへ",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "列車は品物を運びます。",
+      "text_markdown": "列車は品物を運びます。",
+      "tts": {
+        "text": "列車は品物を運びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者のみなさんへ",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "長い列車は、町ひとつ分ほどの穀物を運べます。",
+      "text_markdown": "長い列車は、町ひとつ分ほどの穀物を運べます。",
+      "tts": {
+        "text": "長い列車は、町ひとつ分ほどの穀物を運べます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者のみなさんへ",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "速い列車は、高速道路の車より速く走れます。",
+      "text_markdown": "速い列車は、高速道路の車より速く走れます。",
+      "tts": {
+        "text": "速い列車は、高速道路の車より速く走れます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者のみなさんへ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "列車の物語は、今からおよそ二百年前のイギリスで、一人の男と火と湯のわいたやかんから始まります。",
+      "text_markdown": "列車の物語は、今からおよそ二百年前のイギリスで、一人の男と火と湯のわいたやかんから始まります。",
+      "tts": {
+        "text": "列車の物語は、今からおよそ二百年前のイギリスで、一人の男と火と湯のわいたやかんから始まります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第一章 最初の蒸気機関車",
+      "text_markdown": "第一章 最初の蒸気機関車"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "列車は、鉄のレールの上を走る車両のつながりです。",
+      "text_markdown": "列車は、鉄のレールの上を走る車両のつながりです。",
+      "tts": {
+        "text": "列車は、鉄のレールの上を走る車両のつながりです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "いちばん前の車両が機関車です。",
+      "text_markdown": "いちばん前の車両が機関車です。",
+      "tts": {
+        "text": "いちばん前の車両が機関車です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それがほかの車両をみんな引っぱります。",
+      "text_markdown": "それがほかの車両をみんな引っぱります。",
+      "tts": {
+        "text": "それがほかの車両をみんな引っぱります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の列車は蒸気で動いていました。",
+      "text_markdown": "最初の列車は蒸気で動いていました。",
+      "tts": {
+        "text": "最初の列車は蒸気で動いていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "蒸気機関は石炭を燃やして水をわかします。",
+      "text_markdown": "蒸気機関は石炭を燃やして水をわかします。",
+      "tts": {
+        "text": "蒸気機関は石炭を燃やして水をわかします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "熱い蒸気がピストンを押します。",
+      "text_markdown": "熱い蒸気がピストンを押します。",
+      "tts": {
+        "text": "熱い蒸気がピストンを押します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ピストンが車輪を回します。",
+      "text_markdown": "ピストンが車輪を回します。",
+      "tts": {
+        "text": "ピストンが車輪を回します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "車輪はレールの上を走ります。",
+      "text_markdown": "車輪はレールの上を走ります。",
+      "tts": {
+        "text": "車輪はレールの上を走ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "物語はイギリスで始まります。",
+      "text_markdown": "物語はイギリスで始まります。",
+      "tts": {
+        "text": "物語はイギリスで始まります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "千八百二十五年、最初の公共鉄道が開通しました。",
+      "text_markdown": "千八百二十五年、最初の公共鉄道が開通しました。",
+      "tts": {
+        "text": "千八百二十五年、最初の公共鉄道が開通しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その名はストックトン・アンド・ダーリントン鉄道でした。",
+      "text_markdown": "その名はストックトン・アンド・ダーリントン鉄道でした。",
+      "tts": {
+        "text": "その名はストックトン アンド ダーリントン鉄道でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは炭鉱から川まで石炭を運びました。",
+      "text_markdown": "それは炭鉱から川まで石炭を運びました。",
+      "tts": {
+        "text": "それは炭鉱から川まで石炭を運びました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ジョージ・スティーブンソンという人が、その機関車を作りました。",
+      "text_markdown": "ジョージ・スティーブンソンという人が、その機関車を作りました。",
+      "tts": {
+        "text": "ジョージ スティーブンソンという人が、その機関車を作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人々は彼を鉄道の父と呼びました。",
+      "text_markdown": "人々は彼を鉄道の父と呼びました。",
+      "tts": {
+        "text": "人々は彼を鉄道の父と呼びました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百二十九年、息子のロバート・スティーブンソンが、ロケット号という有名な機関車を作りました。",
+      "text_markdown": "千八百二十九年、息子のロバート・スティーブンソンが、ロケット号という有名な機関車を作りました。",
+      "tts": {
+        "text": "千八百二十九年、息子のロバート スティーブンソンが、ロケット号という有名な機関車を作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは最速の列車を決める競走で勝ちました。",
+      "text_markdown": "それは最速の列車を決める競走で勝ちました。",
+      "tts": {
+        "text": "それは最速の列車を決める競走で勝ちました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロケット号は、時速三十マイル近くで走れました。",
+      "text_markdown": "ロケット号は、時速三十マイル近くで走れました。",
+      "tts": {
+        "text": "ロケット号は、時速三十マイル近くで走れました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それはどんな馬よりも速かったのです。",
+      "text_markdown": "それはどんな馬よりも速かったのです。",
+      "tts": {
+        "text": "それはどんな馬よりも速かったのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章 最初の蒸気機関車",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "列車の時代が始まりました。",
+      "text_markdown": "列車の時代が始まりました。",
+      "tts": {
+        "text": "列車の時代が始まりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第二章 鉄の道が広がる",
+      "text_markdown": "第二章 鉄の道が広がる"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロケット号のあと、鉄道はすばやく広がりました。",
+      "text_markdown": "ロケット号のあと、鉄道はすばやく広がりました。",
+      "tts": {
+        "text": "ロケット号のあと、鉄道はすばやく広がりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イギリスには、何千マイルもの線路が敷かれました。",
+      "text_markdown": "イギリスには、何千マイルもの線路が敷かれました。",
+      "tts": {
+        "text": "イギリスには、何千マイルもの線路が敷かれました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そして世界のほかの国々もそれに続きました。",
+      "text_markdown": "そして世界のほかの国々もそれに続きました。",
+      "tts": {
+        "text": "そして世界のほかの国々もそれに続きました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千八百三十年、アメリカで最初の大きな鉄道が開通しました。",
+      "text_markdown": "千八百三十年、アメリカで最初の大きな鉄道が開通しました。",
+      "tts": {
+        "text": "千八百三十年、アメリカで最初の大きな鉄道が開通しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その名はボルティモア・アンド・オハイオ鉄道でした。",
+      "text_markdown": "その名はボルティモア・アンド・オハイオ鉄道でした。",
+      "tts": {
+        "text": "その名はボルティモア アンド オハイオ鉄道でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはボルティモアの町とオハイオ川を結びました。",
+      "text_markdown": "それはボルティモアの町とオハイオ川を結びました。",
+      "tts": {
+        "text": "それはボルティモアの町とオハイオ川を結びました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フランスでは、千八百三十二年に最初の鉄道が開通しました。",
+      "text_markdown": "フランスでは、千八百三十二年に最初の鉄道が開通しました。",
+      "tts": {
+        "text": "フランスでは、千八百三十二年に最初の鉄道が開通しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それもイギリスの路線と同じように石炭を運びました。",
+      "text_markdown": "それもイギリスの路線と同じように石炭を運びました。",
+      "tts": {
+        "text": "それもイギリスの路線と同じように石炭を運びました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ドイツでは、千八百三十九年に最初の長い鉄道が開通しました。",
+      "text_markdown": "ドイツでは、千八百三十九年に最初の長い鉄道が開通しました。",
+      "tts": {
+        "text": "ドイツでは、千八百三十九年に最初の長い鉄道が開通しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはライプツィヒとドレスデンという二つの町のあいだを走りました。",
+      "text_markdown": "それはライプツィヒとドレスデンという二つの町のあいだを走りました。",
+      "tts": {
+        "text": "それはライプツィヒとドレスデンという二つの町のあいだを走りました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロシアは千八百三十七年に最初の鉄道を作りました。",
+      "text_markdown": "ロシアは千八百三十七年に最初の鉄道を作りました。",
+      "tts": {
+        "text": "ロシアは千八百三十七年に最初の鉄道を作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その路線はサンクトペテルブルクから近くの町までのびていました。",
+      "text_markdown": "その路線はサンクトペテルブルクから近くの町までのびていました。",
+      "tts": {
+        "text": "その路線はサンクトペテルブルクから近くの町までのびていました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鉄道を作るのは大仕事でした。",
+      "text_markdown": "鉄道を作るのは大仕事でした。",
+      "tts": {
+        "text": "鉄道を作るのは大仕事でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人々は山をぬいてトンネルを掘りました。",
+      "text_markdown": "人々は山をぬいてトンネルを掘りました。",
+      "tts": {
+        "text": "人々は山をぬいてトンネルを掘りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人々は川に橋をかけました。",
+      "text_markdown": "人々は川に橋をかけました。",
+      "tts": {
+        "text": "人々は川に橋をかけました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "人々は一本一本のレールを手で敷きました。",
+      "text_markdown": "人々は一本一本のレールを手で敷きました。",
+      "tts": {
+        "text": "人々は一本一本のレールを手で敷きました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "路線にそって町が育ちました。",
+      "text_markdown": "路線にそって町が育ちました。",
+      "tts": {
+        "text": "路線にそって町が育ちました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "駅のある小さな村が、町や都市になることもありました。",
+      "text_markdown": "駅のある小さな村が、町や都市になることもありました。",
+      "tts": {
+        "text": "駅のある小さな村が、町や都市になることもありました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "列車は人を運んできました。",
+      "text_markdown": "列車は人を運んできました。",
+      "tts": {
+        "text": "列車は人を運んできました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "列車は品物を運んできました。",
+      "text_markdown": "列車は品物を運んできました。",
+      "tts": {
+        "text": "列車は品物を運んできました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章 鉄の道が広がる",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "列車は世界の距離を少し近づけました。",
+      "text_markdown": "列車は世界の距離を少し近づけました。",
+      "tts": {
+        "text": "列車は世界の距離を少し近づけました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第三章 偉大な路線",
+      "text_markdown": "第三章 偉大な路線"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短い鉄道もあります。",
+      "text_markdown": "短い鉄道もあります。",
+      "tts": {
+        "text": "短い鉄道もあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "とても長い鉄道もあります。",
+      "text_markdown": "とても長い鉄道もあります。",
+      "tts": {
+        "text": "とても長い鉄道もあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いちばん長い路線は、大陸をまるごと横切りました。",
+      "text_markdown": "いちばん長い路線は、大陸をまるごと横切りました。",
+      "tts": {
+        "text": "いちばん長い路線は、大陸をまるごと横切りました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アメリカ合衆国では、二つの会社が国を横断する鉄道を作りました。",
+      "text_markdown": "アメリカ合衆国では、二つの会社が国を横断する鉄道を作りました。",
+      "tts": {
+        "text": "アメリカ合衆国では、二つの会社が国を横断する鉄道を作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一つはカリフォルニアから始まり、東へ向かって進みました。",
+      "text_markdown": "一つはカリフォルニアから始まり、東へ向かって進みました。",
+      "tts": {
+        "text": "一つはカリフォルニアから始まり、東へ向かって進みました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "もう一つはネブラスカから始まり、西へ向かって進みました。",
+      "text_markdown": "もう一つはネブラスカから始まり、西へ向かって進みました。",
+      "tts": {
+        "text": "もう一つはネブラスカから始まり、西へ向かって進みました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その二つは、ユタ州のプロモントリー・サミットという場所で出会いました。",
+      "text_markdown": "その二つは、ユタ州のプロモントリー・サミットという場所で出会いました。",
+      "tts": {
+        "text": "その二つは、ユタ州のプロモントリー サミットという場所で出会いました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それは千八百六十九年のことでした。",
+      "text_markdown": "それは千八百六十九年のことでした。",
+      "tts": {
+        "text": "それは千八百六十九年のことでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最後のくぎは金で作られました。",
+      "text_markdown": "最後のくぎは金で作られました。",
+      "tts": {
+        "text": "最後のくぎは金で作られました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人々はそれをゴールデン・スパイクと呼びました。",
+      "text_markdown": "人々はそれをゴールデン・スパイクと呼びました。",
+      "tts": {
+        "text": "人々はそれをゴールデン スパイクと呼びました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その路線はトランスコンチネンタル鉄道と呼ばれました。",
+      "text_markdown": "その路線はトランスコンチネンタル鉄道と呼ばれました。",
+      "tts": {
+        "text": "その路線はトランスコンチネンタル鉄道と呼ばれました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "これで、一方の海からもう一方の海まで、およそ一週間で列車に乗って行けるようになりました。",
+      "text_markdown": "これで、一方の海からもう一方の海まで、およそ一週間で列車に乗って行けるようになりました。",
+      "tts": {
+        "text": "これで、一方の海からもう一方の海まで、およそ一週間で列車に乗って行けるようになりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロシアはさらに長い路線を作りました。",
+      "text_markdown": "ロシアはさらに長い路線を作りました。",
+      "tts": {
+        "text": "ロシアはさらに長い路線を作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはトランスシベリア鉄道と呼ばれています。",
+      "text_markdown": "それはトランスシベリア鉄道と呼ばれています。",
+      "tts": {
+        "text": "それはトランスシベリア鉄道と呼ばれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それは西のモスクワから東のウラジオストクまで続いています。",
+      "text_markdown": "それは西のモスクワから東のウラジオストクまで続いています。",
+      "tts": {
+        "text": "それは西のモスクワから東のウラジオストクまで続いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その路線は千九百十六年に完成しました。",
+      "text_markdown": "その路線は千九百十六年に完成しました。",
+      "tts": {
+        "text": "その路線は千九百十六年に完成しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "長さは九千キロメートルをこえます。",
+      "text_markdown": "長さは九千キロメートルをこえます。",
+      "tts": {
+        "text": "長さは九千キロメートルをこえます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "端から端まで行くには、およそ七日かかります。",
+      "text_markdown": "端から端まで行くには、およそ七日かかります。",
+      "tts": {
+        "text": "端から端まで行くには、およそ七日かかります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章 偉大な路線",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "それは今でも世界でいちばん長い鉄道です。",
+      "text_markdown": "それは今でも世界でいちばん長い鉄道です。",
+      "tts": {
+        "text": "それは今でも世界でいちばん長い鉄道です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第四章 蒸気、ディーゼル、電気",
+      "text_markdown": "第四章 蒸気、ディーゼル、電気"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "およそ百年のあいだ、ほとんどすべての列車が蒸気機関車でした。",
+      "text_markdown": "およそ百年のあいだ、ほとんどすべての列車が蒸気機関車でした。",
+      "tts": {
+        "text": "およそ百年のあいだ、ほとんどすべての列車が蒸気機関車でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "蒸気機関車は大きくて音も大きかったです。",
+      "text_markdown": "蒸気機関車は大きくて音も大きかったです。",
+      "tts": {
+        "text": "蒸気機関車は大きくて音も大きかったです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それらは石炭を燃やしました。",
+      "text_markdown": "それらは石炭を燃やしました。",
+      "tts": {
+        "text": "それらは石炭を燃やしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それらは空へ黒いけむりをはきました。",
+      "text_markdown": "それらは空へ黒いけむりをはきました。",
+      "tts": {
+        "text": "それらは空へ黒いけむりをはきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そのつぎに、ディーゼル機関車がやってきました。",
+      "text_markdown": "そのつぎに、ディーゼル機関車がやってきました。",
+      "tts": {
+        "text": "そのつぎに、ディーゼル機関車がやってきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ディーゼル機関は石炭のかわりに油を燃やします。",
+      "text_markdown": "ディーゼル機関は石炭のかわりに油を燃やします。",
+      "tts": {
+        "text": "ディーゼル機関は石炭のかわりに油を燃やします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはもっと小さくて、もっときれいでした。",
+      "text_markdown": "それはもっと小さくて、もっときれいでした。",
+      "tts": {
+        "text": "それはもっと小さくて、もっときれいでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それには火も水のタンクもいりません。",
+      "text_markdown": "それには火も水のタンクもいりません。",
+      "tts": {
+        "text": "それには火も水のタンクもいりません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ディーゼル列車は、千九百四十年代と千九百五十年代に広く使われるようになりました。",
+      "text_markdown": "ディーゼル列車は、千九百四十年代と千九百五十年代に広く使われるようになりました。",
+      "tts": {
+        "text": "ディーゼル列車は、千九百四十年代と千九百五十年代に広く使われるようになりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "やがて、大きな蒸気機関車は少しずつ引退していきました。",
+      "text_markdown": "やがて、大きな蒸気機関車は少しずつ引退していきました。",
+      "tts": {
+        "text": "やがて、大きな蒸気機関車は少しずつ引退していきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "いくつかは今も博物館や観光路線で大切にされています。",
+      "text_markdown": "いくつかは今も博物館や観光路線で大切にされています。",
+      "tts": {
+        "text": "いくつかは今も博物館や観光路線で大切にされています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その次の一歩は電車でした。",
+      "text_markdown": "その次の一歩は電車でした。",
+      "tts": {
+        "text": "その次の一歩は電車でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "電車には、燃料を燃やすエンジンがありません。",
+      "text_markdown": "電車には、燃料を燃やすエンジンがありません。",
+      "tts": {
+        "text": "電車には、燃料を燃やすエンジンがありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "電車は、線路の上の電線や、線路のわきの第三のレールから電気を受け取ります。",
+      "text_markdown": "電車は、線路の上の電線や、線路のわきの第三のレールから電気を受け取ります。",
+      "tts": {
+        "text": "電車は、線路の上の電線や、線路のわきの第三のレールから電気を受け取ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "電車は静かで、とてもきれいです。",
+      "text_markdown": "電車は静かで、とてもきれいです。",
+      "tts": {
+        "text": "電車は静かで、とてもきれいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "しかも、とても力強いです。",
+      "text_markdown": "しかも、とても力強いです。",
+      "tts": {
+        "text": "しかも、とても力強いです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "町の中の多くの列車や、今の速い列車の多くは電車です。",
+      "text_markdown": "町の中の多くの列車や、今の速い列車の多くは電車です。",
+      "tts": {
+        "text": "町の中の多くの列車や、今の速い列車の多くは電車です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蒸気、ディーゼル、電気。",
+      "text_markdown": "蒸気、ディーゼル、電気。",
+      "tts": {
+        "text": "蒸気、ディーゼル、電気。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章 蒸気、ディーゼル、電気",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三つの動力、三つの時代です。",
+      "text_markdown": "三つの動力、三つの時代です。",
+      "tts": {
+        "text": "三つの動力、三つの時代です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第五章 新幹線と速さの競争",
+      "text_markdown": "第五章 新幹線と速さの競争"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千九百六十四年、日本はまったく新しい鉄道路線を開通させました。",
+      "text_markdown": "千九百六十四年、日本はまったく新しい鉄道路線を開通させました。",
+      "tts": {
+        "text": "千九百六十四年、日本はまったく新しい鉄道路線を開通させました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは東京から大阪まで走りました。",
+      "text_markdown": "それは東京から大阪まで走りました。",
+      "tts": {
+        "text": "それは東京から大阪まで走りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その列車は、長い白い弾丸のように見えました。",
+      "text_markdown": "その列車は、長い白い弾丸のように見えました。",
+      "tts": {
+        "text": "その列車は、長い白い弾丸のように見えました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "人々はそれを弾丸列車と呼びました。",
+      "text_markdown": "人々はそれを弾丸列車と呼びました。",
+      "tts": {
+        "text": "人々はそれを弾丸列車と呼びました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "日本語の名前は新幹線です。",
+      "text_markdown": "日本語の名前は新幹線です。",
+      "tts": {
+        "text": "日本語の名前は新幹線です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の弾丸列車は時速百三十マイルで走りました。",
+      "text_markdown": "最初の弾丸列車は時速百三十マイルで走りました。",
+      "tts": {
+        "text": "最初の弾丸列車は時速百三十マイルで走りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは千九百六十四年の列車としては、とても速かったのです。",
+      "text_markdown": "それは千九百六十四年の列車としては、とても速かったのです。",
+      "tts": {
+        "text": "それは千九百六十四年の列車としては、とても速かったのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その路線は東京オリンピックにちょうど間に合うように開通しました。",
+      "text_markdown": "その路線は東京オリンピックにちょうど間に合うように開通しました。",
+      "tts": {
+        "text": "その路線は東京オリンピックにちょうど間に合うように開通しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかの国々もあとに続きました。",
+      "text_markdown": "ほかの国々もあとに続きました。",
+      "tts": {
+        "text": "ほかの国々もあとに続きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランスは千九百八十一年に高速路線を開通させました。",
+      "text_markdown": "フランスは千九百八十一年に高速路線を開通させました。",
+      "tts": {
+        "text": "フランスは千九百八十一年に高速路線を開通させました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その列車はTGVと呼ばれています。",
+      "text_markdown": "その列車はTGVと呼ばれています。",
+      "tts": {
+        "text": "その列車はティー ジー ヴィーと呼ばれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ドイツもICEでそれに続きました。",
+      "text_markdown": "ドイツもICEでそれに続きました。",
+      "tts": {
+        "text": "ドイツもアイ シー イーでそれに続きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "イタリアとスペインと韓国も、それぞれの高速路線を作りました。",
+      "text_markdown": "イタリアとスペインと韓国も、それぞれの高速路線を作りました。",
+      "tts": {
+        "text": "イタリアとスペインと韓国も、それぞれの高速路線を作りました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中国は始めるのはいちばん遅かったのですが、とても速い勢いで作りました。",
+      "text_markdown": "中国は始めるのはいちばん遅かったのですが、とても速い勢いで作りました。",
+      "tts": {
+        "text": "中国は始めるのはいちばん遅かったのですが、とても速い勢いで作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今では、中国が世界最大の高速鉄道網を持っています。",
+      "text_markdown": "今では、中国が世界最大の高速鉄道網を持っています。",
+      "tts": {
+        "text": "今では、中国が世界最大の高速鉄道網を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "線路の長さは何万キロメートルにもなります。",
+      "text_markdown": "線路の長さは何万キロメートルにもなります。",
+      "tts": {
+        "text": "線路の長さは何万キロメートルにもなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今の弾丸列車は、時速二百マイルをこえて走り続けることができます。",
+      "text_markdown": "今の弾丸列車は、時速二百マイルをこえて走り続けることができます。",
+      "tts": {
+        "text": "今の弾丸列車は、時速二百マイルをこえて走り続けることができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それらはなめらかで静かで、ほとんどいつも時間どおりです。",
+      "text_markdown": "それらはなめらかで静かで、ほとんどいつも時間どおりです。",
+      "tts": {
+        "text": "それらはなめらかで静かで、ほとんどいつも時間どおりです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章 新幹線と速さの競争",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "多くの旅では、飛行機よりも速いのです。",
+      "text_markdown": "多くの旅では、飛行機よりも速いのです。",
+      "tts": {
+        "text": "多くの旅では、飛行機よりも速いのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第六章 いろいろな列車",
+      "text_markdown": "第六章 いろいろな列車"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "すべての列車が同じではありません。",
+      "text_markdown": "すべての列車が同じではありません。",
+      "tts": {
+        "text": "すべての列車が同じではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "列車にはたくさんの種類があります。",
+      "text_markdown": "列車にはたくさんの種類があります。",
+      "tts": {
+        "text": "列車にはたくさんの種類があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "旅客列車は人を運びます。",
+      "text_markdown": "旅客列車は人を運びます。",
+      "tts": {
+        "text": "旅客列車は人を運びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこには座席と窓があり、ときには食堂車や寝台車もあります。",
+      "text_markdown": "そこには座席と窓があり、ときには食堂車や寝台車もあります。",
+      "tts": {
+        "text": "そこには座席と窓があり、ときには食堂車や寝台車もあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "貨物列車は品物を運びます。",
+      "text_markdown": "貨物列車は品物を運びます。",
+      "tts": {
+        "text": "貨物列車は品物を運びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その車両は貨車と呼ばれます。",
+      "text_markdown": "その車両は貨車と呼ばれます。",
+      "tts": {
+        "text": "その車両は貨車と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "穀物を運ぶものもあります。",
+      "text_markdown": "穀物を運ぶものもあります。",
+      "tts": {
+        "text": "穀物を運ぶものもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "油を運ぶものもあります。",
+      "text_markdown": "油を運ぶものもあります。",
+      "tts": {
+        "text": "油を運ぶものもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "二段に積んだ大きなコンテナを、そのまま運ぶものもあります。",
+      "text_markdown": "二段に積んだ大きなコンテナを、そのまま運ぶものもあります。",
+      "tts": {
+        "text": "二段に積んだ大きなコンテナを、そのまま運ぶものもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地下鉄は町の地下を走る列車です。",
+      "text_markdown": "地下鉄は町の地下を走る列車です。",
+      "tts": {
+        "text": "地下鉄は町の地下を走る列車です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最初の地下鉄は、千八百六十三年にロンドンで開通しました。",
+      "text_markdown": "最初の地下鉄は、千八百六十三年にロンドンで開通しました。",
+      "tts": {
+        "text": "最初の地下鉄は、千八百六十三年にロンドンで開通しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今では、大きな町の道路の下に、大きな地下鉄の網があります。",
+      "text_markdown": "今では、大きな町の道路の下に、大きな地下鉄の網があります。",
+      "tts": {
+        "text": "今では、大きな町の道路の下に、大きな地下鉄の網があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "路面電車やライトレールは、町の道路を走る小さな列車です。",
+      "text_markdown": "路面電車やライトレールは、町の道路を走る小さな列車です。",
+      "tts": {
+        "text": "路面電車やライトレールは、町の道路を走る小さな列車です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはよく車やバスと同じ道を走ります。",
+      "text_markdown": "それはよく車やバスと同じ道を走ります。",
+      "tts": {
+        "text": "それはよく車やバスと同じ道を走ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "山岳鉄道は急な坂をのぼります。",
+      "text_markdown": "山岳鉄道は急な坂をのぼります。",
+      "tts": {
+        "text": "山岳鉄道は急な坂をのぼります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "中には、まん中にコグと呼ばれる、歯のついた特別なレールを持つものもあります。",
+      "text_markdown": "中には、まん中にコグと呼ばれる、歯のついた特別なレールを持つものもあります。",
+      "tts": {
+        "text": "中には、まん中にコグと呼ばれる、歯のついた特別なレールを持つものもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "機関車はそのコグをしっかりつかんで、安全にのぼったり下りたりします。",
+      "text_markdown": "機関車はそのコグをしっかりつかんで、安全にのぼったり下りたりします。",
+      "tts": {
+        "text": "機関車はそのコグをしっかりつかんで、安全にのぼったり下りたりします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "観光のための列車もあります。",
+      "text_markdown": "観光のための列車もあります。",
+      "tts": {
+        "text": "観光のための列車もあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章 いろいろな列車",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それらは景色を楽しむために、森や山の中を走ります。",
+      "text_markdown": "それらは景色を楽しむために、森や山の中を走ります。",
+      "tts": {
+        "text": "それらは景色を楽しむために、森や山の中を走ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第七章 レールの上の未来",
+      "text_markdown": "第七章 レールの上の未来"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "列車の物語はまだ終わっていません。",
+      "text_markdown": "列車の物語はまだ終わっていません。",
+      "tts": {
+        "text": "列車の物語はまだ終わっていません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今このときも、新しい種類の列車が作られています。",
+      "text_markdown": "今このときも、新しい種類の列車が作られています。",
+      "tts": {
+        "text": "今このときも、新しい種類の列車が作られています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "いちばんおどろくのは、マグレブです。",
+      "text_markdown": "いちばんおどろくのは、マグレブです。",
+      "tts": {
+        "text": "いちばんおどろくのは、マグレブです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "マグレブという言葉は、磁気浮上を短くした呼び方です。",
+      "text_markdown": "マグレブという言葉は、磁気浮上を短くした呼び方です。",
+      "tts": {
+        "text": "マグレブという言葉は、磁気浮上を短くした呼び方です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "マグレブ列車は線路に触れません。",
+      "text_markdown": "マグレブ列車は線路に触れません。",
+      "tts": {
+        "text": "マグレブ列車は線路に触れません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは磁石の力でふわりと浮かびます。",
+      "text_markdown": "それは磁石の力でふわりと浮かびます。",
+      "tts": {
+        "text": "それは磁石の力でふわりと浮かびます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "回る車輪はありません。",
+      "text_markdown": "回る車輪はありません。",
+      "tts": {
+        "text": "回る車輪はありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "こすれる力もありません。",
+      "text_markdown": "こすれる力もありません。",
+      "tts": {
+        "text": "こすれる力もありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二千四年、中国の上海でマグレブの路線が開通しました。",
+      "text_markdown": "二千四年、中国の上海でマグレブの路線が開通しました。",
+      "tts": {
+        "text": "二千四年、中国の上海でマグレブの路線が開通しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その列車は時速二百五十マイルをこえる速さに達します。",
+      "text_markdown": "その列車は時速二百五十マイルをこえる速さに達します。",
+      "tts": {
+        "text": "その列車は時速二百五十マイルをこえる速さに達します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "日本では、試験用のマグレブ列車が時速三百七十マイルをこえる速さで走りました。",
+      "text_markdown": "日本では、試験用のマグレブ列車が時速三百七十マイルをこえる速さで走りました。",
+      "tts": {
+        "text": "日本では、試験用のマグレブ列車が時速三百七十マイルをこえる速さで走りました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかの技術者たちは、水素列車にも取り組んでいます。",
+      "text_markdown": "ほかの技術者たちは、水素列車にも取り組んでいます。",
+      "tts": {
+        "text": "ほかの技術者たちは、水素列車にも取り組んでいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "水素列車は、小さな燃料電池で電気を作ります。",
+      "text_markdown": "水素列車は、小さな燃料電池で電気を作ります。",
+      "tts": {
+        "text": "水素列車は、小さな燃料電池で電気を作ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エンジンから出るのは、水蒸気だけです。",
+      "text_markdown": "エンジンから出るのは、水蒸気だけです。",
+      "tts": {
+        "text": "エンジンから出るのは、水蒸気だけです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "けむりは出ません。",
+      "text_markdown": "けむりは出ません。",
+      "tts": {
+        "text": "けむりは出ません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "石炭もいりません。",
+      "text_markdown": "石炭もいりません。",
+      "tts": {
+        "text": "石炭もいりません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "最初の水素列車は、二千十八年にドイツで走り始めました。",
+      "text_markdown": "最初の水素列車は、二千十八年にドイツで走り始めました。",
+      "tts": {
+        "text": "最初の水素列車は、二千十八年にドイツで走り始めました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "列車はとても古いものです。",
+      "text_markdown": "列車はとても古いものです。",
+      "tts": {
+        "text": "列車はとても古いものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "でも、とても新しくもあります。",
+      "text_markdown": "でも、とても新しくもあります。",
+      "tts": {
+        "text": "でも、とても新しくもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章 レールの上の未来",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロケット号から二百年たっても、レールはまだ未来へ続いています。",
+      "text_markdown": "ロケット号から二百年たっても、レールはまだ未来へ続いています。",
+      "tts": {
+        "text": "ロケット号から二百年たっても、レールはまだ未来へ続いています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "鉄の道は続く",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "鉄の道は続く",
+      "text_markdown": "鉄の道は続く"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "鉄の道は続く",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ロケット号からマグレブまで、列車はおよそ二百年にわたって世界を前へ運んできました。",
+      "text_markdown": "ロケット号からマグレブまで、列車はおよそ二百年にわたって世界を前へ運んできました。",
+      "tts": {
+        "text": "ロケット号からマグレブまで、列車はおよそ二百年にわたって世界を前へ運んできました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "鉄の道は続く",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今このときも、砂漠や山の中や町の地下で、新しい線路が敷かれています。",
+      "text_markdown": "今このときも、砂漠や山の中や町の地下で、新しい線路が敷かれています。",
+      "tts": {
+        "text": "今このときも、砂漠や山の中や町の地下で、新しい線路が敷かれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "鉄の道は続く",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "次の駅は、いつもこの先のどこかにあります。",
+      "text_markdown": "次の駅は、いつもこの先のどこかにあります。",
+      "tts": {
+        "text": "次の駅は、いつもこの先のどこかにあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "ja"
+}

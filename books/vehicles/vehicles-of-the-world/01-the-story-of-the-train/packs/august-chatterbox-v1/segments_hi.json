@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "hi",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पाठक के लिए एक बात",
+      "text_markdown": "पाठक के लिए एक बात"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "करीब दो सौ सालों से, ट्रेन दुनिया की लोहे की राह रही है।",
+      "text_markdown": "करीब दो सौ सालों से, ट्रेन दुनिया की लोहे की राह रही है।",
+      "tts": {
+        "text": "करीब दो सौ सालों से, ट्रेन दुनिया की लोहे की राह रही है।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ट्रेनें लोगों को ले जाती हैं।",
+      "text_markdown": "ट्रेनें लोगों को ले जाती हैं।",
+      "tts": {
+        "text": "ट्रेनें लोगों को ले जाती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ट्रेनें सामान ले जाती हैं।",
+      "text_markdown": "ट्रेनें सामान ले जाती हैं।",
+      "tts": {
+        "text": "ट्रेनें सामान ले जाती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "एक लंबी ट्रेन, पूरे कस्बे भर का अनाज ले जा सकती है।",
+      "text_markdown": "एक लंबी ट्रेन, पूरे कस्बे भर का अनाज ले जा सकती है।",
+      "tts": {
+        "text": "एक लंबी ट्रेन, पूरे कस्बे भर का अनाज ले जा सकती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "एक तेज ट्रेन, राजमार्ग पर कार से आगे निकल सकती है।",
+      "text_markdown": "एक तेज ट्रेन, राजमार्ग पर कार से आगे निकल सकती है।",
+      "tts": {
+        "text": "एक तेज ट्रेन, राजमार्ग पर कार से आगे निकल सकती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "पाठक के लिए एक बात",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ट्रेन की कहानी इंग्लैंड में, करीब दो सौ साल पहले, एक आदमी, एक आग, और उबलते पानी की केतली के साथ शुरू होती है।",
+      "text_markdown": "ट्रेन की कहानी इंग्लैंड में, करीब दो सौ साल पहले, एक आदमी, एक आग, और उबलते पानी की केतली के साथ शुरू होती है।",
+      "tts": {
+        "text": "ट्रेन की कहानी इंग्लैंड में, करीब दो सौ साल पहले, एक आदमी, एक आग, और उबलते पानी की केतली के साथ शुरू होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय एक: पहली भाप ट्रेन",
+      "text_markdown": "अध्याय एक: पहली भाप ट्रेन"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ट्रेन डिब्बों की एक कतार होती है, जो लोहे की पटरियों पर चलती है।",
+      "text_markdown": "ट्रेन डिब्बों की एक कतार होती है, जो लोहे की पटरियों पर चलती है।",
+      "tts": {
+        "text": "ट्रेन डिब्बों की एक कतार होती है, जो लोहे की पटरियों पर चलती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सबसे आगे लोकोमोटिव होता है।",
+      "text_markdown": "सबसे आगे लोकोमोटिव होता है।",
+      "tts": {
+        "text": "सबसे आगे लोकोमोटिव होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वही बाकी सबको खींचता है।",
+      "text_markdown": "वही बाकी सबको खींचता है।",
+      "tts": {
+        "text": "वही बाकी सबको खींचता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहली ट्रेनें भाप से चलती थीं।",
+      "text_markdown": "पहली ट्रेनें भाप से चलती थीं।",
+      "tts": {
+        "text": "पहली ट्रेनें भाप से चलती थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "भाप का इंजन, पानी उबालने के लिए कोयला जलाता है।",
+      "text_markdown": "भाप का इंजन, पानी उबालने के लिए कोयला जलाता है।",
+      "tts": {
+        "text": "भाप का इंजन, पानी उबालने के लिए कोयला जलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "गरम भाप, पिस्टनों को धक्का देती है।",
+      "text_markdown": "गरम भाप, पिस्टनों को धक्का देती है।",
+      "tts": {
+        "text": "गरम भाप, पिस्टनों को धक्का देती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पिस्टन, पहियों को घुमाते हैं।",
+      "text_markdown": "पिस्टन, पहियों को घुमाते हैं।",
+      "tts": {
+        "text": "पिस्टन, पहियों को घुमाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "पहिए पटरियों पर चलते हैं।",
+      "text_markdown": "पहिए पटरियों पर चलते हैं।",
+      "tts": {
+        "text": "पहिए पटरियों पर चलते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कहानी इंग्लैंड में शुरू होती है।",
+      "text_markdown": "कहानी इंग्लैंड में शुरू होती है।",
+      "tts": {
+        "text": "कहानी इंग्लैंड में शुरू होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सन् अठारह सौ पच्चीस में, पहली सार्वजनिक रेलवे खुली।",
+      "text_markdown": "सन् अठारह सौ पच्चीस में, पहली सार्वजनिक रेलवे खुली।",
+      "tts": {
+        "text": "सन् अठारह सौ पच्चीस में, पहली सार्वजनिक रेलवे खुली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसका नाम स्टॉकटन एंड डार्लिंगटन रेलवे था।",
+      "text_markdown": "उसका नाम स्टॉकटन एंड डार्लिंगटन रेलवे था।",
+      "tts": {
+        "text": "उसका नाम स्टॉकटन एंड डार्लिंगटन रेलवे था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह एक खान से नदी तक कोयला ले जाती थी।",
+      "text_markdown": "वह एक खान से नदी तक कोयला ले जाती थी।",
+      "tts": {
+        "text": "वह एक खान से नदी तक कोयला ले जाती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जॉर्ज स्टीफेन्सन नाम के एक आदमी ने वे लोकोमोटिव बनाए।",
+      "text_markdown": "जॉर्ज स्टीफेन्सन नाम के एक आदमी ने वे लोकोमोटिव बनाए।",
+      "tts": {
+        "text": "जॉर्ज स्टीफेन्सन नाम के एक आदमी ने वे लोकोमोटिव बनाए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लोग उन्हें रेलवे का जनक कहते थे।",
+      "text_markdown": "लोग उन्हें रेलवे का जनक कहते थे।",
+      "tts": {
+        "text": "लोग उन्हें रेलवे का जनक कहते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सन् अठारह सौ उनतीस में, उनके बेटे रॉबर्ट स्टीफेन्सन ने रॉकेट नाम का एक मशहूर लोकोमोटिव बनाया।",
+      "text_markdown": "सन् अठारह सौ उनतीस में, उनके बेटे रॉबर्ट स्टीफेन्सन ने रॉकेट नाम का एक मशहूर लोकोमोटिव बनाया।",
+      "tts": {
+        "text": "सन् अठारह सौ उनतीस में, उनके बेटे रॉबर्ट स्टीफेन्सन ने रॉकेट नाम का एक मशहूर लोकोमोटिव बनाया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसने सबसे तेज ट्रेन की दौड़ जीत ली।",
+      "text_markdown": "उसने सबसे तेज ट्रेन की दौड़ जीत ली।",
+      "tts": {
+        "text": "उसने सबसे तेज ट्रेन की दौड़ जीत ली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "रॉकेट करीब तीस मील प्रति घंटा चल सकती थी।",
+      "text_markdown": "रॉकेट करीब तीस मील प्रति घंटा चल सकती थी।",
+      "tts": {
+        "text": "रॉकेट करीब तीस मील प्रति घंटा चल सकती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "यह किसी भी घोड़े से तेज था।",
+      "text_markdown": "यह किसी भी घोड़े से तेज था।",
+      "tts": {
+        "text": "यह किसी भी घोड़े से तेज था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "अध्याय एक: पहली भाप ट्रेन",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ट्रेन का युग शुरू हो चुका था।",
+      "text_markdown": "ट्रेन का युग शुरू हो चुका था।",
+      "tts": {
+        "text": "ट्रेन का युग शुरू हो चुका था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय दो: लोहे की राह फैलती है",
+      "text_markdown": "अध्याय दो: लोहे की राह फैलती है"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रॉकेट के बाद, रेलवे तेजी से फैलने लगी।",
+      "text_markdown": "रॉकेट के बाद, रेलवे तेजी से फैलने लगी।",
+      "tts": {
+        "text": "रॉकेट के बाद, रेलवे तेजी से फैलने लगी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ब्रिटेन ने हजारों मील लंबी पटरियां बिछाईं।",
+      "text_markdown": "ब्रिटेन ने हजारों मील लंबी पटरियां बिछाईं।",
+      "tts": {
+        "text": "ब्रिटेन ने हजारों मील लंबी पटरियां बिछाईं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फिर दुनिया के बाकी हिस्सों ने भी उसका साथ दिया।",
+      "text_markdown": "फिर दुनिया के बाकी हिस्सों ने भी उसका साथ दिया।",
+      "tts": {
+        "text": "फिर दुनिया के बाकी हिस्सों ने भी उसका साथ दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सन् अठारह सौ तीस में, अमेरिका की पहली बड़ी रेलवे खुली।",
+      "text_markdown": "सन् अठारह सौ तीस में, अमेरिका की पहली बड़ी रेलवे खुली।",
+      "tts": {
+        "text": "सन् अठारह सौ तीस में, अमेरिका की पहली बड़ी रेलवे खुली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसका नाम बाल्टिमोर एंड ओहायो था।",
+      "text_markdown": "उसका नाम बाल्टिमोर एंड ओहायो था।",
+      "tts": {
+        "text": "उसका नाम बाल्टिमोर एंड ओहायो था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उसने बाल्टिमोर शहर को ओहायो नदी से जोड़ दिया।",
+      "text_markdown": "उसने बाल्टिमोर शहर को ओहायो नदी से जोड़ दिया।",
+      "tts": {
+        "text": "उसने बाल्टिमोर शहर को ओहायो नदी से जोड़ दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फ्रांस में, पहली रेलवे सन् अठारह सौ बत्तीस में खुली।",
+      "text_markdown": "फ्रांस में, पहली रेलवे सन् अठारह सौ बत्तीस में खुली।",
+      "tts": {
+        "text": "फ्रांस में, पहली रेलवे सन् अठारह सौ बत्तीस में खुली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह ब्रिटेन की लाइन की तरह कोयला ले जाती थी।",
+      "text_markdown": "वह ब्रिटेन की लाइन की तरह कोयला ले जाती थी।",
+      "tts": {
+        "text": "वह ब्रिटेन की लाइन की तरह कोयला ले जाती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जर्मनी में, पहली लंबी रेलवे सन् अठारह सौ उनतालीस में खुली।",
+      "text_markdown": "जर्मनी में, पहली लंबी रेलवे सन् अठारह सौ उनतालीस में खुली।",
+      "tts": {
+        "text": "जर्मनी में, पहली लंबी रेलवे सन् अठारह सौ उनतालीस में खुली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह लाइपजिग और ड्रेस्डेन, इन दो शहरों के बीच चलती थी।",
+      "text_markdown": "वह लाइपजिग और ड्रेस्डेन, इन दो शहरों के बीच चलती थी।",
+      "tts": {
+        "text": "वह लाइपजिग और ड्रेस्डेन, इन दो शहरों के बीच चलती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रूस ने अपनी पहली रेलवे सन् अठारह सौ सैंतीस में बनाई।",
+      "text_markdown": "रूस ने अपनी पहली रेलवे सन् अठारह सौ सैंतीस में बनाई।",
+      "tts": {
+        "text": "रूस ने अपनी पहली रेलवे सन् अठारह सौ सैंतीस में बनाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह लाइन सेंट पीटर्सबर्ग से पास के एक कस्बे तक जाती थी।",
+      "text_markdown": "यह लाइन सेंट पीटर्सबर्ग से पास के एक कस्बे तक जाती थी।",
+      "tts": {
+        "text": "यह लाइन सेंट पीटर्सबर्ग से पास के एक कस्बे तक जाती थी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रेलवे बनाना कठिन काम था।",
+      "text_markdown": "रेलवे बनाना कठिन काम था।",
+      "tts": {
+        "text": "रेलवे बनाना कठिन काम था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लोगों ने पहाड़ों के बीच सुरंगें खोदीं।",
+      "text_markdown": "लोगों ने पहाड़ों के बीच सुरंगें खोदीं।",
+      "tts": {
+        "text": "लोगों ने पहाड़ों के बीच सुरंगें खोदीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उन्होंने नदियों के ऊपर पुल बनाए।",
+      "text_markdown": "उन्होंने नदियों के ऊपर पुल बनाए।",
+      "tts": {
+        "text": "उन्होंने नदियों के ऊपर पुल बनाए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उन्होंने हर पटरी हाथ से बिछाई।",
+      "text_markdown": "उन्होंने हर पटरी हाथ से बिछाई।",
+      "tts": {
+        "text": "उन्होंने हर पटरी हाथ से बिछाई।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इन लाइनों के किनारे कस्बे बढ़ने लगे।",
+      "text_markdown": "इन लाइनों के किनारे कस्बे बढ़ने लगे।",
+      "tts": {
+        "text": "इन लाइनों के किनारे कस्बे बढ़ने लगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "स्टेशन वाला एक छोटा गांव, शहर बन सकता था।",
+      "text_markdown": "स्टेशन वाला एक छोटा गांव, शहर बन सकता था।",
+      "tts": {
+        "text": "स्टेशन वाला एक छोटा गांव, शहर बन सकता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ट्रेन लोगों को लेकर आई।",
+      "text_markdown": "ट्रेन लोगों को लेकर आई।",
+      "tts": {
+        "text": "ट्रेन लोगों को लेकर आई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ट्रेन सामान लेकर आई।",
+      "text_markdown": "ट्रेन सामान लेकर आई।",
+      "tts": {
+        "text": "ट्रेन सामान लेकर आई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "अध्याय दो: लोहे की राह फैलती है",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ट्रेन ने दुनिया को थोड़ा और करीब ला दिया।",
+      "text_markdown": "ट्रेन ने दुनिया को थोड़ा और करीब ला दिया।",
+      "tts": {
+        "text": "ट्रेन ने दुनिया को थोड़ा और करीब ला दिया।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय तीन: महान रेल लाइनें",
+      "text_markdown": "अध्याय तीन: महान रेल लाइनें"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ रेलवे छोटी होती हैं।",
+      "text_markdown": "कुछ रेलवे छोटी होती हैं।",
+      "tts": {
+        "text": "कुछ रेलवे छोटी होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कुछ बहुत लंबी होती हैं।",
+      "text_markdown": "कुछ बहुत लंबी होती हैं।",
+      "tts": {
+        "text": "कुछ बहुत लंबी होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "सबसे लंबी लाइनें पूरे महाद्वीपों को पार करती थीं।",
+      "text_markdown": "सबसे लंबी लाइनें पूरे महाद्वीपों को पार करती थीं।",
+      "tts": {
+        "text": "सबसे लंबी लाइनें पूरे महाद्वीपों को पार करती थीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "संयुक्त राज्य अमेरिका में, दो कंपनियों ने पूरे देश के आरपार एक रेलवे बनाई।",
+      "text_markdown": "संयुक्त राज्य अमेरिका में, दो कंपनियों ने पूरे देश के आरपार एक रेलवे बनाई।",
+      "tts": {
+        "text": "संयुक्त राज्य अमेरिका में, दो कंपनियों ने पूरे देश के आरपार एक रेलवे बनाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक ने कैलिफोर्निया से शुरुआत की और पूरब की ओर बढ़ी।",
+      "text_markdown": "एक ने कैलिफोर्निया से शुरुआत की और पूरब की ओर बढ़ी।",
+      "tts": {
+        "text": "एक ने कैलिफोर्निया से शुरुआत की और पूरब की ओर बढ़ी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "दूसरी ने नेब्रास्का से शुरुआत की और पश्चिम की ओर बढ़ी।",
+      "text_markdown": "दूसरी ने नेब्रास्का से शुरुआत की और पश्चिम की ओर बढ़ी।",
+      "tts": {
+        "text": "दूसरी ने नेब्रास्का से शुरुआत की और पश्चिम की ओर बढ़ी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वे यूटा में, प्रोमॉन्टरी समिट नाम की जगह पर मिलीं।",
+      "text_markdown": "वे यूटा में, प्रोमॉन्टरी समिट नाम की जगह पर मिलीं।",
+      "tts": {
+        "text": "वे यूटा में, प्रोमॉन्टरी समिट नाम की जगह पर मिलीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह सन् अठारह सौ उनहत्तर की बात है।",
+      "text_markdown": "यह सन् अठारह सौ उनहत्तर की बात है।",
+      "tts": {
+        "text": "यह सन् अठारह सौ उनहत्तर की बात है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आखिरी कील सोने की बनी थी।",
+      "text_markdown": "आखिरी कील सोने की बनी थी।",
+      "tts": {
+        "text": "आखिरी कील सोने की बनी थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "लोग उसे गोल्डन स्पाइक कहते थे।",
+      "text_markdown": "लोग उसे गोल्डन स्पाइक कहते थे।",
+      "tts": {
+        "text": "लोग उसे गोल्डन स्पाइक कहते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इस लाइन को ट्रांसकॉन्टिनेंटल रेलरोड कहा गया।",
+      "text_markdown": "इस लाइन को ट्रांसकॉन्टिनेंटल रेलरोड कहा गया।",
+      "tts": {
+        "text": "इस लाइन को ट्रांसकॉन्टिनेंटल रेलरोड कहा गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "अब आप करीब एक हफ्ते में, एक महासागर से दूसरे महासागर तक ट्रेन से जा सकते थे।",
+      "text_markdown": "अब आप करीब एक हफ्ते में, एक महासागर से दूसरे महासागर तक ट्रेन से जा सकते थे।",
+      "tts": {
+        "text": "अब आप करीब एक हफ्ते में, एक महासागर से दूसरे महासागर तक ट्रेन से जा सकते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रूस ने इससे भी लंबी एक लाइन बनाई।",
+      "text_markdown": "रूस ने इससे भी लंबी एक लाइन बनाई।",
+      "tts": {
+        "text": "रूस ने इससे भी लंबी एक लाइन बनाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इसे ट्रांस साइबेरियन रेलवे कहा जाता है।",
+      "text_markdown": "इसे ट्रांस साइबेरियन रेलवे कहा जाता है।",
+      "tts": {
+        "text": "इसे ट्रांस साइबेरियन रेलवे कहा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह पश्चिम में मॉस्को से लेकर पूरब में व्लादिवोस्तोक तक जाती है।",
+      "text_markdown": "यह पश्चिम में मॉस्को से लेकर पूरब में व्लादिवोस्तोक तक जाती है।",
+      "tts": {
+        "text": "यह पश्चिम में मॉस्को से लेकर पूरब में व्लादिवोस्तोक तक जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "यह लाइन सन् उन्नीस सौ सोलह में पूरी हुई।",
+      "text_markdown": "यह लाइन सन् उन्नीस सौ सोलह में पूरी हुई।",
+      "tts": {
+        "text": "यह लाइन सन् उन्नीस सौ सोलह में पूरी हुई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "यह नौ हजार किलोमीटर से भी ज़्यादा लंबी है।",
+      "text_markdown": "यह नौ हजार किलोमीटर से भी ज़्यादा लंबी है।",
+      "tts": {
+        "text": "यह नौ हजार किलोमीटर से भी ज़्यादा लंबी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "पूरी यात्रा में करीब सात दिन लगते हैं।",
+      "text_markdown": "पूरी यात्रा में करीब सात दिन लगते हैं।",
+      "tts": {
+        "text": "पूरी यात्रा में करीब सात दिन लगते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "अध्याय तीन: महान रेल लाइनें",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "यह आज भी दुनिया की सबसे लंबी रेलवे है।",
+      "text_markdown": "यह आज भी दुनिया की सबसे लंबी रेलवे है।",
+      "tts": {
+        "text": "यह आज भी दुनिया की सबसे लंबी रेलवे है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय चार: भाप, डीजल, बिजली",
+      "text_markdown": "अध्याय चार: भाप, डीजल, बिजली"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "करीब सौ साल तक, लगभग हर ट्रेन भाप से चलने वाली ट्रेन थी।",
+      "text_markdown": "करीब सौ साल तक, लगभग हर ट्रेन भाप से चलने वाली ट्रेन थी।",
+      "tts": {
+        "text": "करीब सौ साल तक, लगभग हर ट्रेन भाप से चलने वाली ट्रेन थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "भाप वाले लोकोमोटिव बड़े और शोर वाले होते थे।",
+      "text_markdown": "भाप वाले लोकोमोटिव बड़े और शोर वाले होते थे।",
+      "tts": {
+        "text": "भाप वाले लोकोमोटिव बड़े और शोर वाले होते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वे कोयला जलाते थे।",
+      "text_markdown": "वे कोयला जलाते थे।",
+      "tts": {
+        "text": "वे कोयला जलाते थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वे आसमान में गाढ़ा धुआं छोड़ते थे।",
+      "text_markdown": "वे आसमान में गाढ़ा धुआं छोड़ते थे।",
+      "tts": {
+        "text": "वे आसमान में गाढ़ा धुआं छोड़ते थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर डीजल लोकोमोटिव आया।",
+      "text_markdown": "फिर डीजल लोकोमोटिव आया।",
+      "tts": {
+        "text": "फिर डीजल लोकोमोटिव आया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "डीजल इंजन, कोयले की जगह तेल जलाता है।",
+      "text_markdown": "डीजल इंजन, कोयले की जगह तेल जलाता है।",
+      "tts": {
+        "text": "डीजल इंजन, कोयले की जगह तेल जलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह छोटा और साफ होता है।",
+      "text_markdown": "यह छोटा और साफ होता है।",
+      "tts": {
+        "text": "यह छोटा और साफ होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इसे आग और पानी की टंकी की ज़रूरत नहीं होती।",
+      "text_markdown": "इसे आग और पानी की टंकी की ज़रूरत नहीं होती।",
+      "tts": {
+        "text": "इसे आग और पानी की टंकी की ज़रूरत नहीं होती।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उन्नीस सौ चालीस और उन्नीस सौ पचास के दशकों में, डीजल ट्रेनें आम हो गईं।",
+      "text_markdown": "उन्नीस सौ चालीस और उन्नीस सौ पचास के दशकों में, डीजल ट्रेनें आम हो गईं।",
+      "tts": {
+        "text": "उन्नीस सौ चालीस और उन्नीस सौ पचास के दशकों में, डीजल ट्रेनें आम हो गईं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "धीरे धीरे, बड़े भाप लोकोमोटिव सेवा से हटा दिए गए।",
+      "text_markdown": "धीरे धीरे, बड़े भाप लोकोमोटिव सेवा से हटा दिए गए।",
+      "tts": {
+        "text": "धीरे धीरे, बड़े भाप लोकोमोटिव सेवा से हटा दिए गए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कुछ आज भी संग्रहालयों और पर्यटन लाइनों में रखे गए हैं।",
+      "text_markdown": "कुछ आज भी संग्रहालयों और पर्यटन लाइनों में रखे गए हैं।",
+      "tts": {
+        "text": "कुछ आज भी संग्रहालयों और पर्यटन लाइनों में रखे गए हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगला कदम बिजली से चलने वाली ट्रेन थी।",
+      "text_markdown": "अगला कदम बिजली से चलने वाली ट्रेन थी।",
+      "tts": {
+        "text": "अगला कदम बिजली से चलने वाली ट्रेन थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बिजली की ट्रेन में, ईंधन जलाने वाला इंजन नहीं होता।",
+      "text_markdown": "बिजली की ट्रेन में, ईंधन जलाने वाला इंजन नहीं होता।",
+      "tts": {
+        "text": "बिजली की ट्रेन में, ईंधन जलाने वाला इंजन नहीं होता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह पटरी के ऊपर की तार से, या पटरी के पास लगी तीसरी रेल से बिजली लेती है।",
+      "text_markdown": "यह पटरी के ऊपर की तार से, या पटरी के पास लगी तीसरी रेल से बिजली लेती है।",
+      "tts": {
+        "text": "यह पटरी के ऊपर की तार से, या पटरी के पास लगी तीसरी रेल से बिजली लेती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बिजली की ट्रेनें शांत और बहुत साफ होती हैं।",
+      "text_markdown": "बिजली की ट्रेनें शांत और बहुत साफ होती हैं।",
+      "tts": {
+        "text": "बिजली की ट्रेनें शांत और बहुत साफ होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे बहुत ताकतवर भी होती हैं।",
+      "text_markdown": "वे बहुत ताकतवर भी होती हैं।",
+      "tts": {
+        "text": "वे बहुत ताकतवर भी होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "आज शहरों की ज़्यादातर ट्रेनें और ज़्यादातर तेज ट्रेनें बिजली से चलती हैं।",
+      "text_markdown": "आज शहरों की ज़्यादातर ट्रेनें और ज़्यादातर तेज ट्रेनें बिजली से चलती हैं।",
+      "tts": {
+        "text": "आज शहरों की ज़्यादातर ट्रेनें और ज़्यादातर तेज ट्रेनें बिजली से चलती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "भाप, डीजल, बिजली।",
+      "text_markdown": "भाप, डीजल, बिजली।",
+      "tts": {
+        "text": "भाप, डीजल, बिजली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "अध्याय चार: भाप, डीजल, बिजली",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तीन इंजन, तीन युग।",
+      "text_markdown": "तीन इंजन, तीन युग।",
+      "tts": {
+        "text": "तीन इंजन, तीन युग।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "text_markdown": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सन् उन्नीस सौ चौंसठ में, जापान ने एक बिलकुल नई रेलवे खोली।",
+      "text_markdown": "सन् उन्नीस सौ चौंसठ में, जापान ने एक बिलकुल नई रेलवे खोली।",
+      "tts": {
+        "text": "सन् उन्नीस सौ चौंसठ में, जापान ने एक बिलकुल नई रेलवे खोली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह टोक्यो से ओसाका तक चलती थी।",
+      "text_markdown": "वह टोक्यो से ओसाका तक चलती थी।",
+      "tts": {
+        "text": "वह टोक्यो से ओसाका तक चलती थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वे ट्रेनें लंबी सफेद गोलियों जैसी दिखती थीं।",
+      "text_markdown": "वे ट्रेनें लंबी सफेद गोलियों जैसी दिखती थीं।",
+      "tts": {
+        "text": "वे ट्रेनें लंबी सफेद गोलियों जैसी दिखती थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "लोग उन्हें बुलेट ट्रेनें कहने लगे।",
+      "text_markdown": "लोग उन्हें बुलेट ट्रेनें कहने लगे।",
+      "tts": {
+        "text": "लोग उन्हें बुलेट ट्रेनें कहने लगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उनका जापानी नाम शिंकानसेन है।",
+      "text_markdown": "उनका जापानी नाम शिंकानसेन है।",
+      "tts": {
+        "text": "उनका जापानी नाम शिन कान सेन है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहली बुलेट ट्रेनें, एक सौ तीस मील प्रति घंटा चलती थीं।",
+      "text_markdown": "पहली बुलेट ट्रेनें, एक सौ तीस मील प्रति घंटा चलती थीं।",
+      "tts": {
+        "text": "पहली बुलेट ट्रेनें, एक सौ तीस मील प्रति घंटा चलती थीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "सन् उन्नीस सौ चौंसठ में, किसी ट्रेन के लिए यह बहुत तेज था।",
+      "text_markdown": "सन् उन्नीस सौ चौंसठ में, किसी ट्रेन के लिए यह बहुत तेज था।",
+      "tts": {
+        "text": "सन् उन्नीस सौ चौंसठ में, किसी ट्रेन के लिए यह बहुत तेज था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "यह लाइन टोक्यो ओलंपिक खेलों के ठीक समय पर खुली।",
+      "text_markdown": "यह लाइन टोक्यो ओलंपिक खेलों के ठीक समय पर खुली।",
+      "tts": {
+        "text": "यह लाइन टोक्यो ओलंपिक खेलों के ठीक समय पर खुली।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरे देशों ने भी ऐसा ही किया।",
+      "text_markdown": "दूसरे देशों ने भी ऐसा ही किया।",
+      "tts": {
+        "text": "दूसरे देशों ने भी ऐसा ही किया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "फ्रांस ने अपनी हाई स्पीड लाइन सन् उन्नीस सौ इक्यासी में खोली।",
+      "text_markdown": "फ्रांस ने अपनी हाई स्पीड लाइन सन् उन्नीस सौ इक्यासी में खोली।",
+      "tts": {
+        "text": "फ्रांस ने अपनी हाई स्पीड लाइन सन् उन्नीस सौ इक्यासी में खोली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इन ट्रेनों को टीजीवी कहा जाता है।",
+      "text_markdown": "इन ट्रेनों को टीजीवी कहा जाता है।",
+      "tts": {
+        "text": "इन ट्रेनों को टी जी वी कहा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "जर्मनी ने इसके बाद आईसीई शुरू की।",
+      "text_markdown": "जर्मनी ने इसके बाद आईसीई शुरू की।",
+      "tts": {
+        "text": "जर्मनी ने इसके बाद आई सी ई शुरू की।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "इटली, स्पेन और कोरिया ने अपनी अपनी हाई स्पीड लाइनें बनाईं।",
+      "text_markdown": "इटली, स्पेन और कोरिया ने अपनी अपनी हाई स्पीड लाइनें बनाईं।",
+      "tts": {
+        "text": "इटली, स्पेन और कोरिया ने अपनी अपनी हाई स्पीड लाइनें बनाईं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चीन ने सबसे बाद में शुरुआत की, लेकिन उसने बहुत तेजी से निर्माण किया।",
+      "text_markdown": "चीन ने सबसे बाद में शुरुआत की, लेकिन उसने बहुत तेजी से निर्माण किया।",
+      "tts": {
+        "text": "चीन ने सबसे बाद में शुरुआत की, लेकिन उसने बहुत तेजी से निर्माण किया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "आज, दुनिया का सबसे बड़ा हाई स्पीड नेटवर्क चीन के पास है।",
+      "text_markdown": "आज, दुनिया का सबसे बड़ा हाई स्पीड नेटवर्क चीन के पास है।",
+      "tts": {
+        "text": "आज, दुनिया का सबसे बड़ा हाई स्पीड नेटवर्क चीन के पास है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वहां पटरियों के दसियों हजार किलोमीटर हैं।",
+      "text_markdown": "वहां पटरियों के दसियों हजार किलोमीटर हैं।",
+      "tts": {
+        "text": "वहां पटरियों के दसियों हजार किलोमीटर हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आधुनिक बुलेट ट्रेनें, दो सौ मील प्रति घंटा से भी ज़्यादा की रफ्तार से चल सकती हैं।",
+      "text_markdown": "आधुनिक बुलेट ट्रेनें, दो सौ मील प्रति घंटा से भी ज़्यादा की रफ्तार से चल सकती हैं।",
+      "tts": {
+        "text": "आधुनिक बुलेट ट्रेनें, दो सौ मील प्रति घंटा से भी ज़्यादा की रफ्तार से चल सकती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे बहुत सहज चलती हैं, शांत होती हैं, और लगभग हमेशा समय पर रहती हैं।",
+      "text_markdown": "वे बहुत सहज चलती हैं, शांत होती हैं, और लगभग हमेशा समय पर रहती हैं।",
+      "tts": {
+        "text": "वे बहुत सहज चलती हैं, शांत होती हैं, और लगभग हमेशा समय पर रहती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "अध्याय पांच: बुलेट ट्रेनें और रफ्तार की दौड़",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कई यात्राओं में, वे हवाई जहाज़ से जाने से भी तेज होती हैं।",
+      "text_markdown": "कई यात्राओं में, वे हवाई जहाज़ से जाने से भी तेज होती हैं।",
+      "tts": {
+        "text": "कई यात्राओं में, वे हवाई जहाज़ से जाने से भी तेज होती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "text_markdown": "अध्याय छह: ट्रेनों के कई प्रकार"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सारी ट्रेनें एक जैसी नहीं होतीं।",
+      "text_markdown": "सारी ट्रेनें एक जैसी नहीं होतीं।",
+      "tts": {
+        "text": "सारी ट्रेनें एक जैसी नहीं होतीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इनके कई प्रकार होते हैं।",
+      "text_markdown": "इनके कई प्रकार होते हैं।",
+      "tts": {
+        "text": "इनके कई प्रकार होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यात्री ट्रेन, लोगों को ले जाती है।",
+      "text_markdown": "यात्री ट्रेन, लोगों को ले जाती है।",
+      "tts": {
+        "text": "यात्री ट्रेन, लोगों को ले जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसमें सीटें, खिड़कियां, और कभी कभी भोजन डिब्बा या सोने का डिब्बा होता है।",
+      "text_markdown": "उसमें सीटें, खिड़कियां, और कभी कभी भोजन डिब्बा या सोने का डिब्बा होता है।",
+      "tts": {
+        "text": "उसमें सीटें, खिड़कियां, और कभी कभी भोजन डिब्बा या सोने का डिब्बा होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मालगाड़ी, सामान ले जाती है।",
+      "text_markdown": "मालगाड़ी, सामान ले जाती है।",
+      "tts": {
+        "text": "मालगाड़ी, सामान ले जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उसके डिब्बों को वैगन कहा जाता है।",
+      "text_markdown": "उसके डिब्बों को वैगन कहा जाता है।",
+      "tts": {
+        "text": "उसके डिब्बों को वैगन कहा जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कुछ अनाज ले जाते हैं।",
+      "text_markdown": "कुछ अनाज ले जाते हैं।",
+      "tts": {
+        "text": "कुछ अनाज ले जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "कुछ तेल ले जाते हैं।",
+      "text_markdown": "कुछ तेल ले जाते हैं।",
+      "tts": {
+        "text": "कुछ तेल ले जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कुछ दो दो पर रखे पूरे शिपिंग कंटेनर ले जाते हैं।",
+      "text_markdown": "कुछ दो दो पर रखे पूरे शिपिंग कंटेनर ले जाते हैं।",
+      "tts": {
+        "text": "कुछ दो दो पर रखे पूरे शिपिंग कंटेनर ले जाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सबवे, शहर के नीचे चलने वाली ट्रेन होती है।",
+      "text_markdown": "सबवे, शहर के नीचे चलने वाली ट्रेन होती है।",
+      "tts": {
+        "text": "सबवे, शहर के नीचे चलने वाली ट्रेन होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "पहला सबवे लंदन में सन् अठारह सौ तिरसठ में खुला।",
+      "text_markdown": "पहला सबवे लंदन में सन् अठारह सौ तिरसठ में खुला।",
+      "tts": {
+        "text": "पहला सबवे लंदन में सन् अठारह सौ तिरसठ में खुला।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "आज, बड़े शहरों की सड़कों के नीचे सबवे के विशाल जाल हैं।",
+      "text_markdown": "आज, बड़े शहरों की सड़कों के नीचे सबवे के विशाल जाल हैं।",
+      "tts": {
+        "text": "आज, बड़े शहरों की सड़कों के नीचे सबवे के विशाल जाल हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ट्राम या लाइट रेल, एक छोटी ट्रेन होती है जो शहर की सड़कों पर चलती है।",
+      "text_markdown": "ट्राम या लाइट रेल, एक छोटी ट्रेन होती है जो शहर की सड़कों पर चलती है।",
+      "tts": {
+        "text": "ट्राम या लाइट रेल, एक छोटी ट्रेन होती है जो शहर की सड़कों पर चलती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वह अक्सर कारों और बसों के साथ वही सड़क बांटती है।",
+      "text_markdown": "वह अक्सर कारों और बसों के साथ वही सड़क बांटती है।",
+      "tts": {
+        "text": "वह अक्सर कारों और बसों के साथ वही सड़क बांटती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहाड़ी ट्रेनें, खड़ी ढलानों पर चढ़ती हैं।",
+      "text_markdown": "पहाड़ी ट्रेनें, खड़ी ढलानों पर चढ़ती हैं।",
+      "tts": {
+        "text": "पहाड़ी ट्रेनें, खड़ी ढलानों पर चढ़ती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कुछ में बीच में एक खास दांतेदार पटरी होती है, जिसे कॉग कहते हैं।",
+      "text_markdown": "कुछ में बीच में एक खास दांतेदार पटरी होती है, जिसे कॉग कहते हैं।",
+      "tts": {
+        "text": "कुछ में बीच में एक खास दांतेदार पटरी होती है, जिसे कॉग कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ऊपर जाने और सुरक्षित नीचे आने के लिए, लोकोमोटिव उस कॉग को पकड़ता है।",
+      "text_markdown": "ऊपर जाने और सुरक्षित नीचे आने के लिए, लोकोमोटिव उस कॉग को पकड़ता है।",
+      "tts": {
+        "text": "ऊपर जाने और सुरक्षित नीचे आने के लिए, लोकोमोटिव उस कॉग को पकड़ता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ ट्रेनें पर्यटन ट्रेनें भी होती हैं।",
+      "text_markdown": "कुछ ट्रेनें पर्यटन ट्रेनें भी होती हैं।",
+      "tts": {
+        "text": "कुछ ट्रेनें पर्यटन ट्रेनें भी होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "अध्याय छह: ट्रेनों के कई प्रकार",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे सिर्फ नज़ारे के लिए, जंगलों और पहाड़ों के बीच से चलती हैं।",
+      "text_markdown": "वे सिर्फ नज़ारे के लिए, जंगलों और पहाड़ों के बीच से चलती हैं।",
+      "tts": {
+        "text": "वे सिर्फ नज़ारे के लिए, जंगलों और पहाड़ों के बीच से चलती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "अध्याय सात: पटरियों पर भविष्य",
+      "text_markdown": "अध्याय सात: पटरियों पर भविष्य"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ट्रेन की कहानी अभी खत्म नहीं हुई है।",
+      "text_markdown": "ट्रेन की कहानी अभी खत्म नहीं हुई है।",
+      "tts": {
+        "text": "ट्रेन की कहानी अभी खत्म नहीं हुई है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अभी इसी समय, नई तरह की ट्रेनें बनाई जा रही हैं।",
+      "text_markdown": "अभी इसी समय, नई तरह की ट्रेनें बनाई जा रही हैं।",
+      "tts": {
+        "text": "अभी इसी समय, नई तरह की ट्रेनें बनाई जा रही हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें सबसे अद्भुत मैगलेव है।",
+      "text_markdown": "इनमें सबसे अद्भुत मैगलेव है।",
+      "tts": {
+        "text": "इनमें सबसे अद्भुत मैगलेव है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मैगलेव शब्द, मैग्नेटिक लेविटेशन का छोटा रूप है।",
+      "text_markdown": "मैगलेव शब्द, मैग्नेटिक लेविटेशन का छोटा रूप है।",
+      "tts": {
+        "text": "मैगलेव शब्द, मैग्नेटिक लेविटेशन का छोटा रूप है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "मैगलेव ट्रेन अपनी पटरी को छूती नहीं है।",
+      "text_markdown": "मैगलेव ट्रेन अपनी पटरी को छूती नहीं है।",
+      "tts": {
+        "text": "मैगलेव ट्रेन अपनी पटरी को छूती नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वह चुंबकीय कुशन पर तैरती है।",
+      "text_markdown": "वह चुंबकीय कुशन पर तैरती है।",
+      "tts": {
+        "text": "वह चुंबकीय कुशन पर तैरती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उसमें कोई पहिए घूमते नहीं हैं।",
+      "text_markdown": "उसमें कोई पहिए घूमते नहीं हैं।",
+      "tts": {
+        "text": "उसमें कोई पहिए घूमते नहीं हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "उसमें घर्षण नहीं होता।",
+      "text_markdown": "उसमें घर्षण नहीं होता।",
+      "tts": {
+        "text": "उसमें घर्षण नहीं होता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सन् दो हजार चार में, चीन के शंघाई में एक मैगलेव लाइन खुली।",
+      "text_markdown": "सन् दो हजार चार में, चीन के शंघाई में एक मैगलेव लाइन खुली।",
+      "tts": {
+        "text": "सन् दो हजार चार में, चीन के शंघाई में एक मैगलेव लाइन खुली।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "यह ट्रेन, दो सौ पचास मील प्रति घंटा से भी ज़्यादा की रफ्तार पा सकती है।",
+      "text_markdown": "यह ट्रेन, दो सौ पचास मील प्रति घंटा से भी ज़्यादा की रफ्तार पा सकती है।",
+      "tts": {
+        "text": "यह ट्रेन, दो सौ पचास मील प्रति घंटा से भी ज़्यादा की रफ्तार पा सकती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "जापान में, एक परीक्षण मैगलेव ट्रेन, तीन सौ सत्तर मील प्रति घंटा से भी ज़्यादा तेज जा चुकी है।",
+      "text_markdown": "जापान में, एक परीक्षण मैगलेव ट्रेन, तीन सौ सत्तर मील प्रति घंटा से भी ज़्यादा तेज जा चुकी है।",
+      "tts": {
+        "text": "जापान में, एक परीक्षण मैगलेव ट्रेन, तीन सौ सत्तर मील प्रति घंटा से भी ज़्यादा तेज जा चुकी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरे इंजीनियर हाइड्रोजन ट्रेन पर काम कर रहे हैं।",
+      "text_markdown": "दूसरे इंजीनियर हाइड्रोजन ट्रेन पर काम कर रहे हैं।",
+      "tts": {
+        "text": "दूसरे इंजीनियर हाइड्रोजन ट्रेन पर काम कर रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हाइड्रोजन ट्रेन, एक छोटे फ्यूल सेल से बिजली बनाती है।",
+      "text_markdown": "हाइड्रोजन ट्रेन, एक छोटे फ्यूल सेल से बिजली बनाती है।",
+      "tts": {
+        "text": "हाइड्रोजन ट्रेन, एक छोटे फ्यूल सेल से बिजली बनाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इंजन से बाहर आने वाली एकमात्र चीज़ पानी की भाप होती है।",
+      "text_markdown": "इंजन से बाहर आने वाली एकमात्र चीज़ पानी की भाप होती है।",
+      "tts": {
+        "text": "इंजन से बाहर आने वाली एकमात्र चीज़ पानी की भाप होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "कोई धुआं नहीं।",
+      "text_markdown": "कोई धुआं नहीं।",
+      "tts": {
+        "text": "कोई धुआं नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कोई कोयला नहीं।",
+      "text_markdown": "कोई कोयला नहीं।",
+      "tts": {
+        "text": "कोई कोयला नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "पहली हाइड्रोजन ट्रेनें जर्मनी में सन् दो हजार अठारह में सेवा में आईं।",
+      "text_markdown": "पहली हाइड्रोजन ट्रेनें जर्मनी में सन् दो हजार अठारह में सेवा में आईं।",
+      "tts": {
+        "text": "पहली हाइड्रोजन ट्रेनें जर्मनी में सन् दो हजार अठारह में सेवा में आईं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ट्रेनें बहुत पुरानी हैं।",
+      "text_markdown": "ट्रेनें बहुत पुरानी हैं।",
+      "tts": {
+        "text": "ट्रेनें बहुत पुरानी हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वे बहुत नई भी हैं।",
+      "text_markdown": "वे बहुत नई भी हैं।",
+      "tts": {
+        "text": "वे बहुत नई भी हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "अध्याय सात: पटरियों पर भविष्य",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "रॉकेट के दो सौ साल बाद भी, पटरियां अब भी भविष्य हैं।",
+      "text_markdown": "रॉकेट के दो सौ साल बाद भी, पटरियां अब भी भविष्य हैं।",
+      "tts": {
+        "text": "रॉकेट के दो सौ साल बाद भी, पटरियां अब भी भविष्य हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "लोहे की राह चलती रहती है",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "लोहे की राह चलती रहती है",
+      "text_markdown": "लोहे की राह चलती रहती है"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "लोहे की राह चलती रहती है",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रॉकेट से मैगलेव तक, ट्रेन ने करीब दो सौ सालों से दुनिया को आगे बढ़ाया है।",
+      "text_markdown": "रॉकेट से मैगलेव तक, ट्रेन ने करीब दो सौ सालों से दुनिया को आगे बढ़ाया है।",
+      "tts": {
+        "text": "रॉकेट से मैगलेव तक, ट्रेन ने करीब दो सौ सालों से दुनिया को आगे बढ़ाया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "लोहे की राह चलती रहती है",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अभी इसी समय, रेगिस्तानों में, पहाड़ों में, और शहरों के नीचे नई लाइनें बिछाई जा रही हैं।",
+      "text_markdown": "अभी इसी समय, रेगिस्तानों में, पहाड़ों में, और शहरों के नीचे नई लाइनें बिछाई जा रही हैं।",
+      "tts": {
+        "text": "अभी इसी समय, रेगिस्तानों में, पहाड़ों में, और शहरों के नीचे नई लाइनें बिछाई जा रही हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "लोहे की राह चलती रहती है",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अगला स्टेशन हमेशा कहीं आगे होता है।",
+      "text_markdown": "अगला स्टेशन हमेशा कहीं आगे होता है।",
+      "tts": {
+        "text": "अगला स्टेशन हमेशा कहीं आगे होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

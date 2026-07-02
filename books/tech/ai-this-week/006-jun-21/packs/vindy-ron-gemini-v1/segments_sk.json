@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "sk",
+  "total_segments": 114,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Vitajte v AI This Week.",
+      "text_markdown": "Vitajte v AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Vitajte v AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Volám sa Vindy.",
+      "text_markdown": "Volám sa Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Volám sa Vindi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "So mnou je, ako vždy, Ron.",
+      "text_markdown": "So mnou je, ako vždy, Ron.",
+      "title": "",
+      "tts": {
+        "text": "So mnou je, ako vždy, Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Rád som tu, Vindy.",
+      "text_markdown": "Rád som tu, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Rád som tu, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dnes je nedeľa, 21. júna 2026.",
+      "text_markdown": "Dnes je nedeľa, 21. júna 2026.",
+      "title": "",
+      "tts": {
+        "text": "Dnes je nedeľa, dvadsiateho prvého júna, dvetisíc dvadsaťšesť.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Minulý týždeň sme hovorili o sebe; dnes ideme opačným smerom — až k centrám moci.",
+      "text_markdown": "Minulý týždeň sme hovorili o sebe; dnes ideme opačným smerom — až k centrám moci.",
+      "title": "",
+      "tts": {
+        "text": "Minulý týždeň sme hovorili o sebe; dnes ideme opačným smerom — až k centrám moci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kto kontroluje nasadenie AI, kto platí za výstavbu, kto vlastní kremík.",
+      "text_markdown": "Kto kontroluje nasadenie AI, kto platí za výstavbu, kto vlastní kremík.",
+      "title": "",
+      "tts": {
+        "text": "Kto kontroluje nasadenie AI, kto platí za výstavbu, kto vlastní kremík.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Čo nás čaká — Ministerstvo obchodu USA stiahlo minulý piatok americký model z verejného používania a tam začneme.",
+      "text_markdown": "Čo nás čaká — Ministerstvo obchodu USA stiahlo minulý piatok americký model z verejného používania a tam začneme.",
+      "title": "",
+      "tts": {
+        "text": "Čo nás čaká — Ministerstvo obchodu USA stiahlo minulý piatok americký model z verejného používania a tam začneme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Potom výstavba dátových centier, kde sa oznámenia a skutočná situácia nezhodujú.",
+      "text_markdown": "Potom výstavba dátových centier, kde sa oznámenia a skutočná situácia nezhodujú.",
+      "title": "",
+      "tts": {
+        "text": "Potom výstavba dátových centier, kde sa oznámenia a skutočná situácia nezhodujú.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Potom porovnanie USA a Číny, pričom klišé je nahradené skutočným obmedzujúcim faktorom.",
+      "text_markdown": "Potom porovnanie USA a Číny, pričom klišé je nahradené skutočným obmedzujúcim faktorom.",
+      "title": "",
+      "tts": {
+        "text": "Potom porovnanie USA a Číny, pričom klišé je nahradené skutočným obmedzujúcim faktorom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A koncept týždňa — jeden riadok v súvahe spoločnosti Oracle, ktorý vám povie takmer všetko.",
+      "text_markdown": "A koncept týždňa — jeden riadok v súvahe spoločnosti Oracle, ktorý vám povie takmer všetko.",
+      "title": "",
+      "tts": {
+        "text": "A koncept týždňa — jeden riadok v súvahe spoločnosti Oracle, ktorý vám povie takmer všetko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ron, začnime s Anthropic.",
+      "text_markdown": "Ron, začnime s Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, začnime s Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Čo sa stalo dvanásteho júna.",
+      "text_markdown": "Čo sa stalo dvanásteho júna.",
+      "title": "",
+      "tts": {
+        "text": "Čo sa stalo dvanásteho júna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "V sedemnásť hodín dvadsaťjeden minút východného času v piatok, dvanásteho júna, spoločnosť Anthropic vypla svoje dva najnovšie modely — Claude Mythos päť a Claude Fable päť.",
+      "text_markdown": "V sedemnásť hodín dvadsaťjeden minút východného času v piatok, dvanásteho júna, spoločnosť Anthropic vypla svoje dva najnovšie modely — Claude Mythos päť a Claude Fable päť.",
+      "title": "",
+      "tts": {
+        "text": "V sedemnásť hodín dvadsaťjeden minút východného času v piatok, dvanásteho júna, spoločnosť Anthropic vypla svoje dva najnovšie modely — Claude Mythos päť a Claude Fable päť.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Nie kvôli údržbe, ani kvôli bezpečnostnej kontrole z vlastnej iniciatívy.",
+      "text_markdown": "Nie kvôli údržbe, ani kvôli bezpečnostnej kontrole z vlastnej iniciatívy.",
+      "title": "",
+      "tts": {
+        "text": "Nie kvôli údržbe, ani kvôli bezpečnostnej kontrole z vlastnej iniciatívy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Vypli ich, pretože Ministerstvo obchodu USA vydalo smernicu odvolávajúcu sa na exportné kontroly.",
+      "text_markdown": "Vypli ich, pretože Ministerstvo obchodu USA vydalo smernicu odvolávajúcu sa na exportné kontroly.",
+      "title": "",
+      "tts": {
+        "text": "Vypli ich, pretože Ministerstvo obchodu USA vydalo smernicu odvolávajúcu sa na exportné kontroly.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Aký bol technický dôvod.",
+      "text_markdown": "Aký bol technický dôvod.",
+      "title": "",
+      "tts": {
+        "text": "Aký bol technický dôvod.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Bol demonštrovaný jailbreak, údajne inou spoločnosťou, ktorý produkoval výstup, ktorý Ministerstvo obchodu považovalo za kontrolovaný vývoz.",
+      "text_markdown": "Bol demonštrovaný jailbreak, údajne inou spoločnosťou, ktorý produkoval výstup, ktorý Ministerstvo obchodu považovalo za kontrolovaný vývoz.",
+      "title": "",
+      "tts": {
+        "text": "Bol demonštrovaný jailbreak, údajne inou spoločnosťou, ktorý produkoval výstup, ktorý Ministerstvo obchodu považovalo za kontrolovaný vývoz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Fortune informoval, že to bol Amazon, kto na to upozornil Biely dom.",
+      "text_markdown": "Fortune informoval, že to bol Amazon, kto na to upozornil Biely dom.",
+      "title": "",
+      "tts": {
+        "text": "Fortune informoval, že to bol Amazon, kto na to upozornil Biely dom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A ako reagoval Anthropic.",
+      "text_markdown": "A ako reagoval Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "A ako reagoval Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Anthropic verejne spochybňuje odôvodnenie.",
+      "text_markdown": "Anthropic verejne spochybňuje odôvodnenie.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic verejne spochybňuje odôvodnenie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ich vyhlásenie označilo jailbreak — a citujem — za „úzky, neuniverzálny“ a dodalo, že rovnaký výstup je dostupný aj z iných modelov, vrátane GPT-päť-bodka-päť od OpenAI.",
+      "text_markdown": "Ich vyhlásenie označilo jailbreak — a citujem — za „úzky, neuniverzálny“ a dodalo, že rovnaký výstup je dostupný aj z iných modelov, vrátane GPT-päť-bodka-päť od OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Ich vyhlásenie označilo jailbreak — a citujem — za „úzky, neuniverzálny“ a dodalo, že rovnaký výstup je dostupný aj z iných modelov, vrátane GPT päť bodka päť od OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ich súhrnný riadok: „konanie vlády je založené na nedorozumení.“",
+      "text_markdown": "Ich súhrnný riadok: „konanie vlády je založené na nedorozumení.“",
+      "title": "",
+      "tts": {
+        "text": "Ich súhrnný riadok: „konanie vlády je založené na nedorozumení.“",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "To je nezvyčajne priamy nesúhlas s vládou USA na pomery AI laboratória.",
+      "text_markdown": "To je nezvyčajne priamy nesúhlas s vládou USA na pomery AI laboratória.",
+      "title": "",
+      "tts": {
+        "text": "To je nezvyčajne priamy nesúhlas s vládou USA na pomery AI laboratória.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Je to tak, a štrukturálny fakt, ktorý sa za tým skrýva, je hlavným titulkom.",
+      "text_markdown": "Je to tak, a štrukturálny fakt, ktorý sa za tým skrýva, je hlavným titulkom.",
+      "title": "",
+      "tts": {
+        "text": "Je to tak, a štrukturálny fakt, ktorý sa za tým skrýva, je hlavným titulkom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ministerstvo obchodu teraz môže nariadiť súkromnému americkému AI laboratóriu, aby vyplo model, odvolávajúc sa na exportné kontroly, a tento príkaz príde do sedemdesiatich dvoch hodín.",
+      "text_markdown": "Ministerstvo obchodu teraz môže nariadiť súkromnému americkému AI laboratóriu, aby vyplo model, odvolávajúc sa na exportné kontroly, a tento príkaz príde do sedemdesiatich dvoch hodín.",
+      "title": "",
+      "tts": {
+        "text": "Ministerstvo obchodu teraz môže nariadiť súkromnému americkému AI laboratóriu, aby vyplo model, odvolávajúc sa na exportné kontroly, a tento príkaz príde do sedemdesiatich dvoch hodín.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Či už si myslíte, že príkaz bol správny, alebo nie.",
+      "text_markdown": "Či už si myslíte, že príkaz bol správny, alebo nie.",
+      "title": "",
+      "tts": {
+        "text": "Či už si myslíte, že príkaz bol správny, alebo nie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Či už si myslíte, že príkaz bol správny, alebo nie.",
+      "text_markdown": "Či už si myslíte, že príkaz bol správny, alebo nie.",
+      "title": "",
+      "tts": {
+        "text": "Či už si myslíte, že príkaz bol správny, alebo nie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dôležitá je samotná autorita, rýchlosť a precedens.",
+      "text_markdown": "Dôležitá je samotná autorita, rýchlosť a precedens.",
+      "title": "",
+      "tts": {
+        "text": "Dôležitá je samotná autorita, rýchlosť a precedens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A úloha Amazonu tu.",
+      "text_markdown": "A úloha Amazonu tu.",
+      "title": "",
+      "tts": {
+        "text": "A úloha Amazonu tu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "To je tá časť, ktorú treba sledovať.",
+      "text_markdown": "To je tá časť, ktorú treba sledovať.",
+      "title": "",
+      "tts": {
+        "text": "To je tá časť, ktorú treba sledovať.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Amazon je významným investorom do spoločnosti Anthropic a zároveň s ňou súťaží na trhu základných modelov prostredníctvom vlastnej práce.",
+      "text_markdown": "Amazon je významným investorom do spoločnosti Anthropic a zároveň s ňou súťaží na trhu základných modelov prostredníctvom vlastnej práce.",
+      "title": "",
+      "tts": {
+        "text": "Amazon je významným investorom do spoločnosti Anthropic a zároveň s ňou súťaží na trhu základných modelov prostredníctvom vlastnej práce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ak varovanie konkurenta vláde dokáže odstaviť model rivala počas predĺženého víkendu, je to nový tvar pre dynamiku odvetvia.",
+      "text_markdown": "Ak varovanie konkurenta vláde dokáže odstaviť model rivala počas predĺženého víkendu, je to nový tvar pre dynamiku odvetvia.",
+      "title": "",
+      "tts": {
+        "text": "Ak varovanie konkurenta vláde dokáže odstaviť model rivala počas predĺženého víkendu, je to nový tvar pre dynamiku odvetvia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Prejdime k výstavbe.",
+      "text_markdown": "Prejdime k výstavbe.",
+      "title": "",
+      "tts": {
+        "text": "Prejdime k výstavbe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Stargate — iniciatíva dátových centier spoločností OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — iniciatíva dátových centier spoločností OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — iniciatíva dátových centier spoločností OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Aké sú skutočné čísla.",
+      "text_markdown": "Aké sú skutočné čísla.",
+      "title": "",
+      "tts": {
+        "text": "Aké sú skutočné čísla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Stargate oznámil jedenásť gigawattov kapacity v USA.",
+      "text_markdown": "Stargate oznámil jedenásť gigawattov kapacity v USA.",
+      "title": "",
+      "tts": {
+        "text": "Stargate oznámil jedenásť gigawattov kapacity v USA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "K polovici júna je v prevádzke približne dvesto megawattov na mieste Abilene v Texase, Fáza jedna.",
+      "text_markdown": "K polovici júna je v prevádzke približne dvesto megawattov na mieste Abilene v Texase, Fáza jedna.",
+      "title": "",
+      "tts": {
+        "text": "K polovici júna je v prevádzke približne dvesto megawattov na mieste Abilene v Texase, Fáza jedna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ohlásených je jedenásť gigawattov, pripojených iba dvesto megawattov.",
+      "text_markdown": "Ohlásených je jedenásť gigawattov, pripojených iba dvesto megawattov.",
+      "title": "",
+      "tts": {
+        "text": "Ohlásených je jedenásť gigawattov, pripojených iba dvesto megawattov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "To je celá medzera v jednej vete.",
+      "text_markdown": "To je celá medzera v jednej vete.",
+      "title": "",
+      "tts": {
+        "text": "To je celá medzera v jednej vete.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Je to tak, a najčistejší príklad sa nachádza v Novom Mexiku.",
+      "text_markdown": "Je to tak, a najčistejší príklad sa nachádza v Novom Mexiku.",
+      "title": "",
+      "tts": {
+        "text": "Je to tak, a najčistejší príklad sa nachádza v Novom Mexiku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Miesto v okrese Doña Ana je najväčším samostatným kampusom Stargate, plánovaným na štyri a pol gigawattu.",
+      "text_markdown": "Miesto v okrese Doña Ana je najväčším samostatným kampusom Stargate, plánovaným na štyri a pol gigawattu.",
+      "title": "",
+      "tts": {
+        "text": "Miesto v okrese Doña Ana je najväčším samostatným kampusom Stargate, plánovaným na štyri a pol gigawattu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Je k dispozícii osemnásť miliárd dolárov syndikovaného projektového financovania — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus trojmiliardový kapitálový vklad od Blue Owl.",
+      "text_markdown": "Je k dispozícii osemnásť miliárd dolárov syndikovaného projektového financovania — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus trojmiliardový kapitálový vklad od Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Je k dispozícii osemnásť miliárd dolárov syndikovaného projektového financovania — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, M. U. F. G. — plus trojmiliardový kapitálový vklad od Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A stav výstavby na mieste.",
+      "text_markdown": "A stav výstavby na mieste.",
+      "title": "",
+      "tts": {
+        "text": "A stav výstavby na mieste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Zatiaľ ani jedna lopata v zemi.",
+      "text_markdown": "Zatiaľ ani jedna lopata v zemi.",
+      "title": "",
+      "tts": {
+        "text": "Zatiaľ ani jedna lopata v zemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Miesto čaká na povolenie kvality ovzdušia od Ministerstva životného prostredia Nového Mexika, pôvodne očakávané dvadsiateho druhého apríla, teraz posunuté na dvadsiateho prvého júla po viac ako sedemtisíc verejných pripomienkach.",
+      "text_markdown": "Miesto čaká na povolenie kvality ovzdušia od Ministerstva životného prostredia Nového Mexika, pôvodne očakávané dvadsiateho druhého apríla, teraz posunuté na dvadsiateho prvého júla po viac ako sedemtisíc verejných pripomienkach.",
+      "title": "",
+      "tts": {
+        "text": "Miesto čaká na povolenie kvality ovzdušia od Ministerstva životného prostredia Nového Mexika, pôvodne očakávané dvadsiateho druhého apríla, teraz posunuté na dvadsiateho prvého júla po viac ako sedemtisíc verejných pripomienkach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Osemnásť miliárd dolárov prisľúbených, nula lopát v zemi, jeden termín povolenia kvality ovzdušia.",
+      "text_markdown": "Osemnásť miliárd dolárov prisľúbených, nula lopát v zemi, jeden termín povolenia kvality ovzdušia.",
+      "title": "",
+      "tts": {
+        "text": "Osemnásť miliárd dolárov prisľúbených, nula lopát v zemi, jeden termín povolenia kvality ovzdušia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kto bude niesť následky, ak čísla nebudú sedieť?",
+      "text_markdown": "Kto bude niesť následky, ak čísla nebudú sedieť?",
+      "title": "",
+      "tts": {
+        "text": "Kto bude niesť následky, ak čísla nebudú sedieť?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tam sa Oracle stáva zaujímavým.",
+      "text_markdown": "Tam sa Oracle stáva zaujímavým.",
+      "title": "",
+      "tts": {
+        "text": "Tam sa Oracle stáva zaujímavým.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Zostávajúce výkonnostné záväzky spoločnosti Oracle — účtovná položka, ktorá zaznamenáva zmluvné príjmy, ktoré ešte neboli dodané — dosiahli päťsto päťdesiattri miliárd dolárov v treťom fiškálnom štvrťroku dvetisíc dvadsaťšesť.",
+      "text_markdown": "Zostávajúce výkonnostné záväzky spoločnosti Oracle — účtovná položka, ktorá zaznamenáva zmluvné príjmy, ktoré ešte neboli dodané — dosiahli päťsto päťdesiattri miliárd dolárov v treťom fiškálnom štvrťroku dvetisíc dvadsaťšesť.",
+      "title": "",
+      "tts": {
+        "text": "Zostávajúce výkonnostné záväzky spoločnosti Oracle — účtovná položka, ktorá zaznamenáva zmluvné príjmy, ktoré ešte neboli dodané — dosiahli päťsto päťdesiattri miliárd dolárov v treťom fiškálnom štvrťroku dvetisíc dvadsaťšesť.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "To je nárast o tristo dvadsaťpäť percent medziročne, a väčšina tohto nárastu je verejne spojená s OpenAI a Stargate.",
+      "text_markdown": "To je nárast o tristo dvadsaťpäť percent medziročne, a väčšina tohto nárastu je verejne spojená s OpenAI a Stargate.",
+      "title": "",
+      "tts": {
+        "text": "To je nárast o tristo dvadsaťpäť percent medziročne, a väčšina tohto nárastu je verejne spojená s OpenAI a Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A dlhová strana.",
+      "text_markdown": "A dlhová strana.",
+      "title": "",
+      "tts": {
+        "text": "A dlhová strana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Celkové pôžičky dosiahli sto tridsaťštyri celých šesť miliardy dolárov k dvadsiatemu ôsmemu februáru.",
+      "text_markdown": "Celkové pôžičky dosiahli sto tridsaťštyri celých šesť miliardy dolárov k dvadsiatemu ôsmemu februáru.",
+      "title": "",
+      "tts": {
+        "text": "Celkové pôžičky dosiahli sto tridsaťštyri celých šesť miliardy dolárov k dvadsiatemu ôsmemu februáru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Oracle získal tridsať miliárd len vo februári — dlhopisy investičného stupňa plus povinne konvertibilné prioritné akcie — a vydal štyridsaťtri miliárd dolárov nových seniorných dlhopisov za deväťmesačné obdobie.",
+      "text_markdown": "Oracle získal tridsať miliárd len vo februári — dlhopisy investičného stupňa plus povinne konvertibilné prioritné akcie — a vydal štyridsaťtri miliárd dolárov nových seniorných dlhopisov za deväťmesačné obdobie.",
+      "title": "",
+      "tts": {
+        "text": "Oracle získal tridsať miliárd len vo februári — dlhopisy investičného stupňa plus povinne konvertibilné prioritné akcie — a vydal štyridsaťtri miliárd dolárov nových seniorných dlhopisov za deväťmesačné obdobie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Takže zhrňme situáciu.",
+      "text_markdown": "Takže zhrňme situáciu.",
+      "title": "",
+      "tts": {
+        "text": "Takže zhrňme situáciu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Sľuby za 553 miliárd dolárov, dlhy za 134 miliárd dolárov a jeden veľký zákazník, ktorý nesie väčšinu rizika.",
+      "text_markdown": "Sľuby za 553 miliárd dolárov, dlhy za 134 miliárd dolárov a jeden veľký zákazník, ktorý nesie väčšinu rizika.",
+      "title": "",
+      "tts": {
+        "text": "Sľuby za päťsto päťdesiat tri miliárd dolárov, dlhy za sto tridsať štyri miliárd dolárov a jeden veľký zákazník, ktorý nesie väčšinu rizika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "To je štruktúra výstavby v jednej vete.",
+      "text_markdown": "To je štruktúra výstavby v jednej vete.",
+      "title": "",
+      "tts": {
+        "text": "To je štruktúra výstavby v jednej vete.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Prejdime k porovnaniu USA a Číny.",
+      "text_markdown": "Prejdime k porovnaniu USA a Číny.",
+      "title": "",
+      "tts": {
+        "text": "Prejdime k porovnaniu Spojených štátov amerických a Číny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Klišé je, že Čína zaostáva o niekoľko mesiacov.",
+      "text_markdown": "Klišé je, že Čína zaostáva o niekoľko mesiacov.",
+      "title": "",
+      "tts": {
+        "text": "Klišé je, že Čína zaostáva o niekoľko mesiacov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Klišé je nesprávne, pretože meria nesprávnu vec.",
+      "text_markdown": "Klišé je nesprávne, pretože meria nesprávnu vec.",
+      "title": "",
+      "tts": {
+        "text": "Klišé je nesprávne, pretože meria nesprávnu vec.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "V pondelok, deviateho júna, Bloomberg informoval o návrhu čínskeho plánu od Národnej komisie pre rozvoj a reformy — dva bilióny jüanov, približne dvestodeväťdesiatpäť miliárd dolárov, na celoštátnu sieť dátových centier AI do roku 2028.",
+      "text_markdown": "V pondelok, deviateho júna, Bloomberg informoval o návrhu čínskeho plánu od Národnej komisie pre rozvoj a reformy — dva bilióny jüanov, približne dvestodeväťdesiatpäť miliárd dolárov, na celoštátnu sieť dátových centier AI do roku 2028.",
+      "title": "",
+      "tts": {
+        "text": "V pondelok, deviateho júna, Bloomberg informoval o návrhu čínskeho plánu od Národnej komisie pre rozvoj a reformy — dva bilióny jüanov, približne dvestodeväťdesiatpäť miliárd dolárov, na celoštátnu sieť dátových centier umelej inteligencie do roku dvetisícdvadsaťosem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Plán nariaďuje 80 percent domáceho kremíka a bol by prevádzkovaný ako jedna prepojená výpočtová štruktúra spoločnosťami China Mobile a China Telecom.",
+      "text_markdown": "Plán nariaďuje 80 percent domáceho kremíka a bol by prevádzkovaný ako jedna prepojená výpočtová štruktúra spoločnosťami China Mobile a China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Plán nariaďuje osemdesiat percent domáceho kremíka a bol by prevádzkovaný ako jedna prepojená výpočtová štruktúra spoločnosťami China Mobile a China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A kde je háčik v tomto pláne.",
+      "text_markdown": "A kde je háčik v tomto pláne.",
+      "title": "",
+      "tts": {
+        "text": "A kde je háčik v tomto pláne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dva bilióny jüanov, 80 percent domáceho kremíka, termín 2028 — a háčik je v tom, že obmedzujúcim faktorom nie sú logické čipy, ale pamäť s vysokou priepustnosťou.",
+      "text_markdown": "Dva bilióny jüanov, 80 percent domáceho kremíka, termín 2028 — a háčik je v tom, že obmedzujúcim faktorom nie sú logické čipy, ale pamäť s vysokou priepustnosťou.",
+      "title": "",
+      "tts": {
+        "text": "Dva bilióny jüanov, osemdesiat percent domáceho kremíka, termín dvetisícdvadsaťosem — a háčik je v tom, že obmedzujúcim faktorom nie sú logické čipy, ale pamäť s vysokou priepustnosťou.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Prejdite si to s nami.",
+      "text_markdown": "Prejdite si to s nami.",
+      "title": "",
+      "tts": {
+        "text": "Prejdite si to s nami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Každý AI akcelerátor potrebuje HBM zásobníky pripevnené na logickú matricu.",
+      "text_markdown": "Každý AI akcelerátor potrebuje HBM zásobníky pripevnené na logickú matricu.",
+      "title": "",
+      "tts": {
+        "text": "Každý akcelerátor umelej inteligencie potrebuje HBM zásobníky pripevnené na logickú matricu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Bez HBM je čip len ťažítko.",
+      "text_markdown": "Bez HBM je čip len ťažítko.",
+      "title": "",
+      "tts": {
+        "text": "Bez HBM je čip len ťažítko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Čína naskladnila približne trinásť miliónov HBM zásobníkov predtým, ako sa uzavreli exportné kontroly — 11,4 milióna len od Samsungu.",
+      "text_markdown": "Čína naskladnila približne trinásť miliónov HBM zásobníkov predtým, ako sa uzavreli exportné kontroly — 11,4 milióna len od Samsungu.",
+      "title": "",
+      "tts": {
+        "text": "Čína naskladnila približne trinásť miliónov HBM zásobníkov predtým, ako sa uzavreli exportné kontroly — jedenásť celých štyri desatiny milióna len od Samsungu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Pri pomeroch balenia Huawei Ascend 910C je táto zásoba dostatočná pre približne 1,6 milióna čipov.",
+      "text_markdown": "Pri pomeroch balenia Huawei Ascend 910C je táto zásoba dostatočná pre približne 1,6 milióna čipov.",
+      "title": "",
+      "tts": {
+        "text": "Pri pomeroch balenia Huawei Ascend deväťsto desať C je táto zásoba dostatočná pre približne jeden a šesť desatín milióna čipov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A potom sa zásoby minú.",
+      "text_markdown": "A potom sa zásoby minú.",
+      "title": "",
+      "tts": {
+        "text": "A potom sa zásoby minú.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Potom sa zásoby minú — trinásť miliónov HBM zásobníkov, dostatočných pre 1,6 milióna čipov, a to je strop.",
+      "text_markdown": "Potom sa zásoby minú — trinásť miliónov HBM zásobníkov, dostatočných pre 1,6 milióna čipov, a to je strop.",
+      "title": "",
+      "tts": {
+        "text": "Potom sa zásoby minú — trinásť miliónov HBM zásobníkov, dostatočných pre jeden a šesť desatín milióna čipov, a to je strop.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Domáce čínske HBM, od CXMT, smeruje k približne dvom miliónom zásobníkov v roku 2026 — dostatočných pre možno 250 až 300 tisíc akcelerátorov.",
+      "text_markdown": "Domáce čínske HBM, od CXMT, smeruje k približne dvom miliónom zásobníkov v roku 2026 — dostatočných pre možno 250 až 300 tisíc akcelerátorov.",
+      "title": "",
+      "tts": {
+        "text": "Domáce čínske HBM, od CXMT, smeruje k približne dvom miliónom zásobníkov v roku dvetisícdvadsaťšesť — dostatočných pre možno dvestopäťdesiat až tristo tisíc akcelerátorov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Takže ako vyzerajú plány Huawei s kremíkom.",
+      "text_markdown": "Takže ako vyzerajú plány Huawei s kremíkom.",
+      "title": "",
+      "tts": {
+        "text": "Takže ako vyzerajú plány Huawei s kremíkom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Bloomberg, citujúc plány Huawei, uviedol produkciu v roku 2026 na 600 tisíc čipov 910C, pričom širšia produktová línia Ascend dosahuje celkovo až 1,6 milióna jadier.",
+      "text_markdown": "Bloomberg, citujúc plány Huawei, uviedol produkciu v roku 2026 na 600 tisíc čipov 910C, pričom širšia produktová línia Ascend dosahuje celkovo až 1,6 milióna jadier.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, citujúc plány Huawei, uviedol produkciu v roku dvetisícdvadsaťšesť na šesťsto tisíc čipov deväťsto desať C, pričom širšia produktová línia Ascend dosahuje celkovo až jeden a šesť desatín milióna jadier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Toto číslo, 600 tisíc, je cieľ, nie dodaná produkcia.",
+      "text_markdown": "Toto číslo, 600 tisíc, je cieľ, nie dodaná produkcia.",
+      "title": "",
+      "tts": {
+        "text": "Toto číslo, šesťsto tisíc, je cieľ, nie dodaná produkcia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A samostatne, predtým, ako ich odrezali exportné kontroly, Huawei nazhromaždil viac ako 2,9 milióna jadier Ascend vyrobených v TSMC prostredníctvom Sophgo a Bitmain fiktívnych spoločností.",
+      "text_markdown": "A samostatne, predtým, ako ich odrezali exportné kontroly, Huawei nazhromaždil viac ako 2,9 milióna jadier Ascend vyrobených v TSMC prostredníctvom Sophgo a Bitmain fiktívnych spoločností.",
+      "title": "",
+      "tts": {
+        "text": "A samostatne, predtým, ako ich odrezali exportné kontroly, Huawei nazhromaždil viac ako dva a deväť desatín milióna jadier Ascend vyrobených v TSMC prostredníctvom Sophgo a Bitmain fiktívnych spoločností.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Príbeh o fungovaní exportných kontrol má v sebe dieru vo výške 2,9 milióna jadier.",
+      "text_markdown": "Príbeh o fungovaní exportných kontrol má v sebe dieru vo výške 2,9 milióna jadier.",
+      "title": "",
+      "tts": {
+        "text": "Príbeh o fungovaní exportných kontrol má v sebe dieru vo výške dva a deväť desatín milióna jadier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Prejdime si titulky, rýchlo.",
+      "text_markdown": "Prejdime si titulky, rýchlo.",
+      "title": "",
+      "tts": {
+        "text": "Prejdime si titulky, rýchlo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Prvý titulok tohto týždňa, Broadcom.",
+      "text_markdown": "Prvý titulok tohto týždňa, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Prvý titulok tohto týždňa, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Trhová kapitalizácia Broadcomu je približne dva bilióny dolárov.",
+      "text_markdown": "Trhová kapitalizácia Broadcomu je približne dva bilióny dolárov.",
+      "title": "",
+      "tts": {
+        "text": "Trhová kapitalizácia Broadcomu je približne dva bilióny dolárov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ich generálny riaditeľ, Hock Tan, zopakoval cieľ príjmov z AI polovodičov vo výške sto miliárd dolárov pre fiškálny rok 2027 na konferenčnom hovore o výsledkoch tretieho júna, podporené približne sedemdesiattroma miliardami dolárov v nevybavených objednávkach AI a dlhodobými dohodami s Alphabet a Meta, ktoré sa predlžujú do roku 2031.",
+      "text_markdown": "Ich generálny riaditeľ, Hock Tan, zopakoval cieľ príjmov z AI polovodičov vo výške sto miliárd dolárov pre fiškálny rok 2027 na konferenčnom hovore o výsledkoch tretieho júna, podporené približne sedemdesiattroma miliardami dolárov v nevybavených objednávkach AI a dlhodobými dohodami s Alphabet a Meta, ktoré sa predlžujú do roku 2031.",
+      "title": "",
+      "tts": {
+        "text": "Ich generálny riaditeľ, Hock Tan, zopakoval cieľ príjmov z umelej inteligencie polovodičov vo výške sto miliárd dolárov pre fiškálny rok dvetisícdvadsaťsedem na konferenčnom hovore o výsledkoch tretieho júna, podporené približne sedemdesiattroma miliardami dolárov v nevybavených objednávkach umelej inteligencie a dlhodobými dohodami s Alphabet a Meta, ktoré sa predlžujú do roku dvetisíc tridsaťjeden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dva bilióny dolárov trhová kapitalizácia, sto miliárd dolárov cieľ príjmov z AI, takmer žiadne rozpoznanie maloobchodnej značky.",
+      "text_markdown": "Dva bilióny dolárov trhová kapitalizácia, sto miliárd dolárov cieľ príjmov z AI, takmer žiadne rozpoznanie maloobchodnej značky.",
+      "title": "",
+      "tts": {
+        "text": "Dva bilióny dolárov trhová kapitalizácia, sto miliárd dolárov cieľ príjmov z umelej inteligencie, takmer žiadne rozpoznanie maloobchodnej značky.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Druhý titulok tohto týždňa, ASML.",
+      "text_markdown": "Druhý titulok tohto týždňa, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Druhý titulok tohto týždňa, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "ASML, holandská spoločnosť, ktorá vyrába litografické stroje, na ktorých závisí všetka špičková logika, predáva svoj systém High-N.A. E.U.V. za približne tristo sedemdesiat miliónov dolárov.",
+      "text_markdown": "ASML, holandská spoločnosť, ktorá vyrába litografické stroje, na ktorých závisí všetka špičková logika, predáva svoj systém High-N.A. E.U.V. za približne tristo sedemdesiat miliónov dolárov.",
+      "title": "",
+      "tts": {
+        "text": "ASML, holandská spoločnosť, ktorá vyrába litografické stroje, na ktorých závisí všetka špičková logika, predáva svoj systém High N. A. E. U. V. za približne tristo sedemdesiat miliónov dolárov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Globálna výrobná kapacita je menej ako 20 kusov ročne.",
+      "text_markdown": "Globálna výrobná kapacita je menej ako 20 kusov ročne.",
+      "title": "",
+      "tts": {
+        "text": "Globálna výrobná kapacita je menej ako dvadsať kusov ročne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tristo sedemdesiat miliónov dolárov za stroj, menej ako 20 strojov ročne, jedna spoločnosť ich vyrába — to je skutočný úzky profil globálneho kremíka, nie politika.",
+      "text_markdown": "Tristo sedemdesiat miliónov dolárov za stroj, menej ako 20 strojov ročne, jedna spoločnosť ich vyrába — to je skutočný úzky profil globálneho kremíka, nie politika.",
+      "title": "",
+      "tts": {
+        "text": "Tristo sedemdesiat miliónov dolárov za stroj, menej ako dvadsať strojov ročne, jedna spoločnosť ich vyrába — to je skutočný úzky profil globálneho kremíka, nie politika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Tretí titulok tohto týždňa, exportné kontroly.",
+      "text_markdown": "Tretí titulok tohto týždňa, exportné kontroly.",
+      "title": "",
+      "tts": {
+        "text": "Tretí titulok tohto týždňa, exportné kontroly.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ministerstvo obchodu zrušilo pravidlo difúzie AI z Bidenovej éry trinásteho mája 2025 a nevydalo nové objasnenie presadzovania B.I.S. až do tridsiateho prvého mája 2026.",
+      "text_markdown": "Ministerstvo obchodu zrušilo pravidlo difúzie AI z Bidenovej éry trinásteho mája 2025 a nevydalo nové objasnenie presadzovania B.I.S. až do tridsiateho prvého mája 2026.",
+      "title": "",
+      "tts": {
+        "text": "Ministerstvo obchodu zrušilo pravidlo difúzie umelej inteligencie z Bidenovej éry trinásteho mája dvetisícdvadsaťpäť a nevydalo nové objasnenie presadzovania B. I. S. až do tridsiateho prvého mája dvetisícdvadsaťšesť.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "To je približne ročné okno, počas ktorého licenčné požiadavky neboli aktívne presadzované.",
+      "text_markdown": "To je približne ročné okno, počas ktorého licenčné požiadavky neboli aktívne presadzované.",
+      "title": "",
+      "tts": {
+        "text": "To je približne ročné okno, počas ktorého licenčné požiadavky neboli aktívne presadzované.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Takže spočítajte dni.",
+      "text_markdown": "Takže spočítajte dni.",
+      "title": "",
+      "tts": {
+        "text": "Takže spočítajte dni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Sedemdesiatdva hodín na odstavenie amerického modelu, tristoosemdesiat dní na presadenie pravidla o vývoze čipov — to je tá asymetria.",
+      "text_markdown": "Sedemdesiatdva hodín na odstavenie amerického modelu, tristoosemdesiat dní na presadenie pravidla o vývoze čipov — to je tá asymetria.",
+      "title": "",
+      "tts": {
+        "text": "Sedemdesiatdva hodín na odstavenie amerického modelu, tristoosemdesiat dní na presadenie pravidla o vývoze čipov — to je tá asymetria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A kam sa tie čipy podeli za tých tristoosemdesiat dní?",
+      "text_markdown": "A kam sa tie čipy podeli za tých tristoosemdesiat dní?",
+      "title": "",
+      "tts": {
+        "text": "A kam sa tie čipy podeli za tých tristoosemdesiat dní?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Väčšina z nich putovala do juhovýchodnej Ázie.",
+      "text_markdown": "Väčšina z nich putovala do juhovýchodnej Ázie.",
+      "title": "",
+      "tts": {
+        "text": "Väčšina z nich putovala do juhovýchodnej Ázie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ministerstvo spravodlivosti koncom marca odpečatilo obžaloby, v ktorých sa tvrdí, že čipy Nvidia H-sto a A-sto boli smerované cez malajzijských a singapurských sprostredkovateľov.",
+      "text_markdown": "Ministerstvo spravodlivosti koncom marca odpečatilo obžaloby, v ktorých sa tvrdí, že čipy Nvidia H-sto a A-sto boli smerované cez malajzijských a singapurských sprostredkovateľov.",
+      "title": "",
+      "tts": {
+        "text": "Ministerstvo spravodlivosti koncom marca odpečatilo obžaloby, v ktorých sa tvrdí, že čipy Nvidia H sto a A sto boli smerované cez malajzijských a singapurských sprostredkovateľov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Fortune v máji zverejnil šifrované texty, ktoré ukazujú logistiku, a Super Micro je zapletené do prípadu fiktívnej spoločnosti v hodnote dva a pol miliardy dolárov.",
+      "text_markdown": "Fortune v máji zverejnil šifrované texty, ktoré ukazujú logistiku, a Super Micro je zapletené do prípadu fiktívnej spoločnosti v hodnote dva a pol miliardy dolárov.",
+      "title": "",
+      "tts": {
+        "text": "Fortune v máji zverejnil šifrované texty, ktoré ukazujú logistiku, a Super Micro je zapletené do prípadu fiktívnej spoločnosti v hodnote dva a pol miliardy dolárov.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Trumpova administratíva údajne pripravuje nové obmedzenia vývozu čipov, ktoré sú zamerané konkrétne na Malajziu a Thajsko.",
+      "text_markdown": "Trumpova administratíva údajne pripravuje nové obmedzenia vývozu čipov, ktoré sú zamerané konkrétne na Malajziu a Thajsko.",
+      "title": "",
+      "tts": {
+        "text": "Trumpova administratíva údajne pripravuje nové obmedzenia vývozu čipov, ktoré sú zamerané konkrétne na Malajziu a Thajsko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Takže obraz v jednej vete.",
+      "text_markdown": "Takže obraz v jednej vete.",
+      "title": "",
+      "tts": {
+        "text": "Takže obraz v jednej vete.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Čipy neletia do Šen-čenu — najprv letia do Penangu a Singapuru.",
+      "text_markdown": "Čipy neletia do Šen-čenu — najprv letia do Penangu a Singapuru.",
+      "title": "",
+      "tts": {
+        "text": "Čipy neletia do Šen-čenu — najprv letia do Penangu a Singapuru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Koncept týždňa — Zostávajúce výkonnostné záväzky.",
+      "text_markdown": "Koncept týždňa — Zostávajúce výkonnostné záväzky.",
+      "title": "",
+      "tts": {
+        "text": "Koncept týždňa — Zostávajúce výkonnostné záväzky.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "R.P.O. je účtovná položka, ktorá zaznamenáva dolárovú hodnotu zmlúv, ktoré spoločnosť podpísala, ale ešte ich nedodala.",
+      "text_markdown": "R.P.O. je účtovná položka, ktorá zaznamenáva dolárovú hodnotu zmlúv, ktoré spoločnosť podpísala, ale ešte ich nedodala.",
+      "title": "",
+      "tts": {
+        "text": "R. P. O. je účtovná položka, ktorá zaznamenáva dolárovú hodnotu zmlúv, ktoré spoločnosť podpísala, ale ešte ich nedodala.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Je to výhľadové — hovorí vám to o budúcich príjmoch, nie o peniazoch na účte dnes.",
+      "text_markdown": "Je to výhľadové — hovorí vám to o budúcich príjmoch, nie o peniazoch na účte dnes.",
+      "title": "",
+      "tts": {
+        "text": "Je to výhľadové — hovorí vám to o budúcich príjmoch, nie o peniazoch na účte dnes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "A prečo je to dôležité pre Oracle?",
+      "text_markdown": "A prečo je to dôležité pre Oracle?",
+      "title": "",
+      "tts": {
+        "text": "A prečo je to dôležité pre Oracle?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Pretože päťstopäťdesiattri miliárd dolárov R.P.O., silne koncentrovaných u jedného zákazníka pre jednu výstavbu, znamená, že Oracle sľúbil dodať obrovské množstvo výpočtového výkonu v priebehu nasledujúcich niekoľkých rokov zákazníkovi, ktorého vlastný model príjmov je stále predmetom diskusií.",
+      "text_markdown": "Pretože päťstopäťdesiattri miliárd dolárov R.P.O., silne koncentrovaných u jedného zákazníka pre jednu výstavbu, znamená, že Oracle sľúbil dodať obrovské množstvo výpočtového výkonu v priebehu nasledujúcich niekoľkých rokov zákazníkovi, ktorého vlastný model príjmov je stále predmetom diskusií.",
+      "title": "",
+      "tts": {
+        "text": "Pretože päťstopäťdesiattri miliárd dolárov R. P. O., silne koncentrovaných u jedného zákazníka pre jednu výstavbu, znamená, že Oracle sľúbil dodať obrovské množstvo výpočtového výkonu v priebehu nasledujúcich niekoľkých rokov zákazníkovi, ktorého vlastný model príjmov je stále predmetom diskusií.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ak sa tieto zmluvy naplnia, Oracle má obchod desaťročia.",
+      "text_markdown": "Ak sa tieto zmluvy naplnia, Oracle má obchod desaťročia.",
+      "title": "",
+      "tts": {
+        "text": "Ak sa tieto zmluvy naplnia, Oracle má obchod desaťročia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ak sa oneskoria — alebo sa prejednajú — Oracle bude niesť dlh, zatiaľ čo zmluvy sa zmenšia.",
+      "text_markdown": "Ak sa oneskoria — alebo sa prejednajú — Oracle bude niesť dlh, zatiaľ čo zmluvy sa zmenšia.",
+      "title": "",
+      "tts": {
+        "text": "Ak sa oneskoria — alebo sa prejednajú — Oracle bude niesť dlh, zatiaľ čo zmluvy sa zmenšia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Takže keď uvidíte číslo R.P.O. v technickom podaní.",
+      "text_markdown": "Takže keď uvidíte číslo R.P.O. v technickom podaní.",
+      "title": "",
+      "tts": {
+        "text": "Takže keď uvidíte číslo R. P. O. v technickom podaní.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Prečítajte si, kto sú zákazníci, ako sú záväzky koncentrované a čo by sa muselo stať, aby ich spoločnosť skutočne splnila.",
+      "text_markdown": "Prečítajte si, kto sú zákazníci, ako sú záväzky koncentrované a čo by sa muselo stať, aby ich spoločnosť skutočne splnila.",
+      "title": "",
+      "tts": {
+        "text": "Prečítajte si, kto sú zákazníci, ako sú záväzky koncentrované a čo by sa muselo stať, aby ich spoločnosť skutočne splnila.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "R.P.O. je miesto, kde sa v poznámkach pod čiarou objavujú tí, čo zostali s problémom.",
+      "text_markdown": "R.P.O. je miesto, kde sa v poznámkach pod čiarou objavujú tí, čo zostali s problémom.",
+      "title": "",
+      "tts": {
+        "text": "R. P. O. je miesto, kde sa v poznámkach pod čiarou objavujú tí, čo zostali s problémom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Dobré miesto na pristátie.",
+      "text_markdown": "Dobré miesto na pristátie.",
+      "title": "",
+      "tts": {
+        "text": "Dobré miesto na pristátie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Ron, ďakujem za prehľad.",
+      "text_markdown": "Ron, ďakujem za prehľad.",
+      "title": "",
+      "tts": {
+        "text": "Ron, ďakujem za prehľad.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Kedykoľvek, Vindy — rád som tu.",
+      "text_markdown": "Kedykoľvek, Vindy — rád som tu.",
+      "title": "",
+      "tts": {
+        "text": "Kedykoľvek, Vindy — rád som tu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "To bol AI Tento týždeň pre dvadsiateho prvého júna, dvetisícdvadsaťšesť.",
+      "text_markdown": "To bol AI Tento týždeň pre dvadsiateho prvého júna, dvetisícdvadsaťšesť.",
+      "title": "",
+      "tts": {
+        "text": "To bol AI Tento týždeň pre dvadsiateho prvého júna, dvetisícdvadsaťšesť.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Budúci týždeň sa vrátime k téme otvorených váh a malých laboratórií.",
+      "text_markdown": "Budúci týždeň sa vrátime k téme otvorených váh a malých laboratórií.",
+      "title": "",
+      "tts": {
+        "text": "Budúci týždeň sa vrátime k téme otvorených váh a malých laboratórií.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "chapter": 0,
+      "block_type": "text",
+      "text": "Do budúcej nedele, majte sa.",
+      "text_markdown": "Do budúcej nedele, majte sa.",
+      "title": "",
+      "tts": {
+        "text": "Do budúcej nedele, majte sa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

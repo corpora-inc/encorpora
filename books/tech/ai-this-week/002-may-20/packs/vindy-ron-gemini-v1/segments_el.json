@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "el",
+  "total_segments": 167,
+  "segments": [
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "text": "Καλώς ήρθατε στο AI This Week.",
+      "text_markdown": "Καλώς ήρθατε στο AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Καλώς ήρθατε στο AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "text": "Με λένε Vindy.",
+      "text_markdown": "Με λένε Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Με λένε Βίντι.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "text": "Μαζί μου, όπως πάντα, είναι ο Ron.",
+      "text_markdown": "Μαζί μου, όπως πάντα, είναι ο Ron.",
+      "title": "",
+      "tts": {
+        "text": "Μαζί μου, όπως πάντα, είναι ο Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "text": "Χαίρομαι που είμαι εδώ, Vindy.",
+      "text_markdown": "Χαίρομαι που είμαι εδώ, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Χαίρομαι που είμαι εδώ, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "text": "Σήμερα είναι Τετάρτη, 20 Μαΐου 2026.",
+      "text_markdown": "Σήμερα είναι Τετάρτη, 20 Μαΐου 2026.",
+      "title": "",
+      "tts": {
+        "text": "Σήμερα είναι Τετάρτη, είκοσι Μαΐου δύο χιλιάδες είκοσι έξι.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "text": "Ήταν μια πολυσύχναστη εβδομάδα.",
+      "text_markdown": "Ήταν μια πολυσύχναστη εβδομάδα.",
+      "title": "",
+      "tts": {
+        "text": "Ήταν μια πολυσύχναστη εβδομάδα.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "text": "Η Google πραγματοποίησε το συνέδριο προγραμματιστών της, ο Πάπας ολοκλήρωσε μια εγκύκλιο για την τεχνητή νοημοσύνη, και ο κόσμος των open-weights συνέχισε να παραδίδει ενώ όλοι οι άλλοι είχαν σκηνές.",
+      "text_markdown": "Η Google πραγματοποίησε το συνέδριο προγραμματιστών της, ο Πάπας ολοκλήρωσε μια εγκύκλιο για την τεχνητή νοημοσύνη, και ο κόσμος των open-weights συνέχισε να παραδίδει ενώ όλοι οι άλλοι είχαν σκηνές.",
+      "title": "",
+      "tts": {
+        "text": "Η Google πραγματοποίησε το συνέδριο προγραμματιστών της, ο Πάπας ολοκλήρωσε μια εγκύκλιο για την τεχνητή νοημοσύνη, και ο κόσμος των open-weights συνέχισε να παραδίδει ενώ όλοι οι άλλοι είχαν σκηνές.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "text": "Ερχόμενα — τι κινήθηκε στα open weights αυτή την εβδομάδα.",
+      "text_markdown": "Ερχόμενα — τι κινήθηκε στα open weights αυτή την εβδομάδα.",
+      "title": "",
+      "tts": {
+        "text": "Ερχόμενα — τι κινήθηκε στα open weights αυτή την εβδομάδα.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "text": "Πού κατέληξαν οι πίνακες κατάταξης.",
+      "text_markdown": "Πού κατέληξαν οι πίνακες κατάταξης.",
+      "title": "",
+      "tts": {
+        "text": "Πού κατέληξαν οι πίνακες κατάταξης.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "text": "Μια γρήγορη ματιά στις επικεφαλίδες από τα μεγαλύτερα εργαστήρια.",
+      "text_markdown": "Μια γρήγορη ματιά στις επικεφαλίδες από τα μεγαλύτερα εργαστήρια.",
+      "title": "",
+      "tts": {
+        "text": "Μια γρήγορη ματιά στις επικεφαλίδες από τα μεγαλύτερα εργαστήρια.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "text": "Η κύρια ιστορία μας, η πρώτη εγκύκλιος του Βατικανού για την τεχνητή νοημοσύνη.",
+      "text_markdown": "Η κύρια ιστορία μας, η πρώτη εγκύκλιος του Βατικανού για την τεχνητή νοημοσύνη.",
+      "title": "",
+      "tts": {
+        "text": "Η κύρια ιστορία μας, η πρώτη εγκύκλιος του Βατικανού για την τεχνητή νοημοσύνη.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "text": "Και η έννοια της εβδομάδας είναι η κβάντιση — πώς ένα μοντέλο 7 δισεκατομμυρίων παραμέτρων χωράει στο τηλέφωνό σας.",
+      "text_markdown": "Και η έννοια της εβδομάδας είναι η κβάντιση — πώς ένα μοντέλο 7 δισεκατομμυρίων παραμέτρων χωράει στο τηλέφωνό σας.",
+      "title": "",
+      "tts": {
+        "text": "Και η έννοια της εβδομάδας είναι η κβάντιση — πώς ένα μοντέλο επτά δισεκατομμυρίων παραμέτρων χωράει στο τηλέφωνό σας.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "text": "Ron, ας ξεκινήσουμε με τα open weights.",
+      "text_markdown": "Ron, ας ξεκινήσουμε με τα open weights.",
+      "title": "",
+      "tts": {
+        "text": "Ron, ας ξεκινήσουμε με τα open weights.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "text": "Τι κινείται στην κοινότητα αυτή την εβδομάδα;",
+      "text_markdown": "Τι κινείται στην κοινότητα αυτή την εβδομάδα;",
+      "title": "",
+      "tts": {
+        "text": "Τι κινείται στην κοινότητα αυτή την εβδομάδα;",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "text": "Η μεγαλύτερη ιστορία open-weights αυτή τη στιγμή είναι ποιος εκπαιδεύει πού.",
+      "text_markdown": "Η μεγαλύτερη ιστορία open-weights αυτή τη στιγμή είναι ποιος εκπαιδεύει πού.",
+      "title": "",
+      "tts": {
+        "text": "Η μεγαλύτερη ιστορία open-weights αυτή τη στιγμή είναι ποιος εκπαιδεύει πού.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "text": "Δύο από τις πιο ενδιαφέρουσες πρόσφατες ανοιχτές κυκλοφορίες εκπαιδεύτηκαν σε μη-NVIDIA silicon.",
+      "text_markdown": "Δύο από τις πιο ενδιαφέρουσες πρόσφατες ανοιχτές κυκλοφορίες εκπαιδεύτηκαν σε μη-NVIDIA silicon.",
+      "title": "",
+      "tts": {
+        "text": "Δύο από τις πιο ενδιαφέρουσες πρόσφατες ανοιχτές κυκλοφορίες εκπαιδεύτηκαν σε μη-NVIDIA silicon.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "text": "Περιγράψτε μας τη διαδικασία.",
+      "text_markdown": "Περιγράψτε μας τη διαδικασία.",
+      "title": "",
+      "tts": {
+        "text": "Περιγράψτε μας τη διαδικασία.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "text": "Η Zhipu AI στο Πεκίνο παρέδωσε την οικογένεια GLM-5 νωρίτερα φέτος — το GLM-5 τον Φεβρουάριο και μια ενημέρωση που λέγεται GLM-5.1 τον Απρίλιο.",
+      "text_markdown": "Η Zhipu AI στο Πεκίνο παρέδωσε την οικογένεια GLM-5 νωρίτερα φέτος — το GLM-5 τον Φεβρουάριο και μια ενημέρωση που λέγεται GLM-5.1 τον Απρίλιο.",
+      "title": "",
+      "tts": {
+        "text": "Η Zhipu AI στο Πεκίνο παρέδωσε την οικογένεια GLM πέντε νωρίτερα φέτος — το GLM πέντε τον Φεβρουάριο και μια ενημέρωση που λέγεται GLM πέντε κόμμα ένα τον Απρίλιο.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "text": "Ολόκληρη η οικογένεια GLM-5 εκπαιδεύτηκε σε περίπου 100.000 chips Huawei Ascend 910B, χρησιμοποιώντας το framework MindSpore, με μηδέν NVIDIA GPUs στη διαδικασία.",
+      "text_markdown": "Ολόκληρη η οικογένεια GLM-5 εκπαιδεύτηκε σε περίπου 100.000 chips Huawei Ascend 910B, χρησιμοποιώντας το framework MindSpore, με μηδέν NVIDIA GPUs στη διαδικασία.",
+      "title": "",
+      "tts": {
+        "text": "Ολόκληρη η οικογένεια GLM πέντε εκπαιδεύτηκε σε περίπου εκατό χιλιάδες chips Huawei Ascend εννιακόσια δέκα Β, χρησιμοποιώντας το framework MindSpore, με μηδέν NVIDIA GPUs στη διαδικασία.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "text": "Και η Zyphra, ένα αμερικανικό εργαστήριο, παρέδωσε ένα μοντέλο που λέγεται ZAYA1-8B νωρίτερα αυτό το μήνα, προ-εκπαιδευμένο σε ένα cluster από AMD MI300x nodes χτισμένο με IBM.",
+      "text_markdown": "Και η Zyphra, ένα αμερικανικό εργαστήριο, παρέδωσε ένα μοντέλο που λέγεται ZAYA1-8B νωρίτερα αυτό το μήνα, προ-εκπαιδευμένο σε ένα cluster από AMD MI300x nodes χτισμένο με IBM.",
+      "title": "",
+      "tts": {
+        "text": "Και η Zyphra, ένα αμερικανικό εργαστήριο, παρέδωσε ένα μοντέλο που λέγεται ZAYA ένα οκτώ Β νωρίτερα αυτό το μήνα, προ εκπαιδευμένο σε ένα cluster από AMD MI τριακόσια Χ nodes χτισμένο με IBM.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "host",
+      "text": "Γιατί έχει σημασία το silicon;",
+      "text_markdown": "Γιατί έχει σημασία το silicon;",
+      "title": "",
+      "tts": {
+        "text": "Γιατί έχει σημασία το silicon;",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "text": "Για δύο λόγους.",
+      "text_markdown": "Για δύο λόγους.",
+      "title": "",
+      "tts": {
+        "text": "Για δύο λόγους.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "text": "Ένα, τα τελευταία τρία χρόνια, κάθε σοβαρή εκτέλεση εκπαίδευσης frontier χρειαζόταν NVIDIA H100s ή H200s.",
+      "text_markdown": "Ένα, τα τελευταία τρία χρόνια, κάθε σοβαρή εκτέλεση εκπαίδευσης frontier χρειαζόταν NVIDIA H100s ή H200s.",
+      "title": "",
+      "tts": {
+        "text": "Ένα, τα τελευταία τρία χρόνια, κάθε σοβαρή εκτέλεση εκπαίδευσης frontier χρειαζόταν NVIDIA έιτς εκατό ή έιτς διακόσια.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "text": "Δύο — αυτή η προσφορά ήταν το στενό κανάλι, και η υπόθεση ήταν ότι το ανοιχτό και το κινεζικό frontier ήταν μια γενιά πίσω εξαιτίας αυτού.",
+      "text_markdown": "Δύο — αυτή η προσφορά ήταν το στενό κανάλι, και η υπόθεση ήταν ότι το ανοιχτό και το κινεζικό frontier ήταν μια γενιά πίσω εξαιτίας αυτού.",
+      "title": "",
+      "tts": {
+        "text": "Δύο — αυτή η προσφορά ήταν το στενό κανάλι, και η υπόθεση ήταν ότι το ανοιχτό και το κινεζικό frontier ήταν μια γενιά πίσω εξαιτίας αυτού.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "text": "Μόλις μια εκτέλεση κλάσης frontier προσγειωθεί σε Huawei Ascend ή AMD, κάθε άλλο ανοιχτό εργαστήριο μπορεί να αντιγράψει τη συνταγή.",
+      "text_markdown": "Μόλις μια εκτέλεση κλάσης frontier προσγειωθεί σε Huawei Ascend ή AMD, κάθε άλλο ανοιχτό εργαστήριο μπορεί να αντιγράψει τη συνταγή.",
+      "title": "",
+      "tts": {
+        "text": "Μόλις μια εκτέλεση κλάσης frontier προσγειωθεί σε Huawei Ascend ή AMD, κάθε άλλο ανοιχτό εργαστήριο μπορεί να αντιγράψει τη συνταγή.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "text": "Αυτό είναι που συμβαίνει φέτος.",
+      "text_markdown": "Αυτό είναι που συμβαίνει φέτος.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό είναι που συμβαίνει φέτος.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "host",
+      "text": "Κάτι άλλο από την ανοιχτή πλευρά αυτή την εβδομάδα;",
+      "text_markdown": "Κάτι άλλο από την ανοιχτή πλευρά αυτή την εβδομάδα;",
+      "title": "",
+      "tts": {
+        "text": "Κάτι άλλο από την ανοιχτή πλευρά αυτή την εβδομάδα;",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "text": "Ναι, τρία πράγματα που αξίζει να επισημάνουμε.",
+      "text_markdown": "Ναι, τρία πράγματα που αξίζει να επισημάνουμε.",
+      "title": "",
+      "tts": {
+        "text": "Ναι, τρία πράγματα που αξίζει να επισημάνουμε.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "text": "Το Kimi K2.6 της Moonshot, που κυκλοφόρησε στα τέλη Απριλίου, είναι ακόμα στην κορυφαία βαθμίδα στο OpenRouter για όγκο tokens — ήταν πρώτο στον πίνακα την πρώτη του εβδομάδα με 1.88 τρισεκατομμύρια tokens που εξυπηρετήθηκαν.",
+      "text_markdown": "Το Kimi K2.6 της Moonshot, που κυκλοφόρησε στα τέλη Απριλίου, είναι ακόμα στην κορυφαία βαθμίδα στο OpenRouter για όγκο tokens — ήταν πρώτο στον πίνακα την πρώτη του εβδομάδα με 1.88 τρισεκατομμύρια tokens που εξυπηρετήθηκαν.",
+      "title": "",
+      "tts": {
+        "text": "Το Kimi K δύο κόμμα έξι της Moonshot, που κυκλοφόρησε στα τέλη Απριλίου, είναι ακόμα στην κορυφαία βαθμίδα στο OpenRouter για όγκο tokens — ήταν πρώτο στον πίνακα την πρώτη του εβδομάδα με ένα κόμμα ογδόντα οκτώ τρισεκατομμύρια tokens που εξυπηρετήθηκαν.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "text": "Αυτή ήταν η πρώτη φορά που ένα κινεζικό μοντέλο open-weights ξεπέρασε το Claude Sonnet και το DeepSeek στον κύριο εμπορικό δρομολογητή.",
+      "text_markdown": "Αυτή ήταν η πρώτη φορά που ένα κινεζικό μοντέλο open-weights ξεπέρασε το Claude Sonnet και το DeepSeek στον κύριο εμπορικό δρομολογητή.",
+      "title": "",
+      "tts": {
+        "text": "Αυτή ήταν η πρώτη φορά που ένα κινεζικό μοντέλο open-weights ξεπέρασε το Claude Sonnet και το DeepSeek στον κύριο εμπορικό δρομολογητή.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "text": "Το DeepSeek V4-Pro είναι στις 1.6 τρισεκατομμύρια συνολικές παραμέτρους με 49 δισεκατομμύρια ενεργές.",
+      "text_markdown": "Το DeepSeek V4-Pro είναι στις 1.6 τρισεκατομμύρια συνολικές παραμέτρους με 49 δισεκατομμύρια ενεργές.",
+      "title": "",
+      "tts": {
+        "text": "Το DeepSeek V τέσσερα Pro είναι στο ένα κόμμα έξι τρισεκατομμύρια συνολικές παραμέτρους με σαράντα εννέα δισεκατομμύρια ενεργές.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "text": "Το φθηνότερο αδέλφι τους, το V4-Flash, είναι 284 δισεκατομμύρια συνολικά με 13 δισεκατομμύρια ενεργά.",
+      "text_markdown": "Το φθηνότερο αδέλφι τους, το V4-Flash, είναι 284 δισεκατομμύρια συνολικά με 13 δισεκατομμύρια ενεργά.",
+      "title": "",
+      "tts": {
+        "text": "Το φθηνότερο αδέλφι τους, το V τέσσερα Flash, είναι διακόσια ογδόντα τέσσερα δισεκατομμύρια συνολικά με δεκατρία δισεκατομμύρια ενεργά.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "text": "Και τα δύο είναι open weights υπό την άδεια MIT.",
+      "text_markdown": "Και τα δύο είναι open weights υπό την άδεια MIT.",
+      "title": "",
+      "tts": {
+        "text": "Και τα δύο είναι open weights υπό την άδεια MIT.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "text": "Πείτε περισσότερα για το ZAYA1-8B συγκεκριμένα.",
+      "text_markdown": "Πείτε περισσότερα για το ZAYA1-8B συγκεκριμένα.",
+      "title": "",
+      "tts": {
+        "text": "Πείτε περισσότερα για το ZAYA ένα οκτώ Β συγκεκριμένα.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "text": "Είναι ένα μικρό μοντέλο mixture-of-experts — 8.4 δισεκατομμύρια συνολικές παράμετροι, με μόνο περίπου 760 εκατομμύρια ενεργές ανά token.",
+      "text_markdown": "Είναι ένα μικρό μοντέλο mixture-of-experts — 8.4 δισεκατομμύρια συνολικές παράμετροι, με μόνο περίπου 760 εκατομμύρια ενεργές ανά token.",
+      "title": "",
+      "tts": {
+        "text": "Είναι ένα μικρό μοντέλο mixture of experts — οκτώ κόμμα τέσσερα δισεκατομμύρια συνολικές παράμετροι, με μόνο περίπου επτακόσια εξήντα εκατομμύρια ενεργές ανά token.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "text": "Άδεια Apache 2.0, οπότε μπορείτε να τη χρησιμοποιήσετε εμπορικά.",
+      "text_markdown": "Άδεια Apache 2.0, οπότε μπορείτε να τη χρησιμοποιήσετε εμπορικά.",
+      "title": "",
+      "tts": {
+        "text": "Άδεια Apache δύο κόμμα μηδέν, οπότε μπορείτε να τη χρησιμοποιήσετε εμπορικά.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "text": "Προ-εκπαιδευμένο σε ένα cluster περίπου 1.024 AMD MI300x nodes, χωρίς καθόλου NVIDIA hardware.",
+      "text_markdown": "Προ-εκπαιδευμένο σε ένα cluster περίπου 1.024 AMD MI300x nodes, χωρίς καθόλου NVIDIA hardware.",
+      "title": "",
+      "tts": {
+        "text": "Προ εκπαιδευμένο σε ένα cluster περίπου χίλια είκοσι τέσσερα AMD MI τριακόσια Χ nodes, χωρίς καθόλου NVIDIA hardware.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "text": "Σκοράρει 89.1 στο AIME, το benchmark μαθηματικών ολυμπιάδων, ξεπερνώντας πολύ μεγαλύτερα μοντέλα σε μαθηματικά και προγραμματισμό ενώ τρέχει με προϋπολογισμό κάτω από 1 δισεκατομμύριο ενεργών παραμέτρων.",
+      "text_markdown": "Σκοράρει 89.1 στο AIME, το benchmark μαθηματικών ολυμπιάδων, ξεπερνώντας πολύ μεγαλύτερα μοντέλα σε μαθηματικά και προγραμματισμό ενώ τρέχει με προϋπολογισμό κάτω από 1 δισεκατομμύριο ενεργών παραμέτρων.",
+      "title": "",
+      "tts": {
+        "text": "Σκοράρει ογδόντα εννέα κόμμα ένα στο AIME, το benchmark μαθηματικών ολυμπιάδων, ξεπερνώντας πολύ μεγαλύτερα μοντέλα σε μαθηματικά και προγραμματισμό ενώ τρέχει με προϋπολογισμό κάτω από ένα δισεκατομμύριο ενεργών παραμέτρων.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "text": "Δύο εργαστήρια open-weights που εκπαιδεύουν χωρίς NVIDIA μέσα σε δύο μήνες.",
+      "text_markdown": "Δύο εργαστήρια open-weights που εκπαιδεύουν χωρίς NVIDIA μέσα σε δύο μήνες.",
+      "title": "",
+      "tts": {
+        "text": "Δύο εργαστήρια open-weights που εκπαιδεύουν χωρίς NVIDIA μέσα σε δύο μήνες.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "text": "Δεν είναι σύμπτωση.",
+      "text_markdown": "Δεν είναι σύμπτωση.",
+      "title": "",
+      "tts": {
+        "text": "Δεν είναι σύμπτωση.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "text": "Οι υποδομές επιτέλους συναντήθηκαν — το AMD ROCm και το Huawei CANN έγιναν και τα δύο χρησιμοποιήσιμα το 2025, και το 2026 είναι όταν η ανοιχτή κοινότητα παραδίδει πραγματικές εκτελέσεις κορυφαίας κλάσης σε αυτά.",
+      "text_markdown": "Οι υποδομές επιτέλους συναντήθηκαν — το AMD ROCm και το Huawei CANN έγιναν και τα δύο χρησιμοποιήσιμα το 2025, και το 2026 είναι όταν η ανοιχτή κοινότητα παραδίδει πραγματικές εκτελέσεις κορυφαίας κλάσης σε αυτά.",
+      "title": "",
+      "tts": {
+        "text": "Οι υποδομές επιτέλους συναντήθηκαν — το AMD ROCm και το Huawei CANN έγιναν και τα δύο χρησιμοποιήσιμα το δύο χιλιάδες είκοσι πέντε, και το δύο χιλιάδες είκοσι έξι είναι όταν η ανοιχτή κοινότητα παραδίδει πραγματικές εκτελέσεις κορυφαίας κλάσης σε αυτά.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "host",
+      "text": "Τι γίνεται με την πλευρά των υποδομών;",
+      "text_markdown": "Τι γίνεται με την πλευρά των υποδομών;",
+      "title": "",
+      "tts": {
+        "text": "Τι γίνεται με την πλευρά των υποδομών;",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "text": "Το vLLM v0.21 κυκλοφόρησε την Παρασκευή, 15 Μαΐου.",
+      "text_markdown": "Το vLLM v0.21 κυκλοφόρησε την Παρασκευή, 15 Μαΐου.",
+      "title": "",
+      "tts": {
+        "text": "Το v L L M έκδοση μηδέν κόμμα είκοσι ένα κυκλοφόρησε την Παρασκευή, δεκαπέντε Μαΐου.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "text": "Το vLLM είναι η ανοιχτή στοίβα εξυπηρέτησης — αυτό που τρέχεις πραγματικά όταν θες να φιλοξενήσεις ένα μοντέλο μόνος σου.",
+      "text_markdown": "Το vLLM είναι η ανοιχτή στοίβα εξυπηρέτησης — αυτό που τρέχεις πραγματικά όταν θες να φιλοξενήσεις ένα μοντέλο μόνος σου.",
+      "title": "",
+      "tts": {
+        "text": "Το v L L M είναι η ανοιχτή στοίβα εξυπηρέτησης — αυτό που τρέχεις πραγματικά όταν θες να φιλοξενήσεις ένα μοντέλο μόνος σου.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "text": "Διαχειρίζεται την ομαδοποίηση, τη σελιδοποίηση και την επαναχρησιμοποίηση της cache KV, και είναι τώρα η προεπιλογή στην παραγωγή για όλους όσοι δεν είναι σε κλειστό API.",
+      "text_markdown": "Διαχειρίζεται την ομαδοποίηση, τη σελιδοποίηση και την επαναχρησιμοποίηση της cache KV, και είναι τώρα η προεπιλογή στην παραγωγή για όλους όσοι δεν είναι σε κλειστό API.",
+      "title": "",
+      "tts": {
+        "text": "Διαχειρίζεται την ομαδοποίηση, τη σελιδοποίηση και την επαναχρησιμοποίηση της cache KV, και είναι τώρα η προεπιλογή στην παραγωγή για όλους όσοι δεν είναι σε κλειστό API.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "text": "Αυτή η κυκλοφορία προσθέτει εκφόρτωση KV με έναν υβριδικό διαχειριστή μνήμης, και ένα νέο backend προσοχής συντονισμένο για το DeepSeek-R1 και το Kimi K2.5 prefill σε GPU Blackwell.",
+      "text_markdown": "Αυτή η κυκλοφορία προσθέτει εκφόρτωση KV με έναν υβριδικό διαχειριστή μνήμης, και ένα νέο backend προσοχής συντονισμένο για το DeepSeek-R1 και το Kimi K2.5 prefill σε GPU Blackwell.",
+      "title": "",
+      "tts": {
+        "text": "Αυτή η κυκλοφορία προσθέτει εκφόρτωση κέι βι με έναν υβριδικό διαχειριστή μνήμης, και ένα νέο backend προσοχής συντονισμένο για το DeepSeek αρ ένα και το Kimi K δύο κόμμα πέντε prefill σε GPU Blackwell.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "text": "Η ανοιχτή στοίβα εξυπηρέτησης συνεχίζει να παραδίδει ενώ τα μεγάλα εργαστήρια κάνουν κεντρικές ομιλίες.",
+      "text_markdown": "Η ανοιχτή στοίβα εξυπηρέτησης συνεχίζει να παραδίδει ενώ τα μεγάλα εργαστήρια κάνουν κεντρικές ομιλίες.",
+      "title": "",
+      "tts": {
+        "text": "Η ανοιχτή στοίβα εξυπηρέτησης συνεχίζει να παραδίδει ενώ τα μεγάλα εργαστήρια κάνουν κεντρικές ομιλίες.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "text": "Εντάξει, ας προχωρήσουμε στους πίνακες κατάταξης.",
+      "text_markdown": "Εντάξει, ας προχωρήσουμε στους πίνακες κατάταξης.",
+      "title": "",
+      "tts": {
+        "text": "Εντάξει, ας προχωρήσουμε στους πίνακες κατάταξης.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "host",
+      "text": "Ron, τι κρατάει και τι κινήθηκε;",
+      "text_markdown": "Ron, τι κρατάει και τι κινήθηκε;",
+      "title": "",
+      "tts": {
+        "text": "Ron, τι κρατάει και τι κινήθηκε;",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "text": "Κυρίως κρατάει.",
+      "text_markdown": "Κυρίως κρατάει.",
+      "title": "",
+      "tts": {
+        "text": "Κυρίως κρατάει.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "text": "Το Claude Opus 4.7 της Anthropic είναι ακόμα πρώτο στον πίνακα κατάταξης κωδικοποίησης του LM Arena, περίπου σε Elo 1569.",
+      "text_markdown": "Το Claude Opus 4.7 της Anthropic είναι ακόμα πρώτο στον πίνακα κατάταξης κωδικοποίησης του LM Arena, περίπου σε Elo 1569.",
+      "title": "",
+      "tts": {
+        "text": "Το Claude Opus τέσσερα κόμμα επτά της Anthropic είναι ακόμα πρώτο στον πίνακα κατάταξης κωδικοποίησης του LM Arena, περίπου σε Elo χίλια πεντακόσια εξήντα εννέα.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "text": "Το GPT-5.5 της OpenAI σε λειτουργία υψηλής συλλογιστικής κάθεται στο νούμερο επτά στον ίδιο πίνακα.",
+      "text_markdown": "Το GPT-5.5 της OpenAI σε λειτουργία υψηλής συλλογιστικής κάθεται στο νούμερο επτά στον ίδιο πίνακα.",
+      "title": "",
+      "tts": {
+        "text": "Το GPT πέντε κόμμα πέντε της OpenAI σε λειτουργία υψηλής συλλογιστικής κάθεται στο νούμερο επτά στον ίδιο πίνακα.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "text": "Και στον υπο-πίνακα κωδικοποίησης WebDev, το GPT-5.5 είναι στο νούμερο εννέα.",
+      "text_markdown": "Και στον υπο-πίνακα κωδικοποίησης WebDev, το GPT-5.5 είναι στο νούμερο εννέα.",
+      "title": "",
+      "tts": {
+        "text": "Και στον υπο-πίνακα κωδικοποίησης WebDev, το GPT πέντε κόμμα πέντε είναι στο νούμερο εννέα.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "text": "Πού καταλήγει το νέο μοντέλο της Google;",
+      "text_markdown": "Πού καταλήγει το νέο μοντέλο της Google;",
+      "title": "",
+      "tts": {
+        "text": "Πού καταλήγει το νέο μοντέλο της Google;",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "text": "Το Gemini 3.5 Flash κυκλοφόρησε την Τρίτη στο Google I/O, οπότε δεν είναι ακόμα στους πίνακες.",
+      "text_markdown": "Το Gemini 3.5 Flash κυκλοφόρησε την Τρίτη στο Google I/O, οπότε δεν είναι ακόμα στους πίνακες.",
+      "title": "",
+      "tts": {
+        "text": "Το Gemini τρία κόμμα πέντε Flash κυκλοφόρησε την Τρίτη στο Google I O, οπότε δεν είναι ακόμα στους πίνακες.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "text": "Το Arena χρειάζεται μερικές χιλιάδες ψήφους κεφάλι-με-κεφάλι πριν ένα μοντέλο πάρει σταθερό Elo.",
+      "text_markdown": "Το Arena χρειάζεται μερικές χιλιάδες ψήφους κεφάλι-με-κεφάλι πριν ένα μοντέλο πάρει σταθερό Elo.",
+      "title": "",
+      "tts": {
+        "text": "Το Arena χρειάζεται μερικές χιλιάδες ψήφους κεφάλι-με-κεφάλι πριν ένα μοντέλο πάρει σταθερό Elo.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "text": "Περιμένετε το Gemini 3.5 Flash να εμφανιστεί την επόμενη εβδομάδα και το Gemini 3.5 Pro να φτάσει τον Ιούνιο.",
+      "text_markdown": "Περιμένετε το Gemini 3.5 Flash να εμφανιστεί την επόμενη εβδομάδα και το Gemini 3.5 Pro να φτάσει τον Ιούνιο.",
+      "title": "",
+      "tts": {
+        "text": "Περιμένετε το Gemini τρία κόμμα πέντε Flash να εμφανιστεί την επόμενη εβδομάδα και το Gemini τρία κόμμα πέντε Pro να φτάσει τον Ιούνιο.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "text": "Κάτι στο μέτωπο της ποιότητας αξιολόγησης;",
+      "text_markdown": "Κάτι στο μέτωπο της ποιότητας αξιολόγησης;",
+      "title": "",
+      "tts": {
+        "text": "Κάτι στο μέτωπο της ποιότητας αξιολόγησης;",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "text": "Ναι, μια επανεμφάνιση από την περασμένη εβδομάδα.",
+      "text_markdown": "Ναι, μια επανεμφάνιση από την περασμένη εβδομάδα.",
+      "title": "",
+      "tts": {
+        "text": "Ναι, μια επανεμφάνιση από την περασμένη εβδομάδα.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "text": "Το SWE-bench Verified είναι ακόμα συνταξιοδοτημένο — το benchmark κωδικοποίησης που χρησιμοποιούσε να παραθέτει η OpenAI, όπου περισσότερο από το μισό των δύσκολων εργασιών είχε χαλασμένα τεστ.",
+      "text_markdown": "Το SWE-bench Verified είναι ακόμα συνταξιοδοτημένο — το benchmark κωδικοποίησης που χρησιμοποιούσε να παραθέτει η OpenAI, όπου περισσότερο από το μισό των δύσκολων εργασιών είχε χαλασμένα τεστ.",
+      "title": "",
+      "tts": {
+        "text": "Το SWE bench Verified είναι ακόμα συνταξιοδοτημένο — το benchmark κωδικοποίησης που χρησιμοποιούσε να παραθέτει η OpenAI, όπου περισσότερο από το μισό των δύσκολων εργασιών είχε χαλασμένα τεστ.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "text": "Οι πίνακες που πρέπει να παρακολουθούμε τώρα είναι το SWE-bench Pro και ένα έργο που λέγεται SWE-rebench.",
+      "text_markdown": "Οι πίνακες που πρέπει να παρακολουθούμε τώρα είναι το SWE-bench Pro και ένα έργο που λέγεται SWE-rebench.",
+      "title": "",
+      "tts": {
+        "text": "Οι πίνακες που πρέπει να παρακολουθούμε τώρα είναι το SWE bench Pro και ένα έργο που λέγεται SWE rebench.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "text": "Και τα δύο κρατούν τον κώδικα τεστ ιδιωτικό ώστε τα μοντέλα να μην μπορούν να εκπαιδευτούν εναντίον του.",
+      "text_markdown": "Και τα δύο κρατούν τον κώδικα τεστ ιδιωτικό ώστε τα μοντέλα να μην μπορούν να εκπαιδευτούν εναντίον του.",
+      "title": "",
+      "tts": {
+        "text": "Και τα δύο κρατούν τον κώδικα τεστ ιδιωτικό ώστε τα μοντέλα να μην μπορούν να εκπαιδευτούν εναντίον του.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-063",
+      "speaker_id": "host",
+      "text": "Και το χάσμα ανοιχτό εναντίον κλειστό;",
+      "text_markdown": "Και το χάσμα ανοιχτό εναντίον κλειστό;",
+      "title": "",
+      "tts": {
+        "text": "Και το χάσμα ανοιχτό εναντίον κλειστό;",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "text": "Σύμφωνα με το Artificial Analysis, το χάσμα είναι τώρα 5 έως 15 πόντους στον δείκτη νοημοσύνης διασταυρούμενης αξιολόγησης.",
+      "text_markdown": "Σύμφωνα με το Artificial Analysis, το χάσμα είναι τώρα 5 έως 15 πόντους στον δείκτη νοημοσύνης διασταυρούμενης αξιολόγησης.",
+      "title": "",
+      "tts": {
+        "text": "Σύμφωνα με το Artificial Analysis, το χάσμα είναι τώρα πέντε έως δεκαπέντε πόντους στον δείκτη νοημοσύνης διασταυρούμενης αξιολόγησης.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "text": "Αυτό ήταν 30 έως 40 πόντους πριν από 18 μήνες.",
+      "text_markdown": "Αυτό ήταν 30 έως 40 πόντους πριν από 18 μήνες.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό ήταν τριάντα έως σαράντα πόντους πριν από δεκαοχτώ μήνες.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "text": "Το Kimi K2.6 και το DeepSeek V4-Pro κάθονται μέσα σε αυτή τη ζώνη εναντίον του GPT-5.5 και του Opus 4.7.",
+      "text_markdown": "Το Kimi K2.6 και το DeepSeek V4-Pro κάθονται μέσα σε αυτή τη ζώνη εναντίον του GPT-5.5 και του Opus 4.7.",
+      "title": "",
+      "tts": {
+        "text": "Το Kimi K δύο κόμμα έξι και το DeepSeek V τέσσερα Pro κάθονται μέσα σε αυτή τη ζώνη εναντίον του GPT πέντε κόμμα πέντε και του Opus τέσσερα κόμμα επτά.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-067",
+      "speaker_id": "host",
+      "text": "Τώρα ας προχωρήσουμε στους τίτλους.",
+      "text_markdown": "Τώρα ας προχωρήσουμε στους τίτλους.",
+      "title": "",
+      "tts": {
+        "text": "Τώρα ας προχωρήσουμε στους τίτλους.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-068",
+      "speaker_id": "host",
+      "text": "Ron, τι έχει το γρήγορο κλιπ αυτή την εβδομάδα;",
+      "text_markdown": "Ron, τι έχει το γρήγορο κλιπ αυτή την εβδομάδα;",
+      "title": "",
+      "tts": {
+        "text": "Ron, τι έχει το γρήγορο κλιπ αυτή την εβδομάδα;",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "text": "Το Google I/O ήταν Τρίτη και Τετάρτη.",
+      "text_markdown": "Το Google I/O ήταν Τρίτη και Τετάρτη.",
+      "title": "",
+      "tts": {
+        "text": "Το Google I O ήταν Τρίτη και Τετάρτη.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "text": "Οι κεντρικές κυκλοφορίες ήταν το Gemini 3.5 Flash, το Gemini Omni για συνομιλιακή επεξεργασία βίντεο, και το Gemini Spark, έναν agent που τρέχει 24/7 σε ένα cloud virtual machine που δεν σου ανήκει.",
+      "text_markdown": "Οι κεντρικές κυκλοφορίες ήταν το Gemini 3.5 Flash, το Gemini Omni για συνομιλιακή επεξεργασία βίντεο, και το Gemini Spark, έναν agent που τρέχει 24/7 σε ένα cloud virtual machine που δεν σου ανήκει.",
+      "title": "",
+      "tts": {
+        "text": "Οι κεντρικές κυκλοφορίες ήταν το Gemini τρία κόμμα πέντε Flash, το Gemini Omni για συνομιλιακή επεξεργασία βίντεο, και το Gemini Spark, έναν agent που τρέχει είκοσι τέσσερα επτά σε ένα cloud virtual machine που δεν σου ανήκει.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "text": "Αξίζει να σημειωθεί ότι το ίδιο πρότυπο — έναν agent που τρέχει στη δική του μηχανή και κάνει πολυβηματική δουλειά — είναι κάτι που μπορείς ήδη να κάνεις σήμερα με ανοιχτά εργαλεία όπως το Aider ή το OpenCode που δείχνουν σε τοπικό μοντέλο.",
+      "text_markdown": "Αξίζει να σημειωθεί ότι το ίδιο πρότυπο — έναν agent που τρέχει στη δική του μηχανή και κάνει πολυβηματική δουλειά — είναι κάτι που μπορείς ήδη να κάνεις σήμερα με ανοιχτά εργαλεία όπως το Aider ή το OpenCode που δείχνουν σε τοπικό μοντέλο.",
+      "title": "",
+      "tts": {
+        "text": "Αξίζει να σημειωθεί ότι το ίδιο πρότυπο — έναν agent που τρέχει στη δική του μηχανή και κάνει πολυβηματική δουλειά — είναι κάτι που μπορείς ήδη να κάνεις σήμερα με ανοιχτά εργαλεία όπως το Aider ή το OpenCode που δείχνουν σε τοπικό μοντέλο.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "text": "Το Google AI Ultra μείωσε την εκκινητική του βαθμίδα από 250$ το μήνα σε 100$ το μήνα, και η Samsung ανακοίνωσε γυαλιά εκτεταμένης πραγματικότητας με ενσωματωμένο Gemini.",
+      "text_markdown": "Το Google AI Ultra μείωσε την εκκινητική του βαθμίδα από 250$ το μήνα σε 100$ το μήνα, και η Samsung ανακοίνωσε γυαλιά εκτεταμένης πραγματικότητας με ενσωματωμένο Gemini.",
+      "title": "",
+      "tts": {
+        "text": "Το Google AI Ultra μείωσε την εκκινητική του βαθμίδα από διακόσια πενήντα δολάρια το μήνα σε εκατό δολάρια το μήνα, και η Samsung ανακοίνωσε γυαλιά εκτεταμένης πραγματικότητας με ενσωματωμένο Gemini.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "text": "Τα καθημερινά όρια prompt αντικαταστάθηκαν με έναν προϋπολογισμό υπολογιστικής ισχύος που ανανεώνεται κάθε πέντε ώρες.",
+      "text_markdown": "Τα καθημερινά όρια prompt αντικαταστάθηκαν με έναν προϋπολογισμό υπολογιστικής ισχύος που ανανεώνεται κάθε πέντε ώρες.",
+      "title": "",
+      "tts": {
+        "text": "Τα καθημερινά όρια prompt αντικαταστάθηκαν με έναν προϋπολογισμό υπολογιστικής ισχύος που ανανεώνεται κάθε πέντε ώρες.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-074",
+      "speaker_id": "host",
+      "text": "Και στην πλευρά του προσωπικού;",
+      "text_markdown": "Και στην πλευρά του προσωπικού;",
+      "title": "",
+      "tts": {
+        "text": "Και στην πλευρά του προσωπικού;",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "text": "Ο Andrej Karpathy εντάχθηκε στην Anthropic την Τρίτη.",
+      "text_markdown": "Ο Andrej Karpathy εντάχθηκε στην Anthropic την Τρίτη.",
+      "title": "",
+      "tts": {
+        "text": "Ο Andrej Karpathy εντάχθηκε στην Anthropic την Τρίτη.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "text": "Είναι στην ομάδα προ-εκπαίδευσης, ηγούμενος μιας ομάδας που εστιάζει στη χρήση του Claude για την επιτάχυνση της έρευνας προ-εκπαίδευσης.",
+      "text_markdown": "Είναι στην ομάδα προ-εκπαίδευσης, ηγούμενος μιας ομάδας που εστιάζει στη χρήση του Claude για την επιτάχυνση της έρευνας προ-εκπαίδευσης.",
+      "title": "",
+      "tts": {
+        "text": "Είναι στην ομάδα προ-εκπαίδευσης, ηγούμενος μιας ομάδας που εστιάζει στη χρήση του Claude για την επιτάχυνση της έρευνας προ-εκπαίδευσης.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "text": "Ο Karpathy ήταν ιδρυτικό μέλος της OpenAI, μετά διηύθυνε τη δουλειά AI της Tesla, μετά ξεκίνησε τα Eureka Labs για εκπαίδευση AI.",
+      "text_markdown": "Ο Karpathy ήταν ιδρυτικό μέλος της OpenAI, μετά διηύθυνε τη δουλειά AI της Tesla, μετά ξεκίνησε τα Eureka Labs για εκπαίδευση AI.",
+      "title": "",
+      "tts": {
+        "text": "Ο Karpathy ήταν ιδρυτικό μέλος της OpenAI, μετά διηύθυνε τη δουλειά AI της Tesla, μετά ξεκίνησε τα Eureka Labs για εκπαίδευση AI.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "text": "Τι γίνεται με την Apple;",
+      "text_markdown": "Τι γίνεται με την Apple;",
+      "title": "",
+      "tts": {
+        "text": "Τι γίνεται με την Apple;",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "text": "Ο CEO του Google Cloud Thomas Kurian επιβεβαίωσε αυτή την εβδομάδα ότι το Gemini θα τροφοδοτήσει μια έκδοση του Siri αργότερα το 2026.",
+      "text_markdown": "Ο CEO του Google Cloud Thomas Kurian επιβεβαίωσε αυτή την εβδομάδα ότι το Gemini θα τροφοδοτήσει μια έκδοση του Siri αργότερα το 2026.",
+      "title": "",
+      "tts": {
+        "text": "Ο CEO του Google Cloud Thomas Kurian επιβεβαίωσε αυτή την εβδομάδα ότι το Gemini θα τροφοδοτήσει μια έκδοση του Siri αργότερα το δύο χιλιάδες είκοσι έξι.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-080",
+      "speaker_id": "analyst",
+      "text": "Η συμφωνία εκτελείται μέσω του πλαισίου Foundation Models της Apple, οπότε η Apple εξακολουθεί να κατέχει το στρώμα ενσωμάτωσης.",
+      "text_markdown": "Η συμφωνία εκτελείται μέσω του πλαισίου Foundation Models της Apple, οπότε η Apple εξακολουθεί να κατέχει το στρώμα ενσωμάτωσης.",
+      "title": "",
+      "tts": {
+        "text": "Η συμφωνία εκτελείται μέσω του πλαισίου Foundation Models της Apple, οπότε η Apple εξακολουθεί να κατέχει το στρώμα ενσωμάτωσης.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-081",
+      "speaker_id": "host",
+      "text": "Και η αγωγή του Musk;",
+      "text_markdown": "Και η αγωγή του Musk;",
+      "title": "",
+      "tts": {
+        "text": "Και η αγωγή του Musk;",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "text": "Ένα εννεαμελές δικαστήριο ενόρκων της Καλιφόρνια απέρριψε την αγωγή του Elon Musk κατά της OpenAI τη Δευτέρα, 18 Μαΐου.",
+      "text_markdown": "Ένα εννεαμελές δικαστήριο ενόρκων της Καλιφόρνια απέρριψε την αγωγή του Elon Musk κατά της OpenAI τη Δευτέρα, 18 Μαΐου.",
+      "title": "",
+      "tts": {
+        "text": "Ένα εννεαμελές δικαστήριο ενόρκων της Καλιφόρνια απέρριψε την αγωγή του Elon Musk κατά της OpenAI τη Δευτέρα, δεκάτη όγδοη Μαΐου.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "text": "Διασκέφτηκαν για λιγότερο από δύο ώρες.",
+      "text_markdown": "Διασκέφτηκαν για λιγότερο από δύο ώρες.",
+      "title": "",
+      "tts": {
+        "text": "Διασκέφτηκαν για λιγότερο από δύο ώρες.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "text": "Το δικαστήριο ενόρκων έκρινε ότι ο Musk είχε καταθέσει την αγωγή μετά την παραγραφή, και ο δικαστής απέρριψε την υπόθεση.",
+      "text_markdown": "Το δικαστήριο ενόρκων έκρινε ότι ο Musk είχε καταθέσει την αγωγή μετά την παραγραφή, και ο δικαστής απέρριψε την υπόθεση.",
+      "title": "",
+      "tts": {
+        "text": "Το δικαστήριο ενόρκων έκρινε ότι ο Musk είχε καταθέσει την αγωγή μετά την παραγραφή, και ο δικαστής απέρριψε την υπόθεση.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-085",
+      "speaker_id": "host",
+      "text": "Κάτι από την πολιτική;",
+      "text_markdown": "Κάτι από την πολιτική;",
+      "title": "",
+      "tts": {
+        "text": "Κάτι από την πολιτική;",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "text": "Ο Υπουργός Οικονομικών Scott Bessent ανακοίνωσε στη σύνοδο Trump-Xi στο Πεκίνο στις 14 Μαΐου ότι οι ΗΠΑ και η Κίνα θα δημιουργήσουν ένα επίσημο πρωτόκολλο για την ασφάλεια της ΤΝ.",
+      "text_markdown": "Ο Υπουργός Οικονομικών Scott Bessent ανακοίνωσε στη σύνοδο Trump-Xi στο Πεκίνο στις 14 Μαΐου ότι οι ΗΠΑ και η Κίνα θα δημιουργήσουν ένα επίσημο πρωτόκολλο για την ασφάλεια της ΤΝ.",
+      "title": "",
+      "tts": {
+        "text": "Ο Υπουργός Οικονομικών Scott Bessent ανακοίνωσε στη σύνοδο Trump Xi στο Πεκίνο στις δεκάτη τέταρτη Μαΐου ότι οι ΗΠΑ και η Κίνα θα δημιουργήσουν ένα επίσημο πρωτόκολλο για την ασφάλεια της ΤΝ.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "text": "Διατυπώνεται ως βέλτιστες πρακτικές για να κρατήσουμε τα μοντέλα αιχμής μακριά από μη-κρατικούς δράστες — όχι ένα δεσμευτικό καθεστώς, απλώς μια συμφωνία για διάλογο.",
+      "text_markdown": "Διατυπώνεται ως βέλτιστες πρακτικές για να κρατήσουμε τα μοντέλα αιχμής μακριά από μη-κρατικούς δράστες — όχι ένα δεσμευτικό καθεστώς, απλώς μια συμφωνία για διάλογο.",
+      "title": "",
+      "tts": {
+        "text": "Διατυπώνεται ως βέλτιστες πρακτικές για να κρατήσουμε τα μοντέλα αιχμής μακριά από μη κρατικούς δράστες — όχι ένα δεσμευτικό καθεστώς, απλώς μια συμφωνία για διάλογο.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "text": "Πρώτη φορά που οι δύο πλευρές αντιμετωπίζουν την ασφάλεια της ΤΝ ως διμερές ζήτημα αντί για καθαρό ανταγωνισμό.",
+      "text_markdown": "Πρώτη φορά που οι δύο πλευρές αντιμετωπίζουν την ασφάλεια της ΤΝ ως διμερές ζήτημα αντί για καθαρό ανταγωνισμό.",
+      "title": "",
+      "tts": {
+        "text": "Πρώτη φορά που οι δύο πλευρές αντιμετωπίζουν την ασφάλεια της ΤΝ ως διμερές ζήτημα αντί για καθαρό ανταγωνισμό.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-089",
+      "speaker_id": "host",
+      "text": "Τώρα ας επιστρέψουμε στο κύριο θέμα.",
+      "text_markdown": "Τώρα ας επιστρέψουμε στο κύριο θέμα.",
+      "title": "",
+      "tts": {
+        "text": "Τώρα ας επιστρέψουμε στο κύριο θέμα.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-090",
+      "speaker_id": "host",
+      "text": "Ron, ο Πάπας έγραψε για εμάς την περασμένη εβδομάδα.",
+      "text_markdown": "Ron, ο Πάπας έγραψε για εμάς την περασμένη εβδομάδα.",
+      "title": "",
+      "tts": {
+        "text": "Ron, ο Πάπας έγραψε για εμάς την περασμένη εβδομάδα.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "text": "Ο Πάπας Λέων XIV ολοκλήρωσε την πρώτη του εγκύκλιο.",
+      "text_markdown": "Ο Πάπας Λέων XIV ολοκλήρωσε την πρώτη του εγκύκλιο.",
+      "title": "",
+      "tts": {
+        "text": "Ο Πάπας Λέων δέκατος τέταρτος ολοκλήρωσε την πρώτη του εγκύκλιο.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-092",
+      "speaker_id": "analyst",
+      "text": "Τιτλοφορείται Magnifica Humanitas.",
+      "text_markdown": "Τιτλοφορείται Magnifica Humanitas.",
+      "title": "",
+      "tts": {
+        "text": "Τιτλοφορείται Magnifica Humanitas.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "text": "Αυτό μεταφράζεται ως \"το μεγαλείο της ανθρωπότητας\".",
+      "text_markdown": "Αυτό μεταφράζεται ως \"το μεγαλείο της ανθρωπότητας\".",
+      "title": "",
+      "tts": {
+        "text": "Αυτό μεταφράζεται ως \"το μεγαλείο της ανθρωπότητας\".",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "text": "Το Βατικανό την εκδίδει τη Δευτέρα, 25 Μαΐου.",
+      "text_markdown": "Το Βατικανό την εκδίδει τη Δευτέρα, 25 Μαΐου.",
+      "title": "",
+      "tts": {
+        "text": "Το Βατικανό την εκδίδει τη Δευτέρα, εικοστή πέμπτη Μαΐου.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "text": "Εξετάζει την τεχνητή νοημοσύνη και το πώς προστατεύεται η αξιοπρέπεια του ανθρώπου.",
+      "text_markdown": "Εξετάζει την τεχνητή νοημοσύνη και το πώς προστατεύεται η αξιοπρέπεια του ανθρώπου.",
+      "title": "",
+      "tts": {
+        "text": "Εξετάζει την τεχνητή νοημοσύνη και το πώς προστατεύεται η αξιοπρέπεια του ανθρώπου.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "text": "Πότε την υπέγραψε ο Πάπας;",
+      "text_markdown": "Πότε την υπέγραψε ο Πάπας;",
+      "title": "",
+      "tts": {
+        "text": "Πότε την υπέγραψε ο Πάπας;",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "text": "15 Μαΐου.",
+      "text_markdown": "15 Μαΐου.",
+      "title": "",
+      "tts": {
+        "text": "Δεκάτη πέμπτη Μαΐου.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "text": "Η ημερομηνία αυτή επιλέχθηκε σκόπιμα.",
+      "text_markdown": "Η ημερομηνία αυτή επιλέχθηκε σκόπιμα.",
+      "title": "",
+      "tts": {
+        "text": "Η ημερομηνία αυτή επιλέχθηκε σκόπιμα.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "text": "Είναι ακριβώς 135 χρόνια μετά την ημέρα που ο Πάπας Λέων XIII υπέγραψε την Rerum Novarum.",
+      "text_markdown": "Είναι ακριβώς 135 χρόνια μετά την ημέρα που ο Πάπας Λέων XIII υπέγραψε την Rerum Novarum.",
+      "title": "",
+      "tts": {
+        "text": "Είναι ακριβώς εκατόν τριάντα πέντε χρόνια μετά την ημέρα που ο Πάπας Λέων δέκατος τρίτος υπέγραψε την Rerum Novarum.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "text": "Τι ήταν η Rerum Novarum;",
+      "text_markdown": "Τι ήταν η Rerum Novarum;",
+      "title": "",
+      "tts": {
+        "text": "Τι ήταν η Rerum Novarum;",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "text": "Η Rerum Novarum ήταν η θεμελιώδης καθολική διδασκαλία για την εργασία και το κεφάλαιο.",
+      "text_markdown": "Η Rerum Novarum ήταν η θεμελιώδης καθολική διδασκαλία για την εργασία και το κεφάλαιο.",
+      "title": "",
+      "tts": {
+        "text": "Η Rerum Novarum ήταν η θεμελιώδης καθολική διδασκαλία για την εργασία και το κεφάλαιο.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "text": "Εκδόθηκε το 1891, στη μέση της βιομηχανικής επανάστασης.",
+      "text_markdown": "Εκδόθηκε το 1891, στη μέση της βιομηχανικής επανάστασης.",
+      "title": "",
+      "tts": {
+        "text": "Εκδόθηκε το χίλια οκτακόσια ενενήντα ένα, στη μέση της βιομηχανικής επανάστασης.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "text": "Καθόρισε το πώς σκέφτεται η Εκκλησία για τους εργάτες, τους ιδιοκτήτες, τους μισθούς και την αξιοπρέπεια της εργασίας — και αυτή η προσέγγιση έχει διατηρηθεί για πάνω από έναν αιώνα.",
+      "text_markdown": "Καθόρισε το πώς σκέφτεται η Εκκλησία για τους εργάτες, τους ιδιοκτήτες, τους μισθούς και την αξιοπρέπεια της εργασίας — και αυτή η προσέγγιση έχει διατηρηθεί για πάνω από έναν αιώνα.",
+      "title": "",
+      "tts": {
+        "text": "Καθόρισε το πώς σκέφτεται η Εκκλησία για τους εργάτες, τους ιδιοκτήτες, τους μισθούς και την αξιοπρέπεια της εργασίας — και αυτή η προσέγγιση έχει διατηρηθεί για πάνω από έναν αιώνα.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "text": "Ο Πάπας Λέων XIV τοποθετεί την τεχνητή νοημοσύνη ως το ίδιο είδους εποχιακό ερώτημα για τη γενιά μας.",
+      "text_markdown": "Ο Πάπας Λέων XIV τοποθετεί την τεχνητή νοημοσύνη ως το ίδιο είδους εποχιακό ερώτημα για τη γενιά μας.",
+      "title": "",
+      "tts": {
+        "text": "Ο Πάπας Λέων δέκατος τέταρτος τοποθετεί την τεχνητή νοημοσύνη ως το ίδιο είδους εποχιακό ερώτημα για τη γενιά μας.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-105",
+      "speaker_id": "host",
+      "text": "Αυτή είναι μια σκόπιμη αναφορά.",
+      "text_markdown": "Αυτή είναι μια σκόπιμη αναφορά.",
+      "title": "",
+      "tts": {
+        "text": "Αυτή είναι μια σκόπιμη αναφορά.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "text": "Πολύ σκόπιμη.",
+      "text_markdown": "Πολύ σκόπιμη.",
+      "title": "",
+      "tts": {
+        "text": "Πολύ σκόπιμη.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "text": "Ακόμη και η επιλογή του ονόματος βασιλείας — Λέων — το σηματοδοτεί.",
+      "text_markdown": "Ακόμη και η επιλογή του ονόματος βασιλείας — Λέων — το σηματοδοτεί.",
+      "title": "",
+      "tts": {
+        "text": "Ακόμη και η επιλογή του ονόματος βασιλείας — Λέων — το σηματοδοτεί.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "text": "Αυτός ο Πάπας λέει ανοιχτά ότι η ΤΝ είναι για τον αιώνα μας αυτό που ήταν η εκβιομηχάνιση για τον δέκατο ένατο.",
+      "text_markdown": "Αυτός ο Πάπας λέει ανοιχτά ότι η ΤΝ είναι για τον αιώνα μας αυτό που ήταν η εκβιομηχάνιση για τον δέκατο ένατο.",
+      "title": "",
+      "tts": {
+        "text": "Αυτός ο Πάπας λέει ανοιχτά ότι η ΤΝ είναι για τον αιώνα μας αυτό που ήταν η εκβιομηχάνιση για τον δέκατο ένατο.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "text": "Ποιος παρουσιάζει μαζί του;",
+      "text_markdown": "Ποιος παρουσιάζει μαζί του;",
+      "title": "",
+      "tts": {
+        "text": "Ποιος παρουσιάζει μαζί του;",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "text": "Ο Chris Olah, συνιδρυτής της Anthropic, θα είναι στη σκηνή στην Αίθουσα Συνόδου του Βατικανού.",
+      "text_markdown": "Ο Chris Olah, συνιδρυτής της Anthropic, θα είναι στη σκηνή στην Αίθουσα Συνόδου του Βατικανού.",
+      "title": "",
+      "tts": {
+        "text": "Ο Chris Olah, συνιδρυτής της Anthropic, θα είναι στη σκηνή στην Αίθουσα Συνόδου του Βατικανού.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "text": "Ο Olah διευθύνει την έρευνα ερμηνευσιμότητας στην Anthropic.",
+      "text_markdown": "Ο Olah διευθύνει την έρευνα ερμηνευσιμότητας στην Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ο Olah διευθύνει την έρευνα ερμηνευσιμότητας στην Anthropic.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "text": "Αυτός είναι ο τομέας που προσπαθεί να καταλάβει τι πραγματικά συμβαίνει μέσα σε ένα νευρωνικό δίκτυο.",
+      "text_markdown": "Αυτός είναι ο τομέας που προσπαθεί να καταλάβει τι πραγματικά συμβαίνει μέσα σε ένα νευρωνικό δίκτυο.",
+      "title": "",
+      "tts": {
+        "text": "Αυτός είναι ο τομέας που προσπαθεί να καταλάβει τι πραγματικά συμβαίνει μέσα σε ένα νευρωνικό δίκτυο.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-113",
+      "speaker_id": "host",
+      "text": "Γιατί έναν ερευνητή ερμηνευσιμότητας και όχι έναν στέλεχος;",
+      "text_markdown": "Γιατί έναν ερευνητή ερμηνευσιμότητας και όχι έναν στέλεχος;",
+      "title": "",
+      "tts": {
+        "text": "Γιατί έναν ερευνητή ερμηνευσιμότητας και όχι έναν στέλεχος;",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "text": "Επειδή το κεντρικό ερώτημα της εγκυκλίου είναι \"τι είναι αυτό που χτίζουμε, και μπορούμε να το καταλάβουμε;\"",
+      "text_markdown": "Επειδή το κεντρικό ερώτημα της εγκυκλίου είναι \"τι είναι αυτό που χτίζουμε, και μπορούμε να το καταλάβουμε;\"",
+      "title": "",
+      "tts": {
+        "text": "Επειδή το κεντρικό ερώτημα της εγκυκλίου είναι \"τι είναι αυτό που χτίζουμε, και μπορούμε να το καταλάβουμε;\"",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-115",
+      "speaker_id": "analyst",
+      "text": "Αυτό είναι ακριβώς το ερώτημα ερμηνευσιμότητας, απεικονισμένο σε ένα ηθικό πλαίσιο.",
+      "text_markdown": "Αυτό είναι ακριβώς το ερώτημα ερμηνευσιμότητας, απεικονισμένο σε ένα ηθικό πλαίσιο.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό είναι ακριβώς το ερώτημα ερμηνευσιμότητας, απεικονισμένο σε ένα ηθικό πλαίσιο.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-116",
+      "speaker_id": "analyst",
+      "text": "Δεν είναι πώληση και δεν επέλεξαν κάποιον πωλητή.",
+      "text_markdown": "Δεν είναι πώληση και δεν επέλεξαν κάποιον πωλητή.",
+      "title": "",
+      "tts": {
+        "text": "Δεν είναι πώληση και δεν επέλεξαν κάποιον πωλητή.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-117",
+      "speaker_id": "host",
+      "text": "Ποιος άλλος είναι στη σκηνή;",
+      "text_markdown": "Ποιος άλλος είναι στη σκηνή;",
+      "title": "",
+      "tts": {
+        "text": "Ποιος άλλος είναι στη σκηνή;",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "text": "Ο Καρδινάλιος Pietro Parolin θα δώσει τις καταληκτικές παρατηρήσεις.",
+      "text_markdown": "Ο Καρδινάλιος Pietro Parolin θα δώσει τις καταληκτικές παρατηρήσεις.",
+      "title": "",
+      "tts": {
+        "text": "Ο Καρδινάλιος Pietro Parolin θα δώσει τις καταληκτικές παρατηρήσεις.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-119",
+      "speaker_id": "analyst",
+      "text": "Επίσης παρουσιάζουν: ο Καρδινάλιος Víctor Manuel Fernández και ο Καρδινάλιος Michael Czerny.",
+      "text_markdown": "Επίσης παρουσιάζουν: ο Καρδινάλιος Víctor Manuel Fernández και ο Καρδινάλιος Michael Czerny.",
+      "title": "",
+      "tts": {
+        "text": "Επίσης παρουσιάζουν: ο Καρδινάλιος Víctor Manuel Fernández και ο Καρδινάλιος Michael Czerny.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "text": "Και δύο καθηγητές θεολογίας — η Anna Rowlands από το Πανεπιστήμιο Durham στο Ηνωμένο Βασίλειο, και η Léocadie Lushombo από τη Σχολή Θεολογίας των Ιησουιτών στο Πανεπιστήμιο Santa Clara — θα είναι στο πάνελ.",
+      "text_markdown": "Και δύο καθηγητές θεολογίας — η Anna Rowlands από το Πανεπιστήμιο Durham στο Ηνωμένο Βασίλειο, και η Léocadie Lushombo από τη Σχολή Θεολογίας των Ιησουιτών στο Πανεπιστήμιο Santa Clara — θα είναι στο πάνελ.",
+      "title": "",
+      "tts": {
+        "text": "Και δύο καθηγητές θεολογίας — η Anna Rowlands από το Πανεπιστήμιο Durham στο Ηνωμένο Βασίλειο, και η Léocadie Lushombo από τη Σχολή Θεολογίας των Ιησουιτών στο Πανεπιστήμιο Santa Clara — θα είναι στο πάνελ.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-121",
+      "speaker_id": "host",
+      "text": "Γιατί έχει σημασία αυτό πέρα από την αίθουσα;",
+      "text_markdown": "Γιατί έχει σημασία αυτό πέρα από την αίθουσα;",
+      "title": "",
+      "tts": {
+        "text": "Γιατί έχει σημασία αυτό πέρα από την αίθουσα;",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "text": "Επειδή υπάρχουν 1,4 δισεκατομμύρια Καθολικοί στον κόσμο.",
+      "text_markdown": "Επειδή υπάρχουν 1,4 δισεκατομμύρια Καθολικοί στον κόσμο.",
+      "title": "",
+      "tts": {
+        "text": "Επειδή υπάρχουν ένα κόμμα τέσσερα δισεκατομμύρια Καθολικοί στον κόσμο.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "text": "Όταν ο Πάπας γράφει μια εγκύκλιο, διαμορφώνει τον τρόπο που ένας τεράστιος πληθυσμός σκέφτεται για ένα θέμα για μια γενιά.",
+      "text_markdown": "Όταν ο Πάπας γράφει μια εγκύκλιο, διαμορφώνει τον τρόπο που ένας τεράστιος πληθυσμός σκέφτεται για ένα θέμα για μια γενιά.",
+      "title": "",
+      "tts": {
+        "text": "Όταν ο Πάπας γράφει μια εγκύκλιο, διαμορφώνει τον τρόπο που ένας τεράστιος πληθυσμός σκέφτεται για ένα θέμα για μια γενιά.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-124",
+      "speaker_id": "analyst",
+      "text": "Η Rerum Novarum εξακολουθεί να διαμορφώνει την καθολική κοινωνική πολιτική για την εργασία, 135 χρόνια αργότερα.",
+      "text_markdown": "Η Rerum Novarum εξακολουθεί να διαμορφώνει την καθολική κοινωνική πολιτική για την εργασία, 135 χρόνια αργότερα.",
+      "title": "",
+      "tts": {
+        "text": "Η Rerum Novarum εξακολουθεί να διαμορφώνει την καθολική κοινωνική πολιτική για την εργασία, εκατόν τριάντα πέντε χρόνια αργότερα.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "text": "Η Magnifica Humanitas είναι τοποθετημένη να κάνει το ίδιο για την AI.",
+      "text_markdown": "Η Magnifica Humanitas είναι τοποθετημένη να κάνει το ίδιο για την AI.",
+      "title": "",
+      "tts": {
+        "text": "Η Magnifica Humanitas είναι τοποθετημένη να κάνει το ίδιο για την AI.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-126",
+      "speaker_id": "host",
+      "text": "Και η προοπτική από την άλλη κατεύθυνση;",
+      "text_markdown": "Και η προοπτική από την άλλη κατεύθυνση;",
+      "title": "",
+      "tts": {
+        "text": "Και η προοπτική από την άλλη κατεύθυνση;",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "text": "Ένας θεσμός από έξω από τη βιομηχανία AI παίρνει μια σοβαρή διδακτική θέση για αυτό που κατασκευάζουμε.",
+      "text_markdown": "Ένας θεσμός από έξω από τη βιομηχανία AI παίρνει μια σοβαρή διδακτική θέση για αυτό που κατασκευάζουμε.",
+      "title": "",
+      "tts": {
+        "text": "Ένας θεσμός από έξω από τη βιομηχανία AI παίρνει μια σοβαρή διδακτική θέση για αυτό που κατασκευάζουμε.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-128",
+      "speaker_id": "analyst",
+      "text": "Και η πλευρά της βιομηχανίας εμφανίζεται, στο τραπέζι, με το σωστό είδος ερευνητή.",
+      "text_markdown": "Και η πλευρά της βιομηχανίας εμφανίζεται, στο τραπέζι, με το σωστό είδος ερευνητή.",
+      "title": "",
+      "tts": {
+        "text": "Και η πλευρά της βιομηχανίας εμφανίζεται, στο τραπέζι, με το σωστό είδος ερευνητή.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "text": "Αυτό δεν είναι η συνήθης στάση — συνήθως είναι είτε \"εμείς ξέρουμε καλύτερα, αφήστε μας στην ησυχία μας\" είτε μια στάση lobbying.",
+      "text_markdown": "Αυτό δεν είναι η συνήθης στάση — συνήθως είναι είτε \"εμείς ξέρουμε καλύτερα, αφήστε μας στην ησυχία μας\" είτε μια στάση lobbying.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό δεν είναι η συνήθης στάση — συνήθως είναι είτε \"εμείς ξέρουμε καλύτερα, αφήστε μας στην ησυχία μας\" είτε μια στάση lobbying.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "text": "Αυτό είναι μια διαφορετική στάση.",
+      "text_markdown": "Αυτό είναι μια διαφορετική στάση.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό είναι μια διαφορετική στάση.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "text": "Καλή στιγμή να κλείσουμε την ενότητα.",
+      "text_markdown": "Καλή στιγμή να κλείσουμε την ενότητα.",
+      "title": "",
+      "tts": {
+        "text": "Καλή στιγμή να κλείσουμε την ενότητα.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-132",
+      "speaker_id": "host",
+      "text": "Τώρα ας περάσουμε στην έννοια της εβδομάδας.",
+      "text_markdown": "Τώρα ας περάσουμε στην έννοια της εβδομάδας.",
+      "title": "",
+      "tts": {
+        "text": "Τώρα ας περάσουμε στην έννοια της εβδομάδας.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-133",
+      "speaker_id": "host",
+      "text": "Η έννοια αυτή την εβδομάδα είναι η κβαντοποίηση.",
+      "text_markdown": "Η έννοια αυτή την εβδομάδα είναι η κβαντοποίηση.",
+      "title": "",
+      "tts": {
+        "text": "Η έννοια αυτή την εβδομάδα είναι η κβαντοποίηση.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "text": "Ron, εξήγησέ μας.",
+      "text_markdown": "Ron, εξήγησέ μας.",
+      "title": "",
+      "tts": {
+        "text": "Ron, εξήγησέ μας.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "text": "Η κβαντοποίηση είναι πώς ένα μοντέλο 7 δισεκατομμυρίων παραμέτρων χωράει στο τηλέφωνό σου.",
+      "text_markdown": "Η κβαντοποίηση είναι πώς ένα μοντέλο 7 δισεκατομμυρίων παραμέτρων χωράει στο τηλέφωνό σου.",
+      "title": "",
+      "tts": {
+        "text": "Η κβαντοποίηση είναι πώς ένα μοντέλο επτά δισεκατομμυρίων παραμέτρων χωράει στο τηλέφωνό σου.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "text": "Ας ξεκινήσουμε με το βασικό πρόβλημα.",
+      "text_markdown": "Ας ξεκινήσουμε με το βασικό πρόβλημα.",
+      "title": "",
+      "tts": {
+        "text": "Ας ξεκινήσουμε με το βασικό πρόβλημα.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "text": "Κάθε βάρος σε ένα μοντέλο είναι κανονικά ένας αριθμός κινητής υποδιαστολής 16-bit.",
+      "text_markdown": "Κάθε βάρος σε ένα μοντέλο είναι κανονικά ένας αριθμός κινητής υποδιαστολής 16-bit.",
+      "title": "",
+      "tts": {
+        "text": "Κάθε βάρος σε ένα μοντέλο είναι κανονικά ένας αριθμός κινητής υποδιαστολής δεκαέξι bit.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-138",
+      "speaker_id": "analyst",
+      "text": "Ένα μοντέλο 7 δισεκατομμυρίων παραμέτρων σε 16-bit είναι περίπου 14 gigabytes στον δίσκο.",
+      "text_markdown": "Ένα μοντέλο 7 δισεκατομμυρίων παραμέτρων σε 16-bit είναι περίπου 14 gigabytes στον δίσκο.",
+      "title": "",
+      "tts": {
+        "text": "Ένα μοντέλο επτά δισεκατομμυρίων παραμέτρων σε δεκαέξι bit είναι περίπου δεκατέσσερα gigabytes στον δίσκο.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "text": "Αυτό δεν χωράει σε ένα τηλέφωνο.",
+      "text_markdown": "Αυτό δεν χωράει σε ένα τηλέφωνο.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό δεν χωράει σε ένα τηλέφωνο.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-140",
+      "speaker_id": "host",
+      "text": "Οπότε μικραίνεις τους αριθμούς.",
+      "text_markdown": "Οπότε μικραίνεις τους αριθμούς.",
+      "title": "",
+      "tts": {
+        "text": "Οπότε μικραίνεις τους αριθμούς.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "text": "Σωστά.",
+      "text_markdown": "Σωστά.",
+      "title": "",
+      "tts": {
+        "text": "Σωστά.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-142",
+      "speaker_id": "analyst",
+      "text": "Στρογγυλοποιείς κάθε βάρος σε λιγότερα bits.",
+      "text_markdown": "Στρογγυλοποιείς κάθε βάρος σε λιγότερα bits.",
+      "title": "",
+      "tts": {
+        "text": "Στρογγυλοποιείς κάθε βάρος σε λιγότερα bits.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "text": "Οκτώ bits ανά βάρος κόβει το μοντέλο στη μέση.",
+      "text_markdown": "Οκτώ bits ανά βάρος κόβει το μοντέλο στη μέση.",
+      "title": "",
+      "tts": {
+        "text": "Οκτώ bits ανά βάρος κόβει το μοντέλο στη μέση.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-144",
+      "speaker_id": "analyst",
+      "text": "Τέσσερα bits ανά βάρος το κόβει στο ένα τέταρτο.",
+      "text_markdown": "Τέσσερα bits ανά βάρος το κόβει στο ένα τέταρτο.",
+      "title": "",
+      "tts": {
+        "text": "Τέσσερα bits ανά βάρος το κόβει στο ένα τέταρτο.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "text": "Το ίδιο μοντέλο 7 δισεκατομμυρίων παραμέτρων σε τέσσερα bits είναι 3,5 gigabytes.",
+      "text_markdown": "Το ίδιο μοντέλο 7 δισεκατομμυρίων παραμέτρων σε τέσσερα bits είναι 3,5 gigabytes.",
+      "title": "",
+      "tts": {
+        "text": "Το ίδιο μοντέλο επτά δισεκατομμυρίων παραμέτρων σε τέσσερα bits είναι τρία κόμμα πέντε gigabytes.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-146",
+      "speaker_id": "analyst",
+      "text": "Τώρα χωράει.",
+      "text_markdown": "Τώρα χωράει.",
+      "title": "",
+      "tts": {
+        "text": "Τώρα χωράει.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-147",
+      "speaker_id": "host",
+      "text": "Το μοντέλο εξακολουθεί να λειτουργεί;",
+      "text_markdown": "Το μοντέλο εξακολουθεί να λειτουργεί;",
+      "title": "",
+      "tts": {
+        "text": "Το μοντέλο εξακολουθεί να λειτουργεί;",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "text": "Συνήθως ναι, με μια μικρή πτώση ποιότητας.",
+      "text_markdown": "Συνήθως ναι, με μια μικρή πτώση ποιότητας.",
+      "title": "",
+      "tts": {
+        "text": "Συνήθως ναι, με μια μικρή πτώση ποιότητας.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "text": "Το κόλπο είναι να επιλέξεις πού στο μοντέλο να χάσεις ακρίβεια.",
+      "text_markdown": "Το κόλπο είναι να επιλέξεις πού στο μοντέλο να χάσεις ακρίβεια.",
+      "title": "",
+      "tts": {
+        "text": "Το κόλπο είναι να επιλέξεις πού στο μοντέλο να χάσεις ακρίβεια.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "text": "Το AWQ — activation-aware weight quantization — διατηρεί τα κανάλια που έχουν τη μεγαλύτερη σημασία σε υψηλότερη ακρίβεια και συμπιέζει τα υπόλοιπα.",
+      "text_markdown": "Το AWQ — activation-aware weight quantization — διατηρεί τα κανάλια που έχουν τη μεγαλύτερη σημασία σε υψηλότερη ακρίβεια και συμπιέζει τα υπόλοιπα.",
+      "title": "",
+      "tts": {
+        "text": "Το AWQ — activation aware weight quantization — διατηρεί τα κανάλια που έχουν τη μεγαλύτερη σημασία σε υψηλότερη ακρίβεια και συμπιέζει τα υπόλοιπα.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-151",
+      "speaker_id": "analyst",
+      "text": "Το GGUF, που είναι αυτό που χρησιμοποιεί το llama.cpp, έχει formats όπως το Q4_K_M που αναμιγνύει ακρίβειες μέσα σε ένα μοναδικό αρχείο μοντέλου.",
+      "text_markdown": "Το GGUF, που είναι αυτό που χρησιμοποιεί το llama.cpp, έχει formats όπως το Q4_K_M που αναμιγνύει ακρίβειες μέσα σε ένα μοναδικό αρχείο μοντέλου.",
+      "title": "",
+      "tts": {
+        "text": "Το GGUF, που είναι αυτό που χρησιμοποιεί το llama.cpp, έχει formats όπως το Q τέσσερα K M που αναμιγνύει ακρίβειες μέσα σε ένα μοναδικό αρχείο μοντέλου.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-152",
+      "speaker_id": "host",
+      "text": "Πόσο μικρό μπορείς να το κάνεις;",
+      "text_markdown": "Πόσο μικρό μπορείς να το κάνεις;",
+      "title": "",
+      "tts": {
+        "text": "Πόσο μικρό μπορείς να το κάνεις;",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "text": "Το on-device foundation model της Apple πηγαίνει σε 2 bits ανά βάρος.",
+      "text_markdown": "Το on-device foundation model της Apple πηγαίνει σε 2 bits ανά βάρος.",
+      "title": "",
+      "tts": {
+        "text": "Το on device foundation model της Apple πηγαίνει σε δύο bits ανά βάρος.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "text": "Χρησιμοποιούν Quantization-Aware Training, όπου το μοντέλο εκπαιδεύεται από την αρχή γνωρίζοντας ότι θα είναι 2-bit στο inference.",
+      "text_markdown": "Χρησιμοποιούν Quantization-Aware Training, όπου το μοντέλο εκπαιδεύεται από την αρχή γνωρίζοντας ότι θα είναι 2-bit στο inference.",
+      "title": "",
+      "tts": {
+        "text": "Χρησιμοποιούν Quantization Aware Training, όπου το μοντέλο εκπαιδεύεται από την αρχή γνωρίζοντας ότι θα είναι δύο bit στο inference.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-155",
+      "speaker_id": "analyst",
+      "text": "Αυτό είναι ένα πολύ καλύτερο αποτέλεσμα από την αφελή στρογγυλοποίηση εκ των υστέρων.",
+      "text_markdown": "Αυτό είναι ένα πολύ καλύτερο αποτέλεσμα από την αφελή στρογγυλοποίηση εκ των υστέρων.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό είναι ένα πολύ καλύτερο αποτέλεσμα από την αφελή στρογγυλοποίηση εκ των υστέρων.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "text": "Περίπου 3 δισεκατομμύρια παράμετροι σε 2 bits βγαίνουν περίπου 750 megabytes.",
+      "text_markdown": "Περίπου 3 δισεκατομμύρια παράμετροι σε 2 bits βγαίνουν περίπου 750 megabytes.",
+      "title": "",
+      "tts": {
+        "text": "Περίπου τρία δισεκατομμύρια παράμετροι σε δύο bits βγαίνουν περίπου επτακόσια πενήντα megabytes.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "text": "Αυτό χωράει σε ένα τηλέφωνο με χώρο να περισσεύει.",
+      "text_markdown": "Αυτό χωράει σε ένα τηλέφωνο με χώρο να περισσεύει.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό χωράει σε ένα τηλέφωνο με χώρο να περισσεύει.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-158",
+      "speaker_id": "host",
+      "text": "Άρα αυτός είναι ο λόγος που η on-device AI είναι επιτέλους χρήσιμη φέτος.",
+      "text_markdown": "Άρα αυτός είναι ο λόγος που η on-device AI είναι επιτέλους χρήσιμη φέτος.",
+      "title": "",
+      "tts": {
+        "text": "Άρα αυτός είναι ο λόγος που η on device AI είναι επιτέλους χρήσιμη φέτος.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "text": "Αυτός είναι ο κύριος λόγος.",
+      "text_markdown": "Αυτός είναι ο κύριος λόγος.",
+      "title": "",
+      "tts": {
+        "text": "Αυτός είναι ο κύριος λόγος.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-160",
+      "speaker_id": "analyst",
+      "text": "Τρεις λέξεις να πάρετε μαζί σας — AWQ, GGUF, και Quantization-Aware Training.",
+      "text_markdown": "Τρεις λέξεις να πάρετε μαζί σας — AWQ, GGUF, και Quantization-Aware Training.",
+      "title": "",
+      "tts": {
+        "text": "Τρεις λέξεις να πάρετε μαζί σας — AWQ, GGUF, και Quantization Aware Training.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "text": "Αν ένα μοντέλο διαθέτει αυτά τα τρία πράγματα, διατίθεται σε τηλέφωνα.",
+      "text_markdown": "Αν ένα μοντέλο διαθέτει αυτά τα τρία πράγματα, διατίθεται σε τηλέφωνα.",
+      "title": "",
+      "tts": {
+        "text": "Αν ένα μοντέλο διαθέτει αυτά τα τρία πράγματα, διατίθεται σε τηλέφωνα.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-162",
+      "speaker_id": "host",
+      "text": "Καλό σημείο για να καταλήξουμε.",
+      "text_markdown": "Καλό σημείο για να καταλήξουμε.",
+      "title": "",
+      "tts": {
+        "text": "Καλό σημείο για να καταλήξουμε.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-163",
+      "speaker_id": "host",
+      "text": "Ron, σε ευχαριστώ.",
+      "text_markdown": "Ron, σε ευχαριστώ.",
+      "title": "",
+      "tts": {
+        "text": "Ron, σε ευχαριστώ.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "text": "Όποτε θέλεις, Vindy.",
+      "text_markdown": "Όποτε θέλεις, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Όποτε θέλεις, Vindy.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "text": "Αυτό ήταν το AI This Week για τις 20 Μαΐου 2026.",
+      "text_markdown": "Αυτό ήταν το AI This Week για τις 20 Μαΐου 2026.",
+      "title": "",
+      "tts": {
+        "text": "Αυτό ήταν το AI This Week για τις είκοσι Μαΐου δύο χιλιάδες είκοσι έξι.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-166",
+      "speaker_id": "host",
+      "text": "Νέο τεύχος την επόμενη Τετάρτη.",
+      "text_markdown": "Νέο τεύχος την επόμενη Τετάρτη.",
+      "title": "",
+      "tts": {
+        "text": "Νέο τεύχος την επόμενη Τετάρτη.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-167",
+      "speaker_id": "host",
+      "text": "Μέχρι τότε, προσέχετε.",
+      "text_markdown": "Μέχρι τότε, προσέχετε.",
+      "title": "",
+      "tts": {
+        "text": "Μέχρι τότε, προσέχετε.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

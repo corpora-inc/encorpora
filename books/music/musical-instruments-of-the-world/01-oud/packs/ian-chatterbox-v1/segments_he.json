@@ -1,0 +1,2692 @@
+{
+  "book_id": "book_oud_history",
+  "version": "2.0.0",
+  "language": "he",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הערה למאזין",
+      "text_markdown": "הערה למאזין"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו ספר על העוד, כלי נגינה מעץ עם מיתרים.",
+      "text_markdown": "זהו ספר על העוד, כלי נגינה מעץ עם מיתרים.",
+      "tts": {
+        "text": "זהו ספר על האוּד, כלי נגינה מעץ עם מיתרים.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אנשים מנגנים בו כבר יותר מאלף שנה.",
+      "text_markdown": "אנשים מנגנים בו כבר יותר מאלף שנה.",
+      "tts": {
+        "text": "אנשים מנגנים בו כבר יותר מאלף שנה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אפשר לשמוע את העוד בערי חוף ובכפרי הרים.",
+      "text_markdown": "אפשר לשמוע את העוד בערי חוף ובכפרי הרים.",
+      "tts": {
+        "text": "אפשר לשמוע את האוּד בערי חוף ובכפרי הרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אפשר לשמוע אותו בארמונות עתיקים ועל במות עץ קטנות.",
+      "text_markdown": "אפשר לשמוע אותו בארמונות עתיקים ועל במות עץ קטנות.",
+      "tts": {
+        "text": "אפשר לשמוע אותו בארמונות עתיקים ועל במות עץ קטנות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בספר הזה נלמד איך העוד נראה, איך בונים אותו, ומי עיצב את סיפורו.",
+      "text_markdown": "בספר הזה נלמד איך העוד נראה, איך בונים אותו, ומי עיצב את סיפורו.",
+      "tts": {
+        "text": "בספר הזה נלמד איך האוּד נראה, איך בונים אותו, ומי עיצב את סיפורו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בסוף תדעו למה לפעמים קוראים לעוד מלך המיתרים.",
+      "text_markdown": "בסוף תדעו למה לפעמים קוראים לעוד מלך המיתרים.",
+      "tts": {
+        "text": "בסוף תדעו למה לפעמים קוראים לאוּד מלך המיתרים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 1 — מהו עוד?",
+      "text_markdown": "פרק 1 — מהו עוד?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העוד הוא כלי מיתר.",
+      "text_markdown": "העוד הוא כלי מיתר.",
+      "tts": {
+        "text": "האוּד הוא כלי מיתר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה סוג של לאוטה, עם גוף כמו אגס חצוי.",
+      "text_markdown": "זה סוג של לאוטה, עם גוף כמו אגס חצוי.",
+      "tts": {
+        "text": "זה סוג של לאוטה, עם גוף כמו אגס חצוי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גב העוד עגול ועמוק, כמו קערת עץ.",
+      "text_markdown": "גב העוד עגול ועמוק, כמו קערת עץ.",
+      "tts": {
+        "text": "גב האוּד עגול ועמוק, כמו קערת עץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "החזית שטוחה.",
+      "text_markdown": "החזית שטוחה.",
+      "tts": {
+        "text": "החזית שטוחה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לחזית השטוחה הזאת קוראים לוח תהודה.",
+      "text_markdown": "לחזית השטוחה הזאת קוראים לוח תהודה.",
+      "tts": {
+        "text": "לחזית השטוחה הזאת קוראים לוח תהודה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הצוואר של העוד קצר, ואין עליו סריגים.",
+      "text_markdown": "הצוואר של העוד קצר, ואין עליו סריגים.",
+      "tts": {
+        "text": "הצוואר של האוּד קצר, ואין עליו סריגים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "סריגים הם הקווים המתכתיים הקטנים שרואים על גיטרה.",
+      "text_markdown": "סריגים הם הקווים המתכתיים הקטנים שרואים על גיטרה.",
+      "tts": {
+        "text": "סריגים הם הקווים המתכתיים הקטנים שרואים על גיטרה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בלעדיהם, הנגן יכול להחליק בין הצלילים בצורה חלקה מאוד.",
+      "text_markdown": "בלעדיהם, הנגן יכול להחליק בין הצלילים בצורה חלקה מאוד.",
+      "tts": {
+        "text": "בלעדיהם, הנגן יכול להחליק בין הצלילים בצורה חלקה מאוד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לרוב העודים יש אחד עשר מיתרים, מסודרים בשישה זוגות.",
+      "text_markdown": "לרוב העודים יש אחד עשר מיתרים, מסודרים בשישה זוגות.",
+      "tts": {
+        "text": "לרוב האוּדים יש אחד עשר מיתרים, מסודרים בשישה זוגות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לכל זוג כזה קוראים קורס.",
+      "text_markdown": "לכל זוג כזה קוראים קורס.",
+      "tts": {
+        "text": "לכל זוג כזה קוראים קורס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בחמישה קורסים יש שני מיתרים מכוונים לאותו צליל.",
+      "text_markdown": "בחמישה קורסים יש שני מיתרים מכוונים לאותו צליל.",
+      "tts": {
+        "text": "בחמישה קורסים יש שני מיתרים מכוונים לאותו צליל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "בקורס השישי יש רק מיתר אחד.",
+      "text_markdown": "בקורס השישי יש רק מיתר אחד.",
+      "tts": {
+        "text": "בקורס השישי יש רק מיתר אחד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "כך מגיעים לאחד עשר.",
+      "text_markdown": "כך מגיעים לאחד עשר.",
+      "tts": {
+        "text": "כך מגיעים לאחד עשר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הנגן מחזיק את העוד לרוחב על הברכיים.",
+      "text_markdown": "הנגן מחזיק את העוד לרוחב על הברכיים.",
+      "tts": {
+        "text": "הנגן מחזיק את האוּד לרוחב על הברכיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יד אחת לוחצת על המיתרים בצוואר.",
+      "text_markdown": "יד אחת לוחצת על המיתרים בצוואר.",
+      "tts": {
+        "text": "יד אחת לוחצת על המיתרים בצוואר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היד השנייה פורטת במפרט דק שנקרא רישה.",
+      "text_markdown": "היד השנייה פורטת במפרט דק שנקרא רישה.",
+      "tts": {
+        "text": "היד השנייה פורטת במפרט דק שנקרא רישה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הצליל חם ועמוק.",
+      "text_markdown": "הצליל חם ועמוק.",
+      "tts": {
+        "text": "הצליל חם ועמוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יש בו קצת עצב וקצת מתיקות, בבת אחת.",
+      "text_markdown": "יש בו קצת עצב וקצת מתיקות, בבת אחת.",
+      "tts": {
+        "text": "יש בו קצת עצב וקצת מתיקות, בבת אחת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 2 — מאין בא השם",
+      "text_markdown": "פרק 2 — מאין בא השם"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השם עוד הוא מילה בערבית שפירושה עץ.",
+      "text_markdown": "השם עוד הוא מילה בערבית שפירושה עץ.",
+      "tts": {
+        "text": "השם אוּד הוא מילה בערבית שפירושה עץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הכלי נקרא על שם החומר שממנו הוא עשוי.",
+      "text_markdown": "הכלי נקרא על שם החומר שממנו הוא עשוי.",
+      "tts": {
+        "text": "הכלי נקרא על שם החומר שממנו הוא עשוי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרבה לפני העוד היה לו בן דוד עתיק בשם ברבט.",
+      "text_markdown": "הרבה לפני העוד היה לו בן דוד עתיק בשם ברבט.",
+      "tts": {
+        "text": "הרבה לפני האוּד היה לו בן דוד עתיק בשם ברבט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "על הברבט ניגנו בפרס העתיקה לפני יותר מאלפיים שנה.",
+      "text_markdown": "על הברבט ניגנו בפרס העתיקה לפני יותר מאלפיים שנה.",
+      "tts": {
+        "text": "על הברבט ניגנו בפרס העתיקה לפני יותר מאלפיים שנה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לברבט היה גוף עץ ומיתרי משי.",
+      "text_markdown": "לברבט היה גוף עץ ומיתרי משי.",
+      "tts": {
+        "text": "לברבט היה גוף עץ ומיתרי משי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הצליל שלו היה ארוך ורך.",
+      "text_markdown": "הצליל שלו היה ארוך ורך.",
+      "tts": {
+        "text": "הצליל שלו היה ארוך ורך.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אנשים ניגנו בו בחצרות המלכים.",
+      "text_markdown": "אנשים ניגנו בו בחצרות המלכים.",
+      "tts": {
+        "text": "אנשים ניגנו בו בחצרות המלכים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לאט לאט, הברבט השתנה.",
+      "text_markdown": "לאט לאט, הברבט השתנה.",
+      "tts": {
+        "text": "לאט לאט, הברבט השתנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הגוף נעשה עגול יותר, המיתרים סודרו בזוגות, והצוואר התקצר.",
+      "text_markdown": "הגוף נעשה עגול יותר, המיתרים סודרו בזוגות, והצוואר התקצר.",
+      "tts": {
+        "text": "הגוף נעשה עגול יותר, המיתרים סודרו בזוגות, והצוואר התקצר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בערך בשנת 700, בעולם הערבי כבר ניגנו בכלי שאנחנו קוראים לו היום עוד.",
+      "text_markdown": "בערך בשנת 700, בעולם הערבי כבר ניגנו בכלי שאנחנו קוראים לו היום עוד.",
+      "tts": {
+        "text": "בערך בשנת שבע מאות, בעולם הערבי כבר ניגנו בכלי שאנחנו קוראים לו היום אוּד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "משם העוד המשיך לנדוד.",
+      "text_markdown": "משם העוד המשיך לנדוד.",
+      "tts": {
+        "text": "משם האוּד המשיך לנדוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא הגיע למצרים ולצפון אפריקה.",
+      "text_markdown": "הוא הגיע למצרים ולצפון אפריקה.",
+      "tts": {
+        "text": "הוא הגיע למצרים ולצפון אפריקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא חצה את הים אל ספרד.",
+      "text_markdown": "הוא חצה את הים אל ספרד.",
+      "tts": {
+        "text": "הוא חצה את הים אל ספרד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא עלה צפונה אל טורקיה ויוון.",
+      "text_markdown": "הוא עלה צפונה אל טורקיה ויוון.",
+      "tts": {
+        "text": "הוא עלה צפונה אל טורקיה ויוון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "כל מקום נתן לעוד מעט מן הקול שלו.",
+      "text_markdown": "כל מקום נתן לעוד מעט מן הקול שלו.",
+      "tts": {
+        "text": "כל מקום נתן לאוּד מעט מן הקול שלו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל השם נשאר אותו שם.",
+      "text_markdown": "אבל השם נשאר אותו שם.",
+      "tts": {
+        "text": "אבל השם נשאר אותו שם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בכל מקום שאליו הגיע, כלי העץ עדיין נקרא עוד.",
+      "text_markdown": "בכל מקום שאליו הגיע, כלי העץ עדיין נקרא עוד.",
+      "tts": {
+        "text": "בכל מקום שאליו הגיע, כלי העץ עדיין נקרא אוּד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 3 — איך בונים עוד",
+      "text_markdown": "פרק 3 — איך בונים עוד"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לבנות עוד לוקח הרבה זמן.",
+      "text_markdown": "לבנות עוד לוקח הרבה זמן.",
+      "tts": {
+        "text": "לבנות אוּד לוקח הרבה זמן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בונה טוב עשוי להשקיע שבועות רבים בכלי אחד.",
+      "text_markdown": "בונה טוב עשוי להשקיע שבועות רבים בכלי אחד.",
+      "tts": {
+        "text": "בונה טוב עשוי להשקיע שבועות רבים בכלי אחד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקערה עשויה מפסי עץ דקים, בדרך כלל בין 15 ל-25 פסים.",
+      "text_markdown": "הקערה עשויה מפסי עץ דקים, בדרך כלל בין 15 ל-25 פסים.",
+      "tts": {
+        "text": "הקערה עשויה מפסי עץ דקים, בדרך כלל בין חמישה עשר לעשרים וחמישה פסים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כל פס מכופף ומודבק אל הפס הבא.",
+      "text_markdown": "כל פס מכופף ומודבק אל הפס הבא.",
+      "tts": {
+        "text": "כל פס מכופף ומודבק אל הפס הבא.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "יחד הם יוצרים את גב העוד העמוק והעגול.",
+      "text_markdown": "יחד הם יוצרים את גב העוד העמוק והעגול.",
+      "tts": {
+        "text": "יחד הם יוצרים את גב האוּד העמוק והעגול.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לסוג העץ יש חשיבות.",
+      "text_markdown": "לסוג העץ יש חשיבות.",
+      "tts": {
+        "text": "לסוג העץ יש חשיבות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אגוז מלך נותן צליל חם, מהגוני צליל כהה, ותות צליל בהיר ומצלצל.",
+      "text_markdown": "אגוז מלך נותן צליל חם, מהגוני צליל כהה, ותות צליל בהיר ומצלצל.",
+      "tts": {
+        "text": "אגוז מלך נותן צליל חם, מהגוני צליל כהה, ותות צליל בהיר ומצלצל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הבונה בוחר את העץ לפי הקול שהוא רוצה.",
+      "text_markdown": "הבונה בוחר את העץ לפי הקול שהוא רוצה.",
+      "tts": {
+        "text": "הבונה בוחר את העץ לפי הקול שהוא רוצה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "החזית השטוחה, לוח התהודה, עשויה מאשוח.",
+      "text_markdown": "החזית השטוחה, לוח התהודה, עשויה מאשוח.",
+      "tts": {
+        "text": "החזית השטוחה, לוח התהודה, עשויה מאשוח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אשוח קל וחזק, והוא מאפשר לעץ לרעוד בקלות.",
+      "text_markdown": "אשוח קל וחזק, והוא מאפשר לעץ לרעוד בקלות.",
+      "tts": {
+        "text": "אשוח קל וחזק, והוא מאפשר לעץ לרעוד בקלות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרעד הזה הוא מה שאנחנו שומעים כמוזיקה.",
+      "text_markdown": "הרעד הזה הוא מה שאנחנו שומעים כמוזיקה.",
+      "tts": {
+        "text": "הרעד הזה הוא מה שאנחנו שומעים כמוזיקה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בלוח התהודה יש חורים עגולים קטנים שנקראים רוזטות.",
+      "text_markdown": "בלוח התהודה יש חורים עגולים קטנים שנקראים רוזטות.",
+      "tts": {
+        "text": "בלוח התהודה יש חורים עגולים קטנים שנקראים רוזטות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לעיתים קרובות הן מגולפות בדגמים יפים.",
+      "text_markdown": "לעיתים קרובות הן מגולפות בדגמים יפים.",
+      "tts": {
+        "text": "לעיתים קרובות הן מגולפות בדגמים יפים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרוזטות מוציאות את הצליל מן הקערה.",
+      "text_markdown": "הרוזטות מוציאות את הצליל מן הקערה.",
+      "tts": {
+        "text": "הרוזטות מוציאות את הצליל מן הקערה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פעם המיתרים היו עשויים מגיד מיובש של בעלי חיים.",
+      "text_markdown": "פעם המיתרים היו עשויים מגיד מיובש של בעלי חיים.",
+      "tts": {
+        "text": "פעם המיתרים היו עשויים מגיד מיובש של בעלי חיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היום רוב המיתרים עשויים מניילון, ועל הנמוכים מלופף חוט מתכת דק.",
+      "text_markdown": "היום רוב המיתרים עשויים מניילון, ועל הנמוכים מלופף חוט מתכת דק.",
+      "tts": {
+        "text": "היום רוב המיתרים עשויים מניילון, ועל הנמוכים מלופף חוט מתכת דק.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הנגן פורט על המיתרים בעזרת רישה.",
+      "text_markdown": "הנגן פורט על המיתרים בעזרת רישה.",
+      "tts": {
+        "text": "הנגן פורט על המיתרים בעזרת רישה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המילה רישה פירושה נוצה.",
+      "text_markdown": "המילה רישה פירושה נוצה.",
+      "tts": {
+        "text": "המילה רישה פירושה נוצה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "המפרטים הראשונים נעשו מנוצות נשר.",
+      "text_markdown": "המפרטים הראשונים נעשו מנוצות נשר.",
+      "tts": {
+        "text": "המפרטים הראשונים נעשו מנוצות נשר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "היום מכינים אותם מפלסטיק, מעצם, או משריון צב.",
+      "text_markdown": "היום מכינים אותם מפלסטיק, מעצם, או משריון צב.",
+      "tts": {
+        "text": "היום מכינים אותם מפלסטיק, מעצם, או משריון צב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 4 — איפה מנגנים על העוד",
+      "text_markdown": "פרק 4 — איפה מנגנים על העוד"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מנגנים על העוד בכל רחבי העולם הערבי.",
+      "text_markdown": "מנגנים על העוד בכל רחבי העולם הערבי.",
+      "tts": {
+        "text": "מנגנים על האוּד בכל רחבי העולם הערבי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "תשמעו אותו במצרים, בסוריה, בעיראק, בלבנון, במפרץ, ובצפון אפריקה.",
+      "text_markdown": "תשמעו אותו במצרים, בסוריה, בעיראק, בלבנון, במפרץ, ובצפון אפריקה.",
+      "tts": {
+        "text": "תשמעו אותו במצרים, בסוריה, בעיראק, בלבנון, במפרץ, ובצפון אפריקה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מנגנים בו גם מעבר לעולם הערבי.",
+      "text_markdown": "מנגנים בו גם מעבר לעולם הערבי.",
+      "tts": {
+        "text": "מנגנים בו גם מעבר לעולם הערבי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לטורקים יש עוד משלהם.",
+      "text_markdown": "לטורקים יש עוד משלהם.",
+      "tts": {
+        "text": "לטורקים יש אוּד משלהם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ליוונים יש עוד משלהם.",
+      "text_markdown": "ליוונים יש עוד משלהם.",
+      "tts": {
+        "text": "ליוונים יש אוּד משלהם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הארמנים והאיראנים מנגנים בכלים קרובים אליו.",
+      "text_markdown": "הארמנים והאיראנים מנגנים בכלים קרובים אליו.",
+      "tts": {
+        "text": "הארמנים והאיראנים מנגנים בכלים קרובים אליו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "בספרד ניגנו בו במשך מאות שנים.",
+      "text_markdown": "בספרד ניגנו בו במשך מאות שנים.",
+      "tts": {
+        "text": "בספרד ניגנו בו במשך מאות שנים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היום יש שלושה סוגים עיקריים של עוד.",
+      "text_markdown": "היום יש שלושה סוגים עיקריים של עוד.",
+      "tts": {
+        "text": "היום יש שלושה סוגים עיקריים של אוּד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "העוד הערבי גדול ועמוק, עם צליל מלא ואיטי.",
+      "text_markdown": "העוד הערבי גדול ועמוק, עם צליל מלא ואיטי.",
+      "tts": {
+        "text": "האוּד הערבי גדול ועמוק, עם צליל מלא ואיטי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זה העוד של מצרים ושל הלבנט.",
+      "text_markdown": "זה העוד של מצרים ושל הלבנט.",
+      "tts": {
+        "text": "זה האוּד של מצרים ושל הלבנט.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העוד הטורקי קטן ובהיר יותר, ומכוון קצת גבוה יותר מן העוד הערבי.",
+      "text_markdown": "העוד הטורקי קטן ובהיר יותר, ומכוון קצת גבוה יותר מן העוד הערבי.",
+      "tts": {
+        "text": "האוּד הטורקי קטן ובהיר יותר, ומכוון קצת גבוה יותר מן האוּד הערבי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ברבט הוא השם של בן הדוד הפרסי.",
+      "text_markdown": "ברבט הוא השם של בן הדוד הפרסי.",
+      "tts": {
+        "text": "ברבט הוא השם של בן הדוד הפרסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא קטן וחד, ומשתמש במערכת צלילים אחרת.",
+      "text_markdown": "הוא קטן וחד, ומשתמש במערכת צלילים אחרת.",
+      "tts": {
+        "text": "הוא קטן וחד, ומשתמש במערכת צלילים אחרת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העוד הוא הלב של המוזיקה הערבית הקלאסית ושל מוזיקת מקאם טורקית.",
+      "text_markdown": "העוד הוא הלב של המוזיקה הערבית הקלאסית ושל מוזיקת מקאם טורקית.",
+      "tts": {
+        "text": "האוּד הוא הלב של המוזיקה הערבית הקלאסית ושל מוזיקת מקאם טורקית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מנגנים בו בחתונות ובלוויות, באולמות קונצרטים ובסלון עם חברים.",
+      "text_markdown": "מנגנים בו בחתונות ובלוויות, באולמות קונצרטים ובסלון עם חברים.",
+      "tts": {
+        "text": "מנגנים בו בחתונות ובלוויות, באולמות קונצרטים ובסלון עם חברים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכל מקום שאנשים מתכנסים ורוצים מוזיקה עם נשמה, מישהו עשוי להוציא עוד.",
+      "text_markdown": "בכל מקום שאנשים מתכנסים ורוצים מוזיקה עם נשמה, מישהו עשוי להוציא עוד.",
+      "tts": {
+        "text": "בכל מקום שאנשים מתכנסים ורוצים מוזיקה עם נשמה, מישהו עשוי להוציא אוּד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 5 — המקאם",
+      "text_markdown": "פרק 5 — המקאם"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשאתם מנגנים בפסנתר, אתם לוחצים על קלידים לבנים ושחורים.",
+      "text_markdown": "כשאתם מנגנים בפסנתר, אתם לוחצים על קלידים לבנים ושחורים.",
+      "tts": {
+        "text": "כשאתם מנגנים בפסנתר, אתם לוחצים על קלידים לבנים ושחורים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בכל אוקטבה יש שנים עשר צלילים, וכל צעד הוא באותו גודל.",
+      "text_markdown": "בכל אוקטבה יש שנים עשר צלילים, וכל צעד הוא באותו גודל.",
+      "tts": {
+        "text": "בכל אוקטבה יש שנים עשר צלילים, וכל צעד הוא באותו גודל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לזה אנחנו קוראים טמפרמנט שווה.",
+      "text_markdown": "לזה אנחנו קוראים טמפרמנט שווה.",
+      "tts": {
+        "text": "לזה אנחנו קוראים טמפרמנט שווה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העוד לא עובד כך.",
+      "text_markdown": "העוד לא עובד כך.",
+      "tts": {
+        "text": "האוּד לא עובד כך.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "העוד משתמש בשיטה עתיקה יותר, שנקראת מקאם.",
+      "text_markdown": "העוד משתמש בשיטה עתיקה יותר, שנקראת מקאם.",
+      "tts": {
+        "text": "האוּד משתמש בשיטה עתיקה יותר, שנקראת מקאם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מקאם הוא דרך לבחור צלילים, ויש הרבה מקאמים.",
+      "text_markdown": "מקאם הוא דרך לבחור צלילים, ויש הרבה מקאמים.",
+      "tts": {
+        "text": "מקאם הוא דרך לבחור צלילים, ויש הרבה מקאמים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לכל אחד יש מצב רוח משלו.",
+      "text_markdown": "לכל אחד יש מצב רוח משלו.",
+      "tts": {
+        "text": "לכל אחד יש מצב רוח משלו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "יש שמחים, יש עצובים, ויש כאלה שנשמעים מסתוריים.",
+      "text_markdown": "יש שמחים, יש עצובים, ויש כאלה שנשמעים מסתוריים.",
+      "tts": {
+        "text": "יש שמחים, יש עצובים, ויש כאלה שנשמעים מסתוריים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הסוד הגדול של המקאם הוא שיש בו יותר צלילים מפסנתר.",
+      "text_markdown": "הסוד הגדול של המקאם הוא שיש בו יותר צלילים מפסנתר.",
+      "tts": {
+        "text": "הסוד הגדול של המקאם הוא שיש בו יותר צלילים מפסנתר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בין הקלידים הלבנים והשחורים יש צעדים קטנים יותר, שנקראים רבעי טון.",
+      "text_markdown": "בין הקלידים הלבנים והשחורים יש צעדים קטנים יותר, שנקראים רבעי טון.",
+      "tts": {
+        "text": "בין הקלידים הלבנים והשחורים יש צעדים קטנים יותר, שנקראים רבעי טון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רבע טון הוא חצי של חצי צעד.",
+      "text_markdown": "רבע טון הוא חצי של חצי צעד.",
+      "tts": {
+        "text": "רבע טון הוא חצי של חצי צעד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה צליל זעיר שחי בין הצלילים שאתם מכירים היטב.",
+      "text_markdown": "זה צליל זעיר שחי בין הצלילים שאתם מכירים היטב.",
+      "tts": {
+        "text": "זה צליל זעיר שחי בין הצלילים שאתם מכירים היטב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בפסנתר אי אפשר לנגן אותו.",
+      "text_markdown": "בפסנתר אי אפשר לנגן אותו.",
+      "tts": {
+        "text": "בפסנתר אי אפשר לנגן אותו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "בעוד, אתם מחליקים את האצבע כדי למצוא אותו.",
+      "text_markdown": "בעוד, אתם מחליקים את האצבע כדי למצוא אותו.",
+      "tts": {
+        "text": "באוּד, אתם מחליקים את האצבע כדי למצוא אותו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מקאם בנוי מקבוצות קטנות של צלילים.",
+      "text_markdown": "מקאם בנוי מקבוצות קטנות של צלילים.",
+      "tts": {
+        "text": "מקאם בנוי מקבוצות קטנות של צלילים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ג'ינס הוא השם שנותנים לכל קבוצה קטנה כזאת.",
+      "text_markdown": "ג'ינס הוא השם שנותנים לכל קבוצה קטנה כזאת.",
+      "tts": {
+        "text": "ג'ינס הוא השם שנותנים לכל קבוצה קטנה כזאת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ברוב האג'נאס מספר הצלילים הוא ארבעה.",
+      "text_markdown": "ברוב האג'נאס מספר הצלילים הוא ארבעה.",
+      "tts": {
+        "text": "ברוב האג'נאס מספר הצלילים הוא ארבעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אפשר לחשוב על ג'ינס כמו על לבנת לגו קטנה של מוזיקה, ומכמה כאלה בונים מקאם.",
+      "text_markdown": "אפשר לחשוב על ג'ינס כמו על לבנת לגו קטנה של מוזיקה, ומכמה כאלה בונים מקאם.",
+      "tts": {
+        "text": "אפשר לחשוב על ג'ינס כמו על לבנת לגו קטנה של מוזיקה, ומכמה כאלה בונים מקאם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המקאם נשען על מלודיה, ולא על מבנה הרמוני.",
+      "text_markdown": "המקאם נשען על מלודיה, ולא על מבנה הרמוני.",
+      "tts": {
+        "text": "המקאם נשען על מלודיה, ולא על מבנה הרמוני.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה אומר שהמוזיקה נעה צליל צליל, במקום לאקורדים כמו בגיטרה.",
+      "text_markdown": "זה אומר שהמוזיקה נעה צליל צליל, במקום לאקורדים כמו בגיטרה.",
+      "tts": {
+        "text": "זה אומר שהמוזיקה נעה צליל צליל, במקום לאקורדים כמו בגיטרה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשעוד מנגן סולו איטי ומתפתל, הנגן נע בתוך מקאם.",
+      "text_markdown": "כשעוד מנגן סולו איטי ומתפתל, הנגן נע בתוך מקאם.",
+      "tts": {
+        "text": "כשאוּד מנגן סולו איטי ומתפתל, הנגן נע בתוך מקאם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא בוחר צלילים מן הלבנה, ואז מחליק אל הבאה.",
+      "text_markdown": "הוא בוחר צלילים מן הלבנה, ואז מחליק אל הבאה.",
+      "tts": {
+        "text": "הוא בוחר צלילים מן הלבנה, ואז מחליק אל הבאה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לסולו הזה יש שם.",
+      "text_markdown": "לסולו הזה יש שם.",
+      "tts": {
+        "text": "לסולו הזה יש שם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "קוראים לו תקסים.",
+      "text_markdown": "קוראים לו תקסים.",
+      "tts": {
+        "text": "קוראים לו תקסים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תקסים טוב יכול להצחיק אתכם, והוא יכול לגרום לכם לבכות.",
+      "text_markdown": "תקסים טוב יכול להצחיק אתכם, והוא יכול לגרום לכם לבכות.",
+      "tts": {
+        "text": "תקסים טוב יכול להצחיק אתכם, והוא יכול לגרום לכם לבכות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה העוד במלוא יופיו.",
+      "text_markdown": "זה העוד במלוא יופיו.",
+      "tts": {
+        "text": "זה האוּד במלוא יופיו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 6 — המאסטרים הגדולים",
+      "text_markdown": "פרק 6 — המאסטרים הגדולים"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מנגנים על העוד כבר יותר מאלף שנה.",
+      "text_markdown": "מנגנים על העוד כבר יותר מאלף שנה.",
+      "tts": {
+        "text": "מנגנים על האוּד כבר יותר מאלף שנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בכל הזמן הזה, כמה אנשים שינו אותו לתמיד.",
+      "text_markdown": "בכל הזמן הזה, כמה אנשים שינו אותו לתמיד.",
+      "tts": {
+        "text": "בכל הזמן הזה, כמה אנשים שינו אותו לתמיד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הראשון היה הוגה יותר מנגן, ושמו אל-פאראבי.",
+      "text_markdown": "הראשון היה הוגה יותר מנגן, ושמו אל-פאראבי.",
+      "tts": {
+        "text": "הראשון היה הוגה יותר מנגן, ושמו אל פאראבי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא חי בערך משנת 872 עד 950, ופעל בעיר הגדולה בגדאד.",
+      "text_markdown": "הוא חי בערך משנת 872 עד 950, ופעל בעיר הגדולה בגדאד.",
+      "tts": {
+        "text": "הוא חי בערך משנת שמונה מאות שבעים ושתיים עד תשע מאות וחמישים, ופעל בעיר הגדולה בגדאד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אל-פאראבי כתב ספר ענק על מוזיקה.",
+      "text_markdown": "אל-פאראבי כתב ספר ענק על מוזיקה.",
+      "tts": {
+        "text": "אל פאראבי כתב ספר ענק על מוזיקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא הסביר איך מיתרים רועדים.",
+      "text_markdown": "הוא הסביר איך מיתרים רועדים.",
+      "tts": {
+        "text": "הוא הסביר איך מיתרים רועדים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא הסביר למה כמה צלילים נשמעים נעימים יחד.",
+      "text_markdown": "הוא הסביר למה כמה צלילים נשמעים נעימים יחד.",
+      "tts": {
+        "text": "הוא הסביר למה כמה צלילים נשמעים נעימים יחד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא הסביר למה מוזיקה יכולה לשנות את מה שאדם מרגיש.",
+      "text_markdown": "הוא הסביר למה מוזיקה יכולה לשנות את מה שאדם מרגיש.",
+      "tts": {
+        "text": "הוא הסביר למה מוזיקה יכולה לשנות את מה שאדם מרגיש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הספר שלו נקרא בערבית ובלטינית במשך מאות שנים.",
+      "text_markdown": "הספר שלו נקרא בערבית ובלטינית במשך מאות שנים.",
+      "tts": {
+        "text": "הספר שלו נקרא בערבית ובלטינית במשך מאות שנים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המאסטר הגדול השני של העוד היה הזמר זריאב, שנולד בעיראק בערך בשנת 789.",
+      "text_markdown": "המאסטר הגדול השני של העוד היה הזמר זריאב, שנולד בעיראק בערך בשנת 789.",
+      "tts": {
+        "text": "המאסטר הגדול השני של האוּד היה הזמר זריאב, שנולד בעיראק בערך בשנת שבע מאות שמונים ותשע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כשהיה צעיר, הוא נאלץ לעזוב את בגדאד בחיפזון.",
+      "text_markdown": "כשהיה צעיר, הוא נאלץ לעזוב את בגדאד בחיפזון.",
+      "tts": {
+        "text": "כשהיה צעיר, הוא נאלץ לעזוב את בגדאד בחיפזון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זריאב נסע מערבה דרך כל צפון אפריקה.",
+      "text_markdown": "זריאב נסע מערבה דרך כל צפון אפריקה.",
+      "tts": {
+        "text": "זריאב נסע מערבה דרך כל צפון אפריקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא הגיע לעיר קורדובה, בספרד, בשנת 822.",
+      "text_markdown": "הוא הגיע לעיר קורדובה, בספרד, בשנת 822.",
+      "tts": {
+        "text": "הוא הגיע לעיר קורדובה, בספרד, בשנת שמונה מאות עשרים ושתיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מלך קורדובה אהב את המוזיקה שלו, ונתן לו בית, משכורת, וגם זמן לעסוק בהוראה.",
+      "text_markdown": "מלך קורדובה אהב את המוזיקה שלו, ונתן לו בית, משכורת, וגם זמן לעסוק בהוראה.",
+      "tts": {
+        "text": "מלך קורדובה אהב את המוזיקה שלו, ונתן לו בית, משכורת, וגם זמן לעסוק בהוראה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בספרד, זריאב פתח בית ספר למוזיקה.",
+      "text_markdown": "בספרד, זריאב פתח בית ספר למוזיקה.",
+      "tts": {
+        "text": "בספרד, זריאב פתח בית ספר למוזיקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יש אומרים שזה היה הקונסרבטוריון הראשון בעולם.",
+      "text_markdown": "יש אומרים שזה היה הקונסרבטוריון הראשון בעולם.",
+      "tts": {
+        "text": "יש אומרים שזה היה הקונסרבטוריון הראשון בעולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא הוסיף לעוד קורס חמישי, ושינה את הדרך שבה הכינו מפרטים.",
+      "text_markdown": "הוא הוסיף לעוד קורס חמישי, ושינה את הדרך שבה הכינו מפרטים.",
+      "tts": {
+        "text": "הוא הוסיף לאוּד קורס חמישי, ושינה את הדרך שבה הכינו מפרטים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרבה אחרי זריאב, בזמננו, נגן מעיראק לקח את העוד למקום חדש.",
+      "text_markdown": "הרבה אחרי זריאב, בזמננו, נגן מעיראק לקח את העוד למקום חדש.",
+      "tts": {
+        "text": "הרבה אחרי זריאב, בזמננו, נגן מעיראק לקח את האוּד למקום חדש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "קראו לו מוניר בשיר, ואנשים קראו לו מלך העוד.",
+      "text_markdown": "קראו לו מוניר בשיר, ואנשים קראו לו מלך העוד.",
+      "tts": {
+        "text": "קראו לו מוניר בשיר, ואנשים קראו לו מלך האוּד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לפני בשיר, העוד בדרך כלל ניגן עם כלים אחרים.",
+      "text_markdown": "לפני בשיר, העוד בדרך כלל ניגן עם כלים אחרים.",
+      "tts": {
+        "text": "לפני בשיר, האוּד בדרך כלל ניגן עם כלים אחרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בשיר העלה אותו לבמה לבדו, וניגן סולואים ארוכים, שקטים ועמוקים.",
+      "text_markdown": "בשיר העלה אותו לבמה לבדו, וניגן סולואים ארוכים, שקטים ועמוקים.",
+      "tts": {
+        "text": "בשיר העלה אותו לבמה לבדו, וניגן סולואים ארוכים, שקטים ועמוקים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אנשים בכל העולם שמעו אותו והתאהבו שוב בעוד.",
+      "text_markdown": "אנשים בכל העולם שמעו אותו והתאהבו שוב בעוד.",
+      "tts": {
+        "text": "אנשים בכל העולם שמעו אותו והתאהבו שוב באוּד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "והיו רבים אחרים.",
+      "text_markdown": "והיו רבים אחרים.",
+      "tts": {
+        "text": "והיו רבים אחרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "פריד אל-אטרש הפך את העוד לקול של הסרטים המצריים.",
+      "text_markdown": "פריד אל-אטרש הפך את העוד לקול של הסרטים המצריים.",
+      "tts": {
+        "text": "פריד אל אטרש הפך את האוּד לקול של הסרטים המצריים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אנואר ברהם מתוניסיה מנגן על עוד עם נגני ג'אז מאירופה ומאמריקה.",
+      "text_markdown": "אנואר ברהם מתוניסיה מנגן על עוד עם נגני ג'אז מאירופה ומאמריקה.",
+      "tts": {
+        "text": "אנואר ברהם מתוניסיה מנגן על אוּד עם נגני ג'אז מאירופה ומאמריקה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העוד עדיין חי.",
+      "text_markdown": "העוד עדיין חי.",
+      "tts": {
+        "text": "האוּד עדיין חי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בכל שנה נולד אמן גדול חדש במקום כלשהו בעולם.",
+      "text_markdown": "בכל שנה נולד אמן גדול חדש במקום כלשהו בעולם.",
+      "tts": {
+        "text": "בכל שנה נולד אמן גדול חדש במקום כלשהו בעולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 7 — העוד והעולם",
+      "text_markdown": "פרק 7 — העוד והעולם"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העוד לא נשאר רק בעולם הערבי.",
+      "text_markdown": "העוד לא נשאר רק בעולם הערבי.",
+      "tts": {
+        "text": "האוּד לא נשאר רק בעולם הערבי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כשהוא נדד, הוא שינה צורה, שינה שם, ושינה שירים.",
+      "text_markdown": "כשהוא נדד, הוא שינה צורה, שינה שם, ושינה שירים.",
+      "tts": {
+        "text": "כשהוא נדד, הוא שינה צורה, שינה שם, ושינה שירים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהעוד הגיע לספרד של ימי הביניים, נגנים אירופים אהבו את קערת העץ ואת הצליל העמוק.",
+      "text_markdown": "כשהעוד הגיע לספרד של ימי הביניים, נגנים אירופים אהבו את קערת העץ ואת הצליל העמוק.",
+      "tts": {
+        "text": "כשהאוּד הגיע לספרד של ימי הביניים, נגנים אירופים אהבו את קערת העץ ואת הצליל העמוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אבל הם רצו סריגים, כמו בכלים הקטנים שכבר הכירו.",
+      "text_markdown": "אבל הם רצו סריגים, כמו בכלים הקטנים שכבר הכירו.",
+      "tts": {
+        "text": "אבל הם רצו סריגים, כמו בכלים הקטנים שכבר הכירו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אז הם הוסיפו סריגים, השטיחו מעט את הגב, וקראו לכלי החדש לאוטה.",
+      "text_markdown": "אז הם הוסיפו סריגים, השטיחו מעט את הגב, וקראו לכלי החדש לאוטה.",
+      "tts": {
+        "text": "אז הם הוסיפו סריגים, השטיחו מעט את הגב, וקראו לכלי החדש לאוטה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך 500 שנה, הלאוטה הייתה הכלי האהוב של אירופה.",
+      "text_markdown": "במשך 500 שנה, הלאוטה הייתה הכלי האהוב של אירופה.",
+      "tts": {
+        "text": "במשך חמש מאות שנה, הלאוטה הייתה הכלי האהוב של אירופה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מלכים ניגנו בה.",
+      "text_markdown": "מלכים ניגנו בה.",
+      "tts": {
+        "text": "מלכים ניגנו בה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בה ניגנו משוררים.",
+      "text_markdown": "בה ניגנו משוררים.",
+      "tts": {
+        "text": "בה ניגנו משוררים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "המלחינים הגדולים ביותר כתבו לה יצירות.",
+      "text_markdown": "המלחינים הגדולים ביותר כתבו לה יצירות.",
+      "tts": {
+        "text": "המלחינים הגדולים ביותר כתבו לה יצירות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז הלאוטה השתנתה שוב.",
+      "text_markdown": "ואז הלאוטה השתנתה שוב.",
+      "tts": {
+        "text": "ואז הלאוטה השתנתה שוב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הנגנים הוסיפו עוד מיתרים, השטיחו את הגב עוד יותר, ונתנו לה גוף קטן וקל יותר.",
+      "text_markdown": "הנגנים הוסיפו עוד מיתרים, השטיחו את הגב עוד יותר, ונתנו לה גוף קטן וקל יותר.",
+      "tts": {
+        "text": "הנגנים הוסיפו עוד מיתרים, השטיחו את הגב עוד יותר, ונתנו לה גוף קטן וקל יותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בערך בשנת 1800, בספרד, לכלי החדש הזה כבר היה שם שכולנו מכירים.",
+      "text_markdown": "בערך בשנת 1800, בספרד, לכלי החדש הזה כבר היה שם שכולנו מכירים.",
+      "tts": {
+        "text": "בערך בשנת אלף ושמונה מאות, בספרד, לכלי החדש הזה כבר היה שם שכולנו מכירים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "זו הייתה הגיטרה.",
+      "text_markdown": "זו הייתה הגיטרה.",
+      "tts": {
+        "text": "זו הייתה הגיטרה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אז העוד, הלאוטה, והגיטרה הם כולם בני אותה משפחה.",
+      "text_markdown": "אז העוד, הלאוטה, והגיטרה הם כולם בני אותה משפחה.",
+      "tts": {
+        "text": "אז האוּד, הלאוטה, והגיטרה הם כולם בני אותה משפחה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הם בני דודים, ויש להם סב משותף.",
+      "text_markdown": "הם בני דודים, ויש להם סב משותף.",
+      "tts": {
+        "text": "הם בני דודים, ויש להם סב משותף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הסב הזה הוא העוד.",
+      "text_markdown": "הסב הזה הוא העוד.",
+      "tts": {
+        "text": "הסב הזה הוא האוּד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היום העוד והגיטרה מנגנים יחד.",
+      "text_markdown": "היום העוד והגיטרה מנגנים יחד.",
+      "tts": {
+        "text": "היום האוּד והגיטרה מנגנים יחד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אנואר ברהם מנגן על עוד עם גיטריסטים של ג'אז.",
+      "text_markdown": "אנואר ברהם מנגן על עוד עם גיטריסטים של ג'אז.",
+      "tts": {
+        "text": "אנואר ברהם מנגן על אוּד עם גיטריסטים של ג'אז.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מוניר בשיר ניגן עם תזמורות.",
+      "text_markdown": "מוניר בשיר ניגן עם תזמורות.",
+      "tts": {
+        "text": "מוניר בשיר ניגן עם תזמורות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "נגנים צעירים בביירות, איסטנבול, פריז וניו יורק משלבים עוד עם רוק, היפ הופ ומוזיקה לסרטים.",
+      "text_markdown": "נגנים צעירים בביירות, איסטנבול, פריז וניו יורק משלבים עוד עם רוק, היפ הופ ומוזיקה לסרטים.",
+      "tts": {
+        "text": "נגנים צעירים בביירות, איסטנבול, פריז וניו יורק משלבים אוּד עם רוק, היפ הופ ומוזיקה לסרטים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העוד הוא יותר מכלי נגינה.",
+      "text_markdown": "העוד הוא יותר מכלי נגינה.",
+      "tts": {
+        "text": "האוּד הוא יותר מכלי נגינה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא גשר.",
+      "text_markdown": "הוא גשר.",
+      "tts": {
+        "text": "הוא גשר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא נושא סיפור ממסופוטמיה, דרך פרס, דרך העולם הערבי, אל ספרד, אל אירופה, ואז אל העולם כולו.",
+      "text_markdown": "הוא נושא סיפור ממסופוטמיה, דרך פרס, דרך העולם הערבי, אל ספרד, אל אירופה, ואז אל העולם כולו.",
+      "tts": {
+        "text": "הוא נושא סיפור ממסופוטמיה, דרך פרס, דרך העולם הערבי, אל ספרד, אל אירופה, ואז אל העולם כולו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכל פעם שאתם שומעים גיטרה, עמוק למטה אפשר לשמוע את הקול הרך והעמוק של העוד.",
+      "text_markdown": "בכל פעם שאתם שומעים גיטרה, עמוק למטה אפשר לשמוע את הקול הרך והעמוק של העוד.",
+      "tts": {
+        "text": "בכל פעם שאתם שומעים גיטרה, עמוק למטה אפשר לשמוע את הקול הרך והעמוק של האוּד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "על הספר הזה",
+      "text_markdown": "על הספר הזה"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה הכרך הראשון בסדרה כלי הנגינה של העולם.",
+      "text_markdown": "זה הכרך הראשון בסדרה כלי הנגינה של העולם.",
+      "tts": {
+        "text": "זה הכרך הראשון בסדרה כלי הנגינה של העולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כל ספר בסדרה הזאת מספר את סיפורו של כלי אחד.",
+      "text_markdown": "כל ספר בסדרה הזאת מספר את סיפורו של כלי אחד.",
+      "tts": {
+        "text": "כל ספר בסדרה הזאת מספר את סיפורו של כלי אחד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כל ספר קצר, וכל ספר נאמן לעובדות.",
+      "text_markdown": "כל ספר קצר, וכל ספר נאמן לעובדות.",
+      "tts": {
+        "text": "כל ספר קצר, וכל ספר נאמן לעובדות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הספר הבא הוא על הסיטאר, לאוטה הודית ארוכת צוואר, עם מיתרים רבים וקול עמוק ומצלצל.",
+      "text_markdown": "הספר הבא הוא על הסיטאר, לאוטה הודית ארוכת צוואר, עם מיתרים רבים וקול עמוק ומצלצל.",
+      "tts": {
+        "text": "הספר הבא הוא על הסיטאר, לאוטה הודית ארוכת צוואר, עם מיתרים רבים וקול עמוק ומצלצל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אחרי הסיטאר ניסע למערב אפריקה בשביל הקורה, ואז ליפן בשביל השאקוהאצ'י.",
+      "text_markdown": "אחרי הסיטאר ניסע למערב אפריקה בשביל הקורה, ואז ליפן בשביל השאקוהאצ'י.",
+      "tts": {
+        "text": "אחרי הסיטאר ניסע למערב אפריקה בשביל הקורה, ואז ליפן בשביל השאקוהאצ'י.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תודה שהאזנתם.",
+      "text_markdown": "תודה שהאזנתם.",
+      "tts": {
+        "text": "תודה שהאזנתם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לכו למצוא עוד, ברשת או בעיר שלכם, ותנו לו לנגן בשבילכם.",
+      "text_markdown": "לכו למצוא עוד, ברשת או בעיר שלכם, ותנו לו לנגן בשבילכם.",
+      "tts": {
+        "text": "לכו למצוא אוּד, ברשת או בעיר שלכם, ותנו לו לנגן בשבילכם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

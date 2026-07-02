@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "sw",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ujumbe kwa Msomaji",
+      "text_markdown": "Ujumbe kwa Msomaji"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa miaka 200, treni imekuwa njia ya chuma ya dunia.",
+      "text_markdown": "Kwa miaka 200, treni imekuwa njia ya chuma ya dunia.",
+      "tts": {
+        "text": "Kwa miaka mia mbili, treni imekuwa njia ya chuma ya dunia.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Treni husafirisha watu.",
+      "text_markdown": "Treni husafirisha watu.",
+      "tts": {
+        "text": "Treni husafirisha watu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treni husafirisha bidhaa.",
+      "text_markdown": "Treni husafirisha bidhaa.",
+      "tts": {
+        "text": "Treni husafirisha bidhaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Treni ndefu inaweza kubeba nafaka za kutosha kwa mji mzima.",
+      "text_markdown": "Treni ndefu inaweza kubeba nafaka za kutosha kwa mji mzima.",
+      "tts": {
+        "text": "Treni ndefu inaweza kubeba nafaka za kutosha kwa mji mzima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Treni ya kasi inaweza kwenda haraka kuliko gari barabarani.",
+      "text_markdown": "Treni ya kasi inaweza kwenda haraka kuliko gari barabarani.",
+      "tts": {
+        "text": "Treni ya kasi inaweza kwenda haraka kuliko gari barabarani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ujumbe kwa Msomaji",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hadithi ya treni inaanza Uingereza, karibu miaka 200 iliyopita, kwa mtu, moto, na birika la maji yanayochemka.",
+      "text_markdown": "Hadithi ya treni inaanza Uingereza, karibu miaka 200 iliyopita, kwa mtu, moto, na birika la maji yanayochemka.",
+      "tts": {
+        "text": "Hadithi ya treni inaanza Uingereza, karibu miaka mia mbili iliyopita, kwa mtu, moto, na birika la maji yanayochemka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "text_markdown": "Sura ya 1 — Treni ya Kwanza ya Mvuke"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni ni mstari wa magari unaotembea juu ya reli za chuma.",
+      "text_markdown": "Treni ni mstari wa magari unaotembea juu ya reli za chuma.",
+      "tts": {
+        "text": "Treni ni mstari wa magari unaotembea juu ya reli za chuma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gari la kwanza ni lokomotivu.",
+      "text_markdown": "Gari la kwanza ni lokomotivu.",
+      "tts": {
+        "text": "Gari la kwanza ni lokomotivu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Huyavuta yote mengine.",
+      "text_markdown": "Huyavuta yote mengine.",
+      "tts": {
+        "text": "Huyavuta yote mengine.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni za kwanza ziliendeshwa kwa mvuke.",
+      "text_markdown": "Treni za kwanza ziliendeshwa kwa mvuke.",
+      "tts": {
+        "text": "Treni za kwanza ziliendeshwa kwa mvuke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Injini ya mvuke huchoma makaa ya mawe ili kuchemsha maji.",
+      "text_markdown": "Injini ya mvuke huchoma makaa ya mawe ili kuchemsha maji.",
+      "tts": {
+        "text": "Injini ya mvuke huchoma makaa ya mawe ili kuchemsha maji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mvuke wa moto husukuma pistoni.",
+      "text_markdown": "Mvuke wa moto husukuma pistoni.",
+      "tts": {
+        "text": "Mvuke wa moto husukuma pistoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pistoni huzungusha magurudumu.",
+      "text_markdown": "Pistoni huzungusha magurudumu.",
+      "tts": {
+        "text": "Pistoni huzungusha magurudumu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Magurudumu husonga juu ya reli.",
+      "text_markdown": "Magurudumu husonga juu ya reli.",
+      "tts": {
+        "text": "Magurudumu husonga juu ya reli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hadithi inaanza Uingereza.",
+      "text_markdown": "Hadithi inaanza Uingereza.",
+      "tts": {
+        "text": "Hadithi inaanza Uingereza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mwaka 1825, reli ya kwanza ya umma ilifunguliwa.",
+      "text_markdown": "Mwaka 1825, reli ya kwanza ya umma ilifunguliwa.",
+      "tts": {
+        "text": "Mwaka elfu moja mia nane ishirini na tano, reli ya kwanza ya umma ilifunguliwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iliitwa Stockton and Darlington Railway.",
+      "text_markdown": "Iliitwa Stockton and Darlington Railway.",
+      "tts": {
+        "text": "Iliitwa Stokton na Dalington Reliwei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ilibeba makaa ya mawe kutoka mgodini hadi mtoni.",
+      "text_markdown": "Ilibeba makaa ya mawe kutoka mgodini hadi mtoni.",
+      "tts": {
+        "text": "Ilibeba makaa ya mawe kutoka mgodini hadi mtoni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mtu aliyeitwa George Stephenson alijenga lokomotivu hizo.",
+      "text_markdown": "Mtu aliyeitwa George Stephenson alijenga lokomotivu hizo.",
+      "tts": {
+        "text": "Mtu aliyeitwa Jorj Stefenson alijenga lokomotivu hizo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Watu walimwita Baba wa Reli.",
+      "text_markdown": "Watu walimwita Baba wa Reli.",
+      "tts": {
+        "text": "Watu walimwita Baba wa Reli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka 1829, mwanawe Robert Stephenson alijenga lokomotivu maarufu iliyoitwa Rocket.",
+      "text_markdown": "Mwaka 1829, mwanawe Robert Stephenson alijenga lokomotivu maarufu iliyoitwa Rocket.",
+      "tts": {
+        "text": "Mwaka elfu moja mia nane ishirini na tisa, mwanawe Robert Stefenson alijenga lokomotivu maarufu iliyoitwa Roketi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ilishinda mbio za treni ya kasi zaidi.",
+      "text_markdown": "Ilishinda mbio za treni ya kasi zaidi.",
+      "tts": {
+        "text": "Ilishinda mbio za treni ya kasi zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rocket ingeweza kwenda karibu maili 30 kwa saa.",
+      "text_markdown": "Rocket ingeweza kwenda karibu maili 30 kwa saa.",
+      "tts": {
+        "text": "Roketi ingeweza kwenda karibu maili thelathini kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Huo ulikuwa mwendo wa kasi kuliko farasi yeyote.",
+      "text_markdown": "Huo ulikuwa mwendo wa kasi kuliko farasi yeyote.",
+      "tts": {
+        "text": "Huo ulikuwa mwendo wa kasi kuliko farasi yeyote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Sura ya 1 — Treni ya Kwanza ya Mvuke",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Enzi ya treni ilikuwa imeanza.",
+      "text_markdown": "Enzi ya treni ilikuwa imeanza.",
+      "tts": {
+        "text": "Enzi ya treni ilikuwa imeanza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "text_markdown": "Sura ya 2 — Njia ya Chuma Yaenea"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baada ya Rocket, reli zilienea haraka.",
+      "text_markdown": "Baada ya Rocket, reli zilienea haraka.",
+      "tts": {
+        "text": "Baada ya Roketi, reli zilienea haraka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uingereza iliweka maelfu ya maili ya njia.",
+      "text_markdown": "Uingereza iliweka maelfu ya maili ya njia.",
+      "tts": {
+        "text": "Uingereza iliweka maelfu ya maili ya njia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kisha sehemu nyingine za dunia zikafuata.",
+      "text_markdown": "Kisha sehemu nyingine za dunia zikafuata.",
+      "tts": {
+        "text": "Kisha sehemu nyingine za dunia zikafuata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka 1830, reli ya kwanza kubwa ya Marekani ilifunguliwa.",
+      "text_markdown": "Mwaka 1830, reli ya kwanza kubwa ya Marekani ilifunguliwa.",
+      "tts": {
+        "text": "Mwaka elfu moja mia nane thelathini, reli ya kwanza kubwa ya Marekani ilifunguliwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iliitwa Baltimore and Ohio.",
+      "text_markdown": "Iliitwa Baltimore and Ohio.",
+      "tts": {
+        "text": "Iliitwa Baltimor na Ohaio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iliunganisha mji wa Baltimore na Mto Ohio.",
+      "text_markdown": "Iliunganisha mji wa Baltimore na Mto Ohio.",
+      "tts": {
+        "text": "Iliunganisha mji wa Baltimor na Mto Ohaio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchini Ufaransa, reli ya kwanza ilifunguliwa mwaka 1832.",
+      "text_markdown": "Nchini Ufaransa, reli ya kwanza ilifunguliwa mwaka 1832.",
+      "tts": {
+        "text": "Nchini Ufaransa, reli ya kwanza ilifunguliwa mwaka elfu moja mia nane thelathini na mbili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ilibeba makaa ya mawe, kama njia ya Uingereza.",
+      "text_markdown": "Ilibeba makaa ya mawe, kama njia ya Uingereza.",
+      "tts": {
+        "text": "Ilibeba makaa ya mawe, kama njia ya Uingereza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchini Ujerumani, reli ya kwanza ndefu ilifunguliwa mwaka 1839.",
+      "text_markdown": "Nchini Ujerumani, reli ya kwanza ndefu ilifunguliwa mwaka 1839.",
+      "tts": {
+        "text": "Nchini Ujerumani, reli ya kwanza ndefu ilifunguliwa mwaka elfu moja mia nane thelathini na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ilienda kati ya miji miwili, Leipzig na Dresden.",
+      "text_markdown": "Ilienda kati ya miji miwili, Leipzig na Dresden.",
+      "tts": {
+        "text": "Ilienda kati ya miji miwili, Laiptsig na Drezden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Urusi ilijenga reli yake ya kwanza mwaka 1837.",
+      "text_markdown": "Urusi ilijenga reli yake ya kwanza mwaka 1837.",
+      "tts": {
+        "text": "Urusi ilijenga reli yake ya kwanza mwaka elfu moja mia nane thelathini na saba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Njia hiyo ilienda kutoka Saint Petersburg hadi mji wa karibu.",
+      "text_markdown": "Njia hiyo ilienda kutoka Saint Petersburg hadi mji wa karibu.",
+      "tts": {
+        "text": "Njia hiyo ilienda kutoka Sent Pitersburg hadi mji wa karibu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kujenga reli kulikuwa kazi ngumu.",
+      "text_markdown": "Kujenga reli kulikuwa kazi ngumu.",
+      "tts": {
+        "text": "Kujenga reli kulikuwa kazi ngumu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wanaume walichimba handaki kupitia milima.",
+      "text_markdown": "Wanaume walichimba handaki kupitia milima.",
+      "tts": {
+        "text": "Wanaume walichimba handaki kupitia milima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Walijenga madaraja juu ya mito.",
+      "text_markdown": "Walijenga madaraja juu ya mito.",
+      "tts": {
+        "text": "Walijenga madaraja juu ya mito.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Waliweka kila reli kwa mkono.",
+      "text_markdown": "Waliweka kila reli kwa mkono.",
+      "tts": {
+        "text": "Waliweka kila reli kwa mkono.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Miji ilikua kando ya njia.",
+      "text_markdown": "Miji ilikua kando ya njia.",
+      "tts": {
+        "text": "Miji ilikua kando ya njia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kijiji kidogo chenye stesheni kingeweza kuwa jiji.",
+      "text_markdown": "Kijiji kidogo chenye stesheni kingeweza kuwa jiji.",
+      "tts": {
+        "text": "Kijiji kidogo chenye stesheni kingeweza kuwa jiji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treni ilileta watu.",
+      "text_markdown": "Treni ilileta watu.",
+      "tts": {
+        "text": "Treni ilileta watu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Treni ilileta bidhaa.",
+      "text_markdown": "Treni ilileta bidhaa.",
+      "tts": {
+        "text": "Treni ilileta bidhaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Sura ya 2 — Njia ya Chuma Yaenea",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Treni iliifanya dunia kuwa karibu zaidi kidogo.",
+      "text_markdown": "Treni iliifanya dunia kuwa karibu zaidi kidogo.",
+      "tts": {
+        "text": "Treni iliifanya dunia kuwa karibu zaidi kidogo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 3 — Njia Kuu",
+      "text_markdown": "Sura ya 3 — Njia Kuu"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi ya reli ni fupi.",
+      "text_markdown": "Baadhi ya reli ni fupi.",
+      "tts": {
+        "text": "Baadhi ya reli ni fupi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baadhi ni ndefu sana.",
+      "text_markdown": "Baadhi ni ndefu sana.",
+      "tts": {
+        "text": "Baadhi ni ndefu sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Njia ndefu zaidi zilivuka mabara mazima.",
+      "text_markdown": "Njia ndefu zaidi zilivuka mabara mazima.",
+      "tts": {
+        "text": "Njia ndefu zaidi zilivuka mabara mazima.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchini Marekani, kampuni mbili zilijenga reli kuvuka nchi nzima.",
+      "text_markdown": "Nchini Marekani, kampuni mbili zilijenga reli kuvuka nchi nzima.",
+      "tts": {
+        "text": "Nchini Marekani, kampuni mbili zilijenga reli kuvuka nchi nzima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Moja ilianza California na ikaendelea mashariki.",
+      "text_markdown": "Moja ilianza California na ikaendelea mashariki.",
+      "tts": {
+        "text": "Moja ilianza Kalifornia na ikaendelea mashariki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nyingine ilianza Nebraska na ikaendelea magharibi.",
+      "text_markdown": "Nyingine ilianza Nebraska na ikaendelea magharibi.",
+      "tts": {
+        "text": "Nyingine ilianza Nebraska na ikaendelea magharibi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zilikutana mahali paitwapo Promontory Summit, huko Utah.",
+      "text_markdown": "Zilikutana mahali paitwapo Promontory Summit, huko Utah.",
+      "tts": {
+        "text": "Zilikutana mahali paitwapo Promontori Samit, huko Yuta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hii ilikuwa mwaka 1869.",
+      "text_markdown": "Hii ilikuwa mwaka 1869.",
+      "tts": {
+        "text": "Hii ilikuwa mwaka elfu moja mia nane sitini na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Msumari wa mwisho ulitengenezwa kwa dhahabu.",
+      "text_markdown": "Msumari wa mwisho ulitengenezwa kwa dhahabu.",
+      "tts": {
+        "text": "Msumari wa mwisho ulitengenezwa kwa dhahabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Watu waliuita Msumari wa Dhahabu.",
+      "text_markdown": "Watu waliuita Msumari wa Dhahabu.",
+      "tts": {
+        "text": "Watu waliuita Msumari wa Dhahabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Njia hiyo iliitwa Transcontinental Railroad.",
+      "text_markdown": "Njia hiyo iliitwa Transcontinental Railroad.",
+      "tts": {
+        "text": "Njia hiyo iliitwa Transkontinental Relirodi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sasa ungeweza kusafiri kwa treni kutoka bahari moja hadi nyingine kwa karibu wiki moja.",
+      "text_markdown": "Sasa ungeweza kusafiri kwa treni kutoka bahari moja hadi nyingine kwa karibu wiki moja.",
+      "tts": {
+        "text": "Sasa ungeweza kusafiri kwa treni kutoka bahari moja hadi nyingine kwa karibu wiki moja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Urusi ilijenga njia iliyokuwa ndefu hata zaidi.",
+      "text_markdown": "Urusi ilijenga njia iliyokuwa ndefu hata zaidi.",
+      "tts": {
+        "text": "Urusi ilijenga njia iliyokuwa ndefu hata zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Inaitwa Trans-Siberian Railway.",
+      "text_markdown": "Inaitwa Trans-Siberian Railway.",
+      "tts": {
+        "text": "Inaitwa Trans Saiberian Reliwei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Inaenda kutoka Moscow magharibi hadi Vladivostok mashariki.",
+      "text_markdown": "Inaenda kutoka Moscow magharibi hadi Vladivostok mashariki.",
+      "tts": {
+        "text": "Inaenda kutoka Mosko magharibi hadi Vladivostok mashariki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Njia hiyo ilikamilika mwaka 1916.",
+      "text_markdown": "Njia hiyo ilikamilika mwaka 1916.",
+      "tts": {
+        "text": "Njia hiyo ilikamilika mwaka elfu moja mia tisa kumi na sita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ina urefu wa zaidi ya kilomita 9,000.",
+      "text_markdown": "Ina urefu wa zaidi ya kilomita 9,000.",
+      "tts": {
+        "text": "Ina urefu wa zaidi ya kilomita elfu tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Safari kamili huchukua karibu siku 7.",
+      "text_markdown": "Safari kamili huchukua karibu siku 7.",
+      "tts": {
+        "text": "Safari kamili huchukua karibu siku saba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Sura ya 3 — Njia Kuu",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Bado ndiyo reli ndefu zaidi duniani.",
+      "text_markdown": "Bado ndiyo reli ndefu zaidi duniani.",
+      "tts": {
+        "text": "Bado ndiyo reli ndefu zaidi duniani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "text_markdown": "Sura ya 4 — Mvuke, Dizeli, Umeme"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa karibu miaka 100, karibu kila treni ilikuwa treni ya mvuke.",
+      "text_markdown": "Kwa karibu miaka 100, karibu kila treni ilikuwa treni ya mvuke.",
+      "tts": {
+        "text": "Kwa karibu miaka mia moja, karibu kila treni ilikuwa treni ya mvuke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lokomotivu za mvuke zilikuwa kubwa na zenye kelele.",
+      "text_markdown": "Lokomotivu za mvuke zilikuwa kubwa na zenye kelele.",
+      "tts": {
+        "text": "Lokomotivu za mvuke zilikuwa kubwa na zenye kelele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zilichoma makaa ya mawe.",
+      "text_markdown": "Zilichoma makaa ya mawe.",
+      "tts": {
+        "text": "Zilichoma makaa ya mawe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zilitoa moshi mzito angani.",
+      "text_markdown": "Zilitoa moshi mzito angani.",
+      "tts": {
+        "text": "Zilitoa moshi mzito angani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha ikaja lokomotivu ya dizeli.",
+      "text_markdown": "Kisha ikaja lokomotivu ya dizeli.",
+      "tts": {
+        "text": "Kisha ikaja lokomotivu ya dizeli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Injini ya dizeli huchoma mafuta badala ya makaa ya mawe.",
+      "text_markdown": "Injini ya dizeli huchoma mafuta badala ya makaa ya mawe.",
+      "tts": {
+        "text": "Injini ya dizeli huchoma mafuta badala ya makaa ya mawe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ni ndogo zaidi na safi zaidi.",
+      "text_markdown": "Ni ndogo zaidi na safi zaidi.",
+      "tts": {
+        "text": "Ni ndogo zaidi na safi zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Haihitaji moto wala tangi la maji.",
+      "text_markdown": "Haihitaji moto wala tangi la maji.",
+      "tts": {
+        "text": "Haihitaji moto wala tangi la maji.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni za dizeli zikawa za kawaida katika miaka ya 1940 na 1950.",
+      "text_markdown": "Treni za dizeli zikawa za kawaida katika miaka ya 1940 na 1950.",
+      "tts": {
+        "text": "Treni za dizeli zikawa za kawaida katika miaka ya elfu moja mia tisa arobaini na elfu moja mia tisa hamsini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Polepole, lokomotivu kubwa za mvuke zilistaafishwa.",
+      "text_markdown": "Polepole, lokomotivu kubwa za mvuke zilistaafishwa.",
+      "tts": {
+        "text": "Polepole, lokomotivu kubwa za mvuke zilistaafishwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chache bado zinahifadhiwa katika makumbusho na reli za watalii.",
+      "text_markdown": "Chache bado zinahifadhiwa katika makumbusho na reli za watalii.",
+      "tts": {
+        "text": "Chache bado zinahifadhiwa katika makumbusho na reli za watalii.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hatua iliyofuata ilikuwa treni ya umeme.",
+      "text_markdown": "Hatua iliyofuata ilikuwa treni ya umeme.",
+      "tts": {
+        "text": "Hatua iliyofuata ilikuwa treni ya umeme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Treni ya umeme haina injini inayochoma mafuta.",
+      "text_markdown": "Treni ya umeme haina injini inayochoma mafuta.",
+      "tts": {
+        "text": "Treni ya umeme haina injini inayochoma mafuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hupata nguvu kutoka kwenye waya juu ya njia au kwenye reli ya tatu kando ya njia.",
+      "text_markdown": "Hupata nguvu kutoka kwenye waya juu ya njia au kwenye reli ya tatu kando ya njia.",
+      "tts": {
+        "text": "Hupata nguvu kutoka kwenye waya juu ya njia au kwenye reli ya tatu kando ya njia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni za umeme ni tulivu na safi sana.",
+      "text_markdown": "Treni za umeme ni tulivu na safi sana.",
+      "tts": {
+        "text": "Treni za umeme ni tulivu na safi sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pia zina nguvu sana.",
+      "text_markdown": "Pia zina nguvu sana.",
+      "tts": {
+        "text": "Pia zina nguvu sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treni nyingi za mijini na treni nyingi za kasi leo ni za umeme.",
+      "text_markdown": "Treni nyingi za mijini na treni nyingi za kasi leo ni za umeme.",
+      "tts": {
+        "text": "Treni nyingi za mijini na treni nyingi za kasi leo ni za umeme.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mvuke, dizeli, umeme.",
+      "text_markdown": "Mvuke, dizeli, umeme.",
+      "tts": {
+        "text": "Mvuke, dizeli, umeme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Sura ya 4 — Mvuke, Dizeli, Umeme",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Injini tatu, enzi tatu.",
+      "text_markdown": "Injini tatu, enzi tatu.",
+      "tts": {
+        "text": "Injini tatu, enzi tatu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "text_markdown": "Sura ya 5 — Treni za Risasi na Mbio za Kasi"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka 1964, Japani ilifungua reli mpya kabisa.",
+      "text_markdown": "Mwaka 1964, Japani ilifungua reli mpya kabisa.",
+      "tts": {
+        "text": "Mwaka elfu moja mia tisa sitini na nne, Japani ilifungua reli mpya kabisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ilienda kutoka Tokyo hadi Osaka.",
+      "text_markdown": "Ilienda kutoka Tokyo hadi Osaka.",
+      "tts": {
+        "text": "Ilienda kutoka Tokio hadi Osaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treni hizo zilionekana kama risasi ndefu nyeupe.",
+      "text_markdown": "Treni hizo zilionekana kama risasi ndefu nyeupe.",
+      "tts": {
+        "text": "Treni hizo zilionekana kama risasi ndefu nyeupe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Watu wakaziita treni za risasi.",
+      "text_markdown": "Watu wakaziita treni za risasi.",
+      "tts": {
+        "text": "Watu wakaziita treni za risasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Jina la Kijapani ni Shinkansen.",
+      "text_markdown": "Jina la Kijapani ni Shinkansen.",
+      "tts": {
+        "text": "Jina la Kijapani ni Shin kansen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni za kwanza za risasi zilienda maili 130 kwa saa.",
+      "text_markdown": "Treni za kwanza za risasi zilienda maili 130 kwa saa.",
+      "tts": {
+        "text": "Treni za kwanza za risasi zilienda maili mia moja thelathini kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huo ulikuwa mwendo wa kasi sana kwa treni mwaka 1964.",
+      "text_markdown": "Huo ulikuwa mwendo wa kasi sana kwa treni mwaka 1964.",
+      "tts": {
+        "text": "Huo ulikuwa mwendo wa kasi sana kwa treni mwaka elfu moja mia tisa sitini na nne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Njia hiyo ilifunguliwa kwa wakati kabisa kwa Michezo ya Olimpiki ya Tokyo.",
+      "text_markdown": "Njia hiyo ilifunguliwa kwa wakati kabisa kwa Michezo ya Olimpiki ya Tokyo.",
+      "tts": {
+        "text": "Njia hiyo ilifunguliwa kwa wakati kabisa kwa Michezo ya Olimpiki ya Tokio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nchi nyingine zikafuata.",
+      "text_markdown": "Nchi nyingine zikafuata.",
+      "tts": {
+        "text": "Nchi nyingine zikafuata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ufaransa ilifungua njia yake ya mwendo kasi mwaka 1981.",
+      "text_markdown": "Ufaransa ilifungua njia yake ya mwendo kasi mwaka 1981.",
+      "tts": {
+        "text": "Ufaransa ilifungua njia yake ya mwendo kasi mwaka elfu moja mia tisa themanini na moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treni hizo zinaitwa TGV.",
+      "text_markdown": "Treni hizo zinaitwa TGV.",
+      "tts": {
+        "text": "Treni hizo zinaitwa ti ji vi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ujerumani ikafuata na ICE.",
+      "text_markdown": "Ujerumani ikafuata na ICE.",
+      "tts": {
+        "text": "Ujerumani ikafuata na ai si i.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Italia, Uhispania, na Korea zilijenga njia zao wenyewe za mwendo kasi.",
+      "text_markdown": "Italia, Uhispania, na Korea zilijenga njia zao wenyewe za mwendo kasi.",
+      "tts": {
+        "text": "Italia, Uhispania, na Korea zilijenga njia zao wenyewe za mwendo kasi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "China ilianza mwisho, lakini ilijenga haraka.",
+      "text_markdown": "China ilianza mwisho, lakini ilijenga haraka.",
+      "tts": {
+        "text": "Chaina ilianza mwisho, lakini ilijenga haraka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leo, China ina mtandao mkubwa zaidi wa reli za mwendo kasi duniani.",
+      "text_markdown": "Leo, China ina mtandao mkubwa zaidi wa reli za mwendo kasi duniani.",
+      "tts": {
+        "text": "Leo, Chaina ina mtandao mkubwa zaidi wa reli za mwendo kasi duniani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuna makumi ya maelfu ya kilomita za njia.",
+      "text_markdown": "Kuna makumi ya maelfu ya kilomita za njia.",
+      "tts": {
+        "text": "Kuna makumi ya maelfu ya kilomita za njia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni za kisasa za risasi zinaweza kwenda kwa zaidi ya maili 200 kwa saa.",
+      "text_markdown": "Treni za kisasa za risasi zinaweza kwenda kwa zaidi ya maili 200 kwa saa.",
+      "tts": {
+        "text": "Treni za kisasa za risasi zinaweza kwenda kwa zaidi ya maili mia mbili kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni laini, tulivu, na karibu kila mara hufika kwa wakati.",
+      "text_markdown": "Ni laini, tulivu, na karibu kila mara hufika kwa wakati.",
+      "tts": {
+        "text": "Ni laini, tulivu, na karibu kila mara hufika kwa wakati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Sura ya 5 — Treni za Risasi na Mbio za Kasi",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa safari nyingi, ni haraka kuliko kusafiri kwa ndege.",
+      "text_markdown": "Kwa safari nyingi, ni haraka kuliko kusafiri kwa ndege.",
+      "tts": {
+        "text": "Kwa safari nyingi, ni haraka kuliko kusafiri kwa ndege.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 6 — Aina Nyingi za Treni",
+      "text_markdown": "Sura ya 6 — Aina Nyingi za Treni"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si treni zote zinazofanana.",
+      "text_markdown": "Si treni zote zinazofanana.",
+      "tts": {
+        "text": "Si treni zote zinazofanana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuna aina nyingi.",
+      "text_markdown": "Kuna aina nyingi.",
+      "tts": {
+        "text": "Kuna aina nyingi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni ya abiria hubeba watu.",
+      "text_markdown": "Treni ya abiria hubeba watu.",
+      "tts": {
+        "text": "Treni ya abiria hubeba watu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ina viti, madirisha, na wakati mwingine behewa la chakula au behewa la kulala.",
+      "text_markdown": "Ina viti, madirisha, na wakati mwingine behewa la chakula au behewa la kulala.",
+      "tts": {
+        "text": "Ina viti, madirisha, na wakati mwingine behewa la chakula au behewa la kulala.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni ya mizigo hubeba bidhaa.",
+      "text_markdown": "Treni ya mizigo hubeba bidhaa.",
+      "tts": {
+        "text": "Treni ya mizigo hubeba bidhaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Magari hayo huitwa wagoni.",
+      "text_markdown": "Magari hayo huitwa wagoni.",
+      "tts": {
+        "text": "Magari hayo huitwa wagoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baadhi hubeba nafaka.",
+      "text_markdown": "Baadhi hubeba nafaka.",
+      "tts": {
+        "text": "Baadhi hubeba nafaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baadhi hubeba mafuta.",
+      "text_markdown": "Baadhi hubeba mafuta.",
+      "tts": {
+        "text": "Baadhi hubeba mafuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Baadhi hubeba makontena mazima ya usafirishaji yaliyopangwa tabaka mbili.",
+      "text_markdown": "Baadhi hubeba makontena mazima ya usafirishaji yaliyopangwa tabaka mbili.",
+      "tts": {
+        "text": "Baadhi hubeba makontena mazima ya usafirishaji yaliyopangwa tabaka mbili.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Subway ni treni ya chini ya ardhi katika jiji.",
+      "text_markdown": "Subway ni treni ya chini ya ardhi katika jiji.",
+      "tts": {
+        "text": "Sabwei ni treni ya chini ya ardhi katika jiji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Subway ya kwanza ilifunguliwa London mwaka 1863.",
+      "text_markdown": "Subway ya kwanza ilifunguliwa London mwaka 1863.",
+      "tts": {
+        "text": "Sabwei ya kwanza ilifunguliwa Landon mwaka elfu moja mia nane sitini na tatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Leo, miji mikubwa ina mitandao mikubwa ya treni za chini ya ardhi chini ya barabara zake.",
+      "text_markdown": "Leo, miji mikubwa ina mitandao mikubwa ya treni za chini ya ardhi chini ya barabara zake.",
+      "tts": {
+        "text": "Leo, miji mikubwa ina mitandao mikubwa ya treni za chini ya ardhi chini ya barabara zake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tramu au reli nyepesi ni treni ndogo inayotembea kwenye barabara za jiji.",
+      "text_markdown": "Tramu au reli nyepesi ni treni ndogo inayotembea kwenye barabara za jiji.",
+      "tts": {
+        "text": "Tramu au reli nyepesi ni treni ndogo inayotembea kwenye barabara za jiji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mara nyingi hushiriki barabara na magari na mabasi.",
+      "text_markdown": "Mara nyingi hushiriki barabara na magari na mabasi.",
+      "tts": {
+        "text": "Mara nyingi hushiriki barabara na magari na mabasi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni ya milimani hupanda vilima vyenye mwinuko mkali.",
+      "text_markdown": "Treni ya milimani hupanda vilima vyenye mwinuko mkali.",
+      "tts": {
+        "text": "Treni ya milimani hupanda vilima vyenye mwinuko mkali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Baadhi zina reli maalumu yenye meno katikati, inayoitwa cog.",
+      "text_markdown": "Baadhi zina reli maalumu yenye meno katikati, inayoitwa cog.",
+      "tts": {
+        "text": "Baadhi zina reli maalumu yenye meno katikati, inayoitwa kogi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lokomotivu hushika cog ili kupanda na kushuka salama.",
+      "text_markdown": "Lokomotivu hushika cog ili kupanda na kushuka salama.",
+      "tts": {
+        "text": "Lokomotivu hushika kogi ili kupanda na kushuka salama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baadhi ya treni pia ni treni za watalii.",
+      "text_markdown": "Baadhi ya treni pia ni treni za watalii.",
+      "tts": {
+        "text": "Baadhi ya treni pia ni treni za watalii.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Sura ya 6 — Aina Nyingi za Treni",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huenda kupitia misitu na milima, kwa ajili tu ya mandhari.",
+      "text_markdown": "Huenda kupitia misitu na milima, kwa ajili tu ya mandhari.",
+      "tts": {
+        "text": "Huenda kupitia misitu na milima, kwa ajili tu ya mandhari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "text_markdown": "Sura ya 7 — Wakati Ujao Juu ya Reli"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hadithi ya treni haijaisha.",
+      "text_markdown": "Hadithi ya treni haijaisha.",
+      "tts": {
+        "text": "Hadithi ya treni haijaisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aina mpya za treni zinajengwa sasa hivi.",
+      "text_markdown": "Aina mpya za treni zinajengwa sasa hivi.",
+      "tts": {
+        "text": "Aina mpya za treni zinajengwa sasa hivi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ya kushangaza zaidi ni treni ya maglev.",
+      "text_markdown": "Ya kushangaza zaidi ni treni ya maglev.",
+      "tts": {
+        "text": "Ya kushangaza zaidi ni treni ya maglevu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Neno maglev ni kifupi cha magnetic levitation.",
+      "text_markdown": "Neno maglev ni kifupi cha magnetic levitation.",
+      "tts": {
+        "text": "Neno maglevu ni kifupi cha magnetiki levitesheni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Treni ya maglev haigusi njia yake.",
+      "text_markdown": "Treni ya maglev haigusi njia yake.",
+      "tts": {
+        "text": "Treni ya maglevu haigusi njia yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Huelea juu ya tabaka la sumaku.",
+      "text_markdown": "Huelea juu ya tabaka la sumaku.",
+      "tts": {
+        "text": "Huelea juu ya tabaka la sumaku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hakuna magurudumu yanayozunguka.",
+      "text_markdown": "Hakuna magurudumu yanayozunguka.",
+      "tts": {
+        "text": "Hakuna magurudumu yanayozunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hakuna msuguano.",
+      "text_markdown": "Hakuna msuguano.",
+      "tts": {
+        "text": "Hakuna msuguano.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka 2004, njia ya maglev ilifunguliwa Shanghai, China.",
+      "text_markdown": "Mwaka 2004, njia ya maglev ilifunguliwa Shanghai, China.",
+      "tts": {
+        "text": "Mwaka elfu mbili na nne, njia ya maglevu ilifunguliwa Shanghai, Chaina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Treni hiyo inaweza kufikia zaidi ya maili 250 kwa saa.",
+      "text_markdown": "Treni hiyo inaweza kufikia zaidi ya maili 250 kwa saa.",
+      "tts": {
+        "text": "Treni hiyo inaweza kufikia zaidi ya maili mia mbili hamsini kwa saa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nchini Japani, treni ya majaribio ya maglev imeenda kwa kasi ya zaidi ya maili 370 kwa saa.",
+      "text_markdown": "Nchini Japani, treni ya majaribio ya maglev imeenda kwa kasi ya zaidi ya maili 370 kwa saa.",
+      "tts": {
+        "text": "Nchini Japani, treni ya majaribio ya maglevu imeenda kwa kasi ya zaidi ya maili mia tatu sabini kwa saa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wahandisi wengine wanafanyia kazi treni ya hidrojeni.",
+      "text_markdown": "Wahandisi wengine wanafanyia kazi treni ya hidrojeni.",
+      "tts": {
+        "text": "Wahandisi wengine wanafanyia kazi treni ya hidrojeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Treni ya hidrojeni hutengeneza umeme kutoka kwenye seli ndogo ya mafuta.",
+      "text_markdown": "Treni ya hidrojeni hutengeneza umeme kutoka kwenye seli ndogo ya mafuta.",
+      "tts": {
+        "text": "Treni ya hidrojeni hutengeneza umeme kutoka kwenye seli ndogo ya mafuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kitu pekee kinachotoka kwenye injini ni mvuke wa maji.",
+      "text_markdown": "Kitu pekee kinachotoka kwenye injini ni mvuke wa maji.",
+      "tts": {
+        "text": "Kitu pekee kinachotoka kwenye injini ni mvuke wa maji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hakuna moshi.",
+      "text_markdown": "Hakuna moshi.",
+      "tts": {
+        "text": "Hakuna moshi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hakuna makaa ya mawe.",
+      "text_markdown": "Hakuna makaa ya mawe.",
+      "tts": {
+        "text": "Hakuna makaa ya mawe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Treni za kwanza za hidrojeni zilianza kazi nchini Ujerumani mwaka 2018.",
+      "text_markdown": "Treni za kwanza za hidrojeni zilianza kazi nchini Ujerumani mwaka 2018.",
+      "tts": {
+        "text": "Treni za kwanza za hidrojeni zilianza kazi nchini Ujerumani mwaka elfu mbili na kumi na nane.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Treni ni za zamani sana.",
+      "text_markdown": "Treni ni za zamani sana.",
+      "tts": {
+        "text": "Treni ni za zamani sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pia ni mpya sana.",
+      "text_markdown": "Pia ni mpya sana.",
+      "tts": {
+        "text": "Pia ni mpya sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sura ya 7 — Wakati Ujao Juu ya Reli",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miaka 200 baada ya Rocket, reli bado ndizo za wakati ujao.",
+      "text_markdown": "Miaka 200 baada ya Rocket, reli bado ndizo za wakati ujao.",
+      "tts": {
+        "text": "Miaka mia mbili baada ya Roketi, reli bado ndizo za wakati ujao.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Njia ya Chuma Inaendelea",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Njia ya Chuma Inaendelea",
+      "text_markdown": "Njia ya Chuma Inaendelea"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Njia ya Chuma Inaendelea",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kutoka Rocket hadi maglev, treni imeisukuma dunia mbele kwa karibu miaka 200.",
+      "text_markdown": "Kutoka Rocket hadi maglev, treni imeisukuma dunia mbele kwa karibu miaka 200.",
+      "tts": {
+        "text": "Kutoka Roketi hadi maglevu, treni imeisukuma dunia mbele kwa karibu miaka mia mbili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Njia ya Chuma Inaendelea",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Njia mpya zinawekwa sasa hivi, jangwani, milimani, na chini ya miji.",
+      "text_markdown": "Njia mpya zinawekwa sasa hivi, jangwani, milimani, na chini ya miji.",
+      "tts": {
+        "text": "Njia mpya zinawekwa sasa hivi, jangwani, milimani, na chini ya miji.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Njia ya Chuma Inaendelea",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stesheni inayofuata daima iko mbele mahali fulani.",
+      "text_markdown": "Stesheni inayofuata daima iko mbele mahali fulani.",
+      "tts": {
+        "text": "Stesheni inayofuata daima iko mbele mahali fulani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

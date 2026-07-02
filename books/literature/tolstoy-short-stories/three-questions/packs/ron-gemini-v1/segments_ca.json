@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "ca",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Tres preguntes",
+      "text_markdown": "Tres preguntes",
+      "title": "Tres preguntes"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Un rei va pensar que si sempre sabia el moment oportú per a cada afer, i sabia quines persones eren les més necessàries, i, sobretot, sabia sempre quin de tots els afers era el més important—mai no fracassaria en res.",
+      "text_markdown": "Un rei va pensar que si sempre sabia el moment oportú per a cada afer, i sabia quines persones eren les més necessàries, i, sobretot, sabia sempre quin de tots els afers era el més important—mai no fracassaria en res.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Un rei va pensar que si sempre sabia el moment oportú per a cada afer, i sabia quines persones eren les més necessàries, i, sobretot, sabia sempre quin de tots els afers era el més important, mai no fracassaria en res.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "I, havent pensat això, el rei va proclamar per tot el seu regne que donaria una gran recompensa a aquell que li ensenyés a conèixer el moment oportú per a cada afer, a saber quines persones són les més necessàries, i a no errar en determinar quin afer de tots és el més important.",
+      "text_markdown": "I, havent pensat això, el rei va proclamar per tot el seu regne que donaria una gran recompensa a aquell que li ensenyés a conèixer el moment oportú per a cada afer, a saber quines persones són les més necessàries, i a no errar en determinar quin afer de tots és el més important.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I, havent pensat això, el rei va proclamar per tot el seu regne que donaria una gran recompensa a aquell que li ensenyés a conèixer el moment oportú per a cada afer, a saber quines persones són les més necessàries, i a no errar en determinar quin afer de tots és el més important.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Homes erudits van començar a venir al rei i van respondre les seves preguntes de maneres diverses.",
+      "text_markdown": "Homes erudits van començar a venir al rei i van respondre les seves preguntes de maneres diverses.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Homes erudits van començar a venir al rei i van respondre les seves preguntes de maneres diverses.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "A la primera pregunta, alguns deien que, per saber el moment oportú per a cada afer, calia traçar amb antelació un calendari de dies, mesos i anys i seguir-lo estrictament.",
+      "text_markdown": "A la primera pregunta, alguns deien que, per saber el moment oportú per a cada afer, calia traçar amb antelació un calendari de dies, mesos i anys i seguir-lo estrictament.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "A la primera pregunta, alguns deien que, per saber el moment oportú per a cada afer, calia traçar amb antelació un calendari de dies, mesos i anys i seguir-lo estrictament.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Només llavors, deien, cada afer es faria al seu temps degut.",
+      "text_markdown": "Només llavors, deien, cada afer es faria al seu temps degut.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Només llavors, deien, cada afer es faria al seu temps degut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "D'altres deien que és impossible decidir per endavant quin moment serà l'oportú per a cada afer, sinó que cal, sense distreure's amb diversions ocioses, estar sempre atent a tot el que es fa, i llavors fer sempre allò que més es necessita.",
+      "text_markdown": "D'altres deien que és impossible decidir per endavant quin moment serà l'oportú per a cada afer, sinó que cal, sense distreure's amb diversions ocioses, estar sempre atent a tot el que es fa, i llavors fer sempre allò que més es necessita.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "D'altres deien que és impossible decidir per endavant quin moment serà l'oportú per a cada afer, sinó que cal, sense distreure's amb diversions ocioses, estar sempre atent a tot el que es fa, i llavors fer sempre allò que més es necessita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Encara d'altres deien que, per molt atent que el rei fos a tot el que es fa, una sola persona no pot decidir sempre correctament sobre cada afer quan n'arriba el moment, sinó que cal tenir el consell d'homes savis i, pel seu consell, fixar el moment de cada afer.",
+      "text_markdown": "Encara d'altres deien que, per molt atent que el rei fos a tot el que es fa, una sola persona no pot decidir sempre correctament sobre cada afer quan n'arriba el moment, sinó que cal tenir el consell d'homes savis i, pel seu consell, fixar el moment de cada afer.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Encara d'altres deien que, per molt atent que el rei fos a tot el que es fa, una sola persona no pot decidir sempre correctament sobre cada afer quan n'arriba el moment, sinó que cal tenir el consell d'homes savis i, pel seu consell, fixar el moment de cada afer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Un quart grup deia que hi ha afers que s'han de decidir a l'instant, sense esperar consulta, i que per saber quan succeiran exactament, cal saber què passarà en el futur.",
+      "text_markdown": "Un quart grup deia que hi ha afers que s'han de decidir a l'instant, sense esperar consulta, i que per saber quan succeiran exactament, cal saber què passarà en el futur.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Un quart grup deia que hi ha afers que s'han de decidir a l'instant, sense esperar consulta, i que per saber quan succeiran exactament, cal saber què passarà en el futur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "I això només els mags ho poden saber.",
+      "text_markdown": "I això només els mags ho poden saber.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I això només els mags ho poden saber.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "I per tant, per conèixer el moment oportú per a cada afer, cal consultar els mags.",
+      "text_markdown": "I per tant, per conèixer el moment oportú per a cada afer, cal consultar els mags.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I per tant, per conèixer el moment oportú per a cada afer, cal consultar els mags.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "A la segona pregunta també van respondre de maneres diferents.",
+      "text_markdown": "A la segona pregunta també van respondre de maneres diferents.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "A la segona pregunta també van respondre de maneres diferents.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Alguns deien que les persones més necessàries per al rei són els seus consellers; d'altres, els sacerdots; encara d'altres—els metges; i un quart grup—els guerrers.",
+      "text_markdown": "Alguns deien que les persones més necessàries per al rei són els seus consellers; d'altres, els sacerdots; encara d'altres—els metges; i un quart grup—els guerrers.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Alguns deien que les persones més necessàries per al rei són els seus consellers; d'altres, els sacerdots; encara d'altres, els metges; i un quart grup, els guerrers.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "A la tercera pregunta—quin afer és el més important?—alguns deien que la cosa més important del món és la ciència; d'altres deien—els afers militars; encara d'altres deien—la pietat.",
+      "text_markdown": "A la tercera pregunta—quin afer és el més important?—alguns deien que la cosa més important del món és la ciència; d'altres deien—els afers militars; encara d'altres deien—la pietat.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "A la tercera pregunta, quin afer és el més important?, alguns deien que la cosa més important del món és la ciència; d'altres deien, els afers militars; encara d'altres deien, la pietat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Totes les respostes eren diferents, i per això el rei no va estar d'acord amb cap i no va donar recompensa a ningú.",
+      "text_markdown": "Totes les respostes eren diferents, i per això el rei no va estar d'acord amb cap i no va donar recompensa a ningú.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Totes les respostes eren diferents, i per això el rei no va estar d'acord amb cap i no va donar recompensa a ningú.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Per esbrinar millor les respostes a les seves preguntes, va decidir preguntar-ho a un ermità del qual es deia que era un home savi.",
+      "text_markdown": "Per esbrinar millor les respostes a les seves preguntes, va decidir preguntar-ho a un ermità del qual es deia que era un home savi.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Per esbrinar millor les respostes a les seves preguntes, va decidir preguntar-ho a un ermità del qual es deia que era un home savi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "L'ermità vivia al bosc i mai no en sortia.",
+      "text_markdown": "L'ermità vivia al bosc i mai no en sortia.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "L'ermità vivia al bosc i mai no en sortia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Només rebia gent senzilla, i per això el rei es va vestir amb senzillesa i, abans d'arribar a la cabana de l'ermità, va desmuntar del cavall i va anar-hi tot sol.",
+      "text_markdown": "Només rebia gent senzilla, i per això el rei es va vestir amb senzillesa i, abans d'arribar a la cabana de l'ermità, va desmuntar del cavall i va anar-hi tot sol.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Només rebia gent senzilla, i per això el rei es va vestir amb senzillesa i, abans d'arribar a la cabana de l'ermità, va desmuntar del cavall i va anar-hi tot sol.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Quan el rei se li va acostar, l'ermità cavava llits a l'hort davant de la seva cabana.",
+      "text_markdown": "Quan el rei se li va acostar, l'ermità cavava llits a l'hort davant de la seva cabana.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Quan el rei se li va acostar, l'ermità cavava llits a l'hort davant de la seva cabana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "En veure el rei, l'ermità el va saludar amb el cap i va continuar cavant.",
+      "text_markdown": "En veure el rei, l'ermità el va saludar amb el cap i va continuar cavant.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "En veure el rei, l'ermità el va saludar amb el cap i va continuar cavant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "L'ermità era prim i feble i, clavant la pala a terra i girant petits terrossos, panteixava feixugament.",
+      "text_markdown": "L'ermità era prim i feble i, clavant la pala a terra i girant petits terrossos, panteixava feixugament.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "L'ermità era prim i feble i, clavant la pala a terra i girant petits terrossos, panteixava feixugament.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "El rei se li va acostar i va dir:",
+      "text_markdown": "El rei se li va acostar i va dir:",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei se li va acostar i va dir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "«He vingut a tu, savi ermità, a demanar-te que em responguis tres preguntes: quin moment cal recordar i no perdre, per no penedir-se'n després?",
+      "text_markdown": "«He vingut a tu, savi ermità, a demanar-te que em responguis tres preguntes: quin moment cal recordar i no perdre, per no penedir-se'n després?",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "He vingut a tu, savi ermità, a demanar-te que em responguis tres preguntes: quin moment cal recordar i no perdre, per no penedir-se'n després?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Quines són les persones que més falta fan?",
+      "text_markdown": "Quines són les persones que més falta fan?",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Quines són les persones que més falta fan?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "I quin afer és el més important?»",
+      "text_markdown": "I quin afer és el més important?»",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I quin afer és el més important?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "L'ermità va escoltar el rei, però no va respondre res, i, escopint-se a la mà, va començar a cavar de nou.",
+      "text_markdown": "L'ermità va escoltar el rei, però no va respondre res, i, escopint-se a la mà, va començar a cavar de nou.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "L'ermità va escoltar el rei, però no va respondre res, i, escopint-se a la mà, va començar a cavar de nou.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "«Estàs cansat», va dir el rei.",
+      "text_markdown": "«Estàs cansat», va dir el rei.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Estàs cansat, va dir el rei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "«Deixa, que jo t'ajudaré.»",
+      "text_markdown": "«Deixa, que jo t'ajudaré.»",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Deixa, que jo t'ajudaré.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "«Gràcies», va dir l'ermità i, lliurant la pala al rei, es va asseure a terra.",
+      "text_markdown": "«Gràcies», va dir l'ermità i, lliurant la pala al rei, es va asseure a terra.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Gràcies, va dir l'ermità i, lliurant la pala al rei, es va asseure a terra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Després de cavar dos llits, el rei es va aturar i va repetir les seves preguntes.",
+      "text_markdown": "Després de cavar dos llits, el rei es va aturar i va repetir les seves preguntes.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Després de cavar dos llits, el rei es va aturar i va repetir les seves preguntes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "L'ermità tampoc no va respondre, sinó que es va alçar i va estendre la mà cap a la pala:",
+      "text_markdown": "L'ermità tampoc no va respondre, sinó que es va alçar i va estendre la mà cap a la pala:",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "L'ermità tampoc no va respondre, sinó que es va alçar i va estendre la mà cap a la pala.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "«Ara descansa tu, deixa-m'ho a mi», va dir.",
+      "text_markdown": "«Ara descansa tu, deixa-m'ho a mi», va dir.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Ara descansa tu, deixa-m'ho a mi, va dir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Però el rei no li va donar la pala i va continuar cavant.",
+      "text_markdown": "Però el rei no li va donar la pala i va continuar cavant.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Però el rei no li va donar la pala i va continuar cavant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Va passar una hora, després una altra.",
+      "text_markdown": "Va passar una hora, després una altra.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Va passar una hora, després una altra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "El sol es va pondre darrere dels arbres.",
+      "text_markdown": "El sol es va pondre darrere dels arbres.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El sol es va pondre darrere dels arbres.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "El rei va clavar la pala a terra i va dir:",
+      "text_markdown": "El rei va clavar la pala a terra i va dir:",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei va clavar la pala a terra i va dir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "«He vingut a tu, home savi, per una resposta a les meves preguntes.",
+      "text_markdown": "«He vingut a tu, home savi, per una resposta a les meves preguntes.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "He vingut a tu, home savi, per una resposta a les meves preguntes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Si no em pots respondre, digues-m'ho i me'n tornaré a casa.»",
+      "text_markdown": "Si no em pots respondre, digues-m'ho i me'n tornaré a casa.»",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Si no em pots respondre, digues-m'ho i me'n tornaré a casa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "«Però algú ve corrents», va dir l'ermità.",
+      "text_markdown": "«Però algú ve corrents», va dir l'ermità.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Però algú ve corrents, va dir l'ermità.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "«Vegem de qui es tracta.»",
+      "text_markdown": "«Vegem de qui es tracta.»",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Vegem de qui es tracta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "El rei es va girar i va veure un home barbut que venia corrents des del bosc.",
+      "text_markdown": "El rei es va girar i va veure un home barbut que venia corrents des del bosc.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei es va girar i va veure un home barbut que venia corrents des del bosc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Aquell home es premia les mans contra una ferida al ventre, i la sang li rajava per sota.",
+      "text_markdown": "Aquell home es premia les mans contra una ferida al ventre, i la sang li rajava per sota.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Aquell home es premia les mans contra una ferida al ventre, i la sang li rajava per sota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "En arribar davant del rei, l'home va caure inconscient a terra i va quedar-hi estirat, gemegant suaument.",
+      "text_markdown": "En arribar davant del rei, l'home va caure inconscient a terra i va quedar-hi estirat, gemegant suaument.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "En arribar davant del rei, l'home va caure inconscient a terra i va quedar-hi estirat, gemegant suaument.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "El rei, juntament amb l'ermità, va descordar i treure la roba de l'home.",
+      "text_markdown": "El rei, juntament amb l'ermità, va descordar i treure la roba de l'home.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei, juntament amb l'ermità, va descordar i treure la roba de l'home.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Tenia una ferida molt gran al ventre.",
+      "text_markdown": "Tenia una ferida molt gran al ventre.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Tenia una ferida molt gran al ventre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "El rei, tan bé com va poder, va rentar la ferida i la va embenar amb el seu mocador i la tovallola de l'ermità.",
+      "text_markdown": "El rei, tan bé com va poder, va rentar la ferida i la va embenar amb el seu mocador i la tovallola de l'ermità.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei, tan bé com va poder, va rentar la ferida i la va embenar amb el seu mocador i la tovallola de l'ermità.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Tot i això, la sang continuava brollant.",
+      "text_markdown": "Tot i això, la sang continuava brollant.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Tot i això, la sang continuava brollant.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "El rei va treure diverses vegades l'embenat i va tornar a rentar i embenar la ferida.",
+      "text_markdown": "El rei va treure diverses vegades l'embenat i va tornar a rentar i embenar la ferida.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei va treure diverses vegades l'embenat i va tornar a rentar i embenar la ferida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Quan a la fi la sang va amainar, l'home va recobrar el coneixement i va demanar aigua.",
+      "text_markdown": "Quan a la fi la sang va amainar, l'home va recobrar el coneixement i va demanar aigua.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Quan a la fi la sang va amainar, l'home va recobrar el coneixement i va demanar aigua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "El rei li va portar aigua fresca i li va donar a beure.",
+      "text_markdown": "El rei li va portar aigua fresca i li va donar a beure.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei li va portar aigua fresca i li va donar a beure.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Mentrestant el sol s'havia post del tot, i va començar a fer fred.",
+      "text_markdown": "Mentrestant el sol s'havia post del tot, i va començar a fer fred.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Mentrestant el sol s'havia post del tot, i va començar a fer fred.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "El rei, amb l'ajuda de l'ermità, va dur l'home ferit dins la cabana i el va estirar al llit.",
+      "text_markdown": "El rei, amb l'ajuda de l'ermità, va dur l'home ferit dins la cabana i el va estirar al llit.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei, amb l'ajuda de l'ermità, va dur l'home ferit dins la cabana i el va estirar al llit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "L'home ferit va aclucar els ulls i va quedar immòbil.",
+      "text_markdown": "L'home ferit va aclucar els ulls i va quedar immòbil.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "L'home ferit va aclucar els ulls i va quedar immòbil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "El rei estava tan cansat de caminar i de treballar que allà mateix, al llindar, es va ajeure i es va adormir—es va adormir tan profundament que va dormir tota la curta nit d'estiu, i quan es va despertar al matí, durant molta estona no podia entendre on era ni qui era aquell estrany home barbut que jeia al llit i el mirava fixament amb ulls brillants.",
+      "text_markdown": "El rei estava tan cansat de caminar i de treballar que allà mateix, al llindar, es va ajeure i es va adormir—es va adormir tan profundament que va dormir tota la curta nit d'estiu, i quan es va despertar al matí, durant molta estona no podia entendre on era ni qui era aquell estrany home barbut que jeia al llit i el mirava fixament amb ulls brillants.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei estava tan cansat de caminar i de treballar que allà mateix, al llindar, es va ajeure i es va adormir, es va adormir tan profundament que va dormir tota la curta nit d'estiu, i quan es va despertar al matí, durant molta estona no podia entendre on era ni qui era aquell estrany home barbut que jeia al llit i el mirava fixament amb ulls brillants.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "«Perdona'm», va dir l'home barbut amb veu feble en veure que el rei s'havia despertat i el mirava.",
+      "text_markdown": "«Perdona'm», va dir l'home barbut amb veu feble en veure que el rei s'havia despertat i el mirava.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Perdona'm, va dir l'home barbut amb veu feble en veure que el rei s'havia despertat i el mirava.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "«No et conec i no tinc res a perdonar-te», va dir el rei.",
+      "text_markdown": "«No et conec i no tinc res a perdonar-te», va dir el rei.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "No et conec i no tinc res a perdonar-te, va dir el rei.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "«Tu no em coneixes, però jo et conec.",
+      "text_markdown": "«Tu no em coneixes, però jo et conec.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Tu no em coneixes, però jo et conec.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Sóc el teu enemic, el mateix que va jurar venjar-se de tu per haver executat el meu germà i haver-me pres les meves terres.",
+      "text_markdown": "Sóc el teu enemic, el mateix que va jurar venjar-se de tu per haver executat el meu germà i haver-me pres les meves terres.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Sóc el teu enemic, el mateix que va jurar venjar-se de tu per haver executat el meu germà i haver-me pres les meves terres.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Sabia que havies vingut tot sol a veure l'ermità, i vaig decidir matar-te en tornar.",
+      "text_markdown": "Sabia que havies vingut tot sol a veure l'ermità, i vaig decidir matar-te en tornar.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Sabia que havies vingut tot sol a veure l'ermità, i vaig decidir matar-te en tornar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Va passar tot un dia, però tu encara no havies aparegut.",
+      "text_markdown": "Va passar tot un dia, però tu encara no havies aparegut.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Va passar tot un dia, però tu encara no havies aparegut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Llavors vaig sortir del meu amagatall per buscar-te i vaig topar amb els teus guardaespatlles.",
+      "text_markdown": "Llavors vaig sortir del meu amagatall per buscar-te i vaig topar amb els teus guardaespatlles.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Llavors vaig sortir del meu amagatall per buscar-te i vaig topar amb els teus guardaespatlles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Em van reconèixer i em van ferir.",
+      "text_markdown": "Em van reconèixer i em van ferir.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Em van reconèixer i em van ferir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Vaig fugir d'ells, però si tu no m'haguessis embenat la ferida, hauria mort.",
+      "text_markdown": "Vaig fugir d'ells, però si tu no m'haguessis embenat la ferida, hauria mort.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Vaig fugir d'ells, però si tu no m'haguessis embenat la ferida, hauria mort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Et volia matar, i tu m'has salvat la vida.",
+      "text_markdown": "Et volia matar, i tu m'has salvat la vida.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Et volia matar, i tu m'has salvat la vida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Ara, si segueixo viu i tu ho vols, et serviré com el més fidel dels esclaus, i ordenaré als meus fills que facin el mateix.",
+      "text_markdown": "Ara, si segueixo viu i tu ho vols, et serviré com el més fidel dels esclaus, i ordenaré als meus fills que facin el mateix.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Ara, si segueixo viu i tu ho vols, et serviré com el més fidel dels esclaus, i ordenaré als meus fills que facin el mateix.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Perdona'm.",
+      "text_markdown": "Perdona'm.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Perdona'm.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "El rei es va alegrar molt d'haver pogut fer les paus tan fàcilment amb el seu enemic i d'haver guanyat un amic, i el va perdonar i li va prometre tornar-li les terres i enviar-li els seus metges i servents perquè el cuidessin.",
+      "text_markdown": "El rei es va alegrar molt d'haver pogut fer les paus tan fàcilment amb el seu enemic i d'haver guanyat un amic, i el va perdonar i li va prometre tornar-li les terres i enviar-li els seus metges i servents perquè el cuidessin.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei es va alegrar molt d'haver pogut fer les paus tan fàcilment amb el seu enemic i d'haver guanyat un amic, i el va perdonar i li va prometre tornar-li les terres i enviar-li els seus metges i servents perquè el cuidessin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Havent acomiadat l'home ferit, el rei va sortir al porxo i va començar a buscar l'ermità.",
+      "text_markdown": "Havent acomiadat l'home ferit, el rei va sortir al porxo i va començar a buscar l'ermità.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Havent acomiadat l'home ferit, el rei va sortir al porxo i va començar a buscar l'ermità.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Abans de marxar, volia tornar a demanar-li quines eren les respostes a les seves preguntes.",
+      "text_markdown": "Abans de marxar, volia tornar a demanar-li quines eren les respostes a les seves preguntes.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Abans de marxar, volia tornar a demanar-li quines eren les respostes a les seves preguntes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "L'ermità era al pati i, de genolls, plantava llavors als llits que s'havien cavat el dia abans.",
+      "text_markdown": "L'ermità era al pati i, de genolls, plantava llavors als llits que s'havien cavat el dia abans.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "L'ermità era al pati i, de genolls, plantava llavors als llits que s'havien cavat el dia abans.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "El rei se li va acostar.",
+      "text_markdown": "El rei se li va acostar.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "El rei se li va acostar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "«Home savi, per última vegada t'ho demano: respon a les meves preguntes.»",
+      "text_markdown": "«Home savi, per última vegada t'ho demano: respon a les meves preguntes.»",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Home savi, per última vegada t'ho demano: respon a les meves preguntes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "«Però ja has rebut la teva resposta», va dir l'ermità, ajupit damunt les seves cames primes i mirant des de baix el rei, que estava dret davant d'ell.",
+      "text_markdown": "«Però ja has rebut la teva resposta», va dir l'ermità, ajupit damunt les seves cames primes i mirant des de baix el rei, que estava dret davant d'ell.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Però ja has rebut la teva resposta, va dir l'ermità, ajupit damunt les seves cames primes i mirant des de baix el rei, que estava dret davant d'ell.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "«Com és que he rebut una resposta?», va preguntar el rei.",
+      "text_markdown": "«Com és que he rebut una resposta?», va preguntar el rei.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Com és que he rebut una resposta?, va preguntar el rei.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "«Com? Doncs així», va dir l'ermità.",
+      "text_markdown": "«Com? Doncs així», va dir l'ermità.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Com? Doncs així, va dir l'ermità.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "«Si ahir no t'haguessis compadit de mi i no t'haguessis quedat a cavar aquests llits en lloc meu, sinó que te n'haguessis tornat, aquell home t'hauria matat.",
+      "text_markdown": "«Si ahir no t'haguessis compadit de mi i no t'haguessis quedat a cavar aquests llits en lloc meu, sinó que te n'haguessis tornat, aquell home t'hauria matat.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Si ahir no t'haguessis compadit de mi i no t'haguessis quedat a cavar aquests llits en lloc meu, sinó que te n'haguessis tornat, aquell home t'hauria matat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "I per tant, el moment més important era quan estaves cavant els llits.",
+      "text_markdown": "I per tant, el moment més important era quan estaves cavant els llits.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I per tant, el moment més important era quan estaves cavant els llits.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "I la persona més necessària era jo.",
+      "text_markdown": "I la persona més necessària era jo.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I la persona més necessària era jo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "I la cosa més important era fer-me el bé.",
+      "text_markdown": "I la cosa més important era fer-me el bé.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I la cosa més important era fer-me el bé.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "I després, quan aquell home va arribar corrents, el moment més important va ser quan l'atenies, perquè si no li haguessis rentat la ferida, hauria mort sense fer les paus amb tu.",
+      "text_markdown": "I després, quan aquell home va arribar corrents, el moment més important va ser quan l'atenies, perquè si no li haguessis rentat la ferida, hauria mort sense fer les paus amb tu.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I després, quan aquell home va arribar corrents, el moment més important va ser quan l'atenies, perquè si no li haguessis rentat la ferida, hauria mort sense fer les paus amb tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "I per tant la persona més necessària era ell, i l'afer més important era el que feies per ell.",
+      "text_markdown": "I per tant la persona més necessària era ell, i l'afer més important era el que feies per ell.",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "I per tant la persona més necessària era ell, i l'afer més important era el que feies per ell.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "«Recorda, doncs», va dir l'ermità, «que només hi ha un moment que és important—l'Ara! És el moment més important perquè és l'únic moment en què tenim algun poder; i la persona més necessària és aquella amb qui ara estàs tractant, perquè ningú no pot saber si mai tindrà tractes amb cap altra persona; i l'afer més important és fer-li el bé, perquè només amb aquest propòsit va ser enviat l'home a aquesta vida.»",
+      "text_markdown": "«Recorda, doncs», va dir l'ermità, «que només hi ha un moment que és important—l'Ara! És el moment més important perquè és l'únic moment en què tenim algun poder; i la persona més necessària és aquella amb qui ara estàs tractant, perquè ningú no pot saber si mai tindrà tractes amb cap altra persona; i l'afer més important és fer-li el bé, perquè només amb aquest propòsit va ser enviat l'home a aquesta vida.»",
+      "title": "Tres preguntes",
+      "tts": {
+        "text": "Recorda, doncs, va dir l'ermità, que només hi ha un moment que és important, l'Ara! És el moment més important perquè és l'únic moment en què tenim algun poder; i la persona més necessària és aquella amb qui ara estàs tractant, perquè ningú no pot saber si mai tindrà tractes amb cap altra persona; i l'afer més important és fer-li el bé, perquè només amb aquest propòsit va ser enviat l'home a aquesta vida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "nl",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Een woord vooraf",
+      "text_markdown": "Een woord vooraf"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is het verhaal van de motor.",
+      "text_markdown": "Dit is het verhaal van de motor.",
+      "tts": {
+        "text": "Dit is het verhaal van de motor.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is een waar verhaal.",
+      "text_markdown": "Het is een waar verhaal.",
+      "tts": {
+        "text": "Het is een waar verhaal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lang geleden had niemand een motor.",
+      "text_markdown": "Lang geleden had niemand een motor.",
+      "tts": {
+        "text": "Lang geleden had niemand een motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nu zijn er miljoenen.",
+      "text_markdown": "Nu zijn er miljoenen.",
+      "tts": {
+        "text": "Nu zijn er miljoenen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze zijn luid en snel en glanzend.",
+      "text_markdown": "Ze zijn luid en snel en glanzend.",
+      "tts": {
+        "text": "Ze zijn luid en snel en glanzend.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We gaan helemaal aan het begin beginnen.",
+      "text_markdown": "We gaan helemaal aan het begin beginnen.",
+      "tts": {
+        "text": "We gaan helemaal aan het begin beginnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "We ontmoeten de eerste bouwer, de eerste rijders en de eerste races.",
+      "text_markdown": "We ontmoeten de eerste bouwer, de eerste rijders en de eerste races.",
+      "tts": {
+        "text": "We ontmoeten de eerste bouwer, de eerste rijders en de eerste races.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daarna kijken we naar de wereld van vandaag.",
+      "text_markdown": "Daarna kijken we naar de wereld van vandaag.",
+      "tts": {
+        "text": "Daarna kijken we naar de wereld van vandaag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Een woord vooraf",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aan het eind weet je hoe deze kleine machine de weg voor altijd heeft veranderd.",
+      "text_markdown": "Aan het eind weet je hoe deze kleine machine de weg voor altijd heeft veranderd.",
+      "tts": {
+        "text": "Aan het eind weet je hoe deze kleine machine de weg voor altijd heeft veranderd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "text_markdown": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een motor is een fiets met een motor.",
+      "text_markdown": "Een motor is een fiets met een motor.",
+      "tts": {
+        "text": "Een motor is een fiets met een motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De motor duwt de wielen voort.",
+      "text_markdown": "De motor duwt de wielen voort.",
+      "tts": {
+        "text": "De motor duwt de wielen voort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De rijder hoeft niet te trappen.",
+      "text_markdown": "De rijder hoeft niet te trappen.",
+      "tts": {
+        "text": "De rijder hoeft niet te trappen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lang geleden waren er geen motoren.",
+      "text_markdown": "Lang geleden waren er geen motoren.",
+      "tts": {
+        "text": "Lang geleden waren er geen motoren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mensen reden op paarden.",
+      "text_markdown": "Mensen reden op paarden.",
+      "tts": {
+        "text": "Mensen reden op paarden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mensen reden op fietsen.",
+      "text_markdown": "Mensen reden op fietsen.",
+      "tts": {
+        "text": "Mensen reden op fietsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een fiets heeft twee wielen en geen motor.",
+      "text_markdown": "Een fiets heeft twee wielen en geen motor.",
+      "tts": {
+        "text": "Een fiets heeft twee wielen en geen motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je moet de pedalen met je voeten ronddraaien.",
+      "text_markdown": "Je moet de pedalen met je voeten ronddraaien.",
+      "tts": {
+        "text": "Je moet de pedalen met je voeten ronddraaien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het jaar 1885 had een man in Duitsland een groot idee.",
+      "text_markdown": "In het jaar 1885 had een man in Duitsland een groot idee.",
+      "tts": {
+        "text": "In het jaar achttien vijfentachtig had een man in Duitsland een groot idee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij heette Gottlieb Daimler.",
+      "text_markdown": "Hij heette Gottlieb Daimler.",
+      "tts": {
+        "text": "Hij heette Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij nam een kleine benzinemotor en zette die op een houten fiets.",
+      "text_markdown": "Hij nam een kleine benzinemotor en zette die op een houten fiets.",
+      "tts": {
+        "text": "Hij nam een kleine benzinemotor en zette die op een houten fiets.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij noemde zijn machine de Reitwagen.",
+      "text_markdown": "Hij noemde zijn machine de Reitwagen.",
+      "tts": {
+        "text": "Hij noemde zijn machine de Reit Vagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het woord betekent in het Duits \"rijwagen\".",
+      "text_markdown": "Het woord betekent in het Duits \"rijwagen\".",
+      "tts": {
+        "text": "Het woord betekent in het Duits \"rijwagen\".",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het was de eerste motor ter wereld.",
+      "text_markdown": "Het was de eerste motor ter wereld.",
+      "tts": {
+        "text": "Het was de eerste motor ter wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Reitwagen was luid.",
+      "text_markdown": "De Reitwagen was luid.",
+      "tts": {
+        "text": "De Reit Vagen was luid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij hobbelde.",
+      "text_markdown": "Hij hobbelde.",
+      "tts": {
+        "text": "Hij hobbelde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij had maar één snelheid.",
+      "text_markdown": "Hij had maar één snelheid.",
+      "tts": {
+        "text": "Hij had maar één snelheid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij kon ongeveer 7 mijl per uur rijden.",
+      "text_markdown": "Hij kon ongeveer 7 mijl per uur rijden.",
+      "tts": {
+        "text": "Hij kon ongeveer zeven mijl per uur rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dat is langzamer dan iemand op een fiets vandaag.",
+      "text_markdown": "Dat is langzamer dan iemand op een fiets vandaag.",
+      "tts": {
+        "text": "Dat is langzamer dan iemand op een fiets vandaag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Maar hij kon rijden zonder paard, en hij kon rijden zonder pedalen.",
+      "text_markdown": "Maar hij kon rijden zonder paard, en hij kon rijden zonder pedalen.",
+      "tts": {
+        "text": "Maar hij kon rijden zonder paard, en hij kon rijden zonder pedalen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Hoofdstuk 1 — De eerste tweewieler die vroem maakte",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De motor was geboren.",
+      "text_markdown": "De motor was geboren.",
+      "tts": {
+        "text": "De motor was geboren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 2 — De eerste merken",
+      "text_markdown": "Hoofdstuk 2 — De eerste merken"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na Daimler wilden ook andere mensen motoren bouwen.",
+      "text_markdown": "Na Daimler wilden ook andere mensen motoren bouwen.",
+      "tts": {
+        "text": "Na Daimler wilden ook andere mensen motoren bouwen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Al snel openden er kleine werkplaatsen overal ter wereld.",
+      "text_markdown": "Al snel openden er kleine werkplaatsen overal ter wereld.",
+      "tts": {
+        "text": "Al snel openden er kleine werkplaatsen overal ter wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Engeland startte een man genaamd Siegfried Bettmann een merk dat Triumph heet.",
+      "text_markdown": "In Engeland startte een man genaamd Siegfried Bettmann een merk dat Triumph heet.",
+      "tts": {
+        "text": "In Engeland startte een man genaamd Siegfried Bettmann een merk dat Triumph heet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De eerste Triumph motor werd gebouwd in het jaar 1902.",
+      "text_markdown": "De eerste Triumph motor werd gebouwd in het jaar 1902.",
+      "tts": {
+        "text": "De eerste Triumph motor werd gebouwd in het jaar negentien twee.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Amerika bouwden twee vrienden, William Harley en Arthur Davidson, hun eerste motor in een klein houten schuurtje.",
+      "text_markdown": "In Amerika bouwden twee vrienden, William Harley en Arthur Davidson, hun eerste motor in een klein houten schuurtje.",
+      "tts": {
+        "text": "In Amerika bouwden twee vrienden, William Harley en Arthur Davidson, hun eerste motor in een klein houten schuurtje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het schuurtje stond in de stad Milwaukee.",
+      "text_markdown": "Het schuurtje stond in de stad Milwaukee.",
+      "tts": {
+        "text": "Het schuurtje stond in de stad Milwaukee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het jaar was 1903.",
+      "text_markdown": "Het jaar was 1903.",
+      "tts": {
+        "text": "Het jaar was negentien drie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze noemden het merk Harley-Davidson.",
+      "text_markdown": "Ze noemden het merk Harley-Davidson.",
+      "tts": {
+        "text": "Ze noemden het merk Harley Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een ander Amerikaans merk begon een paar jaar eerder.",
+      "text_markdown": "Een ander Amerikaans merk begon een paar jaar eerder.",
+      "tts": {
+        "text": "Een ander Amerikaans merk begon een paar jaar eerder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Twee mannen in Springfield, Massachusetts, bouwden hun eerste machine in 1901.",
+      "text_markdown": "Twee mannen in Springfield, Massachusetts, bouwden hun eerste machine in 1901.",
+      "tts": {
+        "text": "Twee mannen in Springfield, Massachusetts, bouwden hun eerste machine in negentien een.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze noemden hem de Indian.",
+      "text_markdown": "Ze noemden hem de Indian.",
+      "tts": {
+        "text": "Ze noemden hem de Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In India begon een merk dat Royal Enfield heet ook in 1901 met motoren bouwen.",
+      "text_markdown": "In India begon een merk dat Royal Enfield heet ook in 1901 met motoren bouwen.",
+      "tts": {
+        "text": "In India begon een merk dat Royal Enfield heet ook in negentien een met motoren bouwen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vandaag is Royal Enfield het oudste motormerk ter wereld dat nog steeds motoren bouwt.",
+      "text_markdown": "Vandaag is Royal Enfield het oudste motormerk ter wereld dat nog steeds motoren bouwt.",
+      "tts": {
+        "text": "Vandaag is Royal Enfield het oudste motormerk ter wereld dat nog steeds motoren bouwt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Duitsland begon het merk BMW iets later met motoren bouwen, in 1923.",
+      "text_markdown": "In Duitsland begon het merk BMW iets later met motoren bouwen, in 1923.",
+      "tts": {
+        "text": "In Duitsland begon het merk Bee Em Vee iets later met motoren bouwen, in negentien drie en twintig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW betekent in het Duits \"Bayerische Motoren Werke\".",
+      "text_markdown": "BMW betekent in het Duits \"Bayerische Motoren Werke\".",
+      "tts": {
+        "text": "Bee Em Vee betekent in het Duits \"Bayerische Motoren Werke\".",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het jaar 1910 waren motoren overal.",
+      "text_markdown": "In het jaar 1910 waren motoren overal.",
+      "tts": {
+        "text": "In het jaar negentien tien waren motoren overal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze waren op straten in de stad en op landwegen.",
+      "text_markdown": "Ze waren op straten in de stad en op landwegen.",
+      "tts": {
+        "text": "Ze waren op straten in de stad en op landwegen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Hoofdstuk 2 — De eerste merken",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het tijdperk van de motor was echt begonnen.",
+      "text_markdown": "Het tijdperk van de motor was echt begonnen.",
+      "tts": {
+        "text": "Het tijdperk van de motor was echt begonnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "text_markdown": "Hoofdstuk 3 — Motoren gaan naar de oorlog"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motoren zijn snel.",
+      "text_markdown": "Motoren zijn snel.",
+      "tts": {
+        "text": "Motoren zijn snel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze passen op kleine paadjes.",
+      "text_markdown": "Ze passen op kleine paadjes.",
+      "tts": {
+        "text": "Ze passen op kleine paadjes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze kunnen berichten tussen kampen brengen.",
+      "text_markdown": "Ze kunnen berichten tussen kampen brengen.",
+      "tts": {
+        "text": "Ze kunnen berichten tussen kampen brengen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dus toen er oorlogen kwamen, wilden legers motoren.",
+      "text_markdown": "Dus toen er oorlogen kwamen, wilden legers motoren.",
+      "tts": {
+        "text": "Dus toen er oorlogen kwamen, wilden legers motoren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Eerste Wereldoorlog begon in 1914.",
+      "text_markdown": "De Eerste Wereldoorlog begon in 1914.",
+      "tts": {
+        "text": "De Eerste Wereldoorlog begon in negentien veertien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Soldaten gebruikten Triumph motoren om bevelen te brengen.",
+      "text_markdown": "Soldaten gebruikten Triumph motoren om bevelen te brengen.",
+      "tts": {
+        "text": "Soldaten gebruikten Triumph motoren om bevelen te brengen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Triumph Model H was sterk en stil.",
+      "text_markdown": "De Triumph Model H was sterk en stil.",
+      "tts": {
+        "text": "De Triumph Model H was sterk en stil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij kon gaan waar paarden niet konden komen.",
+      "text_markdown": "Hij kon gaan waar paarden niet konden komen.",
+      "tts": {
+        "text": "Hij kon gaan waar paarden niet konden komen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Tweede Wereldoorlog begon in 1939.",
+      "text_markdown": "De Tweede Wereldoorlog begon in 1939.",
+      "tts": {
+        "text": "De Tweede Wereldoorlog begon in negentien negen en dertig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toen waren motoren al sneller en sterker.",
+      "text_markdown": "Toen waren motoren al sneller en sterker.",
+      "tts": {
+        "text": "Toen waren motoren al sneller en sterker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikaanse soldaten reden op de Harley-Davidson WLA.",
+      "text_markdown": "Amerikaanse soldaten reden op de Harley-Davidson WLA.",
+      "tts": {
+        "text": "Amerikaanse soldaten reden op de Harley Davidson Vee El Aa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Duitse soldaten reden op de BMW R75.",
+      "text_markdown": "Duitse soldaten reden op de BMW R75.",
+      "tts": {
+        "text": "Duitse soldaten reden op de Bee Em Vee R vijf en zeventig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De R75 had een zijspan met een derde wiel en een zitplaats voor nog een soldaat.",
+      "text_markdown": "De R75 had een zijspan met een derde wiel en een zitplaats voor nog een soldaat.",
+      "tts": {
+        "text": "De R vijf en zeventig had een zijspan met een derde wiel en een zitplaats voor nog een soldaat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na de oorlog kwamen de soldaten naar huis.",
+      "text_markdown": "Na de oorlog kwamen de soldaten naar huis.",
+      "tts": {
+        "text": "Na de oorlog kwamen de soldaten naar huis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze namen hun motoren mee.",
+      "text_markdown": "Ze namen hun motoren mee.",
+      "tts": {
+        "text": "Ze namen hun motoren mee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Velen van hen wilden blijven rijden.",
+      "text_markdown": "Velen van hen wilden blijven rijden.",
+      "tts": {
+        "text": "Velen van hen wilden blijven rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sommigen begonnen hun eigen motorclubs.",
+      "text_markdown": "Sommigen begonnen hun eigen motorclubs.",
+      "tts": {
+        "text": "Sommigen begonnen hun eigen motorclubs.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oorlogen maakten de motor beroemd.",
+      "text_markdown": "De oorlogen maakten de motor beroemd.",
+      "tts": {
+        "text": "De oorlogen maakten de motor beroemd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miljoenen mensen hadden er voor het eerst een gezien.",
+      "text_markdown": "Miljoenen mensen hadden er voor het eerst een gezien.",
+      "tts": {
+        "text": "Miljoenen mensen hadden er voor het eerst een gezien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Hoofdstuk 3 — Motoren gaan naar de oorlog",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Velen wilden er zelf een.",
+      "text_markdown": "Velen wilden er zelf een.",
+      "tts": {
+        "text": "Velen wilden er zelf een.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 4 — Japan komt op",
+      "text_markdown": "Hoofdstuk 4 — Japan komt op"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na de Tweede Wereldoorlog was Japan arm.",
+      "text_markdown": "Na de Tweede Wereldoorlog was Japan arm.",
+      "tts": {
+        "text": "Na de Tweede Wereldoorlog was Japan arm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De meeste auto's waren te duur.",
+      "text_markdown": "De meeste auto's waren te duur.",
+      "tts": {
+        "text": "De meeste auto's waren te duur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mensen hadden een kleine, goedkope manier nodig om zich te verplaatsen.",
+      "text_markdown": "Mensen hadden een kleine, goedkope manier nodig om zich te verplaatsen.",
+      "tts": {
+        "text": "Mensen hadden een kleine, goedkope manier nodig om zich te verplaatsen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een jonge Japanner zag de kans.",
+      "text_markdown": "Een jonge Japanner zag de kans.",
+      "tts": {
+        "text": "Een jonge Japanner zag de kans.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij heette Soichiro Honda.",
+      "text_markdown": "Hij heette Soichiro Honda.",
+      "tts": {
+        "text": "Hij heette Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij begon een klein merk in 1948.",
+      "text_markdown": "Hij begon een klein merk in 1948.",
+      "tts": {
+        "text": "Hij begon een klein merk in negentien acht en veertig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij noemde het Honda.",
+      "text_markdown": "Hij noemde het Honda.",
+      "tts": {
+        "text": "Hij noemde het Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1958 bouwde Honda een kleine motor die de Super Cub heette.",
+      "text_markdown": "In 1958 bouwde Honda een kleine motor die de Super Cub heette.",
+      "tts": {
+        "text": "In negentien acht en vijftig bouwde Honda een kleine motor die de Super Cub heette.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Super Cub was makkelijk te rijden.",
+      "text_markdown": "De Super Cub was makkelijk te rijden.",
+      "tts": {
+        "text": "De Super Cub was makkelijk te rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij was makkelijk te repareren.",
+      "text_markdown": "Hij was makkelijk te repareren.",
+      "tts": {
+        "text": "Hij was makkelijk te repareren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij was heel, heel goedkoop.",
+      "text_markdown": "Hij was heel, heel goedkoop.",
+      "tts": {
+        "text": "Hij was heel, heel goedkoop.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen over de hele wereld kochten de Super Cub.",
+      "text_markdown": "Mensen over de hele wereld kochten de Super Cub.",
+      "tts": {
+        "text": "Mensen over de hele wereld kochten de Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vandaag zijn er meer dan 100 miljoen Super Cubs verkocht.",
+      "text_markdown": "Vandaag zijn er meer dan 100 miljoen Super Cubs verkocht.",
+      "tts": {
+        "text": "Vandaag zijn er meer dan honderd miljoen Super Cubs verkocht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het is het bestverkochte motorvoertuig aller tijden.",
+      "text_markdown": "Het is het bestverkochte motorvoertuig aller tijden.",
+      "tts": {
+        "text": "Het is het bestverkochte motorvoertuig aller tijden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al snel volgden drie andere Japanse merken Honda.",
+      "text_markdown": "Al snel volgden drie andere Japanse merken Honda.",
+      "tts": {
+        "text": "Al snel volgden drie andere Japanse merken Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het waren Yamaha, Suzuki en Kawasaki.",
+      "text_markdown": "Het waren Yamaha, Suzuki en Kawasaki.",
+      "tts": {
+        "text": "Het waren Yamaha, Suzuki en Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Samen met Honda heten ze de Grote Vier.",
+      "text_markdown": "Samen met Honda heten ze de Grote Vier.",
+      "tts": {
+        "text": "Samen met Honda heten ze de Grote Vier.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Grote Vier maakten motoren die snel, goedkoop en makkelijk te rijden waren.",
+      "text_markdown": "De Grote Vier maakten motoren die snel, goedkoop en makkelijk te rijden waren.",
+      "tts": {
+        "text": "De Grote Vier maakten motoren die snel, goedkoop en makkelijk te rijden waren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In de jaren 1960 waren Japanse motoren overal.",
+      "text_markdown": "In de jaren 1960 waren Japanse motoren overal.",
+      "tts": {
+        "text": "In de jaren zestig waren Japanse motoren overal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Hoofdstuk 4 — Japan komt op",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze waren de nieuwe koningen van de weg.",
+      "text_markdown": "Ze waren de nieuwe koningen van de weg.",
+      "tts": {
+        "text": "Ze waren de nieuwe koningen van de weg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "text_markdown": "Hoofdstuk 5 — Sneller, sneller, sneller"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de jaren 1960 wilden rijders sneller gaan.",
+      "text_markdown": "In de jaren 1960 wilden rijders sneller gaan.",
+      "tts": {
+        "text": "In de jaren zestig wilden rijders sneller gaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bouwers begonnen een race om de snelste motor ter wereld te maken.",
+      "text_markdown": "Bouwers begonnen een race om de snelste motor ter wereld te maken.",
+      "tts": {
+        "text": "Bouwers begonnen een race om de snelste motor ter wereld te maken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Italië bouwde een klein merk dat MV Agusta heet prachtige rode motoren die race na race wonnen.",
+      "text_markdown": "In Italië bouwde een klein merk dat MV Agusta heet prachtige rode motoren die race na race wonnen.",
+      "tts": {
+        "text": "In Italië bouwde een klein merk dat Em Vee Agusta heet prachtige rode motoren die race na race wonnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In Engeland bouwden Triumph en Norton ook krachtige machines.",
+      "text_markdown": "In Engeland bouwden Triumph en Norton ook krachtige machines.",
+      "tts": {
+        "text": "In Engeland bouwden Triumph en Norton ook krachtige machines.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toen, in 1969, deed Honda iets verbazingwekkends.",
+      "text_markdown": "Toen, in 1969, deed Honda iets verbazingwekkends.",
+      "tts": {
+        "text": "Toen, in negentien negen en zestig, deed Honda iets verbazingwekkends.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze bouwden een motor die de CB 750 heette.",
+      "text_markdown": "Ze bouwden een motor die de CB 750 heette.",
+      "tts": {
+        "text": "Ze bouwden een motor die de C B zevenhonderd vijftig heette.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij had vier cilinders en een grote motor.",
+      "text_markdown": "Hij had vier cilinders en een grote motor.",
+      "tts": {
+        "text": "Hij had vier cilinders en een grote motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij kon meer dan 120 mijl per uur rijden.",
+      "text_markdown": "Hij kon meer dan 120 mijl per uur rijden.",
+      "tts": {
+        "text": "Hij kon meer dan honderd twintig mijl per uur rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het was de eerste echte superbike.",
+      "text_markdown": "Het was de eerste echte superbike.",
+      "tts": {
+        "text": "Het was de eerste echte superbike.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na de CB 750 wilde elk merk een superbike bouwen.",
+      "text_markdown": "Na de CB 750 wilde elk merk een superbike bouwen.",
+      "tts": {
+        "text": "Na de C B zevenhonderd vijftig wilde elk merk een superbike bouwen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De motoren werden sneller en sneller.",
+      "text_markdown": "De motoren werden sneller en sneller.",
+      "tts": {
+        "text": "De motoren werden sneller en sneller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Al gauw hadden ze felle stroomlijnkappen, de gladde plastic schalen die door de wind sneden.",
+      "text_markdown": "Al gauw hadden ze felle stroomlijnkappen, de gladde plastic schalen die door de wind sneden.",
+      "tts": {
+        "text": "Al gauw hadden ze felle stroomlijnkappen, de gladde plastic schalen die door de wind sneden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In 1990 werd een Japanse motor die de Kawasaki ZX-11 heette de snelste motor ter wereld.",
+      "text_markdown": "In 1990 werd een Japanse motor die de Kawasaki ZX-11 heette de snelste motor ter wereld.",
+      "tts": {
+        "text": "In negentien negentig werd een Japanse motor die de Kawasaki Z X elf heette de snelste motor ter wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij kon bijna 175 mijl per uur rijden.",
+      "text_markdown": "Hij kon bijna 175 mijl per uur rijden.",
+      "tts": {
+        "text": "Hij kon bijna honderd vijf en zeventig mijl per uur rijden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een paar jaar later ging de Suzuki Hayabusa nog sneller.",
+      "text_markdown": "Een paar jaar later ging de Suzuki Hayabusa nog sneller.",
+      "tts": {
+        "text": "Een paar jaar later ging de Suzuki Hayabusa nog sneller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij haalde 194 mijl per uur.",
+      "text_markdown": "Hij haalde 194 mijl per uur.",
+      "tts": {
+        "text": "Hij haalde honderd vier en negentig mijl per uur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hoofdstuk 5 — Sneller, sneller, sneller",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dat is sneller dan de meeste auto's op de weg vandaag.",
+      "text_markdown": "Dat is sneller dan de meeste auto's op de weg vandaag.",
+      "tts": {
+        "text": "Dat is sneller dan de meeste auto's op de weg vandaag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 6 — Veel soorten motoren",
+      "text_markdown": "Hoofdstuk 6 — Veel soorten motoren"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vandaag komen motoren in veel vormen.",
+      "text_markdown": "Vandaag komen motoren in veel vormen.",
+      "tts": {
+        "text": "Vandaag komen motoren in veel vormen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elke soort is gebouwd voor een ander doel.",
+      "text_markdown": "Elke soort is gebouwd voor een ander doel.",
+      "tts": {
+        "text": "Elke soort is gebouwd voor een ander doel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een sportmotor is gebouwd om heel snel te gaan.",
+      "text_markdown": "Een sportmotor is gebouwd om heel snel te gaan.",
+      "tts": {
+        "text": "Een sportmotor is gebouwd om heel snel te gaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij is licht en laag.",
+      "text_markdown": "Hij is licht en laag.",
+      "tts": {
+        "text": "Hij is licht en laag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De rijder leunt naar voren.",
+      "text_markdown": "De rijder leunt naar voren.",
+      "tts": {
+        "text": "De rijder leunt naar voren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sportmotoren zijn gemaakt voor gladde wegen en racebanen.",
+      "text_markdown": "Sportmotoren zijn gemaakt voor gladde wegen en racebanen.",
+      "tts": {
+        "text": "Sportmotoren zijn gemaakt voor gladde wegen en racebanen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een crossmotor is gebouwd voor modder en zand.",
+      "text_markdown": "Een crossmotor is gebouwd voor modder en zand.",
+      "tts": {
+        "text": "Een crossmotor is gebouwd voor modder en zand.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij heeft hoge wielen en grote banden.",
+      "text_markdown": "Hij heeft hoge wielen en grote banden.",
+      "tts": {
+        "text": "Hij heeft hoge wielen en grote banden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Crossmotoren kunnen over heuvels springen.",
+      "text_markdown": "Crossmotoren kunnen over heuvels springen.",
+      "tts": {
+        "text": "Crossmotoren kunnen over heuvels springen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Veel jonge rijders leren eerst op crossmotoren.",
+      "text_markdown": "Veel jonge rijders leren eerst op crossmotoren.",
+      "tts": {
+        "text": "Veel jonge rijders leren eerst op crossmotoren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een cruiser is lang en laag.",
+      "text_markdown": "Een cruiser is lang en laag.",
+      "tts": {
+        "text": "Een cruiser is lang en laag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De rijder zit rechtop en rijdt rustig.",
+      "text_markdown": "De rijder zit rechtop en rijdt rustig.",
+      "tts": {
+        "text": "De rijder zit rechtop en rijdt rustig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson is beroemd om cruisers.",
+      "text_markdown": "Harley-Davidson is beroemd om cruisers.",
+      "tts": {
+        "text": "Harley Davidson is beroemd om cruisers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Indian ook.",
+      "text_markdown": "Indian ook.",
+      "tts": {
+        "text": "Indian ook.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een avonturenmotor is gebouwd voor lange tochten.",
+      "text_markdown": "Een avonturenmotor is gebouwd voor lange tochten.",
+      "tts": {
+        "text": "Een avonturenmotor is gebouwd voor lange tochten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij kan op de weg en op zand rijden.",
+      "text_markdown": "Hij kan op de weg en op zand rijden.",
+      "tts": {
+        "text": "Hij kan op de weg en op zand rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De BMW GS is een beroemde avonturenmotor.",
+      "text_markdown": "De BMW GS is een beroemde avonturenmotor.",
+      "tts": {
+        "text": "De Bee Em Vee Gee Es is een beroemde avonturenmotor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De KTM ook.",
+      "text_markdown": "De KTM ook.",
+      "tts": {
+        "text": "De Kaa Tee Em ook.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn ook chopperbikes, scootermotoren, racemotoren en elektrische motoren.",
+      "text_markdown": "Er zijn ook chopperbikes, scootermotoren, racemotoren en elektrische motoren.",
+      "tts": {
+        "text": "Er zijn ook chopperbikes, scootermotoren, racemotoren en elektrische motoren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er is een motor voor bijna elke soort weg.",
+      "text_markdown": "Er is een motor voor bijna elke soort weg.",
+      "tts": {
+        "text": "Er is een motor voor bijna elke soort weg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Hoofdstuk 6 — Veel soorten motoren",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vandaag vind je in elk land ter wereld een motor.",
+      "text_markdown": "Vandaag vind je in elk land ter wereld een motor.",
+      "tts": {
+        "text": "Vandaag vind je in elk land ter wereld een motor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 7 — Een nieuwe weg",
+      "text_markdown": "Hoofdstuk 7 — Een nieuwe weg"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vandaag heeft de motor een nieuw soort motor.",
+      "text_markdown": "Vandaag heeft de motor een nieuw soort motor.",
+      "tts": {
+        "text": "Vandaag heeft de motor een nieuw soort motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is de elektrische motor.",
+      "text_markdown": "Het is de elektrische motor.",
+      "tts": {
+        "text": "Het is de elektrische motor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een elektrische motor is stil.",
+      "text_markdown": "Een elektrische motor is stil.",
+      "tts": {
+        "text": "Een elektrische motor is stil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij heeft geen benzine nodig.",
+      "text_markdown": "Hij heeft geen benzine nodig.",
+      "tts": {
+        "text": "Hij heeft geen benzine nodig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hij hoeft alleen aan de stekker, net als een telefoon.",
+      "text_markdown": "Hij hoeft alleen aan de stekker, net als een telefoon.",
+      "tts": {
+        "text": "Hij hoeft alleen aan de stekker, net als een telefoon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een merk dat Zero heet bouwt elektrische motoren in Californië.",
+      "text_markdown": "Een merk dat Zero heet bouwt elektrische motoren in Californië.",
+      "tts": {
+        "text": "Een merk dat Zero heet bouwt elektrische motoren in Californië.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson bouwt nu een elektrische motor die de LiveWire heet.",
+      "text_markdown": "Harley-Davidson bouwt nu een elektrische motor die de LiveWire heet.",
+      "tts": {
+        "text": "Harley Davidson bouwt nu een elektrische motor die de LiveWire heet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een Italiaans merk dat Energica heet bouwt elektrische racemotoren.",
+      "text_markdown": "Een Italiaans merk dat Energica heet bouwt elektrische racemotoren.",
+      "tts": {
+        "text": "Een Italiaans merk dat Energica heet bouwt elektrische racemotoren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze zijn heel snel.",
+      "text_markdown": "Ze zijn heel snel.",
+      "tts": {
+        "text": "Ze zijn heel snel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste motor, de Reitwagen, kon 7 mijl per uur rijden.",
+      "text_markdown": "De eerste motor, de Reitwagen, kon 7 mijl per uur rijden.",
+      "tts": {
+        "text": "De eerste motor, de Reit Vagen, kon zeven mijl per uur rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De elektrische motoren van vandaag kunnen meer dan 200 mijl per uur rijden.",
+      "text_markdown": "De elektrische motoren van vandaag kunnen meer dan 200 mijl per uur rijden.",
+      "tts": {
+        "text": "De elektrische motoren van vandaag kunnen meer dan tweehonderd mijl per uur rijden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dat is het verhaal van de motor tot nu toe.",
+      "text_markdown": "Dat is het verhaal van de motor tot nu toe.",
+      "tts": {
+        "text": "Dat is het verhaal van de motor tot nu toe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit was het grote verhaal.",
+      "text_markdown": "Dit was het grote verhaal.",
+      "tts": {
+        "text": "Dit was het grote verhaal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De volgende elf boeken vertellen de kleine verhalen.",
+      "text_markdown": "De volgende elf boeken vertellen de kleine verhalen.",
+      "tts": {
+        "text": "De volgende elf boeken vertellen de kleine verhalen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elk boek gaat over één deel van de motorwereld.",
+      "text_markdown": "Elk boek gaat over één deel van de motorwereld.",
+      "tts": {
+        "text": "Elk boek gaat over één deel van de motorwereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Boek twee gaat over Harley-Davidson.",
+      "text_markdown": "Boek twee gaat over Harley-Davidson.",
+      "tts": {
+        "text": "Boek twee gaat over Harley Davidson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Boek drie gaat over Honda.",
+      "text_markdown": "Boek drie gaat over Honda.",
+      "tts": {
+        "text": "Boek drie gaat over Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Boek vier gaat over Ducati uit Italië.",
+      "text_markdown": "Boek vier gaat over Ducati uit Italië.",
+      "tts": {
+        "text": "Boek vier gaat over Ducati uit Italië.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Boek vijf gaat over BMW uit Duitsland.",
+      "text_markdown": "Boek vijf gaat over BMW uit Duitsland.",
+      "tts": {
+        "text": "Boek vijf gaat over Bee Em Vee uit Duitsland.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Boek zes gaat over Triumph uit Engeland.",
+      "text_markdown": "Boek zes gaat over Triumph uit Engeland.",
+      "tts": {
+        "text": "Boek zes gaat over Triumph uit Engeland.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Boek zeven gaat over crossmotoren.",
+      "text_markdown": "Boek zeven gaat over crossmotoren.",
+      "tts": {
+        "text": "Boek zeven gaat over crossmotoren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Boek acht gaat over sportmotoren.",
+      "text_markdown": "Boek acht gaat over sportmotoren.",
+      "tts": {
+        "text": "Boek acht gaat over sportmotoren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Boek negen gaat over cruisers en choppers.",
+      "text_markdown": "Boek negen gaat over cruisers en choppers.",
+      "tts": {
+        "text": "Boek negen gaat over cruisers en choppers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Boek tien gaat over avonturenmotoren.",
+      "text_markdown": "Boek tien gaat over avonturenmotoren.",
+      "tts": {
+        "text": "Boek tien gaat over avonturenmotoren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Boek elf gaat over racen.",
+      "text_markdown": "Boek elf gaat over racen.",
+      "tts": {
+        "text": "Boek elf gaat over racen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Boek twaalf gaat over elektrische motoren en de toekomst.",
+      "text_markdown": "Boek twaalf gaat over elektrische motoren en de toekomst.",
+      "tts": {
+        "text": "Boek twaalf gaat over elektrische motoren en de toekomst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kies het boek dat jou het leukst lijkt.",
+      "text_markdown": "Kies het boek dat jou het leukst lijkt.",
+      "tts": {
+        "text": "Kies het boek dat jou het leukst lijkt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Hoofdstuk 7 — Een nieuwe weg",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Stap dan in en kom mee voor de rit.",
+      "text_markdown": "Stap dan in en kom mee voor de rit.",
+      "tts": {
+        "text": "Stap dan in en kom mee voor de rit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Over dit boek",
+      "text_markdown": "Over dit boek"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is het eerste boek in de Motoren-reeks.",
+      "text_markdown": "Dit is het eerste boek in de Motoren-reeks.",
+      "tts": {
+        "text": "Dit is het eerste boek in de Motoren reeks.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het wordt voorgelezen door August.",
+      "text_markdown": "Het wordt voorgelezen door August.",
+      "tts": {
+        "text": "Het wordt voorgelezen door August.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elke zin is kort en duidelijk, zodat je in elke taal kunt meelezen.",
+      "text_markdown": "Elke zin is kort en duidelijk, zodat je in elke taal kunt meelezen.",
+      "tts": {
+        "text": "Elke zin is kort en duidelijk, zodat je in elke taal kunt meelezen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je wilt horen hoe een zin in een andere taal klinkt, luister dan naar hetzelfde boek in die taal.",
+      "text_markdown": "Als je wilt horen hoe een zin in een andere taal klinkt, luister dan naar hetzelfde boek in die taal.",
+      "tts": {
+        "text": "Als je wilt horen hoe een zin in een andere taal klinkt, luister dan naar hetzelfde boek in die taal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De woorden op de bladzijde komen overeen met wat je hoort.",
+      "text_markdown": "De woorden op de bladzijde komen overeen met wat je hoort.",
+      "tts": {
+        "text": "De woorden op de bladzijde komen overeen met wat je hoort.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zo leer je het.",
+      "text_markdown": "Zo leer je het.",
+      "tts": {
+        "text": "Zo leer je het.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Over dit boek",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ga nu een motor zoeken en luister hoe hij vroem doet.",
+      "text_markdown": "Ga nu een motor zoeken en luister hoe hij vroem doet.",
+      "tts": {
+        "text": "Ga nu een motor zoeken en luister hoe hij vroem doet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

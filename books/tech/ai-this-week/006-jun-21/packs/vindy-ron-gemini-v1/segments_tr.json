@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "tr",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "AI Bu Hafta'ya hoş geldiniz.",
+      "text_markdown": "AI Bu Hafta'ya hoş geldiniz.",
+      "title": "",
+      "tts": {
+        "text": "AI Bu Hafta'ya hoş geldiniz.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "Ben Vindy.",
+      "text_markdown": "Ben Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ben Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "Yanımda, her zamanki gibi, Ron var.",
+      "text_markdown": "Yanımda, her zamanki gibi, Ron var.",
+      "title": "",
+      "tts": {
+        "text": "Yanımda, her zamanki gibi, Ron var.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "Burada olmak güzel, Vindy.",
+      "text_markdown": "Burada olmak güzel, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Burada olmak güzel, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "Bugün 21 Haziran 2026 Pazar.",
+      "text_markdown": "Bugün 21 Haziran 2026 Pazar.",
+      "title": "",
+      "tts": {
+        "text": "Bugün yirmi bir Haziran iki bin yirmi altı Pazar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "Geçen hafta kendimizden bahsetmiştik; bugün diğer yöne gidiyoruz — ta güç merkezlerine kadar.",
+      "text_markdown": "Geçen hafta kendimizden bahsetmiştik; bugün diğer yöne gidiyoruz — ta güç merkezlerine kadar.",
+      "title": "",
+      "tts": {
+        "text": "Geçen hafta kendimizden bahsetmiştik; bugün diğer yöne gidiyoruz — ta güç merkezlerine kadar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "Yapay zeka dağıtımını kim kontrol ediyor, altyapı kurulumunu kim ödüyor, silikonun sahibi kim.",
+      "text_markdown": "Yapay zeka dağıtımını kim kontrol ediyor, altyapı kurulumunu kim ödüyor, silikonun sahibi kim.",
+      "title": "",
+      "tts": {
+        "text": "Yapay zeka dağıtımını kim kontrol ediyor, altyapı kurulumunu kim ödüyor, silikonun sahibi kim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "Sırada — ABD Ticaret Bakanlığı geçen Cuma günü bir Amerikan modelini kamusal kullanımdan çekti ve oradan başlayacağız.",
+      "text_markdown": "Sırada — ABD Ticaret Bakanlığı geçen Cuma günü bir Amerikan modelini kamusal kullanımdan çekti ve oradan başlayacağız.",
+      "title": "",
+      "tts": {
+        "text": "Sırada — ABD Ticaret Bakanlığı geçen Cuma günü bir Amerikan modelini kamusal kullanımdan çekti ve oradan başlayacağız.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "Ardından, duyuruların ve sahadaki gerçekliğin uyuşmadığı veri merkezi kurulumu.",
+      "text_markdown": "Ardından, duyuruların ve sahadaki gerçekliğin uyuşmadığı veri merkezi kurulumu.",
+      "title": "",
+      "tts": {
+        "text": "Ardından, duyuruların ve sahadaki gerçekliğin uyuşmadığı veri merkezi kurulumu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "Sonra ABD ve Çin karşılaştırması, klişenin yerini gerçek bağlayıcı kısıtlamanın aldığı bir karşılaştırma.",
+      "text_markdown": "Sonra ABD ve Çin karşılaştırması, klişenin yerini gerçek bağlayıcı kısıtlamanın aldığı bir karşılaştırma.",
+      "title": "",
+      "tts": {
+        "text": "Sonra ABD ve Çin karşılaştırması, klişenin yerini gerçek bağlayıcı kısıtlamanın aldığı bir karşılaştırma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "Ve haftanın konsepti — Oracle'ın bilançosundaki size neredeyse her şeyi anlatan tek bir satır.",
+      "text_markdown": "Ve haftanın konsepti — Oracle'ın bilançosundaki size neredeyse her şeyi anlatan tek bir satır.",
+      "title": "",
+      "tts": {
+        "text": "Ve haftanın konsepti — Oracle'ın bilançosundaki size neredeyse her şeyi anlatan tek bir satır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "Ron, Anthropic ile başlayalım.",
+      "text_markdown": "Ron, Anthropic ile başlayalım.",
+      "title": "",
+      "tts": {
+        "text": "Ron, Anthropic ile başlayalım.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "On iki Haziran'da ne oldu.",
+      "text_markdown": "On iki Haziran'da ne oldu.",
+      "title": "",
+      "tts": {
+        "text": "On iki Haziran'da ne oldu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Cuma, on iki Haziran günü Doğu saatiyle akşam beş yirmi birde, Anthropic en yeni iki modelini — Claude Mythos beş ve Claude Fable beş — çevrimdışına aldı.",
+      "text_markdown": "Cuma, on iki Haziran günü Doğu saatiyle akşam beş yirmi birde, Anthropic en yeni iki modelini — Claude Mythos beş ve Claude Fable beş — çevrimdışına aldı.",
+      "title": "",
+      "tts": {
+        "text": "Cuma, on iki Haziran günü Doğu saatiyle akşam beş yirmi birde, Anthropic en yeni iki modelini — Claude Mythos beş ve Claude Fable beş — çevrimdışına aldı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "Bakım için değil, kendi inisiyatifleriyle bir güvenlik incelemesi için de değil.",
+      "text_markdown": "Bakım için değil, kendi inisiyatifleriyle bir güvenlik incelemesi için de değil.",
+      "title": "",
+      "tts": {
+        "text": "Bakım için değil, kendi inisiyatifleriyle bir güvenlik incelemesi için de değil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "Onları kaldırdılar çünkü ABD Ticaret Bakanlığı ihracat kontrollerini gerekçe gösteren bir direktif yayınladı.",
+      "text_markdown": "Onları kaldırdılar çünkü ABD Ticaret Bakanlığı ihracat kontrollerini gerekçe gösteren bir direktif yayınladı.",
+      "title": "",
+      "tts": {
+        "text": "Onları kaldırdılar çünkü ABD Ticaret Bakanlığı ihracat kontrollerini gerekçe gösteren bir direktif yayınladı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "Teknik neden neydi.",
+      "text_markdown": "Teknik neden neydi.",
+      "title": "",
+      "tts": {
+        "text": "Teknik neden neydi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "Bildirildiğine göre başka bir şirket tarafından, Ticaret Bakanlığı'nın ihracat kontrollü kabul ettiği bir çıktı üreten bir jailbreak gösterildi.",
+      "text_markdown": "Bildirildiğine göre başka bir şirket tarafından, Ticaret Bakanlığı'nın ihracat kontrollü kabul ettiği bir çıktı üreten bir jailbreak gösterildi.",
+      "title": "",
+      "tts": {
+        "text": "Bildirildiğine göre başka bir şirket tarafından, Ticaret Bakanlığı'nın ihracat kontrollü kabul ettiği bir çıktı üreten bir jailbreak gösterildi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "Fortune, Amazon'un Beyaz Saray'ı bu konuda uyardığını bildirdi.",
+      "text_markdown": "Fortune, Amazon'un Beyaz Saray'ı bu konuda uyardığını bildirdi.",
+      "title": "",
+      "tts": {
+        "text": "Fortune, Amazon'un Beyaz Saray'ı bu konuda uyardığını bildirdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "Peki Anthropic nasıl yanıt verdi.",
+      "text_markdown": "Peki Anthropic nasıl yanıt verdi.",
+      "title": "",
+      "tts": {
+        "text": "Peki Anthropic nasıl yanıt verdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "Anthropic, gerekçeyi kamuoyu önünde tartışıyor.",
+      "text_markdown": "Anthropic, gerekçeyi kamuoyu önünde tartışıyor.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic, gerekçeyi kamuoyu önünde tartışıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "Açıklamalarında jailbreak'i — ve alıntılıyorum — \"dar, evrensel olmayan\" olarak nitelendirdiler ve aynı çıktının OpenAI'nin GPT beş nokta beş'i dahil diğer modellerden de elde edilebileceğini eklediler.",
+      "text_markdown": "Açıklamalarında jailbreak'i — ve alıntılıyorum — \"dar, evrensel olmayan\" olarak nitelendirdiler ve aynı çıktının OpenAI'nin GPT beş nokta beş'i dahil diğer modellerden de elde edilebileceğini eklediler.",
+      "title": "",
+      "tts": {
+        "text": "Açıklamalarında jailbreak'i — ve alıntılıyorum — \"dar, evrensel olmayan\" olarak nitelendirdiler ve aynı çıktının OpenAI'nin GPT beş nokta beş'i dahil diğer modellerden de elde edilebileceğini eklediler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "Özet satırları: \"hükümetin eylemi bir yanlış anlamaya dayanıyor.\"",
+      "text_markdown": "Özet satırları: \"hükümetin eylemi bir yanlış anlamaya dayanıyor.\"",
+      "title": "",
+      "tts": {
+        "text": "Özet satırları: \"hükümetin eylemi bir yanlış anlamaya dayanıyor.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "Bu, bir yapay zeka laboratuvarı için ABD hükümetiyle alışılmadık derecede doğrudan bir anlaşmazlık.",
+      "text_markdown": "Bu, bir yapay zeka laboratuvarı için ABD hükümetiyle alışılmadık derecede doğrudan bir anlaşmazlık.",
+      "title": "",
+      "tts": {
+        "text": "Bu, bir yapay zeka laboratuvarı için ABD hükümetiyle alışılmadık derecede doğrudan bir anlaşmazlık.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "Öyle, ve bunun altındaki yapısal gerçek manşet.",
+      "text_markdown": "Öyle, ve bunun altındaki yapısal gerçek manşet.",
+      "title": "",
+      "tts": {
+        "text": "Öyle, ve bunun altındaki yapısal gerçek manşet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "Ticaret Bakanlığı artık özel bir Amerikan yapay zeka laboratuvarına, ihracat kontrollerini gerekçe göstererek bir modeli çevrimdışına alma emri verebilir ve bu emir yetmiş iki saat içinde ulaşır.",
+      "text_markdown": "Ticaret Bakanlığı artık özel bir Amerikan yapay zeka laboratuvarına, ihracat kontrollerini gerekçe göstererek bir modeli çevrimdışına alma emri verebilir ve bu emir yetmiş iki saat içinde ulaşır.",
+      "title": "",
+      "tts": {
+        "text": "Ticaret Bakanlığı artık özel bir Amerikan yapay zeka laboratuvarına, ihracat kontrollerini gerekçe göstererek bir modeli çevrimdışına alma emri verebilir ve bu emir yetmiş iki saat içinde ulaşır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Emrin doğru olduğunu düşünseniz de düşünmeseniz de.",
+      "text_markdown": "Emrin doğru olduğunu düşünseniz de düşünmeseniz de.",
+      "title": "",
+      "tts": {
+        "text": "Emrin doğru olduğunu düşünseniz de düşünmeseniz de.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "Emrin doğru olduğunu düşünseniz de düşünmeseniz de.",
+      "text_markdown": "Emrin doğru olduğunu düşünseniz de düşünmeseniz de.",
+      "title": "",
+      "tts": {
+        "text": "Emrin doğru olduğunu düşünseniz de düşünmeseniz de.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "Önemli olan yetkinin kendisi, hızı ve emsalidir.",
+      "text_markdown": "Önemli olan yetkinin kendisi, hızı ve emsalidir.",
+      "title": "",
+      "tts": {
+        "text": "Önemli olan yetkinin kendisi, hızı ve emsalidir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "Ve Amazon'un buradaki rolü.",
+      "text_markdown": "Ve Amazon'un buradaki rolü.",
+      "title": "",
+      "tts": {
+        "text": "Ve Amazon'un buradaki rolü.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "İşte izlenmesi gereken kısım.",
+      "text_markdown": "İşte izlenmesi gereken kısım.",
+      "title": "",
+      "tts": {
+        "text": "İşte izlenmesi gereken kısım.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Amazon, önemli bir Anthropic yatırımcısıdır ve aynı zamanda kendi çalışmalarıyla temel model pazarında Anthropic ile rekabet etmektedir.",
+      "text_markdown": "Amazon, önemli bir Anthropic yatırımcısıdır ve aynı zamanda kendi çalışmalarıyla temel model pazarında Anthropic ile rekabet etmektedir.",
+      "title": "",
+      "tts": {
+        "text": "Amazon, önemli bir Anthropic yatırımcısıdır ve aynı zamanda kendi çalışmalarıyla temel model pazarında Anthropic ile rekabet etmektedir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "Eğer bir rakibin hükümete yaptığı uyarı, uzun bir hafta sonunda bir rakibin modelini çevrimdışı bırakabiliyorsa, bu endüstri dinamikleri için yeni bir şekildir.",
+      "text_markdown": "Eğer bir rakibin hükümete yaptığı uyarı, uzun bir hafta sonunda bir rakibin modelini çevrimdışı bırakabiliyorsa, bu endüstri dinamikleri için yeni bir şekildir.",
+      "title": "",
+      "tts": {
+        "text": "Eğer bir rakibin hükümete yaptığı uyarı, uzun bir hafta sonunda bir rakibin modelini çevrimdışı bırakabiliyorsa, bu endüstri dinamikleri için yeni bir şekildir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "Gelişime geçelim.",
+      "text_markdown": "Gelişime geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Gelişime geçelim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "Stargate — OpenAI, Oracle, SoftBank veri merkezi girişimi.",
+      "text_markdown": "Stargate — OpenAI, Oracle, SoftBank veri merkezi girişimi.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — OpenAI, Oracle, SoftBank veri merkezi girişimi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "Gerçek rakamlar nelerdir?",
+      "text_markdown": "Gerçek rakamlar nelerdir?",
+      "title": "",
+      "tts": {
+        "text": "Gerçek rakamlar nelerdir?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "Stargate, on bir gigavatlık ABD kapasitesi duyurdu.",
+      "text_markdown": "Stargate, on bir gigavatlık ABD kapasitesi duyurdu.",
+      "title": "",
+      "tts": {
+        "text": "Stargate, on bir gigavatlık Amerika Birleşik Devletleri kapasitesi duyurdu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "Haziran ortası itibarıyla, Abilene Teksas sahasında, Birinci Aşama'da yaklaşık iki yüz megavat faaliyettedir.",
+      "text_markdown": "Haziran ortası itibarıyla, Abilene Teksas sahasında, Birinci Aşama'da yaklaşık iki yüz megavat faaliyettedir.",
+      "title": "",
+      "tts": {
+        "text": "Haziran ortası itibarıyla, Abilene Teksas sahasında, Birinci Aşama'da yaklaşık iki yüz megavat faaliyettedir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "On bir gigavat duyuruldu, iki yüz megavat devreye alındı.",
+      "text_markdown": "On bir gigavat duyuruldu, iki yüz megavat devreye alındı.",
+      "title": "",
+      "tts": {
+        "text": "On bir gigavat duyuruldu, iki yüz megavat devreye alındı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "Tüm boşluk tek bir satırda bu.",
+      "text_markdown": "Tüm boşluk tek bir satırda bu.",
+      "title": "",
+      "tts": {
+        "text": "Tüm boşluk tek bir satırda bu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "Öyle ve en net örnek New Mexico'da bulunuyor.",
+      "text_markdown": "Öyle ve en net örnek New Mexico'da bulunuyor.",
+      "title": "",
+      "tts": {
+        "text": "Öyle ve en net örnek New Mexico'da bulunuyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "Doña Ana County sahası, dört buçuk gigavat olarak planlanan en büyük tek Stargate kampüsüdür.",
+      "text_markdown": "Doña Ana County sahası, dört buçuk gigavat olarak planlanan en büyük tek Stargate kampüsüdür.",
+      "title": "",
+      "tts": {
+        "text": "Doña Ana County sahası, dört buçuk gigavat olarak planlanan en büyük tek Stargate kampüsüdür.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "On sekiz milyar dolarlık sendikasyonlu proje finansmanı hazır durumda — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ayrıca Blue Owl'dan üç milyar dolarlık bir öz sermaye katkısı.",
+      "text_markdown": "On sekiz milyar dolarlık sendikasyonlu proje finansmanı hazır durumda — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ayrıca Blue Owl'dan üç milyar dolarlık bir öz sermaye katkısı.",
+      "title": "",
+      "tts": {
+        "text": "On sekiz milyar dolarlık sendikasyonlu proje finansmanı hazır durumda — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ayrıca Blue Owl'dan üç milyar dolarlık bir öz sermaye katkısı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "Peki sahadaki inşaat durumu ne?",
+      "text_markdown": "Peki sahadaki inşaat durumu ne?",
+      "title": "",
+      "tts": {
+        "text": "Peki sahadaki inşaat durumu ne?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "Şu ana kadar hiç kazma vurulmadı.",
+      "text_markdown": "Şu ana kadar hiç kazma vurulmadı.",
+      "title": "",
+      "tts": {
+        "text": "Şu ana kadar hiç kazma vurulmadı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "Saha, New Mexico Çevre Departmanı'ndan bir hava kalitesi izni bekliyor; başlangıçta yirmi iki Nisan'da bekleniyordu, şimdi yedi binden fazla kamuoyu yorumunun ardından yirmi bir Temmuz'a ertelendi.",
+      "text_markdown": "Saha, New Mexico Çevre Departmanı'ndan bir hava kalitesi izni bekliyor; başlangıçta yirmi iki Nisan'da bekleniyordu, şimdi yedi binden fazla kamuoyu yorumunun ardından yirmi bir Temmuz'a ertelendi.",
+      "title": "",
+      "tts": {
+        "text": "Saha, New Mexico Çevre Departmanı'ndan bir hava kalitesi izni bekliyor; başlangıçta yirmi iki Nisan'da bekleniyordu, şimdi yedi binden fazla kamuoyu yorumunun ardından yirmi bir Temmuz'a ertelendi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "On sekiz milyar dolar taahhüt edildi, sıfır kazma vuruldu, bir hava kalitesi izni son tarihi.",
+      "text_markdown": "On sekiz milyar dolar taahhüt edildi, sıfır kazma vuruldu, bir hava kalitesi izni son tarihi.",
+      "title": "",
+      "tts": {
+        "text": "On sekiz milyar dolar taahhüt edildi, sıfır kazma vuruldu, bir hava kalitesi izni son tarihi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "Rakamlar tutmazsa faturayı kim öder?",
+      "text_markdown": "Rakamlar tutmazsa faturayı kim öder?",
+      "title": "",
+      "tts": {
+        "text": "Rakamlar tutmazsa faturayı kim öder?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "İşte Oracle'ın ilginçleştiği nokta burası.",
+      "text_markdown": "İşte Oracle'ın ilginçleştiği nokta burası.",
+      "title": "",
+      "tts": {
+        "text": "İşte Oracle'ın ilginçleştiği nokta burası.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "Oracle'ın Kalan Performans Yükümlülükleri — henüz teslim edilmemiş sözleşmeli geliri kaydeden muhasebe kalemi — mali yirmi yirmi altı üçüncü çeyreğinde beş yüz elli üç milyar dolara ulaştı.",
+      "text_markdown": "Oracle'ın Kalan Performans Yükümlülükleri — henüz teslim edilmemiş sözleşmeli geliri kaydeden muhasebe kalemi — mali yirmi yirmi altı üçüncü çeyreğinde beş yüz elli üç milyar dolara ulaştı.",
+      "title": "",
+      "tts": {
+        "text": "Oracle'ın Kalan Performans Yükümlülükleri — henüz teslim edilmemiş sözleşmeli geliri kaydeden muhasebe kalemi — mali iki bin yirmi altı üçüncü çeyreğinde beş yüz elli üç milyar dolara ulaştı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "Bu, yıldan yıla üç yüz yirmi beş yüzde artış gösterdi ve bu artışın çoğunluğu kamuoyunda OpenAI ve Stargate ile ilişkilendiriliyor.",
+      "text_markdown": "Bu, yıldan yıla üç yüz yirmi beş yüzde artış gösterdi ve bu artışın çoğunluğu kamuoyunda OpenAI ve Stargate ile ilişkilendiriliyor.",
+      "title": "",
+      "tts": {
+        "text": "Bu, yıldan yıla üç yüz yirmi beş yüzde artış gösterdi ve bu artışın çoğunluğu kamuoyunda OpenAI ve Stargate ile ilişkilendiriliyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "Peki borç tarafı?",
+      "text_markdown": "Peki borç tarafı?",
+      "title": "",
+      "tts": {
+        "text": "Peki borç tarafı?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "Toplam borçlanmalar yirmi sekiz Şubat itibarıyla yüz otuz dört virgül altı milyar dolara ulaştı.",
+      "text_markdown": "Toplam borçlanmalar yirmi sekiz Şubat itibarıyla yüz otuz dört virgül altı milyar dolara ulaştı.",
+      "title": "",
+      "tts": {
+        "text": "Toplam borçlanmalar yirmi sekiz Şubat itibarıyla yüz otuz dört virgül altı milyar dolara ulaştı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "Oracle, yalnızca Şubat ayında otuz milyar dolar topladı — yatırım yapılabilir dereceli tahviller artı zorunlu dönüştürülebilir imtiyazlı hisseler — ve dokuz aylık dönemde kırk üç milyar dolarlık yeni kıdemli tahviller ihraç etti.",
+      "text_markdown": "Oracle, yalnızca Şubat ayında otuz milyar dolar topladı — yatırım yapılabilir dereceli tahviller artı zorunlu dönüştürülebilir imtiyazlı hisseler — ve dokuz aylık dönemde kırk üç milyar dolarlık yeni kıdemli tahviller ihraç etti.",
+      "title": "",
+      "tts": {
+        "text": "Oracle, yalnızca Şubat ayında otuz milyar dolar topladı — yatırım yapılabilir dereceli tahviller artı zorunlu dönüştürülebilir imtiyazlı hisseler — ve dokuz aylık dönemde kırk üç milyar dolarlık yeni kıdemli tahviller ihraç etti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "Pozisyonu özetleyelim.",
+      "text_markdown": "Pozisyonu özetleyelim.",
+      "title": "",
+      "tts": {
+        "text": "Pozisyonu özetleyelim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "Beş yüz elli üç milyar dolar vaat, yüz otuz dört milyar dolar borç ve riskin çoğunu taşıyan büyük bir müşteri.",
+      "text_markdown": "Beş yüz elli üç milyar dolar vaat, yüz otuz dört milyar dolar borç ve riskin çoğunu taşıyan büyük bir müşteri.",
+      "title": "",
+      "tts": {
+        "text": "Beş yüz elli üç milyar dolar vaat, yüz otuz dört milyar dolar borç ve riskin çoğunu taşıyan büyük bir müşteri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "Yapılanmanın yapısı tek bir cümlede budur.",
+      "text_markdown": "Yapılanmanın yapısı tek bir cümlede budur.",
+      "title": "",
+      "tts": {
+        "text": "Yapılanmanın yapısı tek bir cümlede budur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "ABD ve Çin karşılaştırmasına geçelim.",
+      "text_markdown": "ABD ve Çin karşılaştırmasına geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Amerika Birleşik Devletleri ve Çin karşılaştırmasına geçelim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "Klişe, Çin'in birkaç ay geride olduğudur.",
+      "text_markdown": "Klişe, Çin'in birkaç ay geride olduğudur.",
+      "title": "",
+      "tts": {
+        "text": "Klişe, Çin'in birkaç ay geride olduğudur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "Klişe yanlış, çünkü yanlış şeyi ölçüyor.",
+      "text_markdown": "Klişe yanlış, çünkü yanlış şeyi ölçüyor.",
+      "title": "",
+      "tts": {
+        "text": "Klişe yanlış, çünkü yanlış şeyi ölçüyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Dokuz Haziran Pazartesi günü Bloomberg, Ulusal Kalkınma ve Reform Komisyonu'ndan, 2028 yılına kadar ülke çapında bir yapay zeka veri merkezi ağı için yaklaşık iki yüz doksan beş milyar dolara denk gelen iki trilyon yuanlık taslak bir Çin planını bildirdi.",
+      "text_markdown": "Dokuz Haziran Pazartesi günü Bloomberg, Ulusal Kalkınma ve Reform Komisyonu'ndan, 2028 yılına kadar ülke çapında bir yapay zeka veri merkezi ağı için yaklaşık iki yüz doksan beş milyar dolara denk gelen iki trilyon yuanlık taslak bir Çin planını bildirdi.",
+      "title": "",
+      "tts": {
+        "text": "Dokuz Haziran Pazartesi günü Bloomberg, Ulusal Kalkınma ve Reform Komisyonu'ndan, iki bin yirmi sekiz yılına kadar ülke çapında bir yapay zeka veri merkezi ağı için yaklaşık iki yüz doksan beş milyar dolara denk gelen iki trilyon yuanlık taslak bir Çin planını bildirdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "Plan, %80 yerli silikonu zorunlu kılıyor ve China Mobile ile China Telecom tarafından tek bir birbirine bağlı hesaplama ağı olarak işletilecekti.",
+      "text_markdown": "Plan, %80 yerli silikonu zorunlu kılıyor ve China Mobile ile China Telecom tarafından tek bir birbirine bağlı hesaplama ağı olarak işletilecekti.",
+      "title": "",
+      "tts": {
+        "text": "Plan, yüzde seksen yerli silikonu zorunlu kılıyor ve China Mobile ile China Telecom tarafından tek bir birbirine bağlı hesaplama ağı olarak işletilecekti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-063",
+      "text": "Peki bu plandaki püf nokta ne?",
+      "text_markdown": "Peki bu plandaki püf nokta ne?",
+      "title": "",
+      "tts": {
+        "text": "Peki bu plandaki püf nokta ne?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-064",
+      "text": "İki trilyon yuan, %80 yerli silikon, 2028 son tarihi — ve püf nokta şu ki, bağlayıcı kısıtlama mantık yongaları değil, yüksek bant genişliğine sahip bellek (HBM).",
+      "text_markdown": "İki trilyon yuan, %80 yerli silikon, 2028 son tarihi — ve püf nokta şu ki, bağlayıcı kısıtlama mantık yongaları değil, yüksek bant genişliğine sahip bellek (HBM).",
+      "title": "",
+      "tts": {
+        "text": "İki trilyon yuan, yüzde seksen yerli silikon, iki bin yirmi sekiz son tarihi — ve püf nokta şu ki, bağlayıcı kısıtlama mantık yongaları değil, yüksek bant genişliğine sahip bellek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-065",
+      "text": "Bunu bize açıklayın.",
+      "text_markdown": "Bunu bize açıklayın.",
+      "title": "",
+      "tts": {
+        "text": "Bunu bize açıklayın.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-066",
+      "text": "Her yapay zeka hızlandırıcısı, mantık kalıbına cıvatalanmış HBM yığınlarına ihtiyaç duyar.",
+      "text_markdown": "Her yapay zeka hızlandırıcısı, mantık kalıbına cıvatalanmış HBM yığınlarına ihtiyaç duyar.",
+      "title": "",
+      "tts": {
+        "text": "Her yapay zeka hızlandırıcısı, mantık kalıbına cıvatalanmış HBM yığınlarına ihtiyaç duyar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-067",
+      "text": "HBM olmadan, çip bir kağıt ağırlığıdır.",
+      "text_markdown": "HBM olmadan, çip bir kağıt ağırlığıdır.",
+      "title": "",
+      "tts": {
+        "text": "HBM olmadan, çip bir kağıt ağırlığıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-068",
+      "text": "Çin, ihracat kontrolleri kapanmadan önce yaklaşık on üç milyon HBM yığını stokladı — bunun on bir nokta dört milyonu yalnızca Samsung'dandı.",
+      "text_markdown": "Çin, ihracat kontrolleri kapanmadan önce yaklaşık on üç milyon HBM yığını stokladı — bunun on bir nokta dört milyonu yalnızca Samsung'dandı.",
+      "title": "",
+      "tts": {
+        "text": "Çin, ihracat kontrolleri kapanmadan önce yaklaşık on üç milyon HBM yığını stokladı — bunun on bir nokta dört milyonu yalnızca Samsung'dandı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-069",
+      "text": "Huawei Ascend 910C paketleme oranlarında, bu stok yaklaşık bir nokta altı milyon çip için yeterlidir.",
+      "text_markdown": "Huawei Ascend 910C paketleme oranlarında, bu stok yaklaşık bir nokta altı milyon çip için yeterlidir.",
+      "title": "",
+      "tts": {
+        "text": "Huawei Ascend dokuz yüz on C paketleme oranlarında, bu stok yaklaşık bir nokta altı milyon çip için yeterlidir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-070",
+      "text": "Ve sonra tedarik tükenir.",
+      "text_markdown": "Ve sonra tedarik tükenir.",
+      "title": "",
+      "tts": {
+        "text": "Ve sonra tedarik tükenir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-071",
+      "text": "Sonra tedarik tükenir — on üç milyon HBM yığını, bir nokta altı milyon çip için yeterli, ve bu tavan noktasıdır.",
+      "text_markdown": "Sonra tedarik tükenir — on üç milyon HBM yığını, bir nokta altı milyon çip için yeterli, ve bu tavan noktasıdır.",
+      "title": "",
+      "tts": {
+        "text": "Sonra tedarik tükenir — on üç milyon HBM yığını, bir nokta altı milyon çip için yeterli, ve bu tavan noktasıdır.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-072",
+      "text": "CXMT'den yerli Çin HBM'si, 2026 yılında yaklaşık iki milyon yığın üretme hızında — belki iki yüz elli ila üç yüz bin hızlandırıcı için yeterli.",
+      "text_markdown": "CXMT'den yerli Çin HBM'si, 2026 yılında yaklaşık iki milyon yığın üretme hızında — belki iki yüz elli ila üç yüz bin hızlandırıcı için yeterli.",
+      "title": "",
+      "tts": {
+        "text": "CXMT'den yerli Çin HBM'si, iki bin yirmi altı yılında yaklaşık iki milyon yığın üretme hızında — belki iki yüz elli ila üç yüz bin hızlandırıcı için yeterli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-073",
+      "text": "Peki Huawei'nin silikon planları neye benziyor?",
+      "text_markdown": "Peki Huawei'nin silikon planları neye benziyor?",
+      "title": "",
+      "tts": {
+        "text": "Peki Huawei'nin silikon planları neye benziyor?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-074",
+      "text": "Bloomberg, Huawei'nin planlarına atıfta bulunarak, 2026 üretimini altı yüz bin 910C çip olarak belirtti; daha geniş Ascend ürün serisi ise toplamda bir nokta altı milyon kalıba ulaşıyor.",
+      "text_markdown": "Bloomberg, Huawei'nin planlarına atıfta bulunarak, 2026 üretimini altı yüz bin 910C çip olarak belirtti; daha geniş Ascend ürün serisi ise toplamda bir nokta altı milyon kalıba ulaşıyor.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, Huawei'nin planlarına atıfta bulunarak, iki bin yirmi altı üretimini altı yüz bin dokuz yüz on C çip olarak belirtti; daha geniş Ascend ürün serisi ise toplamda bir nokta altı milyon kalıba ulaşıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-075",
+      "text": "Bu sayı, altı yüz bin, bir hedeftir, sevk edilen üretim değil.",
+      "text_markdown": "Bu sayı, altı yüz bin, bir hedeftir, sevk edilen üretim değil.",
+      "title": "",
+      "tts": {
+        "text": "Bu sayı, altı yüz bin, bir hedeftir, sevk edilen üretim değil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-076",
+      "text": "Ve ayrıca, ihracat kontrolleri onları kesmeden önce, Huawei, Sophgo ve Bitmain paravan şirketleri aracılığıyla TSMC'de üretilen iki nokta dokuz milyondan fazla Ascend kalıbı biriktirdi.",
+      "text_markdown": "Ve ayrıca, ihracat kontrolleri onları kesmeden önce, Huawei, Sophgo ve Bitmain paravan şirketleri aracılığıyla TSMC'de üretilen iki nokta dokuz milyondan fazla Ascend kalıbı biriktirdi.",
+      "title": "",
+      "tts": {
+        "text": "Ve ayrıca, ihracat kontrolleri onları kesmeden önce, Huawei, Sophgo ve Bitmain paravan şirketleri aracılığıyla TSMC'de üretilen iki nokta dokuz milyondan fazla Ascend kalıbı biriktirdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-077",
+      "text": "İhracat kontrollerinin işe yaradığı anlatısında iki nokta dokuz milyon kalıplık bir boşluk var.",
+      "text_markdown": "İhracat kontrollerinin işe yaradığı anlatısında iki nokta dokuz milyon kalıplık bir boşluk var.",
+      "title": "",
+      "tts": {
+        "text": "İhracat kontrollerinin işe yaradığı anlatısında iki nokta dokuz milyon kalıplık bir boşluk var.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-078",
+      "text": "Başlıklara hızlıca göz atalım.",
+      "text_markdown": "Başlıklara hızlıca göz atalım.",
+      "title": "",
+      "tts": {
+        "text": "Başlıklara hızlıca göz atalım.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-079",
+      "text": "Bu haftanın ilk başlığı, Broadcom.",
+      "text_markdown": "Bu haftanın ilk başlığı, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Bu haftanın ilk başlığı, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-080",
+      "text": "Broadcom'un piyasa değeri iki trilyon dolar civarında.",
+      "text_markdown": "Broadcom'un piyasa değeri iki trilyon dolar civarında.",
+      "title": "",
+      "tts": {
+        "text": "Broadcom'un piyasa değeri iki trilyon dolar civarında.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-081",
+      "text": "CEO'ları Hock Tan, üç Haziran'daki kazanç çağrısında, 2027 mali yılı için yüz milyar dolarlık bir yapay zeka yarı iletken gelir hedefini yineledi; bu hedef, yaklaşık yetmiş üç milyar dolarlık yapay zeka birikimi ve Alphabet ile Meta ile 2031'e kadar uzanan uzun vadeli anlaşmalarla destekleniyor.",
+      "text_markdown": "CEO'ları Hock Tan, üç Haziran'daki kazanç çağrısında, 2027 mali yılı için yüz milyar dolarlık bir yapay zeka yarı iletken gelir hedefini yineledi; bu hedef, yaklaşık yetmiş üç milyar dolarlık yapay zeka birikimi ve Alphabet ile Meta ile 2031'e kadar uzanan uzun vadeli anlaşmalarla destekleniyor.",
+      "title": "",
+      "tts": {
+        "text": "CEO'ları Hock Tan, üç Haziran'daki kazanç çağrısında, iki bin yirmi yedi mali yılı için yüz milyar dolarlık bir yapay zeka yarı iletken gelir hedefini yineledi; bu hedef, yaklaşık yetmiş üç milyar dolarlık yapay zeka birikimi ve Alphabet ile Meta ile iki bin otuz bire kadar uzanan uzun vadeli anlaşmalarla destekleniyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-082",
+      "text": "İki trilyon dolarlık piyasa değeri, yüz milyar dolarlık yapay zeka gelir hedefi, neredeyse hiç perakende marka tanınırlığı yok.",
+      "text_markdown": "İki trilyon dolarlık piyasa değeri, yüz milyar dolarlık yapay zeka gelir hedefi, neredeyse hiç perakende marka tanınırlığı yok.",
+      "title": "",
+      "tts": {
+        "text": "İki trilyon dolarlık piyasa değeri, yüz milyar dolarlık yapay zeka gelir hedefi, neredeyse hiç perakende marka tanınırlığı yok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-083",
+      "text": "Bu haftanın ikinci başlığı, ASML.",
+      "text_markdown": "Bu haftanın ikinci başlığı, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Bu haftanın ikinci başlığı, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-084",
+      "text": "Tüm ileri teknoloji mantık çiplerinin bağlı olduğu litografi makinelerini üreten Hollandalı şirket ASML, High-N.A. E.U.V. sistemini yaklaşık üç yüz yetmiş milyon dolara satıyor.",
+      "text_markdown": "Tüm ileri teknoloji mantık çiplerinin bağlı olduğu litografi makinelerini üreten Hollandalı şirket ASML, High-N.A. E.U.V. sistemini yaklaşık üç yüz yetmiş milyon dolara satıyor.",
+      "title": "",
+      "tts": {
+        "text": "Tüm ileri teknoloji mantık çiplerinin bağlı olduğu litografi makinelerini üreten Hollandalı şirket ASML, High N A E U V sistemini yaklaşık üç yüz yetmiş milyon dolara satıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-085",
+      "text": "Küresel üretim kapasitesi yılda yirmiden az birimdir.",
+      "text_markdown": "Küresel üretim kapasitesi yılda yirmiden az birimdir.",
+      "title": "",
+      "tts": {
+        "text": "Küresel üretim kapasitesi yılda yirmiden az birimdir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-086",
+      "text": "Makine başına üç yüz yetmiş milyon dolar, yılda yirmiden az makine, tek bir şirket onları üretiyor — küresel silikon üzerindeki asıl darboğaz budur, politika değil.",
+      "text_markdown": "Makine başına üç yüz yetmiş milyon dolar, yılda yirmiden az makine, tek bir şirket onları üretiyor — küresel silikon üzerindeki asıl darboğaz budur, politika değil.",
+      "title": "",
+      "tts": {
+        "text": "Makine başına üç yüz yetmiş milyon dolar, yılda yirmiden az makine, tek bir şirket onları üretiyor — küresel silikon üzerindeki asıl darboğaz budur, politika değil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-087",
+      "text": "Bu haftanın üçüncü başlığı, ihracat kontrolleri.",
+      "text_markdown": "Bu haftanın üçüncü başlığı, ihracat kontrolleri.",
+      "title": "",
+      "tts": {
+        "text": "Bu haftanın üçüncü başlığı, ihracat kontrolleri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-088",
+      "text": "Ticaret Bakanlığı, Biden dönemi Yapay Zeka Yayılım Kuralı'nı 13 Mayıs 2025'te yürürlükten kaldırdı ve 31 Mayıs 2026'ya kadar yeni B.I.S. uygulama açıklamasını yayınlamadı.",
+      "text_markdown": "Ticaret Bakanlığı, Biden dönemi Yapay Zeka Yayılım Kuralı'nı 13 Mayıs 2025'te yürürlükten kaldırdı ve 31 Mayıs 2026'ya kadar yeni B.I.S. uygulama açıklamasını yayınlamadı.",
+      "title": "",
+      "tts": {
+        "text": "Ticaret Bakanlığı, Biden dönemi Yapay Zeka Yayılım Kuralı'nı on üç Mayıs iki bin yirmi beş tarihinde yürürlükten kaldırdı ve otuz bir Mayıs iki bin yirmi altıya kadar yeni B I S uygulama açıklamasını yayınlamadı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-089",
+      "text": "Bu, lisanslama gerekliliklerinin aktif olarak uygulanmadığı yaklaşık bir yıllık bir pencereydi.",
+      "text_markdown": "Bu, lisanslama gerekliliklerinin aktif olarak uygulanmadığı yaklaşık bir yıllık bir pencereydi.",
+      "title": "",
+      "tts": {
+        "text": "Bu, lisanslama gerekliliklerinin aktif olarak uygulanmadığı yaklaşık bir yıllık bir pencereydi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-090",
+      "text": "Yani günleri sayın.",
+      "text_markdown": "Yani günleri sayın.",
+      "title": "",
+      "tts": {
+        "text": "Yani günleri sayın.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-091",
+      "text": "Bir ABD modelini kapatmak için yetmiş iki saat, bir çip ihracat kuralını uygulamak için üç yüz seksen gün — bu asimetri olayın kendisi.",
+      "text_markdown": "Bir ABD modelini kapatmak için yetmiş iki saat, bir çip ihracat kuralını uygulamak için üç yüz seksen gün — bu asimetri olayın kendisi.",
+      "title": "",
+      "tts": {
+        "text": "Bir Amerika Birleşik Devletleri modelini kapatmak için yetmiş iki saat, bir çip ihracat kuralını uygulamak için üç yüz seksen gün — bu asimetri olayın kendisi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-092",
+      "text": "Peki o üç yüz seksen gün içinde çipler nereye gitti?",
+      "text_markdown": "Peki o üç yüz seksen gün içinde çipler nereye gitti?",
+      "title": "",
+      "tts": {
+        "text": "Peki o üç yüz seksen gün içinde çipler nereye gitti?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-093",
+      "text": "Çoğu Güneydoğu Asya'ya gitti.",
+      "text_markdown": "Çoğu Güneydoğu Asya'ya gitti.",
+      "title": "",
+      "tts": {
+        "text": "Çoğu Güneydoğu Asya'ya gitti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-094",
+      "text": "Adalet Bakanlığı, Mart sonunda, Nvidia H yüz ve A yüz çiplerinin Malezyalı ve Singapurlu aracılar üzerinden yönlendirildiğini iddia eden iddianameleri açıkladı.",
+      "text_markdown": "Adalet Bakanlığı, Mart sonunda, Nvidia H yüz ve A yüz çiplerinin Malezyalı ve Singapurlu aracılar üzerinden yönlendirildiğini iddia eden iddianameleri açıkladı.",
+      "title": "",
+      "tts": {
+        "text": "Adalet Bakanlığı, Mart sonunda, Nvidia H yüz ve A yüz çiplerinin Malezyalı ve Singapurlu aracılar üzerinden yönlendirildiğini iddia eden iddianameleri açıkladı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-095",
+      "text": "Fortune, Mayıs ayında lojistiği gösteren şifreli metinler yayınladı ve Super Micro, iki buçuk milyar dolarlık bir paravan şirket davasına karıştı.",
+      "text_markdown": "Fortune, Mayıs ayında lojistiği gösteren şifreli metinler yayınladı ve Super Micro, iki buçuk milyar dolarlık bir paravan şirket davasına karıştı.",
+      "title": "",
+      "tts": {
+        "text": "Fortune, Mayıs ayında lojistiği gösteren şifreli metinler yayınladı ve Super Micro, iki buçuk milyar dolarlık bir paravan şirket davasına karıştı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-096",
+      "text": "Trump yönetimi, özellikle Malezya ve Tayland'ı hedef alan yeni çip ihracat kısıtlamaları hazırlıyor.",
+      "text_markdown": "Trump yönetimi, özellikle Malezya ve Tayland'ı hedef alan yeni çip ihracat kısıtlamaları hazırlıyor.",
+      "title": "",
+      "tts": {
+        "text": "Trump yönetimi, özellikle Malezya ve Tayland'ı hedef alan yeni çip ihracat kısıtlamaları hazırlıyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-097",
+      "text": "Yani tek cümleyle durum şu.",
+      "text_markdown": "Yani tek cümleyle durum şu.",
+      "title": "",
+      "tts": {
+        "text": "Yani tek cümleyle durum şu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-098",
+      "text": "Çipler Shenzhen'e uçmuyor — önce Penang ve Singapur'a uçuyorlar.",
+      "text_markdown": "Çipler Shenzhen'e uçmuyor — önce Penang ve Singapur'a uçuyorlar.",
+      "title": "",
+      "tts": {
+        "text": "Çipler Shenzhen'e uçmuyor — önce Penang ve Singapur'a uçuyorlar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-099",
+      "text": "Haftanın Konsepti — Kalan Performans Yükümlülükleri.",
+      "text_markdown": "Haftanın Konsepti — Kalan Performans Yükümlülükleri.",
+      "title": "",
+      "tts": {
+        "text": "Haftanın Konsepti — Kalan Performans Yükümlülükleri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-100",
+      "text": "R.P.O., bir şirketin imzaladığı ancak henüz yerine getirmediği sözleşmelerin dolar değerini kaydeden bir muhasebe kalemidir.",
+      "text_markdown": "R.P.O., bir şirketin imzaladığı ancak henüz yerine getirmediği sözleşmelerin dolar değerini kaydeden bir muhasebe kalemidir.",
+      "title": "",
+      "tts": {
+        "text": "R. P. O., bir şirketin imzaladığı ancak henüz yerine getirmediği sözleşmelerin dolar değerini kaydeden bir muhasebe kalemidir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-101",
+      "text": "İleriye dönüktür — size bugünkü bankadaki paradan değil, gelecekteki gelirden bahseder.",
+      "text_markdown": "İleriye dönüktür — size bugünkü bankadaki paradan değil, gelecekteki gelirden bahseder.",
+      "title": "",
+      "tts": {
+        "text": "İleriye dönüktür — size bugünkü bankadaki paradan değil, gelecekteki gelirden bahseder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-102",
+      "text": "Peki Oracle için neden önemli?",
+      "text_markdown": "Peki Oracle için neden önemli?",
+      "title": "",
+      "tts": {
+        "text": "Peki Oracle için neden önemli?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-103",
+      "text": "Çünkü, tek bir müşteri için tek bir kurulumda yoğunlaşmış beş yüz elli üç milyar dolarlık R.P.O., Oracle'ın önümüzdeki birkaç yıl içinde, kendi gelir modeli hala tartışılan bir müşteriye karşı muazzam miktarda işlem gücü sağlamayı taahhüt ettiği anlamına geliyor.",
+      "text_markdown": "Çünkü, tek bir müşteri için tek bir kurulumda yoğunlaşmış beş yüz elli üç milyar dolarlık R.P.O., Oracle'ın önümüzdeki birkaç yıl içinde, kendi gelir modeli hala tartışılan bir müşteriye karşı muazzam miktarda işlem gücü sağlamayı taahhüt ettiği anlamına geliyor.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü, tek bir müşteri için tek bir kurulumda yoğunlaşmış beş yüz elli üç milyar dolarlık R. P. O., Oracle'ın önümüzdeki birkaç yıl içinde, kendi gelir modeli hala tartışılan bir müşteriye karşı muazzam miktarda işlem gücü sağlamayı taahhüt ettiği anlamına geliyor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-104",
+      "text": "Eğer bu sözleşmeler yerine getirilirse, Oracle on yılın anlaşmasını yapmış olur.",
+      "text_markdown": "Eğer bu sözleşmeler yerine getirilirse, Oracle on yılın anlaşmasını yapmış olur.",
+      "title": "",
+      "tts": {
+        "text": "Eğer bu sözleşmeler yerine getirilirse, Oracle on yılın anlaşmasını yapmış olur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-105",
+      "text": "Eğer aksarlarsa — veya yeniden müzakere edilirlerse — Oracle, sözleşmeler küçülürken borcu taşımaya devam eder.",
+      "text_markdown": "Eğer aksarlarsa — veya yeniden müzakere edilirlerse — Oracle, sözleşmeler küçülürken borcu taşımaya devam eder.",
+      "title": "",
+      "tts": {
+        "text": "Eğer aksarlarsa — veya yeniden müzakere edilirlerse — Oracle, sözleşmeler küçülürken borcu taşımaya devam eder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-106",
+      "text": "Yani bir teknoloji dosyasında bir R.P.O. numarası gördüğünüzde.",
+      "text_markdown": "Yani bir teknoloji dosyasında bir R.P.O. numarası gördüğünüzde.",
+      "title": "",
+      "tts": {
+        "text": "Yani bir teknoloji dosyasında bir R. P. O. numarası gördüğünüzde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-107",
+      "text": "Müşterilerin kimler olduğunu, yükümlülüklerin ne kadar yoğunlaştığını ve şirketin bunları gerçekten yerine getirmesi için ne olması gerektiğini okuyun.",
+      "text_markdown": "Müşterilerin kimler olduğunu, yükümlülüklerin ne kadar yoğunlaştığını ve şirketin bunları gerçekten yerine getirmesi için ne olması gerektiğini okuyun.",
+      "title": "",
+      "tts": {
+        "text": "Müşterilerin kimler olduğunu, yükümlülüklerin ne kadar yoğunlaştığını ve şirketin bunları gerçekten yerine getirmesi için ne olması gerektiğini okuyun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-108",
+      "text": "R.P.O., bag-holder'ların dipnotlarda göründüğü yerdir.",
+      "text_markdown": "R.P.O., bag-holder'ların dipnotlarda göründüğü yerdir.",
+      "title": "",
+      "tts": {
+        "text": "R. P. O., bag-holder'ların dipnotlarda göründüğü yerdir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-109",
+      "text": "İyi bir durak.",
+      "text_markdown": "İyi bir durak.",
+      "title": "",
+      "tts": {
+        "text": "İyi bir durak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-110",
+      "text": "Ron, özet için teşekkürler.",
+      "text_markdown": "Ron, özet için teşekkürler.",
+      "title": "",
+      "tts": {
+        "text": "Ron, özet için teşekkürler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-111",
+      "text": "Her zaman, Vindy — burada olmak güzel.",
+      "text_markdown": "Her zaman, Vindy — burada olmak güzel.",
+      "title": "",
+      "tts": {
+        "text": "Her zaman, Vindy — burada olmak güzel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-112",
+      "text": "Bu, yirmi bir Haziran iki bin yirmi altı tarihli AI Bu Hafta idi.",
+      "text_markdown": "Bu, yirmi bir Haziran iki bin yirmi altı tarihli AI Bu Hafta idi.",
+      "title": "",
+      "tts": {
+        "text": "Bu, yirmi bir Haziran iki bin yirmi altı tarihli Yapay Zeka Bu Hafta idi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-113",
+      "text": "Gelecek hafta, açık ağırlıklar ve küçük laboratuvar ritmine geri dönüyoruz.",
+      "text_markdown": "Gelecek hafta, açık ağırlıklar ve küçük laboratuvar ritmine geri dönüyoruz.",
+      "title": "",
+      "tts": {
+        "text": "Gelecek hafta, açık ağırlıklar ve küçük laboratuvar ritmine geri dönüyoruz.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-114",
+      "text": "Gelecek Pazar'a kadar, kendinize iyi bakın.",
+      "text_markdown": "Gelecek Pazar'a kadar, kendinize iyi bakın.",
+      "title": "",
+      "tts": {
+        "text": "Gelecek Pazar'a kadar, kendinize iyi bakın.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

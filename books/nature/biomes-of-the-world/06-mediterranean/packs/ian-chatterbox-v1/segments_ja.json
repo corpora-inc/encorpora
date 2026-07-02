@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "地中海性バイオーム",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "地中海性バイオーム",
+      "text_markdown": "地中海性バイオーム"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "このバイオームが育つ場所",
+      "text_markdown": "このバイオームが育つ場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームへようこそ。",
+      "text_markdown": "地中海性バイオームへようこそ。",
+      "tts": {
+        "text": "地中海性バイオームへようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは世界の大きなバイオームの一つです。",
+      "text_markdown": "ここは世界の大きなバイオームの一つです。",
+      "tts": {
+        "text": "ここは世界の大きなバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、地球の中で独自の気候や植物や動物を持つ場所です。",
+      "text_markdown": "バイオームとは、地球の中で独自の気候や植物や動物を持つ場所です。",
+      "tts": {
+        "text": "バイオームとは、地球の中で独自の気候や植物や動物を持つ場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームは、地中海の周りの土地にちなんで名付けられました。",
+      "text_markdown": "地中海性バイオームは、地中海の周りの土地にちなんで名付けられました。",
+      "tts": {
+        "text": "地中海性バイオームは、地中海の周りの土地にちなんで名付けられました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でもそこだけに広がるのではありません。",
+      "text_markdown": "でもそこだけに広がるのではありません。",
+      "tts": {
+        "text": "でもそこだけに広がるのではありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームは、世界の五つの小さな地域に現れます。",
+      "text_markdown": "地中海性バイオームは、世界の五つの小さな地域に現れます。",
+      "tts": {
+        "text": "地中海性バイオームは、世界の五つの小さな地域に現れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海の周りの土地、南ヨーロッパや北アフリカの海岸に広がります。",
+      "text_markdown": "地中海の周りの土地、南ヨーロッパや北アフリカの海岸に広がります。",
+      "tts": {
+        "text": "地中海の周りの土地、南ヨーロッパや北アフリカの海岸に広がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカの西部、カリフォルニアにも育ちます。",
+      "text_markdown": "北アメリカの西部、カリフォルニアにも育ちます。",
+      "tts": {
+        "text": "北アメリカの西部、カリフォルニアにも育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカのチリの海岸沿いの中ほどにも広がります。",
+      "text_markdown": "南アメリカのチリの海岸沿いの中ほどにも広がります。",
+      "tts": {
+        "text": "南アメリカのチリの海岸沿いの中ほどにも広がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アフリカの南端の喜望峰のあたりにも育ちます。",
+      "text_markdown": "アフリカの南端の喜望峰のあたりにも育ちます。",
+      "tts": {
+        "text": "アフリカの南端の喜望峰のあたりにも育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オーストラリアの南西部や南部にも広がります。",
+      "text_markdown": "オーストラリアの南西部や南部にも広がります。",
+      "tts": {
+        "text": "オーストラリアの南西部や南部にも広がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの場所はどれもお互いから遠く離れています。",
+      "text_markdown": "これらの場所はどれもお互いから遠く離れています。",
+      "tts": {
+        "text": "これらの場所はどれもお互いから遠く離れています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、すべて同じ特別な気候を持っています。",
+      "text_markdown": "でも、すべて同じ特別な気候を持っています。",
+      "tts": {
+        "text": "でも、すべて同じ特別な気候を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏は暑くて乾き、冬は穏やかで湿っています。",
+      "text_markdown": "夏は暑くて乾き、冬は穏やかで湿っています。",
+      "tts": {
+        "text": "夏は暑くて乾き、冬は穏やかで湿っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは地球ではめずらしいことです。",
+      "text_markdown": "これは地球ではめずらしいことです。",
+      "tts": {
+        "text": "これは地球ではめずらしいことです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどのバイオームは暖かい季節に雨が降ります。",
+      "text_markdown": "ほとんどのバイオームは暖かい季節に雨が降ります。",
+      "tts": {
+        "text": "ほとんどのバイオームは暖かい季節に雨が降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここでは、雨は涼しい季節に降ります。",
+      "text_markdown": "ここでは、雨は涼しい季節に降ります。",
+      "tts": {
+        "text": "ここでは、雨は涼しい季節に降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これら五つの場所には、それぞれ独自の植物と動物がいます。",
+      "text_markdown": "これら五つの場所には、それぞれ独自の植物と動物がいます。",
+      "tts": {
+        "text": "これら五つの場所には、それぞれ独自の植物と動物がいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、その形はみな同じです。",
+      "text_markdown": "でも、その形はみな同じです。",
+      "tts": {
+        "text": "でも、その形はみな同じです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "背の低い丈夫な低木、まばらな木々、香り高いハーブ、岩がむき出しの丘です。",
+      "text_markdown": "背の低い丈夫な低木、まばらな木々、香り高いハーブ、岩がむき出しの丘です。",
+      "tts": {
+        "text": "背の低い丈夫な低木、まばらな木々、香り高いハーブ、岩がむき出しの丘です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏に地中海の土地に立つと、空気は乾いたハーブと温かい石の香りがします。",
+      "text_markdown": "夏に地中海の土地に立つと、空気は乾いたハーブと温かい石の香りがします。",
+      "tts": {
+        "text": "夏に地中海の土地に立つと、空気は乾いたハーブと温かい石の香りがします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "光は強く、金色に輝きます。",
+      "text_markdown": "光は強く、金色に輝きます。",
+      "tts": {
+        "text": "光は強く、金色に輝きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "丘には背の低い銀緑色の茂みが点々と広がります。",
+      "text_markdown": "丘には背の低い銀緑色の茂みが点々と広がります。",
+      "tts": {
+        "text": "丘には背の低い銀緑色の茂みが点々と広がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが地中海性バイオームです。",
+      "text_markdown": "それが地中海性バイオームです。",
+      "tts": {
+        "text": "それが地中海性バイオームです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "このバイオームが育つ場所",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "明るく乾いた、香り高い世界が、地球の五つの小さな片隅に育っています。",
+      "text_markdown": "明るく乾いた、香り高い世界が、地球の五つの小さな片隅に育っています。",
+      "tts": {
+        "text": "明るく乾いた、香り高い世界が、地球の五つの小さな片隅に育っています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "気候",
+      "text_markdown": "気候"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームの気候はめずらしいものです。",
+      "text_markdown": "地中海性バイオームの気候はめずらしいものです。",
+      "tts": {
+        "text": "地中海性バイオームの気候はめずらしいものです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "はっきりした二つの季節があります。",
+      "text_markdown": "はっきりした二つの季節があります。",
+      "tts": {
+        "text": "はっきりした二つの季節があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長く暑くて乾いた夏があります。",
+      "text_markdown": "長く暑くて乾いた夏があります。",
+      "tts": {
+        "text": "長く暑くて乾いた夏があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "短くて穏やかで湿った冬があります。",
+      "text_markdown": "短くて穏やかで湿った冬があります。",
+      "tts": {
+        "text": "短くて穏やかで湿った冬があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、空が何週間も青いままです。",
+      "text_markdown": "夏には、空が何週間も青いままです。",
+      "tts": {
+        "text": "夏には、空が何週間も青いままです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "太陽は強く、空気は乾いています。",
+      "text_markdown": "太陽は強く、空気は乾いています。",
+      "tts": {
+        "text": "太陽は強く、空気は乾いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何ヶ月もの間、ほとんど雨が降りません。",
+      "text_markdown": "何ヶ月もの間、ほとんど雨が降りません。",
+      "tts": {
+        "text": "何ヶ月もの間、ほとんど雨が降りません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏の終わりには、草は茶色になり、川は静かな小さな水たまりに縮みます。",
+      "text_markdown": "夏の終わりには、草は茶色になり、川は静かな小さな水たまりに縮みます。",
+      "tts": {
+        "text": "夏の終わりには、草は茶色になり、川は静かな小さな水たまりに縮みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、最初の涼しい風が海から吹いてきます。",
+      "text_markdown": "秋には、最初の涼しい風が海から吹いてきます。",
+      "tts": {
+        "text": "秋には、最初の涼しい風が海から吹いてきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雲が集まり、最初の大雨が乾いた大地に降ります。",
+      "text_markdown": "雲が集まり、最初の大雨が乾いた大地に降ります。",
+      "tts": {
+        "text": "雲が集まり、最初の大雨が乾いた大地に降ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大地は水を吸い込み、草はふたたび緑になります。",
+      "text_markdown": "大地は水を吸い込み、草はふたたび緑になります。",
+      "tts": {
+        "text": "大地は水を吸い込み、草はふたたび緑になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬はそれほど寒くありません。",
+      "text_markdown": "冬はそれほど寒くありません。",
+      "tts": {
+        "text": "冬はそれほど寒くありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "山の高いところを除けば、雪はめったに降りません。",
+      "text_markdown": "山の高いところを除けば、雪はめったに降りません。",
+      "tts": {
+        "text": "山の高いところを除けば、雪はめったに降りません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨は長く穏やかに降り、川は水であふれます。",
+      "text_markdown": "雨は長く穏やかに降り、川は水であふれます。",
+      "tts": {
+        "text": "雨は長く穏やかに降り、川は水であふれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春には、空気は暖かく、丘は緑です。",
+      "text_markdown": "春には、空気は暖かく、丘は緑です。",
+      "tts": {
+        "text": "春には、空気は暖かく、丘は緑です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほんの数週間、野の花がすべての斜面を覆います。",
+      "text_markdown": "ほんの数週間、野の花がすべての斜面を覆います。",
+      "tts": {
+        "text": "ほんの数週間、野の花がすべての斜面を覆います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そしてまた夏が始まり、季節がめぐります。",
+      "text_markdown": "そしてまた夏が始まり、季節がめぐります。",
+      "tts": {
+        "text": "そしてまた夏が始まり、季節がめぐります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火もまた、このバイオームの一部です。",
+      "text_markdown": "火もまた、このバイオームの一部です。",
+      "tts": {
+        "text": "火もまた、このバイオームの一部です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長く乾いた夏には、雷や不注意な火花が乾いた茂みを燃やすことがあります。",
+      "text_markdown": "長く乾いた夏には、雷や不注意な火花が乾いた茂みを燃やすことがあります。",
+      "tts": {
+        "text": "長く乾いた夏には、雷や不注意な火花が乾いた茂みを燃やすことがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここの植物の多くは火と共に生き、火が過ぎた後すばやく育ち直すことを学びました。",
+      "text_markdown": "ここの植物の多くは火と共に生き、火が過ぎた後すばやく育ち直すことを学びました。",
+      "tts": {
+        "text": "ここの植物の多くは火と共に生き、火が過ぎた後すばやく育ち直すことを学びました。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地と水",
+      "text_markdown": "土地と水"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームの土地はよく丘になっています。",
+      "text_markdown": "地中海性バイオームの土地はよく丘になっています。",
+      "tts": {
+        "text": "地中海性バイオームの土地はよく丘になっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの地域では、山が海岸の近くにそびえています。",
+      "text_markdown": "多くの地域では、山が海岸の近くにそびえています。",
+      "tts": {
+        "text": "多くの地域では、山が海岸の近くにそびえています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "斜面は岩がちで、土はよく薄くなっています。",
+      "text_markdown": "斜面は岩がちで、土はよく薄くなっています。",
+      "tts": {
+        "text": "斜面は岩がちで、土はよく薄くなっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "近くの海や大洋が気候を形作ります。",
+      "text_markdown": "近くの海や大洋が気候を形作ります。",
+      "tts": {
+        "text": "近くの海や大洋が気候を形作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冷たい水のおかげで、夏は砂漠ほど暑くならず、冬は奥地ほど寒くなりません。",
+      "text_markdown": "冷たい水のおかげで、夏は砂漠ほど暑くならず、冬は奥地ほど寒くなりません。",
+      "tts": {
+        "text": "冷たい水のおかげで、夏は砂漠ほど暑くならず、冬は奥地ほど寒くなりません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここでは水はとても貴重です。",
+      "text_markdown": "ここでは水はとても貴重です。",
+      "tts": {
+        "text": "ここでは水はとても貴重です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどの川は夏の終わりには細い流れになります。",
+      "text_markdown": "ほとんどの川は夏の終わりには細い流れになります。",
+      "tts": {
+        "text": "ほとんどの川は夏の終わりには細い流れになります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もっと小さな川は完全に消えてしまいます。",
+      "text_markdown": "もっと小さな川は完全に消えてしまいます。",
+      "tts": {
+        "text": "もっと小さな川は完全に消えてしまいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬の雨が戻ると、川はすぐに満ち、丘から海へと流れ下ります。",
+      "text_markdown": "冬の雨が戻ると、川はすぐに満ち、丘から海へと流れ下ります。",
+      "tts": {
+        "text": "冬の雨が戻ると、川はすぐに満ち、丘から海へと流れ下ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "場所によっては、深い地下水が湧き上がって泉になります。",
+      "text_markdown": "場所によっては、深い地下水が湧き上がって泉になります。",
+      "tts": {
+        "text": "場所によっては、深い地下水が湧き上がって泉になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "泉とは、岩から一年中流れ出る、小さな真水のたまりです。",
+      "text_markdown": "泉とは、岩から一年中流れ出る、小さな真水のたまりです。",
+      "tts": {
+        "text": "泉とは、岩から一年中流れ出る、小さな真水のたまりです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年もの間、人々や動物や木々がこれらの泉のまわりに集まってきました。",
+      "text_markdown": "何千年もの間、人々や動物や木々がこれらの泉のまわりに集まってきました。",
+      "tts": {
+        "text": "何千年もの間、人々や動物や木々がこれらの泉のまわりに集まってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海岸沿いでは、土地は崖や浜辺や小さな入江で海と出会います。",
+      "text_markdown": "海岸沿いでは、土地は崖や浜辺や小さな入江で海と出会います。",
+      "tts": {
+        "text": "海岸沿いでは、土地は崖や浜辺や小さな入江で海と出会います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海は生命に満ちています。",
+      "text_markdown": "海は生命に満ちています。",
+      "tts": {
+        "text": "海は生命に満ちています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "魚やタコや海鳥は、暖かい塩水の中で食べ物を見つけます。",
+      "text_markdown": "魚やタコや海鳥は、暖かい塩水の中で食べ物を見つけます。",
+      "tts": {
+        "text": "魚やタコや海鳥は、暖かい塩水の中で食べ物を見つけます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このバイオームは、土地と海と、長く青い夏空の間に生きています。",
+      "text_markdown": "このバイオームは、土地と海と、長く青い夏空の間に生きています。",
+      "tts": {
+        "text": "このバイオームは、土地と海と、長く青い夏空の間に生きています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームの植物は、たくましく賢いです。",
+      "text_markdown": "地中海性バイオームの植物は、たくましく賢いです。",
+      "tts": {
+        "text": "地中海性バイオームの植物は、たくましく賢いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "長く乾いた夏を生き抜く方法を覚えてきました。",
+      "text_markdown": "長く乾いた夏を生き抜く方法を覚えてきました。",
+      "tts": {
+        "text": "長く乾いた夏を生き抜く方法を覚えてきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどは背が高くありません。",
+      "text_markdown": "ほとんどは背が高くありません。",
+      "tts": {
+        "text": "ほとんどは背が高くありません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "厚く革のような葉を持つ、背の低い低木として育ちます。",
+      "text_markdown": "厚く革のような葉を持つ、背の低い低木として育ちます。",
+      "tts": {
+        "text": "厚く革のような葉を持つ、背の低い低木として育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉は小さくつやがあり、ときには銀色や灰緑色をしています。",
+      "text_markdown": "葉は小さくつやがあり、ときには銀色や灰緑色をしています。",
+      "tts": {
+        "text": "葉は小さくつやがあり、ときには銀色や灰緑色をしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さくつやのある葉は、太陽に奪われる水が少なくて済みます。",
+      "text_markdown": "小さくつやのある葉は、太陽に奪われる水が少なくて済みます。",
+      "tts": {
+        "text": "小さくつやのある葉は、太陽に奪われる水が少なくて済みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "淡い色の葉は、より多くの日光をはね返します。",
+      "text_markdown": "淡い色の葉は、より多くの日光をはね返します。",
+      "tts": {
+        "text": "淡い色の葉は、より多くの日光をはね返します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの植物は、こすると強く甘い香りを放ちます。",
+      "text_markdown": "多くの植物は、こすると強く甘い香りを放ちます。",
+      "tts": {
+        "text": "多くの植物は、こすると強く甘い香りを放ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その香りは葉の中の油から来ます。",
+      "text_markdown": "その香りは葉の中の油から来ます。",
+      "tts": {
+        "text": "その香りは葉の中の油から来ます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その油は水分の蒸発を遅らせ、植物が暑さを生き抜くのを助けます。",
+      "text_markdown": "その油は水分の蒸発を遅らせ、植物が暑さを生き抜くのを助けます。",
+      "tts": {
+        "text": "その油は水分の蒸発を遅らせ、植物が暑さを生き抜くのを助けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だからこそ、私たちの好きな料理用ハーブの多くがこの土地から来るのです。",
+      "text_markdown": "だからこそ、私たちの好きな料理用ハーブの多くがこの土地から来るのです。",
+      "tts": {
+        "text": "だからこそ、私たちの好きな料理用ハーブの多くがこの土地から来るのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ローズマリー、セージ、タイム、ラベンダー、ミント、オレガノはみな、地中海性バイオームに自生しています。",
+      "text_markdown": "ローズマリー、セージ、タイム、ラベンダー、ミント、オレガノはみな、地中海性バイオームに自生しています。",
+      "tts": {
+        "text": "ローズマリー、セージ、タイム、ラベンダー、ミント、オレガノはみな、地中海性バイオームに自生しています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このバイオームで最も有名な木はオリーブの木です。",
+      "text_markdown": "このバイオームで最も有名な木はオリーブの木です。",
+      "tts": {
+        "text": "このバイオームで最も有名な木はオリーブの木です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オリーブの木は太くねじれた幹と、小さな銀灰色の葉を持ちます。",
+      "text_markdown": "オリーブの木は太くねじれた幹と、小さな銀灰色の葉を持ちます。",
+      "tts": {
+        "text": "オリーブの木は太くねじれた幹と、小さな銀灰色の葉を持ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オリーブの木の中には千年以上生きるものもあります。",
+      "text_markdown": "オリーブの木の中には千年以上生きるものもあります。",
+      "tts": {
+        "text": "オリーブの木の中には千年以上生きるものもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他によく見られる木は、背の低い常緑のオーク、マツ、コルクガシです。",
+      "text_markdown": "他によく見られる木は、背の低い常緑のオーク、マツ、コルクガシです。",
+      "tts": {
+        "text": "他によく見られる木は、背の低い常緑のオーク、マツ、コルクガシです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "野生のブドウのつるもこの土地で生まれ、茂みから這い上がりました。",
+      "text_markdown": "野生のブドウのつるもこの土地で生まれ、茂みから這い上がりました。",
+      "tts": {
+        "text": "野生のブドウのつるもこの土地で生まれ、茂みから這い上がりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海岸沿いには、背の高い竹の群れやイチジクの木、アーモンドの木が見られるかもしれません。",
+      "text_markdown": "海岸沿いには、背の高い竹の群れやイチジクの木、アーモンドの木が見られるかもしれません。",
+      "tts": {
+        "text": "海岸沿いには、背の高い竹の群れやイチジクの木、アーモンドの木が見られるかもしれません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここの植物の多くは、秋に葉を落とすのではなく、一年中葉を保ちます。",
+      "text_markdown": "ここの植物の多くは、秋に葉を落とすのではなく、一年中葉を保ちます。",
+      "tts": {
+        "text": "ここの植物の多くは、秋に葉を落とすのではなく、一年中葉を保ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "毎春、新しい葉を育てる余裕はないのです。",
+      "text_markdown": "毎春、新しい葉を育てる余裕はないのです。",
+      "tts": {
+        "text": "毎春、新しい葉を育てる余裕はないのです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、小さく丈夫な葉を一年中保ちます。",
+      "text_markdown": "だから、小さく丈夫な葉を一年中保ちます。",
+      "tts": {
+        "text": "だから、小さく丈夫な葉を一年中保ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが地中海性バイオームに、ほこりっぽい常緑の姿を与えます。",
+      "text_markdown": "それが地中海性バイオームに、ほこりっぽい常緑の姿を与えます。",
+      "tts": {
+        "text": "それが地中海性バイオームに、ほこりっぽい常緑の姿を与えます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物",
+      "text_markdown": "動物"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームの動物には、暑さや乾いた夏を生き抜くいろいろな方法があります。",
+      "text_markdown": "地中海性バイオームの動物には、暑さや乾いた夏を生き抜くいろいろな方法があります。",
+      "tts": {
+        "text": "地中海性バイオームの動物には、暑さや乾いた夏を生き抜くいろいろな方法があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほとんどは小さくて素早いです。",
+      "text_markdown": "ほとんどは小さくて素早いです。",
+      "tts": {
+        "text": "ほとんどは小さくて素早いです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小さな動物は、茂みの下や岩の間の割れ目に簡単に隠れられます。",
+      "text_markdown": "小さな動物は、茂みの下や岩の間の割れ目に簡単に隠れられます。",
+      "tts": {
+        "text": "小さな動物は、茂みの下や岩の間の割れ目に簡単に隠れられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くは昼の暑い間は休み、涼しい朝や夕方に出てきます。",
+      "text_markdown": "多くは昼の暑い間は休み、涼しい朝や夕方に出てきます。",
+      "tts": {
+        "text": "多くは昼の暑い間は休み、涼しい朝や夕方に出てきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウサギや野ウサギは多くのこれらの土地に住みます。",
+      "text_markdown": "ウサギや野ウサギは多くのこれらの土地に住みます。",
+      "tts": {
+        "text": "ウサギや野ウサギは多くのこれらの土地に住みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夕暮れと夜明けに食べ、昼は茂みの下に隠れた巣穴で過ごします。",
+      "text_markdown": "夕暮れと夜明けに食べ、昼は茂みの下に隠れた巣穴で過ごします。",
+      "tts": {
+        "text": "夕暮れと夜明けに食べ、昼は茂みの下に隠れた巣穴で過ごします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キツネはウサギや他の小さな動物を狩ります。",
+      "text_markdown": "キツネはウサギや他の小さな動物を狩ります。",
+      "tts": {
+        "text": "キツネはウサギや他の小さな動物を狩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キツネは茂みを抜けるあらゆる小道を知っています。",
+      "text_markdown": "キツネは茂みを抜けるあらゆる小道を知っています。",
+      "tts": {
+        "text": "キツネは茂みを抜けるあらゆる小道を知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "イノシシは柔らかい土を掘って、根や木の実や小さな動物を探します。",
+      "text_markdown": "イノシシは柔らかい土を掘って、根や木の実や小さな動物を探します。",
+      "tts": {
+        "text": "イノシシは柔らかい土を掘って、根や木の実や小さな動物を探します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "強くて臆病で、小さな家族の群れで動きます。",
+      "text_markdown": "強くて臆病で、小さな家族の群れで動きます。",
+      "tts": {
+        "text": "強くて臆病で、小さな家族の群れで動きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ある地中海の土地では、小さな野生のネコが夜に狩りをします。",
+      "text_markdown": "ある地中海の土地では、小さな野生のネコが夜に狩りをします。",
+      "tts": {
+        "text": "ある地中海の土地では、小さな野生のネコが夜に狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオヤマネコはそうしたネコの一つで、短い尾と房のついた耳を持ちます。",
+      "text_markdown": "オオヤマネコはそうしたネコの一つで、短い尾と房のついた耳を持ちます。",
+      "tts": {
+        "text": "オオヤマネコはそうしたネコの一つで、短い尾と房のついた耳を持ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今ではめずらしく、ほんの少しの野生の場所にしか住んでいません。",
+      "text_markdown": "今ではめずらしく、ほんの少しの野生の場所にしか住んでいません。",
+      "tts": {
+        "text": "今ではめずらしく、ほんの少しの野生の場所にしか住んでいません。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シカもバイオームの端の森に住んでいます。",
+      "text_markdown": "シカもバイオームの端の森に住んでいます。",
+      "tts": {
+        "text": "シカもバイオームの端の森に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヘビやトカゲはどこにでもいます。",
+      "text_markdown": "ヘビやトカゲはどこにでもいます。",
+      "tts": {
+        "text": "ヘビやトカゲはどこにでもいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暖かい岩の上にとまるトカゲは、夏によく見られる光景です。",
+      "text_markdown": "暖かい岩の上にとまるトカゲは、夏によく見られる光景です。",
+      "tts": {
+        "text": "暖かい岩の上にとまるトカゲは、夏によく見られる光景です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "リクガメは茂みの中をゆっくり進み、葉や草を食べます。",
+      "text_markdown": "リクガメは茂みの中をゆっくり進み、葉や草を食べます。",
+      "tts": {
+        "text": "リクガメは茂みの中をゆっくり進み、葉や草を食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海のリクガメは何十年も生きられます。",
+      "text_markdown": "地中海のリクガメは何十年も生きられます。",
+      "tts": {
+        "text": "地中海のリクガメは何十年も生きられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここには多くの鳥がいます。",
+      "text_markdown": "ここには多くの鳥がいます。",
+      "tts": {
+        "text": "ここには多くの鳥がいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "スズメやコマドリやウグイスが、茂みを声で満たします。",
+      "text_markdown": "スズメやコマドリやウグイスが、茂みを声で満たします。",
+      "tts": {
+        "text": "スズメやコマドリやウグイスが、茂みを声で満たします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い空には、ワシや他の大きな鳥が暖かい午後の空気に乗って漂います。",
+      "text_markdown": "高い空には、ワシや他の大きな鳥が暖かい午後の空気に乗って漂います。",
+      "tts": {
+        "text": "高い空には、ワシや他の大きな鳥が暖かい午後の空気に乗って漂います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春には、蝶が花から花へと舞います。",
+      "text_markdown": "春には、蝶が花から花へと舞います。",
+      "tts": {
+        "text": "春には、蝶が花から花へと舞います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "コオロギやバッタは暖かい夏の夕べに歌います。",
+      "text_markdown": "コオロギやバッタは暖かい夏の夕べに歌います。",
+      "tts": {
+        "text": "コオロギやバッタは暖かい夏の夕べに歌います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海辺では、カモメや他の海鳥が崖や岩の島に巣を作ります。",
+      "text_markdown": "海辺では、カモメや他の海鳥が崖や岩の島に巣を作ります。",
+      "tts": {
+        "text": "海辺では、カモメや他の海鳥が崖や岩の島に巣を作ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここのすべての動物は、夏に日陰を見つけ、泉で水を飲み、冬の雨の涼しさを待つ方法を知っています。",
+      "text_markdown": "ここのすべての動物は、夏に日陰を見つけ、泉で水を飲み、冬の雨の涼しさを待つ方法を知っています。",
+      "tts": {
+        "text": "ここのすべての動物は、夏に日陰を見つけ、泉で水を飲み、冬の雨の涼しさを待つ方法を知っています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームは、とても長い間、人々の住処でした。",
+      "text_markdown": "地中海性バイオームは、とても長い間、人々の住処でした。",
+      "tts": {
+        "text": "地中海性バイオームは、とても長い間、人々の住処でした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界で最も古い都市や農場のいくつかはここで始まりました。",
+      "text_markdown": "世界で最も古い都市や農場のいくつかはここで始まりました。",
+      "tts": {
+        "text": "世界で最も古い都市や農場のいくつかはここで始まりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年もの間、地中海の岸辺の人々は三つの植物を一緒に育ててきました。",
+      "text_markdown": "何千年もの間、地中海の岸辺の人々は三つの植物を一緒に育ててきました。",
+      "tts": {
+        "text": "何千年もの間、地中海の岸辺の人々は三つの植物を一緒に育ててきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "油を取るためにオリーブの木を育てます。",
+      "text_markdown": "油を取るためにオリーブの木を育てます。",
+      "tts": {
+        "text": "油を取るためにオリーブの木を育てます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "果実とワインのためにブドウのつるを育てます。",
+      "text_markdown": "果実とワインのためにブドウのつるを育てます。",
+      "tts": {
+        "text": "果実とワインのためにブドウのつるを育てます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パンのために小麦や他の穀物を育てます。",
+      "text_markdown": "パンのために小麦や他の穀物を育てます。",
+      "tts": {
+        "text": "パンのために小麦や他の穀物を育てます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この三つは、地中海料理の心と呼ばれることもあります。",
+      "text_markdown": "この三つは、地中海料理の心と呼ばれることもあります。",
+      "tts": {
+        "text": "この三つは、地中海料理の心と呼ばれることもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それに、人々は野菜や果物、丘の野のハーブを加えました。",
+      "text_markdown": "それに、人々は野菜や果物、丘の野のハーブを加えました。",
+      "tts": {
+        "text": "それに、人々は野菜や果物、丘の野のハーブを加えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々はまた、何千年もの間、この土地で羊やヤギの群れを飼ってきました。",
+      "text_markdown": "人々はまた、何千年もの間、この土地で羊やヤギの群れを飼ってきました。",
+      "tts": {
+        "text": "人々はまた、何千年もの間、この土地で羊やヤギの群れを飼ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの動物は、作物を育てにくい岩がちな斜面で食べ物を見つけられます。",
+      "text_markdown": "これらの動物は、作物を育てにくい岩がちな斜面で食べ物を見つけられます。",
+      "tts": {
+        "text": "これらの動物は、作物を育てにくい岩がちな斜面で食べ物を見つけられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チーズやヨーグルトのための乳、衣服のための毛、そして肉をくれます。",
+      "text_markdown": "チーズやヨーグルトのための乳、衣服のための毛、そして肉をくれます。",
+      "tts": {
+        "text": "チーズやヨーグルトのための乳、衣服のための毛、そして肉をくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海や大洋が近いので、このバイオームの人々はずっと漁師や船乗りでした。",
+      "text_markdown": "海や大洋が近いので、このバイオームの人々はずっと漁師や船乗りでした。",
+      "tts": {
+        "text": "海や大洋が近いので、このバイオームの人々はずっと漁師や船乗りでした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木の船が夜明けに出て、魚やタコや他の海の幸を持ち帰ります。",
+      "text_markdown": "木の船が夜明けに出て、魚やタコや他の海の幸を持ち帰ります。",
+      "tts": {
+        "text": "木の船が夜明けに出て、魚やタコや他の海の幸を持ち帰ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界の他の地中海性の土地、カリフォルニア、チリ、南アフリカ、オーストラリアでも、何千年もそこに住んできた人々は、同じ野生の植物や動物を自分たちのやり方で使ってきました。",
+      "text_markdown": "世界の他の地中海性の土地、カリフォルニア、チリ、南アフリカ、オーストラリアでも、何千年もそこに住んできた人々は、同じ野生の植物や動物を自分たちのやり方で使ってきました。",
+      "tts": {
+        "text": "世界の他の地中海性の土地、カリフォルニア、チリ、南アフリカ、オーストラリアでも、何千年もそこに住んできた人々は、同じ野生の植物や動物を自分たちのやり方で使ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ずっと後に地中海の周りの土地から農夫がそれらの場所に来たとき、彼らはオリーブやブドウのつる、小麦を一緒に持ってきました。",
+      "text_markdown": "ずっと後に地中海の周りの土地から農夫がそれらの場所に来たとき、彼らはオリーブやブドウのつる、小麦を一緒に持ってきました。",
+      "tts": {
+        "text": "ずっと後に地中海の周りの土地から農夫がそれらの場所に来たとき、彼らはオリーブやブドウのつる、小麦を一緒に持ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今日では、世界の五つの地中海性地域すべてで、同じような食べ物が育てられています。",
+      "text_markdown": "今日では、世界の五つの地中海性地域すべてで、同じような食べ物が育てられています。",
+      "tts": {
+        "text": "今日では、世界の五つの地中海性地域すべてで、同じような食べ物が育てられています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "土地がそれを呼んでいるかのようです。",
+      "text_markdown": "土地がそれを呼んでいるかのようです。",
+      "tts": {
+        "text": "土地がそれを呼んでいるかのようです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの地中海地域の台所も、同じ基本の贈り物を分かち合っています。",
+      "text_markdown": "どの地中海地域の台所も、同じ基本の贈り物を分かち合っています。",
+      "tts": {
+        "text": "どの地中海地域の台所も、同じ基本の贈り物を分かち合っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "パン、チーズ、オリーブ油、新鮮なトマト、魚、果物、そしてワインです。",
+      "text_markdown": "パン、チーズ、オリーブ油、新鮮なトマト、魚、果物、そしてワインです。",
+      "tts": {
+        "text": "パン、チーズ、オリーブ油、新鮮なトマト、魚、果物、そしてワインです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この土地の人々は、長く乾いた夏を最大限に活かす方法をずっと知ってきました。",
+      "text_markdown": "この土地の人々は、長く乾いた夏を最大限に活かす方法をずっと知ってきました。",
+      "tts": {
+        "text": "この土地の人々は、長く乾いた夏を最大限に活かす方法をずっと知ってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暖かい季節には新鮮なものを食べます。",
+      "text_markdown": "暖かい季節には新鮮なものを食べます。",
+      "tts": {
+        "text": "暖かい季節には新鮮なものを食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨の冬のために、食べ物を油や塩や瓶にしまっておきます。",
+      "text_markdown": "雨の冬のために、食べ物を油や塩や瓶にしまっておきます。",
+      "tts": {
+        "text": "雨の冬のために、食べ物を油や塩や瓶にしまっておきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの地中海地域でも、この暮らしには独自の言葉や歌や物語があります。",
+      "text_markdown": "どの地中海地域でも、この暮らしには独自の言葉や歌や物語があります。",
+      "tts": {
+        "text": "どの地中海地域でも、この暮らしには独自の言葉や歌や物語があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今日のバイオーム",
+      "text_markdown": "今日のバイオーム"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海性バイオームは小さいけれど、とても大切です。",
+      "text_markdown": "地中海性バイオームは小さいけれど、とても大切です。",
+      "tts": {
+        "text": "地中海性バイオームは小さいけれど、とても大切です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地球のほんの一部しか占めていないのに、他のどこにもいない多くの植物と動物を抱えています。",
+      "text_markdown": "地球のほんの一部しか占めていないのに、他のどこにもいない多くの植物と動物を抱えています。",
+      "tts": {
+        "text": "地球のほんの一部しか占めていないのに、他のどこにもいない多くの植物と動物を抱えています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々にとって、このバイオームは何千年もの間、食べ物と農業のゆりかごでした。",
+      "text_markdown": "人々にとって、このバイオームは何千年もの間、食べ物と農業のゆりかごでした。",
+      "tts": {
+        "text": "人々にとって、このバイオームは何千年もの間、食べ物と農業のゆりかごでした。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、このバイオームは多くの場所で危機にあります。",
+      "text_markdown": "でも、このバイオームは多くの場所で危機にあります。",
+      "tts": {
+        "text": "でも、このバイオームは多くの場所で危機にあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "気候が穏やかで海が近い海岸沿いに、都市や町が広がってきました。",
+      "text_markdown": "気候が穏やかで海が近い海岸沿いに、都市や町が広がってきました。",
+      "tts": {
+        "text": "気候が穏やかで海が近い海岸沿いに、都市や町が広がってきました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "道路や家、ホテル、農場が、多くの野生の茂みや木々に取って代わりました。",
+      "text_markdown": "道路や家、ホテル、農場が、多くの野生の茂みや木々に取って代わりました。",
+      "tts": {
+        "text": "道路や家、ホテル、農場が、多くの野生の茂みや木々に取って代わりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "以前より暑い長い乾いた夏が、火事をより大きく危険にしています。",
+      "text_markdown": "以前より暑い長い乾いた夏が、火事をより大きく危険にしています。",
+      "tts": {
+        "text": "以前より暑い長い乾いた夏が、火事をより大きく危険にしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオヤマネコや地中海のリクガメのような動物は、とてもめずらしくなりました。",
+      "text_markdown": "オオヤマネコや地中海のリクガメのような動物は、とてもめずらしくなりました。",
+      "tts": {
+        "text": "オオヤマネコや地中海のリクガメのような動物は、とてもめずらしくなりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界中の多くの団体が、残されたものを守ろうと働いています。",
+      "text_markdown": "世界中の多くの団体が、残されたものを守ろうと働いています。",
+      "tts": {
+        "text": "世界中の多くの団体が、残されたものを守ろうと働いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "野生の植物や動物がまだ生きられる公園を取っておきます。",
+      "text_markdown": "野生の植物や動物がまだ生きられる公園を取っておきます。",
+      "tts": {
+        "text": "野生の植物や動物がまだ生きられる公園を取っておきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新しいオリーブの木を植え、古い木を守ります。",
+      "text_markdown": "新しいオリーブの木を植え、古い木を守ります。",
+      "tts": {
+        "text": "新しいオリーブの木を植え、古い木を守ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "土地に優しいやり方で食べ物を育てるよう、農夫を助けます。",
+      "text_markdown": "土地に優しいやり方で食べ物を育てるよう、農夫を助けます。",
+      "tts": {
+        "text": "土地に優しいやり方で食べ物を育てるよう、農夫を助けます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もっとよく理解するために、バイオームを研究します。",
+      "text_markdown": "もっとよく理解するために、バイオームを研究します。",
+      "tts": {
+        "text": "もっとよく理解するために、バイオームを研究します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "健やかな地中海性バイオームは、静かで香り高い、美しい場所です。",
+      "text_markdown": "健やかな地中海性バイオームは、静かで香り高い、美しい場所です。",
+      "tts": {
+        "text": "健やかな地中海性バイオームは、静かで香り高い、美しい場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "今日のバイオーム",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私たちの手で守る価値があります。",
+      "text_markdown": "私たちの手で守る価値があります。",
+      "tts": {
+        "text": "私たちの手で守る価値があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "むすび",
+      "text_markdown": "むすび"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが地中海性バイオームです。",
+      "text_markdown": "それが地中海性バイオームです。",
+      "tts": {
+        "text": "それが地中海性バイオームです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オリーブの木と低木と暖かい夏の夕べの、明るく乾いた香り高い世界です。",
+      "text_markdown": "オリーブの木と低木と暖かい夏の夕べの、明るく乾いた香り高い世界です。",
+      "tts": {
+        "text": "オリーブの木と低木と暖かい夏の夕べの、明るく乾いた香り高い世界です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "いつかその中に立ったら、しばらく静かにしてみてください。",
+      "text_markdown": "いつかその中に立ったら、しばらく静かにしてみてください。",
+      "tts": {
+        "text": "いつかその中に立ったら、しばらく静かにしてみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "空気の中の暖かいハーブの香りをかいでください。",
+      "text_markdown": "空気の中の暖かいハーブの香りをかいでください。",
+      "tts": {
+        "text": "空気の中の暖かいハーブの香りをかいでください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乾いた草の中のコオロギの声を聞いてください。",
+      "text_markdown": "乾いた草の中のコオロギの声を聞いてください。",
+      "tts": {
+        "text": "乾いた草の中のコオロギの声を聞いてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海の方を眺めてください。",
+      "text_markdown": "海の方を眺めてください。",
+      "tts": {
+        "text": "海の方を眺めてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "むすび",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたの周りでバイオームの心臓が脈打つのを感じるでしょう。",
+      "text_markdown": "あなたの周りでバイオームの心臓が脈打つのを感じるでしょう。",
+      "tts": {
+        "text": "あなたの周りでバイオームの心臓が脈打つのを感じるでしょう。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

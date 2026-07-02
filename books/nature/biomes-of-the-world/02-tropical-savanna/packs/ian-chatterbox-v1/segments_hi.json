@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "उष्णकटिबंधीय सवाना",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "उष्णकटिबंधीय सवाना",
+      "text_markdown": "उष्णकटिबंधीय सवाना"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "सवाना कहाँ उगते हैं",
+      "text_markdown": "सवाना कहाँ उगते हैं"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय सवाना में आपका स्वागत है।",
+      "text_markdown": "उष्णकटिबंधीय सवाना में आपका स्वागत है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय सवाना में आपका स्वागत है।",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+      "text_markdown": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+      "tts": {
+        "text": "यह दुनिया के महान जैव क्षेत्रों में से एक है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जैव क्षेत्र पृथ्वी का एक हिस्सा है जिसका अपना मौसम, पौधे और जानवर होते हैं।",
+      "text_markdown": "जैव क्षेत्र पृथ्वी का एक हिस्सा है जिसका अपना मौसम, पौधे और जानवर होते हैं।",
+      "tts": {
+        "text": "जैव क्षेत्र पृथ्वी का एक हिस्सा है जिसका अपना मौसम, पौधे और जानवर होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना एक चौड़ा घास का मैदान है जिसमें बिखरे हुए पेड़ होते हैं।",
+      "text_markdown": "सवाना एक चौड़ा घास का मैदान है जिसमें बिखरे हुए पेड़ होते हैं।",
+      "tts": {
+        "text": "सवाना एक चौड़ा घास का मैदान है जिसमें बिखरे हुए पेड़ होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह पूरे साल गर्म रहता है।",
+      "text_markdown": "यह पूरे साल गर्म रहता है।",
+      "tts": {
+        "text": "यह पूरे साल गर्म रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसमें एक लंबा सूखा समय और एक छोटा गीला समय होता है।",
+      "text_markdown": "इसमें एक लंबा सूखा समय और एक छोटा गीला समय होता है।",
+      "tts": {
+        "text": "इसमें एक लंबा सूखा समय और एक छोटा गीला समय होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया के सबसे बड़े सवाना अफ़्रीका में हैं।",
+      "text_markdown": "दुनिया के सबसे बड़े सवाना अफ़्रीका में हैं।",
+      "tts": {
+        "text": "दुनिया के सबसे बड़े सवाना अफ़्रीका में हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे महाद्वीप के अधिकांश मध्य भाग में फैले हुए हैं।",
+      "text_markdown": "वे महाद्वीप के अधिकांश मध्य भाग में फैले हुए हैं।",
+      "tts": {
+        "text": "वे महाद्वीप के अधिकांश मध्य भाग में फैले हुए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण अमेरिका में भी बड़े सवाना हैं, जिन्हें सेर्राडो कहते हैं।",
+      "text_markdown": "दक्षिण अमेरिका में भी बड़े सवाना हैं, जिन्हें सेर्राडो कहते हैं।",
+      "tts": {
+        "text": "दक्षिण अमेरिका में भी बड़े सवाना हैं, जिन्हें सेर्राडो कहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऑस्ट्रेलिया के उत्तर में भी उष्णकटिबंधीय सवाना हैं।",
+      "text_markdown": "ऑस्ट्रेलिया के उत्तर में भी उष्णकटिबंधीय सवाना हैं।",
+      "tts": {
+        "text": "ऑस्ट्रेलिया के उत्तर में भी उष्णकटिबंधीय सवाना हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "भारत और दक्षिण पूर्व एशिया में छोटे सवाना हैं।",
+      "text_markdown": "भारत और दक्षिण पूर्व एशिया में छोटे सवाना हैं।",
+      "tts": {
+        "text": "भारत और दक्षिण पूर्व एशिया में छोटे सवाना हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से हर एक अपने आप, दूसरों से दूर विकसित हुआ।",
+      "text_markdown": "इनमें से हर एक अपने आप, दूसरों से दूर विकसित हुआ।",
+      "tts": {
+        "text": "इनमें से हर एक अपने आप, दूसरों से दूर विकसित हुआ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग हैं।",
+      "text_markdown": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग हैं।",
+      "tts": {
+        "text": "इसलिए दुनिया के हर हिस्से में पौधे और जानवर अलग हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका में चरने वाला जानवर दक्षिण अमेरिका या ऑस्ट्रेलिया वाले जैसा नहीं होता।",
+      "text_markdown": "अफ़्रीका में चरने वाला जानवर दक्षिण अमेरिका या ऑस्ट्रेलिया वाले जैसा नहीं होता।",
+      "tts": {
+        "text": "अफ़्रीका में चरने वाला जानवर दक्षिण अमेरिका या ऑस्ट्रेलिया वाले जैसा नहीं होता।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन वे सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+      "text_markdown": "लेकिन वे सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+      "tts": {
+        "text": "लेकिन वे सब एक ही जैव क्षेत्र का हिस्सा हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब आप सवाना में खड़े होते हैं, तो आप बहुत दूर तक देख सकते हैं।",
+      "text_markdown": "जब आप सवाना में खड़े होते हैं, तो आप बहुत दूर तक देख सकते हैं।",
+      "tts": {
+        "text": "जब आप सवाना में खड़े होते हैं, तो आप बहुत दूर तक देख सकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास आपकी कमर तक या उससे ऊँची होती है।",
+      "text_markdown": "घास आपकी कमर तक या उससे ऊँची होती है।",
+      "tts": {
+        "text": "घास आपकी कमर तक या उससे ऊँची होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ चपटी चोटी वाले पेड़ घास के ऊपर उठते हैं।",
+      "text_markdown": "कुछ चपटी चोटी वाले पेड़ घास के ऊपर उठते हैं।",
+      "tts": {
+        "text": "कुछ चपटी चोटी वाले पेड़ घास के ऊपर उठते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आसमान विशाल है।",
+      "text_markdown": "आसमान विशाल है।",
+      "tts": {
+        "text": "आसमान विशाल है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "रोशनी सुनहरी है।",
+      "text_markdown": "रोशनी सुनहरी है।",
+      "tts": {
+        "text": "रोशनी सुनहरी है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप घास में से हवा गुज़रती सुनते हैं।",
+      "text_markdown": "आप घास में से हवा गुज़रती सुनते हैं।",
+      "tts": {
+        "text": "आप घास में से हवा गुज़रती सुनते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप दूर से पक्षियों की पुकार सुनते हैं।",
+      "text_markdown": "आप दूर से पक्षियों की पुकार सुनते हैं।",
+      "tts": {
+        "text": "आप दूर से पक्षियों की पुकार सुनते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही सवाना है।",
+      "text_markdown": "यही सवाना है।",
+      "tts": {
+        "text": "यही सवाना है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "सवाना कहाँ उगते हैं",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास, बिखरे हुए पेड़ और विशाल आसमान वाली एक बड़ी खुली भूमि।",
+      "text_markdown": "घास, बिखरे हुए पेड़ और विशाल आसमान वाली एक बड़ी खुली भूमि।",
+      "tts": {
+        "text": "घास, बिखरे हुए पेड़ और विशाल आसमान वाली एक बड़ी खुली भूमि।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "मौसम",
+      "text_markdown": "मौसम"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय सवाना का मौसम सरल है।",
+      "text_markdown": "उष्णकटिबंधीय सवाना का मौसम सरल है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय सवाना का मौसम सरल है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह पूरे साल गर्म रहता है।",
+      "text_markdown": "यह पूरे साल गर्म रहता है।",
+      "tts": {
+        "text": "यह पूरे साल गर्म रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन वर्षावन के विपरीत, सवाना में होती हैं दो बहुत अलग ऋतुएँ।",
+      "text_markdown": "लेकिन वर्षावन के विपरीत, सवाना में होती हैं दो बहुत अलग ऋतुएँ।",
+      "tts": {
+        "text": "लेकिन वर्षावन के विपरीत, सवाना में होती हैं दो बहुत अलग ऋतुएँ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक लंबा सूखा समय और एक छोटा गीला समय होता है।",
+      "text_markdown": "एक लंबा सूखा समय और एक छोटा गीला समय होता है।",
+      "tts": {
+        "text": "एक लंबा सूखा समय और एक छोटा गीला समय होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखे समय में, कई महीनों तक आसमान साफ़ रहता है।",
+      "text_markdown": "सूखे समय में, कई महीनों तक आसमान साफ़ रहता है।",
+      "tts": {
+        "text": "सूखे समय में, कई महीनों तक आसमान साफ़ रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास सुनहरी और भुरभुरी हो जाती है।",
+      "text_markdown": "घास सुनहरी और भुरभुरी हो जाती है।",
+      "tts": {
+        "text": "घास सुनहरी और भुरभुरी हो जाती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नदियाँ सिकुड़ जाती हैं, और कई छोटे तालाब पूरी तरह सूख जाते हैं।",
+      "text_markdown": "नदियाँ सिकुड़ जाती हैं, और कई छोटे तालाब पूरी तरह सूख जाते हैं।",
+      "tts": {
+        "text": "नदियाँ सिकुड़ जाती हैं, और कई छोटे तालाब पूरी तरह सूख जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ पानी बचाने के लिए अपने पत्ते गिरा देते हैं।",
+      "text_markdown": "पेड़ पानी बचाने के लिए अपने पत्ते गिरा देते हैं।",
+      "tts": {
+        "text": "पेड़ पानी बचाने के लिए अपने पत्ते गिरा देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गीला समय क्षितिज पर बड़े बादलों के जमा होने से शुरू होता है।",
+      "text_markdown": "गीला समय क्षितिज पर बड़े बादलों के जमा होने से शुरू होता है।",
+      "tts": {
+        "text": "गीला समय क्षितिज पर बड़े बादलों के जमा होने से शुरू होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहली बारिश तेज़ तूफ़ानों में गरज और बिजली के साथ गिरती है।",
+      "text_markdown": "पहली बारिश तेज़ तूफ़ानों में गरज और बिजली के साथ गिरती है।",
+      "tts": {
+        "text": "पहली बारिश तेज़ तूफ़ानों में गरज और बिजली के साथ गिरती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब बारिश आती है, तो सवाना रातोंरात बदल जाता है।",
+      "text_markdown": "जब बारिश आती है, तो सवाना रातोंरात बदल जाता है।",
+      "tts": {
+        "text": "जब बारिश आती है, तो सवाना रातोंरात बदल जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखी मिट्टी से नई घास उग आती है।",
+      "text_markdown": "सूखी मिट्टी से नई घास उग आती है।",
+      "tts": {
+        "text": "सूखी मिट्टी से नई घास उग आती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ों पर ताज़े हरे पत्ते निकलते हैं।",
+      "text_markdown": "पेड़ों पर ताज़े हरे पत्ते निकलते हैं।",
+      "tts": {
+        "text": "पेड़ों पर ताज़े हरे पत्ते निकलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फूल रंगों की लहरों में खिलते हैं।",
+      "text_markdown": "फूल रंगों की लहरों में खिलते हैं।",
+      "tts": {
+        "text": "फूल रंगों की लहरों में खिलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गीला समय छोटा होता है, लेकिन तभी अधिकांश जीवन घटित होता है।",
+      "text_markdown": "गीला समय छोटा होता है, लेकिन तभी अधिकांश जीवन घटित होता है।",
+      "tts": {
+        "text": "गीला समय छोटा होता है, लेकिन तभी अधिकांश जीवन घटित होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखा समय लंबा होता है, लेकिन सवाना उसके लिए बना है।",
+      "text_markdown": "सूखा समय लंबा होता है, लेकिन सवाना उसके लिए बना है।",
+      "tts": {
+        "text": "सूखा समय लंबा होता है, लेकिन सवाना उसके लिए बना है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "मौसम",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ का हर पौधा और हर जानवर बारिश का इंतज़ार करना जानता है।",
+      "text_markdown": "यहाँ का हर पौधा और हर जानवर बारिश का इंतज़ार करना जानता है।",
+      "tts": {
+        "text": "यहाँ का हर पौधा और हर जानवर बारिश का इंतज़ार करना जानता है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ज़मीन और पानी",
+      "text_markdown": "ज़मीन और पानी"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना की ज़मीन ज़्यादातर समतल और चौड़ी होती है।",
+      "text_markdown": "सवाना की ज़मीन ज़्यादातर समतल और चौड़ी होती है।",
+      "tts": {
+        "text": "सवाना की ज़मीन ज़्यादातर समतल और चौड़ी होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ जगहों पर घास में से नीची लहराती पहाड़ियाँ उठती हैं।",
+      "text_markdown": "कुछ जगहों पर घास में से नीची लहराती पहाड़ियाँ उठती हैं।",
+      "tts": {
+        "text": "कुछ जगहों पर घास में से नीची लहराती पहाड़ियाँ उठती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कभी कभी मैदान पर एक बड़ी चट्टानी चोटी अकेली खड़ी रहती है।",
+      "text_markdown": "कभी कभी मैदान पर एक बड़ी चट्टानी चोटी अकेली खड़ी रहती है।",
+      "tts": {
+        "text": "कभी कभी मैदान पर एक बड़ी चट्टानी चोटी अकेली खड़ी रहती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास के नीचे की मिट्टी सवाना के अलग अलग हिस्सों में अलग होती है।",
+      "text_markdown": "घास के नीचे की मिट्टी सवाना के अलग अलग हिस्सों में अलग होती है।",
+      "tts": {
+        "text": "घास के नीचे की मिट्टी सवाना के अलग अलग हिस्सों में अलग होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ जगहों पर यह गहरी और उपजाऊ होती है।",
+      "text_markdown": "कुछ जगहों पर यह गहरी और उपजाऊ होती है।",
+      "tts": {
+        "text": "कुछ जगहों पर यह गहरी और उपजाऊ होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरी जगहों पर यह रेतीली या पतली होती है।",
+      "text_markdown": "दूसरी जगहों पर यह रेतीली या पतली होती है।",
+      "tts": {
+        "text": "दूसरी जगहों पर यह रेतीली या पतली होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घासें इन सब में उगना सीख चुकी हैं।",
+      "text_markdown": "घासें इन सब में उगना सीख चुकी हैं।",
+      "tts": {
+        "text": "घासें इन सब में उगना सीख चुकी हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब बारिश आती है, तो निचली जगहों में जमा पानी से बनते हैं तालाब और उथली झीलें।",
+      "text_markdown": "जब बारिश आती है, तो निचली जगहों में जमा पानी से बनते हैं तालाब और उथली झीलें।",
+      "tts": {
+        "text": "जब बारिश आती है, तो निचली जगहों में जमा पानी से बनते हैं तालाब और उथली झीलें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इनमें से कुछ महीनों तक बने रहते हैं, और कुछ कुछ हफ़्तों में सूख जाते हैं।",
+      "text_markdown": "इनमें से कुछ महीनों तक बने रहते हैं, और कुछ कुछ हफ़्तों में सूख जाते हैं।",
+      "tts": {
+        "text": "इनमें से कुछ महीनों तक बने रहते हैं, और कुछ कुछ हफ़्तों में सूख जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नदियाँ सवाना के पार लंबे, धीमे मोड़ों में बहती हैं।",
+      "text_markdown": "नदियाँ सवाना के पार लंबे, धीमे मोड़ों में बहती हैं।",
+      "tts": {
+        "text": "नदियाँ सवाना के पार लंबे, धीमे मोड़ों में बहती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गीले समय में वे चौड़ी और भरी हुई होती हैं।",
+      "text_markdown": "गीले समय में वे चौड़ी और भरी हुई होती हैं।",
+      "tts": {
+        "text": "गीले समय में वे चौड़ी और भरी हुई होती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखे समय में वे रेत में पतली धार बन जाती हैं, या शांत तालाबों की लड़ी बन जाती हैं।",
+      "text_markdown": "सूखे समय में वे रेत में पतली धार बन जाती हैं, या शांत तालाबों की लड़ी बन जाती हैं।",
+      "tts": {
+        "text": "सूखे समय में वे रेत में पतली धार बन जाती हैं, या शांत तालाबों की लड़ी बन जाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना के बहुत से जानवर पानी पीने के लिए इन नदियों और तालाबों पर इकट्ठा होते हैं।",
+      "text_markdown": "सवाना के बहुत से जानवर पानी पीने के लिए इन नदियों और तालाबों पर इकट्ठा होते हैं।",
+      "tts": {
+        "text": "सवाना के बहुत से जानवर पानी पीने के लिए इन नदियों और तालाबों पर इकट्ठा होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखे समय में तालाब एक व्यस्त जगह होती है।",
+      "text_markdown": "सूखे समय में तालाब एक व्यस्त जगह होती है।",
+      "tts": {
+        "text": "सूखे समय में तालाब एक व्यस्त जगह होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जो जानवर आम तौर पर नहीं मिलते, वे पानी पीने के लिए एक दूसरे के पास खड़े होते हैं।",
+      "text_markdown": "जो जानवर आम तौर पर नहीं मिलते, वे पानी पीने के लिए एक दूसरे के पास खड़े होते हैं।",
+      "tts": {
+        "text": "जो जानवर आम तौर पर नहीं मिलते, वे पानी पीने के लिए एक दूसरे के पास खड़े होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नदियाँ अपने साथ ऊँचे पेड़ों की एक पट्टी भी लाती हैं।",
+      "text_markdown": "नदियाँ अपने साथ ऊँचे पेड़ों की एक पट्टी भी लाती हैं।",
+      "tts": {
+        "text": "नदियाँ अपने साथ ऊँचे पेड़ों की एक पट्टी भी लाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "किनारों पर पेड़ सूखे समय में भी घने और हरे रहते हैं।",
+      "text_markdown": "किनारों पर पेड़ सूखे समय में भी घने और हरे रहते हैं।",
+      "tts": {
+        "text": "किनारों पर पेड़ सूखे समय में भी घने और हरे रहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जंगल की ये पट्टियाँ खुले सवाना के पार हरी सड़कों की तरह जाती हैं।",
+      "text_markdown": "जंगल की ये पट्टियाँ खुले सवाना के पार हरी सड़कों की तरह जाती हैं।",
+      "tts": {
+        "text": "जंगल की ये पट्टियाँ खुले सवाना के पार हरी सड़कों की तरह जाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "ज़मीन और पानी",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये उन जानवरों का घर हैं जिन्हें पूरे साल छाँव और पानी चाहिए।",
+      "text_markdown": "ये उन जानवरों का घर हैं जिन्हें पूरे साल छाँव और पानी चाहिए।",
+      "tts": {
+        "text": "ये उन जानवरों का घर हैं जिन्हें पूरे साल छाँव और पानी चाहिए।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पौधे",
+      "text_markdown": "पौधे"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना का दिल घास है।",
+      "text_markdown": "सवाना का दिल घास है।",
+      "tts": {
+        "text": "सवाना का दिल घास है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऊँची घासें हर दिशा में ज़मीन को ढक लेती हैं।",
+      "text_markdown": "ऊँची घासें हर दिशा में ज़मीन को ढक लेती हैं।",
+      "tts": {
+        "text": "ऊँची घासें हर दिशा में ज़मीन को ढक लेती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ घासें इंसान जितनी ऊँची हो जाती हैं।",
+      "text_markdown": "कुछ घासें इंसान जितनी ऊँची हो जाती हैं।",
+      "tts": {
+        "text": "कुछ घासें इंसान जितनी ऊँची हो जाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनकी जड़ें पानी ढूँढ़ने के लिए मिट्टी में गहरी पहुँचती हैं।",
+      "text_markdown": "उनकी जड़ें पानी ढूँढ़ने के लिए मिट्टी में गहरी पहुँचती हैं।",
+      "tts": {
+        "text": "उनकी जड़ें पानी ढूँढ़ने के लिए मिट्टी में गहरी पहुँचती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब आग सवाना में फैलती है, तो घासों की चोटियाँ जल जाती हैं।",
+      "text_markdown": "जब आग सवाना में फैलती है, तो घासों की चोटियाँ जल जाती हैं।",
+      "tts": {
+        "text": "जब आग सवाना में फैलती है, तो घासों की चोटियाँ जल जाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन जड़ों में ज़िंदगी बची रहती है, ज़मीन के नीचे।",
+      "text_markdown": "लेकिन जड़ों में ज़िंदगी बची रहती है, ज़मीन के नीचे।",
+      "tts": {
+        "text": "लेकिन जड़ों में ज़िंदगी बची रहती है, ज़मीन के नीचे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगली बारिश के बाद, घासें ताज़ी और हरी फिर से उग आती हैं।",
+      "text_markdown": "अगली बारिश के बाद, घासें ताज़ी और हरी फिर से उग आती हैं।",
+      "tts": {
+        "text": "अगली बारिश के बाद, घासें ताज़ी और हरी फिर से उग आती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आग इस जैव क्षेत्र का स्वाभाविक हिस्सा है।",
+      "text_markdown": "आग इस जैव क्षेत्र का स्वाभाविक हिस्सा है।",
+      "tts": {
+        "text": "आग इस जैव क्षेत्र का स्वाभाविक हिस्सा है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यहाँ के बहुत से पौधों को स्वस्थ रहने के लिए आग चाहिए।",
+      "text_markdown": "यहाँ के बहुत से पौधों को स्वस्थ रहने के लिए आग चाहिए।",
+      "tts": {
+        "text": "यहाँ के बहुत से पौधों को स्वस्थ रहने के लिए आग चाहिए।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पेड़ भी सवाना में उगते हैं, लेकिन वे बिखरे हुए होते हैं।",
+      "text_markdown": "पेड़ भी सवाना में उगते हैं, लेकिन वे बिखरे हुए होते हैं।",
+      "tts": {
+        "text": "पेड़ भी सवाना में उगते हैं, लेकिन वे बिखरे हुए होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे दूर दूर खड़े होते हैं, उनके बीच घास होती है।",
+      "text_markdown": "वे दूर दूर खड़े होते हैं, उनके बीच घास होती है।",
+      "tts": {
+        "text": "वे दूर दूर खड़े होते हैं, उनके बीच घास होती है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना के अधिकांश पेड़ छोटे होते हैं, चौड़ी और चपटी चोटियों के साथ।",
+      "text_markdown": "सवाना के अधिकांश पेड़ छोटे होते हैं, चौड़ी और चपटी चोटियों के साथ।",
+      "tts": {
+        "text": "सवाना के अधिकांश पेड़ छोटे होते हैं, चौड़ी और चपटी चोटियों के साथ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चपटी चोटी पत्तियों का एक चौड़ा छाता है जो रोशनी की हर बूँद पकड़ लेता है।",
+      "text_markdown": "चपटी चोटी पत्तियों का एक चौड़ा छाता है जो रोशनी की हर बूँद पकड़ लेता है।",
+      "tts": {
+        "text": "चपटी चोटी पत्तियों का एक चौड़ा छाता है जो रोशनी की हर बूँद पकड़ लेता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना के बहुत से पेड़ों में काँटे होते हैं ताकि बड़े जानवर उन्हें न खाएँ।",
+      "text_markdown": "सवाना के बहुत से पेड़ों में काँटे होते हैं ताकि बड़े जानवर उन्हें न खाएँ।",
+      "tts": {
+        "text": "सवाना के बहुत से पेड़ों में काँटे होते हैं ताकि बड़े जानवर उन्हें न खाएँ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "प्रसिद्ध बाओबाब एक विशाल सवाना का पेड़ है जिसका तना मोटा और मज़बूत होता है।",
+      "text_markdown": "प्रसिद्ध बाओबाब एक विशाल सवाना का पेड़ है जिसका तना मोटा और मज़बूत होता है।",
+      "tts": {
+        "text": "प्रसिद्ध बाओबाब एक विशाल सवाना का पेड़ है जिसका तना मोटा और मज़बूत होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह लंबे सूखे समय के लिए अपने तने के अंदर पानी जमा कर सकता है।",
+      "text_markdown": "यह लंबे सूखे समय के लिए अपने तने के अंदर पानी जमा कर सकता है।",
+      "tts": {
+        "text": "यह लंबे सूखे समय के लिए अपने तने के अंदर पानी जमा कर सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कुछ बाओबाब हज़ार साल से ज़्यादा जीते हैं।",
+      "text_markdown": "कुछ बाओबाब हज़ार साल से ज़्यादा जीते हैं।",
+      "tts": {
+        "text": "कुछ बाओबाब हज़ार साल से ज़्यादा जीते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नदियों के किनारे, ऊँचे पेड़ एक पतली हरी पट्टी में उगते हैं।",
+      "text_markdown": "नदियों के किनारे, ऊँचे पेड़ एक पतली हरी पट्टी में उगते हैं।",
+      "tts": {
+        "text": "नदियों के किनारे, ऊँचे पेड़ एक पतली हरी पट्टी में उगते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खुले मैदान पर, घास और कुछ बिखरे हुए पेड़ ही आपको मीलों तक दिखते हैं।",
+      "text_markdown": "खुले मैदान पर, घास और कुछ बिखरे हुए पेड़ ही आपको मीलों तक दिखते हैं।",
+      "tts": {
+        "text": "खुले मैदान पर, घास और कुछ बिखरे हुए पेड़ ही आपको मीलों तक दिखते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गीले समय में, घासों के बीच छोटे फूल खिलते हैं।",
+      "text_markdown": "गीले समय में, घासों के बीच छोटे फूल खिलते हैं।",
+      "tts": {
+        "text": "गीले समय में, घासों के बीच छोटे फूल खिलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे जल्दी खुलते हैं और सिर्फ़ कुछ हफ़्तों तक टिकते हैं।",
+      "text_markdown": "वे जल्दी खुलते हैं और सिर्फ़ कुछ हफ़्तों तक टिकते हैं।",
+      "tts": {
+        "text": "वे जल्दी खुलते हैं और सिर्फ़ कुछ हफ़्तों तक टिकते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "पौधे",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना एक शांत मशीन है, जो घास, बिखरे हुए पेड़, सूरज और धैर्यवान जड़ों से बनी है।",
+      "text_markdown": "सवाना एक शांत मशीन है, जो घास, बिखरे हुए पेड़, सूरज और धैर्यवान जड़ों से बनी है।",
+      "tts": {
+        "text": "सवाना एक शांत मशीन है, जो घास, बिखरे हुए पेड़, सूरज और धैर्यवान जड़ों से बनी है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "जानवर",
+      "text_markdown": "जानवर"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय सवाना अपने जानवरों के लिए दुनिया भर में प्रसिद्ध है।",
+      "text_markdown": "उष्णकटिबंधीय सवाना अपने जानवरों के लिए दुनिया भर में प्रसिद्ध है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय सवाना अपने जानवरों के लिए दुनिया भर में प्रसिद्ध है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घासें चरने वाले जानवरों के विशाल झुंडों को खिलाती हैं।",
+      "text_markdown": "घासें चरने वाले जानवरों के विशाल झुंडों को खिलाती हैं।",
+      "tts": {
+        "text": "घासें चरने वाले जानवरों के विशाल झुंडों को खिलाती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका में, ज़ेबरा, मृग और भैंसों के बड़े झुंड मैदानों के पार चलते हैं।",
+      "text_markdown": "अफ़्रीका में, ज़ेबरा, मृग और भैंसों के बड़े झुंड मैदानों के पार चलते हैं।",
+      "tts": {
+        "text": "अफ़्रीका में, ज़ेबरा, मृग और भैंसों के बड़े झुंड मैदानों के पार चलते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे बारिश के पीछे सवाना के एक हिस्से से दूसरे हिस्से तक जाते हैं।",
+      "text_markdown": "वे बारिश के पीछे सवाना के एक हिस्से से दूसरे हिस्से तक जाते हैं।",
+      "tts": {
+        "text": "वे बारिश के पीछे सवाना के एक हिस्से से दूसरे हिस्से तक जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पृथ्वी का सबसे बड़ा ज़मीनी जानवर, हाथी, अफ़्रीकी सवाना में रहता है।",
+      "text_markdown": "पृथ्वी का सबसे बड़ा ज़मीनी जानवर, हाथी, अफ़्रीकी सवाना में रहता है।",
+      "tts": {
+        "text": "पृथ्वी का सबसे बड़ा ज़मीनी जानवर, हाथी, अफ़्रीकी सवाना में रहता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हाथियों का एक परिवार एक बूढ़ी माँ के नेतृत्व में घास पर धीरे धीरे चलता है।",
+      "text_markdown": "हाथियों का एक परिवार एक बूढ़ी माँ के नेतृत्व में घास पर धीरे धीरे चलता है।",
+      "tts": {
+        "text": "हाथियों का एक परिवार एक बूढ़ी माँ के नेतृत्व में घास पर धीरे धीरे चलता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ज़िराफ़ साथ साथ चलता है, अपनी लंबी गर्दन से पेड़ों की पत्तियाँ खाने के लिए पहुँचता है।",
+      "text_markdown": "ज़िराफ़ साथ साथ चलता है, अपनी लंबी गर्दन से पेड़ों की पत्तियाँ खाने के लिए पहुँचता है।",
+      "tts": {
+        "text": "ज़िराफ़ साथ साथ चलता है, अपनी लंबी गर्दन से पेड़ों की पत्तियाँ खाने के लिए पहुँचता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जहाँ चरने वाले बहुत से जानवर होते हैं, वहाँ शिकारी भी होते हैं।",
+      "text_markdown": "जहाँ चरने वाले बहुत से जानवर होते हैं, वहाँ शिकारी भी होते हैं।",
+      "tts": {
+        "text": "जहाँ चरने वाले बहुत से जानवर होते हैं, वहाँ शिकारी भी होते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "शेर अफ़्रीकी सवाना का महान शिकारी है।",
+      "text_markdown": "शेर अफ़्रीकी सवाना का महान शिकारी है।",
+      "tts": {
+        "text": "शेर अफ़्रीकी सवाना का महान शिकारी है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "शेर पारिवारिक समूहों में साथ रहते हैं जिन्हें झुंड कहते हैं।",
+      "text_markdown": "शेर पारिवारिक समूहों में साथ रहते हैं जिन्हें झुंड कहते हैं।",
+      "tts": {
+        "text": "शेर पारिवारिक समूहों में साथ रहते हैं जिन्हें झुंड कहते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चीता ज़मीन पर सबसे तेज़ जानवर है।",
+      "text_markdown": "चीता ज़मीन पर सबसे तेज़ जानवर है।",
+      "tts": {
+        "text": "चीता ज़मीन पर सबसे तेज़ जानवर है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह मैदानों में चरने वाले मृगों को पकड़ने के लिए छोटी तेज़ दौड़ लगाता है।",
+      "text_markdown": "यह मैदानों में चरने वाले मृगों को पकड़ने के लिए छोटी तेज़ दौड़ लगाता है।",
+      "tts": {
+        "text": "यह मैदानों में चरने वाले मृगों को पकड़ने के लिए छोटी तेज़ दौड़ लगाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तेंदुआ एक चुपके से शिकार करने वाला है जो पेड़ों पर चढ़ता है और अपना भोजन शाखाओं पर खींच लेता है।",
+      "text_markdown": "तेंदुआ एक चुपके से शिकार करने वाला है जो पेड़ों पर चढ़ता है और अपना भोजन शाखाओं पर खींच लेता है।",
+      "tts": {
+        "text": "तेंदुआ एक चुपके से शिकार करने वाला है जो पेड़ों पर चढ़ता है और अपना भोजन शाखाओं पर खींच लेता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लकड़बग्घे समूहों में शिकार करते हैं और बड़े शिकारियों के बचे हुए को साफ़ करते हैं।",
+      "text_markdown": "लकड़बग्घे समूहों में शिकार करते हैं और बड़े शिकारियों के बचे हुए को साफ़ करते हैं।",
+      "tts": {
+        "text": "लकड़बग्घे समूहों में शिकार करते हैं और बड़े शिकारियों के बचे हुए को साफ़ करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "छोटे जानवर भी हर जगह हैं।",
+      "text_markdown": "छोटे जानवर भी हर जगह हैं।",
+      "tts": {
+        "text": "छोटे जानवर भी हर जगह हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "बबून शोरगुल वाले समूहों में घास और पेड़ों के बीच घूमते हैं।",
+      "text_markdown": "बबून शोरगुल वाले समूहों में घास और पेड़ों के बीच घूमते हैं।",
+      "tts": {
+        "text": "बबून शोरगुल वाले समूहों में घास और पेड़ों के बीच घूमते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "शुतुरमुर्ग नामक बड़े पक्षी लंबी टाँगों पर खुले मैदान पर दौड़ते हैं।",
+      "text_markdown": "शुतुरमुर्ग नामक बड़े पक्षी लंबी टाँगों पर खुले मैदान पर दौड़ते हैं।",
+      "tts": {
+        "text": "शुतुरमुर्ग नामक बड़े पक्षी लंबी टाँगों पर खुले मैदान पर दौड़ते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गिद्ध ऊपर ऊँचे चक्कर लगाते हैं, मरे हुए जानवरों की तलाश में।",
+      "text_markdown": "गिद्ध ऊपर ऊँचे चक्कर लगाते हैं, मरे हुए जानवरों की तलाश में।",
+      "tts": {
+        "text": "गिद्ध ऊपर ऊँचे चक्कर लगाते हैं, मरे हुए जानवरों की तलाश में।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गीले समय में, मेंढक हर रात नए तालाबों के चारों ओर गाते हैं।",
+      "text_markdown": "गीले समय में, मेंढक हर रात नए तालाबों के चारों ओर गाते हैं।",
+      "tts": {
+        "text": "गीले समय में, मेंढक हर रात नए तालाबों के चारों ओर गाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कीड़े गर्म हवा को भर देते हैं, और तितलियाँ फूलों के बीच तैरती हैं।",
+      "text_markdown": "कीड़े गर्म हवा को भर देते हैं, और तितलियाँ फूलों के बीच तैरती हैं।",
+      "tts": {
+        "text": "कीड़े गर्म हवा को भर देते हैं, और तितलियाँ फूलों के बीच तैरती हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "नदियों में, दरियाई घोड़े दिन भर पानी में आराम करते हैं, और रात को घास चरने बाहर आते हैं।",
+      "text_markdown": "नदियों में, दरियाई घोड़े दिन भर पानी में आराम करते हैं, और रात को घास चरने बाहर आते हैं।",
+      "tts": {
+        "text": "नदियों में, दरियाई घोड़े दिन भर पानी में आराम करते हैं, और रात को घास चरने बाहर आते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दक्षिण अमेरिकी सवाना में, बड़े कृंतक और बड़े पक्षी अफ़्रीकी वालों की जगह लेते हैं।",
+      "text_markdown": "दक्षिण अमेरिकी सवाना में, बड़े कृंतक और बड़े पक्षी अफ़्रीकी वालों की जगह लेते हैं।",
+      "tts": {
+        "text": "दक्षिण अमेरिकी सवाना में, बड़े कृंतक और बड़े पक्षी अफ़्रीकी वालों की जगह लेते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ऑस्ट्रेलियाई सवाना में, मृगों की दौड़ नहीं, बल्कि घास पर कंगारुओं की उछलती छलांगें।",
+      "text_markdown": "ऑस्ट्रेलियाई सवाना में, मृगों की दौड़ नहीं, बल्कि घास पर कंगारुओं की उछलती छलांगें।",
+      "tts": {
+        "text": "ऑस्ट्रेलियाई सवाना में, मृगों की दौड़ नहीं, बल्कि घास पर कंगारुओं की उछलती छलांगें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इन हर भूमि में, जानवर अलग दिखते हैं।",
+      "text_markdown": "इन हर भूमि में, जानवर अलग दिखते हैं।",
+      "tts": {
+        "text": "इन हर भूमि में, जानवर अलग दिखते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन ढाँचा एक ही है।",
+      "text_markdown": "लेकिन ढाँचा एक ही है।",
+      "tts": {
+        "text": "लेकिन ढाँचा एक ही है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चरने वालों के विशाल झुंड, घास में चुपके शिकारी, और आसमान में पक्षियों के बड़े समूह।",
+      "text_markdown": "चरने वालों के विशाल झुंड, घास में चुपके शिकारी, और आसमान में पक्षियों के बड़े समूह।",
+      "tts": {
+        "text": "चरने वालों के विशाल झुंड, घास में चुपके शिकारी, और आसमान में पक्षियों के बड़े समूह।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "जानवर",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही सवाना है।",
+      "text_markdown": "यही सवाना है।",
+      "tts": {
+        "text": "यही सवाना है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "लोग",
+      "text_markdown": "लोग"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग बहुत लंबे समय से उष्णकटिबंधीय सवाना में रहते आए हैं।",
+      "text_markdown": "लोग बहुत लंबे समय से उष्णकटिबंधीय सवाना में रहते आए हैं।",
+      "tts": {
+        "text": "लोग बहुत लंबे समय से उष्णकटिबंधीय सवाना में रहते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वास्तव में, हमारे अपने पूर्वज पहली बार ऐसे ही सवानाओं पर खड़े होकर चले थे।",
+      "text_markdown": "वास्तव में, हमारे अपने पूर्वज पहली बार ऐसे ही सवानाओं पर खड़े होकर चले थे।",
+      "tts": {
+        "text": "वास्तव में, हमारे अपने पूर्वज पहली बार ऐसे ही सवानाओं पर खड़े होकर चले थे।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "खुली घास और बिखरे हुए पेड़ों ने हमारे शरीर के चलने के तरीके को आकार दिया।",
+      "text_markdown": "खुली घास और बिखरे हुए पेड़ों ने हमारे शरीर के चलने के तरीके को आकार दिया।",
+      "tts": {
+        "text": "खुली घास और बिखरे हुए पेड़ों ने हमारे शरीर के चलने के तरीके को आकार दिया।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना के बहुत से लोग जानवरों के झुंड पालते हैं।",
+      "text_markdown": "सवाना के बहुत से लोग जानवरों के झुंड पालते हैं।",
+      "tts": {
+        "text": "सवाना के बहुत से लोग जानवरों के झुंड पालते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अफ़्रीका में, परिवार घास के मैदानों पर मवेशी, बकरियाँ और भेड़ चराते हैं।",
+      "text_markdown": "अफ़्रीका में, परिवार घास के मैदानों पर मवेशी, बकरियाँ और भेड़ चराते हैं।",
+      "tts": {
+        "text": "अफ़्रीका में, परिवार घास के मैदानों पर मवेशी, बकरियाँ और भेड़ चराते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जानवर घास खाते हैं और उसे लोगों के लिए दूध और माँस में बदल देते हैं।",
+      "text_markdown": "जानवर घास खाते हैं और उसे लोगों के लिए दूध और माँस में बदल देते हैं।",
+      "tts": {
+        "text": "जानवर घास खाते हैं और उसे लोगों के लिए दूध और माँस में बदल देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चरवाहे बारिश के पीछे अपने जानवरों के साथ जाते हैं।",
+      "text_markdown": "चरवाहे बारिश के पीछे अपने जानवरों के साथ जाते हैं।",
+      "tts": {
+        "text": "चरवाहे बारिश के पीछे अपने जानवरों के साथ जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सूखे समय में वे नदियों की ओर जाते हैं।",
+      "text_markdown": "सूखे समय में वे नदियों की ओर जाते हैं।",
+      "tts": {
+        "text": "सूखे समय में वे नदियों की ओर जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गीले समय में वे हरे मैदानों पर फैल जाते हैं।",
+      "text_markdown": "गीले समय में वे हरे मैदानों पर फैल जाते हैं।",
+      "tts": {
+        "text": "गीले समय में वे हरे मैदानों पर फैल जाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उनके घर अक्सर ऐसे होते हैं जिन्हें खोलना और नई जगह ले जाना आसान होता है।",
+      "text_markdown": "उनके घर अक्सर ऐसे होते हैं जिन्हें खोलना और नई जगह ले जाना आसान होता है।",
+      "tts": {
+        "text": "उनके घर अक्सर ऐसे होते हैं जिन्हें खोलना और नई जगह ले जाना आसान होता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना के दूसरे लोग छोटे खेतों में भोजन उगाते हैं।",
+      "text_markdown": "सवाना के दूसरे लोग छोटे खेतों में भोजन उगाते हैं।",
+      "tts": {
+        "text": "सवाना के दूसरे लोग छोटे खेतों में भोजन उगाते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जहाँ मिट्टी उपजाऊ है, वे अनाज और दालें बोते हैं।",
+      "text_markdown": "जहाँ मिट्टी उपजाऊ है, वे अनाज और दालें बोते हैं।",
+      "tts": {
+        "text": "जहाँ मिट्टी उपजाऊ है, वे अनाज और दालें बोते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे नए खेत साफ़ करने और अपने जानवरों के लिए घास ताज़ा रखने के लिए सावधानी से आग का इस्तेमाल करते हैं।",
+      "text_markdown": "वे नए खेत साफ़ करने और अपने जानवरों के लिए घास ताज़ा रखने के लिए सावधानी से आग का इस्तेमाल करते हैं।",
+      "tts": {
+        "text": "वे नए खेत साफ़ करने और अपने जानवरों के लिए घास ताज़ा रखने के लिए सावधानी से आग का इस्तेमाल करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना के लोग ज़मीन को बहुत बारीकी से जानते हैं।",
+      "text_markdown": "सवाना के लोग ज़मीन को बहुत बारीकी से जानते हैं।",
+      "tts": {
+        "text": "सवाना के लोग ज़मीन को बहुत बारीकी से जानते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे जानते हैं कि कौन से पौधे खाने के लिए सुरक्षित हैं और कौन से दवा के लिए अच्छे हैं।",
+      "text_markdown": "वे जानते हैं कि कौन से पौधे खाने के लिए सुरक्षित हैं और कौन से दवा के लिए अच्छे हैं।",
+      "tts": {
+        "text": "वे जानते हैं कि कौन से पौधे खाने के लिए सुरक्षित हैं और कौन से दवा के लिए अच्छे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे धूल में हर जानवर के निशान जानते हैं।",
+      "text_markdown": "वे धूल में हर जानवर के निशान जानते हैं।",
+      "tts": {
+        "text": "वे धूल में हर जानवर के निशान जानते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे आसमान में हर तरह के बादल का मतलब जानते हैं।",
+      "text_markdown": "वे आसमान में हर तरह के बादल का मतलब जानते हैं।",
+      "tts": {
+        "text": "वे आसमान में हर तरह के बादल का मतलब जानते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह ज्ञान साल दर साल माता पिता से बच्चों को सौंपा जाता है।",
+      "text_markdown": "यह ज्ञान साल दर साल माता पिता से बच्चों को सौंपा जाता है।",
+      "tts": {
+        "text": "यह ज्ञान साल दर साल माता पिता से बच्चों को सौंपा जाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "लोग",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर सवाना में, इस तरह के जीवन की अपनी भाषाएँ, अपने गीत और अपनी कहानियाँ हैं।",
+      "text_markdown": "हर सवाना में, इस तरह के जीवन की अपनी भाषाएँ, अपने गीत और अपनी कहानियाँ हैं।",
+      "tts": {
+        "text": "हर सवाना में, इस तरह के जीवन की अपनी भाषाएँ, अपने गीत और अपनी कहानियाँ हैं।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "सवाना आज",
+      "text_markdown": "सवाना आज"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "उष्णकटिबंधीय सवाना पृथ्वी की महान जंगली भूमियों में से एक है।",
+      "text_markdown": "उष्णकटिबंधीय सवाना पृथ्वी की महान जंगली भूमियों में से एक है।",
+      "tts": {
+        "text": "उष्णकटिबंधीय सवाना पृथ्वी की महान जंगली भूमियों में से एक है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह जानवरों के विशाल झुंडों को खिलाता है।",
+      "text_markdown": "यह जानवरों के विशाल झुंडों को खिलाता है।",
+      "tts": {
+        "text": "यह जानवरों के विशाल झुंडों को खिलाता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह उन चरवाहों और किसानों को सहारा देता है जो यहाँ हज़ारों सालों से रहते आए हैं।",
+      "text_markdown": "यह उन चरवाहों और किसानों को सहारा देता है जो यहाँ हज़ारों सालों से रहते आए हैं।",
+      "tts": {
+        "text": "यह उन चरवाहों और किसानों को सहारा देता है जो यहाँ हज़ारों सालों से रहते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास के मैदान अपनी गहरी जड़ों में बहुत सारा पानी और भोजन भी जमा करते हैं।",
+      "text_markdown": "घास के मैदान अपनी गहरी जड़ों में बहुत सारा पानी और भोजन भी जमा करते हैं।",
+      "tts": {
+        "text": "घास के मैदान अपनी गहरी जड़ों में बहुत सारा पानी और भोजन भी जमा करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लेकिन सवाना मुसीबत में भी है।",
+      "text_markdown": "लेकिन सवाना मुसीबत में भी है।",
+      "tts": {
+        "text": "लेकिन सवाना मुसीबत में भी है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कई जगहों पर, लोगों ने फ़सलें बोने के लिए घास जोत दी है, या मवेशियों के लिए उसे घेर लिया है।",
+      "text_markdown": "कई जगहों पर, लोगों ने फ़सलें बोने के लिए घास जोत दी है, या मवेशियों के लिए उसे घेर लिया है।",
+      "tts": {
+        "text": "कई जगहों पर, लोगों ने फ़सलें बोने के लिए घास जोत दी है, या मवेशियों के लिए उसे घेर लिया है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब घास टूट जाती है, तो जंगली जानवरों के झुंड अपना खुला रास्ता खो देते हैं।",
+      "text_markdown": "जब घास टूट जाती है, तो जंगली जानवरों के झुंड अपना खुला रास्ता खो देते हैं।",
+      "tts": {
+        "text": "जब घास टूट जाती है, तो जंगली जानवरों के झुंड अपना खुला रास्ता खो देते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सड़कें और बाड़ें उन रास्तों को काटती हैं जिन पर हाथी और मृग युगों से चलते आए हैं।",
+      "text_markdown": "सड़कें और बाड़ें उन रास्तों को काटती हैं जिन पर हाथी और मृग युगों से चलते आए हैं।",
+      "tts": {
+        "text": "सड़कें और बाड़ें उन रास्तों को काटती हैं जिन पर हाथी और मृग युगों से चलते आए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "सवाना के कुछ जानवर, जैसे गैंडा और चीता, बहुत दुर्लभ हो गए हैं।",
+      "text_markdown": "सवाना के कुछ जानवर, जैसे गैंडा और चीता, बहुत दुर्लभ हो गए हैं।",
+      "tts": {
+        "text": "सवाना के कुछ जानवर, जैसे गैंडा और चीता, बहुत दुर्लभ हो गए हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया भर के कई समूह जो बचा है उसे बचाने का काम कर रहे हैं।",
+      "text_markdown": "दुनिया भर के कई समूह जो बचा है उसे बचाने का काम कर रहे हैं।",
+      "tts": {
+        "text": "दुनिया भर के कई समूह जो बचा है उसे बचाने का काम कर रहे हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे बड़े पार्क अलग रखते हैं जहाँ जंगली जानवर अब भी आज़ादी से घूम सकें।",
+      "text_markdown": "वे बड़े पार्क अलग रखते हैं जहाँ जंगली जानवर अब भी आज़ादी से घूम सकें।",
+      "tts": {
+        "text": "वे बड़े पार्क अलग रखते हैं जहाँ जंगली जानवर अब भी आज़ादी से घूम सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे पार्कों के पास रहने वाले लोगों के साथ मिलकर ज़मीन साझा करते हैं।",
+      "text_markdown": "वे पार्कों के पास रहने वाले लोगों के साथ मिलकर ज़मीन साझा करते हैं।",
+      "tts": {
+        "text": "वे पार्कों के पास रहने वाले लोगों के साथ मिलकर ज़मीन साझा करते हैं।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "वे घास, पेड़ों और झुंडों का अध्ययन करते हैं ताकि हम इसे बेहतर समझ सकें।",
+      "text_markdown": "वे घास, पेड़ों और झुंडों का अध्ययन करते हैं ताकि हम इसे बेहतर समझ सकें।",
+      "tts": {
+        "text": "वे घास, पेड़ों और झुंडों का अध्ययन करते हैं ताकि हम इसे बेहतर समझ सकें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक स्वस्थ सवाना लगभग किसी भी दूसरे ज़मीनी जैव क्षेत्र से ज़्यादा जीवन सहारा सकता है।",
+      "text_markdown": "एक स्वस्थ सवाना लगभग किसी भी दूसरे ज़मीनी जैव क्षेत्र से ज़्यादा जीवन सहारा सकता है।",
+      "tts": {
+        "text": "एक स्वस्थ सवाना लगभग किसी भी दूसरे ज़मीनी जैव क्षेत्र से ज़्यादा जीवन सहारा सकता है।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "सवाना आज",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यह हमारी देखभाल के लायक है।",
+      "text_markdown": "यह हमारी देखभाल के लायक है।",
+      "tts": {
+        "text": "यह हमारी देखभाल के लायक है।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "समापन",
+      "text_markdown": "समापन"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "यही है उष्णकटिबंधीय सवाना।",
+      "text_markdown": "यही है उष्णकटिबंधीय सवाना।",
+      "tts": {
+        "text": "यही है उष्णकटिबंधीय सवाना।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास, बिखरे हुए पेड़ और जानवरों के बड़े झुंडों वाली एक चौड़ी, गर्म भूमि।",
+      "text_markdown": "घास, बिखरे हुए पेड़ और जानवरों के बड़े झुंडों वाली एक चौड़ी, गर्म भूमि।",
+      "tts": {
+        "text": "घास, बिखरे हुए पेड़ और जानवरों के बड़े झुंडों वाली एक चौड़ी, गर्म भूमि।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर आप कभी एक में खड़े हों, तो एक मिनट के लिए शांत रहें।",
+      "text_markdown": "अगर आप कभी एक में खड़े हों, तो एक मिनट के लिए शांत रहें।",
+      "tts": {
+        "text": "अगर आप कभी एक में खड़े हों, तो एक मिनट के लिए शांत रहें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "घास में हवा और दूर पक्षियों को सुनें।",
+      "text_markdown": "घास में हवा और दूर पक्षियों को सुनें।",
+      "tts": {
+        "text": "घास में हवा और दूर पक्षियों को सुनें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लंबे क्षितिज की ओर देखें।",
+      "text_markdown": "लंबे क्षितिज की ओर देखें।",
+      "tts": {
+        "text": "लंबे क्षितिज की ओर देखें।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "समापन",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आप अपने चारों ओर जैव क्षेत्र के दिल को धड़कते हुए महसूस करेंगे।",
+      "text_markdown": "आप अपने चारों ओर जैव क्षेत्र के दिल को धड़कते हुए महसूस करेंगे।",
+      "tts": {
+        "text": "आप अपने चारों ओर जैव क्षेत्र के दिल को धड़कते हुए महसूस करेंगे।",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

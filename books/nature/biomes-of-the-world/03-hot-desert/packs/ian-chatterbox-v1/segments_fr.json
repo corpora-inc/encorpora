@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Le désert chaud",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le désert chaud",
+      "text_markdown": "Le désert chaud"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Où se trouvent les déserts",
+      "text_markdown": "Où se trouvent les déserts"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bienvenue dans le désert chaud.",
+      "text_markdown": "Bienvenue dans le désert chaud.",
+      "tts": {
+        "text": "Bienvenue dans le désert chaud.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'est l'un des grands biomes du monde.",
+      "text_markdown": "C'est l'un des grands biomes du monde.",
+      "tts": {
+        "text": "C'est l'un des grands biomes du monde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un biome est une partie de la Terre avec son propre climat, ses propres plantes et ses propres animaux.",
+      "text_markdown": "Un biome est une partie de la Terre avec son propre climat, ses propres plantes et ses propres animaux.",
+      "tts": {
+        "text": "Un biome est une partie de la Terre avec son propre climat, ses propres plantes et ses propres animaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le désert chaud est un endroit sec.",
+      "text_markdown": "Le désert chaud est un endroit sec.",
+      "tts": {
+        "text": "Le désert chaud est un endroit sec.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y tombe très peu de pluie.",
+      "text_markdown": "Il y tombe très peu de pluie.",
+      "tts": {
+        "text": "Il y tombe très peu de pluie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La plupart des journées sont très chaudes, et la plupart des nuits sont fraîches ou froides.",
+      "text_markdown": "La plupart des journées sont très chaudes, et la plupart des nuits sont fraîches ou froides.",
+      "tts": {
+        "text": "La plupart des journées sont très chaudes, et la plupart des nuits sont fraîches ou froides.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le plus grand désert chaud du monde est le Sahara, dans le nord de l'Afrique.",
+      "text_markdown": "Le plus grand désert chaud du monde est le Sahara, dans le nord de l'Afrique.",
+      "tts": {
+        "text": "Le plus grand désert chaud du monde est le Sahara, dans le nord de l'Afrique.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il s'étend de l'océan Atlantique presque jusqu'à la mer Rouge.",
+      "text_markdown": "Il s'étend de l'océan Atlantique presque jusqu'à la mer Rouge.",
+      "tts": {
+        "text": "Il s'étend de l'océan Atlantique presque jusqu'à la mer Rouge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y a de grands déserts au milieu de l'Arabie, comme le Quartier Vide.",
+      "text_markdown": "Il y a de grands déserts au milieu de l'Arabie, comme le Quartier Vide.",
+      "tts": {
+        "text": "Il y a de grands déserts au milieu de l'Arabie, comme le Quartier Vide.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y a des déserts chauds en Amérique du Nord, dans des endroits comme le sud-ouest des États-Unis et le nord du Mexique.",
+      "text_markdown": "Il y a des déserts chauds en Amérique du Nord, dans des endroits comme le sud-ouest des États-Unis et le nord du Mexique.",
+      "tts": {
+        "text": "Il y a des déserts chauds en Amérique du Nord, dans des endroits comme le sud ouest des États Unis et le nord du Mexique.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y a de plus petits déserts en Amérique du Sud, dans le sud de l'Afrique, en Inde et dans une grande partie de l'Australie.",
+      "text_markdown": "Il y a de plus petits déserts en Amérique du Sud, dans le sud de l'Afrique, en Inde et dans une grande partie de l'Australie.",
+      "tts": {
+        "text": "Il y a de plus petits déserts en Amérique du Sud, dans le sud de l'Afrique, en Inde et dans une grande partie de l'Australie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chacun de ces déserts s'est développé de son côté, loin des autres.",
+      "text_markdown": "Chacun de ces déserts s'est développé de son côté, loin des autres.",
+      "tts": {
+        "text": "Chacun de ces déserts s'est développé de son côté, loin des autres.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les plantes et les animaux sont donc différents dans chaque partie du monde.",
+      "text_markdown": "Les plantes et les animaux sont donc différents dans chaque partie du monde.",
+      "tts": {
+        "text": "Les plantes et les animaux sont donc différents dans chaque partie du monde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un cactus que tu vois dans un désert n'est pas le même que celui que tu vois dans un autre.",
+      "text_markdown": "Un cactus que tu vois dans un désert n'est pas le même que celui que tu vois dans un autre.",
+      "tts": {
+        "text": "Un cactus que tu vois dans un désert n'est pas le même que celui que tu vois dans un autre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais ils font tous partie du même biome.",
+      "text_markdown": "Mais ils font tous partie du même biome.",
+      "tts": {
+        "text": "Mais ils font tous partie du même biome.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand tu te tiens dans un désert chaud, l'air semble sec.",
+      "text_markdown": "Quand tu te tiens dans un désert chaud, l'air semble sec.",
+      "tts": {
+        "text": "Quand tu te tiens dans un désert chaud, l'air semble sec.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le soleil est fort sur ton visage.",
+      "text_markdown": "Le soleil est fort sur ton visage.",
+      "tts": {
+        "text": "Le soleil est fort sur ton visage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le sol est rocheux à beaucoup d'endroits, et sablonneux à d'autres.",
+      "text_markdown": "Le sol est rocheux à beaucoup d'endroits, et sablonneux à d'autres.",
+      "tts": {
+        "text": "Le sol est rocheux à beaucoup d'endroits, et sablonneux à d'autres.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tu peux voir très loin.",
+      "text_markdown": "Tu peux voir très loin.",
+      "tts": {
+        "text": "Tu peux voir très loin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le ciel est immense.",
+      "text_markdown": "Le ciel est immense.",
+      "tts": {
+        "text": "Le ciel est immense.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tu peux ne pas voir une autre personne ou un autre animal pendant une journée entière.",
+      "text_markdown": "Tu peux ne pas voir une autre personne ou un autre animal pendant une journée entière.",
+      "tts": {
+        "text": "Tu peux ne pas voir une autre personne ou un autre animal pendant une journée entière.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'est le désert chaud.",
+      "text_markdown": "C'est le désert chaud.",
+      "tts": {
+        "text": "C'est le désert chaud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Où se trouvent les déserts",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Une vaste terre sèche de sable, de roche et de soleil brûlant.",
+      "text_markdown": "Une vaste terre sèche de sable, de roche et de soleil brûlant.",
+      "tts": {
+        "text": "Une vaste terre sèche de sable, de roche et de soleil brûlant.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le climat",
+      "text_markdown": "Le climat"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le climat dans le désert chaud est façonné par deux choses.",
+      "text_markdown": "Le climat dans le désert chaud est façonné par deux choses.",
+      "tts": {
+        "text": "Le climat dans le désert chaud est façonné par deux choses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y a trop de soleil, et il n'y a pas assez de pluie.",
+      "text_markdown": "Il y a trop de soleil, et il n'y a pas assez de pluie.",
+      "tts": {
+        "text": "Il y a trop de soleil, et il n'y a pas assez de pluie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans certains déserts, il ne pleut que quelques jours par an.",
+      "text_markdown": "Dans certains déserts, il ne pleut que quelques jours par an.",
+      "tts": {
+        "text": "Dans certains déserts, il ne pleut que quelques jours par an.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À d'autres endroits, il ne pleut pas du tout pendant de nombreuses années.",
+      "text_markdown": "À d'autres endroits, il ne pleut pas du tout pendant de nombreuses années.",
+      "tts": {
+        "text": "À d'autres endroits, il ne pleut pas du tout pendant de nombreuses années.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les journées sont très chaudes.",
+      "text_markdown": "Les journées sont très chaudes.",
+      "tts": {
+        "text": "Les journées sont très chaudes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au milieu de la journée, le soleil peut chauffer le sable à une température qui te brûlerait les pieds.",
+      "text_markdown": "Au milieu de la journée, le soleil peut chauffer le sable à une température qui te brûlerait les pieds.",
+      "tts": {
+        "text": "Au milieu de la journée, le soleil peut chauffer le sable à une température qui te brûlerait les pieds.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais les nuits sont très différentes.",
+      "text_markdown": "Mais les nuits sont très différentes.",
+      "tts": {
+        "text": "Mais les nuits sont très différentes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il n'y a pas de nuages et pas d'arbres pour garder la chaleur.",
+      "text_markdown": "Il n'y a pas de nuages et pas d'arbres pour garder la chaleur.",
+      "tts": {
+        "text": "Il n'y a pas de nuages et pas d'arbres pour garder la chaleur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alors dès que le soleil se couche, la chaleur s'enfuit vers le ciel.",
+      "text_markdown": "Alors dès que le soleil se couche, la chaleur s'enfuit vers le ciel.",
+      "tts": {
+        "text": "Alors dès que le soleil se couche, la chaleur s'enfuit vers le ciel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Au milieu de la nuit, il peut faire frais, ou même froid.",
+      "text_markdown": "Au milieu de la nuit, il peut faire frais, ou même froid.",
+      "tts": {
+        "text": "Au milieu de la nuit, il peut faire frais, ou même froid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le matin, les roches sont froides au toucher.",
+      "text_markdown": "Le matin, les roches sont froides au toucher.",
+      "tts": {
+        "text": "Le matin, les roches sont froides au toucher.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puis le soleil se lève, et la chaleur recommence.",
+      "text_markdown": "Puis le soleil se lève, et la chaleur recommence.",
+      "tts": {
+        "text": "Puis le soleil se lève, et la chaleur recommence.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand la pluie arrive, elle arrive souvent d'un seul coup.",
+      "text_markdown": "Quand la pluie arrive, elle arrive souvent d'un seul coup.",
+      "tts": {
+        "text": "Quand la pluie arrive, elle arrive souvent d'un seul coup.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un grand orage arrive, et l'eau se déverse pendant une heure.",
+      "text_markdown": "Un grand orage arrive, et l'eau se déverse pendant une heure.",
+      "tts": {
+        "text": "Un grand orage arrive, et l'eau se déverse pendant une heure.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les rivières sèches se remplissent, et l'eau se précipite sur le sable.",
+      "text_markdown": "Les rivières sèches se remplissent, et l'eau se précipite sur le sable.",
+      "tts": {
+        "text": "Les rivières sèches se remplissent, et l'eau se précipite sur le sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puis le soleil revient, et en un jour l'eau a de nouveau disparu.",
+      "text_markdown": "Puis le soleil revient, et en un jour l'eau a de nouveau disparu.",
+      "tts": {
+        "text": "Puis le soleil revient, et en un jour l'eau a de nouveau disparu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Le climat",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pour les plantes et les animaux du désert, chaque goutte de cette eau compte.",
+      "text_markdown": "Pour les plantes et les animaux du désert, chaque goutte de cette eau compte.",
+      "tts": {
+        "text": "Pour les plantes et les animaux du désert, chaque goutte de cette eau compte.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La terre et l'eau",
+      "text_markdown": "La terre et l'eau"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La plus grande partie du désert chaud n'est pas faite de sable.",
+      "text_markdown": "La plus grande partie du désert chaud n'est pas faite de sable.",
+      "tts": {
+        "text": "La plus grande partie du désert chaud n'est pas faite de sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La plupart est faite de roche, de gravier et de sol dur et sec.",
+      "text_markdown": "La plupart est faite de roche, de gravier et de sol dur et sec.",
+      "tts": {
+        "text": "La plupart est faite de roche, de gravier et de sol dur et sec.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il y a aussi des endroits avec de grandes mers de dunes.",
+      "text_markdown": "Il y a aussi des endroits avec de grandes mers de dunes.",
+      "tts": {
+        "text": "Il y a aussi des endroits avec de grandes mers de dunes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le vent déplace lentement les dunes à travers la terre.",
+      "text_markdown": "Le vent déplace lentement les dunes à travers la terre.",
+      "tts": {
+        "text": "Le vent déplace lentement les dunes à travers la terre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Une dune peut être plus petite qu'une maison, ou plus haute qu'un grand bâtiment.",
+      "text_markdown": "Une dune peut être plus petite qu'une maison, ou plus haute qu'un grand bâtiment.",
+      "tts": {
+        "text": "Une dune peut être plus petite qu'une maison, ou plus haute qu'un grand bâtiment.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À certains endroits, des montagnes s'élèvent au-dessus du désert.",
+      "text_markdown": "À certains endroits, des montagnes s'élèvent au-dessus du désert.",
+      "tts": {
+        "text": "À certains endroits, des montagnes s'élèvent au dessus du désert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le vent et le sable sculptent les roches en formes étranges au fil des années.",
+      "text_markdown": "Le vent et le sable sculptent les roches en formes étranges au fil des années.",
+      "tts": {
+        "text": "Le vent et le sable sculptent les roches en formes étranges au fil des années.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'eau est la chose la plus rare et la plus précieuse dans le désert.",
+      "text_markdown": "L'eau est la chose la plus rare et la plus précieuse dans le désert.",
+      "tts": {
+        "text": "L'eau est la chose la plus rare et la plus précieuse dans le désert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La plupart des rivières ne coulent qu'après un orage, puis elles s'assèchent.",
+      "text_markdown": "La plupart des rivières ne coulent qu'après un orage, puis elles s'assèchent.",
+      "tts": {
+        "text": "La plupart des rivières ne coulent qu'après un orage, puis elles s'assèchent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais loin sous le sable, l'eau peut reposer dans les roches.",
+      "text_markdown": "Mais loin sous le sable, l'eau peut reposer dans les roches.",
+      "tts": {
+        "text": "Mais loin sous le sable, l'eau peut reposer dans les roches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À certains endroits, cette eau cachée remonte à la surface et forme une petite étendue de verdure.",
+      "text_markdown": "À certains endroits, cette eau cachée remonte à la surface et forme une petite étendue de verdure.",
+      "tts": {
+        "text": "À certains endroits, cette eau cachée remonte à la surface et forme une petite étendue de verdure.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cela s'appelle une oasis.",
+      "text_markdown": "Cela s'appelle une oasis.",
+      "tts": {
+        "text": "Cela s'appelle une oasis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans une oasis, des arbres poussent, des oiseaux chantent, et les gens s'arrêtent pour boire.",
+      "text_markdown": "Dans une oasis, des arbres poussent, des oiseaux chantent, et les gens s'arrêtent pour boire.",
+      "tts": {
+        "text": "Dans une oasis, des arbres poussent, des oiseaux chantent, et les gens s'arrêtent pour boire.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Une oasis peut être un petit cercle de palmiers dans une vaste mer de sable.",
+      "text_markdown": "Une oasis peut être un petit cercle de palmiers dans une vaste mer de sable.",
+      "tts": {
+        "text": "Une oasis peut être un petit cercle de palmiers dans une vaste mer de sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "La terre et l'eau",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sans ces points d'eau, personne ne pourrait traverser les grands déserts.",
+      "text_markdown": "Sans ces points d'eau, personne ne pourrait traverser les grands déserts.",
+      "tts": {
+        "text": "Sans ces points d'eau, personne ne pourrait traverser les grands déserts.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Les plantes",
+      "text_markdown": "Les plantes"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les plantes du désert chaud sont des maîtres de l'attente.",
+      "text_markdown": "Les plantes du désert chaud sont des maîtres de l'attente.",
+      "tts": {
+        "text": "Les plantes du désert chaud sont des maîtres de l'attente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elles ont appris à vivre avec presque pas d'eau.",
+      "text_markdown": "Elles ont appris à vivre avec presque pas d'eau.",
+      "tts": {
+        "text": "Elles ont appris à vivre avec presque pas d'eau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certaines font pousser de longues racines qui descendent profondément dans le sol.",
+      "text_markdown": "Certaines font pousser de longues racines qui descendent profondément dans le sol.",
+      "tts": {
+        "text": "Certaines font pousser de longues racines qui descendent profondément dans le sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "D'autres plantes ont des racines larges et peu profondes qui s'étendent près de la surface.",
+      "text_markdown": "D'autres plantes ont des racines larges et peu profondes qui s'étendent près de la surface.",
+      "tts": {
+        "text": "D'autres plantes ont des racines larges et peu profondes qui s'étendent près de la surface.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Après un orage, ces racines boivent chaque goutte d'eau avant qu'elle ne sèche.",
+      "text_markdown": "Après un orage, ces racines boivent chaque goutte d'eau avant qu'elle ne sèche.",
+      "tts": {
+        "text": "Après un orage, ces racines boivent chaque goutte d'eau avant qu'elle ne sèche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beaucoup de plantes du désert stockent de l'eau dans leur corps pour la longue période sèche.",
+      "text_markdown": "Beaucoup de plantes du désert stockent de l'eau dans leur corps pour la longue période sèche.",
+      "tts": {
+        "text": "Beaucoup de plantes du désert stockent de l'eau dans leur corps pour la longue période sèche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leurs tiges épaisses et leurs feuilles peuvent retenir l'eau pendant des mois, ou même des années.",
+      "text_markdown": "Leurs tiges épaisses et leurs feuilles peuvent retenir l'eau pendant des mois, ou même des années.",
+      "tts": {
+        "text": "Leurs tiges épaisses et leurs feuilles peuvent retenir l'eau pendant des mois, ou même des années.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans les déserts des Amériques, il y a des plantes appelées cactus.",
+      "text_markdown": "Dans les déserts des Amériques, il y a des plantes appelées cactus.",
+      "tts": {
+        "text": "Dans les déserts des Amériques, il y a des plantes appelées cactus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les cactus ont des tiges vertes épaisses pleines d'eau, et des épines pointues à la place de feuilles tendres.",
+      "text_markdown": "Les cactus ont des tiges vertes épaisses pleines d'eau, et des épines pointues à la place de feuilles tendres.",
+      "tts": {
+        "text": "Les cactus ont des tiges vertes épaisses pleines d'eau, et des épines pointues à la place de feuilles tendres.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les épines empêchent les animaux de manger les plantes.",
+      "text_markdown": "Les épines empêchent les animaux de manger les plantes.",
+      "tts": {
+        "text": "Les épines empêchent les animaux de manger les plantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les épines font aussi un peu d'ombre contre le soleil fort.",
+      "text_markdown": "Les épines font aussi un peu d'ombre contre le soleil fort.",
+      "tts": {
+        "text": "Les épines font aussi un peu d'ombre contre le soleil fort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans les déserts d'Afrique et d'Asie, d'autres plantes épaisses font le même travail.",
+      "text_markdown": "Dans les déserts d'Afrique et d'Asie, d'autres plantes épaisses font le même travail.",
+      "tts": {
+        "text": "Dans les déserts d'Afrique et d'Asie, d'autres plantes épaisses font le même travail.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beaucoup de plantes du désert sont grises ou vert pâle.",
+      "text_markdown": "Beaucoup de plantes du désert sont grises ou vert pâle.",
+      "tts": {
+        "text": "Beaucoup de plantes du désert sont grises ou vert pâle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Une couleur pâle reflète la lumière du soleil.",
+      "text_markdown": "Une couleur pâle reflète la lumière du soleil.",
+      "tts": {
+        "text": "Une couleur pâle reflète la lumière du soleil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certaines plantes laissent tomber leurs feuilles quand la saison sèche arrive.",
+      "text_markdown": "Certaines plantes laissent tomber leurs feuilles quand la saison sèche arrive.",
+      "tts": {
+        "text": "Certaines plantes laissent tomber leurs feuilles quand la saison sèche arrive.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elles restent en vie sous forme de brindilles brunes et nues jusqu'à la prochaine pluie.",
+      "text_markdown": "Elles restent en vie sous forme de brindilles brunes et nues jusqu'à la prochaine pluie.",
+      "tts": {
+        "text": "Elles restent en vie sous forme de brindilles brunes et nues jusqu'à la prochaine pluie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Après une forte pluie, le désert peut changer du jour au lendemain.",
+      "text_markdown": "Après une forte pluie, le désert peut changer du jour au lendemain.",
+      "tts": {
+        "text": "Après une forte pluie, le désert peut changer du jour au lendemain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De minuscules graines qui ont attendu dans le sol pendant des années éclosent en fleurs.",
+      "text_markdown": "De minuscules graines qui ont attendu dans le sol pendant des années éclosent en fleurs.",
+      "tts": {
+        "text": "De minuscules graines qui ont attendu dans le sol pendant des années éclosent en fleurs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pendant quelques semaines, certaines parties du désert se couvrent de fleurs rouges, jaunes et violettes.",
+      "text_markdown": "Pendant quelques semaines, certaines parties du désert se couvrent de fleurs rouges, jaunes et violettes.",
+      "tts": {
+        "text": "Pendant quelques semaines, certaines parties du désert se couvrent de fleurs rouges, jaunes et violettes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Les plantes",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Puis les fleurs se fanent, les graines tombent, et le désert attend de nouveau.",
+      "text_markdown": "Puis les fleurs se fanent, les graines tombent, et le désert attend de nouveau.",
+      "tts": {
+        "text": "Puis les fleurs se fanent, les graines tombent, et le désert attend de nouveau.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Les animaux",
+      "text_markdown": "Les animaux"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les animaux du désert chaud ont beaucoup de façons astucieuses de survivre.",
+      "text_markdown": "Les animaux du désert chaud ont beaucoup de façons astucieuses de survivre.",
+      "tts": {
+        "text": "Les animaux du désert chaud ont beaucoup de façons astucieuses de survivre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La plupart d'entre eux dorment pendant le chaud milieu de la journée.",
+      "text_markdown": "La plupart d'entre eux dorment pendant le chaud milieu de la journée.",
+      "tts": {
+        "text": "La plupart d'entre eux dorment pendant le chaud milieu de la journée.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils sortent dans la fraîcheur du matin, du soir et de la nuit.",
+      "text_markdown": "Ils sortent dans la fraîcheur du matin, du soir et de la nuit.",
+      "tts": {
+        "text": "Ils sortent dans la fraîcheur du matin, du soir et de la nuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beaucoup d'animaux du désert creusent des terriers dans le sable ou sous les roches.",
+      "text_markdown": "Beaucoup d'animaux du désert creusent des terriers dans le sable ou sous les roches.",
+      "tts": {
+        "text": "Beaucoup d'animaux du désert creusent des terriers dans le sable ou sous les roches.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un terrier reste frais quand l'air à l'extérieur est brûlant.",
+      "text_markdown": "Un terrier reste frais quand l'air à l'extérieur est brûlant.",
+      "tts": {
+        "text": "Un terrier reste frais quand l'air à l'extérieur est brûlant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Une petite souris peut dormir toute la journée dans son terrier sans jamais sentir la chaleur.",
+      "text_markdown": "Une petite souris peut dormir toute la journée dans son terrier sans jamais sentir la chaleur.",
+      "tts": {
+        "text": "Une petite souris peut dormir toute la journée dans son terrier sans jamais sentir la chaleur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les lézards sont très communs dans le désert chaud.",
+      "text_markdown": "Les lézards sont très communs dans le désert chaud.",
+      "tts": {
+        "text": "Les lézards sont très communs dans le désert chaud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils s'assoient sur des pierres chaudes au soleil matinal.",
+      "text_markdown": "Ils s'assoient sur des pierres chaudes au soleil matinal.",
+      "tts": {
+        "text": "Ils s'assoient sur des pierres chaudes au soleil matinal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand la journée devient trop chaude, ils se glissent à l'ombre ou sous une roche.",
+      "text_markdown": "Quand la journée devient trop chaude, ils se glissent à l'ombre ou sous une roche.",
+      "tts": {
+        "text": "Quand la journée devient trop chaude, ils se glissent à l'ombre ou sous une roche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les serpents sont communs aussi.",
+      "text_markdown": "Les serpents sont communs aussi.",
+      "tts": {
+        "text": "Les serpents sont communs aussi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils glissent sur le sable à la recherche de petits animaux à manger.",
+      "text_markdown": "Ils glissent sur le sable à la recherche de petits animaux à manger.",
+      "tts": {
+        "text": "Ils glissent sur le sable à la recherche de petits animaux à manger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certains serpents ont une façon spéciale de se déplacer de côté sur le sable chaud pour garder leur corps loin du sol.",
+      "text_markdown": "Certains serpents ont une façon spéciale de se déplacer de côté sur le sable chaud pour garder leur corps loin du sol.",
+      "tts": {
+        "text": "Certains serpents ont une façon spéciale de se déplacer de côté sur le sable chaud pour garder leur corps loin du sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les scorpions chassent la nuit, la queue tenue haut.",
+      "text_markdown": "Les scorpions chassent la nuit, la queue tenue haut.",
+      "tts": {
+        "text": "Les scorpions chassent la nuit, la queue tenue haut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les araignées et les scarabées vivent aussi dans toutes les parties du désert.",
+      "text_markdown": "Les araignées et les scarabées vivent aussi dans toutes les parties du désert.",
+      "tts": {
+        "text": "Les araignées et les scarabées vivent aussi dans toutes les parties du désert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beaucoup de scarabées du désert peuvent survivre sans jamais boire d'eau.",
+      "text_markdown": "Beaucoup de scarabées du désert peuvent survivre sans jamais boire d'eau.",
+      "tts": {
+        "text": "Beaucoup de scarabées du désert peuvent survivre sans jamais boire d'eau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils obtiennent toute l'eau dont ils ont besoin de la nourriture qu'ils mangent.",
+      "text_markdown": "Ils obtiennent toute l'eau dont ils ont besoin de la nourriture qu'ils mangent.",
+      "tts": {
+        "text": "Ils obtiennent toute l'eau dont ils ont besoin de la nourriture qu'ils mangent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le plus grand animal des déserts africains et arabes est le chameau.",
+      "text_markdown": "Le plus grand animal des déserts africains et arabes est le chameau.",
+      "tts": {
+        "text": "Le plus grand animal des déserts africains et arabes est le chameau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un chameau peut boire une énorme quantité d'eau d'un coup, puis passer plusieurs jours sans boire à nouveau.",
+      "text_markdown": "Un chameau peut boire une énorme quantité d'eau d'un coup, puis passer plusieurs jours sans boire à nouveau.",
+      "tts": {
+        "text": "Un chameau peut boire une énorme quantité d'eau d'un coup, puis passer plusieurs jours sans boire à nouveau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ses larges pieds souples l'empêchent de s'enfoncer dans le sable.",
+      "text_markdown": "Ses larges pieds souples l'empêchent de s'enfoncer dans le sable.",
+      "tts": {
+        "text": "Ses larges pieds souples l'empêchent de s'enfoncer dans le sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans les déserts d'Amérique du Nord, des renards et de petits chats sauvages chassent la nuit.",
+      "text_markdown": "Dans les déserts d'Amérique du Nord, des renards et de petits chats sauvages chassent la nuit.",
+      "tts": {
+        "text": "Dans les déserts d'Amérique du Nord, des renards et de petits chats sauvages chassent la nuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Afrique, de petits renards avec de très grandes oreilles vivent dans le sable.",
+      "text_markdown": "En Afrique, de petits renards avec de très grandes oreilles vivent dans le sable.",
+      "tts": {
+        "text": "En Afrique, de petits renards avec de très grandes oreilles vivent dans le sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les grandes oreilles les aident à entendre les petits animaux qui bougent sous le sol.",
+      "text_markdown": "Les grandes oreilles les aident à entendre les petits animaux qui bougent sous le sol.",
+      "tts": {
+        "text": "Les grandes oreilles les aident à entendre les petits animaux qui bougent sous le sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les grandes oreilles les aident aussi à perdre de la chaleur dans la fraîcheur de la nuit.",
+      "text_markdown": "Les grandes oreilles les aident aussi à perdre de la chaleur dans la fraîcheur de la nuit.",
+      "tts": {
+        "text": "Les grandes oreilles les aident aussi à perdre de la chaleur dans la fraîcheur de la nuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Très haut au-dessus, des vautours et des aigles planent sur l'air chaud du désert.",
+      "text_markdown": "Très haut au-dessus, des vautours et des aigles planent sur l'air chaud du désert.",
+      "tts": {
+        "text": "Très haut au dessus, des vautours et des aigles planent sur l'air chaud du désert.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils guettent le moindre petit mouvement sur le sol.",
+      "text_markdown": "Ils guettent le moindre petit mouvement sur le sol.",
+      "tts": {
+        "text": "Ils guettent le moindre petit mouvement sur le sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Les animaux",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chaque animal ici sait comment attendre la fraîcheur, comment trouver l'ombre, et comment faire durer chaque gorgée d'eau.",
+      "text_markdown": "Chaque animal ici sait comment attendre la fraîcheur, comment trouver l'ombre, et comment faire durer chaque gorgée d'eau.",
+      "tts": {
+        "text": "Chaque animal ici sait comment attendre la fraîcheur, comment trouver l'ombre, et comment faire durer chaque gorgée d'eau.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Les gens",
+      "text_markdown": "Les gens"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les gens ont vécu dans le désert chaud pendant des milliers d'années.",
+      "text_markdown": "Les gens ont vécu dans le désert chaud pendant des milliers d'années.",
+      "tts": {
+        "text": "Les gens ont vécu dans le désert chaud pendant des milliers d'années.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils ont trouvé leurs propres façons de vivre dans une terre de soleil et de sable.",
+      "text_markdown": "Ils ont trouvé leurs propres façons de vivre dans une terre de soleil et de sable.",
+      "tts": {
+        "text": "Ils ont trouvé leurs propres façons de vivre dans une terre de soleil et de sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans beaucoup de déserts, des familles voyagent d'un endroit à un autre avec leurs troupeaux.",
+      "text_markdown": "Dans beaucoup de déserts, des familles voyagent d'un endroit à un autre avec leurs troupeaux.",
+      "tts": {
+        "text": "Dans beaucoup de déserts, des familles voyagent d'un endroit à un autre avec leurs troupeaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans le Sahara et les déserts de l'Arabie, les gens élèvent des troupeaux de chameaux, de chèvres et de moutons.",
+      "text_markdown": "Dans le Sahara et les déserts de l'Arabie, les gens élèvent des troupeaux de chameaux, de chèvres et de moutons.",
+      "tts": {
+        "text": "Dans le Sahara et les déserts de l'Arabie, les gens élèvent des troupeaux de chameaux, de chèvres et de moutons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les animaux peuvent marcher longtemps entre deux gorgées d'eau.",
+      "text_markdown": "Les animaux peuvent marcher longtemps entre deux gorgées d'eau.",
+      "tts": {
+        "text": "Les animaux peuvent marcher longtemps entre deux gorgées d'eau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les gens suivent les animaux, et les animaux les mènent à la nourriture.",
+      "text_markdown": "Les gens suivent les animaux, et les animaux les mènent à la nourriture.",
+      "tts": {
+        "text": "Les gens suivent les animaux, et les animaux les mènent à la nourriture.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leurs tentes sont faites de tissu tissé à partir du poil de leurs animaux.",
+      "text_markdown": "Leurs tentes sont faites de tissu tissé à partir du poil de leurs animaux.",
+      "tts": {
+        "text": "Leurs tentes sont faites de tissu tissé à partir du poil de leurs animaux.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Une tente peut être montée en une heure et démontée en une heure.",
+      "text_markdown": "Une tente peut être montée en une heure et démontée en une heure.",
+      "tts": {
+        "text": "Une tente peut être montée en une heure et démontée en une heure.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elle bloque le soleil brûlant, et laisse passer l'air frais de la nuit.",
+      "text_markdown": "Elle bloque le soleil brûlant, et laisse passer l'air frais de la nuit.",
+      "tts": {
+        "text": "Elle bloque le soleil brûlant, et laisse passer l'air frais de la nuit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les gens du désert portent des vêtements amples et longs.",
+      "text_markdown": "Les gens du désert portent des vêtements amples et longs.",
+      "tts": {
+        "text": "Les gens du désert portent des vêtements amples et longs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des manches longues et une tête couverte gardent le corps au frais et le protègent du soleil.",
+      "text_markdown": "Des manches longues et une tête couverte gardent le corps au frais et le protègent du soleil.",
+      "tts": {
+        "text": "Des manches longues et une tête couverte gardent le corps au frais et le protègent du soleil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un motif vif sur le tissu aide un ami à te voir de loin.",
+      "text_markdown": "Un motif vif sur le tissu aide un ami à te voir de loin.",
+      "tts": {
+        "text": "Un motif vif sur le tissu aide un ami à te voir de loin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Certains habitants du désert vivent dans des villes construites autour d'une oasis.",
+      "text_markdown": "Certains habitants du désert vivent dans des villes construites autour d'une oasis.",
+      "tts": {
+        "text": "Certains habitants du désert vivent dans des villes construites autour d'une oasis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils cultivent des palmiers dattiers, des fruits et des céréales dans l'anneau de verdure autour de l'eau.",
+      "text_markdown": "Ils cultivent des palmiers dattiers, des fruits et des céréales dans l'anneau de verdure autour de l'eau.",
+      "tts": {
+        "text": "Ils cultivent des palmiers dattiers, des fruits et des céréales dans l'anneau de verdure autour de l'eau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils ont appris à creuser des puits profonds pour trouver l'eau cachée sous le sable.",
+      "text_markdown": "Ils ont appris à creuser des puits profonds pour trouver l'eau cachée sous le sable.",
+      "tts": {
+        "text": "Ils ont appris à creuser des puits profonds pour trouver l'eau cachée sous le sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Des voyageurs venus de loin viennent à l'oasis pour se reposer et remplir leurs gourdes.",
+      "text_markdown": "Des voyageurs venus de loin viennent à l'oasis pour se reposer et remplir leurs gourdes.",
+      "tts": {
+        "text": "Des voyageurs venus de loin viennent à l'oasis pour se reposer et remplir leurs gourdes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les gens du désert connaissent chaque étoile du ciel nocturne.",
+      "text_markdown": "Les gens du désert connaissent chaque étoile du ciel nocturne.",
+      "tts": {
+        "text": "Les gens du désert connaissent chaque étoile du ciel nocturne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils connaissent les noms de chaque vent qui souffle.",
+      "text_markdown": "Ils connaissent les noms de chaque vent qui souffle.",
+      "tts": {
+        "text": "Ils connaissent les noms de chaque vent qui souffle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils savent lire les traces de chaque animal dans le sable.",
+      "text_markdown": "Ils savent lire les traces de chaque animal dans le sable.",
+      "tts": {
+        "text": "Ils savent lire les traces de chaque animal dans le sable.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ce savoir se transmet des parents aux enfants, année après année.",
+      "text_markdown": "Ce savoir se transmet des parents aux enfants, année après année.",
+      "tts": {
+        "text": "Ce savoir se transmet des parents aux enfants, année après année.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Les gens",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans chaque grand désert, ce type de vie a ses propres langues, ses propres chants et ses propres histoires.",
+      "text_markdown": "Dans chaque grand désert, ce type de vie a ses propres langues, ses propres chants et ses propres histoires.",
+      "tts": {
+        "text": "Dans chaque grand désert, ce type de vie a ses propres langues, ses propres chants et ses propres histoires.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le désert aujourd'hui",
+      "text_markdown": "Le désert aujourd'hui"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le désert chaud est un biome magnifique et exigeant.",
+      "text_markdown": "Le désert chaud est un biome magnifique et exigeant.",
+      "tts": {
+        "text": "Le désert chaud est un biome magnifique et exigeant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il couvre une grande partie des terres de la Terre.",
+      "text_markdown": "Il couvre une grande partie des terres de la Terre.",
+      "tts": {
+        "text": "Il couvre une grande partie des terres de la Terre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le soleil fort du désert est aussi l'une de nos plus grandes sources d'énergie propre.",
+      "text_markdown": "Le soleil fort du désert est aussi l'une de nos plus grandes sources d'énergie propre.",
+      "tts": {
+        "text": "Le soleil fort du désert est aussi l'une de nos plus grandes sources d'énergie propre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grands champs de panneaux capteurs de soleil sont construits dans beaucoup de déserts.",
+      "text_markdown": "De grands champs de panneaux capteurs de soleil sont construits dans beaucoup de déserts.",
+      "tts": {
+        "text": "De grands champs de panneaux capteurs de soleil sont construits dans beaucoup de déserts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils transforment le soleil du désert en électricité pour des villes lointaines.",
+      "text_markdown": "Ils transforment le soleil du désert en électricité pour des villes lointaines.",
+      "tts": {
+        "text": "Ils transforment le soleil du désert en électricité pour des villes lointaines.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mais le désert est en difficulté à certains endroits.",
+      "text_markdown": "Mais le désert est en difficulté à certains endroits.",
+      "tts": {
+        "text": "Mais le désert est en difficulté à certains endroits.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dans certaines zones, le désert s'agrandit, parce que les gens ont épuisé l'eau et l'herbe à ses bords.",
+      "text_markdown": "Dans certaines zones, le désert s'agrandit, parce que les gens ont épuisé l'eau et l'herbe à ses bords.",
+      "tts": {
+        "text": "Dans certaines zones, le désert s'agrandit, parce que les gens ont épuisé l'eau et l'herbe à ses bords.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'herbe meurt, les arbres disparaissent, et le sable s'installe.",
+      "text_markdown": "L'herbe meurt, les arbres disparaissent, et le sable s'installe.",
+      "tts": {
+        "text": "L'herbe meurt, les arbres disparaissent, et le sable s'installe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "À d'autres endroits, les villes au bord du désert utilisent trop d'eau cachée sous le sol.",
+      "text_markdown": "À d'autres endroits, les villes au bord du désert utilisent trop d'eau cachée sous le sol.",
+      "tts": {
+        "text": "À d'autres endroits, les villes au bord du désert utilisent trop d'eau cachée sous le sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quand l'eau profonde est partie, les oasis s'assèchent aussi.",
+      "text_markdown": "Quand l'eau profonde est partie, les oasis s'assèchent aussi.",
+      "tts": {
+        "text": "Quand l'eau profonde est partie, les oasis s'assèchent aussi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beaucoup de groupes dans le monde travaillent à prendre soin des déserts.",
+      "text_markdown": "Beaucoup de groupes dans le monde travaillent à prendre soin des déserts.",
+      "tts": {
+        "text": "Beaucoup de groupes dans le monde travaillent à prendre soin des déserts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils plantent des rangées d'arbres et d'herbes pour retenir le sable qui avance.",
+      "text_markdown": "Ils plantent des rangées d'arbres et d'herbes pour retenir le sable qui avance.",
+      "tts": {
+        "text": "Ils plantent des rangées d'arbres et d'herbes pour retenir le sable qui avance.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils aident les gens qui vivent dans le désert à utiliser l'eau avec sagesse.",
+      "text_markdown": "Ils aident les gens qui vivent dans le désert à utiliser l'eau avec sagesse.",
+      "tts": {
+        "text": "Ils aident les gens qui vivent dans le désert à utiliser l'eau avec sagesse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ils étudient les déserts pour que nous puissions mieux les comprendre.",
+      "text_markdown": "Ils étudient les déserts pour que nous puissions mieux les comprendre.",
+      "tts": {
+        "text": "Ils étudient les déserts pour que nous puissions mieux les comprendre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un désert en bonne santé est plein de vie à laquelle on ne s'attendrait pas.",
+      "text_markdown": "Un désert en bonne santé est plein de vie à laquelle on ne s'attendrait pas.",
+      "tts": {
+        "text": "Un désert en bonne santé est plein de vie à laquelle on ne s'attendrait pas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Le désert aujourd'hui",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il mérite nos soins.",
+      "text_markdown": "Il mérite nos soins.",
+      "tts": {
+        "text": "Il mérite nos soins.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Pour finir",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pour finir",
+      "text_markdown": "Pour finir"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Pour finir",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'est le désert chaud.",
+      "text_markdown": "C'est le désert chaud.",
+      "tts": {
+        "text": "C'est le désert chaud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Pour finir",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un monde sec et ensoleillé de sable, de roche et de vie patiente.",
+      "text_markdown": "Un monde sec et ensoleillé de sable, de roche et de vie patiente.",
+      "tts": {
+        "text": "Un monde sec et ensoleillé de sable, de roche et de vie patiente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Pour finir",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si tu te tiens un jour dans un désert, reste immobile une minute.",
+      "text_markdown": "Si tu te tiens un jour dans un désert, reste immobile une minute.",
+      "tts": {
+        "text": "Si tu te tiens un jour dans un désert, reste immobile une minute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Pour finir",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Écoute le vent qui se déplace sur les dunes.",
+      "text_markdown": "Écoute le vent qui se déplace sur les dunes.",
+      "tts": {
+        "text": "Écoute le vent qui se déplace sur les dunes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Pour finir",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sens la chaleur du soleil et la fraîcheur de l'ombre.",
+      "text_markdown": "Sens la chaleur du soleil et la fraîcheur de l'ombre.",
+      "tts": {
+        "text": "Sens la chaleur du soleil et la fraîcheur de l'ombre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Pour finir",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tu entendras le cœur du biome battre autour de toi.",
+      "text_markdown": "Tu entendras le cœur du biome battre autour de toi.",
+      "tts": {
+        "text": "Tu entendras le cœur du biome battre autour de toi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "ms",
+  "total_segments": 62,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "Selamat datang ke AI Minggu Ini. Saya Vindy.",
+      "text_markdown": "Selamat datang ke AI Minggu Ini. Saya Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Selamat datang ke AI Minggu Ini. Saya Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "Bersama saya, seperti biasa, Ron.",
+      "text_markdown": "Bersama saya, seperti biasa, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bersama saya, seperti biasa, Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "Saya memang seronok berada di sini.",
+      "text_markdown": "Saya memang seronok berada di sini.",
+      "title": "",
+      "tts": {
+        "text": "Saya memang seronok berada di sini.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "Hari ini hari Rabu, 13 Mei 2026. Akan datang: model-model yang dikeluarkan minggu ini. Papan pendahulu, dan mengapa sesetengah daripadanya anda patut berhenti percaya. Konsep minggu ini. Dan gambaran yang lebih besar — A.S. baru sahaja mendapat pengerusi Federal Reserve yang baharu, dan ia lebih penting untuk AI daripada yang anda sangka.",
+      "text_markdown": "Hari ini hari Rabu, 13 Mei 2026. Akan datang: model-model yang dikeluarkan minggu ini. Papan pendahulu, dan mengapa sesetengah daripadanya anda patut berhenti percaya. Konsep minggu ini. Dan gambaran yang lebih besar — A.S. baru sahaja mendapat pengerusi Federal Reserve yang baharu, dan ia lebih penting untuk AI daripada yang anda sangka.",
+      "title": "",
+      "tts": {
+        "text": "Hari ini hari Rabu, tiga belas Mei, dua ribu dua puluh enam. Akan datang: model-model yang dikeluarkan minggu ini. Papan pendahulu, dan mengapa sesetengah daripadanya anda patut berhenti percaya. Konsep minggu ini. Dan gambaran yang lebih besar — Amerika Syarikat baru sahaja mendapat pengerusi Federal Reserve yang baharu, dan ia lebih penting untuk AI daripada yang anda sangka.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "Ron, apakah berita model terbesar minggu ini?",
+      "text_markdown": "Ron, apakah berita model terbesar minggu ini?",
+      "title": "",
+      "tts": {
+        "text": "Ron, apakah berita model terbesar minggu ini?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "Otak lalai di dalam ChatGPT telah berubah. OpenAI melancarkan model baharu yang dipanggil GPT-5.5 Instant ke peringkat percuma minggu lepas, pada hari Selasa, 5 Mei. Jika respons ChatGPT percuma terasa lebih pendek atau kurang penuh dengan emoji, itulah sebabnya.",
+      "text_markdown": "Otak lalai di dalam ChatGPT telah berubah. OpenAI melancarkan model baharu yang dipanggil GPT-5.5 Instant ke peringkat percuma minggu lepas, pada hari Selasa, 5 Mei. Jika respons ChatGPT percuma terasa lebih pendek atau kurang penuh dengan emoji, itulah sebabnya.",
+      "title": "",
+      "tts": {
+        "text": "Otak lalai di dalam ChatGPT telah berubah. OpenAI melancarkan model baharu yang dipanggil GPT lima perpuluhan lima Instant ke peringkat percuma minggu lepas, pada hari Selasa, lima Mei. Jika respons ChatGPT percuma terasa lebih pendek atau kurang penuh dengan emoji, itulah sebabnya.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "Lebih pendek bagaimana?",
+      "text_markdown": "Lebih pendek bagaimana?",
+      "title": "",
+      "tts": {
+        "text": "Lebih pendek bagaimana?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "OpenAI mengatakan lalai baharu itu menulis kira-kira 30% perkataan lebih sedikit dan 30% baris lebih sedikit daripada model yang digantikannya. Mereka juga mendakwa penurunan 50% dalam dakwaan halusinasi pada gesaan yang paling sukar. Perkara seperti soalan perubatan, soalan undang-undang, dan soalan kewangan.",
+      "text_markdown": "OpenAI mengatakan lalai baharu itu menulis kira-kira 30% perkataan lebih sedikit dan 30% baris lebih sedikit daripada model yang digantikannya. Mereka juga mendakwa penurunan 50% dalam dakwaan halusinasi pada gesaan yang paling sukar. Perkara seperti soalan perubatan, soalan undang-undang, dan soalan kewangan.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI mengatakan lalai baharu itu menulis kira-kira tiga puluh peratus perkataan lebih sedikit dan tiga puluh peratus baris lebih sedikit daripada model yang digantikannya. Mereka juga mendakwa penurunan lima puluh peratus dalam dakwaan halusinasi pada gesaan yang paling sukar. Perkara seperti soalan perubatan, soalan undang-undang, dan soalan kewangan.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "Adakah sesiapa di luar OpenAI telah mengesahkan nombor-nombor itu?",
+      "text_markdown": "Adakah sesiapa di luar OpenAI telah mengesahkan nombor-nombor itu?",
+      "title": "",
+      "tts": {
+        "text": "Adakah sesiapa di luar OpenAI telah mengesahkan nombor-nombor itu?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "Setakat ini, bukan pada skala besar. Penanda aras bebas seperti Artificial Analysis meletakkan model baharu itu di tangga teratas indeks kecerdasan keseluruhan mereka. Namun, dakwaan tentang halusinasi memang lambat untuk dipastikan. Perkara itu biasanya hanya muncul selepas beberapa minggu, apabila orang ramai benar-benar menggunakan model itu.",
+      "text_markdown": "Setakat ini, bukan pada skala besar. Penanda aras bebas seperti Artificial Analysis meletakkan model baharu itu di tangga teratas indeks kecerdasan keseluruhan mereka. Namun, dakwaan tentang halusinasi memang lambat untuk dipastikan. Perkara itu biasanya hanya muncul selepas beberapa minggu, apabila orang ramai benar-benar menggunakan model itu.",
+      "title": "",
+      "tts": {
+        "text": "Setakat ini, bukan pada skala besar. Penanda aras bebas seperti Artificial Analysis meletakkan model baharu itu di tangga teratas indeks kecerdasan keseluruhan mereka. Namun, dakwaan tentang halusinasi memang lambat untuk dipastikan. Perkara itu biasanya hanya muncul selepas beberapa minggu, apabila orang ramai benar-benar menggunakan model itu.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "Dan di pihak pemberat terbuka?",
+      "text_markdown": "Dan di pihak pemberat terbuka?",
+      "title": "",
+      "tts": {
+        "text": "Dan di pihak pemberat terbuka?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "Dua perkara besar. Moonshot, makmal China di sebalik model Kimi, mengumpul $2 bilion minggu lepas, pada 7 Mei, dengan penilaian $20 bilion. Dan model terbaru mereka, Kimi K 2.6, baru sahaja menduduki tempat teratas di OpenRouter untuk volum token.",
+      "text_markdown": "Dua perkara besar. Moonshot, makmal China di sebalik model Kimi, mengumpul $2 bilion minggu lepas, pada 7 Mei, dengan penilaian $20 bilion. Dan model terbaru mereka, Kimi K 2.6, baru sahaja menduduki tempat teratas di OpenRouter untuk volum token.",
+      "title": "",
+      "tts": {
+        "text": "Dua perkara besar. Moonshot, makmal China di sebalik model Kimi, mengumpul dua bilion dolar minggu lepas, pada tujuh Mei, dengan penilaian dua puluh bilion dolar. Dan model terbaru mereka, Kimi K dua perpuluhan enam, baru sahaja menduduki tempat teratas di OpenRouter untuk volum token.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "Tempat teratas? Secara keseluruhan?",
+      "text_markdown": "Tempat teratas? Secara keseluruhan?",
+      "title": "",
+      "tts": {
+        "text": "Tempat teratas? Secara keseluruhan?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Secara keseluruhan. Itu adalah model pemberat terbuka China di nombor satu pada penghala komersial utama. Enam bulan yang lalu, itu tidak dapat dibayangkan.",
+      "text_markdown": "Secara keseluruhan. Itu adalah model pemberat terbuka China di nombor satu pada penghala komersial utama. Enam bulan yang lalu, itu tidak dapat dibayangkan.",
+      "title": "",
+      "tts": {
+        "text": "Secara keseluruhan. Itu adalah model pemberat terbuka China di nombor satu pada penghala komersial utama. Enam bulan yang lalu, itu tidak dapat dibayangkan.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "Ada apa-apa lagi yang patut ditandakan?",
+      "text_markdown": "Ada apa-apa lagi yang patut ditandakan?",
+      "title": "",
+      "tts": {
+        "text": "Ada apa-apa lagi yang patut ditandakan?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "Mistral, makmal Perancis, mengeluarkan Medium 3.5 pada akhir April. Mereka menggabungkan pemisahan lama antara model sembang, model penaakulan, dan model pengekodan menjadi satu produk. Trend yang sama OpenAI mulakan dengan keluarga GPT-5. Seluruh industri bergerak ke arah itu.",
+      "text_markdown": "Mistral, makmal Perancis, mengeluarkan Medium 3.5 pada akhir April. Mereka menggabungkan pemisahan lama antara model sembang, model penaakulan, dan model pengekodan menjadi satu produk. Trend yang sama OpenAI mulakan dengan keluarga GPT-5. Seluruh industri bergerak ke arah itu.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, makmal Perancis, mengeluarkan Medium tiga perpuluhan lima pada akhir April. Mereka menggabungkan pemisahan lama antara model sembang, model penaakulan, dan model pengekodan menjadi satu produk. Trend yang sama OpenAI mulakan dengan keluarga GPT lima. Seluruh industri bergerak ke arah itu.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "Dan apa yang akan datang seterusnya?",
+      "text_markdown": "Dan apa yang akan datang seterusnya?",
+      "title": "",
+      "tts": {
+        "text": "Dan apa yang akan datang seterusnya?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "Google I/O akan berlangsung pada hari Selasa. Semua orang menjangkakan Gemini baharu, dan terdapat khabar angin yang boleh dipercayai tentang model penjanaan video yang dipanggil Gemini Omni. OpenAI mempunyai GPT-5.6 dalam ujian. Anthropic mempunyai model yang dipanggil Mythos dalam pratonton peribadi. Kita akan tahu lebih banyak minggu depan.",
+      "text_markdown": "Google I/O akan berlangsung pada hari Selasa. Semua orang menjangkakan Gemini baharu, dan terdapat khabar angin yang boleh dipercayai tentang model penjanaan video yang dipanggil Gemini Omni. OpenAI mempunyai GPT-5.6 dalam ujian. Anthropic mempunyai model yang dipanggil Mythos dalam pratonton peribadi. Kita akan tahu lebih banyak minggu depan.",
+      "title": "",
+      "tts": {
+        "text": "Google I O akan berlangsung pada hari Selasa. Semua orang menjangkakan Gemini baharu, dan terdapat khabar angin yang boleh dipercayai tentang model penjanaan video yang dipanggil Gemini Omni. OpenAI mempunyai GPT lima perpuluhan enam dalam ujian. Anthropic mempunyai model yang dipanggil Mythos dalam pratonton peribadi. Kita akan tahu lebih banyak minggu depan.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "Baiklah, mari kita beralih ke papan pendahulu.",
+      "text_markdown": "Baiklah, mari kita beralih ke papan pendahulu.",
+      "title": "",
+      "tts": {
+        "text": "Baiklah, mari kita beralih ke papan pendahulu.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "Ron, apa yang bergerak di papan minggu ini?",
+      "text_markdown": "Ron, apa yang bergerak di papan minggu ini?",
+      "title": "",
+      "tts": {
+        "text": "Ron, apa yang bergerak di papan minggu ini?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "Kisah sebenar minggu ini bukanlah markah. Ia adalah markah yang anda patut berhenti percaya.",
+      "text_markdown": "Kisah sebenar minggu ini bukanlah markah. Ia adalah markah yang anda patut berhenti percaya.",
+      "title": "",
+      "tts": {
+        "text": "Kisah sebenar minggu ini bukanlah markah. Ia adalah markah yang anda patut berhenti percaya.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "Beritahu kami lebih lanjut tentang itu, Ron.",
+      "text_markdown": "Beritahu kami lebih lanjut tentang itu, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Beritahu kami lebih lanjut tentang itu, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "Sekumpulan penyelidik di Berkeley menerbitkan sebuah kertas kerja. Mereka membina pengimbas automatik yang mendapat markah hampir sempurna pada setiap penanda aras ejen AI utama. Tanpa sebenarnya menyelesaikan satu tugas pun. Mereka mengeksploitasi cara penanda aras menyemak jawapan mereka sendiri.",
+      "text_markdown": "Sekumpulan penyelidik di Berkeley menerbitkan sebuah kertas kerja. Mereka membina pengimbas automatik yang mendapat markah hampir sempurna pada setiap penanda aras ejen AI utama. Tanpa sebenarnya menyelesaikan satu tugas pun. Mereka mengeksploitasi cara penanda aras menyemak jawapan mereka sendiri.",
+      "title": "",
+      "tts": {
+        "text": "Sekumpulan penyelidik di Berkeley menerbitkan sebuah kertas kerja. Mereka membina pengimbas automatik yang mendapat markah hampir sempurna pada setiap penanda aras ejen AI utama. Tanpa sebenarnya menyelesaikan satu tugas pun. Mereka mengeksploitasi cara penanda aras menyemak jawapan mereka sendiri.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "Mereka menipu, dan penanda aras tidak menangkapnya.",
+      "text_markdown": "Mereka menipu, dan penanda aras tidak menangkapnya.",
+      "title": "",
+      "tts": {
+        "text": "Mereka menipu, dan penanda aras tidak menangkapnya.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "Betul. Dan pada minggu yang sama, OpenAI mengumumkan mereka akan menghentikan penilaian mereka pada SWE bench Verified. Itu adalah penanda aras pengekodan yang sering mereka sebutkan. Mereka menghentikannya kerana lebih separuh daripada tugas sukar didapati mempunyai ujian yang rosak.",
+      "text_markdown": "Betul. Dan pada minggu yang sama, OpenAI mengumumkan mereka akan menghentikan penilaian mereka pada SWE bench Verified. Itu adalah penanda aras pengekodan yang sering mereka sebutkan. Mereka menghentikannya kerana lebih separuh daripada tugas sukar didapati mempunyai ujian yang rosak.",
+      "title": "",
+      "tts": {
+        "text": "Betul. Dan pada minggu yang sama, OpenAI mengumumkan mereka akan menghentikan penilaian mereka pada SWE bench Verified. Itu adalah penanda aras pengekodan yang sering mereka sebutkan. Mereka menghentikannya kerana lebih separuh daripada tugas sukar didapati mempunyai ujian yang rosak.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "Jadi banyak nombor yang kita dengar sepanjang tahun lalu adalah…",
+      "text_markdown": "Jadi banyak nombor yang kita dengar sepanjang tahun lalu adalah…",
+      "title": "",
+      "tts": {
+        "text": "Jadi banyak nombor yang kita dengar sepanjang tahun lalu adalah…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Sekurang-kurangnya sebahagiannya dinaikkan. Bukan setiap model. Bukan setiap penanda aras. Tetapi bidang ini sedang membina semula alat ukurnya secara terbuka. Penilaian yang lebih baharu seperti SWE-bench Pro dan projek yang dipanggil SWE-rebench cuba membetulkan ini dengan merahsiakan kod ujian.",
+      "text_markdown": "Sekurang-kurangnya sebahagiannya dinaikkan. Bukan setiap model. Bukan setiap penanda aras. Tetapi bidang ini sedang membina semula alat ukurnya secara terbuka. Penilaian yang lebih baharu seperti SWE-bench Pro dan projek yang dipanggil SWE-rebench cuba membetulkan ini dengan merahsiakan kod ujian.",
+      "title": "",
+      "tts": {
+        "text": "Sekurang-kurangnya sebahagiannya dinaikkan. Bukan setiap model. Bukan setiap penanda aras. Tetapi bidang ini sedang membina semula alat ukurnya secara terbuka. Penilaian yang lebih baharu seperti SWE bench Pro dan projek yang dipanggil SWE rebench cuba membetulkan ini dengan merahsiakan kod ujian.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "Adakah ada apa-apa yang benar-benar meningkat dengan bersih?",
+      "text_markdown": "Adakah ada apa-apa yang benar-benar meningkat dengan bersih?",
+      "title": "",
+      "tts": {
+        "text": "Adakah ada apa-apa yang benar-benar meningkat dengan bersih?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "Dua perkara, pada papan yang lebih bersih. Pada pertengahan April, Claude Opus 4.7 Anthropic menjadi model pertama yang melepasi Elo 1500 dengan bersih pada papan pendahulu pengekodan LM Arena. Opus 4.6 telah mencapai 1500 beberapa minggu sebelumnya. Sehingga minggu ini, Opus 4.7 masih di atas, sekitar 1569. Anthropic juga mempunyai model berasingan yang dipanggil Mythos dalam pratonton rakan kongsi peribadi yang mendahului 17 daripada 18 penanda aras ejen yang diukur oleh Anthropic.",
+      "text_markdown": "Dua perkara, pada papan yang lebih bersih. Pada pertengahan April, Claude Opus 4.7 Anthropic menjadi model pertama yang melepasi Elo 1500 dengan bersih pada papan pendahulu pengekodan LM Arena. Opus 4.6 telah mencapai 1500 beberapa minggu sebelumnya. Sehingga minggu ini, Opus 4.7 masih di atas, sekitar 1569. Anthropic juga mempunyai model berasingan yang dipanggil Mythos dalam pratonton rakan kongsi peribadi yang mendahului 17 daripada 18 penanda aras ejen yang diukur oleh Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Dua perkara, pada papan yang lebih bersih. Pada pertengahan April, Claude Opus empat perpuluhan tujuh Anthropic menjadi model pertama yang melepasi Elo seribu lima ratus dengan bersih pada papan pendahulu pengekodan LM Arena. Opus empat perpuluhan enam telah mencapai seribu lima ratus beberapa minggu sebelumnya. Sehingga minggu ini, Opus empat perpuluhan tujuh masih di atas, sekitar seribu lima ratus enam puluh sembilan. Anthropic juga mempunyai model berasingan yang dipanggil Mythos dalam pratonton rakan kongsi peribadi yang mendahului tujuh belas daripada lapan belas penanda aras ejen yang diukur oleh Anthropic.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "Model yang tidak boleh digunakan oleh orang awam berada di puncak papan.",
+      "text_markdown": "Model yang tidak boleh digunakan oleh orang awam berada di puncak papan.",
+      "title": "",
+      "tts": {
+        "text": "Model yang tidak boleh digunakan oleh orang awam berada di puncak papan.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "Di situlah kita berada. Trend besar lain ialah jurang terbuka berbanding tertutup. Ia adalah yang paling sempit pernah ada. DeepSeek V4 Pro dan Kimi K 2.6 berada dalam jarak yang boleh dicapai oleh GPT-5.5 pada indeks kecerdasan penilaian silang. Jurang itu dahulunya sangat besar. Kini ia kecil.",
+      "text_markdown": "Di situlah kita berada. Trend besar lain ialah jurang terbuka berbanding tertutup. Ia adalah yang paling sempit pernah ada. DeepSeek V4 Pro dan Kimi K 2.6 berada dalam jarak yang boleh dicapai oleh GPT-5.5 pada indeks kecerdasan penilaian silang. Jurang itu dahulunya sangat besar. Kini ia kecil.",
+      "title": "",
+      "tts": {
+        "text": "Di situlah kita berada. Trend besar lain ialah jurang terbuka berbanding tertutup. Ia adalah yang paling sempit pernah ada. DeepSeek V empat Pro dan Kimi K dua titik enam berada dalam jarak yang boleh dicapai oleh GPT lima titik lima pada indeks kecerdasan penilaian silang. Jurang itu dahulunya sangat besar. Kini ia kecil.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Baiklah, mari kita bincangkan konsep minggu ini.",
+      "text_markdown": "Baiklah, mari kita bincangkan konsep minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Baiklah, mari kita bincangkan konsep minggu ini.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "Ron, konsep minggu ini ialah campuran pakar. Mengapa kita menumpukan pada campuran pakar?",
+      "text_markdown": "Ron, konsep minggu ini ialah campuran pakar. Mengapa kita menumpukan pada campuran pakar?",
+      "title": "",
+      "tts": {
+        "text": "Ron, konsep minggu ini ialah campuran pakar. Mengapa kita menumpukan pada campuran pakar?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "Kerana model berat terbuka yang baru kita bincangkan, Kimi K 2.6, mempunyai sejumlah 1 trilion parameter. Tetapi hanya 32 bilion daripada parameter tersebut berjalan pada bila-bila masa. Itulah campuran pakar.",
+      "text_markdown": "Kerana model berat terbuka yang baru kita bincangkan, Kimi K 2.6, mempunyai sejumlah 1 trilion parameter. Tetapi hanya 32 bilion daripada parameter tersebut berjalan pada bila-bila masa. Itulah campuran pakar.",
+      "title": "",
+      "tts": {
+        "text": "Kerana model berat terbuka yang baru kita bincangkan, Kimi K dua titik enam, mempunyai sejumlah satu trilion parameter. Tetapi hanya tiga puluh dua bilion daripada parameter tersebut berjalan pada bila-bila masa. Itulah campuran pakar.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "Terangkan kepada kami untuk mereka yang mengikuti.",
+      "text_markdown": "Terangkan kepada kami untuk mereka yang mengikuti.",
+      "title": "",
+      "tts": {
+        "text": "Terangkan kepada kami untuk mereka yang mengikuti.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "Model AI biasa adalah seperti satu otak gergasi. Setiap perkataan yang dihasilkannya menggunakan setiap bahagian otak. Model campuran pakar lebih seperti sebuah bangunan yang penuh dengan pakar. Dengan penyambut tetamu di pintu. Untuk setiap perkataan, penyambut tetamu memilih dua atau tiga pakar untuk dirujuk, dan selebihnya bangunan itu kekal senyap.",
+      "text_markdown": "Model AI biasa adalah seperti satu otak gergasi. Setiap perkataan yang dihasilkannya menggunakan setiap bahagian otak. Model campuran pakar lebih seperti sebuah bangunan yang penuh dengan pakar. Dengan penyambut tetamu di pintu. Untuk setiap perkataan, penyambut tetamu memilih dua atau tiga pakar untuk dirujuk, dan selebihnya bangunan itu kekal senyap.",
+      "title": "",
+      "tts": {
+        "text": "Model AI biasa adalah seperti satu otak gergasi. Setiap perkataan yang dihasilkannya menggunakan setiap bahagian otak. Model campuran pakar lebih seperti sebuah bangunan yang penuh dengan pakar. Dengan penyambut tetamu di pintu. Untuk setiap perkataan, penyambut tetamu memilih dua atau tiga pakar untuk dirujuk, dan selebihnya bangunan itu kekal senyap.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "Pendek kata, model itu kelihatan besar di atas kertas tetapi kos menjalankannya rendah.",
+      "text_markdown": "Pendek kata, model itu kelihatan besar di atas kertas tetapi kos menjalankannya rendah.",
+      "title": "",
+      "tts": {
+        "text": "Pendek kata, model itu kelihatan besar di atas kertas tetapi kos menjalankannya rendah.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "Tepat sekali. 1 trilion parameter kapasiti. Tetapi hanya 32 bilion parameter pengiraan per perkataan. Itulah helahnya. Penyambut tetamu adalah sekeping kod kecil yang dipanggil penghala (router). Pakar-pakar adalah sub-rangkaian yang dipanggil pakar (experts). Model ini melatih penghala dan pakar-pakar bersama-sama, dari awal hingga akhir.",
+      "text_markdown": "Tepat sekali. 1 trilion parameter kapasiti. Tetapi hanya 32 bilion parameter pengiraan per perkataan. Itulah helahnya. Penyambut tetamu adalah sekeping kod kecil yang dipanggil penghala (router). Pakar-pakar adalah sub-rangkaian yang dipanggil pakar (experts). Model ini melatih penghala dan pakar-pakar bersama-sama, dari awal hingga akhir.",
+      "title": "",
+      "tts": {
+        "text": "Tepat sekali. Satu trilion parameter kapasiti. Tetapi hanya tiga puluh dua bilion parameter pengiraan per perkataan. Itulah helahnya. Penyambut tetamu adalah sekeping kod kecil yang dipanggil penghala. Pakar-pakar adalah sub-rangkaian yang dipanggil pakar. Model ini melatih penghala dan pakar-pakar bersama-sama, dari awal hingga akhir.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "Adakah setiap model sempadan utama melakukan ini?",
+      "text_markdown": "Adakah setiap model sempadan utama melakukan ini?",
+      "title": "",
+      "tts": {
+        "text": "Adakah setiap model sempadan utama melakukan ini?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "Kebanyakannya, ya. Walaupun makmal tidak selalu mengesahkannya. GPT-4 adalah model campuran pakar. Model utama dari DeepSeek adalah model campuran pakar. Mistral telah mengeluarkan model campuran pakar sejak 2023. Gelombang baharu dari China telah mendorong reka bentuk ini ke hadnya.",
+      "text_markdown": "Kebanyakannya, ya. Walaupun makmal tidak selalu mengesahkannya. GPT-4 adalah model campuran pakar. Model utama dari DeepSeek adalah model campuran pakar. Mistral telah mengeluarkan model campuran pakar sejak 2023. Gelombang baharu dari China telah mendorong reka bentuk ini ke hadnya.",
+      "title": "",
+      "tts": {
+        "text": "Kebanyakannya, ya. Walaupun makmal tidak selalu mengesahkannya. GPT empat adalah model campuran pakar. Model utama dari DeepSeek adalah model campuran pakar. Mistral telah mengeluarkan model campuran pakar sejak dua ribu dua puluh tiga. Gelombang baharu dari China telah mendorong reka bentuk ini ke hadnya.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "Mengapa ia penting bagi seseorang yang hanya menggunakan ChatGPT?",
+      "text_markdown": "Mengapa ia penting bagi seseorang yang hanya menggunakan ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa ia penting bagi seseorang yang hanya menggunakan ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "Dua sebab. Satu. Ia adalah sebab utama mengapa makmal berat terbuka di China boleh beroperasi pada kualiti kelas sempadan dengan sebahagian kecil daripada bajet. Dua. Ia adalah sebab utama mengapa satu panggilan API berharga sen, bukan dolar. Apabila anda melihat harga turun dan kualiti kekal tinggi, campuran pakar biasanya adalah sebabnya.",
+      "text_markdown": "Dua sebab. Satu. Ia adalah sebab utama mengapa makmal berat terbuka di China boleh beroperasi pada kualiti kelas sempadan dengan sebahagian kecil daripada bajet. Dua. Ia adalah sebab utama mengapa satu panggilan API berharga sen, bukan dolar. Apabila anda melihat harga turun dan kualiti kekal tinggi, campuran pakar biasanya adalah sebabnya.",
+      "title": "",
+      "tts": {
+        "text": "Dua sebab. Satu. Ia adalah sebab utama mengapa makmal berat terbuka di China boleh beroperasi pada kualiti kelas sempadan dengan sebahagian kecil daripada bajet. Dua. Ia adalah sebab utama mengapa satu panggilan API berharga sen, bukan dolar. Apabila anda melihat harga turun dan kualiti kekal tinggi, campuran pakar biasanya adalah sebabnya.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "Campuran pakar. Penghala. Pakar. Pengaktifan jarang. Tiga perkataan untuk anda ingat. Sekarang mari kita kembali kepada gambaran yang lebih besar.",
+      "text_markdown": "Campuran pakar. Penghala. Pakar. Pengaktifan jarang. Tiga perkataan untuk anda ingat. Sekarang mari kita kembali kepada gambaran yang lebih besar.",
+      "title": "",
+      "tts": {
+        "text": "Campuran pakar. Penghala. Pakar. Pengaktifan jarang. Tiga perkataan untuk anda ingat. Sekarang mari kita kembali kepada gambaran yang lebih besar.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "Ron, cerita besar di luar dunia kita minggu ini ialah Federal Reserve.",
+      "text_markdown": "Ron, cerita besar di luar dunia kita minggu ini ialah Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, cerita besar di luar dunia kita minggu ini ialah Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "Hari ini, Senat A.S. mengesahkan Kevin Warsh sebagai pengerusi Federal Reserve seterusnya. Undian adalah 54 berbanding 45. Undian paling tipis untuk pengerusi Fed dalam sejarah Amerika moden. Hanya seorang Demokrat melangkaui batas parti.",
+      "text_markdown": "Hari ini, Senat A.S. mengesahkan Kevin Warsh sebagai pengerusi Federal Reserve seterusnya. Undian adalah 54 berbanding 45. Undian paling tipis untuk pengerusi Fed dalam sejarah Amerika moden. Hanya seorang Demokrat melangkaui batas parti.",
+      "title": "",
+      "tts": {
+        "text": "Hari ini, Senat A.S. mengesahkan Kevin Warsh sebagai pengerusi Federal Reserve seterusnya. Undian adalah lima puluh empat berbanding empat puluh lima. Undian paling tipis untuk pengerusi Fed dalam sejarah Amerika moden. Hanya seorang Demokrat melangkaui batas parti.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "Mengapa itu penting untuk AI?",
+      "text_markdown": "Mengapa itu penting untuk AI?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa itu penting untuk AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "Kerana pembangunan AI sekarang ini dibatasi oleh dua perkara. Elektrik, dan kos modal. Fed menetapkan kos modal. Dan pengerusi baharu itu telah direkodkan berkata dia mahu memotong kadar lebih cepat daripada yang akan dilakukan oleh pendahulunya.",
+      "text_markdown": "Kerana pembangunan AI sekarang ini dibatasi oleh dua perkara. Elektrik, dan kos modal. Fed menetapkan kos modal. Dan pengerusi baharu itu telah direkodkan berkata dia mahu memotong kadar lebih cepat daripada yang akan dilakukan oleh pendahulunya.",
+      "title": "",
+      "tts": {
+        "text": "Kerana pembangunan AI sekarang ini dibatasi oleh dua perkara. Elektrik, dan kos modal. Fed menetapkan kos modal. Dan pengerusi baharu itu telah direkodkan berkata dia mahu memotong kadar lebih cepat daripada yang akan dilakukan oleh pendahulunya.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "Pemotongan kadar yang lebih cepat menjadikan pelaburan AI lebih murah.",
+      "text_markdown": "Pemotongan kadar yang lebih cepat menjadikan pelaburan AI lebih murah.",
+      "title": "",
+      "tts": {
+        "text": "Pemotongan kadar yang lebih cepat menjadikan pelaburan AI lebih murah.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "Ya. Para hyperscaler — Microsoft, Google, Amazon, Meta — dijangka membelanjakan kira-kira $700 bilion untuk perbelanjaan modal tahun ini. Kebanyakan daripadanya adalah GPU dan pusat data. Kadar diskaun yang lebih rendah menjadikan pembangunan berbilang tahun itu menghasilkan penilaian yang lebih tinggi.",
+      "text_markdown": "Ya. Para hyperscaler — Microsoft, Google, Amazon, Meta — dijangka membelanjakan kira-kira $700 bilion untuk perbelanjaan modal tahun ini. Kebanyakan daripadanya adalah GPU dan pusat data. Kadar diskaun yang lebih rendah menjadikan pembangunan berbilang tahun itu menghasilkan penilaian yang lebih tinggi.",
+      "title": "",
+      "tts": {
+        "text": "Ya. Para hyperscaler — Microsoft, Google, Amazon, Meta — dijangka membelanjakan kira-kira tujuh ratus bilion dolar untuk perbelanjaan modal tahun ini. Kebanyakan daripadanya adalah GPU dan pusat data. Kadar diskaun yang lebih rendah menjadikan pembangunan berbilang tahun itu menghasilkan penilaian yang lebih tinggi.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "Dan arah yang lain. Bagaimana AI mempengaruhi apa yang perlu diputuskan oleh Fed?",
+      "text_markdown": "Dan arah yang lain. Bagaimana AI mempengaruhi apa yang perlu diputuskan oleh Fed?",
+      "title": "",
+      "tts": {
+        "text": "Dan arah yang lain. Bagaimana AI mempengaruhi apa yang perlu diputuskan oleh Fed?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "Ini adalah bahagian yang menarik. Perbelanjaan modal AI kini cukup besar sehingga menjadi angka makro. Bukan cerita sektor. Penganalisis Wall Street mengatakan perbelanjaan pembinaan dan peralatan berkaitan AI telah menjadi majoriti pertumbuhan ekonomi A.S. untuk beberapa suku tahun yang lalu.",
+      "text_markdown": "Ini adalah bahagian yang menarik. Perbelanjaan modal AI kini cukup besar sehingga menjadi angka makro. Bukan cerita sektor. Penganalisis Wall Street mengatakan perbelanjaan pembinaan dan peralatan berkaitan AI telah menjadi majoriti pertumbuhan ekonomi A.S. untuk beberapa suku tahun yang lalu.",
+      "title": "",
+      "tts": {
+        "text": "Ini adalah bahagian yang menarik. Perbelanjaan modal AI kini cukup besar sehingga menjadi angka makro. Bukan cerita sektor. Penganalisis Wall Street mengatakan perbelanjaan pembinaan dan peralatan berkaitan AI telah menjadi majoriti pertumbuhan ekonomi A.S. untuk beberapa suku tahun yang lalu.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "Majoriti pertumbuhan.",
+      "text_markdown": "Majoriti pertumbuhan.",
+      "title": "",
+      "tts": {
+        "text": "Majoriti pertumbuhan.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "Majoriti. Dan ia mempunyai dua kesan untuk Fed. Jangka panjang, AI adalah pendorong produktiviti. Itu adalah deflasi. Ia memberi ruang kepada Fed untuk memotong. Jangka pendek, ia adalah kejutan permintaan terhadap kuasa, tembaga, tenaga kerja mahir, air untuk penyejukan. Itu adalah inflasi. Terutama di tempat seperti Virginia dan Texas, di mana pusat data tertumpu.",
+      "text_markdown": "Majoriti. Dan ia mempunyai dua kesan untuk Fed. Jangka panjang, AI adalah pendorong produktiviti. Itu adalah deflasi. Ia memberi ruang kepada Fed untuk memotong. Jangka pendek, ia adalah kejutan permintaan terhadap kuasa, tembaga, tenaga kerja mahir, air untuk penyejukan. Itu adalah inflasi. Terutama di tempat seperti Virginia dan Texas, di mana pusat data tertumpu.",
+      "title": "",
+      "tts": {
+        "text": "Majoriti. Dan ia mempunyai dua kesan untuk Fed. Jangka panjang, AI adalah pendorong produktiviti. Itu adalah deflasi. Ia memberi ruang kepada Fed untuk memotong. Jangka pendek, ia adalah kejutan permintaan terhadap kuasa, tembaga, tenaga kerja mahir, air untuk penyejukan. Itu adalah inflasi. Terutama di tempat seperti Virginia dan Texas, di mana pusat data tertumpu.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "Jadi pengerusi baharu perlu memutuskan sama ada AI adalah jawapan kepada inflasi, atau sama ada AI adalah punca inflasi.",
+      "text_markdown": "Jadi pengerusi baharu perlu memutuskan sama ada AI adalah jawapan kepada inflasi, atau sama ada AI adalah punca inflasi.",
+      "title": "",
+      "tts": {
+        "text": "Jadi pengerusi baharu perlu memutuskan sama ada AI adalah jawapan kepada inflasi, atau sama ada AI adalah punca inflasi.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "Kedua-duanya, serentak. Dan apa sahaja yang dikatakannya dalam ucapan awam pertamanya akan menggerakkan setiap model perbelanjaan modal AI di Wall Street.",
+      "text_markdown": "Kedua-duanya, serentak. Dan apa sahaja yang dikatakannya dalam ucapan awam pertamanya akan menggerakkan setiap model perbelanjaan modal AI di Wall Street.",
+      "title": "",
+      "tts": {
+        "text": "Kedua-duanya, serentak. Dan apa sahaja yang dikatakannya dalam ucapan awam pertamanya akan menggerakkan setiap model perbelanjaan modal AI di Wall Street.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "Microsoft mempunyai $80 bilion pesanan awan yang belum dipenuhi kerana masalah kuasa. Adakah itu angka yang betul?",
+      "text_markdown": "Microsoft mempunyai $80 bilion pesanan awan yang belum dipenuhi kerana masalah kuasa. Adakah itu angka yang betul?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft mempunyai lapan puluh bilion dolar pesanan awan yang belum dipenuhi kerana masalah kuasa. Adakah itu angka yang betul?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "Itulah angka yang dilaporkan oleh Microsoft. Pelanggan Azure sedang beratur menunggu kapasiti. Kekangan bukan lagi cip. Ia adalah grid elektrik. Pasaran kuasa tidak dapat membina kapasiti baharu secepat yang dikehendaki oleh pusat data.",
+      "text_markdown": "Itulah angka yang dilaporkan oleh Microsoft. Pelanggan Azure sedang beratur menunggu kapasiti. Kekangan bukan lagi cip. Ia adalah grid elektrik. Pasaran kuasa tidak dapat membina kapasiti baharu secepat yang dikehendaki oleh pusat data.",
+      "title": "",
+      "tts": {
+        "text": "Itulah angka yang dilaporkan oleh Microsoft. Pelanggan Azure sedang beratur menunggu kapasiti. Kekangan bukan lagi cip. Ia adalah grid elektrik. Pasaran kuasa tidak dapat membina kapasiti baharu secepat yang dikehendaki oleh pusat data.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "Bilakah mesyuarat pertama Warsh?",
+      "text_markdown": "Bilakah mesyuarat pertama Warsh?",
+      "title": "",
+      "tts": {
+        "text": "Bilakah mesyuarat pertama Warsh?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "Pada 16 dan 17 Jun. Kita akan tahu lebih banyak tentang laluan kadar selepas itu.",
+      "text_markdown": "Pada 16 dan 17 Jun. Kita akan tahu lebih banyak tentang laluan kadar selepas itu.",
+      "title": "",
+      "tts": {
+        "text": "Pada enam belas dan tujuh belas Jun. Kita akan tahu lebih banyak tentang laluan kadar selepas itu.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "Tempat yang baik untuk mendarat. Ron, terima kasih.",
+      "text_markdown": "Tempat yang baik untuk mendarat. Ron, terima kasih.",
+      "title": "",
+      "tts": {
+        "text": "Tempat yang baik untuk mendarat. Ron, terima kasih.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Bila-bila masa, Vindy.",
+      "text_markdown": "Bila-bila masa, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Bila-bila masa, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "Itu adalah AI This Week untuk 13 Mei 2026. Edisi baharu Rabu depan. Sehingga itu, jaga diri.",
+      "text_markdown": "Itu adalah AI This Week untuk 13 Mei 2026. Edisi baharu Rabu depan. Sehingga itu, jaga diri.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah AI This Week untuk Mei ketiga belas, dua ribu dua puluh enam. Edisi baharu Rabu depan. Sehingga itu, jaga diri.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

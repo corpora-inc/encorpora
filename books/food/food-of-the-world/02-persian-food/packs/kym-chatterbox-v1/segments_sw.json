@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "language": "sw",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Neno kwa Msomaji",
+      "text_markdown": "Neno kwa Msomaji"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Habari.",
+      "text_markdown": "Habari.",
+      "tts": {
+        "text": "Habari.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mimi ni Kym.",
+      "text_markdown": "Mimi ni Kym.",
+      "tts": {
+        "text": "Mimi ni Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Napenda chakula.",
+      "text_markdown": "Napenda chakula.",
+      "tts": {
+        "text": "Napenda chakula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Napenda hadithi za chakula.",
+      "text_markdown": "Napenda hadithi za chakula.",
+      "tts": {
+        "text": "Napenda hadithi za chakula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hiki ni kitabu kidogo kuhusu chakula kikubwa.",
+      "text_markdown": "Hiki ni kitabu kidogo kuhusu chakula kikubwa.",
+      "tts": {
+        "text": "Hiki ni kitabu kidogo kuhusu chakula kikubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chakula hiki ni chakula cha Kiajemi.",
+      "text_markdown": "Chakula hiki ni chakula cha Kiajemi.",
+      "tts": {
+        "text": "Chakula hiki ni chakula cha Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ni chakula cha Iran.",
+      "text_markdown": "Ni chakula cha Iran.",
+      "tts": {
+        "text": "Ni chakula cha Iran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pia ni chakula cha nchi ya zamani sana iliyoitwa Uajemi.",
+      "text_markdown": "Pia ni chakula cha nchi ya zamani sana iliyoitwa Uajemi.",
+      "tts": {
+        "text": "Pia ni chakula cha nchi ya zamani sana iliyoitwa Uajemi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uajemi ni moja ya maeneo ya zamani sana duniani ambako watu walilima chakula kwa makusudi.",
+      "text_markdown": "Uajemi ni moja ya maeneo ya zamani sana duniani ambako watu walilima chakula kwa makusudi.",
+      "tts": {
+        "text": "Uajemi ni moja ya maeneo ya zamani sana duniani ambako watu walilima chakula kwa makusudi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ngano, shayiri, pichi, aprikoti, komamanga, spinachi, zafarani, vitu vingi kwenye sahani yako vilizaliwa huko.",
+      "text_markdown": "Ngano, shayiri, pichi, aprikoti, komamanga, spinachi, zafarani, vitu vingi kwenye sahani yako vilizaliwa huko.",
+      "tts": {
+        "text": "Ngano, shayiri, pichi, aprikoti, komamanga, spinachi, zafarani, vitu vingi kwenye sahani yako vilizaliwa huko.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tutaanza na ardhi.",
+      "text_markdown": "Tutaanza na ardhi.",
+      "tts": {
+        "text": "Tutaanza na ardhi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kisha tutaangalia vitu vinavyomea huko.",
+      "text_markdown": "Kisha tutaangalia vitu vinavyomea huko.",
+      "tts": {
+        "text": "Kisha tutaangalia vitu vinavyomea huko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Halafu tutaangalia wali, mkate, nyama, na vitoweo.",
+      "text_markdown": "Halafu tutaangalia wali, mkate, nyama, na vitoweo.",
+      "tts": {
+        "text": "Halafu tutaangalia wali, mkate, nyama, na vitoweo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mwisho wake, utajua kilicho kwenye meza ya Kiajemi, na utajua kilikotoka.",
+      "text_markdown": "Mwisho wake, utajua kilicho kwenye meza ya Kiajemi, na utajua kilikotoka.",
+      "tts": {
+        "text": "Mwisho wake, utajua kilicho kwenye meza ya Kiajemi, na utajua kilikotoka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaa chini.",
+      "text_markdown": "Kaa chini.",
+      "tts": {
+        "text": "Kaa chini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mimina chai.",
+      "text_markdown": "Mimina chai.",
+      "tts": {
+        "text": "Mimina chai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tuanze.",
+      "text_markdown": "Tuanze.",
+      "tts": {
+        "text": "Tuanze.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 1 — Ardhi Ambapo Kilimo Kilianza",
+      "text_markdown": "Sura ya 1 — Ardhi Ambapo Kilimo Kilianza"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uajemi ni ardhi ya juu na kavu.",
+      "text_markdown": "Uajemi ni ardhi ya juu na kavu.",
+      "tts": {
+        "text": "Uajemi ni ardhi ya juu na kavu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ipo kati ya Bahari ya Kaspi kaskazini na Ghuba ya Uajemi kusini.",
+      "text_markdown": "Ipo kati ya Bahari ya Kaspi kaskazini na Ghuba ya Uajemi kusini.",
+      "tts": {
+        "text": "Ipo kati ya Bahari ya Kaspi kaskazini na Ghuba ya Uajemi kusini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Upande wa magharibi kuna Mesopotamia.",
+      "text_markdown": "Upande wa magharibi kuna Mesopotamia.",
+      "tts": {
+        "text": "Upande wa magharibi kuna Mesopotamia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Upande wa mashariki kuna India.",
+      "text_markdown": "Upande wa mashariki kuna India.",
+      "tts": {
+        "text": "Upande wa mashariki kuna India.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Katikati kuna milima na majangwa.",
+      "text_markdown": "Katikati kuna milima na majangwa.",
+      "tts": {
+        "text": "Katikati kuna milima na majangwa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Karibu hapo, yapata miaka elfu kumi iliyopita, watu walianza kulima ngano na shayiri kwa makusudi.",
+      "text_markdown": "Karibu hapo, yapata miaka elfu kumi iliyopita, watu walianza kulima ngano na shayiri kwa makusudi.",
+      "tts": {
+        "text": "Karibu hapo, yapata miaka elfu kumi iliyopita, watu walianza kulima ngano na shayiri kwa makusudi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kilimo kilizaliwa huko.",
+      "text_markdown": "Kilimo kilizaliwa huko.",
+      "tts": {
+        "text": "Kilimo kilizaliwa huko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uajemi ilikuwa moja ya sehemu za kwanza kujifunza jambo hilo.",
+      "text_markdown": "Uajemi ilikuwa moja ya sehemu za kwanza kujifunza jambo hilo.",
+      "tts": {
+        "text": "Uajemi ilikuwa moja ya sehemu za kwanza kujifunza jambo hilo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwanzo huo mrefu uko kwenye kila sahani ya Kiajemi.",
+      "text_markdown": "Mwanzo huo mrefu uko kwenye kila sahani ya Kiajemi.",
+      "tts": {
+        "text": "Mwanzo huo mrefu uko kwenye kila sahani ya Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pichi imetoka Uajemi.",
+      "text_markdown": "Pichi imetoka Uajemi.",
+      "tts": {
+        "text": "Pichi imetoka Uajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Waroma waliiita Persika, tunda la Kiajemi. Neno la Kiingereza peach limetoka kwenye jina hilo.",
+      "text_markdown": "Waroma waliiita Persika, tunda la Kiajemi. Neno la Kiingereza peach limetoka kwenye jina hilo.",
+      "tts": {
+        "text": "Waroma waliiita Persika, tunda la Kiajemi. Neno la Kiingereza peach limetoka kwenye jina hilo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aprikoti pia imetoka huko.",
+      "text_markdown": "Aprikoti pia imetoka huko.",
+      "tts": {
+        "text": "Aprikoti pia imetoka huko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vivyo hivyo komamanga.",
+      "text_markdown": "Vivyo hivyo komamanga.",
+      "tts": {
+        "text": "Vivyo hivyo komamanga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vivyo hivyo jozi.",
+      "text_markdown": "Vivyo hivyo jozi.",
+      "tts": {
+        "text": "Vivyo hivyo jozi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vivyo hivyo cheri chachu.",
+      "text_markdown": "Vivyo hivyo cheri chachu.",
+      "tts": {
+        "text": "Vivyo hivyo cheri chachu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Vivyo hivyo moja ya majani ya kwanza ya saladi duniani, spinachi.",
+      "text_markdown": "Vivyo hivyo moja ya majani ya kwanza ya saladi duniani, spinachi.",
+      "tts": {
+        "text": "Vivyo hivyo moja ya majani ya kwanza ya saladi duniani, spinachi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Neno la Kiingereza spinach limetoka kwenye neno la Kiajemi esfanaj.",
+      "text_markdown": "Neno la Kiingereza spinach limetoka kwenye neno la Kiajemi esfanaj.",
+      "tts": {
+        "text": "Neno la Kiingereza spinach limetoka kwenye neno la Kiajemi esfanaj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hata neno paradise ni la Kiajemi.",
+      "text_markdown": "Hata neno paradise ni la Kiajemi.",
+      "tts": {
+        "text": "Hata neno paradise ni la Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Limetoka kwa pardis, bustani yenye ukuta.",
+      "text_markdown": "Limetoka kwa pardis, bustani yenye ukuta.",
+      "tts": {
+        "text": "Limetoka kwa pardis, bustani yenye ukuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Paradiso ya kwanza ilikuwa bustani ya matunda ya Kiajemi, iliyojaa miti ya komamanga.",
+      "text_markdown": "Paradiso ya kwanza ilikuwa bustani ya matunda ya Kiajemi, iliyojaa miti ya komamanga.",
+      "tts": {
+        "text": "Paradiso ya kwanza ilikuwa bustani ya matunda ya Kiajemi, iliyojaa miti ya komamanga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uajemi haikula vizuri tu.",
+      "text_markdown": "Uajemi haikula vizuri tu.",
+      "tts": {
+        "text": "Uajemi haikula vizuri tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uajemi iliufundisha ulimwengu kula vizuri.",
+      "text_markdown": "Uajemi iliufundisha ulimwengu kula vizuri.",
+      "tts": {
+        "text": "Uajemi iliufundisha ulimwengu kula vizuri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 2 — Kabati la Vyakula vya Asili",
+      "text_markdown": "Sura ya 2 — Kabati la Vyakula vya Asili"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fungua kabati la chakula la Kiajemi.",
+      "text_markdown": "Fungua kabati la chakula la Kiajemi.",
+      "tts": {
+        "text": "Fungua kabati la chakula la Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harufu zinaeleza hadithi.",
+      "text_markdown": "Harufu zinaeleza hadithi.",
+      "tts": {
+        "text": "Harufu zinaeleza hadithi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Harufu ya kwanza ni ya zafarani.",
+      "text_markdown": "Harufu ya kwanza ni ya zafarani.",
+      "tts": {
+        "text": "Harufu ya kwanza ni ya zafarani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran hulima karibu asilimia tisini ya zafarani yote ya dunia.",
+      "text_markdown": "Iran hulima karibu asilimia tisini ya zafarani yote ya dunia.",
+      "tts": {
+        "text": "Iran hulima karibu asilimia tisini ya zafarani yote ya dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sehemu kubwa hutoka jimbo linaloitwa Khorasan.",
+      "text_markdown": "Sehemu kubwa hutoka jimbo linaloitwa Khorasan.",
+      "tts": {
+        "text": "Sehemu kubwa hutoka jimbo linaloitwa Horasan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ili kupata gramu moja, mkulima huchuma kwa mkono nyuzi nyekundu kutoka kwenye maua yapatao mia mbili ya krokasi.",
+      "text_markdown": "Ili kupata gramu moja, mkulima huchuma kwa mkono nyuzi nyekundu kutoka kwenye maua yapatao mia mbili ya krokasi.",
+      "tts": {
+        "text": "Ili kupata gramu moja, mkulima huchuma kwa mkono nyuzi nyekundu kutoka kwenye maua yapatao mia mbili ya krokasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kazi hiyo hufanywa kwenye mapambazuko ya vuli yenye baridi.",
+      "text_markdown": "Kazi hiyo hufanywa kwenye mapambazuko ya vuli yenye baridi.",
+      "tts": {
+        "text": "Kazi hiyo hufanywa kwenye mapambazuko ya vuli yenye baridi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Zafarani ni kiungo ghali zaidi duniani.",
+      "text_markdown": "Zafarani ni kiungo ghali zaidi duniani.",
+      "tts": {
+        "text": "Zafarani ni kiungo ghali zaidi duniani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kidogo tu hugeuza wali kuwa wa dhahabu na maji kuwa manukato.",
+      "text_markdown": "Kidogo tu hugeuza wali kuwa wa dhahabu na maji kuwa manukato.",
+      "tts": {
+        "text": "Kidogo tu hugeuza wali kuwa wa dhahabu na maji kuwa manukato.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Harufu ya pili ni ya komamanga.",
+      "text_markdown": "Harufu ya pili ni ya komamanga.",
+      "tts": {
+        "text": "Harufu ya pili ni ya komamanga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waajemi wamekulima komamanga kwa maelfu ya miaka.",
+      "text_markdown": "Waajemi wamekulima komamanga kwa maelfu ya miaka.",
+      "tts": {
+        "text": "Waajemi wamekulima komamanga kwa maelfu ya miaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tunda hilo ni alama ya upendo na paradiso.",
+      "text_markdown": "Tunda hilo ni alama ya upendo na paradiso.",
+      "tts": {
+        "text": "Tunda hilo ni alama ya upendo na paradiso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Juisi yake hukamuliwa na kuingia kwenye kitoweo.",
+      "text_markdown": "Juisi yake hukamuliwa na kuingia kwenye kitoweo.",
+      "tts": {
+        "text": "Juisi yake hukamuliwa na kuingia kwenye kitoweo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mbegu zake hunyunyizwa juu ya wali na saladi.",
+      "text_markdown": "Mbegu zake hunyunyizwa juu ya wali na saladi.",
+      "tts": {
+        "text": "Mbegu zake hunyunyizwa juu ya wali na saladi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha zinakuja pistashio.",
+      "text_markdown": "Kisha zinakuja pistashio.",
+      "tts": {
+        "text": "Kisha zinakuja pistashio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran ina mashamba ya pistashio yenye miaka elfu tatu.",
+      "text_markdown": "Iran ina mashamba ya pistashio yenye miaka elfu tatu.",
+      "tts": {
+        "text": "Iran ina mashamba ya pistashio yenye miaka elfu tatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pistashio unayoila duniani mara nyingi hutokana na mti wa Kiajemi.",
+      "text_markdown": "Pistashio unayoila duniani mara nyingi hutokana na mti wa Kiajemi.",
+      "tts": {
+        "text": "Pistashio unayoila duniani mara nyingi hutokana na mti wa Kiajemi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna jozi, cheri chachu, kwinsi, matikiti, na tende.",
+      "text_markdown": "Kuna jozi, cheri chachu, kwinsi, matikiti, na tende.",
+      "tts": {
+        "text": "Kuna jozi, cheri chachu, kwinsi, matikiti, na tende.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuna pia sumaki, kiungo chekundu chenye uchachu kutoka kichaka cha porini.",
+      "text_markdown": "Kuna pia sumaki, kiungo chekundu chenye uchachu kutoka kichaka cha porini.",
+      "tts": {
+        "text": "Kuna pia sumaki, kiungo chekundu chenye uchachu kutoka kichaka cha porini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kabla ya ndimu kuenea kila mahali, sumaki ilifanya chakula kiwe na ladha angavu.",
+      "text_markdown": "Kabla ya ndimu kuenea kila mahali, sumaki ilifanya chakula kiwe na ladha angavu.",
+      "tts": {
+        "text": "Kabla ya ndimu kuenea kila mahali, sumaki ilifanya chakula kiwe na ladha angavu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bado inafanya hivyo.",
+      "text_markdown": "Bado inafanya hivyo.",
+      "tts": {
+        "text": "Bado inafanya hivyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kabati la chakula la Kiajemi limehifadhi nusu ya historia ya matunda.",
+      "text_markdown": "Kabati la chakula la Kiajemi limehifadhi nusu ya historia ya matunda.",
+      "tts": {
+        "text": "Kabati la chakula la Kiajemi limehifadhi nusu ya historia ya matunda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 3 — Wali, Mkate, na Ukoko Mtakatifu",
+      "text_markdown": "Sura ya 3 — Wali, Mkate, na Ukoko Mtakatifu"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wali ulifika Uajemi kutoka India karibu miaka elfu mbili na mia tano iliyopita.",
+      "text_markdown": "Wali ulifika Uajemi kutoka India karibu miaka elfu mbili na mia tano iliyopita.",
+      "tts": {
+        "text": "Wali ulifika Uajemi kutoka India karibu miaka elfu mbili na mia tano iliyopita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ukawa moyo wa meza.",
+      "text_markdown": "Ukawa moyo wa meza.",
+      "tts": {
+        "text": "Ukawa moyo wa meza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waajemi hupika wali kwa namna mbili.",
+      "text_markdown": "Waajemi hupika wali kwa namna mbili.",
+      "tts": {
+        "text": "Waajemi hupika wali kwa namna mbili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wali wa kawaida huitwa chelo.",
+      "text_markdown": "Wali wa kawaida huitwa chelo.",
+      "tts": {
+        "text": "Wali wa kawaida huitwa chelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wali uliochanganywa na mboga za majani, nyama, au matunda huitwa polo.",
+      "text_markdown": "Wali uliochanganywa na mboga za majani, nyama, au matunda huitwa polo.",
+      "tts": {
+        "text": "Wali uliochanganywa na mboga za majani, nyama, au matunda huitwa polo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aina zote mbili ni ndefu, nyepesi, na zimetengana, kila punje peke yake.",
+      "text_markdown": "Aina zote mbili ni ndefu, nyepesi, na zimetengana, kila punje peke yake.",
+      "tts": {
+        "text": "Aina zote mbili ni ndefu, nyepesi, na zimetengana, kila punje peke yake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lakini uchawi uko chini ya chungu.",
+      "text_markdown": "Lakini uchawi uko chini ya chungu.",
+      "tts": {
+        "text": "Lakini uchawi uko chini ya chungu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huitwa tahdig.",
+      "text_markdown": "Huitwa tahdig.",
+      "tts": {
+        "text": "Huitwa tahdig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mpishi huweka tabaka jembamba chini ya sufuria, wakati mwingine wali wa zafarani, wakati mwingine kipande cha viazi, wakati mwingine kipande cha mkate.",
+      "text_markdown": "Mpishi huweka tabaka jembamba chini ya sufuria, wakati mwingine wali wa zafarani, wakati mwingine kipande cha viazi, wakati mwingine kipande cha mkate.",
+      "tts": {
+        "text": "Mpishi huweka tabaka jembamba chini ya sufuria, wakati mwingine wali wa zafarani, wakati mwingine kipande cha viazi, wakati mwingine kipande cha mkate.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kisha wali huwekwa juu.",
+      "text_markdown": "Kisha wali huwekwa juu.",
+      "tts": {
+        "text": "Kisha wali huwekwa juu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kisha kifuniko huwekwa juu, kimefungwa kwa kitambaa cha chai, na mvuke hufanya kazi.",
+      "text_markdown": "Kisha kifuniko huwekwa juu, kimefungwa kwa kitambaa cha chai, na mvuke hufanya kazi.",
+      "tts": {
+        "text": "Kisha kifuniko huwekwa juu, kimefungwa kwa kitambaa cha chai, na mvuke hufanya kazi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Baada ya saa moja, tabaka la chini huwa la dhahabu na lenye ukoko mkavu.",
+      "text_markdown": "Baada ya saa moja, tabaka la chini huwa la dhahabu na lenye ukoko mkavu.",
+      "tts": {
+        "text": "Baada ya saa moja, tabaka la chini huwa la dhahabu na lenye ukoko mkavu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahdig ni takatifu.",
+      "text_markdown": "Tahdig ni takatifu.",
+      "tts": {
+        "text": "Tahdig ni takatifu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Familia hugombea kipande chake.",
+      "text_markdown": "Familia hugombea kipande chake.",
+      "tts": {
+        "text": "Familia hugombea kipande chake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Runinga ya Iran ina vipindi maalumu kuhusu nani hupika bora zaidi.",
+      "text_markdown": "Runinga ya Iran ina vipindi maalumu kuhusu nani hupika bora zaidi.",
+      "tts": {
+        "text": "Runinga ya Iran ina vipindi maalumu kuhusu nani hupika bora zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tahdig kamili hutoka kwenye sufuria kama duara moja zuri.",
+      "text_markdown": "Tahdig kamili hutoka kwenye sufuria kama duara moja zuri.",
+      "tts": {
+        "text": "Tahdig kamili hutoka kwenye sufuria kama duara moja zuri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Halafu kuna mkate.",
+      "text_markdown": "Halafu kuna mkate.",
+      "tts": {
+        "text": "Halafu kuna mkate.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maarufu zaidi ni sangak.",
+      "text_markdown": "Maarufu zaidi ni sangak.",
+      "tts": {
+        "text": "Maarufu zaidi ni sangak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangak huokwa juu ya vijiwe vya moto, njia yenye miaka elfu tano.",
+      "text_markdown": "Sangak huokwa juu ya vijiwe vya moto, njia yenye miaka elfu tano.",
+      "tts": {
+        "text": "Sangak huokwa juu ya vijiwe vya moto, njia yenye miaka elfu tano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vijiwe hivyo bado hutokea ndani ya mkate.",
+      "text_markdown": "Vijiwe hivyo bado hutokea ndani ya mkate.",
+      "tts": {
+        "text": "Vijiwe hivyo bado hutokea ndani ya mkate.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Unaviondoa mezani.",
+      "text_markdown": "Unaviondoa mezani.",
+      "tts": {
+        "text": "Unaviondoa mezani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mikate mingine ni barbari, lavash, na taftoon.",
+      "text_markdown": "Mikate mingine ni barbari, lavash, na taftoon.",
+      "tts": {
+        "text": "Mikate mingine ni barbari, lavash, na taftoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kifungua kinywa cha Kiajemi ni mkate, chai, na jibini jeupe laini.",
+      "text_markdown": "Kifungua kinywa cha Kiajemi ni mkate, chai, na jibini jeupe laini.",
+      "tts": {
+        "text": "Kifungua kinywa cha Kiajemi ni mkate, chai, na jibini jeupe laini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 4 — Kebabu na Kitoweo cha Subira",
+      "text_markdown": "Sura ya 4 — Kebabu na Kitoweo cha Subira"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Neno kebabu ni la Kiajemi.",
+      "text_markdown": "Neno kebabu ni la Kiajemi.",
+      "tts": {
+        "text": "Neno kebabu ni la Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni kabab, maana yake nyama iliyopikwa juu ya moto.",
+      "text_markdown": "Ni kabab, maana yake nyama iliyopikwa juu ya moto.",
+      "tts": {
+        "text": "Ni kabab, maana yake nyama iliyopikwa juu ya moto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Waajemi wamekuwa wakipika nyama ya kondoo kwenye mishikaki mirefu bapa kwa maelfu ya miaka.",
+      "text_markdown": "Waajemi wamekuwa wakipika nyama ya kondoo kwenye mishikaki mirefu bapa kwa maelfu ya miaka.",
+      "tts": {
+        "text": "Waajemi wamekuwa wakipika nyama ya kondoo kwenye mishikaki mirefu bapa kwa maelfu ya miaka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebabu maarufu zaidi leo ni koobideh.",
+      "text_markdown": "Kebabu maarufu zaidi leo ni koobideh.",
+      "tts": {
+        "text": "Kebabu maarufu zaidi leo ni kubideh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni nyama ya kusaga ya kondoo au ng'ombe, iliyochanganywa na kitunguu na chumvi, iliyobanwa kwenye mshikaki mpana bapa, kisha ikaokwa juu ya mkaa.",
+      "text_markdown": "Ni nyama ya kusaga ya kondoo au ng'ombe, iliyochanganywa na kitunguu na chumvi, iliyobanwa kwenye mshikaki mpana bapa, kisha ikaokwa juu ya mkaa.",
+      "tts": {
+        "text": "Ni nyama ya kusaga ya kondoo au ng'ombe, iliyochanganywa na kitunguu na chumvi, iliyobanwa kwenye mshikaki mpana bapa, kisha ikaokwa juu ya mkaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Inaonekana ya zamani sana.",
+      "text_markdown": "Inaonekana ya zamani sana.",
+      "tts": {
+        "text": "Inaonekana ya zamani sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lakini si ya zamani.",
+      "text_markdown": "Lakini si ya zamani.",
+      "tts": {
+        "text": "Lakini si ya zamani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mashine ya kusaga nyama ilifika Iran mwishoni mwa karne ya kumi na tisa.",
+      "text_markdown": "Mashine ya kusaga nyama ilifika Iran mwishoni mwa karne ya kumi na tisa.",
+      "tts": {
+        "text": "Mashine ya kusaga nyama ilifika Iran mwishoni mwa karne ya kumi na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Koobideh, kebabu ya Kiajemi kuliko zote, ina zaidi kidogo tu ya miaka mia moja.",
+      "text_markdown": "Koobideh, kebabu ya Kiajemi kuliko zote, ina zaidi kidogo tu ya miaka mia moja.",
+      "tts": {
+        "text": "Kubideh, kebabu ya Kiajemi kuliko zote, ina zaidi kidogo tu ya miaka mia moja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebabu za zamani zaidi hutengenezwa kwa vipande vya nyama.",
+      "text_markdown": "Kebabu za zamani zaidi hutengenezwa kwa vipande vya nyama.",
+      "tts": {
+        "text": "Kebabu za zamani zaidi hutengenezwa kwa vipande vya nyama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joojeh ni kuku aliyelowekwa kwenye zafarani na mtindi.",
+      "text_markdown": "Joojeh ni kuku aliyelowekwa kwenye zafarani na mtindi.",
+      "tts": {
+        "text": "Jujeh ni kuku aliyelowekwa kwenye zafarani na mtindi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg ni kipande chembamba cha nyama ya kondoo.",
+      "text_markdown": "Barg ni kipande chembamba cha nyama ya kondoo.",
+      "tts": {
+        "text": "Barg ni kipande chembamba cha nyama ya kondoo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Zote mbili hutolewa juu ya wali wa zafarani pamoja na nyanya ya kuchoma.",
+      "text_markdown": "Zote mbili hutolewa juu ya wali wa zafarani pamoja na nyanya ya kuchoma.",
+      "tts": {
+        "text": "Zote mbili hutolewa juu ya wali wa zafarani pamoja na nyanya ya kuchoma.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sasa kutana na chakula cha subira, khoresh, kitoweo cha Kiajemi.",
+      "text_markdown": "Sasa kutana na chakula cha subira, khoresh, kitoweo cha Kiajemi.",
+      "tts": {
+        "text": "Sasa kutana na chakula cha subira, khoresh, kitoweo cha Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Khoresh hupikwa kwa saa nyingi.",
+      "text_markdown": "Khoresh hupikwa kwa saa nyingi.",
+      "tts": {
+        "text": "Khoresh hupikwa kwa saa nyingi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maarufu zaidi ni fesenjan.",
+      "text_markdown": "Maarufu zaidi ni fesenjan.",
+      "tts": {
+        "text": "Maarufu zaidi ni fesenjan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni kuku au bata, waliopikwa polepole katika mchuzi mzito wa jozi zilizopondwa na juisi ya komamanga.",
+      "text_markdown": "Ni kuku au bata, waliopikwa polepole katika mchuzi mzito wa jozi zilizopondwa na juisi ya komamanga.",
+      "tts": {
+        "text": "Ni kuku au bata, waliopikwa polepole katika mchuzi mzito wa jozi zilizopondwa na juisi ya komamanga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mapishi hayo ni miongoni mwa mapishi ya kitoweo ya kale kabisa yaliyowahi kupatikana.",
+      "text_markdown": "Mapishi hayo ni miongoni mwa mapishi ya kitoweo ya kale kabisa yaliyowahi kupatikana.",
+      "tts": {
+        "text": "Mapishi hayo ni miongoni mwa mapishi ya kitoweo ya kale kabisa yaliyowahi kupatikana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toleo lake limeandikwa kwenye vibao vya maandishi ya kabari kutoka magofu ya Persepolis.",
+      "text_markdown": "Toleo lake limeandikwa kwenye vibao vya maandishi ya kabari kutoka magofu ya Persepolis.",
+      "tts": {
+        "text": "Toleo lake limeandikwa kwenye vibao vya maandishi ya kabari kutoka magofu ya Persepolis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hilo linaifanya iwe na zaidi ya miaka elfu mbili na mia tano.",
+      "text_markdown": "Hilo linaifanya iwe na zaidi ya miaka elfu mbili na mia tano.",
+      "tts": {
+        "text": "Hilo linaifanya iwe na zaidi ya miaka elfu mbili na mia tano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Watu bado huipika kwa njia ileile.",
+      "text_markdown": "Watu bado huipika kwa njia ileile.",
+      "tts": {
+        "text": "Watu bado huipika kwa njia ileile.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klasiki nyingine ni ghormeh sabzi, nyama ya kondoo, maharagwe mekundu, na mlima wa mboga mbichi za majani, vyote vikichemshwa pamoja na ndimu kavu.",
+      "text_markdown": "Klasiki nyingine ni ghormeh sabzi, nyama ya kondoo, maharagwe mekundu, na mlima wa mboga mbichi za majani, vyote vikichemshwa pamoja na ndimu kavu.",
+      "tts": {
+        "text": "Klasiki nyingine ni gorme sabzi, nyama ya kondoo, maharagwe mekundu, na mlima wa mboga mbichi za majani, vyote vikichemshwa pamoja na ndimu kavu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wairani wengi huiita chakula cha taifa.",
+      "text_markdown": "Wairani wengi huiita chakula cha taifa.",
+      "tts": {
+        "text": "Wairani wengi huiita chakula cha taifa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 5 — Mtindi, Chai, na Pipi za Kale Zaidi",
+      "text_markdown": "Sura ya 5 — Mtindi, Chai, na Pipi za Kale Zaidi"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waajemi hula mtindi na kila kitu.",
+      "text_markdown": "Waajemi hula mtindi na kila kitu.",
+      "tts": {
+        "text": "Waajemi hula mtindi na kila kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mtindi wa kawaida huitwa mast.",
+      "text_markdown": "Mtindi wa kawaida huitwa mast.",
+      "tts": {
+        "text": "Mtindi wa kawaida huitwa mast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mast wenye tango na mnanaa mkavu huitwa mast o khiar.",
+      "text_markdown": "Mast wenye tango na mnanaa mkavu huitwa mast o khiar.",
+      "tts": {
+        "text": "Mast wenye tango na mnanaa mkavu huitwa mast o khiar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kinywaji cha mtindi chenye chumvi na mnanaa huitwa doogh.",
+      "text_markdown": "Kinywaji cha mtindi chenye chumvi na mnanaa huitwa doogh.",
+      "tts": {
+        "text": "Kinywaji cha mtindi chenye chumvi na mnanaa huitwa doogh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Pia kuna kashk, maziwa yaliyokaushwa yenye ladha kali, yanayotumiwa kwenye supu.",
+      "text_markdown": "Pia kuna kashk, maziwa yaliyokaushwa yenye ladha kali, yanayotumiwa kwenye supu.",
+      "tts": {
+        "text": "Pia kuna kashk, maziwa yaliyokaushwa yenye ladha kali, yanayotumiwa kwenye supu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Halafu kuna chai.",
+      "text_markdown": "Halafu kuna chai.",
+      "tts": {
+        "text": "Halafu kuna chai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waajemi huinywa asubuhi, mchana, na usiku, ikiwa imetengenezwa kali kwenye birika refu juu ya samovar.",
+      "text_markdown": "Waajemi huinywa asubuhi, mchana, na usiku, ikiwa imetengenezwa kali kwenye birika refu juu ya samovar.",
+      "tts": {
+        "text": "Waajemi huinywa asubuhi, mchana, na usiku, ikiwa imetengenezwa kali kwenye birika refu juu ya samova.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chai ni ya msingi sana kiasi kwamba watu hushangaa kujua ilifika kuchelewa.",
+      "text_markdown": "Chai ni ya msingi sana kiasi kwamba watu hushangaa kujua ilifika kuchelewa.",
+      "tts": {
+        "text": "Chai ni ya msingi sana kiasi kwamba watu hushangaa kujua ilifika kuchelewa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kwa sehemu kubwa ya historia ya Uajemi, kinywaji hicho kilikuwa kahawa.",
+      "text_markdown": "Kwa sehemu kubwa ya historia ya Uajemi, kinywaji hicho kilikuwa kahawa.",
+      "tts": {
+        "text": "Kwa sehemu kubwa ya historia ya Uajemi, kinywaji hicho kilikuwa kahawa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Chai ilitawala tu mwishoni mwa karne ya kumi na tisa.",
+      "text_markdown": "Chai ilitawala tu mwishoni mwa karne ya kumi na tisa.",
+      "tts": {
+        "text": "Chai ilitawala tu mwishoni mwa karne ya kumi na tisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Leo Iran ni miongoni mwa wanywaji wakubwa wa chai duniani.",
+      "text_markdown": "Leo Iran ni miongoni mwa wanywaji wakubwa wa chai duniani.",
+      "tts": {
+        "text": "Leo Iran ni miongoni mwa wanywaji wakubwa wa chai duniani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna desturi ndogo ya kuinywa.",
+      "text_markdown": "Kuna desturi ndogo ya kuinywa.",
+      "tts": {
+        "text": "Kuna desturi ndogo ya kuinywa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unashikilia kipande cha sukari kati ya meno yako.",
+      "text_markdown": "Unashikilia kipande cha sukari kati ya meno yako.",
+      "tts": {
+        "text": "Unashikilia kipande cha sukari kati ya meno yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unakunywa chai kupitia kipande hicho.",
+      "text_markdown": "Unakunywa chai kupitia kipande hicho.",
+      "tts": {
+        "text": "Unakunywa chai kupitia kipande hicho.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kipande hicho huyeyuka kidogo.",
+      "text_markdown": "Kipande hicho huyeyuka kidogo.",
+      "tts": {
+        "text": "Kipande hicho huyeyuka kidogo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Chai huwa moto, nyeusi, na tamu inaposhuka.",
+      "text_markdown": "Chai huwa moto, nyeusi, na tamu inaposhuka.",
+      "tts": {
+        "text": "Chai huwa moto, nyeusi, na tamu inaposhuka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sasa tuje kwenye pipi.",
+      "text_markdown": "Sasa tuje kwenye pipi.",
+      "tts": {
+        "text": "Sasa tuje kwenye pipi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pipi za Kiajemi ni za kale, tajiri kwa ladha, na ndogo.",
+      "text_markdown": "Pipi za Kiajemi ni za kale, tajiri kwa ladha, na ndogo.",
+      "tts": {
+        "text": "Pipi za Kiajemi ni za kale, tajiri kwa ladha, na ndogo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ya zamani zaidi ni faloodeh.",
+      "text_markdown": "Ya zamani zaidi ni faloodeh.",
+      "tts": {
+        "text": "Ya zamani zaidi ni faludeh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni tambi nyembamba za wali, zilizogandishwa kwenye sharubati ya maji ya waridi, zikitolewa pamoja na juisi ya ndimu na pistashio.",
+      "text_markdown": "Ni tambi nyembamba za wali, zilizogandishwa kwenye sharubati ya maji ya waridi, zikitolewa pamoja na juisi ya ndimu na pistashio.",
+      "tts": {
+        "text": "Ni tambi nyembamba za wali, zilizogandishwa kwenye sharubati ya maji ya waridi, zikitolewa pamoja na juisi ya ndimu na pistashio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Waandishi wa Kiajemi huieleza tangu karibu miaka mia nne kabla ya Kristo.",
+      "text_markdown": "Waandishi wa Kiajemi huieleza tangu karibu miaka mia nne kabla ya Kristo.",
+      "tts": {
+        "text": "Waandishi wa Kiajemi huieleza tangu karibu miaka mia nne kabla ya Kristo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hilo linaifanya faloodeh kuwa mojawapo ya vitindamlo vilivyogandishwa vya kale zaidi duniani.",
+      "text_markdown": "Hilo linaifanya faloodeh kuwa mojawapo ya vitindamlo vilivyogandishwa vya kale zaidi duniani.",
+      "tts": {
+        "text": "Hilo linaifanya faludeh kuwa mojawapo ya vitindamlo vilivyogandishwa vya kale zaidi duniani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ni ya zamani kwa zaidi ya miaka elfu mbili kuliko aiskrimu.",
+      "text_markdown": "Ni ya zamani kwa zaidi ya miaka elfu mbili kuliko aiskrimu.",
+      "tts": {
+        "text": "Ni ya zamani kwa zaidi ya miaka elfu mbili kuliko aiskrimu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klasiki nyingine ni baklava ya Tabriz, iliyo nyepesi kuliko ya Kituruki, yenye jozi na maji ya waridi.",
+      "text_markdown": "Klasiki nyingine ni baklava ya Tabriz, iliyo nyepesi kuliko ya Kituruki, yenye jozi na maji ya waridi.",
+      "tts": {
+        "text": "Klasiki nyingine ni baklava ya Tabriz, iliyo nyepesi kuliko ya Kituruki, yenye jozi na maji ya waridi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halva, mchanganyiko mzito wa ufuta au zafarani.",
+      "text_markdown": "Halva, mchanganyiko mzito wa ufuta au zafarani.",
+      "tts": {
+        "text": "Halva, mchanganyiko mzito wa ufuta au zafarani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gaz ya Esfahan, pipi laini yenye pistashio.",
+      "text_markdown": "Gaz ya Esfahan, pipi laini yenye pistashio.",
+      "tts": {
+        "text": "Gaz ya Esfahan, pipi laini yenye pistashio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, tofi ya dhahabu ya zafarani inayovunjika.",
+      "text_markdown": "Sohan, tofi ya dhahabu ya zafarani inayovunjika.",
+      "tts": {
+        "text": "Sohan, tofi ya dhahabu ya zafarani inayovunjika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nokhodchi ya Qom, biskuti ndogo ya njegere.",
+      "text_markdown": "Nokhodchi ya Qom, biskuti ndogo ya njegere.",
+      "tts": {
+        "text": "Nokhodchi ya Kom, biskuti ndogo ya njegere.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sahani ndogo ya pipi, kikombe cha chai, mazungumzo ya polepole.",
+      "text_markdown": "Sahani ndogo ya pipi, kikombe cha chai, mazungumzo ya polepole.",
+      "tts": {
+        "text": "Sahani ndogo ya pipi, kikombe cha chai, mazungumzo ya polepole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huo ndio mchana wa Kiajemi.",
+      "text_markdown": "Huo ndio mchana wa Kiajemi.",
+      "tts": {
+        "text": "Huo ndio mchana wa Kiajemi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 6 — Alichotoa Uajemi, Alichopokea Uajemi",
+      "text_markdown": "Sura ya 6 — Alichotoa Uajemi, Alichopokea Uajemi"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uajemi ulikaa katikati ya ulimwengu wa kale.",
+      "text_markdown": "Uajemi ulikaa katikati ya ulimwengu wa kale.",
+      "tts": {
+        "text": "Uajemi ulikaa katikati ya ulimwengu wa kale.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Misafara iliupita.",
+      "text_markdown": "Misafara iliupita.",
+      "tts": {
+        "text": "Misafara iliupita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Milki zilipanda na kuanguka juu yake.",
+      "text_markdown": "Milki zilipanda na kuanguka juu yake.",
+      "tts": {
+        "text": "Milki zilipanda na kuanguka juu yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chakula kilipita humo pia, pande zote mbili.",
+      "text_markdown": "Chakula kilipita humo pia, pande zote mbili.",
+      "tts": {
+        "text": "Chakula kilipita humo pia, pande zote mbili.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tazama maneno.",
+      "text_markdown": "Tazama maneno.",
+      "tts": {
+        "text": "Tazama maneno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kiingereza kilichukua makumi ya maneno ya chakula kutoka Kiajemi.",
+      "text_markdown": "Kiingereza kilichukua makumi ya maneno ya chakula kutoka Kiajemi.",
+      "tts": {
+        "text": "Kiingereza kilichukua makumi ya maneno ya chakula kutoka Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maneno ya Kiingereza kama sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet, na paradise yote yana asili ya Kiajemi.",
+      "text_markdown": "Maneno ya Kiingereza kama sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet, na paradise yote yana asili ya Kiajemi.",
+      "tts": {
+        "text": "Maneno ya Kiingereza kama sugar, candy, lemon, orange, jasmine, lilac, tulip, kiosk, sherbet, na paradise yote yana asili ya Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ndivyo lilivyo neno checkmate pia, kutoka shah mat, yaani mfalme hana njia. Uajemi uliweka maneno vinywani mwa nusu ya dunia.",
+      "text_markdown": "Ndivyo lilivyo neno checkmate pia, kutoka shah mat, yaani mfalme hana njia. Uajemi uliweka maneno vinywani mwa nusu ya dunia.",
+      "tts": {
+        "text": "Ndivyo lilivyo neno checkmate pia, kutoka shah mat, yaani mfalme hana njia. Uajemi uliweka maneno vinywani mwa nusu ya dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Upishi wa wali wa Kiajemi ulienda mashariki.",
+      "text_markdown": "Upishi wa wali wa Kiajemi ulienda mashariki.",
+      "tts": {
+        "text": "Upishi wa wali wa Kiajemi ulienda mashariki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wafalme wa Mughal wa India walipenda chakula cha Kiajemi na walileta wapishi wa Kiajemi kortini mwao.",
+      "text_markdown": "Wafalme wa Mughal wa India walipenda chakula cha Kiajemi na walileta wapishi wa Kiajemi kortini mwao.",
+      "tts": {
+        "text": "Wafalme wa Mugal wa India walipenda chakula cha Kiajemi na walileta wapishi wa Kiajemi kortini mwao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wapishi hao walitengeneza biryani.",
+      "text_markdown": "Wapishi hao walitengeneza biryani.",
+      "tts": {
+        "text": "Wapishi hao walitengeneza biryani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pilaf, ule mlo wa wali mrefu wenye viungo kutoka Mediterania hadi nyika za Asia ya Kati, umeota mizizi katika utamaduni wa wali wa Kiajemi.",
+      "text_markdown": "Pilaf, ule mlo wa wali mrefu wenye viungo kutoka Mediterania hadi nyika za Asia ya Kati, umeota mizizi katika utamaduni wa wali wa Kiajemi.",
+      "tts": {
+        "text": "Pilaf, ule mlo wa wali mrefu wenye viungo kutoka Mediterania hadi nyika za Asia ya Kati, umeota mizizi katika utamaduni wa wali wa Kiajemi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Matunda ya Kiajemi yalienda magharibi.",
+      "text_markdown": "Matunda ya Kiajemi yalienda magharibi.",
+      "tts": {
+        "text": "Matunda ya Kiajemi yalienda magharibi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waroma walilima pichi nchini Italia kwa sababu waliipata kutoka Uajemi.",
+      "text_markdown": "Waroma walilima pichi nchini Italia kwa sababu waliipata kutoka Uajemi.",
+      "tts": {
+        "text": "Waroma walilima pichi nchini Italia kwa sababu waliipata kutoka Uajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spinachi ilifika Ulaya kupitia Hispania, ikiletwa na wafanyabiashara kutoka ulimwengu wa Kiajemi.",
+      "text_markdown": "Spinachi ilifika Ulaya kupitia Hispania, ikiletwa na wafanyabiashara kutoka ulimwengu wa Kiajemi.",
+      "tts": {
+        "text": "Spinachi ilifika Ulaya kupitia Hispania, ikiletwa na wafanyabiashara kutoka ulimwengu wa Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tulipu, alama ya Uholanzi, zililimwa kwanza nchini Uajemi na Uturuki kabla ya kufika Holandi.",
+      "text_markdown": "Tulipu, alama ya Uholanzi, zililimwa kwanza nchini Uajemi na Uturuki kabla ya kufika Holandi.",
+      "tts": {
+        "text": "Tulipu, alama ya Uholanzi, zililimwa kwanza nchini Uajemi na Uturuki kabla ya kufika Holandi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uajemi pia ilipokea vitu kutoka nje.",
+      "text_markdown": "Uajemi pia ilipokea vitu kutoka nje.",
+      "tts": {
+        "text": "Uajemi pia ilipokea vitu kutoka nje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wamongolia, waliovamia katika karne ya kumi na tatu, walileta ladha kubwa zaidi ya nyama ya kuchoma.",
+      "text_markdown": "Wamongolia, waliovamia katika karne ya kumi na tatu, walileta ladha kubwa zaidi ya nyama ya kuchoma.",
+      "tts": {
+        "text": "Wamongolia, waliovamia katika karne ya kumi na tatu, walileta ladha kubwa zaidi ya nyama ya kuchoma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kilimo cha Waarabu kilileta miwa, jamii ya machungwa, na wali kutoka kusini na mashariki.",
+      "text_markdown": "Kilimo cha Waarabu kilileta miwa, jamii ya machungwa, na wali kutoka kusini na mashariki.",
+      "tts": {
+        "text": "Kilimo cha Waarabu kilileta miwa, jamii ya machungwa, na wali kutoka kusini na mashariki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samovar ilikuja kutoka kaskazini, kutoka Urusi, katika karne ya kumi na nane.",
+      "text_markdown": "Samovar ilikuja kutoka kaskazini, kutoka Urusi, katika karne ya kumi na nane.",
+      "tts": {
+        "text": "Samova ilikuja kutoka kaskazini, kutoka Urusi, katika karne ya kumi na nane.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwanahistoria Mgiriki Herodotus, akiandika miaka elfu mbili na mia tano iliyopita, alisema Waajemi walisherehekea siku zao za kuzaliwa kwa anasa kuliko siku nyingine yoyote ya mwaka.",
+      "text_markdown": "Mwanahistoria Mgiriki Herodotus, akiandika miaka elfu mbili na mia tano iliyopita, alisema Waajemi walisherehekea siku zao za kuzaliwa kwa anasa kuliko siku nyingine yoyote ya mwaka.",
+      "tts": {
+        "text": "Mwanahistoria Mgiriki Herodotus, akiandika miaka elfu mbili na mia tano iliyopita, alisema Waajemi walisherehekea siku zao za kuzaliwa kwa anasa kuliko siku nyingine yoyote ya mwaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Siku hiyo, aliandika, meza huandaliwa kwa wingi kuliko kawaida.",
+      "text_markdown": "Siku hiyo, aliandika, meza huandaliwa kwa wingi kuliko kawaida.",
+      "tts": {
+        "text": "Siku hiyo, aliandika, meza huandaliwa kwa wingi kuliko kawaida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baadhi ya mambo hayajabadilika.",
+      "text_markdown": "Baadhi ya mambo hayajabadilika.",
+      "tts": {
+        "text": "Baadhi ya mambo hayajabadilika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sura ya 7 — Kwenye Meza ya Kiajemi",
+      "text_markdown": "Sura ya 7 — Kwenye Meza ya Kiajemi"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sasa tunaketi mezani.",
+      "text_markdown": "Sasa tunaketi mezani.",
+      "tts": {
+        "text": "Sasa tunaketi mezani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwaka wa Kiajemi huanza kwenye usawa wa mchana na usiku wa masika, karibu tarehe ishirini na moja Machi.",
+      "text_markdown": "Mwaka wa Kiajemi huanza kwenye usawa wa mchana na usiku wa masika, karibu tarehe ishirini na moja Machi.",
+      "tts": {
+        "text": "Mwaka wa Kiajemi huanza kwenye usawa wa mchana na usiku wa masika, karibu tarehe ishirini na moja Machi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sherehe hiyo huitwa Nowruz, Siku Mpya.",
+      "text_markdown": "Sherehe hiyo huitwa Nowruz, Siku Mpya.",
+      "tts": {
+        "text": "Sherehe hiyo huitwa Noruz, Siku Mpya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ni sikukuu muhimu zaidi ya mwaka.",
+      "text_markdown": "Ni sikukuu muhimu zaidi ya mwaka.",
+      "tts": {
+        "text": "Ni sikukuu muhimu zaidi ya mwaka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kila familia huandaa meza maalumu iitwayo haft sin.",
+      "text_markdown": "Kila familia huandaa meza maalumu iitwayo haft sin.",
+      "tts": {
+        "text": "Kila familia huandaa meza maalumu iitwayo haft sin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft maana yake ni saba.",
+      "text_markdown": "Haft maana yake ni saba.",
+      "tts": {
+        "text": "Haft maana yake ni saba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin ni herufi S. Mezani kuna vitu saba vinavyoanza na S kwa Kiajemi.",
+      "text_markdown": "Sin ni herufi S. Mezani kuna vitu saba vinavyoanza na S kwa Kiajemi.",
+      "tts": {
+        "text": "Sin ni herufi S. Mezani kuna vitu saba vinavyoanza na S kwa Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuna sib, tufaha.",
+      "text_markdown": "Kuna sib, tufaha.",
+      "tts": {
+        "text": "Kuna sib, tufaha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekkeh, sarafu.",
+      "text_markdown": "Sekkeh, sarafu.",
+      "tts": {
+        "text": "Seke, sarafu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, ua la hayasinthi.",
+      "text_markdown": "Sonbol, ua la hayasinthi.",
+      "tts": {
+        "text": "Sonbol, ua la hayasinthi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, pudingi tamu ya ngano.",
+      "text_markdown": "Samanu, pudingi tamu ya ngano.",
+      "tts": {
+        "text": "Samanu, pudingi tamu ya ngano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senjed, tunda kavu la mti wa oleasta.",
+      "text_markdown": "Senjed, tunda kavu la mti wa oleasta.",
+      "tts": {
+        "text": "Senjed, tunda kavu la mti wa oleasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somagh, yaani sumaki.",
+      "text_markdown": "Somagh, yaani sumaki.",
+      "tts": {
+        "text": "Somag, yaani sumaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serkeh, siki.",
+      "text_markdown": "Serkeh, siki.",
+      "tts": {
+        "text": "Serkeh, siki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Kila kimoja husimamia kitu fulani, afya, utajiri, uzuri, subira, upendo, jua linalochomoza, kupita kwa wakati.",
+      "text_markdown": "Kila kimoja husimamia kitu fulani, afya, utajiri, uzuri, subira, upendo, jua linalochomoza, kupita kwa wakati.",
+      "tts": {
+        "text": "Kila kimoja husimamia kitu fulani, afya, utajiri, uzuri, subira, upendo, jua linalochomoza, kupita kwa wakati.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mlo wa mwaka mpya ni sabzi polo na mahi.",
+      "text_markdown": "Mlo wa mwaka mpya ni sabzi polo na mahi.",
+      "tts": {
+        "text": "Mlo wa mwaka mpya ni sabzi polo na mahi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni wali, wenye kijani kibichi kutoka mboga za majani zilizokatwa, ukitolewa pamoja na samaki mweupe.",
+      "text_markdown": "Ni wali, wenye kijani kibichi kutoka mboga za majani zilizokatwa, ukitolewa pamoja na samaki mweupe.",
+      "tts": {
+        "text": "Ni wali, wenye kijani kibichi kutoka mboga za majani zilizokatwa, ukitolewa pamoja na samaki mweupe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Masika kwenye sahani.",
+      "text_markdown": "Masika kwenye sahani.",
+      "tts": {
+        "text": "Masika kwenye sahani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Klasiki nyingine ni ash reshteh, supu nzito ya maharagwe, mboga za majani, kitunguu cha kukaanga, kashk, na tambi.",
+      "text_markdown": "Klasiki nyingine ni ash reshteh, supu nzito ya maharagwe, mboga za majani, kitunguu cha kukaanga, kashk, na tambi.",
+      "tts": {
+        "text": "Klasiki nyingine ni ash reshteh, supu nzito ya maharagwe, mboga za majani, kitunguu cha kukaanga, kashk, na tambi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waajemi wanasema unapaswa kuila kabla ya uamuzi mgumu.",
+      "text_markdown": "Waajemi wanasema unapaswa kuila kabla ya uamuzi mgumu.",
+      "tts": {
+        "text": "Waajemi wanasema unapaswa kuila kabla ya uamuzi mgumu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tambi hizo, wanasema, hufungua nyuzi za hatima.",
+      "text_markdown": "Tambi hizo, wanasema, hufungua nyuzi za hatima.",
+      "tts": {
+        "text": "Tambi hizo, wanasema, hufungua nyuzi za hatima.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyumba ya chai pia ni uvumbuzi wa Kiajemi.",
+      "text_markdown": "Nyumba ya chai pia ni uvumbuzi wa Kiajemi.",
+      "tts": {
+        "text": "Nyumba ya chai pia ni uvumbuzi wa Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huitwa qahveh khaneh, yaani nyumba ya kahawa, ingawa kinywaji cha sasa ni chai.",
+      "text_markdown": "Huitwa qahveh khaneh, yaani nyumba ya kahawa, ingawa kinywaji cha sasa ni chai.",
+      "tts": {
+        "text": "Huitwa kahve khane, yaani nyumba ya kahawa, ingawa kinywaji cha sasa ni chai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa miaka mia tano, wanaume na wanawake wamekusanyika huko kucheza backgammon, kusikiliza mashairi, na kubishana kuhusu dunia.",
+      "text_markdown": "Kwa miaka mia tano, wanaume na wanawake wamekusanyika huko kucheza backgammon, kusikiliza mashairi, na kubishana kuhusu dunia.",
+      "tts": {
+        "text": "Kwa miaka mia tano, wanaume na wanawake wamekusanyika huko kucheza backgammon, kusikiliza mashairi, na kubishana kuhusu dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hadithi nyingi kubwa za Kiajemi zilisimuliwa kwanza juu ya glasi yenye mvuke.",
+      "text_markdown": "Hadithi nyingi kubwa za Kiajemi zilisimuliwa kwanza juu ya glasi yenye mvuke.",
+      "tts": {
+        "text": "Hadithi nyingi kubwa za Kiajemi zilisimuliwa kwanza juu ya glasi yenye mvuke.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daktari mashuhuri wa Kiajemi, Avicenna, aliyeishi miaka elfu moja iliyopita, alifundisha kwamba kila chakula ni cha moto au cha baridi.",
+      "text_markdown": "Daktari mashuhuri wa Kiajemi, Avicenna, aliyeishi miaka elfu moja iliyopita, alifundisha kwamba kila chakula ni cha moto au cha baridi.",
+      "tts": {
+        "text": "Daktari mashuhuri wa Kiajemi, Avisena, aliyeishi miaka elfu moja iliyopita, alifundisha kwamba kila chakula ni cha moto au cha baridi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zafarani, jozi, na nyama ya kondoo ni za moto.",
+      "text_markdown": "Zafarani, jozi, na nyama ya kondoo ni za moto.",
+      "tts": {
+        "text": "Zafarani, jozi, na nyama ya kondoo ni za moto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mtindi, tango, na tikiti maji ni vya baridi.",
+      "text_markdown": "Mtindi, tango, na tikiti maji ni vya baridi.",
+      "tts": {
+        "text": "Mtindi, tango, na tikiti maji ni vya baridi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mlo mzuri huzisawazisha.",
+      "text_markdown": "Mlo mzuri huzisawazisha.",
+      "tts": {
+        "text": "Mlo mzuri huzisawazisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Katika nyumba nyingi za Kiajemi, wazo hilo bado linaishi wakati wa chakula cha mchana.",
+      "text_markdown": "Katika nyumba nyingi za Kiajemi, wazo hilo bado linaishi wakati wa chakula cha mchana.",
+      "tts": {
+        "text": "Katika nyumba nyingi za Kiajemi, wazo hilo bado linaishi wakati wa chakula cha mchana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chakula cha Kiajemi kina subira.",
+      "text_markdown": "Chakula cha Kiajemi kina subira.",
+      "tts": {
+        "text": "Chakula cha Kiajemi kina subira.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni cha ukarimu.",
+      "text_markdown": "Ni cha ukarimu.",
+      "tts": {
+        "text": "Ni cha ukarimu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ni cha kale.",
+      "text_markdown": "Ni cha kale.",
+      "tts": {
+        "text": "Ni cha kale.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Na bado kinapikwa kila siku kwenye mamilioni ya majiko.",
+      "text_markdown": "Na bado kinapikwa kila siku kwenye mamilioni ya majiko.",
+      "tts": {
+        "text": "Na bado kinapikwa kila siku kwenye mamilioni ya majiko.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kwaheri",
+      "text_markdown": "Kwaheri"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Huo ndio mwisho wa ziara yetu fupi.",
+      "text_markdown": "Huo ndio mwisho wa ziara yetu fupi.",
+      "tts": {
+        "text": "Huo ndio mwisho wa ziara yetu fupi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Natumaini umejifunza kitu.",
+      "text_markdown": "Natumaini umejifunza kitu.",
+      "tts": {
+        "text": "Natumaini umejifunza kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Natumaini kuna kitu kwenye ukurasa kilikufanya uone njaa.",
+      "text_markdown": "Natumaini kuna kitu kwenye ukurasa kilikufanya uone njaa.",
+      "tts": {
+        "text": "Natumaini kuna kitu kwenye ukurasa kilikufanya uone njaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zafarani na wali.",
+      "text_markdown": "Zafarani na wali.",
+      "tts": {
+        "text": "Zafarani na wali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Komamanga na jozi.",
+      "text_markdown": "Komamanga na jozi.",
+      "tts": {
+        "text": "Komamanga na jozi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kitamu kidogo kwenye sahani ndogo.",
+      "text_markdown": "Kitamu kidogo kwenye sahani ndogo.",
+      "tts": {
+        "text": "Kitamu kidogo kwenye sahani ndogo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ukiweza, tafuta mgahawa wa Kiajemi karibu nawe.",
+      "text_markdown": "Ukiweza, tafuta mgahawa wa Kiajemi karibu nawe.",
+      "tts": {
+        "text": "Ukiweza, tafuta mgahawa wa Kiajemi karibu nawe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Au fungua kitabu cha mapishi cha Kiajemi.",
+      "text_markdown": "Au fungua kitabu cha mapishi cha Kiajemi.",
+      "tts": {
+        "text": "Au fungua kitabu cha mapishi cha Kiajemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jaribu kitoweo kimoja.",
+      "text_markdown": "Jaribu kitoweo kimoja.",
+      "tts": {
+        "text": "Jaribu kitoweo kimoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jaribu kikombe kimoja cha chai.",
+      "text_markdown": "Jaribu kikombe kimoja cha chai.",
+      "tts": {
+        "text": "Jaribu kikombe kimoja cha chai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Chakula hiki kimekuwa kikingoja kwa maelfu ya miaka.",
+      "text_markdown": "Chakula hiki kimekuwa kikingoja kwa maelfu ya miaka.",
+      "tts": {
+        "text": "Chakula hiki kimekuwa kikingoja kwa maelfu ya miaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kinaweza kukusubiri wewe pia.",
+      "text_markdown": "Kinaweza kukusubiri wewe pia.",
+      "tts": {
+        "text": "Kinaweza kukusubiri wewe pia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Asante kwa kusikiliza.",
+      "text_markdown": "Asante kwa kusikiliza.",
+      "tts": {
+        "text": "Asante kwa kusikiliza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pika kitu.",
+      "text_markdown": "Pika kitu.",
+      "tts": {
+        "text": "Pika kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kula pamoja na watu.",
+      "text_markdown": "Kula pamoja na watu.",
+      "tts": {
+        "text": "Kula pamoja na watu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mimi ni Kym.",
+      "text_markdown": "Mimi ni Kym.",
+      "tts": {
+        "text": "Mimi ni Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kwaheri.",
+      "text_markdown": "Kwaheri.",
+      "tts": {
+        "text": "Kwaheri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

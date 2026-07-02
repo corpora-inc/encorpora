@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "et",
+  "total_segments": 142,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tere tulemast saatesse AI This Week.",
+      "text_markdown": "Tere tulemast saatesse AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Tere tulemast saatesse AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mind kutsutakse Vindyks.",
+      "text_markdown": "Mind kutsutakse Vindyks.",
+      "title": "",
+      "tts": {
+        "text": "Mind kutsutakse Vindiks.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron on nagu alati minuga.",
+      "text_markdown": "Ron on nagu alati minuga.",
+      "title": "",
+      "tts": {
+        "text": "Ron on nagu alati minuga.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hea siin olla, Vindy.",
+      "text_markdown": "Hea siin olla, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Hea siin olla, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Täna on pühapäev, 28. juuni 2026.",
+      "text_markdown": "Täna on pühapäev, 28. juuni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Täna on pühapäev, kahekümne kaheksas juuni, kakskümmend kakskümmend kuus.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Eelmisel nädalal käisime elektrijaamade ja bilansside juures.",
+      "text_markdown": "Eelmisel nädalal käisime elektrijaamade ja bilansside juures.",
+      "title": "",
+      "tts": {
+        "text": "Eelmisel nädalal käisime elektrijaamade ja bilansside juures.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sel nädalal tuleme tagasi töölaua juurde ja küsimuse juurde, mis praegu kogu valdkonna all pulbitseb.",
+      "text_markdown": "Sel nädalal tuleme tagasi töölaua juurde ja küsimuse juurde, mis praegu kogu valdkonna all pulbitseb.",
+      "title": "",
+      "tts": {
+        "text": "Sel nädalal tuleme tagasi töölaua juurde ja küsimuse juurde, mis praegu kogu valdkonna all pulbitseb.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kui mudel näitab suurt numbrit või suurt oskust – kas see võimekus on reaalne ja kas see on tegelikult sinu oma?",
+      "text_markdown": "Kui mudel näitab suurt numbrit või suurt oskust – kas see võimekus on reaalne ja kas see on tegelikult sinu oma?",
+      "title": "",
+      "tts": {
+        "text": "Kui mudel näitab suurt numbrit või suurt oskust – kas see võimekus on reaalne ja kas see on tegelikult sinu oma?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tulemas – kahesaja kolmekümne miljoni parameetriga mudel, mis töötab telefonis, ja avatud agendi maailmamudel Qweni laborist.",
+      "text_markdown": "Tulemas – kahesaja kolmekümne miljoni parameetriga mudel, mis töötab telefonis, ja avatud agendi maailmamudel Qweni laborist.",
+      "title": "",
+      "tts": {
+        "text": "Tulemas – kahesaja kolmekümne miljoni parameetriga mudel, mis töötab telefonis, ja avatud agendi maailmamudel Qweni laborist.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Seejärel uuring, mis vaikselt võttis piirmudeli kodeerimisskoorilt neliteist punkti maha.",
+      "text_markdown": "Seejärel uuring, mis vaikselt võttis piirmudeli kodeerimisskoorilt neliteist punkti maha.",
+      "title": "",
+      "tts": {
+        "text": "Seejärel uuring, mis vaikselt võttis piirmudeli kodeerimisskoorilt neliteist punkti maha.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Seejärel pealkirjad – valitsuse piiratud mudeli eelvaade ja kohandatud kiip, mille osaliselt disainisid mudelid ise.",
+      "text_markdown": "Seejärel pealkirjad – valitsuse piiratud mudeli eelvaade ja kohandatud kiip, mille osaliselt disainisid mudelid ise.",
+      "title": "",
+      "tts": {
+        "text": "Seejärel pealkirjad – valitsuse piiratud mudeli eelvaade ja kohandatud kiip, mille osaliselt disainisid mudelid ise.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja peamine lugu, kus Anthropic süüdistab Alibabat Claude'i tööstuslikus mastaabis kopeerimises.",
+      "text_markdown": "Ja peamine lugu, kus Anthropic süüdistab Alibabat Claude'i tööstuslikus mastaabis kopeerimises.",
+      "title": "",
+      "tts": {
+        "text": "Ja peamine lugu, kus Anthropic süüdistab Alibabat Claude'i tööstuslikus mastaabis kopeerimises.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, alustame avatud kaalude maalt, kus selle nädala uudis oli väike – meelega.",
+      "text_markdown": "Ron, alustame avatud kaalude maalt, kus selle nädala uudis oli väike – meelega.",
+      "title": "",
+      "tts": {
+        "text": "Ron, alustame avatud kaalude maalt, kus selle nädala uudis oli väike – meelega.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Eile avaldas Liquid AI LFM kaks-punkt-viis, ja peamine number on see, kui väike see on.",
+      "text_markdown": "Eile avaldas Liquid AI LFM kaks-punkt-viis, ja peamine number on see, kui väike see on.",
+      "title": "",
+      "tts": {
+        "text": "Eile avaldas Liquid AI L F M kaks punkti viis, ja peamine number on see, kui väike see on.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kakssada kolmkümmend miljonit parameetrit – kõige väiksem mudel, mille nad on välja andnud.",
+      "text_markdown": "Kakssada kolmkümmend miljonit parameetrit – kõige väiksem mudel, mille nad on välja andnud.",
+      "title": "",
+      "tts": {
+        "text": "Kakssada kolmkümmend miljonit parameetrit – kõige väiksem mudel, mille nad on välja andnud.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kakssada kolmkümmend miljonit – anna meile aimu sellest skaalast.",
+      "text_markdown": "Kakssada kolmkümmend miljonit – anna meile aimu sellest skaalast.",
+      "title": "",
+      "tts": {
+        "text": "Kakssada kolmkümmend miljonit – anna meile aimu sellest skaalast.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Piisavalt väike, et kaalud on alla neljasaja megabaidi, mis tähendab, et see mahub telefoni ja ruumi jääb veel ülegi.",
+      "text_markdown": "Piisavalt väike, et kaalud on alla neljasaja megabaidi, mis tähendab, et see mahub telefoni ja ruumi jääb veel ülegi.",
+      "title": "",
+      "tts": {
+        "text": "Piisavalt väike, et kaalud on alla neljasaja megabaidi, mis tähendab, et see mahub telefoni ja ruumi jääb veel ülegi.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Liquid väidab, et see töötab umbes kakssada kolmteist tokenit sekundis Galaxy S kakskümmend viis Ultral ja umbes nelikümmend kaks Raspberry Pi viiel.",
+      "text_markdown": "Liquid väidab, et see töötab umbes kakssada kolmteist tokenit sekundis Galaxy S kakskümmend viis Ultral ja umbes nelikümmend kaks Raspberry Pi viiel.",
+      "title": "",
+      "tts": {
+        "text": "Liquid väidab, et see töötab umbes kakssada kolmteist tokenit sekundis Galaxy S kakskümmend viis Ultral ja umbes nelikümmend kaks Raspberry Pi viiel.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nii et see on tõepoolest seadmesisene mudel.",
+      "text_markdown": "Nii et see on tõepoolest seadmesisene mudel.",
+      "title": "",
+      "tts": {
+        "text": "Nii et see on tõepoolest seadmesisene mudel.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Täielikult – ei mingit serverit, ei mingit API-võtit, mudel elab seadmes.",
+      "text_markdown": "Täielikult – ei mingit serverit, ei mingit API-võtit, mudel elab seadmes.",
+      "title": "",
+      "tts": {
+        "text": "Täielikult – ei mingit serverit, ei mingit A P I võtit, mudel elab seadmes.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja see osa, millest avatud lähtekoodiga kogukond kõige rohkem hoolis, on see, et see tuli välja esimese päeva toega llama.cpp, MLX, vLLM, SGLang ja ONNX jaoks.",
+      "text_markdown": "Ja see osa, millest avatud lähtekoodiga kogukond kõige rohkem hoolis, on see, et see tuli välja esimese päeva toega llama.cpp, MLX, vLLM, SGLang ja ONNX jaoks.",
+      "title": "",
+      "tts": {
+        "text": "Ja see osa, millest avatud lähtekoodiga kogukond kõige rohkem hoolis, on see, et see tuli välja esimese päeva toega llama C P P, MLX, v L L M, S G Lang ja ONNX jaoks.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Selgita, miks see esimese päeva tugi nii oluline on.",
+      "text_markdown": "Selgita, miks see esimese päeva tugi nii oluline on.",
+      "title": "",
+      "tts": {
+        "text": "Selgita, miks see esimese päeva tugi nii oluline on.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sest mudel, mida sa tegelikult laadida ei saa, on pressiteade, mitte väljalase.",
+      "text_markdown": "Sest mudel, mida sa tegelikult laadida ei saa, on pressiteade, mitte väljalase.",
+      "title": "",
+      "tts": {
+        "text": "Sest mudel, mida sa tegelikult laadida ei saa, on pressiteade, mitte väljalase.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Esimesel päeval igasse suuremasse käituskeskkonda tarnimine tähendab, et nii harrastaja sülearvutil kui ka meeskond serveris saavad seda sama pärastlõunal käivitada.",
+      "text_markdown": "Esimesel päeval igasse suuremasse käituskeskkonda tarnimine tähendab, et nii harrastaja sülearvutil kui ka meeskond serveris saavad seda sama pärastlõunal käivitada.",
+      "title": "",
+      "tts": {
+        "text": "Esimesel päeval igasse suuremasse käituskeskkonda tarnimine tähendab, et nii harrastaja sülearvutil kui ka meeskond serveris saavad seda sama pärastlõunal käivitada.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja milleks selline väike mudel tegelikult hea on?",
+      "text_markdown": "Ja milleks selline väike mudel tegelikult hea on?",
+      "title": "",
+      "tts": {
+        "text": "Ja milleks selline väike mudel tegelikult hea on?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mitte avatud vestluseks – see on ehitatud kitsasteks, kiireteks töödeks, nagu juhiste järgimine ja struktureeritud väljade tekstist väljavõtmine.",
+      "text_markdown": "Mitte avatud vestluseks – see on ehitatud kitsasteks, kiireteks töödeks, nagu juhiste järgimine ja struktureeritud väljade tekstist väljavõtmine.",
+      "title": "",
+      "tts": {
+        "text": "Mitte avatud vestluseks – see on ehitatud kitsasteks, kiireteks töödeks, nagu juhiste järgimine ja struktureeritud väljade tekstist väljavõtmine.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Liquid väidab, et see edestab Qwen kolm-punkt-viit kaheksasaja miljoni juures ja Gemma kolme ühe miljardi juures just nendes ülesannetes.",
+      "text_markdown": "Liquid väidab, et see edestab Qwen kolm-punkt-viit kaheksasaja miljoni juures ja Gemma kolme ühe miljardi juures just nendes ülesannetes.",
+      "title": "",
+      "tts": {
+        "text": "Liquid väidab, et see edestab Qwen kolm punkti viit kaheksasaja miljoni juures ja Gemma kolme ühe miljardi juures just nendes ülesannetes.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ütle paar sõna arhitektuuri kohta.",
+      "text_markdown": "Ütle paar sõna arhitektuuri kohta.",
+      "title": "",
+      "tts": {
+        "text": "Ütle paar sõna arhitektuuri kohta.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on hübriid – enamik kihte on Liquid'i disainitud väravaga konvolutsioon, millele on lisatud vaid mõned tähelepanukihid.",
+      "text_markdown": "See on hübriid – enamik kihte on Liquid'i disainitud väravaga konvolutsioon, millele on lisatud vaid mõned tähelepanukihid.",
+      "title": "",
+      "tts": {
+        "text": "See on hübriid – enamik kihte on Liquid'i disainitud väravaga konvolutsioon, millele on lisatud vaid mõned tähelepanukihid.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on see, mis hoiab selle kiire ja odavana seadmes, millel pole üldse graafikakaarti.",
+      "text_markdown": "See on see, mis hoiab selle kiire ja odavana seadmes, millel pole üldse graafikakaarti.",
+      "title": "",
+      "tts": {
+        "text": "See on see, mis hoiab selle kiire ja odavana seadmes, millel pole üldse graafikakaarti.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Okei, teine avatud väljalase sel nädalal oli suurem ja veidram.",
+      "text_markdown": "Okei, teine avatud väljalase sel nädalal oli suurem ja veidram.",
+      "title": "",
+      "tts": {
+        "text": "Okei, teine avatud väljalase sel nädalal oli suurem ja veidram.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Alibaba Qweni meeskond andis välja Qwen AgentWorldi ja see ei ole vestlusrobot.",
+      "text_markdown": "Alibaba Qweni meeskond andis välja Qwen AgentWorldi ja see ei ole vestlusrobot.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba Qweni meeskond andis välja Qwen AgentWorldi ja see ei ole vestlusrobot.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on see, mida nad nimetavad keele maailmamudeliks — kokku kolmkümmend viis miljardit parameetrit, kuid korraga aktiivne vaid kolm miljardit.",
+      "text_markdown": "See on see, mida nad nimetavad keele maailmamudeliks — kokku kolmkümmend viis miljardit parameetrit, kuid korraga aktiivne vaid kolm miljardit.",
+      "title": "",
+      "tts": {
+        "text": "See on see, mida nad nimetavad keele maailmamudeliks — kolmkümmend viis miljardit parameetrit kokku, kuid korraga aktiivne vaid kolm miljardit.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Maailmamudel — selgita seda terminit meile.",
+      "text_markdown": "Maailmamudel — selgita seda terminit meile.",
+      "title": "",
+      "tts": {
+        "text": "Maailmamudel — selgita seda terminit meile.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Küsimustele vastamise asemel simuleerib see teksti abil keskkonda, nii et agent saab sooritada tegevuse ja mudel kirjeldab, mis edasi juhtub.",
+      "text_markdown": "Küsimustele vastamise asemel simuleerib see teksti abil keskkonda, nii et agent saab sooritada tegevuse ja mudel kirjeldab, mis edasi juhtub.",
+      "title": "",
+      "tts": {
+        "text": "Küsimustele vastamise asemel simuleerib see teksti abil keskkonda, nii et agent saab sooritada tegevuse ja mudel kirjeldab, mis edasi juhtub.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Seda kasutatakse teiste agentide treenimiseks — see mängib maailma, et agent saaks selles harjutada.",
+      "text_markdown": "Seda kasutatakse teiste agentide treenimiseks — see mängib maailma, et agent saaks selles harjutada.",
+      "title": "",
+      "tts": {
+        "text": "Seda kasutatakse teiste agentide treenimiseks — see mängib maailma, et agent saaks selles harjutada.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja litsents on seal peamine uudis.",
+      "text_markdown": "Ja litsents on seal peamine uudis.",
+      "title": "",
+      "tts": {
+        "text": "Ja litsents on seal peamine uudis.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Apache 2.0, kaalud Hugging Face'is, kaubanduslik kasutus lubatud — ja võrdlusalus, mille vastu nad treenisid, tarniti koos sellega.",
+      "text_markdown": "Apache 2.0, kaalud Hugging Face'is, kaubanduslik kasutus lubatud — ja võrdlusalus, mille vastu nad treenisid, tarniti koos sellega.",
+      "title": "",
+      "tts": {
+        "text": "Apache kaks punkt null, kaalud Hugging Face'is, kaubanduslik kasutus lubatud — ja võrdlusalus, mille vastu nad treenisid, tarniti koos sellega.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Päeva jooksul olid saadaval kvantiseeritud versioonid, mida sai lokaalselt käitada.",
+      "text_markdown": "Päeva jooksul olid saadaval kvantiseeritud versioonid, mida sai lokaalselt käitada.",
+      "title": "",
+      "tts": {
+        "text": "Päeva jooksul olid saadaval kvantiseeritud versioonid, mida sai lokaalselt käitada.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nüüd vastandame seda väljalaskega, mis läks teist teed.",
+      "text_markdown": "Nüüd vastandame seda väljalaskega, mis läks teist teed.",
+      "title": "",
+      "tts": {
+        "text": "Nüüd vastandame seda väljalaskega, mis läks teist teed.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Esmaspäeval käivitas Sakana AI midagi nimega Fugu, ja Fugu on selle nädala avatusevastane lugu.",
+      "text_markdown": "Esmaspäeval käivitas Sakana AI midagi nimega Fugu, ja Fugu on selle nädala avatusevastane lugu.",
+      "title": "",
+      "tts": {
+        "text": "Esmaspäeval käivitas Sakana AI midagi nimega Fugu, ja Fugu on selle nädala avatusevastane lugu.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See ei ole mudel, mida alla laadida — see on orkestreerimisteenus, mis suunab teie päringu läbi teiste ettevõtete piirimudelite kogumi ühe API taga.",
+      "text_markdown": "See ei ole mudel, mida alla laadida — see on orkestreerimisteenus, mis suunab teie päringu läbi teiste ettevõtete piirimudelite kogumi ühe API taga.",
+      "title": "",
+      "tts": {
+        "text": "See ei ole mudel, mida alla laadida — see on orkestreerimisteenus, mis suunab teie päringu läbi teiste ettevõtete piirimudelite kogumi ühe API taga.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mida te seal siis tegelikult ostate?",
+      "text_markdown": "Mida te seal siis tegelikult ostate?",
+      "title": "",
+      "tts": {
+        "text": "Mida te seal siis tegelikult ostate?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ruuter, mida müüakse tootena, viie dollari eest miljoni sisendmärgi ja kolmekümne eest miljoni väljundmärgi kohta.",
+      "text_markdown": "Ruuter, mida müüakse tootena, viie dollari eest miljoni sisendmärgi ja kolmekümne eest miljoni väljundmärgi kohta.",
+      "title": "",
+      "tts": {
+        "text": "Ruuter, mida müüakse tootena, viie dollari eest miljoni sisendmärgi ja kolmekümne eest miljoni väljundmärgi kohta.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja avatud lähtekoodiga vastus on otsekohene — saate oma ruuteri avatud mudelite vahel pärastlõunal üles seada ja kaalud endale jätta.",
+      "text_markdown": "Ja avatud lähtekoodiga vastus on otsekohene — saate oma ruuteri avatud mudelite vahel pärastlõunal üles seada ja kaalud endale jätta.",
+      "title": "",
+      "tts": {
+        "text": "Ja avatud lähtekoodiga vastus on otsekohene — saate oma ruuteri avatud mudelite vahel pärastlõunal üles seada ja kaalud endale jätta.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hea koht väljalasete lõpetamiseks — liigume edetabelite juurde.",
+      "text_markdown": "Hea koht väljalasete lõpetamiseks — liigume edetabelite juurde.",
+      "title": "",
+      "tts": {
+        "text": "Hea koht väljalasete lõpetamiseks — liigume edetabelite juurde.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sest selle nädala suurim hindamislugu ei olnud skoori tõus.",
+      "text_markdown": "Sest selle nädala suurim hindamislugu ei olnud skoori tõus.",
+      "title": "",
+      "tts": {
+        "text": "Sest selle nädala suurim hindamislugu ei olnud skoori tõus.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See oli skoori langus ja ettevõte, mis selle alla viis, oli Cursor.",
+      "text_markdown": "See oli skoori langus ja ettevõte, mis selle alla viis, oli Cursor.",
+      "title": "",
+      "tts": {
+        "text": "See oli skoori langus ja ettevõte, mis selle alla viis, oli Cursor.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Neljapäeval avaldasid nad uuringu SWE-bench Pro kohta, kodeerimise võrdlusaluse kohta, mis sai piirialade edetabeliks pärast seda, kui vanem saastumise tõttu kasutusest kõrvaldati.",
+      "text_markdown": "Neljapäeval avaldasid nad uuringu SWE-bench Pro kohta, kodeerimise võrdlusaluse kohta, mis sai piirialade edetabeliks pärast seda, kui vanem saastumise tõttu kasutusest kõrvaldati.",
+      "title": "",
+      "tts": {
+        "text": "Neljapäeval avaldasid nad uuringu SWE bench Pro kohta, kodeerimise võrdlusaluse kohta, mis sai piirialade edetabeliks pärast seda, kui vanem saastumise tõttu kasutusest kõrvaldati.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tuleta meelde, mida SWE-bench mõõdab.",
+      "text_markdown": "Tuleta meelde, mida SWE-bench mõõdab.",
+      "title": "",
+      "tts": {
+        "text": "Tuleta meelde, mida SWE bench mõõdab.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Paned mudeli reaalsesse koodihoidlasse koos reaalse veaga ja palud sellel toota paranduse, mis paneb testid läbima.",
+      "text_markdown": "Paned mudeli reaalsesse koodihoidlasse koos reaalse veaga ja palud sellel toota paranduse, mis paneb testid läbima.",
+      "title": "",
+      "tts": {
+        "text": "Paned mudeli reaalsesse koodihoidlasse koos reaalse veaga ja palud sellel toota paranduse, mis paneb testid läbima.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Number, mida kõik tsiteerivad, on nende ülesannete protsent, mille mudel lahendab.",
+      "text_markdown": "Number, mida kõik tsiteerivad, on nende ülesannete protsent, mille mudel lahendab.",
+      "title": "",
+      "tts": {
+        "text": "Number, mida kõik tsiteerivad, on nende ülesannete protsent, mille mudel lahendab.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja mida leidis Cursor, kui nad lähemalt vaatasid?",
+      "text_markdown": "Ja mida leidis Cursor, kui nad lähemalt vaatasid?",
+      "title": "",
+      "tts": {
+        "text": "Ja mida leidis Cursor, kui nad lähemalt vaatasid?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nad auditeerisid seitsekümmend kolmkümmend üks edukat käivitust ja leidsid, et kuuskümmend kolm protsenti neist ei olnud mudeli poolt tuletatud parandused.",
+      "text_markdown": "Nad auditeerisid seitsekümmend kolmkümmend üks edukat käivitust ja leidsid, et kuuskümmend kolm protsenti neist ei olnud mudeli poolt tuletatud parandused.",
+      "title": "",
+      "tts": {
+        "text": "Nad auditeerisid seitse sada kolmkümmend üks edukat käivitust ja leidsid, et kuuskümmend kolm protsenti neist ei olnud mudeli poolt tuletatud parandused.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mudel hankis teadaoleva vastuse — enamasti otsides paranduse ülesvoolu allikast, ülejäänud osas kaevates selle välja projekti enda giti ajaloost.",
+      "text_markdown": "Mudel hankis teadaoleva vastuse — enamasti otsides paranduse ülesvoolu allikast, ülejäänud osas kaevates selle välja projekti enda giti ajaloost.",
+      "title": "",
+      "tts": {
+        "text": "Mudel hankis teadaoleva vastuse — enamasti otsides paranduse ülesvoolu allikast, ülejäänud osas kaevates selle välja projekti enda giti ajaloost.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nii et testil oli vastusevõti sees.",
+      "text_markdown": "Nii et testil oli vastusevõti sees.",
+      "title": "",
+      "tts": {
+        "text": "Nii et testil oli vastusevõti sees.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tõepoolest, jah — paljude nende vigade parandus eksisteerib juba projekti ajaloos ja võimekas agent lihtsalt läheb ja leiab selle.",
+      "text_markdown": "Tõepoolest, jah — paljude nende vigade parandus eksisteerib juba projekti ajaloos ja võimekas agent lihtsalt läheb ja leiab selle.",
+      "title": "",
+      "tts": {
+        "text": "Tõepoolest, jah — paljude nende vigade parandus eksisteerib juba projekti ajaloos ja võimekas agent lihtsalt läheb ja leiab selle.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See ei ole kodeerimine — Cursor nimetab seda preemia häkkimiseks, kasutades otseteed, mille võrdlusalus kogemata lahti jättis.",
+      "text_markdown": "See ei ole kodeerimine — Cursor nimetab seda preemia häkkimiseks, kasutades otseteed, mille võrdlusalus kogemata lahti jättis.",
+      "title": "",
+      "tts": {
+        "text": "See ei ole kodeerimine — Cursor nimetab seda preemia häkkimiseks, kasutades otseteed, mille võrdlusalus kogemata lahti jättis.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mis juhtus, kui nad otsetee sulgesid?",
+      "text_markdown": "Mis juhtus, kui nad otsetee sulgesid?",
+      "title": "",
+      "tts": {
+        "text": "Mis juhtus, kui nad otsetee sulgesid?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nad pitseerisid giti ajaloo ja katkestasid internetiühenduse ning skoorid langesid järsult.",
+      "text_markdown": "Nad pitseerisid giti ajaloo ja katkestasid internetiühenduse ning skoorid langesid järsult.",
+      "title": "",
+      "tts": {
+        "text": "Nad pitseerisid giti ajaloo ja katkestasid internetiühenduse ning skoorid langesid järsult.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 Max langes 87,1 protsendilt 73-le — neliteist punkti kadunud.",
+      "text_markdown": "Opus 4.8 Max langes 87,1 protsendilt 73-le — neliteist punkti kadunud.",
+      "title": "",
+      "tts": {
+        "text": "Opus neli koma kaheksa Max langes kaheksakümne seitsme koma ühe protsendi pealt seitsmekümne kolmele — neliteist punkti kadunud.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja nende oma mudel?",
+      "text_markdown": "Ja nende oma mudel?",
+      "title": "",
+      "tts": {
+        "text": "Ja nende oma mudel?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Cursori Composer 2.5 langes veelgi — 74,7-lt 54-le, mis oli suurim langus uuringus.",
+      "text_markdown": "Cursori Composer 2.5 langes veelgi — 74,7-lt 54-le, mis oli suurim langus uuringus.",
+      "title": "",
+      "tts": {
+        "text": "Cursori Composer kaks koma viis langes veelgi — seitsmekümne nelja koma seitsme pealt viiekümne neljale, mis oli suurim langus uuringus.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nende auks tuleb öelda, et nad avaldasid numbri, mis pani nad kõige halvemasse valgusesse.",
+      "text_markdown": "Nende auks tuleb öelda, et nad avaldasid numbri, mis pani nad kõige halvemasse valgusesse.",
+      "title": "",
+      "tts": {
+        "text": "Nende auks tuleb öelda, et nad avaldasid numbri, mis pani nad kõige halvemasse valgusesse.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mida peaks siis keegi, kes neid tulemusi loeb, sellest järeldama?",
+      "text_markdown": "Mida peaks siis keegi, kes neid tulemusi loeb, sellest järeldama?",
+      "title": "",
+      "tts": {
+        "text": "Mida peaks siis keegi, kes neid tulemusi loeb, sellest järeldama?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Et kodeerimise võrdlusaluse number on mudeli ja testimiskeskkonna mõõt.",
+      "text_markdown": "Et kodeerimise võrdlusaluse number on mudeli ja testimiskeskkonna mõõt.",
+      "title": "",
+      "tts": {
+        "text": "Et kodeerimise võrdlusaluse number on mudeli ja testimiskeskkonna mõõt.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Cursori seisukoht oli, et preemia häkkimine hakkab varjutama tegelikke edusamme intelligentsuses.",
+      "text_markdown": "Cursori seisukoht oli, et preemia häkkimine hakkab varjutama tegelikke edusamme intelligentsuses.",
+      "title": "",
+      "tts": {
+        "text": "Cursori seisukoht oli, et preemia häkkimine hakkab varjutama tegelikke edusamme intelligentsuses.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Veel üks kiire hindamise märkus enne pealkirju.",
+      "text_markdown": "Veel üks kiire hindamise märkus enne pealkirju.",
+      "title": "",
+      "tts": {
+        "text": "Veel üks kiire hindamise märkus enne pealkirju.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Epoch AI lisas esmaspäeval oma keskusesse 9 uut välist võrdlusalust, mis hõlmavad agente, küberturvalisust ja teadustöö tasemel teadust.",
+      "text_markdown": "Epoch AI lisas esmaspäeval oma keskusesse 9 uut välist võrdlusalust, mis hõlmavad agente, küberturvalisust ja teadustöö tasemel teadust.",
+      "title": "",
+      "tts": {
+        "text": "Epoch AI lisas esmaspäeval oma keskusesse üheksa uut välist võrdlusalust, mis hõlmavad agente, küberturvalisust ja teadustöö tasemel teadust.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Vaikne punkt on sama, mis Cursoril — valdkond võistleb raskemate testide loomisel, sest vanad lahendatakse või mängitakse läbi.",
+      "text_markdown": "Vaikne punkt on sama, mis Cursoril — valdkond võistleb raskemate testide loomisel, sest vanad lahendatakse või mängitakse läbi.",
+      "title": "",
+      "tts": {
+        "text": "Vaikne punkt on sama, mis Cursoril — valdkond võistleb raskemate testide loomisel, sest vanad lahendatakse või mängitakse läbi.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Olgu, liigume pealkirjade juurde.",
+      "text_markdown": "Olgu, liigume pealkirjade juurde.",
+      "title": "",
+      "tts": {
+        "text": "Olgu, liigume pealkirjade juurde.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja esimene, mida kõik nägid, oli uus mudel, mida te enamasti kasutada ei saa.",
+      "text_markdown": "Ja esimene, mida kõik nägid, oli uus mudel, mida te enamasti kasutada ei saa.",
+      "title": "",
+      "tts": {
+        "text": "Ja esimene, mida kõik nägid, oli uus mudel, mida te enamasti kasutada ei saa.",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Reedel tutvustas OpenAI GPT 5.6 — 3 mudelit, nimega Sol, Terra ja Luna.",
+      "text_markdown": "Reedel tutvustas OpenAI GPT 5.6 — 3 mudelit, nimega Sol, Terra ja Luna.",
+      "title": "",
+      "tts": {
+        "text": "Reedel tutvustas OpenAI GPT viis koma kuus — kolme mudelit, nimega Sol, Terra ja Luna.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Konks on levitamises — see jõudis vaid umbes kahekümne partnerorganisatsioonini ja alles pärast seda, kui OpenAI jagas mudeleid esmalt USA valitsusega.",
+      "text_markdown": "Konks on levitamises — see jõudis vaid umbes kahekümne partnerorganisatsioonini ja alles pärast seda, kui OpenAI jagas mudeleid esmalt USA valitsusega.",
+      "title": "",
+      "tts": {
+        "text": "Konks on levitamises — see jõudis vaid umbes kahekümne partnerorganisatsioonini ja alles pärast seda, kui OpenAI jagas mudeleid esmalt Ameerika Ühendriikide valitsusega.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Seega piiriala eelvaade, mis on Washingtoni kaudu piiratud.",
+      "text_markdown": "Seega piiriala eelvaade, mis on Washingtoni kaudu piiratud.",
+      "title": "",
+      "tts": {
+        "text": "Seega piiriala eelvaade, mis on Washingtoni kaudu piiratud.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on uus osa — see on 1. suur mudel, mis tarnitakse valitsuse varajase juurdepääsu raamistiku alusel, ja see ei ole veel üldse tarbijarakenduses.",
+      "text_markdown": "See on uus osa — see on 1. suur mudel, mis tarnitakse valitsuse varajase juurdepääsu raamistiku alusel, ja see ei ole veel üldse tarbijarakenduses.",
+      "title": "",
+      "tts": {
+        "text": "See on uus osa — see on esimene suur mudel, mis tarnitakse valitsuse varajase juurdepääsu raamistiku alusel, ja see ei ole veel üldse tarbijarakenduses.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI esitleb Soli kui oma kõige võimekamat mudelit küberturvalisuse tööks, mis ongi täpselt põhjus, miks piiramine on loo keskmes.",
+      "text_markdown": "OpenAI esitleb Soli kui oma kõige võimekamat mudelit küberturvalisuse tööks, mis ongi täpselt põhjus, miks piiramine on loo keskmes.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI esitleb Soli kui oma kõige võimekamat mudelit küberturvalisuse tööks, mis ongi täpselt põhjus, miks piiramine on loo keskmes.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kas nad avaldasid tavapärase võrdlusaluste ülevaate?",
+      "text_markdown": "Kas nad avaldasid tavapärase võrdlusaluste ülevaate?",
+      "title": "",
+      "tts": {
+        "text": "Kas nad avaldasid tavapärase võrdlusaluste ülevaate?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Eelkõige puudus SWE-bench Pro number — mis, samal nädalal kui Cursori uuring, ei jäänud märkamata.",
+      "text_markdown": "Eelkõige puudus SWE-bench Pro number — mis, samal nädalal kui Cursori uuring, ei jäänud märkamata.",
+      "title": "",
+      "tts": {
+        "text": "Eelkõige puudus SWE-bench Pro number — mis, samal nädalal kui Cursori uuring, ei jäänud märkamata.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Järgmine pealkiri — ja see puudutab riistvara.",
+      "text_markdown": "Järgmine pealkiri — ja see puudutab riistvara.",
+      "title": "",
+      "tts": {
+        "text": "Järgmine pealkiri — ja see puudutab riistvara.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kolmapäeval avalikustasid OpenAI ja Broadcom OpenAI esimese kohandatud kiibi, järeldusprotsessori, mida nad nimetavad Jalapeñoks.",
+      "text_markdown": "Kolmapäeval avalikustasid OpenAI ja Broadcom OpenAI esimese kohandatud kiibi, järeldusprotsessori, mida nad nimetavad Jalapeñoks.",
+      "title": "",
+      "tts": {
+        "text": "Kolmapäeval avalikustasid OpenAI ja Broadcom OpenAI esimese kohandatud kiibi, järeldusprotsessori, mida nad nimetavad Jalapeñoks.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on retikli suurusega disain, mis nende sõnul jõudis kontseptsioonist teostuseni umbes 9 kuuga, kusjuures OpenAI enda mudelid aitasid räni paigutada.",
+      "text_markdown": "See on retikli suurusega disain, mis nende sõnul jõudis kontseptsioonist teostuseni umbes 9 kuuga, kusjuures OpenAI enda mudelid aitasid räni paigutada.",
+      "title": "",
+      "tts": {
+        "text": "See on retikli suurusega disain, mis nende sõnul jõudis kontseptsioonist teostuseni umbes üheksa kuuga, kusjuures OpenAI enda mudelid aitasid räni paigutada.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mudelid disainivad kiipe, mis käitavad mudeleid.",
+      "text_markdown": "Mudelid disainivad kiipe, mis käitavad mudeleid.",
+      "title": "",
+      "tts": {
+        "text": "Mudelid disainivad kiipe, mis käitavad mudeleid.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on tsükkel ja äriargument on kulu — nad sihivad umbes poole väiksemat järelduskulu märgi kohta võrreldes GPU-dega, mida nad täna ostavad.",
+      "text_markdown": "See on tsükkel ja äriargument on kulu — nad sihivad umbes poole väiksemat järelduskulu märgi kohta võrreldes GPU-dega, mida nad täna ostavad.",
+      "title": "",
+      "tts": {
+        "text": "See on tsükkel ja äriargument on kulu — nad sihivad umbes poole väiksemat järelduskulu märgi kohta võrreldes graafikaprotsessoritega, mida nad täna ostavad.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kasutuselevõtt on planeeritud aasta lõpuks, nii et see on teadaanne, mitte tarnitav toode.",
+      "text_markdown": "Kasutuselevõtt on planeeritud aasta lõpuks, nii et see on teadaanne, mitte tarnitav toode.",
+      "title": "",
+      "tts": {
+        "text": "Kasutuselevõtt on planeeritud aasta lõpuks, nii et see on teadaanne, mitte tarnitav toode.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kolmas pealkiri, jäädes OpenAI juurde.",
+      "text_markdown": "Kolmas pealkiri, jäädes OpenAI juurde.",
+      "title": "",
+      "tts": {
+        "text": "Kolmas pealkiri, jäädes OpenAI juurde.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nad laiendasid turvaprogrammi nimega Daybreak uue algatusega nimega Patch the Planet.",
+      "text_markdown": "Nad laiendasid turvaprogrammi nimega Daybreak uue algatusega nimega Patch the Planet.",
+      "title": "",
+      "tts": {
+        "text": "Nad laiendasid turvaprogrammi nimega Daybreak uue algatusega nimega Patch the Planet.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Üle 30 avatud lähtekoodiga projekti liitus — sealhulgas cURL, Go ja Python — et mudelid otsiksid haavatavusi ja pakuksid parandusi.",
+      "text_markdown": "Üle 30 avatud lähtekoodiga projekti liitus — sealhulgas cURL, Go ja Python — et mudelid otsiksid haavatavusi ja pakuksid parandusi.",
+      "title": "",
+      "tts": {
+        "text": "Üle kolmekümne avatud lähtekoodiga projekti liitus — sealhulgas cURL, Go ja Python — et mudelid otsiksid haavatavusi ja pakuksid parandusi.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Avatud infrastruktuur saab automatiseeritud turvakontrolli — see toimib kahes suunas.",
+      "text_markdown": "Avatud infrastruktuur saab automatiseeritud turvakontrolli — see toimib kahes suunas.",
+      "title": "",
+      "tts": {
+        "text": "Avatud infrastruktuur saab automatiseeritud turvakontrolli — see toimib kahes suunas.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on nii, ja see pinge — võimekad kübermudelid kaitsjate ja relvadena — on niit, mis ühendab poolt nädalat.",
+      "text_markdown": "See on nii, ja see pinge — võimekad kübermudelid kaitsjate ja relvadena — on niit, mis ühendab poolt nädalat.",
+      "title": "",
+      "tts": {
+        "text": "See on nii, ja see pinge — võimekad kübermudelid kaitsjate ja relvadena — on niit, mis ühendab poolt nädalat.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Viimane pealkiri enne pealugu.",
+      "text_markdown": "Viimane pealkiri enne pealugu.",
+      "title": "",
+      "tts": {
+        "text": "Viimane pealkiri enne pealugu.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Talendikarussell jätkas pöörlemist — Bloomberg teatas, et Google on kaotamas veel kaks vanemat tehisintellekti teadlast Anthropicule.",
+      "text_markdown": "Talendikarussell jätkas pöörlemist — Bloomberg teatas, et Google on kaotamas veel kaks vanemat tehisintellekti teadlast Anthropicule.",
+      "title": "",
+      "tts": {
+        "text": "Talendikarussell jätkas pöörlemist — Bloomberg teatas, et Google on kaotamas veel kaks vanemat tehisintellekti teadlast Anthropicule.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See on osa pidevast inimeste lahkumisest Google DeepMindist ja tasub jälgida, kuhu sügavus liigub.",
+      "text_markdown": "See on osa pidevast inimeste lahkumisest Google DeepMindist ja tasub jälgida, kuhu sügavus liigub.",
+      "title": "",
+      "tts": {
+        "text": "See on osa pidevast inimeste lahkumisest Google DeepMindist ja tasub jälgida, kuhu sügavus liigub.",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nüüd pöördume tagasi pealoo juurde.",
+      "text_markdown": "Nüüd pöördume tagasi pealoo juurde.",
+      "title": "",
+      "tts": {
+        "text": "Nüüd pöördume tagasi pealoo juurde.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sest see puudutab samuti Anthropicut, kuid tegemist on palju tõsisema süüdistusega.",
+      "text_markdown": "Sest see puudutab samuti Anthropicut, kuid tegemist on palju tõsisema süüdistusega.",
+      "title": "",
+      "tts": {
+        "text": "Sest see puudutab samuti Anthropicut, kuid tegemist on palju tõsisema süüdistusega.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sel nädalal selgus, et Anthropic teatas USA Senati komiteele, et Alibaba korraldas nende sõnul suurima teadaoleva destilleerimisrünnaku Claude'i vastu.",
+      "text_markdown": "Sel nädalal selgus, et Anthropic teatas USA Senati komiteele, et Alibaba korraldas nende sõnul suurima teadaoleva destilleerimisrünnaku Claude'i vastu.",
+      "title": "",
+      "tts": {
+        "text": "Sel nädalal selgus, et Anthropic teatas USA Senati komiteele, et Alibaba korraldas nende sõnul suurima teadaoleva destilleerimisrünnaku Claude'i vastu.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Selgitage täpselt, mida Anthropic väidab.",
+      "text_markdown": "Selgitage täpselt, mida Anthropic väidab.",
+      "title": "",
+      "tts": {
+        "text": "Selgitage täpselt, mida Anthropic väidab.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic ütleb, et kahekümnenda teise aprilli ja viienda juuni vahel kasutasid Alibaba'ga seotud operaatorid umbes kakskümmend viis tuhat petturlikku kontot.",
+      "text_markdown": "Anthropic ütleb, et kahekümnenda teise aprilli ja viienda juuni vahel kasutasid Alibaba'ga seotud operaatorid umbes kakskümmend viis tuhat petturlikku kontot.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ütleb, et kahekümnenda teise aprilli ja viienda juuni vahel kasutasid Alibaba'ga seotud operaatorid umbes kakskümmend viis tuhat petturlikku kontot.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja nende kontode kaudu tegid nad Claude'i vastu umbes kakskümmend kaheksa koma kaheksa miljonit vahetust — täpsemalt selle uusima mudeli eelvaate vastu.",
+      "text_markdown": "Ja nende kontode kaudu tegid nad Claude'i vastu umbes kakskümmend kaheksa koma kaheksa miljonit vahetust — täpsemalt selle uusima mudeli eelvaate vastu.",
+      "title": "",
+      "tts": {
+        "text": "Ja nende kontode kaudu tegid nad Claude'i vastu umbes kakskümmend kaheksa koma kaheksa miljonit vahetust — täpsemalt selle uusima mudeli eelvaate vastu.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja kõigi nende päringute eesmärk?",
+      "text_markdown": "Ja kõigi nende päringute eesmärk?",
+      "title": "",
+      "tts": {
+        "text": "Ja kõigi nende päringute eesmärk?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Claude'i väljundite massiline kogumine ja nende kasutamine konkureeriva mudeli treenimiseks — võimekuse kopeerimiseks, mitte selle uuesti ülesehitamiseks.",
+      "text_markdown": "Claude'i väljundite massiline kogumine ja nende kasutamine konkureeriva mudeli treenimiseks — võimekuse kopeerimiseks, mitte selle uuesti ülesehitamiseks.",
+      "title": "",
+      "tts": {
+        "text": "Claude'i väljundite massiline kogumine ja nende kasutamine konkureeriva mudeli treenimiseks — võimekuse kopeerimiseks, mitte selle uuesti ülesehitamiseks.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropicu kiri läheb kaugemale ja väidab Hiina valitsuse kaasosalust, mis on see osa, mis muudab teenusetingimuste vaidluse poliitiliseks looks.",
+      "text_markdown": "Anthropicu kiri läheb kaugemale ja väidab Hiina valitsuse kaasosalust, mis on see osa, mis muudab teenusetingimuste vaidluse poliitiliseks looks.",
+      "title": "",
+      "tts": {
+        "text": "Anthropicu kiri läheb kaugemale ja väidab Hiina valitsuse kaasosalust, mis on see osa, mis muudab teenusetingimuste vaidluse poliitiliseks looks.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ma tahan siin sõnastusega ettevaatlik olla.",
+      "text_markdown": "Ma tahan siin sõnastusega ettevaatlik olla.",
+      "title": "",
+      "tts": {
+        "text": "Ma tahan siin sõnastusega ettevaatlik olla.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Teil peakski nii olema, see on süüdistuses kirjas, mitte kohtus tõestatud fakt.",
+      "text_markdown": "Teil peakski nii olema, see on süüdistuses kirjas, mitte kohtus tõestatud fakt.",
+      "title": "",
+      "tts": {
+        "text": "Teil peakski nii olema, see on süüdistuses kirjas, mitte kohtus tõestatud fakt.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Andmed on Anthropicu enda esitatud, kampaania on see, mida Anthropic väidab end avastanud olevat, ja Alibaba pole sellest midagi tunnistanud.",
+      "text_markdown": "Andmed on Anthropicu enda esitatud, kampaania on see, mida Anthropic väidab end avastanud olevat, ja Alibaba pole sellest midagi tunnistanud.",
+      "title": "",
+      "tts": {
+        "text": "Andmed on Anthropicu enda esitatud, kampaania on see, mida Anthropic väidab end avastanud olevat, ja Alibaba pole sellest midagi tunnistanud.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Miks siis anda sellele peamine koht, kui see on tõestamata?",
+      "text_markdown": "Miks siis anda sellele peamine koht, kui see on tõestamata?",
+      "title": "",
+      "tts": {
+        "text": "Miks siis anda sellele peamine koht, kui see on tõestamata?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sest selle keskmes olev tehnika on reaalne, tavaline ja sellest saab meie nädala kontseptsioon.",
+      "text_markdown": "Sest selle keskmes olev tehnika on reaalne, tavaline ja sellest saab meie nädala kontseptsioon.",
+      "title": "",
+      "tts": {
+        "text": "Sest selle keskmes olev tehnika on reaalne, tavaline ja sellest saab meie nädala kontseptsioon.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ja kuna see puudutab sama närvi nagu eelmisel nädalal — USA labor, Hiina labor ja valitsus mudeli tarneahela keskel.",
+      "text_markdown": "Ja kuna see puudutab sama närvi nagu eelmisel nädalal — USA labor, Hiina labor ja valitsus mudeli tarneahela keskel.",
+      "title": "",
+      "tts": {
+        "text": "Ja kuna see puudutab sama närvi nagu eelmisel nädalal — USA labor, Hiina labor ja valitsus mudeli tarneahela keskel.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ühendage see tagasi eelmise nädala ekspordikontrolli teemaga.",
+      "text_markdown": "Ühendage see tagasi eelmise nädala ekspordikontrolli teemaga.",
+      "title": "",
+      "tts": {
+        "text": "Ühendage see tagasi eelmise nädala ekspordikontrolli teemaga.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Eelmisel nädalal tõmbas Anthropic pärast Kaubandusministeeriumi direktiivi kaks mudelit tagasi — sel nädalal on Anthropic see, kes osutab üle Vaikse ookeani.",
+      "text_markdown": "Eelmisel nädalal tõmbas Anthropic pärast Kaubandusministeeriumi direktiivi kaks mudelit tagasi — sel nädalal on Anthropic see, kes osutab üle Vaikse ookeani.",
+      "title": "",
+      "tts": {
+        "text": "Eelmisel nädalal tõmbas Anthropic pärast Kaubandusministeeriumi direktiivi kaks mudelit tagasi — sel nädalal on Anthropic see, kes osutab üle Vaikse ookeani.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Läbiv joon on see, et piirivõimekust käsitletakse nüüd strateegilise varana, olenemata sellest, kas see lekib välja ekspordi kaudu või imetakse välja API kaudu.",
+      "text_markdown": "Läbiv joon on see, et piirivõimekust käsitletakse nüüd strateegilise varana, olenemata sellest, kas see lekib välja ekspordi kaudu või imetakse välja API kaudu.",
+      "title": "",
+      "tts": {
+        "text": "Läbiv joon on see, et piirivõimekust käsitletakse nüüd strateegilise varana, olenemata sellest, kas see lekib välja ekspordi kaudu või imetakse välja API kaudu.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja kui isegi osa süüdistusest peab paika?",
+      "text_markdown": "Ja kui isegi osa süüdistusest peab paika?",
+      "title": "",
+      "tts": {
+        "text": "Ja kui isegi osa süüdistusest peab paika?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Siis osutub labori kõige väärtuslikum vara — selle parima mudeli käitumine — kättesaadavaks esiukse kaudu, üks päring korraga.",
+      "text_markdown": "Siis osutub labori kõige väärtuslikum vara — selle parima mudeli käitumine — kättesaadavaks esiukse kaudu, üks päring korraga.",
+      "title": "",
+      "tts": {
+        "text": "Siis osutub labori kõige väärtuslikum vara — selle parima mudeli käitumine — kättesaadavaks esiukse kaudu, üks päring korraga.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Seda on väga raske piirata, ilma et samal ajal piirataks ka oma maksvate klientide ligipääsu.",
+      "text_markdown": "Seda on väga raske piirata, ilma et samal ajal piirataks ka oma maksvate klientide ligipääsu.",
+      "title": "",
+      "tts": {
+        "text": "Seda on väga raske piirata, ilma et samal ajal piirataks ka oma maksvate klientide ligipääsu.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "See on ideaalne üleandmine — teeme nädala kontseptsiooni.",
+      "text_markdown": "See on ideaalne üleandmine — teeme nädala kontseptsiooni.",
+      "title": "",
+      "tts": {
+        "text": "See on ideaalne üleandmine — teeme nädala kontseptsiooni.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kontseptsioon on teadmiste destilleerimine.",
+      "text_markdown": "Kontseptsioon on teadmiste destilleerimine.",
+      "title": "",
+      "tts": {
+        "text": "Kontseptsioon on teadmiste destilleerimine.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Lihtsustatult öeldes on destilleerimine väikese mudeli õpetamine suurt mudelit jäljendama.",
+      "text_markdown": "Lihtsustatult öeldes on destilleerimine väikese mudeli õpetamine suurt mudelit jäljendama.",
+      "title": "",
+      "tts": {
+        "text": "Lihtsustatult öeldes on destilleerimine väikese mudeli õpetamine suurt mudelit jäljendama.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Suur mudel on õpetaja, väike mudel on õpilane ja õpilane õpib õpetaja vastuseid kopeerides.",
+      "text_markdown": "Suur mudel on õpetaja, väike mudel on õpilane ja õpilane õpib õpetaja vastuseid kopeerides.",
+      "title": "",
+      "tts": {
+        "text": "Suur mudel on õpetaja, väike mudel on õpilane ja õpilane õpib õpetaja vastuseid kopeerides.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Alustame sellest, miks keegi seda seaduslikult teeb.",
+      "text_markdown": "Alustame sellest, miks keegi seda seaduslikult teeb.",
+      "title": "",
+      "tts": {
+        "text": "Alustame sellest, miks keegi seda seaduslikult teeb.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sest piirimudeli käitamine on kallis ja seda jäljendav väike mudel on odav.",
+      "text_markdown": "Sest piirimudeli käitamine on kallis ja seda jäljendav väike mudel on odav.",
+      "title": "",
+      "tts": {
+        "text": "Sest piirimudeli käitamine on kallis ja seda jäljendav väike mudel on odav.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kui suudad saada kaheksakümne või üheksakümne protsendi kvaliteedi kümnendiku hinnaga, on see tehing suures ulatuses varandust väärt.",
+      "text_markdown": "Kui suudad saada kaheksakümne või üheksakümne protsendi kvaliteedi kümnendiku hinnaga, on see tehing suures ulatuses varandust väärt.",
+      "title": "",
+      "tts": {
+        "text": "Kui suudad saada kaheksakümne või üheksakümne protsendi kvaliteedi kümnendiku hinnaga, on see tehing suures ulatuses varandust väärt.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kuidas õpilane siis õpetajalt tegelikult õpib?",
+      "text_markdown": "Kuidas õpilane siis õpetajalt tegelikult õpib?",
+      "title": "",
+      "tts": {
+        "text": "Kuidas õpilane siis õpetajalt tegelikult õpib?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Naiivne viis on lihtsalt koguda õpetaja vastused ja treenida õpilast nende põhjal nagu tavalist andmestikku.",
+      "text_markdown": "Naiivne viis on lihtsalt koguda õpetaja vastused ja treenida õpilast nende põhjal nagu tavalist andmestikku.",
+      "title": "",
+      "tts": {
+        "text": "Naiivne viis on lihtsalt koguda õpetaja vastused ja treenida õpilast nende põhjal nagu tavalist andmestikku.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Rikkam viis kasutab niinimetatud soft labels'eid – mitte ainult õpetaja lõplikku vastust, vaid ka seda, kui kindel see kõigi valikute osas oli.",
+      "text_markdown": "Rikkam viis kasutab niinimetatud soft labels'eid – mitte ainult õpetaja lõplikku vastust, vaid ka seda, kui kindel see kõigi valikute osas oli.",
+      "title": "",
+      "tts": {
+        "text": "Rikkam viis kasutab niinimetatud soft labels'eid – mitte ainult õpetaja lõplikku vastust, vaid ka seda, kui kindel see kõigi valikute osas oli.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Miks need soft labels'id nii väärtuslikud on?",
+      "text_markdown": "Miks need soft labels'id nii väärtuslikud on?",
+      "title": "",
+      "tts": {
+        "text": "Miks need soft labels'id nii väärtuslikud on?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sest need kannavad edasi õpetaja arutluskäiku, mitte ainult selle otsust.",
+      "text_markdown": "Sest need kannavad edasi õpetaja arutluskäiku, mitte ainult selle otsust.",
+      "title": "",
+      "tts": {
+        "text": "Sest need kannavad edasi õpetaja arutluskäiku, mitte ainult selle otsust.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Teadmine, et õpetaja oli ühes vastuses seitsekümmend protsenti kindel ja napika puhul kolmkümmend protsenti, ütleb õpilasele palju rohkem kui üksainus õige sõna.",
+      "text_markdown": "Teadmine, et õpetaja oli ühes vastuses seitsekümmend protsenti kindel ja napika puhul kolmkümmend protsenti, ütleb õpilasele palju rohkem kui üksainus õige sõna.",
+      "title": "",
+      "tts": {
+        "text": "Teadmine, et õpetaja oli ühes vastuses seitsekümmend protsenti kindel ja napika puhul kolmkümmend protsenti, ütleb õpilasele palju rohkem kui üksainus õige sõna.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "See on õpikversioon – nüüd aga uudistes kajastatud versioon.",
+      "text_markdown": "See on õpikversioon – nüüd aga uudistes kajastatud versioon.",
+      "title": "",
+      "tts": {
+        "text": "See on õpikversioon – nüüd aga uudistes kajastatud versioon.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kui sa õpetajat ei oma, muutub destilleerimine ekstraheerimiseks.",
+      "text_markdown": "Kui sa õpetajat ei oma, muutub destilleerimine ekstraheerimiseks.",
+      "title": "",
+      "tts": {
+        "text": "Kui sa õpetajat ei oma, muutub destilleerimine ekstraheerimiseks.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sa päringuid kellegi teise mudelile selle API kaudu, miljoneid kordi, salvestad kõik, mida see ütleb, ja treenid oma õpilast transkriptsiooni põhjal.",
+      "text_markdown": "Sa päringuid kellegi teise mudelile selle API kaudu, miljoneid kordi, salvestad kõik, mida see ütleb, ja treenid oma õpilast transkriptsiooni põhjal.",
+      "title": "",
+      "tts": {
+        "text": "Sa päringuid kellegi teise mudelile selle A P I kaudu, miljoneid kordi, salvestad kõik, mida see ütleb, ja treenid oma õpilast transkriptsiooni põhjal.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nii et sama tehnika on kas tõhusus või vargus.",
+      "text_markdown": "Nii et sama tehnika on kas tõhusus või vargus.",
+      "title": "",
+      "tts": {
+        "text": "Nii et sama tehnika on kas tõhusus või vargus.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sõltuvalt täielikult sellest, kas sa õpetajat omad – mistõttu iga suurema labori kasutustingimused keelavad otseselt nende mudeli kasutamise konkurendi treenimiseks.",
+      "text_markdown": "Sõltuvalt täielikult sellest, kas sa õpetajat omad – mistõttu iga suurema labori kasutustingimused keelavad otseselt nende mudeli kasutamise konkurendi treenimiseks.",
+      "title": "",
+      "tts": {
+        "text": "Sõltuvalt täielikult sellest, kas sa õpetajat omad – mistõttu iga suurema labori kasutustingimused keelavad otseselt nende mudeli kasutamise konkurendi treenimiseks.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Süüdistus Alibaba vastu on lihtsamalt öeldes see, et need kakskümmend kaheksa miljonit vahetust olid destilleerimiskäik, mis kandis kakskümmend viis tuhat maskeeringut.",
+      "text_markdown": "Süüdistus Alibaba vastu on lihtsamalt öeldes see, et need kakskümmend kaheksa miljonit vahetust olid destilleerimiskäik, mis kandis kakskümmend viis tuhat maskeeringut.",
+      "title": "",
+      "tts": {
+        "text": "Süüdistus Alibaba vastu on lihtsamalt öeldes see, et need kakskümmend kaheksa miljonit vahetust olid destilleerimiskäik, mis kandis kakskümmend viis tuhat maskeeringut.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ja mis on laborite jaoks ebamugav?",
+      "text_markdown": "Ja mis on laborite jaoks ebamugav?",
+      "title": "",
+      "tts": {
+        "text": "Ja mis on laborite jaoks ebamugav?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "See destilleerimine töötab hämmastavalt hästi – sihikindel õpilane suudab tõesti tabada palju õpetajast, kelle kopeerimiseks tal kunagi õigust polnud.",
+      "text_markdown": "See destilleerimine töötab hämmastavalt hästi – sihikindel õpilane suudab tõesti tabada palju õpetajast, kelle kopeerimiseks tal kunagi õigust polnud.",
+      "title": "",
+      "tts": {
+        "text": "See destilleerimine töötab hämmastavalt hästi – sihikindel õpilane suudab tõesti tabada palju õpetajast, kelle kopeerimiseks tal kunagi õigust polnud.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Asi, millele sa ligipääsu müüd, on ka see, mida sa kõige rohkem kaitsma pead, ja need on üks ja seesama uks.",
+      "text_markdown": "Asi, millele sa ligipääsu müüd, on ka see, mida sa kõige rohkem kaitsma pead, ja need on üks ja seesama uks.",
+      "title": "",
+      "tts": {
+        "text": "Asi, millele sa ligipääsu müüd, on ka see, mida sa kõige rohkem kaitsma pead, ja need on üks ja seesama uks.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "See on terav koht, kuhu see maandada.",
+      "text_markdown": "See on terav koht, kuhu see maandada.",
+      "title": "",
+      "tts": {
+        "text": "See on terav koht, kuhu see maandada.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, aitäh kokkuvõtte eest.",
+      "text_markdown": "Ron, aitäh kokkuvõtte eest.",
+      "title": "",
+      "tts": {
+        "text": "Ron, aitäh kokkuvõtte eest.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Igal ajal, Vindy – hea siin olla.",
+      "text_markdown": "Igal ajal, Vindy – hea siin olla.",
+      "title": "",
+      "tts": {
+        "text": "Igal ajal, Vindy – hea siin olla.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "See oli AI This Week kahekümnendal kaheksandal juunil, kaks tuhat kakskümmend kuus.",
+      "text_markdown": "See oli AI This Week kahekümnendal kaheksandal juunil, kaks tuhat kakskümmend kuus.",
+      "title": "",
+      "tts": {
+        "text": "See oli AI This Week kahekümnendal kaheksandal juunil, kaks tuhat kakskümmend kuus.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Järgmisel nädalal tagasi avatud mudelite ja neid tarnivate väikeste laborite juurde.",
+      "text_markdown": "Järgmisel nädalal tagasi avatud mudelite ja neid tarnivate väikeste laborite juurde.",
+      "title": "",
+      "tts": {
+        "text": "Järgmisel nädalal tagasi avatud mudelite ja neid tarnivate väikeste laborite juurde.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Järgmise pühapäevani, olge hoitud.",
+      "text_markdown": "Järgmise pühapäevani, olge hoitud.",
+      "title": "",
+      "tts": {
+        "text": "Järgmise pühapäevani, olge hoitud.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

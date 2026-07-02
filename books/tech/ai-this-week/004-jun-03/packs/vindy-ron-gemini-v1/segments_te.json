@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "te",
+  "total_segments": 197,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "AI This Week‌కు మిమ్మల్ని హృదయపూర్వకంగా ఆహ్వానిస్తున్నాం.",
+      "text_markdown": "AI This Week‌కు మిమ్మల్ని హృదయపూర్వకంగా ఆహ్వానిస్తున్నాం.",
+      "title": "",
+      "tts": {
+        "text": "ఏఐ దిస్ వీక్‌కు మిమ్మల్ని హృదయపూర్వకంగా ఆహ్వానిస్తున్నాం.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "నేను Vindy.",
+      "text_markdown": "నేను Vindy.",
+      "title": "",
+      "tts": {
+        "text": "నేను Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "నాతో, ఎల్లప్పుడూ మాదిరిగానే, Ron ఉన్నారు.",
+      "text_markdown": "నాతో, ఎల్లప్పుడూ మాదిరిగానే, Ron ఉన్నారు.",
+      "title": "",
+      "tts": {
+        "text": "నాతో, ఎల్లప్పుడూ మాదిరిగానే, Ron ఉన్నారు.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇక్కడ ఉండడం మంచిది, Vindy.",
+      "text_markdown": "ఇక్కడ ఉండడం మంచిది, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ఇక్కడ ఉండడం మంచిది, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఈరోజు బుధవారం, జూన్ 3, 2026.",
+      "text_markdown": "ఈరోజు బుధవారం, జూన్ 3, 2026.",
+      "title": "",
+      "tts": {
+        "text": "ఈరోజు బుధవారం, జూన్ మూడవ తేదీ, రెండు వేల ఇరవై ఆరు.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఇది మార్కెటింగ్ కోసం నిశ్శబ్ద వారం మరియు హార్డ్‌వేర్ కోసం బిగ్గరైన వారం.",
+      "text_markdown": "ఇది మార్కెటింగ్ కోసం నిశ్శబ్ద వారం మరియు హార్డ్‌వేర్ కోసం బిగ్గరైన వారం.",
+      "title": "",
+      "tts": {
+        "text": "ఇది మార్కెటింగ్ కోసం నిశ్శబ్ద వారం మరియు హార్డ్‌వేర్ కోసం బిగ్గరైన వారం.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ముఖ్య వార్తల ఆకారం అసాధారణంగా ఉంది.",
+      "text_markdown": "ముఖ్య వార్తల ఆకారం అసాధారణంగా ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "ముఖ్య వార్తల ఆకారం అసాధారణంగా ఉంది.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "పెద్ద పరిశోధనశాల ప్రధాన ప్రసంగం, రహస్య పత్రం, పెట్టెపై పెద్ద సంఖ్య ఉన్న చిన్న గణన యంత్రం.",
+      "text_markdown": "పెద్ద పరిశోధనశాల ప్రధాన ప్రసంగం, రహస్య పత్రం, పెట్టెపై పెద్ద సంఖ్య ఉన్న చిన్న గణన యంత్రం.",
+      "title": "",
+      "tts": {
+        "text": "పెద్ద పరిశోధనశాల ప్రధాన ప్రసంగం, రహస్య పత్రం, పెట్టెపై పెద్ద సంఖ్య ఉన్న చిన్న గణన యంత్రం.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రాబోయేది — ఓపెన్ వెయిట్స్‌లో ఏమి కదిలింది, కొత్త అటెన్షన్ ఆర్కిటెక్చర్ మరియు NVIDIA ఓపెన్ మోడల్ ద్వారా నాయకత్వం వహించబడింది.",
+      "text_markdown": "రాబోయేది — ఓపెన్ వెయిట్స్‌లో ఏమి కదిలింది, కొత్త అటెన్షన్ ఆర్కిటెక్చర్ మరియు NVIDIA ఓపెన్ మోడల్ ద్వారా నాయకత్వం వహించబడింది.",
+      "title": "",
+      "tts": {
+        "text": "రాబోయేది — ఓపెన్ వెయిట్స్‌లో ఏమి కదిలింది, కొత్త అటెన్షన్ ఆర్కిటెక్చర్ మరియు NVIDIA ఓపెన్ మోడల్ ద్వారా నాయకత్వం వహించబడింది.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "లీడర్‌బోర్డ్‌లు ఎక్కడ ల్యాండ్ అయ్యాయి, మరియు వాటి క్రింద ఉన్న పెద్ద కథ స్కోర్‌లను మనం ఎలా నమ్ముతామో దాని గురించి.",
+      "text_markdown": "లీడర్‌బోర్డ్‌లు ఎక్కడ ల్యాండ్ అయ్యాయి, మరియు వాటి క్రింద ఉన్న పెద్ద కథ స్కోర్‌లను మనం ఎలా నమ్ముతామో దాని గురించి.",
+      "title": "",
+      "tts": {
+        "text": "లీడర్‌బోర్డ్‌లు ఎక్కడ ల్యాండ్ అయ్యాయి, మరియు వాటి క్రింద ఉన్న పెద్ద కథ స్కోర్‌లను మనం ఎలా నమ్ముతామో దాని గురించి.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఈ వారాంతంలో మీరు చర్య తీసుకోగలిగే ముఖ్య వార్తల వేగవంతమైన క్లిప్.",
+      "text_markdown": "ఈ వారాంతంలో మీరు చర్య తీసుకోగలిగే ముఖ్య వార్తల వేగవంతమైన క్లిప్.",
+      "title": "",
+      "tts": {
+        "text": "ఈ వారాంతంలో మీరు చర్య తీసుకోగలిగే ముఖ్య వార్తల వేగవంతమైన క్లిప్.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మా టాప్ స్టోరీ, డూ-ఇట్-యువర్సెల్ఫ్ రిగ్ పెద్దయ్యింది — ఫ్రాంటియర్ ఇన్ఫరెన్స్ ఇప్పుడు మీ డెస్క్‌పై ఒక విషయం.",
+      "text_markdown": "మా టాప్ స్టోరీ, డూ-ఇట్-యువర్సెల్ఫ్ రిగ్ పెద్దయ్యింది — ఫ్రాంటియర్ ఇన్ఫరెన్స్ ఇప్పుడు మీ డెస్క్‌పై ఒక విషయం.",
+      "title": "",
+      "tts": {
+        "text": "మా టాప్ స్టోరీ, డూ ఇట్ యువర్సెల్ఫ్ రిగ్ పెద్దయ్యింది — ఫ్రాంటియర్ ఇన్ఫరెన్స్ ఇప్పుడు మీ డెస్క్‌పై ఒక విషయం.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు వారం కాన్సెప్ట్ స్పెక్యులేటివ్ డికోడింగ్ — చిన్న కార్డ్‌పై పెద్ద మోడల్‌ను వేగంగా అనిపించేలా చేసే ట్రిక్.",
+      "text_markdown": "మరియు వారం కాన్సెప్ట్ స్పెక్యులేటివ్ డికోడింగ్ — చిన్న కార్డ్‌పై పెద్ద మోడల్‌ను వేగంగా అనిపించేలా చేసే ట్రిక్.",
+      "title": "",
+      "tts": {
+        "text": "మరియు వారం కాన్సెప్ట్ స్పెక్యులేటివ్ డికోడింగ్ — చిన్న కార్డ్‌పై పెద్ద మోడల్‌ను వేగంగా అనిపించేలా చేసే ట్రిక్.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రాన్, బహిరంగ మోడల్ బరువుల ప్రపంచంతో ప్రారంభిద్దాం.",
+      "text_markdown": "రాన్, బహిరంగ మోడల్ బరువుల ప్రపంచంతో ప్రారంభిద్దాం.",
+      "title": "",
+      "tts": {
+        "text": "రాన్, బహిరంగ మోడల్ బరువుల ప్రపంచంతో ప్రారంభిద్దాం.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "వారం ఎక్కడ ల్యాండ్ అయ్యింది?",
+      "text_markdown": "వారం ఎక్కడ ల్యాండ్ అయ్యింది?",
+      "title": "",
+      "tts": {
+        "text": "వారం ఎక్కడ ల్యాండ్ అయ్యింది?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఈ వారం ఓపెన్ కథ కొత్త ఆకారాల గురించి, కొత్త పరిమాణాల గురించి కాదు.",
+      "text_markdown": "ఈ వారం ఓపెన్ కథ కొత్త ఆకారాల గురించి, కొత్త పరిమాణాల గురించి కాదు.",
+      "title": "",
+      "tts": {
+        "text": "ఈ వారం ఓపెన్ కథ కొత్త ఆకారాల గురించి, కొత్త పరిమాణాల గురించి కాదు.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెండు ఆర్కిటెక్చరల్‌గా ఆసక్తికరమైన మోడల్స్ ఒకే రోజున డ్రాప్ అయ్యాయి, జూన్ 1.",
+      "text_markdown": "రెండు ఆర్కిటెక్చరల్‌గా ఆసక్తికరమైన మోడల్స్ ఒకే రోజున డ్రాప్ అయ్యాయి, జూన్ 1.",
+      "title": "",
+      "tts": {
+        "text": "రెండు ఆర్కిటెక్చరల్‌గా ఆసక్తికరమైన మోడల్స్ ఒకే రోజున డ్రాప్ అయ్యాయి, జూన్ మొదటి తేదీ.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మొదటిదాని ద్వారా మాకు వివరించండి.",
+      "text_markdown": "మొదటిదాని ద్వారా మాకు వివరించండి.",
+      "title": "",
+      "tts": {
+        "text": "మొదటిదాని ద్వారా మాకు వివరించండి.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax M3ని షిప్ చేసింది.",
+      "text_markdown": "MiniMax M3ని షిప్ చేసింది.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax ఎం మూడుని షిప్ చేసింది.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది వారు MSA అని పిలుస్తున్న కొత్త అటెన్షన్ డిజైన్‌ను ఉపయోగిస్తుంది, MiniMax Sparse Attention కి సంక్షిప్త రూపం.",
+      "text_markdown": "ఇది వారు MSA అని పిలుస్తున్న కొత్త అటెన్షన్ డిజైన్‌ను ఉపయోగిస్తుంది, MiniMax Sparse Attention కి సంక్షిప్త రూపం.",
+      "title": "",
+      "tts": {
+        "text": "ఇది వారు ఎం ఎస్ ఏ అని పిలుస్తున్న కొత్త అటెన్షన్ డిజైన్‌ను ఉపయోగిస్తుంది, MiniMax Sparse Attention కి సంక్షిప్త రూపం.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "పిచ్ ఒక మిలియన్-టోకెన్ కాంటెక్స్ట్, ఆ పొడవులో వారి మునుపటి మోడల్‌తో పోలిస్తే దాదాపు తొమ్మిది రెట్లు వేగవంతమైన ప్రీఫిల్ మరియు పదిహేను రెట్లు వేగవంతమైన డికోడ్.",
+      "text_markdown": "పిచ్ ఒక మిలియన్-టోకెన్ కాంటెక్స్ట్, ఆ పొడవులో వారి మునుపటి మోడల్‌తో పోలిస్తే దాదాపు తొమ్మిది రెట్లు వేగవంతమైన ప్రీఫిల్ మరియు పదిహేను రెట్లు వేగవంతమైన డికోడ్.",
+      "title": "",
+      "tts": {
+        "text": "పిచ్ ఒక మిలియన్ టోకెన్ కాంటెక్స్ట్, ఆ పొడవులో వారి మునుపటి మోడల్‌తో పోలిస్తే దాదాపు తొమ్మిది రెట్లు వేగవంతమైన ప్రీఫిల్ మరియు పదిహేను రెట్లు వేగవంతమైన డికోడ్.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "స్పార్స్ అటెన్షన్ వాస్తవంగా ఏమి చేస్తుందో సాధారణ-భాషలో.",
+      "text_markdown": "స్పార్స్ అటెన్షన్ వాస్తవంగా ఏమి చేస్తుందో సాధారణ-భాషలో.",
+      "title": "",
+      "tts": {
+        "text": "స్పార్స్ అటెన్షన్ వాస్తవంగా ఏమి చేస్తుందో సాధారణ భాషలో.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెగ్యులర్ అటెన్షన్ ప్రతి టోకెన్‌ను ప్రతి ఇతర టోకెన్‌తో పోల్చుతుంది, ఇది పొడవైన కాంటెక్స్ట్‌ను చాలా ఖర్చుతో కూడుకున్నదిగా చేస్తుంది.",
+      "text_markdown": "రెగ్యులర్ అటెన్షన్ ప్రతి టోకెన్‌ను ప్రతి ఇతర టోకెన్‌తో పోల్చుతుంది, ఇది పొడవైన కాంటెక్స్ట్‌ను చాలా ఖర్చుతో కూడుకున్నదిగా చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "రెగ్యులర్ అటెన్షన్ ప్రతి టోకెన్‌ను ప్రతి ఇతర టోకెన్‌తో పోల్చుతుంది, ఇది పొడవైన కాంటెక్స్ట్‌ను చాలా ఖర్చుతో కూడుకున్నదిగా చేస్తుంది.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "స్పార్స్ అటెన్షన్ కాంటెక్స్ట్‌ను బ్లాక్స్‌గా ప్రీ-ఫిల్టర్ చేస్తుంది మరియు ప్రస్తుత ప్రశ్నకు సంబంధించినవిగా కనిపించే బ్లాక్స్ కోసం మాత్రమే పూర్తి పోలిక చేస్తుంది.",
+      "text_markdown": "స్పార్స్ అటెన్షన్ కాంటెక్స్ట్‌ను బ్లాక్స్‌గా ప్రీ-ఫిల్టర్ చేస్తుంది మరియు ప్రస్తుత ప్రశ్నకు సంబంధించినవిగా కనిపించే బ్లాక్స్ కోసం మాత్రమే పూర్తి పోలిక చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "స్పార్స్ అటెన్షన్ కాంటెక్స్ట్‌ను బ్లాక్స్‌గా ప్రీ ఫిల్టర్ చేస్తుంది మరియు ప్రస్తుత ప్రశ్నకు సంబంధించినవిగా కనిపించే బ్లాక్స్ కోసం మాత్రమే పూర్తి పోలిక చేస్తుంది.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మీరు కంప్యూట్‌లో భిన్నంశంలో చాలా నాణ్యతను పొందుతారు.",
+      "text_markdown": "మీరు కంప్యూట్‌లో భిన్నంశంలో చాలా నాణ్యతను పొందుతారు.",
+      "title": "",
+      "tts": {
+        "text": "మీరు కంప్యూట్‌లో భిన్నంశంలో చాలా నాణ్యతను పొందుతారు.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు బెంచ్‌మార్క్‌కు సంబంధించిన దావా ఏమిటి?",
+      "text_markdown": "మరియు బెంచ్‌మార్క్‌కు సంబంధించిన దావా ఏమిటి?",
+      "title": "",
+      "tts": {
+        "text": "మరియు బెంచ్ మార్క్‌కు సంబంధించిన దావా ఏమిటి?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax SWE-bench Pro పై 59 శాతం అని చెబుతోంది, ఇది ఆ ఒక బోర్డ్‌పై GPT-5.5 మరియు Gemini 3.5 Pro కంటే ముందున్నట్లు ఉంచుతుంది.",
+      "text_markdown": "MiniMax SWE-bench Pro పై 59 శాతం అని చెబుతోంది, ఇది ఆ ఒక బోర్డ్‌పై GPT-5.5 మరియు Gemini 3.5 Pro కంటే ముందున్నట్లు ఉంచుతుంది.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax SWE బెంచ్ Pro పై యాభై తొమ్మిది శాతం అని చెబుతోంది, ఇది ఆ ఒక బోర్డ్‌పై GPT ఐదు దశమం ఐదు మరియు Gemini మూడు దశమం ఐదు Pro కంటే ముందున్నట్లు ఉంచుతుంది.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "నేను దావాలు అని చెబుతాను — ఇది వెండర్ యొక్క స్వంత స్కోర్‌కార్డ్, స్వతంత్ర రన్ కాదు.",
+      "text_markdown": "నేను దావాలు అని చెబుతాను — ఇది వెండర్ యొక్క స్వంత స్కోర్‌కార్డ్, స్వతంత్ర రన్ కాదు.",
+      "title": "",
+      "tts": {
+        "text": "నేను దావాలు అని చెబుతాను — ఇది వెండర్ యొక్క స్వంత స్కోర్‌కార్డ్, స్వతంత్ర రన్ కాదు.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఓపెన్ వెయిట్స్ కూడా?",
+      "text_markdown": "ఓపెన్ వెయిట్స్ కూడా?",
+      "title": "",
+      "tts": {
+        "text": "ఓపెన్ వెయిట్స్ కూడా?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవును, M3 ఓపెన్-వెయిట్‌గా స్థానీకరించబడింది; API మొదటి రోజునే లైవ్ అయింది మరియు వెయిట్స్ త్వరలో Hugging Face పై ల్యాండ్ అవుతున్నాయి.",
+      "text_markdown": "అవును, M3 ఓపెన్-వెయిట్‌గా స్థానీకరించబడింది; API మొదటి రోజునే లైవ్ అయింది మరియు వెయిట్స్ త్వరలో Hugging Face పై ల్యాండ్ అవుతున్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "అవును, ఎం మూడు ఓపెన్ వెయిట్‌గా స్థానీకరించబడింది; API మొదటి రోజునే లైవ్ అయింది మరియు వెయిట్స్ త్వరలో Hugging Face పై ల్యాండ్ అవుతున్నాయి.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "టింకరర్ కోసం, ఆసక్తికరమైన బెట్ స్కోర్ కంటే ఆర్కిటెక్చర్.",
+      "text_markdown": "టింకరర్ కోసం, ఆసక్తికరమైన బెట్ స్కోర్ కంటే ఆర్కిటెక్చర్.",
+      "title": "",
+      "tts": {
+        "text": "టింకరర్ కోసం, ఆసక్తికరమైన బెట్ స్కోర్ కంటే ఆర్కిటెక్చర్.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MSA నిలిచిపోతే, ప్రతి ఇతర ఓపెన్ ల్యాబ్ నెలల్లో ఆకారాన్ని కాపీ చేస్తుంది.",
+      "text_markdown": "MSA నిలిచిపోతే, ప్రతి ఇతర ఓపెన్ ల్యాబ్ నెలల్లో ఆకారాన్ని కాపీ చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "ఎం ఎస్ ఏ నిలిచిపోతే, ప్రతి ఇతర ఓపెన్ ల్యాబ్ నెలల్లో ఆకారాన్ని కాపీ చేస్తుంది.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు రెండవ మోడల్?",
+      "text_markdown": "మరియు రెండవ మోడల్?",
+      "title": "",
+      "tts": {
+        "text": "మరియు రెండవ మోడల్?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA నిశ్శబ్దంగా Nemotron 3 Ultraను ఓపెన్-సోర్స్ చేసింది.",
+      "text_markdown": "NVIDIA నిశ్శబ్దంగా Nemotron 3 Ultraను ఓపెన్-సోర్స్ చేసింది.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA నిశ్శబ్దంగా Nemotron మూడు Ultraను ఓపెన్ సోర్స్ చేసింది.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది 550 బిలియన్ పారామీటర్ల మిక్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్, టోకెన్‌కు దాదాపు 55 బిలియన్ పారామీటర్లు యాక్టివ్‌గా ఉంటాయి.",
+      "text_markdown": "ఇది 550 బిలియన్ పారామీటర్ల మిక్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్, టోకెన్‌కు దాదాపు 55 బిలియన్ పారామీటర్లు యాక్టివ్‌గా ఉంటాయి.",
+      "title": "",
+      "tts": {
+        "text": "ఇది ఐదు వందల యాభై బిలియన్ పారామీటర్ల మిక్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్, టోకెన్‌కు దాదాపు యాభై ఐదు బిలియన్ పారామీటర్లు యాక్టివ్‌గా ఉంటాయి.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "బ్యాక్‌బోన్ హైబ్రిడ్ Mamba-Transformer, స్వచ్ఛమైన Transformer కాదు.",
+      "text_markdown": "బ్యాక్‌బోన్ హైబ్రిడ్ Mamba-Transformer, స్వచ్ఛమైన Transformer కాదు.",
+      "title": "",
+      "tts": {
+        "text": "బ్యాక్‌బోన్ హైబ్రిడ్ Mamba Transformer, స్వచ్ఛమైన Transformer కాదు.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mamba గురించి సాధారణ భాషలో వివరణ.",
+      "text_markdown": "Mamba గురించి సాధారణ భాషలో వివరణ.",
+      "title": "",
+      "tts": {
+        "text": "మాంబా గురించి సాధారణ భాషలో వివరణ.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mamba లేయర్స్ సబ్-క్వాడ్రాటిక్ స్కేలింగ్‌తో పొడవైన సీక్వెన్స్‌లను హ్యాండిల్ చేస్తాయి, ఇది కాంటెక్స్ట్ పెరుగుతున్నప్పుడు టోకెన్‌కు అవి చౌకగా అవుతాయని చెప్పే మనోహరమైన మార్గం.",
+      "text_markdown": "Mamba లేయర్స్ సబ్-క్వాడ్రాటిక్ స్కేలింగ్‌తో పొడవైన సీక్వెన్స్‌లను హ్యాండిల్ చేస్తాయి, ఇది కాంటెక్స్ట్ పెరుగుతున్నప్పుడు టోకెన్‌కు అవి చౌకగా అవుతాయని చెప్పే మనోహరమైన మార్గం.",
+      "title": "",
+      "tts": {
+        "text": "Mamba లేయర్స్ సబ్ క్వాడ్రాటిక్ స్కేలింగ్‌తో పొడవైన సీక్వెన్స్‌లను హ్యాండిల్ చేస్తాయి, ఇది కాంటెక్స్ట్ పెరుగుతున్నప్పుడు టోకెన్‌కు అవి చౌకగా అవుతాయని చెప్పే మనోహరమైన మార్గం.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA పొడవైన-డాక్యుమెంట్ ప్రశ్న సమాధానం వంటి విషయాలకు ఖచ్చితమైన రీకాల్‌ను కాపాడేందుకు స్టాక్‌లో కొన్ని అటెన్షన్ లేయర్స్‌ను ఉంచింది.",
+      "text_markdown": "NVIDIA పొడవైన-డాక్యుమెంట్ ప్రశ్న సమాధానం వంటి విషయాలకు ఖచ్చితమైన రీకాల్‌ను కాపాడేందుకు స్టాక్‌లో కొన్ని అటెన్షన్ లేయర్స్‌ను ఉంచింది.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA పొడవైన డాక్యుమెంట్ ప్రశ్న సమాధానం వంటి విషయాలకు ఖచ్చితమైన రీకాల్‌ను కాపాడేందుకు స్టాక్‌లో కొన్ని అటెన్షన్ లేయర్స్‌ను ఉంచింది.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది ఒక సంవత్సరంగా పరిశోధనలో నిశ్శబ్దంగా గెలుస్తున్న హైబ్రిడ్ రకం.",
+      "text_markdown": "ఇది ఒక సంవత్సరంగా పరిశోధనలో నిశ్శబ్దంగా గెలుస్తున్న హైబ్రిడ్ రకం.",
+      "title": "",
+      "tts": {
+        "text": "ఇది ఒక సంవత్సరంగా పరిశోధనలో నిశ్శబ్దంగా గెలుస్తున్న హైబ్రిడ్ రకం.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "లైసెన్స్ గురించి ఏమిటి?",
+      "text_markdown": "లైసెన్స్ గురించి ఏమిటి?",
+      "title": "",
+      "tts": {
+        "text": "లైసెన్స్ గురించి ఏమిటి?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA యొక్క స్వంత Open Model License, వాణిజ్య వినియోగం అనుమతి ఉంది.",
+      "text_markdown": "NVIDIA యొక్క స్వంత Open Model License, వాణిజ్య వినియోగం అనుమతి ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA యొక్క స్వంత Open Model License, వాణిజ్య వినియోగం అనుమతి ఉంది.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "weights, post-trained checkpoints, NVFP4 quantization, మరియు training recipes తో సహా అన్నీ కలిసి release చేశారు.",
+      "text_markdown": "weights, post-trained checkpoints, NVFP4 quantization, మరియు training recipes తో సహా అన్నీ కలిసి release చేశారు.",
+      "title": "",
+      "tts": {
+        "text": "weights, post trained checkpoints, ఎన్ వీ ఎఫ్ పీ నాలుగు quantization, మరియు training recipes తో సహా అన్నీ కలిసి release చేశారు.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది చాలా open releases కంటే మరింత generous package.",
+      "text_markdown": "అది చాలా open releases కంటే మరింత generous package.",
+      "title": "",
+      "tts": {
+        "text": "అది చాలా open releases కంటే మరింత generous package.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు scoreboard placement ఏమిటి?",
+      "text_markdown": "మరియు scoreboard placement ఏమిటి?",
+      "title": "",
+      "tts": {
+        "text": "మరియు scoreboard placement ఏమిటి?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Artificial Analysis Intelligence Index లో, Nemotron 3 Ultra 48వ స్థానంలో ఉంది.",
+      "text_markdown": "Artificial Analysis Intelligence Index లో, Nemotron 3 Ultra 48వ స్థానంలో ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "Artificial Analysis Intelligence Index లో, Nemotron మూడు Ultra నలభై ఎనిమిదవ స్థానంలో ఉంది.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది వారు track చేసే 89 models లో 9వ స్థానంలో ఉంది, మరియు ఇతర అన్ని US open models కంటే ముందుంది.",
+      "text_markdown": "అది వారు track చేసే 89 models లో 9వ స్థానంలో ఉంది, మరియు ఇతర అన్ని US open models కంటే ముందుంది.",
+      "title": "",
+      "tts": {
+        "text": "అది వారు track చేసే ఎనభై తొమ్మిది models లో తొమ్మిదవ స్థానంలో ఉంది, మరియు ఇతర అన్ని US open models కంటే ముందుంది.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది Moonshot యొక్క Kimi K2.6 కంటే వెనుక ఉంది, అది 54వ స్థానంలో ఉంది.",
+      "text_markdown": "అది Moonshot యొక్క Kimi K2.6 కంటే వెనుక ఉంది, అది 54వ స్థానంలో ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "అది Moonshot యొక్క Kimi K రెండు పాయింట్ ఆరు కంటే వెనుక ఉంది, అది యాభై నాలుగవ స్థానంలో ఉంది.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కాబట్టి అన్నిటితో కూడా, China ఇంకా open లో మునుపట ఉంది.",
+      "text_markdown": "కాబట్టి అన్నిటితో కూడా, China ఇంకా open లో మునుపట ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "కాబట్టి అన్నిటితో కూడా, China ఇంకా open లో మునుపట ఉంది.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఆ ఒక composite లో, అవును, 6 పాయింట్లతో.",
+      "text_markdown": "ఆ ఒక composite లో, అవును, 6 పాయింట్లతో.",
+      "title": "",
+      "tts": {
+        "text": "ఆ ఒక composite లో, అవును, ఆరు పాయింట్లతో.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది పెద్ద కథలో ఉన్న చిన్న కథ.",
+      "text_markdown": "అది పెద్ద కథలో ఉన్న చిన్న కథ.",
+      "title": "",
+      "tts": {
+        "text": "అది పెద్ద కథలో ఉన్న చిన్న కథ.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "sibling-wise ఏదైనా ఉందా?",
+      "text_markdown": "sibling-wise ఏదైనా ఉందా?",
+      "title": "",
+      "tts": {
+        "text": "sibling wise ఏదైనా ఉందా?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవును, NVIDIA Nemotron 3 Nano Omni కూడా release చేసింది.",
+      "text_markdown": "అవును, NVIDIA Nemotron 3 Nano Omni కూడా release చేసింది.",
+      "title": "",
+      "tts": {
+        "text": "అవును, NVIDIA Nemotron మూడు Nano Omni కూడా release చేసింది.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది unified vision, audio, మరియు language model, peer open omni models కంటే సుమారు 9 రెట్లు మరింత efficient అని claim చేస్తున్నారు.",
+      "text_markdown": "అది unified vision, audio, మరియు language model, peer open omni models కంటే సుమారు 9 రెట్లు మరింత efficient అని claim చేస్తున్నారు.",
+      "title": "",
+      "tts": {
+        "text": "అది unified vision, audio, మరియు language model, peer open omni models కంటే సుమారు తొమ్మిది రెట్లు మరింత efficient అని claim చేస్తున్నారు.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది on-device agents — phones, laptops, చిన్న workstations లను లక్ష్యంగా చేసుకుంది.",
+      "text_markdown": "అది on-device agents — phones, laptops, చిన్న workstations లను లక్ష్యంగా చేసుకుంది.",
+      "title": "",
+      "tts": {
+        "text": "అది on device agents — phones, laptops, చిన్న workstations లను లక్ష్యంగా చేసుకుంది.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "open side నుండి ఇంకా ఏమిటి?",
+      "text_markdown": "open side నుండి ఇంకా ఏమిటి?",
+      "title": "",
+      "tts": {
+        "text": "open side నుండి ఇంకా ఏమిటి?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral Medium 3.5 May 28న Microsoft యొక్క Copilot Studio లో కనిపించింది.",
+      "text_markdown": "Mistral Medium 3.5 May 28న Microsoft యొక్క Copilot Studio లో కనిపించింది.",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium మూడు పాయింట్ ఐదు మే ఇరవై ఎనిమిదవ తేదీన Microsoft యొక్క Copilot Studio లో కనిపించింది.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది 256,000 token context తో 128 billion parameter dense model.",
+      "text_markdown": "అది 256,000 token context తో 128 billion parameter dense model.",
+      "title": "",
+      "tts": {
+        "text": "అది రెండు లక్షల యాభై ఆరు వేల token context తో నూట ఇరవై ఎనిమిది billion parameter dense model.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఆ placement ఎందుకు ఆసక్తికరంగా ఉంది?",
+      "text_markdown": "ఆ placement ఎందుకు ఆసక్తికరంగా ఉంది?",
+      "title": "",
+      "tts": {
+        "text": "ఆ placement ఎందుకు ఆసక్తికరంగా ఉంది?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఎందుకంటే Microsoft ఇప్పుడు EU data residency built-in తో non-OpenAI European model ని తన platform ద్వారా distribute చేస్తోంది.",
+      "text_markdown": "ఎందుకంటే Microsoft ఇప్పుడు EU data residency built-in తో non-OpenAI European model ని తన platform ద్వారా distribute చేస్తోంది.",
+      "title": "",
+      "tts": {
+        "text": "ఎందుకంటే Microsoft ఇప్పుడు EU data residency built-in తో non OpenAI European model ని తన platform ద్వారా distribute చేస్తోంది.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెండు సంవత్సరాల క్రితం ఆ వాక్యం ఆలోచించలేనిది.",
+      "text_markdown": "రెండు సంవత్సరాల క్రితం ఆ వాక్యం ఆలోచించలేనిది.",
+      "title": "",
+      "tts": {
+        "text": "రెండు సంవత్సరాల క్రితం ఆ వాక్యం ఆలోచించలేనిది.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరి Alibaba సంగతేంటి?",
+      "text_markdown": "మరి Alibaba సంగతేంటి?",
+      "title": "",
+      "tts": {
+        "text": "మరి అలీబాబా సంగతేంటి?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Qwen 3.7 Plus June 2న వచ్చింది, కానీ అది Bailian platform లో API-only.",
+      "text_markdown": "Qwen 3.7 Plus June 2న వచ్చింది, కానీ అది Bailian platform లో API-only.",
+      "title": "",
+      "tts": {
+        "text": "Qwen మూడు పాయింట్ ఏడు Plus జూన్ రెండవ తేదీన వచ్చింది, కానీ అది Bailian platform లో API only.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Open Qwen line ఇంకా 3.6 వద్దే ఆగిపోయింది.",
+      "text_markdown": "Open Qwen line ఇంకా 3.6 వద్దే ఆగిపోయింది.",
+      "title": "",
+      "tts": {
+        "text": "Open Qwen line ఇంకా మూడు పాయింట్ ఆరు వద్దే ఆగిపోయింది.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది గత వారం మేము flag చేసిన split ని confirm చేస్తుంది — closed flagship, open mid-tier.",
+      "text_markdown": "అది గత వారం మేము flag చేసిన split ని confirm చేస్తుంది — closed flagship, open mid-tier.",
+      "title": "",
+      "tts": {
+        "text": "అది గత వారం మేము flag చేసిన split ని confirm చేస్తుంది — closed flagship, open mid tier.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral ఒక సంవత్సరంగా నడుపుతున్న అదే playbook.",
+      "text_markdown": "Mistral ఒక సంవత్సరంగా నడుపుతున్న అదే playbook.",
+      "title": "",
+      "tts": {
+        "text": "Mistral ఒక సంవత్సరంగా నడుపుతున్న అదే playbook.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మేము ముందుకు వెళ్లే ముందు రెండు quick context lines?",
+      "text_markdown": "మేము ముందుకు వెళ్లే ముందు రెండు quick context lines?",
+      "title": "",
+      "tts": {
+        "text": "మేము ముందుకు వెళ్లే ముందు రెండు quick context lines?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "తప్పకుండా.",
+      "text_markdown": "తప్పకుండా.",
+      "title": "",
+      "tts": {
+        "text": "తప్పకుండా.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Chinese open models ఇంకా OpenRouter token volume లో lead చేస్తున్నాయి — గత వారం వలె అదే beat, మార్పు లేదు.",
+      "text_markdown": "Chinese open models ఇంకా OpenRouter token volume లో lead చేస్తున్నాయి — గత వారం వలె అదే beat, మార్పు లేదు.",
+      "title": "",
+      "tts": {
+        "text": "Chinese open models ఇంకా OpenRouter token volume లో lead చేస్తున్నాయి — గత వారం వలె అదే beat, మార్పు లేదు.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మరియు DeepSeek V4 May 28న Microsoft యొక్క Foundry platform లో live అయ్యింది, అంటే దానిని call చేయడానికి మరిన్ని స్థలాలు అని అర్థం.",
+      "text_markdown": "మరియు DeepSeek V4 May 28న Microsoft యొక్క Foundry platform లో live అయ్యింది, అంటే దానిని call చేయడానికి మరిన్ని స్థలాలు అని అర్థం.",
+      "title": "",
+      "tts": {
+        "text": "మరియు DeepSeek V నాలుగు మే ఇరవై ఎనిమిదవ తేదీన Microsoft యొక్క Foundry platform లో live అయ్యింది, అంటే దానిని call చేయడానికి మరిన్ని స్థలాలు అని అర్థం.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "సరే, leaderboards కి వెళ్దాం.",
+      "text_markdown": "సరే, leaderboards కి వెళ్దాం.",
+      "title": "",
+      "tts": {
+        "text": "సరే, leaderboards కి వెళ్దాం.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఈ వారం ఒక పెద్ద mover ఉందా?",
+      "text_markdown": "ఈ వారం ఒక పెద్ద mover ఉందా?",
+      "title": "",
+      "tts": {
+        "text": "ఈ వారం ఒక పెద్ద mover ఉందా?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఉంది, మరియు అది closed — Claude Opus 4.8, దానిని Anthropic May 28న ship చేసింది.",
+      "text_markdown": "ఉంది, మరియు అది closed — Claude Opus 4.8, దానిని Anthropic May 28న ship చేసింది.",
+      "title": "",
+      "tts": {
+        "text": "ఉంది, మరియు అది closed — Claude Opus నాలుగు పాయింట్ ఎనిమిది, దానిని Anthropic మే ఇరవై ఎనిమిదవ తేదీన ship చేసింది.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది SWE-bench Verified లో 88.6% మరియు SWE-bench Pro లో 69.2% hit చేస్తుంది.",
+      "text_markdown": "అది SWE-bench Verified లో 88.6% మరియు SWE-bench Pro లో 69.2% hit చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "అది SWE bench Verified లో ఎనభై ఎనిమిది పాయింట్ ఆరు శాతం మరియు SWE bench Pro లో అరవై తొమ్మిది పాయింట్ రెండు శాతం hit చేస్తుంది.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మరియు అది ఇప్పుడు composite score లో Artificial Analysis Intelligence Index లో lead చేస్తుంది.",
+      "text_markdown": "మరియు అది ఇప్పుడు composite score లో Artificial Analysis Intelligence Index లో lead చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "మరియు అది ఇప్పుడు composite score లో Artificial Analysis Intelligence Index లో lead చేస్తుంది.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Anthropic ఆ index లో lead చేయడం ఇదే మొదటిసారి.",
+      "text_markdown": "Anthropic ఆ index లో lead చేయడం ఇదే మొదటిసారి.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ఆ index లో lead చేయడం ఇదే మొదటిసారి.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది సరైనది.",
+      "text_markdown": "అది సరైనది.",
+      "title": "",
+      "tts": {
+        "text": "అది సరైనది.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GPT-5.5 ఒక పాయింట్ వెనుక ఉంది, మరియు Gemini 3.5 Pro దాని కంటే కొన్ని పాయింట్లు వెనుక ఉంది.",
+      "text_markdown": "GPT-5.5 ఒక పాయింట్ వెనుక ఉంది, మరియు Gemini 3.5 Pro దాని కంటే కొన్ని పాయింట్లు వెనుక ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "GPT ఐదు పాయింట్ ఐదు ఒక పాయింట్ వెనుక ఉంది, మరియు Gemini మూడు పాయింట్ ఐదు Pro దాని కంటే కొన్ని పాయింట్లు వెనుక ఉంది.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Closed pack యొక్క top చాలా tightగా ఉంటుంది.",
+      "text_markdown": "Closed pack యొక్క top చాలా tightగా ఉంటుంది.",
+      "title": "",
+      "tts": {
+        "text": "Closed pack యొక్క top చాలా tightగా ఉంటుంది.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కానీ ఈ వారం నిజమైన eval కథ వేరేది.",
+      "text_markdown": "కానీ ఈ వారం నిజమైన eval కథ వేరేది.",
+      "title": "",
+      "tts": {
+        "text": "కానీ ఈ వారం నిజమైన eval కథ వేరేది.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవును, నిజమైన కథ అంటే సమగ్రత.",
+      "text_markdown": "అవును, నిజమైన కథ అంటే సమగ్రత.",
+      "title": "",
+      "tts": {
+        "text": "అవును, నిజమైన కథ అంటే సమగ్రత.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI SWE-bench Verified పై రిపోర్టింగ్‌ను వాస్తవంగా ఆపివేసింది.",
+      "text_markdown": "OpenAI SWE-bench Verified పై రిపోర్టింగ్‌ను వాస్తవంగా ఆపివేసింది.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI SWE bench Verified పై రిపోర్టింగ్‌ను వాస్తవంగా ఆపివేసింది.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "కాంటామినేషన్ ఆడిట్‌లో కఠినమైన టాస్క్‌లలో దాదాపు యాభై తొమ్మిది శాతం లోపభూయిష్ట యూనిట్ టెస్టులు ఉన్నాయని మరియు మోడల్స్ ట్రైనింగ్ డేటా నుండి సరైన ప్యాచ్‌లను అక్షరబద్ధంగా గుర్తుంచుకోగలవని కనుగొనబడింది.",
+      "text_markdown": "కాంటామినేషన్ ఆడిట్‌లో కఠినమైన టాస్క్‌లలో దాదాపు యాభై తొమ్మిది శాతం లోపభూయిష్ట యూనిట్ టెస్టులు ఉన్నాయని మరియు మోడల్స్ ట్రైనింగ్ డేటా నుండి సరైన ప్యాచ్‌లను అక్షరబద్ధంగా గుర్తుంచుకోగలవని కనుగొనబడింది.",
+      "title": "",
+      "tts": {
+        "text": "కాంటామినేషన్ ఆడిట్‌లో కఠినమైన టాస్క్‌లలో దాదాపు యాభై తొమ్మిది శాతం లోపభూయిష్ట యూనిట్ టెస్టులు ఉన్నాయని మరియు మోడల్స్ ట్రైనింగ్ డేటా నుండి సరైన ప్యాచ్‌లను అక్షరబద్ధంగా గుర్తుంచుకోగలవని కనుగొనబడింది.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అలాంటప్పుడు అధిక స్కోర్ అంటే జ్ఞాపకశక్తిని కొలుస్తున్నట్లు.",
+      "text_markdown": "అలాంటప్పుడు అధిక స్కోర్ అంటే జ్ఞాపకశక్తిని కొలుస్తున్నట్లు.",
+      "title": "",
+      "tts": {
+        "text": "అలాంటప్పుడు అధిక స్కోర్ అంటే జ్ఞాపకశక్తిని కొలుస్తున్నట్లు.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "తరచుగా, అవుననే చెప్పాలి.",
+      "text_markdown": "తరచుగా, అవుననే చెప్పాలి.",
+      "title": "",
+      "tts": {
+        "text": "తరచుగా, అవుననే చెప్పాలి.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pro అనేది కొత్త టాస్క్‌లు మరియు కఠినమైన స్కాఫోల్డింగ్‌తో కూడిన వెర్షన్ — అదే కొత్త సిగ్నల్.",
+      "text_markdown": "Pro అనేది కొత్త టాస్క్‌లు మరియు కఠినమైన స్కాఫోల్డింగ్‌తో కూడిన వెర్షన్ — అదే కొత్త సిగ్నల్.",
+      "title": "",
+      "tts": {
+        "text": "Pro అనేది కొత్త టాస్క్‌లు మరియు కఠినమైన స్కాఫోల్డింగ్‌తో కూడిన వెర్షన్ — అదే కొత్త సిగ్నల్.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది గత వారం మేము హెడ్జ్ చేసిన కాంటామినేషన్ ఆందోళనకు సంస్థాగత ధృవీకరణ.",
+      "text_markdown": "ఇది గత వారం మేము హెడ్జ్ చేసిన కాంటామినేషన్ ఆందోళనకు సంస్థాగత ధృవీకరణ.",
+      "title": "",
+      "tts": {
+        "text": "ఇది గత వారం మేము హెడ్జ్ చేసిన కాంటామినేషన్ ఆందోళనకు సంస్థాగత ధృవీకరణ.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మెథడాలజీ పేపర్ కూడా వచ్చిందా?",
+      "text_markdown": "మెథడాలజీ పేపర్ కూడా వచ్చిందా?",
+      "title": "",
+      "tts": {
+        "text": "మెథడాలజీ పేపర్ కూడా వచ్చిందా?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kili Technology అనే గ్రూప్ నుండి షార్ప్ రిపోర్ట్ వచ్చింది.",
+      "text_markdown": "Kili Technology అనే గ్రూప్ నుండి షార్ప్ రిపోర్ట్ వచ్చింది.",
+      "title": "",
+      "tts": {
+        "text": "Kili Technology అనే గ్రూప్ నుండి షార్ప్ రిపోర్ట్ వచ్చింది.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "వారు ఒకే మోడల్ వెయిట్స్‌ను ఐదు సాధారణ ఎవాల్యుయేషన్ హార్నెస్‌ల ద్వారా రన్ చేశారు.",
+      "text_markdown": "వారు ఒకే మోడల్ వెయిట్స్‌ను ఐదు సాధారణ ఎవాల్యుయేషన్ హార్నెస్‌ల ద్వారా రన్ చేశారు.",
+      "title": "",
+      "tts": {
+        "text": "వారు ఒకే మోడల్ వెయిట్స్‌ను ఐదు సాధారణ ఎవాల్యుయేషన్ హార్నెస్‌ల ద్వారా రన్ చేశారు.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "హార్నెస్ ఎంపిక వల్ల మాత్రమే స్కోర్లు పది నుండి ఇరవై శాతం పాయింట్ల వరకు భిన్నంగా ఉన్నాయి.",
+      "text_markdown": "హార్నెస్ ఎంపిక వల్ల మాత్రమే స్కోర్లు పది నుండి ఇరవై శాతం పాయింట్ల వరకు భిన్నంగా ఉన్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "హార్నెస్ ఎంపిక వల్ల మాత్రమే స్కోర్లు పది నుండి ఇరవై శాతం పాయింట్ల వరకు భిన్నంగా ఉన్నాయి.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అదే వెయిట్స్, వేరే సంఖ్య.",
+      "text_markdown": "అదే వెయిట్స్, వేరే సంఖ్య.",
+      "title": "",
+      "tts": {
+        "text": "అదే వెయిట్స్, వేరే సంఖ్య.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "సరిగ్గా.",
+      "text_markdown": "సరిగ్గా.",
+      "title": "",
+      "tts": {
+        "text": "సరిగ్గా.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "వారి తీర్మానం ఏమిటంటే లీడర్‌బోర్డ్ ర్యాంక్ ఇకపై procurement కోసం buyer-grade సిగ్నల్ కాదు.",
+      "text_markdown": "వారి తీర్మానం ఏమిటంటే లీడర్‌బోర్డ్ ర్యాంక్ ఇకపై procurement కోసం buyer-grade సిగ్నల్ కాదు.",
+      "title": "",
+      "tts": {
+        "text": "వారి తీర్మానం ఏమిటంటే లీడర్‌బోర్డ్ ర్యాంక్ ఇకపై procurement కోసం buyer grade సిగ్నల్ కాదు.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "do-it-yourself బిల్డర్‌కు, తీర్మానం మరింత స్పష్టంగా ఉంది — మీ సొంత prompts పై మీ సొంత evals రన్ చేయండి.",
+      "text_markdown": "do-it-yourself బిల్డర్‌కు, తీర్మానం మరింత స్పష్టంగా ఉంది — మీ సొంత prompts పై మీ సొంత evals రన్ చేయండి.",
+      "title": "",
+      "tts": {
+        "text": "do it yourself బిల్డర్‌కు, తీర్మానం మరింత స్పష్టంగా ఉంది — మీ సొంత prompts పై మీ సొంత evals రన్ చేయండి.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అది వాస్తవంగా MSA మరియు Nemotron Ultra కు తిరిగి లూప్ అవుతుంది.",
+      "text_markdown": "అది వాస్తవంగా MSA మరియు Nemotron Ultra కు తిరిగి లూప్ అవుతుంది.",
+      "title": "",
+      "tts": {
+        "text": "అది వాస్తవంగా M S A మరియు Nemotron Ultra కు తిరిగి లూప్ అవుతుంది.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవుతుంది.",
+      "text_markdown": "అవుతుంది.",
+      "title": "",
+      "tts": {
+        "text": "అవుతుంది.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఆర్కిటెక్చర్ మరియు మీ సొంత టెస్టులను నమ్మండి, వేరొకరి చార్ట్‌ను కాదు.",
+      "text_markdown": "ఆర్కిటెక్చర్ మరియు మీ సొంత టెస్టులను నమ్మండి, వేరొకరి చార్ట్‌ను కాదు.",
+      "title": "",
+      "tts": {
+        "text": "ఆర్కిటెక్చర్ మరియు మీ సొంత టెస్టులను నమ్మండి, వేరొకరి చార్ట్‌ను కాదు.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "బోర్డ్స్ వదిలేయడానికి మంచి స్థలం.",
+      "text_markdown": "బోర్డ్స్ వదిలేయడానికి మంచి స్థలం.",
+      "title": "",
+      "tts": {
+        "text": "బోర్డ్స్ వదిలేయడానికి మంచి స్థలం.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఇప్పుడు హెడ్‌లైన్స్ చేద్దాం.",
+      "text_markdown": "ఇప్పుడు హెడ్‌లైన్స్ చేద్దాం.",
+      "title": "",
+      "tts": {
+        "text": "ఇప్పుడు హెడ్‌లైన్స్ చేద్దాం.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఫాస్ట్ క్లిప్, ఓపెన్-ఎకోసిస్టమ్ దృక్కోణాన్ని అందిస్తుంది.",
+      "text_markdown": "ఫాస్ట్ క్లిప్, ఓపెన్-ఎకోసిస్టమ్ దృక్కోణాన్ని అందిస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "ఫాస్ట్ క్లిప్, ఓపెన్ ఎకోసిస్టమ్ దృక్కోణాన్ని అందిస్తుంది.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మొదట, Microsoft Build జూన్ 2న జరిగింది.",
+      "text_markdown": "మొదట, Microsoft Build జూన్ 2న జరిగింది.",
+      "title": "",
+      "tts": {
+        "text": "మొదట, Microsoft Build జూన్ రెండవ తేదీన జరిగింది.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Microsoft రెండు first-party మోడల్స్‌ను చూపించింది — MAI-Thinking-1 మరియు MAI-Code-1-Flash.",
+      "text_markdown": "Microsoft రెండు first-party మోడల్స్‌ను చూపించింది — MAI-Thinking-1 మరియు MAI-Code-1-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Microsoft రెండు first party మోడల్స్‌ను చూపించింది — M A I Thinking వన్ మరియు M A I Code వన్ Flash.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "వాటిలో ఆసక్తికరమైనది ఏమిటి?",
+      "text_markdown": "వాటిలో ఆసక్తికరమైనది ఏమిటి?",
+      "title": "",
+      "tts": {
+        "text": "వాటిలో ఆసక్తికరమైనది ఏమిటి?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Thinking-1 అనేది ముప్పై ఐదు బిలియన్ యాక్టివ్ పారామీటర్ స్పార్స్ మిక్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్, రెండు లక్షల యాభై ఆరు వేల టోకెన్ కాంటెక్స్ట్ విండో తో.",
+      "text_markdown": "Thinking-1 అనేది ముప్పై ఐదు బిలియన్ యాక్టివ్ పారామీటర్ స్పార్స్ మిక్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్, రెండు లక్షల యాభై ఆరు వేల టోకెన్ కాంటెక్స్ట్ విండో తో.",
+      "title": "",
+      "tts": {
+        "text": "Thinking వన్ అనేది ముప్పై ఐదు బిలియన్ యాక్టివ్ పారామీటర్ స్పార్స్ మిక్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్, రెండు లక్షల యాభై ఆరు వేల టోకెన్ కాంటెక్స్ట్ విండో తో.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మరియు Microsoft ప్రత్యేకంగా చెప్పింది ఏమిటంటే ఇది వాణిజ్యపరంగా లైసెన్స్ చేయబడిన డేటాపై శిక్షణ పొందిందని, ఏ థర్డ్ పార్టీ మోడల్ నుండైనా distillation లేదని.",
+      "text_markdown": "మరియు Microsoft ప్రత్యేకంగా చెప్పింది ఏమిటంటే ఇది వాణిజ్యపరంగా లైసెన్స్ చేయబడిన డేటాపై శిక్షణ పొందిందని, ఏ థర్డ్ పార్టీ మోడల్ నుండైనా distillation లేదని.",
+      "title": "",
+      "tts": {
+        "text": "మరియు Microsoft ప్రత్యేకంగా చెప్పింది ఏమిటంటే ఇది వాణిజ్యపరంగా లైసెన్స్ చేయబడిన డేటాపై శిక్షణ పొందిందని, ఏ థర్డ్ పార్టీ మోడల్ నుండైనా distillation లేదని.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అది అసాధారణం.",
+      "text_markdown": "అది అసాధారణం.",
+      "title": "",
+      "tts": {
+        "text": "అది అసాధారణం.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "చాలా అసాధారణం, మిగిలిన రంగం frontier మోడల్స్ నుండి సింథటిక్ డేటాపై ఎంతగా ఆధారపడుతుందో చూస్తే.",
+      "text_markdown": "చాలా అసాధారణం, మిగిలిన రంగం frontier మోడల్స్ నుండి సింథటిక్ డేటాపై ఎంతగా ఆధారపడుతుందో చూస్తే.",
+      "title": "",
+      "tts": {
+        "text": "చాలా అసాధారణం, మిగిలిన రంగం frontier మోడల్స్ నుండి సింథటిక్ డేటాపై ఎంతగా ఆధారపడుతుందో చూస్తే.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Code-1-Flash చౌకైనది — ఇది జూన్ 2న అన్ని GitHub Copilot టైర్లకు రోల్ అవుట్ కావడం మొదలైంది.",
+      "text_markdown": "Code-1-Flash చౌకైనది — ఇది జూన్ 2న అన్ని GitHub Copilot టైర్లకు రోల్ అవుట్ కావడం మొదలైంది.",
+      "title": "",
+      "tts": {
+        "text": "Code వన్ Flash చౌకైనది — ఇది జూన్ రెండవ తేదీన అన్ని GitHub Copilot టైర్లకు రోల్ అవుట్ కావడం మొదలైంది.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "కాబట్టి Microsoft ఇప్పుడు Mistral, DeepSeek, OpenAI, మరియు దాని సొంత MAI లను Copilot Studio లో కలిసి షిప్ చేస్తుంది.",
+      "text_markdown": "కాబట్టి Microsoft ఇప్పుడు Mistral, DeepSeek, OpenAI, మరియు దాని సొంత MAI లను Copilot Studio లో కలిసి షిప్ చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "కాబట్టి Microsoft ఇప్పుడు Mistral, DeepSeek, OpenAI, మరియు దాని సొంత M A I లను Copilot Studio లో కలిసి షిప్ చేస్తుంది.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రెండవ హెడ్‌లైన్ ఏమిటి?",
+      "text_markdown": "రెండవ హెడ్‌లైన్ ఏమిటి?",
+      "title": "",
+      "tts": {
+        "text": "రెండవ హెడ్‌లైన్ ఏమిటి?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic జూన్ 1న SEC తో S-1ను గోప్యంగా ఫైల్ చేసింది.",
+      "text_markdown": "Anthropic జూన్ 1న SEC తో S-1ను గోప్యంగా ఫైల్ చేసింది.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic జూన్ మొదటి తేదీన SEC తో S వన్‌ను గోప్యంగా ఫైల్ చేసింది.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది పబ్లిక్ లిస్టింగ్ కు దారి తీసే పేపర్‌వర్క్.",
+      "text_markdown": "అది పబ్లిక్ లిస్టింగ్ కు దారి తీసే పేపర్‌వర్క్.",
+      "title": "",
+      "tts": {
+        "text": "అది పబ్లిక్ లిస్టింగ్ కు దారి తీసే పేపర్‌వర్క్.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "వారి ప్రకటిత రెవిన్యూ రన్ రేట్ సుమారు నలభై ఏడు బిలియన్ డాలర్లు, ఒక సంవత్సరం క్రితం దాదాపు పది బిలియన్ల నుండి పెరిగింది.",
+      "text_markdown": "వారి ప్రకటిత రెవిన్యూ రన్ రేట్ సుమారు నలభై ఏడు బిలియన్ డాలర్లు, ఒక సంవత్సరం క్రితం దాదాపు పది బిలియన్ల నుండి పెరిగింది.",
+      "title": "",
+      "tts": {
+        "text": "వారి ప్రకటిత రెవిన్యూ రన్ రేట్ సుమారు నలభై ఏడు బిలియన్ డాలర్లు, ఒక సంవత్సరం క్రితం దాదాపు పది బిలియన్ల నుండి పెరిగింది.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "టికర్ లేదు, ప్రైస్ రేంజ్ లేదు, తేదీ కూడా లేదు — కేవలం పేపర్‌వర్క్.",
+      "text_markdown": "టికర్ లేదు, ప్రైస్ రేంజ్ లేదు, తేదీ కూడా లేదు — కేవలం పేపర్‌వర్క్.",
+      "title": "",
+      "tts": {
+        "text": "టికర్ లేదు, ప్రైస్ రేంజ్ లేదు, తేదీ కూడా లేదు — కేవలం పేపర్‌వర్క్.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మూడవ తలెత్తుబాటు.",
+      "text_markdown": "మూడవ తలెత్తుబాటు.",
+      "title": "",
+      "tts": {
+        "text": "మూడవ తలెత్తుబాటు.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GitHub Copilot జూన్ 1న usage-based బిల్లింగ్‌కు మారింది.",
+      "text_markdown": "GitHub Copilot జూన్ 1న usage-based బిల్లింగ్‌కు మారింది.",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot జూన్ మొదటి తేదీన usage based బిల్లింగ్‌కు మారింది.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇప్పుడు ప్రతి ప్లాన్ underlying మోడల్ API లాగే రేట్ల వద్ద input, output, మరియు cached టోకెన్లను మీటర్ చేస్తుంది.",
+      "text_markdown": "ఇప్పుడు ప్రతి ప్లాన్ underlying మోడల్ API లాగే రేట్ల వద్ద input, output, మరియు cached టోకెన్లను మీటర్ చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "ఇప్పుడు ప్రతి ప్లాన్ underlying మోడల్ API లాగే రేట్ల వద్ద input, output, మరియు cached టోకెన్లను మీటర్ చేస్తుంది.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "వారు టైర్‌కు క్రెడిట్ల కేటాయింపు మరియు భారీ agentic వినియోగదారుల కోసం నెలకు వంద డాలర్లకు కొత్త Copilot Max ప్లాన్‌తో ల్యాండింగ్‌ను మృదువుగా చేశారు.",
+      "text_markdown": "వారు టైర్‌కు క్రెడిట్ల కేటాయింపు మరియు భారీ agentic వినియోగదారుల కోసం నెలకు వంద డాలర్లకు కొత్త Copilot Max ప్లాన్‌తో ల్యాండింగ్‌ను మృదువుగా చేశారు.",
+      "title": "",
+      "tts": {
+        "text": "వారు టైర్‌కు క్రెడిట్ల కేటాయింపు మరియు భారీ agentic వినియోగదారుల కోసం నెలకు వంద డాలర్లకు కొత్త Copilot Max ప్లాన్‌తో ల్యాండింగ్‌ను మృదువుగా చేశారు.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు డెవలపర్లు దానిని ఎలా తీసుకున్నారు?",
+      "text_markdown": "మరియు డెవలపర్లు దానిని ఎలా తీసుకున్నారు?",
+      "title": "",
+      "tts": {
+        "text": "మరియు డెవలపర్లు దానిని ఎలా తీసుకున్నారు?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "కొన్ని అభిప్రాయాలు చాలా తీవ్రంగా ఉన్నాయి.",
+      "text_markdown": "కొన్ని అభిప్రాయాలు చాలా తీవ్రంగా ఉన్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "కొన్ని అభిప్రాయాలు చాలా తీవ్రంగా ఉన్నాయి.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఏజెంట్ లూప్స్‌తో హెవీ యూజర్లు పాత ఫ్లాట్ ఫీ కంటే అనేక రెట్లు ఎక్కువ బిల్లులను అంచనా వేశారు.",
+      "text_markdown": "ఏజెంట్ లూప్స్‌తో హెవీ యూజర్లు పాత ఫ్లాట్ ఫీ కంటే అనేక రెట్లు ఎక్కువ బిల్లులను అంచనా వేశారు.",
+      "title": "",
+      "tts": {
+        "text": "ఏజెంట్ లూప్స్‌తో హెవీ యూజర్లు పాత ఫ్లాట్ ఫీ కంటే అనేక రెట్లు ఎక్కువ బిల్లులను అంచనా వేశారు.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది మా టాప్ స్టోరీకి ముఖ్యం — ఆ ఆలోచనను పట్టుకుంటూ ఉండండి.",
+      "text_markdown": "ఇది మా టాప్ స్టోరీకి ముఖ్యం — ఆ ఆలోచనను పట్టుకుంటూ ఉండండి.",
+      "title": "",
+      "tts": {
+        "text": "ఇది మా టాప్ స్టోరీకి ముఖ్యం — ఆ ఆలోచనను పట్టుకుంటూ ఉండండి.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "నాలుగవది, ఈ వీకెండ్‌లో ప్యాచ్ చేయడానికి ఏమైనా ఉందా?",
+      "text_markdown": "నాలుగవది, ఈ వీకెండ్‌లో ప్యాచ్ చేయడానికి ఏమైనా ఉందా?",
+      "title": "",
+      "tts": {
+        "text": "నాలుగవది, ఈ వీకెండ్‌లో ప్యాచ్ చేయడానికి ఏమైనా ఉందా?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవును, జూన్ 3న బహిర్గతమైన కాష్ డినయల్-ఆఫ్-సర్వీస్ లోపం SGLang వర్షన్స్ 0.5.11 వరకు ఉంది.",
+      "text_markdown": "అవును, జూన్ 3న బహిర్గతమైన కాష్ డినయల్-ఆఫ్-సర్వీస్ లోపం SGLang వర్షన్స్ 0.5.11 వరకు ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "అవును, జూన్ మూడవ తేదీన బహిర్గతమైన కాష్ డినయల్ ఆఫ్ సర్వీస్ లోపం ఎస్ జీ లాంగ్ వర్షన్స్ సున్నా పాయింట్ ఐదు పాయింట్ పదకొండు వరకు ఉంది.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "గుర్తింపు CVE-2026-10775, తీవ్రత తక్కువ, దోపిడీ స్థానికమే — కానీ మీరు SGLang నుండి సర్వ్ చేస్తుంటే, సోమవారం ప్యాచ్ చేయండి.",
+      "text_markdown": "గుర్తింపు CVE-2026-10775, తీవ్రత తక్కువ, దోపిడీ స్థానికమే — కానీ మీరు SGLang నుండి సర్వ్ చేస్తుంటే, సోమవారం ప్యాచ్ చేయండి.",
+      "title": "",
+      "tts": {
+        "text": "గుర్తింపు సీ వీ ఈ రెండు వేల ఇరవై ఆరు డాష్ ఒక సున్నా ఏడు ఏడు ఐదు, తీవ్రత తక్కువ, దోపిడీ స్థానికమే — కానీ మీరు ఎస్ జీ లాంగ్ నుండి సర్వ్ చేస్తుంటే, సోమవారం ప్యాచ్ చేయండి.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరో ఒకటి.",
+      "text_markdown": "మరో ఒకటి.",
+      "title": "",
+      "tts": {
+        "text": "మరో ఒకటి.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unsloth Studio ఒక అప్‌డేట్ రోల్ చేసింది, అది పూర్తి ఫైన్-ట్యూన్‌ను నేరుగా GGUF కు ఎక్స్‌పోర్ట్ చేస్తుంది — కేవలం అడాప్టర్ వెయిట్స్ మాత్రమే కాదు.",
+      "text_markdown": "Unsloth Studio ఒక అప్‌డేట్ రోల్ చేసింది, అది పూర్తి ఫైన్-ట్యూన్‌ను నేరుగా GGUF కు ఎక్స్‌పోర్ట్ చేస్తుంది — కేవలం అడాప్టర్ వెయిట్స్ మాత్రమే కాదు.",
+      "title": "",
+      "tts": {
+        "text": "అన్స్లాత్ స్టూడియో ఒక అప్‌డేట్ రోల్ చేసింది, అది పూర్తి ఫైన్ ట్యూన్‌ను నేరుగా జీ జీ యూ ఎఫ్ కు ఎక్స్‌పోర్ట్ చేస్తుంది — కేవలం అడాప్టర్ వెయిట్స్ మాత్రమే కాదు.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "24 గిగాబైట్ కన్జ్యూమర్ కార్డ్ ఇప్పుడు ఉపయోగకరమైన రన్లకు సరిపోతుంది.",
+      "text_markdown": "24 గిగాబైట్ కన్జ్యూమర్ కార్డ్ ఇప్పుడు ఉపయోగకరమైన రన్లకు సరిపోతుంది.",
+      "title": "",
+      "tts": {
+        "text": "ఇరవై నాలుగు గిగాబైట్ కన్జ్యూమర్ కార్డ్ ఇప్పుడు ఉపయోగకరమైన రన్లకు సరిపోతుంది.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఈ ఎపిసోడ్‌లోని మిగిలిన భాగాన్ని వాస్తవికంగా మార్చే సరళమైన ప్లంబింగ్ అది.",
+      "text_markdown": "ఈ ఎపిసోడ్‌లోని మిగిలిన భాగాన్ని వాస్తవికంగా మార్చే సరళమైన ప్లంబింగ్ అది.",
+      "title": "",
+      "tts": {
+        "text": "ఈ ఎపిసోడ్‌లోని మిగిలిన భాగాన్ని వాస్తవికంగా మార్చే సరళమైన ప్లంబింగ్ అది.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఇప్పుడు టాప్ స్టోరీకి తిరిగి వెళ్దాం.",
+      "text_markdown": "ఇప్పుడు టాప్ స్టోరీకి తిరిగి వెళ్దాం.",
+      "title": "",
+      "tts": {
+        "text": "ఇప్పుడు టాప్ స్టోరీకి తిరిగి వెళ్దాం.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మీరు రిగ్‌ని టీజ్ చేశారు.",
+      "text_markdown": "మీరు రిగ్‌ని టీజ్ చేశారు.",
+      "title": "",
+      "tts": {
+        "text": "మీరు రిగ్‌ని టీజ్ చేశారు.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "చేశాను, దాని వెన్నెముక ఇది — ఈ వారం DIY రిగ్ పెరిగిపోయింది.",
+      "text_markdown": "చేశాను, దాని వెన్నెముక ఇది — ఈ వారం DIY రిగ్ పెరిగిపోయింది.",
+      "title": "",
+      "tts": {
+        "text": "చేశాను, దాని వెన్నెముక ఇది — ఈ వారం డీ ఐ వై రిగ్ పెరిగిపోయింది.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "హార్డ్‌వేర్‌తో మొదలుపెట్టండి.",
+      "text_markdown": "హార్డ్‌వేర్‌తో మొదలుపెట్టండి.",
+      "title": "",
+      "tts": {
+        "text": "హార్డ్‌వేర్‌తో మొదలుపెట్టండి.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెండు బాక్సులు ఇప్పుడు వాస్తవంగా కన్జ్యూమర్ ధరలకు షిప్పింగ్ అవుతున్నాయి.",
+      "text_markdown": "రెండు బాక్సులు ఇప్పుడు వాస్తవంగా కన్జ్యూమర్ ధరలకు షిప్పింగ్ అవుతున్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "రెండు బాక్సులు ఇప్పుడు వాస్తవంగా కన్జ్యూమర్ ధరలకు షిప్పింగ్ అవుతున్నాయి.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "AMD జూన్‌లో Ryzen AI Halo మినీ PC కి $3999కు ప్రీ-ఆర్డర్లు తెరిచింది.",
+      "text_markdown": "AMD జూన్‌లో Ryzen AI Halo మినీ PC కి $3999కు ప్రీ-ఆర్డర్లు తెరిచింది.",
+      "title": "",
+      "tts": {
+        "text": "ఎ ఎం డీ జూన్‌లో రైజెన్ ఎ ఐ హలో మినీ పీ సీ కి మూడు వేల తొమ్మిది వందల తొంభై తొమ్మిది డాలర్లకు ప్రీ ఆర్డర్లు తెరిచింది.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది Ryzen AI Max Plus 395ని రన్ చేస్తుంది, 128 గిగాబైట్ల యూనిఫైడ్ LPDDR5x మెమోరీతో, మరియు ఇది ప్రస్తుతానికి మైక్రో సెంటర్‌లో మాత్రమే అందుబాటులో ఉంది.",
+      "text_markdown": "ఇది Ryzen AI Max Plus 395ని రన్ చేస్తుంది, 128 గిగాబైట్ల యూనిఫైడ్ LPDDR5x మెమోరీతో, మరియు ఇది ప్రస్తుతానికి మైక్రో సెంటర్‌లో మాత్రమే అందుబాటులో ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "ఇది రైజెన్ ఎ ఐ మ్యాక్స్ ప్లస్ మూడు వందల తొంభై ఐదును రన్ చేస్తుంది, నూట ఇరవై ఎనిమిది గిగాబైట్ల యూనిఫైడ్ ఎల్ పీ డీ డీ ఆర్ ఫైవ్ ఎక్స్ మెమోరీతో, మరియు ఇది ప్రస్తుతానికి మైక్రో సెంటర్‌లో మాత్రమే అందుబాటులో ఉంది.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు NVIDIA వైపు?",
+      "text_markdown": "మరియు NVIDIA వైపు?",
+      "title": "",
+      "tts": {
+        "text": "మరియు NVIDIA వైపు?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA యొక్క DGX Spark పోల్చదగిన బాక్స్.",
+      "text_markdown": "NVIDIA యొక్క DGX Spark పోల్చదగిన బాక్స్.",
+      "title": "",
+      "tts": {
+        "text": "ఎన్వీడియా యొక్క డీ జీ ఎక్స్ స్పార్క్ పోల్చదగిన బాక్స్.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "దీనిలో GB10 Grace Blackwell చిప్ మరియు అదే 128 గిగాబైట్ల యూనిఫైడ్ మెమోరీ ఉంది.",
+      "text_markdown": "దీనిలో GB10 Grace Blackwell చిప్ మరియు అదే 128 గిగాబైట్ల యూనిఫైడ్ మెమోరీ ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "దీనిలో జీ బీ పది గ్రేస్ బ్లాక్‌వెల్ చిప్ మరియు అదే నూట ఇరవై ఎనిమిది గిగాబైట్ల యూనిఫైడ్ మెమోరీ ఉంది.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ధర ఇటీవల $3999 నుండి $4699కి వెళ్లింది, గ్లోబల్ మెమోరీ స్క్వీజ్‌పై నిందలు వేశారు.",
+      "text_markdown": "ధర ఇటీవల $3999 నుండి $4699కి వెళ్లింది, గ్లోబల్ మెమోరీ స్క్వీజ్‌పై నిందలు వేశారు.",
+      "title": "",
+      "tts": {
+        "text": "ధర ఇటీవల మూడు వేల తొమ్మిది వందల తొంభై తొమ్మిది డాలర్ల నుండి నాలుగు వేల ఆరు వందల తొంభై తొమ్మిది డాలర్లకి వెళ్లింది, గ్లోబల్ మెమోరీ స్క్వీజ్‌పై నిందలు వేశారు.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఇవి వాస్తవంగా ఎంత పెద్ద మోడల్‌ను పట్టుకుంటాయి?",
+      "text_markdown": "ఇవి వాస్తవంగా ఎంత పెద్ద మోడల్‌ను పట్టుకుంటాయి?",
+      "title": "",
+      "tts": {
+        "text": "ఇవి వాస్తవంగా ఎంత పెద్ద మోడల్‌ను పట్టుకుంటాయి?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "4-బిట్ క్వాంటైజేషన్‌లో దాదాపు 200 బిలియన్ పారామీటర్లు వరకు, కాంటెక్స్ట్‌కు స్థలంతో.",
+      "text_markdown": "4-బిట్ క్వాంటైజేషన్‌లో దాదాపు 200 బిలియన్ పారామీటర్లు వరకు, కాంటెక్స్ట్‌కు స్థలంతో.",
+      "title": "",
+      "tts": {
+        "text": "నాలుగు బిట్ క్వాంటైజేషన్‌లో దాదాపు రెండు వందల బిలియన్ పారామీటర్లు వరకు, కాంటెక్స్ట్‌కు స్థలంతో.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెండు DGX Sparkలను ConnectX-7 ద్వారా జతచేస్తే మీరు దాదాపు 400 బిలియన్ ప్రాంతంలోకి వస్తారు.",
+      "text_markdown": "రెండు DGX Sparkలను ConnectX-7 ద్వారా జతచేస్తే మీరు దాదాపు 400 బిలియన్ ప్రాంతంలోకి వస్తారు.",
+      "title": "",
+      "tts": {
+        "text": "రెండు డీ జీ ఎక్స్ స్పార్క్‌లను కనెక్ట్ ఎక్స్ ఏడు ద్వారా జతచేస్తే మీరు దాదాపు నాలుగు వందల బిలియన్ ప్రాంతంలోకి వస్తారు.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది నిజంగా కౌంటర్‌టాప్‌పై ఫ్రాంటియర్-క్లాస్ ఫుట్‌ప్రింట్.",
+      "text_markdown": "అది నిజంగా కౌంటర్‌టాప్‌పై ఫ్రాంటియర్-క్లాస్ ఫుట్‌ప్రింట్.",
+      "title": "",
+      "tts": {
+        "text": "అది నిజంగా కౌంటర్‌టాప్‌పై ఫ్రాంటియర్ క్లాస్ ఫుట్‌ప్రింట్.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఇప్పుడు సాఫ్ట్‌వేర్ స్టాక్.",
+      "text_markdown": "ఇప్పుడు సాఫ్ట్‌వేర్ స్టాక్.",
+      "title": "",
+      "tts": {
+        "text": "ఇప్పుడు సాఫ్ట్‌వేర్ స్టాక్.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది మన పాదాల కింద మారిన విషయం.",
+      "text_markdown": "ఇది మన పాదాల కింద మారిన విషయం.",
+      "title": "",
+      "tts": {
+        "text": "ఇది మన పాదాల కింద మారిన విషయం.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇన్ఫరెన్స్‌కు మీకు vLLM, SGLang, llama.cpp, Ollama, మరియు Apple Silicon పై MLX ఉన్నాయి — అన్నీ మెయింటెయిన్డ్, అన్నీ ఫాస్ట్.",
+      "text_markdown": "ఇన్ఫరెన్స్‌కు మీకు vLLM, SGLang, llama.cpp, Ollama, మరియు Apple Silicon పై MLX ఉన్నాయి — అన్నీ మెయింటెయిన్డ్, అన్నీ ఫాస్ట్.",
+      "title": "",
+      "tts": {
+        "text": "ఇన్ఫరెన్స్‌కు మీకు వీ ఎల్ ఎల్ ఎం, ఎస్ జీ లాంగ్, లామా సీ పీ పీ, ఒలామా, మరియు యాపిల్ సిలికాన్ పై ఎం ఎల్ ఎక్స్ ఉన్నాయి — అన్నీ మెయింటెయిన్డ్, అన్నీ ఫాస్ట్.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మోడల్ కోసమే మీకు ఈ వారం Nemotron 3 Ultra వెయిట్స్, అంతేకాకుండా Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, మరియు వస్తున్న MiniMax M3 వెయిట్స్ ఉన్నాయి.",
+      "text_markdown": "మోడల్ కోసమే మీకు ఈ వారం Nemotron 3 Ultra వెయిట్స్, అంతేకాకుండా Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, మరియు వస్తున్న MiniMax M3 వెయిట్స్ ఉన్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "మోడల్ కోసమే మీకు ఈ వారం నెమోట్రాన్ మూడు అల్ట్రా వెయిట్స్, అంతేకాకుండా కిమీ కె రెండు పాయింట్ ఆరు, డీప్‌సీక్ వీ నాలుగు ఫ్లాష్, జీ ఎల్ ఎం ఐదు పాయింట్ ఒకటి, మరియు వస్తున్న మినీమాక్స్ ఎం మూడు వెయిట్స్ ఉన్నాయి.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఫైన్-ట్యూనింగ్ కోసం, Unsloth Studio ఇప్పుడు వన్-క్లిక్ ఫుల్ ట్యూన్ టు GGUF.",
+      "text_markdown": "ఫైన్-ట్యూనింగ్ కోసం, Unsloth Studio ఇప్పుడు వన్-క్లిక్ ఫుల్ ట్యూన్ టు GGUF.",
+      "title": "",
+      "tts": {
+        "text": "ఫైన్ ట్యూనింగ్ కోసం, అన్స్లాత్ స్టూడియో ఇప్పుడు వన్ క్లిక్ ఫుల్ ట్యూన్ టు జీ జీ యూ ఎఫ్.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మరియు ఏజెంట్‌లకు, మీకు Aider, Continue, మరియు LangGraph వర్షన్ ఒకటి లోకల్ 32 బిలియన్ పారామీటర్ మోడల్స్‌ను ఉపయోగకరమైన విశ్వసనీయతతో రన్ చేస్తున్నాయి.",
+      "text_markdown": "మరియు ఏజెంట్‌లకు, మీకు Aider, Continue, మరియు LangGraph వర్షన్ ఒకటి లోకల్ 32 బిలియన్ పారామీటర్ మోడల్స్‌ను ఉపయోగకరమైన విశ్వసనీయతతో రన్ చేస్తున్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "మరియు ఏజెంట్‌లకు, మీకు ఐడర్, కంటిన్యూ, మరియు లాంగ్‌గ్రాఫ్ వర్షన్ ఒకటి లోకల్ ముప్పై రెండు బిలియన్ పారామీటర్ మోడల్స్‌ను ఉపయోగకరమైన విశ్వసనీయతతో రన్ చేస్తున్నాయి.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అది మొత్తం లూప్.",
+      "text_markdown": "అది మొత్తం లూప్.",
+      "title": "",
+      "tts": {
+        "text": "అది మొత్తం లూప్.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మొత్తం ప్రక్రియ ఇదే లూప్.",
+      "text_markdown": "మొత్తం ప్రక్రియ ఇదే లూప్.",
+      "title": "",
+      "tts": {
+        "text": "మొత్తం ప్రక్రియ ఇదే లూప్.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "సిలికాన్, ఇంజిన్, మోడల్, ఫైన్-ట్యూన్, ఏజెంట్ — ప్రతి లేయర్‌కు నమ్మకమైన ఓపెన్ ఆప్షన్ ఉంది, మరియు బాటమ్ లేయర్ ఇప్పుడు డెస్క్-సైడ్ మినీ PC.",
+      "text_markdown": "సిలికాన్, ఇంజిన్, మోడల్, ఫైన్-ట్యూన్, ఏజెంట్ — ప్రతి లేయర్‌కు నమ్మకమైన ఓపెన్ ఆప్షన్ ఉంది, మరియు బాటమ్ లేయర్ ఇప్పుడు డెస్క్-సైడ్ మినీ PC.",
+      "title": "",
+      "tts": {
+        "text": "సిలికాన్, ఇంజిన్, మోడల్, ఫైన్ ట్యూన్, ఏజెంట్ — ప్రతి లేయర్‌కు నమ్మకమైన ఓపెన్ ఆప్షన్ ఉంది, మరియు బాటమ్ లేయర్ ఇప్పుడు డెస్క్ సైడ్ మినీ పీ సీ.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరి ఆర్థికశాస్త్రం సంగతి?",
+      "text_markdown": "మరి ఆర్థికశాస్త్రం సంగతి?",
+      "title": "",
+      "tts": {
+        "text": "మరి ఆర్థికశాస్త్రం సంగతి?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఎకనామిక్స్ ఈ వారం తిరిగింది, వదిలిపెట్టడానికి కష్టమైన విధంగా.",
+      "text_markdown": "ఎకనామిక్స్ ఈ వారం తిరిగింది, వదిలిపెట్టడానికి కష్టమైన విధంగా.",
+      "title": "",
+      "tts": {
+        "text": "ఎకనామిక్స్ ఈ వారం తిరిగింది, వదిలిపెట్టడానికి కష్టమైన విధంగా.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "టోకెన్-మీటర్డ్ కోపైలట్, వచ్చే ధర ఒత్తిడిని సిగ్నల్ చేసే Anthropic S-1, మరియు టెక్సాస్, వర్జీనియా, ఓహియో నుండి గట్టి వేసవి గురించి గ్రిడ్ హెచ్చరికలు.",
+      "text_markdown": "టోకెన్-మీటర్డ్ కోపైలట్, వచ్చే ధర ఒత్తిడిని సిగ్నల్ చేసే Anthropic S-1, మరియు టెక్సాస్, వర్జీనియా, ఓహియో నుండి గట్టి వేసవి గురించి గ్రిడ్ హెచ్చరికలు.",
+      "title": "",
+      "tts": {
+        "text": "టోకెన్ మీటర్డ్ కోపైలట్, వచ్చే ధర ఒత్తిడిని సిగ్నల్ చేసే యాంత్రోపిక్ ఎస్ వన్, మరియు టెక్సాస్, వర్జీనియా, ఓహియో నుండి గట్టి వేసవి గురించి గ్రిడ్ హెచ్చరికలు.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "సెల్ఫ్-హోస్ట్ కేస్ గతంలో ఐడియాలాజికల్‌గా ఉండేది.",
+      "text_markdown": "సెల్ఫ్-హోస్ట్ కేస్ గతంలో ఐడియాలాజికల్‌గా ఉండేది.",
+      "title": "",
+      "tts": {
+        "text": "సెల్ఫ్ హోస్ట్ కేస్ గతంలో ఐడియాలాజికల్‌గా ఉండేది.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఈ వారం అది స్ప్రెడ్‌షీట్‌గా మారింది.",
+      "text_markdown": "ఈ వారం అది స్ప్రెడ్‌షీట్‌గా మారింది.",
+      "title": "",
+      "tts": {
+        "text": "ఈ వారం అది స్ప్రెడ్‌షీట్‌గా మారింది.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఏమి మారలేదు అనే దాని గురించి నిజాయితీగా ఉండండి.",
+      "text_markdown": "ఏమి మారలేదు అనే దాని గురించి నిజాయితీగా ఉండండి.",
+      "title": "",
+      "tts": {
+        "text": "ఏమి మారలేదు అనే దాని గురించి నిజాయితీగా ఉండండి.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ముఖ్యమైన హెచ్చరిక — మీ కౌంటర్‌టాప్ క్వాలిటీ చార్ట్ టాప్‌లో క్లౌడ్‌ను మించదు.",
+      "text_markdown": "ముఖ్యమైన హెచ్చరిక — మీ కౌంటర్‌టాప్ క్వాలిటీ చార్ట్ టాప్‌లో క్లౌడ్‌ను మించదు.",
+      "title": "",
+      "tts": {
+        "text": "ముఖ్యమైన హెచ్చరిక — మీ కౌంటర్‌టాప్ క్వాలిటీ చార్ట్ టాప్‌లో క్లౌడ్‌ను మించదు.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 ఇప్పటికీ కాంపోజిట్‌ను నడిపిస్తోంది, మరియు GPT-5.5 ఇప్పటికీ BrowseComp కలిగి ఉంది.",
+      "text_markdown": "Opus 4.8 ఇప్పటికీ కాంపోజిట్‌ను నడిపిస్తోంది, మరియు GPT-5.5 ఇప్పటికీ BrowseComp కలిగి ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "Opus నాలుగు పాయింట్ ఎనిమిది ఇప్పటికీ కాంపోజిట్‌ను నడిపిస్తోంది, మరియు GPT ఐదు పాయింట్ ఐదు ఇప్పటికీ BrowseComp కలిగి ఉంది.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఈ వారం మారినది ఫ్లోర్.",
+      "text_markdown": "ఈ వారం మారినది ఫ్లోర్.",
+      "title": "",
+      "tts": {
+        "text": "ఈ వారం మారినది ఫ్లోర్.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "సామర్థ్యవంతమైన, ఏజెంట్-గ్రేడ్, ఫైన్-ట్యూనబుల్ మోడల్స్, మీ స్వంత హార్డ్‌వేర్‌లో, ఓపెన్ వెయిట్స్‌తో.",
+      "text_markdown": "సామర్థ్యవంతమైన, ఏజెంట్-గ్రేడ్, ఫైన్-ట్యూనబుల్ మోడల్స్, మీ స్వంత హార్డ్‌వేర్‌లో, ఓపెన్ వెయిట్స్‌తో.",
+      "title": "",
+      "tts": {
+        "text": "సామర్థ్యవంతమైన, ఏజెంట్ గ్రేడ్, ఫైన్ ట్యూనబుల్ మోడల్స్, మీ స్వంత హార్డ్‌వేర్‌లో, ఓపెన్ వెయిట్స్‌తో.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరి, కథ అదే కదా.",
+      "text_markdown": "మరి, కథ అదే కదా.",
+      "title": "",
+      "tts": {
+        "text": "మరి, కథ అదే కదా.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది ముందు డేటా సెంటర్ అవసరం.",
+      "text_markdown": "ఇది ముందు డేటా సెంటర్ అవసరం.",
+      "title": "",
+      "tts": {
+        "text": "ఇది ముందు డేటా సెంటర్ అవసరం.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఈ వారం, కౌంటర్‌టాప్ సరిపోతుంది.",
+      "text_markdown": "ఈ వారం, కౌంటర్‌టాప్ సరిపోతుంది.",
+      "title": "",
+      "tts": {
+        "text": "ఈ వారం, కౌంటర్‌టాప్ సరిపోతుంది.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "వారం కాన్సెప్ట్ చేద్దాం.",
+      "text_markdown": "వారం కాన్సెప్ట్ చేద్దాం.",
+      "title": "",
+      "tts": {
+        "text": "వారం కాన్సెప్ట్ చేద్దాం.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మీరు speculative decoding ఎంచుకున్నారు.",
+      "text_markdown": "మీరు speculative decoding ఎంచుకున్నారు.",
+      "title": "",
+      "tts": {
+        "text": "మీరు speculative decoding ఎంచుకున్నారు.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవును, ఎందుకంటే మనం ఇప్పుడే మాట్లాడిన అంతా వేగంగా అనిపించేలా చేసే ట్రిక్ అది.",
+      "text_markdown": "అవును, ఎందుకంటే మనం ఇప్పుడే మాట్లాడిన అంతా వేగంగా అనిపించేలా చేసే ట్రిక్ అది.",
+      "title": "",
+      "tts": {
+        "text": "అవును, ఎందుకంటే మనం ఇప్పుడే మాట్లాడిన అంతా వేగంగా అనిపించేలా చేసే ట్రిక్ అది.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax యొక్క 15-రెట్లు డీకోడ్ క్లెయిమ్ ఒక రిలేటివ్‌పై ఆధారపడుతుంది.",
+      "text_markdown": "MiniMax యొక్క 15-రెట్లు డీకోడ్ క్లెయిమ్ ఒక రిలేటివ్‌పై ఆధారపడుతుంది.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax యొక్క పదిహేను రెట్లు డీకోడ్ క్లెయిమ్ ఒక రిలేటివ్‌పై ఆధారపడుతుంది.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Llama.cpp యొక్క డ్రాఫ్ట్ మోడల్ మోడ్ సరిగ్గా ఈ ఆలోచనే.",
+      "text_markdown": "Llama.cpp యొక్క డ్రాఫ్ట్ మోడల్ మోడ్ సరిగ్గా ఈ ఆలోచనే.",
+      "title": "",
+      "tts": {
+        "text": "Llama.cpp యొక్క డ్రాఫ్ట్ మోడల్ మోడ్ సరిగ్గా ఈ ఆలోచనే.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మాకు వివరించండి.",
+      "text_markdown": "మాకు వివరించండి.",
+      "title": "",
+      "tts": {
+        "text": "మాకు వివరించండి.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మీరు రెండు మోడల్స్‌ను ప్రక్కప్రక్కన రన్ చేస్తారు.",
+      "text_markdown": "మీరు రెండు మోడల్స్‌ను ప్రక్కప్రక్కన రన్ చేస్తారు.",
+      "title": "",
+      "tts": {
+        "text": "మీరు రెండు మోడల్స్‌ను ప్రక్కప్రక్కన రన్ చేస్తారు.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "డ్రాఫ్టర్ అని పిలువబడే చిన్న, వేగవంతమైన మోడల్, మరియు వెరిఫైయర్ అని పిలువబడే పెద్ద, నెమ్మదిగా పనిచేసే మోడల్.",
+      "text_markdown": "డ్రాఫ్టర్ అని పిలువబడే చిన్న, వేగవంతమైన మోడల్, మరియు వెరిఫైయర్ అని పిలువబడే పెద్ద, నెమ్మదిగా పనిచేసే మోడల్.",
+      "title": "",
+      "tts": {
+        "text": "డ్రాఫ్టర్ అని పిలువబడే చిన్న, వేగవంతమైన మోడల్, మరియు వెరిఫైయర్ అని పిలువబడే పెద్ద, నెమ్మదిగా పనిచేసే మోడల్.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "డ్రాఫ్టర్ ఒకే షాట్‌లో తదుపరి నాలుగు టోకెన్స్‌ను అంచనా వేస్తుంది.",
+      "text_markdown": "డ్రాఫ్టర్ ఒకే షాట్‌లో తదుపరి నాలుగు టోకెన్స్‌ను అంచనా వేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "డ్రాఫ్టర్ ఒకే షాట్‌లో తదుపరి నాలుగు టోకెన్స్‌ను అంచనా వేస్తుంది.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "వెరిఫైయర్ నాలుగింటినీ పారలెల్‌లో చెక్ చేస్తుంది.",
+      "text_markdown": "వెరిఫైయర్ నాలుగింటినీ పారలెల్‌లో చెక్ చేస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "వెరిఫైయర్ నాలుగింటినీ పారలెల్‌లో చెక్ చేస్తుంది.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అంతే తర్వాత?",
+      "text_markdown": "అంతే తర్వాత?",
+      "title": "",
+      "tts": {
+        "text": "అంతే తర్వాత?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "వెరిఫైయర్ అంగీకరిస్తే, మీరు నాలుగింటినీ ఉంచుకుని ముందుకు వెళ్లిపోతారు — మీరు సుమారు ఒకటి ఖర్చుకు నాలుగు టోకెన్స్ చేశారు.",
+      "text_markdown": "వెరిఫైయర్ అంగీకరిస్తే, మీరు నాలుగింటినీ ఉంచుకుని ముందుకు వెళ్లిపోతారు — మీరు సుమారు ఒకటి ఖర్చుకు నాలుగు టోకెన్స్ చేశారు.",
+      "title": "",
+      "tts": {
+        "text": "వెరిఫైయర్ అంగీకరిస్తే, మీరు నాలుగింటినీ ఉంచుకుని ముందుకు వెళ్లిపోతారు — మీరు సుమారు ఒకటి ఖర్చుకు నాలుగు టోకెన్స్ చేశారు.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది అంగీకరించకపోతే, మీరు మొదటి మిస్‌మ్యాచ్ వరకు అంగీకరించి అక్కడ నుండి పెద్ద మోడల్ చేపట్టేలా వదిలేస్తారు.",
+      "text_markdown": "అది అంగీకరించకపోతే, మీరు మొదటి మిస్‌మ్యాచ్ వరకు అంగీకరించి అక్కడ నుండి పెద్ద మోడల్ చేపట్టేలా వదిలేస్తారు.",
+      "title": "",
+      "tts": {
+        "text": "అది అంగీకరించకపోతే, మీరు మొదటి మిస్‌మ్యాచ్ వరకు అంగీకరించి అక్కడ నుండి పెద్ద మోడల్ చేపట్టేలా వదిలేస్తారు.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కాబట్టి జవాబు ఒకేలా ఉంటుంది.",
+      "text_markdown": "కాబట్టి జవాబు ఒకేలా ఉంటుంది.",
+      "title": "",
+      "tts": {
+        "text": "కాబట్టి జవాబు ఒకేలా ఉంటుంది.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవును, అదే అందమైన భాగం.",
+      "text_markdown": "అవును, అదే అందమైన భాగం.",
+      "title": "",
+      "tts": {
+        "text": "అవును, అదే అందమైన భాగం.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవుట్‌పుట్ పెద్ద మోడల్ ఒంటరిగా ఉత్పత్తి చేసేదానికి సమానం.",
+      "text_markdown": "అవుట్‌పుట్ పెద్ద మోడల్ ఒంటరిగా ఉత్పత్తి చేసేదానికి సమానం.",
+      "title": "",
+      "tts": {
+        "text": "అవుట్‌పుట్ పెద్ద మోడల్ ఒంటరిగా ఉత్పత్తి చేసేదానికి సమానం.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మీరు దాని తక్కువ ఫార్వర్డ్ పాస్‌లకు మాత్రమే చెల్లించారు.",
+      "text_markdown": "మీరు దాని తక్కువ ఫార్వర్డ్ పాస్‌లకు మాత్రమే చెల్లించారు.",
+      "title": "",
+      "tts": {
+        "text": "మీరు దాని తక్కువ ఫార్వర్డ్ పాస్‌లకు మాత్రమే చెల్లించారు.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "టింకరర్‌కు అది ఎందుకు ముఖ్యం?",
+      "text_markdown": "టింకరర్‌కు అది ఎందుకు ముఖ్యం?",
+      "title": "",
+      "tts": {
+        "text": "టింకరర్‌కు అది ఎందుకు ముఖ్యం?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఎందుకంటే ఇది ఒకే కార్డ్‌లో డెబ్బై బిలియన్ పరామీటర్ మోడల్‌ను నవల్టీ నుండి ఉపయోగపడే సంభాషణగా మారుస్తుంది.",
+      "text_markdown": "ఎందుకంటే ఇది ఒకే కార్డ్‌లో డెబ్బై బిలియన్ పరామీటర్ మోడల్‌ను నవల్టీ నుండి ఉపయోగపడే సంభాషణగా మారుస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "ఎందుకంటే ఇది ఒకే కార్డ్‌లో డెబ్బై బిలియన్ పరామీటర్ మోడల్‌ను నవల్టీ నుండి ఉపయోగపడే సంభాషణగా మారుస్తుంది.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మరియు ఫోన్‌లో, నిజమైన ఆన్-డివైస్ అసిస్టెంట్ రెస్పాన్సివ్‌గా అనిపించేలా చేసే భాగం ఇది.",
+      "text_markdown": "మరియు ఫోన్‌లో, నిజమైన ఆన్-డివైస్ అసిస్టెంట్ రెస్పాన్సివ్‌గా అనిపించేలా చేసే భాగం ఇది.",
+      "title": "",
+      "tts": {
+        "text": "మరియు ఫోన్‌లో, నిజమైన ఆన్ డివైస్ అసిస్టెంట్ రెస్పాన్సివ్‌గా అనిపించేలా చేసే భాగం ఇది.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "గత వారం చూసిన న్యూరల్ ఆడియో కోడెక్స్ కాన్సెప్ట్ కూడా అదే ట్రిక్‌కు ఆడియో రూపం, అంటే అదే క్వాలిటీని తక్కువ ఖర్చుతో సాధించే ప్రక్రియ.",
+      "text_markdown": "గత వారం చూసిన న్యూరల్ ఆడియో కోడెక్స్ కాన్సెప్ట్ కూడా అదే ట్రిక్‌కు ఆడియో రూపం, అంటే అదే క్వాలిటీని తక్కువ ఖర్చుతో సాధించే ప్రక్రియ.",
+      "title": "",
+      "tts": {
+        "text": "గత వారం చూసిన న్యూరల్ ఆడియో కోడెక్స్ కాన్సెప్ట్ కూడా అదే ట్రిక్‌కు ఆడియో రూపం, అంటే అదే క్వాలిటీని తక్కువ ఖర్చుతో సాధించే ప్రక్రియ.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఆసక్తిగలవారు ఇక్కడ నుండి ఎక్కడికి వెళ్లాలి?",
+      "text_markdown": "ఆసక్తిగలవారు ఇక్కడ నుండి ఎక్కడికి వెళ్లాలి?",
+      "title": "",
+      "tts": {
+        "text": "ఆసక్తిగలవారు ఇక్కడ నుండి ఎక్కడికి వెళ్లాలి?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "EAGLE-3, Medusa, మరియు lookahead decoding చూడండి.",
+      "text_markdown": "EAGLE-3, Medusa, మరియు lookahead decoding చూడండి.",
+      "title": "",
+      "tts": {
+        "text": "Eagle మూడు, Medusa, మరియు lookahead decoding చూడండి.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవి అసలు డ్రాఫ్టర్-వెరిఫైయర్ ఆలోచనకు ఆధునిక బంధువులు, మరియు మీ ఇన్‌ఫరెన్స్ ఇంజిన్ వాస్తవంగా హుడ్ కింద రన్ చేస్తున్నవి అవే.",
+      "text_markdown": "అవి అసలు డ్రాఫ్టర్-వెరిఫైయర్ ఆలోచనకు ఆధునిక బంధువులు, మరియు మీ ఇన్‌ఫరెన్స్ ఇంజిన్ వాస్తవంగా హుడ్ కింద రన్ చేస్తున్నవి అవే.",
+      "title": "",
+      "tts": {
+        "text": "అవి అసలు డ్రాఫ్టర్ వెరిఫైయర్ ఆలోచనకు ఆధునిక బంధువులు, మరియు మీ ఇన్‌ఫరెన్స్ ఇంజిన్ వాస్తవంగా హుడ్ కింద రన్ చేస్తున్నవి అవే.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మంచి ముగింపు.",
+      "text_markdown": "మంచి ముగింపు.",
+      "title": "",
+      "tts": {
+        "text": "మంచి ముగింపు.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రాన్, మీకు ఎంతో కృతజ్ఞతలు.",
+      "text_markdown": "రాన్, మీకు ఎంతో కృతజ్ఞతలు.",
+      "title": "",
+      "tts": {
+        "text": "రాన్, మీకు ఎంతో కృతజ్ఞతలు.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఎప్పుడైనా, విండి.",
+      "text_markdown": "ఎప్పుడైనా, విండి.",
+      "title": "",
+      "tts": {
+        "text": "ఎప్పుడైనా, విండి.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అది జూన్ 3, 2026 కోసం AI This Week.",
+      "text_markdown": "అది జూన్ 3, 2026 కోసం AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "అది జూన్ మూడు, ఇరవై ఇరవై ఆరు కోసం AI This Week.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కొత్త ఇష్యూ వచ్చే బుధవారం వస్తుంది.",
+      "text_markdown": "కొత్త ఇష్యూ వచ్చే బుధవారం వస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "కొత్త సంచిక వచ్చే బుధవారం వస్తుంది.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అంతవరకు, జాగ్రత్తగా ఉండండి.",
+      "text_markdown": "అంతవరకు, జాగ్రత్తగా ఉండండి.",
+      "title": "",
+      "tts": {
+        "text": "అంతవరకు, జాగ్రత్తగా ఉండండి.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

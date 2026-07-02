@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "he",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "פתח דבר לקורא",
+      "text_markdown": "פתח דבר לקורא"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה הסיפור של האופנוע.",
+      "text_markdown": "זה הסיפור של האופנוע.",
+      "tts": {
+        "text": "זה הסיפור של האופנוע.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה סיפור אמיתי.",
+      "text_markdown": "זה סיפור אמיתי.",
+      "tts": {
+        "text": "זה סיפור אמיתי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פעם, לאף אחד לא היה אופנוע.",
+      "text_markdown": "פעם, לאף אחד לא היה אופנוע.",
+      "tts": {
+        "text": "פעם, לאף אחד לא היה אופנוע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היום, יש מיליונים מהם.",
+      "text_markdown": "היום, יש מיליונים מהם.",
+      "tts": {
+        "text": "היום, יש מיליונים מהם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הם רועשים, מהירים ומבריקים.",
+      "text_markdown": "הם רועשים, מהירים ומבריקים.",
+      "tts": {
+        "text": "הם רועשים, מהירים ומבריקים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נתחיל מההתחלה.",
+      "text_markdown": "נתחיל מההתחלה.",
+      "tts": {
+        "text": "נתחיל מההתחלה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "נכיר את הבונה הראשון, את הרוכבים הראשונים ואת המרוצים הראשונים.",
+      "text_markdown": "נכיר את הבונה הראשון, את הרוכבים הראשונים ואת המרוצים הראשונים.",
+      "tts": {
+        "text": "נכיר את הבונה הראשון, את הרוכבים הראשונים ואת המרוצים הראשונים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אחר כך נסתכל על העולם של היום.",
+      "text_markdown": "אחר כך נסתכל על העולם של היום.",
+      "tts": {
+        "text": "אחר כך נסתכל על העולם של היום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "פתח דבר לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "בסוף, תדע איך המכונה הקטנה הזאת שינתה את הכביש לתמיד.",
+      "text_markdown": "בסוף, תדע איך המכונה הקטנה הזאת שינתה את הכביש לתמיד.",
+      "tts": {
+        "text": "בסוף, תדע איך המכונה הקטנה הזאת שינתה את הכביש לתמיד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "text_markdown": "פרק ראשון — האופנוע הראשון שעשה ווררם"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אופנוע הוא אופניים עם מנוע.",
+      "text_markdown": "אופנוע הוא אופניים עם מנוע.",
+      "tts": {
+        "text": "אופנוע הוא אופניים עם מנוע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המנוע מסובב את הגלגלים.",
+      "text_markdown": "המנוע מסובב את הגלגלים.",
+      "tts": {
+        "text": "המנוע מסובב את הגלגלים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרוכב לא משתמש בדוושות.",
+      "text_markdown": "הרוכב לא משתמש בדוושות.",
+      "tts": {
+        "text": "הרוכב לא משתמש בדוושות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פעם, לא היו אופנועים.",
+      "text_markdown": "פעם, לא היו אופנועים.",
+      "tts": {
+        "text": "פעם, לא היו אופנועים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אנשים רכבו על סוסים.",
+      "text_markdown": "אנשים רכבו על סוסים.",
+      "tts": {
+        "text": "אנשים רכבו על סוסים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אנשים רכבו על אופניים.",
+      "text_markdown": "אנשים רכבו על אופניים.",
+      "tts": {
+        "text": "אנשים רכבו על אופניים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "לאופניים יש שני גלגלים ואין מנוע.",
+      "text_markdown": "לאופניים יש שני גלגלים ואין מנוע.",
+      "tts": {
+        "text": "לאופניים יש שני גלגלים ואין מנוע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "צריך לדחוף את הדוושות עם הרגליים.",
+      "text_markdown": "צריך לדחוף את הדוושות עם הרגליים.",
+      "tts": {
+        "text": "צריך לדחוף את הדוושות עם הרגליים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנת אלף שמונה מאות שמונים וחמש, איש בגרמניה חשב על רעיון גדול.",
+      "text_markdown": "בשנת אלף שמונה מאות שמונים וחמש, איש בגרמניה חשב על רעיון גדול.",
+      "tts": {
+        "text": "בשנת אלף שמונה מאות שמונים וחמש, איש בגרמניה חשב על רעיון גדול.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שמו היה גוטליב דיימלר.",
+      "text_markdown": "שמו היה גוטליב דיימלר.",
+      "tts": {
+        "text": "שמו היה גוטליב דיימלר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא לקח מנוע בנזין קטן ושם אותו על אופניים מעץ.",
+      "text_markdown": "הוא לקח מנוע בנזין קטן ושם אותו על אופניים מעץ.",
+      "tts": {
+        "text": "הוא לקח מנוע בנזין קטן ושם אותו על אופניים מעץ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא קרא למכונה שלו רייטוואגן.",
+      "text_markdown": "הוא קרא למכונה שלו רייטוואגן.",
+      "tts": {
+        "text": "הוא קרא למכונה שלו רייטוואגן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המילה אומרת \"עגלת רכיבה\" בגרמנית.",
+      "text_markdown": "המילה אומרת \"עגלת רכיבה\" בגרמנית.",
+      "tts": {
+        "text": "המילה אומרת \"עגלת רכיבה\" בגרמנית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זה היה האופנוע הראשון בעולם.",
+      "text_markdown": "זה היה האופנוע הראשון בעולם.",
+      "tts": {
+        "text": "זה היה האופנוע הראשון בעולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרייטוואגן היה רועש.",
+      "text_markdown": "הרייטוואגן היה רועש.",
+      "tts": {
+        "text": "הרייטוואגן היה רועש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא היה מטלטל.",
+      "text_markdown": "הוא היה מטלטל.",
+      "tts": {
+        "text": "הוא היה מטלטל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הייתה לו רק מהירות אחת.",
+      "text_markdown": "הייתה לו רק מהירות אחת.",
+      "tts": {
+        "text": "הייתה לו רק מהירות אחת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא יכול היה לנסוע בערך שבעה מייל לשעה.",
+      "text_markdown": "הוא יכול היה לנסוע בערך שבעה מייל לשעה.",
+      "tts": {
+        "text": "הוא יכול היה לנסוע בערך שבעה מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "זה איטי יותר מאדם על אופניים היום.",
+      "text_markdown": "זה איטי יותר מאדם על אופניים היום.",
+      "tts": {
+        "text": "זה איטי יותר מאדם על אופניים היום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אבל הוא יכול היה לנוע בלי סוס, והוא יכול היה לנוע בלי דוושות.",
+      "text_markdown": "אבל הוא יכול היה לנוע בלי סוס, והוא יכול היה לנוע בלי דוושות.",
+      "tts": {
+        "text": "אבל הוא יכול היה לנוע בלי סוס, והוא יכול היה לנוע בלי דוושות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק ראשון — האופנוע הראשון שעשה ווררם",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האופנוע נולד.",
+      "text_markdown": "האופנוע נולד.",
+      "tts": {
+        "text": "האופנוע נולד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שני — החברות הראשונות",
+      "text_markdown": "פרק שני — החברות הראשונות"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחרי דיימלר, אנשים אחרים רצו גם לבנות אופנועים.",
+      "text_markdown": "אחרי דיימלר, אנשים אחרים רצו גם לבנות אופנועים.",
+      "tts": {
+        "text": "אחרי דיימלר, אנשים אחרים רצו גם לבנות אופנועים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "עד מהרה, סדנאות קטנות נפתחו בכל העולם.",
+      "text_markdown": "עד מהרה, סדנאות קטנות נפתחו בכל העולם.",
+      "tts": {
+        "text": "עד מהרה, סדנאות קטנות נפתחו בכל העולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באנגליה, איש בשם זיגפריד בטמן הקים חברה בשם טריומף.",
+      "text_markdown": "באנגליה, איש בשם זיגפריד בטמן הקים חברה בשם טריומף.",
+      "tts": {
+        "text": "באנגליה, איש בשם זיגפריד בטמן הקים חברה בשם טריומף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "האופנוע הראשון של טריומף נבנה בשנת אלף תשע מאות ושתיים.",
+      "text_markdown": "האופנוע הראשון של טריומף נבנה בשנת אלף תשע מאות ושתיים.",
+      "tts": {
+        "text": "האופנוע הראשון של טריומף נבנה בשנת אלף תשע מאות ושתיים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באמריקה, שני חברים בשם ויליאם הארלי וארתור דייווידסון בנו את האופנוע הראשון שלהם בסככה קטנה מעץ.",
+      "text_markdown": "באמריקה, שני חברים בשם ויליאם הארלי וארתור דייווידסון בנו את האופנוע הראשון שלהם בסככה קטנה מעץ.",
+      "tts": {
+        "text": "באמריקה, שני חברים בשם ויליאם הארלי וארתור דייווידסון בנו את האופנוע הראשון שלהם בסככה קטנה מעץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הסככה הייתה בעיר מילווקי.",
+      "text_markdown": "הסככה הייתה בעיר מילווקי.",
+      "tts": {
+        "text": "הסככה הייתה בעיר מילווקי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "השנה הייתה אלף תשע מאות ושלוש.",
+      "text_markdown": "השנה הייתה אלף תשע מאות ושלוש.",
+      "tts": {
+        "text": "השנה הייתה אלף תשע מאות ושלוש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הם קראו לחברה הארלי-דייווידסון.",
+      "text_markdown": "הם קראו לחברה הארלי-דייווידסון.",
+      "tts": {
+        "text": "הם קראו לחברה הארלי דייווידסון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חברה אמריקאית נוספת התחילה כמה שנים קודם לכן.",
+      "text_markdown": "חברה אמריקאית נוספת התחילה כמה שנים קודם לכן.",
+      "tts": {
+        "text": "חברה אמריקאית נוספת התחילה כמה שנים קודם לכן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שני אנשים בספרינגפילד, מסצ'וסטס, בנו את המכונה הראשונה שלהם בשנת אלף תשע מאות ואחת.",
+      "text_markdown": "שני אנשים בספרינגפילד, מסצ'וסטס, בנו את המכונה הראשונה שלהם בשנת אלף תשע מאות ואחת.",
+      "tts": {
+        "text": "שני אנשים בספרינגפילד, מסצ'וסטס, בנו את המכונה הראשונה שלהם בשנת אלף תשע מאות ואחת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הם קראו לו האינדיאן.",
+      "text_markdown": "הם קראו לו האינדיאן.",
+      "tts": {
+        "text": "הם קראו לו האינדיאן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בהודו, חברה בשם רויאל אנפילד התחילה לייצר אופנועים גם בשנת אלף תשע מאות ואחת.",
+      "text_markdown": "בהודו, חברה בשם רויאל אנפילד התחילה לייצר אופנועים גם בשנת אלף תשע מאות ואחת.",
+      "tts": {
+        "text": "בהודו, חברה בשם רויאל אנפילד התחילה לייצר אופנועים גם בשנת אלף תשע מאות ואחת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היום, רויאל אנפילד היא חברת האופנועים הוותיקה ביותר בעולם שעדיין מייצרת אופנועים.",
+      "text_markdown": "היום, רויאל אנפילד היא חברת האופנועים הוותיקה ביותר בעולם שעדיין מייצרת אופנועים.",
+      "tts": {
+        "text": "היום, רויאל אנפילד היא חברת האופנועים הוותיקה ביותר בעולם שעדיין מייצרת אופנועים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בגרמניה, חברת BMW התחילה לייצר אופנועים קצת יותר מאוחר, בשנת אלף תשע מאות עשרים ושלוש.",
+      "text_markdown": "בגרמניה, חברת BMW התחילה לייצר אופנועים קצת יותר מאוחר, בשנת אלף תשע מאות עשרים ושלוש.",
+      "tts": {
+        "text": "בגרמניה, חברת בי אם דאבליו התחילה לייצר אופנועים קצת יותר מאוחר, בשנת אלף תשע מאות עשרים ושלוש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW אומר \"מפעלי מנועים בווריים\" בגרמנית.",
+      "text_markdown": "BMW אומר \"מפעלי מנועים בווריים\" בגרמנית.",
+      "tts": {
+        "text": "בי אם דאבליו אומר \"מפעלי מנועים בווריים\" בגרמנית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עד שנת אלף תשע מאות ועשר, אופנועים היו בכל מקום.",
+      "text_markdown": "עד שנת אלף תשע מאות ועשר, אופנועים היו בכל מקום.",
+      "tts": {
+        "text": "עד שנת אלף תשע מאות ועשר, אופנועים היו בכל מקום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הם היו ברחובות הערים ובדרכים הכפריות.",
+      "text_markdown": "הם היו ברחובות הערים ובדרכים הכפריות.",
+      "tts": {
+        "text": "הם היו ברחובות הערים ובדרכים הכפריות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק שני — החברות הראשונות",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "עידן האופנוע באמת התחיל.",
+      "text_markdown": "עידן האופנוע באמת התחיל.",
+      "tts": {
+        "text": "עידן האופנוע באמת התחיל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "text_markdown": "פרק שלישי — אופנועים יוצאים למלחמה"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אופנועים מהירים.",
+      "text_markdown": "אופנועים מהירים.",
+      "tts": {
+        "text": "אופנועים מהירים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הם יכולים להיכנס לשבילים קטנים.",
+      "text_markdown": "הם יכולים להיכנס לשבילים קטנים.",
+      "tts": {
+        "text": "הם יכולים להיכנס לשבילים קטנים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הם יכולים להעביר הודעות בין מחנות.",
+      "text_markdown": "הם יכולים להעביר הודעות בין מחנות.",
+      "tts": {
+        "text": "הם יכולים להעביר הודעות בין מחנות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אז כשהמלחמות הגיעו, הצבאות רצו אופנועים.",
+      "text_markdown": "אז כשהמלחמות הגיעו, הצבאות רצו אופנועים.",
+      "tts": {
+        "text": "אז כשהמלחמות הגיעו, הצבאות רצו אופנועים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מלחמת העולם הראשונה התחילה בשנת אלף תשע מאות וארבע עשרה.",
+      "text_markdown": "מלחמת העולם הראשונה התחילה בשנת אלף תשע מאות וארבע עשרה.",
+      "tts": {
+        "text": "מלחמת העולם הראשונה התחילה בשנת אלף תשע מאות וארבע עשרה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "חיילים השתמשו באופנועי טריומף כדי להעביר פקודות.",
+      "text_markdown": "חיילים השתמשו באופנועי טריומף כדי להעביר פקודות.",
+      "tts": {
+        "text": "חיילים השתמשו באופנועי טריומף כדי להעביר פקודות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "טריומף מודל H היה חזק ושקט.",
+      "text_markdown": "טריומף מודל H היה חזק ושקט.",
+      "tts": {
+        "text": "טריומף מודל אייץ' היה חזק ושקט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא יכול היה להגיע למקומות שהסוסים לא יכלו.",
+      "text_markdown": "הוא יכול היה להגיע למקומות שהסוסים לא יכלו.",
+      "tts": {
+        "text": "הוא יכול היה להגיע למקומות שהסוסים לא יכלו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מלחמת העולם השנייה התחילה בשנת אלף תשע מאות שלושים ותשע.",
+      "text_markdown": "מלחמת העולם השנייה התחילה בשנת אלף תשע מאות שלושים ותשע.",
+      "tts": {
+        "text": "מלחמת העולם השנייה התחילה בשנת אלף תשע מאות שלושים ותשע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "עד אז, האופנועים היו מהירים וחזקים יותר.",
+      "text_markdown": "עד אז, האופנועים היו מהירים וחזקים יותר.",
+      "tts": {
+        "text": "עד אז, האופנועים היו מהירים וחזקים יותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "חיילים אמריקאים רכבו על הארלי-דייווידסון WLA.",
+      "text_markdown": "חיילים אמריקאים רכבו על הארלי-דייווידסון WLA.",
+      "tts": {
+        "text": "חיילים אמריקאים רכבו על הארלי דייווידסון דאבליו אל איי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "חיילים גרמנים רכבו על BMW R75.",
+      "text_markdown": "חיילים גרמנים רכבו על BMW R75.",
+      "tts": {
+        "text": "חיילים גרמנים רכבו על בי אם דאבליו אר שבעים וחמש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ל-R75 היה סירת צד עם גלגל שלישי ומושב לחייל נוסף.",
+      "text_markdown": "ל-R75 היה סירת צד עם גלגל שלישי ומושב לחייל נוסף.",
+      "tts": {
+        "text": "לאר שבעים וחמש היה סירת צד עם גלגל שלישי ומושב לחייל נוסף.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחרי המלחמה, החיילים חזרו הביתה.",
+      "text_markdown": "אחרי המלחמה, החיילים חזרו הביתה.",
+      "tts": {
+        "text": "אחרי המלחמה, החיילים חזרו הביתה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הם הביאו את האופנועים שלהם איתם.",
+      "text_markdown": "הם הביאו את האופנועים שלהם איתם.",
+      "tts": {
+        "text": "הם הביאו את האופנועים שלהם איתם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "רבים מהם רצו להמשיך לרכב.",
+      "text_markdown": "רבים מהם רצו להמשיך לרכב.",
+      "tts": {
+        "text": "רבים מהם רצו להמשיך לרכב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "חלקם פתחו מועדוני אופנועים משלהם.",
+      "text_markdown": "חלקם פתחו מועדוני אופנועים משלהם.",
+      "tts": {
+        "text": "חלקם פתחו מועדוני אופנועים משלהם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המלחמות עשו את האופנוע למפורסם.",
+      "text_markdown": "המלחמות עשו את האופנוע למפורסם.",
+      "tts": {
+        "text": "המלחמות עשו את האופנוע למפורסם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מיליוני אנשים ראו אופנוע בפעם הראשונה.",
+      "text_markdown": "מיליוני אנשים ראו אופנוע בפעם הראשונה.",
+      "tts": {
+        "text": "מיליוני אנשים ראו אופנוע בפעם הראשונה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק שלישי — אופנועים יוצאים למלחמה",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "רבים רצו אופנוע משלהם.",
+      "text_markdown": "רבים רצו אופנוע משלהם.",
+      "tts": {
+        "text": "רבים רצו אופנוע משלהם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק רביעי — עליית יפן",
+      "text_markdown": "פרק רביעי — עליית יפן"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחרי מלחמת העולם השנייה, יפן הייתה ענייה.",
+      "text_markdown": "אחרי מלחמת העולם השנייה, יפן הייתה ענייה.",
+      "tts": {
+        "text": "אחרי מלחמת העולם השנייה, יפן הייתה ענייה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "רוב המכוניות היו יקרות מדי.",
+      "text_markdown": "רוב המכוניות היו יקרות מדי.",
+      "tts": {
+        "text": "רוב המכוניות היו יקרות מדי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אנשים היו צריכים דרך קטנה וזולה לנוע.",
+      "text_markdown": "אנשים היו צריכים דרך קטנה וזולה לנוע.",
+      "tts": {
+        "text": "אנשים היו צריכים דרך קטנה וזולה לנוע.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "איש יפני צעיר ראה את ההזדמנות.",
+      "text_markdown": "איש יפני צעיר ראה את ההזדמנות.",
+      "tts": {
+        "text": "איש יפני צעיר ראה את ההזדמנות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שמו היה סואיצ'ירו הונדה.",
+      "text_markdown": "שמו היה סואיצ'ירו הונדה.",
+      "tts": {
+        "text": "שמו היה סואיצ'ירו הונדה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא הקים חברה קטנה בשנת אלף תשע מאות ארבעים ושמונה.",
+      "text_markdown": "הוא הקים חברה קטנה בשנת אלף תשע מאות ארבעים ושמונה.",
+      "tts": {
+        "text": "הוא הקים חברה קטנה בשנת אלף תשע מאות ארבעים ושמונה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא קרא לה הונדה.",
+      "text_markdown": "הוא קרא לה הונדה.",
+      "tts": {
+        "text": "הוא קרא לה הונדה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנת אלף תשע מאות חמישים ושמונה, הונדה בנתה אופנוע קטנטן בשם סופר קאב.",
+      "text_markdown": "בשנת אלף תשע מאות חמישים ושמונה, הונדה בנתה אופנוע קטנטן בשם סופר קאב.",
+      "tts": {
+        "text": "בשנת אלף תשע מאות חמישים ושמונה, הונדה בנתה אופנוע קטנטן בשם סופר קאב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הסופר קאב היה קל לרכיבה.",
+      "text_markdown": "הסופר קאב היה קל לרכיבה.",
+      "tts": {
+        "text": "הסופר קאב היה קל לרכיבה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא היה קל לתיקון.",
+      "text_markdown": "הוא היה קל לתיקון.",
+      "tts": {
+        "text": "הוא היה קל לתיקון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא היה זול מאוד מאוד.",
+      "text_markdown": "הוא היה זול מאוד מאוד.",
+      "tts": {
+        "text": "הוא היה זול מאוד מאוד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים בכל העולם קנו את הסופר קאב.",
+      "text_markdown": "אנשים בכל העולם קנו את הסופר קאב.",
+      "tts": {
+        "text": "אנשים בכל העולם קנו את הסופר קאב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היום, יותר ממאה מיליון סופר קאב נמכרו.",
+      "text_markdown": "היום, יותר ממאה מיליון סופר קאב נמכרו.",
+      "tts": {
+        "text": "היום, יותר ממאה מיליון סופר קאב נמכרו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא רכב המנוע הנמכר ביותר בכל הזמנים.",
+      "text_markdown": "הוא רכב המנוע הנמכר ביותר בכל הזמנים.",
+      "tts": {
+        "text": "הוא רכב המנוע הנמכר ביותר בכל הזמנים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עד מהרה, שלוש חברות יפניות נוספות הלכו בעקבות הונדה.",
+      "text_markdown": "עד מהרה, שלוש חברות יפניות נוספות הלכו בעקבות הונדה.",
+      "tts": {
+        "text": "עד מהרה, שלוש חברות יפניות נוספות הלכו בעקבות הונדה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הן היו ימאהה, סוזוקי וקוואסאקי.",
+      "text_markdown": "הן היו ימאהה, סוזוקי וקוואסאקי.",
+      "tts": {
+        "text": "הן היו ימאהה, סוזוקי וקוואסאקי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "יחד עם הונדה, הן נקראות הארבע הגדולות.",
+      "text_markdown": "יחד עם הונדה, הן נקראות הארבע הגדולות.",
+      "tts": {
+        "text": "יחד עם הונדה, הן נקראות הארבע הגדולות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הארבע הגדולות יצרו אופנועים שהיו מהירים, זולים וקלים לרכיבה.",
+      "text_markdown": "הארבע הגדולות יצרו אופנועים שהיו מהירים, זולים וקלים לרכיבה.",
+      "tts": {
+        "text": "הארבע הגדולות יצרו אופנועים שהיו מהירים, זולים וקלים לרכיבה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בשנות השישים, אופנועים יפניים היו בכל מקום.",
+      "text_markdown": "בשנות השישים, אופנועים יפניים היו בכל מקום.",
+      "tts": {
+        "text": "בשנות השישים, אופנועים יפניים היו בכל מקום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק רביעי — עליית יפן",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הם היו המלכים החדשים של הכביש.",
+      "text_markdown": "הם היו המלכים החדשים של הכביש.",
+      "tts": {
+        "text": "הם היו המלכים החדשים של הכביש.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "text_markdown": "פרק חמישי — מהר, יותר מהר, הכי מהר"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנות השישים, רוכבים רצו לנסוע יותר מהר.",
+      "text_markdown": "בשנות השישים, רוכבים רצו לנסוע יותר מהר.",
+      "tts": {
+        "text": "בשנות השישים, רוכבים רצו לנסוע יותר מהר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בונים התחילו במרוץ ליצור את האופנוע המהיר ביותר בעולם.",
+      "text_markdown": "בונים התחילו במרוץ ליצור את האופנוע המהיר ביותר בעולם.",
+      "tts": {
+        "text": "בונים התחילו במרוץ ליצור את האופנוע המהיר ביותר בעולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באיטליה, חברה קטנה בשם MV אגוסטה בנתה אופנועים אדומים יפים שזכו במרוץ אחר מרוץ.",
+      "text_markdown": "באיטליה, חברה קטנה בשם MV אגוסטה בנתה אופנועים אדומים יפים שזכו במרוץ אחר מרוץ.",
+      "tts": {
+        "text": "באיטליה, חברה קטנה בשם אם וי אגוסטה בנתה אופנועים אדומים יפים שזכו במרוץ אחר מרוץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "באנגליה, טריומף ונורטון בנו גם מכונות חזקות.",
+      "text_markdown": "באנגליה, טריומף ונורטון בנו גם מכונות חזקות.",
+      "tts": {
+        "text": "באנגליה, טריומף ונורטון בנו גם מכונות חזקות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז, בשנת אלף תשע מאות שישים ותשע, הונדה עשתה משהו מדהים.",
+      "text_markdown": "ואז, בשנת אלף תשע מאות שישים ותשע, הונדה עשתה משהו מדהים.",
+      "tts": {
+        "text": "ואז, בשנת אלף תשע מאות שישים ותשע, הונדה עשתה משהו מדהים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הם בנו אופנוע בשם CB 750.",
+      "text_markdown": "הם בנו אופנוע בשם CB 750.",
+      "tts": {
+        "text": "הם בנו אופנוע בשם סי בי שבע מאות חמישים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היו לו ארבעה צילינדרים ומנוע גדול.",
+      "text_markdown": "היו לו ארבעה צילינדרים ומנוע גדול.",
+      "tts": {
+        "text": "היו לו ארבעה צילינדרים ומנוע גדול.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא יכול היה לנסוע יותר ממאה ועשרים מייל לשעה.",
+      "text_markdown": "הוא יכול היה לנסוע יותר ממאה ועשרים מייל לשעה.",
+      "tts": {
+        "text": "הוא יכול היה לנסוע יותר ממאה ועשרים מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הוא היה הסופרבייק האמיתי הראשון.",
+      "text_markdown": "הוא היה הסופרבייק האמיתי הראשון.",
+      "tts": {
+        "text": "הוא היה הסופרבייק האמיתי הראשון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחרי ה-CB 750, כל חברה רצתה לבנות סופרבייק.",
+      "text_markdown": "אחרי ה-CB 750, כל חברה רצתה לבנות סופרבייק.",
+      "tts": {
+        "text": "אחרי הסי בי שבע מאות חמישים, כל חברה רצתה לבנות סופרבייק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "האופנועים נעשו מהירים יותר ויותר.",
+      "text_markdown": "האופנועים נעשו מהירים יותר ויותר.",
+      "tts": {
+        "text": "האופנועים נעשו מהירים יותר ויותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "עד מהרה, היו להם פאריגנגים בהירים, הקליפות החלקות מפלסטיק שחותכות את הרוח.",
+      "text_markdown": "עד מהרה, היו להם פאריגנגים בהירים, הקליפות החלקות מפלסטיק שחותכות את הרוח.",
+      "tts": {
+        "text": "עד מהרה, היו להם פאריגנגים בהירים, הקליפות החלקות מפלסטיק שחותכות את הרוח.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בשנת אלף תשע מאות תשעים, אופנוע יפני בשם קוואסאקי ZX-11 הפך לאופנוע המהיר ביותר בעולם.",
+      "text_markdown": "בשנת אלף תשע מאות תשעים, אופנוע יפני בשם קוואסאקי ZX-11 הפך לאופנוע המהיר ביותר בעולם.",
+      "tts": {
+        "text": "בשנת אלף תשע מאות תשעים, אופנוע יפני בשם קוואסאקי זד אקס אחת עשרה הפך לאופנוע המהיר ביותר בעולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא יכול היה לנסוע כמעט מאה שבעים וחמש מייל לשעה.",
+      "text_markdown": "הוא יכול היה לנסוע כמעט מאה שבעים וחמש מייל לשעה.",
+      "tts": {
+        "text": "הוא יכול היה לנסוע כמעט מאה שבעים וחמש מייל לשעה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כמה שנים לאחר מכן, סוזוקי הייאבוסה נסעה אפילו מהר יותר.",
+      "text_markdown": "כמה שנים לאחר מכן, סוזוקי הייאבוסה נסעה אפילו מהר יותר.",
+      "tts": {
+        "text": "כמה שנים לאחר מכן, סוזוקי הייאבוסה נסעה אפילו מהר יותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא הגיע למאה תשעים וארבע מייל לשעה.",
+      "text_markdown": "הוא הגיע למאה תשעים וארבע מייל לשעה.",
+      "tts": {
+        "text": "הוא הגיע למאה תשעים וארבע מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק חמישי — מהר, יותר מהר, הכי מהר",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זה מהיר יותר מרוב המכוניות על הכביש היום.",
+      "text_markdown": "זה מהיר יותר מרוב המכוניות על הכביש היום.",
+      "tts": {
+        "text": "זה מהיר יותר מרוב המכוניות על הכביש היום.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שישי — סוגים רבים של אופנועים",
+      "text_markdown": "פרק שישי — סוגים רבים של אופנועים"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היום, אופנועים מגיעים בצורות רבות.",
+      "text_markdown": "היום, אופנועים מגיעים בצורות רבות.",
+      "tts": {
+        "text": "היום, אופנועים מגיעים בצורות רבות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כל סוג בנוי לעבודה אחרת.",
+      "text_markdown": "כל סוג בנוי לעבודה אחרת.",
+      "tts": {
+        "text": "כל סוג בנוי לעבודה אחרת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ספורט בייק בנוי לנסוע מהר מאוד.",
+      "text_markdown": "ספורט בייק בנוי לנסוע מהר מאוד.",
+      "tts": {
+        "text": "ספורט בייק בנוי לנסוע מהר מאוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא קל ונמוך.",
+      "text_markdown": "הוא קל ונמוך.",
+      "tts": {
+        "text": "הוא קל ונמוך.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרוכב נשען קדימה.",
+      "text_markdown": "הרוכב נשען קדימה.",
+      "tts": {
+        "text": "הרוכב נשען קדימה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ספורט בייק עשוי לכבישים חלקים ולמסלולי מרוצים.",
+      "text_markdown": "ספורט בייק עשוי לכבישים חלקים ולמסלולי מרוצים.",
+      "tts": {
+        "text": "ספורט בייק עשוי לכבישים חלקים ולמסלולי מרוצים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "דירט בייק בנוי לבוץ ולעפר.",
+      "text_markdown": "דירט בייק בנוי לבוץ ולעפר.",
+      "tts": {
+        "text": "דירט בייק בנוי לבוץ ולעפר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יש לו גלגלים גבוהים וצמיגים גדולים.",
+      "text_markdown": "יש לו גלגלים גבוהים וצמיגים גדולים.",
+      "tts": {
+        "text": "יש לו גלגלים גבוהים וצמיגים גדולים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "דירט בייקים יכולים לקפוץ מעל גבעות.",
+      "text_markdown": "דירט בייקים יכולים לקפוץ מעל גבעות.",
+      "tts": {
+        "text": "דירט בייקים יכולים לקפוץ מעל גבעות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הרבה רוכבים צעירים לומדים על דירט בייקים קודם.",
+      "text_markdown": "הרבה רוכבים צעירים לומדים על דירט בייקים קודם.",
+      "tts": {
+        "text": "הרבה רוכבים צעירים לומדים על דירט בייקים קודם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קרוזר הוא ארוך ונמוך.",
+      "text_markdown": "קרוזר הוא ארוך ונמוך.",
+      "tts": {
+        "text": "קרוזר הוא ארוך ונמוך.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הרוכב יושב זקוף ונוסע לאט.",
+      "text_markdown": "הרוכב יושב זקוף ונוסע לאט.",
+      "tts": {
+        "text": "הרוכב יושב זקוף ונוסע לאט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הארלי-דייווידסון מפורסם בקרוזרים.",
+      "text_markdown": "הארלי-דייווידסון מפורסם בקרוזרים.",
+      "tts": {
+        "text": "הארלי דייווידסון מפורסם בקרוזרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "גם האינדיאן.",
+      "text_markdown": "גם האינדיאן.",
+      "tts": {
+        "text": "גם האינדיאן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אופנוע הרפתקאות בנוי לטיולים ארוכים.",
+      "text_markdown": "אופנוע הרפתקאות בנוי לטיולים ארוכים.",
+      "tts": {
+        "text": "אופנוע הרפתקאות בנוי לטיולים ארוכים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא יכול לרכב על כבישים ועל עפר.",
+      "text_markdown": "הוא יכול לרכב על כבישים ועל עפר.",
+      "tts": {
+        "text": "הוא יכול לרכב על כבישים ועל עפר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS הוא אופנוע הרפתקאות מפורסם.",
+      "text_markdown": "BMW GS הוא אופנוע הרפתקאות מפורסם.",
+      "tts": {
+        "text": "בי אם דאבליו ג'י אס הוא אופנוע הרפתקאות מפורסם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "גם KTM.",
+      "text_markdown": "גם KTM.",
+      "tts": {
+        "text": "גם קיי טי אם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש גם צ'ופרים, קטנועים, אופנועי מרוצים ואופנועים חשמליים.",
+      "text_markdown": "יש גם צ'ופרים, קטנועים, אופנועי מרוצים ואופנועים חשמליים.",
+      "tts": {
+        "text": "יש גם צ'ופרים, קטנועים, אופנועי מרוצים ואופנועים חשמליים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יש אופנוע כמעט לכל סוג של דרך.",
+      "text_markdown": "יש אופנוע כמעט לכל סוג של דרך.",
+      "tts": {
+        "text": "יש אופנוע כמעט לכל סוג של דרך.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק שישי — סוגים רבים של אופנועים",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היום, אפשר למצוא אופנוע בכל ארץ בעולם.",
+      "text_markdown": "היום, אפשר למצוא אופנוע בכל ארץ בעולם.",
+      "tts": {
+        "text": "היום, אפשר למצוא אופנוע בכל ארץ בעולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק שביעי — דרך חדשה",
+      "text_markdown": "פרק שביעי — דרך חדשה"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היום, לאופנוע יש מנוע מסוג חדש.",
+      "text_markdown": "היום, לאופנוע יש מנוע מסוג חדש.",
+      "tts": {
+        "text": "היום, לאופנוע יש מנוע מסוג חדש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה המנוע החשמלי.",
+      "text_markdown": "זה המנוע החשמלי.",
+      "tts": {
+        "text": "זה המנוע החשמלי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אופנוע חשמלי הוא שקט.",
+      "text_markdown": "אופנוע חשמלי הוא שקט.",
+      "tts": {
+        "text": "אופנוע חשמלי הוא שקט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא לא צריך בנזין.",
+      "text_markdown": "הוא לא צריך בנזין.",
+      "tts": {
+        "text": "הוא לא צריך בנזין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הוא רק צריך להתחבר לחשמל כמו טלפון.",
+      "text_markdown": "הוא רק צריך להתחבר לחשמל כמו טלפון.",
+      "tts": {
+        "text": "הוא רק צריך להתחבר לחשמל כמו טלפון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חברה בשם זירו בונה אופנועים חשמליים בקליפורניה.",
+      "text_markdown": "חברה בשם זירו בונה אופנועים חשמליים בקליפורניה.",
+      "tts": {
+        "text": "חברה בשם זירו בונה אופנועים חשמליים בקליפורניה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הארלי-דייווידסון מייצרת עכשיו אופנוע חשמלי בשם לייבווייר.",
+      "text_markdown": "הארלי-דייווידסון מייצרת עכשיו אופנוע חשמלי בשם לייבווייר.",
+      "tts": {
+        "text": "הארלי דייווידסון מייצרת עכשיו אופנוע חשמלי בשם לייבווייר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "חברה איטלקית בשם אנרג'יקה בונה אופנועי מרוצים חשמליים.",
+      "text_markdown": "חברה איטלקית בשם אנרג'יקה בונה אופנועי מרוצים חשמליים.",
+      "tts": {
+        "text": "חברה איטלקית בשם אנרג'יקה בונה אופנועי מרוצים חשמליים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הם מהירים מאוד.",
+      "text_markdown": "הם מהירים מאוד.",
+      "tts": {
+        "text": "הם מהירים מאוד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האופנוע הראשון, הרייטוואגן, יכול היה לנסוע שבעה מייל לשעה.",
+      "text_markdown": "האופנוע הראשון, הרייטוואגן, יכול היה לנסוע שבעה מייל לשעה.",
+      "tts": {
+        "text": "האופנוע הראשון, הרייטוואגן, יכול היה לנסוע שבעה מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "האופנועים החשמליים של היום יכולים לנסוע יותר ממאתיים מייל לשעה.",
+      "text_markdown": "האופנועים החשמליים של היום יכולים לנסוע יותר ממאתיים מייל לשעה.",
+      "tts": {
+        "text": "האופנועים החשמליים של היום יכולים לנסוע יותר ממאתיים מייל לשעה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זה הסיפור של האופנוע עד עכשיו.",
+      "text_markdown": "זה הסיפור של האופנוע עד עכשיו.",
+      "tts": {
+        "text": "זה הסיפור של האופנוע עד עכשיו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה היה הסיפור הגדול.",
+      "text_markdown": "זה היה הסיפור הגדול.",
+      "tts": {
+        "text": "זה היה הסיפור הגדול.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אחד עשר הספרים הבאים יספרו את הסיפורים הקטנים.",
+      "text_markdown": "אחד עשר הספרים הבאים יספרו את הסיפורים הקטנים.",
+      "tts": {
+        "text": "אחד עשר הספרים הבאים יספרו את הסיפורים הקטנים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כל אחד הוא על חלק אחד מעולם האופנועים.",
+      "text_markdown": "כל אחד הוא על חלק אחד מעולם האופנועים.",
+      "tts": {
+        "text": "כל אחד הוא על חלק אחד מעולם האופנועים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ספר שני הוא על הארלי-דייווידסון.",
+      "text_markdown": "ספר שני הוא על הארלי-דייווידסון.",
+      "tts": {
+        "text": "ספר שני הוא על הארלי דייווידסון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ספר שלישי הוא על הונדה.",
+      "text_markdown": "ספר שלישי הוא על הונדה.",
+      "tts": {
+        "text": "ספר שלישי הוא על הונדה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ספר רביעי הוא על דוקאטי מאיטליה.",
+      "text_markdown": "ספר רביעי הוא על דוקאטי מאיטליה.",
+      "tts": {
+        "text": "ספר רביעי הוא על דוקאטי מאיטליה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ספר חמישי הוא על BMW מגרמניה.",
+      "text_markdown": "ספר חמישי הוא על BMW מגרמניה.",
+      "tts": {
+        "text": "ספר חמישי הוא על בי אם דאבליו מגרמניה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ספר שישי הוא על טריומף מאנגליה.",
+      "text_markdown": "ספר שישי הוא על טריומף מאנגליה.",
+      "tts": {
+        "text": "ספר שישי הוא על טריומף מאנגליה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ספר שביעי הוא על דירט בייקים.",
+      "text_markdown": "ספר שביעי הוא על דירט בייקים.",
+      "tts": {
+        "text": "ספר שביעי הוא על דירט בייקים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ספר שמיני הוא על ספורט בייקים.",
+      "text_markdown": "ספר שמיני הוא על ספורט בייקים.",
+      "tts": {
+        "text": "ספר שמיני הוא על ספורט בייקים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ספר תשיעי הוא על קרוזרים וצ'ופרים.",
+      "text_markdown": "ספר תשיעי הוא על קרוזרים וצ'ופרים.",
+      "tts": {
+        "text": "ספר תשיעי הוא על קרוזרים וצ'ופרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ספר עשירי הוא על אופנועי הרפתקאות.",
+      "text_markdown": "ספר עשירי הוא על אופנועי הרפתקאות.",
+      "tts": {
+        "text": "ספר עשירי הוא על אופנועי הרפתקאות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ספר אחד עשר הוא על מרוצים.",
+      "text_markdown": "ספר אחד עשר הוא על מרוצים.",
+      "tts": {
+        "text": "ספר אחד עשר הוא על מרוצים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ספר שנים עשר הוא על אופנועים חשמליים והעתיד.",
+      "text_markdown": "ספר שנים עשר הוא על אופנועים חשמליים והעתיד.",
+      "tts": {
+        "text": "ספר שנים עשר הוא על אופנועים חשמליים והעתיד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בחר את זה שנראה לך הכי כיף.",
+      "text_markdown": "בחר את זה שנראה לך הכי כיף.",
+      "tts": {
+        "text": "בחר את זה שנראה לך הכי כיף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק שביעי — דרך חדשה",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ואז בוא להצטרף לנסיעה.",
+      "text_markdown": "ואז בוא להצטרף לנסיעה.",
+      "tts": {
+        "text": "ואז בוא להצטרף לנסיעה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "על הספר הזה",
+      "text_markdown": "על הספר הזה"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה הספר הראשון בסדרת האופנועים.",
+      "text_markdown": "זה הספר הראשון בסדרת האופנועים.",
+      "tts": {
+        "text": "זה הספר הראשון בסדרת האופנועים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא מוקרא בקול על ידי אוגוסט.",
+      "text_markdown": "הוא מוקרא בקול על ידי אוגוסט.",
+      "tts": {
+        "text": "הוא מוקרא בקול על ידי אוגוסט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כל משפט קצר וברור כדי שתוכל לקרוא בכל שפה.",
+      "text_markdown": "כל משפט קצר וברור כדי שתוכל לקרוא בכל שפה.",
+      "tts": {
+        "text": "כל משפט קצר וברור כדי שתוכל לקרוא בכל שפה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם אתה רוצה לשמוע איך משפט נשמע בשפה אחרת, האזן לאותו ספר באותה שפה.",
+      "text_markdown": "אם אתה רוצה לשמוע איך משפט נשמע בשפה אחרת, האזן לאותו ספר באותה שפה.",
+      "tts": {
+        "text": "אם אתה רוצה לשמוע איך משפט נשמע בשפה אחרת, האזן לאותו ספר באותה שפה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המילים על העמוד יתאימו למה שאתה שומע.",
+      "text_markdown": "המילים על העמוד יתאימו למה שאתה שומע.",
+      "tts": {
+        "text": "המילים על העמוד יתאימו למה שאתה שומע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ככה לומדים.",
+      "text_markdown": "ככה לומדים.",
+      "tts": {
+        "text": "ככה לומדים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עכשיו לך תמצא אופנוע ותקשיב לו עושה ווררם.",
+      "text_markdown": "עכשיו לך תמצא אופנוע ותקשיב לו עושה ווררם.",
+      "tts": {
+        "text": "עכשיו לך תמצא אופנוע ותקשיב לו עושה ווררם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

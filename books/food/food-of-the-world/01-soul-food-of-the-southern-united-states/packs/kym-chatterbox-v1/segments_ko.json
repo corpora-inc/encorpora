@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "ko",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말",
+      "text_markdown": "독자에게 드리는 말"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 큰 음식에 대한 작은 책입니다.",
+      "text_markdown": "이 책은 큰 음식에 대한 작은 책입니다.",
+      "tts": {
+        "text": "이 책은 큰 음식에 대한 작은 책입니다.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 음식은 미국 남부의 소울 푸드입니다.",
+      "text_markdown": "그 음식은 미국 남부의 소울 푸드입니다.",
+      "tts": {
+        "text": "그 음식은 미국 남부의 소울 푸드입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소울 푸드는 진짜 음식입니다.",
+      "text_markdown": "소울 푸드는 진짜 음식입니다.",
+      "tts": {
+        "text": "소울 푸드는 진짜 음식입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사람들은 집에서 이 음식을 만듭니다.",
+      "text_markdown": "사람들은 집에서 이 음식을 만듭니다.",
+      "tts": {
+        "text": "사람들은 집에서 이 음식을 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사람들은 일요일에 이 음식을 먹습니다.",
+      "text_markdown": "사람들은 일요일에 이 음식을 먹습니다.",
+      "tts": {
+        "text": "사람들은 일요일에 이 음식을 먹습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "화요일에도 이 음식을 먹습니다.",
+      "text_markdown": "화요일에도 이 음식을 먹습니다.",
+      "tts": {
+        "text": "화요일에도 이 음식을 먹습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "먼저 이름부터 보겠습니다.",
+      "text_markdown": "먼저 이름부터 보겠습니다.",
+      "tts": {
+        "text": "먼저 이름부터 보겠습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그다음에는 식물과 동물을 살펴보겠습니다.",
+      "text_markdown": "그다음에는 식물과 동물을 살펴보겠습니다.",
+      "tts": {
+        "text": "그다음에는 식물과 동물을 살펴보겠습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그다음에는 냄비와 프라이팬을 보겠습니다.",
+      "text_markdown": "그다음에는 냄비와 프라이팬을 보겠습니다.",
+      "tts": {
+        "text": "그다음에는 냄비와 프라이팬을 보겠습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "끝날 때쯤이면 접시에 무엇이 있는지, 또 그것이 어디에서 왔는지 알게 될 것입니다.",
+      "text_markdown": "끝날 때쯤이면 접시에 무엇이 있는지, 또 그것이 어디에서 왔는지 알게 될 것입니다.",
+      "tts": {
+        "text": "끝날 때쯤이면 접시에 무엇이 있는지, 또 그것이 어디에서 왔는지 알게 될 것입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "제 이름은 Kym이고 이 이야기를 들려드릴게요.",
+      "text_markdown": "킴이라는 친구가 이 이야기를 들려드릴 겁니다.",
+      "tts": {
+        "text": "제 이름은 킴이고 이 이야기를 들려드릴게요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "1장 소울 푸드란 무엇일까",
+      "text_markdown": "1장 소울 푸드란 무엇일까"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소울 푸드는 미국 남부 흑인 가족들의 일상 음식입니다.",
+      "text_markdown": "소울 푸드는 미국 남부 흑인 가족들의 일상 음식입니다.",
+      "tts": {
+        "text": "소울 푸드는 미국 남부 흑인 가족들의 일상 음식입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "\"소울 푸드\"라는 이름은 1960년대에 널리 쓰이기 시작했습니다.",
+      "text_markdown": "\"소울 푸드\"라는 이름은 1960년대에 널리 쓰이기 시작했습니다.",
+      "tts": {
+        "text": "\"소울 푸드\"라는 이름은 천구백육십년대에 널리 쓰이기 시작했습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "\"소울\"이라는 말은 음악과 교회에서 나왔습니다.",
+      "text_markdown": "\"소울\"이라는 말은 음악과 교회에서 나왔습니다.",
+      "tts": {
+        "text": "\"소울\"이라는 말은 음악과 교회에서 나왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 말은 깊고 진실한 무언가를 뜻했습니다.",
+      "text_markdown": "그 말은 깊고 진실한 무언가를 뜻했습니다.",
+      "tts": {
+        "text": "그 말은 깊고 진실한 무언가를 뜻했습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 말은 흑인답고 자랑스러운 무언가를 뜻했습니다.",
+      "text_markdown": "그 말은 흑인답고 자랑스러운 무언가를 뜻했습니다.",
+      "tts": {
+        "text": "그 말은 흑인답고 자랑스러운 무언가를 뜻했습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 음식 자체는 훨씬 더 오래되었습니다.",
+      "text_markdown": "하지만 음식 자체는 훨씬 더 오래되었습니다.",
+      "tts": {
+        "text": "하지만 음식 자체는 훨씬 더 오래되었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 음식은 18세기와 19세기 플랜테이션 부엌에서 나왔습니다.",
+      "text_markdown": "이 음식은 18세기와 19세기 플랜테이션 부엌에서 나왔습니다.",
+      "tts": {
+        "text": "이 음식은 십팔세기와 십구세기 플랜테이션 부엌에서 나왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "노예가 된 아프리카인 요리사들은 가진 식물과 동물로 저녁을 만들어 냈습니다.",
+      "text_markdown": "노예가 된 아프리카인 요리사들은 가진 식물과 동물로 저녁을 만들어 냈습니다.",
+      "tts": {
+        "text": "노예가 된 아프리카인 요리사들은 가진 식물과 동물로 저녁을 만들어 냈습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 요리사들은 정말 뛰어났습니다.",
+      "text_markdown": "그 요리사들은 정말 뛰어났습니다.",
+      "tts": {
+        "text": "그 요리사들은 정말 뛰어났습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "적은 재료로도 많은 사람을 먹였습니다.",
+      "text_markdown": "적은 재료로도 많은 사람을 먹였습니다.",
+      "tts": {
+        "text": "적은 재료로도 많은 사람을 먹였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "돼지의 모든 부위를 남김없이 썼습니다.",
+      "text_markdown": "돼지의 모든 부위를 남김없이 썼습니다.",
+      "tts": {
+        "text": "돼지의 모든 부위를 남김없이 썼습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "푸른 채소도 달큰하게 만들었습니다.",
+      "text_markdown": "푸른 채소도 달큰하게 만들었습니다.",
+      "tts": {
+        "text": "푸른 채소도 달큰하게 만들었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "옥수수 가루를 빵으로, 죽으로, 또 수많은 작은 음식으로 바꾸었습니다.",
+      "text_markdown": "옥수수 가루를 빵으로, 죽으로, 또 수많은 작은 음식으로 바꾸었습니다.",
+      "tts": {
+        "text": "옥수수 가루를 빵으로, 죽으로, 또 수많은 작은 음식으로 바꾸었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "흑인 가족들이 20세기에 북쪽으로 이주했을 때, 그 음식도 함께 가져갔습니다.",
+      "text_markdown": "흑인 가족들이 20세기에 북쪽으로 이주했을 때, 그 음식도 함께 가져갔습니다.",
+      "tts": {
+        "text": "흑인 가족들이 이십세기에 북쪽으로 이주했을 때, 그 음식도 함께 가져갔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이제 소울 푸드는 시카고와 뉴욕, 디트로이트, 그리고 남부의 모든 마을에 있습니다.",
+      "text_markdown": "이제 소울 푸드는 시카고와 뉴욕, 디트로이트, 그리고 남부의 모든 마을에 있습니다.",
+      "tts": {
+        "text": "이제 소울 푸드는 시카고와 뉴욕, 디트로이트, 그리고 남부의 모든 마을에 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 소울 푸드란 무엇일까",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "하지만 그 중심은 여전히 남부에 있습니다.",
+      "text_markdown": "하지만 그 중심은 여전히 남부에 있습니다.",
+      "tts": {
+        "text": "하지만 그 중심은 여전히 남부에 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "2장 재료",
+      "text_markdown": "2장 재료"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소울 푸드에는 큰 뿌리가 두 가지 있습니다.",
+      "text_markdown": "소울 푸드에는 큰 뿌리가 두 가지 있습니다.",
+      "tts": {
+        "text": "소울 푸드에는 큰 뿌리가 두 가지 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 뿌리는 서아프리카입니다.",
+      "text_markdown": "한 뿌리는 서아프리카입니다.",
+      "tts": {
+        "text": "한 뿌리는 서아프리카입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 한 뿌리는 아메리카 대륙입니다.",
+      "text_markdown": "다른 한 뿌리는 아메리카 대륙입니다.",
+      "tts": {
+        "text": "다른 한 뿌리는 아메리카 대륙입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오크라는 서아프리카에서 왔습니다.",
+      "text_markdown": "오크라는 서아프리카에서 왔습니다.",
+      "tts": {
+        "text": "오크라는 서아프리카에서 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오크라는 초록색 꼬투리입니다.",
+      "text_markdown": "오크라는 초록색 꼬투리입니다.",
+      "tts": {
+        "text": "오크라는 초록색 꼬투리입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "키가 큰 식물에서 자랍니다.",
+      "text_markdown": "키가 큰 식물에서 자랍니다.",
+      "tts": {
+        "text": "키가 큰 식물에서 자랍니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "익히면 부드러워지고 조금 미끈해집니다.",
+      "text_markdown": "익히면 부드러워지고 조금 미끈해집니다.",
+      "tts": {
+        "text": "익히면 부드러워지고 조금 미끈해집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "검보에도 들어가고, 옥수수 가루를 묻혀 튀기기도 합니다.",
+      "text_markdown": "검보에도 들어가고, 옥수수 가루를 묻혀 튀기기도 합니다.",
+      "tts": {
+        "text": "검보에도 들어가고, 옥수수 가루를 묻혀 튀기기도 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "블랙아이드피도 서아프리카에서 왔습니다.",
+      "text_markdown": "블랙아이드피도 서아프리카에서 왔습니다.",
+      "tts": {
+        "text": "블랙 아이드 피도 서아프리카에서 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수박도 그곳에서 왔습니다.",
+      "text_markdown": "수박도 그곳에서 왔습니다.",
+      "tts": {
+        "text": "수박도 그곳에서 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "참깨도 그곳에서 왔습니다.",
+      "text_markdown": "참깨도 그곳에서 왔습니다.",
+      "tts": {
+        "text": "참깨도 그곳에서 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "옛 남부 요리사들은 참깨를 \"베니\"라고 불렀습니다. 그들은 베니를 쿠키와 빵에 넣었습니다.",
+      "text_markdown": "옛 남부 요리사들은 참깨를 \"베니\"라고 불렀습니다. 그들은 베니를 쿠키와 빵에 넣었습니다.",
+      "tts": {
+        "text": "옛 남부 요리사들은 참깨를 \"베니\"라고 불렀습니다. 그들은 \"베니\"를 쿠키와 빵에 넣었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "쌀도 바다를 건너왔습니다.",
+      "text_markdown": "쌀도 바다를 건너왔습니다.",
+      "tts": {
+        "text": "쌀도 바다를 건너왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아프리카의 농부들은 천 년 동안 쌀을 재배해 왔습니다.",
+      "text_markdown": "아프리카의 농부들은 천 년 동안 쌀을 재배해 왔습니다.",
+      "tts": {
+        "text": "아프리카의 농부들은 천 년 동안 쌀을 재배해 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사우스캐롤라이나에서는 그런 지식이 마을 전체를 세웠습니다.",
+      "text_markdown": "사우스캐롤라이나에서는 그런 지식이 마을 전체를 세웠습니다.",
+      "tts": {
+        "text": "사우스캐롤라이나에서는 그런 지식이 마을 전체를 세웠습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아메리카 대륙에서는 옥수수가 왔습니다.",
+      "text_markdown": "아메리카 대륙에서는 옥수수가 왔습니다.",
+      "tts": {
+        "text": "아메리카 대륙에서는 옥수수가 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "옥수수는 멕시코가 원산지입니다.",
+      "text_markdown": "옥수수는 멕시코가 원산지입니다.",
+      "tts": {
+        "text": "옥수수는 멕시코가 원산지입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "옥수수는 스페인 사람들이 오기 훨씬 전부터 북쪽의 체로키족과 촉토족에게 전해졌습니다.",
+      "text_markdown": "옥수수는 스페인 사람들이 오기 훨씬 전부터 북쪽의 체로키족과 촉토족에게 전해졌습니다.",
+      "tts": {
+        "text": "옥수수는 스페인 사람들이 오기 훨씬 전부터 북쪽의 체로키족과 촉토족에게 전해졌습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "아메리카 대륙에서는 고구마와 땅콩, 그리고 여러 종류의 콩도 왔습니다.",
+      "text_markdown": "아메리카 대륙에서는 고구마와 땅콩, 그리고 여러 종류의 콩도 왔습니다.",
+      "tts": {
+        "text": "아메리카 대륙에서는 고구마와 땅콩, 그리고 여러 종류의 콩도 왔습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 재료",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소울 푸드는 이 두 식재료 창고가 한 부엌에서 만났을 때 생겨난 음식입니다.",
+      "text_markdown": "소울 푸드는 이 두 식재료 창고가 한 부엌에서 만났을 때 생겨난 음식입니다.",
+      "tts": {
+        "text": "소울 푸드는 이 두 식재료 창고가 한 부엌에서 만났을 때 생겨난 음식입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "3장 고기와 생선",
+      "text_markdown": "3장 고기와 생선"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소울 푸드에서 가장 중요한 고기는 돼지고기입니다.",
+      "text_markdown": "소울 푸드에서 가장 중요한 고기는 돼지고기입니다.",
+      "tts": {
+        "text": "소울 푸드에서 가장 중요한 고기는 돼지고기입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "작은 농장에서도 돼지 한 마리를 키울 수 있었습니다.",
+      "text_markdown": "작은 농장에서도 돼지 한 마리를 키울 수 있었습니다.",
+      "tts": {
+        "text": "작은 농장에서도 돼지 한 마리를 키울 수 있었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "돼지는 남은 부스러기를 먹었습니다.",
+      "text_markdown": "돼지는 남은 부스러기를 먹었습니다.",
+      "tts": {
+        "text": "돼지는 남은 부스러기를 먹었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가을이 되면 가족은 돼지를 잡고 모든 부위를 썼습니다.",
+      "text_markdown": "가을이 되면 가족은 돼지를 잡고 모든 부위를 썼습니다.",
+      "tts": {
+        "text": "가을이 되면 가족은 돼지를 잡고 모든 부위를 썼습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "햄은 훈연했습니다.",
+      "text_markdown": "햄은 훈연했습니다.",
+      "tts": {
+        "text": "햄은 훈연했습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "베이컨은 염장했습니다.",
+      "text_markdown": "베이컨은 염장했습니다.",
+      "tts": {
+        "text": "베이컨은 염장했습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "족발은 식초에 넣어 익혔습니다.",
+      "text_markdown": "족발은 식초에 넣어 익혔습니다.",
+      "tts": {
+        "text": "족발은 식초에 넣어 익혔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "기름은 비스킷을 위해 남겨 두었습니다.",
+      "text_markdown": "기름은 비스킷을 위해 남겨 두었습니다.",
+      "tts": {
+        "text": "기름은 비스킷을 위해 남겨 두었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그다음으로 중요한 고기는 닭입니다.",
+      "text_markdown": "그다음으로 중요한 고기는 닭입니다.",
+      "tts": {
+        "text": "그다음으로 중요한 고기는 닭입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "닭들은 마당에서 살았습니다.",
+      "text_markdown": "닭들은 마당에서 살았습니다.",
+      "tts": {
+        "text": "닭들은 마당에서 살았습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아침에는 알을 낳고, 일요일 저녁상도 책임졌습니다.",
+      "text_markdown": "아침에는 알을 낳고, 일요일 저녁상도 책임졌습니다.",
+      "tts": {
+        "text": "아침에는 알을 낳고, 일요일 저녁상도 책임졌습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프라이드치킨은 남부에서 가장 유명한 음식입니다.",
+      "text_markdown": "프라이드치킨은 남부에서 가장 유명한 음식입니다.",
+      "tts": {
+        "text": "프라이드치킨은 남부에서 가장 유명한 음식입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "닭에는 밀가루와 소금, 후추를 묻힙니다.",
+      "text_markdown": "닭에는 밀가루와 소금, 후추를 묻힙니다.",
+      "tts": {
+        "text": "닭에는 밀가루와 소금, 후추를 묻힙니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그다음 뜨거운 기름에 넣습니다.",
+      "text_markdown": "그다음 뜨거운 기름에 넣습니다.",
+      "tts": {
+        "text": "그다음 뜨거운 기름에 넣습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "껍질은 바삭하고 금빛으로 익습니다.",
+      "text_markdown": "껍질은 바삭하고 금빛으로 익습니다.",
+      "tts": {
+        "text": "껍질은 바삭하고 금빛으로 익습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "메기는 강과 호수에 삽니다.",
+      "text_markdown": "메기는 강과 호수에 삽니다.",
+      "tts": {
+        "text": "메기는 강과 호수에 삽니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남부 요리사들은 메기에 옥수수 가루를 묻혀 튀깁니다.",
+      "text_markdown": "남부 요리사들은 메기에 옥수수 가루를 묻혀 튀깁니다.",
+      "tts": {
+        "text": "남부 요리사들은 메기에 옥수수 가루를 묻혀 튀깁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사람들은 이것을 허시 퍼피와 함께 먹는데, 허시 퍼피는 옥수수 가루를 튀긴 작은 공 모양 음식입니다.",
+      "text_markdown": "사람들은 이것을 허시 퍼피와 함께 먹는데, 허시 퍼피는 옥수수 가루를 튀긴 작은 공 모양 음식입니다.",
+      "tts": {
+        "text": "사람들은 이것을 허시 퍼피와 함께 먹는데, 허시 퍼피는 옥수수 가루를 튀긴 작은 공 모양 음식입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 고기와 생선",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이름은 우습지만 음식은 진지합니다.",
+      "text_markdown": "이름은 우습지만 음식은 진지합니다.",
+      "tts": {
+        "text": "이름은 우습지만 음식은 진지합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "4장 요리하는 방식",
+      "text_markdown": "4장 요리하는 방식"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "소울 푸드의 대부분은 튀기기와 천천히 끓이기, 그리고 훈연이라는 세 가지 조리법이 이끕니다.",
+      "text_markdown": "소울 푸드의 대부분은 튀기기와 천천히 끓이기, 그리고 훈연이라는 세 가지 조리법이 이끕니다.",
+      "tts": {
+        "text": "소울 푸드의 대부분은 튀기기와 천천히 끓이기, 그리고 훈연이라는 세 가지 조리법이 이끕니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "튀김은 주철 스킬렛이라는 무거운 팬에서 합니다.",
+      "text_markdown": "튀김은 주철 스킬렛이라는 무거운 팬에서 합니다.",
+      "tts": {
+        "text": "튀김은 주철 스킬렛이라는 무거운 팬에서 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "주철은 열을 오래 붙잡고 있습니다.",
+      "text_markdown": "주철은 열을 오래 붙잡고 있습니다.",
+      "tts": {
+        "text": "주철은 열을 오래 붙잡고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "좋은 스킬렛은 요리사보다 나이가 많습니다.",
+      "text_markdown": "좋은 스킬렛은 요리사보다 나이가 많습니다.",
+      "tts": {
+        "text": "좋은 스킬렛은 요리사보다 나이가 많습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이것은 어머니에게서 딸에게로 전해집니다.",
+      "text_markdown": "이것은 어머니에게서 딸에게로 전해집니다.",
+      "tts": {
+        "text": "이것은 어머니에게서 딸에게로 전해집니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천천히 끓이는 요리는 스토브 뒤쪽의 큰 냄비에서 합니다.",
+      "text_markdown": "천천히 끓이는 요리는 스토브 뒤쪽의 큰 냄비에서 합니다.",
+      "tts": {
+        "text": "천천히 끓이는 요리는 스토브 뒤쪽의 큰 냄비에서 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "푸른 잎채소는 냄비에서 두세 시간 동안 익습니다.",
+      "text_markdown": "푸른 잎채소는 냄비에서 두세 시간 동안 익습니다.",
+      "tts": {
+        "text": "푸른 잎채소는 냄비에서 두세 시간 동안 익습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "훈연한 돼지고기 한 조각을 맛을 위해 넣습니다.",
+      "text_markdown": "훈연한 돼지고기 한 조각을 맛을 위해 넣습니다.",
+      "tts": {
+        "text": "훈연한 돼지고기 한 조각을 맛을 위해 넣습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "물은 짙고 깊은 국물이 됩니다.",
+      "text_markdown": "물은 짙고 깊은 국물이 됩니다.",
+      "tts": {
+        "text": "물은 짙고 깊은 국물이 됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "사람들은 이 국물을 \"팟 리커\"라고 부르고, 콘브레드 위에 부어 먹습니다.",
+      "text_markdown": "사람들은 이 국물을 \"팟 리커\"라고 부르고, 콘브레드 위에 부어 먹습니다.",
+      "tts": {
+        "text": "사람들은 이 국물을 \"팟 리커\"라고 부르고, 콘브레드 위에 부어 먹습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "훈연은 밖에서, 훈연 창고나 드럼통에서 합니다.",
+      "text_markdown": "훈연은 밖에서, 훈연 창고나 드럼통에서 합니다.",
+      "tts": {
+        "text": "훈연은 밖에서, 훈연 창고나 드럼통에서 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "장작은 고기 아래에서 천천히 탑니다.",
+      "text_markdown": "장작은 고기 아래에서 천천히 탑니다.",
+      "tts": {
+        "text": "장작은 고기 아래에서 천천히 탑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "히코리 나무가 가장 사랑받습니다.",
+      "text_markdown": "히코리 나무가 가장 사랑받습니다.",
+      "tts": {
+        "text": "히코리 나무가 가장 사랑받습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "연기는 고기를 갈색으로 물들이고 깊은 맛을 더합니다.",
+      "text_markdown": "연기는 고기를 갈색으로 물들이고 깊은 맛을 더합니다.",
+      "tts": {
+        "text": "연기는 고기를 갈색으로 물들이고 깊은 맛을 더합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "돼지 어깨살은 여러 시간 훈연하고, 때로는 꼬박 하루를 훈연합니다.",
+      "text_markdown": "돼지 어깨살은 여러 시간 훈연하고, 때로는 꼬박 하루를 훈연합니다.",
+      "tts": {
+        "text": "돼지 어깨살은 여러 시간 훈연하고, 때로는 꼬박 하루를 훈연합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 요리하는 방식",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "좋은 남부의 부엌에는 불과 시간, 그리고 정성이 있습니다.",
+      "text_markdown": "좋은 남부의 부엌에는 불과 시간, 그리고 정성이 있습니다.",
+      "tts": {
+        "text": "좋은 남부의 부엌에는 불과 시간, 그리고 정성이 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "5장 지역별 바비큐",
+      "text_markdown": "5장 지역별 바비큐"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남부에서 \"바비큐\"는 나무 연기로 천천히 익힌 고기를 뜻합니다.",
+      "text_markdown": "남부에서 \"바비큐\"는 나무 연기로 천천히 익힌 고기를 뜻합니다.",
+      "tts": {
+        "text": "남부에서 \"바비큐\"는 나무 연기로 천천히 익힌 고기를 뜻합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지역마다 자기만의 방식이 있습니다.",
+      "text_markdown": "지역마다 자기만의 방식이 있습니다.",
+      "tts": {
+        "text": "지역마다 자기만의 방식이 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "캐롤라이나에서는 바비큐가 돼지고기입니다.",
+      "text_markdown": "캐롤라이나에서는 바비큐가 돼지고기입니다.",
+      "tts": {
+        "text": "캐롤라이나에서는 바비큐가 돼지고기입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "노스캐롤라이나 동부에서는 소스를 식초와 후추로 만듭니다.",
+      "text_markdown": "노스캐롤라이나 동부에서는 소스를 식초와 후추로 만듭니다.",
+      "tts": {
+        "text": "노스캐롤라이나 동부에서는 소스를 식초와 후추로 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "묽고 날카로운 맛입니다.",
+      "text_markdown": "묽고 날카로운 맛입니다.",
+      "tts": {
+        "text": "묽고 날카로운 맛입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사우스캐롤라이나에서는 소스가 노랗고, 머스터드로 만듭니다.",
+      "text_markdown": "사우스캐롤라이나에서는 소스가 노랗고, 머스터드로 만듭니다.",
+      "tts": {
+        "text": "사우스캐롤라이나에서는 소스가 노랗고, 머스터드로 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "조금 달콤합니다.",
+      "text_markdown": "조금 달콤합니다.",
+      "tts": {
+        "text": "조금 달콤합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "테네시주의 멤피스에서는 고기가 돼지갈비입니다.",
+      "text_markdown": "테네시주의 멤피스에서는 고기가 돼지갈비입니다.",
+      "tts": {
+        "text": "테네시주의 멤피스에서는 고기가 돼지갈비입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "갈비에는 소금과 후추, 그리고 여러 향신료를 섞은 마른 양념을 문질러 바릅니다.",
+      "text_markdown": "갈비에는 소금과 후추, 그리고 여러 향신료를 섞은 마른 양념을 문질러 바릅니다.",
+      "tts": {
+        "text": "갈비에는 소금과 후추, 그리고 여러 향신료를 섞은 마른 양념을 문질러 바릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "주인공은 고기이고, 소스는 아주 적습니다.",
+      "text_markdown": "주인공은 고기이고, 소스는 아주 적습니다.",
+      "tts": {
+        "text": "주인공은 고기이고, 소스는 아주 적습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "텍사스에서는 바비큐가 소고기입니다.",
+      "text_markdown": "텍사스에서는 바비큐가 소고기입니다.",
+      "tts": {
+        "text": "텍사스에서는 바비큐가 소고기입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 부위는 브리스킷이라고 부릅니다.",
+      "text_markdown": "그 부위는 브리스킷이라고 부릅니다.",
+      "tts": {
+        "text": "그 부위는 브리스킷이라고 부릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 오크 나무 위에서 열두 시간에서 열네 시간 동안 훈연합니다.",
+      "text_markdown": "그것은 오크 나무 위에서 열두 시간에서 열네 시간 동안 훈연합니다.",
+      "tts": {
+        "text": "그것은 오크 나무 위에서 열두 시간에서 열네 시간 동안 훈연합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "제대로 익으면 손가락으로도 결대로 찢을 수 있습니다.",
+      "text_markdown": "제대로 익으면 손가락으로도 결대로 찢을 수 있습니다.",
+      "tts": {
+        "text": "제대로 익으면 손가락으로도 결대로 찢을 수 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "캔자스시티에서는 바비큐가 돼지고기와 소고기, 닭고기, 심지어 소시지까지 아우르는 여러 고기입니다.",
+      "text_markdown": "캔자스시티에서는 바비큐가 돼지고기와 소고기, 닭고기, 심지어 소시지까지 아우르는 여러 고기입니다.",
+      "tts": {
+        "text": "캔자스시티에서는 바비큐가 돼지고기와 소고기, 닭고기, 심지어 소시지까지 아우르는 여러 고기입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "소스는 걸쭉하고 달고 붉으며, 토마토와 몰라시스로 만듭니다.",
+      "text_markdown": "소스는 걸쭉하고 달고 붉으며, 토마토와 몰라시스로 만듭니다.",
+      "tts": {
+        "text": "소스는 걸쭉하고 달고 붉으며, 토마토와 몰라시스로 만듭니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 지역별 바비큐",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남부 바비큐의 지도는 지역과 강의 지도이기도 합니다.",
+      "text_markdown": "남부 바비큐의 지도는 지역과 강의 지도이기도 합니다.",
+      "tts": {
+        "text": "남부 바비큐의 지도는 지역과 강의 지도이기도 합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "6장 대표적인 한 상",
+      "text_markdown": "6장 대표적인 한 상"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일요일 저녁 한 접시는 가득합니다.",
+      "text_markdown": "일요일 저녁 한 접시는 가득합니다.",
+      "tts": {
+        "text": "일요일 저녁 한 접시는 가득합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가운데에는 프라이드치킨이 있습니다.",
+      "text_markdown": "가운데에는 프라이드치킨이 있습니다.",
+      "tts": {
+        "text": "가운데에는 프라이드치킨이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "치킨 옆에는 브라운 그레이비를 끼얹은 으깬 감자 한 스푼이 있습니다.",
+      "text_markdown": "치킨 옆에는 브라운 그레이비를 끼얹은 으깬 감자 한 스푼이 있습니다.",
+      "tts": {
+        "text": "치킨 옆에는 브라운 그레이비를 끼얹은 으깬 감자 한 스푼이 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한쪽에는 훈연한 돼지고기와 함께 천천히 익힌 콜라드 그린이 수북이 놓입니다.",
+      "text_markdown": "한쪽에는 훈연한 돼지고기와 함께 천천히 익힌 콜라드 그린이 수북이 놓입니다.",
+      "tts": {
+        "text": "한쪽에는 훈연한 돼지고기와 함께 천천히 익힌 콜라드 그린이 수북이 놓입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 채소는 짙고 부드럽습니다.",
+      "text_markdown": "그 채소는 짙고 부드럽습니다.",
+      "tts": {
+        "text": "그 채소는 짙고 부드럽습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다른 쪽에는 마카로니 앤 치즈가 있고, 위쪽이 금빛으로 바삭해질 때까지 구워 냅니다.",
+      "text_markdown": "다른 쪽에는 마카로니 앤 치즈가 있고, 위쪽이 금빛으로 바삭해질 때까지 구워 냅니다.",
+      "tts": {
+        "text": "다른 쪽에는 마카로니 앤 치즈가 있고, 위쪽이 금빛으로 바삭해질 때까지 구워 냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 요리사들은 위에 치즈 한 겹을 더합니다.",
+      "text_markdown": "많은 요리사들은 위에 치즈 한 겹을 더합니다.",
+      "tts": {
+        "text": "많은 요리사들은 위에 치즈 한 겹을 더합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "식탁에는 콘브레드가 있습니다.",
+      "text_markdown": "식탁에는 콘브레드가 있습니다.",
+      "tts": {
+        "text": "식탁에는 콘브레드가 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "콘브레드는 노란 옥수수 가루로 만들고 뜨거운 주철 스킬렛에 구워 냅니다.",
+      "text_markdown": "콘브레드는 노란 옥수수 가루로 만들고 뜨거운 주철 스킬렛에 구워 냅니다.",
+      "tts": {
+        "text": "콘브레드는 노란 옥수수 가루로 만들고 뜨거운 주철 스킬렛에 구워 냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "묵직하고 조금 달며 버터와 아주 잘 어울립니다.",
+      "text_markdown": "묵직하고 조금 달며 버터와 아주 잘 어울립니다.",
+      "tts": {
+        "text": "묵직하고 조금 달며 버터와 아주 잘 어울립니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "마실 것은 스위트 티입니다.",
+      "text_markdown": "마실 것은 스위트 티입니다.",
+      "tts": {
+        "text": "마실 것은 스위트 티입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스위트 티는 홍차를 진하게 우린 뒤, 뜨거울 때 설탕을 섞어 만듭니다.",
+      "text_markdown": "스위트 티는 홍차를 진하게 우린 뒤, 뜨거울 때 설탕을 섞어 만듭니다.",
+      "tts": {
+        "text": "스위트 티는 홍차를 진하게 우린 뒤, 뜨거울 때 설탕을 섞어 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "차갑게, 얼음 위에 내놓습니다.",
+      "text_markdown": "차갑게, 얼음 위에 내놓습니다.",
+      "tts": {
+        "text": "차갑게, 얼음 위에 내놓습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "저녁 식사 뒤에는 파이가 나옵니다.",
+      "text_markdown": "저녁 식사 뒤에는 파이가 나옵니다.",
+      "tts": {
+        "text": "저녁 식사 뒤에는 파이가 나옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "스위트 포테이토 파이는 가장 남부다운 파이입니다.",
+      "text_markdown": "스위트 포테이토 파이는 가장 남부다운 파이입니다.",
+      "tts": {
+        "text": "스위트 포테이토 파이는 가장 남부다운 파이입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "갈색이고 매끈하며, 시나몬과 넛메그의 따뜻한 향이 납니다.",
+      "text_markdown": "갈색이고 매끈하며, 시나몬과 넛메그의 따뜻한 향이 납니다.",
+      "tts": {
+        "text": "갈색이고 매끈하며, 시나몬과 넛메그의 따뜻한 향이 납니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 대표적인 한 상",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 대표적인 한 상입니다.",
+      "text_markdown": "이것이 대표적인 한 상입니다.",
+      "tts": {
+        "text": "이것이 대표적인 한 상입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "7장 식탁",
+      "text_markdown": "7장 식탁"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남부의 저녁 식사는 모두가 함께 식탁에 앉아 이루어집니다.",
+      "text_markdown": "남부의 저녁 식사는 모두가 함께 식탁에 앉아 이루어집니다.",
+      "tts": {
+        "text": "남부의 저녁 식사는 모두가 함께 식탁에 앉아 이루어집니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "음식은 큰 그릇과 큰 접시에 담겨 식탁으로 나옵니다.",
+      "text_markdown": "음식은 큰 그릇과 큰 접시에 담겨 식탁으로 나옵니다.",
+      "tts": {
+        "text": "음식은 큰 그릇과 큰 접시에 담겨 식탁으로 나옵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것을 \"패밀리 스타일\"이라고 부릅니다. 각 사람이 다음 사람에게 그릇을 건넵니다.",
+      "text_markdown": "이것을 \"패밀리 스타일\"이라고 부릅니다. 각 사람이 다음 사람에게 그릇을 건넵니다.",
+      "tts": {
+        "text": "이것을 \"패밀리 스타일\"이라고 부릅니다. 각 사람이 다음 사람에게 그릇을 건넵니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "각자는 먹고 싶은 만큼 덜어 갑니다.",
+      "text_markdown": "각자는 먹고 싶은 만큼 덜어 갑니다.",
+      "tts": {
+        "text": "각자는 먹고 싶은 만큼 덜어 갑니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "포크와 나이프는 소박합니다.",
+      "text_markdown": "포크와 나이프는 소박합니다.",
+      "tts": {
+        "text": "포크와 나이프는 소박합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "특별한 순서는 없습니다.",
+      "text_markdown": "특별한 순서는 없습니다.",
+      "tts": {
+        "text": "특별한 순서는 없습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "치킨은 포크로 먹어도 되고, 손으로 집어 먹어도 됩니다.",
+      "text_markdown": "치킨은 포크로 먹어도 되고, 손으로 집어 먹어도 됩니다.",
+      "tts": {
+        "text": "치킨은 포크로 먹어도 되고, 손으로 집어 먹어도 됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "둘 다 괜찮습니다.",
+      "text_markdown": "둘 다 괜찮습니다.",
+      "tts": {
+        "text": "둘 다 괜찮습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "콘브레드는 손으로 떼어 먹고, 절대 나이프로 자르지 않습니다.",
+      "text_markdown": "콘브레드는 손으로 떼어 먹고, 절대 나이프로 자르지 않습니다.",
+      "tts": {
+        "text": "콘브레드는 손으로 떼어 먹고, 절대 나이프로 자르지 않습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "식사 전에 누군가는 짧은 기도를 하곤 합니다.",
+      "text_markdown": "식사 전에 누군가는 짧은 기도를 하곤 합니다.",
+      "tts": {
+        "text": "식사 전에 누군가는 짧은 기도를 하곤 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "음식과 요리한 사람들에게 감사하며 하나님께 기도합니다.",
+      "text_markdown": "음식과 요리한 사람들에게 감사하며 하나님께 기도합니다.",
+      "tts": {
+        "text": "음식과 요리한 사람들에게 감사하며 하나님께 기도합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "손님이라면 더 먹으라는 말을 몇 번이고 듣게 될 겁니다.",
+      "text_markdown": "손님이라면 더 먹으라는 말을 몇 번이고 듣게 될 겁니다.",
+      "tts": {
+        "text": "손님이라면 더 먹으라는 말을 몇 번이고 듣게 될 겁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "적어도 두 번은 그렇다고 해야 합니다.",
+      "text_markdown": "적어도 두 번은 그렇다고 해야 합니다.",
+      "tts": {
+        "text": "적어도 두 번은 그렇다고 해야 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "배고픈 채로 떠나는 일은 허용되지 않습니다.",
+      "text_markdown": "배고픈 채로 떠나는 일은 허용되지 않습니다.",
+      "tts": {
+        "text": "배고픈 채로 떠나는 일은 허용되지 않습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "식사가 끝나도 누구도 서둘러 일어나지 않습니다.",
+      "text_markdown": "식사가 끝나도 누구도 서둘러 일어나지 않습니다.",
+      "tts": {
+        "text": "식사가 끝나도 누구도 서둘러 일어나지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 식탁",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이야기하는 시간은 저녁 식사의 절반입니다.",
+      "text_markdown": "이야기하는 시간은 저녁 식사의 절반입니다.",
+      "tts": {
+        "text": "이야기하는 시간은 저녁 식사의 절반입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "이 책에 대하여",
+      "text_markdown": "이 책에 대하여"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 푸드 오브 더 월드 시리즈의 첫 번째 책입니다.",
+      "text_markdown": "이 책은 푸드 오브 더 월드 시리즈의 첫 번째 책입니다.",
+      "tts": {
+        "text": "이 책은 푸드 오브 더 월드 시리즈의 첫 번째 책입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 책은 여러분의 친구인 저 Kym이 소리 내어 읽어 드려요.",
+      "text_markdown": "이 책은 킴이 소리 내어 읽습니다.",
+      "tts": {
+        "text": "이 책은 여러분의 친구인 저 킴이 소리 내어 읽어 드려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어느 언어로 읽든 따라 읽을 수 있도록 모든 문장은 짧고 분명합니다.",
+      "text_markdown": "어느 언어로 읽든 따라 읽을 수 있도록 모든 문장은 짧고 분명합니다.",
+      "tts": {
+        "text": "어느 언어로 읽든 따라 읽을 수 있도록 모든 문장은 짧고 분명합니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다른 언어에서 문장이 어떻게 들리는지 알고 싶다면, 같은 책을 그 언어로 들어 보세요.",
+      "text_markdown": "다른 언어에서 문장이 어떻게 들리는지 알고 싶다면, 같은 책을 그 언어로 들어 보세요.",
+      "tts": {
+        "text": "다른 언어에서 문장이 어떻게 들리는지 알고 싶다면, 같은 책을 그 언어로 들어 보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페이지의 글자는 여러분이 듣는 내용과 맞아떨어질 것입니다.",
+      "text_markdown": "페이지의 글자는 여러분이 듣는 내용과 맞아떨어질 것입니다.",
+      "tts": {
+        "text": "페이지의 글자는 여러분이 듣는 내용과 맞아떨어질 것입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그렇게 배우게 됩니다.",
+      "text_markdown": "그렇게 배우게 됩니다.",
+      "tts": {
+        "text": "그렇게 배우게 됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이제 맛있는 음식을 찾으러 가서, 함께 나눌 친구도 찾아보세요.",
+      "text_markdown": "이제 맛있는 음식을 찾으러 가서, 함께 나눌 친구도 찾아보세요.",
+      "tts": {
+        "text": "이제 맛있는 음식을 찾으러 가서, 함께 나눌 친구도 찾아보세요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

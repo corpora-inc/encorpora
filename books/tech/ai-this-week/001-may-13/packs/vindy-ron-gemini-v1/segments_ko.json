@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "ko",
+  "total_segments": 62,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "AI This Week에 오신 것을 환영합니다. 저는 Vindy입니다.",
+      "text_markdown": "AI This Week에 오신 것을 환영합니다. 저는 Vindy입니다.",
+      "title": "",
+      "tts": {
+        "text": "AI This Week에 오신 것을 환영합니다. 저는 Vindy입니다.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "언제나처럼 저와 함께하는 Ron입니다.",
+      "text_markdown": "언제나처럼 저와 함께하는 Ron입니다.",
+      "title": "",
+      "tts": {
+        "text": "언제나처럼 저와 함께하는 Ron입니다.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "함께하게 되어 기쁩니다.",
+      "text_markdown": "함께하게 되어 기쁩니다.",
+      "title": "",
+      "tts": {
+        "text": "함께하게 되어 기쁩니다.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "오늘은 2026년 5월 13일 수요일입니다. 오늘 다룰 내용: 이번 주에 출시된 모델들. 리더보드들, 그리고 그 중 일부는 더 이상 신뢰하지 말아야 하는 이유. 이번 주 핵심 개념. 그리고 더 큰 그림 — 미국이 새로운 연방준비제도 의장을 맞았는데, 이것이 생각보다 AI에 더 중요한 의미를 갖습니다.",
+      "text_markdown": "오늘은 2026년 5월 13일 수요일입니다. 오늘 다룰 내용: 이번 주에 출시된 모델들. 리더보드들, 그리고 그 중 일부는 더 이상 신뢰하지 말아야 하는 이유. 이번 주 핵심 개념. 그리고 더 큰 그림 — 미국이 새로운 연방준비제도 의장을 맞았는데, 이것이 생각보다 AI에 더 중요한 의미를 갖습니다.",
+      "title": "",
+      "tts": {
+        "text": "오늘은 이천이십육년 오월 십삼일 수요일입니다. 오늘 다룰 내용: 이번 주에 출시된 모델들. 리더보드들, 그리고 그 중 일부는 더 이상 신뢰하지 말아야 하는 이유. 이번 주 핵심 개념. 그리고 더 큰 그림 — 미국이 새로운 연방준비제도 의장을 맞았는데, 이것이 생각보다 AI에 더 중요한 의미를 갖습니다.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, 이번 주 가장 큰 모델 뉴스는 무엇인가요?",
+      "text_markdown": "Ron, 이번 주 가장 큰 모델 뉴스는 무엇인가요?",
+      "title": "",
+      "tts": {
+        "text": "Ron, 이번 주 가장 큰 모델 뉴스는 무엇인가요?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ChatGPT 내부의 기본 뇌가 바뀌었습니다. OpenAI가 지난 주 5월 5일 화요일에 GPT-5.5 Instant라는 새 모델을 무료 계층에 출시했습니다. 무료 ChatGPT 응답이 더 짧아지거나 이모지가 줄어든 느낌이 든다면, 그것이 바로 그 이유입니다.",
+      "text_markdown": "ChatGPT 내부의 기본 뇌가 바뀌었습니다. OpenAI가 지난 주 5월 5일 화요일에 GPT-5.5 Instant라는 새 모델을 무료 계층에 출시했습니다. 무료 ChatGPT 응답이 더 짧아지거나 이모지가 줄어든 느낌이 든다면, 그것이 바로 그 이유입니다.",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT 내부의 기본 뇌가 바뀌었습니다. OpenAI가 지난 주 오월 오일 화요일에 GPT 오점오 Instant라는 새 모델을 무료 계층에 출시했습니다. 무료 ChatGPT 응답이 더 짧아지거나 이모지가 줄어든 느낌이 든다면, 그것이 바로 그 이유입니다.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "어떻게 더 짧아졌나요?",
+      "text_markdown": "어떻게 더 짧아졌나요?",
+      "title": "",
+      "tts": {
+        "text": "어떻게 더 짧아졌나요?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI에 따르면 새 기본 모델은 교체된 모델보다 대략 30% 적은 단어와 30% 적은 줄을 작성한다고 합니다. 또한 의료 질문, 법적 질문, 금융 질문 같은 가장 어려운 프롬프트에서 환각 주장이 50% 감소했다고 주장합니다.",
+      "text_markdown": "OpenAI에 따르면 새 기본 모델은 교체된 모델보다 대략 30% 적은 단어와 30% 적은 줄을 작성한다고 합니다. 또한 의료 질문, 법적 질문, 금융 질문 같은 가장 어려운 프롬프트에서 환각 주장이 50% 감소했다고 주장합니다.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI에 따르면 새 기본 모델은 교체된 모델보다 대략 삼십 퍼센트 적은 단어와 삼십 퍼센트 적은 줄을 작성한다고 합니다. 또한 의료 질문, 법적 질문, 금융 질문 같은 가장 어려운 프롬프트에서 환각 주장이 오십 퍼센트 감소했다고 주장합니다.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "OpenAI 외부에서 그 수치들을 검증한 곳이 있나요?",
+      "text_markdown": "OpenAI 외부에서 그 수치들을 검증한 곳이 있나요?",
+      "title": "",
+      "tts": {
+        "text": "OpenAI 외부에서 그 수치들을 검증한 곳이 있나요?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "대규모로는 아직 없습니다. Artificial Analysis 같은 독립적인 벤치마크 기관들이 새 모델을 전체 지능 지수에서 최상위에 두고 있습니다. 하지만 환각 주장은 검증하는 데 시간이 걸립니다. 사람들이 실제로 모델을 사용하면서 몇 주에 걸쳐 나타나는 경향이 있습니다.",
+      "text_markdown": "대규모로는 아직 없습니다. Artificial Analysis 같은 독립적인 벤치마크 기관들이 새 모델을 전체 지능 지수에서 최상위에 두고 있습니다. 하지만 환각 주장은 검증하는 데 시간이 걸립니다. 사람들이 실제로 모델을 사용하면서 몇 주에 걸쳐 나타나는 경향이 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "대규모로는 아직 없습니다. Artificial Analysis 같은 독립적인 벤치마크 기관들이 새 모델을 전체 지능 지수에서 최상위에 두고 있습니다. 하지만 환각 주장은 검증하는 데 시간이 걸립니다. 사람들이 실제로 모델을 사용하면서 몇 주에 걸쳐 나타나는 경향이 있습니다.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "오픈 웨이트 쪽은 어떤가요?",
+      "text_markdown": "오픈 웨이트 쪽은 어떤가요?",
+      "title": "",
+      "tts": {
+        "text": "오픈 웨이트 쪽은 어떤가요?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "두 가지 큰 일이 있었습니다. Kimi 모델을 만든 중국 연구소 Moonshot이 지난 주 5월 7일에 200억 달러 가치평가로 20억 달러를 조달했습니다. 그리고 그들의 최신 모델인 Kimi K 2.6이 방금 OpenRouter에서 토큰 볼륨 1위를 차지했습니다.",
+      "text_markdown": "두 가지 큰 일이 있었습니다. Kimi 모델을 만든 중국 연구소 Moonshot이 지난 주 5월 7일에 200억 달러 가치평가로 20억 달러를 조달했습니다. 그리고 그들의 최신 모델인 Kimi K 2.6이 방금 OpenRouter에서 토큰 볼륨 1위를 차지했습니다.",
+      "title": "",
+      "tts": {
+        "text": "두 가지 큰 일이 있었습니다. Kimi 모델을 만든 중국 연구소 Moonshot이 지난 주 오월 칠일에 이백억 달러 가치평가로 이십억 달러를 조달했습니다. 그리고 그들의 최신 모델인 Kimi K 이점육이 방금 OpenRouter에서 토큰 볼륨 일위를 차지했습니다.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "일 위요? 전체적으로요?",
+      "text_markdown": "일 위요? 전체적으로요?",
+      "title": "",
+      "tts": {
+        "text": "일 위요? 전체적으로요?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "전체적으로 말입니다. 주요 상용 라우터에서 중국 오픈 웨이트 모델이 일위를 차지한 것입니다. 불과 여섯 달 전만 해도 상상할 수 없는 일이었죠.",
+      "text_markdown": "전체적으로 말입니다. 주요 상용 라우터에서 중국 오픈 웨이트 모델이 일위를 차지한 것입니다. 불과 여섯 달 전만 해도 상상할 수 없는 일이었죠.",
+      "title": "",
+      "tts": {
+        "text": "전체적으로 말입니다. 주요 상용 라우터에서 중국 오픈 웨이트 모델이 일위를 차지한 것입니다. 불과 여섯 달 전만 해도 상상할 수 없는 일이었죠.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "다른 주목할 만한 것이 있나요?",
+      "text_markdown": "다른 주목할 만한 것이 있나요?",
+      "title": "",
+      "tts": {
+        "text": "다른 주목할 만한 것이 있나요?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "프랑스 연구소 Mistral이 4월 말에 Medium 3.5를 출시했습니다. 그들은 채팅 모델, 추론 모델, 코딩 모델로 나뉘었던 기존 구분을 하나의 제품으로 통합하고 있습니다. OpenAI가 GPT-5 패밀리로 시작한 것과 같은 트렌드죠. 업계 전체가 그 방향으로 움직이고 있습니다.",
+      "text_markdown": "프랑스 연구소 Mistral이 4월 말에 Medium 3.5를 출시했습니다. 그들은 채팅 모델, 추론 모델, 코딩 모델로 나뉘었던 기존 구분을 하나의 제품으로 통합하고 있습니다. OpenAI가 GPT-5 패밀리로 시작한 것과 같은 트렌드죠. 업계 전체가 그 방향으로 움직이고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "프랑스 연구소 Mistral이 사월 말에 Medium 삼점오를 출시했습니다. 그들은 채팅 모델, 추론 모델, 코딩 모델로 나뉘었던 기존 구분을 하나의 제품으로 통합하고 있습니다. OpenAI가 GPT 오 패밀리로 시작한 것과 같은 트렌드죠. 업계 전체가 그 방향으로 움직이고 있습니다.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "다음에는 무엇이 나올 예정인가요?",
+      "text_markdown": "다음에는 무엇이 나올 예정인가요?",
+      "title": "",
+      "tts": {
+        "text": "다음에는 무엇이 나올 예정인가요?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Google I/O가 화요일에 있습니다. 모두가 새로운 Gemini를 기대하고 있고, Gemini Omni라는 비디오 생성 모델에 대한 신빙성 있는 소문들이 있습니다. OpenAI는 GPT-5.6을 테스트하고 있습니다. Anthropic은 Mythos라는 모델을 비공개 미리보기로 진행하고 있습니다. 다음 주에는 훨씬 더 많은 것을 알게 될 것입니다.",
+      "text_markdown": "Google I/O가 화요일에 있습니다. 모두가 새로운 Gemini를 기대하고 있고, Gemini Omni라는 비디오 생성 모델에 대한 신빙성 있는 소문들이 있습니다. OpenAI는 GPT-5.6을 테스트하고 있습니다. Anthropic은 Mythos라는 모델을 비공개 미리보기로 진행하고 있습니다. 다음 주에는 훨씬 더 많은 것을 알게 될 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "Google I O가 화요일에 있습니다. 모두가 새로운 Gemini를 기대하고 있고, Gemini Omni라는 비디오 생성 모델에 대한 신빙성 있는 소문들이 있습니다. OpenAI는 GPT 오점육을 테스트하고 있습니다. Anthropic은 Mythos라는 모델을 비공개 미리보기로 진행하고 있습니다. 다음 주에는 훨씬 더 많은 것을 알게 될 것입니다.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "좋습니다, 리더보드로 넘어가겠습니다.",
+      "text_markdown": "좋습니다, 리더보드로 넘어가겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "좋습니다, 리더보드로 넘어가겠습니다.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, 이번 주 보드에서 움직이는 것은 무엇인가요?",
+      "text_markdown": "Ron, 이번 주 보드에서 움직이는 것은 무엇인가요?",
+      "title": "",
+      "tts": {
+        "text": "Ron, 이번 주 보드에서 움직이는 것은 무엇인가요?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "이번 주 진짜 이야기는 점수가 아닙니다. 더 이상 신뢰하지 말아야 할 점수들입니다.",
+      "text_markdown": "이번 주 진짜 이야기는 점수가 아닙니다. 더 이상 신뢰하지 말아야 할 점수들입니다.",
+      "title": "",
+      "tts": {
+        "text": "이번 주 진짜 이야기는 점수가 아닙니다. 더 이상 신뢰하지 말아야 할 점수들입니다.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "그것에 대해 좀 더 자세히 말해주세요, Ron.",
+      "text_markdown": "그것에 대해 좀 더 자세히 말해주세요, Ron.",
+      "title": "",
+      "tts": {
+        "text": "그것에 대해 좀 더 자세히 말해주세요, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Berkeley의 한 그룹이 논문을 발표했습니다. 그들은 실제로는 단 하나의 작업도 해결하지 않고도 모든 주요 AI 에이전트 벤치마크에서 거의 완벽한 점수를 받는 자동화된 스캐너를 만들었습니다. 벤치마크들이 자체 답변을 확인하는 방식을 악용한 것입니다.",
+      "text_markdown": "Berkeley의 한 그룹이 논문을 발표했습니다. 그들은 실제로는 단 하나의 작업도 해결하지 않고도 모든 주요 AI 에이전트 벤치마크에서 거의 완벽한 점수를 받는 자동화된 스캐너를 만들었습니다. 벤치마크들이 자체 답변을 확인하는 방식을 악용한 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "Berkeley의 한 그룹이 논문을 발표했습니다. 그들은 실제로는 단 하나의 작업도 해결하지 않고도 모든 주요 AI 에이전트 벤치마크에서 거의 완벽한 점수를 받는 자동화된 스캐너를 만들었습니다. 벤치마크들이 자체 답변을 확인하는 방식을 악용한 것입니다.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "그들이 속임수를 썼는데, 벤치마크가 그것을 잡아내지 못했군요.",
+      "text_markdown": "그들이 속임수를 썼는데, 벤치마크가 그것을 잡아내지 못했군요.",
+      "title": "",
+      "tts": {
+        "text": "그들이 속임수를 썼는데, 벤치마크가 그것을 잡아내지 못했군요.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "맞습니다. 그리고 같은 주에 OpenAI가 SWE bench Verified에서의 평가를 중단한다고 발표했습니다. 그들이 항상 인용하던 코딩 벤치마크였죠. 어려운 작업의 절반 이상이 테스트가 깨져있다는 것이 밝혀져서 중단한 것입니다.",
+      "text_markdown": "맞습니다. 그리고 같은 주에 OpenAI가 SWE bench Verified에서의 평가를 중단한다고 발표했습니다. 그들이 항상 인용하던 코딩 벤치마크였죠. 어려운 작업의 절반 이상이 테스트가 깨져있다는 것이 밝혀져서 중단한 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "맞습니다. 그리고 같은 주에 OpenAI가 SWE bench Verified에서의 평가를 중단한다고 발표했습니다. 그들이 항상 인용하던 코딩 벤치마크였죠. 어려운 작업의 절반 이상이 테스트가 깨져있다는 것이 밝혀져서 중단한 것입니다.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "그러니까 지난 일 년 동안 들어온 수치들이 꽤 많았던 거예요.",
+      "text_markdown": "그러니까 지난 일 년 동안 들어온 수치들이 꽤 많았던 거예요.",
+      "title": "",
+      "tts": {
+        "text": "그러니까 지난 일 년 동안 들어온 수치들이 꽤 많았던 거예요.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "적어도 부분적으로는 부풀려진 것입니다. 모든 모델이 그런 건 아니고, 모든 벤치마크가 그런 것도 아닙니다. 하지만 분야 전체가 공개적으로 측정 기준을 재구축하고 있습니다. SWE-bench Pro와 SWE-rebench라는 프로젝트 같은 새로운 평가들이 테스트 코드를 비공개로 유지하여 이 문제를 해결하려고 합니다.",
+      "text_markdown": "적어도 부분적으로는 부풀려진 것입니다. 모든 모델이 그런 건 아니고, 모든 벤치마크가 그런 것도 아닙니다. 하지만 분야 전체가 공개적으로 측정 기준을 재구축하고 있습니다. SWE-bench Pro와 SWE-rebench라는 프로젝트 같은 새로운 평가들이 테스트 코드를 비공개로 유지하여 이 문제를 해결하려고 합니다.",
+      "title": "",
+      "tts": {
+        "text": "적어도 부분적으로는 부풀려진 것입니다. 모든 모델이 그런 건 아니고, 모든 벤치마크가 그런 것도 아닙니다. 하지만 분야 전체가 공개적으로 측정 기준을 재구축하고 있습니다. SWE bench Pro와 SWE rebench라는 프로젝트 같은 새로운 평가들이 테스트 코드를 비공개로 유지하여 이 문제를 해결하려고 합니다.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "명확하게 상승하고 있는 것이 있나요?",
+      "text_markdown": "명확하게 상승하고 있는 것이 있나요?",
+      "title": "",
+      "tts": {
+        "text": "명확하게 상승하고 있는 것이 있나요?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "더 깨끗한 보드에서 두 가지가 있습니다. 4월 중순에 Anthropic의 Claude Opus 4.7이 LM Arena 코딩 리더보드에서 Elo 1500을 명확하게 넘은 첫 번째 모델이 되었습니다. Opus 4.6이 몇 주 전에 1500에 닿았었죠. 이번 주 기준으로 Opus 4.7이 여전히 최상위에 있으며, 약 1569입니다. Anthropic은 또한 Mythos라는 별도 모델을 비공개 파트너 미리보기로 진행하고 있는데, 이는 Anthropic이 측정한 18개 에이전트 벤치마크 중 17개에서 선도하고 있습니다.",
+      "text_markdown": "더 깨끗한 보드에서 두 가지가 있습니다. 4월 중순에 Anthropic의 Claude Opus 4.7이 LM Arena 코딩 리더보드에서 Elo 1500을 명확하게 넘은 첫 번째 모델이 되었습니다. Opus 4.6이 몇 주 전에 1500에 닿았었죠. 이번 주 기준으로 Opus 4.7이 여전히 최상위에 있으며, 약 1569입니다. Anthropic은 또한 Mythos라는 별도 모델을 비공개 파트너 미리보기로 진행하고 있는데, 이는 Anthropic이 측정한 18개 에이전트 벤치마크 중 17개에서 선도하고 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "더 깨끗한 보드에서 두 가지가 있습니다. 사월 중순에 Anthropic의 Claude Opus 사점칠이 LM Arena 코딩 리더보드에서 Elo 천오백을 명확하게 넘은 첫 번째 모델이 되었습니다. Opus 사점육이 몇 주 전에 천오백에 닿았었죠. 이번 주 기준으로 Opus 사점칠이 여전히 최상위에 있으며, 약 천오백육십구입니다. Anthropic은 또한 Mythos라는 별도 모델을 비공개 파트너 미리보기로 진행하고 있는데, 이는 Anthropic이 측정한 십팔개 에이전트 벤치마크 중 십칠개에서 선도하고 있습니다.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "대중이 사용할 수 없는 모델이 보드 최상위에 있군요.",
+      "text_markdown": "대중이 사용할 수 없는 모델이 보드 최상위에 있군요.",
+      "title": "",
+      "tts": {
+        "text": "대중이 사용할 수 없는 모델이 보드 최상위에 있군요.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "그것이 현재 상황입니다. 다른 큰 트렌드는 오픈 대 폐쇄 격차입니다. 이제까지 중에서 가장 좁습니다. DeepSeek V4 Pro와 Kimi K 2.6이 크로스 평가 지능 지수에서 GPT-5.5에 근접하고 있습니다. 그 격차는 예전에는 컸습니다. 이제는 작습니다.",
+      "text_markdown": "그것이 현재 상황입니다. 다른 큰 트렌드는 오픈 대 폐쇄 격차입니다. 이제까지 중에서 가장 좁습니다. DeepSeek V4 Pro와 Kimi K 2.6이 크로스 평가 지능 지수에서 GPT-5.5에 근접하고 있습니다. 그 격차는 예전에는 컸습니다. 이제는 작습니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 현재 상황입니다. 다른 큰 트렌드는 오픈 대 폐쇄 격차입니다. 이제까지 중에서 가장 좁습니다. DeepSeek V 사 Pro와 Kimi K 이점육이 크로스 평가 지능 지수에서 GPT 오점오에 근접하고 있습니다. 그 격차는 예전에는 컸습니다. 이제는 작습니다.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "좋습니다, 이번 주 개념으로 넘어가겠습니다.",
+      "text_markdown": "좋습니다, 이번 주 개념으로 넘어가겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "좋습니다, 이번 주 개념으로 넘어가겠습니다.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, 이번 주 개념은 mixture of experts입니다. 왜 mixture of experts에 집중하고 있나요?",
+      "text_markdown": "Ron, 이번 주 개념은 mixture of experts입니다. 왜 mixture of experts에 집중하고 있나요?",
+      "title": "",
+      "tts": {
+        "text": "Ron, 이번 주 개념은 mixture of experts입니다. 왜 mixture of experts에 집중하고 있나요?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "방금 이야기한 오픈 웨이트 모델 Kimi K 2.6이 총 1조 개의 파라미터를 가지고 있기 때문입니다. 하지만 그 중 320억 개의 파라미터만이 주어진 순간에 실행됩니다. 그것이 바로 mixture of experts입니다.",
+      "text_markdown": "방금 이야기한 오픈 웨이트 모델 Kimi K 2.6이 총 1조 개의 파라미터를 가지고 있기 때문입니다. 하지만 그 중 320억 개의 파라미터만이 주어진 순간에 실행됩니다. 그것이 바로 mixture of experts입니다.",
+      "title": "",
+      "tts": {
+        "text": "방금 이야기한 오픈 웨이트 모델 Kimi K 이점육이 총 일조 개의 파라미터를 가지고 있기 때문입니다. 하지만 그 중 삼백이십억 개의 파라미터만이 주어진 순간에 실행됩니다. 그것이 바로 mixture of experts입니다.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "청취자들을 위해 설명해 주세요.",
+      "text_markdown": "청취자들을 위해 설명해 주세요.",
+      "title": "",
+      "tts": {
+        "text": "청취자들을 위해 설명해 주세요.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "일반적인 AI 모델은 하나의 거대한 뇌와 같습니다. 생성하는 모든 단어가 뇌의 모든 부분을 사용합니다. mixture of experts 모델은 전문가들로 가득한 건물에 더 가깝습니다. 문 앞에 접수원이 있죠. 각 단어마다 접수원이 두세 명의 전문가를 선택해 상담하고, 건물의 나머지는 조용히 있습니다.",
+      "text_markdown": "일반적인 AI 모델은 하나의 거대한 뇌와 같습니다. 생성하는 모든 단어가 뇌의 모든 부분을 사용합니다. mixture of experts 모델은 전문가들로 가득한 건물에 더 가깝습니다. 문 앞에 접수원이 있죠. 각 단어마다 접수원이 두세 명의 전문가를 선택해 상담하고, 건물의 나머지는 조용히 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "일반적인 AI 모델은 하나의 거대한 뇌와 같습니다. 생성하는 모든 단어가 뇌의 모든 부분을 사용합니다. mixture of experts 모델은 전문가들로 가득한 건물에 더 가깝습니다. 문 앞에 접수원이 있죠. 각 단어마다 접수원이 두세 명의 전문가를 선택해 상담하고, 건물의 나머지는 조용히 있습니다.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "그러니까 모델은 서류상으로는 거대하지만 실행하기는 저렴하군요.",
+      "text_markdown": "그러니까 모델은 서류상으로는 거대하지만 실행하기는 저렴하군요.",
+      "title": "",
+      "tts": {
+        "text": "그러니까 모델은 서류상으로는 거대하지만 실행하기는 저렴하군요.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "정확합니다. 1조 개 파라미터의 용량. 하지만 단어당 320억 개 파라미터의 연산만. 그것이 비결입니다. 접수원은 라우터라고 불리는 작은 코드 조각입니다. 전문가들은 experts라고 불리는 서브 네트워크들이죠. 모델은 라우터와 experts를 함께, end to end로 훈련시킵니다.",
+      "text_markdown": "정확합니다. 1조 개 파라미터의 용량. 하지만 단어당 320억 개 파라미터의 연산만. 그것이 비결입니다. 접수원은 라우터라고 불리는 작은 코드 조각입니다. 전문가들은 experts라고 불리는 서브 네트워크들이죠. 모델은 라우터와 experts를 함께, end to end로 훈련시킵니다.",
+      "title": "",
+      "tts": {
+        "text": "정확합니다. 일조 개 파라미터의 용량. 하지만 단어당 삼백이십억 개 파라미터의 연산만. 그것이 비결입니다. 접수원은 라우터라고 불리는 작은 코드 조각입니다. 전문가들은 experts라고 불리는 서브 네트워크들이죠. 모델은 라우터와 experts를 함께, end to end로 훈련시킵니다.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "모든 주요 최첨단 모델이 이를 하고 있나요?",
+      "text_markdown": "모든 주요 최첨단 모델이 이를 하고 있나요?",
+      "title": "",
+      "tts": {
+        "text": "모든 주요 최첨단 모델이 이를 하고 있나요?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "대부분이 그렇습니다. 연구소들이 항상 확인해주지는 않지만요. GPT-4가 mixture of experts 모델이었습니다. DeepSeek의 주력 제품도 mixture of experts 모델입니다. Mistral은 2023년부터 mixture of experts 모델을 출시해 왔습니다. 중국의 새로운 물결이 이 설계를 한계까지 밀어붙였습니다.",
+      "text_markdown": "대부분이 그렇습니다. 연구소들이 항상 확인해주지는 않지만요. GPT-4가 mixture of experts 모델이었습니다. DeepSeek의 주력 제품도 mixture of experts 모델입니다. Mistral은 2023년부터 mixture of experts 모델을 출시해 왔습니다. 중국의 새로운 물결이 이 설계를 한계까지 밀어붙였습니다.",
+      "title": "",
+      "tts": {
+        "text": "대부분이 그렇습니다. 연구소들이 항상 확인해주지는 않지만요. GPT 사가 mixture of experts 모델이었습니다. DeepSeek의 주력 제품도 mixture of experts 모델입니다. Mistral은 이천이십삼년부터 mixture of experts 모델을 출시해 왔습니다. 중국의 새로운 물결이 이 설계를 한계까지 밀어붙였습니다.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "그냥 ChatGPT를 사용하는 사람에게는 왜 중요할까요?",
+      "text_markdown": "그냥 ChatGPT를 사용하는 사람에게는 왜 중요할까요?",
+      "title": "",
+      "tts": {
+        "text": "그냥 ChatGPT를 사용하는 사람에게는 왜 중요할까요?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "두 가지 이유가 있습니다. 첫째, 중국의 오픈 웨이트 랩이 훨씬 적은 예산으로도 프론티어급 품질로 운영할 수 있는 주된 이유입니다. 둘째, 단일 API 호출 비용이 달러가 아닌 센트로 측정되는 주된 이유입니다. 가격이 떨어지고 품질이 높게 유지되는 것을 볼 때, 보통 그 이유가 바로 전문가 혼합 방식입니다.",
+      "text_markdown": "두 가지 이유가 있습니다. 첫째, 중국의 오픈 웨이트 랩이 훨씬 적은 예산으로도 프론티어급 품질로 운영할 수 있는 주된 이유입니다. 둘째, 단일 API 호출 비용이 달러가 아닌 센트로 측정되는 주된 이유입니다. 가격이 떨어지고 품질이 높게 유지되는 것을 볼 때, 보통 그 이유가 바로 전문가 혼합 방식입니다.",
+      "title": "",
+      "tts": {
+        "text": "두 가지 이유가 있습니다. 첫째, 중국의 오픈 웨이트 랩이 훨씬 적은 예산으로도 프론티어급 품질로 운영할 수 있는 주된 이유입니다. 둘째, 단일 API 호출 비용이 달러가 아닌 센트로 측정되는 주된 이유입니다. 가격이 떨어지고 품질이 높게 유지되는 것을 볼 때, 보통 그 이유가 바로 전문가 혼합 방식입니다.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "전문가 혼합. 라우터. 전문가들. 희소 활성화. 기억해야 할 세 가지 단어입니다. 이제 더 큰 그림으로 돌아가 보겠습니다.",
+      "text_markdown": "전문가 혼합. 라우터. 전문가들. 희소 활성화. 기억해야 할 세 가지 단어입니다. 이제 더 큰 그림으로 돌아가 보겠습니다.",
+      "title": "",
+      "tts": {
+        "text": "전문가 혼합. 라우터. 전문가들. 희소 활성화. 기억해야 할 세 가지 단어입니다. 이제 더 큰 그림으로 돌아가 보겠습니다.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "론, 이번 주 우리 세계 밖의 큰 뉴스는 연준입니다.",
+      "text_markdown": "론, 이번 주 우리 세계 밖의 큰 뉴스는 연준입니다.",
+      "title": "",
+      "tts": {
+        "text": "론, 이번 주 우리 세계 밖의 큰 뉴스는 연준입니다.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "오늘 미국 상원은 케빈 워시를 차기 연준 의장으로 승인했습니다. 표결은 54대 45였습니다. 현대 미국 역사상 연준 의장 승인 투표 중 가장 근소한 표차였습니다. 단 한 명의 민주당원만이 당론을 거스렀습니다.",
+      "text_markdown": "오늘 미국 상원은 케빈 워시를 차기 연준 의장으로 승인했습니다. 표결은 54대 45였습니다. 현대 미국 역사상 연준 의장 승인 투표 중 가장 근소한 표차였습니다. 단 한 명의 민주당원만이 당론을 거스렀습니다.",
+      "title": "",
+      "tts": {
+        "text": "오늘 미국 상원은 케빈 워시를 차기 연준 의장으로 승인했습니다. 표결은 오십사 대 사십오였습니다. 현대 미국 역사상 연준 의장 승인 투표 중 가장 근소한 표차였습니다. 단 한 명의 민주당원만이 당론을 거스렀습니다.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "그것이 AI에는 왜 중요할까요?",
+      "text_markdown": "그것이 AI에는 왜 중요할까요?",
+      "title": "",
+      "tts": {
+        "text": "그것이 AI에는 왜 중요할까요?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "현재 AI 구축은 두 가지 요인에 의해 제약을 받고 있기 때문입니다. 전력과 자본 비용입니다. 연준이 자본 비용을 결정합니다. 그리고 새 의장은 전임자보다 더 빠른 금리 인하를 원한다고 공개적으로 밝힌 바 있습니다.",
+      "text_markdown": "현재 AI 구축은 두 가지 요인에 의해 제약을 받고 있기 때문입니다. 전력과 자본 비용입니다. 연준이 자본 비용을 결정합니다. 그리고 새 의장은 전임자보다 더 빠른 금리 인하를 원한다고 공개적으로 밝힌 바 있습니다.",
+      "title": "",
+      "tts": {
+        "text": "현재 AI 구축은 두 가지 요인에 의해 제약을 받고 있기 때문입니다. 전력과 자본 비용입니다. 연준이 자본 비용을 결정합니다. 그리고 새 의장은 전임자보다 더 빠른 금리 인하를 원한다고 공개적으로 밝힌 바 있습니다.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "더 빠른 금리 인하는 AI 투자를 더 저렴하게 만듭니다.",
+      "text_markdown": "더 빠른 금리 인하는 AI 투자를 더 저렴하게 만듭니다.",
+      "title": "",
+      "tts": {
+        "text": "더 빠른 금리 인하는 AI 투자를 더 저렴하게 만듭니다.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "맞습니다. 하이퍼스케일러들 — Microsoft, Google, Amazon, Meta — 은 올해 자본 지출에 약 7000억 달러를 지출할 예정입니다. 그 대부분이 GPU와 데이터센터입니다. 더 낮은 할인율은 이러한 다년간의 구축 사업이 더 높은 가치 평가에서 수익성을 갖도록 만듭니다.",
+      "text_markdown": "맞습니다. 하이퍼스케일러들 — Microsoft, Google, Amazon, Meta — 은 올해 자본 지출에 약 7000억 달러를 지출할 예정입니다. 그 대부분이 GPU와 데이터센터입니다. 더 낮은 할인율은 이러한 다년간의 구축 사업이 더 높은 가치 평가에서 수익성을 갖도록 만듭니다.",
+      "title": "",
+      "tts": {
+        "text": "맞습니다. 하이퍼스케일러들 — Microsoft, Google, Amazon, Meta — 은 올해 자본 지출에 약 칠천억 달러를 지출할 예정입니다. 그 대부분이 GPU와 데이터센터입니다. 더 낮은 할인율은 이러한 다년간의 구축 사업이 더 높은 가치 평가에서 수익성을 갖도록 만듭니다.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "반대 방향으로는 어떨까요. AI가 연준의 결정에 어떤 영향을 미칠까요?",
+      "text_markdown": "반대 방향으로는 어떨까요. AI가 연준의 결정에 어떤 영향을 미칠까요?",
+      "title": "",
+      "tts": {
+        "text": "반대 방향으로는 어떨까요. AI가 연준의 결정에 어떤 영향을 미칠까요?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "이 부분이 흥미로운 점입니다. AI 자본 지출이 이제 거시경제 수치가 될 만큼 커졌습니다. 단순한 업종별 이야기가 아닙니다. 월가 애널리스트들은 AI 관련 건설 및 장비 지출이 지난 몇 분기 동안 미국 경제 성장의 대부분을 차지했다고 말합니다.",
+      "text_markdown": "이 부분이 흥미로운 점입니다. AI 자본 지출이 이제 거시경제 수치가 될 만큼 커졌습니다. 단순한 업종별 이야기가 아닙니다. 월가 애널리스트들은 AI 관련 건설 및 장비 지출이 지난 몇 분기 동안 미국 경제 성장의 대부분을 차지했다고 말합니다.",
+      "title": "",
+      "tts": {
+        "text": "이 부분이 흥미로운 점입니다. AI 자본 지출이 이제 거시경제 수치가 될 만큼 커졌습니다. 단순한 업종별 이야기가 아닙니다. 월가 애널리스트들은 AI 관련 건설 및 장비 지출이 지난 몇 분기 동안 미국 경제 성장의 대부분을 차지했다고 말합니다.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "성장의 대부분을요.",
+      "text_markdown": "성장의 대부분을요.",
+      "title": "",
+      "tts": {
+        "text": "성장의 대부분을요.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "대부분입니다. 그리고 연준에게는 양방향으로 작용합니다. 장기적으로는 AI가 생산성 향상 요인입니다. 이는 디플레이션 효과를 가져와 연준에게 금리 인하의 여지를 제공합니다. 단기적으로는 전력, 구리, 숙련 노동력, 냉각용 물에 대한 수요 충격입니다. 이는 인플레이션 요인입니다. 특히 데이터센터가 집중된 버지니아나 텍사스 같은 지역에서 그렇습니다.",
+      "text_markdown": "대부분입니다. 그리고 연준에게는 양방향으로 작용합니다. 장기적으로는 AI가 생산성 향상 요인입니다. 이는 디플레이션 효과를 가져와 연준에게 금리 인하의 여지를 제공합니다. 단기적으로는 전력, 구리, 숙련 노동력, 냉각용 물에 대한 수요 충격입니다. 이는 인플레이션 요인입니다. 특히 데이터센터가 집중된 버지니아나 텍사스 같은 지역에서 그렇습니다.",
+      "title": "",
+      "tts": {
+        "text": "대부분입니다. 그리고 연준에게는 양방향으로 작용합니다. 장기적으로는 AI가 생산성 향상 요인입니다. 이는 디플레이션 효과를 가져와 연준에게 금리 인하의 여지를 제공합니다. 단기적으로는 전력, 구리, 숙련 노동력, 냉각용 물에 대한 수요 충격입니다. 이는 인플레이션 요인입니다. 특히 데이터센터가 집중된 버지니아나 텍사스 같은 지역에서 그렇습니다.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "그러니까 새 의장은 AI가 인플레이션의 해답인지, 아니면 AI가 인플레이션의 원인인지 결정해야 하는군요.",
+      "text_markdown": "그러니까 새 의장은 AI가 인플레이션의 해답인지, 아니면 AI가 인플레이션의 원인인지 결정해야 하는군요.",
+      "title": "",
+      "tts": {
+        "text": "그러니까 새 의장은 AI가 인플레이션의 해답인지, 아니면 AI가 인플레이션의 원인인지 결정해야 하는군요.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "둘 다, 동시에입니다. 그리고 그의 첫 공개 연설에서 하는 말이 월가의 모든 AI 자본 지출 모델을 움직일 것입니다.",
+      "text_markdown": "둘 다, 동시에입니다. 그리고 그의 첫 공개 연설에서 하는 말이 월가의 모든 AI 자본 지출 모델을 움직일 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "둘 다, 동시에입니다. 그리고 그의 첫 공개 연설에서 하는 말이 월가의 모든 AI 자본 지출 모델을 움직일 것입니다.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Microsoft가 전력 때문에 800억 달러의 미이행 클라우드 주문을 가지고 있다고 하는데, 그 수치가 맞나요?",
+      "text_markdown": "Microsoft가 전력 때문에 800억 달러의 미이행 클라우드 주문을 가지고 있다고 하는데, 그 수치가 맞나요?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft가 전력 때문에 팔백억 달러의 미이행 클라우드 주문을 가지고 있다고 하는데, 그 수치가 맞나요?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "그것이 Microsoft가 보고한 수치입니다. Azure 고객들이 용량 확보를 위해 대기 중입니다. 더 이상 칩이 병목이 아닙니다. 전력망이 문제입니다. 전력 시장은 데이터센터가 원하는 만큼 빠르게 새로운 용량을 구축할 수 없습니다.",
+      "text_markdown": "그것이 Microsoft가 보고한 수치입니다. Azure 고객들이 용량 확보를 위해 대기 중입니다. 더 이상 칩이 병목이 아닙니다. 전력망이 문제입니다. 전력 시장은 데이터센터가 원하는 만큼 빠르게 새로운 용량을 구축할 수 없습니다.",
+      "title": "",
+      "tts": {
+        "text": "그것이 Microsoft가 보고한 수치입니다. Azure 고객들이 용량 확보를 위해 대기 중입니다. 더 이상 칩이 병목이 아닙니다. 전력망이 문제입니다. 전력 시장은 데이터센터가 원하는 만큼 빠르게 새로운 용량을 구축할 수 없습니다.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "워시의 첫 회의는 언제인가요?",
+      "text_markdown": "워시의 첫 회의는 언제인가요?",
+      "title": "",
+      "tts": {
+        "text": "워시의 첫 회의는 언제인가요?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "6월 16일과 17일입니다. 그 후에 금리 경로에 대해 훨씬 더 많은 것을 알게 될 것입니다.",
+      "text_markdown": "6월 16일과 17일입니다. 그 후에 금리 경로에 대해 훨씬 더 많은 것을 알게 될 것입니다.",
+      "title": "",
+      "tts": {
+        "text": "육월 십육일과 십칠일입니다. 그 후에 금리 경로에 대해 훨씬 더 많은 것을 알게 될 것입니다.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "좋은 마무리네요. 론, 감사합니다.",
+      "text_markdown": "좋은 마무리네요. 론, 감사합니다.",
+      "title": "",
+      "tts": {
+        "text": "좋은 마무리네요. 론, 감사합니다.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "언제든지요, 빈디.",
+      "text_markdown": "언제든지요, 빈디.",
+      "title": "",
+      "tts": {
+        "text": "언제든지요, 빈디.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "지금까지 2026년 5월 13일 AI This Week였습니다. 새로운 호는 다음 주 수요일에 나옵니다. 그때까지 건강하세요.",
+      "text_markdown": "지금까지 2026년 5월 13일 AI This Week였습니다. 새로운 호는 다음 주 수요일에 나옵니다. 그때까지 건강하세요.",
+      "title": "",
+      "tts": {
+        "text": "지금까지 이천이십육년 오월 십삼일 AI This Week였습니다. 새로운 호는 다음 주 수요일에 나옵니다. 그때까지 건강하세요.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

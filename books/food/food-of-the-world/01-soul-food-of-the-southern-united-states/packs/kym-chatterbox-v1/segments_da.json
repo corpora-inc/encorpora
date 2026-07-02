@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "da",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En note til læseren",
+      "text_markdown": "En note til læseren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det her er en lille bog om en stor madtradition.",
+      "text_markdown": "Det her er en lille bog om en stor madtradition.",
+      "tts": {
+        "text": "Det her er en lille bog om en stor madtradition.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maden er soul food, fra det amerikanske syd.",
+      "text_markdown": "Maden er soul food, fra det amerikanske syd.",
+      "tts": {
+        "text": "Maden er sol fud, fra det amerikanske syd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food er rigtig mad.",
+      "text_markdown": "Soul food er rigtig mad.",
+      "tts": {
+        "text": "Sol fud er rigtig mad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Folk laver det derhjemme.",
+      "text_markdown": "Folk laver det derhjemme.",
+      "tts": {
+        "text": "Folk laver det derhjemme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Folk spiser det om søndagen.",
+      "text_markdown": "Folk spiser det om søndagen.",
+      "tts": {
+        "text": "Folk spiser det om søndagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Folk spiser det også på en tirsdag.",
+      "text_markdown": "Folk spiser det også på en tirsdag.",
+      "tts": {
+        "text": "Folk spiser det også på en tirsdag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vi begynder med navnet.",
+      "text_markdown": "Vi begynder med navnet.",
+      "tts": {
+        "text": "Vi begynder med navnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Så ser vi på planterne og dyrene.",
+      "text_markdown": "Så ser vi på planterne og dyrene.",
+      "tts": {
+        "text": "Så ser vi på planterne og dyrene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Så ser vi på gryderne og panderne.",
+      "text_markdown": "Så ser vi på gryderne og panderne.",
+      "tts": {
+        "text": "Så ser vi på gryderne og panderne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Til sidst ved du, hvad der ligger på tallerkenen, og hvor det kommer fra.",
+      "text_markdown": "Til sidst ved du, hvad der ligger på tallerkenen, og hvor det kommer fra.",
+      "tts": {
+        "text": "Til sidst ved du, hvad der ligger på tallerkenen, og hvor det kommer fra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "En note til læseren",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeg hedder Kym, og jeg vil fortælle dig historien.",
+      "text_markdown": "En veninde, der hedder Kym, fortæller dig historien.",
+      "tts": {
+        "text": "Jeg hedder Kim, og jeg vil fortælle dig historien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 1 — Hvad er soul food",
+      "text_markdown": "Kapitel 1 — Hvad er soul food"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food er hverdagsmad for sorte familier i det amerikanske syd.",
+      "text_markdown": "Soul food er hverdagsmad for sorte familier i det amerikanske syd.",
+      "tts": {
+        "text": "Sol fud er hverdagsmad for sorte familier i det amerikanske syd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Navnet \"soul food\" blev almindeligt i tresserne.",
+      "text_markdown": "Navnet \"soul food\" blev almindeligt i tresserne.",
+      "tts": {
+        "text": "Navnet \"sol fud\" blev almindeligt i tresserne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordet \"soul\" kom fra musikken og fra kirken.",
+      "text_markdown": "Ordet \"soul\" kom fra musikken og fra kirken.",
+      "tts": {
+        "text": "Ordet \"sol\" kom fra musikken og fra kirken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det betød noget dybt og ægte.",
+      "text_markdown": "Det betød noget dybt og ægte.",
+      "tts": {
+        "text": "Det betød noget dybt og ægte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det betød noget sort og stolt.",
+      "text_markdown": "Det betød noget sort og stolt.",
+      "tts": {
+        "text": "Det betød noget sort og stolt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men selve maden er meget ældre.",
+      "text_markdown": "Men selve maden er meget ældre.",
+      "tts": {
+        "text": "Men selve maden er meget ældre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kommer fra plantagekøkkenerne i det attende og nittende århundrede.",
+      "text_markdown": "Den kommer fra plantagekøkkenerne i det attende og nittende århundrede.",
+      "tts": {
+        "text": "Den kommer fra plantagekøkkenerne i det attende og nittende århundrede.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Afrikanske kokke, der var gjort til slaver, tog de planter og dyr, de havde, og lavede aftensmad.",
+      "text_markdown": "Afrikanske kokke, der var gjort til slaver, tog de planter og dyr, de havde, og lavede aftensmad.",
+      "tts": {
+        "text": "Afrikanske kokke, der var gjort til slaver, tog de planter og dyr, de havde, og lavede aftensmad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kokkene var geniale.",
+      "text_markdown": "Kokkene var geniale.",
+      "tts": {
+        "text": "Kokkene var geniale.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De arbejdede med lidt, og de gjorde mange mætte.",
+      "text_markdown": "De arbejdede med lidt, og de gjorde mange mætte.",
+      "tts": {
+        "text": "De arbejdede med lidt, og de gjorde mange mætte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De brugte hver del af grisen.",
+      "text_markdown": "De brugte hver del af grisen.",
+      "tts": {
+        "text": "De brugte hver del af grisen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De fik de grønne blade til at smage sødt.",
+      "text_markdown": "De fik de grønne blade til at smage sødt.",
+      "tts": {
+        "text": "De fik de grønne blade til at smage sødt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De forvandlede majsmel til brød, til grød, til hundrede små ting.",
+      "text_markdown": "De forvandlede majsmel til brød, til grød, til hundrede små ting.",
+      "tts": {
+        "text": "De forvandlede majsmel til brød, til grød, til hundrede små ting.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da sorte familier flyttede nordpå i det tyvende århundrede, tog de maden med sig.",
+      "text_markdown": "Da sorte familier flyttede nordpå i det tyvende århundrede, tog de maden med sig.",
+      "tts": {
+        "text": "Da sorte familier flyttede nordpå i det tyvende århundrede, tog de maden med sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nu findes soul food i Chicago, i New York, i Detroit og i hver sydstatsby.",
+      "text_markdown": "Nu findes soul food i Chicago, i New York, i Detroit og i hver sydstatsby.",
+      "tts": {
+        "text": "Nu findes sol fud i Sjikago, i Nju Jork, i Ditrojt og i hver sydstatsby.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Hvad er soul food",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Men centrum for det hele ligger stadig i syd.",
+      "text_markdown": "Men centrum for det hele ligger stadig i syd.",
+      "tts": {
+        "text": "Men centrum for det hele ligger stadig i syd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 2 — Ingredienserne",
+      "text_markdown": "Kapitel 2 — Ingredienserne"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food har to store rødder.",
+      "text_markdown": "Soul food har to store rødder.",
+      "tts": {
+        "text": "Sol fud har to store rødder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den ene rod er Vestafrika.",
+      "text_markdown": "Den ene rod er Vestafrika.",
+      "tts": {
+        "text": "Den ene rod er Vestafrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den anden rod er Amerika.",
+      "text_markdown": "Den anden rod er Amerika.",
+      "tts": {
+        "text": "Den anden rod er Amerika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fra Vestafrika kom okra.",
+      "text_markdown": "Fra Vestafrika kom okra.",
+      "tts": {
+        "text": "Fra Vestafrika kom okra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Okra er en grøn bælg.",
+      "text_markdown": "Okra er en grøn bælg.",
+      "tts": {
+        "text": "Okra er en grøn bælg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den vokser på en høj plante.",
+      "text_markdown": "Den vokser på en høj plante.",
+      "tts": {
+        "text": "Den vokser på en høj plante.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Når man tilbereder den, bliver den blød og lidt slimet.",
+      "text_markdown": "Når man tilbereder den, bliver den blød og lidt slimet.",
+      "tts": {
+        "text": "Når man tilbereder den, bliver den blød og lidt slimet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den er i gumbo, og den steges i majsmel.",
+      "text_markdown": "Den er i gumbo, og den steges i majsmel.",
+      "tts": {
+        "text": "Den er i gumbo, og den steges i majsmel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sortøjede bønner kom også fra Vestafrika.",
+      "text_markdown": "Sortøjede bønner kom også fra Vestafrika.",
+      "tts": {
+        "text": "Sortøjede bønner kom også fra Vestafrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det gjorde vandmelon også.",
+      "text_markdown": "Det gjorde vandmelon også.",
+      "tts": {
+        "text": "Det gjorde vandmelon også.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det gjorde sesamfrø også.",
+      "text_markdown": "Det gjorde sesamfrø også.",
+      "tts": {
+        "text": "Det gjorde sesamfrø også.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De gamle sydstatskokke kaldte sesam for \"benne.\" De brugte benne i småkager og på brød.",
+      "text_markdown": "De gamle sydstatskokke kaldte sesam for \"benne.\" De brugte benne i småkager og på brød.",
+      "tts": {
+        "text": "De gamle sydstatskokke kaldte sesam for \"beni.\" De brugte beni i småkager og på brød.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ris kom også over havet.",
+      "text_markdown": "Ris kom også over havet.",
+      "tts": {
+        "text": "Ris kom også over havet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Afrikanske bønder havde dyrket ris i tusind år.",
+      "text_markdown": "Afrikanske bønder havde dyrket ris i tusind år.",
+      "tts": {
+        "text": "Afrikanske bønder havde dyrket ris i tusind år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I South Carolina skabte den viden hele byer.",
+      "text_markdown": "I South Carolina skabte den viden hele byer.",
+      "tts": {
+        "text": "I Sydkarolajna skabte den viden hele byer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fra Amerika kom majs.",
+      "text_markdown": "Fra Amerika kom majs.",
+      "tts": {
+        "text": "Fra Amerika kom majs.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Majs stammer fra Mexico.",
+      "text_markdown": "Majs stammer fra Mexico.",
+      "tts": {
+        "text": "Majs stammer fra Mexico.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den kom nordpå til cherokeerne og choctawerne længe før spanierne kom.",
+      "text_markdown": "Den kom nordpå til cherokeerne og choctawerne længe før spanierne kom.",
+      "tts": {
+        "text": "Den kom nordpå til tjærokeerne og tjoktørne længe før spanierne kom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fra Amerika kom også søde kartofler, jordnødder og mange slags bønner.",
+      "text_markdown": "Fra Amerika kom også søde kartofler, jordnødder og mange slags bønner.",
+      "tts": {
+        "text": "Fra Amerika kom også søde kartofler, jordnødder og mange slags bønner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Ingredienserne",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Soul food er det, der skete, da de to forråd mødtes i et køkken.",
+      "text_markdown": "Soul food er det, der skete, da de to forråd mødtes i et køkken.",
+      "tts": {
+        "text": "Sol fud er det, der skete, da de to forråd mødtes i et køkken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 3 — Kødet og fisken",
+      "text_markdown": "Kapitel 3 — Kødet og fisken"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vigtigste kød i soul food er svinekød.",
+      "text_markdown": "Det vigtigste kød i soul food er svinekød.",
+      "tts": {
+        "text": "Det vigtigste kød i sol fud er svinekød.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lille gård kunne holde en gris.",
+      "text_markdown": "En lille gård kunne holde en gris.",
+      "tts": {
+        "text": "En lille gård kunne holde en gris.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Grisen spiste rester.",
+      "text_markdown": "Grisen spiste rester.",
+      "tts": {
+        "text": "Grisen spiste rester.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Om efteråret slagtede familien grisen og brugte hver del.",
+      "text_markdown": "Om efteråret slagtede familien grisen og brugte hver del.",
+      "tts": {
+        "text": "Om efteråret slagtede familien grisen og brugte hver del.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De røgede skinken.",
+      "text_markdown": "De røgede skinken.",
+      "tts": {
+        "text": "De røgede skinken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De saltede baconen.",
+      "text_markdown": "De saltede baconen.",
+      "tts": {
+        "text": "De saltede baconen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De kogte fødderne i eddike.",
+      "text_markdown": "De kogte fødderne i eddike.",
+      "tts": {
+        "text": "De kogte fødderne i eddike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De gemte fedtet til biscuits.",
+      "text_markdown": "De gemte fedtet til biscuits.",
+      "tts": {
+        "text": "De gemte fedtet til biskits.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det næste vigtige kød er kylling.",
+      "text_markdown": "Det næste vigtige kød er kylling.",
+      "tts": {
+        "text": "Det næste vigtige kød er kylling.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kyllingerne gik i gården.",
+      "text_markdown": "Kyllingerne gik i gården.",
+      "tts": {
+        "text": "Kyllingerne gik i gården.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De lagde æg om morgenen, og de blev til søndagsmiddag.",
+      "text_markdown": "De lagde æg om morgenen, og de blev til søndagsmiddag.",
+      "tts": {
+        "text": "De lagde æg om morgenen, og de blev til søndagsmiddag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stegt kylling er den mest berømte ret fra sydstaterne.",
+      "text_markdown": "Stegt kylling er den mest berømte ret fra sydstaterne.",
+      "tts": {
+        "text": "Stegt kylling er den mest berømte ret fra sydstaterne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kyllingen vendes i mel, salt og peber.",
+      "text_markdown": "Kyllingen vendes i mel, salt og peber.",
+      "tts": {
+        "text": "Kyllingen vendes i mel, salt og peber.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Så lægges den i varm olie.",
+      "text_markdown": "Så lægges den i varm olie.",
+      "tts": {
+        "text": "Så lægges den i varm olie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Skindet bliver sprødt og gyldent.",
+      "text_markdown": "Skindet bliver sprødt og gyldent.",
+      "tts": {
+        "text": "Skindet bliver sprødt og gyldent.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Malle lever i floder og søer.",
+      "text_markdown": "Malle lever i floder og søer.",
+      "tts": {
+        "text": "Malle lever i floder og søer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kokke i sydstaterne vender mallen i majsmel og steger den.",
+      "text_markdown": "Kokke i sydstaterne vender mallen i majsmel og steger den.",
+      "tts": {
+        "text": "Kokke i sydstaterne vender mallen i majsmel og steger den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De spiser den med hush puppies, som er små kugler af stegt majsmel.",
+      "text_markdown": "De spiser den med hush puppies, som er små kugler af stegt majsmel.",
+      "tts": {
+        "text": "De spiser den med høsh pappis, som er små kugler af stegt majsmel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Kødet og fisken",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Navnet er sjovt, men maden er alvorlig.",
+      "text_markdown": "Navnet er sjovt, men maden er alvorlig.",
+      "tts": {
+        "text": "Navnet er sjovt, men maden er alvorlig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 4 — Sådan laver man maden",
+      "text_markdown": "Kapitel 4 — Sådan laver man maden"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tre tilberedningsmåder bærer det meste af soul food, stegning, langsom simren og røgning.",
+      "text_markdown": "Tre tilberedningsmåder bærer det meste af soul food, stegning, langsom simren og røgning.",
+      "tts": {
+        "text": "Tre tilberedningsmåder bærer det meste af sol fud, stegning, langsom simren og røgning.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stegning foregår i en tung pande af støbejern.",
+      "text_markdown": "Stegning foregår i en tung pande af støbejern.",
+      "tts": {
+        "text": "Stegning foregår i en tung pande af støbejern.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Støbejern holder på varmen i lang tid.",
+      "text_markdown": "Støbejern holder på varmen i lang tid.",
+      "tts": {
+        "text": "Støbejern holder på varmen i lang tid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En god pande er ældre end kokken.",
+      "text_markdown": "En god pande er ældre end kokken.",
+      "tts": {
+        "text": "En god pande er ældre end kokken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den går i arv fra mor til datter.",
+      "text_markdown": "Den går i arv fra mor til datter.",
+      "tts": {
+        "text": "Den går i arv fra mor til datter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langsom simring foregår i en stor gryde bagerst på komfuret.",
+      "text_markdown": "Langsom simring foregår i en stor gryde bagerst på komfuret.",
+      "tts": {
+        "text": "Langsom simring foregår i en stor gryde bagerst på komfuret.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De grønne blade ligger i gryden i to eller tre timer.",
+      "text_markdown": "De grønne blade ligger i gryden i to eller tre timer.",
+      "tts": {
+        "text": "De grønne blade ligger i gryden i to eller tre timer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Et stykke røget svinekød kommer i for smagens skyld.",
+      "text_markdown": "Et stykke røget svinekød kommer i for smagens skyld.",
+      "tts": {
+        "text": "Et stykke røget svinekød kommer i for smagens skyld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vandet bliver til en mørk og kraftig bouillon.",
+      "text_markdown": "Vandet bliver til en mørk og kraftig bouillon.",
+      "tts": {
+        "text": "Vandet bliver til en mørk og kraftig bouillon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Folk kalder den bouillon \"pot likker\", og de hælder den over majsbrød.",
+      "text_markdown": "Folk kalder den bouillon \"pot likker\", og de hælder den over majsbrød.",
+      "tts": {
+        "text": "Folk kalder den bouillon \"pot liker\", og de hælder den over majsbrød.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Røgning foregår udenfor, i et røghus eller en tønde.",
+      "text_markdown": "Røgning foregår udenfor, i et røghus eller en tønde.",
+      "tts": {
+        "text": "Røgning foregår udenfor, i et røghus eller en tønde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Brændet brænder langsomt under kødet.",
+      "text_markdown": "Brændet brænder langsomt under kødet.",
+      "tts": {
+        "text": "Brændet brænder langsomt under kødet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hickorytræ er favoritten.",
+      "text_markdown": "Hickorytræ er favoritten.",
+      "tts": {
+        "text": "Hikori træ er favoritten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Røgen farver kødet brunt og giver det en dyb smag.",
+      "text_markdown": "Røgen farver kødet brunt og giver det en dyb smag.",
+      "tts": {
+        "text": "Røgen farver kødet brunt og giver det en dyb smag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Svineskulder bliver røget i mange timer, nogle gange en hel dag.",
+      "text_markdown": "Svineskulder bliver røget i mange timer, nogle gange en hel dag.",
+      "tts": {
+        "text": "Svineskulder bliver røget i mange timer, nogle gange en hel dag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Sådan laver man maden",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et godt køkken i syd har ild, tid og omtanke.",
+      "text_markdown": "Et godt køkken i syd har ild, tid og omtanke.",
+      "tts": {
+        "text": "Et godt køkken i syd har ild, tid og omtanke.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 5 — Barbecue i regionerne",
+      "text_markdown": "Kapitel 5 — Barbecue i regionerne"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I syd betyder \"barbecue\" kød, der er tilberedt langsomt over trærøg.",
+      "text_markdown": "I syd betyder \"barbecue\" kød, der er tilberedt langsomt over trærøg.",
+      "tts": {
+        "text": "I syd betyder \"barbekju\" kød, der er tilberedt langsomt over trærøg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hver region har sin egen måde.",
+      "text_markdown": "Hver region har sin egen måde.",
+      "tts": {
+        "text": "Hver region har sin egen måde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Carolinaerne er barbecue svinekød.",
+      "text_markdown": "I Carolinaerne er barbecue svinekød.",
+      "tts": {
+        "text": "I Karolajnaerne er barbekju svinekød.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I den østlige del af North Carolina laves saucen af eddike og peber.",
+      "text_markdown": "I den østlige del af North Carolina laves saucen af eddike og peber.",
+      "tts": {
+        "text": "I den østlige del af Nordkarolajna laves saucen af eddike og peber.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den er tynd og skarp.",
+      "text_markdown": "Den er tynd og skarp.",
+      "tts": {
+        "text": "Den er tynd og skarp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I South Carolina er saucen gul og lavet med sennep.",
+      "text_markdown": "I South Carolina er saucen gul og lavet med sennep.",
+      "tts": {
+        "text": "I Sydkarolajna er saucen gul og lavet med sennep.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den er lidt sød.",
+      "text_markdown": "Den er lidt sød.",
+      "tts": {
+        "text": "Den er lidt sød.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Memphis, i staten Tennessee, er kødet svineribben.",
+      "text_markdown": "I Memphis, i staten Tennessee, er kødet svineribben.",
+      "tts": {
+        "text": "I Memfis, i staten Tennesi, er kødet svineribben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ribbenene gnides med en tør blanding af salt, peber og mange krydderier.",
+      "text_markdown": "Ribbenene gnides med en tør blanding af salt, peber og mange krydderier.",
+      "tts": {
+        "text": "Ribbenene gnides med en tør blanding af salt, peber og mange krydderier.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kødet er stjernen, og saucen spiller en lille rolle.",
+      "text_markdown": "Kødet er stjernen, og saucen spiller en lille rolle.",
+      "tts": {
+        "text": "Kødet er stjernen, og saucen spiller en lille rolle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Texas er barbecue oksekød.",
+      "text_markdown": "I Texas er barbecue oksekød.",
+      "tts": {
+        "text": "I Teksas er barbekju oksekød.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Udskæringen kaldes brisket.",
+      "text_markdown": "Udskæringen kaldes brisket.",
+      "tts": {
+        "text": "Udskæringen kaldes briskit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det bliver røget i tolv til fjorten timer med egetræ.",
+      "text_markdown": "Det bliver røget i tolv til fjorten timer med egetræ.",
+      "tts": {
+        "text": "Det bliver røget i tolv til fjorten timer med egetræ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Når det er lavet rigtigt, kan du trække det fra hinanden med fingrene.",
+      "text_markdown": "Når det er lavet rigtigt, kan du trække det fra hinanden med fingrene.",
+      "tts": {
+        "text": "Når det er lavet rigtigt, kan du trække det fra hinanden med fingrene.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Kansas City er barbecue mange slags kød, svinekød, oksekød, kylling, endda pølse.",
+      "text_markdown": "I Kansas City er barbecue mange slags kød, svinekød, oksekød, kylling, endda pølse.",
+      "tts": {
+        "text": "I Kanses Siti er barbekju mange slags kød, svinekød, oksekød, kylling, endda pølse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saucen er tyk, sød og rød, lavet af tomat og melasse.",
+      "text_markdown": "Saucen er tyk, sød og rød, lavet af tomat og melasse.",
+      "tts": {
+        "text": "Saucen er tyk, sød og rød, lavet af tomat og melasse.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Barbecue i regionerne",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kortet over barbecue i sydstaterne er et kort over regioner og floder.",
+      "text_markdown": "Kortet over barbecue i sydstaterne er et kort over regioner og floder.",
+      "tts": {
+        "text": "Kortet over barbekju i sydstaterne er et kort over regioner og floder.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 6 — Den klassiske tallerken",
+      "text_markdown": "Kapitel 6 — Den klassiske tallerken"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tallerkenen til søndagsmiddagen er fuld.",
+      "text_markdown": "Tallerkenen til søndagsmiddagen er fuld.",
+      "tts": {
+        "text": "Tallerkenen til søndagsmiddagen er fuld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I midten ligger der stegt kylling.",
+      "text_markdown": "I midten ligger der stegt kylling.",
+      "tts": {
+        "text": "I midten ligger der stegt kylling.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ved siden af kyllingen ligger en skefuld kartoffelmos med brun sovs.",
+      "text_markdown": "Ved siden af kyllingen ligger en skefuld kartoffelmos med brun sovs.",
+      "tts": {
+        "text": "Ved siden af kyllingen ligger en skefuld kartoffelmos med brun sovs.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den ene side ligger en bunke collard greens, som er tilberedt langsomt med røget svinekød.",
+      "text_markdown": "På den ene side ligger en bunke collard greens, som er tilberedt langsomt med røget svinekød.",
+      "tts": {
+        "text": "På den ene side ligger en bunke kålard griins, som er tilberedt langsomt med røget svinekød.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bladene er mørke og bløde.",
+      "text_markdown": "Bladene er mørke og bløde.",
+      "tts": {
+        "text": "Bladene er mørke og bløde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På den anden side er der makaroni med ost, bagt til toppen er gylden og sprød.",
+      "text_markdown": "På den anden side er der makaroni med ost, bagt til toppen er gylden og sprød.",
+      "tts": {
+        "text": "På den anden side er der makaroni med ost, bagt til toppen er gylden og sprød.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mange kokke lægger et lag ost ovenpå.",
+      "text_markdown": "Mange kokke lægger et lag ost ovenpå.",
+      "tts": {
+        "text": "Mange kokke lægger et lag ost ovenpå.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der står majsbrød på bordet.",
+      "text_markdown": "Der står majsbrød på bordet.",
+      "tts": {
+        "text": "Der står majsbrød på bordet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Majsbrød laves af gult majsmel og bages i en varm jernpande.",
+      "text_markdown": "Majsbrød laves af gult majsmel og bages i en varm jernpande.",
+      "tts": {
+        "text": "Majsbrød laves af gult majsmel og bages i en varm jernpande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er tungt, lidt sødt og perfekt med smør.",
+      "text_markdown": "Det er tungt, lidt sødt og perfekt med smør.",
+      "tts": {
+        "text": "Det er tungt, lidt sødt og perfekt med smør.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Til at drikke er der sød te.",
+      "text_markdown": "Til at drikke er der sød te.",
+      "tts": {
+        "text": "Til at drikke er der sød te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sød te er sort te, brygget stærk og blandet med sukker, mens den er varm.",
+      "text_markdown": "Sød te er sort te, brygget stærk og blandet med sukker, mens den er varm.",
+      "tts": {
+        "text": "Sød te er sort te, brygget stærk og blandet med sukker, mens den er varm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den serveres kold med isterninger.",
+      "text_markdown": "Den serveres kold med isterninger.",
+      "tts": {
+        "text": "Den serveres kold med isterninger.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter middagen kommer der tærte.",
+      "text_markdown": "Efter middagen kommer der tærte.",
+      "tts": {
+        "text": "Efter middagen kommer der tærte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sød kartoffeltærte er den tærte, der mest hører sydstaterne til.",
+      "text_markdown": "Sød kartoffeltærte er den tærte, der mest hører sydstaterne til.",
+      "tts": {
+        "text": "Sød kartoffeltærte er den tærte, der mest hører sydstaterne til.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den er brun, blød og varm af kanel og muskatnød.",
+      "text_markdown": "Den er brun, blød og varm af kanel og muskatnød.",
+      "tts": {
+        "text": "Den er brun, blød og varm af kanel og muskatnød.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Den klassiske tallerken",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den klassiske tallerken.",
+      "text_markdown": "Det er den klassiske tallerken.",
+      "tts": {
+        "text": "Det er den klassiske tallerken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 7 — Bordet",
+      "text_markdown": "Kapitel 7 — Bordet"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En middag i syd foregår ved bordet, med alle samlet.",
+      "text_markdown": "En middag i syd foregår ved bordet, med alle samlet.",
+      "tts": {
+        "text": "En middag i syd foregår ved bordet, med alle samlet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maden kommer på bordet i store skåle og på store fade.",
+      "text_markdown": "Maden kommer på bordet i store skåle og på store fade.",
+      "tts": {
+        "text": "Maden kommer på bordet i store skåle og på store fade.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det kaldes \"family style.\" Hver person sender skålen videre til den næste.",
+      "text_markdown": "Det kaldes \"family style.\" Hver person sender skålen videre til den næste.",
+      "tts": {
+        "text": "Det kaldes \"fæmili stajl.\" Hver person sender skålen videre til den næste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hver person tager det, de vil have.",
+      "text_markdown": "Hver person tager det, de vil have.",
+      "tts": {
+        "text": "Hver person tager det, de vil have.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gaflerne og knivene er helt almindelige.",
+      "text_markdown": "Gaflerne og knivene er helt almindelige.",
+      "tts": {
+        "text": "Gaflerne og knivene er helt almindelige.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der er ingen særlig rækkefølge.",
+      "text_markdown": "Der er ingen særlig rækkefølge.",
+      "tts": {
+        "text": "Der er ingen særlig rækkefølge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du spiser kyllingen med en gaffel, eller du tager den op med hænderne.",
+      "text_markdown": "Du spiser kyllingen med en gaffel, eller du tager den op med hænderne.",
+      "tts": {
+        "text": "Du spiser kyllingen med en gaffel, eller du tager den op med hænderne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Begge dele er helt i orden.",
+      "text_markdown": "Begge dele er helt i orden.",
+      "tts": {
+        "text": "Begge dele er helt i orden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Majsbrød brydes med hånden, aldrig med en kniv.",
+      "text_markdown": "Majsbrød brydes med hånden, aldrig med en kniv.",
+      "tts": {
+        "text": "Majsbrød brydes med hånden, aldrig med en kniv.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Før måltidet siger nogen tit en kort bøn.",
+      "text_markdown": "Før måltidet siger nogen tit en kort bøn.",
+      "tts": {
+        "text": "Før måltidet siger nogen tit en kort bøn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De takker Gud for maden og for kokkene.",
+      "text_markdown": "De takker Gud for maden og for kokkene.",
+      "tts": {
+        "text": "De takker Gud for maden og for kokkene.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du er gæst, får du at vide, at du skal tage mere, og mere, og mere.",
+      "text_markdown": "Hvis du er gæst, får du at vide, at du skal tage mere, og mere, og mere.",
+      "tts": {
+        "text": "Hvis du er gæst, får du at vide, at du skal tage mere, og mere, og mere.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du bør sige ja mindst to gange.",
+      "text_markdown": "Du bør sige ja mindst to gange.",
+      "tts": {
+        "text": "Du bør sige ja mindst to gange.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det er ikke tilladt at gå sulten derfra.",
+      "text_markdown": "Det er ikke tilladt at gå sulten derfra.",
+      "tts": {
+        "text": "Det er ikke tilladt at gå sulten derfra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når måltidet er slut, har ingen travlt med at rejse sig.",
+      "text_markdown": "Når måltidet er slut, har ingen travlt med at rejse sig.",
+      "tts": {
+        "text": "Når måltidet er slut, har ingen travlt med at rejse sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Bordet",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Snakken er halvdelen af middagen.",
+      "text_markdown": "Snakken er halvdelen af middagen.",
+      "tts": {
+        "text": "Snakken er halvdelen af middagen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Om denne bog",
+      "text_markdown": "Om denne bog"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den første bog i serien Food of the World.",
+      "text_markdown": "Det er den første bog i serien Food of the World.",
+      "tts": {
+        "text": "Det er den første bog i serien Fud ov de Vørld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den bliver læst højt af mig, din veninde Kym.",
+      "text_markdown": "Den læses højt af Kym.",
+      "tts": {
+        "text": "Den bliver læst højt af mig, din veninde Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hver sætning er kort og klar, så du kan læse med på hvilket som helst sprog.",
+      "text_markdown": "Hver sætning er kort og klar, så du kan læse med på hvilket som helst sprog.",
+      "tts": {
+        "text": "Hver sætning er kort og klar, så du kan læse med på hvilket som helst sprog.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du vil høre, hvordan en sætning lyder på et andet sprog, så lyt til den samme bog på det sprog.",
+      "text_markdown": "Hvis du vil høre, hvordan en sætning lyder på et andet sprog, så lyt til den samme bog på det sprog.",
+      "tts": {
+        "text": "Hvis du vil høre, hvordan en sætning lyder på et andet sprog, så lyt til den samme bog på det sprog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordene på siden passer til det, du hører.",
+      "text_markdown": "Ordene på siden passer til det, du hører.",
+      "tts": {
+        "text": "Ordene på siden passer til det, du hører.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sådan lærer du.",
+      "text_markdown": "Sådan lærer du.",
+      "tts": {
+        "text": "Sådan lærer du.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Om denne bog",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gå nu ud og find noget god mad og en ven at dele den med.",
+      "text_markdown": "Gå nu ud og find noget god mad og en ven at dele den med.",
+      "tts": {
+        "text": "Gå nu ud og find noget god mad og en ven at dele den med.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

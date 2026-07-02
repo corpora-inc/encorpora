@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "ur",
+  "total_segments": 114,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "AI This Week میں خوش آمدید۔",
+      "text_markdown": "AI This Week میں خوش آمدید۔",
+      "title": "",
+      "tts": {
+        "text": "AI This Week میں خوش آمدید۔",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "میں Vindy ہوں۔",
+      "text_markdown": "میں Vindy ہوں۔",
+      "title": "",
+      "tts": {
+        "text": "میں Vindy ہوں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "میرے ساتھ، ہمیشہ کی طرح، Ron ہیں۔",
+      "text_markdown": "میرے ساتھ، ہمیشہ کی طرح، Ron ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "میرے ساتھ، ہمیشہ کی طرح، Ron ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یہاں ہونا اچھا لگا، Vindy۔",
+      "text_markdown": "یہاں ہونا اچھا لگا، Vindy۔",
+      "title": "",
+      "tts": {
+        "text": "یہاں ہونا اچھا لگا، Vindy۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "آج اتوار، 21 جون 2026 ہے۔",
+      "text_markdown": "آج اتوار، 21 جون 2026 ہے۔",
+      "title": "",
+      "tts": {
+        "text": "آج اتوار، اکیس جون دو ہزار چھبیس ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "گزشتہ ہفتے ہم نے اپنے بارے میں بات کی تھی؛ آج ہم بالکل مخالف سمت میں جاتے ہیں — طاقت کے مراکز تک۔",
+      "text_markdown": "گزشتہ ہفتے ہم نے اپنے بارے میں بات کی تھی؛ آج ہم بالکل مخالف سمت میں جاتے ہیں — طاقت کے مراکز تک۔",
+      "title": "",
+      "tts": {
+        "text": "گزشتہ ہفتے ہم نے اپنے بارے میں بات کی تھی؛ آج ہم بالکل مخالف سمت میں جاتے ہیں — طاقت کے مراکز تک۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "AI کی تعیناتی پر کس کا کنٹرول ہے، تعمیر کا خرچ کون اٹھاتا ہے، silicon کا مالک کون ہے۔",
+      "text_markdown": "AI کی تعیناتی پر کس کا کنٹرول ہے، تعمیر کا خرچ کون اٹھاتا ہے، silicon کا مالک کون ہے۔",
+      "title": "",
+      "tts": {
+        "text": "AI کی تعیناتی پر کس کا کنٹرول ہے، تعمیر کا خرچ کون اٹھاتا ہے، silicon کا مالک کون ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "آگے آ رہا ہے — U.S. Commerce Department نے گزشتہ جمعے ایک امریکی ماڈل کو عوامی استعمال سے ہٹا دیا، اور ہم وہیں سے شروع کریں گے۔",
+      "text_markdown": "آگے آ رہا ہے — U.S. Commerce Department نے گزشتہ جمعے ایک امریکی ماڈل کو عوامی استعمال سے ہٹا دیا، اور ہم وہیں سے شروع کریں گے۔",
+      "title": "",
+      "tts": {
+        "text": "آگے آ رہا ہے — U.S. Commerce Department نے گزشتہ جمعے ایک امریکی ماڈل کو عوامی استعمال سے ہٹا دیا، اور ہم وہیں سے شروع کریں گے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "پھر data center کی تعمیر، جہاں اعلانات اور زمینی حقیقت میل نہیں کھاتی۔",
+      "text_markdown": "پھر data center کی تعمیر، جہاں اعلانات اور زمینی حقیقت میل نہیں کھاتی۔",
+      "title": "",
+      "tts": {
+        "text": "پھر data center کی تعمیر، جہاں اعلانات اور زمینی حقیقت میل نہیں کھاتی۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "پھر U.S. اور چین کا موازنہ، جہاں روایتی کلیشے کو اصل بنیادی رکاوٹ سے بدل دیا جائے گا۔",
+      "text_markdown": "پھر U.S. اور چین کا موازنہ، جہاں روایتی کلیشے کو اصل بنیادی رکاوٹ سے بدل دیا جائے گا۔",
+      "title": "",
+      "tts": {
+        "text": "پھر U.S. اور چین کا موازنہ، جہاں روایتی کلیشے کو اصل بنیادی رکاوٹ سے بدل دیا جائے گا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور ہفتے کا تصور — Oracle کی balance sheet پر ایک سطر جو آپ کو تقریباً سب کچھ بتا دیتی ہے۔",
+      "text_markdown": "اور ہفتے کا تصور — Oracle کی balance sheet پر ایک سطر جو آپ کو تقریباً سب کچھ بتا دیتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اور ہفتے کا تصور — Oracle کی balance sheet پر ایک سطر جو آپ کو تقریباً سب کچھ بتا دیتی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron، آئیے Anthropic سے شروع کرتے ہیں۔",
+      "text_markdown": "Ron، آئیے Anthropic سے شروع کرتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "Ron، آئیے Anthropic سے شروع کرتے ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "بارہ جون کو کیا ہوا۔",
+      "text_markdown": "بارہ جون کو کیا ہوا۔",
+      "title": "",
+      "tts": {
+        "text": "بارہ جون کو کیا ہوا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "جمعے، بارہ جون کو Eastern وقت کے مطابق شام پانچ بج کر اکیس منٹ پر، Anthropic نے اپنے دو تازہ ترین ماڈلز — Claude Mythos پانچ اور Claude Fable پانچ — آف لائن کر دیے۔",
+      "text_markdown": "جمعے، بارہ جون کو Eastern وقت کے مطابق شام پانچ بج کر اکیس منٹ پر، Anthropic نے اپنے دو تازہ ترین ماڈلز — Claude Mythos پانچ اور Claude Fable پانچ — آف لائن کر دیے۔",
+      "title": "",
+      "tts": {
+        "text": "جمعے، بارہ جون کو Eastern وقت کے مطابق شام پانچ بج کر اکیس منٹ پر، Anthropic نے اپنے دو تازہ ترین ماڈلز — Claude Mythos پانچ اور Claude Fable پانچ — آف لائن کر دیے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "نہ دیکھ بھال کے لیے، نہ اپنی مرضی سے کسی حفاظتی جائزے کے لیے۔",
+      "text_markdown": "نہ دیکھ بھال کے لیے، نہ اپنی مرضی سے کسی حفاظتی جائزے کے لیے۔",
+      "title": "",
+      "tts": {
+        "text": "نہ دیکھ بھال کے لیے، نہ اپنی مرضی سے کسی حفاظتی جائزے کے لیے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "انہوں نے انہیں اس لیے ہٹایا کیونکہ U.S. Commerce Department نے برآمدی کنٹرول کا حوالہ دیتے ہوئے ایک ہدایت جاری کی۔",
+      "text_markdown": "انہوں نے انہیں اس لیے ہٹایا کیونکہ U.S. Commerce Department نے برآمدی کنٹرول کا حوالہ دیتے ہوئے ایک ہدایت جاری کی۔",
+      "title": "",
+      "tts": {
+        "text": "انہوں نے انہیں اس لیے ہٹایا کیونکہ U.S. Commerce Department نے برآمدی کنٹرول کا حوالہ دیتے ہوئے ایک ہدایت جاری کی۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "تکنیکی وجہ کیا تھی۔",
+      "text_markdown": "تکنیکی وجہ کیا تھی۔",
+      "title": "",
+      "tts": {
+        "text": "تکنیکی وجہ کیا تھی۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ایک jailbreak کا مظاہرہ کیا گیا، مبینہ طور پر کسی اور کمپنی کی جانب سے، جس نے ایسی output پیدا کی جسے Commerce نے export-controlled سمجھا۔",
+      "text_markdown": "ایک jailbreak کا مظاہرہ کیا گیا، مبینہ طور پر کسی اور کمپنی کی جانب سے، جس نے ایسی output پیدا کی جسے Commerce نے export-controlled سمجھا۔",
+      "title": "",
+      "tts": {
+        "text": "ایک jailbreak کا مظاہرہ کیا گیا، مبینہ طور پر کسی اور کمپنی کی جانب سے، جس نے ایسی output پیدا کی جسے Commerce نے export controlled سمجھا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Fortune نے رپورٹ کیا کہ Amazon نے White House کو اس بارے میں آگاہ کیا تھا۔",
+      "text_markdown": "Fortune نے رپورٹ کیا کہ Amazon نے White House کو اس بارے میں آگاہ کیا تھا۔",
+      "title": "",
+      "tts": {
+        "text": "Fortune نے رپورٹ کیا کہ Amazon نے White House کو اس بارے میں آگاہ کیا تھا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور Anthropic نے کیا جواب دیا۔",
+      "text_markdown": "اور Anthropic نے کیا جواب دیا۔",
+      "title": "",
+      "tts": {
+        "text": "اور Anthropic نے کیا جواب دیا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Anthropic نے اس جواز کو علی الاعلان رد کیا۔",
+      "text_markdown": "Anthropic نے اس جواز کو علی الاعلان رد کیا۔",
+      "title": "",
+      "tts": {
+        "text": "Anthropic نے اس جواز کو علی الاعلان رد کیا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ان کے بیان میں jailbreak کو — اور میں عین الفاظ نقل کر رہا ہوں — \"narrow, non-universal\" قرار دیا گیا، اور یہ بھی کہا گیا کہ یہی output دوسرے ماڈلز سے بھی دستیاب ہے، بشمول OpenAI کے GPT-five-point-five کے۔",
+      "text_markdown": "ان کے بیان میں jailbreak کو — اور میں عین الفاظ نقل کر رہا ہوں — \"narrow, non-universal\" قرار دیا گیا، اور یہ بھی کہا گیا کہ یہی output دوسرے ماڈلز سے بھی دستیاب ہے، بشمول OpenAI کے GPT-five-point-five کے۔",
+      "title": "",
+      "tts": {
+        "text": "ان کے بیان میں jailbreak کو — اور میں عین الفاظ نقل کر رہا ہوں — \"narrow, non universal\" قرار دیا گیا، اور یہ بھی کہا گیا کہ یہی output دوسرے ماڈلز سے بھی دستیاب ہے، بشمول OpenAI کے GPT پانچ پوائنٹ پانچ کے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ان کا خلاصہ یہ تھا: \"حکومت کا اقدام ایک غلط فہمی پر مبنی ہے۔\"",
+      "text_markdown": "ان کا خلاصہ یہ تھا: \"حکومت کا اقدام ایک غلط فہمی پر مبنی ہے۔\"",
+      "title": "",
+      "tts": {
+        "text": "ان کا خلاصہ یہ تھا: \"حکومت کا اقدام ایک غلط فہمی پر مبنی ہے۔\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "کسی AI لیب کی جانب سے U.S. حکومت سے یہ غیر معمولی طور پر براہ راست اختلاف ہے۔",
+      "text_markdown": "کسی AI لیب کی جانب سے U.S. حکومت سے یہ غیر معمولی طور پر براہ راست اختلاف ہے۔",
+      "title": "",
+      "tts": {
+        "text": "کسی AI لیب کی جانب سے U.S. حکومت سے یہ غیر معمولی طور پر براہ راست اختلاف ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "بالکل، اور اس کے نیچے موجود ساختی حقیقت ہی اصل خبر ہے۔",
+      "text_markdown": "بالکل، اور اس کے نیچے موجود ساختی حقیقت ہی اصل خبر ہے۔",
+      "title": "",
+      "tts": {
+        "text": "بالکل، اور اس کے نیچے موجود ساختی حقیقت ہی اصل خبر ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Commerce اب کسی نجی امریکی AI لیب کو ایک ماڈل آف لائن کرنے کا حکم دے سکتا ہے، export controls کا حوالہ دے کر، اور وہ حکم بہتر سے بہتر بہتّر گھنٹوں میں نافذ ہو جاتا ہے۔",
+      "text_markdown": "Commerce اب کسی نجی امریکی AI لیب کو ایک ماڈل آف لائن کرنے کا حکم دے سکتا ہے، export controls کا حوالہ دے کر، اور وہ حکم بہتر سے بہتر بہتّر گھنٹوں میں نافذ ہو جاتا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Commerce اب کسی نجی امریکی AI لیب کو ایک ماڈل آف لائن کرنے کا حکم دے سکتا ہے، export controls کا حوالہ دے کر، اور وہ حکم بہتر سے بہتر بہتّر گھنٹوں میں نافذ ہو جاتا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "چاہے آپ حکم کو درست سمجھیں یا نہیں۔",
+      "text_markdown": "چاہے آپ حکم کو درست سمجھیں یا نہیں۔",
+      "title": "",
+      "tts": {
+        "text": "چاہے آپ حکم کو درست سمجھیں یا نہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "چاہے آپ حکم کو درست سمجھیں یا نہیں۔",
+      "text_markdown": "چاہے آپ حکم کو درست سمجھیں یا نہیں۔",
+      "title": "",
+      "tts": {
+        "text": "چاہے آپ حکم کو درست سمجھیں یا نہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اہمیت اس اختیار کی ہے، اس رفتار کی ہے، اور اس نظیر کی ہے۔",
+      "text_markdown": "اہمیت اس اختیار کی ہے، اس رفتار کی ہے، اور اس نظیر کی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اہمیت اس اختیار کی ہے، اس رفتار کی ہے، اور اس نظیر کی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور یہاں Amazon کا کردار۔",
+      "text_markdown": "اور یہاں Amazon کا کردار۔",
+      "title": "",
+      "tts": {
+        "text": "اور یہاں Amazon کا کردار۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یہی وہ پہلو ہے جس پر نظر رکھنی چاہیے۔",
+      "text_markdown": "یہی وہ پہلو ہے جس پر نظر رکھنی چاہیے۔",
+      "title": "",
+      "tts": {
+        "text": "یہی وہ پہلو ہے جس پر نظر رکھنی چاہیے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Amazon، Anthropic میں ایک بڑا سرمایہ کار بھی ہے اور اپنے کام کے ذریعے foundation model کی مارکیٹ میں Anthropic سے مقابلہ بھی کرتا ہے۔",
+      "text_markdown": "Amazon، Anthropic میں ایک بڑا سرمایہ کار بھی ہے اور اپنے کام کے ذریعے foundation model کی مارکیٹ میں Anthropic سے مقابلہ بھی کرتا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Amazon، Anthropic میں ایک بڑا سرمایہ کار بھی ہے اور اپنے کام کے ذریعے foundation model کی مارکیٹ میں Anthropic سے مقابلہ بھی کرتا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اگر کسی حریف کی حکومت کو دی گئی اطلاع ایک لمبے ویک اینڈ میں کسی رقیب کا ماڈل آف لائن کروا سکتی ہے، تو یہ صنعتی حرکیات کی ایک نئی شکل ہے۔",
+      "text_markdown": "اگر کسی حریف کی حکومت کو دی گئی اطلاع ایک لمبے ویک اینڈ میں کسی رقیب کا ماڈل آف لائن کروا سکتی ہے، تو یہ صنعتی حرکیات کی ایک نئی شکل ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اگر کسی حریف کی حکومت کو دی گئی اطلاع ایک لمبے ویک اینڈ میں کسی رقیب کا ماڈل آف لائن کروا سکتی ہے، تو یہ صنعتی حرکیات کی ایک نئی شکل ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "آئیے تعمیر کی طرف چلتے ہیں۔",
+      "text_markdown": "آئیے تعمیر کی طرف چلتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "آئیے تعمیر کی طرف چلتے ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Stargate — OpenAI، Oracle، SoftBank کا data center منصوبہ۔",
+      "text_markdown": "Stargate — OpenAI، Oracle، SoftBank کا data center منصوبہ۔",
+      "title": "",
+      "tts": {
+        "text": "Stargate — OpenAI، Oracle، SoftBank کا data center منصوبہ۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اصل اعداد و شمار کیا ہیں۔",
+      "text_markdown": "اصل اعداد و شمار کیا ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "اصل اعداد و شمار کیا ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Stargate نے U.S. میں گیارہ gigawatts کی صلاحیت کا اعلان کیا ہے۔",
+      "text_markdown": "Stargate نے U.S. میں گیارہ gigawatts کی صلاحیت کا اعلان کیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Stargate نے U.S. میں گیارہ gigawatts کی صلاحیت کا اعلان کیا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "جون کے وسط تک، Abilene Texas کے مقام پر، Phase One میں تقریباً دو سو megawatts فعال ہیں۔",
+      "text_markdown": "جون کے وسط تک، Abilene Texas کے مقام پر، Phase One میں تقریباً دو سو megawatts فعال ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "جون کے وسط تک، Abilene Texas کے مقام پر، Phase One میں تقریباً دو سو megawatts فعال ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "گیارہ gigawatts اعلان شدہ، دو سو megawatts جڑے ہوئے۔",
+      "text_markdown": "گیارہ gigawatts اعلان شدہ، دو سو megawatts جڑے ہوئے۔",
+      "title": "",
+      "tts": {
+        "text": "گیارہ gigawatts اعلان شدہ، دو سو megawatts جڑے ہوئے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "یہی ہے پورا فاصلہ، ایک سطر میں۔",
+      "text_markdown": "یہی ہے پورا فاصلہ، ایک سطر میں۔",
+      "title": "",
+      "tts": {
+        "text": "یہی ہے پورا فاصلہ، ایک سطر میں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ہاں، اور اس کی سب سے واضح مثال نیو میکسیکو میں موجود ہے۔",
+      "text_markdown": "ہاں، اور اس کی سب سے واضح مثال نیو میکسیکو میں موجود ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ہاں، اور اس کی سب سے واضح مثال نیو میکسیکو میں موجود ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Doña Ana County کی سائٹ سب سے بڑا واحد Stargate کیمپس ہے، جس کی منصوبہ بند صلاحیت چار اعشاریہ پانچ گیگا واٹ ہے۔",
+      "text_markdown": "Doña Ana County کی سائٹ سب سے بڑا واحد Stargate کیمپس ہے، جس کی منصوبہ بند صلاحیت چار اعشاریہ پانچ گیگا واٹ ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Doña Ana County کی سائٹ سب سے بڑا واحد Stargate کیمپس ہے، جس کی منصوبہ بند صلاحیت چار اعشاریہ پانچ گیگا واٹ ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اٹھارہ ارب ڈالر کی مشترکہ منصوبہ مالیات فراہم کر دی گئی ہے — Sumitomo Mitsui، BNP Paribas، Goldman Sachs، MUFG — اور اس کے علاوہ Blue Owl کی طرف سے تین ارب ڈالر کا ایکویٹی چیک بھی شامل ہے۔",
+      "text_markdown": "اٹھارہ ارب ڈالر کی مشترکہ منصوبہ مالیات فراہم کر دی گئی ہے — Sumitomo Mitsui، BNP Paribas، Goldman Sachs، MUFG — اور اس کے علاوہ Blue Owl کی طرف سے تین ارب ڈالر کا ایکویٹی چیک بھی شامل ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اٹھارہ ارب ڈالر کی مشترکہ منصوبہ مالیات فراہم کر دی گئی ہے — Sumitomo Mitsui، BNP Paribas، Goldman Sachs، MUFG — اور اس کے علاوہ Blue Owl کی طرف سے تین ارب ڈالر کا ایکویٹی چیک بھی شامل ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور زمین پر تعمیراتی صورتحال کیا ہے۔",
+      "text_markdown": "اور زمین پر تعمیراتی صورتحال کیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اور زمین پر تعمیراتی صورتحال کیا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ابھی تک ایک بھی کدال زمین میں نہیں گئی۔",
+      "text_markdown": "ابھی تک ایک بھی کدال زمین میں نہیں گئی۔",
+      "title": "",
+      "tts": {
+        "text": "ابھی تک ایک بھی کدال زمین میں نہیں گئی۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یہ سائٹ New Mexico Environment Department سے فضائی معیار کے اجازت نامے کی منتظر ہے، جو اصل میں بائیس اپریل کو متوقع تھا، لیکن سات ہزار سے زائد عوامی تبصروں کے بعد اب اکیس جولائی تک مؤخر کر دیا گیا ہے۔",
+      "text_markdown": "یہ سائٹ New Mexico Environment Department سے فضائی معیار کے اجازت نامے کی منتظر ہے، جو اصل میں بائیس اپریل کو متوقع تھا، لیکن سات ہزار سے زائد عوامی تبصروں کے بعد اب اکیس جولائی تک مؤخر کر دیا گیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "یہ سائٹ New Mexico Environment Department سے فضائی معیار کے اجازت نامے کی منتظر ہے، جو اصل میں بائیس اپریل کو متوقع تھا، لیکن سات ہزار سے زائد عوامی تبصروں کے بعد اب اکیس جولائی تک مؤخر کر دیا گیا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اٹھارہ ارب ڈالر کا عزم، زمین میں ایک بھی کدال نہیں، اور ایک فضائی معیار اجازت نامے کی آخری تاریخ۔",
+      "text_markdown": "اٹھارہ ارب ڈالر کا عزم، زمین میں ایک بھی کدال نہیں، اور ایک فضائی معیار اجازت نامے کی آخری تاریخ۔",
+      "title": "",
+      "tts": {
+        "text": "اٹھارہ ارب ڈالر کا عزم، زمین میں ایک بھی کدال نہیں، اور ایک فضائی معیار اجازت نامے کی آخری تاریخ۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اگر اعداد و شمار درست نہ بیٹھے تو نقصان کون اٹھائے گا۔",
+      "text_markdown": "اگر اعداد و شمار درست نہ بیٹھے تو نقصان کون اٹھائے گا۔",
+      "title": "",
+      "tts": {
+        "text": "اگر اعداد و شمار درست نہ بیٹھے تو نقصان کون اٹھائے گا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یہیں Oracle کا معاملہ دلچسپ ہو جاتا ہے۔",
+      "text_markdown": "یہیں Oracle کا معاملہ دلچسپ ہو جاتا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "یہیں Oracle کا معاملہ دلچسپ ہو جاتا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Oracle کی Remaining Performance Obligations — وہ اکاؤنٹنگ لائن جو ابھی تک فراہم نہ کی گئی معاہداتی آمدنی درج کرتی ہے — مالی سال بیس بیس چھ کی تیسری سہ ماہی میں پانچ سو تریپن ارب ڈالر تک پہنچ گئیں۔",
+      "text_markdown": "Oracle کی Remaining Performance Obligations — وہ اکاؤنٹنگ لائن جو ابھی تک فراہم نہ کی گئی معاہداتی آمدنی درج کرتی ہے — مالی سال بیس بیس چھ کی تیسری سہ ماہی میں پانچ سو تریپن ارب ڈالر تک پہنچ گئیں۔",
+      "title": "",
+      "tts": {
+        "text": "Oracle کی Remaining Performance Obligations — وہ اکاؤنٹنگ لائن جو ابھی تک فراہم نہ کی گئی معاہداتی آمدنی درج کرتی ہے — مالی سال بیس بیس چھ کی تیسری سہ ماہی میں پانچ سو تریپن ارب ڈالر تک پہنچ گئیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یہ سال بہ سال تین سو پچیس فیصد اضافہ ہے، اور اس اضافے کا بڑا حصہ عوامی طور پر OpenAI اور Stargate سے منسوب کیا گیا ہے۔",
+      "text_markdown": "یہ سال بہ سال تین سو پچیس فیصد اضافہ ہے، اور اس اضافے کا بڑا حصہ عوامی طور پر OpenAI اور Stargate سے منسوب کیا گیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "یہ سال بہ سال تین سو پچیس فیصد اضافہ ہے، اور اس اضافے کا بڑا حصہ عوامی طور پر OpenAI اور Stargate سے منسوب کیا گیا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور قرض کا پہلو کیا ہے۔",
+      "text_markdown": "اور قرض کا پہلو کیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اور قرض کا پہلو کیا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اٹھائیس فروری تک کل قرضے ایک سو چونتیس اعشاریہ چھ ارب ڈالر تک پہنچ گئے۔",
+      "text_markdown": "اٹھائیس فروری تک کل قرضے ایک سو چونتیس اعشاریہ چھ ارب ڈالر تک پہنچ گئے۔",
+      "title": "",
+      "tts": {
+        "text": "اٹھائیس فروری تک کل قرضے ایک سو چونتیس اعشاریہ چھ ارب ڈالر تک پہنچ گئے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Oracle نے صرف فروری میں تیس ارب ڈالر اکٹھے کیے — investment-grade bonds اور mandatory convertible preferred کے ذریعے — اور نو ماہ کی مدت میں تریتالیس ارب ڈالر کے نئے senior notes جاری کیے۔",
+      "text_markdown": "Oracle نے صرف فروری میں تیس ارب ڈالر اکٹھے کیے — investment-grade bonds اور mandatory convertible preferred کے ذریعے — اور نو ماہ کی مدت میں تریتالیس ارب ڈالر کے نئے senior notes جاری کیے۔",
+      "title": "",
+      "tts": {
+        "text": "Oracle نے صرف فروری میں تیس ارب ڈالر اکٹھے کیے — انویسٹمنٹ گریڈ بانڈز اور مینڈیٹری کنورٹیبل پریفرڈ کے ذریعے — اور نو ماہ کی مدت میں تریتالیس ارب ڈالر کے نئے سینیئر نوٹس جاری کیے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "تو اس پوزیشن کا خلاصہ کیا ہے۔",
+      "text_markdown": "تو اس پوزیشن کا خلاصہ کیا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "تو اس پوزیشن کا خلاصہ کیا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "پانچ سو تریپن ارب ڈالر کے وعدے، ایک سو چونتیس ارب ڈالر کا قرض، اور ایک بڑا گاہک جو زیادہ تر خطرہ اٹھا رہا ہے۔",
+      "text_markdown": "پانچ سو تریپن ارب ڈالر کے وعدے، ایک سو چونتیس ارب ڈالر کا قرض، اور ایک بڑا گاہک جو زیادہ تر خطرہ اٹھا رہا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "پانچ سو تریپن ارب ڈالر کے وعدے، ایک سو چونتیس ارب ڈالر کا قرض، اور ایک بڑا گاہک جو زیادہ تر خطرہ اٹھا رہا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "یہی ہے اس تعمیراتی ڈھانچے کا خلاصہ ایک جملے میں۔",
+      "text_markdown": "یہی ہے اس تعمیراتی ڈھانچے کا خلاصہ ایک جملے میں۔",
+      "title": "",
+      "tts": {
+        "text": "یہی ہے اس تعمیراتی ڈھانچے کا خلاصہ ایک جملے میں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اب امریکہ اور چین کا موازنہ کرتے ہیں۔",
+      "text_markdown": "اب امریکہ اور چین کا موازنہ کرتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "اب امریکہ اور چین کا موازنہ کرتے ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "عام رائے یہ ہے کہ چین کچھ مہینے پیچھے ہے۔",
+      "text_markdown": "عام رائے یہ ہے کہ چین کچھ مہینے پیچھے ہے۔",
+      "title": "",
+      "tts": {
+        "text": "عام رائے یہ ہے کہ چین کچھ مہینے پیچھے ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یہ عام رائے غلط ہے کیونکہ یہ غلط چیز کو پیمانہ بناتی ہے۔",
+      "text_markdown": "یہ عام رائے غلط ہے کیونکہ یہ غلط چیز کو پیمانہ بناتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "یہ عام رائے غلط ہے کیونکہ یہ غلط چیز کو پیمانہ بناتی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "پیر، نو جون کو، Bloomberg نے National Development and Reform Commission کے ایک چینی مسودہ منصوبے کی خبر دی — دو ٹریلین یوآن، تقریباً دو سو پچانوے ارب ڈالر، بیس اٹھائیس تک ملک گیر AI ڈیٹا سینٹر گرڈ کے لیے۔",
+      "text_markdown": "پیر، نو جون کو، Bloomberg نے National Development and Reform Commission کے ایک چینی مسودہ منصوبے کی خبر دی — دو ٹریلین یوآن، تقریباً دو سو پچانوے ارب ڈالر، بیس اٹھائیس تک ملک گیر AI ڈیٹا سینٹر گرڈ کے لیے۔",
+      "title": "",
+      "tts": {
+        "text": "پیر، نو جون کو، Bloomberg نے National Development and Reform Commission کے ایک چینی مسودہ منصوبے کی خبر دی — دو ٹریلین یوآن، تقریباً دو سو پچانوے ارب ڈالر، بیس اٹھائیس تک ملک گیر AI ڈیٹا سینٹر گرڈ کے لیے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اس منصوبے میں اسی فیصد ملکی سلیکون لازمی قرار دیا گیا ہے اور یہ China Mobile اور China Telecom کے ذریعے ایک مربوط کمپیوٹ فیبرک کے طور پر چلایا جائے گا۔",
+      "text_markdown": "اس منصوبے میں اسی فیصد ملکی سلیکون لازمی قرار دیا گیا ہے اور یہ China Mobile اور China Telecom کے ذریعے ایک مربوط کمپیوٹ فیبرک کے طور پر چلایا جائے گا۔",
+      "title": "",
+      "tts": {
+        "text": "اس منصوبے میں اسی فیصد ملکی سلیکون لازمی قرار دیا گیا ہے اور یہ China Mobile اور China Telecom کے ذریعے ایک مربوط کمپیوٹ فیبرک کے طور پر چلایا جائے گا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور اس منصوبے میں خامی کہاں ہے۔",
+      "text_markdown": "اور اس منصوبے میں خامی کہاں ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اور اس منصوبے میں خامی کہاں ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "دو ٹریلین یوآن، اسی فیصد ملکی سلیکون، بیس اٹھائیس کی آخری تاریخ — اور خامی یہ ہے کہ اصل رکاوٹ لاجک چپس نہیں بلکہ high-bandwidth memory ہے۔",
+      "text_markdown": "دو ٹریلین یوآن، اسی فیصد ملکی سلیکون، بیس اٹھائیس کی آخری تاریخ — اور خامی یہ ہے کہ اصل رکاوٹ لاجک چپس نہیں بلکہ high-bandwidth memory ہے۔",
+      "title": "",
+      "tts": {
+        "text": "دو ٹریلین یوآن، اسی فیصد ملکی سلیکون، بیس اٹھائیس کی آخری تاریخ — اور خامی یہ ہے کہ اصل رکاوٹ لاجک چپس نہیں بلکہ ہائی بینڈوِڈتھ میموری ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ہمیں اس کی تفصیل بتائیں۔",
+      "text_markdown": "ہمیں اس کی تفصیل بتائیں۔",
+      "title": "",
+      "tts": {
+        "text": "ہمیں اس کی تفصیل بتائیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ہر AI accelerator کو لاجک ڈائی کے ساتھ HBM stacks جوڑنے کی ضرورت ہوتی ہے۔",
+      "text_markdown": "ہر AI accelerator کو لاجک ڈائی کے ساتھ HBM stacks جوڑنے کی ضرورت ہوتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ہر AI accelerator کو لاجک ڈائی کے ساتھ HBM stacks جوڑنے کی ضرورت ہوتی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "HBM کے بغیر چپ کسی کام کی نہیں۔",
+      "text_markdown": "HBM کے بغیر چپ کسی کام کی نہیں۔",
+      "title": "",
+      "tts": {
+        "text": "HBM کے بغیر چپ کسی کام کی نہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "چین نے ایکسپورٹ کنٹرولز کے بند ہونے سے پہلے تقریباً ایک کروڑ تیس لاکھ HBM stacks ذخیرہ کر لیے تھے — جن میں سے ایک کروڑ چودہ لاکھ اکیلے Samsung سے تھے۔",
+      "text_markdown": "چین نے ایکسپورٹ کنٹرولز کے بند ہونے سے پہلے تقریباً ایک کروڑ تیس لاکھ HBM stacks ذخیرہ کر لیے تھے — جن میں سے ایک کروڑ چودہ لاکھ اکیلے Samsung سے تھے۔",
+      "title": "",
+      "tts": {
+        "text": "چین نے ایکسپورٹ کنٹرولز کے بند ہونے سے پہلے تقریباً ایک کروڑ تیس لاکھ HBM stacks ذخیرہ کر لیے تھے — جن میں سے ایک کروڑ چودہ لاکھ اکیلے Samsung سے تھے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Huawei Ascend 910C کی پیکیجنگ تناسب کے حساب سے، یہ ذخیرہ تقریباً سولہ لاکھ چپس کے لیے کافی ہے۔",
+      "text_markdown": "Huawei Ascend 910C کی پیکیجنگ تناسب کے حساب سے، یہ ذخیرہ تقریباً سولہ لاکھ چپس کے لیے کافی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Huawei Ascend نو سو دس C کی پیکیجنگ تناسب کے حساب سے، یہ ذخیرہ تقریباً سولہ لاکھ چپس کے لیے کافی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور پھر سپلائی ختم ہو جاتی ہے۔",
+      "text_markdown": "اور پھر سپلائی ختم ہو جاتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اور پھر سپلائی ختم ہو جاتی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "پھر سپلائی ختم ہو جاتی ہے — ایک کروڑ تیس لاکھ HBM stacks، سولہ لاکھ چپس کے لیے کافی، اور یہی حد ہے۔",
+      "text_markdown": "پھر سپلائی ختم ہو جاتی ہے — ایک کروڑ تیس لاکھ HBM stacks، سولہ لاکھ چپس کے لیے کافی، اور یہی حد ہے۔",
+      "title": "",
+      "tts": {
+        "text": "پھر سپلائی ختم ہو جاتی ہے — ایک کروڑ تیس لاکھ HBM stacks، سولہ لاکھ چپس کے لیے کافی، اور یہی حد ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "CXMT سے ملکی چینی HBM، بیس چھبیس میں تقریباً بیس لاکھ stacks کی پیداوار کی راہ پر ہے — شاید دو لاکھ پچاس ہزار سے تین لاکھ accelerators کے لیے کافی۔",
+      "text_markdown": "CXMT سے ملکی چینی HBM، بیس چھبیس میں تقریباً بیس لاکھ stacks کی پیداوار کی راہ پر ہے — شاید دو لاکھ پچاس ہزار سے تین لاکھ accelerators کے لیے کافی۔",
+      "title": "",
+      "tts": {
+        "text": "CXMT سے ملکی چینی HBM، بیس چھبیس میں تقریباً بیس لاکھ stacks کی پیداوار کی راہ پر ہے — شاید دو لاکھ پچاس ہزار سے تین لاکھ accelerators کے لیے کافی۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "تو Huawei کے سلیکون منصوبے کیسے دکھائی دیتے ہیں۔",
+      "text_markdown": "تو Huawei کے سلیکون منصوبے کیسے دکھائی دیتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "تو Huawei کے سلیکون منصوبے کیسے دکھائی دیتے ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bloomberg نے Huawei کے منصوبوں کا حوالہ دیتے ہوئے بیس چھبیس کی پیداوار چھ لاکھ 910C چپس بتائی، جبکہ وسیع تر Ascend پروڈکٹ لائن مجموعی طور پر سولہ لاکھ ڈائیز تک پہنچ سکتی ہے۔",
+      "text_markdown": "Bloomberg نے Huawei کے منصوبوں کا حوالہ دیتے ہوئے بیس چھبیس کی پیداوار چھ لاکھ 910C چپس بتائی، جبکہ وسیع تر Ascend پروڈکٹ لائن مجموعی طور پر سولہ لاکھ ڈائیز تک پہنچ سکتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg نے Huawei کے منصوبوں کا حوالہ دیتے ہوئے بیس چھبیس کی پیداوار چھ لاکھ نو سو دس C چپس بتائی، جبکہ وسیع تر Ascend پروڈکٹ لائن مجموعی طور پر سولہ لاکھ ڈائیز تک پہنچ سکتی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "وہ تعداد، چھ لاکھ، ایک ہدف ہے، شپ شدہ پیداوار نہیں۔",
+      "text_markdown": "وہ تعداد، چھ لاکھ، ایک ہدف ہے، شپ شدہ پیداوار نہیں۔",
+      "title": "",
+      "tts": {
+        "text": "وہ تعداد، چھ لاکھ، ایک ہدف ہے، شپ شدہ پیداوار نہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اور الگ سے، ایکسپورٹ کنٹرولز کے بند ہونے سے پہلے، Huawei نے Sophgo اور Bitmain کی شیل کمپنیوں کے ذریعے TSMC میں تیار کردہ انتیس لاکھ سے زائد Ascend ڈائیز جمع کر لی تھیں۔",
+      "text_markdown": "اور الگ سے، ایکسپورٹ کنٹرولز کے بند ہونے سے پہلے، Huawei نے Sophgo اور Bitmain کی شیل کمپنیوں کے ذریعے TSMC میں تیار کردہ انتیس لاکھ سے زائد Ascend ڈائیز جمع کر لی تھیں۔",
+      "title": "",
+      "tts": {
+        "text": "اور الگ سے، ایکسپورٹ کنٹرولز کے بند ہونے سے پہلے، Huawei نے Sophgo اور Bitmain کی شیل کمپنیوں کے ذریعے TSMC میں تیار کردہ انتیس لاکھ سے زائد Ascend ڈائیز جمع کر لی تھیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ایکسپورٹ کنٹرولز کے کارگر ہونے کی داستان میں انتیس لاکھ ڈائیز کا سقم موجود ہے۔",
+      "text_markdown": "ایکسپورٹ کنٹرولز کے کارگر ہونے کی داستان میں انتیس لاکھ ڈائیز کا سقم موجود ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ایکسپورٹ کنٹرولز کے کارگر ہونے کی داستان میں انتیس لاکھ ڈائیز کا سقم موجود ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "چلیں سرخیاں تیزی سے چلاتے ہیں۔",
+      "text_markdown": "چلیں سرخیاں تیزی سے چلاتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "چلیں سرخیاں تیزی سے چلاتے ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اس ہفتے کی پہلی سرخی، Broadcom۔",
+      "text_markdown": "اس ہفتے کی پہلی سرخی، Broadcom۔",
+      "title": "",
+      "tts": {
+        "text": "اس ہفتے کی پہلی سرخی، Broadcom۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Broadcom کی مارکیٹ کیپیٹلائزیشن تقریباً دو ٹریلین ڈالر ہے۔",
+      "text_markdown": "Broadcom کی مارکیٹ کیپیٹلائزیشن تقریباً دو ٹریلین ڈالر ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Broadcom کی مارکیٹ کیپیٹلائزیشن تقریباً دو ٹریلین ڈالر ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ان کے CEO، Hock Tan نے جون تیسری کی ارننگس کال پر مالی سال ستائیس کے لیے ایک سو ارب ڈالر کا A.I. سیمی کنڈکٹر ریونیو ہدف دہرایا، جس کے پیچھے تقریباً تہتر ارب ڈالر کا A.I. بیک لاگ اور Alphabet اور Meta کے ساتھ اکتیس تک کے طویل مدتی معاہدے ہیں۔",
+      "text_markdown": "ان کے CEO، Hock Tan نے جون تیسری کی ارننگس کال پر مالی سال ستائیس کے لیے ایک سو ارب ڈالر کا A.I. سیمی کنڈکٹر ریونیو ہدف دہرایا، جس کے پیچھے تقریباً تہتر ارب ڈالر کا A.I. بیک لاگ اور Alphabet اور Meta کے ساتھ اکتیس تک کے طویل مدتی معاہدے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "ان کے سی ای او، ہاک ٹین نے جون تیسری کی ارننگس کال پر مالی سال بیس بیس سات کے لیے ایک سو ارب ڈالر کا اے آئی سیمی کنڈکٹر ریونیو ہدف دہرایا، جس کے پیچھے تقریباً تہتر ارب ڈالر کا اے آئی بیک لاگ اور Alphabet اور Meta کے ساتھ بیس اکتیس تک کے طویل مدتی معاہدے ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "دو ٹریلین ڈالر مارکیٹ کیپ، سو ارب ڈالر کا A.I. ریونیو ہدف، اور خردہ برانڈ کی تقریباً کوئی پہچان نہیں۔",
+      "text_markdown": "دو ٹریلین ڈالر مارکیٹ کیپ، سو ارب ڈالر کا A.I. ریونیو ہدف، اور خردہ برانڈ کی تقریباً کوئی پہچان نہیں۔",
+      "title": "",
+      "tts": {
+        "text": "دو ٹریلین ڈالر مارکیٹ کیپ، سو ارب ڈالر کا اے آئی ریونیو ہدف، اور خردہ برانڈ کی تقریباً کوئی پہچان نہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اس ہفتے کی دوسری سرخی: ASML۔",
+      "text_markdown": "اس ہفتے کی دوسری سرخی: ASML۔",
+      "title": "",
+      "tts": {
+        "text": "اس ہفتے کی دوسری سرخی: ASML۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ASML، وہ ڈچ کمپنی جو لیتھوگرافی مشینیں بناتی ہے جن پر تمام لیڈنگ ایج لاجک منحصر ہے، اپنا High-N.A. E.U.V. سسٹم تقریباً تین سو ستر ملین ڈالر میں فروخت کرتی ہے۔",
+      "text_markdown": "ASML، وہ ڈچ کمپنی جو لیتھوگرافی مشینیں بناتی ہے جن پر تمام لیڈنگ ایج لاجک منحصر ہے، اپنا High-N.A. E.U.V. سسٹم تقریباً تین سو ستر ملین ڈالر میں فروخت کرتی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اے ایس ایم ایل، وہ ڈچ کمپنی جو لیتھوگرافی مشینیں بناتی ہے جن پر تمام لیڈنگ ایج لاجک منحصر ہے، اپنا ہائی این اے ای یو وی سسٹم تقریباً تین سو ستر ملین ڈالر میں فروخت کرتی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "عالمی پیداواری گنجائش سالانہ بیس یونٹ سے کم ہے۔",
+      "text_markdown": "عالمی پیداواری گنجائش سالانہ بیس یونٹ سے کم ہے۔",
+      "title": "",
+      "tts": {
+        "text": "عالمی پیداواری گنجائش سالانہ بیس یونٹ سے کم ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "تین سو ستر ملین ڈالر فی مشین، سال میں بیس سے کم مشینیں، اور بناتی ایک ہی کمپنی ہے — یہی عالمی سلیکون کا اصل گلا گھونٹنے والا مقام ہے، پالیسی نہیں۔",
+      "text_markdown": "تین سو ستر ملین ڈالر فی مشین، سال میں بیس سے کم مشینیں، اور بناتی ایک ہی کمپنی ہے — یہی عالمی سلیکون کا اصل گلا گھونٹنے والا مقام ہے، پالیسی نہیں۔",
+      "title": "",
+      "tts": {
+        "text": "تین سو ستر ملین ڈالر فی مشین، سال میں بیس سے کم مشینیں، اور بناتی ایک ہی کمپنی ہے — یہی عالمی سلیکون کا اصل گلا گھونٹنے والا مقام ہے، پالیسی نہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اس ہفتے کی تیسری سرخی: ایکسپورٹ کنٹرولز۔",
+      "text_markdown": "اس ہفتے کی تیسری سرخی: ایکسپورٹ کنٹرولز۔",
+      "title": "",
+      "tts": {
+        "text": "اس ہفتے کی تیسری سرخی: ایکسپورٹ کنٹرولز۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Commerce نے تیرہ مئی، دو ہزار پچیس کو Biden دور کا A.I. Diffusion Rule منسوخ کر دیا، اور اکتیس مئی، دو ہزار چھبیس تک B.I.S. کی نئی انفورسمنٹ وضاحت جاری نہیں کی۔",
+      "text_markdown": "Commerce نے تیرہ مئی، دو ہزار پچیس کو Biden دور کا A.I. Diffusion Rule منسوخ کر دیا، اور اکتیس مئی، دو ہزار چھبیس تک B.I.S. کی نئی انفورسمنٹ وضاحت جاری نہیں کی۔",
+      "title": "",
+      "tts": {
+        "text": "کامرس نے تیرہ مئی، دو ہزار پچیس کو بائیڈن دور کا اے آئی ڈفیوژن رول منسوخ کر دیا، اور اکتیس مئی، دو ہزار چھبیس تک بی آئی ایس کی نئی انفورسمنٹ وضاحت جاری نہیں کی۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یعنی تقریباً ایک سال کی ایسی کھڑکی جس میں لائسنسنگ کی شرائط فعال طور پر نافذ نہیں کی گئیں۔",
+      "text_markdown": "یعنی تقریباً ایک سال کی ایسی کھڑکی جس میں لائسنسنگ کی شرائط فعال طور پر نافذ نہیں کی گئیں۔",
+      "title": "",
+      "tts": {
+        "text": "یعنی تقریباً ایک سال کی ایسی کھڑکی جس میں لائسنسنگ کی شرائط فعال طور پر نافذ نہیں کی گئیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "تو دن گنیں۔",
+      "text_markdown": "تو دن گنیں۔",
+      "title": "",
+      "tts": {
+        "text": "تو دن گنیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ایک امریکی ماڈل بند کرنے میں بہتر گھنٹے، چپ ایکسپورٹ قانون نافذ کرنے میں تین سو اسی دن — یہی عدم توازن اس سب کی کہانی ہے۔",
+      "text_markdown": "ایک امریکی ماڈل بند کرنے میں بہتر گھنٹے، چپ ایکسپورٹ قانون نافذ کرنے میں تین سو اسی دن — یہی عدم توازن اس سب کی کہانی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "ایک امریکی ماڈل بند کرنے میں بہتر گھنٹے، چپ ایکسپورٹ قانون نافذ کرنے میں تین سو اسی دن — یہی عدم توازن اس سب کی کہانی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور ان تین سو اسی دنوں میں چپس کہاں گئیں۔",
+      "text_markdown": "اور ان تین سو اسی دنوں میں چپس کہاں گئیں۔",
+      "title": "",
+      "tts": {
+        "text": "اور ان تین سو اسی دنوں میں چپس کہاں گئیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ان میں سے زیادہ تر جنوب مشرقی ایشیا گئیں۔",
+      "text_markdown": "ان میں سے زیادہ تر جنوب مشرقی ایشیا گئیں۔",
+      "title": "",
+      "tts": {
+        "text": "ان میں سے زیادہ تر جنوب مشرقی ایشیا گئیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "محکمہ انصاف نے مارچ کے اواخر میں فردِ جرم کھولی جس میں الزام لگایا گیا کہ Nvidia H100 اور A100 چپس ملیشین اور سنگاپوری بیچوانوں کے ذریعے بھیجی گئیں۔",
+      "text_markdown": "محکمہ انصاف نے مارچ کے اواخر میں فردِ جرم کھولی جس میں الزام لگایا گیا کہ Nvidia H100 اور A100 چپس ملیشین اور سنگاپوری بیچوانوں کے ذریعے بھیجی گئیں۔",
+      "title": "",
+      "tts": {
+        "text": "محکمہ انصاف نے مارچ کے اواخر میں فردِ جرم کھولی جس میں الزام لگایا گیا کہ Nvidia ایچ ایک سو اور اے ایک سو چپس ملیشین اور سنگاپوری بیچوانوں کے ذریعے بھیجی گئیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Fortune نے مئی میں لاجسٹکس دکھانے والے انکرپٹڈ ٹیکسٹس شائع کیے، اور Super Micro ڈھائی ارب ڈالر کے شیل کمپنی کیس میں ملوث ہے۔",
+      "text_markdown": "Fortune نے مئی میں لاجسٹکس دکھانے والے انکرپٹڈ ٹیکسٹس شائع کیے، اور Super Micro ڈھائی ارب ڈالر کے شیل کمپنی کیس میں ملوث ہے۔",
+      "title": "",
+      "tts": {
+        "text": "فارچون نے مئی میں لاجسٹکس دکھانے والے انکرپٹڈ ٹیکسٹس شائع کیے، اور سپر مائیکرو ڈھائی ارب ڈالر کے شیل کمپنی کیس میں ملوث ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Trump انتظامیہ مبینہ طور پر خاص طور پر ملائیشیا اور تھائی لینڈ کو ہدف بناتے ہوئے نئی چپ ایکسپورٹ پابندیوں کا مسودہ تیار کر رہی ہے۔",
+      "text_markdown": "Trump انتظامیہ مبینہ طور پر خاص طور پر ملائیشیا اور تھائی لینڈ کو ہدف بناتے ہوئے نئی چپ ایکسپورٹ پابندیوں کا مسودہ تیار کر رہی ہے۔",
+      "title": "",
+      "tts": {
+        "text": "Trump انتظامیہ مبینہ طور پر خاص طور پر ملائیشیا اور تھائی لینڈ کو ہدف بناتے ہوئے نئی چپ ایکسپورٹ پابندیوں کا مسودہ تیار کر رہی ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "تو ایک سطر میں تصویر یہ ہے۔",
+      "text_markdown": "تو ایک سطر میں تصویر یہ ہے۔",
+      "title": "",
+      "tts": {
+        "text": "تو ایک سطر میں تصویر یہ ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "چپس سیدھی Shenzhen نہیں جاتیں — پہلے Penang اور Singapore جاتی ہیں۔",
+      "text_markdown": "چپس سیدھی Shenzhen نہیں جاتیں — پہلے Penang اور Singapore جاتی ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "چپس سیدھی Shenzhen نہیں جاتیں — پہلے Penang اور Singapore جاتی ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اس ہفتے کا تصور: باقی ماندہ کارکردگی کی ذمہ داریاں۔",
+      "text_markdown": "اس ہفتے کا تصور: باقی ماندہ کارکردگی کی ذمہ داریاں۔",
+      "title": "",
+      "tts": {
+        "text": "اس ہفتے کا تصور، باقی ماندہ کارکردگی کی ذمہ داریاں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "R.P.O. ایک اکاؤنٹنگ لائن ہے جو اُن معاہدوں کی ڈالر قیمت ریکارڈ کرتی ہے جو کمپنی نے سائن تو کر لیے ہیں لیکن ابھی تک پورے نہیں کیے۔",
+      "text_markdown": "R.P.O. ایک اکاؤنٹنگ لائن ہے جو اُن معاہدوں کی ڈالر قیمت ریکارڈ کرتی ہے جو کمپنی نے سائن تو کر لیے ہیں لیکن ابھی تک پورے نہیں کیے۔",
+      "title": "",
+      "tts": {
+        "text": "آر پی او ایک اکاؤنٹنگ لائن ہے جو اُن معاہدوں کی ڈالر قیمت ریکارڈ کرتی ہے جو کمپنی نے سائن تو کر لیے ہیں لیکن ابھی تک پورے نہیں کیے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "یہ مستقبل کی طرف دیکھتا ہے — یہ آپ کو آنے والے ریونیو کے بارے میں بتاتا ہے، آج بینک میں موجود رقم کے بارے میں نہیں۔",
+      "text_markdown": "یہ مستقبل کی طرف دیکھتا ہے — یہ آپ کو آنے والے ریونیو کے بارے میں بتاتا ہے، آج بینک میں موجود رقم کے بارے میں نہیں۔",
+      "title": "",
+      "tts": {
+        "text": "یہ مستقبل کی طرف دیکھتا ہے — یہ آپ کو آنے والے ریونیو کے بارے میں بتاتا ہے، آج بینک میں موجود رقم کے بارے میں نہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اور Oracle کے لیے یہ کیوں اہم ہے۔",
+      "text_markdown": "اور Oracle کے لیے یہ کیوں اہم ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اور Oracle کے لیے یہ کیوں اہم ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "کیونکہ پانچ سو تریپن ارب ڈالر کا R.P.O.، جو بڑی حد تک ایک ہی کسٹمر کے ایک ہی بلڈ آؤٹ میں مرکوز ہے، کا مطلب یہ ہے کہ Oracle نے ایسے کسٹمر کے خلاف اگلے کئی سالوں میں بھاری مقدار میں کمپیوٹ فراہم کرنے کا وعدہ کیا ہے جس کا اپنا ریونیو ماڈل ابھی بھی زیرِ بحث ہے۔",
+      "text_markdown": "کیونکہ پانچ سو تریپن ارب ڈالر کا R.P.O.، جو بڑی حد تک ایک ہی کسٹمر کے ایک ہی بلڈ آؤٹ میں مرکوز ہے، کا مطلب یہ ہے کہ Oracle نے ایسے کسٹمر کے خلاف اگلے کئی سالوں میں بھاری مقدار میں کمپیوٹ فراہم کرنے کا وعدہ کیا ہے جس کا اپنا ریونیو ماڈل ابھی بھی زیرِ بحث ہے۔",
+      "title": "",
+      "tts": {
+        "text": "کیونکہ پانچ سو تریپن ارب ڈالر کا آر پی او، جو بڑی حد تک ایک ہی کسٹمر کے ایک ہی بلڈ آؤٹ میں مرکوز ہے، کا مطلب یہ ہے کہ Oracle نے ایسے کسٹمر کے خلاف اگلے کئی سالوں میں بھاری مقدار میں کمپیوٹ فراہم کرنے کا وعدہ کیا ہے جس کا اپنا ریونیو ماڈل ابھی بھی زیرِ بحث ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اگر یہ معاہدے پورے ہو جائیں، تو Oracle کے پاس دہائی کا بہترین سودا ہے۔",
+      "text_markdown": "اگر یہ معاہدے پورے ہو جائیں، تو Oracle کے پاس دہائی کا بہترین سودا ہے۔",
+      "title": "",
+      "tts": {
+        "text": "اگر یہ معاہدے پورے ہو جائیں، تو Oracle کے پاس دہائی کا بہترین سودا ہے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "اگر وہ لڑکھڑا جائیں — یا از سرِ نو مذاکرات ہو جائیں — تو Oracle قرض اٹھائے بیٹھا رہے گا جبکہ معاہدے سکڑتے جائیں گے۔",
+      "text_markdown": "اگر وہ لڑکھڑا جائیں — یا از سرِ نو مذاکرات ہو جائیں — تو Oracle قرض اٹھائے بیٹھا رہے گا جبکہ معاہدے سکڑتے جائیں گے۔",
+      "title": "",
+      "tts": {
+        "text": "اگر وہ لڑکھڑا جائیں — یا از سرِ نو مذاکرات ہو جائیں — تو Oracle قرض اٹھائے بیٹھا رہے گا جبکہ معاہدے سکڑتے جائیں گے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "تو جب آپ کسی ٹیک فائلنگ میں R.P.O. کا نمبر دیکھیں۔",
+      "text_markdown": "تو جب آپ کسی ٹیک فائلنگ میں R.P.O. کا نمبر دیکھیں۔",
+      "title": "",
+      "tts": {
+        "text": "تو جب آپ کسی ٹیک فائلنگ میں آر پی او کا نمبر دیکھیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "پڑھیں کہ کسٹمر کون ہیں، ذمہ داریاں کتنی مرکوز ہیں، اور کمپنی کو انہیں اصل میں پورا کرنے کے لیے کیا ہونا پڑے گا۔",
+      "text_markdown": "پڑھیں کہ کسٹمر کون ہیں، ذمہ داریاں کتنی مرکوز ہیں، اور کمپنی کو انہیں اصل میں پورا کرنے کے لیے کیا ہونا پڑے گا۔",
+      "title": "",
+      "tts": {
+        "text": "پڑھیں کہ کسٹمر کون ہیں، ذمہ داریاں کتنی مرکوز ہیں، اور کمپنی کو انہیں اصل میں پورا کرنے کے لیے کیا ہونا پڑے گا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "R.P.O. وہ جگہ ہے جہاں فٹ نوٹس میں نقصان اٹھانے والے سامنے آتے ہیں۔",
+      "text_markdown": "R.P.O. وہ جگہ ہے جہاں فٹ نوٹس میں نقصان اٹھانے والے سامنے آتے ہیں۔",
+      "title": "",
+      "tts": {
+        "text": "آر پی او وہ جگہ ہے جہاں فٹ نوٹس میں نقصان اٹھانے والے سامنے آتے ہیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اختتام کے لیے ایک اچھی جگہ۔",
+      "text_markdown": "اختتام کے لیے ایک اچھی جگہ۔",
+      "title": "",
+      "tts": {
+        "text": "اختتام کے لیے ایک اچھی جگہ۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron، خلاصے کا شکریہ۔",
+      "text_markdown": "Ron، خلاصے کا شکریہ۔",
+      "title": "",
+      "tts": {
+        "text": "Ron، خلاصے کا شکریہ۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "کبھی بھی، Vindy — یہاں آ کر اچھا لگا۔",
+      "text_markdown": "کبھی بھی، Vindy — یہاں آ کر اچھا لگا۔",
+      "title": "",
+      "tts": {
+        "text": "کبھی بھی، Vindy — یہاں آ کر اچھا لگا۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "یہ تھا AI This Week، اکیس جون، دو ہزار چھبیس کے لیے۔",
+      "text_markdown": "یہ تھا AI This Week، اکیس جون، دو ہزار چھبیس کے لیے۔",
+      "title": "",
+      "tts": {
+        "text": "یہ تھا اے آئی دس ویک، اکیس جون، دو ہزار چھبیس کے لیے۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اگلے ہفتے، اوپن ویٹس اور چھوٹی لیبز کی خبروں پر واپسی۔",
+      "text_markdown": "اگلے ہفتے، اوپن ویٹس اور چھوٹی لیبز کی خبروں پر واپسی۔",
+      "title": "",
+      "tts": {
+        "text": "اگلے ہفتے، اوپن ویٹس اور چھوٹی لیبز کی خبروں پر واپسی۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "اگلے اتوار تک، خیال رکھیں۔",
+      "text_markdown": "اگلے اتوار تک، خیال رکھیں۔",
+      "title": "",
+      "tts": {
+        "text": "اگلے اتوار تک، خیال رکھیں۔",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

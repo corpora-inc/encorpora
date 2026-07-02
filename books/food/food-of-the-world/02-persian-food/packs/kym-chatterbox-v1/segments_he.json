@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "language": "he",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הערה לקוראים",
+      "text_markdown": "הערה לקוראים"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שלום.",
+      "text_markdown": "שלום.",
+      "tts": {
+        "text": "שלום.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אני Kym.",
+      "text_markdown": "אני Kym.",
+      "tts": {
+        "text": "אני קים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אני אוהבת אוכל.",
+      "text_markdown": "אני אוהבת אוכל.",
+      "tts": {
+        "text": "אני אוהבת אוכל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "אני אוהבת סיפורים על אוכל.",
+      "text_markdown": "אני אוהבת סיפורים על אוכל.",
+      "tts": {
+        "text": "אני אוהבת סיפורים על אוכל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה ספר קטן על אוכל גדול.",
+      "text_markdown": "זה ספר קטן על אוכל גדול.",
+      "tts": {
+        "text": "זה ספר קטן על אוכל גדול.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "האוכל הזה הוא אוכל פרסי.",
+      "text_markdown": "האוכל הזה הוא אוכל פרסי.",
+      "tts": {
+        "text": "האוכל הזה הוא אוכל פרסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זה האוכל של איראן.",
+      "text_markdown": "זה האוכל של איראן.",
+      "tts": {
+        "text": "זה האוכל של איראן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "זה גם האוכל של ארץ עתיקה הרבה יותר, שנקראה פרס.",
+      "text_markdown": "זה גם האוכל של ארץ עתיקה הרבה יותר, שנקראה פרס.",
+      "tts": {
+        "text": "זה גם האוכל של ארץ עתיקה הרבה יותר, שנקראה פרס.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פרס היא אחד המקומות העתיקים בעולם שבהם אנשים גידלו מזון בכוונה.",
+      "text_markdown": "פרס היא אחד המקומות העתיקים בעולם שבהם אנשים גידלו מזון בכוונה.",
+      "tts": {
+        "text": "פרס היא אחד המקומות העתיקים בעולם שבהם אנשים גידלו מזון בכוונה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "חיטה, שעורה, אפרסק, משמש, רימון, תרד, זעפרן, הרבה דברים בצלחת שלך נולדו שם.",
+      "text_markdown": "חיטה, שעורה, אפרסק, משמש, רימון, תרד, זעפרן, הרבה דברים בצלחת שלך נולדו שם.",
+      "tts": {
+        "text": "חיטה, שעורה, אפרסק, משמש, רימון, תרד, זעפרן, הרבה דברים בצלחת שלך נולדו שם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נתחיל בארץ.",
+      "text_markdown": "נתחיל בארץ.",
+      "tts": {
+        "text": "נתחיל בארץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ואז נסתכל על הדברים שצומחים בה.",
+      "text_markdown": "ואז נסתכל על הדברים שצומחים בה.",
+      "tts": {
+        "text": "ואז נסתכל על הדברים שצומחים בה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ואז נסתכל על האורז, הלחם, הבשר והתבשילים.",
+      "text_markdown": "ואז נסתכל על האורז, הלחם, הבשר והתבשילים.",
+      "tts": {
+        "text": "ואז נסתכל על האורז, הלחם, הבשר והתבשילים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "בסוף תדעו מה יש על שולחן פרסי, ותדעו מאיפה זה בא.",
+      "text_markdown": "בסוף תדעו מה יש על שולחן פרסי, ותדעו מאיפה זה בא.",
+      "tts": {
+        "text": "בסוף תדעו מה יש על שולחן פרסי, ותדעו מאיפה זה בא.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שבו.",
+      "text_markdown": "שבו.",
+      "tts": {
+        "text": "שבו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מזגו קצת תה.",
+      "text_markdown": "מזגו קצת תה.",
+      "tts": {
+        "text": "מזגו קצת תה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בואו נתחיל.",
+      "text_markdown": "בואו נתחיל.",
+      "tts": {
+        "text": "בואו נתחיל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 1: הארץ שבה נולדה החקלאות",
+      "text_markdown": "פרק 1: הארץ שבה נולדה החקלאות"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פרס היא ארץ גבוהה ויבשה.",
+      "text_markdown": "פרס היא ארץ גבוהה ויבשה.",
+      "tts": {
+        "text": "פרס היא ארץ גבוהה ויבשה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היא שוכנת בין הים הכספי בצפון ובין המפרץ הפרסי בדרום.",
+      "text_markdown": "היא שוכנת בין הים הכספי בצפון ובין המפרץ הפרסי בדרום.",
+      "tts": {
+        "text": "היא שוכנת בין הים הכספי בצפון ובין המפרץ הפרסי בדרום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "במערב נמצאת מסופוטמיה.",
+      "text_markdown": "במערב נמצאת מסופוטמיה.",
+      "tts": {
+        "text": "במערב נמצאת מסופוטמיה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "במזרח נמצאת הודו.",
+      "text_markdown": "במזרח נמצאת הודו.",
+      "tts": {
+        "text": "במזרח נמצאת הודו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "באמצע יש הרים ומדבריות.",
+      "text_markdown": "באמצע יש הרים ומדבריות.",
+      "tts": {
+        "text": "באמצע יש הרים ומדבריות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ממש ליד, לפני עשרת אלפים שנה בערך, אנשים גידלו לראשונה חיטה ושעורה בכוונה.",
+      "text_markdown": "ממש ליד, לפני עשרת אלפים שנה בערך, אנשים גידלו לראשונה חיטה ושעורה בכוונה.",
+      "tts": {
+        "text": "ממש ליד, לפני עשרת אלפים שנה בערך, אנשים גידלו לראשונה חיטה ושעורה בכוונה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שם נולדה החקלאות.",
+      "text_markdown": "שם נולדה החקלאות.",
+      "tts": {
+        "text": "שם נולדה החקלאות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "פרס הייתה אחד המקומות הראשונים שלמדו את זה.",
+      "text_markdown": "פרס הייתה אחד המקומות הראשונים שלמדו את זה.",
+      "tts": {
+        "text": "פרס הייתה אחד המקומות הראשונים שלמדו את זה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "היתרון הקדום הזה נמצא בכל צלחת פרסית.",
+      "text_markdown": "היתרון הקדום הזה נמצא בכל צלחת פרסית.",
+      "tts": {
+        "text": "היתרון הקדום הזה נמצא בכל צלחת פרסית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "האפרסק בא מפרס.",
+      "text_markdown": "האפרסק בא מפרס.",
+      "tts": {
+        "text": "האפרסק בא מפרס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הרומאים קראו לו פרסיקה, הפרי הפרסי. המילה האנגלית לאפרסק באה מהשם הזה.",
+      "text_markdown": "הרומאים קראו לו פרסיקה, הפרי הפרסי. המילה האנגלית לאפרסק באה מהשם הזה.",
+      "tts": {
+        "text": "הרומאים קראו לו פרסיקה, הפרי הפרסי. המילה האנגלית לאפרסק באה מהשם הזה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם המשמש בא משם.",
+      "text_markdown": "גם המשמש בא משם.",
+      "tts": {
+        "text": "גם המשמש בא משם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "וגם הרימון.",
+      "text_markdown": "וגם הרימון.",
+      "tts": {
+        "text": "וגם הרימון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "וגם אגוז המלך.",
+      "text_markdown": "וגם אגוז המלך.",
+      "tts": {
+        "text": "וגם אגוז המלך.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "וגם הדובדבן החמוץ.",
+      "text_markdown": "וגם הדובדבן החמוץ.",
+      "tts": {
+        "text": "וגם הדובדבן החמוץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "וגם אחד מעלי הסלט הראשונים בעולם, התרד.",
+      "text_markdown": "וגם אחד מעלי הסלט הראשונים בעולם, התרד.",
+      "tts": {
+        "text": "וגם אחד מעלי הסלט הראשונים בעולם, התרד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "המילה האנגלית לתרד באה מהמילה הפרסית אספנאג'.",
+      "text_markdown": "המילה האנגלית לתרד באה מהמילה הפרסית אספנאג'.",
+      "tts": {
+        "text": "המילה האנגלית לתרד באה מהמילה הפרסית אספנאג'.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אפילו המילה הלועזית לגן עדן היא מילה פרסית.",
+      "text_markdown": "אפילו המילה הלועזית לגן עדן היא מילה פרסית.",
+      "tts": {
+        "text": "אפילו המילה הלועזית לגן עדן היא מילה פרסית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היא באה מהמילה פרדיס, גן מוקף חומה.",
+      "text_markdown": "היא באה מהמילה פרדיס, גן מוקף חומה.",
+      "tts": {
+        "text": "היא באה מהמילה פרדיס, גן מוקף חומה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "גן העדן הראשון היה בוסתן פרסי, מלא עצי רימון.",
+      "text_markdown": "גן העדן הראשון היה בוסתן פרסי, מלא עצי רימון.",
+      "tts": {
+        "text": "גן העדן הראשון היה בוסתן פרסי, מלא עצי רימון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פרס לא רק אכלה טוב.",
+      "text_markdown": "פרס לא רק אכלה טוב.",
+      "tts": {
+        "text": "פרס לא רק אכלה טוב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "פרס לימדה את העולם איך לאכול טוב.",
+      "text_markdown": "פרס לימדה את העולם איך לאכול טוב.",
+      "tts": {
+        "text": "פרס לימדה את העולם איך לאכול טוב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 2: המזווה המקומי",
+      "text_markdown": "פרק 2: המזווה המקומי"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פתחו מזווה פרסי.",
+      "text_markdown": "פתחו מזווה פרסי.",
+      "tts": {
+        "text": "פתחו מזווה פרסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הריחות מספרים את הסיפור.",
+      "text_markdown": "הריחות מספרים את הסיפור.",
+      "tts": {
+        "text": "הריחות מספרים את הסיפור.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הריח הראשון הוא זעפרן.",
+      "text_markdown": "הריח הראשון הוא זעפרן.",
+      "tts": {
+        "text": "הריח הראשון הוא זעפרן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "איראן מגדלת בערך תשעים אחוז מהזעפרן בעולם.",
+      "text_markdown": "איראן מגדלת בערך תשעים אחוז מהזעפרן בעולם.",
+      "tts": {
+        "text": "איראן מגדלת בערך תשעים אחוז מהזעפרן בעולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "רובו מגיע ממחוז בשם ח'וראסאן.",
+      "text_markdown": "רובו מגיע ממחוז בשם ח'וראסאן.",
+      "tts": {
+        "text": "רובו מגיע ממחוז בשם ח'וראסאן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "כדי להכין גרם אחד, חקלאי קוטף ביד את החוטים האדומים מכמאתיים פרחי כרכום.",
+      "text_markdown": "כדי להכין גרם אחד, חקלאי קוטף ביד את החוטים האדומים מכמאתיים פרחי כרכום.",
+      "tts": {
+        "text": "כדי להכין גרם אחד, חקלאי קוטף ביד את החוטים האדומים מכמאתיים פרחי כרכום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "העבודה נעשית בשחרי סתיו קרים.",
+      "text_markdown": "העבודה נעשית בשחרי סתיו קרים.",
+      "tts": {
+        "text": "העבודה נעשית בשחרי סתיו קרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "זעפרן הוא התבלין היקר בעולם.",
+      "text_markdown": "זעפרן הוא התבלין היקר בעולם.",
+      "tts": {
+        "text": "זעפרן הוא התבלין היקר בעולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "קורט קטן הופך אורז לזהב ומים לבושם.",
+      "text_markdown": "קורט קטן הופך אורז לזהב ומים לבושם.",
+      "tts": {
+        "text": "קורט קטן הופך אורז לזהב ומים לבושם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הריח השני הוא רימון.",
+      "text_markdown": "הריח השני הוא רימון.",
+      "tts": {
+        "text": "הריח השני הוא רימון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הפרסים מגדלים רימונים כבר אלפי שנים.",
+      "text_markdown": "הפרסים מגדלים רימונים כבר אלפי שנים.",
+      "tts": {
+        "text": "הפרסים מגדלים רימונים כבר אלפי שנים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הפרי הזה הוא סמל לאהבה ולגן עדן.",
+      "text_markdown": "הפרי הזה הוא סמל לאהבה ולגן עדן.",
+      "tts": {
+        "text": "הפרי הזה הוא סמל לאהבה ולגן עדן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "את המיץ סוחטים לתוך תבשילים.",
+      "text_markdown": "את המיץ סוחטים לתוך תבשילים.",
+      "tts": {
+        "text": "את המיץ סוחטים לתוך תבשילים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "את הגרעינים מפזרים על אורז ועל סלטים.",
+      "text_markdown": "את הגרעינים מפזרים על אורז ועל סלטים.",
+      "tts": {
+        "text": "את הגרעינים מפזרים על אורז ועל סלטים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז באים הפיסטוקים.",
+      "text_markdown": "ואז באים הפיסטוקים.",
+      "tts": {
+        "text": "ואז באים הפיסטוקים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "באיראן יש מטעי פיסטוק בני שלושת אלפים שנה.",
+      "text_markdown": "באיראן יש מטעי פיסטוק בני שלושת אלפים שנה.",
+      "tts": {
+        "text": "באיראן יש מטעי פיסטוק בני שלושת אלפים שנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הפיסטוק שאתם אוכלים הוא לא פעם צאצא של עץ פרסי.",
+      "text_markdown": "הפיסטוק שאתם אוכלים הוא לא פעם צאצא של עץ פרסי.",
+      "tts": {
+        "text": "הפיסטוק שאתם אוכלים הוא לא פעם צאצא של עץ פרסי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש שם אגוזי מלך, דובדבנים חמוצים, חבושים, מלונים ותמרים.",
+      "text_markdown": "יש שם אגוזי מלך, דובדבנים חמוצים, חבושים, מלונים ותמרים.",
+      "tts": {
+        "text": "יש שם אגוזי מלך, דובדבנים חמוצים, חבושים, מלונים ותמרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "יש גם סומאק, תבלין אדום כהה וחמוץ משיח בר.",
+      "text_markdown": "יש גם סומאק, תבלין אדום כהה וחמוץ משיח בר.",
+      "tts": {
+        "text": "יש גם סומאק, תבלין אדום כהה וחמוץ משיח בר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לפני שהלימונים היו בכל מקום, הסומאק נתן לאוכל טעם חי.",
+      "text_markdown": "לפני שהלימונים היו בכל מקום, הסומאק נתן לאוכל טעם חי.",
+      "tts": {
+        "text": "לפני שהלימונים היו בכל מקום, הסומאק נתן לאוכל טעם חי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "והוא עדיין נותן.",
+      "text_markdown": "והוא עדיין נותן.",
+      "tts": {
+        "text": "והוא עדיין נותן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מזווה פרסי מכיל חצי מההיסטוריה של הפירות.",
+      "text_markdown": "מזווה פרסי מכיל חצי מההיסטוריה של הפירות.",
+      "tts": {
+        "text": "מזווה פרסי מכיל חצי מההיסטוריה של הפירות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 3: אורז, לחם והקרום הקדוש",
+      "text_markdown": "פרק 3: אורז, לחם והקרום הקדוש"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אורז הגיע לפרס מהודו לפני בערך אלפיים וחמש מאות שנה.",
+      "text_markdown": "אורז הגיע לפרס מהודו לפני בערך אלפיים וחמש מאות שנה.",
+      "tts": {
+        "text": "אורז הגיע לפרס מהודו לפני בערך אלפיים וחמש מאות שנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא נהיה הלב של השולחן.",
+      "text_markdown": "הוא נהיה הלב של השולחן.",
+      "tts": {
+        "text": "הוא נהיה הלב של השולחן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הפרסים מבשלים אורז בשתי דרכים.",
+      "text_markdown": "הפרסים מבשלים אורז בשתי דרכים.",
+      "tts": {
+        "text": "הפרסים מבשלים אורז בשתי דרכים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לאורז פשוט קוראים צ'לו.",
+      "text_markdown": "לאורז פשוט קוראים צ'לו.",
+      "tts": {
+        "text": "לאורז פשוט קוראים צ'לו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לאורז שמעורבב עם עשבים, בשר או פרי קוראים פולו.",
+      "text_markdown": "לאורז שמעורבב עם עשבים, בשר או פרי קוראים פולו.",
+      "tts": {
+        "text": "לאורז שמעורבב עם עשבים, בשר או פרי קוראים פולו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "שניהם ארוכים, קלילים ונפרדים, כל גרגר עומד לעצמו.",
+      "text_markdown": "שניהם ארוכים, קלילים ונפרדים, כל גרגר עומד לעצמו.",
+      "tts": {
+        "text": "שניהם ארוכים, קלילים ונפרדים, כל גרגר עומד לעצמו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל הקסם נמצא בתחתית הסיר.",
+      "text_markdown": "אבל הקסם נמצא בתחתית הסיר.",
+      "tts": {
+        "text": "אבל הקסם נמצא בתחתית הסיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "קוראים לו טהדיג.",
+      "text_markdown": "קוראים לו טהדיג.",
+      "tts": {
+        "text": "קוראים לו טהדיג.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הטבח שם שכבה דקה בתחתית הסיר, לפעמים אורז זעפרן, לפעמים פרוסת תפוח אדמה, ולפעמים חתיכת לחם.",
+      "text_markdown": "הטבח שם שכבה דקה בתחתית הסיר, לפעמים אורז זעפרן, לפעמים פרוסת תפוח אדמה, ולפעמים חתיכת לחם.",
+      "tts": {
+        "text": "הטבח שם שכבה דקה בתחתית הסיר, לפעמים אורז זעפרן, לפעמים פרוסת תפוח אדמה, ולפעמים חתיכת לחם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ואז שמים מעל את האורז.",
+      "text_markdown": "ואז שמים מעל את האורז.",
+      "tts": {
+        "text": "ואז שמים מעל את האורז.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ואז שמים את המכסה, עטוף במגבת מטבח, והאדים עושים את העבודה.",
+      "text_markdown": "ואז שמים את המכסה, עטוף במגבת מטבח, והאדים עושים את העבודה.",
+      "tts": {
+        "text": "ואז שמים את המכסה, עטוף במגבת מטבח, והאדים עושים את העבודה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אחרי שעה, השכבה התחתונה הזאת זהובה ופריכה.",
+      "text_markdown": "אחרי שעה, השכבה התחתונה הזאת זהובה ופריכה.",
+      "tts": {
+        "text": "אחרי שעה, השכבה התחתונה הזאת זהובה ופריכה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "טהדיג הוא דבר קדוש.",
+      "text_markdown": "טהדיג הוא דבר קדוש.",
+      "tts": {
+        "text": "טהדיג הוא דבר קדוש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "משפחות נלחמות עליו.",
+      "text_markdown": "משפחות נלחמות עליו.",
+      "tts": {
+        "text": "משפחות נלחמות עליו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בטלוויזיה האיראנית יש תוכניות שלמות על מי מכין את הטוב ביותר.",
+      "text_markdown": "בטלוויזיה האיראנית יש תוכניות שלמות על מי מכין את הטוב ביותר.",
+      "tts": {
+        "text": "בטלוויזיה האיראנית יש תוכניות שלמות על מי מכין את הטוב ביותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "טהדיג מושלם יוצא מהסיר כעיגול יפה אחד.",
+      "text_markdown": "טהדיג מושלם יוצא מהסיר כעיגול יפה אחד.",
+      "tts": {
+        "text": "טהדיג מושלם יוצא מהסיר כעיגול יפה אחד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז מגיע הלחם.",
+      "text_markdown": "ואז מגיע הלחם.",
+      "tts": {
+        "text": "ואז מגיע הלחם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המפורסם ביותר הוא סנגק.",
+      "text_markdown": "המפורסם ביותר הוא סנגק.",
+      "tts": {
+        "text": "המפורסם ביותר הוא סנגק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "סנגק נאפה על מצע של חלוקי נחל לוהטים, בשיטה בת חמשת אלפים שנה.",
+      "text_markdown": "סנגק נאפה על מצע של חלוקי נחל לוהטים, בשיטה בת חמשת אלפים שנה.",
+      "tts": {
+        "text": "סנגק נאפה על מצע של חלוקי נחל לוהטים, בשיטה בת חמשת אלפים שנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "חלוקי הנחל עדיין יוצאים עם הלחם.",
+      "text_markdown": "חלוקי הנחל עדיין יוצאים עם הלחם.",
+      "tts": {
+        "text": "חלוקי הנחל עדיין יוצאים עם הלחם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "מוציאים אותם ליד השולחן.",
+      "text_markdown": "מוציאים אותם ליד השולחן.",
+      "tts": {
+        "text": "מוציאים אותם ליד השולחן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש גם ברברי, לאוואש וטפתון.",
+      "text_markdown": "יש גם ברברי, לאוואש וטפתון.",
+      "tts": {
+        "text": "יש גם ברברי, לאוואש וטפתון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ארוחת בוקר פרסית היא לחם, תה וגבינה לבנה רכה.",
+      "text_markdown": "ארוחת בוקר פרסית היא לחם, תה וגבינה לבנה רכה.",
+      "tts": {
+        "text": "ארוחת בוקר פרסית היא לחם, תה וגבינה לבנה רכה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 4: הקבב והתבשיל הסבלני",
+      "text_markdown": "פרק 4: הקבב והתבשיל הסבלני"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המילה קבב היא מילה פרסית.",
+      "text_markdown": "המילה קבב היא מילה פרסית.",
+      "tts": {
+        "text": "המילה קבב היא מילה פרסית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בפרסית אומרים קבאב, כלומר בשר שמתבשל מעל אש.",
+      "text_markdown": "בפרסית אומרים קבאב, כלומר בשר שמתבשל מעל אש.",
+      "tts": {
+        "text": "בפרסית אומרים קבאב, כלומר בשר שמתבשל מעל אש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הפרסים צולים כבש על שיפודים ארוכים ושטוחים כבר אלפי שנים.",
+      "text_markdown": "הפרסים צולים כבש על שיפודים ארוכים ושטוחים כבר אלפי שנים.",
+      "tts": {
+        "text": "הפרסים צולים כבש על שיפודים ארוכים ושטוחים כבר אלפי שנים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקבב הפופולרי ביותר היום הוא קובידה.",
+      "text_markdown": "הקבב הפופולרי ביותר היום הוא קובידה.",
+      "tts": {
+        "text": "הקבב הפופולרי ביותר היום הוא קובידה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה בשר טחון של כבש או בקר, עם בצל ומלח, מהודק על שיפוד רחב ושטוח ונצלה על פחמים.",
+      "text_markdown": "זה בשר טחון של כבש או בקר, עם בצל ומלח, מהודק על שיפוד רחב ושטוח ונצלה על פחמים.",
+      "tts": {
+        "text": "זה בשר טחון של כבש או בקר, עם בצל ומלח, מהודק על שיפוד רחב ושטוח ונצלה על פחמים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא נראה עתיק.",
+      "text_markdown": "הוא נראה עתיק.",
+      "tts": {
+        "text": "הוא נראה עתיק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הוא לא כזה.",
+      "text_markdown": "הוא לא כזה.",
+      "tts": {
+        "text": "הוא לא כזה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "מטחנת הבשר הגיעה לאיראן רק בסוף המאה התשע עשרה.",
+      "text_markdown": "מטחנת הבשר הגיעה לאיראן רק בסוף המאה התשע עשרה.",
+      "tts": {
+        "text": "מטחנת הבשר הגיעה לאיראן רק בסוף המאה התשע עשרה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "קובידה, הקבב הכי פרסי שיש, הוא רק בן קצת יותר ממאה שנה.",
+      "text_markdown": "קובידה, הקבב הכי פרסי שיש, הוא רק בן קצת יותר ממאה שנה.",
+      "tts": {
+        "text": "קובידה, הקבב הכי פרסי שיש, הוא רק בן קצת יותר ממאה שנה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קבבים ותיקים יותר עשויים מפרוסות בשר.",
+      "text_markdown": "קבבים ותיקים יותר עשויים מפרוסות בשר.",
+      "tts": {
+        "text": "קבבים ותיקים יותר עשויים מפרוסות בשר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ג'וג'ה הוא עוף במרינדת זעפרן ויוגורט.",
+      "text_markdown": "ג'וג'ה הוא עוף במרינדת זעפרן ויוגורט.",
+      "tts": {
+        "text": "ג'וג'ה הוא עוף במרינדת זעפרן ויוגורט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בארג הוא פילה כבש דק.",
+      "text_markdown": "בארג הוא פילה כבש דק.",
+      "tts": {
+        "text": "בארג הוא פילה כבש דק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "שניהם מוגשים על מצע של אורז זעפרן עם עגבנייה צלויה.",
+      "text_markdown": "שניהם מוגשים על מצע של אורז זעפרן עם עגבנייה צלויה.",
+      "tts": {
+        "text": "שניהם מוגשים על מצע של אורז זעפרן עם עגבנייה צלויה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ועכשיו נכיר את האוכל הסבלני, חורש, התבשיל הפרסי.",
+      "text_markdown": "ועכשיו נכיר את האוכל הסבלני, חורש, התבשיל הפרסי.",
+      "tts": {
+        "text": "ועכשיו נכיר את האוכל הסבלני, חורש, התבשיל הפרסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "חורש מתבשל שעות.",
+      "text_markdown": "חורש מתבשל שעות.",
+      "tts": {
+        "text": "חורש מתבשל שעות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המפורסם ביותר הוא פסנג'אן.",
+      "text_markdown": "המפורסם ביותר הוא פסנג'אן.",
+      "tts": {
+        "text": "המפורסם ביותר הוא פסנג'אן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה עוף או ברווז, שמתבשלים לאט ברוטב סמיך של אגוזי מלך טחונים ומיץ רימונים.",
+      "text_markdown": "זה עוף או ברווז, שמתבשלים לאט ברוטב סמיך של אגוזי מלך טחונים ומיץ רימונים.",
+      "tts": {
+        "text": "זה עוף או ברווז, שמתבשלים לאט ברוטב סמיך של אגוזי מלך טחונים ומיץ רימונים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "המתכון הזה הוא אחד ממתכוני התבשילים העתיקים ביותר שנמצאו אי פעם.",
+      "text_markdown": "המתכון הזה הוא אחד ממתכוני התבשילים העתיקים ביותר שנמצאו אי פעם.",
+      "tts": {
+        "text": "המתכון הזה הוא אחד ממתכוני התבשילים העתיקים ביותר שנמצאו אי פעם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "גרסה שלו כתובה על לוחות כתב יתדות מחורבות פרספוליס.",
+      "text_markdown": "גרסה שלו כתובה על לוחות כתב יתדות מחורבות פרספוליס.",
+      "tts": {
+        "text": "גרסה שלו כתובה על לוחות כתב יתדות מחורבות פרספוליס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "זה הופך אותו לבן יותר מאלפיים וחמש מאות שנה.",
+      "text_markdown": "זה הופך אותו לבן יותר מאלפיים וחמש מאות שנה.",
+      "tts": {
+        "text": "זה הופך אותו לבן יותר מאלפיים וחמש מאות שנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "אנשים עדיין מבשלים אותו באותה דרך.",
+      "text_markdown": "אנשים עדיין מבשלים אותו באותה דרך.",
+      "tts": {
+        "text": "אנשים עדיין מבשלים אותו באותה דרך.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עוד קלאסיקה היא גורמה סבזי, כבש, שעועית אדומה והר של עשבים טריים, הכול מתבשל עם ליים מיובש.",
+      "text_markdown": "עוד קלאסיקה היא גורמה סבזי, כבש, שעועית אדומה והר של עשבים טריים, הכול מתבשל עם ליים מיובש.",
+      "tts": {
+        "text": "עוד קלאסיקה היא גורמה סבזי, כבש, שעועית אדומה והר של עשבים טריים, הכול מתבשל עם ליים מיובש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "איראנים רבים קוראים לו המאכל הלאומי.",
+      "text_markdown": "איראנים רבים קוראים לו המאכל הלאומי.",
+      "tts": {
+        "text": "איראנים רבים קוראים לו המאכל הלאומי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 5: יוגורט, תה והממתקים העתיקים ביותר",
+      "text_markdown": "פרק 5: יוגורט, תה והממתקים העתיקים ביותר"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הפרסים אוכלים יוגורט עם הכול.",
+      "text_markdown": "הפרסים אוכלים יוגורט עם הכול.",
+      "tts": {
+        "text": "הפרסים אוכלים יוגורט עם הכול.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ליוגורט פשוט קוראים מאסט.",
+      "text_markdown": "ליוגורט פשוט קוראים מאסט.",
+      "tts": {
+        "text": "ליוגורט פשוט קוראים מאסט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "למאסט עם מלפפון ונענע יבשה קוראים מאסט או חיאר.",
+      "text_markdown": "למאסט עם מלפפון ונענע יבשה קוראים מאסט או חיאר.",
+      "tts": {
+        "text": "למאסט עם מלפפון ונענע יבשה קוראים מאסט או חיאר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "למשקה יוגורט מלוח עם נענע קוראים דוג.",
+      "text_markdown": "למשקה יוגורט מלוח עם נענע קוראים דוג.",
+      "tts": {
+        "text": "למשקה יוגורט מלוח עם נענע קוראים דוג.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "יש גם קשק, מי גבינה מיובשים ובעלי טעם חזק, שמשתמשים בהם במרקים.",
+      "text_markdown": "יש גם קשק, מי גבינה מיובשים ובעלי טעם חזק, שמשתמשים בהם במרקים.",
+      "tts": {
+        "text": "יש גם קשק, מי גבינה מיובשים ובעלי טעם חזק, שמשתמשים בהם במרקים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז יש תה.",
+      "text_markdown": "ואז יש תה.",
+      "tts": {
+        "text": "ואז יש תה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הפרסים שותים אותו בוקר, צהריים ולילה, חלוט חזק בקנקן גבוה על סמובר.",
+      "text_markdown": "הפרסים שותים אותו בוקר, צהריים ולילה, חלוט חזק בקנקן גבוה על סמובר.",
+      "tts": {
+        "text": "הפרסים שותים אותו בוקר, צהריים ולילה, חלוט חזק בקנקן גבוה על סמובר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "התה כל כך מרכזי, שאנשים מופתעים לגלות שהוא הגיע מאוחר.",
+      "text_markdown": "התה כל כך מרכזי, שאנשים מופתעים לגלות שהוא הגיע מאוחר.",
+      "tts": {
+        "text": "התה כל כך מרכזי, שאנשים מופתעים לגלות שהוא הגיע מאוחר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ברוב ההיסטוריה הפרסית, המשקה היה קפה.",
+      "text_markdown": "ברוב ההיסטוריה הפרסית, המשקה היה קפה.",
+      "tts": {
+        "text": "ברוב ההיסטוריה הפרסית, המשקה היה קפה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "התה השתלט רק בסוף המאה התשע עשרה.",
+      "text_markdown": "התה השתלט רק בסוף המאה התשע עשרה.",
+      "tts": {
+        "text": "התה השתלט רק בסוף המאה התשע עשרה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "היום איראן היא אחת המדינות ששותות הכי הרבה תה בעולם.",
+      "text_markdown": "היום איראן היא אחת המדינות ששותות הכי הרבה תה בעולם.",
+      "tts": {
+        "text": "היום איראן היא אחת המדינות ששותות הכי הרבה תה בעולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש לזה גם טקס קטן.",
+      "text_markdown": "יש לזה גם טקס קטן.",
+      "tts": {
+        "text": "יש לזה גם טקס קטן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מחזיקים קוביית סוכר בין השיניים.",
+      "text_markdown": "מחזיקים קוביית סוכר בין השיניים.",
+      "tts": {
+        "text": "מחזיקים קוביית סוכר בין השיניים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לוגמים את התה דרך הקובייה.",
+      "text_markdown": "לוגמים את התה דרך הקובייה.",
+      "tts": {
+        "text": "לוגמים את התה דרך הקובייה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הקובייה נמסה קצת.",
+      "text_markdown": "הקובייה נמסה קצת.",
+      "tts": {
+        "text": "הקובייה נמסה קצת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "התה חם, כהה ומתוק כשהוא יורד בגרון.",
+      "text_markdown": "התה חם, כהה ומתוק כשהוא יורד בגרון.",
+      "tts": {
+        "text": "התה חם, כהה ומתוק כשהוא יורד בגרון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ועכשיו הממתקים.",
+      "text_markdown": "ועכשיו הממתקים.",
+      "tts": {
+        "text": "ועכשיו הממתקים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הממתקים הפרסיים עתיקים, עשירים וקטנים.",
+      "text_markdown": "הממתקים הפרסיים עתיקים, עשירים וקטנים.",
+      "tts": {
+        "text": "הממתקים הפרסיים עתיקים, עשירים וקטנים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "העתיק ביותר הוא פאלודה.",
+      "text_markdown": "העתיק ביותר הוא פאלודה.",
+      "tts": {
+        "text": "העתיק ביותר הוא פאלודה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אלה אטריות אורז דקות, קפואות בסירופ מי ורדים, שמוגשות עם מיץ ליים ופיסטוק.",
+      "text_markdown": "אלה אטריות אורז דקות, קפואות בסירופ מי ורדים, שמוגשות עם מיץ ליים ופיסטוק.",
+      "tts": {
+        "text": "אלה אטריות אורז דקות, קפואות בסירופ מי ורדים, שמוגשות עם מיץ ליים ופיסטוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "סופרים פרסיים מתארים אותו כבר כארבע מאות שנה לפני הספירה.",
+      "text_markdown": "סופרים פרסיים מתארים אותו כבר כארבע מאות שנה לפני הספירה.",
+      "tts": {
+        "text": "סופרים פרסיים מתארים אותו כבר כארבע מאות שנה לפני הספירה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "זה הופך את הפאלודה לאחד הקינוחים הקפואים העתיקים בעולם.",
+      "text_markdown": "זה הופך את הפאלודה לאחד הקינוחים הקפואים העתיקים בעולם.",
+      "tts": {
+        "text": "זה הופך את הפאלודה לאחד הקינוחים הקפואים העתיקים בעולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הוא עתיק מגלידה ביותר מאלפיים שנה.",
+      "text_markdown": "הוא עתיק מגלידה ביותר מאלפיים שנה.",
+      "tts": {
+        "text": "הוא עתיק מגלידה ביותר מאלפיים שנה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עוד קלאסיקות הן בקלאווה מתבריז, קלה יותר מהסוג הטורקי, עם אגוזי מלך ומי ורדים.",
+      "text_markdown": "עוד קלאסיקות הן בקלאווה מתבריז, קלה יותר מהסוג הטורקי, עם אגוזי מלך ומי ורדים.",
+      "tts": {
+        "text": "עוד קלאסיקות הן בקלאווה מתבריז, קלה יותר מהסוג הטורקי, עם אגוזי מלך ומי ורדים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "חלבה, משחה סמיכה משומשום או מזעפרן.",
+      "text_markdown": "חלבה, משחה סמיכה משומשום או מזעפרן.",
+      "tts": {
+        "text": "חלבה, משחה סמיכה משומשום או מזעפרן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "גז מאספהאן, נוגט רך עם פיסטוק.",
+      "text_markdown": "גז מאספהאן, נוגט רך עם פיסטוק.",
+      "tts": {
+        "text": "גז מאספהאן, נוגט רך עם פיסטוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "סוהאן, טופי זעפרן זהוב ושביר.",
+      "text_markdown": "סוהאן, טופי זעפרן זהוב ושביר.",
+      "tts": {
+        "text": "סוהאן, טופי זעפרן זהוב ושביר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "נוחודצ'י מהעיר קום, עוגיית חומוס זעירה.",
+      "text_markdown": "נוחודצ'י מהעיר קום, עוגיית חומוס זעירה.",
+      "tts": {
+        "text": "נוחודצ'י מהעיר קום, עוגיית חומוס זעירה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צלחת קטנה של מתוקים, כוס תה, שיחה איטית.",
+      "text_markdown": "צלחת קטנה של מתוקים, כוס תה, שיחה איטית.",
+      "tts": {
+        "text": "צלחת קטנה של מתוקים, כוס תה, שיחה איטית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זהו אחר צהריים פרסי.",
+      "text_markdown": "זהו אחר צהריים פרסי.",
+      "tts": {
+        "text": "זהו אחר צהריים פרסי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 6: מה פרס נתנה, ומה פרס לקחה",
+      "text_markdown": "פרק 6: מה פרס נתנה, ומה פרס לקחה"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "פרס ישבה באמצע העולם הישן.",
+      "text_markdown": "פרס ישבה באמצע העולם הישן.",
+      "tts": {
+        "text": "פרס ישבה באמצע העולם הישן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שיירות חצו אותה.",
+      "text_markdown": "שיירות חצו אותה.",
+      "tts": {
+        "text": "שיירות חצו אותה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אימפריות קמו ונפלו בה.",
+      "text_markdown": "אימפריות קמו ונפלו בה.",
+      "tts": {
+        "text": "אימפריות קמו ונפלו בה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "גם אוכל עבר דרכה, בשני הכיוונים.",
+      "text_markdown": "גם אוכל עבר דרכה, בשני הכיוונים.",
+      "tts": {
+        "text": "גם אוכל עבר דרכה, בשני הכיוונים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תסתכלו על המילים.",
+      "text_markdown": "תסתכלו על המילים.",
+      "tts": {
+        "text": "תסתכלו על המילים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "האנגלית לקחה מן הפרסית עשרות מילים של אוכל.",
+      "text_markdown": "האנגלית לקחה מן הפרסית עשרות מילים של אוכל.",
+      "tts": {
+        "text": "האנגלית לקחה מן הפרסית עשרות מילים של אוכל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "סוכר, ממתק, לימון, תפוז, יסמין, לילך, צבעוני, קיוסק, שרבט וגן עדן, לכולן יש מקור פרסי.",
+      "text_markdown": "סוכר, ממתק, לימון, תפוז, יסמין, לילך, צבעוני, קיוסק, שרבט וגן עדן, לכולן יש מקור פרסי.",
+      "tts": {
+        "text": "סוכר, ממתק, לימון, תפוז, יסמין, לילך, צבעוני, קיוסק, שרבט וגן עדן, לכולן יש מקור פרסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "גם הביטוי שח מט בא משאה מט, המלך חסר אונים. פרס שמה מילים בפה של חצי עולם.",
+      "text_markdown": "גם הביטוי שח מט בא משאה מט, המלך חסר אונים. פרס שמה מילים בפה של חצי עולם.",
+      "tts": {
+        "text": "גם הביטוי שח מט בא משאה מט, המלך חסר אונים. פרס שמה מילים בפה של חצי עולם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בישול האורז הפרסי הלך מזרחה.",
+      "text_markdown": "בישול האורז הפרסי הלך מזרחה.",
+      "tts": {
+        "text": "בישול האורז הפרסי הלך מזרחה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המלכים המוגולים של הודו אהבו אוכל פרסי והביאו לחצר שלהם טבחים פרסיים.",
+      "text_markdown": "המלכים המוגולים של הודו אהבו אוכל פרסי והביאו לחצר שלהם טבחים פרסיים.",
+      "tts": {
+        "text": "המלכים המוגולים של הודו אהבו אוכל פרסי והביאו לחצר שלהם טבחים פרסיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הטבחים האלה הכינו ביריאני.",
+      "text_markdown": "הטבחים האלה הכינו ביריאני.",
+      "tts": {
+        "text": "הטבחים האלה הכינו ביריאני.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "פילאף, מנת האורז הארוך והמתובל שמגיעה מהים התיכון עד הערבות של מרכז אסיה, נטוע במסורת האורז הפרסית.",
+      "text_markdown": "פילאף, מנת האורז הארוך והמתובל שמגיעה מהים התיכון עד הערבות של מרכז אסיה, נטוע במסורת האורז הפרסית.",
+      "tts": {
+        "text": "פילאף, מנת האורז הארוך והמתובל שמגיעה מהים התיכון עד הערבות של מרכז אסיה, נטוע במסורת האורז הפרסית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הפירות הפרסיים הלכו מערבה.",
+      "text_markdown": "הפירות הפרסיים הלכו מערבה.",
+      "tts": {
+        "text": "הפירות הפרסיים הלכו מערבה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הרומאים גידלו אפרסקים באיטליה כי קיבלו אותם מפרס.",
+      "text_markdown": "הרומאים גידלו אפרסקים באיטליה כי קיבלו אותם מפרס.",
+      "tts": {
+        "text": "הרומאים גידלו אפרסקים באיטליה כי קיבלו אותם מפרס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "התרד הגיע לאירופה דרך ספרד, בידי סוחרים מן העולם הפרסי.",
+      "text_markdown": "התרד הגיע לאירופה דרך ספרד, בידי סוחרים מן העולם הפרסי.",
+      "tts": {
+        "text": "התרד הגיע לאירופה דרך ספרד, בידי סוחרים מן העולם הפרסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הצבעונים, הסמל של הולנד, גודלו לראשונה בפרס ובטורקיה לפני שהגיעו להולנד.",
+      "text_markdown": "הצבעונים, הסמל של הולנד, גודלו לראשונה בפרס ובטורקיה לפני שהגיעו להולנד.",
+      "tts": {
+        "text": "הצבעונים, הסמל של הולנד, גודלו לראשונה בפרס ובטורקיה לפני שהגיעו להולנד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם פרס לקחה דברים פנימה.",
+      "text_markdown": "גם פרס לקחה דברים פנימה.",
+      "tts": {
+        "text": "גם פרס לקחה דברים פנימה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המונגולים, שפלשו במאה השלוש עשרה, הביאו איתם טעם חזק יותר לבשר צלוי ועל האש.",
+      "text_markdown": "המונגולים, שפלשו במאה השלוש עשרה, הביאו איתם טעם חזק יותר לבשר צלוי ועל האש.",
+      "tts": {
+        "text": "המונגולים, שפלשו במאה השלוש עשרה, הביאו איתם טעם חזק יותר לבשר צלוי ועל האש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "החקלאות הערבית הביאה קנה סוכר, הדרים ואורז מן הדרום והמזרח.",
+      "text_markdown": "החקלאות הערבית הביאה קנה סוכר, הדרים ואורז מן הדרום והמזרח.",
+      "tts": {
+        "text": "החקלאות הערבית הביאה קנה סוכר, הדרים ואורז מן הדרום והמזרח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הסמובר הגיע מן הצפון, מרוסיה, במאה השמונה עשרה.",
+      "text_markdown": "הסמובר הגיע מן הצפון, מרוסיה, במאה השמונה עשרה.",
+      "tts": {
+        "text": "הסמובר הגיע מן הצפון, מרוסיה, במאה השמונה עשרה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ההיסטוריון היווני הרודוטוס, שכתב לפני אלפיים וחמש מאות שנה, אמר שהפרסים חגגו את ימי ההולדת שלהם בפאר גדול יותר מכל יום אחר בשנה.",
+      "text_markdown": "ההיסטוריון היווני הרודוטוס, שכתב לפני אלפיים וחמש מאות שנה, אמר שהפרסים חגגו את ימי ההולדת שלהם בפאר גדול יותר מכל יום אחר בשנה.",
+      "tts": {
+        "text": "ההיסטוריון היווני הרודוטוס, שכתב לפני אלפיים וחמש מאות שנה, אמר שהפרסים חגגו את ימי ההולדת שלהם בפאר גדול יותר מכל יום אחר בשנה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "באותו יום, הוא כתב, השולחן נערך בשפע גדול מהרגיל.",
+      "text_markdown": "באותו יום, הוא כתב, השולחן נערך בשפע גדול מהרגיל.",
+      "tts": {
+        "text": "באותו יום, הוא כתב, השולחן נערך בשפע גדול מהרגיל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "יש דברים שלא השתנו.",
+      "text_markdown": "יש דברים שלא השתנו.",
+      "tts": {
+        "text": "יש דברים שלא השתנו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 7: ליד השולחן הפרסי",
+      "text_markdown": "פרק 7: ליד השולחן הפרסי"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עכשיו אנחנו יושבים לשולחן.",
+      "text_markdown": "עכשיו אנחנו יושבים לשולחן.",
+      "tts": {
+        "text": "עכשיו אנחנו יושבים לשולחן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השנה הפרסית מתחילה בשוויון האביב, סביב עשרים ואחד במרץ.",
+      "text_markdown": "השנה הפרסית מתחילה בשוויון האביב, סביב עשרים ואחד במרץ.",
+      "tts": {
+        "text": "השנה הפרסית מתחילה בשוויון האביב, סביב עשרים ואחד במרץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לחג קוראים נורוז, היום החדש.",
+      "text_markdown": "לחג קוראים נורוז, היום החדש.",
+      "tts": {
+        "text": "לחג קוראים נורוז, היום החדש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זה החג החשוב ביותר בשנה.",
+      "text_markdown": "זה החג החשוב ביותר בשנה.",
+      "tts": {
+        "text": "זה החג החשוב ביותר בשנה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל משפחה עורכת שולחן מיוחד שנקרא הפט סין.",
+      "text_markdown": "כל משפחה עורכת שולחן מיוחד שנקרא הפט סין.",
+      "tts": {
+        "text": "כל משפחה עורכת שולחן מיוחד שנקרא הפט סין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הפט פירושו שבע.",
+      "text_markdown": "הפט פירושו שבע.",
+      "tts": {
+        "text": "הפט פירושו שבע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "סין היא האות ס. על השולחן יש שבעה דברים שמתחילים באות ס בפרסית.",
+      "text_markdown": "סין היא האות ס. על השולחן יש שבעה דברים שמתחילים באות ס בפרסית.",
+      "tts": {
+        "text": "סין היא האות ס. על השולחן יש שבעה דברים שמתחילים באות ס בפרסית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "יש סיב, תפוח.",
+      "text_markdown": "יש סיב, תפוח.",
+      "tts": {
+        "text": "יש סיב, תפוח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "סקה, מטבע.",
+      "text_markdown": "סקה, מטבע.",
+      "tts": {
+        "text": "סקה, מטבע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "סונבול, פרח יקינתון.",
+      "text_markdown": "סונבול, פרח יקינתון.",
+      "tts": {
+        "text": "סונבול, פרח יקינתון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "סאמאנו, פודינג חיטה מתוק.",
+      "text_markdown": "סאמאנו, פודינג חיטה מתוק.",
+      "tts": {
+        "text": "סאמאנו, פודינג חיטה מתוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "סנג'ד, הפרי המיובש של עץ הזית הרוסי.",
+      "text_markdown": "סנג'ד, הפרי המיובש של עץ הזית הרוסי.",
+      "tts": {
+        "text": "סנג'ד, הפרי המיובש של עץ הזית הרוסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "סומאג, סומאק.",
+      "text_markdown": "סומאג, סומאק.",
+      "tts": {
+        "text": "סומאג, סומאק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "סרכה, חומץ.",
+      "text_markdown": "סרכה, חומץ.",
+      "tts": {
+        "text": "סרכה, חומץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "כל אחד מהם מסמל משהו, בריאות, עושר, יופי, סבלנות, אהבה, השמש העולה והזמן החולף.",
+      "text_markdown": "כל אחד מהם מסמל משהו, בריאות, עושר, יופי, סבלנות, אהבה, השמש העולה והזמן החולף.",
+      "tts": {
+        "text": "כל אחד מהם מסמל משהו, בריאות, עושר, יופי, סבלנות, אהבה, השמש העולה והזמן החולף.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ארוחת השנה החדשה היא סבזי פולו עם מאהי.",
+      "text_markdown": "ארוחת השנה החדשה היא סבזי פולו עם מאהי.",
+      "tts": {
+        "text": "ארוחת השנה החדשה היא סבזי פולו עם מאהי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זה אורז ירוק מאוד מעשבי תיבול קצוצים, שמוגש עם דג לבן.",
+      "text_markdown": "זה אורז ירוק מאוד מעשבי תיבול קצוצים, שמוגש עם דג לבן.",
+      "tts": {
+        "text": "זה אורז ירוק מאוד מעשבי תיבול קצוצים, שמוגש עם דג לבן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אביב על צלחת.",
+      "text_markdown": "אביב על צלחת.",
+      "tts": {
+        "text": "אביב על צלחת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עוד קלאסיקה היא אש רשתה, מרק סמיך של שעועית, עשבים, בצל מטוגן, קשק ואטריות.",
+      "text_markdown": "עוד קלאסיקה היא אש רשתה, מרק סמיך של שעועית, עשבים, בצל מטוגן, קשק ואטריות.",
+      "tts": {
+        "text": "עוד קלאסיקה היא אש רשתה, מרק סמיך של שעועית, עשבים, בצל מטוגן, קשק ואטריות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הפרסים אומרים שכדאי לאכול אותו לפני החלטה קשה.",
+      "text_markdown": "הפרסים אומרים שכדאי לאכול אותו לפני החלטה קשה.",
+      "tts": {
+        "text": "הפרסים אומרים שכדאי לאכול אותו לפני החלטה קשה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "האטריות, כך הם אומרים, מתירות את חוטי הגורל.",
+      "text_markdown": "האטריות, כך הם אומרים, מתירות את חוטי הגורל.",
+      "tts": {
+        "text": "האטריות, כך הם אומרים, מתירות את חוטי הגורל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם בית התה הוא המצאה פרסית.",
+      "text_markdown": "גם בית התה הוא המצאה פרסית.",
+      "tts": {
+        "text": "גם בית התה הוא המצאה פרסית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "קוראים לו קהווה ח'אנה, פשוטו כמשמעו בית קפה, אף שהמשקה עכשיו הוא תה.",
+      "text_markdown": "קוראים לו קהווה ח'אנה, פשוטו כמשמעו בית קפה, אף שהמשקה עכשיו הוא תה.",
+      "tts": {
+        "text": "קוראים לו קהווה ח'אנה, פשוטו כמשמעו בית קפה, אף שהמשקה עכשיו הוא תה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כבר חמש מאות שנה גברים ונשים מתכנסים שם לשחק שש בש, להאזין לשירה ולהתווכח על העולם.",
+      "text_markdown": "כבר חמש מאות שנה גברים ונשים מתכנסים שם לשחק שש בש, להאזין לשירה ולהתווכח על העולם.",
+      "tts": {
+        "text": "כבר חמש מאות שנה גברים ונשים מתכנסים שם לשחק שש בש, להאזין לשירה ולהתווכח על העולם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הרבה סיפורים פרסיים גדולים סופרו שם לראשונה מעל כוס מהבילה.",
+      "text_markdown": "הרבה סיפורים פרסיים גדולים סופרו שם לראשונה מעל כוס מהבילה.",
+      "tts": {
+        "text": "הרבה סיפורים פרסיים גדולים סופרו שם לראשונה מעל כוס מהבילה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רופא פרסי מפורסם, אבן סינא, שחי לפני אלף שנה, לימד שכל מזון הוא או חם או קר.",
+      "text_markdown": "רופא פרסי מפורסם, אבן סינא, שחי לפני אלף שנה, לימד שכל מזון הוא או חם או קר.",
+      "tts": {
+        "text": "רופא פרסי מפורסם, אבן סינא, שחי לפני אלף שנה, לימד שכל מזון הוא או חם או קר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זעפרן, אגוזי מלך וכבש הם חמים.",
+      "text_markdown": "זעפרן, אגוזי מלך וכבש הם חמים.",
+      "tts": {
+        "text": "זעפרן, אגוזי מלך וכבש הם חמים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "יוגורט, מלפפון ואבטיח הם קרים.",
+      "text_markdown": "יוגורט, מלפפון ואבטיח הם קרים.",
+      "tts": {
+        "text": "יוגורט, מלפפון ואבטיח הם קרים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ארוחה טובה מאזנת ביניהם.",
+      "text_markdown": "ארוחה טובה מאזנת ביניהם.",
+      "tts": {
+        "text": "ארוחה טובה מאזנת ביניהם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "בבתים פרסיים רבים, הרעיון הזה עדיין חי בארוחת הצהריים.",
+      "text_markdown": "בבתים פרסיים רבים, הרעיון הזה עדיין חי בארוחת הצהריים.",
+      "tts": {
+        "text": "בבתים פרסיים רבים, הרעיון הזה עדיין חי בארוחת הצהריים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האוכל הפרסי סבלני.",
+      "text_markdown": "האוכל הפרסי סבלני.",
+      "tts": {
+        "text": "האוכל הפרסי סבלני.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא נדיב.",
+      "text_markdown": "הוא נדיב.",
+      "tts": {
+        "text": "הוא נדיב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא עתיק.",
+      "text_markdown": "הוא עתיק.",
+      "tts": {
+        "text": "הוא עתיק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ועדיין מבשלים אותו, בכל יום, על מיליוני כיריים.",
+      "text_markdown": "ועדיין מבשלים אותו, בכל יום, על מיליוני כיריים.",
+      "tts": {
+        "text": "ועדיין מבשלים אותו, בכל יום, על מיליוני כיריים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "להתראות",
+      "text_markdown": "להתראות"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה סוף הסיור הקצר שלנו.",
+      "text_markdown": "זה סוף הסיור הקצר שלנו.",
+      "tts": {
+        "text": "זה סוף הסיור הקצר שלנו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אני מקווה שלמדתם משהו.",
+      "text_markdown": "אני מקווה שלמדתם משהו.",
+      "tts": {
+        "text": "אני מקווה שלמדתם משהו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אני מקווה שמשהו בעמוד עשה אתכם רעבים.",
+      "text_markdown": "אני מקווה שמשהו בעמוד עשה אתכם רעבים.",
+      "tts": {
+        "text": "אני מקווה שמשהו בעמוד עשה אתכם רעבים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "זעפרן ואורז.",
+      "text_markdown": "זעפרן ואורז.",
+      "tts": {
+        "text": "זעפרן ואורז.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "רימון ואגוז מלך.",
+      "text_markdown": "רימון ואגוז מלך.",
+      "tts": {
+        "text": "רימון ואגוז מלך.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "מתוק קטן על צלחת קטנה.",
+      "text_markdown": "מתוק קטן על צלחת קטנה.",
+      "tts": {
+        "text": "מתוק קטן על צלחת קטנה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם אתם יכולים, מצאו מסעדה פרסית קרובה אליכם.",
+      "text_markdown": "אם אתם יכולים, מצאו מסעדה פרסית קרובה אליכם.",
+      "tts": {
+        "text": "אם אתם יכולים, מצאו מסעדה פרסית קרובה אליכם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "או פתחו ספר בישול פרסי.",
+      "text_markdown": "או פתחו ספר בישול פרסי.",
+      "tts": {
+        "text": "או פתחו ספר בישול פרסי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "נסו תבשיל אחד.",
+      "text_markdown": "נסו תבשיל אחד.",
+      "tts": {
+        "text": "נסו תבשיל אחד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "נסו כוס תה אחת.",
+      "text_markdown": "נסו כוס תה אחת.",
+      "tts": {
+        "text": "נסו כוס תה אחת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "האוכל הזה מחכה כבר אלפי שנים.",
+      "text_markdown": "האוכל הזה מחכה כבר אלפי שנים.",
+      "tts": {
+        "text": "האוכל הזה מחכה כבר אלפי שנים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הוא יכול לחכות גם עד שתגיעו.",
+      "text_markdown": "הוא יכול לחכות גם עד שתגיעו.",
+      "tts": {
+        "text": "הוא יכול לחכות גם עד שתגיעו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תודה שהקשבתם.",
+      "text_markdown": "תודה שהקשבתם.",
+      "tts": {
+        "text": "תודה שהקשבתם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בשלו משהו.",
+      "text_markdown": "בשלו משהו.",
+      "tts": {
+        "text": "בשלו משהו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אכלו עם אנשים.",
+      "text_markdown": "אכלו עם אנשים.",
+      "tts": {
+        "text": "אכלו עם אנשים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אני Kym.",
+      "text_markdown": "אני Kym.",
+      "tts": {
+        "text": "אני קים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "להתראות.",
+      "text_markdown": "להתראות.",
+      "tts": {
+        "text": "להתראות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

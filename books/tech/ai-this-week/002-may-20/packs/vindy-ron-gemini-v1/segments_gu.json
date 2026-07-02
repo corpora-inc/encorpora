@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "gu",
+  "total_segments": 167,
+  "segments": [
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "text": "એઆઈના આ અઠવાડિયાના કાર્યક્રમમાં આપનું હાર્દિક સ્વાગત છે, મિત્રો.",
+      "text_markdown": "એઆઈના આ અઠવાડિયાના કાર્યક્રમમાં આપનું હાર્દિક સ્વાગત છે, મિત્રો.",
+      "title": "",
+      "tts": {
+        "text": "એઆઈના આ અઠવાડિયાના કાર્યક્રમમાં આપનું હાર્દિક સ્વાગત છે, મિત્રો.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "text": "મને વિન્ડી કહીને બોલાવો.",
+      "text_markdown": "મને વિન્ડી કહીને બોલાવો.",
+      "title": "",
+      "tts": {
+        "text": "મને વિન્ડી કહીને બોલાવો.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "text": "મારી સાથે Ron છે, હંમેશાની જેમ આજે પણ હાજર.",
+      "text_markdown": "મારી સાથે Ron છે, હંમેશાની જેમ આજે પણ હાજર.",
+      "title": "",
+      "tts": {
+        "text": "મારી સાથે રોન છે, હંમેશાની જેમ આજે પણ હાજર.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "text": "વિંડી, અહીં આવીને મને આનંદ થયો.",
+      "text_markdown": "વિંડી, અહીં આવીને મને આનંદ થયો.",
+      "title": "",
+      "tts": {
+        "text": "વિંડી, અહીં આવીને મને આનંદ થયો.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "text": "આજે 20 મે 2026 છે, બુધવારનો દિવસ.",
+      "text_markdown": "આજે 20 મે 2026 છે, બુધવારનો દિવસ.",
+      "title": "",
+      "tts": {
+        "text": "આજે વીસ મે બે હજાર છવીસ છે, બુધવારનો દિવસ.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "text": "આ એક વ્યસ્ત અઠવાડિયું હતું.",
+      "text_markdown": "આ એક વ્યસ્ત અઠવાડિયું હતું.",
+      "title": "",
+      "tts": {
+        "text": "આ એક વ્યસ્ત અઠવાડિયું હતું.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "text": "ગૂગલે પોતાની વિકાસકર્તા પરિષદ યોજી, પોપે કૃત્રિમ બુદ્ધિ વિશેનું ધર્મપત્ર પૂર્ણ કર્યું, અને ખુલ્લા વજનવાળા મોડેલોની દુનિયા નવી રજૂઆતો કરતી રહી, જ્યારે બાકીના બધા લોકો મંચોની ભાગદોડમાં હતા.",
+      "text_markdown": "ગૂગલે પોતાની વિકાસકર્તા પરિષદ યોજી, પોપે કૃત્રિમ બુદ્ધિ વિશેનું ધર્મપત્ર પૂર્ણ કર્યું, અને ખુલ્લા વજનવાળા મોડેલોની દુનિયા નવી રજૂઆતો કરતી રહી, જ્યારે બાકીના બધા લોકો મંચોની ભાગદોડમાં હતા.",
+      "title": "",
+      "tts": {
+        "text": "ગૂગલે પોતાની વિકાસકર્તા પરિષદ યોજી, પોપે કૃત્રિમ બુદ્ધિ વિશેનું ધર્મપત્ર પૂર્ણ કર્યું, અને ખુલ્લા વજનવાળા મોડેલોની દુનિયા નવી રજૂઆતો કરતી રહી, જ્યારે બાકીના બધા લોકો મંચોની ભાગદોડમાં હતા.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "text": "આગળ આવી રહ્યું છે — આ અઠવાડિયે open weights માં શું આગળ વધ્યું.",
+      "text_markdown": "આગળ આવી રહ્યું છે — આ અઠવાડિયે open weights માં શું આગળ વધ્યું.",
+      "title": "",
+      "tts": {
+        "text": "આગળ આવી રહ્યું છે — આ અઠવાડિયે open weights માં શું આગળ વધ્યું.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "text": "અગ્રક્રમ યાદીઓ પહોંચી ગઈ હતી, કેટલા ઊંચા શિખરે.",
+      "text_markdown": "અગ્રક્રમ યાદીઓ પહોંચી ગઈ હતી, કેટલા ઊંચા શિખરે.",
+      "title": "",
+      "tts": {
+        "text": "અગ્રક્રમ યાદીઓ પહોંચી ગઈ હતી, કેટલા ઊંચા શિખરે.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "text": "ચાલો, મોટી પ્રયોગશાળાઓના મુખ્ય સમાચારો પર કરીએ એક ઝડપી નજર.",
+      "text_markdown": "ચાલો, મોટી પ્રયોગશાળાઓના મુખ્ય સમાચારો પર કરીએ એક ઝડપી નજર.",
+      "title": "",
+      "tts": {
+        "text": "ચાલો, મોટી પ્રયોગશાળાઓના મુખ્ય સમાચારો પર કરીએ એક ઝડપી નજર.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "text": "આજની મુખ્ય ખબરમાં, વેટિકને કૃત્રિમ બુદ્ધિ અંગે પોપનું પહેલું પરિપત્ર સત્તાવાર રીતે બહાર પાડ્યું.",
+      "text_markdown": "આજની મુખ્ય ખબરમાં, વેટિકને કૃત્રિમ બુદ્ધિ અંગે પોપનું પહેલું પરિપત્ર સત્તાવાર રીતે બહાર પાડ્યું.",
+      "title": "",
+      "tts": {
+        "text": "આજની મુખ્ય ખબરમાં, વેટિકને કૃત્રિમ બુદ્ધિ અંગે પોપનું પહેલું પરિપત્ર સત્તાવાર રીતે બહાર પાડ્યું.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "text": "અને આ અઠવાડિયાનો ખ્યાલ છે ક્વોન્ટીકરણ, એટલે 7 અબજ પેરામીટરવાળું મોડેલ તમારા ફોનમાં સમાવી દેવાનો ઉપાય.",
+      "text_markdown": "અને આ અઠવાડિયાનો ખ્યાલ છે ક્વોન્ટીકરણ, એટલે 7 અબજ પેરામીટરવાળું મોડેલ તમારા ફોનમાં સમાવી દેવાનો ઉપાય.",
+      "title": "",
+      "tts": {
+        "text": "અને આ અઠવાડિયાનો ખ્યાલ છે ક્વોન્ટીકરણ, એટલે સાત અબજ પેરામીટરવાળું મોડેલ તમારા ફોનમાં સમાવી દેવાનો ઉપાય.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "text": "રોન, ચાલો શરૂઆત કરીએ મોડેલના ખુલ્લાં વજનોની વાતથી.",
+      "text_markdown": "રોન, ચાલો શરૂઆત કરીએ મોડેલના ખુલ્લાં વજનોની વાતથી.",
+      "title": "",
+      "tts": {
+        "text": "રોન, ચાલો શરૂઆત કરીએ મોડેલના ખુલ્લાં વજનોની વાતથી.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "text": "આ અઠવાડિયે સમુદાયમાં શું પ્રગતિ થઈ રહી છે?",
+      "text_markdown": "આ અઠવાડિયે સમુદાયમાં શું પ્રગતિ થઈ રહી છે?",
+      "title": "",
+      "tts": {
+        "text": "આ અઠવાડિયે સમુદાયમાં શું પ્રગતિ થઈ રહી છે?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "text": "હાલમાં કઈ ટીમ ક્યાં મોડલની training ચલાવી રહી છે, તે open-weights દુનિયાની સૌથી મોટી ચર્ચાનો મુખ્ય વિષય બની ગયો છે.",
+      "text_markdown": "હાલમાં કઈ ટીમ ક્યાં મોડલની training ચલાવી રહી છે, તે open-weights દુનિયાની સૌથી મોટી ચર્ચાનો મુખ્ય વિષય બની ગયો છે.",
+      "title": "",
+      "tts": {
+        "text": "હાલમાં કઈ ટીમ ક્યાં મોડલની તાલીમ ચલાવી રહી છે, તે ખુલ્લાં મોડલ વજનની દુનિયાની સૌથી મોટી ચર્ચાનો મુખ્ય વિષય બની ગયો છે.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "text": "હાલની બે સૌથી રસપ્રદ ખુલ્લી રિલીઝની તાલીમ NVIDIA સિવાયના સિલિકોન પર લેવાઈ.",
+      "text_markdown": "હાલની બે સૌથી રસપ્રદ ખુલ્લી રિલીઝની તાલીમ NVIDIA સિવાયના સિલિકોન પર લેવાઈ.",
+      "title": "",
+      "tts": {
+        "text": "હાલની બે સૌથી રસપ્રદ ખુલ્લી રિલીઝની તાલીમ એન વીડીયા સિવાયના સિલિકોન પર લેવાઈ.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "text": "આપણને તે દ્વારા લઈ જાઓ.",
+      "text_markdown": "આપણને તે દ્વારા લઈ જાઓ.",
+      "title": "",
+      "tts": {
+        "text": "આપણને તે દ્વારા લઈ જાઓ.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "text": "બેઈજિંગમાં Zhipu AI એ આ વર્ષની શરૂઆતમાં GLM-5 શ્રેણી રજૂ કરી, ફેબ્રુઆરીમાં GLM-5 અને એપ્રિલમાં GLM-5.1 નામનું સુધારેલું સંસ્કરણ આવ્યું.",
+      "text_markdown": "બેઈજિંગમાં Zhipu AI એ આ વર્ષની શરૂઆતમાં GLM-5 શ્રેણી રજૂ કરી, ફેબ્રુઆરીમાં GLM-5 અને એપ્રિલમાં GLM-5.1 નામનું સુધારેલું સંસ્કરણ આવ્યું.",
+      "title": "",
+      "tts": {
+        "text": "બેઈજિંગમાં ઝીપૂ એઆઈએ આ વર્ષની શરૂઆતમાં જીએલએમ પાંચ શ્રેણી રજૂ કરી, ફેબ્રુઆરીમાં જીએલએમ પાંચ અને એપ્રિલમાં જીએલએમ પાંચ દશાંશ એક નામનું સુધારેલું સંસ્કરણ આવ્યું.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "text": "આખી GLM-5 શ્રેણીને લગભગ 100,000 Huawei Ascend 910B chips પર, MindSpore framework નો ઉપયોગ કરીને train કરવામાં આવી હતી, અને આ પ્રક્રિયામાં એક પણ NVIDIA GPU ક્યાંય વપરાયેલું નહોતું.",
+      "text_markdown": "આખી GLM-5 શ્રેણીને લગભગ 100,000 Huawei Ascend 910B chips પર, MindSpore framework નો ઉપયોગ કરીને train કરવામાં આવી હતી, અને આ પ્રક્રિયામાં એક પણ NVIDIA GPU ક્યાંય વપરાયેલું નહોતું.",
+      "title": "",
+      "tts": {
+        "text": "આખી જીએલએમ પાંચ શ્રેણીને લગભગ એક લાખ હુવાવે અસેન્ડ નવસો દસ બી ચિપ્સ પર, માઇન્ડસ્પોર ફ્રેમવર્કનો ઉપયોગ કરીને તાલીમ આપવામાં આવી હતી, અને આ પ્રક્રિયામાં એક પણ એનવિડિયા જીપીયુ ક્યાંય વપરાયેલું નહોતું.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "text": "અને Zyphra, એક અમેરિકન lab, એ આ મહિનાની શરૂઆતમાં ZAYA1-8B નામનું model ship કર્યું, જેને IBM સાથે બનાવેલા AMD MI300x nodes ના cluster પર pre-trained કરવામાં આવ્યું.",
+      "text_markdown": "અને Zyphra, એક અમેરિકન lab, એ આ મહિનાની શરૂઆતમાં ZAYA1-8B નામનું model ship કર્યું, જેને IBM સાથે બનાવેલા AMD MI300x nodes ના cluster પર pre-trained કરવામાં આવ્યું.",
+      "title": "",
+      "tts": {
+        "text": "અને ઝાયફ્રા, એક અમેરિકન લેબ, એ આ મહિનાની શરૂઆતમાં ઝાયા એક આઠ બી નામનું મોડલ શિપ કર્યું, જેને આઇ બી એમ સાથે બનાવેલા એ એમ ડી એમ આઇ ત્રણસો એક્સ નોડ્સના ક્લસ્ટર પર પૂર્વપ્રશિક્ષિત કરવામાં આવ્યું.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-021",
+      "speaker_id": "host",
+      "text": "સિલિકોન આટલું અગત્યનું કેમ માનવામાં આવે છે?",
+      "text_markdown": "સિલિકોન આટલું અગત્યનું કેમ માનવામાં આવે છે?",
+      "title": "",
+      "tts": {
+        "text": "સીલીકોન આટલું અગત્યનું કેમ માનવામાં આવે છે?",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "text": "કુલ કારણો બે જ ગણાય.",
+      "text_markdown": "કુલ કારણો બે જ ગણાય.",
+      "title": "",
+      "tts": {
+        "text": "કુલ કારણો બે જ ગણાય.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "text": "પહેલું, છેલ્લા ત્રણ વર્ષથી, દરેક ગંભીર frontier training run માટે NVIDIA H100s અથવા H200s અનિવાર્ય હાર્ડવેર રહ્યા છે.",
+      "text_markdown": "પહેલું, છેલ્લા ત્રણ વર્ષથી, દરેક ગંભીર frontier training run માટે NVIDIA H100s અથવા H200s અનિવાર્ય હાર્ડવેર રહ્યા છે.",
+      "title": "",
+      "tts": {
+        "text": "પહેલું, છેલ્લા ત્રણ વર્ષથી, દરેક ગંભીર ફ્રન્ટિયર ટ્રેનિંગ રન માટે એનવિડિયા એચ એકસો અથવા એચ બેસો અનિવાર્ય હાર્ડવેર રહ્યા છે.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "text": "બે — તે supply bottleneck રહી છે, અને ધારણા એ હતી કે open અને Chinese frontier તેના કારણે એક generation પાછળ છે.",
+      "text_markdown": "બે — તે supply bottleneck રહી છે, અને ધારણા એ હતી કે open અને Chinese frontier તેના કારણે એક generation પાછળ છે.",
+      "title": "",
+      "tts": {
+        "text": "બે — તે supply bottleneck રહી છે, અને ધારણા એ હતી કે open અને Chinese frontier તેના કારણે એક generation પાછળ છે.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "text": "એકવાર અગ્રકક્ષાનો તાલીમ પ્રયોગ હુઆવે આસેન્ડ અથવા એએમડીના હાર્ડવેર પર સફળતાથી ચાલવા લાગે, પછી બાકીની તમામ ખુલ્લી લેબો એ જ રીત સહેલાઈથી નકલ કરીને અપનાવી શકશે.",
+      "text_markdown": "એકવાર અગ્રકક્ષાનો તાલીમ પ્રયોગ હુઆવે આસેન્ડ અથવા એએમડીના હાર્ડવેર પર સફળતાથી ચાલવા લાગે, પછી બાકીની તમામ ખુલ્લી લેબો એ જ રીત સહેલાઈથી નકલ કરીને અપનાવી શકશે.",
+      "title": "",
+      "tts": {
+        "text": "એકવાર અગ્રકક્ષાનો તાલીમ પ્રયોગ હુઆવે આસેન્ડ અથવા એએમડીના હાર્ડવેર પર સફળતાથી ચાલવા લાગે, પછી બાકીની તમામ ખુલ્લી લેબો એ જ રીત સહેલાઈથી નકલ કરીને અપનાવી શકશે.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "text": "આ વર્ષે આપણે એ જ પરિસ્થિતિ ફરી બનતી જોઈ રહ્યા છીએ.",
+      "text_markdown": "આ વર્ષે આપણે એ જ પરિસ્થિતિ ફરી બનતી જોઈ રહ્યા છીએ.",
+      "title": "",
+      "tts": {
+        "text": "આ વર્ષે આપણે એ જ પરિસ્થિતિ ફરી બનતી જોઈ રહ્યા છીએ.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-027",
+      "speaker_id": "host",
+      "text": "આ અઠવાડિયે ઓપનએઆઈ તરફથી બીજું શું જાહેર થયું?",
+      "text_markdown": "આ અઠવાડિયે ઓપનએઆઈ તરફથી બીજું શું જાહેર થયું?",
+      "title": "",
+      "tts": {
+        "text": "આ અઠવાડિયે ઓપનએઆઈ તરફથી બીજું શું જાહેર થયું?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "text": "ચોક્કસ, ધ્યાન દોરવા લાયક છે ત્રણ ખાસ મુદ્દા.",
+      "text_markdown": "ચોક્કસ, ધ્યાન દોરવા લાયક છે ત્રણ ખાસ મુદ્દા.",
+      "title": "",
+      "tts": {
+        "text": "ચોક્કસ, ધ્યાન દોરવા લાયક છે ત્રણ ખાસ મુદ્દા.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "text": "મૂનશોટનું કિમી K2.6, એપ્રિલના અંતમાં રિલીઝ થયેલું, ટોકન વોલ્યુમ માટે ઓપનરાઉટર પર હજુ પણ અગ્રણી સ્તરમાં છે, અને પ્રથમ અઠવાડિયામાં 1.88 ટ્રિલિયન ટોકન્સ સર્વ કરીને ચાર્ટમાં સૌથી ઉપરનું સ્થાન મેળવ્યું.",
+      "text_markdown": "મૂનશોટનું કિમી K2.6, એપ્રિલના અંતમાં રિલીઝ થયેલું, ટોકન વોલ્યુમ માટે ઓપનરાઉટર પર હજુ પણ અગ્રણી સ્તરમાં છે, અને પ્રથમ અઠવાડિયામાં 1.88 ટ્રિલિયન ટોકન્સ સર્વ કરીને ચાર્ટમાં સૌથી ઉપરનું સ્થાન મેળવ્યું.",
+      "title": "",
+      "tts": {
+        "text": "મૂનશોટનું કિમી કે બે પોઈન્ટ છ, એપ્રિલના અંતમાં રિલીઝ થયેલું, ટોકન વોલ્યુમ માટે ઓપનરાઉટર પર હજુ પણ અગ્રણી સ્તરમાં છે, અને પ્રથમ અઠવાડિયામાં એક પોઈન્ટ આઠ આઠ ટ્રિલિયન ટોકન્સ સર્વ કરીને ચાર્ટમાં સૌથી ઉપરનું સ્થાન મેળવ્યું.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "text": "આ પહેલી વાર હતું કે ચાઇનીઝ ઓપન-વેઇટ્સ મોડેલે મોટા કોમર્શિયલ રાઉટર પર Claude Sonnet અને DeepSeek ને સ્પષ્ટ રીતે પાછળ મૂકી દીધા.",
+      "text_markdown": "આ પહેલી વાર હતું કે ચાઇનીઝ ઓપન-વેઇટ્સ મોડેલે મોટા કોમર્શિયલ રાઉટર પર Claude Sonnet અને DeepSeek ને સ્પષ્ટ રીતે પાછળ મૂકી દીધા.",
+      "title": "",
+      "tts": {
+        "text": "આ પહેલી વાર હતું કે ચીની ખુલ્લા ભારાંકવાળા મોડેલે મોટા વ્યાવસાયિક રાઉટર પર ક્લોડ સોનેટ અને ડીપસીકને સ્પષ્ટ રીતે પાછળ મૂકી દીધા.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "text": "DeepSeek V4-Pro 1.6 trillion total parameters અને 49 billion active પર છે.",
+      "text_markdown": "DeepSeek V4-Pro 1.6 trillion total parameters અને 49 billion active પર છે.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V ચાર Pro એક પોઈન્ટ છ ટ્રિલિયન total parameters અને ચુંમતાળીસ અબજ active પર છે.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "text": "તેમનું સસ્તું sibling, V4-Flash, 284 billion total અને 13 billion active parameters ધરાવતું મોડેલ ગણાય.",
+      "text_markdown": "તેમનું સસ્તું sibling, V4-Flash, 284 billion total અને 13 billion active parameters ધરાવતું મોડેલ ગણાય.",
+      "title": "",
+      "tts": {
+        "text": "તેમનું સસ્તું sibling, V ચાર Flash, બે સો ચોર્યાસી અબજ total અને તેર અબજ active parameters ધરાવતું મોડેલ ગણાય.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "text": "બંને MIT license હેઠળ ખુલ્લા વજનવાળા મોડેલો તરીકે ઉપલબ્ધ રહે છે.",
+      "text_markdown": "બંને MIT license હેઠળ ખુલ્લા વજનવાળા મોડેલો તરીકે ઉપલબ્ધ રહે છે.",
+      "title": "",
+      "tts": {
+        "text": "બંને એમ આઈ ટી લાઇસન્સ હેઠળ ખુલ્લા વજનવાળા મોડેલો તરીકે ઉપલબ્ધ રહે છે.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "text": "ZAYA1-8B મોડેલ વિશે ખાસ કરીને વધુ વિગતવાર સમજાવો.",
+      "text_markdown": "ZAYA1-8B મોડેલ વિશે ખાસ કરીને વધુ વિગતવાર સમજાવો.",
+      "title": "",
+      "tts": {
+        "text": "ઝાયા એક આઠ બી મોડેલ વિશે ખાસ કરીને વધુ વિગતવાર સમજાવો.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "text": "તે નિષ્ણાતોના મિશ્રણ પ્રકારનું નાનું મોડલ છે, જેમાં કુલ 8.4 billion પરિમાણો છે અને દરેક token દીઠ લગભગ 760 million પરિમાણો સક્રિય રીતે કામ કરે છે.",
+      "text_markdown": "તે નિષ્ણાતોના મિશ્રણ પ્રકારનું નાનું મોડલ છે, જેમાં કુલ 8.4 billion પરિમાણો છે અને દરેક token દીઠ લગભગ 760 million પરિમાણો સક્રિય રીતે કામ કરે છે.",
+      "title": "",
+      "tts": {
+        "text": "તે નિષ્ણાતોના મિશ્રણ પ્રકારનું નાનું મોડલ છે, જેમાં કુલ આઠ દશાંશ ચાર અબજ પરિમાણો છે અને દરેક ટોકન દીઠ લગભગ છોતેર કરોડ પરિમાણો સક્રિય રીતે કામ કરે છે.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "text": "Apache 2.0 લાઇસન્સ તેનો વ્યાવસાયિક ઉપયોગ માન્ય ગણાવે છે.",
+      "text_markdown": "Apache 2.0 લાઇસન્સ તેનો વ્યાવસાયિક ઉપયોગ માન્ય ગણાવે છે.",
+      "title": "",
+      "tts": {
+        "text": "અપાચે બે બિંદુ શૂન્ય લાઇસન્સ તેનો વ્યાવસાયિક ઉપયોગ માન્ય ગણાવે છે.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "text": "તેનું pre-training લગભગ 1,024 AMD MI300x nodesના cluster પર થયું હતું, અને તેમાં NVIDIA hardwareનો બિલકુલ ઉપયોગ થયો નહોતો.",
+      "text_markdown": "તેનું pre-training લગભગ 1,024 AMD MI300x nodesના cluster પર થયું હતું, અને તેમાં NVIDIA hardwareનો બિલકુલ ઉપયોગ થયો નહોતો.",
+      "title": "",
+      "tts": {
+        "text": "તેનું પ્રી ટ્રેનિંગ લગભગ એક હજાર ચોવીસ એ એમ ડી એમ આઈ ત્રણસો એક્સ નોડના ક્લસ્ટર પર થયું હતું, અને તેમાં એન વિડિયા હાર્ડવેરનો બિલકુલ ઉપયોગ થયો નહોતો.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "text": "તે AIME, math olympiad benchmark પર 89.1 સ્કોર કરે છે, sub-1-billion active-parameter budget પર ચાલતા હોવા છતાં math અને coding પર ઘણા મોટા models ને હરાવે છે.",
+      "text_markdown": "તે AIME, math olympiad benchmark પર 89.1 સ્કોર કરે છે, sub-1-billion active-parameter budget પર ચાલતા હોવા છતાં math અને coding પર ઘણા મોટા models ને હરાવે છે.",
+      "title": "",
+      "tts": {
+        "text": "તે AIME, math olympiad benchmark પર નવ્યાસી પોઈન્ટ એક સ્કોર કરે છે, sub એક અબજ active parameter budget પર ચાલતા હોવા છતાં math અને coding પર ઘણા મોટા models ને હરાવે છે.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "text": "બે મહિનાની અંદર, NVIDIA વિના training કરતી બે open-weights labs સામે આવી હતી.",
+      "text_markdown": "બે મહિનાની અંદર, NVIDIA વિના training કરતી બે open-weights labs સામે આવી હતી.",
+      "title": "",
+      "tts": {
+        "text": "બે મહિનાની અંદર, એનવિડિયા વિના ટ્રેનિંગ કરતી બે ઓપન વેઇટ્સ લેબ્સ સામે આવી હતી.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "text": "આને માત્ર સંયોગ તરીકે ન જોવું.",
+      "text_markdown": "આને માત્ર સંયોગ તરીકે ન જોવું.",
+      "title": "",
+      "tts": {
+        "text": "આને માત્ર સંયોગ તરીકે ન જોવું.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "text": "પ્લમ્બિંગ આખરે સ્થિર થઈ ગયું, AMD ROCm અને Huawei CANN બંને 2025માં ખરેખર ઉપયોગી બન્યા, અને 2026માં ખુલ્લો સમુદાય તેમના પર વાસ્તવિક ફ્રન્ટિયર-ક્લાસ રન રજૂ કરવા લાગ્યો છે.",
+      "text_markdown": "પ્લમ્બિંગ આખરે સ્થિર થઈ ગયું, AMD ROCm અને Huawei CANN બંને 2025માં ખરેખર ઉપયોગી બન્યા, અને 2026માં ખુલ્લો સમુદાય તેમના પર વાસ્તવિક ફ્રન્ટિયર-ક્લાસ રન રજૂ કરવા લાગ્યો છે.",
+      "title": "",
+      "tts": {
+        "text": "પ્લમ્બિંગ આખરે સ્થિર થઈ ગયું, એ એમ ડીનું રોકમ અને હુઆવેનું કેન બંને બે હજાર પચ્ચીસમાં ખરેખર ઉપયોગી બન્યા, અને બે હજાર છવીસમાં ખુલ્લો સમુદાય તેમના પર વાસ્તવિક ફ્રન્ટિયર ક્લાસ રન રજૂ કરવા લાગ્યો છે.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-042",
+      "speaker_id": "host",
+      "text": "માળખાની બાજુ વિશે શું કહેવું યોગ્ય રહેશે?",
+      "text_markdown": "માળખાની બાજુ વિશે શું કહેવું યોગ્ય રહેશે?",
+      "title": "",
+      "tts": {
+        "text": "માળખાની બાજુ વિશે શું કહેવું યોગ્ય રહેશે?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "text": "vLLM v0.21નું પ્રકાશન શુક્રવાર, 15 મેના રોજ થયું.",
+      "text_markdown": "vLLM v0.21નું પ્રકાશન શુક્રવાર, 15 મેના રોજ થયું.",
+      "title": "",
+      "tts": {
+        "text": "વી એલ એલ એમની શૂન્ય દશાંશ એકવીસ આવૃત્તિનું પ્રકાશન શુક્રવાર, પંદર મેના રોજ થયું.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "text": "vLLM એક ખુલ્લું મોડેલ સર્વિંગ માળખું છે, એટલે જ્યારે તમે કોઈ મોડેલને જાતે હોસ્ટ કરવા માગો છો ત્યારે હકીકતમાં તમે આ જ માળખું ચલાવતા હોવ છો.",
+      "text_markdown": "vLLM એક ખુલ્લું મોડેલ સર્વિંગ માળખું છે, એટલે જ્યારે તમે કોઈ મોડેલને જાતે હોસ્ટ કરવા માગો છો ત્યારે હકીકતમાં તમે આ જ માળખું ચલાવતા હોવ છો.",
+      "title": "",
+      "tts": {
+        "text": "વીએલએલએમ એક ખુલ્લું મોડેલ સર્વિંગ માળખું છે, એટલે જ્યારે તમે કોઈ મોડેલને જાતે હોસ્ટ કરવા માગો છો ત્યારે હકીકતમાં તમે આ જ માળખું ચલાવતા હોવ છો.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "text": "તે બેચિંગ, પેજિંગ અને KV કેશ રીયુઝને હેન્ડલ કરે છે, અને હવે જે કોઈ બંધ API પર નથી તે દરેક માટે પ્રોડક્શનમાં તે ડિફોલ્ટ છે.",
+      "text_markdown": "તે બેચિંગ, પેજિંગ અને KV કેશ રીયુઝને હેન્ડલ કરે છે, અને હવે જે કોઈ બંધ API પર નથી તે દરેક માટે પ્રોડક્શનમાં તે ડિફોલ્ટ છે.",
+      "title": "",
+      "tts": {
+        "text": "તે બેચિંગ, પેજિંગ અને KV કેશ રીયુઝને હેન્ડલ કરે છે, અને હવે જે કોઈ બંધ API પર નથી તે દરેક માટે પ્રોડક્શનમાં તે ડિફોલ્ટ છે.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "text": "આ રીલીઝ હાઈબ્રિડ મેમોરી એલોકેટર સાથે KV ઓફલોડ ઉમેરે છે, અને Blackwell GPUs પર DeepSeek-R1 અને Kimi K2.5 prefill માટે ટ્યુન કરેલ નવું એટેન્શન બેકએન્ડ ઉમેરે છે.",
+      "text_markdown": "આ રીલીઝ હાઈબ્રિડ મેમોરી એલોકેટર સાથે KV ઓફલોડ ઉમેરે છે, અને Blackwell GPUs પર DeepSeek-R1 અને Kimi K2.5 prefill માટે ટ્યુન કરેલ નવું એટેન્શન બેકએન્ડ ઉમેરે છે.",
+      "title": "",
+      "tts": {
+        "text": "આ રીલીઝ હાઈબ્રિડ મેમોરી એલોકેટર સાથે કે વી ઓફલોડ ઉમેરે છે, અને Blackwell GPUs પર DeepSeek આર વન અને Kimi કે બે પોઈન્ટ પાંચ prefill માટે ટ્યુન કરેલ નવું એટેન્શન બેકએન્ડ ઉમેરે છે.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "text": "મોટી પ્રયોગશાળાઓ મુખ્ય સંબોધન આપે ત્યારે સતત બહાર આવતું રહે છે સેવા માટેનું ખુલ્લું માળખું.",
+      "text_markdown": "મોટી પ્રયોગશાળાઓ મુખ્ય સંબોધન આપે ત્યારે સતત બહાર આવતું રહે છે સેવા માટેનું ખુલ્લું માળખું.",
+      "title": "",
+      "tts": {
+        "text": "મોટી પ્રયોગશાળાઓ મુખ્ય સંબોધન આપે ત્યારે સતત બહાર આવતું રહે છે સેવા માટેનું ખુલ્લું માળખું.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "text": "બરાબર, ચાલો હવે પ્રાથમિકતાઓની યાદી ખોલીને ધ્યાનથી ચકાસીએ.",
+      "text_markdown": "બરાબર, ચાલો હવે પ્રાથમિકતાઓની યાદી ખોલીને ધ્યાનથી ચકાસીએ.",
+      "title": "",
+      "tts": {
+        "text": "બરાબર, ચાલો હવે પ્રાથમિકતાઓની યાદી ખોલીને ધ્યાનથી ચકાસીએ.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-049",
+      "speaker_id": "host",
+      "text": "રોન, શું સ્થિર રહ્યું અને શું બદલાવ આવ્યો?",
+      "text_markdown": "રોન, શું સ્થિર રહ્યું અને શું બદલાવ આવ્યો?",
+      "title": "",
+      "tts": {
+        "text": "રોન, શું સ્થિર રહ્યું અને શું બદલાવ આવ્યો?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "text": "એકંદરે, પરિસ્થિતિમાં સ્થિરતા જળવાશે.",
+      "text_markdown": "એકંદરે, પરિસ્થિતિમાં સ્થિરતા જળવાશે.",
+      "title": "",
+      "tts": {
+        "text": "એકંદરે પરિસ્થિતિમાં સ્થિરતા જળવાશે.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "text": "Anthropic નું Claude Opus 4.7 હજુ પણ LM Arena કોડિંગ લીડરબોર્ડ પર નંબર વન છે, લગભગ 1569 ના Elo આસપાસ.",
+      "text_markdown": "Anthropic નું Claude Opus 4.7 હજુ પણ LM Arena કોડિંગ લીડરબોર્ડ પર નંબર વન છે, લગભગ 1569 ના Elo આસપાસ.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic નું Claude Opus ચાર પોઈન્ટ સાત હજુ પણ એલ એમ Arena કોડિંગ લીડરબોર્ડ પર નંબર વન છે, લગભગ પંદર પૃષ્ઠ ઉણોગણ સો ના Elo આસપાસ.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "text": "OpenAI નું GPT-5.5 ઊંડા તર્કવાળા મોડમાં એ જ બોર્ડ પર સાતમા સ્થાને છે.",
+      "text_markdown": "OpenAI નું GPT-5.5 ઊંડા તર્કવાળા મોડમાં એ જ બોર્ડ પર સાતમા સ્થાને છે.",
+      "title": "",
+      "tts": {
+        "text": "ઓપન એ આઈનું જી પી ટી પાંચ પોઈન્ટ પાંચ ઊંડા તર્કવાળા મોડમાં એ જ બોર્ડ પર સાતમા સ્થાને છે.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "text": "અને WebDev કોડિંગ સબ-બોર્ડ પર, GPT-5.5 નંબર નવ પર છે.",
+      "text_markdown": "અને WebDev કોડિંગ સબ-બોર્ડ પર, GPT-5.5 નંબર નવ પર છે.",
+      "title": "",
+      "tts": {
+        "text": "અને WebDev કોડિંગ સબ બોર્ડ પર, જી પી ટી પાંચ પોઈન્ટ પાંચ નંબર નવ પર છે.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "text": "નવું ગૂગલ મોડેલ કઈ શ્રેણીનું ગણાય?",
+      "text_markdown": "નવું ગૂગલ મોડેલ કઈ શ્રેણીનું ગણાય?",
+      "title": "",
+      "tts": {
+        "text": "નવું ગૂગલ મોડેલ કઈ શ્રેણીનું ગણાય?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "text": "મંગળવારે Google I/O પર Gemini 3.5 Flash રજૂ થયું, તેથી તે હજુ પણ બોર્ડ પર સામેલ નથી.",
+      "text_markdown": "મંગળવારે Google I/O પર Gemini 3.5 Flash રજૂ થયું, તેથી તે હજુ પણ બોર્ડ પર સામેલ નથી.",
+      "title": "",
+      "tts": {
+        "text": "મંગળવારે ગૂગલ આઈ ઓ પર જેમિની ત્રણ દશાંશ પાંચ ફ્લેશ રજૂ થયું, તેથી તે હજુ પણ બોર્ડ પર સામેલ નથી.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "text": "મોડેલને સ્થિર Elo મળે તે પહેલાં Arena ને થોડા હજાર head-to-head મતોની જરૂર છે.",
+      "text_markdown": "મોડેલને સ્થિર Elo મળે તે પહેલાં Arena ને થોડા હજાર head-to-head મતોની જરૂર છે.",
+      "title": "",
+      "tts": {
+        "text": "મોડેલને સ્થિર Elo મળે તે પહેલાં Arena ને થોડા હજાર હેડ ટુ હેડ મતોની જરૂર છે.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "text": "અપેક્ષા કરો કે Gemini 3.5 Flash આવતા અઠવાડિયે દેખાશે અને Gemini 3.5 Pro જૂનમાં આવશે.",
+      "text_markdown": "અપેક્ષા કરો કે Gemini 3.5 Flash આવતા અઠવાડિયે દેખાશે અને Gemini 3.5 Pro જૂનમાં આવશે.",
+      "title": "",
+      "tts": {
+        "text": "અપેક્ષા કરો કે Gemini ત્રણ પોઈન્ટ પાંચ Flash આવતા અઠવાડિયે દેખાશે અને Gemini ત્રણ પોઈન્ટ પાંચ Pro જૂનમાં આવશે.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "text": "મૂલ્યાંકન-ગુણવત્તાના મોરચે કોઈ સમાચાર?",
+      "text_markdown": "મૂલ્યાંકન-ગુણવત્તાના મોરચે કોઈ સમાચાર?",
+      "title": "",
+      "tts": {
+        "text": "મૂલ્યાંકન ગુણવત્તાના મોરચે કોઈ સમાચાર?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "text": "ખરેખર, આ ગયા અઠવાડિયાની વાતનો ફરી એક નાનકડો ઉલ્લેખ ગણવો.",
+      "text_markdown": "ખરેખર, આ ગયા અઠવાડિયાની વાતનો ફરી એક નાનકડો ઉલ્લેખ ગણવો.",
+      "title": "",
+      "tts": {
+        "text": "ખરેખર, આ ગયા અઠવાડિયાની વાતનો ફરી એક નાનકડો ઉલ્લેખ ગણવો.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "text": "SWE-bench Verified હજુ પણ નિવૃત્ત ગણાય છે, તે કોડિંગ બેન્ચમાર્ક જેનો OpenAI ઉપયોગ કરતું હતું, જ્યાં મુશ્કેલ કાર્યોના અડધાથી વધુમાં ટેસ્ટ તૂટેલા નીકળતા.",
+      "text_markdown": "SWE-bench Verified હજુ પણ નિવૃત્ત ગણાય છે, તે કોડિંગ બેન્ચમાર્ક જેનો OpenAI ઉપયોગ કરતું હતું, જ્યાં મુશ્કેલ કાર્યોના અડધાથી વધુમાં ટેસ્ટ તૂટેલા નીકળતા.",
+      "title": "",
+      "tts": {
+        "text": "એસ ડબલ્યુ ઈ બેન્ચ વેરિફાઇડ હજુ પણ નિવૃત્ત ગણાય છે, તે કોડિંગ બેન્ચમાર્ક જેનો ઓપન એ આઇ ઉપયોગ કરતું હતું, જ્યાં મુશ્કેલ કાર્યોના અડધાથી વધુમાં ટેસ્ટ તૂટેલા નીકળતા.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "text": "હવે જોવાના બોર્ડ્સ છે SWE-bench Pro અને SWE-rebench નામનો એક પ્રોજેક્ટ.",
+      "text_markdown": "હવે જોવાના બોર્ડ્સ છે SWE-bench Pro અને SWE-rebench નામનો એક પ્રોજેક્ટ.",
+      "title": "",
+      "tts": {
+        "text": "હવે જોવાના બોર્ડ્સ છે એસ ડબલ્યુ ઈ બેન્ચ Pro અને એસ ડબલ્યુ ઈ રીબેન્ચ નામનો એક પ્રોજેક્ટ.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "text": "બંને પરીક્ષણ કોડ ખાનગી રાખે છે, જેથી મોડેલો તેના પરથી તાલીમ મેળવી ન શકે.",
+      "text_markdown": "બંને પરીક્ષણ કોડ ખાનગી રાખે છે, જેથી મોડેલો તેના પરથી તાલીમ મેળવી ન શકે.",
+      "title": "",
+      "tts": {
+        "text": "બંને પરીક્ષણ કોડ ખાનગી રાખે છે, જેથી મોડેલો તેના પરથી તાલીમ મેળવી ન શકે.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-063",
+      "speaker_id": "host",
+      "text": "અને ખુલ્લી સ્થિતિ અને બંધ સ્થિતિ વચ્ચેનું અંતર કેટલું છે?",
+      "text_markdown": "અને ખુલ્લી સ્થિતિ અને બંધ સ્થિતિ વચ્ચેનું અંતર કેટલું છે?",
+      "title": "",
+      "tts": {
+        "text": "અને ખુલ્લી સ્થિતિ અને બંધ સ્થિતિ વચ્ચેનું અંતર કેટલું છે?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "text": "Artificial Analysisના જણાવ્યા મુજબ, ક્રોસ મૂલ્યાંકન બુદ્ધિમત્તા સૂચકાંક પર હવે 5 થી 15 અંક સુધીનો ફરક નોંધાયો.",
+      "text_markdown": "Artificial Analysisના જણાવ્યા મુજબ, ક્રોસ મૂલ્યાંકન બુદ્ધિમત્તા સૂચકાંક પર હવે 5 થી 15 અંક સુધીનો ફરક નોંધાયો.",
+      "title": "",
+      "tts": {
+        "text": "આર્ટિફિશિયલ એનાલિસિસના જણાવ્યા મુજબ, ક્રોસ મૂલ્યાંકન બુદ્ધિમત્તા સૂચકાંક પર હવે પાંચ થી પંદર અંક સુધીનો ફરક નોંધાયો.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "text": "18 મહિના પહેલાં, તે 30 થી 40 અંકની આસપાસ ફરતું રહેતું.",
+      "text_markdown": "18 મહિના પહેલાં, તે 30 થી 40 અંકની આસપાસ ફરતું રહેતું.",
+      "title": "",
+      "tts": {
+        "text": "અઢાર મહિના પહેલાં, તે ત્રીસથી ચાલીસ અંકની આસપાસ ફરતું રહેતું.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "text": "Kimi K2.6 અને DeepSeek V4-Pro એ GPT-5.5 અને Opus 4.7 સામે તે બેન્ડમાં બેઠા છે.",
+      "text_markdown": "Kimi K2.6 અને DeepSeek V4-Pro એ GPT-5.5 અને Opus 4.7 સામે તે બેન્ડમાં બેઠા છે.",
+      "title": "",
+      "tts": {
+        "text": "Kimi કે બે પોઈન્ટ છ અને DeepSeek વી ચાર Pro એ જી પી ટી પાંચ પોઈન્ટ પાંચ અને Opus ચાર પોઈન્ટ સાત સામે તે બેન્ડમાં બેઠા છે.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-067",
+      "speaker_id": "host",
+      "text": "હવે મુખ્ય સમાચારો પર નજર કરીએ.",
+      "text_markdown": "હવે મુખ્ય સમાચારો પર નજર કરીએ.",
+      "title": "",
+      "tts": {
+        "text": "હવે મુખ્ય સમાચારો પર નજર કરીએ.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-068",
+      "speaker_id": "host",
+      "text": "રોન, આ અઠવાડિયાની ટૂંકી ઝલકમાં શું છે, જણાવો?",
+      "text_markdown": "રોન, આ અઠવાડિયાની ટૂંકી ઝલકમાં શું છે, જણાવો?",
+      "title": "",
+      "tts": {
+        "text": "રોન, આ અઠવાડિયાની ટૂંકી ઝલકમાં શું છે, જણાવો?",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "text": "Google I/O મંગળવાર અને બુધવારે હતું.",
+      "text_markdown": "Google I/O મંગળવાર અને બુધવારે હતું.",
+      "title": "",
+      "tts": {
+        "text": "Google આઈ ઓ મંગળવાર અને બુધવારે હતું.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "text": "મુખ્ય જાહેરખબરોમાં Gemini 3.5 Flash, વાતચીત આધારિત વિડિયો સંપાદન માટે Gemini Omni, અને Gemini Spark સામેલ હતા, જેમાં Gemini Spark તમારા માલિકીના નહીં એવા ક્લાઉડ વર્ચ્યુઅલ મશીન પર 24/7 ચાલતા સતત સક્રિય એજન્ટ તરીકે કાર્યરત રહેતું હતું.",
+      "text_markdown": "મુખ્ય જાહેરખબરોમાં Gemini 3.5 Flash, વાતચીત આધારિત વિડિયો સંપાદન માટે Gemini Omni, અને Gemini Spark સામેલ હતા, જેમાં Gemini Spark તમારા માલિકીના નહીં એવા ક્લાઉડ વર્ચ્યુઅલ મશીન પર 24/7 ચાલતા સતત સક્રિય એજન્ટ તરીકે કાર્યરત રહેતું હતું.",
+      "title": "",
+      "tts": {
+        "text": "મુખ્ય જાહેરખબરોમાં જેમિની ત્રણ પોઈન્ટ પાંચ ફ્લેશ, વાતચીત આધારિત વિડિયો સંપાદન માટે જેમિની ઓમ્ની, અને જેમિની સ્પાર્ક સામેલ હતા, જેમાં જેમિની સ્પાર્ક તમારા માલિકીના નહીં એવા ક્લાઉડ વર્ચ્યુઅલ મશીન પર ચોવીસે કલાક અને અઠવાડિયે સાતેય દિવસ ચાલતા સતત સક્રિય એજન્ટ તરીકે કાર્યરત રહેતું હતું.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "text": "નોંધનીય વાત એ છે કે આવી જ પેટર્ન, એટલે કે પોતાના મશીન પર ચાલતો અને મલ્ટિ-સ્ટેપ કામ કરતો એજન્ટ, તમે આજે પહેલેથી જ Aider અથવા OpenCode જેવા ઓપન ટૂલ્સને લોકલ મોડેલ તરફ પોઈન્ટ કરીને ઉપયોગમાં લઈ શકો છો.",
+      "text_markdown": "નોંધનીય વાત એ છે કે આવી જ પેટર્ન, એટલે કે પોતાના મશીન પર ચાલતો અને મલ્ટિ-સ્ટેપ કામ કરતો એજન્ટ, તમે આજે પહેલેથી જ Aider અથવા OpenCode જેવા ઓપન ટૂલ્સને લોકલ મોડેલ તરફ પોઈન્ટ કરીને ઉપયોગમાં લઈ શકો છો.",
+      "title": "",
+      "tts": {
+        "text": "નોંધનીય વાત એ છે કે આવી જ પેટર્ન, એટલે કે પોતાના મશીન પર ચાલતો અને બહુ પગલાંનું કામ કરતો એજન્ટ, તમે આજે પહેલેથી જ એડર અથવા ઓપનકોડ જેવા ખુલ્લા ટૂલ્સને સ્થાનિક મોડેલ તરફ પોઈન્ટ કરીને ઉપયોગમાં લઈ શકો છો.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "text": "ગૂગલ AI Ultraએ તેનું શરૂઆતનું પ્લાન સ્તર $250 પ્રતિ મહિનેથી $100 પ્રતિ મહિને ઘટાડ્યું, અને સેમસંગે Gemini બિલ્ટ-ઇન ધરાવતા વિસ્તૃત વાસ્તવિકતા ચશ્માંની સત્તાવાર જાહેરાત કરી દીધી.",
+      "text_markdown": "ગૂગલ AI Ultraએ તેનું શરૂઆતનું પ્લાન સ્તર $250 પ્રતિ મહિનેથી $100 પ્રતિ મહિને ઘટાડ્યું, અને સેમસંગે Gemini બિલ્ટ-ઇન ધરાવતા વિસ્તૃત વાસ્તવિકતા ચશ્માંની સત્તાવાર જાહેરાત કરી દીધી.",
+      "title": "",
+      "tts": {
+        "text": "ગૂગલ એઆઈ અલ્ટ્રાએ તેનું શરૂઆતનું પ્લાન સ્તર બે સો પચાસ ડોલર પ્રતિ મહિનેથી સો ડોલર પ્રતિ મહિને ઘટાડ્યું, અને સેમસંગે જેમિની પહેલેથી જ જોડાયેલાં હોય એવા વિસ્તૃત વાસ્તવિકતા ચશ્માંની સત્તાવાર જાહેરાત કરી દીધી.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "text": "દૈનિક પ્રોમ્પ્ટ મર્યાદાઓની જગ્યાએ હવે દર પાંચ કલાકે ફરીથી મળતું કોમ્પ્યુટ બજેટ આવ્યું.",
+      "text_markdown": "દૈનિક પ્રોમ્પ્ટ મર્યાદાઓની જગ્યાએ હવે દર પાંચ કલાકે ફરીથી મળતું કોમ્પ્યુટ બજેટ આવ્યું.",
+      "title": "",
+      "tts": {
+        "text": "દૈનિક પ્રોમ્પ્ટ મર્યાદાઓની જગ્યાએ હવે દર પાંચ કલાકે ફરીથી મળતું કોમ્પ્યુટ બજેટ આવ્યું.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-074",
+      "speaker_id": "host",
+      "text": "અને વ્યક્તિગત રીતે જોઈએ તો વાત કેવી લાગે?",
+      "text_markdown": "અને વ્યક્તિગત રીતે જોઈએ તો વાત કેવી લાગે?",
+      "title": "",
+      "tts": {
+        "text": "અને વ્યક્તિગત રીતે જોઈએ તો વાત કેવી લાગે?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "text": "આંદ્રેજ કારપાથી મંગળવારે એન્થ્રોપિક કંપનીનો ભાગ બન્યો.",
+      "text_markdown": "આંદ્રેજ કારપાથી મંગળવારે એન્થ્રોપિક કંપનીનો ભાગ બન્યો.",
+      "title": "",
+      "tts": {
+        "text": "આંદ્રેજ કારપાથી મંગળવારે એન્થ્રોપિક કંપનીનો ભાગ બન્યો.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "text": "તે પૂર્વ તાલીમની ટીમમાં છે અને એવા જૂથનું નેતૃત્વ કરે છે, જે પૂર્વ તાલીમ સંશોધનને વેગ આપવા માટે Claude ના ઉપયોગને મુખ્ય કેન્દ્રમાં રાખે છે.",
+      "text_markdown": "તે પૂર્વ તાલીમની ટીમમાં છે અને એવા જૂથનું નેતૃત્વ કરે છે, જે પૂર્વ તાલીમ સંશોધનને વેગ આપવા માટે Claude ના ઉપયોગને મુખ્ય કેન્દ્રમાં રાખે છે.",
+      "title": "",
+      "tts": {
+        "text": "તે પૂર્વ તાલીમની ટીમમાં છે અને એવા જૂથનું નેતૃત્વ કરે છે, જે પૂર્વ તાલીમ સંશોધનને વેગ આપવા માટે ક્લોડના ઉપયોગને મુખ્ય કેન્દ્રમાં રાખે છે.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "text": "Karpathy OpenAI ના સ્થાપક સભ્ય હતા, પછી Tesla માં AIનું કામ સંભાળ્યું, અને પછી AI શિક્ષણ માટે Eureka Labsને જન્મ આપ્યો.",
+      "text_markdown": "Karpathy OpenAI ના સ્થાપક સભ્ય હતા, પછી Tesla માં AIનું કામ સંભાળ્યું, અને પછી AI શિક્ષણ માટે Eureka Labsને જન્મ આપ્યો.",
+      "title": "",
+      "tts": {
+        "text": "કારપથી ઓપન એઆઈના સ્થાપક સભ્ય હતા, પછી ટેસ્લામાં એઆઈનું કામ સંભાળ્યું, અને પછી એઆઈ શિક્ષણ માટે યુરિકા લેબ્સને જન્મ આપ્યો.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "text": "એપલ કંપની વિશે તમારો અભિપ્રાય જણાવશો?",
+      "text_markdown": "એપલ કંપની વિશે તમારો અભિપ્રાય જણાવશો?",
+      "title": "",
+      "tts": {
+        "text": "એપલ કંપની વિશે તમારો અભિપ્રાય જણાવશો?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "text": "Google Cloudના CEO Thomas Kurianએ આ અઠવાડિયે પુષ્ટિ કરી કે Gemini 2026માં આગળ જઈને Siriના એક વર્ઝનને ચલાવશે.",
+      "text_markdown": "Google Cloudના CEO Thomas Kurianએ આ અઠવાડિયે પુષ્ટિ કરી કે Gemini 2026માં આગળ જઈને Siriના એક વર્ઝનને ચલાવશે.",
+      "title": "",
+      "tts": {
+        "text": "ગૂગલ ક્લાઉડના સીઈઓ થોમસ કુરિયને આ અઠવાડિયે પુષ્ટિ કરી કે જેમિની બે હજાર છવ્વીસમાં આગળ જઈને સિરીના એક વર્ઝનને ચલાવશે.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-080",
+      "speaker_id": "analyst",
+      "text": "ડીલ Apple ના Foundation Models ફ્રેમવર્ક દ્વારા ચાલે છે, તેથી Apple હજુ પણ ઈન્ટિગ્રેશન લેયરનું માલિક છે.",
+      "text_markdown": "ડીલ Apple ના Foundation Models ફ્રેમવર્ક દ્વારા ચાલે છે, તેથી Apple હજુ પણ ઈન્ટિગ્રેશન લેયરનું માલિક છે.",
+      "title": "",
+      "tts": {
+        "text": "ડીલ Apple ના Foundation Models ફ્રેમવર્ક દ્વારા ચાલે છે, તેથી Apple હજુ પણ ઈન્ટિગ્રેશન લેયરનું માલિક છે.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-081",
+      "speaker_id": "host",
+      "text": "અને મસ્કના મુકદ્દમાની વાત?",
+      "text_markdown": "અને મસ્કના મુકદ્દમાની વાત?",
+      "title": "",
+      "tts": {
+        "text": "અને મસ્કના મુકદ્દમાની વાત?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "text": "કેલિફોર્નિયાની 9 સભ્યોની જ્યુરીએ સોમવાર, મે 18ના રોજ OpenAI સામે એલોન મસ્કનો મુકદ્દમો ફગાવી દીધો એવો ચુકાદો નોંધાવ્યો.",
+      "text_markdown": "કેલિફોર્નિયાની 9 સભ્યોની જ્યુરીએ સોમવાર, મે 18ના રોજ OpenAI સામે એલોન મસ્કનો મુકદ્દમો ફગાવી દીધો એવો ચુકાદો નોંધાવ્યો.",
+      "title": "",
+      "tts": {
+        "text": "કેલિફોર્નિયાની નવ સભ્યોની જ્યુરીએ સોમવાર, મે અઢારના રોજ ઓપન એઆઈ સામે એલોન મસ્કનો મુકદ્દમો ફગાવી દીધો એવો ચુકાદો નોંધાવ્યો.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "text": "તેઓએ બે કલાકથી પણ ઓછા સમયમાં પોતાનો નિર્ણય પાકો કરી નાખ્યો.",
+      "text_markdown": "તેઓએ બે કલાકથી પણ ઓછા સમયમાં પોતાનો નિર્ણય પાકો કરી નાખ્યો.",
+      "title": "",
+      "tts": {
+        "text": "તેઓએ બે કલાકથી પણ ઓછા સમયમાં પોતાનો નિર્ણય પાકો કરી નાખ્યો.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "text": "જ્યુરીએ શોધ્યું કે મસ્કે મર્યાદાના કાયદાની મુદત પસાર થયા પછી અરજી કરી હતી, અને ન્યાયાધીશે કેસ ફગાવી દીધો.",
+      "text_markdown": "જ્યુરીએ શોધ્યું કે મસ્કે મર્યાદાના કાયદાની મુદત પસાર થયા પછી અરજી કરી હતી, અને ન્યાયાધીશે કેસ ફગાવી દીધો.",
+      "title": "",
+      "tts": {
+        "text": "જ્યુરીએ શોધ્યું કે મસ્કે મર્યાદાના કાયદાની મુદત પસાર થયા પછી અરજી કરી હતી, અને ન્યાયાધીશે કેસ ફગાવી દીધો.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-085",
+      "speaker_id": "host",
+      "text": "નીતિ તરફથી કંઈ નવી ખબર આવી?",
+      "text_markdown": "નીતિ તરફથી કંઈ નવી ખબર આવી?",
+      "title": "",
+      "tts": {
+        "text": "નીતિ તરફથી કંઈ નવી ખબર આવી?",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "text": "અમેરિકાના નાણાં સચિવ સ્કોટ બેસેન્ટે 14 મેના રોજ બેઇજિંગમાં ટ્રમ્પ અને ઝી સમિટમાં જાહેરાત કરી કે અમેરિકા અને ચાઇના AI સુરક્ષા માટે એક ઔપચારિક પ્રોટોકોલ અમલમાં મૂકશે.",
+      "text_markdown": "અમેરિકાના નાણાં સચિવ સ્કોટ બેસેન્ટે 14 મેના રોજ બેઇજિંગમાં ટ્રમ્પ અને ઝી સમિટમાં જાહેરાત કરી કે અમેરિકા અને ચાઇના AI સુરક્ષા માટે એક ઔપચારિક પ્રોટોકોલ અમલમાં મૂકશે.",
+      "title": "",
+      "tts": {
+        "text": "અમેરિકાના નાણાં સચિવ સ્કોટ બેસેન્ટે ચૌદ મેના રોજ બેઇજિંગમાં ટ્રમ્પ અને ઝી સમિટમાં જાહેરાત કરી કે અમેરિકા અને ચાઇના કૃત્રિમ બુદ્ધિ સુરક્ષા માટે એક ઔપચારિક પ્રોટોકોલ અમલમાં મૂકશે.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "text": "આને બિનરાજ્ય પક્ષોના હાથમાં અતિ અદ્યતન મોડલો ન પહોંચે તે માટેની શ્રેષ્ઠ પ્રથાઓ તરીકે રજૂ કરાયું છે, કોઈ બંધનકર્તા શાસન તરીકે નહીં, પરંતુ ફક્ત વાતચીત માટેની સામાન્ય સમજૂતી.",
+      "text_markdown": "આને બિનરાજ્ય પક્ષોના હાથમાં અતિ અદ્યતન મોડલો ન પહોંચે તે માટેની શ્રેષ્ઠ પ્રથાઓ તરીકે રજૂ કરાયું છે, કોઈ બંધનકર્તા શાસન તરીકે નહીં, પરંતુ ફક્ત વાતચીત માટેની સામાન્ય સમજૂતી.",
+      "title": "",
+      "tts": {
+        "text": "આને બિનરાજ્ય પક્ષોના હાથમાં અતિ અદ્યતન મોડલો ન પહોંચે તે માટેની શ્રેષ્ઠ પ્રથાઓ તરીકે રજૂ કરાયું છે, કોઈ બંધનકર્તા શાસન તરીકે નહીં, પરંતુ ફક્ત વાતચીત માટેની સામાન્ય સમજૂતી.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "text": "પ્રથમ વખત, બંને પક્ષોએ કૃત્રિમ બુદ્ધિની સુરક્ષાને માત્ર સ્પર્ધા નહીં, પરંતુ દ્વિપક્ષીય મુદ્દા તરીકે ગણાવી.",
+      "text_markdown": "પ્રથમ વખત, બંને પક્ષોએ કૃત્રિમ બુદ્ધિની સુરક્ષાને માત્ર સ્પર્ધા નહીં, પરંતુ દ્વિપક્ષીય મુદ્દા તરીકે ગણાવી.",
+      "title": "",
+      "tts": {
+        "text": "પ્રથમ વખત, બંને પક્ષોએ કૃત્રિમ બુદ્ધિની સુરક્ષાને માત્ર સ્પર્ધા નહીં, પરંતુ દ્વિપક્ષીય મુદ્દા તરીકે ગણાવી.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-089",
+      "speaker_id": "host",
+      "text": "હવે ચાલો મુખ્ય વાર્તા તરફ ફરી વળીએ.",
+      "text_markdown": "હવે ચાલો મુખ્ય વાર્તા તરફ ફરી વળીએ.",
+      "title": "",
+      "tts": {
+        "text": "હવે ચાલો મુખ્ય વાર્તા તરફ ફરી વળીએ.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-090",
+      "speaker_id": "host",
+      "text": "રોન, પોપે ગયા અઠવાડિયે આપણા વિશે લખ્યું છે.",
+      "text_markdown": "રોન, પોપે ગયા અઠવાડિયે આપણા વિશે લખ્યું છે.",
+      "title": "",
+      "tts": {
+        "text": "રોન, પોપે ગયા અઠવાડિયે આપણા વિશે લખ્યું છે.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "text": "પોપ લીઓ XIVએ તેમનો પ્રથમ એન્સાઇક્લિકલ પૂર્ણ કર્યો છે.",
+      "text_markdown": "પોપ લીઓ XIVએ તેમનો પ્રથમ એન્સાઇક્લિકલ પૂર્ણ કર્યો છે.",
+      "title": "",
+      "tts": {
+        "text": "પોપ લીઓ ચૌદમાએ તેમનો પ્રથમ એન્સાઇક્લિકલ પૂર્ણ કર્યો છે.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-092",
+      "speaker_id": "analyst",
+      "text": "તેનું શીર્ષક Magnifica Humanitas તરીકે ઓળખાય છે.",
+      "text_markdown": "તેનું શીર્ષક Magnifica Humanitas તરીકે ઓળખાય છે.",
+      "title": "",
+      "tts": {
+        "text": "તેનું શીર્ષક મેગ્નિફિકા હ્યુમાનિતાસ તરીકે ઓળખાય છે.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "text": "તેનો અર્થ \"માનવતાની ભવ્યતા\" એવો થાય છે.",
+      "text_markdown": "તેનો અર્થ \"માનવતાની ભવ્યતા\" એવો થાય છે.",
+      "title": "",
+      "tts": {
+        "text": "તેનો અર્થ \"માનવતાની ભવ્યતા\" એવો થાય છે.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "text": "વેટિકન તેને સોમવાર, મે 25ના રોજ પ્રકાશિત કરી રહ્યું છે.",
+      "text_markdown": "વેટિકન તેને સોમવાર, મે 25ના રોજ પ્રકાશિત કરી રહ્યું છે.",
+      "title": "",
+      "tts": {
+        "text": "વેટિકન તેને સોમવાર, મે પચીસના રોજ પ્રકાશિત કરી રહ્યું છે.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "text": "તે કૃત્રિમ બુદ્ધિ અને માનવ ગૌરવની સુરક્ષાને સંબોધિત કરે છે.",
+      "text_markdown": "તે કૃત્રિમ બુદ્ધિ અને માનવ ગૌરવની સુરક્ષાને સંબોધિત કરે છે.",
+      "title": "",
+      "tts": {
+        "text": "તે કૃત્રિમ બુદ્ધિ અને માનવ ગૌરવની સુરક્ષાને સંબોધિત કરે છે.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "text": "પોપ સાહેબે તેના પર ક્યારે સહી કરી હતી?",
+      "text_markdown": "પોપ સાહેબે તેના પર ક્યારે સહી કરી હતી?",
+      "title": "",
+      "tts": {
+        "text": "પોપ સાહેબે તેના પર ક્યારે સહી કરી હતી?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "text": "મે 15.",
+      "text_markdown": "મે 15.",
+      "title": "",
+      "tts": {
+        "text": "મે પંદર.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "text": "તે તારીખની પસંદગી ખાસ વિચારપૂર્વક કરવામાં આવી હતી, એક ચોક્કસ હેતુ માટે.",
+      "text_markdown": "તે તારીખની પસંદગી ખાસ વિચારપૂર્વક કરવામાં આવી હતી, એક ચોક્કસ હેતુ માટે.",
+      "title": "",
+      "tts": {
+        "text": "તે તારીખની પસંદગી ખાસ વિચારપૂર્વક કરવામાં આવી હતી, એક ચોક્કસ હેતુ માટે.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "text": "પોપ લીઓ 13માએ રેરુમ નોવારુમ પર સહી કરી હતી, તેને આજે બરાબર 135 વર્ષ પૂર્ણ થાય છે.",
+      "text_markdown": "પોપ લીઓ 13માએ રેરુમ નોવારુમ પર સહી કરી હતી, તેને આજે બરાબર 135 વર્ષ પૂર્ણ થાય છે.",
+      "title": "",
+      "tts": {
+        "text": "પોપ લીઓ તેરમાએ રેરુમ નોવારુમ પર સહી કરી હતી, તેને આજે બરાબર એકસો પાંત્રીસ વર્ષ પૂર્ણ થાય છે.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "text": "Rerum Novarum શું હતું?",
+      "text_markdown": "Rerum Novarum શું હતું?",
+      "title": "",
+      "tts": {
+        "text": "રેરુમ નોવારુમ શું હતું?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "text": "Rerum Novarum મજૂર અને મૂડી વિશે મૂળભૂત કેથોલિક શિક્ષા હતી.",
+      "text_markdown": "Rerum Novarum મજૂર અને મૂડી વિશે મૂળભૂત કેથોલિક શિક્ષા હતી.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum મજૂર અને મૂડી વિશે મૂળભૂત કેથોલિક શિક્ષા હતી.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "text": "તે 1891માં, ઔદ્યોગિક ક્રાંતિની મધ્યમાં બહાર આવ્યું હતું.",
+      "text_markdown": "તે 1891માં, ઔદ્યોગિક ક્રાંતિની મધ્યમાં બહાર આવ્યું હતું.",
+      "title": "",
+      "tts": {
+        "text": "તે અઢાર નેવું અને અસ્સીમાં, ઔદ્યોગિક ક્રાંતિની મધ્યમાં બહાર આવ્યું હતું.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "text": "તેણે ચર્ચ કામદારો, માલિકો, વેતન અને કામની ગૌરવ વિશે કેવી રીતે વિચારે છે તે નિર્ધારિત કર્યું — અને તે મુદ્રણ એક સદીથી વધુ સમયથી ચાલુ છે.",
+      "text_markdown": "તેણે ચર્ચ કામદારો, માલિકો, વેતન અને કામની ગૌરવ વિશે કેવી રીતે વિચારે છે તે નિર્ધારિત કર્યું — અને તે મુદ્રણ એક સદીથી વધુ સમયથી ચાલુ છે.",
+      "title": "",
+      "tts": {
+        "text": "તેણે ચર્ચ કામદારો, માલિકો, વેતન અને કામની ગૌરવ વિશે કેવી રીતે વિચારે છે તે નિર્ધારિત કર્યું — અને તે મુદ્રણ એક સદીથી વધુ સમયથી ચાલુ છે.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "text": "પોપ લીઓ XIV કૃત્રિમ બુદ્ધિને આપણી પેઢી માટે એ જ પ્રકારના યુગાંતકારી પ્રશ્ન તરીકે રજૂ કરી રહ્યા છે.",
+      "text_markdown": "પોપ લીઓ XIV કૃત્રિમ બુદ્ધિને આપણી પેઢી માટે એ જ પ્રકારના યુગાંતકારી પ્રશ્ન તરીકે રજૂ કરી રહ્યા છે.",
+      "title": "",
+      "tts": {
+        "text": "પોપ લીઓ ચૌદમા કૃત્રિમ બુદ્ધિને આપણી પેઢી માટે એ જ પ્રકારના યુગાંતકારી પ્રશ્ન તરીકે રજૂ કરી રહ્યા છે.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-105",
+      "speaker_id": "host",
+      "text": "તે છે જાણીજોઈને કરેલો પડઘો.",
+      "text_markdown": "તે છે જાણીજોઈને કરેલો પડઘો.",
+      "title": "",
+      "tts": {
+        "text": "તે છે જાણીજોઈને કરેલો પડઘો.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "text": "ખૂબ જ જાણીજોઈને.",
+      "text_markdown": "ખૂબ જ જાણીજોઈને.",
+      "title": "",
+      "tts": {
+        "text": "ખૂબ જ જાણીજોઈને.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "text": "રાજ્ય નામની પસંદગી પણ — લીઓ — તે સંકેત આપે છે.",
+      "text_markdown": "રાજ્ય નામની પસંદગી પણ — લીઓ — તે સંકેત આપે છે.",
+      "title": "",
+      "tts": {
+        "text": "રાજ્ય નામની પસંદગી પણ — લીઓ — તે સંકેત આપે છે.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "text": "પોપ ભારપૂર્વક કહી રહ્યા છે કે ઓગણીસમી સદી માટે ઔદ્યોગિકીકરણ જેટલું નિર્ણાયક હતું, આપણી સદી માટે કૃત્રિમ બુદ્ધિ પણ એટલી જ નિર્ણાયક બની રહેશે.",
+      "text_markdown": "પોપ ભારપૂર્વક કહી રહ્યા છે કે ઓગણીસમી સદી માટે ઔદ્યોગિકીકરણ જેટલું નિર્ણાયક હતું, આપણી સદી માટે કૃત્રિમ બુદ્ધિ પણ એટલી જ નિર્ણાયક બની રહેશે.",
+      "title": "",
+      "tts": {
+        "text": "પોપ ભારપૂર્વક કહી રહ્યા છે કે ઓગણીસમી સદી માટે ઔદ્યોગિકીકરણ જેટલું નિર્ણાયક હતું, આપણી સદી માટે કૃત્રિમ બુદ્ધિ પણ એટલી જ નિર્ણાયક બની રહેશે.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "text": "તેમની સાથે કોણ છે આ રજૂઆતમાં?",
+      "text_markdown": "તેમની સાથે કોણ છે આ રજૂઆતમાં?",
+      "title": "",
+      "tts": {
+        "text": "તેમની સાથે કોણ છે આ રજૂઆતમાં?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "text": "વેટિકન સિનોડ હોલમાં, એન્થ્રોપિકના સહ-સ્થાપક ક્રિસ ઓલાહ મંચ પર તેમની હાજરી નોંધાવશે.",
+      "text_markdown": "વેટિકન સિનોડ હોલમાં, એન્થ્રોપિકના સહ-સ્થાપક ક્રિસ ઓલાહ મંચ પર તેમની હાજરી નોંધાવશે.",
+      "title": "",
+      "tts": {
+        "text": "વેટિકન સિનોડ હોલમાં, એન્થ્રોપિકના સહ સ્થાપક ક્રિસ ઓલાહ મંચ પર તેમની હાજરી નોંધાવશે.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "text": "ઓલાહ એન્થ્રોપિકમાં અર્થઘટન સંશોધનનું નેતૃત્વ કરે છે.",
+      "text_markdown": "ઓલાહ એન્થ્રોપિકમાં અર્થઘટન સંશોધનનું નેતૃત્વ કરે છે.",
+      "title": "",
+      "tts": {
+        "text": "ઓલાહ એન્થ્રોપિકમાં અર્થઘટન સંશોધનનું નેતૃત્વ કરે છે.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "text": "આ એવું ક્ષેત્ર છે, જે ચેતાતંત્રી જાળની અંદર ખરેખર શું ચાલે છે, તે સમજવાનો પ્રયત્ન કરે છે.",
+      "text_markdown": "આ એવું ક્ષેત્ર છે, જે ચેતાતંત્રી જાળની અંદર ખરેખર શું ચાલે છે, તે સમજવાનો પ્રયત્ન કરે છે.",
+      "title": "",
+      "tts": {
+        "text": "આ એવું ક્ષેત્ર છે, જે ચેતાતંત્રી જાળની અંદર ખરેખર શું ચાલે છે, તે સમજવાનો પ્રયત્ન કરે છે.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-113",
+      "speaker_id": "host",
+      "text": "કાર્યકારી અધિકારીને બદલે અર્થઘટન સંશોધકને જ પસંદ કરવાનું ખરું કારણ શું હોઈ શકે?",
+      "text_markdown": "કાર્યકારી અધિકારીને બદલે અર્થઘટન સંશોધકને જ પસંદ કરવાનું ખરું કારણ શું હોઈ શકે?",
+      "title": "",
+      "tts": {
+        "text": "કાર્યકારી અધિકારીને બદલે અર્થઘટન સંશોધકને જ પસંદ કરવાનું ખરું કારણ શું હોઈ શકે?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "text": "કારણ કે એન્સાઇક્લિકલનો કેન્દ્રીય પ્રશ્ન છે \"આપણે જે વસ્તુ બનાવી રહ્યા છીએ તે શું છે, અને શું આપણે તેને સમજી શકીએ?\"",
+      "text_markdown": "કારણ કે એન્સાઇક્લિકલનો કેન્દ્રીય પ્રશ્ન છે \"આપણે જે વસ્તુ બનાવી રહ્યા છીએ તે શું છે, અને શું આપણે તેને સમજી શકીએ?\"",
+      "title": "",
+      "tts": {
+        "text": "કારણ કે એન્સાઇક્લિકલનો કેન્દ્રીય પ્રશ્ન છે \"આપણે જે વસ્તુ બનાવી રહ્યા છીએ તે શું છે, અને શું આપણે તેને સમજી શકીએ?\"",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-115",
+      "speaker_id": "analyst",
+      "text": "આ ખરેખર અર્થઘટનનો જ પ્રશ્ન છે, જેને નૈતિક ચોકઠામાં ગોઠવવામાં આવ્યો છે.",
+      "text_markdown": "આ ખરેખર અર્થઘટનનો જ પ્રશ્ન છે, જેને નૈતિક ચોકઠામાં ગોઠવવામાં આવ્યો છે.",
+      "title": "",
+      "tts": {
+        "text": "આ ખરેખર અર્થઘટનનો જ પ્રશ્ન છે, જેને નૈતિક ચોકઠામાં ગોઠવવામાં આવ્યો છે.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-116",
+      "speaker_id": "analyst",
+      "text": "આ કોઈ વેચાણની રજૂઆત નથી, અને તેઓએ વેચાણની રજૂઆત કરનાર વ્યક્તિને પણ પસંદ કરવાનો ઇનકાર કર્યો.",
+      "text_markdown": "આ કોઈ વેચાણની રજૂઆત નથી, અને તેઓએ વેચાણની રજૂઆત કરનાર વ્યક્તિને પણ પસંદ કરવાનો ઇનકાર કર્યો.",
+      "title": "",
+      "tts": {
+        "text": "આ કોઈ વેચાણની રજૂઆત નથી, અને તેઓએ વેચાણની રજૂઆત કરનાર વ્યક્તિને પણ પસંદ કરવાનો ઇનકાર કર્યો.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-117",
+      "speaker_id": "host",
+      "text": "મંચ પર બીજું કોણ દેખાઈ રહ્યું છે?",
+      "text_markdown": "મંચ પર બીજું કોણ દેખાઈ રહ્યું છે?",
+      "title": "",
+      "tts": {
+        "text": "મંચ પર બીજું કોણ દેખાઈ રહ્યું છે?",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "text": "કાર્ડિનલ પિએત્રો પારોલિન સમાપન ટિપ્પણીઓ આપશે.",
+      "text_markdown": "કાર્ડિનલ પિએત્રો પારોલિન સમાપન ટિપ્પણીઓ આપશે.",
+      "title": "",
+      "tts": {
+        "text": "કાર્ડિનલ પિએત્રો પારોલિન સમાપન ટિપ્પણીઓ આપશે.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-119",
+      "speaker_id": "analyst",
+      "text": "એ પણ રજૂ કરશે: કાર્ડિનલ વિક્ટર મેન્યુઅલ ફર્નાન્ડેઝ અને કાર્ડિનલ માઇકલ ઝર્ની.",
+      "text_markdown": "એ પણ રજૂ કરશે: કાર્ડિનલ વિક્ટર મેન્યુઅલ ફર્નાન્ડેઝ અને કાર્ડિનલ માઇકલ ઝર્ની.",
+      "title": "",
+      "tts": {
+        "text": "એ પણ રજૂ કરશે: કાર્ડિનલ વિક્ટર મેન્યુઅલ ફર્નાન્ડેઝ અને કાર્ડિનલ માઇકલ ઝર્ની.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "text": "અને બે ધર્મશાસ્ત્ર પ્રાધ્યાપકો — યુકેની ડર્હામ યુનિવર્સિટીની અન્ના રોલેન્ડ્સ અને સાન્ટા ક્લેરા યુનિવર્સિટીની જેસુઈટ સ્કૂલ ઓફ થિઓલોજીની લેઓકાડી લુશોમ્બો — પેનલ પર હશે.",
+      "text_markdown": "અને બે ધર્મશાસ્ત્ર પ્રાધ્યાપકો — યુકેની ડર્હામ યુનિવર્સિટીની અન્ના રોલેન્ડ્સ અને સાન્ટા ક્લેરા યુનિવર્સિટીની જેસુઈટ સ્કૂલ ઓફ થિઓલોજીની લેઓકાડી લુશોમ્બો — પેનલ પર હશે.",
+      "title": "",
+      "tts": {
+        "text": "અને બે ધર્મશાસ્ત્ર પ્રાધ્યાપકો — યુકેની ડર્હામ યુનિવર્સિટીની અન્ના રોલેન્ડ્સ અને સાન્ટા ક્લેરા યુનિવર્સિટીની જેસુઈટ સ્કૂલ ઓફ થિઓલોજીની લેઓકાડી લુશોમ્બો — પેનલ પર હશે.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-121",
+      "speaker_id": "host",
+      "text": "આ રૂમની બહાર આ વાત મહત્વપૂર્ણ કેમ ગણાય?",
+      "text_markdown": "આ રૂમની બહાર આ વાત મહત્વપૂર્ણ કેમ ગણાય?",
+      "title": "",
+      "tts": {
+        "text": "આ રૂમની બહાર આ વાત મહત્વપૂર્ણ કેમ ગણાય?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "text": "કારણ કે વિશ્વમાં કેથોલિક ધર્મને અનુસરનારા 1.4 અબજ લોકો છે.",
+      "text_markdown": "કારણ કે વિશ્વમાં કેથોલિક ધર્મને અનુસરનારા 1.4 અબજ લોકો છે.",
+      "title": "",
+      "tts": {
+        "text": "કારણ કે વિશ્વમાં કેથોલિક ધર્મને અનુસરનારા એક દશાંશ ચાર અબજ લોકો છે.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "text": "પોપ જ્યારે ધર્મપત્ર લખે છે, ત્યારે તે વિષય પર વિશાળ વસ્તીના વિચારોનું પેઢીભરનું ઘડતર થાય.",
+      "text_markdown": "પોપ જ્યારે ધર્મપત્ર લખે છે, ત્યારે તે વિષય પર વિશાળ વસ્તીના વિચારોનું પેઢીભરનું ઘડતર થાય.",
+      "title": "",
+      "tts": {
+        "text": "પોપ જ્યારે ધર્મપત્ર લખે છે, ત્યારે તે વિષય પર વિશાળ વસ્તીના વિચારોનું પેઢીભરનું ઘડતર થાય.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-124",
+      "speaker_id": "analyst",
+      "text": "Rerum Novarum હજુ પણ 135 વર્ષ પછી મજૂર પર કેથોલિક સામાજિક નીતિને આકાર આપે છે.",
+      "text_markdown": "Rerum Novarum હજુ પણ 135 વર્ષ પછી મજૂર પર કેથોલિક સામાજિક નીતિને આકાર આપે છે.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum હજુ પણ એકસો પાંત્રીસ વર્ષ પછી મજૂર પર કેથોલિક સામાજિક નીતિને આકાર આપે છે.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "text": "મેગ્નિફિકા હ્યુમેનિટાસ એઆઈ એ કામ બરાબર કરવા માટે સંપૂર્ણ તૈયારી સાથે સજ્જ.",
+      "text_markdown": "મેગ્નિફિકા હ્યુમેનિટાસ એઆઈ એ કામ બરાબર કરવા માટે સંપૂર્ણ તૈયારી સાથે સજ્જ.",
+      "title": "",
+      "tts": {
+        "text": "મેગ્નિફિકા હ્યુમેનિટાસ એઆઈ એ કામ બરાબર કરવા માટે સંપૂર્ણ તૈયારી સાથે સજ્જ.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-126",
+      "speaker_id": "host",
+      "text": "અને વિરુદ્ધ દિશામાં જતો વ્યક્તિ કોણ છે?",
+      "text_markdown": "અને વિરુદ્ધ દિશામાં જતો વ્યક્તિ કોણ છે?",
+      "title": "",
+      "tts": {
+        "text": "અને વિરુદ્ધ દિશામાં જતો વ્યક્તિ કોણ છે?",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "text": "એઆઇ ઉદ્યોગની બહારની એક સંસ્થા, આપણે જે બનાવી રહ્યા છીએ તેના વિશે ગંભીર શૈક્ષણિક વલણ અપનાવી રહી છે.",
+      "text_markdown": "એઆઇ ઉદ્યોગની બહારની એક સંસ્થા, આપણે જે બનાવી રહ્યા છીએ તેના વિશે ગંભીર શૈક્ષણિક વલણ અપનાવી રહી છે.",
+      "title": "",
+      "tts": {
+        "text": "એઆઇ ઉદ્યોગની બહારની એક સંસ્થા આપણે જે બનાવી રહ્યા છીએ તેના વિશે ગંભીર શૈક્ષણિક વલણ અપનાવી રહી છે.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-128",
+      "speaker_id": "analyst",
+      "text": "અને ઉદ્યોગ પક્ષ યોગ્ય પ્રકારના સંશોધક સાથેની ચર્ચાની બેઠકમાં સ્પષ્ટ હાજરી નોંધાવી રહ્યો છે.",
+      "text_markdown": "અને ઉદ્યોગ પક્ષ યોગ્ય પ્રકારના સંશોધક સાથેની ચર્ચાની બેઠકમાં સ્પષ્ટ હાજરી નોંધાવી રહ્યો છે.",
+      "title": "",
+      "tts": {
+        "text": "અને ઉદ્યોગ પક્ષ યોગ્ય પ્રકારના સંશોધક સાથેની ચર્ચાની બેઠકમાં સ્પષ્ટ હાજરી નોંધાવી રહ્યો છે.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "text": "તે સામાન્ય વલણ નથી — તે સામાન્ય રીતે કાં તો \"અમે શ્રેષ્ઠ જાણીએ છીએ, અમને એકલા છોડો\" અથવા લોબિંગ વલણ હોય છે.",
+      "text_markdown": "તે સામાન્ય વલણ નથી — તે સામાન્ય રીતે કાં તો \"અમે શ્રેષ્ઠ જાણીએ છીએ, અમને એકલા છોડો\" અથવા લોબિંગ વલણ હોય છે.",
+      "title": "",
+      "tts": {
+        "text": "તે સામાન્ય વલણ નથી — તે સામાન્ય રીતે કાં તો \"અમે શ્રેષ્ઠ જાણીએ છીએ, અમને એકલા છોડો\" અથવા લોબિંગ વલણ હોય છે.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "text": "આમાં એક જુદું વલણ દેખાય છે, એકદમ સ્પષ્ટ રીતે.",
+      "text_markdown": "આમાં એક જુદું વલણ દેખાય છે, એકદમ સ્પષ્ટ રીતે.",
+      "title": "",
+      "tts": {
+        "text": "આમાં એક જુદું વલણ દેખાય છે, એકદમ સ્પષ્ટ રીતે.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "text": "વિભાગ પૂરો કરવાનો સારો સમય છે.",
+      "text_markdown": "વિભાગ પૂરો કરવાનો સારો સમય છે.",
+      "title": "",
+      "tts": {
+        "text": "વિભાગ પૂરો કરવાનો સારો સમય છે.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-132",
+      "speaker_id": "host",
+      "text": "હવે ચાલો આ અઠવાડિયાની વિભાવના તરફ આગળ વધીએ.",
+      "text_markdown": "હવે ચાલો આ અઠવાડિયાની વિભાવના તરફ આગળ વધીએ.",
+      "title": "",
+      "tts": {
+        "text": "હવે ચાલો આ અઠવાડિયાની વિભાવના તરફ આગળ વધીએ.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-133",
+      "speaker_id": "host",
+      "text": "આ અઠવાડિયે મુખ્ય વિભાવના છે ક્વાન્ટીકરણ.",
+      "text_markdown": "આ અઠવાડિયે મુખ્ય વિભાવના છે ક્વાન્ટીકરણ.",
+      "title": "",
+      "tts": {
+        "text": "આ અઠવાડિયે મુખ્ય વિભાવના છે ક્વાન્ટીકરણ.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "text": "રોન, અમને આ વાત જરા સમજાવો.",
+      "text_markdown": "રોન, અમને આ વાત જરા સમજાવો.",
+      "title": "",
+      "tts": {
+        "text": "રોન, અમને આ વાત જરા સમજાવો.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "text": "ક્વોન્ટાઇઝેશનની રીત બતાવે છે કે 7 અબજ પરિમાણો ધરાવતું મોડેલ તમારા ફોનમાં કેટલી સહેલાઈથી સમાઈ શકે છે.",
+      "text_markdown": "ક્વોન્ટાઇઝેશનની રીત બતાવે છે કે 7 અબજ પરિમાણો ધરાવતું મોડેલ તમારા ફોનમાં કેટલી સહેલાઈથી સમાઈ શકે છે.",
+      "title": "",
+      "tts": {
+        "text": "ક્વોન્ટાઇઝેશનની રીત બતાવે છે કે સાત અબજ પરિમાણો ધરાવતું મોડેલ તમારા ફોનમાં કેટલી સહેલાઈથી સમાઈ શકે છે.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "text": "ચાલો, શરૂઆત કરીએ સૌથી પાયાની સમસ્યાથી.",
+      "text_markdown": "ચાલો, શરૂઆત કરીએ સૌથી પાયાની સમસ્યાથી.",
+      "title": "",
+      "tts": {
+        "text": "ચાલો, શરૂઆત કરીએ સૌથી પાયાની સમસ્યાથી.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "text": "મોડેલમાં સામાન્ય રીતે દરેક વજન 16-બીટ તરતા દશાંશ પ્રકારનું આંકડાકીય મૂલ્ય હોય.",
+      "text_markdown": "મોડેલમાં સામાન્ય રીતે દરેક વજન 16-બીટ તરતા દશાંશ પ્રકારનું આંકડાકીય મૂલ્ય હોય.",
+      "title": "",
+      "tts": {
+        "text": "મોડેલમાં સામાન્ય રીતે દરેક વજન સોળ બીટ તરતા દશાંશ પ્રકારનું આંકડાકીય મૂલ્ય હોય.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-138",
+      "speaker_id": "analyst",
+      "text": "16-બીટમાં, 7 અબજ પરિમાણો ધરાવતા મોડેલનું સંગ્રહ કદ લગભગ 14 ગીગાબાઈટ બેસે.",
+      "text_markdown": "16-બીટમાં, 7 અબજ પરિમાણો ધરાવતા મોડેલનું સંગ્રહ કદ લગભગ 14 ગીગાબાઈટ બેસે.",
+      "title": "",
+      "tts": {
+        "text": "સોળ બીટમાં, સાત અબજ પરિમાણો ધરાવતા મોડેલનું સંગ્રહ કદ લગભગ ચૌદ ગીગાબાઈટ બેસે.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "text": "તેને મોબાઇલમાં સમાવવું અશક્ય છે.",
+      "text_markdown": "તેને મોબાઇલમાં સમાવવું અશક્ય છે.",
+      "title": "",
+      "tts": {
+        "text": "તેને મોબાઇલમાં સમાવવું અશક્ય છે.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-140",
+      "speaker_id": "host",
+      "text": "તેથી તમે નંબરો સંકોચો.",
+      "text_markdown": "તેથી તમે નંબરો સંકોચો.",
+      "title": "",
+      "tts": {
+        "text": "તેથી તમે નંબરો સંકોચો.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "text": "હા, વાત પૂરેપૂરી સાચી જ ગણાય.",
+      "text_markdown": "હા, વાત પૂરેપૂરી સાચી જ ગણાય.",
+      "title": "",
+      "tts": {
+        "text": "હા, વાત પૂરેપૂરી સાચી જ ગણાય.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-142",
+      "speaker_id": "analyst",
+      "text": "તમે દરેક વેઈટને રાઉન્ડ કરીને ઓછા બીટ્સમાં લાવો.",
+      "text_markdown": "તમે દરેક વેઈટને રાઉન્ડ કરીને ઓછા બીટ્સમાં લાવો.",
+      "title": "",
+      "tts": {
+        "text": "તમે દરેક વેઈટને રાઉન્ડ કરીને ઓછા બીટ્સમાં લાવો.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "text": "દરેક વજન માટે આઠ બિટ રાખવાથી, મોડેલનું કદ સીધું અડધા કદમાં સમાઈ જાય.",
+      "text_markdown": "દરેક વજન માટે આઠ બિટ રાખવાથી, મોડેલનું કદ સીધું અડધા કદમાં સમાઈ જાય.",
+      "title": "",
+      "tts": {
+        "text": "દરેક વજન માટે આઠ બિટ રાખવાથી, મોડેલનું કદ સીધું અડધા કદમાં સમાઈ જાય.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-144",
+      "speaker_id": "analyst",
+      "text": "વજન દીઠ ચાર બિટ તેને કાપીને ચોથાંશ જેટલું કરી નાખે છે.",
+      "text_markdown": "વજન દીઠ ચાર બિટ તેને કાપીને ચોથાંશ જેટલું કરી નાખે છે.",
+      "title": "",
+      "tts": {
+        "text": "વજન દીઠ ચાર બિટ તેને કાપીને ચોથાંશ જેટલું કરી નાખે છે.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "text": "ચાર બીટમાં, એ જ 7 અબજ પરિમાણોવાળા મોડેલનું કદ 3.5 ગીગાબાઈટ જેટલું થાય.",
+      "text_markdown": "ચાર બીટમાં, એ જ 7 અબજ પરિમાણોવાળા મોડેલનું કદ 3.5 ગીગાબાઈટ જેટલું થાય.",
+      "title": "",
+      "tts": {
+        "text": "ચાર બીટમાં, એ જ સાત અબજ પરિમાણોવાળા મોડેલનું કદ ત્રણ દશાંશ પાંચ ગીગાબાઈટ જેટલું થાય.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-146",
+      "speaker_id": "analyst",
+      "text": "હવે તે એકદમ યોગ્ય રીતે બંધબેસતું હતું, એકદમ સ્વાભાવિક.",
+      "text_markdown": "હવે તે એકદમ યોગ્ય રીતે બંધબેસતું હતું, એકદમ સ્વાભાવિક.",
+      "title": "",
+      "tts": {
+        "text": "હવે તે એકદમ યોગ્ય રીતે બંધબેસતું હતું, એકદમ સ્વાભાવિક.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-147",
+      "speaker_id": "host",
+      "text": "આ મોડેલ હજુ પણ કામ કરે છે ખરું?",
+      "text_markdown": "આ મોડેલ હજુ પણ કામ કરે છે ખરું?",
+      "title": "",
+      "tts": {
+        "text": "આ મોડેલ હજુ પણ કામ કરે છે ખરું?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "text": "સામાન્ય રીતે હા, માત્ર ગુણવત્તામાં થોડો ઘટાડો રહેશે.",
+      "text_markdown": "સામાન્ય રીતે હા, માત્ર ગુણવત્તામાં થોડો ઘટાડો રહેશે.",
+      "title": "",
+      "tts": {
+        "text": "સામાન્ય રીતે હા, માત્ર ગુણવત્તામાં થોડો ઘટાડો રહેશે.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "text": "યુક્તિનો અર્થ છે પ્રણાલીમાં ચોકસાઈ ક્યાં થોડી ઓછી ચાલવા દેવી, તે સમજદારીપૂર્વક કરેલો નિર્ણય.",
+      "text_markdown": "યુક્તિનો અર્થ છે પ્રણાલીમાં ચોકસાઈ ક્યાં થોડી ઓછી ચાલવા દેવી, તે સમજદારીપૂર્વક કરેલો નિર્ણય.",
+      "title": "",
+      "tts": {
+        "text": "યુક્તિનો અર્થ છે પ્રણાલીમાં ચોકસાઈ ક્યાં થોડી ઓછી ચાલવા દેવી, તે સમજદારીપૂર્વક કરેલો નિર્ણય.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "text": "AWQ — activation-aware weight quantization — સૌથી વધુ મહત્વના ચેનલ્સને ઉચ્ચ ચોકસાઈમાં રાખે છે અને બાકીને દબાવે છે.",
+      "text_markdown": "AWQ — activation-aware weight quantization — સૌથી વધુ મહત્વના ચેનલ્સને ઉચ્ચ ચોકસાઈમાં રાખે છે અને બાકીને દબાવે છે.",
+      "title": "",
+      "tts": {
+        "text": "AWQ — activation aware weight quantization — સૌથી વધુ મહત્વના ચેનલ્સને ઉચ્ચ ચોકસાઈમાં રાખે છે અને બાકીને દબાવે છે.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-151",
+      "speaker_id": "analyst",
+      "text": "GGUF, જે llama.cpp વાપરે છે, તે Q4_K_M જેવા ફોર્મેટ્સ ધરાવે છે જે એક જ મોડેલ ફાઈલમાં ચોકસાઈઓને મિશ્રિત કરે છે.",
+      "text_markdown": "GGUF, જે llama.cpp વાપરે છે, તે Q4_K_M જેવા ફોર્મેટ્સ ધરાવે છે જે એક જ મોડેલ ફાઈલમાં ચોકસાઈઓને મિશ્રિત કરે છે.",
+      "title": "",
+      "tts": {
+        "text": "GGUF, જે llama.cpp વાપરે છે, તે ક્યુ ફોર કે એમ જેવા ફોર્મેટ્સ ધરાવે છે જે એક જ મોડેલ ફાઈલમાં ચોકસાઈઓને મિશ્રિત કરે છે.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-152",
+      "speaker_id": "host",
+      "text": "કોઈ વસ્તુને ખરેખર કેટલી નાની બનાવી શકાય, તેની અંતિમ મર્યાદા શું છે?",
+      "text_markdown": "કોઈ વસ્તુને ખરેખર કેટલી નાની બનાવી શકાય, તેની અંતિમ મર્યાદા શું છે?",
+      "title": "",
+      "tts": {
+        "text": "કોઈ વસ્તુને ખરેખર કેટલી નાની બનાવી શકાય, તેની અંતિમ મર્યાદા શું છે?",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "text": "એપલનું ઉપકરણ પર ચાલતું આધાર મોડેલ હવે દરેક ભારાંક માટે 2 બીટની સપાટીએ આવી પહોંચે છે.",
+      "text_markdown": "એપલનું ઉપકરણ પર ચાલતું આધાર મોડેલ હવે દરેક ભારાંક માટે 2 બીટની સપાટીએ આવી પહોંચે છે.",
+      "title": "",
+      "tts": {
+        "text": "એપલનું ઉપકરણ પર ચાલતું આધાર મોડેલ હવે દરેક ભારાંક માટે બે બીટની સપાટીએ આવી પહોંચે છે.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "text": "તેઓ Quantization-Aware Training વાપરે છે, જ્યાં મોડેલને શરૂઆતથી જ તાલીમ આપવામાં આવે છે તે જાણીને કે તે inference પર 2-બીટ હશે.",
+      "text_markdown": "તેઓ Quantization-Aware Training વાપરે છે, જ્યાં મોડેલને શરૂઆતથી જ તાલીમ આપવામાં આવે છે તે જાણીને કે તે inference પર 2-બીટ હશે.",
+      "title": "",
+      "tts": {
+        "text": "તેઓ Quantization Aware Training વાપરે છે, જ્યાં મોડેલને શરૂઆતથી જ તાલીમ આપવામાં આવે છે તે જાણીને કે તે inference પર બે બીટ હશે.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-155",
+      "speaker_id": "analyst",
+      "text": "તે પછીથી કરાતા સાદાસરળ ગોળીકરણ કરતાં આ ઘણું સારું અને વધુ મજબૂત પરિણામ છે.",
+      "text_markdown": "તે પછીથી કરાતા સાદાસરળ ગોળીકરણ કરતાં આ ઘણું સારું અને વધુ મજબૂત પરિણામ છે.",
+      "title": "",
+      "tts": {
+        "text": "તે પછીથી કરાતા સાદાસરળ ગોળીકરણ કરતાં આ ઘણું સારું અને વધુ મજબૂત પરિણામ છે.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "text": "દરેક પરિમાણને 2 બિટમાં રાખીએ તો લગભગ 3 અબજ પરિમાણો સમાય, એટલે તેનું કદ અંદાજે 750 મેગાબાઇટ બને.",
+      "text_markdown": "દરેક પરિમાણને 2 બિટમાં રાખીએ તો લગભગ 3 અબજ પરિમાણો સમાય, એટલે તેનું કદ અંદાજે 750 મેગાબાઇટ બને.",
+      "title": "",
+      "tts": {
+        "text": "દરેક પરિમાણને બે બિટમાં રાખીએ તો લગભગ ત્રણ અબજ પરિમાણો સમાય, એટલે તેનું કદ અંદાજે સાતસો પચાસ મેગાબાઇટ બને.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "text": "તે વધારાની જગ્યા છોડીને પણ ફોનમાં આરામથી સમાઈ જાય.",
+      "text_markdown": "તે વધારાની જગ્યા છોડીને પણ ફોનમાં આરામથી સમાઈ જાય.",
+      "title": "",
+      "tts": {
+        "text": "તે વધારાની જગ્યા છોડીને પણ ફોનમાં આરામથી સમાઈ જાય.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-158",
+      "speaker_id": "host",
+      "text": "તેથી આ વર્ષે ઉપકરણમાં જ ચાલતી કૃત્રિમ બુદ્ધિ આખરે કેમ ખરેખર ઉપયોગી બની છે, એ વાત હવે સારી રીતે સમજીએ.",
+      "text_markdown": "તેથી આ વર્ષે ઉપકરણમાં જ ચાલતી કૃત્રિમ બુદ્ધિ આખરે કેમ ખરેખર ઉપયોગી બની છે, એ વાત હવે સારી રીતે સમજીએ.",
+      "title": "",
+      "tts": {
+        "text": "તેથી આ વર્ષે ઉપકરણમાં જ ચાલતી કૃત્રિમ બુદ્ધિ આખરે કેમ ખરેખર ઉપયોગી બની છે, એ વાત હવે સારી રીતે સમજીએ.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "text": "મુખ્ય કારણ તરીકે આ બાબત જ ગણાય.",
+      "text_markdown": "મુખ્ય કારણ તરીકે આ બાબત જ ગણાય.",
+      "title": "",
+      "tts": {
+        "text": "મુખ્ય કારણ તરીકે આ બાબત જ ગણાય.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-160",
+      "speaker_id": "analyst",
+      "text": "તમારી સાથે લઈ જવાના ત્રણ શબ્દો છે: AWQ, GGUF, અને Quantization-Aware Training, બસ આ યાદ રાખજો.",
+      "text_markdown": "તમારી સાથે લઈ જવાના ત્રણ શબ્દો છે: AWQ, GGUF, અને Quantization-Aware Training, બસ આ યાદ રાખજો.",
+      "title": "",
+      "tts": {
+        "text": "તમારી સાથે લઈ જવાના ત્રણ શબ્દો છે, એ ડબલ્યુ ક્યુ, જી જી યુ એફ, અને ક્વોન્ટાઇઝેશન અવેર ટ્રેનિંગ, બસ આ યાદ રાખજો.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "text": "જો કોઈ મોડલમાં આ ત્રણેય બાબતો હોય, તો તેને ફોન પર પણ ઉપલબ્ધ જ ગણવું.",
+      "text_markdown": "જો કોઈ મોડલમાં આ ત્રણેય બાબતો હોય, તો તેને ફોન પર પણ ઉપલબ્ધ જ ગણવું.",
+      "title": "",
+      "tts": {
+        "text": "જો કોઈ મોડલમાં આ ત્રણેય બાબતો હોય, તો તેને ફોન પર પણ ઉપલબ્ધ જ ગણવું.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-162",
+      "speaker_id": "host",
+      "text": "ઉતરવા માટે આ યોગ્ય જગ્યા છે.",
+      "text_markdown": "ઉતરવા માટે આ યોગ્ય જગ્યા છે.",
+      "title": "",
+      "tts": {
+        "text": "ઉતરવા માટે આ યોગ્ય જગ્યા છે.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-163",
+      "speaker_id": "host",
+      "text": "રોન, હું તમારો ખૂબ ખૂબ આભારી છું.",
+      "text_markdown": "રોન, હું તમારો ખૂબ ખૂબ આભારી છું.",
+      "title": "",
+      "tts": {
+        "text": "રોન, હું તમારો ખૂબ ખૂબ આભારી છું.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "text": "વિન્ડી, ગમે ત્યારે મને મંજૂર.",
+      "text_markdown": "વિન્ડી, ગમે ત્યારે મને મંજૂર.",
+      "title": "",
+      "tts": {
+        "text": "વિન્ડી, ગમે ત્યારે મને મંજૂર.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "text": "20 મે, 2026 માટેનો એઆઈ ધિસ વીકનો આ અંક અહીં પૂર્ણ થાય છે.",
+      "text_markdown": "20 મે, 2026 માટેનો એઆઈ ધિસ વીકનો આ અંક અહીં પૂર્ણ થાય છે.",
+      "title": "",
+      "tts": {
+        "text": "વીસ મે, બે હજાર છવ્વીસ માટેનો એઆઈ આ સપ્તાહનો આ અંક અહીં પૂર્ણ થાય છે.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-166",
+      "speaker_id": "host",
+      "text": "આગામી બુધવારે નવો અંક.",
+      "text_markdown": "આગામી બુધવારે નવો અંક.",
+      "title": "",
+      "tts": {
+        "text": "આગામી બુધવારે નવો અંક.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-167",
+      "speaker_id": "host",
+      "text": "ત્યાં સુધી, તમે સુખી અને સલામત રહેજો.",
+      "text_markdown": "ત્યાં સુધી, તમે સુખી અને સલામત રહેજો.",
+      "title": "",
+      "tts": {
+        "text": "ત્યાં સુધી, તમે સુખી અને સલામત રહેજો.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

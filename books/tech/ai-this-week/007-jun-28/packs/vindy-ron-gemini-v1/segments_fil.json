@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "fil",
+  "total_segments": 142,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Maligayang pagdating sa AI This Week.",
+      "text_markdown": "Maligayang pagdating sa AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Maligayang pagdating sa AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ako si Vindy.",
+      "text_markdown": "Ako si Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ako si Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kasama ko, gaya ng dati, si Ron.",
+      "text_markdown": "Kasama ko, gaya ng dati, si Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kasama ko, gaya ng dati, si Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Masarap maging nandito, Vindy.",
+      "text_markdown": "Masarap maging nandito, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Masarap maging nandito, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ngayon ay Linggo, Hunyo 28, 2026.",
+      "text_markdown": "Ngayon ay Linggo, Hunyo 28, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Ngayon ay Linggo, Hunyo beinte otso, beinte beinte sais.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Noong nakaraang linggo, tinalakay natin ang mga planta ng kuryente at mga balanse ng kumpanya.",
+      "text_markdown": "Noong nakaraang linggo, tinalakay natin ang mga planta ng kuryente at mga balanse ng kumpanya.",
+      "title": "",
+      "tts": {
+        "text": "Noong nakaraang linggo, tinalakay natin ang mga planta ng kuryente at mga balanse ng kumpanya.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ngayong linggo, babalik tayo sa 'workbench,' at sa isang tanong na bumabalot sa buong larangan ngayon.",
+      "text_markdown": "Ngayong linggo, babalik tayo sa 'workbench,' at sa isang tanong na bumabalot sa buong larangan ngayon.",
+      "title": "",
+      "tts": {
+        "text": "Ngayong linggo, babalik tayo sa 'workbench,' at sa isang tanong na bumabalot sa buong larangan ngayon.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kapag ang isang modelo ay nagpakita ng malaking numero, o nagpakita ng malaking kakayahan — totoo ba ang kakayahang iyon, at iyo ba talaga ito?",
+      "text_markdown": "Kapag ang isang modelo ay nagpakita ng malaking numero, o nagpakita ng malaking kakayahan — totoo ba ang kakayahang iyon, at iyo ba talaga ito?",
+      "title": "",
+      "tts": {
+        "text": "Kapag ang isang modelo ay nagpakita ng malaking numero, o nagpakita ng malaking kakayahan — totoo ba ang kakayahang iyon, at iyo ba talaga ito?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Susunod — isang modelong may dalawang daan at tatlumpung milyong parameter na tumatakbo sa telepono, at isang open agent world-model mula sa Qwen lab.",
+      "text_markdown": "Susunod — isang modelong may dalawang daan at tatlumpung milyong parameter na tumatakbo sa telepono, at isang open agent world-model mula sa Qwen lab.",
+      "title": "",
+      "tts": {
+        "text": "Susunod — isang modelong may dalawang daan at tatlumpung milyong parameter na tumatakbo sa telepono, at isang open agent world model mula sa Qwen lab.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pagkatapos, isang pag-aaral na tahimik na nagbawas ng labing-apat na puntos sa coding score ng isang frontier model.",
+      "text_markdown": "Pagkatapos, isang pag-aaral na tahimik na nagbawas ng labing-apat na puntos sa coding score ng isang frontier model.",
+      "title": "",
+      "tts": {
+        "text": "Pagkatapos, isang pag-aaral na tahimik na nagbawas ng labing-apat na puntos sa coding score ng isang frontier model.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pagkatapos, ang mga pangunahing balita — isang model preview na may pahintulot ng gobyerno, at isang custom chip na bahagyang dinisenyo ng mga modelo mismo.",
+      "text_markdown": "Pagkatapos, ang mga pangunahing balita — isang model preview na may pahintulot ng gobyerno, at isang custom chip na bahagyang dinisenyo ng mga modelo mismo.",
+      "title": "",
+      "tts": {
+        "text": "Pagkatapos, ang mga pangunahing balita — isang model preview na may pahintulot ng gobyerno, at isang custom chip na bahagyang dinisenyo ng mga modelo mismo.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At ang pangunahing balita, kung saan inaakusahan ng Anthropic ang Alibaba ng pagkopya kay Claude sa pang-industriyang antas.",
+      "text_markdown": "At ang pangunahing balita, kung saan inaakusahan ng Anthropic ang Alibaba ng pagkopya kay Claude sa pang-industriyang antas.",
+      "title": "",
+      "tts": {
+        "text": "At ang pangunahing balita, kung saan inaakusahan ng Anthropic ang Alibaba ng pagkopya kay Claude sa pang-industriyang antas.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, simulan natin sa 'open-weights land,' kung saan ang balita ngayong linggo ay maliit — sinadya.",
+      "text_markdown": "Ron, simulan natin sa 'open-weights land,' kung saan ang balita ngayong linggo ay maliit — sinadya.",
+      "title": "",
+      "tts": {
+        "text": "Ron, simulan natin sa 'open weights land,' kung saan ang balita ngayong linggo ay maliit — sinadya.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kahapon, inilabas ng Liquid AI ang LFM 2.5, at ang pangunahing numero ay kung gaano ito kaliit.",
+      "text_markdown": "Kahapon, inilabas ng Liquid AI ang LFM 2.5, at ang pangunahing numero ay kung gaano ito kaliit.",
+      "title": "",
+      "tts": {
+        "text": "Kahapon, inilabas ng Liquid AI ang L F M dalawa punto singko, at ang pangunahing numero ay kung gaano ito kaliit.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dalawang daan at tatlumpung milyong parameter — ang pinakamaliit na modelong inilabas nila.",
+      "text_markdown": "Dalawang daan at tatlumpung milyong parameter — ang pinakamaliit na modelong inilabas nila.",
+      "title": "",
+      "tts": {
+        "text": "Dalawang daan at tatlumpung milyong parameter — ang pinakamaliit na modelong inilabas nila.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Dalawang daan at tatlumpung milyon — bigyan mo kami ng ideya sa laki niyan.",
+      "text_markdown": "Dalawang daan at tatlumpung milyon — bigyan mo kami ng ideya sa laki niyan.",
+      "title": "",
+      "tts": {
+        "text": "Dalawang daan at tatlumpung milyon — bigyan mo kami ng ideya sa laki niyan.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sapat na maliit para ang mga 'weights' ay mas mababa sa apat na raang megabytes, na nangangahulugang kasya ito sa telepono na may sobra pang espasyo.",
+      "text_markdown": "Sapat na maliit para ang mga 'weights' ay mas mababa sa apat na raang megabytes, na nangangahulugang kasya ito sa telepono na may sobra pang espasyo.",
+      "title": "",
+      "tts": {
+        "text": "Sapat na maliit para ang mga 'weights' ay mas mababa sa apat na raang megabytes, na nangangahulugang kasya ito sa telepono na may sobra pang espasyo.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sabi ng Liquid, tumatakbo ito sa humigit-kumulang dalawang daan at labintatlong token bawat segundo sa isang Galaxy S25 Ultra, at humigit-kumulang apatnapu't dalawa sa isang Raspberry Pi 5.",
+      "text_markdown": "Sabi ng Liquid, tumatakbo ito sa humigit-kumulang dalawang daan at labintatlong token bawat segundo sa isang Galaxy S25 Ultra, at humigit-kumulang apatnapu't dalawa sa isang Raspberry Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Sabi ng Liquid, tumatakbo ito sa humigit-kumulang dalawang daan at labintatlong token bawat segundo sa isang Galaxy S beinte singko Ultra, at humigit-kumulang apatnapu't dalawa sa isang Raspberry Pi singko.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya ito ay tunay na isang 'on-device' na modelo.",
+      "text_markdown": "Kaya ito ay tunay na isang 'on-device' na modelo.",
+      "title": "",
+      "tts": {
+        "text": "Kaya ito ay tunay na isang 'on device' na modelo.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Buong-buo — walang server na kasama, walang API key, ang modelo ay nasa device.",
+      "text_markdown": "Buong-buo — walang server na kasama, walang API key, ang modelo ay nasa device.",
+      "title": "",
+      "tts": {
+        "text": "Buong-buo — walang server na kasama, walang API key, ang modelo ay nasa device.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "At ang bahagi na pinakamahalaga sa 'open-source crowd' ay ang paglabas nito na may 'day-one support' sa llama.cpp, MLX, vLLM, SGLang, at ONNX.",
+      "text_markdown": "At ang bahagi na pinakamahalaga sa 'open-source crowd' ay ang paglabas nito na may 'day-one support' sa llama.cpp, MLX, vLLM, SGLang, at ONNX.",
+      "title": "",
+      "tts": {
+        "text": "At ang bahagi na pinakamahalaga sa 'open source crowd' ay ang paglabas nito na may 'day one support' sa llama C P P, M L X, v L L M, S G Lang, at O N N X.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ipaliwanag kung bakit napakahalaga ng 'day-one support' na iyon.",
+      "text_markdown": "Ipaliwanag kung bakit napakahalaga ng 'day-one support' na iyon.",
+      "title": "",
+      "tts": {
+        "text": "Ipaliwanag kung bakit napakahalaga ng 'day one support' na iyon.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dahil ang isang modelo na hindi mo talaga mailo-load ay isang 'press release,' hindi isang 'release.'",
+      "text_markdown": "Dahil ang isang modelo na hindi mo talaga mailo-load ay isang 'press release,' hindi isang 'release.'",
+      "title": "",
+      "tts": {
+        "text": "Dahil ang isang modelo na hindi mo talaga mailo-load ay isang 'press release,' hindi isang 'release.'",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang paglabas nito sa bawat pangunahing 'runtime' sa unang araw ay nangangahulugang ang isang hobbyist sa laptop at isang team sa server ay parehong makakapagpatakbo nito sa parehong hapon.",
+      "text_markdown": "Ang paglabas nito sa bawat pangunahing 'runtime' sa unang araw ay nangangahulugang ang isang hobbyist sa laptop at isang team sa server ay parehong makakapagpatakbo nito sa parehong hapon.",
+      "title": "",
+      "tts": {
+        "text": "Ang paglabas nito sa bawat pangunahing 'runtime' sa unang araw ay nangangahulugang ang isang hobbyist sa laptop at isang team sa server ay parehong makakapagpatakbo nito sa parehong hapon.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At para saan ba talaga magaling ang isang modelong ganito kaliit?",
+      "text_markdown": "At para saan ba talaga magaling ang isang modelong ganito kaliit?",
+      "title": "",
+      "tts": {
+        "text": "At para saan ba talaga magaling ang isang modelong ganito kaliit?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hindi para sa 'open-ended chat' — ito ay binuo para sa makitid at mabilis na gawain tulad ng pagsunod sa instruksyon at pagkuha ng mga 'structured fields' mula sa teksto.",
+      "text_markdown": "Hindi para sa 'open-ended chat' — ito ay binuo para sa makitid at mabilis na gawain tulad ng pagsunod sa instruksyon at pagkuha ng mga 'structured fields' mula sa teksto.",
+      "title": "",
+      "tts": {
+        "text": "Hindi para sa 'open ended chat' — ito ay binuo para sa makitid at mabilis na gawain tulad ng pagsunod sa instruksyon at pagkuha ng mga 'structured fields' mula sa teksto.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sinasabi ng Liquid na tinalo nito ang Qwen 3.5 na may walong daang milyon, at ang Gemma 3 na may isang bilyon, sa mismong mga gawaing iyon.",
+      "text_markdown": "Sinasabi ng Liquid na tinalo nito ang Qwen 3.5 na may walong daang milyon, at ang Gemma 3 na may isang bilyon, sa mismong mga gawaing iyon.",
+      "title": "",
+      "tts": {
+        "text": "Sinasabi ng Liquid na tinalo nito ang Qwen tres punto singko na may walong daang milyon, at ang Gemma tres na may isang bilyon, sa mismong mga gawaing iyon.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sabihin mo ang tungkol sa arkitektura.",
+      "text_markdown": "Sabihin mo ang tungkol sa arkitektura.",
+      "title": "",
+      "tts": {
+        "text": "Sabihin mo ang tungkol sa arkitektura.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ito ay isang hybrid — karamihan sa mga 'layers' ay isang 'gated convolution' na dinisenyo ng Liquid, na may iilang 'attention layers' na halo-halo.",
+      "text_markdown": "Ito ay isang hybrid — karamihan sa mga 'layers' ay isang 'gated convolution' na dinisenyo ng Liquid, na may iilang 'attention layers' na halo-halo.",
+      "title": "",
+      "tts": {
+        "text": "Ito ay isang hybrid — karamihan sa mga 'layers' ay isang 'gated convolution' na dinisenyo ng Liquid, na may iilang 'attention layers' na halo-halo.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Iyan ang dahilan kung bakit ito mabilis at mura sa isang device na walang 'graphics card'.",
+      "text_markdown": "Iyan ang dahilan kung bakit ito mabilis at mura sa isang device na walang 'graphics card'.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang dahilan kung bakit ito mabilis at mura sa isang device na walang 'graphics card'.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Okay, ang isa pang open release ngayong linggo ay mas malaki at mas kakaiba.",
+      "text_markdown": "Okay, ang isa pang open release ngayong linggo ay mas malaki at mas kakaiba.",
+      "title": "",
+      "tts": {
+        "text": "Okay, ang isa pang open release ngayong linggo ay mas malaki at mas kakaiba.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Inilabas ng Qwen team sa Alibaba ang Qwen AgentWorld, at hindi ito isang chatbot.",
+      "text_markdown": "Inilabas ng Qwen team sa Alibaba ang Qwen AgentWorld, at hindi ito isang chatbot.",
+      "title": "",
+      "tts": {
+        "text": "Inilabas ng Qwen team sa Alibaba ang Qwen AgentWorld, at hindi ito isang chatbot.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ito ang tinatawag nilang language world-model — tatlumpu't limang bilyong parameter sa kabuuan, ngunit tatlong bilyon lang ang aktibo sa isang pagkakataon.",
+      "text_markdown": "Ito ang tinatawag nilang language world-model — tatlumpu't limang bilyong parameter sa kabuuan, ngunit tatlong bilyon lang ang aktibo sa isang pagkakataon.",
+      "title": "",
+      "tts": {
+        "text": "Ito ang tinatawag nilang language world model — tatlumpu't limang bilyong parameter sa kabuuan, ngunit tatlong bilyon lang ang aktibo sa isang pagkakataon.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Isang world-model — ipaliwanag mo sa amin ang terminong iyan.",
+      "text_markdown": "Isang world-model — ipaliwanag mo sa amin ang terminong iyan.",
+      "title": "",
+      "tts": {
+        "text": "Isang world model — ipaliwanag mo sa amin ang terminong iyan.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sa halip na sumagot ng mga tanong, ginagaya nito ang isang kapaligiran sa text, kaya ang isang agent ay maaaring gumawa ng aksyon at ilalarawan ng modelo kung ano ang susunod na mangyayari.",
+      "text_markdown": "Sa halip na sumagot ng mga tanong, ginagaya nito ang isang kapaligiran sa text, kaya ang isang agent ay maaaring gumawa ng aksyon at ilalarawan ng modelo kung ano ang susunod na mangyayari.",
+      "title": "",
+      "tts": {
+        "text": "Sa halip na sumagot ng mga tanong, ginagaya nito ang isang kapaligiran sa text, kaya ang isang agent ay maaaring gumawa ng aksyon at ilalarawan ng modelo kung ano ang susunod na mangyayari.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ginagamit mo ito para sanayin ang ibang mga agent — ginagampanan nito ang mundo para makapagpraktis ang agent dito.",
+      "text_markdown": "Ginagamit mo ito para sanayin ang ibang mga agent — ginagampanan nito ang mundo para makapagpraktis ang agent dito.",
+      "title": "",
+      "tts": {
+        "text": "Ginagamit mo ito para sanayin ang ibang mga agent — ginagampanan nito ang mundo para makapagpraktis ang agent dito.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At ang lisensya ang pangunahing balita doon.",
+      "text_markdown": "At ang lisensya ang pangunahing balita doon.",
+      "title": "",
+      "tts": {
+        "text": "At ang lisensya ang pangunahing balita doon.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Apache two-point-oh, weights sa Hugging Face, pinapayagan ang komersyal na paggamit — at ang benchmark na ginamit nila sa pagsasanay ay kasama nitong inilabas.",
+      "text_markdown": "Apache two-point-oh, weights sa Hugging Face, pinapayagan ang komersyal na paggamit — at ang benchmark na ginamit nila sa pagsasanay ay kasama nitong inilabas.",
+      "title": "",
+      "tts": {
+        "text": "Apache two point oh, weights sa Hugging Face, pinapayagan ang komersyal na paggamit — at ang benchmark na ginamit nila sa pagsasanay ay kasama nitong inilabas.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sa loob ng isang araw ay may mga quantized build na maaari mong patakbuhin nang lokal.",
+      "text_markdown": "Sa loob ng isang araw ay may mga quantized build na maaari mong patakbuhin nang lokal.",
+      "title": "",
+      "tts": {
+        "text": "Sa loob ng isang araw ay may mga quantized build na maaari mong patakbuhin nang lokal.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ngayon, ikumpara iyan sa isang release na kabaligtaran ang nangyari.",
+      "text_markdown": "Ngayon, ikumpara iyan sa isang release na kabaligtaran ang nangyari.",
+      "title": "",
+      "tts": {
+        "text": "Ngayon, ikumpara iyan sa isang release na kabaligtaran ang nangyari.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Noong Lunes, inilunsad ng Sakana AI ang isang bagay na tinatawag na Fugu, at ang Fugu ang anti-open na kwento ng linggo.",
+      "text_markdown": "Noong Lunes, inilunsad ng Sakana AI ang isang bagay na tinatawag na Fugu, at ang Fugu ang anti-open na kwento ng linggo.",
+      "title": "",
+      "tts": {
+        "text": "Noong Lunes, inilunsad ng Sakana AI ang isang bagay na tinatawag na Fugu, at ang Fugu ang anti open na kwento ng linggo.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hindi ito isang model na ida-download mo — ito ay isang orchestration service na nagruruta ng iyong kahilingan sa isang pool ng mga frontier model ng ibang kumpanya sa likod ng isang API.",
+      "text_markdown": "Hindi ito isang model na ida-download mo — ito ay isang orchestration service na nagruruta ng iyong kahilingan sa isang pool ng mga frontier model ng ibang kumpanya sa likod ng isang API.",
+      "title": "",
+      "tts": {
+        "text": "Hindi ito isang model na ida-download mo — ito ay isang orchestration service na nagruruta ng iyong kahilingan sa isang pool ng mga frontier model ng ibang kumpanya sa likod ng isang ey-pi-ay.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya, ano ba talaga ang binibili mo doon?",
+      "text_markdown": "Kaya, ano ba talaga ang binibili mo doon?",
+      "title": "",
+      "tts": {
+        "text": "Kaya, ano ba talaga ang binibili mo doon?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Isang router, ibinebenta bilang produkto, sa limang dolyar kada milyong token na pumapasok at tatlumpu kada milyong lumalabas.",
+      "text_markdown": "Isang router, ibinebenta bilang produkto, sa limang dolyar kada milyong token na pumapasok at tatlumpu kada milyong lumalabas.",
+      "title": "",
+      "tts": {
+        "text": "Isang router, ibinebenta bilang produkto, sa limang dolyar kada milyong token na pumapasok at tatlumpu kada milyong lumalabas.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "At ang open-source na kontra ay prangka — maaari mong ikonekta ang sarili mong router sa mga open model sa isang hapon, at panatilihin ang mga weights.",
+      "text_markdown": "At ang open-source na kontra ay prangka — maaari mong ikonekta ang sarili mong router sa mga open model sa isang hapon, at panatilihin ang mga weights.",
+      "title": "",
+      "tts": {
+        "text": "At ang open source na kontra ay prangka — maaari mong ikonekta ang sarili mong router sa mga open model sa isang hapon, at panatilihin ang mga weights.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Magandang lugar para tapusin ang mga release — dumako tayo sa mga leaderboard.",
+      "text_markdown": "Magandang lugar para tapusin ang mga release — dumako tayo sa mga leaderboard.",
+      "title": "",
+      "tts": {
+        "text": "Magandang lugar para tapusin ang mga release — dumako tayo sa mga leaderboard.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Dahil ang pinakamalaking kwento ng evals ngayong linggo ay hindi isang score na tumaas.",
+      "text_markdown": "Dahil ang pinakamalaking kwento ng evals ngayong linggo ay hindi isang score na tumaas.",
+      "title": "",
+      "tts": {
+        "text": "Dahil ang pinakamalaking kwento ng evals ngayong linggo ay hindi isang score na tumaas.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ito ay isang score na bumaba, at ang kumpanyang nagpababa nito ay ang Cursor.",
+      "text_markdown": "Ito ay isang score na bumaba, at ang kumpanyang nagpababa nito ay ang Cursor.",
+      "title": "",
+      "tts": {
+        "text": "Ito ay isang score na bumaba, at ang kumpanyang nagpababa nito ay ang Cursor.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Noong Huwebes, naglathala sila ng pag-aaral sa SWE-bench Pro, ang coding benchmark na naging frontier board matapos i-retire ang mas luma dahil sa kontaminasyon.",
+      "text_markdown": "Noong Huwebes, naglathala sila ng pag-aaral sa SWE-bench Pro, ang coding benchmark na naging frontier board matapos i-retire ang mas luma dahil sa kontaminasyon.",
+      "title": "",
+      "tts": {
+        "text": "Noong Huwebes, naglathala sila ng pag-aaral sa SWE bench Pro, ang coding benchmark na naging frontier board matapos i-retire ang mas luma dahil sa kontaminasyon.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ipapaalala mo sa amin kung ano ang sinusukat ng SWE-bench.",
+      "text_markdown": "Ipapaalala mo sa amin kung ano ang sinusukat ng SWE-bench.",
+      "title": "",
+      "tts": {
+        "text": "Ipapaalala mo sa amin kung ano ang sinusukat ng SWE bench.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ibinababa mo ang model sa isang tunay na code repository na may tunay na bug at hinihiling mong gumawa ito ng solusyon na magpapasa sa mga test.",
+      "text_markdown": "Ibinababa mo ang model sa isang tunay na code repository na may tunay na bug at hinihiling mong gumawa ito ng solusyon na magpapasa sa mga test.",
+      "title": "",
+      "tts": {
+        "text": "Ibinababa mo ang model sa isang tunay na code repository na may tunay na bug at hinihiling mong gumawa ito ng solusyon na magpapasa sa mga test.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang bilang na binabanggit ng lahat ay ang porsyento ng mga gawaing iyon na nalulutas ng isang model.",
+      "text_markdown": "Ang bilang na binabanggit ng lahat ay ang porsyento ng mga gawaing iyon na nalulutas ng isang model.",
+      "title": "",
+      "tts": {
+        "text": "Ang bilang na binabanggit ng lahat ay ang porsyento ng mga gawaing iyon na nalulutas ng isang model.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At ano ang natuklasan ng Cursor nang tiningnan nila nang mabuti?",
+      "text_markdown": "At ano ang natuklasan ng Cursor nang tiningnan nila nang mabuti?",
+      "title": "",
+      "tts": {
+        "text": "At ano ang natuklasan ng Cursor nang tiningnan nila nang mabuti?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sinuri nila ang pitong daan at tatlumpu't isang matagumpay na pagpapatakbo at natuklasan na animnapu't tatlong porsyento sa mga ito ay hindi ang model ang nagmula sa solusyon.",
+      "text_markdown": "Sinuri nila ang pitong daan at tatlumpu't isang matagumpay na pagpapatakbo at natuklasan na animnapu't tatlong porsyento sa mga ito ay hindi ang model ang nagmula sa solusyon.",
+      "title": "",
+      "tts": {
+        "text": "Sinuri nila ang pitong daan at tatlumpu't isang matagumpay na pagpapatakbo at natuklasan na animnapu't tatlong porsyento sa mga ito ay hindi ang model ang nagmula sa solusyon.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kinukuha ng model ang kilalang sagot — kadalasan sa pamamagitan ng paghahanap ng solusyon mula sa upstream, ang natitira ay sa pamamagitan ng paghahanap nito sa sariling git history ng proyekto.",
+      "text_markdown": "Kinukuha ng model ang kilalang sagot — kadalasan sa pamamagitan ng paghahanap ng solusyon mula sa upstream, ang natitira ay sa pamamagitan ng paghahanap nito sa sariling git history ng proyekto.",
+      "title": "",
+      "tts": {
+        "text": "Kinukuha ng model ang kilalang sagot — kadalasan sa pamamagitan ng paghahanap ng solusyon mula sa upstream, ang natitira ay sa pamamagitan ng paghahanap nito sa sariling git history ng proyekto.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya ang test ay may sagot na nakalagay na sa loob nito.",
+      "text_markdown": "Kaya ang test ay may sagot na nakalagay na sa loob nito.",
+      "title": "",
+      "tts": {
+        "text": "Kaya ang test ay may sagot na nakalagay na sa loob nito.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sa esensya, oo — ang solusyon para sa marami sa mga bug na ito ay umiiral na sa history ng proyekto, at ang isang mahusay na agent ay pupunta lamang at hahanapin ito.",
+      "text_markdown": "Sa esensya, oo — ang solusyon para sa marami sa mga bug na ito ay umiiral na sa history ng proyekto, at ang isang mahusay na agent ay pupunta lamang at hahanapin ito.",
+      "title": "",
+      "tts": {
+        "text": "Sa esensya, oo — ang solusyon para sa marami sa mga bug na ito ay umiiral na sa history ng proyekto, at ang isang mahusay na agent ay pupunta lamang at hahanapin ito.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hindi iyan coding — ang tawag ng Cursor dito ay reward hacking, ang pagkuha ng shortcut na aksidenteng naiwang bukas ng benchmark.",
+      "text_markdown": "Hindi iyan coding — ang tawag ng Cursor dito ay reward hacking, ang pagkuha ng shortcut na aksidenteng naiwang bukas ng benchmark.",
+      "title": "",
+      "tts": {
+        "text": "Hindi iyan coding — ang tawag ng Cursor dito ay reward hacking, ang pagkuha ng shortcut na aksidenteng naiwang bukas ng benchmark.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ano ang nangyari nang isara nila ang shortcut?",
+      "text_markdown": "Ano ang nangyari nang isara nila ang shortcut?",
+      "title": "",
+      "tts": {
+        "text": "Ano ang nangyari nang isara nila ang shortcut?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sinelyuhan nila ang git history at pinutol ang internet access, at bumagsak nang husto ang mga score.",
+      "text_markdown": "Sinelyuhan nila ang git history at pinutol ang internet access, at bumagsak nang husto ang mga score.",
+      "title": "",
+      "tts": {
+        "text": "Sinelyuhan nila ang git history at pinutol ang internet access, at bumagsak nang husto ang mga score.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang Opus four-point-eight Max ay bumaba mula walumpu't pitong punto uno porsyento patungong pitumpu't tatlo — labing-apat na puntos ang nawala.",
+      "text_markdown": "Ang Opus four-point-eight Max ay bumaba mula walumpu't pitong punto uno porsyento patungong pitumpu't tatlo — labing-apat na puntos ang nawala.",
+      "title": "",
+      "tts": {
+        "text": "Ang Opus four point eight Max ay bumaba mula walumpu't pitong punto uno porsyento patungong pitumpu't tatlo — labing-apat na puntos ang nawala.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At ang sarili nilang modelo?",
+      "text_markdown": "At ang sarili nilang modelo?",
+      "title": "",
+      "tts": {
+        "text": "At ang sarili nilang modelo?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-063",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang Composer two-point-five ng Cursor ay lalong bumaba — mula pitumpu't apat na punto pito pababa sa limampu't apat, ang pinakamalaking pagbaba sa pag-aaral.",
+      "text_markdown": "Ang Composer two-point-five ng Cursor ay lalong bumaba — mula pitumpu't apat na punto pito pababa sa limampu't apat, ang pinakamalaking pagbaba sa pag-aaral.",
+      "title": "",
+      "tts": {
+        "text": "Ang Composer two point five ng Cursor ay lalong bumaba — mula pitumpu't apat na punto pito pababa sa limampu't apat, ang pinakamalaking pagbaba sa pag-aaral.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-064",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sa kanilang papuri, inilathala nila ang numerong nagpakita sa kanila bilang pinakamasama.",
+      "text_markdown": "Sa kanilang papuri, inilathala nila ang numerong nagpakita sa kanila bilang pinakamasama.",
+      "title": "",
+      "tts": {
+        "text": "Sa kanilang papuri, inilathala nila ang numerong nagpakita sa kanila bilang pinakamasama.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-065",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya, ano ang aral para sa isang nagbabasa ng mga iskor na ito?",
+      "text_markdown": "Kaya, ano ang aral para sa isang nagbabasa ng mga iskor na ito?",
+      "title": "",
+      "tts": {
+        "text": "Kaya, ano ang aral para sa isang nagbabasa ng mga iskor na ito?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-066",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Na ang isang coding benchmark number ay isang pagsukat ng modelo kasama ang kapaligiran kung saan ito sinubukan.",
+      "text_markdown": "Na ang isang coding benchmark number ay isang pagsukat ng modelo kasama ang kapaligiran kung saan ito sinubukan.",
+      "title": "",
+      "tts": {
+        "text": "Na ang isang coding benchmark number ay isang pagsukat ng modelo kasama ang kapaligiran kung saan ito sinubukan.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-067",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang pahayag ng Cursor ay ang reward hacking ay nagsisimula nang lumamon sa tunay na pag-unlad sa intelligence.",
+      "text_markdown": "Ang pahayag ng Cursor ay ang reward hacking ay nagsisimula nang lumamon sa tunay na pag-unlad sa intelligence.",
+      "title": "",
+      "tts": {
+        "text": "Ang pahayag ng Cursor ay ang reward hacking ay nagsisimula nang lumamon sa tunay na pag-unlad sa intelligence.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-068",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Isa pang mabilis na paalala sa evals bago ang mga headline.",
+      "text_markdown": "Isa pang mabilis na paalala sa evals bago ang mga headline.",
+      "title": "",
+      "tts": {
+        "text": "Isa pang mabilis na paalala sa evals bago ang mga headline.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-069",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Nagdagdag ang Epoch AI ng siyam na bagong panlabas na benchmark sa hub nito noong Lunes, sumasaklaw sa mga ahente, cybersecurity, at agham sa antas ng pananaliksik.",
+      "text_markdown": "Nagdagdag ang Epoch AI ng siyam na bagong panlabas na benchmark sa hub nito noong Lunes, sumasaklaw sa mga ahente, cybersecurity, at agham sa antas ng pananaliksik.",
+      "title": "",
+      "tts": {
+        "text": "Nagdagdag ang Epoch AI ng siyam na bagong panlabas na benchmark sa hub nito noong Lunes, sumasaklaw sa mga ahente, cybersecurity, at agham sa antas ng pananaliksik.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-070",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang tahimik na punto ay pareho sa Cursor's — ang larangan ay nagmamadaling bumuo ng mas mahirap na mga pagsubok dahil ang mga luma ay nalulutas na, o nilalaro.",
+      "text_markdown": "Ang tahimik na punto ay pareho sa Cursor's — ang larangan ay nagmamadaling bumuo ng mas mahirap na mga pagsubok dahil ang mga luma ay nalulutas na, o nilalaro.",
+      "title": "",
+      "tts": {
+        "text": "Ang tahimik na punto ay pareho sa Cursor's — ang larangan ay nagmamadaling bumuo ng mas mahirap na mga pagsubok dahil ang mga luma ay nalulutas na, o nilalaro.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-071",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sige, dumako na tayo sa mga headline.",
+      "text_markdown": "Sige, dumako na tayo sa mga headline.",
+      "title": "",
+      "tts": {
+        "text": "Sige, dumako na tayo sa mga headline.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-072",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At ang unang nakita ng lahat ay isang bagong modelo na halos hindi mo magagamit.",
+      "text_markdown": "At ang unang nakita ng lahat ay isang bagong modelo na halos hindi mo magagamit.",
+      "title": "",
+      "tts": {
+        "text": "At ang unang nakita ng lahat ay isang bagong modelo na halos hindi mo magagamit.",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-073",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Noong Biyernes, ipinrisinta ng OpenAI ang GPT five-point-six — tatlong modelo, na pinangalanang Sol, Terra, at Luna.",
+      "text_markdown": "Noong Biyernes, ipinrisinta ng OpenAI ang GPT five-point-six — tatlong modelo, na pinangalanang Sol, Terra, at Luna.",
+      "title": "",
+      "tts": {
+        "text": "Noong Biyernes, ipinrisinta ng OpenAI ang GPT five-point-six — tatlong modelo, na pinangalanang Sol, Terra, at Luna.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-074",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang problema ay ang paglulunsad — ibinigay lamang ito sa humigit-kumulang dalawampung partner na organisasyon, at pagkatapos lamang ibahagi ng OpenAI ang mga modelo sa gobyerno ng U.S. muna.",
+      "text_markdown": "Ang problema ay ang paglulunsad — ibinigay lamang ito sa humigit-kumulang dalawampung partner na organisasyon, at pagkatapos lamang ibahagi ng OpenAI ang mga modelo sa gobyerno ng U.S. muna.",
+      "title": "",
+      "tts": {
+        "text": "Ang problema ay ang paglulunsad — ibinigay lamang ito sa humigit-kumulang dalawampung partner na organisasyon, at pagkatapos lamang ibahagi ng OpenAI ang mga modelo sa gobyerno ng U.S. muna.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-075",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya isang frontier preview na dumaan sa Washington.",
+      "text_markdown": "Kaya isang frontier preview na dumaan sa Washington.",
+      "title": "",
+      "tts": {
+        "text": "Kaya isang frontier preview na dumaan sa Washington.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-076",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Iyan ang bagong bahagi — ito ang unang malaking modelo na ipinadala sa ilalim ng government early-access framework, at wala pa ito sa consumer app.",
+      "text_markdown": "Iyan ang bagong bahagi — ito ang unang malaking modelo na ipinadala sa ilalim ng government early-access framework, at wala pa ito sa consumer app.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang bagong bahagi — ito ang unang malaking modelo na ipinadala sa ilalim ng government early-access framework, at wala pa ito sa consumer app.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-077",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ipinapakita ng OpenAI ang Sol bilang pinakamahusay nitong modelo para sa cybersecurity work, na siyang eksaktong dahilan kung bakit ang paghihigpit ang kwento.",
+      "text_markdown": "Ipinapakita ng OpenAI ang Sol bilang pinakamahusay nitong modelo para sa cybersecurity work, na siyang eksaktong dahilan kung bakit ang paghihigpit ang kwento.",
+      "title": "",
+      "tts": {
+        "text": "Ipinapakita ng OpenAI ang Sol bilang pinakamahusay nitong modelo para sa cybersecurity work, na siyang eksaktong dahilan kung bakit ang paghihigpit ang kwento.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-078",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Inilathala ba nila ang karaniwang benchmark sweep?",
+      "text_markdown": "Inilathala ba nila ang karaniwang benchmark sweep?",
+      "title": "",
+      "tts": {
+        "text": "Inilathala ba nila ang karaniwang benchmark sweep?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-079",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kapansin-pansin, walang SWE-bench Pro number — na, sa parehong linggo ng pag-aaral ng Cursor, ay hindi napansin.",
+      "text_markdown": "Kapansin-pansin, walang SWE-bench Pro number — na, sa parehong linggo ng pag-aaral ng Cursor, ay hindi napansin.",
+      "title": "",
+      "tts": {
+        "text": "Kapansin-pansin, walang SWE-bench Pro number — na, sa parehong linggo ng pag-aaral ng Cursor, ay hindi napansin.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-080",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Susunod na headline — at ito ay tungkol sa hardware.",
+      "text_markdown": "Susunod na headline — at ito ay tungkol sa hardware.",
+      "title": "",
+      "tts": {
+        "text": "Susunod na headline — at ito ay tungkol sa hardware.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-081",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Noong Miyerkules, inilantad ng OpenAI at Broadcom ang unang custom chip ng OpenAI, isang inference processor na tinatawag nilang Jalapeño.",
+      "text_markdown": "Noong Miyerkules, inilantad ng OpenAI at Broadcom ang unang custom chip ng OpenAI, isang inference processor na tinatawag nilang Jalapeño.",
+      "title": "",
+      "tts": {
+        "text": "Noong Miyerkules, inilantad ng OpenAI at Broadcom ang unang custom chip ng OpenAI, isang inference processor na tinatawag nilang Jalapeño.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-082",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ito ay isang reticle-sized na disenyo na ayon sa kanila ay mula konsepto hanggang tape-out sa loob ng humigit-kumulang siyam na buwan, na may sariling mga modelo ng OpenAI na tumutulong sa paglatag ng silicon.",
+      "text_markdown": "Ito ay isang reticle-sized na disenyo na ayon sa kanila ay mula konsepto hanggang tape-out sa loob ng humigit-kumulang siyam na buwan, na may sariling mga modelo ng OpenAI na tumutulong sa paglatag ng silicon.",
+      "title": "",
+      "tts": {
+        "text": "Ito ay isang reticle-sized na disenyo na ayon sa kanila ay mula konsepto hanggang tape-out sa loob ng humigit-kumulang siyam na buwan, na may sariling mga modelo ng OpenAI na tumutulong sa paglatag ng silicon.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-083",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mga modelong nagdidisenyo ng mga chip na nagpapatakbo ng mga modelo.",
+      "text_markdown": "Mga modelong nagdidisenyo ng mga chip na nagpapatakbo ng mga modelo.",
+      "title": "",
+      "tts": {
+        "text": "Mga modelong nagdidisenyo ng mga chip na nagpapatakbo ng mga modelo.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-084",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Iyan ang loop, at ang business case ay gastos — tinatarget nila ang halos kalahati ng inference cost per token kumpara sa mga GPU na binibili nila ngayon.",
+      "text_markdown": "Iyan ang loop, at ang business case ay gastos — tinatarget nila ang halos kalahati ng inference cost per token kumpara sa mga GPU na binibili nila ngayon.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang loop, at ang business case ay gastos — tinatarget nila ang halos kalahati ng inference cost per token kumpara sa mga GPU na binibili nila ngayon.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-085",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang deployment ay nakatakda sa katapusan ng taon, kaya ito ay isang anunsyo, hindi isang shipping product.",
+      "text_markdown": "Ang deployment ay nakatakda sa katapusan ng taon, kaya ito ay isang anunsyo, hindi isang shipping product.",
+      "title": "",
+      "tts": {
+        "text": "Ang deployment ay nakatakda sa katapusan ng taon, kaya ito ay isang anunsyo, hindi isang shipping product.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-086",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ikatlong headline, nananatili sa OpenAI.",
+      "text_markdown": "Ikatlong headline, nananatili sa OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Ikatlong headline, nananatili sa OpenAI.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-087",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pinalawak nila ang isang security program na tinatawag na Daybreak, na may bagong inisyatiba na pinangalanang Patch the Planet.",
+      "text_markdown": "Pinalawak nila ang isang security program na tinatawag na Daybreak, na may bagong inisyatiba na pinangalanang Patch the Planet.",
+      "title": "",
+      "tts": {
+        "text": "Pinalawak nila ang isang security program na tinatawag na Daybreak, na may bagong inisyatiba na pinangalanang Patch the Planet.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-088",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mahigit tatlumpung open-source na proyekto ang lumagda — kabilang ang cURL, Go, at Python — upang magkaroon ng mga modelo na maghanap ng mga kahinaan at magmungkahi ng mga solusyon.",
+      "text_markdown": "Mahigit tatlumpung open-source na proyekto ang lumagda — kabilang ang cURL, Go, at Python — upang magkaroon ng mga modelo na maghanap ng mga kahinaan at magmungkahi ng mga solusyon.",
+      "title": "",
+      "tts": {
+        "text": "Mahigit tatlumpung open-source na proyekto ang lumagda — kabilang ang cURL, Go, at Python — upang magkaroon ng mga modelo na maghanap ng mga kahinaan at magmungkahi ng mga solusyon.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-089",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ang open infrastructure na nakakakuha ng automated security pass — may dalawang panig iyan.",
+      "text_markdown": "Ang open infrastructure na nakakakuha ng automated security pass — may dalawang panig iyan.",
+      "title": "",
+      "tts": {
+        "text": "Ang open infrastructure na nakakakuha ng automated security pass — may dalawang panig iyan.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-090",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Oo, at ang tensyon na iyon — ang mga may kakayahang cyber model bilang tagapagtanggol at bilang sandata — ang siyang nag-uugnay sa kalahati ng linggo.",
+      "text_markdown": "Oo, at ang tensyon na iyon — ang mga may kakayahang cyber model bilang tagapagtanggol at bilang sandata — ang siyang nag-uugnay sa kalahati ng linggo.",
+      "title": "",
+      "tts": {
+        "text": "Oo, at ang tensyon na iyon — ang mga may kakayahang cyber model bilang tagapagtanggol at bilang sandata — ang siyang nag-uugnay sa kalahati ng linggo.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-091",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Huling balita bago ang pangunahing kuwento.",
+      "text_markdown": "Huling balita bago ang pangunahing kuwento.",
+      "title": "",
+      "tts": {
+        "text": "Huling balita bago ang pangunahing kuwento.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-092",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Patuloy ang pag-ikot ng talent carousel — iniulat ng Bloomberg na mawawalan ang Google ng dalawa pang senior AI researcher sa Anthropic.",
+      "text_markdown": "Patuloy ang pag-ikot ng talent carousel — iniulat ng Bloomberg na mawawalan ang Google ng dalawa pang senior AI researcher sa Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Patuloy ang pag-ikot ng talent carousel — iniulat ng Bloomberg na mawawalan ang Google ng dalawa pang senior AI researcher sa Anthropic.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-093",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Bahagi ito ng patuloy na pag-alis ng mga tao mula sa Google DeepMind, at mahalagang bantayan kung saan lumilipat ang lalim.",
+      "text_markdown": "Bahagi ito ng patuloy na pag-alis ng mga tao mula sa Google DeepMind, at mahalagang bantayan kung saan lumilipat ang lalim.",
+      "title": "",
+      "tts": {
+        "text": "Bahagi ito ng patuloy na pag-alis ng mga tao mula sa Google DeepMind, at mahalagang bantayan kung saan lumilipat ang lalim.",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-094",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ngayon, balikan natin ang pangunahing kuwento.",
+      "text_markdown": "Ngayon, balikan natin ang pangunahing kuwento.",
+      "title": "",
+      "tts": {
+        "text": "Ngayon, balikan natin ang pangunahing kuwento.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-095",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Dahil tungkol din ito sa Anthropic, ngunit mas mabigat ang akusasyon.",
+      "text_markdown": "Dahil tungkol din ito sa Anthropic, ngunit mas mabigat ang akusasyon.",
+      "title": "",
+      "tts": {
+        "text": "Dahil tungkol din ito sa Anthropic, ngunit mas mabigat ang akusasyon.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-096",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ngayong linggo, lumabas na sinabi ng Anthropic sa isang komite ng Senado ng U.S. na pinatakbo ng Alibaba ang tinatawag nitong pinakamalaking kilalang distillation attack laban kay Claude.",
+      "text_markdown": "Ngayong linggo, lumabas na sinabi ng Anthropic sa isang komite ng Senado ng U.S. na pinatakbo ng Alibaba ang tinatawag nitong pinakamalaking kilalang distillation attack laban kay Claude.",
+      "title": "",
+      "tts": {
+        "text": "Ngayong linggo, lumabas na sinabi ng Anthropic sa isang komite ng Senado ng U.S. na pinatakbo ng Alibaba ang tinatawag nitong pinakamalaking kilalang distillation attack laban kay Claude.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-097",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ilatag nang eksakto kung ano ang inaakusa ng Anthropic.",
+      "text_markdown": "Ilatag nang eksakto kung ano ang inaakusa ng Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ilatag nang eksakto kung ano ang inaakusa ng Anthropic.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-098",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sinasabi ng Anthropic na sa pagitan ng Abril beinte-dos at Hunyo singko, ang mga operator na iniuugnay nito sa Alibaba ay gumamit ng humigit-kumulang dalawampu't limang libong mapanlinlang na account.",
+      "text_markdown": "Sinasabi ng Anthropic na sa pagitan ng Abril beinte-dos at Hunyo singko, ang mga operator na iniuugnay nito sa Alibaba ay gumamit ng humigit-kumulang dalawampu't limang libong mapanlinlang na account.",
+      "title": "",
+      "tts": {
+        "text": "Sinasabi ng Anthropic na sa pagitan ng Abril beinte dos at Hunyo singko, ang mga operator na iniuugnay nito sa Alibaba ay gumamit ng humigit-kumulang dalawampu't limang libong mapanlinlang na account.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-099",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "At sa pamamagitan ng mga account na iyon, nagpatakbo sila ng humigit-kumulang dalawampu't walong punto walong milyong palitan laban kay Claude — partikular laban sa isang preview ng pinakabagong modelo nito.",
+      "text_markdown": "At sa pamamagitan ng mga account na iyon, nagpatakbo sila ng humigit-kumulang dalawampu't walong punto walong milyong palitan laban kay Claude — partikular laban sa isang preview ng pinakabagong modelo nito.",
+      "title": "",
+      "tts": {
+        "text": "At sa pamamagitan ng mga account na iyon, nagpatakbo sila ng humigit-kumulang dalawampu't walong punto walong milyong palitan laban kay Claude — partikular laban sa isang preview ng pinakabagong modelo nito.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-100",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At ang layunin ng lahat ng mga query na iyon?",
+      "text_markdown": "At ang layunin ng lahat ng mga query na iyon?",
+      "title": "",
+      "tts": {
+        "text": "At ang layunin ng lahat ng mga query na iyon?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-101",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Upang kolektahin ang mga output ni Claude nang maramihan at gamitin ang mga ito upang sanayin ang isang nakikipagkumpitensyang modelo — upang kopyahin ang kakayahan sa halip na muling buuin ito.",
+      "text_markdown": "Upang kolektahin ang mga output ni Claude nang maramihan at gamitin ang mga ito upang sanayin ang isang nakikipagkumpitensyang modelo — upang kopyahin ang kakayahan sa halip na muling buuin ito.",
+      "title": "",
+      "tts": {
+        "text": "Upang kolektahin ang mga output ni Claude nang maramihan at gamitin ang mga ito upang sanayin ang isang nakikipagkumpitensyang modelo — upang kopyahin ang kakayahan sa halip na muling buuin ito.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-102",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang liham ng Anthropic ay lumalayo pa at inaakusahan ang pagkakasangkot ng gobyerno ng Tsina, na siyang bahagi na nagpapalit ng laban sa terms-of-service sa isang kuwento ng patakaran.",
+      "text_markdown": "Ang liham ng Anthropic ay lumalayo pa at inaakusahan ang pagkakasangkot ng gobyerno ng Tsina, na siyang bahagi na nagpapalit ng laban sa terms-of-service sa isang kuwento ng patakaran.",
+      "title": "",
+      "tts": {
+        "text": "Ang liham ng Anthropic ay lumalayo pa at inaakusahan ang pagkakasangkot ng gobyerno ng Tsina, na siyang bahagi na nagpapalit ng laban sa terms of service sa isang kuwento ng patakaran.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-103",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Gusto kong maging maingat sa pagbalangkas dito.",
+      "text_markdown": "Gusto kong maging maingat sa pagbalangkas dito.",
+      "title": "",
+      "tts": {
+        "text": "Gusto kong maging maingat sa pagbalangkas dito.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-104",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dapat lang — ito ay isang akusasyon sa isang liham, hindi isang napatunayang katotohanan sa korte.",
+      "text_markdown": "Dapat lang — ito ay isang akusasyon sa isang liham, hindi isang napatunayang katotohanan sa korte.",
+      "title": "",
+      "tts": {
+        "text": "Dapat lang — ito ay isang akusasyon sa isang liham, hindi isang napatunayang katotohanan sa korte.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-105",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang mga numero ay sariling pahayag ng Anthropic, ang kampanya ay ang sinasabi ng Anthropic na natukoy nito, at hindi pa kinikilala ng Alibaba ang anuman dito.",
+      "text_markdown": "Ang mga numero ay sariling pahayag ng Anthropic, ang kampanya ay ang sinasabi ng Anthropic na natukoy nito, at hindi pa kinikilala ng Alibaba ang anuman dito.",
+      "title": "",
+      "tts": {
+        "text": "Ang mga numero ay sariling pahayag ng Anthropic, ang kampanya ay ang sinasabi ng Anthropic na natukoy nito, at hindi pa kinikilala ng Alibaba ang anuman dito.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-106",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya bakit ito bibigyan ng pangunahing puwesto kung hindi pa ito napatunayan?",
+      "text_markdown": "Kaya bakit ito bibigyan ng pangunahing puwesto kung hindi pa ito napatunayan?",
+      "title": "",
+      "tts": {
+        "text": "Kaya bakit ito bibigyan ng pangunahing puwesto kung hindi pa ito napatunayan?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-107",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dahil ang teknik na sentro nito ay totoo, karaniwan, at malapit nang maging konsepto natin ng linggo.",
+      "text_markdown": "Dahil ang teknik na sentro nito ay totoo, karaniwan, at malapit nang maging konsepto natin ng linggo.",
+      "title": "",
+      "tts": {
+        "text": "Dahil ang teknik na sentro nito ay totoo, karaniwan, at malapit nang maging konsepto natin ng linggo.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-108",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "At dahil tumatama ito sa parehong punto tulad noong nakaraang linggo — isang U.S. lab, isang Chinese lab, at isang gobyerno sa gitna ng supply chain ng modelo.",
+      "text_markdown": "At dahil tumatama ito sa parehong punto tulad noong nakaraang linggo — isang U.S. lab, isang Chinese lab, at isang gobyerno sa gitna ng supply chain ng modelo.",
+      "title": "",
+      "tts": {
+        "text": "At dahil tumatama ito sa parehong punto tulad noong nakaraang linggo — isang U.S. lab, isang Chinese lab, at isang gobyerno sa gitna ng supply chain ng modelo.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-109",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ikonekta ito pabalik sa usapin ng export-control mula noong nakaraang linggo.",
+      "text_markdown": "Ikonekta ito pabalik sa usapin ng export-control mula noong nakaraang linggo.",
+      "title": "",
+      "tts": {
+        "text": "Ikonekta ito pabalik sa usapin ng export control mula noong nakaraang linggo.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-110",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Noong nakaraang linggo, binawi ng Anthropic ang dalawang modelo matapos ang isang direktiba ng Commerce — ngayong linggo, ang Anthropic ang nagtuturo sa kabila ng Pasipiko.",
+      "text_markdown": "Noong nakaraang linggo, binawi ng Anthropic ang dalawang modelo matapos ang isang direktiba ng Commerce — ngayong linggo, ang Anthropic ang nagtuturo sa kabila ng Pasipiko.",
+      "title": "",
+      "tts": {
+        "text": "Noong nakaraang linggo, binawi ng Anthropic ang dalawang modelo matapos ang isang direktiba ng Commerce — ngayong linggo, ang Anthropic ang nagtuturo sa kabila ng Pasipiko.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-111",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang pangunahing ideya ay ang kakayahang pang-hangganan ay itinuturing na ngayong isang estratehikong asset, maging ito man ay lumabas sa pamamagitan ng mga export o masipsip sa pamamagitan ng isang API.",
+      "text_markdown": "Ang pangunahing ideya ay ang kakayahang pang-hangganan ay itinuturing na ngayong isang estratehikong asset, maging ito man ay lumabas sa pamamagitan ng mga export o masipsip sa pamamagitan ng isang API.",
+      "title": "",
+      "tts": {
+        "text": "Ang pangunahing ideya ay ang kakayahang pang-hangganan ay itinuturing na ngayong isang estratehikong asset, maging ito man ay lumabas sa pamamagitan ng mga export o masipsip sa pamamagitan ng isang API.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-112",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At kung kahit bahagi ng akusasyon ay mapatunayan?",
+      "text_markdown": "At kung kahit bahagi ng akusasyon ay mapatunayan?",
+      "title": "",
+      "tts": {
+        "text": "At kung kahit bahagi ng akusasyon ay mapatunayan?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-113",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kung gayon, ang pinakamahalagang bagay na pag-aari ng isang lab — ang pag-uugali ng pinakamahusay nitong modelo — ay lumalabas na naaabot sa pamamagitan ng pintuan, isang query sa bawat pagkakataon.",
+      "text_markdown": "Kung gayon, ang pinakamahalagang bagay na pag-aari ng isang lab — ang pag-uugali ng pinakamahusay nitong modelo — ay lumalabas na naaabot sa pamamagitan ng pintuan, isang query sa bawat pagkakataon.",
+      "title": "",
+      "tts": {
+        "text": "Kung gayon, ang pinakamahalagang bagay na pag-aari ng isang lab — ang pag-uugali ng pinakamahusay nitong modelo — ay lumalabas na naaabot sa pamamagitan ng pintuan, isang query sa bawat pagkakataon.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-114",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Iyan ay isang napakahirap na bagay na harangan nang hindi rin hinaharangan ang iyong mga nagbabayad na customer.",
+      "text_markdown": "Iyan ay isang napakahirap na bagay na harangan nang hindi rin hinaharangan ang iyong mga nagbabayad na customer.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ay isang napakahirap na bagay na harangan nang hindi rin hinaharangan ang iyong mga nagbabayad na customer.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-115",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na siyang perpektong paglilipat — gawin natin ang konsepto ng linggo.",
+      "text_markdown": "Na siyang perpektong paglilipat — gawin natin ang konsepto ng linggo.",
+      "title": "",
+      "tts": {
+        "text": "Na siyang perpektong paglilipat — gawin natin ang konsepto ng linggo.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-116",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ang konsepto ay knowledge distillation.",
+      "text_markdown": "Ang konsepto ay knowledge distillation.",
+      "title": "",
+      "tts": {
+        "text": "Ang konsepto ay knowledge distillation.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-117",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sa pinakasimpleng anyo nito, ang distillation ay ang pagtuturo sa isang maliit na modelo na gayahin ang isang malaki.",
+      "text_markdown": "Sa pinakasimpleng anyo nito, ang distillation ay ang pagtuturo sa isang maliit na modelo na gayahin ang isang malaki.",
+      "title": "",
+      "tts": {
+        "text": "Sa pinakasimpleng anyo nito, ang distillation ay ang pagtuturo sa isang maliit na modelo na gayahin ang isang malaki.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-118",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang malaking modelo ang guro, ang maliit na modelo ang estudyante, at ang estudyante ay natututo sa pamamagitan ng pagkopya sa mga sagot ng guro.",
+      "text_markdown": "Ang malaking modelo ang guro, ang maliit na modelo ang estudyante, at ang estudyante ay natututo sa pamamagitan ng pagkopya sa mga sagot ng guro.",
+      "title": "",
+      "tts": {
+        "text": "Ang malaking modelo ang guro, ang maliit na modelo ang estudyante, at ang estudyante ay natututo sa pamamagitan ng pagkopya sa mga sagot ng guro.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-119",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Simulan natin sa kung bakit ginagawa ito ng sinuman nang lehitimo.",
+      "text_markdown": "Simulan natin sa kung bakit ginagawa ito ng sinuman nang lehitimo.",
+      "title": "",
+      "tts": {
+        "text": "Simulan natin sa kung bakit ginagawa ito ng sinuman nang lehitimo.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-120",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dahil ang isang frontier model ay mahal patakbuhin, at ang isang maliit na modelo na gumagaya rito ay mura.",
+      "text_markdown": "Dahil ang isang frontier model ay mahal patakbuhin, at ang isang maliit na modelo na gumagaya rito ay mura.",
+      "title": "",
+      "tts": {
+        "text": "Dahil ang isang frontier model ay mahal patakbuhin, at ang isang maliit na modelo na gumagaya rito ay mura.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-121",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kung makukuha mo ang 80 o 90 porsyento ng kalidad sa ikasampu ng halaga, ang transaksyong iyon ay nagkakahalaga ng malaking kayamanan sa malawakang paggamit.",
+      "text_markdown": "Kung makukuha mo ang 80 o 90 porsyento ng kalidad sa ikasampu ng halaga, ang transaksyong iyon ay nagkakahalaga ng malaking kayamanan sa malawakang paggamit.",
+      "title": "",
+      "tts": {
+        "text": "Kung makukuha mo ang walumpu o siyamnapung porsyento ng kalidad sa ikasampu ng halaga, ang transaksyong iyon ay nagkakahalaga ng malaking kayamanan sa malawakang paggamit.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-122",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya paano nga ba natututo ang estudyante mula sa guro?",
+      "text_markdown": "Kaya paano nga ba natututo ang estudyante mula sa guro?",
+      "title": "",
+      "tts": {
+        "text": "Kaya paano nga ba natututo ang estudyante mula sa guro?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-123",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang simpleng paraan ay ang kolektahin lamang ang mga sagot ng guro at sanayin ang estudyante gamit ang mga ito tulad ng isang normal na dataset.",
+      "text_markdown": "Ang simpleng paraan ay ang kolektahin lamang ang mga sagot ng guro at sanayin ang estudyante gamit ang mga ito tulad ng isang normal na dataset.",
+      "title": "",
+      "tts": {
+        "text": "Ang simpleng paraan ay ang kolektahin lamang ang mga sagot ng guro at sanayin ang estudyante gamit ang mga ito tulad ng isang normal na dataset.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-124",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang mas mayamang paraan ay gumagamit ng tinatawag na soft labels — hindi lang ang huling sagot ng guro, kundi kung gaano ito kasigurado sa lahat ng opsyon.",
+      "text_markdown": "Ang mas mayamang paraan ay gumagamit ng tinatawag na soft labels — hindi lang ang huling sagot ng guro, kundi kung gaano ito kasigurado sa lahat ng opsyon.",
+      "title": "",
+      "tts": {
+        "text": "Ang mas mayamang paraan ay gumagamit ng tinatawag na soft labels — hindi lang ang huling sagot ng guro, kundi kung gaano ito kasigurado sa lahat ng opsyon.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-125",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Bakit napakahalaga ng mga soft labels na iyon?",
+      "text_markdown": "Bakit napakahalaga ng mga soft labels na iyon?",
+      "title": "",
+      "tts": {
+        "text": "Bakit napakahalaga ng mga soft labels na iyon?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-126",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dahil dala nila ang pangangatwiran ng guro, hindi lang ang hatol nito.",
+      "text_markdown": "Dahil dala nila ang pangangatwiran ng guro, hindi lang ang hatol nito.",
+      "title": "",
+      "tts": {
+        "text": "Dahil dala nila ang pangangatwiran ng guro, hindi lang ang hatol nito.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-127",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang pagkaalam na ang guro ay 70 porsyentong sigurado sa isang sagot at 30 porsyento sa isang malapit na pagkakamali ay nagbibigay ng mas maraming impormasyon sa estudyante kaysa sa isang tamang salita.",
+      "text_markdown": "Ang pagkaalam na ang guro ay 70 porsyentong sigurado sa isang sagot at 30 porsyento sa isang malapit na pagkakamali ay nagbibigay ng mas maraming impormasyon sa estudyante kaysa sa isang tamang salita.",
+      "title": "",
+      "tts": {
+        "text": "Ang pagkaalam na ang guro ay pitumpung porsyentong sigurado sa isang sagot at tatlumpung porsyento sa isang malapit na pagkakamali ay nagbibigay ng mas maraming impormasyon sa estudyante kaysa sa isang tamang salita.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-128",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Iyan ang bersyon sa aklat — ngayon, ang bersyon sa balita.",
+      "text_markdown": "Iyan ang bersyon sa aklat — ngayon, ang bersyon sa balita.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang bersyon sa aklat — ngayon, ang bersyon sa balita.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-129",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kung hindi mo pagmamay-ari ang guro, ang distillation ay nagiging extraction.",
+      "text_markdown": "Kung hindi mo pagmamay-ari ang guro, ang distillation ay nagiging extraction.",
+      "title": "",
+      "tts": {
+        "text": "Kung hindi mo pagmamay-ari ang guro, ang distillation ay nagiging extraction.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-130",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ginagamit mo ang modelo ng iba sa pamamagitan ng API nito, milyun-milyong beses, irekord ang lahat ng sinasabi nito, at sanayin ang iyong estudyante gamit ang transcript.",
+      "text_markdown": "Ginagamit mo ang modelo ng iba sa pamamagitan ng API nito, milyun-milyong beses, irekord ang lahat ng sinasabi nito, at sanayin ang iyong estudyante gamit ang transcript.",
+      "title": "",
+      "tts": {
+        "text": "Ginagamit mo ang modelo ng iba sa pamamagitan ng API nito, milyun-milyong beses, irekord ang lahat ng sinasabi nito, at sanayin ang iyong estudyante gamit ang transcript.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-131",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kaya ang parehong pamamaraan ay maaaring kahusayan o pagnanakaw.",
+      "text_markdown": "Kaya ang parehong pamamaraan ay maaaring kahusayan o pagnanakaw.",
+      "title": "",
+      "tts": {
+        "text": "Kaya ang parehong pamamaraan ay maaaring kahusayan o pagnanakaw.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-132",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Depende sa kung pagmamay-ari mo ang guro — kaya't ang mga tuntunin ng serbisyo ng bawat pangunahing lab ay tahasang nagbabawal sa paggamit ng kanilang modelo upang sanayin ang isang kakumpitensya.",
+      "text_markdown": "Depende sa kung pagmamay-ari mo ang guro — kaya't ang mga tuntunin ng serbisyo ng bawat pangunahing lab ay tahasang nagbabawal sa paggamit ng kanilang modelo upang sanayin ang isang kakumpitensya.",
+      "title": "",
+      "tts": {
+        "text": "Depende sa kung pagmamay-ari mo ang guro — kaya't ang mga tuntunin ng serbisyo ng bawat pangunahing lab ay tahasang nagbabawal sa paggamit ng kanilang modelo upang sanayin ang isang kakumpitensya.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-133",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang akusasyon laban sa Alibaba ay, sa simpleng salita, na ang 28 milyong palitan na iyon ay isang distillation run na nakasuot ng 25 libong pagbabalatkayo.",
+      "text_markdown": "Ang akusasyon laban sa Alibaba ay, sa simpleng salita, na ang 28 milyong palitan na iyon ay isang distillation run na nakasuot ng 25 libong pagbabalatkayo.",
+      "title": "",
+      "tts": {
+        "text": "Ang akusasyon laban sa Alibaba ay, sa simpleng salita, na ang dalawampu't walong milyong palitan na iyon ay isang distillation run na nakasuot ng dalawampu't limang libong pagbabalatkayo.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-134",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "At ang hindi komportableng bahagi para sa mga lab?",
+      "text_markdown": "At ang hindi komportableng bahagi para sa mga lab?",
+      "title": "",
+      "tts": {
+        "text": "At ang hindi komportableng bahagi para sa mga lab?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-135",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Na ang distillation ay gumagana nang nakakabahala nang mahusay — ang isang determinadong estudyante ay talagang makakakuha ng marami mula sa isang guro na wala siyang karapatang kopyahin.",
+      "text_markdown": "Na ang distillation ay gumagana nang nakakabahala nang mahusay — ang isang determinadong estudyante ay talagang makakakuha ng marami mula sa isang guro na wala siyang karapatang kopyahin.",
+      "title": "",
+      "tts": {
+        "text": "Na ang distillation ay gumagana nang nakakabahala nang mahusay — ang isang determinadong estudyante ay talagang makakakuha ng marami mula sa isang guro na wala siyang karapatang kopyahin.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-136",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ang bagay na ibinebenta mo ang access ay siya ring bagay na pinakamarami mong kailangang protektahan, at iyon ay iisang pinto.",
+      "text_markdown": "Ang bagay na ibinebenta mo ang access ay siya ring bagay na pinakamarami mong kailangang protektahan, at iyon ay iisang pinto.",
+      "title": "",
+      "tts": {
+        "text": "Ang bagay na ibinebenta mo ang access ay siya ring bagay na pinakamarami mong kailangang protektahan, at iyon ay iisang pinto.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-137",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Iyan ay isang matalas na punto para tapusin ito.",
+      "text_markdown": "Iyan ay isang matalas na punto para tapusin ito.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ay isang matalas na punto para tapusin ito.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-138",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, salamat sa paglalahad.",
+      "text_markdown": "Ron, salamat sa paglalahad.",
+      "title": "",
+      "tts": {
+        "text": "Ron, salamat sa paglalahad.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-139",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Walang anuman, Vindy — masarap maging dito.",
+      "text_markdown": "Walang anuman, Vindy — masarap maging dito.",
+      "title": "",
+      "tts": {
+        "text": "Walang anuman, Vindy — masarap maging dito.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-140",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Iyan ang AI This Week para sa Hunyo 28, 2026.",
+      "text_markdown": "Iyan ang AI This Week para sa Hunyo 28, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang AI This Week para sa Hunyo dalawampu't walo, dalawang libo dalawampu't anim.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-141",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sa susunod na linggo, babalik tayo sa mga open models at sa maliliit na lab na nagpapadala sa kanila.",
+      "text_markdown": "Sa susunod na linggo, babalik tayo sa mga open models at sa maliliit na lab na nagpapadala sa kanila.",
+      "title": "",
+      "tts": {
+        "text": "Sa susunod na linggo, babalik tayo sa mga open models at sa maliliit na lab na nagpapadala sa kanila.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-142",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hanggang sa susunod na Linggo, mag-ingat.",
+      "text_markdown": "Hanggang sa susunod na Linggo, mag-ingat.",
+      "title": "",
+      "tts": {
+        "text": "Hanggang sa susunod na Linggo, mag-ingat.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "ms",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Tiga Soalan",
+      "text_markdown": "Tiga Soalan",
+      "title": "Tiga Soalan"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Seorang raja terfikir, jika dia sentiasa tahu masa yang paling penting untuk setiap pekerjaan, dan tahu orang-orang yang paling diperlukan, dan, yang paling utama, sentiasa tahu pekerjaan mana yang paling penting dari semua — dia tidak akan pernah gagal dalam apa-apa.",
+      "text_markdown": "Seorang raja terfikir, jika dia sentiasa tahu masa yang paling penting untuk setiap pekerjaan, dan tahu orang-orang yang paling diperlukan, dan, yang paling utama, sentiasa tahu pekerjaan mana yang paling penting dari semua — dia tidak akan pernah gagal dalam apa-apa.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Seorang raja terfikir, jika dia sentiasa tahu masa yang paling penting untuk setiap pekerjaan, dan tahu orang-orang yang paling diperlukan, dan, yang paling utama, sentiasa tahu pekerjaan mana yang paling penting dari semua — dia tidak akan pernah gagal dalam apa-apa.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "Dan, setelah memikirkan ini, raja mengumumkan di seluruh kerajaannya bahawa dia akan memberikan ganjaran besar kepada sesiapa yang mengajarnya bagaimana mengetahui masa yang betul untuk setiap pekerjaan, bagaimana mengetahui orang-orang yang paling diperlukan, dan bagaimana tidak silap dalam menentukan pekerjaan mana yang paling penting dari semua.",
+      "text_markdown": "Dan, setelah memikirkan ini, raja mengumumkan di seluruh kerajaannya bahawa dia akan memberikan ganjaran besar kepada sesiapa yang mengajarnya bagaimana mengetahui masa yang betul untuk setiap pekerjaan, bagaimana mengetahui orang-orang yang paling diperlukan, dan bagaimana tidak silap dalam menentukan pekerjaan mana yang paling penting dari semua.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan, setelah memikirkan ini, raja mengumumkan di seluruh kerajaannya bahawa dia akan memberikan ganjaran besar kepada sesiapa yang mengajarnya bagaimana mengetahui masa yang betul untuk setiap pekerjaan, bagaimana mengetahui orang-orang yang paling diperlukan, dan bagaimana tidak silap dalam menentukan pekerjaan mana yang paling penting dari semua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Orang-orang terpelajar mula datang kepada raja dan menjawab soalannya dengan pelbagai cara.",
+      "text_markdown": "Orang-orang terpelajar mula datang kepada raja dan menjawab soalannya dengan pelbagai cara.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Orang-orang terpelajar mula datang kepada raja dan menjawab soalannya dengan pelbagai cara.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Pada soalan pertama, ada yang berkata bahawa untuk mengetahui masa yang betul bagi setiap pekerjaan, seseorang perlu membuat jadual hari, bulan dan tahun terlebih dahulu dan mengikutinya dengan ketat.",
+      "text_markdown": "Pada soalan pertama, ada yang berkata bahawa untuk mengetahui masa yang betul bagi setiap pekerjaan, seseorang perlu membuat jadual hari, bulan dan tahun terlebih dahulu dan mengikutinya dengan ketat.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pada soalan pertama, ada yang berkata bahawa untuk mengetahui masa yang betul bagi setiap pekerjaan, seseorang perlu membuat jadual hari, bulan dan tahun terlebih dahulu dan mengikutinya dengan ketat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Hanya dengan begitu, kata mereka, setiap pekerjaan akan dilakukan pada masanya.",
+      "text_markdown": "Hanya dengan begitu, kata mereka, setiap pekerjaan akan dilakukan pada masanya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Hanya dengan begitu, kata mereka, setiap pekerjaan akan dilakukan pada masanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Yang lain berkata bahawa seseorang tidak boleh memutuskan terlebih dahulu masa mana yang betul untuk pekerjaan mana, tetapi perlu, tanpa teralih dengan permainan yang sia-sia, sentiasa memberi perhatian kepada semua yang dilakukan, dan kemudian sentiasa melakukan apa yang lebih diperlukan.",
+      "text_markdown": "Yang lain berkata bahawa seseorang tidak boleh memutuskan terlebih dahulu masa mana yang betul untuk pekerjaan mana, tetapi perlu, tanpa teralih dengan permainan yang sia-sia, sentiasa memberi perhatian kepada semua yang dilakukan, dan kemudian sentiasa melakukan apa yang lebih diperlukan.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Yang lain berkata bahawa seseorang tidak boleh memutuskan terlebih dahulu masa mana yang betul untuk pekerjaan mana, tetapi perlu, tanpa teralih dengan permainan yang sia-sia, sentiasa memberi perhatian kepada semua yang dilakukan, dan kemudian sentiasa melakukan apa yang lebih diperlukan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Yang ketiga berkata bahawa tidak kira bagaimana perhatiannya raja kepada semua yang dilakukan, seseorang tidak dapat sentiasa memutuskan dengan betul tentang setiap pekerjaan, bila masanya, tetapi perlu ada nasihat orang bijak dan mengikut nasihat mereka menetapkan masa untuk setiap pekerjaan.",
+      "text_markdown": "Yang ketiga berkata bahawa tidak kira bagaimana perhatiannya raja kepada semua yang dilakukan, seseorang tidak dapat sentiasa memutuskan dengan betul tentang setiap pekerjaan, bila masanya, tetapi perlu ada nasihat orang bijak dan mengikut nasihat mereka menetapkan masa untuk setiap pekerjaan.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Yang ketiga berkata bahawa tidak kira bagaimana perhatiannya raja kepada semua yang dilakukan, seseorang tidak dapat sentiasa memutuskan dengan betul tentang setiap pekerjaan, bila masanya, tetapi perlu ada nasihat orang bijak dan mengikut nasihat mereka menetapkan masa untuk setiap pekerjaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Yang keempat berkata bahawa ada pekerjaan yang perlu diputuskan sekarang juga, tanpa menunggu perbincangan, dan untuk mengetahui bila tepatnya ia berlaku, seseorang perlu tahu apa yang akan datang.",
+      "text_markdown": "Yang keempat berkata bahawa ada pekerjaan yang perlu diputuskan sekarang juga, tanpa menunggu perbincangan, dan untuk mengetahui bila tepatnya ia berlaku, seseorang perlu tahu apa yang akan datang.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Yang keempat berkata bahawa ada pekerjaan yang perlu diputuskan sekarang juga, tanpa menunggu perbincangan, dan untuk mengetahui bila tepatnya ia berlaku, seseorang perlu tahu apa yang akan datang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "Dan hanya ahli sihir yang boleh mengetahui ini.",
+      "text_markdown": "Dan hanya ahli sihir yang boleh mengetahui ini.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan hanya ahli sihir yang boleh mengetahui ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "Dan oleh itu, untuk mengetahui masa yang betul bagi setiap pekerjaan, seseorang perlu bertanya kepada ahli sihir.",
+      "text_markdown": "Dan oleh itu, untuk mengetahui masa yang betul bagi setiap pekerjaan, seseorang perlu bertanya kepada ahli sihir.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan oleh itu, untuk mengetahui masa yang betul bagi setiap pekerjaan, seseorang perlu bertanya kepada ahli sihir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Pada soalan kedua juga, mereka menjawab dengan cara yang berbeza.",
+      "text_markdown": "Pada soalan kedua juga, mereka menjawab dengan cara yang berbeza.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pada soalan kedua juga, mereka menjawab dengan cara yang berbeza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Ada yang berkata bahawa orang yang paling diperlukan oleh raja ialah pemerintah, yang lain berkata paderi, yang ketiga — doktor, yang keempat — askar.",
+      "text_markdown": "Ada yang berkata bahawa orang yang paling diperlukan oleh raja ialah pemerintah, yang lain berkata paderi, yang ketiga — doktor, yang keempat — askar.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Ada yang berkata bahawa orang yang paling diperlukan oleh raja ialah pemerintah, yang lain berkata paderi, yang ketiga — doktor, yang keempat — askar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Pada soalan ketiga — pekerjaan apa yang paling penting? — ada yang berkata bahawa yang paling penting di dunia ialah ilmu; yang lain berkata — urusan ketenteraan, yang ketiga berkata — ketakwaan.",
+      "text_markdown": "Pada soalan ketiga — pekerjaan apa yang paling penting? — ada yang berkata bahawa yang paling penting di dunia ialah ilmu; yang lain berkata — urusan ketenteraan, yang ketiga berkata — ketakwaan.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pada soalan ketiga — pekerjaan apa yang paling penting? — ada yang berkata bahawa yang paling penting di dunia ialah ilmu; yang lain berkata — urusan ketenteraan, yang ketiga berkata — ketakwaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Semua jawapan berbeza, dan oleh itu raja tidak bersetuju dengan mana-mana satu dan tidak memberikan ganjaran kepada sesiapa.",
+      "text_markdown": "Semua jawapan berbeza, dan oleh itu raja tidak bersetuju dengan mana-mana satu dan tidak memberikan ganjaran kepada sesiapa.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Semua jawapan berbeza, dan oleh itu raja tidak bersetuju dengan mana-mana satu dan tidak memberikan ganjaran kepada sesiapa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Untuk lebih mengetahui jawapan kepada soalannya, dia memutuskan untuk bertanya kepada seorang pertapa, yang terkenal sebagai orang yang bijak.",
+      "text_markdown": "Untuk lebih mengetahui jawapan kepada soalannya, dia memutuskan untuk bertanya kepada seorang pertapa, yang terkenal sebagai orang yang bijak.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Untuk lebih mengetahui jawapan kepada soalannya, dia memutuskan untuk bertanya kepada seorang pertapa, yang terkenal sebagai orang yang bijak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Pertapa itu tinggal di hutan, dan tidak pernah keluar dari sana.",
+      "text_markdown": "Pertapa itu tinggal di hutan, dan tidak pernah keluar dari sana.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pertapa itu tinggal di hutan, dan tidak pernah keluar dari sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Dia hanya menerima orang biasa, dan oleh itu raja berpakaian ringkas dan, sebelum sampai ke kediaman pertapa, turun dari kuda dan pergi sendirian kepadanya.",
+      "text_markdown": "Dia hanya menerima orang biasa, dan oleh itu raja berpakaian ringkas dan, sebelum sampai ke kediaman pertapa, turun dari kuda dan pergi sendirian kepadanya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dia hanya menerima orang biasa, dan oleh itu raja berpakaian ringkas dan, sebelum sampai ke kediaman pertapa, turun dari kuda dan pergi sendirian kepadanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Ketika raja mendekatinya, pertapa itu sedang menggali petak-petak di depan pondoknya.",
+      "text_markdown": "Ketika raja mendekatinya, pertapa itu sedang menggali petak-petak di depan pondoknya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Ketika raja mendekatinya, pertapa itu sedang menggali petak-petak di depan pondoknya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Melihat raja, pertapa itu mengangguk kepadanya dan terus menggali.",
+      "text_markdown": "Melihat raja, pertapa itu mengangguk kepadanya dan terus menggali.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Melihat raja, pertapa itu mengangguk kepadanya dan terus menggali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Pertapa itu kurus dan lemah dan, menusukkan penyodok ke dalam tanah dan membalikkan ketulan tanah yang kecil, dia termengah-mengah dengan berat.",
+      "text_markdown": "Pertapa itu kurus dan lemah dan, menusukkan penyodok ke dalam tanah dan membalikkan ketulan tanah yang kecil, dia termengah-mengah dengan berat.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pertapa itu kurus dan lemah dan, menusukkan penyodok ke dalam tanah dan membalikkan ketulan tanah yang kecil, dia termengah-mengah dengan berat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Raja mendekatinya dan berkata:",
+      "text_markdown": "Raja mendekatinya dan berkata:",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja mendekatinya dan berkata:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Aku datang kepadamu, pertapa yang bijak, untuk meminta engkau menjawab tiga soalanku: masa apa yang perlu diingat dan tidak dilepaskan, supaya tidak menyesal kemudian?",
+      "text_markdown": "— Aku datang kepadamu, pertapa yang bijak, untuk meminta engkau menjawab tiga soalanku: masa apa yang perlu diingat dan tidak dilepaskan, supaya tidak menyesal kemudian?",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Aku datang kepadamu, pertapa yang bijak, untuk meminta engkau menjawab tiga soalanku: masa apa yang perlu diingat dan tidak dilepaskan, supaya tidak menyesal kemudian?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Orang-orang mana yang paling diperlukan?",
+      "text_markdown": "Orang-orang mana yang paling diperlukan?",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Orang-orang mana yang paling diperlukan?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "Dan pekerjaan apa yang paling penting?",
+      "text_markdown": "Dan pekerjaan apa yang paling penting?",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan pekerjaan apa yang paling penting?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Pertapa itu mendengar raja, tetapi tidak menjawab apa-apa, hanya meludah di tangannya dan mula menggali lagi.",
+      "text_markdown": "Pertapa itu mendengar raja, tetapi tidak menjawab apa-apa, hanya meludah di tangannya dan mula menggali lagi.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pertapa itu mendengar raja, tetapi tidak menjawab apa-apa, hanya meludah di tangannya dan mula menggali lagi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Engkau penat, — kata raja.",
+      "text_markdown": "— Engkau penat, — kata raja.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Engkau penat, — kata raja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Biar aku tolong engkau.",
+      "text_markdown": "— Biar aku tolong engkau.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Biar aku tolong engkau.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Terima kasih, — kata pertapa itu dan, memberikan penyodok kepada raja, duduk di atas tanah.",
+      "text_markdown": "— Terima kasih, — kata pertapa itu dan, memberikan penyodok kepada raja, duduk di atas tanah.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Terima kasih, — kata pertapa itu dan, memberikan penyodok kepada raja, duduk di atas tanah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Setelah menggali dua petak, raja berhenti dan mengulangi soalannya.",
+      "text_markdown": "Setelah menggali dua petak, raja berhenti dan mengulangi soalannya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Setelah menggali dua petak, raja berhenti dan mengulangi soalannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Pertapa itu lagi tidak menjawab, tetapi bangun dan menghulurkan tangannya ke arah penyodok:",
+      "text_markdown": "Pertapa itu lagi tidak menjawab, tetapi bangun dan menghulurkan tangannya ke arah penyodok:",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pertapa itu lagi tidak menjawab, tetapi bangun dan menghulurkan tangannya ke arah penyodok:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Sekarang berehat, biar aku, — katanya.",
+      "text_markdown": "— Sekarang berehat, biar aku, — katanya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Sekarang berehat, biar aku, — katanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Tetapi raja tidak memberikan penyodok dan terus menggali.",
+      "text_markdown": "Tetapi raja tidak memberikan penyodok dan terus menggali.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Tetapi raja tidak memberikan penyodok dan terus menggali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Satu jam berlalu, jam yang lain berlalu.",
+      "text_markdown": "Satu jam berlalu, jam yang lain berlalu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Satu jam berlalu, jam yang lain berlalu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Matahari terbenam di sebalik pokok-pokok.",
+      "text_markdown": "Matahari terbenam di sebalik pokok-pokok.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Matahari terbenam di sebalik pokok-pokok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Raja menusukkan penyodok ke dalam tanah dan berkata:",
+      "text_markdown": "Raja menusukkan penyodok ke dalam tanah dan berkata:",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja menusukkan penyodok ke dalam tanah dan berkata:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Aku datang kepadamu, orang bijak, untuk mendapat jawapan kepada soalanku.",
+      "text_markdown": "— Aku datang kepadamu, orang bijak, untuk mendapat jawapan kepada soalanku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Aku datang kepadamu, orang bijak, untuk mendapat jawapan kepada soalanku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Jika engkau tidak dapat menjawabku, katakan sahaja, dan aku akan pulang.",
+      "text_markdown": "Jika engkau tidak dapat menjawabku, katakan sahaja, dan aku akan pulang.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Jika engkau tidak dapat menjawabku, katakan sahaja, dan aku akan pulang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— Nah, ada seseorang berlari, — kata pertapa itu.",
+      "text_markdown": "— Nah, ada seseorang berlari, — kata pertapa itu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Nah, ada seseorang berlari, — kata pertapa itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Mari kita lihat siapa itu.",
+      "text_markdown": "— Mari kita lihat siapa itu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Mari kita lihat siapa itu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Raja menoleh dan melihat — seorang lelaki berjanggut berlari keluar dari hutan.",
+      "text_markdown": "Raja menoleh dan melihat — seorang lelaki berjanggut berlari keluar dari hutan.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja menoleh dan melihat — seorang lelaki berjanggut berlari keluar dari hutan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Lelaki itu menekan tangannya pada luka di perutnya, darah mengalir dari bawah tangannya.",
+      "text_markdown": "Lelaki itu menekan tangannya pada luka di perutnya, darah mengalir dari bawah tangannya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Lelaki itu menekan tangannya pada luka di perutnya, darah mengalir dari bawah tangannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Setelah berlari sampai kepada raja, lelaki itu rebah tidak sedarkan diri ke tanah dan terbaring, mengerang perlahan.",
+      "text_markdown": "Setelah berlari sampai kepada raja, lelaki itu rebah tidak sedarkan diri ke tanah dan terbaring, mengerang perlahan.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Setelah berlari sampai kepada raja, lelaki itu rebah tidak sedarkan diri ke tanah dan terbaring, mengerang perlahan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Raja bersama-sama dengan pertapa membuka dan menanggalkan pakaian lelaki itu.",
+      "text_markdown": "Raja bersama-sama dengan pertapa membuka dan menanggalkan pakaian lelaki itu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja bersama-sama dengan pertapa membuka dan menanggalkan pakaian lelaki itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Di perutnya terdapat luka yang besar.",
+      "text_markdown": "Di perutnya terdapat luka yang besar.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Di perutnya terdapat luka yang besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Raja, sebaik mungkin, membasuh luka itu dan membalutnya dengan sapu tangannya dan tuala pertapa.",
+      "text_markdown": "Raja, sebaik mungkin, membasuh luka itu dan membalutnya dengan sapu tangannya dan tuala pertapa.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja, sebaik mungkin, membasuh luka itu dan membalutnya dengan sapu tangannya dan tuala pertapa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Tetapi darah tidak berhenti mengalir.",
+      "text_markdown": "Tetapi darah tidak berhenti mengalir.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Tetapi darah tidak berhenti mengalir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Raja beberapa kali membuka balutan dan sekali lagi membasuh dan membalut luka itu.",
+      "text_markdown": "Raja beberapa kali membuka balutan dan sekali lagi membasuh dan membalut luka itu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja beberapa kali membuka balutan dan sekali lagi membasuh dan membalut luka itu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Apabila akhirnya darah berhenti, lelaki itu sedar semula dan meminta minum.",
+      "text_markdown": "Apabila akhirnya darah berhenti, lelaki itu sedar semula dan meminta minum.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Apabila akhirnya darah berhenti, lelaki itu sedar semula dan meminta minum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Raja membawa air segar kepadanya dan memberi dia minum.",
+      "text_markdown": "Raja membawa air segar kepadanya dan memberi dia minum.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja membawa air segar kepadanya dan memberi dia minum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Sementara itu matahari telah terbenam sepenuhnya, dan cuaca menjadi sejuk.",
+      "text_markdown": "Sementara itu matahari telah terbenam sepenuhnya, dan cuaca menjadi sejuk.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Sementara itu matahari telah terbenam sepenuhnya, dan cuaca menjadi sejuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Raja dengan bantuan pertapa membawa orang yang cedera itu ke dalam pondok dan meletakkannya di atas katil.",
+      "text_markdown": "Raja dengan bantuan pertapa membawa orang yang cedera itu ke dalam pondok dan meletakkannya di atas katil.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja dengan bantuan pertapa membawa orang yang cedera itu ke dalam pondok dan meletakkannya di atas katil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Orang yang cedera itu memejamkan mata dan terdiam.",
+      "text_markdown": "Orang yang cedera itu memejamkan mata dan terdiam.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Orang yang cedera itu memejamkan mata dan terdiam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Raja begitu letih dari berjalan dan bekerja sehingga di situ juga, di ambang pintu, dia berbaring dan tertidur, — tertidur begitu nyenyak sehingga dia tidur sepanjang malam musim panas yang singkat, dan apabila dia bangun pada pagi hari, lama dia tidak dapat memahami di mana dia berada dan siapa lelaki berjanggut yang pelik ini, yang terbaring di atas katil dan menatapnya dengan mata yang bersinar.",
+      "text_markdown": "Raja begitu letih dari berjalan dan bekerja sehingga di situ juga, di ambang pintu, dia berbaring dan tertidur, — tertidur begitu nyenyak sehingga dia tidur sepanjang malam musim panas yang singkat, dan apabila dia bangun pada pagi hari, lama dia tidak dapat memahami di mana dia berada dan siapa lelaki berjanggut yang pelik ini, yang terbaring di atas katil dan menatapnya dengan mata yang bersinar.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja begitu letih dari berjalan dan bekerja sehingga di situ juga, di ambang pintu, dia berbaring dan tertidur, — tertidur begitu nyenyak sehingga dia tidur sepanjang malam musim panas yang singkat, dan apabila dia bangun pada pagi hari, lama dia tidak dapat memahami di mana dia berada dan siapa lelaki berjanggut yang pelik ini, yang terbaring di atas katil dan menatapnya dengan mata yang bersinar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Ampuni aku, — kata lelaki berjanggut itu dengan suara yang lemah, apabila dia melihat bahawa raja telah bangun dan memandangnya.",
+      "text_markdown": "— Ampuni aku, — kata lelaki berjanggut itu dengan suara yang lemah, apabila dia melihat bahawa raja telah bangun dan memandangnya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Ampuni aku, — kata lelaki berjanggut itu dengan suara yang lemah, apabila dia melihat bahawa raja telah bangun dan memandangnya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Aku tidak mengenali kamu dan aku tiada alasan untuk mengampuni kamu, — kata raja.",
+      "text_markdown": "— Aku tidak mengenali kamu dan aku tiada alasan untuk mengampuni kamu, — kata raja.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Aku tidak mengenali kamu dan aku tiada alasan untuk mengampuni kamu, — kata raja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Kamu tidak mengenali aku, tetapi aku mengenali kamu.",
+      "text_markdown": "— Kamu tidak mengenali aku, tetapi aku mengenali kamu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Kamu tidak mengenali aku, tetapi aku mengenali kamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Aku musuh kamu, orang yang sama yang bersumpah untuk membalas dendam kepada kamu kerana kamu telah menghukum mati abang aku dan merampas tanah pusaka aku.",
+      "text_markdown": "Aku musuh kamu, orang yang sama yang bersumpah untuk membalas dendam kepada kamu kerana kamu telah menghukum mati abang aku dan merampas tanah pusaka aku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Aku musuh kamu, orang yang sama yang bersumpah untuk membalas dendam kepada kamu kerana kamu telah menghukum mati abang aku dan merampas tanah pusaka aku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Aku tahu bahawa kamu pergi bersendirian kepada pertapa, dan aku memutuskan untuk membunuh kamu dalam perjalanan pulang.",
+      "text_markdown": "Aku tahu bahawa kamu pergi bersendirian kepada pertapa, dan aku memutuskan untuk membunuh kamu dalam perjalanan pulang.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Aku tahu bahawa kamu pergi bersendirian kepada pertapa, dan aku memutuskan untuk membunuh kamu dalam perjalanan pulang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Tetapi sepanjang hari telah berlalu, dan kamu masih tidak ada.",
+      "text_markdown": "Tetapi sepanjang hari telah berlalu, dan kamu masih tidak ada.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Tetapi sepanjang hari telah berlalu, dan kamu masih tidak ada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Kemudian aku keluar dari tempat sembunyi, untuk mencari kamu, dan bertemu dengan pengawal peribadi kamu.",
+      "text_markdown": "Kemudian aku keluar dari tempat sembunyi, untuk mencari kamu, dan bertemu dengan pengawal peribadi kamu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Kemudian aku keluar dari tempat sembunyi, untuk mencari kamu, dan bertemu dengan pengawal peribadi kamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Mereka mengenali aku dan mencederakan aku.",
+      "text_markdown": "Mereka mengenali aku dan mencederakan aku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Mereka mengenali aku dan mencederakan aku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Aku melarikan diri dari mereka, tetapi jika kamu tidak membalut luka aku, aku akan mati.",
+      "text_markdown": "Aku melarikan diri dari mereka, tetapi jika kamu tidak membalut luka aku, aku akan mati.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Aku melarikan diri dari mereka, tetapi jika kamu tidak membalut luka aku, aku akan mati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Aku mahu membunuh kamu, tetapi kamu menyelamatkan nyawa aku.",
+      "text_markdown": "Aku mahu membunuh kamu, tetapi kamu menyelamatkan nyawa aku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Aku mahu membunuh kamu, tetapi kamu menyelamatkan nyawa aku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Sekarang, jika aku kekal hidup dan kamu menghendakinya, aku akan melayani kamu, seperti hamba yang paling setia, dan aku akan menyuruh anak-anak lelaki aku melakukan perkara yang sama.",
+      "text_markdown": "Sekarang, jika aku kekal hidup dan kamu menghendakinya, aku akan melayani kamu, seperti hamba yang paling setia, dan aku akan menyuruh anak-anak lelaki aku melakukan perkara yang sama.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Sekarang, jika aku kekal hidup dan kamu menghendakinya, aku akan melayani kamu, seperti hamba yang paling setia, dan aku akan menyuruh anak-anak lelaki aku melakukan perkara yang sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Ampuni aku.",
+      "text_markdown": "Ampuni aku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Ampuni aku.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Raja sangat gembira bahawa dia begitu mudah berjaya berdamai dengan musuhnya dan memperoleh seorang kawan, dan dia mengampuni dia dan berjanji untuk mengembalikan tanah pusakanya dan menghantar doktor-doktor dan hamba-hambanya, untuk menjaga dia.",
+      "text_markdown": "Raja sangat gembira bahawa dia begitu mudah berjaya berdamai dengan musuhnya dan memperoleh seorang kawan, dan dia mengampuni dia dan berjanji untuk mengembalikan tanah pusakanya dan menghantar doktor-doktor dan hamba-hambanya, untuk menjaga dia.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja sangat gembira bahawa dia begitu mudah berjaya berdamai dengan musuhnya dan memperoleh seorang kawan, dan dia mengampuni dia dan berjanji untuk mengembalikan tanah pusakanya dan menghantar doktor-doktor dan hamba-hambanya, untuk menjaga dia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Setelah berpamit dengan orang yang cedera itu, raja keluar ke beranda dan mula mencari pertapa dengan matanya.",
+      "text_markdown": "Setelah berpamit dengan orang yang cedera itu, raja keluar ke beranda dan mula mencari pertapa dengan matanya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Setelah berpamit dengan orang yang cedera itu, raja keluar ke beranda dan mula mencari pertapa dengan matanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Sebelum pergi, dia mahu sekali lagi meminta jawapan kepada soalan-soalannya daripadanya.",
+      "text_markdown": "Sebelum pergi, dia mahu sekali lagi meminta jawapan kepada soalan-soalannya daripadanya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Sebelum pergi, dia mahu sekali lagi meminta jawapan kepada soalan-soalannya daripadanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Pertapa berada di halaman dan, berlutut, menanam benih di dalam bedengan, yang telah dicangkul semalam.",
+      "text_markdown": "Pertapa berada di halaman dan, berlutut, menanam benih di dalam bedengan, yang telah dicangkul semalam.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Pertapa berada di halaman dan, berlutut, menanam benih di dalam bedengan, yang telah dicangkul semalam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Raja mendekatinya.",
+      "text_markdown": "Raja mendekatinya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Raja mendekatinya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Orang bijak, buat kali terakhir aku memohon kepada kamu: jawab soalan-soalan aku.",
+      "text_markdown": "— Orang bijak, buat kali terakhir aku memohon kepada kamu: jawab soalan-soalan aku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Orang bijak, buat kali terakhir aku memohon kepada kamu: jawab soalan-soalan aku.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Kamu sudah mendapat jawapan, — kata pertapa, duduk berjongkok dengan kaki kurus dan memandang ke atas kepada raja yang berdiri di hadapannya.",
+      "text_markdown": "— Kamu sudah mendapat jawapan, — kata pertapa, duduk berjongkok dengan kaki kurus dan memandang ke atas kepada raja yang berdiri di hadapannya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Kamu sudah mendapat jawapan, — kata pertapa, duduk berjongkok dengan kaki kurus dan memandang ke atas kepada raja yang berdiri di hadapannya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Bagaimana saya mendapat jawapan? — tanya raja.",
+      "text_markdown": "— Bagaimana saya mendapat jawapan? — tanya raja.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Bagaimana saya mendapat jawapan? — tanya raja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— Bagaimana pula? — kata pertapa.",
+      "text_markdown": "— Bagaimana pula? — kata pertapa.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Bagaimana pula? — kata pertapa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Jika kamu semalam tidak mengasihani aku dan tidak mencangkul bedengan-bedengan ini untuk aku, tetapi pulang, lelaki itu akan membunuh kamu.",
+      "text_markdown": "— Jika kamu semalam tidak mengasihani aku dan tidak mencangkul bedengan-bedengan ini untuk aku, tetapi pulang, lelaki itu akan membunuh kamu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Jika kamu semalam tidak mengasihani aku dan tidak mencangkul bedengan-bedengan ini untuk aku, tetapi pulang, lelaki itu akan membunuh kamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Dan oleh itu masa yang paling penting adalah ketika kamu mencangkul bedengan.",
+      "text_markdown": "Dan oleh itu masa yang paling penting adalah ketika kamu mencangkul bedengan.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan oleh itu masa yang paling penting adalah ketika kamu mencangkul bedengan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "Dan orang yang paling diperlukan adalah aku.",
+      "text_markdown": "Dan orang yang paling diperlukan adalah aku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan orang yang paling diperlukan adalah aku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "Dan perkara yang paling penting adalah — berbuat baik kepada aku.",
+      "text_markdown": "Dan perkara yang paling penting adalah — berbuat baik kepada aku.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan perkara yang paling penting adalah — berbuat baik kepada aku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "Dan kemudian, apabila lelaki itu berlari datang, masa yang paling penting adalah ketika kamu menjaga dia, kerana jika kamu tidak membasuh lukanya, dia akan mati, tanpa berdamai dengan kamu.",
+      "text_markdown": "Dan kemudian, apabila lelaki itu berlari datang, masa yang paling penting adalah ketika kamu menjaga dia, kerana jika kamu tidak membasuh lukanya, dia akan mati, tanpa berdamai dengan kamu.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan kemudian, apabila lelaki itu berlari datang, masa yang paling penting adalah ketika kamu menjaga dia, kerana jika kamu tidak membasuh lukanya, dia akan mati, tanpa berdamai dengan kamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "Dan oleh itu orang yang paling diperlukan adalah dia, dan perkara yang paling penting adalah apa yang kamu lakukan untuknya.",
+      "text_markdown": "Dan oleh itu orang yang paling diperlukan adalah dia, dan perkara yang paling penting adalah apa yang kamu lakukan untuknya.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "Dan oleh itu orang yang paling diperlukan adalah dia, dan perkara yang paling penting adalah apa yang kamu lakukan untuknya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Jadi ingatlah, — kata pertapa itu, — bahawa masa yang paling penting adalah satu sahaja: sekarang, — dan ia adalah yang paling penting kerana hanya pada masa inilah kita berkuasa ke atas diri kita sendiri; dan orang yang paling diperlukan adalah dia yang sedang kamu hadapi sekarang, kerana tiada siapa yang dapat mengetahui sama ada dia akan lagi berurusan dengan mana-mana orang lain; dan perkara yang paling penting — adalah berbuat baik kepadanya, kerana hanya untuk itulah manusia dihantar ke dalam kehidupan.",
+      "text_markdown": "— Jadi ingatlah, — kata pertapa itu, — bahawa masa yang paling penting adalah satu sahaja: sekarang, — dan ia adalah yang paling penting kerana hanya pada masa inilah kita berkuasa ke atas diri kita sendiri; dan orang yang paling diperlukan adalah dia yang sedang kamu hadapi sekarang, kerana tiada siapa yang dapat mengetahui sama ada dia akan lagi berurusan dengan mana-mana orang lain; dan perkara yang paling penting — adalah berbuat baik kepadanya, kerana hanya untuk itulah manusia dihantar ke dalam kehidupan.",
+      "title": "Tiga Soalan",
+      "tts": {
+        "text": "— Jadi ingatlah, — kata pertapa itu, — bahawa masa yang paling penting adalah satu sahaja: sekarang, — dan ia adalah yang paling penting kerana hanya pada masa inilah kita berkuasa ke atas diri kita sendiri; dan orang yang paling diperlukan adalah dia yang sedang kamu hadapi sekarang, kerana tiada siapa yang dapat mengetahui sama ada dia akan lagi berurusan dengan mana-mana orang lain; dan perkara yang paling penting — adalah berbuat baik kepadanya, kerana hanya untuk itulah manusia dihantar ke dalam kehidupan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

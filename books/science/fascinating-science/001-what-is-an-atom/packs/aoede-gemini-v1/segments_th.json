@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "th",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "text": "ทุกสิ่งสร้างจากอะตอม",
+      "text_markdown": "ทุกสิ่งสร้างจากอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม"
+    },
+    {
+      "id": "ch01-002",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "มองไปรอบๆ ตัวคุณสิ",
+      "text_markdown": "มองไปรอบๆ ตัวคุณสิ",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "มองไปรอบๆ ตัวคุณสิ",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-003",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "ทุกสิ่งที่คุณมองเห็นล้วนสร้างจากอะตอม",
+      "text_markdown": "ทุกสิ่งที่คุณมองเห็นล้วนสร้างจากอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "ทุกสิ่งที่คุณมองเห็นล้วนสร้างจากอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "อากาศที่คุณหายใจก็สร้างจากอะตอม",
+      "text_markdown": "อากาศที่คุณหายใจก็สร้างจากอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อากาศที่คุณหายใจก็สร้างจากอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "น้ำที่คุณดื่มก็สร้างจากอะตอม",
+      "text_markdown": "น้ำที่คุณดื่มก็สร้างจากอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "น้ำที่คุณดื่มก็สร้างจากอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "ร่างกายของคุณก็สร้างจากอะตอม",
+      "text_markdown": "ร่างกายของคุณก็สร้างจากอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "ร่างกายของคุณก็สร้างจากอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "พื้นดินใต้เท้าของคุณก็สร้างจากอะตอม",
+      "text_markdown": "พื้นดินใต้เท้าของคุณก็สร้างจากอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "พื้นดินใต้เท้าของคุณก็สร้างจากอะตอม",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "อะตอมคือชิ้นส่วนที่เล็กที่สุดของสสารที่ยังคงมีเอกลักษณ์ทางเคมี",
+      "text_markdown": "อะตอมคือชิ้นส่วนที่เล็กที่สุดของสสารที่ยังคงมีเอกลักษณ์ทางเคมี",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมคือชิ้นส่วนที่เล็กที่สุดของสสารที่ยังคงมีเอกลักษณ์ทางเคมี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "คุณไม่สามารถมองเห็นอะตอมเดี่ยวๆ ด้วยตาเปล่าได้",
+      "text_markdown": "คุณไม่สามารถมองเห็นอะตอมเดี่ยวๆ ด้วยตาเปล่าได้",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "คุณไม่สามารถมองเห็นอะตอมเดี่ยวๆ ด้วยตาเปล่าได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "คุณไม่สามารถมองเห็นอะตอมเดี่ยวๆ ด้วยกล้องจุลทรรศน์ทั่วไปได้",
+      "text_markdown": "คุณไม่สามารถมองเห็นอะตอมเดี่ยวๆ ด้วยกล้องจุลทรรศน์ทั่วไปได้",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "คุณไม่สามารถมองเห็นอะตอมเดี่ยวๆ ด้วยกล้องจุลทรรศน์ทั่วไปได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-011",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "อะตอมเล็กขนาดนั้นเลยทีเดียว",
+      "text_markdown": "อะตอมเล็กขนาดนั้นเลยทีเดียว",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมเล็กขนาดนั้นเลยทีเดียว",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "text": "ทรายเพียงเม็ดเดียวมีอะตอมอยู่ประมาณห้าสิบควินทิลเลียนอะตอม",
+      "text_markdown": "ทรายเพียงเม็ดเดียวมีอะตอมอยู่ประมาณห้าสิบควินทิลเลียนอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "ทรายเพียงเม็ดเดียวมีอะตอมอยู่ประมาณห้าสิบควินทิลเลียนอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "text": "ตัวเลขนั้นคือห้าสิบตามด้วยศูนย์สิบแปดตัว",
+      "text_markdown": "ตัวเลขนั้นคือห้าสิบตามด้วยศูนย์สิบแปดตัว",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "ตัวเลขนั้นคือห้าสิบตามด้วยศูนย์สิบแปดตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "text": "มีอะตอมในทรายหนึ่งเม็ดมากกว่าจำนวนเม็ดทรายทั้งหมดบนชายหาดเสียอีก",
+      "text_markdown": "มีอะตอมในทรายหนึ่งเม็ดมากกว่าจำนวนเม็ดทรายทั้งหมดบนชายหาดเสียอีก",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "มีอะตอมในทรายหนึ่งเม็ดมากกว่าจำนวนเม็ดทรายทั้งหมดบนชายหาดเสียอีก",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch01-015",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "อะตอมคือหน่วยพื้นฐานของทุกสิ่งในโลกทางกายภาพ",
+      "text_markdown": "อะตอมคือหน่วยพื้นฐานของทุกสิ่งในโลกทางกายภาพ",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมคือหน่วยพื้นฐานของทุกสิ่งในโลกทางกายภาพ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-016",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "กำแพงสร้างจากอิฐ",
+      "text_markdown": "กำแพงสร้างจากอิฐ",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "กำแพงสร้างจากอิฐ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "ประโยคสร้างจากคำ",
+      "text_markdown": "ประโยคสร้างจากคำ",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "ประโยคสร้างจากคำ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "เอกภพสร้างจากอะตอม",
+      "text_markdown": "เอกภพสร้างจากอะตอม",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "เอกภพสร้างจากอะตอม",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "คำว่า \"อะตอม\" มาจากภาษากรีกโบราณ",
+      "text_markdown": "คำว่า \"อะตอม\" มาจากภาษากรีกโบราณ",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "คำว่า \"อะตอม\" มาจากภาษากรีกโบราณ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "คำภาษากรีก \"atomos\" หมายถึง \"สิ่งที่แบ่งแยกไม่ได้\"",
+      "text_markdown": "คำภาษากรีก \"atomos\" หมายถึง \"สิ่งที่แบ่งแยกไม่ได้\"",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "คำภาษากรีก \"atomos\" หมายถึง \"สิ่งที่แบ่งแยกไม่ได้\"",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "นักปรัชญากรีกโบราณคิดว่าอะตอมเป็นชิ้นส่วนที่เล็กที่สุดของสสารเท่าที่จะเป็นไปได้",
+      "text_markdown": "นักปรัชญากรีกโบราณคิดว่าอะตอมเป็นชิ้นส่วนที่เล็กที่สุดของสสารเท่าที่จะเป็นไปได้",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "นักปรัชญากรีกโบราณคิดว่าอะตอมเป็นชิ้นส่วนที่เล็กที่สุดของสสารเท่าที่จะเป็นไปได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "พวกเขาคิดถูกเกือบทั้งหมด",
+      "text_markdown": "พวกเขาคิดถูกเกือบทั้งหมด",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "พวกเขาคิดถูกเกือบทั้งหมด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "อะตอมไม่ใช่หน่วยที่เล็กที่สุดจริงๆ แต่เป็นหน่วยที่เล็กที่สุดที่ยังคงคุณสมบัติทางเคมีของมันไว้ได้",
+      "text_markdown": "อะตอมไม่ใช่หน่วยที่เล็กที่สุดจริงๆ แต่เป็นหน่วยที่เล็กที่สุดที่ยังคงคุณสมบัติทางเคมีของมันไว้ได้",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมไม่ใช่หน่วยที่เล็กที่สุดจริงๆ แต่เป็นหน่วยที่เล็กที่สุดที่ยังคงคุณสมบัติทางเคมีของมันไว้ได้",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-024",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "อะตอมมีความทนทานอย่างไม่น่าเชื่อ",
+      "text_markdown": "อะตอมมีความทนทานอย่างไม่น่าเชื่อ",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมมีความทนทานอย่างไม่น่าเชื่อ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "อะตอมในร่างกายของคุณมีอายุหลายพันล้านปี",
+      "text_markdown": "อะตอมในร่างกายของคุณมีอายุหลายพันล้านปี",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมในร่างกายของคุณมีอายุหลายพันล้านปี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "อะตอมไฮโดรเจนบางส่วนในน้ำที่คุณดื่มวันนี้ถูกสร้างขึ้นในช่วงไม่กี่นาทีแรกหลังเกิดบิ๊กแบง",
+      "text_markdown": "อะตอมไฮโดรเจนบางส่วนในน้ำที่คุณดื่มวันนี้ถูกสร้างขึ้นในช่วงไม่กี่นาทีแรกหลังเกิดบิ๊กแบง",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมไฮโดรเจนบางส่วนในน้ำที่คุณดื่มวันนี้ถูกสร้างขึ้นในช่วงไม่กี่นาทีแรกหลังเกิดบิ๊กแบง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch01-027",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "คุณสร้างจากสสารโบราณ",
+      "text_markdown": "คุณสร้างจากสสารโบราณ",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "คุณสร้างจากสสารโบราณ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "อะตอมไม่เคยถูกสร้างขึ้นหรือถูกทำลายในชีวิตประจำวัน",
+      "text_markdown": "อะตอมไม่เคยถูกสร้างขึ้นหรือถูกทำลายในชีวิตประจำวัน",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "อะตอมไม่เคยถูกสร้างขึ้นหรือถูกทำลายในชีวิตประจำวัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "พวกมันแค่จัดเรียงตัวใหม่",
+      "text_markdown": "พวกมันแค่จัดเรียงตัวใหม่",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "พวกมันแค่จัดเรียงตัวใหม่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "เมื่อไม้ถูกเผาไหม้ อะตอมก็ไม่ได้หายไปไหน",
+      "text_markdown": "เมื่อไม้ถูกเผาไหม้ อะตอมก็ไม่ได้หายไปไหน",
+      "title": "ทุกสิ่งสร้างจากอะตอม",
+      "tts": {
+        "text": "เมื่อไม้ถูกเผาไหม้ อะตอมก็ไม่ได้หายไปไหน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "พวกมันจัดเรียงตัวใหม่กลายเป็นควัน ขี้เถ้า และแก๊ส",
+      "text_markdown": "พวกมันจัดเรียงตัวใหม่กลายเป็นควัน ขี้เถ้า และแก๊ส",
+      "title": "ทุกสิ่งล้วนประกอบด้วยอะตอม",
+      "tts": {
+        "text": "พวกมันจัดเรียงตัวใหม่กลายเป็นควัน ขี้เถ้า และแก๊ส",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "เมื่อน้ำแข็งละลาย อะตอมยังคงเหมือนเดิม",
+      "text_markdown": "เมื่อน้ำแข็งละลาย อะตอมยังคงเหมือนเดิม",
+      "title": "ทุกสิ่งล้วนประกอบด้วยอะตอม",
+      "tts": {
+        "text": "เมื่อน้ำแข็งละลาย อะตอมยังคงเหมือนเดิม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-033",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "มีเพียงการจัดเรียงตัวของพวกมันเท่านั้นที่เปลี่ยนไป",
+      "text_markdown": "มีเพียงการจัดเรียงตัวของพวกมันเท่านั้นที่เปลี่ยนไป",
+      "title": "ทุกสิ่งล้วนประกอบด้วยอะตอม",
+      "tts": {
+        "text": "มีเพียงการจัดเรียงตัวของพวกมันเท่านั้นที่เปลี่ยนไป",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "text": "การทำความเข้าใจอะตอมคือรากฐานของวิชาเคมี",
+      "text_markdown": "การทำความเข้าใจอะตอมคือรากฐานของวิชาเคมี",
+      "title": "ทุกสิ่งล้วนประกอบด้วยอะตอม",
+      "tts": {
+        "text": "การทำความเข้าใจอะตอมคือรากฐานของวิชาเคมี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "text": "เคมีคือวิทยาศาสตร์ที่ศึกษาว่าอะตอมรวมตัว จัดเรียงตัวใหม่ และมีปฏิสัมพันธ์กันอย่างไร",
+      "text_markdown": "เคมีคือวิทยาศาสตร์ที่ศึกษาว่าอะตอมรวมตัว จัดเรียงตัวใหม่ และมีปฏิสัมพันธ์กันอย่างไร",
+      "title": "ทุกสิ่งล้วนประกอบด้วยอะตอม",
+      "tts": {
+        "text": "เคมีคือวิทยาศาสตร์ที่ศึกษาว่าอะตอมรวมตัว จัดเรียงตัวใหม่ และมีปฏิสัมพันธ์กันอย่างไร",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "text": "ทุกสิ่งที่เกิดขึ้นในโลกทางกายภาพล้วนเกี่ยวข้องกับอะตอมและการกระทำของพวกมัน",
+      "text_markdown": "ทุกสิ่งที่เกิดขึ้นในโลกทางกายภาพล้วนเกี่ยวข้องกับอะตอมและการกระทำของพวกมัน",
+      "title": "ทุกสิ่งล้วนประกอบด้วยอะตอม",
+      "tts": {
+        "text": "ทุกสิ่งที่เกิดขึ้นในโลกทางกายภาพล้วนเกี่ยวข้องกับอะตอมและการกระทำของพวกมัน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 2,
+      "paragraph_id": "p10",
+      "text": "ภายในอะตอม",
+      "text_markdown": "ภายในอะตอม",
+      "title": "ภายในอะตอม"
+    },
+    {
+      "id": "ch02-038",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "อะตอมมีอนุภาคสามชนิดอยู่ภายใน",
+      "text_markdown": "อะตอมมีอนุภาคสามชนิดอยู่ภายใน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อะตอมมีอนุภาคสามชนิดอยู่ภายใน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "โปรตอน",
+      "text_markdown": "โปรตอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "โปรตอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "นิวตรอน",
+      "text_markdown": "นิวตรอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวตรอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "อิเล็กตรอน",
+      "text_markdown": "อิเล็กตรอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อิเล็กตรอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "อนุภาคทั้งสามชนิดนี้ประกอบขึ้นเป็นอะตอมทุกอะตอมในจักรวาล",
+      "text_markdown": "อนุภาคทั้งสามชนิดนี้ประกอบขึ้นเป็นอะตอมทุกอะตอมในจักรวาล",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อนุภาคทั้งสามชนิดนี้ประกอบขึ้นเป็นอะตอมทุกอะตอมในจักรวาล",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "ใจกลางของอะตอมเรียกว่านิวเคลียส",
+      "text_markdown": "ใจกลางของอะตอมเรียกว่านิวเคลียส",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "ใจกลางของอะตอมเรียกว่านิวเคลียส",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-044",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "นิวเคลียสประกอบด้วยโปรตอนและนิวตรอน",
+      "text_markdown": "นิวเคลียสประกอบด้วยโปรตอนและนิวตรอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวเคลียสประกอบด้วยโปรตอนและนิวตรอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "นิวเคลียสมีขนาดเล็กมากเมื่อเทียบกับอะตอมทั้งอะตอม",
+      "text_markdown": "นิวเคลียสมีขนาดเล็กมากเมื่อเทียบกับอะตอมทั้งอะตอม",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวเคลียสมีขนาดเล็กมากเมื่อเทียบกับอะตอมทั้งอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-046",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "หากอะตอมมีขนาดเท่าสนามฟุตบอล นิวเคลียสก็จะมีขนาดเท่าลูกหินที่อยู่บนเส้นห้าสิบหลา",
+      "text_markdown": "หากอะตอมมีขนาดเท่าสนามฟุตบอล นิวเคลียสก็จะมีขนาดเท่าลูกหินที่อยู่บนเส้นห้าสิบหลา",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "หากอะตอมมีขนาดเท่าสนามฟุตบอล นิวเคลียสก็จะมีขนาดเท่าลูกหินที่อยู่บนเส้นห้าสิบหลา",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch02-047",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "โปรตอนมีประจุไฟฟ้าเป็นบวก",
+      "text_markdown": "โปรตอนมีประจุไฟฟ้าเป็นบวก",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "โปรตอนมีประจุไฟฟ้าเป็นบวก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "โปรตอนทุกตัวมีปริมาณประจุบวกเท่ากัน",
+      "text_markdown": "โปรตอนทุกตัวมีปริมาณประจุบวกเท่ากัน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "โปรตอนทุกตัวมีปริมาณประจุบวกเท่ากัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "จำนวนโปรตอนในอะตอมเป็นตัวกำหนดว่าอะตอมนั้นเป็นธาตุอะไร",
+      "text_markdown": "จำนวนโปรตอนในอะตอมเป็นตัวกำหนดว่าอะตอมนั้นเป็นธาตุอะไร",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "จำนวนโปรตอนในอะตอมเป็นตัวกำหนดว่าอะตอมนั้นเป็นธาตุอะไร",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-050",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "โปรตอนหนึ่งตัวหมายถึงธาตุไฮโดรเจน",
+      "text_markdown": "โปรตอนหนึ่งตัวหมายถึงธาตุไฮโดรเจน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "โปรตอนหนึ่งตัวหมายถึงธาตุไฮโดรเจน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "โปรตอนหกตัวหมายถึงธาตุคาร์บอน",
+      "text_markdown": "โปรตอนหกตัวหมายถึงธาตุคาร์บอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "โปรตอนหกตัวหมายถึงธาตุคาร์บอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "โปรตอนยี่สิบหกตัวหมายถึงธาตุเหล็ก",
+      "text_markdown": "โปรตอนยี่สิบหกตัวหมายถึงธาตุเหล็ก",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "โปรตอนยี่สิบหกตัวหมายถึงธาตุเหล็ก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "จำนวนโปรตอนเป็นข้อเท็จจริงที่สำคัญที่สุดเกี่ยวกับอะตอม",
+      "text_markdown": "จำนวนโปรตอนเป็นข้อเท็จจริงที่สำคัญที่สุดเกี่ยวกับอะตอม",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "จำนวนโปรตอนเป็นข้อเท็จจริงที่สำคัญที่สุดเกี่ยวกับอะตอม",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-054",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "นิวตรอนไม่มีประจุไฟฟ้า",
+      "text_markdown": "นิวตรอนไม่มีประจุไฟฟ้า",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวตรอนไม่มีประจุไฟฟ้า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-055",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "นิวตรอนเป็นกลาง",
+      "text_markdown": "นิวตรอนเป็นกลาง",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวตรอนเป็นกลาง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "นิวตรอนอยู่ภายในนิวเคลียสข้างโปรตอน",
+      "text_markdown": "นิวตรอนอยู่ภายในนิวเคลียสข้างโปรตอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวตรอนอยู่ภายในนิวเคลียสข้างโปรตอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-057",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "นิวตรอนช่วยยึดนิวเคลียสไว้ด้วยกัน",
+      "text_markdown": "นิวตรอนช่วยยึดนิวเคลียสไว้ด้วยกัน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวตรอนช่วยยึดนิวเคลียสไว้ด้วยกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "หากไม่มีนิวตรอน โปรตอนจะผลักกันออกไปเพราะพวกมันมีประจุบวกเหมือนกันทั้งหมด",
+      "text_markdown": "หากไม่มีนิวตรอน โปรตอนจะผลักกันออกไปเพราะพวกมันมีประจุบวกเหมือนกันทั้งหมด",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "หากไม่มีนิวตรอน โปรตอนจะผลักกันออกไปเพราะพวกมันมีประจุบวกเหมือนกันทั้งหมด",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-059",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "อิเล็กตรอนมีประจุไฟฟ้าเป็นลบ",
+      "text_markdown": "อิเล็กตรอนมีประจุไฟฟ้าเป็นลบ",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อิเล็กตรอนมีประจุไฟฟ้าเป็นลบ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "อิเล็กตรอนเคลื่อนที่รอบนิวเคลียสในลักษณะเป็นกลุ่มเมฆ",
+      "text_markdown": "อิเล็กตรอนเคลื่อนที่รอบนิวเคลียสในลักษณะเป็นกลุ่มเมฆ",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อิเล็กตรอนเคลื่อนที่รอบนิวเคลียสในลักษณะเป็นกลุ่มเมฆ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "พวกมันไม่ได้โคจรเหมือนดาวเคราะห์รอบดวงอาทิตย์",
+      "text_markdown": "พวกมันไม่ได้โคจรเหมือนดาวเคราะห์รอบดวงอาทิตย์",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "พวกมันไม่ได้โคจรเหมือนดาวเคราะห์รอบดวงอาทิตย์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "พวกมันอยู่ในบริเวณที่มีความน่าจะเป็นที่คลุมเครือรอบนิวเคลียส",
+      "text_markdown": "พวกมันอยู่ในบริเวณที่มีความน่าจะเป็นที่คลุมเครือรอบนิวเคลียส",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "พวกมันอยู่ในบริเวณที่มีความน่าจะเป็นที่คลุมเครือรอบนิวเคลียส",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "กลุ่มหมอกอิเล็กตรอนคือบริเวณที่คุณมีแนวโน้มที่จะพบอิเล็กตรอนได้ตลอดเวลา",
+      "text_markdown": "กลุ่มหมอกอิเล็กตรอนคือบริเวณที่คุณมีแนวโน้มที่จะพบอิเล็กตรอนได้ตลอดเวลา",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "กลุ่มหมอกอิเล็กตรอนคือบริเวณที่คุณมีแนวโน้มที่จะพบอิเล็กตรอนได้ตลอดเวลา",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-064",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "text": "อิเล็กตรอนแทบไม่มีมวลเลยเมื่อเทียบกับโปรตอนหรือนิวตรอน",
+      "text_markdown": "อิเล็กตรอนแทบไม่มีมวลเลยเมื่อเทียบกับโปรตอนหรือนิวตรอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อิเล็กตรอนแทบไม่มีมวลเลยเมื่อเทียบกับโปรตอนหรือนิวตรอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-065",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "text": "โปรตอนมีน้ำหนักมากกว่าอิเล็กตรอนประมาณ 1,836 เท่า",
+      "text_markdown": "โปรตอนมีน้ำหนักมากกว่าอิเล็กตรอนประมาณ 1,836 เท่า",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "โปรตอนมีน้ำหนักมากกว่าอิเล็กตรอนประมาณ หนึ่งพันแปดร้อยสามสิบหก เท่า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "text": "มวลเกือบทั้งหมดของอะตอมอยู่ในนิวเคลียส",
+      "text_markdown": "มวลเกือบทั้งหมดของอะตอมอยู่ในนิวเคลียส",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "มวลเกือบทั้งหมดของอะตอมอยู่ในนิวเคลียส",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-067",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "ในอะตอมที่เป็นกลาง จำนวนอิเล็กตรอนจะเท่ากับจำนวนโปรตอน",
+      "text_markdown": "ในอะตอมที่เป็นกลาง จำนวนอิเล็กตรอนจะเท่ากับจำนวนโปรตอน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "ในอะตอมที่เป็นกลาง จำนวนอิเล็กตรอนจะเท่ากับจำนวนโปรตอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-068",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "ประจุบวกและประจุลบจะหักล้างกัน",
+      "text_markdown": "ประจุบวกและประจุลบจะหักล้างกัน",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "ประจุบวกและประจุลบจะหักล้างกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-069",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "อะตอมจึงไม่มีประจุโดยรวม",
+      "text_markdown": "อะตอมจึงไม่มีประจุโดยรวม",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อะตอมจึงไม่มีประจุโดยรวม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "ความสมดุลนี้คือสถานะปกติของอะตอม",
+      "text_markdown": "ความสมดุลนี้คือสถานะปกติของอะตอม",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "ความสมดุลนี้คือสถานะปกติของอะตอม",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-071",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "อะตอมส่วนใหญ่เป็นพื้นที่ว่างเปล่า",
+      "text_markdown": "อะตอมส่วนใหญ่เป็นพื้นที่ว่างเปล่า",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "อะตอมส่วนใหญ่เป็นพื้นที่ว่างเปล่า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "นิวเคลียสมีความหนาแน่นและเล็กมาก",
+      "text_markdown": "นิวเคลียสมีความหนาแน่นและเล็กมาก",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "นิวเคลียสมีความหนาแน่นและเล็กมาก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "กลุ่มหมอกอิเล็กตรอนมีขนาดใหญ่และส่วนใหญ่เป็นความว่างเปล่า",
+      "text_markdown": "กลุ่มหมอกอิเล็กตรอนมีขนาดใหญ่และส่วนใหญ่เป็นความว่างเปล่า",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "กลุ่มหมอกอิเล็กตรอนมีขนาดใหญ่และส่วนใหญ่เป็นความว่างเปล่า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "หากคุณสามารถกำจัดพื้นที่ว่างเปล่าทั้งหมดออกจากอะตอมทุกอะตอมในร่างกายของคุณได้ คุณจะหดตัวลงจนมีขนาดเล็กกว่าเม็ดเกลือ",
+      "text_markdown": "หากคุณสามารถกำจัดพื้นที่ว่างเปล่าทั้งหมดออกจากอะตอมทุกอะตอมในร่างกายของคุณได้ คุณจะหดตัวลงจนมีขนาดเล็กกว่าเม็ดเกลือ",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "หากคุณสามารถกำจัดพื้นที่ว่างเปล่าทั้งหมดออกจากอะตอมทุกอะตอมในร่างกายของคุณได้ คุณจะหดตัวลงจนมีขนาดเล็กกว่าเม็ดเกลือ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-075",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "มวลของคุณจะยังคงเท่าเดิม",
+      "text_markdown": "มวลของคุณจะยังคงเท่าเดิม",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "มวลของคุณจะยังคงเท่าเดิม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-076",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "คุณก็จะมีความหนาแน่นสูงอย่างไม่น่าเชื่อ",
+      "text_markdown": "คุณก็จะมีความหนาแน่นสูงอย่างไม่น่าเชื่อ",
+      "title": "ภายในอะตอม",
+      "tts": {
+        "text": "คุณก็จะมีความหนาแน่นสูงอย่างไม่น่าเชื่อ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-077",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 3,
+      "paragraph_id": "p19",
+      "text": "ธาตุ",
+      "text_markdown": "ธาตุ",
+      "title": "ธาตุ"
+    },
+    {
+      "id": "ch03-078",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "ธาตุคือสารที่ประกอบด้วยอะตอมชนิดเดียวเท่านั้น",
+      "text_markdown": "ธาตุคือสารที่ประกอบด้วยอะตอมชนิดเดียวเท่านั้น",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ธาตุคือสารที่ประกอบด้วยอะตอมชนิดเดียวเท่านั้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-079",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "ทองคำบริสุทธิ์เป็นธาตุชนิดหนึ่ง",
+      "text_markdown": "ทองคำบริสุทธิ์เป็นธาตุชนิดหนึ่ง",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ทองคำบริสุทธิ์เป็นธาตุชนิดหนึ่ง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "อะตอมทุกอะตอมในทองคำแท่งบริสุทธิ์มีโปรตอนเจ็ดสิบเก้าตัว",
+      "text_markdown": "อะตอมทุกอะตอมในทองคำแท่งบริสุทธิ์มีโปรตอนเจ็ดสิบเก้าตัว",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "อะตอมทุกอะตอมในทองคำแท่งบริสุทธิ์มีโปรตอนเจ็ดสิบเก้าตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "ออกซิเจนบริสุทธิ์เป็นธาตุชนิดหนึ่ง",
+      "text_markdown": "ออกซิเจนบริสุทธิ์เป็นธาตุชนิดหนึ่ง",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ออกซิเจนบริสุทธิ์เป็นธาตุชนิดหนึ่ง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "อะตอมทุกอะตอมในถังออกซิเจนบริสุทธิ์มีโปรตอนแปดตัว",
+      "text_markdown": "อะตอมทุกอะตอมในถังออกซิเจนบริสุทธิ์มีโปรตอนแปดตัว",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "อะตอมทุกอะตอมในถังออกซิเจนบริสุทธิ์มีโปรตอนแปดตัว",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "มีธาตุประมาณเก้าสิบสองชนิดที่เกิดขึ้นตามธรรมชาติบนโลก",
+      "text_markdown": "มีธาตุประมาณเก้าสิบสองชนิดที่เกิดขึ้นตามธรรมชาติบนโลก",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "มีธาตุประมาณเก้าสิบสองชนิดที่เกิดขึ้นตามธรรมชาติบนโลก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "นักวิทยาศาสตร์ได้สร้างธาตุเพิ่มเติมขึ้นในห้องปฏิบัติการ",
+      "text_markdown": "นักวิทยาศาสตร์ได้สร้างธาตุเพิ่มเติมขึ้นในห้องปฏิบัติการ",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "นักวิทยาศาสตร์ได้สร้างธาตุเพิ่มเติมขึ้นในห้องปฏิบัติการ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-085",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "จำนวนธาตุที่รู้จักทั้งหมดมีมากกว่าหนึ่งร้อยสิบแปดชนิด",
+      "text_markdown": "จำนวนธาตุที่รู้จักทั้งหมดมีมากกว่าหนึ่งร้อยสิบแปดชนิด",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "จำนวนธาตุที่รู้จักทั้งหมดมีมากกว่าหนึ่งร้อยสิบแปดชนิด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-086",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "ธาตุแต่ละชนิดมีจำนวนโปรตอนที่เป็นเอกลักษณ์",
+      "text_markdown": "ธาตุแต่ละชนิดมีจำนวนโปรตอนที่เป็นเอกลักษณ์",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ธาตุแต่ละชนิดมีจำนวนโปรตอนที่เป็นเอกลักษณ์",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "ธาตุทุกชนิดมีชื่อและสัญลักษณ์",
+      "text_markdown": "ธาตุทุกชนิดมีชื่อและสัญลักษณ์",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ธาตุทุกชนิดมีชื่อและสัญลักษณ์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-088",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "ไฮโดรเจนคือ H. ออกซิเจนคือ O. คาร์บอนคือ C. เหล็กคือ Fe.",
+      "text_markdown": "ไฮโดรเจนคือ H. ออกซิเจนคือ O. คาร์บอนคือ C. เหล็กคือ Fe.",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ไฮโดรเจนคือ เอช. ออกซิเจนคือ โอ. คาร์บอนคือ ซี. เหล็กคือ เอฟ อี.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-089",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "ทองคำคือ Au.",
+      "text_markdown": "ทองคำคือ Au.",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ทองคำคือ เอ ยู.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-090",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "สัญลักษณ์เหล่านี้มาจากชื่อภาษาละติน กรีก หรืออังกฤษ",
+      "text_markdown": "สัญลักษณ์เหล่านี้มาจากชื่อภาษาละติน กรีก หรืออังกฤษ",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "สัญลักษณ์เหล่านี้มาจากชื่อภาษาละติน กรีก หรืออังกฤษ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-091",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Fe มาจากคำภาษาละตินว่า ferrum",
+      "text_markdown": "Fe มาจากคำภาษาละตินว่า ferrum",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "เอฟ อี มาจากคำภาษาละตินว่า ferrum",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-092",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Au มาจากคำภาษาละตินว่า aurum",
+      "text_markdown": "Au มาจากคำภาษาละตินว่า aurum",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "เอ ยู มาจากคำภาษาละตินว่า aurum",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-093",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "ไฮโดรเจนเป็นธาตุที่ง่ายที่สุด",
+      "text_markdown": "ไฮโดรเจนเป็นธาตุที่ง่ายที่สุด",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ไฮโดรเจนเป็นธาตุที่ง่ายที่สุด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-094",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "อะตอมของไฮโดรเจนมีโปรตอนหนึ่งตัวและอิเล็กตรอนหนึ่งตัว",
+      "text_markdown": "อะตอมของไฮโดรเจนมีโปรตอนหนึ่งตัวและอิเล็กตรอนหนึ่งตัว",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "อะตอมของไฮโดรเจนมีโปรตอนหนึ่งตัวและอิเล็กตรอนหนึ่งตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-095",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "ไฮโดรเจนเป็นธาตุที่พบมากที่สุดในเอกภพ",
+      "text_markdown": "ไฮโดรเจนเป็นธาตุที่พบมากที่สุดในเอกภพ",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ไฮโดรเจนเป็นธาตุที่พบมากที่สุดในเอกภพ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-096",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "ดาวฤกษ์ส่วนใหญ่ประกอบด้วยไฮโดรเจน",
+      "text_markdown": "ดาวฤกษ์ส่วนใหญ่ประกอบด้วยไฮโดรเจน",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ดาวฤกษ์ส่วนใหญ่ประกอบด้วยไฮโดรเจน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-097",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "คาร์บอนเป็นธาตุแห่งชีวิต",
+      "text_markdown": "คาร์บอนเป็นธาตุแห่งชีวิต",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "คาร์บอนเป็นธาตุแห่งชีวิต",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-098",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "คาร์บอนมีโปรตอนหกตัว",
+      "text_markdown": "คาร์บอนมีโปรตอนหกตัว",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "คาร์บอนมีโปรตอนหกตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-099",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "อะตอมของคาร์บอนสามารถสร้างพันธะกับอะตอมอื่น ๆ ได้หลายอะตอมพร้อมกัน",
+      "text_markdown": "อะตอมของคาร์บอนสามารถสร้างพันธะกับอะตอมอื่น ๆ ได้หลายอะตอมพร้อมกัน",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "อะตอมของคาร์บอนสามารถสร้างพันธะกับอะตอมอื่น ๆ ได้หลายอะตอมพร้อมกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-100",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "ความสามารถนี้ทำให้คาร์บอนเป็นแกนหลักของสิ่งมีชีวิตทั้งหมด",
+      "text_markdown": "ความสามารถนี้ทำให้คาร์บอนเป็นแกนหลักของสิ่งมีชีวิตทั้งหมด",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ความสามารถนี้ทำให้คาร์บอนเป็นแกนหลักของสิ่งมีชีวิตทั้งหมด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-101",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "โปรตีนทุกชนิด, สายดีเอ็นเอทุกสาย, และโมเลกุลน้ำตาลทุกโมเลกุลในร่างกายของคุณมีคาร์บอนเป็นส่วนประกอบ",
+      "text_markdown": "โปรตีนทุกชนิด, สายดีเอ็นเอทุกสาย, และโมเลกุลน้ำตาลทุกโมเลกุลในร่างกายของคุณมีคาร์บอนเป็นส่วนประกอบ",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "โปรตีนทุกชนิด, สายดี เอ็น เอ ทุกสาย, และโมเลกุลน้ำตาลทุกโมเลกุลในร่างกายของคุณมีคาร์บอนเป็นส่วนประกอบ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-102",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "ออกซิเจนมีโปรตอนแปดตัว",
+      "text_markdown": "ออกซิเจนมีโปรตอนแปดตัว",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ออกซิเจนมีโปรตอนแปดตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-103",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "ออกซิเจนเป็นธาตุที่คุณหายใจเข้าไป",
+      "text_markdown": "ออกซิเจนเป็นธาตุที่คุณหายใจเข้าไป",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ออกซิเจนเป็นธาตุที่คุณหายใจเข้าไป",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-104",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "ปอดของคุณดึงออกซิเจนออกจากอากาศและส่งเข้าสู่กระแสเลือดของคุณ",
+      "text_markdown": "ปอดของคุณดึงออกซิเจนออกจากอากาศและส่งเข้าสู่กระแสเลือดของคุณ",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ปอดของคุณดึงออกซิเจนออกจากอากาศและส่งเข้าสู่กระแสเลือดของคุณ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-105",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "เซลล์ของคุณใช้ออกซิเจนเพื่อปลดปล่อยพลังงานจากอาหาร",
+      "text_markdown": "เซลล์ของคุณใช้ออกซิเจนเพื่อปลดปล่อยพลังงานจากอาหาร",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "เซลล์ของคุณใช้ออกซิเจนเพื่อปลดปล่อยพลังงานจากอาหาร",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-106",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "เหล็กมีโปรตอนยี่สิบหกตัว",
+      "text_markdown": "เหล็กมีโปรตอนยี่สิบหกตัว",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "เหล็กมีโปรตอนยี่สิบหกตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-107",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "เหล็กเป็นธาตุที่ทำให้เลือดของคุณมีสีแดง",
+      "text_markdown": "เหล็กเป็นธาตุที่ทำให้เลือดของคุณมีสีแดง",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "เหล็กเป็นธาตุที่ทำให้เลือดของคุณมีสีแดง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-108",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "เหล็กเป็นส่วนประกอบหลักในเหล็กกล้า",
+      "text_markdown": "เหล็กเป็นส่วนประกอบหลักในเหล็กกล้า",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "เหล็กเป็นส่วนประกอบหลักในเหล็กกล้า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-109",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "แกนกลางของโลกส่วนใหญ่เป็นเหล็ก",
+      "text_markdown": "แกนกลางของโลกส่วนใหญ่เป็นเหล็ก",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "แกนกลางของโลกส่วนใหญ่เป็นเหล็ก",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-110",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "ธาตุที่เบาที่สุดเป็นธาตุที่พบมากที่สุดในเอกภพ",
+      "text_markdown": "ธาตุที่เบาที่สุดเป็นธาตุที่พบมากที่สุดในเอกภพ",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ธาตุที่เบาที่สุดเป็นธาตุที่พบมากที่สุดในเอกภพ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-111",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "ไฮโดรเจนและฮีเลียมรวมกันคิดเป็นประมาณเก้าสิบแปดเปอร์เซ็นต์ของอะตอมทั้งหมดในเอกภพ",
+      "text_markdown": "ไฮโดรเจนและฮีเลียมรวมกันคิดเป็นประมาณเก้าสิบแปดเปอร์เซ็นต์ของอะตอมทั้งหมดในเอกภพ",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ไฮโดรเจนและฮีเลียมรวมกันคิดเป็นประมาณเก้าสิบแปดเปอร์เซ็นต์ของอะตอมทั้งหมดในเอกภพ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-112",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "ธาตุที่หนักกว่านั้นหายากเมื่อเทียบกัน",
+      "text_markdown": "ธาตุที่หนักกว่านั้นหายากเมื่อเทียบกัน",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "ธาตุที่หนักกว่านั้นหายากเมื่อเทียบกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-113",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "อะตอมของธาตุหนักทุกชนิดถูกสร้างขึ้นภายในดาวฤกษ์",
+      "text_markdown": "อะตอมของธาตุหนักทุกชนิดถูกสร้างขึ้นภายในดาวฤกษ์",
+      "title": "ธาตุ",
+      "tts": {
+        "text": "อะตอมของธาตุหนักทุกชนิดถูกสร้างขึ้นภายในดาวฤกษ์",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-114",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "text": "ตารางธาตุ",
+      "text_markdown": "ตารางธาตุ",
+      "title": "ตารางธาตุ"
+    },
+    {
+      "id": "ch04-115",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "ตารางธาตุเป็นแผนภูมิที่จัดระเบียบธาตุที่รู้จักทั้งหมด",
+      "text_markdown": "ตารางธาตุเป็นแผนภูมิที่จัดระเบียบธาตุที่รู้จักทั้งหมด",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ตารางธาตุเป็นแผนภูมิที่จัดระเบียบธาตุที่รู้จักทั้งหมด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-116",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "ตารางนี้จัดเรียงธาตุตามจำนวนโปรตอนจากน้อยที่สุดไปมากที่สุด",
+      "text_markdown": "ตารางนี้จัดเรียงธาตุตามจำนวนโปรตอนจากน้อยที่สุดไปมากที่สุด",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ตารางนี้จัดเรียงธาตุตามจำนวนโปรตอนจากน้อยที่สุดไปมากที่สุด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-117",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "ไฮโดรเจนเป็นอันดับแรกด้วยโปรตอนหนึ่งตัว",
+      "text_markdown": "ไฮโดรเจนเป็นอันดับแรกด้วยโปรตอนหนึ่งตัว",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ไฮโดรเจนเป็นอันดับแรกด้วยโปรตอนหนึ่งตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-118",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "ฮีเลียมเป็นอันดับสองด้วยโปรตอนสองตัว",
+      "text_markdown": "ฮีเลียมเป็นอันดับสองด้วยโปรตอนสองตัว",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ฮีเลียมเป็นอันดับสองด้วยโปรตอนสองตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-119",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "ตารางนี้ดำเนินต่อไปจนถึงโอกาเนสซอนซึ่งมีโปรตอนหนึ่งร้อยสิบแปดตัว",
+      "text_markdown": "ตารางนี้ดำเนินต่อไปจนถึงโอกาเนสซอนซึ่งมีโปรตอนหนึ่งร้อยสิบแปดตัว",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ตารางนี้ดำเนินต่อไปจนถึงโอกาเนสซอนซึ่งมีโปรตอนหนึ่งร้อยสิบแปดตัว",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-120",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "ตารางธาตุมีแถวและคอลัมน์",
+      "text_markdown": "ตารางธาตุมีแถวและคอลัมน์",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ตารางธาตุมีแถวและคอลัมน์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-121",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "แถวแนวนอนเรียกว่าคาบ",
+      "text_markdown": "แถวแนวนอนเรียกว่าคาบ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "แถวแนวนอนเรียกว่าคาบ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-122",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "แถวแนวตั้งเรียกว่าหมู่",
+      "text_markdown": "แถวแนวตั้งเรียกว่าหมู่",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "แถวแนวตั้งเรียกว่าหมู่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-123",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "ธาตุที่อยู่ในหมู่เดียวกันมีสมบัติคล้ายคลึงกัน",
+      "text_markdown": "ธาตุที่อยู่ในหมู่เดียวกันมีสมบัติคล้ายคลึงกัน",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ธาตุที่อยู่ในหมู่เดียวกันมีสมบัติคล้ายคลึงกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-124",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "นี่คือเหตุผลที่ตารางนี้เรียกว่าตารางธาตุ",
+      "text_markdown": "นี่คือเหตุผลที่ตารางนี้เรียกว่าตารางธาตุ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "นี่คือเหตุผลที่ตารางนี้เรียกว่าตารางธาตุ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-125",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "สมบัติของธาตุจะซ้ำกันเป็นแบบแผนที่สม่ำเสมอ",
+      "text_markdown": "สมบัติของธาตุจะซ้ำกันเป็นแบบแผนที่สม่ำเสมอ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "สมบัติของธาตุจะซ้ำกันเป็นแบบแผนที่สม่ำเสมอ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-126",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "ธาตุที่อยู่ทางด้านซ้ายของตารางคือโลหะ",
+      "text_markdown": "ธาตุที่อยู่ทางด้านซ้ายของตารางคือโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ธาตุที่อยู่ทางด้านซ้ายของตารางคือโลหะ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-127",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "ธาตุส่วนใหญ่เป็นโลหะ",
+      "text_markdown": "ธาตุส่วนใหญ่เป็นโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ธาตุส่วนใหญ่เป็นโลหะ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-128",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "โลหะมีความมันวาว",
+      "text_markdown": "โลหะมีความมันวาว",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "โลหะมีความมันวาว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-129",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "โลหะนำไฟฟ้า",
+      "text_markdown": "โลหะนำไฟฟ้า",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "โลหะนำไฟฟ้า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-130",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "โลหะนำความร้อน",
+      "text_markdown": "โลหะนำความร้อน",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "โลหะนำความร้อน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-131",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "เหล็ก ทองแดง ทองคำ และอะลูมิเนียม ล้วนเป็นโลหะ",
+      "text_markdown": "เหล็ก ทองแดง ทองคำ และอะลูมิเนียม ล้วนเป็นโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "เหล็ก ทองแดง ทองคำ และอะลูมิเนียม ล้วนเป็นโลหะ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-132",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "ธาตุที่อยู่ทางด้านขวาของตารางคืออโลหะ",
+      "text_markdown": "ธาตุที่อยู่ทางด้านขวาของตารางคืออโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ธาตุที่อยู่ทางด้านขวาของตารางคืออโลหะ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-133",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "อโลหะได้แก่ ออกซิเจน ไนโตรเจน คาร์บอน และกำมะถัน",
+      "text_markdown": "อโลหะได้แก่ ออกซิเจน ไนโตรเจน คาร์บอน และกำมะถัน",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "อโลหะได้แก่ ออกซิเจน ไนโตรเจน คาร์บอน และกำมะถัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-134",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "อโลหะนำไฟฟ้าได้ไม่ดี",
+      "text_markdown": "อโลหะนำไฟฟ้าได้ไม่ดี",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "อโลหะนำไฟฟ้าได้ไม่ดี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-135",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "อโลหะเป็นธาตุที่เป็นส่วนประกอบของอากาศ น้ำ และสิ่งมีชีวิต",
+      "text_markdown": "อโลหะเป็นธาตุที่เป็นส่วนประกอบของอากาศ น้ำ และสิ่งมีชีวิต",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "อโลหะเป็นธาตุที่เป็นส่วนประกอบของอากาศ น้ำ และสิ่งมีชีวิต",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-136",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "ธาตุบางชนิดอยู่ตรงรอยต่อระหว่างโลหะและอโลหะ",
+      "text_markdown": "ธาตุบางชนิดอยู่ตรงรอยต่อระหว่างโลหะและอโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ธาตุบางชนิดอยู่ตรงรอยต่อระหว่างโลหะและอโลหะ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-137",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "ธาตุเหล่านี้เรียกว่ากึ่งโลหะ",
+      "text_markdown": "ธาตุเหล่านี้เรียกว่ากึ่งโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ธาตุเหล่านี้เรียกว่ากึ่งโลหะ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-138",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "ซิลิคอนเป็นกึ่งโลหะ",
+      "text_markdown": "ซิลิคอนเป็นกึ่งโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ซิลิคอนเป็นกึ่งโลหะ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-139",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "ซิลิคอนนำไฟฟ้าได้เล็กน้อย แต่ไม่ดีเท่าโลหะ",
+      "text_markdown": "ซิลิคอนนำไฟฟ้าได้เล็กน้อย แต่ไม่ดีเท่าโลหะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ซิลิคอนนำไฟฟ้าได้เล็กน้อย แต่ไม่ดีเท่าโลหะ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-140",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "คุณสมบัตินี้ทำให้ซิลิคอนมีประโยชน์ในชิปคอมพิวเตอร์",
+      "text_markdown": "คุณสมบัตินี้ทำให้ซิลิคอนมีประโยชน์ในชิปคอมพิวเตอร์",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "คุณสมบัตินี้ทำให้ซิลิคอนมีประโยชน์ในชิปคอมพิวเตอร์",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-141",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "แก๊สมีสกุลอยู่ในหมู่สุดท้ายทางด้านขวา",
+      "text_markdown": "แก๊สมีสกุลอยู่ในหมู่สุดท้ายทางด้านขวา",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "แก๊สมีสกุลอยู่ในหมู่สุดท้ายทางด้านขวา",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-142",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "ฮีเลียม นีออน อาร์กอน คริปทอน ซีนอน และเรดอน เป็นแก๊สมีสกุล",
+      "text_markdown": "ฮีเลียม นีออน อาร์กอน คริปทอน ซีนอน และเรดอน เป็นแก๊สมีสกุล",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ฮีเลียม นีออน อาร์กอน คริปทอน ซีนอน และเรดอน เป็นแก๊สมีสกุล",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-143",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "แก๊สมีสกุลแทบจะไม่ทำปฏิกิริยากับธาตุอื่นเลย",
+      "text_markdown": "แก๊สมีสกุลแทบจะไม่ทำปฏิกิริยากับธาตุอื่นเลย",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "แก๊สมีสกุลแทบจะไม่ทำปฏิกิริยากับธาตุอื่นเลย",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-144",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "การจัดเรียงอิเล็กตรอนของพวกมันมีความเสถียรอยู่แล้ว",
+      "text_markdown": "การจัดเรียงอิเล็กตรอนของพวกมันมีความเสถียรอยู่แล้ว",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "การจัดเรียงอิเล็กตรอนของพวกมันมีความเสถียรอยู่แล้ว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-145",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "พวกมันไม่จำเป็นต้องสร้างพันธะ",
+      "text_markdown": "พวกมันไม่จำเป็นต้องสร้างพันธะ",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "พวกมันไม่จำเป็นต้องสร้างพันธะ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-146",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "นักวิทยาศาสตร์ชาวรัสเซียชื่อ ดมิทรี เมนเดเลเยฟ สร้างตารางธาตุฉบับแรกในปี 1869",
+      "text_markdown": "นักวิทยาศาสตร์ชาวรัสเซียชื่อ ดมิทรี เมนเดเลเยฟ สร้างตารางธาตุฉบับแรกในปี 1869",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "นักวิทยาศาสตร์ชาวรัสเซียชื่อ ดมิทรี เมนเดเลเยฟ สร้างตารางธาตุฉบับแรกในปีหนึ่งพันแปดร้อยหกสิบเก้า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-147",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "เมนเดเลเยฟจัดเรียงธาตุตามสมบัติของพวกมันและสังเกตเห็นแบบแผนที่ซ้ำกัน",
+      "text_markdown": "เมนเดเลเยฟจัดเรียงธาตุตามสมบัติของพวกมันและสังเกตเห็นแบบแผนที่ซ้ำกัน",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "เมนเดเลเยฟจัดเรียงธาตุตามสมบัติของพวกมันและสังเกตเห็นแบบแผนที่ซ้ำกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-148",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "เขาทิ้งช่องว่างไว้ในตารางของเขาในตำแหน่งที่เขาทำนายว่าควรจะมีธาตุที่ไม่รู้จักอยู่",
+      "text_markdown": "เขาทิ้งช่องว่างไว้ในตารางของเขาในตำแหน่งที่เขาทำนายว่าควรจะมีธาตุที่ไม่รู้จักอยู่",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "เขาทิ้งช่องว่างไว้ในตารางของเขาในตำแหน่งที่เขาทำนายว่าควรจะมีธาตุที่ไม่รู้จักอยู่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-149",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "นักวิทยาศาสตร์ค้นพบธาตุเหล่านั้นในภายหลัง",
+      "text_markdown": "นักวิทยาศาสตร์ค้นพบธาตุเหล่านั้นในภายหลัง",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "นักวิทยาศาสตร์ค้นพบธาตุเหล่านั้นในภายหลัง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-150",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "ทุกคำทำนายถูกต้อง",
+      "text_markdown": "ทุกคำทำนายถูกต้อง",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ทุกคำทำนายถูกต้อง",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-151",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "text": "ตารางธาตุเป็นหนึ่งในเครื่องมือที่ทรงพลังที่สุดในทางวิทยาศาสตร์",
+      "text_markdown": "ตารางธาตุเป็นหนึ่งในเครื่องมือที่ทรงพลังที่สุดในทางวิทยาศาสตร์",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "ตารางธาตุเป็นหนึ่งในเครื่องมือที่ทรงพลังที่สุดในทางวิทยาศาสตร์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-152",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "text": "หากคุณทราบว่าธาตุใดอยู่ตำแหน่งใดในตาราง คุณจะสามารถคาดการณ์พฤติกรรมของมันได้",
+      "text_markdown": "หากคุณทราบว่าธาตุใดอยู่ตำแหน่งใดในตาราง คุณจะสามารถคาดการณ์พฤติกรรมของมันได้",
+      "title": "ตารางธาตุ",
+      "tts": {
+        "text": "หากคุณทราบว่าธาตุใดอยู่ตำแหน่งใดในตาราง คุณจะสามารถคาดการณ์พฤติกรรมของมันได้",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-153",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "text": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "text_markdown": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร"
+    },
+    {
+      "id": "ch05-154",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "อะตอมไม่ค่อยอยู่โดดเดี่ยว",
+      "text_markdown": "อะตอมไม่ค่อยอยู่โดดเดี่ยว",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมไม่ค่อยอยู่โดดเดี่ยว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-155",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "อะตอมส่วนใหญ่จะยึดเหนี่ยวกับอะตอมอื่นเพื่อสร้างโมเลกุล",
+      "text_markdown": "อะตอมส่วนใหญ่จะยึดเหนี่ยวกับอะตอมอื่นเพื่อสร้างโมเลกุล",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมส่วนใหญ่จะยึดเหนี่ยวกับอะตอมอื่นเพื่อสร้างโมเลกุล",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-156",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "โมเลกุลคือกลุ่มของอะตอมที่ยึดเหนี่ยวกันด้วยพันธะเคมี",
+      "text_markdown": "โมเลกุลคือกลุ่มของอะตอมที่ยึดเหนี่ยวกันด้วยพันธะเคมี",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "โมเลกุลคือกลุ่มของอะตอมที่ยึดเหนี่ยวกันด้วยพันธะเคมี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-157",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "น้ำเป็นโมเลกุล",
+      "text_markdown": "น้ำเป็นโมเลกุล",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "น้ำเป็นโมเลกุล",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-158",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "ก๊าซออกซิเจนเป็นโมเลกุล",
+      "text_markdown": "ก๊าซออกซิเจนเป็นโมเลกุล",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "ก๊าซออกซิเจนเป็นโมเลกุล",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-159",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "น้ำตาลเป็นโมเลกุล",
+      "text_markdown": "น้ำตาลเป็นโมเลกุล",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "น้ำตาลเป็นโมเลกุล",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-160",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "อะตอมยึดเหนี่ยวกันเนื่องจากอิเล็กตรอนของพวกมัน",
+      "text_markdown": "อะตอมยึดเหนี่ยวกันเนื่องจากอิเล็กตรอนของพวกมัน",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมยึดเหนี่ยวกันเนื่องจากอิเล็กตรอนของพวกมัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-161",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "อิเล็กตรอนในวงโคจรชั้นนอกสุดของอะตอมเป็นตัวกำหนดว่าอะตอมนั้นจะทำปฏิกิริยากับอะตอมอื่นอย่างไร",
+      "text_markdown": "อิเล็กตรอนในวงโคจรชั้นนอกสุดของอะตอมเป็นตัวกำหนดว่าอะตอมนั้นจะทำปฏิกิริยากับอะตอมอื่นอย่างไร",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อิเล็กตรอนในวงโคจรชั้นนอกสุดของอะตอมเป็นตัวกำหนดว่าอะตอมนั้นจะทำปฏิกิริยากับอะตอมอื่นอย่างไร",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-162",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "อิเล็กตรอนวงนอกเหล่านี้เรียกว่า อิเล็กตรอนเวเลนซ์",
+      "text_markdown": "อิเล็กตรอนวงนอกเหล่านี้เรียกว่า อิเล็กตรอนเวเลนซ์",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อิเล็กตรอนวงนอกเหล่านี้เรียกว่า อิเล็กตรอนเวเลนซ์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-163",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "อะตอมที่มีวงโคจรชั้นนอกเต็มจะมีความเสถียร",
+      "text_markdown": "อะตอมที่มีวงโคจรชั้นนอกเต็มจะมีความเสถียร",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมที่มีวงโคจรชั้นนอกเต็มจะมีความเสถียร",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-164",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "อะตอมที่ไม่มีวงโคจรชั้นนอกเต็มจะพยายามเติมเต็มให้ครบ",
+      "text_markdown": "อะตอมที่ไม่มีวงโคจรชั้นนอกเต็มจะพยายามเติมเต็มให้ครบ",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมที่ไม่มีวงโคจรชั้นนอกเต็มจะพยายามเติมเต็มให้ครบ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-165",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "text": "พันธะเคมีมีสองประเภทหลัก",
+      "text_markdown": "พันธะเคมีมีสองประเภทหลัก",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "พันธะเคมีมีสองประเภทหลัก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-166",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "text": "พันธะโคเวเลนต์และพันธะไอออนิก",
+      "text_markdown": "พันธะโคเวเลนต์และพันธะไอออนิก",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "พันธะโคเวเลนต์และพันธะไอออนิก",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-167",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "ในพันธะโคเวเลนต์ อะตอมสองอะตอมจะใช้อิเล็กตรอนร่วมกัน",
+      "text_markdown": "ในพันธะโคเวเลนต์ อะตอมสองอะตอมจะใช้อิเล็กตรอนร่วมกัน",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "ในพันธะโคเวเลนต์ อะตอมสองอะตอมจะใช้อิเล็กตรอนร่วมกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-168",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "อะตอมทั้งสองจะให้อิเล็กตรอนเพื่อใช้ร่วมกันเป็นคู่",
+      "text_markdown": "อะตอมทั้งสองจะให้อิเล็กตรอนเพื่อใช้ร่วมกันเป็นคู่",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมทั้งสองจะให้อิเล็กตรอนเพื่อใช้ร่วมกันเป็นคู่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-169",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "อิเล็กตรอนที่ใช้ร่วมกันจะโคจรรอบนิวเคลียสทั้งสอง",
+      "text_markdown": "อิเล็กตรอนที่ใช้ร่วมกันจะโคจรรอบนิวเคลียสทั้งสอง",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อิเล็กตรอนที่ใช้ร่วมกันจะโคจรรอบนิวเคลียสทั้งสอง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-170",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "การใช้อิเล็กตรอนร่วมกันนี้ทำให้อะตอมยึดเหนี่ยวกัน",
+      "text_markdown": "การใช้อิเล็กตรอนร่วมกันนี้ทำให้อะตอมยึดเหนี่ยวกัน",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "การใช้อิเล็กตรอนร่วมกันนี้ทำให้อะตอมยึดเหนี่ยวกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-171",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "น้ำยึดเหนี่ยวกันด้วยพันธะโคเวเลนต์",
+      "text_markdown": "น้ำยึดเหนี่ยวกันด้วยพันธะโคเวเลนต์",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "น้ำยึดเหนี่ยวกันด้วยพันธะโคเวเลนต์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-172",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "อะตอมไฮโดรเจนแต่ละอะตอมจะใช้อิเล็กตรอนหนึ่งตัวร่วมกับอะตอมออกซิเจน",
+      "text_markdown": "อะตอมไฮโดรเจนแต่ละอะตอมจะใช้อิเล็กตรอนหนึ่งตัวร่วมกับอะตอมออกซิเจน",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมไฮโดรเจนแต่ละอะตอมจะใช้อิเล็กตรอนหนึ่งตัวร่วมกับอะตอมออกซิเจน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-173",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "ในพันธะไอออนิก อะตอมหนึ่งจะให้อิเล็กตรอนแก่อะตอมอื่น",
+      "text_markdown": "ในพันธะไอออนิก อะตอมหนึ่งจะให้อิเล็กตรอนแก่อะตอมอื่น",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "ในพันธะไอออนิก อะตอมหนึ่งจะให้อิเล็กตรอนแก่อะตอมอื่น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-174",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "อะตอมที่สูญเสียอิเล็กตรอนจะกลายเป็นประจุบวก",
+      "text_markdown": "อะตอมที่สูญเสียอิเล็กตรอนจะกลายเป็นประจุบวก",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมที่สูญเสียอิเล็กตรอนจะกลายเป็นประจุบวก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-175",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "อะตอมที่ได้รับอิเล็กตรอนจะกลายเป็นประจุลบ",
+      "text_markdown": "อะตอมที่ได้รับอิเล็กตรอนจะกลายเป็นประจุลบ",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "อะตอมที่ได้รับอิเล็กตรอนจะกลายเป็นประจุลบ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-176",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "ประจุตรงข้ามจะดึงดูดกัน",
+      "text_markdown": "ประจุตรงข้ามจะดึงดูดกัน",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "ประจุตรงข้ามจะดึงดูดกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-177",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "แรงดึงดูดนี้ทำให้อะตอมทั้งสองยึดเหนี่ยวกัน",
+      "text_markdown": "แรงดึงดูดนี้ทำให้อะตอมทั้งสองยึดเหนี่ยวกัน",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "แรงดึงดูดนี้ทำให้อะตอมทั้งสองยึดเหนี่ยวกัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-178",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "เกลือแกงยึดเหนี่ยวกันด้วยพันธะไอออนิก",
+      "text_markdown": "เกลือแกงยึดเหนี่ยวกันด้วยพันธะไอออนิก",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "เกลือแกงยึดเหนี่ยวกันด้วยพันธะไอออนิก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-179",
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "โซเดียมให้อิเล็กตรอนแก่อะตอมคลอรีน",
+      "text_markdown": "โซเดียมให้อิเล็กตรอนแก่อะตอมคลอรีน",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "โซเดียมให้อิเล็กตรอนแก่อะตอมคลอรีน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-180",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "โมเลกุลของน้ำประกอบด้วยอะตอมไฮโดรเจนสองอะตอมและอะตอมออกซิเจนหนึ่งอะตอม",
+      "text_markdown": "โมเลกุลของน้ำประกอบด้วยอะตอมไฮโดรเจนสองอะตอมและอะตอมออกซิเจนหนึ่งอะตอม",
+      "title": "อะตอมยึดเหนี่ยวกันได้อย่างไร",
+      "tts": {
+        "text": "โมเลกุลของน้ำประกอบด้วยอะตอมไฮโดรเจนสองอะตอมและอะตอมออกซิเจนหนึ่งอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-181",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "นักวิทยาศาสตร์เขียนสิ่งนี้ว่า H2O",
+      "text_markdown": "Scientists write this as H2O.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "นักวิทยาศาสตร์เขียนสิ่งนี้ว่า เอช สอง โอ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-182",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "ตัว H ย่อมาจากไฮโดรเจน",
+      "text_markdown": "The H stands for hydrogen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "ตัว เอช ย่อมาจากไฮโดรเจน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-183",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "ตัว O ย่อมาจากออกซิเจน",
+      "text_markdown": "The O stands for oxygen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "ตัว โอ ย่อมาจากออกซิเจน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-184",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "เลข 2 หมายถึงมีอะตอมไฮโดรเจนสองอะตอม",
+      "text_markdown": "The 2 means there are two hydrogen atoms.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "เลข สอง หมายถึงมีอะตอมไฮโดรเจนสองอะตอม",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-185",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "text": "โมเลกุลของคาร์บอนไดออกไซด์ประกอบด้วยอะตอมคาร์บอนหนึ่งอะตอมและอะตอมออกซิเจนสองอะตอม",
+      "text_markdown": "A molecule of carbon dioxide contains one carbon atom and two oxygen atoms.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "โมเลกุลของคาร์บอนไดออกไซด์ประกอบด้วยอะตอมคาร์บอนหนึ่งอะตอมและอะตอมออกซิเจนสองอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-186",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "text": "นักวิทยาศาสตร์เขียนสิ่งนี้ว่า CO2",
+      "text_markdown": "Scientists write this as CO2.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "นักวิทยาศาสตร์เขียนสิ่งนี้ว่า ซี โอ สอง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-187",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "text": "พืชดูดซับคาร์บอนไดออกไซด์จากอากาศและใช้มันสร้างโมเลกุลน้ำตาล",
+      "text_markdown": "Plants absorb carbon dioxide from the air and use it to build sugar molecules.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "พืชดูดซับคาร์บอนไดออกไซด์จากอากาศและใช้มันสร้างโมเลกุลน้ำตาล",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-188",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "พันธะระหว่างอะตอมเก็บพลังงานไว้",
+      "text_markdown": "The bonds between atoms store energy.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "พันธะระหว่างอะตอมเก็บพลังงานไว้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-189",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "เมื่อพันธะแตก พลังงานจะถูกปล่อยออกมา",
+      "text_markdown": "When bonds break, energy is released.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "เมื่อพันธะแตก พลังงานจะถูกปล่อยออกมา",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-190",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "เมื่อพันธะก่อตัว พลังงานจะถูกดูดซับ",
+      "text_markdown": "When bonds form, energy is absorbed.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "เมื่อพันธะก่อตัว พลังงานจะถูกดูดซับ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-191",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "ปฏิกิริยาเคมีทุกชนิดในจักรวาลเกี่ยวข้องกับการทำลายพันธะเก่าและสร้างพันธะใหม่",
+      "text_markdown": "Every chemical reaction in the universe involves breaking old bonds and forming new ones.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "ปฏิกิริยาเคมีทุกชนิดในจักรวาลเกี่ยวข้องกับการทำลายพันธะเก่าและสร้างพันธะใหม่",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-192",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "text": "อะตอมที่เคลื่อนที่",
+      "text_markdown": "อะตอมที่เคลื่อนที่",
+      "title": "อะตอมที่เคลื่อนที่"
+    },
+    {
+      "id": "ch06-193",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "อะตอมเคลื่อนที่อยู่ตลอดเวลา",
+      "text_markdown": "อะตอมเคลื่อนที่อยู่ตลอดเวลา",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "อะตอมเคลื่อนที่อยู่ตลอดเวลา",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-194",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "พวกมันไม่เคยหยุดนิ่ง",
+      "text_markdown": "พวกมันไม่เคยหยุดนิ่ง",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "พวกมันไม่เคยหยุดนิ่ง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-195",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "ที่อุณหภูมิใดๆ ที่สูงกว่าศูนย์สัมบูรณ์ อะตอมจะสั่นสะเทือน หมุน และเคลื่อนที่ไปในอวกาศ",
+      "text_markdown": "ที่อุณหภูมิใดๆ ที่สูงกว่าศูนย์สัมบูรณ์ อะตอมจะสั่นสะเทือน หมุน และเคลื่อนที่ไปในอวกาศ",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "ที่อุณหภูมิใดๆ ที่สูงกว่าศูนย์สัมบูรณ์ อะตอมจะสั่นสะเทือน หมุน และเคลื่อนที่ไปในอวกาศ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-196",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "การเคลื่อนที่นี้คือสิ่งที่เราสัมผัสได้ในรูปของความร้อน",
+      "text_markdown": "การเคลื่อนที่นี้คือสิ่งที่เราสัมผัสได้ในรูปของความร้อน",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "การเคลื่อนที่นี้คือสิ่งที่เราสัมผัสได้ในรูปของความร้อน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-197",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "ในของแข็ง อะตอมจะสั่นสะเทือนอยู่กับที่",
+      "text_markdown": "ในของแข็ง อะตอมจะสั่นสะเทือนอยู่กับที่",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "ในของแข็ง อะตอมจะสั่นสะเทือนอยู่กับที่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-198",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "พวกมันถูกตรึงอยู่ในโครงสร้างที่แน่นอน",
+      "text_markdown": "พวกมันถูกตรึงอยู่ในโครงสร้างที่แน่นอน",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "พวกมันถูกตรึงอยู่ในโครงสร้างที่แน่นอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-199",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "พวกมันสั่นไปมาแต่ไม่เคลื่อนออกจากตำแหน่ง",
+      "text_markdown": "พวกมันสั่นไปมาแต่ไม่เคลื่อนออกจากตำแหน่ง",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "พวกมันสั่นไปมาแต่ไม่เคลื่อนออกจากตำแหน่ง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-200",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "นี่คือเหตุผลว่าทำไมของแข็งจึงคงรูปทรงไว้ได้",
+      "text_markdown": "นี่คือเหตุผลว่าทำไมของแข็งจึงคงรูปทรงไว้ได้",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "นี่คือเหตุผลว่าทำไมของแข็งจึงคงรูปทรงไว้ได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-201",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "อะตอมในก้อนน้ำแข็งจะสั่นสะเทือน แต่พวกมันยังคงอยู่ในรูปแบบผลึกที่แข็งแรง",
+      "text_markdown": "อะตอมในก้อนน้ำแข็งจะสั่นสะเทือน แต่พวกมันยังคงอยู่ในรูปแบบผลึกที่แข็งแรง",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "อะตอมในก้อนน้ำแข็งจะสั่นสะเทือน แต่พวกมันยังคงอยู่ในรูปแบบผลึกที่แข็งแรง",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-202",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "ในของเหลว อะตอมจะเคลื่อนที่ได้อย่างอิสระมากขึ้น",
+      "text_markdown": "ในของเหลว อะตอมจะเคลื่อนที่ได้อย่างอิสระมากขึ้น",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "ในของเหลว อะตอมจะเคลื่อนที่ได้อย่างอิสระมากขึ้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-203",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "พวกมันเลื่อนผ่านกันไปมา",
+      "text_markdown": "พวกมันเลื่อนผ่านกันไปมา",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "พวกมันเลื่อนผ่านกันไปมา",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-204",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "พวกมันอยู่ใกล้กัน แต่ไม่ได้ถูกตรึงอยู่กับที่",
+      "text_markdown": "พวกมันอยู่ใกล้กัน แต่ไม่ได้ถูกตรึงอยู่กับที่",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "พวกมันอยู่ใกล้กัน แต่ไม่ได้ถูกตรึงอยู่กับที่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-205",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "นี่คือเหตุผลว่าทำไมของเหลวถึงไหลได้",
+      "text_markdown": "นี่คือเหตุผลว่าทำไมของเหลวถึงไหลได้",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "นี่คือเหตุผลว่าทำไมของเหลวถึงไหลได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-206",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "อะตอมในแก้วน้ำเคลื่อนที่และจัดเรียงตัวใหม่ตลอดเวลา แต่พวกมันยังคงอยู่ใกล้กัน",
+      "text_markdown": "อะตอมในแก้วน้ำเคลื่อนที่และจัดเรียงตัวใหม่ตลอดเวลา แต่พวกมันยังคงอยู่ใกล้กัน",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "อะตอมในแก้วน้ำเคลื่อนที่และจัดเรียงตัวใหม่ตลอดเวลา แต่พวกมันยังคงอยู่ใกล้กัน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-207",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "ในก๊าซ อะตอมจะเคลื่อนที่เร็วและกระจายตัวออกไป",
+      "text_markdown": "ในก๊าซ อะตอมจะเคลื่อนที่เร็วและกระจายตัวออกไป",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "ในก๊าซ อะตอมจะเคลื่อนที่เร็วและกระจายตัวออกไป",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-208",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "พวกมันเคลื่อนที่เป็นเส้นตรงจนกว่าจะชนอะตอมอื่นหรือผนัง",
+      "text_markdown": "พวกมันเคลื่อนที่เป็นเส้นตรงจนกว่าจะชนอะตอมอื่นหรือผนัง",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "พวกมันเคลื่อนที่เป็นเส้นตรงจนกว่าจะชนอะตอมอื่นหรือผนัง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-209",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "พวกมันจะกระเด้งออกจากกันและเปลี่ยนทิศทาง",
+      "text_markdown": "พวกมันจะกระเด้งออกจากกันและเปลี่ยนทิศทาง",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "พวกมันจะกระเด้งออกจากกันและเปลี่ยนทิศทาง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-210",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "นี่คือเหตุผลว่าทำไมก๊าซจึงเติมเต็มภาชนะใดๆ ที่คุณใส่เข้าไป",
+      "text_markdown": "นี่คือเหตุผลว่าทำไมก๊าซจึงเติมเต็มภาชนะใดๆ ที่คุณใส่เข้าไป",
+      "title": "อะตอมที่เคลื่อนที่",
+      "tts": {
+        "text": "นี่คือเหตุผลว่าทำไมก๊าซจึงเติมเต็มภาชนะใดๆ ที่คุณใส่เข้าไป",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-211",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "อะตอมในห้องที่เต็มไปด้วยอากาศกำลังเคลื่อนที่ไปทุกทิศทางด้วยความเร็วหลายร้อยเมตรต่อวินาที",
+      "text_markdown": "อะตอมในห้องที่เต็มไปด้วยอากาศกำลังเคลื่อนที่ไปทุกทิศทางด้วยความเร็วหลายร้อยเมตรต่อวินาที",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "อะตอมในห้องที่เต็มไปด้วยอากาศกำลังเคลื่อนที่ไปทุกทิศทางด้วยความเร็วหลายร้อยเมตรต่อวินาที",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-212",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "อุณหภูมิคือการวัดความเร็วในการเคลื่อนที่ของอะตอม",
+      "text_markdown": "อุณหภูมิคือการวัดความเร็วในการเคลื่อนที่ของอะตอม",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "อุณหภูมิคือการวัดความเร็วในการเคลื่อนที่ของอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-213",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "ร้อนหมายความว่าอะตอมกำลังเคลื่อนที่เร็ว",
+      "text_markdown": "ร้อนหมายความว่าอะตอมกำลังเคลื่อนที่เร็ว",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "ร้อนหมายความว่าอะตอมกำลังเคลื่อนที่เร็ว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-214",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "เย็นหมายความว่าอะตอมกำลังเคลื่อนที่ช้า",
+      "text_markdown": "เย็นหมายความว่าอะตอมกำลังเคลื่อนที่ช้า",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "เย็นหมายความว่าอะตอมกำลังเคลื่อนที่ช้า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-215",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "เมื่อคุณต้มน้ำบนเตา คุณกำลังทำให้อณูของน้ำเคลื่อนที่เร็วขึ้น",
+      "text_markdown": "เมื่อคุณต้มน้ำบนเตา คุณกำลังทำให้อณูของน้ำเคลื่อนที่เร็วขึ้น",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "เมื่อคุณต้มน้ำบนเตา คุณกำลังทำให้อณูของน้ำเคลื่อนที่เร็วขึ้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-216",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "เมื่ออณูเคลื่อนที่เร็วพอ พวกมันจะหลุดออกจากของเหลวและกลายเป็นไอน้ำ",
+      "text_markdown": "เมื่ออณูเคลื่อนที่เร็วพอ พวกมันจะหลุดออกจากของเหลวและกลายเป็นไอน้ำ",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "เมื่ออณูเคลื่อนที่เร็วพอ พวกมันจะหลุดออกจากของเหลวและกลายเป็นไอน้ำ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-217",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "ศูนย์สัมบูรณ์คืออุณหภูมิที่เย็นที่สุดเท่าที่จะเป็นไปได้",
+      "text_markdown": "ศูนย์สัมบูรณ์คืออุณหภูมิที่เย็นที่สุดเท่าที่จะเป็นไปได้",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "ศูนย์สัมบูรณ์คืออุณหภูมิที่เย็นที่สุดเท่าที่จะเป็นไปได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-218",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "ประมาณลบ 273 องศาเซลเซียส",
+      "text_markdown": "ประมาณลบ 273 องศาเซลเซียส",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "ประมาณลบสองร้อยเจ็ดสิบสามองศาเซลเซียส",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-219",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "ที่ศูนย์สัมบูรณ์ อะตอมจะมีพลังงานน้อยที่สุดเท่าที่จะเป็นไปได้",
+      "text_markdown": "ที่ศูนย์สัมบูรณ์ อะตอมจะมีพลังงานน้อยที่สุดเท่าที่จะเป็นไปได้",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "ที่ศูนย์สัมบูรณ์ อะตอมจะมีพลังงานน้อยที่สุดเท่าที่จะเป็นไปได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-220",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "ไม่มีสิ่งใดจะเย็นกว่าศูนย์สัมบูรณ์ได้",
+      "text_markdown": "ไม่มีสิ่งใดจะเย็นกว่าศูนย์สัมบูรณ์ได้",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "ไม่มีสิ่งใดจะเย็นกว่าศูนย์สัมบูรณ์ได้",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-221",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "นักวิทยาศาสตร์เข้าใกล้การบรรลุศูนย์สัมบูรณ์ในห้องปฏิบัติการมาก แต่ยังไม่มีใครไปถึงจุดนั้นได้อย่างแม่นยำ",
+      "text_markdown": "นักวิทยาศาสตร์เข้าใกล้การบรรลุศูนย์สัมบูรณ์ในห้องปฏิบัติการมาก แต่ยังไม่มีใครไปถึงจุดนั้นได้อย่างแม่นยำ",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "นักวิทยาศาสตร์เข้าใกล้การบรรลุศูนย์สัมบูรณ์ในห้องปฏิบัติการมาก แต่ยังไม่มีใครไปถึงจุดนั้นได้อย่างแม่นยำ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-222",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "ความดันเกิดจากการที่อะตอมชนกับพื้นผิว",
+      "text_markdown": "ความดันเกิดจากการที่อะตอมชนกับพื้นผิว",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "ความดันเกิดจากการที่อะตอมชนกับพื้นผิว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-223",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "อากาศในยางรถยนต์ดันออกไปข้างนอกเพราะอณูอากาศกระเด้งออกจากผนังด้านในของยางอย่างต่อเนื่อง",
+      "text_markdown": "อากาศในยางรถยนต์ดันออกไปข้างนอกเพราะอณูอากาศกระเด้งออกจากผนังด้านในของยางอย่างต่อเนื่อง",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "อากาศในยางรถยนต์ดันออกไปข้างนอกเพราะอณูอากาศกระเด้งออกจากผนังด้านในของยางอย่างต่อเนื่อง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-224",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "อณูที่มากขึ้นหรืออณูที่เคลื่อนที่เร็วขึ้นหมายถึงความดันที่มากขึ้น",
+      "text_markdown": "อณูที่มากขึ้นหรืออณูที่เคลื่อนที่เร็วขึ้นหมายถึงความดันที่มากขึ้น",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "อณูที่มากขึ้นหรืออณูที่เคลื่อนที่เร็วขึ้นหมายถึงความดันที่มากขึ้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-225",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "นี่คือเหตุผลที่ยางรถยนต์รู้สึกแข็งขึ้นเมื่ออากาศร้อน",
+      "text_markdown": "นี่คือเหตุผลที่ยางรถยนต์รู้สึกแข็งขึ้นเมื่ออากาศร้อน",
+      "title": "อะตอมในการเคลื่อนที่",
+      "tts": {
+        "text": "นี่คือเหตุผลที่ยางรถยนต์รู้สึกแข็งขึ้นเมื่ออากาศร้อน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-226",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "text": "อะตอมมาจากไหน",
+      "text_markdown": "อะตอมมาจากไหน",
+      "title": "อะตอมมาจากไหน"
+    },
+    {
+      "id": "ch07-227",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "ไฮโดรเจนและฮีเลียมในเอกภพถูกสร้างขึ้นในไม่กี่นาทีแรกหลังบิกแบง",
+      "text_markdown": "ไฮโดรเจนและฮีเลียมในเอกภพถูกสร้างขึ้นในไม่กี่นาทีแรกหลังบิกแบง",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ไฮโดรเจนและฮีเลียมในเอกภพถูกสร้างขึ้นในไม่กี่นาทีแรกหลังบิกแบง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-228",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "เอกภพเริ่มต้นจากจุดที่ร้อนจัดและหนาแน่นอย่างไม่น่าเชื่อเมื่อประมาณ 13.8 พันล้านปีก่อน",
+      "text_markdown": "เอกภพเริ่มต้นจากจุดที่ร้อนจัดและหนาแน่นอย่างไม่น่าเชื่อเมื่อประมาณ 13.8 พันล้านปีก่อน",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "เอกภพเริ่มต้นจากจุดที่ร้อนจัดและหนาแน่นอย่างไม่น่าเชื่อเมื่อประมาณสิบสามจุดแปดพันล้านปีก่อน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-229",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "เมื่อมันขยายตัวและเย็นลง โปรตอนและนิวตรอนก็ก่อตัวขึ้น",
+      "text_markdown": "เมื่อมันขยายตัวและเย็นลง โปรตอนและนิวตรอนก็ก่อตัวขึ้น",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "เมื่อมันขยายตัวและเย็นลง โปรตอนและนิวตรอนก็ก่อตัวขึ้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-230",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "โปรตอนและนิวตรอนเหล่านั้นรวมกันเป็นนิวเคลียสที่ง่ายที่สุด",
+      "text_markdown": "โปรตอนและนิวตรอนเหล่านั้นรวมกันเป็นนิวเคลียสที่ง่ายที่สุด",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "โปรตอนและนิวตรอนเหล่านั้นรวมกันเป็นนิวเคลียสที่ง่ายที่สุด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-231",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "ไฮโดรเจนและฮีเลียมเป็นธาตุแรก",
+      "text_markdown": "ไฮโดรเจนและฮีเลียมเป็นธาตุแรก",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ไฮโดรเจนและฮีเลียมเป็นธาตุแรก",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-232",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "เป็นเวลาหลายล้านปี เอกภพเป็นกลุ่มเมฆของก๊าซไฮโดรเจนและฮีเลียม",
+      "text_markdown": "เป็นเวลาหลายล้านปี เอกภพเป็นกลุ่มเมฆของก๊าซไฮโดรเจนและฮีเลียม",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "เป็นเวลาหลายล้านปี เอกภพเป็นกลุ่มเมฆของก๊าซไฮโดรเจนและฮีเลียม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-233",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "จากนั้นแรงโน้มถ่วงก็ดึงก๊าซมารวมกันเป็นก้อน",
+      "text_markdown": "จากนั้นแรงโน้มถ่วงก็ดึงก๊าซมารวมกันเป็นก้อน",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "จากนั้นแรงโน้มถ่วงก็ดึงก๊าซมารวมกันเป็นก้อน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-234",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "ก้อนเหล่านั้นมีความหนาแน่นและร้อนขึ้น",
+      "text_markdown": "ก้อนเหล่านั้นมีความหนาแน่นและร้อนขึ้น",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ก้อนเหล่านั้นมีความหนาแน่นและร้อนขึ้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-235",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "เมื่อใจกลางของก้อนเมฆมีอุณหภูมิประมาณสิบล้านองศา การหลอมรวมนิวเคลียร์ก็เริ่มขึ้น",
+      "text_markdown": "เมื่อใจกลางของก้อนเมฆมีอุณหภูมิประมาณสิบล้านองศา การหลอมรวมนิวเคลียร์ก็เริ่มขึ้น",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "เมื่อใจกลางของก้อนเมฆมีอุณหภูมิประมาณสิบล้านองศา การหลอมรวมนิวเคลียร์ก็เริ่มขึ้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-236",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "ดาวฤกษ์ถือกำเนิดขึ้น",
+      "text_markdown": "ดาวฤกษ์ถือกำเนิดขึ้น",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ดาวฤกษ์ถือกำเนิดขึ้น",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-237",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "ดาวฤกษ์คือโรงงานผลิตอะตอม",
+      "text_markdown": "ดาวฤกษ์คือโรงงานผลิตอะตอม",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ดาวฤกษ์คือโรงงานผลิตอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-238",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "ภายในดาวฤกษ์ อะตอมของไฮโดรเจนหลอมรวมกันเพื่อสร้างฮีเลียม",
+      "text_markdown": "ภายในดาวฤกษ์ อะตอมของไฮโดรเจนหลอมรวมกันเพื่อสร้างฮีเลียม",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ภายในดาวฤกษ์ อะตอมของไฮโดรเจนหลอมรวมกันเพื่อสร้างฮีเลียม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-239",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "การหลอมรวมนี้ปลดปล่อยพลังงานมหาศาล",
+      "text_markdown": "การหลอมรวมนี้ปลดปล่อยพลังงานมหาศาล",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "การหลอมรวมนี้ปลดปล่อยพลังงานมหาศาล",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-240",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "พลังงานคือสิ่งที่ทำให้ดาวฤกษ์ส่องแสง",
+      "text_markdown": "พลังงานคือสิ่งที่ทำให้ดาวฤกษ์ส่องแสง",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "พลังงานคือสิ่งที่ทำให้ดาวฤกษ์ส่องแสง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-241",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "ดวงอาทิตย์ของเราหลอมรวมไฮโดรเจนประมาณหกร้อยล้านตันให้เป็นฮีเลียมทุกวินาที",
+      "text_markdown": "ดวงอาทิตย์ของเราหลอมรวมไฮโดรเจนประมาณหกร้อยล้านตันให้เป็นฮีเลียมทุกวินาที",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ดวงอาทิตย์ของเราหลอมรวมไฮโดรเจนประมาณหกร้อยล้านตันให้เป็นฮีเลียมทุกวินาที",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-242",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "ดาวฤกษ์ขนาดใหญ่จะหลอมรวมธาตุที่หนักกว่า",
+      "text_markdown": "ดาวฤกษ์ขนาดใหญ่จะหลอมรวมธาตุที่หนักกว่า",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ดาวฤกษ์ขนาดใหญ่จะหลอมรวมธาตุที่หนักกว่า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-243",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "หลังจากดาวฤกษ์เผาผลาญไฮโดรเจนจนหมด มันจะเริ่มหลอมรวมฮีเลียมให้เป็นคาร์บอน",
+      "text_markdown": "หลังจากดาวฤกษ์เผาผลาญไฮโดรเจนจนหมด มันจะเริ่มหลอมรวมฮีเลียมให้เป็นคาร์บอน",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "หลังจากดาวฤกษ์เผาผลาญไฮโดรเจนจนหมด มันจะเริ่มหลอมรวมฮีเลียมให้เป็นคาร์บอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-244",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "จากนั้นคาร์บอนเป็นออกซิเจน",
+      "text_markdown": "จากนั้นคาร์บอนเป็นออกซิเจน",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "จากนั้นคาร์บอนเป็นออกซิเจน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-245",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "จากนั้นออกซิเจนเป็นซิลิคอน",
+      "text_markdown": "จากนั้นออกซิเจนเป็นซิลิคอน",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "จากนั้นออกซิเจนเป็นซิลิคอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-246",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "จากนั้นซิลิคอนเป็นเหล็ก",
+      "text_markdown": "จากนั้นซิลิคอนเป็นเหล็ก",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "จากนั้นซิลิคอนเป็นเหล็ก",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-247",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "แต่ละขั้นตอนจะสร้างธาตุที่หนักกว่า",
+      "text_markdown": "แต่ละขั้นตอนจะสร้างธาตุที่หนักกว่า",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "แต่ละขั้นตอนจะสร้างธาตุที่หนักกว่า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-248",
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "เหล็กเป็นธาตุที่หนักที่สุดที่ดาวฤกษ์สามารถสร้างได้จากการหลอมรวมนิวเคลียร์ตามปกติ",
+      "text_markdown": "เหล็กเป็นธาตุที่หนักที่สุดที่ดาวฤกษ์สามารถสร้างได้จากการหลอมรวมนิวเคลียร์ตามปกติ",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "เหล็กเป็นธาตุที่หนักที่สุดที่ดาวฤกษ์สามารถสร้างได้จากการหลอมรวมนิวเคลียร์ตามปกติ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-249",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "ธาตุที่หนักกว่าเหล็กจะถูกสร้างขึ้นเมื่อดาวฤกษ์มวลมหาศาลระเบิด",
+      "text_markdown": "ธาตุที่หนักกว่าเหล็กจะถูกสร้างขึ้นเมื่อดาวฤกษ์มวลมหาศาลระเบิด",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ธาตุที่หนักกว่าเหล็กจะถูกสร้างขึ้นเมื่อดาวฤกษ์มวลมหาศาลระเบิด",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-250",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "การระเบิดเหล่านี้เรียกว่าซูเปอร์โนวา",
+      "text_markdown": "การระเบิดเหล่านี้เรียกว่าซูเปอร์โนวา",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "การระเบิดเหล่านี้เรียกว่าซูเปอร์โนวา",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-251",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "ซูเปอร์โนวาปลดปล่อยพลังงานในไม่กี่วินาทีมากกว่าที่ดวงอาทิตย์จะผลิตได้ตลอดช่วงชีวิตของมัน",
+      "text_markdown": "ซูเปอร์โนวาปลดปล่อยพลังงานในไม่กี่วินาทีมากกว่าที่ดวงอาทิตย์จะผลิตได้ตลอดช่วงชีวิตของมัน",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ซูเปอร์โนวาปลดปล่อยพลังงานในไม่กี่วินาทีมากกว่าที่ดวงอาทิตย์จะผลิตได้ตลอดช่วงชีวิตของมัน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-252",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "สภาวะสุดขีดของซูเปอร์โนวาจะสร้างธาตุต่างๆ เช่น ทองคำ เงิน แพลทินัม และยูเรเนียม",
+      "text_markdown": "สภาวะสุดขีดของซูเปอร์โนวาจะสร้างธาตุต่างๆ เช่น ทองคำ เงิน แพลทินัม และยูเรเนียม",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "สภาวะสุดขีดของซูเปอร์โนวาจะสร้างธาตุต่างๆ เช่น ทองคำ เงิน แพลทินัม และยูเรเนียม",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-253",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "การระเบิดจะกระจายธาตุหนักเหล่านี้ไปทั่วอวกาศ",
+      "text_markdown": "การระเบิดจะกระจายธาตุหนักเหล่านี้ไปทั่วอวกาศ",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "การระเบิดจะกระจายธาตุหนักเหล่านี้ไปทั่วอวกาศ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-254",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "ธาตุต่างๆ จะผสมกับกลุ่มเมฆก๊าซไฮโดรเจนและฮีเลียม",
+      "text_markdown": "ธาตุต่างๆ จะผสมกับกลุ่มเมฆก๊าซไฮโดรเจนและฮีเลียม",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ธาตุต่างๆ จะผสมกับกลุ่มเมฆก๊าซไฮโดรเจนและฮีเลียม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-255",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "ในที่สุด แรงโน้มถ่วงจะดึงก๊าซที่อุดมด้วยธาตุเหล่านี้มารวมกันเพื่อสร้างดาวฤกษ์และดาวเคราะห์ดวงใหม่",
+      "text_markdown": "ในที่สุด แรงโน้มถ่วงจะดึงก๊าซที่อุดมด้วยธาตุเหล่านี้มารวมกันเพื่อสร้างดาวฤกษ์และดาวเคราะห์ดวงใหม่",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ในที่สุด แรงโน้มถ่วงจะดึงก๊าซที่อุดมด้วยธาตุเหล่านี้มารวมกันเพื่อสร้างดาวฤกษ์และดาวเคราะห์ดวงใหม่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-256",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "ระบบสุริยะของเราก่อตัวขึ้นจากหนึ่งในกลุ่มเมฆที่อุดมด้วยธาตุเหล่านี้เมื่อประมาณ 4.6 พันล้านปีก่อน",
+      "text_markdown": "ระบบสุริยะของเราก่อตัวขึ้นจากหนึ่งในกลุ่มเมฆที่อุดมด้วยธาตุเหล่านี้เมื่อประมาณ 4.6 พันล้านปีก่อน",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "ระบบสุริยะของเราก่อตัวขึ้นจากหนึ่งในกลุ่มเมฆที่อุดมด้วยธาตุเหล่านี้เมื่อประมาณ สี่จุดหก พันล้านปีก่อน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-257",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "อะตอมทุกอะตอมในร่างกายของคุณที่หนักกว่าไฮโดรเจนถูกสร้างขึ้นภายในดาวฤกษ์",
+      "text_markdown": "อะตอมทุกอะตอมในร่างกายของคุณที่หนักกว่าไฮโดรเจนถูกสร้างขึ้นภายในดาวฤกษ์",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "อะตอมทุกอะตอมในร่างกายของคุณที่หนักกว่าไฮโดรเจนถูกสร้างขึ้นภายในดาวฤกษ์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-258",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "แคลเซียมในกระดูกของคุณ",
+      "text_markdown": "แคลเซียมในกระดูกของคุณ",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "แคลเซียมในกระดูกของคุณ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-259",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "เหล็กในเลือดของคุณ",
+      "text_markdown": "เหล็กในเลือดของคุณ",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "เหล็กในเลือดของคุณ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-260",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "คาร์บอนในผิวหนังของคุณ",
+      "text_markdown": "คาร์บอนในผิวหนังของคุณ",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "คาร์บอนในผิวหนังของคุณ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-261",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "คุณถูกสร้างขึ้นจากละอองดาว",
+      "text_markdown": "คุณถูกสร้างขึ้นจากละอองดาว",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "คุณถูกสร้างขึ้นจากละอองดาว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-262",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "นั่นไม่ใช่คำเปรียบเทียบ",
+      "text_markdown": "นั่นไม่ใช่คำเปรียบเทียบ",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "นั่นไม่ใช่คำเปรียบเทียบ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-263",
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "มันคือข้อเท็จจริงทางฟิสิกส์นิวเคลียร์",
+      "text_markdown": "มันคือข้อเท็จจริงทางฟิสิกส์นิวเคลียร์",
+      "title": "อะตอมมาจากไหน",
+      "tts": {
+        "text": "มันคือข้อเท็จจริงทางฟิสิกส์นิวเคลียร์",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-264",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "chapter": 8,
+      "paragraph_id": "p62",
+      "text": "อะตอมคือทุกสิ่ง",
+      "text_markdown": "อะตอมคือทุกสิ่ง",
+      "title": "อะตอมคือทุกสิ่ง"
+    },
+    {
+      "id": "ch08-265",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "ตอนนี้คุณรู้พื้นฐานแล้ว",
+      "text_markdown": "ตอนนี้คุณรู้พื้นฐานแล้ว",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ตอนนี้คุณรู้พื้นฐานแล้ว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-266",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "ทุกสิ่งสร้างขึ้นจากอะตอม",
+      "text_markdown": "ทุกสิ่งสร้างขึ้นจากอะตอม",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ทุกสิ่งสร้างขึ้นจากอะตอม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-267",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "อะตอมประกอบด้วยโปรตอน นิวตรอน และอิเล็กตรอน",
+      "text_markdown": "อะตอมประกอบด้วยโปรตอน นิวตรอน และอิเล็กตรอน",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "อะตอมประกอบด้วยโปรตอน นิวตรอน และอิเล็กตรอน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-268",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "จำนวนโปรตอนเป็นตัวกำหนดธาตุ",
+      "text_markdown": "จำนวนโปรตอนเป็นตัวกำหนดธาตุ",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "จำนวนโปรตอนเป็นตัวกำหนดธาตุ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-269",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "อะตอมรวมตัวกันเพื่อสร้างโมเลกุล",
+      "text_markdown": "อะตอมรวมตัวกันเพื่อสร้างโมเลกุล",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "อะตอมรวมตัวกันเพื่อสร้างโมเลกุล",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-270",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "อะตอมเคลื่อนที่อยู่เสมอ",
+      "text_markdown": "อะตอมเคลื่อนที่อยู่เสมอ",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "อะตอมเคลื่อนที่อยู่เสมอ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-271",
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "ดาวฤกษ์สร้างอะตอมที่ประกอบกันเป็นโลกของเรา",
+      "text_markdown": "ดาวฤกษ์สร้างอะตอมที่ประกอบกันเป็นโลกของเรา",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ดาวฤกษ์สร้างอะตอมที่ประกอบกันเป็นโลกของเรา",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-272",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "text": "ความรู้นี้เป็นรากฐานของวิชาเคมี ชีววิทยา ฟิสิกส์ และการแพทย์",
+      "text_markdown": "ความรู้นี้เป็นรากฐานของวิชาเคมี ชีววิทยา ฟิสิกส์ และการแพทย์",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ความรู้นี้เป็นรากฐานของวิชาเคมี ชีววิทยา ฟิสิกส์ และการแพทย์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-273",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "text": "ทุกสาขาวิทยาศาสตร์ล้วนเชื่อมโยงกลับไปยังอะตอม",
+      "text_markdown": "ทุกสาขาวิทยาศาสตร์ล้วนเชื่อมโยงกลับไปยังอะตอม",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ทุกสาขาวิทยาศาสตร์ล้วนเชื่อมโยงกลับไปยังอะตอม",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-274",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "text": "เมื่อแพทย์สั่งยา ยานั้นคือการจัดเรียงอะตอมที่เฉพาะเจาะจงซึ่งออกแบบมาเพื่อทำปฏิกิริยากับโมเลกุลในร่างกายของคุณ",
+      "text_markdown": "เมื่อแพทย์สั่งยา ยานั้นคือการจัดเรียงอะตอมที่เฉพาะเจาะจงซึ่งออกแบบมาเพื่อทำปฏิกิริยากับโมเลกุลในร่างกายของคุณ",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "เมื่อแพทย์สั่งยา ยานั้นคือการจัดเรียงอะตอมที่เฉพาะเจาะจงซึ่งออกแบบมาเพื่อทำปฏิกิริยากับโมเลกุลในร่างกายของคุณ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-275",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "text": "เมื่อวิศวกรสร้างสะพาน ความแข็งแรงของสะพานนั้นขึ้นอยู่กับการจัดเรียงตัวของอะตอมเหล็กในเหล็กกล้า",
+      "text_markdown": "เมื่อวิศวกรสร้างสะพาน ความแข็งแรงของสะพานนั้นขึ้นอยู่กับการจัดเรียงตัวของอะตอมเหล็กในเหล็กกล้า",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "เมื่อวิศวกรสร้างสะพาน ความแข็งแรงของสะพานนั้นขึ้นอยู่กับการจัดเรียงตัวของอะตอมเหล็กในเหล็กกล้า",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-276",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "text": "เมื่อเกษตรกรปลูกพืช พืชจะเติบโตได้เพราะอะตอมคาร์บอนจากอากาศรวมตัวกับน้ำและแสงแดดภายในใบ",
+      "text_markdown": "เมื่อเกษตรกรปลูกพืช พืชจะเติบโตได้เพราะอะตอมคาร์บอนจากอากาศรวมตัวกับน้ำและแสงแดดภายในใบ",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "เมื่อเกษตรกรปลูกพืช พืชจะเติบโตได้เพราะอะตอมคาร์บอนจากอากาศรวมตัวกับน้ำและแสงแดดภายในใบ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-277",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "การทำอาหารคือเคมี",
+      "text_markdown": "การทำอาหารคือเคมี",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "การทำอาหารคือเคมี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-278",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "เมื่อคุณอบขนมปัง ความร้อนทำให้อะตอมในแป้งโดว์จัดเรียงตัวใหม่",
+      "text_markdown": "เมื่อคุณอบขนมปัง ความร้อนทำให้อะตอมในแป้งโดว์จัดเรียงตัวใหม่",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "เมื่อคุณอบขนมปัง ความร้อนทำให้อะตอมในแป้งโดว์จัดเรียงตัวใหม่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-279",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "โปรตีนคลายตัว",
+      "text_markdown": "โปรตีนคลายตัว",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "โปรตีนคลายตัว",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-280",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "น้ำตาลแตกตัวและรวมกันใหม่",
+      "text_markdown": "น้ำตาลแตกตัวและรวมกันใหม่",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "น้ำตาลแตกตัวและรวมกันใหม่",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-281",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "โมเลกุลใหม่ก่อตัวขึ้นซึ่งสร้างสีสัน เนื้อสัมผัส และรสชาติของเปลือกขนมปัง",
+      "text_markdown": "โมเลกุลใหม่ก่อตัวขึ้นซึ่งสร้างสีสัน เนื้อสัมผัส และรสชาติของเปลือกขนมปัง",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "โมเลกุลใหม่ก่อตัวขึ้นซึ่งสร้างสีสัน เนื้อสัมผัส และรสชาติของเปลือกขนมปัง",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-282",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "ทุกสูตรอาหารคือชุดคำแนะนำสำหรับการจัดเรียงอะตอมใหม่",
+      "text_markdown": "ทุกสูตรอาหารคือชุดคำแนะนำสำหรับการจัดเรียงอะตอมใหม่",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ทุกสูตรอาหารคือชุดคำแนะนำสำหรับการจัดเรียงอะตอมใหม่",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-283",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "การหายใจคือเคมี",
+      "text_markdown": "การหายใจคือเคมี",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "การหายใจคือเคมี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-284",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "คุณหายใจเอาโมเลกุลออกซิเจนเข้าไป",
+      "text_markdown": "คุณหายใจเอาโมเลกุลออกซิเจนเข้าไป",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "คุณหายใจเอาโมเลกุลออกซิเจนเข้าไป",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-285",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "เลือดของคุณนำโมเลกุลเหล่านั้นไปยังเซลล์ของคุณ",
+      "text_markdown": "เลือดของคุณนำโมเลกุลเหล่านั้นไปยังเซลล์ของคุณ",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "เลือดของคุณนำโมเลกุลเหล่านั้นไปยังเซลล์ของคุณ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-286",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "ภายในเซลล์ของคุณ อะตอมออกซิเจนรวมตัวกับอะตอมคาร์บอนจากอาหาร",
+      "text_markdown": "ภายในเซลล์ของคุณ อะตอมออกซิเจนรวมตัวกับอะตอมคาร์บอนจากอาหาร",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ภายในเซลล์ของคุณ อะตอมออกซิเจนรวมตัวกับอะตอมคาร์บอนจากอาหาร",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-287",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "ปฏิกิริยานี้ปล่อยพลังงาน",
+      "text_markdown": "ปฏิกิริยานี้ปล่อยพลังงาน",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ปฏิกิริยานี้ปล่อยพลังงาน",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-288",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "คุณหายใจออกเป็นคาร์บอนและออกซิเจนในรูปของคาร์บอนไดออกไซด์",
+      "text_markdown": "คุณหายใจออกเป็นคาร์บอนและออกซิเจนในรูปของคาร์บอนไดออกไซด์",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "คุณหายใจออกเป็นคาร์บอนและออกซิเจนในรูปของคาร์บอนไดออกไซด์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-289",
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "ทุกการหายใจคือปฏิกิริยาเคมี",
+      "text_markdown": "ทุกการหายใจคือปฏิกิริยาเคมี",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ทุกการหายใจคือปฏิกิริยาเคมี",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-290",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "สนิมคือเคมี",
+      "text_markdown": "สนิมคือเคมี",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "สนิมคือเคมี",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-291",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "อะตอมเหล็กบนพื้นผิวของตะปูทำปฏิกิริยากับอะตอมออกซิเจนในอากาศ",
+      "text_markdown": "อะตอมเหล็กบนพื้นผิวของตะปูทำปฏิกิริยากับอะตอมออกซิเจนในอากาศ",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "อะตอมเหล็กบนพื้นผิวของตะปูทำปฏิกิริยากับอะตอมออกซิเจนในอากาศ",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-292",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "เหล็กและออกซิเจนรวมตัวกันเพื่อสร้างสารใหม่ที่เรียกว่าเหล็กออกไซด์",
+      "text_markdown": "เหล็กและออกซิเจนรวมตัวกันเพื่อสร้างสารใหม่ที่เรียกว่าเหล็กออกไซด์",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "เหล็กและออกซิเจนรวมตัวกันเพื่อสร้างสารใหม่ที่เรียกว่าเหล็กออกไซด์",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-293",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "เหล็กออกไซด์คือวัสดุสีน้ำตาลแดงที่เราเรียกว่าสนิม",
+      "text_markdown": "เหล็กออกไซด์คือวัสดุสีน้ำตาลแดงที่เราเรียกว่าสนิม",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "เหล็กออกไซด์คือวัสดุสีน้ำตาลแดงที่เราเรียกว่าสนิม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-294",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "อะตอมเหล็กยังคงอยู่ตรงนั้น",
+      "text_markdown": "อะตอมเหล็กยังคงอยู่ตรงนั้น",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "อะตอมเหล็กยังคงอยู่ตรงนั้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-295",
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "พวกมันเพียงแค่รวมตัวกับออกซิเจน",
+      "text_markdown": "พวกมันเพียงแค่รวมตัวกับออกซิเจน",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "พวกมันเพียงแค่รวมตัวกับออกซิเจน",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-296",
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "อะตอมไม่ใช่สิ่งที่เป็นนามธรรม",
+      "text_markdown": "อะตอมไม่ใช่สิ่งที่เป็นนามธรรม",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "อะตอมไม่ใช่สิ่งที่เป็นนามธรรม",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-297",
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "อะตอมคือความเป็นจริงทางกายภาพของทุกสิ่งที่คุณสัมผัส ลิ้มรส มองเห็น และได้กลิ่น",
+      "text_markdown": "อะตอมคือความเป็นจริงทางกายภาพของทุกสิ่งที่คุณสัมผัส ลิ้มรส มองเห็น และได้กลิ่น",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "อะตอมคือความเป็นจริงทางกายภาพของทุกสิ่งที่คุณสัมผัส ลิ้มรส มองเห็น และได้กลิ่น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-298",
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "ยิ่งคุณเข้าใจอะตอมมากเท่าไหร่ คุณก็จะยิ่งเข้าใจโลกมากขึ้นเท่านั้น",
+      "text_markdown": "ยิ่งคุณเข้าใจอะตอมมากเท่าไหร่ คุณก็จะยิ่งเข้าใจโลกมากขึ้นเท่านั้น",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ยิ่งคุณเข้าใจอะตอมมากเท่าไหร่ คุณก็จะยิ่งเข้าใจโลกมากขึ้นเท่านั้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "id": "ch08-299",
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "นี่คือจุดเริ่มต้น",
+      "text_markdown": "นี่คือจุดเริ่มต้น",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "นี่คือจุดเริ่มต้น",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-300",
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "ยังมีอีกมากมายให้สำรวจ",
+      "text_markdown": "ยังมีอีกมากมายให้สำรวจ",
+      "title": "อะตอมคือทุกสิ่ง",
+      "tts": {
+        "text": "ยังมีอีกมากมายให้สำรวจ",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

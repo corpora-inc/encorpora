@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "no",
+  "total_segments": 167,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Velkommen til AI Denne Uken.",
+      "text_markdown": "Velkommen til AI Denne Uken.",
+      "title": "",
+      "tts": {
+        "text": "Velkommen til AI Denne Uken.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Jeg er Vindy.",
+      "text_markdown": "Jeg er Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jeg er Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Med meg, som alltid, er Ron.",
+      "text_markdown": "Med meg, som alltid, er Ron.",
+      "title": "",
+      "tts": {
+        "text": "Med meg, som alltid, er Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Godt å være her, Vindy.",
+      "text_markdown": "Godt å være her, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Godt å være her, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I dag er det onsdag 20. mai 2026.",
+      "text_markdown": "I dag er det onsdag 20. mai 2026.",
+      "title": "",
+      "tts": {
+        "text": "I dag er det onsdag tjuende mai tjuetjueseks.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Det var en travel uke.",
+      "text_markdown": "Det var en travel uke.",
+      "title": "",
+      "tts": {
+        "text": "Det var en travel uke.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Google avholdt sin utviklerkonferanse, Paven fullførte en encyklika om kunstig intelligens, og open-weights-verdenen fortsatte å levere mens alle andre hadde scener.",
+      "text_markdown": "Google avholdt sin utviklerkonferanse, Paven fullførte en encyklika om kunstig intelligens, og open-weights-verdenen fortsatte å levere mens alle andre hadde scener.",
+      "title": "",
+      "tts": {
+        "text": "Google avholdt sin utviklerkonferanse, Paven fullførte en encyklika om kunstig intelligens, og open weights-verdenen fortsatte å levere mens alle andre hadde scener.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Snart — hva som rørte seg innen open weights denne uken.",
+      "text_markdown": "Snart — hva som rørte seg innen open weights denne uken.",
+      "title": "",
+      "tts": {
+        "text": "Snart — hva som rørte seg innen open weights denne uken.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvor ledertavlene landet.",
+      "text_markdown": "Hvor ledertavlene landet.",
+      "title": "",
+      "tts": {
+        "text": "Hvor ledertavlene landet.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "En rask gjennomgang av overskriftene fra de større laboratoriene.",
+      "text_markdown": "En rask gjennomgang av overskriftene fra de større laboratoriene.",
+      "title": "",
+      "tts": {
+        "text": "En rask gjennomgang av overskriftene fra de større laboratoriene.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Vår hovedsak, Vatikanets første encyklika om kunstig intelligens.",
+      "text_markdown": "Vår hovedsak, Vatikanets første encyklika om kunstig intelligens.",
+      "title": "",
+      "tts": {
+        "text": "Vår hovedsak, Vatikanets første encyklika om kunstig intelligens.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Og ukens konsept er kvantisering — hvordan en 7-milliarder-parameter-modell får plass på telefonen din.",
+      "text_markdown": "Og ukens konsept er kvantisering — hvordan en 7-milliarder-parameter-modell får plass på telefonen din.",
+      "title": "",
+      "tts": {
+        "text": "Og ukens konsept er kvantisering — hvordan en syv milliarder parameter-modell får plass på telefonen din.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, la oss starte med open weights.",
+      "text_markdown": "Ron, la oss starte med open weights.",
+      "title": "",
+      "tts": {
+        "text": "Ron, la oss starte med open weights.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hva rører seg i miljøet denne uken?",
+      "text_markdown": "Hva rører seg i miljøet denne uken?",
+      "title": "",
+      "tts": {
+        "text": "Hva rører seg i miljøet denne uken?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den største open-weights-historien akkurat nå er hvem som trener hvor.",
+      "text_markdown": "Den største open-weights-historien akkurat nå er hvem som trener hvor.",
+      "title": "",
+      "tts": {
+        "text": "Den største open weights-historien akkurat nå er hvem som trener hvor.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "To av de mest interessante nylige åpne utgivelsene trent på ikke-NVIDIA silisium.",
+      "text_markdown": "To av de mest interessante nylige åpne utgivelsene trent på ikke-NVIDIA silisium.",
+      "title": "",
+      "tts": {
+        "text": "To av de mest interessante nylige åpne utgivelsene trent på ikke NVIDIA silisium.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ta oss gjennom det.",
+      "text_markdown": "Ta oss gjennom det.",
+      "title": "",
+      "tts": {
+        "text": "Ta oss gjennom det.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Zhipu AI i Beijing lanserte GLM-5-familien tidligere i år — GLM-5 i februar og en oppdatering kalt GLM-5.1 i april.",
+      "text_markdown": "Zhipu AI i Beijing lanserte GLM-5-familien tidligere i år — GLM-5 i februar og en oppdatering kalt GLM-5.1 i april.",
+      "title": "",
+      "tts": {
+        "text": "Zhipu AI i Beijing lanserte GLM fem-familien tidligere i år — GLM fem i februar og en oppdatering kalt GLM fem komma en i april.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hele GLM-5-familien ble trent på omtrent 100 000 Huawei Ascend 910B-brikker, ved bruk av MindSpore-rammeverket, uten noen NVIDIA GPU-er involvert.",
+      "text_markdown": "Hele GLM-5-familien ble trent på omtrent 100 000 Huawei Ascend 910B-brikker, ved bruk av MindSpore-rammeverket, uten noen NVIDIA GPU-er involvert.",
+      "title": "",
+      "tts": {
+        "text": "Hele GLM fem-familien ble trent på omtrent hundre tusen Huawei Ascend ni hundre og ti B-brikker, ved bruk av MindSpore-rammeverket, uten noen NVIDIA G P U-er involvert.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Og Zyphra, et amerikansk laboratorium, lanserte en modell kalt ZAYA1-8B tidligere denne måneden, forhåndstrent på en klynge av AMD MI300x-noder bygget med IBM.",
+      "text_markdown": "Og Zyphra, et amerikansk laboratorium, lanserte en modell kalt ZAYA1-8B tidligere denne måneden, forhåndstrent på en klynge av AMD MI300x-noder bygget med IBM.",
+      "title": "",
+      "tts": {
+        "text": "Og Zyphra, et amerikansk laboratorium, lanserte en modell kalt ZAYA en åtte B tidligere denne måneden, forhåndstrent på en klynge av A M D M I tre hundre X-noder bygget med I B M.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvorfor er silisiumet viktig?",
+      "text_markdown": "Hvorfor er silisiumet viktig?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor er silisiumet viktig?",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "To grunner.",
+      "text_markdown": "To grunner.",
+      "title": "",
+      "tts": {
+        "text": "To grunner.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Én — de siste tre årene har hver seriøse grensetreningskjøring trengt NVIDIA H100-er eller H200-er.",
+      "text_markdown": "Én — de siste tre årene har hver seriøse grensetreningskjøring trengt NVIDIA H100-er eller H200-er.",
+      "title": "",
+      "tts": {
+        "text": "Én — de siste tre årene har hver seriøse grensetreningskjøring trengt NVIDIA H hundre-er eller H to hundre-er.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "To — den forsyningen har vært flaskehalsen, og antakelsen var at den åpne og den kinesiske frontlinjen lå en generasjon bak på grunn av det.",
+      "text_markdown": "To — den forsyningen har vært flaskehalsen, og antakelsen var at den åpne og den kinesiske frontlinjen lå en generasjon bak på grunn av det.",
+      "title": "",
+      "tts": {
+        "text": "To — den forsyningen har vært flaskehalsen, og antakelsen var at den åpne og den kinesiske frontlinjen lå en generasjon bak på grunn av det.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Når en grenseklassekjøring lander på Huawei Ascend eller AMD, kan alle andre åpne laboratorier kopiere oppskriften.",
+      "text_markdown": "Når en grenseklassekjøring lander på Huawei Ascend eller AMD, kan alle andre åpne laboratorier kopiere oppskriften.",
+      "title": "",
+      "tts": {
+        "text": "Når en grenseklassekjøring lander på Huawei Ascend eller A M D, kan alle andre åpne laboratorier kopiere oppskriften.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er det som skjer i år.",
+      "text_markdown": "Det er det som skjer i år.",
+      "title": "",
+      "tts": {
+        "text": "Det er det som skjer i år.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Noe annet fra den åpne siden denne uken?",
+      "text_markdown": "Noe annet fra den åpne siden denne uken?",
+      "title": "",
+      "tts": {
+        "text": "Noe annet fra den åpne siden denne uken?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja, tre ting verdt å merke seg.",
+      "text_markdown": "Ja, tre ting verdt å merke seg.",
+      "title": "",
+      "tts": {
+        "text": "Ja, tre ting verdt å merke seg.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Moonshots Kimi K2.6, utgitt sent i april, er fortsatt i toppsjiktet på OpenRouter for tokenvolum — den toppet listen den første uken med 1,88 billioner tokens servert.",
+      "text_markdown": "Moonshots Kimi K2.6, utgitt sent i april, er fortsatt i toppsjiktet på OpenRouter for tokenvolum — den toppet listen den første uken med 1,88 billioner tokens servert.",
+      "title": "",
+      "tts": {
+        "text": "Moonshots Kimi K to komma seks, utgitt sent i april, er fortsatt i toppsjiktet på OpenRouter for tokenvolum — den toppet listen den første uken med én komma åtte åtte billioner tokens servert.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det var første gang en kinesisk åpen-vekt-modell hadde overgått Claude Sonnet og DeepSeek på den store kommersielle ruteren.",
+      "text_markdown": "Det var første gang en kinesisk åpen-vekt-modell hadde overgått Claude Sonnet og DeepSeek på den store kommersielle ruteren.",
+      "title": "",
+      "tts": {
+        "text": "Det var første gang en kinesisk åpen-vekt-modell hadde overgått Claude Sonnet og DeepSeek på den store kommersielle ruteren.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "DeepSeek V4-Pro er på 1,6 billioner totale parametere med 49 milliarder aktive.",
+      "text_markdown": "DeepSeek V4-Pro er på 1,6 billioner totale parametere med 49 milliarder aktive.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V fire Pro er på ett komma seks billioner totale parametere med førti ni milliarder aktive.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Deres billigere søsken, V4-Flash, er 284 milliarder totalt med 13 milliarder aktive.",
+      "text_markdown": "Deres billigere søsken, V4-Flash, er 284 milliarder totalt med 13 milliarder aktive.",
+      "title": "",
+      "tts": {
+        "text": "Deres billigere søsken, V fire Flash, er to hundre og åtti fire milliarder totalt med tretten milliarder aktive.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Begge er åpne vekter under MIT-lisensen.",
+      "text_markdown": "Begge er åpne vekter under MIT-lisensen.",
+      "title": "",
+      "tts": {
+        "text": "Begge er åpne vekter under MIT-lisensen.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Fortell mer spesifikt om ZAYA1-8B-modellen.",
+      "text_markdown": "Fortell mer spesifikt om ZAYA1-8B-modellen.",
+      "title": "",
+      "tts": {
+        "text": "Fortell mer spesifikt om ZAYA én åtte B modellen.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er en liten mixture-of-experts-modell — 8,4 milliarder totale parametere, med bare omtrent 760 millioner aktive per token.",
+      "text_markdown": "Det er en liten mixture-of-experts-modell — 8,4 milliarder totale parametere, med bare omtrent 760 millioner aktive per token.",
+      "title": "",
+      "tts": {
+        "text": "Det er en liten mixture of experts modell — åtte komma fire milliarder totale parametere, med bare omtrent syv hundre og seksti millioner aktive per token.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Apache 2.0-lisens, så du kan bruke den kommersielt.",
+      "text_markdown": "Apache 2.0-lisens, så du kan bruke den kommersielt.",
+      "title": "",
+      "tts": {
+        "text": "Apache to komma null lisens, så du kan bruke den kommersielt.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Forhåndstrent på en klynge med omtrent 1 024 AMD MI300x-noder, uten NVIDIA-maskinvare involvert.",
+      "text_markdown": "Forhåndstrent på en klynge med omtrent 1 024 AMD MI300x-noder, uten NVIDIA-maskinvare involvert.",
+      "title": "",
+      "tts": {
+        "text": "Forhåndstrent på en klynge med omtrent ett tusen tjue fire AMD M I tre hundre x noder, uten NVIDIA maskinvare involvert.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den scorer 89,1 på AIME, referansepunktet for matematikkolympiaden, og slår mye større modeller innen matematikk og koding mens den kjører på et budsjett med under 1 milliard aktive parametere.",
+      "text_markdown": "Den scorer 89,1 på AIME, referansepunktet for matematikkolympiaden, og slår mye større modeller innen matematikk og koding mens den kjører på et budsjett med under 1 milliard aktive parametere.",
+      "title": "",
+      "tts": {
+        "text": "Den scorer åtti ni komma en på AIME, referansepunktet for matematikkolympiaden, og slår mye større modeller innen matematikk og koding mens den kjører på et budsjett med under en milliard aktive parametere.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "To open-weights-laboratorier trener uten NVIDIA innen to måneder.",
+      "text_markdown": "To open-weights-laboratorier trener uten NVIDIA innen to måneder.",
+      "title": "",
+      "tts": {
+        "text": "To open weights laboratorier trener uten NVIDIA innen to måneder.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ikke en tilfeldighet.",
+      "text_markdown": "Ikke en tilfeldighet.",
+      "title": "",
+      "tts": {
+        "text": "Ikke en tilfeldighet.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Infrastrukturen kom endelig på plass — AMD ROCm og Huawei CANN ble begge brukbare i 2025, og 2026 er når det åpne fellesskapet leverer virkelige grensesprengende kjøringer på dem.",
+      "text_markdown": "Infrastrukturen kom endelig på plass — AMD ROCm og Huawei CANN ble begge brukbare i 2025, og 2026 er når det åpne fellesskapet leverer virkelige grensesprengende kjøringer på dem.",
+      "title": "",
+      "tts": {
+        "text": "Infrastrukturen kom endelig på plass — AMD R O C M og Huawei C A N N ble begge brukbare i tjue tjue fem, og tjue tjue seks er når det åpne fellesskapet leverer virkelige grensesprengende kjøringer på dem.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hva med infrastruktursiden?",
+      "text_markdown": "Hva med infrastruktursiden?",
+      "title": "",
+      "tts": {
+        "text": "Hva med infrastruktursiden?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "vLLM v0.21 ble lansert fredag 15. mai.",
+      "text_markdown": "vLLM v0.21 ble lansert fredag 15. mai.",
+      "title": "",
+      "tts": {
+        "text": "v L L M versjon null komma tjue en ble lansert fredag femtende mai.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "vLLM er den åpne serving-stacken — det du faktisk kjører når du vil hoste en modell selv.",
+      "text_markdown": "vLLM er den åpne serving-stacken — det du faktisk kjører når du vil hoste en modell selv.",
+      "title": "",
+      "tts": {
+        "text": "v L L M er den åpne serving stacken — det du faktisk kjører når du vil hoste en modell selv.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den håndterer batching, paging og gjenbruk av KV-cache, og er nå standard i produksjon for alle som ikke bruker en lukket API.",
+      "text_markdown": "Den håndterer batching, paging og gjenbruk av KV-cache, og er nå standard i produksjon for alle som ikke bruker en lukket API.",
+      "title": "",
+      "tts": {
+        "text": "Den håndterer batching, paging og gjenbruk av K V cache, og er nå standard i produksjon for alle som ikke bruker en lukket A P I.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Denne utgivelsen legger til KV offload med en hybrid minneallokator, og en ny attention backend justert for DeepSeek-R1 og Kimi K2.5 prefill på Blackwell GPU-er.",
+      "text_markdown": "Denne utgivelsen legger til KV offload med en hybrid minneallokator, og en ny attention backend justert for DeepSeek-R1 og Kimi K2.5 prefill på Blackwell GPU-er.",
+      "title": "",
+      "tts": {
+        "text": "Denne utgivelsen legger til KV offload med en hybrid minneallokator, og en ny attention backend justert for DeepSeek R én og Kimi K to komma fem prefill på Blackwell GPU-er.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den åpne serving-stacken fortsetter å levere mens de store labene holder keynotes.",
+      "text_markdown": "Den åpne serving-stacken fortsetter å levere mens de store labene holder keynotes.",
+      "title": "",
+      "tts": {
+        "text": "Den åpne serving-stacken fortsetter å levere mens de store labene holder keynotes.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ok, la oss gå videre til ledertavlene.",
+      "text_markdown": "Ok, la oss gå videre til ledertavlene.",
+      "title": "",
+      "tts": {
+        "text": "Ok, la oss gå videre til ledertavlene.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, hva holder stand og hva har flyttet seg?",
+      "text_markdown": "Ron, hva holder stand og hva har flyttet seg?",
+      "title": "",
+      "tts": {
+        "text": "Ron, hva holder stand og hva har flyttet seg?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "For det meste holder det stand.",
+      "text_markdown": "For det meste holder det stand.",
+      "title": "",
+      "tts": {
+        "text": "For det meste holder det stand.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Anthropics Claude Opus 4.7 er fortsatt nummer én på LM Arena koding-ledertavlen, med en Elo-score på rundt 1569.",
+      "text_markdown": "Anthropics Claude Opus 4.7 er fortsatt nummer én på LM Arena koding-ledertavlen, med en Elo-score på rundt 1569.",
+      "title": "",
+      "tts": {
+        "text": "Anthropics Claude Opus fire komma syv er fortsatt nummer én på LM Arena koding-ledertavlen, med en Elo-score på rundt femten sekstini.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "OpenAIs GPT-5.5 i høy-resonneringsmodus ligger på nummer syv på samme tavle.",
+      "text_markdown": "OpenAIs GPT-5.5 i høy-resonneringsmodus ligger på nummer syv på samme tavle.",
+      "title": "",
+      "tts": {
+        "text": "OpenAIs GPT fem komma fem i høy-resonneringsmodus ligger på nummer syv på samme tavle.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Og på WebDev koding-undertavlen er GPT-5.5 på nummer ni.",
+      "text_markdown": "Og på WebDev koding-undertavlen er GPT-5.5 på nummer ni.",
+      "title": "",
+      "tts": {
+        "text": "Og på WebDev koding-undertavlen er GPT fem komma fem på nummer ni.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvor havner den nye Google-modellen?",
+      "text_markdown": "Hvor havner den nye Google-modellen?",
+      "title": "",
+      "tts": {
+        "text": "Hvor havner den nye Google-modellen?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Gemini 3.5 Flash ble lansert på tirsdag under Google I/O, så den er ikke på tavlene ennå.",
+      "text_markdown": "Gemini 3.5 Flash ble lansert på tirsdag under Google I/O, så den er ikke på tavlene ennå.",
+      "title": "",
+      "tts": {
+        "text": "Gemini tre komma fem Flash ble lansert på tirsdag under Google I O, så den er ikke på tavlene ennå.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Arena trenger noen tusen direkte sammenligningsstemmer før en modell får en stabil Elo-score.",
+      "text_markdown": "Arena trenger noen tusen direkte sammenligningsstemmer før en modell får en stabil Elo-score.",
+      "title": "",
+      "tts": {
+        "text": "Arena trenger noen tusen direkte sammenligningsstemmer før en modell får en stabil Elo-score.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Forvent at Gemini 3.5 Flash dukker opp neste uke og Gemini 3.5 Pro kommer i juni.",
+      "text_markdown": "Forvent at Gemini 3.5 Flash dukker opp neste uke og Gemini 3.5 Pro kommer i juni.",
+      "title": "",
+      "tts": {
+        "text": "Forvent at Gemini tre komma fem Flash dukker opp neste uke og Gemini tre komma fem Pro kommer i juni.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Noe nytt på evalueringskvalitetsfronten?",
+      "text_markdown": "Noe nytt på evalueringskvalitetsfronten?",
+      "title": "",
+      "tts": {
+        "text": "Noe nytt på evalueringskvalitetsfronten?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja, en referanse til forrige uke.",
+      "text_markdown": "Ja, en referanse til forrige uke.",
+      "title": "",
+      "tts": {
+        "text": "Ja, en referanse til forrige uke.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "SWE-bench Verified er fortsatt pensjonert – koding-benchmarken OpenAI pleide å sitere, hvor mer enn halvparten av de vanskelige oppgavene hadde ødelagte tester.",
+      "text_markdown": "SWE-bench Verified er fortsatt pensjonert – koding-benchmarken OpenAI pleide å sitere, hvor mer enn halvparten av de vanskelige oppgavene hadde ødelagte tester.",
+      "title": "",
+      "tts": {
+        "text": "SWE bench Verified er fortsatt pensjonert – koding-benchmarken OpenAI pleide å sitere, hvor mer enn halvparten av de vanskelige oppgavene hadde ødelagte tester.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tavlene å følge med på nå er SWE-bench Pro og et prosjekt kalt SWE-rebench.",
+      "text_markdown": "Tavlene å følge med på nå er SWE-bench Pro og et prosjekt kalt SWE-rebench.",
+      "title": "",
+      "tts": {
+        "text": "Tavlene å følge med på nå er SWE bench Pro og et prosjekt kalt SWE rebench.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Begge holder testkoden privat slik at modeller ikke kan trenes mot den.",
+      "text_markdown": "Begge holder testkoden privat slik at modeller ikke kan trenes mot den.",
+      "title": "",
+      "tts": {
+        "text": "Begge holder testkoden privat slik at modeller ikke kan trenes mot den.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Og gapet mellom åpent og lukket?",
+      "text_markdown": "Og gapet mellom åpent og lukket?",
+      "title": "",
+      "tts": {
+        "text": "Og gapet mellom åpent og lukket?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ifølge Artificial Analysis er gapet nå 5 til 15 poeng på kryss-evalueringsindeksen for intelligens.",
+      "text_markdown": "Ifølge Artificial Analysis er gapet nå 5 til 15 poeng på kryss-evalueringsindeksen for intelligens.",
+      "title": "",
+      "tts": {
+        "text": "Ifølge Artificial Analysis er gapet nå fem til femten poeng på kryss-evalueringsindeksen for intelligens.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det var 30 til 40 poeng for 18 måneder siden.",
+      "text_markdown": "Det var 30 til 40 poeng for 18 måneder siden.",
+      "title": "",
+      "tts": {
+        "text": "Det var tretti til førti poeng atten måneder siden.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kimi K2.6 og DeepSeek V4-Pro ligger innenfor det båndet mot GPT-5.5 og Opus 4.7.",
+      "text_markdown": "Kimi K2.6 og DeepSeek V4-Pro ligger innenfor det båndet mot GPT-5.5 og Opus 4.7.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K to punkt seks og DeepSeek V fire Pro ligger innenfor det båndet mot GPT fem punkt fem og Opus fire punkt syv.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "La oss nå gå videre til overskriftene.",
+      "text_markdown": "La oss nå gå videre til overskriftene.",
+      "title": "",
+      "tts": {
+        "text": "La oss nå gå videre til overskriftene.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, hva er i hurtigklippet denne uken?",
+      "text_markdown": "Ron, hva er i hurtigklippet denne uken?",
+      "title": "",
+      "tts": {
+        "text": "Ron, hva er i hurtigklippet denne uken?",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Google I/O var tirsdag og onsdag.",
+      "text_markdown": "Google I/O var tirsdag og onsdag.",
+      "title": "",
+      "tts": {
+        "text": "Google I O var tirsdag og onsdag.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "De viktigste nyhetene var Gemini 3.5 Flash, Gemini Omni for samtalebasert videoredigering, og Gemini Spark, en agent som kjører 24/7 på en virtuell skymaskin du ikke eier.",
+      "text_markdown": "De viktigste nyhetene var Gemini 3.5 Flash, Gemini Omni for samtalebasert videoredigering, og Gemini Spark, en agent som kjører 24/7 på en virtuell skymaskin du ikke eier.",
+      "title": "",
+      "tts": {
+        "text": "De viktigste nyhetene var Gemini tre punkt fem Flash, Gemini Omni for samtalebasert videoredigering, og Gemini Spark, en agent som kjører tjuefire syv på en virtuell skymaskin du ikke eier.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Verdt å merke seg at det samme mønsteret – en agent som kjører på sin egen maskin og utfører flertrinnsarbeid – er noe du allerede kan gjøre i dag med åpne verktøy som Aider eller OpenCode pekt mot en lokal modell.",
+      "text_markdown": "Verdt å merke seg at det samme mønsteret – en agent som kjører på sin egen maskin og utfører flertrinnsarbeid – er noe du allerede kan gjøre i dag med åpne verktøy som Aider eller OpenCode pekt mot en lokal modell.",
+      "title": "",
+      "tts": {
+        "text": "Verdt å merke seg at det samme mønsteret – en agent som kjører på sin egen maskin og utfører flertrinnsarbeid – er noe du allerede kan gjøre i dag med åpne verktøy som Aider eller OpenCode pekt mot en lokal modell.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Google AI Ultra senket startnivået fra $250 i måneden til $100 i måneden, og Samsung annonserte utvidet virkelighet-briller med Gemini innebygd.",
+      "text_markdown": "Google AI Ultra senket startnivået fra $250 i måneden til $100 i måneden, og Samsung annonserte utvidet virkelighet-briller med Gemini innebygd.",
+      "title": "",
+      "tts": {
+        "text": "Google AI Ultra senket startnivået fra to hundre og femti dollar i måneden til ett hundre dollar i måneden, og Samsung annonserte utvidet virkelighet-briller med Gemini innebygd.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Daglige prompt-grenser ble erstattet med et beregningsbudsjett som fornyes hver femte time.",
+      "text_markdown": "Daglige prompt-grenser ble erstattet med et beregningsbudsjett som fornyes hver femte time.",
+      "title": "",
+      "tts": {
+        "text": "Daglige prompt-grenser ble erstattet med et beregningsbudsjett som fornyes hver femte time.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Og på personellsiden?",
+      "text_markdown": "Og på personellsiden?",
+      "title": "",
+      "tts": {
+        "text": "Og på personellsiden?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Andrej Karpathy begynte i Anthropic på tirsdag.",
+      "text_markdown": "Andrej Karpathy begynte i Anthropic på tirsdag.",
+      "title": "",
+      "tts": {
+        "text": "Andrej Karpathy begynte i Anthropic på tirsdag.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Han er i pre-treningsteamet, og leder en gruppe fokusert på å bruke Claude for å akselerere forskning innen pre-trening.",
+      "text_markdown": "Han er i pre-treningsteamet, og leder en gruppe fokusert på å bruke Claude for å akselerere forskning innen pre-trening.",
+      "title": "",
+      "tts": {
+        "text": "Han er i pre-treningsteamet, og leder en gruppe fokusert på å bruke Claude for å akselerere forskning innen pre-trening.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Karpathy var et grunnleggende medlem av OpenAI, ledet deretter Teslas AI-arbeid, og startet så Eureka Labs for AI-utdanning.",
+      "text_markdown": "Karpathy var et grunnleggende medlem av OpenAI, ledet deretter Teslas AI-arbeid, og startet så Eureka Labs for AI-utdanning.",
+      "title": "",
+      "tts": {
+        "text": "Karpathy var et grunnleggende medlem av OpenAI, ledet deretter Teslas AI-arbeid, og startet så Eureka Labs for AI-utdanning.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hva med Apple?",
+      "text_markdown": "Hva med Apple?",
+      "title": "",
+      "tts": {
+        "text": "Hva med Apple?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Google Cloud-sjef Thomas Kurian bekreftet denne uken at Gemini vil drive en versjon av Siri senere i 2026.",
+      "text_markdown": "Google Cloud-sjef Thomas Kurian bekreftet denne uken at Gemini vil drive en versjon av Siri senere i 2026.",
+      "title": "",
+      "tts": {
+        "text": "Google Cloud-sjef Thomas Kurian bekreftet denne uken at Gemini vil drive en versjon av Siri senere i to tusen tjueseks.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Avtalen går via Apples Foundation Models-rammeverk, så Apple eier fortsatt integrasjonslaget.",
+      "text_markdown": "Avtalen går via Apples Foundation Models-rammeverk, så Apple eier fortsatt integrasjonslaget.",
+      "title": "",
+      "tts": {
+        "text": "Avtalen går via Apples Foundation Models-rammeverk, så Apple eier fortsatt integrasjonslaget.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Og Musk-søksmålet?",
+      "text_markdown": "Og Musk-søksmålet?",
+      "title": "",
+      "tts": {
+        "text": "Og Musk-søksmålet?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "En ni-medlemmers jury i California avviste Elon Musks søksmål mot OpenAI mandag 18. mai.",
+      "text_markdown": "En ni-medlemmers jury i California avviste Elon Musks søksmål mot OpenAI mandag 18. mai.",
+      "title": "",
+      "tts": {
+        "text": "En ni-medlemmers jury i California avviste Elon Musks søksmål mot OpenAI mandag attende mai.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "De drøftet i mindre enn to timer.",
+      "text_markdown": "De drøftet i mindre enn to timer.",
+      "title": "",
+      "tts": {
+        "text": "De drøftet i mindre enn to timer.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Juryen fant at Musk hadde levert søksmålet etter foreldelsesfristen, og dommeren avviste saken.",
+      "text_markdown": "Juryen fant at Musk hadde levert søksmålet etter foreldelsesfristen, og dommeren avviste saken.",
+      "title": "",
+      "tts": {
+        "text": "Juryen fant at Musk hadde levert søksmålet etter foreldelsesfristen, og dommeren avviste saken.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Noe fra politikk?",
+      "text_markdown": "Noe fra politikk?",
+      "title": "",
+      "tts": {
+        "text": "Noe fra politikk?",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Finansminister Scott Bessent kunngjorde på Trump-Xi-toppmøtet i Beijing 14. mai at USA og Kina vil etablere en formell protokoll for AI-sikkerhet.",
+      "text_markdown": "Finansminister Scott Bessent kunngjorde på Trump-Xi-toppmøtet i Beijing 14. mai at USA og Kina vil etablere en formell protokoll for AI-sikkerhet.",
+      "title": "",
+      "tts": {
+        "text": "Finansminister Scott Bessent kunngjorde på Trump-Xi-toppmøtet i Beijing fjortende mai at U. S. A. og Kina vil etablere en formell protokoll for AI-sikkerhet.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er innrammet som beste praksis for å holde grensemodeller unna ikke-statlige aktører — ikke et bindende regime, bare en avtale om å snakke sammen.",
+      "text_markdown": "Det er innrammet som beste praksis for å holde grensemodeller unna ikke-statlige aktører — ikke et bindende regime, bare en avtale om å snakke sammen.",
+      "title": "",
+      "tts": {
+        "text": "Det er innrammet som beste praksis for å holde grensemodeller unna ikke-statlige aktører — ikke et bindende regime, bare en avtale om å snakke sammen.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Første gang de to sidene har innrammet AI-sikkerhet som bilateralt i stedet for en ren konkurranse.",
+      "text_markdown": "Første gang de to sidene har innrammet AI-sikkerhet som bilateralt i stedet for en ren konkurranse.",
+      "title": "",
+      "tts": {
+        "text": "Første gang de to sidene har innrammet AI-sikkerhet som bilateralt i stedet for en ren konkurranse.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nå skal vi gå tilbake til hovedsaken.",
+      "text_markdown": "Nå skal vi gå tilbake til hovedsaken.",
+      "title": "",
+      "tts": {
+        "text": "Nå skal vi gå tilbake til hovedsaken.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, paven skrev om oss forrige uke.",
+      "text_markdown": "Ron, paven skrev om oss forrige uke.",
+      "title": "",
+      "tts": {
+        "text": "Ron, paven skrev om oss forrige uke.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pave Leo XIV har nå gjort sin første encyklika ferdig.",
+      "text_markdown": "Pave Leo XIV har nå gjort sin første encyklika ferdig.",
+      "title": "",
+      "tts": {
+        "text": "Pave Leo den fjortende har nå gjort sin første encyklika ferdig.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den har tittelen Magnifica Humanitas.",
+      "text_markdown": "Den har tittelen Magnifica Humanitas.",
+      "title": "",
+      "tts": {
+        "text": "Den har tittelen Magnifica Humanitas.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det oversettes som \"menneskehetens storhet\".",
+      "text_markdown": "Det oversettes som \"menneskehetens storhet\".",
+      "title": "",
+      "tts": {
+        "text": "Det oversettes som \"menneskehetens storhet\".",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vatikanet publiserer den mandag 25. mai.",
+      "text_markdown": "Vatikanet publiserer den mandag 25. mai.",
+      "title": "",
+      "tts": {
+        "text": "Vatikanet publiserer den mandag tjuefemte mai.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den tar opp kunstig intelligens og beskyttelsen av menneskeverdet.",
+      "text_markdown": "Den tar opp kunstig intelligens og beskyttelsen av menneskeverdet.",
+      "title": "",
+      "tts": {
+        "text": "Den tar opp kunstig intelligens og beskyttelsen av menneskeverdet.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Når signerte paven den?",
+      "text_markdown": "Når signerte paven den?",
+      "title": "",
+      "tts": {
+        "text": "Når signerte paven den?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "15. mai.",
+      "text_markdown": "15. mai.",
+      "title": "",
+      "tts": {
+        "text": "Femtende mai.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den datoen ble valgt med vilje.",
+      "text_markdown": "Den datoen ble valgt med vilje.",
+      "title": "",
+      "tts": {
+        "text": "Den datoen ble valgt med vilje.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er nøyaktig 135 år på dagen etter at Pave Leo XIII signerte Rerum Novarum.",
+      "text_markdown": "Det er nøyaktig 135 år på dagen etter at Pave Leo XIII signerte Rerum Novarum.",
+      "title": "",
+      "tts": {
+        "text": "Det er nøyaktig ett hundre og trettifem år på dagen etter at Pave Leo den trettende signerte Rerum Novarum.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hva var Rerum Novarum?",
+      "text_markdown": "Hva var Rerum Novarum?",
+      "title": "",
+      "tts": {
+        "text": "Hva var Rerum Novarum?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Rerum Novarum var den grunnleggende katolske læren om arbeid og kapital.",
+      "text_markdown": "Rerum Novarum var den grunnleggende katolske læren om arbeid og kapital.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum var den grunnleggende katolske læren om arbeid og kapital.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den kom ut i 1891, midt under industrirevolusjonen.",
+      "text_markdown": "Den kom ut i 1891, midt under industrirevolusjonen.",
+      "title": "",
+      "tts": {
+        "text": "Den kom ut i atten nittien, midt under industrirevolusjonen.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den definerte hvordan Kirken tenker om arbeidere, eiere, lønninger og arbeidets verdighet — og den rammen har holdt i over et århundre.",
+      "text_markdown": "Den definerte hvordan Kirken tenker om arbeidere, eiere, lønninger og arbeidets verdighet — og den rammen har holdt i over et århundre.",
+      "title": "",
+      "tts": {
+        "text": "Den definerte hvordan Kirken tenker om arbeidere, eiere, lønninger og arbeidets verdighet — og den rammen har holdt i over et århundre.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pave Leo XIV posisjonerer kunstig intelligens som den samme typen epokegjørende spørsmål for vår generasjon.",
+      "text_markdown": "Pave Leo XIV posisjonerer kunstig intelligens som den samme typen epokegjørende spørsmål for vår generasjon.",
+      "title": "",
+      "tts": {
+        "text": "Pave Leo den fjortende posisjonerer kunstig intelligens som den samme typen epokegjørende spørsmål for vår generasjon.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Det er et bevisst ekko.",
+      "text_markdown": "Det er et bevisst ekko.",
+      "title": "",
+      "tts": {
+        "text": "Det er et bevisst ekko.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Veldig bevisst.",
+      "text_markdown": "Veldig bevisst.",
+      "title": "",
+      "tts": {
+        "text": "Veldig bevisst.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Selv valget av pavenavn — Leo — signaliserer det.",
+      "text_markdown": "Selv valget av pavenavn — Leo — signaliserer det.",
+      "title": "",
+      "tts": {
+        "text": "Selv valget av pavenavn — Leo — signaliserer det.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Denne paven sier høyt at KI er for vårt århundre hva industrialiseringen var for det nittende.",
+      "text_markdown": "Denne paven sier høyt at KI er for vårt århundre hva industrialiseringen var for det nittende.",
+      "title": "",
+      "tts": {
+        "text": "Denne paven sier høyt at KI er for vårt århundre hva industrialiseringen var for det nittende.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvem presenterer sammen med ham?",
+      "text_markdown": "Hvem presenterer sammen med ham?",
+      "title": "",
+      "tts": {
+        "text": "Hvem presenterer sammen med ham?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Chris Olah, medgrunnlegger av Anthropic, vil være på scenen i Vatikanets synodehall.",
+      "text_markdown": "Chris Olah, medgrunnlegger av Anthropic, vil være på scenen i Vatikanets synodehall.",
+      "title": "",
+      "tts": {
+        "text": "Chris Olah, medgrunnlegger av Anthropic, vil være på scenen i Vatikanets synodehall.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Olah leder forskning på tolkbarhet hos Anthropic.",
+      "text_markdown": "Olah leder forskning på tolkbarhet hos Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Olah leder forskning på tolkbarhet hos Anthropic.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er feltet som prøver å finne ut hva som faktisk skjer inne i et nevralt nettverk.",
+      "text_markdown": "Det er feltet som prøver å finne ut hva som faktisk skjer inne i et nevralt nettverk.",
+      "title": "",
+      "tts": {
+        "text": "Det er feltet som prøver å finne ut hva som faktisk skjer inne i et nevralt nettverk.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvorfor en tolkbarhetsforsker og ikke en leder?",
+      "text_markdown": "Hvorfor en tolkbarhetsforsker og ikke en leder?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor en tolkbarhetsforsker og ikke en leder?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Fordi encyklikaens sentrale spørsmål er «hva er denne tingen vi bygger, og kan vi forstå den?»",
+      "text_markdown": "Fordi encyklikaens sentrale spørsmål er «hva er denne tingen vi bygger, og kan vi forstå den?»",
+      "title": "",
+      "tts": {
+        "text": "Fordi encyklikaens sentrale spørsmål er «hva er denne tingen vi bygger, og kan vi forstå den?»",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er nettopp tolkbarhetsspørsmålet, kartlagt inn i et moralsk rammeverk.",
+      "text_markdown": "Det er nettopp tolkbarhetsspørsmålet, kartlagt inn i et moralsk rammeverk.",
+      "title": "",
+      "tts": {
+        "text": "Det er nettopp tolkbarhetsspørsmålet, kartlagt inn i et moralsk rammeverk.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er ikke et salgsfremstøt, og de valgte ikke en person for salgsfremstøt.",
+      "text_markdown": "Det er ikke et salgsfremstøt, og de valgte ikke en person for salgsfremstøt.",
+      "title": "",
+      "tts": {
+        "text": "Det er ikke et salgsfremstøt, og de valgte ikke en person for salgsfremstøt.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvem andre er på scenen?",
+      "text_markdown": "Hvem andre er på scenen?",
+      "title": "",
+      "tts": {
+        "text": "Hvem andre er på scenen?",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kardinal Pietro Parolin vil holde de avsluttende bemerkningene.",
+      "text_markdown": "Kardinal Pietro Parolin vil holde de avsluttende bemerkningene.",
+      "title": "",
+      "tts": {
+        "text": "Kardinal Pietro Parolin vil holde de avsluttende bemerkningene.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Presenterer også: Kardinal Víctor Manuel Fernández og Kardinal Michael Czerny.",
+      "text_markdown": "Presenterer også: Kardinal Víctor Manuel Fernández og Kardinal Michael Czerny.",
+      "title": "",
+      "tts": {
+        "text": "Presenterer også: Kardinal Víctor Manuel Fernández og Kardinal Michael Czerny.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Og to teologiprofessorer — Anna Rowlands fra Durham University i Storbritannia, og Léocadie Lushombo fra Jesuit School of Theology ved Santa Clara University — vil sitte i panelet.",
+      "text_markdown": "Og to teologiprofessorer — Anna Rowlands fra Durham University i Storbritannia, og Léocadie Lushombo fra Jesuit School of Theology ved Santa Clara University — vil sitte i panelet.",
+      "title": "",
+      "tts": {
+        "text": "Og to teologiprofessorer — Anna Rowlands fra Durham University i Storbritannia, og Léocadie Lushombo fra Jesuit School of Theology ved Santa Clara University — vil sitte i panelet.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvorfor er dette viktig utenfor rommet?",
+      "text_markdown": "Hvorfor er dette viktig utenfor rommet?",
+      "title": "",
+      "tts": {
+        "text": "Hvorfor er dette viktig utenfor rommet?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Fordi det er 1,4 milliarder katolikker i verden.",
+      "text_markdown": "Fordi det er 1,4 milliarder katolikker i verden.",
+      "title": "",
+      "tts": {
+        "text": "Fordi det er én komma fire milliarder katolikker i verden.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Når paven skriver en encyklika, former det hvordan en stor befolkning tenker om et emne i en generasjon.",
+      "text_markdown": "Når paven skriver en encyklika, former det hvordan en stor befolkning tenker om et emne i en generasjon.",
+      "title": "",
+      "tts": {
+        "text": "Når paven skriver en encyklika, former det hvordan en stor befolkning tenker om et emne i en generasjon.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Rerum Novarum former fortsatt katolsk sosialpolitikk om arbeid, 135 år senere.",
+      "text_markdown": "Rerum Novarum former fortsatt katolsk sosialpolitikk om arbeid, 135 år senere.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum former fortsatt katolsk sosialpolitikk om arbeid, hundre og trettifem år senere.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Magnifica Humanitas er posisjonert til å gjøre det samme for AI.",
+      "text_markdown": "Magnifica Humanitas er posisjonert til å gjøre det samme for AI.",
+      "title": "",
+      "tts": {
+        "text": "Magnifica Humanitas er posisjonert til å gjøre det samme for AI.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Og vinkelen som går den andre veien?",
+      "text_markdown": "Og vinkelen som går den andre veien?",
+      "title": "",
+      "tts": {
+        "text": "Og vinkelen som går den andre veien?",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "En institusjon utenfor AI-industrien inntar en seriøs veiledende posisjon om det vi bygger.",
+      "text_markdown": "En institusjon utenfor AI-industrien inntar en seriøs veiledende posisjon om det vi bygger.",
+      "title": "",
+      "tts": {
+        "text": "En institusjon utenfor AI-industrien inntar en seriøs veiledende posisjon om det vi bygger.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Og industrien stiller opp, ved bordet, med den rette typen forsker.",
+      "text_markdown": "Og industrien stiller opp, ved bordet, med den rette typen forsker.",
+      "title": "",
+      "tts": {
+        "text": "Og industrien stiller opp, ved bordet, med den rette typen forsker.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er ikke den vanlige holdningen – det er vanligvis enten «vi vet best, la oss være i fred» eller en lobbyholdning.",
+      "text_markdown": "Det er ikke den vanlige holdningen – det er vanligvis enten «vi vet best, la oss være i fred» eller en lobbyholdning.",
+      "title": "",
+      "tts": {
+        "text": "Det er ikke den vanlige holdningen – det er vanligvis enten «vi vet best, la oss være i fred» eller en lobbyholdning.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dette er en annen holdning.",
+      "text_markdown": "Dette er en annen holdning.",
+      "title": "",
+      "tts": {
+        "text": "Dette er en annen holdning.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Et godt tidspunkt å avslutte seksjonen.",
+      "text_markdown": "Et godt tidspunkt å avslutte seksjonen.",
+      "title": "",
+      "tts": {
+        "text": "Et godt tidspunkt å avslutte seksjonen.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "La oss nå gå videre til ukens konsept.",
+      "text_markdown": "La oss nå gå videre til ukens konsept.",
+      "title": "",
+      "tts": {
+        "text": "La oss nå gå videre til ukens konsept.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ukens konsept er kvantisering.",
+      "text_markdown": "Ukens konsept er kvantisering.",
+      "title": "",
+      "tts": {
+        "text": "Ukens konsept er kvantisering.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, forklar det for oss.",
+      "text_markdown": "Ron, forklar det for oss.",
+      "title": "",
+      "tts": {
+        "text": "Ron, forklar det for oss.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kvantisering er hvordan en modell med 7 milliarder parametere får plass på telefonen din.",
+      "text_markdown": "Kvantisering er hvordan en modell med 7 milliarder parametere får plass på telefonen din.",
+      "title": "",
+      "tts": {
+        "text": "Kvantisering er hvordan en modell med syv milliarder parametere får plass på telefonen din.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Start med det grunnleggende problemet.",
+      "text_markdown": "Start med det grunnleggende problemet.",
+      "title": "",
+      "tts": {
+        "text": "Start med det grunnleggende problemet.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hver vekt i en modell er normalt et 16-bits flyttall.",
+      "text_markdown": "Hver vekt i en modell er normalt et 16-bits flyttall.",
+      "title": "",
+      "tts": {
+        "text": "Hver vekt i en modell er normalt et seksten bits flyttall.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "En 7-milliarder-parameter-modell i 16-bit er omtrent 14 gigabyte på disk.",
+      "text_markdown": "En 7-milliarder-parameter-modell i 16-bit er omtrent 14 gigabyte på disk.",
+      "title": "",
+      "tts": {
+        "text": "En syv milliarder parameter modell i seksten bit er omtrent fjorten gigabyte på disk.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det får ikke plass på en telefon.",
+      "text_markdown": "Det får ikke plass på en telefon.",
+      "title": "",
+      "tts": {
+        "text": "Det får ikke plass på en telefon.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Så du krymper tallene.",
+      "text_markdown": "Så du krymper tallene.",
+      "title": "",
+      "tts": {
+        "text": "Så du krymper tallene.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Stemmer.",
+      "text_markdown": "Stemmer.",
+      "title": "",
+      "tts": {
+        "text": "Stemmer.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Du runder hver vekt til færre biter.",
+      "text_markdown": "Du runder hver vekt til færre biter.",
+      "title": "",
+      "tts": {
+        "text": "Du runder hver vekt til færre biter.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Åtte biter per vekt halverer modellen.",
+      "text_markdown": "Åtte biter per vekt halverer modellen.",
+      "title": "",
+      "tts": {
+        "text": "Åtte biter per vekt halverer modellen.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Fire biter per vekt reduserer den til en fjerdedel.",
+      "text_markdown": "Fire biter per vekt reduserer den til en fjerdedel.",
+      "title": "",
+      "tts": {
+        "text": "Fire biter per vekt reduserer den til en fjerdedel.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Den samme 7-milliarder-parameter-modellen med fire biter er 3,5 gigabyte.",
+      "text_markdown": "Den samme 7-milliarder-parameter-modellen med fire biter er 3,5 gigabyte.",
+      "title": "",
+      "tts": {
+        "text": "Den samme syv milliarder parameter modellen med fire biter er tre komma fem gigabyte.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Nå får den plass.",
+      "text_markdown": "Nå får den plass.",
+      "title": "",
+      "tts": {
+        "text": "Nå får den plass.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Fungerer modellen fortsatt?",
+      "text_markdown": "Fungerer modellen fortsatt?",
+      "title": "",
+      "tts": {
+        "text": "Fungerer modellen fortsatt?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Som regel ja, med et lite tap i kvalitet.",
+      "text_markdown": "Som regel ja, med et lite tap i kvalitet.",
+      "title": "",
+      "tts": {
+        "text": "Som regel ja, med et lite tap i kvalitet.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Trikset er å velge hvor i modellen man skal miste presisjon.",
+      "text_markdown": "Trikset er å velge hvor i modellen man skal miste presisjon.",
+      "title": "",
+      "tts": {
+        "text": "Trikset er å velge hvor i modellen man skal miste presisjon.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "AWQ — activation-aware weight quantization — beholder kanalene som betyr mest i høyere presisjon og komprimerer resten.",
+      "text_markdown": "AWQ — activation-aware weight quantization — beholder kanalene som betyr mest i høyere presisjon og komprimerer resten.",
+      "title": "",
+      "tts": {
+        "text": "AWQ — activation aware weight quantization — beholder kanalene som betyr mest i høyere presisjon og komprimerer resten.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "GGUF, som er det llama.cpp bruker, har formater som Q4_K_M som blander presisjoner inne i en enkelt modellfil.",
+      "text_markdown": "GGUF, som er det llama.cpp bruker, har formater som Q4_K_M som blander presisjoner inne i en enkelt modellfil.",
+      "title": "",
+      "tts": {
+        "text": "GGUF, som er det llama.cpp bruker, har formater som Q fire K M som blander presisjoner inne i en enkelt modellfil.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hvor små kan man få dem?",
+      "text_markdown": "Hvor små kan man få dem?",
+      "title": "",
+      "tts": {
+        "text": "Hvor små kan man få dem?",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Apples on-device grunnmodell går ned til 2 biter per vekt.",
+      "text_markdown": "Apples on-device grunnmodell går ned til 2 biter per vekt.",
+      "title": "",
+      "tts": {
+        "text": "Apples on device grunnmodell går ned til to biter per vekt.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "De bruker Quantization-Aware Training, der modellen trenes fra starten av med viten om at den vil være 2-bit ved inferens.",
+      "text_markdown": "De bruker Quantization-Aware Training, der modellen trenes fra starten av med viten om at den vil være 2-bit ved inferens.",
+      "title": "",
+      "tts": {
+        "text": "De bruker Quantization Aware Training, der modellen trenes fra starten av med viten om at den vil være to bit ved inferens.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er et mye bedre resultat enn naiv avrunding i etterkant.",
+      "text_markdown": "Det er et mye bedre resultat enn naiv avrunding i etterkant.",
+      "title": "",
+      "tts": {
+        "text": "Det er et mye bedre resultat enn naiv avrunding i etterkant.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Omtrent 3 milliarder parametere med 2 biter tilsvarer omtrent 750 megabyte.",
+      "text_markdown": "Omtrent 3 milliarder parametere med 2 biter tilsvarer omtrent 750 megabyte.",
+      "title": "",
+      "tts": {
+        "text": "Omtrent tre milliarder parametere med to biter tilsvarer omtrent syv hundre og femti megabyte.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det får plass på en telefon med god margin.",
+      "text_markdown": "Det får plass på en telefon med god margin.",
+      "title": "",
+      "tts": {
+        "text": "Det får plass på en telefon med god margin.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Så det er derfor on-device AI endelig er brukbar i år.",
+      "text_markdown": "Så det er derfor on-device AI endelig er brukbar i år.",
+      "title": "",
+      "tts": {
+        "text": "Så det er derfor on device AI endelig er brukbar i år.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Det er hovedgrunnen.",
+      "text_markdown": "Det er hovedgrunnen.",
+      "title": "",
+      "tts": {
+        "text": "Det er hovedgrunnen.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tre ord å ta med deg — AWQ, GGUF og Quantization-Aware Training.",
+      "text_markdown": "Tre ord å ta med deg — AWQ, GGUF og Quantization-Aware Training.",
+      "title": "",
+      "tts": {
+        "text": "Tre ord å ta med deg — AWQ, GGUF og Quantization Aware Training.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hvis en modell leveres med disse tre tingene, leveres den på telefoner.",
+      "text_markdown": "Hvis en modell leveres med disse tre tingene, leveres den på telefoner.",
+      "title": "",
+      "tts": {
+        "text": "Hvis en modell leveres med disse tre tingene, leveres den på telefoner.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Et godt sted å lande.",
+      "text_markdown": "Et godt sted å lande.",
+      "title": "",
+      "tts": {
+        "text": "Et godt sted å lande.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, takk.",
+      "text_markdown": "Ron, takk.",
+      "title": "",
+      "tts": {
+        "text": "Ron, takk.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Når som helst, Vindy.",
+      "text_markdown": "Når som helst, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Når som helst, Vindy.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Det var AI This Week for 20. mai 2026.",
+      "text_markdown": "Det var AI This Week for 20. mai 2026.",
+      "title": "",
+      "tts": {
+        "text": "Det var AI This Week for tjuende mai, tjue tjue seks.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ny utgave neste onsdag.",
+      "text_markdown": "Ny utgave neste onsdag.",
+      "title": "",
+      "tts": {
+        "text": "Ny utgave neste onsdag.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Frem til da, ta vare på deg selv.",
+      "text_markdown": "Frem til da, ta vare på deg selv.",
+      "title": "",
+      "tts": {
+        "text": "Frem til da, ta vare på deg selv.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

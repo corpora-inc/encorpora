@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Mvuto",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Mvuto",
+      "text_markdown": "Mvuto"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna wakati, mara baada ya kuondoka kwenye ndege, ambao ningependa kukupa bure.",
+      "text_markdown": "Kuna wakati, mara baada ya kuondoka kwenye ndege, ambao ningependa kukupa bure.",
+      "tts": {
+        "text": "Kuna wakati, mara baada ya kuondoka kwenye ndege, ambao ningependa kukupa bure.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dunia inakoma kuwa kitu unachoishi ndani yake.",
+      "text_markdown": "Dunia inakoma kuwa kitu unachoishi ndani yake.",
+      "tts": {
+        "text": "Dunia inakoma kuwa kitu unachoishi ndani yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Inakuwa kitu unachoanguka kupitia.",
+      "text_markdown": "Inakuwa kitu unachoanguka kupitia.",
+      "tts": {
+        "text": "Inakuwa kitu unachoanguka kupitia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Na kwa sekunde za kwanza chache, akili yako haiwezi kuufikia haraka kile mwili wako umefanya.",
+      "text_markdown": "Na kwa sekunde za kwanza chache, akili yako haiwezi kuufikia haraka kile mwili wako umefanya.",
+      "tts": {
+        "text": "Na kwa sekunde za kwanza chache, akili yako haiwezi kuufikia haraka kile mwili wako umefanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Watu huniuliza kwa nini ninaruka.",
+      "text_markdown": "Watu huniuliza kwa nini ninaruka.",
+      "tts": {
+        "text": "Watu huniuliza kwa nini ninaruka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daima hutarajia niseme ni kasi ya hisia.",
+      "text_markdown": "Daima hutarajia niseme ni kasi ya hisia.",
+      "tts": {
+        "text": "Daima hutarajia niseme ni kasi ya hisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si kasi ya hisia.",
+      "text_markdown": "Si kasi ya hisia.",
+      "tts": {
+        "text": "Si kasi ya hisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kasi ya hisia ndiyo unayoihisi katika kurukia kwako kwa mara tano za kwanza.",
+      "text_markdown": "Kasi ya hisia ndiyo unayoihisi katika kurukia kwako kwa mara tano za kwanza.",
+      "tts": {
+        "text": "Kasi ya hisia ndiyo unayoihisi katika kurukia kwako kwa mara tano za kwanza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Baada ya hapo, kitu kingine cha kimya kinachukua nafasi.",
+      "text_markdown": "Baada ya hapo, kitu kingine cha kimya kinachukua nafasi.",
+      "tts": {
+        "text": "Baada ya hapo, kitu kingine cha kimya kinachukua nafasi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ninachofuatilia ni uwazi.",
+      "text_markdown": "Ninachofuatilia ni uwazi.",
+      "tts": {
+        "text": "Ninachofuatilia ni uwazi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kwa sekunde sitini katika kuanguka huru, akili yako haina chochote kingine cha kufanya.",
+      "text_markdown": "Kwa sekunde sitini katika kuanguka huru, akili yako haina chochote kingine cha kufanya.",
+      "tts": {
+        "text": "Kwa sekunde sitini katika kuanguka huru, akili yako haina chochote kingine cha kufanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hakuna simu.",
+      "text_markdown": "Hakuna simu.",
+      "tts": {
+        "text": "Hakuna simu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hakuna bili.",
+      "text_markdown": "Hakuna bili.",
+      "tts": {
+        "text": "Hakuna bili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hakuna wasiwasi mdogo wa kesho.",
+      "text_markdown": "Hakuna wasiwasi mdogo wa kesho.",
+      "tts": {
+        "text": "Hakuna wasiwasi mdogo wa kesho.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ni upepo tu, pumzi yako, na mviringo wa polepole wa dunia chini yako.",
+      "text_markdown": "Ni upepo tu, pumzi yako, na mviringo wa polepole wa dunia chini yako.",
+      "tts": {
+        "text": "Ni upepo tu, pumzi yako, na mviringo wa polepole wa dunia chini yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Maisha mengi yana kelele.",
+      "text_markdown": "Maisha mengi yana kelele.",
+      "tts": {
+        "text": "Maisha mengi yana kelele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Dakika hiyo haina.",
+      "text_markdown": "Dakika hiyo haina.",
+      "tts": {
+        "text": "Dakika hiyo haina.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wrukaji wa parachuti si wendawazimu.",
+      "text_markdown": "Wrukaji wa parachuti si wendawazimu.",
+      "tts": {
+        "text": "Wrukaji wa parachuti si wendawazimu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wengi wetu ni watu watulivu walioupata njia ya kuhisi utulivu kwa kasi zaidi.",
+      "text_markdown": "Wengi wetu ni watu watulivu walioupata njia ya kuhisi utulivu kwa kasi zaidi.",
+      "tts": {
+        "text": "Wengi wetu ni watu watulivu walioupata njia ya kuhisi utulivu kwa kasi zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tunaruka kutoka kwenye ndege jinsi watu wengine wanavyotafakari.",
+      "text_markdown": "Tunaruka kutoka kwenye ndege jinsi watu wengine wanavyotafakari.",
+      "tts": {
+        "text": "Tunaruka kutoka kwenye ndege jinsi watu wengine wanavyotafakari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hutakasa kitu fulani.",
+      "text_markdown": "Hutakasa kitu fulani.",
+      "tts": {
+        "text": "Hutakasa kitu fulani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Na kisha, kila wikendi, hutakasa tena.",
+      "text_markdown": "Na kisha, kila wikendi, hutakasa tena.",
+      "tts": {
+        "text": "Na kisha, kila wikendi, hutakasa tena.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mara ya kwanza nilipoona parachuti ikifunguka juu yangu, nililia ndani ya mkanda.",
+      "text_markdown": "Mara ya kwanza nilipoona parachuti ikifunguka juu yangu, nililia ndani ya mkanda.",
+      "tts": {
+        "text": "Mara ya kwanza nilipoona parachuti ikifunguka juu yangu, nililia ndani ya mkanda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sikutarajia kufanya hivyo.",
+      "text_markdown": "Sikutarajia kufanya hivyo.",
+      "tts": {
+        "text": "Sikutarajia kufanya hivyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mtu mzima, akining'inia angani chini ya kipande cha mraba cha kitambaa laini, akilia bila sababu anayoweza kuieleza.",
+      "text_markdown": "Mtu mzima, akining'inia angani chini ya kipande cha mraba cha kitambaa laini, akilia bila sababu anayoweza kuieleza.",
+      "tts": {
+        "text": "Mtu mzima, akining'inia angani chini ya kipande cha mraba cha kitambaa laini, akilia bila sababu anayoweza kuieleza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mwalimu wangu alicheka kwa upole na kunipiga bega.",
+      "text_markdown": "Mwalimu wangu alicheka kwa upole na kunipiga bega.",
+      "tts": {
+        "text": "Mwalimu wangu alicheka kwa upole na kunipiga bega.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Alikuwa ameliona hilo mara nyingi.",
+      "text_markdown": "Alikuwa ameliona hilo mara nyingi.",
+      "tts": {
+        "text": "Alikuwa ameliona hilo mara nyingi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Huo ndio wakati nilijua nitarudi.",
+      "text_markdown": "Huo ndio wakati nilijua nitarudi.",
+      "tts": {
+        "text": "Huo ndio wakati nilijua nitarudi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuruka kwa parachuti si kuhusu kuwa jasiri.",
+      "text_markdown": "Kuruka kwa parachuti si kuhusu kuwa jasiri.",
+      "tts": {
+        "text": "Kuruka kwa parachuti si kuhusu kuwa jasiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni kuhusu kupata sehemu moja ambapo akili yako inanyamaza.",
+      "text_markdown": "Ni kuhusu kupata sehemu moja ambapo akili yako inanyamaza.",
+      "tts": {
+        "text": "Ni kuhusu kupata sehemu moja ambapo akili yako inanyamaza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kwa baadhi ya watu, sehemu hiyo ni mkeka wa yoga.",
+      "text_markdown": "Kwa baadhi ya watu, sehemu hiyo ni mkeka wa yoga.",
+      "tts": {
+        "text": "Kwa baadhi ya watu, sehemu hiyo ni mkeka wa yoga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kwa wengine, ni mbio ndefu kwenye barabara tupu.",
+      "text_markdown": "Kwa wengine, ni mbio ndefu kwenye barabara tupu.",
+      "tts": {
+        "text": "Kwa wengine, ni mbio ndefu kwenye barabara tupu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kwa wengine, ni uzi wa kuvua samaki, au piano, au jiko saa sita asubuhi.",
+      "text_markdown": "Kwa wengine, ni uzi wa kuvua samaki, au piano, au jiko saa sita asubuhi.",
+      "tts": {
+        "text": "Kwa wengine, ni uzi wa kuvua samaki, au piano, au jiko saa sita asubuhi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kwangu mimi, ni futi elfu kumi na tatu juu ya ardhi, bila chochote cha kufanya isipokuwa kupumua.",
+      "text_markdown": "Kwangu mimi, ni futi elfu kumi na tatu juu ya ardhi, bila chochote cha kufanya isipokuwa kupumua.",
+      "tts": {
+        "text": "Kwangu mimi, ni futi elfu kumi na tatu juu ya ardhi, bila chochote cha kufanya isipokuwa kupumua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mvuto, mara unapouhisi, ni mgumu kuueleza kwa rafiki kwenye chakula cha jioni.",
+      "text_markdown": "Mvuto, mara unapouhisi, ni mgumu kuueleza kwa rafiki kwenye chakula cha jioni.",
+      "tts": {
+        "text": "Mvuto, mara unapouhisi, ni mgumu kuueleza kwa rafiki kwenye chakula cha jioni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Utajaribu, na watatabasamu kwa heshima, na wewe utakata tamaa.",
+      "text_markdown": "Utajaribu, na watatabasamu kwa heshima, na wewe utakata tamaa.",
+      "tts": {
+        "text": "Utajaribu, na watatabasamu kwa heshima, na wewe utakata tamaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hilo si tatizo.",
+      "text_markdown": "Hilo si tatizo.",
+      "tts": {
+        "text": "Hilo si tatizo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hukuanza kuruka ili uueleze.",
+      "text_markdown": "Hukuanza kuruka ili uueleze.",
+      "tts": {
+        "text": "Hukuanza kuruka ili uueleze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ulianza kuruka kwa sababu, mara ya kwanza ulipojaribu, kitu ndani yako kilisema, ahaa, hapa ndipo ulipo.",
+      "text_markdown": "Ulianza kuruka kwa sababu, mara ya kwanza ulipojaribu, kitu ndani yako kilisema, ahaa, hapa ndipo ulipo.",
+      "tts": {
+        "text": "Ulianza kuruka kwa sababu, mara ya kwanza ulipojaribu, kitu ndani yako kilisema, ahaa, hapa ndipo ulipo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je, umewahi kusimama ukingoni mwa kitu kirefu na kuhisi mwili wako ukiegemea kuelekea hewa wazi?",
+      "text_markdown": "Je, umewahi kusimama ukingoni mwa kitu kirefu na kuhisi mwili wako ukiegemea kuelekea hewa wazi?",
+      "tts": {
+        "text": "Je, umewahi kusimama ukingoni mwa kitu kirefu na kuhisi mwili wako ukiegemea kuelekea hewa wazi?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kidogo tu, kwa sekunde moja tu.",
+      "text_markdown": "Kidogo tu, kwa sekunde moja tu.",
+      "tts": {
+        "text": "Kidogo tu, kwa sekunde moja tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kama umewahi, tayari unajua ninachozungumzia.",
+      "text_markdown": "Kama umewahi, tayari unajua ninachozungumzia.",
+      "tts": {
+        "text": "Kama umewahi, tayari unajua ninachozungumzia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuruka kwa parachuti ndicho kinachotokea unapoacha kujifanya kwamba huegemei.",
+      "text_markdown": "Kuruka kwa parachuti ndicho kinachotokea unapoacha kujifanya kwamba huegemei.",
+      "tts": {
+        "text": "Kuruka kwa parachuti ndicho kinachotokea unapoacha kujifanya kwamba huegemei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Unatoka nje, kwa makusudi, kuingia mahali ambapo mwili wako umekuwa ukiuliza kwa kimya kwa miaka mingi.",
+      "text_markdown": "Unatoka nje, kwa makusudi, kuingia mahali ambapo mwili wako umekuwa ukiuliza kwa kimya kwa miaka mingi.",
+      "tts": {
+        "text": "Unatoka nje, kwa makusudi, kuingia mahali ambapo mwili wako umekuwa ukiuliza kwa kimya kwa miaka mingi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na kisha, haraka sana, unajifunza kwamba ardhi haikuwahi kuwa pale ambapo hofu ilikuwa.",
+      "text_markdown": "Na kisha, haraka sana, unajifunza kwamba ardhi haikuwahi kuwa pale ambapo hofu ilikuwa.",
+      "tts": {
+        "text": "Na kisha, haraka sana, unajifunza kwamba ardhi haikuwahi kuwa pale ambapo hofu ilikuwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hofu ilikuwa katika kuegemea.",
+      "text_markdown": "Hofu ilikuwa katika kuegemea.",
+      "tts": {
+        "text": "Hofu ilikuwa katika kuegemea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mara unaporuka, hofu inaondoka.",
+      "text_markdown": "Mara unaporuka, hofu inaondoka.",
+      "tts": {
+        "text": "Mara unaporuka, hofu inaondoka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kinachobaki ni kitu karibu kama nyumbani.",
+      "text_markdown": "Kinachobaki ni kitu karibu kama nyumbani.",
+      "tts": {
+        "text": "Kinachobaki ni kitu karibu kama nyumbani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Moyo wako unapunguza mwendo.",
+      "text_markdown": "Moyo wako unapunguza mwendo.",
+      "tts": {
+        "text": "Moyo wako unapunguza mwendo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Pumzi yako inapata mdundo iliokuwa ikiutafuta.",
+      "text_markdown": "Pumzi yako inapata mdundo iliokuwa ikiutafuta.",
+      "tts": {
+        "text": "Pumzi yako inapata mdundo iliokuwa ikiutafuta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Hewa inakushikilia.",
+      "text_markdown": "Hewa inakushikilia.",
+      "tts": {
+        "text": "Hewa inakushikilia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Na unahisi, labda kwa mara ya kwanza kwa muda mrefu, kwamba upo hasa pale ulipo.",
+      "text_markdown": "Na unahisi, labda kwa mara ya kwanza kwa muda mrefu, kwamba upo hasa pale ulipo.",
+      "tts": {
+        "text": "Na unahisi, labda kwa mara ya kwanza kwa muda mrefu, kwamba upo hasa pale ulipo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hicho ndicho ningekuambia, ungeniuliza kwenye matembezi marefu.",
+      "text_markdown": "Hicho ndicho ningekuambia, ungeniuliza kwenye matembezi marefu.",
+      "tts": {
+        "text": "Hicho ndicho ningekuambia, ungeniuliza kwenye matembezi marefu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kwa nini mtu mtulivu na mwenye akili anaendelea kuruka kutoka kwenye ndege nzuri kabisa?",
+      "text_markdown": "Kwa nini mtu mtulivu na mwenye akili anaendelea kuruka kutoka kwenye ndege nzuri kabisa?",
+      "tts": {
+        "text": "Kwa nini mtu mtulivu na mwenye akili anaendelea kuruka kutoka kwenye ndege nzuri kabisa?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ningekuambia ni kitu kimya zaidi ninachofanya.",
+      "text_markdown": "Ningekuambia ni kitu kimya zaidi ninachofanya.",
+      "tts": {
+        "text": "Ningekuambia ni kitu kimya zaidi ninachofanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Na ningekusudia hivyo.",
+      "text_markdown": "Na ningekusudia hivyo.",
+      "tts": {
+        "text": "Na ningekusudia hivyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Mara ya Kwanza",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Mara ya Kwanza",
+      "text_markdown": "Mara ya Kwanza"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nikuweke ndani ya ndege.",
+      "text_markdown": "Nikuweke ndani ya ndege.",
+      "tts": {
+        "text": "Nikuweke ndani ya ndege.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Umeketi kwenye benchi fupi la chuma, umefungwa kwenye mkanda na mwalimu nyuma yako.",
+      "text_markdown": "Umeketi kwenye benchi fupi la chuma, umefungwa kwenye mkanda na mwalimu nyuma yako.",
+      "tts": {
+        "text": "Umeketi kwenye benchi fupi la chuma, umefungwa kwenye mkanda na mwalimu nyuma yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ndege inapanda kwa miduara ya polepole na ya uvivu.",
+      "text_markdown": "Ndege inapanda kwa miduara ya polepole na ya uvivu.",
+      "tts": {
+        "text": "Ndege inapanda kwa miduara ya polepole na ya uvivu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dirisha dogo la mraba kando yako linakuwa la bluu zaidi na zaidi.",
+      "text_markdown": "Dirisha dogo la mraba kando yako linakuwa la bluu zaidi na zaidi.",
+      "tts": {
+        "text": "Dirisha dogo la mraba kando yako linakuwa la bluu zaidi na zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unaweza kuhisi moyo wako kooni mwako, lakini hauna hofu kubwa.",
+      "text_markdown": "Unaweza kuhisi moyo wako kooni mwako, lakini hauna hofu kubwa.",
+      "tts": {
+        "text": "Unaweza kuhisi moyo wako kooni mwako, lakini hauna hofu kubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Wewe ni mwenye kuamka kabisa, kabisa kabisa.",
+      "text_markdown": "Wewe ni mwenye kuamka kabisa, kabisa kabisa.",
+      "tts": {
+        "text": "Wewe ni mwenye kuamka kabisa, kabisa kabisa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwalimu anainama karibu na sikio lako.",
+      "text_markdown": "Mwalimu anainama karibu na sikio lako.",
+      "tts": {
+        "text": "Mwalimu anainama karibu na sikio lako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anakwambia, kwa utulivu, kwamba kila kitu unachohitaji kufanya, atakwambia lini.",
+      "text_markdown": "Anakwambia, kwa utulivu, kwamba kila kitu unachohitaji kufanya, atakwambia lini.",
+      "tts": {
+        "text": "Anakwambia, kwa utulivu, kwamba kila kitu unachohitaji kufanya, atakwambia lini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unainamisha kichwa.",
+      "text_markdown": "Unainamisha kichwa.",
+      "tts": {
+        "text": "Unainamisha kichwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Umeinamisha kichwa mara nyingi sana katika saa iliyopita kiasi kwamba shingo yako inaanza kuuma.",
+      "text_markdown": "Umeinamisha kichwa mara nyingi sana katika saa iliyopita kiasi kwamba shingo yako inaanza kuuma.",
+      "tts": {
+        "text": "Umeinamisha kichwa mara nyingi sana katika saa iliyopita kiasi kwamba shingo yako inaanza kuuma.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha mlango unafunguka.",
+      "text_markdown": "Kisha mlango unafunguka.",
+      "tts": {
+        "text": "Kisha mlango unafunguka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Upepo unaingia kama ukuta, wenye kelele na baridi na hai, na ghafla ndege inahisi ndogo sana.",
+      "text_markdown": "Upepo unaingia kama ukuta, wenye kelele na baridi na hai, na ghafla ndege inahisi ndogo sana.",
+      "tts": {
+        "text": "Upepo unaingia kama ukuta, wenye kelele na baridi na hai, na ghafla ndege inahisi ndogo sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unajisukuma kuelekea ukingoni.",
+      "text_markdown": "Unajisukuma kuelekea ukingoni.",
+      "tts": {
+        "text": "Unajisukuma kuelekea ukingoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vidole vyako vya miguu vinaning'inia ndani ya hakuna kitu.",
+      "text_markdown": "Vidole vyako vya miguu vinaning'inia ndani ya hakuna kitu.",
+      "tts": {
+        "text": "Vidole vyako vya miguu vinaning'inia ndani ya hakuna kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unatazama chini, na ardhi iko mbali sana hata haionekani tena kama ardhi.",
+      "text_markdown": "Unatazama chini, na ardhi iko mbali sana hata haionekani tena kama ardhi.",
+      "tts": {
+        "text": "Unatazama chini, na ardhi iko mbali sana hata haionekani tena kama ardhi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Inaonekana kama blanketi la viraka.",
+      "text_markdown": "Inaonekana kama blanketi la viraka.",
+      "tts": {
+        "text": "Inaonekana kama blanketi la viraka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Barabara nyembamba kama uzi.",
+      "text_markdown": "Barabara nyembamba kama uzi.",
+      "tts": {
+        "text": "Barabara nyembamba kama uzi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Mto wa rangi ya fedha iliyofifia.",
+      "text_markdown": "Mto wa rangi ya fedha iliyofifia.",
+      "tts": {
+        "text": "Mto wa rangi ya fedha iliyofifia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Mashamba madogo ya kijani na ya kahawia yaliyoshonwa pamoja kwa ua.",
+      "text_markdown": "Mashamba madogo ya kijani na ya kahawia yaliyoshonwa pamoja kwa ua.",
+      "tts": {
+        "text": "Mashamba madogo ya kijani na ya kahawia yaliyoshonwa pamoja kwa ua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwalimu wako anahesabu.",
+      "text_markdown": "Mwalimu wako anahesabu.",
+      "tts": {
+        "text": "Mwalimu wako anahesabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anasema moja.",
+      "text_markdown": "Anasema moja.",
+      "tts": {
+        "text": "Anasema moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anasema mbili.",
+      "text_markdown": "Anasema mbili.",
+      "tts": {
+        "text": "Anasema mbili.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa ya tatu, ndege haipo tena.",
+      "text_markdown": "Kwa ya tatu, ndege haipo tena.",
+      "tts": {
+        "text": "Kwa ya tatu, ndege haipo tena.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sekunde tatu za kwanza ndizo ngumu zaidi.",
+      "text_markdown": "Sekunde tatu za kwanza ndizo ngumu zaidi.",
+      "tts": {
+        "text": "Sekunde tatu za kwanza ndizo ngumu zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mwili wako unaamini unaanguka, kwa sababu ndiyo, na mwili wako haujawahi kuambiwa kwamba hili ni sawa.",
+      "text_markdown": "Mwili wako unaamini unaanguka, kwa sababu ndiyo, na mwili wako haujawahi kuambiwa kwamba hili ni sawa.",
+      "tts": {
+        "text": "Mwili wako unaamini unaanguka, kwa sababu ndiyo, na mwili wako haujawahi kuambiwa kwamba hili ni sawa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unatoa sauti.",
+      "text_markdown": "Unatoa sauti.",
+      "tts": {
+        "text": "Unatoa sauti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kila mtu hutoa sauti.",
+      "text_markdown": "Kila mtu hutoa sauti.",
+      "tts": {
+        "text": "Kila mtu hutoa sauti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hakuna haja ya kuona aibu kuhusu sauti hiyo.",
+      "text_markdown": "Hakuna haja ya kuona aibu kuhusu sauti hiyo.",
+      "tts": {
+        "text": "Hakuna haja ya kuona aibu kuhusu sauti hiyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha kitu cha ajabu kinatokea.",
+      "text_markdown": "Kisha kitu cha ajabu kinatokea.",
+      "tts": {
+        "text": "Kisha kitu cha ajabu kinatokea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuanguka kunakoma kuhisi kama kuanguka.",
+      "text_markdown": "Kuanguka kunakoma kuhisi kama kuanguka.",
+      "tts": {
+        "text": "Kuanguka kunakoma kuhisi kama kuanguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Upepo unainuka kukutana nawe na kukushikilia, jinsi maji yanavyokushikilia unapoelea kwa mgongo wako.",
+      "text_markdown": "Upepo unainuka kukutana nawe na kukushikilia, jinsi maji yanavyokushikilia unapoelea kwa mgongo wako.",
+      "tts": {
+        "text": "Upepo unainuka kukutana nawe na kukushikilia, jinsi maji yanavyokushikilia unapoelea kwa mgongo wako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mikono yako na miguu inaenea bila wewe kuiomba.",
+      "text_markdown": "Mikono yako na miguu inaenea bila wewe kuiomba.",
+      "tts": {
+        "text": "Mikono yako na miguu inaenea bila wewe kuiomba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Uso wako unahisi kama unavutwa kwa pande nyingi kwa wakati mmoja.",
+      "text_markdown": "Uso wako unahisi kama unavutwa kwa pande nyingi kwa wakati mmoja.",
+      "tts": {
+        "text": "Uso wako unahisi kama unavutwa kwa pande nyingi kwa wakati mmoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Huwezi kujua kama unatabasamu au unapiga kelele.",
+      "text_markdown": "Huwezi kujua kama unatabasamu au unapiga kelele.",
+      "tts": {
+        "text": "Huwezi kujua kama unatabasamu au unapiga kelele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Haijalishi.",
+      "text_markdown": "Haijalishi.",
+      "tts": {
+        "text": "Haijalishi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unaangaza pande zote.",
+      "text_markdown": "Unaangaza pande zote.",
+      "tts": {
+        "text": "Unaangaza pande zote.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dunia bado iko mbali sana chini yako, lakini sasa iko karibu zaidi, na unaweza kuona rangi vizuri zaidi.",
+      "text_markdown": "Dunia bado iko mbali sana chini yako, lakini sasa iko karibu zaidi, na unaweza kuona rangi vizuri zaidi.",
+      "tts": {
+        "text": "Dunia bado iko mbali sana chini yako, lakini sasa iko karibu zaidi, na unaweza kuona rangi vizuri zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Magari kwenye barabara kuu, polepole kama siafu.",
+      "text_markdown": "Magari kwenye barabara kuu, polepole kama siafu.",
+      "tts": {
+        "text": "Magari kwenye barabara kuu, polepole kama siafu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ziwa, tulivu kabisa.",
+      "text_markdown": "Ziwa, tulivu kabisa.",
+      "tts": {
+        "text": "Ziwa, tulivu kabisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kivuli cha wingu kikipita juu ya msitu.",
+      "text_markdown": "Kivuli cha wingu kikipita juu ya msitu.",
+      "tts": {
+        "text": "Kivuli cha wingu kikipita juu ya msitu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unaruka angani.",
+      "text_markdown": "Unaruka angani.",
+      "tts": {
+        "text": "Unaruka angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si ndani ya ndege.",
+      "text_markdown": "Si ndani ya ndege.",
+      "tts": {
+        "text": "Si ndani ya ndege.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wewe, mwili wako, unaruka angani.",
+      "text_markdown": "Wewe, mwili wako, unaruka angani.",
+      "tts": {
+        "text": "Wewe, mwili wako, unaruka angani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwalimu wako anakugusa bega.",
+      "text_markdown": "Mwalimu wako anakugusa bega.",
+      "tts": {
+        "text": "Mwalimu wako anakugusa bega.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unavuta kamba.",
+      "text_markdown": "Unavuta kamba.",
+      "tts": {
+        "text": "Unavuta kamba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuna mvuto laini, kama mtu anayekushika kwa upole nyuma ya shati lako.",
+      "text_markdown": "Kuna mvuto laini, kama mtu anayekushika kwa upole nyuma ya shati lako.",
+      "tts": {
+        "text": "Kuna mvuto laini, kama mtu anayekushika kwa upole nyuma ya shati lako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kisha mvuto wa pili, mkali zaidi, unaokuinua kusimama.",
+      "text_markdown": "Kisha mvuto wa pili, mkali zaidi, unaokuinua kusimama.",
+      "tts": {
+        "text": "Kisha mvuto wa pili, mkali zaidi, unaokuinua kusimama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dunia inanyamaza.",
+      "text_markdown": "Dunia inanyamaza.",
+      "tts": {
+        "text": "Dunia inanyamaza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Upepo umekwisha.",
+      "text_markdown": "Upepo umekwisha.",
+      "tts": {
+        "text": "Upepo umekwisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sauti kubwa imekwisha.",
+      "text_markdown": "Sauti kubwa imekwisha.",
+      "tts": {
+        "text": "Sauti kubwa imekwisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuanguka kumekwisha.",
+      "text_markdown": "Kuanguka kumekwisha.",
+      "tts": {
+        "text": "Kuanguka kumekwisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unaning'inia sasa, ndani ya mkanda, chini ya mstatili mpana wa kitambaa.",
+      "text_markdown": "Unaning'inia sasa, ndani ya mkanda, chini ya mstatili mpana wa kitambaa.",
+      "tts": {
+        "text": "Unaning'inia sasa, ndani ya mkanda, chini ya mstatili mpana wa kitambaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Anga ghafla iko tulivu sana, sana.",
+      "text_markdown": "Anga ghafla iko tulivu sana, sana.",
+      "tts": {
+        "text": "Anga ghafla iko tulivu sana, sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unaweza kusikia ndege chini yako.",
+      "text_markdown": "Unaweza kusikia ndege chini yako.",
+      "tts": {
+        "text": "Unaweza kusikia ndege chini yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Unaweza kujisikia ukipumua.",
+      "text_markdown": "Unaweza kujisikia ukipumua.",
+      "tts": {
+        "text": "Unaweza kujisikia ukipumua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Mwalimu wako anacheka sikioni mwako na kuuliza unaendeleaje.",
+      "text_markdown": "Mwalimu wako anacheka sikioni mwako na kuuliza unaendeleaje.",
+      "tts": {
+        "text": "Mwalimu wako anacheka sikioni mwako na kuuliza unaendeleaje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Huwezi kujibu kwa wakati huo, kwa sababu unalia, au unacheka, au yote mawili.",
+      "text_markdown": "Huwezi kujibu kwa wakati huo, kwa sababu unalia, au unacheka, au yote mawili.",
+      "tts": {
+        "text": "Huwezi kujibu kwa wakati huo, kwa sababu unalia, au unacheka, au yote mawili.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Safari ya kifuniko inachukua kama dakika tano.",
+      "text_markdown": "Safari ya kifuniko inachukua kama dakika tano.",
+      "tts": {
+        "text": "Safari ya kifuniko inachukua kama dakika tano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni dakika tano za amani zaidi katika maisha yako.",
+      "text_markdown": "Ni dakika tano za amani zaidi katika maisha yako.",
+      "tts": {
+        "text": "Ni dakika tano za amani zaidi katika maisha yako.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wakati miguu yako inapogusa ardhi, unachukua hatua tatu fupi za mbio na kusimama.",
+      "text_markdown": "Wakati miguu yako inapogusa ardhi, unachukua hatua tatu fupi za mbio na kusimama.",
+      "tts": {
+        "text": "Wakati miguu yako inapogusa ardhi, unachukua hatua tatu fupi za mbio na kusimama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nyasi ni halisi tena.",
+      "text_markdown": "Nyasi ni halisi tena.",
+      "tts": {
+        "text": "Nyasi ni halisi tena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dunia ni imara tena.",
+      "text_markdown": "Dunia ni imara tena.",
+      "tts": {
+        "text": "Dunia ni imara tena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unageuka na kutazama juu mbinguni.",
+      "text_markdown": "Unageuka na kutazama juu mbinguni.",
+      "tts": {
+        "text": "Unageuka na kutazama juu mbinguni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Na unaelewa, kwa mara ya kwanza, kile rafiki yako amekuwa akijaribu kukuambia kwa miaka hii yote.",
+      "text_markdown": "Na unaelewa, kwa mara ya kwanza, kile rafiki yako amekuwa akijaribu kukuambia kwa miaka hii yote.",
+      "tts": {
+        "text": "Na unaelewa, kwa mara ya kwanza, kile rafiki yako amekuwa akijaribu kukuambia kwa miaka hii yote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kuanza Safari",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kuanza Safari",
+      "text_markdown": "Kuanza Safari"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Basi unafanyaje hili kweli, ikiwa siku moja unaamua kwamba unataka.",
+      "text_markdown": "Basi unafanyaje hili kweli, ikiwa siku moja unaamua kwamba unataka.",
+      "tts": {
+        "text": "Basi unafanyaje hili kweli, ikiwa siku moja unaamua kwamba unataka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jibu la kweli ni, rahisi kuliko unavyofikiri.",
+      "text_markdown": "Jibu la kweli ni, rahisi kuliko unavyofikiri.",
+      "tts": {
+        "text": "Jibu la kweli ni, rahisi kuliko unavyofikiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karibu kila eneo la kutua duniani litachukua mwanzilishi kabisa asubuhi hiyo hiyo.",
+      "text_markdown": "Karibu kila eneo la kutua duniani litachukua mwanzilishi kabisa asubuhi hiyo hiyo.",
+      "tts": {
+        "text": "Karibu kila eneo la kutua duniani litachukua mwanzilishi kabisa asubuhi hiyo hiyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Watakuweka angani kwa kuruka kwa tandem, na mwalimu mgongoni mwako.",
+      "text_markdown": "Watakuweka angani kwa kuruka kwa tandem, na mwalimu mgongoni mwako.",
+      "tts": {
+        "text": "Watakuweka angani kwa kuruka kwa tandem, na mwalimu mgongoni mwako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unafika, unatia saini karatasi, unatazama video fupi, na unakutana na mwalimu wako.",
+      "text_markdown": "Unafika, unatia saini karatasi, unatazama video fupi, na unakutana na mwalimu wako.",
+      "tts": {
+        "text": "Unafika, unatia saini karatasi, unatazama video fupi, na unakutana na mwalimu wako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Unavaa nguo ya kuruka na mkanda.",
+      "text_markdown": "Unavaa nguo ya kuruka na mkanda.",
+      "tts": {
+        "text": "Unavaa nguo ya kuruka na mkanda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unapanda ndani ya ndege.",
+      "text_markdown": "Unapanda ndani ya ndege.",
+      "tts": {
+        "text": "Unapanda ndani ya ndege.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kama dakika ishirini baadaye, unatembea kurudi kuvuka nyasi ukiwa na tabasamu kubwa zaidi la maisha yako.",
+      "text_markdown": "Kama dakika ishirini baadaye, unatembea kurudi kuvuka nyasi ukiwa na tabasamu kubwa zaidi la maisha yako.",
+      "tts": {
+        "text": "Kama dakika ishirini baadaye, unatembea kurudi kuvuka nyasi ukiwa na tabasamu kubwa zaidi la maisha yako.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kwa kuruka kwako kwa kwanza, hauhitaji kuwa jasiri.",
+      "text_markdown": "Kwa kuruka kwako kwa kwanza, hauhitaji kuwa jasiri.",
+      "tts": {
+        "text": "Kwa kuruka kwako kwa kwanza, hauhitaji kuwa jasiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unahitaji tu kuwa tayari.",
+      "text_markdown": "Unahitaji tu kuwa tayari.",
+      "tts": {
+        "text": "Unahitaji tu kuwa tayari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mwalimu anafanya kila kitu.",
+      "text_markdown": "Mwalimu anafanya kila kitu.",
+      "tts": {
+        "text": "Mwalimu anafanya kila kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Anavuta parachuti.",
+      "text_markdown": "Anavuta parachuti.",
+      "tts": {
+        "text": "Anavuta parachuti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Anaruka kifuniko angani.",
+      "text_markdown": "Anaruka kifuniko angani.",
+      "tts": {
+        "text": "Anaruka kifuniko angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Anakushusha chini.",
+      "text_markdown": "Anakushusha chini.",
+      "tts": {
+        "text": "Anakushusha chini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wewe upo kwa ajili ya safari, ukiwa na kiti bora zaidi duniani.",
+      "text_markdown": "Wewe upo kwa ajili ya safari, ukiwa na kiti bora zaidi duniani.",
+      "tts": {
+        "text": "Wewe upo kwa ajili ya safari, ukiwa na kiti bora zaidi duniani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ikiwa baada ya kuruka kwa kwanza una hamu ya kuruka peke yako, njia inaitwa Kuanguka Huru kwa Kasi.",
+      "text_markdown": "Ikiwa baada ya kuruka kwa kwanza una hamu ya kuruka peke yako, njia inaitwa Kuanguka Huru kwa Kasi.",
+      "tts": {
+        "text": "Ikiwa baada ya kuruka kwa kwanza una hamu ya kuruka peke yako, njia inaitwa Kuanguka Huru kwa Kasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni programu ya mafunzo, inayofundishwa katika kila eneo la kutua, inayokufundisha jinsi ya kuwa mrukaji wa parachuti wa kweli.",
+      "text_markdown": "Ni programu ya mafunzo, inayofundishwa katika kila eneo la kutua, inayokufundisha jinsi ya kuwa mrukaji wa parachuti wa kweli.",
+      "tts": {
+        "text": "Ni programu ya mafunzo, inayofundishwa katika kila eneo la kutua, inayokufundisha jinsi ya kuwa mrukaji wa parachuti wa kweli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Si abiria.",
+      "text_markdown": "Si abiria.",
+      "tts": {
+        "text": "Si abiria.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rubani wa mwili wako mwenyewe angani.",
+      "text_markdown": "Rubani wa mwili wako mwenyewe angani.",
+      "tts": {
+        "text": "Rubani wa mwili wako mwenyewe angani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiwango cha kwanza cha programu ni siku ndefu darasani.",
+      "text_markdown": "Kiwango cha kwanza cha programu ni siku ndefu darasani.",
+      "tts": {
+        "text": "Kiwango cha kwanza cha programu ni siku ndefu darasani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unajifunza jinsi ya kuanguka.",
+      "text_markdown": "Unajifunza jinsi ya kuanguka.",
+      "tts": {
+        "text": "Unajifunza jinsi ya kuanguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unajifunza jinsi ya kusoma kipima-kimo chako.",
+      "text_markdown": "Unajifunza jinsi ya kusoma kipima-kimo chako.",
+      "tts": {
+        "text": "Unajifunza jinsi ya kusoma kipima-kimo chako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unajifunza la kufanya ikiwa parachuti yako kuu haifunguki.",
+      "text_markdown": "Unajifunza la kufanya ikiwa parachuti yako kuu haifunguki.",
+      "tts": {
+        "text": "Unajifunza la kufanya ikiwa parachuti yako kuu haifunguki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Siku ya darasani inachukua kama saa sita au saba.",
+      "text_markdown": "Siku ya darasani inachukua kama saa sita au saba.",
+      "tts": {
+        "text": "Siku ya darasani inachukua kama saa sita au saba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kufikia mwisho wake, unajua mengi zaidi kuhusu parachuti kuliko watu wengi wanavyojifunza katika maisha yote.",
+      "text_markdown": "Kufikia mwisho wake, unajua mengi zaidi kuhusu parachuti kuliko watu wengi wanavyojifunza katika maisha yote.",
+      "tts": {
+        "text": "Kufikia mwisho wake, unajua mengi zaidi kuhusu parachuti kuliko watu wengi wanavyojifunza katika maisha yote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kisha inakuja kuruka kwako kwa kwanza peke yako.",
+      "text_markdown": "Kisha inakuja kuruka kwako kwa kwanza peke yako.",
+      "tts": {
+        "text": "Kisha inakuja kuruka kwako kwa kwanza peke yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walimu wawili wanaruka pamoja nawe, mmoja kila upande, wakishika mkanda wako.",
+      "text_markdown": "Walimu wawili wanaruka pamoja nawe, mmoja kila upande, wakishika mkanda wako.",
+      "tts": {
+        "text": "Walimu wawili wanaruka pamoja nawe, mmoja kila upande, wakishika mkanda wako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wanakuachia katika kuanguka huru mara unapokuwa thabiti.",
+      "text_markdown": "Wanakuachia katika kuanguka huru mara unapokuwa thabiti.",
+      "tts": {
+        "text": "Wanakuachia katika kuanguka huru mara unapokuwa thabiti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unavuta parachuti yako mwenyewe.",
+      "text_markdown": "Unavuta parachuti yako mwenyewe.",
+      "tts": {
+        "text": "Unavuta parachuti yako mwenyewe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Unaruka kifuniko chako mwenyewe hadi ardhini.",
+      "text_markdown": "Unaruka kifuniko chako mwenyewe hadi ardhini.",
+      "tts": {
+        "text": "Unaruka kifuniko chako mwenyewe hadi ardhini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mara ya kwanza unapofanya hivi, uso wako utakuuma siku inayofuata kutokana na jinsi ulivyokuwa ukitabasamu sana.",
+      "text_markdown": "Mara ya kwanza unapofanya hivi, uso wako utakuuma siku inayofuata kutokana na jinsi ulivyokuwa ukitabasamu sana.",
+      "tts": {
+        "text": "Mara ya kwanza unapofanya hivi, uso wako utakuuma siku inayofuata kutokana na jinsi ulivyokuwa ukitabasamu sana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Programu kamili inakupitisha katika kuruka kama saba.",
+      "text_markdown": "Programu kamili inakupitisha katika kuruka kama saba.",
+      "tts": {
+        "text": "Programu kamili inakupitisha katika kuruka kama saba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kufikia mwisho, unaruka peke yako.",
+      "text_markdown": "Kufikia mwisho, unaruka peke yako.",
+      "tts": {
+        "text": "Kufikia mwisho, unaruka peke yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuanzia hapo, warukaji wa parachuti kawaida humaliza kuruka mia moja kwao kwa kwanza katika mwaka unaofuata.",
+      "text_markdown": "Kuanzia hapo, warukaji wa parachuti kawaida humaliza kuruka mia moja kwao kwa kwanza katika mwaka unaofuata.",
+      "tts": {
+        "text": "Kuanzia hapo, warukaji wa parachuti kawaida humaliza kuruka mia moja kwao kwa kwanza katika mwaka unaofuata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Njiani, wanajifunza kuruka kwa uhusiano na warukaji wengine.",
+      "text_markdown": "Njiani, wanajifunza kuruka kwa uhusiano na warukaji wengine.",
+      "tts": {
+        "text": "Njiani, wanajifunza kuruka kwa uhusiano na warukaji wengine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Wanajifunza kufuatilia angani.",
+      "text_markdown": "Wanajifunza kufuatilia angani.",
+      "tts": {
+        "text": "Wanajifunza kufuatilia angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wanajifunza kufunga parachuti zao wenyewe.",
+      "text_markdown": "Wanajifunza kufunga parachuti zao wenyewe.",
+      "tts": {
+        "text": "Wanajifunza kufunga parachuti zao wenyewe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Jumuiya ni ndogo, ya kirafiki, na yenye uvumilivu.",
+      "text_markdown": "Jumuiya ni ndogo, ya kirafiki, na yenye uvumilivu.",
+      "tts": {
+        "text": "Jumuiya ni ndogo, ya kirafiki, na yenye uvumilivu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Hakuna mtu kwenye eneo la kutua atakayekufanya uhisi mjinga kwa kuwa mwanzilishi.",
+      "text_markdown": "Hakuna mtu kwenye eneo la kutua atakayekufanya uhisi mjinga kwa kuwa mwanzilishi.",
+      "tts": {
+        "text": "Hakuna mtu kwenye eneo la kutua atakayekufanya uhisi mjinga kwa kuwa mwanzilishi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Sote tulikuwa wanzilishi wakati mmoja.",
+      "text_markdown": "Sote tulikuwa wanzilishi wakati mmoja.",
+      "tts": {
+        "text": "Sote tulikuwa wanzilishi wakati mmoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Wengi wetu bado tunajisikia kama wanzilishi.",
+      "text_markdown": "Wengi wetu bado tunajisikia kama wanzilishi.",
+      "tts": {
+        "text": "Wengi wetu bado tunajisikia kama wanzilishi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vipi kuhusu usalama.",
+      "text_markdown": "Vipi kuhusu usalama.",
+      "tts": {
+        "text": "Vipi kuhusu usalama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hili ni swali ambalo kila mtu mwenye akili huuliza, na linastahili jibu la kweli.",
+      "text_markdown": "Hili ni swali ambalo kila mtu mwenye akili huuliza, na linastahili jibu la kweli.",
+      "tts": {
+        "text": "Hili ni swali ambalo kila mtu mwenye akili huuliza, na linastahili jibu la kweli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuruka kwa parachuti, kwa kweli, ni salama sana.",
+      "text_markdown": "Kuruka kwa parachuti, kwa kweli, ni salama sana.",
+      "tts": {
+        "text": "Kuruka kwa parachuti, kwa kweli, ni salama sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Si salama kama kutembea, lakini ni salama zaidi kuliko kuendesha gari hadi eneo la kutua.",
+      "text_markdown": "Si salama kama kutembea, lakini ni salama zaidi kuliko kuendesha gari hadi eneo la kutua.",
+      "tts": {
+        "text": "Si salama kama kutembea, lakini ni salama zaidi kuliko kuendesha gari hadi eneo la kutua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Vifaa ni bora.",
+      "text_markdown": "Vifaa ni bora.",
+      "tts": {
+        "text": "Vifaa ni bora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kuna parachuti kuu na parachuti ya akiba, na kifaa cha kiotomatiki kitakachofyatua akiba ikiwa wewe huwezi.",
+      "text_markdown": "Kuna parachuti kuu na parachuti ya akiba, na kifaa cha kiotomatiki kitakachofyatua akiba ikiwa wewe huwezi.",
+      "tts": {
+        "text": "Kuna parachuti kuu na parachuti ya akiba, na kifaa cha kiotomatiki kitakachofyatua akiba ikiwa wewe huwezi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Maeneo ya kutua yanaendeshwa na wataalamu wanaokujali.",
+      "text_markdown": "Maeneo ya kutua yanaendeshwa na wataalamu wanaokujali.",
+      "tts": {
+        "text": "Maeneo ya kutua yanaendeshwa na wataalamu wanaokujali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Walimu hujali, kwa kina, kila kuruka.",
+      "text_markdown": "Walimu hujali, kwa kina, kila kuruka.",
+      "tts": {
+        "text": "Walimu hujali, kwa kina, kila kuruka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gharama ni nini.",
+      "text_markdown": "Gharama ni nini.",
+      "tts": {
+        "text": "Gharama ni nini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuruka kwa tandem ni bei ya chakula kizuri cha jioni kwa watu wawili.",
+      "text_markdown": "Kuruka kwa tandem ni bei ya chakula kizuri cha jioni kwa watu wawili.",
+      "tts": {
+        "text": "Kuruka kwa tandem ni bei ya chakula kizuri cha jioni kwa watu wawili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Programu ya mafunzo ni bei ya likizo ndogo.",
+      "text_markdown": "Programu ya mafunzo ni bei ya likizo ndogo.",
+      "tts": {
+        "text": "Programu ya mafunzo ni bei ya likizo ndogo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Baada ya hapo, kila kuruka ni bei ya tikiti ya filamu na chakula.",
+      "text_markdown": "Baada ya hapo, kila kuruka ni bei ya tikiti ya filamu na chakula.",
+      "tts": {
+        "text": "Baada ya hapo, kila kuruka ni bei ya tikiti ya filamu na chakula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Watu wenye kazi za kawaida na maisha ya kawaida hufanya hivi kila wikendi.",
+      "text_markdown": "Watu wenye kazi za kawaida na maisha ya kawaida hufanya hivi kila wikendi.",
+      "tts": {
+        "text": "Watu wenye kazi za kawaida na maisha ya kawaida hufanya hivi kila wikendi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Si matajiri.",
+      "text_markdown": "Si matajiri.",
+      "tts": {
+        "text": "Si matajiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Si wasio wa kawaida.",
+      "text_markdown": "Si wasio wa kawaida.",
+      "tts": {
+        "text": "Si wasio wa kawaida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Wameamua tu kwamba hii ndiyo wanayoifanya.",
+      "text_markdown": "Wameamua tu kwamba hii ndiyo wanayoifanya.",
+      "tts": {
+        "text": "Wameamua tu kwamba hii ndiyo wanayoifanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ikiwa unafikiria kuhusu kuruka kwako kwa kwanza, hapa kuna ushauri pekee unaofaa.",
+      "text_markdown": "Ikiwa unafikiria kuhusu kuruka kwako kwa kwanza, hapa kuna ushauri pekee unaofaa.",
+      "tts": {
+        "text": "Ikiwa unafikiria kuhusu kuruka kwako kwa kwanza, hapa kuna ushauri pekee unaofaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chagua tarehe.",
+      "text_markdown": "Chagua tarehe.",
+      "tts": {
+        "text": "Chagua tarehe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mwambie rafiki mmoja.",
+      "text_markdown": "Mwambie rafiki mmoja.",
+      "tts": {
+        "text": "Mwambie rafiki mmoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jitokeze.",
+      "text_markdown": "Jitokeze.",
+      "tts": {
+        "text": "Jitokeze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sehemu ngumu si kuanguka.",
+      "text_markdown": "Sehemu ngumu si kuanguka.",
+      "tts": {
+        "text": "Sehemu ngumu si kuanguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sehemu ngumu ni kuamua.",
+      "text_markdown": "Sehemu ngumu ni kuamua.",
+      "tts": {
+        "text": "Sehemu ngumu ni kuamua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Mara unapoamua, anga tayari ni yako.",
+      "text_markdown": "Mara unapoamua, anga tayari ni yako.",
+      "tts": {
+        "text": "Mara unapoamua, anga tayari ni yako.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Ufundi",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ufundi",
+      "text_markdown": "Ufundi"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kuna ufundi uliofichwa ndani ya kuanguka, na ndio sehemu ya kuruka kwa parachuti inayokushikilia maishani mwote.",
+      "text_markdown": "Kuna ufundi uliofichwa ndani ya kuanguka, na ndio sehemu ya kuruka kwa parachuti inayokushikilia maishani mwote.",
+      "tts": {
+        "text": "Kuna ufundi uliofichwa ndani ya kuanguka, na ndio sehemu ya kuruka kwa parachuti inayokushikilia maishani mwote.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unapomtazama mrukaji wa parachuti mzoefu katika kuanguka huru, huoni mtu anayeanguka.",
+      "text_markdown": "Unapomtazama mrukaji wa parachuti mzoefu katika kuanguka huru, huoni mtu anayeanguka.",
+      "tts": {
+        "text": "Unapomtazama mrukaji wa parachuti mzoefu katika kuanguka huru, huoni mtu anayeanguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unaona mtu anayeruka angani.",
+      "text_markdown": "Unaona mtu anayeruka angani.",
+      "tts": {
+        "text": "Unaona mtu anayeruka angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wanazunguka polepole, kwa makusudi, kwa ncha za vidole vyao.",
+      "text_markdown": "Wanazunguka polepole, kwa makusudi, kwa ncha za vidole vyao.",
+      "tts": {
+        "text": "Wanazunguka polepole, kwa makusudi, kwa ncha za vidole vyao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wanateleza mbele angani kwa nusu maili kwa kuinamisha mabega yao mbele inchi mbili.",
+      "text_markdown": "Wanateleza mbele angani kwa nusu maili kwa kuinamisha mabega yao mbele inchi mbili.",
+      "tts": {
+        "text": "Wanateleza mbele angani kwa nusu maili kwa kuinamisha mabega yao mbele inchi mbili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Wanasimama, katikati ya kuanguka, na kushikilia utulivu unaoonekana usiowezekana.",
+      "text_markdown": "Wanasimama, katikati ya kuanguka, na kushikilia utulivu unaoonekana usiowezekana.",
+      "tts": {
+        "text": "Wanasimama, katikati ya kuanguka, na kushikilia utulivu unaoonekana usiowezekana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mwili ndio ndege.",
+      "text_markdown": "Mwili ndio ndege.",
+      "tts": {
+        "text": "Mwili ndio ndege.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hiyo ndiyo siri ya kwanza ya ufundi.",
+      "text_markdown": "Hiyo ndiyo siri ya kwanza ya ufundi.",
+      "tts": {
+        "text": "Hiyo ndiyo siri ya kwanza ya ufundi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mara unapoelewa hilo, kila kitu kingine kinafuata.",
+      "text_markdown": "Mara unapoelewa hilo, kila kitu kingine kinafuata.",
+      "tts": {
+        "text": "Mara unapoelewa hilo, kila kitu kingine kinafuata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Umbo la msingi la kuanguka huru thabiti linaitwa upinde.",
+      "text_markdown": "Umbo la msingi la kuanguka huru thabiti linaitwa upinde.",
+      "tts": {
+        "text": "Umbo la msingi la kuanguka huru thabiti linaitwa upinde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unasukuma viuno vyako mbele na kuruhusu mikono na miguu yako vifuate nyuma, kama ndizi.",
+      "text_markdown": "Unasukuma viuno vyako mbele na kuruhusu mikono na miguu yako vifuate nyuma, kama ndizi.",
+      "tts": {
+        "text": "Unasukuma viuno vyako mbele na kuruhusu mikono na miguu yako vifuate nyuma, kama ndizi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Upinde ndio unaokushikilia uso chini kuelekea ardhi bila wewe kufikiri kuhusu hilo.",
+      "text_markdown": "Upinde ndio unaokushikilia uso chini kuelekea ardhi bila wewe kufikiri kuhusu hilo.",
+      "tts": {
+        "text": "Upinde ndio unaokushikilia uso chini kuelekea ardhi bila wewe kufikiri kuhusu hilo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Warukaji wapya hujifunza upinde kwenye shimo la sponji, kisha kwenye njia ya upepo, kisha angani.",
+      "text_markdown": "Warukaji wapya hujifunza upinde kwenye shimo la sponji, kisha kwenye njia ya upepo, kisha angani.",
+      "tts": {
+        "text": "Warukaji wapya hujifunza upinde kwenye shimo la sponji, kisha kwenye njia ya upepo, kisha angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Warukaji wa zamani bado huzungumza kuhusu upinde kama wakimbiaji wa zamani wanavyozungumza kuhusu mwendo wao.",
+      "text_markdown": "Warukaji wa zamani bado huzungumza kuhusu upinde kama wakimbiaji wa zamani wanavyozungumza kuhusu mwendo wao.",
+      "tts": {
+        "text": "Warukaji wa zamani bado huzungumza kuhusu upinde kama wakimbiaji wa zamani wanavyozungumza kuhusu mwendo wao.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mara unapokuwa na upinde thabiti, sehemu nyingine ya kuanguka huru inafunguka.",
+      "text_markdown": "Mara unapokuwa na upinde thabiti, sehemu nyingine ya kuanguka huru inafunguka.",
+      "tts": {
+        "text": "Mara unapokuwa na upinde thabiti, sehemu nyingine ya kuanguka huru inafunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unajifunza kuanguka polepole kwa kujitanua sana, ukijigeuza kuwa tiara.",
+      "text_markdown": "Unajifunza kuanguka polepole kwa kujitanua sana, ukijigeuza kuwa tiara.",
+      "tts": {
+        "text": "Unajifunza kuanguka polepole kwa kujitanua sana, ukijigeuza kuwa tiara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unajifunza kuanguka kwa kasi kwa kujikunja kuwa mdogo, ukijigeuza kuwa jiwe.",
+      "text_markdown": "Unajifunza kuanguka kwa kasi kwa kujikunja kuwa mdogo, ukijigeuza kuwa jiwe.",
+      "tts": {
+        "text": "Unajifunza kuanguka kwa kasi kwa kujikunja kuwa mdogo, ukijigeuza kuwa jiwe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unajifunza kufuatilia, ambacho ni kitu cha karibu zaidi na kuruka angani mwili wa binadamu unaweza kufanya.",
+      "text_markdown": "Unajifunza kufuatilia, ambacho ni kitu cha karibu zaidi na kuruka angani mwili wa binadamu unaweza kufanya.",
+      "tts": {
+        "text": "Unajifunza kufuatilia, ambacho ni kitu cha karibu zaidi na kuruka angani mwili wa binadamu unaweza kufanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mfuataji mzuri anaweza kufunika robo ya maili angani kwa sekunde ishirini.",
+      "text_markdown": "Mfuataji mzuri anaweza kufunika robo ya maili angani kwa sekunde ishirini.",
+      "tts": {
+        "text": "Mfuataji mzuri anaweza kufunika robo ya maili angani kwa sekunde ishirini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mikono ikifagiliwa nyuma, mwili ukiinama, ukienda kama ndege ya karatasi inayojua inakoenda.",
+      "text_markdown": "Mikono ikifagiliwa nyuma, mwili ukiinama, ukienda kama ndege ya karatasi inayojua inakoenda.",
+      "tts": {
+        "text": "Mikono ikifagiliwa nyuma, mwili ukiinama, ukienda kama ndege ya karatasi inayojua inakoenda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nusu nyingine ya ufundi ni kifuniko.",
+      "text_markdown": "Nusu nyingine ya ufundi ni kifuniko.",
+      "tts": {
+        "text": "Nusu nyingine ya ufundi ni kifuniko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parachuti si kitu kisichofanya kazi kinachokushusha chini.",
+      "text_markdown": "Parachuti si kitu kisichofanya kazi kinachokushusha chini.",
+      "tts": {
+        "text": "Parachuti si kitu kisichofanya kazi kinachokushusha chini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ni bawa, na unaliruka angani.",
+      "text_markdown": "Ni bawa, na unaliruka angani.",
+      "tts": {
+        "text": "Ni bawa, na unaliruka angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuvuta kishika cha kulia kunaponya bawa la kulia na kukugeuza kulia.",
+      "text_markdown": "Kuvuta kishika cha kulia kunaponya bawa la kulia na kukugeuza kulia.",
+      "tts": {
+        "text": "Kuvuta kishika cha kulia kunaponya bawa la kulia na kukugeuza kulia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kuvuta vyote viwili kwa wakati mmoja kunakupunguza mwendo na kukuruhusu utue kwa upole.",
+      "text_markdown": "Kuvuta vyote viwili kwa wakati mmoja kunakupunguza mwendo na kukuruhusu utue kwa upole.",
+      "tts": {
+        "text": "Kuvuta vyote viwili kwa wakati mmoja kunakupunguza mwendo na kukuruhusu utue kwa upole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unasoma upepo, unachagua sehemu, unapanga mzunguko wako.",
+      "text_markdown": "Unasoma upepo, unachagua sehemu, unapanga mzunguko wako.",
+      "tts": {
+        "text": "Unasoma upepo, unachagua sehemu, unapanga mzunguko wako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Unawasha kifuniko kwa sekunde ya mwisho, ili miguu yako ikumbatie ardhi badala ya kuiponda.",
+      "text_markdown": "Unawasha kifuniko kwa sekunde ya mwisho, ili miguu yako ikumbatie ardhi badala ya kuiponda.",
+      "tts": {
+        "text": "Unawasha kifuniko kwa sekunde ya mwisho, ili miguu yako ikumbatie ardhi badala ya kuiponda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Yote hayo ni safari ya kifuniko, na ni nidhamu yake mwenyewe.",
+      "text_markdown": "Yote hayo ni safari ya kifuniko, na ni nidhamu yake mwenyewe.",
+      "tts": {
+        "text": "Yote hayo ni safari ya kifuniko, na ni nidhamu yake mwenyewe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na kisha kuna kufunga.",
+      "text_markdown": "Na kisha kuna kufunga.",
+      "tts": {
+        "text": "Na kisha kuna kufunga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kila mrukaji wa parachuti hufunga parachuti yake mwenyewe.",
+      "text_markdown": "Kila mrukaji wa parachuti hufunga parachuti yake mwenyewe.",
+      "tts": {
+        "text": "Kila mrukaji wa parachuti hufunga parachuti yake mwenyewe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila mara moja.",
+      "text_markdown": "Kila mara moja.",
+      "tts": {
+        "text": "Kila mara moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unaweka kifuniko juu ya mkeka mrefu.",
+      "text_markdown": "Unaweka kifuniko juu ya mkeka mrefu.",
+      "tts": {
+        "text": "Unaweka kifuniko juu ya mkeka mrefu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unalainisha kamba.",
+      "text_markdown": "Unalainisha kamba.",
+      "tts": {
+        "text": "Unalainisha kamba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Unakunja seli.",
+      "text_markdown": "Unakunja seli.",
+      "tts": {
+        "text": "Unakunja seli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unaifunga kitambaa kama kitoto, unaiweka taratibu ndani ya mfuko, unaelekeza kamba ya kati, unafunga chombo.",
+      "text_markdown": "Unaifunga kitambaa kama kitoto, unaiweka taratibu ndani ya mfuko, unaelekeza kamba ya kati, unafunga chombo.",
+      "tts": {
+        "text": "Unaifunga kitambaa kama kitoto, unaiweka taratibu ndani ya mfuko, unaelekeza kamba ya kati, unafunga chombo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Inachukua kama dakika kumi na tano, na unaifanya polepole, kwa sababu maisha yako yatategemea kipande hiki cha kitambaa.",
+      "text_markdown": "Inachukua kama dakika kumi na tano, na unaifanya polepole, kwa sababu maisha yako yatategemea kipande hiki cha kitambaa.",
+      "tts": {
+        "text": "Inachukua kama dakika kumi na tano, na unaifanya polepole, kwa sababu maisha yako yatategemea kipande hiki cha kitambaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kufunga ni tafakari.",
+      "text_markdown": "Kufunga ni tafakari.",
+      "tts": {
+        "text": "Kufunga ni tafakari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Warukaji wa parachuti wengi husema ni sehemu ya siku wanayoipenda zaidi.",
+      "text_markdown": "Warukaji wa parachuti wengi husema ni sehemu ya siku wanayoipenda zaidi.",
+      "tts": {
+        "text": "Warukaji wa parachuti wengi husema ni sehemu ya siku wanayoipenda zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mkeka, kamba, kukunja kwa polepole.",
+      "text_markdown": "Mkeka, kamba, kukunja kwa polepole.",
+      "tts": {
+        "text": "Mkeka, kamba, kukunja kwa polepole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bega la rafiki anayefunga kando yako.",
+      "text_markdown": "Bega la rafiki anayefunga kando yako.",
+      "tts": {
+        "text": "Bega la rafiki anayefunga kando yako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Redio iliyoko pembeni ikipiga wimbo uliosikia mara nyingi sana.",
+      "text_markdown": "Redio iliyoko pembeni ikipiga wimbo uliosikia mara nyingi sana.",
+      "tts": {
+        "text": "Redio iliyoko pembeni ikipiga wimbo uliosikia mara nyingi sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hakuna kuharakisha kufunga.",
+      "text_markdown": "Hakuna kuharakisha kufunga.",
+      "tts": {
+        "text": "Hakuna kuharakisha kufunga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Anga halijali ratiba yako.",
+      "text_markdown": "Anga halijali ratiba yako.",
+      "tts": {
+        "text": "Anga halijali ratiba yako.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mawazo ya ufundi ni uvumilivu.",
+      "text_markdown": "Mawazo ya ufundi ni uvumilivu.",
+      "tts": {
+        "text": "Mawazo ya ufundi ni uvumilivu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni unyenyekevu.",
+      "text_markdown": "Ni unyenyekevu.",
+      "tts": {
+        "text": "Ni unyenyekevu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ni utayari wa kupitia upya kila kuruka, hata zile za kuchosha.",
+      "text_markdown": "Ni utayari wa kupitia upya kila kuruka, hata zile za kuchosha.",
+      "tts": {
+        "text": "Ni utayari wa kupitia upya kila kuruka, hata zile za kuchosha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Warukaji wa parachuti hupenda kuzungumza baada ya kuruka.",
+      "text_markdown": "Warukaji wa parachuti hupenda kuzungumza baada ya kuruka.",
+      "tts": {
+        "text": "Warukaji wa parachuti hupenda kuzungumza baada ya kuruka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Wataketi kwenye meza ya piknik na kupitia kila sekunde, mkao wa mwili kwa mkao wa mwili.",
+      "text_markdown": "Wataketi kwenye meza ya piknik na kupitia kila sekunde, mkao wa mwili kwa mkao wa mwili.",
+      "tts": {
+        "text": "Wataketi kwenye meza ya piknik na kupitia kila sekunde, mkao wa mwili kwa mkao wa mwili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Nini kilifanya kazi.",
+      "text_markdown": "Nini kilifanya kazi.",
+      "tts": {
+        "text": "Nini kilifanya kazi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Nini kilikuwa cha kujizulia.",
+      "text_markdown": "Nini kilikuwa cha kujizulia.",
+      "tts": {
+        "text": "Nini kilikuwa cha kujizulia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Wanachotaka kujaribu mara ijayo.",
+      "text_markdown": "Wanachotaka kujaribu mara ijayo.",
+      "tts": {
+        "text": "Wanachotaka kujaribu mara ijayo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndiyo maana watu hubaki.",
+      "text_markdown": "Ndiyo maana watu hubaki.",
+      "tts": {
+        "text": "Ndiyo maana watu hubaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Si kwa sababu kuanguka kunafurahisha.",
+      "text_markdown": "Si kwa sababu kuanguka kunafurahisha.",
+      "tts": {
+        "text": "Si kwa sababu kuanguka kunafurahisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kuanguka ni sehemu rahisi.",
+      "text_markdown": "Kuanguka ni sehemu rahisi.",
+      "tts": {
+        "text": "Kuanguka ni sehemu rahisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Watu hubaki kwa sababu daima kuna kitu cha kujifunza.",
+      "text_markdown": "Watu hubaki kwa sababu daima kuna kitu cha kujifunza.",
+      "tts": {
+        "text": "Watu hubaki kwa sababu daima kuna kitu cha kujifunza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Daima kuna rafiki wa kujifunza nacho.",
+      "text_markdown": "Daima kuna rafiki wa kujifunza nacho.",
+      "tts": {
+        "text": "Daima kuna rafiki wa kujifunza nacho.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Na kuna anga linalokungoja saa sita mchana kesho.",
+      "text_markdown": "Na kuna anga linalokungoja saa sita mchana kesho.",
+      "tts": {
+        "text": "Na kuna anga linalokungoja saa sita mchana kesho.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Nyakati",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nyakati",
+      "text_markdown": "Nyakati"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nikupe tatu.",
+      "text_markdown": "Nikupe tatu.",
+      "tts": {
+        "text": "Nikupe tatu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ya kwanza ni mzigo wa machweo.",
+      "text_markdown": "Ya kwanza ni mzigo wa machweo.",
+      "tts": {
+        "text": "Ya kwanza ni mzigo wa machweo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ndege inaondoka dakika ishirini kabla ya jua kuzama.",
+      "text_markdown": "Ndege inaondoka dakika ishirini kabla ya jua kuzama.",
+      "tts": {
+        "text": "Ndege inaondoka dakika ishirini kabla ya jua kuzama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unapanda kupitia tabaka za nuru ya machungwa, kabati likiwa la joto, marafiki zako wakiwa kimya.",
+      "text_markdown": "Unapanda kupitia tabaka za nuru ya machungwa, kabati likiwa la joto, marafiki zako wakiwa kimya.",
+      "tts": {
+        "text": "Unapanda kupitia tabaka za nuru ya machungwa, kabati likiwa la joto, marafiki zako wakiwa kimya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mlango unapofunguka mara hii, hewa ni ya rangi ya pinki.",
+      "text_markdown": "Mlango unapofunguka mara hii, hewa ni ya rangi ya pinki.",
+      "tts": {
+        "text": "Mlango unapofunguka mara hii, hewa ni ya rangi ya pinki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dunia chini yako iko nusu kivulini, nusu katika dhahabu.",
+      "text_markdown": "Dunia chini yako iko nusu kivulini, nusu katika dhahabu.",
+      "tts": {
+        "text": "Dunia chini yako iko nusu kivulini, nusu katika dhahabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unatoka nje, na kwa sekunde sitini unaanguka kupitia ndani ya machweo.",
+      "text_markdown": "Unatoka nje, na kwa sekunde sitini unaanguka kupitia ndani ya machweo.",
+      "tts": {
+        "text": "Unatoka nje, na kwa sekunde sitini unaanguka kupitia ndani ya machweo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haionekani halisi.",
+      "text_markdown": "Haionekani halisi.",
+      "tts": {
+        "text": "Haionekani halisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Utaona rangi ambazo hukujua macho yako yangepata.",
+      "text_markdown": "Utaona rangi ambazo hukujua macho yako yangepata.",
+      "tts": {
+        "text": "Utaona rangi ambazo hukujua macho yako yangepata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wakati parachuti yako inafunguka, unaelea juu ya dunia ambayo kwa muda mfupi inawaka moto.",
+      "text_markdown": "Wakati parachuti yako inafunguka, unaelea juu ya dunia ambayo kwa muda mfupi inawaka moto.",
+      "tts": {
+        "text": "Wakati parachuti yako inafunguka, unaelea juu ya dunia ambayo kwa muda mfupi inawaka moto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Upepo umefifia hadi hakuna chochote.",
+      "text_markdown": "Upepo umefifia hadi hakuna chochote.",
+      "tts": {
+        "text": "Upepo umefifia hadi hakuna chochote.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Eneo la kutua ni mraba mdogo wa kijani chini yako, na taa moja ya joto ikiwa imewashwa.",
+      "text_markdown": "Eneo la kutua ni mraba mdogo wa kijani chini yako, na taa moja ya joto ikiwa imewashwa.",
+      "tts": {
+        "text": "Eneo la kutua ni mraba mdogo wa kijani chini yako, na taa moja ya joto ikiwa imewashwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unachagua mzunguko wa polepole na unajiruhusu utue mwisho, kwa sababu hakuna anayetaka sehemu hii ikomeke.",
+      "text_markdown": "Unachagua mzunguko wa polepole na unajiruhusu utue mwisho, kwa sababu hakuna anayetaka sehemu hii ikomeke.",
+      "tts": {
+        "text": "Unachagua mzunguko wa polepole na unajiruhusu utue mwisho, kwa sababu hakuna anayetaka sehemu hii ikomeke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wakati miguu yako inapogusa nyasi, anga ni la zambarau.",
+      "text_markdown": "Wakati miguu yako inapogusa nyasi, anga ni la zambarau.",
+      "tts": {
+        "text": "Wakati miguu yako inapogusa nyasi, anga ni la zambarau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Marafiki zako wanatembea kuingia kutoka kutua kwao wenyewe.",
+      "text_markdown": "Marafiki zako wanatembea kuingia kutoka kutua kwao wenyewe.",
+      "tts": {
+        "text": "Marafiki zako wanatembea kuingia kutoka kutua kwao wenyewe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Mmoja wao anakutazama tu.",
+      "text_markdown": "Mmoja wao anakutazama tu.",
+      "tts": {
+        "text": "Mmoja wao anakutazama tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Nyote wawili mnatikisa vichwa.",
+      "text_markdown": "Nyote wawili mnatikisa vichwa.",
+      "tts": {
+        "text": "Nyote wawili mnatikisa vichwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Hakuna mmoja wenu anayeweza kupata neno.",
+      "text_markdown": "Hakuna mmoja wenu anayeweza kupata neno.",
+      "tts": {
+        "text": "Hakuna mmoja wenu anayeweza kupata neno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ya pili ni kuruka kwa muundo.",
+      "text_markdown": "Ya pili ni kuruka kwa muundo.",
+      "tts": {
+        "text": "Ya pili ni kuruka kwa muundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuna nyinyi wanane kwenye mzigo.",
+      "text_markdown": "Kuna nyinyi wanane kwenye mzigo.",
+      "tts": {
+        "text": "Kuna nyinyi wanane kwenye mzigo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mnaketi kwenye benchi, kofia za kichwa katika mapaja yenu, na mrukaji kiongozi anachora mbizi kwenye ubao mdogo mweupe.",
+      "text_markdown": "Mnaketi kwenye benchi, kofia za kichwa katika mapaja yenu, na mrukaji kiongozi anachora mbizi kwenye ubao mdogo mweupe.",
+      "tts": {
+        "text": "Mnaketi kwenye benchi, kofia za kichwa katika mapaja yenu, na mrukaji kiongozi anachora mbizi kwenye ubao mdogo mweupe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mtaiacha ndege kama kundi, mtaanguka pamoja, mtajenga mduara.",
+      "text_markdown": "Mtaiacha ndege kama kundi, mtaanguka pamoja, mtajenga mduara.",
+      "tts": {
+        "text": "Mtaiacha ndege kama kundi, mtaanguka pamoja, mtajenga mduara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nyote mnajua nafasi yenu.",
+      "text_markdown": "Nyote mnajua nafasi yenu.",
+      "tts": {
+        "text": "Nyote mnajua nafasi yenu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mnagonganisha ngumi, mnakaguliana vifaa, mnacheka kwa wasiwasi.",
+      "text_markdown": "Mnagonganisha ngumi, mnakaguliana vifaa, mnacheka kwa wasiwasi.",
+      "tts": {
+        "text": "Mnagonganisha ngumi, mnakaguliana vifaa, mnacheka kwa wasiwasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Watu wazima wanane, wenye hofu na furaha kwa wakati mmoja, kama watoto kwenye kulala usiku mmoja.",
+      "text_markdown": "Watu wazima wanane, wenye hofu na furaha kwa wakati mmoja, kama watoto kwenye kulala usiku mmoja.",
+      "tts": {
+        "text": "Watu wazima wanane, wenye hofu na furaha kwa wakati mmoja, kama watoto kwenye kulala usiku mmoja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndege inasawazishwa.",
+      "text_markdown": "Ndege inasawazishwa.",
+      "tts": {
+        "text": "Ndege inasawazishwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mlango unafunguka.",
+      "text_markdown": "Mlango unafunguka.",
+      "tts": {
+        "text": "Mlango unafunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kiongozi wenu anatoka, na nyinyi wengine mnafuata, mpigo mmoja wa moyo mbali.",
+      "text_markdown": "Kiongozi wenu anatoka, na nyinyi wengine mnafuata, mpigo mmoja wa moyo mbali.",
+      "tts": {
+        "text": "Kiongozi wenu anatoka, na nyinyi wengine mnafuata, mpigo mmoja wa moyo mbali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Katika kuanguka huru, mnapatana karibu bila kufikiri.",
+      "text_markdown": "Katika kuanguka huru, mnapatana karibu bila kufikiri.",
+      "tts": {
+        "text": "Katika kuanguka huru, mnapatana karibu bila kufikiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mikono inakutana na mikono.",
+      "text_markdown": "Mikono inakutana na mikono.",
+      "tts": {
+        "text": "Mikono inakutana na mikono.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mduara unaundwa.",
+      "text_markdown": "Mduara unaundwa.",
+      "tts": {
+        "text": "Mduara unaundwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kwa sekunde chache kamilifu, binadamu wanane wanashikiliana angani.",
+      "text_markdown": "Kwa sekunde chache kamilifu, binadamu wanane wanashikiliana angani.",
+      "tts": {
+        "text": "Kwa sekunde chache kamilifu, binadamu wanane wanashikiliana angani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Wakianguka kwa kasi ile ile.",
+      "text_markdown": "Wakianguka kwa kasi ile ile.",
+      "tts": {
+        "text": "Wakianguka kwa kasi ile ile.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Wakitazamana machoni.",
+      "text_markdown": "Wakitazamana machoni.",
+      "tts": {
+        "text": "Wakitazamana machoni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Kisha kipima-kimo chako kinasema ni wakati.",
+      "text_markdown": "Kisha kipima-kimo chako kinasema ni wakati.",
+      "tts": {
+        "text": "Kisha kipima-kimo chako kinasema ni wakati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Unaachilia.",
+      "text_markdown": "Unaachilia.",
+      "tts": {
+        "text": "Unaachilia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Mnafuatilia mbali kutoka kwa kila mmoja, kupatia parachuti zenu nafasi ya kufunguka.",
+      "text_markdown": "Mnafuatilia mbali kutoka kwa kila mmoja, kupatia parachuti zenu nafasi ya kufunguka.",
+      "tts": {
+        "text": "Mnafuatilia mbali kutoka kwa kila mmoja, kupatia parachuti zenu nafasi ya kufunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Ardhini, hamuwezi kuacha kukumbatiana.",
+      "text_markdown": "Ardhini, hamuwezi kuacha kukumbatiana.",
+      "tts": {
+        "text": "Ardhini, hamuwezi kuacha kukumbatiana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ya tatu ni kuruka baada ya mwaka mgumu.",
+      "text_markdown": "Ya tatu ni kuruka baada ya mwaka mgumu.",
+      "tts": {
+        "text": "Ya tatu ni kuruka baada ya mwaka mgumu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Labda umepitia kitu.",
+      "text_markdown": "Labda umepitia kitu.",
+      "tts": {
+        "text": "Labda umepitia kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Msimu mbaya kazini.",
+      "text_markdown": "Msimu mbaya kazini.",
+      "tts": {
+        "text": "Msimu mbaya kazini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Uhusiano uliokwisha.",
+      "text_markdown": "Uhusiano uliokwisha.",
+      "tts": {
+        "text": "Uhusiano uliokwisha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hasara iliyofanya dunia ya kawaida ihisi nyembamba na ya mbali.",
+      "text_markdown": "Hasara iliyofanya dunia ya kawaida ihisi nyembamba na ya mbali.",
+      "tts": {
+        "text": "Hasara iliyofanya dunia ya kawaida ihisi nyembamba na ya mbali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Huruki kwa sababu unataka kuhisi kitu.",
+      "text_markdown": "Huruki kwa sababu unataka kuhisi kitu.",
+      "tts": {
+        "text": "Huruki kwa sababu unataka kuhisi kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unaruka kwa sababu hujaweza kuhisi chochote, na unataka kujua kama bado upo ndani.",
+      "text_markdown": "Unaruka kwa sababu hujaweza kuhisi chochote, na unataka kujua kama bado upo ndani.",
+      "tts": {
+        "text": "Unaruka kwa sababu hujaweza kuhisi chochote, na unataka kujua kama bado upo ndani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ndege inapanda.",
+      "text_markdown": "Ndege inapanda.",
+      "tts": {
+        "text": "Ndege inapanda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mlango unafunguka.",
+      "text_markdown": "Mlango unafunguka.",
+      "tts": {
+        "text": "Mlango unafunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unatoka.",
+      "text_markdown": "Unatoka.",
+      "tts": {
+        "text": "Unatoka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Na katika sekunde tatu hizo za kwanza, kabla upepo haujakushika, kitu ndani yako kinapasuka kufunguka.",
+      "text_markdown": "Na katika sekunde tatu hizo za kwanza, kabla upepo haujakushika, kitu ndani yako kinapasuka kufunguka.",
+      "tts": {
+        "text": "Na katika sekunde tatu hizo za kwanza, kabla upepo haujakushika, kitu ndani yako kinapasuka kufunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hukupanga kulia.",
+      "text_markdown": "Hukupanga kulia.",
+      "tts": {
+        "text": "Hukupanga kulia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Unalia hata hivyo.",
+      "text_markdown": "Unalia hata hivyo.",
+      "tts": {
+        "text": "Unalia hata hivyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kuanguka huru kunafanya kazi yake.",
+      "text_markdown": "Kuanguka huru kunafanya kazi yake.",
+      "tts": {
+        "text": "Kuanguka huru kunafanya kazi yake.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Sekunde sitini ndefu za si kingine ila upepo na pumzi na kuanguka.",
+      "text_markdown": "Sekunde sitini ndefu za si kingine ila upepo na pumzi na kuanguka.",
+      "tts": {
+        "text": "Sekunde sitini ndefu za si kingine ila upepo na pumzi na kuanguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Na mahali fulani hapo, sehemu yako iliyokuwa ikishikilia kila kitu hatimaye inakishusha kwa dakika moja.",
+      "text_markdown": "Na mahali fulani hapo, sehemu yako iliyokuwa ikishikilia kila kitu hatimaye inakishusha kwa dakika moja.",
+      "tts": {
+        "text": "Na mahali fulani hapo, sehemu yako iliyokuwa ikishikilia kila kitu hatimaye inakishusha kwa dakika moja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Parachuti inafunguka.",
+      "text_markdown": "Parachuti inafunguka.",
+      "tts": {
+        "text": "Parachuti inafunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Dunia inanyamaza.",
+      "text_markdown": "Dunia inanyamaza.",
+      "tts": {
+        "text": "Dunia inanyamaza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Unaning'inia kwenye mkanda, na unalia, na unacheka, na unalia tena.",
+      "text_markdown": "Unaning'inia kwenye mkanda, na unalia, na unacheka, na unalia tena.",
+      "tts": {
+        "text": "Unaning'inia kwenye mkanda, na unalia, na unacheka, na unalia tena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Hakuna anayekuona.",
+      "text_markdown": "Hakuna anayekuona.",
+      "tts": {
+        "text": "Hakuna anayekuona.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "Hiyo ndio maana yake.",
+      "text_markdown": "Hiyo ndio maana yake.",
+      "tts": {
+        "text": "Hiyo ndio maana yake.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unapotua, hujaponywa.",
+      "text_markdown": "Unapotua, hujaponywa.",
+      "tts": {
+        "text": "Unapotua, hujaponywa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bado unabeba chochote ulichokuja nacho juu kule.",
+      "text_markdown": "Bado unabeba chochote ulichokuja nacho juu kule.",
+      "tts": {
+        "text": "Bado unabeba chochote ulichokuja nacho juu kule.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lakini kwa saa moja kamili huko juu, kitu ndani yako kilikumbuka hasa jinsi kuwa hai kunavyoweza kuhisi.",
+      "text_markdown": "Lakini kwa saa moja kamili huko juu, kitu ndani yako kilikumbuka hasa jinsi kuwa hai kunavyoweza kuhisi.",
+      "tts": {
+        "text": "Lakini kwa saa moja kamili huko juu, kitu ndani yako kilikumbuka hasa jinsi kuwa hai kunavyoweza kuhisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuruka kwa parachuti hakukutatua mwaka wako.",
+      "text_markdown": "Kuruka kwa parachuti hakukutatua mwaka wako.",
+      "tts": {
+        "text": "Kuruka kwa parachuti hakukutatua mwaka wako.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kulikukurudishia tu kwa sekunde sitini, katika vipande vidogo vya kutosha kushikilia.",
+      "text_markdown": "Kulikukurudishia tu kwa sekunde sitini, katika vipande vidogo vya kutosha kushikilia.",
+      "tts": {
+        "text": "Kulikukurudishia tu kwa sekunde sitini, katika vipande vidogo vya kutosha kushikilia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kwa Nini Hudumu",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Kwa Nini Hudumu",
+      "text_markdown": "Kwa Nini Hudumu"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nimekuwa nikiruka kwa muda mrefu sasa.",
+      "text_markdown": "Nimekuwa nikiruka kwa muda mrefu sasa.",
+      "tts": {
+        "text": "Nimekuwa nikiruka kwa muda mrefu sasa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muda mrefu wa kutosha kwamba sikumbuki hesabu.",
+      "text_markdown": "Muda mrefu wa kutosha kwamba sikumbuki hesabu.",
+      "tts": {
+        "text": "Muda mrefu wa kutosha kwamba sikumbuki hesabu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Muda mrefu wa kutosha kwamba swali, kwa nini bado unafanya hivi, limekoma kuwa na maana yoyote kwangu.",
+      "text_markdown": "Muda mrefu wa kutosha kwamba swali, kwa nini bado unafanya hivi, limekoma kuwa na maana yoyote kwangu.",
+      "tts": {
+        "text": "Muda mrefu wa kutosha kwamba swali, kwa nini bado unafanya hivi, limekoma kuwa na maana yoyote kwangu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nataka kukuachia mambo machache.",
+      "text_markdown": "Nataka kukuachia mambo machache.",
+      "tts": {
+        "text": "Nataka kukuachia mambo machache.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La kwanza ni kwamba kuruka kwa parachuti si kipindi tu.",
+      "text_markdown": "La kwanza ni kwamba kuruka kwa parachuti si kipindi tu.",
+      "tts": {
+        "text": "La kwanza ni kwamba kuruka kwa parachuti si kipindi tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Watu huwa na wasiwasi, wanapomwona rafiki akianza.",
+      "text_markdown": "Watu huwa na wasiwasi, wanapomwona rafiki akianza.",
+      "tts": {
+        "text": "Watu huwa na wasiwasi, wanapomwona rafiki akianza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wana wasiwasi ni uasi, kitu cha umri wa kati, njia ya kukimbia kitu.",
+      "text_markdown": "Wana wasiwasi ni uasi, kitu cha umri wa kati, njia ya kukimbia kitu.",
+      "tts": {
+        "text": "Wana wasiwasi ni uasi, kitu cha umri wa kati, njia ya kukimbia kitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sivyo.",
+      "text_markdown": "Sivyo.",
+      "tts": {
+        "text": "Sivyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Watu wanaobaki si wanaokimbia.",
+      "text_markdown": "Watu wanaobaki si wanaokimbia.",
+      "tts": {
+        "text": "Watu wanaobaki si wanaokimbia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wamejenga, karibu bila kukusudia, maisha madogo ndani ya anga.",
+      "text_markdown": "Wamejenga, karibu bila kukusudia, maisha madogo ndani ya anga.",
+      "tts": {
+        "text": "Wamejenga, karibu bila kukusudia, maisha madogo ndani ya anga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wanajitokeza Jumamosi.",
+      "text_markdown": "Wanajitokeza Jumamosi.",
+      "tts": {
+        "text": "Wanajitokeza Jumamosi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Wanafunga parachuti zao.",
+      "text_markdown": "Wanafunga parachuti zao.",
+      "tts": {
+        "text": "Wanafunga parachuti zao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Wanakumbatia marafiki zao.",
+      "text_markdown": "Wanakumbatia marafiki zao.",
+      "tts": {
+        "text": "Wanakumbatia marafiki zao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Wanaenda nyumbani machweoni, wakiwa wamechoka kwa njia nzuri.",
+      "text_markdown": "Wanaenda nyumbani machweoni, wakiwa wamechoka kwa njia nzuri.",
+      "tts": {
+        "text": "Wanaenda nyumbani machweoni, wakiwa wamechoka kwa njia nzuri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Jumatatu wanarudi kazini, na ni wenye huruma zaidi kuliko walivyokuwa.",
+      "text_markdown": "Jumatatu wanarudi kazini, na ni wenye huruma zaidi kuliko walivyokuwa.",
+      "tts": {
+        "text": "Jumatatu wanarudi kazini, na ni wenye huruma zaidi kuliko walivyokuwa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anga linakubadilisha, lakini polepole.",
+      "text_markdown": "Anga linakubadilisha, lakini polepole.",
+      "tts": {
+        "text": "Anga linakubadilisha, lakini polepole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unakuwa mwenye kuwepo zaidi.",
+      "text_markdown": "Unakuwa mwenye kuwepo zaidi.",
+      "tts": {
+        "text": "Unakuwa mwenye kuwepo zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unakuwa na hofu kidogo ya mambo madogo, kwa sababu umejifunza kuwa mkweli na mambo makubwa zaidi.",
+      "text_markdown": "Unakuwa na hofu kidogo ya mambo madogo, kwa sababu umejifunza kuwa mkweli na mambo makubwa zaidi.",
+      "tts": {
+        "text": "Unakuwa na hofu kidogo ya mambo madogo, kwa sababu umejifunza kuwa mkweli na mambo makubwa zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Unacheka kwa urahisi zaidi.",
+      "text_markdown": "Unacheka kwa urahisi zaidi.",
+      "tts": {
+        "text": "Unacheka kwa urahisi zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Unawaambia watu unawapenda mara nyingi zaidi.",
+      "text_markdown": "Unawaambia watu unawapenda mara nyingi zaidi.",
+      "tts": {
+        "text": "Unawaambia watu unawapenda mara nyingi zaidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Umesimama mlangoni, futi elfu kumi na mbili juu, na kukumbuka kwamba hakuna chochote kilichoahidiwa.",
+      "text_markdown": "Umesimama mlangoni, futi elfu kumi na mbili juu, na kukumbuka kwamba hakuna chochote kilichoahidiwa.",
+      "tts": {
+        "text": "Umesimama mlangoni, futi elfu kumi na mbili juu, na kukumbuka kwamba hakuna chochote kilichoahidiwa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ikiwa unajikuta kwenye chakula cha jioni na mrukaji wa parachuti, hapa kuna mambo unayoweza kuuliza.",
+      "text_markdown": "Ikiwa unajikuta kwenye chakula cha jioni na mrukaji wa parachuti, hapa kuna mambo unayoweza kuuliza.",
+      "tts": {
+        "text": "Ikiwa unajikuta kwenye chakula cha jioni na mrukaji wa parachuti, hapa kuna mambo unayoweza kuuliza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unaweza kuuliza walivyoanza nayo.",
+      "text_markdown": "Unaweza kuuliza walivyoanza nayo.",
+      "tts": {
+        "text": "Unaweza kuuliza walivyoanza nayo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kila mrukaji wa parachuti anakumbuka kuruka kwake kwa kwanza kwa undani wa wazi, na atafurahi kukuambia.",
+      "text_markdown": "Kila mrukaji wa parachuti anakumbuka kuruka kwake kwa kwanza kwa undani wa wazi, na atafurahi kukuambia.",
+      "tts": {
+        "text": "Kila mrukaji wa parachuti anakumbuka kuruka kwake kwa kwanza kwa undani wa wazi, na atafurahi kukuambia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Unaweza kuuliza wamefanya kuruka ngapi.",
+      "text_markdown": "Unaweza kuuliza wamefanya kuruka ngapi.",
+      "tts": {
+        "text": "Unaweza kuuliza wamefanya kuruka ngapi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Watajua nambari, kutoa au kuongeza chache, na hawatajifanya ni nyingi zaidi kuliko ilivyo.",
+      "text_markdown": "Watajua nambari, kutoa au kuongeza chache, na hawatajifanya ni nyingi zaidi kuliko ilivyo.",
+      "tts": {
+        "text": "Watajua nambari, kutoa au kuongeza chache, na hawatajifanya ni nyingi zaidi kuliko ilivyo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Unaweza kuuliza aina yao ya kupendwa zaidi ya kuruka ni nini.",
+      "text_markdown": "Unaweza kuuliza aina yao ya kupendwa zaidi ya kuruka ni nini.",
+      "tts": {
+        "text": "Unaweza kuuliza aina yao ya kupendwa zaidi ya kuruka ni nini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wengine watasema machweo.",
+      "text_markdown": "Wengine watasema machweo.",
+      "tts": {
+        "text": "Wengine watasema machweo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wengine watasema muundo mkubwa.",
+      "text_markdown": "Wengine watasema muundo mkubwa.",
+      "tts": {
+        "text": "Wengine watasema muundo mkubwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Wengine watasema peke yao kimya jioni tulivu.",
+      "text_markdown": "Wengine watasema peke yao kimya jioni tulivu.",
+      "tts": {
+        "text": "Wengine watasema peke yao kimya jioni tulivu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Unaweza kuuliza kama waliogopa mara ya kwanza.",
+      "text_markdown": "Unaweza kuuliza kama waliogopa mara ya kwanza.",
+      "tts": {
+        "text": "Unaweza kuuliza kama waliogopa mara ya kwanza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bila shaka walikuwa.",
+      "text_markdown": "Bila shaka walikuwa.",
+      "tts": {
+        "text": "Bila shaka walikuwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kila mtu huogopa.",
+      "text_markdown": "Kila mtu huogopa.",
+      "tts": {
+        "text": "Kila mtu huogopa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pengine watataja upepo mlangoni, hesabu, na jinsi dunia inavyoonekana kabla tu ya wewe kutoka nje.",
+      "text_markdown": "Pengine watataja upepo mlangoni, hesabu, na jinsi dunia inavyoonekana kabla tu ya wewe kutoka nje.",
+      "tts": {
+        "text": "Pengine watataja upepo mlangoni, hesabu, na jinsi dunia inavyoonekana kabla tu ya wewe kutoka nje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sikiliza kwa makini.",
+      "text_markdown": "Sikiliza kwa makini.",
+      "tts": {
+        "text": "Sikiliza kwa makini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wanakupa zawadi ndogo.",
+      "text_markdown": "Wanakupa zawadi ndogo.",
+      "tts": {
+        "text": "Wanakupa zawadi ndogo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ikiwa unataka kumfanya mrukaji wa parachuti angae, mwombe aelezee wakati parachuti inapofunguka.",
+      "text_markdown": "Ikiwa unataka kumfanya mrukaji wa parachuti angae, mwombe aelezee wakati parachuti inapofunguka.",
+      "tts": {
+        "text": "Ikiwa unataka kumfanya mrukaji wa parachuti angae, mwombe aelezee wakati parachuti inapofunguka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Watafunga macho yao kwa nusu sekunde.",
+      "text_markdown": "Watafunga macho yao kwa nusu sekunde.",
+      "tts": {
+        "text": "Watafunga macho yao kwa nusu sekunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kisha watajaribu.",
+      "text_markdown": "Kisha watajaribu.",
+      "tts": {
+        "text": "Kisha watajaribu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Watatumia neno tofauti kila mara.",
+      "text_markdown": "Watatumia neno tofauti kila mara.",
+      "tts": {
+        "text": "Watatumia neno tofauti kila mara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Labda kimya.",
+      "text_markdown": "Labda kimya.",
+      "tts": {
+        "text": "Labda kimya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Labda kwa upole.",
+      "text_markdown": "Labda kwa upole.",
+      "tts": {
+        "text": "Labda kwa upole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kama kuamka.",
+      "text_markdown": "Kama kuamka.",
+      "tts": {
+        "text": "Kama kuamka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Kama kurudi nyumbani.",
+      "text_markdown": "Kama kurudi nyumbani.",
+      "tts": {
+        "text": "Kama kurudi nyumbani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Hakuna anayelielezea kwa njia ile ile mara mbili.",
+      "text_markdown": "Hakuna anayelielezea kwa njia ile ile mara mbili.",
+      "tts": {
+        "text": "Hakuna anayelielezea kwa njia ile ile mara mbili.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Usiogope kukubali kwamba hujawahi kuruka.",
+      "text_markdown": "Usiogope kukubali kwamba hujawahi kuruka.",
+      "tts": {
+        "text": "Usiogope kukubali kwamba hujawahi kuruka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Warukaji wa parachuti hupenda swali hilo.",
+      "text_markdown": "Warukaji wa parachuti hupenda swali hilo.",
+      "tts": {
+        "text": "Warukaji wa parachuti hupenda swali hilo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Warukaji wa parachuti pia hupenda kukuambia kwamba unapaswa kujaribu, na kisha kukuambia, kwa uzito sana, kwamba watakwenda nawe.",
+      "text_markdown": "Warukaji wa parachuti pia hupenda kukuambia kwamba unapaswa kujaribu, na kisha kukuambia, kwa uzito sana, kwamba watakwenda nawe.",
+      "tts": {
+        "text": "Warukaji wa parachuti pia hupenda kukuambia kwamba unapaswa kujaribu, na kisha kukuambia, kwa uzito sana, kwamba watakwenda nawe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wengi wetu wameleta rafiki kwenye kuruka kwao kwa kwanza.",
+      "text_markdown": "Wengi wetu wameleta rafiki kwenye kuruka kwao kwa kwanza.",
+      "tts": {
+        "text": "Wengi wetu wameleta rafiki kwenye kuruka kwao kwa kwanza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ni mojawapo ya raha kubwa za mchezo.",
+      "text_markdown": "Ni mojawapo ya raha kubwa za mchezo.",
+      "tts": {
+        "text": "Ni mojawapo ya raha kubwa za mchezo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hakuna somo kubwa mwishoni mwa hili.",
+      "text_markdown": "Hakuna somo kubwa mwishoni mwa hili.",
+      "tts": {
+        "text": "Hakuna somo kubwa mwishoni mwa hili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ni hili tu.",
+      "text_markdown": "Ni hili tu.",
+      "tts": {
+        "text": "Ni hili tu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mahali fulani duniani sasa hivi, kundi dogo la watu watulivu na wenye uvumilivu wanatembea kuelekea ndege.",
+      "text_markdown": "Mahali fulani duniani sasa hivi, kundi dogo la watu watulivu na wenye uvumilivu wanatembea kuelekea ndege.",
+      "tts": {
+        "text": "Mahali fulani duniani sasa hivi, kundi dogo la watu watulivu na wenye uvumilivu wanatembea kuelekea ndege.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Shamba lina jua.",
+      "text_markdown": "Shamba lina jua.",
+      "tts": {
+        "text": "Shamba lina jua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nyasi ni ya joto.",
+      "text_markdown": "Nyasi ni ya joto.",
+      "tts": {
+        "text": "Nyasi ni ya joto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wanakaguliana vifaa.",
+      "text_markdown": "Wanakaguliana vifaa.",
+      "tts": {
+        "text": "Wanakaguliana vifaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wanatabasamu.",
+      "text_markdown": "Wanatabasamu.",
+      "tts": {
+        "text": "Wanatabasamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Katika dakika thelathini, watakuwa angani, wakifanya jambo la kimya zaidi wanalolijua jinsi ya kufanya.",
+      "text_markdown": "Katika dakika thelathini, watakuwa angani, wakifanya jambo la kimya zaidi wanalolijua jinsi ya kufanya.",
+      "tts": {
+        "text": "Katika dakika thelathini, watakuwa angani, wakifanya jambo la kimya zaidi wanalolijua jinsi ya kufanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Labda siku moja utakuwa mmoja wao.",
+      "text_markdown": "Labda siku moja utakuwa mmoja wao.",
+      "tts": {
+        "text": "Labda siku moja utakuwa mmoja wao.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Labda siku moja hutakuwa.",
+      "text_markdown": "Labda siku moja hutakuwa.",
+      "tts": {
+        "text": "Labda siku moja hutakuwa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vyovyote vile, anga lipo.",
+      "text_markdown": "Vyovyote vile, anga lipo.",
+      "tts": {
+        "text": "Vyovyote vile, anga lipo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daima limekuwepo.",
+      "text_markdown": "Daima limekuwepo.",
+      "tts": {
+        "text": "Daima limekuwepo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Linangoja, kwa uvumilivu, ikiwa wakati wowote utahisi kama kuegemea.",
+      "text_markdown": "Linangoja, kwa uvumilivu, ikiwa wakati wowote utahisi kama kuegemea.",
+      "tts": {
+        "text": "Linangoja, kwa uvumilivu, ikiwa wakati wowote utahisi kama kuegemea.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "fi",
+  "total_segments": 300,
+  "segments": [
+    {
+      "block_type": "heading",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch01-001",
+      "text": "Kaikki on tehty atomeista",
+      "text_markdown": "Kaikki on tehty atomeista",
+      "title": "Kaikki on tehty atomeista"
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p2",
+      "part": 0,
+      "id": "ch01-002",
+      "text": "Katso ympärillesi.",
+      "text_markdown": "Katso ympärillesi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Katso ympärillesi.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p2",
+      "part": 0,
+      "id": "ch01-003",
+      "text": "Kaikki, minkä näet, on tehty atomeista.",
+      "text_markdown": "Kaikki, minkä näet, on tehty atomeista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kaikki, minkä näet, on tehty atomeista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p2",
+      "part": 0,
+      "id": "ch01-004",
+      "text": "Ilma, jota hengität, on tehty atomeista.",
+      "text_markdown": "Ilma, jota hengität, on tehty atomeista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ilma, jota hengität, on tehty atomeista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p2",
+      "part": 0,
+      "id": "ch01-005",
+      "text": "Vesi, jota juot, on tehty atomeista.",
+      "text_markdown": "Vesi, jota juot, on tehty atomeista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Vesi, jota juot, on tehty atomeista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 4,
+      "paragraph_id": "p2",
+      "part": 0,
+      "id": "ch01-006",
+      "text": "Kehosi on tehty atomeista.",
+      "text_markdown": "Kehosi on tehty atomeista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kehosi on tehty atomeista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 5,
+      "paragraph_id": "p2",
+      "part": 0,
+      "id": "ch01-007",
+      "text": "Maa jalkojesi alla on tehty atomeista.",
+      "text_markdown": "Maa jalkojesi alla on tehty atomeista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Maa jalkojesi alla on tehty atomeista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p3",
+      "part": 0,
+      "id": "ch01-008",
+      "text": "Atomi on pienin aineen palanen, jolla on vielä kemiallinen tunniste.",
+      "text_markdown": "Atomi on pienin aineen palanen, jolla on vielä kemiallinen tunniste.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomi on pienin aineen palanen, jolla on vielä kemiallinen tunniste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p3",
+      "part": 0,
+      "id": "ch01-009",
+      "text": "Et voi nähdä yksittäistä atomia paljaalla silmällä.",
+      "text_markdown": "Et voi nähdä yksittäistä atomia paljaalla silmällä.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Et voi nähdä yksittäistä atomia paljaalla silmällä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p3",
+      "part": 0,
+      "id": "ch01-010",
+      "text": "Et voi nähdä yksittäistä atomia tavallisella mikroskoopilla.",
+      "text_markdown": "Et voi nähdä yksittäistä atomia tavallisella mikroskoopilla.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Et voi nähdä yksittäistä atomia tavallisella mikroskoopilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p3",
+      "part": 0,
+      "id": "ch01-011",
+      "text": "Niin pieniä atomit ovat.",
+      "text_markdown": "Niin pieniä atomit ovat.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Niin pieniä atomit ovat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p4",
+      "part": 0,
+      "id": "ch01-012",
+      "text": "Yksi hiekanjyvä sisältää noin viisikymmentä kvintiljoonaa atomia.",
+      "text_markdown": "Yksi hiekanjyvä sisältää noin viisikymmentä kvintiljoonaa atomia.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Yksi hiekanjyvä sisältää noin viisikymmentä kvintiljoonaa atomia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p4",
+      "part": 0,
+      "id": "ch01-013",
+      "text": "Se on viisikymmentä ja sen perässä kahdeksantoista nollaa.",
+      "text_markdown": "Se on viisikymmentä ja sen perässä kahdeksantoista nollaa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Se on viisikymmentä ja sen perässä kahdeksantoista nollaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p4",
+      "part": 0,
+      "id": "ch01-014",
+      "text": "Yhdessä hiekanjyvässä on enemmän atomeja kuin rannalla on hiekanjyviä.",
+      "text_markdown": "Yhdessä hiekanjyvässä on enemmän atomeja kuin rannalla on hiekanjyviä.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Yhdessä hiekanjyvässä on enemmän atomeja kuin rannalla on hiekanjyviä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p5",
+      "part": 0,
+      "id": "ch01-015",
+      "text": "Atomit ovat kaiken rakennuspalikoita fyysisessä maailmassa.",
+      "text_markdown": "Atomit ovat kaiken rakennuspalikoita fyysisessä maailmassa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomit ovat kaiken rakennuspalikoita fyysisessä maailmassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p5",
+      "part": 0,
+      "id": "ch01-016",
+      "text": "Seinä on tehty tiilistä.",
+      "text_markdown": "Seinä on tehty tiilistä.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Seinä on tehty tiilistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p5",
+      "part": 0,
+      "id": "ch01-017",
+      "text": "Lause on tehty sanoista.",
+      "text_markdown": "Lause on tehty sanoista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Lause on tehty sanoista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p5",
+      "part": 0,
+      "id": "ch01-018",
+      "text": "Maailmankaikkeus on tehty atomeista.",
+      "text_markdown": "Maailmankaikkeus on tehty atomeista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Maailmankaikkeus on tehty atomeista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p6",
+      "part": 0,
+      "id": "ch01-019",
+      "text": "Sana atomi tulee muinaisesta kreikasta.",
+      "text_markdown": "Sana atomi tulee muinaisesta kreikasta.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Sana atomi tulee muinaisesta kreikasta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p6",
+      "part": 0,
+      "id": "ch01-020",
+      "text": "Kreikan sana atomos tarkoittaa jakamaton.",
+      "text_markdown": "Kreikan sana atomos tarkoittaa jakamaton.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kreikan sana atomos tarkoittaa jakamaton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p6",
+      "part": 0,
+      "id": "ch01-021",
+      "text": "Muinaisen Kreikan filosofit uskoivat, että atomit olivat pienimpiä mahdollisia aineen palasia.",
+      "text_markdown": "Muinaisen Kreikan filosofit uskoivat, että atomit olivat pienimpiä mahdollisia aineen palasia.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Muinaisen Kreikan filosofit uskoivat, että atomit olivat pienimpiä mahdollisia aineen palasia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p6",
+      "part": 0,
+      "id": "ch01-022",
+      "text": "He olivat melkein oikeassa.",
+      "text_markdown": "He olivat melkein oikeassa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "He olivat melkein oikeassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 4,
+      "paragraph_id": "p6",
+      "part": 0,
+      "id": "ch01-023",
+      "text": "Atomit eivät oikeasti ole kaikkein pienimpiä hiukkasia, mutta ne ovat pienimpiä yksiköitä, jotka säilyttävät kemialliset ominaisuutensa.",
+      "text_markdown": "Atomit eivät oikeasti ole kaikkein pienimpiä hiukkasia, mutta ne ovat pienimpiä yksiköitä, jotka säilyttävät kemialliset ominaisuutensa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomit eivät oikeasti ole kaikkein pienimpiä hiukkasia, mutta ne ovat pienimpiä yksiköitä, jotka säilyttävät kemialliset ominaisuutensa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p7",
+      "part": 0,
+      "id": "ch01-024",
+      "text": "Atomit ovat uskomattoman kestäviä.",
+      "text_markdown": "Atomit ovat uskomattoman kestäviä.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomit ovat uskomattoman kestäviä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p7",
+      "part": 0,
+      "id": "ch01-025",
+      "text": "Kehosi atomit ovat miljardeja vuosia vanhoja.",
+      "text_markdown": "Kehosi atomit ovat miljardeja vuosia vanhoja.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kehosi atomit ovat miljardeja vuosia vanhoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p7",
+      "part": 0,
+      "id": "ch01-026",
+      "text": "Jotkut vetyatomit vedessä, jota joit tänään, syntyivät ensimmäisten minuuttien aikana alkuräjähdyksen jälkeen.",
+      "text_markdown": "Jotkut vetyatomit vedessä, jota joit tänään, syntyivät ensimmäisten minuuttien aikana alkuräjähdyksen jälkeen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Jotkut vetyatomit vedessä, jota joit tänään, syntyivät ensimmäisten minuuttien aikana alkuräjähdyksen jälkeen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p7",
+      "part": 0,
+      "id": "ch01-027",
+      "text": "Sinä olet tehty muinaisista aineista.",
+      "text_markdown": "Sinä olet tehty muinaisista aineista.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Sinä olet tehty muinaisista aineista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p8",
+      "part": 0,
+      "id": "ch01-028",
+      "text": "Atomeja ei koskaan synny eikä tuhoudu tavallisessa elämässä.",
+      "text_markdown": "Atomeja ei koskaan synny eikä tuhoudu tavallisessa elämässä.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomeja ei koskaan synny eikä tuhoudu tavallisessa elämässä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p8",
+      "part": 0,
+      "id": "ch01-029",
+      "text": "Ne järjestäytyvät uudelleen.",
+      "text_markdown": "Ne järjestäytyvät uudelleen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ne järjestäytyvät uudelleen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p8",
+      "part": 0,
+      "id": "ch01-030",
+      "text": "Kun puu palaa, atomit eivät katoa.",
+      "text_markdown": "Kun puu palaa, atomit eivät katoa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kun puu palaa, atomit eivät katoa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 3,
+      "paragraph_id": "p8",
+      "part": 0,
+      "id": "ch01-031",
+      "text": "Ne järjestäytyvät savuksi, tuhkaksi ja kaasuksi.",
+      "text_markdown": "Ne järjestäytyvät savuksi, tuhkaksi ja kaasuksi.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ne järjestäytyvät savuksi, tuhkaksi ja kaasuksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 4,
+      "paragraph_id": "p8",
+      "part": 0,
+      "id": "ch01-032",
+      "text": "Kun jää sulaa, atomit pysyvät samoina.",
+      "text_markdown": "Kun jää sulaa, atomit pysyvät samoina.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kun jää sulaa, atomit pysyvät samoina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 5,
+      "paragraph_id": "p8",
+      "part": 0,
+      "id": "ch01-033",
+      "text": "Vain niiden järjestys muuttuu.",
+      "text_markdown": "Vain niiden järjestys muuttuu.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Vain niiden järjestys muuttuu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 0,
+      "paragraph_id": "p9",
+      "part": 0,
+      "id": "ch01-034",
+      "text": "Atomien ymmärtäminen on kemian perusta.",
+      "text_markdown": "Atomien ymmärtäminen on kemian perusta.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Atomien ymmärtäminen on kemian perusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 1,
+      "paragraph_id": "p9",
+      "part": 0,
+      "id": "ch01-035",
+      "text": "Kemia on tiede siitä, miten atomit yhdistyvät, järjestäytyvät uudelleen ja ovat vuorovaikutuksessa.",
+      "text_markdown": "Kemia on tiede siitä, miten atomit yhdistyvät, järjestäytyvät uudelleen ja ovat vuorovaikutuksessa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kemia on tiede siitä, miten atomit yhdistyvät, järjestäytyvät uudelleen ja ovat vuorovaikutuksessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 1,
+      "sentence_index": 2,
+      "paragraph_id": "p9",
+      "part": 0,
+      "id": "ch01-036",
+      "text": "Kaikki, mitä fyysisessä maailmassa tapahtuu, johtuu atomeista ja siitä, mitä ne tekevät.",
+      "text_markdown": "Kaikki, mitä fyysisessä maailmassa tapahtuu, johtuu atomeista ja siitä, mitä ne tekevät.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Kaikki, mitä fyysisessä maailmassa tapahtuu, johtuu atomeista ja siitä, mitä ne tekevät.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p10",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch02-037",
+      "text": "Atomin sisällä",
+      "text_markdown": "Atomin sisällä",
+      "title": "Atomin sisällä"
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p11",
+      "part": 0,
+      "id": "ch02-038",
+      "text": "Atomin sisällä on kolmenlaisia hiukkasia.",
+      "text_markdown": "Atomin sisällä on kolmenlaisia hiukkasia.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Atomin sisällä on kolmenlaisia hiukkasia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p11",
+      "part": 0,
+      "id": "ch02-039",
+      "text": "Protoneja.",
+      "text_markdown": "Protoneja.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoneja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p11",
+      "part": 0,
+      "id": "ch02-040",
+      "text": "Neutroneja.",
+      "text_markdown": "Neutroneja.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutroneja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p11",
+      "part": 0,
+      "id": "ch02-041",
+      "text": "Elektroneja.",
+      "text_markdown": "Elektroneja.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektroneja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p11",
+      "part": 0,
+      "id": "ch02-042",
+      "text": "Nämä kolme hiukkasta muodostavat jokaisen atomin maailmankaikkeudessa.",
+      "text_markdown": "Nämä kolme hiukkasta muodostavat jokaisen atomin maailmankaikkeudessa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Nämä kolme hiukkasta muodostavat jokaisen atomin maailmankaikkeudessa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p12",
+      "part": 0,
+      "id": "ch02-043",
+      "text": "Atomin keskustaa kutsutaan ytimeksi.",
+      "text_markdown": "Atomin keskustaa kutsutaan ytimeksi.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Atomin keskustaa kutsutaan ytimeksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p12",
+      "part": 0,
+      "id": "ch02-044",
+      "text": "Ydin sisältää protonit ja neutronit.",
+      "text_markdown": "Ydin sisältää protonit ja neutronit.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ydin sisältää protonit ja neutronit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p12",
+      "part": 0,
+      "id": "ch02-045",
+      "text": "Ydin on pieni verrattuna koko atomiin.",
+      "text_markdown": "Ydin on pieni verrattuna koko atomiin.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ydin on pieni verrattuna koko atomiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p12",
+      "part": 0,
+      "id": "ch02-046",
+      "text": "Jos atomi olisi jalkapallostadionin kokoinen, ydin olisi marmorikuulan kokoinen keskikentällä.",
+      "text_markdown": "Jos atomi olisi jalkapallostadionin kokoinen, ydin olisi marmorikuulan kokoinen keskikentällä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Jos atomi olisi jalkapallostadionin kokoinen, ydin olisi marmorikuulan kokoinen keskikentällä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p13",
+      "part": 0,
+      "id": "ch02-047",
+      "text": "Protoneilla on positiivinen sähkövaraus.",
+      "text_markdown": "Protoneilla on positiivinen sähkövaraus.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoneilla on positiivinen sähkövaraus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p13",
+      "part": 0,
+      "id": "ch02-048",
+      "text": "Jokaisella protonilla on yhtä suuri positiivinen varaus.",
+      "text_markdown": "Jokaisella protonilla on yhtä suuri positiivinen varaus.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Jokaisella protonilla on yhtä suuri positiivinen varaus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p13",
+      "part": 0,
+      "id": "ch02-049",
+      "text": "Protonien lukumäärä atomissa määrää, mikä alkuaine atomi on.",
+      "text_markdown": "Protonien lukumäärä atomissa määrää, mikä alkuaine atomi on.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protonien lukumäärä atomissa määrää, mikä alkuaine atomi on.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p13",
+      "part": 0,
+      "id": "ch02-050",
+      "text": "Yksi protoni tarkoittaa vetyä.",
+      "text_markdown": "Yksi protoni tarkoittaa vetyä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Yksi protoni tarkoittaa vetyä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p13",
+      "part": 0,
+      "id": "ch02-051",
+      "text": "Kuusi protonia tarkoittaa hiiltä.",
+      "text_markdown": "Kuusi protonia tarkoittaa hiiltä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kuusi protonia tarkoittaa hiiltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 5,
+      "paragraph_id": "p13",
+      "part": 0,
+      "id": "ch02-052",
+      "text": "Kaksikymmentäkuusi protonia tarkoittaa rautaa.",
+      "text_markdown": "Kaksikymmentäkuusi protonia tarkoittaa rautaa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Kaksikymmentäkuusi protonia tarkoittaa rautaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 6,
+      "paragraph_id": "p13",
+      "part": 0,
+      "id": "ch02-053",
+      "text": "Protonien lukumäärä on atomin tärkein tieto.",
+      "text_markdown": "Protonien lukumäärä on atomin tärkein tieto.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protonien lukumäärä on atomin tärkein tieto.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p14",
+      "part": 0,
+      "id": "ch02-054",
+      "text": "Neutroneilla ei ole sähkövarausta.",
+      "text_markdown": "Neutroneilla ei ole sähkövarausta.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutroneilla ei ole sähkövarausta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p14",
+      "part": 0,
+      "id": "ch02-055",
+      "text": "Neutronit ovat neutraaleja.",
+      "text_markdown": "Neutronit ovat neutraaleja.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronit ovat neutraaleja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p14",
+      "part": 0,
+      "id": "ch02-056",
+      "text": "Neutronit ovat ytimessä protonien vieressä.",
+      "text_markdown": "Neutronit ovat ytimessä protonien vieressä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronit ovat ytimessä protonien vieressä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p14",
+      "part": 0,
+      "id": "ch02-057",
+      "text": "Neutronit auttavat pitämään ytimen koossa.",
+      "text_markdown": "Neutronit auttavat pitämään ytimen koossa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutronit auttavat pitämään ytimen koossa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p14",
+      "part": 0,
+      "id": "ch02-058",
+      "text": "Ilman neutroneja protonit työntäisivät toisiaan pois, koska niillä kaikilla on sama positiivinen varaus.",
+      "text_markdown": "Ilman neutroneja protonit työntäisivät toisiaan pois, koska niillä kaikilla on sama positiivinen varaus.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ilman neutroneja protonit työntäisivät toisiaan pois, koska niillä kaikilla on sama positiivinen varaus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p15",
+      "part": 0,
+      "id": "ch02-059",
+      "text": "Elektroneilla on negatiivinen sähkövaraus.",
+      "text_markdown": "Elektroneilla on negatiivinen sähkövaraus.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektroneilla on negatiivinen sähkövaraus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p15",
+      "part": 0,
+      "id": "ch02-060",
+      "text": "Elektronit liikkuvat ytimen ympärillä pilvessä.",
+      "text_markdown": "Elektronit liikkuvat ytimen ympärillä pilvessä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektronit liikkuvat ytimen ympärillä pilvessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p15",
+      "part": 0,
+      "id": "ch02-061",
+      "text": "Ne eivät kierrä kuten planeetat aurinkoa.",
+      "text_markdown": "Ne eivät kierrä kuten planeetat aurinkoa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ne eivät kierrä kuten planeetat aurinkoa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p15",
+      "part": 0,
+      "id": "ch02-062",
+      "text": "Ne ovat sumealla todennäköisyysalueella ytimen ympärillä.",
+      "text_markdown": "Ne ovat sumealla todennäköisyysalueella ytimen ympärillä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ne ovat sumealla todennäköisyysalueella ytimen ympärillä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p15",
+      "part": 0,
+      "id": "ch02-063",
+      "text": "Elektronipilvi on alue, jolta elektronin todennäköisimmin löytää millä tahansa hetkellä.",
+      "text_markdown": "Elektronipilvi on alue, jolta elektronin todennäköisimmin löytää millä tahansa hetkellä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektronipilvi on alue, jolta elektronin todennäköisimmin löytää millä tahansa hetkellä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p16",
+      "part": 0,
+      "id": "ch02-064",
+      "text": "Elektronilla on lähes olematon massa protoniin tai neutroniin verrattuna.",
+      "text_markdown": "Elektronilla on lähes olematon massa protoniin tai neutroniin verrattuna.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektronilla on lähes olematon massa protoniin tai neutroniin verrattuna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p16",
+      "part": 0,
+      "id": "ch02-065",
+      "text": "Protoni on noin 1 836 kertaa painavampi kuin elektroni.",
+      "text_markdown": "Protoni on noin 1 836 kertaa painavampi kuin elektroni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protoni on noin tuhat kahdeksansataakolmekymmentäkuusi kertaa painavampi kuin elektroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p16",
+      "part": 0,
+      "id": "ch02-066",
+      "text": "Lähes kaikki atomin massa on ytimessä.",
+      "text_markdown": "Lähes kaikki atomin massa on ytimessä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Lähes kaikki atomin massa on ytimessä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p17",
+      "part": 0,
+      "id": "ch02-067",
+      "text": "Neutraalissa atomissa elektronien lukumäärä on yhtä suuri kuin protonien lukumäärä.",
+      "text_markdown": "Neutraalissa atomissa elektronien lukumäärä on yhtä suuri kuin protonien lukumäärä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutraalissa atomissa elektronien lukumäärä on yhtä suuri kuin protonien lukumäärä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p17",
+      "part": 0,
+      "id": "ch02-068",
+      "text": "Positiiviset varaukset ja negatiiviset varaukset kumoavat toisensa.",
+      "text_markdown": "Positiiviset varaukset ja negatiiviset varaukset kumoavat toisensa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Positiiviset varaukset ja negatiiviset varaukset kumoavat toisensa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p17",
+      "part": 0,
+      "id": "ch02-069",
+      "text": "Atomilla ei ole kokonaisvarausta.",
+      "text_markdown": "Atomilla ei ole kokonaisvarausta.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Atomilla ei ole kokonaisvarausta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p17",
+      "part": 0,
+      "id": "ch02-070",
+      "text": "Tämä tasapaino on atomin perustila.",
+      "text_markdown": "Tämä tasapaino on atomin perustila.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Tämä tasapaino on atomin perustila.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 0,
+      "paragraph_id": "p18",
+      "part": 0,
+      "id": "ch02-071",
+      "text": "Suurin osa atomista on tyhjää tilaa.",
+      "text_markdown": "Suurin osa atomista on tyhjää tilaa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Suurin osa atomista on tyhjää tilaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 1,
+      "paragraph_id": "p18",
+      "part": 0,
+      "id": "ch02-072",
+      "text": "Ydin on tiheä ja pieni.",
+      "text_markdown": "Ydin on tiheä ja pieni.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Ydin on tiheä ja pieni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 2,
+      "paragraph_id": "p18",
+      "part": 0,
+      "id": "ch02-073",
+      "text": "Elektronipilvi on suuri ja enimmäkseen tyhjä.",
+      "text_markdown": "Elektronipilvi on suuri ja enimmäkseen tyhjä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Elektronipilvi on suuri ja enimmäkseen tyhjä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 3,
+      "paragraph_id": "p18",
+      "part": 0,
+      "id": "ch02-074",
+      "text": "Jos voisit poistaa kaiken tyhjän tilan jokaisesta kehosi atomista, kutistuisit suolanmurua pienemmäksi.",
+      "text_markdown": "Jos voisit poistaa kaiken tyhjän tilan jokaisesta kehosi atomista, kutistuisit suolanmurua pienemmäksi.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Jos voisit poistaa kaiken tyhjän tilan jokaisesta kehosi atomista, kutistuisit suolanmurua pienemmäksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 4,
+      "paragraph_id": "p18",
+      "part": 0,
+      "id": "ch02-075",
+      "text": "Massasi pysyisi samana.",
+      "text_markdown": "Massasi pysyisi samana.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Massasi pysyisi samana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 2,
+      "sentence_index": 5,
+      "paragraph_id": "p18",
+      "part": 0,
+      "id": "ch02-076",
+      "text": "Olisit vain uskomattoman tiheä.",
+      "text_markdown": "Olisit vain uskomattoman tiheä.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Olisit vain uskomattoman tiheä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p19",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch03-077",
+      "text": "Alkuaineet",
+      "text_markdown": "Alkuaineet",
+      "title": "Alkuaineet"
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p20",
+      "part": 0,
+      "id": "ch03-078",
+      "text": "Alkuaine on aine, joka koostuu vain yhdenlaisista atomeista.",
+      "text_markdown": "Alkuaine on aine, joka koostuu vain yhdenlaisista atomeista.",
+      "title": "Elements",
+      "tts": {
+        "text": "Alkuaine on aine, joka koostuu vain yhdenlaisista atomeista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p20",
+      "part": 0,
+      "id": "ch03-079",
+      "text": "Puhdas kulta on alkuaine.",
+      "text_markdown": "Puhdas kulta on alkuaine.",
+      "title": "Elements",
+      "tts": {
+        "text": "Puhdas kulta on alkuaine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p20",
+      "part": 0,
+      "id": "ch03-080",
+      "text": "Jokaisessa puhtaan kultaharkon atomissa on seitsemänkymmentäyhdeksän protonia.",
+      "text_markdown": "Jokaisessa puhtaan kultaharkon atomissa on seitsemänkymmentäyhdeksän protonia.",
+      "title": "Elements",
+      "tts": {
+        "text": "Jokaisessa puhtaan kultaharkon atomissa on seitsemänkymmentäyhdeksän protonia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p20",
+      "part": 0,
+      "id": "ch03-081",
+      "text": "Puhdas happi on alkuaine.",
+      "text_markdown": "Puhdas happi on alkuaine.",
+      "title": "Elements",
+      "tts": {
+        "text": "Puhdas happi on alkuaine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p20",
+      "part": 0,
+      "id": "ch03-082",
+      "text": "Jokaisessa puhtaan happipullon atomissa on kahdeksan protonia.",
+      "text_markdown": "Jokaisessa puhtaan happipullon atomissa on kahdeksan protonia.",
+      "title": "Elements",
+      "tts": {
+        "text": "Jokaisessa puhtaan happipullon atomissa on kahdeksan protonia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p21",
+      "part": 0,
+      "id": "ch03-083",
+      "text": "Luonnossa esiintyy noin yhdeksänkymmentäkaksi alkuainetta.",
+      "text_markdown": "Luonnossa esiintyy noin yhdeksänkymmentäkaksi alkuainetta.",
+      "title": "Elements",
+      "tts": {
+        "text": "Luonnossa esiintyy noin yhdeksänkymmentäkaksi alkuainetta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p21",
+      "part": 0,
+      "id": "ch03-084",
+      "text": "Tutkijat ovat luoneet lisää alkuaineita laboratorioissa.",
+      "text_markdown": "Tutkijat ovat luoneet lisää alkuaineita laboratorioissa.",
+      "title": "Elements",
+      "tts": {
+        "text": "Tutkijat ovat luoneet lisää alkuaineita laboratorioissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p21",
+      "part": 0,
+      "id": "ch03-085",
+      "text": "Tunnettujen alkuaineiden kokonaismäärä on yli satakahdeksantoista.",
+      "text_markdown": "Tunnettujen alkuaineiden kokonaismäärä on yli satakahdeksantoista.",
+      "title": "Elements",
+      "tts": {
+        "text": "Tunnettujen alkuaineiden kokonaismäärä on yli satakahdeksantoista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p21",
+      "part": 0,
+      "id": "ch03-086",
+      "text": "Jokaisella alkuaineella on oma protoniluku.",
+      "text_markdown": "Jokaisella alkuaineella on oma protoniluku.",
+      "title": "Elements",
+      "tts": {
+        "text": "Jokaisella alkuaineella on oma protoniluku.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p22",
+      "part": 0,
+      "id": "ch03-087",
+      "text": "Jokaisella alkuaineella on nimi ja kemiallinen merkki.",
+      "text_markdown": "Jokaisella alkuaineella on nimi ja kemiallinen merkki.",
+      "title": "Elements",
+      "tts": {
+        "text": "Jokaisella alkuaineella on nimi ja kemiallinen merkki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p22",
+      "part": 0,
+      "id": "ch03-088",
+      "text": "Vety on H. Happi on O. Hiili on C. Rauta on Fe.",
+      "text_markdown": "Vety on H. Happi on O. Hiili on C. Rauta on Fe.",
+      "title": "Elements",
+      "tts": {
+        "text": "Vety on hoo. Happi on oo. Hiili on see. Rauta on äf ee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p22",
+      "part": 0,
+      "id": "ch03-089",
+      "text": "Kulta on Au.",
+      "text_markdown": "Kulta on Au.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kulta on aa uu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p22",
+      "part": 0,
+      "id": "ch03-090",
+      "text": "Kemialliset merkit tulevat latinan, kreikan tai englannin kielisistä nimistä.",
+      "text_markdown": "Kemialliset merkit tulevat latinan, kreikan tai englannin kielisistä nimistä.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kemialliset merkit tulevat latinan, kreikan tai englannin kielisistä nimistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p22",
+      "part": 0,
+      "id": "ch03-091",
+      "text": "Fe tulee latinan sanasta ferrum.",
+      "text_markdown": "Fe tulee latinan sanasta ferrum.",
+      "title": "Elements",
+      "tts": {
+        "text": "Äf ee tulee latinan sanasta ferrum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 5,
+      "paragraph_id": "p22",
+      "part": 0,
+      "id": "ch03-092",
+      "text": "Au tulee latinan sanasta aurum.",
+      "text_markdown": "Au tulee latinan sanasta aurum.",
+      "title": "Elements",
+      "tts": {
+        "text": "Aa uu tulee latinan sanasta aurum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p23",
+      "part": 0,
+      "id": "ch03-093",
+      "text": "Vety on yksinkertaisin alkuaine.",
+      "text_markdown": "Vety on yksinkertaisin alkuaine.",
+      "title": "Elements",
+      "tts": {
+        "text": "Vety on yksinkertaisin alkuaine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p23",
+      "part": 0,
+      "id": "ch03-094",
+      "text": "Vetyatomissa on yksi protoni ja yksi elektroni.",
+      "text_markdown": "Vetyatomissa on yksi protoni ja yksi elektroni.",
+      "title": "Elements",
+      "tts": {
+        "text": "Vetyatomissa on yksi protoni ja yksi elektroni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p23",
+      "part": 0,
+      "id": "ch03-095",
+      "text": "Vety on maailmankaikkeuden yleisin alkuaine.",
+      "text_markdown": "Vety on maailmankaikkeuden yleisin alkuaine.",
+      "title": "Elements",
+      "tts": {
+        "text": "Vety on maailmankaikkeuden yleisin alkuaine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p23",
+      "part": 0,
+      "id": "ch03-096",
+      "text": "Tähdet koostuvat enimmäkseen vedystä.",
+      "text_markdown": "Tähdet koostuvat enimmäkseen vedystä.",
+      "title": "Elements",
+      "tts": {
+        "text": "Tähdet koostuvat enimmäkseen vedystä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p24",
+      "part": 0,
+      "id": "ch03-097",
+      "text": "Hiili on elämän alkuaine.",
+      "text_markdown": "Hiili on elämän alkuaine.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hiili on elämän alkuaine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p24",
+      "part": 0,
+      "id": "ch03-098",
+      "text": "Hiilellä on kuusi protonia.",
+      "text_markdown": "Hiilellä on kuusi protonia.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hiilellä on kuusi protonia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p24",
+      "part": 0,
+      "id": "ch03-099",
+      "text": "Hiiliatomit voivat muodostaa sidoksia monien muiden atomien kanssa samanaikaisesti.",
+      "text_markdown": "Hiiliatomit voivat muodostaa sidoksia monien muiden atomien kanssa samanaikaisesti.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hiiliatomit voivat muodostaa sidoksia monien muiden atomien kanssa samanaikaisesti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p24",
+      "part": 0,
+      "id": "ch03-100",
+      "text": "Tämä kyky tekee hiilestä kaikkien elävien olentojen selkärangan.",
+      "text_markdown": "Tämä kyky tekee hiilestä kaikkien elävien olentojen selkärangan.",
+      "title": "Elements",
+      "tts": {
+        "text": "Tämä kyky tekee hiilestä kaikkien elävien olentojen selkärangan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 4,
+      "paragraph_id": "p24",
+      "part": 0,
+      "id": "ch03-101",
+      "text": "Jokainen proteiini, jokainen DNA-juoste ja jokainen sokerimolekyyli kehossasi sisältää hiiltä.",
+      "text_markdown": "Jokainen proteiini, jokainen DNA-juoste ja jokainen sokerimolekyyli kehossasi sisältää hiiltä.",
+      "title": "Elements",
+      "tts": {
+        "text": "Jokainen proteiini, jokainen DNA-juoste ja jokainen sokerimolekyyli kehossasi sisältää hiiltä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p25",
+      "part": 0,
+      "id": "ch03-102",
+      "text": "Hapella on kahdeksan protonia.",
+      "text_markdown": "Hapella on kahdeksan protonia.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hapella on kahdeksan protonia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p25",
+      "part": 0,
+      "id": "ch03-103",
+      "text": "Happi on alkuaine, jota hengität.",
+      "text_markdown": "Happi on alkuaine, jota hengität.",
+      "title": "Elements",
+      "tts": {
+        "text": "Happi on alkuaine, jota hengität.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p25",
+      "part": 0,
+      "id": "ch03-104",
+      "text": "Keuhkosi ottavat hapen ilmasta ja lähettävät sen vereesi.",
+      "text_markdown": "Keuhkosi ottavat hapen ilmasta ja lähettävät sen vereesi.",
+      "title": "Elements",
+      "tts": {
+        "text": "Keuhkosi ottavat hapen ilmasta ja lähettävät sen vereesi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p25",
+      "part": 0,
+      "id": "ch03-105",
+      "text": "Solusi käyttävät happea vapauttaakseen energiaa ruoasta.",
+      "text_markdown": "Solusi käyttävät happea vapauttaakseen energiaa ruoasta.",
+      "title": "Elements",
+      "tts": {
+        "text": "Solusi käyttävät happea vapauttaakseen energiaa ruoasta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p26",
+      "part": 0,
+      "id": "ch03-106",
+      "text": "Raudalla on kaksikymmentäkuusi protonia.",
+      "text_markdown": "Raudalla on kaksikymmentäkuusi protonia.",
+      "title": "Elements",
+      "tts": {
+        "text": "Raudalla on kaksikymmentäkuusi protonia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p26",
+      "part": 0,
+      "id": "ch03-107",
+      "text": "Rauta on alkuaine, joka tekee verestäsi punaista.",
+      "text_markdown": "Rauta on alkuaine, joka tekee verestäsi punaista.",
+      "title": "Elements",
+      "tts": {
+        "text": "Rauta on alkuaine, joka tekee verestäsi punaista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p26",
+      "part": 0,
+      "id": "ch03-108",
+      "text": "Rauta on teräksen pääraaka-aine.",
+      "text_markdown": "Rauta on teräksen pääraaka-aine.",
+      "title": "Elements",
+      "tts": {
+        "text": "Rauta on teräksen pääraaka-aine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p26",
+      "part": 0,
+      "id": "ch03-109",
+      "text": "Maapallon ydin on pääosin rautaa.",
+      "text_markdown": "Maapallon ydin on pääosin rautaa.",
+      "title": "Elements",
+      "tts": {
+        "text": "Maapallon ydin on pääosin rautaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 0,
+      "paragraph_id": "p27",
+      "part": 0,
+      "id": "ch03-110",
+      "text": "Kevyimmät alkuaineet ovat maailmankaikkeuden yleisimpiä.",
+      "text_markdown": "Kevyimmät alkuaineet ovat maailmankaikkeuden yleisimpiä.",
+      "title": "Elements",
+      "tts": {
+        "text": "Kevyimmät alkuaineet ovat maailmankaikkeuden yleisimpiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 1,
+      "paragraph_id": "p27",
+      "part": 0,
+      "id": "ch03-111",
+      "text": "Vety ja helium muodostavat yhdessä noin yhdeksänkymmentäkahdeksan prosenttia kaikista maailmankaikkeuden atomeista.",
+      "text_markdown": "Vety ja helium muodostavat yhdessä noin yhdeksänkymmentäkahdeksan prosenttia kaikista maailmankaikkeuden atomeista.",
+      "title": "Elements",
+      "tts": {
+        "text": "Vety ja helium muodostavat yhdessä noin yhdeksänkymmentäkahdeksan prosenttia kaikista maailmankaikkeuden atomeista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 2,
+      "paragraph_id": "p27",
+      "part": 0,
+      "id": "ch03-112",
+      "text": "Raskaammat alkuaineet ovat harvinaisia niihin verrattuna.",
+      "text_markdown": "Raskaammat alkuaineet ovat harvinaisia niihin verrattuna.",
+      "title": "Elements",
+      "tts": {
+        "text": "Raskaammat alkuaineet ovat harvinaisia niihin verrattuna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 3,
+      "sentence_index": 3,
+      "paragraph_id": "p27",
+      "part": 0,
+      "id": "ch03-113",
+      "text": "Jokainen raskaan alkuaineen atomi on syntynyt tähden sisällä.",
+      "text_markdown": "Jokainen raskaan alkuaineen atomi on syntynyt tähden sisällä.",
+      "title": "Elements",
+      "tts": {
+        "text": "Jokainen raskaan alkuaineen atomi on syntynyt tähden sisällä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p28",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch04-114",
+      "text": "Jaksollinen järjestelmä",
+      "text_markdown": "Jaksollinen järjestelmä",
+      "title": "Jaksollinen järjestelmä"
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p29",
+      "part": 0,
+      "id": "ch04-115",
+      "text": "Jaksollinen järjestelmä on taulukko, joka järjestää kaikki tunnetut alkuaineet.",
+      "text_markdown": "Jaksollinen järjestelmä on taulukko, joka järjestää kaikki tunnetut alkuaineet.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jaksollinen järjestelmä on taulukko, joka järjestää kaikki tunnetut alkuaineet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p29",
+      "part": 0,
+      "id": "ch04-116",
+      "text": "Taulukko järjestää alkuaineet protonien lukumäärän mukaan pienimmästä suurimpaan.",
+      "text_markdown": "Taulukko järjestää alkuaineet protonien lukumäärän mukaan pienimmästä suurimpaan.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Taulukko järjestää alkuaineet protonien lukumäärän mukaan pienimmästä suurimpaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p29",
+      "part": 0,
+      "id": "ch04-117",
+      "text": "Vety on ensimmäisenä yhdellä protonilla.",
+      "text_markdown": "Vety on ensimmäisenä yhdellä protonilla.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Vety on ensimmäisenä yhdellä protonilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p29",
+      "part": 0,
+      "id": "ch04-118",
+      "text": "Helium on toisena kahdella protonilla.",
+      "text_markdown": "Helium on toisena kahdella protonilla.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Helium on toisena kahdella protonilla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p29",
+      "part": 0,
+      "id": "ch04-119",
+      "text": "Taulukko jatkuu aina oganessoniin asti, jolla on satakahdeksantoista protonia.",
+      "text_markdown": "Taulukko jatkuu aina oganessoniin asti, jolla on satakahdeksantoista protonia.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Taulukko jatkuu aina oganessoniin asti, jolla on satakahdeksantoista protonia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p30",
+      "part": 0,
+      "id": "ch04-120",
+      "text": "Jaksollisessa järjestelmässä on rivejä ja sarakkeita.",
+      "text_markdown": "Jaksollisessa järjestelmässä on rivejä ja sarakkeita.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jaksollisessa järjestelmässä on rivejä ja sarakkeita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p30",
+      "part": 0,
+      "id": "ch04-121",
+      "text": "Rivejä kutsutaan jaksoiksi.",
+      "text_markdown": "Rivejä kutsutaan jaksoiksi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Rivejä kutsutaan jaksoiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p30",
+      "part": 0,
+      "id": "ch04-122",
+      "text": "Sarakkeita kutsutaan ryhmiksi.",
+      "text_markdown": "Sarakkeita kutsutaan ryhmiksi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Sarakkeita kutsutaan ryhmiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p30",
+      "part": 0,
+      "id": "ch04-123",
+      "text": "Samassa ryhmässä olevilla alkuaineilla on samanlaiset ominaisuudet.",
+      "text_markdown": "Samassa ryhmässä olevilla alkuaineilla on samanlaiset ominaisuudet.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Samassa ryhmässä olevilla alkuaineilla on samanlaiset ominaisuudet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p30",
+      "part": 0,
+      "id": "ch04-124",
+      "text": "Siksi taulukkoa kutsutaan jaksolliseksi.",
+      "text_markdown": "Siksi taulukkoa kutsutaan jaksolliseksi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Siksi taulukkoa kutsutaan jaksolliseksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 5,
+      "paragraph_id": "p30",
+      "part": 0,
+      "id": "ch04-125",
+      "text": "Ominaisuudet toistuvat säännöllisessä kaavassa.",
+      "text_markdown": "Ominaisuudet toistuvat säännöllisessä kaavassa.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Ominaisuudet toistuvat säännöllisessä kaavassa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p31",
+      "part": 0,
+      "id": "ch04-126",
+      "text": "Taulukon vasemmalla puolella olevat alkuaineet ovat metalleja.",
+      "text_markdown": "Taulukon vasemmalla puolella olevat alkuaineet ovat metalleja.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Taulukon vasemmalla puolella olevat alkuaineet ovat metalleja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p31",
+      "part": 0,
+      "id": "ch04-127",
+      "text": "Suurin osa alkuaineista on metalleja.",
+      "text_markdown": "Suurin osa alkuaineista on metalleja.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Suurin osa alkuaineista on metalleja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p31",
+      "part": 0,
+      "id": "ch04-128",
+      "text": "Metallit ovat kiiltäviä.",
+      "text_markdown": "Metallit ovat kiiltäviä.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metallit ovat kiiltäviä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p31",
+      "part": 0,
+      "id": "ch04-129",
+      "text": "Metallit johtavat sähköä.",
+      "text_markdown": "Metallit johtavat sähköä.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metallit johtavat sähköä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p31",
+      "part": 0,
+      "id": "ch04-130",
+      "text": "Metallit johtavat lämpöä.",
+      "text_markdown": "Metallit johtavat lämpöä.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Metallit johtavat lämpöä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 5,
+      "paragraph_id": "p31",
+      "part": 0,
+      "id": "ch04-131",
+      "text": "Rauta, kupari, kulta ja alumiini ovat kaikki metalleja.",
+      "text_markdown": "Rauta, kupari, kulta ja alumiini ovat kaikki metalleja.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Rauta, kupari, kulta ja alumiini ovat kaikki metalleja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p32",
+      "part": 0,
+      "id": "ch04-132",
+      "text": "Taulukon oikealla puolella olevat alkuaineet ovat epämetalleja.",
+      "text_markdown": "Taulukon oikealla puolella olevat alkuaineet ovat epämetalleja.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Taulukon oikealla puolella olevat alkuaineet ovat epämetalleja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p32",
+      "part": 0,
+      "id": "ch04-133",
+      "text": "Epämetalleihin kuuluvat happi, typpi, hiili ja rikki.",
+      "text_markdown": "Epämetalleihin kuuluvat happi, typpi, hiili ja rikki.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Epämetalleihin kuuluvat happi, typpi, hiili ja rikki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p32",
+      "part": 0,
+      "id": "ch04-134",
+      "text": "Epämetallit eivät johda sähköä hyvin.",
+      "text_markdown": "Epämetallit eivät johda sähköä hyvin.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Epämetallit eivät johda sähköä hyvin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p32",
+      "part": 0,
+      "id": "ch04-135",
+      "text": "Epämetallit ovat alkuaineita, joista ilma, vesi ja elävät olennot koostuvat.",
+      "text_markdown": "Epämetallit ovat alkuaineita, joista ilma, vesi ja elävät olennot koostuvat.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Epämetallit ovat alkuaineita, joista ilma, vesi ja elävät olennot koostuvat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p33",
+      "part": 0,
+      "id": "ch04-136",
+      "text": "Muutamat alkuaineet ovat metallien ja epämetallien rajalla.",
+      "text_markdown": "Muutamat alkuaineet ovat metallien ja epämetallien rajalla.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Muutamat alkuaineet ovat metallien ja epämetallien rajalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p33",
+      "part": 0,
+      "id": "ch04-137",
+      "text": "Näitä alkuaineita kutsutaan puolimetalleiksi.",
+      "text_markdown": "Näitä alkuaineita kutsutaan puolimetalleiksi.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Näitä alkuaineita kutsutaan puolimetalleiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p33",
+      "part": 0,
+      "id": "ch04-138",
+      "text": "Pii on puolimetalli.",
+      "text_markdown": "Pii on puolimetalli.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Pii on puolimetalli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p33",
+      "part": 0,
+      "id": "ch04-139",
+      "text": "Pii johtaa sähköä vähän, mutta ei yhtä hyvin kuin metalli.",
+      "text_markdown": "Pii johtaa sähköä vähän, mutta ei yhtä hyvin kuin metalli.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Pii johtaa sähköä vähän, mutta ei yhtä hyvin kuin metalli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p33",
+      "part": 0,
+      "id": "ch04-140",
+      "text": "Tämä ominaisuus tekee piistä hyödyllisen tietokonesiruissa.",
+      "text_markdown": "Tämä ominaisuus tekee piistä hyödyllisen tietokonesiruissa.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Tämä ominaisuus tekee piistä hyödyllisen tietokonesiruissa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p34",
+      "part": 0,
+      "id": "ch04-141",
+      "text": "Jalokaasut ovat viimeisessä sarakkeessa oikealla.",
+      "text_markdown": "Jalokaasut ovat viimeisessä sarakkeessa oikealla.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jalokaasut ovat viimeisessä sarakkeessa oikealla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p34",
+      "part": 0,
+      "id": "ch04-142",
+      "text": "Helium, neon, argon, krypton, ksenon ja radon ovat jalokaasuja.",
+      "text_markdown": "Helium, neon, argon, krypton, ksenon ja radon ovat jalokaasuja.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Helium, neon, argon, krypton, ksenon ja radon ovat jalokaasuja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p34",
+      "part": 0,
+      "id": "ch04-143",
+      "text": "Jalokaasut eivät juuri koskaan reagoi muiden alkuaineiden kanssa.",
+      "text_markdown": "Jalokaasut eivät juuri koskaan reagoi muiden alkuaineiden kanssa.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jalokaasut eivät juuri koskaan reagoi muiden alkuaineiden kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p34",
+      "part": 0,
+      "id": "ch04-144",
+      "text": "Niiden elektronijärjestys on jo vakaa.",
+      "text_markdown": "Niiden elektronijärjestys on jo vakaa.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Niiden elektronijärjestys on jo vakaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p34",
+      "part": 0,
+      "id": "ch04-145",
+      "text": "Niiden ei tarvitse muodostaa sidoksia.",
+      "text_markdown": "Niiden ei tarvitse muodostaa sidoksia.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Niiden ei tarvitse muodostaa sidoksia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p35",
+      "part": 0,
+      "id": "ch04-146",
+      "text": "Venäläinen tiedemies nimeltä Dmitri Mendelejev loi ensimmäisen jaksollisen järjestelmän vuonna 1869.",
+      "text_markdown": "Venäläinen tiedemies nimeltä Dmitri Mendelejev loi ensimmäisen jaksollisen järjestelmän vuonna 1869.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Venäläinen tiedemies nimeltä Dmitri Mendelejev loi ensimmäisen jaksollisen järjestelmän vuonna tuhat kahdeksansataakuusikymmentäyhdeksän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p35",
+      "part": 0,
+      "id": "ch04-147",
+      "text": "Mendelejev järjesti alkuaineet niiden ominaisuuksien mukaan ja huomasi toistuvan kaavan.",
+      "text_markdown": "Mendelejev järjesti alkuaineet niiden ominaisuuksien mukaan ja huomasi toistuvan kaavan.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Mendelejev järjesti alkuaineet niiden ominaisuuksien mukaan ja huomasi toistuvan kaavan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 2,
+      "paragraph_id": "p35",
+      "part": 0,
+      "id": "ch04-148",
+      "text": "Hän jätti taulukkoon aukkoja kohtiin, joissa hän ennusti tuntemattomien alkuaineiden olevan.",
+      "text_markdown": "Hän jätti taulukkoon aukkoja kohtiin, joissa hän ennusti tuntemattomien alkuaineiden olevan.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Hän jätti taulukkoon aukkoja kohtiin, joissa hän ennusti tuntemattomien alkuaineiden olevan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 3,
+      "paragraph_id": "p35",
+      "part": 0,
+      "id": "ch04-149",
+      "text": "Tiedemiehet löysivät myöhemmin nuo alkuaineet.",
+      "text_markdown": "Tiedemiehet löysivät myöhemmin nuo alkuaineet.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Tiedemiehet löysivät myöhemmin nuo alkuaineet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 4,
+      "paragraph_id": "p35",
+      "part": 0,
+      "id": "ch04-150",
+      "text": "Jokainen ennustus osui oikeaan.",
+      "text_markdown": "Jokainen ennustus osui oikeaan.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jokainen ennustus osui oikeaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 0,
+      "paragraph_id": "p36",
+      "part": 0,
+      "id": "ch04-151",
+      "text": "Jaksollinen järjestelmä on yksi tieteen tehokkaimmista työkaluista.",
+      "text_markdown": "Jaksollinen järjestelmä on yksi tieteen tehokkaimmista työkaluista.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jaksollinen järjestelmä on yksi tieteen tehokkaimmista työkaluista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 4,
+      "sentence_index": 1,
+      "paragraph_id": "p36",
+      "part": 0,
+      "id": "ch04-152",
+      "text": "Jos tiedät, missä alkuaine sijaitsee taulukossa, voit ennustaa, miten se käyttäytyy.",
+      "text_markdown": "Jos tiedät, missä alkuaine sijaitsee taulukossa, voit ennustaa, miten se käyttäytyy.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Jos tiedät, missä alkuaine sijaitsee taulukossa, voit ennustaa, miten se käyttäytyy.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "heading",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p37",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch05-153",
+      "text": "Miten atomit sitoutuvat",
+      "text_markdown": "Miten atomit sitoutuvat",
+      "title": "Miten atomit sitoutuvat"
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p38",
+      "part": 0,
+      "id": "ch05-154",
+      "text": "Atomit ovat harvoin yksin.",
+      "text_markdown": "Atomit ovat harvoin yksin.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomit ovat harvoin yksin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p38",
+      "part": 0,
+      "id": "ch05-155",
+      "text": "Useimmat atomit sitoutuvat muihin atomeihin muodostaen molekyylejä.",
+      "text_markdown": "Useimmat atomit sitoutuvat muihin atomeihin muodostaen molekyylejä.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Useimmat atomit sitoutuvat muihin atomeihin muodostaen molekyylejä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p38",
+      "part": 0,
+      "id": "ch05-156",
+      "text": "Molekyyli on joukko atomeja, joita pitävät yhdessä kemialliset sidokset.",
+      "text_markdown": "Molekyyli on joukko atomeja, joita pitävät yhdessä kemialliset sidokset.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Molekyyli on joukko atomeja, joita pitävät yhdessä kemialliset sidokset.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p38",
+      "part": 0,
+      "id": "ch05-157",
+      "text": "Vesi on molekyyli.",
+      "text_markdown": "Vesi on molekyyli.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vesi on molekyyli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p38",
+      "part": 0,
+      "id": "ch05-158",
+      "text": "Happikaasu on molekyyli.",
+      "text_markdown": "Happikaasu on molekyyli.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Happikaasu on molekyyli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 5,
+      "paragraph_id": "p38",
+      "part": 0,
+      "id": "ch05-159",
+      "text": "Sokeri on molekyyli.",
+      "text_markdown": "Sokeri on molekyyli.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Sokeri on molekyyli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p39",
+      "part": 0,
+      "id": "ch05-160",
+      "text": "Atomit sitoutuvat elektronien ansiosta.",
+      "text_markdown": "Atomit sitoutuvat elektronien ansiosta.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomit sitoutuvat elektronien ansiosta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p39",
+      "part": 0,
+      "id": "ch05-161",
+      "text": "Atomin uloimmalla kuorella olevat elektronit määräävät, miten atomi on vuorovaikutuksessa muiden atomien kanssa.",
+      "text_markdown": "Atomin uloimmalla kuorella olevat elektronit määräävät, miten atomi on vuorovaikutuksessa muiden atomien kanssa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomin uloimmalla kuorella olevat elektronit määräävät, miten atomi on vuorovaikutuksessa muiden atomien kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p39",
+      "part": 0,
+      "id": "ch05-162",
+      "text": "Näitä uloimpia elektroneja kutsutaan valenssielektroneiksi.",
+      "text_markdown": "Näitä uloimpia elektroneja kutsutaan valenssielektroneiksi.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Näitä uloimpia elektroneja kutsutaan valenssielektroneiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p39",
+      "part": 0,
+      "id": "ch05-163",
+      "text": "Atomi, jonka uloin kuori on täynnä, on vakaa.",
+      "text_markdown": "Atomi, jonka uloin kuori on täynnä, on vakaa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi, jonka uloin kuori on täynnä, on vakaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p39",
+      "part": 0,
+      "id": "ch05-164",
+      "text": "Atomi, jonka uloin kuori ei ole täynnä, pyrkii täyttämään sen.",
+      "text_markdown": "Atomi, jonka uloin kuori ei ole täynnä, pyrkii täyttämään sen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi, jonka uloin kuori ei ole täynnä, pyrkii täyttämään sen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p40",
+      "part": 0,
+      "id": "ch05-165",
+      "text": "Kemiallisia sidoksia on kahta päätyyppiä.",
+      "text_markdown": "Kemiallisia sidoksia on kahta päätyyppiä.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kemiallisia sidoksia on kahta päätyyppiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p40",
+      "part": 0,
+      "id": "ch05-166",
+      "text": "Kovalenttisia sidoksia ja ionisidoksia.",
+      "text_markdown": "Kovalenttisia sidoksia ja ionisidoksia.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kovalenttisia sidoksia ja ionisidoksia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p41",
+      "part": 0,
+      "id": "ch05-167",
+      "text": "Kovalenttisessa sidoksessa kaksi atomia jakavat elektroneja.",
+      "text_markdown": "Kovalenttisessa sidoksessa kaksi atomia jakavat elektroneja.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kovalenttisessa sidoksessa kaksi atomia jakavat elektroneja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p41",
+      "part": 0,
+      "id": "ch05-168",
+      "text": "Molemmat atomit luovuttavat elektroneja jaettuun pariin.",
+      "text_markdown": "Molemmat atomit luovuttavat elektroneja jaettuun pariin.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Molemmat atomit luovuttavat elektroneja jaettuun pariin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p41",
+      "part": 0,
+      "id": "ch05-169",
+      "text": "Jaetut elektronit kiertävät molempia ytimiä.",
+      "text_markdown": "Jaetut elektronit kiertävät molempia ytimiä.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Jaetut elektronit kiertävät molempia ytimiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p41",
+      "part": 0,
+      "id": "ch05-170",
+      "text": "Tämä jakaminen pitää atomit yhdessä.",
+      "text_markdown": "Tämä jakaminen pitää atomit yhdessä.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Tämä jakaminen pitää atomit yhdessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p41",
+      "part": 0,
+      "id": "ch05-171",
+      "text": "Vettä pitävät koossa kovalenttiset sidokset.",
+      "text_markdown": "Vettä pitävät koossa kovalenttiset sidokset.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vettä pitävät koossa kovalenttiset sidokset.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 5,
+      "paragraph_id": "p41",
+      "part": 0,
+      "id": "ch05-172",
+      "text": "Kukin vetyatomi jakaa yhden elektronin happiatomin kanssa.",
+      "text_markdown": "Kukin vetyatomi jakaa yhden elektronin happiatomin kanssa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kukin vetyatomi jakaa yhden elektronin happiatomin kanssa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p42",
+      "part": 0,
+      "id": "ch05-173",
+      "text": "Ionisidoksessa yksi atomi antaa elektroneja toiselle atomille.",
+      "text_markdown": "Ionisidoksessa yksi atomi antaa elektroneja toiselle atomille.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Ionisidoksessa yksi atomi antaa elektroneja toiselle atomille.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p42",
+      "part": 0,
+      "id": "ch05-174",
+      "text": "Atomi, joka menettää elektroneja, muuttuu positiivisesti varautuneeksi.",
+      "text_markdown": "Atomi, joka menettää elektroneja, muuttuu positiivisesti varautuneeksi.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi, joka menettää elektroneja, muuttuu positiivisesti varautuneeksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p42",
+      "part": 0,
+      "id": "ch05-175",
+      "text": "Atomi, joka saa elektroneja, muuttuu negatiivisesti varautuneeksi.",
+      "text_markdown": "Atomi, joka saa elektroneja, muuttuu negatiivisesti varautuneeksi.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomi, joka saa elektroneja, muuttuu negatiivisesti varautuneeksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p42",
+      "part": 0,
+      "id": "ch05-176",
+      "text": "Vastakkaiset varaukset vetävät toisiaan puoleensa.",
+      "text_markdown": "Vastakkaiset varaukset vetävät toisiaan puoleensa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vastakkaiset varaukset vetävät toisiaan puoleensa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p42",
+      "part": 0,
+      "id": "ch05-177",
+      "text": "Tämä vetovoima pitää kaksi atomia yhdessä.",
+      "text_markdown": "Tämä vetovoima pitää kaksi atomia yhdessä.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Tämä vetovoima pitää kaksi atomia yhdessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 5,
+      "paragraph_id": "p42",
+      "part": 0,
+      "id": "ch05-178",
+      "text": "Ruokasuolaa pitävät koossa ionisidokset.",
+      "text_markdown": "Ruokasuolaa pitävät koossa ionisidokset.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Ruokasuolaa pitävät koossa ionisidokset.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 6,
+      "paragraph_id": "p42",
+      "part": 0,
+      "id": "ch05-179",
+      "text": "Natrium antaa elektronin kloorille.",
+      "text_markdown": "Natrium antaa elektronin kloorille.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Natrium antaa elektronin kloorille.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p43",
+      "part": 0,
+      "id": "ch05-180",
+      "text": "Vesimolekyyli sisältää kaksi vetyatomia ja yhden happiatomin.",
+      "text_markdown": "Vesimolekyyli sisältää kaksi vetyatomia ja yhden happiatomin.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Vesimolekyyli sisältää kaksi vetyatomia ja yhden happiatomin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p43",
+      "part": 0,
+      "id": "ch05-181",
+      "text": "Tutkijat kirjoittavat tämän H2O.",
+      "text_markdown": "Tutkijat kirjoittavat tämän H2O.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Tutkijat kirjoittavat tämän hoo kaksi oo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p43",
+      "part": 0,
+      "id": "ch05-182",
+      "text": "H tarkoittaa vetyä.",
+      "text_markdown": "H tarkoittaa vetyä.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Hoo tarkoittaa vetyä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p43",
+      "part": 0,
+      "id": "ch05-183",
+      "text": "O tarkoittaa happea.",
+      "text_markdown": "O tarkoittaa happea.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Oo tarkoittaa happea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 4,
+      "paragraph_id": "p43",
+      "part": 0,
+      "id": "ch05-184",
+      "text": "Kakkonen tarkoittaa, että vetyatomeja on kaksi.",
+      "text_markdown": "Kakkonen tarkoittaa, että vetyatomeja on kaksi.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kakkonen tarkoittaa, että vetyatomeja on kaksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p44",
+      "part": 0,
+      "id": "ch05-185",
+      "text": "Hiilidioksidimolekyyli sisältää yhden hiiliatomin ja kaksi happiatomia.",
+      "text_markdown": "Hiilidioksidimolekyyli sisältää yhden hiiliatomin ja kaksi happiatomia.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Hiilidioksidimolekyyli sisältää yhden hiiliatomin ja kaksi happiatomia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p44",
+      "part": 0,
+      "id": "ch05-186",
+      "text": "Tutkijat kirjoittavat tämän CO2.",
+      "text_markdown": "Tutkijat kirjoittavat tämän CO2.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Tutkijat kirjoittavat tämän see oo kaksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p44",
+      "part": 0,
+      "id": "ch05-187",
+      "text": "Kasvit imevät hiilidioksidia ilmasta ja käyttävät sitä sokerimolekyylien rakentamiseen.",
+      "text_markdown": "Kasvit imevät hiilidioksidia ilmasta ja käyttävät sitä sokerimolekyylien rakentamiseen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kasvit imevät hiilidioksidia ilmasta ja käyttävät sitä sokerimolekyylien rakentamiseen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 0,
+      "paragraph_id": "p45",
+      "part": 0,
+      "id": "ch05-188",
+      "text": "Atomien väliset sidokset varastoivat energiaa.",
+      "text_markdown": "Atomien väliset sidokset varastoivat energiaa.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Atomien väliset sidokset varastoivat energiaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 1,
+      "paragraph_id": "p45",
+      "part": 0,
+      "id": "ch05-189",
+      "text": "Kun sidokset katkeavat, energiaa vapautuu.",
+      "text_markdown": "Kun sidokset katkeavat, energiaa vapautuu.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kun sidokset katkeavat, energiaa vapautuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 2,
+      "paragraph_id": "p45",
+      "part": 0,
+      "id": "ch05-190",
+      "text": "Kun sidoksia muodostuu, energiaa sitoutuu.",
+      "text_markdown": "Kun sidoksia muodostuu, energiaa sitoutuu.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Kun sidoksia muodostuu, energiaa sitoutuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 5,
+      "sentence_index": 3,
+      "paragraph_id": "p45",
+      "part": 0,
+      "id": "ch05-191",
+      "text": "Jokainen kemiallinen reaktio maailmankaikkeudessa sisältää vanhojen sidosten katkeamisen ja uusien muodostumisen.",
+      "text_markdown": "Jokainen kemiallinen reaktio maailmankaikkeudessa sisältää vanhojen sidosten katkeamisen ja uusien muodostumisen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Jokainen kemiallinen reaktio maailmankaikkeudessa sisältää vanhojen sidosten katkeamisen ja uusien muodostumisen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p46",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch06-192",
+      "text": "Atomit liikkeessä",
+      "text_markdown": "Atomit liikkeessä",
+      "title": "Atomit liikkeessä"
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p47",
+      "part": 0,
+      "id": "ch06-193",
+      "text": "Atomit ovat aina liikkeessä.",
+      "text_markdown": "Atomit ovat aina liikkeessä.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Atomit ovat aina liikkeessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p47",
+      "part": 0,
+      "id": "ch06-194",
+      "text": "Ne eivät koskaan pysähdy.",
+      "text_markdown": "Ne eivät koskaan pysähdy.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ne eivät koskaan pysähdy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p47",
+      "part": 0,
+      "id": "ch06-195",
+      "text": "Kaikissa absoluuttisen nollapisteen yläpuolisissa lämpötiloissa atomit värähtelevät, pyörivät ja liikkuvat avaruudessa.",
+      "text_markdown": "Kaikissa absoluuttisen nollapisteen yläpuolisissa lämpötiloissa atomit värähtelevät, pyörivät ja liikkuvat avaruudessa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Kaikissa absoluuttisen nollapisteen yläpuolisissa lämpötiloissa atomit värähtelevät, pyörivät ja liikkuvat avaruudessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p47",
+      "part": 0,
+      "id": "ch06-196",
+      "text": "Tämä liike on se, minkä koemme lämpönä.",
+      "text_markdown": "Tämä liike on se, minkä koemme lämpönä.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Tämä liike on se, minkä koemme lämpönä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p48",
+      "part": 0,
+      "id": "ch06-197",
+      "text": "Kiinteässä aineessa atomit värähtelevät paikallaan.",
+      "text_markdown": "Kiinteässä aineessa atomit värähtelevät paikallaan.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Kiinteässä aineessa atomit värähtelevät paikallaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p48",
+      "part": 0,
+      "id": "ch06-198",
+      "text": "Ne ovat lukittuna kiinteään rakenteeseen.",
+      "text_markdown": "Ne ovat lukittuna kiinteään rakenteeseen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ne ovat lukittuna kiinteään rakenteeseen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p48",
+      "part": 0,
+      "id": "ch06-199",
+      "text": "Ne tärisevät edestakaisin, mutta eivät poistu paikoiltaan.",
+      "text_markdown": "Ne tärisevät edestakaisin, mutta eivät poistu paikoiltaan.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ne tärisevät edestakaisin, mutta eivät poistu paikoiltaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p48",
+      "part": 0,
+      "id": "ch06-200",
+      "text": "Siksi kiinteät aineet pitävät muotonsa.",
+      "text_markdown": "Siksi kiinteät aineet pitävät muotonsa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Siksi kiinteät aineet pitävät muotonsa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p48",
+      "part": 0,
+      "id": "ch06-201",
+      "text": "Jäälohkossa atomit värähtelevät, mutta pysyvät jäykässä kidekuviossa.",
+      "text_markdown": "Jäälohkossa atomit värähtelevät, mutta pysyvät jäykässä kidekuviossa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Jäälohkossa atomit värähtelevät, mutta pysyvät jäykässä kidekuviossa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p49",
+      "part": 0,
+      "id": "ch06-202",
+      "text": "Nesteessä atomit liikkuvat vapaammin.",
+      "text_markdown": "Nesteessä atomit liikkuvat vapaammin.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Nesteessä atomit liikkuvat vapaammin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p49",
+      "part": 0,
+      "id": "ch06-203",
+      "text": "Ne liukuvat toistensa ohi.",
+      "text_markdown": "Ne liukuvat toistensa ohi.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ne liukuvat toistensa ohi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p49",
+      "part": 0,
+      "id": "ch06-204",
+      "text": "Ne pysyvät lähellä toisiaan, mutta eivät ole lukittuna paikoilleen.",
+      "text_markdown": "Ne pysyvät lähellä toisiaan, mutta eivät ole lukittuna paikoilleen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ne pysyvät lähellä toisiaan, mutta eivät ole lukittuna paikoilleen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p49",
+      "part": 0,
+      "id": "ch06-205",
+      "text": "Siksi nesteet virtaavat.",
+      "text_markdown": "Siksi nesteet virtaavat.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Siksi nesteet virtaavat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p49",
+      "part": 0,
+      "id": "ch06-206",
+      "text": "Vesilasissa atomit liikkuvat ja järjestäytyvät jatkuvasti uudelleen, mutta pysyvät lähellä toisiaan.",
+      "text_markdown": "Vesilasissa atomit liikkuvat ja järjestäytyvät jatkuvasti uudelleen, mutta pysyvät lähellä toisiaan.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Vesilasissa atomit liikkuvat ja järjestäytyvät jatkuvasti uudelleen, mutta pysyvät lähellä toisiaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p50",
+      "part": 0,
+      "id": "ch06-207",
+      "text": "Kaasussa atomit liikkuvat nopeasti ja leviävät erilleen.",
+      "text_markdown": "Kaasussa atomit liikkuvat nopeasti ja leviävät erilleen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Kaasussa atomit liikkuvat nopeasti ja leviävät erilleen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p50",
+      "part": 0,
+      "id": "ch06-208",
+      "text": "Ne lentävät suoraan, kunnes osuvat toiseen atomiin tai seinään.",
+      "text_markdown": "Ne lentävät suoraan, kunnes osuvat toiseen atomiin tai seinään.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ne lentävät suoraan, kunnes osuvat toiseen atomiin tai seinään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p50",
+      "part": 0,
+      "id": "ch06-209",
+      "text": "Ne pomppivat toisistaan ja vaihtavat suuntaa.",
+      "text_markdown": "Ne pomppivat toisistaan ja vaihtavat suuntaa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ne pomppivat toisistaan ja vaihtavat suuntaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p50",
+      "part": 0,
+      "id": "ch06-210",
+      "text": "Siksi kaasu täyttää minkä tahansa astian, johon se laitetaan.",
+      "text_markdown": "Siksi kaasu täyttää minkä tahansa astian, johon se laitetaan.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Siksi kaasu täyttää minkä tahansa astian, johon se laitetaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p50",
+      "part": 0,
+      "id": "ch06-211",
+      "text": "Ilmaa täynnä olevan huoneen atomit sinkoutuvat joka suuntaan satojen metrien sekuntivauhtia.",
+      "text_markdown": "Ilmaa täynnä olevan huoneen atomit sinkoutuvat joka suuntaan satojen metrien sekuntivauhtia.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ilmaa täynnä olevan huoneen atomit sinkoutuvat joka suuntaan satojen metrien sekuntivauhtia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p51",
+      "part": 0,
+      "id": "ch06-212",
+      "text": "Lämpötila mittaa sitä, kuinka nopeasti atomit liikkuvat.",
+      "text_markdown": "Lämpötila mittaa sitä, kuinka nopeasti atomit liikkuvat.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Lämpötila mittaa sitä, kuinka nopeasti atomit liikkuvat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p51",
+      "part": 0,
+      "id": "ch06-213",
+      "text": "Kuuma tarkoittaa, että atomit liikkuvat nopeasti.",
+      "text_markdown": "Kuuma tarkoittaa, että atomit liikkuvat nopeasti.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Kuuma tarkoittaa, että atomit liikkuvat nopeasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p51",
+      "part": 0,
+      "id": "ch06-214",
+      "text": "Kylmä tarkoittaa, että atomit liikkuvat hitaasti.",
+      "text_markdown": "Kylmä tarkoittaa, että atomit liikkuvat hitaasti.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Kylmä tarkoittaa, että atomit liikkuvat hitaasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p51",
+      "part": 0,
+      "id": "ch06-215",
+      "text": "Kun lämmität vettä liedellä, saat vesimolekyylit liikkumaan nopeammin.",
+      "text_markdown": "Kun lämmität vettä liedellä, saat vesimolekyylit liikkumaan nopeammin.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Kun lämmität vettä liedellä, saat vesimolekyylit liikkumaan nopeammin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p51",
+      "part": 0,
+      "id": "ch06-216",
+      "text": "Kun molekyylit liikkuvat tarpeeksi nopeasti, ne karkaavat nesteestä ja muuttuvat höyryksi.",
+      "text_markdown": "Kun molekyylit liikkuvat tarpeeksi nopeasti, ne karkaavat nesteestä ja muuttuvat höyryksi.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Kun molekyylit liikkuvat tarpeeksi nopeasti, ne karkaavat nesteestä ja muuttuvat höyryksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p52",
+      "part": 0,
+      "id": "ch06-217",
+      "text": "Absoluuttinen nollapiste on kylmin mahdollinen lämpötila.",
+      "text_markdown": "Absoluuttinen nollapiste on kylmin mahdollinen lämpötila.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Absoluuttinen nollapiste on kylmin mahdollinen lämpötila.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p52",
+      "part": 0,
+      "id": "ch06-218",
+      "text": "Se on noin miinus 273 celsiusastetta.",
+      "text_markdown": "Se on noin miinus 273 celsiusastetta.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Se on noin miinus kaksisataaseitsemänkymmentäkolme celsiusastetta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p52",
+      "part": 0,
+      "id": "ch06-219",
+      "text": "Absoluuttisessa nollapisteessä atomeilla on pienin mahdollinen energia.",
+      "text_markdown": "Absoluuttisessa nollapisteessä atomeilla on pienin mahdollinen energia.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Absoluuttisessa nollapisteessä atomeilla on pienin mahdollinen energia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p52",
+      "part": 0,
+      "id": "ch06-220",
+      "text": "Mikään ei voi olla kylmempää kuin absoluuttinen nollapiste.",
+      "text_markdown": "Mikään ei voi olla kylmempää kuin absoluuttinen nollapiste.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Mikään ei voi olla kylmempää kuin absoluuttinen nollapiste.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 4,
+      "paragraph_id": "p52",
+      "part": 0,
+      "id": "ch06-221",
+      "text": "Tutkijat ovat päässeet hyvin lähelle absoluuttista nollapistettä laboratorioissa, mutta kukaan ei ole koskaan saavuttanut sitä tarkalleen.",
+      "text_markdown": "Tutkijat ovat päässeet hyvin lähelle absoluuttista nollapistettä laboratorioissa, mutta kukaan ei ole koskaan saavuttanut sitä tarkalleen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Tutkijat ovat päässeet hyvin lähelle absoluuttista nollapistettä laboratorioissa, mutta kukaan ei ole koskaan saavuttanut sitä tarkalleen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 0,
+      "paragraph_id": "p53",
+      "part": 0,
+      "id": "ch06-222",
+      "text": "Paine johtuu siitä, että atomit osuvat pintoihin.",
+      "text_markdown": "Paine johtuu siitä, että atomit osuvat pintoihin.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Paine johtuu siitä, että atomit osuvat pintoihin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 1,
+      "paragraph_id": "p53",
+      "part": 0,
+      "id": "ch06-223",
+      "text": "Ilma renkaassa työntää ulospäin, koska ilmamolekyylit pomppivat jatkuvasti renkaan sisäseinämistä.",
+      "text_markdown": "Ilma renkaassa työntää ulospäin, koska ilmamolekyylit pomppivat jatkuvasti renkaan sisäseinämistä.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Ilma renkaassa työntää ulospäin, koska ilmamolekyylit pomppivat jatkuvasti renkaan sisäseinämistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 2,
+      "paragraph_id": "p53",
+      "part": 0,
+      "id": "ch06-224",
+      "text": "Enemmän molekyylejä tai nopeampia molekyylejä tarkoittaa suurempaa painetta.",
+      "text_markdown": "Enemmän molekyylejä tai nopeampia molekyylejä tarkoittaa suurempaa painetta.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Enemmän molekyylejä tai nopeampia molekyylejä tarkoittaa suurempaa painetta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 6,
+      "sentence_index": 3,
+      "paragraph_id": "p53",
+      "part": 0,
+      "id": "ch06-225",
+      "text": "Siksi rengas tuntuu kovemmalta, kun ilma on kuumaa.",
+      "text_markdown": "Siksi rengas tuntuu kovemmalta, kun ilma on kuumaa.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Siksi rengas tuntuu kovemmalta, kun ilma on kuumaa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p54",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch07-226",
+      "text": "Mistä atomit tulevat",
+      "text_markdown": "Mistä atomit tulevat",
+      "title": "Mistä atomit tulevat"
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p55",
+      "part": 0,
+      "id": "ch07-227",
+      "text": "Maailmankaikkeuden vety ja helium syntyivät muutaman ensimmäisen minuutin aikana alkuräjähdyksen jälkeen.",
+      "text_markdown": "Maailmankaikkeuden vety ja helium syntyivät muutaman ensimmäisen minuutin aikana alkuräjähdyksen jälkeen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Maailmankaikkeuden vety ja helium syntyivät muutaman ensimmäisen minuutin aikana alkuräjähdyksen jälkeen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p55",
+      "part": 0,
+      "id": "ch07-228",
+      "text": "Maailmankaikkeus sai alkunsa uskomattoman kuumana, tiheänä pisteenä noin 13,8 miljardia vuotta sitten.",
+      "text_markdown": "Maailmankaikkeus sai alkunsa uskomattoman kuumana, tiheänä pisteenä noin 13,8 miljardia vuotta sitten.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Maailmankaikkeus sai alkunsa uskomattoman kuumana, tiheänä pisteenä noin kolmetoista pilkku kahdeksan miljardia vuotta sitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p55",
+      "part": 0,
+      "id": "ch07-229",
+      "text": "Laajentuessaan ja jäähtyessään siitä muodostui protoneja ja neutroneja.",
+      "text_markdown": "Laajentuessaan ja jäähtyessään siitä muodostui protoneja ja neutroneja.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Laajentuessaan ja jäähtyessään siitä muodostui protoneja ja neutroneja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p55",
+      "part": 0,
+      "id": "ch07-230",
+      "text": "Nuo protonit ja neutronit yhdistyivät yksinkertaisimmiksi ytimiksi.",
+      "text_markdown": "Nuo protonit ja neutronit yhdistyivät yksinkertaisimmiksi ytimiksi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nuo protonit ja neutronit yhdistyivät yksinkertaisimmiksi ytimiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p55",
+      "part": 0,
+      "id": "ch07-231",
+      "text": "Vety ja helium olivat ensimmäiset alkuaineet.",
+      "text_markdown": "Vety ja helium olivat ensimmäiset alkuaineet.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Vety ja helium olivat ensimmäiset alkuaineet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p56",
+      "part": 0,
+      "id": "ch07-232",
+      "text": "Miljoonien vuosien ajan maailmankaikkeus oli vety- ja heliumkaasun pilvi.",
+      "text_markdown": "Miljoonien vuosien ajan maailmankaikkeus oli vety- ja heliumkaasun pilvi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Miljoonien vuosien ajan maailmankaikkeus oli vety- ja heliumkaasun pilvi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p56",
+      "part": 0,
+      "id": "ch07-233",
+      "text": "Sitten painovoima veti kaasun kasaan.",
+      "text_markdown": "Sitten painovoima veti kaasun kasaan.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Sitten painovoima veti kaasun kasaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p56",
+      "part": 0,
+      "id": "ch07-234",
+      "text": "Kasakertymät tihentyivät ja kuumenivat.",
+      "text_markdown": "Kasakertymät tihentyivät ja kuumenivat.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kasakertymät tihentyivät ja kuumenivat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p56",
+      "part": 0,
+      "id": "ch07-235",
+      "text": "Kun kasautuman keskus saavutti noin kymmenen miljoonan asteen lämpötilan, ydinfuusio syttyi.",
+      "text_markdown": "Kun kasautuman keskus saavutti noin kymmenen miljoonan asteen lämpötilan, ydinfuusio syttyi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kun kasautuman keskus saavutti noin kymmenen miljoonan asteen lämpötilan, ydinfuusio syttyi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p56",
+      "part": 0,
+      "id": "ch07-236",
+      "text": "Tähti oli syntynyt.",
+      "text_markdown": "Tähti oli syntynyt.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Tähti oli syntynyt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p57",
+      "part": 0,
+      "id": "ch07-237",
+      "text": "Tähdet ovat atomitehtaita.",
+      "text_markdown": "Tähdet ovat atomitehtaita.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Tähdet ovat atomitehtaita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p57",
+      "part": 0,
+      "id": "ch07-238",
+      "text": "Tähden sisällä vetyatomit fuusioituvat yhteen muodostaen heliumia.",
+      "text_markdown": "Tähden sisällä vetyatomit fuusioituvat yhteen muodostaen heliumia.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Tähden sisällä vetyatomit fuusioituvat yhteen muodostaen heliumia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p57",
+      "part": 0,
+      "id": "ch07-239",
+      "text": "Tämä fuusio vapauttaa valtavasti energiaa.",
+      "text_markdown": "Tämä fuusio vapauttaa valtavasti energiaa.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Tämä fuusio vapauttaa valtavasti energiaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p57",
+      "part": 0,
+      "id": "ch07-240",
+      "text": "Tämä energia saa tähden loistamaan.",
+      "text_markdown": "Tämä energia saa tähden loistamaan.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Tämä energia saa tähden loistamaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p57",
+      "part": 0,
+      "id": "ch07-241",
+      "text": "Aurinkomme fuusioi noin kuusisataa miljoonaa tonnia vetyä heliumiksi joka sekunti.",
+      "text_markdown": "Aurinkomme fuusioi noin kuusisataa miljoonaa tonnia vetyä heliumiksi joka sekunti.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Aurinkomme fuusioi noin kuusisataa miljoonaa tonnia vetyä heliumiksi joka sekunti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p58",
+      "part": 0,
+      "id": "ch07-242",
+      "text": "Suuremmat tähdet fuusioivat raskaampia alkuaineita.",
+      "text_markdown": "Suuremmat tähdet fuusioivat raskaampia alkuaineita.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Suuremmat tähdet fuusioivat raskaampia alkuaineita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p58",
+      "part": 0,
+      "id": "ch07-243",
+      "text": "Kun tähti on polttanut vetynsä loppuun, se alkaa fuusioida heliumia hiileksi.",
+      "text_markdown": "Kun tähti on polttanut vetynsä loppuun, se alkaa fuusioida heliumia hiileksi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Kun tähti on polttanut vetynsä loppuun, se alkaa fuusioida heliumia hiileksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p58",
+      "part": 0,
+      "id": "ch07-244",
+      "text": "Sitten hiiltä hapeksi.",
+      "text_markdown": "Sitten hiiltä hapeksi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Sitten hiiltä hapeksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p58",
+      "part": 0,
+      "id": "ch07-245",
+      "text": "Sitten happea piiksi.",
+      "text_markdown": "Sitten happea piiksi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Sitten happea piiksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p58",
+      "part": 0,
+      "id": "ch07-246",
+      "text": "Sitten piitä raudaksi.",
+      "text_markdown": "Sitten piitä raudaksi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Sitten piitä raudaksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 5,
+      "paragraph_id": "p58",
+      "part": 0,
+      "id": "ch07-247",
+      "text": "Jokainen vaihe tuottaa raskaamman alkuaineen.",
+      "text_markdown": "Jokainen vaihe tuottaa raskaamman alkuaineen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Jokainen vaihe tuottaa raskaamman alkuaineen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 6,
+      "paragraph_id": "p58",
+      "part": 0,
+      "id": "ch07-248",
+      "text": "Rauta on raskain alkuaine, jonka tähti voi tuottaa tavallisella fuusiolla.",
+      "text_markdown": "Rauta on raskain alkuaine, jonka tähti voi tuottaa tavallisella fuusiolla.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Rauta on raskain alkuaine, jonka tähti voi tuottaa tavallisella fuusiolla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p59",
+      "part": 0,
+      "id": "ch07-249",
+      "text": "Rautaa raskaammat alkuaineet syntyvät, kun massiiviset tähdet räjähtävät.",
+      "text_markdown": "Rautaa raskaammat alkuaineet syntyvät, kun massiiviset tähdet räjähtävät.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Rautaa raskaammat alkuaineet syntyvät, kun massiiviset tähdet räjähtävät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p59",
+      "part": 0,
+      "id": "ch07-250",
+      "text": "Näitä räjähdyksiä kutsutaan supernoviksi.",
+      "text_markdown": "Näitä räjähdyksiä kutsutaan supernoviksi.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Näitä räjähdyksiä kutsutaan supernoviksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p59",
+      "part": 0,
+      "id": "ch07-251",
+      "text": "Supernova vapauttaa muutamassa sekunnissa enemmän energiaa kuin aurinko tuottaa koko elinaikanaan.",
+      "text_markdown": "Supernova vapauttaa muutamassa sekunnissa enemmän energiaa kuin aurinko tuottaa koko elinaikanaan.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Supernova vapauttaa muutamassa sekunnissa enemmän energiaa kuin aurinko tuottaa koko elinaikanaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p59",
+      "part": 0,
+      "id": "ch07-252",
+      "text": "Supernovan äärimmäisissä olosuhteissa syntyy alkuaineita kuten kulta, hopea, platina ja uraani.",
+      "text_markdown": "Supernovan äärimmäisissä olosuhteissa syntyy alkuaineita kuten kulta, hopea, platina ja uraani.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Supernovan äärimmäisissä olosuhteissa syntyy alkuaineita kuten kulta, hopea, platina ja uraani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p60",
+      "part": 0,
+      "id": "ch07-253",
+      "text": "Räjähdys levittää nämä raskaat alkuaineet avaruuteen.",
+      "text_markdown": "Räjähdys levittää nämä raskaat alkuaineet avaruuteen.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Räjähdys levittää nämä raskaat alkuaineet avaruuteen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p60",
+      "part": 0,
+      "id": "ch07-254",
+      "text": "Alkuaineet sekoittuvat vety- ja heliumkaasupilviin.",
+      "text_markdown": "Alkuaineet sekoittuvat vety- ja heliumkaasupilviin.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Alkuaineet sekoittuvat vety- ja heliumkaasupilviin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p60",
+      "part": 0,
+      "id": "ch07-255",
+      "text": "Lopulta painovoima vetää rikastetun kaasun yhteen muodostaen uusia tähtiä ja planeettoja.",
+      "text_markdown": "Lopulta painovoima vetää rikastetun kaasun yhteen muodostaen uusia tähtiä ja planeettoja.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Lopulta painovoima vetää rikastetun kaasun yhteen muodostaen uusia tähtiä ja planeettoja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p60",
+      "part": 0,
+      "id": "ch07-256",
+      "text": "Aurinkokuntamme muodostui yhdestä tällaisesta rikastetusta pilvestä noin 4,6 miljardia vuotta sitten.",
+      "text_markdown": "Aurinkokuntamme muodostui yhdestä tällaisesta rikastetusta pilvestä noin 4,6 miljardia vuotta sitten.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Aurinkokuntamme muodostui yhdestä tällaisesta rikastetusta pilvestä noin neljä pilkku kuusi miljardia vuotta sitten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 0,
+      "paragraph_id": "p61",
+      "part": 0,
+      "id": "ch07-257",
+      "text": "Jokainen vetyä raskaampi atomi kehossasi on syntynyt tähden sisällä.",
+      "text_markdown": "Jokainen vetyä raskaampi atomi kehossasi on syntynyt tähden sisällä.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Jokainen vetyä raskaampi atomi kehossasi on syntynyt tähden sisällä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 1,
+      "paragraph_id": "p61",
+      "part": 0,
+      "id": "ch07-258",
+      "text": "Luittesi kalsium.",
+      "text_markdown": "Luittesi kalsium.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Luittesi kalsium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 2,
+      "paragraph_id": "p61",
+      "part": 0,
+      "id": "ch07-259",
+      "text": "Veresi rauta.",
+      "text_markdown": "Veresi rauta.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Veresi rauta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 3,
+      "paragraph_id": "p61",
+      "part": 0,
+      "id": "ch07-260",
+      "text": "Ihosi hiili.",
+      "text_markdown": "Ihosi hiili.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Ihosi hiili.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 4,
+      "paragraph_id": "p61",
+      "part": 0,
+      "id": "ch07-261",
+      "text": "Sinä olet tehty tähtipölystä.",
+      "text_markdown": "Sinä olet tehty tähtipölystä.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Sinä olet tehty tähtipölystä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 5,
+      "paragraph_id": "p61",
+      "part": 0,
+      "id": "ch07-262",
+      "text": "Se ei ole vertauskuva.",
+      "text_markdown": "Se ei ole vertauskuva.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Se ei ole vertauskuva.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 7,
+      "sentence_index": 6,
+      "paragraph_id": "p61",
+      "part": 0,
+      "id": "ch07-263",
+      "text": "Se on ydinfysiikan tosiasia.",
+      "text_markdown": "Se on ydinfysiikan tosiasia.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Se on ydinfysiikan tosiasia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "heading",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "part": 0,
+      "id": "ch08-264",
+      "text": "Atomit ovat kaikkea",
+      "text_markdown": "Atomit ovat kaikkea",
+      "title": "Atomit ovat kaikkea"
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p63",
+      "part": 0,
+      "id": "ch08-265",
+      "text": "Nyt tiedät perusasiat.",
+      "text_markdown": "Nyt tiedät perusasiat.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Nyt tiedät perusasiat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p63",
+      "part": 0,
+      "id": "ch08-266",
+      "text": "Kaikki on tehty atomeista.",
+      "text_markdown": "Kaikki on tehty atomeista.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kaikki on tehty atomeista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p63",
+      "part": 0,
+      "id": "ch08-267",
+      "text": "Atomit sisältävät protoneja, neutroneja ja elektroneja.",
+      "text_markdown": "Atomit sisältävät protoneja, neutroneja ja elektroneja.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomit sisältävät protoneja, neutroneja ja elektroneja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p63",
+      "part": 0,
+      "id": "ch08-268",
+      "text": "Protonien lukumäärä määrää alkuaineen.",
+      "text_markdown": "Protonien lukumäärä määrää alkuaineen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Protonien lukumäärä määrää alkuaineen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p63",
+      "part": 0,
+      "id": "ch08-269",
+      "text": "Atomit sitoutuvat muodostaen molekyylejä.",
+      "text_markdown": "Atomit sitoutuvat muodostaen molekyylejä.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomit sitoutuvat muodostaen molekyylejä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p63",
+      "part": 0,
+      "id": "ch08-270",
+      "text": "Atomit ovat aina liikkeessä.",
+      "text_markdown": "Atomit ovat aina liikkeessä.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomit ovat aina liikkeessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 6,
+      "paragraph_id": "p63",
+      "part": 0,
+      "id": "ch08-271",
+      "text": "Tähdet loivat atomit, joista maailmamme koostuu.",
+      "text_markdown": "Tähdet loivat atomit, joista maailmamme koostuu.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Tähdet loivat atomit, joista maailmamme koostuu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p64",
+      "part": 0,
+      "id": "ch08-272",
+      "text": "Tämä tieto on kemian, biologian, fysiikan ja lääketieteen perusta.",
+      "text_markdown": "Tämä tieto on kemian, biologian, fysiikan ja lääketieteen perusta.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Tämä tieto on kemian, biologian, fysiikan ja lääketieteen perusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p64",
+      "part": 0,
+      "id": "ch08-273",
+      "text": "Jokainen tieteenala johtaa takaisin atomeihin.",
+      "text_markdown": "Jokainen tieteenala johtaa takaisin atomeihin.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Jokainen tieteenala johtaa takaisin atomeihin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p65",
+      "part": 0,
+      "id": "ch08-274",
+      "text": "Kun lääkäri määrää lääkkeen, se lääke on tietty atomijärjestely, joka on suunniteltu toimimaan kehosi molekyylien kanssa.",
+      "text_markdown": "Kun lääkäri määrää lääkkeen, se lääke on tietty atomijärjestely, joka on suunniteltu toimimaan kehosi molekyylien kanssa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kun lääkäri määrää lääkkeen, se lääke on tietty atomijärjestely, joka on suunniteltu toimimaan kehosi molekyylien kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p65",
+      "part": 0,
+      "id": "ch08-275",
+      "text": "Kun insinööri rakentaa sillan, sillan lujuus riippuu siitä, miten teräksen rautaatomit ovat järjestäytyneet.",
+      "text_markdown": "Kun insinööri rakentaa sillan, sillan lujuus riippuu siitä, miten teräksen rautaatomit ovat järjestäytyneet.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kun insinööri rakentaa sillan, sillan lujuus riippuu siitä, miten teräksen rautaatomit ovat järjestäytyneet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p65",
+      "part": 0,
+      "id": "ch08-276",
+      "text": "Kun maanviljelijä kasvattaa satoa, sato kasvaa, koska ilman hiiliatomit yhdistyvät veden ja auringonvalon kanssa lehtien sisällä.",
+      "text_markdown": "Kun maanviljelijä kasvattaa satoa, sato kasvaa, koska ilman hiiliatomit yhdistyvät veden ja auringonvalon kanssa lehtien sisällä.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kun maanviljelijä kasvattaa satoa, sato kasvaa, koska ilman hiiliatomit yhdistyvät veden ja auringonvalon kanssa lehtien sisällä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p66",
+      "part": 0,
+      "id": "ch08-277",
+      "text": "Ruoanlaitto on kemiaa.",
+      "text_markdown": "Ruoanlaitto on kemiaa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Ruoanlaitto on kemiaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p66",
+      "part": 0,
+      "id": "ch08-278",
+      "text": "Kun leivot leipää, lämpö saa taikinan atomit järjestäytymään uudelleen.",
+      "text_markdown": "Kun leivot leipää, lämpö saa taikinan atomit järjestäytymään uudelleen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Kun leivot leipää, lämpö saa taikinan atomit järjestäytymään uudelleen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p66",
+      "part": 0,
+      "id": "ch08-279",
+      "text": "Proteiinit avautuvat.",
+      "text_markdown": "Proteiinit avautuvat.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Proteiinit avautuvat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p66",
+      "part": 0,
+      "id": "ch08-280",
+      "text": "Sokerit hajoavat ja yhdistyvät uudelleen.",
+      "text_markdown": "Sokerit hajoavat ja yhdistyvät uudelleen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Sokerit hajoavat ja yhdistyvät uudelleen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p66",
+      "part": 0,
+      "id": "ch08-281",
+      "text": "Syntyy uusia molekyylejä, jotka luovat kuoren värin, rakenteen ja maun.",
+      "text_markdown": "Syntyy uusia molekyylejä, jotka luovat kuoren värin, rakenteen ja maun.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Syntyy uusia molekyylejä, jotka luovat kuoren värin, rakenteen ja maun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p66",
+      "part": 0,
+      "id": "ch08-282",
+      "text": "Jokainen resepti on ohje atomien uudelleenjärjestelyyn.",
+      "text_markdown": "Jokainen resepti on ohje atomien uudelleenjärjestelyyn.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Jokainen resepti on ohje atomien uudelleenjärjestelyyn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p67",
+      "part": 0,
+      "id": "ch08-283",
+      "text": "Hengittäminen on kemiaa.",
+      "text_markdown": "Hengittäminen on kemiaa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Hengittäminen on kemiaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p67",
+      "part": 0,
+      "id": "ch08-284",
+      "text": "Hengität sisään happimolekyylejä.",
+      "text_markdown": "Hengität sisään happimolekyylejä.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Hengität sisään happimolekyylejä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p67",
+      "part": 0,
+      "id": "ch08-285",
+      "text": "Veresi kuljettaa nuo molekyylit soluihisi.",
+      "text_markdown": "Veresi kuljettaa nuo molekyylit soluihisi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Veresi kuljettaa nuo molekyylit soluihisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p67",
+      "part": 0,
+      "id": "ch08-286",
+      "text": "Solujesi sisällä happiatomit yhdistyvät ruoan hiiliatomien kanssa.",
+      "text_markdown": "Solujesi sisällä happiatomit yhdistyvät ruoan hiiliatomien kanssa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Solujesi sisällä happiatomit yhdistyvät ruoan hiiliatomien kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p67",
+      "part": 0,
+      "id": "ch08-287",
+      "text": "Reaktio vapauttaa energiaa.",
+      "text_markdown": "Reaktio vapauttaa energiaa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Reaktio vapauttaa energiaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p67",
+      "part": 0,
+      "id": "ch08-288",
+      "text": "Hengität ulos hiilen ja hapen hiilidioksidina.",
+      "text_markdown": "Hengität ulos hiilen ja hapen hiilidioksidina.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Hengität ulos hiilen ja hapen hiilidioksidina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 6,
+      "paragraph_id": "p67",
+      "part": 0,
+      "id": "ch08-289",
+      "text": "Jokainen hengenveto on kemiallinen reaktio.",
+      "text_markdown": "Jokainen hengenveto on kemiallinen reaktio.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Jokainen hengenveto on kemiallinen reaktio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p68",
+      "part": 0,
+      "id": "ch08-290",
+      "text": "Ruostuminen on kemiaa.",
+      "text_markdown": "Ruostuminen on kemiaa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Ruostuminen on kemiaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p68",
+      "part": 0,
+      "id": "ch08-291",
+      "text": "Naulan pinnalla olevat rautaatomit reagoivat ilman happiatomien kanssa.",
+      "text_markdown": "Naulan pinnalla olevat rautaatomit reagoivat ilman happiatomien kanssa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Naulan pinnalla olevat rautaatomit reagoivat ilman happiatomien kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p68",
+      "part": 0,
+      "id": "ch08-292",
+      "text": "Rauta ja happi yhdistyvät muodostaen uuden aineen nimeltä rautaoksidi.",
+      "text_markdown": "Rauta ja happi yhdistyvät muodostaen uuden aineen nimeltä rautaoksidi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Rauta ja happi yhdistyvät muodostaen uuden aineen nimeltä rautaoksidi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p68",
+      "part": 0,
+      "id": "ch08-293",
+      "text": "Rautaoksidi on punaruskea materiaali, jota kutsumme ruosteeksi.",
+      "text_markdown": "Rautaoksidi on punaruskea materiaali, jota kutsumme ruosteeksi.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Rautaoksidi on punaruskea materiaali, jota kutsumme ruosteeksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p68",
+      "part": 0,
+      "id": "ch08-294",
+      "text": "Rautaatomit ovat yhä tallella.",
+      "text_markdown": "Rautaatomit ovat yhä tallella.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Rautaatomit ovat yhä tallella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 5,
+      "paragraph_id": "p68",
+      "part": 0,
+      "id": "ch08-295",
+      "text": "Ne ovat vain sitoutuneet happeen.",
+      "text_markdown": "Ne ovat vain sitoutuneet happeen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Ne ovat vain sitoutuneet happeen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 0,
+      "paragraph_id": "p69",
+      "part": 0,
+      "id": "ch08-296",
+      "text": "Atomit eivät ole abstrakteja.",
+      "text_markdown": "Atomit eivät ole abstrakteja.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomit eivät ole abstrakteja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 1,
+      "paragraph_id": "p69",
+      "part": 0,
+      "id": "ch08-297",
+      "text": "Atomit ovat kaiken koskettavan, maistettavan, nähtävän ja haistettavan fyysinen todellisuus.",
+      "text_markdown": "Atomit ovat kaiken koskettavan, maistettavan, nähtävän ja haistettavan fyysinen todellisuus.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Atomit ovat kaiken koskettavan, maistettavan, nähtävän ja haistettavan fyysinen todellisuus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 2,
+      "paragraph_id": "p69",
+      "part": 0,
+      "id": "ch08-298",
+      "text": "Mitä paremmin ymmärrät atomeja, sitä paremmin ymmärrät maailmaa.",
+      "text_markdown": "Mitä paremmin ymmärrät atomeja, sitä paremmin ymmärrät maailmaa.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Mitä paremmin ymmärrät atomeja, sitä paremmin ymmärrät maailmaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 3,
+      "paragraph_id": "p69",
+      "part": 0,
+      "id": "ch08-299",
+      "text": "Tämä on vasta alkua.",
+      "text_markdown": "Tämä on vasta alkua.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Tämä on vasta alkua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 8,
+      "sentence_index": 4,
+      "paragraph_id": "p69",
+      "part": 0,
+      "id": "ch08-300",
+      "text": "Tutkittavaa on paljon lisää.",
+      "text_markdown": "Tutkittavaa on paljon lisää.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Tutkittavaa on paljon lisää.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

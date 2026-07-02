@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "es",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Una nota para quien lee",
+      "text_markdown": "Una nota para quien lee"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este es un libro pequeño sobre una comida enorme.",
+      "text_markdown": "Este es un libro pequeño sobre una comida enorme.",
+      "tts": {
+        "text": "Este es un libro pequeño sobre una comida enorme.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La comida es la soul food, del sur de Estados Unidos.",
+      "text_markdown": "La comida es la soul food, del sur de Estados Unidos.",
+      "tts": {
+        "text": "La comida es la soul food, del sur de Estados Unidos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La soul food es comida de verdad.",
+      "text_markdown": "La soul food es comida de verdad.",
+      "tts": {
+        "text": "La soul food es comida de verdad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La gente la cocina en casa.",
+      "text_markdown": "La gente la cocina en casa.",
+      "tts": {
+        "text": "La gente la cocina en casa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La gente la come los domingos.",
+      "text_markdown": "La gente la come los domingos.",
+      "tts": {
+        "text": "La gente la come los domingos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La gente también la come un martes.",
+      "text_markdown": "La gente también la come un martes.",
+      "tts": {
+        "text": "La gente también la come un martes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vamos a empezar por el nombre.",
+      "text_markdown": "Vamos a empezar por el nombre.",
+      "tts": {
+        "text": "Vamos a empezar por el nombre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Luego vamos a ver las plantas y los animales.",
+      "text_markdown": "Luego vamos a ver las plantas y los animales.",
+      "tts": {
+        "text": "Luego vamos a ver las plantas y los animales.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Luego vamos a ver las ollas y las sartenes.",
+      "text_markdown": "Luego vamos a ver las ollas y las sartenes.",
+      "tts": {
+        "text": "Luego vamos a ver las ollas y las sartenes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Al final, sabrás qué hay en el plato, y sabrás de dónde viene.",
+      "text_markdown": "Al final, sabrás qué hay en el plato, y sabrás de dónde viene.",
+      "tts": {
+        "text": "Al final, sabrás qué hay en el plato, y sabrás de dónde viene.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Una nota para quien lee",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Me llamo Kym y voy a contarte la historia.",
+      "text_markdown": "Una amiga llamada Kym te va a contar la historia.",
+      "tts": {
+        "text": "Me llamo Kim y voy a contarte la historia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 1 — ¿Qué es la soul food?",
+      "text_markdown": "Capítulo 1 — ¿Qué es la soul food?"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La soul food es la comida de todos los días de las familias negras del sur de Estados Unidos.",
+      "text_markdown": "La soul food es la comida de todos los días de las familias negras del sur de Estados Unidos.",
+      "tts": {
+        "text": "La soul food es la comida de todos los días de las familias negras del sur de Estados Unidos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El nombre \"soul food\" se hizo común en los años sesenta.",
+      "text_markdown": "El nombre \"soul food\" se hizo común en los años sesenta.",
+      "tts": {
+        "text": "El nombre \"soul food\" se hizo común en los años sesenta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La palabra \"soul\" venía de la música y de la iglesia.",
+      "text_markdown": "La palabra \"soul\" venía de la música y de la iglesia.",
+      "tts": {
+        "text": "La palabra \"soul\" venía de la música y de la iglesia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Significaba algo profundo y verdadero.",
+      "text_markdown": "Significaba algo profundo y verdadero.",
+      "tts": {
+        "text": "Significaba algo profundo y verdadero.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Significaba algo negro y orgulloso.",
+      "text_markdown": "Significaba algo negro y orgulloso.",
+      "tts": {
+        "text": "Significaba algo negro y orgulloso.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero la comida en sí es mucho más antigua.",
+      "text_markdown": "Pero la comida en sí es mucho más antigua.",
+      "tts": {
+        "text": "Pero la comida en sí es mucho más antigua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Viene de las cocinas de las plantaciones de los siglos dieciocho y diecinueve.",
+      "text_markdown": "Viene de las cocinas de las plantaciones de los siglos dieciocho y diecinueve.",
+      "tts": {
+        "text": "Viene de las cocinas de las plantaciones de los siglos dieciocho y diecinueve.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Los cocineros africanos esclavizados tomaron las plantas y los animales que tenían, y prepararon la cena.",
+      "text_markdown": "Los cocineros africanos esclavizados tomaron las plantas y los animales que tenían, y prepararon la cena.",
+      "tts": {
+        "text": "Los cocineros africanos esclavizados tomaron las plantas y los animales que tenían, y prepararon la cena.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esos cocineros eran brillantes.",
+      "text_markdown": "Esos cocineros eran brillantes.",
+      "tts": {
+        "text": "Esos cocineros eran brillantes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trabajaban con poco y alimentaban a muchos.",
+      "text_markdown": "Trabajaban con poco y alimentaban a muchos.",
+      "tts": {
+        "text": "Trabajaban con poco y alimentaban a muchos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aprovechaban cada parte del cerdo.",
+      "text_markdown": "Aprovechaban cada parte del cerdo.",
+      "tts": {
+        "text": "Aprovechaban cada parte del cerdo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hacían que las hojas verdes supieran dulces.",
+      "text_markdown": "Hacían que las hojas verdes supieran dulces.",
+      "tts": {
+        "text": "Hacían que las hojas verdes supieran dulces.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Convertían la harina de maíz en pan, en gachas, en un centenar de cosas pequeñas.",
+      "text_markdown": "Convertían la harina de maíz en pan, en gachas, en un centenar de cosas pequeñas.",
+      "tts": {
+        "text": "Convertían la harina de maíz en pan, en gachas, en un centenar de cosas pequeñas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando las familias negras se mudaron al norte en el siglo veinte, se llevaron la comida con ellas.",
+      "text_markdown": "Cuando las familias negras se mudaron al norte en el siglo veinte, se llevaron la comida con ellas.",
+      "tts": {
+        "text": "Cuando las familias negras se mudaron al norte en el siglo veinte, se llevaron la comida con ellas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ahora la soul food está en Chicago, en Nueva York, en Detroit y en cada pueblo del Sur.",
+      "text_markdown": "Ahora la soul food está en Chicago, en Nueva York, en Detroit y en cada pueblo del Sur.",
+      "tts": {
+        "text": "Ahora la soul food está en Shicágo, en Nueva York, en Ditróit y en cada pueblo del Sur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Capítulo 1 — ¿Qué es la soul food?",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pero su centro sigue estando en el Sur.",
+      "text_markdown": "Pero su centro sigue estando en el Sur.",
+      "tts": {
+        "text": "Pero su centro sigue estando en el Sur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 2 — Los ingredientes",
+      "text_markdown": "Capítulo 2 — Los ingredientes"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La soul food tiene dos raíces grandes.",
+      "text_markdown": "La soul food tiene dos raíces grandes.",
+      "tts": {
+        "text": "La soul food tiene dos raíces grandes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Una raíz está en África occidental.",
+      "text_markdown": "Una raíz está en África occidental.",
+      "tts": {
+        "text": "Una raíz está en África occidental.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La otra está en las Américas.",
+      "text_markdown": "La otra está en las Américas.",
+      "tts": {
+        "text": "La otra está en las Américas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De África occidental vino la okra.",
+      "text_markdown": "De África occidental vino la okra.",
+      "tts": {
+        "text": "De África occidental vino la okra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La okra es una vaina verde.",
+      "text_markdown": "La okra es una vaina verde.",
+      "tts": {
+        "text": "La okra es una vaina verde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Crece en una planta alta.",
+      "text_markdown": "Crece en una planta alta.",
+      "tts": {
+        "text": "Crece en una planta alta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cuando se cocina, se pone suave y un poco resbalosa.",
+      "text_markdown": "Cuando se cocina, se pone suave y un poco resbalosa.",
+      "tts": {
+        "text": "Cuando se cocina, se pone suave y un poco resbalosa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Está en el gumbo, y también se fríe con harina de maíz.",
+      "text_markdown": "Está en el gumbo, y también se fríe con harina de maíz.",
+      "tts": {
+        "text": "Está en el gumbo, y también se fríe con harina de maíz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los frijoles de ojo negro también vinieron de África occidental.",
+      "text_markdown": "Los frijoles de ojo negro también vinieron de África occidental.",
+      "tts": {
+        "text": "Los frijoles de ojo negro también vinieron de África occidental.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "También vino la sandía.",
+      "text_markdown": "También vino la sandía.",
+      "tts": {
+        "text": "También vino la sandía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "También vinieron las semillas de sésamo.",
+      "text_markdown": "También vinieron las semillas de sésamo.",
+      "tts": {
+        "text": "También vinieron las semillas de sésamo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Los viejos cocineros del Sur llamaban \"benne\" al sésamo. Ponían benne en galletas y sobre el pan.",
+      "text_markdown": "Los viejos cocineros del Sur llamaban \"benne\" al sésamo. Ponían benne en galletas y sobre el pan.",
+      "tts": {
+        "text": "Los viejos cocineros del Sur llamaban \"béni\" al sésamo. Ponían béni en galletas y sobre el pan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El arroz también cruzó el océano.",
+      "text_markdown": "El arroz también cruzó el océano.",
+      "tts": {
+        "text": "El arroz también cruzó el océano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los agricultores africanos habían cultivado arroz durante mil años.",
+      "text_markdown": "Los agricultores africanos habían cultivado arroz durante mil años.",
+      "tts": {
+        "text": "Los agricultores africanos habían cultivado arroz durante mil años.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En Carolina del Sur, ese conocimiento levantó pueblos enteros.",
+      "text_markdown": "En Carolina del Sur, ese conocimiento levantó pueblos enteros.",
+      "tts": {
+        "text": "En Carolina del Sur, ese conocimiento levantó pueblos enteros.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De las Américas vino el maíz.",
+      "text_markdown": "De las Américas vino el maíz.",
+      "tts": {
+        "text": "De las Américas vino el maíz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El maíz es originario de México.",
+      "text_markdown": "El maíz es originario de México.",
+      "tts": {
+        "text": "El maíz es originario de México.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Viajó hacia el norte, hasta los cherokee y los choctaw, mucho antes de que llegaran los españoles.",
+      "text_markdown": "Viajó hacia el norte, hasta los cherokee y los choctaw, mucho antes de que llegaran los españoles.",
+      "tts": {
+        "text": "Viajó hacia el norte, hasta los cheroquí y los chócto, mucho antes de que llegaran los españoles.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De las Américas también vinieron el camote, el maní y muchas clases de frijoles.",
+      "text_markdown": "De las Américas también vinieron el camote, el maní y muchas clases de frijoles.",
+      "tts": {
+        "text": "De las Américas también vinieron el camote, el maní y muchas clases de frijoles.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Capítulo 2 — Los ingredientes",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La soul food es lo que pasó cuando estas dos despensas se encontraron en una sola cocina.",
+      "text_markdown": "La soul food es lo que pasó cuando estas dos despensas se encontraron en una sola cocina.",
+      "tts": {
+        "text": "La soul food es lo que pasó cuando estas dos despensas se encontraron en una sola cocina.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 3 — Las carnes y el pescado",
+      "text_markdown": "Capítulo 3 — Las carnes y el pescado"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La carne más importante de la soul food es el cerdo.",
+      "text_markdown": "La carne más importante de la soul food es el cerdo.",
+      "tts": {
+        "text": "La carne más importante de la soul food es el cerdo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una granja pequeña podía criar un cerdo.",
+      "text_markdown": "Una granja pequeña podía criar un cerdo.",
+      "tts": {
+        "text": "Una granja pequeña podía criar un cerdo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El cerdo comía sobras.",
+      "text_markdown": "El cerdo comía sobras.",
+      "tts": {
+        "text": "El cerdo comía sobras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En otoño, la familia mataba al cerdo, y usaba cada parte.",
+      "text_markdown": "En otoño, la familia mataba al cerdo, y usaba cada parte.",
+      "tts": {
+        "text": "En otoño, la familia mataba al cerdo, y usaba cada parte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ahumaban el jamón.",
+      "text_markdown": "Ahumaban el jamón.",
+      "tts": {
+        "text": "Ahumaban el jamón.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Curaban el tocino.",
+      "text_markdown": "Curaban el tocino.",
+      "tts": {
+        "text": "Curaban el tocino.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Cocinaban las patas en vinagre.",
+      "text_markdown": "Cocinaban las patas en vinagre.",
+      "tts": {
+        "text": "Cocinaban las patas en vinagre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Guardaban la grasa para los panecillos.",
+      "text_markdown": "Guardaban la grasa para los panecillos.",
+      "tts": {
+        "text": "Guardaban la grasa para los panecillos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La siguiente carne importante es el pollo.",
+      "text_markdown": "La siguiente carne importante es el pollo.",
+      "tts": {
+        "text": "La siguiente carne importante es el pollo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las gallinas vivían en el patio.",
+      "text_markdown": "Las gallinas vivían en el patio.",
+      "tts": {
+        "text": "Las gallinas vivían en el patio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ponían huevos por la mañana y también hacían la comida del domingo.",
+      "text_markdown": "Ponían huevos por la mañana y también hacían la comida del domingo.",
+      "tts": {
+        "text": "Ponían huevos por la mañana y también hacían la comida del domingo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El pollo frito es el plato sureño más famoso.",
+      "text_markdown": "El pollo frito es el plato sureño más famoso.",
+      "tts": {
+        "text": "El pollo frito es el plato sureño más famoso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El pollo se reboza en harina, sal y pimienta.",
+      "text_markdown": "El pollo se reboza en harina, sal y pimienta.",
+      "tts": {
+        "text": "El pollo se reboza en harina, sal y pimienta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Luego se echa en aceite caliente.",
+      "text_markdown": "Luego se echa en aceite caliente.",
+      "tts": {
+        "text": "Luego se echa en aceite caliente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "La piel queda crujiente y dorada.",
+      "text_markdown": "La piel queda crujiente y dorada.",
+      "tts": {
+        "text": "La piel queda crujiente y dorada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El bagre vive en los ríos y los lagos.",
+      "text_markdown": "El bagre vive en los ríos y los lagos.",
+      "tts": {
+        "text": "El bagre vive en los ríos y los lagos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Los cocineros del Sur rebozan el bagre con harina de maíz y lo fríen.",
+      "text_markdown": "Los cocineros del Sur rebozan el bagre con harina de maíz y lo fríen.",
+      "tts": {
+        "text": "Los cocineros del Sur rebozan el bagre con harina de maíz y lo fríen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lo comen con hush puppies, que son bolitas pequeñas de harina de maíz frita.",
+      "text_markdown": "Lo comen con hush puppies, que son bolitas pequeñas de harina de maíz frita.",
+      "tts": {
+        "text": "Lo comen con jash pápis, que son bolitas pequeñas de harina de maíz frita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Capítulo 3 — Las carnes y el pescado",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El nombre da risa, pero la comida va en serio.",
+      "text_markdown": "El nombre da risa, pero la comida va en serio.",
+      "tts": {
+        "text": "El nombre da risa, pero la comida va en serio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 4 — Las formas de cocinar",
+      "text_markdown": "Capítulo 4 — Las formas de cocinar"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tres formas de cocinar sostienen gran parte de la soul food: freír, guisar a fuego lento y ahumar.",
+      "text_markdown": "Tres formas de cocinar sostienen gran parte de la soul food: freír, guisar a fuego lento y ahumar.",
+      "tts": {
+        "text": "Tres formas de cocinar sostienen gran parte de la soul food: freír, guisar a fuego lento y ahumar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para freír se usa una sartén pesada de hierro fundido.",
+      "text_markdown": "Para freír se usa una sartén pesada de hierro fundido.",
+      "tts": {
+        "text": "Para freír se usa una sartén pesada de hierro fundido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El hierro fundido guarda el calor durante mucho tiempo.",
+      "text_markdown": "El hierro fundido guarda el calor durante mucho tiempo.",
+      "tts": {
+        "text": "El hierro fundido guarda el calor durante mucho tiempo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Una buena sartén es más vieja que quien cocina.",
+      "text_markdown": "Una buena sartén es más vieja que quien cocina.",
+      "tts": {
+        "text": "Una buena sartén es más vieja que quien cocina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pasa de madre a hija.",
+      "text_markdown": "Pasa de madre a hija.",
+      "tts": {
+        "text": "Pasa de madre a hija.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El guiso lento se hace en una olla grande, en la parte de atrás de la estufa.",
+      "text_markdown": "El guiso lento se hace en una olla grande, en la parte de atrás de la estufa.",
+      "tts": {
+        "text": "El guiso lento se hace en una olla grande, en la parte de atrás de la estufa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las hojas verdes pasan dos o tres horas en la olla.",
+      "text_markdown": "Las hojas verdes pasan dos o tres horas en la olla.",
+      "tts": {
+        "text": "Las hojas verdes pasan dos o tres horas en la olla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se añade un trozo de cerdo ahumado para dar sabor.",
+      "text_markdown": "Se añade un trozo de cerdo ahumado para dar sabor.",
+      "tts": {
+        "text": "Se añade un trozo de cerdo ahumado para dar sabor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El agua se vuelve un caldo oscuro y sabroso.",
+      "text_markdown": "El agua se vuelve un caldo oscuro y sabroso.",
+      "tts": {
+        "text": "El agua se vuelve un caldo oscuro y sabroso.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "A este caldo le dicen \"pot likker\", y lo echan sobre el pan de maíz.",
+      "text_markdown": "A este caldo le dicen \"pot likker\", y lo echan sobre el pan de maíz.",
+      "tts": {
+        "text": "A este caldo le dicen \"pat líker\", y lo echan sobre el pan de maíz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El ahumado se hace afuera, en un ahumadero o en un barril.",
+      "text_markdown": "El ahumado se hace afuera, en un ahumadero o en un barril.",
+      "tts": {
+        "text": "El ahumado se hace afuera, en un ahumadero o en un barril.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La leña arde despacio debajo de la carne.",
+      "text_markdown": "La leña arde despacio debajo de la carne.",
+      "tts": {
+        "text": "La leña arde despacio debajo de la carne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La favorita es la madera de nogal americano.",
+      "text_markdown": "La favorita es la madera de nogal americano.",
+      "tts": {
+        "text": "La favorita es la madera de nogal americano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "El humo vuelve la carne marrón y le da un sabor profundo.",
+      "text_markdown": "El humo vuelve la carne marrón y le da un sabor profundo.",
+      "tts": {
+        "text": "El humo vuelve la carne marrón y le da un sabor profundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "La paleta de cerdo se ahúma durante muchas horas, a veces durante un día entero.",
+      "text_markdown": "La paleta de cerdo se ahúma durante muchas horas, a veces durante un día entero.",
+      "tts": {
+        "text": "La paleta de cerdo se ahúma durante muchas horas, a veces durante un día entero.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Capítulo 4 — Las formas de cocinar",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una buena cocina del Sur tiene fuego, tiempo y cuidado.",
+      "text_markdown": "Una buena cocina del Sur tiene fuego, tiempo y cuidado.",
+      "tts": {
+        "text": "Una buena cocina del Sur tiene fuego, tiempo y cuidado.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 5 — El barbecue regional",
+      "text_markdown": "Capítulo 5 — El barbecue regional"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el Sur, \"barbecue\" significa carne cocida despacio sobre humo de leña.",
+      "text_markdown": "En el Sur, \"barbecue\" significa carne cocida despacio sobre humo de leña.",
+      "tts": {
+        "text": "En el Sur, \"barbecue\" significa carne cocida despacio sobre humo de leña.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cada región tiene su propia manera.",
+      "text_markdown": "Cada región tiene su propia manera.",
+      "tts": {
+        "text": "Cada región tiene su propia manera.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En las Carolinas, el barbecue es cerdo.",
+      "text_markdown": "En las Carolinas, el barbecue es cerdo.",
+      "tts": {
+        "text": "En las Carolinas, el barbecue es cerdo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En la parte oriental de Carolina del Norte, la salsa se hace con vinagre y pimienta.",
+      "text_markdown": "En la parte oriental de Carolina del Norte, la salsa se hace con vinagre y pimienta.",
+      "tts": {
+        "text": "En la parte oriental de Carolina del Norte, la salsa se hace con vinagre y pimienta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es ligera y picante.",
+      "text_markdown": "Es ligera y picante.",
+      "tts": {
+        "text": "Es ligera y picante.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En Carolina del Sur, la salsa es amarilla y se hace con mostaza.",
+      "text_markdown": "En Carolina del Sur, la salsa es amarilla y se hace con mostaza.",
+      "tts": {
+        "text": "En Carolina del Sur, la salsa es amarilla y se hace con mostaza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es un poco dulce.",
+      "text_markdown": "Es un poco dulce.",
+      "tts": {
+        "text": "Es un poco dulce.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Memphis, en el estado de Tennessee, se comen costillas de cerdo.",
+      "text_markdown": "En Memphis, en el estado de Tennessee, se comen costillas de cerdo.",
+      "tts": {
+        "text": "En Mémfis, en el estado de Ténesi, se comen costillas de cerdo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A las costillas se les frota una mezcla seca de sal, pimienta y muchas especias.",
+      "text_markdown": "A las costillas se les frota una mezcla seca de sal, pimienta y muchas especias.",
+      "tts": {
+        "text": "A las costillas se les frota una mezcla seca de sal, pimienta y muchas especias.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "La carne es la estrella, y la salsa va en segundo plano.",
+      "text_markdown": "La carne es la estrella, y la salsa va en segundo plano.",
+      "tts": {
+        "text": "La carne es la estrella, y la salsa va en segundo plano.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Texas, el barbecue es res.",
+      "text_markdown": "En Texas, el barbecue es res.",
+      "tts": {
+        "text": "En Téxas, el barbecue es res.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ese corte se llama brisket.",
+      "text_markdown": "Ese corte se llama brisket.",
+      "tts": {
+        "text": "Ese corte se llama brísquet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se ahúma entre doce y catorce horas con madera de roble.",
+      "text_markdown": "Se ahúma entre doce y catorce horas con madera de roble.",
+      "tts": {
+        "text": "Se ahúma entre doce y catorce horas con madera de roble.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Cuando sale bien, puedes deshacerlo con los dedos.",
+      "text_markdown": "Cuando sale bien, puedes deshacerlo con los dedos.",
+      "tts": {
+        "text": "Cuando sale bien, puedes deshacerlo con los dedos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En Kansas City, el barbecue son muchas carnes: cerdo, res, pollo, hasta salchicha.",
+      "text_markdown": "En Kansas City, el barbecue son muchas carnes: cerdo, res, pollo, hasta salchicha.",
+      "tts": {
+        "text": "En Kánsas Síti, el barbecue son muchas carnes: cerdo, res, pollo, hasta salchicha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La salsa es espesa, dulce y roja, hecha con tomate y melaza.",
+      "text_markdown": "La salsa es espesa, dulce y roja, hecha con tomate y melaza.",
+      "tts": {
+        "text": "La salsa es espesa, dulce y roja, hecha con tomate y melaza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Capítulo 5 — El barbecue regional",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El mapa del barbecue del Sur es un mapa de regiones y ríos.",
+      "text_markdown": "El mapa del barbecue del Sur es un mapa de regiones y ríos.",
+      "tts": {
+        "text": "El mapa del barbecue del Sur es un mapa de regiones y ríos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 6 — El plato clásico",
+      "text_markdown": "Capítulo 6 — El plato clásico"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un plato de comida del domingo viene bien lleno.",
+      "text_markdown": "Un plato de comida del domingo viene bien lleno.",
+      "tts": {
+        "text": "Un plato de comida del domingo viene bien lleno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el centro hay pollo frito.",
+      "text_markdown": "En el centro hay pollo frito.",
+      "tts": {
+        "text": "En el centro hay pollo frito.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Junto al pollo hay una porción de puré de papas con salsa oscura.",
+      "text_markdown": "Junto al pollo hay una porción de puré de papas con salsa oscura.",
+      "tts": {
+        "text": "Junto al pollo hay una porción de puré de papas con salsa oscura.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A un lado hay un montón de berzas, cocidas despacio con cerdo ahumado.",
+      "text_markdown": "A un lado hay un montón de berzas, cocidas despacio con cerdo ahumado.",
+      "tts": {
+        "text": "A un lado hay un montón de berzas, cocidas despacio con cerdo ahumado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las hojas son oscuras y suaves.",
+      "text_markdown": "Las hojas son oscuras y suaves.",
+      "tts": {
+        "text": "Las hojas son oscuras y suaves.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al otro lado hay macarrones con queso, horneados hasta que la parte de arriba queda dorada y crujiente.",
+      "text_markdown": "Al otro lado hay macarrones con queso, horneados hasta que la parte de arriba queda dorada y crujiente.",
+      "tts": {
+        "text": "Al otro lado hay macarrones con queso, horneados hasta que la parte de arriba queda dorada y crujiente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muchos cocineros ponen una capa de queso encima.",
+      "text_markdown": "Muchos cocineros ponen una capa de queso encima.",
+      "tts": {
+        "text": "Muchos cocineros ponen una capa de queso encima.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay pan de maíz en la mesa.",
+      "text_markdown": "Hay pan de maíz en la mesa.",
+      "tts": {
+        "text": "Hay pan de maíz en la mesa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El pan de maíz se hace con harina de maíz amarilla y se hornea en una sartén de hierro caliente.",
+      "text_markdown": "El pan de maíz se hace con harina de maíz amarilla y se hornea en una sartén de hierro caliente.",
+      "tts": {
+        "text": "El pan de maíz se hace con harina de maíz amarilla y se hornea en una sartén de hierro caliente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es denso, un poco dulce y perfecto con mantequilla.",
+      "text_markdown": "Es denso, un poco dulce y perfecto con mantequilla.",
+      "tts": {
+        "text": "Es denso, un poco dulce y perfecto con mantequilla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para beber, hay té dulce.",
+      "text_markdown": "Para beber, hay té dulce.",
+      "tts": {
+        "text": "Para beber, hay té dulce.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El té dulce es té negro, bien cargado, mezclado con azúcar mientras está caliente.",
+      "text_markdown": "El té dulce es té negro, bien cargado, mezclado con azúcar mientras está caliente.",
+      "tts": {
+        "text": "El té dulce es té negro, bien cargado, mezclado con azúcar mientras está caliente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se sirve frío con hielo.",
+      "text_markdown": "Se sirve frío con hielo.",
+      "tts": {
+        "text": "Se sirve frío con hielo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Después de la comida llega el pay.",
+      "text_markdown": "Después de la comida llega el pay.",
+      "tts": {
+        "text": "Después de la comida llega el pay.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "El pay de camote es el pay más sureño.",
+      "text_markdown": "El pay de camote es el pay más sureño.",
+      "tts": {
+        "text": "El pay de camote es el pay más sureño.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es marrón, suave y tibio, con canela y nuez moscada.",
+      "text_markdown": "Es marrón, suave y tibio, con canela y nuez moscada.",
+      "tts": {
+        "text": "Es marrón, suave y tibio, con canela y nuez moscada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Capítulo 6 — El plato clásico",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este es el plato clásico.",
+      "text_markdown": "Este es el plato clásico.",
+      "tts": {
+        "text": "Este es el plato clásico.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 7 — La mesa",
+      "text_markdown": "Capítulo 7 — La mesa"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una comida sureña se hace en la mesa, con todos juntos.",
+      "text_markdown": "Una comida sureña se hace en la mesa, con todos juntos.",
+      "tts": {
+        "text": "Una comida sureña se hace en la mesa, con todos juntos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La comida se lleva a la mesa en tazones grandes y en platos grandes.",
+      "text_markdown": "La comida se lleva a la mesa en tazones grandes y en platos grandes.",
+      "tts": {
+        "text": "La comida se lleva a la mesa en tazones grandes y en platos grandes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A esto le dicen \"family-style\". Cada persona pasa el tazón a la persona de al lado.",
+      "text_markdown": "A esto le dicen \"family-style\". Cada persona pasa el tazón a la persona de al lado.",
+      "tts": {
+        "text": "A esto le dicen \"fámili stail\". Cada persona pasa el tazón a la persona de al lado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cada quien toma lo que quiere.",
+      "text_markdown": "Cada quien toma lo que quiere.",
+      "tts": {
+        "text": "Cada quien toma lo que quiere.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los tenedores y los cuchillos son sencillos.",
+      "text_markdown": "Los tenedores y los cuchillos son sencillos.",
+      "tts": {
+        "text": "Los tenedores y los cuchillos son sencillos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No hay un orden especial.",
+      "text_markdown": "No hay un orden especial.",
+      "tts": {
+        "text": "No hay un orden especial.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Comes el pollo con un tenedor, o lo agarras con las manos.",
+      "text_markdown": "Comes el pollo con un tenedor, o lo agarras con las manos.",
+      "tts": {
+        "text": "Comes el pollo con un tenedor, o lo agarras con las manos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Las dos cosas están bien.",
+      "text_markdown": "Las dos cosas están bien.",
+      "tts": {
+        "text": "Las dos cosas están bien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El pan de maíz se parte con la mano, nunca se corta con cuchillo.",
+      "text_markdown": "El pan de maíz se parte con la mano, nunca se corta con cuchillo.",
+      "tts": {
+        "text": "El pan de maíz se parte con la mano, nunca se corta con cuchillo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Antes de comer, alguien suele decir una oración corta.",
+      "text_markdown": "Antes de comer, alguien suele decir una oración corta.",
+      "tts": {
+        "text": "Antes de comer, alguien suele decir una oración corta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Le dan gracias a Dios por la comida y por quienes la cocinaron.",
+      "text_markdown": "Le dan gracias a Dios por la comida y por quienes la cocinaron.",
+      "tts": {
+        "text": "Le dan gracias a Dios por la comida y por quienes la cocinaron.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si eres invitado, te van a decir que te sirvas más, y más, y más.",
+      "text_markdown": "Si eres invitado, te van a decir que te sirvas más, y más, y más.",
+      "tts": {
+        "text": "Si eres invitado, te van a decir que te sirvas más, y más, y más.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Conviene decir que sí por lo menos dos veces.",
+      "text_markdown": "Conviene decir que sí por lo menos dos veces.",
+      "tts": {
+        "text": "Conviene decir que sí por lo menos dos veces.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Irse con hambre no está permitido.",
+      "text_markdown": "Irse con hambre no está permitido.",
+      "tts": {
+        "text": "Irse con hambre no está permitido.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al final de la comida, nadie tiene prisa por levantarse.",
+      "text_markdown": "Al final de la comida, nadie tiene prisa por levantarse.",
+      "tts": {
+        "text": "Al final de la comida, nadie tiene prisa por levantarse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Capítulo 7 — La mesa",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "La charla es la mitad de la comida.",
+      "text_markdown": "La charla es la mitad de la comida.",
+      "tts": {
+        "text": "La charla es la mitad de la comida.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Sobre este libro",
+      "text_markdown": "Sobre este libro"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este es el primer libro de la serie Comida del Mundo.",
+      "text_markdown": "Este es el primer libro de la serie Comida del Mundo.",
+      "tts": {
+        "text": "Este es el primer libro de la serie Comida del Mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Te lo leo en voz alta yo, tu amiga Kym.",
+      "text_markdown": "Kym lo lee en voz alta.",
+      "tts": {
+        "text": "Te lo leo en voz alta yo, tu amiga Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cada frase es corta y clara para que puedas seguir la lectura en cualquier idioma.",
+      "text_markdown": "Cada frase es corta y clara para que puedas seguir la lectura en cualquier idioma.",
+      "tts": {
+        "text": "Cada frase es corta y clara para que puedas seguir la lectura en cualquier idioma.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si quieres oír cómo suena una frase en otro idioma, escucha este mismo libro en ese idioma.",
+      "text_markdown": "Si quieres oír cómo suena una frase en otro idioma, escucha este mismo libro en ese idioma.",
+      "tts": {
+        "text": "Si quieres oír cómo suena una frase en otro idioma, escucha este mismo libro en ese idioma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Las palabras de la página van a coincidir con lo que oyes.",
+      "text_markdown": "Las palabras de la página van a coincidir con lo que oyes.",
+      "tts": {
+        "text": "Las palabras de la página van a coincidir con lo que oyes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Así es como aprendes.",
+      "text_markdown": "Así es como aprendes.",
+      "tts": {
+        "text": "Así es como aprendes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Sobre este libro",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ahora ve a buscar buena comida y a alguien con quien compartirla.",
+      "text_markdown": "Ahora ve a buscar buena comida y a alguien con quien compartirla.",
+      "tts": {
+        "text": "Ahora ve a buscar buena comida y a alguien con quien compartirla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

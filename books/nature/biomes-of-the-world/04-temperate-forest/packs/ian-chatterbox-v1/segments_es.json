@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "El bosque templado",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El bosque templado",
+      "text_markdown": "El bosque templado"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dónde crecen los bosques templados",
+      "text_markdown": "Dónde crecen los bosques templados"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bienvenido al bosque templado.",
+      "text_markdown": "Bienvenido al bosque templado.",
+      "tts": {
+        "text": "Bienvenido al bosque templado.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este es uno de los grandes biomas del mundo.",
+      "text_markdown": "Este es uno de los grandes biomas del mundo.",
+      "tts": {
+        "text": "Este es uno de los grandes biomas del mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bioma es una parte de la Tierra con su propio clima, sus propias plantas y sus propios animales.",
+      "text_markdown": "Un bioma es una parte de la Tierra con su propio clima, sus propias plantas y sus propios animales.",
+      "tts": {
+        "text": "Un bioma es una parte de la Tierra con su propio clima, sus propias plantas y sus propios animales.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El bosque templado es un bosque de árboles anchos y llenos de hojas.",
+      "text_markdown": "El bosque templado es un bosque de árboles anchos y llenos de hojas.",
+      "tts": {
+        "text": "El bosque templado es un bosque de árboles anchos y llenos de hojas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mayoría de los árboles aquí pierden sus hojas una vez al año y dejan crecer otras nuevas en la primavera.",
+      "text_markdown": "La mayoría de los árboles aquí pierden sus hojas una vez al año y dejan crecer otras nuevas en la primavera.",
+      "tts": {
+        "text": "La mayoría de los árboles aquí pierden sus hojas una vez al año y dejan crecer otras nuevas en la primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los árboles que pierden sus hojas así se llaman árboles caducifolios.",
+      "text_markdown": "Los árboles que pierden sus hojas así se llaman árboles caducifolios.",
+      "tts": {
+        "text": "Los árboles que pierden sus hojas así se llaman árboles caducifolios.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los bosques templados crecen en las zonas medias del mundo, entre el norte frío y los trópicos cálidos.",
+      "text_markdown": "Los bosques templados crecen en las zonas medias del mundo, entre el norte frío y los trópicos cálidos.",
+      "tts": {
+        "text": "Los bosques templados crecen en las zonas medias del mundo, entre el norte frío y los trópicos cálidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay grandes bosques templados en el este de América del Norte.",
+      "text_markdown": "Hay grandes bosques templados en el este de América del Norte.",
+      "tts": {
+        "text": "Hay grandes bosques templados en el este de América del Norte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay bosques templados en gran parte de Europa.",
+      "text_markdown": "Hay bosques templados en gran parte de Europa.",
+      "tts": {
+        "text": "Hay bosques templados en gran parte de Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay bosques templados en el este de Asia, en China, Corea y Japón.",
+      "text_markdown": "Hay bosques templados en el este de Asia, en China, Corea y Japón.",
+      "tts": {
+        "text": "Hay bosques templados en el este de Asia, en China, Corea y Japón.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay zonas más pequeñas en el sur de América del Sur, en el sureste de Australia y en el sur de Nueva Zelanda.",
+      "text_markdown": "Hay zonas más pequeñas en el sur de América del Sur, en el sureste de Australia y en el sur de Nueva Zelanda.",
+      "tts": {
+        "text": "Hay zonas más pequeñas en el sur de América del Sur, en el sureste de Australia y en el sur de Nueva Zelanda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada uno de estos bosques creció por su cuenta, muy lejos de los otros.",
+      "text_markdown": "Cada uno de estos bosques creció por su cuenta, muy lejos de los otros.",
+      "tts": {
+        "text": "Cada uno de estos bosques creció por su cuenta, muy lejos de los otros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Por eso, los tipos de árboles y animales son distintos en cada parte del mundo.",
+      "text_markdown": "Por eso, los tipos de árboles y animales son distintos en cada parte del mundo.",
+      "tts": {
+        "text": "Por eso, los tipos de árboles y animales son distintos en cada parte del mundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero todos comparten el mismo patrón.",
+      "text_markdown": "Pero todos comparten el mismo patrón.",
+      "tts": {
+        "text": "Pero todos comparten el mismo patrón.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una bóveda de árboles llenos de hojas, un suelo blando de hojas caídas y cuatro estaciones muy distintas.",
+      "text_markdown": "Una bóveda de árboles llenos de hojas, un suelo blando de hojas caídas y cuatro estaciones muy distintas.",
+      "tts": {
+        "text": "Una bóveda de árboles llenos de hojas, un suelo blando de hojas caídas y cuatro estaciones muy distintas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando entras en un bosque templado, el aire se siente fresco y suave.",
+      "text_markdown": "Cuando entras en un bosque templado, el aire se siente fresco y suave.",
+      "tts": {
+        "text": "Cuando entras en un bosque templado, el aire se siente fresco y suave.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano, la luz del sol cae entre las hojas en suaves manchas verdes.",
+      "text_markdown": "En el verano, la luz del sol cae entre las hojas en suaves manchas verdes.",
+      "tts": {
+        "text": "En el verano, la luz del sol cae entre las hojas en suaves manchas verdes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, las hojas se vuelven amarillas, naranjas y rojas.",
+      "text_markdown": "En el otoño, las hojas se vuelven amarillas, naranjas y rojas.",
+      "tts": {
+        "text": "En el otoño, las hojas se vuelven amarillas, naranjas y rojas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, los árboles se ven desnudos contra el cielo.",
+      "text_markdown": "En el invierno, los árboles se ven desnudos contra el cielo.",
+      "tts": {
+        "text": "En el invierno, los árboles se ven desnudos contra el cielo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En la primavera, aparecen pequeños brotes verdes y todo el bosque despierta otra vez.",
+      "text_markdown": "En la primavera, aparecen pequeños brotes verdes y todo el bosque despierta otra vez.",
+      "tts": {
+        "text": "En la primavera, aparecen pequeños brotes verdes y todo el bosque despierta otra vez.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ese es el bosque templado.",
+      "text_markdown": "Ese es el bosque templado.",
+      "tts": {
+        "text": "Ese es el bosque templado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Dónde crecen los bosques templados",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mundo verde que cambia de cara cuatro veces al año.",
+      "text_markdown": "Un mundo verde que cambia de cara cuatro veces al año.",
+      "tts": {
+        "text": "Un mundo verde que cambia de cara cuatro veces al año.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El clima",
+      "text_markdown": "El clima"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El clima en el bosque templado cambia mucho a lo largo del año.",
+      "text_markdown": "El clima en el bosque templado cambia mucho a lo largo del año.",
+      "tts": {
+        "text": "El clima en el bosque templado cambia mucho a lo largo del año.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay cuatro estaciones, y cada una es muy distinta.",
+      "text_markdown": "Hay cuatro estaciones, y cada una es muy distinta.",
+      "tts": {
+        "text": "Hay cuatro estaciones, y cada una es muy distinta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano, los días son largos y cálidos.",
+      "text_markdown": "En el verano, los días son largos y cálidos.",
+      "tts": {
+        "text": "En el verano, los días son largos y cálidos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Llueve seguido, y a veces una tormenta fuerte llega sobre los árboles.",
+      "text_markdown": "Llueve seguido, y a veces una tormenta fuerte llega sobre los árboles.",
+      "tts": {
+        "text": "Llueve seguido, y a veces una tormenta fuerte llega sobre los árboles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El bosque se llena de hojas verdes y de los cantos de los pájaros.",
+      "text_markdown": "El bosque se llena de hojas verdes y de los cantos de los pájaros.",
+      "tts": {
+        "text": "El bosque se llena de hojas verdes y de los cantos de los pájaros.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, los días se hacen más cortos y el aire se vuelve fresco.",
+      "text_markdown": "En el otoño, los días se hacen más cortos y el aire se vuelve fresco.",
+      "tts": {
+        "text": "En el otoño, los días se hacen más cortos y el aire se vuelve fresco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las hojas de los árboles cambian de color y caen al suelo.",
+      "text_markdown": "Las hojas de los árboles cambian de color y caen al suelo.",
+      "tts": {
+        "text": "Las hojas de los árboles cambian de color y caen al suelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Caminar por un bosque en otoño es caminar sobre una alfombra blanda y brillante de hojas.",
+      "text_markdown": "Caminar por un bosque en otoño es caminar sobre una alfombra blanda y brillante de hojas.",
+      "tts": {
+        "text": "Caminar por un bosque en otoño es caminar sobre una alfombra blanda y brillante de hojas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, los días son cortos y las noches son largas y frías.",
+      "text_markdown": "En el invierno, los días son cortos y las noches son largas y frías.",
+      "tts": {
+        "text": "En el invierno, los días son cortos y las noches son largas y frías.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En muchos lugares, la nieve cubre el bosque durante semanas enteras.",
+      "text_markdown": "En muchos lugares, la nieve cubre el bosque durante semanas enteras.",
+      "tts": {
+        "text": "En muchos lugares, la nieve cubre el bosque durante semanas enteras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las ramas desnudas de los árboles permanecen quietas contra un cielo gris.",
+      "text_markdown": "Las ramas desnudas de los árboles permanecen quietas contra un cielo gris.",
+      "tts": {
+        "text": "Las ramas desnudas de los árboles permanecen quietas contra un cielo gris.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos animales duermen durante el frío o se esconden en sus madrigueras.",
+      "text_markdown": "Muchos animales duermen durante el frío o se esconden en sus madrigueras.",
+      "tts": {
+        "text": "Muchos animales duermen durante el frío o se esconden en sus madrigueras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entonces llega la primavera.",
+      "text_markdown": "Entonces llega la primavera.",
+      "tts": {
+        "text": "Entonces llega la primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La nieve se derrite, las lluvias empiezan de nuevo y la tierra se calienta.",
+      "text_markdown": "La nieve se derrite, las lluvias empiezan de nuevo y la tierra se calienta.",
+      "tts": {
+        "text": "La nieve se derrite, las lluvias empiezan de nuevo y la tierra se calienta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los brotes verdes se abren en las ramas, las flores brotan del suelo y el bosque se llena de sonido y color una vez más.",
+      "text_markdown": "Los brotes verdes se abren en las ramas, las flores brotan del suelo y el bosque se llena de sonido y color una vez más.",
+      "tts": {
+        "text": "Los brotes verdes se abren en las ramas, las flores brotan del suelo y el bosque se llena de sonido y color una vez más.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "El clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El bosque templado sabe esperar a través del frío, y sabe celebrar cuando vuelve el calor.",
+      "text_markdown": "El bosque templado sabe esperar a través del frío, y sabe celebrar cuando vuelve el calor.",
+      "tts": {
+        "text": "El bosque templado sabe esperar a través del frío, y sabe celebrar cuando vuelve el calor.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La tierra y el agua",
+      "text_markdown": "La tierra y el agua"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La tierra bajo un bosque templado es rica.",
+      "text_markdown": "La tierra bajo un bosque templado es rica.",
+      "tts": {
+        "text": "La tierra bajo un bosque templado es rica.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante miles de años, las hojas han caído de los árboles y se han convertido poco a poco en un suelo oscuro y blando.",
+      "text_markdown": "Durante miles de años, las hojas han caído de los árboles y se han convertido poco a poco en un suelo oscuro y blando.",
+      "tts": {
+        "text": "Durante miles de años, las hojas han caído de los árboles y se han convertido poco a poco en un suelo oscuro y blando.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este tipo de suelo retiene bien el agua y da a los árboles mucho alimento.",
+      "text_markdown": "Este tipo de suelo retiene bien el agua y da a los árboles mucho alimento.",
+      "tts": {
+        "text": "Este tipo de suelo retiene bien el agua y da a los árboles mucho alimento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El suelo del bosque está cubierto de hojas viejas, ramitas rotas y manchas de musgo verde.",
+      "text_markdown": "El suelo del bosque está cubierto de hojas viejas, ramitas rotas y manchas de musgo verde.",
+      "tts": {
+        "text": "El suelo del bosque está cubierto de hojas viejas, ramitas rotas y manchas de musgo verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando apartas las hojas, encuentras tierra oscura llena de pequeños seres vivos.",
+      "text_markdown": "Cuando apartas las hojas, encuentras tierra oscura llena de pequeños seres vivos.",
+      "tts": {
+        "text": "Cuando apartas las hojas, encuentras tierra oscura llena de pequeños seres vivos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las lombrices y los insectos se mueven por ella.",
+      "text_markdown": "Las lombrices y los insectos se mueven por ella.",
+      "tts": {
+        "text": "Las lombrices y los insectos se mueven por ella.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los hongos brotan desde abajo después de la lluvia.",
+      "text_markdown": "Los hongos brotan desde abajo después de la lluvia.",
+      "tts": {
+        "text": "Los hongos brotan desde abajo después de la lluvia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los arroyos serpentean por todo bosque templado.",
+      "text_markdown": "Los arroyos serpentean por todo bosque templado.",
+      "tts": {
+        "text": "Los arroyos serpentean por todo bosque templado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Corren fríos y claros en la primavera, llenos de nieve derretida.",
+      "text_markdown": "Corren fríos y claros en la primavera, llenos de nieve derretida.",
+      "tts": {
+        "text": "Corren fríos y claros en la primavera, llenos de nieve derretida.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano corren más lentos, con piedras que asoman en el agua poco profunda.",
+      "text_markdown": "En el verano corren más lentos, con piedras que asoman en el agua poco profunda.",
+      "tts": {
+        "text": "En el verano corren más lentos, con piedras que asoman en el agua poco profunda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, las hojas doradas flotan sobre ellos como pequeños botes.",
+      "text_markdown": "En el otoño, las hojas doradas flotan sobre ellos como pequeños botes.",
+      "tts": {
+        "text": "En el otoño, las hojas doradas flotan sobre ellos como pequeños botes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, los arroyos más pequeños se congelan y el agua se esconde bajo un techo de hielo.",
+      "text_markdown": "En el invierno, los arroyos más pequeños se congelan y el agua se esconde bajo un techo de hielo.",
+      "tts": {
+        "text": "En el invierno, los arroyos más pequeños se congelan y el agua se esconde bajo un techo de hielo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos de los grandes ríos del mundo templado comienzan en estos bosques.",
+      "text_markdown": "Muchos de los grandes ríos del mundo templado comienzan en estos bosques.",
+      "tts": {
+        "text": "Muchos de los grandes ríos del mundo templado comienzan en estos bosques.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los árboles sostienen el suelo en su lugar y alimentan a los arroyos con un poco de agua a la vez.",
+      "text_markdown": "Los árboles sostienen el suelo en su lugar y alimentan a los arroyos con un poco de agua a la vez.",
+      "tts": {
+        "text": "Los árboles sostienen el suelo en su lugar y alimentan a los arroyos con un poco de agua a la vez.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "La tierra y el agua",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sin el bosque, los ríos no serían iguales.",
+      "text_markdown": "Sin el bosque, los ríos no serían iguales.",
+      "tts": {
+        "text": "Sin el bosque, los ríos no serían iguales.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Las plantas",
+      "text_markdown": "Las plantas"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los árboles son el corazón del bosque templado.",
+      "text_markdown": "Los árboles son el corazón del bosque templado.",
+      "tts": {
+        "text": "Los árboles son el corazón del bosque templado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos de ellos crecen altos y fuertes, con troncos gruesos y ramas anchas.",
+      "text_markdown": "Muchos de ellos crecen altos y fuertes, con troncos gruesos y ramas anchas.",
+      "tts": {
+        "text": "Muchos de ellos crecen altos y fuertes, con troncos gruesos y ramas anchas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su madera es dura, y un solo árbol puede vivir cientos de años.",
+      "text_markdown": "Su madera es dura, y un solo árbol puede vivir cientos de años.",
+      "tts": {
+        "text": "Su madera es dura, y un solo árbol puede vivir cientos de años.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algunos crecen incluso más tiempo que eso.",
+      "text_markdown": "Algunos crecen incluso más tiempo que eso.",
+      "tts": {
+        "text": "Algunos crecen incluso más tiempo que eso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los árboles más famosos del bosque templado son el roble, el arce, el haya y el abedul.",
+      "text_markdown": "Los árboles más famosos del bosque templado son el roble, el arce, el haya y el abedul.",
+      "tts": {
+        "text": "Los árboles más famosos del bosque templado son el roble, el arce, el haya y el abedul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En distintas partes del mundo, encuentras distintos tipos de estos árboles.",
+      "text_markdown": "En distintas partes del mundo, encuentras distintos tipos de estos árboles.",
+      "tts": {
+        "text": "En distintas partes del mundo, encuentras distintos tipos de estos árboles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero todos comparten la misma forma y la misma historia anual.",
+      "text_markdown": "Pero todos comparten la misma forma y la misma historia anual.",
+      "tts": {
+        "text": "Pero todos comparten la misma forma y la misma historia anual.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En la primavera, hojas nuevas se abren en cada rama.",
+      "text_markdown": "En la primavera, hojas nuevas se abren en cada rama.",
+      "tts": {
+        "text": "En la primavera, hojas nuevas se abren en cada rama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las hojas son de un verde claro y suave.",
+      "text_markdown": "Las hojas son de un verde claro y suave.",
+      "tts": {
+        "text": "Las hojas son de un verde claro y suave.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante el verano, se extienden a lo ancho para atrapar la luz del sol.",
+      "text_markdown": "Durante el verano, se extienden a lo ancho para atrapar la luz del sol.",
+      "tts": {
+        "text": "Durante el verano, se extienden a lo ancho para atrapar la luz del sol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada hoja verde convierte la luz del sol, el agua y el aire en alimento para el árbol.",
+      "text_markdown": "Cada hoja verde convierte la luz del sol, el agua y el aire en alimento para el árbol.",
+      "tts": {
+        "text": "Cada hoja verde convierte la luz del sol, el agua y el aire en alimento para el árbol.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, las hojas cambian de color antes de caer.",
+      "text_markdown": "En el otoño, las hojas cambian de color antes de caer.",
+      "tts": {
+        "text": "En el otoño, las hojas cambian de color antes de caer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algunas se vuelven de un rojo brillante, otras de un amarillo encendido y otras de un café profundo.",
+      "text_markdown": "Algunas se vuelven de un rojo brillante, otras de un amarillo encendido y otras de un café profundo.",
+      "tts": {
+        "text": "Algunas se vuelven de un rojo brillante, otras de un amarillo encendido y otras de un café profundo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los colores pintan laderas enteras durante unas pocas semanas.",
+      "text_markdown": "Los colores pintan laderas enteras durante unas pocas semanas.",
+      "tts": {
+        "text": "Los colores pintan laderas enteras durante unas pocas semanas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luego las hojas caen y el árbol descansa durante el frío.",
+      "text_markdown": "Luego las hojas caen y el árbol descansa durante el frío.",
+      "tts": {
+        "text": "Luego las hojas caen y el árbol descansa durante el frío.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La madera del árbol guarda lo que necesita, muy adentro.",
+      "text_markdown": "La madera del árbol guarda lo que necesita, muy adentro.",
+      "tts": {
+        "text": "La madera del árbol guarda lo que necesita, muy adentro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando regresa la primavera, el árbol empieza de nuevo.",
+      "text_markdown": "Cuando regresa la primavera, el árbol empieza de nuevo.",
+      "tts": {
+        "text": "Cuando regresa la primavera, el árbol empieza de nuevo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Debajo de los árboles altos, crecen plantas más pequeñas.",
+      "text_markdown": "Debajo de los árboles altos, crecen plantas más pequeñas.",
+      "tts": {
+        "text": "Debajo de los árboles altos, crecen plantas más pequeñas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay arbustos con bayas que a los animales les encantan.",
+      "text_markdown": "Hay arbustos con bayas que a los animales les encantan.",
+      "tts": {
+        "text": "Hay arbustos con bayas que a los animales les encantan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hay helechos y musgos suaves sobre las rocas y los troncos viejos.",
+      "text_markdown": "Hay helechos y musgos suaves sobre las rocas y los troncos viejos.",
+      "tts": {
+        "text": "Hay helechos y musgos suaves sobre las rocas y los troncos viejos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A principios de la primavera, antes de que los grandes árboles tengan hojas, las flores silvestres llenan el suelo del bosque.",
+      "text_markdown": "A principios de la primavera, antes de que los grandes árboles tengan hojas, las flores silvestres llenan el suelo del bosque.",
+      "tts": {
+        "text": "A principios de la primavera, antes de que los grandes árboles tengan hojas, las flores silvestres llenan el suelo del bosque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante unas semanas, el suelo se cubre de campanillas, narcisos u otras flores brillantes.",
+      "text_markdown": "Durante unas semanas, el suelo se cubre de campanillas, narcisos u otras flores brillantes.",
+      "tts": {
+        "text": "Durante unas semanas, el suelo se cubre de campanillas, narcisos u otras flores brillantes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuando a los árboles les crecen sus hojas y dan sombra al suelo, las flores se desvanecen.",
+      "text_markdown": "Cuando a los árboles les crecen sus hojas y dan sombra al suelo, las flores se desvanecen.",
+      "tts": {
+        "text": "Cuando a los árboles les crecen sus hojas y dan sombra al suelo, las flores se desvanecen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Las plantas",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Esperarán bajo la tierra hasta la próxima primavera.",
+      "text_markdown": "Esperarán bajo la tierra hasta la próxima primavera.",
+      "tts": {
+        "text": "Esperarán bajo la tierra hasta la próxima primavera.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Los animales",
+      "text_markdown": "Los animales"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El bosque templado es hogar de muchos tipos de animales.",
+      "text_markdown": "El bosque templado es hogar de muchos tipos de animales.",
+      "tts": {
+        "text": "El bosque templado es hogar de muchos tipos de animales.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En los árboles y en el suelo, todos tienen maneras de vivir con las estaciones que cambian.",
+      "text_markdown": "En los árboles y en el suelo, todos tienen maneras de vivir con las estaciones que cambian.",
+      "tts": {
+        "text": "En los árboles y en el suelo, todos tienen maneras de vivir con las estaciones que cambian.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los ciervos son comunes en muchos bosques templados.",
+      "text_markdown": "Los ciervos son comunes en muchos bosques templados.",
+      "tts": {
+        "text": "Los ciervos son comunes en muchos bosques templados.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Caminan suavemente entre los árboles y comen hojas, pasto y plantas pequeñas.",
+      "text_markdown": "Caminan suavemente entre los árboles y comen hojas, pasto y plantas pequeñas.",
+      "tts": {
+        "text": "Caminan suavemente entre los árboles y comen hojas, pasto y plantas pequeñas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el verano, su pelaje es corto y café.",
+      "text_markdown": "En el verano, su pelaje es corto y café.",
+      "tts": {
+        "text": "En el verano, su pelaje es corto y café.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, su pelaje se vuelve grueso y gris.",
+      "text_markdown": "En el invierno, su pelaje se vuelve grueso y gris.",
+      "tts": {
+        "text": "En el invierno, su pelaje se vuelve grueso y gris.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los osos también viven en algunos de estos bosques.",
+      "text_markdown": "Los osos también viven en algunos de estos bosques.",
+      "tts": {
+        "text": "Los osos también viven en algunos de estos bosques.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un oso come casi cualquier cosa: bayas, peces, miel y animales pequeños.",
+      "text_markdown": "Un oso come casi cualquier cosa: bayas, peces, miel y animales pequeños.",
+      "tts": {
+        "text": "Un oso come casi cualquier cosa: bayas, peces, miel y animales pequeños.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, un oso come todo lo que puede.",
+      "text_markdown": "En el otoño, un oso come todo lo que puede.",
+      "tts": {
+        "text": "En el otoño, un oso come todo lo que puede.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luego encuentra un lugar tranquilo y duerme profundamente durante la parte más fría del invierno.",
+      "text_markdown": "Luego encuentra un lugar tranquilo y duerme profundamente durante la parte más fría del invierno.",
+      "tts": {
+        "text": "Luego encuentra un lugar tranquilo y duerme profundamente durante la parte más fría del invierno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los lobos y los zorros cazan en el bosque.",
+      "text_markdown": "Los lobos y los zorros cazan en el bosque.",
+      "tts": {
+        "text": "Los lobos y los zorros cazan en el bosque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los lobos viven en grupos familiares y recorren muchos kilómetros cada día.",
+      "text_markdown": "Los lobos viven en grupos familiares y recorren muchos kilómetros cada día.",
+      "tts": {
+        "text": "Los lobos viven en grupos familiares y recorren muchos kilómetros cada día.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los zorros son más pequeños y cazan solos, a menudo por la noche.",
+      "text_markdown": "Los zorros son más pequeños y cazan solos, a menudo por la noche.",
+      "tts": {
+        "text": "Los zorros son más pequeños y cazan solos, a menudo por la noche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las ardillas están en todas partes.",
+      "text_markdown": "Las ardillas están en todas partes.",
+      "tts": {
+        "text": "Las ardillas están en todas partes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, recogen nueces y las entierran por todo el bosque.",
+      "text_markdown": "En el otoño, recogen nueces y las entierran por todo el bosque.",
+      "tts": {
+        "text": "En el otoño, recogen nueces y las entierran por todo el bosque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, desentierran sus reservas escondidas para comer.",
+      "text_markdown": "En el invierno, desentierran sus reservas escondidas para comer.",
+      "tts": {
+        "text": "En el invierno, desentierran sus reservas escondidas para comer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A veces olvidan algunas, y esas nueces se convierten en los próximos árboles.",
+      "text_markdown": "A veces olvidan algunas, y esas nueces se convierten en los próximos árboles.",
+      "tts": {
+        "text": "A veces olvidan algunas, y esas nueces se convierten en los próximos árboles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los conejos y los ratones pequeños viven en el suelo blando y bajo los troncos caídos.",
+      "text_markdown": "Los conejos y los ratones pequeños viven en el suelo blando y bajo los troncos caídos.",
+      "tts": {
+        "text": "Los conejos y los ratones pequeños viven en el suelo blando y bajo los troncos caídos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos tipos de pájaros llenan el bosque templado con su sonido.",
+      "text_markdown": "Muchos tipos de pájaros llenan el bosque templado con su sonido.",
+      "tts": {
+        "text": "Muchos tipos de pájaros llenan el bosque templado con su sonido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Algunos pájaros se quedan todo el año, y puedes verlos en las ramas desnudas del invierno.",
+      "text_markdown": "Algunos pájaros se quedan todo el año, y puedes verlos en las ramas desnudas del invierno.",
+      "tts": {
+        "text": "Algunos pájaros se quedan todo el año, y puedes verlos en las ramas desnudas del invierno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos otros pájaros vuelan al sur durante el invierno y regresan cuando vuelve la primavera.",
+      "text_markdown": "Muchos otros pájaros vuelan al sur durante el invierno y regresan cuando vuelve la primavera.",
+      "tts": {
+        "text": "Muchos otros pájaros vuelan al sur durante el invierno y regresan cuando vuelve la primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los pájaros carpinteros martillan los troncos de los árboles.",
+      "text_markdown": "Los pájaros carpinteros martillan los troncos de los árboles.",
+      "tts": {
+        "text": "Los pájaros carpinteros martillan los troncos de los árboles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los búhos cazan en la noche.",
+      "text_markdown": "Los búhos cazan en la noche.",
+      "tts": {
+        "text": "Los búhos cazan en la noche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En los estanques y arroyos, las ranas cantan, y pequeños peces nadan bajo el hielo en el invierno.",
+      "text_markdown": "En los estanques y arroyos, las ranas cantan, y pequeños peces nadan bajo el hielo en el invierno.",
+      "tts": {
+        "text": "En los estanques y arroyos, las ranas cantan, y pequeños peces nadan bajo el hielo en el invierno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las mariposas y las abejas salen en los meses cálidos, cuando se abren las flores.",
+      "text_markdown": "Las mariposas y las abejas salen en los meses cálidos, cuando se abren las flores.",
+      "tts": {
+        "text": "Las mariposas y las abejas salen en los meses cálidos, cuando se abren las flores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada animal aquí conoce las cuatro estaciones en su cuerpo.",
+      "text_markdown": "Cada animal aquí conoce las cuatro estaciones en su cuerpo.",
+      "tts": {
+        "text": "Cada animal aquí conoce las cuatro estaciones en su cuerpo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Los animales",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cada uno sabe cuándo estar ocupado, cuándo descansar y cuándo despertar de nuevo.",
+      "text_markdown": "Cada uno sabe cuándo estar ocupado, cuándo descansar y cuándo despertar de nuevo.",
+      "tts": {
+        "text": "Cada uno sabe cuándo estar ocupado, cuándo descansar y cuándo despertar de nuevo.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La gente",
+      "text_markdown": "La gente"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La gente ha vivido en el bosque templado durante muchos miles de años.",
+      "text_markdown": "La gente ha vivido en el bosque templado durante muchos miles de años.",
+      "tts": {
+        "text": "La gente ha vivido en el bosque templado durante muchos miles de años.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las estaciones suaves y el suelo rico siempre han hecho de estos lugares buenos sitios para la vida humana.",
+      "text_markdown": "Las estaciones suaves y el suelo rico siempre han hecho de estos lugares buenos sitios para la vida humana.",
+      "tts": {
+        "text": "Las estaciones suaves y el suelo rico siempre han hecho de estos lugares buenos sitios para la vida humana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hace mucho tiempo, la gente en estos bosques cazaba ciervos y animales pequeños.",
+      "text_markdown": "Hace mucho tiempo, la gente en estos bosques cazaba ciervos y animales pequeños.",
+      "tts": {
+        "text": "Hace mucho tiempo, la gente en estos bosques cazaba ciervos y animales pequeños.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Recogían nueces, bayas y raíces del suelo del bosque.",
+      "text_markdown": "Recogían nueces, bayas y raíces del suelo del bosque.",
+      "tts": {
+        "text": "Recogían nueces, bayas y raíces del suelo del bosque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sabían qué hongos eran seguros y cuáles no.",
+      "text_markdown": "Sabían qué hongos eran seguros y cuáles no.",
+      "tts": {
+        "text": "Sabían qué hongos eran seguros y cuáles no.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Construían sus casas con la madera de los árboles a su alrededor.",
+      "text_markdown": "Construían sus casas con la madera de los árboles a su alrededor.",
+      "tts": {
+        "text": "Construían sus casas con la madera de los árboles a su alrededor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una casa de troncos y un techo de corteza pueden mantener a una familia caliente durante un largo invierno.",
+      "text_markdown": "Una casa de troncos y un techo de corteza pueden mantener a una familia caliente durante un largo invierno.",
+      "tts": {
+        "text": "Una casa de troncos y un techo de corteza pueden mantener a una familia caliente durante un largo invierno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En la primavera y el verano, cultivaban comida en pequeños campos abiertos en el bosque.",
+      "text_markdown": "En la primavera y el verano, cultivaban comida en pequeños campos abiertos en el bosque.",
+      "tts": {
+        "text": "En la primavera y el verano, cultivaban comida en pequeños campos abiertos en el bosque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sembraban granos, frijoles y raíces que crecían bien en el clima fresco.",
+      "text_markdown": "Sembraban granos, frijoles y raíces que crecían bien en el clima fresco.",
+      "tts": {
+        "text": "Sembraban granos, frijoles y raíces que crecían bien en el clima fresco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, recogían la cosecha y la guardaban para los meses fríos.",
+      "text_markdown": "En el otoño, recogían la cosecha y la guardaban para los meses fríos.",
+      "tts": {
+        "text": "En el otoño, recogían la cosecha y la guardaban para los meses fríos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el invierno, se sentaban junto a sus fuegos, arreglaban sus herramientas, contaban historias y esperaban la primavera.",
+      "text_markdown": "En el invierno, se sentaban junto a sus fuegos, arreglaban sus herramientas, contaban historias y esperaban la primavera.",
+      "tts": {
+        "text": "En el invierno, se sentaban junto a sus fuegos, arreglaban sus herramientas, contaban historias y esperaban la primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El bosque les daba madera para el fuego y para construir.",
+      "text_markdown": "El bosque les daba madera para el fuego y para construir.",
+      "tts": {
+        "text": "El bosque les daba madera para el fuego y para construir.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les daba corteza y hojas para hacer medicina.",
+      "text_markdown": "Les daba corteza y hojas para hacer medicina.",
+      "tts": {
+        "text": "Les daba corteza y hojas para hacer medicina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Les daba tintes para la tela, y comida en cada estación.",
+      "text_markdown": "Les daba tintes para la tela, y comida en cada estación.",
+      "tts": {
+        "text": "Les daba tintes para la tela, y comida en cada estación.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Con el tiempo, muchos de estos bosques fueron talados para hacer granjas y ciudades.",
+      "text_markdown": "Con el tiempo, muchos de estos bosques fueron talados para hacer granjas y ciudades.",
+      "tts": {
+        "text": "Con el tiempo, muchos de estos bosques fueron talados para hacer granjas y ciudades.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las aldeas se convirtieron en pueblos, y los pueblos se convirtieron en las grandes ciudades del mundo templado.",
+      "text_markdown": "Las aldeas se convirtieron en pueblos, y los pueblos se convirtieron en las grandes ciudades del mundo templado.",
+      "tts": {
+        "text": "Las aldeas se convirtieron en pueblos, y los pueblos se convirtieron en las grandes ciudades del mundo templado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero la gente todavía conoce el bosque a través de sus historias y canciones.",
+      "text_markdown": "Pero la gente todavía conoce el bosque a través de sus historias y canciones.",
+      "tts": {
+        "text": "Pero la gente todavía conoce el bosque a través de sus historias y canciones.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchas de las viejas canciones e historias de estas tierras están llenas de árboles, lobos, ciervos y las largas noches de invierno.",
+      "text_markdown": "Muchas de las viejas canciones e historias de estas tierras están llenas de árboles, lobos, ciervos y las largas noches de invierno.",
+      "tts": {
+        "text": "Muchas de las viejas canciones e historias de estas tierras están llenas de árboles, lobos, ciervos y las largas noches de invierno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "La gente",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En cada bosque templado, este tipo de vida tiene sus propias lenguas, sus propias comidas y sus propias maneras de esperar la primavera.",
+      "text_markdown": "En cada bosque templado, este tipo de vida tiene sus propias lenguas, sus propias comidas y sus propias maneras de esperar la primavera.",
+      "tts": {
+        "text": "En cada bosque templado, este tipo de vida tiene sus propias lenguas, sus propias comidas y sus propias maneras de esperar la primavera.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "El bosque hoy",
+      "text_markdown": "El bosque hoy"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El bosque templado es uno de los biomas más importantes para la gente.",
+      "text_markdown": "El bosque templado es uno de los biomas más importantes para la gente.",
+      "tts": {
+        "text": "El bosque templado es uno de los biomas más importantes para la gente.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La mayoría de las grandes ciudades del mundo están en lugares que alguna vez fueron bosque templado.",
+      "text_markdown": "La mayoría de las grandes ciudades del mundo están en lugares que alguna vez fueron bosque templado.",
+      "tts": {
+        "text": "La mayoría de las grandes ciudades del mundo están en lugares que alguna vez fueron bosque templado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los bosques nos dan madera para construir, papel para escribir y agua limpia para beber.",
+      "text_markdown": "Los bosques nos dan madera para construir, papel para escribir y agua limpia para beber.",
+      "tts": {
+        "text": "Los bosques nos dan madera para construir, papel para escribir y agua limpia para beber.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los árboles absorben el gas que exhalamos y lo usan para crecer.",
+      "text_markdown": "Los árboles absorben el gas que exhalamos y lo usan para crecer.",
+      "tts": {
+        "text": "Los árboles absorben el gas que exhalamos y lo usan para crecer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nos devuelven el gas que respiramos.",
+      "text_markdown": "Nos devuelven el gas que respiramos.",
+      "tts": {
+        "text": "Nos devuelven el gas que respiramos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En el otoño, el bosque es una de las vistas más bellas de la Tierra.",
+      "text_markdown": "En el otoño, el bosque es una de las vistas más bellas de la Tierra.",
+      "tts": {
+        "text": "En el otoño, el bosque es una de las vistas más bellas de la Tierra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La gente viaja largas distancias solo para ver las hojas de colores.",
+      "text_markdown": "La gente viaja largas distancias solo para ver las hojas de colores.",
+      "tts": {
+        "text": "La gente viaja largas distancias solo para ver las hojas de colores.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pero el bosque templado ha perdido mucha de su tierra.",
+      "text_markdown": "Pero el bosque templado ha perdido mucha de su tierra.",
+      "tts": {
+        "text": "Pero el bosque templado ha perdido mucha de su tierra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante miles de años, gran parte del bosque original fue talado.",
+      "text_markdown": "Durante miles de años, gran parte del bosque original fue talado.",
+      "tts": {
+        "text": "Durante miles de años, gran parte del bosque original fue talado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Donde antes había árboles sin fin, ahora hay campos, pueblos, caminos y ciudades.",
+      "text_markdown": "Donde antes había árboles sin fin, ahora hay campos, pueblos, caminos y ciudades.",
+      "tts": {
+        "text": "Donde antes había árboles sin fin, ahora hay campos, pueblos, caminos y ciudades.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los bosques que quedan son más pequeños y están divididos.",
+      "text_markdown": "Los bosques que quedan son más pequeños y están divididos.",
+      "tts": {
+        "text": "Los bosques que quedan son más pequeños y están divididos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muchos grupos en todo el mundo trabajan para cuidar lo que queda.",
+      "text_markdown": "Muchos grupos en todo el mundo trabajan para cuidar lo que queda.",
+      "tts": {
+        "text": "Muchos grupos en todo el mundo trabajan para cuidar lo que queda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Plantan árboles nuevos donde se perdieron los viejos.",
+      "text_markdown": "Plantan árboles nuevos donde se perdieron los viejos.",
+      "tts": {
+        "text": "Plantan árboles nuevos donde se perdieron los viejos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Protegen los bosques viejos para que no los talen.",
+      "text_markdown": "Protegen los bosques viejos para que no los talen.",
+      "tts": {
+        "text": "Protegen los bosques viejos para que no los talen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Estudian el bosque para que podamos entenderlo mejor.",
+      "text_markdown": "Estudian el bosque para que podamos entenderlo mejor.",
+      "tts": {
+        "text": "Estudian el bosque para que podamos entenderlo mejor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bosque joven puede volver a crecer en cien años.",
+      "text_markdown": "Un bosque joven puede volver a crecer en cien años.",
+      "tts": {
+        "text": "Un bosque joven puede volver a crecer en cien años.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bosque viejo puede tener árboles vivos que son más viejos que cualquier edificio cercano.",
+      "text_markdown": "Un bosque viejo puede tener árboles vivos que son más viejos que cualquier edificio cercano.",
+      "tts": {
+        "text": "Un bosque viejo puede tener árboles vivos que son más viejos que cualquier edificio cercano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "El bosque hoy",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Merece nuestro cuidado.",
+      "text_markdown": "Merece nuestro cuidado.",
+      "tts": {
+        "text": "Merece nuestro cuidado.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cierre",
+      "text_markdown": "Cierre"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ese es el bosque templado.",
+      "text_markdown": "Ese es el bosque templado.",
+      "tts": {
+        "text": "Ese es el bosque templado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mundo verde de árboles altos, arroyos frescos y cuatro estaciones muy distintas.",
+      "text_markdown": "Un mundo verde de árboles altos, arroyos frescos y cuatro estaciones muy distintas.",
+      "tts": {
+        "text": "Un mundo verde de árboles altos, arroyos frescos y cuatro estaciones muy distintas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si alguna vez entras en uno, quédate quieto por un minuto.",
+      "text_markdown": "Si alguna vez entras en uno, quédate quieto por un minuto.",
+      "tts": {
+        "text": "Si alguna vez entras en uno, quédate quieto por un minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Escucha el viento entre las hojas sobre ti.",
+      "text_markdown": "Escucha el viento entre las hojas sobre ti.",
+      "tts": {
+        "text": "Escucha el viento entre las hojas sobre ti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mira la suave alfombra de hojas viejas bajo tus pies.",
+      "text_markdown": "Mira la suave alfombra de hojas viejas bajo tus pies.",
+      "tts": {
+        "text": "Mira la suave alfombra de hojas viejas bajo tus pies.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Cierre",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oirás el corazón del bioma latiendo a tu alrededor.",
+      "text_markdown": "Oirás el corazón del bioma latiendo a tu alrededor.",
+      "tts": {
+        "text": "Oirás el corazón del bioma latiendo a tu alrededor.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

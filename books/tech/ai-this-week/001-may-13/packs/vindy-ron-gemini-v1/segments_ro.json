@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "ro",
+  "total_segments": 62,
+  "segments": [
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "text": "Bun venit la AI This Week. Eu sunt Vindy.",
+      "text_markdown": "Bun venit la AI This Week. Eu sunt Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Bun venit la AI This Week. Eu sunt Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "text": "Alături de mine, ca întotdeauna, este Ron.",
+      "text_markdown": "Alături de mine, ca întotdeauna, este Ron.",
+      "title": "",
+      "tts": {
+        "text": "Alături de mine, ca întotdeauna, este Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-003",
+      "text": "Mă bucur să fiu aici.",
+      "text_markdown": "Mă bucur să fiu aici.",
+      "title": "",
+      "tts": {
+        "text": "Mă bucur să fiu aici.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-004",
+      "text": "Astăzi este miercuri, 13 mai 2026. Urmează: modelele lansate săptămâna aceasta. Clasamentele și de ce pe unele dintre ele ar trebui să nu le mai credem. Conceptul nostru al săptămânii. Și imaginea de ansamblu — S.U.A. tocmai a primit un nou președinte al Rezervei Federale, iar acest lucru contează mai mult pentru AI decât ați crede.",
+      "text_markdown": "Astăzi este miercuri, 13 mai 2026. Urmează: modelele lansate săptămâna aceasta. Clasamentele și de ce pe unele dintre ele ar trebui să nu le mai credem. Conceptul nostru al săptămânii. Și imaginea de ansamblu — S.U.A. tocmai a primit un nou președinte al Rezervei Federale, iar acest lucru contează mai mult pentru AI decât ați crede.",
+      "title": "",
+      "tts": {
+        "text": "Astăzi este miercuri, treisprezece mai două mii douăzeci și șase. Urmează: modelele lansate săptămâna aceasta. Clasamentele și de ce pe unele dintre ele ar trebui să nu le mai credem. Conceptul nostru al săptămânii. Și imaginea de ansamblu — Statele Unite ale Americii tocmai a primit un nou președinte al Rezervei Federale, iar acest lucru contează mai mult pentru AI decât ați crede.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "text": "Ron, care este cea mai importantă știre despre modele săptămâna aceasta?",
+      "text_markdown": "Ron, care este cea mai importantă știre despre modele săptămâna aceasta?",
+      "title": "",
+      "tts": {
+        "text": "Ron, care este cea mai importantă știre despre modele săptămâna aceasta?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-006",
+      "text": "Creierul implicit din ChatGPT s-a schimbat. OpenAI a lansat un nou model numit GPT-5.5 Instant pentru nivelul gratuit săptămâna trecută, marți, 5 mai. Dacă un răspuns gratuit de la ChatGPT vi s-a părut mai scurt sau mai puțin plin de emoji-uri, acesta este motivul.",
+      "text_markdown": "Creierul implicit din ChatGPT s-a schimbat. OpenAI a lansat un nou model numit GPT-5.5 Instant pentru nivelul gratuit săptămâna trecută, marți, 5 mai. Dacă un răspuns gratuit de la ChatGPT vi s-a părut mai scurt sau mai puțin plin de emoji-uri, acesta este motivul.",
+      "title": "",
+      "tts": {
+        "text": "Creierul implicit din ChatGPT s-a schimbat. OpenAI a lansat un nou model numit GPT cinci punct cinci Instant pentru nivelul gratuit săptămâna trecută, marți, cinci mai. Dacă un răspuns gratuit de la ChatGPT vi s-a părut mai scurt sau mai puțin plin de emoji-uri, acesta este motivul.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "text": "Mai scurt în ce sens?",
+      "text_markdown": "Mai scurt în ce sens?",
+      "title": "",
+      "tts": {
+        "text": "Mai scurt în ce sens?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-008",
+      "text": "OpenAI spune că noul model implicit scrie cu aproximativ 30% mai puține cuvinte și cu 30% mai puține rânduri decât modelul pe care l-a înlocuit. De asemenea, susțin o scădere de 50% a afirmațiilor halucinate pe cele mai dificile solicitări. Lucruri precum întrebări medicale, întrebări juridice și întrebări financiare.",
+      "text_markdown": "OpenAI spune că noul model implicit scrie cu aproximativ 30% mai puține cuvinte și cu 30% mai puține rânduri decât modelul pe care l-a înlocuit. De asemenea, susțin o scădere de 50% a afirmațiilor halucinate pe cele mai dificile solicitări. Lucruri precum întrebări medicale, întrebări juridice și întrebări financiare.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI spune că noul model implicit scrie cu aproximativ treizeci la sută mai puține cuvinte și cu treizeci la sută mai puține rânduri decât modelul pe care l-a înlocuit. De asemenea, susțin o scădere de cincizeci la sută a afirmațiilor halucinate pe cele mai dificile solicitări. Lucruri precum întrebări medicale, întrebări juridice și întrebări financiare.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "text": "A verificat cineva din afara OpenAI aceste cifre?",
+      "text_markdown": "A verificat cineva din afara OpenAI aceste cifre?",
+      "title": "",
+      "tts": {
+        "text": "A verificat cineva din afara OpenAI aceste cifre?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-010",
+      "text": "Nu la scară largă. Cei care se ocupă de benchmark-uri independente, cum ar fi Artificial Analysis, plasează noul model în fruntea indicelui lor general de inteligență. Dar afirmațiile privind halucinațiile sunt lente de verificat. Acestea tind să apară pe parcursul săptămânilor, pe măsură ce oamenii folosesc efectiv modelul.",
+      "text_markdown": "Nu la scară largă. Cei care se ocupă de benchmark-uri independente, cum ar fi Artificial Analysis, plasează noul model în fruntea indicelui lor general de inteligență. Dar afirmațiile privind halucinațiile sunt lente de verificat. Acestea tind să apară pe parcursul săptămânilor, pe măsură ce oamenii folosesc efectiv modelul.",
+      "title": "",
+      "tts": {
+        "text": "Nu la scară largă. Cei care se ocupă de benchmark-uri independente, cum ar fi Artificial Analysis, plasează noul model în fruntea indicelui lor general de inteligență. Dar afirmațiile privind halucinațiile sunt lente de verificat. Acestea tind să apară pe parcursul săptămânilor, pe măsură ce oamenii folosesc efectiv modelul.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "text": "Și în ceea ce privește modelele open weights?",
+      "text_markdown": "Și în ceea ce privește modelele open weights?",
+      "title": "",
+      "tts": {
+        "text": "Și în ceea ce privește modelele open weights?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-012",
+      "text": "Două lucruri importante. Moonshot, laboratorul chinez din spatele modelului Kimi, a strâns 2 miliarde de dolari săptămâna trecută, pe 7 mai, la o evaluare de 20 de miliarde de dolari. Iar cel mai recent model al lor, Kimi K 2.6, tocmai a ocupat primul loc pe OpenRouter pentru volumul de token-uri.",
+      "text_markdown": "Două lucruri importante. Moonshot, laboratorul chinez din spatele modelului Kimi, a strâns 2 miliarde de dolari săptămâna trecută, pe 7 mai, la o evaluare de 20 de miliarde de dolari. Iar cel mai recent model al lor, Kimi K 2.6, tocmai a ocupat primul loc pe OpenRouter pentru volumul de token-uri.",
+      "title": "",
+      "tts": {
+        "text": "Două lucruri importante. Moonshot, laboratorul chinez din spatele modelului Kimi, a strâns două miliarde de dolari săptămâna trecută, pe șapte mai, la o evaluare de douăzeci de miliarde de dolari. Iar cel mai recent model al lor, Kimi K doi punct șase, tocmai a ocupat primul loc pe OpenRouter pentru volumul de token-uri.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "text": "Primul loc? Per total?",
+      "text_markdown": "Primul loc? Per total?",
+      "title": "",
+      "tts": {
+        "text": "Primul loc? Per total?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "text": "Per total. Acesta este un model chinezesc open weights pe primul loc pe un router comercial important. Acum șase luni, ar fi fost de neconceput.",
+      "text_markdown": "Per total. Acesta este un model chinezesc open weights pe primul loc pe un router comercial important. Acum șase luni, ar fi fost de neconceput.",
+      "title": "",
+      "tts": {
+        "text": "Per total. Acesta este un model chinezesc open weights pe primul loc pe un router comercial important. Acum șase luni, ar fi fost de neconceput.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-015",
+      "text": "Altceva demn de menționat?",
+      "text_markdown": "Altceva demn de menționat?",
+      "title": "",
+      "tts": {
+        "text": "Altceva demn de menționat?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "text": "Mistral, laboratorul francez, a lansat Medium 3.5 la sfârșitul lunii aprilie. Ei unifică vechea împărțire între un model de chat, un model de raționament și un model de codare într-un singur produs. Aceeași tendință pe care OpenAI a început-o cu familia GPT-5. Întreaga industrie se îndreaptă în această direcție.",
+      "text_markdown": "Mistral, laboratorul francez, a lansat Medium 3.5 la sfârșitul lunii aprilie. Ei unifică vechea împărțire între un model de chat, un model de raționament și un model de codare într-un singur produs. Aceeași tendință pe care OpenAI a început-o cu familia GPT-5. Întreaga industrie se îndreaptă în această direcție.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, laboratorul francez, a lansat Medium trei punct cinci la sfârșitul lunii aprilie. Ei unifică vechea împărțire între un model de chat, un model de raționament și un model de codare într-un singur produs. Aceeași tendință pe care OpenAI a început-o cu familia GPT cinci. Întreaga industrie se îndreaptă în această direcție.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "text": "Și ce urmează?",
+      "text_markdown": "Și ce urmează?",
+      "title": "",
+      "tts": {
+        "text": "Și ce urmează?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "text": "Google I/O este marți. Toată lumea se așteaptă la un nou Gemini, și există zvonuri credibile despre un model de generare video numit Gemini Omni. OpenAI are GPT-5.6 în testare. Anthropic are un model numit Mythos într-o previzualizare privată. Vom ști mult mai multe săptămâna viitoare.",
+      "text_markdown": "Google I/O este marți. Toată lumea se așteaptă la un nou Gemini, și există zvonuri credibile despre un model de generare video numit Gemini Omni. OpenAI are GPT-5.6 în testare. Anthropic are un model numit Mythos într-o previzualizare privată. Vom ști mult mai multe săptămâna viitoare.",
+      "title": "",
+      "tts": {
+        "text": "Google I O este marți. Toată lumea se așteaptă la un nou Gemini, și există zvonuri credibile despre un model de generare video numit Gemini Omni. OpenAI are GPT cinci punct șase în testare. Anthropic are un model numit Mythos într-o previzualizare privată. Vom ști mult mai multe săptămâna viitoare.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-019",
+      "text": "Bun, să trecem la clasamente.",
+      "text_markdown": "Bun, să trecem la clasamente.",
+      "title": "",
+      "tts": {
+        "text": "Bun, să trecem la clasamente.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "text": "Ron, ce se întâmplă în clasamente săptămâna aceasta?",
+      "text_markdown": "Ron, ce se întâmplă în clasamente săptămâna aceasta?",
+      "title": "",
+      "tts": {
+        "text": "Ron, ce se întâmplă în clasamente săptămâna aceasta?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "text": "Adevărata poveste săptămâna aceasta nu sunt scorurile. Sunt scorurile în care ar trebui să nu mai aveți încredere.",
+      "text_markdown": "Adevărata poveste săptămâna aceasta nu sunt scorurile. Sunt scorurile în care ar trebui să nu mai aveți încredere.",
+      "title": "",
+      "tts": {
+        "text": "Adevărata poveste săptămâna aceasta nu sunt scorurile. Sunt scorurile în care ar trebui să nu mai aveți încredere.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-022",
+      "text": "Spune-ne mai multe despre asta, Ron.",
+      "text_markdown": "Spune-ne mai multe despre asta, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Spune-ne mai multe despre asta, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "text": "Un grup de la Berkeley a publicat o lucrare. Au construit un scaner automat care a obținut un scor aproape perfect la fiecare benchmark major pentru agenți AI. Fără a rezolva de fapt nicio sarcină. Au exploatat modul în care benchmark-urile își verifică propriile răspunsuri.",
+      "text_markdown": "Un grup de la Berkeley a publicat o lucrare. Au construit un scaner automat care a obținut un scor aproape perfect la fiecare benchmark major pentru agenți AI. Fără a rezolva de fapt nicio sarcină. Au exploatat modul în care benchmark-urile își verifică propriile răspunsuri.",
+      "title": "",
+      "tts": {
+        "text": "Un grup de la Berkeley a publicat o lucrare. Au construit un scaner automat care a obținut un scor aproape perfect la fiecare benchmark major pentru agenți AI. Fără a rezolva de fapt nicio sarcină. Au exploatat modul în care benchmark-urile își verifică propriile răspunsuri.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "text": "Au trișat, iar benchmark-urile nu au detectat asta.",
+      "text_markdown": "Au trișat, iar benchmark-urile nu au detectat asta.",
+      "title": "",
+      "tts": {
+        "text": "Au trișat, iar benchmark-urile nu au detectat asta.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "text": "Corect. Și în aceeași săptămână, OpenAI a anunțat că își retrage evaluările pe SWE bench Verified. Acesta este un benchmark de codare pe care îl citeau tot timpul. L-au retras deoarece mai mult de jumătate dintre sarcinile dificile s-au dovedit a avea teste defecte.",
+      "text_markdown": "Corect. Și în aceeași săptămână, OpenAI a anunțat că își retrage evaluările pe SWE bench Verified. Acesta este un benchmark de codare pe care îl citeau tot timpul. L-au retras deoarece mai mult de jumătate dintre sarcinile dificile s-au dovedit a avea teste defecte.",
+      "title": "",
+      "tts": {
+        "text": "Corect. Și în aceeași săptămână, OpenAI a anunțat că își retrage evaluările pe SWE bench Verified. Acesta este un benchmark de codare pe care îl citeau tot timpul. L-au retras deoarece mai mult de jumătate dintre sarcinile dificile s-au dovedit a avea teste defecte.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-026",
+      "text": "Deci multe dintre cifrele pe care le-am auzit în ultimul an sunt…",
+      "text_markdown": "Deci multe dintre cifrele pe care le-am auzit în ultimul an sunt…",
+      "title": "",
+      "tts": {
+        "text": "Deci multe dintre cifrele pe care le-am auzit în ultimul an sunt…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-027",
+      "text": "Cel puțin parțial umflate. Nu fiecare model. Nu fiecare benchmark. Dar domeniul își reconstruiește instrumentul de măsură în public. Evaluări mai noi, cum ar fi SWE-bench Pro și un proiect numit SWE-rebench, încearcă să remedieze acest lucru prin păstrarea codului de testare privat.",
+      "text_markdown": "Cel puțin parțial umflate. Nu fiecare model. Nu fiecare benchmark. Dar domeniul își reconstruiește instrumentul de măsură în public. Evaluări mai noi, cum ar fi SWE-bench Pro și un proiect numit SWE-rebench, încearcă să remedieze acest lucru prin păstrarea codului de testare privat.",
+      "title": "",
+      "tts": {
+        "text": "Cel puțin parțial umflate. Nu fiecare model. Nu fiecare benchmark. Dar domeniul își reconstruiește instrumentul de măsură în public. Evaluări mai noi, cum ar fi SWE bench Pro și un proiect numit SWE rebench, încearcă să remedieze acest lucru prin păstrarea codului de testare privat.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-028",
+      "text": "Se mișcă ceva în sus în mod curat?",
+      "text_markdown": "Se mișcă ceva în sus în mod curat?",
+      "title": "",
+      "tts": {
+        "text": "Se mișcă ceva în sus în mod curat?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "text": "Două lucruri, pe clasamente mai curate. La mijlocul lunii aprilie, Claude Opus 4.7 de la Anthropic a devenit primul model care a depășit clar un Elo de 1500 în clasamentul de codare LM Arena. Opus 4.6 atinsese 1500 cu câteva săptămâni mai devreme. Începând cu această săptămână, Opus 4.7 este încă în frunte, în jurul valorii de 1569. Anthropic are, de asemenea, un model separat numit Mythos într-o previzualizare privată pentru parteneri, care conduce 17 din cele 18 benchmark-uri de agenți măsurate de Anthropic.",
+      "text_markdown": "Două lucruri, pe clasamente mai curate. La mijlocul lunii aprilie, Claude Opus 4.7 de la Anthropic a devenit primul model care a depășit clar un Elo de 1500 în clasamentul de codare LM Arena. Opus 4.6 atinsese 1500 cu câteva săptămâni mai devreme. Începând cu această săptămână, Opus 4.7 este încă în frunte, în jurul valorii de 1569. Anthropic are, de asemenea, un model separat numit Mythos într-o previzualizare privată pentru parteneri, care conduce 17 din cele 18 benchmark-uri de agenți măsurate de Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Două lucruri, pe clasamente mai curate. La mijlocul lunii aprilie, Claude Opus patru punct șapte de la Anthropic a devenit primul model care a depășit clar un Elo de o mie cinci sute în clasamentul de codare LM Arena. Opus patru punct șase atinsese o mie cinci sute cu câteva săptămâni mai devreme. Începând cu această săptămână, Opus patru punct șapte este încă în frunte, în jurul valorii de o mie cinci sute șaizeci și nouă. Anthropic are, de asemenea, un model separat numit Mythos într-o previzualizare privată pentru parteneri, care conduce șaptesprezece din cele optsprezece benchmark-uri de agenți măsurate de Anthropic.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "text": "Un model pe care publicul nu-l poate folosi este în fruntea clasamentelor.",
+      "text_markdown": "Un model pe care publicul nu-l poate folosi este în fruntea clasamentelor.",
+      "title": "",
+      "tts": {
+        "text": "Un model pe care publicul nu-l poate folosi este în fruntea clasamentelor.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "text": "Acolo ne aflăm. Cealaltă tendință majoră este decalajul dintre deschis și închis. Este cel mai mic din toate timpurile. DeepSeek V4 Pro și Kimi K 2.6 sunt la o distanță considerabilă de GPT-5.5 pe indicele de inteligență de evaluare încrucișată. Acel decalaj era imens. Acum este mic.",
+      "text_markdown": "Acolo ne aflăm. Cealaltă tendință majoră este decalajul dintre deschis și închis. Este cel mai mic din toate timpurile. DeepSeek V4 Pro și Kimi K 2.6 sunt la o distanță considerabilă de GPT-5.5 pe indicele de inteligență de evaluare încrucișată. Acel decalaj era imens. Acum este mic.",
+      "title": "",
+      "tts": {
+        "text": "Acolo ne aflăm. Cealaltă tendință majoră este decalajul dintre deschis și închis. Este cel mai mic din toate timpurile. DeepSeek V patru Pro și Kimi K doi virgulă șase sunt la o distanță considerabilă de GPT cinci virgulă cinci pe indicele de inteligență de evaluare încrucișată. Acel decalaj era imens. Acum este mic.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-032",
+      "text": "Bun, să trecem la conceptul săptămânii.",
+      "text_markdown": "Bun, să trecem la conceptul săptămânii.",
+      "title": "",
+      "tts": {
+        "text": "Bun, să trecem la conceptul săptămânii.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-033",
+      "text": "Ron, conceptul acestei săptămâni este amestecul de experți. De ce ne concentrăm pe amestecul de experți?",
+      "text_markdown": "Ron, conceptul acestei săptămâni este amestecul de experți. De ce ne concentrăm pe amestecul de experți?",
+      "title": "",
+      "tts": {
+        "text": "Ron, conceptul acestei săptămâni este amestecul de experți. De ce ne concentrăm pe amestecul de experți?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-034",
+      "text": "Modelul cu ponderi deschise despre care tocmai am vorbit, Kimi K doi virgulă șase, are în total un trilion de parametri. Dar la un moment dat activează doar treizeci și două de miliarde dintre ei. Asta înseamnă, practic, un amestec de experți la nivel de arhitectură.",
+      "text_markdown": "Modelul cu ponderi deschise despre care tocmai am vorbit, Kimi K doi virgulă șase, are în total un trilion de parametri. Dar la un moment dat activează doar treizeci și două de miliarde dintre ei. Asta înseamnă, practic, un amestec de experți la nivel de arhitectură.",
+      "title": "",
+      "tts": {
+        "text": "Modelul cu ponderi deschise despre care tocmai am vorbit, Kimi K doi virgulă șase, are în total un trilion de parametri. Dar la un moment dat activează doar treizeci și două de miliarde dintre ei. Asta înseamnă, practic, un amestec de experți la nivel de arhitectură.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "text": "Explică-ne pentru cei care ne urmăresc.",
+      "text_markdown": "Explică-ne pentru cei care ne urmăresc.",
+      "title": "",
+      "tts": {
+        "text": "Explică-ne pentru cei care ne urmăresc.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "text": "Un model AI obișnuit este ca un creier gigant. Fiecare cuvânt pe care îl generează folosește fiecare parte a creierului. Un model de amestec de experți este mai degrabă ca o clădire plină de specialiști. Cu o recepționeră la ușă. Pentru fiecare cuvânt, recepționera alege doi sau trei specialiști de consultat, iar restul clădirii rămâne liniștit.",
+      "text_markdown": "Un model AI obișnuit este ca un creier gigant. Fiecare cuvânt pe care îl generează folosește fiecare parte a creierului. Un model de amestec de experți este mai degrabă ca o clădire plină de specialiști. Cu o recepționeră la ușă. Pentru fiecare cuvânt, recepționera alege doi sau trei specialiști de consultat, iar restul clădirii rămâne liniștit.",
+      "title": "",
+      "tts": {
+        "text": "Un model AI obișnuit este ca un creier gigant. Fiecare cuvânt pe care îl generează folosește fiecare parte a creierului. Un model de amestec de experți este mai degrabă ca o clădire plină de specialiști. Cu o recepționeră la ușă. Pentru fiecare cuvânt, recepționera alege doi sau trei specialiști de consultat, iar restul clădirii rămâne liniștit.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "text": "Deci modelul este uriaș pe hârtie, dar ieftin de rulat.",
+      "text_markdown": "Deci modelul este uriaș pe hârtie, dar ieftin de rulat.",
+      "title": "",
+      "tts": {
+        "text": "Deci modelul este uriaș pe hârtie, dar ieftin de rulat.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "text": "Exact. 1 trilion de parametri de capacitate. Dar doar 32 de miliarde de parametri de calcul per cuvânt. Acesta este trucul. Recepționera este o mică bucată de cod numită router. Specialiștii sunt subrețele numite experți. Modelul antrenează routerul și experții împreună, de la un capăt la altul.",
+      "text_markdown": "Exact. 1 trilion de parametri de capacitate. Dar doar 32 de miliarde de parametri de calcul per cuvânt. Acesta este trucul. Recepționera este o mică bucată de cod numită router. Specialiștii sunt subrețele numite experți. Modelul antrenează routerul și experții împreună, de la un capăt la altul.",
+      "title": "",
+      "tts": {
+        "text": "Exact. Un trilion de parametri de capacitate. Dar doar treizeci și două de miliarde de parametri de calcul per cuvânt. Acesta este trucul. Recepționera este o mică bucată de cod numită router. Specialiștii sunt subrețele numite experți. Modelul antrenează routerul și experții împreună, de la un capăt la altul.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "text": "Fiecare model major de frontieră face asta?",
+      "text_markdown": "Fiecare model major de frontieră face asta?",
+      "title": "",
+      "tts": {
+        "text": "Fiecare model major de frontieră face asta?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "text": "Majoritatea, da. Deși laboratoarele nu confirmă întotdeauna. GPT-4 a fost un model de amestec de experți. Modelul emblematic de la DeepSeek este un model de amestec de experți. Mistral a livrat modele de amestec de experți din 2023. Noul val din China a împins acest design la limită.",
+      "text_markdown": "Majoritatea, da. Deși laboratoarele nu confirmă întotdeauna. GPT-4 a fost un model de amestec de experți. Modelul emblematic de la DeepSeek este un model de amestec de experți. Mistral a livrat modele de amestec de experți din 2023. Noul val din China a împins acest design la limită.",
+      "title": "",
+      "tts": {
+        "text": "Majoritatea, da. Deși laboratoarele nu confirmă întotdeauna. GPT patru a fost un model de amestec de experți. Modelul emblematic de la DeepSeek este un model de amestec de experți. Mistral a livrat modele de amestec de experți din două mii douăzeci și trei. Noul val din China a împins acest design la limită.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-041",
+      "text": "De ce contează pentru cineva care folosește doar ChatGPT?",
+      "text_markdown": "De ce contează pentru cineva care folosește doar ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "De ce contează pentru cineva care folosește doar ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "text": "Două motive. Unu. Este principalul motiv pentru care un laborator cu ponderi deschise din China poate funcționa la o calitate de clasă de frontieră cu o fracțiune din buget. Doi. Este principalul motiv pentru care un singur apel API costă cenți, nu dolari. Când vezi prețurile scăzând și calitatea rămânând ridicată, amestecul de experți este de obicei motivul.",
+      "text_markdown": "Două motive. Unu. Este principalul motiv pentru care un laborator cu ponderi deschise din China poate funcționa la o calitate de clasă de frontieră cu o fracțiune din buget. Doi. Este principalul motiv pentru care un singur apel API costă cenți, nu dolari. Când vezi prețurile scăzând și calitatea rămânând ridicată, amestecul de experți este de obicei motivul.",
+      "title": "",
+      "tts": {
+        "text": "Două motive. Unu. Este principalul motiv pentru care un laborator cu ponderi deschise din China poate funcționa la o calitate de clasă de frontieră cu o fracțiune din buget. Doi. Este principalul motiv pentru care un singur apel API costă cenți, nu dolari. Când vezi prețurile scăzând și calitatea rămânând ridicată, amestecul de experți este de obicei motivul.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-043",
+      "text": "Amestec de experți. Router. Experți. Activare rară. Trei cuvinte de reținut. Acum să revenim la imaginea de ansamblu.",
+      "text_markdown": "Amestec de experți. Router. Experți. Activare rară. Trei cuvinte de reținut. Acum să revenim la imaginea de ansamblu.",
+      "title": "",
+      "tts": {
+        "text": "Amestec de experți. Router. Experți. Activare rară. Trei cuvinte de reținut. Acum să revenim la imaginea de ansamblu.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "text": "Ron, marea știre din afara lumii noastre săptămâna aceasta este Rezerva Federală.",
+      "text_markdown": "Ron, marea știre din afara lumii noastre săptămâna aceasta este Rezerva Federală.",
+      "title": "",
+      "tts": {
+        "text": "Ron, marea știre din afara lumii noastre săptămâna aceasta este Rezerva Federală.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "text": "Astăzi, Senatul S.U.A. l-a confirmat pe Kevin Warsh ca următorul președinte al Rezervei Federale. Votul a fost 54 la 45. Cel mai strâns vot pentru un președinte al Fed în istoria modernă americană. Doar un singur democrat a trecut de partea cealaltă.",
+      "text_markdown": "Astăzi, Senatul S.U.A. l-a confirmat pe Kevin Warsh ca următorul președinte al Rezervei Federale. Votul a fost 54 la 45. Cel mai strâns vot pentru un președinte al Fed în istoria modernă americană. Doar un singur democrat a trecut de partea cealaltă.",
+      "title": "",
+      "tts": {
+        "text": "Astăzi, Senatul S.U.A. l-a confirmat pe Kevin Warsh ca următorul președinte al Rezervei Federale. Votul a fost cincizeci și patru la patruzeci și cinci. Cel mai strâns vot pentru un președinte al Fed în istoria modernă americană. Doar un singur democrat a trecut de partea cealaltă.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "text": "De ce contează asta pentru AI?",
+      "text_markdown": "De ce contează asta pentru AI?",
+      "title": "",
+      "tts": {
+        "text": "De ce contează asta pentru AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "text": "Deoarece dezvoltarea AI este în prezent limitată de două lucruri. Electricitatea și costul capitalului. Fed stabilește costul capitalului. Iar noul președinte a declarat public că dorește să reducă ratele mai rapid decât ar fi făcut-o predecesorul său.",
+      "text_markdown": "Deoarece dezvoltarea AI este în prezent limitată de două lucruri. Electricitatea și costul capitalului. Fed stabilește costul capitalului. Iar noul președinte a declarat public că dorește să reducă ratele mai rapid decât ar fi făcut-o predecesorul său.",
+      "title": "",
+      "tts": {
+        "text": "Deoarece dezvoltarea AI este în prezent limitată de două lucruri. Electricitatea și costul capitalului. Fed stabilește costul capitalului. Iar noul președinte a declarat public că dorește să reducă ratele mai rapid decât ar fi făcut-o predecesorul său.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "text": "Reducerea mai rapidă a ratelor face investițiile în AI mai ieftine.",
+      "text_markdown": "Reducerea mai rapidă a ratelor face investițiile în AI mai ieftine.",
+      "title": "",
+      "tts": {
+        "text": "Reducerea mai rapidă a ratelor face investițiile în AI mai ieftine.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "text": "Da. Hiperscalerii — Microsoft, Google, Amazon, Meta — sunt pe cale să cheltuiască aproximativ 700 de miliarde de dolari pentru cheltuieli de capital anul acesta. Majoritatea sunt GPU-uri și centre de date. O rată de discount mai mică face ca aceste construcții multianuale să se justifice la evaluări mai mari.",
+      "text_markdown": "Da. Hiperscalerii — Microsoft, Google, Amazon, Meta — sunt pe cale să cheltuiască aproximativ 700 de miliarde de dolari pentru cheltuieli de capital anul acesta. Majoritatea sunt GPU-uri și centre de date. O rată de discount mai mică face ca aceste construcții multianuale să se justifice la evaluări mai mari.",
+      "title": "",
+      "tts": {
+        "text": "Da. Hiperscalerii — Microsoft, Google, Amazon, Meta — sunt pe cale să cheltuiască aproximativ șapte sute de miliarde de dolari pentru cheltuieli de capital anul acesta. Majoritatea sunt GPU-uri și centre de date. O rată de discount mai mică face ca aceste construcții multianuale să se justifice la evaluări mai mari.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "text": "Și în cealaltă direcție. Cum afectează AI deciziile Fed?",
+      "text_markdown": "Și în cealaltă direcție. Cum afectează AI deciziile Fed?",
+      "title": "",
+      "tts": {
+        "text": "Și în cealaltă direcție. Cum afectează AI deciziile Fed?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "text": "Aceasta este partea interesantă. Cheltuielile de capital pentru AI sunt acum suficient de mari încât reprezintă un număr macroeconomic. Nu o poveste de sector. Analiștii de pe Wall Street spun că cheltuielile pentru construcții și echipamente legate de AI au reprezentat majoritatea creșterii economice a S.U.A. în ultimele câteva trimestre.",
+      "text_markdown": "Aceasta este partea interesantă. Cheltuielile de capital pentru AI sunt acum suficient de mari încât reprezintă un număr macroeconomic. Nu o poveste de sector. Analiștii de pe Wall Street spun că cheltuielile pentru construcții și echipamente legate de AI au reprezentat majoritatea creșterii economice a S.U.A. în ultimele câteva trimestre.",
+      "title": "",
+      "tts": {
+        "text": "Aceasta este partea interesantă. Cheltuielile de capital pentru AI sunt acum suficient de mari încât reprezintă un număr macroeconomic. Nu o poveste de sector. Analiștii de pe Wall Street spun că cheltuielile pentru construcții și echipamente legate de AI au reprezentat majoritatea creșterii economice a Statelor Unite ale Americii în ultimele câteva trimestre.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "text": "Majoritatea creșterii.",
+      "text_markdown": "Majoritatea creșterii.",
+      "title": "",
+      "tts": {
+        "text": "Majoritatea creșterii.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "text": "Majoritatea. Și are două direcții pentru Fed. Pe termen lung, AI este un impuls de productivitate. Asta este deflaționist. Îi oferă Fed spațiu de manevră pentru a reduce. Pe termen scurt, este un șoc de cerere pentru energie, pentru cupru, pentru forță de muncă calificată, pentru apă de răcire. Asta este inflaționist. Mai ales în locuri precum Virginia și Texas, unde sunt concentrate centrele de date.",
+      "text_markdown": "Majoritatea. Și are două direcții pentru Fed. Pe termen lung, AI este un impuls de productivitate. Asta este deflaționist. Îi oferă Fed spațiu de manevră pentru a reduce. Pe termen scurt, este un șoc de cerere pentru energie, pentru cupru, pentru forță de muncă calificată, pentru apă de răcire. Asta este inflaționist. Mai ales în locuri precum Virginia și Texas, unde sunt concentrate centrele de date.",
+      "title": "",
+      "tts": {
+        "text": "Majoritatea. Și are două direcții pentru Fed. Pe termen lung, AI este un impuls de productivitate. Asta este deflaționist. Îi oferă Fed spațiu de manevră pentru a reduce. Pe termen scurt, este un șoc de cerere pentru energie, pentru cupru, pentru forță de muncă calificată, pentru apă de răcire. Asta este inflaționist. Mai ales în locuri precum Virginia și Texas, unde sunt concentrate centrele de date.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-054",
+      "text": "Deci noul președinte trebuie să decidă dacă AI este răspunsul la inflație, sau dacă AI este cauza inflației.",
+      "text_markdown": "Deci noul președinte trebuie să decidă dacă AI este răspunsul la inflație, sau dacă AI este cauza inflației.",
+      "title": "",
+      "tts": {
+        "text": "Deci noul președinte trebuie să decidă dacă AI este răspunsul la inflație, sau dacă AI este cauza inflației.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "text": "Ambele, simultan. Și orice va spune în primele sale discursuri publice va influența fiecare model de cheltuieli de capital AI de pe Wall Street.",
+      "text_markdown": "Ambele, simultan. Și orice va spune în primele sale discursuri publice va influența fiecare model de cheltuieli de capital AI de pe Wall Street.",
+      "title": "",
+      "tts": {
+        "text": "Ambele, simultan. Și orice va spune în primele sale discursuri publice va influența fiecare model de cheltuieli de capital AI de pe Wall Street.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-056",
+      "text": "Microsoft are 80 de miliarde de dolari în comenzi cloud neîndeplinite din cauza energiei. Este acesta numărul corect?",
+      "text_markdown": "Microsoft are 80 de miliarde de dolari în comenzi cloud neîndeplinite din cauza energiei. Este acesta numărul corect?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft are optzeci de miliarde de dolari în comenzi cloud neîndeplinite din cauza energiei. Este acesta numărul corect?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "text": "Acesta este numărul raportat de Microsoft. Clienții Azure așteaptă la rând pentru capacitate. Blocajul nu mai sunt cipurile. Este rețeaua electrică. Piețele de energie nu pot construi capacitate nouă la fel de repede pe cât o doresc centrele de date.",
+      "text_markdown": "Acesta este numărul raportat de Microsoft. Clienții Azure așteaptă la rând pentru capacitate. Blocajul nu mai sunt cipurile. Este rețeaua electrică. Piețele de energie nu pot construi capacitate nouă la fel de repede pe cât o doresc centrele de date.",
+      "title": "",
+      "tts": {
+        "text": "Acesta este numărul raportat de Microsoft. Clienții Azure așteaptă la rând pentru capacitate. Blocajul nu mai sunt cipurile. Este rețeaua electrică. Piețele de energie nu pot construi capacitate nouă la fel de repede pe cât o doresc centrele de date.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "text": "Când este prima întâlnire a lui Warsh?",
+      "text_markdown": "Când este prima întâlnire a lui Warsh?",
+      "title": "",
+      "tts": {
+        "text": "Când este prima întâlnire a lui Warsh?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-059",
+      "text": "Pe 16 și 17 iunie. Vom ști mult mai multe despre evoluția ratelor după aceea.",
+      "text_markdown": "Pe 16 și 17 iunie. Vom ști mult mai multe despre evoluția ratelor după aceea.",
+      "title": "",
+      "tts": {
+        "text": "Pe șaisprezece și șaptesprezece iunie. Vom ști mult mai multe despre evoluția ratelor după aceea.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-060",
+      "text": "Un bun punct de încheiere. Ron, mulțumesc.",
+      "text_markdown": "Un bun punct de încheiere. Ron, mulțumesc.",
+      "title": "",
+      "tts": {
+        "text": "Un bun punct de încheiere. Ron, mulțumesc.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "text": "Oricând, Vindy.",
+      "text_markdown": "Oricând, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Oricând, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-062",
+      "text": "Acesta a fost AI This Week pentru 13 mai 2026. Un nou număr miercurea viitoare. Până atunci, aveți grijă.",
+      "text_markdown": "Acesta a fost AI This Week pentru 13 mai 2026. Un nou număr miercurea viitoare. Până atunci, aveți grijă.",
+      "title": "",
+      "tts": {
+        "text": "Acesta a fost AI This Week pentru treisprezece mai, două mii douăzeci și șase. Un nou număr miercurea viitoare. Până atunci, aveți grijă.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

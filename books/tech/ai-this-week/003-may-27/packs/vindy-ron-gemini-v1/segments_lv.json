@@ -1,0 +1,3143 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_05_27",
+  "language": "lv",
+  "total_segments": 209,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Laipni lūgti AI This Week.",
+      "text_markdown": "Laipni lūgti AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Laipni lūgti AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Esmu Vindy.",
+      "text_markdown": "Esmu Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Esmu Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ar mani, kā vienmēr, ir Rons.",
+      "text_markdown": "Ar mani, kā vienmēr, ir Rons.",
+      "title": "",
+      "tts": {
+        "text": "Ar mani, kā vienmēr, ir Rons.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Prieks šeit būt, Vindy.",
+      "text_markdown": "Prieks šeit būt, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Prieks šeit būt, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šodien ir trešdiena, 2026. gada 27. maijs.",
+      "text_markdown": "Šodien ir trešdiena, 2026. gada 27. maijs.",
+      "title": "",
+      "tts": {
+        "text": "Šodien ir trešdiena, divi tūkstoši divdesmit sestā gada divdesmit septītais maijs.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un uz papīra šī bija klusa nedēļa.",
+      "text_markdown": "Un uz papīra šī bija klusa nedēļa.",
+      "title": "",
+      "tts": {
+        "text": "Un uz papīra šī bija klusa nedēļa.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Netika izlaists neviens liels jauns atvērtais modelis.",
+      "text_markdown": "Netika izlaists neviens liels jauns atvērtais modelis.",
+      "title": "",
+      "tts": {
+        "text": "Netika izlaists neviens liels jauns atvērtais modelis.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Taču klusās nedēļās slēpjas īstais stāsts.",
+      "text_markdown": "Taču klusās nedēļās slēpjas īstais stāsts.",
+      "title": "",
+      "tts": {
+        "text": "Taču klusās nedēļās slēpjas īstais stāsts.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tāpēc šodien mēs dosimies tur, kur nenonāk galvenās uzrunas.",
+      "text_markdown": "Tāpēc šodien mēs dosimies tur, kur nenonāk galvenās uzrunas.",
+      "title": "",
+      "tts": {
+        "text": "Tāpēc šodien mēs dosimies tur, kur nenonāk galvenās uzrunas.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tūlīt — kas patiesībā notika atvērtajos svaros.",
+      "text_markdown": "Tūlīt — kas patiesībā notika atvērtajos svaros.",
+      "title": "",
+      "tts": {
+        "text": "Tūlīt — kas patiesībā notika atvērtajos svaros.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Viens svarīgākais līderu saraksts, un tas nav kvalitātes saraksts.",
+      "text_markdown": "Viens svarīgākais līderu saraksts, un tas nav kvalitātes saraksts.",
+      "title": "",
+      "tts": {
+        "text": "Viens svarīgākais līderu saraksts, un tas nav kvalitātes saraksts.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ātrs virsrakstu apkopojums, ko varat izmantot šajā nedēļas nogalē.",
+      "text_markdown": "Ātrs virsrakstu apkopojums, ko varat izmantot šajā nedēļas nogalē.",
+      "title": "",
+      "tts": {
+        "text": "Ātrs virsrakstu apkopojums, ko varat izmantot šajā nedēļas nogalē.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mūsu galvenais stāsts — gads, kad atvērtā balss kļuva pietiekami laba, lai to varētu izmantot.",
+      "text_markdown": "Mūsu galvenais stāsts — gads, kad atvērtā balss kļuva pietiekami laba, lai to varētu izmantot.",
+      "title": "",
+      "tts": {
+        "text": "Mūsu galvenais stāsts — gads, kad atvērtā balss kļuva pietiekami laba, lai to varētu izmantot.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un nedēļas koncepcija ir neironu audio kodeki — kā saspiest visu balsi, lai tā ietilptu tālrunī.",
+      "text_markdown": "Un nedēļas koncepcija ir neironu audio kodeki — kā saspiest visu balsi, lai tā ietilptu tālrunī.",
+      "title": "",
+      "tts": {
+        "text": "Un nedēļas koncepcija ir neironu audio kodeki — kā saspiest visu balsi, lai tā ietilptu tālrunī.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, sāksim atvērto svaru pasaulē.",
+      "text_markdown": "Ron, sāksim atvērto svaru pasaulē.",
+      "title": "",
+      "tts": {
+        "text": "Ron, sāksim atvērto svaru pasaulē.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kas mainījās šonedēļ?",
+      "text_markdown": "Kas mainījās šonedēļ?",
+      "title": "",
+      "tts": {
+        "text": "Kas mainījās šonedēļ?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Godīgi sakot, šonedēļ netika izlaists neviens jauns robežu atvērtais modelis.",
+      "text_markdown": "Godīgi sakot, šonedēļ netika izlaists neviens jauns robežu atvērtais modelis.",
+      "title": "",
+      "tts": {
+        "text": "Godīgi sakot, šonedēļ netika izlaists neviens jauns robežu atvērtais modelis.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un tas ir labi.",
+      "text_markdown": "Un tas ir labi.",
+      "title": "",
+      "tts": {
+        "text": "Un tas ir labi.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Īstās atvērtās ziņas šonedēļ bija saistītas ar infrastruktūru un cenām.",
+      "text_markdown": "Īstās atvērtās ziņas šonedēļ bija saistītas ar infrastruktūru un cenām.",
+      "title": "",
+      "tts": {
+        "text": "Īstās atvērtās ziņas šonedēļ bija saistītas ar infrastruktūru un cenām.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vispirms infrastruktūra — kas salūza vai tika salabots?",
+      "text_markdown": "Vispirms infrastruktūra — kas salūza vai tika salabots?",
+      "title": "",
+      "tts": {
+        "text": "Vispirms infrastruktūra — kas salūza vai tika salabots?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "26. maijā SGLang projekts izlaida stabilitātes labojumu DeepSeek V4 apkalpošanai.",
+      "text_markdown": "26. maijā SGLang projekts izlaida stabilitātes labojumu DeepSeek V4 apkalpošanai.",
+      "title": "",
+      "tts": {
+        "text": "Divdesmit sestajā maijā S. G. Lang projekts izlaida stabilitātes labojumu DeepSeek V četri apkalpošanai.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "SGLang ir viens no diviem lielajiem atvērtajiem dzinējiem, ko izmantojat, lai pats palaistu modeli.",
+      "text_markdown": "SGLang ir viens no diviem lielajiem atvērtajiem dzinējiem, ko izmantojat, lai pats palaistu modeli.",
+      "title": "",
+      "tts": {
+        "text": "S. G. Lang ir viens no diviem lielajiem atvērtajiem dzinējiem, ko izmantojat, lai pats palaistu modeli.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Otrs ir vLLM.",
+      "text_markdown": "Otrs ir vLLM.",
+      "title": "",
+      "tts": {
+        "text": "Otrs ir v. L. L. M.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šis labojums novērsa sagrozītu izvadi jaunākajās kartēs un avāriju pie lielas slodzes.",
+      "text_markdown": "Šis labojums novērsa sagrozītu izvadi jaunākajās kartēs un avāriju pie lielas slodzes.",
+      "title": "",
+      "tts": {
+        "text": "Šis labojums novērsa sagrozītu izvadi jaunākajās kartēs un avāriju pie lielas slodzes.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kāpēc apkalpošanas labojums ir svarīgs?",
+      "text_markdown": "Kāpēc apkalpošanas labojums ir svarīgs?",
+      "title": "",
+      "tts": {
+        "text": "Kāpēc apkalpošanas labojums ir svarīgs?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jo atvērtie svari ir bezjēdzīgi, ja tos nevar uzticami apkalpot.",
+      "text_markdown": "Jo atvērtie svari ir bezjēdzīgi, ja tos nevar uzticami apkalpot.",
+      "title": "",
+      "tts": {
+        "text": "Jo atvērtie svari ir bezjēdzīgi, ja tos nevar uzticami apkalpot.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "DeepSeek V4 ir atvērts un ar MIT licenci, taču tas ir milzīgs modelis.",
+      "text_markdown": "DeepSeek V4 ir atvērts un ar MIT licenci, taču tas ir milzīgs modelis.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V četri ir atvērts un ar M. I. T. licenci, taču tas ir milzīgs modelis.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Dzinēji, kas to liek darboties dabā, ir atvērtās ekosistēmas ne tik glamūrīgā puse.",
+      "text_markdown": "Dzinēji, kas to liek darboties dabā, ir atvērtās ekosistēmas ne tik glamūrīgā puse.",
+      "title": "",
+      "tts": {
+        "text": "Dzinēji, kas to liek darboties dabā, ir atvērtās ekosistēmas ne tik glamūrīgā puse.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Garlaicīga labojumu nedēļa ir tas, kā izskatās veselīgs projekts.",
+      "text_markdown": "Garlaicīga labojumu nedēļa ir tas, kā izskatās veselīgs projekts.",
+      "title": "",
+      "tts": {
+        "text": "Garlaicīga labojumu nedēļa ir tas, kā izskatās veselīgs projekts.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bet cik tas maksā?",
+      "text_markdown": "Bet cik tas maksā?",
+      "title": "",
+      "tts": {
+        "text": "Bet cik tas maksā?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šis ir interesantākais.",
+      "text_markdown": "Šis ir interesantākais.",
+      "title": "",
+      "tts": {
+        "text": "Šis ir interesantākais.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ap 22. maiju DeepSeek padarīja savu 75% cenu samazinājumu V4-Pro modelim pastāvīgu.",
+      "text_markdown": "Ap 22. maiju DeepSeek padarīja savu 75% cenu samazinājumu V4-Pro modelim pastāvīgu.",
+      "title": "",
+      "tts": {
+        "text": "Ap divdesmit otro maiju DeepSeek padarīja savu septiņdesmit piecu procentu cenu samazinājumu V četru Pro modelim pastāvīgu.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Izejas cena tagad ir aptuveni 0,87 ASV dolāri par miljonu žetonu.",
+      "text_markdown": "Izejas cena tagad ir aptuveni 0,87 ASV dolāri par miljonu žetonu.",
+      "title": "",
+      "tts": {
+        "text": "Izejas cena tagad ir aptuveni nulle komats astoņdesmit septiņi ASV dolāri par miljonu žetonu.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir aptuveni ceturtdaļa no sākotnējās cenas.",
+      "text_markdown": "Tas ir aptuveni ceturtdaļa no sākotnējās cenas.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir aptuveni ceturtdaļa no sākotnējās cenas.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad atvērto modeli kļuva lētāk nomāt.",
+      "text_markdown": "Tātad atvērto modeli kļuva lētāk nomāt.",
+      "title": "",
+      "tts": {
+        "text": "Tātad atvērto modeli kļuva lētāk nomāt.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tieši tā, un tas apgriež jautājumu kājām gaisā.",
+      "text_markdown": "Tieši tā, un tas apgriež jautājumu kājām gaisā.",
+      "title": "",
+      "tts": {
+        "text": "Tieši tā, un tas apgriež jautājumu kājām gaisā.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mēs parasti sakām, ka atvērtie svari (open weights) nozīmē pašu mitināšanu (self-host).",
+      "text_markdown": "Mēs parasti sakām, ka atvērtie svari (open weights) nozīmē pašu mitināšanu (self-host).",
+      "title": "",
+      "tts": {
+        "text": "Mēs parasti sakām, ka atvērtie svari nozīmē pašu mitināšanu.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bet, ja par miljonu žetonu ir jāmaksā mazāk par dolāru, nomāšana bieži vien ir lētāka nekā jūsu pašu elektrība.",
+      "text_markdown": "Bet, ja par miljonu žetonu ir jāmaksā mazāk par dolāru, nomāšana bieži vien ir lētāka nekā jūsu pašu elektrība.",
+      "title": "",
+      "tts": {
+        "text": "Bet, ja par miljonu žetonu ir jāmaksā mazāk par dolāru, nomāšana bieži vien ir lētāka nekā jūsu pašu elektrība.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad jaunais ietvars ir — pašu mitināšana (self-host) privātumam un bezsaistē, API nomāšana lētiem uzplūdiem.",
+      "text_markdown": "Tātad jaunais ietvars ir — pašu mitināšana (self-host) privātumam un bezsaistē, API nomāšana lētiem uzplūdiem.",
+      "title": "",
+      "tts": {
+        "text": "Tātad jaunais ietvars ir — pašu mitināšana privātumam un bezsaistē, API nomāšana lētiem uzplūdiem.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tie paši atvērtie svari, divi ļoti atšķirīgi iemesli to izmantošanai.",
+      "text_markdown": "Tie paši atvērtie svari, divi ļoti atšķirīgi iemesli to izmantošanai.",
+      "title": "",
+      "tts": {
+        "text": "Tie paši atvērtie svari, divi ļoti atšķirīgi iemesli to izmantošanai.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kā ar ierīcēs izmantojamo modeļu (on-device) lietotājiem?",
+      "text_markdown": "Kā ar ierīcēs izmantojamo modeļu (on-device) lietotājiem?",
+      "title": "",
+      "tts": {
+        "text": "Kā ar ierīcēs izmantojamo modeļu lietotājiem?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "llama.cpp visu nedēļu turpināja darīt savu.",
+      "text_markdown": "llama.cpp visu nedēļu turpināja darīt savu.",
+      "title": "",
+      "tts": {
+        "text": "llama C P P visu nedēļu turpināja darīt savu.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas īsti neveic laidienus — tas piegādā būvējumus gandrīz katru dienu.",
+      "text_markdown": "Tas īsti neveic laidienus — tas piegādā būvējumus gandrīz katru dienu.",
+      "title": "",
+      "tts": {
+        "text": "Tas īsti neveic laidienus — tas piegādā būvējumus gandrīz katru dienu.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šonedēļ tika strādāts pie ātruma uz Vulkan, Intel un tālruņu klases mikroshēmām.",
+      "text_markdown": "Šonedēļ tika strādāts pie ātruma uz Vulkan, Intel un tālruņu klases mikroshēmām.",
+      "title": "",
+      "tts": {
+        "text": "Šonedēļ tika strādāts pie ātruma uz Vulkan, Intel un tālruņu klases mikroshēmām.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir dzinējs, uz kura faktiski darbojas ierīcēs izmantojamo modeļu (on-device) pasaule.",
+      "text_markdown": "Tas ir dzinējs, uz kura faktiski darbojas ierīcēs izmantojamo modeļu (on-device) pasaule.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir dzinējs, uz kura faktiski darbojas ierīcēs izmantojamo modeļu pasaule.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bez drāmas, vienkārši ātrāk — tieši tas, ko vēlaties no nobriedušas infrastruktūras.",
+      "text_markdown": "Bez drāmas, vienkārši ātrāk — tieši tas, ko vēlaties no nobriedušas infrastruktūras.",
+      "title": "",
+      "tts": {
+        "text": "Bez drāmas, vienkārši ātrāk — tieši tas, ko vēlaties no nobriedušas infrastruktūras.",
+        "pause_after_ms": 540,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ieskicējiet mums plašāku ainu.",
+      "text_markdown": "Ieskicējiet mums plašāku ainu.",
+      "title": "",
+      "tts": {
+        "text": "Ieskicējiet mums plašāku ainu.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Atvērtā robeža pašlaik galvenokārt ir Ķīnas vadīta.",
+      "text_markdown": "Atvērtā robeža pašlaik galvenokārt ir Ķīnas vadīta.",
+      "title": "",
+      "tts": {
+        "text": "Atvērtā robeža pašlaik galvenokārt ir Ķīnas vadīta.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Aprīlī bija vilnis — DeepSeek V4, Qwen 3.6, Kimi K2.6 un citi, visi aptuveni divu nedēļu laikā.",
+      "text_markdown": "Aprīlī bija vilnis — DeepSeek V4, Qwen 3.6, Kimi K2.6 un citi, visi aptuveni divu nedēļu laikā.",
+      "title": "",
+      "tts": {
+        "text": "Aprīlī bija vilnis — DeepSeek V četru, Qwen trīs komats seši, Kimi K divi komats seši un citi, visi aptuveni divu nedēļu laikā.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šī nedēļa ir klusās sekas pēc šī viļņa.",
+      "text_markdown": "Šī nedēļa ir klusās sekas pēc šī viļņa.",
+      "title": "",
+      "tts": {
+        "text": "Šī nedēļa ir klusās sekas pēc šī viļņa.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un Qwen — vai viņiem nebija jaunumu?",
+      "text_markdown": "Un Qwen — vai viņiem nebija jaunumu?",
+      "title": "",
+      "tts": {
+        "text": "Un Qwen — vai viņiem nebija jaunumu?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jā, un tas ir zīmīgs.",
+      "text_markdown": "Jā, un tas ir zīmīgs.",
+      "title": "",
+      "tts": {
+        "text": "Jā, un tas ir zīmīgs.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Alibaba jaunais flagmanis, Qwen 3.7 Max, ir pieejams tikai caur API, un tā modeļa svari nav publiski pieejami.",
+      "text_markdown": "Alibaba jaunais flagmanis, Qwen 3.7 Max, ir pieejams tikai caur API, un tā modeļa svari nav publiski pieejami.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba jaunais flagmanis, Qwen trīs komats septiņi Max, ir pieejams tikai caur API, un tā modeļa svari nav publiski pieejami.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Atvērtā Qwen līnija joprojām apstājas pie 3.6.",
+      "text_markdown": "Atvērtā Qwen līnija joprojām apstājas pie 3.6.",
+      "title": "",
+      "tts": {
+        "text": "Atvērtā Qwen līnija joprojām apstājas pie trīs komats seši.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad Alibaba sadalās slēgtā flagmanī un atvērtā vidējā līmenī.",
+      "text_markdown": "Tātad Alibaba sadalās slēgtā flagmanī un atvērtā vidējā līmenī.",
+      "title": "",
+      "tts": {
+        "text": "Tātad Alibaba sadalās slēgtā flagmanī un atvērtā vidējā līmenī.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir tas pats scenārijs, ko Mistral izmantoja pagājušajā gadā.",
+      "text_markdown": "Tas ir tas pats scenārijs, ko Mistral izmantoja pagājušajā gadā.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir tas pats scenārijs, ko Mistral izmantoja pagājušajā gadā.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tad nu ir vērts to vērot.",
+      "text_markdown": "Tad nu ir vērts to vērot.",
+      "title": "",
+      "tts": {
+        "text": "Tad nu ir vērts to vērot.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Atvērtais solis, kas vēl jāveic, ir atvērts Qwen 3.7 vidējā līmeņa modelis.",
+      "text_markdown": "Atvērtais solis, kas vēl jāveic, ir atvērts Qwen 3.7 vidējā līmeņa modelis.",
+      "title": "",
+      "tts": {
+        "text": "Atvērtais solis, kas vēl jāveic, ir atvērts Qwen trīs komats septiņi vidējā līmeņa modelis.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Uz šo nedēļu Hugging Face vēl nekas nav pieejams.",
+      "text_markdown": "Uz šo nedēļu Hugging Face vēl nekas nav pieejams.",
+      "title": "",
+      "tts": {
+        "text": "Uz šo nedēļu Hugging Face vēl nekas nav pieejams.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Labi, pāriesim pie līderu sarakstiem.",
+      "text_markdown": "Labi, pāriesim pie līderu sarakstiem.",
+      "title": "",
+      "tts": {
+        "text": "Labi, pāriesim pie līderu sarakstiem.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kādas bija aktualitātes šonedēļ?",
+      "text_markdown": "Kādas bija aktualitātes šonedēļ?",
+      "title": "",
+      "tts": {
+        "text": "Kādas bija aktualitātes šonedēļ?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Lūk, virsraksts, un tas ir dīvains.",
+      "text_markdown": "Lūk, virsraksts, un tas ir dīvains.",
+      "title": "",
+      "tts": {
+        "text": "Lūk, virsraksts, un tas ir dīvains.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Līderu saraksts, kas šonedēļ mainījās, nav kvalitātes rādītājs.",
+      "text_markdown": "Līderu saraksts, kas šonedēļ mainījās, nav kvalitātes rādītājs.",
+      "title": "",
+      "tts": {
+        "text": "Līderu saraksts, kas šonedēļ mainījās, nav kvalitātes rādītājs.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir OpenRouter lietojuma mērītājs — faktiskie modeļu izsaukumi, nevis viedokļi.",
+      "text_markdown": "Tas ir OpenRouter lietojuma mērītājs — faktiskie modeļu izsaukumi, nevis viedokļi.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir OpenRouter lietojuma mērītājs — faktiskie modeļu izsaukumi, nevis viedokļi.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ko saka lietojuma mērītājs?",
+      "text_markdown": "Ko saka lietojuma mērītājs?",
+      "title": "",
+      "tts": {
+        "text": "Ko saka lietojuma mērītājs?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Nedēļā no 18. līdz 24. maijam visvairāk izmantotais modelis uz Zemes bija DeepSeek V4-Flash.",
+      "text_markdown": "Nedēļā no 18. līdz 24. maijam visvairāk izmantotais modelis uz Zemes bija DeepSeek V4-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Nedēļā no astoņpadsmitā līdz divdesmit ceturtajam maijam visvairāk izmantotais modelis uz Zemes bija DeepSeek V četru Flash.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas apstrādāja aptuveni 3,43 triljonus žetonu vienā nedēļā.",
+      "text_markdown": "Tas apstrādāja aptuveni 3,43 triljonus žetonu vienā nedēļā.",
+      "title": "",
+      "tts": {
+        "text": "Tas apstrādāja aptuveni trīs komats četrdesmit trīs triljonus žetonu vienā nedēļā.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un tam ir atvērtie svari, MIT-licence, kaut kas, ko var lejupielādēt un mitināt pašam.",
+      "text_markdown": "Un tam ir atvērtie svari, MIT-licence, kaut kas, ko var lejupielādēt un mitināt pašam.",
+      "title": "",
+      "tts": {
+        "text": "Un tam ir atvērtie svari, MIT-licence, kaut kas, ko var lejupielādēt un mitināt pašam.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Visvairāk izmantotais modelis ir atvērts?",
+      "text_markdown": "Visvairāk izmantotais modelis ir atvērts?",
+      "title": "",
+      "tts": {
+        "text": "Visvairāk izmantotais modelis ir atvērts?",
+        "pause_after_ms": 345,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Lietojuma diagrammas augšgalā, jā.",
+      "text_markdown": "Lietojuma diagrammas augšgalā, jā.",
+      "title": "",
+      "tts": {
+        "text": "Lietojuma diagrammas augšgalā, jā.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un tas nav ne tuvu.",
+      "text_markdown": "Un tas nav ne tuvu.",
+      "title": "",
+      "tts": {
+        "text": "Un tas nav ne tuvu.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ķīniešu modeļi tajā nedēļā apstrādāja aptuveni 9,2 triljonus žetonu, salīdzinot ar aptuveni 4,9 triljoniem amerikāņu modeļiem.",
+      "text_markdown": "Ķīniešu modeļi tajā nedēļā apstrādāja aptuveni 9,2 triljonus žetonu, salīdzinot ar aptuveni 4,9 triljoniem amerikāņu modeļiem.",
+      "title": "",
+      "tts": {
+        "text": "Ķīniešu modeļi tajā nedēļā apstrādāja aptuveni deviņi komats divi triljonus žetonu, salīdzinot ar aptuveni četri komats deviņi triljoniem amerikāņu modeļiem.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tā ir ceturtā nedēļa pēc kārtas, kad Ķīnas atvērtie modeļi vadīja globālo lietojumu.",
+      "text_markdown": "Tā ir ceturtā nedēļa pēc kārtas, kad Ķīnas atvērtie modeļi vadīja globālo lietojumu.",
+      "title": "",
+      "tts": {
+        "text": "Tā ir ceturtā nedēļa pēc kārtas, kad Ķīnas atvērtie modeļi vadīja globālo lietojumu.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tā ir īsta inversija.",
+      "text_markdown": "Tā ir īsta inversija.",
+      "title": "",
+      "tts": {
+        "text": "Tā ir īsta inversija.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir — pēc rādītāja, ko izstrādātāji patiešām jūt, proti, kas darbojas ražošanā, atvērtie modeļi uzvar augšgalā.",
+      "text_markdown": "Tas ir — pēc rādītāja, ko izstrādātāji patiešām jūt, proti, kas darbojas ražošanā, atvērtie modeļi uzvar augšgalā.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir — pēc rādītāja, ko izstrādātāji patiešām jūt, proti, kas darbojas ražošanā, atvērtie modeļi uzvar augšgalā.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bet esiet godīgi par lietojuma diagrammām.",
+      "text_markdown": "Bet esiet godīgi par lietojuma diagrammām.",
+      "title": "",
+      "tts": {
+        "text": "Bet esiet godīgi par lietojuma diagrammām.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Labs instinkts, un šonedēļ ir ideāls brīdinājuma stāsts.",
+      "text_markdown": "Labs instinkts, un šonedēļ ir ideāls brīdinājuma stāsts.",
+      "title": "",
+      "tts": {
+        "text": "Labs instinkts, un šonedēļ ir ideāls brīdinājuma stāsts.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Cits modelis, Tencent Hy3, strauji pacēlās tajā pašā lietojuma diagrammā.",
+      "text_markdown": "Cits modelis, Tencent Hy3, strauji pacēlās tajā pašā lietojuma diagrammā.",
+      "title": "",
+      "tts": {
+        "text": "Cits modelis, Tencent H I trīs, strauji pacēlās tajā pašā lietojuma diagrammā.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Analītiķis Maks Vulfs to izanalizēja 26. maijā.",
+      "text_markdown": "Analītiķis Maks Vulfs to izanalizēja 26. maijā.",
+      "title": "",
+      "tts": {
+        "text": "Analītiķis Maks Vulfs to izanalizēja divdesmit sestajā maijā.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ko viņš atklāja?",
+      "text_markdown": "Ko viņš atklāja?",
+      "title": "",
+      "tts": {
+        "text": "Ko viņš atklāja?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas šķiet lēts par žetonu, bet tam ir ļoti augstas kešatmiņas lasīšanas izmaksas.",
+      "text_markdown": "Tas šķiet lēts par žetonu, bet tam ir ļoti augstas kešatmiņas lasīšanas izmaksas.",
+      "title": "",
+      "tts": {
+        "text": "Tas šķiet lēts par žetonu, bet tam ir ļoti augstas kešatmiņas lasīšanas izmaksas.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kad tās tiek ieskaitītas, tā patiesā cena ir gandrīz divreiz lielāka par DeepSeek cenu.",
+      "text_markdown": "Kad tās tiek ieskaitītas, tā patiesā cena ir gandrīz divreiz lielāka par DeepSeek cenu.",
+      "title": "",
+      "tts": {
+        "text": "Kad tās tiek ieskaitītas, tā patiesā cena ir gandrīz divreiz lielāka par DeepSeek cenu.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un šis pieaugums izskatās pēc vienas milzīgas lietotnes, nevis plašas popularitātes.",
+      "text_markdown": "Un šis pieaugums izskatās pēc vienas milzīgas lietotnes, nevis plašas popularitātes.",
+      "title": "",
+      "tts": {
+        "text": "Un šis pieaugums izskatās pēc vienas milzīgas lietotnes, nevis plašas popularitātes.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad lietojuma saraksts parāda, kas tērē, nevis kas ir labs.",
+      "text_markdown": "Tātad lietojuma saraksts parāda, kas tērē, nevis kas ir labs.",
+      "title": "",
+      "tts": {
+        "text": "Tātad lietojuma saraksts parāda, kas tērē, nevis kas ir labs.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tendences nav tas pats, kas labākais.",
+      "text_markdown": "Tendences nav tas pats, kas labākais.",
+      "title": "",
+      "tts": {
+        "text": "Tendences nav tas pats, kas labākais.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tā ir tieši tā mācība, kas jāņem vērā.",
+      "text_markdown": "Tā ir tieši tā mācība, kas jāņem vērā.",
+      "title": "",
+      "tts": {
+        "text": "Tā ir tieši tā mācība, kas jāņem vērā.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kā ir ar kvalitātes sarakstiem?",
+      "text_markdown": "Kā ir ar kvalitātes sarakstiem?",
+      "title": "",
+      "tts": {
+        "text": "Kā ir ar kvalitātes sarakstiem?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Visgrūtākajos sarakstos slēgtie modeļi joprojām ir vadībā.",
+      "text_markdown": "Visgrūtākajos sarakstos slēgtie modeļi joprojām ir vadībā.",
+      "title": "",
+      "tts": {
+        "text": "Visgrūtākajos sarakstos slēgtie modeļi joprojām ir vadībā.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tērzēšanas kvalitātes un aģentu termināļu sarakstu augšgalā pašlaik ir tikai slēgtie modeļi.",
+      "text_markdown": "Tērzēšanas kvalitātes un aģentu termināļu sarakstu augšgalā pašlaik ir tikai slēgtie modeļi.",
+      "title": "",
+      "tts": {
+        "text": "Tērzēšanas kvalitātes un aģentu termināļu sarakstu augšgalā pašlaik ir tikai slēgtie modeļi.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bet SWE-bench Verified, kodēšanas testā, atvērtie modeļi būtībā ir līdzvērtīgi.",
+      "text_markdown": "Bet SWE-bench Verified, kodēšanas testā, atvērtie modeļi būtībā ir līdzvērtīgi.",
+      "title": "",
+      "tts": {
+        "text": "Bet S V E benč Verified, kodēšanas testā, atvērtie modeļi būtībā ir līdzvērtīgi.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Izsekotāji novērtē labākos atvērtos modeļus ap 80%.",
+      "text_markdown": "Izsekotāji novērtē labākos atvērtos modeļus ap 80%.",
+      "title": "",
+      "tts": {
+        "text": "Izsekotāji novērtē labākos atvērtos modeļus ap astoņdesmit procentiem.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kādi atvērtie modeļi ir pieejami?",
+      "text_markdown": "Kādi atvērtie modeļi ir pieejami?",
+      "title": "",
+      "tts": {
+        "text": "Kādi atvērtie modeļi ir pieejami?",
+        "pause_after_ms": 359,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kimi K2.6 un MiniMax, ar DeepSeek lielāko modeli, kas apgalvo līdzīgu.",
+      "text_markdown": "Kimi K2.6 un MiniMax, ar DeepSeek lielāko modeli, kas apgalvo līdzīgu.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K divi komats seši un MiniMax, ar DeepSeek lielāko modeli, kas apgalvo līdzīgu.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Es teikšu apgalvo, jo izsekotāji savā starpā atšķiras.",
+      "text_markdown": "Es teikšu apgalvo, jo izsekotāji savā starpā atšķiras.",
+      "title": "",
+      "tts": {
+        "text": "Es teikšu apgalvo, jo izsekotāji savā starpā atšķiras.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Uztveriet jebkuru atsevišķu etalonu skaitli kā apgalvojumu, nevis faktu.",
+      "text_markdown": "Uztveriet jebkuru atsevišķu etalonu skaitli kā apgalvojumu, nevis faktu.",
+      "title": "",
+      "tts": {
+        "text": "Uztveriet jebkuru atsevišķu etalonu skaitli kā apgalvojumu, nevis faktu.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Runājot par to — etalonu uzticamības problēma.",
+      "text_markdown": "Runājot par to — etalonu uzticamības problēma.",
+      "title": "",
+      "tts": {
+        "text": "Runājot par to — etalonu uzticamības problēma.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jā, ass raksts parādījās 19. maijā tieši par to.",
+      "text_markdown": "Jā, ass raksts parādījās 19. maijā tieši par to.",
+      "title": "",
+      "tts": {
+        "text": "Jā, ass raksts parādījās deviņpadsmitajā maijā tieši par to.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Arguments ir tāds, ka etaloniem jābūt noturīgiem pret piesārņojumu.",
+      "text_markdown": "Arguments ir tāds, ka etaloniem jābūt noturīgiem pret piesārņojumu.",
+      "title": "",
+      "tts": {
+        "text": "Arguments ir tāds, ka etaloniem jābūt noturīgiem pret piesārņojumu.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas nozīmē, ka tests nedrīkst noplūst apmācības datos.",
+      "text_markdown": "Tas nozīmē, ka tests nedrīkst noplūst apmācības datos.",
+      "title": "",
+      "tts": {
+        "text": "Tas nozīmē, ka tests nedrīkst noplūst apmācības datos.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Pretējā gadījumā augsts rezultāts mēra atmiņu, nevis spriešanu.",
+      "text_markdown": "Pretējā gadījumā augsts rezultāts mēra atmiņu, nevis spriešanu.",
+      "title": "",
+      "tts": {
+        "text": "Pretējā gadījumā augsts rezultāts mēra atmiņu, nevis spriešanu.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad divi veidi, kā tabula var melot.",
+      "text_markdown": "Tātad divi veidi, kā tabula var melot.",
+      "title": "",
+      "tts": {
+        "text": "Tātad divi veidi, kā tabula var melot.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Pareizi — lietošanas spēles vienā pusē, piesārņojums otrā.",
+      "text_markdown": "Pareizi — lietošanas spēles vienā pusē, piesārņojums otrā.",
+      "title": "",
+      "tts": {
+        "text": "Pareizi — lietošanas spēles vienā pusē, piesārņojums otrā.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tā pati mācība — lasiet līderu sarakstu, nepielūdziet to.",
+      "text_markdown": "Tā pati mācība — lasiet līderu sarakstu, nepielūdziet to.",
+      "title": "",
+      "tts": {
+        "text": "Tā pati mācība — lasiet līderu sarakstu, nepielūdziet to.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tagad pievērsīsimies virsrakstiem.",
+      "text_markdown": "Tagad pievērsīsimies virsrakstiem.",
+      "title": "",
+      "tts": {
+        "text": "Tagad pievērsīsimies virsrakstiem.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Īss pārskats par lietām, ko tiešām varat izmantot.",
+      "text_markdown": "Īss pārskats par lietām, ko tiešām varat izmantot.",
+      "title": "",
+      "tts": {
+        "text": "Īss pārskats par lietām, ko tiešām varat izmantot.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Pirmkārt, godīga pašmitināšanas matemātika par to modeļa numur viens.",
+      "text_markdown": "Pirmkārt, godīga pašmitināšanas matemātika par to modeļa numur viens.",
+      "title": "",
+      "tts": {
+        "text": "Pirmkārt, godīga pašmitināšanas matemātika par to modeļa numur viens.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "DeepSeek V4-Flash nepieciešami aptuveni 170 gigabaiti GPU atmiņas.",
+      "text_markdown": "DeepSeek V4-Flash nepieciešami aptuveni 170 gigabaiti GPU atmiņas.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V četri Flash nepieciešami aptuveni simts septiņdesmit gigabaiti G P U atmiņas.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir pāris augstākās klases datu centru karšu, ap septiņiem dolāriem stundā mākonī.",
+      "text_markdown": "Tas ir pāris augstākās klases datu centru karšu, ap septiņiem dolāriem stundā mākonī.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir pāris augstākās klases datu centru karšu, ap septiņiem dolāriem stundā mākonī.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Pie ļoti lielas datplūsmas lētais API joprojām uzvar.",
+      "text_markdown": "Pie ļoti lielas datplūsmas lētais API joprojām uzvar.",
+      "title": "",
+      "tts": {
+        "text": "Pie ļoti lielas datplūsmas lētais API joprojām uzvar.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Pašmitiniet privātumam un kontrolei, nevis naudas taupīšanai — ja vien neesat milzīgs.",
+      "text_markdown": "Pašmitiniet privātumam un kontrolei, nevis naudas taupīšanai — ja vien neesat milzīgs.",
+      "title": "",
+      "tts": {
+        "text": "Pašmitiniet privātumam un kontrolei, nevis naudas taupīšanai — ja vien neesat milzīgs.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Labi, kas vēl?",
+      "text_markdown": "Labi, kas vēl?",
+      "title": "",
+      "tts": {
+        "text": "Labi, kas vēl?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Otrkārt, ierīcē esošā runa šogad ir strauji attīstījusies.",
+      "text_markdown": "Otrkārt, ierīcē esošā runa šogad ir strauji attīstījusies.",
+      "title": "",
+      "tts": {
+        "text": "Otrkārt, ierīcē esošā runa šogad ir strauji attīstījusies.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ir atvērts teksta-uz-runu modelis, kas darbojas uz CPU bez GPU vispār.",
+      "text_markdown": "Ir atvērts teksta-uz-runu modelis, kas darbojas uz CPU bez GPU vispār.",
+      "title": "",
+      "tts": {
+        "text": "Ir atvērts teksta-uz-runu modelis, kas darbojas uz C P U bez G P U vispār.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Paturiet to prātā — tas ir mūsu galvenais stāsts.",
+      "text_markdown": "Paturiet to prātā — tas ir mūsu galvenais stāsts.",
+      "title": "",
+      "tts": {
+        "text": "Paturiet to prātā — tas ir mūsu galvenais stāsts.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mājiens ir ievērots.",
+      "text_markdown": "Mājiens ir ievērots.",
+      "title": "",
+      "tts": {
+        "text": "Mājiens ir ievērots.",
+        "pause_after_ms": 497,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Treškārt, kopienas kvantu slānis uztur atvērto pasauli.",
+      "text_markdown": "Treškārt, kopienas kvantu slānis uztur atvērto pasauli.",
+      "title": "",
+      "tts": {
+        "text": "Treškārt, kopienas kvantu slānis uztur atvērto pasauli.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Grupas, piemēram, Unsloth, pielāgotas un samazinātas jauno modeļu versijas piegādā dažu dienu laikā.",
+      "text_markdown": "Grupas, piemēram, Unsloth, pielāgotas un samazinātas jauno modeļu versijas piegādā dažu dienu laikā.",
+      "title": "",
+      "tts": {
+        "text": "Grupas, piemēram, Unsloth, pielāgotas un samazinātas jauno modeļu versijas piegādā dažu dienu laikā.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tā milzīgs modelis kļūst par kaut ko, kas der jūsu kartei.",
+      "text_markdown": "Tā milzīgs modelis kļūst par kaut ko, kas der jūsu kartei.",
+      "title": "",
+      "tts": {
+        "text": "Tā milzīgs modelis kļūst par kaut ko, kas der jūsu kartei.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un klausīšanās pusē?",
+      "text_markdown": "Un klausīšanās pusē?",
+      "title": "",
+      "tts": {
+        "text": "Un klausīšanās pusē?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Arī runa-uz-tekstu ir attīstījusies.",
+      "text_markdown": "Arī runa-uz-tekstu ir attīstījusies.",
+      "title": "",
+      "tts": {
+        "text": "Arī runa-uz-tekstu ir attīstījusies.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Moonshine v2 ir atvērts modelis, kas pārspēj Whisper precizitātē, būdams daudz mazāks.",
+      "text_markdown": "Moonshine v2 ir atvērts modelis, kas pārspēj Whisper precizitātē, būdams daudz mazāks.",
+      "title": "",
+      "tts": {
+        "text": "Moonshine versija divi ir atvērts modelis, kas pārspēj Whisper precizitātē, būdams daudz mazāks.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir veidots Raspberry Pi vai tālrunim.",
+      "text_markdown": "Tas ir veidots Raspberry Pi vai tālrunim.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir veidots Raspberry Pi vai tālrunim.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Lielapjoma transkripcijai serverī NVIDIA Parakeet ir ātrākā izvēle.",
+      "text_markdown": "Lielapjoma transkripcijai serverī NVIDIA Parakeet ir ātrākā izvēle.",
+      "title": "",
+      "tts": {
+        "text": "Lielapjoma transkripcijai serverī NVIDIA Parakeet ir ātrākā izvēle.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vēl viens — mikroshēmu stāsts.",
+      "text_markdown": "Vēl viens — mikroshēmu stāsts.",
+      "title": "",
+      "tts": {
+        "text": "Vēl viens — mikroshēmu stāsts.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šis saista visu epizodi kopā.",
+      "text_markdown": "Šis saista visu epizodi kopā.",
+      "title": "",
+      "tts": {
+        "text": "Šis saista visu epizodi kopā.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "21. maijā Nvidia Džensens Huans paziņoja, ka lielā mērā ir piekāpies Huawei Ķīnas mikroshēmu tirgū.",
+      "text_markdown": "21. maijā Nvidia Džensens Huans paziņoja, ka lielā mērā ir piekāpies Huawei Ķīnas mikroshēmu tirgū.",
+      "title": "",
+      "tts": {
+        "text": "Divdesmit pirmā maijā Nvidia Džensens Huans paziņoja, ka lielā mērā ir piekāpies Huawei Ķīnas mikroshēmu tirgū.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ķīna pat bloķē apstiprinātos Nvidia importus, lai virzītu savu silīciju.",
+      "text_markdown": "Ķīna pat bloķē apstiprinātos Nvidia importus, lai virzītu savu silīciju.",
+      "title": "",
+      "tts": {
+        "text": "Ķīna pat bloķē apstiprinātos Nvidia importus, lai virzītu savu silīciju.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kāpēc tas ir svarīgi izstrādātājam?",
+      "text_markdown": "Kāpēc tas ir svarīgi izstrādātājam?",
+      "title": "",
+      "tts": {
+        "text": "Kāpēc tas ir svarīgi izstrādātājam?",
+        "pause_after_ms": 374,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jo tie atvērtie ķīniešu modeļi, kas atrodas lietojuma diagrammas augšgalā, arvien biežāk tiek apmācīti un apkalpoti ar Huawei mikroshēmām.",
+      "text_markdown": "Jo tie atvērtie ķīniešu modeļi, kas atrodas lietojuma diagrammas augšgalā, arvien biežāk tiek apmācīti un apkalpoti ar Huawei mikroshēmām.",
+      "title": "",
+      "tts": {
+        "text": "Jo tie atvērtie ķīniešu modeļi, kas atrodas lietojuma diagrammas augšgalā, arvien biežāk tiek apmācīti un apkalpoti ar Huawei mikroshēmām.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Eksporta kontroles bija paredzētas, lai palēninātu Ķīnas AI attīstību.",
+      "text_markdown": "Eksporta kontroles bija paredzētas, lai palēninātu Ķīnas AI attīstību.",
+      "title": "",
+      "tts": {
+        "text": "Eksporta kontroles bija paredzētas, lai palēninātu Ķīnas AI attīstību.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tā vietā tās izveidoja paralēlu atvērtu sistēmu — gan mikroshēmas, gan svarus.",
+      "text_markdown": "Tā vietā tās izveidoja paralēlu atvērtu sistēmu — gan mikroshēmas, gan svarus.",
+      "title": "",
+      "tts": {
+        "text": "Tā vietā tās izveidoja paralēlu atvērtu sistēmu — gan mikroshēmas, gan svarus.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Līderu saraksta stāsts un mikroshēmu stāsts ir viens un tas pats stāsts.",
+      "text_markdown": "Līderu saraksta stāsts un mikroshēmu stāsts ir viens un tas pats stāsts.",
+      "title": "",
+      "tts": {
+        "text": "Līderu saraksta stāsts un mikroshēmu stāsts ir viens un tas pats stāsts.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tagad atgriezīsimies pie galvenā stāsta.",
+      "text_markdown": "Tagad atgriezīsimies pie galvenā stāsta.",
+      "title": "",
+      "tts": {
+        "text": "Tagad atgriezīsimies pie galvenā stāsta.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jūs mums apsolījāt atvērtu balsi.",
+      "text_markdown": "Jūs mums apsolījāt atvērtu balsi.",
+      "title": "",
+      "tts": {
+        "text": "Jūs mums apsolījāt atvērtu balsi.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Es to izdarīju, un šī ir šī raidījuma dzinēju telpa.",
+      "text_markdown": "Es to izdarīju, un šī ir šī raidījuma dzinēju telpa.",
+      "title": "",
+      "tts": {
+        "text": "Es to izdarīju, un šī ir šī raidījuma dzinēju telpa.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Pastāstiet vairāk par to.",
+      "text_markdown": "Pastāstiet vairāk par to.",
+      "title": "",
+      "tts": {
+        "text": "Pastāstiet vairāk par to.",
+        "pause_after_ms": 493,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Balss, ko dzirdat, darbojas uz atvērtu un mitinātu runas modeļu kopas.",
+      "text_markdown": "Balss, ko dzirdat, darbojas uz atvērtu un mitinātu runas modeļu kopas.",
+      "title": "",
+      "tts": {
+        "text": "Balss, ko dzirdat, darbojas uz atvērtu un mitinātu runas modeļu kopas.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un 2026. gads ir gads, kad atvērtie modeļi kļuva pietiekami labi, lai tos varētu izmantot.",
+      "text_markdown": "Un 2026. gads ir gads, kad atvērtie modeļi kļuva pietiekami labi, lai tos varētu izmantot.",
+      "title": "",
+      "tts": {
+        "text": "Un divi tūkstoši divdesmit sestais gads ir gads, kad atvērtie modeļi kļuva pietiekami labi, lai tos varētu izmantot.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sāksim ar to, kas ir vistuvāk mājām.",
+      "text_markdown": "Sāksim ar to, kas ir vistuvāk mājām.",
+      "title": "",
+      "tts": {
+        "text": "Sāksim ar to, kas ir vistuvāk mājām.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir Chatterbox no Resemble AI.",
+      "text_markdown": "Tas ir Chatterbox no Resemble AI.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir Chatterbox no Resemble AI.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tam ir MIT licence, tas aptver 23 valodas un darbojas ierīcē.",
+      "text_markdown": "Tam ir MIT licence, tas aptver 23 valodas un darbojas ierīcē.",
+      "title": "",
+      "tts": {
+        "text": "Tam ir M I T licence, tas aptver divdesmit trīs valodas un darbojas ierīcē.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Marta mēnesī iznāca versija ar nosaukumu Turbo.",
+      "text_markdown": "Marta mēnesī iznāca versija ar nosaukumu Turbo.",
+      "title": "",
+      "tts": {
+        "text": "Marta mēnesī iznāca versija ar nosaukumu Turbo.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas izmanto triku, kas padara audio dekodētāju par vienu soli, nevis desmit.",
+      "text_markdown": "Tas izmanto triku, kas padara audio dekodētāju par vienu soli, nevis desmit.",
+      "title": "",
+      "tts": {
+        "text": "Tas izmanto triku, kas padara audio dekodētāju par vienu soli, nevis desmit.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vienkāršā valodā par šo triku?",
+      "text_markdown": "Vienkāršā valodā par šo triku?",
+      "title": "",
+      "tts": {
+        "text": "Vienkāršā valodā par šo triku?",
+        "pause_after_ms": 314,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas nozīmē daudz mazāku skaitļošanas jaudu tai pašai balsij.",
+      "text_markdown": "Tas nozīmē daudz mazāku skaitļošanas jaudu tai pašai balsij.",
+      "title": "",
+      "tts": {
+        "text": "Tas nozīmē daudz mazāku skaitļošanas jaudu tai pašai balsij.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas padara labu balsi reālistisku tālrunī.",
+      "text_markdown": "Tas padara labu balsi reālistisku tālrunī.",
+      "title": "",
+      "tts": {
+        "text": "Tas padara labu balsi reālistisku tālrunī.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ko darīt, ja nepieciešamas vairākas valodas?",
+      "text_markdown": "Ko darīt, ja nepieciešamas vairākas valodas?",
+      "title": "",
+      "tts": {
+        "text": "Ko darīt, ja nepieciešamas vairākas valodas?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ir atvērts modelis ar nosaukumu OmniVoice.",
+      "text_markdown": "Ir atvērts modelis ar nosaukumu OmniVoice.",
+      "title": "",
+      "tts": {
+        "text": "Ir atvērts modelis ar nosaukumu Omni Voice.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas apgalvo, ka atbalsta vairāk nekā 600 valodas, un tas ir ātrs.",
+      "text_markdown": "Tas apgalvo, ka atbalsta vairāk nekā 600 valodas, un tas ir ātrs.",
+      "title": "",
+      "tts": {
+        "text": "Tas apgalvo, ka atbalsta vairāk nekā seši simti valodas, un tas ir ātrs.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tam ir Apache licence, tāpēc to ir droši izmantot komerciāli.",
+      "text_markdown": "Tam ir Apache licence, tāpēc to ir droši izmantot komerciāli.",
+      "title": "",
+      "tts": {
+        "text": "Tam ir Apache licence, tāpēc to ir droši izmantot komerciāli.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "600 valodas izklausās pārāk labi.",
+      "text_markdown": "600 valodas izklausās pārāk labi.",
+      "title": "",
+      "tts": {
+        "text": "sešsimt valodas izklausās pārāk labi.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tās ir pamatotas raizes.",
+      "text_markdown": "Tās ir pamatotas raizes.",
+      "title": "",
+      "tts": {
+        "text": "Tās ir pamatotas raizes.",
+        "pause_after_ms": 269,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Valodas aptveršana nav tas pats, kas labi skanēt tajā.",
+      "text_markdown": "Valodas aptveršana nav tas pats, kas labi skanēt tajā.",
+      "title": "",
+      "tts": {
+        "text": "Valodas aptveršana nav tas pats, kas labi skanēt tajā.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jums joprojām ir jāklausās, valodu pa valodai, pirms uzticaties tai.",
+      "text_markdown": "Jums joprojām ir jāklausās, valodu pa valodai, pirms uzticaties tai.",
+      "title": "",
+      "tts": {
+        "text": "Jums joprojām ir jāklausās, valodu pa valodai, pirms uzticaties tai.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kā ar studijas kvalitāti?",
+      "text_markdown": "Kā ar studijas kvalitāti?",
+      "title": "",
+      "tts": {
+        "text": "Kā ar studijas kvalitāti?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tam aplūkojiet VoxCPM2.",
+      "text_markdown": "Tam aplūkojiet VoxCPM2.",
+      "title": "",
+      "tts": {
+        "text": "Tam aplūkojiet Vox C P M divi.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tam ir aptuveni 2 miljardi parametru un Apache licence, un tā izvade ir ļoti precīza.",
+      "text_markdown": "Tam ir aptuveni 2 miljardi parametru un Apache licence, un tā izvade ir ļoti precīza.",
+      "title": "",
+      "tts": {
+        "text": "Tam ir aptuveni divi miljardi parametru un Apache licence, un tā izvade ir ļoti precīza.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas aptver 30 valodas, un to var precizēt ar nelielu balss paraugu.",
+      "text_markdown": "Tas aptver 30 valodas, un to var precizēt ar nelielu balss paraugu.",
+      "title": "",
+      "tts": {
+        "text": "Tas aptver trīsdesmit valodas, un to var precizēt ar nelielu balss paraugu.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šis apvienojums padara to par visvairāk komercializējamo vidēja izmēra atvērto balsi.",
+      "text_markdown": "Šis apvienojums padara to par visvairāk komercializējamo vidēja izmēra atvērto balsi.",
+      "title": "",
+      "tts": {
+        "text": "Šis apvienojums padara to par visvairāk komercializējamo vidēja izmēra atvērto balsi.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un ierīcē iebūvētā elastība, ko jūs pieminējāt?",
+      "text_markdown": "Un ierīcē iebūvētā elastība, ko jūs pieminējāt?",
+      "title": "",
+      "tts": {
+        "text": "Un ierīcē iebūvētā elastība, ko jūs pieminējāt?",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir MOSS-TTS-Nano.",
+      "text_markdown": "Tas ir MOSS-TTS-Nano.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir MOSS T T S Nano.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir niecīgs, aptuveni 100 miljoni parametru.",
+      "text_markdown": "Tas ir niecīgs, aptuveni 100 miljoni parametru.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir niecīgs, aptuveni simts miljoni parametru.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas darbojas uz CPU bez GPU — pat klēpjdatorā, uz viena kodola.",
+      "text_markdown": "Tas darbojas uz CPU bez GPU — pat klēpjdatorā, uz viena kodola.",
+      "title": "",
+      "tts": {
+        "text": "Tas darbojas uz C P U bez G P U — pat klēpjdatorā, uz viena kodola.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ikvienam, kurš piegādā balsi tālrunim, tas ir sapnis.",
+      "text_markdown": "Ikvienam, kurš piegādā balsi tālrunim, tas ir sapnis.",
+      "title": "",
+      "tts": {
+        "text": "Ikvienam, kurš piegādā balsi tālrunim, tas ir sapnis.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad viss ir tikai ieguvumi?",
+      "text_markdown": "Tātad viss ir tikai ieguvumi?",
+      "title": "",
+      "tts": {
+        "text": "Tātad viss ir tikai ieguvumi?",
+        "pause_after_ms": 338,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Nē — un šeit ir slazds, ko visi palaiž garām.",
+      "text_markdown": "Nē — un šeit ir slazds, ko visi palaiž garām.",
+      "title": "",
+      "tts": {
+        "text": "Nē — un šeit ir slazds, ko visi palaiž garām.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mistral izlaida jauku balss modeli ar nosaukumu Voxtral.",
+      "text_markdown": "Mistral izlaida jauku balss modeli ar nosaukumu Voxtral.",
+      "title": "",
+      "tts": {
+        "text": "Mistral izlaida jauku balss modeli ar nosaukumu Voxtral.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Svari ir atvērti, un kvalitāte ir lieliska.",
+      "text_markdown": "Svari ir atvērti, un kvalitāte ir lieliska.",
+      "title": "",
+      "tts": {
+        "text": "Svari ir atvērti, un kvalitāte ir lieliska.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Taču licence nav paredzēta komerciālai izmantošanai.",
+      "text_markdown": "Taču licence nav paredzēta komerciālai izmantošanai.",
+      "title": "",
+      "tts": {
+        "text": "Taču licence nav paredzēta komerciālai izmantošanai.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas nozīmē, ka to nevar izplatīt.",
+      "text_markdown": "Tas nozīmē, ka to nevar izplatīt.",
+      "title": "",
+      "tts": {
+        "text": "Tas nozīmē, ka to nevar izplatīt.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ne apmaksātā produktā, ne bez vienošanās.",
+      "text_markdown": "Ne apmaksātā produktā, ne bez vienošanās.",
+      "title": "",
+      "tts": {
+        "text": "Ne apmaksātā produktā, ne bez vienošanās.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Atvērtie svari ne vienmēr nozīmē, ka tos drīkst izmantot.",
+      "text_markdown": "Atvērtie svari ne vienmēr nozīmē, ka tos drīkst izmantot.",
+      "title": "",
+      "tts": {
+        "text": "Atvērtie svari ne vienmēr nozīmē, ka tos drīkst izmantot.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Reālai lietotnei licences noteikumi ir jāizlasa, pirms iemīlēties.",
+      "text_markdown": "Reālai lietotnei licences noteikumi ir jāizlasa, pirms iemīlēties.",
+      "title": "",
+      "tts": {
+        "text": "Reālai lietotnei licences noteikumi ir jāizlasa, pirms iemīlēties.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un etalonu apgalvojumi par šiem?",
+      "text_markdown": "Un etalonu apgalvojumi par šiem?",
+      "title": "",
+      "tts": {
+        "text": "Un etalonu apgalvojumi par šiem?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Esiet skeptiski.",
+      "text_markdown": "Esiet skeptiski.",
+      "title": "",
+      "tts": {
+        "text": "Esiet skeptiski.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Katrs apgalvojums par līdera pārspēšanu šeit ir pārdevēja paša veikts aklais tests.",
+      "text_markdown": "Katrs apgalvojums par līdera pārspēšanu šeit ir pārdevēja paša veikts aklais tests.",
+      "title": "",
+      "tts": {
+        "text": "Katrs apgalvojums par līdera pārspēšanu šeit ir pārdevēja paša veikts aklais tests.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Uzticieties savām ausīm, nevis viņu diagrammai.",
+      "text_markdown": "Uzticieties savām ausīm, nevis viņu diagrammai.",
+      "title": "",
+      "tts": {
+        "text": "Uzticieties savām ausīm, nevis viņu diagrammai.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad, kur tas mūs atstāj?",
+      "text_markdown": "Tātad, kur tas mūs atstāj?",
+      "title": "",
+      "tts": {
+        "text": "Tātad, kur tas mūs atstāj?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas mūs atstāj kaut kur patiesi jaunā.",
+      "text_markdown": "Tas mūs atstāj kaut kur patiesi jaunā.",
+      "title": "",
+      "tts": {
+        "text": "Tas mūs atstāj kaut kur patiesi jaunā.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Šodien jūs varat palaist lielisku balsi savā ierīcē.",
+      "text_markdown": "Šodien jūs varat palaist lielisku balsi savā ierīcē.",
+      "title": "",
+      "tts": {
+        "text": "Šodien jūs varat palaist lielisku balsi savā ierīcē.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Grūtais jautājums vairs nav, vai jūs to varat — tas ir, kura licence ļauj jums to paturēt.",
+      "text_markdown": "Grūtais jautājums vairs nav, vai jūs to varat — tas ir, kura licence ļauj jums to paturēt.",
+      "title": "",
+      "tts": {
+        "text": "Grūtais jautājums vairs nav, vai jūs to varat — tas ir, kura licence ļauj jums to paturēt.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir labs punkts, ar ko noslēgt stāstu.",
+      "text_markdown": "Tas ir labs punkts, ar ko noslēgt stāstu.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir labs punkts, ar ko noslēgt stāstu.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Apskatīsim nedēļas konceptu.",
+      "text_markdown": "Apskatīsim nedēļas konceptu.",
+      "title": "",
+      "tts": {
+        "text": "Apskatīsim nedēļas konceptu.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jūs izvēlējāties neirālos audio kodekus.",
+      "text_markdown": "Jūs izvēlējāties neirālos audio kodekus.",
+      "title": "",
+      "tts": {
+        "text": "Jūs izvēlējāties neirālos audio kodekus.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jā, jo tas ir slēptais triks aiz katras ierīces balss.",
+      "text_markdown": "Jā, jo tas ir slēptais triks aiz katras ierīces balss.",
+      "title": "",
+      "tts": {
+        "text": "Jā, jo tas ir slēptais triks aiz katras ierīces balss.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Neapstrādāts audio ir milzīgs — dažas sekundes ir miljoniem skaitļu.",
+      "text_markdown": "Neapstrādāts audio ir milzīgs — dažas sekundes ir miljoniem skaitļu.",
+      "title": "",
+      "tts": {
+        "text": "Neapstrādāts audio ir milzīgs — dažas sekundes ir miljoniem skaitļu.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tālrunis nevar visu to straumēt modelim reāllaikā.",
+      "text_markdown": "Tālrunis nevar visu to straumēt modelim reāllaikā.",
+      "title": "",
+      "tts": {
+        "text": "Tālrunis nevar visu to straumēt modelim reāllaikā.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad, ko dara kodeks?",
+      "text_markdown": "Tātad, ko dara kodeks?",
+      "title": "",
+      "tts": {
+        "text": "Tātad, ko dara kodeks?",
+        "pause_after_ms": 304,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas iemācās saspiest šo audio sīkā marķieru plūsmā.",
+      "text_markdown": "Tas iemācās saspiest šo audio sīkā marķieru plūsmā.",
+      "title": "",
+      "tts": {
+        "text": "Tas iemācās saspiest šo audio sīkā marķieru plūsmā.",
+        "pause_after_ms": 248,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Uztveriet to kā gudru zip failu skaņai.",
+      "text_markdown": "Uztveriet to kā gudru zip failu skaņai.",
+      "title": "",
+      "tts": {
+        "text": "Uztveriet to kā gudru zip failu skaņai.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Atvērtais, ko sauc par Mimi, sasniedz aptuveni vienu kilobitu sekundē.",
+      "text_markdown": "Atvērtais, ko sauc par Mimi, sasniedz aptuveni vienu kilobitu sekundē.",
+      "title": "",
+      "tts": {
+        "text": "Atvērtais, ko sauc par Mimi, sasniedz aptuveni vienu kilobitu sekundē.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Cik tas patiesībā ir mazs?",
+      "text_markdown": "Cik tas patiesībā ir mazs?",
+      "title": "",
+      "tts": {
+        "text": "Cik tas patiesībā ir mazs?",
+        "pause_after_ms": 320,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Daži simti mazu skaitļu sekundē, nevis miljoniem.",
+      "text_markdown": "Daži simti mazu skaitļu sekundē, nevis miljoniem.",
+      "title": "",
+      "tts": {
+        "text": "Daži simti mazu skaitļu sekundē, nevis miljoniem.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Un tas joprojām atjauno balsi tā, lai tā skanētu dabiski.",
+      "text_markdown": "Un tas joprojām atjauno balsi tā, lai tā skanētu dabiski.",
+      "title": "",
+      "tts": {
+        "text": "Un tas joprojām atjauno balsi tā, lai tā skanētu dabiski.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kāpēc tas ir svarīgi balss modelim?",
+      "text_markdown": "Kāpēc tas ir svarīgi balss modelim?",
+      "title": "",
+      "tts": {
+        "text": "Kāpēc tas ir svarīgi balss modelim?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jo modelis runā šajos marķieros, nevis neapstrādātā skaņā.",
+      "text_markdown": "Jo modelis runā šajos marķieros, nevis neapstrādātā skaņā.",
+      "title": "",
+      "tts": {
+        "text": "Jo modelis runā šajos marķieros, nevis neapstrādātā skaņā.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mazāk marķieru nozīmē mazāk skaitļošanas katram vārdam.",
+      "text_markdown": "Mazāk marķieru nozīmē mazāk skaitļošanas katram vārdam.",
+      "title": "",
+      "tts": {
+        "text": "Mazāk marķieru nozīmē mazāk skaitļošanas katram vārdam.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-198",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas ir tas, kas ļauj labai balsij darboties tālrunī bezsaistē.",
+      "text_markdown": "Tas ir tas, kas ļauj labai balsij darboties tālrunī bezsaistē.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir tas, kas ļauj labai balsij darboties tālrunī bezsaistē.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-199",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tātad kodeks nosaka pamatu.",
+      "text_markdown": "Tātad kodeks nosaka pamatu.",
+      "title": "",
+      "tts": {
+        "text": "Tātad kodeks nosaka pamatu.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-200",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tieši tā, tas nosaka latentumu un bitu pārraides ātrumu, zem kura darbojas viss pārējais.",
+      "text_markdown": "Tieši tā, tas nosaka latentumu un bitu pārraides ātrumu, zem kura darbojas viss pārējais.",
+      "title": "",
+      "tts": {
+        "text": "Tieši tā, tas nosaka latentumu un bitu pārraides ātrumu, zem kura darbojas viss pārējais.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-201",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Atvērtie, Mimi un radinieks ar nosaukumu SNAC, ir tie, uz kuriem balstās jauni runas modeļi.",
+      "text_markdown": "Atvērtie, Mimi un radinieks ar nosaukumu SNAC, ir tie, uz kuriem balstās jauni runas modeļi.",
+      "title": "",
+      "tts": {
+        "text": "Atvērtie, Mimi un radinieks ar nosaukumu SNAC, ir tie, uz kuriem balstās jauni runas modeļi.",
+        "pause_after_ms": 275,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-202",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kad sastopaties ar mazu ierīces balsi, zem tās ir šāds kodeks.",
+      "text_markdown": "Kad sastopaties ar mazu ierīces balsi, zem tās ir šāds kodeks.",
+      "title": "",
+      "tts": {
+        "text": "Kad sastopaties ar mazu ierīces balsi, zem tās ir šāds kodeks.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-203",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Saspiešana, ko varat dzirdēt cauri — tas ir klusais izrāviens.",
+      "text_markdown": "Saspiešana, ko varat dzirdēt cauri — tas ir klusais izrāviens.",
+      "title": "",
+      "tts": {
+        "text": "Saspiešana, ko varat dzirdēt cauri — tas ir klusais izrāviens.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-204",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Laba vieta, kur noslēgt.",
+      "text_markdown": "Laba vieta, kur noslēgt.",
+      "title": "",
+      "tts": {
+        "text": "Laba vieta, kur noslēgt.",
+        "pause_after_ms": 298,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-205",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, liels paldies.",
+      "text_markdown": "Ron, liels paldies.",
+      "title": "",
+      "tts": {
+        "text": "Ron, liels paldies.",
+        "pause_after_ms": 481,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-206",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jebkurā laikā, Vindy.",
+      "text_markdown": "Jebkurā laikā, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jebkurā laikā, Vindy.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-207",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tas bija AI Šonedēļ 2026. gada 27. maijam.",
+      "text_markdown": "Tas bija AI Šonedēļ 2026. gada 27. maijam.",
+      "title": "",
+      "tts": {
+        "text": "Tas bija AI Šonedēļ divi tūkstoši divdesmit sestā gada divdesmit septītajam maijam.",
+        "pause_after_ms": 236,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-208",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jauns izdevums nākamajā trešdienā.",
+      "text_markdown": "Jauns izdevums nākamajā trešdienā.",
+      "title": "",
+      "tts": {
+        "text": "Jauns izdevums nākamajā trešdienā.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-209",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Līdz tam, uz redzēšanos.",
+      "text_markdown": "Līdz tam, uz redzēšanos.",
+      "title": "",
+      "tts": {
+        "text": "Līdz tam, uz redzēšanos.",
+        "pause_after_ms": 1176,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

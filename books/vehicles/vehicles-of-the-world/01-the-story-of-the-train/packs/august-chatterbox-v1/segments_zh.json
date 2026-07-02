@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "给读者的话",
+      "text_markdown": "给读者的话"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "两百年来，火车一直是世界的钢铁之路。",
+      "text_markdown": "两百年来，火车一直是世界的钢铁之路。",
+      "tts": {
+        "text": "两百年来，火车一直是世界的钢铁之路。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "火车运送人们。",
+      "text_markdown": "火车运送人们。",
+      "tts": {
+        "text": "火车运送人们。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "火车运送货物。",
+      "text_markdown": "火车运送货物。",
+      "tts": {
+        "text": "火车运送货物。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一列长长的火车，能运走一整座小镇所需的粮食。",
+      "text_markdown": "一列长长的火车，能运走一整座小镇所需的粮食。",
+      "tts": {
+        "text": "一列长长的火车，能运走一整座小镇所需的粮食。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "一列快速火车，能在高速公路上跑过汽车。",
+      "text_markdown": "一列快速火车，能在高速公路上跑过汽车。",
+      "tts": {
+        "text": "一列快速火车，能在高速公路上跑过汽车。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火车的故事开始于英格兰，差不多在两百年前，从一个人、一团火和一壶沸腾的水开始。",
+      "text_markdown": "火车的故事开始于英格兰，差不多在两百年前，从一个人、一团火和一壶沸腾的水开始。",
+      "tts": {
+        "text": "火车的故事开始于英格兰，差不多在两百年前，从一个人、一团火和一壶沸腾的水开始。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第一章：第一辆蒸汽火车",
+      "text_markdown": "第一章：第一辆蒸汽火车"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一列火车，就是一串在铁轨上行驶的车厢。",
+      "text_markdown": "一列火车，就是一串在铁轨上行驶的车厢。",
+      "tts": {
+        "text": "一列火车，就是一串在铁轨上行驶的车厢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最前面的车是机车。",
+      "text_markdown": "最前面的车是机车。",
+      "tts": {
+        "text": "最前面的车是机车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它拉着后面的所有车厢。",
+      "text_markdown": "它拉着后面的所有车厢。",
+      "tts": {
+        "text": "它拉着后面的所有车厢。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最早的火车靠蒸汽驱动。",
+      "text_markdown": "最早的火车靠蒸汽驱动。",
+      "tts": {
+        "text": "最早的火车靠蒸汽驱动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "蒸汽机烧煤，把水烧开。",
+      "text_markdown": "蒸汽机烧煤，把水烧开。",
+      "tts": {
+        "text": "蒸汽机烧煤，把水烧开。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "滚烫的蒸汽推动活塞。",
+      "text_markdown": "滚烫的蒸汽推动活塞。",
+      "tts": {
+        "text": "滚烫的蒸汽推动活塞。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "活塞带动车轮转动。",
+      "text_markdown": "活塞带动车轮转动。",
+      "tts": {
+        "text": "活塞带动车轮转动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "车轮在铁轨上滚动。",
+      "text_markdown": "车轮在铁轨上滚动。",
+      "tts": {
+        "text": "车轮在铁轨上滚动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这个故事开始于英格兰。",
+      "text_markdown": "这个故事开始于英格兰。",
+      "tts": {
+        "text": "这个故事开始于英格兰。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在一八二五年，第一条公共铁路开通了。",
+      "text_markdown": "在一八二五年，第一条公共铁路开通了。",
+      "tts": {
+        "text": "在一八二五年，第一条公共铁路开通了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它叫作斯托克顿和达灵顿铁路。",
+      "text_markdown": "它叫作斯托克顿和达灵顿铁路。",
+      "tts": {
+        "text": "它叫作斯托克顿和达灵顿铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它把煤从矿山运到河边。",
+      "text_markdown": "它把煤从矿山运到河边。",
+      "tts": {
+        "text": "它把煤从矿山运到河边。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个名叫乔治·史蒂芬森的人造出了这些机车。",
+      "text_markdown": "一个名叫乔治·史蒂芬森的人造出了这些机车。",
+      "tts": {
+        "text": "一个名叫乔治 史蒂芬森的人造出了这些机车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们称他为铁路之父。",
+      "text_markdown": "人们称他为铁路之父。",
+      "tts": {
+        "text": "人们称他为铁路之父。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一八二九年，他的儿子罗伯特·史蒂芬森造出了一台著名的机车，叫火箭号。",
+      "text_markdown": "在一八二九年，他的儿子罗伯特·史蒂芬森造出了一台著名的机车，叫火箭号。",
+      "tts": {
+        "text": "在一八二九年，他的儿子罗伯特 史蒂芬森造出了一台著名的机车，叫火箭号。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它赢得了一场最快火车的比赛。",
+      "text_markdown": "它赢得了一场最快火车的比赛。",
+      "tts": {
+        "text": "它赢得了一场最快火车的比赛。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "火箭号每小时几乎能跑三十英里。",
+      "text_markdown": "火箭号每小时几乎能跑三十英里。",
+      "tts": {
+        "text": "火箭号每小时几乎能跑三十英里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "那比任何一匹马都快。",
+      "text_markdown": "那比任何一匹马都快。",
+      "tts": {
+        "text": "那比任何一匹马都快。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：第一辆蒸汽火车",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火车的时代开始了。",
+      "text_markdown": "火车的时代开始了。",
+      "tts": {
+        "text": "火车的时代开始了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第二章：钢铁之路扩展开来",
+      "text_markdown": "第二章：钢铁之路扩展开来"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火箭号出现以后，铁路很快就扩展开来。",
+      "text_markdown": "火箭号出现以后，铁路很快就扩展开来。",
+      "tts": {
+        "text": "火箭号出现以后，铁路很快就扩展开来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英国铺设了数千英里的铁轨。",
+      "text_markdown": "英国铺设了数千英里的铁轨。",
+      "tts": {
+        "text": "英国铺设了数千英里的铁轨。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "接着，世界其他地方也跟上了。",
+      "text_markdown": "接着，世界其他地方也跟上了。",
+      "tts": {
+        "text": "接着，世界其他地方也跟上了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一八三零年，美国第一条大型铁路开通了。",
+      "text_markdown": "在一八三零年，美国第一条大型铁路开通了。",
+      "tts": {
+        "text": "在一八三零年，美国第一条大型铁路开通了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它叫作巴尔的摩和俄亥俄铁路。",
+      "text_markdown": "它叫作巴尔的摩和俄亥俄铁路。",
+      "tts": {
+        "text": "它叫作巴尔的摩和俄亥俄铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它把巴尔的摩这座城市和俄亥俄河连接起来。",
+      "text_markdown": "它把巴尔的摩这座城市和俄亥俄河连接起来。",
+      "tts": {
+        "text": "它把巴尔的摩这座城市和俄亥俄河连接起来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在法国，第一条铁路在一八三二年开通了。",
+      "text_markdown": "在法国，第一条铁路在一八三二年开通了。",
+      "tts": {
+        "text": "在法国，第一条铁路在一八三二年开通了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它和英国那条铁路一样，也是运煤的。",
+      "text_markdown": "它和英国那条铁路一样，也是运煤的。",
+      "tts": {
+        "text": "它和英国那条铁路一样，也是运煤的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在德国，第一条长距离铁路在一八三九年开通了。",
+      "text_markdown": "在德国，第一条长距离铁路在一八三九年开通了。",
+      "tts": {
+        "text": "在德国，第一条长距离铁路在一八三九年开通了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它连接着两座城市，莱比锡和德累斯顿。",
+      "text_markdown": "它连接着两座城市，莱比锡和德累斯顿。",
+      "tts": {
+        "text": "它连接着两座城市，莱比锡和德累斯顿。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俄罗斯在一八三七年修建了第一条铁路。",
+      "text_markdown": "俄罗斯在一八三七年修建了第一条铁路。",
+      "tts": {
+        "text": "俄罗斯在一八三七年修建了第一条铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这条线路从圣彼得堡通到附近的一座小镇。",
+      "text_markdown": "这条线路从圣彼得堡通到附近的一座小镇。",
+      "tts": {
+        "text": "这条线路从圣彼得堡通到附近的一座小镇。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "修铁路是很辛苦的工作。",
+      "text_markdown": "修铁路是很辛苦的工作。",
+      "tts": {
+        "text": "修铁路是很辛苦的工作。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们在山里挖隧道。",
+      "text_markdown": "人们在山里挖隧道。",
+      "tts": {
+        "text": "人们在山里挖隧道。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们在河上架桥。",
+      "text_markdown": "他们在河上架桥。",
+      "tts": {
+        "text": "他们在河上架桥。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "每一根铁轨，都是他们用手铺上的。",
+      "text_markdown": "每一根铁轨，都是他们用手铺上的。",
+      "tts": {
+        "text": "每一根铁轨，都是他们用手铺上的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "铁路沿线的城镇慢慢发展起来。",
+      "text_markdown": "铁路沿线的城镇慢慢发展起来。",
+      "tts": {
+        "text": "铁路沿线的城镇慢慢发展起来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一个有车站的小村庄，也可能变成一座城市。",
+      "text_markdown": "一个有车站的小村庄，也可能变成一座城市。",
+      "tts": {
+        "text": "一个有车站的小村庄，也可能变成一座城市。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "火车带来了人们。",
+      "text_markdown": "火车带来了人们。",
+      "tts": {
+        "text": "火车带来了人们。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "火车带来了货物。",
+      "text_markdown": "火车带来了货物。",
+      "tts": {
+        "text": "火车带来了货物。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：钢铁之路扩展开来",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "火车让世界彼此更近了一点。",
+      "text_markdown": "火车让世界彼此更近了一点。",
+      "tts": {
+        "text": "火车让世界彼此更近了一点。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第三章：伟大的铁路线",
+      "text_markdown": "第三章：伟大的铁路线"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些铁路很短。",
+      "text_markdown": "有些铁路很短。",
+      "tts": {
+        "text": "有些铁路很短。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有些铁路非常长。",
+      "text_markdown": "有些铁路非常长。",
+      "tts": {
+        "text": "有些铁路非常长。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最长的线路穿过了整个大陆。",
+      "text_markdown": "最长的线路穿过了整个大陆。",
+      "tts": {
+        "text": "最长的线路穿过了整个大陆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在美国，有两家公司修建了一条横贯全国的铁路。",
+      "text_markdown": "在美国，有两家公司修建了一条横贯全国的铁路。",
+      "tts": {
+        "text": "在美国，有两家公司修建了一条横贯全国的铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "其中一家从加利福尼亚出发，向东修建。",
+      "text_markdown": "其中一家从加利福尼亚出发，向东修建。",
+      "tts": {
+        "text": "其中一家从加利福尼亚出发，向东修建。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一家从内布拉斯加出发，向西修建。",
+      "text_markdown": "另一家从内布拉斯加出发，向西修建。",
+      "tts": {
+        "text": "另一家从内布拉斯加出发，向西修建。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它们在犹他州一个叫普罗蒙特里萨米特的地方会合。",
+      "text_markdown": "它们在犹他州一个叫普罗蒙特里萨米特的地方会合。",
+      "tts": {
+        "text": "它们在犹他州一个叫普罗蒙特里萨米特的地方会合。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "那是在一八六九年。",
+      "text_markdown": "那是在一八六九年。",
+      "tts": {
+        "text": "那是在一八六九年。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最后一根道钉是金子做的。",
+      "text_markdown": "最后一根道钉是金子做的。",
+      "tts": {
+        "text": "最后一根道钉是金子做的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人们叫它金钉。",
+      "text_markdown": "人们叫它金钉。",
+      "tts": {
+        "text": "人们叫它金钉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这条线路叫作横贯大陆铁路。",
+      "text_markdown": "这条线路叫作横贯大陆铁路。",
+      "tts": {
+        "text": "这条线路叫作横贯大陆铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "从这以后，你大约用一个星期，就能坐火车从一个大洋到另一个大洋。",
+      "text_markdown": "从这以后，你大约用一个星期，就能坐火车从一个大洋到另一个大洋。",
+      "tts": {
+        "text": "从这以后，你大约用一个星期，就能坐火车从一个大洋到另一个大洋。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "俄罗斯修建了一条更长的线路。",
+      "text_markdown": "俄罗斯修建了一条更长的线路。",
+      "tts": {
+        "text": "俄罗斯修建了一条更长的线路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它叫作西伯利亚大铁路。",
+      "text_markdown": "它叫作西伯利亚大铁路。",
+      "tts": {
+        "text": "它叫作西伯利亚大铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它从西边的莫斯科一直通到东边的符拉迪沃斯托克。",
+      "text_markdown": "它从西边的莫斯科一直通到东边的符拉迪沃斯托克。",
+      "tts": {
+        "text": "它从西边的莫斯科一直通到东边的符拉迪沃斯托克。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "这条线路在一九一六年完工。",
+      "text_markdown": "这条线路在一九一六年完工。",
+      "tts": {
+        "text": "这条线路在一九一六年完工。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它长达九千多公里。",
+      "text_markdown": "它长达九千多公里。",
+      "tts": {
+        "text": "它长达九千多公里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "坐完全程大约要七天。",
+      "text_markdown": "坐完全程大约要七天。",
+      "tts": {
+        "text": "坐完全程大约要七天。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：伟大的铁路线",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "到今天，它仍然是世界上最长的铁路。",
+      "text_markdown": "到今天，它仍然是世界上最长的铁路。",
+      "tts": {
+        "text": "到今天，它仍然是世界上最长的铁路。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第四章：蒸汽、柴油和电力",
+      "text_markdown": "第四章：蒸汽、柴油和电力"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大约有一百年，几乎所有火车都是蒸汽火车。",
+      "text_markdown": "大约有一百年，几乎所有火车都是蒸汽火车。",
+      "tts": {
+        "text": "大约有一百年，几乎所有火车都是蒸汽火车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "蒸汽机车又大又吵。",
+      "text_markdown": "蒸汽机车又大又吵。",
+      "tts": {
+        "text": "蒸汽机车又大又吵。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们烧煤。",
+      "text_markdown": "它们烧煤。",
+      "tts": {
+        "text": "它们烧煤。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它们把浓烟送上天空。",
+      "text_markdown": "它们把浓烟送上天空。",
+      "tts": {
+        "text": "它们把浓烟送上天空。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "后来，柴油机车出现了。",
+      "text_markdown": "后来，柴油机车出现了。",
+      "tts": {
+        "text": "后来，柴油机车出现了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "柴油发动机烧的是油，不是煤。",
+      "text_markdown": "柴油发动机烧的是油，不是煤。",
+      "tts": {
+        "text": "柴油发动机烧的是油，不是煤。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它更小，也更干净。",
+      "text_markdown": "它更小，也更干净。",
+      "tts": {
+        "text": "它更小，也更干净。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它不需要炉火，也不需要水箱。",
+      "text_markdown": "它不需要炉火，也不需要水箱。",
+      "tts": {
+        "text": "它不需要炉火，也不需要水箱。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在二十世纪四十年代和五十年代，柴油火车变得很常见。",
+      "text_markdown": "在二十世纪四十年代和五十年代，柴油火车变得很常见。",
+      "tts": {
+        "text": "在二十世纪四十年代和五十年代，柴油火车变得很常见。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "慢慢地，那些伟大的蒸汽机车退出了舞台。",
+      "text_markdown": "慢慢地，那些伟大的蒸汽机车退出了舞台。",
+      "tts": {
+        "text": "慢慢地，那些伟大的蒸汽机车退出了舞台。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "还有少数被保存在博物馆里，或者观光铁路上。",
+      "text_markdown": "还有少数被保存在博物馆里，或者观光铁路上。",
+      "tts": {
+        "text": "还有少数被保存在博物馆里，或者观光铁路上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "下一步，就是电力火车。",
+      "text_markdown": "下一步，就是电力火车。",
+      "tts": {
+        "text": "下一步，就是电力火车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "电力火车没有燃烧燃料的发动机。",
+      "text_markdown": "电力火车没有燃烧燃料的发动机。",
+      "tts": {
+        "text": "电力火车没有燃烧燃料的发动机。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它从轨道上方的电线，或者轨道旁边的第三轨得到电力。",
+      "text_markdown": "它从轨道上方的电线，或者轨道旁边的第三轨得到电力。",
+      "tts": {
+        "text": "它从轨道上方的电线，或者轨道旁边的第三轨得到电力。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "电力火车安静，而且很干净。",
+      "text_markdown": "电力火车安静，而且很干净。",
+      "tts": {
+        "text": "电力火车安静，而且很干净。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们也很强劲。",
+      "text_markdown": "它们也很强劲。",
+      "tts": {
+        "text": "它们也很强劲。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今天，城市里的大多数火车和大多数高速列车都靠电力运行。",
+      "text_markdown": "今天，城市里的大多数火车和大多数高速列车都靠电力运行。",
+      "tts": {
+        "text": "今天，城市里的大多数火车和大多数高速列车都靠电力运行。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蒸汽，柴油，电力。",
+      "text_markdown": "蒸汽，柴油，电力。",
+      "tts": {
+        "text": "蒸汽，柴油，电力。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：蒸汽、柴油和电力",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "三种动力，三个时代。",
+      "text_markdown": "三种动力，三个时代。",
+      "tts": {
+        "text": "三种动力，三个时代。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第五章：子弹头列车与速度竞赛",
+      "text_markdown": "第五章：子弹头列车与速度竞赛"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一九六四年，日本开通了一条崭新的铁路。",
+      "text_markdown": "在一九六四年，日本开通了一条崭新的铁路。",
+      "tts": {
+        "text": "在一九六四年，日本开通了一条崭新的铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它从东京通到大阪。",
+      "text_markdown": "它从东京通到大阪。",
+      "tts": {
+        "text": "它从东京通到大阪。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些火车看起来像一颗颗长长的白色子弹。",
+      "text_markdown": "这些火车看起来像一颗颗长长的白色子弹。",
+      "tts": {
+        "text": "这些火车看起来像一颗颗长长的白色子弹。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "人们叫它们子弹头列车。",
+      "text_markdown": "人们叫它们子弹头列车。",
+      "tts": {
+        "text": "人们叫它们子弹头列车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它们的日文名字叫新干线。",
+      "text_markdown": "它们的日文名字叫新干线。",
+      "tts": {
+        "text": "它们的日文名字叫新干线。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第一批子弹头列车每小时能跑一百三十英里。",
+      "text_markdown": "第一批子弹头列车每小时能跑一百三十英里。",
+      "tts": {
+        "text": "第一批子弹头列车每小时能跑一百三十英里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "对一九六四年的火车来说，那已经非常快了。",
+      "text_markdown": "对一九六四年的火车来说，那已经非常快了。",
+      "tts": {
+        "text": "对一九六四年的火车来说，那已经非常快了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这条线路正好赶在东京奥运会开始前开通。",
+      "text_markdown": "这条线路正好赶在东京奥运会开始前开通。",
+      "tts": {
+        "text": "这条线路正好赶在东京奥运会开始前开通。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "其他国家也跟上了。",
+      "text_markdown": "其他国家也跟上了。",
+      "tts": {
+        "text": "其他国家也跟上了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法国在一九八一年开通了它的高速铁路。",
+      "text_markdown": "法国在一九八一年开通了它的高速铁路。",
+      "tts": {
+        "text": "法国在一九八一年开通了它的高速铁路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些列车叫作 TGV。",
+      "text_markdown": "这些列车叫作 TGV。",
+      "tts": {
+        "text": "这些列车叫作 提 吉 微。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "后来，德国推出了 ICE。",
+      "text_markdown": "后来，德国推出了 ICE。",
+      "tts": {
+        "text": "后来，德国推出了 艾 西 伊。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "意大利、西班牙和韩国也建起了自己的高速铁路。",
+      "text_markdown": "意大利、西班牙和韩国也建起了自己的高速铁路。",
+      "tts": {
+        "text": "意大利、西班牙和韩国也建起了自己的高速铁路。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中国起步最晚，但建得很快。",
+      "text_markdown": "中国起步最晚，但建得很快。",
+      "tts": {
+        "text": "中国起步最晚，但建得很快。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今天，中国拥有世界上最大的高速铁路网络。",
+      "text_markdown": "今天，中国拥有世界上最大的高速铁路网络。",
+      "tts": {
+        "text": "今天，中国拥有世界上最大的高速铁路网络。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它的线路总长有数万公里。",
+      "text_markdown": "它的线路总长有数万公里。",
+      "tts": {
+        "text": "它的线路总长有数万公里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现代子弹头列车巡航时速能超过二百英里。",
+      "text_markdown": "现代子弹头列车巡航时速能超过二百英里。",
+      "tts": {
+        "text": "现代子弹头列车巡航时速能超过二百英里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们平稳、安静，而且几乎总是准时。",
+      "text_markdown": "它们平稳、安静，而且几乎总是准时。",
+      "tts": {
+        "text": "它们平稳、安静，而且几乎总是准时。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：子弹头列车与速度竞赛",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "对很多旅程来说，它们比坐飞机还快。",
+      "text_markdown": "对很多旅程来说，它们比坐飞机还快。",
+      "tts": {
+        "text": "对很多旅程来说，它们比坐飞机还快。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第六章：各种各样的火车",
+      "text_markdown": "第六章：各种各样的火车"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "并不是所有火车都一样。",
+      "text_markdown": "并不是所有火车都一样。",
+      "tts": {
+        "text": "并不是所有火车都一样。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "火车有很多种。",
+      "text_markdown": "火车有很多种。",
+      "tts": {
+        "text": "火车有很多种。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "客运列车运送人们。",
+      "text_markdown": "客运列车运送人们。",
+      "tts": {
+        "text": "客运列车运送人们。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它有座位和窗户，有时还有餐车或卧铺车。",
+      "text_markdown": "它有座位和窗户，有时还有餐车或卧铺车。",
+      "tts": {
+        "text": "它有座位和窗户，有时还有餐车或卧铺车。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "货运列车运送货物。",
+      "text_markdown": "货运列车运送货物。",
+      "tts": {
+        "text": "货运列车运送货物。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些车厢叫作货运车厢。",
+      "text_markdown": "这些车厢叫作货运车厢。",
+      "tts": {
+        "text": "这些车厢叫作货运车厢。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有些运粮食。",
+      "text_markdown": "有些运粮食。",
+      "tts": {
+        "text": "有些运粮食。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "有些运石油。",
+      "text_markdown": "有些运石油。",
+      "tts": {
+        "text": "有些运石油。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "有些运整整的集装箱，而且上下能叠两层。",
+      "text_markdown": "有些运整整的集装箱，而且上下能叠两层。",
+      "tts": {
+        "text": "有些运整整的集装箱，而且上下能叠两层。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地铁是在城市地下运行的火车。",
+      "text_markdown": "地铁是在城市地下运行的火车。",
+      "tts": {
+        "text": "地铁是在城市地下运行的火车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "第一条地铁在一八六三年于伦敦开通。",
+      "text_markdown": "第一条地铁在一八六三年于伦敦开通。",
+      "tts": {
+        "text": "第一条地铁在一八六三年于伦敦开通。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "今天，大城市的街道下面都有庞大的地铁网络。",
+      "text_markdown": "今天，大城市的街道下面都有庞大的地铁网络。",
+      "tts": {
+        "text": "今天，大城市的街道下面都有庞大的地铁网络。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有轨电车或者轻轨，是在城市街道上行驶的小火车。",
+      "text_markdown": "有轨电车或者轻轨，是在城市街道上行驶的小火车。",
+      "tts": {
+        "text": "有轨电车或者轻轨，是在城市街道上行驶的小火车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它常常和汽车、公交车共用道路。",
+      "text_markdown": "它常常和汽车、公交车共用道路。",
+      "tts": {
+        "text": "它常常和汽车、公交车共用道路。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "山地火车会爬上陡峭的山坡。",
+      "text_markdown": "山地火车会爬上陡峭的山坡。",
+      "tts": {
+        "text": "山地火车会爬上陡峭的山坡。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有些中间有一条特别的齿状铁轨，叫作齿轨。",
+      "text_markdown": "有些中间有一条特别的齿状铁轨，叫作齿轨。",
+      "tts": {
+        "text": "有些中间有一条特别的齿状铁轨，叫作齿轨。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "机车咬住齿轨，这样上山和下山都更安全。",
+      "text_markdown": "机车咬住齿轨，这样上山和下山都更安全。",
+      "tts": {
+        "text": "机车咬住齿轨，这样上山和下山都更安全。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些火车还是观光列车。",
+      "text_markdown": "有些火车还是观光列车。",
+      "tts": {
+        "text": "有些火车还是观光列车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：各种各样的火车",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们穿过森林和群山，只为了让人欣赏风景。",
+      "text_markdown": "它们穿过森林和群山，只为了让人欣赏风景。",
+      "tts": {
+        "text": "它们穿过森林和群山，只为了让人欣赏风景。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第七章：铁轨上的未来",
+      "text_markdown": "第七章：铁轨上的未来"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火车的故事还没有结束。",
+      "text_markdown": "火车的故事还没有结束。",
+      "tts": {
+        "text": "火车的故事还没有结束。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "现在，人们正在建造各种新的火车。",
+      "text_markdown": "现在，人们正在建造各种新的火车。",
+      "tts": {
+        "text": "现在，人们正在建造各种新的火车。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "其中最神奇的，是磁悬浮列车。",
+      "text_markdown": "其中最神奇的，是磁悬浮列车。",
+      "tts": {
+        "text": "其中最神奇的，是磁悬浮列车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "磁悬浮这个名字，是磁力悬浮的简称。",
+      "text_markdown": "磁悬浮这个名字，是磁力悬浮的简称。",
+      "tts": {
+        "text": "磁悬浮这个名字，是磁力悬浮的简称。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "磁悬浮列车不会碰到轨道。",
+      "text_markdown": "磁悬浮列车不会碰到轨道。",
+      "tts": {
+        "text": "磁悬浮列车不会碰到轨道。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它浮在一层磁力垫上。",
+      "text_markdown": "它浮在一层磁力垫上。",
+      "tts": {
+        "text": "它浮在一层磁力垫上。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "没有车轮在转动。",
+      "text_markdown": "没有车轮在转动。",
+      "tts": {
+        "text": "没有车轮在转动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "也没有摩擦。",
+      "text_markdown": "也没有摩擦。",
+      "tts": {
+        "text": "也没有摩擦。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在二零零四年，中国上海开通了一条磁悬浮线路。",
+      "text_markdown": "在二零零四年，中国上海开通了一条磁悬浮线路。",
+      "tts": {
+        "text": "在二零零四年，中国上海开通了一条磁悬浮线路。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这列火车时速能超过二百五十英里。",
+      "text_markdown": "这列火车时速能超过二百五十英里。",
+      "tts": {
+        "text": "这列火车时速能超过二百五十英里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在日本，一列测试用的磁悬浮列车曾经跑出超过三百七十英里的时速。",
+      "text_markdown": "在日本，一列测试用的磁悬浮列车曾经跑出超过三百七十英里的时速。",
+      "tts": {
+        "text": "在日本，一列测试用的磁悬浮列车曾经跑出超过三百七十英里的时速。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "其他工程师还在研究氢能列车。",
+      "text_markdown": "其他工程师还在研究氢能列车。",
+      "tts": {
+        "text": "其他工程师还在研究氢能列车。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "氢能列车用一个小小的燃料电池来发电。",
+      "text_markdown": "氢能列车用一个小小的燃料电池来发电。",
+      "tts": {
+        "text": "氢能列车用一个小小的燃料电池来发电。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "发动机里出来的，只有水蒸气。",
+      "text_markdown": "发动机里出来的，只有水蒸气。",
+      "tts": {
+        "text": "发动机里出来的，只有水蒸气。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "没有烟。",
+      "text_markdown": "没有烟。",
+      "tts": {
+        "text": "没有烟。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "没有煤。",
+      "text_markdown": "没有煤。",
+      "tts": {
+        "text": "没有煤。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "第一批氢能列车在二零一八年于德国投入运行。",
+      "text_markdown": "第一批氢能列车在二零一八年于德国投入运行。",
+      "tts": {
+        "text": "第一批氢能列车在二零一八年于德国投入运行。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火车很古老。",
+      "text_markdown": "火车很古老。",
+      "tts": {
+        "text": "火车很古老。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们也很新。",
+      "text_markdown": "它们也很新。",
+      "tts": {
+        "text": "它们也很新。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：铁轨上的未来",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在火箭号之后的两百年里，铁轨仍然通向未来。",
+      "text_markdown": "在火箭号之后的两百年里，铁轨仍然通向未来。",
+      "tts": {
+        "text": "在火箭号之后的两百年里，铁轨仍然通向未来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "钢铁之路继续向前",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "钢铁之路继续向前",
+      "text_markdown": "钢铁之路继续向前"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "钢铁之路继续向前",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从火箭号到磁悬浮列车，火车已经推动世界向前走了将近两百年。",
+      "text_markdown": "从火箭号到磁悬浮列车，火车已经推动世界向前走了将近两百年。",
+      "tts": {
+        "text": "从火箭号到磁悬浮列车，火车已经推动世界向前走了将近两百年。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "钢铁之路继续向前",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "现在，新的铁路线还在铺设，在沙漠里，在群山中，也在城市地下。",
+      "text_markdown": "现在，新的铁路线还在铺设，在沙漠里，在群山中，也在城市地下。",
+      "tts": {
+        "text": "现在，新的铁路线还在铺设，在沙漠里，在群山中，也在城市地下。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "钢铁之路继续向前",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "下一站，总是在前方的某个地方。",
+      "text_markdown": "下一站，总是在前方的某个地方。",
+      "tts": {
+        "text": "下一站，总是在前方的某个地方。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "zh"
+}

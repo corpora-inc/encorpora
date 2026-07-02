@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "he",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p1",
+      "text": "הַכֹּל עָשׂוּי מֵאָטוֹמִים",
+      "text_markdown": "הכל עשוי מאטומים",
+      "title": "הכל עשוי מאטומים"
+    },
+    {
+      "id": "ch01-002",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "הִסְתַּכְּלוּ סְבִיבְכֶם.",
+      "text_markdown": "הסתכלו סביבכם.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הִסְתַּכְּלוּ סְבִיבְכֶם.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-003",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "כֹּל מַה שֶׁאַתֶּם יְכוֹלִים לִרְאוֹת עָשׂוּי מֵאָטוֹמִים.",
+      "text_markdown": "כל מה שאתם יכולים לראות עשוי מאטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "כֹּל מַה שֶׁאַתֶּם יְכוֹלִים לִרְאוֹת עָשׂוּי מֵאָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "הָאֲוִיר שֶׁאַתֶּם נוֹשְׁמִים עָשׂוּי מֵאָטוֹמִים.",
+      "text_markdown": "האוויר שאתם נושמים עשוי מאטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הָאֲוִיר שֶׁאַתֶּם נוֹשְׁמִים עָשׂוּי מֵאָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "chapter": 1,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "הַמַּיִם שֶׁאַתֶּם שׁוֹתִים עֲשׂוּיִים מֵאָטוֹמִים.",
+      "text_markdown": "המים שאתם שותים עשויים מאטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הַמַּיִם שֶׁאַתֶּם שׁוֹתִים עֲשׂוּיִים מֵאָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "chapter": 1,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "הַגּוּף שֶׁלָּכֶם עָשׂוּי מֵאָטוֹמִים.",
+      "text_markdown": "הגוף שלכם עשוי מאטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הַגּוּף שֶׁלָּכֶם עָשׂוּי מֵאָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "chapter": 1,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p2",
+      "text": "הָאֲדָמָה מִתַּחַת לְרַגְלֵיכֶם עֲשׂוּיָה מֵאָטוֹמִים.",
+      "text_markdown": "האדמה מתחת לרגליכם עשויה מאטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הָאֲדָמָה מִתַּחַת לְרַגְלֵיכֶם עֲשׂוּיָה מֵאָטוֹמִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "אָטוֹם הוּא הַחֶלְקִיק הַכִּי קָטָן שֶׁל חוֹמֶר שֶׁעֲדַיִן שׁוֹמֵר עַל הַזְּהוּת הַכִּימִית שֶׁלּוֹ.",
+      "text_markdown": "אטום הוא החלקיק הכי קטן של חומר שעדיין שומר על הזהות הכימית שלו.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אָטוֹם הוּא הַחֶלְקִיק הַכִּי קָטָן שֶׁל חוֹמֶר שֶׁעֲדַיִן שׁוֹמֵר עַל הַזְּהוּת הַכִּימִית שֶׁלּוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "אִי אֶפְשָׁר לִרְאוֹת אָטוֹם בּוֹדֵד בְּעֵינַיִם.",
+      "text_markdown": "אי אפשר לראות אטום בודד בעיניים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אִי אֶפְשָׁר לִרְאוֹת אָטוֹם בּוֹדֵד בְּעֵינַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "אִי אֶפְשָׁר לִרְאוֹת אָטוֹם בּוֹדֵד גַּם בְּמִיקְרוֹסְקוֹפּ רָגִיל.",
+      "text_markdown": "אי אפשר לראות אטום בודד גם במיקרוסקופ רגיל.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אִי אֶפְשָׁר לִרְאוֹת אָטוֹם בּוֹדֵד גַּם בְּמִיקְרוֹסְקוֹפּ רָגִיל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-011",
+      "chapter": 1,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p3",
+      "text": "כָּל כָּךְ קְטַנִּים הֵם, הָאָטוֹמִים.",
+      "text_markdown": "כל כך קטנים הם, האטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "כַּל כָּךְ קְטַנִּים הֵם, הָאָטוֹמִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "גַּרְגַּר חוֹל אֶחָד מְכִיל בְּעֵרֶךְ חֲמִישִׁים קְווִינְטִיליוֹן אָטוֹמִים.",
+      "text_markdown": "גרגר חול אחד מכיל בערך חמישים קוינטיליון אטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "גַּרְגַּר חוֹל אֶחָד מְכִיל בְּעֵרֶךְ חֲמִישִׁים קְווִינְטִיליוֹן אָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "הַמִּסְפָּר הַזֶּה הוּא חֲמִישִׁים וְאַחֲרָיו שְׁמוֹנָה עֶשְׂרֵה אֶפְסִים.",
+      "text_markdown": "המספר הזה הוא חמישים ואחריו שמונה עשרה אפסים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הַמִּסְפָּר הַזֶּה הוּא חֲמִישִׁים וְאַחֲרָיו שְׁמוֹנָה עֶשְׂרֵה אֶפְסִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p4",
+      "text": "יֵשׁ יוֹתֵר אָטוֹמִים בְּגַרְגַּר חוֹל אֶחָד מֵאַשְׁר גַּרְגְּרֵי חוֹל עַל חוֹף יָם.",
+      "text_markdown": "יש יותר אטומים בגרגר חול אחד מאשר גרגרי חול על חוף ים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "יֵשׁ יוֹתֵר אָטוֹמִים בְּגַרְגַּר חוֹל אֶחָד מֵאַשְׁר גַּרְגְּרֵי חוֹל עַל חוֹף יָם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch01-015",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "אָטוֹמִים הֵם אַבְנֵי הַבִּנְיָן שֶׁל כָּל דָּבָר בְּעוֹלַם הַפִּיזִי.",
+      "text_markdown": "אטומים הם אבני הבניין של כל דבר בעולם הפיזי.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אָטוֹמִים הֵם אַבְנֵי הַבִּנְיָן שֶׁל כָּל דָּבָר בְּעוֹלַם הַפִּיזִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-016",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "קִיר בָּנוּי מִלְבָּנִים.",
+      "text_markdown": "קיר בנוי מלבנים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "קִיר בָּנוּי מִלְבָּנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "מִשְׁפָּט בָּנוּי מִמִּילִים.",
+      "text_markdown": "משפט בנוי ממילים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "מִשְׁפָּט בָּנוּי מִמִּילִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "chapter": 1,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p5",
+      "text": "הַיְקוּם בָּנוּי מֵאָטוֹמִים.",
+      "text_markdown": "היקום בנוי מאטומים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הַיְקוּם בָּנוּי מֵאָטוֹמִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "הַמִּלָּה אָטוֹם מְגִיעָה מִיְוָנִית עַתִּיקָה.",
+      "text_markdown": "המילה אטום מגיעה מיוונית עתיקה.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הַמִּלָּה אָטוֹם מְגִיעָה מִיְוָנִית עַתִּיקָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "הַמִּלָּה הַיְוָנִית אָטוֹמוֹס פִּירוּשָׁהּ בְּלִתִּי נִתָּן לַחֲתִיכָה.",
+      "text_markdown": "המילה היוונית אטומוס פירושה בלתי ניתן לחיתוך.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הַמִּלָּה הַיְוָנִית אָטוֹמוֹס פִּירוּשָׁהּ בְּלִתִּי נִתָּן לַחֲתִיכָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "פִילוֹסוֹפִים יְוָנִים עַתִּיקִים חָשְׁבוּ שֶׁאָטוֹמִים הֵם הַחֲלָקִיקִים הַכִּי קְטַנִּים שֶׁאֶפְשָׁר שֶׁל חוֹמֶר.",
+      "text_markdown": "פילוסופים יוונים עתיקים חשבו שאטומים הם החלקיקים הכי קטנים שאפשר של חומר.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "פִּילוֹסוֹפִים יְוָנִים עַתִּיקִים חָשְׁבוּ שֶׁאָטוֹמִים הֵם הַחֶלְקִיקִים הַכִּי קְטַנִּים שֶׁאֶפְשָׁר שֶׁל חוֹמֶר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "chapter": 1,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "הֵם הָיוּ קְרוֹבִים לַצֶּדֶק.",
+      "text_markdown": "הם היו קרובים לצדק.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הֵם הָיוּ קְרוֹבִים לַצֶּדֶק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "chapter": 1,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p6",
+      "text": "אָטוֹמִים הֵם לֹא בֶּאֱמֶת הַחֲלָקִיקִים הַכִּי קְטַנִּים, אֲבָל הֵם הַיְחִידוֹת הַכִּי קְטַנּוֹת שֶׁשׁוֹמְרוֹת עַל הַתְּכוּנוֹת הַכִּימִיוֹת שֶׁלָּהֶן.",
+      "text_markdown": "אטומים הם לא באמת החלקיקים הכי קטנים, אבל הם היחידות הכי קטנות ששומרות על התכונות הכימיות שלהן.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אָטוֹמִים הֵם לֹא בֶּאֱמֶת הַחֲלָקִיקִים הַכִּי קְטַנִּים, אֲבָל הֵם הַיְחִידוֹת הַכִּי קְטַנּוֹת שֶׁשׁוֹמְרוֹת עַל הַתְּכוּנוֹת הַכִּימִיוֹת שֶׁלָּהֶן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-024",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "אָטוֹמִים עָמִידִים לְהַפְלִיא.",
+      "text_markdown": "אטומים עמידים להפליא.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אָטוֹמִים עָמִידִים לְהַפְלִיא.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "הָאָטוֹמִים בְּגוּף שֶׁלָּכֶם בְּנֵי מִילְיַרְדֵי שָׁנִים.",
+      "text_markdown": "האטומים בגוף שלכם בני מיליארדי שנים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הָאָטוֹמִים בְּגוּף שֶׁלָּכֶם בְּנֵי מִילְיַרְדֵי שָׁנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "חֵלֶק מֵאָטוֹמֵי הַמִּימָן בַּמַּיִם שֶׁשָּׁתִיתֶם הַיּוֹם נוֹצְרוּ בִּדְקוֹת הָרִאשׁוֹנוֹת אַחֲרֵי הַמְּפֵץ הַגָּדוֹל.",
+      "text_markdown": "חלק מאטומי המימן במים ששתיתם היום נוצרו בדקות הראשונות אחרי המפץ הגדול.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "חֵלֶק מֵאָטוֹמֵי הַמִּימָן בַּמַּיִם שֶׁשָּׁתִיתֶם הַיּוֹם נוֹצְרוּ בִּדְקוֹת הָרִאשׁוֹנוֹת אַחֲרֵי הַמְּפֵץ הַגָּדוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch01-027",
+      "chapter": 1,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p7",
+      "text": "אַתֶּם עֲשׁוּיִים מֵחוֹמָרִים עַתִּיקִים.",
+      "text_markdown": "אתם עשויים מחומרים עתיקים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אַתֶּם עֲשׁוּיִים מֵחוֹמָרִים עַתִּיקִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "אָטוֹמִים לְעוֹלָם לֹא נוֹצְרִים וְלֹא נֶהֱרָסִים בְּחַיֵּי הַיּוֹם־יוֹם.",
+      "text_markdown": "אטומים לעולם לא נוצרים ולא נהרסים בחיי היום-יום.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "אָטוֹמִים לְעוֹלָם לֹא נוֹצְרִים וְלֹא נֶהֱרָסִים בְּחַיֵּי הַיּוֹם־יוֹם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "הֵם מִסְתַּדְּרִים מֵחָדָשׁ.",
+      "text_markdown": "הם מסתדרים מחדש.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הֵם מִסְתַּדְּרִים מֵחָדָשׁ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "כְּשֵׁעֵץ נִשְׂרַף, הָאָטוֹמִים לֹא נֶעֱלָמוּ.",
+      "text_markdown": "כשעץ נשרף, האטומים לא נעלמים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "כְּשֵׁעֵץ נִשְׂרַף, הָאָטוֹמִים לֹא נֶעֱלָמוּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "chapter": 1,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "הֵם מִסְתַּדְּרִים מֵחָדָשׁ לְעִשַּׁן, אֵפֶר וְגָז.",
+      "text_markdown": "הם מסתדרים מחדש לעשן, אפר וגז.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הֵם מִסְתַּדְּרִים מֵחָדָשׁ לְעָשָׁן, אֵפֶר וְגָז.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "chapter": 1,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "כְּשֶׁקָּרַח נִמַּס, הָאָטוֹמִים נִשְׁאָרִים אוֹתוֹ דָּבָר.",
+      "text_markdown": "כשקרח נמס, האטומים נשארים אותו דבר.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "כְּשֶׁקָּרַח נִמַּס, הָאָטוֹמִים נִשְׁאָרִים אוֹתוֹ דָּבָר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-033",
+      "chapter": 1,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p8",
+      "text": "רַק הַסִּדּוּר שְׁלָהֶם מִשְׁתַּנֶּה.",
+      "text_markdown": "רק הסידור שלהם משתנה.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "רַק הַסִּדּוּר שְׁלָהֶם מִשְׁתַּנֶּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "chapter": 1,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "הַבָּנַת אָטוֹמִים הִיא הַבָּסִיס שֶׁל כִּימְיָה.",
+      "text_markdown": "הבנת אטומים היא הבסיס של כימיה.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "הַבָּנַת אָטוֹמִים הִיא הַבָּסִיס שֶׁל כִּימְיָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "chapter": 1,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "כִּימְיָה הִיא הַמַּדָּע שֶׁל אֵיךְ אָטוֹמִים מִתְחַבְּרִים, מִסְתַּדְּרִים מֵחָדָשׁ וּמַשְׁפִּיעִים זֶה עַל זֶה.",
+      "text_markdown": "כימיה היא המדע של איך אטומים מתחברים, מסתדרים מחדש ומשפיעים זה על זה.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "כִּימְיָה הִיא הַמַּדָּע שֶׁל אֵיךְ אָטוֹמִים מִתְחַבְּרִים, מִסְתַּדְּרִים מֵחָדָשׁ וּמַשְׁפִּיעִים זֶה עַל זֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "chapter": 1,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p9",
+      "text": "כֹּל מַה שֶׁקּוֹרֶה בְּעוֹלַם הַפִּיזִי מִסְתַּכֵּם בְּאָטוֹמִים וּבְמַה שֶׁהֵם עוֹשִׂים.",
+      "text_markdown": "כל מה שקורה בעולם הפיזי מסתכם באטומים ובמה שהם עושים.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "כֹּל מַה שֶׁקּוֹרֶה בְּעוֹלַם הַפִּיזִי מִסְתַּכֵּם בְּאָטוֹמִים וּבְמַה שֶׁהֵם עוֹשִׂים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p10",
+      "text": "בְּתוֹךְ הָאָטוֹם",
+      "text_markdown": "בתוך האטום",
+      "title": "בתוך האטום"
+    },
+    {
+      "id": "ch02-038",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "בְּתוֹךְ אָטוֹם יֵשׁ שְׁלוֹשָׁה סוּגִים שֶׁל חֲלָקִיקִים.",
+      "text_markdown": "בתוך אטום יש שלושה סוגים של חלקיקים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "בְּתוֹךְ אָטוֹם יֵשׁ שְׁלוֹשָׁה סוּגִים שֶׁל חֲלָקִיקִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "פְּרוֹטוֹנִים.",
+      "text_markdown": "פרוטונים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "פְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "נְיוּטְרוֹנִים.",
+      "text_markdown": "נויטרונים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "נְיוּטְרוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "chapter": 2,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "אֶלֶקְטְרוֹנִים.",
+      "text_markdown": "אלקטרונים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "אֶלֶקְטְרוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "chapter": 2,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p11",
+      "text": "שְׁלוֹשֶׁת הַחֲלָקִיקִים הָאֵלֶּה מַרְכִּיבִים כָּל אָטוֹם בַּיְקוּם.",
+      "text_markdown": "שלושת החלקיקים האלה מרכיבים כל אטום ביקום.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "שְׁלוֹשֶׁת הַחֲלָקִיקִים הָאֵלֶּה מַרְכִּיבִים כָּל אָטוֹם בַּיְקוּם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "הַמֶּרְכָּז שֶׁל הָאָטוֹם נִקְרָא גָּרְעִין.",
+      "text_markdown": "המרכז של האטום נקרא גרעין.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הַמֶּרְכָּז שֶׁל הָאָטוֹם נִקְרָא גָּרְעִין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-044",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "הַגָּרְעִין מְכִיל אֶת הַפְּרוֹטוֹנִים וְאֶת הַנְּיוּטְרוֹנִים.",
+      "text_markdown": "הגרעין מכיל את הפרוטונים ואת הנויטרונים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הַגָּרְעִין מְכִיל אֶת הַפְּרוֹטוֹנִים וְאֶת הַנְּיוּטְרוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "הַגָּרְעִין זָעִיר בְּהַשְׁוָואָה לְאָטוֹם כּוּלּוֹ.",
+      "text_markdown": "הגרעין זעיר בהשוואה לאטום כולו.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הַגָּרְעִין זָעִיר בְּהַשְׁוָואָה לְאָטוֹם כּוּלּוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-046",
+      "chapter": 2,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p12",
+      "text": "אִם הָאָטוֹם הָיָה בְּגוֹדֶל שֶׁל אִצְטַדְיוֹן כְּדוּרְגַּל, הַגָּרְעִין הָיָה בְּגוֹדֶל שֶׁל גּוּלָה בָּאֶמְצַע הַמִּגְרָשׁ.",
+      "text_markdown": "אם האטום היה בגודל של אצטדיון כדורגל, הגרעין היה בגודל של גולה באמצע המגרש.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "אִם הָאָטוֹם הָיָה בְּגוֹדֶל שֶׁל אִצְטַדְיוֹן כְּדוּרְגַּל, הַגָּרְעִין הָיָה בְּגוֹדֶל שֶׁל גּוּלָה בָּאֶמְצַע הַמִּגְרָשׁ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch02-047",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "לַפְּרוֹטוֹנִים יֵשׁ מַטְעַן חַשְׁמָלִי חִיוּבִי.",
+      "text_markdown": "לפרוטונים יש מטען חשמלי חיובי.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "לַפְּרוֹטוֹנִים יֵשׁ מַטְעַן חַשְׁמָלִי חִיוּבִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "לְכָל פְּרוֹטוֹן יֵשׁ אוֹתָהּ כַּמּוּת שֶׁל מַטְעַן חִיוּבִי.",
+      "text_markdown": "לכל פרוטון יש אותה כמות של מטען חיובי.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "לְכָל פְּרוֹטוֹן יֵשׁ אוֹתָהּ כַּמּוּת שֶׁל מַטְעַן חִיוּבִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "מִסְפַּר הַפְּרוֹטוֹנִים בָּאָטוֹם קוֹבֵעַ אֵיזֶה יְסוֹד הוּא.",
+      "text_markdown": "מספר הפרוטונים באטום קובע איזה יסוד הוא.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "מִסְפַּר הַפְּרוֹטוֹנִים בָּאָטוֹם קוֹבֵעַ אֵיזֶה יְסוֹד הוּא.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-050",
+      "chapter": 2,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "פְּרוֹטוֹן אֶחָד זֶה מִימָן.",
+      "text_markdown": "פרוטון אחד זה מימן.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "פְּרוֹטוֹן אֶחָד זֶה מִימָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "chapter": 2,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "שִׁשָּׁה פְּרוֹטוֹנִים זֶה פַּחְמָן.",
+      "text_markdown": "שישה פרוטונים זה פחמן.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "שִׁשָּׁה פְּרוֹטוֹנִים זֶה פַּחְמָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "chapter": 2,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "עֶשְׂרִים וְשִׁשָּׁה פְּרוֹטוֹנִים זֶה בַּרְזֶל.",
+      "text_markdown": "עשרים ושישה פרוטונים זה ברזל.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "עֶשְׂרִים וְשִׁשָּׁה פְּרוֹטוֹנִים זֶה בַּרְזֶל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "chapter": 2,
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p13",
+      "text": "מִסְפַּר הַפְּרוֹטוֹנִים הוּא הָעוֹבְדָה הַכִּי חֲשׁוּבָה עַל אָטוֹם.",
+      "text_markdown": "מספר הפרוטונים הוא העובדה הכי חשובה על אטום.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "מִסְפַּר הַפְּרוֹטוֹנִים הוּא הָעוֹבְדָה הַכִּי חֲשׁוּבָה עַל אָטוֹם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-054",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "לַנְּיוּטְרוֹנִים אֵין מַטְעַן חַשְׁמָלִי.",
+      "text_markdown": "לנויטרונים אין מטען חשמלי.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "לַנְּיוּטְרוֹנִים אֵין מַטְעַן חַשְׁמָלִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-055",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "נְיוּטְרוֹנִים הֵם נִיטְרָלִיִּים.",
+      "text_markdown": "נויטרונים הם ניטרליים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "נְיוּטְרוֹנִים הֵם נִיטְרָלִיִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "נְיוּטְרוֹנִים יוֹשְׁבִים בַּגְּרַעִין לְצַד הַפְּרוֹטוֹנִים.",
+      "text_markdown": "נויטרונים יושבים בגרעין לצד הפרוטונים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "נְיוּטְרוֹנִים יוֹשְׁבִים בַּגְּרַעִין לְצַד הַפְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-057",
+      "chapter": 2,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "נְיוּטְרוֹנִים עוֹזְרִים לְהַחְזִיק אֶת הַגְּרַעִין בְּיַחַד.",
+      "text_markdown": "נויטרונים עוזרים להחזיק את הגרעין ביחד.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "נְיוּטְרוֹנִים עוֹזְרִים לְהַחְזִיק אֶת הַגְּרַעִין בְּיַחַד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "chapter": 2,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p14",
+      "text": "בְּלִי נְיוּטְרוֹנִים, הַפְּרוֹטוֹנִים הָיוּ דוֹחְפִים אֶחָד אֶת הַשֵּׁנִי הַצִּידָה כִּי לְכוּלָּם יֵשׁ אוֹתוֹ מַטְעַן חִיוּבִי.",
+      "text_markdown": "בלי נויטרונים, הפרוטונים היו דוחפים אחד את השני הצידה כי לכולם יש אותו מטען חיובי.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "בְּלִי נְיוּטְרוֹנִים, הַפְּרוֹטוֹנִים הָיוּ דוֹחְפִים אֶחָד אֶת הַשֵּׁנִי הַצִּידָה כִּי לְכוּלָּם יֵשׁ אוֹתוֹ מַטְעַן חִיוּבִי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-059",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "לְאֶלֶקְטְרוֹנִים יֵשׁ מַטְעַן חַשְׁמָלִי שְׁלִילִי.",
+      "text_markdown": "לאלקטרונים יש מטען חשמלי שלילי.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "לְאֶלֶקְטְרוֹנִים יֵשׁ מַטְעַן חַשְׁמָלִי שְׁלִילִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "אֶלֶקְטְרוֹנִים נָעִים סָבִיב הַגְּרַעִין בֶּעָנָן.",
+      "text_markdown": "אלקטרונים נעים סביב הגרעין בענן.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "אֶלֶקְטְרוֹנִים נָעִים סָבִיב הַגְּרַעִין בֶּעָנָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "הֵם לֹא מַקִּיפִים אוֹתוֹ כְּמוֹ כּוֹכְבֵי לֶכֶת סָבִיב שֶׁמֶשׁ.",
+      "text_markdown": "הם לא מקיפים אותו כמו כוכבי לכת סביב שמש.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הֵם לֹא מַקִּיפִים אוֹתוֹ כְּמוֹ כּוֹכְבֵי לֶכֶת סָבִיב שֶׁמֶשׁ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "chapter": 2,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "הֵם נִמְצָאִים בְאֵזוֹר מְטֻשְׁטַּשׁ שֶׁל הִסְתַּבְּרוּת סָבִיב הַגְּרַעִין.",
+      "text_markdown": "הם נמצאים באזור מטושטש של הסתברות סביב הגרעין.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הֵם נִמְצָאִים בְאֵזוֹר מְטֻשְׁטַּשׁ שֶׁל הִסְתַּבְּרוּת סָבִיב הַגְּרַעִין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "chapter": 2,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p15",
+      "text": "עֲנַן הָאֶלֶקְטְרוֹנִים הוּא הַמָּקוֹם שֶׁבּוֹ סָבִיר שְׁתִּמְצְאוּ אֶלֶקְטְרוֹן בְרֶגַע נָתוּן.",
+      "text_markdown": "ענן האלקטרונים הוא המקום שבו סביר שתמצאו אלקטרון ברגע נתון.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "עֲנַן הָאֶלֶקְטְרוֹנִים הוּא הַמָּקוֹם שֶׁבּוֹ סָבִיר שְׁתִּמְצְאוּ אֶלֶקְטְרוֹן בְרֶגַע נָתוּן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-064",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "לְאֶלֶקְטְרוֹן כִּמְעַט אֵין מָסָּה בְהַשְׁוָואָה לְפְרוֹטוֹן אוֹ לְנוֹיטְרוֹן.",
+      "text_markdown": "לאלקטרון כמעט אין מסה בהשוואה לפרוטון או לנויטרון.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "לְאֶלֶקְטְרוֹן כִּמְעַט אֵין מָסָּה בְהַשְׁוָואָה לְפְרוֹטוֹן אוֹ לְנוֹיטְרוֹן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-065",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "פְּרוֹטוֹן כָּבֵד פִּי 1,836 בְעֵרֶךְ מֵאֶלֶקְטְרוֹן.",
+      "text_markdown": "פרוטון כבד פי 1,836 בערך מאלקטרון.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "פְּרוֹטוֹן כָּבֵד פִּי אֶלֶף שְׁמוֹנֶה מֵאוֹת שְׁלוֹשִׁים וְשִׁשָּׁה בְעֵרֶךְ מֵאֶלֶקְטְרוֹן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p16",
+      "text": "כִּמְעַט כֹּל הַמָּסָּה שֶׁל אָטוֹם נִמְצָאת בַּגְּרַעִין.",
+      "text_markdown": "כמעט כל המסה של אטום נמצאת בגרעין.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "כִּמְעַט כֹּל הַמָּסָּה שֶׁל אָטוֹם נִמְצָאת בַּגְּרַעִין.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-067",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "בְאָטוֹם נִייטְרָלִי, מִסְפַּר הָאֶלֶקְטְרוֹנִים שָׁווֶה לְמִסְפַּר הַפְּרוֹטוֹנִים.",
+      "text_markdown": "באטום ניטרלי, מספר האלקטרונים שווה למספר הפרוטונים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "בְאָטוֹם נִייטְרָלִי, מִסְפַּר הָאֶלֶקְטְרוֹנִים שָׁווֶה לְמִסְפַּר הַפְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-068",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "הַמְּטָעָנִים הַחִיוּבִיִּים וְהַמְּטָעָנִים הַשְּׁלִילִיִּים מִתְאַזְּנִים.",
+      "text_markdown": "המטענים החיוביים והמטענים השליליים מתאזנים.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הַמְּטָעָנִים הַחִיוּבִיִּים וְהַמְּטָעָנִים הַשְּׁלִילִיִּים מִתְאַזְּנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-069",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "לְאָטוֹם אֵין מְטָעַן כּוֹלֵל.",
+      "text_markdown": "לאטום אין מטען כולל.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "לְאָטוֹם אֵין מְטָעַן כּוֹלֵל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "chapter": 2,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p17",
+      "text": "הָאִיזּוּן הַזֶּה הוּא מַצַּב בְּרִירַת הַמַּחְדָּל שֶׁל אָטוֹם.",
+      "text_markdown": "האיזון הזה הוא מצב ברירת המחדל של אטום.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הָאִיזּוּן הַזֶּה הוּא מַצַּב בְּרִירַת הַמַּחְדָּל שֶׁל אָטוֹם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-071",
+      "chapter": 2,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "רוֹב הָאָטוֹם הוּא חָלָל רִיק.",
+      "text_markdown": "רוב האטום הוא חלל ריק.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "רוֹב הָאָטוֹם הוּא חָלָל רִיק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "chapter": 2,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "הַגְּרָעִין צָפוּף וּזְעִיר.",
+      "text_markdown": "הגרעין צפוף וזעיר.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הַגְּרָעִין צָפוּף וּזְעִיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "chapter": 2,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "עֲנַן הָאֶלֶקְטְרוֹנִים גָּדוֹל וּכְמַעַט רִיק.",
+      "text_markdown": "ענן האלקטרונים גדול וכמעט ריק.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "עֲנַן הָאֶלֶקְטְרוֹנִים גָּדוֹל וּכְמַעַט רִיק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "chapter": 2,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "אִם אֶפְשָׁר הָיָה לְהוֹצִיא אֶת כָּל הַחָלָל הָרִיק מִכָּל אָטוֹם בְּגוּף שְׁלָכֶם, הָיִיתֶם מִתְכַּוְּצִים לְגֹדֶל קָטָן מִגַּרְגַּר מֶלַח.",
+      "text_markdown": "אם אפשר היה להוציא את כל החלל הריק מכל אטום בגוף שלכם, הייתם מתכווצים לגודל קטן מגרגר מלח.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "אִם אֶפְשָׁר הָיָה לְהוֹצִיא אֶת כָּל הַחָלָל הָרִיק מִכָּל אָטוֹם בְּגוּף שְׁלָכֶם, הָיִיתֶם מִתְכַּוְּצִים לְגֹדֶל קָטָן מִגַּרְגַּר מֶלַח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-075",
+      "chapter": 2,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "הַמַּסָּה שְׁלָכֶם הָיְתָה נִשְׁאָרַת אוֹתוֹ דָּבָר.",
+      "text_markdown": "המסה שלכם הייתה נשארת אותו דבר.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "הַמַּסָּה שְׁלָכֶם הָיְתָה נִשְׁאָרַת אוֹתוֹ דָּבָר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-076",
+      "chapter": 2,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p18",
+      "text": "פָּשׁוּט הָיִיתֶם צָפוּפִים לְהַפְלִיא.",
+      "text_markdown": "פשוט הייתם צפופים להפליא.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "פָּשׁוּט הָיִיתֶם צָפוּפִים לְהַפְלִיא.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-077",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p19",
+      "text": "יְסוֹדוֹת",
+      "text_markdown": "יסודות",
+      "title": "יסודות"
+    },
+    {
+      "id": "ch03-078",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "יְסוֹד הוּא חוֹמֶר שֶׁעָשׂוּי מִסּוּג אֶחָד בִּלְבַד שֶׁל אָטוֹם.",
+      "text_markdown": "יסוד הוא חומר שעשוי מסוג אחד בלבד של אטום.",
+      "title": "Elements",
+      "tts": {
+        "text": "יְסוֹד הוּא חוֹמֶר שֶׁעָשׂוּי מִסּוּג אֶחָד בִּלְבַד שֶׁל אָטוֹם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-079",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "זָהָב טָהוֹר הוּא יְסוֹד.",
+      "text_markdown": "זהב טהור הוא יסוד.",
+      "title": "Elements",
+      "tts": {
+        "text": "זָהָב טָהוֹר הוּא יְסוֹד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "כָּל אָטוֹם בְּמַטִּיל שֶׁל זָהָב טָהוֹר מְכִיל שִׁבְעִים וּתִשְׁעָה פְּרוֹטוֹנִים.",
+      "text_markdown": "כל אטום במטיל של זהב טהור מכיל שבעים ותשעה פרוטונים.",
+      "title": "Elements",
+      "tts": {
+        "text": "כָּל אָטוֹם בְּמַטִּיל שֶׁל זָהָב טָהוֹר מְכִיל שִׁבְעִים וּתִשְׁעָה פְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "חַמְצָן טָהוֹר הוּא יְסוֹד.",
+      "text_markdown": "חמצן טהור הוא יסוד.",
+      "title": "Elements",
+      "tts": {
+        "text": "חַמְצָן טָהוֹר הוּא יְסוֹד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "chapter": 3,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p20",
+      "text": "כֹל אָטוֹם בְמִיכַל שֶׁל חַמְצָן טָהוֹר מְכִיל שְׁמוֹנָה פְרוֹטוֹנִים.",
+      "text_markdown": "כל אטום במיכל של חמצן טהור מכיל שמונה פרוטונים.",
+      "title": "Elements",
+      "tts": {
+        "text": "כָּל אָטוֹם בְּמִיכַל שֶׁל חַמְצָן טָהוֹר מְכִיל שְׁמוֹנָה פְּרוֹטוֹנִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "יֵשׁ בְעֵרֶךְ תִּשְׁעִים וּשְׁנַיִם יְסוֹדוֹת שֶׁנִּמְצָאִים בַּטֶּבַע עַל כְּדוּר הָאָרֶץ.",
+      "text_markdown": "יש בערך תשעים ושניים יסודות שנמצאים בטבע על כדור הארץ.",
+      "title": "Elements",
+      "tts": {
+        "text": "יֵשׁ בְעֵרֶךְ תִּשְׁעִים וּשְׁנַיִם יְסוֹדוֹת שֶׁנִּמְצָאִים בַּטֶּבַע עַל כְּדוּר הָאָרֶץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "מַדְעָנִים יָצְרוּ יְסוֹדוֹת נוֹסָפִים בְמַעְבָּדוֹת.",
+      "text_markdown": "מדענים יצרו יסודות נוספים במעבדות.",
+      "title": "Elements",
+      "tts": {
+        "text": "מַדְעָנִים יָצְרוּ יְסוֹדוֹת נוֹסָפִים בְמַעְבָּדוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-085",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "הַמִּסְפַּר הַכּוֹלֵל שֶׁל הַיְסוֹדוֹת הַיְדוּעִים הוּא מֵעַל מֵאָה וּשְׁמוֹנָה עֶשְׂרֵה.",
+      "text_markdown": "המספר הכולל של היסודות הידועים הוא מעל מאה ושמונה עשרה.",
+      "title": "Elements",
+      "tts": {
+        "text": "הַמִּסְפַּר הַכּוֹלֵל שֶׁל הַיְסוֹדוֹת הַיְדוּעִים הוּא מֵעַל מֵאָה וּשְׁמוֹנָה עֶשְׂרֵה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-086",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p21",
+      "text": "לְכָל יְסוֹד יֵשׁ מִסְפַּר יַיְחוּדִי שֶׁל פְרוֹטוֹנִים.",
+      "text_markdown": "לכל יסוד יש מספר ייחודי של פרוטונים.",
+      "title": "Elements",
+      "tts": {
+        "text": "לְכָל יְסוֹד יֵשׁ מִסְפַּר יַיְחוּדִי שֶׁל פְרוֹטוֹנִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "לְכָל יְסוֹד יֵשׁ שֵׁם וְסִימָן.",
+      "text_markdown": "לכל יסוד יש שם וסימן.",
+      "title": "Elements",
+      "tts": {
+        "text": "לְכָל יְסוֹד יֵשׁ שֵׁם וְסִימָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-088",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "מִימָן הוּא H. חַמְצָן הוּא O. פַּחְמָן הוּא C. בַּרְזֶל הוּא Fe.",
+      "text_markdown": "מימן הוא H. חמצן הוא O. פחמן הוא C. ברזל הוא Fe.",
+      "title": "Elements",
+      "tts": {
+        "text": "מִימָן הוּא אַיְץ'. חַמְצָן הוּא אוֹ. פַּחְמָן הוּא סִי. בַּרְזֶל הוּא אֶף אַיְ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-089",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "זָהָב הוּא Au.",
+      "text_markdown": "זהב הוא Au.",
+      "title": "Elements",
+      "tts": {
+        "text": "זָהָב הוּא אַיְ יוּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-090",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "הַסִּימָנִים מַגִּיעִים מִשְּׁמוֹת בְלָטִינִית, יְוָנִית אוֹ אַנְגְּלִית.",
+      "text_markdown": "הסימנים מגיעים משמות בלטינית, יוונית או אנגלית.",
+      "title": "Elements",
+      "tts": {
+        "text": "הַסִּימָנִים מַגִּיעִים מִשְּׁמוֹת בְלָטִינִית, יְוָנִית אוֹ אַנְגְּלִית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-091",
+      "chapter": 3,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "Fe מַגִּיעַ מֵהַמִּלָּה הַלָּטִינִית פְּרוּם.",
+      "text_markdown": "Fe מגיע מהמילה הלטינית פרום.",
+      "title": "Elements",
+      "tts": {
+        "text": "אֶף אַיְ מַגִּיעַ מֵהַמִּלָּה הַלָּטִינִית פְּרוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-092",
+      "chapter": 3,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p22",
+      "text": "Au מְגִיעַ מֵהַמִּלָּה הַלָּטִינִית אָאוּרוּם.",
+      "text_markdown": "Au מגיע מהמילה הלטינית אאורום.",
+      "title": "Elements",
+      "tts": {
+        "text": "אַיְ יוּ מַגִּיעַ מֵהַמִּלָּה הַלָּטִינִית אַאוֹרוּם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-093",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "מִימָן הוּא הַיִּסוֹד הַפָּשׁוּט בְּיוֹתֵר.",
+      "text_markdown": "מימן הוא היסוד הפשוט ביותר.",
+      "title": "Elements",
+      "tts": {
+        "text": "מִימָן הוּא הַיִּסוֹד הַפָּשׁוּט בְּיוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-094",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "לְאָטוֹם מִימָן יֵשׁ פְּרוֹטוֹן אֶחָד וְאֶלֶקְטְרוֹן אֶחָד.",
+      "text_markdown": "לאטום מימן יש פרוטון אחד ואלקטרון אחד.",
+      "title": "Elements",
+      "tts": {
+        "text": "לְאָטוֹם מִימָן יֵשׁ פְּרוֹטוֹן אֶחָד וְאֶלֶקְטְרוֹן אֶחָד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-095",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "מִימָן הוּא הַיִּסוֹד הַנָּפוּץ בְּיוֹתֵר בַּיְקוּם.",
+      "text_markdown": "מימן הוא היסוד הנפוץ ביותר ביקום.",
+      "title": "Elements",
+      "tts": {
+        "text": "מִימָן הוּא הַיִּסוֹד הַנָּפוּץ בְּיוֹתֵר בַּיְקוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-096",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p23",
+      "text": "כּוֹכָבִים עֲשׂוּיִים בְּעִקָּר מִמִּימָן.",
+      "text_markdown": "כוכבים עשויים בעיקר ממימן.",
+      "title": "Elements",
+      "tts": {
+        "text": "כּוֹכָבִים עֲשׂוּיִים בְּעִקָּר מִמִּימָן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-097",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "פַּחְמָן הוּא הַיִּסוֹד שֶׁל הַחַיִּים.",
+      "text_markdown": "פחמן הוא היסוד של החיים.",
+      "title": "Elements",
+      "tts": {
+        "text": "פַּחְמָן הוּא הַיִּסוֹד שֶׁל הַחַיִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-098",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "לְפַחְמָן יֵשׁ שִׁשָּׁה פְּרוֹטוֹנִים.",
+      "text_markdown": "לפחמן יש שישה פרוטונים.",
+      "title": "Elements",
+      "tts": {
+        "text": "לְפַחְמָן יֵשׁ שִׁשָּׁה פְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-099",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "אָטוֹמֵי פַּחְמָן יְכוֹלִים לִיצוֹר קְשָׁרִים עִם הַרְבֵּה אָטוֹמִים אֲחֵרִים בּוֹ־זְמַנִּית.",
+      "text_markdown": "אטומי פחמן יכולים ליצור קשרים עם הרבה אטומים אחרים בו-זמנית.",
+      "title": "Elements",
+      "tts": {
+        "text": "אָטוֹמֵי פַּחְמָן יְכוֹלִים לִיצוֹר קְשָׁרִים עִם הַרְבֵּה אָטוֹמִים אֲחֵרִים בּוֹ־זְמַנִּית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-100",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "הַיְכֹלֶת הַזּוֹ הוֹפַכְתּ אֶת הַפַּחְמָן לְשִׁלְדּ שֶׁל כָּל הַיְצוּרִים הַחַיִּים.",
+      "text_markdown": "היכולת הזו הופכת את הפחמן לשלד של כל היצורים החיים.",
+      "title": "Elements",
+      "tts": {
+        "text": "הַיְכֹלֶת הַזּוֹ הוֹפַכְתּ אֶת הַפַּחְמָן לְשִׁלְדּ שֶׁל כָּל הַיְצוּרִים הַחַיִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-101",
+      "chapter": 3,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p24",
+      "text": "כָּל חֶלְבּוֹן, כָּל גָּדִיל שֶׁל DNA, וְכָל מוֹלֶקוּלַת סוּכָּר בְּגוּף שֶׁלָּכֶם מְכִילִים פַּחְמָן.",
+      "text_markdown": "כל חלבון, כל גדיל של DNA, וכל מולקולת סוכר בגוף שלכם מכילים פחמן.",
+      "title": "Elements",
+      "tts": {
+        "text": "כָּל חֶלְבּוֹן, כָּל גָּדִיל שֶׁל DNA, וְכָל מוֹלֶקוּלַת סוּכָּר בְּגוּף שֶׁלָּכֶם מְכִילִים פַּחְמָן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-102",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "לַחְמִצַן יֵשׁ שְׁמוֹנָה פְּרוֹטוֹנִים.",
+      "text_markdown": "לחמצן יש שמונה פרוטונים.",
+      "title": "Elements",
+      "tts": {
+        "text": "לַחְמִצָן יֵשׁ שְׁמוֹנָה פְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-103",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "חַמְצַן הוּא הַיִּסוֹד שֶׁאַתֶּם נוֹשְׁמִים.",
+      "text_markdown": "חמצן הוא היסוד שאתם נושמים.",
+      "title": "Elements",
+      "tts": {
+        "text": "חַמְצַן הוּא הַיִּסוֹד שֶׁאַתֶּם נוֹשְׁמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-104",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "הָרִיאוֹת שֶׁלָּכֶם שׁוֹלְפוֹת חַמְצַן מֵהָאֲוִיר וְשׁוֹלְחוֹת אוֹתוֹ לַדָּם.",
+      "text_markdown": "הריאות שלכם שולפות חמצן מהאוויר ושולחות אותו לדם.",
+      "title": "Elements",
+      "tts": {
+        "text": "הָרִיאוֹת שֶׁלָּכֶם שׁוֹלְפוֹת חַמְצַן מֵהָאֲוִיר וְשׁוֹלְחוֹת אוֹתוֹ לַדָּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-105",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p25",
+      "text": "הַתָּאִים שֶׁלָּכֶם מִשְׁתַּמְּשִׁים בַּחַמְצַן כְּדֵי לְשַׁחְרֵר אֱנֶרְגִּיָּה מֵאוֹכֶל.",
+      "text_markdown": "התאים שלכם משתמשים בחמצן כדי לשחרר אנרגיה מאוכל.",
+      "title": "Elements",
+      "tts": {
+        "text": "הַתָּאִים שֶׁלָּכֶם מִשְׁתַּמְּשִׁים בַּחַמְצַן כְּדֵי לְשַׁחְרֵר אֱנֶרְגִּיָּה מֵאוֹכֶל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-106",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "לַבַּרְזֶל יֵשׁ עֶשְׂרִים וְשִׁשָּׁה פְּרוֹטוֹנִים.",
+      "text_markdown": "לברזל יש עשרים ושישה פרוטונים.",
+      "title": "Elements",
+      "tts": {
+        "text": "לַבַּרְזֶל יֵשׁ עֶשְׂרִים וְשִׁשָּׁה פְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-107",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "בַּרְזֶל הוּא הַיִּסוֹד שֶׁהוֹפֵךְ אֶת הַדָּם שֶׁלָּכֶם לְאָדוֹם.",
+      "text_markdown": "ברזל הוא היסוד שהופך את הדם שלכם לאדום.",
+      "title": "Elements",
+      "tts": {
+        "text": "בַּרְזֶל הוּא הַיִּסוֹד שֶׁהוֹפֵךְ אֶת הַדָּם שֶׁלָּכֶם לְאָדוֹם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-108",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "בַּרְזֶל הוּא הַמַּרְכִּיב הָעִקָּרִי בְּפֶלָדָה.",
+      "text_markdown": "ברזל הוא המרכיב העיקרי בפלדה.",
+      "title": "Elements",
+      "tts": {
+        "text": "בַּרְזֶל הוּא הַמַּרְכִּיב הָעִקָּרִי בְּפֶלָדָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-109",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p26",
+      "text": "הַגָּרְעִין שֶׁל כְּדוּר הָאָרֶץ עָשׂוּי בְּעִקָּר מִבַּרְזֶל.",
+      "text_markdown": "הגרעין של כדור הארץ עשוי בעיקר מברזל.",
+      "title": "Elements",
+      "tts": {
+        "text": "הַגָּרְעִין שֶׁל כְּדוּר הָאָרֶץ עָשׂוּי בְּעִקָּר מִבַּרְזֶל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-110",
+      "chapter": 3,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "הַיִּסוֹדוֹת הַקַּלִּים בְּיוֹתֵר הֵם הַנְּפוּצִים בְּיוֹתֵר בַּיְקוּם.",
+      "text_markdown": "היסודות הקלים ביותר הם הנפוצים ביותר ביקום.",
+      "title": "Elements",
+      "tts": {
+        "text": "הַיִּסוֹדוֹת הַקַּלִּים בְּיוֹתֵר הֵם הַנְּפוּצִים בְּיוֹתֵר בַּיְקוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-111",
+      "chapter": 3,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "מִימָן וְהֶלְיוּם בְּיַחַד מַהְוִים בְּעֶרֶךְ תִּשְׁעִים וּשְׁמוֹנָה אַחוּז מִכָּל הָאָטוֹמִים בַּיְקוּם.",
+      "text_markdown": "מימן והליום ביחד מהווים בערך תשעים ושמונה אחוז מכל האטומים ביקום.",
+      "title": "Elements",
+      "tts": {
+        "text": "מִימָן וְהֶלְיוּם בְּיַחַד מַהְוִים בְּעֶרֶךְ תִּשְׁעִים וּשְׁמוֹנָה אַחוּז מִכָּל הָאָטוֹמִים בַּיְקוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-112",
+      "chapter": 3,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "הַיְסוֹדוֹת הַכְּבֵדִים יוֹתֵר נְדִירִים בַּהַשְׁוָאָה.",
+      "text_markdown": "היסודות הכבדים יותר נדירים בהשוואה.",
+      "title": "Elements",
+      "tts": {
+        "text": "הַיִּסוֹדוֹת הַכְּבֵדִים יוֹתֵר נָדִירִים בְּהַשְׁוָאָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-113",
+      "chapter": 3,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p27",
+      "text": "כָּל אָטוֹם שֶׁל כָּל יִסּוֹד כָּבֵד נוֹצַר בְּתוֹךְ כּוֹכָב.",
+      "text_markdown": "כל אטום של כל יסוד כבד נוצר בתוך כוכב.",
+      "title": "Elements",
+      "tts": {
+        "text": "כָּל אָטוֹם שֶׁל כָּל יִסּוֹד כָּבֵד נוֹצַר בְּתוֹךְ כּוֹכָב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-114",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p28",
+      "text": "הַטָּבְלָה הַמְּחֻזּוֹרִית",
+      "text_markdown": "הטבלה המחזורית",
+      "title": "הטבלה המחזורית"
+    },
+    {
+      "id": "ch04-115",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "הַטָּבְלָה הַמְּחֻזּוֹרִית הִיא טַבְלָה שֶׁמְּסַדֶּרֶת אֶת כָּל הַיְסוֹדוֹת הַיְדוּעִים.",
+      "text_markdown": "הטבלה המחזורית היא טבלה שמסדרת את כל היסודות הידועים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַטָּבְלָה הַמְּחֻזּוֹרִית הִיא טַבְלָה שֶׁמְּסַדֶּרֶת אֶת כָּל הַיְסוֹדוֹת הַיְדוּעִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-116",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "הַטָּבְלָה מְסַדֶּרֶת יְסוֹדוֹת לְפִי מִסְפַּר הַפְּרוֹטוֹנִים שֶׁלָּהֶם, מֵהַקָּטָן לַגָּדוֹל.",
+      "text_markdown": "הטבלה מסדרת יסודות לפי מספר הפרוטונים שלהם, מהקטן לגדול.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַטָּבְלָה מְסַדֶּרֶת יְסוֹדוֹת לְפִי מִסְפַּר הַפְּרוֹטוֹנִים שֶׁלָּהֶם, מֵהַקָּטָן לַגָּדוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-117",
+      "chapter": 4,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "מִימָן הוּא רִאשׁוֹן עִם פְּרוֹטוֹן אֶחָד.",
+      "text_markdown": "מימן הוא ראשון עם פרוטון אחד.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "מִימָן הוּא רִאשׁוֹן עִם פְּרוֹטוֹן אֶחָד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-118",
+      "chapter": 4,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "הֱלִיוּם הוּא שֵׁנִי עִם שְׁנֵי פְּרוֹטוֹנִים.",
+      "text_markdown": "הליום הוא שני עם שני פרוטונים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הֱלִיוּם הוּא שֵׁנִי עִם שְׁנֵי פְּרוֹטוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-119",
+      "chapter": 4,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p29",
+      "text": "הַטָּבְלָה מַמְשִׁיכָה עַד אוֹגַנֶּסוֹן עִם מֵאָה וּשְׁמוֹנָה עֶשְׂרֵה פְּרוֹטוֹנִים.",
+      "text_markdown": "הטבלה ממשיכה עד אוגנסון עם מאה ושמונה עשרה פרוטונים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַטָּבְלָה מַמְשִׁיכָה עַד אוֹגַנֶּסוֹן עִם מֵאָה וּשְׁמוֹנָה עֶשְׂרֵה פְּרוֹטוֹנִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-120",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "לַטָּבְלָה הַמְּחֻזּוֹרִית יֵשׁ שׁוּרוֹת וְעַמּוּדוֹת.",
+      "text_markdown": "לטבלה המחזורית יש שורות ועמודות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "לַטָּבְלָה הַמְּחֻזּוֹרִית יֵשׁ שׁוּרוֹת וְעַמּוּדוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-121",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "הַשּׁוּרוֹת נִקְרָאוֹת מְחֻזּוֹרִים.",
+      "text_markdown": "השורות נקראות מחזורים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַשּׁוּרוֹת נִקְרָאוֹת מְחֻזּוֹרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-122",
+      "chapter": 4,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "הָעַמּוּדוֹת נִקְרָאוֹת קְבוּצוֹת.",
+      "text_markdown": "העמודות נקראות קבוצות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הָעַמּוּדוֹת נִקְרָאוֹת קְבוּצוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-123",
+      "chapter": 4,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "לִיסוֹדוֹת בְאוֹתָהּ קְבוּצָה יֵשׁ תְּכוּנוֹת דּוֹמוֹת.",
+      "text_markdown": "ליסודות באותה קבוצה יש תכונות דומות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "לִיסוֹדוֹת בְאוֹתָהּ קְבוּצָה יֵשׁ תְּכוּנוֹת דּוֹמוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-124",
+      "chapter": 4,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "בִּגְלַל זֶה הַטַּבְלָה נִקְרְאַת מְחוֹזוֹרִית.",
+      "text_markdown": "בגלל זה הטבלה נקראת מחזורית.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "בִּגְלַל זֶה הַטַּבְלָה נִקְרְאַת מְחוֹזוֹרִית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-125",
+      "chapter": 4,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p30",
+      "text": "הַתְּכוּנוֹת חוֹזְרוֹת עַל עַצְמָן בְדָפוּס קָבוּעַ.",
+      "text_markdown": "התכונות חוזרות על עצמן בדפוס קבוע.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַתְּכוּנוֹת חוֹזְרוֹת עַל עַצְמָן בְדָפוּס קָבוּעַ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-126",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "הַיְסוֹדוֹת בְצַד שְׂמֹאל שֶׁל הַטַּבְלָה הֵם מַתָּכוֹת.",
+      "text_markdown": "היסודות בצד שמאל של הטבלה הם מתכות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַיְסוֹדוֹת בְצַד שְׂמֹאל שֶׁל הַטַּבְלָה הֵם מַתָּכוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-127",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "רֹב הַיְסוֹדוֹת הֵם מַתָּכוֹת.",
+      "text_markdown": "רוב היסודות הם מתכות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "רֹב הַיְסוֹדוֹת הֵם מַתָּכוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-128",
+      "chapter": 4,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "מַתָּכוֹת מַבְרִיקוֹת.",
+      "text_markdown": "מתכות מבריקות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "מַתָּכוֹת מַבְרִיקוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-129",
+      "chapter": 4,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "מַתָּכוֹת מוֹלִיכוֹת חַשְׁמַל.",
+      "text_markdown": "מתכות מוליכות חשמל.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "מַתָּכוֹת מוֹלִיכוֹת חַשְׁמַל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-130",
+      "chapter": 4,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "מַתָּכוֹת מוֹלִיכוֹת חוֹם.",
+      "text_markdown": "מתכות מוליכות חום.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "מַתָּכוֹת מוֹלִיכוֹת חוֹם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-131",
+      "chapter": 4,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p31",
+      "text": "בַּרְזֶל, נְחֹשֶׁת, זָהָב וְאָלוּמִינְיוּם הֵם כּוּלָּם מַתָּכוֹת.",
+      "text_markdown": "ברזל, נחושת, זהב ואלומיניום הם כולם מתכות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "בַּרְזֶל, נְחֹשֶׁת, זָהָב וְאָלוּמִינְיוּם הֵם כּוּלָּם מַתָּכוֹת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-132",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "הַיְסוֹדוֹת בְצַד יָמִין שֶׁל הַטַּבְלָה הֵם אַל־מַתָּכוֹת.",
+      "text_markdown": "היסודות בצד ימין של הטבלה הם אל-מתכות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַיְסוֹדוֹת בְצַד יָמִין שֶׁל הַטַּבְלָה הֵם אַל־מַתָּכוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-133",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "אֶל־מַתְכּוֹת כּוֹלְלוֹת חַמְצָן, חַנְקָן, פַּחְמָן וְגוֹפְרִית.",
+      "text_markdown": "אל-מתכות כוללות חמצן, חנקן, פחמן וגופרית.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "אֶל־מַתְכּוֹת כּוֹלְלוֹת חַמְצָן, חַנְקָן, פַּחְמָן וְגוֹפְרִית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-134",
+      "chapter": 4,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "אֶל־מַתְכּוֹת לֹא מוֹלִיכוֹת חַשְׁמַל טוֹב.",
+      "text_markdown": "אל-מתכות לא מוליכות חשמל טוב.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "אֶל־מַתְכּוֹת לֹא מוֹלִיכוֹת חַשְׁמַל טוֹב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-135",
+      "chapter": 4,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p32",
+      "text": "אֶל־מַתְכּוֹת הֵם הַיְּסוֹדוֹת שֶׁמַּרְכִּיבִים אֲוִיר, מַיִם וִיצוּרִים חַיִּים.",
+      "text_markdown": "אל-מתכות הם היסודות שמרכיבים אוויר, מים ויצורים חיים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "אֶל־מַתְכּוֹת הֵם הַיְּסוֹדוֹת שֶׁמַּרְכִּיבִים אֲוִיר, מַיִם וִיצוּרִים חַיִּים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-136",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "כַּמָּה יְסוֹדוֹת נִמְצָאִים עַל הַגְּבוּל בֵּין מַתְכּוֹת לְאֶל־מַתְכּוֹת.",
+      "text_markdown": "כמה יסודות נמצאים על הגבול בין מתכות לאל-מתכות.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "כַּמָּה יְסוֹדוֹת נִמְצָאִים עַל הַגְּבוּל בֵּין מַתְכּוֹת לְאֶל־מַתְכּוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-137",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "הַיְּסוֹדוֹת הָאֵלֶּה נִקְרָאִים מֶטַלּוּאוֹדִים.",
+      "text_markdown": "היסודות האלה נקראים מטלואידים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַיְּסוֹדוֹת הָאֵלֶּה נִקְרָאִים מֶטַלּוּאוֹדִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-138",
+      "chapter": 4,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "סִילִיקוֹן הוּא מֶטַלּוּאוֹיד.",
+      "text_markdown": "סיליקון הוא מטלואיד.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "סִילִיקוֹן הוּא מֶטַלּוּאוֹיד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-139",
+      "chapter": 4,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "סִילִיקוֹן מוֹלִיךְ חַשְׁמַל קְצָת, אֲבָל לֹא טוֹב כְּמוֹ מַתְכּוֹת.",
+      "text_markdown": "סיליקון מוליך חשמל קצת, אבל לא טוב כמו מתכת.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "סִילִיקוֹן מוֹלִיךְ חַשְׁמַל קְצָת, אֲבָל לֹא טוֹב כְּמוֹ מַתְכּוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-140",
+      "chapter": 4,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p33",
+      "text": "הַתְּכוּנָה הַזּוֹ הוֹפַכֶּת אֶת הַסִּילִיקוֹן לִשְׁמוּשִׁי בְּשַׁבְּבֵי מַחְשֵׁב.",
+      "text_markdown": "התכונה הזו הופכת את הסיליקון לשימושי בשבבי מחשב.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַתְּכוּנָה הַזּוֹ הוֹפַכֶּת אֶת הַסִּילִיקוֹן לִשְׁמוּשִׁי בְּשַׁבְּבֵי מַחְשֵׁב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-141",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "הַגָּזִים הָאֲצִילִים נִמְצָאִים בְּעַמּוּדָה הָאַחֲרוֹנָה מִימִין.",
+      "text_markdown": "הגזים האצילים נמצאים בעמודה האחרונה מימין.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַגָּזִים הָאֲצִילִים נִמְצָאִים בְּעַמּוּדָה הָאַחֲרוֹנָה מִימִין.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-142",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "הֱלִיּוּם, נִיאוֹן, אַרְגּוֹן, קְרִיפְטוֹן, קְסֵנוֹן וְרָדוֹן הֵם גָּזִים אֲצִילִים.",
+      "text_markdown": "הליום, ניאון, ארגון, קריפטון, קסנון ורדון הם גזים אצילים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הֱלִיּוּם, נִיאוֹן, אַרְגּוֹן, קְרִיפְטוֹן, קְסֵנוֹן וְרָדוֹן הֵם גָּזִים אֲצִילִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-143",
+      "chapter": 4,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "גָּזִים אַצִילִים כִּמְעַט אַף פַּעַם לֹא מְגִיבִים עִם יְסוֹדוֹת אֲחֵרִים.",
+      "text_markdown": "גזים אצילים כמעט אף פעם לא מגיבים עם יסודות אחרים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "גָּזִים אַצִילִים כִּמְעַט אַף פַּעַם לֹא מְגִיבִים עִם יְסוֹדוֹת אֲחֵרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-144",
+      "chapter": 4,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "סִידּוּר הָאֶלֶקְטְרוֹנִים שֶׁלָּהֶם כְּבָר יַצִּיב.",
+      "text_markdown": "סידור האלקטרונים שלהם כבר יציב.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "סִידּוּר הָאֶלֶקְטְרוֹנִים שֶׁלָּהֶם כְּבָר יַצִּיב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-145",
+      "chapter": 4,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p34",
+      "text": "הֵם לֹא צְרִיכִים לִיצוֹר קְשָׁרִים כִּימִיִּים.",
+      "text_markdown": "הם לא צריכים ליצור קשרים כימיים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הֵם לֹא צְרִיכִים לִיצוֹר קְשָׁרִים כִּימִיִּים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-146",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "מַדְעָן רוּסִי בְשֵׁם דְּמִיטְרִי מֶנְדְּלֵייֶב יָצַר אֶת הַטַּבְלָה הַמְּחוּזוֹרִית הָרִאשׁוֹנָה בּ־1869.",
+      "text_markdown": "מדען רוסי בשם דמיטרי מנדלייב יצר את הטבלה המחזורית הראשונה ב-1869.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "מַדְעָן רוּסִי בְשֵׁם דְּמִיטְרִי מֶנְדְּלֵייֶב יָצַר אֶת הַטַּבְלָה הַמְּחוּזוֹרִית הָרִאשׁוֹנָה בִּשְׁנַת אֶלֶף שְׁמוֹנֶה מֵאוֹת שִׁשִּׁים וְתִשְׁעָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-147",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "מֶנְדְּלֵייֶב סִידֵּר אֶת הַיְסוֹדוֹת לְפִי הַתְּכוּנוֹת שֶׁלָּהֶם וְהִבְחִין בְּדָפוּס הַחוֹזֵר.",
+      "text_markdown": "מנדלייב סידר את היסודות לפי התכונות שלהם והבחין בדפוס החוזר.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "מֶנְדְּלֵייֶב סִידֵּר אֶת הַיְסוֹדוֹת לְפִי הַתְּכוּנוֹת שֶׁלָּהֶם וְהִבְחִין בְּדָפוּס הַחוֹזֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-148",
+      "chapter": 4,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "הוּא הִשְׁאִיר רְוָחִים בַּטַּבְלָה שֶׁלּוֹ בִּמְקוֹמוֹת שֶׁבָּהֶם חָזָה שְׁצְרִיכִים לִהְיוֹת יְסוֹדוֹת לֹא יְדוּעִים.",
+      "text_markdown": "הוא השאיר רווחים בטבלה שלו במקומות שבהם חזה שצריכים להיות יסודות לא ידועים.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הוּא הִשְׁאִיר רְוָחִים בַּטַּבְלָה שֶׁלּוֹ בִּמְקוֹמוֹת שֶׁבָּהֶם חָזָה שְׁצְרִיכִים לִהְיוֹת יְסוֹדוֹת לֹא יְדוּעִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-149",
+      "chapter": 4,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "מַדְעָנִים גִּילּוּ מְאוּחַר יוֹתֵר אֶת הַיְסוֹדוֹת הָאֵלֶּה.",
+      "text_markdown": "מדענים גילו מאוחר יותר את היסודות האלה.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "מַדְעָנִים גִּילּוּ מְאוּחַר יוֹתֵר אֶת הַיְסוֹדוֹת הָאֵלֶּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-150",
+      "chapter": 4,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p35",
+      "text": "כָּל תַּחְזִית הָיְתָה נְכוֹנָה.",
+      "text_markdown": "כל תחזית הייתה נכונה.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "כָּל תַּחְזִית הָיְתָה נְכוֹנָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-151",
+      "chapter": 4,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "הַטַּבְלָה הַמְּחוּזוֹרִית הִיא אַחַד הַכְּלִים הַחֲזָקִים בְּיוֹתֵר בַּמַּדְעַ.",
+      "text_markdown": "הטבלה המחזורית היא אחד הכלים החזקים ביותר במדע.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "הַטַּבְלָה הַמְּחוּזוֹרִית הִיא אַחַד הַכְּלִים הַחֲזָקִים בְּיוֹתֵר בַּמַּדְעַ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-152",
+      "chapter": 4,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p36",
+      "text": "אִם אַתֶּם יוֹדְעִים אֵיפֹה יְסוֹד נִמְצָא בַּטַּבְלָה, אַתֶּם יְכוֹלִים לַחֲזוֹת אֵיךְ הוּא יִתְנַהֵג.",
+      "text_markdown": "אם אתם יודעים איפה יסוד נמצא בטבלה, אתם יכולים לחזות איך הוא יתנהג.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "אִם אַתֶּם יוֹדְעִים אֵיפֹה יְסוֹד נִמְצָא בַּטַּבְלָה, אַתֶּם יְכוֹלִים לַחֲזוֹת אֵיךְ הוּא יִתְנַהֵג.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-153",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p37",
+      "text": "אֵיךְ אָטוֹמִים יוֹצְרִים קְשָׁרִים",
+      "text_markdown": "איך אטומים יוצרים קשרים",
+      "title": "איך אטומים יוצרים קשרים"
+    },
+    {
+      "id": "ch05-154",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "אָטוֹמִים כְּמַעַט אַף פַּעַם לֹא נִמְצָאִים לְבַד.",
+      "text_markdown": "אטומים כמעט אף פעם לא נמצאים לבד.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "אָטוֹמִים כְּמַעַט אַף פַּעַם לֹא נִמְצָאִים לְבַד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-155",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "רֹב הָאָטוֹמִים יוֹצְרִים קְשָׁרִים עִם אָטוֹמִים אֲחֵרִים כְּדֵי לִיצוֹר מוֹלְקוּלוֹת.",
+      "text_markdown": "רוב האטומים יוצרים קשרים עם אטומים אחרים כדי ליצור מולקולות.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "רֹב הָאָטוֹמִים יוֹצְרִים קְשָׁרִים עִם אָטוֹמִים אֲחֵרִים כְּדֵי לִיצוֹר מוֹלְקוּלוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-156",
+      "chapter": 5,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "מוֹלְקוּלָה הִיא קְבוּצָה שֶׁל אָטוֹמִים שֶׁמְּחוּזְּקִים יַחְדָּו עַל יְדֵי קְשָׁרִים כִּימִיִּים.",
+      "text_markdown": "מולקולה היא קבוצה של אטומים שמוחזקים יחד על ידי קשרים כימיים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מוֹלְקוּלָה הִיא קְבוּצָה שֶׁל אָטוֹמִים שֶׁמְּחוּזְּקִים יַחְדָּו עַל יְדֵי קְשָׁרִים כִּימִיִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-157",
+      "chapter": 5,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "מַיִם הֵם מוֹלְקוּלָה.",
+      "text_markdown": "מים הם מולקולה.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מַיִם הֵם מוֹלְקוּלָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-158",
+      "chapter": 5,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "גַּז חַמְצָן הוּא מוֹלְקוּלָה.",
+      "text_markdown": "גז חמצן הוא מולקולה.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "גַּז חַמְצָן הוּא מוֹלְקוּלָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-159",
+      "chapter": 5,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p38",
+      "text": "סוּכָּר הוּא מוֹלְקוּלָה.",
+      "text_markdown": "סוכר הוא מולקולה.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "סוּכָּר הוּא מוֹלְקוּלָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-160",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "אָטוֹמִים יוֹצְרִים קְשָׁרִים בִּגְלַל הָאֶלֶקְטְרוֹנִים שֶׁלָּהֶם.",
+      "text_markdown": "אטומים יוצרים קשרים בגלל האלקטרונים שלהם.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "אָטוֹמִים יוֹצְרִים קְשָׁרִים בִּגְלַל הָאֶלֶקְטְרוֹנִים שֶׁלָּהֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-161",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "הָאֶלֶקְטְרוֹנִים בִּקְלִיפָּה הַחִיצוֹנִית שֶׁל אָטוֹם קוֹבְעִים אֵיךְ הָאָטוֹם מִתְקַשֵּׁר עִם אָטוֹמִים אֲחֵרִים.",
+      "text_markdown": "האלקטרונים בקליפה החיצונית של אטום קובעים איך האטום מתקשר עם אטומים אחרים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הָאֶלֶקְטְרוֹנִים בִּקְלִיפָּה הַחִיצוֹנִית שֶׁל אָטוֹם קוֹבְעִים אֵיךְ הָאָטוֹם מִתְקַשֵּׁר עִם אָטוֹמִים אֲחֵרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-162",
+      "chapter": 5,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "הָאֶלֶקְטְרוֹנִים הַחִיצוֹנִיִּם הָאֵלֶּה נִקְרָאִים אֶלֶקְטְרוֹנֵי עֲרָכִיּוּת.",
+      "text_markdown": "האלקטרונים החיצוניים האלה נקראים אלקטרוני ערכיות.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הָאֶלֶקְטְרוֹנִים הַחִיצוֹנִיִּם הָאֵלֶּה נִקְרָאִים אֶלֶקְטְרוֹנֵי עֲרָכִיּוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-163",
+      "chapter": 5,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "אָטוֹם עִם קְלִיפָה חִיצוֹנִית מְלֵאָה הוּא יָצִיב.",
+      "text_markdown": "אטום עם קליפה חיצונית מלאה הוא יציב.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "אָטוֹם עִם קְלִיפָּה חִיצוֹנִית מְלֵאָה הוּא יַצִּיב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-164",
+      "chapter": 5,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p39",
+      "text": "אָטוֹם בְּלִי קְלִיפָה חִיצוֹנִית מְלֵאָה יִשְׁאַף לְמַלֵּא אוֹתָהּ.",
+      "text_markdown": "אטום בלי קליפה חיצונית מלאה ישאף למלא אותה.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "אָטוֹם בְּלִי קְלִיפָה חִיצוֹנִית מְלֵאָה יִשְׁאַף לְמַלֵּא אוֹתָהּ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-165",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "יֵשׁ שְׁנֵי סוּגִים עִקָּרִיִּים שֶׁל קְשָׁרִים כִּימִיִּים.",
+      "text_markdown": "יש שני סוגים עיקריים של קשרים כימיים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "יֵשׁ שְׁנֵי סוּגִים עִקָּרִיִּים שֶׁל קְשָׁרִים כִּימִיִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-166",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p40",
+      "text": "קְשָׁרִים קוֹבָלֶנְטִיִּים וְקְשָׁרִים יוֹנִיִּים.",
+      "text_markdown": "קשרים קוולנטיים וקשרים יוניים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "קְשָׁרִים קוֹבָלֶנְטִיִּים וְקְשָׁרִים יוֹנִיִּים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-167",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "בִּקְשָׁר קוֹבָלֶנְטִי, שְׁנֵי אָטוֹמִים חוֹלְקִים אֶלֶקְטְרוֹנִים.",
+      "text_markdown": "בקשר קוולנטי, שני אטומים חולקים אלקטרונים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "בִּקְשָׁר קוֹבָלֶנְטִי, שְׁנֵי אָטוֹמִים חוֹלְקִים אֶלֶקְטְרוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-168",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "שְׁנֵי הָאָטוֹמִים תּוֹרְמִים אֶלֶקְטְרוֹנִים לְזוּג מִשּׁוּתָּף.",
+      "text_markdown": "שני האטומים תורמים אלקטרונים לזוג משותף.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "שְׁנֵי הָאָטוֹמִים תּוֹרְמִים אֶלֶקְטְרוֹנִים לְזוּג מִשּׁוּתָּף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-169",
+      "chapter": 5,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "הָאֶלֶקְטְרוֹנִים הַמִּשּׁוּתָּפִים מְקִיפִים אֶת שְׁנֵי הַגַּרְעִינִים.",
+      "text_markdown": "האלקטרונים המשותפים מקיפים את שני הגרעינים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הָאֶלֶקְטְרוֹנִים הַמִּשּׁוּתָּפִים מְקִיפִים אֶת שְׁנֵי הַגַּרְעִינִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-170",
+      "chapter": 5,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "הַשִּׁיתּוּף הַזֶּה מַחֲזִיק אֶת הָאָטוֹמִים בְּיַחַד.",
+      "text_markdown": "השיתוף הזה מחזיק את האטומים ביחד.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הַשִּׁיתּוּף הַזֶּה מַחֲזִיק אֶת הָאָטוֹמִים בְּיַחַד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-171",
+      "chapter": 5,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "מַיִם מוּחְזָקִים יַחַד עַל יְדֵי קְשָׁרִים קוֹבָלֶנְטִיִּים.",
+      "text_markdown": "מים מוחזקים יחד על ידי קשרים קוולנטיים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מַיִם מוּחְזָקִים יַחַד עַל יְדֵי קְשָׁרִים קוֹבָלֶנְטִיִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-172",
+      "chapter": 5,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p41",
+      "text": "כָּל אָטוֹם מִימָן חוֹלֵק אֶלֶקְטְרוֹן אֶחָד עִם אָטוֹם הַחַמְצָן.",
+      "text_markdown": "כל אטום מימן חולק אלקטרון אחד עם אטום החמצן.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "כָּל אָטוֹם מִימָן חוֹלֵק אֶלֶקְטְרוֹן אֶחָד עִם אָטוֹם הַחַמְצָן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-173",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "בִקְשׁוּר יוֹנִי, אָטוֹם אֶחָד נוֹתֵן אֶלֶקְטְרוֹנִים לְאָטוֹם אַחֵר.",
+      "text_markdown": "בקשר יוני, אטום אחד נותן אלקטרונים לאטום אחר.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "בִּקְשָׁר יוֹנִי, אָטוֹם אֶחָד נוֹתֵן אֶלֶקְטְרוֹנִים לְאָטוֹם אַחֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-174",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "הָאָטוֹם שֶׁמְאַבֵּד אֶלֶקְטְרוֹנִים הוֹפֵךְ לְבַעַל מְטַעַן חִיוּבִי.",
+      "text_markdown": "האטום שמאבד אלקטרונים הופך לבעל מטען חיובי.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הָאָטוֹם שֶׁמְאַבֵּד אֶלֶקְטְרוֹנִים הוֹפֵךְ לְבַעַל מְטַעַן חִיוּבִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-175",
+      "chapter": 5,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "הָאָטוֹם שֶׁמְקַבֵּל אֶלֶקְטְרוֹנִים הוֹפֵךְ לְבַעַל מְטַעַן שְׁלִילִי.",
+      "text_markdown": "האטום שמקבל אלקטרונים הופך לבעל מטען שלילי.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הָאָטוֹם שֶׁמְקַבֵּל אֶלֶקְטְרוֹנִים הוֹפֵךְ לְבַעַל מְטַעַן שְׁלִילִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-176",
+      "chapter": 5,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "מְטַעֲנִים הַפּוּכִים מוֹשְׁכִים זֶה אֶת זֶה.",
+      "text_markdown": "מטענים הפוכים מושכים זה את זה.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מְטַעֲנִים הַפּוּכִים מוֹשְׁכִים זֶה אֶת זֶה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-177",
+      "chapter": 5,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "הַמְשִׁיכָה הַזּוֹ מַחְזִיקָה אֶת שְׁנֵי הָאָטוֹמִים בְיַחַד.",
+      "text_markdown": "המשיכה הזו מחזיקה את שני האטומים ביחד.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הַמְשִׁיכָה הַזּוֹ מַחְזִיקָה אֶת שְׁנֵי הָאָטוֹמִים בְיַחַד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-178",
+      "chapter": 5,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "מֶלַח שׁוּלְחָן מוּחְזַק יַחַד עַל יְדֵי קְשָׁרִים יוֹנִיִּים.",
+      "text_markdown": "מלח שולחן מוחזק יחד על ידי קשרים יוניים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מֶלַח שׁוּלְחָן מוּחְזַק יַחַד עַל יְדֵי קְשָׁרִים יוֹנִיִּים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-179",
+      "chapter": 5,
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p42",
+      "text": "נַתְרָן נוֹתֵן אֶלֶקְטְרוֹן לִכְלוֹר.",
+      "text_markdown": "נתרן נותן אלקטרון לכלור.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "נַתְרָן נוֹתֵן אֶלֶקְטְרוֹן לִכְלוֹר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-180",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "מוֹלֶקוּלַת מַיִם מְכִילָה שְׁנֵי אָטוֹמֵי מִימָן וְאָטוֹם חַמְצָן אֶחָד.",
+      "text_markdown": "מולקולת מים מכילה שני אטומי מימן ואטום חמצן אחד.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מוֹלֶקוּלַת מַיִם מְכִילָה שְׁנֵי אָטוֹמֵי מִימָן וְאָטוֹם חַמְצָן אֶחָד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-181",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "מְדַעְנִים כּוֹתְבִים אֶת זֶה H2O.",
+      "text_markdown": "מדענים כותבים את זה H2O.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מְדַעְנִים כּוֹתְבִים אֶת זֶה אַיְצ' שְׁתַּיִם אוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-182",
+      "chapter": 5,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "הַ-H מַיְצֵג מִימָן.",
+      "text_markdown": "ה-H מייצג מימן.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הָאַיְצ' מַיְצֵג מִימָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-183",
+      "chapter": 5,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "הַ-O מַיְיצֵג חַמְצָן.",
+      "text_markdown": "ה-O מייצג חמצן.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הָאוֹ מַיְצֵג חַמְצָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-184",
+      "chapter": 5,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p43",
+      "text": "הַסְּפִרָה 2 פִּירוּשָׁהּ שֶׁיֵּשׁ שְׁנֵי אָטוֹמֵי מִימָן.",
+      "text_markdown": "הספרה 2 פירושה שיש שני אטומי מימן.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הַסְּפִרָה שְׁתַיִם פִּירוּשָׁהּ שֶׁיֵּשׁ שְׁנֵי אָטוֹמֵי מִימָן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-185",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "מוֹלֶקוּלַת פַּחְמָן דּוּ-חַמְצָנִי מְכִילָה אָטוֹם פַּחְמָן אֶחָד וּשְׁנֵי אָטוֹמֵי חַמְצָן.",
+      "text_markdown": "מולקולת פחמן דו-חמצני מכילה אטום פחמן אחד ושני אטומי חמצן.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מוֹלֶקוּלַת פַּחְמָן דּוּ-חַמְצָנִי מְכִילָה אָטוֹם פַּחְמָן אֶחָד וּשְׁנֵי אָטוֹמֵי חַמְצָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-186",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "מְדַעֲנִים כּוֹתְבִים אֶת זֶה CO2.",
+      "text_markdown": "מדענים כותבים את זה CO2.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "מְדַעֲנִים כּוֹתְבִים אֶת זֶה סִי אוֹ שְׁתַיִם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-187",
+      "chapter": 5,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p44",
+      "text": "צוּמְחִים סוֹפְגִים פַּחְמָן דּוּ-חַמְצָנִי מֵהָאֲוִיר וּמִשְׁתַּמְּשִׁים בּוֹ כְּדֵי לִבְנוֹת מוֹלֶקוּלוֹת סוּכָּר.",
+      "text_markdown": "צמחים סופגים פחמן דו-חמצני מהאוויר ומשתמשים בו כדי לבנות מולקולות סוכר.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "צוּמְחִים סוֹפְגִים פַּחְמָן דּוּ-חַמְצָנִי מֵהָאֲוִיר וּמִשְׁתַּמְּשִׁים בּוֹ כְּדֵי לִבְנוֹת מוֹלֶקוּלוֹת סוּכָּר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-188",
+      "chapter": 5,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "הַקְּשָׁרִים בֵּין אָטוֹמִים מְאַחְסְנִים אֱנֶרְגִּיָה.",
+      "text_markdown": "הקשרים בין אטומים מאחסנים אנרגיה.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "הַקְּשָׁרִים בֵּין אָטוֹמִים מְאַחְסְנִים אֱנֶרְגִּיָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-189",
+      "chapter": 5,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "כְּשֶׁקְּשָׁרִים נִשְׁבָּרִים, אֱנֶרְגִּיָה מִשְׁתַּחְרֶרֶת.",
+      "text_markdown": "כשקשרים נשברים, אנרגיה משתחררת.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "כְּשֶׁקְּשָׁרִים נִשְׁבָּרִים, אֱנֶרְגִּיָה מִשְׁתַּחְרֶרֶת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-190",
+      "chapter": 5,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "כְּשֶׁקְּשָׁרִים נוֹצְרִים, אֱנֶרְגִּיָה נִסְפֶּגֶת.",
+      "text_markdown": "כשקשרים נוצרים, אנרגיה נספגת.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "כְּשֶׁקְּשָׁרִים נוֹצְרִים, אֱנֶרְגִּיָה נִסְפֶּגֶת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-191",
+      "chapter": 5,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p45",
+      "text": "כָּל תְּגוּבָה כִּימִית בַּיְקוּם כּוֹלֶלֶת שְׁבִירָה שֶׁל קְשָׁרִים יְשָׁנִים וִיצִירָה שֶׁל חֲדָשִׁים.",
+      "text_markdown": "כל תגובה כימית ביקום כוללת שבירה של קשרים ישנים ויצירה של חדשים.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "כָּל תְּגוּבָה כִּימִית בַּיְקוּם כּוֹלֶלֶת שְׁבִירָה שֶׁל קְשָׁרִים יְשָׁנִים וִיצִירָה שֶׁל חֲדָשִׁים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-192",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p46",
+      "text": "אָטוֹמִים בִּתְנוּעָה.",
+      "text_markdown": "אטומים בתנועה",
+      "title": "אטומים בתנועה"
+    },
+    {
+      "id": "ch06-193",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "אָטוֹמִים תָּמִיד בִּתְנוּעָה.",
+      "text_markdown": "אטומים תמיד בתנועה.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "אָטוֹמִים תָּמִיד בִּתְנוּעָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-194",
+      "chapter": 6,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "הֵם אַף פַּעַם לֹא עוֹצְרִים.",
+      "text_markdown": "הם אף פעם לא עוצרים.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הֵם אַף פַּעַם לֹא עוֹצְרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-195",
+      "chapter": 6,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "בְּכָל טֶמְפְּרָטוּרָה מֵעַל הָאֶפֶס הַמּוּחְלָט, אָטוֹמִים רוֹטְטִים, מִסְתּוֹבְבִים וְנָעִים בַּחָלָל.",
+      "text_markdown": "בכל טמפרטורה מעל האפס המוחלט, אטומים רוטטים, מסתובבים ונעים בחלל.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בְּכָל טֶמְפְּרָטוּרָה מֵעַל הָאֶפֶס הַמּוּחְלָט, אָטוֹמִים רוֹטְטִים, מִסְתּוֹבְבִים וְנָעִים בַּחָלָל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-196",
+      "chapter": 6,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p47",
+      "text": "הַתְּנוּעָה הַזּוֹ הִיא מָה שֶׁאָנַחְנוּ חוֹוִים בְּתוֹר חוֹם.",
+      "text_markdown": "התנועה הזו היא מה שאנחנו חווים בתור חום.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הַתְּנוּעָה הַזּוֹ הִיא מָה שֶׁאָנַחְנוּ חוֹוִים בְּתוֹר חוֹם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-197",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "בְּמוֹצָק, אָטוֹמִים רוֹטְטִים בִּמְקוֹמָם.",
+      "text_markdown": "במוצק, אטומים רוטטים במקומם.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בְּמוֹצָק, אָטוֹמִים רוֹטְטִים בִּמְקוֹמָם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-198",
+      "chapter": 6,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "הֵם נְעוּלִים בְּמִבְנֶה קָבוּעַ.",
+      "text_markdown": "הם נעולים במבנה קבוע.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הֵם נְעוּלִים בְּמִבְנֶה קָבוּעַ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-199",
+      "chapter": 6,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "הֵם מִזְדַּעְזְעִים הָלוֹךְ וָשׁוֹב, אֲבָל הֵם לֹא עוֹזְבִים אֶת מְקוֹמָם.",
+      "text_markdown": "הם מזדעזעים הלוך ושוב, אבל הם לא עוזבים את מקומם.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הֵם מִזְדַּעְזְעִים הָלוֹךְ וָשׁוֹב, אֲבָל הֵם לֹא עוֹזְבִים אֶת מְקוֹמָם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-200",
+      "chapter": 6,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "בִּגְלַל זֶה מוֹצְקִים שׁוֹמְרִים עַל הַצּוּרָה שֶׁלָּהֶם.",
+      "text_markdown": "בגלל זה מוצקים שומרים על הצורה שלהם.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בִּגְלַל זֶה מוֹצְקִים שׁוֹמְרִים עַל הַצּוּרָה שֶׁלָּהֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-201",
+      "chapter": 6,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p48",
+      "text": "הָאָטוֹמִים בְּגוּשׁ קָרַח רוֹטְטִים, אֲבָל הֵם נִשְׁאָרִים בְּתַבְנִית גְּבִישִׁית קָשִׁיחָה.",
+      "text_markdown": "האטומים בגוש קרח רוטטים, אבל הם נשארים בתבנית גבישית קשיחה.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הָאָטוֹמִים בְּגוּשׁ קָרַח רוֹטְטִים, אֲבָל הֵם נִשְׁאָרִים בְּתַבְנִית גְּבִישִׁית קָשִׁיחָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-202",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "בְּנוֹזֵל, אָטוֹמִים נָעִים יוֹתֵר בַּחוֹפְשִׁיּוּת.",
+      "text_markdown": "בנוזל, אטומים נעים יותר בחופשיות.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בְּנוֹזֵל, אָטוֹמִים נָעִים יוֹתֵר בַּחוֹפְשִׁיּוּת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-203",
+      "chapter": 6,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "הֵם מַחְלִיקִים אֶחָד עַל הַשְּׁנִי.",
+      "text_markdown": "הם מחליקים אחד על השני.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הֵם מַחְלִיקִים אֶחָד עַל הַשְּׁנִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-204",
+      "chapter": 6,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "הֵם נִשְׁאָרִים קְרוֹבִים, אֲבָל הֵם לֹא נְעוּלִים בִּמְקוֹמָם.",
+      "text_markdown": "הם נשארים קרובים, אבל הם לא נעולים במקומם.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הֵם נִשְׁאָרִים קְרוֹבִים, אֲבָל הֵם לֹא נְעוּלִים בִּמְקוֹמָם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-205",
+      "chapter": 6,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "בִּגְלַל זֶה נוֹזְלִים זוֹרְמִים.",
+      "text_markdown": "בגלל זה נוזלים זורמים.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בִּגְלַל זֶה נוֹזְלִים זוֹרְמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-206",
+      "chapter": 6,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p49",
+      "text": "הָאָטוֹמִים בְּכוֹס מַיִם נָעִים וּמִסְתַּדְּרִים מֵחָדָשׁ כָּל הַזְּמַן, אֲבָל נִשְׁאָרִים קְרוֹבִים אֶחָד לְשׁנִי.",
+      "text_markdown": "האטומים בכוס מים נעים ומסתדרים מחדש כל הזמן, אבל נשארים קרובים אחד לשני.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הָאָטוֹמִים בְּכוֹס מַיִם נָעִים וּמִסְתַּדְּרִים מֵחָדָשׁ כָּל הַזְּמַן, אֲבָל נִשְׁאָרִים קְרוֹבִים אֶחָד לְשׁנִי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-207",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "בְּגָז, אָטוֹמִים נָעִים מְהַר וּמִתְפַּזְּרִים.",
+      "text_markdown": "בגז, אטומים נעים מהר ומתפזרים.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בְּגָז, אָטוֹמִים נָעִים מְהַר וּמִתְפַּזְּרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-208",
+      "chapter": 6,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "הֵם טָסִים בְּקַוִּים יְשָׁרִים עַד שֶׁהֵם פוֹגְעִים בְּאָטוֹם אַחֵר אוֹ בְּקִיר.",
+      "text_markdown": "הם טסים בקווים ישרים עד שהם פוגעים באטום אחר או בקיר.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הֵם טָסִים בְּקַוִּים יְשָׁרִים עַד שֶׁהֵם פוֹגְעִים בְּאָטוֹם אַחֵר אוֹ בְּקִיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-209",
+      "chapter": 6,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "הֵם קוֹפְצִים אֶחָד מֵהַשְׁנִי וּמְשַׁנִּים כִּיוּן.",
+      "text_markdown": "הם קופצים אחד מהשני ומשנים כיוון.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הֵם קוֹפְצִים אֶחָד מֵהַשְׁנִי וּמְשַׁנִּים כִּיוּן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-210",
+      "chapter": 6,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "בִּגְלַל זֶה גָּז מְמַלֵּא כָּל מִיכָל שֶׁמַּכְנִיסִים אוֹתוֹ לְתוֹכוֹ.",
+      "text_markdown": "בגלל זה גז ממלא כל מיכל שמכניסים אותו לתוכו.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בִּגְלַל זֶה גָּז מְמַלֵּא כָּל מִיכָל שֶׁמַּכְנִיסִים אוֹתוֹ לְתוֹכוֹ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-211",
+      "chapter": 6,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p50",
+      "text": "הָאָטוֹמִים בַּחֶדֶר מָלֵא אֲוִיר דּוֹהְרִים לְכָל כִּיוּן בִּמְהִירוּת שֶׁל מֵאוֹת מְטָרִים לִשְׁנִיָּה.",
+      "text_markdown": "האטומים בחדר מלא אוויר דוהרים לכל כיוון במהירות של מאות מטרים לשנייה.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הָאָטוֹמִים בַּחֶדֶר מָלֵא אֲוִיר דּוֹהְרִים לְכָל כִּיוּן בִּמְהִירוּת שֶׁל מֵאוֹת מְטָרִים לִשְׁנִיָּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-212",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "טֶמְפֶּרָטוּרָה הִיא מִדָּד לִמְהִירוּת הַתְּנוּעָה שֶׁל אָטוֹמִים.",
+      "text_markdown": "טמפרטורה היא מדד למהירות התנועה של אטומים.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "טֶמְפֶּרָטוּרָה הִיא מִדָּד לִמְהִירוּת הַתְּנוּעָה שֶׁל אָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-213",
+      "chapter": 6,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "חַם אוֹמֵר שֶׁהָאָטוֹמִים נָעִים מְהַר.",
+      "text_markdown": "חם אומר שהאטומים נעים מהר.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "חַם אוֹמֵר שֶׁהָאָטוֹמִים נָעִים מְהַר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-214",
+      "chapter": 6,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "קַר אוֹמֵר שֶׁהָאָטוֹמִים נָעִים לְאַט.",
+      "text_markdown": "קר אומר שהאטומים נעים לאט.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "קַר אוֹמֵר שֶׁהָאָטוֹמִים נָעִים לְאַט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-215",
+      "chapter": 6,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "כְּשָׁאַתֶּם מְחַמְּמִים מַיִם עַל הַכִּיִרְיִים, אַתֶּם גּוֹרְמִים לְמוֹלְקוּלוֹת הַמַּיִם לָנוּעַ מְהַר יוֹתֵר.",
+      "text_markdown": "כשאתם מחממים מים על הכיריים, אתם גורמים למולקולות המים לנוע מהר יותר.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "כְּשָׁאַתֶּם מְחַמְּמִים מַיִם עַל הַכִּיִרְיִים, אַתֶּם גּוֹרְמִים לְמוֹלְקוּלוֹת הַמַּיִם לָנוּעַ מְהַר יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-216",
+      "chapter": 6,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p51",
+      "text": "כְּשֶׁהַמּוֹלְקוּלוֹת נָעוֹת מְהַר מַסְפִּיק, הֵן בּוֹרְחוֹת מֵהַנּוֹזֵל וְהוֹפְכוֹת לְקִיטוֹר.",
+      "text_markdown": "כשהמולקולות נעות מהר מספיק, הן בורחות מהנוזל והופכות לקיטור.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "כְּשֶׁהַמּוֹלְקוּלוֹת נָעוֹת מְהַר מַסְפִּיק, הֵן בּוֹרְחוֹת מֵהַנּוֹזֵל וְהוֹפְכוֹת לְקִיטוֹר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-217",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "הָאֶפֶס הַמֻּחְלָט הוּא הַטֶּמְפְּרָטוּרָה הַכִּי נְמוּכָה שֶׁאֶפְשָׁר.",
+      "text_markdown": "האפס המוחלט הוא הטמפרטורה הכי נמוכה שאפשר.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הָאֶפֶס הַמֻּחְלָט הוּא הַטֶּמְפְּרָטוּרָה הַכִּי נְמוּכָה שֶׁאֶפְשָׁר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-218",
+      "chapter": 6,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "זֶה בְּעֵרֶךְ מִינוּס 273 מַעֲלוֹת צֶלְזִיוּס.",
+      "text_markdown": "זה בערך מינוס 273 מעלות צלזיוס.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "זֶה בְּעֵרֶךְ מִינוּס מָאתַיִם שִׁבְעִים וּשְׁלוֹשׁ מַעֲלוֹת צֶלְזִיוּס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-219",
+      "chapter": 6,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "בָּאֶפֶס הַמֻּחְלָט, לָאָטוֹמִים יֵשׁ אֶת כַּמּוּת הָאֵנֶרְגִּיָּה הַמִּינִימָלִית הָאֶפְשָׁרִית.",
+      "text_markdown": "באפס המוחלט, לאטומים יש את כמות האנרגיה המינימלית האפשרית.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בָּאֶפֶס הַמֻּחְלָט, לָאָטוֹמִים יֵשׁ אֶת כַּמּוּת הָאֵנֶרְגִּיָּה הַמִּינִימָלִית הָאֶפְשָׁרִית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-220",
+      "chapter": 6,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "שׁוּם דָּבָר לֹא יָכוֹל לִהְיוֹת קַר יוֹתֵר מֵהָאֶפֶס הַמֻּחְלָט.",
+      "text_markdown": "שום דבר לא יכול להיות קר יותר מהאפס המוחלט.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "שׁוּם דָּבָר לֹא יָכוֹל לִהְיוֹת קַר יוֹתֵר מֵהָאֶפֶס הַמֻּחְלָט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-221",
+      "chapter": 6,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p52",
+      "text": "מַדְעָנִים הִגִּיעוּ קָרוֹב מְאֹד לָאֶפֶס הַמֻּחְלָט בִּמְעַבְּדוֹת, אֲבָל אַף אֶחָד מֵעוֹלָם לֹא הִגִּיעַ אֵלָיו בְּדִיּוּק.",
+      "text_markdown": "מדענים הגיעו קרוב מאוד לאפס המוחלט במעבדות, אבל אף אחד מעולם לא הגיע אליו בדיוק.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "מַדְעָנִים הִגִּיעוּ קָרוֹב מְאֹד לָאֶפֶס הַמֻּחְלָט בִּמְעַבְּדוֹת, אֲבָל אַף אֶחָד מֵעוֹלָם לֹא הִגִּיעַ אֵלָיו בְּדִיּוּק.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-222",
+      "chapter": 6,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "לַחַץ נִגְרַם מֵאָטוֹמִים שֶׁפּוֹגְעִים בִּמְשָׁטְחִים.",
+      "text_markdown": "לחץ נגרם מאטומים שפוגעים במשטחים.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "לַחַץ נִגְרַם מֵאָטוֹמִים שֶׁפּוֹגְעִים בִּמְשָׁטְחִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-223",
+      "chapter": 6,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "הָאֲוִיר בְּתוֹךְ צְמִיג דוֹחֵף הַחוּצָה כִּי מוֹלְקוּלוֹת הָאֲוִיר כׇּל הַזְּמַן קוֹפְצוֹת מֵהַדְּפָנוֹת הַפְּנִימִיּוֹת שֶׁל הַצְּמִיג.",
+      "text_markdown": "האוויר בתוך צמיג דוחף החוצה כי מולקולות האוויר כל הזמן קופצות מהדפנות הפנימיות של הצמיג.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "הָאֲוִיר בְּתוֹךְ צְמִיג דוֹחֵף הַחוּצָה כִּי מוֹלְקוּלוֹת הָאֲוִיר כׇּל הַזְּמַן קוֹפְצוֹת מֵהַדְּפָנוֹת הַפְּנִימִיּוֹת שֶׁל הַצְּמִיג.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-224",
+      "chapter": 6,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "יוֹתֵר מוֹלְקוּלוֹת אוֹ מוֹלְקוּלוֹת מְהִירוֹת יוֹתֵר אוֹמְרִים יוֹתֵר לַחַץ.",
+      "text_markdown": "יותר מולקולות או מולקולות מהירות יותר אומרים יותר לחץ.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "יוֹתֵר מוֹלְקוּלוֹת אוֹ מוֹלְקוּלוֹת מְהִירוֹת יוֹתֵר אוֹמְרִים יוֹתֵר לַחַץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-225",
+      "chapter": 6,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p53",
+      "text": "בִּגְלַל זֶה צְמִיג מַרְגִּישׁ קָשֶׁה יוֹתֵר כְּשֶׁהָאֲוִיר חַם.",
+      "text_markdown": "בגלל זה צמיג מרגיש קשה יותר כשהאוויר חם.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "בִּגְלַל זֶה צְמִיג מַרְגִּישׁ קָשֶׁה יוֹתֵר כְּשֶׁהָאֲוִיר חַם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-226",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p54",
+      "text": "מֵאֵיפֹה בָּאִים אָטוֹמִים",
+      "text_markdown": "מאיפה באים אטומים",
+      "title": "מאיפה באים אטומים"
+    },
+    {
+      "id": "ch07-227",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "הַמִּימָן וְהַהְלִיּוּם בַּיְקוּם נוֹצְרוּ בִּדְקוֹת הָרִאשׁוֹנוֹת אַחֲרֵי הַמְפֵץ הַגָּדוֹל.",
+      "text_markdown": "המימן וההליום ביקום נוצרו בדקות הראשונות אחרי המפץ הגדול.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַמִּימָן וְהַהְלִיּוּם בַּיְקוּם נוֹצְרוּ בִּדְקוֹת הָרִאשׁוֹנוֹת אַחֲרֵי הַמְפֵץ הַגָּדוֹל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-228",
+      "chapter": 7,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "הַיְקוּם הִתְחִיל כִּנְקוּדָה חַמָּה וְצָפוּפָה לְהַפְלִיא לִפְנֵי בְערֶךְ 13.8 מִילְיָרְד שָׁנָה.",
+      "text_markdown": "היקום התחיל כנקודה חמה וצפופה להפליא לפני בערך 13.8 מיליארד שנה.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַיְקוּם הִתְחִיל כִּנְקוּדָה חַמָּה וְצָפוּפָה לְהַפְלִיא לִפְנֵי בְערֶךְ שְׁלוֹשׁ עֶשְׂרֵה נְקוּדָה שְׁמוֹנָה מִילְיָרְד שָׁנָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-229",
+      "chapter": 7,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "כְּכַל שֶׁהוּא הִתְפַּשֵּׁט וְהִתְקָרֵר, פְּרוֹטוֹנִים וְנוֹיטְרוֹנִים נוֹצְרוּ.",
+      "text_markdown": "ככל שהוא התפשט והתקרר, פרוטונים ונויטרונים נוצרו.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "כְּכַל שֶׁהוּא הִתְפַּשֵּׁט וְהִתְקָרֵר, פְּרוֹטוֹנִים וְנוֹיטְרוֹנִים נוֹצְרוּ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-230",
+      "chapter": 7,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "הַפְּרוֹטוֹנִים וְהַנוֹיטְרוֹנִים הָאֵלֶּה הִתְחַבְּרוּ לְגַרְעִינִים הַפְּשׁוּטִים בְּיוֹתֵר.",
+      "text_markdown": "הפרוטונים והנויטרונים האלה התחברו לגרעינים הפשוטים ביותר.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַפְּרוֹטוֹנִים וְהַנוֹיטְרוֹנִים הָאֵלֶּה הִתְחַבְּרוּ לְגַרְעִינִים הַפְּשׁוּטִים בְּיוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-231",
+      "chapter": 7,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p55",
+      "text": "מִימָן וְהֶלְיוּם הָיוּ הַיְסוֹדוֹת הָרִאשׁוֹנִים.",
+      "text_markdown": "מימן והליום היו היסודות הראשונים.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "מִימָן וְהֶלְיוּם הָיוּ הַיְסוֹדוֹת הָרִאשׁוֹנִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-232",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "בְּמִשֶּׁךְ מִילְיוֹנֵי שָׁנִים, הַיְקוּם הָיָה עָנָן שֶׁל גַּז מִימָן וְהֶלְיוּם.",
+      "text_markdown": "במשך מיליוני שנים, היקום היה ענן של גז מימן והליום.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "בְּמִשֶּׁךְ מִילְיוֹנֵי שָׁנִים, הַיְקוּם הָיָה עָנָן שֶׁל גַּז מִימָן וְהֶלְיוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-233",
+      "chapter": 7,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "אָז הַכְּבִידָה מָשְׁכָה אֶת הַגַּז יַחַד לְגוּשִׁים.",
+      "text_markdown": "אז הכבידה משכה את הגז יחד לגושים.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "אָז הַכְּבִידָה מָשְׁכָה אֶת הַגַּז יַחַד לְגוּשִׁים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-234",
+      "chapter": 7,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "הַגּוּשִׁים הָפְכוּ צְפוּפִים וְחַמִּים יוֹתֵר.",
+      "text_markdown": "הגושים הפכו צפופים וחמים יותר.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַגּוּשִׁים הָפְכוּ צָפוּפִים וַחֲמִימִים יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-235",
+      "chapter": 7,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "כְּשׁמֶרְכַּז הַגּוּשׁ הִגִּיעַ לְבַעֲרַךְ עֲשָׂרָה מִילְיוֹן מַעֲלוֹת, הַיִּתּוּךְ גַּרְעִינִי הִתְלַקַּח.",
+      "text_markdown": "כשמרכז הגוש הגיע לבערך עשרה מיליון מעלות, היתוך גרעיני התלקח.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "כְּשׁמֶרְכַּז הַגּוּשׁ הִגִּיעַ לְבַעֲרַךְ עֲשָׂרָה מִילְיוֹן מַעֲלוֹת, הַיִּתּוּךְ גַּרְעִינִי הִתְלַקַּח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-236",
+      "chapter": 7,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p56",
+      "text": "כּוֹכָב נוֹלַד.",
+      "text_markdown": "כוכב נולד.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "כּוֹכָב נוֹלַד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-237",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "כּוֹכָבִים הֵם מַפְעָלִים לַיִּצּוּר אָטוֹמִים.",
+      "text_markdown": "כוכבים הם מפעלים לייצור אטומים.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "כּוֹכָבִים הֵם מַפְעָלִים לַיִּצּוּר אָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-238",
+      "chapter": 7,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "בְּתוֹךְ כּוֹכָב, אָטוֹמֵי מִימַן מִתְמַזְּגִים יַחַד וְיוֹצְרִים הֵלְיוּם.",
+      "text_markdown": "בתוך כוכב, אטומי מימן מתמזגים יחד ויוצרים הליום.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "בְּתוֹךְ כּוֹכָב, אָטוֹמֵי מִימַן מִתְמַזְּגִים יַחַד וְיוֹצְרִים הֵלְיוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-239",
+      "chapter": 7,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "הַהַיִּתּוּךְ הַזֶּה מְשַׁחְרֵר אֱנֶרְגִּיָּה עֲצוּמָה.",
+      "text_markdown": "ההיתוך הזה משחרר אנרגיה עצומה.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַהַיִּתּוּךְ הַזֶּה מְשַׁחְרֵר אֱנֶרְגִּיָּה עֲצוּמָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-240",
+      "chapter": 7,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "הָאֱנֶרְגִּיָּה הַזּוֹ הִיא מַה שֶּׁגּוֹרֵם לַכּוֹכָב לִזְרוֹחַ.",
+      "text_markdown": "האנרגיה הזו היא מה שגורם לכוכב לזרוח.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הָאֱנֶרְגִּיָּה הַזּוֹ הִיא מַה שֶּׁגּוֹרֵם לַכּוֹכָב לִזְרוֹחַ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-241",
+      "chapter": 7,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p57",
+      "text": "הַשֶּׁמֶשׁ שֶׁלָּנוּ מְמַזֶּגֶת בְּעֲרַךְ שֵׁשׁ מֵאוֹת מִילְיוֹן טוֹן שֶׁל מִימַן לְהֵלְיוּם בְּכָל שְׁנִיָּה.",
+      "text_markdown": "השמש שלנו ממזגת בערך שש מאות מיליון טון של מימן להליום בכל שנייה.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַשֶּׁמֶשׁ שֶׁלָּנוּ מְמַזֶּגֶת בְּעֲרַךְ שֵׁשׁ מֵאוֹת מִילְיוֹן טוֹן שֶׁל מִימַן לְהֵלְיוּם בְּכָל שְׁנִיָּה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-242",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "כּוֹכָבִים גְּדוֹלִים יוֹתֵר מְמַזְּגִים יְסוֹדוֹת כְּבָדִים יוֹתֵר.",
+      "text_markdown": "כוכבים גדולים יותר ממזגים יסודות כבדים יותר.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "כּוֹכָבִים גְּדוֹלִים יוֹתֵר מְמַזְּגִים יְסוֹדוֹת כְּבָדִים יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-243",
+      "chapter": 7,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "אַחֲרֵי שֶׁכּוֹכָב שׁוֹרֵף אֶת כָּל הַמִּימַן שֶׁלּוֹ, הוּא מַתְחִיל לְמַזֵּג הֵלְיוּם לִפְחָמָן.",
+      "text_markdown": "אחרי שכוכב שורף את כל המימן שלו, הוא מתחיל למזג הליום לפחמן.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "אַחֲרֵי שֶׁכּוֹכָב שׁוֹרֵף אֶת כָּל הַמִּימַן שֶׁלּוֹ, הוּא מַתְחִיל לְמַזֵּג הֵלְיוּם לִפְחָמָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-244",
+      "chapter": 7,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "אַחַר כָּךְ פַּחְמָן לַחְמָצָן.",
+      "text_markdown": "אחר כך פחמן לחמצן.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "אַחַר כָּךְ פַּחְמָן לַחְמָצָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-245",
+      "chapter": 7,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "אַחַר כָּךְ חַמְצָן לְסִילִיקוֹן.",
+      "text_markdown": "אחר כך חמצן לסיליקון.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "אַחַר כָּךְ חַמְצָן לְסִילִיקוֹן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-246",
+      "chapter": 7,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "אַחַר כָּךְ סִילִיקוֹן לְבַרְזֶל.",
+      "text_markdown": "אחר כך סיליקון לברזל.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "אַחַר כָּךְ סִילִיקוֹן לְבַרְזֶל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-247",
+      "chapter": 7,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "כָּל שְׁלָב מַיְצֵר יְסוֹד כָּבֵד יוֹתֵר.",
+      "text_markdown": "כל שלב מייצר יסוד כבד יותר.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "כָּל שְׁלָב מַיְצֵר יְסוֹד כָּבֵד יוֹתֵר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-248",
+      "chapter": 7,
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p58",
+      "text": "בַּרְזֶל הוּא הַיְסוֹד הַכָּבֵד בְּיוֹתֵר שֶׁכּוֹכָב יָכוֹל לַיְצֵר דֶּרֶךְ הִתּוּךְ רָגִיל.",
+      "text_markdown": "ברזל הוא היסוד הכבד ביותר שכוכב יכול לייצר דרך היתוך רגיל.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "בַּרְזֶל הוּא הַיְסוֹד הַכָּבֵד בְּיוֹתֵר שֶׁכּוֹכָב יָכוֹל לַיְצֵר דֶּרֶךְ הִתּוּךְ רָגִיל.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-249",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "יְסוֹדוֹת כְּבָדִים יוֹתֵר מִבַּרְזֶל נוֹצְרִים כְּשֶׁכּוֹכָבִים עֲנָקִיִּים מִתְפּוֹצְצִים.",
+      "text_markdown": "יסודות כבדים יותר מברזל נוצרים כשכוכבים ענקיים מתפוצצים.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "יְסוֹדוֹת כְּבָדִים יוֹתֵר מִבַּרְזֶל נוֹצְרִים כְּשֶׁכּוֹכָבִים עֲנָקִיִּים מִתְפּוֹצְצִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-250",
+      "chapter": 7,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "הַפִּיצוּצִים הָאֵלֶּה נִקְרָאִים סוּפֵּרְנוֹבוֹת.",
+      "text_markdown": "הפיצוצים האלה נקראים סופרנובות.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַפִּיצוּצִים הָאֵלֶּה נִקְרָאִים סוּפֵּרְנוֹבוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-251",
+      "chapter": 7,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "סוּפֵּרְנוֹבָה מְשַׁחְרֶרֶת יוֹתֵר אֵנֶרְגְּיָה בְּכַמָּה שָׁנִיּוֹת מִמָּה שֶׁהַשֶּׁמֶשׁ תַּיְצֵר בְּכָל חַיֶּיהָ.",
+      "text_markdown": "סופרנובה משחררת יותר אנרגיה בכמה שניות ממה שהשמש תייצר בכל חייה.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "סוּפֵּרְנוֹבָה מְשַׁחְרֶרֶת יוֹתֵר אֵנֶרְגְּיָה בְּכַמָּה שָׁנִיּוֹת מִמָּה שֶׁהַשֶּׁמֶשׁ תַּיְצֵר בְּכָל חַיֶּיהָ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-252",
+      "chapter": 7,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p59",
+      "text": "הַתְּנָאִים הַקִּיצוֹנִיִּים שֶׁל סוּפֵּרְנוֹבָה יוֹצְרִים יְסוֹדוֹת כְּמוֹ זָהָב, כֶּסֶף, פְּלָטִינָה וְאוּרָנְיוּם.",
+      "text_markdown": "התנאים הקיצוניים של סופרנובה יוצרים יסודות כמו זהב, כסף, פלטינה ואורניום.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַתְּנָאִים הַקִּיצוֹנִיִּים שֶׁל סוּפֵּרְנוֹבָה יוֹצְרִים יְסוֹדוֹת כְּמוֹ זָהָב, כֶּסֶף, פְּלָטִינָה וְאוּרָנְיוּם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-253",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "הַפִּיצוּץ מְפַזֵּר אֶת הַיְסוֹדוֹת הַכְּבָדִים הָאֵלֶּה בִּרְחַבֵּי הַחָלָל.",
+      "text_markdown": "הפיצוץ מפזר את היסודות הכבדים האלה ברחבי החלל.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַפִּיצוּץ מְפַזֵּר אֶת הַיְסוֹדוֹת הַכְּבָדִים הָאֵלֶּה בִּרְחַבֵּי הַחָלָל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-254",
+      "chapter": 7,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "הַיְסוֹדוֹת מִתְעָרְבְּבִים עִם עֲנָנִים שֶׁל גַּז מִימָן וְהֵלְיוּם.",
+      "text_markdown": "היסודות מתערבבים עם עננים של גז מימן והליום.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַיְסוֹדוֹת מִתְעָרְבְּבִים עִם עֲנָנִים שֶׁל גַּז מִימָן וְהֵלְיוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-255",
+      "chapter": 7,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "בְּסוֹפוֹ שֶׁל דָּבָר, הַכְּבִידָה מוֹשֶׁכֶת אֶת הַגַּז הַמּוּעְשָׁר יַחַד וְיוֹצֶרֶת כּוֹכָבִים וְכוֹכְבֵי לֶכֶת חֲדָשִׁים.",
+      "text_markdown": "בסופו של דבר, הכבידה מושכת את הגז המועשר יחד ויוצרת כוכבים וכוכבי לכת חדשים.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "בְּסוֹפוֹ שֶׁל דָּבָר, הַכְּבִידָה מוֹשֶׁכֶת אֶת הַגַּז הַמּוּעְשָׁר יַחַד וְיוֹצֶרֶת כּוֹכָבִים וְכוֹכְבֵי לֶכֶת חֲדָשִׁים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-256",
+      "chapter": 7,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p60",
+      "text": "מַעֲרֶכֶת הַשֶּׁמֶשׁ שֶׁלָּנוּ נוֹצְרָה מֵאַחַד הָעֲנָנִים הַמּוּעְשָׁרִים הָאֵלֶּה לִפְנֵי בְּעֶרֶךְ 4.6 מִילְיָרְד שָׁנָה.",
+      "text_markdown": "מערכת השמש שלנו נוצרה מאחד העננים המועשרים האלה לפני בערך 4.6 מיליארד שנה.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "מַעֲרֶכֶת הַשֶּׁמֶשׁ שֶׁלָּנוּ נוֹצְרָה מֵאַחַד הָעֲנָנִים הַמּוּעְשָׁרִים הָאֵלֶּה לִפְנֵי בְּעֶרֶךְ אַרְבַּע נְקוּדָה שֵׁשׁ מִילְיָרְד שָׁנָה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-257",
+      "chapter": 7,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "כָּל אָטוֹם בְּגוּף שֶׁלָּכֶם שֶׁכָּבֵד יוֹתֵר מִמִּימָן נוֹצַר בְּתוֹךְ כּוֹכָב.",
+      "text_markdown": "כל אטום בגוף שלכם שכבד יותר ממימן נוצר בתוך כוכב.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "כָּל אָטוֹם בְּגוּף שֶׁלָּכֶם שֶׁכָּבֵד יוֹתֵר מִמִּימָן נוֹצַר בְּתוֹךְ כּוֹכָב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-258",
+      "chapter": 7,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "הַסִּידָן בְּעַצְמוֹת שֶׁלָּכֶם.",
+      "text_markdown": "הסידן בעצמות שלכם.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַסִּידָן בְּעַצְמוֹת שֶׁלָּכֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-259",
+      "chapter": 7,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "הַבַּרְזֶל בְּדַם שֶׁלָּכֶם.",
+      "text_markdown": "הברזל בדם שלכם.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַבַּרְזֶל בְּדַם שֶׁלָּכֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-260",
+      "chapter": 7,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "הַפַּחְמָן בְּעוֹר שֶׁלָּכֶם.",
+      "text_markdown": "הפחמן בעור שלכם.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "הַפַּחְמָן בְּעוֹר שֶׁלָּכֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-261",
+      "chapter": 7,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "אַתֶּם עֲשׁוּיִים מֵאָבַק כּוֹכָבִים.",
+      "text_markdown": "אתם עשויים מאבק כוכבים.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "אַתֶּם עֲשׁוּיִים מֵאָבַק כּוֹכָבִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-262",
+      "chapter": 7,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "זוֹ לֹא מֶטָאפוֹרָה.",
+      "text_markdown": "זו לא מטאפורה.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "זוֹ לֹא מֶטָאפוֹרָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-263",
+      "chapter": 7,
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p61",
+      "text": "זוֹ עוּבְדָה שֶׁל פִּיזִיקָה גְּרַעִינִית.",
+      "text_markdown": "זו עובדה של פיזיקה גרעינית.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "זוֹ עוּבְדָה שֶׁל פִּיזִיקָה גְּרַעִינִית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-264",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "heading",
+      "part": 0,
+      "heading_level": 1,
+      "paragraph_id": "p62",
+      "text": "אָטוֹמִים הֵם הַכֹּל",
+      "text_markdown": "אטומים הם הכל",
+      "title": "אטומים הם הכל"
+    },
+    {
+      "id": "ch08-265",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "עַכְשָׁיו אַתֶּם יוֹדְעִים אֶת הַבָּסִיס.",
+      "text_markdown": "עכשיו אתם יודעים את הבסיס.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "עַכְשָׁיו אַתֶּם יוֹדְעִים אֶת הַבָּסִיס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-266",
+      "chapter": 8,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "הַכֹּל עָשׂוּי מֵאָטוֹמִים.",
+      "text_markdown": "הכל עשוי מאטומים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "הַכֹּל עָשׂוּי מֵאָטוֹמִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-267",
+      "chapter": 8,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "אָטוֹמִים מְכִילִים פְּרוֹטוֹנִים, נְיוּטְרוֹנִים וְאֶלֶקְטְרוֹנִים.",
+      "text_markdown": "אטומים מכילים פרוטונים, נויטרונים ואלקטרונים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אָטוֹמִים מְכִילִים פְּרוֹטוֹנִים, נְיוּטְרוֹנִים וְאֶלֶקְטְרוֹנִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-268",
+      "chapter": 8,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "מִסְפַּר הַפְּרוֹטוֹנִים קוֹבֵעַ אֶת הַיִּסוֹד.",
+      "text_markdown": "מספר הפרוטונים קובע את היסוד.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "מִסְפַּר הַפְּרוֹטוֹנִים קוֹבֵעַ אֶת הַיִּסוֹד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-269",
+      "chapter": 8,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "אָטוֹמִים יוֹצְרִים קְשָׁרִים כְּדֵי לִיצוֹר מוֹלֶקוּלוֹת.",
+      "text_markdown": "אטומים יוצרים קשרים כדי ליצור מולקולות.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אָטוֹמִים יוֹצְרִים קְשָׁרִים כְּדֵי לִיצוֹר מוֹלֶקוּלוֹת.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-270",
+      "chapter": 8,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "אָטוֹמִים תָּמִיד בִּתְנוּעָה.",
+      "text_markdown": "אטומים תמיד בתנועה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אָטוֹמִים תָּמִיד בִּתְנוּעָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-271",
+      "chapter": 8,
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p63",
+      "text": "כּוֹכָבִים יָצְרוּ אֶת הָאָטוֹמִים שֶׁמַּרְכִּיבִים אֶת הָעוֹלָם שֶׁלָּנוּ.",
+      "text_markdown": "כוכבים יצרו את האטומים שמרכיבים את העולם שלנו.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כּוֹכָבִים יָצְרוּ אֶת הָאָטוֹמִים שֶׁמַּרְכִּיבִים אֶת הָעוֹלָם שֶׁלָּנוּ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-272",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p64",
+      "text": "הַיִּדְעָה הַזּוֹ הִיא הַבָּסִיס שֶׁל כִּימְיָה, בִּיוֹלוֹגְיָה, פִּיזִיקָה וּרְפוּאָה.",
+      "text_markdown": "הידע הזה הוא הבסיס של כימיה, ביולוגיה, פיזיקה ורפואה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "הַיִּדְעָה הַזּוֹ הִיא הַבָּסִיס שֶׁל כִּימְיָה, בִּיוֹלוֹגְיָה, פִּיזִיקָה וּרְפוּאָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-273",
+      "chapter": 8,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p64",
+      "text": "כָּל תְּחוּם מַדְעִי מִתְחַבֵּר בַּחֲזָרָה לְאָטוֹמִים.",
+      "text_markdown": "כל תחום מדעי מתחבר בחזרה לאטומים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כָּל תְּחוּם מַדְעִי מִתְחַבֵּר בַּחֲזָרָה לְאָטוֹמִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-274",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p65",
+      "text": "כְּשֶׁרוֹפֵא רוֹשֵׁם תְּרוּפָה, הַתְּרוּפָה הִיא סִדּוּר מְסוּיָּם שֶׁל אָטוֹמִים שֶׁמִּתְכַּנְּנוּ לִפְעוֹל עִם הַמּוֹלֶקוּלוֹת בְּגוּף שֶׁלָּכֶם.",
+      "text_markdown": "כשרופא רושם תרופה, התרופה היא סידור מסוים של אטומים שמתוכנן לפעול עם המולקולות בגוף שלכם.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כְּשֶׁרוֹפֵא רוֹשֵׁם תְּרוּפָה, הַתְּרוּפָה הִיא סִדּוּר מְסוּיָּם שֶׁל אָטוֹמִים שֶׁמִּתְכַּנְּנוּ לִפְעוֹל עִם הַמּוֹלֶקוּלוֹת בְּגוּף שֶׁלָּכֶם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-275",
+      "chapter": 8,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p65",
+      "text": "כְּשׁמְהַנְדֵּס בּוֹנֶה גֶּשֶׁר, הַחּוֹזֶק שֶׁל הַגֶּשֶׁר תָּלוּי בְּאֵיךְ אָטוֹמֵי הַבַּרְזֶל בִּפְלָדָה מְסוּדָּרִים.",
+      "text_markdown": "כשמהנדס בונה גשר, החוזק של הגשר תלוי באיך אטומי הברזל בפלדה מסודרים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כְּשׁמְהַנְדֵּס בּוֹנֶה גֶּשֶׁר, הַחּוֹזֶק שֶׁל הַגֶּשֶׁר תָּלוּי בְּאֵיךְ אָטוֹמֵי הַבַּרְזֶל בִּפְלָדָה מְסוּדָּרִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-276",
+      "chapter": 8,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p65",
+      "text": "כְּשׁחַקְלַאִי מְגַדֵּל יָבוּל, הַיָּבוּל גָּדֵל כִּי אָטוֹמֵי פַּחְמָן מֵהָאֲוִיר מִתְחַבְּרִים עִם מַיִם וְאוֹר שֶׁמֶשׁ בְּתוֹךְ הָעָלִים.",
+      "text_markdown": "כשחקלאי מגדל יבול, היבול גדל כי אטומי פחמן מהאוויר מתחברים עם מים ואור שמש בתוך העלים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כְּשׁחַקְלַאִי מְגַדֵּל יָבוּל, הַיָּבוּל גָּדֵל כִּי אָטוֹמֵי פַּחְמָן מֵהָאֲוִיר מִתְחַבְּרִים עִם מַיִם וְאוֹר שֶׁמֶשׁ בְּתוֹךְ הָעָלִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-277",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "בִּישׁוּל זֶה כִּימְיָה.",
+      "text_markdown": "בישול זה כימיה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "בִּישׁוּל זֶה כִּימְיָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-278",
+      "chapter": 8,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "כְּשׁאַתֶּם אוֹפִים לֶחֶם, הַחּוּם גּוֹרֵם לְאָטוֹמִים בַּבָּצֵק לְהִסְתַּדֵּר מַחְדָּשׁ.",
+      "text_markdown": "כשאתם אופים לחם, החום גורם לאטומים בבצק להסתדר מחדש.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כְּשׁאַתֶּם אוֹפִים לֶחֶם, הַחּוּם גּוֹרֵם לְאָטוֹמִים בַּבָּצֵק לְהִסְתַּדֵּר מַחְדָּשׁ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-279",
+      "chapter": 8,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "חַלְבּוֹנִים נִפְרָשִׁים.",
+      "text_markdown": "חלבונים נפרשים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "חַלְבּוֹנִים נִפְרָשִׁים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-280",
+      "chapter": 8,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "סוּכָּרִים מִתְפָּרְקִים וּמִתְחַבְּרִים מַחְדָּשׁ.",
+      "text_markdown": "סוכרים מתפרקים ומתחברים מחדש.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "סוּכָּרִים מִתְפָּרְקִים וּמִתְחַבְּרִים מַחְדָּשׁ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-281",
+      "chapter": 8,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "מוֹלֶקוּלוֹת חֲדָשׁוֹת נוֹצְרוֹת שֶׁיּוֹצְרוֹת אֶת הַצָּבַע, הַמַּרְקַם וְהַטַּעַם שֶׁל הַקְּרוּם.",
+      "text_markdown": "מולקולות חדשות נוצרות שיוצרות את הצבע, המרקם והטעם של הקרום.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "מוֹלֶקוּלוֹת חֲדָשׁוֹת נוֹצְרוֹת שֶׁיּוֹצְרוֹת אֶת הַצָּבַע, הַמַּרְקַם וְהַטַּעַם שֶׁל הַקְּרוּם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-282",
+      "chapter": 8,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p66",
+      "text": "כָּל מִתְכּוֹן הוּא סִדְרַת הוֹרָאוֹת לְסִדּוּר מַחְדָּשׁ שֶׁל אָטוֹמִים.",
+      "text_markdown": "כל מתכון הוא סדרת הוראות לסידור מחדש של אטומים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כָּל מִתְכּוֹן הוּא סִדְרַת הוֹרָאוֹת לְסִדּוּר מַחְדָּשׁ שֶׁל אָטוֹמִים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-283",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "נְשִׁימָה זוֹ כִּימְיָה.",
+      "text_markdown": "נשימה זו כימיה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "נְשִׁימָה זוֹ כִּימְיָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-284",
+      "chapter": 8,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "אַתֶּם שׁוֹאֲפִים מוֹלֶקוּלוֹת חַמְצָן.",
+      "text_markdown": "אתם שואפים מולקולות חמצן.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אַתֶּם שׁוֹאֲפִים מוֹלֶקוּלוֹת חַמְצָן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-285",
+      "chapter": 8,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "הַדָּם שֶׁלָּכֶם נוֹשֵׂא אֶת הַמּוֹלֶקוּלוֹת הָאֵלֶּה לְתָאִים.",
+      "text_markdown": "הדם שלכם נושא את המולקולות האלה לתאים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "הַדָּם שֶׁלָּכֶם נוֹשֵׂא אֶת הַמּוֹלֶקוּלוֹת הָאֵלֶּה לְתָאִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-286",
+      "chapter": 8,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "בְתוֹךְ הַתָּאִים שֶׁלָּכֶם, אֲטוֹמֵי חַמְצָן מִתְחַבְּרִים עִם אֲטוֹמֵי פַּחְמָן מֵהָאוֹכֶל.",
+      "text_markdown": "בתוך התאים שלכם, אטומי חמצן מתחברים עם אטומי פחמן מהאוכל.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "בְתוֹךְ הַתָּאִים שֶׁלָּכֶם, אֲטוֹמֵי חַמְצָן מִתְחַבְּרִים עִם אֲטוֹמֵי פַּחְמָן מֵהָאוֹכֶל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-287",
+      "chapter": 8,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "הַתְּגוּבָה מְשַׁחְּרֶרֶת אֵנֶרְגִּיָּה.",
+      "text_markdown": "התגובה משחררת אנרגיה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "הַתְּגוּבָה מְשַׁחְּרֶרֶת אֵנֶרְגִּיָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-288",
+      "chapter": 8,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "אַתֶּם נוֹשְׁפִים אֶת הַפַּחְמָן וְהַחַמְצָן הַחוּצָה בְתוּר פַּחְמָן דּוּ־חַמְצָנִי.",
+      "text_markdown": "אתם נושפים את הפחמן והחמצן החוצה בתור פחמן דו-חמצני.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אַתֶּם נוֹשְׁפִים אֶת הַפַּחְמָן וְהַחַמְצָן הַחוּצָה בְתוּר פַּחְמָן דּוּ־חַמְצָנִי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-289",
+      "chapter": 8,
+      "sentence_index": 6,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p67",
+      "text": "כָּל נְשִׁימָה הִיא תְּגוּבָה כִּימִית.",
+      "text_markdown": "כל נשימה היא תגובה כימית.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כָּל נְשִׁימָה הִיא תְּגוּבָה כִּימִית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-290",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "חֲלוּדָה זוֹ כִּימִיָּה.",
+      "text_markdown": "חלודה זו כימיה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "חֲלוּדָה זוֹ כִּימִיָּה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-291",
+      "chapter": 8,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "אֲטוֹמֵי בַּרְזֶל עַל פְּנֵי הַמַּסְמֵר מְגִיבִים עִם אֲטוֹמֵי חַמְצָן בָּאֲוִויר.",
+      "text_markdown": "אטומי ברזל על פני המסמר מגיבים עם אטומי חמצן באוויר.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אֲטוֹמֵי בַּרְזֶל עַל פְּנֵי הַמַּסְמֵר מְגִיבִים עִם אֲטוֹמֵי חַמְצָן בָּאֲוִויר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-292",
+      "chapter": 8,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "הַבַּרְזֶל וְהַחַמְצָן מִתְחַבְּרִים וְיוֹצְרִים חוּמַר חָדָשׁ שֶׁנִּקְרָא תַּחְמּוֹצֶת בַּרְזֶל.",
+      "text_markdown": "הברזל והחמצן מתחברים ויוצרים חומר חדש שנקרא תחמוצת ברזל.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "הַבַּרְזֶל וְהַחַמְצָן מִתְחַבְּרִים וְיוֹצְרִים חוּמַר חָדָשׁ שֶׁנִּקְרָא תַּחְמּוֹצֶת בַּרְזֶל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-293",
+      "chapter": 8,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "תַּחְמּוֹצֶת בַּרְזֶל הִיא הַחוּמַר הָאַדְמַדְּם־חוּם שֶׁאָנוּ קוֹרְאִים לוֹ חֲלוּדָה.",
+      "text_markdown": "תחמוצת ברזל היא החומר האדמדם-חום שאנחנו קוראים לו חלודה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "תַּחְמּוֹצֶת בַּרְזֶל הִיא הַחוּמַר הָאַדְמַדְּם־חוּם שֶׁאָנוּ קוֹרְאִים לוֹ חֲלוּדָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-294",
+      "chapter": 8,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "אֲטוֹמֵי הַבַּרְזֶל עֲדַיִן שָׁם.",
+      "text_markdown": "אטומי הברזל עדיין שם.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אֲטוֹמֵי הַבַּרְזֶל עֲדַיִן שָׁם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-295",
+      "chapter": 8,
+      "sentence_index": 5,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p68",
+      "text": "הֵם פָּשׁוּט יָצְרוּ קֶשֶׁר עִם חַמְצָן.",
+      "text_markdown": "הם פשוט יצרו קשר עם חמצן.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "הֵם פָּשׁוּט יָצְרוּ קֶשֶׁר עִם חַמְצָן.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-296",
+      "chapter": 8,
+      "sentence_index": 0,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "אָטוֹמִים הֵם לֹא משְׁהוּ מוּפְשָׁט.",
+      "text_markdown": "אטומים הם לא משהו מופשט.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אָטוֹמִים הֵם לֹא משְׁהוּ מוּפְשָׁט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-297",
+      "chapter": 8,
+      "sentence_index": 1,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "אָטוֹמִים הֵם הַמְצִיאוּת הַפִּיזִית שֶׁל כָּל מַה שֶׁאַתֶּם נוֹגְעִים, טוֹעֲמִים, רוֹאִים וּמְרִיחִים.",
+      "text_markdown": "אטומים הם המציאות הפיזית של כל מה שאתם נוגעים, טועמים, רואים ומריחים.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "אָטוֹמִים הֵם הַמְצִיאוּת הַפִּיזִית שֶׁל כָּל מַה שֶׁאַתֶּם נוֹגְעִים, טוֹעֲמִים, רוֹאִים וּמְרִיחִים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-298",
+      "chapter": 8,
+      "sentence_index": 2,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "כְּכָל שֶׁתָּבִינוּ יוֹתֵר אָטוֹמִים, כָּךְ תָּבִינוּ יוֹתֵר אֶת הָעוֹלָם.",
+      "text_markdown": "ככל שתבינו יותר אטומים, כך תבינו יותר את העולם.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "כְּכָל שֶׁתָּבִינוּ יוֹתֵר אָטוֹמִים, כָּךְ תָּבִינוּ יוֹתֵר אֶת הָעוֹלָם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "id": "ch08-299",
+      "chapter": 8,
+      "sentence_index": 3,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "זוֹ רַק הַהִתְחָלָה.",
+      "text_markdown": "זו רק ההתחלה.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "זוֹ רַק הַהִתְחָלָה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-300",
+      "chapter": 8,
+      "sentence_index": 4,
+      "block_type": "text",
+      "part": 0,
+      "paragraph_id": "p69",
+      "text": "יֵשׁ עוֹד הַרְבֵּה מַה לְגַלּוֹת.",
+      "text_markdown": "יש עוד הרבה מה לגלות.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "יֵשׁ עוֹד הַרְבֵּה מַה לְגַלּוֹת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

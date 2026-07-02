@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "fi",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Kolme kysymystä",
+      "text_markdown": "Kolme kysymystä",
+      "title": "Kolme kysymystä"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Eräs kuningas ajatteli, että jos hän aina tietäisi, mikä aika on kaikkein tärkein jokaiselle työlle, ja tietäisi, mitkä ihmiset ovat tärkeimpiä, ja ennen kaikkea aina tietäisi, mikä kaikista töistä on tärkein, — hän ei koskaan epäonnistuisi missään.",
+      "text_markdown": "Eräs kuningas ajatteli, että jos hän aina tietäisi, mikä aika on kaikkein tärkein jokaiselle työlle, ja tietäisi, mitkä ihmiset ovat tärkeimpiä, ja ennen kaikkea aina tietäisi, mikä kaikista töistä on tärkein, — hän ei koskaan epäonnistuisi missään.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Eräs kuningas ajatteli, että jos hän aina tietäisi, mikä aika on kaikkein tärkein jokaiselle työlle, ja tietäisi, mitkä ihmiset ovat tärkeimpiä, ja ennen kaikkea aina tietäisi, mikä kaikista töistä on tärkein, — hän ei koskaan epäonnistuisi missään.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "Ja ajateltuaan tätä kuningas julisti valtakunnassaan, että hän antaisi suuren palkinnon sille, joka opettaisi hänet tietämään oikean ajan jokaiselle työlle, tietämään, mitkä ihmiset ovat tärkeimpiä, ja kuinka olla erehtymättä siinä, mikä työ kaikista on tärkein.",
+      "text_markdown": "Ja ajateltuaan tätä kuningas julisti valtakunnassaan, että hän antaisi suuren palkinnon sille, joka opettaisi hänet tietämään oikean ajan jokaiselle työlle, tietämään, mitkä ihmiset ovat tärkeimpiä, ja kuinka olla erehtymättä siinä, mikä työ kaikista on tärkein.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja ajateltuaan tätä kuningas julisti valtakunnassaan, että hän antaisi suuren palkinnon sille, joka opettaisi hänet tietämään oikean ajan jokaiselle työlle, tietämään, mitkä ihmiset ovat tärkeimpiä, ja kuinka olla erehtymättä siinä, mikä työ kaikista on tärkein.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Kuninkaan luo alkoi tulla oppineita miehiä, ja he vastasivat hänen kysymyksiinsä eri tavoin.",
+      "text_markdown": "Kuninkaan luo alkoi tulla oppineita miehiä, ja he vastasivat hänen kysymyksiinsä eri tavoin.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kuninkaan luo alkoi tulla oppineita miehiä, ja he vastasivat hänen kysymyksiinsä eri tavoin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Ensimmäiseen kysymykseen toiset sanoivat, että voidakseen tietää oikean ajan jokaiselle työlle, täytyy laatia etukäteen aikataulu päivistä, kuukausista ja vuosista ja noudattaa sitä tiukasti.",
+      "text_markdown": "Ensimmäiseen kysymykseen toiset sanoivat, että voidakseen tietää oikean ajan jokaiselle työlle, täytyy laatia etukäteen aikataulu päivistä, kuukausista ja vuosista ja noudattaa sitä tiukasti.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ensimmäiseen kysymykseen toiset sanoivat, että voidakseen tietää oikean ajan jokaiselle työlle, täytyy laatia etukäteen aikataulu päivistä, kuukausista ja vuosista ja noudattaa sitä tiukasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Vain silloin, he sanoivat, jokainen työ tehtäisiin omaan aikaansa.",
+      "text_markdown": "Vain silloin, he sanoivat, jokainen työ tehtäisiin omaan aikaansa.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Vain silloin, he sanoivat, jokainen työ tehtäisiin omaan aikaansa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Toiset sanoivat, että ei voida etukäteen päättää, mikä aika millekkin työlle on oikea, vaan täytyy, hajautumatta tyhjiin huvituksiin, aina olla tarkkaavainen kaikkeen, mitä tapahtuu, ja silloin aina tehdä sitä, mikä on tarpeellisinta.",
+      "text_markdown": "Toiset sanoivat, että ei voida etukäteen päättää, mikä aika millekkin työlle on oikea, vaan täytyy, hajautumatta tyhjiin huvituksiin, aina olla tarkkaavainen kaikkeen, mitä tapahtuu, ja silloin aina tehdä sitä, mikä on tarpeellisinta.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Toiset sanoivat, että ei voida etukäteen päättää, mikä aika millekkin työlle on oikea, vaan täytyy, hajautumatta tyhjiin huvituksiin, aina olla tarkkaavainen kaikkeen, mitä tapahtuu, ja silloin aina tehdä sitä, mikä on tarpeellisinta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Kolmannet sanoivat, että kuinka tarkkaavainen kuningas olisikin kaikkeen, mitä tapahtuu, yksi ihminen ei voi aina oikein päättää jokaisesta työstä, milloin sen aika on, vaan täytyy hankkia viisaiden neuvoa ja heidän neuvojensa mukaan määrätä aika jokaiselle työlle.",
+      "text_markdown": "Kolmannet sanoivat, että kuinka tarkkaavainen kuningas olisikin kaikkeen, mitä tapahtuu, yksi ihminen ei voi aina oikein päättää jokaisesta työstä, milloin sen aika on, vaan täytyy hankkia viisaiden neuvoa ja heidän neuvojensa mukaan määrätä aika jokaiselle työlle.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kolmannet sanoivat, että kuinka tarkkaavainen kuningas olisikin kaikkeen, mitä tapahtuu, yksi ihminen ei voi aina oikein päättää jokaisesta työstä, milloin sen aika on, vaan täytyy hankkia viisaiden neuvoa ja heidän neuvojensa mukaan määrätä aika jokaiselle työlle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Neljännet sanoivat, että on sellaisia töitä, jotka täytyy ratkaista heti, odottamatta neuvottelua, ja että voidakseen tietää, milloin ne sattuvat, täytyy tietää, mitä tulevaisuudessa tapahtuu.",
+      "text_markdown": "Neljännet sanoivat, että on sellaisia töitä, jotka täytyy ratkaista heti, odottamatta neuvottelua, ja että voidakseen tietää, milloin ne sattuvat, täytyy tietää, mitä tulevaisuudessa tapahtuu.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Neljännet sanoivat, että on sellaisia töitä, jotka täytyy ratkaista heti, odottamatta neuvottelua, ja että voidakseen tietää, milloin ne sattuvat, täytyy tietää, mitä tulevaisuudessa tapahtuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "Mutta sen voivat tietää vain taikurit.",
+      "text_markdown": "Mutta sen voivat tietää vain taikurit.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Mutta sen voivat tietää vain taikurit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "Ja siksi, tietääkseen oikean ajan jokaiselle työlle, täytyy kysyä taikureilta.",
+      "text_markdown": "Ja siksi, tietääkseen oikean ajan jokaiselle työlle, täytyy kysyä taikureilta.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja siksi, tietääkseen oikean ajan jokaiselle työlle, täytyy kysyä taikureilta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Toiseen kysymykseenkin vastattiin eri tavoin.",
+      "text_markdown": "Toiseen kysymykseenkin vastattiin eri tavoin.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Toiseen kysymykseenkin vastattiin eri tavoin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Toiset sanoivat, että kuninkaalle tärkeimpiä ihmisiä ovat hallitsijat, toiset sanoivat, että papit, kolmannet — lääkärit, neljännet — soturit.",
+      "text_markdown": "Toiset sanoivat, että kuninkaalle tärkeimpiä ihmisiä ovat hallitsijat, toiset sanoivat, että papit, kolmannet — lääkärit, neljännet — soturit.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Toiset sanoivat, että kuninkaalle tärkeimpiä ihmisiä ovat hallitsijat, toiset sanoivat, että papit, kolmannet — lääkärit, neljännet — soturit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Kolmanteen kysymykseen — mikä työ on tärkein? — toiset sanoivat, että tärkein asia maailmassa on tiede; toiset sanoivat — sota, kolmannet sanoivat — hurskaus.",
+      "text_markdown": "Kolmanteen kysymykseen — mikä työ on tärkein? — toiset sanoivat, että tärkein asia maailmassa on tiede; toiset sanoivat — sota, kolmannet sanoivat — hurskaus.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kolmanteen kysymykseen — mikä työ on tärkein? — toiset sanoivat, että tärkein asia maailmassa on tiede; toiset sanoivat — sota, kolmannet sanoivat — hurskaus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Kaikki vastaukset olivat erilaisia, ja siksi kuningas ei ollut samaa mieltä yhdenkään kanssa eikä antanut palkintoa kenellekään.",
+      "text_markdown": "Kaikki vastaukset olivat erilaisia, ja siksi kuningas ei ollut samaa mieltä yhdenkään kanssa eikä antanut palkintoa kenellekään.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kaikki vastaukset olivat erilaisia, ja siksi kuningas ei ollut samaa mieltä yhdenkään kanssa eikä antanut palkintoa kenellekään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Voidakseen paremmin saada tietää vastaukset kysymyksiinsä, hän päätti kysyä erakolta, josta kerrottiin, että hän oli viisas mies.",
+      "text_markdown": "Voidakseen paremmin saada tietää vastaukset kysymyksiinsä, hän päätti kysyä erakolta, josta kerrottiin, että hän oli viisas mies.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Voidakseen paremmin saada tietää vastaukset kysymyksiinsä, hän päätti kysyä erakolta, josta kerrottiin, että hän oli viisas mies.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Erakko asui metsässä, eikä koskaan lähtenyt sieltä.",
+      "text_markdown": "Erakko asui metsässä, eikä koskaan lähtenyt sieltä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Erakko asui metsässä, eikä koskaan lähtenyt sieltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Hän otti vastaan vain tavallisia ihmisiä, ja siksi kuningas pukeutui yksinkertaisesti ja ennen erakon asumukseen saapumista astui alas hevoselta ja meni yksin hänen luokseen.",
+      "text_markdown": "Hän otti vastaan vain tavallisia ihmisiä, ja siksi kuningas pukeutui yksinkertaisesti ja ennen erakon asumukseen saapumista astui alas hevoselta ja meni yksin hänen luokseen.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Hän otti vastaan vain tavallisia ihmisiä, ja siksi kuningas pukeutui yksinkertaisesti ja ennen erakon asumukseen saapumista astui alas hevoselta ja meni yksin hänen luokseen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Kun kuningas lähestyi häntä, erakko kaivoi mökkinsä edessä penkkereitä.",
+      "text_markdown": "Kun kuningas lähestyi häntä, erakko kaivoi mökkinsä edessä penkkereitä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kun kuningas lähestyi häntä, erakko kaivoi mökkinsä edessä penkkereitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Nähdessään kuninkaan erakko nyökkäsi hänelle ja jatkoi kaivamista.",
+      "text_markdown": "Nähdessään kuninkaan erakko nyökkäsi hänelle ja jatkoi kaivamista.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Nähdessään kuninkaan erakko nyökkäsi hänelle ja jatkoi kaivamista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Erakko oli laiha ja heikko, ja työntäessään lapiota maahan ja kääntäessään pieniä multapaakkuja hän hengitti raskaasti.",
+      "text_markdown": "Erakko oli laiha ja heikko, ja työntäessään lapiota maahan ja kääntäessään pieniä multapaakkuja hän hengitti raskaasti.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Erakko oli laiha ja heikko, ja työntäessään lapiota maahan ja kääntäessään pieniä multapaakkuja hän hengitti raskaasti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Kuningas lähestyi häntä ja sanoi:",
+      "text_markdown": "Kuningas lähestyi häntä ja sanoi:",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kuningas lähestyi häntä ja sanoi:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Tulin luoksesi, viisas erakko, pyytämään sinua vastaamaan minulle kolmeen kysymykseen: mikä aika täytyy muistaa eikä päästää ohi, jottei myöhemmin katuisi?",
+      "text_markdown": "— Tulin luoksesi, viisas erakko, pyytämään sinua vastaamaan minulle kolmeen kysymykseen: mikä aika täytyy muistaa eikä päästää ohi, jottei myöhemmin katuisi?",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Tulin luoksesi, viisas erakko, pyytämään sinua vastaamaan minulle kolmeen kysymykseen: mikä aika täytyy muistaa eikä päästää ohi, jottei myöhemmin katuisi?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Mitkä ihmiset ovat tärkeimpiä?",
+      "text_markdown": "Mitkä ihmiset ovat tärkeimpiä?",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Mitkä ihmiset ovat tärkeimpiä?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "Ja mikä työ on tärkein?",
+      "text_markdown": "Ja mikä työ on tärkein?",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja mikä työ on tärkein?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Erakko kuunteli kuninkaan, mutta ei vastannut mitään, vaan sylki käteensä ja jatkoi kaivamista.",
+      "text_markdown": "Erakko kuunteli kuninkaan, mutta ei vastannut mitään, vaan sylki käteensä ja jatkoi kaivamista.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Erakko kuunteli kuninkaan, mutta ei vastannut mitään, vaan sylki käteensä ja jatkoi kaivamista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Olet väsynyt, — sanoi kuningas.",
+      "text_markdown": "— Olet väsynyt, — sanoi kuningas.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Olet väsynyt, — sanoi kuningas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Anna minun auttaa sinua.",
+      "text_markdown": "— Anna minun auttaa sinua.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Anna minun auttaa sinua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Kiitos, — sanoi erakko ja antaen kuninkaalle lapion istui maahan.",
+      "text_markdown": "— Kiitos, — sanoi erakko ja antaen kuninkaalle lapion istui maahan.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Kiitos, — sanoi erakko ja antaen kuninkaalle lapion istui maahan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Kaivetttuaan kaksi penkkerettä kuningas pysähtyi ja toisti kysymyksensä.",
+      "text_markdown": "Kaivetttuaan kaksi penkkerettä kuningas pysähtyi ja toisti kysymyksensä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kaivetttuaan kaksi penkkerettä kuningas pysähtyi ja toisti kysymyksensä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Erakko jälleen ei vastannut, vaan nousi ja ojensi kätensä lapiota kohti:",
+      "text_markdown": "Erakko jälleen ei vastannut, vaan nousi ja ojensi kätensä lapiota kohti:",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Erakko jälleen ei vastannut, vaan nousi ja ojensi kätensä lapiota kohti:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Nyt lepää, anna minun, — hän sanoi.",
+      "text_markdown": "— Nyt lepää, anna minun, — hän sanoi.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Nyt lepää, anna minun, — hän sanoi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Mutta kuningas ei antanut lapiota ja jatkoi kaivamista.",
+      "text_markdown": "Mutta kuningas ei antanut lapiota ja jatkoi kaivamista.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Mutta kuningas ei antanut lapiota ja jatkoi kaivamista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Kului tunti, kului toinen.",
+      "text_markdown": "Kului tunti, kului toinen.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kului tunti, kului toinen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Aurinko meni puiden taakse.",
+      "text_markdown": "Aurinko meni puiden taakse.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Aurinko meni puiden taakse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Kuningas työnsi lapion maahan ja sanoi:",
+      "text_markdown": "Kuningas työnsi lapion maahan ja sanoi:",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kuningas työnsi lapion maahan ja sanoi:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Tulin luoksesi, viisas, vastauksen saamiseksi kysymyksiini.",
+      "text_markdown": "— Tulin luoksesi, viisas, vastauksen saamiseksi kysymyksiini.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Tulin luoksesi, viisas, vastauksen saamiseksi kysymyksiini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Jos et voi vastata minulle, sano se, niin menen kotiin.",
+      "text_markdown": "Jos et voi vastata minulle, sano se, niin menen kotiin.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Jos et voi vastata minulle, sano se, niin menen kotiin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— Sieltä tulee joku juoksemassa, — sanoi erakko.",
+      "text_markdown": "— Sieltä tulee joku juoksemassa, — sanoi erakko.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Sieltä tulee joku juoksemassa, — sanoi erakko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Katsotaan, kuka se on.",
+      "text_markdown": "— Katsotaan, kuka se on.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Katsotaan, kuka se on.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Tsaari kääntyi ja näki — metsästä juoksi parrakkaita miestä.",
+      "text_markdown": "Tsaari kääntyi ja näki — metsästä juoksi parrakkaita miestä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari kääntyi ja näki — metsästä juoksi parrakkaita miestä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Tämä mies piti käsillään kiinni vatsassaan olevasta haavasta, käsien alta vuoti verta.",
+      "text_markdown": "Tämä mies piti käsillään kiinni vatsassaan olevasta haavasta, käsien alta vuoti verta.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tämä mies piti käsillään kiinni vatsassaan olevasta haavasta, käsien alta vuoti verta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Juostuaan tsaarin luo mies kaatui tajuttomana maahan ja makasi hiljaa vaikerroiden.",
+      "text_markdown": "Juostuaan tsaarin luo mies kaatui tajuttomana maahan ja makasi hiljaa vaikerroiden.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Juostuaan tsaarin luo mies kaatui tajuttomana maahan ja makasi hiljaa vaikerroiden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Tsaari yhdessä erakkomunkin kanssa avasi ja riisui mieheltä vaatteet.",
+      "text_markdown": "Tsaari yhdessä erakkomunkin kanssa avasi ja riisui mieheltä vaatteet.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari yhdessä erakkomunkin kanssa avasi ja riisui mieheltä vaatteet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Vatsassa oli suuri haava.",
+      "text_markdown": "Vatsassa oli suuri haava.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Vatsassa oli suuri haava.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Tsaari, niin hyvin kuin osasi, pesi haavan ja sitoi sen omalla nenäliinallaan ja erakkomunkin pyyhkeellä.",
+      "text_markdown": "Tsaari, niin hyvin kuin osasi, pesi haavan ja sitoi sen omalla nenäliinallaan ja erakkomunkin pyyhkeellä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari, niin hyvin kuin osasi, pesi haavan ja sitoi sen omalla nenäliinallaan ja erakkomunkin pyyhkeellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Mutta veri ei pysähtynyt.",
+      "text_markdown": "Mutta veri ei pysähtynyt.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Mutta veri ei pysähtynyt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Tsaari otti useita kertoja siteen pois ja pesi ja sitoi haavan uudelleen.",
+      "text_markdown": "Tsaari otti useita kertoja siteen pois ja pesi ja sitoi haavan uudelleen.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari otti useita kertoja siteen pois ja pesi ja sitoi haavan uudelleen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Kun vihdoin veri tyyntyi, mies tuli tajuihinsa ja pyysi juotavaa.",
+      "text_markdown": "Kun vihdoin veri tyyntyi, mies tuli tajuihinsa ja pyysi juotavaa.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Kun vihdoin veri tyyntyi, mies tuli tajuihinsa ja pyysi juotavaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Tsaari toi hänelle raikasta vettä ja juotti hänet.",
+      "text_markdown": "Tsaari toi hänelle raikasta vettä ja juotti hänet.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari toi hänelle raikasta vettä ja juotti hänet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Sillä välin aurinko oli laskenut kokonaan, ja alkoi olla kylmä.",
+      "text_markdown": "Sillä välin aurinko oli laskenut kokonaan, ja alkoi olla kylmä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Sillä välin aurinko oli laskenut kokonaan, ja alkoi olla kylmä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Tsaari erakkomunkin avulla kantoi haavoittuneen mökille ja pani hänet vuoteeseen.",
+      "text_markdown": "Tsaari erakkomunkin avulla kantoi haavoittuneen mökille ja pani hänet vuoteeseen.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari erakkomunkin avulla kantoi haavoittuneen mökille ja pani hänet vuoteeseen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Haavoittunut sulki silmänsä ja hiljenni.",
+      "text_markdown": "Haavoittunut sulki silmänsä ja hiljenni.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Haavoittunut sulki silmänsä ja hiljenni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Tsaari oli niin väsynyt kävelemisestä ja työstä, että hän heti siinä kynnyksellä kävi makuulle ja nukahti — nukahti niin sikeästi, että nukkui koko lyhyen kesäyön, ja kun hän aamulla heräsi, ei voinut pitkään ymmärtää, missä hän oli ja kuka tuo outo parrakkaita mies oli, joka makasi vuoteessa ja katui häntä hellittämättä kiiltävillä silmillä.",
+      "text_markdown": "Tsaari oli niin väsynyt kävelemisestä ja työstä, että hän heti siinä kynnyksellä kävi makuulle ja nukahti — nukahti niin sikeästi, että nukkui koko lyhyen kesäyön, ja kun hän aamulla heräsi, ei voinut pitkään ymmärtää, missä hän oli ja kuka tuo outo parrakkaita mies oli, joka makasi vuoteessa ja katui häntä hellittämättä kiiltävillä silmillä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari oli niin väsynyt kävelemisestä ja työstä, että hän heti siinä kynnyksellä kävi makuulle ja nukahti — nukahti niin sikeästi, että nukkui koko lyhyen kesäyön, ja kun hän aamulla heräsi, ei voinut pitkään ymmärtää, missä hän oli ja kuka tuo outo parrakkaita mies oli, joka makasi vuoteessa ja katui häntä hellittämättä kiiltävillä silmillä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Anna minulle anteeksi, — sanoi parrakkaita mies heikolla äänellä, kun näki, että tsaari oli herännyt ja katsoi häntä.",
+      "text_markdown": "— Anna minulle anteeksi, — sanoi parrakkaita mies heikolla äänellä, kun näki, että tsaari oli herännyt ja katsoi häntä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Anna minulle anteeksi, — sanoi parrakkaita mies heikolla äänellä, kun näki, että tsaari oli herännyt ja katsoi häntä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— En tunne sinua enkä voi antaa sinulle anteeksi mitään, — sanoi tsaari.",
+      "text_markdown": "— En tunne sinua enkä voi antaa sinulle anteeksi mitään, — sanoi tsaari.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— En tunne sinua enkä voi antaa sinulle anteeksi mitään, — sanoi tsaari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Sinä et tunne minua, mutta minä tunnen sinut.",
+      "text_markdown": "— Sinä et tunne minua, mutta minä tunnen sinut.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Sinä et tunne minua, mutta minä tunnen sinut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Olen vihollisesi, juuri se, joka vannoi kostavansa sinulle siitä, että mestasit veljeni ja otit minulta tilani.",
+      "text_markdown": "Olen vihollisesi, juuri se, joka vannoi kostavansa sinulle siitä, että mestasit veljeni ja otit minulta tilani.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Olen vihollisesi, juuri se, joka vannoi kostavansa sinulle siitä, että mestasit veljeni ja otit minulta tilani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Tiesin, että lähdit yksin erakkomunkille, ja päätin tappaa sinut paluumatkalla.",
+      "text_markdown": "Tiesin, että lähdit yksin erakkomunkille, ja päätin tappaa sinut paluumatkalla.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tiesin, että lähdit yksin erakkomunkille, ja päätin tappaa sinut paluumatkalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Mutta kului koko päivä, etkä sinä tullut.",
+      "text_markdown": "Mutta kului koko päivä, etkä sinä tullut.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Mutta kului koko päivä, etkä sinä tullut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Silloin tulin väijytyspaikastani etsiäkseni sinua ja törmäsin henkivartijoihisi.",
+      "text_markdown": "Silloin tulin väijytyspaikastani etsiäkseni sinua ja törmäsin henkivartijoihisi.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Silloin tulin väijytyspaikastani etsiäkseni sinua ja törmäsin henkivartijoihisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "He tunnistivat minut ja haavoittivat.",
+      "text_markdown": "He tunnistivat minut ja haavoittivat.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "He tunnistivat minut ja haavoittivat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Pakenin heiltä, mutta ellei sinä olisi sitonut haavojaani, olisin kuollut.",
+      "text_markdown": "Pakenin heiltä, mutta ellei sinä olisi sitonut haavojaani, olisin kuollut.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Pakenin heiltä, mutta ellei sinä olisi sitonut haavojaani, olisin kuollut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Halusin tappaa sinut, mutta sinä pelastit henkeni.",
+      "text_markdown": "Halusin tappaa sinut, mutta sinä pelastit henkeni.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Halusin tappaa sinut, mutta sinä pelastit henkeni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Nyt, jos jään eloon ja sinä niin tahdot, palvelen sinua kuin uskollisin orja, ja saman käsken tekemään poikanikin.",
+      "text_markdown": "Nyt, jos jään eloon ja sinä niin tahdot, palvelen sinua kuin uskollisin orja, ja saman käsken tekemään poikanikin.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Nyt, jos jään eloon ja sinä niin tahdot, palvelen sinua kuin uskollisin orja, ja saman käsken tekemään poikanikin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Anna minulle anteeksi.",
+      "text_markdown": "Anna minulle anteeksi.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Anna minulle anteeksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Tsaari oli hyvin iloinen, että hän niin helposti onnistui sovintoon vihollisensa kanssa ja saamaan ystävän, ja hän antoi hänelle anteeksi ja lupasi palauttaa hänen tilansa ja lähettää omat lääkärinsä ja palvelijansa hoitamaan häntä.",
+      "text_markdown": "Tsaari oli hyvin iloinen, että hän niin helposti onnistui sovintoon vihollisensa kanssa ja saamaan ystävän, ja hän antoi hänelle anteeksi ja lupasi palauttaa hänen tilansa ja lähettää omat lääkärinsä ja palvelijansa hoitamaan häntä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari oli hyvin iloinen, että hän niin helposti onnistui sovintoon vihollisensa kanssa ja saamaan ystävän, ja hän antoi hänelle anteeksi ja lupasi palauttaa hänen tilansa ja lähettää omat lääkärinsä ja palvelijansa hoitamaan häntä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Hyvästellessään haavoittuneen tsaari meni ulos portaalle ja alkoi etsiä katseellaan erakkomunkia.",
+      "text_markdown": "Hyvästellessään haavoittuneen tsaari meni ulos portaalle ja alkoi etsiä katseellaan erakkomunkia.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Hyvästellessään haavoittuneen tsaari meni ulos portaalle ja alkoi etsiä katseellaan erakkomunkia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Ennen lähtöään hän tahtoi vielä kerran pyytää häneltä vastausta kysymyksiinsä.",
+      "text_markdown": "Ennen lähtöään hän tahtoi vielä kerran pyytää häneltä vastausta kysymyksiinsä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ennen lähtöään hän tahtoi vielä kerran pyytää häneltä vastausta kysymyksiinsä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Erakkomunki oli pihalla ja polvillaan istuen istutti siemeniä penkkeihin, jotka oli kaivettu eilen.",
+      "text_markdown": "Erakkomunki oli pihalla ja polvillaan istuen istutti siemeniä penkkeihin, jotka oli kaivettu eilen.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Erakkomunki oli pihalla ja polvillaan istuen istutti siemeniä penkkeihin, jotka oli kaivettu eilen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Tsaari meni hänen luokseen.",
+      "text_markdown": "Tsaari meni hänen luokseen.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Tsaari meni hänen luokseen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Viisas mies, viimeisen kerran pyydän sinua: vastaa kysymyksiini.",
+      "text_markdown": "— Viisas mies, viimeisen kerran pyydän sinua: vastaa kysymyksiini.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Viisas mies, viimeisen kerran pyydän sinua: vastaa kysymyksiini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Ethän sinä jo saanut vastauksesi, — sanoi erakkomunki istuen kyykyssä ohuellla jaloillaan ja katsoen alhaalta hänen edessään seisovaa tsaaria.",
+      "text_markdown": "— Ethän sinä jo saanut vastauksesi, — sanoi erakkomunki istuen kyykyssä ohuellla jaloillaan ja katsoen alhaalta hänen edessään seisovaa tsaaria.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Ethän sinä jo saanut vastauksesi, — sanoi erakkomunki istuen kyykyssä ohuellla jaloillaan ja katsoen alhaalta hänen edessään seisovaa tsaaria.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Miten sain vastauksen? — kysyi tsaari.",
+      "text_markdown": "— Miten sain vastauksen? — kysyi tsaari.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Miten sain vastauksen? — kysyi tsaari.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— Etkö todellakaan? — sanoi erakkomunki.",
+      "text_markdown": "— Etkö todellakaan? — sanoi erakkomunki.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Etkö todellakaan? — sanoi erakkomunki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Jos et olisi eilen säälinyt minua etkä olisi ruvennut kaivamaan minun puolestani näitä penkkejä, vaan olisit lähtenyt takaisin, tuo mies olisi tappanut sinut.",
+      "text_markdown": "— Jos et olisi eilen säälinyt minua etkä olisi ruvennut kaivamaan minun puolestani näitä penkkejä, vaan olisit lähtenyt takaisin, tuo mies olisi tappanut sinut.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Jos et olisi eilen säälinyt minua etkä olisi ruvennut kaivamaan minun puolestani näitä penkkejä, vaan olisit lähtenyt takaisin, tuo mies olisi tappanut sinut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Ja siksi tärkein aika oli se, kun koit penkkejä.",
+      "text_markdown": "Ja siksi tärkein aika oli se, kun koit penkkejä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja siksi tärkein aika oli se, kun koit penkkejä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "Ja tarpeellisin ihminen olin minä.",
+      "text_markdown": "Ja tarpeellisin ihminen olin minä.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja tarpeellisin ihminen olin minä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "Ja tärkein teko oli — tehdä minulle hyvää.",
+      "text_markdown": "Ja tärkein teko oli — tehdä minulle hyvää.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja tärkein teko oli — tehdä minulle hyvää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "Ja sitten, kun tuo mies juoksi paikalle, tärkein aika oli se, kun hoidit häntä, sillä ellet olisi pessyt hänen haavojaansa, hän olisi kuollut sovintoon pääsemättä kanssasi.",
+      "text_markdown": "Ja sitten, kun tuo mies juoksi paikalle, tärkein aika oli se, kun hoidit häntä, sillä ellet olisi pessyt hänen haavojaansa, hän olisi kuollut sovintoon pääsemättä kanssasi.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja sitten, kun tuo mies juoksi paikalle, tärkein aika oli se, kun hoidit häntä, sillä ellet olisi pessyt hänen haavojaansa, hän olisi kuollut sovintoon pääsemättä kanssasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "Ja siksi tarpeellisin ihminen oli hän, ja tärkein asia oli se, mitä teit hänelle.",
+      "text_markdown": "Ja siksi tarpeellisin ihminen oli hän, ja tärkein asia oli se, mitä teit hänelle.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "Ja siksi tarpeellisin ihminen oli hän, ja tärkein asia oli se, mitä teit hänelle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Muista siis, — sanoi erakko, — että tärkein aika on yksi: nyt, — ja se on tärkein siksi, että vain siinä me hallitsemme itseämme; ja tarpeellisin ihminen on se, jonka kanssa nyt olet tekemisissä, koska kukaan ei voi tietää, tuleeko hän vielä olemaan tekemisissä jonkun toisen ihmisen kanssa; ja tärkein asia on tehdä hänelle hyvää, koska vain sitä varten ihminen on lähetetty elämään.",
+      "text_markdown": "— Muista siis, — sanoi erakko, — että tärkein aika on yksi: nyt, — ja se on tärkein siksi, että vain siinä me hallitsemme itseämme; ja tarpeellisin ihminen on se, jonka kanssa nyt olet tekemisissä, koska kukaan ei voi tietää, tuleeko hän vielä olemaan tekemisissä jonkun toisen ihmisen kanssa; ja tärkein asia on tehdä hänelle hyvää, koska vain sitä varten ihminen on lähetetty elämään.",
+      "title": "Kolme kysymystä",
+      "tts": {
+        "text": "— Muista siis, — sanoi erakko, — että tärkein aika on yksi: nyt, — ja se on tärkein siksi, että vain siinä me hallitsemme itseämme; ja tarpeellisin ihminen on se, jonka kanssa nyt olet tekemisissä, koska kukaan ei voi tietää, tuleeko hän vielä olemaan tekemisissä jonkun toisen ihmisen kanssa; ja tärkein asia on tehdä hänelle hyvää, koska vain sitä varten ihminen on lähetetty elämään.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

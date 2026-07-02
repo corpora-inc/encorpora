@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "he",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הערה לקורא",
+      "text_markdown": "הערה לקורא"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה ספר קטן על אוכל גדול.",
+      "text_markdown": "זה ספר קטן על אוכל גדול.",
+      "tts": {
+        "text": "זה ספר קטן על אוכל גדול.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "זהו אוכל נשמה, מדרום ארצות הברית.",
+      "text_markdown": "זהו אוכל נשמה, מדרום ארצות הברית.",
+      "tts": {
+        "text": "זהו אוכל נשמה, מדרום ארצות הברית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אוכל נשמה הוא אוכל אמיתי.",
+      "text_markdown": "אוכל נשמה הוא אוכל אמיתי.",
+      "tts": {
+        "text": "אוכל נשמה הוא אוכל אמיתי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מבשלים אותו בבית.",
+      "text_markdown": "מבשלים אותו בבית.",
+      "tts": {
+        "text": "מבשלים אותו בבית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אוכלים אותו בימי ראשון.",
+      "text_markdown": "אוכלים אותו בימי ראשון.",
+      "tts": {
+        "text": "אוכלים אותו בימי ראשון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ואוכלים אותו גם ביום שלישי.",
+      "text_markdown": "ואוכלים אותו גם ביום שלישי.",
+      "tts": {
+        "text": "ואוכלים אותו גם ביום שלישי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נתחיל בשם.",
+      "text_markdown": "נתחיל בשם.",
+      "tts": {
+        "text": "נתחיל בשם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אחר כך נסתכל על הצמחים ועל בעלי החיים.",
+      "text_markdown": "אחר כך נסתכל על הצמחים ועל בעלי החיים.",
+      "tts": {
+        "text": "אחר כך נסתכל על הצמחים ועל בעלי החיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אחר כך נסתכל על הסירים ועל המחבתות.",
+      "text_markdown": "אחר כך נסתכל על הסירים ועל המחבתות.",
+      "tts": {
+        "text": "אחר כך נסתכל על הסירים ועל המחבתות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "בסוף תדע מה יש על הצלחת, ותדע מאיפה זה בא.",
+      "text_markdown": "בסוף תדע מה יש על הצלחת, ותדע מאיפה זה בא.",
+      "tts": {
+        "text": "בסוף תדע מה יש על הצלחת, ותדע מאיפה זה בא.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "הערה לקורא",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קוראים לי Kym ואני אספר לך את הסיפור.",
+      "text_markdown": "חברה בשם קים תספר לך את הסיפור.",
+      "tts": {
+        "text": "קוראים לי Kym ואני אספר לך את הסיפור.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 1 — מהו אוכל נשמה",
+      "text_markdown": "פרק 1 — מהו אוכל נשמה"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אוכל נשמה הוא האוכל היומיומי של משפחות שחורות בדרום האמריקאי.",
+      "text_markdown": "אוכל נשמה הוא האוכל היומיומי של משפחות שחורות בדרום האמריקאי.",
+      "tts": {
+        "text": "אוכל נשמה הוא האוכל היומיומי של משפחות שחורות בדרום האמריקאי.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השם \"אוכל נשמה\" נעשה נפוץ בשנות השישים.",
+      "text_markdown": "השם \"אוכל נשמה\" נעשה נפוץ בשנות השישים.",
+      "tts": {
+        "text": "השם \"אוכל נשמה\" נעשה נפוץ בשנות השישים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המילה \"נשמה\" באה מהמוזיקה ומהכנסייה.",
+      "text_markdown": "המילה \"נשמה\" באה מהמוזיקה ומהכנסייה.",
+      "tts": {
+        "text": "המילה \"נשמה\" באה מהמוזיקה ומהכנסייה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היא סימנה משהו עמוק ואמיתי.",
+      "text_markdown": "היא סימנה משהו עמוק ואמיתי.",
+      "tts": {
+        "text": "היא סימנה משהו עמוק ואמיתי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "היא סימנה משהו שחור וגאה.",
+      "text_markdown": "היא סימנה משהו שחור וגאה.",
+      "tts": {
+        "text": "היא סימנה משהו שחור וגאה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אבל האוכל עצמו הרבה יותר ישן.",
+      "text_markdown": "אבל האוכל עצמו הרבה יותר ישן.",
+      "tts": {
+        "text": "אבל האוכל עצמו הרבה יותר ישן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הוא בא ממטבחי המטעים של המאה השמונה עשרה והמאה התשע עשרה.",
+      "text_markdown": "הוא בא ממטבחי המטעים של המאה השמונה עשרה והמאה התשע עשרה.",
+      "tts": {
+        "text": "הוא בא ממטבחי המטעים של המאה השמונה עשרה והמאה התשע עשרה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "טבחים אפריקאים משועבדים לקחו את הצמחים ואת בעלי החיים שהיו להם, והכינו ארוחת ערב.",
+      "text_markdown": "טבחים אפריקאים משועבדים לקחו את הצמחים ואת בעלי החיים שהיו להם, והכינו ארוחת ערב.",
+      "tts": {
+        "text": "טבחים אפריקאים משועבדים לקחו את הצמחים ואת בעלי החיים שהיו להם, והכינו ארוחת ערב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הטבחים היו מבריקים.",
+      "text_markdown": "הטבחים היו מבריקים.",
+      "tts": {
+        "text": "הטבחים היו מבריקים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הם עבדו עם מעט, והאכילו הרבה אנשים.",
+      "text_markdown": "הם עבדו עם מעט, והאכילו הרבה אנשים.",
+      "tts": {
+        "text": "הם עבדו עם מעט, והאכילו הרבה אנשים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הם ניצלו כל חלק של החזיר.",
+      "text_markdown": "הם ניצלו כל חלק של החזיר.",
+      "tts": {
+        "text": "הם ניצלו כל חלק של החזיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הם נתנו לעלי הירק טעם מתוק.",
+      "text_markdown": "הם נתנו לעלי הירק טעם מתוק.",
+      "tts": {
+        "text": "הם נתנו לעלי הירק טעם מתוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הם הפכו קמח תירס ללחם, לדייסה, ולעוד מאה דברים קטנים.",
+      "text_markdown": "הם הפכו קמח תירס ללחם, לדייסה, ולעוד מאה דברים קטנים.",
+      "tts": {
+        "text": "הם הפכו קמח תירס ללחם, לדייסה, ולעוד מאה דברים קטנים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשמשפחות שחורות עברו צפונה במאה העשרים, הן לקחו איתן את האוכל הזה.",
+      "text_markdown": "כשמשפחות שחורות עברו צפונה במאה העשרים, הן לקחו איתן את האוכל הזה.",
+      "tts": {
+        "text": "כשמשפחות שחורות עברו צפונה במאה העשרים, הן לקחו איתן את האוכל הזה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "היום אוכל נשמה נמצא בשיקגו, בניו יורק, בדטרויט, ובכל עיירה דרומית.",
+      "text_markdown": "היום אוכל נשמה נמצא בשיקגו, בניו יורק, בדטרויט, ובכל עיירה דרומית.",
+      "tts": {
+        "text": "היום אוכל נשמה נמצא בשיקגו, בניו יורק, בדטרויט, ובכל עיירה דרומית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "פרק 1 — מהו אוכל נשמה",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אבל המרכז שלו עדיין בדרום.",
+      "text_markdown": "אבל המרכז שלו עדיין בדרום.",
+      "tts": {
+        "text": "אבל המרכז שלו עדיין בדרום.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 2 — המרכיבים",
+      "text_markdown": "פרק 2 — המרכיבים"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לאוכל הנשמה יש שני שורשים גדולים.",
+      "text_markdown": "לאוכל הנשמה יש שני שורשים גדולים.",
+      "tts": {
+        "text": "לאוכל הנשמה יש שני שורשים גדולים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "שורש אחד הוא מערב אפריקה.",
+      "text_markdown": "שורש אחד הוא מערב אפריקה.",
+      "tts": {
+        "text": "שורש אחד הוא מערב אפריקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "והשורש השני הוא יבשת אמריקה.",
+      "text_markdown": "והשורש השני הוא יבשת אמריקה.",
+      "tts": {
+        "text": "והשורש השני הוא יבשת אמריקה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ממערב אפריקה הגיעה הבמיה.",
+      "text_markdown": "ממערב אפריקה הגיעה הבמיה.",
+      "tts": {
+        "text": "ממערב אפריקה הגיעה הבמיה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "במיה היא תרמיל ירוק.",
+      "text_markdown": "במיה היא תרמיל ירוק.",
+      "tts": {
+        "text": "במיה היא תרמיל ירוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "היא גדלה על צמח גבוה.",
+      "text_markdown": "היא גדלה על צמח גבוה.",
+      "tts": {
+        "text": "היא גדלה על צמח גבוה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "כשמבשלים אותה, היא נעשית רכה וקצת חלקלקה.",
+      "text_markdown": "כשמבשלים אותה, היא נעשית רכה וקצת חלקלקה.",
+      "tts": {
+        "text": "כשמבשלים אותה, היא נעשית רכה וקצת חלקלקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "היא נכנסת לגמבו, ומטגנים אותה בציפוי של קמח תירס.",
+      "text_markdown": "היא נכנסת לגמבו, ומטגנים אותה בציפוי של קמח תירס.",
+      "tts": {
+        "text": "היא נכנסת לגמבו, ומטגנים אותה בציפוי של קמח תירס.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם לוביה הגיעה ממערב אפריקה.",
+      "text_markdown": "גם לוביה הגיעה ממערב אפריקה.",
+      "tts": {
+        "text": "גם לוביה הגיעה ממערב אפריקה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "גם אבטיח.",
+      "text_markdown": "גם אבטיח.",
+      "tts": {
+        "text": "גם אבטיח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "וגם זרעי שומשום.",
+      "text_markdown": "וגם זרעי שומשום.",
+      "tts": {
+        "text": "וגם זרעי שומשום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הטבחים הדרומיים של פעם קראו לשומשום \"בני\". הם שמו בני בעוגיות ועל לחם.",
+      "text_markdown": "הטבחים הדרומיים של פעם קראו לשומשום \"בני\". הם שמו בני בעוגיות ועל לחם.",
+      "tts": {
+        "text": "הטבחים הדרומיים של פעם קראו לשומשום \"בני\". הם שמו בני בעוגיות ועל לחם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם האורז חצה את האוקיינוס.",
+      "text_markdown": "גם האורז חצה את האוקיינוס.",
+      "tts": {
+        "text": "גם האורז חצה את האוקיינוס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "חקלאים אפריקאים גידלו אורז במשך אלף שנים.",
+      "text_markdown": "חקלאים אפריקאים גידלו אורז במשך אלף שנים.",
+      "tts": {
+        "text": "חקלאים אפריקאים גידלו אורז במשך אלף שנים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בקרוליינה הדרומית, הידע הזה בנה עיירות שלמות.",
+      "text_markdown": "בקרוליינה הדרומית, הידע הזה בנה עיירות שלמות.",
+      "tts": {
+        "text": "בקרוליינה הדרומית, הידע הזה בנה עיירות שלמות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מאמריקה הגיע התירס.",
+      "text_markdown": "מאמריקה הגיע התירס.",
+      "tts": {
+        "text": "מאמריקה הגיע התירס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מקורו של התירס במקסיקו.",
+      "text_markdown": "מקורו של התירס במקסיקו.",
+      "tts": {
+        "text": "מקורו של התירס במקסיקו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא הגיע צפונה אל בני הצ'רוקי והצ'וקטו הרבה לפני שהספרדים באו.",
+      "text_markdown": "הוא הגיע צפונה אל בני הצ'רוקי והצ'וקטו הרבה לפני שהספרדים באו.",
+      "tts": {
+        "text": "הוא הגיע צפונה אל בני הצ'רוקי והצ'וקטו הרבה לפני שהספרדים באו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מאמריקה הגיעו גם בטטות, בוטנים, והרבה סוגי שעועית.",
+      "text_markdown": "מאמריקה הגיעו גם בטטות, בוטנים, והרבה סוגי שעועית.",
+      "tts": {
+        "text": "מאמריקה הגיעו גם בטטות, בוטנים, והרבה סוגי שעועית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "פרק 2 — המרכיבים",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אוכל נשמה הוא מה שקרה כששני המזווים האלה נפגשו במטבח אחד.",
+      "text_markdown": "אוכל נשמה הוא מה שקרה כששני המזווים האלה נפגשו במטבח אחד.",
+      "tts": {
+        "text": "אוכל נשמה הוא מה שקרה כששני המזווים האלה נפגשו במטבח אחד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 3 — הבשרים והדגים",
+      "text_markdown": "פרק 3 — הבשרים והדגים"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הבשר החשוב ביותר באוכל נשמה הוא בשר חזיר.",
+      "text_markdown": "הבשר החשוב ביותר באוכל נשמה הוא בשר חזיר.",
+      "tts": {
+        "text": "הבשר החשוב ביותר באוכל נשמה הוא בשר חזיר.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "משק קטן יכול היה להחזיק חזיר.",
+      "text_markdown": "משק קטן יכול היה להחזיק חזיר.",
+      "tts": {
+        "text": "משק קטן יכול היה להחזיק חזיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "החזיר אכל שאריות.",
+      "text_markdown": "החזיר אכל שאריות.",
+      "tts": {
+        "text": "החזיר אכל שאריות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "בסתיו המשפחה שחטה את החזיר, והשתמשה בכל חלק שלו.",
+      "text_markdown": "בסתיו המשפחה שחטה את החזיר, והשתמשה בכל חלק שלו.",
+      "tts": {
+        "text": "בסתיו המשפחה שחטה את החזיר, והשתמשה בכל חלק שלו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "הם עישנו את ירך החזיר.",
+      "text_markdown": "הם עישנו את ירך החזיר.",
+      "tts": {
+        "text": "הם עישנו את ירך החזיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הם המליחו את הבייקון.",
+      "text_markdown": "הם המליחו את הבייקון.",
+      "tts": {
+        "text": "הם המליחו את הבייקון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "הם בישלו את הרגליים בחומץ.",
+      "text_markdown": "הם בישלו את הרגליים בחומץ.",
+      "tts": {
+        "text": "הם בישלו את הרגליים בחומץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "הם שמרו את השומן ללחמניות ביסקיט.",
+      "text_markdown": "הם שמרו את השומן ללחמניות ביסקיט.",
+      "tts": {
+        "text": "הם שמרו את השומן ללחמניות ביסקיט.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הבשר הבא בחשיבותו הוא עוף.",
+      "text_markdown": "הבשר הבא בחשיבותו הוא עוף.",
+      "tts": {
+        "text": "הבשר הבא בחשיבותו הוא עוף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "התרנגולות חיו בחצר.",
+      "text_markdown": "התרנגולות חיו בחצר.",
+      "tts": {
+        "text": "התרנגולות חיו בחצר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הן הטילו ביצים בבוקר, וגם סיפקו את ארוחת יום ראשון.",
+      "text_markdown": "הן הטילו ביצים בבוקר, וגם סיפקו את ארוחת יום ראשון.",
+      "tts": {
+        "text": "הן הטילו ביצים בבוקר, וגם סיפקו את ארוחת יום ראשון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עוף מטוגן הוא המנה הדרומית המפורסמת ביותר.",
+      "text_markdown": "עוף מטוגן הוא המנה הדרומית המפורסמת ביותר.",
+      "tts": {
+        "text": "עוף מטוגן הוא המנה הדרומית המפורסמת ביותר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מגלגלים את העוף בקמח, מלח, ופלפל.",
+      "text_markdown": "מגלגלים את העוף בקמח, מלח, ופלפל.",
+      "tts": {
+        "text": "מגלגלים את העוף בקמח, מלח, ופלפל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ואז מכניסים אותו לשמן חם.",
+      "text_markdown": "ואז מכניסים אותו לשמן חם.",
+      "tts": {
+        "text": "ואז מכניסים אותו לשמן חם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "העור נעשה פריך וזהוב.",
+      "text_markdown": "העור נעשה פריך וזהוב.",
+      "tts": {
+        "text": "העור נעשה פריך וזהוב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שפמנון חי בנהרות ובאגמים.",
+      "text_markdown": "שפמנון חי בנהרות ובאגמים.",
+      "tts": {
+        "text": "שפמנון חי בנהרות ובאגמים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "טבחים דרומיים מגלגלים את השפמנון בקמח תירס ומטגנים אותו.",
+      "text_markdown": "טבחים דרומיים מגלגלים את השפמנון בקמח תירס ומטגנים אותו.",
+      "tts": {
+        "text": "טבחים דרומיים מגלגלים את השפמנון בקמח תירס ומטגנים אותו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "אוכלים אותו עם האש פאפיז, שהם כדורים קטנים של קמח תירס מטוגן.",
+      "text_markdown": "אוכלים אותו עם האש פאפיז, שהם כדורים קטנים של קמח תירס מטוגן.",
+      "tts": {
+        "text": "אוכלים אותו עם האש פאפיז, שהם כדורים קטנים של קמח תירס מטוגן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "פרק 3 — הבשרים והדגים",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "השם מצחיק, אבל האוכל רציני.",
+      "text_markdown": "השם מצחיק, אבל האוכל רציני.",
+      "tts": {
+        "text": "השם מצחיק, אבל האוכל רציני.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 4 — דרכי הבישול",
+      "text_markdown": "פרק 4 — דרכי הבישול"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוב אוכל הנשמה נשען על שלוש דרכי בישול, טיגון, בישול איטי, ועישון.",
+      "text_markdown": "רוב אוכל הנשמה נשען על שלוש דרכי בישול, טיגון, בישול איטי, ועישון.",
+      "tts": {
+        "text": "רוב אוכל הנשמה נשען על שלוש דרכי בישול, טיגון, בישול איטי, ועישון.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מטגנים במחבת כבדה מברזל יצוק.",
+      "text_markdown": "מטגנים במחבת כבדה מברזל יצוק.",
+      "tts": {
+        "text": "מטגנים במחבת כבדה מברזל יצוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ברזל יצוק שומר חום לזמן רב.",
+      "text_markdown": "ברזל יצוק שומר חום לזמן רב.",
+      "tts": {
+        "text": "ברזל יצוק שומר חום לזמן רב.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מחבת טובה מבוגרת יותר מהטבח.",
+      "text_markdown": "מחבת טובה מבוגרת יותר מהטבח.",
+      "tts": {
+        "text": "מחבת טובה מבוגרת יותר מהטבח.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "היא עוברת מאם לבת.",
+      "text_markdown": "היא עוברת מאם לבת.",
+      "tts": {
+        "text": "היא עוברת מאם לבת.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "את הבישול האיטי עושים בסיר גדול בחלק האחורי של הכיריים.",
+      "text_markdown": "את הבישול האיטי עושים בסיר גדול בחלק האחורי של הכיריים.",
+      "tts": {
+        "text": "את הבישול האיטי עושים בסיר גדול בחלק האחורי של הכיריים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "עלי ירק נכנסים לסיר לשעתיים או שלוש.",
+      "text_markdown": "עלי ירק נכנסים לסיר לשעתיים או שלוש.",
+      "tts": {
+        "text": "עלי ירק נכנסים לסיר לשעתיים או שלוש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מכניסים פנימה חתיכה של בשר חזיר מעושן בשביל הטעם.",
+      "text_markdown": "מכניסים פנימה חתיכה של בשר חזיר מעושן בשביל הטעם.",
+      "tts": {
+        "text": "מכניסים פנימה חתיכה של בשר חזיר מעושן בשביל הטעם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "המים נהפכים לציר כהה ועשיר.",
+      "text_markdown": "המים נהפכים לציר כהה ועשיר.",
+      "tts": {
+        "text": "המים נהפכים לציר כהה ועשיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "לציר הזה קוראים \"פוט ליקר\", ויוצקים אותו על לחם תירס.",
+      "text_markdown": "לציר הזה קוראים \"פוט ליקר\", ויוצקים אותו על לחם תירס.",
+      "tts": {
+        "text": "לציר הזה קוראים \"פוט ליקר\", ויוצקים אותו על לחם תירס.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עישון קורה בחוץ, במעשנה או בחבית.",
+      "text_markdown": "עישון קורה בחוץ, במעשנה או בחבית.",
+      "tts": {
+        "text": "עישון קורה בחוץ, במעשנה או בחבית.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "העץ נשרף לאט מתחת לבשר.",
+      "text_markdown": "העץ נשרף לאט מתחת לבשר.",
+      "tts": {
+        "text": "העץ נשרף לאט מתחת לבשר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "עץ היקורי הוא המועדף.",
+      "text_markdown": "עץ היקורי הוא המועדף.",
+      "tts": {
+        "text": "עץ היקורי הוא המועדף.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "העשן צובע את הבשר בחום ונותן לו טעם עמוק.",
+      "text_markdown": "העשן צובע את הבשר בחום ונותן לו טעם עמוק.",
+      "tts": {
+        "text": "העשן צובע את הבשר בחום ונותן לו טעם עמוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "כתף חזיר מתעשנת שעות רבות, לפעמים יום שלם.",
+      "text_markdown": "כתף חזיר מתעשנת שעות רבות, לפעמים יום שלם.",
+      "tts": {
+        "text": "כתף חזיר מתעשנת שעות רבות, לפעמים יום שלם.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "פרק 4 — דרכי הבישול",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במטבח דרומי טוב יש אש, זמן, ותשומת לב.",
+      "text_markdown": "במטבח דרומי טוב יש אש, זמן, ותשומת לב.",
+      "tts": {
+        "text": "במטבח דרומי טוב יש אש, זמן, ותשומת לב.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 5 — ברביקיו אזורי",
+      "text_markdown": "פרק 5 — ברביקיו אזורי"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בדרום, \"ברביקיו\" פירושו בשר שמתבשל לאט בעשן עץ.",
+      "text_markdown": "בדרום, \"ברביקיו\" פירושו בשר שמתבשל לאט בעשן עץ.",
+      "tts": {
+        "text": "בדרום, \"ברביקיו\" פירושו בשר שמתבשל לאט בעשן עץ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לכל אזור יש דרך משלו.",
+      "text_markdown": "לכל אזור יש דרך משלו.",
+      "tts": {
+        "text": "לכל אזור יש דרך משלו.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקרוליינות, ברביקיו הוא בשר חזיר.",
+      "text_markdown": "בקרוליינות, ברביקיו הוא בשר חזיר.",
+      "tts": {
+        "text": "בקרוליינות, ברביקיו הוא בשר חזיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "בחלק המזרחי של קרוליינה הצפונית, הרוטב עשוי מחומץ ומפלפל.",
+      "text_markdown": "בחלק המזרחי של קרוליינה הצפונית, הרוטב עשוי מחומץ ומפלפל.",
+      "tts": {
+        "text": "בחלק המזרחי של קרוליינה הצפונית, הרוטב עשוי מחומץ ומפלפל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא דליל ועוקצני.",
+      "text_markdown": "הוא דליל ועוקצני.",
+      "tts": {
+        "text": "הוא דליל ועוקצני.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "בקרוליינה הדרומית, הרוטב צהוב ומבוסס על חרדל.",
+      "text_markdown": "בקרוליינה הדרומית, הרוטב צהוב ומבוסס על חרדל.",
+      "tts": {
+        "text": "בקרוליינה הדרומית, הרוטב צהוב ומבוסס על חרדל.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "הוא קצת מתוק.",
+      "text_markdown": "הוא קצת מתוק.",
+      "tts": {
+        "text": "הוא קצת מתוק.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בממפיס, במדינת טנסי, הבשר הוא צלעות חזיר.",
+      "text_markdown": "בממפיס, במדינת טנסי, הבשר הוא צלעות חזיר.",
+      "tts": {
+        "text": "בממפיס, במדינת טנסי, הבשר הוא צלעות חזיר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "משפשפים את הצלעות בתערובת יבשה של מלח, פלפל, והרבה תבלינים.",
+      "text_markdown": "משפשפים את הצלעות בתערובת יבשה של מלח, פלפל, והרבה תבלינים.",
+      "tts": {
+        "text": "משפשפים את הצלעות בתערובת יבשה של מלח, פלפל, והרבה תבלינים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הבשר הוא הכוכב, והרוטב משני.",
+      "text_markdown": "הבשר הוא הכוכב, והרוטב משני.",
+      "tts": {
+        "text": "הבשר הוא הכוכב, והרוטב משני.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בטקסס, ברביקיו הוא בשר בקר.",
+      "text_markdown": "בטקסס, ברביקיו הוא בשר בקר.",
+      "tts": {
+        "text": "בטקסס, ברביקיו הוא בשר בקר.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הנתח נקרא בריסקט.",
+      "text_markdown": "הנתח נקרא בריסקט.",
+      "tts": {
+        "text": "הנתח נקרא בריסקט.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מעשנים אותו שתים עשרה עד ארבע עשרה שעות מעל עץ אלון.",
+      "text_markdown": "מעשנים אותו שתים עשרה עד ארבע עשרה שעות מעל עץ אלון.",
+      "tts": {
+        "text": "מעשנים אותו שתים עשרה עד ארבע עשרה שעות מעל עץ אלון.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "כשהוא עשוי כמו שצריך, אפשר לפרק אותו עם האצבעות.",
+      "text_markdown": "כשהוא עשוי כמו שצריך, אפשר לפרק אותו עם האצבעות.",
+      "tts": {
+        "text": "כשהוא עשוי כמו שצריך, אפשר לפרק אותו עם האצבעות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בקנזס סיטי, ברביקיו הוא הרבה סוגי בשר, חזיר, בקר, עוף, ואפילו נקניק.",
+      "text_markdown": "בקנזס סיטי, ברביקיו הוא הרבה סוגי בשר, חזיר, בקר, עוף, ואפילו נקניק.",
+      "tts": {
+        "text": "בקנזס סיטי, ברביקיו הוא הרבה סוגי בשר, חזיר, בקר, עוף, ואפילו נקניק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הרוטב סמיך, מתוק, ואדום, ומכינים אותו מעגבנייה ומולסה.",
+      "text_markdown": "הרוטב סמיך, מתוק, ואדום, ומכינים אותו מעגבנייה ומולסה.",
+      "tts": {
+        "text": "הרוטב סמיך, מתוק, ואדום, ומכינים אותו מעגבנייה ומולסה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "פרק 5 — ברביקיו אזורי",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מפת הברביקיו הדרומי היא מפה של אזורים ושל נהרות.",
+      "text_markdown": "מפת הברביקיו הדרומי היא מפה של אזורים ושל נהרות.",
+      "tts": {
+        "text": "מפת הברביקיו הדרומי היא מפה של אזורים ושל נהרות.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 6 — הצלחת הקלאסית",
+      "text_markdown": "פרק 6 — הצלחת הקלאסית"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צלחת של ארוחת יום ראשון מלאה.",
+      "text_markdown": "צלחת של ארוחת יום ראשון מלאה.",
+      "tts": {
+        "text": "צלחת של ארוחת יום ראשון מלאה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באמצע יש עוף מטוגן.",
+      "text_markdown": "באמצע יש עוף מטוגן.",
+      "tts": {
+        "text": "באמצע יש עוף מטוגן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ליד העוף יש תלולית של פירה עם רוטב חום.",
+      "text_markdown": "ליד העוף יש תלולית של פירה עם רוטב חום.",
+      "tts": {
+        "text": "ליד העוף יש תלולית של פירה עם רוטב חום.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בצד אחד יש ערימה של עלי קולארד, שהתבשלו לאט עם בשר חזיר מעושן.",
+      "text_markdown": "בצד אחד יש ערימה של עלי קולארד, שהתבשלו לאט עם בשר חזיר מעושן.",
+      "tts": {
+        "text": "בצד אחד יש ערימה של עלי קולארד, שהתבשלו לאט עם בשר חזיר מעושן.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "העלים כהים ורכים.",
+      "text_markdown": "העלים כהים ורכים.",
+      "tts": {
+        "text": "העלים כהים ורכים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בצד השני יש מקרוני וגבינה, אפויים עד שהחלק העליון זהוב ופריך.",
+      "text_markdown": "בצד השני יש מקרוני וגבינה, אפויים עד שהחלק העליון זהוב ופריך.",
+      "tts": {
+        "text": "בצד השני יש מקרוני וגבינה, אפויים עד שהחלק העליון זהוב ופריך.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "הרבה טבחים מוסיפים למעלה שכבת גבינה.",
+      "text_markdown": "הרבה טבחים מוסיפים למעלה שכבת גבינה.",
+      "tts": {
+        "text": "הרבה טבחים מוסיפים למעלה שכבת גבינה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "על השולחן יש לחם תירס.",
+      "text_markdown": "על השולחן יש לחם תירס.",
+      "tts": {
+        "text": "על השולחן יש לחם תירס.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לחם תירס עשוי מקמח תירס צהוב ונאפה במחבת ברזל חמה.",
+      "text_markdown": "לחם תירס עשוי מקמח תירס צהוב ונאפה במחבת ברזל חמה.",
+      "tts": {
+        "text": "לחם תירס עשוי מקמח תירס צהוב ונאפה במחבת ברזל חמה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא כבד, קצת מתוק, ומושלם עם חמאה.",
+      "text_markdown": "הוא כבד, קצת מתוק, ומושלם עם חמאה.",
+      "tts": {
+        "text": "הוא כבד, קצת מתוק, ומושלם עם חמאה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ולשתייה יש תה מתוק.",
+      "text_markdown": "ולשתייה יש תה מתוק.",
+      "tts": {
+        "text": "ולשתייה יש תה מתוק.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "תה מתוק הוא תה שחור, חלוט חזק ומעורבב עם סוכר כשהוא עוד חם.",
+      "text_markdown": "תה מתוק הוא תה שחור, חלוט חזק ומעורבב עם סוכר כשהוא עוד חם.",
+      "tts": {
+        "text": "תה מתוק הוא תה שחור, חלוט חזק ומעורבב עם סוכר כשהוא עוד חם.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "מגישים אותו קר על קרח.",
+      "text_markdown": "מגישים אותו קר על קרח.",
+      "tts": {
+        "text": "מגישים אותו קר על קרח.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אחרי הארוחה מגיע הפאי.",
+      "text_markdown": "אחרי הארוחה מגיע הפאי.",
+      "tts": {
+        "text": "אחרי הארוחה מגיע הפאי.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "פאי בטטה הוא הפאי הכי דרומי שיש.",
+      "text_markdown": "פאי בטטה הוא הפאי הכי דרומי שיש.",
+      "tts": {
+        "text": "פאי בטטה הוא הפאי הכי דרומי שיש.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "הוא חום, חלק, וחמים עם קינמון ואגוז מוסקט.",
+      "text_markdown": "הוא חום, חלק, וחמים עם קינמון ואגוז מוסקט.",
+      "tts": {
+        "text": "הוא חום, חלק, וחמים עם קינמון ואגוז מוסקט.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "פרק 6 — הצלחת הקלאסית",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זאת הצלחת הקלאסית.",
+      "text_markdown": "זאת הצלחת הקלאסית.",
+      "tts": {
+        "text": "זאת הצלחת הקלאסית.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "פרק 7 — השולחן",
+      "text_markdown": "פרק 7 — השולחן"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ארוחה דרומית קורית סביב השולחן, כשכולם ביחד.",
+      "text_markdown": "ארוחה דרומית קורית סביב השולחן, כשכולם ביחד.",
+      "tts": {
+        "text": "ארוחה דרומית קורית סביב השולחן, כשכולם ביחד.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "את האוכל מביאים לשולחן בקערות גדולות ועל צלחות גדולות.",
+      "text_markdown": "את האוכל מביאים לשולחן בקערות גדולות ועל צלחות גדולות.",
+      "tts": {
+        "text": "את האוכל מביאים לשולחן בקערות גדולות ועל צלחות גדולות.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "לזה קוראים \"פמילי סטייל\". כל אחד מעביר את הקערה לבא אחריו.",
+      "text_markdown": "לזה קוראים \"פמילי סטייל\". כל אחד מעביר את הקערה לבא אחריו.",
+      "tts": {
+        "text": "לזה קוראים \"פמילי סטייל\". כל אחד מעביר את הקערה לבא אחריו.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כל אחד לוקח מה שהוא רוצה.",
+      "text_markdown": "כל אחד לוקח מה שהוא רוצה.",
+      "tts": {
+        "text": "כל אחד לוקח מה שהוא רוצה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המזלגות והסכינים פשוטים.",
+      "text_markdown": "המזלגות והסכינים פשוטים.",
+      "tts": {
+        "text": "המזלגות והסכינים פשוטים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אין סדר מיוחד.",
+      "text_markdown": "אין סדר מיוחד.",
+      "tts": {
+        "text": "אין סדר מיוחד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "את העוף אוכלים עם מזלג, או שמרימים אותו בידיים.",
+      "text_markdown": "את העוף אוכלים עם מזלג, או שמרימים אותו בידיים.",
+      "tts": {
+        "text": "את העוף אוכלים עם מזלג, או שמרימים אותו בידיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "שתי הדרכים בסדר גמור.",
+      "text_markdown": "שתי הדרכים בסדר גמור.",
+      "tts": {
+        "text": "שתי הדרכים בסדר גמור.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לחם תירס שוברים ביד, אף פעם לא חותכים בסכין.",
+      "text_markdown": "לחם תירס שוברים ביד, אף פעם לא חותכים בסכין.",
+      "tts": {
+        "text": "לחם תירס שוברים ביד, אף פעם לא חותכים בסכין.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לפני הארוחה, מישהו אומר לעיתים קרובות תפילה קצרה.",
+      "text_markdown": "לפני הארוחה, מישהו אומר לעיתים קרובות תפילה קצרה.",
+      "tts": {
+        "text": "לפני הארוחה, מישהו אומר לעיתים קרובות תפילה קצרה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "מודים לאל על האוכל ועל הטבחים.",
+      "text_markdown": "מודים לאל על האוכל ועל הטבחים.",
+      "tts": {
+        "text": "מודים לאל על האוכל ועל הטבחים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם אתה אורח, יגידו לך לקחת עוד, ועוד, ועוד.",
+      "text_markdown": "אם אתה אורח, יגידו לך לקחת עוד, ועוד, ועוד.",
+      "tts": {
+        "text": "אם אתה אורח, יגידו לך לקחת עוד, ועוד, ועוד.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "כדאי להגיד כן לפחות פעמיים.",
+      "text_markdown": "כדאי להגיד כן לפחות פעמיים.",
+      "tts": {
+        "text": "כדאי להגיד כן לפחות פעמיים.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "לא יוצאים רעבים.",
+      "text_markdown": "לא יוצאים רעבים.",
+      "tts": {
+        "text": "לא יוצאים רעבים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בסוף הארוחה, אף אחד לא ממהר לקום.",
+      "text_markdown": "בסוף הארוחה, אף אחד לא ממהר לקום.",
+      "tts": {
+        "text": "בסוף הארוחה, אף אחד לא ממהר לקום.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "פרק 7 — השולחן",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "השיחה היא חצי מהארוחה.",
+      "text_markdown": "השיחה היא חצי מהארוחה.",
+      "tts": {
+        "text": "השיחה היא חצי מהארוחה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "על הספר הזה",
+      "text_markdown": "על הספר הזה"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה הספר הראשון בסדרת \"אוכל מהעולם\".",
+      "text_markdown": "זה הספר הראשון בסדרת \"אוכל מהעולם\".",
+      "tts": {
+        "text": "זה הספר הראשון בסדרת \"אוכל מהעולם\".",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "אני, חברה שלך Kym, מקריאה אותו בקול.",
+      "text_markdown": "קים מקריאה אותו בקול.",
+      "tts": {
+        "text": "אני, חברה שלך Kym, מקריאה אותו בקול.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "כל משפט קצר וברור, כדי שתוכל לקרוא יחד איתו בכל שפה.",
+      "text_markdown": "כל משפט קצר וברור, כדי שתוכל לקרוא יחד איתו בכל שפה.",
+      "tts": {
+        "text": "כל משפט קצר וברור, כדי שתוכל לקרוא יחד איתו בכל שפה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם אתה רוצה לשמוע איך משפט נשמע בשפה אחרת, האזן לאותו ספר באותה שפה.",
+      "text_markdown": "אם אתה רוצה לשמוע איך משפט נשמע בשפה אחרת, האזן לאותו ספר באותה שפה.",
+      "tts": {
+        "text": "אם אתה רוצה לשמוע איך משפט נשמע בשפה אחרת, האזן לאותו ספר באותה שפה.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "המילים שעל העמוד יתאימו למה שאתה שומע.",
+      "text_markdown": "המילים שעל העמוד יתאימו למה שאתה שומע.",
+      "tts": {
+        "text": "המילים שעל העמוד יתאימו למה שאתה שומע.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ככה לומדים.",
+      "text_markdown": "ככה לומדים.",
+      "tts": {
+        "text": "ככה לומדים.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "על הספר הזה",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עכשיו לך למצוא אוכל טוב, וחבר לחלוק איתו את הארוחה.",
+      "text_markdown": "עכשיו לך למצוא אוכל טוב, וחבר לחלוק איתו את הארוחה.",
+      "tts": {
+        "text": "עכשיו לך למצוא אוכל טוב, וחבר לחלוק איתו את הארוחה.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "uk",
+  "total_segments": 197,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ласкаво просимо до AI This Week.",
+      "text_markdown": "Ласкаво просимо до AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Ласкаво просимо до AI This Week.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Мене звати Вінді.",
+      "text_markdown": "Мене звати Вінді.",
+      "title": "",
+      "tts": {
+        "text": "Мене звати Вінді.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Зі мною, як завжди, Рон.",
+      "text_markdown": "Зі мною, як завжди, Рон.",
+      "title": "",
+      "tts": {
+        "text": "Зі мною, як завжди, Рон.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Радий бути тут, Вінді.",
+      "text_markdown": "Радий бути тут, Вінді.",
+      "title": "",
+      "tts": {
+        "text": "Радий бути тут, Вінді.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Сьогодні середа, 3 червня 2026 року.",
+      "text_markdown": "Сьогодні середа, 3 червня 2026 року.",
+      "title": "",
+      "tts": {
+        "text": "Сьогодні середа, третє червня дві тисячі двадцять шостого року.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Це був тихий тиждень для маркетингу і гучний тиждень для апаратного забезпечення.",
+      "text_markdown": "Це був тихий тиждень для маркетингу і гучний тиждень для апаратного забезпечення.",
+      "title": "",
+      "tts": {
+        "text": "Це був тихий тиждень для маркетингу і гучний тиждень для апаратного забезпечення.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Форма заголовків була незвичайною.",
+      "text_markdown": "Форма заголовків була незвичайною.",
+      "title": "",
+      "tts": {
+        "text": "Форма заголовків була незвичайною.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Основна доповідь великої лабораторії, конфіденційна заявка, невеликий комп'ютер з великим числом на коробці.",
+      "text_markdown": "Основна доповідь великої лабораторії, конфіденційна заявка, невеликий комп'ютер з великим числом на коробці.",
+      "title": "",
+      "tts": {
+        "text": "Основна доповідь великої лабораторії, конфіденційна заявка, невеликий комп'ютер з великим числом на коробці.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Далі — що змінилося у відкритих вагах, на чолі з новою архітектурою уваги та відкритою моделлю NVIDIA.",
+      "text_markdown": "Далі — що змінилося у відкритих вагах, на чолі з новою архітектурою уваги та відкритою моделлю NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Далі — що змінилося у відкритих вагах, на чолі з новою архітектурою уваги та відкритою моделлю NVIDIA.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Де опинилися таблиці лідерів, і більша історія під ними про те, як ми взагалі довіряємо оцінкам.",
+      "text_markdown": "Де опинилися таблиці лідерів, і більша історія під ними про те, як ми взагалі довіряємо оцінкам.",
+      "title": "",
+      "tts": {
+        "text": "Де опинилися таблиці лідерів, і більша історія під ними про те, як ми взагалі довіряємо оцінкам.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Швидкий огляд заголовків, за якими ви можете діяти цими вихідними.",
+      "text_markdown": "Швидкий огляд заголовків, за якими ви можете діяти цими вихідними.",
+      "title": "",
+      "tts": {
+        "text": "Швидкий огляд заголовків, за якими ви можете діяти цими вихідними.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Наша головна історія: саморобна установка виросла — прикордонний інференс тепер є річчю на вашому столі.",
+      "text_markdown": "Наша головна історія: саморобна установка виросла — прикордонний інференс тепер є річчю на вашому столі.",
+      "title": "",
+      "tts": {
+        "text": "Наша головна історія: саморобна установка виросла — прикордонний інференс тепер є річчю на вашому столі.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "І концепція тижня — спекулятивне декодування — трюк, який змушує велику модель на маленькій карті відчуватися швидкою.",
+      "text_markdown": "І концепція тижня — спекулятивне декодування — трюк, який змушує велику модель на маленькій карті відчуватися швидкою.",
+      "title": "",
+      "tts": {
+        "text": "І концепція тижня — спекулятивне декодування — трюк, який змушує велику модель на маленькій карті відчуватися швидкою.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Роне, почнімо у світі відкритих ваг.",
+      "text_markdown": "Роне, почнімо у світі відкритих ваг.",
+      "title": "",
+      "tts": {
+        "text": "Роне, почнімо у світі відкритих ваг.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Де опинився тиждень?",
+      "text_markdown": "Де опинився тиждень?",
+      "title": "",
+      "tts": {
+        "text": "Де опинився тиждень?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Цього тижня відкрита історія була про нові форми, а не нові розміри.",
+      "text_markdown": "Цього тижня відкрита історія була про нові форми, а не нові розміри.",
+      "title": "",
+      "tts": {
+        "text": "Цього тижня відкрита історія була про нові форми, а не нові розміри.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Дві архітектурно цікаві моделі вийшли в один день, 1 червня.",
+      "text_markdown": "Дві архітектурно цікаві моделі вийшли в один день, 1 червня.",
+      "title": "",
+      "tts": {
+        "text": "Дві архітектурно цікаві моделі вийшли в один день, першого червня.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Проведи нас через першу.",
+      "text_markdown": "Проведи нас через першу.",
+      "title": "",
+      "tts": {
+        "text": "Проведи нас через першу.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "MiniMax випустила M3.",
+      "text_markdown": "MiniMax випустила M3.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax випустила Ем три.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Він використовує новий дизайн уваги, який вони називають MSA, скорочення від MiniMax Sparse Attention.",
+      "text_markdown": "Він використовує новий дизайн уваги, який вони називають MSA, скорочення від MiniMax Sparse Attention.",
+      "title": "",
+      "tts": {
+        "text": "Він використовує новий дизайн уваги, який вони називають Ем Ес Ей, скорочення від MiniMax Sparse Attention.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Пропозиція — контекст на один мільйон токенів, приблизно в дев'ять разів швидше попереднє заповнення та в п'ятнадцять разів швидше декодування порівняно з їхньою попередньою моделлю такої ж довжини.",
+      "text_markdown": "Пропозиція — контекст на один мільйон токенів, приблизно в дев'ять разів швидше попереднє заповнення та в п'ятнадцять разів швидше декодування порівняно з їхньою попередньою моделлю такої ж довжини.",
+      "title": "",
+      "tts": {
+        "text": "Пропозиція — контекст на один мільйон токенів, приблизно в дев'ять разів швидше попереднє заповнення та в п'ятнадцять разів швидше декодування порівняно з їхньою попередньою моделлю такої ж довжини.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Простими словами про те, що насправді робить розріджена увага.",
+      "text_markdown": "Простими словами про те, що насправді робить розріджена увага.",
+      "title": "",
+      "tts": {
+        "text": "Простими словами про те, що насправді робить розріджена увага.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Звичайна увага порівнює кожен токен з кожним іншим токеном, що робить довгий контекст таким дорогим.",
+      "text_markdown": "Звичайна увага порівнює кожен токен з кожним іншим токеном, що робить довгий контекст таким дорогим.",
+      "title": "",
+      "tts": {
+        "text": "Звичайна увага порівнює кожен токен з кожним іншим токеном, що робить довгий контекст таким дорогим.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Розріджена увага попередньо фільтрує контекст на блоки і виконує повне порівняння лише для тих блоків, які здаються релевантними поточному питанню.",
+      "text_markdown": "Розріджена увага попередньо фільтрує контекст на блоки і виконує повне порівняння лише для тих блоків, які здаються релевантними поточному питанню.",
+      "title": "",
+      "tts": {
+        "text": "Розріджена увага попередньо фільтрує контекст на блоки і виконує повне порівняння лише для тих блоків, які здаються релевантними поточному питанню.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ви отримуєте більшу частину якості за частку обчислювальних ресурсів.",
+      "text_markdown": "Ви отримуєте більшу частину якості за частку обчислювальних ресурсів.",
+      "title": "",
+      "tts": {
+        "text": "Ви отримуєте більшу частину якості за частку обчислювальних ресурсів.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "А що щодо заявлених бенчмарків?",
+      "text_markdown": "А що щодо заявлених бенчмарків?",
+      "title": "",
+      "tts": {
+        "text": "А що щодо заявлених бенчмарків?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "MiniMax заявляє 59% на SWE-bench Pro, що поставило б її попереду GPT-5.5 та Gemini 3.5 Pro на цій одній дошці.",
+      "text_markdown": "MiniMax заявляє 59% на SWE-bench Pro, що поставило б її попереду GPT-5.5 та Gemini 3.5 Pro на цій одній дошці.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax заявляє п'ятдесят дев'ять відсотків на SWE-bench Pro, що поставило б її попереду ДжиПіТі п'ять крапка п'ять та ДжемІні три крапка п'ять Про на цій одній дошці.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Я скажу, що це заяви — це власна таблиця показників постачальника, а не незалежний запуск.",
+      "text_markdown": "Я скажу, що це заяви — це власна таблиця показників постачальника, а не незалежний запуск.",
+      "title": "",
+      "tts": {
+        "text": "Я скажу, що це заяви — це власна таблиця показників постачальника, а не незалежний запуск.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Відкриті ваги також?",
+      "text_markdown": "Відкриті ваги також?",
+      "title": "",
+      "tts": {
+        "text": "Відкриті ваги також?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, M3 позиціонується як відкрита вага; API працює з першого дня, а ваги незабаром з'являться на Hugging Face.",
+      "text_markdown": "Так, M3 позиціонується як відкрита вага; API працює з першого дня, а ваги незабаром з'являться на Hugging Face.",
+      "title": "",
+      "tts": {
+        "text": "Так, Ем три позиціонується як відкрита вага; API працює з першого дня, а ваги незабаром з'являться на Hugging Face.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Для майстра-саморобника цікава ставка — це архітектура, а не оцінка.",
+      "text_markdown": "Для майстра-саморобника цікава ставка — це архітектура, а не оцінка.",
+      "title": "",
+      "tts": {
+        "text": "Для майстра-саморобника цікава ставка — це архітектура, а не оцінка.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Якщо MSA витримає, кожна інша відкрита лабораторія скопіює цю форму протягом місяців.",
+      "text_markdown": "Якщо MSA витримає, кожна інша відкрита лабораторія скопіює цю форму протягом місяців.",
+      "title": "",
+      "tts": {
+        "text": "Якщо М С А витримає, кожна інша відкрита лабораторія скопіює цю форму протягом місяців.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "А друга модель?",
+      "text_markdown": "А друга модель?",
+      "title": "",
+      "tts": {
+        "text": "А друга модель?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "NVIDIA тихо випустила Nemotron 3 Ultra з відкритим вихідним кодом.",
+      "text_markdown": "NVIDIA тихо випустила Nemotron 3 Ultra з відкритим вихідним кодом.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA тихо випустила Nemotron три Ultra з відкритим вихідним кодом.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це суміш експертів із п'ятсот п'ятдесятьма мільярдами параметрів, з приблизно п'ятдесятьма п'ятьма мільярдами активних на токен.",
+      "text_markdown": "Це суміш експертів із п'ятсот п'ятдесятьма мільярдами параметрів, з приблизно п'ятдесятьма п'ятьма мільярдами активних на токен.",
+      "title": "",
+      "tts": {
+        "text": "Це суміш експертів із п'ятсот п'ятдесятьма мільярдами параметрів, з приблизно п'ятдесятьма п'ятьма мільярдами активних на токен.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Основою є гібрид Mamba-Transformer, а не чистий Transformer.",
+      "text_markdown": "Основою є гібрид Mamba-Transformer, а не чистий Transformer.",
+      "title": "",
+      "tts": {
+        "text": "Основою є гібрид Мамба-Трансформер, а не чистий Трансформер.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Простою мовою про Mamba.",
+      "text_markdown": "Простою мовою про Mamba.",
+      "title": "",
+      "tts": {
+        "text": "Простою мовою про Мамба.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Шари Mamba обробляють довгі послідовності з субквадратичним масштабуванням, що є витонченим способом сказати, що вони стають дешевшими за токен зі зростанням контексту.",
+      "text_markdown": "Шари Mamba обробляють довгі послідовності з субквадратичним масштабуванням, що є витонченим способом сказати, що вони стають дешевшими за токен зі зростанням контексту.",
+      "title": "",
+      "tts": {
+        "text": "Шари Мамба обробляють довгі послідовності з субквадратичним масштабуванням, що є витонченим способом сказати, що вони стають дешевшими за токен зі зростанням контексту.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "NVIDIA зберегла кілька шарів уваги в стеку, щоб забезпечити точне відтворення для таких речей, як відповіді на запитання до довгих документів.",
+      "text_markdown": "NVIDIA зберегла кілька шарів уваги в стеку, щоб забезпечити точне відтворення для таких речей, як відповіді на запитання до довгих документів.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA зберегла кілька шарів уваги в стеку, щоб забезпечити точне відтворення для таких речей, як відповіді на запитання до довгих документів.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це той тип гібрида, який тихо перемагав у дослідженнях протягом року.",
+      "text_markdown": "Це той тип гібрида, який тихо перемагав у дослідженнях протягом року.",
+      "title": "",
+      "tts": {
+        "text": "Це той тип гібрида, який тихо перемагав у дослідженнях протягом року.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "А як щодо ліцензії?",
+      "text_markdown": "А як щодо ліцензії?",
+      "title": "",
+      "tts": {
+        "text": "А як щодо ліцензії?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Власна ліцензія NVIDIA Open Model License, комерційне використання дозволено.",
+      "text_markdown": "Власна ліцензія NVIDIA Open Model License, комерційне використання дозволено.",
+      "title": "",
+      "tts": {
+        "text": "Власна ліцензія NVIDIA Open Model License, комерційне використання дозволено.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Все було випущено разом, включаючи ваги, попередньо навчені контрольні точки, квантування NVFP4 та рецепти навчання.",
+      "text_markdown": "Все було випущено разом, включаючи ваги, попередньо навчені контрольні точки, квантування NVFP4 та рецепти навчання.",
+      "title": "",
+      "tts": {
+        "text": "Все було випущено разом, включаючи ваги, попередньо навчені контрольні точки, квантування ен ві еф пі чотири та рецепти навчання.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це щедріший пакет, ніж більшість відкритих випусків.",
+      "text_markdown": "Це щедріший пакет, ніж більшість відкритих випусків.",
+      "title": "",
+      "tts": {
+        "text": "Це щедріший пакет, ніж більшість відкритих випусків.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "А розміщення в таблиці лідерів?",
+      "text_markdown": "А розміщення в таблиці лідерів?",
+      "title": "",
+      "tts": {
+        "text": "А розміщення в таблиці лідерів?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "В індексі Artificial Analysis Intelligence Nemotron 3 Ultra посідає сорок восьме місце.",
+      "text_markdown": "В індексі Artificial Analysis Intelligence Nemotron 3 Ultra посідає сорок восьме місце.",
+      "title": "",
+      "tts": {
+        "text": "В індексі Artificial Analysis Intelligence Nemotron три Ultra посідає сорок восьме місце.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це ставить його на дев'яте місце серед вісімдесяти дев'яти моделей, які вони відстежують, і попереду всіх інших відкритих моделей США.",
+      "text_markdown": "Це ставить його на дев'яте місце серед вісімдесяти дев'яти моделей, які вони відстежують, і попереду всіх інших відкритих моделей США.",
+      "title": "",
+      "tts": {
+        "text": "Це ставить його на дев'яте місце серед вісімдесяти дев'яти моделей, які вони відстежують, і попереду всіх інших відкритих моделей США.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Він також відстає від Kimi K2.6 від Moonshot, який має п'ятдесят чотири.",
+      "text_markdown": "Він також відстає від Kimi K2.6 від Moonshot, який має п'ятдесят чотири.",
+      "title": "",
+      "tts": {
+        "text": "Він також відстає від Kimi Кей два крапка шість від Moonshot, який має п'ятдесят чотири.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Тож навіть з усім цим, Китай все ще лідирує у відкритому доступі.",
+      "text_markdown": "Тож навіть з усім цим, Китай все ще лідирує у відкритому доступі.",
+      "title": "",
+      "tts": {
+        "text": "Тож навіть з усім цим, Китай все ще лідирує у відкритому доступі.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "За цим одним складеним показником, так, на шість пунктів.",
+      "text_markdown": "За цим одним складеним показником, так, на шість пунктів.",
+      "title": "",
+      "tts": {
+        "text": "За цим одним складеним показником, так, на шість пунктів.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це менша історія під більшою.",
+      "text_markdown": "Це менша історія під більшою.",
+      "title": "",
+      "tts": {
+        "text": "Це менша історія під більшою.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Щось подібне?",
+      "text_markdown": "Щось подібне?",
+      "title": "",
+      "tts": {
+        "text": "Щось подібне?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, NVIDIA також випустила Nemotron 3 Nano Omni.",
+      "text_markdown": "Так, NVIDIA також випустила Nemotron 3 Nano Omni.",
+      "title": "",
+      "tts": {
+        "text": "Так, NVIDIA також випустила Nemotron три Nano Omni.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це єдина модель зору, аудіо та мови, яка, як стверджується, приблизно в дев'ять разів ефективніша за аналогічні відкриті омні-моделі.",
+      "text_markdown": "Це єдина модель зору, аудіо та мови, яка, як стверджується, приблизно в дев'ять разів ефективніша за аналогічні відкриті омні-моделі.",
+      "title": "",
+      "tts": {
+        "text": "Це єдина модель зору, аудіо та мови, яка, як стверджується, приблизно в дев'ять разів ефективніша за аналогічні відкриті омні-моделі.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Він призначений для агентів на пристроях — телефонів, ноутбуків, невеликих робочих станцій.",
+      "text_markdown": "Він призначений для агентів на пристроях — телефонів, ноутбуків, невеликих робочих станцій.",
+      "title": "",
+      "tts": {
+        "text": "Він призначений для агентів на пристроях — телефонів, ноутбуків, невеликих робочих станцій.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Що ще з відкритого боку?",
+      "text_markdown": "Що ще з відкритого боку?",
+      "title": "",
+      "tts": {
+        "text": "Що ще з відкритого боку?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mistral Medium 3.5 з'явився в Microsoft Copilot Studio 28 травня.",
+      "text_markdown": "Mistral Medium 3.5 з'явився в Microsoft Copilot Studio 28 травня.",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium три крапка п'ять з'явився в Microsoft Copilot Studio двадцять восьмого травня.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це щільна модель зі ста двадцятьма вісьмома мільярдами параметрів і контекстом у двісті п'ятдесят шість тисяч токенів.",
+      "text_markdown": "Це щільна модель зі ста двадцятьма вісьмома мільярдами параметрів і контекстом у двісті п'ятдесят шість тисяч токенів.",
+      "title": "",
+      "tts": {
+        "text": "Це щільна модель зі ста двадцятьма вісьмома мільярдами параметрів і контекстом у двісті п'ятдесят шість тисяч токенів.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Чому це розміщення цікаве?",
+      "text_markdown": "Чому це розміщення цікаве?",
+      "title": "",
+      "tts": {
+        "text": "Чому це розміщення цікаве?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Тому що Microsoft тепер розповсюджує європейську модель, що не належить OpenAI, через власну платформу, з вбудованою резидентністю даних ЄС.",
+      "text_markdown": "Тому що Microsoft тепер розповсюджує європейську модель, що не належить OpenAI, через власну платформу, з вбудованою резидентністю даних ЄС.",
+      "title": "",
+      "tts": {
+        "text": "Тому що Microsoft тепер розповсюджує європейську модель, що не належить Оупен Ей Ай, через власну платформу, з вбудованою резидентністю даних ЄС.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Два роки тому таке речення було б немислимим.",
+      "text_markdown": "Два роки тому таке речення було б немислимим.",
+      "title": "",
+      "tts": {
+        "text": "Два роки тому таке речення було б немислимим.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Що ж відомо про Alibaba зараз?",
+      "text_markdown": "Що ж відомо про Alibaba зараз?",
+      "title": "",
+      "tts": {
+        "text": "Що ж відомо про Алібабу зараз?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Qwen 3.7 Plus з'явився 2 червня, але він доступний лише через API на платформі Bailian.",
+      "text_markdown": "Qwen 3.7 Plus з'явився 2 червня, але він доступний лише через API на платформі Bailian.",
+      "title": "",
+      "tts": {
+        "text": "Qwen три крапка сім Plus з'явився другого червня, але він доступний лише через API на платформі Bailian.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Відкрита лінійка Qwen все ще зупиняється на 3.6.",
+      "text_markdown": "Відкрита лінійка Qwen все ще зупиняється на 3.6.",
+      "title": "",
+      "tts": {
+        "text": "Відкрита лінійка Qwen все ще зупиняється на три крапка шість.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це підтверджує розкол, на який ми вказували минулого тижня — закритий флагман, відкритий середній рівень.",
+      "text_markdown": "Це підтверджує розкол, на який ми вказували минулого тижня — закритий флагман, відкритий середній рівень.",
+      "title": "",
+      "tts": {
+        "text": "Це підтверджує розкол, на який ми вказували минулого тижня — закритий флагман, відкритий середній рівень.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Такий самий сценарій, як Mistral використовує вже рік.",
+      "text_markdown": "Такий самий сценарій, як Mistral використовує вже рік.",
+      "title": "",
+      "tts": {
+        "text": "Такий самий сценарій, як Mistral використовує вже рік.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Дві швидкі ремарки, перш ніж ми продовжимо?",
+      "text_markdown": "Дві швидкі ремарки, перш ніж ми продовжимо?",
+      "title": "",
+      "tts": {
+        "text": "Дві швидкі ремарки, перш ніж ми продовжимо?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, це безумовно.",
+      "text_markdown": "Так, це безумовно.",
+      "title": "",
+      "tts": {
+        "text": "Так, це безумовно.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Китайські відкриті моделі все ще лідирують за обсягом токенів OpenRouter — такий самий результат, як і минулого тижня, без змін.",
+      "text_markdown": "Китайські відкриті моделі все ще лідирують за обсягом токенів OpenRouter — такий самий результат, як і минулого тижня, без змін.",
+      "title": "",
+      "tts": {
+        "text": "Китайські відкриті моделі все ще лідирують за обсягом токенів OpenRouter — такий самий результат, як і минулого тижня, без змін.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "А DeepSeek V4 запрацював на платформі Microsoft Foundry 28 травня, що просто означає більше місць, де його можна викликати.",
+      "text_markdown": "А DeepSeek V4 запрацював на платформі Microsoft Foundry 28 травня, що просто означає більше місць, де його можна викликати.",
+      "title": "",
+      "tts": {
+        "text": "А DeepSeek Ві чотири запрацював на платформі Microsoft Foundry двадцять восьмого травня, що просто означає більше місць, де його можна викликати.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Гаразд, перейдемо до таблиць лідерів.",
+      "text_markdown": "Гаразд, перейдемо до таблиць лідерів.",
+      "title": "",
+      "tts": {
+        "text": "Гаразд, перейдемо до таблиць лідерів.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Чи був цього тижня один великий прорив?",
+      "text_markdown": "Чи був цього тижня один великий прорив?",
+      "title": "",
+      "tts": {
+        "text": "Чи був цього тижня один великий прорив?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Був, і він закритий — Claude Opus 4.8, який Anthropic випустив 28 травня.",
+      "text_markdown": "Був, і він закритий — Claude Opus 4.8, який Anthropic випустив 28 травня.",
+      "title": "",
+      "tts": {
+        "text": "Був, і він закритий — Claude Opus чотири крапка вісім, який Anthropic випустив двадцять восьмого травня.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Він досягає 88.6 відсотка на SWE-bench Verified і 69.2 відсотка на SWE-bench Pro.",
+      "text_markdown": "Він досягає 88.6 відсотка на SWE-bench Verified і 69.2 відсотка на SWE-bench Pro.",
+      "title": "",
+      "tts": {
+        "text": "Він досягає вісімдесят вісім крапка шість відсотка на SWE-bench Verified і шістдесят дев'ять крапка два відсотка на SWE-bench Pro.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "І тепер він очолює Індекс штучного аналізу інтелекту за сукупним балом.",
+      "text_markdown": "І тепер він очолює Індекс штучного аналізу інтелекту за сукупним балом.",
+      "title": "",
+      "tts": {
+        "text": "І тепер він очолює Індекс штучного аналізу інтелекту за сукупним балом.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Вперше Anthropic очолив його.",
+      "text_markdown": "Вперше Anthropic очолив його.",
+      "title": "",
+      "tts": {
+        "text": "Вперше Anthropic очолив його.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, усе саме так.",
+      "text_markdown": "Так, усе саме так.",
+      "title": "",
+      "tts": {
+        "text": "Так, усе саме так.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "GPT-5.5 відстає на один пункт, а Gemini 3.5 Pro — на кілька пунктів позаду.",
+      "text_markdown": "GPT-5.5 відстає на один пункт, а Gemini 3.5 Pro — на кілька пунктів позаду.",
+      "title": "",
+      "tts": {
+        "text": "GPT п'ять крапка п'ять відстає на один пункт, а Gemini три крапка п'ять Pro — на кілька пунктів позаду.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Дуже щільно на вершині закритої групи.",
+      "text_markdown": "Дуже щільно на вершині закритої групи.",
+      "title": "",
+      "tts": {
+        "text": "Дуже щільно на вершині закритої групи.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Але справжня історія оцінки цього тижня була іншою.",
+      "text_markdown": "Але справжня історія оцінки цього тижня була іншою.",
+      "title": "",
+      "tts": {
+        "text": "Але справжня історія оцінки цього тижня була іншою.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, справжня історія — це цілісність.",
+      "text_markdown": "Так, справжня історія — це цілісність.",
+      "title": "",
+      "tts": {
+        "text": "Так, справжня історія — це цілісність.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "OpenAI фактично припинив звітувати про SWE-bench Verified.",
+      "text_markdown": "OpenAI фактично припинив звітувати про SWE-bench Verified.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI фактично припинив звітувати про SWE-bench Verified.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Аудит забруднення виявив, що приблизно 59 відсотків складних завдань мають хибні модульні тести, і моделі можуть дослівно відтворювати правильні патчі з навчальних даних.",
+      "text_markdown": "Аудит забруднення виявив, що приблизно 59 відсотків складних завдань мають хибні модульні тести, і моделі можуть дослівно відтворювати правильні патчі з навчальних даних.",
+      "title": "",
+      "tts": {
+        "text": "Аудит забруднення виявив, що приблизно п'ятдесят дев'ять відсотків складних завдань мають хибні модульні тести, і моделі можуть дослівно відтворювати правильні патчі з навчальних даних.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Отже, високий бал вимірював пам'ять.",
+      "text_markdown": "Отже, високий бал вимірював пам'ять.",
+      "title": "",
+      "tts": {
+        "text": "Отже, високий бал вимірював пам'ять.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, часто буває.",
+      "text_markdown": "Так, часто буває.",
+      "title": "",
+      "tts": {
+        "text": "Так, часто буває.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pro — це версія з новими завданнями та складнішими будівельними лісами — це новий сигнал.",
+      "text_markdown": "Pro — це версія з новими завданнями та складнішими будівельними лісами — це новий сигнал.",
+      "title": "",
+      "tts": {
+        "text": "Pro — це версія з новими завданнями та складнішими будівельними лісами — це новий сигнал.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це інституційне підтвердження проблеми забруднення, яку ми обговорювали минулого тижня.",
+      "text_markdown": "Це інституційне підтвердження проблеми забруднення, яку ми обговорювали минулого тижня.",
+      "title": "",
+      "tts": {
+        "text": "Це інституційне підтвердження проблеми забруднення, яку ми обговорювали минулого тижня.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Чи була також методологічна стаття?",
+      "text_markdown": "Чи була також методологічна стаття?",
+      "title": "",
+      "tts": {
+        "text": "Чи була також методологічна стаття?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Був гострий звіт від групи під назвою Kili Technology.",
+      "text_markdown": "Був гострий звіт від групи під назвою Kili Technology.",
+      "title": "",
+      "tts": {
+        "text": "Був гострий звіт від групи під назвою Kili Technology.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Вони прогнали ідентичні ваги моделі через п'ять поширених оціночних систем.",
+      "text_markdown": "Вони прогнали ідентичні ваги моделі через п'ять поширених оціночних систем.",
+      "title": "",
+      "tts": {
+        "text": "Вони прогнали ідентичні ваги моделі через п'ять поширених оціночних систем.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Результати відрізнялися на десять-двадцять відсоткових пунктів виключно через вибір упряжі.",
+      "text_markdown": "Результати відрізнялися на десять-двадцять відсоткових пунктів виключно через вибір упряжі.",
+      "title": "",
+      "tts": {
+        "text": "Результати відрізнялися на десять-двадцять відсоткових пунктів виключно через вибір упряжі.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Однакові ваги, різні показники.",
+      "text_markdown": "Однакові ваги, різні показники.",
+      "title": "",
+      "tts": {
+        "text": "Однакові ваги, різні показники.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Саме так і є.",
+      "text_markdown": "Саме так і є.",
+      "title": "",
+      "tts": {
+        "text": "Саме так і є.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Їхній висновок полягав у тому, що місце в рейтингу більше не є сигналом закупівельного рівня для постачання.",
+      "text_markdown": "Їхній висновок полягав у тому, що місце в рейтингу більше не є сигналом закупівельного рівня для постачання.",
+      "title": "",
+      "tts": {
+        "text": "Їхній висновок полягав у тому, що місце в рейтингу більше не є сигналом закупівельного рівня для постачання.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Для розробника-самоука висновок є більш чітким — запускайте власні оцінки на власних промптах.",
+      "text_markdown": "Для розробника-самоука висновок є більш чітким — запускайте власні оцінки на власних промптах.",
+      "title": "",
+      "tts": {
+        "text": "Для розробника-самоука висновок є більш чітким — запускайте власні оцінки на власних промптах.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Це фактично повертає нас до MSA та Nemotron Ultra.",
+      "text_markdown": "Це фактично повертає нас до MSA та Nemotron Ultra.",
+      "title": "",
+      "tts": {
+        "text": "Це фактично повертає нас до М С А та Неймотрон Ультра.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так і є.",
+      "text_markdown": "Так і є.",
+      "title": "",
+      "tts": {
+        "text": "Так і є.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Довіряйте архітектурі та власним тестам, а не чужим таблицям.",
+      "text_markdown": "Довіряйте архітектурі та власним тестам, а не чужим таблицям.",
+      "title": "",
+      "tts": {
+        "text": "Довіряйте архітектурі та власним тестам, а не чужим таблицям.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Гарне місце, щоб залишити рейтинги.",
+      "text_markdown": "Гарне місце, щоб залишити рейтинги.",
+      "title": "",
+      "tts": {
+        "text": "Гарне місце, щоб залишити рейтинги.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Тепер перейдемо до заголовків.",
+      "text_markdown": "Тепер перейдемо до заголовків.",
+      "title": "",
+      "tts": {
+        "text": "Тепер перейдемо до заголовків.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Швидкий огляд, крізь призму відкритої екосистеми.",
+      "text_markdown": "Швидкий огляд, крізь призму відкритої екосистеми.",
+      "title": "",
+      "tts": {
+        "text": "Швидкий огляд, крізь призму відкритої екосистеми.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "По-перше, Microsoft Build відбувся 2 червня.",
+      "text_markdown": "По-перше, Microsoft Build відбувся 2 червня.",
+      "title": "",
+      "tts": {
+        "text": "По-перше, Майкрософт Білд відбувся другого червня.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Microsoft представила дві власні моделі — MAI-Thinking-1 та MAI-Code-1-Flash.",
+      "text_markdown": "Microsoft представила дві власні моделі — MAI-Thinking-1 та MAI-Code-1-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Майкрософт представила дві власні моделі — М А І Тінкінг один та М А І Код один Флеш.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Що в них цікавого?",
+      "text_markdown": "Що в них цікавого?",
+      "title": "",
+      "tts": {
+        "text": "Що в них цікавого?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Thinking-1 — це розріджена суміш експертів з тридцятьма п'ятьма мільярдами активних параметрів і вікном контексту на двісті п'ятдесят шість тисяч токенів.",
+      "text_markdown": "Thinking-1 — це розріджена суміш експертів з тридцятьма п'ятьма мільярдами активних параметрів і вікном контексту на двісті п'ятдесят шість тисяч токенів.",
+      "title": "",
+      "tts": {
+        "text": "Тінкінг один — це розріджена суміш експертів з тридцятьма п'ятьма мільярдами активних параметрів і вікном контексту на двісті п'ятдесят шість тисяч токенів.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "І Microsoft спеціально зазначає, що вона була навчена на комерційно ліцензованих даних без дистиляції з будь-якої сторонньої моделі.",
+      "text_markdown": "І Microsoft спеціально зазначає, що вона була навчена на комерційно ліцензованих даних без дистиляції з будь-якої сторонньої моделі.",
+      "title": "",
+      "tts": {
+        "text": "І Microsoft спеціально зазначає, що вона була навчена на комерційно ліцензованих даних без дистиляції з будь-якої сторонньої моделі.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Це незвично.",
+      "text_markdown": "Це незвично.",
+      "title": "",
+      "tts": {
+        "text": "Це незвично.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Дуже незвично, враховуючи, наскільки решта галузі покладається на синтетичні дані від передових моделей.",
+      "text_markdown": "Дуже незвично, враховуючи, наскільки решта галузі покладається на синтетичні дані від передових моделей.",
+      "title": "",
+      "tts": {
+        "text": "Дуже незвично, враховуючи, наскільки решта галузі покладається на синтетичні дані від передових моделей.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Code-1-Flash — це дешевша модель; її почали розгортати для всіх рівнів GitHub Copilot 2 червня.",
+      "text_markdown": "Code-1-Flash — це дешевша модель; її почали розгортати для всіх рівнів GitHub Copilot 2 червня.",
+      "title": "",
+      "tts": {
+        "text": "Код один Флеш — це дешевша модель; її почали розгортати для всіх рівнів ГітХаб Копайлот другого червня.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Отже, Microsoft тепер постачає Mistral, DeepSeek, OpenAI та власну MAI пліч-о-пліч у Copilot Studio.",
+      "text_markdown": "Отже, Microsoft тепер постачає Mistral, DeepSeek, OpenAI та власну MAI пліч-о-пліч у Copilot Studio.",
+      "title": "",
+      "tts": {
+        "text": "Отже, Майкрософт тепер постачає Містрал, ДіпСік, ОпенЕйАй та власну М А І пліч-о-пліч у Копайлот Студіо.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Другий заголовок?",
+      "text_markdown": "Другий заголовок?",
+      "title": "",
+      "tts": {
+        "text": "Другий заголовок?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Anthropic конфіденційно подала форму S-1 до SEC 1 червня.",
+      "text_markdown": "Anthropic конфіденційно подала форму S-1 до SEC 1 червня.",
+      "title": "",
+      "tts": {
+        "text": "Антропік конфіденційно подала форму Ес один до Ес І Сі першого червня.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це документація, яка розпочинає шлях до публічного розміщення.",
+      "text_markdown": "Це документація, яка розпочинає шлях до публічного розміщення.",
+      "title": "",
+      "tts": {
+        "text": "Це документація, яка розпочинає шлях до публічного розміщення.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Їхній заявлений річний дохід становить близько сорока семи мільярдів доларів, що на десять мільярдів більше, ніж рік тому.",
+      "text_markdown": "Їхній заявлений річний дохід становить близько сорока семи мільярдів доларів, що на десять мільярдів більше, ніж рік тому.",
+      "title": "",
+      "tts": {
+        "text": "Їхній заявлений річний дохід становить близько сорока семи мільярдів доларів, що на десять мільярдів більше, ніж рік тому.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Поки що немає тікера, діапазону цін, дати — лише документація.",
+      "text_markdown": "Поки що немає тікера, діапазону цін, дати — лише документація.",
+      "title": "",
+      "tts": {
+        "text": "Поки що немає тікера, діапазону цін, дати — лише документація.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Третє.",
+      "text_markdown": "Третє.",
+      "title": "",
+      "tts": {
+        "text": "Третє.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "GitHub Copilot перейшов на тарифікацію за використанням 1 червня.",
+      "text_markdown": "GitHub Copilot перейшов на тарифікацію за використанням 1 червня.",
+      "title": "",
+      "tts": {
+        "text": "ГітХаб Копайлот перейшов на тарифікацію за використанням першого червня.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Кожен план тепер вимірює вхідні, вихідні та кешовані токени за тими ж тарифами, що й базовий API моделі.",
+      "text_markdown": "Кожен план тепер вимірює вхідні, вихідні та кешовані токени за тими ж тарифами, що й базовий API моделі.",
+      "title": "",
+      "tts": {
+        "text": "Кожен план тепер вимірює вхідні, вихідні та кешовані токени за тими ж тарифами, що й базовий API моделі.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Вони пом'якшили перехід, надавши певну кількість кредитів на кожен рівень та новий план Copilot Max за сто доларів на місяць для активних користувачів-агентів.",
+      "text_markdown": "Вони пом'якшили перехід, надавши певну кількість кредитів на кожен рівень та новий план Copilot Max за сто доларів на місяць для активних користувачів-агентів.",
+      "title": "",
+      "tts": {
+        "text": "Вони пом'якшили перехід, надавши певну кількість кредитів на кожен рівень та новий план Copilot Max за сто доларів на місяць для активних користувачів-агентів.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "І як розробники це сприйняли?",
+      "text_markdown": "І як розробники це сприйняли?",
+      "title": "",
+      "tts": {
+        "text": "І як розробники це сприйняли?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Деякі думки були досить гострими.",
+      "text_markdown": "Деякі думки були досить гострими.",
+      "title": "",
+      "tts": {
+        "text": "Деякі думки були досить гострими.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Активні користувачі з агентськими циклами повідомили про прогнозовані рахунки, що в кілька разів перевищують стару фіксовану плату.",
+      "text_markdown": "Активні користувачі з агентськими циклами повідомили про прогнозовані рахунки, що в кілька разів перевищують стару фіксовану плату.",
+      "title": "",
+      "tts": {
+        "text": "Активні користувачі з агентськими циклами повідомили про прогнозовані рахунки, що в кілька разів перевищують стару фіксовану плату.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це матиме значення для нашої головної новини — запам'ятайте це.",
+      "text_markdown": "Це матиме значення для нашої головної новини — запам'ятайте це.",
+      "title": "",
+      "tts": {
+        "text": "Це матиме значення для нашої головної новини — запам'ятайте це.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "По-четверте, чи є щось, що потрібно оновити цими вихідними?",
+      "text_markdown": "По-четверте, чи є щось, що потрібно оновити цими вихідними?",
+      "title": "",
+      "tts": {
+        "text": "По-четверте, чи є щось, що потрібно оновити цими вихідними?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, версії SGLang до 0.5.11 мають вразливість відмови в обслуговуванні кешу, розкриту 3 червня.",
+      "text_markdown": "Так, версії SGLang до 0.5.11 мають вразливість відмови в обслуговуванні кешу, розкриту 3 червня.",
+      "title": "",
+      "tts": {
+        "text": "Так, Ес Джи Ленг версії до нуль крапка п'ять крапка одинадцять мають вразливість відмови в обслуговуванні кешу, розкриту третього червня.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ідентифікатор — CVE-2026-10775, серйозність низька, експлуатація лише локальна — але якщо ви використовуєте SGLang, оновіть у понеділок.",
+      "text_markdown": "Ідентифікатор — CVE-2026-10775, серйозність низька, експлуатація лише локальна — але якщо ви використовуєте SGLang, оновіть у понеділок.",
+      "title": "",
+      "tts": {
+        "text": "Ідентифікатор — Сі Ві І дві тисячі двадцять шість тире десять тисяч сімсот сімдесят п'ять, серйозність низька, експлуатація лише локальна — але якщо ви використовуєте Ес Джи Ленг, оновіть у понеділок.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "І ще одна річ.",
+      "text_markdown": "І ще одна річ.",
+      "title": "",
+      "tts": {
+        "text": "І ще одна важлива річ.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Unsloth Studio випустила оновлення, яке експортує повне доналаштування прямо в GGUF — а не лише ваги адаптера.",
+      "text_markdown": "Unsloth Studio випустила оновлення, яке експортує повне доналаштування прямо в GGUF — а не лише ваги адаптера.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth Studio випустила оновлення, яке експортує повне доналаштування прямо в Джи Джи У Еф — а не лише ваги адаптера.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Споживчої карти на 24 гігабайти тепер достатньо для корисних запусків.",
+      "text_markdown": "Споживчої карти на 24 гігабайти тепер достатньо для корисних запусків.",
+      "title": "",
+      "tts": {
+        "text": "Споживчої карти на двадцять чотири гігабайти тепер достатньо для корисних запусків.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це та невибаглива основа, яка робить решту цього епізоду реальною.",
+      "text_markdown": "Це та невибаглива основа, яка робить решту цього епізоду реальною.",
+      "title": "",
+      "tts": {
+        "text": "Це та невибаглива основа, яка робить решту цього епізоду реальною.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Тепер повернімося до головної новини.",
+      "text_markdown": "Тепер повернімося до головної новини.",
+      "title": "",
+      "tts": {
+        "text": "Тепер повернімося до головної новини.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ви натякнули на установку.",
+      "text_markdown": "Ви натякнули на установку.",
+      "title": "",
+      "tts": {
+        "text": "Ви натякнули на установку.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, і суть її в тому, що цього тижня саморобна установка виросла.",
+      "text_markdown": "Так, і суть її в тому, що цього тижня саморобна установка виросла.",
+      "title": "",
+      "tts": {
+        "text": "Так, і суть її в тому, що цього тижня саморобна установка виросла.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Почнемо з апаратного забезпечення.",
+      "text_markdown": "Почнемо з апаратного забезпечення.",
+      "title": "",
+      "tts": {
+        "text": "Почнемо з апаратного забезпечення.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Дві коробки тепер фактично постачаються за споживчими цінами.",
+      "text_markdown": "Дві коробки тепер фактично постачаються за споживчими цінами.",
+      "title": "",
+      "tts": {
+        "text": "Дві коробки тепер фактично постачаються за споживчими цінами.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "AMD відкрила попередні замовлення на міні-ПК Ryzen AI Halo у червні за 3999 доларів.",
+      "text_markdown": "AMD відкрила попередні замовлення на міні-ПК Ryzen AI Halo у червні за 3999 доларів.",
+      "title": "",
+      "tts": {
+        "text": "Ей Ем Ді відкрила попередні замовлення на міні-ПК Райзен Ей Ай Хейло у червні за три тисячі дев'ятсот дев'яносто дев'ять доларів.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Він працює на Ryzen AI Max Plus 395, зі 128 гігабайтами уніфікованої пам'яті LPDDR5x, і наразі доступний виключно в Micro Center.",
+      "text_markdown": "Він працює на Ryzen AI Max Plus 395, зі 128 гігабайтами уніфікованої пам'яті LPDDR5x, і наразі доступний виключно в Micro Center.",
+      "title": "",
+      "tts": {
+        "text": "Він працює на Райзен Ей Ай Макс Плюс триста дев'яносто п'ять, зі ста двадцятьма вісьмома гігабайтами уніфікованої пам'яті Ел Пі Ді Ді Ар п'ять ікс, і наразі доступний виключно в Майкро Центр.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "А що з боку NVIDIA?",
+      "text_markdown": "А що з боку NVIDIA?",
+      "title": "",
+      "tts": {
+        "text": "А що з боку NVIDIA?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "DGX Spark від NVIDIA — це порівнянний пристрій.",
+      "text_markdown": "DGX Spark від NVIDIA — це порівнянний пристрій.",
+      "title": "",
+      "tts": {
+        "text": "Ді Джи Ікс Спарк від Ен Відіа — це порівнянний пристрій.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Він має чип GB10 Grace Blackwell і ті ж 128 гігабайт уніфікованої пам'яті.",
+      "text_markdown": "Він має чип GB10 Grace Blackwell і ті ж 128 гігабайт уніфікованої пам'яті.",
+      "title": "",
+      "tts": {
+        "text": "Він має чип Джи Бі десять Грейс Блеквелл і ті ж сто двадцять вісім гігабайт уніфікованої пам'яті.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ціна нещодавно зросла з 3999 до 4699, що пояснюється глобальним дефіцитом пам'яті.",
+      "text_markdown": "Ціна нещодавно зросла з 3999 до 4699, що пояснюється глобальним дефіцитом пам'яті.",
+      "title": "",
+      "tts": {
+        "text": "Ціна нещодавно зросла з трьох тисяч дев'ятисот дев'яносто дев'яти до чотирьох тисяч шестисот дев'яносто дев'яти, що пояснюється глобальним дефіцитом пам'яті.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Наскільки велику модель вони насправді вміщують?",
+      "text_markdown": "Наскільки велику модель вони насправді вміщують?",
+      "title": "",
+      "tts": {
+        "text": "Наскільки велику модель вони насправді вміщують?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "До приблизно 200 мільярдів параметрів при 4-бітній квантизації, з місцем для контексту.",
+      "text_markdown": "До приблизно 200 мільярдів параметрів при 4-бітній квантизації, з місцем для контексту.",
+      "title": "",
+      "tts": {
+        "text": "До приблизно двохсот мільярдів параметрів при чотири-бітній квантизації, з місцем для контексту.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Об'єднайте два DGX Sparks через ConnectX-7, і ви отримаєте приблизно 400 мільярдів параметрів.",
+      "text_markdown": "Об'єднайте два DGX Sparks через ConnectX-7, і ви отримаєте приблизно 400 мільярдів параметрів.",
+      "title": "",
+      "tts": {
+        "text": "Об'єднайте два Ді Джи Ікс Спаркс через Конект Ікс сім, і ви отримаєте приблизно чотириста мільярдів параметрів.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це справді слід класу «фронтир» на стільниці.",
+      "text_markdown": "Це справді слід класу «фронтир» на стільниці.",
+      "title": "",
+      "tts": {
+        "text": "Це справді слід класу «фронтир» на стільниці.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Тепер програмний стек.",
+      "text_markdown": "Тепер програмний стек.",
+      "title": "",
+      "tts": {
+        "text": "Тепер програмний стек.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це те, що змінилося під нашими ногами.",
+      "text_markdown": "Це те, що змінилося під нашими ногами.",
+      "title": "",
+      "tts": {
+        "text": "Це те, що змінилося під нашими ногами.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Для інференсу у вас є vLLM, SGLang, llama.cpp, Ollama та MLX на Apple Silicon — усі підтримуються, усі швидкі.",
+      "text_markdown": "Для інференсу у вас є vLLM, SGLang, llama.cpp, Ollama та MLX на Apple Silicon — усі підтримуються, усі швидкі.",
+      "title": "",
+      "tts": {
+        "text": "Для інференсу у вас є ві Ел Ел Ем, Ес Джи Ленг, лама сі пі пі, Оллама та Ем Ел Ікс на Еппл Силікон — усі підтримуються, усі швидкі.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Щодо самої моделі, цього тижня є ваги Nemotron 3 Ultra, а також Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 та ваги MiniMax M3, що надійдуть.",
+      "text_markdown": "Щодо самої моделі, цього тижня є ваги Nemotron 3 Ultra, а також Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 та ваги MiniMax M3, що надійдуть.",
+      "title": "",
+      "tts": {
+        "text": "Щодо самої моделі, цього тижня є ваги Немотрон три Ультра, а також Кімі Кей два крапка шість, ДіпСік Ві чотири Флеш, Джи Ел Ем п'ять крапка один, та ваги МініМакс Ем три, що надійдуть.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Для доналаштування Unsloth Studio тепер пропонує повне доналаштування в GGUF одним кліком.",
+      "text_markdown": "Для доналаштування Unsloth Studio тепер пропонує повне доналаштування в GGUF одним кліком.",
+      "title": "",
+      "tts": {
+        "text": "Для доналаштування Unsloth Studio тепер пропонує повне доналаштування в Джи Джи У Еф одним кліком.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "А для агентів у вас є Aider, Continue та LangGraph версії один, що запускають локальні моделі з тридцятьма двома мільярдами параметрів із прийнятною надійністю.",
+      "text_markdown": "А для агентів у вас є Aider, Continue та LangGraph версії один, що запускають локальні моделі з тридцятьма двома мільярдами параметрів із прийнятною надійністю.",
+      "title": "",
+      "tts": {
+        "text": "А для агентів у вас є Aider, Continue та LangGraph версії один, що запускають локальні моделі з тридцятьма двома мільярдами параметрів із прийнятною надійністю.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Це весь цикл.",
+      "text_markdown": "Це весь цикл.",
+      "title": "",
+      "tts": {
+        "text": "Це весь цикл.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Це весь цикл.",
+      "text_markdown": "Це весь цикл.",
+      "title": "",
+      "tts": {
+        "text": "Це весь цикл.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Кремній, рушій, модель, доналаштування, агент — кожен шар має надійний відкритий варіант, а нижній шар тепер є настільним міні-ПК.",
+      "text_markdown": "Кремній, рушій, модель, доналаштування, агент — кожен шар має надійний відкритий варіант, а нижній шар тепер є настільним міні-ПК.",
+      "title": "",
+      "tts": {
+        "text": "Кремній, рушій, модель, доналаштування, агент — кожен шар має надійний відкритий варіант, а нижній шар тепер є настільним міні-пі-сі.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "А що з економікою?",
+      "text_markdown": "А що з економікою?",
+      "title": "",
+      "tts": {
+        "text": "А що з економікою?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Цього тижня економіка змінилася так, що це важко не помітити.",
+      "text_markdown": "Цього тижня економіка змінилася так, що це важко не помітити.",
+      "title": "",
+      "tts": {
+        "text": "Цього тижня економіка змінилася так, що це важко не помітити.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Copilot з оплатою за токени, S-1 від Anthropic, що сигналізує про майбутній ціновий тиск, та попередження про мережу з Техасу, Вірджинії та Огайо щодо напруженого літа.",
+      "text_markdown": "Copilot з оплатою за токени, S-1 від Anthropic, що сигналізує про майбутній ціновий тиск, та попередження про мережу з Техасу, Вірджинії та Огайо щодо напруженого літа.",
+      "title": "",
+      "tts": {
+        "text": "Copilot з оплатою за токени, ес-один від Anthropic, що сигналізує про майбутній ціновий тиск, та попередження про мережу з Техасу, Вірджинії та Огайо щодо напруженого літа.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Аргумент на користь самостійного хостингу раніше був ідеологічним.",
+      "text_markdown": "Аргумент на користь самостійного хостингу раніше був ідеологічним.",
+      "title": "",
+      "tts": {
+        "text": "Аргумент на користь самостійного хостингу раніше був ідеологічним.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Цього тижня він став електронною таблицею.",
+      "text_markdown": "Цього тижня він став електронною таблицею.",
+      "title": "",
+      "tts": {
+        "text": "Цього тижня він став електронною таблицею.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Будьте чесними щодо того, що не змінилося.",
+      "text_markdown": "Будьте чесними щодо того, що не змінилося.",
+      "title": "",
+      "tts": {
+        "text": "Будьте чесними щодо того, що не змінилося.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Важливе застереження — ваш стіл не перевершує хмару на вершині рейтингу якості.",
+      "text_markdown": "Важливе застереження — ваш стіл не перевершує хмару на вершині рейтингу якості.",
+      "title": "",
+      "tts": {
+        "text": "Важливе застереження — ваш стіл не перевершує хмару на вершині рейтингу якості.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Opus 4.8 все ще лідирує в загальному рейтингу, а GPT-5.5 все ще володіє BrowseComp.",
+      "text_markdown": "Opus 4.8 все ще лідирує в загальному рейтингу, а GPT-5.5 все ще володіє BrowseComp.",
+      "title": "",
+      "tts": {
+        "text": "Опус чотири крапка вісім все ще лідирує в загальному рейтингу, а джі-пі-ті п'ять крапка п'ять все ще володіє BrowseComp.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Що змінилося цього тижня, так це поріг.",
+      "text_markdown": "Що змінилося цього тижня, так це поріг.",
+      "title": "",
+      "tts": {
+        "text": "Що змінилося цього тижня, так це поріг.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Здатні, агентські, доналаштовувані моделі на вашому власному обладнанні з відкритими вагами.",
+      "text_markdown": "Здатні, агентські, доналаштовувані моделі на вашому власному обладнанні з відкритими вагами.",
+      "title": "",
+      "tts": {
+        "text": "Здатні, агентські, доналаштовувані моделі на вашому власному обладнанні з відкритими вагами.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ось така вийшла історія.",
+      "text_markdown": "Ось така вийшла історія.",
+      "title": "",
+      "tts": {
+        "text": "Ось така вийшла історія.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Раніше для цього потрібен був дата-центр.",
+      "text_markdown": "Раніше для цього потрібен був дата-центр.",
+      "title": "",
+      "tts": {
+        "text": "Раніше для цього потрібен був дата-центр.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Цього тижня для цього достатньо стільниці.",
+      "text_markdown": "Цього тижня для цього достатньо стільниці.",
+      "title": "",
+      "tts": {
+        "text": "Цього тижня для цього достатньо стільниці.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Розглянемо концепцію тижня.",
+      "text_markdown": "Розглянемо концепцію тижня.",
+      "title": "",
+      "tts": {
+        "text": "Розглянемо концепцію тижня.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ви обрали спекулятивне декодування.",
+      "text_markdown": "Ви обрали спекулятивне декодування.",
+      "title": "",
+      "tts": {
+        "text": "Ви обрали спекулятивне декодування.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Так, тому що це трюк, який змушує все, про що ми щойно говорили, відчуватися швидким.",
+      "text_markdown": "Так, тому що це трюк, який змушує все, про що ми щойно говорили, відчуватися швидким.",
+      "title": "",
+      "tts": {
+        "text": "Так, тому що це трюк, який змушує все, про що ми щойно говорили, відчуватися швидким.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Заява MiniMax про п'ятнадцятиразове декодування спирається на родича.",
+      "text_markdown": "Заява MiniMax про п'ятнадцятиразове декодування спирається на родича.",
+      "title": "",
+      "tts": {
+        "text": "Заява MiniMax про п'ятнадцятиразове декодування спирається на родича.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Режим чернеткової моделі Llama.cpp — це саме ця ідея.",
+      "text_markdown": "Режим чернеткової моделі Llama.cpp — це саме ця ідея.",
+      "title": "",
+      "tts": {
+        "text": "Режим чернеткової моделі Llama.cpp — це саме ця ідея.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Поясніть нам це.",
+      "text_markdown": "Поясніть нам це.",
+      "title": "",
+      "tts": {
+        "text": "Поясніть нам це.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ви запускаєте дві моделі паралельно.",
+      "text_markdown": "Ви запускаєте дві моделі паралельно.",
+      "title": "",
+      "tts": {
+        "text": "Ви запускаєте дві моделі паралельно.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Маленька, швидка модель, що називається чернеткою (drafter), і велика, повільна модель, що називається верифікатором (verifier).",
+      "text_markdown": "Маленька, швидка модель, що називається чернеткою (drafter), і велика, повільна модель, що називається верифікатором (verifier).",
+      "title": "",
+      "tts": {
+        "text": "Маленька, швидка модель, що називається чернеткою (drafter), і велика, повільна модель, що називається верифікатором (verifier).",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Чернетка вгадує, скажімо, наступні чотири токени за один раз.",
+      "text_markdown": "Чернетка вгадує, скажімо, наступні чотири токени за один раз.",
+      "title": "",
+      "tts": {
+        "text": "Чернетка вгадує, скажімо, наступні чотири токени за один раз.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Верифікатор перевіряє всі чотири паралельно.",
+      "text_markdown": "Верифікатор перевіряє всі чотири паралельно.",
+      "title": "",
+      "tts": {
+        "text": "Верифікатор перевіряє всі чотири паралельно.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "А що потім?",
+      "text_markdown": "А що потім?",
+      "title": "",
+      "tts": {
+        "text": "А що буде потім?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Якщо верифікатор погоджується, ви залишаєте всі чотири і рухаєтеся далі — ви щойно обробили чотири токени за ціною приблизно одного.",
+      "text_markdown": "Якщо верифікатор погоджується, ви залишаєте всі чотири і рухаєтеся далі — ви щойно обробили чотири токени за ціною приблизно одного.",
+      "title": "",
+      "tts": {
+        "text": "Якщо верифікатор погоджується, ви залишаєте всі чотири і рухаєтеся далі — ви щойно обробили чотири токени за ціною приблизно одного.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Якщо він не погоджується, ви приймаєте до першої невідповідності і дозволяєте великій моделі взяти на себе подальшу роботу.",
+      "text_markdown": "Якщо він не погоджується, ви приймаєте до першої невідповідності і дозволяєте великій моделі взяти на себе подальшу роботу.",
+      "title": "",
+      "tts": {
+        "text": "Якщо він не погоджується, ви приймаєте до першої невідповідності і дозволяєте великій моделі взяти на себе подальшу роботу.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Отже, відповідь ідентична.",
+      "text_markdown": "Отже, відповідь ідентична.",
+      "title": "",
+      "tts": {
+        "text": "Отже, відповідь ідентична.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Вірно, це елегантна частина.",
+      "text_markdown": "Вірно, це елегантна частина.",
+      "title": "",
+      "tts": {
+        "text": "Вірно, це елегантна частина.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Вихідні дані — це саме те, що велика модель створила б сама.",
+      "text_markdown": "Вихідні дані — це саме те, що велика модель створила б сама.",
+      "title": "",
+      "tts": {
+        "text": "Вихідні дані — це саме те, що велика модель створила б сама.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ви просто заплатили за меншу кількість її прямих проходів.",
+      "text_markdown": "Ви просто заплатили за меншу кількість її прямих проходів.",
+      "title": "",
+      "tts": {
+        "text": "Ви просто заплатили за меншу кількість її прямих проходів.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Чому це важливо для майстра-аматора?",
+      "text_markdown": "Чому це важливо для майстра-аматора?",
+      "title": "",
+      "tts": {
+        "text": "Чому це важливо для майстра-аматора?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Тому що це перетворює модель із сімдесятьма мільярдами параметрів на одній карті з новинки на придатну для використання розмову.",
+      "text_markdown": "Тому що це перетворює модель із сімдесятьма мільярдами параметрів на одній карті з новинки на придатну для використання розмову.",
+      "title": "",
+      "tts": {
+        "text": "Тому що це перетворює модель із сімдесятьма мільярдами параметрів на одній карті з новинки на придатну для використання розмову.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "А на телефоні це частина того, як справжній помічник на пристрої відчувається чуйним.",
+      "text_markdown": "А на телефоні це частина того, як справжній помічник на пристрої відчувається чуйним.",
+      "title": "",
+      "tts": {
+        "text": "А на телефоні це частина того, як справжній помічник на пристрої відчувається чуйним.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Концепція минулого тижня, нейронні аудіокодеки, була аудіоверсією того ж трюку — менше дорогих кроків для тієї ж якості.",
+      "text_markdown": "Концепція минулого тижня, нейронні аудіокодеки, була аудіоверсією того ж трюку — менше дорогих кроків для тієї ж якості.",
+      "title": "",
+      "tts": {
+        "text": "Концепція минулого тижня, нейронні аудіокодеки, була аудіоверсією того ж трюку — менше дорогих кроків для тієї ж якості.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Куди варто звернутися допитливим далі?",
+      "text_markdown": "Куди варто звернутися допитливим далі?",
+      "title": "",
+      "tts": {
+        "text": "Куди варто звернутися допитливим далі?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Знайдіть EAGLE-3, Medusa та lookahead decoding.",
+      "text_markdown": "Знайдіть EAGLE-3, Medusa та lookahead decoding.",
+      "title": "",
+      "tts": {
+        "text": "Знайдіть Eagle три, Medusa та lookahead decoding.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Вони є сучасними родичами оригінальної ідеї drafter-verifier, і саме вони працюють під капотом вашого механізму висновків.",
+      "text_markdown": "Вони є сучасними родичами оригінальної ідеї drafter-verifier, і саме вони працюють під капотом вашого механізму висновків.",
+      "title": "",
+      "tts": {
+        "text": "Вони є сучасними родичами оригінальної ідеї drafter verifier, і саме вони працюють під капотом вашого механізму висновків.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Гарне місце для завершення.",
+      "text_markdown": "Гарне місце для завершення.",
+      "title": "",
+      "tts": {
+        "text": "Гарне місце для завершення.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Рон, дякую.",
+      "text_markdown": "Рон, дякую.",
+      "title": "",
+      "tts": {
+        "text": "Рон, дякую.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Завжди будь ласка, Вінді.",
+      "text_markdown": "Завжди будь ласка, Вінді.",
+      "title": "",
+      "tts": {
+        "text": "Завжди будь ласка, Вінді.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Це був AI This Week за 3 червня 2026 року.",
+      "text_markdown": "Це був AI This Week за 3 червня 2026 року.",
+      "title": "",
+      "tts": {
+        "text": "Це був AI This Week за третього червня дві тисячі двадцять шостого року.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Новий випуск наступної середи.",
+      "text_markdown": "Новий випуск наступної середи.",
+      "title": "",
+      "tts": {
+        "text": "Новий випуск наступної середи.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "До того часу, бережіть себе.",
+      "text_markdown": "До того часу, бережіть себе.",
+      "title": "",
+      "tts": {
+        "text": "До того часу, бережіть себе.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

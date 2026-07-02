@@ -1,0 +1,6014 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_heart",
+  "language": "de",
+  "total_segments": 402,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Die Pumpe, die niemals stoppt",
+      "text_markdown": "Die Pumpe, die niemals stoppt"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dein Herz schlägt genau jetzt.",
+      "text_markdown": "Dein Herz schlägt genau jetzt.",
+      "tts": {
+        "text": "Dein Herz schlägt genau jetzt.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es schlägt, während du schläfst.",
+      "text_markdown": "Es schlägt, während du schläfst.",
+      "tts": {
+        "text": "Es schlägt, während du schläfst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es schlägt, während du isst.",
+      "text_markdown": "Es schlägt, während du isst.",
+      "tts": {
+        "text": "Es schlägt, während du isst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es schlägt, während du diesen Satz liest.",
+      "text_markdown": "Es schlägt, während du diesen Satz liest.",
+      "tts": {
+        "text": "Es schlägt, während du diesen Satz liest.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dein Herz macht niemals eine Pause.",
+      "text_markdown": "Dein Herz macht niemals eine Pause.",
+      "tts": {
+        "text": "Dein Herz macht niemals eine Pause.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Es ist die zuverlässigste Pumpe der Welt.",
+      "text_markdown": "Es ist die zuverlässigste Pumpe der Welt.",
+      "tts": {
+        "text": "Es ist die zuverlässigste Pumpe der Welt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Herz ist ein muskuläres Organ in deiner Brust.",
+      "text_markdown": "Das Herz ist ein muskuläres Organ in deiner Brust.",
+      "tts": {
+        "text": "Das Herz ist ein muskuläres Organ in deiner Brust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Organ ist ein Körperteil mit einer bestimmten Aufgabe.",
+      "text_markdown": "Ein Organ ist ein Körperteil mit einer bestimmten Aufgabe.",
+      "tts": {
+        "text": "Ein Organ ist ein Körperteil mit einer bestimmten Aufgabe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Aufgabe des Herzens ist es, Blut zu pumpen.",
+      "text_markdown": "Die Aufgabe des Herzens ist es, Blut zu pumpen.",
+      "tts": {
+        "text": "Die Aufgabe des Herzens ist es, Blut zu pumpen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es liegt etwas links von der Mitte deiner Brust.",
+      "text_markdown": "Es liegt etwas links von der Mitte deiner Brust.",
+      "tts": {
+        "text": "Es liegt etwas links von der Mitte deiner Brust.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es ist ungefähr so groß wie deine Faust.",
+      "text_markdown": "Es ist ungefähr so groß wie deine Faust.",
+      "tts": {
+        "text": "Es ist ungefähr so groß wie deine Faust.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Herz besteht aus einer besonderen Art von Muskel, dem Herzmuskel.",
+      "text_markdown": "Das Herz besteht aus einer besonderen Art von Muskel, dem Herzmuskel.",
+      "tts": {
+        "text": "Das Herz besteht aus einer besonderen Art von Muskel, dem Herzmuskel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kardial bedeutet „das Herz betreffend“. Der Herzmuskel unterscheidet sich von den Muskeln in deinen Armen und Beinen.",
+      "text_markdown": "Kardial bedeutet „das Herz betreffend“. Der Herzmuskel unterscheidet sich von den Muskeln in deinen Armen und Beinen.",
+      "tts": {
+        "text": "Kardial bedeutet „das Herz betreffend“. Der Herzmuskel unterscheidet sich von den Muskeln in deinen Armen und Beinen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du steuerst deine Armmuskeln mit deinen Gedanken.",
+      "text_markdown": "Du steuerst deine Armmuskeln mit deinen Gedanken.",
+      "tts": {
+        "text": "Du steuerst deine Armmuskeln mit deinen Gedanken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du kannst deinen Herzmuskel nicht steuern.",
+      "text_markdown": "Du kannst deinen Herzmuskel nicht steuern.",
+      "tts": {
+        "text": "Du kannst deinen Herzmuskel nicht steuern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Er zieht sich von selbst zusammen.",
+      "text_markdown": "Er zieht sich von selbst zusammen.",
+      "tts": {
+        "text": "Er zieht sich von selbst zusammen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Er zieht sich automatisch zusammen, jede Sekunde deines Lebens.",
+      "text_markdown": "Er zieht sich automatisch zusammen, jede Sekunde deines Lebens.",
+      "tts": {
+        "text": "Er zieht sich automatisch zusammen, jede Sekunde deines Lebens.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jede Kontraktion drückt Blut durch deinen Körper.",
+      "text_markdown": "Jede Kontraktion drückt Blut durch deinen Körper.",
+      "tts": {
+        "text": "Jede Kontraktion drückt Blut durch deinen Körper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Blut trägt Sauerstoff zu deinen Zellen.",
+      "text_markdown": "Das Blut trägt Sauerstoff zu deinen Zellen.",
+      "tts": {
+        "text": "Das Blut trägt Sauerstoff zu deinen Zellen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sauerstoff ist ein Gas, das Zellen brauchen, um Energie zu erzeugen.",
+      "text_markdown": "Sauerstoff ist ein Gas, das Zellen brauchen, um Energie zu erzeugen.",
+      "tts": {
+        "text": "Sauerstoff ist ein Gas, das Zellen brauchen, um Energie zu erzeugen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ohne Sauerstoff sterben Zellen innerhalb von Minuten.",
+      "text_markdown": "Ohne Sauerstoff sterben Zellen innerhalb von Minuten.",
+      "tts": {
+        "text": "Ohne Sauerstoff sterben Zellen innerhalb von Minuten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das Herz sorgt dafür, dass Sauerstoff jeden Teil deines Körpers erreicht.",
+      "text_markdown": "Das Herz sorgt dafür, dass Sauerstoff jeden Teil deines Körpers erreicht.",
+      "tts": {
+        "text": "Das Herz sorgt dafür, dass Sauerstoff jeden Teil deines Körpers erreicht.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dein Herz pumpt etwa fünf Liter Blut pro Minute.",
+      "text_markdown": "Dein Herz pumpt etwa fünf Liter Blut pro Minute.",
+      "tts": {
+        "text": "Dein Herz pumpt etwa fünf Liter Blut pro Minute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Liter entspricht ungefähr einem Quart.",
+      "text_markdown": "Ein Liter entspricht ungefähr einem Quart.",
+      "tts": {
+        "text": "Ein Liter entspricht ungefähr einem Quart.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das bedeutet, dass dein gesamtes Blutvolumen etwa einmal pro Minute durch dein Herz fließt.",
+      "text_markdown": "Das bedeutet, dass dein gesamtes Blutvolumen etwa einmal pro Minute durch dein Herz fließt.",
+      "tts": {
+        "text": "Das bedeutet, dass dein gesamtes Blutvolumen etwa einmal pro Minute durch dein Herz fließt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "An einem Tag pumpt dein Herz rund 7.500 Liter Blut.",
+      "text_markdown": "An einem Tag pumpt dein Herz rund 7.500 Liter Blut.",
+      "tts": {
+        "text": "An einem Tag pumpt dein Herz rund siebentausendfünfhundert Liter Blut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "In einem Jahr pumpt es fast drei Millionen Liter.",
+      "text_markdown": "In einem Jahr pumpt es fast drei Millionen Liter.",
+      "tts": {
+        "text": "In einem Jahr pumpt es fast drei Millionen Liter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das menschliche Herz beginnt früh zu schlagen.",
+      "text_markdown": "Das menschliche Herz beginnt früh zu schlagen.",
+      "tts": {
+        "text": "Das menschliche Herz beginnt früh zu schlagen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es beginnt etwa drei bis vier Wochen nach der Empfängnis.",
+      "text_markdown": "Es beginnt etwa drei bis vier Wochen nach der Empfängnis.",
+      "tts": {
+        "text": "Es beginnt etwa drei bis vier Wochen nach der Empfängnis.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Empfängnis ist der Moment, in dem ein neues Leben beginnt.",
+      "text_markdown": "Die Empfängnis ist der Moment, in dem ein neues Leben beginnt.",
+      "tts": {
+        "text": "Die Empfängnis ist der Moment, in dem ein neues Leben beginnt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Herz ist eines der ersten Organe, die sich bilden.",
+      "text_markdown": "Das Herz ist eines der ersten Organe, die sich bilden.",
+      "tts": {
+        "text": "Das Herz ist eines der ersten Organe, die sich bilden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es schlägt, bevor sich das Gehirn voll entwickelt hat.",
+      "text_markdown": "Es schlägt, bevor sich das Gehirn voll entwickelt hat.",
+      "tts": {
+        "text": "Es schlägt, bevor sich das Gehirn voll entwickelt hat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die alten Völker wussten, dass das Herz wichtig ist.",
+      "text_markdown": "Die alten Völker wussten, dass das Herz wichtig ist.",
+      "tts": {
+        "text": "Die alten Völker wussten, dass das Herz wichtig ist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Ägypter glaubten, das Herz sei der Sitz der Intelligenz.",
+      "text_markdown": "Die Ägypter glaubten, das Herz sei der Sitz der Intelligenz.",
+      "tts": {
+        "text": "Die Ägypter glaubten, das Herz sei der Sitz der Intelligenz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Griechen stritten darüber, ob das Herz oder das Gehirn den Körper steuert.",
+      "text_markdown": "Die Griechen stritten darüber, ob das Herz oder das Gehirn den Körper steuert.",
+      "tts": {
+        "text": "Die Griechen stritten darüber, ob das Herz oder das Gehirn den Körper steuert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aristoteles dachte, das Herz sei der Sitz der Seele.",
+      "text_markdown": "Aristoteles dachte, das Herz sei der Sitz der Seele.",
+      "tts": {
+        "text": "Aristoteles dachte, das Herz sei der Sitz der Seele.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Wir wissen heute, dass das Gehirn das Denken steuert.",
+      "text_markdown": "Wir wissen heute, dass das Gehirn das Denken steuert.",
+      "tts": {
+        "text": "Wir wissen heute, dass das Gehirn das Denken steuert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Aber das Herz hält das Gehirn am Leben.",
+      "text_markdown": "Aber das Herz hält das Gehirn am Leben.",
+      "tts": {
+        "text": "Aber das Herz hält das Gehirn am Leben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Kreislaufsystem ist das Netzwerk, das Blut durch deinen Körper bewegt.",
+      "text_markdown": "Das Kreislaufsystem ist das Netzwerk, das Blut durch deinen Körper bewegt.",
+      "tts": {
+        "text": "Das Kreislaufsystem ist das Netzwerk, das Blut durch deinen Körper bewegt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Herz steht im Zentrum dieses Systems.",
+      "text_markdown": "Das Herz steht im Zentrum dieses Systems.",
+      "tts": {
+        "text": "Das Herz steht im Zentrum dieses Systems.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kreislauf kommt vom Wort „zirkulieren“, was „sich im Kreis bewegen“ bedeutet.",
+      "text_markdown": "Kreislauf kommt vom Wort „zirkulieren“, was „sich im Kreis bewegen“ bedeutet.",
+      "tts": {
+        "text": "Kreislauf kommt vom Wort „zirkulieren“, was „sich im Kreis bewegen“ bedeutet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Blut verlässt das Herz, fließt durch den Körper und kehrt zum Herzen zurück.",
+      "text_markdown": "Das Blut verlässt das Herz, fließt durch den Körper und kehrt zum Herzen zurück.",
+      "tts": {
+        "text": "Das Blut verlässt das Herz, fließt durch den Körper und kehrt zum Herzen zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Diese Schleife endet niemals.",
+      "text_markdown": "Diese Schleife endet niemals.",
+      "tts": {
+        "text": "Diese Schleife endet niemals.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dein Herz schlägt schon, seit du auf der Welt bist.",
+      "text_markdown": "Dein Herz schlägt schon, seit du auf der Welt bist.",
+      "tts": {
+        "text": "Dein Herz schlägt schon, seit du auf der Welt bist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Die Pumpe, die niemals stoppt",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es wird in deinem Leben Milliarden Male schlagen.",
+      "text_markdown": "Es wird in deinem Leben Milliarden Male schlagen.",
+      "tts": {
+        "text": "Es wird in deinem Leben Milliarden Male schlagen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vier Kammern",
+      "text_markdown": "Vier Kammern"
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das menschliche Herz hat vier Kammern.",
+      "text_markdown": "Das menschliche Herz hat vier Kammern.",
+      "tts": {
+        "text": "Das menschliche Herz hat vier Kammern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eine Kammer ist ein abgeschlossener Raum.",
+      "text_markdown": "Eine Kammer ist ein abgeschlossener Raum.",
+      "tts": {
+        "text": "Eine Kammer ist ein abgeschlossener Raum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jede Kammer spielt eine bestimmte Rolle beim Bewegen des Blutes.",
+      "text_markdown": "Jede Kammer spielt eine bestimmte Rolle beim Bewegen des Blutes.",
+      "tts": {
+        "text": "Jede Kammer spielt eine bestimmte Rolle beim Bewegen des Blutes.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die beiden oberen Kammern heißen Vorhöfe.",
+      "text_markdown": "Die beiden oberen Kammern heißen Vorhöfe.",
+      "tts": {
+        "text": "Die beiden oberen Kammern heißen Vorhöfe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Einer davon wird Atrium oder Vorhof genannt.",
+      "text_markdown": "Einer davon wird Atrium oder Vorhof genannt.",
+      "tts": {
+        "text": "Einer davon wird Atrium oder Vorhof genannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Vorhöfe sind kleiner und dünner.",
+      "text_markdown": "Die Vorhöfe sind kleiner und dünner.",
+      "tts": {
+        "text": "Die Vorhöfe sind kleiner und dünner.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie nehmen das Blut auf, das in das Herz hineinfließt.",
+      "text_markdown": "Sie nehmen das Blut auf, das in das Herz hineinfließt.",
+      "tts": {
+        "text": "Sie nehmen das Blut auf, das in das Herz hineinfließt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Stell sie dir als Empfangsräume vor.",
+      "text_markdown": "Stell sie dir als Empfangsräume vor.",
+      "tts": {
+        "text": "Stell sie dir als Empfangsräume vor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die beiden unteren Kammern heißen Ventrikel oder Herzkammern.",
+      "text_markdown": "Die beiden unteren Kammern heißen Ventrikel oder Herzkammern.",
+      "tts": {
+        "text": "Die beiden unteren Kammern heißen Ventrikel oder Herzkammern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Ventrikel ist eine dickere, muskulösere Kammer.",
+      "text_markdown": "Ein Ventrikel ist eine dickere, muskulösere Kammer.",
+      "tts": {
+        "text": "Ein Ventrikel ist eine dickere, muskulösere Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Ventrikel pumpen das Blut aus dem Herzen heraus.",
+      "text_markdown": "Die Ventrikel pumpen das Blut aus dem Herzen heraus.",
+      "tts": {
+        "text": "Die Ventrikel pumpen das Blut aus dem Herzen heraus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie machen die schwere Arbeit.",
+      "text_markdown": "Sie machen die schwere Arbeit.",
+      "tts": {
+        "text": "Sie machen die schwere Arbeit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der rechte Vorhof empfängt Blut aus dem Körper.",
+      "text_markdown": "Der rechte Vorhof empfängt Blut aus dem Körper.",
+      "tts": {
+        "text": "Der rechte Vorhof empfängt Blut aus dem Körper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dieses Blut hat seinen Sauerstoff bereits an die Zellen abgegeben.",
+      "text_markdown": "Dieses Blut hat seinen Sauerstoff bereits an die Zellen abgegeben.",
+      "tts": {
+        "text": "Dieses Blut hat seinen Sauerstoff bereits an die Zellen abgegeben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es ist arm an Sauerstoff.",
+      "text_markdown": "Es ist arm an Sauerstoff.",
+      "tts": {
+        "text": "Es ist arm an Sauerstoff.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es ist dunkelrot.",
+      "text_markdown": "Es ist dunkelrot.",
+      "tts": {
+        "text": "Es ist dunkelrot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das Blut gelangt durch zwei große Venen in den rechten Vorhof.",
+      "text_markdown": "Das Blut gelangt durch zwei große Venen in den rechten Vorhof.",
+      "tts": {
+        "text": "Das Blut gelangt durch zwei große Venen in den rechten Vorhof.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Eine Vene ist ein Blutgefäß, das Blut zum Herzen hinträgt.",
+      "text_markdown": "Eine Vene ist ein Blutgefäß, das Blut zum Herzen hinträgt.",
+      "tts": {
+        "text": "Eine Vene ist ein Blutgefäß, das Blut zum Herzen hinträgt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Die beiden Venen sind die obere und die untere Hohlvene.",
+      "text_markdown": "Die beiden Venen sind die obere und die untere Hohlvene.",
+      "tts": {
+        "text": "Die beiden Venen sind die obere und die untere Hohlvene.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Superior bedeutet obere.",
+      "text_markdown": "Superior bedeutet obere.",
+      "tts": {
+        "text": "Superior bedeutet obere.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p15",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Inferior bedeutet untere.",
+      "text_markdown": "Inferior bedeutet untere.",
+      "tts": {
+        "text": "Inferior bedeutet untere.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aus dem rechten Vorhof fließt das Blut nach unten in die rechte Kammer.",
+      "text_markdown": "Aus dem rechten Vorhof fließt das Blut nach unten in die rechte Kammer.",
+      "tts": {
+        "text": "Aus dem rechten Vorhof fließt das Blut nach unten in die rechte Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die rechte Kammer pumpt dieses Blut in die Lunge.",
+      "text_markdown": "Die rechte Kammer pumpt dieses Blut in die Lunge.",
+      "tts": {
+        "text": "Die rechte Kammer pumpt dieses Blut in die Lunge.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In der Lunge nimmt das Blut frischen Sauerstoff auf.",
+      "text_markdown": "In der Lunge nimmt das Blut frischen Sauerstoff auf.",
+      "tts": {
+        "text": "In der Lunge nimmt das Blut frischen Sauerstoff auf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es gibt außerdem Kohlendioxid ab.",
+      "text_markdown": "Es gibt außerdem Kohlendioxid ab.",
+      "tts": {
+        "text": "Es gibt außerdem Kohlendioxid ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kohlendioxid ist ein Abfallgas, das die Zellen erzeugen.",
+      "text_markdown": "Kohlendioxid ist ein Abfallgas, das die Zellen erzeugen.",
+      "tts": {
+        "text": "Kohlendioxid ist ein Abfallgas, das die Zellen erzeugen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Du atmest mit jedem Atemzug Kohlendioxid aus.",
+      "text_markdown": "Du atmest mit jedem Atemzug Kohlendioxid aus.",
+      "tts": {
+        "text": "Du atmest mit jedem Atemzug Kohlendioxid aus.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Blut kehrt aus der Lunge in den linken Vorhof zurück.",
+      "text_markdown": "Das Blut kehrt aus der Lunge in den linken Vorhof zurück.",
+      "tts": {
+        "text": "Das Blut kehrt aus der Lunge in den linken Vorhof zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dieses Blut ist nun reich an Sauerstoff.",
+      "text_markdown": "Dieses Blut ist nun reich an Sauerstoff.",
+      "tts": {
+        "text": "Dieses Blut ist nun reich an Sauerstoff.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es ist hellrot.",
+      "text_markdown": "Es ist hellrot.",
+      "tts": {
+        "text": "Es ist hellrot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es gelangt durch die Lungenvenen in den linken Vorhof.",
+      "text_markdown": "Es gelangt durch die Lungenvenen in den linken Vorhof.",
+      "tts": {
+        "text": "Es gelangt durch die Lungenvenen in den linken Vorhof.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Pulmonal bedeutet „die Lunge betreffend“.",
+      "text_markdown": "Pulmonal bedeutet „die Lunge betreffend“.",
+      "tts": {
+        "text": "Pulmonal bedeutet „die Lunge betreffend“.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aus dem linken Vorhof fließt das Blut in die linke Kammer.",
+      "text_markdown": "Aus dem linken Vorhof fließt das Blut in die linke Kammer.",
+      "tts": {
+        "text": "Aus dem linken Vorhof fließt das Blut in die linke Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die linke Kammer ist die stärkste Kammer.",
+      "text_markdown": "Die linke Kammer ist die stärkste Kammer.",
+      "tts": {
+        "text": "Die linke Kammer ist die stärkste Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ihre Wände sind am dicksten.",
+      "text_markdown": "Ihre Wände sind am dicksten.",
+      "tts": {
+        "text": "Ihre Wände sind am dicksten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die linke Kammer pumpt sauerstoffreiches Blut in den gesamten Körper.",
+      "text_markdown": "Die linke Kammer pumpt sauerstoffreiches Blut in den gesamten Körper.",
+      "tts": {
+        "text": "Die linke Kammer pumpt sauerstoffreiches Blut in den gesamten Körper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sie muss das Blut bis in deine Zehen und bis zum Scheitel deines Kopfes drücken.",
+      "text_markdown": "Sie muss das Blut bis in deine Zehen und bis zum Scheitel deines Kopfes drücken.",
+      "tts": {
+        "text": "Sie muss das Blut bis in deine Zehen und bis zum Scheitel deines Kopfes drücken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Das erfordert große Kraft.",
+      "text_markdown": "Das erfordert große Kraft.",
+      "tts": {
+        "text": "Das erfordert große Kraft.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwischen den Kammern befinden sich Klappen.",
+      "text_markdown": "Zwischen den Kammern befinden sich Klappen.",
+      "tts": {
+        "text": "Zwischen den Kammern befinden sich Klappen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eine Klappe ist eine Lasche, die sich nur in eine Richtung öffnet.",
+      "text_markdown": "Eine Klappe ist eine Lasche, die sich nur in eine Richtung öffnet.",
+      "tts": {
+        "text": "Eine Klappe ist eine Lasche, die sich nur in eine Richtung öffnet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Klappen verhindern, dass Blut zurückfließt.",
+      "text_markdown": "Klappen verhindern, dass Blut zurückfließt.",
+      "tts": {
+        "text": "Klappen verhindern, dass Blut zurückfließt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Im Herzen gibt es vier Klappen.",
+      "text_markdown": "Im Herzen gibt es vier Klappen.",
+      "tts": {
+        "text": "Im Herzen gibt es vier Klappen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die Trikuspidalklappe sitzt zwischen dem rechten Vorhof und der rechten Kammer.",
+      "text_markdown": "Die Trikuspidalklappe sitzt zwischen dem rechten Vorhof und der rechten Kammer.",
+      "tts": {
+        "text": "Die Trikuspidalklappe sitzt zwischen dem rechten Vorhof und der rechten Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Die Mitralklappe sitzt zwischen dem linken Vorhof und der linken Kammer.",
+      "text_markdown": "Die Mitralklappe sitzt zwischen dem linken Vorhof und der linken Kammer.",
+      "tts": {
+        "text": "Die Mitralklappe sitzt zwischen dem linken Vorhof und der linken Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Die Pulmonalklappe bewacht den Ausgang der rechten Kammer.",
+      "text_markdown": "Die Pulmonalklappe bewacht den Ausgang der rechten Kammer.",
+      "tts": {
+        "text": "Die Pulmonalklappe bewacht den Ausgang der rechten Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p19",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Die Aortenklappe bewacht den Ausgang der linken Kammer.",
+      "text_markdown": "Die Aortenklappe bewacht den Ausgang der linken Kammer.",
+      "tts": {
+        "text": "Die Aortenklappe bewacht den Ausgang der linken Kammer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn sich Klappen schließen, erzeugen sie ein Geräusch.",
+      "text_markdown": "Wenn sich Klappen schließen, erzeugen sie ein Geräusch.",
+      "tts": {
+        "text": "Wenn sich Klappen schließen, erzeugen sie ein Geräusch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Arzt kann dieses Geräusch mit einem Stethoskop hören.",
+      "text_markdown": "Ein Arzt kann dieses Geräusch mit einem Stethoskop hören.",
+      "tts": {
+        "text": "Ein Arzt kann dieses Geräusch mit einem Stethoskop hören.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Stethoskop ist ein Werkzeug, um Geräusche im Inneren des Körpers abzuhören.",
+      "text_markdown": "Ein Stethoskop ist ein Werkzeug, um Geräusche im Inneren des Körpers abzuhören.",
+      "tts": {
+        "text": "Ein Stethoskop ist ein Werkzeug, um Geräusche im Inneren des Körpers abzuhören.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Herzschlag Geräusch „lub dub“ entsteht durch das Schließen der Klappen.",
+      "text_markdown": "Das Herzschlag Geräusch „lub dub“ entsteht durch das Schließen der Klappen.",
+      "tts": {
+        "text": "Das Herzschlag Geräusch „lub dub“ entsteht durch das Schließen der Klappen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das „lub“ ist das Schließen der Mitral und Trikuspidalklappe.",
+      "text_markdown": "Das „lub“ ist das Schließen der Mitral und Trikuspidalklappe.",
+      "tts": {
+        "text": "Das „lub“ ist das Schließen der Mitral und Trikuspidalklappe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p20",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Das „dub“ ist das Schließen der Aorten und Pulmonalklappe.",
+      "text_markdown": "Das „dub“ ist das Schließen der Aorten und Pulmonalklappe.",
+      "tts": {
+        "text": "Das „dub“ ist das Schließen der Aorten und Pulmonalklappe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vier Kammern.",
+      "text_markdown": "Vier Kammern.",
+      "tts": {
+        "text": "Vier Kammern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vier Klappen.",
+      "text_markdown": "Vier Klappen.",
+      "tts": {
+        "text": "Vier Klappen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Vier Kammern",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Zweck: das Blut in Bewegung zu halten.",
+      "text_markdown": "Ein Zweck: das Blut in Bewegung zu halten.",
+      "tts": {
+        "text": "Ein Zweck: das Blut in Bewegung zu halten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Blutgefäße",
+      "text_markdown": "Blutgefäße"
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Blut fließt nicht frei durch deinen Körper.",
+      "text_markdown": "Blut fließt nicht frei durch deinen Körper.",
+      "tts": {
+        "text": "Blut fließt nicht frei durch deinen Körper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es bewegt sich durch Röhren, die Blutgefäße heißen.",
+      "text_markdown": "Es bewegt sich durch Röhren, die Blutgefäße heißen.",
+      "tts": {
+        "text": "Es bewegt sich durch Röhren, die Blutgefäße heißen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blutgefäße bilden ein Netzwerk, das jedes Gewebe in deinem Körper erreicht.",
+      "text_markdown": "Blutgefäße bilden ein Netzwerk, das jedes Gewebe in deinem Körper erreicht.",
+      "tts": {
+        "text": "Blutgefäße bilden ein Netzwerk, das jedes Gewebe in deinem Körper erreicht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wenn du alle deine Blutgefäße aneinanderreihen würdest, würden sie sich über etwa 100.000 Kilometer erstrecken.",
+      "text_markdown": "Wenn du alle deine Blutgefäße aneinanderreihen würdest, würden sie sich über etwa 100.000 Kilometer erstrecken.",
+      "tts": {
+        "text": "Wenn du alle deine Blutgefäße aneinanderreihen würdest, würden sie sich über etwa einhunderttausend Kilometer erstrecken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das wäre genug, um die Erde zweieinhalb Mal zu umrunden.",
+      "text_markdown": "Das wäre genug, um die Erde zweieinhalb Mal zu umrunden.",
+      "tts": {
+        "text": "Das wäre genug, um die Erde zweieinhalb Mal zu umrunden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt drei Hauptarten von Blutgefäßen: Arterien, Venen und Kapillaren.",
+      "text_markdown": "Es gibt drei Hauptarten von Blutgefäßen: Arterien, Venen und Kapillaren.",
+      "tts": {
+        "text": "Es gibt drei Hauptarten von Blutgefäßen: Arterien, Venen und Kapillaren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arterien führen Blut vom Herzen weg.",
+      "text_markdown": "Arterien führen Blut vom Herzen weg.",
+      "tts": {
+        "text": "Arterien führen Blut vom Herzen weg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Merke es dir so: „Arterie“ und „away“ beginnen beide mit „a“. Arterien transportieren sauerstoffreiches Blut zu deinen Geweben.",
+      "text_markdown": "Merke es dir so: „Arterie“ und „away“ beginnen beide mit „a“. Arterien transportieren sauerstoffreiches Blut zu deinen Geweben.",
+      "tts": {
+        "text": "Merke es dir so: „Arterie“ und „away“ beginnen beide mit „a“. Arterien transportieren sauerstoffreiches Blut zu deinen Geweben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die größte Arterie ist die Aorta.",
+      "text_markdown": "Die größte Arterie ist die Aorta.",
+      "tts": {
+        "text": "Die größte Arterie ist die Aorta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Aorta verlässt die linke Kammer.",
+      "text_markdown": "Die Aorta verlässt die linke Kammer.",
+      "tts": {
+        "text": "Die Aorta verlässt die linke Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p25",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sie wölbt sich nach oben und biegt dann nach unten durch deine Brust und deinen Bauch.",
+      "text_markdown": "Sie wölbt sich nach oben und biegt dann nach unten durch deine Brust und deinen Bauch.",
+      "tts": {
+        "text": "Sie wölbt sich nach oben und biegt dann nach unten durch deine Brust und deinen Bauch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p25",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Äste zweigen von der Aorta ab und führen zu jedem Teil deines Körpers.",
+      "text_markdown": "Äste zweigen von der Aorta ab und führen zu jedem Teil deines Körpers.",
+      "tts": {
+        "text": "Äste zweigen von der Aorta ab und führen zu jedem Teil deines Körpers.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wände der Arterien sind dick und elastisch.",
+      "text_markdown": "Die Wände der Arterien sind dick und elastisch.",
+      "tts": {
+        "text": "Die Wände der Arterien sind dick und elastisch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elastisch bedeutet, sie können sich dehnen und wieder zurückschnellen.",
+      "text_markdown": "Elastisch bedeutet, sie können sich dehnen und wieder zurückschnellen.",
+      "tts": {
+        "text": "Elastisch bedeutet, sie können sich dehnen und wieder zurückschnellen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wenn sich das Herz zusammenzieht, drückt es eine Welle von Blut in die Arterien.",
+      "text_markdown": "Wenn sich das Herz zusammenzieht, drückt es eine Welle von Blut in die Arterien.",
+      "tts": {
+        "text": "Wenn sich das Herz zusammenzieht, drückt es eine Welle von Blut in die Arterien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Arterienwände dehnen sich aus, um diesen Druck aufzunehmen.",
+      "text_markdown": "Die Arterienwände dehnen sich aus, um diesen Druck aufzunehmen.",
+      "tts": {
+        "text": "Die Arterienwände dehnen sich aus, um diesen Druck aufzunehmen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dann schnellen sie zurück und treiben das Blut weiter.",
+      "text_markdown": "Dann schnellen sie zurück und treiben das Blut weiter.",
+      "tts": {
+        "text": "Dann schnellen sie zurück und treiben das Blut weiter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "So entsteht ein Puls.",
+      "text_markdown": "So entsteht ein Puls.",
+      "tts": {
+        "text": "So entsteht ein Puls.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ein Puls ist ein rhythmisches Klopfen, das du an bestimmten Stellen spüren kannst.",
+      "text_markdown": "Ein Puls ist ein rhythmisches Klopfen, das du an bestimmten Stellen spüren kannst.",
+      "tts": {
+        "text": "Ein Puls ist ein rhythmisches Klopfen, das du an bestimmten Stellen spüren kannst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Du kannst deinen Puls am Handgelenk oder seitlich am Hals fühlen.",
+      "text_markdown": "Du kannst deinen Puls am Handgelenk oder seitlich am Hals fühlen.",
+      "tts": {
+        "text": "Du kannst deinen Puls am Handgelenk oder seitlich am Hals fühlen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Venen führen Blut zum Herzen zurück.",
+      "text_markdown": "Venen führen Blut zum Herzen zurück.",
+      "tts": {
+        "text": "Venen führen Blut zum Herzen zurück.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die meisten Venen transportieren Blut, das arm an Sauerstoff ist.",
+      "text_markdown": "Die meisten Venen transportieren Blut, das arm an Sauerstoff ist.",
+      "tts": {
+        "text": "Die meisten Venen transportieren Blut, das arm an Sauerstoff ist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Venenwände sind dünner als Arterienwände.",
+      "text_markdown": "Venenwände sind dünner als Arterienwände.",
+      "tts": {
+        "text": "Venenwände sind dünner als Arterienwände.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Blut in den Venen fließt unter niedrigerem Druck.",
+      "text_markdown": "Das Blut in den Venen fließt unter niedrigerem Druck.",
+      "tts": {
+        "text": "Das Blut in den Venen fließt unter niedrigerem Druck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Venen haben in ihrem Inneren kleine Klappen.",
+      "text_markdown": "Venen haben in ihrem Inneren kleine Klappen.",
+      "tts": {
+        "text": "Venen haben in ihrem Inneren kleine Klappen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Diese Klappen verhindern, dass Blut zurückfließt.",
+      "text_markdown": "Diese Klappen verhindern, dass Blut zurückfließt.",
+      "tts": {
+        "text": "Diese Klappen verhindern, dass Blut zurückfließt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wenn du aufstehst, muss das Blut in deinen Beinen gegen die Schwerkraft nach oben fließen.",
+      "text_markdown": "Wenn du aufstehst, muss das Blut in deinen Beinen gegen die Schwerkraft nach oben fließen.",
+      "tts": {
+        "text": "Wenn du aufstehst, muss das Blut in deinen Beinen gegen die Schwerkraft nach oben fließen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p27",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Die Klappen halten es in der richtigen Richtung.",
+      "text_markdown": "Die Klappen halten es in der richtigen Richtung.",
+      "tts": {
+        "text": "Die Klappen halten es in der richtigen Richtung.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kapillaren sind die kleinsten Blutgefäße.",
+      "text_markdown": "Kapillaren sind die kleinsten Blutgefäße.",
+      "tts": {
+        "text": "Kapillaren sind die kleinsten Blutgefäße.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie sind mikroskopisch klein.",
+      "text_markdown": "Sie sind mikroskopisch klein.",
+      "tts": {
+        "text": "Sie sind mikroskopisch klein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mikroskopisch bedeutet zu klein, um sie ohne ein Mikroskop zu sehen.",
+      "text_markdown": "Mikroskopisch bedeutet zu klein, um sie ohne ein Mikroskop zu sehen.",
+      "tts": {
+        "text": "Mikroskopisch bedeutet zu klein, um sie ohne ein Mikroskop zu sehen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Wand einer Kapillare ist nur eine Zelle dick.",
+      "text_markdown": "Die Wand einer Kapillare ist nur eine Zelle dick.",
+      "tts": {
+        "text": "Die Wand einer Kapillare ist nur eine Zelle dick.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Diese Dünne ist wichtig.",
+      "text_markdown": "Diese Dünne ist wichtig.",
+      "tts": {
+        "text": "Diese Dünne ist wichtig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sauerstoff geht durch die Kapillarwand und tritt in das umliegende Gewebe ein.",
+      "text_markdown": "Sauerstoff geht durch die Kapillarwand und tritt in das umliegende Gewebe ein.",
+      "tts": {
+        "text": "Sauerstoff geht durch die Kapillarwand und tritt in das umliegende Gewebe ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kohlendioxid geht aus dem Gewebe in die Kapillare über.",
+      "text_markdown": "Kohlendioxid geht aus dem Gewebe in die Kapillare über.",
+      "tts": {
+        "text": "Kohlendioxid geht aus dem Gewebe in die Kapillare über.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Nährstoffe gehen hinaus.",
+      "text_markdown": "Nährstoffe gehen hinaus.",
+      "tts": {
+        "text": "Nährstoffe gehen hinaus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Abfallstoffe gehen hinein.",
+      "text_markdown": "Abfallstoffe gehen hinein.",
+      "tts": {
+        "text": "Abfallstoffe gehen hinein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p28",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Der gesamte Austausch findet in den Kapillaren statt.",
+      "text_markdown": "Der gesamte Austausch findet in den Kapillaren statt.",
+      "tts": {
+        "text": "Der gesamte Austausch findet in den Kapillaren statt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Arterien verzweigen sich in immer kleinere Gefäße, die Arteriolen heißen.",
+      "text_markdown": "Arterien verzweigen sich in immer kleinere Gefäße, die Arteriolen heißen.",
+      "tts": {
+        "text": "Arterien verzweigen sich in immer kleinere Gefäße, die Arteriolen heißen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arteriolen verbinden sich mit den Kapillaren.",
+      "text_markdown": "Arteriolen verbinden sich mit den Kapillaren.",
+      "tts": {
+        "text": "Arteriolen verbinden sich mit den Kapillaren.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kapillaren münden in etwas größere Gefäße, die Venolen heißen.",
+      "text_markdown": "Kapillaren münden in etwas größere Gefäße, die Venolen heißen.",
+      "tts": {
+        "text": "Kapillaren münden in etwas größere Gefäße, die Venolen heißen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Venolen vereinigen sich zu Venen.",
+      "text_markdown": "Venolen vereinigen sich zu Venen.",
+      "tts": {
+        "text": "Venolen vereinigen sich zu Venen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Venen führen das Blut zum Herzen zurück.",
+      "text_markdown": "Venen führen das Blut zum Herzen zurück.",
+      "tts": {
+        "text": "Venen führen das Blut zum Herzen zurück.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das ist ein geschlossener Kreislauf.",
+      "text_markdown": "Das ist ein geschlossener Kreislauf.",
+      "tts": {
+        "text": "Das ist ein geschlossener Kreislauf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Unter normalen Bedingungen verlässt das Blut die Gefäße niemals.",
+      "text_markdown": "Unter normalen Bedingungen verlässt das Blut die Gefäße niemals.",
+      "tts": {
+        "text": "Unter normalen Bedingungen verlässt das Blut die Gefäße niemals.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Herz drückt es durch die Arterien hinaus.",
+      "text_markdown": "Das Herz drückt es durch die Arterien hinaus.",
+      "tts": {
+        "text": "Das Herz drückt es durch die Arterien hinaus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Kapillaren übernehmen den Austausch.",
+      "text_markdown": "Die Kapillaren übernehmen den Austausch.",
+      "tts": {
+        "text": "Die Kapillaren übernehmen den Austausch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Blutgefäße",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die Venen bringen es nach Hause.",
+      "text_markdown": "Die Venen bringen es nach Hause.",
+      "tts": {
+        "text": "Die Venen bringen es nach Hause.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-152",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der Herzschlag",
+      "text_markdown": "Der Herzschlag"
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dein Herz schlägt etwa 100.000 Mal pro Tag.",
+      "text_markdown": "Dein Herz schlägt etwa 100.000 Mal pro Tag.",
+      "tts": {
+        "text": "Dein Herz schlägt etwa einhunderttausend Mal pro Tag.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeder Schlag ist eine sorgfältig abgestimmte Abfolge von Ereignissen.",
+      "text_markdown": "Jeder Schlag ist eine sorgfältig abgestimmte Abfolge von Ereignissen.",
+      "tts": {
+        "text": "Jeder Schlag ist eine sorgfältig abgestimmte Abfolge von Ereignissen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Zeitsteuerung wird durch elektrische Signale geregelt, die im Herzen selbst entstehen.",
+      "text_markdown": "Die Zeitsteuerung wird durch elektrische Signale geregelt, die im Herzen selbst entstehen.",
+      "tts": {
+        "text": "Die Zeitsteuerung wird durch elektrische Signale geregelt, die im Herzen selbst entstehen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der natürliche Schrittmacher des Herzens heißt Sinusknoten.",
+      "text_markdown": "Der natürliche Schrittmacher des Herzens heißt Sinusknoten.",
+      "tts": {
+        "text": "Der natürliche Schrittmacher des Herzens heißt Sinusknoten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wir nennen ihn meistens den SA Knoten.",
+      "text_markdown": "Wir nennen ihn meistens den SA Knoten.",
+      "tts": {
+        "text": "Wir nennen ihn meistens den SA Knoten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er ist eine kleine Gruppe von Zellen in der Wand des rechten Vorhofs.",
+      "text_markdown": "Er ist eine kleine Gruppe von Zellen in der Wand des rechten Vorhofs.",
+      "tts": {
+        "text": "Er ist eine kleine Gruppe von Zellen in der Wand des rechten Vorhofs.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eine Gruppe ist eine Ansammlung von Dingen, die nahe beieinander liegen.",
+      "text_markdown": "Eine Gruppe ist eine Ansammlung von Dingen, die nahe beieinander liegen.",
+      "tts": {
+        "text": "Eine Gruppe ist eine Ansammlung von Dingen, die nahe beieinander liegen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Der SA Knoten erzeugt elektrische Impulse.",
+      "text_markdown": "Der SA Knoten erzeugt elektrische Impulse.",
+      "tts": {
+        "text": "Der SA Knoten erzeugt elektrische Impulse.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ein Impuls ist ein plötzlicher Energieausbruch.",
+      "text_markdown": "Ein Impuls ist ein plötzlicher Energieausbruch.",
+      "tts": {
+        "text": "Ein Impuls ist ein plötzlicher Energieausbruch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Diese Impulse geben das Tempo des Herzschlags vor.",
+      "text_markdown": "Diese Impulse geben das Tempo des Herzschlags vor.",
+      "tts": {
+        "text": "Diese Impulse geben das Tempo des Herzschlags vor.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der SA-Knoten feuert bei einem ruhenden Erwachsenen etwa 60 bis 100 Mal pro Minute.",
+      "text_markdown": "Der SA-Knoten feuert bei einem ruhenden Erwachsenen etwa 60 bis 100 Mal pro Minute.",
+      "tts": {
+        "text": "Der SA Knoten feuert bei einem ruhenden Erwachsenen etwa sechzig bis einhundert Mal pro Minute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jeder Impuls breitet sich über beide Vorhöfe aus.",
+      "text_markdown": "Jeder Impuls breitet sich über beide Vorhöfe aus.",
+      "tts": {
+        "text": "Jeder Impuls breitet sich über beide Vorhöfe aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Vorhöfe ziehen sich gemeinsam zusammen.",
+      "text_markdown": "Die Vorhöfe ziehen sich gemeinsam zusammen.",
+      "tts": {
+        "text": "Die Vorhöfe ziehen sich gemeinsam zusammen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie drücken Blut in die Ventrikel.",
+      "text_markdown": "Sie drücken Blut in die Ventrikel.",
+      "tts": {
+        "text": "Sie drücken Blut in die Ventrikel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Impuls erreicht dann einen weiteren Knoten, den Atrioventrikularknoten.",
+      "text_markdown": "Der Impuls erreicht dann einen weiteren Knoten, den Atrioventrikularknoten.",
+      "tts": {
+        "text": "Der Impuls erreicht dann einen weiteren Knoten, den Atrioventrikularknoten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wir nennen ihn den AV Knoten.",
+      "text_markdown": "Wir nennen ihn den AV Knoten.",
+      "tts": {
+        "text": "Wir nennen ihn den AV Knoten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der AV Knoten sitzt zwischen den Vorhöfen und den Ventrikeln.",
+      "text_markdown": "Der AV Knoten sitzt zwischen den Vorhöfen und den Ventrikeln.",
+      "tts": {
+        "text": "Der AV Knoten sitzt zwischen den Vorhöfen und den Ventrikeln.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er hält das Signal für den Bruchteil einer Sekunde an.",
+      "text_markdown": "Er hält das Signal für den Bruchteil einer Sekunde an.",
+      "tts": {
+        "text": "Er hält das Signal für den Bruchteil einer Sekunde an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Diese Pause ist wesentlich.",
+      "text_markdown": "Diese Pause ist wesentlich.",
+      "tts": {
+        "text": "Diese Pause ist wesentlich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sie gibt den Vorhöfen Zeit, sich vollständig zu entleeren, bevor die Ventrikel kontrahieren.",
+      "text_markdown": "Sie gibt den Vorhöfen Zeit, sich vollständig zu entleeren, bevor die Ventrikel kontrahieren.",
+      "tts": {
+        "text": "Sie gibt den Vorhöfen Zeit, sich vollständig zu entleeren, bevor die Ventrikel kontrahieren.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach der Pause läuft das Signal eine Bahn entlang, die His Bündel heißt.",
+      "text_markdown": "Nach der Pause läuft das Signal eine Bahn entlang, die His Bündel heißt.",
+      "tts": {
+        "text": "Nach der Pause läuft das Signal eine Bahn entlang, die His Bündel heißt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "His wird ausgesprochen wie „hiss“. Es wurde nach Wilhelm His Jr. benannt, dem Wissenschaftler, der es entdeckte.",
+      "text_markdown": "His wird ausgesprochen wie „hiss“. Es wurde nach Wilhelm His Jr. benannt, dem Wissenschaftler, der es entdeckte.",
+      "tts": {
+        "text": "His wird ausgesprochen wie „hiss“. Es wurde nach Wilhelm His Jr. benannt, dem Wissenschaftler, der es entdeckte.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das His Bündel teilt sich in zwei Schenkel.",
+      "text_markdown": "Das His Bündel teilt sich in zwei Schenkel.",
+      "tts": {
+        "text": "Das His Bündel teilt sich in zwei Schenkel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein Schenkel führt zur rechten Kammer.",
+      "text_markdown": "Ein Schenkel führt zur rechten Kammer.",
+      "tts": {
+        "text": "Ein Schenkel führt zur rechten Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Der andere führt zur linken Kammer.",
+      "text_markdown": "Der andere führt zur linken Kammer.",
+      "tts": {
+        "text": "Der andere führt zur linken Kammer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Die Schenkel verzweigen sich in winzige Fasern, die Purkinje Fasern heißen.",
+      "text_markdown": "Die Schenkel verzweigen sich in winzige Fasern, die Purkinje Fasern heißen.",
+      "tts": {
+        "text": "Die Schenkel verzweigen sich in winzige Fasern, die Purkinje Fasern heißen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Diese Fasern leiten das Signal an die Muskelzellen beider Ventrikel weiter.",
+      "text_markdown": "Diese Fasern leiten das Signal an die Muskelzellen beider Ventrikel weiter.",
+      "tts": {
+        "text": "Diese Fasern leiten das Signal an die Muskelzellen beider Ventrikel weiter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Die Ventrikel ziehen sich kraftvoll und gleichzeitig zusammen.",
+      "text_markdown": "Die Ventrikel ziehen sich kraftvoll und gleichzeitig zusammen.",
+      "tts": {
+        "text": "Die Ventrikel ziehen sich kraftvoll und gleichzeitig zusammen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein vollständiger Zyklus aus Kontraktion und Entspannung heißt Herzzyklus.",
+      "text_markdown": "Ein vollständiger Zyklus aus Kontraktion und Entspannung heißt Herzzyklus.",
+      "tts": {
+        "text": "Ein vollständiger Zyklus aus Kontraktion und Entspannung heißt Herzzyklus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Kontraktionsphase heißt Systole.",
+      "text_markdown": "Die Kontraktionsphase heißt Systole.",
+      "tts": {
+        "text": "Die Kontraktionsphase heißt Systole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Systole stammt aus dem Griechischen und bedeutet „zusammenziehen“. Die Entspannungsphase heißt Diastole.",
+      "text_markdown": "Systole stammt aus dem Griechischen und bedeutet „zusammenziehen“. Die Entspannungsphase heißt Diastole.",
+      "tts": {
+        "text": "Systole stammt aus dem Griechischen und bedeutet „zusammenziehen“. Die Entspannungsphase heißt Diastole.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diastole stammt aus dem Griechischen und bedeutet „ausdehnen“.",
+      "text_markdown": "Diastole stammt aus dem Griechischen und bedeutet „ausdehnen“.",
+      "tts": {
+        "text": "Diastole stammt aus dem Griechischen und bedeutet „ausdehnen“.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Während der Systole drücken die Ventrikel zu und treiben das Blut hinaus.",
+      "text_markdown": "Während der Systole drücken die Ventrikel zu und treiben das Blut hinaus.",
+      "tts": {
+        "text": "Während der Systole drücken die Ventrikel zu und treiben das Blut hinaus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Während der Diastole entspannen sich die Ventrikel und füllen sich mit Blut.",
+      "text_markdown": "Während der Diastole entspannen sich die Ventrikel und füllen sich mit Blut.",
+      "tts": {
+        "text": "Während der Diastole entspannen sich die Ventrikel und füllen sich mit Blut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Zyklus wiederholt sich endlos.",
+      "text_markdown": "Der Zyklus wiederholt sich endlos.",
+      "tts": {
+        "text": "Der Zyklus wiederholt sich endlos.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Arzt kann die elektrische Aktivität des Herzens mit einem Gerät namens Elektrokardiogramm oder EKG messen.",
+      "text_markdown": "Ein Arzt kann die elektrische Aktivität des Herzens mit einem Gerät namens Elektrokardiogramm oder EKG messen.",
+      "tts": {
+        "text": "Ein Arzt kann die elektrische Aktivität des Herzens mit einem Gerät namens Elektrokardiogramm oder EKG messen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das EKG zeigt die elektrischen Impulse als Wellen auf einem Bildschirm.",
+      "text_markdown": "Das EKG zeigt die elektrischen Impulse als Wellen auf einem Bildschirm.",
+      "tts": {
+        "text": "Das EKG zeigt die elektrischen Impulse als Wellen auf einem Bildschirm.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jede Welle hat eine bestimmte Form.",
+      "text_markdown": "Jede Welle hat eine bestimmte Form.",
+      "tts": {
+        "text": "Jede Welle hat eine bestimmte Form.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ärzte lesen diese Formen, um zu prüfen, ob das Herz richtig arbeitet.",
+      "text_markdown": "Ärzte lesen diese Formen, um zu prüfen, ob das Herz richtig arbeitet.",
+      "tts": {
+        "text": "Ärzte lesen diese Formen, um zu prüfen, ob das Herz richtig arbeitet.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein unregelmäßiger Herzschlag heißt Arrhythmie.",
+      "text_markdown": "Ein unregelmäßiger Herzschlag heißt Arrhythmie.",
+      "tts": {
+        "text": "Ein unregelmäßiger Herzschlag heißt Arrhythmie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arrhythmie bedeutet „ohne Rhythmus“. Manche Arrhythmien sind harmlos.",
+      "text_markdown": "Arrhythmie bedeutet „ohne Rhythmus“. Manche Arrhythmien sind harmlos.",
+      "tts": {
+        "text": "Arrhythmie bedeutet „ohne Rhythmus“. Manche Arrhythmien sind harmlos.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Andere sind gefährlich.",
+      "text_markdown": "Andere sind gefährlich.",
+      "tts": {
+        "text": "Andere sind gefährlich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wenn der SA Knoten versagt, können Ärzte einen künstlichen Schrittmacher einsetzen.",
+      "text_markdown": "Wenn der SA Knoten versagt, können Ärzte einen künstlichen Schrittmacher einsetzen.",
+      "tts": {
+        "text": "Wenn der SA Knoten versagt, können Ärzte einen künstlichen Schrittmacher einsetzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dieses kleine Gerät sendet elektrische Signale, um das Herz gleichmäßig schlagen zu lassen.",
+      "text_markdown": "Dieses kleine Gerät sendet elektrische Signale, um das Herz gleichmäßig schlagen zu lassen.",
+      "tts": {
+        "text": "Dieses kleine Gerät sendet elektrische Signale, um das Herz gleichmäßig schlagen zu lassen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Herz ist sein eigener Trommler.",
+      "text_markdown": "Das Herz ist sein eigener Trommler.",
+      "tts": {
+        "text": "Das Herz ist sein eigener Trommler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Der Herzschlag",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es gibt sich seinen eigenen Takt und hält ihn perfekt.",
+      "text_markdown": "Es gibt sich seinen eigenen Takt und hält ihn perfekt.",
+      "tts": {
+        "text": "Es gibt sich seinen eigenen Takt und hält ihn perfekt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-199",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der Blutdruck",
+      "text_markdown": "Der Blutdruck"
+    },
+    {
+      "id": "ch05-200",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Blut drückt gegen die Wände deiner Arterien, während es fließt.",
+      "text_markdown": "Das Blut drückt gegen die Wände deiner Arterien, während es fließt.",
+      "tts": {
+        "text": "Das Blut drückt gegen die Wände deiner Arterien, während es fließt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-201",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dieser Druck heißt Blutdruck.",
+      "text_markdown": "Dieser Druck heißt Blutdruck.",
+      "tts": {
+        "text": "Dieser Druck heißt Blutdruck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-202",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Blutdruck ist die Kraft, mit der das Blut auf die Innenseite deiner Blutgefäße drückt.",
+      "text_markdown": "Blutdruck ist die Kraft, mit der das Blut auf die Innenseite deiner Blutgefäße drückt.",
+      "tts": {
+        "text": "Blutdruck ist die Kraft, mit der das Blut auf die Innenseite deiner Blutgefäße drückt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-203",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Blutdruck wird mit zwei Zahlen angegeben.",
+      "text_markdown": "Der Blutdruck wird mit zwei Zahlen angegeben.",
+      "tts": {
+        "text": "Der Blutdruck wird mit zwei Zahlen angegeben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-204",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die obere Zahl heißt systolischer Druck.",
+      "text_markdown": "Die obere Zahl heißt systolischer Druck.",
+      "tts": {
+        "text": "Die obere Zahl heißt systolischer Druck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-205",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der systolische Druck ist die Kraft, wenn sich das Herz zusammenzieht.",
+      "text_markdown": "Der systolische Druck ist die Kraft, wenn sich das Herz zusammenzieht.",
+      "tts": {
+        "text": "Der systolische Druck ist die Kraft, wenn sich das Herz zusammenzieht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-206",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er ist die höhere Zahl.",
+      "text_markdown": "Er ist die höhere Zahl.",
+      "tts": {
+        "text": "Er ist die höhere Zahl.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-207",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die untere Zahl heißt diastolischer Druck.",
+      "text_markdown": "Die untere Zahl heißt diastolischer Druck.",
+      "tts": {
+        "text": "Die untere Zahl heißt diastolischer Druck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p44",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Der diastolische Druck ist die Kraft, wenn sich das Herz entspannt.",
+      "text_markdown": "Der diastolische Druck ist die Kraft, wenn sich das Herz entspannt.",
+      "tts": {
+        "text": "Der diastolische Druck ist die Kraft, wenn sich das Herz entspannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p44",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Er ist die niedrigere Zahl.",
+      "text_markdown": "Er ist die niedrigere Zahl.",
+      "tts": {
+        "text": "Er ist die niedrigere Zahl.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein gesunder Blutdruck für einen Erwachsenen liegt bei etwa 120 zu 80.",
+      "text_markdown": "Ein gesunder Blutdruck für einen Erwachsenen liegt bei etwa 120 zu 80.",
+      "tts": {
+        "text": "Ein gesunder Blutdruck für einen Erwachsenen liegt bei etwa einhundertzwanzig zu achtzig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wir verwenden 120/80 als Schreibweise.",
+      "text_markdown": "Wir verwenden 120/80 als Schreibweise.",
+      "tts": {
+        "text": "Wir verwenden einhundertzwanzig zu achtzig als Schreibweise.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Maßeinheit sind Millimeter Quecksilbersäule, geschrieben als mmHg.",
+      "text_markdown": "Die Maßeinheit sind Millimeter Quecksilbersäule, geschrieben als mmHg.",
+      "tts": {
+        "text": "Die Maßeinheit sind Millimeter Quecksilbersäule, geschrieben als mmHg.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese Einheit stammt von frühen Druckmessgeräten, die eine Säule aus Quecksilber verwendeten.",
+      "text_markdown": "Diese Einheit stammt von frühen Druckmessgeräten, die eine Säule aus Quecksilber verwendeten.",
+      "tts": {
+        "text": "Diese Einheit stammt von frühen Druckmessgeräten, die eine Säule aus Quecksilber verwendeten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der Blutdruck wird mit einem Gerät namens Sphygmomanometer gemessen.",
+      "text_markdown": "Der Blutdruck wird mit einem Gerät namens Sphygmomanometer gemessen.",
+      "tts": {
+        "text": "Der Blutdruck wird mit einem Gerät namens Sphygmomanometer gemessen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das ist ein langes Wort.",
+      "text_markdown": "Das ist ein langes Wort.",
+      "tts": {
+        "text": "Das ist ein langes Wort.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es stammt aus griechischen Wurzeln, die „Puls“ und „Messen“ bedeuten. Eine Manschette wird um deinen Oberarm gelegt.",
+      "text_markdown": "Es stammt aus griechischen Wurzeln, die „Puls“ und „Messen“ bedeuten. Eine Manschette wird um deinen Oberarm gelegt.",
+      "tts": {
+        "text": "Es stammt aus griechischen Wurzeln, die „Puls“ und „Messen“ bedeuten. Eine Manschette wird um deinen Oberarm gelegt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Manschette bläht sich auf und drückt die Arterie zu.",
+      "text_markdown": "Die Manschette bläht sich auf und drückt die Arterie zu.",
+      "tts": {
+        "text": "Die Manschette bläht sich auf und drückt die Arterie zu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dann lässt die Manschette langsam Luft ab.",
+      "text_markdown": "Dann lässt die Manschette langsam Luft ab.",
+      "tts": {
+        "text": "Dann lässt die Manschette langsam Luft ab.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ein Arzt hört mit einem Stethoskop auf das Geräusch des fließenden Blutes.",
+      "text_markdown": "Ein Arzt hört mit einem Stethoskop auf das Geräusch des fließenden Blutes.",
+      "tts": {
+        "text": "Ein Arzt hört mit einem Stethoskop auf das Geräusch des fließenden Blutes.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Der Punkt, an dem das Geräusch beginnt, ist der systolische Druck.",
+      "text_markdown": "Der Punkt, an dem das Geräusch beginnt, ist der systolische Druck.",
+      "tts": {
+        "text": "Der Punkt, an dem das Geräusch beginnt, ist der systolische Druck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Der Punkt, an dem das Geräusch verschwindet, ist der diastolische Druck.",
+      "text_markdown": "Der Punkt, an dem das Geräusch verschwindet, ist der diastolische Druck.",
+      "tts": {
+        "text": "Der Punkt, an dem das Geräusch verschwindet, ist der diastolische Druck.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoher Blutdruck heißt Hypertonie.",
+      "text_markdown": "Hoher Blutdruck heißt Hypertonie.",
+      "tts": {
+        "text": "Hoher Blutdruck heißt Hypertonie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hyper bedeutet „über“ oder „übermäßig“. Tonie bezieht sich auf den Druck.",
+      "text_markdown": "Hyper bedeutet „über“ oder „übermäßig“. Tonie bezieht sich auf den Druck.",
+      "tts": {
+        "text": "Hyper bedeutet „über“ oder „übermäßig“. Tonie bezieht sich auf den Druck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hypertonie bedeutet, dass das Blut zu stark gegen die Arterienwände drückt.",
+      "text_markdown": "Hypertonie bedeutet, dass das Blut zu stark gegen die Arterienwände drückt.",
+      "tts": {
+        "text": "Hypertonie bedeutet, dass das Blut zu stark gegen die Arterienwände drückt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mit der Zeit beschädigt das die Arterien.",
+      "text_markdown": "Mit der Zeit beschädigt das die Arterien.",
+      "tts": {
+        "text": "Mit der Zeit beschädigt das die Arterien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es lässt das Herz härter arbeiten.",
+      "text_markdown": "Es lässt das Herz härter arbeiten.",
+      "tts": {
+        "text": "Es lässt das Herz härter arbeiten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Es erhöht das Risiko für Herzinfarkt und Schlaganfall.",
+      "text_markdown": "Es erhöht das Risiko für Herzinfarkt und Schlaganfall.",
+      "tts": {
+        "text": "Es erhöht das Risiko für Herzinfarkt und Schlaganfall.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ein Herzinfarkt geschieht, wenn der Blutfluss zu einem Teil des Herzmuskels blockiert ist.",
+      "text_markdown": "Ein Herzinfarkt geschieht, wenn der Blutfluss zu einem Teil des Herzmuskels blockiert ist.",
+      "tts": {
+        "text": "Ein Herzinfarkt geschieht, wenn der Blutfluss zu einem Teil des Herzmuskels blockiert ist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p47",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ein Schlaganfall geschieht, wenn der Blutfluss zu einem Teil des Gehirns blockiert ist.",
+      "text_markdown": "Ein Schlaganfall geschieht, wenn der Blutfluss zu einem Teil des Gehirns blockiert ist.",
+      "tts": {
+        "text": "Ein Schlaganfall geschieht, wenn der Blutfluss zu einem Teil des Gehirns blockiert ist.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hypertonie wird der „stille Killer“ genannt.",
+      "text_markdown": "Hypertonie wird der „stille Killer“ genannt.",
+      "tts": {
+        "text": "Hypertonie wird der „stille Killer“ genannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die meisten Menschen mit hohem Blutdruck spüren keine Beschwerden.",
+      "text_markdown": "Die meisten Menschen mit hohem Blutdruck spüren keine Beschwerden.",
+      "tts": {
+        "text": "Die meisten Menschen mit hohem Blutdruck spüren keine Beschwerden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie wissen nicht, dass sie ihn haben.",
+      "text_markdown": "Sie wissen nicht, dass sie ihn haben.",
+      "tts": {
+        "text": "Sie wissen nicht, dass sie ihn haben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Darum sind regelmäßige Untersuchungen wichtig.",
+      "text_markdown": "Darum sind regelmäßige Untersuchungen wichtig.",
+      "tts": {
+        "text": "Darum sind regelmäßige Untersuchungen wichtig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niedriger Blutdruck heißt Hypotonie.",
+      "text_markdown": "Niedriger Blutdruck heißt Hypotonie.",
+      "tts": {
+        "text": "Niedriger Blutdruck heißt Hypotonie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hypo bedeutet „unter“. Hypotonie kann Schwindel und Ohnmacht verursachen.",
+      "text_markdown": "Hypo bedeutet „unter“. Hypotonie kann Schwindel und Ohnmacht verursachen.",
+      "tts": {
+        "text": "Hypo bedeutet „unter“. Hypotonie kann Schwindel und Ohnmacht verursachen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie bedeutet, dass der Körper nicht genug Blutfluss bekommt.",
+      "text_markdown": "Sie bedeutet, dass der Körper nicht genug Blutfluss bekommt.",
+      "tts": {
+        "text": "Sie bedeutet, dass der Körper nicht genug Blutfluss bekommt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viele Faktoren beeinflussen den Blutdruck.",
+      "text_markdown": "Viele Faktoren beeinflussen den Blutdruck.",
+      "tts": {
+        "text": "Viele Faktoren beeinflussen den Blutdruck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Salz erhöht den Blutdruck.",
+      "text_markdown": "Salz erhöht den Blutdruck.",
+      "tts": {
+        "text": "Salz erhöht den Blutdruck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bewegung erhöht ihn vorübergehend, verbessert ihn aber mit der Zeit.",
+      "text_markdown": "Bewegung erhöht ihn vorübergehend, verbessert ihn aber mit der Zeit.",
+      "tts": {
+        "text": "Bewegung erhöht ihn vorübergehend, verbessert ihn aber mit der Zeit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Stress erhöht ihn.",
+      "text_markdown": "Stress erhöht ihn.",
+      "tts": {
+        "text": "Stress erhöht ihn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Schlaf senkt ihn.",
+      "text_markdown": "Schlaf senkt ihn.",
+      "tts": {
+        "text": "Schlaf senkt ihn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Übergewicht erhöht ihn.",
+      "text_markdown": "Übergewicht erhöht ihn.",
+      "tts": {
+        "text": "Übergewicht erhöht ihn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Übergewicht bedeutet, zu viel Körperfett zu haben.",
+      "text_markdown": "Übergewicht bedeutet, zu viel Körperfett zu haben.",
+      "tts": {
+        "text": "Übergewicht bedeutet, zu viel Körperfett zu haben.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den Blutdruck in einem gesunden Bereich zu halten schützt das Herz, das Gehirn, die Nieren und jedes Organ im Körper.",
+      "text_markdown": "Den Blutdruck in einem gesunden Bereich zu halten schützt das Herz, das Gehirn, die Nieren und jedes Organ im Körper.",
+      "tts": {
+        "text": "Den Blutdruck in einem gesunden Bereich zu halten schützt das Herz, das Gehirn, die Nieren und jedes Organ im Körper.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Der Blutdruck",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Kraft hinter jedem Herzschlag ist wichtig.",
+      "text_markdown": "Die Kraft hinter jedem Herzschlag ist wichtig.",
+      "tts": {
+        "text": "Die Kraft hinter jedem Herzschlag ist wichtig.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-246",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bewegung und das Herz",
+      "text_markdown": "Bewegung und das Herz"
+    },
+    {
+      "id": "ch06-247",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bewegung macht dein Herz stärker.",
+      "text_markdown": "Bewegung macht dein Herz stärker.",
+      "tts": {
+        "text": "Bewegung macht dein Herz stärker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-248",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Herz ist ein Muskel.",
+      "text_markdown": "Das Herz ist ein Muskel.",
+      "tts": {
+        "text": "Das Herz ist ein Muskel.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-249",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wie jeder Muskel wird es stärker, wenn du es benutzt.",
+      "text_markdown": "Wie jeder Muskel wird es stärker, wenn du es benutzt.",
+      "tts": {
+        "text": "Wie jeder Muskel wird es stärker, wenn du es benutzt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-250",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Regelmäßige Bewegung ist eines der besten Dinge, die du für dein Herz tun kannst.",
+      "text_markdown": "Regelmäßige Bewegung ist eines der besten Dinge, die du für dein Herz tun kannst.",
+      "tts": {
+        "text": "Regelmäßige Bewegung ist eines der besten Dinge, die du für dein Herz tun kannst.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-251",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn du dich bewegst, brauchen deine Muskeln mehr Sauerstoff.",
+      "text_markdown": "Wenn du dich bewegst, brauchen deine Muskeln mehr Sauerstoff.",
+      "tts": {
+        "text": "Wenn du dich bewegst, brauchen deine Muskeln mehr Sauerstoff.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie arbeiten härter.",
+      "text_markdown": "Sie arbeiten härter.",
+      "tts": {
+        "text": "Sie arbeiten härter.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie verbrennen mehr Energie.",
+      "text_markdown": "Sie verbrennen mehr Energie.",
+      "tts": {
+        "text": "Sie verbrennen mehr Energie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Um mehr Sauerstoff zu liefern, schlägt das Herz schneller.",
+      "text_markdown": "Um mehr Sauerstoff zu liefern, schlägt das Herz schneller.",
+      "tts": {
+        "text": "Um mehr Sauerstoff zu liefern, schlägt das Herz schneller.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es schlägt auch kräftiger.",
+      "text_markdown": "Es schlägt auch kräftiger.",
+      "tts": {
+        "text": "Es schlägt auch kräftiger.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Es pumpt mit jeder Kontraktion mehr Blut.",
+      "text_markdown": "Es pumpt mit jeder Kontraktion mehr Blut.",
+      "tts": {
+        "text": "Es pumpt mit jeder Kontraktion mehr Blut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p54",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Die Menge an Blut, die das Herz pro Minute pumpt, heißt Herzminutenvolumen.",
+      "text_markdown": "Die Menge an Blut, die das Herz pro Minute pumpt, heißt Herzminutenvolumen.",
+      "tts": {
+        "text": "Die Menge an Blut, die das Herz pro Minute pumpt, heißt Herzminutenvolumen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bei einem gesunden Erwachsenen liegt der Ruhepuls bei 60 bis 100 Schlägen pro Minute.",
+      "text_markdown": "Bei einem gesunden Erwachsenen liegt der Ruhepuls bei 60 bis 100 Schlägen pro Minute.",
+      "tts": {
+        "text": "Bei einem gesunden Erwachsenen liegt der Ruhepuls bei sechzig bis einhundert Schlägen pro Minute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bei intensiver Bewegung kann die Herzfrequenz auf 150, 170 oder sogar 200 Schläge pro Minute steigen.",
+      "text_markdown": "Bei intensiver Bewegung kann die Herzfrequenz auf 150, 170 oder sogar 200 Schläge pro Minute steigen.",
+      "tts": {
+        "text": "Bei intensiver Bewegung kann die Herzfrequenz auf einhundertfünfzig, einhundertsiebzig oder sogar zweihundert Schläge pro Minute steigen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Herzfrequenz ist die Anzahl der Herzschläge in einer Minute.",
+      "text_markdown": "Die Herzfrequenz ist die Anzahl der Herzschläge in einer Minute.",
+      "tts": {
+        "text": "Die Herzfrequenz ist die Anzahl der Herzschläge in einer Minute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Du kannst sie messen, indem du deinen Puls 15 Sekunden lang zählst und mit vier multiplizierst.",
+      "text_markdown": "Du kannst sie messen, indem du deinen Puls 15 Sekunden lang zählst und mit vier multiplizierst.",
+      "tts": {
+        "text": "Du kannst sie messen, indem du deinen Puls fünfzehn Sekunden lang zählst und mit vier multiplizierst.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sportler haben oft einen niedrigeren Ruhepuls.",
+      "text_markdown": "Sportler haben oft einen niedrigeren Ruhepuls.",
+      "tts": {
+        "text": "Sportler haben oft einen niedrigeren Ruhepuls.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein gut trainierter Ausdauersportler kann einen Ruhepuls von 40 bis 50 Schlägen pro Minute haben.",
+      "text_markdown": "Ein gut trainierter Ausdauersportler kann einen Ruhepuls von 40 bis 50 Schlägen pro Minute haben.",
+      "tts": {
+        "text": "Ein gut trainierter Ausdauersportler kann einen Ruhepuls von vierzig bis fünfzig Schlägen pro Minute haben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das liegt daran, dass ihre Herzen stärker sind.",
+      "text_markdown": "Das liegt daran, dass ihre Herzen stärker sind.",
+      "tts": {
+        "text": "Das liegt daran, dass ihre Herzen stärker sind.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein stärkeres Herz pumpt pro Schlag mehr Blut.",
+      "text_markdown": "Ein stärkeres Herz pumpt pro Schlag mehr Blut.",
+      "tts": {
+        "text": "Ein stärkeres Herz pumpt pro Schlag mehr Blut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es muss nicht so oft schlagen.",
+      "text_markdown": "Es muss nicht so oft schlagen.",
+      "tts": {
+        "text": "Es muss nicht so oft schlagen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Das nennt man Schlagvolumen.",
+      "text_markdown": "Das nennt man Schlagvolumen.",
+      "tts": {
+        "text": "Das nennt man Schlagvolumen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Das Schlagvolumen ist die Menge an Blut, die mit jedem Schlag gepumpt wird.",
+      "text_markdown": "Das Schlagvolumen ist die Menge an Blut, die mit jedem Schlag gepumpt wird.",
+      "tts": {
+        "text": "Das Schlagvolumen ist die Menge an Blut, die mit jedem Schlag gepumpt wird.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p56",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Training erhöht das Schlagvolumen.",
+      "text_markdown": "Training erhöht das Schlagvolumen.",
+      "tts": {
+        "text": "Training erhöht das Schlagvolumen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aerobes Training ist besonders gut für das Herz.",
+      "text_markdown": "Aerobes Training ist besonders gut für das Herz.",
+      "tts": {
+        "text": "Aerobes Training ist besonders gut für das Herz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aerob bedeutet „mit Sauerstoff“. Zu aerobem Training gehören Laufen, Schwimmen, Radfahren und zügiges Gehen.",
+      "text_markdown": "Aerob bedeutet „mit Sauerstoff“. Zu aerobem Training gehören Laufen, Schwimmen, Radfahren und zügiges Gehen.",
+      "tts": {
+        "text": "Aerob bedeutet „mit Sauerstoff“. Zu aerobem Training gehören Laufen, Schwimmen, Radfahren und zügiges Gehen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Während aerobem Training steigt deine Atemfrequenz.",
+      "text_markdown": "Während aerobem Training steigt deine Atemfrequenz.",
+      "tts": {
+        "text": "Während aerobem Training steigt deine Atemfrequenz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deine Herzfrequenz steigt.",
+      "text_markdown": "Deine Herzfrequenz steigt.",
+      "tts": {
+        "text": "Deine Herzfrequenz steigt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dein Körper nutzt Sauerstoff, um über einen langen Zeitraum gleichmäßig Brennstoff zu verbrennen.",
+      "text_markdown": "Dein Körper nutzt Sauerstoff, um über einen langen Zeitraum gleichmäßig Brennstoff zu verbrennen.",
+      "tts": {
+        "text": "Dein Körper nutzt Sauerstoff, um über einen langen Zeitraum gleichmäßig Brennstoff zu verbrennen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regelmäßiges aerobes Training senkt den Ruheblutdruck.",
+      "text_markdown": "Regelmäßiges aerobes Training senkt den Ruheblutdruck.",
+      "tts": {
+        "text": "Regelmäßiges aerobes Training senkt den Ruheblutdruck.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es erhöht den Spiegel des HDL Cholesterins.",
+      "text_markdown": "Es erhöht den Spiegel des HDL Cholesterins.",
+      "tts": {
+        "text": "Es erhöht den Spiegel des HDL Cholesterins.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "HDL steht für High Density Lipoprotein.",
+      "text_markdown": "HDL steht für High Density Lipoprotein.",
+      "tts": {
+        "text": "HDL steht für High Density Lipoprotein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "HDL wird oft das „gute“ Cholesterin genannt.",
+      "text_markdown": "HDL wird oft das „gute“ Cholesterin genannt.",
+      "tts": {
+        "text": "HDL wird oft das „gute“ Cholesterin genannt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es hilft, schädliches Cholesterin aus den Arterien zu entfernen.",
+      "text_markdown": "Es hilft, schädliches Cholesterin aus den Arterien zu entfernen.",
+      "tts": {
+        "text": "Es hilft, schädliches Cholesterin aus den Arterien zu entfernen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Cholesterin ist eine wachsartige Substanz im Blut.",
+      "text_markdown": "Cholesterin ist eine wachsartige Substanz im Blut.",
+      "tts": {
+        "text": "Cholesterin ist eine wachsartige Substanz im Blut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Zu viel von der falschen Art kann Arterien verstopfen.",
+      "text_markdown": "Zu viel von der falschen Art kann Arterien verstopfen.",
+      "tts": {
+        "text": "Zu viel von der falschen Art kann Arterien verstopfen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bewegung stärkt auch die Wände der Blutgefäße.",
+      "text_markdown": "Bewegung stärkt auch die Wände der Blutgefäße.",
+      "tts": {
+        "text": "Bewegung stärkt auch die Wände der Blutgefäße.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie macht sie flexibler.",
+      "text_markdown": "Sie macht sie flexibler.",
+      "tts": {
+        "text": "Sie macht sie flexibler.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Flexible Gefäße bewältigen Druckänderungen besser.",
+      "text_markdown": "Flexible Gefäße bewältigen Druckänderungen besser.",
+      "tts": {
+        "text": "Flexible Gefäße bewältigen Druckänderungen besser.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bewegung verringert Entzündungen.",
+      "text_markdown": "Bewegung verringert Entzündungen.",
+      "tts": {
+        "text": "Bewegung verringert Entzündungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Entzündung ist eine Schwellung und Reizung in Geweben.",
+      "text_markdown": "Entzündung ist eine Schwellung und Reizung in Geweben.",
+      "tts": {
+        "text": "Entzündung ist eine Schwellung und Reizung in Geweben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Chronische Entzündungen schädigen die Arterien mit der Zeit.",
+      "text_markdown": "Chronische Entzündungen schädigen die Arterien mit der Zeit.",
+      "tts": {
+        "text": "Chronische Entzündungen schädigen die Arterien mit der Zeit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p59",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Chronisch bedeutet lang andauernd.",
+      "text_markdown": "Chronisch bedeutet lang andauernd.",
+      "tts": {
+        "text": "Chronisch bedeutet lang andauernd.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Menschen, die sich nicht bewegen, haben ein höheres Risiko für Herzkrankheiten.",
+      "text_markdown": "Menschen, die sich nicht bewegen, haben ein höheres Risiko für Herzkrankheiten.",
+      "tts": {
+        "text": "Menschen, die sich nicht bewegen, haben ein höheres Risiko für Herzkrankheiten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Herzkrankheit ist die häufigste Todesursache weltweit.",
+      "text_markdown": "Herzkrankheit ist die häufigste Todesursache weltweit.",
+      "tts": {
+        "text": "Herzkrankheit ist die häufigste Todesursache weltweit.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Schon mäßige Bewegung macht einen Unterschied.",
+      "text_markdown": "Schon mäßige Bewegung macht einen Unterschied.",
+      "tts": {
+        "text": "Schon mäßige Bewegung macht einen Unterschied.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Täglich 30 Minuten zu Fuß zu gehen senkt das Risiko deutlich.",
+      "text_markdown": "Täglich 30 Minuten zu Fuß zu gehen senkt das Risiko deutlich.",
+      "tts": {
+        "text": "Täglich dreißig Minuten zu Fuß zu gehen senkt das Risiko deutlich.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Herz reagiert darauf, wie du lebst.",
+      "text_markdown": "Das Herz reagiert darauf, wie du lebst.",
+      "tts": {
+        "text": "Das Herz reagiert darauf, wie du lebst.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fordere es, und es wird stärker.",
+      "text_markdown": "Fordere es, und es wird stärker.",
+      "tts": {
+        "text": "Fordere es, und es wird stärker.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vernachlässige es, und es wird schwächer.",
+      "text_markdown": "Vernachlässige es, und es wird schwächer.",
+      "tts": {
+        "text": "Vernachlässige es, und es wird schwächer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bewegung und das Herz",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jeder Schritt zählt.",
+      "text_markdown": "Jeder Schritt zählt.",
+      "tts": {
+        "text": "Jeder Schritt zählt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-297",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Das Herz vor der Geburt",
+      "text_markdown": "Das Herz vor der Geburt"
+    },
+    {
+      "id": "ch07-298",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Herz ist eines der ersten Organe, die sich entwickeln.",
+      "text_markdown": "Das Herz ist eines der ersten Organe, die sich entwickeln.",
+      "tts": {
+        "text": "Das Herz ist eines der ersten Organe, die sich entwickeln.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-299",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es bildet sich früh, weil der wachsende Embryo Blutfluss zum Überleben braucht.",
+      "text_markdown": "Es bildet sich früh, weil der wachsende Embryo Blutfluss zum Überleben braucht.",
+      "tts": {
+        "text": "Es bildet sich früh, weil der wachsende Embryo Blutfluss zum Überleben braucht.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-300",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Embryo ist ein Organismus in seinen frühesten Entwicklungsstadien.",
+      "text_markdown": "Ein Embryo ist ein Organismus in seinen frühesten Entwicklungsstadien.",
+      "tts": {
+        "text": "Ein Embryo ist ein Organismus in seinen frühesten Entwicklungsstadien.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-301",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etwa 18 bis 20 Tage nach der Empfängnis beginnen Herzzellen zu erscheinen.",
+      "text_markdown": "Etwa 18 bis 20 Tage nach der Empfängnis beginnen Herzzellen zu erscheinen.",
+      "tts": {
+        "text": "Etwa achtzehn bis zwanzig Tage nach der Empfängnis beginnen Herzzellen zu erscheinen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-302",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie bilden ein einfaches Rohr.",
+      "text_markdown": "Sie bilden ein einfaches Rohr.",
+      "tts": {
+        "text": "Sie bilden ein einfaches Rohr.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-303",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dieses Rohr beginnt um den 22. Tag zu schlagen.",
+      "text_markdown": "Dieses Rohr beginnt um den 22. Tag zu schlagen.",
+      "tts": {
+        "text": "Dieses Rohr beginnt um den zweiundzwanzigsten Tag zu schlagen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-304",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "An diesem Punkt ist der Embryo kleiner als ein Reiskorn.",
+      "text_markdown": "An diesem Punkt ist der Embryo kleiner als ein Reiskorn.",
+      "tts": {
+        "text": "An diesem Punkt ist der Embryo kleiner als ein Reiskorn.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-305",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p64",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das schlagende Rohr drückt Flüssigkeit durch den winzigen Körper.",
+      "text_markdown": "Das schlagende Rohr drückt Flüssigkeit durch den winzigen Körper.",
+      "tts": {
+        "text": "Das schlagende Rohr drückt Flüssigkeit durch den winzigen Körper.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-306",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Lauf der nächsten Wochen faltet und windet sich das Rohr.",
+      "text_markdown": "Im Lauf der nächsten Wochen faltet und windet sich das Rohr.",
+      "tts": {
+        "text": "Im Lauf der nächsten Wochen faltet und windet sich das Rohr.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-307",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es biegt sich in eine S Form.",
+      "text_markdown": "Es biegt sich in eine S Form.",
+      "tts": {
+        "text": "Es biegt sich in eine S Form.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-308",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es teilt sich in Kammern.",
+      "text_markdown": "Es teilt sich in Kammern.",
+      "tts": {
+        "text": "Es teilt sich in Kammern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-309",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wände, die Septen heißen, wachsen zwischen den Kammern.",
+      "text_markdown": "Wände, die Septen heißen, wachsen zwischen den Kammern.",
+      "tts": {
+        "text": "Wände, die Septen heißen, wachsen zwischen den Kammern.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-310",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ein Septum ist eine Wand, die zwei Räume trennt.",
+      "text_markdown": "Ein Septum ist eine Wand, die zwei Räume trennt.",
+      "tts": {
+        "text": "Ein Septum ist eine Wand, die zwei Räume trennt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-311",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Der Plural ist Septen.",
+      "text_markdown": "Der Plural ist Septen.",
+      "tts": {
+        "text": "Der Plural ist Septen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-312",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Nach etwa acht Wochen hat das Herz vier eindeutig getrennte Kammern.",
+      "text_markdown": "Nach etwa acht Wochen hat das Herz vier eindeutig getrennte Kammern.",
+      "tts": {
+        "text": "Nach etwa acht Wochen hat das Herz vier eindeutig getrennte Kammern.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-313",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein fetales Herz arbeitet anders als ein Herz nach der Geburt.",
+      "text_markdown": "Ein fetales Herz arbeitet anders als ein Herz nach der Geburt.",
+      "tts": {
+        "text": "Ein fetales Herz arbeitet anders als ein Herz nach der Geburt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-314",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Fötus ist ein ungeborenes Kind nach etwa acht Wochen Entwicklung.",
+      "text_markdown": "Ein Fötus ist ein ungeborenes Kind nach etwa acht Wochen Entwicklung.",
+      "tts": {
+        "text": "Ein Fötus ist ein ungeborenes Kind nach etwa acht Wochen Entwicklung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-315",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Fötus atmet keine Luft.",
+      "text_markdown": "Der Fötus atmet keine Luft.",
+      "tts": {
+        "text": "Der Fötus atmet keine Luft.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-316",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Seine Lungen sind mit Flüssigkeit gefüllt.",
+      "text_markdown": "Seine Lungen sind mit Flüssigkeit gefüllt.",
+      "tts": {
+        "text": "Seine Lungen sind mit Flüssigkeit gefüllt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-317",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Er bekommt Sauerstoff von der Mutter durch die Plazenta.",
+      "text_markdown": "Er bekommt Sauerstoff von der Mutter durch die Plazenta.",
+      "tts": {
+        "text": "Er bekommt Sauerstoff von der Mutter durch die Plazenta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-318",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Die Plazenta ist ein Organ, das den Fötus mit dem Blutkreislauf der Mutter verbindet.",
+      "text_markdown": "Die Plazenta ist ein Organ, das den Fötus mit dem Blutkreislauf der Mutter verbindet.",
+      "tts": {
+        "text": "Die Plazenta ist ein Organ, das den Fötus mit dem Blutkreislauf der Mutter verbindet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-319",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p66",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sauerstoff und Nährstoffe gehen vom Blut der Mutter durch die Plazenta in das Blut des Fötus über.",
+      "text_markdown": "Sauerstoff und Nährstoffe gehen vom Blut der Mutter durch die Plazenta in das Blut des Fötus über.",
+      "tts": {
+        "text": "Sauerstoff und Nährstoffe gehen vom Blut der Mutter durch die Plazenta in das Blut des Fötus über.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-320",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Weil die fetalen Lungen nicht in Gebrauch sind, hat das Herz eine Abkürzung.",
+      "text_markdown": "Weil die fetalen Lungen nicht in Gebrauch sind, hat das Herz eine Abkürzung.",
+      "tts": {
+        "text": "Weil die fetalen Lungen nicht in Gebrauch sind, hat das Herz eine Abkürzung.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-321",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es gibt eine Öffnung zwischen dem rechten und dem linken Vorhof.",
+      "text_markdown": "Es gibt eine Öffnung zwischen dem rechten und dem linken Vorhof.",
+      "tts": {
+        "text": "Es gibt eine Öffnung zwischen dem rechten und dem linken Vorhof.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-322",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diese Öffnung heißt Foramen ovale.",
+      "text_markdown": "Diese Öffnung heißt Foramen ovale.",
+      "tts": {
+        "text": "Diese Öffnung heißt Foramen ovale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-323",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Foramen bedeutet auf Lateinisch „Öffnung“.",
+      "text_markdown": "Foramen bedeutet auf Lateinisch „Öffnung“.",
+      "tts": {
+        "text": "Foramen bedeutet auf Lateinisch „Öffnung“.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-324",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ovale bedeutet „eiförmig“. Blut strömt durch diese Öffnung und umgeht so die Lungen.",
+      "text_markdown": "Ovale bedeutet „eiförmig“. Blut strömt durch diese Öffnung und umgeht so die Lungen.",
+      "tts": {
+        "text": "Ovale bedeutet „eiförmig“. Blut strömt durch diese Öffnung und umgeht so die Lungen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-325",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Das meiste Blut geht direkt zur linken Seite des Herzens und hinaus in den Körper.",
+      "text_markdown": "Das meiste Blut geht direkt zur linken Seite des Herzens und hinaus in den Körper.",
+      "tts": {
+        "text": "Das meiste Blut geht direkt zur linken Seite des Herzens und hinaus in den Körper.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-326",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Es gibt eine weitere Abkürzung, die Ductus arteriosus heißt.",
+      "text_markdown": "Es gibt eine weitere Abkürzung, die Ductus arteriosus heißt.",
+      "tts": {
+        "text": "Es gibt eine weitere Abkürzung, die Ductus arteriosus heißt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-327",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dies ist ein kleines Blutgefäß, das die Lungenarterie mit der Aorta verbindet.",
+      "text_markdown": "Dies ist ein kleines Blutgefäß, das die Lungenarterie mit der Aorta verbindet.",
+      "tts": {
+        "text": "Dies ist ein kleines Blutgefäß, das die Lungenarterie mit der Aorta verbindet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-328",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es leitet das Blut an den Lungen vorbei.",
+      "text_markdown": "Es leitet das Blut an den Lungen vorbei.",
+      "tts": {
+        "text": "Es leitet das Blut an den Lungen vorbei.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-329",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Diese beiden Abkürzungen stellen sicher, dass das Blut schnell den Körper erreicht, ohne einen vergeblichen Umweg zu Lungen zu machen, die noch nicht arbeiten.",
+      "text_markdown": "Diese beiden Abkürzungen stellen sicher, dass das Blut schnell den Körper erreicht, ohne einen vergeblichen Umweg zu Lungen zu machen, die noch nicht arbeiten.",
+      "tts": {
+        "text": "Diese beiden Abkürzungen stellen sicher, dass das Blut schnell den Körper erreicht, ohne einen vergeblichen Umweg zu Lungen zu machen, die noch nicht arbeiten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-330",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bei der Geburt ändert sich alles.",
+      "text_markdown": "Bei der Geburt ändert sich alles.",
+      "tts": {
+        "text": "Bei der Geburt ändert sich alles.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-331",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Baby nimmt seinen ersten Atemzug.",
+      "text_markdown": "Das Baby nimmt seinen ersten Atemzug.",
+      "tts": {
+        "text": "Das Baby nimmt seinen ersten Atemzug.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-332",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Lungen dehnen sich aus.",
+      "text_markdown": "Die Lungen dehnen sich aus.",
+      "tts": {
+        "text": "Die Lungen dehnen sich aus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-333",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Blut beginnt zu den Lungen zu fließen, um Sauerstoff aufzunehmen.",
+      "text_markdown": "Blut beginnt zu den Lungen zu fließen, um Sauerstoff aufzunehmen.",
+      "tts": {
+        "text": "Blut beginnt zu den Lungen zu fließen, um Sauerstoff aufzunehmen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-334",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das Foramen ovale schließt sich.",
+      "text_markdown": "Das Foramen ovale schließt sich.",
+      "tts": {
+        "text": "Das Foramen ovale schließt sich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-335",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Es versiegelt sich normalerweise im ersten Lebensjahr.",
+      "text_markdown": "Es versiegelt sich normalerweise im ersten Lebensjahr.",
+      "tts": {
+        "text": "Es versiegelt sich normalerweise im ersten Lebensjahr.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-336",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Auch der Ductus arteriosus schließt sich.",
+      "text_markdown": "Auch der Ductus arteriosus schließt sich.",
+      "tts": {
+        "text": "Auch der Ductus arteriosus schließt sich.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-337",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p69",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Er schließt sich meistens innerhalb der ersten Tage nach der Geburt.",
+      "text_markdown": "Er schließt sich meistens innerhalb der ersten Tage nach der Geburt.",
+      "tts": {
+        "text": "Er schließt sich meistens innerhalb der ersten Tage nach der Geburt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-338",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manchmal schließen sich diese Strukturen nicht richtig.",
+      "text_markdown": "Manchmal schließen sich diese Strukturen nicht richtig.",
+      "tts": {
+        "text": "Manchmal schließen sich diese Strukturen nicht richtig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-339",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Foramen ovale, das offen bleibt, heißt persistierendes Foramen ovale.",
+      "text_markdown": "Ein Foramen ovale, das offen bleibt, heißt persistierendes Foramen ovale.",
+      "tts": {
+        "text": "Ein Foramen ovale, das offen bleibt, heißt persistierendes Foramen ovale.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-340",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persistierend bedeutet „offen bleibend“. Dieser Zustand ist häufig.",
+      "text_markdown": "Persistierend bedeutet „offen bleibend“. Dieser Zustand ist häufig.",
+      "tts": {
+        "text": "Persistierend bedeutet „offen bleibend“. Dieser Zustand ist häufig.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-341",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Etwa eine von vier Personen hat es.",
+      "text_markdown": "Etwa eine von vier Personen hat es.",
+      "tts": {
+        "text": "Etwa eine von vier Personen hat es.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-342",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die meisten erfahren es nie.",
+      "text_markdown": "Die meisten erfahren es nie.",
+      "tts": {
+        "text": "Die meisten erfahren es nie.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-343",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Es verursacht selten Probleme.",
+      "text_markdown": "Es verursacht selten Probleme.",
+      "tts": {
+        "text": "Es verursacht selten Probleme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-344",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Umstellung bei der Geburt ist bemerkenswert.",
+      "text_markdown": "Die Umstellung bei der Geburt ist bemerkenswert.",
+      "tts": {
+        "text": "Die Umstellung bei der Geburt ist bemerkenswert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-345",
+      "part": 0,
+      "chapter": 7,
+      "title": "Das Herz vor der Geburt",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In wenigen Sekunden wechselt das Herz vom fetalen Kreislauf zu dem Kreislaufmuster, das es für den Rest des Lebens nutzen wird.",
+      "text_markdown": "In wenigen Sekunden wechselt das Herz vom fetalen Kreislauf zu dem Kreislaufmuster, das es für den Rest des Lebens nutzen wird.",
+      "tts": {
+        "text": "In wenigen Sekunden wechselt das Herz vom fetalen Kreislauf zu dem Kreislaufmuster, das es für den Rest des Lebens nutzen wird.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-346",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ein Leben voller Schläge",
+      "text_markdown": "Ein Leben voller Schläge"
+    },
+    {
+      "id": "ch08-347",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das durchschnittliche menschliche Herz schlägt in einem Leben etwa 2,5 Milliarden Mal.",
+      "text_markdown": "Das durchschnittliche menschliche Herz schlägt in einem Leben etwa 2,5 Milliarden Mal.",
+      "tts": {
+        "text": "Das durchschnittliche menschliche Herz schlägt in einem Leben etwa zwei Komma fünf Milliarden Mal.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-348",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diese Zahl ist überwältigend.",
+      "text_markdown": "Diese Zahl ist überwältigend.",
+      "tts": {
+        "text": "Diese Zahl ist überwältigend.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-349",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Keine mechanische Pumpe der Welt erreicht diese Zuverlässigkeit.",
+      "text_markdown": "Keine mechanische Pumpe der Welt erreicht diese Zuverlässigkeit.",
+      "tts": {
+        "text": "Keine mechanische Pumpe der Welt erreicht diese Zuverlässigkeit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-350",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In der Säuglingszeit schlägt das Herz schnell.",
+      "text_markdown": "In der Säuglingszeit schlägt das Herz schnell.",
+      "tts": {
+        "text": "In der Säuglingszeit schlägt das Herz schnell.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-351",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Herzfrequenz eines Neugeborenen liegt bei 120 bis 160 Schlägen pro Minute.",
+      "text_markdown": "Die Herzfrequenz eines Neugeborenen liegt bei 120 bis 160 Schlägen pro Minute.",
+      "tts": {
+        "text": "Die Herzfrequenz eines Neugeborenen liegt bei einhundertzwanzig bis einhundertsechzig Schlägen pro Minute.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-352",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Babys sind klein.",
+      "text_markdown": "Babys sind klein.",
+      "tts": {
+        "text": "Babys sind klein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-353",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihre Herzen sind klein.",
+      "text_markdown": "Ihre Herzen sind klein.",
+      "tts": {
+        "text": "Ihre Herzen sind klein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-354",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p74",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kleine Herzen müssen schneller schlagen, um genug Blut zu pumpen.",
+      "text_markdown": "Kleine Herzen müssen schneller schlagen, um genug Blut zu pumpen.",
+      "tts": {
+        "text": "Kleine Herzen müssen schneller schlagen, um genug Blut zu pumpen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-355",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p74",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wenn ein Kind wächst, wächst auch das Herz.",
+      "text_markdown": "Wenn ein Kind wächst, wächst auch das Herz.",
+      "tts": {
+        "text": "Wenn ein Kind wächst, wächst auch das Herz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-356",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p74",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Die Herzfrequenz wird allmählich langsamer.",
+      "text_markdown": "Die Herzfrequenz wird allmählich langsamer.",
+      "tts": {
+        "text": "Die Herzfrequenz wird allmählich langsamer.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-357",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Erwachsenenalter pendelt sich der Ruhepuls bei 60 bis 100 Schlägen pro Minute ein.",
+      "text_markdown": "Im Erwachsenenalter pendelt sich der Ruhepuls bei 60 bis 100 Schlägen pro Minute ein.",
+      "tts": {
+        "text": "Im Erwachsenenalter pendelt sich der Ruhepuls bei sechzig bis einhundert Schlägen pro Minute ein.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-358",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diese Frequenz bleibt über Jahrzehnte ziemlich stabil.",
+      "text_markdown": "Diese Frequenz bleibt über Jahrzehnte ziemlich stabil.",
+      "tts": {
+        "text": "Diese Frequenz bleibt über Jahrzehnte ziemlich stabil.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-359",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Im hohen Alter kann das Herz etwas langsamer werden.",
+      "text_markdown": "Im hohen Alter kann das Herz etwas langsamer werden.",
+      "tts": {
+        "text": "Im hohen Alter kann das Herz etwas langsamer werden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-360",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Herzmuskel wird mit der Zeit steifer.",
+      "text_markdown": "Der Herzmuskel wird mit der Zeit steifer.",
+      "tts": {
+        "text": "Der Herzmuskel wird mit der Zeit steifer.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-361",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die Klappen können dicker werden.",
+      "text_markdown": "Die Klappen können dicker werden.",
+      "tts": {
+        "text": "Die Klappen können dicker werden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-362",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p75",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Das elektrische System kann weniger zuverlässig werden.",
+      "text_markdown": "Das elektrische System kann weniger zuverlässig werden.",
+      "tts": {
+        "text": "Das elektrische System kann weniger zuverlässig werden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-363",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p75",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Aber das Herz schlägt weiter.",
+      "text_markdown": "Aber das Herz schlägt weiter.",
+      "tts": {
+        "text": "Aber das Herz schlägt weiter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-364",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Herzkrankheiten können diesen Rhythmus stören.",
+      "text_markdown": "Herzkrankheiten können diesen Rhythmus stören.",
+      "tts": {
+        "text": "Herzkrankheiten können diesen Rhythmus stören.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-365",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die koronare Herzkrankheit ist die häufigste Form.",
+      "text_markdown": "Die koronare Herzkrankheit ist die häufigste Form.",
+      "tts": {
+        "text": "Die koronare Herzkrankheit ist die häufigste Form.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-366",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Herzkranzgefäße sind die Blutgefäße, die den Herzmuskel selbst versorgen.",
+      "text_markdown": "Die Herzkranzgefäße sind die Blutgefäße, die den Herzmuskel selbst versorgen.",
+      "tts": {
+        "text": "Die Herzkranzgefäße sind die Blutgefäße, die den Herzmuskel selbst versorgen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-367",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das Herz braucht seine eigene Blutversorgung, um zu arbeiten.",
+      "text_markdown": "Das Herz braucht seine eigene Blutversorgung, um zu arbeiten.",
+      "tts": {
+        "text": "Das Herz braucht seine eigene Blutversorgung, um zu arbeiten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-368",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p76",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die koronare Herzkrankheit entsteht, wenn sich in diesen Arterien Fettablagerungen bilden, die Plaques heißen.",
+      "text_markdown": "Die koronare Herzkrankheit entsteht, wenn sich in diesen Arterien Fettablagerungen bilden, die Plaques heißen.",
+      "tts": {
+        "text": "Die koronare Herzkrankheit entsteht, wenn sich in diesen Arterien Fettablagerungen bilden, die Plaques heißen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-369",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p76",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Plaques verengen die Arterien.",
+      "text_markdown": "Plaques verengen die Arterien.",
+      "tts": {
+        "text": "Plaques verengen die Arterien.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-370",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p76",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Weniger Blut erreicht den Herzmuskel.",
+      "text_markdown": "Weniger Blut erreicht den Herzmuskel.",
+      "tts": {
+        "text": "Weniger Blut erreicht den Herzmuskel.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-371",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wenn ein Plaque aufreißt, kann sich ein Blutgerinnsel bilden.",
+      "text_markdown": "Wenn ein Plaque aufreißt, kann sich ein Blutgerinnsel bilden.",
+      "tts": {
+        "text": "Wenn ein Plaque aufreißt, kann sich ein Blutgerinnsel bilden.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-372",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Blutgerinnsel ist ein fester Klumpen aus Blut.",
+      "text_markdown": "Ein Blutgerinnsel ist ein fester Klumpen aus Blut.",
+      "tts": {
+        "text": "Ein Blutgerinnsel ist ein fester Klumpen aus Blut.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-373",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wenn das Gerinnsel eine Herzkranzarterie vollständig verstopft, wird ein Teil des Herzmuskels von Sauerstoff abgeschnitten.",
+      "text_markdown": "Wenn das Gerinnsel eine Herzkranzarterie vollständig verstopft, wird ein Teil des Herzmuskels von Sauerstoff abgeschnitten.",
+      "tts": {
+        "text": "Wenn das Gerinnsel eine Herzkranzarterie vollständig verstopft, wird ein Teil des Herzmuskels von Sauerstoff abgeschnitten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-374",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dieses Muskelgewebe beginnt abzusterben.",
+      "text_markdown": "Dieses Muskelgewebe beginnt abzusterben.",
+      "tts": {
+        "text": "Dieses Muskelgewebe beginnt abzusterben.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-375",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p77",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Das ist ein Herzinfarkt.",
+      "text_markdown": "Das ist ein Herzinfarkt.",
+      "tts": {
+        "text": "Das ist ein Herzinfarkt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-376",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p77",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Der medizinische Begriff ist Myokardinfarkt.",
+      "text_markdown": "Der medizinische Begriff ist Myokardinfarkt.",
+      "tts": {
+        "text": "Der medizinische Begriff ist Myokardinfarkt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-377",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p77",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Myokardial bedeutet „den Herzmuskel betreffend“. Infarkt bedeutet „Gewebetod durch Blutmangel“.",
+      "text_markdown": "Myokardial bedeutet „den Herzmuskel betreffend“. Infarkt bedeutet „Gewebetod durch Blutmangel“.",
+      "tts": {
+        "text": "Myokardial bedeutet „den Herzmuskel betreffend“. Infarkt bedeutet „Gewebetod durch Blutmangel“.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-378",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schnelle Behandlung kann während eines Herzinfarkts Herzmuskel retten.",
+      "text_markdown": "Schnelle Behandlung kann während eines Herzinfarkts Herzmuskel retten.",
+      "tts": {
+        "text": "Schnelle Behandlung kann während eines Herzinfarkts Herzmuskel retten.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-379",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ärzte können einen Stent einsetzen.",
+      "text_markdown": "Ärzte können einen Stent einsetzen.",
+      "tts": {
+        "text": "Ärzte können einen Stent einsetzen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-380",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Stent ist ein winziges Drahtgeflechtröhrchen.",
+      "text_markdown": "Ein Stent ist ein winziges Drahtgeflechtröhrchen.",
+      "tts": {
+        "text": "Ein Stent ist ein winziges Drahtgeflechtröhrchen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-381",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es hält die Arterie offen.",
+      "text_markdown": "Es hält die Arterie offen.",
+      "tts": {
+        "text": "Es hält die Arterie offen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-382",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p78",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ärzte können auch eine Bypass Operation durchführen.",
+      "text_markdown": "Ärzte können auch eine Bypass Operation durchführen.",
+      "tts": {
+        "text": "Ärzte können auch eine Bypass Operation durchführen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-383",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p78",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sie entnehmen ein gesundes Blutgefäß aus einem anderen Teil des Körpers und nutzen es, um das Blut um die Blockade herumzuleiten.",
+      "text_markdown": "Sie entnehmen ein gesundes Blutgefäß aus einem anderen Teil des Körpers und nutzen es, um das Blut um die Blockade herumzuleiten.",
+      "tts": {
+        "text": "Sie entnehmen ein gesundes Blutgefäß aus einem anderen Teil des Körpers und nutzen es, um das Blut um die Blockade herumzuleiten.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-384",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Herzinsuffizienz ist ein anderer Zustand.",
+      "text_markdown": "Herzinsuffizienz ist ein anderer Zustand.",
+      "tts": {
+        "text": "Herzinsuffizienz ist ein anderer Zustand.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-385",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bei einer Herzinsuffizienz ist das Herz zu schwach, um genug Blut zu pumpen, das den Bedarf des Körpers deckt.",
+      "text_markdown": "Bei einer Herzinsuffizienz ist das Herz zu schwach, um genug Blut zu pumpen, das den Bedarf des Körpers deckt.",
+      "tts": {
+        "text": "Bei einer Herzinsuffizienz ist das Herz zu schwach, um genug Blut zu pumpen, das den Bedarf des Körpers deckt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-386",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es bedeutet nicht, dass das Herz stehen geblieben ist.",
+      "text_markdown": "Es bedeutet nicht, dass das Herz stehen geblieben ist.",
+      "tts": {
+        "text": "Es bedeutet nicht, dass das Herz stehen geblieben ist.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-387",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es bedeutet, dass das Herz nicht mehr Schritt halten kann.",
+      "text_markdown": "Es bedeutet, dass das Herz nicht mehr Schritt halten kann.",
+      "tts": {
+        "text": "Es bedeutet, dass das Herz nicht mehr Schritt halten kann.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-388",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Flüssigkeit kann sich in den Lungen und Beinen ansammeln.",
+      "text_markdown": "Flüssigkeit kann sich in den Lungen und Beinen ansammeln.",
+      "tts": {
+        "text": "Flüssigkeit kann sich in den Lungen und Beinen ansammeln.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-389",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Für manche Patienten ist die einzige Möglichkeit eine Herztransplantation.",
+      "text_markdown": "Für manche Patienten ist die einzige Möglichkeit eine Herztransplantation.",
+      "tts": {
+        "text": "Für manche Patienten ist die einzige Möglichkeit eine Herztransplantation.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-390",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eine Herztransplantation ersetzt ein versagendes Herz durch ein gesundes Herz von einem Spender.",
+      "text_markdown": "Eine Herztransplantation ersetzt ein versagendes Herz durch ein gesundes Herz von einem Spender.",
+      "tts": {
+        "text": "Eine Herztransplantation ersetzt ein versagendes Herz durch ein gesundes Herz von einem Spender.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-391",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Im Jahr 1967 führte Dr. Christiaan Barnard in Südafrika die erste erfolgreiche Herztransplantation am Menschen durch.",
+      "text_markdown": "Im Jahr 1967 führte Dr. Christiaan Barnard in Südafrika die erste erfolgreiche Herztransplantation am Menschen durch.",
+      "tts": {
+        "text": "Im Jahr neunzehnhundertsiebenundsechzig führte Doktor Christiaan Barnard in Südafrika die erste erfolgreiche Herztransplantation am Menschen durch.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-392",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Heute werden jedes Jahr Tausende von Herztransplantationen durchgeführt.",
+      "text_markdown": "Heute werden jedes Jahr Tausende von Herztransplantationen durchgeführt.",
+      "tts": {
+        "text": "Heute werden jedes Jahr Tausende von Herztransplantationen durchgeführt.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-393",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Wissenschaft hat auch künstliche Herzen geschaffen.",
+      "text_markdown": "Die Wissenschaft hat auch künstliche Herzen geschaffen.",
+      "tts": {
+        "text": "Die Wissenschaft hat auch künstliche Herzen geschaffen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-394",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Diese mechanischen Geräte können den Blutfluss aufrechterhalten, während ein Patient auf eine Transplantation wartet.",
+      "text_markdown": "Diese mechanischen Geräte können den Blutfluss aufrechterhalten, während ein Patient auf eine Transplantation wartet.",
+      "tts": {
+        "text": "Diese mechanischen Geräte können den Blutfluss aufrechterhalten, während ein Patient auf eine Transplantation wartet.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-395",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie sind noch kein dauerhafter Ersatz.",
+      "text_markdown": "Sie sind noch kein dauerhafter Ersatz.",
+      "tts": {
+        "text": "Sie sind noch kein dauerhafter Ersatz.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-396",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Aber die Forschung geht weiter.",
+      "text_markdown": "Aber die Forschung geht weiter.",
+      "tts": {
+        "text": "Aber die Forschung geht weiter.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-397",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dein Herz ist bemerkenswert.",
+      "text_markdown": "Dein Herz ist bemerkenswert.",
+      "tts": {
+        "text": "Dein Herz ist bemerkenswert.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-398",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es arbeitet ohne Pause.",
+      "text_markdown": "Es arbeitet ohne Pause.",
+      "tts": {
+        "text": "Es arbeitet ohne Pause.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-399",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es passt sich deinen Bedürfnissen an.",
+      "text_markdown": "Es passt sich deinen Bedürfnissen an.",
+      "tts": {
+        "text": "Es passt sich deinen Bedürfnissen an.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-400",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Es reagiert auf Freude, Angst, Bewegung und Schlaf.",
+      "text_markdown": "Es reagiert auf Freude, Angst, Bewegung und Schlaf.",
+      "tts": {
+        "text": "Es reagiert auf Freude, Angst, Bewegung und Schlaf.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-401",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p82",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es ist der Motor deines Lebens.",
+      "text_markdown": "Es ist der Motor deines Lebens.",
+      "tts": {
+        "text": "Es ist der Motor deines Lebens.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-402",
+      "part": 0,
+      "chapter": 8,
+      "title": "Ein Leben voller Schläge",
+      "paragraph_id": "p82",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kümmere dich um es, und es wird sich um dich kümmern.",
+      "text_markdown": "Kümmere dich um es, und es wird sich um dich kümmern.",
+      "tts": {
+        "text": "Kümmere dich um es, und es wird sich um dich kümmern.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

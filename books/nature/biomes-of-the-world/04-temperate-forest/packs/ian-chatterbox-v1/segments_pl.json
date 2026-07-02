@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Las strefy umiarkowanej",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Las strefy umiarkowanej",
+      "text_markdown": "Las strefy umiarkowanej"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gdzie rosną lasy strefy umiarkowanej",
+      "text_markdown": "Gdzie rosną lasy strefy umiarkowanej"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Witaj w lesie strefy umiarkowanej.",
+      "text_markdown": "Witaj w lesie strefy umiarkowanej.",
+      "tts": {
+        "text": "Witaj w lesie strefy umiarkowanej.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jeden z wielkich biomów świata.",
+      "text_markdown": "To jeden z wielkich biomów świata.",
+      "tts": {
+        "text": "To jeden z wielkich biomów świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+      "text_markdown": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+      "tts": {
+        "text": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las strefy umiarkowanej to las szerokich, liściastych drzew.",
+      "text_markdown": "Las strefy umiarkowanej to las szerokich, liściastych drzew.",
+      "tts": {
+        "text": "Las strefy umiarkowanej to las szerokich, liściastych drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość drzew tutaj traci liście raz w roku i wypuszcza nowe na wiosnę.",
+      "text_markdown": "Większość drzew tutaj traci liście raz w roku i wypuszcza nowe na wiosnę.",
+      "tts": {
+        "text": "Większość drzew tutaj traci liście raz w roku i wypuszcza nowe na wiosnę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa, które w ten sposób zrzucają liście, nazywamy drzewami liściastymi.",
+      "text_markdown": "Drzewa, które w ten sposób zrzucają liście, nazywamy drzewami liściastymi.",
+      "tts": {
+        "text": "Drzewa, które w ten sposób zrzucają liście, nazywamy drzewami liściastymi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lasy strefy umiarkowanej rosną w środkowych częściach świata, między zimną północą a ciepłymi tropikami.",
+      "text_markdown": "Lasy strefy umiarkowanej rosną w środkowych częściach świata, między zimną północą a ciepłymi tropikami.",
+      "tts": {
+        "text": "Lasy strefy umiarkowanej rosną w środkowych częściach świata, między zimną północą a ciepłymi tropikami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wielkie lasy strefy umiarkowanej znajdują się we wschodniej części Ameryki Północnej.",
+      "text_markdown": "Wielkie lasy strefy umiarkowanej znajdują się we wschodniej części Ameryki Północnej.",
+      "tts": {
+        "text": "Wielkie lasy strefy umiarkowanej znajdują się we wschodniej części Ameryki Północnej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lasy strefy umiarkowanej są w dużej części Europy.",
+      "text_markdown": "Lasy strefy umiarkowanej są w dużej części Europy.",
+      "tts": {
+        "text": "Lasy strefy umiarkowanej są w dużej części Europy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lasy strefy umiarkowanej rosną we wschodniej Azji, w Chinach, Korei i Japonii.",
+      "text_markdown": "Lasy strefy umiarkowanej rosną we wschodniej Azji, w Chinach, Korei i Japonii.",
+      "tts": {
+        "text": "Lasy strefy umiarkowanej rosną we wschodniej Azji, w Chinach, Korei i Japonii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mniejsze obszary są w południowej Ameryce Południowej, w południowo wschodniej Australii i w południowej Nowej Zelandii.",
+      "text_markdown": "Mniejsze obszary są w południowej Ameryce Południowej, w południowo wschodniej Australii i w południowej Nowej Zelandii.",
+      "tts": {
+        "text": "Mniejsze obszary są w południowej Ameryce Południowej, w południowo wschodniej Australii i w południowej Nowej Zelandii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każdy z tych lasów wyrósł sam, daleko od pozostałych.",
+      "text_markdown": "Każdy z tych lasów wyrósł sam, daleko od pozostałych.",
+      "tts": {
+        "text": "Każdy z tych lasów wyrósł sam, daleko od pozostałych.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dlatego rodzaje drzew i zwierząt są różne w każdej części świata.",
+      "text_markdown": "Dlatego rodzaje drzew i zwierząt są różne w każdej części świata.",
+      "tts": {
+        "text": "Dlatego rodzaje drzew i zwierząt są różne w każdej części świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale wszystkie mają ten sam wzór.",
+      "text_markdown": "Ale wszystkie mają ten sam wzór.",
+      "tts": {
+        "text": "Ale wszystkie mają ten sam wzór.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korona z liściastych drzew, miękkie podłoże z opadłych liści i cztery bardzo różne pory roku.",
+      "text_markdown": "Korona z liściastych drzew, miękkie podłoże z opadłych liści i cztery bardzo różne pory roku.",
+      "tts": {
+        "text": "Korona z liściastych drzew, miękkie podłoże z opadłych liści i cztery bardzo różne pory roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy wchodzisz do lasu strefy umiarkowanej, powietrze wydaje się chłodne i łagodne.",
+      "text_markdown": "Kiedy wchodzisz do lasu strefy umiarkowanej, powietrze wydaje się chłodne i łagodne.",
+      "tts": {
+        "text": "Kiedy wchodzisz do lasu strefy umiarkowanej, powietrze wydaje się chłodne i łagodne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem światło słoneczne pada przez liście w miękkich, zielonych plamach.",
+      "text_markdown": "Latem światło słoneczne pada przez liście w miękkich, zielonych plamach.",
+      "tts": {
+        "text": "Latem światło słoneczne pada przez liście w miękkich, zielonych plamach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią liście stają się żółte, pomarańczowe i czerwone.",
+      "text_markdown": "Jesienią liście stają się żółte, pomarańczowe i czerwone.",
+      "tts": {
+        "text": "Jesienią liście stają się żółte, pomarańczowe i czerwone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą drzewa stoją nagie na tle nieba.",
+      "text_markdown": "Zimą drzewa stoją nagie na tle nieba.",
+      "tts": {
+        "text": "Zimą drzewa stoją nagie na tle nieba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiosną pojawiają się małe zielone pąki, a cały las znów się budzi.",
+      "text_markdown": "Wiosną pojawiają się małe zielone pąki, a cały las znów się budzi.",
+      "tts": {
+        "text": "Wiosną pojawiają się małe zielone pąki, a cały las znów się budzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oto las strefy umiarkowanej.",
+      "text_markdown": "Oto las strefy umiarkowanej.",
+      "tts": {
+        "text": "Oto las strefy umiarkowanej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Gdzie rosną lasy strefy umiarkowanej",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zielony świat, który zmienia swoją twarz cztery razy w roku.",
+      "text_markdown": "Zielony świat, który zmienia swoją twarz cztery razy w roku.",
+      "tts": {
+        "text": "Zielony świat, który zmienia swoją twarz cztery razy w roku.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pogoda",
+      "text_markdown": "Pogoda"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pogoda w lesie strefy umiarkowanej bardzo się zmienia w ciągu roku.",
+      "text_markdown": "Pogoda w lesie strefy umiarkowanej bardzo się zmienia w ciągu roku.",
+      "tts": {
+        "text": "Pogoda w lesie strefy umiarkowanej bardzo się zmienia w ciągu roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są cztery pory roku i każda jest bardzo różna.",
+      "text_markdown": "Są cztery pory roku i każda jest bardzo różna.",
+      "tts": {
+        "text": "Są cztery pory roku i każda jest bardzo różna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem dni są długie i ciepłe.",
+      "text_markdown": "Latem dni są długie i ciepłe.",
+      "tts": {
+        "text": "Latem dni są długie i ciepłe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Często pada deszcz, a czasem nad drzewami przetacza się ciężka burza.",
+      "text_markdown": "Często pada deszcz, a czasem nad drzewami przetacza się ciężka burza.",
+      "tts": {
+        "text": "Często pada deszcz, a czasem nad drzewami przetacza się ciężka burza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las pełen jest zielonych liści i ptasich pieśni.",
+      "text_markdown": "Las pełen jest zielonych liści i ptasich pieśni.",
+      "tts": {
+        "text": "Las pełen jest zielonych liści i ptasich pieśni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią dni stają się krótsze, a powietrze chłodne.",
+      "text_markdown": "Jesienią dni stają się krótsze, a powietrze chłodne.",
+      "tts": {
+        "text": "Jesienią dni stają się krótsze, a powietrze chłodne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liście drzew zmieniają kolor i opadają na ziemię.",
+      "text_markdown": "Liście drzew zmieniają kolor i opadają na ziemię.",
+      "tts": {
+        "text": "Liście drzew zmieniają kolor i opadają na ziemię.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spacer po jesiennym lesie to spacer po miękkim, jasnym dywanie z liści.",
+      "text_markdown": "Spacer po jesiennym lesie to spacer po miękkim, jasnym dywanie z liści.",
+      "tts": {
+        "text": "Spacer po jesiennym lesie to spacer po miękkim, jasnym dywanie z liści.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą dni są krótkie, a noce długie i mroźne.",
+      "text_markdown": "Zimą dni są krótkie, a noce długie i mroźne.",
+      "tts": {
+        "text": "Zimą dni są krótkie, a noce długie i mroźne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W wielu miejscach śnieg pokrywa las przez wiele tygodni.",
+      "text_markdown": "W wielu miejscach śnieg pokrywa las przez wiele tygodni.",
+      "tts": {
+        "text": "W wielu miejscach śnieg pokrywa las przez wiele tygodni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nagie gałęzie drzew stoją nieruchomo na tle szarego nieba.",
+      "text_markdown": "Nagie gałęzie drzew stoją nieruchomo na tle szarego nieba.",
+      "tts": {
+        "text": "Nagie gałęzie drzew stoją nieruchomo na tle szarego nieba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele zwierząt śpi przez chłód lub chowa się w swoich norach.",
+      "text_markdown": "Wiele zwierząt śpi przez chłód lub chowa się w swoich norach.",
+      "tts": {
+        "text": "Wiele zwierząt śpi przez chłód lub chowa się w swoich norach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem nadchodzi wiosna.",
+      "text_markdown": "Potem nadchodzi wiosna.",
+      "tts": {
+        "text": "Potem nadchodzi wiosna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Śnieg topnieje, deszcze znów zaczynają padać, a gleba się ogrzewa.",
+      "text_markdown": "Śnieg topnieje, deszcze znów zaczynają padać, a gleba się ogrzewa.",
+      "tts": {
+        "text": "Śnieg topnieje, deszcze znów zaczynają padać, a gleba się ogrzewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zielone pąki otwierają się na gałęziach, kwiaty wybijają się z ziemi, a las znów wypełnia się dźwiękiem i kolorem.",
+      "text_markdown": "Zielone pąki otwierają się na gałęziach, kwiaty wybijają się z ziemi, a las znów wypełnia się dźwiękiem i kolorem.",
+      "tts": {
+        "text": "Zielone pąki otwierają się na gałęziach, kwiaty wybijają się z ziemi, a las znów wypełnia się dźwiękiem i kolorem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las strefy umiarkowanej wie, jak czekać przez chłód i jak świętować, gdy wraca ciepło.",
+      "text_markdown": "Las strefy umiarkowanej wie, jak czekać przez chłód i jak świętować, gdy wraca ciepło.",
+      "tts": {
+        "text": "Las strefy umiarkowanej wie, jak czekać przez chłód i jak świętować, gdy wraca ciepło.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ziemia i woda",
+      "text_markdown": "Ziemia i woda"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziemia pod lasem strefy umiarkowanej jest żyzna.",
+      "text_markdown": "Ziemia pod lasem strefy umiarkowanej jest żyzna.",
+      "tts": {
+        "text": "Ziemia pod lasem strefy umiarkowanej jest żyzna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez tysiące lat liście opadały z drzew i powoli zamieniały się w ciemną, miękką glebę.",
+      "text_markdown": "Przez tysiące lat liście opadały z drzew i powoli zamieniały się w ciemną, miękką glebę.",
+      "tts": {
+        "text": "Przez tysiące lat liście opadały z drzew i powoli zamieniały się w ciemną, miękką glebę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taka gleba dobrze trzyma wodę i daje drzewom dużo pożywienia.",
+      "text_markdown": "Taka gleba dobrze trzyma wodę i daje drzewom dużo pożywienia.",
+      "tts": {
+        "text": "Taka gleba dobrze trzyma wodę i daje drzewom dużo pożywienia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dno lasu pokrywają stare liście, połamane gałązki i kępki zielonego mchu.",
+      "text_markdown": "Dno lasu pokrywają stare liście, połamane gałązki i kępki zielonego mchu.",
+      "tts": {
+        "text": "Dno lasu pokrywają stare liście, połamane gałązki i kępki zielonego mchu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy odgarniesz liście, znajdziesz ciemną glebę pełną maleńkich żywych istot.",
+      "text_markdown": "Kiedy odgarniesz liście, znajdziesz ciemną glebę pełną maleńkich żywych istot.",
+      "tts": {
+        "text": "Kiedy odgarniesz liście, znajdziesz ciemną glebę pełną maleńkich żywych istot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Robaki i owady przez nią się przemieszczają.",
+      "text_markdown": "Robaki i owady przez nią się przemieszczają.",
+      "tts": {
+        "text": "Robaki i owady przez nią się przemieszczają.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grzyby wyrastają spod spodu po deszczu.",
+      "text_markdown": "Grzyby wyrastają spod spodu po deszczu.",
+      "tts": {
+        "text": "Grzyby wyrastają spod spodu po deszczu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Strumienie wiją się przez każdy las strefy umiarkowanej.",
+      "text_markdown": "Strumienie wiją się przez każdy las strefy umiarkowanej.",
+      "tts": {
+        "text": "Strumienie wiją się przez każdy las strefy umiarkowanej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiosną płyną zimne i czyste, pełne topniejącego śniegu.",
+      "text_markdown": "Wiosną płyną zimne i czyste, pełne topniejącego śniegu.",
+      "tts": {
+        "text": "Wiosną płyną zimne i czyste, pełne topniejącego śniegu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem płyną wolniej, a w płytkiej wodzie widać kamienie.",
+      "text_markdown": "Latem płyną wolniej, a w płytkiej wodzie widać kamienie.",
+      "tts": {
+        "text": "Latem płyną wolniej, a w płytkiej wodzie widać kamienie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią złociste liście płyną po nich jak małe łódeczki.",
+      "text_markdown": "Jesienią złociste liście płyną po nich jak małe łódeczki.",
+      "tts": {
+        "text": "Jesienią złociste liście płyną po nich jak małe łódeczki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą mniejsze strumienie zamarzają, a woda chowa się pod dachem z lodu.",
+      "text_markdown": "Zimą mniejsze strumienie zamarzają, a woda chowa się pod dachem z lodu.",
+      "tts": {
+        "text": "Zimą mniejsze strumienie zamarzają, a woda chowa się pod dachem z lodu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele wielkich rzek świata strefy umiarkowanej bierze swój początek w tych lasach.",
+      "text_markdown": "Wiele wielkich rzek świata strefy umiarkowanej bierze swój początek w tych lasach.",
+      "tts": {
+        "text": "Wiele wielkich rzek świata strefy umiarkowanej bierze swój początek w tych lasach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa utrzymują glebę na miejscu i powoli zasilają strumienie wodą.",
+      "text_markdown": "Drzewa utrzymują glebę na miejscu i powoli zasilają strumienie wodą.",
+      "tts": {
+        "text": "Drzewa utrzymują glebę na miejscu i powoli zasilają strumienie wodą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bez lasu rzeki nie byłyby takie same.",
+      "text_markdown": "Bez lasu rzeki nie byłyby takie same.",
+      "tts": {
+        "text": "Bez lasu rzeki nie byłyby takie same.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Rośliny",
+      "text_markdown": "Rośliny"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa są sercem lasu strefy umiarkowanej.",
+      "text_markdown": "Drzewa są sercem lasu strefy umiarkowanej.",
+      "tts": {
+        "text": "Drzewa są sercem lasu strefy umiarkowanej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele z nich rośnie wysoko i mocno, z grubymi pniami i szerokimi gałęziami.",
+      "text_markdown": "Wiele z nich rośnie wysoko i mocno, z grubymi pniami i szerokimi gałęziami.",
+      "tts": {
+        "text": "Wiele z nich rośnie wysoko i mocno, z grubymi pniami i szerokimi gałęziami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich drewno jest twarde, a jedno drzewo może żyć przez setki lat.",
+      "text_markdown": "Ich drewno jest twarde, a jedno drzewo może żyć przez setki lat.",
+      "tts": {
+        "text": "Ich drewno jest twarde, a jedno drzewo może żyć przez setki lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre rosną nawet dłużej.",
+      "text_markdown": "Niektóre rosną nawet dłużej.",
+      "tts": {
+        "text": "Niektóre rosną nawet dłużej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Najsłynniejsze drzewa lasu strefy umiarkowanej to dąb, klon, buk i brzoza.",
+      "text_markdown": "Najsłynniejsze drzewa lasu strefy umiarkowanej to dąb, klon, buk i brzoza.",
+      "tts": {
+        "text": "Najsłynniejsze drzewa lasu strefy umiarkowanej to dąb, klon, buk i brzoza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W różnych częściach świata spotykasz różne rodzaje tych drzew.",
+      "text_markdown": "W różnych częściach świata spotykasz różne rodzaje tych drzew.",
+      "tts": {
+        "text": "W różnych częściach świata spotykasz różne rodzaje tych drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale mają ten sam kształt i tę samą roczną historię.",
+      "text_markdown": "Ale mają ten sam kształt i tę samą roczną historię.",
+      "tts": {
+        "text": "Ale mają ten sam kształt i tę samą roczną historię.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiosną nowe liście otwierają się na każdej gałęzi.",
+      "text_markdown": "Wiosną nowe liście otwierają się na każdej gałęzi.",
+      "tts": {
+        "text": "Wiosną nowe liście otwierają się na każdej gałęzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Liście są bladozielone i miękkie.",
+      "text_markdown": "Liście są bladozielone i miękkie.",
+      "tts": {
+        "text": "Liście są bladozielone i miękkie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez całe lato rozkładają się szeroko, by chwytać światło słońca.",
+      "text_markdown": "Przez całe lato rozkładają się szeroko, by chwytać światło słońca.",
+      "tts": {
+        "text": "Przez całe lato rozkładają się szeroko, by chwytać światło słońca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każdy zielony liść zamienia światło słońca, wodę i powietrze w pokarm dla drzewa.",
+      "text_markdown": "Każdy zielony liść zamienia światło słońca, wodę i powietrze w pokarm dla drzewa.",
+      "tts": {
+        "text": "Każdy zielony liść zamienia światło słońca, wodę i powietrze w pokarm dla drzewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią liście zmieniają kolor, zanim opadną.",
+      "text_markdown": "Jesienią liście zmieniają kolor, zanim opadną.",
+      "tts": {
+        "text": "Jesienią liście zmieniają kolor, zanim opadną.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre stają się jaskrawoczerwone, inne świecą żółto, a jeszcze inne ciemnobrązowe.",
+      "text_markdown": "Niektóre stają się jaskrawoczerwone, inne świecą żółto, a jeszcze inne ciemnobrązowe.",
+      "tts": {
+        "text": "Niektóre stają się jaskrawoczerwone, inne świecą żółto, a jeszcze inne ciemnobrązowe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kolory malują całe zbocza przez kilka krótkich tygodni.",
+      "text_markdown": "Kolory malują całe zbocza przez kilka krótkich tygodni.",
+      "tts": {
+        "text": "Kolory malują całe zbocza przez kilka krótkich tygodni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem liście opadają, a drzewo odpoczywa przez chłód.",
+      "text_markdown": "Potem liście opadają, a drzewo odpoczywa przez chłód.",
+      "tts": {
+        "text": "Potem liście opadają, a drzewo odpoczywa przez chłód.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drewno drzewa chowa to, co potrzebuje, głęboko w sobie.",
+      "text_markdown": "Drewno drzewa chowa to, co potrzebuje, głęboko w sobie.",
+      "tts": {
+        "text": "Drewno drzewa chowa to, co potrzebuje, głęboko w sobie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy wraca wiosna, drzewo znów zaczyna od nowa.",
+      "text_markdown": "Kiedy wraca wiosna, drzewo znów zaczyna od nowa.",
+      "tts": {
+        "text": "Kiedy wraca wiosna, drzewo znów zaczyna od nowa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poniżej wysokich drzew rosną mniejsze rośliny.",
+      "text_markdown": "Poniżej wysokich drzew rosną mniejsze rośliny.",
+      "tts": {
+        "text": "Poniżej wysokich drzew rosną mniejsze rośliny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są krzewy z jagodami, które uwielbiają zwierzęta.",
+      "text_markdown": "Są krzewy z jagodami, które uwielbiają zwierzęta.",
+      "tts": {
+        "text": "Są krzewy z jagodami, które uwielbiają zwierzęta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są paprocie i miękkie mchy na skałach i starych kłodach.",
+      "text_markdown": "Są paprocie i miękkie mchy na skałach i starych kłodach.",
+      "tts": {
+        "text": "Są paprocie i miękkie mchy na skałach i starych kłodach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wczesną wiosną, zanim duże drzewa mają liście, dzikie kwiaty wypełniają dno lasu.",
+      "text_markdown": "Wczesną wiosną, zanim duże drzewa mają liście, dzikie kwiaty wypełniają dno lasu.",
+      "tts": {
+        "text": "Wczesną wiosną, zanim duże drzewa mają liście, dzikie kwiaty wypełniają dno lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez kilka tygodni ziemię pokrywają hiacynty leśne, żonkile lub inne jasne kwiaty.",
+      "text_markdown": "Przez kilka tygodni ziemię pokrywają hiacynty leśne, żonkile lub inne jasne kwiaty.",
+      "tts": {
+        "text": "Przez kilka tygodni ziemię pokrywają hiacynty leśne, żonkile lub inne jasne kwiaty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy drzewa wypuszczają liście i ocieniają ziemię, kwiaty więdną.",
+      "text_markdown": "Kiedy drzewa wypuszczają liście i ocieniają ziemię, kwiaty więdną.",
+      "tts": {
+        "text": "Kiedy drzewa wypuszczają liście i ocieniają ziemię, kwiaty więdną.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Będą czekać na kolejną wiosnę pod ziemią.",
+      "text_markdown": "Będą czekać na kolejną wiosnę pod ziemią.",
+      "tts": {
+        "text": "Będą czekać na kolejną wiosnę pod ziemią.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zwierzęta",
+      "text_markdown": "Zwierzęta"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las strefy umiarkowanej jest domem dla wielu rodzajów zwierząt.",
+      "text_markdown": "Las strefy umiarkowanej jest domem dla wielu rodzajów zwierząt.",
+      "tts": {
+        "text": "Las strefy umiarkowanej jest domem dla wielu rodzajów zwierząt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na drzewach i na ziemi, wszystkie mają swoje sposoby na życie ze zmieniającymi się porami roku.",
+      "text_markdown": "Na drzewach i na ziemi, wszystkie mają swoje sposoby na życie ze zmieniającymi się porami roku.",
+      "tts": {
+        "text": "Na drzewach i na ziemi, wszystkie mają swoje sposoby na życie ze zmieniającymi się porami roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jelenie są powszechne w wielu lasach strefy umiarkowanej.",
+      "text_markdown": "Jelenie są powszechne w wielu lasach strefy umiarkowanej.",
+      "tts": {
+        "text": "Jelenie są powszechne w wielu lasach strefy umiarkowanej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chodzą cicho między drzewami i jedzą liście, trawę i małe rośliny.",
+      "text_markdown": "Chodzą cicho między drzewami i jedzą liście, trawę i małe rośliny.",
+      "tts": {
+        "text": "Chodzą cicho między drzewami i jedzą liście, trawę i małe rośliny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem ich sierść jest krótka i brązowa.",
+      "text_markdown": "Latem ich sierść jest krótka i brązowa.",
+      "tts": {
+        "text": "Latem ich sierść jest krótka i brązowa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą ich sierść staje się gęsta i szara.",
+      "text_markdown": "Zimą ich sierść staje się gęsta i szara.",
+      "tts": {
+        "text": "Zimą ich sierść staje się gęsta i szara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W niektórych z tych lasów żyją też niedźwiedzie.",
+      "text_markdown": "W niektórych z tych lasów żyją też niedźwiedzie.",
+      "tts": {
+        "text": "W niektórych z tych lasów żyją też niedźwiedzie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niedźwiedź je prawie wszystko, jagody, ryby, miód i małe zwierzęta.",
+      "text_markdown": "Niedźwiedź je prawie wszystko, jagody, ryby, miód i małe zwierzęta.",
+      "tts": {
+        "text": "Niedźwiedź je prawie wszystko, jagody, ryby, miód i małe zwierzęta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią niedźwiedź je tyle, ile może.",
+      "text_markdown": "Jesienią niedźwiedź je tyle, ile może.",
+      "tts": {
+        "text": "Jesienią niedźwiedź je tyle, ile może.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem znajduje ciche miejsce i głęboko śpi przez najzimniejszą część zimy.",
+      "text_markdown": "Potem znajduje ciche miejsce i głęboko śpi przez najzimniejszą część zimy.",
+      "tts": {
+        "text": "Potem znajduje ciche miejsce i głęboko śpi przez najzimniejszą część zimy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilki i lisy polują w lesie.",
+      "text_markdown": "Wilki i lisy polują w lesie.",
+      "tts": {
+        "text": "Wilki i lisy polują w lesie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilki żyją w grupach rodzinnych i każdego dnia przemierzają wiele kilometrów.",
+      "text_markdown": "Wilki żyją w grupach rodzinnych i każdego dnia przemierzają wiele kilometrów.",
+      "tts": {
+        "text": "Wilki żyją w grupach rodzinnych i każdego dnia przemierzają wiele kilometrów.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lisy są mniejsze i polują samotnie, często w nocy.",
+      "text_markdown": "Lisy są mniejsze i polują samotnie, często w nocy.",
+      "tts": {
+        "text": "Lisy są mniejsze i polują samotnie, często w nocy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiewiórki są wszędzie.",
+      "text_markdown": "Wiewiórki są wszędzie.",
+      "tts": {
+        "text": "Wiewiórki są wszędzie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią zbierają orzechy i zakopują je w całym lesie.",
+      "text_markdown": "Jesienią zbierają orzechy i zakopują je w całym lesie.",
+      "tts": {
+        "text": "Jesienią zbierają orzechy i zakopują je w całym lesie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą wykopują swoje ukryte zapasy, aby je zjeść.",
+      "text_markdown": "Zimą wykopują swoje ukryte zapasy, aby je zjeść.",
+      "tts": {
+        "text": "Zimą wykopują swoje ukryte zapasy, aby je zjeść.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Czasami zapominają o kilku, a te orzechy wyrastają na kolejne drzewa.",
+      "text_markdown": "Czasami zapominają o kilku, a te orzechy wyrastają na kolejne drzewa.",
+      "tts": {
+        "text": "Czasami zapominają o kilku, a te orzechy wyrastają na kolejne drzewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Króliki i małe myszy żyją w miękkiej glebie i pod opadłymi kłodami.",
+      "text_markdown": "Króliki i małe myszy żyją w miękkiej glebie i pod opadłymi kłodami.",
+      "tts": {
+        "text": "Króliki i małe myszy żyją w miękkiej glebie i pod opadłymi kłodami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele rodzajów ptaków wypełnia las strefy umiarkowanej dźwiękiem.",
+      "text_markdown": "Wiele rodzajów ptaków wypełnia las strefy umiarkowanej dźwiękiem.",
+      "tts": {
+        "text": "Wiele rodzajów ptaków wypełnia las strefy umiarkowanej dźwiękiem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre ptaki zostają przez cały rok i można je zobaczyć na nagich, zimowych gałęziach.",
+      "text_markdown": "Niektóre ptaki zostają przez cały rok i można je zobaczyć na nagich, zimowych gałęziach.",
+      "tts": {
+        "text": "Niektóre ptaki zostają przez cały rok i można je zobaczyć na nagich, zimowych gałęziach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele innych ptaków leci na południe na zimę i wraca, gdy nadchodzi wiosna.",
+      "text_markdown": "Wiele innych ptaków leci na południe na zimę i wraca, gdy nadchodzi wiosna.",
+      "tts": {
+        "text": "Wiele innych ptaków leci na południe na zimę i wraca, gdy nadchodzi wiosna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dzięcioły stukają w pnie drzew.",
+      "text_markdown": "Dzięcioły stukają w pnie drzew.",
+      "tts": {
+        "text": "Dzięcioły stukają w pnie drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sowy polują w nocy.",
+      "text_markdown": "Sowy polują w nocy.",
+      "tts": {
+        "text": "Sowy polują w nocy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W stawach i strumieniach żaby śpiewają, a małe ryby pływają pod lodem zimą.",
+      "text_markdown": "W stawach i strumieniach żaby śpiewają, a małe ryby pływają pod lodem zimą.",
+      "tts": {
+        "text": "W stawach i strumieniach żaby śpiewają, a małe ryby pływają pod lodem zimą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motyle i pszczoły pojawiają się w ciepłych miesiącach, kiedy kwiaty się otwierają.",
+      "text_markdown": "Motyle i pszczoły pojawiają się w ciepłych miesiącach, kiedy kwiaty się otwierają.",
+      "tts": {
+        "text": "Motyle i pszczoły pojawiają się w ciepłych miesiącach, kiedy kwiaty się otwierają.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każde zwierzę tutaj zna cztery pory roku w swoim ciele.",
+      "text_markdown": "Każde zwierzę tutaj zna cztery pory roku w swoim ciele.",
+      "tts": {
+        "text": "Każde zwierzę tutaj zna cztery pory roku w swoim ciele.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każde wie, kiedy być zajętym, kiedy odpoczywać i kiedy znów się obudzić.",
+      "text_markdown": "Każde wie, kiedy być zajętym, kiedy odpoczywać i kiedy znów się obudzić.",
+      "tts": {
+        "text": "Każde wie, kiedy być zajętym, kiedy odpoczywać i kiedy znów się obudzić.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ludzie",
+      "text_markdown": "Ludzie"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie żyli w lesie strefy umiarkowanej od wielu tysięcy lat.",
+      "text_markdown": "Ludzie żyli w lesie strefy umiarkowanej od wielu tysięcy lat.",
+      "tts": {
+        "text": "Ludzie żyli w lesie strefy umiarkowanej od wielu tysięcy lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Łagodne pory roku i żyzna gleba zawsze sprawiały, że te miejsca były dobre dla ludzkiego życia.",
+      "text_markdown": "Łagodne pory roku i żyzna gleba zawsze sprawiały, że te miejsca były dobre dla ludzkiego życia.",
+      "tts": {
+        "text": "Łagodne pory roku i żyzna gleba zawsze sprawiały, że te miejsca były dobre dla ludzkiego życia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dawno temu ludzie w tych lasach polowali na jelenie i małe zwierzęta.",
+      "text_markdown": "Dawno temu ludzie w tych lasach polowali na jelenie i małe zwierzęta.",
+      "tts": {
+        "text": "Dawno temu ludzie w tych lasach polowali na jelenie i małe zwierzęta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zbierali orzechy, jagody i korzenie z dna lasu.",
+      "text_markdown": "Zbierali orzechy, jagody i korzenie z dna lasu.",
+      "tts": {
+        "text": "Zbierali orzechy, jagody i korzenie z dna lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiedzieli, które grzyby są bezpieczne, a które nie.",
+      "text_markdown": "Wiedzieli, które grzyby są bezpieczne, a które nie.",
+      "tts": {
+        "text": "Wiedzieli, które grzyby są bezpieczne, a które nie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Budowali swoje domy z drewna otaczających ich drzew.",
+      "text_markdown": "Budowali swoje domy z drewna otaczających ich drzew.",
+      "tts": {
+        "text": "Budowali swoje domy z drewna otaczających ich drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dom z kłód i dach z kory mogą utrzymać rodzinę w cieple przez długą zimę.",
+      "text_markdown": "Dom z kłód i dach z kory mogą utrzymać rodzinę w cieple przez długą zimę.",
+      "tts": {
+        "text": "Dom z kłód i dach z kory mogą utrzymać rodzinę w cieple przez długą zimę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiosną i latem uprawiali jedzenie na małych polach wykarczowanych z lasu.",
+      "text_markdown": "Wiosną i latem uprawiali jedzenie na małych polach wykarczowanych z lasu.",
+      "tts": {
+        "text": "Wiosną i latem uprawiali jedzenie na małych polach wykarczowanych z lasu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sadzili zboże, fasolę i korzenie, które dobrze rosły w chłodnym klimacie.",
+      "text_markdown": "Sadzili zboże, fasolę i korzenie, które dobrze rosły w chłodnym klimacie.",
+      "tts": {
+        "text": "Sadzili zboże, fasolę i korzenie, które dobrze rosły w chłodnym klimacie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią zbierali plony i odkładali je na zimne miesiące.",
+      "text_markdown": "Jesienią zbierali plony i odkładali je na zimne miesiące.",
+      "tts": {
+        "text": "Jesienią zbierali plony i odkładali je na zimne miesiące.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą siedzieli przy ogniskach, naprawiali swoje narzędzia, opowiadali historie i czekali na wiosnę.",
+      "text_markdown": "Zimą siedzieli przy ogniskach, naprawiali swoje narzędzia, opowiadali historie i czekali na wiosnę.",
+      "tts": {
+        "text": "Zimą siedzieli przy ogniskach, naprawiali swoje narzędzia, opowiadali historie i czekali na wiosnę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las dawał im drewno na ogień i na budowę.",
+      "text_markdown": "Las dawał im drewno na ogień i na budowę.",
+      "tts": {
+        "text": "Las dawał im drewno na ogień i na budowę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dawał im korę i liście na lekarstwa.",
+      "text_markdown": "Dawał im korę i liście na lekarstwa.",
+      "tts": {
+        "text": "Dawał im korę i liście na lekarstwa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dawał im barwniki do tkanin i pożywienie w każdej porze roku.",
+      "text_markdown": "Dawał im barwniki do tkanin i pożywienie w każdej porze roku.",
+      "tts": {
+        "text": "Dawał im barwniki do tkanin i pożywienie w każdej porze roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Z czasem wiele z tych lasów zostało wyciętych, aby zrobić miejsce na pola i miasta.",
+      "text_markdown": "Z czasem wiele z tych lasów zostało wyciętych, aby zrobić miejsce na pola i miasta.",
+      "tts": {
+        "text": "Z czasem wiele z tych lasów zostało wyciętych, aby zrobić miejsce na pola i miasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wioski rosły w miasteczka, a miasteczka rosły w wielkie miasta świata strefy umiarkowanej.",
+      "text_markdown": "Wioski rosły w miasteczka, a miasteczka rosły w wielkie miasta świata strefy umiarkowanej.",
+      "tts": {
+        "text": "Wioski rosły w miasteczka, a miasteczka rosły w wielkie miasta świata strefy umiarkowanej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale ludzie wciąż znają las w swoich opowieściach i pieśniach.",
+      "text_markdown": "Ale ludzie wciąż znają las w swoich opowieściach i pieśniach.",
+      "tts": {
+        "text": "Ale ludzie wciąż znają las w swoich opowieściach i pieśniach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele starych pieśni i opowieści tych ziem jest pełnych drzew, wilków, jeleni i długich zimowych nocy.",
+      "text_markdown": "Wiele starych pieśni i opowieści tych ziem jest pełnych drzew, wilków, jeleni i długich zimowych nocy.",
+      "tts": {
+        "text": "Wiele starych pieśni i opowieści tych ziem jest pełnych drzew, wilków, jeleni i długich zimowych nocy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W każdym lesie strefy umiarkowanej taki rodzaj życia ma swoje języki, swoje potrawy i swoje sposoby czekania na wiosnę.",
+      "text_markdown": "W każdym lesie strefy umiarkowanej taki rodzaj życia ma swoje języki, swoje potrawy i swoje sposoby czekania na wiosnę.",
+      "tts": {
+        "text": "W każdym lesie strefy umiarkowanej taki rodzaj życia ma swoje języki, swoje potrawy i swoje sposoby czekania na wiosnę.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Las dzisiaj",
+      "text_markdown": "Las dzisiaj"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Las strefy umiarkowanej jest jednym z najważniejszych biomów dla ludzi.",
+      "text_markdown": "Las strefy umiarkowanej jest jednym z najważniejszych biomów dla ludzi.",
+      "tts": {
+        "text": "Las strefy umiarkowanej jest jednym z najważniejszych biomów dla ludzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość wielkich miast świata stoi w miejscach, które kiedyś były lasem strefy umiarkowanej.",
+      "text_markdown": "Większość wielkich miast świata stoi w miejscach, które kiedyś były lasem strefy umiarkowanej.",
+      "tts": {
+        "text": "Większość wielkich miast świata stoi w miejscach, które kiedyś były lasem strefy umiarkowanej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lasy dają nam drewno na budowę, papier do pisania i czystą wodę do picia.",
+      "text_markdown": "Lasy dają nam drewno na budowę, papier do pisania i czystą wodę do picia.",
+      "tts": {
+        "text": "Lasy dają nam drewno na budowę, papier do pisania i czystą wodę do picia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drzewa pobierają gaz, który wydychamy, i używają go, by rosnąć.",
+      "text_markdown": "Drzewa pobierają gaz, który wydychamy, i używają go, by rosnąć.",
+      "tts": {
+        "text": "Drzewa pobierają gaz, który wydychamy, i używają go, by rosnąć.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oddają gaz, którym oddychamy.",
+      "text_markdown": "Oddają gaz, którym oddychamy.",
+      "tts": {
+        "text": "Oddają gaz, którym oddychamy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią las jest jednym z najpiękniejszych widoków na Ziemi.",
+      "text_markdown": "Jesienią las jest jednym z najpiękniejszych widoków na Ziemi.",
+      "tts": {
+        "text": "Jesienią las jest jednym z najpiękniejszych widoków na Ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie pokonują długie odległości, by tylko zobaczyć kolorowe liście.",
+      "text_markdown": "Ludzie pokonują długie odległości, by tylko zobaczyć kolorowe liście.",
+      "tts": {
+        "text": "Ludzie pokonują długie odległości, by tylko zobaczyć kolorowe liście.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale las strefy umiarkowanej stracił dużą część swojej ziemi.",
+      "text_markdown": "Ale las strefy umiarkowanej stracił dużą część swojej ziemi.",
+      "tts": {
+        "text": "Ale las strefy umiarkowanej stracił dużą część swojej ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez tysiące lat dużo pierwotnego lasu zostało wyciętych.",
+      "text_markdown": "Przez tysiące lat dużo pierwotnego lasu zostało wyciętych.",
+      "tts": {
+        "text": "Przez tysiące lat dużo pierwotnego lasu zostało wyciętych.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tam, gdzie kiedyś były niekończące się drzewa, są teraz pola, miasteczka, drogi i miasta.",
+      "text_markdown": "Tam, gdzie kiedyś były niekończące się drzewa, są teraz pola, miasteczka, drogi i miasta.",
+      "tts": {
+        "text": "Tam, gdzie kiedyś były niekończące się drzewa, są teraz pola, miasteczka, drogi i miasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lasy, które zostały, są mniejsze i porozrzucane.",
+      "text_markdown": "Lasy, które zostały, są mniejsze i porozrzucane.",
+      "tts": {
+        "text": "Lasy, które zostały, są mniejsze i porozrzucane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele grup na całym świecie pracuje nad tym, by zadbać o to, co zostało.",
+      "text_markdown": "Wiele grup na całym świecie pracuje nad tym, by zadbać o to, co zostało.",
+      "tts": {
+        "text": "Wiele grup na całym świecie pracuje nad tym, by zadbać o to, co zostało.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sadzą nowe drzewa tam, gdzie stare zostały utracone.",
+      "text_markdown": "Sadzą nowe drzewa tam, gdzie stare zostały utracone.",
+      "tts": {
+        "text": "Sadzą nowe drzewa tam, gdzie stare zostały utracone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chronią stare lasy przed wycięciem.",
+      "text_markdown": "Chronią stare lasy przed wycięciem.",
+      "tts": {
+        "text": "Chronią stare lasy przed wycięciem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Badają las, abyśmy mogli go lepiej zrozumieć.",
+      "text_markdown": "Badają las, abyśmy mogli go lepiej zrozumieć.",
+      "tts": {
+        "text": "Badają las, abyśmy mogli go lepiej zrozumieć.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Młody las może odrosnąć w sto lat.",
+      "text_markdown": "Młody las może odrosnąć w sto lat.",
+      "tts": {
+        "text": "Młody las może odrosnąć w sto lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Stary las może zawierać żywe drzewa starsze niż jakikolwiek budynek w pobliżu.",
+      "text_markdown": "Stary las może zawierać żywe drzewa starsze niż jakikolwiek budynek w pobliżu.",
+      "tts": {
+        "text": "Stary las może zawierać żywe drzewa starsze niż jakikolwiek budynek w pobliżu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Las dzisiaj",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wart jest naszej troski.",
+      "text_markdown": "Wart jest naszej troski.",
+      "tts": {
+        "text": "Wart jest naszej troski.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zakończenie",
+      "text_markdown": "Zakończenie"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oto las strefy umiarkowanej.",
+      "text_markdown": "Oto las strefy umiarkowanej.",
+      "tts": {
+        "text": "Oto las strefy umiarkowanej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zielony świat wysokich drzew, chłodnych strumieni i czterech bardzo różnych pór roku.",
+      "text_markdown": "Zielony świat wysokich drzew, chłodnych strumieni i czterech bardzo różnych pór roku.",
+      "tts": {
+        "text": "Zielony świat wysokich drzew, chłodnych strumieni i czterech bardzo różnych pór roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeśli kiedyś do niego wejdziesz, zatrzymaj się na chwilę.",
+      "text_markdown": "Jeśli kiedyś do niego wejdziesz, zatrzymaj się na chwilę.",
+      "tts": {
+        "text": "Jeśli kiedyś do niego wejdziesz, zatrzymaj się na chwilę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Posłuchaj wiatru w liściach nad sobą.",
+      "text_markdown": "Posłuchaj wiatru w liściach nad sobą.",
+      "tts": {
+        "text": "Posłuchaj wiatru w liściach nad sobą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spójrz na miękki dywan starych liści pod stopami.",
+      "text_markdown": "Spójrz na miękki dywan starych liści pod stopami.",
+      "tts": {
+        "text": "Spójrz na miękki dywan starych liści pod stopami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Usłyszysz serce biomu bijące wokół ciebie.",
+      "text_markdown": "Usłyszysz serce biomu bijące wokół ciebie.",
+      "tts": {
+        "text": "Usłyszysz serce biomu bijące wokół ciebie.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

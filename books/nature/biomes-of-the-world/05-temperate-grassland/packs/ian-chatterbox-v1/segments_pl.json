@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Step umiarkowany",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Step umiarkowany",
+      "text_markdown": "Step umiarkowany"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gdzie rosną stepy umiarkowane",
+      "text_markdown": "Gdzie rosną stepy umiarkowane"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Witaj na stepie umiarkowanym.",
+      "text_markdown": "Witaj na stepie umiarkowanym.",
+      "tts": {
+        "text": "Witaj na stepie umiarkowanym.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jeden z wielkich biomów świata.",
+      "text_markdown": "To jeden z wielkich biomów świata.",
+      "tts": {
+        "text": "To jeden z wielkich biomów świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+      "text_markdown": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+      "tts": {
+        "text": "Biom to część Ziemi z własnym rodzajem pogody, roślin i zwierząt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Step umiarkowany to rozległa kraina trawy z bardzo nielicznymi drzewami.",
+      "text_markdown": "Step umiarkowany to rozległa kraina trawy z bardzo nielicznymi drzewami.",
+      "tts": {
+        "text": "Step umiarkowany to rozległa kraina trawy z bardzo nielicznymi drzewami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Leży w środkowych częściach świata, pomiędzy zimną północą a ciepłymi tropikami.",
+      "text_markdown": "Leży w środkowych częściach świata, pomiędzy zimną północą a ciepłymi tropikami.",
+      "tts": {
+        "text": "Leży w środkowych częściach świata, pomiędzy zimną północą a ciepłymi tropikami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W przeciwieństwie do sawanny tropikalnej, ta kraina ma zimne zimy i ciepłe lata.",
+      "text_markdown": "W przeciwieństwie do sawanny tropikalnej, ta kraina ma zimne zimy i ciepłe lata.",
+      "tts": {
+        "text": "W przeciwieństwie do sawanny tropikalnej, ta kraina ma zimne zimy i ciepłe lata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Największe stepy umiarkowane na świecie znajdują się w Ameryce Północnej i w Eurazji.",
+      "text_markdown": "Największe stepy umiarkowane na świecie znajdują się w Ameryce Północnej i w Eurazji.",
+      "tts": {
+        "text": "Największe stepy umiarkowane na świecie znajdują się w Ameryce Północnej i w Eurazji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Ameryce Północnej wielkie równiny środkowe nazywa się preriami.",
+      "text_markdown": "W Ameryce Północnej wielkie równiny środkowe nazywa się preriami.",
+      "tts": {
+        "text": "W Ameryce Północnej wielkie równiny środkowe nazywa się preriami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Rosji, Ukrainie, Kazachstanie i Mongolii nazywa się je stepami.",
+      "text_markdown": "W Rosji, Ukrainie, Kazachstanie i Mongolii nazywa się je stepami.",
+      "tts": {
+        "text": "W Rosji, Ukrainie, Kazachstanie i Mongolii nazywa się je stepami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Argentynie i Urugwaju nazywa się je pampą.",
+      "text_markdown": "W Argentynie i Urugwaju nazywa się je pampą.",
+      "tts": {
+        "text": "W Argentynie i Urugwaju nazywa się je pampą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mniejsze stepy umiarkowane występują na południu Afryki i w częściach Australii.",
+      "text_markdown": "Mniejsze stepy umiarkowane występują na południu Afryki i w częściach Australii.",
+      "tts": {
+        "text": "Mniejsze stepy umiarkowane występują na południu Afryki i w częściach Australii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każdy z tych stepów wyrósł samodzielnie.",
+      "text_markdown": "Każdy z tych stepów wyrósł samodzielnie.",
+      "tts": {
+        "text": "Każdy z tych stepów wyrósł samodzielnie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+      "text_markdown": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+      "tts": {
+        "text": "Dlatego rośliny i zwierzęta są inne w każdej części świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale wszystkie mają ten sam wzór.",
+      "text_markdown": "Ale wszystkie mają ten sam wzór.",
+      "tts": {
+        "text": "Ale wszystkie mają ten sam wzór.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Morze trawy, wielkie otwarte niebo, silne wiatry i tylko kilka drzew wzdłuż rzek.",
+      "text_markdown": "Morze trawy, wielkie otwarte niebo, silne wiatry i tylko kilka drzew wzdłuż rzek.",
+      "tts": {
+        "text": "Morze trawy, wielkie otwarte niebo, silne wiatry i tylko kilka drzew wzdłuż rzek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy stoisz na stepie umiarkowanym, wiatr prawie zawsze wieje.",
+      "text_markdown": "Kiedy stoisz na stepie umiarkowanym, wiatr prawie zawsze wieje.",
+      "tts": {
+        "text": "Kiedy stoisz na stepie umiarkowanym, wiatr prawie zawsze wieje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trawa porusza się jak powierzchnia morza.",
+      "text_markdown": "Trawa porusza się jak powierzchnia morza.",
+      "tts": {
+        "text": "Trawa porusza się jak powierzchnia morza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Możesz widzieć na wiele kilometrów w każdym kierunku.",
+      "text_markdown": "Możesz widzieć na wiele kilometrów w każdym kierunku.",
+      "tts": {
+        "text": "Możesz widzieć na wiele kilometrów w każdym kierunku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niebo wydaje się dwa razy większe niż w jakimkolwiek lesie.",
+      "text_markdown": "Niebo wydaje się dwa razy większe niż w jakimkolwiek lesie.",
+      "tts": {
+        "text": "Niebo wydaje się dwa razy większe niż w jakimkolwiek lesie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem trawa jest wysoka i zielona.",
+      "text_markdown": "Latem trawa jest wysoka i zielona.",
+      "tts": {
+        "text": "Latem trawa jest wysoka i zielona.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią staje się złotobrązowa.",
+      "text_markdown": "Jesienią staje się złotobrązowa.",
+      "tts": {
+        "text": "Jesienią staje się złotobrązowa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą jest brązowa i sztywna pod śniegiem.",
+      "text_markdown": "Zimą jest brązowa i sztywna pod śniegiem.",
+      "tts": {
+        "text": "Zimą jest brązowa i sztywna pod śniegiem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiosną odrasta świeża i jasna.",
+      "text_markdown": "Wiosną odrasta świeża i jasna.",
+      "tts": {
+        "text": "Wiosną odrasta świeża i jasna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taki jest step umiarkowany.",
+      "text_markdown": "Taki jest step umiarkowany.",
+      "tts": {
+        "text": "Taki jest step umiarkowany.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Gdzie rosną stepy umiarkowane",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Szeroki, wietrzny świat trawy, nieba i zmieniających się pór roku.",
+      "text_markdown": "Szeroki, wietrzny świat trawy, nieba i zmieniających się pór roku.",
+      "tts": {
+        "text": "Szeroki, wietrzny świat trawy, nieba i zmieniających się pór roku.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Pogoda",
+      "text_markdown": "Pogoda"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pogodę na stepie umiarkowanym kształtuje otwarte niebo.",
+      "text_markdown": "Pogodę na stepie umiarkowanym kształtuje otwarte niebo.",
+      "tts": {
+        "text": "Pogodę na stepie umiarkowanym kształtuje otwarte niebo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jest bardzo mało drzew i mało wzgórz, które spowalniałyby wiatr.",
+      "text_markdown": "Jest bardzo mało drzew i mało wzgórz, które spowalniałyby wiatr.",
+      "tts": {
+        "text": "Jest bardzo mało drzew i mało wzgórz, które spowalniałyby wiatr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są cztery pory roku i każda jest silna.",
+      "text_markdown": "Są cztery pory roku i każda jest silna.",
+      "tts": {
+        "text": "Są cztery pory roku i każda jest silna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lata są gorące i jasne.",
+      "text_markdown": "Lata są gorące i jasne.",
+      "tts": {
+        "text": "Lata są gorące i jasne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Słońce praży otwartą trawę, a dni są długie.",
+      "text_markdown": "Słońce praży otwartą trawę, a dni są długie.",
+      "tts": {
+        "text": "Słońce praży otwartą trawę, a dni są długie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W ciągu jednego popołudnia ogromna burza może nadciągnąć z horyzontu.",
+      "text_markdown": "W ciągu jednego popołudnia ogromna burza może nadciągnąć z horyzontu.",
+      "tts": {
+        "text": "W ciągu jednego popołudnia ogromna burza może nadciągnąć z horyzontu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daleko błyskają pioruny, a ulewny deszcz spada nagle.",
+      "text_markdown": "Daleko błyskają pioruny, a ulewny deszcz spada nagle.",
+      "tts": {
+        "text": "Daleko błyskają pioruny, a ulewny deszcz spada nagle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimy są mroźne.",
+      "text_markdown": "Zimy są mroźne.",
+      "tts": {
+        "text": "Zimy są mroźne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na niektórych stepach temperatura może spadać daleko poniżej zera przez całe tygodnie.",
+      "text_markdown": "Na niektórych stepach temperatura może spadać daleko poniżej zera przez całe tygodnie.",
+      "tts": {
+        "text": "Na niektórych stepach temperatura może spadać daleko poniżej zera przez całe tygodnie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Śnieg wieje po otwartej krainie i gromadzi się w długich zaspach.",
+      "text_markdown": "Śnieg wieje po otwartej krainie i gromadzi się w długich zaspach.",
+      "tts": {
+        "text": "Śnieg wieje po otwartej krainie i gromadzi się w długich zaspach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiatr zimą jest silny i ostry.",
+      "text_markdown": "Wiatr zimą jest silny i ostry.",
+      "tts": {
+        "text": "Wiatr zimą jest silny i ostry.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiosną śnieg topnieje, a rzeki płyną wysoko.",
+      "text_markdown": "Wiosną śnieg topnieje, a rzeki płyną wysoko.",
+      "tts": {
+        "text": "Wiosną śnieg topnieje, a rzeki płyną wysoko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trawa zielenieje niemal z dnia na dzień.",
+      "text_markdown": "Trawa zielenieje niemal z dnia na dzień.",
+      "tts": {
+        "text": "Trawa zielenieje niemal z dnia na dzień.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ptaki wracają z cieplejszych krain i wypełniają powietrze dźwiękiem.",
+      "text_markdown": "Ptaki wracają z cieplejszych krain i wypełniają powietrze dźwiękiem.",
+      "tts": {
+        "text": "Ptaki wracają z cieplejszych krain i wypełniają powietrze dźwiękiem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jesienią trawa złoci się, wiatr staje się chłodniejszy, a stada przemieszczają się w stronę schronienia.",
+      "text_markdown": "Jesienią trawa złoci się, wiatr staje się chłodniejszy, a stada przemieszczają się w stronę schronienia.",
+      "tts": {
+        "text": "Jesienią trawa złoci się, wiatr staje się chłodniejszy, a stada przemieszczają się w stronę schronienia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Step dostaje akurat tyle deszczu, by wyżywić trawę.",
+      "text_markdown": "Step dostaje akurat tyle deszczu, by wyżywić trawę.",
+      "tts": {
+        "text": "Step dostaje akurat tyle deszczu, by wyżywić trawę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Pogoda",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To nie dość deszczu, by wyrosły wielkie lasy, ale wystarczy go dla trawy i zwierząt, które jej potrzebują.",
+      "text_markdown": "To nie dość deszczu, by wyrosły wielkie lasy, ale wystarczy go dla trawy i zwierząt, które jej potrzebują.",
+      "tts": {
+        "text": "To nie dość deszczu, by wyrosły wielkie lasy, ale wystarczy go dla trawy i zwierząt, które jej potrzebują.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ziemia i woda",
+      "text_markdown": "Ziemia i woda"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teren stepu umiarkowanego jest w większości płaski lub łagodnie pofałdowany.",
+      "text_markdown": "Teren stepu umiarkowanego jest w większości płaski lub łagodnie pofałdowany.",
+      "tts": {
+        "text": "Teren stepu umiarkowanego jest w większości płaski lub łagodnie pofałdowany.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W niektórych miejscach z trawy wyrastają niskie wzgórza.",
+      "text_markdown": "W niektórych miejscach z trawy wyrastają niskie wzgórza.",
+      "tts": {
+        "text": "W niektórych miejscach z trawy wyrastają niskie wzgórza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W innych ziemia jest tak płaska, że horyzont widać jako idealnie prostą linię.",
+      "text_markdown": "W innych ziemia jest tak płaska, że horyzont widać jako idealnie prostą linię.",
+      "tts": {
+        "text": "W innych ziemia jest tak płaska, że horyzont widać jako idealnie prostą linię.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gleba tutaj należy do najbogatszych na Ziemi.",
+      "text_markdown": "Gleba tutaj należy do najbogatszych na Ziemi.",
+      "tts": {
+        "text": "Gleba tutaj należy do najbogatszych na Ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przez tysiące lat trawy rosły, ginęły i butwiały w ziemi.",
+      "text_markdown": "Przez tysiące lat trawy rosły, ginęły i butwiały w ziemi.",
+      "tts": {
+        "text": "Przez tysiące lat trawy rosły, ginęły i butwiały w ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To stworzyło grubą, ciemną glebę pełną pokarmu dla roślin.",
+      "text_markdown": "To stworzyło grubą, ciemną glebę pełną pokarmu dla roślin.",
+      "tts": {
+        "text": "To stworzyło grubą, ciemną glebę pełną pokarmu dla roślin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dlatego tak wiele tych krain zamieniono na wielkie pola pszenicy i kukurydzy.",
+      "text_markdown": "Dlatego tak wiele tych krain zamieniono na wielkie pola pszenicy i kukurydzy.",
+      "tts": {
+        "text": "Dlatego tak wiele tych krain zamieniono na wielkie pola pszenicy i kukurydzy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rzeki wiją się przez stepy długimi, powolnymi zakolami.",
+      "text_markdown": "Rzeki wiją się przez stepy długimi, powolnymi zakolami.",
+      "tts": {
+        "text": "Rzeki wiją się przez stepy długimi, powolnymi zakolami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rzeki niosą wodę z odległych gór i topniejący śnieg przez otwartą krainę.",
+      "text_markdown": "Rzeki niosą wodę z odległych gór i topniejący śnieg przez otwartą krainę.",
+      "tts": {
+        "text": "Rzeki niosą wodę z odległych gór i topniejący śnieg przez otwartą krainę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wzdłuż brzegów rzek znajduje się cienka linia drzew.",
+      "text_markdown": "Wzdłuż brzegów rzek znajduje się cienka linia drzew.",
+      "tts": {
+        "text": "Wzdłuż brzegów rzek znajduje się cienka linia drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Te drzewa podążają za wodą i wyróżniają się jako zielone wstęgi w szerokim morzu trawy.",
+      "text_markdown": "Te drzewa podążają za wodą i wyróżniają się jako zielone wstęgi w szerokim morzu trawy.",
+      "tts": {
+        "text": "Te drzewa podążają za wodą i wyróżniają się jako zielone wstęgi w szerokim morzu trawy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Z dala od rzek jest bardzo niewiele drzew.",
+      "text_markdown": "Z dala od rzek jest bardzo niewiele drzew.",
+      "tts": {
+        "text": "Z dala od rzek jest bardzo niewiele drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiatr, mroźne zimy i suche lata nie pozwalają większości drzew tu rosnąć.",
+      "text_markdown": "Wiatr, mroźne zimy i suche lata nie pozwalają większości drzew tu rosnąć.",
+      "tts": {
+        "text": "Wiatr, mroźne zimy i suche lata nie pozwalają większości drzew tu rosnąć.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale trawa nie potrzebuje wiele.",
+      "text_markdown": "Ale trawa nie potrzebuje wiele.",
+      "tts": {
+        "text": "Ale trawa nie potrzebuje wiele.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jej długie korzenie sięgają głęboko w żyzną glebę i co wiosnę odrasta.",
+      "text_markdown": "Jej długie korzenie sięgają głęboko w żyzną glebę i co wiosnę odrasta.",
+      "tts": {
+        "text": "Jej długie korzenie sięgają głęboko w żyzną glebę i co wiosnę odrasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Co jakiś czas po tych ziemiach przechodzi też ogień.",
+      "text_markdown": "Co jakiś czas po tych ziemiach przechodzi też ogień.",
+      "tts": {
+        "text": "Co jakiś czas po tych ziemiach przechodzi też ogień.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trawa szybko płonie, ale głębokie korzenie pozostają żywe.",
+      "text_markdown": "Trawa szybko płonie, ale głębokie korzenie pozostają żywe.",
+      "tts": {
+        "text": "Trawa szybko płonie, ale głębokie korzenie pozostają żywe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Ziemia i woda",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po deszczu trawa odrasta bardziej zielona i silniejsza niż wcześniej.",
+      "text_markdown": "Po deszczu trawa odrasta bardziej zielona i silniejsza niż wcześniej.",
+      "tts": {
+        "text": "Po deszczu trawa odrasta bardziej zielona i silniejsza niż wcześniej.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Rośliny",
+      "text_markdown": "Rośliny"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trawy są sercem tego biomu.",
+      "text_markdown": "Trawy są sercem tego biomu.",
+      "tts": {
+        "text": "Trawy są sercem tego biomu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na stepie umiarkowanym jest wiele różnych rodzajów trawy.",
+      "text_markdown": "Na stepie umiarkowanym jest wiele różnych rodzajów trawy.",
+      "tts": {
+        "text": "Na stepie umiarkowanym jest wiele różnych rodzajów trawy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niektóre trawy rosną tylko do kostek.",
+      "text_markdown": "Niektóre trawy rosną tylko do kostek.",
+      "tts": {
+        "text": "Niektóre trawy rosną tylko do kostek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inne sięgają człowieka wzrostem.",
+      "text_markdown": "Inne sięgają człowieka wzrostem.",
+      "tts": {
+        "text": "Inne sięgają człowieka wzrostem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każdy rodzaj trawy ma na szczycie długi, miękki kłos pełen nasion.",
+      "text_markdown": "Każdy rodzaj trawy ma na szczycie długi, miękki kłos pełen nasion.",
+      "tts": {
+        "text": "Każdy rodzaj trawy ma na szczycie długi, miękki kłos pełen nasion.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem wiatr niesie po krainie fale kłosów z nasionami.",
+      "text_markdown": "Latem wiatr niesie po krainie fale kłosów z nasionami.",
+      "tts": {
+        "text": "Latem wiatr niesie po krainie fale kłosów z nasionami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trawa ma bardzo długie korzenie, które sięgają głęboko w ciemną glebę.",
+      "text_markdown": "Trawa ma bardzo długie korzenie, które sięgają głęboko w ciemną glebę.",
+      "tts": {
+        "text": "Trawa ma bardzo długie korzenie, które sięgają głęboko w ciemną glebę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korzenie pod ziemią mogą być dłuższe niż trawa nad ziemią.",
+      "text_markdown": "Korzenie pod ziemią mogą być dłuższe niż trawa nad ziemią.",
+      "tts": {
+        "text": "Korzenie pod ziemią mogą być dłuższe niż trawa nad ziemią.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W ten sposób trawa przeżywa okresy suszy i mroźne zimy.",
+      "text_markdown": "W ten sposób trawa przeżywa okresy suszy i mroźne zimy.",
+      "tts": {
+        "text": "W ten sposób trawa przeżywa okresy suszy i mroźne zimy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tak też trawa szybko odrasta po pożarze.",
+      "text_markdown": "Tak też trawa szybko odrasta po pożarze.",
+      "tts": {
+        "text": "Tak też trawa szybko odrasta po pożarze.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pomiędzy trawami w ciepłych miesiącach kwitną małe kwiaty.",
+      "text_markdown": "Pomiędzy trawami w ciepłych miesiącach kwitną małe kwiaty.",
+      "tts": {
+        "text": "Pomiędzy trawami w ciepłych miesiącach kwitną małe kwiaty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dzikie słoneczniki i wiele innych jaskrawych kwiatów wypełnia step latem.",
+      "text_markdown": "Dzikie słoneczniki i wiele innych jaskrawych kwiatów wypełnia step latem.",
+      "tts": {
+        "text": "Dzikie słoneczniki i wiele innych jaskrawych kwiatów wypełnia step latem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pszczoły i motyle przelatują z jednego kwiatu na drugi.",
+      "text_markdown": "Pszczoły i motyle przelatują z jednego kwiatu na drugi.",
+      "tts": {
+        "text": "Pszczoły i motyle przelatują z jednego kwiatu na drugi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na większości stepu jest bardzo mało drzew.",
+      "text_markdown": "Na większości stepu jest bardzo mało drzew.",
+      "tts": {
+        "text": "Na większości stepu jest bardzo mało drzew.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tam, gdzie rosną, zwykle są małe i twarde.",
+      "text_markdown": "Tam, gdzie rosną, zwykle są małe i twarde.",
+      "tts": {
+        "text": "Tam, gdzie rosną, zwykle są małe i twarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rosną wzdłuż rzek, gdzie jest więcej wody, lub w niskich miejscach, gdzie zimą gromadzi się śnieg.",
+      "text_markdown": "Rosną wzdłuż rzek, gdzie jest więcej wody, lub w niskich miejscach, gdzie zimą gromadzi się śnieg.",
+      "tts": {
+        "text": "Rosną wzdłuż rzek, gdzie jest więcej wody, lub w niskich miejscach, gdzie zimą gromadzi się śnieg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na otwartej równinie trawa jest sama.",
+      "text_markdown": "Na otwartej równinie trawa jest sama.",
+      "tts": {
+        "text": "Na otwartej równinie trawa jest sama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Rośliny",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To zielony, złoty i srebrny dywan, który spaja cały biom.",
+      "text_markdown": "To zielony, złoty i srebrny dywan, który spaja cały biom.",
+      "tts": {
+        "text": "To zielony, złoty i srebrny dywan, który spaja cały biom.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zwierzęta",
+      "text_markdown": "Zwierzęta"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zwierzęta stepu umiarkowanego są stworzone do otwartego, wietrznego świata.",
+      "text_markdown": "Zwierzęta stepu umiarkowanego są stworzone do otwartego, wietrznego świata.",
+      "tts": {
+        "text": "Zwierzęta stepu umiarkowanego są stworzone do otwartego, wietrznego świata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Największe tutejsze zwierzęta to wielcy roślinożercy.",
+      "text_markdown": "Największe tutejsze zwierzęta to wielcy roślinożercy.",
+      "tts": {
+        "text": "Największe tutejsze zwierzęta to wielcy roślinożercy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jedzą trawę i przemieszczają się w wielkich stadach po otwartej krainie.",
+      "text_markdown": "Jedzą trawę i przemieszczają się w wielkich stadach po otwartej krainie.",
+      "tts": {
+        "text": "Jedzą trawę i przemieszczają się w wielkich stadach po otwartej krainie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Ameryce Północnej najsłynniejszym z nich jest bizon.",
+      "text_markdown": "W Ameryce Północnej najsłynniejszym z nich jest bizon.",
+      "tts": {
+        "text": "W Ameryce Północnej najsłynniejszym z nich jest bizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bizon jest ogromny, ciężki i kudłaty, z wielką brązową głową.",
+      "text_markdown": "Bizon jest ogromny, ciężki i kudłaty, z wielką brązową głową.",
+      "tts": {
+        "text": "Bizon jest ogromny, ciężki i kudłaty, z wielką brązową głową.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bizony niegdyś przemieszczały się po preriach w stadach liczących miliony.",
+      "text_markdown": "Bizony niegdyś przemieszczały się po preriach w stadach liczących miliony.",
+      "tts": {
+        "text": "Bizony niegdyś przemieszczały się po preriach w stadach liczących miliony.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Eurazji dzikie konie niegdyś przemieszczały się w ten sam sposób po stepach.",
+      "text_markdown": "W Eurazji dzikie konie niegdyś przemieszczały się w ten sam sposób po stepach.",
+      "tts": {
+        "text": "W Eurazji dzikie konie niegdyś przemieszczały się w ten sam sposób po stepach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na pampie Ameryki Południowej ich miejsce zajęły mniejsze jelenie i inne pasące się zwierzęta.",
+      "text_markdown": "Na pampie Ameryki Południowej ich miejsce zajęły mniejsze jelenie i inne pasące się zwierzęta.",
+      "tts": {
+        "text": "Na pampie Ameryki Południowej ich miejsce zajęły mniejsze jelenie i inne pasące się zwierzęta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele mniejszych zwierząt mieszka pod trawą.",
+      "text_markdown": "Wiele mniejszych zwierząt mieszka pod trawą.",
+      "tts": {
+        "text": "Wiele mniejszych zwierząt mieszka pod trawą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pieski preriowe, susły i inne małe zwierzęta drążą w glebie długie tunele i komory.",
+      "text_markdown": "Pieski preriowe, susły i inne małe zwierzęta drążą w glebie długie tunele i komory.",
+      "tts": {
+        "text": "Pieski preriowe, susły i inne małe zwierzęta drążą w glebie długie tunele i komory.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W dzień wychodzą na żer, a dla bezpieczeństwa nurkują z powrotem do swoich nor.",
+      "text_markdown": "W dzień wychodzą na żer, a dla bezpieczeństwa nurkują z powrotem do swoich nor.",
+      "tts": {
+        "text": "W dzień wychodzą na żer, a dla bezpieczeństwa nurkują z powrotem do swoich nor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Step pełen tych małych zwierząt jest pełen małych dziur w ziemi.",
+      "text_markdown": "Step pełen tych małych zwierząt jest pełen małych dziur w ziemi.",
+      "tts": {
+        "text": "Step pełen tych małych zwierząt jest pełen małych dziur w ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilki, lisy i małe dzikie koty polują na trawie.",
+      "text_markdown": "Wilki, lisy i małe dzikie koty polują na trawie.",
+      "tts": {
+        "text": "Wilki, lisy i małe dzikie koty polują na trawie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilk to wielki łowca otwartych równin.",
+      "text_markdown": "Wilk to wielki łowca otwartych równin.",
+      "tts": {
+        "text": "Wilk to wielki łowca otwartych równin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mniejsi łowcy, jak lis i dziki kot, łapią myszy, króliki i ptaki.",
+      "text_markdown": "Mniejsi łowcy, jak lis i dziki kot, łapią myszy, króliki i ptaki.",
+      "tts": {
+        "text": "Mniejsi łowcy, jak lis i dziki kot, łapią myszy, króliki i ptaki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wysoko na niebie jastrzębie i orły krążą powoli.",
+      "text_markdown": "Wysoko na niebie jastrzębie i orły krążą powoli.",
+      "tts": {
+        "text": "Wysoko na niebie jastrzębie i orły krążą powoli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wypatrują ruchu w trawie poniżej.",
+      "text_markdown": "Wypatrują ruchu w trawie poniżej.",
+      "tts": {
+        "text": "Wypatrują ruchu w trawie poniżej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele rodzajów ptaków gnieździ się wprost na ziemi, ukrytych w wysokiej trawie.",
+      "text_markdown": "Wiele rodzajów ptaków gnieździ się wprost na ziemi, ukrytych w wysokiej trawie.",
+      "tts": {
+        "text": "Wiele rodzajów ptaków gnieździ się wprost na ziemi, ukrytych w wysokiej trawie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem powietrze jest pełne owadów.",
+      "text_markdown": "Latem powietrze jest pełne owadów.",
+      "tts": {
+        "text": "Latem powietrze jest pełne owadów.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Koniki polne cykają i skaczą w ciepłym wietrze.",
+      "text_markdown": "Koniki polne cykają i skaczą w ciepłym wietrze.",
+      "tts": {
+        "text": "Koniki polne cykają i skaczą w ciepłym wietrze.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motyle i pszczoły przelatują z kwiatu na kwiat.",
+      "text_markdown": "Motyle i pszczoły przelatują z kwiatu na kwiat.",
+      "tts": {
+        "text": "Motyle i pszczoły przelatują z kwiatu na kwiat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Węże suną przez trawę, szukając myszy i ptasich jaj.",
+      "text_markdown": "Węże suną przez trawę, szukając myszy i ptasich jaj.",
+      "tts": {
+        "text": "Węże suną przez trawę, szukając myszy i ptasich jaj.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Każde zwierzę tutaj zna te same lekcje.",
+      "text_markdown": "Każde zwierzę tutaj zna te same lekcje.",
+      "tts": {
+        "text": "Każde zwierzę tutaj zna te same lekcje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przemieszczaj się z porami roku.",
+      "text_markdown": "Przemieszczaj się z porami roku.",
+      "tts": {
+        "text": "Przemieszczaj się z porami roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Chroń się przed gorącym słońcem.",
+      "text_markdown": "Chroń się przed gorącym słońcem.",
+      "tts": {
+        "text": "Chroń się przed gorącym słońcem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Uciekaj przed zimnym wiatrem.",
+      "text_markdown": "Uciekaj przed zimnym wiatrem.",
+      "tts": {
+        "text": "Uciekaj przed zimnym wiatrem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Zwierzęta",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pij z rzeki, kiedy ją znajdziesz.",
+      "text_markdown": "Pij z rzeki, kiedy ją znajdziesz.",
+      "tts": {
+        "text": "Pij z rzeki, kiedy ją znajdziesz.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ludzie",
+      "text_markdown": "Ludzie"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie żyją na stepie umiarkowanym od wielu tysięcy lat.",
+      "text_markdown": "Ludzie żyją na stepie umiarkowanym od wielu tysięcy lat.",
+      "tts": {
+        "text": "Ludzie żyją na stepie umiarkowanym od wielu tysięcy lat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Szeroka otwarta kraina, stada zwierząt i żyzna gleba ukształtowały ich sposób życia.",
+      "text_markdown": "Szeroka otwarta kraina, stada zwierząt i żyzna gleba ukształtowały ich sposób życia.",
+      "tts": {
+        "text": "Szeroka otwarta kraina, stada zwierząt i żyzna gleba ukształtowały ich sposób życia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dawno temu ludy stepów Azji oswoiły dzikiego konia.",
+      "text_markdown": "Dawno temu ludy stepów Azji oswoiły dzikiego konia.",
+      "tts": {
+        "text": "Dawno temu ludy stepów Azji oswoiły dzikiego konia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na grzbiecie konia człowiek mógł przemierzać otwarte równiny znacznie szybciej niż pieszo.",
+      "text_markdown": "Na grzbiecie konia człowiek mógł przemierzać otwarte równiny znacznie szybciej niż pieszo.",
+      "tts": {
+        "text": "Na grzbiecie konia człowiek mógł przemierzać otwarte równiny znacznie szybciej niż pieszo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Koń zmienił wszystko dla ludzi stepów.",
+      "text_markdown": "Koń zmienił wszystko dla ludzi stepów.",
+      "tts": {
+        "text": "Koń zmienił wszystko dla ludzi stepów.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zmienił sposób polowania, podróżowania i walki.",
+      "text_markdown": "Zmienił sposób polowania, podróżowania i walki.",
+      "tts": {
+        "text": "Zmienił sposób polowania, podróżowania i walki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele dawnych ludów stepów było nomadami.",
+      "text_markdown": "Wiele dawnych ludów stepów było nomadami.",
+      "tts": {
+        "text": "Wiele dawnych ludów stepów było nomadami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Przeganiali swoje stada koni, bydła, owiec i kóz z jednej części stepu w drugą.",
+      "text_markdown": "Przeganiali swoje stada koni, bydła, owiec i kóz z jednej części stepu w drugą.",
+      "tts": {
+        "text": "Przeganiali swoje stada koni, bydła, owiec i kóz z jednej części stepu w drugą.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Latem wędrowali na chłodne wysokie równiny.",
+      "text_markdown": "Latem wędrowali na chłodne wysokie równiny.",
+      "tts": {
+        "text": "Latem wędrowali na chłodne wysokie równiny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zimą schodzili w niższe, cieplejsze doliny.",
+      "text_markdown": "Zimą schodzili w niższe, cieplejsze doliny.",
+      "tts": {
+        "text": "Zimą schodzili w niższe, cieplejsze doliny.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich domami były okrągłe jurty z filcu i drewna.",
+      "text_markdown": "Ich domami były okrągłe jurty z filcu i drewna.",
+      "tts": {
+        "text": "Ich domami były okrągłe jurty z filcu i drewna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taką okrągłą jurtę można rozłożyć w godzinę, spakować na grzbiet zwierzęcia i postawić ponownie gdzieś indziej.",
+      "text_markdown": "Taką okrągłą jurtę można rozłożyć w godzinę, spakować na grzbiet zwierzęcia i postawić ponownie gdzieś indziej.",
+      "tts": {
+        "text": "Taką okrągłą jurtę można rozłożyć w godzinę, spakować na grzbiet zwierzęcia i postawić ponownie gdzieś indziej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Ameryce Północnej ludy preriowe żyły przez tysiące lat obok wielkich stad bizonów.",
+      "text_markdown": "W Ameryce Północnej ludy preriowe żyły przez tysiące lat obok wielkich stad bizonów.",
+      "tts": {
+        "text": "W Ameryce Północnej ludy preriowe żyły przez tysiące lat obok wielkich stad bizonów.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Podążali za stadami po otwartej krainie.",
+      "text_markdown": "Podążali za stadami po otwartej krainie.",
+      "tts": {
+        "text": "Podążali za stadami po otwartej krainie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ich domami były wysokie namioty ze skór rozpięte na drewnianych żerdziach.",
+      "text_markdown": "Ich domami były wysokie namioty ze skór rozpięte na drewnianych żerdziach.",
+      "tts": {
+        "text": "Ich domami były wysokie namioty ze skór rozpięte na drewnianych żerdziach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kiedy na prerie przybył koń, tamtejszy sposób życia również głęboko się zmienił.",
+      "text_markdown": "Kiedy na prerie przybył koń, tamtejszy sposób życia również głęboko się zmienił.",
+      "tts": {
+        "text": "Kiedy na prerie przybył koń, tamtejszy sposób życia również głęboko się zmienił.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na pampie Ameryki Południowej pasterze konni także stali się częścią tej krainy.",
+      "text_markdown": "Na pampie Ameryki Południowej pasterze konni także stali się częścią tej krainy.",
+      "tts": {
+        "text": "Na pampie Ameryki Południowej pasterze konni także stali się częścią tej krainy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W ciągu ostatnich kilkuset lat duża część stepu umiarkowanego znów się zmieniła.",
+      "text_markdown": "W ciągu ostatnich kilkuset lat duża część stepu umiarkowanego znów się zmieniła.",
+      "tts": {
+        "text": "W ciągu ostatnich kilkuset lat duża część stepu umiarkowanego znów się zmieniła.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Głęboką, żyzną glebę zaorano, by uprawiać pszenicę, kukurydzę i inne zboża.",
+      "text_markdown": "Głęboką, żyzną glebę zaorano, by uprawiać pszenicę, kukurydzę i inne zboża.",
+      "tts": {
+        "text": "Głęboką, żyzną glebę zaorano, by uprawiać pszenicę, kukurydzę i inne zboża.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dziś duża część zboża, które karmi świat, pochodzi z tych ziem.",
+      "text_markdown": "Dziś duża część zboża, które karmi świat, pochodzi z tych ziem.",
+      "tts": {
+        "text": "Dziś duża część zboża, które karmi świat, pochodzi z tych ziem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dawny sposób przemieszczania się ze stadami w wielu miejscach zaginął.",
+      "text_markdown": "Dawny sposób przemieszczania się ze stadami w wielu miejscach zaginął.",
+      "tts": {
+        "text": "Dawny sposób przemieszczania się ze stadami w wielu miejscach zaginął.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale pieśni, opowieści i miłość do otwartego nieba trwają nadal.",
+      "text_markdown": "Ale pieśni, opowieści i miłość do otwartego nieba trwają nadal.",
+      "tts": {
+        "text": "Ale pieśni, opowieści i miłość do otwartego nieba trwają nadal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Ludzie",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na każdym wielkim stepie ludzie, którzy tam dorastali, noszą wiatr w sercu.",
+      "text_markdown": "Na każdym wielkim stepie ludzie, którzy tam dorastali, noszą wiatr w sercu.",
+      "tts": {
+        "text": "Na każdym wielkim stepie ludzie, którzy tam dorastali, noszą wiatr w sercu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Step dzisiaj",
+      "text_markdown": "Step dzisiaj"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Step umiarkowany to jeden z najważniejszych biomów dla ludzi.",
+      "text_markdown": "Step umiarkowany to jeden z najważniejszych biomów dla ludzi.",
+      "tts": {
+        "text": "Step umiarkowany to jeden z najważniejszych biomów dla ludzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Głęboka, żyzna gleba sprawia, że jest idealny do uprawy żywności.",
+      "text_markdown": "Głęboka, żyzna gleba sprawia, że jest idealny do uprawy żywności.",
+      "tts": {
+        "text": "Głęboka, żyzna gleba sprawia, że jest idealny do uprawy żywności.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele chleba, makaronu i kukurydzy, które je świat, pochodzi z tych ziem.",
+      "text_markdown": "Wiele chleba, makaronu i kukurydzy, które je świat, pochodzi z tych ziem.",
+      "tts": {
+        "text": "Wiele chleba, makaronu i kukurydzy, które je świat, pochodzi z tych ziem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ale koszt był wysoki.",
+      "text_markdown": "Ale koszt był wysoki.",
+      "tts": {
+        "text": "Ale koszt był wysoki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Większość pierwotnych stepów świata została zaorana.",
+      "text_markdown": "Większość pierwotnych stepów świata została zaorana.",
+      "tts": {
+        "text": "Większość pierwotnych stepów świata została zaorana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wielkie stada bizonów i dzikich koni w większości zniknęły.",
+      "text_markdown": "Wielkie stada bizonów i dzikich koni w większości zniknęły.",
+      "tts": {
+        "text": "Wielkie stada bizonów i dzikich koni w większości zniknęły.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Małe ryjące zwierzęta mają mniej miejsc do życia.",
+      "text_markdown": "Małe ryjące zwierzęta mają mniej miejsc do życia.",
+      "tts": {
+        "text": "Małe ryjące zwierzęta mają mniej miejsc do życia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trawa, która niegdyś sięgała horyzontu, dziś rośnie tylko na małych skrawkach.",
+      "text_markdown": "Trawa, która niegdyś sięgała horyzontu, dziś rośnie tylko na małych skrawkach.",
+      "tts": {
+        "text": "Trawa, która niegdyś sięgała horyzontu, dziś rośnie tylko na małych skrawkach.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W niektórych miejscach, gdy trawa zniknie i gleba zostanie odsłonięta, wiatr zwiewa ciemną ziemię.",
+      "text_markdown": "W niektórych miejscach, gdy trawa zniknie i gleba zostanie odsłonięta, wiatr zwiewa ciemną ziemię.",
+      "tts": {
+        "text": "W niektórych miejscach, gdy trawa zniknie i gleba zostanie odsłonięta, wiatr zwiewa ciemną ziemię.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wiele grup na całym świecie pracuje, by chronić to, co zostało.",
+      "text_markdown": "Wiele grup na całym świecie pracuje, by chronić to, co zostało.",
+      "tts": {
+        "text": "Wiele grup na całym świecie pracuje, by chronić to, co zostało.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wyznaczają parki, gdzie trawa znów może rosnąć wysoko.",
+      "text_markdown": "Wyznaczają parki, gdzie trawa znów może rosnąć wysoko.",
+      "tts": {
+        "text": "Wyznaczają parki, gdzie trawa znów może rosnąć wysoko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pomagają bizonom i innym zwierzętom wrócić na ziemie, które kiedyś wypełniały.",
+      "text_markdown": "Pomagają bizonom i innym zwierzętom wrócić na ziemie, które kiedyś wypełniały.",
+      "tts": {
+        "text": "Pomagają bizonom i innym zwierzętom wrócić na ziemie, które kiedyś wypełniały.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Badają głęboką glebę, abyśmy mogli z niej korzystać, nie tracąc jej.",
+      "text_markdown": "Badają głęboką glebę, abyśmy mogli z niej korzystać, nie tracąc jej.",
+      "tts": {
+        "text": "Badają głęboką glebę, abyśmy mogli z niej korzystać, nie tracąc jej.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zdrowy step to jedno z najbardziej żywych miejsc na Ziemi.",
+      "text_markdown": "Zdrowy step to jedno z najbardziej żywych miejsc na Ziemi.",
+      "tts": {
+        "text": "Zdrowy step to jedno z najbardziej żywych miejsc na Ziemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Step dzisiaj",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wart jest naszej troski.",
+      "text_markdown": "Wart jest naszej troski.",
+      "tts": {
+        "text": "Wart jest naszej troski.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Zakończenie",
+      "text_markdown": "Zakończenie"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taki jest step umiarkowany.",
+      "text_markdown": "Taki jest step umiarkowany.",
+      "tts": {
+        "text": "Taki jest step umiarkowany.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Szeroki, wietrzny świat trawy, wielkiego nieba i zmieniających się pór roku.",
+      "text_markdown": "Szeroki, wietrzny świat trawy, wielkiego nieba i zmieniających się pór roku.",
+      "tts": {
+        "text": "Szeroki, wietrzny świat trawy, wielkiego nieba i zmieniających się pór roku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeśli kiedyś staniesz na takim stepie, zatrzymaj się na chwilę.",
+      "text_markdown": "Jeśli kiedyś staniesz na takim stepie, zatrzymaj się na chwilę.",
+      "tts": {
+        "text": "Jeśli kiedyś staniesz na takim stepie, zatrzymaj się na chwilę.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Posłuchaj wiatru przesuwającego się po trawie.",
+      "text_markdown": "Posłuchaj wiatru przesuwającego się po trawie.",
+      "tts": {
+        "text": "Posłuchaj wiatru przesuwającego się po trawie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spójrz na długi horyzont.",
+      "text_markdown": "Spójrz na długi horyzont.",
+      "tts": {
+        "text": "Spójrz na długi horyzont.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Zakończenie",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poczujesz, jak wokół ciebie bije serce biomu.",
+      "text_markdown": "Poczujesz, jak wokół ciebie bije serce biomu.",
+      "tts": {
+        "text": "Poczujesz, jak wokół ciebie bije serce biomu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

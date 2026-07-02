@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "ca",
+  "total_segments": 62,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hola i benvinguts a l'espai AI This Week. Jo sóc la Vindy.",
+      "text_markdown": "Hola i benvinguts a l'espai AI This Week. Jo sóc la Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Hola i benvinguts a l'espai AI This Week. Jo sóc la Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "En Ron m'acompanya, com sempre.",
+      "text_markdown": "En Ron m'acompanya, com sempre.",
+      "title": "",
+      "tts": {
+        "text": "En Ron m'acompanya, com sempre.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "M'alegra molt ser aquí amb vosaltres.",
+      "text_markdown": "M'alegra molt ser aquí amb vosaltres.",
+      "title": "",
+      "tts": {
+        "text": "M'alegra molt ser aquí amb vosaltres.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Avui és dimecres, 13 de maig de 2026. A continuació: els models que s'han llançat aquesta setmana. Les classificacions, i per què algunes d'elles hauríeu de deixar de confiar-hi. El nostre concepte de la setmana. I el panorama general: els EUA acaben de tenir un nou president de la Reserva Federal, i això importa més per a la IA del que podríeu pensar.",
+      "text_markdown": "Avui és dimecres, 13 de maig de 2026. A continuació: els models que s'han llançat aquesta setmana. Les classificacions, i per què algunes d'elles hauríeu de deixar de confiar-hi. El nostre concepte de la setmana. I el panorama general: els EUA acaben de tenir un nou president de la Reserva Federal, i això importa més per a la IA del que podríeu pensar.",
+      "title": "",
+      "tts": {
+        "text": "Avui és dimecres, tretze de maig de dos mil vint-i-sis. A continuació: els models que s'han llançat aquesta setmana. Les classificacions, i per què algunes d'elles hauríeu de deixar de confiar-hi. El nostre concepte de la setmana. I el panorama general: els Estats Units acaben de tenir un nou president de la Reserva Federal, i això importa més per a la IA del que podríeu pensar.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, quina és la notícia més important sobre models aquesta setmana?",
+      "text_markdown": "Ron, quina és la notícia més important sobre models aquesta setmana?",
+      "title": "",
+      "tts": {
+        "text": "Ron, quina és la notícia més important sobre models aquesta setmana?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El cervell predeterminat dins de ChatGPT ha canviat. OpenAI va llançar un nou model anomenat GPT-5.5 Instant a la versió gratuïta la setmana passada, el dimarts 5 de maig. Si una resposta gratuïta de ChatGPT us ha semblat més curta o menys plena d'emojis, aquesta n'és la raó.",
+      "text_markdown": "El cervell predeterminat dins de ChatGPT ha canviat. OpenAI va llançar un nou model anomenat GPT-5.5 Instant a la versió gratuïta la setmana passada, el dimarts 5 de maig. Si una resposta gratuïta de ChatGPT us ha semblat més curta o menys plena d'emojis, aquesta n'és la raó.",
+      "title": "",
+      "tts": {
+        "text": "El cervell predeterminat dins de ChatGPT ha canviat. OpenAI va llançar un nou model anomenat GPT cinc punt cinc Instant a la versió gratuïta la setmana passada, el dimarts cinc de maig. Si una resposta gratuïta de ChatGPT us ha semblat més curta o menys plena d'emojis, aquesta n'és la raó.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Més curt, de quina manera?",
+      "text_markdown": "Més curt, de quina manera?",
+      "title": "",
+      "tts": {
+        "text": "Més curt, de quina manera?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "OpenAI diu que el nou model predeterminat escriu aproximadament un 30% menys de paraules i un 30% menys de línies que el model que va substituir. També afirmen una caiguda del 50% en les afirmacions al·lucinades en les peticions més difícils. Coses com preguntes mèdiques, preguntes legals i preguntes financeres.",
+      "text_markdown": "OpenAI diu que el nou model predeterminat escriu aproximadament un 30% menys de paraules i un 30% menys de línies que el model que va substituir. També afirmen una caiguda del 50% en les afirmacions al·lucinades en les peticions més difícils. Coses com preguntes mèdiques, preguntes legals i preguntes financeres.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI diu que el nou model predeterminat escriu aproximadament un trenta per cent menys de paraules i un trenta per cent menys de línies que el model que va substituir. També afirmen una caiguda del cinquanta per cent en les afirmacions al·lucinades en les peticions més difícils. Coses com preguntes mèdiques, preguntes legals i preguntes financeres.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Algú fora d'OpenAI ha verificat aquestes xifres?",
+      "text_markdown": "Algú fora d'OpenAI ha verificat aquestes xifres?",
+      "title": "",
+      "tts": {
+        "text": "Algú fora d'OpenAI ha verificat aquestes xifres?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "No a gran escala. Els experts en benchmarks independents, com Artificial Analysis, tenen el nou model al capdamunt del seu índex d'intel·ligència general. Però les afirmacions d'al·lucinació són lentes de verificar. Aquestes tendeixen a aparèixer al llarg de les setmanes, a mesura que la gent utilitza el model.",
+      "text_markdown": "No a gran escala. Els experts en benchmarks independents, com Artificial Analysis, tenen el nou model al capdamunt del seu índex d'intel·ligència general. Però les afirmacions d'al·lucinació són lentes de verificar. Aquestes tendeixen a aparèixer al llarg de les setmanes, a mesura que la gent utilitza el model.",
+      "title": "",
+      "tts": {
+        "text": "No a gran escala. Els experts en benchmarks independents, com Artificial Analysis, tenen el nou model al capdamunt del seu índex d'intel·ligència general. Però les afirmacions d'al·lucinació són lentes de verificar. Aquestes tendeixen a aparèixer al llarg de les setmanes, a mesura que la gent utilitza el model.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I pel que fa als pesos oberts?",
+      "text_markdown": "I pel que fa als pesos oberts?",
+      "title": "",
+      "tts": {
+        "text": "I pel que fa als pesos oberts?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dues coses importants. Moonshot, el laboratori xinès darrere del model Kimi, va recaptar 2.000 milions de dòlars la setmana passada, el 7 de maig, amb una valoració de 20.000 milions de dòlars. I el seu darrer model, Kimi K 2.6, acaba d'aconseguir el primer lloc a OpenRouter per volum de tokens.",
+      "text_markdown": "Dues coses importants. Moonshot, el laboratori xinès darrere del model Kimi, va recaptar 2.000 milions de dòlars la setmana passada, el 7 de maig, amb una valoració de 20.000 milions de dòlars. I el seu darrer model, Kimi K 2.6, acaba d'aconseguir el primer lloc a OpenRouter per volum de tokens.",
+      "title": "",
+      "tts": {
+        "text": "Dues coses importants. Moonshot, el laboratori xinès darrere del model Kimi, va recaptar dos mil milions de dòlars la setmana passada, el set de maig, amb una valoració de vint mil milions de dòlars. I el seu darrer model, Kimi K dos punt sis, acaba d'aconseguir el primer lloc a OpenRouter per volum de tokens.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "El primer lloc? En general?",
+      "text_markdown": "El primer lloc? En general?",
+      "title": "",
+      "tts": {
+        "text": "El primer lloc? En general?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "En general. Això és un model xinès de pesos oberts en el número u d'un important enrutador comercial. Fa sis mesos, això hauria estat impensable.",
+      "text_markdown": "En general. Això és un model xinès de pesos oberts en el número u d'un important enrutador comercial. Fa sis mesos, això hauria estat impensable.",
+      "title": "",
+      "tts": {
+        "text": "En general. Això és un model xinès de pesos oberts en el número u d'un important enrutador comercial. Fa sis mesos, això hauria estat impensable.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Alguna cosa més a destacar?",
+      "text_markdown": "Alguna cosa més a destacar?",
+      "title": "",
+      "tts": {
+        "text": "Alguna cosa més a destacar?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mistral, el laboratori francès, va llançar Medium 3.5 a finals d'abril. Estan fusionant l'antiga divisió entre un model de xat, un model de raonament i un model de codificació en un sol producte. La mateixa tendència que OpenAI va iniciar amb la família GPT-5. Tota la indústria es mou en aquesta direcció.",
+      "text_markdown": "Mistral, el laboratori francès, va llançar Medium 3.5 a finals d'abril. Estan fusionant l'antiga divisió entre un model de xat, un model de raonament i un model de codificació en un sol producte. La mateixa tendència que OpenAI va iniciar amb la família GPT-5. Tota la indústria es mou en aquesta direcció.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, el laboratori francès, va llançar Medium tres punt cinc a finals d'abril. Estan fusionant l'antiga divisió entre un model de xat, un model de raonament i un model de codificació en un sol producte. La mateixa tendència que OpenAI va iniciar amb la família GPT cinc. Tota la indústria es mou en aquesta direcció.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I ara, què ve després?",
+      "text_markdown": "I ara, què ve després?",
+      "title": "",
+      "tts": {
+        "text": "I ara, què ve després?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Google I/O és dimarts. Tothom espera un nou Gemini, i hi ha rumors creïbles sobre un model de generació de vídeo anomenat Gemini Omni. OpenAI té GPT-5.6 en proves. Anthropic té un model anomenat Mythos en una previsualització privada. Sabrem molt més la setmana que ve.",
+      "text_markdown": "Google I/O és dimarts. Tothom espera un nou Gemini, i hi ha rumors creïbles sobre un model de generació de vídeo anomenat Gemini Omni. OpenAI té GPT-5.6 en proves. Anthropic té un model anomenat Mythos en una previsualització privada. Sabrem molt més la setmana que ve.",
+      "title": "",
+      "tts": {
+        "text": "Google I O és dimarts. Tothom espera un nou Gemini, i hi ha rumors creïbles sobre un model de generació de vídeo anomenat Gemini Omni. OpenAI té GPT cinc punt sis en proves. Anthropic té un model anomenat Mythos en una previsualització privada. Sabrem molt més la setmana que ve.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "D'acord, anem a les classificacions.",
+      "text_markdown": "D'acord, anem a les classificacions.",
+      "title": "",
+      "tts": {
+        "text": "D'acord, anem a les classificacions.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, què es mou a les classificacions aquesta setmana?",
+      "text_markdown": "Ron, què es mou a les classificacions aquesta setmana?",
+      "title": "",
+      "tts": {
+        "text": "Ron, què es mou a les classificacions aquesta setmana?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La veritable història d'aquesta setmana no són les puntuacions. Són les puntuacions en les quals hauríeu de deixar de confiar.",
+      "text_markdown": "La veritable història d'aquesta setmana no són les puntuacions. Són les puntuacions en les quals hauríeu de deixar de confiar.",
+      "title": "",
+      "tts": {
+        "text": "La veritable història d'aquesta setmana no són les puntuacions. Són les puntuacions en les quals hauríeu de deixar de confiar.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Explica'ns una mica més sobre això, Ron.",
+      "text_markdown": "Explica'ns una mica més sobre això, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Explica'ns una mica més sobre això, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Un grup de Berkeley va publicar un article. Van construir un escàner automatitzat que va obtenir una puntuació gairebé perfecta en tots els principals benchmarks d'agents d'IA. Sense resoldre realment ni una sola tasca. Van explotar la manera com els benchmarks comproven les seves pròpies respostes.",
+      "text_markdown": "Un grup de Berkeley va publicar un article. Van construir un escàner automatitzat que va obtenir una puntuació gairebé perfecta en tots els principals benchmarks d'agents d'IA. Sense resoldre realment ni una sola tasca. Van explotar la manera com els benchmarks comproven les seves pròpies respostes.",
+      "title": "",
+      "tts": {
+        "text": "Un grup de Berkeley va publicar un article. Van construir un escàner automatitzat que va obtenir una puntuació gairebé perfecta en tots els principals benchmarks d'agents d'IA. Sense resoldre realment ni una sola tasca. Van explotar la manera com els benchmarks comproven les seves pròpies respostes.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Van fer trampes, i els benchmarks no ho van detectar.",
+      "text_markdown": "Van fer trampes, i els benchmarks no ho van detectar.",
+      "title": "",
+      "tts": {
+        "text": "Van fer trampes, i els benchmarks no ho van detectar.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Exacte. I la mateixa setmana, OpenAI va anunciar que retirava les seves avaluacions de SWE bench Verified. Aquest és un benchmark de codificació que solien citar constantment. El van retirar perquè més de la meitat de les tasques difícils van resultar tenir proves trencades.",
+      "text_markdown": "Exacte. I la mateixa setmana, OpenAI va anunciar que retirava les seves avaluacions de SWE bench Verified. Aquest és un benchmark de codificació que solien citar constantment. El van retirar perquè més de la meitat de les tasques difícils van resultar tenir proves trencades.",
+      "title": "",
+      "tts": {
+        "text": "Exacte. I la mateixa setmana, OpenAI va anunciar que retirava les seves avaluacions de SWE bench Verified. Aquest és un benchmark de codificació que solien citar constantment. El van retirar perquè més de la meitat de les tasques difícils van resultar tenir proves trencades.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Així que moltes de les xifres que hem estat sentint durant l'últim any són...",
+      "text_markdown": "Així que moltes de les xifres que hem estat sentint durant l'últim any són...",
+      "title": "",
+      "tts": {
+        "text": "Així que moltes de les xifres que hem estat sentint durant l'últim any són...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Almenys parcialment inflades. No tots els models. No tots els benchmarks. Però el camp està reconstruint la seva cinta mètrica en públic. Avaluacions més noves com SWE-bench Pro i un projecte anomenat SWE-rebench estan intentant solucionar-ho mantenint el codi de prova privat.",
+      "text_markdown": "Almenys parcialment inflades. No tots els models. No tots els benchmarks. Però el camp està reconstruint la seva cinta mètrica en públic. Avaluacions més noves com SWE-bench Pro i un projecte anomenat SWE-rebench estan intentant solucionar-ho mantenint el codi de prova privat.",
+      "title": "",
+      "tts": {
+        "text": "Almenys parcialment inflades. No tots els models. No tots els benchmarks. Però el camp està reconstruint la seva cinta mètrica en públic. Avaluacions més noves com SWE bench Pro i un projecte anomenat SWE rebench estan intentant solucionar-ho mantenint el codi de prova privat.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Alguna cosa està realment pujant de manera neta?",
+      "text_markdown": "Alguna cosa està realment pujant de manera neta?",
+      "title": "",
+      "tts": {
+        "text": "Alguna cosa està realment pujant de manera neta?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dues coses, en classificacions més netes. A mitjans d'abril, el Claude Opus 4.7 d'Anthropic es va convertir en el primer model a superar netament un Elo de 1500 a la classificació de codificació de LM Arena. L'Opus 4.6 havia arribat als 1500 un parell de setmanes abans. A partir d'aquesta setmana, l'Opus 4.7 segueix al capdamunt, al voltant de 1569. Anthropic també té un model separat anomenat Mythos en una previsualització privada per a socis que lidera 17 dels 18 benchmarks d'agents que Anthropic va mesurar.",
+      "text_markdown": "Dues coses, en classificacions més netes. A mitjans d'abril, el Claude Opus 4.7 d'Anthropic es va convertir en el primer model a superar netament un Elo de 1500 a la classificació de codificació de LM Arena. L'Opus 4.6 havia arribat als 1500 un parell de setmanes abans. A partir d'aquesta setmana, l'Opus 4.7 segueix al capdamunt, al voltant de 1569. Anthropic també té un model separat anomenat Mythos en una previsualització privada per a socis que lidera 17 dels 18 benchmarks d'agents que Anthropic va mesurar.",
+      "title": "",
+      "tts": {
+        "text": "Dues coses, en classificacions més netes. A mitjans d'abril, el Claude Opus quatre punt set d'Anthropic es va convertir en el primer model a superar netament un Elo de mil cinc-cents a la classificació de codificació de LM Arena. L'Opus quatre punt sis havia arribat als mil cinc-cents un parell de setmanes abans. A partir d'aquesta setmana, l'Opus quatre punt set segueix al capdamunt, al voltant de mil cinc-cents seixanta-nou. Anthropic també té un model separat anomenat Mythos en una previsualització privada per a socis que lidera disset dels divuit benchmarks d'agents que Anthropic va mesurar.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un model que el públic no pot utilitzar està al capdamunt de les classificacions.",
+      "text_markdown": "Un model que el públic no pot utilitzar està al capdamunt de les classificacions.",
+      "title": "",
+      "tts": {
+        "text": "Un model que el públic no pot utilitzar està al capdamunt de les classificacions.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquí és on som. L'altra gran tendència és la bretxa entre obert i tancat. És la més estreta que ha estat mai. DeepSeek V4 Pro i Kimi K 2.6 estan a tocar de GPT-5.5 en l'índex d'intel·ligència d'avaluació creuada. Aquesta bretxa solia ser enorme. Ara és petita.",
+      "text_markdown": "Aquí és on som. L'altra gran tendència és la bretxa entre obert i tancat. És la més estreta que ha estat mai. DeepSeek V4 Pro i Kimi K 2.6 estan a tocar de GPT-5.5 en l'índex d'intel·ligència d'avaluació creuada. Aquesta bretxa solia ser enorme. Ara és petita.",
+      "title": "",
+      "tts": {
+        "text": "Aquí és on som. L'altra gran tendència és la bretxa entre obert i tancat. És la més estreta que ha estat mai. DeepSeek V quatre Pro i Kimi K dos punt sis estan a tocar de GPT cinc punt cinc en l'índex d'intel·ligència d'avaluació creuada. Aquesta bretxa solia ser enorme. Ara és petita.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "D'acord, anem amb el concepte de la setmana.",
+      "text_markdown": "D'acord, anem amb el concepte de la setmana.",
+      "title": "",
+      "tts": {
+        "text": "D'acord, anem amb el concepte de la setmana.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, el concepte d'aquesta setmana és 'mixture of experts'. Per què ens centrem en 'mixture of experts'?",
+      "text_markdown": "Ron, el concepte d'aquesta setmana és 'mixture of experts'. Per què ens centrem en 'mixture of experts'?",
+      "title": "",
+      "tts": {
+        "text": "Ron, el concepte d'aquesta setmana és 'mixture of experts'. Per què ens centrem en 'mixture of experts'?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Perquè el model de pesos oberts del qual acabem de parlar, Kimi K 2.6, té un total d'1 bilió de paràmetres. Però només 32.000 milions d'aquests paràmetres s'executen en un moment donat. Això és 'mixture of experts'.",
+      "text_markdown": "Perquè el model de pesos oberts del qual acabem de parlar, Kimi K 2.6, té un total d'1 bilió de paràmetres. Però només 32.000 milions d'aquests paràmetres s'executen en un moment donat. Això és 'mixture of experts'.",
+      "title": "",
+      "tts": {
+        "text": "Perquè el model de pesos oberts del qual acabem de parlar, Kimi K dos punt sis, té un total d'un bilió de paràmetres. Però només trenta-dos mil milions d'aquests paràmetres s'executen en un moment donat. Això és 'mixture of experts'.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Explica-ho per a la gent que ens escolta.",
+      "text_markdown": "Explica-ho per a la gent que ens escolta.",
+      "title": "",
+      "tts": {
+        "text": "Explica-ho per a la gent que ens escolta.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Un model d'IA normal és com un cervell gegant. Cada paraula que genera utilitza totes les parts del cervell. Un model de 'mixture of experts' és més aviat com un edifici ple d'especialistes. Amb una recepcionista a la porta. Per a cada paraula, la recepcionista tria dos o tres especialistes per consultar, i la resta de l'edifici es manté en silenci.",
+      "text_markdown": "Un model d'IA normal és com un cervell gegant. Cada paraula que genera utilitza totes les parts del cervell. Un model de 'mixture of experts' és més aviat com un edifici ple d'especialistes. Amb una recepcionista a la porta. Per a cada paraula, la recepcionista tria dos o tres especialistes per consultar, i la resta de l'edifici es manté en silenci.",
+      "title": "",
+      "tts": {
+        "text": "Un model d'IA normal és com un cervell gegant. Cada paraula que genera utilitza totes les parts del cervell. Un model de 'mixture of experts' és més aviat com un edifici ple d'especialistes. Amb una recepcionista a la porta. Per a cada paraula, la recepcionista tria dos o tres especialistes per consultar, i la resta de l'edifici es manté en silenci.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Així que el model és enorme sobre el paper, però barat d'executar.",
+      "text_markdown": "Així que el model és enorme sobre el paper, però barat d'executar.",
+      "title": "",
+      "tts": {
+        "text": "Així que el model és enorme sobre el paper, però barat d'executar.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Exacte. 1 bilió de paràmetres de capacitat. Però només 32.000 milions de paràmetres de càlcul per paraula. Aquest és el truc. La recepcionista és un petit tros de codi anomenat 'router'. Els especialistes són subxarxes anomenades experts. El model entrena el 'router' i els experts junts, de principi a fi.",
+      "text_markdown": "Exacte. 1 bilió de paràmetres de capacitat. Però només 32.000 milions de paràmetres de càlcul per paraula. Aquest és el truc. La recepcionista és un petit tros de codi anomenat 'router'. Els especialistes són subxarxes anomenades experts. El model entrena el 'router' i els experts junts, de principi a fi.",
+      "title": "",
+      "tts": {
+        "text": "Exacte. Un bilió de paràmetres de capacitat. Però només trenta-dos mil milions de paràmetres de càlcul per paraula. Aquest és el truc. La recepcionista és un petit tros de codi anomenat 'router'. Els especialistes són subxarxes anomenades experts. El model entrena el 'router' i els experts junts, de principi a fi.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tots els models de frontera importants estan fent això?",
+      "text_markdown": "Tots els models de frontera importants estan fent això?",
+      "title": "",
+      "tts": {
+        "text": "Tots els models de frontera importants estan fent això?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La majoria, sí. Encara que els laboratoris no sempre ho confirmen. GPT-4 era un model de 'mixture of experts'. El model insígnia de DeepSeek és un model de 'mixture of experts'. Mistral ha estat llançant models de 'mixture of experts' des del 2023. La nova onada de la Xina ha portat aquest disseny al límit.",
+      "text_markdown": "La majoria, sí. Encara que els laboratoris no sempre ho confirmen. GPT-4 era un model de 'mixture of experts'. El model insígnia de DeepSeek és un model de 'mixture of experts'. Mistral ha estat llançant models de 'mixture of experts' des del 2023. La nova onada de la Xina ha portat aquest disseny al límit.",
+      "title": "",
+      "tts": {
+        "text": "La majoria, sí. Encara que els laboratoris no sempre ho confirmen. GPT quatre era un model de 'mixture of experts'. El model insígnia de DeepSeek és un model de 'mixture of experts'. Mistral ha estat llançant models de 'mixture of experts' des del dos mil vint-i-tres. La nova onada de la Xina ha portat aquest disseny al límit.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Per què és important per a algú que només utilitza ChatGPT?",
+      "text_markdown": "Per què és important per a algú que només utilitza ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Per què és important per a algú que només utilitza ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dos raons. Una. És la raó principal per la qual un laboratori de pesos oberts a la Xina pot funcionar amb una qualitat de classe frontera amb una fracció del pressupost. Dues. És la raó principal per la qual una única trucada a l'API costa cèntims, no dòlars. Quan veus que els preus baixen i la qualitat es manté alta, 'mixture of experts' sol ser el motiu.",
+      "text_markdown": "Dos raons. Una. És la raó principal per la qual un laboratori de pesos oberts a la Xina pot funcionar amb una qualitat de classe frontera amb una fracció del pressupost. Dues. És la raó principal per la qual una única trucada a l'API costa cèntims, no dòlars. Quan veus que els preus baixen i la qualitat es manté alta, 'mixture of experts' sol ser el motiu.",
+      "title": "",
+      "tts": {
+        "text": "Dos raons. Una. És la raó principal per la qual un laboratori de pesos oberts a la Xina pot funcionar amb una qualitat de classe frontera amb una fracció del pressupost. Dues. És la raó principal per la qual una única trucada a l'API costa cèntims, no dòlars. Quan veus que els preus baixen i la qualitat es manté alta, 'mixture of experts' sol ser el motiu.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "'Mixture of experts'. 'Router'. Experts. Activació dispersa. Tres paraules per recordar. Ara tornem a la imatge general.",
+      "text_markdown": "'Mixture of experts'. 'Router'. Experts. Activació dispersa. Tres paraules per recordar. Ara tornem a la imatge general.",
+      "title": "",
+      "tts": {
+        "text": "'Mixture of experts'. 'Router'. Experts. Activació dispersa. Tres paraules per recordar. Ara tornem a la imatge general.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, la gran notícia fora del nostre món aquesta setmana és la Reserva Federal.",
+      "text_markdown": "Ron, la gran notícia fora del nostre món aquesta setmana és la Reserva Federal.",
+      "title": "",
+      "tts": {
+        "text": "Ron, la gran notícia fora del nostre món aquesta setmana és la Reserva Federal.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Avui, el Senat dels EUA ha confirmat Kevin Warsh com a pròxim president de la Reserva Federal. La votació va ser de 54 a 45. La votació més ajustada per a un president de la Fed en la història moderna dels Estats Units. Només un demòcrata va canviar de bàndol.",
+      "text_markdown": "Avui, el Senat dels EUA ha confirmat Kevin Warsh com a pròxim president de la Reserva Federal. La votació va ser de 54 a 45. La votació més ajustada per a un president de la Fed en la història moderna dels Estats Units. Només un demòcrata va canviar de bàndol.",
+      "title": "",
+      "tts": {
+        "text": "Avui, el Senat dels EUA ha confirmat Kevin Warsh com a pròxim president de la Reserva Federal. La votació va ser de cinquanta-quatre a quaranta-cinc. La votació més ajustada per a un president de la Fed en la història moderna dels Estats Units. Només un demòcrata va canviar de bàndol.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Per què és important per a la IA?",
+      "text_markdown": "Per què és important per a la IA?",
+      "title": "",
+      "tts": {
+        "text": "Per què és important per a la IA?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Perquè la construcció d'IA ara mateix està limitada per dues coses. L'electricitat i el cost del capital. La Fed estableix el cost del capital. I el nou president ha declarat que vol retallar els tipus més ràpidament del que ho hauria fet el seu predecessor.",
+      "text_markdown": "Perquè la construcció d'IA ara mateix està limitada per dues coses. L'electricitat i el cost del capital. La Fed estableix el cost del capital. I el nou president ha declarat que vol retallar els tipus més ràpidament del que ho hauria fet el seu predecessor.",
+      "title": "",
+      "tts": {
+        "text": "Perquè la construcció d'IA ara mateix està limitada per dues coses. L'electricitat i el cost del capital. La Fed estableix el cost del capital. I el nou president ha declarat que vol retallar els tipus més ràpidament del que ho hauria fet el seu predecessor.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Retallades de tipus més ràpides fan que la inversió en IA sigui més barata.",
+      "text_markdown": "Retallades de tipus més ràpides fan que la inversió en IA sigui més barata.",
+      "title": "",
+      "tts": {
+        "text": "Retallades de tipus més ràpides fan que la inversió en IA sigui més barata.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sí. Els hiperescaladors — Microsoft, Google, Amazon, Meta — tenen previst gastar aproximadament 700.000 milions de dòlars en despeses de capital aquest any. La major part són GPUs i centres de dades. Una taxa de descompte més baixa fa que aquestes construccions plurianuals resultin en valoracions més altes.",
+      "text_markdown": "Sí. Els hiperescaladors — Microsoft, Google, Amazon, Meta — tenen previst gastar aproximadament 700.000 milions de dòlars en despeses de capital aquest any. La major part són GPUs i centres de dades. Una taxa de descompte més baixa fa que aquestes construccions plurianuals resultin en valoracions més altes.",
+      "title": "",
+      "tts": {
+        "text": "Sí. Els hiperescaladors — Microsoft, Google, Amazon, Meta — tenen previst gastar aproximadament set-cents mil milions de dòlars en despeses de capital aquest any. La major part són GPUs i centres de dades. Una taxa de descompte més baixa fa que aquestes construccions plurianuals resultin en valoracions més altes.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I en l'altra direcció. Com afecta la IA el que la Fed ha de decidir?",
+      "text_markdown": "I en l'altra direcció. Com afecta la IA el que la Fed ha de decidir?",
+      "title": "",
+      "tts": {
+        "text": "I en l'altra direcció. Com afecta la IA el que la Fed ha de decidir?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta és la part interessant. La despesa de capital en IA és ara prou gran com per ser una xifra macro. No una història de sector. Els analistes de Wall Street diuen que la construcció i la despesa en equips relacionats amb la IA han estat la major part del creixement econòmic dels EUA durant els últims trimestres.",
+      "text_markdown": "Aquesta és la part interessant. La despesa de capital en IA és ara prou gran com per ser una xifra macro. No una història de sector. Els analistes de Wall Street diuen que la construcció i la despesa en equips relacionats amb la IA han estat la major part del creixement econòmic dels EUA durant els últims trimestres.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta és la part interessant. La despesa de capital en IA és ara prou gran com per ser una xifra macro. No una història de sector. Els analistes de Wall Street diuen que la construcció i la despesa en equips relacionats amb la IA han estat la major part del creixement econòmic dels EUA durant els últims trimestres.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "La majoria del creixement.",
+      "text_markdown": "La majoria del creixement.",
+      "title": "",
+      "tts": {
+        "text": "La majoria del creixement.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La majoria. I té dues direccions per a la Fed. A llarg termini, la IA és un impuls de productivitat. Això és deflacionari. Dóna marge a la Fed per retallar. A curt termini, és un xoc de demanda d'energia, de coure, de mà d'obra qualificada, d'aigua per a la refrigeració. Això és inflacionari. Especialment en llocs com Virgínia i Texas, on els centres de dades estan concentrats.",
+      "text_markdown": "La majoria. I té dues direccions per a la Fed. A llarg termini, la IA és un impuls de productivitat. Això és deflacionari. Dóna marge a la Fed per retallar. A curt termini, és un xoc de demanda d'energia, de coure, de mà d'obra qualificada, d'aigua per a la refrigeració. Això és inflacionari. Especialment en llocs com Virgínia i Texas, on els centres de dades estan concentrats.",
+      "title": "",
+      "tts": {
+        "text": "La majoria. I té dues direccions per a la Fed. A llarg termini, la IA és un impuls de productivitat. Això és deflacionari. Dóna marge a la Fed per retallar. A curt termini, és un xoc de demanda d'energia, de coure, de mà d'obra qualificada, d'aigua per a la refrigeració. Això és inflacionari. Especialment en llocs com Virgínia i Texas, on els centres de dades estan concentrats.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Així que el nou president ha de decidir si la IA és la resposta a la inflació, o si la IA és la causa de la inflació.",
+      "text_markdown": "Així que el nou president ha de decidir si la IA és la resposta a la inflació, o si la IA és la causa de la inflació.",
+      "title": "",
+      "tts": {
+        "text": "Així que el nou president ha de decidir si la IA és la resposta a la inflació, o si la IA és la causa de la inflació.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ambdós, simultàniament. I tot el que digui en els seus primers discursos públics farà moure tots els models de despesa de capital en IA a Wall Street.",
+      "text_markdown": "Ambdós, simultàniament. I tot el que digui en els seus primers discursos públics farà moure tots els models de despesa de capital en IA a Wall Street.",
+      "title": "",
+      "tts": {
+        "text": "Ambdós, simultàniament. I tot el que digui en els seus primers discursos públics farà moure tots els models de despesa de capital en IA a Wall Street.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Microsoft té 80.000 milions de dòlars en comandes de núvol sense complir a causa de l'energia. És aquesta la xifra correcta?",
+      "text_markdown": "Microsoft té 80.000 milions de dòlars en comandes de núvol sense complir a causa de l'energia. És aquesta la xifra correcta?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft té vuitanta mil milions de dòlars en comandes de núvol sense complir a causa de l'energia. És aquesta la xifra correcta?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta és la xifra que Microsoft ha informat. Els clients d'Azure estan esperant en línia per a la capacitat. L'embús ja no són els xips. És la xarxa elèctrica. Els mercats d'energia no poden construir nova capacitat tan ràpid com els centres de dades la volen.",
+      "text_markdown": "Aquesta és la xifra que Microsoft ha informat. Els clients d'Azure estan esperant en línia per a la capacitat. L'embús ja no són els xips. És la xarxa elèctrica. Els mercats d'energia no poden construir nova capacitat tan ràpid com els centres de dades la volen.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta és la xifra que Microsoft ha informat. Els clients d'Azure estan esperant en línia per a la capacitat. L'embús ja no són els xips. És la xarxa elèctrica. Els mercats d'energia no poden construir nova capacitat tan ràpid com els centres de dades la volen.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Quan és la primera reunió de Warsh?",
+      "text_markdown": "Quan és la primera reunió de Warsh?",
+      "title": "",
+      "tts": {
+        "text": "Quan és la primera reunió de Warsh?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El 16 i 17 de juny. Sabrem molt més sobre la trajectòria dels tipus després d'això.",
+      "text_markdown": "El 16 i 17 de juny. Sabrem molt més sobre la trajectòria dels tipus després d'això.",
+      "title": "",
+      "tts": {
+        "text": "El setze i disset de juny. Sabrem molt més sobre la trajectòria dels tipus després d'això.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Bon lloc per acabar. Ron, gràcies.",
+      "text_markdown": "Bon lloc per acabar. Ron, gràcies.",
+      "title": "",
+      "tts": {
+        "text": "Bon lloc per acabar. Ron, gràcies.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Quan vulguis, Vindy, quan et vagi millor.",
+      "text_markdown": "Quan vulguis, Vindy, quan et vagi millor.",
+      "title": "",
+      "tts": {
+        "text": "Quan vulguis, Vindy, quan et vagi millor.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Això ha estat AI This Week del 13 de maig de 2026. Nou número el proper dimecres. Fins aleshores, cuideu-vos.",
+      "text_markdown": "Això ha estat AI This Week del 13 de maig de 2026. Nou número el proper dimecres. Fins aleshores, cuideu-vos.",
+      "title": "",
+      "tts": {
+        "text": "Això ha estat AI This Week del tretze de maig de dos mil vint-i-sis. Nou número el proper dimecres. Fins aleshores, cuideu-vos.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

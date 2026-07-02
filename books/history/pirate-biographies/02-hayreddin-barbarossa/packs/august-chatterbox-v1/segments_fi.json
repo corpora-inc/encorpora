@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "fi",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Saatesanat lukijalle",
+      "text_markdown": "Saatesanat lukijalle"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä on tositarina Hayreddin Barbarossasta, miehestä, joka teki Osmanien valtakunnasta merivoimien suurvallan.",
+      "text_markdown": "Tämä on tositarina Hayreddin Barbarossasta, miehestä, joka teki Osmanien valtakunnasta merivoimien suurvallan.",
+      "tts": {
+        "text": "Tämä on tositarina Hayreddin Barbarossasta, miehestä, joka teki Osmanien valtakunnasta merivoimien suurvallan.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen elämänsä alkoi savenvalajan poikana eräällä kreikkalaisella saarella.",
+      "text_markdown": "Hänen elämänsä alkoi savenvalajan poikana eräällä kreikkalaisella saarella.",
+      "tts": {
+        "text": "Hänen elämänsä alkoi savenvalajan poikana eräällä kreikkalaisella saarella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän päätti sen Välimeren mahtavimman laivaston suuramiraalina.",
+      "text_markdown": "Hän päätti sen Välimeren mahtavimman laivaston suuramiraalina.",
+      "tts": {
+        "text": "Hän päätti sen Välimeren mahtavimman laivaston suuramiraalina.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hänen tarinansa kattaa vuosisadan kestäneen konfliktin Osmanien valtakunnan ja kristillisen Euroopan välillä.",
+      "text_markdown": "Hänen tarinansa kattaa vuosisadan kestäneen konfliktin Osmanien valtakunnan ja kristillisen Euroopan välillä.",
+      "tts": {
+        "text": "Hänen tarinansa kattaa vuosisadan kestäneen konfliktin Osmanien valtakunnan ja kristillisen Euroopan välillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on tarina veljistä, korsaareista, sulttaaneista ja taistelusta meren hallinnasta.",
+      "text_markdown": "Se on tarina veljistä, korsaareista, sulttaaneista ja taistelusta meren hallinnasta.",
+      "tts": {
+        "text": "Se on tarina veljistä, korsaareista, sulttaaneista ja taistelusta meren hallinnasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen tässä kirjassa kuvattu taistelu, liittouma ja petos on poimittu historiallisista lähteistä.",
+      "text_markdown": "Jokainen tässä kirjassa kuvattu taistelu, liittouma ja petos on poimittu historiallisista lähteistä.",
+      "tts": {
+        "text": "Jokainen tässä kirjassa kuvattu taistelu, liittouma ja petos on poimittu historiallisista lähteistä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbarossan ura muutti Välimeren maailman karttaa.",
+      "text_markdown": "Barbarossan ura muutti Välimeren maailman karttaa.",
+      "tts": {
+        "text": "Barbarossan ura muutti Välimeren maailman karttaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen rakentamansa laivasto hallitsi merta sukupolvien ajan hänen kuolemansa jälkeen.",
+      "text_markdown": "Hänen rakentamansa laivasto hallitsi merta sukupolvien ajan hänen kuolemansa jälkeen.",
+      "tts": {
+        "text": "Hänen rakentamansa laivasto hallitsi merta sukupolvien ajan hänen kuolemansa jälkeen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen perintönsä muovaa Afrikan pohjoisrannikkoja ja kulttuureja vielä tänäkin päivänä.",
+      "text_markdown": "Hänen perintönsä muovaa Afrikan pohjoisrannikkoja ja kulttuureja vielä tänäkin päivänä.",
+      "tts": {
+        "text": "Hänen perintönsä muovaa Afrikan pohjoisrannikkoja ja kulttuureja vielä tänäkin päivänä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Missä historiallinen tieto on puutteellista, sanomme sen selvästi.",
+      "text_markdown": "Missä historiallinen tieto on puutteellista, sanomme sen selvästi.",
+      "tts": {
+        "text": "Missä historiallinen tieto on puutteellista, sanomme sen selvästi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Missä historioitsijat ovat eri mieltä päivämääristä tai yksityiskohdista, esitämme yleisimmin hyväksytyn version.",
+      "text_markdown": "Missä historioitsijat ovat eri mieltä päivämääristä tai yksityiskohdista, esitämme yleisimmin hyväksytyn version.",
+      "tts": {
+        "text": "Missä historioitsijat ovat eri mieltä päivämääristä tai yksityiskohdista, esitämme yleisimmin hyväksytyn version.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "Saatesanat lukijalle",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tämä on historiaa, ei legendaa, ja kohtelemme sitä sen ansaitsemalla huolellisuudella.",
+      "text_markdown": "Tämä on historiaa, ei legendaa, ja kohtelemme sitä sen ansaitsemalla huolellisuudella.",
+      "tts": {
+        "text": "Tämä on historiaa, ei legendaa, ja kohtelemme sitä sen ansaitsemalla huolellisuudella.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Välimeren maailma",
+      "text_markdown": "Välimeren maailma"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeri sijaitsee kolmen mantereen risteyksessä.",
+      "text_markdown": "Välimeri sijaitsee kolmen mantereen risteyksessä.",
+      "tts": {
+        "text": "Välimeri sijaitsee kolmen mantereen risteyksessä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pohjoisessa on Eurooppa, etelässä Afrikka ja idässä Aasia.",
+      "text_markdown": "Pohjoisessa on Eurooppa, etelässä Afrikka ja idässä Aasia.",
+      "tts": {
+        "text": "Pohjoisessa on Eurooppa, etelässä Afrikka ja idässä Aasia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tuhansien vuosien ajan jokainen sen rannikoiden suuri sivilisaatio on taistellut sen hallinnasta.",
+      "text_markdown": "Tuhansien vuosien ajan jokainen sen rannikoiden suuri sivilisaatio on taistellut sen hallinnasta.",
+      "tts": {
+        "text": "Tuhansien vuosien ajan jokainen sen rannikoiden suuri sivilisaatio on taistellut sen hallinnasta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Viidennentoista vuosisadan loppupuolella Välimeri oli taistelukenttä kahden suurvallan välillä.",
+      "text_markdown": "Viidennentoista vuosisadan loppupuolella Välimeri oli taistelukenttä kahden suurvallan välillä.",
+      "tts": {
+        "text": "Viidennentoista vuosisadan loppupuolella Välimeri oli taistelukenttä kahden suurvallan välillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Idässä Osmanien valtakunta laajeni nopeasti useiden kunnianhimoisten sulttaanien johdolla.",
+      "text_markdown": "Idässä Osmanien valtakunta laajeni nopeasti useiden kunnianhimoisten sulttaanien johdolla.",
+      "tts": {
+        "text": "Idässä Osmanien valtakunta laajeni nopeasti useiden kunnianhimoisten sulttaanien johdolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lännessä Espanjan kuningaskunnat ja Kaarle Viidennen johtama Pyhä Rooman valtakunta pyrkivät työntämään sen takaisin.",
+      "text_markdown": "Lännessä Espanjan kuningaskunnat ja Kaarle Viidennen johtama Pyhä Rooman valtakunta pyrkivät työntämään sen takaisin.",
+      "tts": {
+        "text": "Lännessä Espanjan kuningaskunnat ja Kaarle Viidennen johtama Pyhä Rooman valtakunta pyrkivät työntämään sen takaisin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Osmanien valtakunta oli valloittanut Konstantinopolin vuonna 1453.",
+      "text_markdown": "Osmanien valtakunta oli valloittanut Konstantinopolin vuonna 1453.",
+      "tts": {
+        "text": "Osmanien valtakunta oli valloittanut Konstantinopolin vuonna tuhat neljäsataa viisikymmentäkolme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tuo voitto päätti Bysantin valtakunnan ja antoi osmaneille itäisen Välimeren hallinnan.",
+      "text_markdown": "Tuo voitto päätti Bysantin valtakunnan ja antoi osmaneille itäisen Välimeren hallinnan.",
+      "tts": {
+        "text": "Tuo voitto päätti Bysantin valtakunnan ja antoi osmaneille itäisen Välimeren hallinnan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaupunki nimettiin uudelleen Istanbuliksi, ja siitä tuli laajan ja kasvavan valtakunnan pääkaupunki.",
+      "text_markdown": "Kaupunki nimettiin uudelleen Istanbuliksi, ja siitä tuli laajan ja kasvavan valtakunnan pääkaupunki.",
+      "tts": {
+        "text": "Kaupunki nimettiin uudelleen Istanbuliksi, ja siitä tuli laajan ja kasvavan valtakunnan pääkaupunki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sen satama, Kultainen Sarvi, tuli osmanien laivaston kotisatamaksi.",
+      "text_markdown": "Sen satama, Kultainen Sarvi, tuli osmanien laivaston kotisatamaksi.",
+      "tts": {
+        "text": "Sen satama, Kultainen Sarvi, tuli osmanien laivaston kotisatamaksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Espanja oli puolestaan juuri saanut päätökseen Reconquistan.",
+      "text_markdown": "Espanja oli puolestaan juuri saanut päätökseen Reconquistan.",
+      "tts": {
+        "text": "Espanja oli puolestaan juuri saanut päätökseen Reconquistan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vuonna 1492 Espanjan hallitsijat Ferdinand ja Isabella valloittivat Granadan, viimeisen muslimikuningaskunnan Iberian niemimaalla.",
+      "text_markdown": "Vuonna 1492 Espanjan hallitsijat Ferdinand ja Isabella valloittivat Granadan, viimeisen muslimikuningaskunnan Iberian niemimaalla.",
+      "tts": {
+        "text": "Vuonna tuhat neljäsataa yhdeksänkymmentäkaksi Espanjan hallitsijat Ferdinand ja Isabella valloittivat Granadan, viimeisen muslimikuningaskunnan Iberian niemimaalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Satojatuhansia muslimeja ja juutalaisia karkotettiin Espanjasta sitä seuranneina vuosina.",
+      "text_markdown": "Satojatuhansia muslimeja ja juutalaisia karkotettiin Espanjasta sitä seuranneina vuosina.",
+      "tts": {
+        "text": "Satojatuhansia muslimeja ja juutalaisia karkotettiin Espanjasta sitä seuranneina vuosina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Monet heistä pakenivat pohjoiseen Afrikkaan ja Osmanien valtakuntaan.",
+      "text_markdown": "Monet heistä pakenivat pohjoiseen Afrikkaan ja Osmanien valtakuntaan.",
+      "tts": {
+        "text": "Monet heistä pakenivat pohjoiseen Afrikkaan ja Osmanien valtakuntaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Afrikan pohjoisrannikosta, jota kutsuttiin Berberirannikoksi, tuli näiden maanpakolaisten turvapaikka.",
+      "text_markdown": "Afrikan pohjoisrannikosta, jota kutsuttiin Berberirannikoksi, tuli näiden maanpakolaisten turvapaikka.",
+      "tts": {
+        "text": "Afrikan pohjoisrannikosta, jota kutsuttiin Berberirannikoksi, tuli näiden maanpakolaisten turvapaikka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algiersin, Tunisin ja Tripolin kaltaiset kaupungit ottivat vastaan aaltoina saapuvia pakolaisia Espanjasta.",
+      "text_markdown": "Algiersin, Tunisin ja Tripolin kaltaiset kaupungit ottivat vastaan aaltoina saapuvia pakolaisia Espanjasta.",
+      "tts": {
+        "text": "Algiersin, Tunisin ja Tripolin kaltaiset kaupungit ottivat vastaan aaltoina saapuvia pakolaisia Espanjasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nämä siirtymään joutuneet yhteisöt kantoivat syvää katkeruutta Espanjan kruunua kohtaan.",
+      "text_markdown": "Nämä siirtymään joutuneet yhteisöt kantoivat syvää katkeruutta Espanjan kruunua kohtaan.",
+      "tts": {
+        "text": "Nämä siirtymään joutuneet yhteisöt kantoivat syvää katkeruutta Espanjan kruunua kohtaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Monet ryhtyivät korsaareiksi sekä elinkeinokseen että kostokseen.",
+      "text_markdown": "Monet ryhtyivät korsaareiksi sekä elinkeinokseen että kostokseen.",
+      "tts": {
+        "text": "Monet ryhtyivät korsaareiksi sekä elinkeinokseen että kostokseen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Korsaari oli eri asia kuin tavallinen merirosvo.",
+      "text_markdown": "Korsaari oli eri asia kuin tavallinen merirosvo.",
+      "tts": {
+        "text": "Korsaari oli eri asia kuin tavallinen merirosvo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Korsaarit toimivat hallituksen tai hallitsijan luvalla.",
+      "text_markdown": "Korsaarit toimivat hallituksen tai hallitsijan luvalla.",
+      "tts": {
+        "text": "Korsaarit toimivat hallituksen tai hallitsijan luvalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He hyökkäsivät vihollisen aluksia vastaan ja jakoivat voitot suojelijavaltionsa kanssa.",
+      "text_markdown": "He hyökkäsivät vihollisen aluksia vastaan ja jakoivat voitot suojelijavaltionsa kanssa.",
+      "tts": {
+        "text": "He hyökkäsivät vihollisen aluksia vastaan ja jakoivat voitot suojelijavaltionsa kanssa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tällä tavoin korsaaritoiminta oli yksityishenkilöiden harjoittamaa merisodankäyntiä.",
+      "text_markdown": "Tällä tavoin korsaaritoiminta oli yksityishenkilöiden harjoittamaa merisodankäyntiä.",
+      "tts": {
+        "text": "Tällä tavoin korsaaritoiminta oli yksityishenkilöiden harjoittamaa merisodankäyntiä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sekä kristityt että muslimivallat käyttivät korsaareja laajasti.",
+      "text_markdown": "Sekä kristityt että muslimivallat käyttivät korsaareja laajasti.",
+      "tts": {
+        "text": "Sekä kristityt että muslimivallat käyttivät korsaareja laajasti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Johanniittaritarit, joiden tukikohta oli Rodoksen ja myöhemmin Maltan saarella, olivat kristittyjä korsaareja, jotka ryöstivät muslimien aluksia.",
+      "text_markdown": "Johanniittaritarit, joiden tukikohta oli Rodoksen ja myöhemmin Maltan saarella, olivat kristittyjä korsaareja, jotka ryöstivät muslimien aluksia.",
+      "tts": {
+        "text": "Johanniittaritarit, joiden tukikohta oli Rodoksen ja myöhemmin Maltan saarella, olivat kristittyjä korsaareja, jotka ryöstivät muslimien aluksia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pohjoiseen Afrikkaan sijoittuneet muslimikorsaarit ryöstivät vastineeksi kristittyjen aluksia.",
+      "text_markdown": "Pohjoiseen Afrikkaan sijoittuneet muslimikorsaarit ryöstivät vastineeksi kristittyjen aluksia.",
+      "tts": {
+        "text": "Pohjoiseen Afrikkaan sijoittuneet muslimikorsaarit ryöstivät vastineeksi kristittyjen aluksia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Välimeri oli jatkuvan, matala-asteisen sodan meri.",
+      "text_markdown": "Välimeri oli jatkuvan, matala-asteisen sodan meri.",
+      "tts": {
+        "text": "Välimeri oli jatkuvan, matala asteisen sodan meri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kauppa oli palkinto, joka ajoi tätä konfliktia.",
+      "text_markdown": "Kauppa oli palkinto, joka ajoi tätä konfliktia.",
+      "tts": {
+        "text": "Kauppa oli palkinto, joka ajoi tätä konfliktia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Välimerellä kuljetettiin silkkiä Kiinasta, mausteita Intiasta, viljaa Egyptistä ja villaa Euroopasta.",
+      "text_markdown": "Välimerellä kuljetettiin silkkiä Kiinasta, mausteita Intiasta, viljaa Egyptistä ja villaa Euroopasta.",
+      "tts": {
+        "text": "Välimerellä kuljetettiin silkkiä Kiinasta, mausteita Intiasta, viljaa Egyptistä ja villaa Euroopasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Näiden kauppareittien hallinta merkitsi valtavaa vaurautta.",
+      "text_markdown": "Näiden kauppareittien hallinta merkitsi valtavaa vaurautta.",
+      "tts": {
+        "text": "Näiden kauppareittien hallinta merkitsi valtavaa vaurautta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jokainen satamakaupunki oli olemassaolostaan riippuvainen merestä.",
+      "text_markdown": "Jokainen satamakaupunki oli olemassaolostaan riippuvainen merestä.",
+      "tts": {
+        "text": "Jokainen satamakaupunki oli olemassaolostaan riippuvainen merestä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Välimeren saaret olivat strategisia palkintoja.",
+      "text_markdown": "Välimeren saaret olivat strategisia palkintoja.",
+      "tts": {
+        "text": "Välimeren saaret olivat strategisia palkintoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se, joka hallitsi saaria, hallitsi niiden välisiä laivaväyliä.",
+      "text_markdown": "Se, joka hallitsi saaria, hallitsi niiden välisiä laivaväyliä.",
+      "tts": {
+        "text": "Se, joka hallitsi saaria, hallitsi niiden välisiä laivaväyliä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rodos, Kypros, Kreeta, Sisilia ja Malta vaihtoivat omistajaa toistuvasti vuosisatojen aikana.",
+      "text_markdown": "Rodos, Kypros, Kreeta, Sisilia ja Malta vaihtoivat omistajaa toistuvasti vuosisatojen aikana.",
+      "tts": {
+        "text": "Rodos, Kypros, Kreeta, Sisilia ja Malta vaihtoivat omistajaa toistuvasti vuosisatojen aikana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Merivoimat ratkaisivat, mikä valtakunta piti niitä hallussaan.",
+      "text_markdown": "Merivoimat ratkaisivat, mikä valtakunta piti niitä hallussaan.",
+      "tts": {
+        "text": "Merivoimat ratkaisivat, mikä valtakunta piti niitä hallussaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaleerit olivat tämän aikakauden Välimeren sotalaivoja.",
+      "text_markdown": "Kaleerit olivat tämän aikakauden Välimeren sotalaivoja.",
+      "tts": {
+        "text": "Kaleerit olivat tämän aikakauden Välimeren sotalaivoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaleeri oli pitkä, kapea airoilla ja purjeilla liikkuva alus.",
+      "text_markdown": "Kaleeri oli pitkä, kapea airoilla ja purjeilla liikkuva alus.",
+      "tts": {
+        "text": "Kaleeri oli pitkä, kapea airoilla ja purjeilla liikkuva alus.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen kaleeri kuljetti satoja soutajia, joista monet olivat orjia tai sotavankeja.",
+      "text_markdown": "Jokainen kaleeri kuljetti satoja soutajia, joista monet olivat orjia tai sotavankeja.",
+      "tts": {
+        "text": "Jokainen kaleeri kuljetti satoja soutajia, joista monet olivat orjia tai sotavankeja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Taistelussa kaleerit puskivat vihollisaluksia ja lähettivät sitten aseistettuja sotilaita aluksille taistelemaan käsikähmässä.",
+      "text_markdown": "Taistelussa kaleerit puskivat vihollisaluksia ja lähettivät sitten aseistettuja sotilaita aluksille taistelemaan käsikähmässä.",
+      "tts": {
+        "text": "Taistelussa kaleerit puskivat vihollisaluksia ja lähettivät sitten aseistettuja sotilaita aluksille taistelemaan käsikähmässä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaleeriorjajärjestelmä oli julmuudeltaan sanoinkuvaamaton.",
+      "text_markdown": "Kaleeriorjajärjestelmä oli julmuudeltaan sanoinkuvaamaton.",
+      "tts": {
+        "text": "Kaleeriorjajärjestelmä oli julmuudeltaan sanoinkuvaamaton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sotien ja ryöstöretkien vangit kahlittiin airoihin ja pakotettiin soutamaan, kunnes he kuolivat.",
+      "text_markdown": "Sotien ja ryöstöretkien vangit kahlittiin airoihin ja pakotettiin soutamaan, kunnes he kuolivat.",
+      "tts": {
+        "text": "Sotien ja ryöstöretkien vangit kahlittiin airoihin ja pakotettiin soutamaan, kunnes he kuolivat.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kristityt orjuuttivat muslimeja, ja muslimit orjuuttivat kristittyjä.",
+      "text_markdown": "Kristityt orjuuttivat muslimeja, ja muslimit orjuuttivat kristittyjä.",
+      "tts": {
+        "text": "Kristityt orjuuttivat muslimeja, ja muslimit orjuuttivat kristittyjä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tämä julmuus oli niin yleistä, että molemmat osapuolet pitivät sitä normaalina.",
+      "text_markdown": "Tämä julmuus oli niin yleistä, että molemmat osapuolet pitivät sitä normaalina.",
+      "tts": {
+        "text": "Tämä julmuus oli niin yleistä, että molemmat osapuolet pitivät sitä normaalina.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rooman paavi yritti toistuvasti yhdistää kristilliset kuningaskunnat Osmanien uhkaa vastaan.",
+      "text_markdown": "Rooman paavi yritti toistuvasti yhdistää kristilliset kuningaskunnat Osmanien uhkaa vastaan.",
+      "tts": {
+        "text": "Rooman paavi yritti toistuvasti yhdistää kristilliset kuningaskunnat Osmanien uhkaa vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nämä Pyhiksi liittokunniksi kutsutut liittoumat kokosivat yhteen aluksia Espanjasta, Venetsiasta, Genovasta ja Paavin valtiosta.",
+      "text_markdown": "Nämä Pyhiksi liittokunniksi kutsutut liittoumat kokosivat yhteen aluksia Espanjasta, Venetsiasta, Genovasta ja Paavin valtiosta.",
+      "tts": {
+        "text": "Nämä Pyhiksi liittokunniksi kutsutut liittoumat kokosivat yhteen aluksia Espanjasta, Venetsiasta, Genovasta ja Paavin valtiosta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mutta kristilliset kuningaskunnat epäilivät toisiaan lähes yhtä paljon kuin ne pelkäsivät osmaneja.",
+      "text_markdown": "Mutta kristilliset kuningaskunnat epäilivät toisiaan lähes yhtä paljon kuin ne pelkäsivät osmaneja.",
+      "tts": {
+        "text": "Mutta kristilliset kuningaskunnat epäilivät toisiaan lähes yhtä paljon kuin ne pelkäsivät osmaneja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nämä liittoumat olivat hauraita ja romahtivat usein ennen kuin ne saivat aikaan kestäviä tuloksia.",
+      "text_markdown": "Nämä liittoumat olivat hauraita ja romahtivat usein ennen kuin ne saivat aikaan kestäviä tuloksia.",
+      "tts": {
+        "text": "Nämä liittoumat olivat hauraita ja romahtivat usein ennen kuin ne saivat aikaan kestäviä tuloksia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tähän väkivaltaiseen ja kiistanalaiseen maailmaan syntyi kaksi veljestä eräällä kreikkalaisella, osmanien hallitsemalla saarella.",
+      "text_markdown": "Tähän väkivaltaiseen ja kiistanalaiseen maailmaan syntyi kaksi veljestä eräällä kreikkalaisella, osmanien hallitsemalla saarella.",
+      "tts": {
+        "text": "Tähän väkivaltaiseen ja kiistanalaiseen maailmaan syntyi kaksi veljestä eräällä kreikkalaisella, osmanien hallitsemalla saarella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heidän nimensä olivat Aruj ja Hizir.",
+      "text_markdown": "Heidän nimensä olivat Aruj ja Hizir.",
+      "tts": {
+        "text": "Heidän nimensä olivat Aruj ja Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hizir tultaisiin myöhemmin tuntemaan maailmalla nimellä Hayreddin Barbarossa.",
+      "text_markdown": "Hizir tultaisiin myöhemmin tuntemaan maailmalla nimellä Hayreddin Barbarossa.",
+      "tts": {
+        "text": "Hizir tultaisiin myöhemmin tuntemaan maailmalla nimellä Hayreddin Barbarossa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "Välimeren maailma",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yhdessä he muokkaisivat koko Välimeren voimatasapainoa.",
+      "text_markdown": "Yhdessä he muokkaisivat koko Välimeren voimatasapainoa.",
+      "tts": {
+        "text": "Yhdessä he muokkaisivat koko Välimeren voimatasapainoa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Alkujuuret",
+      "text_markdown": "Alkujuuret"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa syntyi noin vuonna 1478 Lesboksen saarella.",
+      "text_markdown": "Hayreddin Barbarossa syntyi noin vuonna 1478 Lesboksen saarella.",
+      "tts": {
+        "text": "Hayreddin Barbarossa syntyi noin vuonna tuhat neljäsataa seitsemänkymmentäkahdeksan Lesboksen saarella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos on suuri kreikkalainen saari koillisella Aigeianmerellä, lähellä nykyisen Turkin rannikkoa.",
+      "text_markdown": "Lesbos on suuri kreikkalainen saari koillisella Aigeianmerellä, lähellä nykyisen Turkin rannikkoa.",
+      "tts": {
+        "text": "Lesbos on suuri kreikkalainen saari koillisella Aigeianmerellä, lähellä nykyisen Turkin rannikkoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen syntymänsä aikaan saari oli äskettäin joutunut osmanien hallintaan.",
+      "text_markdown": "Hänen syntymänsä aikaan saari oli äskettäin joutunut osmanien hallintaan.",
+      "tts": {
+        "text": "Hänen syntymänsä aikaan saari oli äskettäin joutunut osmanien hallintaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hänen isänsä oli Yakup, entinen osmanien sotilas, joka oli asettunut Lesbokseen sotilaspalveluksen jälkeen.",
+      "text_markdown": "Hänen isänsä oli Yakup, entinen osmanien sotilas, joka oli asettunut Lesbokseen sotilaspalveluksen jälkeen.",
+      "tts": {
+        "text": "Hänen isänsä oli Yakup, entinen osmanien sotilas, joka oli asettunut Lesbokseen sotilaspalveluksen jälkeen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yakup työskenteli savenvalajana ja oli useimpien lähteiden mukaan vaatimaton käsityöläinen.",
+      "text_markdown": "Yakup työskenteli savenvalajana ja oli useimpien lähteiden mukaan vaatimaton käsityöläinen.",
+      "tts": {
+        "text": "Yakup työskenteli savenvalajana ja oli useimpien lähteiden mukaan vaatimaton käsityöläinen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen äitinsä oli paikallinen kreikkalainen nainen, todennäköisesti kristillistä alkuperää, jonka nimi on kirjattu muotoon Katerina.",
+      "text_markdown": "Hänen äitinsä oli paikallinen kreikkalainen nainen, todennäköisesti kristillistä alkuperää, jonka nimi on kirjattu muotoon Katerina.",
+      "tts": {
+        "text": "Hänen äitinsä oli paikallinen kreikkalainen nainen, todennäköisesti kristillistä alkuperää, jonka nimi on kirjattu muotoon Katerina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Perhe ei ollut varakas, mutta ei myöskään puutteenalainen.",
+      "text_markdown": "Perhe ei ollut varakas, mutta ei myöskään puutteenalainen.",
+      "tts": {
+        "text": "Perhe ei ollut varakas, mutta ei myöskään puutteenalainen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yakupilla ja Katerinalla oli neljä poikaa.",
+      "text_markdown": "Yakupilla ja Katerinalla oli neljä poikaa.",
+      "tts": {
+        "text": "Yakupilla ja Katerinalla oli neljä poikaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vanhin oli Ishak, sitten Aruj, sitten Hizir ja lopulta Ilyas.",
+      "text_markdown": "Vanhin oli Ishak, sitten Aruj, sitten Hizir ja lopulta Ilyas.",
+      "tts": {
+        "text": "Vanhin oli Ishak, sitten Aruj, sitten Hizir ja lopulta Ilyas.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Poika, josta tulisi Hayreddin Barbarossa, oli Hizir.",
+      "text_markdown": "Poika, josta tulisi Hayreddin Barbarossa, oli Hizir.",
+      "tts": {
+        "text": "Poika, josta tulisi Hayreddin Barbarossa, oli Hizir.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kaikki neljä veljestä päätyivät lopulta merelle.",
+      "text_markdown": "Kaikki neljä veljestä päätyivät lopulta merelle.",
+      "tts": {
+        "text": "Kaikki neljä veljestä päätyivät lopulta merelle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veljekset kasvoivat meren muovaamassa maailmassa.",
+      "text_markdown": "Veljekset kasvoivat meren muovaamassa maailmassa.",
+      "tts": {
+        "text": "Veljekset kasvoivat meren muovaamassa maailmassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lesbos oli taloudellisesti riippuvainen kalastuksesta ja merikaupasta.",
+      "text_markdown": "Lesbos oli taloudellisesti riippuvainen kalastuksesta ja merikaupasta.",
+      "tts": {
+        "text": "Lesbos oli taloudellisesti riippuvainen kalastuksesta ja merikaupasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jokainen saaren poika oppi käsittelemään venettä ennen kuin osasi lukea.",
+      "text_markdown": "Jokainen saaren poika oppi käsittelemään venettä ennen kuin osasi lukea.",
+      "tts": {
+        "text": "Jokainen saaren poika oppi käsittelemään venettä ennen kuin osasi lukea.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Meri ei ollut heille abstraktio, vaan heidän jokapäiväistä todellisuuttaan.",
+      "text_markdown": "Meri ei ollut heille abstraktio, vaan heidän jokapäiväistä todellisuuttaan.",
+      "tts": {
+        "text": "Meri ei ollut heille abstraktio, vaan heidän jokapäiväistä todellisuuttaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nuorina miehinä veljekset aloittivat työnsä merimiehinä ja kauppiaina.",
+      "text_markdown": "Nuorina miehinä veljekset aloittivat työnsä merimiehinä ja kauppiaina.",
+      "tts": {
+        "text": "Nuorina miehinä veljekset aloittivat työnsä merimiehinä ja kauppiaina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He kuljettivat tavaroita Aigeianmeren saarten ja osmanien mantereen välillä.",
+      "text_markdown": "He kuljettivat tavaroita Aigeianmeren saarten ja osmanien mantereen välillä.",
+      "tts": {
+        "text": "He kuljettivat tavaroita Aigeianmeren saarten ja osmanien mantereen välillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mutta kauppa oli vaarallista työtä merellä, joka oli täynnä korsaareja.",
+      "text_markdown": "Mutta kauppa oli vaarallista työtä merellä, joka oli täynnä korsaareja.",
+      "tts": {
+        "text": "Mutta kauppa oli vaarallista työtä merellä, joka oli täynnä korsaareja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eräällä varhaisista matkoistaan veljeksiin hyökkäsivät Johanniittaritarit.",
+      "text_markdown": "Eräällä varhaisista matkoistaan veljeksiin hyökkäsivät Johanniittaritarit.",
+      "tts": {
+        "text": "Eräällä varhaisista matkoistaan veljeksiin hyökkäsivät Johanniittaritarit.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Johanniittaritarit olivat kristillinen sotilasveljeskunta, jonka tukikohta oli Rodoksen saarella.",
+      "text_markdown": "Johanniittaritarit olivat kristillinen sotilasveljeskunta, jonka tukikohta oli Rodoksen saarella.",
+      "tts": {
+        "text": "Johanniittaritarit olivat kristillinen sotilasveljeskunta, jonka tukikohta oli Rodoksen saarella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He kuuluivat Välimeren pelätyimpiin korsaareihin.",
+      "text_markdown": "He kuuluivat Välimeren pelätyimpiin korsaareihin.",
+      "tts": {
+        "text": "He kuuluivat Välimeren pelätyimpiin korsaareihin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He hyökkäsivät hellittämättä muslimien alusten kimppuun, ottivat tavaroita ja orjuuttivat miehistöjä.",
+      "text_markdown": "He hyökkäsivät hellittämättä muslimien alusten kimppuun, ottivat tavaroita ja orjuuttivat miehistöjä.",
+      "tts": {
+        "text": "He hyökkäsivät hellittämättä muslimien alusten kimppuun, ottivat tavaroita ja orjuuttivat miehistöjä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hyökkäyksen aikana veljesten alukseen nuorin veli Ilyas sai surmansa.",
+      "text_markdown": "Hyökkäyksen aikana veljesten alukseen nuorin veli Ilyas sai surmansa.",
+      "tts": {
+        "text": "Hyökkäyksen aikana veljesten alukseen nuorin veli Ilyas sai surmansa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj, veljeksistä kiivain, otettiin vangiksi ja orjuutettiin.",
+      "text_markdown": "Aruj, veljeksistä kiivain, otettiin vangiksi ja orjuutettiin.",
+      "tts": {
+        "text": "Aruj, veljeksistä kiivain, otettiin vangiksi ja orjuutettiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän vietti useita vuosia kaleeriorjana, kahlittuna kristillisen sotalaivan airoihin.",
+      "text_markdown": "Hän vietti useita vuosia kaleeriorjana, kahlittuna kristillisen sotalaivan airoihin.",
+      "tts": {
+        "text": "Hän vietti useita vuosia kaleeriorjana, kahlittuna kristillisen sotalaivan airoihin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tämä kokemus kovetti häntä tavalla, joka muovaisi hänen loppuelämäänsä.",
+      "text_markdown": "Tämä kokemus kovetti häntä tavalla, joka muovaisi hänen loppuelämäänsä.",
+      "tts": {
+        "text": "Tämä kokemus kovetti häntä tavalla, joka muovaisi hänen loppuelämäänsä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kun hänet lopulta lunastettiin tai hän pakeni, hän oli täysin muuttunut mies.",
+      "text_markdown": "Kun hänet lopulta lunastettiin tai hän pakeni, hän oli täysin muuttunut mies.",
+      "tts": {
+        "text": "Kun hänet lopulta lunastettiin tai hän pakeni, hän oli täysin muuttunut mies.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj päätti ryhtyä itse korsaariksi.",
+      "text_markdown": "Aruj päätti ryhtyä itse korsaariksi.",
+      "tts": {
+        "text": "Aruj päätti ryhtyä itse korsaariksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän hankki aluksen ja miehistön ja alkoi ryöstää kristittyjen aluksia itäisellä Välimerellä.",
+      "text_markdown": "Hän hankki aluksen ja miehistön ja alkoi ryöstää kristittyjen aluksia itäisellä Välimerellä.",
+      "tts": {
+        "text": "Hän hankki aluksen ja miehistön ja alkoi ryöstää kristittyjen aluksia itäisellä Välimerellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen nuorempi veljensä Hizir liittyi hänen mukaansa toiseksi komentajaksi.",
+      "text_markdown": "Hänen nuorempi veljensä Hizir liittyi hänen mukaansa toiseksi komentajaksi.",
+      "tts": {
+        "text": "Hänen nuorempi veljensä Hizir liittyi hänen mukaansa toiseksi komentajaksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Yhdessä he osoittautuivat poikkeuksellisen taitaviksi merirosvoiksi.",
+      "text_markdown": "Yhdessä he osoittautuivat poikkeuksellisen taitaviksi merirosvoiksi.",
+      "tts": {
+        "text": "Yhdessä he osoittautuivat poikkeuksellisen taitaviksi merirosvoiksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veljekset siirsivät toimintansa tukikohdan läntiselle Välimerelle.",
+      "text_markdown": "Veljekset siirsivät toimintansa tukikohdan läntiselle Välimerelle.",
+      "tts": {
+        "text": "Veljekset siirsivät toimintansa tukikohdan läntiselle Välimerelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He asettuivat Djerban saarelle nykyisen Tunisian rannikolla.",
+      "text_markdown": "He asettuivat Djerban saarelle nykyisen Tunisian rannikolla.",
+      "tts": {
+        "text": "He asettuivat Djerban saarelle nykyisen Tunisian rannikolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Djerbalta käsin he saattoivat ryöstää espanjalaisia ja italialaisia aluksia vilkkailla kauppareiteillä.",
+      "text_markdown": "Djerbalta käsin he saattoivat ryöstää espanjalaisia ja italialaisia aluksia vilkkailla kauppareiteillä.",
+      "tts": {
+        "text": "Djerbalta käsin he saattoivat ryöstää espanjalaisia ja italialaisia aluksia vilkkailla kauppareiteillä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Heidän maineensa kasvoi nopeasti sekä liittolaisten että vihollisten keskuudessa.",
+      "text_markdown": "Heidän maineensa kasvoi nopeasti sekä liittolaisten että vihollisten keskuudessa.",
+      "tts": {
+        "text": "Heidän maineensa kasvoi nopeasti sekä liittolaisten että vihollisten keskuudessa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj oli heidän kumppanuutensa julkinen kasvo.",
+      "text_markdown": "Aruj oli heidän kumppanuutensa julkinen kasvo.",
+      "tts": {
+        "text": "Aruj oli heidän kumppanuutensa julkinen kasvo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän oli rohkea, karismaattinen ja fyysisesti vaikuttava.",
+      "text_markdown": "Hän oli rohkea, karismaattinen ja fyysisesti vaikuttava.",
+      "tts": {
+        "text": "Hän oli rohkea, karismaattinen ja fyysisesti vaikuttava.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Eurooppalaiset lähteet kuvaavat hänellä olleen punainen parta, mikä antoi veljeksille heidän kuuluisan lempinimensä.",
+      "text_markdown": "Eurooppalaiset lähteet kuvaavat hänellä olleen punainen parta, mikä antoi veljeksille heidän kuuluisan lempinimensä.",
+      "tts": {
+        "text": "Eurooppalaiset lähteet kuvaavat hänellä olleen punainen parta, mikä antoi veljeksille heidän kuuluisan lempinimensä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nimi Barbarossa, joka tarkoittaa punapartaa, annettiin alun perin Arujille ja siirrettiin myöhemmin Hayreddinille.",
+      "text_markdown": "Nimi Barbarossa, joka tarkoittaa punapartaa, annettiin alun perin Arujille ja siirrettiin myöhemmin Hayreddinille.",
+      "tts": {
+        "text": "Nimi Barbarossa, joka tarkoittaa punapartaa, annettiin alun perin Arujille ja siirrettiin myöhemmin Hayreddinille.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir oli strategi ja organisoija kulissien takana.",
+      "text_markdown": "Hizir oli strategi ja organisoija kulissien takana.",
+      "tts": {
+        "text": "Hizir oli strategi ja organisoija kulissien takana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän hoiti heidän kasvavan laivastonsa logistiikkaa ja ylläpiti liittolaisuuksia paikallisten hallitsijoiden kanssa.",
+      "text_markdown": "Hän hoiti heidän kasvavan laivastonsa logistiikkaa ja ylläpiti liittolaisuuksia paikallisten hallitsijoiden kanssa.",
+      "tts": {
+        "text": "Hän hoiti heidän kasvavan laivastonsa logistiikkaa ja ylläpiti liittolaisuuksia paikallisten hallitsijoiden kanssa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aruj johti ryöstöretkiä itse, mutta Hizir varmisti, että toiminta sujui kitkattomasti.",
+      "text_markdown": "Aruj johti ryöstöretkiä itse, mutta Hizir varmisti, että toiminta sujui kitkattomasti.",
+      "tts": {
+        "text": "Aruj johti ryöstöretkiä itse, mutta Hizir varmisti, että toiminta sujui kitkattomasti.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Heidän vastakkaiset taitonsa tekivät heistä pelättävän tiimin.",
+      "text_markdown": "Heidän vastakkaiset taitonsa tekivät heistä pelättävän tiimin.",
+      "tts": {
+        "text": "Heidän vastakkaiset taitonsa tekivät heistä pelättävän tiimin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veljesten ryöstöillä oli tarkoitus, joka ulottui henkilökohtaista hyötyä pidemmälle.",
+      "text_markdown": "Veljesten ryöstöillä oli tarkoitus, joka ulottui henkilökohtaista hyötyä pidemmälle.",
+      "tts": {
+        "text": "Veljesten ryöstöillä oli tarkoitus, joka ulottui henkilökohtaista hyötyä pidemmälle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He pelastivat Espanjan inkvisitiota pakenevia muslimipakolaisia.",
+      "text_markdown": "He pelastivat Espanjan inkvisitiota pakenevia muslimipakolaisia.",
+      "tts": {
+        "text": "He pelastivat Espanjan inkvisitiota pakenevia muslimipakolaisia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vuosien 1504 ja 1510 välillä he kuljettivat tuhansia muslimeja Espanjasta pohjoiseen Afrikkaan.",
+      "text_markdown": "Vuosien 1504 ja 1510 välillä he kuljettivat tuhansia muslimeja Espanjasta pohjoiseen Afrikkaan.",
+      "tts": {
+        "text": "Vuosien tuhat viisisataa neljä ja tuhat viisisataa kymmenen välillä he kuljettivat tuhansia muslimeja Espanjasta pohjoiseen Afrikkaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tämä ansaitsi heille valtavan kunnioituksen Berberirannikon muslimiyhteisöjen keskuudessa.",
+      "text_markdown": "Tämä ansaitsi heille valtavan kunnioituksen Berberirannikon muslimiyhteisöjen keskuudessa.",
+      "tts": {
+        "text": "Tämä ansaitsi heille valtavan kunnioituksen Berberirannikon muslimiyhteisöjen keskuudessa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj asetti tähtäimensä suurempaan palkintoon kuin pelkkiin ryöstöretkiin.",
+      "text_markdown": "Aruj asetti tähtäimensä suurempaan palkintoon kuin pelkkiin ryöstöretkiin.",
+      "tts": {
+        "text": "Aruj asetti tähtäimensä suurempaan palkintoon kuin pelkkiin ryöstöretkiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän halusi vallata kaupungin ja perustaa tukikohdan, joka voisi vastustaa Espanjan valtaa.",
+      "text_markdown": "Hän halusi vallata kaupungin ja perustaa tukikohdan, joka voisi vastustaa Espanjan valtaa.",
+      "tts": {
+        "text": "Hän halusi vallata kaupungin ja perustaa tukikohdan, joka voisi vastustaa Espanjan valtaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen kohteensa oli Algiers, satamakaupunki Afrikan pohjoisrannikolla, jolla oli mahtava luonnonsatama.",
+      "text_markdown": "Hänen kohteensa oli Algiers, satamakaupunki Afrikan pohjoisrannikolla, jolla oli mahtava luonnonsatama.",
+      "tts": {
+        "text": "Hänen kohteensa oli Algiers, satamakaupunki Afrikan pohjoisrannikolla, jolla oli mahtava luonnonsatama.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "Alkujuuret",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algiersin valtaaminen muuttaisi veljekset korsaareista hallitsijoiksi.",
+      "text_markdown": "Algiersin valtaaminen muuttaisi veljekset korsaareista hallitsijoiksi.",
+      "tts": {
+        "text": "Algiersin valtaaminen muuttaisi veljekset korsaareista hallitsijoiksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Nousu valtaan",
+      "text_markdown": "Nousu valtaan"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1516 Aruj valtasi Algiersin kaupungin.",
+      "text_markdown": "Vuonna 1516 Aruj valtasi Algiersin kaupungin.",
+      "tts": {
+        "text": "Vuonna tuhat viisisataa kuusitoista Aruj valtasi Algiersin kaupungin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän syrjäytti paikallisen hallitsijan ja julistautui Algiersin sulttaaniksi.",
+      "text_markdown": "Hän syrjäytti paikallisen hallitsijan ja julistautui Algiersin sulttaaniksi.",
+      "tts": {
+        "text": "Hän syrjäytti paikallisen hallitsijan ja julistautui Algiersin sulttaaniksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se oli rohkea ja röyhkeä siirto, joka hälytti Espanjan valtakunnan.",
+      "text_markdown": "Se oli rohkea ja röyhkeä siirto, joka hälytti Espanjan valtakunnan.",
+      "tts": {
+        "text": "Se oli rohkea ja röyhkeä siirto, joka hälytti Espanjan valtakunnan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Algiers oli nyt korsaarisotapäällikön käsissä.",
+      "text_markdown": "Algiers oli nyt korsaarisotapäällikön käsissä.",
+      "tts": {
+        "text": "Algiers oli nyt korsaarisotapäällikön käsissä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aruj osoittautui taitavaksi mutta säälimättömäksi hallitsijaksi.",
+      "text_markdown": "Aruj osoittautui taitavaksi mutta säälimättömäksi hallitsijaksi.",
+      "tts": {
+        "text": "Aruj osoittautui taitavaksi mutta säälimättömäksi hallitsijaksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän laajensi alueitaan Afrikan pohjoisrannikolla.",
+      "text_markdown": "Hän laajensi alueitaan Afrikan pohjoisrannikolla.",
+      "tts": {
+        "text": "Hän laajensi alueitaan Afrikan pohjoisrannikolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän rakensi liittoumia paikallisten berberiheimojen ja muslimipakolaisyhteisöjen kanssa.",
+      "text_markdown": "Hän rakensi liittoumia paikallisten berberiheimojen ja muslimipakolaisyhteisöjen kanssa.",
+      "tts": {
+        "text": "Hän rakensi liittoumia paikallisten berberiheimojen ja muslimipakolaisyhteisöjen kanssa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mutta hänen aggressiivinen laajentumisensa ajoi hänet suoraan konfliktiin Espanjan kanssa.",
+      "text_markdown": "Mutta hänen aggressiivinen laajentumisensa ajoi hänet suoraan konfliktiin Espanjan kanssa.",
+      "tts": {
+        "text": "Mutta hänen aggressiivinen laajentumisensa ajoi hänet suoraan konfliktiin Espanjan kanssa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1518 suuri espanjalainen armeija piiritti Tlemcenin kaupunkia, jossa Arujilla oli tukikohtansa.",
+      "text_markdown": "Vuonna 1518 suuri espanjalainen armeija piiritti Tlemcenin kaupunkia, jossa Arujilla oli tukikohtansa.",
+      "tts": {
+        "text": "Vuonna tuhat viisisataa kahdeksantoista suuri espanjalainen armeija piiritti Tlemcenin kaupunkia, jossa Arujilla oli tukikohtansa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aruj yritti paeta pienen joukkonsa kanssa.",
+      "text_markdown": "Aruj yritti paeta pienen joukkonsa kanssa.",
+      "tts": {
+        "text": "Aruj yritti paeta pienen joukkonsa kanssa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Espanjalaiset sotilaat tavoittivat ja surmasivat hänet perääntymisen aikana.",
+      "text_markdown": "Espanjalaiset sotilaat tavoittivat ja surmasivat hänet perääntymisen aikana.",
+      "tts": {
+        "text": "Espanjalaiset sotilaat tavoittivat ja surmasivat hänet perääntymisen aikana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen kuolemansa jätti Hizirin ainoaksi eloon jääneeksi veljeksi ja kaiken Arujin rakentaman johtajaksi.",
+      "text_markdown": "Hänen kuolemansa jätti Hizirin ainoaksi eloon jääneeksi veljeksi ja kaiken Arujin rakentaman johtajaksi.",
+      "tts": {
+        "text": "Hänen kuolemansa jätti Hizirin ainoaksi eloon jääneeksi veljeksi ja kaiken Arujin rakentaman johtajaksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir, nyt nelikymppisten alussa, joutui mahdottomalta vaikuttavaan tilanteeseen.",
+      "text_markdown": "Hizir, nyt nelikymppisten alussa, joutui mahdottomalta vaikuttavaan tilanteeseen.",
+      "tts": {
+        "text": "Hizir, nyt nelikymppisten alussa, joutui mahdottomalta vaikuttavaan tilanteeseen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Espanjalainen armeija eteni, hänen veljensä oli kuollut, ja hänen joukkonsa olivat alivoimaisia.",
+      "text_markdown": "Espanjalainen armeija eteni, hänen veljensä oli kuollut, ja hänen joukkonsa olivat alivoimaisia.",
+      "tts": {
+        "text": "Espanjalainen armeija eteni, hänen veljensä oli kuollut, ja hänen joukkonsa olivat alivoimaisia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän tarvitsi mahtavaa liittolaista tai menettäisi kaiken.",
+      "text_markdown": "Hän tarvitsi mahtavaa liittolaista tai menettäisi kaiken.",
+      "tts": {
+        "text": "Hän tarvitsi mahtavaa liittolaista tai menettäisi kaiken.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän kääntyi muslimimaailman suurimman vallan, Osmanien valtakunnan, puoleen.",
+      "text_markdown": "Hän kääntyi muslimimaailman suurimman vallan, Osmanien valtakunnan, puoleen.",
+      "tts": {
+        "text": "Hän kääntyi muslimimaailman suurimman vallan, Osmanien valtakunnan, puoleen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hizir lähetti lähettiläitä sulttaani Selim Ensimmäisen luo Istanbuliin.",
+      "text_markdown": "Hizir lähetti lähettiläitä sulttaani Selim Ensimmäisen luo Istanbuliin.",
+      "tts": {
+        "text": "Hizir lähetti lähettiläitä sulttaani Selim Ensimmäisen luo Istanbuliin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän tarjoutui asettamaan Algiersin osmanien suvereniteetin alaisuuteen sotilaallista tukea vastaan.",
+      "text_markdown": "Hän tarjoutui asettamaan Algiersin osmanien suvereniteetin alaisuuteen sotilaallista tukea vastaan.",
+      "tts": {
+        "text": "Hän tarjoutui asettamaan Algiersin osmanien suvereniteetin alaisuuteen sotilaallista tukea vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sulttaani tunnisti läntisessä Välimeressä sijaitsevan uskollisen tukikohdan strategisen arvon.",
+      "text_markdown": "Sulttaani tunnisti läntisessä Välimeressä sijaitsevan uskollisen tukikohdan strategisen arvon.",
+      "tts": {
+        "text": "Sulttaani tunnisti läntisessä Välimeressä sijaitsevan uskollisen tukikohdan strategisen arvon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän hyväksyi tarjouksen ja lähetti sotilaita, tykkejä ja kaleerilaivaston tukemaan Hiziriä.",
+      "text_markdown": "Hän hyväksyi tarjouksen ja lähetti sotilaita, tykkejä ja kaleerilaivaston tukemaan Hiziriä.",
+      "tts": {
+        "text": "Hän hyväksyi tarjouksen ja lähetti sotilaita, tykkejä ja kaleerilaivaston tukemaan Hiziriä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tästä lähtien Hizir ei ollut enää pelkkä korsaari.",
+      "text_markdown": "Tästä lähtien Hizir ei ollut enää pelkkä korsaari.",
+      "tts": {
+        "text": "Tästä lähtien Hizir ei ollut enää pelkkä korsaari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän oli osmanien kuvernööri, joka hallitsi Algiersia sulttaanin nimissä.",
+      "text_markdown": "Hän oli osmanien kuvernööri, joka hallitsi Algiersia sulttaanin nimissä.",
+      "tts": {
+        "text": "Hän oli osmanien kuvernööri, joka hallitsi Algiersia sulttaanin nimissä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän otti kunnianimen Hayreddin, joka tarkoittaa uskon hyvyyttä.",
+      "text_markdown": "Hän otti kunnianimen Hayreddin, joka tarkoittaa uskon hyvyyttä.",
+      "tts": {
+        "text": "Hän otti kunnianimen Hayreddin, joka tarkoittaa uskon hyvyyttä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Osmanien resurssien ja hänen oman merisotaneronsa yhdistelmä teki hänestä pysäyttämättömän.",
+      "text_markdown": "Osmanien resurssien ja hänen oman merisotaneronsa yhdistelmä teki hänestä pysäyttämättömän.",
+      "tts": {
+        "text": "Osmanien resurssien ja hänen oman merisotaneronsa yhdistelmä teki hänestä pysäyttämättömän.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin vietti seuraavan vuosikymmenen vakiinnuttaen osmanien valtaa Afrikan pohjoisrannikolla.",
+      "text_markdown": "Hayreddin vietti seuraavan vuosikymmenen vakiinnuttaen osmanien valtaa Afrikan pohjoisrannikolla.",
+      "tts": {
+        "text": "Hayreddin vietti seuraavan vuosikymmenen vakiinnuttaen osmanien valtaa Afrikan pohjoisrannikolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän valtasi Tunisin, ajoi espanjalaiset varuskunnat pois avainlinnoituksista ja laajensi korsaarilaivastoa.",
+      "text_markdown": "Hän valtasi Tunisin, ajoi espanjalaiset varuskunnat pois avainlinnoituksista ja laajensi korsaarilaivastoa.",
+      "tts": {
+        "text": "Hän valtasi Tunisin, ajoi espanjalaiset varuskunnat pois avainlinnoituksista ja laajensi korsaarilaivastoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän koulutti uuden sukupolven merivoimien komentajia, jotka palvelisivat Osmanien valtakuntaa vuosikymmenien ajan.",
+      "text_markdown": "Hän koulutti uuden sukupolven merivoimien komentajia, jotka palvelisivat Osmanien valtakuntaa vuosikymmenien ajan.",
+      "tts": {
+        "text": "Hän koulutti uuden sukupolven merivoimien komentajia, jotka palvelisivat Osmanien valtakuntaa vuosikymmenien ajan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen laivastostaan tuli läntisen Välimeren hallitseva voima.",
+      "text_markdown": "Hänen laivastostaan tuli läntisen Välimeren hallitseva voima.",
+      "tts": {
+        "text": "Hänen laivastostaan tuli läntisen Välimeren hallitseva voima.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuonna 1533 sulttaani Suleiman Suuri kutsui Hayreddinin Istanbuliin.",
+      "text_markdown": "Vuonna 1533 sulttaani Suleiman Suuri kutsui Hayreddinin Istanbuliin.",
+      "tts": {
+        "text": "Vuonna tuhat viisisataa kolmekymmentäkolme sulttaani Suleiman Suuri kutsui Hayreddinin Istanbuliin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Suleiman oli aikansa maailman mahtavin hallitsija.",
+      "text_markdown": "Suleiman oli aikansa maailman mahtavin hallitsija.",
+      "tts": {
+        "text": "Suleiman oli aikansa maailman mahtavin hallitsija.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän tunnisti, että Osmanien valtakunta tarvitsi ammattimaisen laivaston vastatakseen sen legendaarista armeijaa.",
+      "text_markdown": "Hän tunnisti, että Osmanien valtakunta tarvitsi ammattimaisen laivaston vastatakseen sen legendaarista armeijaa.",
+      "tts": {
+        "text": "Hän tunnisti, että Osmanien valtakunta tarvitsi ammattimaisen laivaston vastatakseen sen legendaarista armeijaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän nimitti Hayreddinin Kapudan Pashaksi, koko osmanien laivaston suuramiraaliksi.",
+      "text_markdown": "Hän nimitti Hayreddinin Kapudan Pashaksi, koko osmanien laivaston suuramiraaliksi.",
+      "tts": {
+        "text": "Hän nimitti Hayreddinin Kapudan Pashaksi, koko osmanien laivaston suuramiraaliksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämä nimitys oli käännekohta Välimeren historiassa.",
+      "text_markdown": "Tämä nimitys oli käännekohta Välimeren historiassa.",
+      "tts": {
+        "text": "Tämä nimitys oli käännekohta Välimeren historiassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Osmanien laivasto oli ollut pätevä, mutta ei hallitseva.",
+      "text_markdown": "Osmanien laivasto oli ollut pätevä, mutta ei hallitseva.",
+      "tts": {
+        "text": "Osmanien laivasto oli ollut pätevä, mutta ei hallitseva.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddinin komennossa siitä tulisi maailman pelätyin merivoima.",
+      "text_markdown": "Hayreddinin komennossa siitä tulisi maailman pelätyin merivoima.",
+      "tts": {
+        "text": "Hayreddinin komennossa siitä tulisi maailman pelätyin merivoima.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän rakensi laivaston uudelleen Istanbulin telakoilta hyödyntäen kaikkea, mitä oli oppinut vuosikymmenien korsaarisodankäynnistä.",
+      "text_markdown": "Hän rakensi laivaston uudelleen Istanbulin telakoilta hyödyntäen kaikkea, mitä oli oppinut vuosikymmenien korsaarisodankäynnistä.",
+      "tts": {
+        "text": "Hän rakensi laivaston uudelleen Istanbulin telakoilta hyödyntäen kaikkea, mitä oli oppinut vuosikymmenien korsaarisodankäynnistä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin nykyaikaisti osmanien laivanrakennustekniikoita.",
+      "text_markdown": "Hayreddin nykyaikaisti osmanien laivanrakennustekniikoita.",
+      "tts": {
+        "text": "Hayreddin nykyaikaisti osmanien laivanrakennustekniikoita.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän suunnitteli nopeampia, ketterämpiä kaleereja korsaarialusten mallin mukaan.",
+      "text_markdown": "Hän suunnitteli nopeampia, ketterämpiä kaleereja korsaarialusten mallin mukaan.",
+      "tts": {
+        "text": "Hän suunnitteli nopeampia, ketterämpiä kaleereja korsaarialusten mallin mukaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän perusti koulutusohjelmia osmanien merivoimien upseereille.",
+      "text_markdown": "Hän perusti koulutusohjelmia osmanien merivoimien upseereille.",
+      "tts": {
+        "text": "Hän perusti koulutusohjelmia osmanien merivoimien upseereille.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän värväsi kokeneita korsaareja eri puolilta Välimerta palvelemaan kapteeneina.",
+      "text_markdown": "Hän värväsi kokeneita korsaareja eri puolilta Välimerta palvelemaan kapteeneina.",
+      "tts": {
+        "text": "Hän värväsi kokeneita korsaareja eri puolilta Välimerta palvelemaan kapteeneina.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hänen ensimmäinen suuri sotaretkensä suuramiraalina kohdistui Italian rannikkoon.",
+      "text_markdown": "Hänen ensimmäinen suuri sotaretkensä suuramiraalina kohdistui Italian rannikkoon.",
+      "tts": {
+        "text": "Hänen ensimmäinen suuri sotaretkensä suuramiraalina kohdistui Italian rannikkoon.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vuonna 1534 hän johti osmanien laivastoa tuhoisalle ryöstöretkelle Etelä-Italian rannikoilla.",
+      "text_markdown": "Vuonna 1534 hän johti osmanien laivastoa tuhoisalle ryöstöretkelle Etelä-Italian rannikoilla.",
+      "tts": {
+        "text": "Vuonna tuhat viisisataa kolmekymmentäneljä hän johti osmanien laivastoa tuhoisalle ryöstöretkelle Etelä Italian rannikoilla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän valtasi Tunisin kaupungin ja perusti sen osmanien laivastotukikohdaksi.",
+      "text_markdown": "Hän valtasi Tunisin kaupungin ja perusti sen osmanien laivastotukikohdaksi.",
+      "tts": {
+        "text": "Hän valtasi Tunisin kaupungin ja perusti sen osmanien laivastotukikohdaksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ryöstöretki kauhistutti kristillisiä valtioita ja osoitti osmanien meriovallan ulottuvuuden.",
+      "text_markdown": "Ryöstöretki kauhistutti kristillisiä valtioita ja osoitti osmanien meriovallan ulottuvuuden.",
+      "tts": {
+        "text": "Ryöstöretki kauhistutti kristillisiä valtioita ja osoitti osmanien meriovallan ulottuvuuden.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pyhän Rooman valtakunnan keisari Kaarle Viides vastasi massiivisella vastahyökkäyksellä.",
+      "text_markdown": "Pyhän Rooman valtakunnan keisari Kaarle Viides vastasi massiivisella vastahyökkäyksellä.",
+      "tts": {
+        "text": "Pyhän Rooman valtakunnan keisari Kaarle Viides vastasi massiivisella vastahyökkäyksellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vuonna 1535 Kaarle kokosi yhden Euroopan historian suurimmista laivastoista vallatakseen Tunisin takaisin.",
+      "text_markdown": "Vuonna 1535 Kaarle kokosi yhden Euroopan historian suurimmista laivastoista vallatakseen Tunisin takaisin.",
+      "tts": {
+        "text": "Vuonna tuhat viisisataa kolmekymmentäviisi Kaarle kokosi yhden Euroopan historian suurimmista laivastoista vallatakseen Tunisin takaisin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Laivastoon kuului aluksia Espanjasta, Italiasta, Portugalista ja Paavin valtiosta.",
+      "text_markdown": "Laivastoon kuului aluksia Espanjasta, Italiasta, Portugalista ja Paavin valtiosta.",
+      "tts": {
+        "text": "Laivastoon kuului aluksia Espanjasta, Italiasta, Portugalista ja Paavin valtiosta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kaarle onnistui valtaamaan Tunisin, mutta Hayreddin pakeni laivastonsa ytimen säilyttäen.",
+      "text_markdown": "Kaarle onnistui valtaamaan Tunisin, mutta Hayreddin pakeni laivastonsa ytimen säilyttäen.",
+      "tts": {
+        "text": "Kaarle onnistui valtaamaan Tunisin, mutta Hayreddin pakeni laivastonsa ytimen säilyttäen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tunisin menettäminen oli takaisku, mutta ei loppu.",
+      "text_markdown": "Tunisin menettäminen oli takaisku, mutta ei loppu.",
+      "tts": {
+        "text": "Tunisin menettäminen oli takaisku, mutta ei loppu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin vetäytyi Algiersiin ja alkoi heti jälleenrakentaa joukkojaan.",
+      "text_markdown": "Hayreddin vetäytyi Algiersiin ja alkoi heti jälleenrakentaa joukkojaan.",
+      "tts": {
+        "text": "Hayreddin vetäytyi Algiersiin ja alkoi heti jälleenrakentaa joukkojaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän tiesi, että kristillinen liittouma oli väliaikainen ja hajoaisi heti, kun välitön uhka oli ohi.",
+      "text_markdown": "Hän tiesi, että kristillinen liittouma oli väliaikainen ja hajoaisi heti, kun välitön uhka oli ohi.",
+      "tts": {
+        "text": "Hän tiesi, että kristillinen liittouma oli väliaikainen ja hajoaisi heti, kun välitön uhka oli ohi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän oli oikeassa, ja kuukausien sisällä liittouma alkoi hajota.",
+      "text_markdown": "Hän oli oikeassa, ja kuukausien sisällä liittouma alkoi hajota.",
+      "tts": {
+        "text": "Hän oli oikeassa, ja kuukausien sisällä liittouma alkoi hajota.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kahden vuoden sisällä Hayreddin oli valmis suurimpaan taisteluunsa.",
+      "text_markdown": "Kahden vuoden sisällä Hayreddin oli valmis suurimpaan taisteluunsa.",
+      "tts": {
+        "text": "Kahden vuoden sisällä Hayreddin oli valmis suurimpaan taisteluunsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kohtaaminen, joka määrittäisi hänen perintönsä, oli lähestymässä.",
+      "text_markdown": "Kohtaaminen, joka määrittäisi hänen perintönsä, oli lähestymässä.",
+      "tts": {
+        "text": "Kohtaaminen, joka määrittäisi hänen perintönsä, oli lähestymässä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se tapahtuisi vesillä Kreikan länsirannikon edustalla.",
+      "text_markdown": "Se tapahtuisi vesillä Kreikan länsirannikon edustalla.",
+      "tts": {
+        "text": "Se tapahtuisi vesillä Kreikan länsirannikon edustalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Nousu valtaan",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Taistelun nimi oli Preveza, ja se muuttaisi Välimerta ikuisesti.",
+      "text_markdown": "Taistelun nimi oli Preveza, ja se muuttaisi Välimerta ikuisesti.",
+      "tts": {
+        "text": "Taistelun nimi oli Preveza, ja se muuttaisi Välimerta ikuisesti.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Huipulla",
+      "text_markdown": "Huipulla"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prevezan taistelu käytiin 28. syyskuuta 1538.",
+      "text_markdown": "Prevezan taistelu käytiin 28. syyskuuta 1538.",
+      "tts": {
+        "text": "Prevezan taistelu käytiin kahdentenakymmenentenäkahdeksantena päivänä syyskuuta tuhat viisisataa kolmekymmentäkahdeksan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se oli kuudennentoista vuosisadan Välimeren ratkaiseva meritaistelu.",
+      "text_markdown": "Se oli kuudennentoista vuosisadan Välimeren ratkaiseva meritaistelu.",
+      "tts": {
+        "text": "Se oli kuudennentoista vuosisadan Välimeren ratkaiseva meritaistelu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Toisella puolella oli osmanien laivasto Hayreddin Barbarossan johdolla.",
+      "text_markdown": "Toisella puolella oli osmanien laivasto Hayreddin Barbarossan johdolla.",
+      "tts": {
+        "text": "Toisella puolella oli osmanien laivasto Hayreddin Barbarossan johdolla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Toisella puolella oli Pyhän liittokunnan, kristillisten valtioiden liittouman, yhteinen laivasto.",
+      "text_markdown": "Toisella puolella oli Pyhän liittokunnan, kristillisten valtioiden liittouman, yhteinen laivasto.",
+      "tts": {
+        "text": "Toisella puolella oli Pyhän liittokunnan, kristillisten valtioiden liittouman, yhteinen laivasto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pyhän liittokunnan laivastoa komensi genovalainen amiraali Andrea Doria.",
+      "text_markdown": "Pyhän liittokunnan laivastoa komensi genovalainen amiraali Andrea Doria.",
+      "tts": {
+        "text": "Pyhän liittokunnan laivastoa komensi genovalainen amiraali Andrea Doria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se koostui noin 300 aluksesta Espanjasta, Venetsiasta, Paavin valtiosta ja Genovasta.",
+      "text_markdown": "Se koostui noin 300 aluksesta Espanjasta, Venetsiasta, Paavin valtiosta ja Genovasta.",
+      "tts": {
+        "text": "Se koostui noin kolmestasadasta aluksesta Espanjasta, Venetsiasta, Paavin valtiosta ja Genovasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Paperilla kristillinen laivasto oli merkittävästi suurempi kuin osmanien joukot.",
+      "text_markdown": "Paperilla kristillinen laivasto oli merkittävästi suurempi kuin osmanien joukot.",
+      "tts": {
+        "text": "Paperilla kristillinen laivasto oli merkittävästi suurempi kuin osmanien joukot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mutta pelkkä koko ei voita taisteluja merellä.",
+      "text_markdown": "Mutta pelkkä koko ei voita taisteluja merellä.",
+      "tts": {
+        "text": "Mutta pelkkä koko ei voita taisteluja merellä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin komensi noin 150 kaleeria sekä pienempiä tukialuksia.",
+      "text_markdown": "Hayreddin komensi noin 150 kaleeria sekä pienempiä tukialuksia.",
+      "tts": {
+        "text": "Hayreddin komensi noin sataaviittäkymmentä kaleeria sekä pienempiä tukialuksia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen laivastonsa oli alivoimainen, mutta paremmin koulutettu, paremmin koordinoitu ja paremmin johdettu.",
+      "text_markdown": "Hänen laivastonsa oli alivoimainen, mutta paremmin koulutettu, paremmin koordinoitu ja paremmin johdettu.",
+      "tts": {
+        "text": "Hänen laivastonsa oli alivoimainen, mutta paremmin koulutettu, paremmin koordinoitu ja paremmin johdettu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hayreddin oli viettänyt vuosikymmeniä taistellen näillä vesillä ja tunsi jokaisen virtauksen, jokaisen tuulenpuhalluskuvion ja jokaisen taktisen edun, jonka rannikko tarjosi.",
+      "text_markdown": "Hayreddin oli viettänyt vuosikymmeniä taistellen näillä vesillä ja tunsi jokaisen virtauksen, jokaisen tuulenpuhalluskuvion ja jokaisen taktisen edun, jonka rannikko tarjosi.",
+      "tts": {
+        "text": "Hayreddin oli viettänyt vuosikymmeniä taistellen näillä vesillä ja tunsi jokaisen virtauksen, jokaisen tuulenpuhalluskuvion ja jokaisen taktisen edun, jonka rannikko tarjosi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taistelu käytiin Ambrakialaislahden suun lähellä, Kreikan länsirannikon edustalla.",
+      "text_markdown": "Taistelu käytiin Ambrakialaislahden suun lähellä, Kreikan länsirannikon edustalla.",
+      "tts": {
+        "text": "Taistelu käytiin Ambrakialaislahden suun lähellä, Kreikan länsirannikon edustalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddin asetti laivastonsa hyödyntämään vallitsevia tuulia.",
+      "text_markdown": "Hayreddin asetti laivastonsa hyödyntämään vallitsevia tuulia.",
+      "tts": {
+        "text": "Hayreddin asetti laivastonsa hyödyntämään vallitsevia tuulia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän järjesti kaleerinsa puolikuumuodostelmaan, joka mahdollisti tulen keskittämisen eristyneisiin vihollisryhmiin.",
+      "text_markdown": "Hän järjesti kaleerinsa puolikuumuodostelmaan, joka mahdollisti tulen keskittämisen eristyneisiin vihollisryhmiin.",
+      "tts": {
+        "text": "Hän järjesti kaleerinsa puolikuumuodostelmaan, joka mahdollisti tulen keskittämisen eristyneisiin vihollisryhmiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen taktinen asemointinsa oli mestarillinen.",
+      "text_markdown": "Hänen taktinen asemointinsa oli mestarillinen.",
+      "tts": {
+        "text": "Hänen taktinen asemointinsa oli mestarillinen.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andrea Doria epäröi ratkaisevalla hetkellä.",
+      "text_markdown": "Andrea Doria epäröi ratkaisevalla hetkellä.",
+      "tts": {
+        "text": "Andrea Doria epäröi ratkaisevalla hetkellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lukumääräisestä etulyöntiasemastaan huolimatta hän epäröi sitoutua täydellä laivastollaan lähikohtaamiseen.",
+      "text_markdown": "Lukumääräisestä etulyöntiasemastaan huolimatta hän epäröi sitoutua täydellä laivastollaan lähikohtaamiseen.",
+      "tts": {
+        "text": "Lukumääräisestä etulyöntiasemastaan huolimatta hän epäröi sitoutua täydellä laivastollaan lähikohtaamiseen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän piti parhaita aluksiaan varalla ja yritti manööveröidä parempaan asemaan.",
+      "text_markdown": "Hän piti parhaita aluksiaan varalla ja yritti manööveröidä parempaan asemaan.",
+      "tts": {
+        "text": "Hän piti parhaita aluksiaan varalla ja yritti manööveröidä parempaan asemaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tämä varovaisuus osoittautui kohtalokkaaksi kristilliselle asialle.",
+      "text_markdown": "Tämä varovaisuus osoittautui kohtalokkaaksi kristilliselle asialle.",
+      "tts": {
+        "text": "Tämä varovaisuus osoittautui kohtalokkaaksi kristilliselle asialle.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin hyökkäsi aggressiivisesti kohdistaen iskunsa venetsialaisiin ja paavillisiin aluksiin, jotka olivat edenneet päälaivaston edelle.",
+      "text_markdown": "Hayreddin hyökkäsi aggressiivisesti kohdistaen iskunsa venetsialaisiin ja paavillisiin aluksiin, jotka olivat edenneet päälaivaston edelle.",
+      "tts": {
+        "text": "Hayreddin hyökkäsi aggressiivisesti kohdistaen iskunsa venetsialaisiin ja paavillisiin aluksiin, jotka olivat edenneet päälaivaston edelle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen kaleerinsa lähestyivät nopeasti ja kävivät taisteluun läheltä.",
+      "text_markdown": "Hänen kaleerinsa lähestyivät nopeasti ja kävivät taisteluun läheltä.",
+      "tts": {
+        "text": "Hänen kaleerinsa lähestyivät nopeasti ja kävivät taisteluun läheltä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Taistelu oli kiivasta ja raakaa, tykkitulta ja lähitaistelua kymmenien alusten kannella.",
+      "text_markdown": "Taistelu oli kiivasta ja raakaa, tykkitulta ja lähitaistelua kymmenien alusten kannella.",
+      "tts": {
+        "text": "Taistelu oli kiivasta ja raakaa, tykkitulta ja lähitaistelua kymmenien alusten kannella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Eristyneet kristilliset osastot kukistettiin yksi kerrallaan.",
+      "text_markdown": "Eristyneet kristilliset osastot kukistettiin yksi kerrallaan.",
+      "tts": {
+        "text": "Eristyneet kristilliset osastot kukistettiin yksi kerrallaan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Päivän päättyessä Pyhä liittokunta oli kärsinyt tuhoisan tappion.",
+      "text_markdown": "Päivän päättyessä Pyhä liittokunta oli kärsinyt tuhoisan tappion.",
+      "tts": {
+        "text": "Päivän päättyessä Pyhä liittokunta oli kärsinyt tuhoisan tappion.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hayreddinin joukot ottivat haltuunsa tai upottivat kymmeniä kristillisiä sotalaivoja.",
+      "text_markdown": "Hayreddinin joukot ottivat haltuunsa tai upottivat kymmeniä kristillisiä sotalaivoja.",
+      "tts": {
+        "text": "Hayreddinin joukot ottivat haltuunsa tai upottivat kymmeniä kristillisiä sotalaivoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tuhansia kristittyjä merimiehiä ja sotilaita sai surmansa tai jäi vangiksi.",
+      "text_markdown": "Tuhansia kristittyjä merimiehiä ja sotilaita sai surmansa tai jäi vangiksi.",
+      "tts": {
+        "text": "Tuhansia kristittyjä merimiehiä ja sotilaita sai surmansa tai jäi vangiksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Andrea Doria vetäytyi laivastonsa rippeiden kanssa jättäen meren osmaneille.",
+      "text_markdown": "Andrea Doria vetäytyi laivastonsa rippeiden kanssa jättäen meren osmaneille.",
+      "tts": {
+        "text": "Andrea Doria vetäytyi laivastonsa rippeiden kanssa jättäen meren osmaneille.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prevezan taistelu vakiinnutti osmanien meriherrauden Välimerellä.",
+      "text_markdown": "Prevezan taistelu vakiinnutti osmanien meriherrauden Välimerellä.",
+      "tts": {
+        "text": "Prevezan taistelu vakiinnutti osmanien meriherrauden Välimerellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Seuraavien vuosikymmenten aikana mikään kristillinen laivasto ei voinut haastaa osmanien hallintaa idän ja keskiosan merialueilla.",
+      "text_markdown": "Seuraavien vuosikymmenten aikana mikään kristillinen laivasto ei voinut haastaa osmanien hallintaa idän ja keskiosan merialueilla.",
+      "tts": {
+        "text": "Seuraavien vuosikymmenten aikana mikään kristillinen laivasto ei voinut haastaa osmanien hallintaa idän ja keskiosan merialueilla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanien valtakunta saattoi nyt projisoida sotilaallista voimaa koko Afrikan pohjoisrannikolle ja Italian niemimaata vastaan.",
+      "text_markdown": "Osmanien valtakunta saattoi nyt projisoida sotilaallista voimaa koko Afrikan pohjoisrannikolle ja Italian niemimaata vastaan.",
+      "tts": {
+        "text": "Osmanien valtakunta saattoi nyt projisoida sotilaallista voimaa koko Afrikan pohjoisrannikolle ja Italian niemimaata vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se oli kuudennentoista vuosisadan tärkein meritaisteluvoitto.",
+      "text_markdown": "Se oli kuudennentoista vuosisadan tärkein meritaisteluvoitto.",
+      "tts": {
+        "text": "Se oli kuudennentoista vuosisadan tärkein meritaisteluvoitto.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin palasi Istanbuliin valloittavana sankarina.",
+      "text_markdown": "Hayreddin palasi Istanbuliin valloittavana sankarina.",
+      "tts": {
+        "text": "Hayreddin palasi Istanbuliin valloittavana sankarina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sulttaani Suleiman otti hänet vastaan korkeimmilla kunnianosoituksilla, joita valtakunta saattoi suoda.",
+      "text_markdown": "Sulttaani Suleiman otti hänet vastaan korkeimmilla kunnianosoituksilla, joita valtakunta saattoi suoda.",
+      "tts": {
+        "text": "Sulttaani Suleiman otti hänet vastaan korkeimmilla kunnianosoituksilla, joita valtakunta saattoi suoda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Suuramiraali oli saavuttanut sen, mitä sulttaani oli häneltä pyytänyt.",
+      "text_markdown": "Suuramiraali oli saavuttanut sen, mitä sulttaani oli häneltä pyytänyt.",
+      "tts": {
+        "text": "Suuramiraali oli saavuttanut sen, mitä sulttaani oli häneltä pyytänyt.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän oli tehnyt osmanien laivastosta Välimeren ylivertaisen voiman.",
+      "text_markdown": "Hän oli tehnyt osmanien laivastosta Välimeren ylivertaisen voiman.",
+      "tts": {
+        "text": "Hän oli tehnyt osmanien laivastosta Välimeren ylivertaisen voiman.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prevezaa seuranneina vuosina Hayreddin jatkoi osmanien laivaston komentamista.",
+      "text_markdown": "Prevezaa seuranneina vuosina Hayreddin jatkoi osmanien laivaston komentamista.",
+      "tts": {
+        "text": "Prevezaa seuranneina vuosina Hayreddin jatkoi osmanien laivaston komentamista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän teki ryöstöretkiä espanjalaisiin ja italialaisiin rannikkokaupunkeihin.",
+      "text_markdown": "Hän teki ryöstöretkiä espanjalaisiin ja italialaisiin rannikkokaupunkeihin.",
+      "tts": {
+        "text": "Hän teki ryöstöretkiä espanjalaisiin ja italialaisiin rannikkokaupunkeihin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän neuvotteli Ranskan kuninkaan Frans Ensimmäisen kanssa, joka liittoutui osmanien kanssa heidän yhteistä vihollistaan Kaarle Viidettä vastaan.",
+      "text_markdown": "Hän neuvotteli Ranskan kuninkaan Frans Ensimmäisen kanssa, joka liittoutui osmanien kanssa heidän yhteistä vihollistaan Kaarle Viidettä vastaan.",
+      "tts": {
+        "text": "Hän neuvotteli Ranskan kuninkaan Frans Ensimmäisen kanssa, joka liittoutui osmanien kanssa heidän yhteistä vihollistaan Kaarle Viidettä vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tämä liittouma muslimivaltakunnan ja kristillisen kuningaskunnan välillä järkytti koko Eurooppaa.",
+      "text_markdown": "Tämä liittouma muslimivaltakunnan ja kristillisen kuningaskunnan välillä järkytti koko Eurooppaa.",
+      "tts": {
+        "text": "Tämä liittouma muslimivaltakunnan ja kristillisen kuningaskunnan välillä järkytti koko Eurooppaa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Talvella 1543 Hayreddin ankkuroi laivastonsa ranskalaiseen Toulonin satamaan.",
+      "text_markdown": "Talvella 1543 Hayreddin ankkuroi laivastonsa ranskalaiseen Toulonin satamaan.",
+      "tts": {
+        "text": "Talvella tuhat viisisataa neljäkymmentäkolme Hayreddin ankkuroi laivastonsa ranskalaiseen Toulonin satamaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ranskan kuningas oli tarjonnut sataman tukikohdaksi yhteisille operaatioille Espanjaa vastaan.",
+      "text_markdown": "Ranskan kuningas oli tarjonnut sataman tukikohdaksi yhteisille operaatioille Espanjaa vastaan.",
+      "tts": {
+        "text": "Ranskan kuningas oli tarjonnut sataman tukikohdaksi yhteisille operaatioille Espanjaa vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Useiden kuukausien ajan osmanien sotalaivat operoivat ranskalaisesta satamasta käsin.",
+      "text_markdown": "Useiden kuukausien ajan osmanien sotalaivat operoivat ranskalaisesta satamasta käsin.",
+      "tts": {
+        "text": "Useiden kuukausien ajan osmanien sotalaivat operoivat ranskalaisesta satamasta käsin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se oli näytös, joka hämmästytti kristillistä maailmaa ja osoitti, että valtapolitiikka saattoi syrjäyttää uskonnolliset jakolinjat.",
+      "text_markdown": "Se oli näytös, joka hämmästytti kristillistä maailmaa ja osoitti, että valtapolitiikka saattoi syrjäyttää uskonnolliset jakolinjat.",
+      "tts": {
+        "text": "Se oli näytös, joka hämmästytti kristillistä maailmaa ja osoitti, että valtapolitiikka saattoi syrjäyttää uskonnolliset jakolinjat.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddinin hallinto Algiersissa jatkui hänen merisotaretkiensä rinnalla.",
+      "text_markdown": "Hayreddinin hallinto Algiersissa jatkui hänen merisotaretkiensä rinnalla.",
+      "tts": {
+        "text": "Hayreddinin hallinto Algiersissa jatkui hänen merisotaretkiensä rinnalla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän rakennutti moskeijoita, julkisia kylpylöitä ja linnoituksia kaupunkiin.",
+      "text_markdown": "Hän rakennutti moskeijoita, julkisia kylpylöitä ja linnoituksia kaupunkiin.",
+      "tts": {
+        "text": "Hän rakennutti moskeijoita, julkisia kylpylöitä ja linnoituksia kaupunkiin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän rohkaisi kauppaa ja houkutteli taitavia käsityöläisiä kaikkialta muslimimaailmasta.",
+      "text_markdown": "Hän rohkaisi kauppaa ja houkutteli taitavia käsityöläisiä kaikkialta muslimimaailmasta.",
+      "tts": {
+        "text": "Hän rohkaisi kauppaa ja houkutteli taitavia käsityöläisiä kaikkialta muslimimaailmasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen hallintonsa aikana Algiers kasvoi vähäpätöisestä satamasta yhdeksi pohjoisen Afrikan tärkeimmistä kaupungeista.",
+      "text_markdown": "Hänen hallintonsa aikana Algiers kasvoi vähäpätöisestä satamasta yhdeksi pohjoisen Afrikan tärkeimmistä kaupungeista.",
+      "tts": {
+        "text": "Hänen hallintonsa aikana Algiers kasvoi vähäpätöisestä satamasta yhdeksi pohjoisen Afrikan tärkeimmistä kaupungeista.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hänen laivastonsa suojeli osmanien kauppareittejä, jotka yhdistivät Istanbulin läntiseen Välimereen.",
+      "text_markdown": "Hänen laivastonsa suojeli osmanien kauppareittejä, jotka yhdistivät Istanbulin läntiseen Välimereen.",
+      "tts": {
+        "text": "Hänen laivastonsa suojeli osmanien kauppareittejä, jotka yhdistivät Istanbulin läntiseen Välimereen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kauppalaivat, jotka kuljettivat viljaa, tekstiilejä ja teollisuustuotteita, purjehtivat hänen sotalaivojensa suojassa.",
+      "text_markdown": "Kauppalaivat, jotka kuljettivat viljaa, tekstiilejä ja teollisuustuotteita, purjehtivat hänen sotalaivojensa suojassa.",
+      "tts": {
+        "text": "Kauppalaivat, jotka kuljettivat viljaa, tekstiilejä ja teollisuustuotteita, purjehtivat hänen sotalaivojensa suojassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Osmanien Välimeren taloudellinen vauraus riippui suurelta osin Hayreddinin rakentamasta laivastosta.",
+      "text_markdown": "Osmanien Välimeren taloudellinen vauraus riippui suurelta osin Hayreddinin rakentamasta laivastosta.",
+      "tts": {
+        "text": "Osmanien Välimeren taloudellinen vauraus riippui suurelta osin Hayreddinin rakentamasta laivastosta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "Huipulla",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän oli muuttanut korsaariryöstöt imperiumin vallan välineeksi.",
+      "text_markdown": "Hän oli muuttanut korsaariryöstöt imperiumin vallan välineeksi.",
+      "tts": {
+        "text": "Hän oli muuttanut korsaariryöstöt imperiumin vallan välineeksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Loppu",
+      "text_markdown": "Loppu"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuhatviisisataaneljäkymmentäluvun alussa Hayreddin Barbarossa oli kuusikymppisten puolivälissä.",
+      "text_markdown": "Tuhatviisisataaneljäkymmentäluvun alussa Hayreddin Barbarossa oli kuusikymppisten puolivälissä.",
+      "tts": {
+        "text": "Tuhatviisisataaneljäkymmentäluvun alussa Hayreddin Barbarossa oli kuusikymppisten puolivälissä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän oli viettänyt yli neljä vuosikymmentä merellä taistellen, rakentaen ja komentaen.",
+      "text_markdown": "Hän oli viettänyt yli neljä vuosikymmentä merellä taistellen, rakentaen ja komentaen.",
+      "tts": {
+        "text": "Hän oli viettänyt yli neljä vuosikymmentä merellä taistellen, rakentaen ja komentaen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen ruumiinsa oli kulunut vuosikymmenten sodankäynnistä, ankarista säistä ja aluksen elämän fyysisistä vaatimuksista.",
+      "text_markdown": "Hänen ruumiinsa oli kulunut vuosikymmenten sodankäynnistä, ankarista säistä ja aluksen elämän fyysisistä vaatimuksista.",
+      "tts": {
+        "text": "Hänen ruumiinsa oli kulunut vuosikymmenten sodankäynnistä, ankarista säistä ja aluksen elämän fyysisistä vaatimuksista.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mutta hänen mielensä pysyi terävänä ja hänen auktoriteettinsa kiistämättömänä.",
+      "text_markdown": "Mutta hänen mielensä pysyi terävänä ja hänen auktoriteettinsa kiistämättömänä.",
+      "tts": {
+        "text": "Mutta hänen mielensä pysyi terävänä ja hänen auktoriteettinsa kiistämättömänä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuoden 1543 Toulonin sotaretken jälkeen Hayreddin palasi Istanbuliin.",
+      "text_markdown": "Vuoden 1543 Toulonin sotaretken jälkeen Hayreddin palasi Istanbuliin.",
+      "tts": {
+        "text": "Vuoden tuhat viisisataa neljäkymmentäkolme Toulonin sotaretken jälkeen Hayreddin palasi Istanbuliin.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän oli saanut päätökseen viimeisen suuren merioperaationsa.",
+      "text_markdown": "Hän oli saanut päätökseen viimeisen suuren merioperaationsa.",
+      "tts": {
+        "text": "Hän oli saanut päätökseen viimeisen suuren merioperaationsa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sulttaani ei pyytänyt häntä johtamaan uutta sotaretkeä.",
+      "text_markdown": "Sulttaani ei pyytänyt häntä johtamaan uutta sotaretkeä.",
+      "tts": {
+        "text": "Sulttaani ei pyytänyt häntä johtamaan uutta sotaretkeä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen ikäisellään ja hänen saavutuksillaan eläkkeelle siirtyminen oli sekä ansaittua että sopivaa.",
+      "text_markdown": "Hänen ikäisellään ja hänen saavutuksillaan eläkkeelle siirtyminen oli sekä ansaittua että sopivaa.",
+      "tts": {
+        "text": "Hänen ikäisellään ja hänen saavutuksillaan eläkkeelle siirtyminen oli sekä ansaittua että sopivaa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin vietti viimeiset vuotensa Istanbulissa suuressa palatsissa, joka katsoi Bosporinsalmen yli.",
+      "text_markdown": "Hayreddin vietti viimeiset vuotensa Istanbulissa suuressa palatsissa, joka katsoi Bosporinsalmen yli.",
+      "tts": {
+        "text": "Hayreddin vietti viimeiset vuotensa Istanbulissa suuressa palatsissa, joka katsoi Bosporinsalmen yli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän saneli muistelmansa kirjurille, luoden yhden tärkeimmistä Välimeren korsaarihistorian alkuperäislähteistä.",
+      "text_markdown": "Hän saneli muistelmansa kirjurille, luoden yhden tärkeimmistä Välimeren korsaarihistorian alkuperäislähteistä.",
+      "tts": {
+        "text": "Hän saneli muistelmansa kirjurille, luoden yhden tärkeimmistä Välimeren korsaarihistorian alkuperäislähteistä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nämä muistelmat, jotka tunnetaan nimellä Gazavat-i Hayreddin Pasha, ovat säilyneet käsikirjoituksena.",
+      "text_markdown": "Nämä muistelmat, jotka tunnetaan nimellä Gazavat-i Hayreddin Pasha, ovat säilyneet käsikirjoituksena.",
+      "tts": {
+        "text": "Nämä muistelmat, jotka tunnetaan nimellä Gazavat i Hayreddin Pasha, ovat säilyneet käsikirjoituksena.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Historioitsijat ovat tutkineet niitä vuosisatojen ajan.",
+      "text_markdown": "Historioitsijat ovat tutkineet niitä vuosisatojen ajan.",
+      "tts": {
+        "text": "Historioitsijat ovat tutkineet niitä vuosisatojen ajan.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hän jatkoi osallistumistaan osmanien merivoimien asioihin neuvonantajan roolissa.",
+      "text_markdown": "Hän jatkoi osallistumistaan osmanien merivoimien asioihin neuvonantajan roolissa.",
+      "tts": {
+        "text": "Hän jatkoi osallistumistaan osmanien merivoimien asioihin neuvonantajan roolissa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nuoremmat amiraalit hakivat hänen neuvojaan strategiassa ja laivanrakennuksessa.",
+      "text_markdown": "Nuoremmat amiraalit hakivat hänen neuvojaan strategiassa ja laivanrakennuksessa.",
+      "tts": {
+        "text": "Nuoremmat amiraalit hakivat hänen neuvojaan strategiassa ja laivanrakennuksessa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän oli kouluttanut kokonaisen sukupolven merivoimien upseereita, jotka jatkaisivat hänen työtään.",
+      "text_markdown": "Hän oli kouluttanut kokonaisen sukupolven merivoimien upseereita, jotka jatkaisivat hänen työtään.",
+      "tts": {
+        "text": "Hän oli kouluttanut kokonaisen sukupolven merivoimien upseereita, jotka jatkaisivat hänen työtään.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen osmanien laivastoon rakentamansa institutionaalinen tieto oli hänen pysyvin panoksensa.",
+      "text_markdown": "Hänen osmanien laivastoon rakentamansa institutionaalinen tieto oli hänen pysyvin panoksensa.",
+      "tts": {
+        "text": "Hänen osmanien laivastoon rakentamansa institutionaalinen tieto oli hänen pysyvin panoksensa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa kuoli 4. heinäkuuta 1546 Istanbulissa.",
+      "text_markdown": "Hayreddin Barbarossa kuoli 4. heinäkuuta 1546 Istanbulissa.",
+      "tts": {
+        "text": "Hayreddin Barbarossa kuoli neljäntenä päivänä heinäkuuta tuhat viisisataa neljäkymmentäkuusi Istanbulissa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän oli noin kuusikymmentäkahdeksanvuotias.",
+      "text_markdown": "Hän oli noin kuusikymmentäkahdeksanvuotias.",
+      "tts": {
+        "text": "Hän oli noin kuusikymmentäkahdeksanvuotias.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen kuolemaansa surtiin kaikkialla Osmanien valtakunnassa.",
+      "text_markdown": "Hänen kuolemaansa surtiin kaikkialla Osmanien valtakunnassa.",
+      "tts": {
+        "text": "Hänen kuolemaansa surtiin kaikkialla Osmanien valtakunnassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sulttaani Suleiman määräsi rakennettavaksi hänelle suurenmoisen haudan Bosporinsalmen rannoille Besiktasiin.",
+      "text_markdown": "Sulttaani Suleiman määräsi rakennettavaksi hänelle suurenmoisen haudan Bosporinsalmen rannoille Besiktasiin.",
+      "tts": {
+        "text": "Sulttaani Suleiman määräsi rakennettavaksi hänelle suurenmoisen haudan Bosporinsalmen rannoille Besiktasiin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hauta seisoo edelleen tänäkin päivänä Istanbulin Besiktasin kaupunginosassa.",
+      "text_markdown": "Hauta seisoo edelleen tänäkin päivänä Istanbulin Besiktasin kaupunginosassa.",
+      "tts": {
+        "text": "Hauta seisoo edelleen tänäkin päivänä Istanbulin Besiktasin kaupunginosassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on osmanien arkkitehtuurin muistomerkki, koristeltu kaakeleilla ja kalligrafialla.",
+      "text_markdown": "Se on osmanien arkkitehtuurin muistomerkki, koristeltu kaakeleilla ja kalligrafialla.",
+      "tts": {
+        "text": "Se on osmanien arkkitehtuurin muistomerkki, koristeltu kaakeleilla ja kalligrafialla.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vuosisatojen ajan osmanien merimiehet kävivät haudalla ennen merimatkoille lähtöä.",
+      "text_markdown": "Vuosisatojen ajan osmanien merimiehet kävivät haudalla ennen merimatkoille lähtöä.",
+      "tts": {
+        "text": "Vuosisatojen ajan osmanien merimiehet kävivät haudalla ennen merimatkoille lähtöä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He rukoilivat turvallista matkaa ja sitä, että suuren amiraalin henki ohjaisi heitä.",
+      "text_markdown": "He rukoilivat turvallista matkaa ja sitä, että suuren amiraalin henki ohjaisi heitä.",
+      "tts": {
+        "text": "He rukoilivat turvallista matkaa ja sitä, että suuren amiraalin henki ohjaisi heitä.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hänen seuraajansa osmanien laivastossa ylläpitivät hänen rakentamaansa laivastoa.",
+      "text_markdown": "Hänen seuraajansa osmanien laivastossa ylläpitivät hänen rakentamaansa laivastoa.",
+      "tts": {
+        "text": "Hänen seuraajansa osmanien laivastossa ylläpitivät hänen rakentamaansa laivastoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Amiraalit kuten Turgut Reis ja Piyale Pasha jatkoivat osmanien meriherruutta vuosikymmenten ajan.",
+      "text_markdown": "Amiraalit kuten Turgut Reis ja Piyale Pasha jatkoivat osmanien meriherruutta vuosikymmenten ajan.",
+      "tts": {
+        "text": "Amiraalit kuten Turgut Reis ja Piyale Pasha jatkoivat osmanien meriherruutta vuosikymmenten ajan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He olivat oppineet ammattinsa Hayreddinin alaisuudessa ja veivät eteenpäin hänen taktisia oppejaan.",
+      "text_markdown": "He olivat oppineet ammattinsa Hayreddinin alaisuudessa ja veivät eteenpäin hänen taktisia oppejaan.",
+      "tts": {
+        "text": "He olivat oppineet ammattinsa Hayreddinin alaisuudessa ja veivät eteenpäin hänen taktisia oppejaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lepanton taistelu vuonna 1571 päättäisi lopulta osmanien ylivallan merellä, mutta edes tuo tappio ei tuhonnut Hayreddinin luomaa laivastoa.",
+      "text_markdown": "Lepanton taistelu vuonna 1571 päättäisi lopulta osmanien ylivallan merellä, mutta edes tuo tappio ei tuhonnut Hayreddinin luomaa laivastoa.",
+      "tts": {
+        "text": "Lepanton taistelu vuonna tuhat viisisataa seitsemänkymmentäyksi päättäisi lopulta osmanien ylivallan merellä, mutta edes tuo tappio ei tuhonnut Hayreddinin luomaa laivastoa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pohjoisen Afrikan alueet, jotka Hayreddin oli tuonut osmanien hallintaan, pysyivät osmanien provinsseina vuosisatojen ajan.",
+      "text_markdown": "Pohjoisen Afrikan alueet, jotka Hayreddin oli tuonut osmanien hallintaan, pysyivät osmanien provinsseina vuosisatojen ajan.",
+      "tts": {
+        "text": "Pohjoisen Afrikan alueet, jotka Hayreddin oli tuonut osmanien hallintaan, pysyivät osmanien provinsseina vuosisatojen ajan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Algiers, Tunis ja Tripoli pysyivät korsaaritukikohtina pitkälle yhdeksännelletoista vuosisadalle.",
+      "text_markdown": "Algiers, Tunis ja Tripoli pysyivät korsaaritukikohtina pitkälle yhdeksännelletoista vuosisadalle.",
+      "tts": {
+        "text": "Algiers, Tunis ja Tripoli pysyivät korsaaritukikohtina pitkälle yhdeksännelletoista vuosisadalle.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Berberirannikon korsaariperinne, jonka perustamisessa Hayreddin auttoi, kesti kolmesataa vuotta.",
+      "text_markdown": "Berberirannikon korsaariperinne, jonka perustamisessa Hayreddin auttoi, kesti kolmesataa vuotta.",
+      "tts": {
+        "text": "Berberirannikon korsaariperinne, jonka perustamisessa Hayreddin auttoi, kesti kolmesataa vuotta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tarvittiin Ranskan ja Britannian yhdistetty voima sen lopulta päättämiseksi.",
+      "text_markdown": "Tarvittiin Ranskan ja Britannian yhdistetty voima sen lopulta päättämiseksi.",
+      "tts": {
+        "text": "Tarvittiin Ranskan ja Britannian yhdistetty voima sen lopulta päättämiseksi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin kuoli niin kuin oli elänytkin: osmanien valtion palveluksessa.",
+      "text_markdown": "Hayreddin kuoli niin kuin oli elänytkin: osmanien valtion palveluksessa.",
+      "tts": {
+        "text": "Hayreddin kuoli niin kuin oli elänytkin: osmanien valtion palveluksessa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän oli aloittanut savenvalajan poikana kreikkalaisella saarella.",
+      "text_markdown": "Hän oli aloittanut savenvalajan poikana kreikkalaisella saarella.",
+      "tts": {
+        "text": "Hän oli aloittanut savenvalajan poikana kreikkalaisella saarella.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän päätti sen Osmanien valtakunnan historian juhlituimpana amiraalina.",
+      "text_markdown": "Hän päätti sen Osmanien valtakunnan historian juhlituimpana amiraalina.",
+      "tts": {
+        "text": "Hän päätti sen Osmanien valtakunnan historian juhlituimpana amiraalina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Loppu",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen matkansa Lesbokselta suuramiraaliviraan kuuluu merihistorian merkittävimpiin uriin.",
+      "text_markdown": "Hänen matkansa Lesbokselta suuramiraaliviraan kuuluu merihistorian merkittävimpiin uriin.",
+      "tts": {
+        "text": "Hänen matkansa Lesbokselta suuramiraaliviraan kuuluu merihistorian merkittävimpiin uriin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Perintö",
+      "text_markdown": "Perintö"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddin Barbarossa muutti Osmanien valtakunnan maavoimien valtakunnasta merivoimien suurvallaksi.",
+      "text_markdown": "Hayreddin Barbarossa muutti Osmanien valtakunnan maavoimien valtakunnasta merivoimien suurvallaksi.",
+      "tts": {
+        "text": "Hayreddin Barbarossa muutti Osmanien valtakunnan maavoimien valtakunnasta merivoimien suurvallaksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ennen hänen uraansa osmanit olivat pelättäviä maalla, mutta marginaalisia merellä.",
+      "text_markdown": "Ennen hänen uraansa osmanit olivat pelättäviä maalla, mutta marginaalisia merellä.",
+      "tts": {
+        "text": "Ennen hänen uraansa osmanit olivat pelättäviä maalla, mutta marginaalisia merellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen uransa jälkeen osmanien laivasto hallitsi Välimerta sukupolvien ajan.",
+      "text_markdown": "Hänen uransa jälkeen osmanien laivasto hallitsi Välimerta sukupolvien ajan.",
+      "tts": {
+        "text": "Hänen uransa jälkeen osmanien laivasto hallitsi Välimerta sukupolvien ajan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tämä muutos sijoittuu kuudennentoista vuosisadan merkittävimpien sotilaallisten saavutusten joukkoon.",
+      "text_markdown": "Tämä muutos sijoittuu kuudennentoista vuosisadan merkittävimpien sotilaallisten saavutusten joukkoon.",
+      "tts": {
+        "text": "Tämä muutos sijoittuu kuudennentoista vuosisadan merkittävimpien sotilaallisten saavutusten joukkoon.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hänen voittoaan Prevezassa tutkitaan merivoimien akatemioissa eri puolilla maailmaa vielä tänäkin päivänä.",
+      "text_markdown": "Hänen voittoaan Prevezassa tutkitaan merivoimien akatemioissa eri puolilla maailmaa vielä tänäkin päivänä.",
+      "tts": {
+        "text": "Hänen voittoaan Prevezassa tutkitaan merivoimien akatemioissa eri puolilla maailmaa vielä tänäkin päivänä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se osoittaa, kuinka ylivertainen johtajuus ja taktiikka voivat voittaa lukumääräisen alivoiman.",
+      "text_markdown": "Se osoittaa, kuinka ylivertainen johtajuus ja taktiikka voivat voittaa lukumääräisen alivoiman.",
+      "tts": {
+        "text": "Se osoittaa, kuinka ylivertainen johtajuus ja taktiikka voivat voittaa lukumääräisen alivoiman.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Taistelu osoitti, että hyvin koordinoitu laivasto saattoi voittaa suuremman, mutta huonosti johdetun laivaston.",
+      "text_markdown": "Taistelu osoitti, että hyvin koordinoitu laivasto saattoi voittaa suuremman, mutta huonosti johdetun laivaston.",
+      "tts": {
+        "text": "Taistelu osoitti, että hyvin koordinoitu laivasto saattoi voittaa suuremman, mutta huonosti johdetun laivaston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se on edelleen oppikirjaesimerkki merisotastrategiasta viisi vuosisataa myöhemmin.",
+      "text_markdown": "Se on edelleen oppikirjaesimerkki merisotastrategiasta viisi vuosisataa myöhemmin.",
+      "tts": {
+        "text": "Se on edelleen oppikirjaesimerkki merisotastrategiasta viisi vuosisataa myöhemmin.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hayreddinin vaikutus pohjoiseen Afrikkaan oli yhtä syvällinen.",
+      "text_markdown": "Hayreddinin vaikutus pohjoiseen Afrikkaan oli yhtä syvällinen.",
+      "tts": {
+        "text": "Hayreddinin vaikutus pohjoiseen Afrikkaan oli yhtä syvällinen.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tuomalla Algiersin ja muut kaupungit osmanien hallintaan hän loi poliittisen rakenteen, joka kesti vuosisatoja.",
+      "text_markdown": "Tuomalla Algiersin ja muut kaupungit osmanien hallintaan hän loi poliittisen rakenteen, joka kesti vuosisatoja.",
+      "tts": {
+        "text": "Tuomalla Algiersin ja muut kaupungit osmanien hallintaan hän loi poliittisen rakenteen, joka kesti vuosisatoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Näiden kaupunkien väestöä muovasivat hänen politiikkansa ottaa vastaan pakolaisia Espanjasta.",
+      "text_markdown": "Näiden kaupunkien väestöä muovasivat hänen politiikkansa ottaa vastaan pakolaisia Espanjasta.",
+      "tts": {
+        "text": "Näiden kaupunkien väestöä muovasivat hänen politiikkansa ottaa vastaan pakolaisia Espanjasta.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Berberien, arabien, turkkilaisten ja andalusialaisten vaikutteiden kulttuurinen sekoitus, joka määrittää nykyistä Maghrebia, juontaa juurensa siihen maailmaan, jonka luomisessa Hayreddin auttoi.",
+      "text_markdown": "Berberien, arabien, turkkilaisten ja andalusialaisten vaikutteiden kulttuurinen sekoitus, joka määrittää nykyistä Maghrebia, juontaa juurensa siihen maailmaan, jonka luomisessa Hayreddin auttoi.",
+      "tts": {
+        "text": "Berberien, arabien, turkkilaisten ja andalusialaisten vaikutteiden kulttuurinen sekoitus, joka määrittää nykyistä Maghrebia, juontaa juurensa siihen maailmaan, jonka luomisessa Hayreddin auttoi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Turkissa Hayreddin Barbarossa on kansallissankari.",
+      "text_markdown": "Turkissa Hayreddin Barbarossa on kansallissankari.",
+      "tts": {
+        "text": "Turkissa Hayreddin Barbarossa on kansallissankari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Turkin merivoimat nimesivät ensimmäisen sukellusveneensä hänen mukaansa.",
+      "text_markdown": "Turkin merivoimat nimesivät ensimmäisen sukellusveneensä hänen mukaansa.",
+      "tts": {
+        "text": "Turkin merivoimat nimesivät ensimmäisen sukellusveneensä hänen mukaansa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen kuvansa esiintyy monumenteissa, postimerkeissä ja rahassa.",
+      "text_markdown": "Hänen kuvansa esiintyy monumenteissa, postimerkeissä ja rahassa.",
+      "tts": {
+        "text": "Hänen kuvansa esiintyy monumenteissa, postimerkeissä ja rahassa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jokainen turkkilainen koululainen oppii hänen nimensä ja tarinansa.",
+      "text_markdown": "Jokainen turkkilainen koululainen oppii hänen nimensä ja tarinansa.",
+      "tts": {
+        "text": "Jokainen turkkilainen koululainen oppii hänen nimensä ja tarinansa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Euroopan historiallisessa muistissa Barbarossa on monimutkaisempi hahmo.",
+      "text_markdown": "Euroopan historiallisessa muistissa Barbarossa on monimutkaisempi hahmo.",
+      "tts": {
+        "text": "Euroopan historiallisessa muistissa Barbarossa on monimutkaisempi hahmo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hänen aikansa espanjalaisille ja italialaisille hän oli pelätty vihollinen ja säälimätön ryöstelijä.",
+      "text_markdown": "Hänen aikansa espanjalaisille ja italialaisille hän oli pelätty vihollinen ja säälimätön ryöstelijä.",
+      "tts": {
+        "text": "Hänen aikansa espanjalaisille ja italialaisille hän oli pelätty vihollinen ja säälimätön ryöstelijä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ranskalaisille hän oli odottamaton liittolainen heidän yhteistä espanjalaista kilpailijaansa vastaan.",
+      "text_markdown": "Ranskalaisille hän oli odottamaton liittolainen heidän yhteistä espanjalaista kilpailijaansa vastaan.",
+      "tts": {
+        "text": "Ranskalaisille hän oli odottamaton liittolainen heidän yhteistä espanjalaista kilpailijaansa vastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hänen perintönsä Euroopassa heijastaa Välimeren historian jakautunutta ja kiistanalaista luonnetta.",
+      "text_markdown": "Hänen perintönsä Euroopassa heijastaa Välimeren historian jakautunutta ja kiistanalaista luonnetta.",
+      "tts": {
+        "text": "Hänen perintönsä Euroopassa heijastaa Välimeren historian jakautunutta ja kiistanalaista luonnetta.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Historioitsijat kiistelevät siitä, pitäisikö Hayreddiniä lainkaan kutsua merirosvoksi.",
+      "text_markdown": "Historioitsijat kiistelevät siitä, pitäisikö Hayreddiniä lainkaan kutsua merirosvoksi.",
+      "tts": {
+        "text": "Historioitsijat kiistelevät siitä, pitäisikö Hayreddiniä lainkaan kutsua merirosvoksi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän toimi osmanien sulttaanin nimenomaisella valtuutuksella suurimman osan urastaan.",
+      "text_markdown": "Hän toimi osmanien sulttaanin nimenomaisella valtuutuksella suurimman osan urastaan.",
+      "tts": {
+        "text": "Hän toimi osmanien sulttaanin nimenomaisella valtuutuksella suurimman osan urastaan.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hänen korsaaritoimintansa olivat tunnustettu merisodankäynnin muoto kuudennentoista vuosisadan Välimerellä.",
+      "text_markdown": "Hänen korsaaritoimintansa olivat tunnustettu merisodankäynnin muoto kuudennentoista vuosisadan Välimerellä.",
+      "tts": {
+        "text": "Hänen korsaaritoimintansa olivat tunnustettu merisodankäynnin muoto kuudennentoista vuosisadan Välimerellä.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Raja merirosvouden ja valtion tukeman merisodankäynnin välillä oli hämärä, ja Hayreddin eli sen molemmilla puolilla.",
+      "text_markdown": "Raja merirosvouden ja valtion tukeman merisodankäynnin välillä oli hämärä, ja Hayreddin eli sen molemmilla puolilla.",
+      "tts": {
+        "text": "Raja merirosvouden ja valtion tukeman merisodankäynnin välillä oli hämärä, ja Hayreddin eli sen molemmilla puolilla.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mikä on kiistatonta on hänen saavutuksensa mittakaava.",
+      "text_markdown": "Mikä on kiistatonta on hänen saavutuksensa mittakaava.",
+      "tts": {
+        "text": "Mikä on kiistatonta on hänen saavutuksensa mittakaava.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Savenvalajan poika kreikkalaiselta saarelta rakensi Välimeren mahtavimman laivaston.",
+      "text_markdown": "Savenvalajan poika kreikkalaiselta saarelta rakensi Välimeren mahtavimman laivaston.",
+      "tts": {
+        "text": "Savenvalajan poika kreikkalaiselta saarelta rakensi Välimeren mahtavimman laivaston.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän voitti Euroopan mahtavimpien kristillisten valtioiden yhdistetyt laivastot.",
+      "text_markdown": "Hän voitti Euroopan mahtavimpien kristillisten valtioiden yhdistetyt laivastot.",
+      "tts": {
+        "text": "Hän voitti Euroopan mahtavimpien kristillisten valtioiden yhdistetyt laivastot.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän hallitsi suurta kaupunkia, muokkasi mantereen politiikkaa ja kuoli maailman mahtavimman valtakunnan kunnioittamana.",
+      "text_markdown": "Hän hallitsi suurta kaupunkia, muokkasi mantereen politiikkaa ja kuoli maailman mahtavimman valtakunnan kunnioittamana.",
+      "tts": {
+        "text": "Hän hallitsi suurta kaupunkia, muokkasi mantereen politiikkaa ja kuoli maailman mahtavimman valtakunnan kunnioittamana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "Perintö",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hänen elämänsä on todistus siitä, mitä kunnianhimo, taito ja tilaisuus voivat tuottaa, kun ne kohtaavat oikealla hetkellä historiassa.",
+      "text_markdown": "Hänen elämänsä on todistus siitä, mitä kunnianhimo, taito ja tilaisuus voivat tuottaa, kun ne kohtaavat oikealla hetkellä historiassa.",
+      "tts": {
+        "text": "Hänen elämänsä on todistus siitä, mitä kunnianhimo, taito ja tilaisuus voivat tuottaa, kun ne kohtaavat oikealla hetkellä historiassa.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

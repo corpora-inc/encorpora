@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "el",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ένα Σημείωμα για τον Ακροατή",
+      "text_markdown": "Ένα Σημείωμα για τον Ακροατή"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό είναι ένα βιβλίο για το ούτι, ένα ξύλινο μουσικό όργανο με χορδές.",
+      "text_markdown": "Αυτό είναι ένα βιβλίο για το ούτι, ένα ξύλινο μουσικό όργανο με χορδές.",
+      "tts": {
+        "text": "Αυτό είναι ένα βιβλίο για το ούτι, ένα ξύλινο μουσικό όργανο με χορδές.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι άνθρωποι το παίζουν εδώ και πάνω από χίλια χρόνια.",
+      "text_markdown": "Οι άνθρωποι το παίζουν εδώ και πάνω από χίλια χρόνια.",
+      "tts": {
+        "text": "Οι άνθρωποι το παίζουν εδώ και πάνω από χίλια χρόνια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μπορείς να ακούσεις το ούτι σε πόλεις πλάι στη θάλασσα και σε χωριά των βουνών.",
+      "text_markdown": "Μπορείς να ακούσεις το ούτι σε πόλεις πλάι στη θάλασσα και σε χωριά των βουνών.",
+      "tts": {
+        "text": "Μπορείς να ακούσεις το ούτι σε πόλεις πλάι στη θάλασσα και σε χωριά των βουνών.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μπορείς να το ακούσεις σε παλιά παλάτια και σε μικρές ξύλινες σκηνές.",
+      "text_markdown": "Μπορείς να το ακούσεις σε παλιά παλάτια και σε μικρές ξύλινες σκηνές.",
+      "tts": {
+        "text": "Μπορείς να το ακούσεις σε παλιά παλάτια και σε μικρές ξύλινες σκηνές.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε αυτό το βιβλίο, θα μάθουμε πώς είναι το ούτι, πώς φτιάχνεται και ποιοι άνθρωποι διαμόρφωσαν την ιστορία του.",
+      "text_markdown": "Σε αυτό το βιβλίο, θα μάθουμε πώς είναι το ούτι, πώς φτιάχνεται και ποιοι άνθρωποι διαμόρφωσαν την ιστορία του.",
+      "tts": {
+        "text": "Σε αυτό το βιβλίο, θα μάθουμε πώς είναι το ούτι, πώς φτιάχνεται και ποιοι άνθρωποι διαμόρφωσαν την ιστορία του.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Στο τέλος, θα ξέρεις γιατί το ούτι λέγεται μερικές φορές ο βασιλιάς όλων των έγχορδων.",
+      "text_markdown": "Στο τέλος, θα ξέρεις γιατί το ούτι λέγεται μερικές φορές ο βασιλιάς όλων των έγχορδων.",
+      "tts": {
+        "text": "Στο τέλος, θα ξέρεις γιατί το ούτι λέγεται μερικές φορές ο βασιλιάς όλων των έγχορδων.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 1 — Τι Είναι το Ούτι;",
+      "text_markdown": "Κεφάλαιο 1 — Τι Είναι το Ούτι;"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι είναι ένα έγχορδο όργανο.",
+      "text_markdown": "Το ούτι είναι ένα έγχορδο όργανο.",
+      "tts": {
+        "text": "Το ούτι είναι ένα έγχορδο όργανο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι ένα είδος λαούτου, με σώμα σαν αχλάδι κομμένο στη μέση.",
+      "text_markdown": "Είναι ένα είδος λαούτου, με σώμα σαν αχλάδι κομμένο στη μέση.",
+      "tts": {
+        "text": "Είναι ένα είδος λαούτου, με σώμα σαν αχλάδι κομμένο στη μέση.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η πλάτη του ουτιού είναι στρογγυλή και βαθιά, σαν ξύλινο μπολ.",
+      "text_markdown": "Η πλάτη του ουτιού είναι στρογγυλή και βαθιά, σαν ξύλινο μπολ.",
+      "tts": {
+        "text": "Η πλάτη του ουτιού είναι στρογγυλή και βαθιά, σαν ξύλινο μπολ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το μπροστινό μέρος είναι επίπεδο.",
+      "text_markdown": "Το μπροστινό μέρος είναι επίπεδο.",
+      "tts": {
+        "text": "Το μπροστινό μέρος είναι επίπεδο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το επίπεδο μπροστινό μέρος το λέμε καπάκι.",
+      "text_markdown": "Το επίπεδο μπροστινό μέρος το λέμε καπάκι.",
+      "tts": {
+        "text": "Το επίπεδο μπροστινό μέρος το λέμε καπάκι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μπράτσο του ουτιού είναι κοντό και δεν έχει τάστα.",
+      "text_markdown": "Το μπράτσο του ουτιού είναι κοντό και δεν έχει τάστα.",
+      "tts": {
+        "text": "Το μπράτσο του ουτιού είναι κοντό και δεν έχει τάστα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τα τάστα είναι οι μικρές μεταλλικές γραμμές που βλέπεις σε μια κιθάρα.",
+      "text_markdown": "Τα τάστα είναι οι μικρές μεταλλικές γραμμές που βλέπεις σε μια κιθάρα.",
+      "tts": {
+        "text": "Τα τάστα είναι οι μικρές μεταλλικές γραμμές που βλέπεις σε μια κιθάρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Χωρίς αυτά, ο μουσικός μπορεί να γλιστρά ανάμεσα στις νότες πολύ ομαλά.",
+      "text_markdown": "Χωρίς αυτά, ο μουσικός μπορεί να γλιστρά ανάμεσα στις νότες πολύ ομαλά.",
+      "tts": {
+        "text": "Χωρίς αυτά, ο μουσικός μπορεί να γλιστρά ανάμεσα στις νότες πολύ ομαλά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα περισσότερα ούτια έχουν έντεκα χορδές, χωρισμένες σε έξι ζευγάρια.",
+      "text_markdown": "Τα περισσότερα ούτια έχουν έντεκα χορδές, χωρισμένες σε έξι ζευγάρια.",
+      "tts": {
+        "text": "Τα περισσότερα ούτια έχουν έντεκα χορδές, χωρισμένες σε έξι ζευγάρια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε τέτοιο ζευγάρι λέγεται κούρσο.",
+      "text_markdown": "Κάθε τέτοιο ζευγάρι λέγεται κούρσο.",
+      "tts": {
+        "text": "Κάθε τέτοιο ζευγάρι λέγεται κούρσο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Στα πέντε από αυτά τα ζευγάρια, οι δύο χορδές είναι κουρδισμένες το ίδιο.",
+      "text_markdown": "Στα πέντε από αυτά τα ζευγάρια, οι δύο χορδές είναι κουρδισμένες το ίδιο.",
+      "tts": {
+        "text": "Στα πέντε από αυτά τα ζευγάρια, οι δύο χορδές είναι κουρδισμένες το ίδιο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το έκτο κούρσο έχει μόνο μία χορδή.",
+      "text_markdown": "Το έκτο κούρσο έχει μόνο μία χορδή.",
+      "tts": {
+        "text": "Το έκτο κούρσο έχει μόνο μία χορδή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Έτσι φτάνεις στις έντεκα.",
+      "text_markdown": "Έτσι φτάνεις στις έντεκα.",
+      "tts": {
+        "text": "Έτσι φτάνεις στις έντεκα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο μουσικός κρατά το ούτι πάνω στα γόνατά του.",
+      "text_markdown": "Ο μουσικός κρατά το ούτι πάνω στα γόνατά του.",
+      "tts": {
+        "text": "Ο μουσικός κρατά το ούτι πάνω στα γόνατά του.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το ένα χέρι πατά τις χορδές πάνω στο μπράτσο.",
+      "text_markdown": "Το ένα χέρι πατά τις χορδές πάνω στο μπράτσο.",
+      "tts": {
+        "text": "Το ένα χέρι πατά τις χορδές πάνω στο μπράτσο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το άλλο χέρι τις τσιμπά με μια λεπτή πένα που λέγεται ρίσα.",
+      "text_markdown": "Το άλλο χέρι τις τσιμπά με μια λεπτή πένα που λέγεται ρίσα.",
+      "tts": {
+        "text": "Το άλλο χέρι τις τσιμπά με μια λεπτή πένα που λέγεται ρίσα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο ήχος είναι ζεστός και βαθύς.",
+      "text_markdown": "Ο ήχος είναι ζεστός και βαθύς.",
+      "tts": {
+        "text": "Ο ήχος είναι ζεστός και βαθύς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι λίγο λυπητερός και λίγο γλυκός, την ίδια στιγμή.",
+      "text_markdown": "Είναι λίγο λυπητερός και λίγο γλυκός, την ίδια στιγμή.",
+      "tts": {
+        "text": "Είναι λίγο λυπητερός και λίγο γλυκός, την ίδια στιγμή.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 2 — Από Πού Έρχεται το Όνομα",
+      "text_markdown": "Κεφάλαιο 2 — Από Πού Έρχεται το Όνομα"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η λέξη ούτι είναι αραβική και σημαίνει ξύλο.",
+      "text_markdown": "Η λέξη ούτι είναι αραβική και σημαίνει ξύλο.",
+      "tts": {
+        "text": "Η λέξη ούτι είναι αραβική και σημαίνει ξύλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το όργανο πήρε το όνομά του από το υλικό του.",
+      "text_markdown": "Το όργανο πήρε το όνομά του από το υλικό του.",
+      "tts": {
+        "text": "Το όργανο πήρε το όνομά του από το υλικό του.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολύ πριν από το ούτι, υπήρχε ένας παλιότερος ξάδελφος που λεγόταν μπαρμπάτ.",
+      "text_markdown": "Πολύ πριν από το ούτι, υπήρχε ένας παλιότερος ξάδελφος που λεγόταν μπαρμπάτ.",
+      "tts": {
+        "text": "Πολύ πριν από το ούτι, υπήρχε ένας παλιότερος ξάδελφος που λεγόταν μπαρμπάτ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το μπαρμπάτ παιζόταν στην αρχαία Περσία πριν από περισσότερα από δύο χιλιάδες χρόνια.",
+      "text_markdown": "Το μπαρμπάτ παιζόταν στην αρχαία Περσία πριν από περισσότερα από δύο χιλιάδες χρόνια.",
+      "tts": {
+        "text": "Το μπαρμπάτ παιζόταν στην αρχαία Περσία πριν από περισσότερα από δύο χιλιάδες χρόνια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μπαρμπάτ είχε ξύλινο σώμα και μεταξωτές χορδές.",
+      "text_markdown": "Το μπαρμπάτ είχε ξύλινο σώμα και μεταξωτές χορδές.",
+      "tts": {
+        "text": "Το μπαρμπάτ είχε ξύλινο σώμα και μεταξωτές χορδές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο ήχος του ήταν παρατεταμένος και απαλός.",
+      "text_markdown": "Ο ήχος του ήταν παρατεταμένος και απαλός.",
+      "tts": {
+        "text": "Ο ήχος του ήταν παρατεταμένος και απαλός.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το έπαιζαν άνθρωποι στις αυλές των βασιλιάδων.",
+      "text_markdown": "Το έπαιζαν άνθρωποι στις αυλές των βασιλιάδων.",
+      "tts": {
+        "text": "Το έπαιζαν άνθρωποι στις αυλές των βασιλιάδων.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σιγά σιγά, το μπαρμπάτ άλλαξε.",
+      "text_markdown": "Σιγά σιγά, το μπαρμπάτ άλλαξε.",
+      "tts": {
+        "text": "Σιγά σιγά, το μπαρμπάτ άλλαξε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το σώμα έγινε πιο στρογγυλό, οι χορδές έγιναν ζευγάρια και το μπράτσο κόντυνε.",
+      "text_markdown": "Το σώμα έγινε πιο στρογγυλό, οι χορδές έγιναν ζευγάρια και το μπράτσο κόντυνε.",
+      "tts": {
+        "text": "Το σώμα έγινε πιο στρογγυλό, οι χορδές έγιναν ζευγάρια και το μπράτσο κόντυνε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Γύρω στο 700, οι άνθρωποι στον αραβικό κόσμο έπαιζαν αυτό που σήμερα λέμε ούτι.",
+      "text_markdown": "Γύρω στο 700, οι άνθρωποι στον αραβικό κόσμο έπαιζαν αυτό που σήμερα λέμε ούτι.",
+      "tts": {
+        "text": "Γύρω στο επτακόσια, οι άνθρωποι στον αραβικό κόσμο έπαιζαν αυτό που σήμερα λέμε ούτι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Από εκεί, το ούτι ταξίδεψε.",
+      "text_markdown": "Από εκεί, το ούτι ταξίδεψε.",
+      "tts": {
+        "text": "Από εκεί, το ούτι ταξίδεψε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Πήγε στην Αίγυπτο και στη Βόρεια Αφρική.",
+      "text_markdown": "Πήγε στην Αίγυπτο και στη Βόρεια Αφρική.",
+      "tts": {
+        "text": "Πήγε στην Αίγυπτο και στη Βόρεια Αφρική.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πέρασε τη θάλασσα και έφτασε στην Ισπανία.",
+      "text_markdown": "Πέρασε τη θάλασσα και έφτασε στην Ισπανία.",
+      "tts": {
+        "text": "Πέρασε τη θάλασσα και έφτασε στην Ισπανία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Πήγε βόρεια, στην Τουρκία και στην Ελλάδα.",
+      "text_markdown": "Πήγε βόρεια, στην Τουρκία και στην Ελλάδα.",
+      "tts": {
+        "text": "Πήγε βόρεια, στην Τουρκία και στην Ελλάδα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Κάθε τόπος έδωσε στο ούτι λίγο από τη δική του φωνή.",
+      "text_markdown": "Κάθε τόπος έδωσε στο ούτι λίγο από τη δική του φωνή.",
+      "tts": {
+        "text": "Κάθε τόπος έδωσε στο ούτι λίγο από τη δική του φωνή.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όμως το όνομα έμεινε το ίδιο.",
+      "text_markdown": "Όμως το όνομα έμεινε το ίδιο.",
+      "tts": {
+        "text": "Όμως το όνομα έμεινε το ίδιο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Όπου κι αν πήγε, αυτό το ξύλινο όργανο έμενε πάντα το ούτι.",
+      "text_markdown": "Όπου κι αν πήγε, αυτό το ξύλινο όργανο έμενε πάντα το ούτι.",
+      "tts": {
+        "text": "Όπου κι αν πήγε, αυτό το ξύλινο όργανο έμενε πάντα το ούτι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 3 — Πώς Φτιάχνεται ένα Ούτι",
+      "text_markdown": "Κεφάλαιο 3 — Πώς Φτιάχνεται ένα Ούτι"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η κατασκευή ενός ουτιού παίρνει πολύ χρόνο.",
+      "text_markdown": "Η κατασκευή ενός ουτιού παίρνει πολύ χρόνο.",
+      "tts": {
+        "text": "Η κατασκευή ενός ουτιού παίρνει πολύ χρόνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ένας καλός οργανοποιός μπορεί να περάσει πολλές εβδομάδες σε ένα μόνο όργανο.",
+      "text_markdown": "Ένας καλός οργανοποιός μπορεί να περάσει πολλές εβδομάδες σε ένα μόνο όργανο.",
+      "tts": {
+        "text": "Ένας καλός οργανοποιός μπορεί να περάσει πολλές εβδομάδες σε ένα μόνο όργανο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η σκάφη φτιάχνεται από λεπτές λωρίδες ξύλου, συνήθως από 15 έως 25.",
+      "text_markdown": "Η σκάφη φτιάχνεται από λεπτές λωρίδες ξύλου, συνήθως από 15 έως 25.",
+      "tts": {
+        "text": "Η σκάφη φτιάχνεται από λεπτές λωρίδες ξύλου, συνήθως από δεκαπέντε έως είκοσι πέντε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε λωρίδα λυγίζει και κολλιέται δίπλα στην επόμενη.",
+      "text_markdown": "Κάθε λωρίδα λυγίζει και κολλιέται δίπλα στην επόμενη.",
+      "tts": {
+        "text": "Κάθε λωρίδα λυγίζει και κολλιέται δίπλα στην επόμενη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Όλες μαζί φτιάχνουν τη βαθιά, στρογγυλή πλάτη του ουτιού.",
+      "text_markdown": "Όλες μαζί φτιάχνουν τη βαθιά, στρογγυλή πλάτη του ουτιού.",
+      "tts": {
+        "text": "Όλες μαζί φτιάχνουν τη βαθιά, στρογγυλή πλάτη του ουτιού.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ξύλο παίζει μεγάλο ρόλο.",
+      "text_markdown": "Το ξύλο παίζει μεγάλο ρόλο.",
+      "tts": {
+        "text": "Το ξύλο παίζει μεγάλο ρόλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η καρυδιά δίνει ζεστό ήχο, το μαόνι δίνει πιο σκούρο ήχο και η μουριά δίνει λαμπερό, ηχηρό ήχο.",
+      "text_markdown": "Η καρυδιά δίνει ζεστό ήχο, το μαόνι δίνει πιο σκούρο ήχο και η μουριά δίνει λαμπερό, ηχηρό ήχο.",
+      "tts": {
+        "text": "Η καρυδιά δίνει ζεστό ήχο, το μαόνι δίνει πιο σκούρο ήχο και η μουριά δίνει λαμπερό, ηχηρό ήχο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο οργανοποιός διαλέγει το ξύλο για τη φωνή που θέλει.",
+      "text_markdown": "Ο οργανοποιός διαλέγει το ξύλο για τη φωνή που θέλει.",
+      "tts": {
+        "text": "Ο οργανοποιός διαλέγει το ξύλο για τη φωνή που θέλει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το επίπεδο μπροστινό μέρος, το καπάκι, φτιάχνεται από έλατο.",
+      "text_markdown": "Το επίπεδο μπροστινό μέρος, το καπάκι, φτιάχνεται από έλατο.",
+      "tts": {
+        "text": "Το επίπεδο μπροστινό μέρος, το καπάκι, φτιάχνεται από έλατο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το έλατο είναι ελαφρύ και δυνατό, και αφήνει το ξύλο να δονείται εύκολα.",
+      "text_markdown": "Το έλατο είναι ελαφρύ και δυνατό, και αφήνει το ξύλο να δονείται εύκολα.",
+      "tts": {
+        "text": "Το έλατο είναι ελαφρύ και δυνατό, και αφήνει το ξύλο να δονείται εύκολα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτή τη δόνηση την ακούμε ως μουσική.",
+      "text_markdown": "Αυτή τη δόνηση την ακούμε ως μουσική.",
+      "tts": {
+        "text": "Αυτή τη δόνηση την ακούμε ως μουσική.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στο καπάκι υπάρχουν μικρές στρογγυλές τρύπες που λέγονται ροζέτες.",
+      "text_markdown": "Στο καπάκι υπάρχουν μικρές στρογγυλές τρύπες που λέγονται ροζέτες.",
+      "tts": {
+        "text": "Στο καπάκι υπάρχουν μικρές στρογγυλές τρύπες που λέγονται ροζέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Συχνά έχουν σκαλισμένα όμορφα σχέδια.",
+      "text_markdown": "Συχνά έχουν σκαλισμένα όμορφα σχέδια.",
+      "tts": {
+        "text": "Συχνά έχουν σκαλισμένα όμορφα σχέδια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι ροζέτες αφήνουν τον ήχο να βγει από τη σκάφη.",
+      "text_markdown": "Οι ροζέτες αφήνουν τον ήχο να βγει από τη σκάφη.",
+      "tts": {
+        "text": "Οι ροζέτες αφήνουν τον ήχο να βγει από τη σκάφη.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παλιότερα, οι χορδές φτιάχνονταν από έντερο, δηλαδή αποξηραμένο ζωικό νεύρο.",
+      "text_markdown": "Παλιότερα, οι χορδές φτιάχνονταν από έντερο, δηλαδή αποξηραμένο ζωικό νεύρο.",
+      "tts": {
+        "text": "Παλιότερα, οι χορδές φτιάχνονταν από έντερο, δηλαδή αποξηραμένο ζωικό νεύρο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σήμερα, οι περισσότερες χορδές είναι από νάιλον, και γύρω από τις πιο χαμηλές τυλίγεται ένα λεπτό μεταλλικό σύρμα.",
+      "text_markdown": "Σήμερα, οι περισσότερες χορδές είναι από νάιλον, και γύρω από τις πιο χαμηλές τυλίγεται ένα λεπτό μεταλλικό σύρμα.",
+      "tts": {
+        "text": "Σήμερα, οι περισσότερες χορδές είναι από νάιλον, και γύρω από τις πιο χαμηλές τυλίγεται ένα λεπτό μεταλλικό σύρμα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο μουσικός παίζει τις χορδές με μια ρίσα.",
+      "text_markdown": "Ο μουσικός παίζει τις χορδές με μια ρίσα.",
+      "tts": {
+        "text": "Ο μουσικός παίζει τις χορδές με μια ρίσα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η λέξη ρίσα σημαίνει φτερό.",
+      "text_markdown": "Η λέξη ρίσα σημαίνει φτερό.",
+      "tts": {
+        "text": "Η λέξη ρίσα σημαίνει φτερό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Τα πρώτα πλέκτρα φτιάχνονταν από φτερά αετού.",
+      "text_markdown": "Τα πρώτα πλέκτρα φτιάχνονταν από φτερά αετού.",
+      "tts": {
+        "text": "Τα πρώτα πλέκτρα φτιάχνονταν από φτερά αετού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Σήμερα φτιάχνονται από πλαστικό, κόκαλο ή καβούκι χελώνας.",
+      "text_markdown": "Σήμερα φτιάχνονται από πλαστικό, κόκαλο ή καβούκι χελώνας.",
+      "tts": {
+        "text": "Σήμερα φτιάχνονται από πλαστικό, κόκαλο ή καβούκι χελώνας.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 4 — Πού Παίζεται το Ούτι",
+      "text_markdown": "Κεφάλαιο 4 — Πού Παίζεται το Ούτι"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι παίζεται σε όλον τον αραβικό κόσμο.",
+      "text_markdown": "Το ούτι παίζεται σε όλον τον αραβικό κόσμο.",
+      "tts": {
+        "text": "Το ούτι παίζεται σε όλον τον αραβικό κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Θα το ακούσεις στην Αίγυπτο, στη Συρία, στο Ιράκ, στον Λίβανο, στον Κόλπο και στη Βόρεια Αφρική.",
+      "text_markdown": "Θα το ακούσεις στην Αίγυπτο, στη Συρία, στο Ιράκ, στον Λίβανο, στον Κόλπο και στη Βόρεια Αφρική.",
+      "tts": {
+        "text": "Θα το ακούσεις στην Αίγυπτο, στη Συρία, στο Ιράκ, στον Λίβανο, στον Κόλπο και στη Βόρεια Αφρική.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παίζεται όμως και πέρα από τον αραβικό κόσμο.",
+      "text_markdown": "Παίζεται όμως και πέρα από τον αραβικό κόσμο.",
+      "tts": {
+        "text": "Παίζεται όμως και πέρα από τον αραβικό κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι Τούρκοι έχουν το δικό τους ούτι.",
+      "text_markdown": "Οι Τούρκοι έχουν το δικό τους ούτι.",
+      "tts": {
+        "text": "Οι Τούρκοι έχουν το δικό τους ούτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι Έλληνες έχουν το δικό τους ούτι.",
+      "text_markdown": "Οι Έλληνες έχουν το δικό τους ούτι.",
+      "tts": {
+        "text": "Οι Έλληνες έχουν το δικό τους ούτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι Αρμένιοι και οι Ιρανοί παίζουν συγγενικά του όργανα.",
+      "text_markdown": "Οι Αρμένιοι και οι Ιρανοί παίζουν συγγενικά του όργανα.",
+      "tts": {
+        "text": "Οι Αρμένιοι και οι Ιρανοί παίζουν συγγενικά του όργανα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Στην Ισπανία παιζόταν για εκατοντάδες χρόνια.",
+      "text_markdown": "Στην Ισπανία παιζόταν για εκατοντάδες χρόνια.",
+      "tts": {
+        "text": "Στην Ισπανία παιζόταν για εκατοντάδες χρόνια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σήμερα υπάρχουν τρεις βασικοί τύποι ουτιού.",
+      "text_markdown": "Σήμερα υπάρχουν τρεις βασικοί τύποι ουτιού.",
+      "tts": {
+        "text": "Σήμερα υπάρχουν τρεις βασικοί τύποι ουτιού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το αραβικό ούτι είναι μεγάλο και βαθύ, με γεμάτο και αργόσυρτο ήχο.",
+      "text_markdown": "Το αραβικό ούτι είναι μεγάλο και βαθύ, με γεμάτο και αργόσυρτο ήχο.",
+      "tts": {
+        "text": "Το αραβικό ούτι είναι μεγάλο και βαθύ, με γεμάτο και αργόσυρτο ήχο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι το ούτι της Αιγύπτου και του Λεβάντε.",
+      "text_markdown": "Είναι το ούτι της Αιγύπτου και του Λεβάντε.",
+      "tts": {
+        "text": "Είναι το ούτι της Αιγύπτου και του Λεβάντε.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το τουρκικό ούτι είναι μικρότερο και πιο λαμπερό, κουρδισμένο λίγο ψηλότερα από το αραβικό ούτι.",
+      "text_markdown": "Το τουρκικό ούτι είναι μικρότερο και πιο λαμπερό, κουρδισμένο λίγο ψηλότερα από το αραβικό ούτι.",
+      "tts": {
+        "text": "Το τουρκικό ούτι είναι μικρότερο και πιο λαμπερό, κουρδισμένο λίγο ψηλότερα από το αραβικό ούτι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο περσικός ξάδελφος λέγεται μπαρμπάτ.",
+      "text_markdown": "Ο περσικός ξάδελφος λέγεται μπαρμπάτ.",
+      "tts": {
+        "text": "Ο περσικός ξάδελφος λέγεται μπαρμπάτ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι μικρό και κοφτερό στον ήχο, και χρησιμοποιεί άλλο σύνολο νοτών.",
+      "text_markdown": "Είναι μικρό και κοφτερό στον ήχο, και χρησιμοποιεί άλλο σύνολο νοτών.",
+      "tts": {
+        "text": "Είναι μικρό και κοφτερό στον ήχο, και χρησιμοποιεί άλλο σύνολο νοτών.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι είναι η καρδιά της κλασικής αραβικής μουσικής και της τουρκικής μουσικής με μακάμ.",
+      "text_markdown": "Το ούτι είναι η καρδιά της κλασικής αραβικής μουσικής και της τουρκικής μουσικής με μακάμ.",
+      "tts": {
+        "text": "Το ούτι είναι η καρδιά της κλασικής αραβικής μουσικής και της τουρκικής μουσικής με μακάμ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ακούγεται σε γάμους και σε κηδείες, σε αίθουσες συναυλιών και σε σαλόνια με φίλους.",
+      "text_markdown": "Ακούγεται σε γάμους και σε κηδείες, σε αίθουσες συναυλιών και σε σαλόνια με φίλους.",
+      "tts": {
+        "text": "Ακούγεται σε γάμους και σε κηδείες, σε αίθουσες συναυλιών και σε σαλόνια με φίλους.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όπου μαζεύονται άνθρωποι και ζητούν μουσική με ψυχή, κάποιος μπορεί να βγάλει ένα ούτι.",
+      "text_markdown": "Όπου μαζεύονται άνθρωποι και ζητούν μουσική με ψυχή, κάποιος μπορεί να βγάλει ένα ούτι.",
+      "tts": {
+        "text": "Όπου μαζεύονται άνθρωποι και ζητούν μουσική με ψυχή, κάποιος μπορεί να βγάλει ένα ούτι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 5 — Το Μακάμ",
+      "text_markdown": "Κεφάλαιο 5 — Το Μακάμ"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν παίζεις πιάνο, πατάς άσπρα και μαύρα πλήκτρα.",
+      "text_markdown": "Όταν παίζεις πιάνο, πατάς άσπρα και μαύρα πλήκτρα.",
+      "tts": {
+        "text": "Όταν παίζεις πιάνο, πατάς άσπρα και μαύρα πλήκτρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σε κάθε οκτάβα υπάρχουν δώδεκα νότες, και κάθε βήμα έχει το ίδιο μέγεθος.",
+      "text_markdown": "Σε κάθε οκτάβα υπάρχουν δώδεκα νότες, και κάθε βήμα έχει το ίδιο μέγεθος.",
+      "tts": {
+        "text": "Σε κάθε οκτάβα υπάρχουν δώδεκα νότες, και κάθε βήμα έχει το ίδιο μέγεθος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτό το λέμε ίσο συγκερασμό.",
+      "text_markdown": "Αυτό το λέμε ίσο συγκερασμό.",
+      "tts": {
+        "text": "Αυτό το λέμε ίσο συγκερασμό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι δεν λειτουργεί έτσι.",
+      "text_markdown": "Το ούτι δεν λειτουργεί έτσι.",
+      "tts": {
+        "text": "Το ούτι δεν λειτουργεί έτσι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το ούτι χρησιμοποιεί ένα πολύ παλαιότερο σύστημα, που λέγεται μακάμ.",
+      "text_markdown": "Το ούτι χρησιμοποιεί ένα πολύ παλαιότερο σύστημα, που λέγεται μακάμ.",
+      "tts": {
+        "text": "Το ούτι χρησιμοποιεί ένα πολύ παλαιότερο σύστημα, που λέγεται μακάμ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα μακάμ είναι ένας τρόπος να διαλέγεις νότες, και υπάρχουν πολλά μακαμάτ.",
+      "text_markdown": "Ένα μακάμ είναι ένας τρόπος να διαλέγεις νότες, και υπάρχουν πολλά μακαμάτ.",
+      "tts": {
+        "text": "Ένα μακάμ είναι ένας τρόπος να διαλέγεις νότες, και υπάρχουν πολλά μακαμάτ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το καθένα έχει τη δική του διάθεση.",
+      "text_markdown": "Το καθένα έχει τη δική του διάθεση.",
+      "tts": {
+        "text": "Το καθένα έχει τη δική του διάθεση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Κάποια είναι χαρούμενα, κάποια λυπητερά, και κάποια ακούγονται λίγο μυστηριώδη.",
+      "text_markdown": "Κάποια είναι χαρούμενα, κάποια λυπητερά, και κάποια ακούγονται λίγο μυστηριώδη.",
+      "tts": {
+        "text": "Κάποια είναι χαρούμενα, κάποια λυπητερά, και κάποια ακούγονται λίγο μυστηριώδη.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μεγάλο μυστικό του μακάμ είναι ότι έχει περισσότερες νότες από ένα πιάνο.",
+      "text_markdown": "Το μεγάλο μυστικό του μακάμ είναι ότι έχει περισσότερες νότες από ένα πιάνο.",
+      "tts": {
+        "text": "Το μεγάλο μυστικό του μακάμ είναι ότι έχει περισσότερες νότες από ένα πιάνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ανάμεσα στα άσπρα και τα μαύρα πλήκτρα, υπάρχουν μικρότερα βήματα που τα λέμε τεταρτοτόνια.",
+      "text_markdown": "Ανάμεσα στα άσπρα και τα μαύρα πλήκτρα, υπάρχουν μικρότερα βήματα που τα λέμε τεταρτοτόνια.",
+      "tts": {
+        "text": "Ανάμεσα στα άσπρα και τα μαύρα πλήκτρα, υπάρχουν μικρότερα βήματα που τα λέμε τεταρτοτόνια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα τεταρτοτόνιο είναι το μισό από ένα ημιτόνιο.",
+      "text_markdown": "Ένα τεταρτοτόνιο είναι το μισό από ένα ημιτόνιο.",
+      "tts": {
+        "text": "Ένα τεταρτοτόνιο είναι το μισό από ένα ημιτόνιο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι μια μικρή νότα που ζει ανάμεσα στις νότες που ξέρεις.",
+      "text_markdown": "Είναι μια μικρή νότα που ζει ανάμεσα στις νότες που ξέρεις.",
+      "tts": {
+        "text": "Είναι μια μικρή νότα που ζει ανάμεσα στις νότες που ξέρεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Στο πιάνο δεν μπορείς να την παίξεις.",
+      "text_markdown": "Στο πιάνο δεν μπορείς να την παίξεις.",
+      "tts": {
+        "text": "Στο πιάνο δεν μπορείς να την παίξεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στο ούτι γλιστράς το δάχτυλο για να τη βρεις.",
+      "text_markdown": "Στο ούτι γλιστράς το δάχτυλο για να τη βρεις.",
+      "tts": {
+        "text": "Στο ούτι γλιστράς το δάχτυλο για να τη βρεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα μακάμ χτίζεται από μικρές ομάδες νοτών.",
+      "text_markdown": "Ένα μακάμ χτίζεται από μικρές ομάδες νοτών.",
+      "tts": {
+        "text": "Ένα μακάμ χτίζεται από μικρές ομάδες νοτών.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε μικρή ομάδα λέγεται τζινς.",
+      "text_markdown": "Κάθε μικρή ομάδα λέγεται τζινς.",
+      "tts": {
+        "text": "Κάθε μικρή ομάδα λέγεται τζινς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Τα περισσότερα τζινς έχουν τέσσερις νότες.",
+      "text_markdown": "Τα περισσότερα τζινς έχουν τέσσερις νότες.",
+      "tts": {
+        "text": "Τα περισσότερα τζινς έχουν τέσσερις νότες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μπορείς να σκεφτείς το τζινς σαν ένα μικρό τουβλάκι Λέγκο από μουσική. Τα βάζεις το ένα πάνω στο άλλο και φτιάχνεις ένα μακάμ.",
+      "text_markdown": "Μπορείς να σκεφτείς το τζινς σαν ένα μικρό τουβλάκι Λέγκο από μουσική. Τα βάζεις το ένα πάνω στο άλλο και φτιάχνεις ένα μακάμ.",
+      "tts": {
+        "text": "Μπορείς να σκεφτείς το τζινς σαν ένα μικρό τουβλάκι Λέγκο από μουσική. Τα βάζεις το ένα πάνω στο άλλο και φτιάχνεις ένα μακάμ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το μακάμ είναι μελωδικό, όχι αρμονικό.",
+      "text_markdown": "Το μακάμ είναι μελωδικό, όχι αρμονικό.",
+      "tts": {
+        "text": "Το μακάμ είναι μελωδικό, όχι αρμονικό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Αυτό σημαίνει πως η μουσική προχωρά μία νότα τη φορά, αντί να βάζει τις νότες σε συγχορδίες όπως η κιθάρα.",
+      "text_markdown": "Αυτό σημαίνει πως η μουσική προχωρά μία νότα τη φορά, αντί να βάζει τις νότες σε συγχορδίες όπως η κιθάρα.",
+      "tts": {
+        "text": "Αυτό σημαίνει πως η μουσική προχωρά μία νότα τη φορά, αντί να βάζει τις νότες σε συγχορδίες όπως η κιθάρα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν ένα ούτι παίζει ένα αργό σόλο που στρίβει και γυρίζει, ο μουσικός κινείται μέσα σε ένα μακάμ.",
+      "text_markdown": "Όταν ένα ούτι παίζει ένα αργό σόλο που στρίβει και γυρίζει, ο μουσικός κινείται μέσα σε ένα μακάμ.",
+      "tts": {
+        "text": "Όταν ένα ούτι παίζει ένα αργό σόλο που στρίβει και γυρίζει, ο μουσικός κινείται μέσα σε ένα μακάμ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Παίρνει νότες από ένα τουβλάκι και μετά γλιστρά στο επόμενο.",
+      "text_markdown": "Παίρνει νότες από ένα τουβλάκι και μετά γλιστρά στο επόμενο.",
+      "tts": {
+        "text": "Παίρνει νότες από ένα τουβλάκι και μετά γλιστρά στο επόμενο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτό το σόλο έχει όνομα.",
+      "text_markdown": "Αυτό το σόλο έχει όνομα.",
+      "tts": {
+        "text": "Αυτό το σόλο έχει όνομα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το λέμε τακσίμ.",
+      "text_markdown": "Το λέμε τακσίμ.",
+      "tts": {
+        "text": "Το λέμε τακσίμ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένα καλό τακσίμ μπορεί να σε κάνει να γελάσεις, και μπορεί να σε κάνει να κλάψεις.",
+      "text_markdown": "Ένα καλό τακσίμ μπορεί να σε κάνει να γελάσεις, και μπορεί να σε κάνει να κλάψεις.",
+      "tts": {
+        "text": "Ένα καλό τακσίμ μπορεί να σε κάνει να γελάσεις, και μπορεί να σε κάνει να κλάψεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Εκεί ακούς το ούτι στα πιο όμορφά του.",
+      "text_markdown": "Εκεί ακούς το ούτι στα πιο όμορφά του.",
+      "tts": {
+        "text": "Εκεί ακούς το ούτι στα πιο όμορφά του.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 6 — Οι Μεγάλοι Δάσκαλοι",
+      "text_markdown": "Κεφάλαιο 6 — Οι Μεγάλοι Δάσκαλοι"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι παίζεται εδώ και πάνω από χίλια χρόνια.",
+      "text_markdown": "Το ούτι παίζεται εδώ και πάνω από χίλια χρόνια.",
+      "tts": {
+        "text": "Το ούτι παίζεται εδώ και πάνω από χίλια χρόνια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μέσα σε όλον αυτόν τον χρόνο, λίγοι άνθρωποι το άλλαξαν για πάντα.",
+      "text_markdown": "Μέσα σε όλον αυτόν τον χρόνο, λίγοι άνθρωποι το άλλαξαν για πάντα.",
+      "tts": {
+        "text": "Μέσα σε όλον αυτόν τον χρόνο, λίγοι άνθρωποι το άλλαξαν για πάντα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο πρώτος ήταν περισσότερο στοχαστής παρά μουσικός, και λεγόταν αλ Φαράμπι.",
+      "text_markdown": "Ο πρώτος ήταν περισσότερο στοχαστής παρά μουσικός, και λεγόταν αλ Φαράμπι.",
+      "tts": {
+        "text": "Ο πρώτος ήταν περισσότερο στοχαστής παρά μουσικός, και λεγόταν αλ Φαράμπι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έζησε περίπου από το 872 ως το 950 και εργάστηκε στη μεγάλη πόλη της Βαγδάτης.",
+      "text_markdown": "Έζησε περίπου από το 872 ως το 950 και εργάστηκε στη μεγάλη πόλη της Βαγδάτης.",
+      "tts": {
+        "text": "Έζησε περίπου από το οκτακόσια εβδομήντα δύο ως το εννιακόσια πενήντα και εργάστηκε στη μεγάλη πόλη της Βαγδάτης.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο αλ Φαράμπι έγραψε ένα τεράστιο βιβλίο για τη μουσική.",
+      "text_markdown": "Ο αλ Φαράμπι έγραψε ένα τεράστιο βιβλίο για τη μουσική.",
+      "tts": {
+        "text": "Ο αλ Φαράμπι έγραψε ένα τεράστιο βιβλίο για τη μουσική.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Εξήγησε πώς δονούνται οι χορδές.",
+      "text_markdown": "Εξήγησε πώς δονούνται οι χορδές.",
+      "tts": {
+        "text": "Εξήγησε πώς δονούνται οι χορδές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Εξήγησε γιατί μερικές νότες ακούγονται γλυκά μαζί.",
+      "text_markdown": "Εξήγησε γιατί μερικές νότες ακούγονται γλυκά μαζί.",
+      "tts": {
+        "text": "Εξήγησε γιατί μερικές νότες ακούγονται γλυκά μαζί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Εξήγησε γιατί η μουσική μπορεί να αλλάξει το πώς νιώθει ένας άνθρωπος.",
+      "text_markdown": "Εξήγησε γιατί η μουσική μπορεί να αλλάξει το πώς νιώθει ένας άνθρωπος.",
+      "tts": {
+        "text": "Εξήγησε γιατί η μουσική μπορεί να αλλάξει το πώς νιώθει ένας άνθρωπος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το βιβλίο του διαβαζόταν στα αραβικά και στα λατινικά για αιώνες.",
+      "text_markdown": "Το βιβλίο του διαβαζόταν στα αραβικά και στα λατινικά για αιώνες.",
+      "tts": {
+        "text": "Το βιβλίο του διαβαζόταν στα αραβικά και στα λατινικά για αιώνες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η δεύτερη μεγάλη μορφή του ουτιού ήταν ένας τραγουδιστής που λεγόταν Ζιριάμπ και γεννήθηκε στο Ιράκ γύρω στο 789.",
+      "text_markdown": "Η δεύτερη μεγάλη μορφή του ουτιού ήταν ένας τραγουδιστής που λεγόταν Ζιριάμπ και γεννήθηκε στο Ιράκ γύρω στο 789.",
+      "tts": {
+        "text": "Η δεύτερη μεγάλη μορφή του ουτιού ήταν ένας τραγουδιστής που λεγόταν Ζιριάμπ και γεννήθηκε στο Ιράκ γύρω στο επτακόσια ογδόντα εννιά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Όταν ήταν νέος, έπρεπε να φύγει βιαστικά από τη Βαγδάτη.",
+      "text_markdown": "Όταν ήταν νέος, έπρεπε να φύγει βιαστικά από τη Βαγδάτη.",
+      "tts": {
+        "text": "Όταν ήταν νέος, έπρεπε να φύγει βιαστικά από τη Βαγδάτη.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο Ζιριάμπ ταξίδεψε δυτικά σε όλη τη Βόρεια Αφρική.",
+      "text_markdown": "Ο Ζιριάμπ ταξίδεψε δυτικά σε όλη τη Βόρεια Αφρική.",
+      "tts": {
+        "text": "Ο Ζιριάμπ ταξίδεψε δυτικά σε όλη τη Βόρεια Αφρική.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έφτασε στην πόλη της Κόρδοβας, στην Ισπανία, το 822.",
+      "text_markdown": "Έφτασε στην πόλη της Κόρδοβας, στην Ισπανία, το 822.",
+      "tts": {
+        "text": "Έφτασε στην πόλη της Κόρδοβας, στην Ισπανία, το οκτακόσια είκοσι δύο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο βασιλιάς της Κόρδοβας αγάπησε τη μουσική του και του έδωσε σπίτι, μισθό και χρόνο για να διδάσκει.",
+      "text_markdown": "Ο βασιλιάς της Κόρδοβας αγάπησε τη μουσική του και του έδωσε σπίτι, μισθό και χρόνο για να διδάσκει.",
+      "tts": {
+        "text": "Ο βασιλιάς της Κόρδοβας αγάπησε τη μουσική του και του έδωσε σπίτι, μισθό και χρόνο για να διδάσκει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο Ζιριάμπ άνοιξε μια σχολή μουσικής στην Ισπανία.",
+      "text_markdown": "Ο Ζιριάμπ άνοιξε μια σχολή μουσικής στην Ισπανία.",
+      "tts": {
+        "text": "Ο Ζιριάμπ άνοιξε μια σχολή μουσικής στην Ισπανία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μερικοί λένε πως ήταν το πρώτο ωδείο στον κόσμο.",
+      "text_markdown": "Μερικοί λένε πως ήταν το πρώτο ωδείο στον κόσμο.",
+      "tts": {
+        "text": "Μερικοί λένε πως ήταν το πρώτο ωδείο στον κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πρόσθεσε στο ούτι ένα πέμπτο κούρσο χορδών και άλλαξε και την κατασκευή των πλέκτρων.",
+      "text_markdown": "Πρόσθεσε στο ούτι ένα πέμπτο κούρσο χορδών και άλλαξε και την κατασκευή των πλέκτρων.",
+      "tts": {
+        "text": "Πρόσθεσε στο ούτι ένα πέμπτο κούρσο χορδών και άλλαξε και την κατασκευή των πλέκτρων.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πολύ μετά τον Ζιριάμπ, στη δική μας εποχή, ένας μουσικός από το Ιράκ ανέβασε το ούτι σε νέο επίπεδο.",
+      "text_markdown": "Πολύ μετά τον Ζιριάμπ, στη δική μας εποχή, ένας μουσικός από το Ιράκ ανέβασε το ούτι σε νέο επίπεδο.",
+      "tts": {
+        "text": "Πολύ μετά τον Ζιριάμπ, στη δική μας εποχή, ένας μουσικός από το Ιράκ ανέβασε το ούτι σε νέο επίπεδο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το όνομά του ήταν Μουνίρ Μπασίρ, και οι άνθρωποι τον έλεγαν βασιλιά του ουτιού.",
+      "text_markdown": "Το όνομά του ήταν Μουνίρ Μπασίρ, και οι άνθρωποι τον έλεγαν βασιλιά του ουτιού.",
+      "tts": {
+        "text": "Το όνομά του ήταν Μουνίρ Μπασίρ, και οι άνθρωποι τον έλεγαν βασιλιά του ουτιού.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πριν από τον Μπασίρ, το ούτι συνήθως έπαιζε μαζί με άλλα όργανα.",
+      "text_markdown": "Πριν από τον Μπασίρ, το ούτι συνήθως έπαιζε μαζί με άλλα όργανα.",
+      "tts": {
+        "text": "Πριν από τον Μπασίρ, το ούτι συνήθως έπαιζε μαζί με άλλα όργανα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο Μπασίρ το έβγαλε μόνο του στη σκηνή και έπαιξε μακρόσυρτα, ήσυχα, βαθιά σόλο.",
+      "text_markdown": "Ο Μπασίρ το έβγαλε μόνο του στη σκηνή και έπαιξε μακρόσυρτα, ήσυχα, βαθιά σόλο.",
+      "tts": {
+        "text": "Ο Μπασίρ το έβγαλε μόνο του στη σκηνή και έπαιξε μακρόσυρτα, ήσυχα, βαθιά σόλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Άνθρωποι σε όλο τον κόσμο τον άκουσαν και ερωτεύτηκαν ξανά το ούτι.",
+      "text_markdown": "Άνθρωποι σε όλο τον κόσμο τον άκουσαν και ερωτεύτηκαν ξανά το ούτι.",
+      "tts": {
+        "text": "Άνθρωποι σε όλο τον κόσμο τον άκουσαν και ερωτεύτηκαν ξανά το ούτι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπήρξαν και πολλοί άλλοι.",
+      "text_markdown": "Υπήρξαν και πολλοί άλλοι.",
+      "tts": {
+        "text": "Υπήρξαν και πολλοί άλλοι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο Φαρίντ αλ Άτρας έκανε το ούτι τη φωνή του αιγυπτιακού κινηματογράφου.",
+      "text_markdown": "Ο Φαρίντ αλ Άτρας έκανε το ούτι τη φωνή του αιγυπτιακού κινηματογράφου.",
+      "tts": {
+        "text": "Ο Φαρίντ αλ Άτρας έκανε το ούτι τη φωνή του αιγυπτιακού κινηματογράφου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο Ανουάρ Μπραχέμ από την Τυνησία παίζει ούτι με μουσικούς της τζαζ από την Ευρώπη και την Αμερική.",
+      "text_markdown": "Ο Ανουάρ Μπραχέμ από την Τυνησία παίζει ούτι με μουσικούς της τζαζ από την Ευρώπη και την Αμερική.",
+      "tts": {
+        "text": "Ο Ανουάρ Μπραχέμ από την Τυνησία παίζει ούτι με μουσικούς της τζαζ από την Ευρώπη και την Αμερική.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι είναι ακόμη ζωντανό.",
+      "text_markdown": "Το ούτι είναι ακόμη ζωντανό.",
+      "tts": {
+        "text": "Το ούτι είναι ακόμη ζωντανό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε χρόνο, κάπου στον κόσμο γεννιέται ένας νέος δάσκαλος.",
+      "text_markdown": "Κάθε χρόνο, κάπου στον κόσμο γεννιέται ένας νέος δάσκαλος.",
+      "tts": {
+        "text": "Κάθε χρόνο, κάπου στον κόσμο γεννιέται ένας νέος δάσκαλος.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 7 — Το Ούτι και ο Κόσμος",
+      "text_markdown": "Κεφάλαιο 7 — Το Ούτι και ο Κόσμος"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι δεν έμεινε μόνο στον αραβικό κόσμο.",
+      "text_markdown": "Το ούτι δεν έμεινε μόνο στον αραβικό κόσμο.",
+      "tts": {
+        "text": "Το ούτι δεν έμεινε μόνο στον αραβικό κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Καθώς ταξίδευε, άλλαξε σχήμα, άλλαξε όνομα και άλλαξε τις μελωδίες του.",
+      "text_markdown": "Καθώς ταξίδευε, άλλαξε σχήμα, άλλαξε όνομα και άλλαξε τις μελωδίες του.",
+      "tts": {
+        "text": "Καθώς ταξίδευε, άλλαξε σχήμα, άλλαξε όνομα και άλλαξε τις μελωδίες του.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν το ούτι έφτασε στη μεσαιωνική Ισπανία, οι Ευρωπαίοι μουσικοί αγάπησαν την ξύλινη σκάφη και τον βαθύ ήχο.",
+      "text_markdown": "Όταν το ούτι έφτασε στη μεσαιωνική Ισπανία, οι Ευρωπαίοι μουσικοί αγάπησαν την ξύλινη σκάφη και τον βαθύ ήχο.",
+      "tts": {
+        "text": "Όταν το ούτι έφτασε στη μεσαιωνική Ισπανία, οι Ευρωπαίοι μουσικοί αγάπησαν την ξύλινη σκάφη και τον βαθύ ήχο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Όμως ήθελαν τάστα, όπως στα μικρά όργανα που ήδη γνώριζαν.",
+      "text_markdown": "Όμως ήθελαν τάστα, όπως στα μικρά όργανα που ήδη γνώριζαν.",
+      "tts": {
+        "text": "Όμως ήθελαν τάστα, όπως στα μικρά όργανα που ήδη γνώριζαν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Έτσι έβαλαν τάστα, ίσιωσαν λίγο την πλάτη και ονόμασαν το νέο όργανο λαούτο.",
+      "text_markdown": "Έτσι έβαλαν τάστα, ίσιωσαν λίγο την πλάτη και ονόμασαν το νέο όργανο λαούτο.",
+      "tts": {
+        "text": "Έτσι έβαλαν τάστα, ίσιωσαν λίγο την πλάτη και ονόμασαν το νέο όργανο λαούτο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για πεντακόσια χρόνια, το λαούτο ήταν το αγαπημένο όργανο της Ευρώπης.",
+      "text_markdown": "Για πεντακόσια χρόνια, το λαούτο ήταν το αγαπημένο όργανο της Ευρώπης.",
+      "tts": {
+        "text": "Για πεντακόσια χρόνια, το λαούτο ήταν το αγαπημένο όργανο της Ευρώπης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το έπαιζαν βασιλιάδες.",
+      "text_markdown": "Το έπαιζαν βασιλιάδες.",
+      "tts": {
+        "text": "Το έπαιζαν βασιλιάδες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το έπαιζαν ποιητές.",
+      "text_markdown": "Το έπαιζαν ποιητές.",
+      "tts": {
+        "text": "Το έπαιζαν ποιητές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι μεγαλύτεροι συνθέτες έγραψαν κομμάτια γι’ αυτό.",
+      "text_markdown": "Οι μεγαλύτεροι συνθέτες έγραψαν κομμάτια γι’ αυτό.",
+      "tts": {
+        "text": "Οι μεγαλύτεροι συνθέτες έγραψαν κομμάτια γι’ αυτό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ύστερα το λαούτο άλλαξε ξανά.",
+      "text_markdown": "Ύστερα το λαούτο άλλαξε ξανά.",
+      "tts": {
+        "text": "Ύστερα το λαούτο άλλαξε ξανά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι μουσικοί έβαλαν περισσότερες χορδές, ίσιωσαν ακόμη πιο πολύ την πλάτη και του έδωσαν μικρότερο, ελαφρύτερο σώμα.",
+      "text_markdown": "Οι μουσικοί έβαλαν περισσότερες χορδές, ίσιωσαν ακόμη πιο πολύ την πλάτη και του έδωσαν μικρότερο, ελαφρύτερο σώμα.",
+      "tts": {
+        "text": "Οι μουσικοί έβαλαν περισσότερες χορδές, ίσιωσαν ακόμη πιο πολύ την πλάτη και του έδωσαν μικρότερο, ελαφρύτερο σώμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Γύρω στο 1800, στην Ισπανία, αυτό το νέο όργανο είχε ένα όνομα που όλοι ξέρουμε.",
+      "text_markdown": "Γύρω στο 1800, στην Ισπανία, αυτό το νέο όργανο είχε ένα όνομα που όλοι ξέρουμε.",
+      "tts": {
+        "text": "Γύρω στο χίλια οκτακόσια, στην Ισπανία, αυτό το νέο όργανο είχε ένα όνομα που όλοι ξέρουμε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ήταν η κιθάρα.",
+      "text_markdown": "Ήταν η κιθάρα.",
+      "tts": {
+        "text": "Ήταν η κιθάρα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άρα το ούτι, το λαούτο και η κιθάρα ανήκουν όλα στην ίδια οικογένεια.",
+      "text_markdown": "Άρα το ούτι, το λαούτο και η κιθάρα ανήκουν όλα στην ίδια οικογένεια.",
+      "tts": {
+        "text": "Άρα το ούτι, το λαούτο και η κιθάρα ανήκουν όλα στην ίδια οικογένεια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι ξαδέρφια και έχουν τον ίδιο παππού.",
+      "text_markdown": "Είναι ξαδέρφια και έχουν τον ίδιο παππού.",
+      "tts": {
+        "text": "Είναι ξαδέρφια και έχουν τον ίδιο παππού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτός ο παππούς είναι το ούτι.",
+      "text_markdown": "Αυτός ο παππούς είναι το ούτι.",
+      "tts": {
+        "text": "Αυτός ο παππούς είναι το ούτι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σήμερα, το ούτι και η κιθάρα παίζουν μαζί.",
+      "text_markdown": "Σήμερα, το ούτι και η κιθάρα παίζουν μαζί.",
+      "tts": {
+        "text": "Σήμερα, το ούτι και η κιθάρα παίζουν μαζί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο Ανουάρ Μπραχέμ παίζει ούτι με κιθαρίστες της τζαζ.",
+      "text_markdown": "Ο Ανουάρ Μπραχέμ παίζει ούτι με κιθαρίστες της τζαζ.",
+      "tts": {
+        "text": "Ο Ανουάρ Μπραχέμ παίζει ούτι με κιθαρίστες της τζαζ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο Μουνίρ Μπασίρ έπαιξε με ορχήστρες.",
+      "text_markdown": "Ο Μουνίρ Μπασίρ έπαιξε με ορχήστρες.",
+      "tts": {
+        "text": "Ο Μουνίρ Μπασίρ έπαιξε με ορχήστρες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Νέοι μουσικοί στη Βηρυτό, στην Κωνσταντινούπολη, στο Παρίσι και στη Νέα Υόρκη ανακατεύουν το ούτι με ροκ, με χιπ χοπ και με μουσική για ταινίες.",
+      "text_markdown": "Νέοι μουσικοί στη Βηρυτό, στην Κωνσταντινούπολη, στο Παρίσι και στη Νέα Υόρκη ανακατεύουν το ούτι με ροκ, με χιπ χοπ και με μουσική για ταινίες.",
+      "tts": {
+        "text": "Νέοι μουσικοί στη Βηρυτό, στην Κωνσταντινούπολη, στο Παρίσι και στη Νέα Υόρκη ανακατεύουν το ούτι με ροκ, με χιπ χοπ και με μουσική για ταινίες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το ούτι είναι κάτι παραπάνω από όργανο.",
+      "text_markdown": "Το ούτι είναι κάτι παραπάνω από όργανο.",
+      "tts": {
+        "text": "Το ούτι είναι κάτι παραπάνω από όργανο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι μια γέφυρα.",
+      "text_markdown": "Είναι μια γέφυρα.",
+      "tts": {
+        "text": "Είναι μια γέφυρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μεταφέρει μια ιστορία από τη Μεσοποταμία, μέσα από την Περσία, μέσα από τον αραβικό κόσμο, ως την Ισπανία, ως την Ευρώπη και έπειτα σε κάθε χώρα του κόσμου.",
+      "text_markdown": "Μεταφέρει μια ιστορία από τη Μεσοποταμία, μέσα από την Περσία, μέσα από τον αραβικό κόσμο, ως την Ισπανία, ως την Ευρώπη και έπειτα σε κάθε χώρα του κόσμου.",
+      "tts": {
+        "text": "Μεταφέρει μια ιστορία από τη Μεσοποταμία, μέσα από την Περσία, μέσα από τον αραβικό κόσμο, ως την Ισπανία, ως την Ευρώπη και έπειτα σε κάθε χώρα του κόσμου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθε φορά που ακούς κιθάρα, κάπου βαθιά από κάτω, μπορείς να ακούσεις την απαλή, βαθιά φωνή του ουτιού.",
+      "text_markdown": "Κάθε φορά που ακούς κιθάρα, κάπου βαθιά από κάτω, μπορείς να ακούσεις την απαλή, βαθιά φωνή του ουτιού.",
+      "tts": {
+        "text": "Κάθε φορά που ακούς κιθάρα, κάπου βαθιά από κάτω, μπορείς να ακούσεις την απαλή, βαθιά φωνή του ουτιού.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Σχετικά με Αυτό το Βιβλίο",
+      "text_markdown": "Σχετικά με Αυτό το Βιβλίο"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτός είναι ο πρώτος τόμος της σειράς Μουσικά Όργανα του Κόσμου.",
+      "text_markdown": "Αυτός είναι ο πρώτος τόμος της σειράς Μουσικά Όργανα του Κόσμου.",
+      "tts": {
+        "text": "Αυτός είναι ο πρώτος τόμος της σειράς Μουσικά Όργανα του Κόσμου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε βιβλίο αυτής της σειράς λέει την ιστορία ενός μόνο οργάνου.",
+      "text_markdown": "Κάθε βιβλίο αυτής της σειράς λέει την ιστορία ενός μόνο οργάνου.",
+      "tts": {
+        "text": "Κάθε βιβλίο αυτής της σειράς λέει την ιστορία ενός μόνο οργάνου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Κάθε βιβλίο είναι σύντομο, και κάθε βιβλίο είναι αληθινό.",
+      "text_markdown": "Κάθε βιβλίο είναι σύντομο, και κάθε βιβλίο είναι αληθινό.",
+      "tts": {
+        "text": "Κάθε βιβλίο είναι σύντομο, και κάθε βιβλίο είναι αληθινό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το επόμενο βιβλίο είναι για το σιτάρ, το μεγάλο λαούτο της Ινδίας με τον μακρύ λαιμό, τις πολλές χορδές και τη βαθιά, ηχηρή φωνή.",
+      "text_markdown": "Το επόμενο βιβλίο είναι για το σιτάρ, το μεγάλο λαούτο της Ινδίας με τον μακρύ λαιμό, τις πολλές χορδές και τη βαθιά, ηχηρή φωνή.",
+      "tts": {
+        "text": "Το επόμενο βιβλίο είναι για το σιτάρ, το μεγάλο λαούτο της Ινδίας με τον μακρύ λαιμό, τις πολλές χορδές και τη βαθιά, ηχηρή φωνή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μετά το σιτάρ, θα ταξιδέψουμε στη Δυτική Αφρική για την κόρα, και ύστερα στην Ιαπωνία για το σακουχάτσι.",
+      "text_markdown": "Μετά το σιτάρ, θα ταξιδέψουμε στη Δυτική Αφρική για την κόρα, και ύστερα στην Ιαπωνία για το σακουχάτσι.",
+      "tts": {
+        "text": "Μετά το σιτάρ, θα ταξιδέψουμε στη Δυτική Αφρική για την κόρα, και ύστερα στην Ιαπωνία για το σακουχάτσι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σε ευχαριστώ που άκουσες.",
+      "text_markdown": "Σε ευχαριστώ που άκουσες.",
+      "tts": {
+        "text": "Σε ευχαριστώ που άκουσες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Βρες ένα ούτι, στο διαδίκτυο ή στην πόλη σου, και άφησέ το να παίξει για σένα.",
+      "text_markdown": "Βρες ένα ούτι, στο διαδίκτυο ή στην πόλη σου, και άφησέ το να παίξει για σένα.",
+      "tts": {
+        "text": "Βρες ένα ούτι, στο διαδίκτυο ή στην πόλη σου, και άφησέ το να παίξει για σένα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

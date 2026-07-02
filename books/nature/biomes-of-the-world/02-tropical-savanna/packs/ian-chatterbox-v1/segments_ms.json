@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Savana Tropika",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Savana Tropika",
+      "text_markdown": "Savana Tropika"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tempat Savana Tumbuh",
+      "text_markdown": "Tempat Savana Tumbuh"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selamat datang ke savana tropika.",
+      "text_markdown": "Selamat datang ke savana tropika.",
+      "tts": {
+        "text": "Selamat datang ke savana tropika.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ini adalah salah satu biom besar di dunia.",
+      "text_markdown": "Ini adalah salah satu biom besar di dunia.",
+      "tts": {
+        "text": "Ini adalah salah satu biom besar di dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biom ialah sebahagian daripada Bumi yang mempunyai cuaca, tumbuhan, dan haiwannya sendiri.",
+      "text_markdown": "Biom ialah sebahagian daripada Bumi yang mempunyai cuaca, tumbuhan, dan haiwannya sendiri.",
+      "tts": {
+        "text": "Biom ialah sebahagian daripada Bumi yang mempunyai cuaca, tumbuhan, dan haiwannya sendiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savana ialah padang rumput yang luas dengan pokok-pokok yang bertaburan.",
+      "text_markdown": "Savana ialah padang rumput yang luas dengan pokok-pokok yang bertaburan.",
+      "tts": {
+        "text": "Savana ialah padang rumput yang luas dengan pokok pokok yang bertaburan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuacanya panas sepanjang tahun.",
+      "text_markdown": "Cuacanya panas sepanjang tahun.",
+      "tts": {
+        "text": "Cuacanya panas sepanjang tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia mempunyai satu musim kering yang panjang dan satu musim basah yang lebih pendek.",
+      "text_markdown": "Ia mempunyai satu musim kering yang panjang dan satu musim basah yang lebih pendek.",
+      "tts": {
+        "text": "Ia mempunyai satu musim kering yang panjang dan satu musim basah yang lebih pendek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savana terbesar di dunia terletak di Afrika.",
+      "text_markdown": "Savana terbesar di dunia terletak di Afrika.",
+      "tts": {
+        "text": "Savana terbesar di dunia terletak di Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia terbentang merentasi sebahagian besar tengah benua itu.",
+      "text_markdown": "Ia terbentang merentasi sebahagian besar tengah benua itu.",
+      "tts": {
+        "text": "Ia terbentang merentasi sebahagian besar tengah benua itu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat juga savana yang besar di Amerika Selatan, yang dipanggil cerrado.",
+      "text_markdown": "Terdapat juga savana yang besar di Amerika Selatan, yang dipanggil cerrado.",
+      "tts": {
+        "text": "Terdapat juga savana yang besar di Amerika Selatan, yang dipanggil cerrado.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat savana tropika di seluruh bahagian utara Australia.",
+      "text_markdown": "Terdapat savana tropika di seluruh bahagian utara Australia.",
+      "tts": {
+        "text": "Terdapat savana tropika di seluruh bahagian utara Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat savana yang lebih kecil di India dan di Asia Tenggara.",
+      "text_markdown": "Terdapat savana yang lebih kecil di India dan di Asia Tenggara.",
+      "tts": {
+        "text": "Terdapat savana yang lebih kecil di India dan di Asia Tenggara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Setiap satu daripadanya membesar dengan sendirinya, jauh daripada yang lain.",
+      "text_markdown": "Setiap satu daripadanya membesar dengan sendirinya, jauh daripada yang lain.",
+      "tts": {
+        "text": "Setiap satu daripadanya membesar dengan sendirinya, jauh daripada yang lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oleh itu, tumbuhan dan haiwan berbeza di setiap bahagian dunia.",
+      "text_markdown": "Oleh itu, tumbuhan dan haiwan berbeza di setiap bahagian dunia.",
+      "tts": {
+        "text": "Oleh itu, tumbuhan dan haiwan berbeza di setiap bahagian dunia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan yang meragut di Afrika tidak sama dengan yang ada di Amerika Selatan atau Australia.",
+      "text_markdown": "Haiwan yang meragut di Afrika tidak sama dengan yang ada di Amerika Selatan atau Australia.",
+      "tts": {
+        "text": "Haiwan yang meragut di Afrika tidak sama dengan yang ada di Amerika Selatan atau Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi semuanya adalah sebahagian daripada biom yang sama.",
+      "text_markdown": "Tetapi semuanya adalah sebahagian daripada biom yang sama.",
+      "tts": {
+        "text": "Tetapi semuanya adalah sebahagian daripada biom yang sama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila kamu berdiri di savana, kamu boleh melihat sehingga jauh.",
+      "text_markdown": "Apabila kamu berdiri di savana, kamu boleh melihat sehingga jauh.",
+      "tts": {
+        "text": "Apabila kamu berdiri di savana, kamu boleh melihat sehingga jauh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput mencecah ke paras pinggang kamu atau lebih tinggi.",
+      "text_markdown": "Rumput mencecah ke paras pinggang kamu atau lebih tinggi.",
+      "tts": {
+        "text": "Rumput mencecah ke paras pinggang kamu atau lebih tinggi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beberapa pokok berpucuk rata menjulang di atas rumput.",
+      "text_markdown": "Beberapa pokok berpucuk rata menjulang di atas rumput.",
+      "tts": {
+        "text": "Beberapa pokok berpucuk rata menjulang di atas rumput.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langitnya sangat luas.",
+      "text_markdown": "Langitnya sangat luas.",
+      "tts": {
+        "text": "Langitnya sangat luas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cahayanya keemasan.",
+      "text_markdown": "Cahayanya keemasan.",
+      "tts": {
+        "text": "Cahayanya keemasan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kamu mendengar angin bergerak melalui rumput.",
+      "text_markdown": "Kamu mendengar angin bergerak melalui rumput.",
+      "tts": {
+        "text": "Kamu mendengar angin bergerak melalui rumput.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kamu mendengar burung berkicau dari kejauhan.",
+      "text_markdown": "Kamu mendengar burung berkicau dari kejauhan.",
+      "tts": {
+        "text": "Kamu mendengar burung berkicau dari kejauhan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Itulah savana.",
+      "text_markdown": "Itulah savana.",
+      "tts": {
+        "text": "Itulah savana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Tempat Savana Tumbuh",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebuah tanah lapang yang luas penuh dengan rumput, pokok-pokok yang bertaburan, dan langit yang luas.",
+      "text_markdown": "Sebuah tanah lapang yang luas penuh dengan rumput, pokok-pokok yang bertaburan, dan langit yang luas.",
+      "tts": {
+        "text": "Sebuah tanah lapang yang luas penuh dengan rumput, pokok pokok yang bertaburan, dan langit yang luas.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Cuaca",
+      "text_markdown": "Cuaca"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuaca di savana tropika adalah ringkas.",
+      "text_markdown": "Cuaca di savana tropika adalah ringkas.",
+      "tts": {
+        "text": "Cuaca di savana tropika adalah ringkas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cuacanya panas sepanjang tahun.",
+      "text_markdown": "Cuacanya panas sepanjang tahun.",
+      "tts": {
+        "text": "Cuacanya panas sepanjang tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi tidak seperti hutan hujan, savana mempunyai dua musim yang sangat berbeza.",
+      "text_markdown": "Tetapi tidak seperti hutan hujan, savana mempunyai dua musim yang sangat berbeza.",
+      "tts": {
+        "text": "Tetapi tidak seperti hutan hujan, savana mempunyai dua musim yang sangat berbeza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Terdapat musim kering yang panjang dan musim basah yang lebih pendek.",
+      "text_markdown": "Terdapat musim kering yang panjang dan musim basah yang lebih pendek.",
+      "tts": {
+        "text": "Terdapat musim kering yang panjang dan musim basah yang lebih pendek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim kering, langit cerah selama berbulan-bulan.",
+      "text_markdown": "Pada musim kering, langit cerah selama berbulan-bulan.",
+      "tts": {
+        "text": "Pada musim kering, langit cerah selama berbulan bulan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput bertukar warna keemasan dan rapuh.",
+      "text_markdown": "Rumput bertukar warna keemasan dan rapuh.",
+      "tts": {
+        "text": "Rumput bertukar warna keemasan dan rapuh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sungai mengecil, dan banyak kolam kecil kering sepenuhnya.",
+      "text_markdown": "Sungai mengecil, dan banyak kolam kecil kering sepenuhnya.",
+      "tts": {
+        "text": "Sungai mengecil, dan banyak kolam kecil kering sepenuhnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pokok-pokok menggugurkan daunnya untuk menjimatkan air.",
+      "text_markdown": "Pokok-pokok menggugurkan daunnya untuk menjimatkan air.",
+      "tts": {
+        "text": "Pokok pokok menggugurkan daunnya untuk menjimatkan air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musim basah bermula dengan awan tebal berkumpul di kaki langit.",
+      "text_markdown": "Musim basah bermula dengan awan tebal berkumpul di kaki langit.",
+      "tts": {
+        "text": "Musim basah bermula dengan awan tebal berkumpul di kaki langit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hujan pertama turun dalam ribut yang lebat dengan guruh dan kilat.",
+      "text_markdown": "Hujan pertama turun dalam ribut yang lebat dengan guruh dan kilat.",
+      "tts": {
+        "text": "Hujan pertama turun dalam ribut yang lebat dengan guruh dan kilat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila hujan tiba, savana berubah dalam satu malam.",
+      "text_markdown": "Apabila hujan tiba, savana berubah dalam satu malam.",
+      "tts": {
+        "text": "Apabila hujan tiba, savana berubah dalam satu malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput baru tumbuh dari tanah kering.",
+      "text_markdown": "Rumput baru tumbuh dari tanah kering.",
+      "tts": {
+        "text": "Rumput baru tumbuh dari tanah kering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pokok mengeluarkan daun hijau yang segar.",
+      "text_markdown": "Pokok mengeluarkan daun hijau yang segar.",
+      "tts": {
+        "text": "Pokok mengeluarkan daun hijau yang segar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunga mekar dalam gelombang warna.",
+      "text_markdown": "Bunga mekar dalam gelombang warna.",
+      "tts": {
+        "text": "Bunga mekar dalam gelombang warna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musim basah adalah pendek, tetapi pada masa itulah kebanyakan kehidupan berlaku.",
+      "text_markdown": "Musim basah adalah pendek, tetapi pada masa itulah kebanyakan kehidupan berlaku.",
+      "tts": {
+        "text": "Musim basah adalah pendek, tetapi pada masa itulah kebanyakan kehidupan berlaku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Musim kering adalah panjang, tetapi savana memang dibina untuknya.",
+      "text_markdown": "Musim kering adalah panjang, tetapi savana memang dibina untuknya.",
+      "tts": {
+        "text": "Musim kering adalah panjang, tetapi savana memang dibina untuknya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Cuaca",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Setiap tumbuhan dan setiap haiwan di sini tahu cara menunggu hujan.",
+      "text_markdown": "Setiap tumbuhan dan setiap haiwan di sini tahu cara menunggu hujan.",
+      "tts": {
+        "text": "Setiap tumbuhan dan setiap haiwan di sini tahu cara menunggu hujan.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tanah dan Air",
+      "text_markdown": "Tanah dan Air"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah savana kebanyakannya rata dan luas.",
+      "text_markdown": "Tanah savana kebanyakannya rata dan luas.",
+      "tts": {
+        "text": "Tanah savana kebanyakannya rata dan luas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sesetengah tempat, bukit-bukit rendah yang berombak timbul daripada rumput.",
+      "text_markdown": "Di sesetengah tempat, bukit-bukit rendah yang berombak timbul daripada rumput.",
+      "tts": {
+        "text": "Di sesetengah tempat, bukit bukit rendah yang berombak timbul daripada rumput.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesekali sebuah singkapan batu besar berdiri sendirian di atas dataran.",
+      "text_markdown": "Sesekali sebuah singkapan batu besar berdiri sendirian di atas dataran.",
+      "tts": {
+        "text": "Sesekali sebuah singkapan batu besar berdiri sendirian di atas dataran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tanah di bawah rumput berbeza di bahagian savana yang berlainan.",
+      "text_markdown": "Tanah di bawah rumput berbeza di bahagian savana yang berlainan.",
+      "tts": {
+        "text": "Tanah di bawah rumput berbeza di bahagian savana yang berlainan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sesetengah tempat, ia gelap dan subur.",
+      "text_markdown": "Di sesetengah tempat, ia gelap dan subur.",
+      "tts": {
+        "text": "Di sesetengah tempat, ia gelap dan subur.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di tempat lain pula ia berpasir atau nipis.",
+      "text_markdown": "Di tempat lain pula ia berpasir atau nipis.",
+      "tts": {
+        "text": "Di tempat lain pula ia berpasir atau nipis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput-rumput telah belajar tumbuh di semua jenis tanah itu.",
+      "text_markdown": "Rumput-rumput telah belajar tumbuh di semua jenis tanah itu.",
+      "tts": {
+        "text": "Rumput rumput telah belajar tumbuh di semua jenis tanah itu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila hujan tiba, air berkumpul di tempat rendah untuk membentuk kolam dan tasik cetek.",
+      "text_markdown": "Apabila hujan tiba, air berkumpul di tempat rendah untuk membentuk kolam dan tasik cetek.",
+      "tts": {
+        "text": "Apabila hujan tiba, air berkumpul di tempat rendah untuk membentuk kolam dan tasik cetek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebahagian daripadanya bertahan selama berbulan-bulan, dan sebahagian lagi kering dalam beberapa minggu.",
+      "text_markdown": "Sebahagian daripadanya bertahan selama berbulan-bulan, dan sebahagian lagi kering dalam beberapa minggu.",
+      "tts": {
+        "text": "Sebahagian daripadanya bertahan selama berbulan bulan, dan sebahagian lagi kering dalam beberapa minggu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sungai berliku-liku merentasi savana dalam lengkungan yang panjang dan perlahan.",
+      "text_markdown": "Sungai berliku-liku merentasi savana dalam lengkungan yang panjang dan perlahan.",
+      "tts": {
+        "text": "Sungai berliku liku merentasi savana dalam lengkungan yang panjang dan perlahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim basah, sungai-sungai itu luas dan penuh.",
+      "text_markdown": "Pada musim basah, sungai-sungai itu luas dan penuh.",
+      "tts": {
+        "text": "Pada musim basah, sungai sungai itu luas dan penuh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim kering, ia mengecil menjadi titisan halus di atas pasir, atau menjadi rentetan kolam yang tenang.",
+      "text_markdown": "Pada musim kering, ia mengecil menjadi titisan halus di atas pasir, atau menjadi rentetan kolam yang tenang.",
+      "tts": {
+        "text": "Pada musim kering, ia mengecil menjadi titisan halus di atas pasir, atau menjadi rentetan kolam yang tenang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak haiwan savana berkumpul di sungai dan kolam ini untuk minum.",
+      "text_markdown": "Banyak haiwan savana berkumpul di sungai dan kolam ini untuk minum.",
+      "tts": {
+        "text": "Banyak haiwan savana berkumpul di sungai dan kolam ini untuk minum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebuah kolam pada musim kering adalah tempat yang sibuk.",
+      "text_markdown": "Sebuah kolam pada musim kering adalah tempat yang sibuk.",
+      "tts": {
+        "text": "Sebuah kolam pada musim kering adalah tempat yang sibuk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan yang biasanya tidak bertemu pun berdiri berdekatan untuk minum.",
+      "text_markdown": "Haiwan yang biasanya tidak bertemu pun berdiri berdekatan untuk minum.",
+      "tts": {
+        "text": "Haiwan yang biasanya tidak bertemu pun berdiri berdekatan untuk minum.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sungai-sungai itu juga membawa jalur pokok yang lebih tinggi bersamanya.",
+      "text_markdown": "Sungai-sungai itu juga membawa jalur pokok yang lebih tinggi bersamanya.",
+      "tts": {
+        "text": "Sungai sungai itu juga membawa jalur pokok yang lebih tinggi bersamanya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sepanjang tebing, pokok tumbuh lebat dan hijau walaupun pada musim kering.",
+      "text_markdown": "Di sepanjang tebing, pokok tumbuh lebat dan hijau walaupun pada musim kering.",
+      "tts": {
+        "text": "Di sepanjang tebing, pokok tumbuh lebat dan hijau walaupun pada musim kering.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pita-pita hutan ini merentasi savana terbuka seperti jalan-jalan hijau.",
+      "text_markdown": "Pita-pita hutan ini merentasi savana terbuka seperti jalan-jalan hijau.",
+      "tts": {
+        "text": "Pita pita hutan ini merentasi savana terbuka seperti jalan jalan hijau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Tanah dan Air",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia menjadi rumah kepada haiwan yang memerlukan teduhan dan air sepanjang tahun.",
+      "text_markdown": "Ia menjadi rumah kepada haiwan yang memerlukan teduhan dan air sepanjang tahun.",
+      "tts": {
+        "text": "Ia menjadi rumah kepada haiwan yang memerlukan teduhan dan air sepanjang tahun.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Tumbuhan",
+      "text_markdown": "Tumbuhan"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inti pati savana ialah rumput.",
+      "text_markdown": "Inti pati savana ialah rumput.",
+      "tts": {
+        "text": "Inti pati savana ialah rumput.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput tinggi menutupi tanah ke segenap arah.",
+      "text_markdown": "Rumput tinggi menutupi tanah ke segenap arah.",
+      "tts": {
+        "text": "Rumput tinggi menutupi tanah ke segenap arah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah rumput tumbuh setinggi seorang manusia.",
+      "text_markdown": "Sesetengah rumput tumbuh setinggi seorang manusia.",
+      "tts": {
+        "text": "Sesetengah rumput tumbuh setinggi seorang manusia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Akarnya menjalar dalam ke tanah untuk mencari air.",
+      "text_markdown": "Akarnya menjalar dalam ke tanah untuk mencari air.",
+      "tts": {
+        "text": "Akarnya menjalar dalam ke tanah untuk mencari air.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila api merebak menerusi savana, hujung rumput-rumput itu terbakar.",
+      "text_markdown": "Apabila api merebak menerusi savana, hujung rumput-rumput itu terbakar.",
+      "tts": {
+        "text": "Apabila api merebak menerusi savana, hujung rumput rumput itu terbakar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi akarnya tetap hidup di bawah tanah.",
+      "text_markdown": "Tetapi akarnya tetap hidup di bawah tanah.",
+      "tts": {
+        "text": "Tetapi akarnya tetap hidup di bawah tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selepas hujan berikutnya, rumput tumbuh semula, segar dan hijau.",
+      "text_markdown": "Selepas hujan berikutnya, rumput tumbuh semula, segar dan hijau.",
+      "tts": {
+        "text": "Selepas hujan berikutnya, rumput tumbuh semula, segar dan hijau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Api ialah sebahagian semula jadi daripada biom ini.",
+      "text_markdown": "Api ialah sebahagian semula jadi daripada biom ini.",
+      "tts": {
+        "text": "Api ialah sebahagian semula jadi daripada biom ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak tumbuhan di sini memerlukan api untuk kekal sihat.",
+      "text_markdown": "Banyak tumbuhan di sini memerlukan api untuk kekal sihat.",
+      "tts": {
+        "text": "Banyak tumbuhan di sini memerlukan api untuk kekal sihat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pokok juga tumbuh di seluruh savana, tetapi ia bertaburan.",
+      "text_markdown": "Pokok juga tumbuh di seluruh savana, tetapi ia bertaburan.",
+      "tts": {
+        "text": "Pokok juga tumbuh di seluruh savana, tetapi ia bertaburan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pokok-pokok itu berdiri jauh antara satu sama lain, dengan rumput di antaranya.",
+      "text_markdown": "Pokok-pokok itu berdiri jauh antara satu sama lain, dengan rumput di antaranya.",
+      "tts": {
+        "text": "Pokok pokok itu berdiri jauh antara satu sama lain, dengan rumput di antaranya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kebanyakan pokok savana adalah pendek, dengan pucuk yang lebar dan rata.",
+      "text_markdown": "Kebanyakan pokok savana adalah pendek, dengan pucuk yang lebar dan rata.",
+      "tts": {
+        "text": "Kebanyakan pokok savana adalah pendek, dengan pucuk yang lebar dan rata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pucuk yang rata itu adalah payung daun yang lebar yang menangkap setiap titik cahaya.",
+      "text_markdown": "Pucuk yang rata itu adalah payung daun yang lebar yang menangkap setiap titik cahaya.",
+      "tts": {
+        "text": "Pucuk yang rata itu adalah payung daun yang lebar yang menangkap setiap titik cahaya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak pokok savana mempunyai duri untuk menghalang haiwan besar memakannya.",
+      "text_markdown": "Banyak pokok savana mempunyai duri untuk menghalang haiwan besar memakannya.",
+      "tts": {
+        "text": "Banyak pokok savana mempunyai duri untuk menghalang haiwan besar memakannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baobab yang terkenal ialah pokok savana gergasi dengan batang yang tebal dan kuat.",
+      "text_markdown": "Baobab yang terkenal ialah pokok savana gergasi dengan batang yang tebal dan kuat.",
+      "tts": {
+        "text": "Baobab yang terkenal ialah pokok savana gergasi dengan batang yang tebal dan kuat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia boleh menyimpan air di dalam batangnya untuk musim kering yang panjang.",
+      "text_markdown": "Ia boleh menyimpan air di dalam batangnya untuk musim kering yang panjang.",
+      "tts": {
+        "text": "Ia boleh menyimpan air di dalam batangnya untuk musim kering yang panjang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah pokok baobab hidup lebih daripada seribu tahun.",
+      "text_markdown": "Sesetengah pokok baobab hidup lebih daripada seribu tahun.",
+      "tts": {
+        "text": "Sesetengah pokok baobab hidup lebih daripada seribu tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sepanjang sungai, pokok yang lebih tinggi tumbuh dalam jalur hijau yang nipis.",
+      "text_markdown": "Di sepanjang sungai, pokok yang lebih tinggi tumbuh dalam jalur hijau yang nipis.",
+      "tts": {
+        "text": "Di sepanjang sungai, pokok yang lebih tinggi tumbuh dalam jalur hijau yang nipis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di dataran terbuka, rumput dan beberapa pokok yang bertaburan sahaja yang kelihatan untuk berbatu-batu jauhnya.",
+      "text_markdown": "Di dataran terbuka, rumput dan beberapa pokok yang bertaburan sahaja yang kelihatan untuk berbatu-batu jauhnya.",
+      "tts": {
+        "text": "Di dataran terbuka, rumput dan beberapa pokok yang bertaburan sahaja yang kelihatan untuk berbatu batu jauhnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim basah, bunga-bunga kecil mekar di antara rumput.",
+      "text_markdown": "Pada musim basah, bunga-bunga kecil mekar di antara rumput.",
+      "tts": {
+        "text": "Pada musim basah, bunga bunga kecil mekar di antara rumput.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bunga itu mekar dengan cepat dan hanya bertahan beberapa minggu.",
+      "text_markdown": "Bunga itu mekar dengan cepat dan hanya bertahan beberapa minggu.",
+      "tts": {
+        "text": "Bunga itu mekar dengan cepat dan hanya bertahan beberapa minggu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Tumbuhan",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savana ialah sebuah mesin yang tenang, dibuat daripada rumput, pokok yang bertaburan, matahari, dan akar yang sabar.",
+      "text_markdown": "Savana ialah sebuah mesin yang tenang, dibuat daripada rumput, pokok yang bertaburan, matahari, dan akar yang sabar.",
+      "tts": {
+        "text": "Savana ialah sebuah mesin yang tenang, dibuat daripada rumput, pokok yang bertaburan, matahari, dan akar yang sabar.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Haiwan",
+      "text_markdown": "Haiwan"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savana tropika terkenal di seluruh dunia kerana haiwannya.",
+      "text_markdown": "Savana tropika terkenal di seluruh dunia kerana haiwannya.",
+      "tts": {
+        "text": "Savana tropika terkenal di seluruh dunia kerana haiwannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput memberi makan kawanan besar haiwan yang meragut.",
+      "text_markdown": "Rumput memberi makan kawanan besar haiwan yang meragut.",
+      "tts": {
+        "text": "Rumput memberi makan kawanan besar haiwan yang meragut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Afrika, kawanan besar kuda belang, antelop, dan kerbau bergerak merentasi dataran.",
+      "text_markdown": "Di Afrika, kawanan besar kuda belang, antelop, dan kerbau bergerak merentasi dataran.",
+      "tts": {
+        "text": "Di Afrika, kawanan besar kuda belang, antelop, dan kerbau bergerak merentasi dataran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia mengikut hujan dari satu bahagian savana ke bahagian yang lain.",
+      "text_markdown": "Ia mengikut hujan dari satu bahagian savana ke bahagian yang lain.",
+      "tts": {
+        "text": "Ia mengikut hujan dari satu bahagian savana ke bahagian yang lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan darat terbesar di Bumi, iaitu gajah, hidup di savana Afrika.",
+      "text_markdown": "Haiwan darat terbesar di Bumi, iaitu gajah, hidup di savana Afrika.",
+      "tts": {
+        "text": "Haiwan darat terbesar di Bumi, iaitu gajah, hidup di savana Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebuah keluarga gajah berjalan perlahan merentasi rumput, diketuai oleh seekor ibu tua.",
+      "text_markdown": "Sebuah keluarga gajah berjalan perlahan merentasi rumput, diketuai oleh seekor ibu tua.",
+      "tts": {
+        "text": "Sebuah keluarga gajah berjalan perlahan merentasi rumput, diketuai oleh seekor ibu tua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zirafah berjalan di sebelahnya, menjangkau dengan lehernya yang panjang untuk memakan daun pokok.",
+      "text_markdown": "Zirafah berjalan di sebelahnya, menjangkau dengan lehernya yang panjang untuk memakan daun pokok.",
+      "tts": {
+        "text": "Zirafah berjalan di sebelahnya, menjangkau dengan lehernya yang panjang untuk memakan daun pokok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di tempat ada banyak haiwan yang meragut, ada juga pemburu.",
+      "text_markdown": "Di tempat ada banyak haiwan yang meragut, ada juga pemburu.",
+      "tts": {
+        "text": "Di tempat ada banyak haiwan yang meragut, ada juga pemburu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Singa ialah pemburu hebat di savana Afrika.",
+      "text_markdown": "Singa ialah pemburu hebat di savana Afrika.",
+      "tts": {
+        "text": "Singa ialah pemburu hebat di savana Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Singa hidup bersama dalam kumpulan keluarga yang dipanggil prides.",
+      "text_markdown": "Singa hidup bersama dalam kumpulan keluarga yang dipanggil prides.",
+      "tts": {
+        "text": "Singa hidup bersama dalam kumpulan keluarga yang dipanggil prides.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Citah ialah haiwan terpantas di daratan.",
+      "text_markdown": "Citah ialah haiwan terpantas di daratan.",
+      "tts": {
+        "text": "Citah ialah haiwan terpantas di daratan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia berlari dalam pecutan pendek untuk menangkap antelop yang meragut di dataran.",
+      "text_markdown": "Ia berlari dalam pecutan pendek untuk menangkap antelop yang meragut di dataran.",
+      "tts": {
+        "text": "Ia berlari dalam pecutan pendek untuk menangkap antelop yang meragut di dataran.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Harimau bintang ialah pemburu yang senyap yang memanjat pokok dan menarik mangsanya naik ke atas dahan.",
+      "text_markdown": "Harimau bintang ialah pemburu yang senyap yang memanjat pokok dan menarik mangsanya naik ke atas dahan.",
+      "tts": {
+        "text": "Harimau bintang ialah pemburu yang senyap yang memanjat pokok dan menarik mangsanya naik ke atas dahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dubuk memburu dalam kumpulan dan membersihkan sisa yang ditinggalkan oleh pemburu yang lebih besar.",
+      "text_markdown": "Dubuk memburu dalam kumpulan dan membersihkan sisa yang ditinggalkan oleh pemburu yang lebih besar.",
+      "tts": {
+        "text": "Dubuk memburu dalam kumpulan dan membersihkan sisa yang ditinggalkan oleh pemburu yang lebih besar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan kecil juga ada di merata-rata tempat.",
+      "text_markdown": "Haiwan kecil juga ada di merata-rata tempat.",
+      "tts": {
+        "text": "Haiwan kecil juga ada di merata rata tempat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Baboon bergerak dalam kumpulan yang bising merentasi rumput dan melalui pokok.",
+      "text_markdown": "Baboon bergerak dalam kumpulan yang bising merentasi rumput dan melalui pokok.",
+      "tts": {
+        "text": "Baboon bergerak dalam kumpulan yang bising merentasi rumput dan melalui pokok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burung besar yang dipanggil burung unta berlari merentasi dataran terbuka dengan kaki yang panjang.",
+      "text_markdown": "Burung besar yang dipanggil burung unta berlari merentasi dataran terbuka dengan kaki yang panjang.",
+      "tts": {
+        "text": "Burung besar yang dipanggil burung unta berlari merentasi dataran terbuka dengan kaki yang panjang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Burung hering berputar tinggi di atas, memerhati haiwan yang telah mati.",
+      "text_markdown": "Burung hering berputar tinggi di atas, memerhati haiwan yang telah mati.",
+      "tts": {
+        "text": "Burung hering berputar tinggi di atas, memerhati haiwan yang telah mati.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim basah, katak menyanyi setiap malam di sekeliling kolam baru.",
+      "text_markdown": "Pada musim basah, katak menyanyi setiap malam di sekeliling kolam baru.",
+      "tts": {
+        "text": "Pada musim basah, katak menyanyi setiap malam di sekeliling kolam baru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Serangga memenuhi udara yang hangat, dan rama-rama melayang di antara bunga.",
+      "text_markdown": "Serangga memenuhi udara yang hangat, dan rama-rama melayang di antara bunga.",
+      "tts": {
+        "text": "Serangga memenuhi udara yang hangat, dan rama rama melayang di antara bunga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di sungai, badak air berehat di dalam air sepanjang hari, dan keluar untuk meragut rumput pada waktu malam.",
+      "text_markdown": "Di sungai, badak air berehat di dalam air sepanjang hari, dan keluar untuk meragut rumput pada waktu malam.",
+      "tts": {
+        "text": "Di sungai, badak air berehat di dalam air sepanjang hari, dan keluar untuk meragut rumput pada waktu malam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di savana Amerika Selatan, rodensia besar dan burung besar mengambil tempat haiwan Afrika.",
+      "text_markdown": "Di savana Amerika Selatan, rodensia besar dan burung besar mengambil tempat haiwan Afrika.",
+      "tts": {
+        "text": "Di savana Amerika Selatan, rodensia besar dan burung besar mengambil tempat haiwan Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di savana Australia, kanggaru melompat merentasi rumput, bukannya antelop yang berlari merentasinya.",
+      "text_markdown": "Di savana Australia, kanggaru melompat merentasi rumput, bukannya antelop yang berlari merentasinya.",
+      "tts": {
+        "text": "Di savana Australia, kanggaru melompat merentasi rumput, bukannya antelop yang berlari merentasinya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di setiap tanah ini, haiwannya kelihatan berbeza.",
+      "text_markdown": "Di setiap tanah ini, haiwannya kelihatan berbeza.",
+      "tts": {
+        "text": "Di setiap tanah ini, haiwannya kelihatan berbeza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi coraknya sama.",
+      "text_markdown": "Tetapi coraknya sama.",
+      "tts": {
+        "text": "Tetapi coraknya sama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kawanan besar haiwan yang meragut, pemburu yang senyap di dalam rumput, dan kelompok besar burung di langit.",
+      "text_markdown": "Kawanan besar haiwan yang meragut, pemburu yang senyap di dalam rumput, dan kelompok besar burung di langit.",
+      "tts": {
+        "text": "Kawanan besar haiwan yang meragut, pemburu yang senyap di dalam rumput, dan kelompok besar burung di langit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Haiwan",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Itulah savana.",
+      "text_markdown": "Itulah savana.",
+      "tts": {
+        "text": "Itulah savana.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Manusia",
+      "text_markdown": "Manusia"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manusia telah tinggal di savana tropika sejak sangat lama dahulu.",
+      "text_markdown": "Manusia telah tinggal di savana tropika sejak sangat lama dahulu.",
+      "tts": {
+        "text": "Manusia telah tinggal di savana tropika sejak sangat lama dahulu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebenarnya, nenek moyang kita sendiri mula berdiri tegak dan berjalan merentasi savana seperti ini.",
+      "text_markdown": "Sebenarnya, nenek moyang kita sendiri mula berdiri tegak dan berjalan merentasi savana seperti ini.",
+      "tts": {
+        "text": "Sebenarnya, nenek moyang kita sendiri mula berdiri tegak dan berjalan merentasi savana seperti ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumput terbuka dan pokok yang bertaburan membentuk cara tubuh kita bergerak.",
+      "text_markdown": "Rumput terbuka dan pokok yang bertaburan membentuk cara tubuh kita bergerak.",
+      "tts": {
+        "text": "Rumput terbuka dan pokok yang bertaburan membentuk cara tubuh kita bergerak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ramai penduduk savana menjaga kawanan haiwan.",
+      "text_markdown": "Ramai penduduk savana menjaga kawanan haiwan.",
+      "tts": {
+        "text": "Ramai penduduk savana menjaga kawanan haiwan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di Afrika, keluarga menggembala lembu, kambing, dan biri-biri merentasi padang rumput.",
+      "text_markdown": "Di Afrika, keluarga menggembala lembu, kambing, dan biri-biri merentasi padang rumput.",
+      "tts": {
+        "text": "Di Afrika, keluarga menggembala lembu, kambing, dan biri biri merentasi padang rumput.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haiwan-haiwan itu memakan rumput dan menukarkannya menjadi susu dan daging untuk manusia.",
+      "text_markdown": "Haiwan-haiwan itu memakan rumput dan menukarkannya menjadi susu dan daging untuk manusia.",
+      "tts": {
+        "text": "Haiwan haiwan itu memakan rumput dan menukarkannya menjadi susu dan daging untuk manusia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Para gembala berpindah bersama haiwan mereka untuk mengikut hujan.",
+      "text_markdown": "Para gembala berpindah bersama haiwan mereka untuk mengikut hujan.",
+      "tts": {
+        "text": "Para gembala berpindah bersama haiwan mereka untuk mengikut hujan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim kering, mereka bergerak ke arah sungai.",
+      "text_markdown": "Pada musim kering, mereka bergerak ke arah sungai.",
+      "tts": {
+        "text": "Pada musim kering, mereka bergerak ke arah sungai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pada musim basah, mereka tersebar di seluruh dataran hijau.",
+      "text_markdown": "Pada musim basah, mereka tersebar di seluruh dataran hijau.",
+      "tts": {
+        "text": "Pada musim basah, mereka tersebar di seluruh dataran hijau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rumah mereka selalunya mudah dileraikan dan dibawa ke tempat baru.",
+      "text_markdown": "Rumah mereka selalunya mudah dileraikan dan dibawa ke tempat baru.",
+      "tts": {
+        "text": "Rumah mereka selalunya mudah dileraikan dan dibawa ke tempat baru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Penduduk savana yang lain menanam makanan di ladang kecil.",
+      "text_markdown": "Penduduk savana yang lain menanam makanan di ladang kecil.",
+      "tts": {
+        "text": "Penduduk savana yang lain menanam makanan di ladang kecil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di tempat yang tanahnya subur, mereka menanam bijirin dan kacang.",
+      "text_markdown": "Di tempat yang tanahnya subur, mereka menanam bijirin dan kacang.",
+      "tts": {
+        "text": "Di tempat yang tanahnya subur, mereka menanam bijirin dan kacang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka menggunakan api dengan berhati-hati untuk membersihkan ladang baru dan menjaga rumput supaya segar untuk haiwan mereka.",
+      "text_markdown": "Mereka menggunakan api dengan berhati-hati untuk membersihkan ladang baru dan menjaga rumput supaya segar untuk haiwan mereka.",
+      "tts": {
+        "text": "Mereka menggunakan api dengan berhati hati untuk membersihkan ladang baru dan menjaga rumput supaya segar untuk haiwan mereka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Penduduk savana mengenali tanah mereka dengan sangat terperinci.",
+      "text_markdown": "Penduduk savana mengenali tanah mereka dengan sangat terperinci.",
+      "tts": {
+        "text": "Penduduk savana mengenali tanah mereka dengan sangat terperinci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka tahu tumbuhan mana yang selamat dimakan dan mana yang baik untuk ubat.",
+      "text_markdown": "Mereka tahu tumbuhan mana yang selamat dimakan dan mana yang baik untuk ubat.",
+      "tts": {
+        "text": "Mereka tahu tumbuhan mana yang selamat dimakan dan mana yang baik untuk ubat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka tahu jejak setiap haiwan di atas debu.",
+      "text_markdown": "Mereka tahu jejak setiap haiwan di atas debu.",
+      "tts": {
+        "text": "Mereka tahu jejak setiap haiwan di atas debu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka tahu maksud setiap jenis awan di langit.",
+      "text_markdown": "Mereka tahu maksud setiap jenis awan di langit.",
+      "tts": {
+        "text": "Mereka tahu maksud setiap jenis awan di langit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pengetahuan ini diwarisi daripada ibu bapa kepada anak-anak, tahun demi tahun.",
+      "text_markdown": "Pengetahuan ini diwarisi daripada ibu bapa kepada anak-anak, tahun demi tahun.",
+      "tts": {
+        "text": "Pengetahuan ini diwarisi daripada ibu bapa kepada anak anak, tahun demi tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Manusia",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di setiap savana, cara hidup ini mempunyai bahasanya sendiri, lagunya sendiri, dan ceritanya sendiri.",
+      "text_markdown": "Di setiap savana, cara hidup ini mempunyai bahasanya sendiri, lagunya sendiri, dan ceritanya sendiri.",
+      "tts": {
+        "text": "Di setiap savana, cara hidup ini mempunyai bahasanya sendiri, lagunya sendiri, dan ceritanya sendiri.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Savana Hari Ini",
+      "text_markdown": "Savana Hari Ini"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savana tropika ialah salah satu tanah liar yang hebat di Bumi.",
+      "text_markdown": "Savana tropika ialah salah satu tanah liar yang hebat di Bumi.",
+      "tts": {
+        "text": "Savana tropika ialah salah satu tanah liar yang hebat di Bumi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia memberi makan kawanan haiwan yang sangat besar.",
+      "text_markdown": "Ia memberi makan kawanan haiwan yang sangat besar.",
+      "tts": {
+        "text": "Ia memberi makan kawanan haiwan yang sangat besar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia menyokong para gembala dan petani yang telah tinggal di sini selama ribuan tahun.",
+      "text_markdown": "Ia menyokong para gembala dan petani yang telah tinggal di sini selama ribuan tahun.",
+      "tts": {
+        "text": "Ia menyokong para gembala dan petani yang telah tinggal di sini selama ribuan tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Padang rumput juga menyimpan banyak air dan makanan dalam akarnya yang dalam.",
+      "text_markdown": "Padang rumput juga menyimpan banyak air dan makanan dalam akarnya yang dalam.",
+      "tts": {
+        "text": "Padang rumput juga menyimpan banyak air dan makanan dalam akarnya yang dalam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tetapi savana juga sedang dalam kesusahan.",
+      "text_markdown": "Tetapi savana juga sedang dalam kesusahan.",
+      "tts": {
+        "text": "Tetapi savana juga sedang dalam kesusahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Di banyak tempat, manusia telah membajak rumput untuk menanam tanaman, atau memagarinya untuk lembu.",
+      "text_markdown": "Di banyak tempat, manusia telah membajak rumput untuk menanam tanaman, atau memagarinya untuk lembu.",
+      "tts": {
+        "text": "Di banyak tempat, manusia telah membajak rumput untuk menanam tanaman, atau memagarinya untuk lembu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Apabila rumput dipecahkan, kawanan haiwan liar kehilangan laluan terbukanya.",
+      "text_markdown": "Apabila rumput dipecahkan, kawanan haiwan liar kehilangan laluan terbukanya.",
+      "tts": {
+        "text": "Apabila rumput dipecahkan, kawanan haiwan liar kehilangan laluan terbukanya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jalan dan pagar memotong laluan yang telah diikuti oleh gajah dan antelop sejak berzaman-zaman.",
+      "text_markdown": "Jalan dan pagar memotong laluan yang telah diikuti oleh gajah dan antelop sejak berzaman-zaman.",
+      "tts": {
+        "text": "Jalan dan pagar memotong laluan yang telah diikuti oleh gajah dan antelop sejak berzaman zaman.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesetengah haiwan savana, seperti badak dan citah, telah menjadi sangat jarang.",
+      "text_markdown": "Sesetengah haiwan savana, seperti badak dan citah, telah menjadi sangat jarang.",
+      "tts": {
+        "text": "Sesetengah haiwan savana, seperti badak dan citah, telah menjadi sangat jarang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Banyak kumpulan di seluruh dunia sedang berusaha untuk melindungi apa yang masih tinggal.",
+      "text_markdown": "Banyak kumpulan di seluruh dunia sedang berusaha untuk melindungi apa yang masih tinggal.",
+      "tts": {
+        "text": "Banyak kumpulan di seluruh dunia sedang berusaha untuk melindungi apa yang masih tinggal.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mengasingkan taman besar di mana haiwan liar masih boleh bergerak dengan bebas.",
+      "text_markdown": "Mereka mengasingkan taman besar di mana haiwan liar masih boleh bergerak dengan bebas.",
+      "tts": {
+        "text": "Mereka mengasingkan taman besar di mana haiwan liar masih boleh bergerak dengan bebas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka bekerjasama dengan penduduk yang tinggal berhampiran taman itu untuk berkongsi tanah.",
+      "text_markdown": "Mereka bekerjasama dengan penduduk yang tinggal berhampiran taman itu untuk berkongsi tanah.",
+      "tts": {
+        "text": "Mereka bekerjasama dengan penduduk yang tinggal berhampiran taman itu untuk berkongsi tanah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mereka mengkaji rumput, pokok, dan kawanan haiwan supaya kita memahaminya dengan lebih baik.",
+      "text_markdown": "Mereka mengkaji rumput, pokok, dan kawanan haiwan supaya kita memahaminya dengan lebih baik.",
+      "tts": {
+        "text": "Mereka mengkaji rumput, pokok, dan kawanan haiwan supaya kita memahaminya dengan lebih baik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savana yang sihat boleh menampung lebih banyak hidupan daripada hampir mana-mana biom darat yang lain.",
+      "text_markdown": "Savana yang sihat boleh menampung lebih banyak hidupan daripada hampir mana-mana biom darat yang lain.",
+      "tts": {
+        "text": "Savana yang sihat boleh menampung lebih banyak hidupan daripada hampir mana mana biom darat yang lain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Savana Hari Ini",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ia berbaloi untuk dijaga.",
+      "text_markdown": "Ia berbaloi untuk dijaga.",
+      "tts": {
+        "text": "Ia berbaloi untuk dijaga.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Penutup",
+      "text_markdown": "Penutup"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Itulah savana tropika.",
+      "text_markdown": "Itulah savana tropika.",
+      "tts": {
+        "text": "Itulah savana tropika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sebuah tanah yang luas dan hangat penuh dengan rumput, pokok yang bertaburan, dan kawanan besar haiwan.",
+      "text_markdown": "Sebuah tanah yang luas dan hangat penuh dengan rumput, pokok yang bertaburan, dan kawanan besar haiwan.",
+      "tts": {
+        "text": "Sebuah tanah yang luas dan hangat penuh dengan rumput, pokok yang bertaburan, dan kawanan besar haiwan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jika kamu pernah berdiri di salah satu daripadanya, diamlah seketika.",
+      "text_markdown": "Jika kamu pernah berdiri di salah satu daripadanya, diamlah seketika.",
+      "tts": {
+        "text": "Jika kamu pernah berdiri di salah satu daripadanya, diamlah seketika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dengarlah angin di dalam rumput dan burung dari kejauhan.",
+      "text_markdown": "Dengarlah angin di dalam rumput dan burung dari kejauhan.",
+      "tts": {
+        "text": "Dengarlah angin di dalam rumput dan burung dari kejauhan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pandanglah ke kaki langit yang jauh.",
+      "text_markdown": "Pandanglah ke kaki langit yang jauh.",
+      "tts": {
+        "text": "Pandanglah ke kaki langit yang jauh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Penutup",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kamu akan merasai denyutan jantung biom itu di sekeliling kamu.",
+      "text_markdown": "Kamu akan merasai denyutan jantung biom itu di sekeliling kamu.",
+      "tts": {
+        "text": "Kamu akan merasai denyutan jantung biom itu di sekeliling kamu.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

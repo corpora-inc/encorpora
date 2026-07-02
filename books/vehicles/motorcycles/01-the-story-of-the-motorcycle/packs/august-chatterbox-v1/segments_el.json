@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "el",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Μια σημείωση για τον αναγνώστη",
+      "text_markdown": "Μια σημείωση για τον αναγνώστη"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή είναι η ιστορία της μοτοσικλέτας.",
+      "text_markdown": "Αυτή είναι η ιστορία της μοτοσικλέτας.",
+      "tts": {
+        "text": "Αυτή είναι η ιστορία της μοτοσικλέτας.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι μια αληθινή ιστορία.",
+      "text_markdown": "Είναι μια αληθινή ιστορία.",
+      "tts": {
+        "text": "Είναι μια αληθινή ιστορία.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παλιά, κανείς δεν είχε μοτοσικλέτα.",
+      "text_markdown": "Παλιά, κανείς δεν είχε μοτοσικλέτα.",
+      "tts": {
+        "text": "Παλιά, κανείς δεν είχε μοτοσικλέτα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τώρα, υπάρχουν εκατομμύρια.",
+      "text_markdown": "Τώρα, υπάρχουν εκατομμύρια.",
+      "tts": {
+        "text": "Τώρα, υπάρχουν εκατομμύρια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι θορυβώδεις, γρήγορες και γυαλιστερές.",
+      "text_markdown": "Είναι θορυβώδεις, γρήγορες και γυαλιστερές.",
+      "tts": {
+        "text": "Είναι θορυβώδεις, γρήγορες και γυαλιστερές.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Θα ξεκινήσουμε από την αρχή.",
+      "text_markdown": "Θα ξεκινήσουμε από την αρχή.",
+      "tts": {
+        "text": "Θα ξεκινήσουμε από την αρχή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Θα γνωρίσουμε τον πρώτο κατασκευαστή, τους πρώτους αναβάτες και τους πρώτους αγώνες.",
+      "text_markdown": "Θα γνωρίσουμε τον πρώτο κατασκευαστή, τους πρώτους αναβάτες και τους πρώτους αγώνες.",
+      "tts": {
+        "text": "Θα γνωρίσουμε τον πρώτο κατασκευαστή, τους πρώτους αναβάτες και τους πρώτους αγώνες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Έπειτα, θα δούμε τον κόσμο σήμερα.",
+      "text_markdown": "Έπειτα, θα δούμε τον κόσμο σήμερα.",
+      "tts": {
+        "text": "Έπειτα, θα δούμε τον κόσμο σήμερα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Μια σημείωση για τον αναγνώστη",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στο τέλος, θα ξέρεις πώς αυτό το μικρό όχημα άλλαξε τον δρόμο για πάντα.",
+      "text_markdown": "Στο τέλος, θα ξέρεις πώς αυτό το μικρό όχημα άλλαξε τον δρόμο για πάντα.",
+      "tts": {
+        "text": "Στο τέλος, θα ξέρεις πώς αυτό το μικρό όχημα άλλαξε τον δρόμο για πάντα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "text_markdown": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια μοτοσικλέτα είναι ένα ποδήλατο με κινητήρα.",
+      "text_markdown": "Μια μοτοσικλέτα είναι ένα ποδήλατο με κινητήρα.",
+      "tts": {
+        "text": "Μια μοτοσικλέτα είναι ένα ποδήλατο με κινητήρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο κινητήρας κινεί τους τροχούς.",
+      "text_markdown": "Ο κινητήρας κινεί τους τροχούς.",
+      "tts": {
+        "text": "Ο κινητήρας κινεί τους τροχούς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο αναβάτης δεν κάνει πετάλι.",
+      "text_markdown": "Ο αναβάτης δεν κάνει πετάλι.",
+      "tts": {
+        "text": "Ο αναβάτης δεν κάνει πετάλι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Παλιά, δεν υπήρχαν μοτοσικλέτες.",
+      "text_markdown": "Παλιά, δεν υπήρχαν μοτοσικλέτες.",
+      "tts": {
+        "text": "Παλιά, δεν υπήρχαν μοτοσικλέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι άνθρωποι καβαλούσαν άλογα.",
+      "text_markdown": "Οι άνθρωποι καβαλούσαν άλογα.",
+      "tts": {
+        "text": "Οι άνθρωποι καβαλούσαν άλογα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι άνθρωποι έκαναν ποδήλατο.",
+      "text_markdown": "Οι άνθρωποι έκαναν ποδήλατο.",
+      "tts": {
+        "text": "Οι άνθρωποι έκαναν ποδήλατο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ένα ποδήλατο έχει δύο τροχούς και δεν έχει κινητήρα.",
+      "text_markdown": "Ένα ποδήλατο έχει δύο τροχούς και δεν έχει κινητήρα.",
+      "tts": {
+        "text": "Ένα ποδήλατο έχει δύο τροχούς και δεν έχει κινητήρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Πρέπει να σπρώχνεις τα πετάλια με τα πόδια σου.",
+      "text_markdown": "Πρέπει να σπρώχνεις τα πετάλια με τα πόδια σου.",
+      "tts": {
+        "text": "Πρέπει να σπρώχνεις τα πετάλια με τα πόδια σου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το 1885, ένας άντρας στη Γερμανία είχε μια μεγάλη ιδέα.",
+      "text_markdown": "Το 1885, ένας άντρας στη Γερμανία είχε μια μεγάλη ιδέα.",
+      "tts": {
+        "text": "Το χίλια οκτακόσια ογδόντα πέντε, ένας άντρας στη Γερμανία είχε μια μεγάλη ιδέα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τον έλεγαν Gottlieb Daimler.",
+      "text_markdown": "Τον έλεγαν Gottlieb Daimler.",
+      "tts": {
+        "text": "Τον έλεγαν Γκότλιμπ Ντάιμλερ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πήρε έναν μικρό βενζινοκινητήρα και τον έβαλε πάνω σε ένα ξύλινο ποδήλατο.",
+      "text_markdown": "Πήρε έναν μικρό βενζινοκινητήρα και τον έβαλε πάνω σε ένα ξύλινο ποδήλατο.",
+      "tts": {
+        "text": "Πήρε έναν μικρό βενζινοκινητήρα και τον έβαλε πάνω σε ένα ξύλινο ποδήλατο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ονόμασε τη μοτοσικλέτα του Reitwagen.",
+      "text_markdown": "Ονόμασε τη μοτοσικλέτα του Reitwagen.",
+      "tts": {
+        "text": "Ονόμασε τη μοτοσικλέτα του Ράιτ Βάγκεν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η λέξη σημαίνει «όχημα για ιππασία» στα γερμανικά.",
+      "text_markdown": "Η λέξη σημαίνει «όχημα για ιππασία» στα γερμανικά.",
+      "tts": {
+        "text": "Η λέξη σημαίνει «όχημα για ιππασία» στα γερμανικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ήταν η πρώτη μοτοσικλέτα στον κόσμο.",
+      "text_markdown": "Ήταν η πρώτη μοτοσικλέτα στον κόσμο.",
+      "tts": {
+        "text": "Ήταν η πρώτη μοτοσικλέτα στον κόσμο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η Reitwagen έκανε πολύ θόρυβο.",
+      "text_markdown": "Η Reitwagen έκανε πολύ θόρυβο.",
+      "tts": {
+        "text": "Η Ράιτ Βάγκεν έκανε πολύ θόρυβο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τρανταζόταν πολύ.",
+      "text_markdown": "Τρανταζόταν πολύ.",
+      "tts": {
+        "text": "Τρανταζόταν πολύ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είχε μόνο μία ταχύτητα.",
+      "text_markdown": "Είχε μόνο μία ταχύτητα.",
+      "tts": {
+        "text": "Είχε μόνο μία ταχύτητα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μπορούσε να πάει περίπου 7 μίλια την ώρα.",
+      "text_markdown": "Μπορούσε να πάει περίπου 7 μίλια την ώρα.",
+      "tts": {
+        "text": "Μπορούσε να πάει περίπου επτά μίλια την ώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Αυτό είναι πιο αργό από έναν άνθρωπο που κάνει ποδήλατο σήμερα.",
+      "text_markdown": "Αυτό είναι πιο αργό από έναν άνθρωπο που κάνει ποδήλατο σήμερα.",
+      "tts": {
+        "text": "Αυτό είναι πιο αργό από έναν άνθρωπο που κάνει ποδήλατο σήμερα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Όμως μπορούσε να κινηθεί χωρίς άλογο και μπορούσε να κινηθεί χωρίς πετάλια.",
+      "text_markdown": "Όμως μπορούσε να κινηθεί χωρίς άλογο και μπορούσε να κινηθεί χωρίς πετάλια.",
+      "tts": {
+        "text": "Όμως μπορούσε να κινηθεί χωρίς άλογο και μπορούσε να κινηθεί χωρίς πετάλια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Κεφάλαιο 1 — Το πρώτο δίτροχο που έκανε βρουμ",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η μοτοσικλέτα γεννήθηκε.",
+      "text_markdown": "Η μοτοσικλέτα γεννήθηκε.",
+      "tts": {
+        "text": "Η μοτοσικλέτα γεννήθηκε.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "text_markdown": "Κεφάλαιο 2 — Οι πρώτες εταιρείες"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μετά τον Daimler, κι άλλοι άνθρωποι ήθελαν να φτιάξουν μοτοσικλέτες.",
+      "text_markdown": "Μετά τον Daimler, κι άλλοι άνθρωποι ήθελαν να φτιάξουν μοτοσικλέτες.",
+      "tts": {
+        "text": "Μετά τον Ντάιμλερ, κι άλλοι άνθρωποι ήθελαν να φτιάξουν μοτοσικλέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σύντομα, μικρά εργαστήρια άνοιξαν σε όλο τον κόσμο.",
+      "text_markdown": "Σύντομα, μικρά εργαστήρια άνοιξαν σε όλο τον κόσμο.",
+      "tts": {
+        "text": "Σύντομα, μικρά εργαστήρια άνοιξαν σε όλο τον κόσμο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στην Αγγλία, ένας άντρας που λεγόταν Siegfried Bettmann ίδρυσε μια εταιρεία που λεγόταν Triumph.",
+      "text_markdown": "Στην Αγγλία, ένας άντρας που λεγόταν Siegfried Bettmann ίδρυσε μια εταιρεία που λεγόταν Triumph.",
+      "tts": {
+        "text": "Στην Αγγλία, ένας άντρας που λεγόταν Ζίγκφριντ Μπέτμαν ίδρυσε μια εταιρεία που λεγόταν Τράιουμφ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η πρώτη μοτοσικλέτα Triumph φτιάχτηκε το 1902.",
+      "text_markdown": "Η πρώτη μοτοσικλέτα Triumph φτιάχτηκε το 1902.",
+      "tts": {
+        "text": "Η πρώτη μοτοσικλέτα Τράιουμφ φτιάχτηκε το χίλια εννιακόσια δύο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στην Αμερική, δύο φίλοι που λέγονταν William Harley και Arthur Davidson έφτιαξαν την πρώτη τους μοτοσικλέτα σε ένα μικρό ξύλινο υπόστεγο.",
+      "text_markdown": "Στην Αμερική, δύο φίλοι που λέγονταν William Harley και Arthur Davidson έφτιαξαν την πρώτη τους μοτοσικλέτα σε ένα μικρό ξύλινο υπόστεγο.",
+      "tts": {
+        "text": "Στην Αμερική, δύο φίλοι που λέγονταν Γουίλιαμ Χάρλεϊ και Άρθουρ Ντέιβιντσον έφτιαξαν την πρώτη τους μοτοσικλέτα σε ένα μικρό ξύλινο υπόστεγο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το υπόστεγο ήταν στην πόλη Μιλγουόκι.",
+      "text_markdown": "Το υπόστεγο ήταν στην πόλη Μιλγουόκι.",
+      "tts": {
+        "text": "Το υπόστεγο ήταν στην πόλη Μιλγουόκι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ήταν το 1903.",
+      "text_markdown": "Ήταν το 1903.",
+      "tts": {
+        "text": "Ήταν το χίλια εννιακόσια τρία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ονόμασαν την εταιρεία Harley-Davidson.",
+      "text_markdown": "Ονόμασαν την εταιρεία Harley-Davidson.",
+      "tts": {
+        "text": "Ονόμασαν την εταιρεία Χάρλεϊ Ντέιβιντσον.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια άλλη αμερικανική εταιρεία ξεκίνησε λίγα χρόνια νωρίτερα.",
+      "text_markdown": "Μια άλλη αμερικανική εταιρεία ξεκίνησε λίγα χρόνια νωρίτερα.",
+      "tts": {
+        "text": "Μια άλλη αμερικανική εταιρεία ξεκίνησε λίγα χρόνια νωρίτερα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Δύο άντρες στο Σπρίνγκφιλντ, στη Μασαχουσέτη, έφτιαξαν την πρώτη τους μοτοσικλέτα το 1901.",
+      "text_markdown": "Δύο άντρες στο Σπρίνγκφιλντ, στη Μασαχουσέτη, έφτιαξαν την πρώτη τους μοτοσικλέτα το 1901.",
+      "tts": {
+        "text": "Δύο άντρες στο Σπρίνγκφιλντ, στη Μασαχουσέτη, έφτιαξαν την πρώτη τους μοτοσικλέτα το χίλια εννιακόσια ένα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Την ονόμασαν Indian.",
+      "text_markdown": "Την ονόμασαν Indian.",
+      "tts": {
+        "text": "Την ονόμασαν Ίντιαν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στην Ινδία, μια εταιρεία που λεγόταν Royal Enfield άρχισε επίσης να φτιάχνει μοτοσικλέτες το 1901.",
+      "text_markdown": "Στην Ινδία, μια εταιρεία που λεγόταν Royal Enfield άρχισε επίσης να φτιάχνει μοτοσικλέτες το 1901.",
+      "tts": {
+        "text": "Στην Ινδία, μια εταιρεία που λεγόταν Ρόγιαλ Ένφιλντ άρχισε επίσης να φτιάχνει μοτοσικλέτες το χίλια εννιακόσια ένα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σήμερα, η Royal Enfield είναι η παλαιότερη εταιρεία μοτοσικλετών στον κόσμο που φτιάχνει ακόμα μοτοσικλέτες.",
+      "text_markdown": "Σήμερα, η Royal Enfield είναι η παλαιότερη εταιρεία μοτοσικλετών στον κόσμο που φτιάχνει ακόμα μοτοσικλέτες.",
+      "tts": {
+        "text": "Σήμερα, η Ρόγιαλ Ένφιλντ είναι η παλαιότερη εταιρεία μοτοσικλετών στον κόσμο που φτιάχνει ακόμα μοτοσικλέτες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στη Γερμανία, η εταιρεία BMW άρχισε να φτιάχνει μοτοσικλέτες λίγο αργότερα, το 1923.",
+      "text_markdown": "Στη Γερμανία, η εταιρεία BMW άρχισε να φτιάχνει μοτοσικλέτες λίγο αργότερα, το 1923.",
+      "tts": {
+        "text": "Στη Γερμανία, η εταιρεία Μπε Εμ Ντάμπλιου άρχισε να φτιάχνει μοτοσικλέτες λίγο αργότερα, το χίλια εννιακόσια είκοσι τρία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW σημαίνει «Βαυαρικά Εργοστάσια Κινητήρων» στα γερμανικά.",
+      "text_markdown": "BMW σημαίνει «Βαυαρικά Εργοστάσια Κινητήρων» στα γερμανικά.",
+      "tts": {
+        "text": "Μπε Εμ Ντάμπλιου σημαίνει «Βαυαρικά Εργοστάσια Κινητήρων» στα γερμανικά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ως το 1910, οι μοτοσικλέτες ήταν παντού.",
+      "text_markdown": "Ως το 1910, οι μοτοσικλέτες ήταν παντού.",
+      "tts": {
+        "text": "Ως το χίλια εννιακόσια δέκα, οι μοτοσικλέτες ήταν παντού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ήταν στους δρόμους των πόλεων και στους δρόμους της εξοχής.",
+      "text_markdown": "Ήταν στους δρόμους των πόλεων και στους δρόμους της εξοχής.",
+      "tts": {
+        "text": "Ήταν στους δρόμους των πόλεων και στους δρόμους της εξοχής.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Κεφάλαιο 2 — Οι πρώτες εταιρείες",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η εποχή της μοτοσικλέτας είχε πραγματικά αρχίσει.",
+      "text_markdown": "Η εποχή της μοτοσικλέτας είχε πραγματικά αρχίσει.",
+      "tts": {
+        "text": "Η εποχή της μοτοσικλέτας είχε πραγματικά αρχίσει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "text_markdown": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι μοτοσικλέτες είναι γρήγορες.",
+      "text_markdown": "Οι μοτοσικλέτες είναι γρήγορες.",
+      "tts": {
+        "text": "Οι μοτοσικλέτες είναι γρήγορες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μπορούν να περάσουν από μικρά μονοπάτια.",
+      "text_markdown": "Μπορούν να περάσουν από μικρά μονοπάτια.",
+      "tts": {
+        "text": "Μπορούν να περάσουν από μικρά μονοπάτια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μπορούν να μεταφέρουν μηνύματα ανάμεσα στα στρατόπεδα.",
+      "text_markdown": "Μπορούν να μεταφέρουν μηνύματα ανάμεσα στα στρατόπεδα.",
+      "tts": {
+        "text": "Μπορούν να μεταφέρουν μηνύματα ανάμεσα στα στρατόπεδα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Έτσι, όταν ήρθαν οι πόλεμοι, οι στρατοί ήθελαν μοτοσικλέτες.",
+      "text_markdown": "Έτσι, όταν ήρθαν οι πόλεμοι, οι στρατοί ήθελαν μοτοσικλέτες.",
+      "tts": {
+        "text": "Έτσι, όταν ήρθαν οι πόλεμοι, οι στρατοί ήθελαν μοτοσικλέτες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο Πρώτος Παγκόσμιος Πόλεμος άρχισε το 1914.",
+      "text_markdown": "Ο Πρώτος Παγκόσμιος Πόλεμος άρχισε το 1914.",
+      "tts": {
+        "text": "Ο Πρώτος Παγκόσμιος Πόλεμος άρχισε το χίλια εννιακόσια δεκατέσσερα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι στρατιώτες χρησιμοποιούσαν μοτοσικλέτες Triumph για να μεταφέρουν διαταγές.",
+      "text_markdown": "Οι στρατιώτες χρησιμοποιούσαν μοτοσικλέτες Triumph για να μεταφέρουν διαταγές.",
+      "tts": {
+        "text": "Οι στρατιώτες χρησιμοποιούσαν μοτοσικλέτες Τράιουμφ για να μεταφέρουν διαταγές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το Triumph Μοντέλο H ήταν δυνατό και ήσυχο.",
+      "text_markdown": "Το Triumph Μοντέλο H ήταν δυνατό και ήσυχο.",
+      "tts": {
+        "text": "Το Τράιουμφ Μοντέλο Έιτς ήταν δυνατό και ήσυχο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μπορούσε να πάει εκεί όπου τα άλογα δεν μπορούσαν.",
+      "text_markdown": "Μπορούσε να πάει εκεί όπου τα άλογα δεν μπορούσαν.",
+      "tts": {
+        "text": "Μπορούσε να πάει εκεί όπου τα άλογα δεν μπορούσαν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο Δεύτερος Παγκόσμιος Πόλεμος άρχισε το 1939.",
+      "text_markdown": "Ο Δεύτερος Παγκόσμιος Πόλεμος άρχισε το 1939.",
+      "tts": {
+        "text": "Ο Δεύτερος Παγκόσμιος Πόλεμος άρχισε το χίλια εννιακόσια τριάντα εννέα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ως τότε, οι μοτοσικλέτες ήταν πιο γρήγορες και πιο δυνατές.",
+      "text_markdown": "Ως τότε, οι μοτοσικλέτες ήταν πιο γρήγορες και πιο δυνατές.",
+      "tts": {
+        "text": "Ως τότε, οι μοτοσικλέτες ήταν πιο γρήγορες και πιο δυνατές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι Αμερικανοί στρατιώτες οδηγούσαν τη Harley-Davidson WLA.",
+      "text_markdown": "Οι Αμερικανοί στρατιώτες οδηγούσαν τη Harley-Davidson WLA.",
+      "tts": {
+        "text": "Οι Αμερικανοί στρατιώτες οδηγούσαν τη Χάρλεϊ Ντέιβιντσον Ντάμπλιου Ελ Α.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι Γερμανοί στρατιώτες οδηγούσαν τη BMW R75.",
+      "text_markdown": "Οι Γερμανοί στρατιώτες οδηγούσαν τη BMW R75.",
+      "tts": {
+        "text": "Οι Γερμανοί στρατιώτες οδηγούσαν τη Μπε Εμ Ντάμπλιου Αρ εβδομήντα πέντε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Η R75 είχε ένα πλαϊνό καλάθι με έναν τρίτο τροχό και ένα κάθισμα για έναν άλλο στρατιώτη.",
+      "text_markdown": "Η R75 είχε ένα πλαϊνό καλάθι με έναν τρίτο τροχό και ένα κάθισμα για έναν άλλο στρατιώτη.",
+      "tts": {
+        "text": "Η Αρ εβδομήντα πέντε είχε ένα πλαϊνό καλάθι με έναν τρίτο τροχό και ένα κάθισμα για έναν άλλο στρατιώτη.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μετά τον πόλεμο, οι στρατιώτες γύρισαν στα σπίτια τους.",
+      "text_markdown": "Μετά τον πόλεμο, οι στρατιώτες γύρισαν στα σπίτια τους.",
+      "tts": {
+        "text": "Μετά τον πόλεμο, οι στρατιώτες γύρισαν στα σπίτια τους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έφεραν τις μοτοσικλέτες τους μαζί τους.",
+      "text_markdown": "Έφεραν τις μοτοσικλέτες τους μαζί τους.",
+      "tts": {
+        "text": "Έφεραν τις μοτοσικλέτες τους μαζί τους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πολλοί από αυτούς ήθελαν να συνεχίσουν να οδηγούν.",
+      "text_markdown": "Πολλοί από αυτούς ήθελαν να συνεχίσουν να οδηγούν.",
+      "tts": {
+        "text": "Πολλοί από αυτούς ήθελαν να συνεχίσουν να οδηγούν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μερικοί από αυτούς ξεκίνησαν τα δικά τους κλαμπ μοτοσικλετιστών.",
+      "text_markdown": "Μερικοί από αυτούς ξεκίνησαν τα δικά τους κλαμπ μοτοσικλετιστών.",
+      "tts": {
+        "text": "Μερικοί από αυτούς ξεκίνησαν τα δικά τους κλαμπ μοτοσικλετιστών.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι πόλεμοι έκαναν τη μοτοσικλέτα διάσημη.",
+      "text_markdown": "Οι πόλεμοι έκαναν τη μοτοσικλέτα διάσημη.",
+      "tts": {
+        "text": "Οι πόλεμοι έκαναν τη μοτοσικλέτα διάσημη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Εκατομμύρια άνθρωποι είχαν δει μία για πρώτη φορά.",
+      "text_markdown": "Εκατομμύρια άνθρωποι είχαν δει μία για πρώτη φορά.",
+      "tts": {
+        "text": "Εκατομμύρια άνθρωποι είχαν δει μία για πρώτη φορά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Κεφάλαιο 3 — Οι μοτοσικλέτες πάνε στον πόλεμο",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πολλοί ήθελαν μια δική τους.",
+      "text_markdown": "Πολλοί ήθελαν μια δική τους.",
+      "tts": {
+        "text": "Πολλοί ήθελαν μια δική τους.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "text_markdown": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μετά τον Δεύτερο Παγκόσμιο Πόλεμο, η Ιαπωνία ήταν φτωχή.",
+      "text_markdown": "Μετά τον Δεύτερο Παγκόσμιο Πόλεμο, η Ιαπωνία ήταν φτωχή.",
+      "tts": {
+        "text": "Μετά τον Δεύτερο Παγκόσμιο Πόλεμο, η Ιαπωνία ήταν φτωχή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τα περισσότερα αυτοκίνητα ήταν πολύ ακριβά.",
+      "text_markdown": "Τα περισσότερα αυτοκίνητα ήταν πολύ ακριβά.",
+      "tts": {
+        "text": "Τα περισσότερα αυτοκίνητα ήταν πολύ ακριβά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι άνθρωποι χρειάζονταν έναν μικρό, φθηνό τρόπο για να μετακινούνται.",
+      "text_markdown": "Οι άνθρωποι χρειάζονταν έναν μικρό, φθηνό τρόπο για να μετακινούνται.",
+      "tts": {
+        "text": "Οι άνθρωποι χρειάζονταν έναν μικρό, φθηνό τρόπο για να μετακινούνται.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ένας νεαρός Ιάπωνας είδε την ευκαιρία.",
+      "text_markdown": "Ένας νεαρός Ιάπωνας είδε την ευκαιρία.",
+      "tts": {
+        "text": "Ένας νεαρός Ιάπωνας είδε την ευκαιρία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τον έλεγαν Soichiro Honda.",
+      "text_markdown": "Τον έλεγαν Soichiro Honda.",
+      "tts": {
+        "text": "Τον έλεγαν Σοϊτσίρο Χόντα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το 1948, ίδρυσε μια μικρή εταιρεία.",
+      "text_markdown": "Το 1948, ίδρυσε μια μικρή εταιρεία.",
+      "tts": {
+        "text": "Το χίλια εννιακόσια σαράντα οκτώ, ίδρυσε μια μικρή εταιρεία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Την ονόμασε Honda.",
+      "text_markdown": "Την ονόμασε Honda.",
+      "tts": {
+        "text": "Την ονόμασε Χόντα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το 1958, η Honda έφτιαξε μια μικρή μοτοσικλέτα που λεγόταν Super Cub.",
+      "text_markdown": "Το 1958, η Honda έφτιαξε μια μικρή μοτοσικλέτα που λεγόταν Super Cub.",
+      "tts": {
+        "text": "Το χίλια εννιακόσια πενήντα οκτώ, η Χόντα έφτιαξε μια μικρή μοτοσικλέτα που λεγόταν Σούπερ Καμπ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η Super Cub ήταν εύκολη στην οδήγηση.",
+      "text_markdown": "Η Super Cub ήταν εύκολη στην οδήγηση.",
+      "tts": {
+        "text": "Η Σούπερ Καμπ ήταν εύκολη στην οδήγηση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ήταν εύκολο να τη φτιάξεις.",
+      "text_markdown": "Ήταν εύκολο να τη φτιάξεις.",
+      "tts": {
+        "text": "Ήταν εύκολο να τη φτιάξεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ήταν πολύ, πολύ φθηνή.",
+      "text_markdown": "Ήταν πολύ, πολύ φθηνή.",
+      "tts": {
+        "text": "Ήταν πολύ, πολύ φθηνή.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άνθρωποι σε όλο τον κόσμο αγόρασαν τη Super Cub.",
+      "text_markdown": "Άνθρωποι σε όλο τον κόσμο αγόρασαν τη Super Cub.",
+      "tts": {
+        "text": "Άνθρωποι σε όλο τον κόσμο αγόρασαν τη Σούπερ Καμπ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σήμερα, έχουν πουληθεί πάνω από 100 εκατομμύρια Super Cub.",
+      "text_markdown": "Σήμερα, έχουν πουληθεί πάνω από 100 εκατομμύρια Super Cub.",
+      "tts": {
+        "text": "Σήμερα, έχουν πουληθεί πάνω από εκατό εκατομμύρια Σούπερ Καμπ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι το πιο καλοπουλημένο όχημα με κινητήρα όλων των εποχών.",
+      "text_markdown": "Είναι το πιο καλοπουλημένο όχημα με κινητήρα όλων των εποχών.",
+      "tts": {
+        "text": "Είναι το πιο καλοπουλημένο όχημα με κινητήρα όλων των εποχών.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σύντομα, άλλες τρεις ιαπωνικές εταιρείες ακολούθησαν τη Honda.",
+      "text_markdown": "Σύντομα, άλλες τρεις ιαπωνικές εταιρείες ακολούθησαν τη Honda.",
+      "tts": {
+        "text": "Σύντομα, άλλες τρεις ιαπωνικές εταιρείες ακολούθησαν τη Χόντα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ήταν η Yamaha, η Suzuki και η Kawasaki.",
+      "text_markdown": "Ήταν η Yamaha, η Suzuki και η Kawasaki.",
+      "tts": {
+        "text": "Ήταν η Γιαμάχα, η Σουζούκι και η Καβασάκι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μαζί με τη Honda, τις λένε τις Μεγάλες Τέσσερις.",
+      "text_markdown": "Μαζί με τη Honda, τις λένε τις Μεγάλες Τέσσερις.",
+      "tts": {
+        "text": "Μαζί με τη Χόντα, τις λένε τις Μεγάλες Τέσσερις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι Μεγάλες Τέσσερις έφτιαχναν μοτοσικλέτες που ήταν γρήγορες, φθηνές και εύκολες στην οδήγηση.",
+      "text_markdown": "Οι Μεγάλες Τέσσερις έφτιαχναν μοτοσικλέτες που ήταν γρήγορες, φθηνές και εύκολες στην οδήγηση.",
+      "tts": {
+        "text": "Οι Μεγάλες Τέσσερις έφτιαχναν μοτοσικλέτες που ήταν γρήγορες, φθηνές και εύκολες στην οδήγηση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μέχρι τη δεκαετία του 1960, οι ιαπωνικές μοτοσικλέτες ήταν παντού.",
+      "text_markdown": "Μέχρι τη δεκαετία του 1960, οι ιαπωνικές μοτοσικλέτες ήταν παντού.",
+      "tts": {
+        "text": "Μέχρι τη δεκαετία του χίλια εννιακόσια εξήντα, οι ιαπωνικές μοτοσικλέτες ήταν παντού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Κεφάλαιο 4 — Η άνοδος της Ιαπωνίας",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ήταν οι νέοι βασιλιάδες του δρόμου.",
+      "text_markdown": "Ήταν οι νέοι βασιλιάδες του δρόμου.",
+      "tts": {
+        "text": "Ήταν οι νέοι βασιλιάδες του δρόμου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "text_markdown": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στη δεκαετία του 1960, οι αναβάτες ήθελαν να πηγαίνουν πιο γρήγορα.",
+      "text_markdown": "Στη δεκαετία του 1960, οι αναβάτες ήθελαν να πηγαίνουν πιο γρήγορα.",
+      "tts": {
+        "text": "Στη δεκαετία του χίλια εννιακόσια εξήντα, οι αναβάτες ήθελαν να πηγαίνουν πιο γρήγορα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι κατασκευαστές άρχισαν έναν αγώνα για να φτιάξουν την πιο γρήγορη μοτοσικλέτα στον κόσμο.",
+      "text_markdown": "Οι κατασκευαστές άρχισαν έναν αγώνα για να φτιάξουν την πιο γρήγορη μοτοσικλέτα στον κόσμο.",
+      "tts": {
+        "text": "Οι κατασκευαστές άρχισαν έναν αγώνα για να φτιάξουν την πιο γρήγορη μοτοσικλέτα στον κόσμο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στην Ιταλία, μια μικρή εταιρεία που λεγόταν MV Agusta έφτιαχνε όμορφες κόκκινες μοτοσικλέτες που κέρδιζαν αγώνα μετά από αγώνα.",
+      "text_markdown": "Στην Ιταλία, μια μικρή εταιρεία που λεγόταν MV Agusta έφτιαχνε όμορφες κόκκινες μοτοσικλέτες που κέρδιζαν αγώνα μετά από αγώνα.",
+      "tts": {
+        "text": "Στην Ιταλία, μια μικρή εταιρεία που λεγόταν Εμ Βι Αγκούστα έφτιαχνε όμορφες κόκκινες μοτοσικλέτες που κέρδιζαν αγώνα μετά από αγώνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Στην Αγγλία, η Triumph και η Norton έφτιαχναν κι αυτές δυνατές μοτοσικλέτες.",
+      "text_markdown": "Στην Αγγλία, η Triumph και η Norton έφτιαχναν κι αυτές δυνατές μοτοσικλέτες.",
+      "tts": {
+        "text": "Στην Αγγλία, η Τράιουμφ και η Νόρτον έφτιαχναν κι αυτές δυνατές μοτοσικλέτες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ύστερα, το 1969, η Honda έκανε κάτι εκπληκτικό.",
+      "text_markdown": "Ύστερα, το 1969, η Honda έκανε κάτι εκπληκτικό.",
+      "tts": {
+        "text": "Ύστερα, το χίλια εννιακόσια εξήντα εννέα, η Χόντα έκανε κάτι εκπληκτικό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έφτιαξε μια μοτοσικλέτα που λεγόταν CB 750.",
+      "text_markdown": "Έφτιαξε μια μοτοσικλέτα που λεγόταν CB 750.",
+      "tts": {
+        "text": "Έφτιαξε μια μοτοσικλέτα που λεγόταν Σι Μπι επτακόσια πενήντα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είχε τέσσερις κυλίνδρους και μεγάλο κινητήρα.",
+      "text_markdown": "Είχε τέσσερις κυλίνδρους και μεγάλο κινητήρα.",
+      "tts": {
+        "text": "Είχε τέσσερις κυλίνδρους και μεγάλο κινητήρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μπορούσε να πάει πάνω από 120 μίλια την ώρα.",
+      "text_markdown": "Μπορούσε να πάει πάνω από 120 μίλια την ώρα.",
+      "tts": {
+        "text": "Μπορούσε να πάει πάνω από εκατόν είκοσι μίλια την ώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ήταν η πρώτη αληθινή σούπερμπαϊκ.",
+      "text_markdown": "Ήταν η πρώτη αληθινή σούπερμπαϊκ.",
+      "tts": {
+        "text": "Ήταν η πρώτη αληθινή σούπερμπαϊκ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μετά την CB 750, κάθε εταιρεία ήθελε να φτιάξει μια σούπερμπαϊκ.",
+      "text_markdown": "Μετά την CB 750, κάθε εταιρεία ήθελε να φτιάξει μια σούπερμπαϊκ.",
+      "tts": {
+        "text": "Μετά την Σι Μπι επτακόσια πενήντα, κάθε εταιρεία ήθελε να φτιάξει μια σούπερμπαϊκ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι μοτοσικλέτες έγιναν όλο και πιο γρήγορες.",
+      "text_markdown": "Οι μοτοσικλέτες έγιναν όλο και πιο γρήγορες.",
+      "tts": {
+        "text": "Οι μοτοσικλέτες έγιναν όλο και πιο γρήγορες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Σύντομα, είχαν γυαλιστερά φέρινγκ, τα λεία πλαστικά καλύμματα που έκοβαν τον αέρα.",
+      "text_markdown": "Σύντομα, είχαν γυαλιστερά φέρινγκ, τα λεία πλαστικά καλύμματα που έκοβαν τον αέρα.",
+      "tts": {
+        "text": "Σύντομα, είχαν γυαλιστερά φέρινγκ, τα λεία πλαστικά καλύμματα που έκοβαν τον αέρα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το 1990, μια ιαπωνική μοτοσικλέτα που λεγόταν Kawasaki ZX-11 έγινε η πιο γρήγορη μοτοσικλέτα στον κόσμο.",
+      "text_markdown": "Το 1990, μια ιαπωνική μοτοσικλέτα που λεγόταν Kawasaki ZX-11 έγινε η πιο γρήγορη μοτοσικλέτα στον κόσμο.",
+      "tts": {
+        "text": "Το χίλια εννιακόσια ενενήντα, μια ιαπωνική μοτοσικλέτα που λεγόταν Καβασάκι Ζετ Εξ έντεκα έγινε η πιο γρήγορη μοτοσικλέτα στον κόσμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μπορούσε να πάει σχεδόν 175 μίλια την ώρα.",
+      "text_markdown": "Μπορούσε να πάει σχεδόν 175 μίλια την ώρα.",
+      "tts": {
+        "text": "Μπορούσε να πάει σχεδόν εκατόν εβδομήντα πέντε μίλια την ώρα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Λίγα χρόνια αργότερα, η Suzuki Hayabusa πήγε ακόμα πιο γρήγορα.",
+      "text_markdown": "Λίγα χρόνια αργότερα, η Suzuki Hayabusa πήγε ακόμα πιο γρήγορα.",
+      "tts": {
+        "text": "Λίγα χρόνια αργότερα, η Σουζούκι Χαγιαμπούσα πήγε ακόμα πιο γρήγορα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έφτασε τα 194 μίλια την ώρα.",
+      "text_markdown": "Έφτασε τα 194 μίλια την ώρα.",
+      "tts": {
+        "text": "Έφτασε τα εκατόν ενενήντα τέσσερα μίλια την ώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Κεφάλαιο 5 — Πιο γρήγορα, πιο γρήγορα, πιο γρήγορα",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτό είναι πιο γρήγορο από τα περισσότερα αυτοκίνητα στον δρόμο σήμερα.",
+      "text_markdown": "Αυτό είναι πιο γρήγορο από τα περισσότερα αυτοκίνητα στον δρόμο σήμερα.",
+      "tts": {
+        "text": "Αυτό είναι πιο γρήγορο από τα περισσότερα αυτοκίνητα στον δρόμο σήμερα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "text_markdown": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σήμερα, οι μοτοσικλέτες έχουν πολλά σχήματα.",
+      "text_markdown": "Σήμερα, οι μοτοσικλέτες έχουν πολλά σχήματα.",
+      "tts": {
+        "text": "Σήμερα, οι μοτοσικλέτες έχουν πολλά σχήματα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε είδος είναι φτιαγμένο για διαφορετική δουλειά.",
+      "text_markdown": "Κάθε είδος είναι φτιαγμένο για διαφορετική δουλειά.",
+      "tts": {
+        "text": "Κάθε είδος είναι φτιαγμένο για διαφορετική δουλειά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια σπορ μοτοσικλέτα είναι φτιαγμένη για να πηγαίνει πολύ γρήγορα.",
+      "text_markdown": "Μια σπορ μοτοσικλέτα είναι φτιαγμένη για να πηγαίνει πολύ γρήγορα.",
+      "tts": {
+        "text": "Μια σπορ μοτοσικλέτα είναι φτιαγμένη για να πηγαίνει πολύ γρήγορα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι ελαφριά και χαμηλή.",
+      "text_markdown": "Είναι ελαφριά και χαμηλή.",
+      "tts": {
+        "text": "Είναι ελαφριά και χαμηλή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο αναβάτης γέρνει μπροστά.",
+      "text_markdown": "Ο αναβάτης γέρνει μπροστά.",
+      "tts": {
+        "text": "Ο αναβάτης γέρνει μπροστά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι σπορ μοτοσικλέτες είναι φτιαγμένες για λείους δρόμους και πίστες αγώνων.",
+      "text_markdown": "Οι σπορ μοτοσικλέτες είναι φτιαγμένες για λείους δρόμους και πίστες αγώνων.",
+      "tts": {
+        "text": "Οι σπορ μοτοσικλέτες είναι φτιαγμένες για λείους δρόμους και πίστες αγώνων.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια χωμάτινη μοτοσικλέτα είναι φτιαγμένη για λάσπη και χώμα.",
+      "text_markdown": "Μια χωμάτινη μοτοσικλέτα είναι φτιαγμένη για λάσπη και χώμα.",
+      "tts": {
+        "text": "Μια χωμάτινη μοτοσικλέτα είναι φτιαγμένη για λάσπη και χώμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έχει ψηλούς τροχούς και μεγάλα λάστιχα.",
+      "text_markdown": "Έχει ψηλούς τροχούς και μεγάλα λάστιχα.",
+      "tts": {
+        "text": "Έχει ψηλούς τροχούς και μεγάλα λάστιχα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Οι χωμάτινες μοτοσικλέτες μπορούν να πηδούν πάνω από λόφους.",
+      "text_markdown": "Οι χωμάτινες μοτοσικλέτες μπορούν να πηδούν πάνω από λόφους.",
+      "tts": {
+        "text": "Οι χωμάτινες μοτοσικλέτες μπορούν να πηδούν πάνω από λόφους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Πολλοί νεαροί αναβάτες μαθαίνουν πρώτα πάνω σε χωμάτινες μοτοσικλέτες.",
+      "text_markdown": "Πολλοί νεαροί αναβάτες μαθαίνουν πρώτα πάνω σε χωμάτινες μοτοσικλέτες.",
+      "tts": {
+        "text": "Πολλοί νεαροί αναβάτες μαθαίνουν πρώτα πάνω σε χωμάτινες μοτοσικλέτες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια κρούιζερ είναι μακριά και χαμηλή.",
+      "text_markdown": "Μια κρούιζερ είναι μακριά και χαμηλή.",
+      "tts": {
+        "text": "Μια κρούιζερ είναι μακριά και χαμηλή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο αναβάτης κάθεται ίσια και οδηγεί αργά.",
+      "text_markdown": "Ο αναβάτης κάθεται ίσια και οδηγεί αργά.",
+      "tts": {
+        "text": "Ο αναβάτης κάθεται ίσια και οδηγεί αργά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η Harley-Davidson είναι διάσημη για τις μοτοσικλέτες κρούιζερ της.",
+      "text_markdown": "Η Harley-Davidson είναι διάσημη για τις μοτοσικλέτες κρούιζερ της.",
+      "tts": {
+        "text": "Η Χάρλεϊ Ντέιβιντσον είναι διάσημη για τις μοτοσικλέτες κρούιζερ της.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το ίδιο και η Indian.",
+      "text_markdown": "Το ίδιο και η Indian.",
+      "tts": {
+        "text": "Το ίδιο και η Ίντιαν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια μοτοσικλέτα περιπέτειας είναι φτιαγμένη για μεγάλα ταξίδια.",
+      "text_markdown": "Μια μοτοσικλέτα περιπέτειας είναι φτιαγμένη για μεγάλα ταξίδια.",
+      "tts": {
+        "text": "Μια μοτοσικλέτα περιπέτειας είναι φτιαγμένη για μεγάλα ταξίδια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μπορεί να πάει σε δρόμους και σε χώμα.",
+      "text_markdown": "Μπορεί να πάει σε δρόμους και σε χώμα.",
+      "tts": {
+        "text": "Μπορεί να πάει σε δρόμους και σε χώμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η BMW GS είναι μια διάσημη μοτοσικλέτα περιπέτειας.",
+      "text_markdown": "Η BMW GS είναι μια διάσημη μοτοσικλέτα περιπέτειας.",
+      "tts": {
+        "text": "Η Μπε Εμ Ντάμπλιου Τζι Ες είναι μια διάσημη μοτοσικλέτα περιπέτειας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το ίδιο και η KTM.",
+      "text_markdown": "Το ίδιο και η KTM.",
+      "tts": {
+        "text": "Το ίδιο και η Κάπα Τι Εμ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχουν επίσης τσόπερ, σκούτερ, αγωνιστικές μοτοσικλέτες και ηλεκτρικές μοτοσικλέτες.",
+      "text_markdown": "Υπάρχουν επίσης τσόπερ, σκούτερ, αγωνιστικές μοτοσικλέτες και ηλεκτρικές μοτοσικλέτες.",
+      "tts": {
+        "text": "Υπάρχουν επίσης τσόπερ, σκούτερ, αγωνιστικές μοτοσικλέτες και ηλεκτρικές μοτοσικλέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Υπάρχει μια μοτοσικλέτα για σχεδόν κάθε είδος δρόμου.",
+      "text_markdown": "Υπάρχει μια μοτοσικλέτα για σχεδόν κάθε είδος δρόμου.",
+      "tts": {
+        "text": "Υπάρχει μια μοτοσικλέτα για σχεδόν κάθε είδος δρόμου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Κεφάλαιο 6 — Πολλά είδη μοτοσικλετών",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σήμερα, μπορείς να βρεις μια μοτοσικλέτα σε κάθε χώρα του κόσμου.",
+      "text_markdown": "Σήμερα, μπορείς να βρεις μια μοτοσικλέτα σε κάθε χώρα του κόσμου.",
+      "tts": {
+        "text": "Σήμερα, μπορείς να βρεις μια μοτοσικλέτα σε κάθε χώρα του κόσμου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "text_markdown": "Κεφάλαιο 7 — Ένας νέος δρόμος"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Σήμερα, η μοτοσικλέτα έχει ένα νέο είδος κινητήρα.",
+      "text_markdown": "Σήμερα, η μοτοσικλέτα έχει ένα νέο είδος κινητήρα.",
+      "tts": {
+        "text": "Σήμερα, η μοτοσικλέτα έχει ένα νέο είδος κινητήρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι ο ηλεκτρικός κινητήρας.",
+      "text_markdown": "Είναι ο ηλεκτρικός κινητήρας.",
+      "tts": {
+        "text": "Είναι ο ηλεκτρικός κινητήρας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μια ηλεκτρική μοτοσικλέτα είναι αθόρυβη.",
+      "text_markdown": "Μια ηλεκτρική μοτοσικλέτα είναι αθόρυβη.",
+      "tts": {
+        "text": "Μια ηλεκτρική μοτοσικλέτα είναι αθόρυβη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Δεν χρειάζεται βενζίνη.",
+      "text_markdown": "Δεν χρειάζεται βενζίνη.",
+      "tts": {
+        "text": "Δεν χρειάζεται βενζίνη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Χρειάζεται μόνο να τη βάλεις στην πρίζα, όπως ένα τηλέφωνο.",
+      "text_markdown": "Χρειάζεται μόνο να τη βάλεις στην πρίζα, όπως ένα τηλέφωνο.",
+      "tts": {
+        "text": "Χρειάζεται μόνο να τη βάλεις στην πρίζα, όπως ένα τηλέφωνο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μια εταιρεία που λέγεται Zero φτιάχνει ηλεκτρικές μοτοσικλέτες στην Καλιφόρνια.",
+      "text_markdown": "Μια εταιρεία που λέγεται Zero φτιάχνει ηλεκτρικές μοτοσικλέτες στην Καλιφόρνια.",
+      "tts": {
+        "text": "Μια εταιρεία που λέγεται Ζίρο φτιάχνει ηλεκτρικές μοτοσικλέτες στην Καλιφόρνια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η Harley-Davidson φτιάχνει τώρα μια ηλεκτρική μοτοσικλέτα που λέγεται LiveWire.",
+      "text_markdown": "Η Harley-Davidson φτιάχνει τώρα μια ηλεκτρική μοτοσικλέτα που λέγεται LiveWire.",
+      "tts": {
+        "text": "Η Χάρλεϊ Ντέιβιντσον φτιάχνει τώρα μια ηλεκτρική μοτοσικλέτα που λέγεται Λάιβ Γουάιρ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μια ιταλική εταιρεία που λέγεται Energica φτιάχνει ηλεκτρικές αγωνιστικές μοτοσικλέτες.",
+      "text_markdown": "Μια ιταλική εταιρεία που λέγεται Energica φτιάχνει ηλεκτρικές αγωνιστικές μοτοσικλέτες.",
+      "tts": {
+        "text": "Μια ιταλική εταιρεία που λέγεται Ενεργκίκα φτιάχνει ηλεκτρικές αγωνιστικές μοτοσικλέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Είναι πολύ γρήγορες.",
+      "text_markdown": "Είναι πολύ γρήγορες.",
+      "tts": {
+        "text": "Είναι πολύ γρήγορες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η πρώτη μοτοσικλέτα, η Reitwagen, μπορούσε να πάει 7 μίλια την ώρα.",
+      "text_markdown": "Η πρώτη μοτοσικλέτα, η Reitwagen, μπορούσε να πάει 7 μίλια την ώρα.",
+      "tts": {
+        "text": "Η πρώτη μοτοσικλέτα, η Ράιτ Βάγκεν, μπορούσε να πάει επτά μίλια την ώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι σημερινές ηλεκτρικές μοτοσικλέτες μπορούν να πάνε πάνω από 200 μίλια την ώρα.",
+      "text_markdown": "Οι σημερινές ηλεκτρικές μοτοσικλέτες μπορούν να πάνε πάνω από 200 μίλια την ώρα.",
+      "tts": {
+        "text": "Οι σημερινές ηλεκτρικές μοτοσικλέτες μπορούν να πάνε πάνω από διακόσια μίλια την ώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτή είναι η ιστορία της μοτοσικλέτας ως εδώ.",
+      "text_markdown": "Αυτή είναι η ιστορία της μοτοσικλέτας ως εδώ.",
+      "tts": {
+        "text": "Αυτή είναι η ιστορία της μοτοσικλέτας ως εδώ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή ήταν η μεγάλη ιστορία.",
+      "text_markdown": "Αυτή ήταν η μεγάλη ιστορία.",
+      "tts": {
+        "text": "Αυτή ήταν η μεγάλη ιστορία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τα επόμενα έντεκα βιβλία θα πουν τις μικρές ιστορίες.",
+      "text_markdown": "Τα επόμενα έντεκα βιβλία θα πουν τις μικρές ιστορίες.",
+      "tts": {
+        "text": "Τα επόμενα έντεκα βιβλία θα πουν τις μικρές ιστορίες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το καθένα μιλά για ένα μέρος του κόσμου της μοτοσικλέτας.",
+      "text_markdown": "Το καθένα μιλά για ένα μέρος του κόσμου της μοτοσικλέτας.",
+      "tts": {
+        "text": "Το καθένα μιλά για ένα μέρος του κόσμου της μοτοσικλέτας.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο δεύτερος τόμος είναι για τη Harley-Davidson.",
+      "text_markdown": "Ο δεύτερος τόμος είναι για τη Harley-Davidson.",
+      "tts": {
+        "text": "Ο δεύτερος τόμος είναι για τη Χάρλεϊ Ντέιβιντσον.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο τρίτος τόμος είναι για τη Honda.",
+      "text_markdown": "Ο τρίτος τόμος είναι για τη Honda.",
+      "tts": {
+        "text": "Ο τρίτος τόμος είναι για τη Χόντα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο τέταρτος τόμος είναι για την Ducati από την Ιταλία.",
+      "text_markdown": "Ο τέταρτος τόμος είναι για την Ducati από την Ιταλία.",
+      "tts": {
+        "text": "Ο τέταρτος τόμος είναι για την Ντουκάτι από την Ιταλία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ο πέμπτος τόμος είναι για τη BMW από τη Γερμανία.",
+      "text_markdown": "Ο πέμπτος τόμος είναι για τη BMW από τη Γερμανία.",
+      "tts": {
+        "text": "Ο πέμπτος τόμος είναι για τη Μπε Εμ Ντάμπλιου από τη Γερμανία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ο έκτος τόμος είναι για την Triumph από την Αγγλία.",
+      "text_markdown": "Ο έκτος τόμος είναι για την Triumph από την Αγγλία.",
+      "tts": {
+        "text": "Ο έκτος τόμος είναι για την Τράιουμφ από την Αγγλία.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο έβδομος τόμος είναι για τις χωμάτινες μοτοσικλέτες.",
+      "text_markdown": "Ο έβδομος τόμος είναι για τις χωμάτινες μοτοσικλέτες.",
+      "tts": {
+        "text": "Ο έβδομος τόμος είναι για τις χωμάτινες μοτοσικλέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο όγδοος τόμος είναι για τις σπορ μοτοσικλέτες.",
+      "text_markdown": "Ο όγδοος τόμος είναι για τις σπορ μοτοσικλέτες.",
+      "tts": {
+        "text": "Ο όγδοος τόμος είναι για τις σπορ μοτοσικλέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο ένατος τόμος είναι για τις κρούιζερ και τις τσόπερ.",
+      "text_markdown": "Ο ένατος τόμος είναι για τις κρούιζερ και τις τσόπερ.",
+      "tts": {
+        "text": "Ο ένατος τόμος είναι για τις κρούιζερ και τις τσόπερ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ο δέκατος τόμος είναι για τις μοτοσικλέτες περιπέτειας.",
+      "text_markdown": "Ο δέκατος τόμος είναι για τις μοτοσικλέτες περιπέτειας.",
+      "tts": {
+        "text": "Ο δέκατος τόμος είναι για τις μοτοσικλέτες περιπέτειας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ο ενδέκατος τόμος είναι για τους αγώνες.",
+      "text_markdown": "Ο ενδέκατος τόμος είναι για τους αγώνες.",
+      "tts": {
+        "text": "Ο ενδέκατος τόμος είναι για τους αγώνες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο δωδέκατος τόμος είναι για τις ηλεκτρικές μοτοσικλέτες και το μέλλον.",
+      "text_markdown": "Ο δωδέκατος τόμος είναι για τις ηλεκτρικές μοτοσικλέτες και το μέλλον.",
+      "tts": {
+        "text": "Ο δωδέκατος τόμος είναι για τις ηλεκτρικές μοτοσικλέτες και το μέλλον.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Διάλεξε αυτό που φαίνεται το πιο διασκεδαστικό.",
+      "text_markdown": "Διάλεξε αυτό που φαίνεται το πιο διασκεδαστικό.",
+      "tts": {
+        "text": "Διάλεξε αυτό που φαίνεται το πιο διασκεδαστικό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Κεφάλαιο 7 — Ένας νέος δρόμος",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ύστερα, έλα μαζί στη βόλτα.",
+      "text_markdown": "Ύστερα, έλα μαζί στη βόλτα.",
+      "tts": {
+        "text": "Ύστερα, έλα μαζί στη βόλτα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Σχετικά με αυτό το βιβλίο",
+      "text_markdown": "Σχετικά με αυτό το βιβλίο"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό είναι το πρώτο βιβλίο της σειράς Μοτοσικλέτες.",
+      "text_markdown": "Αυτό είναι το πρώτο βιβλίο της σειράς Μοτοσικλέτες.",
+      "tts": {
+        "text": "Αυτό είναι το πρώτο βιβλίο της σειράς Μοτοσικλέτες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το διαβάζει δυνατά ο August.",
+      "text_markdown": "Το διαβάζει δυνατά ο August.",
+      "tts": {
+        "text": "Το διαβάζει δυνατά ο Όγκαστ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Κάθε πρόταση είναι σύντομη και ξεκάθαρη, ώστε να μπορείς να διαβάζεις μαζί σε οποιαδήποτε γλώσσα.",
+      "text_markdown": "Κάθε πρόταση είναι σύντομη και ξεκάθαρη, ώστε να μπορείς να διαβάζεις μαζί σε οποιαδήποτε γλώσσα.",
+      "tts": {
+        "text": "Κάθε πρόταση είναι σύντομη και ξεκάθαρη, ώστε να μπορείς να διαβάζεις μαζί σε οποιαδήποτε γλώσσα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν θέλεις να ακούσεις πώς ακούγεται μια πρόταση σε άλλη γλώσσα, άκου το ίδιο βιβλίο σε εκείνη τη γλώσσα.",
+      "text_markdown": "Αν θέλεις να ακούσεις πώς ακούγεται μια πρόταση σε άλλη γλώσσα, άκου το ίδιο βιβλίο σε εκείνη τη γλώσσα.",
+      "tts": {
+        "text": "Αν θέλεις να ακούσεις πώς ακούγεται μια πρόταση σε άλλη γλώσσα, άκου το ίδιο βιβλίο σε εκείνη τη γλώσσα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι λέξεις στη σελίδα θα ταιριάζουν με όσα ακούς.",
+      "text_markdown": "Οι λέξεις στη σελίδα θα ταιριάζουν με όσα ακούς.",
+      "tts": {
+        "text": "Οι λέξεις στη σελίδα θα ταιριάζουν με όσα ακούς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Έτσι μαθαίνεις.",
+      "text_markdown": "Έτσι μαθαίνεις.",
+      "tts": {
+        "text": "Έτσι μαθαίνεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Σχετικά με αυτό το βιβλίο",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τώρα πήγαινε να βρεις μια μοτοσικλέτα και άκουσέ την να κάνει βρουμ.",
+      "text_markdown": "Τώρα πήγαινε να βρεις μια μοτοσικλέτα και άκουσέ την να κάνει βρουμ.",
+      "tts": {
+        "text": "Τώρα πήγαινε να βρεις μια μοτοσικλέτα και άκουσέ την να κάνει βρουμ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

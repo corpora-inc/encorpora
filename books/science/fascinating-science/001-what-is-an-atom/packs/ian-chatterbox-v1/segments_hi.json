@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "hi",
+  "total_segments": 300,
+  "segments": [
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "chapter": 1,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "सब कुछ परमाणुओं से बना है",
+      "text_markdown": "सब कुछ परमाणुओं से बना है",
+      "title": "सब कुछ परमाणुओं से बना है"
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "अपने चारों ओर देखो।",
+      "text_markdown": "अपने चारों ओर देखो।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "अपने चारों ओर देखो।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "जो कुछ भी तुम देख सकते हो, वह परमाणुओं से बना है।",
+      "text_markdown": "जो कुछ भी तुम देख सकते हो, वह परमाणुओं से बना है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "जो कुछ भी तुम देख सकते हो, वह परमाणुओं से बना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "जो हवा तुम साँस लेते हो, वह परमाणुओं से बनी है।",
+      "text_markdown": "जो हवा तुम साँस लेते हो, वह परमाणुओं से बनी है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "जो हवा तुम साँस लेते हो, वह परमाणुओं से बनी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "जो पानी तुम पीते हो, वह परमाणुओं से बना है।",
+      "text_markdown": "जो पानी तुम पीते हो, वह परमाणुओं से बना है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "जो पानी तुम पीते हो, वह परमाणुओं से बना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "तुम्हारा शरीर परमाणुओं से बना है।",
+      "text_markdown": "तुम्हारा शरीर परमाणुओं से बना है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "तुम्हारा शरीर परमाणुओं से बना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "तुम्हारे पैरों के नीचे की ज़मीन परमाणुओं से बनी है।",
+      "text_markdown": "तुम्हारे पैरों के नीचे की ज़मीन परमाणुओं से बनी है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "तुम्हारे पैरों के नीचे की ज़मीन परमाणुओं से बनी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "परमाणु पदार्थ का सबसे छोटा टुकड़ा है जिसकी अपनी रासायनिक पहचान होती है।",
+      "text_markdown": "परमाणु पदार्थ का सबसे छोटा टुकड़ा है जिसकी अपनी रासायनिक पहचान होती है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "परमाणु पदार्थ का सबसे छोटा टुकड़ा है जिसकी अपनी रासायनिक पहचान होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "तुम अपनी आँखों से एक अकेला परमाणु नहीं देख सकते।",
+      "text_markdown": "तुम अपनी आँखों से एक अकेला परमाणु नहीं देख सकते।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "तुम अपनी आँखों से एक अकेला परमाणु नहीं देख सकते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "तुम एक साधारण माइक्रोस्कोप से भी एक अकेला परमाणु नहीं देख सकते।",
+      "text_markdown": "तुम एक साधारण माइक्रोस्कोप से भी एक अकेला परमाणु नहीं देख सकते।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "तुम एक साधारण माइक्रोस्कोप से भी एक अकेला परमाणु नहीं देख सकते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "परमाणु इतने छोटे होते हैं।",
+      "text_markdown": "परमाणु इतने छोटे होते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "परमाणु इतने छोटे होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "रेत के एक दाने में लगभग पचास क्विंटिलियन परमाणु होते हैं।",
+      "text_markdown": "रेत के एक दाने में लगभग पचास क्विंटिलियन परमाणु होते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "रेत के एक दाने में लगभग पचास क्विंटिलियन परमाणु होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "वह संख्या पचास के बाद अठारह शून्य लगाने से बनती है।",
+      "text_markdown": "वह संख्या पचास के बाद अठारह शून्य लगाने से बनती है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "वह संख्या पचास के बाद अठारह शून्य लगाने से बनती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "रेत के एक दाने में जितने परमाणु हैं, उतने तो एक समुद्र तट पर रेत के दाने भी नहीं हैं।",
+      "text_markdown": "रेत के एक दाने में जितने परमाणु हैं, उतने तो एक समुद्र तट पर रेत के दाने भी नहीं हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "रेत के एक दाने में जितने परमाणु हैं, उतने तो एक समुद्र तट पर रेत के दाने भी नहीं हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "परमाणु भौतिक दुनिया की हर चीज़ की बुनियादी ईंटें हैं।",
+      "text_markdown": "परमाणु भौतिक दुनिया की हर चीज़ की बुनियादी ईंटें हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "परमाणु भौतिक दुनिया की हर चीज़ की बुनियादी ईंटें हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "एक दीवार ईंटों से बनी होती है।",
+      "text_markdown": "एक दीवार ईंटों से बनी होती है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "एक दीवार ईंटों से बनी होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "एक वाक्य शब्दों से बना होता है।",
+      "text_markdown": "एक वाक्य शब्दों से बना होता है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "एक वाक्य शब्दों से बना होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "ब्रह्मांड परमाणुओं से बना है।",
+      "text_markdown": "ब्रह्मांड परमाणुओं से बना है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "ब्रह्मांड परमाणुओं से बना है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "परमाणु शब्द प्राचीन ग्रीक भाषा से आया है।",
+      "text_markdown": "परमाणु शब्द प्राचीन ग्रीक भाषा से आया है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "परमाणु शब्द प्राचीन ग्रीक भाषा से आया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "ग्रीक शब्द एटोमोस का मतलब है जिसे काटा न जा सके।",
+      "text_markdown": "ग्रीक शब्द एटोमोस का मतलब है जिसे काटा न जा सके।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "ग्रीक शब्द एटोमोस का मतलब है जिसे काटा न जा सके।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "प्राचीन ग्रीक दार्शनिकों का मानना था कि परमाणु पदार्थ के सबसे छोटे संभव टुकड़े हैं।",
+      "text_markdown": "प्राचीन ग्रीक दार्शनिकों का मानना था कि परमाणु पदार्थ के सबसे छोटे संभव टुकड़े हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "प्राचीन ग्रीक दार्शनिकों का मानना था कि परमाणु पदार्थ के सबसे छोटे संभव टुकड़े हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "वे लगभग सही थे।",
+      "text_markdown": "वे लगभग सही थे।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "वे लगभग सही थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "परमाणु सच में सबसे छोटे कण नहीं हैं, लेकिन वे सबसे छोटी इकाइयाँ हैं जो अपने रासायनिक गुण बनाए रखती हैं।",
+      "text_markdown": "परमाणु सच में सबसे छोटे कण नहीं हैं, लेकिन वे सबसे छोटी इकाइयाँ हैं जो अपने रासायनिक गुण बनाए रखती हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "परमाणु सच में सबसे छोटे कण नहीं हैं, लेकिन वे सबसे छोटी इकाइयाँ हैं जो अपने रासायनिक गुण बनाए रखती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "परमाणु अविश्वसनीय रूप से टिकाऊ होते हैं।",
+      "text_markdown": "परमाणु अविश्वसनीय रूप से टिकाऊ होते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "परमाणु अविश्वसनीय रूप से टिकाऊ होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "तुम्हारे शरीर के परमाणु अरबों साल पुराने हैं।",
+      "text_markdown": "तुम्हारे शरीर के परमाणु अरबों साल पुराने हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "तुम्हारे शरीर के परमाणु अरबों साल पुराने हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "आज तुमने जो पानी पिया, उसमें मौजूद कुछ हाइड्रोजन परमाणु बिग बैंग के बाद के पहले कुछ मिनटों में बने थे।",
+      "text_markdown": "आज तुमने जो पानी पिया, उसमें मौजूद कुछ हाइड्रोजन परमाणु बिग बैंग के बाद के पहले कुछ मिनटों में बने थे।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "आज तुमने जो पानी पिया, उसमें मौजूद कुछ हाइड्रोजन परमाणु बिग बैंग के बाद के पहले कुछ मिनटों में बने थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "तुम प्राचीन सामग्री से बने हो।",
+      "text_markdown": "तुम प्राचीन सामग्री से बने हो।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "तुम प्राचीन सामग्री से बने हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "सामान्य जीवन में परमाणु न कभी बनाए जाते हैं और न कभी नष्ट होते हैं।",
+      "text_markdown": "सामान्य जीवन में परमाणु न कभी बनाए जाते हैं और न कभी नष्ट होते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "सामान्य जीवन में परमाणु न कभी बनाए जाते हैं और न कभी नष्ट होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "वे बस फिर से व्यवस्थित होते हैं।",
+      "text_markdown": "वे बस फिर से व्यवस्थित होते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "वे बस फिर से व्यवस्थित होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "जब लकड़ी जलती है, तो परमाणु गायब नहीं होते।",
+      "text_markdown": "जब लकड़ी जलती है, तो परमाणु गायब नहीं होते।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "जब लकड़ी जलती है, तो परमाणु गायब नहीं होते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "वे धुएँ, राख और गैस में बदल जाते हैं।",
+      "text_markdown": "वे धुएँ, राख और गैस में बदल जाते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "वे धुएँ, राख और गैस में बदल जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "जब बर्फ़ पिघलती है, तो परमाणु वही रहते हैं।",
+      "text_markdown": "जब बर्फ़ पिघलती है, तो परमाणु वही रहते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "जब बर्फ़ पिघलती है, तो परमाणु वही रहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "बस उनकी व्यवस्था बदलती है।",
+      "text_markdown": "बस उनकी व्यवस्था बदलती है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "बस उनकी व्यवस्था बदलती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "परमाणुओं को समझना रसायन विज्ञान की नींव है।",
+      "text_markdown": "परमाणुओं को समझना रसायन विज्ञान की नींव है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "परमाणुओं को समझना रसायन विज्ञान की नींव है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "रसायन विज्ञान वह विज्ञान है जो बताता है कि परमाणु कैसे जुड़ते हैं, फिर से व्यवस्थित होते हैं और एक-दूसरे से कैसे मिलते हैं।",
+      "text_markdown": "रसायन विज्ञान वह विज्ञान है जो बताता है कि परमाणु कैसे जुड़ते हैं, फिर से व्यवस्थित होते हैं और एक-दूसरे से कैसे मिलते हैं।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "रसायन विज्ञान वह विज्ञान है जो बताता है कि परमाणु कैसे जुड़ते हैं, फिर से व्यवस्थित होते हैं और एक-दूसरे से कैसे मिलते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "भौतिक दुनिया में जो कुछ भी होता है, वह सब परमाणुओं और उनके काम पर निर्भर करता है।",
+      "text_markdown": "भौतिक दुनिया में जो कुछ भी होता है, वह सब परमाणुओं और उनके काम पर निर्भर करता है।",
+      "title": "सब कुछ परमाणुओं से बना है",
+      "tts": {
+        "text": "भौतिक दुनिया में जो कुछ भी होता है, वह सब परमाणुओं और उनके काम पर निर्भर करता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "chapter": 2,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "परमाणु के अंदर",
+      "text_markdown": "परमाणु के अंदर",
+      "title": "परमाणु के अंदर"
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "एक परमाणु के अंदर तीन तरह के कण होते हैं।",
+      "text_markdown": "एक परमाणु के अंदर तीन तरह के कण होते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "एक परमाणु के अंदर तीन तरह के कण होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "प्रोटॉन।",
+      "text_markdown": "प्रोटॉन।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "प्रोटॉन।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "न्यूट्रॉन।",
+      "text_markdown": "न्यूट्रॉन।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "न्यूट्रॉन।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "इलेक्ट्रॉन।",
+      "text_markdown": "इलेक्ट्रॉन।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "इलेक्ट्रॉन।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "ये तीन कण ब्रह्मांड के हर परमाणु को बनाते हैं।",
+      "text_markdown": "ये तीन कण ब्रह्मांड के हर परमाणु को बनाते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "ये तीन कण ब्रह्मांड के हर परमाणु को बनाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "परमाणु के बीच के हिस्से को नाभिक कहते हैं।",
+      "text_markdown": "परमाणु के बीच के हिस्से को नाभिक कहते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "परमाणु के बीच के हिस्से को नाभिक कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "नाभिक में प्रोटॉन और न्यूट्रॉन होते हैं।",
+      "text_markdown": "नाभिक में प्रोटॉन और न्यूट्रॉन होते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "नाभिक में प्रोटॉन और न्यूट्रॉन होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "पूरे परमाणु की तुलना में नाभिक बहुत छोटा होता है।",
+      "text_markdown": "पूरे परमाणु की तुलना में नाभिक बहुत छोटा होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "पूरे परमाणु की तुलना में नाभिक बहुत छोटा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "अगर परमाणु एक फ़ुटबॉल स्टेडियम जितना बड़ा होता, तो नाभिक बीच की लाइन पर रखी एक कंचे जितना होता।",
+      "text_markdown": "अगर परमाणु एक फ़ुटबॉल स्टेडियम जितना बड़ा होता, तो नाभिक बीच की लाइन पर रखी एक कंचे जितना होता।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "अगर परमाणु एक फ़ुटबॉल स्टेडियम जितना बड़ा होता, तो नाभिक बीच की लाइन पर रखी एक कंचे जितना होता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "प्रोटॉन में धनात्मक विद्युत आवेश होता है।",
+      "text_markdown": "प्रोटॉन में धनात्मक विद्युत आवेश होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "प्रोटॉन में धनात्मक विद्युत आवेश होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "हर प्रोटॉन में बराबर मात्रा में धनात्मक आवेश होता है।",
+      "text_markdown": "हर प्रोटॉन में बराबर मात्रा में धनात्मक आवेश होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "हर प्रोटॉन में बराबर मात्रा में धनात्मक आवेश होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "किसी परमाणु में प्रोटॉनों की संख्या यह तय करती है कि वह परमाणु कौन सा तत्व है।",
+      "text_markdown": "किसी परमाणु में प्रोटॉनों की संख्या यह तय करती है कि वह परमाणु कौन सा तत्व है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "किसी परमाणु में प्रोटॉनों की संख्या यह तय करती है कि वह परमाणु कौन सा तत्व है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "एक प्रोटॉन का मतलब है हाइड्रोजन।",
+      "text_markdown": "एक प्रोटॉन का मतलब है हाइड्रोजन।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "एक प्रोटॉन का मतलब है हाइड्रोजन।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "छह प्रोटॉन का मतलब है कार्बन।",
+      "text_markdown": "छह प्रोटॉन का मतलब है कार्बन।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "छह प्रोटॉन का मतलब है कार्बन।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "छब्बीस प्रोटॉन का मतलब है लोहा।",
+      "text_markdown": "छब्बीस प्रोटॉन का मतलब है लोहा।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "छब्बीस प्रोटॉन का मतलब है लोहा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "प्रोटॉनों की संख्या किसी परमाणु के बारे में सबसे ज़रूरी बात है।",
+      "text_markdown": "प्रोटॉनों की संख्या किसी परमाणु के बारे में सबसे ज़रूरी बात है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "प्रोटॉनों की संख्या किसी परमाणु के बारे में सबसे ज़रूरी बात है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "न्यूट्रॉन में कोई विद्युत आवेश नहीं होता।",
+      "text_markdown": "न्यूट्रॉन में कोई विद्युत आवेश नहीं होता।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "न्यूट्रॉन में कोई विद्युत आवेश नहीं होता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "न्यूट्रॉन उदासीन होते हैं।",
+      "text_markdown": "न्यूट्रॉन उदासीन होते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "न्यूट्रॉन उदासीन होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "न्यूट्रॉन नाभिक में प्रोटॉनों के बगल में बैठे रहते हैं।",
+      "text_markdown": "न्यूट्रॉन नाभिक में प्रोटॉनों के बगल में बैठे रहते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "न्यूट्रॉन नाभिक में प्रोटॉनों के बगल में बैठे रहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "न्यूट्रॉन नाभिक को एक साथ बनाए रखने में मदद करते हैं।",
+      "text_markdown": "न्यूट्रॉन नाभिक को एक साथ बनाए रखने में मदद करते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "न्यूट्रॉन नाभिक को एक साथ बनाए रखने में मदद करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "न्यूट्रॉन के बिना, प्रोटॉन एक-दूसरे को दूर धकेल देते क्योंकि उन सब में एक जैसा धनात्मक आवेश होता है।",
+      "text_markdown": "न्यूट्रॉन के बिना, प्रोटॉन एक-दूसरे को दूर धकेल देते क्योंकि उन सब में एक जैसा धनात्मक आवेश होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "न्यूट्रॉन के बिना, प्रोटॉन एक-दूसरे को दूर धकेल देते क्योंकि उन सब में एक जैसा धनात्मक आवेश होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "इलेक्ट्रॉन में ऋणात्मक विद्युत आवेश होता है।",
+      "text_markdown": "इलेक्ट्रॉन में ऋणात्मक विद्युत आवेश होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "इलेक्ट्रॉन में ऋणात्मक विद्युत आवेश होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "इलेक्ट्रॉन नाभिक के चारों ओर एक बादल की तरह घूमते हैं।",
+      "text_markdown": "इलेक्ट्रॉन नाभिक के चारों ओर एक बादल की तरह घूमते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "इलेक्ट्रॉन नाभिक के चारों ओर एक बादल की तरह घूमते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "वे सूरज के चारों ओर ग्रहों की तरह चक्कर नहीं लगाते।",
+      "text_markdown": "वे सूरज के चारों ओर ग्रहों की तरह चक्कर नहीं लगाते।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "वे सूरज के चारों ओर ग्रहों की तरह चक्कर नहीं लगाते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "वे नाभिक के चारों ओर एक धुँधले संभावना वाले क्षेत्र में होते हैं।",
+      "text_markdown": "वे नाभिक के चारों ओर एक धुँधले संभावना वाले क्षेत्र में होते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "वे नाभिक के चारों ओर एक धुँधले संभावना वाले क्षेत्र में होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "इलेक्ट्रॉन बादल वह जगह है जहाँ किसी भी समय इलेक्ट्रॉन के मिलने की संभावना होती है।",
+      "text_markdown": "इलेक्ट्रॉन बादल वह जगह है जहाँ किसी भी समय इलेक्ट्रॉन के मिलने की संभावना होती है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "इलेक्ट्रॉन बादल वह जगह है जहाँ किसी भी समय इलेक्ट्रॉन के मिलने की संभावना होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "प्रोटॉन या न्यूट्रॉन की तुलना में इलेक्ट्रॉन का द्रव्यमान लगभग न के बराबर होता है।",
+      "text_markdown": "प्रोटॉन या न्यूट्रॉन की तुलना में इलेक्ट्रॉन का द्रव्यमान लगभग न के बराबर होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "प्रोटॉन या न्यूट्रॉन की तुलना में इलेक्ट्रॉन का द्रव्यमान लगभग न के बराबर होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "एक प्रोटॉन, एक इलेक्ट्रॉन से लगभग 1,836 गुना भारी होता है।",
+      "text_markdown": "एक प्रोटॉन, एक इलेक्ट्रॉन से लगभग 1,836 गुना भारी होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "एक प्रोटॉन, एक इलेक्ट्रॉन से लगभग एक हज़ार आठ सौ छत्तीस गुना भारी होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "किसी परमाणु का लगभग सारा द्रव्यमान नाभिक में होता है।",
+      "text_markdown": "किसी परमाणु का लगभग सारा द्रव्यमान नाभिक में होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "किसी परमाणु का लगभग सारा द्रव्यमान नाभिक में होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "एक उदासीन परमाणु में इलेक्ट्रॉनों की संख्या प्रोटॉनों की संख्या के बराबर होती है।",
+      "text_markdown": "एक उदासीन परमाणु में इलेक्ट्रॉनों की संख्या प्रोटॉनों की संख्या के बराबर होती है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "एक उदासीन परमाणु में इलेक्ट्रॉनों की संख्या प्रोटॉनों की संख्या के बराबर होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "धनात्मक आवेश और ऋणात्मक आवेश एक-दूसरे को संतुलित कर देते हैं।",
+      "text_markdown": "धनात्मक आवेश और ऋणात्मक आवेश एक-दूसरे को संतुलित कर देते हैं।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "धनात्मक आवेश और ऋणात्मक आवेश एक-दूसरे को संतुलित कर देते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "परमाणु पर कोई कुल आवेश नहीं होता।",
+      "text_markdown": "परमाणु पर कोई कुल आवेश नहीं होता।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "परमाणु पर कोई कुल आवेश नहीं होता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "यह संतुलन परमाणु की सामान्य स्थिति है।",
+      "text_markdown": "यह संतुलन परमाणु की सामान्य स्थिति है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "यह संतुलन परमाणु की सामान्य स्थिति है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "एक परमाणु का ज़्यादातर हिस्सा खाली जगह होता है।",
+      "text_markdown": "एक परमाणु का ज़्यादातर हिस्सा खाली जगह होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "एक परमाणु का ज़्यादातर हिस्सा खाली जगह होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "नाभिक घना और बहुत छोटा होता है।",
+      "text_markdown": "नाभिक घना और बहुत छोटा होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "नाभिक घना और बहुत छोटा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "इलेक्ट्रॉन बादल बड़ा होता है और ज़्यादातर खाली होता है।",
+      "text_markdown": "इलेक्ट्रॉन बादल बड़ा होता है और ज़्यादातर खाली होता है।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "इलेक्ट्रॉन बादल बड़ा होता है और ज़्यादातर खाली होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "अगर तुम अपने शरीर के हर परमाणु से सारी खाली जगह निकाल दो, तो तुम नमक के एक दाने से भी छोटे हो जाओगे।",
+      "text_markdown": "अगर तुम अपने शरीर के हर परमाणु से सारी खाली जगह निकाल दो, तो तुम नमक के एक दाने से भी छोटे हो जाओगे।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "अगर तुम अपने शरीर के हर परमाणु से सारी खाली जगह निकाल दो, तो तुम नमक के एक दाने से भी छोटे हो जाओगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "तुम्हारा द्रव्यमान वही रहेगा।",
+      "text_markdown": "तुम्हारा द्रव्यमान वही रहेगा।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "तुम्हारा द्रव्यमान वही रहेगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "तुम बस अविश्वसनीय रूप से घने हो जाओगे।",
+      "text_markdown": "तुम बस अविश्वसनीय रूप से घने हो जाओगे।",
+      "title": "परमाणु के अंदर",
+      "tts": {
+        "text": "तुम बस अविश्वसनीय रूप से घने हो जाओगे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "chapter": 3,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "तत्व",
+      "text_markdown": "तत्व",
+      "title": "तत्व"
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "तत्व वह पदार्थ है जो केवल एक तरह के परमाणु से बना होता है।",
+      "text_markdown": "तत्व वह पदार्थ है जो केवल एक तरह के परमाणु से बना होता है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "तत्व वह पदार्थ है जो केवल एक तरह के परमाणु से बना होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "शुद्ध सोना एक तत्व है।",
+      "text_markdown": "शुद्ध सोना एक तत्व है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "शुद्ध सोना एक तत्व है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "शुद्ध सोने की एक छड़ में हर परमाणु में उनहत्तर प्रोटॉन होते हैं।",
+      "text_markdown": "शुद्ध सोने की एक छड़ में हर परमाणु में उनहत्तर प्रोटॉन होते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "शुद्ध सोने की एक छड़ में हर परमाणु में उनहत्तर प्रोटॉन होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "शुद्ध ऑक्सीजन एक तत्व है।",
+      "text_markdown": "शुद्ध ऑक्सीजन एक तत्व है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "शुद्ध ऑक्सीजन एक तत्व है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "शुद्ध ऑक्सीजन के एक टैंक में हर परमाणु में आठ प्रोटॉन होते हैं।",
+      "text_markdown": "शुद्ध ऑक्सीजन के एक टैंक में हर परमाणु में आठ प्रोटॉन होते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "शुद्ध ऑक्सीजन के एक टैंक में हर परमाणु में आठ प्रोटॉन होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "पृथ्वी पर प्राकृतिक रूप से लगभग बानवे तत्व पाए जाते हैं।",
+      "text_markdown": "पृथ्वी पर प्राकृतिक रूप से लगभग बानवे तत्व पाए जाते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "पृथ्वी पर प्राकृतिक रूप से लगभग बानवे तत्व पाए जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "वैज्ञानिकों ने प्रयोगशालाओं में और भी तत्व बनाए हैं।",
+      "text_markdown": "वैज्ञानिकों ने प्रयोगशालाओं में और भी तत्व बनाए हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "वैज्ञानिकों ने प्रयोगशालाओं में और भी तत्व बनाए हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "अब तक खोजे गए तत्वों की कुल संख्या एक सौ अठारह से ज़्यादा है।",
+      "text_markdown": "अब तक खोजे गए तत्वों की कुल संख्या एक सौ अठारह से ज़्यादा है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "अब तक खोजे गए तत्वों की कुल संख्या एक सौ अठारह से ज़्यादा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "हर तत्व में प्रोटॉनों की एक अलग संख्या होती है।",
+      "text_markdown": "हर तत्व में प्रोटॉनों की एक अलग संख्या होती है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "हर तत्व में प्रोटॉनों की एक अलग संख्या होती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "हर तत्व का एक नाम और एक प्रतीक होता है।",
+      "text_markdown": "हर तत्व का एक नाम और एक प्रतीक होता है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "हर तत्व का एक नाम और एक प्रतीक होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "हाइड्रोजन H है। ऑक्सीजन O है। कार्बन C है। लोहा Fe है।",
+      "text_markdown": "हाइड्रोजन H है। ऑक्सीजन O है। कार्बन C है। लोहा Fe है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "हाइड्रोजन एच है। ऑक्सीजन ओ है। कार्बन सी है। लोहा एफ ई है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "सोना Au है।",
+      "text_markdown": "सोना Au है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "सोना ए यू है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "ये प्रतीक लैटिन, ग्रीक या अंग्रेज़ी नामों से आते हैं।",
+      "text_markdown": "ये प्रतीक लैटिन, ग्रीक या अंग्रेज़ी नामों से आते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "ये प्रतीक लैटिन, ग्रीक या अंग्रेज़ी नामों से आते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Fe लैटिन शब्द फ़ेरम से आया है।",
+      "text_markdown": "Fe लैटिन शब्द फ़ेरम से आया है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "एफ ई लैटिन शब्द फ़ेरम से आया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Au लैटिन शब्द ऑरम से आया है।",
+      "text_markdown": "Au लैटिन शब्द ऑरम से आया है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "ए यू लैटिन शब्द ऑरम से आया है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "हाइड्रोजन सबसे सरल तत्व है।",
+      "text_markdown": "हाइड्रोजन सबसे सरल तत्व है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "हाइड्रोजन सबसे सरल तत्व है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "एक हाइड्रोजन परमाणु में एक प्रोटॉन और एक इलेक्ट्रॉन होता है।",
+      "text_markdown": "एक हाइड्रोजन परमाणु में एक प्रोटॉन और एक इलेक्ट्रॉन होता है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "एक हाइड्रोजन परमाणु में एक प्रोटॉन और एक इलेक्ट्रॉन होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "हाइड्रोजन ब्रह्मांड में सबसे ज़्यादा पाया जाने वाला तत्व है।",
+      "text_markdown": "हाइड्रोजन ब्रह्मांड में सबसे ज़्यादा पाया जाने वाला तत्व है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "हाइड्रोजन ब्रह्मांड में सबसे ज़्यादा पाया जाने वाला तत्व है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "तारे ज़्यादातर हाइड्रोजन से बने होते हैं।",
+      "text_markdown": "तारे ज़्यादातर हाइड्रोजन से बने होते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "तारे ज़्यादातर हाइड्रोजन से बने होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "कार्बन जीवन का तत्व है।",
+      "text_markdown": "कार्बन जीवन का तत्व है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "कार्बन जीवन का तत्व है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "कार्बन में छह प्रोटॉन होते हैं।",
+      "text_markdown": "कार्बन में छह प्रोटॉन होते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "कार्बन में छह प्रोटॉन होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "कार्बन परमाणु एक ही समय में कई दूसरे परमाणुओं के साथ बंधन बना सकते हैं।",
+      "text_markdown": "कार्बन परमाणु एक ही समय में कई दूसरे परमाणुओं के साथ बंधन बना सकते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "कार्बन परमाणु एक ही समय में कई दूसरे परमाणुओं के साथ बंधन बना सकते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "इस क्षमता के कारण कार्बन सभी जीवित चीज़ों की रीढ़ है।",
+      "text_markdown": "इस क्षमता के कारण कार्बन सभी जीवित चीज़ों की रीढ़ है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "इस क्षमता के कारण कार्बन सभी जीवित चीज़ों की रीढ़ है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "तुम्हारे शरीर का हर प्रोटीन, डीएनए का हर धागा और हर शक्कर का अणु कार्बन से बना है।",
+      "text_markdown": "तुम्हारे शरीर का हर प्रोटीन, डीएनए का हर धागा और हर शक्कर का अणु कार्बन से बना है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "तुम्हारे शरीर का हर प्रोटीन, डीएनए का हर धागा और हर शक्कर का अणु कार्बन से बना है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "ऑक्सीजन में आठ प्रोटॉन होते हैं।",
+      "text_markdown": "ऑक्सीजन में आठ प्रोटॉन होते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "ऑक्सीजन में आठ प्रोटॉन होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "ऑक्सीजन वह तत्व है जो तुम साँस लेते हो।",
+      "text_markdown": "ऑक्सीजन वह तत्व है जो तुम साँस लेते हो।",
+      "title": "तत्व",
+      "tts": {
+        "text": "ऑक्सीजन वह तत्व है जो तुम साँस लेते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "तुम्हारे फेफड़े हवा से ऑक्सीजन खींचते हैं और उसे तुम्हारे खून में भेजते हैं।",
+      "text_markdown": "तुम्हारे फेफड़े हवा से ऑक्सीजन खींचते हैं और उसे तुम्हारे खून में भेजते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "तुम्हारे फेफड़े हवा से ऑक्सीजन खींचते हैं और उसे तुम्हारे खून में भेजते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "तुम्हारी कोशिकाएँ भोजन से ऊर्जा निकालने के लिए ऑक्सीजन का उपयोग करती हैं।",
+      "text_markdown": "तुम्हारी कोशिकाएँ भोजन से ऊर्जा निकालने के लिए ऑक्सीजन का उपयोग करती हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "तुम्हारी कोशिकाएँ भोजन से ऊर्जा निकालने के लिए ऑक्सीजन का उपयोग करती हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "लोहे में छब्बीस प्रोटॉन होते हैं।",
+      "text_markdown": "लोहे में छब्बीस प्रोटॉन होते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "लोहे में छब्बीस प्रोटॉन होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "लोहा वह तत्व है जो तुम्हारे खून को लाल बनाता है।",
+      "text_markdown": "लोहा वह तत्व है जो तुम्हारे खून को लाल बनाता है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "लोहा वह तत्व है जो तुम्हारे खून को लाल बनाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "लोहा इस्पात का मुख्य तत्व है।",
+      "text_markdown": "लोहा इस्पात का मुख्य तत्व है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "लोहा इस्पात का मुख्य तत्व है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "पृथ्वी का केंद्र ज़्यादातर लोहे से बना है।",
+      "text_markdown": "पृथ्वी का केंद्र ज़्यादातर लोहे से बना है।",
+      "title": "तत्व",
+      "tts": {
+        "text": "पृथ्वी का केंद्र ज़्यादातर लोहे से बना है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "सबसे हल्के तत्व ब्रह्मांड में सबसे ज़्यादा पाए जाते हैं।",
+      "text_markdown": "सबसे हल्के तत्व ब्रह्मांड में सबसे ज़्यादा पाए जाते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "सबसे हल्के तत्व ब्रह्मांड में सबसे ज़्यादा पाए जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "हाइड्रोजन और हीलियम मिलकर ब्रह्मांड के सभी परमाणुओं का लगभग अट्ठानवे प्रतिशत बनाते हैं।",
+      "text_markdown": "हाइड्रोजन और हीलियम मिलकर ब्रह्मांड के सभी परमाणुओं का लगभग अट्ठानवे प्रतिशत बनाते हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "हाइड्रोजन और हीलियम मिलकर ब्रह्मांड के सभी परमाणुओं का लगभग अट्ठानवे प्रतिशत बनाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "भारी तत्व उनकी तुलना में बहुत कम हैं।",
+      "text_markdown": "भारी तत्व उनकी तुलना में बहुत कम हैं।",
+      "title": "तत्व",
+      "tts": {
+        "text": "भारी तत्व उनकी तुलना में बहुत कम हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "हर भारी तत्व का हर परमाणु किसी तारे के अंदर बना था।",
+      "text_markdown": "हर भारी तत्व का हर परमाणु किसी तारे के अंदर बना था।",
+      "title": "तत्व",
+      "tts": {
+        "text": "हर भारी तत्व का हर परमाणु किसी तारे के अंदर बना था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "chapter": 4,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "आवर्त सारणी",
+      "text_markdown": "आवर्त सारणी",
+      "title": "आवर्त सारणी"
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "आवर्त सारणी एक चार्ट है जो हर ज्ञात तत्व को व्यवस्थित करता है।",
+      "text_markdown": "आवर्त सारणी एक चार्ट है जो हर ज्ञात तत्व को व्यवस्थित करता है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "आवर्त सारणी एक चार्ट है जो हर ज्ञात तत्व को व्यवस्थित करता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "यह सारणी तत्वों को उनके प्रोटॉनों की संख्या के अनुसार, सबसे कम से सबसे ज़्यादा तक व्यवस्थित करती है।",
+      "text_markdown": "यह सारणी तत्वों को उनके प्रोटॉनों की संख्या के अनुसार, सबसे कम से सबसे ज़्यादा तक व्यवस्थित करती है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "यह सारणी तत्वों को उनके प्रोटॉनों की संख्या के अनुसार, सबसे कम से सबसे ज़्यादा तक व्यवस्थित करती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "हाइड्रोजन एक प्रोटॉन के साथ पहले नंबर पर है।",
+      "text_markdown": "हाइड्रोजन एक प्रोटॉन के साथ पहले नंबर पर है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हाइड्रोजन एक प्रोटॉन के साथ पहले नंबर पर है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "हीलियम दो प्रोटॉन के साथ दूसरे नंबर पर है।",
+      "text_markdown": "हीलियम दो प्रोटॉन के साथ दूसरे नंबर पर है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हीलियम दो प्रोटॉन के साथ दूसरे नंबर पर है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "यह सारणी ओगानेसन तक जाती है जिसमें एक सौ अठारह प्रोटॉन हैं।",
+      "text_markdown": "यह सारणी ओगानेसन तक जाती है जिसमें एक सौ अठारह प्रोटॉन हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "यह सारणी ओगानेसन तक जाती है जिसमें एक सौ अठारह प्रोटॉन हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "आवर्त सारणी में पंक्तियाँ और स्तंभ होते हैं।",
+      "text_markdown": "आवर्त सारणी में पंक्तियाँ और स्तंभ होते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "आवर्त सारणी में पंक्तियाँ और स्तंभ होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "पंक्तियों को आवर्त कहते हैं।",
+      "text_markdown": "पंक्तियों को आवर्त कहते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "पंक्तियों को आवर्त कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "स्तंभों को वर्ग कहते हैं।",
+      "text_markdown": "स्तंभों को वर्ग कहते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "स्तंभों को वर्ग कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "एक ही वर्ग के तत्वों के गुण एक जैसे होते हैं।",
+      "text_markdown": "एक ही वर्ग के तत्वों के गुण एक जैसे होते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "एक ही वर्ग के तत्वों के गुण एक जैसे होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "इसीलिए इस सारणी को आवर्त सारणी कहते हैं।",
+      "text_markdown": "इसीलिए इस सारणी को आवर्त सारणी कहते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "इसीलिए इस सारणी को आवर्त सारणी कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "गुण एक नियमित पैटर्न में दोहराते हैं।",
+      "text_markdown": "गुण एक नियमित पैटर्न में दोहराते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "गुण एक नियमित पैटर्न में दोहराते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "सारणी के बाईं ओर के तत्व धातुएँ हैं।",
+      "text_markdown": "सारणी के बाईं ओर के तत्व धातुएँ हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सारणी के बाईं ओर के तत्व धातुएँ हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "ज़्यादातर तत्व धातुएँ हैं।",
+      "text_markdown": "ज़्यादातर तत्व धातुएँ हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "ज़्यादातर तत्व धातुएँ हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "धातुएँ चमकदार होती हैं।",
+      "text_markdown": "धातुएँ चमकदार होती हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "धातुएँ चमकदार होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "धातुएँ बिजली का संचालन करती हैं।",
+      "text_markdown": "धातुएँ बिजली का संचालन करती हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "धातुएँ बिजली का संचालन करती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "धातुएँ ऊष्मा का संचालन करती हैं।",
+      "text_markdown": "धातुएँ ऊष्मा का संचालन करती हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "धातुएँ ऊष्मा का संचालन करती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "लोहा, ताँबा, सोना और एल्युमिनियम सब धातुएँ हैं।",
+      "text_markdown": "लोहा, ताँबा, सोना और एल्युमिनियम सब धातुएँ हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "लोहा, ताँबा, सोना और एल्युमिनियम सब धातुएँ हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "सारणी के दाईं ओर के तत्व अधातुएँ हैं।",
+      "text_markdown": "सारणी के दाईं ओर के तत्व अधातुएँ हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सारणी के दाईं ओर के तत्व अधातुएँ हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "अधातुओं में ऑक्सीजन, नाइट्रोजन, कार्बन और सल्फ़र शामिल हैं।",
+      "text_markdown": "अधातुओं में ऑक्सीजन, नाइट्रोजन, कार्बन और सल्फ़र शामिल हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "अधातुओं में ऑक्सीजन, नाइट्रोजन, कार्बन और सल्फ़र शामिल हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "अधातुएँ बिजली का अच्छा संचालन नहीं करतीं।",
+      "text_markdown": "अधातुएँ बिजली का अच्छा संचालन नहीं करतीं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "अधातुएँ बिजली का अच्छा संचालन नहीं करतीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "अधातुएँ वे तत्व हैं जो हवा, पानी और जीवित चीज़ों को बनाते हैं।",
+      "text_markdown": "अधातुएँ वे तत्व हैं जो हवा, पानी और जीवित चीज़ों को बनाते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "अधातुएँ वे तत्व हैं जो हवा, पानी और जीवित चीज़ों को बनाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "कुछ तत्व धातुओं और अधातुओं की सीमा पर होते हैं।",
+      "text_markdown": "कुछ तत्व धातुओं और अधातुओं की सीमा पर होते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "कुछ तत्व धातुओं और अधातुओं की सीमा पर होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "इन तत्वों को उपधातु कहते हैं।",
+      "text_markdown": "इन तत्वों को उपधातु कहते हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "इन तत्वों को उपधातु कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "सिलिकॉन एक उपधातु है।",
+      "text_markdown": "सिलिकॉन एक उपधातु है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सिलिकॉन एक उपधातु है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "सिलिकॉन थोड़ी-सी बिजली का संचालन करता है, लेकिन उतना अच्छा नहीं जितना कोई धातु।",
+      "text_markdown": "सिलिकॉन थोड़ी-सी बिजली का संचालन करता है, लेकिन उतना अच्छा नहीं जितना कोई धातु।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "सिलिकॉन थोड़ी-सी बिजली का संचालन करता है, लेकिन उतना अच्छा नहीं जितना कोई धातु।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "यह गुण सिलिकॉन को कंप्यूटर चिप्स में उपयोगी बनाता है।",
+      "text_markdown": "यह गुण सिलिकॉन को कंप्यूटर चिप्स में उपयोगी बनाता है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "यह गुण सिलिकॉन को कंप्यूटर चिप्स में उपयोगी बनाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "नोबल गैसें सबसे दाईं ओर के आखिरी स्तंभ में होती हैं।",
+      "text_markdown": "नोबल गैसें सबसे दाईं ओर के आखिरी स्तंभ में होती हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "नोबल गैसें सबसे दाईं ओर के आखिरी स्तंभ में होती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "हीलियम, नियॉन, आर्गन, क्रिप्टॉन, ज़ीनॉन और रेडॉन नोबल गैसें हैं।",
+      "text_markdown": "हीलियम, नियॉन, आर्गन, क्रिप्टॉन, ज़ीनॉन और रेडॉन नोबल गैसें हैं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हीलियम, नियॉन, आर्गन, क्रिप्टॉन, ज़ीनॉन और रेडॉन नोबल गैसें हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "नोबल गैसें दूसरे तत्वों के साथ लगभग कभी प्रतिक्रिया नहीं करतीं।",
+      "text_markdown": "नोबल गैसें दूसरे तत्वों के साथ लगभग कभी प्रतिक्रिया नहीं करतीं।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "नोबल गैसें दूसरे तत्वों के साथ लगभग कभी प्रतिक्रिया नहीं करतीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "उनके इलेक्ट्रॉनों की व्यवस्था पहले से स्थिर होती है।",
+      "text_markdown": "उनके इलेक्ट्रॉनों की व्यवस्था पहले से स्थिर होती है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "उनके इलेक्ट्रॉनों की व्यवस्था पहले से स्थिर होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "उन्हें बंधन बनाने की ज़रूरत नहीं होती।",
+      "text_markdown": "उन्हें बंधन बनाने की ज़रूरत नहीं होती।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "उन्हें बंधन बनाने की ज़रूरत नहीं होती।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "दमित्री मेंडेलीव नाम के एक रूसी वैज्ञानिक ने 1869 में पहली आवर्त सारणी बनाई।",
+      "text_markdown": "दमित्री मेंडेलीव नाम के एक रूसी वैज्ञानिक ने 1869 में पहली आवर्त सारणी बनाई।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "दमित्री मेंडेलीव नाम के एक रूसी वैज्ञानिक ने अठारह सौ उनहत्तर में पहली आवर्त सारणी बनाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "मेंडेलीव ने तत्वों को उनके गुणों के अनुसार व्यवस्थित किया और दोहराते हुए पैटर्न को देखा।",
+      "text_markdown": "मेंडेलीव ने तत्वों को उनके गुणों के अनुसार व्यवस्थित किया और दोहराते हुए पैटर्न को देखा।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "मेंडेलीव ने तत्वों को उनके गुणों के अनुसार व्यवस्थित किया और दोहराते हुए पैटर्न को देखा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "उन्होंने अपनी सारणी में उन जगहों पर खाली स्थान छोड़ दिए जहाँ उनके अनुसार अनजान तत्व होने चाहिए थे।",
+      "text_markdown": "उन्होंने अपनी सारणी में उन जगहों पर खाली स्थान छोड़ दिए जहाँ उनके अनुसार अनजान तत्व होने चाहिए थे।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "उन्होंने अपनी सारणी में उन जगहों पर खाली स्थान छोड़ दिए जहाँ उनके अनुसार अनजान तत्व होने चाहिए थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "वैज्ञानिकों ने बाद में उन तत्वों की खोज की।",
+      "text_markdown": "वैज्ञानिकों ने बाद में उन तत्वों की खोज की।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "वैज्ञानिकों ने बाद में उन तत्वों की खोज की।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "हर भविष्यवाणी सही निकली।",
+      "text_markdown": "हर भविष्यवाणी सही निकली।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "हर भविष्यवाणी सही निकली।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "आवर्त सारणी विज्ञान के सबसे शक्तिशाली उपकरणों में से एक है।",
+      "text_markdown": "आवर्त सारणी विज्ञान के सबसे शक्तिशाली उपकरणों में से एक है।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "आवर्त सारणी विज्ञान के सबसे शक्तिशाली उपकरणों में से एक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "अगर तुम जानते हो कि कोई तत्व सारणी में कहाँ है, तो तुम बता सकते हो कि वह कैसा व्यवहार करेगा।",
+      "text_markdown": "अगर तुम जानते हो कि कोई तत्व सारणी में कहाँ है, तो तुम बता सकते हो कि वह कैसा व्यवहार करेगा।",
+      "title": "आवर्त सारणी",
+      "tts": {
+        "text": "अगर तुम जानते हो कि कोई तत्व सारणी में कहाँ है, तो तुम बता सकते हो कि वह कैसा व्यवहार करेगा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "chapter": 5,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "परमाणु कैसे जुड़ते हैं",
+      "text_markdown": "परमाणु कैसे जुड़ते हैं",
+      "title": "परमाणु कैसे जुड़ते हैं"
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "परमाणु शायद ही कभी अकेले रहते हैं।",
+      "text_markdown": "परमाणु शायद ही कभी अकेले रहते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "परमाणु शायद ही कभी अकेले रहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "ज़्यादातर परमाणु दूसरे परमाणुओं से जुड़कर अणु बनाते हैं।",
+      "text_markdown": "ज़्यादातर परमाणु दूसरे परमाणुओं से जुड़कर अणु बनाते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "ज़्यादातर परमाणु दूसरे परमाणुओं से जुड़कर अणु बनाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "अणु, परमाणुओं का एक समूह है जो रासायनिक बंधनों से एक साथ जुड़े होते हैं।",
+      "text_markdown": "अणु, परमाणुओं का एक समूह है जो रासायनिक बंधनों से एक साथ जुड़े होते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "अणु, परमाणुओं का एक समूह है जो रासायनिक बंधनों से एक साथ जुड़े होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "पानी एक अणु है।",
+      "text_markdown": "पानी एक अणु है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "पानी एक अणु है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "ऑक्सीजन गैस एक अणु है।",
+      "text_markdown": "ऑक्सीजन गैस एक अणु है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "ऑक्सीजन गैस एक अणु है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "चीनी एक अणु है।",
+      "text_markdown": "चीनी एक अणु है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "चीनी एक अणु है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "परमाणु अपने इलेक्ट्रॉनों की वजह से जुड़ते हैं।",
+      "text_markdown": "परमाणु अपने इलेक्ट्रॉनों की वजह से जुड़ते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "परमाणु अपने इलेक्ट्रॉनों की वजह से जुड़ते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "किसी परमाणु के सबसे बाहरी कोश में मौजूद इलेक्ट्रॉन यह तय करते हैं कि वह परमाणु दूसरे परमाणुओं से कैसे मिलेगा।",
+      "text_markdown": "किसी परमाणु के सबसे बाहरी कोश में मौजूद इलेक्ट्रॉन यह तय करते हैं कि वह परमाणु दूसरे परमाणुओं से कैसे मिलेगा।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "किसी परमाणु के सबसे बाहरी कोश में मौजूद इलेक्ट्रॉन यह तय करते हैं कि वह परमाणु दूसरे परमाणुओं से कैसे मिलेगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "इन बाहरी इलेक्ट्रॉनों को संयोजकता इलेक्ट्रॉन कहते हैं।",
+      "text_markdown": "इन बाहरी इलेक्ट्रॉनों को संयोजकता इलेक्ट्रॉन कहते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "इन बाहरी इलेक्ट्रॉनों को संयोजकता इलेक्ट्रॉन कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "जिस परमाणु का बाहरी कोश भरा हो, वह स्थिर होता है।",
+      "text_markdown": "जिस परमाणु का बाहरी कोश भरा हो, वह स्थिर होता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "जिस परमाणु का बाहरी कोश भरा हो, वह स्थिर होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "जिस परमाणु का बाहरी कोश भरा न हो, वह उसे भरने की कोशिश करता है।",
+      "text_markdown": "जिस परमाणु का बाहरी कोश भरा न हो, वह उसे भरने की कोशिश करता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "जिस परमाणु का बाहरी कोश भरा न हो, वह उसे भरने की कोशिश करता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "रासायनिक बंधन दो मुख्य प्रकार के होते हैं।",
+      "text_markdown": "रासायनिक बंधन दो मुख्य प्रकार के होते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "रासायनिक बंधन दो मुख्य प्रकार के होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "सहसंयोजक बंधन और आयनिक बंधन।",
+      "text_markdown": "सहसंयोजक बंधन और आयनिक बंधन।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "सहसंयोजक बंधन और आयनिक बंधन।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "सहसंयोजक बंधन में दो परमाणु इलेक्ट्रॉन साझा करते हैं।",
+      "text_markdown": "सहसंयोजक बंधन में दो परमाणु इलेक्ट्रॉन साझा करते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "सहसंयोजक बंधन में दो परमाणु इलेक्ट्रॉन साझा करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "दोनों परमाणु एक साझा जोड़ी में इलेक्ट्रॉन देते हैं।",
+      "text_markdown": "दोनों परमाणु एक साझा जोड़ी में इलेक्ट्रॉन देते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "दोनों परमाणु एक साझा जोड़ी में इलेक्ट्रॉन देते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "साझा किए गए इलेक्ट्रॉन दोनों नाभिकों के चारों ओर घूमते हैं।",
+      "text_markdown": "साझा किए गए इलेक्ट्रॉन दोनों नाभिकों के चारों ओर घूमते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "साझा किए गए इलेक्ट्रॉन दोनों नाभिकों के चारों ओर घूमते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "यह साझेदारी परमाणुओं को एक साथ बाँधे रखती है।",
+      "text_markdown": "यह साझेदारी परमाणुओं को एक साथ बाँधे रखती है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "यह साझेदारी परमाणुओं को एक साथ बाँधे रखती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "पानी सहसंयोजक बंधनों से जुड़ा होता है।",
+      "text_markdown": "पानी सहसंयोजक बंधनों से जुड़ा होता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "पानी सहसंयोजक बंधनों से जुड़ा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "हर हाइड्रोजन परमाणु, ऑक्सीजन परमाणु के साथ एक इलेक्ट्रॉन साझा करता है।",
+      "text_markdown": "हर हाइड्रोजन परमाणु, ऑक्सीजन परमाणु के साथ एक इलेक्ट्रॉन साझा करता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "हर हाइड्रोजन परमाणु, ऑक्सीजन परमाणु के साथ एक इलेक्ट्रॉन साझा करता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "आयनिक बंधन में एक परमाणु दूसरे परमाणु को इलेक्ट्रॉन दे देता है।",
+      "text_markdown": "आयनिक बंधन में एक परमाणु दूसरे परमाणु को इलेक्ट्रॉन दे देता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "आयनिक बंधन में एक परमाणु दूसरे परमाणु को इलेक्ट्रॉन दे देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "जो परमाणु इलेक्ट्रॉन खोता है, वह धनात्मक आवेश वाला हो जाता है।",
+      "text_markdown": "जो परमाणु इलेक्ट्रॉन खोता है, वह धनात्मक आवेश वाला हो जाता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "जो परमाणु इलेक्ट्रॉन खोता है, वह धनात्मक आवेश वाला हो जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "जो परमाणु इलेक्ट्रॉन पाता है, वह ऋणात्मक आवेश वाला हो जाता है।",
+      "text_markdown": "जो परमाणु इलेक्ट्रॉन पाता है, वह ऋणात्मक आवेश वाला हो जाता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "जो परमाणु इलेक्ट्रॉन पाता है, वह ऋणात्मक आवेश वाला हो जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "विपरीत आवेश एक-दूसरे को खींचते हैं।",
+      "text_markdown": "विपरीत आवेश एक-दूसरे को खींचते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "विपरीत आवेश एक-दूसरे को खींचते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "यह खिंचाव दोनों परमाणुओं को एक साथ बाँधे रखता है।",
+      "text_markdown": "यह खिंचाव दोनों परमाणुओं को एक साथ बाँधे रखता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "यह खिंचाव दोनों परमाणुओं को एक साथ बाँधे रखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "नमक आयनिक बंधनों से जुड़ा होता है।",
+      "text_markdown": "नमक आयनिक बंधनों से जुड़ा होता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "नमक आयनिक बंधनों से जुड़ा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "सोडियम, क्लोरीन को एक इलेक्ट्रॉन दे देता है।",
+      "text_markdown": "सोडियम, क्लोरीन को एक इलेक्ट्रॉन दे देता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "सोडियम, क्लोरीन को एक इलेक्ट्रॉन दे देता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "पानी के एक अणु में दो हाइड्रोजन परमाणु और एक ऑक्सीजन परमाणु होता है।",
+      "text_markdown": "पानी के एक अणु में दो हाइड्रोजन परमाणु और एक ऑक्सीजन परमाणु होता है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "पानी के एक अणु में दो हाइड्रोजन परमाणु और एक ऑक्सीजन परमाणु होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "वैज्ञानिक इसे H2O लिखते हैं।",
+      "text_markdown": "वैज्ञानिक इसे H2O लिखते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "वैज्ञानिक इसे एच दो ओ लिखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "H हाइड्रोजन के लिए है।",
+      "text_markdown": "H हाइड्रोजन के लिए है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "एच हाइड्रोजन के लिए है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "O ऑक्सीजन के लिए है।",
+      "text_markdown": "O ऑक्सीजन के लिए है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "ओ ऑक्सीजन के लिए है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "2 का मतलब है कि दो हाइड्रोजन परमाणु हैं।",
+      "text_markdown": "2 का मतलब है कि दो हाइड्रोजन परमाणु हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "दो का मतलब है कि दो हाइड्रोजन परमाणु हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "कार्बन डाइऑक्साइड के एक अणु में एक कार्बन परमाणु और दो ऑक्सीजन परमाणु होते हैं।",
+      "text_markdown": "कार्बन डाइऑक्साइड के एक अणु में एक कार्बन परमाणु और दो ऑक्सीजन परमाणु होते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "कार्बन डाइऑक्साइड के एक अणु में एक कार्बन परमाणु और दो ऑक्सीजन परमाणु होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "वैज्ञानिक इसे CO2 लिखते हैं।",
+      "text_markdown": "वैज्ञानिक इसे CO2 लिखते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "वैज्ञानिक इसे सी ओ दो लिखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "पौधे हवा से कार्बन डाइऑक्साइड लेते हैं और उससे शक्कर के अणु बनाते हैं।",
+      "text_markdown": "पौधे हवा से कार्बन डाइऑक्साइड लेते हैं और उससे शक्कर के अणु बनाते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "पौधे हवा से कार्बन डाइऑक्साइड लेते हैं और उससे शक्कर के अणु बनाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "परमाणुओं के बीच के बंधनों में ऊर्जा जमा होती है।",
+      "text_markdown": "परमाणुओं के बीच के बंधनों में ऊर्जा जमा होती है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "परमाणुओं के बीच के बंधनों में ऊर्जा जमा होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "जब बंधन टूटते हैं, तो ऊर्जा निकलती है।",
+      "text_markdown": "जब बंधन टूटते हैं, तो ऊर्जा निकलती है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "जब बंधन टूटते हैं, तो ऊर्जा निकलती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "जब बंधन बनते हैं, तो ऊर्जा सोखी जाती है।",
+      "text_markdown": "जब बंधन बनते हैं, तो ऊर्जा सोखी जाती है।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "जब बंधन बनते हैं, तो ऊर्जा सोखी जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "ब्रह्मांड की हर रासायनिक प्रतिक्रिया में पुराने बंधन टूटते हैं और नए बनते हैं।",
+      "text_markdown": "ब्रह्मांड की हर रासायनिक प्रतिक्रिया में पुराने बंधन टूटते हैं और नए बनते हैं।",
+      "title": "परमाणु कैसे जुड़ते हैं",
+      "tts": {
+        "text": "ब्रह्मांड की हर रासायनिक प्रतिक्रिया में पुराने बंधन टूटते हैं और नए बनते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "chapter": 6,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "गति में परमाणु",
+      "text_markdown": "गति में परमाणु",
+      "title": "गति में परमाणु"
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "परमाणु हमेशा गति में रहते हैं।",
+      "text_markdown": "परमाणु हमेशा गति में रहते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "परमाणु हमेशा गति में रहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वे कभी नहीं रुकते।",
+      "text_markdown": "वे कभी नहीं रुकते।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वे कभी नहीं रुकते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "परम शून्य से ऊपर किसी भी तापमान पर, परमाणु कंपन करते हैं, घूमते हैं और अंतरिक्ष में चलते रहते हैं।",
+      "text_markdown": "परम शून्य से ऊपर किसी भी तापमान पर, परमाणु कंपन करते हैं, घूमते हैं और अंतरिक्ष में चलते रहते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "परम शून्य से ऊपर किसी भी तापमान पर, परमाणु कंपन करते हैं, घूमते हैं और अंतरिक्ष में चलते रहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "इसी गति को हम ऊष्मा के रूप में महसूस करते हैं।",
+      "text_markdown": "इसी गति को हम ऊष्मा के रूप में महसूस करते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "इसी गति को हम ऊष्मा के रूप में महसूस करते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "ठोस पदार्थ में परमाणु अपनी जगह पर कंपन करते हैं।",
+      "text_markdown": "ठोस पदार्थ में परमाणु अपनी जगह पर कंपन करते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "ठोस पदार्थ में परमाणु अपनी जगह पर कंपन करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वे एक निश्चित ढाँचे में बंधे होते हैं।",
+      "text_markdown": "वे एक निश्चित ढाँचे में बंधे होते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वे एक निश्चित ढाँचे में बंधे होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वे आगे-पीछे हिलते हैं, लेकिन अपनी जगह नहीं छोड़ते।",
+      "text_markdown": "वे आगे-पीछे हिलते हैं, लेकिन अपनी जगह नहीं छोड़ते।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वे आगे-पीछे हिलते हैं, लेकिन अपनी जगह नहीं छोड़ते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "इसीलिए ठोस पदार्थ अपना आकार बनाए रखते हैं।",
+      "text_markdown": "इसीलिए ठोस पदार्थ अपना आकार बनाए रखते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "इसीलिए ठोस पदार्थ अपना आकार बनाए रखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "बर्फ़ के एक टुकड़े में परमाणु कंपन करते हैं, लेकिन वे एक कठोर क्रिस्टल पैटर्न में बने रहते हैं।",
+      "text_markdown": "बर्फ़ के एक टुकड़े में परमाणु कंपन करते हैं, लेकिन वे एक कठोर क्रिस्टल पैटर्न में बने रहते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "बर्फ़ के एक टुकड़े में परमाणु कंपन करते हैं, लेकिन वे एक कठोर क्रिस्टल पैटर्न में बने रहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "तरल में परमाणु ज़्यादा आज़ादी से चलते हैं।",
+      "text_markdown": "तरल में परमाणु ज़्यादा आज़ादी से चलते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "तरल में परमाणु ज़्यादा आज़ादी से चलते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वे एक-दूसरे के ऊपर से फिसलते हैं।",
+      "text_markdown": "वे एक-दूसरे के ऊपर से फिसलते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वे एक-दूसरे के ऊपर से फिसलते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वे पास-पास रहते हैं, लेकिन एक जगह पर बंधे नहीं होते।",
+      "text_markdown": "वे पास-पास रहते हैं, लेकिन एक जगह पर बंधे नहीं होते।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वे पास-पास रहते हैं, लेकिन एक जगह पर बंधे नहीं होते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "इसीलिए तरल बहते हैं।",
+      "text_markdown": "इसीलिए तरल बहते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "इसीलिए तरल बहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "एक गिलास पानी में परमाणु लगातार चल रहे होते हैं और जगह बदल रहे होते हैं, लेकिन वे एक-दूसरे के पास बने रहते हैं।",
+      "text_markdown": "एक गिलास पानी में परमाणु लगातार चल रहे होते हैं और जगह बदल रहे होते हैं, लेकिन वे एक-दूसरे के पास बने रहते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "एक गिलास पानी में परमाणु लगातार चल रहे होते हैं और जगह बदल रहे होते हैं, लेकिन वे एक-दूसरे के पास बने रहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "गैस में परमाणु तेज़ चलते हैं और फैल जाते हैं।",
+      "text_markdown": "गैस में परमाणु तेज़ चलते हैं और फैल जाते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "गैस में परमाणु तेज़ चलते हैं और फैल जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वे सीधी रेखा में उड़ते हैं जब तक किसी दूसरे परमाणु या दीवार से न टकराएँ।",
+      "text_markdown": "वे सीधी रेखा में उड़ते हैं जब तक किसी दूसरे परमाणु या दीवार से न टकराएँ।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वे सीधी रेखा में उड़ते हैं जब तक किसी दूसरे परमाणु या दीवार से न टकराएँ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वे एक-दूसरे से टकराकर दिशा बदल लेते हैं।",
+      "text_markdown": "वे एक-दूसरे से टकराकर दिशा बदल लेते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वे एक-दूसरे से टकराकर दिशा बदल लेते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "इसीलिए गैस किसी भी बर्तन को भर देती है जिसमें तुम उसे डालो।",
+      "text_markdown": "इसीलिए गैस किसी भी बर्तन को भर देती है जिसमें तुम उसे डालो।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "इसीलिए गैस किसी भी बर्तन को भर देती है जिसमें तुम उसे डालो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "एक कमरे भर हवा में परमाणु हर दिशा में सैकड़ों मीटर प्रति सेकंड की रफ़्तार से उड़ रहे होते हैं।",
+      "text_markdown": "एक कमरे भर हवा में परमाणु हर दिशा में सैकड़ों मीटर प्रति सेकंड की रफ़्तार से उड़ रहे होते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "एक कमरे भर हवा में परमाणु हर दिशा में सैकड़ों मीटर प्रति सेकंड की रफ़्तार से उड़ रहे होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "तापमान इस बात का माप है कि परमाणु कितनी तेज़ी से चल रहे हैं।",
+      "text_markdown": "तापमान इस बात का माप है कि परमाणु कितनी तेज़ी से चल रहे हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "तापमान इस बात का माप है कि परमाणु कितनी तेज़ी से चल रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "गर्म का मतलब है कि परमाणु तेज़ चल रहे हैं।",
+      "text_markdown": "गर्म का मतलब है कि परमाणु तेज़ चल रहे हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "गर्म का मतलब है कि परमाणु तेज़ चल रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "ठंडा का मतलब है कि परमाणु धीमे चल रहे हैं।",
+      "text_markdown": "ठंडा का मतलब है कि परमाणु धीमे चल रहे हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "ठंडा का मतलब है कि परमाणु धीमे चल रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "जब तुम चूल्हे पर पानी गरम करते हो, तो तुम पानी के अणुओं को तेज़ चलने पर मजबूर कर रहे हो।",
+      "text_markdown": "जब तुम चूल्हे पर पानी गरम करते हो, तो तुम पानी के अणुओं को तेज़ चलने पर मजबूर कर रहे हो।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "जब तुम चूल्हे पर पानी गरम करते हो, तो तुम पानी के अणुओं को तेज़ चलने पर मजबूर कर रहे हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "जब अणु काफ़ी तेज़ चलने लगते हैं, तो वे तरल से निकलकर भाप बन जाते हैं।",
+      "text_markdown": "जब अणु काफ़ी तेज़ चलने लगते हैं, तो वे तरल से निकलकर भाप बन जाते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "जब अणु काफ़ी तेज़ चलने लगते हैं, तो वे तरल से निकलकर भाप बन जाते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "परम शून्य सबसे ठंडा संभव तापमान है।",
+      "text_markdown": "परम शून्य सबसे ठंडा संभव तापमान है।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "परम शून्य सबसे ठंडा संभव तापमान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "यह लगभग माइनस 273 डिग्री सेल्सियस है।",
+      "text_markdown": "यह लगभग माइनस 273 डिग्री सेल्सियस है।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "यह लगभग माइनस दो सौ तिहत्तर डिग्री सेल्सियस है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "परम शून्य पर परमाणुओं में न्यूनतम संभव ऊर्जा होती है।",
+      "text_markdown": "परम शून्य पर परमाणुओं में न्यूनतम संभव ऊर्जा होती है।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "परम शून्य पर परमाणुओं में न्यूनतम संभव ऊर्जा होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "परम शून्य से ज़्यादा ठंडा कुछ नहीं हो सकता।",
+      "text_markdown": "परम शून्य से ज़्यादा ठंडा कुछ नहीं हो सकता।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "परम शून्य से ज़्यादा ठंडा कुछ नहीं हो सकता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "वैज्ञानिक प्रयोगशालाओं में परम शून्य के बहुत करीब पहुँच चुके हैं, लेकिन अभी तक कोई भी ठीक उस तापमान तक नहीं पहुँचा है।",
+      "text_markdown": "वैज्ञानिक प्रयोगशालाओं में परम शून्य के बहुत करीब पहुँच चुके हैं, लेकिन अभी तक कोई भी ठीक उस तापमान तक नहीं पहुँचा है।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "वैज्ञानिक प्रयोगशालाओं में परम शून्य के बहुत करीब पहुँच चुके हैं, लेकिन अभी तक कोई भी ठीक उस तापमान तक नहीं पहुँचा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "दबाव परमाणुओं के सतहों से टकराने से बनता है।",
+      "text_markdown": "दबाव परमाणुओं के सतहों से टकराने से बनता है।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "दबाव परमाणुओं के सतहों से टकराने से बनता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "टायर के अंदर की हवा बाहर की ओर धकेलती है क्योंकि हवा के अणु लगातार टायर की अंदरूनी दीवारों से टकरा रहे होते हैं।",
+      "text_markdown": "टायर के अंदर की हवा बाहर की ओर धकेलती है क्योंकि हवा के अणु लगातार टायर की अंदरूनी दीवारों से टकरा रहे होते हैं।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "टायर के अंदर की हवा बाहर की ओर धकेलती है क्योंकि हवा के अणु लगातार टायर की अंदरूनी दीवारों से टकरा रहे होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "ज़्यादा अणु या तेज़ अणु का मतलब है ज़्यादा दबाव।",
+      "text_markdown": "ज़्यादा अणु या तेज़ अणु का मतलब है ज़्यादा दबाव।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "ज़्यादा अणु या तेज़ अणु का मतलब है ज़्यादा दबाव।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "इसीलिए गर्म हवा में टायर ज़्यादा सख़्त महसूस होता है।",
+      "text_markdown": "इसीलिए गर्म हवा में टायर ज़्यादा सख़्त महसूस होता है।",
+      "title": "गति में परमाणु",
+      "tts": {
+        "text": "इसीलिए गर्म हवा में टायर ज़्यादा सख़्त महसूस होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "chapter": 7,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "परमाणु कहाँ से आते हैं",
+      "text_markdown": "परमाणु कहाँ से आते हैं",
+      "title": "परमाणु कहाँ से आते हैं"
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "ब्रह्मांड में मौजूद हाइड्रोजन और हीलियम बिग बैंग के बाद के पहले कुछ मिनटों में बने थे।",
+      "text_markdown": "ब्रह्मांड में मौजूद हाइड्रोजन और हीलियम बिग बैंग के बाद के पहले कुछ मिनटों में बने थे।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "ब्रह्मांड में मौजूद हाइड्रोजन और हीलियम बिग बैंग के बाद के पहले कुछ मिनटों में बने थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "ब्रह्मांड की शुरुआत लगभग 13.8 अरब साल पहले एक अविश्वसनीय रूप से गर्म और घने बिंदु से हुई।",
+      "text_markdown": "ब्रह्मांड की शुरुआत लगभग 13.8 अरब साल पहले एक अविश्वसनीय रूप से गर्म और घने बिंदु से हुई।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "ब्रह्मांड की शुरुआत लगभग तेरह दशमलव आठ अरब साल पहले एक अविश्वसनीय रूप से गर्म और घने बिंदु से हुई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "जैसे-जैसे यह फैला और ठंडा हुआ, प्रोटॉन और न्यूट्रॉन बने।",
+      "text_markdown": "जैसे-जैसे यह फैला और ठंडा हुआ, प्रोटॉन और न्यूट्रॉन बने।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "जैसे-जैसे यह फैला और ठंडा हुआ, प्रोटॉन और न्यूट्रॉन बने।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "वे प्रोटॉन और न्यूट्रॉन मिलकर सबसे सरल नाभिक बने।",
+      "text_markdown": "वे प्रोटॉन और न्यूट्रॉन मिलकर सबसे सरल नाभिक बने।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "वे प्रोटॉन और न्यूट्रॉन मिलकर सबसे सरल नाभिक बने।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "हाइड्रोजन और हीलियम पहले तत्व थे।",
+      "text_markdown": "हाइड्रोजन और हीलियम पहले तत्व थे।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "हाइड्रोजन और हीलियम पहले तत्व थे।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "लाखों सालों तक ब्रह्मांड हाइड्रोजन और हीलियम गैस का एक बादल था।",
+      "text_markdown": "लाखों सालों तक ब्रह्मांड हाइड्रोजन और हीलियम गैस का एक बादल था।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "लाखों सालों तक ब्रह्मांड हाइड्रोजन और हीलियम गैस का एक बादल था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "फिर गुरुत्वाकर्षण ने गैस को इकट्ठा करके गुच्छों में बदल दिया।",
+      "text_markdown": "फिर गुरुत्वाकर्षण ने गैस को इकट्ठा करके गुच्छों में बदल दिया।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "फिर गुरुत्वाकर्षण ने गैस को इकट्ठा करके गुच्छों में बदल दिया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "गुच्छे ज़्यादा घने और गर्म होते गए।",
+      "text_markdown": "गुच्छे ज़्यादा घने और गर्म होते गए।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "गुच्छे ज़्यादा घने और गर्म होते गए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "जब किसी गुच्छे का केंद्र लगभग एक करोड़ डिग्री तक पहुँचा, तो नाभिकीय संलयन शुरू हो गया।",
+      "text_markdown": "जब किसी गुच्छे का केंद्र लगभग एक करोड़ डिग्री तक पहुँचा, तो नाभिकीय संलयन शुरू हो गया।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "जब किसी गुच्छे का केंद्र लगभग एक करोड़ डिग्री तक पहुँचा, तो नाभिकीय संलयन शुरू हो गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "एक तारे का जन्म हुआ।",
+      "text_markdown": "एक तारे का जन्म हुआ।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "एक तारे का जन्म हुआ।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "तारे परमाणुओं की फ़ैक्ट्री हैं।",
+      "text_markdown": "तारे परमाणुओं की फ़ैक्ट्री हैं।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "तारे परमाणुओं की फ़ैक्ट्री हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "एक तारे के अंदर, हाइड्रोजन परमाणु जुड़कर हीलियम बनाते हैं।",
+      "text_markdown": "एक तारे के अंदर, हाइड्रोजन परमाणु जुड़कर हीलियम बनाते हैं।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "एक तारे के अंदर, हाइड्रोजन परमाणु जुड़कर हीलियम बनाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "इस संलयन से बहुत ज़्यादा ऊर्जा निकलती है।",
+      "text_markdown": "इस संलयन से बहुत ज़्यादा ऊर्जा निकलती है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "इस संलयन से बहुत ज़्यादा ऊर्जा निकलती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "इसी ऊर्जा से तारा चमकता है।",
+      "text_markdown": "इसी ऊर्जा से तारा चमकता है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "इसी ऊर्जा से तारा चमकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "हमारा सूरज हर सेकंड लगभग साठ करोड़ टन हाइड्रोजन को हीलियम में बदलता है।",
+      "text_markdown": "हमारा सूरज हर सेकंड लगभग साठ करोड़ टन हाइड्रोजन को हीलियम में बदलता है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "हमारा सूरज हर सेकंड लगभग साठ करोड़ टन हाइड्रोजन को हीलियम में बदलता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "बड़े तारे भारी तत्वों का संलयन करते हैं।",
+      "text_markdown": "बड़े तारे भारी तत्वों का संलयन करते हैं।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "बड़े तारे भारी तत्वों का संलयन करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "जब कोई तारा अपनी हाइड्रोजन जला चुकता है, तो वह हीलियम को कार्बन में बदलने लगता है।",
+      "text_markdown": "जब कोई तारा अपनी हाइड्रोजन जला चुकता है, तो वह हीलियम को कार्बन में बदलने लगता है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "जब कोई तारा अपनी हाइड्रोजन जला चुकता है, तो वह हीलियम को कार्बन में बदलने लगता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "फिर कार्बन को ऑक्सीजन में।",
+      "text_markdown": "फिर कार्बन को ऑक्सीजन में।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "फिर कार्बन को ऑक्सीजन में।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "फिर ऑक्सीजन को सिलिकॉन में।",
+      "text_markdown": "फिर ऑक्सीजन को सिलिकॉन में।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "फिर ऑक्सीजन को सिलिकॉन में।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "फिर सिलिकॉन को लोहे में।",
+      "text_markdown": "फिर सिलिकॉन को लोहे में।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "फिर सिलिकॉन को लोहे में।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "हर चरण में एक भारी तत्व बनता है।",
+      "text_markdown": "हर चरण में एक भारी तत्व बनता है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "हर चरण में एक भारी तत्व बनता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "लोहा सबसे भारी तत्व है जो एक तारा सामान्य संलयन से बना सकता है।",
+      "text_markdown": "लोहा सबसे भारी तत्व है जो एक तारा सामान्य संलयन से बना सकता है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "लोहा सबसे भारी तत्व है जो एक तारा सामान्य संलयन से बना सकता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "लोहे से भारी तत्व तब बनते हैं जब विशाल तारे फटते हैं।",
+      "text_markdown": "लोहे से भारी तत्व तब बनते हैं जब विशाल तारे फटते हैं।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "लोहे से भारी तत्व तब बनते हैं जब विशाल तारे फटते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "इन विस्फोटों को सुपरनोवा कहते हैं।",
+      "text_markdown": "इन विस्फोटों को सुपरनोवा कहते हैं।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "इन विस्फोटों को सुपरनोवा कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "एक सुपरनोवा कुछ ही सेकंड में उतनी ऊर्जा छोड़ता है जितनी सूरज अपने पूरे जीवनकाल में पैदा करेगा।",
+      "text_markdown": "एक सुपरनोवा कुछ ही सेकंड में उतनी ऊर्जा छोड़ता है जितनी सूरज अपने पूरे जीवनकाल में पैदा करेगा।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "एक सुपरनोवा कुछ ही सेकंड में उतनी ऊर्जा छोड़ता है जितनी सूरज अपने पूरे जीवनकाल में पैदा करेगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "सुपरनोवा की भयंकर परिस्थितियों में सोना, चाँदी, प्लैटिनम और यूरेनियम जैसे तत्व बनते हैं।",
+      "text_markdown": "सुपरनोवा की भयंकर परिस्थितियों में सोना, चाँदी, प्लैटिनम और यूरेनियम जैसे तत्व बनते हैं।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "सुपरनोवा की भयंकर परिस्थितियों में सोना, चाँदी, प्लैटिनम और यूरेनियम जैसे तत्व बनते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "विस्फोट इन भारी तत्वों को पूरे अंतरिक्ष में बिखेर देता है।",
+      "text_markdown": "विस्फोट इन भारी तत्वों को पूरे अंतरिक्ष में बिखेर देता है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "विस्फोट इन भारी तत्वों को पूरे अंतरिक्ष में बिखेर देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "ये तत्व हाइड्रोजन और हीलियम गैस के बादलों में मिल जाते हैं।",
+      "text_markdown": "ये तत्व हाइड्रोजन और हीलियम गैस के बादलों में मिल जाते हैं।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "ये तत्व हाइड्रोजन और हीलियम गैस के बादलों में मिल जाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "आख़िरकार, गुरुत्वाकर्षण इस समृद्ध गैस को इकट्ठा करके नए तारे और ग्रह बनाता है।",
+      "text_markdown": "आख़िरकार, गुरुत्वाकर्षण इस समृद्ध गैस को इकट्ठा करके नए तारे और ग्रह बनाता है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "आख़िरकार, गुरुत्वाकर्षण इस समृद्ध गैस को इकट्ठा करके नए तारे और ग्रह बनाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "हमारा सौर मंडल लगभग 4.6 अरब साल पहले ऐसे ही एक समृद्ध बादल से बना।",
+      "text_markdown": "हमारा सौर मंडल लगभग 4.6 अरब साल पहले ऐसे ही एक समृद्ध बादल से बना।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "हमारा सौर मंडल लगभग चार दशमलव छह अरब साल पहले ऐसे ही एक समृद्ध बादल से बना।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "तुम्हारे शरीर में हाइड्रोजन से भारी हर परमाणु किसी तारे के अंदर बना था।",
+      "text_markdown": "तुम्हारे शरीर में हाइड्रोजन से भारी हर परमाणु किसी तारे के अंदर बना था।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "तुम्हारे शरीर में हाइड्रोजन से भारी हर परमाणु किसी तारे के अंदर बना था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "तुम्हारी हड्डियों का कैल्शियम।",
+      "text_markdown": "तुम्हारी हड्डियों का कैल्शियम।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "तुम्हारी हड्डियों का कैल्शियम।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "तुम्हारे खून का लोहा।",
+      "text_markdown": "तुम्हारे खून का लोहा।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "तुम्हारे खून का लोहा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "तुम्हारी त्वचा का कार्बन।",
+      "text_markdown": "तुम्हारी त्वचा का कार्बन।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "तुम्हारी त्वचा का कार्बन।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "तुम तारों की धूल से बने हो।",
+      "text_markdown": "तुम तारों की धूल से बने हो।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "तुम तारों की धूल से बने हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "यह कोई रूपक नहीं है।",
+      "text_markdown": "यह कोई रूपक नहीं है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "यह कोई रूपक नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "chapter": 7,
+      "block_type": "text",
+      "text": "यह नाभिकीय भौतिकी का एक तथ्य है।",
+      "text_markdown": "यह नाभिकीय भौतिकी का एक तथ्य है।",
+      "title": "परमाणु कहाँ से आते हैं",
+      "tts": {
+        "text": "यह नाभिकीय भौतिकी का एक तथ्य है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p62",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "chapter": 8,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "परमाणु ही सब कुछ हैं",
+      "text_markdown": "परमाणु ही सब कुछ हैं",
+      "title": "परमाणु ही सब कुछ हैं"
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "अब तुम बुनियादी बातें जानते हो।",
+      "text_markdown": "अब तुम बुनियादी बातें जानते हो।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "अब तुम बुनियादी बातें जानते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "सब कुछ परमाणुओं से बना है।",
+      "text_markdown": "सब कुछ परमाणुओं से बना है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "सब कुछ परमाणुओं से बना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "परमाणुओं में प्रोटॉन, न्यूट्रॉन और इलेक्ट्रॉन होते हैं।",
+      "text_markdown": "परमाणुओं में प्रोटॉन, न्यूट्रॉन और इलेक्ट्रॉन होते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "परमाणुओं में प्रोटॉन, न्यूट्रॉन और इलेक्ट्रॉन होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "प्रोटॉनों की संख्या तत्व तय करती है।",
+      "text_markdown": "प्रोटॉनों की संख्या तत्व तय करती है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "प्रोटॉनों की संख्या तत्व तय करती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "परमाणु जुड़कर अणु बनाते हैं।",
+      "text_markdown": "परमाणु जुड़कर अणु बनाते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "परमाणु जुड़कर अणु बनाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "परमाणु हमेशा गति में रहते हैं।",
+      "text_markdown": "परमाणु हमेशा गति में रहते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "परमाणु हमेशा गति में रहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "तारों ने वे परमाणु बनाए जिनसे हमारी दुनिया बनी है।",
+      "text_markdown": "तारों ने वे परमाणु बनाए जिनसे हमारी दुनिया बनी है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "तारों ने वे परमाणु बनाए जिनसे हमारी दुनिया बनी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "यह ज्ञान रसायन विज्ञान, जीव विज्ञान, भौतिक विज्ञान और चिकित्सा की नींव है।",
+      "text_markdown": "यह ज्ञान रसायन विज्ञान, जीव विज्ञान, भौतिक विज्ञान और चिकित्सा की नींव है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "यह ज्ञान रसायन विज्ञान, जीव विज्ञान, भौतिक विज्ञान और चिकित्सा की नींव है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "विज्ञान का हर क्षेत्र परमाणुओं से जुड़ा है।",
+      "text_markdown": "विज्ञान का हर क्षेत्र परमाणुओं से जुड़ा है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "विज्ञान का हर क्षेत्र परमाणुओं से जुड़ा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "जब कोई डॉक्टर दवाई देता है, तो वह दवाई परमाणुओं की एक ख़ास व्यवस्था होती है जो तुम्हारे शरीर के अणुओं के साथ मिलकर काम करने के लिए बनाई गई है।",
+      "text_markdown": "जब कोई डॉक्टर दवाई देता है, तो वह दवाई परमाणुओं की एक ख़ास व्यवस्था होती है जो तुम्हारे शरीर के अणुओं के साथ मिलकर काम करने के लिए बनाई गई है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "जब कोई डॉक्टर दवाई देता है, तो वह दवाई परमाणुओं की एक ख़ास व्यवस्था होती है जो तुम्हारे शरीर के अणुओं के साथ मिलकर काम करने के लिए बनाई गई है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "जब कोई इंजीनियर पुल बनाता है, तो उस पुल की मज़बूती इस पर निर्भर करती है कि इस्पात में लोहे के परमाणु कैसे व्यवस्थित हैं।",
+      "text_markdown": "जब कोई इंजीनियर पुल बनाता है, तो उस पुल की मज़बूती इस पर निर्भर करती है कि इस्पात में लोहे के परमाणु कैसे व्यवस्थित हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "जब कोई इंजीनियर पुल बनाता है, तो उस पुल की मज़बूती इस पर निर्भर करती है कि इस्पात में लोहे के परमाणु कैसे व्यवस्थित हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "जब कोई किसान फ़सल उगाता है, तो फ़सल इसलिए बढ़ती है क्योंकि हवा के कार्बन परमाणु पत्तियों के अंदर पानी और सूरज की रोशनी से मिलते हैं।",
+      "text_markdown": "जब कोई किसान फ़सल उगाता है, तो फ़सल इसलिए बढ़ती है क्योंकि हवा के कार्बन परमाणु पत्तियों के अंदर पानी और सूरज की रोशनी से मिलते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "जब कोई किसान फ़सल उगाता है, तो फ़सल इसलिए बढ़ती है क्योंकि हवा के कार्बन परमाणु पत्तियों के अंदर पानी और सूरज की रोशनी से मिलते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "खाना बनाना भी रसायन विज्ञान है।",
+      "text_markdown": "खाना बनाना भी रसायन विज्ञान है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "खाना बनाना भी रसायन विज्ञान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "जब तुम रोटी या ब्रेड पकाते हो, तो गर्मी से आटे के परमाणु फिर से व्यवस्थित होते हैं।",
+      "text_markdown": "जब तुम रोटी या ब्रेड पकाते हो, तो गर्मी से आटे के परमाणु फिर से व्यवस्थित होते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "जब तुम रोटी या ब्रेड पकाते हो, तो गर्मी से आटे के परमाणु फिर से व्यवस्थित होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "प्रोटीन खुलते हैं।",
+      "text_markdown": "प्रोटीन खुलते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "प्रोटीन खुलते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "शक्कर टूटती है और फिर से जुड़ती है।",
+      "text_markdown": "शक्कर टूटती है और फिर से जुड़ती है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "शक्कर टूटती है और फिर से जुड़ती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "नए अणु बनते हैं जो पपड़ी का रंग, बनावट और स्वाद बनाते हैं।",
+      "text_markdown": "नए अणु बनते हैं जो पपड़ी का रंग, बनावट और स्वाद बनाते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "नए अणु बनते हैं जो पपड़ी का रंग, बनावट और स्वाद बनाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "हर पकवान की विधि परमाणुओं को फिर से व्यवस्थित करने का एक तरीक़ा है।",
+      "text_markdown": "हर पकवान की विधि परमाणुओं को फिर से व्यवस्थित करने का एक तरीक़ा है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "हर पकवान की विधि परमाणुओं को फिर से व्यवस्थित करने का एक तरीक़ा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "साँस लेना भी रसायन विज्ञान है।",
+      "text_markdown": "साँस लेना भी रसायन विज्ञान है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "साँस लेना भी रसायन विज्ञान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "तुम ऑक्सीजन के अणु अंदर लेते हो।",
+      "text_markdown": "तुम ऑक्सीजन के अणु अंदर लेते हो।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "तुम ऑक्सीजन के अणु अंदर लेते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "तुम्हारा खून उन अणुओं को तुम्हारी कोशिकाओं तक ले जाता है।",
+      "text_markdown": "तुम्हारा खून उन अणुओं को तुम्हारी कोशिकाओं तक ले जाता है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "तुम्हारा खून उन अणुओं को तुम्हारी कोशिकाओं तक ले जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "तुम्हारी कोशिकाओं के अंदर, ऑक्सीजन परमाणु भोजन के कार्बन परमाणुओं से मिलते हैं।",
+      "text_markdown": "तुम्हारी कोशिकाओं के अंदर, ऑक्सीजन परमाणु भोजन के कार्बन परमाणुओं से मिलते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "तुम्हारी कोशिकाओं के अंदर, ऑक्सीजन परमाणु भोजन के कार्बन परमाणुओं से मिलते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "इस प्रतिक्रिया से ऊर्जा निकलती है।",
+      "text_markdown": "इस प्रतिक्रिया से ऊर्जा निकलती है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "इस प्रतिक्रिया से ऊर्जा निकलती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "तुम कार्बन और ऑक्सीजन को कार्बन डाइऑक्साइड के रूप में बाहर छोड़ते हो।",
+      "text_markdown": "तुम कार्बन और ऑक्सीजन को कार्बन डाइऑक्साइड के रूप में बाहर छोड़ते हो।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "तुम कार्बन और ऑक्सीजन को कार्बन डाइऑक्साइड के रूप में बाहर छोड़ते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "हर साँस एक रासायनिक प्रतिक्रिया है।",
+      "text_markdown": "हर साँस एक रासायनिक प्रतिक्रिया है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "हर साँस एक रासायनिक प्रतिक्रिया है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "ज़ंग लगना भी रसायन विज्ञान है।",
+      "text_markdown": "ज़ंग लगना भी रसायन विज्ञान है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "ज़ंग लगना भी रसायन विज्ञान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "कील की सतह पर मौजूद लोहे के परमाणु हवा के ऑक्सीजन परमाणुओं से प्रतिक्रिया करते हैं।",
+      "text_markdown": "कील की सतह पर मौजूद लोहे के परमाणु हवा के ऑक्सीजन परमाणुओं से प्रतिक्रिया करते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "कील की सतह पर मौजूद लोहे के परमाणु हवा के ऑक्सीजन परमाणुओं से प्रतिक्रिया करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "लोहा और ऑक्सीजन मिलकर एक नया पदार्थ बनाते हैं जिसे आयरन ऑक्साइड कहते हैं।",
+      "text_markdown": "लोहा और ऑक्सीजन मिलकर एक नया पदार्थ बनाते हैं जिसे आयरन ऑक्साइड कहते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "लोहा और ऑक्सीजन मिलकर एक नया पदार्थ बनाते हैं जिसे आयरन ऑक्साइड कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "आयरन ऑक्साइड वह लाल-भूरा पदार्थ है जिसे हम ज़ंग कहते हैं।",
+      "text_markdown": "आयरन ऑक्साइड वह लाल-भूरा पदार्थ है जिसे हम ज़ंग कहते हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "आयरन ऑक्साइड वह लाल-भूरा पदार्थ है जिसे हम ज़ंग कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "लोहे के परमाणु अभी भी वहीं हैं।",
+      "text_markdown": "लोहे के परमाणु अभी भी वहीं हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "लोहे के परमाणु अभी भी वहीं हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "वे बस ऑक्सीजन से जुड़ गए हैं।",
+      "text_markdown": "वे बस ऑक्सीजन से जुड़ गए हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "वे बस ऑक्सीजन से जुड़ गए हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "परमाणु कोई अमूर्त चीज़ नहीं हैं।",
+      "text_markdown": "परमाणु कोई अमूर्त चीज़ नहीं हैं।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "परमाणु कोई अमूर्त चीज़ नहीं हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "परमाणु उन सब चीज़ों की भौतिक सच्चाई हैं जिन्हें तुम छूते हो, चखते हो, देखते हो और सूँघते हो।",
+      "text_markdown": "परमाणु उन सब चीज़ों की भौतिक सच्चाई हैं जिन्हें तुम छूते हो, चखते हो, देखते हो और सूँघते हो।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "परमाणु उन सब चीज़ों की भौतिक सच्चाई हैं जिन्हें तुम छूते हो, चखते हो, देखते हो और सूँघते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "जितना ज़्यादा तुम परमाणुओं को समझोगे, उतना ज़्यादा तुम दुनिया को समझोगे।",
+      "text_markdown": "जितना ज़्यादा तुम परमाणुओं को समझोगे, उतना ज़्यादा तुम दुनिया को समझोगे।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "जितना ज़्यादा तुम परमाणुओं को समझोगे, उतना ज़्यादा तुम दुनिया को समझोगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "यह बस शुरुआत है।",
+      "text_markdown": "यह बस शुरुआत है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "यह बस शुरुआत है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "chapter": 8,
+      "block_type": "text",
+      "text": "खोजने के लिए अभी बहुत कुछ बाकी है।",
+      "text_markdown": "खोजने के लिए अभी बहुत कुछ बाकी है।",
+      "title": "परमाणु ही सब कुछ हैं",
+      "tts": {
+        "text": "खोजने के लिए अभी बहुत कुछ बाकी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2513 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_05_20",
+  "language": "ca",
+  "total_segments": 167,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Benvinguts a AI Aquesta Setmana.",
+      "text_markdown": "Benvinguts a AI Aquesta Setmana.",
+      "title": "",
+      "tts": {
+        "text": "Benvinguts a AI Aquesta Setmana.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Jo soc la Vindy.",
+      "text_markdown": "Jo soc la Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jo soc la Vindi.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Amb mi, com sempre, hi ha en Ron.",
+      "text_markdown": "Amb mi, com sempre, hi ha en Ron.",
+      "title": "",
+      "tts": {
+        "text": "Amb mi, com sempre, hi ha en Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Estic content de ser aquí, Vindy.",
+      "text_markdown": "Estic content de ser aquí, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Estic content de ser aquí, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Avui és dimecres, 20 de maig de 2026.",
+      "text_markdown": "Avui és dimecres, 20 de maig de 2026.",
+      "title": "",
+      "tts": {
+        "text": "Avui és dimecres, vint de maig de dos mil vint-i-sis.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ha estat una setmana atrafegada.",
+      "text_markdown": "Ha estat una setmana atrafegada.",
+      "title": "",
+      "tts": {
+        "text": "Ha estat una setmana atrafegada.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Google va celebrar la seva conferència de desenvolupadors, el Papa va acabar una encíclica sobre intel·ligència artificial, i el món dels pesos oberts va seguir llançant productes mentre tots els altres tenien escenaris.",
+      "text_markdown": "Google va celebrar la seva conferència de desenvolupadors, el Papa va acabar una encíclica sobre intel·ligència artificial, i el món dels pesos oberts va seguir llançant productes mentre tots els altres tenien escenaris.",
+      "title": "",
+      "tts": {
+        "text": "Google va celebrar la seva conferència de desenvolupadors, el Papa va acabar una encíclica sobre intel·ligència artificial, i el món dels pesos oberts va seguir llançant productes mentre tots els altres tenien escenaris.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "A continuació — què s'ha mogut en pesos oberts aquesta setmana.",
+      "text_markdown": "A continuació — què s'ha mogut en pesos oberts aquesta setmana.",
+      "title": "",
+      "tts": {
+        "text": "A continuació — què s'ha mogut en pesos oberts aquesta setmana.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "On van aterrar les classificacions.",
+      "text_markdown": "On van aterrar les classificacions.",
+      "title": "",
+      "tts": {
+        "text": "On van aterrar les classificacions.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un repàs ràpid pels titulars dels laboratoris més grans.",
+      "text_markdown": "Un repàs ràpid pels titulars dels laboratoris més grans.",
+      "title": "",
+      "tts": {
+        "text": "Un repàs ràpid pels titulars dels laboratoris més grans.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "La nostra notícia principal, la primera encíclica del Vaticà sobre intel·ligència artificial.",
+      "text_markdown": "La nostra notícia principal, la primera encíclica del Vaticà sobre intel·ligència artificial.",
+      "title": "",
+      "tts": {
+        "text": "La nostra notícia principal, la primera encíclica del Vaticà sobre intel·ligència artificial.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I el concepte de la setmana és la quantificació — com un model de 7 mil milions de paràmetres cap al teu telèfon.",
+      "text_markdown": "I el concepte de la setmana és la quantificació — com un model de 7 mil milions de paràmetres cap al teu telèfon.",
+      "title": "",
+      "tts": {
+        "text": "I el concepte de la setmana és la quantificació — com un model de set mil milions de paràmetres cap al teu telèfon.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, comencem amb els pesos oberts.",
+      "text_markdown": "Ron, comencem amb els pesos oberts.",
+      "title": "",
+      "tts": {
+        "text": "Ron, comencem amb els pesos oberts.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Què s'està movent a la comunitat aquesta setmana?",
+      "text_markdown": "Què s'està movent a la comunitat aquesta setmana?",
+      "title": "",
+      "tts": {
+        "text": "Què s'està movent a la comunitat aquesta setmana?",
+        "pause_after_ms": 316,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La història més gran dels pesos oberts ara mateix és qui està entrenant on.",
+      "text_markdown": "La història més gran dels pesos oberts ara mateix és qui està entrenant on.",
+      "title": "",
+      "tts": {
+        "text": "La història més gran dels pesos oberts ara mateix és qui està entrenant on.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dos dels llançaments oberts recents més interessants entrenats amb silici que no és NVIDIA.",
+      "text_markdown": "Dos dels llançaments oberts recents més interessants entrenats amb silici que no és NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Dos dels llançaments oberts recents més interessants entrenats amb silici que no és NVIDIA.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Explica'ns-ho.",
+      "text_markdown": "Explica'ns-ho.",
+      "title": "",
+      "tts": {
+        "text": "Explica'ns-ho.",
+        "pause_after_ms": 477,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Zhipu AI a Pequín va llançar la família GLM-5 a principis d'any — GLM-5 al febrer i una actualització anomenada GLM-5.1 a l'abril.",
+      "text_markdown": "Zhipu AI a Pequín va llançar la família GLM-5 a principis d'any — GLM-5 al febrer i una actualització anomenada GLM-5.1 a l'abril.",
+      "title": "",
+      "tts": {
+        "text": "Zhipu AI a Pequín va llançar la família GLM cinc a principis d'any — GLM cinc al febrer i una actualització anomenada GLM cinc punt u a l'abril.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tota la família GLM-5 va ser entrenada amb aproximadament 100.000 xips Huawei Ascend 910B, utilitzant el framework MindSpore, sense cap GPU NVIDIA implicada.",
+      "text_markdown": "Tota la família GLM-5 va ser entrenada amb aproximadament 100.000 xips Huawei Ascend 910B, utilitzant el framework MindSpore, sense cap GPU NVIDIA implicada.",
+      "title": "",
+      "tts": {
+        "text": "Tota la família GLM cinc va ser entrenada amb aproximadament cent mil xips Huawei Ascend nou-cents deu B, utilitzant el framework MindSpore, sense cap GPU NVIDIA implicada.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "I Zyphra, un laboratori americà, va llançar a principis d'aquest mes un model anomenat ZAYA1-8B, preentrenat en un clúster de nodes AMD MI300X amb IBM com a soci de construcció.",
+      "text_markdown": "I Zyphra, un laboratori americà, va llançar a principis d'aquest mes un model anomenat ZAYA1-8B, preentrenat en un clúster de nodes AMD MI300X amb IBM com a soci de construcció.",
+      "title": "",
+      "tts": {
+        "text": "I Zyphra, un laboratori americà, va llançar a principis d'aquest mes un model anomenat ZAYA u vuit B, preentrenat en un clúster de nodes AMD MI tres-cents X amb IBM com a soci de construcció.",
+        "pause_after_ms": 503,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Per què és important el silici?",
+      "text_markdown": "Per què és important el silici?",
+      "title": "",
+      "tts": {
+        "text": "Per què és important el silici?",
+        "pause_after_ms": 355,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hi ha dos motius.",
+      "text_markdown": "Hi ha dos motius.",
+      "title": "",
+      "tts": {
+        "text": "Hi ha dos motius.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Un — durant els últims tres anys, cada execució d'entrenament de frontera seriosa ha necessitat NVIDIA H100 o H200.",
+      "text_markdown": "Un — durant els últims tres anys, cada execució d'entrenament de frontera seriosa ha necessitat NVIDIA H100 o H200.",
+      "title": "",
+      "tts": {
+        "text": "Un — durant els últims tres anys, cada execució d'entrenament de frontera seriosa ha necessitat NVIDIA H cent o H dos-cents.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dos — aquest subministrament ha estat el coll d'ampolla, i la suposició era que la frontera oberta i la xinesa estaven una generació enrere per aquest motiu.",
+      "text_markdown": "Dos — aquest subministrament ha estat el coll d'ampolla, i la suposició era que la frontera oberta i la xinesa estaven una generació enrere per aquest motiu.",
+      "title": "",
+      "tts": {
+        "text": "Dos — aquest subministrament ha estat el coll d'ampolla, i la suposició era que la frontera oberta i la xinesa estaven una generació enrere per aquest motiu.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Un cop una execució de classe frontera arriba a Huawei Ascend o AMD, qualsevol altre laboratori obert pot copiar la recepta.",
+      "text_markdown": "Un cop una execució de classe frontera arriba a Huawei Ascend o AMD, qualsevol altre laboratori obert pot copiar la recepta.",
+      "title": "",
+      "tts": {
+        "text": "Un cop una execució de classe frontera arriba a Huawei Ascend o AMD, qualsevol altre laboratori obert pot copiar la recepta.",
+        "pause_after_ms": 201,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Això és el que està passant aquest any.",
+      "text_markdown": "Això és el que està passant aquest any.",
+      "title": "",
+      "tts": {
+        "text": "Això és el que està passant aquest any.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Alguna cosa més del costat obert aquesta setmana?",
+      "text_markdown": "Alguna cosa més del costat obert aquesta setmana?",
+      "title": "",
+      "tts": {
+        "text": "Alguna cosa més del costat obert aquesta setmana?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sí, tres coses a destacar.",
+      "text_markdown": "Sí, tres coses a destacar.",
+      "title": "",
+      "tts": {
+        "text": "Sí, tres coses a destacar.",
+        "pause_after_ms": 210,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El Kimi K2.6 de Moonshot, llançat a finals d'abril, segueix al nivell superior d'OpenRouter per volum de tokens — va encapçalar la llista la seva primera setmana amb 1,88 bilions de tokens servits.",
+      "text_markdown": "El Kimi K2.6 de Moonshot, llançat a finals d'abril, segueix al nivell superior d'OpenRouter per volum de tokens — va encapçalar la llista la seva primera setmana amb 1,88 bilions de tokens servits.",
+      "title": "",
+      "tts": {
+        "text": "El Kimi K dos punt sis de Moonshot, llançat a finals d'abril, segueix al nivell superior d'OpenRouter per volum de tokens — va encapçalar la llista la seva primera setmana amb un punt vuitanta-vuit bilions de tokens servits.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta va ser la primera vegada que un model xinès de pesos oberts havia superat Claude Sonnet i DeepSeek al principal enrutador comercial.",
+      "text_markdown": "Aquesta va ser la primera vegada que un model xinès de pesos oberts havia superat Claude Sonnet i DeepSeek al principal enrutador comercial.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta va ser la primera vegada que un model xinès de pesos oberts havia superat Claude Sonnet i DeepSeek al principal enrutador comercial.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "DeepSeek V4-Pro té 1.6 bilions de paràmetres totals amb 49 mil milions actius.",
+      "text_markdown": "DeepSeek V4-Pro té 1.6 bilions de paràmetres totals amb 49 mil milions actius.",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V quatre Pro té un punt sis bilions de paràmetres totals amb quaranta-nou mil milions actius.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El seu germà més econòmic, V4-Flash, té 284 mil milions totals amb 13 mil milions actius.",
+      "text_markdown": "El seu germà més econòmic, V4-Flash, té 284 mil milions totals amb 13 mil milions actius.",
+      "title": "",
+      "tts": {
+        "text": "El seu germà més econòmic, V quatre Flash, té dos-cents vuitanta-quatre mil milions totals amb tretze mil milions actius.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tots dos són pesos oberts sota la llicència MIT.",
+      "text_markdown": "Tots dos són pesos oberts sota la llicència MIT.",
+      "title": "",
+      "tts": {
+        "text": "Tots dos són pesos oberts sota la llicència MIT.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Parla'ns més de ZAYA1-8B específicament.",
+      "text_markdown": "Parla'ns més de ZAYA1-8B específicament.",
+      "title": "",
+      "tts": {
+        "text": "Parla'ns més de ZAYA u vuit B específicament.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "És un petit model mixture-of-experts — 8.4 mil milions de paràmetres totals, amb només uns 760 milions actius per token.",
+      "text_markdown": "És un petit model mixture-of-experts — 8.4 mil milions de paràmetres totals, amb només uns 760 milions actius per token.",
+      "title": "",
+      "tts": {
+        "text": "És un petit model mixture-of-experts — vuit punt quatre mil milions de paràmetres totals, amb només uns set-cents seixanta milions actius per token.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Llicència Apache 2.0, així que la pots utilitzar comercialment.",
+      "text_markdown": "Llicència Apache 2.0, així que la pots utilitzar comercialment.",
+      "title": "",
+      "tts": {
+        "text": "Llicència Apache dos punt zero, així que la pots utilitzar comercialment.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pre-entrenat en un clúster d'uns 1.024 nodes AMD MI300x, sense maquinari NVIDIA implicat.",
+      "text_markdown": "Pre-entrenat en un clúster d'uns 1.024 nodes AMD MI300x, sense maquinari NVIDIA implicat.",
+      "title": "",
+      "tts": {
+        "text": "Pre-entrenat en un clúster d'uns mil vint-i-quatre nodes AMD MI tres-cents x, sense maquinari NVIDIA implicat.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Obté una puntuació de 89.1 a AIME, el benchmark de l'olimpíada de matemàtiques, superant models molt més grans en matemàtiques i codificació mentre funciona amb un pressupost de paràmetres actius inferior a 1 mil milions.",
+      "text_markdown": "Obté una puntuació de 89.1 a AIME, el benchmark de l'olimpíada de matemàtiques, superant models molt més grans en matemàtiques i codificació mentre funciona amb un pressupost de paràmetres actius inferior a 1 mil milions.",
+      "title": "",
+      "tts": {
+        "text": "Obté una puntuació de vuitanta-nou punt u a AIME, el benchmark de l'olimpíada de matemàtiques, superant models molt més grans en matemàtiques i codificació mentre funciona amb un pressupost de paràmetres actius inferior a un mil milions.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Dos laboratoris de pesos oberts entrenant sense NVIDIA en dos mesos.",
+      "text_markdown": "Dos laboratoris de pesos oberts entrenant sense NVIDIA en dos mesos.",
+      "title": "",
+      "tts": {
+        "text": "Dos laboratoris de pesos oberts entrenant sense NVIDIA en dos mesos.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "No és pas casualitat.",
+      "text_markdown": "No és pas casualitat.",
+      "title": "",
+      "tts": {
+        "text": "No és pas casualitat.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La infraestructura finalment s'ha posat al dia — AMD ROCm i Huawei CANN van esdevenir utilitzables el 2025, i el 2026 és quan la comunitat oberta està llançant execucions reals de classe frontera amb ells.",
+      "text_markdown": "La infraestructura finalment s'ha posat al dia — AMD ROCm i Huawei CANN van esdevenir utilitzables el 2025, i el 2026 és quan la comunitat oberta està llançant execucions reals de classe frontera amb ells.",
+      "title": "",
+      "tts": {
+        "text": "La infraestructura finalment s'ha posat al dia — AMD ROCm i Huawei CANN van esdevenir utilitzables el dos mil vint-i-cinc, i el dos mil vint-i-sis és quan la comunitat oberta està llançant execucions reals de classe frontera amb ells.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Què passa amb el costat de la infraestructura?",
+      "text_markdown": "Què passa amb el costat de la infraestructura?",
+      "title": "",
+      "tts": {
+        "text": "Què passa amb el costat de la infraestructura?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "vLLM v0.21 es va llançar el divendres 15 de maig.",
+      "text_markdown": "vLLM v0.21 es va llançar el divendres 15 de maig.",
+      "title": "",
+      "tts": {
+        "text": "v L L M versió zero punt vint-i-u es va llançar el divendres quinze de maig.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "vLLM és la pila de servei oberta — el que realment executes quan vols allotjar un model tu mateix.",
+      "text_markdown": "vLLM és la pila de servei oberta — el que realment executes quan vols allotjar un model tu mateix.",
+      "title": "",
+      "tts": {
+        "text": "v L L M és la pila de servei oberta — el que realment executes quan vols allotjar un model tu mateix.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Gestiona el batching, el paging i la reutilització de la memòria cau KV, i ara és el valor predeterminat en producció per a tothom que no utilitzi una API tancada.",
+      "text_markdown": "Gestiona el batching, el paging i la reutilització de la memòria cau KV, i ara és el valor predeterminat en producció per a tothom que no utilitzi una API tancada.",
+      "title": "",
+      "tts": {
+        "text": "Gestiona el batching, el paging i la reutilització de la memòria cau KV, i ara és el valor predeterminat en producció per a tothom que no utilitzi una API tancada.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta versió afegeix descàrrega KV amb un assignador de memòria híbrid, i un nou backend d'atenció optimitzat per al preemplenament de DeepSeek-R1 i Kimi K2.5 en GPUs Blackwell.",
+      "text_markdown": "Aquesta versió afegeix descàrrega KV amb un assignador de memòria híbrid, i un nou backend d'atenció optimitzat per al preemplenament de DeepSeek-R1 i Kimi K2.5 en GPUs Blackwell.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta versió afegeix descàrrega ca ve amb un assignador de memòria híbrid, i un nou backend d'atenció optimitzat per al preemplenament de DeepSeek R u i Kimi K dos punt cinc en ge pe u Blackwell.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La pila de servei oberta continua llançant novetats mentre els grans laboratoris fan les seves ponències magistrals.",
+      "text_markdown": "La pila de servei oberta continua llançant novetats mentre els grans laboratoris fan les seves ponències magistrals.",
+      "title": "",
+      "tts": {
+        "text": "La pila de servei oberta continua llançant novetats mentre els grans laboratoris fan les seves ponències magistrals.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "D'acord, passem a les classificacions.",
+      "text_markdown": "D'acord, passem a les classificacions.",
+      "title": "",
+      "tts": {
+        "text": "D'acord, passem a les classificacions.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, què es manté i què s'ha mogut?",
+      "text_markdown": "Ron, què es manté i què s'ha mogut?",
+      "title": "",
+      "tts": {
+        "text": "Ron, què es manté i què s'ha mogut?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Majoritàriament es manté.",
+      "text_markdown": "Majoritàriament es manté.",
+      "title": "",
+      "tts": {
+        "text": "Majoritàriament es manté.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "A LM Arena, Claude Opus 4.7 d'Anthropic encara ocupa el número u en codificació, amb aproximadament 1569 punts Elo.",
+      "text_markdown": "A LM Arena, Claude Opus 4.7 d'Anthropic encara ocupa el número u en codificació, amb aproximadament 1569 punts Elo.",
+      "title": "",
+      "tts": {
+        "text": "A LM Arena, Claude Opus quatre punt set d'Anthropic encara ocupa el número u en codificació, amb aproximadament mil cinc-cents seixanta-nou punts Elo.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El GPT-5.5 d'OpenAI en mode d'alt raonament se situa en el número set de la mateixa classificació.",
+      "text_markdown": "El GPT-5.5 d'OpenAI en mode d'alt raonament se situa en el número set de la mateixa classificació.",
+      "title": "",
+      "tts": {
+        "text": "El ge pe te cinc punt cinc d'OpenAI en mode d'alt raonament se situa en el número set de la mateixa classificació.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "I a la subclassificació de codificació WebDev, el GPT-5.5 és al número nou.",
+      "text_markdown": "I a la subclassificació de codificació WebDev, el GPT-5.5 és al número nou.",
+      "title": "",
+      "tts": {
+        "text": "I a la subclassificació de codificació WebDev, el ge pe te cinc punt cinc és al número nou.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "On se situa el nou model de Google?",
+      "text_markdown": "On se situa el nou model de Google?",
+      "title": "",
+      "tts": {
+        "text": "On se situa el nou model de Google?",
+        "pause_after_ms": 357,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Gemini 3.5 Flash es va presentar dimarts a la conferència anual de Google, així que encara no figura als rànquings oficials.",
+      "text_markdown": "Gemini 3.5 Flash es va presentar dimarts a la conferència anual de Google, així que encara no figura als rànquings oficials.",
+      "title": "",
+      "tts": {
+        "text": "Gemini tres coma cinc Flash es va presentar dimarts a la conferència anual de Google, així que encara no figura als rànquings oficials.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Arena necessita uns quants milers de vots cara a cara abans que un model obtingui un Elo estable.",
+      "text_markdown": "Arena necessita uns quants milers de vots cara a cara abans que un model obtingui un Elo estable.",
+      "title": "",
+      "tts": {
+        "text": "Arena necessita uns quants milers de vots cara a cara abans que un model obtingui un Elo estable.",
+        "pause_after_ms": 278,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Espereu que Gemini 3.5 Flash aparegui la setmana que ve i Gemini 3.5 Pro arribi al juny.",
+      "text_markdown": "Espereu que Gemini 3.5 Flash aparegui la setmana que ve i Gemini 3.5 Pro arribi al juny.",
+      "title": "",
+      "tts": {
+        "text": "Espereu que Gemini tres punt cinc Flash aparegui la setmana que ve i Gemini tres punt cinc Pro arribi al juny.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Alguna cosa al front de qualitat d'avaluació?",
+      "text_markdown": "Alguna cosa al front de qualitat d'avaluació?",
+      "title": "",
+      "tts": {
+        "text": "Alguna cosa al front de qualitat d'avaluació?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Exacte, és una referència a la setmana passada.",
+      "text_markdown": "Exacte, és una referència a la setmana passada.",
+      "title": "",
+      "tts": {
+        "text": "Exacte, és una referència a la setmana passada.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "SWE-bench Verified encara està retirat — el benchmark de codificació que OpenAI solia citar, on més de la meitat de les tasques difícils tenien proves trencades.",
+      "text_markdown": "SWE-bench Verified encara està retirat — el benchmark de codificació que OpenAI solia citar, on més de la meitat de les tasques difícils tenien proves trencades.",
+      "title": "",
+      "tts": {
+        "text": "SWE bench Verified encara està retirat — el benchmark de codificació que OpenAI solia citar, on més de la meitat de les tasques difícils tenien proves trencades.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Els benchmarks a seguir ara són SWE-bench Pro i un projecte anomenat SWE-rebench.",
+      "text_markdown": "Els benchmarks a seguir ara són SWE-bench Pro i un projecte anomenat SWE-rebench.",
+      "title": "",
+      "tts": {
+        "text": "Els benchmarks a seguir ara són SWE bench Pro i un projecte anomenat SWE rebench.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ambdós mantenen el codi de prova privat perquè els models no puguin ser entrenats amb ell.",
+      "text_markdown": "Ambdós mantenen el codi de prova privat perquè els models no puguin ser entrenats amb ell.",
+      "title": "",
+      "tts": {
+        "text": "Ambdós mantenen el codi de prova privat perquè els models no puguin ser entrenats amb ell.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-063",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Què passa amb la bretxa entre obert i tancat?",
+      "text_markdown": "Què passa amb la bretxa entre obert i tancat?",
+      "title": "",
+      "tts": {
+        "text": "Què passa amb la bretxa entre obert i tancat?",
+        "pause_after_ms": 368,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-064",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Segons Artificial Analysis, la bretxa és ara de 5 a 15 punts en l'índex d'intel·ligència de cross-evaluation.",
+      "text_markdown": "Segons Artificial Analysis, la bretxa és ara de 5 a 15 punts en l'índex d'intel·ligència de cross-evaluation.",
+      "title": "",
+      "tts": {
+        "text": "Segons Artificial Analysis, la bretxa és ara de cinc a quinze punts en l'índex d'intel·ligència de cross evaluation.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-065",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Això era de 30 a 40 punts fa 18 mesos.",
+      "text_markdown": "Això era de 30 a 40 punts fa 18 mesos.",
+      "title": "",
+      "tts": {
+        "text": "Això era de trenta a quaranta punts fa divuit mesos.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-066",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kimi K2.6 i DeepSeek V4-Pro es troben dins d'aquesta franja enfront de GPT-5.5 i Opus 4.7.",
+      "text_markdown": "Kimi K2.6 i DeepSeek V4-Pro es troben dins d'aquesta franja enfront de GPT-5.5 i Opus 4.7.",
+      "title": "",
+      "tts": {
+        "text": "Kimi K dos punt sis i DeepSeek V quatre Pro es troben dins d'aquesta franja enfront de GPT cinc punt cinc i Opus quatre punt set.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-067",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ara passem als titulars.",
+      "text_markdown": "Ara passem als titulars.",
+      "title": "",
+      "tts": {
+        "text": "Ara passem als titulars.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-068",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, què hi ha al resum ràpid aquesta setmana?",
+      "text_markdown": "Ron, què hi ha al resum ràpid aquesta setmana?",
+      "title": "",
+      "tts": {
+        "text": "Ron, què hi ha al resum ràpid aquesta setmana?",
+        "pause_after_ms": 366,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-069",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "L'esdeveniment Google I/O va ser dimarts i dimecres.",
+      "text_markdown": "L'esdeveniment Google I/O va ser dimarts i dimecres.",
+      "title": "",
+      "tts": {
+        "text": "L'esdeveniment Google barra i o va ser dimarts i dimecres.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-070",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Les novetats destacades van ser Gemini 3.5 Flash, Gemini Omni per a l'edició de vídeo conversacional, i Gemini Spark, un agent que funciona 24/7 en una màquina virtual al núvol que no posseeixes.",
+      "text_markdown": "Les novetats destacades van ser Gemini 3.5 Flash, Gemini Omni per a l'edició de vídeo conversacional, i Gemini Spark, un agent que funciona 24/7 en una màquina virtual al núvol que no posseeixes.",
+      "title": "",
+      "tts": {
+        "text": "Les novetats destacades van ser Gemini tres punt cinc Flash, Gemini Omni per a l'edició de vídeo conversacional, i Gemini Spark, un agent que funciona vint-i-quatre set en una màquina virtual al núvol que no posseeixes.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-071",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Val a dir que el mateix patró —un agent que funciona en la seva pròpia màquina i realitza tasques de diversos passos— és quelcom que ja es pot fer avui amb eines obertes com Aider o OpenCode apuntades a un model local.",
+      "text_markdown": "Val a dir que el mateix patró —un agent que funciona en la seva pròpia màquina i realitza tasques de diversos passos— és quelcom que ja es pot fer avui amb eines obertes com Aider o OpenCode apuntades a un model local.",
+      "title": "",
+      "tts": {
+        "text": "Val a dir que el mateix patró —un agent que funciona en la seva pròpia màquina i realitza tasques de diversos passos— és quelcom que ja es pot fer avui amb eines obertes com Aider o OpenCode apuntades a un model local.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-072",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Google AI Ultra va reduir el seu nivell inicial de 250 $ al mes a 100 $ al mes, i Samsung va anunciar ulleres de realitat estesa amb Gemini integrat.",
+      "text_markdown": "Google AI Ultra va reduir el seu nivell inicial de 250 $ al mes a 100 $ al mes, i Samsung va anunciar ulleres de realitat estesa amb Gemini integrat.",
+      "title": "",
+      "tts": {
+        "text": "Google AI Ultra va reduir el seu nivell inicial de dos-cents cinquanta dòlars al mes a cent dòlars al mes, i Samsung va anunciar ulleres de realitat estesa amb Gemini integrat.",
+        "pause_after_ms": 258,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-073",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Els límits diaris de prompts van ser substituïts per un pressupost de càlcul que es refresca cada cinc hores.",
+      "text_markdown": "Els límits diaris de prompts van ser substituïts per un pressupost de càlcul que es refresca cada cinc hores.",
+      "title": "",
+      "tts": {
+        "text": "Els límits diaris de prompts van ser substituïts per un pressupost de càlcul que es refresca cada cinc hores.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-074",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I pel que fa al personal?",
+      "text_markdown": "I pel que fa al personal?",
+      "title": "",
+      "tts": {
+        "text": "I pel que fa al personal?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-075",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Andrej Karpathy es va unir a Anthropic dimarts.",
+      "text_markdown": "Andrej Karpathy es va unir a Anthropic dimarts.",
+      "title": "",
+      "tts": {
+        "text": "Andrej Karpathy es va unir a Anthropic dimarts.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-076",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "És a l'equip de pre-entrenament, liderant un grup centrat en l'ús de Claude per accelerar la investigació de pre-entrenament.",
+      "text_markdown": "És a l'equip de pre-entrenament, liderant un grup centrat en l'ús de Claude per accelerar la investigació de pre-entrenament.",
+      "title": "",
+      "tts": {
+        "text": "És a l'equip de pre-entrenament, liderant un grup centrat en l'ús de Claude per accelerar la investigació de pre-entrenament.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-077",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Karpathy va ser un membre fundador d'OpenAI, després va dirigir el treball d'IA de Tesla, i després va fundar Eureka Labs per a l'educació en IA.",
+      "text_markdown": "Karpathy va ser un membre fundador d'OpenAI, després va dirigir el treball d'IA de Tesla, i després va fundar Eureka Labs per a l'educació en IA.",
+      "title": "",
+      "tts": {
+        "text": "Karpathy va ser un membre fundador d'OpenAI, després va dirigir el treball d'IA de Tesla, i després va fundar Eureka Labs per a l'educació en IA.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-078",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I Apple?",
+      "text_markdown": "I Apple?",
+      "title": "",
+      "tts": {
+        "text": "I Apple?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-079",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El CEO de Google Cloud, Thomas Kurian, va confirmar aquesta setmana que Gemini impulsarà una versió de Siri més endavant el 2026.",
+      "text_markdown": "El CEO de Google Cloud, Thomas Kurian, va confirmar aquesta setmana que Gemini impulsarà una versió de Siri més endavant el 2026.",
+      "title": "",
+      "tts": {
+        "text": "El CEO de Google Cloud, Thomas Kurian, va confirmar aquesta setmana que Gemini impulsarà una versió de Siri més endavant el dos mil vint-i-sis.",
+        "pause_after_ms": 262,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-080",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "L'acord es realitza a través del marc de Foundation Models d'Apple, de manera que Apple encara posseeix la capa d'integració.",
+      "text_markdown": "L'acord es realitza a través del marc de Foundation Models d'Apple, de manera que Apple encara posseeix la capa d'integració.",
+      "title": "",
+      "tts": {
+        "text": "L'acord es realitza a través del marc de Foundation Models d'Apple, de manera que Apple encara posseeix la capa d'integració.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-081",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I la demanda de Musk?",
+      "text_markdown": "I la demanda de Musk?",
+      "title": "",
+      "tts": {
+        "text": "I la demanda de Musk?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-082",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Un jurat californià de nou membres va rebutjar la demanda d'Elon Musk contra OpenAI el dilluns 18 de maig.",
+      "text_markdown": "Un jurat californià de nou membres va rebutjar la demanda d'Elon Musk contra OpenAI el dilluns 18 de maig.",
+      "title": "",
+      "tts": {
+        "text": "Un jurat californià de nou membres va rebutjar la demanda d'Elon Musk contra OpenAI el dilluns divuit de maig.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-083",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Van deliberar durant menys de dues hores.",
+      "text_markdown": "Van deliberar durant menys de dues hores.",
+      "title": "",
+      "tts": {
+        "text": "Van deliberar durant menys de dues hores.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-084",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El jurat va trobar que Musk havia presentat la demanda fora del termini de prescripció, i el jutge va desestimar el cas.",
+      "text_markdown": "El jurat va trobar que Musk havia presentat la demanda fora del termini de prescripció, i el jutge va desestimar el cas.",
+      "title": "",
+      "tts": {
+        "text": "El jurat va trobar que Musk havia presentat la demanda fora del termini de prescripció, i el jutge va desestimar el cas.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-085",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Alguna cosa de política?",
+      "text_markdown": "Alguna cosa de política?",
+      "title": "",
+      "tts": {
+        "text": "Alguna cosa de política?",
+        "pause_after_ms": 389,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-086",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El Secretari del Tresor, Scott Bessent, va anunciar a la cimera Trump-Xi a Pequín el 14 de maig que els EUA i la Xina establiran un protocol formal sobre la seguretat de la IA.",
+      "text_markdown": "El Secretari del Tresor, Scott Bessent, va anunciar a la cimera Trump-Xi a Pequín el 14 de maig que els EUA i la Xina establiran un protocol formal sobre la seguretat de la IA.",
+      "title": "",
+      "tts": {
+        "text": "El Secretari del Tresor, Scott Bessent, va anunciar a la cimera Trump-Xi a Pequín el catorze de maig que els Estats Units i la Xina establiran un protocol formal sobre la seguretat de la IA.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-087",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Es planteja com a bones pràctiques per mantenir els models de frontera fora de les mans d'actors no estatals — no un règim vinculant, només un acord per parlar.",
+      "text_markdown": "Es planteja com a bones pràctiques per mantenir els models de frontera fora de les mans d'actors no estatals — no un règim vinculant, només un acord per parlar.",
+      "title": "",
+      "tts": {
+        "text": "Es planteja com a bones pràctiques per mantenir els models de frontera fora de les mans d'actors no estatals — no un règim vinculant, només un acord per parlar.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-088",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Primera vegada que les dues parts han plantejat la seguretat de la IA com a bilateral en lloc d'una competència pura.",
+      "text_markdown": "Primera vegada que les dues parts han plantejat la seguretat de la IA com a bilateral en lloc d'una competència pura.",
+      "title": "",
+      "tts": {
+        "text": "Primera vegada que les dues parts han plantejat la seguretat de la IA com a bilateral en lloc d'una competència pura.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-089",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ara tornem a la notícia principal.",
+      "text_markdown": "Ara tornem a la notícia principal.",
+      "title": "",
+      "tts": {
+        "text": "Ara tornem a la notícia principal.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-090",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, el Papa va escriure sobre nosaltres la setmana passada.",
+      "text_markdown": "Ron, el Papa va escriure sobre nosaltres la setmana passada.",
+      "title": "",
+      "tts": {
+        "text": "Ron, el Papa va escriure sobre nosaltres la setmana passada.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-091",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El Papa Lleó XIV ha acabat la seva primera encíclica.",
+      "text_markdown": "El Papa Lleó XIV ha acabat la seva primera encíclica.",
+      "title": "",
+      "tts": {
+        "text": "El Papa Lleó el catorzè ha acabat la seva primera encíclica.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-092",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquest títol es diu Magnifica Humanitas.",
+      "text_markdown": "Aquest títol es diu Magnifica Humanitas.",
+      "title": "",
+      "tts": {
+        "text": "Aquest títol es diu Magnífica Umanitàs.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-093",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Això es tradueix com \"la magnificència de la humanitat\".",
+      "text_markdown": "Això es tradueix com \"la magnificència de la humanitat\".",
+      "title": "",
+      "tts": {
+        "text": "Això es tradueix com \"la magnificència de la humanitat\".",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-094",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El Vaticà la publicarà el dilluns 25 de maig.",
+      "text_markdown": "El Vaticà la publicarà el dilluns 25 de maig.",
+      "title": "",
+      "tts": {
+        "text": "El Vaticà la publicarà el dilluns vint-i-cinc de maig.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-095",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Parla de la intel·ligència artificial i de la protecció de la dignitat humana.",
+      "text_markdown": "Parla de la intel·ligència artificial i de la protecció de la dignitat humana.",
+      "title": "",
+      "tts": {
+        "text": "Parla de la intel ligència artificial i de la protecció de la dignitat humana.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-096",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Quan la va signar el Papa?",
+      "text_markdown": "Quan la va signar el Papa?",
+      "title": "",
+      "tts": {
+        "text": "Quan la va signar el Papa?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-097",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "15 de maig.",
+      "text_markdown": "15 de maig.",
+      "title": "",
+      "tts": {
+        "text": "Quinze de maig.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-098",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta data va ser escollida a propòsit.",
+      "text_markdown": "Aquesta data va ser escollida a propòsit.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta data va ser escollida a propòsit.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-099",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "És exactament 135 anys després del dia en què el Papa Lleó XIII va signar Rerum Novarum.",
+      "text_markdown": "És exactament 135 anys després del dia en què el Papa Lleó XIII va signar Rerum Novarum.",
+      "title": "",
+      "tts": {
+        "text": "És exactament cent trenta-cinc anys després del dia en què el Papa Lleó el tretzè va signar Rerum Novarum.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-100",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Què va ser Rerum Novarum?",
+      "text_markdown": "Què va ser Rerum Novarum?",
+      "title": "",
+      "tts": {
+        "text": "Què va ser Rerum Novarum?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-101",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Rerum Novarum va ser l'ensenyament catòlic fundacional sobre el treball i el capital.",
+      "text_markdown": "Rerum Novarum va ser l'ensenyament catòlic fundacional sobre el treball i el capital.",
+      "title": "",
+      "tts": {
+        "text": "Rerum Novarum va ser l'ensenyament catòlic fundacional sobre el treball i el capital.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-102",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Va aparèixer el 1891, en plena revolució industrial.",
+      "text_markdown": "Va aparèixer el 1891, en plena revolució industrial.",
+      "title": "",
+      "tts": {
+        "text": "Va aparèixer el mil vuit-cents noranta-u, en plena revolució industrial.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-103",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Va definir com l'Església pensa sobre els treballadors, els propietaris, els salaris i la dignitat del treball — i aquest marc s'ha mantingut durant més d'un segle.",
+      "text_markdown": "Va definir com l'Església pensa sobre els treballadors, els propietaris, els salaris i la dignitat del treball — i aquest marc s'ha mantingut durant més d'un segle.",
+      "title": "",
+      "tts": {
+        "text": "Va definir com l'Església pensa sobre els treballadors, els propietaris, els salaris i la dignitat del treball — i aquest marc s'ha mantingut durant més d'un segle.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-104",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El Papa Lleó XIV està posicionant la intel·ligència artificial com el mateix tipus de qüestió època per a la nostra generació.",
+      "text_markdown": "El Papa Lleó XIV està posicionant la intel·ligència artificial com el mateix tipus de qüestió època per a la nostra generació.",
+      "title": "",
+      "tts": {
+        "text": "El Papa Lleó el catorzè està posicionant la intel·ligència artificial com el mateix tipus de qüestió època per a la nostra generació.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-105",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Això és un eco deliberat.",
+      "text_markdown": "Això és un eco deliberat.",
+      "title": "",
+      "tts": {
+        "text": "Això és un eco deliberat.",
+        "pause_after_ms": 470,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-106",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Molt deliberat.",
+      "text_markdown": "Molt deliberat.",
+      "title": "",
+      "tts": {
+        "text": "Molt deliberat.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-107",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Fins i tot l'elecció del nom pontifici — Lleó — ho indica.",
+      "text_markdown": "Fins i tot l'elecció del nom pontifici — Lleó — ho indica.",
+      "title": "",
+      "tts": {
+        "text": "Fins i tot l'elecció del nom pontifici — Lleó — ho indica.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-108",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquest Papa està dient en veu alta que la IA és al nostre segle el que la industrialització va ser al dinou.",
+      "text_markdown": "Aquest Papa està dient en veu alta que la IA és al nostre segle el que la industrialització va ser al dinou.",
+      "title": "",
+      "tts": {
+        "text": "Aquest Papa està dient en veu alta que la IA és al nostre segle el que la industrialització va ser al dinou.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-109",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Qui presenta al seu costat?",
+      "text_markdown": "Qui presenta al seu costat?",
+      "title": "",
+      "tts": {
+        "text": "Qui presenta al seu costat?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-110",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Chris Olah, cofundador d'Anthropic, serà a l'escenari de la Sala del Sínode del Vaticà.",
+      "text_markdown": "Chris Olah, cofundador d'Anthropic, serà a l'escenari de la Sala del Sínode del Vaticà.",
+      "title": "",
+      "tts": {
+        "text": "Chris Olah, cofundador d'Anthropic, serà a l'escenari de la Sala del Sínode del Vaticà.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-111",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Olah dirigeix la recerca en interpretabilitat a Anthropic.",
+      "text_markdown": "Olah dirigeix la recerca en interpretabilitat a Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Olah dirigeix la recerca en interpretabilitat a Anthropic.",
+        "pause_after_ms": 244,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-112",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquest és el camp que intenta esbrinar què està passant realment dins d'una xarxa neuronal.",
+      "text_markdown": "Aquest és el camp que intenta esbrinar què està passant realment dins d'una xarxa neuronal.",
+      "title": "",
+      "tts": {
+        "text": "Aquest és el camp que intenta esbrinar què està passant realment dins d'una xarxa neuronal.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-113",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Per què un investigador d'interpretabilitat i no un executiu?",
+      "text_markdown": "Per què un investigador d'interpretabilitat i no un executiu?",
+      "title": "",
+      "tts": {
+        "text": "Per què un investigador d'interpretabilitat i no un executiu?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-114",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Perquè la pregunta central de l'encíclica és \"què és això que estem construint, i ho podem entendre?\"",
+      "text_markdown": "Perquè la pregunta central de l'encíclica és \"què és això que estem construint, i ho podem entendre?\"",
+      "title": "",
+      "tts": {
+        "text": "Perquè la pregunta central de l'encíclica és \"què és això que estem construint, i ho podem entendre?\"",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-115",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta és exactament la qüestió de la interpretabilitat, projectada sobre un marc moral.",
+      "text_markdown": "Aquesta és exactament la qüestió de la interpretabilitat, projectada sobre un marc moral.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta és exactament la qüestió de la interpretabilitat, projectada sobre un marc moral.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-116",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "No és un argument de venda i no van escollir una persona d'arguments de venda.",
+      "text_markdown": "No és un argument de venda i no van escollir una persona d'arguments de venda.",
+      "title": "",
+      "tts": {
+        "text": "No és un argument de venda i no van escollir una persona d'arguments de venda.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-117",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Qui més hi ha a l'escenari?",
+      "text_markdown": "Qui més hi ha a l'escenari?",
+      "title": "",
+      "tts": {
+        "text": "Qui més hi ha a l'escenari?",
+        "pause_after_ms": 391,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-118",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El cardenal Pietro Parolin pronunciarà el discurs de cloenda.",
+      "text_markdown": "El cardenal Pietro Parolin pronunciarà el discurs de cloenda.",
+      "title": "",
+      "tts": {
+        "text": "El cardenal Pietro Parolin pronunciarà el discurs de cloenda.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-119",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "També presenten: el Cardenal Víctor Manuel Fernández i el Cardenal Michael Czerny.",
+      "text_markdown": "També presenten: el Cardenal Víctor Manuel Fernández i el Cardenal Michael Czerny.",
+      "title": "",
+      "tts": {
+        "text": "També presenten: el Cardenal Víctor Manuel Fernández i el Cardenal Michael Czerny.",
+        "pause_after_ms": 217,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-120",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "I dos professors de teologia — Anna Rowlands de la Universitat de Durham al Regne Unit, i Léocadie Lushombo de la Jesuit School of Theology a la Universitat de Santa Clara — seran al panell.",
+      "text_markdown": "I dos professors de teologia — Anna Rowlands de la Universitat de Durham al Regne Unit, i Léocadie Lushombo de la Jesuit School of Theology a la Universitat de Santa Clara — seran al panell.",
+      "title": "",
+      "tts": {
+        "text": "I dos professors de teologia — Anna Rowlands de la Universitat de Durham al Regne Unit, i Léocadie Lushombo de la Jesuit School of Theology a la Universitat de Santa Clara — seran al panell.",
+        "pause_after_ms": 590,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-121",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Per què això és important més enllà d'aquesta sala?",
+      "text_markdown": "Per què això és important més enllà d'aquesta sala?",
+      "title": "",
+      "tts": {
+        "text": "Per què això és important més enllà d'aquesta sala?",
+        "pause_after_ms": 377,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-122",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Perquè hi ha 1.4 mil milions de catòlics al món.",
+      "text_markdown": "Perquè hi ha 1.4 mil milions de catòlics al món.",
+      "title": "",
+      "tts": {
+        "text": "Perquè hi ha un punt quatre mil milions de catòlics al món.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-123",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Quan el Papa escriu una encíclica, modela la manera com una gran part de la població pensa sobre un tema durant una generació.",
+      "text_markdown": "Quan el Papa escriu una encíclica, modela la manera com una gran part de la població pensa sobre un tema durant una generació.",
+      "title": "",
+      "tts": {
+        "text": "Quan el Papa escriu una encíclica, modela la manera com una gran part de la població pensa sobre un tema durant una generació.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-124",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La Rerum Novarum encara modela la política social catòlica sobre el treball, 135 anys després.",
+      "text_markdown": "La Rerum Novarum encara modela la política social catòlica sobre el treball, 135 anys després.",
+      "title": "",
+      "tts": {
+        "text": "La Rerum Novarum encara modela la política social catòlica sobre el treball, cent trenta-cinc anys després.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-125",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Magnifica Humanitas està posicionada per fer el mateix amb la IA.",
+      "text_markdown": "Magnifica Humanitas està posicionada per fer el mateix amb la IA.",
+      "title": "",
+      "tts": {
+        "text": "Magnifica Humanitas està posicionada per fer el mateix amb la IA.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-126",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "I l'angle en l'altra direcció?",
+      "text_markdown": "I l'angle en l'altra direcció?",
+      "title": "",
+      "tts": {
+        "text": "I l'angle en l'altra direcció?",
+        "pause_after_ms": 379,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-127",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Una institució de fora de la indústria de la IA està adoptant una posició didàctica seriosa sobre el que estem construint.",
+      "text_markdown": "Una institució de fora de la indústria de la IA està adoptant una posició didàctica seriosa sobre el que estem construint.",
+      "title": "",
+      "tts": {
+        "text": "Una institució de fora de la indústria de la IA està adoptant una posició didàctica seriosa sobre el que estem construint.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-128",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "I el sector industrial s'està presentant, a la taula, amb el tipus de investigador adequat.",
+      "text_markdown": "I el sector industrial s'està presentant, a la taula, amb el tipus de investigador adequat.",
+      "title": "",
+      "tts": {
+        "text": "I el sector industrial s'està presentant, a la taula, amb el tipus de investigador adequat.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-129",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta no és la postura habitual — normalment és o bé \"nosaltres sabem més, deixeu-nos en pau\" o una postura de lobby.",
+      "text_markdown": "Aquesta no és la postura habitual — normalment és o bé \"nosaltres sabem més, deixeu-nos en pau\" o una postura de lobby.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta no és la postura habitual — normalment és o bé \"nosaltres sabem més, deixeu-nos en pau\" o una postura de lobby.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-130",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Això és una postura diferent.",
+      "text_markdown": "Això és una postura diferent.",
+      "title": "",
+      "tts": {
+        "text": "Això és una postura diferent.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-131",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Bon moment per tancar la secció.",
+      "text_markdown": "Bon moment per tancar la secció.",
+      "title": "",
+      "tts": {
+        "text": "Bon moment per tancar la secció.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-132",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ara passem al concepte de la setmana.",
+      "text_markdown": "Ara passem al concepte de la setmana.",
+      "title": "",
+      "tts": {
+        "text": "Ara passem al concepte de la setmana.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-133",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "El concepte d'aquesta setmana és la quantificació.",
+      "text_markdown": "El concepte d'aquesta setmana és la quantificació.",
+      "title": "",
+      "tts": {
+        "text": "El concepte d'aquesta setmana és la quantificació.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-134",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, explica'ns-ho.",
+      "text_markdown": "Ron, explica'ns-ho.",
+      "title": "",
+      "tts": {
+        "text": "Ron, explica'ns-ho.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-135",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "La quantificació és com un model de 7 mil milions de paràmetres cap al teu telèfon.",
+      "text_markdown": "La quantificació és com un model de 7 mil milions de paràmetres cap al teu telèfon.",
+      "title": "",
+      "tts": {
+        "text": "La quantificació és com un model de set mil milions de paràmetres cap al teu telèfon.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-136",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Comencem amb el problema bàsic.",
+      "text_markdown": "Comencem amb el problema bàsic.",
+      "title": "",
+      "tts": {
+        "text": "Comencem amb el problema bàsic.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-137",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Cada pes en un model és normalment un nombre de coma flotant de 16 bits.",
+      "text_markdown": "Cada pes en un model és normalment un nombre de coma flotant de 16 bits.",
+      "title": "",
+      "tts": {
+        "text": "Cada pes en un model és normalment un nombre de coma flotant de setze bits.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-138",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Un model de 7 mil milions de paràmetres en 16 bits ocupa uns 14 gigabytes al disc.",
+      "text_markdown": "Un model de 7 mil milions de paràmetres en 16 bits ocupa uns 14 gigabytes al disc.",
+      "title": "",
+      "tts": {
+        "text": "Un model de set mil milions de paràmetres en setze bits ocupa uns catorze gigabytes al disc.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-139",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Això no cap en un telèfon.",
+      "text_markdown": "Això no cap en un telèfon.",
+      "title": "",
+      "tts": {
+        "text": "Això no cap en un telèfon.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-140",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Així que redueixes els nombres.",
+      "text_markdown": "Així que redueixes els nombres.",
+      "title": "",
+      "tts": {
+        "text": "Així que redueixes els nombres.",
+        "pause_after_ms": 521,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-141",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Exactament, aquest és el punt.",
+      "text_markdown": "Exactament, aquest és el punt.",
+      "title": "",
+      "tts": {
+        "text": "Exactament, aquest és el punt.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-142",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Arrodoneixes cada pes a menys bits.",
+      "text_markdown": "Arrodoneixes cada pes a menys bits.",
+      "title": "",
+      "tts": {
+        "text": "Arrodoneixes cada pes a menys bits.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-143",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vuit bits per pes redueix el model a la meitat.",
+      "text_markdown": "Vuit bits per pes redueix el model a la meitat.",
+      "title": "",
+      "tts": {
+        "text": "Vuit bits per pes redueix el model a la meitat.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-144",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Quatre bits per pes el redueix a una quarta part.",
+      "text_markdown": "Quatre bits per pes el redueix a una quarta part.",
+      "title": "",
+      "tts": {
+        "text": "Quatre bits per pes el redueix a una quarta part.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-145",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquest mateix model de 7 mil milions de paràmetres a quatre bits és de 3,5 gigabytes.",
+      "text_markdown": "Aquest mateix model de 7 mil milions de paràmetres a quatre bits és de 3,5 gigabytes.",
+      "title": "",
+      "tts": {
+        "text": "Aquest mateix model de set mil milions de paràmetres a quatre bits és de tres punt cinc gigabytes.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-146",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ara encaixa bé.",
+      "text_markdown": "Ara encaixa bé.",
+      "title": "",
+      "tts": {
+        "text": "Ara encaixa bé.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-147",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "El model encara funciona?",
+      "text_markdown": "El model encara funciona?",
+      "title": "",
+      "tts": {
+        "text": "El model encara funciona?",
+        "pause_after_ms": 308,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-148",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Normalment sí, amb una petita caiguda de qualitat.",
+      "text_markdown": "Normalment sí, amb una petita caiguda de qualitat.",
+      "title": "",
+      "tts": {
+        "text": "Normalment sí, amb una petita caiguda de qualitat.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-149",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El truc és triar on perdre precisió dins del model.",
+      "text_markdown": "El truc és triar on perdre precisió dins del model.",
+      "title": "",
+      "tts": {
+        "text": "El truc és triar on perdre precisió dins del model.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-150",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "AWQ — quantització de pesos sensible a l'activació — manté els canals més importants amb una precisió més alta i comprimeix la resta.",
+      "text_markdown": "AWQ — quantització de pesos sensible a l'activació — manté els canals més importants amb una precisió més alta i comprimeix la resta.",
+      "title": "",
+      "tts": {
+        "text": "A W Q — quantització de pesos sensible a l'activació — manté els canals més importants amb una precisió més alta i comprimeix la resta.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-151",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "GGUF, que és el que utilitza llama.cpp, té formats com Q4_K_M que barregen precisions dins d'un únic fitxer de model.",
+      "text_markdown": "GGUF, que és el que utilitza llama.cpp, té formats com Q4_K_M que barregen precisions dins d'un únic fitxer de model.",
+      "title": "",
+      "tts": {
+        "text": "GGUF, que és el que utilitza llama.cpp, té formats com Q quatre K M que barregen precisions dins d'un únic fitxer de model.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-152",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Com de petit es pot arribar a ser?",
+      "text_markdown": "Com de petit es pot arribar a ser?",
+      "title": "",
+      "tts": {
+        "text": "Com de petit es pot arribar a ser?",
+        "pause_after_ms": 369,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-153",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "El model fundacional d'Apple per a dispositius va a 2 bits per pes.",
+      "text_markdown": "El model fundacional d'Apple per a dispositius va a 2 bits per pes.",
+      "title": "",
+      "tts": {
+        "text": "El model fundacional d'Apple per a dispositius va a dos bits per pes.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-154",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Utilitzen Quantization-Aware Training, on el model s'entrena des del principi sabent que serà de 2 bits en la inferència.",
+      "text_markdown": "Utilitzen Quantization-Aware Training, on el model s'entrena des del principi sabent que serà de 2 bits en la inferència.",
+      "title": "",
+      "tts": {
+        "text": "Utilitzen Quantization Aware Training, on el model s'entrena des del principi sabent que serà de dos bits en la inferència.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-155",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Això és un resultat molt millor que l'arrodoniment ingenu a posteriori.",
+      "text_markdown": "Això és un resultat molt millor que l'arrodoniment ingenu a posteriori.",
+      "title": "",
+      "tts": {
+        "text": "Això és un resultat molt millor que l'arrodoniment ingenu a posteriori.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-156",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Uns 3.000 milions de paràmetres a 2 bits resulten en aproximadament 750 megabytes.",
+      "text_markdown": "Uns 3.000 milions de paràmetres a 2 bits resulten en aproximadament 750 megabytes.",
+      "title": "",
+      "tts": {
+        "text": "Uns tres mil milions de paràmetres a dos bits resulten en aproximadament set-cents cinquanta megabytes.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-157",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Això cap en un telèfon amb espai de sobres.",
+      "text_markdown": "Això cap en un telèfon amb espai de sobres.",
+      "title": "",
+      "tts": {
+        "text": "Això cap en un telèfon amb espai de sobres.",
+        "pause_after_ms": 582,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-158",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Així que per això la IA en dispositius és finalment utilitzable aquest any.",
+      "text_markdown": "Així que per això la IA en dispositius és finalment utilitzable aquest any.",
+      "title": "",
+      "tts": {
+        "text": "Així que per això la A I en dispositius és finalment utilitzable aquest any.",
+        "pause_after_ms": 511,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-159",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Aquesta és la raó principal.",
+      "text_markdown": "Aquesta és la raó principal.",
+      "title": "",
+      "tts": {
+        "text": "Aquesta és la raó principal.",
+        "pause_after_ms": 267,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-160",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tres termes per recordar: AWQ, GGUF i entrenament conscient de la quantització.",
+      "text_markdown": "Tres termes per recordar: AWQ, GGUF i entrenament conscient de la quantització.",
+      "title": "",
+      "tts": {
+        "text": "Tres termes per recordar: a ve doble cu, ge ge u efa i entrenament conscient de la quantització.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-161",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Si un model inclou aquestes tres coses, funciona en telèfons.",
+      "text_markdown": "Si un model inclou aquestes tres coses, funciona en telèfons.",
+      "title": "",
+      "tts": {
+        "text": "Si un model inclou aquestes tres coses, funciona en telèfons.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-162",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un bon lloc per aterrar.",
+      "text_markdown": "Un bon lloc per aterrar.",
+      "title": "",
+      "tts": {
+        "text": "Un bon lloc per aterrar.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-163",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, gràcies de debò.",
+      "text_markdown": "Ron, gràcies de debò.",
+      "title": "",
+      "tts": {
+        "text": "Ron, gràcies de debò.",
+        "pause_after_ms": 465,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-164",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vindy, pots començar quan vulguis.",
+      "text_markdown": "Vindy, pots començar quan vulguis.",
+      "title": "",
+      "tts": {
+        "text": "Vindy, pots començar quan vulguis.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-165",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Això ha estat AI This Week del 20 de maig de 2026.",
+      "text_markdown": "Això ha estat AI This Week del 20 de maig de 2026.",
+      "title": "",
+      "tts": {
+        "text": "Això ha estat A I This Week del vint de maig de dos mil vint-i-sis.",
+        "pause_after_ms": 238,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-166",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nou número el proper dimecres.",
+      "text_markdown": "Nou número el proper dimecres.",
+      "title": "",
+      "tts": {
+        "text": "Nou número el proper dimecres.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-167",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Fins aleshores, cuideu-vos.",
+      "text_markdown": "Fins aleshores, cuideu-vos.",
+      "title": "",
+      "tts": {
+        "text": "Fins aleshores, cuideu-vos.",
+        "pause_after_ms": 1222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

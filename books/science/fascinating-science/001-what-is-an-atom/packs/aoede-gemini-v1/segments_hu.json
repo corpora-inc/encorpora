@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "hu",
+  "total_segments": 300,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "Minden atomokból épül fel",
+      "text_markdown": "Minden atomokból épül fel",
+      "title": "Minden atomokból épül fel"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Nézz körül!",
+      "text_markdown": "Nézz körül!",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Nézz körül!",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Minden, amit látsz, atomokból épül fel.",
+      "text_markdown": "Minden, amit látsz, atomokból épül fel.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Minden, amit látsz, atomokból épül fel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A levegő, amit belélegzel, atomokból áll.",
+      "text_markdown": "A levegő, amit belélegzel, atomokból áll.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "A levegő, amit belélegzel, atomokból áll.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A víz, amit iszol, atomokból áll.",
+      "text_markdown": "A víz, amit iszol, atomokból áll.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "A víz, amit iszol, atomokból áll.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A tested atomokból épül fel.",
+      "text_markdown": "A tested atomokból épül fel.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "A tested atomokból épül fel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "A talaj a lábad alatt atomokból áll.",
+      "text_markdown": "A talaj a lábad alatt atomokból áll.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "A talaj a lábad alatt atomokból áll.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atom az anyag legkisebb része, amely még megőrzi kémiai azonosságát.",
+      "text_markdown": "Az atom az anyag legkisebb része, amely még megőrzi kémiai azonosságát.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az atom az anyag legkisebb része, amely még megőrzi kémiai azonosságát.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egyetlen atomot sem láthatsz a szemeddel.",
+      "text_markdown": "Egyetlen atomot sem láthatsz a szemeddel.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Egyetlen atomot sem láthatsz a szemeddel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Egyetlen atomot sem láthatsz hagyományos mikroszkóppal.",
+      "text_markdown": "Egyetlen atomot sem láthatsz hagyományos mikroszkóppal.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Egyetlen atomot sem láthatsz hagyományos mikroszkóppal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Az atomok ennyire kicsik.",
+      "text_markdown": "Az atomok ennyire kicsik.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az atomok ennyire kicsik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Egyetlen homokszem körülbelül ötven kvintillió atomot tartalmaz.",
+      "text_markdown": "Egyetlen homokszem körülbelül ötven kvintillió atomot tartalmaz.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Egyetlen homokszem körülbelül ötven kvintillió atomot tartalmaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Ez a szám ötven, amit tizennyolc nulla követ.",
+      "text_markdown": "Ez a szám ötven, amit tizennyolc nulla követ.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Ez a szám ötven, amit tizennyolc nulla követ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Több atom van egyetlen homokszemben, mint ahány homokszem egy tengerparton.",
+      "text_markdown": "Több atom van egyetlen homokszemben, mint ahány homokszem egy tengerparton.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Több atom van egyetlen homokszemben, mint ahány homokszem egy tengerparton.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok a fizikai világban mindennek az építőkövei.",
+      "text_markdown": "Az atomok a fizikai világban mindennek az építőkövei.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az atomok a fizikai világban mindennek az építőkövei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egy fal téglákból épül fel.",
+      "text_markdown": "Egy fal téglákból épül fel.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Egy fal téglákból épül fel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Egy mondat szavakból áll.",
+      "text_markdown": "Egy mondat szavakból áll.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Egy mondat szavakból áll.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Az univerzum atomokból áll.",
+      "text_markdown": "Az univerzum atomokból áll.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az univerzum atomokból áll.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atom szó az ókori görögből származik.",
+      "text_markdown": "Az atom szó az ókori görögből származik.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az atom szó az ókori görögből származik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az ógörög atomos szó azt jelenti, hogy oszthatatlan.",
+      "text_markdown": "Az ógörög atomos szó azt jelenti, hogy oszthatatlan.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az ógörög atomos szó azt jelenti, hogy oszthatatlan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az ókori görög filozófusok úgy gondolták, hogy az atomok az anyag legkisebb lehetséges részei.",
+      "text_markdown": "Az ókori görög filozófusok úgy gondolták, hogy az atomok az anyag legkisebb lehetséges részei.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az ókori görög filozófusok úgy gondolták, hogy az atomok az anyag legkisebb lehetséges részei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Majdnem igazuk volt.",
+      "text_markdown": "Majdnem igazuk volt.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Majdnem igazuk volt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Az atomok valójában nem a legkisebb részecskék, de ők a legkisebb egységek, amelyek megőrzik kémiai tulajdonságaikat.",
+      "text_markdown": "Az atomok valójában nem a legkisebb részecskék, de ők a legkisebb egységek, amelyek megőrzik kémiai tulajdonságaikat.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az atomok valójában nem a legkisebb részecskék, de ők a legkisebb egységek, amelyek megőrzik kémiai tulajdonságaikat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok hihetetlenül tartósak.",
+      "text_markdown": "Az atomok hihetetlenül tartósak.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az atomok hihetetlenül tartósak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A testedben lévő atomok milliárd évesek.",
+      "text_markdown": "A testedben lévő atomok milliárd évesek.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "A testedben lévő atomok milliárd évesek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A ma elfogyasztott vízben lévő hidrogénatomok egy része a Nagy Bumm utáni első percekben keletkezett.",
+      "text_markdown": "A ma elfogyasztott vízben lévő hidrogénatomok egy része a Nagy Bumm utáni első percekben keletkezett.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "A ma elfogyasztott vízben lévő hidrogénatomok egy része a Nagy Bumm utáni első percekben keletkezett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ősi anyagokból épülsz fel.",
+      "text_markdown": "Ősi anyagokból épülsz fel.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Ősi anyagokból épülsz fel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok a mindennapi életben soha nem keletkeznek és nem pusztulnak el.",
+      "text_markdown": "Az atomok a mindennapi életben soha nem keletkeznek és nem pusztulnak el.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Az atomok a mindennapi életben soha nem keletkeznek és nem pusztulnak el.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Átrendeződnek.",
+      "text_markdown": "Átrendeződnek.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Átrendeződnek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Amikor a fa ég, az atomok nem tűnnek el.",
+      "text_markdown": "Amikor a fa ég, az atomok nem tűnnek el.",
+      "title": "Minden atomokból épül fel",
+      "tts": {
+        "text": "Amikor a fa ég, az atomok nem tűnnek el.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Füstté, hamuvá és gázzá rendeződnek át.",
+      "text_markdown": "Füstté, hamuvá és gázzá rendeződnek át.",
+      "title": "Minden atomból áll",
+      "tts": {
+        "text": "Füstté, hamuvá és gázzá rendeződnek át.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Amikor a jég megolvad, az atomok változatlanok maradnak.",
+      "text_markdown": "Amikor a jég megolvad, az atomok változatlanok maradnak.",
+      "title": "Minden atomból áll",
+      "tts": {
+        "text": "Amikor a jég megolvad, az atomok változatlanok maradnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Csak az elrendezésük változik.",
+      "text_markdown": "Csak az elrendezésük változik.",
+      "title": "Minden atomból áll",
+      "tts": {
+        "text": "Csak az elrendezésük változik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok megértése a kémia alapja.",
+      "text_markdown": "Az atomok megértése a kémia alapja.",
+      "title": "Minden atomból áll",
+      "tts": {
+        "text": "Az atomok megértése a kémia alapja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A kémia az a tudomány, amely azt vizsgálja, hogyan kapcsolódnak, rendeződnek át és lépnek kölcsönhatásba az atomok.",
+      "text_markdown": "A kémia az a tudomány, amely azt vizsgálja, hogyan kapcsolódnak, rendeződnek át és lépnek kölcsönhatásba az atomok.",
+      "title": "Minden atomból áll",
+      "tts": {
+        "text": "A kémia az a tudomány, amely azt vizsgálja, hogyan kapcsolódnak, rendeződnek át és lépnek kölcsönhatásba az atomok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Minden, ami a fizikai világban történik, az atomokra és azok működésére vezethető vissza.",
+      "text_markdown": "Minden, ami a fizikai világban történik, az atomokra és azok működésére vezethető vissza.",
+      "title": "Minden atomból áll",
+      "tts": {
+        "text": "Minden, ami a fizikai világban történik, az atomokra és azok működésére vezethető vissza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p10",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "Az atom belsejében",
+      "text_markdown": "Az atom belsejében",
+      "title": "Az atom belsejében"
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Egy atomnak háromféle részecskéje van belül.",
+      "text_markdown": "Egy atomnak háromféle részecskéje van belül.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Egy atomnak háromféle részecskéje van belül.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Protonok.",
+      "text_markdown": "Protonok.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Protonok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Neutronok.",
+      "text_markdown": "Neutronok.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Neutronok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Elektronok.",
+      "text_markdown": "Elektronok.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Elektronok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Ez a három részecske alkotja az univerzum minden atomját.",
+      "text_markdown": "Ez a három részecske alkotja az univerzum minden atomját.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Ez a három részecske alkotja az univerzum minden atomját.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atom középpontját atommagnak nevezzük.",
+      "text_markdown": "Az atom középpontját atommagnak nevezzük.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Az atom középpontját atommagnak nevezzük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az atommag tartalmazza a protonokat és a neutronokat.",
+      "text_markdown": "Az atommag tartalmazza a protonokat és a neutronokat.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Az atommag tartalmazza a protonokat és a neutronokat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az atommag apró az egész atomhoz képest.",
+      "text_markdown": "Az atommag apró az egész atomhoz képest.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Az atommag apró az egész atomhoz képest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ha az atom egy futballstadion méretű lenne, az atommag egy golyó méretű lenne az ötven yardos vonalon.",
+      "text_markdown": "Ha az atom egy futballstadion méretű lenne, az atommag egy golyó méretű lenne az ötven yardos vonalon.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Ha az atom egy futballstadion méretű lenne, az atommag egy golyó méretű lenne az ötven yardos vonalon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A protonok pozitív elektromos töltéssel rendelkeznek.",
+      "text_markdown": "A protonok pozitív elektromos töltéssel rendelkeznek.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "A protonok pozitív elektromos töltéssel rendelkeznek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Minden proton azonos mennyiségű pozitív töltéssel rendelkezik.",
+      "text_markdown": "Minden proton azonos mennyiségű pozitív töltéssel rendelkezik.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Minden proton azonos mennyiségű pozitív töltéssel rendelkezik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az atom protonjainak száma határozza meg, hogy milyen elemről van szó.",
+      "text_markdown": "Az atom protonjainak száma határozza meg, hogy milyen elemről van szó.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Az atom protonjainak száma határozza meg, hogy milyen elemről van szó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Egy proton hidrogént jelent.",
+      "text_markdown": "Egy proton hidrogént jelent.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Egy proton hidrogént jelent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Hat proton szenet jelent.",
+      "text_markdown": "Hat proton szenet jelent.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Hat proton szenet jelent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Huszonhat proton vasat jelent.",
+      "text_markdown": "Huszonhat proton vasat jelent.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Huszonhat proton vasat jelent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 6,
+      "text": "A protonok száma a legfontosabb tény egy atomról.",
+      "text_markdown": "A protonok száma a legfontosabb tény egy atomról.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "A protonok száma a legfontosabb tény egy atomról.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A neutronoknak nincs elektromos töltésük.",
+      "text_markdown": "A neutronoknak nincs elektromos töltésük.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "A neutronoknak nincs elektromos töltésük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A neutronok semlegesek.",
+      "text_markdown": "A neutronok semlegesek.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "A neutronok semlegesek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A neutronok az atommagban, a protonok mellett helyezkednek el.",
+      "text_markdown": "A neutronok az atommagban, a protonok mellett helyezkednek el.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "A neutronok az atommagban, a protonok mellett helyezkednek el.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A neutronok segítenek összetartani az atommagot.",
+      "text_markdown": "A neutronok segítenek összetartani az atommagot.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "A neutronok segítenek összetartani az atommagot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Neutronok nélkül a protonok taszítanák egymást, mert mindegyikük azonos pozitív töltéssel rendelkezik.",
+      "text_markdown": "Neutronok nélkül a protonok taszítanák egymást, mert mindegyikük azonos pozitív töltéssel rendelkezik.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Neutronok nélkül a protonok taszítanák egymást, mert mindegyikük azonos pozitív töltéssel rendelkezik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az elektronok negatív elektromos töltéssel rendelkeznek.",
+      "text_markdown": "Az elektronok negatív elektromos töltéssel rendelkeznek.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Az elektronok negatív elektromos töltéssel rendelkeznek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az elektronok felhőként mozognak az atommag körül.",
+      "text_markdown": "Az elektronok felhőként mozognak az atommag körül.",
+      "title": "Az atom belsejében",
+      "tts": {
+        "text": "Az elektronok felhőként mozognak az atommag körül.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Nem keringenek úgy, mint a bolygók egy nap körül.",
+      "text_markdown": "Nem keringenek úgy, mint a bolygók egy nap körül.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Nem keringenek úgy, mint a bolygók egy nap körül.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A mag körül egy elmosódott valószínűségi régióban léteznek.",
+      "text_markdown": "A mag körül egy elmosódott valószínűségi régióban léteznek.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "A mag körül egy elmosódott valószínűségi régióban léteznek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Az elektronfelhő az a hely, ahol bármely adott pillanatban valószínűleg megtalálható egy elektron.",
+      "text_markdown": "Az elektronfelhő az a hely, ahol bármely adott pillanatban valószínűleg megtalálható egy elektron.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Az elektronfelhő az a hely, ahol bármely adott pillanatban valószínűleg megtalálható egy elektron.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Egy elektronnak szinte nincs tömege egy protonhoz vagy neutronhoz képest.",
+      "text_markdown": "Egy elektronnak szinte nincs tömege egy protonhoz vagy neutronhoz képest.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Egy elektronnak szinte nincs tömege egy protonhoz vagy neutronhoz képest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egy proton körülbelül 1836-szor nehezebb, mint egy elektron.",
+      "text_markdown": "Egy proton körülbelül 1836-szor nehezebb, mint egy elektron.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Egy proton körülbelül ezernyolcszázharminchat-szor nehezebb, mint egy elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az atom tömegének szinte egésze a magban található.",
+      "text_markdown": "Az atom tömegének szinte egésze a magban található.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Az atom tömegének szinte egésze a magban található.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Egy semleges atomban az elektronok száma megegyezik a protonok számával.",
+      "text_markdown": "Egy semleges atomban az elektronok száma megegyezik a protonok számával.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Egy semleges atomban az elektronok száma megegyezik a protonok számával.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A pozitív és a negatív töltések kiegyenlítik egymást.",
+      "text_markdown": "A pozitív és a negatív töltések kiegyenlítik egymást.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "A pozitív és a negatív töltések kiegyenlítik egymást.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az atomnak nincs nettó töltése.",
+      "text_markdown": "Az atomnak nincs nettó töltése.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Az atomnak nincs nettó töltése.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ez az egyensúly az atom alapállapota.",
+      "text_markdown": "Ez az egyensúly az atom alapállapota.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Ez az egyensúly az atom alapállapota.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atom nagy része üres tér.",
+      "text_markdown": "Az atom nagy része üres tér.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Az atom nagy része üres tér.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az atommag sűrű és apró.",
+      "text_markdown": "Az atommag sűrű és apró.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Az atommag sűrű és apró.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az elektronfelhő nagy és többnyire üres.",
+      "text_markdown": "Az elektronfelhő nagy és többnyire üres.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Az elektronfelhő nagy és többnyire üres.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ha eltávolíthatnád az összes üres teret tested minden atomjából, akkor egy sókristálynál is kisebbre zsugorodnál.",
+      "text_markdown": "Ha eltávolíthatnád az összes üres teret tested minden atomjából, akkor egy sókristálynál is kisebbre zsugorodnál.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Ha eltávolíthatnád az összes üres teret tested minden atomjából, akkor egy sókristálynál is kisebbre zsugorodnál.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A tömeged változatlan maradna.",
+      "text_markdown": "A tömeged változatlan maradna.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "A tömeged változatlan maradna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Egyszerűen hihetetlenül sűrű lennél.",
+      "text_markdown": "Egyszerűen hihetetlenül sűrű lennél.",
+      "title": "Az atom belseje",
+      "tts": {
+        "text": "Egyszerűen hihetetlenül sűrű lennél.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p19",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "Elemek",
+      "text_markdown": "Elemek",
+      "title": "Elemek"
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az elem olyan anyag, amely csak egyféle atomból áll.",
+      "text_markdown": "Az elem olyan anyag, amely csak egyféle atomból áll.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Az elem olyan anyag, amely csak egyféle atomból áll.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A tiszta arany egy elem.",
+      "text_markdown": "A tiszta arany egy elem.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A tiszta arany egy elem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Egy rúd tiszta arany minden atomjában hetvenkilenc proton van.",
+      "text_markdown": "Egy rúd tiszta arany minden atomjában hetvenkilenc proton van.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Egy rúd tiszta arany minden atomjában hetvenkilenc proton van.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A tiszta oxigén egy elem.",
+      "text_markdown": "A tiszta oxigén egy elem.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A tiszta oxigén egy elem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Egy tartály tiszta oxigén minden atomjában nyolc proton van.",
+      "text_markdown": "Egy tartály tiszta oxigén minden atomjában nyolc proton van.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Egy tartály tiszta oxigén minden atomjában nyolc proton van.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Körülbelül kilencvenkét elem fordul elő természetesen a Földön.",
+      "text_markdown": "Körülbelül kilencvenkét elem fordul elő természetesen a Földön.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Körülbelül kilencvenkét elem fordul elő természetesen a Földön.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Tudósok további elemeket hoztak létre laboratóriumokban.",
+      "text_markdown": "Tudósok további elemeket hoztak létre laboratóriumokban.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Tudósok további elemeket hoztak létre laboratóriumokban.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az ismert elemek teljes száma meghaladja a száz tizennyolcat.",
+      "text_markdown": "Az ismert elemek teljes száma meghaladja a száz tizennyolcat.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Az ismert elemek teljes száma meghaladja a száz tizennyolcat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Minden elemnek egyedi protonszáma van.",
+      "text_markdown": "Minden elemnek egyedi protonszáma van.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Minden elemnek egyedi protonszáma van.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Minden elemnek van neve és vegyjele.",
+      "text_markdown": "Minden elemnek van neve és vegyjele.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Minden elemnek van neve és vegyjele.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A hidrogén H. Az oxigén O. A szén C. A vas Fe.",
+      "text_markdown": "A hidrogén H. Az oxigén O. A szén C. A vas Fe.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A hidrogén há. Az oxigén ó. A szén cé. A vas ef é.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-089",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az arany Au.",
+      "text_markdown": "Az arany Au.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Az arany á ú.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-090",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A vegyjelek latin, görög vagy angol nevekből származnak.",
+      "text_markdown": "A vegyjelek latin, görög vagy angol nevekből származnak.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A vegyjelek latin, görög vagy angol nevekből származnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-091",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Az Fe a latin ferrum szóból származik.",
+      "text_markdown": "Az Fe a latin ferrum szóból származik.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Az ef e a latin ferrum szóból származik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-092",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Az Au a latin aurum szóból származik.",
+      "text_markdown": "Az Au a latin aurum szóból származik.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Az á u a latin aurum szóból származik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-093",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A hidrogén a legegyszerűbb elem.",
+      "text_markdown": "A hidrogén a legegyszerűbb elem.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A hidrogén a legegyszerűbb elem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-094",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egy hidrogénatom egy protont és egy elektront tartalmaz.",
+      "text_markdown": "Egy hidrogénatom egy protont és egy elektront tartalmaz.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Egy hidrogénatom egy protont és egy elektront tartalmaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-095",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A hidrogén a leggyakoribb elem az univerzumban.",
+      "text_markdown": "A hidrogén a leggyakoribb elem az univerzumban.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A hidrogén a leggyakoribb elem az univerzumban.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-096",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A csillagok főként hidrogénből állnak.",
+      "text_markdown": "A csillagok főként hidrogénből állnak.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A csillagok főként hidrogénből állnak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-097",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A szén az élet eleme.",
+      "text_markdown": "A szén az élet eleme.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A szén az élet eleme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-098",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A szénnek hat protonja van.",
+      "text_markdown": "A szénnek hat protonja van.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A szénnek hat protonja van.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-099",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A szénatomok egyszerre sok más atommal képesek kötéseket alkotni.",
+      "text_markdown": "A szénatomok egyszerre sok más atommal képesek kötéseket alkotni.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A szénatomok egyszerre sok más atommal képesek kötéseket alkotni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-100",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ez a képesség teszi a szenet minden élőlény gerincévé.",
+      "text_markdown": "Ez a képesség teszi a szenet minden élőlény gerincévé.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Ez a képesség teszi a szenet minden élőlény gerincévé.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Minden fehérje, minden DNS-szál és minden cukormolekula a testedben szenet tartalmaz.",
+      "text_markdown": "Minden fehérje, minden DNS-szál és minden cukormolekula a testedben szenet tartalmaz.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Minden fehérje, minden DNS-szál és minden cukormolekula a testedben szenet tartalmaz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az oxigénnek nyolc protonja van.",
+      "text_markdown": "Az oxigénnek nyolc protonja van.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Az oxigénnek nyolc protonja van.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az oxigén az az elem, amit belélegzel.",
+      "text_markdown": "Az oxigén az az elem, amit belélegzel.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Az oxigén az az elem, amit belélegzel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A tüdőd kivonja az oxigént a levegőből, és a véredbe juttatja.",
+      "text_markdown": "A tüdőd kivonja az oxigént a levegőből, és a véredbe juttatja.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A tüdőd kivonja az oxigént a levegőből, és a véredbe juttatja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A sejtjeid oxigént használnak az energia felszabadítására az élelmiszerből.",
+      "text_markdown": "A sejtjeid oxigént használnak az energia felszabadítására az élelmiszerből.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A sejtjeid oxigént használnak az energia felszabadítására az élelmiszerből.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A vasnak huszonhat protonja van.",
+      "text_markdown": "A vasnak huszonhat protonja van.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A vasnak huszonhat protonja van.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A vas az az elem, ami vörössé teszi a véredet.",
+      "text_markdown": "A vas az az elem, ami vörössé teszi a véredet.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A vas az az elem, ami vörössé teszi a véredet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A vas az acél fő összetevője.",
+      "text_markdown": "A vas az acél fő összetevője.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A vas az acél fő összetevője.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A Föld magja főként vasból áll.",
+      "text_markdown": "A Föld magja főként vasból áll.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A Föld magja főként vasból áll.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A legkönnyebb elemek a leggyakoribbak az univerzumban.",
+      "text_markdown": "A legkönnyebb elemek a leggyakoribbak az univerzumban.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A legkönnyebb elemek a leggyakoribbak az univerzumban.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A hidrogén és a hélium együtt az univerzumban található összes atom körülbelül kilencvennyolc százalékát teszi ki.",
+      "text_markdown": "A hidrogén és a hélium együtt az univerzumban található összes atom körülbelül kilencvennyolc százalékát teszi ki.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A hidrogén és a hélium együtt az univerzumban található összes atom körülbelül kilencvennyolc százalékát teszi ki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A nehezebb elemek ehhez képest ritkák.",
+      "text_markdown": "A nehezebb elemek ehhez képest ritkák.",
+      "title": "Elemek",
+      "tts": {
+        "text": "A nehezebb elemek ehhez képest ritkák.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Minden nehéz elem minden atomja egy csillag belsejében kovácsolódott.",
+      "text_markdown": "Minden nehéz elem minden atomja egy csillag belsejében kovácsolódott.",
+      "title": "Elemek",
+      "tts": {
+        "text": "Minden nehéz elem minden atomja egy csillag belsejében kovácsolódott.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-114",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "A periódusos rendszer",
+      "text_markdown": "A periódusos rendszer",
+      "title": "A periódusos rendszer"
+    },
+    {
+      "id": "ch04-115",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A periódusos rendszer egy táblázat, amely minden ismert elemet rendszerez.",
+      "text_markdown": "A periódusos rendszer egy táblázat, amely minden ismert elemet rendszerez.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A periódusos rendszer egy táblázat, amely minden ismert elemet rendszerez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-116",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A táblázat az elemeket a protonszámuk szerint rendezi, a legkisebbtől a legnagyobbig.",
+      "text_markdown": "A táblázat az elemeket a protonszámuk szerint rendezi, a legkisebbtől a legnagyobbig.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A táblázat az elemeket a protonszámuk szerint rendezi, a legkisebbtől a legnagyobbig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-117",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A hidrogén az első, egy protonnal.",
+      "text_markdown": "A hidrogén az első, egy protonnal.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A hidrogén az első, egy protonnal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-118",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A hélium a második, két protonnal.",
+      "text_markdown": "A hélium a második, két protonnal.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A hélium a második, két protonnal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-119",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A táblázat egészen az oganessonig folytatódik, száz tizennyolc protonnal.",
+      "text_markdown": "A táblázat egészen az oganessonig folytatódik, száz tizennyolc protonnal.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A táblázat egészen az oganessonig folytatódik, száz tizennyolc protonnal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-120",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A periódusos rendszer sorokból és oszlopokból áll.",
+      "text_markdown": "A periódusos rendszer sorokból és oszlopokból áll.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A periódusos rendszer sorokból és oszlopokból áll.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-121",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A sorokat periódusoknak nevezzük.",
+      "text_markdown": "A sorokat periódusoknak nevezzük.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A sorokat periódusoknak nevezzük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-122",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az oszlopokat csoportoknak nevezzük.",
+      "text_markdown": "Az oszlopokat csoportoknak nevezzük.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Az oszlopokat csoportoknak nevezzük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-123",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Az azonos csoportban lévő elemek hasonló tulajdonságokkal rendelkeznek.",
+      "text_markdown": "Az azonos csoportban lévő elemek hasonló tulajdonságokkal rendelkeznek.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Az azonos csoportban lévő elemek hasonló tulajdonságokkal rendelkeznek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-124",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Ezért nevezik a táblázatot periódusosnak.",
+      "text_markdown": "Ezért nevezik a táblázatot periódusosnak.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Ezért nevezik a táblázatot periódusosnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-125",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "A tulajdonságok szabályos mintázatban ismétlődnek.",
+      "text_markdown": "A tulajdonságok szabályos mintázatban ismétlődnek.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A tulajdonságok szabályos mintázatban ismétlődnek.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-126",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A táblázat bal oldalán lévő elemek fémek.",
+      "text_markdown": "A táblázat bal oldalán lévő elemek fémek.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A táblázat bal oldalán lévő elemek fémek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-127",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A legtöbb elem fém.",
+      "text_markdown": "A legtöbb elem fém.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A legtöbb elem fém.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-128",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A fémek fényesek.",
+      "text_markdown": "A fémek fényesek.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A fémek fényesek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-129",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A fémek vezetik az áramot.",
+      "text_markdown": "A fémek vezetik az áramot.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A fémek vezetik az áramot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-130",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A fémek vezetik a hőt.",
+      "text_markdown": "A fémek vezetik a hőt.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A fémek vezetik a hőt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-131",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "A vas, a réz, az arany és az alumínium mind fémek.",
+      "text_markdown": "A vas, a réz, az arany és az alumínium mind fémek.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A vas, a réz, az arany és az alumínium mind fémek.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-132",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A táblázat jobb oldalán lévő elemek nemfémek.",
+      "text_markdown": "A táblázat jobb oldalán lévő elemek nemfémek.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A táblázat jobb oldalán lévő elemek nemfémek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-133",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A nemfémek közé tartozik az oxigén, a nitrogén, a szén és a kén.",
+      "text_markdown": "A nemfémek közé tartozik az oxigén, a nitrogén, a szén és a kén.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A nemfémek közé tartozik az oxigén, a nitrogén, a szén és a kén.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-134",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A nemfémek nem vezetik jól az áramot.",
+      "text_markdown": "A nemfémek nem vezetik jól az áramot.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A nemfémek nem vezetik jól az áramot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-135",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A nemfémek azok az elemek, amelyek a levegőt, a vizet és az élő szervezeteket alkotják.",
+      "text_markdown": "A nemfémek azok az elemek, amelyek a levegőt, a vizet és az élő szervezeteket alkotják.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A nemfémek azok az elemek, amelyek a levegőt, a vizet és az élő szervezeteket alkotják.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-136",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Néhány elem a fémek és a nemfémek határán helyezkedik el.",
+      "text_markdown": "Néhány elem a fémek és a nemfémek határán helyezkedik el.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Néhány elem a fémek és a nemfémek határán helyezkedik el.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-137",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Ezeket az elemeket félfémeknek nevezik.",
+      "text_markdown": "Ezeket az elemeket félfémeknek nevezik.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Ezeket az elemeket félfémeknek nevezik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-138",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A szilícium félfém.",
+      "text_markdown": "A szilícium félfém.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A szilícium félfém.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-139",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A szilícium vezeti az áramot, de nem olyan jól, mint egy fém.",
+      "text_markdown": "A szilícium vezeti az áramot, de nem olyan jól, mint egy fém.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A szilícium vezeti az áramot, de nem olyan jól, mint egy fém.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-140",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Ez a tulajdonság teszi a szilíciumot hasznossá a számítógépes chipekben.",
+      "text_markdown": "Ez a tulajdonság teszi a szilíciumot hasznossá a számítógépes chipekben.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Ez a tulajdonság teszi a szilíciumot hasznossá a számítógépes chipekben.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-141",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A nemesgázok a jobb oldali utolsó oszlopban találhatók.",
+      "text_markdown": "A nemesgázok a jobb oldali utolsó oszlopban találhatók.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A nemesgázok a jobb oldali utolsó oszlopban találhatók.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-142",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A hélium, a neon, az argon, a kripton, a xenon és a radon nemesgázok.",
+      "text_markdown": "A hélium, a neon, az argon, a kripton, a xenon és a radon nemesgázok.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A hélium, a neon, az argon, a kripton, a xenon és a radon nemesgázok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-143",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A nemesgázok szinte soha nem lépnek reakcióba más elemekkel.",
+      "text_markdown": "A nemesgázok szinte soha nem lépnek reakcióba más elemekkel.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A nemesgázok szinte soha nem lépnek reakcióba más elemekkel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-144",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Elektronelrendezésük már stabil.",
+      "text_markdown": "Elektronelrendezésük már stabil.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Elektronelrendezésük már stabil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-145",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Nem kell kötéseket alkotniuk.",
+      "text_markdown": "Nem kell kötéseket alkotniuk.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Nem kell kötéseket alkotniuk.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-146",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Egy orosz tudós, Dmitrij Mengyelejev 1869-ben alkotta meg az első periódusos rendszert.",
+      "text_markdown": "Egy orosz tudós, Dmitrij Mengyelejev 1869-ben alkotta meg az első periódusos rendszert.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Egy orosz tudós, Dmitrij Mengyelejev ezernyolcszázhatvankilencben alkotta meg az első periódusos rendszert.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-147",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Mengyelejev a tulajdonságaik szerint rendezte el az elemeket, és észrevette az ismétlődő mintázatot.",
+      "text_markdown": "Mengyelejev a tulajdonságaik szerint rendezte el az elemeket, és észrevette az ismétlődő mintázatot.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Mengyelejev a tulajdonságaik szerint rendezte el az elemeket, és észrevette az ismétlődő mintázatot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-148",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Üres helyeket hagyott a táblázatában, ahol előrejelzése szerint ismeretlen elemeknek kellett lenniük.",
+      "text_markdown": "Üres helyeket hagyott a táblázatában, ahol előrejelzése szerint ismeretlen elemeknek kellett lenniük.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Üres helyeket hagyott a táblázatában, ahol előrejelzése szerint ismeretlen elemeknek kellett lenniük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-149",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A tudósok később felfedezték ezeket az elemeket.",
+      "text_markdown": "A tudósok később felfedezték ezeket az elemeket.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A tudósok később felfedezték ezeket az elemeket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-150",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Minden előrejelzés helyes volt.",
+      "text_markdown": "Minden előrejelzés helyes volt.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Minden előrejelzés helyes volt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-151",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A periódusos rendszer a tudomány egyik leghatékonyabb eszköze.",
+      "text_markdown": "A periódusos rendszer a tudomány egyik leghatékonyabb eszköze.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "A periódusos rendszer a tudomány egyik leghatékonyabb eszköze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-152",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Ha tudod, hol helyezkedik el egy elem a táblázatban, megjósolhatod, hogyan fog viselkedni.",
+      "text_markdown": "Ha tudod, hol helyezkedik el egy elem a táblázatban, megjósolhatod, hogyan fog viselkedni.",
+      "title": "A periódusos rendszer",
+      "tts": {
+        "text": "Ha tudod, hol helyezkedik el egy elem a táblázatban, megjósolhatod, hogyan fog viselkedni.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-153",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "Hogyan kötődnek az atomok",
+      "text_markdown": "Hogyan kötődnek az atomok",
+      "title": "Hogyan kötődnek az atomok"
+    },
+    {
+      "id": "ch05-154",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok ritkán léteznek önmagukban.",
+      "text_markdown": "Az atomok ritkán léteznek önmagukban.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az atomok ritkán léteznek önmagukban.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-155",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A legtöbb atom más atomokkal kötődik, hogy molekulákat alkosson.",
+      "text_markdown": "A legtöbb atom más atomokkal kötődik, hogy molekulákat alkosson.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A legtöbb atom más atomokkal kötődik, hogy molekulákat alkosson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-156",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A molekula atomok csoportja, melyeket kémiai kötések tartanak össze.",
+      "text_markdown": "A molekula atomok csoportja, melyeket kémiai kötések tartanak össze.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A molekula atomok csoportja, melyeket kémiai kötések tartanak össze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-157",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A víz egy molekula.",
+      "text_markdown": "A víz egy molekula.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A víz egy molekula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-158",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Az oxigéngáz egy molekula.",
+      "text_markdown": "Az oxigéngáz egy molekula.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az oxigéngáz egy molekula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-159",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "A cukor egy molekula.",
+      "text_markdown": "A cukor egy molekula.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A cukor egy molekula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-160",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok az elektronjaik miatt kötődnek.",
+      "text_markdown": "Az atomok az elektronjaik miatt kötődnek.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az atomok az elektronjaik miatt kötődnek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-161",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az atom külső héján lévő elektronok határozzák meg, hogyan lép kölcsönhatásba az atom más atomokkal.",
+      "text_markdown": "Az atom külső héján lévő elektronok határozzák meg, hogyan lép kölcsönhatásba az atom más atomokkal.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az atom külső héján lévő elektronok határozzák meg, hogyan lép kölcsönhatásba az atom más atomokkal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-162",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Ezeket a külső elektronokat vegyértékelektronoknak nevezzük.",
+      "text_markdown": "Ezeket a külső elektronokat vegyértékelektronoknak nevezzük.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Ezeket a külső elektronokat vegyértékelektronoknak nevezzük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-163",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A telített külső héjú atom stabil.",
+      "text_markdown": "A telített külső héjú atom stabil.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A telített külső héjú atom stabil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-164",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A nem telített külső héjú atom igyekszik telíteni azt.",
+      "text_markdown": "A nem telített külső héjú atom igyekszik telíteni azt.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A nem telített külső héjú atom igyekszik telíteni azt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-165",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Két fő típusa van a kémiai kötéseknek.",
+      "text_markdown": "Két fő típusa van a kémiai kötéseknek.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Két fő típusa van a kémiai kötéseknek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-166",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Kovalens kötések és ionos kötések.",
+      "text_markdown": "Kovalens kötések és ionos kötések.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Kovalens kötések és ionos kötések.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-167",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Kovalens kötésben két atom oszt meg elektronokat.",
+      "text_markdown": "Kovalens kötésben két atom oszt meg elektronokat.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Kovalens kötésben két atom oszt meg elektronokat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-168",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Mindkét atom elektronokkal járul hozzá egy megosztott párhoz.",
+      "text_markdown": "Mindkét atom elektronokkal járul hozzá egy megosztott párhoz.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Mindkét atom elektronokkal járul hozzá egy megosztott párhoz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-169",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A megosztott elektronok mindkét atommag körül keringenek.",
+      "text_markdown": "A megosztott elektronok mindkét atommag körül keringenek.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A megosztott elektronok mindkét atommag körül keringenek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-170",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ez a megosztás tartja össze az atomokat.",
+      "text_markdown": "Ez a megosztás tartja össze az atomokat.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Ez a megosztás tartja össze az atomokat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-171",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A vizet kovalens kötések tartják össze.",
+      "text_markdown": "A vizet kovalens kötések tartják össze.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A vizet kovalens kötések tartják össze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-172",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Minden hidrogénatom egy elektront oszt meg az oxigénatommal.",
+      "text_markdown": "Minden hidrogénatom egy elektront oszt meg az oxigénatommal.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Minden hidrogénatom egy elektront oszt meg az oxigénatommal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-173",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Ionos kötésben az egyik atom elektronokat ad át egy másik atomnak.",
+      "text_markdown": "Ionos kötésben az egyik atom elektronokat ad át egy másik atomnak.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Ionos kötésben az egyik atom elektronokat ad át egy másik atomnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-174",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az elektronokat elvesztő atom pozitív töltésűvé válik.",
+      "text_markdown": "Az elektronokat elvesztő atom pozitív töltésűvé válik.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az elektronokat elvesztő atom pozitív töltésűvé válik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-175",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az elektronokat felvevő atom negatív töltésűvé válik.",
+      "text_markdown": "Az elektronokat felvevő atom negatív töltésűvé válik.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az elektronokat felvevő atom negatív töltésűvé válik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-176",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Az ellentétes töltések vonzzák egymást.",
+      "text_markdown": "Az ellentétes töltések vonzzák egymást.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az ellentétes töltések vonzzák egymást.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-177",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Ez a vonzás tartja össze a két atomot.",
+      "text_markdown": "Ez a vonzás tartja össze a két atomot.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Ez a vonzás tartja össze a két atomot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-178",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Az asztali sót ionos kötések tartják össze.",
+      "text_markdown": "Az asztali sót ionos kötések tartják össze.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Az asztali sót ionos kötések tartják össze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-179",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 6,
+      "text": "A nátrium elektront ad át a klórnak.",
+      "text_markdown": "A nátrium elektront ad át a klórnak.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "A nátrium elektront ad át a klórnak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-180",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Egy vízmolekula két hidrogénatomot és egy oxigénatomot tartalmaz.",
+      "text_markdown": "Egy vízmolekula két hidrogénatomot és egy oxigénatomot tartalmaz.",
+      "title": "Hogyan kötődnek az atomok",
+      "tts": {
+        "text": "Egy vízmolekula két hidrogénatomot és egy oxigénatomot tartalmaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-181",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A tudósok ezt H2O-ként írják.",
+      "text_markdown": "A tudósok ezt H2O-ként írják.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "A tudósok ezt H kettő O-ként írják.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-182",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A H a hidrogént jelöli.",
+      "text_markdown": "A H a hidrogént jelöli.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "A há a hidrogént jelöli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-183",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Az O az oxigént jelöli.",
+      "text_markdown": "Az O az oxigént jelöli.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "Az ó az oxigént jelöli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-184",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A 2 azt jelenti, hogy két hidrogénatom van.",
+      "text_markdown": "A 2 azt jelenti, hogy két hidrogénatom van.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "A kettő azt jelenti, hogy két hidrogénatom van.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-185",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Egy szén-dioxid molekula egy szénatomot és két oxigénatomot tartalmaz.",
+      "text_markdown": "Egy szén-dioxid molekula egy szénatomot és két oxigénatomot tartalmaz.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "Egy szén-dioxid molekula egy szénatomot és két oxigénatomot tartalmaz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-186",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A tudósok ezt CO2-ként írják.",
+      "text_markdown": "A tudósok ezt CO2-ként írják.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "A tudósok ezt cé ó kettőként írják.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-187",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A növények szén-dioxidot nyelnek el a levegőből, és cukormolekulák építésére használják.",
+      "text_markdown": "A növények szén-dioxidot nyelnek el a levegőből, és cukormolekulák építésére használják.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "A növények szén-dioxidot nyelnek el a levegőből, és cukormolekulák építésére használják.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-188",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok közötti kötések energiát tárolnak.",
+      "text_markdown": "Az atomok közötti kötések energiát tárolnak.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "Az atomok közötti kötések energiát tárolnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-189",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Amikor a kötések felbomlanak, energia szabadul fel.",
+      "text_markdown": "Amikor a kötések felbomlanak, energia szabadul fel.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "Amikor a kötések felbomlanak, energia szabadul fel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-190",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Amikor kötések jönnek létre, energia nyelődik el.",
+      "text_markdown": "Amikor kötések jönnek létre, energia nyelődik el.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "Amikor kötések jönnek létre, energia nyelődik el.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-191",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A világegyetem minden kémiai reakciója régi kötések felbontásával és újak létrehozásával jár.",
+      "text_markdown": "A világegyetem minden kémiai reakciója régi kötések felbontásával és újak létrehozásával jár.",
+      "title": "Az atomok kötődése",
+      "tts": {
+        "text": "A világegyetem minden kémiai reakciója régi kötések felbontásával és újak létrehozásával jár.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-192",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "Mozgásban lévő atomok",
+      "text_markdown": "Mozgásban lévő atomok",
+      "title": "Mozgásban lévő atomok"
+    },
+    {
+      "id": "ch06-193",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok mindig mozognak.",
+      "text_markdown": "Az atomok mindig mozognak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Az atomok mindig mozognak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-194",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Soha nem állnak meg.",
+      "text_markdown": "Soha nem állnak meg.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Soha nem állnak meg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-195",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az abszolút nulla fok feletti bármely hőmérsékleten az atomok rezegnek, forognak és mozognak a térben.",
+      "text_markdown": "Az abszolút nulla fok feletti bármely hőmérsékleten az atomok rezegnek, forognak és mozognak a térben.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Az abszolút nulla fok feletti bármely hőmérsékleten az atomok rezegnek, forognak és mozognak a térben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-196",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ezt a mozgást érzékeljük hőként.",
+      "text_markdown": "Ezt a mozgást érzékeljük hőként.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Ezt a mozgást érzékeljük hőként.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-197",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Szilárd anyagban az atomok a helyükön rezegnek.",
+      "text_markdown": "Szilárd anyagban az atomok a helyükön rezegnek.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Szilárd anyagban az atomok a helyükön rezegnek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-198",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Rögzített szerkezetben vannak.",
+      "text_markdown": "Rögzített szerkezetben vannak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Rögzített szerkezetben vannak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-199",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Ide-oda rázkódnak, de nem hagyják el a helyüket.",
+      "text_markdown": "Ide-oda rázkódnak, de nem hagyják el a helyüket.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Ide-oda rázkódnak, de nem hagyják el a helyüket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-200",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ezért tartják meg a szilárd anyagok az alakjukat.",
+      "text_markdown": "Ezért tartják meg a szilárd anyagok az alakjukat.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Ezért tartják meg a szilárd anyagok az alakjukat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-201",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Egy jégtömb atomjai rezegnek, de merev kristályrácsban maradnak.",
+      "text_markdown": "Egy jégtömb atomjai rezegnek, de merev kristályrácsban maradnak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Egy jégtömb atomjai rezegnek, de merev kristályrácsban maradnak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-202",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Folyadékban az atomok szabadabban mozognak.",
+      "text_markdown": "Folyadékban az atomok szabadabban mozognak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Folyadékban az atomok szabadabban mozognak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-203",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Elcsúsznak egymás mellett.",
+      "text_markdown": "Elcsúsznak egymás mellett.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Elcsúsznak egymás mellett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-204",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Közel maradnak egymáshoz, de nincsenek rögzített helyzetben.",
+      "text_markdown": "Közel maradnak egymáshoz, de nincsenek rögzített helyzetben.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Közel maradnak egymáshoz, de nincsenek rögzített helyzetben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-205",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ezért folynak a folyadékok.",
+      "text_markdown": "Ezért folynak a folyadékok.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Ezért folynak a folyadékok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-206",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Egy pohár víz atomjai folyamatosan mozognak és átrendeződnek, de közel maradnak egymáshoz.",
+      "text_markdown": "Egy pohár víz atomjai folyamatosan mozognak és átrendeződnek, de közel maradnak egymáshoz.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Egy pohár víz atomjai folyamatosan mozognak és átrendeződnek, de közel maradnak egymáshoz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-207",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Gázban az atomok gyorsan mozognak és szétterjednek.",
+      "text_markdown": "Gázban az atomok gyorsan mozognak és szétterjednek.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Gázban az atomok gyorsan mozognak és szétterjednek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-208",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egyenes vonalban repülnek, amíg egy másik atomnak vagy falnak nem ütköznek.",
+      "text_markdown": "Egyenes vonalban repülnek, amíg egy másik atomnak vagy falnak nem ütköznek.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Egyenes vonalban repülnek, amíg egy másik atomnak vagy falnak nem ütköznek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-209",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Egyszerűen lepattannak egymásról és irányt változtatnak.",
+      "text_markdown": "Egyszerűen lepattannak egymásról és irányt változtatnak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Egyszerűen lepattannak egymásról és irányt változtatnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-210",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ezért tölt ki a gáz bármilyen edényt, amibe belehelyezzük.",
+      "text_markdown": "Ezért tölt ki a gáz bármilyen edényt, amibe belehelyezzük.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Ezért tölt ki a gáz bármilyen edényt, amibe belehelyezzük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-211",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Egy szobányi levegő atomjai minden irányba száguldanak, másodpercenként több száz métert megtéve.",
+      "text_markdown": "Egy szobányi levegő atomjai minden irányba száguldanak, másodpercenként több száz métert megtéve.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Egy szobányi levegő atomjai minden irányba száguldanak, másodpercenként több száz métert megtéve.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-212",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A hőmérséklet annak mértéke, hogy milyen gyorsan mozognak az atomok.",
+      "text_markdown": "A hőmérséklet annak mértéke, hogy milyen gyorsan mozognak az atomok.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "A hőmérséklet annak mértéke, hogy milyen gyorsan mozognak az atomok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-213",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A meleg azt jelenti, hogy az atomok gyorsan mozognak.",
+      "text_markdown": "A meleg azt jelenti, hogy az atomok gyorsan mozognak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "A meleg azt jelenti, hogy az atomok gyorsan mozognak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-214",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A hideg azt jelenti, hogy az atomok lassan mozognak.",
+      "text_markdown": "A hideg azt jelenti, hogy az atomok lassan mozognak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "A hideg azt jelenti, hogy az atomok lassan mozognak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-215",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Amikor vizet melegít a tűzhelyen, a vízmolekulákat gyorsabb mozgásra készteti.",
+      "text_markdown": "Amikor vizet melegít a tűzhelyen, a vízmolekulákat gyorsabb mozgásra készteti.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Amikor vizet melegít a tűzhelyen, a vízmolekulákat gyorsabb mozgásra készteti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-216",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Amikor a molekulák elég gyorsan mozognak, elhagyják a folyadékot és gőzzé válnak.",
+      "text_markdown": "Amikor a molekulák elég gyorsan mozognak, elhagyják a folyadékot és gőzzé válnak.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Amikor a molekulák elég gyorsan mozognak, elhagyják a folyadékot és gőzzé válnak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-217",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az abszolút nulla a lehető leghidegebb hőmérséklet.",
+      "text_markdown": "Az abszolút nulla a lehető leghidegebb hőmérséklet.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Az abszolút nulla a lehető leghidegebb hőmérséklet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-218",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Körülbelül mínusz 273 Celsius-fok.",
+      "text_markdown": "Körülbelül mínusz 273 Celsius-fok.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Körülbelül mínusz kétszázhetvenhárom Celsius-fok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-219",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Abszolút nulla fokon az atomok a lehető legkisebb energiával rendelkeznek.",
+      "text_markdown": "Abszolút nulla fokon az atomok a lehető legkisebb energiával rendelkeznek.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Abszolút nulla fokon az atomok a lehető legkisebb energiával rendelkeznek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-220",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Semmi sem lehet hidegebb az abszolút nullánál.",
+      "text_markdown": "Semmi sem lehet hidegebb az abszolút nullánál.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Semmi sem lehet hidegebb az abszolút nullánál.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-221",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A tudósok laboratóriumokban nagyon közel jutottak az abszolút nulla eléréséhez, de pontosan még senki sem érte el.",
+      "text_markdown": "A tudósok laboratóriumokban nagyon közel jutottak az abszolút nulla eléréséhez, de pontosan még senki sem érte el.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "A tudósok laboratóriumokban nagyon közel jutottak az abszolút nulla eléréséhez, de pontosan még senki sem érte el.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-222",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A nyomást az atomok felületeknek ütközése okozza.",
+      "text_markdown": "A nyomást az atomok felületeknek ütközése okozza.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "A nyomást az atomok felületeknek ütközése okozza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-223",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egy gumiabroncsban a levegő kifelé nyom, mert a levegőmolekulák folyamatosan pattognak az abroncs belső falairól.",
+      "text_markdown": "Egy gumiabroncsban a levegő kifelé nyom, mert a levegőmolekulák folyamatosan pattognak az abroncs belső falairól.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Egy gumiabroncsban a levegő kifelé nyom, mert a levegőmolekulák folyamatosan pattognak az abroncs belső falairól.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-224",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Több molekula vagy gyorsabb molekulák nagyobb nyomást jelentenek.",
+      "text_markdown": "Több molekula vagy gyorsabb molekulák nagyobb nyomást jelentenek.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Több molekula vagy gyorsabb molekulák nagyobb nyomást jelentenek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-225",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ezért érződik keményebbnek egy gumiabroncs, amikor a levegő forró.",
+      "text_markdown": "Ezért érződik keményebbnek egy gumiabroncs, amikor a levegő forró.",
+      "title": "Mozgásban lévő atomok",
+      "tts": {
+        "text": "Ezért érződik keményebbnek egy gumiabroncs, amikor a levegő forró.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-226",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "Honnan származnak az atomok",
+      "text_markdown": "Honnan származnak az atomok",
+      "title": "Honnan származnak az atomok"
+    },
+    {
+      "id": "ch07-227",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az univerzumban lévő hidrogén és hélium az ősrobbanás utáni első néhány percben keletkezett.",
+      "text_markdown": "Az univerzumban lévő hidrogén és hélium az ősrobbanás utáni első néhány percben keletkezett.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Az univerzumban lévő hidrogén és hélium az ősrobbanás utáni első néhány percben keletkezett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-228",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az univerzum egy hihetetlenül forró, sűrű pontként kezdődött körülbelül 13,8 milliárd évvel ezelőtt.",
+      "text_markdown": "Az univerzum egy hihetetlenül forró, sűrű pontként kezdődött körülbelül 13,8 milliárd évvel ezelőtt.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Az univerzum egy hihetetlenül forró, sűrű pontként kezdődött körülbelül tizenhárom egész nyolc tized milliárd évvel ezelőtt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-229",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Ahogy tágult és hűlt, protonok és neutronok alakultak ki.",
+      "text_markdown": "Ahogy tágult és hűlt, protonok és neutronok alakultak ki.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Ahogy tágult és hűlt, protonok és neutronok alakultak ki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-230",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ezek a protonok és neutronok a legegyszerűbb atommagokká egyesültek.",
+      "text_markdown": "Ezek a protonok és neutronok a legegyszerűbb atommagokká egyesültek.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Ezek a protonok és neutronok a legegyszerűbb atommagokká egyesültek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-231",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A hidrogén és a hélium voltak az első elemek.",
+      "text_markdown": "A hidrogén és a hélium voltak az első elemek.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A hidrogén és a hélium voltak az első elemek.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-232",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Évmilliókon át az univerzum hidrogén- és héliumgáz felhője volt.",
+      "text_markdown": "Évmilliókon át az univerzum hidrogén- és héliumgáz felhője volt.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Évmilliókon át az univerzum hidrogén- és héliumgáz felhője volt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-233",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Aztán a gravitáció csomókba vonta össze a gázt.",
+      "text_markdown": "Aztán a gravitáció csomókba vonta össze a gázt.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Aztán a gravitáció csomókba vonta össze a gázt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-234",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A csomók sűrűbbé és forróbbá váltak.",
+      "text_markdown": "A csomók sűrűbbé és forróbbá váltak.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A csomók sűrűbbé és forróbbá váltak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-235",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Amikor egy csomó középpontja elérte a körülbelül tízmillió fokot, beindult a magfúzió.",
+      "text_markdown": "Amikor egy csomó középpontja elérte a körülbelül tízmillió fokot, beindult a magfúzió.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Amikor egy csomó középpontja elérte a körülbelül tízmillió fokot, beindult a magfúzió.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-236",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Egy csillag született.",
+      "text_markdown": "Egy csillag született.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Egy csillag született.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-237",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A csillagok atomgyárak.",
+      "text_markdown": "A csillagok atomgyárak.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A csillagok atomgyárak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-238",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egy csillag belsejében a hidrogénatomok héliummá fuzionálnak.",
+      "text_markdown": "Egy csillag belsejében a hidrogénatomok héliummá fuzionálnak.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Egy csillag belsejében a hidrogénatomok héliummá fuzionálnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-239",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Ez a fúzió hatalmas energiát szabadít fel.",
+      "text_markdown": "Ez a fúzió hatalmas energiát szabadít fel.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Ez a fúzió hatalmas energiát szabadít fel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-240",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ez az energia az, ami a csillagot ragyogásra készteti.",
+      "text_markdown": "Ez az energia az, ami a csillagot ragyogásra készteti.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Ez az energia az, ami a csillagot ragyogásra készteti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-241",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Napunk másodpercenként körülbelül hatszázmillió tonna hidrogént olvaszt héliummá.",
+      "text_markdown": "Napunk másodpercenként körülbelül hatszázmillió tonna hidrogént olvaszt héliummá.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Napunk másodpercenként körülbelül hatszázmillió tonna hidrogént olvaszt héliummá.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-242",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A nagyobb csillagok nehezebb elemeket olvasztanak össze.",
+      "text_markdown": "A nagyobb csillagok nehezebb elemeket olvasztanak össze.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A nagyobb csillagok nehezebb elemeket olvasztanak össze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-243",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Miután egy csillag elégeti hidrogénjét, elkezdi a héliumot szénné olvasztani.",
+      "text_markdown": "Miután egy csillag elégeti hidrogénjét, elkezdi a héliumot szénné olvasztani.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Miután egy csillag elégeti hidrogénjét, elkezdi a héliumot szénné olvasztani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-244",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Aztán a szenet oxigénné.",
+      "text_markdown": "Aztán a szenet oxigénné.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Aztán a szenet oxigénné.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-245",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Aztán az oxigént szilíciummá.",
+      "text_markdown": "Aztán az oxigént szilíciummá.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Aztán az oxigént szilíciummá.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-246",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Aztán a szilíciumot vassá.",
+      "text_markdown": "Aztán a szilíciumot vassá.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Aztán a szilíciumot vassá.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-247",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Minden szakasz egyre nehezebb elemet hoz létre.",
+      "text_markdown": "Minden szakasz egyre nehezebb elemet hoz létre.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Minden szakasz egyre nehezebb elemet hoz létre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-248",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 6,
+      "text": "A vas a legnehezebb elem, amit egy csillag normál fúzióval elő tud állítani.",
+      "text_markdown": "A vas a legnehezebb elem, amit egy csillag normál fúzióval elő tud állítani.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A vas a legnehezebb elem, amit egy csillag normál fúzióval elő tud állítani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-249",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A vasnál nehezebb elemek akkor keletkeznek, amikor hatalmas csillagok felrobbannak.",
+      "text_markdown": "A vasnál nehezebb elemek akkor keletkeznek, amikor hatalmas csillagok felrobbannak.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A vasnál nehezebb elemek akkor keletkeznek, amikor hatalmas csillagok felrobbannak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-250",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Ezeket a robbanásokat szupernóváknak nevezzük.",
+      "text_markdown": "Ezeket a robbanásokat szupernóváknak nevezzük.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Ezeket a robbanásokat szupernóváknak nevezzük.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-251",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Egy szupernóva néhány másodperc alatt több energiát szabadít fel, mint amennyit a Nap teljes élete során termel.",
+      "text_markdown": "Egy szupernóva néhány másodperc alatt több energiát szabadít fel, mint amennyit a Nap teljes élete során termel.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Egy szupernóva néhány másodperc alatt több energiát szabadít fel, mint amennyit a Nap teljes élete során termel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-252",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Egy szupernóva extrém körülményei olyan elemeket hoznak létre, mint az arany, ezüst, platina és urán.",
+      "text_markdown": "Egy szupernóva extrém körülményei olyan elemeket hoznak létre, mint az arany, ezüst, platina és urán.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Egy szupernóva extrém körülményei olyan elemeket hoznak létre, mint az arany, ezüst, platina és urán.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-253",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A robbanás szétszórja ezeket a nehéz elemeket az űrben.",
+      "text_markdown": "A robbanás szétszórja ezeket a nehéz elemeket az űrben.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A robbanás szétszórja ezeket a nehéz elemeket az űrben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-254",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az elemek hidrogén- és héliumgázfelhőkkel keverednek.",
+      "text_markdown": "Az elemek hidrogén- és héliumgázfelhőkkel keverednek.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Az elemek hidrogén- és héliumgázfelhőkkel keverednek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-255",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Végül a gravitáció összehúzza a dúsított gázt, hogy új csillagok és bolygók alakuljanak ki.",
+      "text_markdown": "Végül a gravitáció összehúzza a dúsított gázt, hogy új csillagok és bolygók alakuljanak ki.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Végül a gravitáció összehúzza a dúsított gázt, hogy új csillagok és bolygók alakuljanak ki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-256",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Naprendszerünk körülbelül 4,6 milliárd évvel ezelőtt alakult ki az egyik ilyen dúsított felhőből.",
+      "text_markdown": "Naprendszerünk körülbelül 4,6 milliárd évvel ezelőtt alakult ki az egyik ilyen dúsított felhőből.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Naprendszerünk körülbelül négy egész hat tized milliárd évvel ezelőtt alakult ki az egyik ilyen dúsított felhőből.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-257",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Tested minden hidrogénnél nehezebb atomja egy csillag belsejében keletkezett.",
+      "text_markdown": "Tested minden hidrogénnél nehezebb atomja egy csillag belsejében keletkezett.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Tested minden hidrogénnél nehezebb atomja egy csillag belsejében keletkezett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-258",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A csontjaidban lévő kalcium.",
+      "text_markdown": "A csontjaidban lévő kalcium.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A csontjaidban lévő kalcium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-259",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A véredben lévő vas.",
+      "text_markdown": "A véredben lévő vas.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A véredben lévő vas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-260",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A bőrödben lévő szén.",
+      "text_markdown": "A bőrödben lévő szén.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "A bőrödben lévő szén.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-261",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Csillagporból vagy.",
+      "text_markdown": "Csillagporból vagy.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Csillagporból vagy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-262",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Ez nem metafora.",
+      "text_markdown": "Ez nem metafora.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Ez nem metafora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-263",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 6,
+      "text": "Ez a magfizika ténye.",
+      "text_markdown": "Ez a magfizika ténye.",
+      "title": "Honnan származnak az atomok",
+      "tts": {
+        "text": "Ez a magfizika ténye.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-264",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p62",
+      "block_type": "heading",
+      "heading_level": 1,
+      "sentence_index": 0,
+      "text": "Az atomok a minden",
+      "text_markdown": "Az atomok a minden",
+      "title": "Az atomok a minden"
+    },
+    {
+      "id": "ch08-265",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Most már ismered az alapokat.",
+      "text_markdown": "Most már ismered az alapokat.",
+      "title": "Az atomok a minden",
+      "tts": {
+        "text": "Most már ismered az alapokat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-266",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Minden atomokból épül fel.",
+      "text_markdown": "Minden atomokból épül fel.",
+      "title": "Az atomok a minden",
+      "tts": {
+        "text": "Minden atomokból épül fel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-267",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Az atomok protonokat, neutronokat és elektronokat tartalmaznak.",
+      "text_markdown": "Az atomok protonokat, neutronokat és elektronokat tartalmaznak.",
+      "title": "Az atomok a minden",
+      "tts": {
+        "text": "Az atomok protonokat, neutronokat és elektronokat tartalmaznak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-268",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A protonok száma határozza meg az elemet.",
+      "text_markdown": "A protonok száma határozza meg az elemet.",
+      "title": "Az atomok a minden",
+      "tts": {
+        "text": "A protonok száma határozza meg az elemet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-269",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Az atomok molekulákat alkotnak.",
+      "text_markdown": "Az atomok molekulákat alkotnak.",
+      "title": "Az atomok a minden",
+      "tts": {
+        "text": "Az atomok molekulákat alkotnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-270",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Az atomok mindig mozgásban vannak.",
+      "text_markdown": "Az atomok mindig mozgásban vannak.",
+      "title": "Az atomok a minden",
+      "tts": {
+        "text": "Az atomok mindig mozgásban vannak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-271",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 6,
+      "text": "A csillagok hozták létre az atomokat, amelyekből a világunk felépül.",
+      "text_markdown": "A csillagok hozták létre az atomokat, amelyekből a világunk felépül.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A csillagok hozták létre az atomokat, amelyekből a világunk felépül.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-272",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Ez a tudás a kémia, a biológia, a fizika és az orvostudomány alapja.",
+      "text_markdown": "Ez a tudás a kémia, a biológia, a fizika és az orvostudomány alapja.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Ez a tudás a kémia, a biológia, a fizika és az orvostudomány alapja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-273",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "A tudomány minden területe visszavezethető az atomokra.",
+      "text_markdown": "A tudomány minden területe visszavezethető az atomokra.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A tudomány minden területe visszavezethető az atomokra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-274",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Amikor egy orvos gyógyszert ír fel, az a gyógyszer atomok specifikus elrendezése, amelyet úgy terveztek, hogy kölcsönhatásba lépjen a testünkben lévő molekulákkal.",
+      "text_markdown": "Amikor egy orvos gyógyszert ír fel, az a gyógyszer atomok specifikus elrendezése, amelyet úgy terveztek, hogy kölcsönhatásba lépjen a testünkben lévő molekulákkal.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Amikor egy orvos gyógyszert ír fel, az a gyógyszer atomok specifikus elrendezése, amelyet úgy terveztek, hogy kölcsönhatásba lépjen a testünkben lévő molekulákkal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-275",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Amikor egy mérnök hidat épít, annak a hídnak az erőssége attól függ, hogyan rendeződnek el az acélban lévő vasatomok.",
+      "text_markdown": "Amikor egy mérnök hidat épít, annak a hídnak az erőssége attól függ, hogyan rendeződnek el az acélban lévő vasatomok.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Amikor egy mérnök hidat épít, annak a hídnak az erőssége attól függ, hogyan rendeződnek el az acélban lévő vasatomok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-276",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Amikor egy gazda terményt termeszt, a termény azért növekszik, mert a levegőből származó szénatomok vízzel és napfénnyel egyesülnek a levelekben.",
+      "text_markdown": "Amikor egy gazda terményt termeszt, a termény azért növekszik, mert a levegőből származó szénatomok vízzel és napfénnyel egyesülnek a levelekben.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Amikor egy gazda terményt termeszt, a termény azért növekszik, mert a levegőből származó szénatomok vízzel és napfénnyel egyesülnek a levelekben.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-277",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A főzés kémia.",
+      "text_markdown": "A főzés kémia.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A főzés kémia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-278",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Amikor kenyeret sütsz, a hő hatására a tésztában lévő atomok átrendeződnek.",
+      "text_markdown": "Amikor kenyeret sütsz, a hő hatására a tésztában lévő atomok átrendeződnek.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Amikor kenyeret sütsz, a hő hatására a tésztában lévő atomok átrendeződnek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-279",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A fehérjék szétnyílnak.",
+      "text_markdown": "A fehérjék szétnyílnak.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A fehérjék szétnyílnak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-280",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A cukrok szétbomlanak és újraegyesülnek.",
+      "text_markdown": "A cukrok szétbomlanak és újraegyesülnek.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A cukrok szétbomlanak és újraegyesülnek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-281",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Új molekulák képződnek, amelyek létrehozzák a héj színét, textúráját és ízét.",
+      "text_markdown": "Új molekulák képződnek, amelyek létrehozzák a héj színét, textúráját és ízét.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Új molekulák képződnek, amelyek létrehozzák a héj színét, textúráját és ízét.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-282",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Minden recept az atomok átrendezésére vonatkozó utasítások összessége.",
+      "text_markdown": "Minden recept az atomok átrendezésére vonatkozó utasítások összessége.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Minden recept az atomok átrendezésére vonatkozó utasítások összessége.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-283",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A légzés kémia.",
+      "text_markdown": "A légzés kémia.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A légzés kémia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-284",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Oxigénmolekulákat lélegzel be.",
+      "text_markdown": "Oxigénmolekulákat lélegzel be.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Oxigénmolekulákat lélegzel be.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-285",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A véred elszállítja ezeket a molekulákat a sejtjeidhez.",
+      "text_markdown": "A véred elszállítja ezeket a molekulákat a sejtjeidhez.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A véred elszállítja ezeket a molekulákat a sejtjeidhez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-286",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A sejtjeidben az oxigénatomok egyesülnek az élelemből származó szénatomokkal.",
+      "text_markdown": "A sejtjeidben az oxigénatomok egyesülnek az élelemből származó szénatomokkal.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A sejtjeidben az oxigénatomok egyesülnek az élelemből származó szénatomokkal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-287",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A reakció energiát szabadít fel.",
+      "text_markdown": "A reakció energiát szabadít fel.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A reakció energiát szabadít fel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-288",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "A szenet és az oxigént szén-dioxid formájában lélegzed ki.",
+      "text_markdown": "A szenet és az oxigént szén-dioxid formájában lélegzed ki.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A szenet és az oxigént szén-dioxid formájában lélegzed ki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-289",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 6,
+      "text": "Minden lélegzetvétel kémiai reakció.",
+      "text_markdown": "Minden lélegzetvétel kémiai reakció.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Minden lélegzetvétel kémiai reakció.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-290",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "A rozsda kémia.",
+      "text_markdown": "A rozsda kémia.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A rozsda kémia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-291",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Egy szög felületén lévő vasatomok reakcióba lépnek a levegőben lévő oxigénatomokkal.",
+      "text_markdown": "Egy szög felületén lévő vasatomok reakcióba lépnek a levegőben lévő oxigénatomokkal.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Egy szög felületén lévő vasatomok reakcióba lépnek a levegőben lévő oxigénatomokkal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-292",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "A vas és az oxigén egyesülve egy új anyagot, vas-oxidot képez.",
+      "text_markdown": "A vas és az oxigén egyesülve egy új anyagot, vas-oxidot képez.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A vas és az oxigén egyesülve egy új anyagot, vas-oxidot képez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-293",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "A vas-oxid az a vörösesbarna anyag, amit rozsdának nevezünk.",
+      "text_markdown": "A vas-oxid az a vörösesbarna anyag, amit rozsdának nevezünk.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A vas-oxid az a vörösesbarna anyag, amit rozsdának nevezünk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-294",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "A vasatomok még mindig ott vannak.",
+      "text_markdown": "A vasatomok még mindig ott vannak.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "A vasatomok még mindig ott vannak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-295",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 5,
+      "text": "Csak oxigénnel léptek kötésbe.",
+      "text_markdown": "Csak oxigénnel léptek kötésbe.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Csak oxigénnel léptek kötésbe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-296",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 0,
+      "text": "Az atomok nem elvontak.",
+      "text_markdown": "Az atomok nem elvontak.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Az atomok nem elvontak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-297",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 1,
+      "text": "Az atomok mindannak a fizikai valósága, amit megérintesz, megkóstolsz, látsz és szagolsz.",
+      "text_markdown": "Az atomok mindannak a fizikai valósága, amit megérintesz, megkóstolsz, látsz és szagolsz.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Az atomok mindannak a fizikai valósága, amit megérintesz, megkóstolsz, látsz és szagolsz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-298",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 2,
+      "text": "Minél jobban megérted az atomokat, annál jobban megérted a világot.",
+      "text_markdown": "Minél jobban megérted az atomokat, annál jobban megérted a világot.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Minél jobban megérted az atomokat, annál jobban megérted a világot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "id": "ch08-299",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 3,
+      "text": "Ez a kezdet.",
+      "text_markdown": "Ez a kezdet.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Ez a kezdet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-300",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 4,
+      "text": "Sokkal több felfedeznivaló van még.",
+      "text_markdown": "Sokkal több felfedeznivaló van még.",
+      "title": "Az atomok alkotnak mindent",
+      "tts": {
+        "text": "Sokkal több felfedeznivaló van még.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

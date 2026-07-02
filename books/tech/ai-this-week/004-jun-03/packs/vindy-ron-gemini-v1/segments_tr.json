@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "tr",
+  "total_segments": 197,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "AI Bu Hafta'ya hoş geldiniz.",
+      "text_markdown": "AI Bu Hafta'ya hoş geldiniz.",
+      "title": "",
+      "tts": {
+        "text": "AI Bu Hafta'ya hoş geldiniz.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ben Vindy.",
+      "text_markdown": "Ben Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ben Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yanımda, her zamanki gibi, Ron var.",
+      "text_markdown": "Yanımda, her zamanki gibi, Ron var.",
+      "title": "",
+      "tts": {
+        "text": "Yanımda, her zamanki gibi, Ron var.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Burada olmak güzel, Vindy.",
+      "text_markdown": "Burada olmak güzel, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Burada olmak güzel, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bugün 3 Haziran 2026 Çarşamba.",
+      "text_markdown": "Bugün 3 Haziran 2026 Çarşamba.",
+      "title": "",
+      "tts": {
+        "text": "Bugün üç Haziran iki bin yirmi altı Çarşamba.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Pazarlama için sakin, donanım içinse gürültülü bir haftaydı.",
+      "text_markdown": "Pazarlama için sakin, donanım içinse gürültülü bir haftaydı.",
+      "title": "",
+      "tts": {
+        "text": "Pazarlama için sakin, donanım içinse gürültülü bir haftaydı.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Manşetlerin şekli alışılmadık idi.",
+      "text_markdown": "Manşetlerin şekli alışılmadık idi.",
+      "title": "",
+      "tts": {
+        "text": "Manşetlerin şekli alışılmadık idi.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Büyük bir laboratuvarın açılış konuşması, gizli bir dosyalama, kutusunda büyük bir numara olan küçük bir bilgisayar.",
+      "text_markdown": "Büyük bir laboratuvarın açılış konuşması, gizli bir dosyalama, kutusunda büyük bir numara olan küçük bir bilgisayar.",
+      "title": "",
+      "tts": {
+        "text": "Büyük bir laboratuvarın açılış konuşması, gizli bir dosyalama, kutusunda büyük bir numara olan küçük bir bilgisayar.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sırada — yeni bir dikkat mimarisi ve bir NVIDIA açık modeli öncülüğünde açık ağırlıklarda neler değişti.",
+      "text_markdown": "Sırada — yeni bir dikkat mimarisi ve bir NVIDIA açık modeli öncülüğünde açık ağırlıklarda neler değişti.",
+      "title": "",
+      "tts": {
+        "text": "Sırada — yeni bir dikkat mimarisi ve bir NVIDIA açık modeli öncülüğünde açık ağırlıklarda neler değişti.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Liderlik tablolarının nereye indiği ve onların altındaki, puanlara ne kadar güvendiğimizle ilgili daha büyük hikaye.",
+      "text_markdown": "Liderlik tablolarının nereye indiği ve onların altındaki, puanlara ne kadar güvendiğimizle ilgili daha büyük hikaye.",
+      "title": "",
+      "tts": {
+        "text": "Liderlik tablolarının nereye indiği ve onların altındaki, puanlara ne kadar güvendiğimizle ilgili daha büyük hikaye.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu hafta sonu harekete geçebileceğiniz hızlı bir manşet özeti.",
+      "text_markdown": "Bu hafta sonu harekete geçebileceğiniz hızlı bir manşet özeti.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta sonu harekete geçebileceğiniz hızlı bir manşet özeti.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ana haberimiz, kendin yap sistemi büyüdü — sınır çıkarımı artık masanızda bir gerçek.",
+      "text_markdown": "Ana haberimiz, kendin yap sistemi büyüdü — sınır çıkarımı artık masanızda bir gerçek.",
+      "title": "",
+      "tts": {
+        "text": "Ana haberimiz, kendin yap sistemi büyüdü — sınır çıkarımı artık masanızda bir gerçek.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ve haftanın konsepti spekülatif kod çözme — küçük bir karttaki büyük bir modelin hızlı hissettirmesini sağlayan numara.",
+      "text_markdown": "Ve haftanın konsepti spekülatif kod çözme — küçük bir karttaki büyük bir modelin hızlı hissettirmesini sağlayan numara.",
+      "title": "",
+      "tts": {
+        "text": "Ve haftanın konsepti spekülatif kod çözme — küçük bir karttaki büyük bir modelin hızlı hissettirmesini sağlayan numara.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, açık ağırlıklar dünyasından başlayalım.",
+      "text_markdown": "Ron, açık ağırlıklar dünyasından başlayalım.",
+      "title": "",
+      "tts": {
+        "text": "Ron, açık ağırlıklar dünyasından başlayalım.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hafta nasıl geçti?",
+      "text_markdown": "Hafta nasıl geçti?",
+      "title": "",
+      "tts": {
+        "text": "Hafta nasıl geçti?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta açık kaynak hikayesi yeni boyutlar değil, yeni şekiller hakkındaydı.",
+      "text_markdown": "Bu hafta açık kaynak hikayesi yeni boyutlar değil, yeni şekiller hakkındaydı.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta açık kaynak hikayesi yeni boyutlar değil, yeni şekiller hakkındaydı.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mimarisi ilginç iki model, 1 Haziran'da aynı gün yayınlandı.",
+      "text_markdown": "Mimarisi ilginç iki model, 1 Haziran'da aynı gün yayınlandı.",
+      "title": "",
+      "tts": {
+        "text": "Mimarisi ilginç iki model, bir Haziran'da aynı gün yayınlandı.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bize ilkini anlatır mısın?",
+      "text_markdown": "Bize ilkini anlatır mısın?",
+      "title": "",
+      "tts": {
+        "text": "Bize ilkini anlatır mısın?",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "MiniMax, M3'ü piyasaya sürdü.",
+      "text_markdown": "MiniMax, M3'ü piyasaya sürdü.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax, M üç'ü piyasaya sürdü.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "MiniMax Seyrek Dikkat'in kısaltması olan MSA adını verdikleri yeni bir dikkat tasarımını kullanıyor.",
+      "text_markdown": "MiniMax Seyrek Dikkat'in kısaltması olan MSA adını verdikleri yeni bir dikkat tasarımını kullanıyor.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax Seyrek Dikkat'in kısaltması olan M S A adını verdikleri yeni bir dikkat tasarımını kullanıyor.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Vaat edilen, bir milyon token bağlamı, aynı uzunluktaki önceki modellerine göre yaklaşık dokuz kat daha hızlı ön doldurma ve on beş kat daha hızlı kod çözme.",
+      "text_markdown": "Vaat edilen, bir milyon token bağlamı, aynı uzunluktaki önceki modellerine göre yaklaşık dokuz kat daha hızlı ön doldurma ve on beş kat daha hızlı kod çözme.",
+      "title": "",
+      "tts": {
+        "text": "Vaat edilen, bir milyon token bağlamı, aynı uzunluktaki önceki modellerine göre yaklaşık dokuz kat daha hızlı ön doldurma ve on beş kat daha hızlı kod çözme.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Seyrek dikkatin aslında ne yaptığına dair sade bir açıklama.",
+      "text_markdown": "Seyrek dikkatin aslında ne yaptığına dair sade bir açıklama.",
+      "title": "",
+      "tts": {
+        "text": "Seyrek dikkatin aslında ne yaptığına dair sade bir açıklama.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Normal dikkat, her bir token'ı diğer her token'la karşılaştırır, bu da uzun bağlamı bu kadar pahalı yapan şeydir.",
+      "text_markdown": "Normal dikkat, her bir token'ı diğer her token'la karşılaştırır, bu da uzun bağlamı bu kadar pahalı yapan şeydir.",
+      "title": "",
+      "tts": {
+        "text": "Normal dikkat, her bir token'ı diğer her token'la karşılaştırır, bu da uzun bağlamı bu kadar pahalı yapan şeydir.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Seyrek dikkat, bağlamı önceden bloklara ayırır ve yalnızca mevcut soruyla alakalı görünen bloklar için tam karşılaştırma yapar.",
+      "text_markdown": "Seyrek dikkat, bağlamı önceden bloklara ayırır ve yalnızca mevcut soruyla alakalı görünen bloklar için tam karşılaştırma yapar.",
+      "title": "",
+      "tts": {
+        "text": "Seyrek dikkat, bağlamı önceden bloklara ayırır ve yalnızca mevcut soruyla alakalı görünen bloklar için tam karşılaştırma yapar.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kalitenin çoğunu, hesaplamanın küçük bir kısmıyla elde edersiniz.",
+      "text_markdown": "Kalitenin çoğunu, hesaplamanın küçük bir kısmıyla elde edersiniz.",
+      "title": "",
+      "tts": {
+        "text": "Kalitenin çoğunu, hesaplamanın küçük bir kısmıyla elde edersiniz.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki kıyaslama iddiası?",
+      "text_markdown": "Peki kıyaslama iddiası?",
+      "title": "",
+      "tts": {
+        "text": "Peki kıyaslama iddiası?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "MiniMax, SWE-bench Pro'da %59'luk bir skor bildiriyor ve bu sonuç onu o tabloda GPT-5.5 ile Gemini 3.5 Pro'nun önüne geçiriyor.",
+      "text_markdown": "MiniMax, SWE-bench Pro'da %59'luk bir skor bildiriyor ve bu sonuç onu o tabloda GPT-5.5 ile Gemini 3.5 Pro'nun önüne geçiriyor.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax, SWE bench Pro'da yüzde elli dokuzluk bir skor bildiriyor ve bu sonuç onu o tabloda GPT beş nokta beş ile Gemini üç nokta beş Pro'nun önüne geçiriyor.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İddialar diyeceğim — bu, bağımsız bir çalışma değil, satıcının kendi puan kartı.",
+      "text_markdown": "İddialar diyeceğim — bu, bağımsız bir çalışma değil, satıcının kendi puan kartı.",
+      "title": "",
+      "tts": {
+        "text": "İddialar diyeceğim — bu, bağımsız bir çalışma değil, satıcının kendi puan kartı.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Açık ağırlıklar da mı?",
+      "text_markdown": "Açık ağırlıklar da mı?",
+      "title": "",
+      "tts": {
+        "text": "Açık ağırlıklar da mı?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, M3 açık ağırlıklı olarak konumlandırıldı; API ilk günden itibaren yayında ve ağırlıklar kısa süre içinde Hugging Face'e geliyor.",
+      "text_markdown": "Evet, M3 açık ağırlıklı olarak konumlandırıldı; API ilk günden itibaren yayında ve ağırlıklar kısa süre içinde Hugging Face'e geliyor.",
+      "title": "",
+      "tts": {
+        "text": "Evet, em üç açık ağırlıklı olarak konumlandırıldı, API ilk günden itibaren yayında ve ağırlıklar kısa süre içinde Hugging Face'e geliyor.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir kurcalayıcı için ilginç bahis, skordan çok mimaridir.",
+      "text_markdown": "Bir kurcalayıcı için ilginç bahis, skordan çok mimaridir.",
+      "title": "",
+      "tts": {
+        "text": "Bir kurcalayıcı için ilginç bahis, skordan çok mimaridir.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Eğer MSA dayanırsa, diğer tüm açık laboratuvarlar aylar içinde bu şekli kopyalayacaktır.",
+      "text_markdown": "Eğer MSA dayanırsa, diğer tüm açık laboratuvarlar aylar içinde bu şekli kopyalayacaktır.",
+      "title": "",
+      "tts": {
+        "text": "Eğer em es a dayanırsa, diğer tüm açık laboratuvarlar aylar içinde bu şekli kopyalayacaktır.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya ikinci model?",
+      "text_markdown": "Peki ya ikinci model?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya ikinci model?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "NVIDIA sessizce Nemotron 3 Ultra'yı açık kaynak yaptı.",
+      "text_markdown": "NVIDIA sessizce Nemotron 3 Ultra'yı açık kaynak yaptı.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA sessizce Nemotron üç Ultra'yı açık kaynak yaptı.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, belirteç başına yaklaşık elli beş milyar aktif parametreye sahip, beş yüz elli milyar parametreli bir uzman karışımıdır.",
+      "text_markdown": "Bu, belirteç başına yaklaşık elli beş milyar aktif parametreye sahip, beş yüz elli milyar parametreli bir uzman karışımıdır.",
+      "title": "",
+      "tts": {
+        "text": "Bu, belirteç başına yaklaşık elli beş milyar aktif parametreye sahip, beş yüz elli milyar parametreli bir uzman karışımıdır.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Omurga, saf bir Transformer değil, hibrit bir Mamba-Transformer'dır.",
+      "text_markdown": "Omurga, saf bir Transformer değil, hibrit bir Mamba-Transformer'dır.",
+      "title": "",
+      "tts": {
+        "text": "Omurga, saf bir Mamba Transformer değil, hibrit bir Mamba Transformer'dır.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Mamba hakkında sade dil.",
+      "text_markdown": "Mamba hakkında sade dil.",
+      "title": "",
+      "tts": {
+        "text": "Mamba hakkında sade dil.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mamba katmanları, bağlam büyüdükçe belirteç başına daha ucuz hale geldiklerini söylemenin süslü bir yolu olan, alt-kuadratik ölçeklendirme ile uzun dizileri işler.",
+      "text_markdown": "Mamba katmanları, bağlam büyüdükçe belirteç başına daha ucuz hale geldiklerini söylemenin süslü bir yolu olan, alt-kuadratik ölçeklendirme ile uzun dizileri işler.",
+      "title": "",
+      "tts": {
+        "text": "Mamba katmanları, bağlam büyüdükçe belirteç başına daha ucuz hale geldiklerini söylemenin süslü bir yolu olan, alt kuadratik ölçeklendirme ile uzun dizileri işler.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "NVIDIA, uzun belge soru yanıtlama gibi şeyler için hassas geri çağırmayı korumak amacıyla yığında birkaç dikkat katmanı tuttu.",
+      "text_markdown": "NVIDIA, uzun belge soru yanıtlama gibi şeyler için hassas geri çağırmayı korumak amacıyla yığında birkaç dikkat katmanı tuttu.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA, uzun belge soru yanıtlama gibi şeyler için hassas geri çağırmayı korumak amacıyla yığında birkaç dikkat katmanı tuttu.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir yıldır araştırmalarda sessizce kazanan hibrit türü bu.",
+      "text_markdown": "Bir yıldır araştırmalarda sessizce kazanan hibrit türü bu.",
+      "title": "",
+      "tts": {
+        "text": "Bir yıldır araştırmalarda sessizce kazanan hibrit türü bu.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya lisans?",
+      "text_markdown": "Peki ya lisans?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya lisans?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "NVIDIA'nın kendi Açık Model Lisansı, ticari kullanıma izin verilmiştir.",
+      "text_markdown": "NVIDIA'nın kendi Açık Model Lisansı, ticari kullanıma izin verilmiştir.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA'nın kendi Açık Model Lisansı, ticari kullanıma izin verilmiştir.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ağırlıklar, eğitim sonrası kontrol noktaları, NVFP4 niceleme ve eğitim tarifleri dahil her şey birlikte yayınlandı.",
+      "text_markdown": "Ağırlıklar, eğitim sonrası kontrol noktaları, NVFP4 niceleme ve eğitim tarifleri dahil her şey birlikte yayınlandı.",
+      "title": "",
+      "tts": {
+        "text": "Ağırlıklar, eğitim sonrası kontrol noktaları, en vee eff pee dört niceleme ve eğitim tarifleri dahil her şey birlikte yayınlandı.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, çoğu açık sürümden daha cömert bir pakettir.",
+      "text_markdown": "Bu, çoğu açık sürümden daha cömert bir pakettir.",
+      "title": "",
+      "tts": {
+        "text": "Bu, çoğu açık sürümden daha cömert bir pakettir.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya skor tablosundaki yeri?",
+      "text_markdown": "Peki ya skor tablosundaki yeri?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya skor tablosundaki yeri?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yapay Analiz İstihbarat Endeksi'nde Nemotron 3 Ultra kırk sekizinci sırada yer alıyor.",
+      "text_markdown": "Yapay Analiz İstihbarat Endeksi'nde Nemotron 3 Ultra kırk sekizinci sırada yer alıyor.",
+      "title": "",
+      "tts": {
+        "text": "Yapay Analiz İstihbarat Endeksi'nde Nemotron üç Ultra kırk sekizinci sırada yer alıyor.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, takip ettikleri seksen dokuz modelin dokuzuncusu ve diğer tüm ABD açık modellerinin önünde yer almasını sağlıyor.",
+      "text_markdown": "Bu, takip ettikleri seksen dokuz modelin dokuzuncusu ve diğer tüm ABD açık modellerinin önünde yer almasını sağlıyor.",
+      "title": "",
+      "tts": {
+        "text": "Bu, takip ettikleri seksen dokuz modelin dokuzuncusu ve diğer tüm Amerika Birleşik Devletleri açık modellerinin önünde yer almasını sağlıyor.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ayrıca, elli dörtte olan Moonshot'ın Kimi K2.6'sının gerisinde kalıyor.",
+      "text_markdown": "Ayrıca, elli dörtte olan Moonshot'ın Kimi K2.6'sının gerisinde kalıyor.",
+      "title": "",
+      "tts": {
+        "text": "Ayrıca, elli dörtte olan Moonshot'ın Kimi K iki nokta altısının gerisinde kalıyor.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yani tüm bunlara rağmen Çin hala açık kaynakta lider.",
+      "text_markdown": "Yani tüm bunlara rağmen Çin hala açık kaynakta lider.",
+      "title": "",
+      "tts": {
+        "text": "Yani tüm bunlara rağmen Çin hala açık kaynakta lider.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "O tek bileşikte, evet, altı puanla.",
+      "text_markdown": "O tek bileşikte, evet, altı puanla.",
+      "title": "",
+      "tts": {
+        "text": "O tek bileşikte, evet, altı puanla.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, daha büyük hikayenin altındaki daha küçük hikaye.",
+      "text_markdown": "Bu, daha büyük hikayenin altındaki daha küçük hikaye.",
+      "title": "",
+      "tts": {
+        "text": "Bu, daha büyük hikayenin altındaki daha küçük hikaye.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kardeş model olarak bir şey var mı?",
+      "text_markdown": "Kardeş model olarak bir şey var mı?",
+      "title": "",
+      "tts": {
+        "text": "Kardeş model olarak bir şey var mı?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, NVIDIA ayrıca bir Nemotron 3 Nano Omni yayınladı.",
+      "text_markdown": "Evet, NVIDIA ayrıca bir Nemotron 3 Nano Omni yayınladı.",
+      "title": "",
+      "tts": {
+        "text": "Evet, NVIDIA ayrıca bir Nemotron üç Nano Omni yayınladı.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, eşdeğer açık omni modellerinden yaklaşık dokuz kat daha verimli olduğu iddia edilen birleşik bir görme, ses ve dil modelidir.",
+      "text_markdown": "Bu, eşdeğer açık omni modellerinden yaklaşık dokuz kat daha verimli olduğu iddia edilen birleşik bir görme, ses ve dil modelidir.",
+      "title": "",
+      "tts": {
+        "text": "Bu, eşdeğer açık omni modellerinden yaklaşık dokuz kat daha verimli olduğu iddia edilen birleşik bir görme, ses ve dil modelidir.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Cihaz içi aracılara — telefonlar, dizüstü bilgisayarlar, küçük iş istasyonları — yöneliktir.",
+      "text_markdown": "Cihaz içi aracılara — telefonlar, dizüstü bilgisayarlar, küçük iş istasyonları — yöneliktir.",
+      "title": "",
+      "tts": {
+        "text": "Cihaz içi aracılara — telefonlar, dizüstü bilgisayarlar, küçük iş istasyonları — yöneliktir.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Açık kaynak tarafından başka ne var?",
+      "text_markdown": "Açık kaynak tarafından başka ne var?",
+      "title": "",
+      "tts": {
+        "text": "Açık kaynak tarafından başka ne var?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mistral Medium 3.5, 28 Mayıs'ta Microsoft'un Copilot Studio'sunda ortaya çıktı.",
+      "text_markdown": "Mistral Medium 3.5, 28 Mayıs'ta Microsoft'un Copilot Studio'sunda ortaya çıktı.",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium üç nokta beş, yirmi sekiz Mayıs'ta Microsoft'un Copilot Studio'sunda ortaya çıktı.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, iki yüz elli altı bin belirteç bağlamına sahip, yüz yirmi sekiz milyar parametreli yoğun bir modeldir.",
+      "text_markdown": "Bu, iki yüz elli altı bin belirteç bağlamına sahip, yüz yirmi sekiz milyar parametreli yoğun bir modeldir.",
+      "title": "",
+      "tts": {
+        "text": "Bu, iki yüz elli altı bin belirteç bağlamına sahip, yüz yirmi sekiz milyar parametreli yoğun bir modeldir.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu yerleşim neden ilginç?",
+      "text_markdown": "Bu yerleşim neden ilginç?",
+      "title": "",
+      "tts": {
+        "text": "Bu yerleşim neden ilginç?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çünkü Microsoft, AB veri yerleşimi yerleşik olarak kendi platformu aracılığıyla OpenAI dışı bir Avrupa modelini dağıtıyor.",
+      "text_markdown": "Çünkü Microsoft, AB veri yerleşimi yerleşik olarak kendi platformu aracılığıyla OpenAI dışı bir Avrupa modelini dağıtıyor.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü Microsoft, Avrupa Birliği veri yerleşimi yerleşik olarak kendi platformu aracılığıyla OpenAI dışı bir Avrupa modelini dağıtıyor.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İki yıl önce bu cümle akla hayale gelmezdi.",
+      "text_markdown": "İki yıl önce bu cümle akla hayale gelmezdi.",
+      "title": "",
+      "tts": {
+        "text": "İki yıl önce bu cümle akla hayale gelmezdi.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki ya Alibaba?",
+      "text_markdown": "Peki ya Alibaba?",
+      "title": "",
+      "tts": {
+        "text": "Peki ya Alibaba?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Qwen 3.7 Plus 2 Haziran'da çıktı, ancak Bailian platformunda yalnızca API üzerinden erişilebilir.",
+      "text_markdown": "Qwen 3.7 Plus 2 Haziran'da çıktı, ancak Bailian platformunda yalnızca API üzerinden erişilebilir.",
+      "title": "",
+      "tts": {
+        "text": "Qwen üç nokta yedi Plus iki Haziran'da çıktı, ancak Bailian platformunda yalnızca API üzerinden erişilebilir.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Açık Qwen serisi hala üç nokta altıda duruyor.",
+      "text_markdown": "Açık Qwen serisi hala üç nokta altıda duruyor.",
+      "title": "",
+      "tts": {
+        "text": "Açık Qwen serisi hala üç nokta altıda duruyor.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, geçen hafta işaret ettiğimiz ayrımı doğruluyor — kapalı amiral gemisi, açık orta seviye.",
+      "text_markdown": "Bu, geçen hafta işaret ettiğimiz ayrımı doğruluyor — kapalı amiral gemisi, açık orta seviye.",
+      "title": "",
+      "tts": {
+        "text": "Bu, geçen hafta işaret ettiğimiz ayrımı doğruluyor — kapalı amiral gemisi, açık orta seviye.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mistral'in bir yıldır uyguladığı aynı oyun planı.",
+      "text_markdown": "Mistral'in bir yıldır uyguladığı aynı oyun planı.",
+      "title": "",
+      "tts": {
+        "text": "Mistral'in bir yıldır uyguladığı aynı oyun planı.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-067",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Devam etmeden önce iki hızlı bağlam cümlesi?",
+      "text_markdown": "Devam etmeden önce iki hızlı bağlam cümlesi?",
+      "title": "",
+      "tts": {
+        "text": "Devam etmeden önce iki hızlı bağlam cümlesi?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Elbette.",
+      "text_markdown": "Elbette.",
+      "title": "",
+      "tts": {
+        "text": "Elbette.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çin açık modelleri hala OpenRouter token hacminde lider — geçen haftakiyle aynı durum, değişiklik yok.",
+      "text_markdown": "Çin açık modelleri hala OpenRouter token hacminde lider — geçen haftakiyle aynı durum, değişiklik yok.",
+      "title": "",
+      "tts": {
+        "text": "Çin açık modelleri hala OpenRouter token hacminde lider — geçen haftakiyle aynı durum, değişiklik yok.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve DeepSeek V4, 28 Mayıs'ta Microsoft'un Foundry platformunda yayına girdi, bu da onu çağırmak için daha fazla yer olduğu anlamına geliyor.",
+      "text_markdown": "Ve DeepSeek V4, 28 Mayıs'ta Microsoft'un Foundry platformunda yayına girdi, bu da onu çağırmak için daha fazla yer olduğu anlamına geliyor.",
+      "title": "",
+      "tts": {
+        "text": "Ve DeepSeek V dört, yirmi sekiz Mayıs'ta Microsoft'un Foundry platformunda yayına girdi, bu da onu çağırmak için daha fazla yer olduğu anlamına geliyor.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-071",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Pekala, liderlik tablolarına geçelim.",
+      "text_markdown": "Pekala, liderlik tablolarına geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Pekala, liderlik tablolarına geçelim.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-072",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu hafta büyük bir değişim oldu mu?",
+      "text_markdown": "Bu hafta büyük bir değişim oldu mu?",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta büyük bir değişim oldu mu?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet oldu ve kapalı bir model — Anthropic'in 28 Mayıs'ta piyasaya sürdüğü Claude Opus 4.8.",
+      "text_markdown": "Evet oldu ve kapalı bir model — Anthropic'in 28 Mayıs'ta piyasaya sürdüğü Claude Opus 4.8.",
+      "title": "",
+      "tts": {
+        "text": "Evet oldu ve kapalı bir model — Anthropic'in yirmi sekiz Mayıs'ta piyasaya sürdüğü Claude Opus dört nokta sekiz.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "SWE-bench Verified'da yüzde seksen sekiz nokta altı ve SWE-bench Pro'da yüzde altmış dokuz nokta iki oranına ulaşıyor.",
+      "text_markdown": "SWE-bench Verified'da yüzde seksen sekiz nokta altı ve SWE-bench Pro'da yüzde altmış dokuz nokta iki oranına ulaşıyor.",
+      "title": "",
+      "tts": {
+        "text": "SWE bench Verified'da yüzde seksen sekiz nokta altı ve SWE bench Pro'da yüzde altmış dokuz nokta iki oranına ulaşıyor.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve şimdi bileşik puanla Yapay Analiz İstihbarat Endeksi'ne liderlik ediyor.",
+      "text_markdown": "Ve şimdi bileşik puanla Yapay Analiz İstihbarat Endeksi'ne liderlik ediyor.",
+      "title": "",
+      "tts": {
+        "text": "Ve şimdi bileşik puanla Yapay Analiz İstihbarat Endeksi'ne liderlik ediyor.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-076",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Anthropic'in bu alanda ilk kez lider olması.",
+      "text_markdown": "Anthropic'in bu alanda ilk kez lider olması.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic'in bu alanda ilk kez lider olması.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu doğru.",
+      "text_markdown": "Bu doğru.",
+      "title": "",
+      "tts": {
+        "text": "Bu doğru.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "GPT-5.5 bir puan geride, Gemini 3.5 Pro ise ondan birkaç puan daha geride.",
+      "text_markdown": "GPT-5.5 bir puan geride, Gemini 3.5 Pro ise ondan birkaç puan daha geride.",
+      "title": "",
+      "tts": {
+        "text": "GPT beş nokta beş bir puan geride, Gemini üç nokta beş Pro ise ondan birkaç puan daha geride.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kapalı modellerin zirvesinde rekabet çok sıkı.",
+      "text_markdown": "Kapalı modellerin zirvesinde rekabet çok sıkı.",
+      "title": "",
+      "tts": {
+        "text": "Kapalı modellerin zirvesinde rekabet çok sıkı.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ancak bu haftaki gerçek değerlendirme hikayesi başkaydı.",
+      "text_markdown": "Ancak bu haftaki gerçek değerlendirme hikayesi başkaydı.",
+      "title": "",
+      "tts": {
+        "text": "Ancak bu haftaki gerçek değerlendirme hikayesi başkaydı.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, asıl hikaye bütünlük.",
+      "text_markdown": "Evet, asıl hikaye bütünlük.",
+      "title": "",
+      "tts": {
+        "text": "Evet, asıl hikaye bütünlük.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "OpenAI, SWE-bench Verified hakkında raporlamayı fiilen durdurdu.",
+      "text_markdown": "OpenAI, SWE-bench Verified hakkında raporlamayı fiilen durdurdu.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI, SWE bench Verified hakkında raporlamayı fiilen durdurdu.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bir kontaminasyon denetimi, zorlu görevlerin yaklaşık yüzde elli dokuzunun hatalı birim testlerine sahip olduğunu ve modellerin eğitim verilerinden doğru yamaları kelimesi kelimesine hatırlayabildiğini ortaya koydu.",
+      "text_markdown": "Bir kontaminasyon denetimi, zorlu görevlerin yaklaşık yüzde elli dokuzunun hatalı birim testlerine sahip olduğunu ve modellerin eğitim verilerinden doğru yamaları kelimesi kelimesine hatırlayabildiğini ortaya koydu.",
+      "title": "",
+      "tts": {
+        "text": "Bir kontaminasyon denetimi, zorlu görevlerin yaklaşık yüzde elli dokuzunun hatalı birim testlerine sahip olduğunu ve modellerin eğitim verilerinden doğru yamaları kelimesi kelimesine hatırlayabildiğini ortaya koydu.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-084",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yani yüksek bir puan hafızayı ölçüyordu.",
+      "text_markdown": "Yani yüksek bir puan hafızayı ölçüyordu.",
+      "title": "",
+      "tts": {
+        "text": "Yani yüksek bir puan hafızayı ölçüyordu.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çoğunlukla, evet.",
+      "text_markdown": "Çoğunlukla, evet.",
+      "title": "",
+      "tts": {
+        "text": "Çoğunlukla, evet.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pro, yeni görevler ve daha zorlu iskele ile gelen sürüm — bu yeni sinyal.",
+      "text_markdown": "Pro, yeni görevler ve daha zorlu iskele ile gelen sürüm — bu yeni sinyal.",
+      "title": "",
+      "tts": {
+        "text": "Pro, yeni görevler ve daha zorlu iskele ile gelen sürüm — bu yeni sinyal.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, geçen hafta çekincelerimizi dile getirdiğimiz kontaminasyon endişesinin kurumsal onayıdır.",
+      "text_markdown": "Bu, geçen hafta çekincelerimizi dile getirdiğimiz kontaminasyon endişesinin kurumsal onayıdır.",
+      "title": "",
+      "tts": {
+        "text": "Bu, geçen hafta çekincelerimizi dile getirdiğimiz kontaminasyon endişesinin kurumsal onayıdır.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-088",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bir metodoloji makalesi de var mıydı?",
+      "text_markdown": "Bir metodoloji makalesi de var mıydı?",
+      "title": "",
+      "tts": {
+        "text": "Bir metodoloji makalesi de var mıydı?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kili Technology adlı bir gruptan keskin bir rapor vardı.",
+      "text_markdown": "Kili Technology adlı bir gruptan keskin bir rapor vardı.",
+      "title": "",
+      "tts": {
+        "text": "Kili Technology adlı bir gruptan keskin bir rapor vardı.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Beş yaygın değerlendirme düzeneği aracılığıyla aynı model ağırlıklarını çalıştırdılar.",
+      "text_markdown": "Beş yaygın değerlendirme düzeneği aracılığıyla aynı model ağırlıklarını çalıştırdılar.",
+      "title": "",
+      "tts": {
+        "text": "Beş yaygın değerlendirme düzeneği aracılığıyla aynı model ağırlıklarını çalıştırdılar.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Puanlar, yalnızca donanım seçiminden dolayı yüzde on ila yirmi puan farklılık gösterdi.",
+      "text_markdown": "Puanlar, yalnızca donanım seçiminden dolayı yüzde on ila yirmi puan farklılık gösterdi.",
+      "title": "",
+      "tts": {
+        "text": "Puanlar, yalnızca donanım seçiminden dolayı yüzde on ila yirmi puan farklılık gösterdi.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Aynı ağırlıklar, farklı sayı.",
+      "text_markdown": "Aynı ağırlıklar, farklı sayı.",
+      "title": "",
+      "tts": {
+        "text": "Aynı ağırlıklar, farklı sayı.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kesinlikle.",
+      "text_markdown": "Kesinlikle.",
+      "title": "",
+      "tts": {
+        "text": "Kesinlikle.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çıkardıkları sonuç şuydu: liderlik tablosu sıralaması artık tedarik için bir alıcı derecesi sinyali değil.",
+      "text_markdown": "Çıkardıkları sonuç şuydu: liderlik tablosu sıralaması artık tedarik için bir alıcı derecesi sinyali değil.",
+      "title": "",
+      "tts": {
+        "text": "Çıkardıkları sonuç şuydu: liderlik tablosu sıralaması artık tedarik için bir alıcı derecesi sinyali değil.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kendin yapçı bir geliştirici için çıkarım daha keskin — kendi istemleriniz üzerinde kendi değerlendirmelerinizi yapın.",
+      "text_markdown": "Kendin yapçı bir geliştirici için çıkarım daha keskin — kendi istemleriniz üzerinde kendi değerlendirmelerinizi yapın.",
+      "title": "",
+      "tts": {
+        "text": "Kendin yapçı bir geliştirici için çıkarım daha keskin — kendi istemleriniz üzerinde kendi değerlendirmelerinizi yapın.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu aslında MSA ve Nemotron Ultra'ya geri dönüyor.",
+      "text_markdown": "Bu aslında MSA ve Nemotron Ultra'ya geri dönüyor.",
+      "title": "",
+      "tts": {
+        "text": "Bu aslında M S A ve Nemotron Ultra'ya geri dönüyor.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, öyle.",
+      "text_markdown": "Evet, öyle.",
+      "title": "",
+      "tts": {
+        "text": "Evet, öyle.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mimarilere ve kendi testlerinize güvenin, başkasının tablosuna değil.",
+      "text_markdown": "Mimarilere ve kendi testlerinize güvenin, başkasının tablosuna değil.",
+      "title": "",
+      "tts": {
+        "text": "Mimarilere ve kendi testlerinize güvenin, başkasının tablosuna değil.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-099",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Panoları bırakmak için iyi bir yer.",
+      "text_markdown": "Panoları bırakmak için iyi bir yer.",
+      "title": "",
+      "tts": {
+        "text": "Panoları bırakmak için iyi bir yer.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Şimdi başlıklara geçelim.",
+      "text_markdown": "Şimdi başlıklara geçelim.",
+      "title": "",
+      "tts": {
+        "text": "Şimdi başlıklara geçelim.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-101",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hızlı klip, açık ekosistem merceği.",
+      "text_markdown": "Hızlı klip, açık ekosistem merceği.",
+      "title": "",
+      "tts": {
+        "text": "Hızlı klip, açık ekosistem merceği.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İlk olarak, Microsoft Build 2 Haziran'daydı.",
+      "text_markdown": "İlk olarak, Microsoft Build 2 Haziran'daydı.",
+      "title": "",
+      "tts": {
+        "text": "İlk olarak, Microsoft Build iki Haziran'daydı.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Microsoft, iki birinci taraf modelini tanıttı — MAI-Thinking-1 ve MAI-Code-1-Flash.",
+      "text_markdown": "Microsoft, iki birinci taraf modelini tanıttı — MAI-Thinking-1 ve MAI-Code-1-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Microsoft, iki birinci taraf modelini tanıttı — M A İ Thinking bir ve M A İ Code bir Flash.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-104",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bunlar hakkında ilginç olan ne?",
+      "text_markdown": "Bunlar hakkında ilginç olan ne?",
+      "title": "",
+      "tts": {
+        "text": "Bunlar hakkında ilginç olan ne?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Thinking-1, otuz beş milyar aktif parametreli seyrek bir uzman karışımıdır ve iki yüz elli altı bin token bağlam penceresine sahiptir.",
+      "text_markdown": "Thinking-1, otuz beş milyar aktif parametreli seyrek bir uzman karışımıdır ve iki yüz elli altı bin token bağlam penceresine sahiptir.",
+      "title": "",
+      "tts": {
+        "text": "Thinking bir, otuz beş milyar aktif parametreli seyrek bir uzman karışımıdır ve iki yüz elli altı bin token bağlam penceresine sahiptir.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve Microsoft özellikle, hiçbir üçüncü taraf modelinden damıtma yapılmadan ticari olarak lisanslı veriler üzerinde eğitildiğini belirtiyor.",
+      "text_markdown": "Ve Microsoft özellikle, hiçbir üçüncü taraf modelinden damıtma yapılmadan ticari olarak lisanslı veriler üzerinde eğitildiğini belirtiyor.",
+      "title": "",
+      "tts": {
+        "text": "Ve Microsoft özellikle, hiçbir üçüncü taraf modelinden damıtma yapılmadan ticari olarak lisanslı veriler üzerinde eğitildiğini belirtiyor.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-107",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu alışılmadık bir durum.",
+      "text_markdown": "Bu alışılmadık bir durum.",
+      "title": "",
+      "tts": {
+        "text": "Bu alışılmadık bir durum.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Alanının geri kalanının öncü modellerden sentetik verilere ne kadar güvendiği göz önüne alındığında çok alışılmadık.",
+      "text_markdown": "Alanının geri kalanının öncü modellerden sentetik verilere ne kadar güvendiği göz önüne alındığında çok alışılmadık.",
+      "title": "",
+      "tts": {
+        "text": "Alanının geri kalanının öncü modellerden sentetik verilere ne kadar güvendiği göz önüne alındığında çok alışılmadık.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Code-1-Flash daha ucuz olanı — 2 Haziran'da tüm GitHub Copilot katmanlarına sunulmaya başlandı.",
+      "text_markdown": "Code-1-Flash daha ucuz olanı — 2 Haziran'da tüm GitHub Copilot katmanlarına sunulmaya başlandı.",
+      "title": "",
+      "tts": {
+        "text": "Code bir Flash daha ucuz olanı — iki Haziran'da tüm GitHub Copilot katmanlarına sunulmaya başlandı.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yani Microsoft artık Mistral, DeepSeek, OpenAI ve kendi MAI'sini Copilot Studio'da yan yana sunuyor.",
+      "text_markdown": "Yani Microsoft artık Mistral, DeepSeek, OpenAI ve kendi MAI'sini Copilot Studio'da yan yana sunuyor.",
+      "title": "",
+      "tts": {
+        "text": "Yani Microsoft artık Mistral, DeepSeek, OpenAI ve kendi M A İ'sini Copilot Studio'da yan yana sunuyor.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-111",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "İkinci başlık?",
+      "text_markdown": "İkinci başlık?",
+      "title": "",
+      "tts": {
+        "text": "İkinci başlık?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Anthropic, 1 Haziran'da SEC'e gizlice bir S-1 dosyası sundu.",
+      "text_markdown": "Anthropic, 1 Haziran'da SEC'e gizlice bir S-1 dosyası sundu.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic, bir Haziran'da S E C'e gizlice bir S bir dosyası sundu.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, halka arz yolunu başlatan evrak işleridir.",
+      "text_markdown": "Bu, halka arz yolunu başlatan evrak işleridir.",
+      "title": "",
+      "tts": {
+        "text": "Bu, halka arz yolunu başlatan evrak işleridir.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Belirtilen gelir yıllık oranı yaklaşık kırk yedi milyar dolar olup, bir yıl önceki yaklaşık on milyar dolardan artış göstermiştir.",
+      "text_markdown": "Belirtilen gelir yıllık oranı yaklaşık kırk yedi milyar dolar olup, bir yıl önceki yaklaşık on milyar dolardan artış göstermiştir.",
+      "title": "",
+      "tts": {
+        "text": "Belirtilen gelir yıllık oranı yaklaşık kırk yedi milyar dolar olup, bir yıl önceki yaklaşık on milyar dolardan artış göstermiştir.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-115",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Henüz borsa kodu yok, fiyat aralığı yok, tarih yok — sadece evrak işleri.",
+      "text_markdown": "Henüz borsa kodu yok, fiyat aralığı yok, tarih yok — sadece evrak işleri.",
+      "title": "",
+      "tts": {
+        "text": "Henüz borsa kodu yok, fiyat aralığı yok, tarih yok — sadece evrak işleri.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-116",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Üçüncü.",
+      "text_markdown": "Üçüncü.",
+      "title": "",
+      "tts": {
+        "text": "Üçüncü.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "GitHub Copilot, 1 Haziran'da kullanıma dayalı faturalandırmaya geçti.",
+      "text_markdown": "GitHub Copilot, 1 Haziran'da kullanıma dayalı faturalandırmaya geçti.",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot, bir Haziran'da kullanıma dayalı faturalandırmaya geçti.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Her plan artık girdi, çıktı ve önbelleğe alınmış token'ları temel model API'si ile aynı oranlarda ölçüyor.",
+      "text_markdown": "Her plan artık girdi, çıktı ve önbelleğe alınmış token'ları temel model API'si ile aynı oranlarda ölçüyor.",
+      "title": "",
+      "tts": {
+        "text": "Her plan artık girdi, çıktı ve önbelleğe alınmış token'ları temel model API'si ile aynı oranlarda ölçüyor.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-119",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Her katman için bir kredi tahsisi ve yoğun ajan kullanıcılar için ayda yüz dolarlık yeni bir Copilot Max planı ile geçişi yumuşattılar.",
+      "text_markdown": "Her katman için bir kredi tahsisi ve yoğun ajan kullanıcılar için ayda yüz dolarlık yeni bir Copilot Max planı ile geçişi yumuşattılar.",
+      "title": "",
+      "tts": {
+        "text": "Her katman için bir kredi tahsisi ve yoğun ajan kullanıcılar için ayda yüz dolarlık yeni bir Copilot Max planı ile geçişi yumuşattılar.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-120",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki geliştiriciler bunu nasıl karşıladı?",
+      "text_markdown": "Peki geliştiriciler bunu nasıl karşıladı?",
+      "title": "",
+      "tts": {
+        "text": "Peki geliştiriciler bunu nasıl karşıladı?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bazı yorumlar oldukça ateşliydi.",
+      "text_markdown": "Bazı yorumlar oldukça ateşliydi.",
+      "title": "",
+      "tts": {
+        "text": "Bazı yorumlar oldukça ateşliydi.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ajan döngüleri kullanan yoğun kullanıcılar, eski sabit ücretten birkaç kat daha yüksek faturalar beklediklerini bildirdi.",
+      "text_markdown": "Ajan döngüleri kullanan yoğun kullanıcılar, eski sabit ücretten birkaç kat daha yüksek faturalar beklediklerini bildirdi.",
+      "title": "",
+      "tts": {
+        "text": "Ajan döngüleri kullanan yoğun kullanıcılar, eski sabit ücretten birkaç kat daha yüksek faturalar beklediklerini bildirdi.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, ana haberimiz için önemli olacak — bu düşünceyi aklınızda tutun.",
+      "text_markdown": "Bu, ana haberimiz için önemli olacak — bu düşünceyi aklınızda tutun.",
+      "title": "",
+      "tts": {
+        "text": "Bu, ana haberimiz için önemli olacak — bu düşünceyi aklınızda tutun.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-124",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dördüncüsü, bu hafta sonu yamalanacak bir şey var mı?",
+      "text_markdown": "Dördüncüsü, bu hafta sonu yamalanacak bir şey var mı?",
+      "title": "",
+      "tts": {
+        "text": "Dördüncüsü, bu hafta sonu yamalanacak bir şey var mı?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, SGLang'in sıfır nokta beş nokta on bire kadar olan sürümlerinde 3 Haziran'da açıklanan bir önbellek hizmet reddi güvenlik açığı bulunuyor.",
+      "text_markdown": "Evet, SGLang'in sıfır nokta beş nokta on bire kadar olan sürümlerinde 3 Haziran'da açıklanan bir önbellek hizmet reddi güvenlik açığı bulunuyor.",
+      "title": "",
+      "tts": {
+        "text": "Evet, S G Lang'in sıfır nokta beş nokta on bire kadar olan sürümlerinde üç Haziran'da açıklanan bir önbellek hizmet reddi güvenlik açığı bulunuyor.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tanımlayıcı CVE-2026-10775, ciddiyeti düşük, istismarı yalnızca yerel — ancak SGLang'den hizmet veriyorsanız, Pazartesi günü yamalayın.",
+      "text_markdown": "Tanımlayıcı CVE-2026-10775, ciddiyeti düşük, istismarı yalnızca yerel — ancak SGLang'den hizmet veriyorsanız, Pazartesi günü yamalayın.",
+      "title": "",
+      "tts": {
+        "text": "Tanımlayıcı C V E iki bin yirmi altı tire on bin yedi yüz yetmiş beş, ciddiyeti düşük, istismarı yalnızca yerel — ancak S G Lang'den hizmet veriyorsanız, Pazartesi günü yamalayın.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-127",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bir tane daha.",
+      "text_markdown": "Bir tane daha.",
+      "title": "",
+      "tts": {
+        "text": "Bir tane daha.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-128",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Unsloth Studio, tam bir ince ayarı doğrudan GGUF'a aktaran bir güncelleme yayınladı — sadece adaptör ağırlıkları değil.",
+      "text_markdown": "Unsloth Studio, tam bir ince ayarı doğrudan GGUF'a aktaran bir güncelleme yayınladı — sadece adaptör ağırlıkları değil.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth Studio, tam bir ince ayarı doğrudan G G U F'a aktaran bir güncelleme yayınladı — sadece adaptör ağırlıkları değil.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Yirmi dört gigabaytlık bir tüketici kartı artık faydalı çalıştırmalar için yeterli.",
+      "text_markdown": "Yirmi dört gigabaytlık bir tüketici kartı artık faydalı çalıştırmalar için yeterli.",
+      "title": "",
+      "tts": {
+        "text": "Yirmi dört gigabaytlık bir tüketici kartı artık faydalı çalıştırmalar için yeterli.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, bu bölümün geri kalanını gerçek kılan gösterişsiz altyapıdır.",
+      "text_markdown": "Bu, bu bölümün geri kalanını gerçek kılan gösterişsiz altyapıdır.",
+      "title": "",
+      "tts": {
+        "text": "Bu, bu bölümün geri kalanını gerçek kılan gösterişsiz altyapıdır.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Şimdi ana habere geri dönelim.",
+      "text_markdown": "Şimdi ana habere geri dönelim.",
+      "title": "",
+      "tts": {
+        "text": "Şimdi ana habere geri dönelim.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-132",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bir donanım sisteminden bahsetmiştin.",
+      "text_markdown": "Bir donanım sisteminden bahsetmiştin.",
+      "title": "",
+      "tts": {
+        "text": "Bir donanım sisteminden bahsetmiştin.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-133",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, bahsetmiştim ve olayın özü şu — kendin yap donanım sistemi bu hafta büyüdü.",
+      "text_markdown": "Evet, bahsetmiştim ve olayın özü şu — kendin yap donanım sistemi bu hafta büyüdü.",
+      "title": "",
+      "tts": {
+        "text": "Evet, bahsetmiştim ve olayın özü şu — kendin yap donanım sistemi bu hafta büyüdü.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Donanımla başlayalım.",
+      "text_markdown": "Donanımla başlayalım.",
+      "title": "",
+      "tts": {
+        "text": "Donanımla başlayalım.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İki kutu artık tüketici fiyatlarıyla gerçekten gönderiliyor.",
+      "text_markdown": "İki kutu artık tüketici fiyatlarıyla gerçekten gönderiliyor.",
+      "title": "",
+      "tts": {
+        "text": "İki kutu artık tüketici fiyatlarıyla gerçekten gönderiliyor.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "AMD, Haziran ayında Ryzen AI Halo mini PC için üç bin dokuz yüz doksan dokuz dolardan ön siparişleri açtı.",
+      "text_markdown": "AMD, Haziran ayında Ryzen AI Halo mini PC için üç bin dokuz yüz doksan dokuz dolardan ön siparişleri açtı.",
+      "title": "",
+      "tts": {
+        "text": "A M D, Haziran ayında Ryzen A İ Halo mini P C için üç bin dokuz yüz doksan dokuz dolardan ön siparişleri açtı.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ryzen AI Max Plus 395'i çalıştırıyor, yüz yirmi sekiz gigabayt birleşik LPDDR5x belleğe sahip ve şimdilik yalnızca Micro Center'da bulunuyor.",
+      "text_markdown": "Ryzen AI Max Plus 395'i çalıştırıyor, yüz yirmi sekiz gigabayt birleşik LPDDR5x belleğe sahip ve şimdilik yalnızca Micro Center'da bulunuyor.",
+      "title": "",
+      "tts": {
+        "text": "Ryzen A İ Max Plus üç yüz doksan beşi çalıştırıyor, yüz yirmi sekiz gigabayt birleşik L P D D R beş x belleğe sahip ve şimdilik yalnızca Micro Center'da bulunuyor.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-138",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki NVIDIA tarafı?",
+      "text_markdown": "Peki NVIDIA tarafı?",
+      "title": "",
+      "tts": {
+        "text": "Peki NVIDIA tarafı?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "NVIDIA'nın DGX Spark'ı karşılaştırılabilir bir kutu.",
+      "text_markdown": "NVIDIA'nın DGX Spark'ı karşılaştırılabilir bir kutu.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA'nın D G X Spark'ı karşılaştırılabilir bir kutu.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-140",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "GB10 Grace Blackwell çipine ve aynı yüz yirmi sekiz gigabayt birleşik belleğe sahip.",
+      "text_markdown": "GB10 Grace Blackwell çipine ve aynı yüz yirmi sekiz gigabayt birleşik belleğe sahip.",
+      "title": "",
+      "tts": {
+        "text": "G B on Grace Blackwell çipine ve aynı yüz yirmi sekiz gigabayt birleşik belleğe sahip.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Fiyat yakın zamanda üç bin dokuz yüz doksan dokuzdan dört bin altı yüz doksan dokuza çıktı, bu durum küresel bellek sıkıntısına bağlandı.",
+      "text_markdown": "Fiyat yakın zamanda üç bin dokuz yüz doksan dokuzdan dört bin altı yüz doksan dokuza çıktı, bu durum küresel bellek sıkıntısına bağlandı.",
+      "title": "",
+      "tts": {
+        "text": "Fiyat yakın zamanda üç bin dokuz yüz doksan dokuzdan dört bin altı yüz doksan dokuza çıktı, bu durum küresel bellek sıkıntısına bağlandı.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-142",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bunlar aslında ne kadar büyük bir model barındırıyor?",
+      "text_markdown": "Bunlar aslında ne kadar büyük bir model barındırıyor?",
+      "title": "",
+      "tts": {
+        "text": "Bunlar aslında ne kadar büyük bir model barındırıyor?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dört bit nicelemede yaklaşık iki yüz milyar parametreye kadar, bağlam için yer kalacak şekilde.",
+      "text_markdown": "Dört bit nicelemede yaklaşık iki yüz milyar parametreye kadar, bağlam için yer kalacak şekilde.",
+      "title": "",
+      "tts": {
+        "text": "Dört bit nicelemede yaklaşık iki yüz milyar parametreye kadar, bağlam için yer kalacak şekilde.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-144",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İki DGX Spark'ı ConnectX-7 üzerinden bir araya getirdiğinizde yaklaşık dört yüz milyar parametre bölgesine ulaşırsınız.",
+      "text_markdown": "İki DGX Spark'ı ConnectX-7 üzerinden bir araya getirdiğinizde yaklaşık dört yüz milyar parametre bölgesine ulaşırsınız.",
+      "title": "",
+      "tts": {
+        "text": "İki D G X Spark'ı Connect X yedi üzerinden bir araya getirdiğinizde yaklaşık dört yüz milyar parametre bölgesine ulaşırsınız.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu, tezgah üzerinde gerçekten de sınır sınıfı bir ayak izidir.",
+      "text_markdown": "Bu, tezgah üzerinde gerçekten de sınır sınıfı bir ayak izidir.",
+      "title": "",
+      "tts": {
+        "text": "Bu, tezgah üzerinde gerçekten de sınır sınıfı bir ayak izidir.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-146",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Şimdi yazılım yığını.",
+      "text_markdown": "Şimdi yazılım yığını.",
+      "title": "",
+      "tts": {
+        "text": "Şimdi yazılım yığını.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-147",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ayaklarımızın altında değişen şey bu.",
+      "text_markdown": "Ayaklarımızın altında değişen şey bu.",
+      "title": "",
+      "tts": {
+        "text": "Ayaklarımızın altında değişen şey bu.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çıkarım için vLLM, SGLang, llama.cpp, Ollama ve Apple Silicon üzerinde MLX'iniz var — hepsi bakımlı, hepsi hızlı.",
+      "text_markdown": "Çıkarım için vLLM, SGLang, llama.cpp, Ollama ve Apple Silicon üzerinde MLX'iniz var — hepsi bakımlı, hepsi hızlı.",
+      "title": "",
+      "tts": {
+        "text": "Çıkarım için v L L M, S G Lang, llama C P P, Ollama ve Apple Silicon üzerinde M L X'iniz var — hepsi bakımlı, hepsi hızlı.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Modelin kendisi için bu hafta Nemotron 3 Ultra ağırlıkları, ayrıca Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 ve gelecek MiniMax M3 ağırlıkları var.",
+      "text_markdown": "Modelin kendisi için bu hafta Nemotron 3 Ultra ağırlıkları, ayrıca Kimi K2.6, DeepSeek V4-Flash, GLM-5.1 ve gelecek MiniMax M3 ağırlıkları var.",
+      "title": "",
+      "tts": {
+        "text": "Modelin kendisi için bu hafta Nemotron üç Ultra ağırlıkları, ayrıca Kimi K iki nokta altı, DeepSeek V dört Flash, G L M beş nokta bir ve gelecek MiniMax M üç ağırlıkları var.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İnce ayar için Unsloth Studio artık GGUF'a tek tıklamayla tam ayar yapıyor.",
+      "text_markdown": "İnce ayar için Unsloth Studio artık GGUF'a tek tıklamayla tam ayar yapıyor.",
+      "title": "",
+      "tts": {
+        "text": "İnce ayar için Unsloth Studio artık G G U F'a tek tıklamayla tam ayar yapıyor.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-151",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve ajanlar için, Aider, Continue ve LangGraph sürüm bir'in yerel otuz iki milyar parametreli modelleri kullanılabilir güvenilirlikte çalıştırdığını görüyorsunuz.",
+      "text_markdown": "Ve ajanlar için, Aider, Continue ve LangGraph sürüm bir'in yerel otuz iki milyar parametreli modelleri kullanılabilir güvenilirlikte çalıştırdığını görüyorsunuz.",
+      "title": "",
+      "tts": {
+        "text": "Ve ajanlar için, Aider, Continue ve LangGraph sürüm bir'in yerel otuz iki milyar parametreli modelleri kullanılabilir güvenilirlikte çalıştırdığını görüyorsunuz.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-152",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bütün döngü bu.",
+      "text_markdown": "Bütün döngü bu.",
+      "title": "",
+      "tts": {
+        "text": "Bütün döngü bu.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bütün döngü bu.",
+      "text_markdown": "Bütün döngü bu.",
+      "title": "",
+      "tts": {
+        "text": "Bütün döngü bu.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Silikon, motor, model, ince ayar, ajan — her katmanın güvenilir bir açık seçeneği var ve en alt katman artık masa başında bir mini PC.",
+      "text_markdown": "Silikon, motor, model, ince ayar, ajan — her katmanın güvenilir bir açık seçeneği var ve en alt katman artık masa başında bir mini PC.",
+      "title": "",
+      "tts": {
+        "text": "Silikon, motor, model, ince ayar, ajan — her katmanın güvenilir bir açık seçeneği var ve en alt katman artık masa başında bir mini PC.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-155",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki, ekonomiye ne demeli?",
+      "text_markdown": "Peki, ekonomiye ne demeli?",
+      "title": "",
+      "tts": {
+        "text": "Peki, ekonomiye ne demeli?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ekonomi bu hafta, gözden kaçırılması zor bir şekilde tersine döndü.",
+      "text_markdown": "Ekonomi bu hafta, gözden kaçırılması zor bir şekilde tersine döndü.",
+      "title": "",
+      "tts": {
+        "text": "Ekonomi bu hafta, gözden kaçırılması zor bir şekilde tersine döndü.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Token ölçerli Copilot, gelecek fiyat baskılarını işaret eden bir Anthropic S-1 ve Teksas, Virginia ve Ohio'dan gelen sıkıntılı bir yaz hakkında şebeke uyarıları.",
+      "text_markdown": "Token ölçerli Copilot, gelecek fiyat baskılarını işaret eden bir Anthropic S-1 ve Teksas, Virginia ve Ohio'dan gelen sıkıntılı bir yaz hakkında şebeke uyarıları.",
+      "title": "",
+      "tts": {
+        "text": "Token ölçerli Copilot, gelecek fiyat baskılarını işaret eden bir Anthropic S bir ve Teksas, Virginia ve Ohio'dan gelen sıkıntılı bir yaz hakkında şebeke uyarıları.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-158",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kendi kendine barındırma (self-host) durumu eskiden ideolojikti.",
+      "text_markdown": "Kendi kendine barındırma (self-host) durumu eskiden ideolojikti.",
+      "title": "",
+      "tts": {
+        "text": "Kendi kendine barındırma durumu eskiden ideolojikti.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta bir elektronik tabloya dönüştü.",
+      "text_markdown": "Bu hafta bir elektronik tabloya dönüştü.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta bir elektronik tabloya dönüştü.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-160",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Neyin değişmediği konusunda dürüst olun.",
+      "text_markdown": "Neyin değişmediği konusunda dürüst olun.",
+      "title": "",
+      "tts": {
+        "text": "Neyin değişmediği konusunda dürüst olun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Önemli bir uyarı — tezgahınız, kalite tablosunun en üstünde bulutu geçemez.",
+      "text_markdown": "Önemli bir uyarı — tezgahınız, kalite tablosunun en üstünde bulutu geçemez.",
+      "title": "",
+      "tts": {
+        "text": "Önemli bir uyarı — tezgahınız, kalite tablosunun en üstünde bulutu geçemez.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-162",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Opus 4.8 hala bileşiği yönetiyor ve GPT-5.5 hala BrowseComp'a sahip.",
+      "text_markdown": "Opus 4.8 hala bileşiği yönetiyor ve GPT-5.5 hala BrowseComp'a sahip.",
+      "title": "",
+      "tts": {
+        "text": "Opus dört nokta sekiz hala bileşiği yönetiyor ve GPT beş nokta beş hala BrowseComp'a sahip.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-163",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta değişen şey taban oldu.",
+      "text_markdown": "Bu hafta değişen şey taban oldu.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta değişen şey taban oldu.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kendi donanımınızda, açık ağırlıklarla, yetenekli, ajan seviyesinde, ince ayarlanabilir modeller.",
+      "text_markdown": "Kendi donanımınızda, açık ağırlıklarla, yetenekli, ajan seviyesinde, ince ayarlanabilir modeller.",
+      "title": "",
+      "tts": {
+        "text": "Kendi donanımınızda, açık ağırlıklarla, yetenekli, ajan seviyesinde, ince ayarlanabilir modeller.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hikaye bu.",
+      "text_markdown": "Hikaye bu.",
+      "title": "",
+      "tts": {
+        "text": "Hikaye bu.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-166",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Eskiden bir veri merkezi gerektiriyordu.",
+      "text_markdown": "Eskiden bir veri merkezi gerektiriyordu.",
+      "title": "",
+      "tts": {
+        "text": "Eskiden bir veri merkezi gerektiriyordu.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-167",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bu hafta, bir tezgah gerektiriyor.",
+      "text_markdown": "Bu hafta, bir tezgah gerektiriyor.",
+      "title": "",
+      "tts": {
+        "text": "Bu hafta, bir tezgah gerektiriyor.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-168",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Haftanın konseptini yapalım.",
+      "text_markdown": "Haftanın konseptini yapalım.",
+      "title": "",
+      "tts": {
+        "text": "Haftanın konseptini yapalım.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-169",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Spekülatif kod çözmeyi seçtiniz.",
+      "text_markdown": "Spekülatif kod çözmeyi seçtiniz.",
+      "title": "",
+      "tts": {
+        "text": "Spekülatif kod çözmeyi seçtiniz.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-170",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Evet, çünkü az önce bahsettiğimiz her şeyi hızlı hissettiren hile bu.",
+      "text_markdown": "Evet, çünkü az önce bahsettiğimiz her şeyi hızlı hissettiren hile bu.",
+      "title": "",
+      "tts": {
+        "text": "Evet, çünkü az önce bahsettiğimiz her şeyi hızlı hissettiren hile bu.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-171",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "MiniMax'ın on beş kat kod çözme iddiası bir akrabasına dayanıyor.",
+      "text_markdown": "MiniMax'ın on beş kat kod çözme iddiası bir akrabasına dayanıyor.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax'ın on beş kat kod çözme iddiası bir akrabasına dayanıyor.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-172",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Llama.cpp'nin taslak model modu tam olarak bu fikir.",
+      "text_markdown": "Llama.cpp'nin taslak model modu tam olarak bu fikir.",
+      "title": "",
+      "tts": {
+        "text": "Llama nokta ce pe pe'nin taslak model modu tam olarak bu fikir.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-173",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bize anlatın.",
+      "text_markdown": "Bize anlatın.",
+      "title": "",
+      "tts": {
+        "text": "Bize anlatın.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-174",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "İki modeli yan yana çalıştırıyorsunuz.",
+      "text_markdown": "İki modeli yan yana çalıştırıyorsunuz.",
+      "title": "",
+      "tts": {
+        "text": "İki modeli yan yana çalıştırıyorsunuz.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-175",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Taslakçı adı verilen küçük, hızlı bir model ve doğrulayıcı adı verilen büyük, yavaş bir model.",
+      "text_markdown": "Taslakçı adı verilen küçük, hızlı bir model ve doğrulayıcı adı verilen büyük, yavaş bir model.",
+      "title": "",
+      "tts": {
+        "text": "Taslakçı adı verilen küçük, hızlı bir model ve doğrulayıcı adı verilen büyük, yavaş bir model.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-176",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Taslakçı, diyelim ki, sonraki dört token'ı tek seferde tahmin eder.",
+      "text_markdown": "Taslakçı, diyelim ki, sonraki dört token'ı tek seferde tahmin eder.",
+      "title": "",
+      "tts": {
+        "text": "Taslakçı, diyelim ki, sonraki dört token'ı tek seferde tahmin eder.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-177",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Doğrulayıcı dördünü de paralel olarak kontrol eder.",
+      "text_markdown": "Doğrulayıcı dördünü de paralel olarak kontrol eder.",
+      "title": "",
+      "tts": {
+        "text": "Doğrulayıcı dördünü de paralel olarak kontrol eder.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-178",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Peki sonra?",
+      "text_markdown": "Peki sonra?",
+      "title": "",
+      "tts": {
+        "text": "Peki sonra?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-179",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Doğrulayıcı kabul ederse, dördünü de tutar ve devam edersiniz — yaklaşık bir maliyetle dört token yapmış olursunuz.",
+      "text_markdown": "Doğrulayıcı kabul ederse, dördünü de tutar ve devam edersiniz — yaklaşık bir maliyetle dört token yapmış olursunuz.",
+      "title": "",
+      "tts": {
+        "text": "Doğrulayıcı kabul ederse, dördünü de tutar ve devam edersiniz — yaklaşık bir maliyetle dört token yapmış olursunuz.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-180",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Anlaşmazlık olursa, ilk uyuşmazlığa kadar kabul eder ve büyük modelin oradan devralmasına izin verirsiniz.",
+      "text_markdown": "Anlaşmazlık olursa, ilk uyuşmazlığa kadar kabul eder ve büyük modelin oradan devralmasına izin verirsiniz.",
+      "title": "",
+      "tts": {
+        "text": "Anlaşmazlık olursa, ilk uyuşmazlığa kadar kabul eder ve büyük modelin oradan devralmasına izin verirsiniz.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-181",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yani cevap aynı.",
+      "text_markdown": "Yani cevap aynı.",
+      "title": "",
+      "tts": {
+        "text": "Yani cevap aynı.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-182",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Doğru, zarif kısım bu.",
+      "text_markdown": "Doğru, zarif kısım bu.",
+      "title": "",
+      "tts": {
+        "text": "Doğru, zarif kısım bu.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-183",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çıktı, büyük modelin kendi başına üreteceği şeyin aynısı.",
+      "text_markdown": "Çıktı, büyük modelin kendi başına üreteceği şeyin aynısı.",
+      "title": "",
+      "tts": {
+        "text": "Çıktı, büyük modelin kendi başına üreteceği şeyin aynısı.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-184",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Sadece daha az ileri geçişi için ödeme yaptınız.",
+      "text_markdown": "Sadece daha az ileri geçişi için ödeme yaptınız.",
+      "title": "",
+      "tts": {
+        "text": "Sadece daha az ileri geçişi için ödeme yaptınız.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-185",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bir meraklı için bu neden önemli?",
+      "text_markdown": "Bir meraklı için bu neden önemli?",
+      "title": "",
+      "tts": {
+        "text": "Bir meraklı için bu neden önemli?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-186",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Çünkü tek bir karttaki yetmiş milyar parametreli bir modeli, bir yenilik olmaktan çıkarıp kullanılabilir bir sohbete dönüştürüyor.",
+      "text_markdown": "Çünkü tek bir karttaki yetmiş milyar parametreli bir modeli, bir yenilik olmaktan çıkarıp kullanılabilir bir sohbete dönüştürüyor.",
+      "title": "",
+      "tts": {
+        "text": "Çünkü tek bir karttaki yetmiş milyar parametreli bir modeli, bir yenilik olmaktan çıkarıp kullanılabilir bir sohbete dönüştürüyor.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-187",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ve bir telefonda, gerçek bir cihaz içi asistanın ne kadar duyarlı hissettirdiğinin bir parçasıdır.",
+      "text_markdown": "Ve bir telefonda, gerçek bir cihaz içi asistanın ne kadar duyarlı hissettirdiğinin bir parçasıdır.",
+      "title": "",
+      "tts": {
+        "text": "Ve bir telefonda, gerçek bir cihaz içi asistanın ne kadar duyarlı hissettirdiğinin bir parçasıdır.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-188",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Geçen haftaki konsept, sinirsel ses kodekleri, aynı hilenin ses versiyonuydu — aynı kalite için daha az maliyetli adım.",
+      "text_markdown": "Geçen haftaki konsept, sinirsel ses kodekleri, aynı hilenin ses versiyonuydu — aynı kalite için daha az maliyetli adım.",
+      "title": "",
+      "tts": {
+        "text": "Geçen haftaki konsept, sinirsel ses kodekleri, aynı hilenin ses versiyonuydu — aynı kalite için daha az maliyetli adım.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-189",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Meraklılar buradan nereye gitmeli?",
+      "text_markdown": "Meraklılar buradan nereye gitmeli?",
+      "title": "",
+      "tts": {
+        "text": "Meraklılar buradan nereye gitmeli?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-190",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "EAGLE-3, Medusa ve ileriye dönük kod çözme konularına bakın.",
+      "text_markdown": "EAGLE-3, Medusa ve ileriye dönük kod çözme konularına bakın.",
+      "title": "",
+      "tts": {
+        "text": "EAGLE üç, Medusa ve ileriye dönük kod çözme konularına bakın.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-191",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bunlar, orijinal taslakçı-doğrulayıcı fikrinin modern kuzenleridir ve çıkarım motorunuzun arka planda aslında çalıştırdığı şeylerdir.",
+      "text_markdown": "Bunlar, orijinal taslakçı-doğrulayıcı fikrinin modern kuzenleridir ve çıkarım motorunuzun arka planda aslında çalıştırdığı şeylerdir.",
+      "title": "",
+      "tts": {
+        "text": "Bunlar, orijinal taslakçı doğrulayıcı fikrinin modern kuzenleridir ve çıkarım motorunuzun arka planda aslında çalıştırdığı şeylerdir.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-192",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "İyi bir varış noktası.",
+      "text_markdown": "İyi bir varış noktası.",
+      "title": "",
+      "tts": {
+        "text": "İyi bir varış noktası.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-193",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, teşekkür ederim.",
+      "text_markdown": "Ron, teşekkür ederim.",
+      "title": "",
+      "tts": {
+        "text": "Ron, teşekkür ederim.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-194",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Her zaman, Vindy.",
+      "text_markdown": "Her zaman, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Her zaman, Vindy.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-195",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bu, 3 Haziran 2026 tarihli Yapay Zeka Bu Hafta idi.",
+      "text_markdown": "Bu, 3 Haziran 2026 tarihli Yapay Zeka Bu Hafta idi.",
+      "title": "",
+      "tts": {
+        "text": "Bu, üç Haziran iki bin yirmi altı tarihli Yapay Zeka Bu Hafta idi.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-196",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Yeni sayı gelecek Çarşamba.",
+      "text_markdown": "Yeni sayı gelecek Çarşamba.",
+      "title": "",
+      "tts": {
+        "text": "Yeni sayı gelecek Çarşamba.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-197",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "O zamana kadar, kendinize iyi bakın.",
+      "text_markdown": "O zamana kadar, kendinize iyi bakın.",
+      "title": "",
+      "tts": {
+        "text": "O zamana kadar, kendinize iyi bakın.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

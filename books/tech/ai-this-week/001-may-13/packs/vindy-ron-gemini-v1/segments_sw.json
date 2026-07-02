@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "sw",
+  "total_segments": 62,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Karibu kwenye AI Wiki Hii. Mimi ni Vindy.",
+      "text_markdown": "Karibu kwenye AI Wiki Hii. Mimi ni Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Karibu kwenye AI Wiki Hii. Mimi ni Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pamoja nami, kama kawaida, ni Ron.",
+      "text_markdown": "Pamoja nami, kama kawaida, ni Ron.",
+      "title": "",
+      "tts": {
+        "text": "Pamoja nami, kama kawaida, ni Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vizuri kuwa hapa.",
+      "text_markdown": "Vizuri kuwa hapa.",
+      "title": "",
+      "tts": {
+        "text": "Vizuri kuwa hapa.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Leo ni Jumatano, Mei 13, 2026. Kinachofuata: mifumo iliyotumwa wiki hii. Vibao vya wanaoongoza, na kwa nini baadhi yake unapaswa kuacha kuviamini. Dhana yetu ya wiki. Na picha kubwa zaidi — Marekani imepata mwenyekiti mpya wa Federal Reserve, na ina umuhimu zaidi kwa AI kuliko unavyoweza kufikiria.",
+      "text_markdown": "Leo ni Jumatano, Mei 13, 2026. Kinachofuata: mifumo iliyotumwa wiki hii. Vibao vya wanaoongoza, na kwa nini baadhi yake unapaswa kuacha kuviamini. Dhana yetu ya wiki. Na picha kubwa zaidi — Marekani imepata mwenyekiti mpya wa Federal Reserve, na ina umuhimu zaidi kwa AI kuliko unavyoweza kufikiria.",
+      "title": "",
+      "tts": {
+        "text": "Leo ni Jumatano, Mei kumi na tatu, elfu mbili ishirini na sita. Kinachofuata: mifumo iliyotumwa wiki hii. Vibao vya wanaoongoza, na kwa nini baadhi yake unapaswa kuacha kuviamini. Dhana yetu ya wiki. Na picha kubwa zaidi — Marekani imepata mwenyekiti mpya wa Federal Reserve, na ina umuhimu zaidi kwa AI kuliko unavyoweza kufikiria.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, ni habari gani kubwa zaidi ya mfumo wiki hii?",
+      "text_markdown": "Ron, ni habari gani kubwa zaidi ya mfumo wiki hii?",
+      "title": "",
+      "tts": {
+        "text": "Ron, ni habari gani kubwa zaidi ya mfumo wiki hii?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ubongo chaguomsingi ndani ya ChatGPT umebadilika. OpenAI ilitoa mfumo mpya unaoitwa GPT-5.5 Instant kwa kiwango cha bure wiki iliyopita, Jumanne, Mei 5. Ikiwa majibu ya ChatGPT ya bure yamekuwa yakihisi mafupi au yasiyojaa emoji, ndiyo sababu.",
+      "text_markdown": "Ubongo chaguomsingi ndani ya ChatGPT umebadilika. OpenAI ilitoa mfumo mpya unaoitwa GPT-5.5 Instant kwa kiwango cha bure wiki iliyopita, Jumanne, Mei 5. Ikiwa majibu ya ChatGPT ya bure yamekuwa yakihisi mafupi au yasiyojaa emoji, ndiyo sababu.",
+      "title": "",
+      "tts": {
+        "text": "Ubongo chaguomsingi ndani ya ChatGPT umebadilika. OpenAI ilitoa mfumo mpya unaoitwa GPT tano nukta tano Instant kwa kiwango cha bure wiki iliyopita, Jumanne, Mei tano. Ikiwa majibu ya ChatGPT ya bure yamekuwa yakihisi mafupi au yasiyojaa emoji, ndiyo sababu.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mafupi kiasi gani?",
+      "text_markdown": "Mafupi kiasi gani?",
+      "title": "",
+      "tts": {
+        "text": "Mafupi kiasi gani?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "OpenAI inasema chaguomsingi mpya huandika takriban 30% maneno machache na 30% mistari michache kuliko mfumo iliyoubadilisha. Pia wanadai kushuka kwa 50% kwa madai ya uwongo kwenye maagizo magumu zaidi. Mambo kama maswali ya matibabu, maswali ya kisheria, na maswali ya kifedha.",
+      "text_markdown": "OpenAI inasema chaguomsingi mpya huandika takriban 30% maneno machache na 30% mistari michache kuliko mfumo iliyoubadilisha. Pia wanadai kushuka kwa 50% kwa madai ya uwongo kwenye maagizo magumu zaidi. Mambo kama maswali ya matibabu, maswali ya kisheria, na maswali ya kifedha.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI inasema chaguomsingi mpya huandika takriban asilimia thelathini maneno machache na asilimia thelathini mistari michache kuliko mfumo iliyoubadilisha. Pia wanadai kushuka kwa asilimia hamsini kwa madai ya uwongo kwenye maagizo magumu zaidi. Mambo kama maswali ya matibabu, maswali ya kisheria, na maswali ya kifedha.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Je, kuna mtu yeyote nje ya OpenAI amethibitisha nambari hizo?",
+      "text_markdown": "Je, kuna mtu yeyote nje ya OpenAI amethibitisha nambari hizo?",
+      "title": "",
+      "tts": {
+        "text": "Je, kuna mtu yeyote nje ya OpenAI amethibitisha nambari hizo?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sio kwa kiwango kikubwa. Watu wa vigezo huru, kama Artificial Analysis, wana mfumo mpya juu ya faharisi yao ya jumla ya akili. Lakini madai ya uwongo ni polepole kuthibitishwa. Hayo huwa yanaibuka kwa wiki kadhaa, kadri watu wanavyotumia mfumo.",
+      "text_markdown": "Sio kwa kiwango kikubwa. Watu wa vigezo huru, kama Artificial Analysis, wana mfumo mpya juu ya faharisi yao ya jumla ya akili. Lakini madai ya uwongo ni polepole kuthibitishwa. Hayo huwa yanaibuka kwa wiki kadhaa, kadri watu wanavyotumia mfumo.",
+      "title": "",
+      "tts": {
+        "text": "Sio kwa kiwango kikubwa. Watu wa vigezo huru, kama Artificial Analysis, wana mfumo mpya juu ya faharisi yao ya jumla ya akili. Lakini madai ya uwongo ni polepole kuthibitishwa. Hayo huwa yanaibuka kwa wiki kadhaa, kadri watu wanavyotumia mfumo.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na kwa upande wa uzito huru?",
+      "text_markdown": "Na kwa upande wa uzito huru?",
+      "title": "",
+      "tts": {
+        "text": "Na kwa upande wa uzito huru?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mambo mawili makubwa. Moonshot, maabara ya Kichina nyuma ya mfumo wa Kimi, ilikusanya dola bilioni 2 wiki iliyopita, Mei 7, kwa thamani ya dola bilioni 20. Na mfumo wao wa hivi karibuni, Kimi K 2.6, umeshika nafasi ya kwanza kwenye OpenRouter kwa kiasi cha tokeni.",
+      "text_markdown": "Mambo mawili makubwa. Moonshot, maabara ya Kichina nyuma ya mfumo wa Kimi, ilikusanya dola bilioni 2 wiki iliyopita, Mei 7, kwa thamani ya dola bilioni 20. Na mfumo wao wa hivi karibuni, Kimi K 2.6, umeshika nafasi ya kwanza kwenye OpenRouter kwa kiasi cha tokeni.",
+      "title": "",
+      "tts": {
+        "text": "Mambo mawili makubwa. Moonshot, maabara ya Kichina nyuma ya mfumo wa Kimi, ilikusanya dola bilioni mbili wiki iliyopita, Mei saba, kwa thamani ya dola bilioni ishirini. Na mfumo wao wa hivi karibuni, Kimi K mbili nukta sita, umeshika nafasi ya kwanza kwenye OpenRouter kwa kiasi cha tokeni.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nafasi ya kwanza? Kwa ujumla?",
+      "text_markdown": "Nafasi ya kwanza? Kwa ujumla?",
+      "title": "",
+      "tts": {
+        "text": "Nafasi ya kwanza? Kwa ujumla?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kwa ujumla. Huo ni mfumo wa Kichina wa uzito huru namba moja kwenye router kubwa ya kibiashara. Miezi sita iliyopita, hilo lisingewezekana.",
+      "text_markdown": "Kwa ujumla. Huo ni mfumo wa Kichina wa uzito huru namba moja kwenye router kubwa ya kibiashara. Miezi sita iliyopita, hilo lisingewezekana.",
+      "title": "",
+      "tts": {
+        "text": "Kwa ujumla. Huo ni mfumo wa Kichina wa uzito huru namba moja kwenye router kubwa ya kibiashara. Miezi sita iliyopita, hilo lisingewezekana.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kuna kitu kingine chochote cha kuashiria?",
+      "text_markdown": "Kuna kitu kingine chochote cha kuashiria?",
+      "title": "",
+      "tts": {
+        "text": "Kuna kitu kingine chochote cha kuashiria?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mistral, maabara ya Ufaransa, ilitoa Medium 3.5 mwishoni mwa Aprili. Wanavunja mgawanyiko wa zamani kati ya mfumo wa gumzo, mfumo wa hoja, na mfumo wa kuandika msimbo kuwa bidhaa moja. Mwelekeo uleule ambao OpenAI ilianza nao na familia ya GPT-5. Sekta nzima inaelekea upande huo.",
+      "text_markdown": "Mistral, maabara ya Ufaransa, ilitoa Medium 3.5 mwishoni mwa Aprili. Wanavunja mgawanyiko wa zamani kati ya mfumo wa gumzo, mfumo wa hoja, na mfumo wa kuandika msimbo kuwa bidhaa moja. Mwelekeo uleule ambao OpenAI ilianza nao na familia ya GPT-5. Sekta nzima inaelekea upande huo.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, maabara ya Ufaransa, ilitoa Medium tatu nukta tano mwishoni mwa Aprili. Wanavunja mgawanyiko wa zamani kati ya mfumo wa gumzo, mfumo wa hoja, na mfumo wa kuandika msimbo kuwa bidhaa moja. Mwelekeo uleule ambao OpenAI ilianza nao na familia ya GPT tano. Sekta nzima inaelekea upande huo.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na nini kinachofuata?",
+      "text_markdown": "Na nini kinachofuata?",
+      "title": "",
+      "tts": {
+        "text": "Na nini kinachofuata?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Google I/O ni Jumanne. Kila mtu anatarajia Gemini mpya, na kuna uvumi wa kuaminika kuhusu mfumo wa kutengeneza video unaoitwa Gemini Omni. OpenAI ina GPT-5.6 katika majaribio. Anthropic ina mfumo unaoitwa Mythos katika onyesho la faragha. Tutajua mengi zaidi wiki ijayo.",
+      "text_markdown": "Google I/O ni Jumanne. Kila mtu anatarajia Gemini mpya, na kuna uvumi wa kuaminika kuhusu mfumo wa kutengeneza video unaoitwa Gemini Omni. OpenAI ina GPT-5.6 katika majaribio. Anthropic ina mfumo unaoitwa Mythos katika onyesho la faragha. Tutajua mengi zaidi wiki ijayo.",
+      "title": "",
+      "tts": {
+        "text": "Google I O ni Jumanne. Kila mtu anatarajia Gemini mpya, na kuna uvumi wa kuaminika kuhusu mfumo wa kutengeneza video unaoitwa Gemini Omni. OpenAI ina GPT tano nukta sita katika majaribio. Anthropic ina mfumo unaoitwa Mythos katika onyesho la faragha. Tutajua mengi zaidi wiki ijayo.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sawa, twende kwenye vibao vya wanaoongoza.",
+      "text_markdown": "Sawa, twende kwenye vibao vya wanaoongoza.",
+      "title": "",
+      "tts": {
+        "text": "Sawa, twende kwenye vibao vya wanaoongoza.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, nini kinachoendelea kwenye vibao wiki hii?",
+      "text_markdown": "Ron, nini kinachoendelea kwenye vibao wiki hii?",
+      "title": "",
+      "tts": {
+        "text": "Ron, nini kinachoendelea kwenye vibao wiki hii?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hadithi halisi wiki hii sio alama. Ni alama ambazo unapaswa kuacha kuziamini.",
+      "text_markdown": "Hadithi halisi wiki hii sio alama. Ni alama ambazo unapaswa kuacha kuziamini.",
+      "title": "",
+      "tts": {
+        "text": "Hadithi halisi wiki hii sio alama. Ni alama ambazo unapaswa kuacha kuziamini.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tueleze zaidi kidogo kuhusu hilo, Ron.",
+      "text_markdown": "Tueleze zaidi kidogo kuhusu hilo, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Tueleze zaidi kidogo kuhusu hilo, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kundi moja huko Berkeley lilichapisha karatasi. Walijenga skana otomatiki iliyopata alama karibu kamilifu kwenye kila kigezo kikuu cha wakala wa AI. Bila kutatua kazi hata moja. Walitumia vibaya jinsi vigezo hivyo vinavyochunguza majibu yao wenyewe.",
+      "text_markdown": "Kundi moja huko Berkeley lilichapisha karatasi. Walijenga skana otomatiki iliyopata alama karibu kamilifu kwenye kila kigezo kikuu cha wakala wa AI. Bila kutatua kazi hata moja. Walitumia vibaya jinsi vigezo hivyo vinavyochunguza majibu yao wenyewe.",
+      "title": "",
+      "tts": {
+        "text": "Kundi moja huko Berkeley lilichapisha karatasi. Walijenga skana otomatiki iliyopata alama karibu kamilifu kwenye kila kigezo kikuu cha wakala wa AI. Bila kutatua kazi hata moja. Walitumia vibaya jinsi vigezo hivyo vinavyochunguza majibu yao wenyewe.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Walidanganya, na vigezo havikuwagundua.",
+      "text_markdown": "Walidanganya, na vigezo havikuwagundua.",
+      "title": "",
+      "tts": {
+        "text": "Walidanganya, na vigezo havikuwagundua.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sawa. Na wiki hiyo hiyo, OpenAI ilitangaza kuwa wanaondoa tathmini zao kwenye SWE bench Verified. Hicho ni kigezo cha kuandika msimbo walichokuwa wakikitaja kila wakati. Walikiondoa kwa sababu zaidi ya nusu ya kazi ngumu ziligundulika kuwa na vipimo vilivyoharibika.",
+      "text_markdown": "Sawa. Na wiki hiyo hiyo, OpenAI ilitangaza kuwa wanaondoa tathmini zao kwenye SWE bench Verified. Hicho ni kigezo cha kuandika msimbo walichokuwa wakikitaja kila wakati. Walikiondoa kwa sababu zaidi ya nusu ya kazi ngumu ziligundulika kuwa na vipimo vilivyoharibika.",
+      "title": "",
+      "tts": {
+        "text": "Sawa. Na wiki hiyo hiyo, OpenAI ilitangaza kuwa wanaondoa tathmini zao kwenye SWE bench Verified. Hicho ni kigezo cha kuandika msimbo walichokuwa wakikitaja kila wakati. Walikiondoa kwa sababu zaidi ya nusu ya kazi ngumu ziligundulika kuwa na vipimo vilivyoharibika.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa hivyo, nambari nyingi tulizokuwa tukisikia kwa mwaka uliopita ni…",
+      "text_markdown": "Kwa hivyo, nambari nyingi tulizokuwa tukisikia kwa mwaka uliopita ni…",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo, nambari nyingi tulizokuwa tukisikia kwa mwaka uliopita ni…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Angalau zimechangiwa kwa kiasi. Sio kila mfumo. Sio kila kigezo. Lakini sekta inajenga upya kipimo chake hadharani. Tathmini mpya kama SWE-bench Pro na mradi unaoitwa SWE-rebench wanajaribu kurekebisha hili kwa kuweka msimbo wa majaribio kuwa siri.",
+      "text_markdown": "Angalau zimechangiwa kwa kiasi. Sio kila mfumo. Sio kila kigezo. Lakini sekta inajenga upya kipimo chake hadharani. Tathmini mpya kama SWE-bench Pro na mradi unaoitwa SWE-rebench wanajaribu kurekebisha hili kwa kuweka msimbo wa majaribio kuwa siri.",
+      "title": "",
+      "tts": {
+        "text": "Angalau zimechangiwa kwa kiasi. Sio kila mfumo. Sio kila kigezo. Lakini sekta inajenga upya kipimo chake hadharani. Tathmini mpya kama SWE bench Pro na mradi unaoitwa SWE rebench wanajaribu kurekebisha hili kwa kuweka msimbo wa majaribio kuwa siri.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Je, kuna chochote kinachoonekana wazi kuwa kinapanda?",
+      "text_markdown": "Je, kuna chochote kinachoonekana wazi kuwa kinapanda?",
+      "title": "",
+      "tts": {
+        "text": "Je, kuna chochote kinachoonekana wazi kuwa kinapanda?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mambo mawili, kwenye vibao safi zaidi. Katikati ya Aprili, Claude Opus 4.7 ya Anthropic ikawa mfumo wa kwanza kupita waziwazi Elo ya 1500 kwenye ubao wa wanaoongoza wa kuandika msimbo wa LM Arena. Opus 4.6 ilikuwa imefikia 1500 wiki chache mapema. Kufikia wiki hii, Opus 4.7 bado iko juu, karibu 1569. Anthropic pia ina mfumo tofauti unaoitwa Mythos katika onyesho la faragha la washirika ambao unaongoza 17 kati ya vigezo 18 vya wakala ambavyo Anthropic ilipima.",
+      "text_markdown": "Mambo mawili, kwenye vibao safi zaidi. Katikati ya Aprili, Claude Opus 4.7 ya Anthropic ikawa mfumo wa kwanza kupita waziwazi Elo ya 1500 kwenye ubao wa wanaoongoza wa kuandika msimbo wa LM Arena. Opus 4.6 ilikuwa imefikia 1500 wiki chache mapema. Kufikia wiki hii, Opus 4.7 bado iko juu, karibu 1569. Anthropic pia ina mfumo tofauti unaoitwa Mythos katika onyesho la faragha la washirika ambao unaongoza 17 kati ya vigezo 18 vya wakala ambavyo Anthropic ilipima.",
+      "title": "",
+      "tts": {
+        "text": "Mambo mawili, kwenye vibao safi zaidi. Katikati ya Aprili, Claude Opus nne nukta saba ya Anthropic ikawa mfumo wa kwanza kupita waziwazi Elo ya elfu moja mia tano kwenye ubao wa wanaoongoza wa kuandika msimbo wa LM Arena. Opus nne nukta sita ilikuwa imefikia elfu moja mia tano wiki chache mapema. Kufikia wiki hii, Opus nne nukta saba bado iko juu, karibu elfu moja mia tano sitini na tisa. Anthropic pia ina mfumo tofauti unaoitwa Mythos katika onyesho la faragha la washirika ambao unaongoza kumi na saba kati ya vigezo kumi na nane vya wakala ambavyo Anthropic ilipima.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mfumo ambao umma hauwezi kutumia uko juu ya vibao.",
+      "text_markdown": "Mfumo ambao umma hauwezi kutumia uko juu ya vibao.",
+      "title": "",
+      "tts": {
+        "text": "Mfumo ambao umma hauwezi kutumia uko juu ya vibao.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hapo ndipo tulipo. Mwenendo mwingine mkubwa ni pengo la wazi dhidi ya lililofungwa. Ni dogo zaidi kuliko wakati wowote ule. DeepSeek V4 Pro na Kimi K 2.6 ziko karibu sana kufikia GPT-5.5 kwenye faharisi ya akili ya tathmini mtambuka. Pengo hilo lilikuwa kubwa sana. Sasa ni dogo.",
+      "text_markdown": "Hapo ndipo tulipo. Mwenendo mwingine mkubwa ni pengo la wazi dhidi ya lililofungwa. Ni dogo zaidi kuliko wakati wowote ule. DeepSeek V4 Pro na Kimi K 2.6 ziko karibu sana kufikia GPT-5.5 kwenye faharisi ya akili ya tathmini mtambuka. Pengo hilo lilikuwa kubwa sana. Sasa ni dogo.",
+      "title": "",
+      "tts": {
+        "text": "Hapo ndipo tulipo. Mwenendo mwingine mkubwa ni pengo la wazi dhidi ya lililofungwa. Ni dogo zaidi kuliko wakati wowote ule. DeepSeek V nne Pro na Kimi K mbili nukta sita ziko karibu sana kufikia GPT tano nukta tano kwenye faharisi ya akili ya tathmini mtambuka. Pengo hilo lilikuwa kubwa sana. Sasa ni dogo.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sawa, hebu tuingie kwenye dhana ya wiki.",
+      "text_markdown": "Sawa, hebu tuingie kwenye dhana ya wiki.",
+      "title": "",
+      "tts": {
+        "text": "Sawa, hebu tuingie kwenye dhana ya wiki.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, dhana ya wiki hii ni mchanganyiko wa wataalamu. Kwa nini tunazingatia mchanganyiko wa wataalamu?",
+      "text_markdown": "Ron, dhana ya wiki hii ni mchanganyiko wa wataalamu. Kwa nini tunazingatia mchanganyiko wa wataalamu?",
+      "title": "",
+      "tts": {
+        "text": "Ron, dhana ya wiki hii ni mchanganyiko wa wataalamu. Kwa nini tunazingatia mchanganyiko wa wataalamu?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kwa sababu modeli ya uzito wazi tuliyozungumzia, Kimi K 2.6, ina jumla ya vigezo trilioni 1. Lakini ni bilioni 32 tu ya vigezo hivyo ndiyo hufanya kazi wakati wowote ule. Huo ndio mchanganyiko wa wataalamu.",
+      "text_markdown": "Kwa sababu modeli ya uzito wazi tuliyozungumzia, Kimi K 2.6, ina jumla ya vigezo trilioni 1. Lakini ni bilioni 32 tu ya vigezo hivyo ndiyo hufanya kazi wakati wowote ule. Huo ndio mchanganyiko wa wataalamu.",
+      "title": "",
+      "tts": {
+        "text": "Kwa sababu modeli ya uzito wazi tuliyozungumzia, Kimi K mbili nukta sita, ina jumla ya vigezo trilioni moja. Lakini ni bilioni thelathini na mbili tu ya vigezo hivyo ndiyo hufanya kazi wakati wowote ule. Huo ndio mchanganyiko wa wataalamu.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tueleze kwa undani kwa wale wanaotufuatilia.",
+      "text_markdown": "Tueleze kwa undani kwa wale wanaotufuatilia.",
+      "title": "",
+      "tts": {
+        "text": "Tueleze kwa undani kwa wale wanaotufuatilia.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Modeli ya kawaida ya AI ni kama ubongo mmoja mkubwa. Kila neno inalozalisha hutumia kila sehemu ya ubongo. Modeli ya mchanganyiko wa wataalamu ni kama jengo lililojaa wataalamu. Na mpokea wageni mlangoni. Kwa kila neno, mpokea wageni huchagua wataalamu wawili au watatu wa kushauriana nao, na sehemu iliyobaki ya jengo hubaki kimya.",
+      "text_markdown": "Modeli ya kawaida ya AI ni kama ubongo mmoja mkubwa. Kila neno inalozalisha hutumia kila sehemu ya ubongo. Modeli ya mchanganyiko wa wataalamu ni kama jengo lililojaa wataalamu. Na mpokea wageni mlangoni. Kwa kila neno, mpokea wageni huchagua wataalamu wawili au watatu wa kushauriana nao, na sehemu iliyobaki ya jengo hubaki kimya.",
+      "title": "",
+      "tts": {
+        "text": "Modeli ya kawaida ya AI ni kama ubongo mmoja mkubwa. Kila neno inalozalisha hutumia kila sehemu ya ubongo. Modeli ya mchanganyiko wa wataalamu ni kama jengo lililojaa wataalamu. Na mpokea wageni mlangoni. Kwa kila neno, mpokea wageni huchagua wataalamu wawili au watatu wa kushauriana nao, na sehemu iliyobaki ya jengo hubaki kimya.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa hivyo modeli ni kubwa kwenye karatasi lakini ni rahisi kuendesha.",
+      "text_markdown": "Kwa hivyo modeli ni kubwa kwenye karatasi lakini ni rahisi kuendesha.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo modeli ni kubwa kwenye karatasi lakini ni rahisi kuendesha.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hasa. Uwezo wa vigezo trilioni 1. Lakini ni vigezo bilioni 32 tu vya kompyuta kwa kila neno. Huo ndio ujanja. Mpokea wageni ni kipande kidogo cha msimbo kinachoitwa router. Wataalamu ni mitandao midogo inayoitwa experts. Modeli hufunza router na experts pamoja, mwanzo hadi mwisho.",
+      "text_markdown": "Hasa. Uwezo wa vigezo trilioni 1. Lakini ni vigezo bilioni 32 tu vya kompyuta kwa kila neno. Huo ndio ujanja. Mpokea wageni ni kipande kidogo cha msimbo kinachoitwa router. Wataalamu ni mitandao midogo inayoitwa experts. Modeli hufunza router na experts pamoja, mwanzo hadi mwisho.",
+      "title": "",
+      "tts": {
+        "text": "Hasa. Uwezo wa vigezo trilioni moja. Lakini ni vigezo bilioni thelathini na mbili tu vya kompyuta kwa kila neno. Huo ndio ujanja. Mpokea wageni ni kipande kidogo cha msimbo kinachoitwa router. Wataalamu ni mitandao midogo inayoitwa experts. Modeli hufunza router na experts pamoja, mwanzo hadi mwisho.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Je, kila modeli kuu ya mpaka inafanya hivi?",
+      "text_markdown": "Je, kila modeli kuu ya mpaka inafanya hivi?",
+      "title": "",
+      "tts": {
+        "text": "Je, kila modeli kuu ya mpaka inafanya hivi?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Nyingi zao, ndiyo. Ingawa maabara hazithibitishi kila wakati. GPT-4 ilikuwa modeli ya mchanganyiko wa wataalamu. Bidhaa kuu kutoka DeepSeek ni modeli ya mchanganyiko wa wataalamu. Mistral imekuwa ikitoa modeli za mchanganyiko wa wataalamu tangu 2023. Wimbi jipya kutoka China limesukuma muundo huu hadi kikomo.",
+      "text_markdown": "Nyingi zao, ndiyo. Ingawa maabara hazithibitishi kila wakati. GPT-4 ilikuwa modeli ya mchanganyiko wa wataalamu. Bidhaa kuu kutoka DeepSeek ni modeli ya mchanganyiko wa wataalamu. Mistral imekuwa ikitoa modeli za mchanganyiko wa wataalamu tangu 2023. Wimbi jipya kutoka China limesukuma muundo huu hadi kikomo.",
+      "title": "",
+      "tts": {
+        "text": "Nyingi zao, ndiyo. Ingawa maabara hazithibitishi kila wakati. GPT nne ilikuwa modeli ya mchanganyiko wa wataalamu. Bidhaa kuu kutoka DeepSeek ni modeli ya mchanganyiko wa wataalamu. Mistral imekuwa ikitoa modeli za mchanganyiko wa wataalamu tangu elfu mbili ishirini na tatu. Wimbi jipya kutoka China limesukuma muundo huu hadi kikomo.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa nini ni muhimu kwa mtu anayetumia ChatGPT tu?",
+      "text_markdown": "Kwa nini ni muhimu kwa mtu anayetumia ChatGPT tu?",
+      "title": "",
+      "tts": {
+        "text": "Kwa nini ni muhimu kwa mtu anayetumia ChatGPT tu?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sababu mbili. Moja. Ni sababu kuu kwa nini maabara ya uzito wazi nchini China inaweza kufanya kazi kwa ubora wa kiwango cha juu kwa sehemu ndogo ya bajeti. Mbili. Ni sababu kuu kwa nini simu moja ya API inagharimu senti, si dola. Unapoona bei zikishuka na ubora kubaki juu, mchanganyiko wa wataalamu ndio sababu mara nyingi.",
+      "text_markdown": "Sababu mbili. Moja. Ni sababu kuu kwa nini maabara ya uzito wazi nchini China inaweza kufanya kazi kwa ubora wa kiwango cha juu kwa sehemu ndogo ya bajeti. Mbili. Ni sababu kuu kwa nini simu moja ya API inagharimu senti, si dola. Unapoona bei zikishuka na ubora kubaki juu, mchanganyiko wa wataalamu ndio sababu mara nyingi.",
+      "title": "",
+      "tts": {
+        "text": "Sababu mbili. Ya kwanza. Ni sababu kuu kwa nini maabara ya uzito wazi nchini China inaweza kufanya kazi kwa ubora wa kiwango cha juu kwa sehemu ndogo ya bajeti. Ya pili. Ni sababu kuu kwa nini simu moja ya API inagharimu senti, si dola. Unapoona bei zikishuka na ubora kubaki juu, mchanganyiko wa wataalamu ndio sababu mara nyingi.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Katika mchanganyiko wa wataalamu, kumbuka maneno haya matatu, router, experts, na uanzishaji haba, halafu turudi kwenye taswira pana.",
+      "text_markdown": "Katika mchanganyiko wa wataalamu, kumbuka maneno haya matatu, router, experts, na uanzishaji haba, halafu turudi kwenye taswira pana.",
+      "title": "",
+      "tts": {
+        "text": "Katika mchanganyiko wa wataalamu, kumbuka maneno haya matatu, router, experts, na uanzishaji haba, halafu turudi kwenye taswira pana.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, habari kubwa nje ya ulimwengu wetu wiki hii ni Hifadhi ya Shirikisho.",
+      "text_markdown": "Ron, habari kubwa nje ya ulimwengu wetu wiki hii ni Hifadhi ya Shirikisho.",
+      "title": "",
+      "tts": {
+        "text": "Ron, habari kubwa nje ya ulimwengu wetu wiki hii ni Hifadhi ya Shirikisho.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Leo, Seneti ya Marekani ilimthibitisha Kevin Warsh kama mwenyekiti ajaye wa Hifadhi ya Shirikisho. Kura ilikuwa 54 kwa 45. Kura finyu zaidi kwa mwenyekiti wa Fed katika historia ya kisasa ya Marekani. Demokrasia mmoja tu ndiye aliyevuka upande.",
+      "text_markdown": "Leo, Seneti ya Marekani ilimthibitisha Kevin Warsh kama mwenyekiti ajaye wa Hifadhi ya Shirikisho. Kura ilikuwa 54 kwa 45. Kura finyu zaidi kwa mwenyekiti wa Fed katika historia ya kisasa ya Marekani. Demokrasia mmoja tu ndiye aliyevuka upande.",
+      "title": "",
+      "tts": {
+        "text": "Leo, Seneti ya Marekani ilimthibitisha Kevin Warsh kama mwenyekiti ajaye wa Hifadhi ya Shirikisho. Kura ilikuwa hamsini na nne kwa arobaini na tano. Kura finyu zaidi kwa mwenyekiti wa Fed katika historia ya kisasa ya Marekani. Demokrasia mmoja tu ndiye aliyevuka upande.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa nini hilo ni muhimu kwa AI?",
+      "text_markdown": "Kwa nini hilo ni muhimu kwa AI?",
+      "title": "",
+      "tts": {
+        "text": "Kwa nini hilo ni muhimu kwa AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kwa sababu ujenzi wa AI hivi sasa unazuiliwa na mambo mawili. Umeme, na gharama ya mtaji. Fed huweka gharama ya mtaji. Na mwenyekiti mpya amerekodiwa akisema anataka kupunguza viwango haraka zaidi kuliko mtangulizi wake angefanya.",
+      "text_markdown": "Kwa sababu ujenzi wa AI hivi sasa unazuiliwa na mambo mawili. Umeme, na gharama ya mtaji. Fed huweka gharama ya mtaji. Na mwenyekiti mpya amerekodiwa akisema anataka kupunguza viwango haraka zaidi kuliko mtangulizi wake angefanya.",
+      "title": "",
+      "tts": {
+        "text": "Kwa sababu ujenzi wa AI hivi sasa unazuiliwa na mambo mawili. Umeme, na gharama ya mtaji. Fed huweka gharama ya mtaji. Na mwenyekiti mpya amerekodiwa akisema anataka kupunguza viwango haraka zaidi kuliko mtangulizi wake angefanya.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kupunguza viwango haraka hufanya uwekezaji wa AI kuwa rahisi.",
+      "text_markdown": "Kupunguza viwango haraka hufanya uwekezaji wa AI kuwa rahisi.",
+      "title": "",
+      "tts": {
+        "text": "Kupunguza viwango haraka hufanya uwekezaji wa AI kuwa rahisi.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ndiyo. Watoa huduma wakubwa — Microsoft, Google, Amazon, Meta — wanatarajiwa kutumia takriban dola bilioni 700 kwa matumizi ya mtaji mwaka huu. Nyingi ya hiyo ni GPUs na vituo vya data. Kiwango cha chini cha punguzo hufanya ujenzi huo wa miaka mingi uwe na thamani ya juu zaidi.",
+      "text_markdown": "Ndiyo. Watoa huduma wakubwa — Microsoft, Google, Amazon, Meta — wanatarajiwa kutumia takriban dola bilioni 700 kwa matumizi ya mtaji mwaka huu. Nyingi ya hiyo ni GPUs na vituo vya data. Kiwango cha chini cha punguzo hufanya ujenzi huo wa miaka mingi uwe na thamani ya juu zaidi.",
+      "title": "",
+      "tts": {
+        "text": "Ndiyo. Watoa huduma wakubwa — Microsoft, Google, Amazon, Meta — wanatarajiwa kutumia takriban dola bilioni mia saba kwa matumizi ya mtaji mwaka huu. Nyingi ya hiyo ni GPUs na vituo vya data. Kiwango cha chini cha punguzo hufanya ujenzi huo wa miaka mingi uwe na thamani ya juu zaidi.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na mwelekeo mwingine. AI inaathirije kile ambacho Fed inapaswa kuamua?",
+      "text_markdown": "Na mwelekeo mwingine. AI inaathirije kile ambacho Fed inapaswa kuamua?",
+      "title": "",
+      "tts": {
+        "text": "Na mwelekeo mwingine. AI inaathirije kile ambacho Fed inapaswa kuamua?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hii ndiyo sehemu ya kuvutia. Matumizi ya mtaji ya AI sasa ni makubwa kiasi kwamba ni nambari ya jumla. Sio hadithi ya sekta. Wachambuzi wa Wall Street wanasema ujenzi na matumizi ya vifaa vinavyohusiana na AI yamekuwa sehemu kubwa ya ukuaji wa uchumi wa Marekani kwa robo chache zilizopita.",
+      "text_markdown": "Hii ndiyo sehemu ya kuvutia. Matumizi ya mtaji ya AI sasa ni makubwa kiasi kwamba ni nambari ya jumla. Sio hadithi ya sekta. Wachambuzi wa Wall Street wanasema ujenzi na matumizi ya vifaa vinavyohusiana na AI yamekuwa sehemu kubwa ya ukuaji wa uchumi wa Marekani kwa robo chache zilizopita.",
+      "title": "",
+      "tts": {
+        "text": "Hii ndiyo sehemu ya kuvutia. Matumizi ya mtaji ya AI sasa ni makubwa kiasi kwamba ni nambari ya jumla. Sio hadithi ya sekta. Wachambuzi wa Wall Street wanasema ujenzi na matumizi ya vifaa vinavyohusiana na AI yamekuwa sehemu kubwa ya ukuaji wa uchumi wa Marekani kwa robo chache zilizopita.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sehemu kubwa ya ukuaji.",
+      "text_markdown": "Sehemu kubwa ya ukuaji.",
+      "title": "",
+      "tts": {
+        "text": "Sehemu kubwa ya ukuaji.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sehemu kubwa. Na inaathiri pande mbili kwa Fed. Kwa muda mrefu, AI ni kichocheo cha tija. Hiyo ni kupunguza mfumuko wa bei. Inampa Fed nafasi ya kupunguza. Kwa muda mfupi, ni mshtuko wa mahitaji ya umeme, shaba, wafanyakazi wenye ujuzi, maji kwa ajili ya kupoeza. Hiyo ni mfumuko wa bei. Hasa katika maeneo kama Virginia na Texas, ambapo vituo vya data vimejilimbikizia.",
+      "text_markdown": "Sehemu kubwa. Na inaathiri pande mbili kwa Fed. Kwa muda mrefu, AI ni kichocheo cha tija. Hiyo ni kupunguza mfumuko wa bei. Inampa Fed nafasi ya kupunguza. Kwa muda mfupi, ni mshtuko wa mahitaji ya umeme, shaba, wafanyakazi wenye ujuzi, maji kwa ajili ya kupoeza. Hiyo ni mfumuko wa bei. Hasa katika maeneo kama Virginia na Texas, ambapo vituo vya data vimejilimbikizia.",
+      "title": "",
+      "tts": {
+        "text": "Sehemu kubwa. Na inaathiri pande mbili kwa Fed. Kwa muda mrefu, AI ni kichocheo cha tija. Hiyo ni kupunguza mfumuko wa bei. Inampa Fed nafasi ya kupunguza. Kwa muda mfupi, ni mshtuko wa mahitaji ya umeme, shaba, wafanyakazi wenye ujuzi, maji kwa ajili ya kupoeza. Hiyo ni mfumuko wa bei. Hasa katika maeneo kama Virginia na Texas, ambapo vituo vya data vimejilimbikizia.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa hivyo mwenyekiti mpya anapaswa kuamua kama AI ndio jibu la mfumuko wa bei, au kama AI ndio chanzo cha mfumuko wa bei.",
+      "text_markdown": "Kwa hivyo mwenyekiti mpya anapaswa kuamua kama AI ndio jibu la mfumuko wa bei, au kama AI ndio chanzo cha mfumuko wa bei.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo mwenyekiti mpya anapaswa kuamua kama AI ndio jibu la mfumuko wa bei, au kama AI ndio chanzo cha mfumuko wa bei.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Zote mbili, kwa wakati mmoja. Na chochote atakachosema katika hotuba zake za kwanza za hadhara kitaathiri kila modeli ya matumizi ya mtaji ya AI kwenye Wall Street.",
+      "text_markdown": "Zote mbili, kwa wakati mmoja. Na chochote atakachosema katika hotuba zake za kwanza za hadhara kitaathiri kila modeli ya matumizi ya mtaji ya AI kwenye Wall Street.",
+      "title": "",
+      "tts": {
+        "text": "Zote mbili, kwa wakati mmoja. Na chochote atakachosema katika hotuba zake za kwanza za hadhara kitaathiri kila modeli ya matumizi ya mtaji ya AI kwenye Wall Street.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Microsoft ina dola bilioni 80 za maagizo ya wingu ambayo hayajatimizwa kwa sababu ya umeme. Je, hiyo ndiyo nambari sahihi?",
+      "text_markdown": "Microsoft ina dola bilioni 80 za maagizo ya wingu ambayo hayajatimizwa kwa sababu ya umeme. Je, hiyo ndiyo nambari sahihi?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft ina dola bilioni themanini za maagizo ya wingu ambayo hayajatimizwa kwa sababu ya umeme. Je, hiyo ndiyo nambari sahihi?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hiyo ndiyo nambari ambayo Microsoft imeripoti. Wateja wa Azure wanasubiri foleni kwa ajili ya uwezo. Kikwazo si chips tena. Ni gridi ya umeme. Masoko ya umeme hayawezi kujenga uwezo mpya haraka kama vituo vya data vinavyotaka.",
+      "text_markdown": "Hiyo ndiyo nambari ambayo Microsoft imeripoti. Wateja wa Azure wanasubiri foleni kwa ajili ya uwezo. Kikwazo si chips tena. Ni gridi ya umeme. Masoko ya umeme hayawezi kujenga uwezo mpya haraka kama vituo vya data vinavyotaka.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ndiyo nambari ambayo Microsoft imeripoti. Wateja wa Azure wanasubiri foleni kwa ajili ya uwezo. Kikwazo si chips tena. Ni gridi ya umeme. Masoko ya umeme hayawezi kujenga uwezo mpya haraka kama vituo vya data vinavyotaka.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kutaanza lini mkutano wa kwanza wa Warsh?",
+      "text_markdown": "Kutaanza lini mkutano wa kwanza wa Warsh?",
+      "title": "",
+      "tts": {
+        "text": "Kutaanza lini mkutano wa kwanza wa Warsh?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tarehe 16 na 17 Juni. Tutajua mengi zaidi kuhusu mwelekeo wa viwango baada ya hapo.",
+      "text_markdown": "Tarehe 16 na 17 Juni. Tutajua mengi zaidi kuhusu mwelekeo wa viwango baada ya hapo.",
+      "title": "",
+      "tts": {
+        "text": "Tarehe kumi na sita na kumi na saba Juni. Tutajua mengi zaidi kuhusu mwelekeo wa viwango baada ya hapo.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mahali pazuri pa kumalizia. Ron, asante.",
+      "text_markdown": "Mahali pazuri pa kumalizia. Ron, asante.",
+      "title": "",
+      "tts": {
+        "text": "Mahali pazuri pa kumalizia. Ron, asante.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Wakati wowote, Vindy.",
+      "text_markdown": "Wakati wowote, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Wakati wowote, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hiyo ilikuwa AI Wiki Hii kwa Mei 13, 2026. Toleo jipya Jumatano ijayo. Hadi wakati huo, jitunze.",
+      "text_markdown": "Hiyo ilikuwa AI Wiki Hii kwa Mei 13, 2026. Toleo jipya Jumatano ijayo. Hadi wakati huo, jitunze.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ilikuwa AI Wiki Hii kwa Mei kumi na tatu, elfu mbili na ishirini na sita. Toleo jipya Jumatano ijayo. Hadi wakati huo, jitunze.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

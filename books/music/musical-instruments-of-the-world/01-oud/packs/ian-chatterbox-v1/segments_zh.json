@@ -1,0 +1,2692 @@
+{
+  "book_id": "book_oud_history",
+  "version": "2.0.0",
+  "language": "zh",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "给听众的话",
+      "text_markdown": "给听众的话"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一本讲乌德琴这种木制弦乐器的书。",
+      "text_markdown": "这是一本讲乌德琴这种木制弦乐器的书。",
+      "tts": {
+        "text": "这是一本讲乌德琴这种木制弦乐器的书。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们演奏它，已经超过一千年了。",
+      "text_markdown": "人们演奏它，已经超过一千年了。",
+      "tts": {
+        "text": "人们演奏它，已经超过一千年了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在海边的城市和山里的村庄，你都能听见乌德琴。",
+      "text_markdown": "在海边的城市和山里的村庄，你都能听见乌德琴。",
+      "tts": {
+        "text": "在海边的城市和山里的村庄，你都能听见乌德琴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在古老的宫殿里，也在小小的木台上，你都能听见它。",
+      "text_markdown": "在古老的宫殿里，也在小小的木台上，你都能听见它。",
+      "tts": {
+        "text": "在古老的宫殿里，也在小小的木台上，你都能听见它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在这本书里，我们会认识乌德琴的样子、做法，还有塑造它故事的人。",
+      "text_markdown": "在这本书里，我们会认识乌德琴的样子、做法，还有塑造它故事的人。",
+      "tts": {
+        "text": "在这本书里，我们会认识乌德琴的样子、做法，还有塑造它故事的人。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "读到最后，你会知道乌德琴为什么有时被叫作弦中之王。",
+      "text_markdown": "读到最后，你会知道乌德琴为什么有时被叫作弦中之王。",
+      "tts": {
+        "text": "读到最后，你会知道乌德琴为什么有时被叫作弦中之王。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第一章 什么是乌德琴",
+      "text_markdown": "第一章 什么是乌德琴"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴是一种弦乐器。",
+      "text_markdown": "乌德琴是一种弦乐器。",
+      "tts": {
+        "text": "乌德琴是一种弦乐器。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它属于鲁特琴一类，琴身像一个切开的梨。",
+      "text_markdown": "它属于鲁特琴一类，琴身像一个切开的梨。",
+      "tts": {
+        "text": "它属于鲁特琴一类，琴身像一个切开的梨。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴的背面又圆又深，像一个木碗。",
+      "text_markdown": "乌德琴的背面又圆又深，像一个木碗。",
+      "tts": {
+        "text": "乌德琴的背面又圆又深，像一个木碗。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的正面是平的。",
+      "text_markdown": "它的正面是平的。",
+      "tts": {
+        "text": "它的正面是平的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们把这块平平的正面叫作音板。",
+      "text_markdown": "我们把这块平平的正面叫作音板。",
+      "tts": {
+        "text": "我们把这块平平的正面叫作音板。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴的琴颈很短，而且没有品丝。",
+      "text_markdown": "乌德琴的琴颈很短，而且没有品丝。",
+      "tts": {
+        "text": "乌德琴的琴颈很短，而且没有品丝。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "品丝就是你在吉他上看到的那些细细金属线。",
+      "text_markdown": "品丝就是你在吉他上看到的那些细细金属线。",
+      "tts": {
+        "text": "品丝就是你在吉他上看到的那些细细金属线。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "没有品丝，演奏者就能很顺地在音与音之间滑动。",
+      "text_markdown": "没有品丝，演奏者就能很顺地在音与音之间滑动。",
+      "tts": {
+        "text": "没有品丝，演奏者就能很顺地在音与音之间滑动。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数乌德琴有十一根弦，分成六组。",
+      "text_markdown": "大多数乌德琴有十一根弦，分成六组。",
+      "tts": {
+        "text": "大多数乌德琴有十一根弦，分成六组。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "我们把每一对叫作一组弦。",
+      "text_markdown": "我们把每一对叫作一组弦。",
+      "tts": {
+        "text": "我们把每一对叫作一组弦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "其中五组，都有两根调成同音的弦。",
+      "text_markdown": "其中五组，都有两根调成同音的弦。",
+      "tts": {
+        "text": "其中五组，都有两根调成同音的弦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "第六组只有一根弦。",
+      "text_markdown": "第六组只有一根弦。",
+      "tts": {
+        "text": "第六组只有一根弦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "这样加起来，就是十一根。",
+      "text_markdown": "这样加起来，就是十一根。",
+      "tts": {
+        "text": "这样加起来，就是十一根。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "演奏者把乌德琴横着搁在膝头。",
+      "text_markdown": "演奏者把乌德琴横着搁在膝头。",
+      "tts": {
+        "text": "演奏者把乌德琴横着搁在膝头。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一只手按住琴颈上的弦。",
+      "text_markdown": "一只手按住琴颈上的弦。",
+      "tts": {
+        "text": "一只手按住琴颈上的弦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一只手用一种叫里沙的薄拨片来拨弦。",
+      "text_markdown": "另一只手用一种叫里沙的薄拨片来拨弦。",
+      "tts": {
+        "text": "另一只手用一种叫里沙的薄拨片来拨弦。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它的声音温暖而低沉。",
+      "text_markdown": "它的声音温暖而低沉。",
+      "tts": {
+        "text": "它的声音温暖而低沉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "那声音有一点忧伤，也有一点甜美。",
+      "text_markdown": "那声音有一点忧伤，也有一点甜美。",
+      "tts": {
+        "text": "那声音有一点忧伤，也有一点甜美。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第二章 名字从哪里来",
+      "text_markdown": "第二章 名字从哪里来"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德这个名字，来自阿拉伯语，意思就是木头。",
+      "text_markdown": "乌德这个名字，来自阿拉伯语，意思就是木头。",
+      "tts": {
+        "text": "乌德这个名字，来自阿拉伯语，意思就是木头。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这件乐器的名字，就来自做它的材料。",
+      "text_markdown": "这件乐器的名字，就来自做它的材料。",
+      "tts": {
+        "text": "这件乐器的名字，就来自做它的材料。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在乌德琴出现很久以前，有一位更老的亲戚，叫巴尔巴特琴。",
+      "text_markdown": "在乌德琴出现很久以前，有一位更老的亲戚，叫巴尔巴特琴。",
+      "tts": {
+        "text": "在乌德琴出现很久以前，有一位更老的亲戚，叫巴尔巴特琴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "两千多年前，古代波斯人就在演奏巴尔巴特琴了。",
+      "text_markdown": "两千多年前，古代波斯人就在演奏巴尔巴特琴了。",
+      "tts": {
+        "text": "两千多年前，古代波斯人就在演奏巴尔巴特琴了。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "巴尔巴特琴的琴身是木制的，配的是丝制琴弦。",
+      "text_markdown": "巴尔巴特琴的琴身是木制的，配的是丝制琴弦。",
+      "tts": {
+        "text": "巴尔巴特琴的琴身是木制的，配的是丝制琴弦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的声音绵长而柔和。",
+      "text_markdown": "它的声音绵长而柔和。",
+      "tts": {
+        "text": "它的声音绵长而柔和。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "王宫里的乐师会演奏它。",
+      "text_markdown": "王宫里的乐师会演奏它。",
+      "tts": {
+        "text": "王宫里的乐师会演奏它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "后来，巴尔巴特琴慢慢变了。",
+      "text_markdown": "后来，巴尔巴特琴慢慢变了。",
+      "tts": {
+        "text": "后来，巴尔巴特琴慢慢变了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它的琴身更圆了，弦变成成对，琴颈也更短了。",
+      "text_markdown": "它的琴身更圆了，弦变成成对，琴颈也更短了。",
+      "tts": {
+        "text": "它的琴身更圆了，弦变成成对，琴颈也更短了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大约到公元七百年，阿拉伯世界的人已经在演奏我们今天叫乌德琴的乐器。",
+      "text_markdown": "大约到公元七百年，阿拉伯世界的人已经在演奏我们今天叫乌德琴的乐器。",
+      "tts": {
+        "text": "大约到公元七百年，阿拉伯世界的人已经在演奏我们今天叫乌德琴的乐器。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "从那里开始，乌德琴继续旅行。",
+      "text_markdown": "从那里开始，乌德琴继续旅行。",
+      "tts": {
+        "text": "从那里开始，乌德琴继续旅行。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它去了埃及，也去了北非。",
+      "text_markdown": "它去了埃及，也去了北非。",
+      "tts": {
+        "text": "它去了埃及，也去了北非。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它跨过大海，到了西班牙。",
+      "text_markdown": "它跨过大海，到了西班牙。",
+      "tts": {
+        "text": "它跨过大海，到了西班牙。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它又往北，进入土耳其和希腊。",
+      "text_markdown": "它又往北，进入土耳其和希腊。",
+      "tts": {
+        "text": "它又往北，进入土耳其和希腊。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "每到一个地方，乌德琴都会带上一点当地的声音。",
+      "text_markdown": "每到一个地方，乌德琴都会带上一点当地的声音。",
+      "tts": {
+        "text": "每到一个地方，乌德琴都会带上一点当地的声音。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但它的名字没有变。",
+      "text_markdown": "但它的名字没有变。",
+      "tts": {
+        "text": "但它的名字没有变。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "不管走到哪里，这件木制乐器都还是叫乌德。",
+      "text_markdown": "不管走到哪里，这件木制乐器都还是叫乌德。",
+      "tts": {
+        "text": "不管走到哪里，这件木制乐器都还是叫乌德。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第三章 乌德琴是怎么做出来的",
+      "text_markdown": "第三章 乌德琴是怎么做出来的"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "做一把乌德琴，要花很长时间。",
+      "text_markdown": "做一把乌德琴，要花很长时间。",
+      "tts": {
+        "text": "做一把乌德琴，要花很长时间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一位好制琴师，做一把琴常常要花好几周。",
+      "text_markdown": "一位好制琴师，做一把琴常常要花好几周。",
+      "tts": {
+        "text": "一位好制琴师，做一把琴常常要花好几周。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "琴碗用许多细木条做成，通常有十五到二十五条。",
+      "text_markdown": "琴碗用许多细木条做成，通常有十五到二十五条。",
+      "tts": {
+        "text": "琴碗用许多细木条做成，通常有十五到二十五条。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一条木片都要弯好，再和旁边那一条粘在一起。",
+      "text_markdown": "每一条木片都要弯好，再和旁边那一条粘在一起。",
+      "tts": {
+        "text": "每一条木片都要弯好，再和旁边那一条粘在一起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们合起来，就成了乌德琴又深又圆的背面。",
+      "text_markdown": "它们合起来，就成了乌德琴又深又圆的背面。",
+      "tts": {
+        "text": "它们合起来，就成了乌德琴又深又圆的背面。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木材很重要。",
+      "text_markdown": "木材很重要。",
+      "tts": {
+        "text": "木材很重要。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "胡桃木的声音温暖，桃花心木更暗，桑木则明亮而清响。",
+      "text_markdown": "胡桃木的声音温暖，桃花心木更暗，桑木则明亮而清响。",
+      "tts": {
+        "text": "胡桃木的声音温暖，桃花心木更暗，桑木则明亮而清响。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "制琴师会按自己想要的音色来选木材。",
+      "text_markdown": "制琴师会按自己想要的音色来选木材。",
+      "tts": {
+        "text": "制琴师会按自己想要的音色来选木材。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "平平的正面，也就是音板，通常用云杉来做。",
+      "text_markdown": "平平的正面，也就是音板，通常用云杉来做。",
+      "tts": {
+        "text": "平平的正面，也就是音板，通常用云杉来做。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "云杉又轻又结实，也让木头更容易振动。",
+      "text_markdown": "云杉又轻又结实，也让木头更容易振动。",
+      "tts": {
+        "text": "云杉又轻又结实，也让木头更容易振动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这些振动，就是我们听见的音乐。",
+      "text_markdown": "这些振动，就是我们听见的音乐。",
+      "tts": {
+        "text": "这些振动，就是我们听见的音乐。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "音板上有几个小圆孔，叫作玫瑰花窗。",
+      "text_markdown": "音板上有几个小圆孔，叫作玫瑰花窗。",
+      "tts": {
+        "text": "音板上有几个小圆孔，叫作玫瑰花窗。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们常常雕着很好看的花纹。",
+      "text_markdown": "它们常常雕着很好看的花纹。",
+      "tts": {
+        "text": "它们常常雕着很好看的花纹。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "玫瑰花窗会让声音从琴碗里传出来。",
+      "text_markdown": "玫瑰花窗会让声音从琴碗里传出来。",
+      "tts": {
+        "text": "玫瑰花窗会让声音从琴碗里传出来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "以前的琴弦常用肠线做成，那是一种晒干的动物筋。",
+      "text_markdown": "以前的琴弦常用肠线做成，那是一种晒干的动物筋。",
+      "tts": {
+        "text": "以前的琴弦常用肠线做成，那是一种晒干的动物筋。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "今天的大多数琴弦都用尼龙做，最低的几根外面还会绕上细金属丝。",
+      "text_markdown": "今天的大多数琴弦都用尼龙做，最低的几根外面还会绕上细金属丝。",
+      "tts": {
+        "text": "今天的大多数琴弦都用尼龙做，最低的几根外面还会绕上细金属丝。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "演奏者用里沙拨片来拨弦。",
+      "text_markdown": "演奏者用里沙拨片来拨弦。",
+      "tts": {
+        "text": "演奏者用里沙拨片来拨弦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "里沙这个词，原来的意思是羽毛。",
+      "text_markdown": "里沙这个词，原来的意思是羽毛。",
+      "tts": {
+        "text": "里沙这个词，原来的意思是羽毛。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最早的拨片，是用鹰的羽毛做的。",
+      "text_markdown": "最早的拨片，是用鹰的羽毛做的。",
+      "tts": {
+        "text": "最早的拨片，是用鹰的羽毛做的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "现在的拨片多半用塑料、骨头或玳瑁来做。",
+      "text_markdown": "现在的拨片多半用塑料、骨头或玳瑁来做。",
+      "tts": {
+        "text": "现在的拨片多半用塑料、骨头或玳瑁来做。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第四章 乌德琴在哪里演奏",
+      "text_markdown": "第四章 乌德琴在哪里演奏"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴在整个阿拉伯世界都有人演奏。",
+      "text_markdown": "乌德琴在整个阿拉伯世界都有人演奏。",
+      "tts": {
+        "text": "乌德琴在整个阿拉伯世界都有人演奏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在埃及、叙利亚、伊拉克、黎巴嫩、海湾地区和北非，你都能听见它。",
+      "text_markdown": "在埃及、叙利亚、伊拉克、黎巴嫩、海湾地区和北非，你都能听见它。",
+      "tts": {
+        "text": "在埃及、叙利亚、伊拉克、黎巴嫩、海湾地区和北非，你都能听见它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在阿拉伯世界以外，也有人演奏它。",
+      "text_markdown": "在阿拉伯世界以外，也有人演奏它。",
+      "tts": {
+        "text": "在阿拉伯世界以外，也有人演奏它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "土耳其人有自己的乌德琴。",
+      "text_markdown": "土耳其人有自己的乌德琴。",
+      "tts": {
+        "text": "土耳其人有自己的乌德琴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "希腊人也有自己的乌德琴。",
+      "text_markdown": "希腊人也有自己的乌德琴。",
+      "tts": {
+        "text": "希腊人也有自己的乌德琴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "亚美尼亚人和伊朗人，演奏的则是它的近亲乐器。",
+      "text_markdown": "亚美尼亚人和伊朗人，演奏的则是它的近亲乐器。",
+      "tts": {
+        "text": "亚美尼亚人和伊朗人，演奏的则是它的近亲乐器。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "在西班牙，人们演奏了它几百年。",
+      "text_markdown": "在西班牙，人们演奏了它几百年。",
+      "tts": {
+        "text": "在西班牙，人们演奏了它几百年。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天的乌德琴，大体有三种主要类型。",
+      "text_markdown": "今天的乌德琴，大体有三种主要类型。",
+      "tts": {
+        "text": "今天的乌德琴，大体有三种主要类型。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "阿拉伯式乌德琴又大又深，声音饱满，也比较舒缓。",
+      "text_markdown": "阿拉伯式乌德琴又大又深，声音饱满，也比较舒缓。",
+      "tts": {
+        "text": "阿拉伯式乌德琴又大又深，声音饱满，也比较舒缓。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是埃及和黎凡特一带常见的乌德琴。",
+      "text_markdown": "它是埃及和黎凡特一带常见的乌德琴。",
+      "tts": {
+        "text": "它是埃及和黎凡特一带常见的乌德琴。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "土耳其式乌德琴更小、更亮，定弦也比阿拉伯式高一点。",
+      "text_markdown": "土耳其式乌德琴更小、更亮，定弦也比阿拉伯式高一点。",
+      "tts": {
+        "text": "土耳其式乌德琴更小、更亮，定弦也比阿拉伯式高一点。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "波斯的那位亲戚，叫巴尔巴特琴。",
+      "text_markdown": "波斯的那位亲戚，叫巴尔巴特琴。",
+      "tts": {
+        "text": "波斯的那位亲戚，叫巴尔巴特琴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它比较小，也更尖亮，用的音列也不一样。",
+      "text_markdown": "它比较小，也更尖亮，用的音列也不一样。",
+      "tts": {
+        "text": "它比较小，也更尖亮，用的音列也不一样。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴是阿拉伯古典音乐的核心，也是土耳其马卡姆音乐的核心。",
+      "text_markdown": "乌德琴是阿拉伯古典音乐的核心，也是土耳其马卡姆音乐的核心。",
+      "tts": {
+        "text": "乌德琴是阿拉伯古典音乐的核心，也是土耳其马卡姆音乐的核心。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它会在婚礼上响起，也会在葬礼上响起，还会出现在音乐厅和朋友相聚的客厅里。",
+      "text_markdown": "它会在婚礼上响起，也会在葬礼上响起，还会出现在音乐厅和朋友相聚的客厅里。",
+      "tts": {
+        "text": "它会在婚礼上响起，也会在葬礼上响起，还会出现在音乐厅和朋友相聚的客厅里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "只要人们聚在一起，想听有灵魂的音乐，就可能有人抱出一把乌德琴。",
+      "text_markdown": "只要人们聚在一起，想听有灵魂的音乐，就可能有人抱出一把乌德琴。",
+      "tts": {
+        "text": "只要人们聚在一起，想听有灵魂的音乐，就可能有人抱出一把乌德琴。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第五章 马卡姆",
+      "text_markdown": "第五章 马卡姆"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "弹钢琴时，你会按下白键和黑键。",
+      "text_markdown": "弹钢琴时，你会按下白键和黑键。",
+      "tts": {
+        "text": "弹钢琴时，你会按下白键和黑键。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每个八度里有十二个音，而且每一步都一样大。",
+      "text_markdown": "每个八度里有十二个音，而且每一步都一样大。",
+      "tts": {
+        "text": "每个八度里有十二个音，而且每一步都一样大。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "我们把这叫作十二平均律。",
+      "text_markdown": "我们把这叫作十二平均律。",
+      "tts": {
+        "text": "我们把这叫作十二平均律。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴可不是这样。",
+      "text_markdown": "乌德琴可不是这样。",
+      "tts": {
+        "text": "乌德琴可不是这样。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "乌德琴用的是一种更古老的体系，叫马卡姆。",
+      "text_markdown": "乌德琴用的是一种更古老的体系，叫马卡姆。",
+      "tts": {
+        "text": "乌德琴用的是一种更古老的体系，叫马卡姆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "马卡姆是一种选音的方法，而且马卡姆有很多种。",
+      "text_markdown": "马卡姆是一种选音的方法，而且马卡姆有很多种。",
+      "tts": {
+        "text": "马卡姆是一种选音的方法，而且马卡姆有很多种。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一种都有自己的情绪。",
+      "text_markdown": "每一种都有自己的情绪。",
+      "tts": {
+        "text": "每一种都有自己的情绪。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "有的快乐，有的忧伤，有的听起来还有一点神秘。",
+      "text_markdown": "有的快乐，有的忧伤，有的听起来还有一点神秘。",
+      "tts": {
+        "text": "有的快乐，有的忧伤，有的听起来还有一点神秘。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "马卡姆最大的秘密，是它的音比钢琴更多。",
+      "text_markdown": "马卡姆最大的秘密，是它的音比钢琴更多。",
+      "tts": {
+        "text": "马卡姆最大的秘密，是它的音比钢琴更多。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在白键和黑键之间，还有更小的音程，我们叫它四分之一音。",
+      "text_markdown": "在白键和黑键之间，还有更小的音程，我们叫它四分之一音。",
+      "tts": {
+        "text": "在白键和黑键之间，还有更小的音程，我们叫它四分之一音。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四分之一音，就是半音的一半。",
+      "text_markdown": "四分之一音，就是半音的一半。",
+      "tts": {
+        "text": "四分之一音，就是半音的一半。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它是一个很小的音，住在你熟悉的那些音之间。",
+      "text_markdown": "它是一个很小的音，住在你熟悉的那些音之间。",
+      "tts": {
+        "text": "它是一个很小的音，住在你熟悉的那些音之间。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在钢琴上，你弹不出它。",
+      "text_markdown": "在钢琴上，你弹不出它。",
+      "tts": {
+        "text": "在钢琴上，你弹不出它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在乌德琴上，你可以滑动手指去找到它。",
+      "text_markdown": "在乌德琴上，你可以滑动手指去找到它。",
+      "tts": {
+        "text": "在乌德琴上，你可以滑动手指去找到它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "马卡姆是由一些小小的音组搭起来的。",
+      "text_markdown": "马卡姆是由一些小小的音组搭起来的。",
+      "tts": {
+        "text": "马卡姆是由一些小小的音组搭起来的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每一个小音组，都叫作津斯。",
+      "text_markdown": "每一个小音组，都叫作津斯。",
+      "tts": {
+        "text": "每一个小音组，都叫作津斯。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大多数津斯都有四个音。",
+      "text_markdown": "大多数津斯都有四个音。",
+      "tts": {
+        "text": "大多数津斯都有四个音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "你可以把津斯想成音乐做的小积木，再把它们叠起来，变成一个马卡姆。",
+      "text_markdown": "你可以把津斯想成音乐做的小积木，再把它们叠起来，变成一个马卡姆。",
+      "tts": {
+        "text": "你可以把津斯想成音乐做的小积木，再把它们叠起来，变成一个马卡姆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "马卡姆讲的是旋律，不是和弦。",
+      "text_markdown": "马卡姆讲的是旋律，不是和弦。",
+      "tts": {
+        "text": "马卡姆讲的是旋律，不是和弦。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "也就是说，音乐会一个音一个音地往前走，而不是像吉他那样把几个音叠成和弦。",
+      "text_markdown": "也就是说，音乐会一个音一个音地往前走，而不是像吉他那样把几个音叠成和弦。",
+      "tts": {
+        "text": "也就是说，音乐会一个音一个音地往前走，而不是像吉他那样把几个音叠成和弦。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当乌德琴慢慢展开一段盘旋的独奏时，演奏者就在马卡姆里面游走。",
+      "text_markdown": "当乌德琴慢慢展开一段盘旋的独奏时，演奏者就在马卡姆里面游走。",
+      "tts": {
+        "text": "当乌德琴慢慢展开一段盘旋的独奏时，演奏者就在马卡姆里面游走。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他会先从这一块里挑音，再滑到下一块。",
+      "text_markdown": "他会先从这一块里挑音，再滑到下一块。",
+      "tts": {
+        "text": "他会先从这一块里挑音，再滑到下一块。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这种独奏有一个名字。",
+      "text_markdown": "这种独奏有一个名字。",
+      "tts": {
+        "text": "这种独奏有一个名字。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "我们叫它塔克西姆。",
+      "text_markdown": "我们叫它塔克西姆。",
+      "tts": {
+        "text": "我们叫它塔克西姆。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一段好的塔克西姆，能让你发笑，也能让你流泪。",
+      "text_markdown": "一段好的塔克西姆，能让你发笑，也能让你流泪。",
+      "tts": {
+        "text": "一段好的塔克西姆，能让你发笑，也能让你流泪。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这就是乌德琴最美的时候。",
+      "text_markdown": "这就是乌德琴最美的时候。",
+      "tts": {
+        "text": "这就是乌德琴最美的时候。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第六章 伟大的大师们",
+      "text_markdown": "第六章 伟大的大师们"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴已经被演奏了一千多年。",
+      "text_markdown": "乌德琴已经被演奏了一千多年。",
+      "tts": {
+        "text": "乌德琴已经被演奏了一千多年。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在这么长的时间里，有几个人彻底改变了它。",
+      "text_markdown": "在这么长的时间里，有几个人彻底改变了它。",
+      "tts": {
+        "text": "在这么长的时间里，有几个人彻底改变了它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第一位与其说是演奏者，不如说是思想家，他叫阿尔法拉比。",
+      "text_markdown": "第一位与其说是演奏者，不如说是思想家，他叫阿尔法拉比。",
+      "tts": {
+        "text": "第一位与其说是演奏者，不如说是思想家，他叫阿尔法拉比。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他大约生于公元八百七十二年，卒于公元九百五十年，在伟大的巴格达城工作。",
+      "text_markdown": "他大约生于公元八百七十二年，卒于公元九百五十年，在伟大的巴格达城工作。",
+      "tts": {
+        "text": "他大约生于公元八百七十二年，卒于公元九百五十年，在伟大的巴格达城工作。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阿尔法拉比写过一部厚厚的音乐著作。",
+      "text_markdown": "阿尔法拉比写过一部厚厚的音乐著作。",
+      "tts": {
+        "text": "阿尔法拉比写过一部厚厚的音乐著作。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他解释了弦为什么会振动。",
+      "text_markdown": "他解释了弦为什么会振动。",
+      "tts": {
+        "text": "他解释了弦为什么会振动。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他解释了为什么有些音放在一起会很好听。",
+      "text_markdown": "他解释了为什么有些音放在一起会很好听。",
+      "tts": {
+        "text": "他解释了为什么有些音放在一起会很好听。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他也解释了音乐为什么能改变人的感受。",
+      "text_markdown": "他也解释了音乐为什么能改变人的感受。",
+      "tts": {
+        "text": "他也解释了音乐为什么能改变人的感受。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "几个世纪里，他的书一直有人用阿拉伯语和拉丁语来读。",
+      "text_markdown": "几个世纪里，他的书一直有人用阿拉伯语和拉丁语来读。",
+      "tts": {
+        "text": "几个世纪里，他的书一直有人用阿拉伯语和拉丁语来读。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "第二位重要的乌德琴人物，是歌者齐里亚卜，他大约在公元七百八十九年出生在伊拉克。",
+      "text_markdown": "第二位重要的乌德琴人物，是歌者齐里亚卜，他大约在公元七百八十九年出生在伊拉克。",
+      "tts": {
+        "text": "第二位重要的乌德琴人物，是歌者齐里亚卜，他大约在公元七百八十九年出生在伊拉克。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "年轻时，他不得不匆匆离开巴格达。",
+      "text_markdown": "年轻时，他不得不匆匆离开巴格达。",
+      "tts": {
+        "text": "年轻时，他不得不匆匆离开巴格达。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "齐里亚卜一路向西，穿过了整个北非。",
+      "text_markdown": "齐里亚卜一路向西，穿过了整个北非。",
+      "tts": {
+        "text": "齐里亚卜一路向西，穿过了整个北非。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "公元八百二十二年，他来到西班牙的科尔多瓦城。",
+      "text_markdown": "公元八百二十二年，他来到西班牙的科尔多瓦城。",
+      "tts": {
+        "text": "公元八百二十二年，他来到西班牙的科尔多瓦城。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "科尔多瓦的国王很爱他的音乐，给了他房子、薪水，还有教学的时间。",
+      "text_markdown": "科尔多瓦的国王很爱他的音乐，给了他房子、薪水，还有教学的时间。",
+      "tts": {
+        "text": "科尔多瓦的国王很爱他的音乐，给了他房子、薪水，还有教学的时间。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在西班牙，齐里亚卜开了一所音乐学校。",
+      "text_markdown": "在西班牙，齐里亚卜开了一所音乐学校。",
+      "tts": {
+        "text": "在西班牙，齐里亚卜开了一所音乐学校。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "有人说，那是世界上第一所音乐学院。",
+      "text_markdown": "有人说，那是世界上第一所音乐学院。",
+      "tts": {
+        "text": "有人说，那是世界上第一所音乐学院。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他给乌德琴加上了第五组弦，也改变了拨片的做法。",
+      "text_markdown": "他给乌德琴加上了第五组弦，也改变了拨片的做法。",
+      "tts": {
+        "text": "他给乌德琴加上了第五组弦，也改变了拨片的做法。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在齐里亚卜之后很久，到了离我们更近的时代，一位来自伊拉克的演奏者把乌德琴带到了新的高度。",
+      "text_markdown": "在齐里亚卜之后很久，到了离我们更近的时代，一位来自伊拉克的演奏者把乌德琴带到了新的高度。",
+      "tts": {
+        "text": "在齐里亚卜之后很久，到了离我们更近的时代，一位来自伊拉克的演奏者把乌德琴带到了新的高度。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他叫穆尼尔巴希尔，人们叫他乌德琴之王。",
+      "text_markdown": "他叫穆尼尔巴希尔，人们叫他乌德琴之王。",
+      "tts": {
+        "text": "他叫穆尼尔巴希尔，人们叫他乌德琴之王。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在巴希尔之前，乌德琴通常和别的乐器一起演奏。",
+      "text_markdown": "在巴希尔之前，乌德琴通常和别的乐器一起演奏。",
+      "tts": {
+        "text": "在巴希尔之前，乌德琴通常和别的乐器一起演奏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "巴希尔让它独自站上舞台，演奏很长、很静、很深的独奏。",
+      "text_markdown": "巴希尔让它独自站上舞台，演奏很长、很静、很深的独奏。",
+      "tts": {
+        "text": "巴希尔让它独自站上舞台，演奏很长、很静、很深的独奏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界各地的人都听见了他，也再次爱上了乌德琴。",
+      "text_markdown": "世界各地的人都听见了他，也再次爱上了乌德琴。",
+      "tts": {
+        "text": "世界各地的人都听见了他，也再次爱上了乌德琴。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当然，还有很多别的人。",
+      "text_markdown": "当然，还有很多别的人。",
+      "tts": {
+        "text": "当然，还有很多别的人。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "法里德阿特拉什让乌德琴成了埃及电影的声音。",
+      "text_markdown": "法里德阿特拉什让乌德琴成了埃及电影的声音。",
+      "tts": {
+        "text": "法里德阿特拉什让乌德琴成了埃及电影的声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "来自突尼斯的安瓦尔布拉海姆，会和欧洲、美国的爵士乐手一起演奏乌德琴。",
+      "text_markdown": "来自突尼斯的安瓦尔布拉海姆，会和欧洲、美国的爵士乐手一起演奏乌德琴。",
+      "tts": {
+        "text": "来自突尼斯的安瓦尔布拉海姆，会和欧洲、美国的爵士乐手一起演奏乌德琴。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴还活着。",
+      "text_markdown": "乌德琴还活着。",
+      "tts": {
+        "text": "乌德琴还活着。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "世界上的某个地方，每一年都会出现一位新的大师。",
+      "text_markdown": "世界上的某个地方，每一年都会出现一位新的大师。",
+      "tts": {
+        "text": "世界上的某个地方，每一年都会出现一位新的大师。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第七章 乌德琴与世界",
+      "text_markdown": "第七章 乌德琴与世界"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴没有留在阿拉伯世界里。",
+      "text_markdown": "乌德琴没有留在阿拉伯世界里。",
+      "tts": {
+        "text": "乌德琴没有留在阿拉伯世界里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它一路旅行，也一路改变了形状、名字和曲子。",
+      "text_markdown": "它一路旅行，也一路改变了形状、名字和曲子。",
+      "tts": {
+        "text": "它一路旅行，也一路改变了形状、名字和曲子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当乌德琴来到中世纪的西班牙时，欧洲演奏者很喜欢它木碗一样的琴背和低沉的声音。",
+      "text_markdown": "当乌德琴来到中世纪的西班牙时，欧洲演奏者很喜欢它木碗一样的琴背和低沉的声音。",
+      "tts": {
+        "text": "当乌德琴来到中世纪的西班牙时，欧洲演奏者很喜欢它木碗一样的琴背和低沉的声音。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "但他们想要品丝，就像他们早已熟悉的那些小乐器一样。",
+      "text_markdown": "但他们想要品丝，就像他们早已熟悉的那些小乐器一样。",
+      "tts": {
+        "text": "但他们想要品丝，就像他们早已熟悉的那些小乐器一样。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "于是，他们加上品丝，把琴背压得更平一些，并把这件新乐器叫作鲁特琴。",
+      "text_markdown": "于是，他们加上品丝，把琴背压得更平一些，并把这件新乐器叫作鲁特琴。",
+      "tts": {
+        "text": "于是，他们加上品丝，把琴背压得更平一些，并把这件新乐器叫作鲁特琴。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "五百年里，鲁特琴都是欧洲最受喜爱的乐器。",
+      "text_markdown": "五百年里，鲁特琴都是欧洲最受喜爱的乐器。",
+      "tts": {
+        "text": "五百年里，鲁特琴都是欧洲最受喜爱的乐器。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "国王会弹它。",
+      "text_markdown": "国王会弹它。",
+      "tts": {
+        "text": "国王会弹它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "诗人也会弹它。",
+      "text_markdown": "诗人也会弹它。",
+      "tts": {
+        "text": "诗人也会弹它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "最伟大的作曲家都为它写过曲子。",
+      "text_markdown": "最伟大的作曲家都为它写过曲子。",
+      "tts": {
+        "text": "最伟大的作曲家都为它写过曲子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "后来，鲁特琴又变了。",
+      "text_markdown": "后来，鲁特琴又变了。",
+      "tts": {
+        "text": "后来，鲁特琴又变了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "演奏者又加了更多弦，把背面压得更平，还给它装上更小更轻的琴身。",
+      "text_markdown": "演奏者又加了更多弦，把背面压得更平，还给它装上更小更轻的琴身。",
+      "tts": {
+        "text": "演奏者又加了更多弦，把背面压得更平，还给它装上更小更轻的琴身。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大约到公元一八零零年，在西班牙，这件新乐器有了一个我们都熟悉的名字。",
+      "text_markdown": "大约到公元一八零零年，在西班牙，这件新乐器有了一个我们都熟悉的名字。",
+      "tts": {
+        "text": "大约到公元一八零零年，在西班牙，这件新乐器有了一个我们都熟悉的名字。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它就是吉他。",
+      "text_markdown": "它就是吉他。",
+      "tts": {
+        "text": "它就是吉他。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "所以，乌德琴、鲁特琴和吉他，其实都属于同一个家族。",
+      "text_markdown": "所以，乌德琴、鲁特琴和吉他，其实都属于同一个家族。",
+      "tts": {
+        "text": "所以，乌德琴、鲁特琴和吉他，其实都属于同一个家族。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它们是亲戚，也有同一个老祖先。",
+      "text_markdown": "它们是亲戚，也有同一个老祖先。",
+      "tts": {
+        "text": "它们是亲戚，也有同一个老祖先。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "那位老祖先，就是乌德琴。",
+      "text_markdown": "那位老祖先，就是乌德琴。",
+      "tts": {
+        "text": "那位老祖先，就是乌德琴。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今天，乌德琴也会和吉他一起演奏。",
+      "text_markdown": "今天，乌德琴也会和吉他一起演奏。",
+      "tts": {
+        "text": "今天，乌德琴也会和吉他一起演奏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "安瓦尔布拉海姆会和爵士吉他手一起演奏乌德琴。",
+      "text_markdown": "安瓦尔布拉海姆会和爵士吉他手一起演奏乌德琴。",
+      "tts": {
+        "text": "安瓦尔布拉海姆会和爵士吉他手一起演奏乌德琴。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "穆尼尔巴希尔也曾和管弦乐团一起演奏。",
+      "text_markdown": "穆尼尔巴希尔也曾和管弦乐团一起演奏。",
+      "tts": {
+        "text": "穆尼尔巴希尔也曾和管弦乐团一起演奏。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "贝鲁特、伊斯坦布尔、巴黎和纽约的年轻演奏者，正把乌德琴和摇滚、嘻哈，还有电影配乐混在一起。",
+      "text_markdown": "贝鲁特、伊斯坦布尔、巴黎和纽约的年轻演奏者，正把乌德琴和摇滚、嘻哈，还有电影配乐混在一起。",
+      "tts": {
+        "text": "贝鲁特、伊斯坦布尔、巴黎和纽约的年轻演奏者，正把乌德琴和摇滚、嘻哈，还有电影配乐混在一起。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "乌德琴不只是一件乐器。",
+      "text_markdown": "乌德琴不只是一件乐器。",
+      "tts": {
+        "text": "乌德琴不只是一件乐器。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它还是一座桥。",
+      "text_markdown": "它还是一座桥。",
+      "tts": {
+        "text": "它还是一座桥。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它带着一个故事，从美索不达米亚出发，经过波斯，穿过阿拉伯世界，进入西班牙和欧洲，再回到世界上的每一个国家。",
+      "text_markdown": "它带着一个故事，从美索不达米亚出发，经过波斯，穿过阿拉伯世界，进入西班牙和欧洲，再回到世界上的每一个国家。",
+      "tts": {
+        "text": "它带着一个故事，从美索不达米亚出发，经过波斯，穿过阿拉伯世界，进入西班牙和欧洲，再回到世界上的每一个国家。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每当你听见吉他，在很深很远的底下，也能听见乌德琴柔和而低沉的声音。",
+      "text_markdown": "每当你听见吉他，在很深很远的底下，也能听见乌德琴柔和而低沉的声音。",
+      "tts": {
+        "text": "每当你听见吉他，在很深很远的底下，也能听见乌德琴柔和而低沉的声音。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "关于这本书",
+      "text_markdown": "关于这本书"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是世界乐器系列的第一册。",
+      "text_markdown": "这是世界乐器系列的第一册。",
+      "tts": {
+        "text": "这是世界乐器系列的第一册。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这一套书里的每一本，都讲一种乐器的故事。",
+      "text_markdown": "这一套书里的每一本，都讲一种乐器的故事。",
+      "tts": {
+        "text": "这一套书里的每一本，都讲一种乐器的故事。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每一本都很短，每一本也都是真实的。",
+      "text_markdown": "每一本都很短，每一本也都是真实的。",
+      "tts": {
+        "text": "每一本都很短，每一本也都是真实的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "下一本书要讲锡塔琴，它是印度那种伟大的长颈鲁特琴，有很多弦，声音深而清响。",
+      "text_markdown": "下一本书要讲锡塔琴，它是印度那种伟大的长颈鲁特琴，有很多弦，声音深而清响。",
+      "tts": {
+        "text": "下一本书要讲锡塔琴，它是印度那种伟大的长颈鲁特琴，有很多弦，声音深而清响。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "讲完锡塔琴以后，我们会去西非认识科拉琴，然后再去日本认识尺八。",
+      "text_markdown": "讲完锡塔琴以后，我们会去西非认识科拉琴，然后再去日本认识尺八。",
+      "tts": {
+        "text": "讲完锡塔琴以后，我们会去西非认识科拉琴，然后再去日本认识尺八。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "谢谢你收听。",
+      "text_markdown": "谢谢你收听。",
+      "tts": {
+        "text": "谢谢你收听。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "去找一把乌德琴吧。不管是在网上，还是在你的城市里。让它为你演奏。",
+      "text_markdown": "去找一把乌德琴吧。不管是在网上，还是在你的城市里。让它为你演奏。",
+      "tts": {
+        "text": "去找一把乌德琴吧。不管是在网上，还是在你的城市里。让它为你演奏。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

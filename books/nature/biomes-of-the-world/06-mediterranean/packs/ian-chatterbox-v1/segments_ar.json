@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "المنطقة الحيوية لحوض البحر الأبيض المتوسط",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "المنطقة الحيوية لحوض البحر الأبيض المتوسط",
+      "text_markdown": "المنطقة الحيوية لحوض البحر الأبيض المتوسط"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "أين تنمو هذه المنطقة الحيوية",
+      "text_markdown": "أين تنمو هذه المنطقة الحيوية"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أهلًا بكم في المنطقة الحيوية لحوض البحر الأبيض المتوسط.",
+      "text_markdown": "أهلًا بكم في المنطقة الحيوية لحوض البحر الأبيض المتوسط.",
+      "tts": {
+        "text": "أهلًا بكم في المنطقة الحيوية لحوض البحر الأبيض المتوسط.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "text_markdown": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+      "tts": {
+        "text": "هذه واحدة من المناطق الحيوية العظيمة في العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنطقة الحيوية هي جزء من الأرض له نوعه الخاص من الطقس والنباتات والحيوانات.",
+      "text_markdown": "المنطقة الحيوية هي جزء من الأرض له نوعه الخاص من الطقس والنباتات والحيوانات.",
+      "tts": {
+        "text": "المنطقة الحيوية هي جزء من الأرض له نوعه الخاص من الطقس والنباتات والحيوانات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سميت المنطقة الحيوية المتوسطية بهذا الاسم نسبةً إلى الأراضي المحيطة بالبحر الأبيض المتوسط.",
+      "text_markdown": "سميت المنطقة الحيوية المتوسطية بهذا الاسم نسبةً إلى الأراضي المحيطة بالبحر الأبيض المتوسط.",
+      "tts": {
+        "text": "سميت المنطقة الحيوية المتوسطية بهذا الاسم نسبةً إلى الأراضي المحيطة بالبحر الأبيض المتوسط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكنها لا تنمو هناك فقط.",
+      "text_markdown": "لكنها لا تنمو هناك فقط.",
+      "tts": {
+        "text": "لكنها لا تنمو هناك فقط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تظهر المنطقة الحيوية المتوسطية في خمسة أجزاء صغيرة من العالم.",
+      "text_markdown": "تظهر المنطقة الحيوية المتوسطية في خمسة أجزاء صغيرة من العالم.",
+      "tts": {
+        "text": "تظهر المنطقة الحيوية المتوسطية في خمسة أجزاء صغيرة من العالم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو في الأراضي المحيطة بالبحر الأبيض المتوسط، في جنوب أوروبا وعلى طول ساحل شمال أفريقيا.",
+      "text_markdown": "تنمو في الأراضي المحيطة بالبحر الأبيض المتوسط، في جنوب أوروبا وعلى طول ساحل شمال أفريقيا.",
+      "tts": {
+        "text": "تنمو في الأراضي المحيطة بالبحر الأبيض المتوسط، في جنوب أوروبا وعلى طول ساحل شمال أفريقيا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتنمو في كاليفورنيا، في الجزء الغربي من أمريكا الشمالية.",
+      "text_markdown": "وتنمو في كاليفورنيا، في الجزء الغربي من أمريكا الشمالية.",
+      "tts": {
+        "text": "وتنمو في كاليفورنيا، في الجزء الغربي من أمريكا الشمالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتنمو على طول وسط ساحل تشيلي، في أمريكا الجنوبية.",
+      "text_markdown": "وتنمو على طول وسط ساحل تشيلي، في أمريكا الجنوبية.",
+      "tts": {
+        "text": "وتنمو على طول وسط ساحل تشيلي، في أمريكا الجنوبية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتنمو قرب الطرف الجنوبي من أفريقيا، حول رأس الرجاء الصالح.",
+      "text_markdown": "وتنمو قرب الطرف الجنوبي من أفريقيا، حول رأس الرجاء الصالح.",
+      "tts": {
+        "text": "وتنمو قرب الطرف الجنوبي من أفريقيا، حول رأس الرجاء الصالح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتنمو في الأجزاء الجنوبية الغربية والجنوبية من أستراليا.",
+      "text_markdown": "وتنمو في الأجزاء الجنوبية الغربية والجنوبية من أستراليا.",
+      "tts": {
+        "text": "وتنمو في الأجزاء الجنوبية الغربية والجنوبية من أستراليا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل واحد من هذه الأماكن بعيد عن الآخر.",
+      "text_markdown": "كل واحد من هذه الأماكن بعيد عن الآخر.",
+      "tts": {
+        "text": "كل واحد من هذه الأماكن بعيد عن الآخر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكنها جميعًا تشترك في الطقس المميز نفسه.",
+      "text_markdown": "لكنها جميعًا تشترك في الطقس المميز نفسه.",
+      "tts": {
+        "text": "لكنها جميعًا تشترك في الطقس المميز نفسه.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فالصيف فيها حار وجاف، والشتاء معتدل ورطب.",
+      "text_markdown": "فالصيف فيها حار وجاف، والشتاء معتدل ورطب.",
+      "tts": {
+        "text": "فالصيف فيها حار وجاف، والشتاء معتدل ورطب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهذا أمر نادر على الأرض.",
+      "text_markdown": "وهذا أمر نادر على الأرض.",
+      "tts": {
+        "text": "وهذا أمر نادر على الأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فمعظم المناطق الحيوية يأتي موسم أمطارها في الأشهر الدافئة.",
+      "text_markdown": "فمعظم المناطق الحيوية يأتي موسم أمطارها في الأشهر الدافئة.",
+      "tts": {
+        "text": "فمعظم المناطق الحيوية يأتي موسم أمطارها في الأشهر الدافئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أما هنا فيهطل المطر في الأشهر الباردة بدلًا من ذلك.",
+      "text_markdown": "أما هنا فيهطل المطر في الأشهر الباردة بدلًا من ذلك.",
+      "tts": {
+        "text": "أما هنا فيهطل المطر في الأشهر الباردة بدلًا من ذلك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولكل واحد من هذه الأماكن الخمسة نباتاته وحيواناته الخاصة.",
+      "text_markdown": "ولكل واحد من هذه الأماكن الخمسة نباتاته وحيواناته الخاصة.",
+      "tts": {
+        "text": "ولكل واحد من هذه الأماكن الخمسة نباتاته وحيواناته الخاصة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الأشكال هي نفسها.",
+      "text_markdown": "لكن الأشكال هي نفسها.",
+      "tts": {
+        "text": "لكن الأشكال هي نفسها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "شجيرات قصيرة قاسية، وأشجار متناثرة، وأعشاب عطرية، وتلال صخرية عارية.",
+      "text_markdown": "شجيرات قصيرة قاسية، وأشجار متناثرة، وأعشاب عطرية، وتلال صخرية عارية.",
+      "tts": {
+        "text": "شجيرات قصيرة قاسية، وأشجار متناثرة، وأعشاب عطرية، وتلال صخرية عارية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تقف في أرض متوسطية في الصيف، تشم في الهواء رائحة الأعشاب الجافة والحجر الدافئ.",
+      "text_markdown": "حين تقف في أرض متوسطية في الصيف، تشم في الهواء رائحة الأعشاب الجافة والحجر الدافئ.",
+      "tts": {
+        "text": "حين تقف في أرض متوسطية في الصيف، تشم في الهواء رائحة الأعشاب الجافة والحجر الدافئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والضوء قوي وذهبي.",
+      "text_markdown": "والضوء قوي وذهبي.",
+      "tts": {
+        "text": "والضوء قوي وذهبي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والتلال منقطة بأدغال منخفضة فضية اللون مائلة إلى الخضرة.",
+      "text_markdown": "والتلال منقطة بأدغال منخفضة فضية اللون مائلة إلى الخضرة.",
+      "tts": {
+        "text": "والتلال منقطة بأدغال منخفضة فضية اللون مائلة إلى الخضرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي المنطقة الحيوية المتوسطية.",
+      "text_markdown": "تلك هي المنطقة الحيوية المتوسطية.",
+      "tts": {
+        "text": "تلك هي المنطقة الحيوية المتوسطية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "أين تنمو هذه المنطقة الحيوية",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عالم مشرق، جاف، عطر، ينمو في خمس زوايا صغيرة من الأرض.",
+      "text_markdown": "عالم مشرق، جاف، عطر، ينمو في خمس زوايا صغيرة من الأرض.",
+      "tts": {
+        "text": "عالم مشرق، جاف، عطر، ينمو في خمس زوايا صغيرة من الأرض.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الطقس",
+      "text_markdown": "الطقس"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الطقس في المنطقة الحيوية المتوسطية غير عادي.",
+      "text_markdown": "الطقس في المنطقة الحيوية المتوسطية غير عادي.",
+      "tts": {
+        "text": "الطقس في المنطقة الحيوية المتوسطية غير عادي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك فصلان واضحان.",
+      "text_markdown": "هناك فصلان واضحان.",
+      "tts": {
+        "text": "هناك فصلان واضحان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك صيف طويل، حار، جاف.",
+      "text_markdown": "هناك صيف طويل، حار، جاف.",
+      "tts": {
+        "text": "هناك صيف طويل، حار، جاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهناك شتاء أقصر، معتدل، رطب.",
+      "text_markdown": "وهناك شتاء أقصر، معتدل، رطب.",
+      "tts": {
+        "text": "وهناك شتاء أقصر، معتدل، رطب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصيف، تظل السماء زرقاء لأسابيع متتالية.",
+      "text_markdown": "في الصيف، تظل السماء زرقاء لأسابيع متتالية.",
+      "tts": {
+        "text": "في الصيف، تظل السماء زرقاء لأسابيع متتالية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الشمس قوية، والهواء جاف.",
+      "text_markdown": "الشمس قوية، والهواء جاف.",
+      "tts": {
+        "text": "الشمس قوية، والهواء جاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولا يكاد يهطل أي مطر لأشهر كثيرة.",
+      "text_markdown": "ولا يكاد يهطل أي مطر لأشهر كثيرة.",
+      "tts": {
+        "text": "ولا يكاد يهطل أي مطر لأشهر كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبحلول نهاية الصيف، يصير العشب بنيًا وتنكمش الجداول إلى بضع برك هادئة.",
+      "text_markdown": "وبحلول نهاية الصيف، يصير العشب بنيًا وتنكمش الجداول إلى بضع برك هادئة.",
+      "tts": {
+        "text": "وبحلول نهاية الصيف، يصير العشب بنيًا وتنكمش الجداول إلى بضع برك هادئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الخريف، تهب أولى الرياح الباردة من البحر.",
+      "text_markdown": "في الخريف، تهب أولى الرياح الباردة من البحر.",
+      "tts": {
+        "text": "في الخريف، تهب أولى الرياح الباردة من البحر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتتجمع الغيوم، وتنزل أولى الأمطار الغزيرة على الأرض الجافة.",
+      "text_markdown": "وتتجمع الغيوم، وتنزل أولى الأمطار الغزيرة على الأرض الجافة.",
+      "tts": {
+        "text": "وتتجمع الغيوم، وتنزل أولى الأمطار الغزيرة على الأرض الجافة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تشرب الأرض الماء، ويعود العشب أخضر من جديد.",
+      "text_markdown": "تشرب الأرض الماء، ويعود العشب أخضر من جديد.",
+      "tts": {
+        "text": "تشرب الأرض الماء، ويعود العشب أخضر من جديد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والشتاء ليس شديد البرودة.",
+      "text_markdown": "والشتاء ليس شديد البرودة.",
+      "tts": {
+        "text": "والشتاء ليس شديد البرودة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ونادرًا ما يثلج، إلا في أعالي الجبال.",
+      "text_markdown": "ونادرًا ما يثلج، إلا في أعالي الجبال.",
+      "tts": {
+        "text": "ونادرًا ما يثلج، إلا في أعالي الجبال.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يهطل المطر في زخات طويلة لطيفة، وتجري الأنهار ممتلئة.",
+      "text_markdown": "يهطل المطر في زخات طويلة لطيفة، وتجري الأنهار ممتلئة.",
+      "tts": {
+        "text": "يهطل المطر في زخات طويلة لطيفة، وتجري الأنهار ممتلئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الربيع، يكون الهواء دافئًا والتلال خضراء.",
+      "text_markdown": "في الربيع، يكون الهواء دافئًا والتلال خضراء.",
+      "tts": {
+        "text": "في الربيع، يكون الهواء دافئًا والتلال خضراء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولأسابيع قليلة قصيرة، تكسو الأزهار البرية كل منحدر.",
+      "text_markdown": "ولأسابيع قليلة قصيرة، تكسو الأزهار البرية كل منحدر.",
+      "tts": {
+        "text": "ولأسابيع قليلة قصيرة، تكسو الأزهار البرية كل منحدر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم يبدأ الصيف من جديد، وتبدأ الدورة من جديد.",
+      "text_markdown": "ثم يبدأ الصيف من جديد، وتبدأ الدورة من جديد.",
+      "tts": {
+        "text": "ثم يبدأ الصيف من جديد، وتبدأ الدورة من جديد.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "النار أيضًا جزء من هذه المنطقة الحيوية.",
+      "text_markdown": "النار أيضًا جزء من هذه المنطقة الحيوية.",
+      "tts": {
+        "text": "النار أيضًا جزء من هذه المنطقة الحيوية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الصيف الجاف الطويل، يمكن لصاعقة أو لشرارة طائشة أن تشعل النار في الأدغال الجافة.",
+      "text_markdown": "في الصيف الجاف الطويل، يمكن لصاعقة أو لشرارة طائشة أن تشعل النار في الأدغال الجافة.",
+      "tts": {
+        "text": "في الصيف الجاف الطويل، يمكن لصاعقة أو لشرارة طائشة أن تشعل النار في الأدغال الجافة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "الطقس",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكثير من النباتات هنا تعلمت أن تعيش مع النار وأن تنمو من جديد بسرعة حين تنطفئ.",
+      "text_markdown": "وكثير من النباتات هنا تعلمت أن تعيش مع النار وأن تنمو من جديد بسرعة حين تنطفئ.",
+      "tts": {
+        "text": "وكثير من النباتات هنا تعلمت أن تعيش مع النار وأن تنمو من جديد بسرعة حين تنطفئ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الأرض والماء",
+      "text_markdown": "الأرض والماء"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أرض المنطقة الحيوية المتوسطية كثيرًا ما تكون متموجة بالتلال.",
+      "text_markdown": "أرض المنطقة الحيوية المتوسطية كثيرًا ما تكون متموجة بالتلال.",
+      "tts": {
+        "text": "أرض المنطقة الحيوية المتوسطية كثيرًا ما تكون متموجة بالتلال.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ترتفع الجبال قريبة من الساحل في كثير من هذه المناطق.",
+      "text_markdown": "ترتفع الجبال قريبة من الساحل في كثير من هذه المناطق.",
+      "tts": {
+        "text": "ترتفع الجبال قريبة من الساحل في كثير من هذه المناطق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنحدرات صخرية، والتربة في الغالب رقيقة.",
+      "text_markdown": "المنحدرات صخرية، والتربة في الغالب رقيقة.",
+      "tts": {
+        "text": "المنحدرات صخرية، والتربة في الغالب رقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والبحار والمحيطات القريبة تشكل الطقس.",
+      "text_markdown": "والبحار والمحيطات القريبة تشكل الطقس.",
+      "tts": {
+        "text": "والبحار والمحيطات القريبة تشكل الطقس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الماء البارد يمنع الصيف من أن يصبح حارًا كالصحراء، ويمنع الشتاء من أن يصبح باردًا كالأراضي البعيدة في الداخل.",
+      "text_markdown": "الماء البارد يمنع الصيف من أن يصبح حارًا كالصحراء، ويمنع الشتاء من أن يصبح باردًا كالأراضي البعيدة في الداخل.",
+      "tts": {
+        "text": "الماء البارد يمنع الصيف من أن يصبح حارًا كالصحراء، ويمنع الشتاء من أن يصبح باردًا كالأراضي البعيدة في الداخل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الماء ثمين هنا.",
+      "text_markdown": "الماء ثمين هنا.",
+      "tts": {
+        "text": "الماء ثمين هنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم الأنهار تنكمش إلى خيط ضئيل بحلول نهاية الصيف.",
+      "text_markdown": "معظم الأنهار تنكمش إلى خيط ضئيل بحلول نهاية الصيف.",
+      "tts": {
+        "text": "معظم الأنهار تنكمش إلى خيط ضئيل بحلول نهاية الصيف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبعض الجداول الأصغر تختفي تمامًا.",
+      "text_markdown": "وبعض الجداول الأصغر تختفي تمامًا.",
+      "tts": {
+        "text": "وبعض الجداول الأصغر تختفي تمامًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تعود أمطار الشتاء، تمتلئ الأنهار بسرعة وتنحدر مسرعةً نزولًا من التلال نحو البحر.",
+      "text_markdown": "حين تعود أمطار الشتاء، تمتلئ الأنهار بسرعة وتنحدر مسرعةً نزولًا من التلال نحو البحر.",
+      "tts": {
+        "text": "حين تعود أمطار الشتاء، تمتلئ الأنهار بسرعة وتنحدر مسرعةً نزولًا من التلال نحو البحر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في بعض الأماكن، يصعد الماء الجوفي العميق ليكوّن نبعًا.",
+      "text_markdown": "في بعض الأماكن، يصعد الماء الجوفي العميق ليكوّن نبعًا.",
+      "tts": {
+        "text": "في بعض الأماكن، يصعد الماء الجوفي العميق ليكوّن نبعًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "النبع بركة صغيرة من الماء العذب تتدفق من الصخر طوال السنة.",
+      "text_markdown": "النبع بركة صغيرة من الماء العذب تتدفق من الصخر طوال السنة.",
+      "tts": {
+        "text": "النبع بركة صغيرة من الماء العذب تتدفق من الصخر طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومنذ آلاف السنين، اجتمع الناس والحيوانات والأشجار حول هذه الينابيع.",
+      "text_markdown": "ومنذ آلاف السنين، اجتمع الناس والحيوانات والأشجار حول هذه الينابيع.",
+      "tts": {
+        "text": "ومنذ آلاف السنين، اجتمع الناس والحيوانات والأشجار حول هذه الينابيع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على طول الساحل، تلتقي الأرض بالبحر في منحدرات صخرية وشواطئ وخلجان صغيرة.",
+      "text_markdown": "على طول الساحل، تلتقي الأرض بالبحر في منحدرات صخرية وشواطئ وخلجان صغيرة.",
+      "tts": {
+        "text": "على طول الساحل، تلتقي الأرض بالبحر في منحدرات صخرية وشواطئ وخلجان صغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "البحر مليء بالحياة.",
+      "text_markdown": "البحر مليء بالحياة.",
+      "tts": {
+        "text": "البحر مليء بالحياة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السمك والأخطبوط والطيور البحرية تجد طعامها في الماء الدافئ المالح.",
+      "text_markdown": "السمك والأخطبوط والطيور البحرية تجد طعامها في الماء الدافئ المالح.",
+      "tts": {
+        "text": "السمك والأخطبوط والطيور البحرية تجد طعامها في الماء الدافئ المالح.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "الأرض والماء",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعيش هذه المنطقة الحيوية بين اليابسة والبحر وسماء الصيف الزرقاء الطويلة.",
+      "text_markdown": "تعيش هذه المنطقة الحيوية بين اليابسة والبحر وسماء الصيف الزرقاء الطويلة.",
+      "tts": {
+        "text": "تعيش هذه المنطقة الحيوية بين اليابسة والبحر وسماء الصيف الزرقاء الطويلة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "النباتات",
+      "text_markdown": "النباتات"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نباتات المنطقة الحيوية المتوسطية صلبة وذكية.",
+      "text_markdown": "نباتات المنطقة الحيوية المتوسطية صلبة وذكية.",
+      "tts": {
+        "text": "نباتات المنطقة الحيوية المتوسطية صلبة وذكية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعلمت كيف تعيش خلال صيف طويل جاف.",
+      "text_markdown": "تعلمت كيف تعيش خلال صيف طويل جاف.",
+      "tts": {
+        "text": "تعلمت كيف تعيش خلال صيف طويل جاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظمها ليس طويلًا.",
+      "text_markdown": "معظمها ليس طويلًا.",
+      "tts": {
+        "text": "معظمها ليس طويلًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنمو على شكل شجيرات منخفضة، ذات أوراق سميكة جلدية الملمس.",
+      "text_markdown": "تنمو على شكل شجيرات منخفضة، ذات أوراق سميكة جلدية الملمس.",
+      "tts": {
+        "text": "تنمو على شكل شجيرات منخفضة، ذات أوراق سميكة جلدية الملمس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأوراق صغيرة لامعة، وأحيانًا فضية أو رمادية مائلة إلى الخضرة.",
+      "text_markdown": "الأوراق صغيرة لامعة، وأحيانًا فضية أو رمادية مائلة إلى الخضرة.",
+      "tts": {
+        "text": "الأوراق صغيرة لامعة، وأحيانًا فضية أو رمادية مائلة إلى الخضرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الورقة الصغيرة اللامعة تفقد ماءً أقل بفعل الشمس.",
+      "text_markdown": "الورقة الصغيرة اللامعة تفقد ماءً أقل بفعل الشمس.",
+      "tts": {
+        "text": "الورقة الصغيرة اللامعة تفقد ماءً أقل بفعل الشمس.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والورقة الفاتحة اللون تعكس مزيدًا من ضوء الشمس بعيدًا.",
+      "text_markdown": "والورقة الفاتحة اللون تعكس مزيدًا من ضوء الشمس بعيدًا.",
+      "tts": {
+        "text": "والورقة الفاتحة اللون تعكس مزيدًا من ضوء الشمس بعيدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكثير من النباتات تنشر رائحة قوية حلوة حين تحتك بها.",
+      "text_markdown": "وكثير من النباتات تنشر رائحة قوية حلوة حين تحتك بها.",
+      "tts": {
+        "text": "وكثير من النباتات تنشر رائحة قوية حلوة حين تحتك بها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأتي تلك الرائحة من الزيوت داخل الأوراق.",
+      "text_markdown": "تأتي تلك الرائحة من الزيوت داخل الأوراق.",
+      "tts": {
+        "text": "تأتي تلك الرائحة من الزيوت داخل الأوراق.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه الزيوت تبطئ فقدان الماء وتساعد النبات على تحمل الحر.",
+      "text_markdown": "هذه الزيوت تبطئ فقدان الماء وتساعد النبات على تحمل الحر.",
+      "tts": {
+        "text": "هذه الزيوت تبطئ فقدان الماء وتساعد النبات على تحمل الحر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولهذا تأتي كثير من أعشاب الطبخ المفضلة لدينا من هذه الأراضي.",
+      "text_markdown": "ولهذا تأتي كثير من أعشاب الطبخ المفضلة لدينا من هذه الأراضي.",
+      "tts": {
+        "text": "ولهذا تأتي كثير من أعشاب الطبخ المفضلة لدينا من هذه الأراضي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نباتات مثل إكليل الجبل والمريمية والزعتر والخزامى والنعناع والأوريغانو تنمو كلها برية في المنطقة الحيوية المتوسطية.",
+      "text_markdown": "نباتات مثل إكليل الجبل والمريمية والزعتر والخزامى والنعناع والأوريغانو تنمو كلها برية في المنطقة الحيوية المتوسطية.",
+      "tts": {
+        "text": "نباتات مثل إكليل الجبل والمريمية والزعتر والخزامى والنعناع والأوريغانو تنمو كلها برية في المنطقة الحيوية المتوسطية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أشهر شجرة في هذه المنطقة الحيوية هي شجرة الزيتون.",
+      "text_markdown": "أشهر شجرة في هذه المنطقة الحيوية هي شجرة الزيتون.",
+      "tts": {
+        "text": "أشهر شجرة في هذه المنطقة الحيوية هي شجرة الزيتون.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "شجرة الزيتون لها جذع سميك ملتو وأوراق صغيرة فضية رمادية.",
+      "text_markdown": "شجرة الزيتون لها جذع سميك ملتو وأوراق صغيرة فضية رمادية.",
+      "tts": {
+        "text": "شجرة الزيتون لها جذع سميك ملتو وأوراق صغيرة فضية رمادية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض أشجار الزيتون تعيش أكثر من ألف سنة.",
+      "text_markdown": "بعض أشجار الزيتون تعيش أكثر من ألف سنة.",
+      "tts": {
+        "text": "بعض أشجار الزيتون تعيش أكثر من ألف سنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومن الأشجار الشائعة الأخرى أشجار البلوط القصيرة دائمة الخضرة، وأشجار الصنوبر، وأشجار الفلين.",
+      "text_markdown": "ومن الأشجار الشائعة الأخرى أشجار البلوط القصيرة دائمة الخضرة، وأشجار الصنوبر، وأشجار الفلين.",
+      "tts": {
+        "text": "ومن الأشجار الشائعة الأخرى أشجار البلوط القصيرة دائمة الخضرة، وأشجار الصنوبر، وأشجار الفلين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكرمة العنب البرية أيضًا بدأت في هذه الأراضي وتسلقت خارجة من بين الأدغال.",
+      "text_markdown": "وكرمة العنب البرية أيضًا بدأت في هذه الأراضي وتسلقت خارجة من بين الأدغال.",
+      "tts": {
+        "text": "وكرمة العنب البرية أيضًا بدأت في هذه الأراضي وتسلقت خارجة من بين الأدغال.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "على طول الساحل، قد تجد أحراش الخيزران الطويلة وأشجار التين وأشجار اللوز.",
+      "text_markdown": "على طول الساحل، قد تجد أحراش الخيزران الطويلة وأشجار التين وأشجار اللوز.",
+      "tts": {
+        "text": "على طول الساحل، قد تجد أحراش الخيزران الطويلة وأشجار التين وأشجار اللوز.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظم النباتات هنا تحتفظ بأوراقها طوال السنة، بدلًا من أن تسقطها في الخريف.",
+      "text_markdown": "معظم النباتات هنا تحتفظ بأوراقها طوال السنة، بدلًا من أن تسقطها في الخريف.",
+      "tts": {
+        "text": "معظم النباتات هنا تحتفظ بأوراقها طوال السنة، بدلًا من أن تسقطها في الخريف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فهي لا تستطيع أن تتحمل إنبات أوراق جديدة في كل ربيع.",
+      "text_markdown": "فهي لا تستطيع أن تتحمل إنبات أوراق جديدة في كل ربيع.",
+      "tts": {
+        "text": "فهي لا تستطيع أن تتحمل إنبات أوراق جديدة في كل ربيع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لذا فهي تتمسك بأوراق صغيرة قاسية طوال السنة.",
+      "text_markdown": "لذا فهي تتمسك بأوراق صغيرة قاسية طوال السنة.",
+      "tts": {
+        "text": "لذا فهي تتمسك بأوراق صغيرة قاسية طوال السنة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "النباتات",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهذا ما يمنح المنطقة الحيوية المتوسطية مظهرها المغبر الدائم الخضرة.",
+      "text_markdown": "وهذا ما يمنح المنطقة الحيوية المتوسطية مظهرها المغبر الدائم الخضرة.",
+      "tts": {
+        "text": "وهذا ما يمنح المنطقة الحيوية المتوسطية مظهرها المغبر الدائم الخضرة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الحيوانات",
+      "text_markdown": "الحيوانات"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لحيوانات المنطقة الحيوية المتوسطية طرق كثيرة للتعايش مع الحر ومع الصيف الجاف.",
+      "text_markdown": "لحيوانات المنطقة الحيوية المتوسطية طرق كثيرة للتعايش مع الحر ومع الصيف الجاف.",
+      "tts": {
+        "text": "لحيوانات المنطقة الحيوية المتوسطية طرق كثيرة للتعايش مع الحر ومع الصيف الجاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "معظمها صغير وسريع.",
+      "text_markdown": "معظمها صغير وسريع.",
+      "tts": {
+        "text": "معظمها صغير وسريع.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الحيوان الصغير يستطيع أن يختبئ بسهولة تحت دغل أو في شق بين الصخور.",
+      "text_markdown": "الحيوان الصغير يستطيع أن يختبئ بسهولة تحت دغل أو في شق بين الصخور.",
+      "tts": {
+        "text": "الحيوان الصغير يستطيع أن يختبئ بسهولة تحت دغل أو في شق بين الصخور.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كثير منها يستريح خلال وسط النهار الحار ويخرج في برودة الصباح والمساء.",
+      "text_markdown": "كثير منها يستريح خلال وسط النهار الحار ويخرج في برودة الصباح والمساء.",
+      "tts": {
+        "text": "كثير منها يستريح خلال وسط النهار الحار ويخرج في برودة الصباح والمساء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعيش الأرانب والأرانب البرية في كثير من هذه الأراضي.",
+      "text_markdown": "تعيش الأرانب والأرانب البرية في كثير من هذه الأراضي.",
+      "tts": {
+        "text": "تعيش الأرانب والأرانب البرية في كثير من هذه الأراضي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتغذى عند الغسق والفجر، وتمضي النهار في جحر مختبئ تحت دغل.",
+      "text_markdown": "تتغذى عند الغسق والفجر، وتمضي النهار في جحر مختبئ تحت دغل.",
+      "tts": {
+        "text": "تتغذى عند الغسق والفجر، وتمضي النهار في جحر مختبئ تحت دغل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الثعالب تصطاد الأرانب وحيوانات صغيرة أخرى.",
+      "text_markdown": "الثعالب تصطاد الأرانب وحيوانات صغيرة أخرى.",
+      "tts": {
+        "text": "الثعالب تصطاد الأرانب وحيوانات صغيرة أخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والثعلب يعرف كل ممر يمر عبر الأدغال.",
+      "text_markdown": "والثعلب يعرف كل ممر يمر عبر الأدغال.",
+      "tts": {
+        "text": "والثعلب يعرف كل ممر يمر عبر الأدغال.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والخنازير البرية تحفر في التربة اللينة بحثًا عن الجذور والمكسرات والحيوانات الصغيرة.",
+      "text_markdown": "والخنازير البرية تحفر في التربة اللينة بحثًا عن الجذور والمكسرات والحيوانات الصغيرة.",
+      "tts": {
+        "text": "والخنازير البرية تحفر في التربة اللينة بحثًا عن الجذور والمكسرات والحيوانات الصغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهي قوية وخجولة، وتتحرك في مجموعات عائلية صغيرة.",
+      "text_markdown": "وهي قوية وخجولة، وتتحرك في مجموعات عائلية صغيرة.",
+      "tts": {
+        "text": "وهي قوية وخجولة، وتتحرك في مجموعات عائلية صغيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في بعض الأراضي المتوسطية، تصطاد قطط برية صغيرة في الليل.",
+      "text_markdown": "في بعض الأراضي المتوسطية، تصطاد قطط برية صغيرة في الليل.",
+      "tts": {
+        "text": "في بعض الأراضي المتوسطية، تصطاد قطط برية صغيرة في الليل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والوشق واحد من هذه القطط، له ذيل قصير وأذنان معقوفتا الأطراف بشعر.",
+      "text_markdown": "والوشق واحد من هذه القطط، له ذيل قصير وأذنان معقوفتا الأطراف بشعر.",
+      "tts": {
+        "text": "والوشق واحد من هذه القطط، له ذيل قصير وأذنان معقوفتا الأطراف بشعر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهو الآن نادر ويعيش في زوايا برية قليلة فقط.",
+      "text_markdown": "وهو الآن نادر ويعيش في زوايا برية قليلة فقط.",
+      "tts": {
+        "text": "وهو الآن نادر ويعيش في زوايا برية قليلة فقط.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والأيائل تعيش في الغابات على أطراف هذه المنطقة الحيوية أيضًا.",
+      "text_markdown": "والأيائل تعيش في الغابات على أطراف هذه المنطقة الحيوية أيضًا.",
+      "tts": {
+        "text": "والأيائل تعيش في الغابات على أطراف هذه المنطقة الحيوية أيضًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والأفاعي والسحالي في كل مكان.",
+      "text_markdown": "والأفاعي والسحالي في كل مكان.",
+      "tts": {
+        "text": "والأفاعي والسحالي في كل مكان.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومنظر سحلية جالسة على صخرة دافئة منظر مألوف في الصيف.",
+      "text_markdown": "ومنظر سحلية جالسة على صخرة دافئة منظر مألوف في الصيف.",
+      "tts": {
+        "text": "ومنظر سحلية جالسة على صخرة دافئة منظر مألوف في الصيف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والسلاحف تتحرك ببطء عبر الأدغال، تأكل الأوراق والعشب.",
+      "text_markdown": "والسلاحف تتحرك ببطء عبر الأدغال، تأكل الأوراق والعشب.",
+      "tts": {
+        "text": "والسلاحف تتحرك ببطء عبر الأدغال، تأكل الأوراق والعشب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والسلحفاة المتوسطية يمكنها أن تعيش لعقود كثيرة.",
+      "text_markdown": "والسلحفاة المتوسطية يمكنها أن تعيش لعقود كثيرة.",
+      "tts": {
+        "text": "والسلحفاة المتوسطية يمكنها أن تعيش لعقود كثيرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكثير من الطيور تعيش هنا.",
+      "text_markdown": "وكثير من الطيور تعيش هنا.",
+      "tts": {
+        "text": "وكثير من الطيور تعيش هنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "العصافير وأبو الحناء والدخل تملأ الأدغال بالأصوات.",
+      "text_markdown": "العصافير وأبو الحناء والدخل تملأ الأدغال بالأصوات.",
+      "tts": {
+        "text": "العصافير وأبو الحناء والدخل تملأ الأدغال بالأصوات.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفوق الرؤوس عاليًا، تنزلق النسور وطيور كبيرة أخرى على هواء الظهيرة الدافئ.",
+      "text_markdown": "وفوق الرؤوس عاليًا، تنزلق النسور وطيور كبيرة أخرى على هواء الظهيرة الدافئ.",
+      "tts": {
+        "text": "وفوق الرؤوس عاليًا، تنزلق النسور وطيور كبيرة أخرى على هواء الظهيرة الدافئ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الربيع، ترقص الفراشات من زهرة إلى زهرة.",
+      "text_markdown": "في الربيع، ترقص الفراشات من زهرة إلى زهرة.",
+      "tts": {
+        "text": "في الربيع، ترقص الفراشات من زهرة إلى زهرة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والصراصير والجنادب تغني في أمسيات الصيف الدافئة.",
+      "text_markdown": "والصراصير والجنادب تغني في أمسيات الصيف الدافئة.",
+      "tts": {
+        "text": "والصراصير والجنادب تغني في أمسيات الصيف الدافئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وعلى البحر، تعشش النوارس وطيور بحرية أخرى في المنحدرات الصخرية والجزر الصخرية.",
+      "text_markdown": "وعلى البحر، تعشش النوارس وطيور بحرية أخرى في المنحدرات الصخرية والجزر الصخرية.",
+      "tts": {
+        "text": "وعلى البحر، تعشش النوارس وطيور بحرية أخرى في المنحدرات الصخرية والجزر الصخرية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "الحيوانات",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل حيوان هنا يعرف كيف يجد الظل في الصيف، وكيف يشرب عند النبع، وكيف ينتظر برودة أمطار الشتاء.",
+      "text_markdown": "كل حيوان هنا يعرف كيف يجد الظل في الصيف، وكيف يشرب عند النبع، وكيف ينتظر برودة أمطار الشتاء.",
+      "tts": {
+        "text": "كل حيوان هنا يعرف كيف يجد الظل في الصيف، وكيف يشرب عند النبع، وكيف ينتظر برودة أمطار الشتاء.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الناس",
+      "text_markdown": "الناس"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانت المنطقة الحيوية المتوسطية موطنًا للناس منذ زمن طويل جدًا.",
+      "text_markdown": "كانت المنطقة الحيوية المتوسطية موطنًا للناس منذ زمن طويل جدًا.",
+      "tts": {
+        "text": "كانت المنطقة الحيوية المتوسطية موطنًا للناس منذ زمن طويل جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض أقدم مدن العالم ومزارعه بدأت هنا.",
+      "text_markdown": "بعض أقدم مدن العالم ومزارعه بدأت هنا.",
+      "tts": {
+        "text": "بعض أقدم مدن العالم ومزارعه بدأت هنا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "منذ آلاف السنين، يزرع الناس على شواطئ البحر الأبيض المتوسط ثلاثة نباتات معًا.",
+      "text_markdown": "منذ آلاف السنين، يزرع الناس على شواطئ البحر الأبيض المتوسط ثلاثة نباتات معًا.",
+      "tts": {
+        "text": "منذ آلاف السنين، يزرع الناس على شواطئ البحر الأبيض المتوسط ثلاثة نباتات معًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يزرعون أشجار الزيتون للحصول على الزيت.",
+      "text_markdown": "يزرعون أشجار الزيتون للحصول على الزيت.",
+      "tts": {
+        "text": "يزرعون أشجار الزيتون للحصول على الزيت.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويزرعون كروم العنب للفاكهة والنبيذ.",
+      "text_markdown": "ويزرعون كروم العنب للفاكهة والنبيذ.",
+      "tts": {
+        "text": "ويزرعون كروم العنب للفاكهة والنبيذ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويزرعون القمح والحبوب الأخرى للخبز.",
+      "text_markdown": "ويزرعون القمح والحبوب الأخرى للخبز.",
+      "tts": {
+        "text": "ويزرعون القمح والحبوب الأخرى للخبز.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه الثلاثة معًا تسمى أحيانًا قلب الطعام المتوسطي.",
+      "text_markdown": "هذه الثلاثة معًا تسمى أحيانًا قلب الطعام المتوسطي.",
+      "tts": {
+        "text": "هذه الثلاثة معًا تسمى أحيانًا قلب الطعام المتوسطي.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وإليها أضاف الناس الخضروات والفواكه وأعشاب التلال البرية.",
+      "text_markdown": "وإليها أضاف الناس الخضروات والفواكه وأعشاب التلال البرية.",
+      "tts": {
+        "text": "وإليها أضاف الناس الخضروات والفواكه وأعشاب التلال البرية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كما يربي الناس قطعان الأغنام والماعز في هذه الأراضي منذ آلاف السنين.",
+      "text_markdown": "كما يربي الناس قطعان الأغنام والماعز في هذه الأراضي منذ آلاف السنين.",
+      "tts": {
+        "text": "كما يربي الناس قطعان الأغنام والماعز في هذه الأراضي منذ آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستطيع هذه الحيوانات أن تجد طعامها في المنحدرات الصخرية التي يصعب فيها زراعة المحاصيل.",
+      "text_markdown": "تستطيع هذه الحيوانات أن تجد طعامها في المنحدرات الصخرية التي يصعب فيها زراعة المحاصيل.",
+      "tts": {
+        "text": "تستطيع هذه الحيوانات أن تجد طعامها في المنحدرات الصخرية التي يصعب فيها زراعة المحاصيل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تعطي الحليب لصناعة الجبن واللبن، والصوف للملابس، واللحم.",
+      "text_markdown": "تعطي الحليب لصناعة الجبن واللبن، والصوف للملابس، واللحم.",
+      "tts": {
+        "text": "تعطي الحليب لصناعة الجبن واللبن، والصوف للملابس، واللحم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولأن البحار والمحيطات قريبة، كان أهل هذه المنطقة الحيوية دائمًا صيادي سمك وبحارة.",
+      "text_markdown": "ولأن البحار والمحيطات قريبة، كان أهل هذه المنطقة الحيوية دائمًا صيادي سمك وبحارة.",
+      "tts": {
+        "text": "ولأن البحار والمحيطات قريبة، كان أهل هذه المنطقة الحيوية دائمًا صيادي سمك وبحارة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تخرج القوارب الخشبية عند الفجر وتعود بالسمك والأخطبوط ومأكولات بحرية أخرى.",
+      "text_markdown": "تخرج القوارب الخشبية عند الفجر وتعود بالسمك والأخطبوط ومأكولات بحرية أخرى.",
+      "tts": {
+        "text": "تخرج القوارب الخشبية عند الفجر وتعود بالسمك والأخطبوط ومأكولات بحرية أخرى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي الأراضي المتوسطية الأخرى من العالم، في كاليفورنيا وتشيلي وجنوب أفريقيا وأستراليا، استخدم الناس الذين عاشوا هناك آلاف السنين النباتات والحيوانات البرية نفسها بطرقهم الخاصة.",
+      "text_markdown": "وفي الأراضي المتوسطية الأخرى من العالم، في كاليفورنيا وتشيلي وجنوب أفريقيا وأستراليا، استخدم الناس الذين عاشوا هناك آلاف السنين النباتات والحيوانات البرية نفسها بطرقهم الخاصة.",
+      "tts": {
+        "text": "وفي الأراضي المتوسطية الأخرى من العالم، في كاليفورنيا وتشيلي وجنوب أفريقيا وأستراليا، استخدم الناس الذين عاشوا هناك آلاف السنين النباتات والحيوانات البرية نفسها بطرقهم الخاصة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وحين قدم المزارعون من الأراضي المحيطة بالبحر الأبيض المتوسط إلى تلك الأماكن في وقت لاحق بكثير، جلبوا معهم زيتونهم وكروم عنبهم وقمحهم.",
+      "text_markdown": "وحين قدم المزارعون من الأراضي المحيطة بالبحر الأبيض المتوسط إلى تلك الأماكن في وقت لاحق بكثير، جلبوا معهم زيتونهم وكروم عنبهم وقمحهم.",
+      "tts": {
+        "text": "وحين قدم المزارعون من الأراضي المحيطة بالبحر الأبيض المتوسط إلى تلك الأماكن في وقت لاحق بكثير، جلبوا معهم زيتونهم وكروم عنبهم وقمحهم.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اليوم، تزرع المناطق المتوسطية الخمس جميعها في العالم الأنواع نفسها من الطعام.",
+      "text_markdown": "اليوم، تزرع المناطق المتوسطية الخمس جميعها في العالم الأنواع نفسها من الطعام.",
+      "tts": {
+        "text": "اليوم، تزرع المناطق المتوسطية الخمس جميعها في العالم الأنواع نفسها من الطعام.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكأن الأرض تدعو إلى ذلك.",
+      "text_markdown": "وكأن الأرض تدعو إلى ذلك.",
+      "tts": {
+        "text": "وكأن الأرض تدعو إلى ذلك.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "مطابخ كل منطقة متوسطية تتشارك العطايا الأساسية نفسها.",
+      "text_markdown": "مطابخ كل منطقة متوسطية تتشارك العطايا الأساسية نفسها.",
+      "tts": {
+        "text": "مطابخ كل منطقة متوسطية تتشارك العطايا الأساسية نفسها.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الخبز والجبن وزيت الزيتون والطماطم الطازجة والسمك والفاكهة والنبيذ.",
+      "text_markdown": "الخبز والجبن وزيت الزيتون والطماطم الطازجة والسمك والفاكهة والنبيذ.",
+      "tts": {
+        "text": "الخبز والجبن وزيت الزيتون والطماطم الطازجة والسمك والفاكهة والنبيذ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أهل هذه الأراضي عرفوا دائمًا كيف يستفيدون أحسن استفادة من صيف طويل جاف.",
+      "text_markdown": "أهل هذه الأراضي عرفوا دائمًا كيف يستفيدون أحسن استفادة من صيف طويل جاف.",
+      "tts": {
+        "text": "أهل هذه الأراضي عرفوا دائمًا كيف يستفيدون أحسن استفادة من صيف طويل جاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يأكلون الطازج في الأشهر الدافئة.",
+      "text_markdown": "يأكلون الطازج في الأشهر الدافئة.",
+      "tts": {
+        "text": "يأكلون الطازج في الأشهر الدافئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويخزنون الطعام في الزيت وفي الملح وفي الجرار للشتاء الممطر.",
+      "text_markdown": "ويخزنون الطعام في الزيت وفي الملح وفي الجرار للشتاء الممطر.",
+      "tts": {
+        "text": "ويخزنون الطعام في الزيت وفي الملح وفي الجرار للشتاء الممطر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "الناس",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في كل منطقة متوسطية، لهذا النمط من الحياة لغاته وأغانيه وحكاياته الخاصة.",
+      "text_markdown": "في كل منطقة متوسطية، لهذا النمط من الحياة لغاته وأغانيه وحكاياته الخاصة.",
+      "tts": {
+        "text": "في كل منطقة متوسطية، لهذا النمط من الحياة لغاته وأغانيه وحكاياته الخاصة.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "المنطقة الحيوية اليوم",
+      "text_markdown": "المنطقة الحيوية اليوم"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنطقة الحيوية المتوسطية صغيرة لكنها مهمة جدًا.",
+      "text_markdown": "المنطقة الحيوية المتوسطية صغيرة لكنها مهمة جدًا.",
+      "tts": {
+        "text": "المنطقة الحيوية المتوسطية صغيرة لكنها مهمة جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومع أنها تغطي جزءًا صغيرًا فقط من الأرض، فإنها تضم عددًا هائلًا من النباتات والحيوانات التي لا توجد في أي مكان آخر.",
+      "text_markdown": "ومع أنها تغطي جزءًا صغيرًا فقط من الأرض، فإنها تضم عددًا هائلًا من النباتات والحيوانات التي لا توجد في أي مكان آخر.",
+      "tts": {
+        "text": "ومع أنها تغطي جزءًا صغيرًا فقط من الأرض، فإنها تضم عددًا هائلًا من النباتات والحيوانات التي لا توجد في أي مكان آخر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبالنسبة للناس، كانت هذه المنطقة الحيوية مهد الغذاء والزراعة منذ آلاف السنين.",
+      "text_markdown": "وبالنسبة للناس، كانت هذه المنطقة الحيوية مهد الغذاء والزراعة منذ آلاف السنين.",
+      "tts": {
+        "text": "وبالنسبة للناس، كانت هذه المنطقة الحيوية مهد الغذاء والزراعة منذ آلاف السنين.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن هذه المنطقة الحيوية في خطر في كثير من الأماكن.",
+      "text_markdown": "لكن هذه المنطقة الحيوية في خطر في كثير من الأماكن.",
+      "tts": {
+        "text": "لكن هذه المنطقة الحيوية في خطر في كثير من الأماكن.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "نمت المدن والبلدات على طول السواحل حيث الطقس معتدل والبحر قريب.",
+      "text_markdown": "نمت المدن والبلدات على طول السواحل حيث الطقس معتدل والبحر قريب.",
+      "tts": {
+        "text": "نمت المدن والبلدات على طول السواحل حيث الطقس معتدل والبحر قريب.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حلت الطرق والبيوت والفنادق والمزارع محل كثير من الأدغال والأشجار البرية.",
+      "text_markdown": "حلت الطرق والبيوت والفنادق والمزارع محل كثير من الأدغال والأشجار البرية.",
+      "tts": {
+        "text": "حلت الطرق والبيوت والفنادق والمزارع محل كثير من الأدغال والأشجار البرية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الصيف الجاف الطويل، الأكثر حرارة من ذي قبل، يجعل الحرائق أكبر وأشد خطرًا.",
+      "text_markdown": "الصيف الجاف الطويل، الأكثر حرارة من ذي قبل، يجعل الحرائق أكبر وأشد خطرًا.",
+      "tts": {
+        "text": "الصيف الجاف الطويل، الأكثر حرارة من ذي قبل، يجعل الحرائق أكبر وأشد خطرًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعض الحيوانات، مثل الوشق والسلحفاة المتوسطية، أصبحت نادرة جدًا.",
+      "text_markdown": "بعض الحيوانات، مثل الوشق والسلحفاة المتوسطية، أصبحت نادرة جدًا.",
+      "tts": {
+        "text": "بعض الحيوانات، مثل الوشق والسلحفاة المتوسطية، أصبحت نادرة جدًا.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وتعمل كثير من المجموعات حول العالم على رعاية ما تبقى.",
+      "text_markdown": "وتعمل كثير من المجموعات حول العالم على رعاية ما تبقى.",
+      "tts": {
+        "text": "وتعمل كثير من المجموعات حول العالم على رعاية ما تبقى.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يخصصون حدائق طبيعية تظل فيها النباتات والحيوانات البرية تعيش.",
+      "text_markdown": "يخصصون حدائق طبيعية تظل فيها النباتات والحيوانات البرية تعيش.",
+      "tts": {
+        "text": "يخصصون حدائق طبيعية تظل فيها النباتات والحيوانات البرية تعيش.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يزرعون أشجار زيتون جديدة ويحمون القديمة.",
+      "text_markdown": "يزرعون أشجار زيتون جديدة ويحمون القديمة.",
+      "tts": {
+        "text": "يزرعون أشجار زيتون جديدة ويحمون القديمة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويساعدون المزارعين على إنتاج الطعام بطرق رفيقة بالأرض.",
+      "text_markdown": "ويساعدون المزارعين على إنتاج الطعام بطرق رفيقة بالأرض.",
+      "tts": {
+        "text": "ويساعدون المزارعين على إنتاج الطعام بطرق رفيقة بالأرض.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويدرسون المنطقة الحيوية حتى نستطيع فهمها بشكل أفضل.",
+      "text_markdown": "ويدرسون المنطقة الحيوية حتى نستطيع فهمها بشكل أفضل.",
+      "tts": {
+        "text": "ويدرسون المنطقة الحيوية حتى نستطيع فهمها بشكل أفضل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المنطقة الحيوية المتوسطية السليمة مكان هادئ، عطر، جميل.",
+      "text_markdown": "المنطقة الحيوية المتوسطية السليمة مكان هادئ، عطر، جميل.",
+      "tts": {
+        "text": "المنطقة الحيوية المتوسطية السليمة مكان هادئ، عطر، جميل.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "المنطقة الحيوية اليوم",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وهي تستحق عنايتنا.",
+      "text_markdown": "وهي تستحق عنايتنا.",
+      "tts": {
+        "text": "وهي تستحق عنايتنا.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الخاتمة",
+      "text_markdown": "الخاتمة"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تلك هي المنطقة الحيوية المتوسطية.",
+      "text_markdown": "تلك هي المنطقة الحيوية المتوسطية.",
+      "tts": {
+        "text": "تلك هي المنطقة الحيوية المتوسطية.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عالم مشرق، جاف، عطر من أشجار الزيتون والشجيرات المنخفضة وأمسيات الصيف الدافئة.",
+      "text_markdown": "عالم مشرق، جاف، عطر من أشجار الزيتون والشجيرات المنخفضة وأمسيات الصيف الدافئة.",
+      "tts": {
+        "text": "عالم مشرق، جاف، عطر من أشجار الزيتون والشجيرات المنخفضة وأمسيات الصيف الدافئة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إن وقفت يومًا في إحداها، فاسكن لدقيقة.",
+      "text_markdown": "إن وقفت يومًا في إحداها، فاسكن لدقيقة.",
+      "tts": {
+        "text": "إن وقفت يومًا في إحداها، فاسكن لدقيقة.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وشم رائحة الأعشاب الدافئة في الهواء.",
+      "text_markdown": "وشم رائحة الأعشاب الدافئة في الهواء.",
+      "tts": {
+        "text": "وشم رائحة الأعشاب الدافئة في الهواء.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "واستمع إلى الصراصير في العشب الجاف.",
+      "text_markdown": "واستمع إلى الصراصير في العشب الجاف.",
+      "tts": {
+        "text": "واستمع إلى الصراصير في العشب الجاف.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وانظر بعيدًا نحو البحر.",
+      "text_markdown": "وانظر بعيدًا نحو البحر.",
+      "tts": {
+        "text": "وانظر بعيدًا نحو البحر.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "الخاتمة",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ستشعر بقلب هذه المنطقة الحيوية ينبض حولك.",
+      "text_markdown": "ستشعر بقلب هذه المنطقة الحيوية ينبض حولك.",
+      "tts": {
+        "text": "ستشعر بقلب هذه المنطقة الحيوية ينبض حولك.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "ko",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 글",
+      "text_markdown": "독자에게 드리는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이건 오토바이 이야기예요.",
+      "text_markdown": "이건 오토바이 이야기예요.",
+      "tts": {
+        "text": "이건 오토바이 이야기예요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "진짜 이야기예요.",
+      "text_markdown": "진짜 이야기예요.",
+      "tts": {
+        "text": "진짜 이야기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "옛날 옛적에는 아무도 오토바이가 없었어요.",
+      "text_markdown": "옛날 옛적에는 아무도 오토바이가 없었어요.",
+      "tts": {
+        "text": "옛날 옛적에는 아무도 오토바이가 없었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지금은 수백만 대나 있어요.",
+      "text_markdown": "지금은 수백만 대나 있어요.",
+      "tts": {
+        "text": "지금은 수백만 대나 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시끄럽고 빠르고 반짝반짝해요.",
+      "text_markdown": "시끄럽고 빠르고 반짝반짝해요.",
+      "tts": {
+        "text": "시끄럽고 빠르고 반짝반짝해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "우리는 맨 처음부터 시작할 거예요.",
+      "text_markdown": "우리는 맨 처음부터 시작할 거예요.",
+      "tts": {
+        "text": "우리는 맨 처음부터 시작할 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "처음으로 만든 사람, 처음으로 탄 사람들, 그리고 처음 열린 경주를 만나 볼 거예요.",
+      "text_markdown": "처음으로 만든 사람, 처음으로 탄 사람들, 그리고 처음 열린 경주를 만나 볼 거예요.",
+      "tts": {
+        "text": "처음으로 만든 사람, 처음으로 탄 사람들, 그리고 처음 열린 경주를 만나 볼 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그다음에 오늘날의 세상도 살펴볼 거예요.",
+      "text_markdown": "그다음에 오늘날의 세상도 살펴볼 거예요.",
+      "tts": {
+        "text": "그다음에 오늘날의 세상도 살펴볼 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "끝까지 읽고 나면, 이 작은 기계가 어떻게 길을 영원히 바꿔 놓았는지 알게 될 거예요.",
+      "text_markdown": "끝까지 읽고 나면, 이 작은 기계가 어떻게 길을 영원히 바꿔 놓았는지 알게 될 거예요.",
+      "tts": {
+        "text": "끝까지 읽고 나면, 이 작은 기계가 어떻게 길을 영원히 바꿔 놓았는지 알게 될 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "text_markdown": "1장 처음으로 부릉부릉 달린 두 바퀴"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오토바이는 엔진이 달린 자전거예요.",
+      "text_markdown": "오토바이는 엔진이 달린 자전거예요.",
+      "tts": {
+        "text": "오토바이는 엔진이 달린 자전거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "엔진이 바퀴를 굴려요.",
+      "text_markdown": "엔진이 바퀴를 굴려요.",
+      "tts": {
+        "text": "엔진이 바퀴를 굴려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "타는 사람은 페달을 밟지 않아요.",
+      "text_markdown": "타는 사람은 페달을 밟지 않아요.",
+      "tts": {
+        "text": "타는 사람은 페달을 밟지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "옛날에는 오토바이가 없었어요.",
+      "text_markdown": "옛날에는 오토바이가 없었어요.",
+      "tts": {
+        "text": "옛날에는 오토바이가 없었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사람들은 말을 탔어요.",
+      "text_markdown": "사람들은 말을 탔어요.",
+      "tts": {
+        "text": "사람들은 말을 탔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사람들은 자전거를 탔어요.",
+      "text_markdown": "사람들은 자전거를 탔어요.",
+      "tts": {
+        "text": "사람들은 자전거를 탔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "자전거는 바퀴가 두 개이고 엔진이 없어요.",
+      "text_markdown": "자전거는 바퀴가 두 개이고 엔진이 없어요.",
+      "tts": {
+        "text": "자전거는 바퀴가 두 개이고 엔진이 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "발로 페달을 밟아야 해요.",
+      "text_markdown": "발로 페달을 밟아야 해요.",
+      "tts": {
+        "text": "발로 페달을 밟아야 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1885년에, 독일의 한 아저씨가 큰 생각을 떠올렸어요.",
+      "text_markdown": "1885년에, 독일의 한 아저씨가 큰 생각을 떠올렸어요.",
+      "tts": {
+        "text": "천팔백팔십오년에, 독일의 한 아저씨가 큰 생각을 떠올렸어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이름은 고틀리프 다임러였어요.",
+      "text_markdown": "이름은 고틀리프 다임러였어요.",
+      "tts": {
+        "text": "이름은 고틀리프 다임러였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 작은 가솔린 엔진을 나무 자전거에 달았어요.",
+      "text_markdown": "그는 작은 가솔린 엔진을 나무 자전거에 달았어요.",
+      "tts": {
+        "text": "그는 작은 가솔린 엔진을 나무 자전거에 달았어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그는 그 기계를 Reitwagen이라고 불렀어요.",
+      "text_markdown": "그는 그 기계를 Reitwagen이라고 불렀어요.",
+      "tts": {
+        "text": "그는 그 기계를 라이트바겐이라고 불렀어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 말은 독일어로 \"타는 마차\"라는 뜻이에요.",
+      "text_markdown": "이 말은 독일어로 \"타는 마차\"라는 뜻이에요.",
+      "tts": {
+        "text": "이 말은 독일어로, 타는 마차, 라는 뜻이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것이 세계에서 처음 만들어진 오토바이였어요.",
+      "text_markdown": "그것이 세계에서 처음 만들어진 오토바이였어요.",
+      "tts": {
+        "text": "그것이 세계에서 처음 만들어진 오토바이였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen은 시끄러웠어요.",
+      "text_markdown": "Reitwagen은 시끄러웠어요.",
+      "tts": {
+        "text": "라이트바겐은 시끄러웠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "덜컹덜컹 흔들렸어요.",
+      "text_markdown": "덜컹덜컹 흔들렸어요.",
+      "tts": {
+        "text": "덜컹덜컹 흔들렸어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "속도는 한 가지뿐이었어요.",
+      "text_markdown": "속도는 한 가지뿐이었어요.",
+      "tts": {
+        "text": "속도는 한 가지뿐이었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "시속 7마일 정도로 달릴 수 있었어요.",
+      "text_markdown": "시속 7마일 정도로 달릴 수 있었어요.",
+      "tts": {
+        "text": "시속 칠 마일 정도로 달릴 수 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "오늘날 자전거를 타는 사람보다 느려요.",
+      "text_markdown": "오늘날 자전거를 타는 사람보다 느려요.",
+      "tts": {
+        "text": "오늘날 자전거를 타는 사람보다 느려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "하지만 말 없이도 움직이고, 페달 없이도 움직였어요.",
+      "text_markdown": "하지만 말 없이도 움직이고, 페달 없이도 움직였어요.",
+      "tts": {
+        "text": "하지만 말 없이도 움직이고, 페달 없이도 움직였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 처음으로 부릉부릉 달린 두 바퀴",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오토바이가 태어난 거예요.",
+      "text_markdown": "오토바이가 태어난 거예요.",
+      "tts": {
+        "text": "오토바이가 태어난 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "2장 처음 생긴 회사들",
+      "text_markdown": "2장 처음 생긴 회사들"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다임러 다음에는 다른 사람들도 오토바이를 만들고 싶어 했어요.",
+      "text_markdown": "다임러 다음에는 다른 사람들도 오토바이를 만들고 싶어 했어요.",
+      "tts": {
+        "text": "다임러 다음에는 다른 사람들도 오토바이를 만들고 싶어 했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "곧 세계 곳곳에 작은 공방들이 생겼어요.",
+      "text_markdown": "곧 세계 곳곳에 작은 공방들이 생겼어요.",
+      "tts": {
+        "text": "곧 세계 곳곳에 작은 공방들이 생겼어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국에서는 지크프리트 베트만이라는 사람이 Triumph라는 회사를 시작했어요.",
+      "text_markdown": "영국에서는 지크프리트 베트만이라는 사람이 Triumph라는 회사를 시작했어요.",
+      "tts": {
+        "text": "영국에서는 지크프리트 베트만이라는 사람이 트라이엄프라는 회사를 시작했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "처음 만든 Triumph 오토바이는 1902년에 만들어졌어요.",
+      "text_markdown": "처음 만든 Triumph 오토바이는 1902년에 만들어졌어요.",
+      "tts": {
+        "text": "처음 만든 트라이엄프 오토바이는 천구백이년에 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미국에서는 윌리엄 할리와 아서 데이비슨이라는 두 친구가 작은 나무 헛간에서 처음 오토바이를 만들었어요.",
+      "text_markdown": "미국에서는 윌리엄 할리와 아서 데이비슨이라는 두 친구가 작은 나무 헛간에서 처음 오토바이를 만들었어요.",
+      "tts": {
+        "text": "미국에서는 윌리엄 할리와 아서 데이비슨이라는 두 친구가 작은 나무 헛간에서 처음 오토바이를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 헛간은 밀워키라는 도시에 있었어요.",
+      "text_markdown": "그 헛간은 밀워키라는 도시에 있었어요.",
+      "tts": {
+        "text": "그 헛간은 밀워키라는 도시에 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1903년이었어요.",
+      "text_markdown": "1903년이었어요.",
+      "tts": {
+        "text": "천구백삼년이었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "두 사람은 그 회사를 Harley-Davidson이라고 불렀어요.",
+      "text_markdown": "두 사람은 그 회사를 Harley-Davidson이라고 불렀어요.",
+      "tts": {
+        "text": "두 사람은 그 회사를 할리 데이비슨이라고 불렀어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또 다른 미국 회사는 몇 해 더 일찍 시작했어요.",
+      "text_markdown": "또 다른 미국 회사는 몇 해 더 일찍 시작했어요.",
+      "tts": {
+        "text": "또 다른 미국 회사는 몇 해 더 일찍 시작했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "매사추세츠주 스프링필드의 두 남자가 1901년에 처음 기계를 만들었어요.",
+      "text_markdown": "매사추세츠주 스프링필드의 두 남자가 1901년에 처음 기계를 만들었어요.",
+      "tts": {
+        "text": "매사추세츠주 스프링필드의 두 남자가 천구백일년에 처음 기계를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 그것을 Indian이라고 불렀어요.",
+      "text_markdown": "그들은 그것을 Indian이라고 불렀어요.",
+      "tts": {
+        "text": "그들은 그것을 인디언이라고 불렀어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "인도에서는 Royal Enfield라는 회사가 1901년에 오토바이를 만들기 시작했어요.",
+      "text_markdown": "인도에서는 Royal Enfield라는 회사가 1901년에 오토바이를 만들기 시작했어요.",
+      "tts": {
+        "text": "인도에서는 로열 엔필드라는 회사가 천구백일년에 오토바이를 만들기 시작했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오늘날 Royal Enfield는 아직도 오토바이를 만들고 있는, 세계에서 가장 오래된 오토바이 회사예요.",
+      "text_markdown": "오늘날 Royal Enfield는 아직도 오토바이를 만들고 있는, 세계에서 가장 오래된 오토바이 회사예요.",
+      "tts": {
+        "text": "오늘날 로열 엔필드는 아직도 오토바이를 만들고 있는, 세계에서 가장 오래된 오토바이 회사예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "독일에서는 BMW 회사가 조금 늦게, 1923년에 오토바이를 만들기 시작했어요.",
+      "text_markdown": "독일에서는 BMW 회사가 조금 늦게, 1923년에 오토바이를 만들기 시작했어요.",
+      "tts": {
+        "text": "독일에서는 비엠더블유 회사가 조금 늦게, 천구백이십삼년에 오토바이를 만들기 시작했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW는 독일어로 \"바이에른 자동차 공장\"이라는 뜻이에요.",
+      "text_markdown": "BMW는 독일어로 \"바이에른 자동차 공장\"이라는 뜻이에요.",
+      "tts": {
+        "text": "비엠더블유는 독일어로, 바이에른 자동차 공장, 이라는 뜻이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1910년쯤에는 오토바이가 어디에나 있었어요.",
+      "text_markdown": "1910년쯤에는 오토바이가 어디에나 있었어요.",
+      "tts": {
+        "text": "천구백십년쯤에는 오토바이가 어디에나 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도시 거리에도, 시골길에도 있었어요.",
+      "text_markdown": "도시 거리에도, 시골길에도 있었어요.",
+      "tts": {
+        "text": "도시 거리에도, 시골길에도 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 처음 생긴 회사들",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오토바이의 시대가 정말로 시작된 거예요.",
+      "text_markdown": "오토바이의 시대가 정말로 시작된 거예요.",
+      "tts": {
+        "text": "오토바이의 시대가 정말로 시작된 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "3장 전쟁터로 간 오토바이",
+      "text_markdown": "3장 전쟁터로 간 오토바이"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오토바이는 빨라요.",
+      "text_markdown": "오토바이는 빨라요.",
+      "tts": {
+        "text": "오토바이는 빨라요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "좁은 길도 지나갈 수 있어요.",
+      "text_markdown": "좁은 길도 지나갈 수 있어요.",
+      "tts": {
+        "text": "좁은 길도 지나갈 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "부대 사이에서 소식을 전할 수도 있어요.",
+      "text_markdown": "부대 사이에서 소식을 전할 수도 있어요.",
+      "tts": {
+        "text": "부대 사이에서 소식을 전할 수도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그래서 전쟁이 일어나면 군대는 오토바이를 원했어요.",
+      "text_markdown": "그래서 전쟁이 일어나면 군대는 오토바이를 원했어요.",
+      "tts": {
+        "text": "그래서 전쟁이 일어나면 군대는 오토바이를 원했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "제1차 세계 대전은 1914년에 시작됐어요.",
+      "text_markdown": "제1차 세계 대전은 1914년에 시작됐어요.",
+      "tts": {
+        "text": "제일차 세계 대전은 천구백십사년에 시작됐어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "병사들은 명령을 전하려고 Triumph 오토바이를 탔어요.",
+      "text_markdown": "병사들은 명령을 전하려고 Triumph 오토바이를 탔어요.",
+      "tts": {
+        "text": "병사들은 명령을 전하려고 트라이엄프 오토바이를 탔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H는 튼튼하고 조용했어요.",
+      "text_markdown": "Triumph Model H는 튼튼하고 조용했어요.",
+      "tts": {
+        "text": "트라이엄프 모델 에이치는 튼튼하고 조용했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "말이 갈 수 없는 곳도 갈 수 있었어요.",
+      "text_markdown": "말이 갈 수 없는 곳도 갈 수 있었어요.",
+      "tts": {
+        "text": "말이 갈 수 없는 곳도 갈 수 있었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "제2차 세계 대전은 1939년에 시작됐어요.",
+      "text_markdown": "제2차 세계 대전은 1939년에 시작됐어요.",
+      "tts": {
+        "text": "제이차 세계 대전은 천구백삼십구년에 시작됐어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그때쯤에는 오토바이가 더 빠르고 튼튼해졌어요.",
+      "text_markdown": "그때쯤에는 오토바이가 더 빠르고 튼튼해졌어요.",
+      "tts": {
+        "text": "그때쯤에는 오토바이가 더 빠르고 튼튼해졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "미국 병사들은 Harley-Davidson WLA를 탔어요.",
+      "text_markdown": "미국 병사들은 Harley-Davidson WLA를 탔어요.",
+      "tts": {
+        "text": "미국 병사들은 할리 데이비슨 더블유 엘 에이를 탔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "독일 병사들은 BMW R75를 탔어요.",
+      "text_markdown": "독일 병사들은 BMW R75를 탔어요.",
+      "tts": {
+        "text": "독일 병사들은 비엠더블유 알 칠십오를 탔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75에는 사이드카가 있어서, 세 번째 바퀴와 또 한 명의 병사가 앉을 자리가 있었어요.",
+      "text_markdown": "R75에는 사이드카가 있어서, 세 번째 바퀴와 또 한 명의 병사가 앉을 자리가 있었어요.",
+      "tts": {
+        "text": "알 칠십오에는 사이드카가 있어서, 세 번째 바퀴와 또 한 명의 병사가 앉을 자리가 있었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전쟁이 끝나고 병사들은 집으로 돌아왔어요.",
+      "text_markdown": "전쟁이 끝나고 병사들은 집으로 돌아왔어요.",
+      "tts": {
+        "text": "전쟁이 끝나고 병사들은 집으로 돌아왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오토바이도 함께 가져왔어요.",
+      "text_markdown": "오토바이도 함께 가져왔어요.",
+      "tts": {
+        "text": "오토바이도 함께 가져왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 사람들이 계속 타고 싶어 했어요.",
+      "text_markdown": "많은 사람들이 계속 타고 싶어 했어요.",
+      "tts": {
+        "text": "많은 사람들이 계속 타고 싶어 했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 사람들은 자기들끼리 오토바이 클럽을 만들었어요.",
+      "text_markdown": "어떤 사람들은 자기들끼리 오토바이 클럽을 만들었어요.",
+      "tts": {
+        "text": "어떤 사람들은 자기들끼리 오토바이 클럽을 만들었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전쟁 덕분에 오토바이는 유명해졌어요.",
+      "text_markdown": "전쟁 덕분에 오토바이는 유명해졌어요.",
+      "tts": {
+        "text": "전쟁 덕분에 오토바이는 유명해졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수백만 명의 사람들이 처음으로 오토바이를 봤어요.",
+      "text_markdown": "수백만 명의 사람들이 처음으로 오토바이를 봤어요.",
+      "tts": {
+        "text": "수백만 명의 사람들이 처음으로 오토바이를 봤어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 전쟁터로 간 오토바이",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 사람들이 자기 오토바이를 갖고 싶어 했어요.",
+      "text_markdown": "많은 사람들이 자기 오토바이를 갖고 싶어 했어요.",
+      "tts": {
+        "text": "많은 사람들이 자기 오토바이를 갖고 싶어 했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "4장 일본의 등장",
+      "text_markdown": "4장 일본의 등장"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "제2차 세계 대전이 끝나고 일본은 가난했어요.",
+      "text_markdown": "제2차 세계 대전이 끝나고 일본은 가난했어요.",
+      "tts": {
+        "text": "제이차 세계 대전이 끝나고 일본은 가난했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "자동차는 거의 다 너무 비쌌어요.",
+      "text_markdown": "자동차는 거의 다 너무 비쌌어요.",
+      "tts": {
+        "text": "자동차는 거의 다 너무 비쌌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사람들은 작고 값싼 이동 수단이 필요했어요.",
+      "text_markdown": "사람들은 작고 값싼 이동 수단이 필요했어요.",
+      "tts": {
+        "text": "사람들은 작고 값싼 이동 수단이 필요했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한 젊은 일본 남자가 그 기회를 봤어요.",
+      "text_markdown": "한 젊은 일본 남자가 그 기회를 봤어요.",
+      "tts": {
+        "text": "한 젊은 일본 남자가 그 기회를 봤어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이름은 혼다 소이치로였어요.",
+      "text_markdown": "이름은 혼다 소이치로였어요.",
+      "tts": {
+        "text": "이름은 혼다 소이치로였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그는 1948년에 작은 회사를 시작했어요.",
+      "text_markdown": "그는 1948년에 작은 회사를 시작했어요.",
+      "tts": {
+        "text": "그는 천구백사십팔년에 작은 회사를 시작했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 회사를 Honda라고 불렀어요.",
+      "text_markdown": "그 회사를 Honda라고 불렀어요.",
+      "tts": {
+        "text": "그 회사를 혼다라고 불렀어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1958년에 Honda는 Super Cub라는 아주 작은 오토바이를 만들었어요.",
+      "text_markdown": "1958년에 Honda는 Super Cub라는 아주 작은 오토바이를 만들었어요.",
+      "tts": {
+        "text": "천구백오십팔년에 혼다는 슈퍼 커브라는 아주 작은 오토바이를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cub는 타기 쉬웠어요.",
+      "text_markdown": "Super Cub는 타기 쉬웠어요.",
+      "tts": {
+        "text": "슈퍼 커브는 타기 쉬웠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "고치기도 쉬웠어요.",
+      "text_markdown": "고치기도 쉬웠어요.",
+      "tts": {
+        "text": "고치기도 쉬웠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정말, 정말 값쌌어요.",
+      "text_markdown": "정말, 정말 값쌌어요.",
+      "tts": {
+        "text": "정말, 정말 값쌌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "세계 곳곳의 사람들이 Super Cub를 샀어요.",
+      "text_markdown": "세계 곳곳의 사람들이 Super Cub를 샀어요.",
+      "tts": {
+        "text": "세계 곳곳의 사람들이 슈퍼 커브를 샀어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오늘날까지 Super Cub는 1억 대가 넘게 팔렸어요.",
+      "text_markdown": "오늘날까지 Super Cub는 1억 대가 넘게 팔렸어요.",
+      "tts": {
+        "text": "오늘날까지 슈퍼 커브는 일억 대가 넘게 팔렸어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사상 가장 많이 팔린 자동차 종류예요.",
+      "text_markdown": "역사상 가장 많이 팔린 자동차 종류예요.",
+      "tts": {
+        "text": "역사상 가장 많이 팔린 자동차 종류예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "곧 일본의 다른 세 회사도 Honda를 따라왔어요.",
+      "text_markdown": "곧 일본의 다른 세 회사도 Honda를 따라왔어요.",
+      "tts": {
+        "text": "곧 일본의 다른 세 회사도 혼다를 따라왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yamaha, Suzuki, Kawasaki였어요.",
+      "text_markdown": "Yamaha, Suzuki, Kawasaki였어요.",
+      "tts": {
+        "text": "야마하, 스즈키, 가와사키였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Honda와 합쳐서 빅 포라고 불러요.",
+      "text_markdown": "Honda와 합쳐서 빅 포라고 불러요.",
+      "tts": {
+        "text": "혼다와 합쳐서 빅 포라고 불러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "빅 포는 빠르고, 값싸고, 타기 쉬운 오토바이를 만들었어요.",
+      "text_markdown": "빅 포는 빠르고, 값싸고, 타기 쉬운 오토바이를 만들었어요.",
+      "tts": {
+        "text": "빅 포는 빠르고, 값싸고, 타기 쉬운 오토바이를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1960년대에는 일본 오토바이가 어디에나 있었어요.",
+      "text_markdown": "1960년대에는 일본 오토바이가 어디에나 있었어요.",
+      "tts": {
+        "text": "천구백육십년대에는 일본 오토바이가 어디에나 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 일본의 등장",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "도로의 새로운 왕이 된 거예요.",
+      "text_markdown": "도로의 새로운 왕이 된 거예요.",
+      "tts": {
+        "text": "도로의 새로운 왕이 된 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "text_markdown": "5장 더 빠르게, 더 빠르게, 더 빠르게"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1960년대에 오토바이를 타는 사람들은 더 빨리 달리고 싶어 했어요.",
+      "text_markdown": "1960년대에 오토바이를 타는 사람들은 더 빨리 달리고 싶어 했어요.",
+      "tts": {
+        "text": "천구백육십년대에 오토바이를 타는 사람들은 더 빨리 달리고 싶어 했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "회사들은 세계에서 가장 빠른 오토바이를 만들려고 경쟁을 시작했어요.",
+      "text_markdown": "회사들은 세계에서 가장 빠른 오토바이를 만들려고 경쟁을 시작했어요.",
+      "tts": {
+        "text": "회사들은 세계에서 가장 빠른 오토바이를 만들려고 경쟁을 시작했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이탈리아에서는 MV Agusta라는 작은 회사가 아름다운 빨간 오토바이를 만들어서 경주마다 우승했어요.",
+      "text_markdown": "이탈리아에서는 MV Agusta라는 작은 회사가 아름다운 빨간 오토바이를 만들어서 경주마다 우승했어요.",
+      "tts": {
+        "text": "이탈리아에서는 엠브이 아구스타라는 작은 회사가 아름다운 빨간 오토바이를 만들어서 경주마다 우승했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국에서는 Triumph와 Norton도 힘센 기계를 만들었어요.",
+      "text_markdown": "영국에서는 Triumph와 Norton도 힘센 기계를 만들었어요.",
+      "tts": {
+        "text": "영국에서는 트라이엄프와 노턴도 힘센 기계를 만들었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러다가 1969년에 Honda가 굉장한 일을 해냈어요.",
+      "text_markdown": "그러다가 1969년에 Honda가 굉장한 일을 해냈어요.",
+      "tts": {
+        "text": "그러다가 천구백육십구년에 혼다가 굉장한 일을 해냈어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "CB 750이라는 오토바이를 만들었어요.",
+      "text_markdown": "CB 750이라는 오토바이를 만들었어요.",
+      "tts": {
+        "text": "씨비 칠백오십이라는 오토바이를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "실린더가 네 개이고 큰 엔진을 가졌어요.",
+      "text_markdown": "실린더가 네 개이고 큰 엔진을 가졌어요.",
+      "tts": {
+        "text": "실린더가 네 개이고 큰 엔진을 가졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "시속 120마일이 넘게 달릴 수 있었어요.",
+      "text_markdown": "시속 120마일이 넘게 달릴 수 있었어요.",
+      "tts": {
+        "text": "시속 백이십 마일이 넘게 달릴 수 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "진짜 첫 번째 슈퍼바이크였어요.",
+      "text_markdown": "진짜 첫 번째 슈퍼바이크였어요.",
+      "tts": {
+        "text": "진짜 첫 번째 슈퍼바이크였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "CB 750이 나온 뒤로, 모든 회사가 슈퍼바이크를 만들고 싶어 했어요.",
+      "text_markdown": "CB 750이 나온 뒤로, 모든 회사가 슈퍼바이크를 만들고 싶어 했어요.",
+      "tts": {
+        "text": "씨비 칠백오십이 나온 뒤로, 모든 회사가 슈퍼바이크를 만들고 싶어 했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오토바이는 점점 더 빨라졌어요.",
+      "text_markdown": "오토바이는 점점 더 빨라졌어요.",
+      "tts": {
+        "text": "오토바이는 점점 더 빨라졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "곧 오토바이에는 알록달록한 페어링이 달렸어요. 페어링은 바람을 가르는 매끈한 플라스틱 껍데기예요.",
+      "text_markdown": "곧 오토바이에는 알록달록한 페어링이 달렸어요. 페어링은 바람을 가르는 매끈한 플라스틱 껍데기예요.",
+      "tts": {
+        "text": "곧 오토바이에는 알록달록한 페어링이 달렸어요. 페어링은 바람을 가르는 매끈한 플라스틱 껍데기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1990년에는 Kawasaki ZX-11이라는 일본 오토바이가 세계에서 가장 빠른 오토바이가 됐어요.",
+      "text_markdown": "1990년에는 Kawasaki ZX-11이라는 일본 오토바이가 세계에서 가장 빠른 오토바이가 됐어요.",
+      "tts": {
+        "text": "천구백구십년에는 가와사키 제트엑스 십일이라는 일본 오토바이가 세계에서 가장 빠른 오토바이가 됐어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "시속 175마일에 가깝게 달릴 수 있었어요.",
+      "text_markdown": "시속 175마일에 가깝게 달릴 수 있었어요.",
+      "tts": {
+        "text": "시속 백칠십오 마일에 가깝게 달릴 수 있었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "몇 해 뒤, Suzuki Hayabusa는 더 빠르게 달렸어요.",
+      "text_markdown": "몇 해 뒤, Suzuki Hayabusa는 더 빠르게 달렸어요.",
+      "tts": {
+        "text": "몇 해 뒤, 스즈키 하야부사는 더 빠르게 달렸어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "시속 194마일까지 달렸어요.",
+      "text_markdown": "시속 194마일까지 달렸어요.",
+      "tts": {
+        "text": "시속 백구십사 마일까지 달렸어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 더 빠르게, 더 빠르게, 더 빠르게",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오늘날 도로 위 자동차 대부분보다 더 빨라요.",
+      "text_markdown": "오늘날 도로 위 자동차 대부분보다 더 빨라요.",
+      "tts": {
+        "text": "오늘날 도로 위 자동차 대부분보다 더 빨라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "6장 여러 가지 오토바이",
+      "text_markdown": "6장 여러 가지 오토바이"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 오토바이는 모양이 여러 가지예요.",
+      "text_markdown": "오늘날 오토바이는 모양이 여러 가지예요.",
+      "tts": {
+        "text": "오늘날 오토바이는 모양이 여러 가지예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "종류마다 하는 일이 달라요.",
+      "text_markdown": "종류마다 하는 일이 달라요.",
+      "tts": {
+        "text": "종류마다 하는 일이 달라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "스포츠 바이크는 아주 빨리 달리려고 만든 거예요.",
+      "text_markdown": "스포츠 바이크는 아주 빨리 달리려고 만든 거예요.",
+      "tts": {
+        "text": "스포츠 바이크는 아주 빨리 달리려고 만든 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가볍고 낮아요.",
+      "text_markdown": "가볍고 낮아요.",
+      "tts": {
+        "text": "가볍고 낮아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "타는 사람은 앞으로 몸을 숙여요.",
+      "text_markdown": "타는 사람은 앞으로 몸을 숙여요.",
+      "tts": {
+        "text": "타는 사람은 앞으로 몸을 숙여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "스포츠 바이크는 매끈한 도로와 경주장에서 타려고 만든 거예요.",
+      "text_markdown": "스포츠 바이크는 매끈한 도로와 경주장에서 타려고 만든 거예요.",
+      "tts": {
+        "text": "스포츠 바이크는 매끈한 도로와 경주장에서 타려고 만든 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "더트 바이크는 진흙과 흙길에서 타려고 만든 거예요.",
+      "text_markdown": "더트 바이크는 진흙과 흙길에서 타려고 만든 거예요.",
+      "tts": {
+        "text": "더트 바이크는 진흙과 흙길에서 타려고 만든 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바퀴가 크고 타이어도 두툼해요.",
+      "text_markdown": "바퀴가 크고 타이어도 두툼해요.",
+      "tts": {
+        "text": "바퀴가 크고 타이어도 두툼해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "더트 바이크는 언덕 위로 점프할 수도 있어요.",
+      "text_markdown": "더트 바이크는 언덕 위로 점프할 수도 있어요.",
+      "tts": {
+        "text": "더트 바이크는 언덕 위로 점프할 수도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어린 라이더들은 더트 바이크로 처음 배우는 일이 많아요.",
+      "text_markdown": "어린 라이더들은 더트 바이크로 처음 배우는 일이 많아요.",
+      "tts": {
+        "text": "어린 라이더들은 더트 바이크로 처음 배우는 일이 많아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "크루저는 길고 낮아요.",
+      "text_markdown": "크루저는 길고 낮아요.",
+      "tts": {
+        "text": "크루저는 길고 낮아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "타는 사람은 똑바로 앉아서 천천히 달려요.",
+      "text_markdown": "타는 사람은 똑바로 앉아서 천천히 달려요.",
+      "tts": {
+        "text": "타는 사람은 똑바로 앉아서 천천히 달려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson은 크루저로 유명해요.",
+      "text_markdown": "Harley-Davidson은 크루저로 유명해요.",
+      "tts": {
+        "text": "할리 데이비슨은 크루저로 유명해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Indian도 마찬가지예요.",
+      "text_markdown": "Indian도 마찬가지예요.",
+      "tts": {
+        "text": "인디언도 마찬가지예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어드벤처 바이크는 긴 여행을 위해 만든 거예요.",
+      "text_markdown": "어드벤처 바이크는 긴 여행을 위해 만든 거예요.",
+      "tts": {
+        "text": "어드벤처 바이크는 긴 여행을 위해 만든 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "도로에서도 흙길에서도 달릴 수 있어요.",
+      "text_markdown": "도로에서도 흙길에서도 달릴 수 있어요.",
+      "tts": {
+        "text": "도로에서도 흙길에서도 달릴 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS는 유명한 어드벤처 바이크예요.",
+      "text_markdown": "BMW GS는 유명한 어드벤처 바이크예요.",
+      "tts": {
+        "text": "비엠더블유 지에스는 유명한 어드벤처 바이크예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "KTM도 그래요.",
+      "text_markdown": "KTM도 그래요.",
+      "tts": {
+        "text": "케이티엠도 그래요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "초퍼, 스쿠터, 레이싱 바이크, 그리고 전기 오토바이도 있어요.",
+      "text_markdown": "초퍼, 스쿠터, 레이싱 바이크, 그리고 전기 오토바이도 있어요.",
+      "tts": {
+        "text": "초퍼, 스쿠터, 레이싱 바이크, 그리고 전기 오토바이도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거의 모든 길에 어울리는 오토바이가 있어요.",
+      "text_markdown": "거의 모든 길에 어울리는 오토바이가 있어요.",
+      "tts": {
+        "text": "거의 모든 길에 어울리는 오토바이가 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 여러 가지 오토바이",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 세계 어느 나라에서도 오토바이를 볼 수 있어요.",
+      "text_markdown": "오늘날 세계 어느 나라에서도 오토바이를 볼 수 있어요.",
+      "tts": {
+        "text": "오늘날 세계 어느 나라에서도 오토바이를 볼 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "7장 새로운 길",
+      "text_markdown": "7장 새로운 길"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날 오토바이에는 새로운 종류의 엔진이 있어요.",
+      "text_markdown": "오늘날 오토바이에는 새로운 종류의 엔진이 있어요.",
+      "tts": {
+        "text": "오늘날 오토바이에는 새로운 종류의 엔진이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전기 엔진이에요.",
+      "text_markdown": "전기 엔진이에요.",
+      "tts": {
+        "text": "전기 엔진이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전기 오토바이는 조용해요.",
+      "text_markdown": "전기 오토바이는 조용해요.",
+      "tts": {
+        "text": "전기 오토바이는 조용해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "가솔린이 필요 없어요.",
+      "text_markdown": "가솔린이 필요 없어요.",
+      "tts": {
+        "text": "가솔린이 필요 없어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "휴대폰처럼 그냥 충전기에 꽂으면 돼요.",
+      "text_markdown": "휴대폰처럼 그냥 충전기에 꽂으면 돼요.",
+      "tts": {
+        "text": "휴대폰처럼 그냥 충전기에 꽂으면 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zero라는 회사는 캘리포니아에서 전기 오토바이를 만들어요.",
+      "text_markdown": "Zero라는 회사는 캘리포니아에서 전기 오토바이를 만들어요.",
+      "tts": {
+        "text": "제로라는 회사는 캘리포니아에서 전기 오토바이를 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson도 LiveWire라는 전기 오토바이를 만들고 있어요.",
+      "text_markdown": "Harley-Davidson도 LiveWire라는 전기 오토바이를 만들고 있어요.",
+      "tts": {
+        "text": "할리 데이비슨도 라이브와이어라는 전기 오토바이를 만들고 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이탈리아의 Energica라는 회사는 전기 레이싱 바이크를 만들어요.",
+      "text_markdown": "이탈리아의 Energica라는 회사는 전기 레이싱 바이크를 만들어요.",
+      "tts": {
+        "text": "이탈리아의 에네르지카라는 회사는 전기 레이싱 바이크를 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정말 빨라요.",
+      "text_markdown": "정말 빨라요.",
+      "tts": {
+        "text": "정말 빨라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처음 만들어진 오토바이 Reitwagen은 시속 7마일로 달렸어요.",
+      "text_markdown": "처음 만들어진 오토바이 Reitwagen은 시속 7마일로 달렸어요.",
+      "tts": {
+        "text": "처음 만들어진 오토바이 라이트바겐은 시속 칠 마일로 달렸어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오늘날의 전기 오토바이는 시속 200마일이 넘게 달릴 수 있어요.",
+      "text_markdown": "오늘날의 전기 오토바이는 시속 200마일이 넘게 달릴 수 있어요.",
+      "tts": {
+        "text": "오늘날의 전기 오토바이는 시속 이백 마일이 넘게 달릴 수 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여기까지가 오토바이 이야기예요.",
+      "text_markdown": "여기까지가 오토바이 이야기예요.",
+      "tts": {
+        "text": "여기까지가 오토바이 이야기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이건 큰 이야기였어요.",
+      "text_markdown": "이건 큰 이야기였어요.",
+      "tts": {
+        "text": "이건 큰 이야기였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "다음 열한 권의 책에서는 작은 이야기들을 들려줄 거예요.",
+      "text_markdown": "다음 열한 권의 책에서는 작은 이야기들을 들려줄 거예요.",
+      "tts": {
+        "text": "다음 열한 권의 책에서는 작은 이야기들을 들려줄 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "각 권은 오토바이 세계의 한 부분에 대한 이야기예요.",
+      "text_markdown": "각 권은 오토바이 세계의 한 부분에 대한 이야기예요.",
+      "tts": {
+        "text": "각 권은 오토바이 세계의 한 부분에 대한 이야기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "두 번째 권은 Harley-Davidson 이야기예요.",
+      "text_markdown": "두 번째 권은 Harley-Davidson 이야기예요.",
+      "tts": {
+        "text": "두 번째 권은 할리 데이비슨 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세 번째 권은 Honda 이야기예요.",
+      "text_markdown": "세 번째 권은 Honda 이야기예요.",
+      "tts": {
+        "text": "세 번째 권은 혼다 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "네 번째 권은 이탈리아의 Ducati 이야기예요.",
+      "text_markdown": "네 번째 권은 이탈리아의 Ducati 이야기예요.",
+      "tts": {
+        "text": "네 번째 권은 이탈리아의 두카티 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "다섯 번째 권은 독일의 BMW 이야기예요.",
+      "text_markdown": "다섯 번째 권은 독일의 BMW 이야기예요.",
+      "tts": {
+        "text": "다섯 번째 권은 독일의 비엠더블유 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "여섯 번째 권은 영국의 Triumph 이야기예요.",
+      "text_markdown": "여섯 번째 권은 영국의 Triumph 이야기예요.",
+      "tts": {
+        "text": "여섯 번째 권은 영국의 트라이엄프 이야기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "일곱 번째 권은 더트 바이크 이야기예요.",
+      "text_markdown": "일곱 번째 권은 더트 바이크 이야기예요.",
+      "tts": {
+        "text": "일곱 번째 권은 더트 바이크 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여덟 번째 권은 스포츠 바이크 이야기예요.",
+      "text_markdown": "여덟 번째 권은 스포츠 바이크 이야기예요.",
+      "tts": {
+        "text": "여덟 번째 권은 스포츠 바이크 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아홉 번째 권은 크루저와 초퍼 이야기예요.",
+      "text_markdown": "아홉 번째 권은 크루저와 초퍼 이야기예요.",
+      "tts": {
+        "text": "아홉 번째 권은 크루저와 초퍼 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "열 번째 권은 어드벤처 바이크 이야기예요.",
+      "text_markdown": "열 번째 권은 어드벤처 바이크 이야기예요.",
+      "tts": {
+        "text": "열 번째 권은 어드벤처 바이크 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "열한 번째 권은 레이싱 이야기예요.",
+      "text_markdown": "열한 번째 권은 레이싱 이야기예요.",
+      "tts": {
+        "text": "열한 번째 권은 레이싱 이야기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "열두 번째 권은 전기 오토바이와 미래 이야기예요.",
+      "text_markdown": "열두 번째 권은 전기 오토바이와 미래 이야기예요.",
+      "tts": {
+        "text": "열두 번째 권은 전기 오토바이와 미래 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가장 재미있어 보이는 책을 골라 봐요.",
+      "text_markdown": "가장 재미있어 보이는 책을 골라 봐요.",
+      "tts": {
+        "text": "가장 재미있어 보이는 책을 골라 봐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 새로운 길",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그리고 함께 달려 봐요.",
+      "text_markdown": "그리고 함께 달려 봐요.",
+      "tts": {
+        "text": "그리고 함께 달려 봐요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "이 책에 대하여",
+      "text_markdown": "이 책에 대하여"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 오토바이 시리즈의 첫 번째 책이에요.",
+      "text_markdown": "이 책은 오토바이 시리즈의 첫 번째 책이에요.",
+      "tts": {
+        "text": "이 책은 오토바이 시리즈의 첫 번째 책이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어거스트가 소리 내어 읽어 줘요.",
+      "text_markdown": "어거스트가 소리 내어 읽어 줘요.",
+      "tts": {
+        "text": "어거스트가 소리 내어 읽어 줘요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "모든 문장은 짧고 분명해서, 어떤 언어로도 따라 읽을 수 있어요.",
+      "text_markdown": "모든 문장은 짧고 분명해서, 어떤 언어로도 따라 읽을 수 있어요.",
+      "tts": {
+        "text": "모든 문장은 짧고 분명해서, 어떤 언어로도 따라 읽을 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 문장이 다른 언어로는 어떻게 들리는지 알고 싶다면, 그 언어로 된 같은 책을 들어 봐요.",
+      "text_markdown": "어떤 문장이 다른 언어로는 어떻게 들리는지 알고 싶다면, 그 언어로 된 같은 책을 들어 봐요.",
+      "tts": {
+        "text": "어떤 문장이 다른 언어로는 어떻게 들리는지 알고 싶다면, 그 언어로 된 같은 책을 들어 봐요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "쪽 위의 글자는 들리는 소리와 똑같아요.",
+      "text_markdown": "쪽 위의 글자는 들리는 소리와 똑같아요.",
+      "tts": {
+        "text": "쪽 위의 글자는 들리는 소리와 똑같아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그렇게 배우는 거예요.",
+      "text_markdown": "그렇게 배우는 거예요.",
+      "tts": {
+        "text": "그렇게 배우는 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "이 책에 대하여",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이제 오토바이를 찾아서 부릉부릉 달리는 소리를 들어 봐요.",
+      "text_markdown": "이제 오토바이를 찾아서 부릉부릉 달리는 소리를 들어 봐요.",
+      "tts": {
+        "text": "이제 오토바이를 찾아서 부릉부릉 달리는 소리를 들어 봐요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

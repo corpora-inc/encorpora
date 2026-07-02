@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "language": "ko",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말",
+      "text_markdown": "독자에게 드리는 말"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "안녕하세요.",
+      "text_markdown": "안녕하세요.",
+      "tts": {
+        "text": "안녕하세요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "저는 Kym이에요.",
+      "text_markdown": "저는 Kym이에요.",
+      "tts": {
+        "text": "저는 킴이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "저는 음식을 좋아해요.",
+      "text_markdown": "저는 음식을 좋아해요.",
+      "tts": {
+        "text": "저는 음식을 좋아해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "음식에 담긴 이야기도 좋아해요.",
+      "text_markdown": "음식에 담긴 이야기도 좋아해요.",
+      "tts": {
+        "text": "음식에 담긴 이야기도 좋아해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 큰 음식 문화를 다루는 작은 책이에요.",
+      "text_markdown": "이 책은 큰 음식 문화를 다루는 작은 책이에요.",
+      "tts": {
+        "text": "이 책은 큰 음식 문화를 다루는 작은 책이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 음식은 페르시아 음식이에요.",
+      "text_markdown": "그 음식은 페르시아 음식이에요.",
+      "tts": {
+        "text": "그 음식은 페르시아 음식이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "곧 이란의 음식이죠.",
+      "text_markdown": "곧 이란의 음식이죠.",
+      "tts": {
+        "text": "곧 이란의 음식이죠.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "아주 오래된 페르시아라는 나라의 음식이기도 해요.",
+      "text_markdown": "아주 오래된 페르시아라는 나라의 음식이기도 해요.",
+      "tts": {
+        "text": "아주 오래된 페르시아라는 나라의 음식이기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아는 사람이 스스로 먹을거리를 기른 가장 오래된 땅 가운데 하나예요.",
+      "text_markdown": "페르시아는 사람이 스스로 먹을거리를 기른 가장 오래된 땅 가운데 하나예요.",
+      "tts": {
+        "text": "페르시아는 사람이 스스로 먹을거리를 기른 가장 오래된 땅 가운데 하나예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "밀, 보리, 복숭아, 살구, 석류, 시금치, 사프란, 당신 접시에 있는 많은 것이 그곳에서 태어났어요.",
+      "text_markdown": "밀, 보리, 복숭아, 살구, 석류, 시금치, 사프란, 당신 접시에 있는 많은 것이 그곳에서 태어났어요.",
+      "tts": {
+        "text": "밀, 보리, 복숭아, 살구, 석류, 시금치, 사프란, 당신 접시에 있는 많은 것이 그곳에서 태어났어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "먼저 그 땅부터 볼게요.",
+      "text_markdown": "먼저 그 땅부터 볼게요.",
+      "tts": {
+        "text": "먼저 그 땅부터 볼게요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그런 다음 그곳에서 자라는 것들을 볼게요.",
+      "text_markdown": "그런 다음 그곳에서 자라는 것들을 볼게요.",
+      "tts": {
+        "text": "그런 다음 그곳에서 자라는 것들을 볼게요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그다음 쌀, 빵, 고기, 그리고 스튜를 볼게요.",
+      "text_markdown": "그다음 쌀, 빵, 고기, 그리고 스튜를 볼게요.",
+      "tts": {
+        "text": "그다음 쌀, 빵, 고기, 그리고 스튜를 볼게요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "끝에 가면 페르시아 식탁에 무엇이 오르는지 알게 돼요. 또 그것이 어디서 왔는지도 알게 돼요.",
+      "text_markdown": "끝에 가면 페르시아 식탁에 무엇이 오르는지 알게 돼요. 또 그것이 어디서 왔는지도 알게 돼요.",
+      "tts": {
+        "text": "끝에 가면 페르시아 식탁에 무엇이 오르는지 알게 돼요. 또 그것이 어디서 왔는지도 알게 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자리에 앉으세요.",
+      "text_markdown": "자리에 앉으세요.",
+      "tts": {
+        "text": "자리에 앉으세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "차를 한 잔 따르세요.",
+      "text_markdown": "차를 한 잔 따르세요.",
+      "tts": {
+        "text": "차를 한 잔 따르세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이제 시작해요.",
+      "text_markdown": "이제 시작해요.",
+      "tts": {
+        "text": "이제 시작해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "제1장 농사가 시작된 땅",
+      "text_markdown": "제1장 농사가 시작된 땅"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아는 높고 메마른 땅이에요.",
+      "text_markdown": "페르시아는 높고 메마른 땅이에요.",
+      "tts": {
+        "text": "페르시아는 높고 메마른 땅이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "북쪽에는 카스피해가 있고 남쪽에는 페르시아만이 있어요.",
+      "text_markdown": "북쪽에는 카스피해가 있고 남쪽에는 페르시아만이 있어요.",
+      "tts": {
+        "text": "북쪽에는 카스피해가 있고 남쪽에는 페르시아만이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "서쪽에는 메소포타미아가 있어요.",
+      "text_markdown": "서쪽에는 메소포타미아가 있어요.",
+      "tts": {
+        "text": "서쪽에는 메소포타미아가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "동쪽에는 인도가 있어요.",
+      "text_markdown": "동쪽에는 인도가 있어요.",
+      "tts": {
+        "text": "동쪽에는 인도가 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "한가운데에는 산과 사막이 있어요.",
+      "text_markdown": "한가운데에는 산과 사막이 있어요.",
+      "tts": {
+        "text": "한가운데에는 산과 사막이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "바로 이웃한 곳에서 약 일만 년 전 사람들이 처음으로 밀과 보리를 일부러 길렀어요.",
+      "text_markdown": "바로 이웃한 곳에서 약 일만 년 전 사람들이 처음으로 밀과 보리를 일부러 길렀어요.",
+      "tts": {
+        "text": "바로 이웃한 곳에서 약 일만 년 전 사람들이 처음으로 밀과 보리를 일부러 길렀어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "농사는 그곳에서 태어났어요.",
+      "text_markdown": "농사는 그곳에서 태어났어요.",
+      "tts": {
+        "text": "농사는 그곳에서 태어났어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "페르시아는 그것을 가장 먼저 배운 곳 가운데 하나였어요.",
+      "text_markdown": "페르시아는 그것을 가장 먼저 배운 곳 가운데 하나였어요.",
+      "tts": {
+        "text": "페르시아는 그것을 가장 먼저 배운 곳 가운데 하나였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 오랜 출발의 이점이 모든 페르시아 접시에 남아 있어요.",
+      "text_markdown": "그 오랜 출발의 이점이 모든 페르시아 접시에 남아 있어요.",
+      "tts": {
+        "text": "그 오랜 출발의 이점이 모든 페르시아 접시에 남아 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "복숭아는 페르시아에서 왔어요.",
+      "text_markdown": "복숭아는 페르시아에서 왔어요.",
+      "tts": {
+        "text": "복숭아는 페르시아에서 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "로마인은 그것을 페르시카, 곧 페르시아 과일이라고 불렀어요. 영어의 피치라는 말도 그 이름에서 나왔어요.",
+      "text_markdown": "로마인은 그것을 페르시카, 곧 페르시아 과일이라고 불렀어요. 영어의 피치라는 말도 그 이름에서 나왔어요.",
+      "tts": {
+        "text": "로마인은 그것을 페르시카, 곧 페르시아 과일이라고 불렀어요. 영어의 피치라는 말도 그 이름에서 나왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "살구도 그곳에서 왔어요.",
+      "text_markdown": "살구도 그곳에서 왔어요.",
+      "tts": {
+        "text": "살구도 그곳에서 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "석류도 그래요.",
+      "text_markdown": "석류도 그래요.",
+      "tts": {
+        "text": "석류도 그래요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "호두도 그래요.",
+      "text_markdown": "호두도 그래요.",
+      "tts": {
+        "text": "호두도 그래요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "새콤한 체리도 그래요.",
+      "text_markdown": "새콤한 체리도 그래요.",
+      "tts": {
+        "text": "새콤한 체리도 그래요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "세상에서 가장 이른 샐러드 채소 가운데 하나인 시금치도 그래요.",
+      "text_markdown": "세상에서 가장 이른 샐러드 채소 가운데 하나인 시금치도 그래요.",
+      "tts": {
+        "text": "세상에서 가장 이른 샐러드 채소 가운데 하나인 시금치도 그래요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "영어 spinach는 페르시아어 에스파나즈에서 왔어요.",
+      "text_markdown": "영어 spinach는 페르시아어 에스파나즈에서 왔어요.",
+      "tts": {
+        "text": "영어 spinach는 페르시아어 에스파나즈에서 왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "심지어 파라다이스라는 말도 페르시아어예요.",
+      "text_markdown": "심지어 파라다이스라는 말도 페르시아어예요.",
+      "tts": {
+        "text": "심지어 파라다이스라는 말도 페르시아어예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 말은 담으로 둘러싼 정원, 파르디스에서 왔어요.",
+      "text_markdown": "그 말은 담으로 둘러싼 정원, 파르디스에서 왔어요.",
+      "tts": {
+        "text": "그 말은 담으로 둘러싼 정원, 파르디스에서 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "처음의 낙원은 석류나무로 가득한 페르시아 과수원이었어요.",
+      "text_markdown": "처음의 낙원은 석류나무로 가득한 페르시아 과수원이었어요.",
+      "tts": {
+        "text": "처음의 낙원은 석류나무로 가득한 페르시아 과수원이었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아는 잘 먹기만 한 것이 아니에요.",
+      "text_markdown": "페르시아는 잘 먹기만 한 것이 아니에요.",
+      "tts": {
+        "text": "페르시아는 잘 먹기만 한 것이 아니에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르시아는 세상에 잘 먹는 법도 가르쳤어요.",
+      "text_markdown": "페르시아는 세상에 잘 먹는 법도 가르쳤어요.",
+      "tts": {
+        "text": "페르시아는 세상에 잘 먹는 법도 가르쳤어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "제2장 페르시아의 토박이 식재료",
+      "text_markdown": "제2장 페르시아의 토박이 식재료"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아 부엌 찬장을 열어 보세요.",
+      "text_markdown": "페르시아 부엌 찬장을 열어 보세요.",
+      "tts": {
+        "text": "페르시아 부엌 찬장을 열어 보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "냄새만으로도 이야기가 시작돼요.",
+      "text_markdown": "냄새만으로도 이야기가 시작돼요.",
+      "tts": {
+        "text": "냄새만으로도 이야기가 시작돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 번째 냄새는 사프란이에요.",
+      "text_markdown": "첫 번째 냄새는 사프란이에요.",
+      "tts": {
+        "text": "첫 번째 냄새는 사프란이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이란은 세계 사프란의 약 구십 퍼센트를 길러요.",
+      "text_markdown": "이란은 세계 사프란의 약 구십 퍼센트를 길러요.",
+      "tts": {
+        "text": "이란은 세계 사프란의 약 구십 퍼센트를 길러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 대부분은 호라산이라는 지방에서 와요.",
+      "text_markdown": "그 대부분은 호라산이라는 지방에서 와요.",
+      "tts": {
+        "text": "그 대부분은 호라산이라는 지방에서 와요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "일 그램을 만들려면 농부가 크로커스 꽃 약 이백 송이에서 붉은 실을 손으로 따야 해요.",
+      "text_markdown": "일 그램을 만들려면 농부가 크로커스 꽃 약 이백 송이에서 붉은 실을 손으로 따야 해요.",
+      "tts": {
+        "text": "일 그램을 만들려면 농부가 크로커스 꽃 약 이백 송이에서 붉은 실을 손으로 따야 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그 일은 차가운 가을 새벽에 이루어져요.",
+      "text_markdown": "그 일은 차가운 가을 새벽에 이루어져요.",
+      "tts": {
+        "text": "그 일은 차가운 가을 새벽에 이루어져요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "사프란은 세상에서 가장 비싼 향신료예요.",
+      "text_markdown": "사프란은 세상에서 가장 비싼 향신료예요.",
+      "tts": {
+        "text": "사프란은 세상에서 가장 비싼 향신료예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "한 꼬집만 넣어도 밥은 금빛이 되고 물은 향수가 돼요.",
+      "text_markdown": "한 꼬집만 넣어도 밥은 금빛이 되고 물은 향수가 돼요.",
+      "tts": {
+        "text": "한 꼬집만 넣어도 밥은 금빛이 되고 물은 향수가 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "두 번째 냄새는 석류예요.",
+      "text_markdown": "두 번째 냄새는 석류예요.",
+      "tts": {
+        "text": "두 번째 냄새는 석류예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르시아 사람들은 수천 년 동안 석류를 길렀어요.",
+      "text_markdown": "페르시아 사람들은 수천 년 동안 석류를 길렀어요.",
+      "tts": {
+        "text": "페르시아 사람들은 수천 년 동안 석류를 길렀어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 과일은 사랑과 낙원의 상징이에요.",
+      "text_markdown": "그 과일은 사랑과 낙원의 상징이에요.",
+      "tts": {
+        "text": "그 과일은 사랑과 낙원의 상징이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "즙은 오래 끓이는 요리에 짜 넣어요.",
+      "text_markdown": "즙은 오래 끓이는 요리에 짜 넣어요.",
+      "tts": {
+        "text": "즙은 오래 끓이는 요리에 짜 넣어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "씨는 밥과 샐러드 위에 뿌려요.",
+      "text_markdown": "씨는 밥과 샐러드 위에 뿌려요.",
+      "tts": {
+        "text": "씨는 밥과 샐러드 위에 뿌려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그다음은 피스타치오예요.",
+      "text_markdown": "그다음은 피스타치오예요.",
+      "tts": {
+        "text": "그다음은 피스타치오예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이란에는 삼천 년 된 피스타치오 과수원이 있어요.",
+      "text_markdown": "이란에는 삼천 년 된 피스타치오 과수원이 있어요.",
+      "tts": {
+        "text": "이란에는 삼천 년 된 피스타치오 과수원이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "당신이 먹는 피스타치오는 흔히 페르시아 나무의 후손이에요.",
+      "text_markdown": "당신이 먹는 피스타치오는 흔히 페르시아 나무의 후손이에요.",
+      "tts": {
+        "text": "당신이 먹는 피스타치오는 흔히 페르시아 나무의 후손이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "호두, 새콤한 체리, 모과, 멜론, 대추야자도 있어요.",
+      "text_markdown": "호두, 새콤한 체리, 모과, 멜론, 대추야자도 있어요.",
+      "tts": {
+        "text": "호두, 새콤한 체리, 모과, 멜론, 대추야자도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "야생 덤불에서 나는 짙은 붉은 신맛 향신료, 수마크도 있어요.",
+      "text_markdown": "야생 덤불에서 나는 짙은 붉은 신맛 향신료, 수마크도 있어요.",
+      "tts": {
+        "text": "야생 덤불에서 나는 짙은 붉은 신맛 향신료, 수마크도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "레몬이 흔해지기 전에는 수마크가 음식 맛을 산뜻하게 했어요.",
+      "text_markdown": "레몬이 흔해지기 전에는 수마크가 음식 맛을 산뜻하게 했어요.",
+      "tts": {
+        "text": "레몬이 흔해지기 전에는 수마크가 음식 맛을 산뜻하게 했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "지금도 그래요.",
+      "text_markdown": "지금도 그래요.",
+      "tts": {
+        "text": "지금도 그래요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아 찬장에는 과일의 역사 절반이 담겨 있어요.",
+      "text_markdown": "페르시아 찬장에는 과일의 역사 절반이 담겨 있어요.",
+      "tts": {
+        "text": "페르시아 찬장에는 과일의 역사 절반이 담겨 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "제3장 쌀과 빵, 그리고 신성한 누룽지",
+      "text_markdown": "제3장 쌀과 빵, 그리고 신성한 누룽지"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "쌀은 약 이천오백 년 전에 인도에서 페르시아로 왔어요.",
+      "text_markdown": "쌀은 약 이천오백 년 전에 인도에서 페르시아로 왔어요.",
+      "tts": {
+        "text": "쌀은 약 이천오백 년 전에 인도에서 페르시아로 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그리고 식탁의 중심이 되었어요.",
+      "text_markdown": "그리고 식탁의 중심이 되었어요.",
+      "tts": {
+        "text": "그리고 식탁의 중심이 되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아 사람들은 쌀을 두 가지 방식으로 지어요.",
+      "text_markdown": "페르시아 사람들은 쌀을 두 가지 방식으로 지어요.",
+      "tts": {
+        "text": "페르시아 사람들은 쌀을 두 가지 방식으로 지어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그냥 지은 밥은 첼로라고 불러요.",
+      "text_markdown": "그냥 지은 밥은 첼로라고 불러요.",
+      "tts": {
+        "text": "그냥 지은 밥은 첼로라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "허브나 고기나 과일을 섞은 밥은 폴로라고 불러요.",
+      "text_markdown": "허브나 고기나 과일을 섞은 밥은 폴로라고 불러요.",
+      "tts": {
+        "text": "허브나 고기나 과일을 섞은 밥은 폴로라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "둘 다 길고 가볍고 알알이 흩어져 있어요.",
+      "text_markdown": "둘 다 길고 가볍고 알알이 흩어져 있어요.",
+      "tts": {
+        "text": "둘 다 길고 가볍고 알알이 흩어져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "하지만 마법은 냄비 바닥에 있어요.",
+      "text_markdown": "하지만 마법은 냄비 바닥에 있어요.",
+      "tts": {
+        "text": "하지만 마법은 냄비 바닥에 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것을 타디그라고 불러요.",
+      "text_markdown": "그것을 타디그라고 불러요.",
+      "tts": {
+        "text": "그것을 타디그라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "요리하는 사람은 냄비 바닥에 얇은 층을 깔아요. 사프란 밥일 때도 있고, 감자 한 조각일 때도 있고, 빵 한 조각일 때도 있어요.",
+      "text_markdown": "요리하는 사람은 냄비 바닥에 얇은 층을 깔아요. 사프란 밥일 때도 있고, 감자 한 조각일 때도 있고, 빵 한 조각일 때도 있어요.",
+      "tts": {
+        "text": "요리하는 사람은 냄비 바닥에 얇은 층을 깔아요. 사프란 밥일 때도 있고, 감자 한 조각일 때도 있고, 빵 한 조각일 때도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 위에 밥을 올려요.",
+      "text_markdown": "그 위에 밥을 올려요.",
+      "tts": {
+        "text": "그 위에 밥을 올려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그리고 면보로 감싼 뚜껑을 덮으면 김이 일을 해요.",
+      "text_markdown": "그리고 면보로 감싼 뚜껑을 덮으면 김이 일을 해요.",
+      "tts": {
+        "text": "그리고 면보로 감싼 뚜껑을 덮으면 김이 일을 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "한 시간이 지나면 그 바닥 층은 금빛이고 바삭해져요.",
+      "text_markdown": "한 시간이 지나면 그 바닥 층은 금빛이고 바삭해져요.",
+      "tts": {
+        "text": "한 시간이 지나면 그 바닥 층은 금빛이고 바삭해져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "타디그는 신성해요.",
+      "text_markdown": "타디그는 신성해요.",
+      "tts": {
+        "text": "타디그는 신성해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가족들은 그것을 놓고 다퉈요.",
+      "text_markdown": "가족들은 그것을 놓고 다퉈요.",
+      "tts": {
+        "text": "가족들은 그것을 놓고 다퉈요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이란 텔레비전에는 누가 가장 잘 만드는지 겨루는 방송도 있어요.",
+      "text_markdown": "이란 텔레비전에는 누가 가장 잘 만드는지 겨루는 방송도 있어요.",
+      "tts": {
+        "text": "이란 텔레비전에는 누가 가장 잘 만드는지 겨루는 방송도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "완벽한 타디그는 한 장의 아름다운 둥근 판처럼 냄비에서 나와요.",
+      "text_markdown": "완벽한 타디그는 한 장의 아름다운 둥근 판처럼 냄비에서 나와요.",
+      "tts": {
+        "text": "완벽한 타디그는 한 장의 아름다운 둥근 판처럼 냄비에서 나와요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이제 빵 이야기를 해볼게요.",
+      "text_markdown": "이제 빵 이야기를 해볼게요.",
+      "tts": {
+        "text": "이제 빵 이야기를 해볼게요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가장 유명한 빵은 상가크예요.",
+      "text_markdown": "가장 유명한 빵은 상가크예요.",
+      "tts": {
+        "text": "가장 유명한 빵은 상가크예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "상가크는 뜨거운 조약돌 위에서 굽는데, 그 방식은 오천 년이나 되었어요.",
+      "text_markdown": "상가크는 뜨거운 조약돌 위에서 굽는데, 그 방식은 오천 년이나 되었어요.",
+      "tts": {
+        "text": "상가크는 뜨거운 조약돌 위에서 굽는데, 그 방식은 오천 년이나 되었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 조약돌은 아직도 빵에 붙어 나와요.",
+      "text_markdown": "그 조약돌은 아직도 빵에 붙어 나와요.",
+      "tts": {
+        "text": "그 조약돌은 아직도 빵에 붙어 나와요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "식탁에서 그것을 골라내요.",
+      "text_markdown": "식탁에서 그것을 골라내요.",
+      "tts": {
+        "text": "식탁에서 그것을 골라내요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다른 빵으로는 바르바리, 라바시, 타프툰이 있어요.",
+      "text_markdown": "다른 빵으로는 바르바리, 라바시, 타프툰이 있어요.",
+      "tts": {
+        "text": "다른 빵으로는 바르바리, 라바시, 타프툰이 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르시아식 아침밥은 빵, 차, 그리고 부드러운 흰 치즈예요.",
+      "text_markdown": "페르시아식 아침밥은 빵, 차, 그리고 부드러운 흰 치즈예요.",
+      "tts": {
+        "text": "페르시아식 아침밥은 빵, 차, 그리고 부드러운 흰 치즈예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "제4장 케밥과 인내심이 필요한 스튜",
+      "text_markdown": "제4장 케밥과 인내심이 필요한 스튜"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "케밥이라는 말은 페르시아어예요.",
+      "text_markdown": "케밥이라는 말은 페르시아어예요.",
+      "tts": {
+        "text": "케밥이라는 말은 페르시아어예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "원래는 카밥이고, 불 위에서 익힌 고기라는 뜻이에요.",
+      "text_markdown": "원래는 카밥이고, 불 위에서 익힌 고기라는 뜻이에요.",
+      "tts": {
+        "text": "원래는 카밥이고, 불 위에서 익힌 고기라는 뜻이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "페르시아 사람들은 수천 년 동안 긴 납작 꼬치에 양고기를 구워 왔어요.",
+      "text_markdown": "페르시아 사람들은 수천 년 동안 긴 납작 꼬치에 양고기를 구워 왔어요.",
+      "tts": {
+        "text": "페르시아 사람들은 수천 년 동안 긴 납작 꼬치에 양고기를 구워 왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘 가장 인기 있는 케밥은 쿠비데예요.",
+      "text_markdown": "오늘 가장 인기 있는 케밥은 쿠비데예요.",
+      "tts": {
+        "text": "오늘 가장 인기 있는 케밥은 쿠비데예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 다진 양고기나 소고기에 양파와 소금을 섞어 넓고 납작한 꼬치에 눌러 붙인 뒤 숯불에 구운 거예요.",
+      "text_markdown": "그것은 다진 양고기나 소고기에 양파와 소금을 섞어 넓고 납작한 꼬치에 눌러 붙인 뒤 숯불에 구운 거예요.",
+      "tts": {
+        "text": "그것은 다진 양고기나 소고기에 양파와 소금을 섞어 넓고 납작한 꼬치에 눌러 붙인 뒤 숯불에 구운 거예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 아주 오래돼 보여요.",
+      "text_markdown": "그것은 아주 오래돼 보여요.",
+      "tts": {
+        "text": "그것은 아주 오래돼 보여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "하지만 그렇지 않아요.",
+      "text_markdown": "하지만 그렇지 않아요.",
+      "tts": {
+        "text": "하지만 그렇지 않아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "고기 분쇄기는 십구세기 말에야 이란에 왔어요.",
+      "text_markdown": "고기 분쇄기는 십구세기 말에야 이란에 왔어요.",
+      "tts": {
+        "text": "고기 분쇄기는 십구세기 말에야 이란에 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "가장 페르시아다운 케밥인 쿠비데도 겨우 백 년 남짓 되었어요.",
+      "text_markdown": "가장 페르시아다운 케밥인 쿠비데도 겨우 백 년 남짓 되었어요.",
+      "tts": {
+        "text": "가장 페르시아다운 케밥인 쿠비데도 겨우 백 년 남짓 되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "더 오래된 케밥은 썬 고기로 만들어요.",
+      "text_markdown": "더 오래된 케밥은 썬 고기로 만들어요.",
+      "tts": {
+        "text": "더 오래된 케밥은 썬 고기로 만들어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "주제는 사프란과 요구르트에 재운 닭고기예요.",
+      "text_markdown": "주제는 사프란과 요구르트에 재운 닭고기예요.",
+      "tts": {
+        "text": "주제는 사프란과 요구르트에 재운 닭고기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "바르그는 얇은 양고기 안심이에요.",
+      "text_markdown": "바르그는 얇은 양고기 안심이에요.",
+      "tts": {
+        "text": "바르그는 얇은 양고기 안심이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "둘 다 사프란 밥 위에 구운 토마토와 함께 올려요.",
+      "text_markdown": "둘 다 사프란 밥 위에 구운 토마토와 함께 올려요.",
+      "tts": {
+        "text": "둘 다 사프란 밥 위에 구운 토마토와 함께 올려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이제 인내심이 필요한 음식, 페르시아식 푹 끓인 요리 호레쉬를 만나요.",
+      "text_markdown": "이제 인내심이 필요한 음식, 페르시아식 푹 끓인 요리 호레쉬를 만나요.",
+      "tts": {
+        "text": "이제 인내심이 필요한 음식, 페르시아식 푹 끓인 요리 호레쉬를 만나요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "호레쉬는 몇 시간씩 끓여요.",
+      "text_markdown": "호레쉬는 몇 시간씩 끓여요.",
+      "tts": {
+        "text": "호레쉬는 몇 시간씩 끓여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 유명한 것은 페센잔이에요.",
+      "text_markdown": "가장 유명한 것은 페센잔이에요.",
+      "tts": {
+        "text": "가장 유명한 것은 페센잔이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 닭이나 오리를 간 호두와 석류즙의 걸쭉한 소스에 넣고 천천히 익힌 요리예요.",
+      "text_markdown": "그것은 닭이나 오리를 간 호두와 석류즙의 걸쭉한 소스에 넣고 천천히 익힌 요리예요.",
+      "tts": {
+        "text": "그것은 닭이나 오리를 간 호두와 석류즙의 걸쭉한 소스에 넣고 천천히 익힌 요리예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 조리법은 지금까지 발견된 가장 오래된 스튜 조리법 가운데 하나예요.",
+      "text_markdown": "그 조리법은 지금까지 발견된 가장 오래된 스튜 조리법 가운데 하나예요.",
+      "tts": {
+        "text": "그 조리법은 지금까지 발견된 가장 오래된 스튜 조리법 가운데 하나예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 변형 하나가 페르세폴리스 유적의 쐐기문자 점토판에 적혀 있어요.",
+      "text_markdown": "그 변형 하나가 페르세폴리스 유적의 쐐기문자 점토판에 적혀 있어요.",
+      "tts": {
+        "text": "그 변형 하나가 페르세폴리스 유적의 쐐기문자 점토판에 적혀 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그러니 그 나이는 이천오백 년이 넘어요.",
+      "text_markdown": "그러니 그 나이는 이천오백 년이 넘어요.",
+      "tts": {
+        "text": "그러니 그 나이는 이천오백 년이 넘어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "사람들은 지금도 같은 방식으로 그것을 요리해요.",
+      "text_markdown": "사람들은 지금도 같은 방식으로 그것을 요리해요.",
+      "tts": {
+        "text": "사람들은 지금도 같은 방식으로 그것을 요리해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또 다른 고전은 고르메 사브지예요. 양고기와 강낭콩과 산더미 같은 생허브를 말린 라임과 함께 푹 끓여요.",
+      "text_markdown": "또 다른 고전은 고르메 사브지예요. 양고기와 강낭콩과 산더미 같은 생허브를 말린 라임과 함께 푹 끓여요.",
+      "tts": {
+        "text": "또 다른 고전은 고르메 사브지예요. 양고기와 강낭콩과 산더미 같은 생허브를 말린 라임과 함께 푹 끓여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 이란 사람들은 그것을 국민 음식이라고 불러요.",
+      "text_markdown": "많은 이란 사람들은 그것을 국민 음식이라고 불러요.",
+      "tts": {
+        "text": "많은 이란 사람들은 그것을 국민 음식이라고 불러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "제5장 요구르트와 차, 그리고 가장 오래된 단것",
+      "text_markdown": "제5장 요구르트와 차, 그리고 가장 오래된 단것"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아 사람들은 모든 것과 함께 요구르트를 먹어요.",
+      "text_markdown": "페르시아 사람들은 모든 것과 함께 요구르트를 먹어요.",
+      "tts": {
+        "text": "페르시아 사람들은 모든 것과 함께 요구르트를 먹어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그냥 요구르트는 마스트라고 불러요.",
+      "text_markdown": "그냥 요구르트는 마스트라고 불러요.",
+      "tts": {
+        "text": "그냥 요구르트는 마스트라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오이와 말린 민트를 넣은 마스트는 마스트 오 히아르라고 불러요.",
+      "text_markdown": "오이와 말린 민트를 넣은 마스트는 마스트 오 히아르라고 불러요.",
+      "tts": {
+        "text": "오이와 말린 민트를 넣은 마스트는 마스트 오 히아르라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "민트를 넣은 짭짤한 요구르트 음료는 두그라고 불러요.",
+      "text_markdown": "민트를 넣은 짭짤한 요구르트 음료는 두그라고 불러요.",
+      "tts": {
+        "text": "민트를 넣은 짭짤한 요구르트 음료는 두그라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "또 카슈크도 있는데, 수프에 넣는 진한 말린 유청이에요.",
+      "text_markdown": "또 카슈크도 있는데, 수프에 넣는 진한 말린 유청이에요.",
+      "tts": {
+        "text": "또 카슈크도 있는데, 수프에 넣는 진한 말린 유청이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이제 차 이야기예요.",
+      "text_markdown": "이제 차 이야기예요.",
+      "tts": {
+        "text": "이제 차 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르시아 사람들은 아침에도 낮에도 밤에도, 사모바르 위의 키 큰 주전자에 진하게 우리어 마셔요.",
+      "text_markdown": "페르시아 사람들은 아침에도 낮에도 밤에도, 사모바르 위의 키 큰 주전자에 진하게 우리어 마셔요.",
+      "tts": {
+        "text": "페르시아 사람들은 아침에도 낮에도 밤에도, 사모바르 위의 키 큰 주전자에 진하게 우리어 마셔요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "차가 아주 중요해서, 늦게 들어왔다는 사실이 사람들을 놀라게 해요.",
+      "text_markdown": "차가 아주 중요해서, 늦게 들어왔다는 사실이 사람들을 놀라게 해요.",
+      "tts": {
+        "text": "차가 아주 중요해서, 늦게 들어왔다는 사실이 사람들을 놀라게 해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "페르시아 역사 대부분에서 마시는 것은 커피였어요.",
+      "text_markdown": "페르시아 역사 대부분에서 마시는 것은 커피였어요.",
+      "tts": {
+        "text": "페르시아 역사 대부분에서 마시는 것은 커피였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "차가 자리를 차지한 것은 십구세기 말이 되어서예요.",
+      "text_markdown": "차가 자리를 차지한 것은 십구세기 말이 되어서예요.",
+      "tts": {
+        "text": "차가 자리를 차지한 것은 십구세기 말이 되어서예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "오늘의 이란은 세계에서 차를 많이 마시는 나라 가운데 하나예요.",
+      "text_markdown": "오늘의 이란은 세계에서 차를 많이 마시는 나라 가운데 하나예요.",
+      "tts": {
+        "text": "오늘의 이란은 세계에서 차를 많이 마시는 나라 가운데 하나예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여기에 작은 예법도 있어요.",
+      "text_markdown": "여기에 작은 예법도 있어요.",
+      "tts": {
+        "text": "여기에 작은 예법도 있어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "각설탕 하나를 이 사이에 물어요.",
+      "text_markdown": "각설탕 하나를 이 사이에 물어요.",
+      "tts": {
+        "text": "각설탕 하나를 이 사이에 물어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그리고 그 각설탕을 사이에 두고 차를 홀짝여요.",
+      "text_markdown": "그리고 그 각설탕을 사이에 두고 차를 홀짝여요.",
+      "tts": {
+        "text": "그리고 그 각설탕을 사이에 두고 차를 홀짝여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "각설탕은 조금씩 녹아요.",
+      "text_markdown": "각설탕은 조금씩 녹아요.",
+      "tts": {
+        "text": "각설탕은 조금씩 녹아요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "차는 뜨겁고 진하고 달콤하게 목으로 내려가요.",
+      "text_markdown": "차는 뜨겁고 진하고 달콤하게 목으로 내려가요.",
+      "tts": {
+        "text": "차는 뜨겁고 진하고 달콤하게 목으로 내려가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이제 단것 이야기예요.",
+      "text_markdown": "이제 단것 이야기예요.",
+      "tts": {
+        "text": "이제 단것 이야기예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르시아의 단것은 오래되고 진하고 한입 크기예요.",
+      "text_markdown": "페르시아의 단것은 오래되고 진하고 한입 크기예요.",
+      "tts": {
+        "text": "페르시아의 단것은 오래되고 진하고 한입 크기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 오래된 것은 팔루데예요.",
+      "text_markdown": "가장 오래된 것은 팔루데예요.",
+      "tts": {
+        "text": "가장 오래된 것은 팔루데예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "가는 쌀국수를 장미수 시럽에 얼린 뒤 라임즙과 피스타치오를 곁들여 내요.",
+      "text_markdown": "가는 쌀국수를 장미수 시럽에 얼린 뒤 라임즙과 피스타치오를 곁들여 내요.",
+      "tts": {
+        "text": "가는 쌀국수를 장미수 시럽에 얼린 뒤 라임즙과 피스타치오를 곁들여 내요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "페르시아 작가들은 그것을 기원전 사백 년쯤부터 기록해요.",
+      "text_markdown": "페르시아 작가들은 그것을 기원전 사백 년쯤부터 기록해요.",
+      "tts": {
+        "text": "페르시아 작가들은 그것을 기원전 사백 년쯤부터 기록해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그래서 팔루데는 세상에서 가장 오래된 냉동 후식 가운데 하나예요.",
+      "text_markdown": "그래서 팔루데는 세상에서 가장 오래된 냉동 후식 가운데 하나예요.",
+      "tts": {
+        "text": "그래서 팔루데는 세상에서 가장 오래된 냉동 후식 가운데 하나예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그것은 아이스크림보다 이천 년도 더 오래됐어요.",
+      "text_markdown": "그것은 아이스크림보다 이천 년도 더 오래됐어요.",
+      "tts": {
+        "text": "그것은 아이스크림보다 이천 년도 더 오래됐어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또 다른 고전도 있어요. 타브리즈의 바클라바는 터키식보다 가볍고, 호두와 장미수가 들어가요.",
+      "text_markdown": "또 다른 고전도 있어요. 타브리즈의 바클라바는 터키식보다 가볍고, 호두와 장미수가 들어가요.",
+      "tts": {
+        "text": "또 다른 고전도 있어요. 타브리즈의 바클라바는 터키식보다 가볍고, 호두와 장미수가 들어가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "할바는 참깨나 사프란으로 만든 꾸덕한 반죽이에요.",
+      "text_markdown": "할바는 참깨나 사프란으로 만든 꾸덕한 반죽이에요.",
+      "tts": {
+        "text": "할바는 참깨나 사프란으로 만든 꾸덕한 반죽이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "에스파한의 가즈는 피스타치오가 든 부드러운 누가예요.",
+      "text_markdown": "에스파한의 가즈는 피스타치오가 든 부드러운 누가예요.",
+      "tts": {
+        "text": "에스파한의 가즈는 피스타치오가 든 부드러운 누가예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "소한은 바삭한 금빛 사프란 엿과자예요.",
+      "text_markdown": "소한은 바삭한 금빛 사프란 엿과자예요.",
+      "tts": {
+        "text": "소한은 바삭한 금빛 사프란 엿과자예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "콤의 노호드치는 아주 작은 병아리콩 과자예요.",
+      "text_markdown": "콤의 노호드치는 아주 작은 병아리콩 과자예요.",
+      "tts": {
+        "text": "콤의 노호드치는 아주 작은 병아리콩 과자예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "작은 접시의 단것, 한 잔의 차, 느린 대화.",
+      "text_markdown": "작은 접시의 단것, 한 잔의 차, 느린 대화.",
+      "tts": {
+        "text": "작은 접시의 단것, 한 잔의 차, 느린 대화.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것이 페르시아의 오후예요.",
+      "text_markdown": "그것이 페르시아의 오후예요.",
+      "tts": {
+        "text": "그것이 페르시아의 오후예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "제6장 페르시아가 준 것, 페르시아가 받은 것",
+      "text_markdown": "제6장 페르시아가 준 것, 페르시아가 받은 것"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아는 옛 세상의 한가운데에 있었어요.",
+      "text_markdown": "페르시아는 옛 세상의 한가운데에 있었어요.",
+      "tts": {
+        "text": "페르시아는 옛 세상의 한가운데에 있었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대상들이 그 땅을 가로질렀어요.",
+      "text_markdown": "대상들이 그 땅을 가로질렀어요.",
+      "tts": {
+        "text": "대상들이 그 땅을 가로질렀어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "제국들이 그 위에서 일어났다가 무너졌어요.",
+      "text_markdown": "제국들이 그 위에서 일어났다가 무너졌어요.",
+      "tts": {
+        "text": "제국들이 그 위에서 일어났다가 무너졌어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "음식도 그 땅을 양쪽으로 오갔어요.",
+      "text_markdown": "음식도 그 땅을 양쪽으로 오갔어요.",
+      "tts": {
+        "text": "음식도 그 땅을 양쪽으로 오갔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "말들을 보세요.",
+      "text_markdown": "말들을 보세요.",
+      "tts": {
+        "text": "말들을 보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영어는 페르시아어에서 음식 관련 낱말 수십 개를 가져갔어요.",
+      "text_markdown": "영어는 페르시아어에서 음식 관련 낱말 수십 개를 가져갔어요.",
+      "tts": {
+        "text": "영어는 페르시아어에서 음식 관련 낱말 수십 개를 가져갔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "설탕, 사탕, 레몬, 오렌지, 재스민, 라일락, 튤립, 키오스크, 셔벗, 파라다이스는 모두 페르시아에서 온 말이에요.",
+      "text_markdown": "설탕, 사탕, 레몬, 오렌지, 재스민, 라일락, 튤립, 키오스크, 셔벗, 파라다이스는 모두 페르시아에서 온 말이에요.",
+      "tts": {
+        "text": "설탕, 사탕, 레몬, 오렌지, 재스민, 라일락, 튤립, 키오스크, 셔벗, 파라다이스는 모두 페르시아에서 온 말이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "체크메이트도 페르시아에서 왔어요. 샤 마트, 곧 왕은 속수무책이라는 말에서 나왔어요. 페르시아는 세상 절반의 입에 말을 넣었어요.",
+      "text_markdown": "체크메이트도 페르시아에서 왔어요. 샤 마트, 곧 왕은 속수무책이라는 말에서 나왔어요. 페르시아는 세상 절반의 입에 말을 넣었어요.",
+      "tts": {
+        "text": "체크메이트도 페르시아에서 왔어요. 샤 마트, 곧 왕은 속수무책이라는 말에서 나왔어요. 페르시아는 세상 절반의 입에 말을 넣었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아식 쌀 짓기는 동쪽으로 갔어요.",
+      "text_markdown": "페르시아식 쌀 짓기는 동쪽으로 갔어요.",
+      "tts": {
+        "text": "페르시아식 쌀 짓기는 동쪽으로 갔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "인도의 무굴 왕들은 페르시아 음식을 사랑했고, 궁정으로 페르시아 요리사를 데려왔어요.",
+      "text_markdown": "인도의 무굴 왕들은 페르시아 음식을 사랑했고, 궁정으로 페르시아 요리사를 데려왔어요.",
+      "tts": {
+        "text": "인도의 무굴 왕들은 페르시아 음식을 사랑했고, 궁정으로 페르시아 요리사를 데려왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 요리사들이 비르야니를 만들었어요.",
+      "text_markdown": "그 요리사들이 비르야니를 만들었어요.",
+      "tts": {
+        "text": "그 요리사들이 비르야니를 만들었어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "지중해에서 중앙아시아 초원까지 이어지는 길쭉한 향신료 쌀요리, 필라프는 페르시아 쌀 전통에 뿌리를 두고 있어요.",
+      "text_markdown": "지중해에서 중앙아시아 초원까지 이어지는 길쭉한 향신료 쌀요리, 필라프는 페르시아 쌀 전통에 뿌리를 두고 있어요.",
+      "tts": {
+        "text": "지중해에서 중앙아시아 초원까지 이어지는 길쭉한 향신료 쌀요리, 필라프는 페르시아 쌀 전통에 뿌리를 두고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아 과일은 서쪽으로 갔어요.",
+      "text_markdown": "페르시아 과일은 서쪽으로 갔어요.",
+      "tts": {
+        "text": "페르시아 과일은 서쪽으로 갔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "로마인들은 복숭아를 페르시아에서 받아 이탈리아에서 길렀어요.",
+      "text_markdown": "로마인들은 복숭아를 페르시아에서 받아 이탈리아에서 길렀어요.",
+      "tts": {
+        "text": "로마인들은 복숭아를 페르시아에서 받아 이탈리아에서 길렀어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "시금치는 페르시아 세계의 상인들이 가져와 스페인을 거쳐 유럽에 닿았어요.",
+      "text_markdown": "시금치는 페르시아 세계의 상인들이 가져와 스페인을 거쳐 유럽에 닿았어요.",
+      "tts": {
+        "text": "시금치는 페르시아 세계의 상인들이 가져와 스페인을 거쳐 유럽에 닿았어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "네덜란드의 상징인 튤립은 네덜란드에 가기 전에 먼저 페르시아와 터키에서 길러졌어요.",
+      "text_markdown": "네덜란드의 상징인 튤립은 네덜란드에 가기 전에 먼저 페르시아와 터키에서 길러졌어요.",
+      "tts": {
+        "text": "네덜란드의 상징인 튤립은 네덜란드에 가기 전에 먼저 페르시아와 터키에서 길러졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아도 다른 것들을 받아들였어요.",
+      "text_markdown": "페르시아도 다른 것들을 받아들였어요.",
+      "tts": {
+        "text": "페르시아도 다른 것들을 받아들였어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "십삼세기에 침입한 몽골인들은 더 강한 숯불구이 취향을 가져왔어요.",
+      "text_markdown": "십삼세기에 침입한 몽골인들은 더 강한 숯불구이 취향을 가져왔어요.",
+      "tts": {
+        "text": "십삼세기에 침입한 몽골인들은 더 강한 숯불구이 취향을 가져왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아랍 농업은 남쪽과 동쪽에서 사탕수수, 감귤류, 쌀을 가져왔어요.",
+      "text_markdown": "아랍 농업은 남쪽과 동쪽에서 사탕수수, 감귤류, 쌀을 가져왔어요.",
+      "tts": {
+        "text": "아랍 농업은 남쪽과 동쪽에서 사탕수수, 감귤류, 쌀을 가져왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사모바르는 십팔세기에 북쪽의 러시아에서 왔어요.",
+      "text_markdown": "사모바르는 십팔세기에 북쪽의 러시아에서 왔어요.",
+      "tts": {
+        "text": "사모바르는 십팔세기에 북쪽의 러시아에서 왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이천오백 년 전 글을 쓴 그리스 역사가 헤로도토스는 페르시아 사람들이 생일을 한 해 어떤 날보다도 더 성대하게 기념한다고 말했어요.",
+      "text_markdown": "이천오백 년 전 글을 쓴 그리스 역사가 헤로도토스는 페르시아 사람들이 생일을 한 해 어떤 날보다도 더 성대하게 기념한다고 말했어요.",
+      "tts": {
+        "text": "이천오백 년 전 글을 쓴 그리스 역사가 헤로도토스는 페르시아 사람들이 생일을 한 해 어떤 날보다도 더 성대하게 기념한다고 말했어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 그날 식탁이 평소보다 훨씬 넉넉하게 차려진다고 썼어요.",
+      "text_markdown": "그는 그날 식탁이 평소보다 훨씬 넉넉하게 차려진다고 썼어요.",
+      "tts": {
+        "text": "그는 그날 식탁이 평소보다 훨씬 넉넉하게 차려진다고 썼어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "변하지 않은 것도 있어요.",
+      "text_markdown": "변하지 않은 것도 있어요.",
+      "tts": {
+        "text": "변하지 않은 것도 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "제7장 페르시아 식탁에서",
+      "text_markdown": "제7장 페르시아 식탁에서"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이제 우리도 앉아요.",
+      "text_markdown": "이제 우리도 앉아요.",
+      "tts": {
+        "text": "이제 우리도 앉아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아의 한 해는 춘분, 곧 삼월 스물한 날 무렵에 시작해요.",
+      "text_markdown": "페르시아의 한 해는 춘분, 곧 삼월 스물한 날 무렵에 시작해요.",
+      "tts": {
+        "text": "페르시아의 한 해는 춘분, 곧 삼월 스물한 날 무렵에 시작해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 축제를 노루즈, 새로운 날이라고 불러요.",
+      "text_markdown": "그 축제를 노루즈, 새로운 날이라고 불러요.",
+      "tts": {
+        "text": "그 축제를 노루즈, 새로운 날이라고 불러요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 한 해에서 가장 중요한 명절이에요.",
+      "text_markdown": "그것은 한 해에서 가장 중요한 명절이에요.",
+      "tts": {
+        "text": "그것은 한 해에서 가장 중요한 명절이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모든 집은 하프트신이라고 부르는 특별한 상을 차려요.",
+      "text_markdown": "모든 집은 하프트신이라고 부르는 특별한 상을 차려요.",
+      "tts": {
+        "text": "모든 집은 하프트신이라고 부르는 특별한 상을 차려요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하프트는 일곱이라는 뜻이에요.",
+      "text_markdown": "하프트는 일곱이라는 뜻이에요.",
+      "tts": {
+        "text": "하프트는 일곱이라는 뜻이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "신은 에스 글자예요. 그 상에는 페르시아어로 에스로 시작하는 일곱 가지가 올라가요.",
+      "text_markdown": "신은 에스 글자예요. 그 상에는 페르시아어로 에스로 시작하는 일곱 가지가 올라가요.",
+      "tts": {
+        "text": "신은 에스 글자예요. 그 상에는 페르시아어로 에스로 시작하는 일곱 가지가 올라가요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "시브, 사과예요.",
+      "text_markdown": "시브, 사과예요.",
+      "tts": {
+        "text": "시브, 사과예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "세케, 동전이에요.",
+      "text_markdown": "세케, 동전이에요.",
+      "tts": {
+        "text": "세케, 동전이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "손볼, 히아신스 꽃이에요.",
+      "text_markdown": "손볼, 히아신스 꽃이에요.",
+      "tts": {
+        "text": "손볼, 히아신스 꽃이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "사마누, 달콤한 밀 푸딩이에요.",
+      "text_markdown": "사마누, 달콤한 밀 푸딩이에요.",
+      "tts": {
+        "text": "사마누, 달콤한 밀 푸딩이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "센제드, 보리수나무의 말린 열매예요.",
+      "text_markdown": "센제드, 보리수나무의 말린 열매예요.",
+      "tts": {
+        "text": "센제드, 보리수나무의 말린 열매예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "소마그, 수마크예요.",
+      "text_markdown": "소마그, 수마크예요.",
+      "tts": {
+        "text": "소마그, 수마크예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "세르케, 식초예요.",
+      "text_markdown": "세르케, 식초예요.",
+      "tts": {
+        "text": "세르케, 식초예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "각각은 무언가를 뜻해요. 건강, 부, 아름다움, 인내, 사랑, 떠오르는 해, 흘러가는 시간이에요.",
+      "text_markdown": "각각은 무언가를 뜻해요. 건강, 부, 아름다움, 인내, 사랑, 떠오르는 해, 흘러가는 시간이에요.",
+      "tts": {
+        "text": "각각은 무언가를 뜻해요. 건강, 부, 아름다움, 인내, 사랑, 떠오르는 해, 흘러가는 시간이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "새해 음식은 사브지 폴로와 마히예요.",
+      "text_markdown": "새해 음식은 사브지 폴로와 마히예요.",
+      "tts": {
+        "text": "새해 음식은 사브지 폴로와 마히예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "잘게 썬 생허브 때문에 짙은 초록빛이 나는 밥에 흰살생선을 곁들여요.",
+      "text_markdown": "잘게 썬 생허브 때문에 짙은 초록빛이 나는 밥에 흰살생선을 곁들여요.",
+      "tts": {
+        "text": "잘게 썬 생허브 때문에 짙은 초록빛이 나는 밥에 흰살생선을 곁들여요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "접시 위의 봄이에요.",
+      "text_markdown": "접시 위의 봄이에요.",
+      "tts": {
+        "text": "접시 위의 봄이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "또 다른 고전은 아시 레슈테예요. 콩과 허브와 볶은 양파와 카슈크와 국수를 넣은 걸쭉한 국이에요.",
+      "text_markdown": "또 다른 고전은 아시 레슈테예요. 콩과 허브와 볶은 양파와 카슈크와 국수를 넣은 걸쭉한 국이에요.",
+      "tts": {
+        "text": "또 다른 고전은 아시 레슈테예요. 콩과 허브와 볶은 양파와 카슈크와 국수를 넣은 걸쭉한 국이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "페르시아 사람들은 힘든 결정을 앞두고 이것을 먹어야 한다고 말해요.",
+      "text_markdown": "페르시아 사람들은 힘든 결정을 앞두고 이것을 먹어야 한다고 말해요.",
+      "tts": {
+        "text": "페르시아 사람들은 힘든 결정을 앞두고 이것을 먹어야 한다고 말해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 국수가 운명의 실타래를 풀어 준다고 말해요.",
+      "text_markdown": "그들은 국수가 운명의 실타래를 풀어 준다고 말해요.",
+      "tts": {
+        "text": "그들은 국수가 운명의 실타래를 풀어 준다고 말해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "찻집도 페르시아의 발명이에요.",
+      "text_markdown": "찻집도 페르시아의 발명이에요.",
+      "tts": {
+        "text": "찻집도 페르시아의 발명이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것을 카흐베하네라고 불러요. 말 그대로는 커피집이지만, 지금 마시는 것은 차예요.",
+      "text_markdown": "그것을 카흐베하네라고 불러요. 말 그대로는 커피집이지만, 지금 마시는 것은 차예요.",
+      "tts": {
+        "text": "그것을 카흐베하네라고 불러요. 말 그대로는 커피집이지만, 지금 마시는 것은 차예요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오백 년 동안 남자와 여자들은 거기에 모여 백개먼을 두고, 시를 듣고, 세상일을 두고 다퉜어요.",
+      "text_markdown": "오백 년 동안 남자와 여자들은 거기에 모여 백개먼을 두고, 시를 듣고, 세상일을 두고 다퉜어요.",
+      "tts": {
+        "text": "오백 년 동안 남자와 여자들은 거기에 모여 백개먼을 두고, 시를 듣고, 세상일을 두고 다퉜어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "많은 위대한 페르시아 이야기는 김 오르는 차잔 곁에서 처음 들려졌어요.",
+      "text_markdown": "많은 위대한 페르시아 이야기는 김 오르는 차잔 곁에서 처음 들려졌어요.",
+      "tts": {
+        "text": "많은 위대한 페르시아 이야기는 김 오르는 차잔 곁에서 처음 들려졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천 년 전 살았던 유명한 페르시아 의사 아비센나는 모든 음식이 뜨겁거나 차갑다고 가르쳤어요.",
+      "text_markdown": "천 년 전 살았던 유명한 페르시아 의사 아비센나는 모든 음식이 뜨겁거나 차갑다고 가르쳤어요.",
+      "tts": {
+        "text": "천 년 전 살았던 유명한 페르시아 의사 아비센나는 모든 음식이 뜨겁거나 차갑다고 가르쳤어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사프란과 호두와 양고기는 뜨거워요.",
+      "text_markdown": "사프란과 호두와 양고기는 뜨거워요.",
+      "tts": {
+        "text": "사프란과 호두와 양고기는 뜨거워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "요구르트와 오이와 수박은 차가워요.",
+      "text_markdown": "요구르트와 오이와 수박은 차가워요.",
+      "tts": {
+        "text": "요구르트와 오이와 수박은 차가워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "좋은 식사는 둘의 균형을 맞춰요.",
+      "text_markdown": "좋은 식사는 둘의 균형을 맞춰요.",
+      "tts": {
+        "text": "좋은 식사는 둘의 균형을 맞춰요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "많은 페르시아 가정에서 그 생각은 아직도 점심 식탁에 살아 있어요.",
+      "text_markdown": "많은 페르시아 가정에서 그 생각은 아직도 점심 식탁에 살아 있어요.",
+      "tts": {
+        "text": "많은 페르시아 가정에서 그 생각은 아직도 점심 식탁에 살아 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "페르시아 음식은 느긋해요.",
+      "text_markdown": "페르시아 음식은 느긋해요.",
+      "tts": {
+        "text": "페르시아 음식은 느긋해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "넉넉해요.",
+      "text_markdown": "넉넉해요.",
+      "tts": {
+        "text": "넉넉해요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오래됐어요.",
+      "text_markdown": "오래됐어요.",
+      "tts": {
+        "text": "오래됐어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그리고 오늘도 수백만 개의 부엌 불 위에서 매일 요리돼요.",
+      "text_markdown": "그리고 오늘도 수백만 개의 부엌 불 위에서 매일 요리돼요.",
+      "tts": {
+        "text": "그리고 오늘도 수백만 개의 부엌 불 위에서 매일 요리돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "안녕히",
+      "text_markdown": "안녕히"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것으로 짧은 여행이 끝나요.",
+      "text_markdown": "이것으로 짧은 여행이 끝나요.",
+      "tts": {
+        "text": "이것으로 짧은 여행이 끝나요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "무언가를 배웠으면 좋겠어요.",
+      "text_markdown": "무언가를 배웠으면 좋겠어요.",
+      "tts": {
+        "text": "무언가를 배웠으면 좋겠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이 페이지의 무언가가 당신을 배고프게 했으면 좋겠어요.",
+      "text_markdown": "이 페이지의 무언가가 당신을 배고프게 했으면 좋겠어요.",
+      "tts": {
+        "text": "이 페이지의 무언가가 당신을 배고프게 했으면 좋겠어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사프란과 밥.",
+      "text_markdown": "사프란과 밥.",
+      "tts": {
+        "text": "사프란과 밥.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "석류와 호두.",
+      "text_markdown": "석류와 호두.",
+      "tts": {
+        "text": "석류와 호두.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "작은 접시에 놓인 작은 단것.",
+      "text_markdown": "작은 접시에 놓인 작은 단것.",
+      "tts": {
+        "text": "작은 접시에 놓인 작은 단것.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "괜찮다면 가까운 페르시아 식당을 찾아보세요.",
+      "text_markdown": "괜찮다면 가까운 페르시아 식당을 찾아보세요.",
+      "tts": {
+        "text": "괜찮다면 가까운 페르시아 식당을 찾아보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "아니면 페르시아 요리책을 펼쳐 보세요.",
+      "text_markdown": "아니면 페르시아 요리책을 펼쳐 보세요.",
+      "tts": {
+        "text": "아니면 페르시아 요리책을 펼쳐 보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오래 끓이는 요리 하나를 해 보세요.",
+      "text_markdown": "오래 끓이는 요리 하나를 해 보세요.",
+      "tts": {
+        "text": "오래 끓이는 요리 하나를 해 보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "차 한 잔을 마셔 보세요.",
+      "text_markdown": "차 한 잔을 마셔 보세요.",
+      "tts": {
+        "text": "차 한 잔을 마셔 보세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그 음식은 수천 년 동안 당신을 기다려 왔어요.",
+      "text_markdown": "그 음식은 수천 년 동안 당신을 기다려 왔어요.",
+      "tts": {
+        "text": "그 음식은 수천 년 동안 당신을 기다려 왔어요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "그 음식은 당신도 기다려 줄 거예요.",
+      "text_markdown": "그 음식은 당신도 기다려 줄 거예요.",
+      "tts": {
+        "text": "그 음식은 당신도 기다려 줄 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "들어줘서 고마워요.",
+      "text_markdown": "들어줘서 고마워요.",
+      "tts": {
+        "text": "들어줘서 고마워요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "무언가를 요리하세요.",
+      "text_markdown": "무언가를 요리하세요.",
+      "tts": {
+        "text": "무언가를 요리하세요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사람들과 함께 드세요.",
+      "text_markdown": "사람들과 함께 드세요.",
+      "tts": {
+        "text": "사람들과 함께 드세요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "저는 Kym이에요.",
+      "text_markdown": "저는 Kym이에요.",
+      "tts": {
+        "text": "저는 킴이에요.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "안녕히 가세요.",
+      "text_markdown": "안녕히 가세요.",
+      "tts": {
+        "text": "안녕히 가세요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

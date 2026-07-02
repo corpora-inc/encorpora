@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "language": "ja",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者のみなさんへ",
+      "text_markdown": "読者のみなさんへ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "こんにちは。",
+      "text_markdown": "こんにちは。",
+      "tts": {
+        "text": "こんにちは。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私はKymです。",
+      "text_markdown": "私はKymです。",
+      "tts": {
+        "text": "私はキムです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "私は食べ物が大好きです。",
+      "text_markdown": "私は食べ物が大好きです。",
+      "tts": {
+        "text": "私は食べ物が大好きです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "食べ物の話が大好きです。",
+      "text_markdown": "食べ物の話が大好きです。",
+      "tts": {
+        "text": "食べ物の話が大好きです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これは、大きな食の世界をめぐる小さな本です。",
+      "text_markdown": "これは、大きな食の世界をめぐる小さな本です。",
+      "tts": {
+        "text": "これは、大きな食の世界をめぐる小さな本です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "この本の主役はペルシャ料理です。",
+      "text_markdown": "この本の主役はペルシャ料理です。",
+      "tts": {
+        "text": "この本の主役はペルシャ料理です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イランの料理です。",
+      "text_markdown": "イランの料理です。",
+      "tts": {
+        "text": "イランの料理です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして、もっと古い国、ペルシャの料理でもあります。",
+      "text_markdown": "そして、もっと古い国、ペルシャの料理でもあります。",
+      "tts": {
+        "text": "そして、もっと古い国、ペルシャの料理でもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャは、人が食べ物を計画して育て始めた、地球でも最古級の土地です。",
+      "text_markdown": "ペルシャは、人が食べ物を計画して育て始めた、地球でも最古級の土地です。",
+      "tts": {
+        "text": "ペルシャは、人が食べ物を計画して育て始めた、地球でも最古級の土地です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "小麦、大麦、桃、あんず、ざくろ、ほうれん草、サフラン。食卓の多くのものは、そこで生まれました。",
+      "text_markdown": "小麦、大麦、桃、あんず、ざくろ、ほうれん草、サフラン。食卓の多くのものは、そこで生まれました。",
+      "tts": {
+        "text": "小麦、大麦、桃、あんず、ざくろ、ほうれん草、サフラン。食卓の多くのものは、そこで生まれました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "まずは、この土地から始めます。",
+      "text_markdown": "まずは、この土地から始めます。",
+      "tts": {
+        "text": "まずは、この土地から始めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "次に、そこで育つものを見ます。",
+      "text_markdown": "次に、そこで育つものを見ます。",
+      "tts": {
+        "text": "次に、そこで育つものを見ます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのあと、米とパンと肉と煮込みを見ていきます。",
+      "text_markdown": "そのあと、米とパンと肉と煮込みを見ていきます。",
+      "tts": {
+        "text": "そのあと、米とパンと肉と煮込みを見ていきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "終わるころには、ペルシャの食卓に何が並ぶのか、そしてそれがどこから来たのかがわかります。",
+      "text_markdown": "終わるころには、ペルシャの食卓に何が並ぶのか、そしてそれがどこから来たのかがわかります。",
+      "tts": {
+        "text": "終わるころには、ペルシャの食卓に何が並ぶのか、そしてそれがどこから来たのかがわかります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どうぞ座ってください。",
+      "text_markdown": "どうぞ座ってください。",
+      "tts": {
+        "text": "どうぞ座ってください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "お茶をいれましょう。",
+      "text_markdown": "お茶をいれましょう。",
+      "tts": {
+        "text": "お茶をいれましょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "では、始めましょう。",
+      "text_markdown": "では、始めましょう。",
+      "tts": {
+        "text": "では、始めましょう。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第1章 農耕が始まった土地",
+      "text_markdown": "第1章 農耕が始まった土地"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャは高地で乾燥した土地です。",
+      "text_markdown": "ペルシャは高地で乾燥した土地です。",
+      "tts": {
+        "text": "ペルシャは高地で乾燥した土地です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北のカスピ海と南のペルシャ湾の間に位置します。",
+      "text_markdown": "北のカスピ海と南のペルシャ湾の間に位置します。",
+      "tts": {
+        "text": "北のカスピ海と南のペルシャ湾の間に位置します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西にはメソポタミアがあります。",
+      "text_markdown": "西にはメソポタミアがあります。",
+      "tts": {
+        "text": "西にはメソポタミアがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "東にはインドがあります。",
+      "text_markdown": "東にはインドがあります。",
+      "tts": {
+        "text": "東にはインドがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "真ん中には山と砂漠があります。",
+      "text_markdown": "真ん中には山と砂漠があります。",
+      "tts": {
+        "text": "真ん中には山と砂漠があります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "すぐ隣では、約一万年前、人々が初めて小麦や大麦を意図的に栽培しました。",
+      "text_markdown": "すぐ隣では、約一万年前、人々が初めて小麦や大麦を意図的に栽培しました。",
+      "tts": {
+        "text": "すぐ隣では、約一万年前、人々が初めて小麦や大麦を意図的に栽培しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "そこで農業が生まれました。",
+      "text_markdown": "そこで農業が生まれました。",
+      "tts": {
+        "text": "そこで農業が生まれました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ペルシャはそれを最初に学んだ場所の一つでした。",
+      "text_markdown": "ペルシャはそれを最初に学んだ場所の一つでした。",
+      "tts": {
+        "text": "ペルシャはそれを最初に学んだ場所の一つでした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その長い先行の歴史が、ペルシャの皿の一つ一つにのっています。",
+      "text_markdown": "その長い先行の歴史が、ペルシャの皿の一つ一つにのっています。",
+      "tts": {
+        "text": "その長い先行の歴史が、ペルシャの皿の一つ一つにのっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "桃はペルシャ産です。",
+      "text_markdown": "桃はペルシャ産です。",
+      "tts": {
+        "text": "桃はペルシャ産です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ローマ人はそれをペルシカ、「ペルシャの果物」と呼びました。英語の peach という語も、その名に由来します。",
+      "text_markdown": "ローマ人はそれをペルシカ、「ペルシャの果物」と呼びました。英語の peach という語も、その名に由来します。",
+      "tts": {
+        "text": "ローマ人はそれをペルシカ、「ペルシャの果物」と呼びました。英語の ピーチ という語も、その名に由来します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アプリコットもそこから来ました。",
+      "text_markdown": "アプリコットもそこから来ました。",
+      "tts": {
+        "text": "アプリコットもそこから来ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ザクロもそうです。",
+      "text_markdown": "ザクロもそうです。",
+      "tts": {
+        "text": "ザクロもそうです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "くるみも同様です。",
+      "text_markdown": "くるみも同様です。",
+      "tts": {
+        "text": "くるみも同様です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サワーチェリーも同様です。",
+      "text_markdown": "サワーチェリーも同様です。",
+      "tts": {
+        "text": "サワーチェリーも同様です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ほうれん草もそうです。世界でも早い時期の葉野菜の一つでした。",
+      "text_markdown": "ほうれん草もそうです。世界でも早い時期の葉野菜の一つでした。",
+      "tts": {
+        "text": "ほうれん草もそうです。世界でも早い時期の葉野菜の一つでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "英語の spinach は、ペルシャ語のエスファナージに由来します。",
+      "text_markdown": "英語の spinach は、ペルシャ語のエスファナージに由来します。",
+      "tts": {
+        "text": "英語の スピニッチ は、ペルシャ語のエスファナージに由来します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "「楽園」という言葉もペルシャ語です。",
+      "text_markdown": "「楽園」という言葉もペルシャ語です。",
+      "tts": {
+        "text": "「楽園」という言葉もペルシャ語です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは、壁で囲まれた庭園を意味するパルディスから来ています。",
+      "text_markdown": "それは、壁で囲まれた庭園を意味するパルディスから来ています。",
+      "tts": {
+        "text": "それは、壁で囲まれた庭園を意味するパルディスから来ています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最初の楽園は、ザクロの木が生い茂るペルシャの果樹園でした。",
+      "text_markdown": "最初の楽園は、ザクロの木が生い茂るペルシャの果樹園でした。",
+      "tts": {
+        "text": "最初の楽園は、ザクロの木が生い茂るペルシャの果樹園でした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャは単によく食べるだけではありませんでした。",
+      "text_markdown": "ペルシャは単によく食べるだけではありませんでした。",
+      "tts": {
+        "text": "ペルシャは単によく食べるだけではありませんでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペルシャは、世界においしく食べる知恵を教えました。",
+      "text_markdown": "ペルシャは、世界においしく食べる知恵を教えました。",
+      "tts": {
+        "text": "ペルシャは、世界においしく食べる知恵を教えました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第2章 土地の食材庫",
+      "text_markdown": "第2章 土地の食材庫"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャの食材庫を開いてみましょう。",
+      "text_markdown": "ペルシャの食材庫を開いてみましょう。",
+      "tts": {
+        "text": "ペルシャの食材庫を開いてみましょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "香りが、それを語ってくれます。",
+      "text_markdown": "香りが、それを語ってくれます。",
+      "tts": {
+        "text": "香りが、それを語ってくれます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初の香りはサフランです。",
+      "text_markdown": "最初の香りはサフランです。",
+      "tts": {
+        "text": "最初の香りはサフランです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イランは世界のサフランの約九割を育てています。",
+      "text_markdown": "イランは世界のサフランの約九割を育てています。",
+      "tts": {
+        "text": "イランは世界のサフランの約九割を育てています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そのほとんどはホラーサーンと呼ばれる州から来ています。",
+      "text_markdown": "そのほとんどはホラーサーンと呼ばれる州から来ています。",
+      "tts": {
+        "text": "そのほとんどはホラーサーンと呼ばれる州から来ています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一グラム作るには、農家がクロッカスの花およそ二百輪から、赤い糸を手で摘み取ります。",
+      "text_markdown": "一グラム作るには、農家がクロッカスの花およそ二百輪から、赤い糸を手で摘み取ります。",
+      "tts": {
+        "text": "一グラム作るには、農家がクロッカスの花およそ二百輪から、赤い糸を手で摘み取ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "作業は寒い秋の夜明けに行われます。",
+      "text_markdown": "作業は寒い秋の夜明けに行われます。",
+      "tts": {
+        "text": "作業は寒い秋の夜明けに行われます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "サフランは世界で最も高価なスパイスです。",
+      "text_markdown": "サフランは世界で最も高価なスパイスです。",
+      "tts": {
+        "text": "サフランは世界で最も高価なスパイスです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ひとつまみで、米は黄金色になり、水は香水のようになります。",
+      "text_markdown": "ひとつまみで、米は黄金色になり、水は香水のようになります。",
+      "tts": {
+        "text": "ひとつまみで、米は黄金色になり、水は香水のようになります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二つ目の香りはざくろです。",
+      "text_markdown": "二つ目の香りはざくろです。",
+      "tts": {
+        "text": "二つ目の香りはざくろです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペルシャ人は何千年もの間ザクロを栽培してきました。",
+      "text_markdown": "ペルシャ人は何千年もの間ザクロを栽培してきました。",
+      "tts": {
+        "text": "ペルシャ人は何千年もの間ザクロを栽培してきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "果物は愛と楽園の象徴です。",
+      "text_markdown": "果物は愛と楽園の象徴です。",
+      "tts": {
+        "text": "果物は愛と楽園の象徴です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "果汁は煮込みにしぼって使います。",
+      "text_markdown": "果汁は煮込みにしぼって使います。",
+      "tts": {
+        "text": "果汁は煮込みにしぼって使います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "実はご飯やサラダに散らします。",
+      "text_markdown": "実はご飯やサラダに散らします。",
+      "tts": {
+        "text": "実はご飯やサラダに散らします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "次にピスタチオが来ます。",
+      "text_markdown": "次にピスタチオが来ます。",
+      "tts": {
+        "text": "次にピスタチオが来ます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "イランには、三千年の歴史をもつピスタチオの畑があります。",
+      "text_markdown": "イランには、三千年の歴史をもつピスタチオの畑があります。",
+      "tts": {
+        "text": "イランには、三千年の歴史をもつピスタチオの畑があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "世界中で食べられているピスタチオは、多くの場合、ペルシャの木の子孫です。",
+      "text_markdown": "世界中で食べられているピスタチオは、多くの場合、ペルシャの木の子孫です。",
+      "tts": {
+        "text": "世界中で食べられているピスタチオは、多くの場合、ペルシャの木の子孫です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クルミ、サワーチェリー、マルメロ、メロン、ナツメヤシなどがあります。",
+      "text_markdown": "クルミ、サワーチェリー、マルメロ、メロン、ナツメヤシなどがあります。",
+      "tts": {
+        "text": "クルミ、サワーチェリー、マルメロ、メロン、ナツメヤシなどがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スマックという、野生の低木からとれる、黒みがかった赤い酸味のある香辛料もあります。",
+      "text_markdown": "スマックという、野生の低木からとれる、黒みがかった赤い酸味のある香辛料もあります。",
+      "tts": {
+        "text": "スマックという、野生の低木からとれる、黒みがかった赤い酸味のある香辛料もあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "レモンがどこにでもある前は、スマックが料理に明るい酸味を足しました。",
+      "text_markdown": "レモンがどこにでもある前は、スマックが料理に明るい酸味を足しました。",
+      "tts": {
+        "text": "レモンがどこにでもある前は、スマックが料理に明るい酸味を足しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは今でもそうです。",
+      "text_markdown": "それは今でもそうです。",
+      "tts": {
+        "text": "それは今でもそうです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャの食材庫には、果物の歴史の半分が入っています。",
+      "text_markdown": "ペルシャの食材庫には、果物の歴史の半分が入っています。",
+      "tts": {
+        "text": "ペルシャの食材庫には、果物の歴史の半分が入っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第3章 米とパンと、聖なるおこげ",
+      "text_markdown": "第3章 米とパンと、聖なるおこげ"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "米は約二千五百年前にインドからペルシャへ来ました。",
+      "text_markdown": "米は約二千五百年前にインドからペルシャへ来ました。",
+      "tts": {
+        "text": "米は約二千五百年前にインドからペルシャへ来ました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "食卓の中心になりました。",
+      "text_markdown": "食卓の中心になりました。",
+      "tts": {
+        "text": "食卓の中心になりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャでは、米を二通りに炊きます。",
+      "text_markdown": "ペルシャでは、米を二通りに炊きます。",
+      "tts": {
+        "text": "ペルシャでは、米を二通りに炊きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "白いご飯はチェロと呼ばれます。",
+      "text_markdown": "白いご飯はチェロと呼ばれます。",
+      "tts": {
+        "text": "白いご飯はチェロと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハーブや肉や果物を混ぜたご飯はポロと呼ばれます。",
+      "text_markdown": "ハーブや肉や果物を混ぜたご飯はポロと呼ばれます。",
+      "tts": {
+        "text": "ハーブや肉や果物を混ぜたご飯はポロと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "どちらも細長く、軽やかで、一粒ずつきれいに離れます。",
+      "text_markdown": "どちらも細長く、軽やかで、一粒ずつきれいに離れます。",
+      "tts": {
+        "text": "どちらも細長く、軽やかで、一粒ずつきれいに離れます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "しかし、魔法は鍋の底にあります。",
+      "text_markdown": "しかし、魔法は鍋の底にあります。",
+      "tts": {
+        "text": "しかし、魔法は鍋の底にあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それをターディグと呼びます。",
+      "text_markdown": "それをターディグと呼びます。",
+      "tts": {
+        "text": "それをターディグと呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "鍋の底に薄い層をしきます。サフランライスのこともあれば、じゃがいもの薄切りのこともあり、パンのこともあります。",
+      "text_markdown": "鍋の底に薄い層をしきます。サフランライスのこともあれば、じゃがいもの薄切りのこともあり、パンのこともあります。",
+      "tts": {
+        "text": "鍋の底に薄い層をしきます。サフランライスのこともあれば、じゃがいもの薄切りのこともあり、パンのこともあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その上にご飯をのせます。",
+      "text_markdown": "その上にご飯をのせます。",
+      "tts": {
+        "text": "その上にご飯をのせます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ふたをして、ふきんを巻き、あとは蒸気に任せます。",
+      "text_markdown": "ふたをして、ふきんを巻き、あとは蒸気に任せます。",
+      "tts": {
+        "text": "ふたをして、ふきんを巻き、あとは蒸気に任せます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "一時間たつと、底の層は黄金色で、かりっとします。",
+      "text_markdown": "一時間たつと、底の層は黄金色で、かりっとします。",
+      "tts": {
+        "text": "一時間たつと、底の層は黄金色で、かりっとします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ターディグは神聖です。",
+      "text_markdown": "ターディグは神聖です。",
+      "tts": {
+        "text": "ターディグは神聖です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "家族みんなが取り合います。",
+      "text_markdown": "家族みんなが取り合います。",
+      "tts": {
+        "text": "家族みんなが取り合います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "イランのテレビには、だれのターディグがいちばんかを競う番組まであります。",
+      "text_markdown": "イランのテレビには、だれのターディグがいちばんかを競う番組まであります。",
+      "tts": {
+        "text": "イランのテレビには、だれのターディグがいちばんかを競う番組まであります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "完璧なターディグは、美しい丸い一枚のまま鍋から出てきます。",
+      "text_markdown": "完璧なターディグは、美しい丸い一枚のまま鍋から出てきます。",
+      "tts": {
+        "text": "完璧なターディグは、美しい丸い一枚のまま鍋から出てきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして、パンもあります。",
+      "text_markdown": "そして、パンもあります。",
+      "tts": {
+        "text": "そして、パンもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "最も有名なのはサンガクです。",
+      "text_markdown": "最も有名なのはサンガクです。",
+      "tts": {
+        "text": "最も有名なのはサンガクです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サンガクは、五千年前から続く方法で、熱い小石の上で焼きます。",
+      "text_markdown": "サンガクは、五千年前から続く方法で、熱い小石の上で焼きます。",
+      "tts": {
+        "text": "サンガクは、五千年前から続く方法で、熱い小石の上で焼きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "小石がパンに残ることもあります。",
+      "text_markdown": "小石がパンに残ることもあります。",
+      "tts": {
+        "text": "小石がパンに残ることもあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "食卓でそれを取りのぞきます。",
+      "text_markdown": "食卓でそれを取りのぞきます。",
+      "tts": {
+        "text": "食卓でそれを取りのぞきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他のパンには、バルバリ、ラヴァッシュ、タフトゥーンなどがあります。",
+      "text_markdown": "他のパンには、バルバリ、ラヴァッシュ、タフトゥーンなどがあります。",
+      "tts": {
+        "text": "他のパンには、バルバリ、ラヴァッシュ、タフトゥーンなどがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペルシャの朝ごはんは、パンとお茶と、やわらかな白いチーズです。",
+      "text_markdown": "ペルシャの朝ごはんは、パンとお茶と、やわらかな白いチーズです。",
+      "tts": {
+        "text": "ペルシャの朝ごはんは、パンとお茶と、やわらかな白いチーズです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第4章 ケバブと、気長に煮る料理",
+      "text_markdown": "第4章 ケバブと、気長に煮る料理"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ケバブという言葉はペルシャ語です。",
+      "text_markdown": "ケバブという言葉はペルシャ語です。",
+      "tts": {
+        "text": "ケバブという言葉はペルシャ語です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "もとの形はカバーブで、火で焼いた肉という意味です。",
+      "text_markdown": "もとの形はカバーブで、火で焼いた肉という意味です。",
+      "tts": {
+        "text": "もとの形はカバーブで、火で焼いた肉という意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ペルシャ人は何千年もの間、長く平たい串に刺して子羊を調理してきました。",
+      "text_markdown": "ペルシャ人は何千年もの間、長く平たい串に刺して子羊を調理してきました。",
+      "tts": {
+        "text": "ペルシャ人は何千年もの間、長く平たい串に刺して子羊を調理してきました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "今いちばん人気のケバブはクービデです。",
+      "text_markdown": "今いちばん人気のケバブはクービデです。",
+      "tts": {
+        "text": "今いちばん人気のケバブはクービデです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "羊肉や牛肉のひき肉に、たまねぎと塩を混ぜ、幅広の平たい串に押しつけて、炭火で焼きます。",
+      "text_markdown": "羊肉や牛肉のひき肉に、たまねぎと塩を混ぜ、幅広の平たい串に押しつけて、炭火で焼きます。",
+      "tts": {
+        "text": "羊肉や牛肉のひき肉に、たまねぎと塩を混ぜ、幅広の平たい串に押しつけて、炭火で焼きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "古代に見えます。",
+      "text_markdown": "古代に見えます。",
+      "tts": {
+        "text": "古代に見えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "でも、そう古くはありません。",
+      "text_markdown": "でも、そう古くはありません。",
+      "tts": {
+        "text": "でも、そう古くはありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "肉ひき器がイランに入ったのは、十九世紀の後半です。",
+      "text_markdown": "肉ひき器がイランに入ったのは、十九世紀の後半です。",
+      "tts": {
+        "text": "肉ひき器がイランに入ったのは、十九世紀の後半です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "いちばんペルシャらしいケバブのクービデも、せいぜい百年あまりの歴史です。",
+      "text_markdown": "いちばんペルシャらしいケバブのクービデも、せいぜい百年あまりの歴史です。",
+      "tts": {
+        "text": "いちばんペルシャらしいケバブのクービデも、せいぜい百年あまりの歴史です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "古いケバブはスライスした肉から作られます。",
+      "text_markdown": "古いケバブはスライスした肉から作られます。",
+      "tts": {
+        "text": "古いケバブはスライスした肉から作られます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ジュージェは、サフランとヨーグルトに漬けた鶏肉です。",
+      "text_markdown": "ジュージェは、サフランとヨーグルトに漬けた鶏肉です。",
+      "tts": {
+        "text": "ジュージェは、サフランとヨーグルトに漬けた鶏肉です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "バーグは薄い子羊の切り身です。",
+      "text_markdown": "バーグは薄い子羊の切り身です。",
+      "tts": {
+        "text": "バーグは薄い子羊の切り身です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "どちらもサフランライスの上にグリルしたトマトを添えて提供されます。",
+      "text_markdown": "どちらもサフランライスの上にグリルしたトマトを添えて提供されます。",
+      "tts": {
+        "text": "どちらもサフランライスの上にグリルしたトマトを添えて提供されます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "では、気長な料理に会いましょう。ホレシュ、ペルシャの煮込みです。",
+      "text_markdown": "では、気長な料理に会いましょう。ホレシュ、ペルシャの煮込みです。",
+      "tts": {
+        "text": "では、気長な料理に会いましょう。ホレシュ、ペルシャの煮込みです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ホレシュは何時間もかけて煮ます。",
+      "text_markdown": "ホレシュは何時間もかけて煮ます。",
+      "tts": {
+        "text": "ホレシュは何時間もかけて煮ます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も有名なのはフェセンジャンです。",
+      "text_markdown": "最も有名なのはフェセンジャンです。",
+      "tts": {
+        "text": "最も有名なのはフェセンジャンです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "鶏肉や鴨肉を、すりつぶしたクルミとザクロの果汁を加えた濃厚なソースでじっくり煮込んだものです。",
+      "text_markdown": "鶏肉や鴨肉を、すりつぶしたクルミとザクロの果汁を加えた濃厚なソースでじっくり煮込んだものです。",
+      "tts": {
+        "text": "鶏肉や鴨肉を、すりつぶしたクルミとザクロの果汁を加えた濃厚なソースでじっくり煮込んだものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この料理は、見つかっている中でも最古級の煮込みのレシピです。",
+      "text_markdown": "この料理は、見つかっている中でも最古級の煮込みのレシピです。",
+      "tts": {
+        "text": "この料理は、見つかっている中でも最古級の煮込みのレシピです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その一種は、ペルセポリスの遺跡から出た楔形文字の板にも書かれています。",
+      "text_markdown": "その一種は、ペルセポリスの遺跡から出た楔形文字の板にも書かれています。",
+      "tts": {
+        "text": "その一種は、ペルセポリスの遺跡から出た楔形文字の板にも書かれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "つまり、二千五百年以上も前の料理です。",
+      "text_markdown": "つまり、二千五百年以上も前の料理です。",
+      "tts": {
+        "text": "つまり、二千五百年以上も前の料理です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "人々は今でも同じ方法で料理をしています。",
+      "text_markdown": "人々は今でも同じ方法で料理をしています。",
+      "tts": {
+        "text": "人々は今でも同じ方法で料理をしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もう一つの定番はゴルメサブジです。羊肉、赤いんげん豆、山のような生のハーブを、乾燥ライムといっしょにじっくり煮込みます。",
+      "text_markdown": "もう一つの定番はゴルメサブジです。羊肉、赤いんげん豆、山のような生のハーブを、乾燥ライムといっしょにじっくり煮込みます。",
+      "tts": {
+        "text": "もう一つの定番はゴルメサブジです。羊肉、赤いんげん豆、山のような生のハーブを、乾燥ライムといっしょにじっくり煮込みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "多くのイラン人はそれを国民料理と呼んでいます。",
+      "text_markdown": "多くのイラン人はそれを国民料理と呼んでいます。",
+      "tts": {
+        "text": "多くのイラン人はそれを国民料理と呼んでいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第5章 ヨーグルトとお茶と、最古のお菓子",
+      "text_markdown": "第5章 ヨーグルトとお茶と、最古のお菓子"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャの人たちは、何にでもヨーグルトを添えます。",
+      "text_markdown": "ペルシャの人たちは、何にでもヨーグルトを添えます。",
+      "tts": {
+        "text": "ペルシャの人たちは、何にでもヨーグルトを添えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "プレーンヨーグルトはマストと呼ばれます。",
+      "text_markdown": "プレーンヨーグルトはマストと呼ばれます。",
+      "tts": {
+        "text": "プレーンヨーグルトはマストと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "きゅうりと乾燥ミントを入れたマストは、マスト・オ・ヒヤールと呼ばれます。",
+      "text_markdown": "きゅうりと乾燥ミントを入れたマストは、マスト・オ・ヒヤールと呼ばれます。",
+      "tts": {
+        "text": "きゅうりと乾燥ミントを入れたマストは、マスト オ ヒヤールと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ミントの入った塩味のヨーグルトドリンクはドゥーグと呼ばれます。",
+      "text_markdown": "ミントの入った塩味のヨーグルトドリンクはドゥーグと呼ばれます。",
+      "tts": {
+        "text": "ミントの入った塩味のヨーグルトドリンクはドゥーグと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "カシュクという、強い風味の乾燥ホエーもあり、スープに使います。",
+      "text_markdown": "カシュクという、強い風味の乾燥ホエーもあり、スープに使います。",
+      "tts": {
+        "text": "カシュクという、強い風味の乾燥ホエーもあり、スープに使います。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それからお茶です。",
+      "text_markdown": "それからお茶です。",
+      "tts": {
+        "text": "それからお茶です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペルシャの人たちは、朝も昼も夜も、サモワールの上の背の高いポットで濃くいれたお茶を飲みます。",
+      "text_markdown": "ペルシャの人たちは、朝も昼も夜も、サモワールの上の背の高いポットで濃くいれたお茶を飲みます。",
+      "tts": {
+        "text": "ペルシャの人たちは、朝も昼も夜も、サモワールの上の背の高いポットで濃くいれたお茶を飲みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "お茶はあまりに大切なので、それが遅れて入ってきたと知ると、多くの人は驚きます。",
+      "text_markdown": "お茶はあまりに大切なので、それが遅れて入ってきたと知ると、多くの人は驚きます。",
+      "tts": {
+        "text": "お茶はあまりに大切なので、それが遅れて入ってきたと知ると、多くの人は驚きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ペルシャの歴史のほとんどにおいて、飲み物はコーヒーでした。",
+      "text_markdown": "ペルシャの歴史のほとんどにおいて、飲み物はコーヒーでした。",
+      "tts": {
+        "text": "ペルシャの歴史のほとんどにおいて、飲み物はコーヒーでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "お茶が主役になったのは、十九世紀後半になってからです。",
+      "text_markdown": "お茶が主役になったのは、十九世紀後半になってからです。",
+      "tts": {
+        "text": "お茶が主役になったのは、十九世紀後半になってからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "今のイランは、世界でも有数のお茶好きの国です。",
+      "text_markdown": "今のイランは、世界でも有数のお茶好きの国です。",
+      "tts": {
+        "text": "今のイランは、世界でも有数のお茶好きの国です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それには小さな儀式があります。",
+      "text_markdown": "それには小さな儀式があります。",
+      "tts": {
+        "text": "それには小さな儀式があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歯の間に角砂糖を挟みます。",
+      "text_markdown": "歯の間に角砂糖を挟みます。",
+      "tts": {
+        "text": "歯の間に角砂糖を挟みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その角砂糖ごしにお茶をすするのです。",
+      "text_markdown": "その角砂糖ごしにお茶をすするのです。",
+      "tts": {
+        "text": "その角砂糖ごしにお茶をすするのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "キューブが少し溶けます。",
+      "text_markdown": "キューブが少し溶けます。",
+      "tts": {
+        "text": "キューブが少し溶けます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "お茶は熱く、濃く、口に入ると少し甘いのです。",
+      "text_markdown": "お茶は熱く、濃く、口に入ると少し甘いのです。",
+      "tts": {
+        "text": "お茶は熱く、濃く、口に入ると少し甘いのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "さて、お菓子です。",
+      "text_markdown": "さて、お菓子です。",
+      "tts": {
+        "text": "さて、お菓子です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペルシャのお菓子は、歴史が古く、味が濃く、小ぶりです。",
+      "text_markdown": "ペルシャのお菓子は、歴史が古く、味が濃く、小ぶりです。",
+      "tts": {
+        "text": "ペルシャのお菓子は、歴史が古く、味が濃く、小ぶりです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最も古いのはファールーデです。",
+      "text_markdown": "最も古いのはファールーデです。",
+      "tts": {
+        "text": "最も古いのはファールーデです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "細い米麺をローズウォーターのシロップで凍らせ、ライム果汁とピスタチオを添えます。",
+      "text_markdown": "細い米麺をローズウォーターのシロップで凍らせ、ライム果汁とピスタチオを添えます。",
+      "tts": {
+        "text": "細い米麺をローズウォーターのシロップで凍らせ、ライム果汁とピスタチオを添えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ペルシャの文人は、これを紀元前四百年ごろには書き残しています。",
+      "text_markdown": "ペルシャの文人は、これを紀元前四百年ごろには書き残しています。",
+      "tts": {
+        "text": "ペルシャの文人は、これを紀元前四百年ごろには書き残しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "だから、ファールーデは世界でも最古級の冷たい菓子です。",
+      "text_markdown": "だから、ファールーデは世界でも最古級の冷たい菓子です。",
+      "tts": {
+        "text": "だから、ファールーデは世界でも最古級の冷たい菓子です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "アイスクリームより二千年以上も古いのです。",
+      "text_markdown": "アイスクリームより二千年以上も古いのです。",
+      "tts": {
+        "text": "アイスクリームより二千年以上も古いのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかの定番もあります。タブリーズのバクラヴァ。トルコのものより軽く、くるみとローズウォーターが入ります。",
+      "text_markdown": "ほかの定番もあります。タブリーズのバクラヴァ。トルコのものより軽く、くるみとローズウォーターが入ります。",
+      "tts": {
+        "text": "ほかの定番もあります。タブリーズのバクラヴァ。トルコのものより軽く、くるみとローズウォーターが入ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハルヴァ。ごま、またはサフランで作る、濃厚な練り菓子です。",
+      "text_markdown": "ハルヴァ。ごま、またはサフランで作る、濃厚な練り菓子です。",
+      "tts": {
+        "text": "ハルヴァ。ごま、またはサフランで作る、濃厚な練り菓子です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "エスファハーンのガズ。ピスタチオ入りのやわらかなヌガーです。",
+      "text_markdown": "エスファハーンのガズ。ピスタチオ入りのやわらかなヌガーです。",
+      "tts": {
+        "text": "エスファハーンのガズ。ピスタチオ入りのやわらかなヌガーです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ソーハン。もろくて金色のサフラントフィーです。",
+      "text_markdown": "ソーハン。もろくて金色のサフラントフィーです。",
+      "tts": {
+        "text": "ソーハン。もろくて金色のサフラントフィーです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "コムのノホドチ。小さなひよこ豆のクッキーです。",
+      "text_markdown": "コムのノホドチ。小さなひよこ豆のクッキーです。",
+      "tts": {
+        "text": "コムのノホドチ。小さなひよこ豆のクッキーです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小皿のお菓子、一杯のお茶、ゆっくりとした会話。",
+      "text_markdown": "小皿のお菓子、一杯のお茶、ゆっくりとした会話。",
+      "tts": {
+        "text": "小皿のお菓子、一杯のお茶、ゆっくりとした会話。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはペルシャの午後です。",
+      "text_markdown": "それはペルシャの午後です。",
+      "tts": {
+        "text": "それはペルシャの午後です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第6章 ペルシャが与えたもの、取り入れたもの",
+      "text_markdown": "第6章 ペルシャが与えたもの、取り入れたもの"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャは旧世界のまんなかにありました。",
+      "text_markdown": "ペルシャは旧世界のまんなかにありました。",
+      "tts": {
+        "text": "ペルシャは旧世界のまんなかにありました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "隊商がそこを行き交いました。",
+      "text_markdown": "隊商がそこを行き交いました。",
+      "tts": {
+        "text": "隊商がそこを行き交いました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その地に帝国が興り、滅びました。",
+      "text_markdown": "その地に帝国が興り、滅びました。",
+      "tts": {
+        "text": "その地に帝国が興り、滅びました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "食べ物も、両方の方向へ行き来しました。",
+      "text_markdown": "食べ物も、両方の方向へ行き来しました。",
+      "tts": {
+        "text": "食べ物も、両方の方向へ行き来しました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "言葉を見てください。",
+      "text_markdown": "言葉を見てください。",
+      "tts": {
+        "text": "言葉を見てください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "英語には、ペルシャ語から来た食べ物のことばが何十もあります。",
+      "text_markdown": "英語には、ペルシャ語から来た食べ物のことばが何十もあります。",
+      "tts": {
+        "text": "英語には、ペルシャ語から来た食べ物のことばが何十もあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "砂糖、キャンディー、レモン、オレンジ、ジャスミン、ライラック、チューリップ、キオスク、シャーベット、パラダイスはすべてペルシャ起源です。",
+      "text_markdown": "砂糖、キャンディー、レモン、オレンジ、ジャスミン、ライラック、チューリップ、キオスク、シャーベット、パラダイスはすべてペルシャ起源です。",
+      "tts": {
+        "text": "砂糖、キャンディー、レモン、オレンジ、ジャスミン、ライラック、チューリップ、キオスク、シャーベット、パラダイスはすべてペルシャ起源です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "チェックメイトもそうです。語源はシャー・マト、「王は打つ手なし」です。ペルシャは、世界の半分の人の口にことばを入れました。",
+      "text_markdown": "チェックメイトもそうです。語源はシャー・マト、「王は打つ手なし」です。ペルシャは、世界の半分の人の口にことばを入れました。",
+      "tts": {
+        "text": "チェックメイトもそうです。語源はシャー マト、「王は打つ手なし」です。ペルシャは、世界の半分の人の口にことばを入れました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャの炊飯は東へ伝わりました。",
+      "text_markdown": "ペルシャの炊飯は東へ伝わりました。",
+      "tts": {
+        "text": "ペルシャの炊飯は東へ伝わりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "インドのムガル朝の王たちはペルシャ料理を愛し、宮廷にペルシャの料理人を招きました。",
+      "text_markdown": "インドのムガル朝の王たちはペルシャ料理を愛し、宮廷にペルシャの料理人を招きました。",
+      "tts": {
+        "text": "インドのムガル朝の王たちはペルシャ料理を愛し、宮廷にペルシャの料理人を招きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "あの料理人はビリヤニを作りました。",
+      "text_markdown": "あの料理人はビリヤニを作りました。",
+      "tts": {
+        "text": "あの料理人はビリヤニを作りました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ピラフは、地中海から中央アジアの草原に伝わる長粒種のスパイスの効いた米料理で、ペルシャ米の伝統に根ざしています。",
+      "text_markdown": "ピラフは、地中海から中央アジアの草原に伝わる長粒種のスパイスの効いた米料理で、ペルシャ米の伝統に根ざしています。",
+      "tts": {
+        "text": "ピラフは、地中海から中央アジアの草原に伝わる長粒種のスパイスの効いた米料理で、ペルシャ米の伝統に根ざしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャの果物は西へ向かいました。",
+      "text_markdown": "ペルシャの果物は西へ向かいました。",
+      "tts": {
+        "text": "ペルシャの果物は西へ向かいました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ローマ人はペルシャから桃を入手したため、イタリアで桃を栽培しました。",
+      "text_markdown": "ローマ人はペルシャから桃を入手したため、イタリアで桃を栽培しました。",
+      "tts": {
+        "text": "ローマ人はペルシャから桃を入手したため、イタリアで桃を栽培しました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ほうれん草は、ペルシャ世界の貿易商によって持ち込まれ、スペインを経由してヨーロッパに伝わりました。",
+      "text_markdown": "ほうれん草は、ペルシャ世界の貿易商によって持ち込まれ、スペインを経由してヨーロッパに伝わりました。",
+      "tts": {
+        "text": "ほうれん草は、ペルシャ世界の貿易商によって持ち込まれ、スペインを経由してヨーロッパに伝わりました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "オランダの象徴であるチューリップは、オランダに伝わる前にペルシャとトルコで最初に栽培されました。",
+      "text_markdown": "オランダの象徴であるチューリップは、オランダに伝わる前にペルシャとトルコで最初に栽培されました。",
+      "tts": {
+        "text": "オランダの象徴であるチューリップは、オランダに伝わる前にペルシャとトルコで最初に栽培されました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャも外からいろいろ取り入れました。",
+      "text_markdown": "ペルシャも外からいろいろ取り入れました。",
+      "tts": {
+        "text": "ペルシャも外からいろいろ取り入れました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "十三世紀に攻め込んだモンゴル人は、焼いた肉やあぶり肉をより好む味を運んできました。",
+      "text_markdown": "十三世紀に攻め込んだモンゴル人は、焼いた肉やあぶり肉をより好む味を運んできました。",
+      "tts": {
+        "text": "十三世紀に攻め込んだモンゴル人は、焼いた肉やあぶり肉をより好む味を運んできました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アラブの農業は、南と東からサトウキビ、柑橘、米をもたらしました。",
+      "text_markdown": "アラブの農業は、南と東からサトウキビ、柑橘、米をもたらしました。",
+      "tts": {
+        "text": "アラブの農業は、南と東からサトウキビ、柑橘、米をもたらしました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "サモワールは十八世紀に、北のロシアから伝わりました。",
+      "text_markdown": "サモワールは十八世紀に、北のロシアから伝わりました。",
+      "tts": {
+        "text": "サモワールは十八世紀に、北のロシアから伝わりました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ギリシャの歴史家ヘロドトスは、二千五百年前、ペルシャの人たちは一年でいちばん盛大に誕生日を祝うと書きました。",
+      "text_markdown": "ギリシャの歴史家ヘロドトスは、二千五百年前、ペルシャの人たちは一年でいちばん盛大に誕生日を祝うと書きました。",
+      "tts": {
+        "text": "ギリシャの歴史家ヘロドトスは、二千五百年前、ペルシャの人たちは一年でいちばん盛大に誕生日を祝うと書きました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その日は、ふだんよりもずっと豊かな食卓が整えられる、と彼は書いています。",
+      "text_markdown": "その日は、ふだんよりもずっと豊かな食卓が整えられる、と彼は書いています。",
+      "tts": {
+        "text": "その日は、ふだんよりもずっと豊かな食卓が整えられる、と彼は書いています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "変わらないものもあります。",
+      "text_markdown": "変わらないものもあります。",
+      "tts": {
+        "text": "変わらないものもあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第7章 ペルシャの食卓で",
+      "text_markdown": "第7章 ペルシャの食卓で"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "では、座りましょう。",
+      "text_markdown": "では、座りましょう。",
+      "tts": {
+        "text": "では、座りましょう。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャの一年は、春分の日、三月二十一日ごろに始まります。",
+      "text_markdown": "ペルシャの一年は、春分の日、三月二十一日ごろに始まります。",
+      "tts": {
+        "text": "ペルシャの一年は、春分の日、三月二十一日ごろに始まります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その祭りをノウルーズ、新しい日と呼びます。",
+      "text_markdown": "その祭りをノウルーズ、新しい日と呼びます。",
+      "tts": {
+        "text": "その祭りをノウルーズ、新しい日と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一年で最も重要な祝日です。",
+      "text_markdown": "一年で最も重要な祝日です。",
+      "tts": {
+        "text": "一年で最も重要な祝日です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの家でも、ハフトスィーンと呼ばれる特別な卓を整えます。",
+      "text_markdown": "どの家でも、ハフトスィーンと呼ばれる特別な卓を整えます。",
+      "tts": {
+        "text": "どの家でも、ハフトスィーンと呼ばれる特別な卓を整えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハフトは七という意味です。",
+      "text_markdown": "ハフトは七という意味です。",
+      "tts": {
+        "text": "ハフトは七という意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スィーンは S の字です。その卓には、ペルシャ語で S から始まるものを七つ並べます。",
+      "text_markdown": "スィーンは S の字です。その卓には、ペルシャ語で S から始まるものを七つ並べます。",
+      "tts": {
+        "text": "スィーンは エス の字です。その卓には、ペルシャ語で エス から始まるものを七つ並べます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "シーブ。りんごです。",
+      "text_markdown": "シーブ。りんごです。",
+      "tts": {
+        "text": "シーブ。りんごです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "セッケ。硬貨です。",
+      "text_markdown": "セッケ。硬貨です。",
+      "tts": {
+        "text": "セッケ。硬貨です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ソンボル。ヒヤシンスの花です。",
+      "text_markdown": "ソンボル。ヒヤシンスの花です。",
+      "tts": {
+        "text": "ソンボル。ヒヤシンスの花です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "サマヌー。甘い小麦のプディングです。",
+      "text_markdown": "サマヌー。甘い小麦のプディングです。",
+      "tts": {
+        "text": "サマヌー。甘い小麦のプディングです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "センジェド。セイヨウグミの実を干したものです。",
+      "text_markdown": "センジェド。セイヨウグミの実を干したものです。",
+      "tts": {
+        "text": "センジェド。セイヨウグミの実を干したものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "ソマーグ。スマックです。",
+      "text_markdown": "ソマーグ。スマックです。",
+      "tts": {
+        "text": "ソマーグ。スマックです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "セルケ。酢です。",
+      "text_markdown": "セルケ。酢です。",
+      "tts": {
+        "text": "セルケ。酢です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "それぞれが、健康、富、美しさ、忍耐、愛、昇る太陽、過ぎていく時間を表します。",
+      "text_markdown": "それぞれが、健康、富、美しさ、忍耐、愛、昇る太陽、過ぎていく時間を表します。",
+      "tts": {
+        "text": "それぞれが、健康、富、美しさ、忍耐、愛、昇る太陽、過ぎていく時間を表します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新年の料理は、サブジポロとマヒです。",
+      "text_markdown": "新年の料理は、サブジポロとマヒです。",
+      "tts": {
+        "text": "新年の料理は、サブジポロとマヒです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "刻んだ生ハーブで深い緑色になったご飯に、白身魚を添えます。",
+      "text_markdown": "刻んだ生ハーブで深い緑色になったご飯に、白身魚を添えます。",
+      "tts": {
+        "text": "刻んだ生ハーブで深い緑色になったご飯に、白身魚を添えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "皿の上の春です。",
+      "text_markdown": "皿の上の春です。",
+      "tts": {
+        "text": "皿の上の春です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もう一つの定番は、アーシュ・レシュテです。豆、ハーブ、揚げ玉ねぎ、カシュク、麺で作る濃いスープです。",
+      "text_markdown": "もう一つの定番は、アーシュ・レシュテです。豆、ハーブ、揚げ玉ねぎ、カシュク、麺で作る濃いスープです。",
+      "tts": {
+        "text": "もう一つの定番は、アーシュ レシュテです。豆、ハーブ、揚げ玉ねぎ、カシュク、麺で作る濃いスープです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ペルシャの人たちは、難しい決断の前にこれを食べるといいと言います。",
+      "text_markdown": "ペルシャの人たちは、難しい決断の前にこれを食べるといいと言います。",
+      "tts": {
+        "text": "ペルシャの人たちは、難しい決断の前にこれを食べるといいと言います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "麺が運命の糸をほどく、と言うのです。",
+      "text_markdown": "麺が運命の糸をほどく、と言うのです。",
+      "tts": {
+        "text": "麺が運命の糸をほどく、と言うのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "茶屋もまた、ペルシャの発明です。",
+      "text_markdown": "茶屋もまた、ペルシャの発明です。",
+      "tts": {
+        "text": "茶屋もまた、ペルシャの発明です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはガフヴェハーネと呼ばれます。文字どおりにはコーヒーの家ですが、今の飲み物はお茶です。",
+      "text_markdown": "それはガフヴェハーネと呼ばれます。文字どおりにはコーヒーの家ですが、今の飲み物はお茶です。",
+      "tts": {
+        "text": "それはガフヴェハーネと呼ばれます。文字どおりにはコーヒーの家ですが、今の飲み物はお茶です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "五百年ものあいだ、男も女もそこに集まり、バックギャモンをし、詩を聞き、世界のことを論じてきました。",
+      "text_markdown": "五百年ものあいだ、男も女もそこに集まり、バックギャモンをし、詩を聞き、世界のことを論じてきました。",
+      "tts": {
+        "text": "五百年ものあいだ、男も女もそこに集まり、バックギャモンをし、詩を聞き、世界のことを論じてきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くの偉大なペルシャの物語は、湯気の立つ一杯のそばで、はじめて語られました。",
+      "text_markdown": "多くの偉大なペルシャの物語は、湯気の立つ一杯のそばで、はじめて語られました。",
+      "tts": {
+        "text": "多くの偉大なペルシャの物語は、湯気の立つ一杯のそばで、はじめて語られました。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千年前に生きた有名なペルシャの医師、アヴィセンナは、食べ物はどれも、熱か冷かのどちらかだと教えました。",
+      "text_markdown": "千年前に生きた有名なペルシャの医師、アヴィセンナは、食べ物はどれも、熱か冷かのどちらかだと教えました。",
+      "tts": {
+        "text": "千年前に生きた有名なペルシャの医師、アヴィセンナは、食べ物はどれも、熱か冷かのどちらかだと教えました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "サフラン、くるみ、羊肉は熱の食べ物です。",
+      "text_markdown": "サフラン、くるみ、羊肉は熱の食べ物です。",
+      "tts": {
+        "text": "サフラン、くるみ、羊肉は熱の食べ物です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーグルト、きゅうり、すいかは冷の食べ物です。",
+      "text_markdown": "ヨーグルト、きゅうり、すいかは冷の食べ物です。",
+      "tts": {
+        "text": "ヨーグルト、きゅうり、すいかは冷の食べ物です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "よい食事は、その釣り合いをとります。",
+      "text_markdown": "よい食事は、その釣り合いをとります。",
+      "tts": {
+        "text": "よい食事は、その釣り合いをとります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ペルシャの多くの家では、その考えが今も昼の食卓に生きています。",
+      "text_markdown": "ペルシャの多くの家では、その考えが今も昼の食卓に生きています。",
+      "tts": {
+        "text": "ペルシャの多くの家では、その考えが今も昼の食卓に生きています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ペルシャ料理は気長な料理です。",
+      "text_markdown": "ペルシャ料理は気長な料理です。",
+      "tts": {
+        "text": "ペルシャ料理は気長な料理です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "たっぷりした料理です。",
+      "text_markdown": "たっぷりした料理です。",
+      "tts": {
+        "text": "たっぷりした料理です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "歴史の古い料理です。",
+      "text_markdown": "歴史の古い料理です。",
+      "tts": {
+        "text": "歴史の古い料理です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "そして今も、毎日、何百万ものコンロの上で作られています。",
+      "text_markdown": "そして今も、毎日、何百万ものコンロの上で作られています。",
+      "tts": {
+        "text": "そして今も、毎日、何百万ものコンロの上で作られています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "さようなら",
+      "text_markdown": "さようなら"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これで、私たちの短い旅は終わりです。",
+      "text_markdown": "これで、私たちの短い旅は終わりです。",
+      "tts": {
+        "text": "これで、私たちの短い旅は終わりです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何かを学べたことを願っています。",
+      "text_markdown": "何かを学べたことを願っています。",
+      "tts": {
+        "text": "何かを学べたことを願っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "このページのどこかで、おなかがすいたならうれしいです。",
+      "text_markdown": "このページのどこかで、おなかがすいたならうれしいです。",
+      "tts": {
+        "text": "このページのどこかで、おなかがすいたならうれしいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "サフランとお米。",
+      "text_markdown": "サフランとお米。",
+      "tts": {
+        "text": "サフランとお米。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ザクロとクルミ。",
+      "text_markdown": "ザクロとクルミ。",
+      "tts": {
+        "text": "ザクロとクルミ。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "小皿に小さなお菓子。",
+      "text_markdown": "小皿に小さなお菓子。",
+      "tts": {
+        "text": "小皿に小さなお菓子。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "できるなら、近くのペルシャ料理の店を探してみてください。",
+      "text_markdown": "できるなら、近くのペルシャ料理の店を探してみてください。",
+      "tts": {
+        "text": "できるなら、近くのペルシャ料理の店を探してみてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それか、ペルシャ料理の本を開いてみてください。",
+      "text_markdown": "それか、ペルシャ料理の本を開いてみてください。",
+      "tts": {
+        "text": "それか、ペルシャ料理の本を開いてみてください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "煮込みを一つ、試してください。",
+      "text_markdown": "煮込みを一つ、試してください。",
+      "tts": {
+        "text": "煮込みを一つ、試してください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "お茶を一杯、試してください。",
+      "text_markdown": "お茶を一杯、試してください。",
+      "tts": {
+        "text": "お茶を一杯、試してください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "その料理は、何千年も待ってきました。",
+      "text_markdown": "その料理は、何千年も待ってきました。",
+      "tts": {
+        "text": "その料理は、何千年も待ってきました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "あなたのことも待てます。",
+      "text_markdown": "あなたのことも待てます。",
+      "tts": {
+        "text": "あなたのことも待てます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "聞いてくれて、ありがとうございました。",
+      "text_markdown": "聞いてくれて、ありがとうございました。",
+      "tts": {
+        "text": "聞いてくれて、ありがとうございました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "何か作ってください。",
+      "text_markdown": "何か作ってください。",
+      "tts": {
+        "text": "何か作ってください。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "だれかといっしょに食べてください。",
+      "text_markdown": "だれかといっしょに食べてください。",
+      "tts": {
+        "text": "だれかといっしょに食べてください。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "私はKymです。",
+      "text_markdown": "私はKymです。",
+      "tts": {
+        "text": "私はキムです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "さようなら。",
+      "text_markdown": "さようなら。",
+      "tts": {
+        "text": "さようなら。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

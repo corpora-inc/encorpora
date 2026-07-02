@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "热带雨林",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "热带雨林",
+      "text_markdown": "热带雨林"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "雨林生长的地方",
+      "text_markdown": "雨林生长的地方"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欢迎来到热带雨林。",
+      "text_markdown": "欢迎来到热带雨林。",
+      "tts": {
+        "text": "欢迎来到热带雨林。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是世界上伟大的生物群落之一。",
+      "text_markdown": "这是世界上伟大的生物群落之一。",
+      "tts": {
+        "text": "这是世界上伟大的生物群落之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "生物群落是地球的一部分,有自己的天气、植物和动物。",
+      "text_markdown": "生物群落是地球的一部分,有自己的天气、植物和动物。",
+      "tts": {
+        "text": "生物群落是地球的一部分,有自己的天气、植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带雨林一年到头都很温暖。",
+      "text_markdown": "热带雨林一年到头都很温暖。",
+      "tts": {
+        "text": "热带雨林一年到头都很温暖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一年到头都很湿润。",
+      "text_markdown": "一年到头都很湿润。",
+      "tts": {
+        "text": "一年到头都很湿润。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里充满了生命。",
+      "text_markdown": "这里充满了生命。",
+      "tts": {
+        "text": "这里充满了生命。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数雨林生长在赤道附近。",
+      "text_markdown": "大多数雨林生长在赤道附近。",
+      "tts": {
+        "text": "大多数雨林生长在赤道附近。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "赤道是绕着地球中间的一条线。",
+      "text_markdown": "赤道是绕着地球中间的一条线。",
+      "tts": {
+        "text": "赤道是绕着地球中间的一条线。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在赤道附近,太阳每天都很强烈。",
+      "text_markdown": "在赤道附近,太阳每天都很强烈。",
+      "tts": {
+        "text": "在赤道附近,太阳每天都很强烈。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界上最大的雨林是亚马逊雨林,位于南美洲。",
+      "text_markdown": "世界上最大的雨林是亚马逊雨林,位于南美洲。",
+      "tts": {
+        "text": "世界上最大的雨林是亚马逊雨林,位于南美洲。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "非洲也有大片的雨林,在刚果河附近。",
+      "text_markdown": "非洲也有大片的雨林,在刚果河附近。",
+      "tts": {
+        "text": "非洲也有大片的雨林,在刚果河附近。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "东南亚的许多岛上也有雨林。",
+      "text_markdown": "东南亚的许多岛上也有雨林。",
+      "tts": {
+        "text": "东南亚的许多岛上也有雨林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在中美洲和太平洋上的岛屿上,还有一些较小的雨林。",
+      "text_markdown": "在中美洲和太平洋上的岛屿上,还有一些较小的雨林。",
+      "tts": {
+        "text": "在中美洲和太平洋上的岛屿上,还有一些较小的雨林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每一片森林都是各自独立长起来的,彼此相隔很远。",
+      "text_markdown": "每一片森林都是各自独立长起来的,彼此相隔很远。",
+      "tts": {
+        "text": "每一片森林都是各自独立长起来的,彼此相隔很远。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "所以,世界各地的植物和动物都不一样。",
+      "text_markdown": "所以,世界各地的植物和动物都不一样。",
+      "tts": {
+        "text": "所以,世界各地的植物和动物都不一样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亚马逊的猴子和非洲或亚洲的猴子不一样。",
+      "text_markdown": "亚马逊的猴子和非洲或亚洲的猴子不一样。",
+      "tts": {
+        "text": "亚马逊的猴子和非洲或亚洲的猴子不一样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但它们都属于同一个生物群落。",
+      "text_markdown": "但它们都属于同一个生物群落。",
+      "tts": {
+        "text": "但它们都属于同一个生物群落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当你站在雨林里时,空气感觉又重又热。",
+      "text_markdown": "当你站在雨林里时,空气感觉又重又热。",
+      "tts": {
+        "text": "当你站在雨林里时,空气感觉又重又热。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "光线柔和,带着绿意。",
+      "text_markdown": "光线柔和,带着绿意。",
+      "tts": {
+        "text": "光线柔和,带着绿意。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木那么高,你几乎看不见天空。",
+      "text_markdown": "树木那么高,你几乎看不见天空。",
+      "tts": {
+        "text": "树木那么高,你几乎看不见天空。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你听见鸟和虫子围在你四周。",
+      "text_markdown": "你听见鸟和虫子围在你四周。",
+      "tts": {
+        "text": "你听见鸟和虫子围在你四周。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你听见水从叶子上滴下来。",
+      "text_markdown": "你听见水从叶子上滴下来。",
+      "tts": {
+        "text": "你听见水从叶子上滴下来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你感觉就像在一间客厅里。",
+      "text_markdown": "你感觉就像在一间客厅里。",
+      "tts": {
+        "text": "你感觉就像在一间客厅里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是雨林。",
+      "text_markdown": "这就是雨林。",
+      "tts": {
+        "text": "这就是雨林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "雨林生长的地方",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个用树和雨水搭起来的世界。",
+      "text_markdown": "一个用树和雨水搭起来的世界。",
+      "tts": {
+        "text": "一个用树和雨水搭起来的世界。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "气候",
+      "text_markdown": "气候"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带雨林的气候很简单。",
+      "text_markdown": "热带雨林的气候很简单。",
+      "tts": {
+        "text": "热带雨林的气候很简单。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "天气温暖,雨水很多。",
+      "text_markdown": "天气温暖,雨水很多。",
+      "tts": {
+        "text": "天气温暖,雨水很多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "气温一年到头差不多。",
+      "text_markdown": "气温一年到头差不多。",
+      "tts": {
+        "text": "气温一年到头差不多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬天不会变冷。",
+      "text_markdown": "冬天不会变冷。",
+      "tts": {
+        "text": "冬天不会变冷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏天不会很热。",
+      "text_markdown": "夏天不会很热。",
+      "tts": {
+        "text": "夏天不会很热。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数日子都温暖而平稳。",
+      "text_markdown": "大多数日子都温暖而平稳。",
+      "tts": {
+        "text": "大多数日子都温暖而平稳。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几乎每天都下雨。",
+      "text_markdown": "几乎每天都下雨。",
+      "tts": {
+        "text": "几乎每天都下雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些地方一年的雨量超过两米。",
+      "text_markdown": "有些地方一年的雨量超过两米。",
+      "tts": {
+        "text": "有些地方一年的雨量超过两米。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这比世界上大多数地方见过的雨都多。",
+      "text_markdown": "这比世界上大多数地方见过的雨都多。",
+      "tts": {
+        "text": "这比世界上大多数地方见过的雨都多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨常常在下午来。",
+      "text_markdown": "雨常常在下午来。",
+      "tts": {
+        "text": "雨常常在下午来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大片云在树木上方聚集。",
+      "text_markdown": "大片云在树木上方聚集。",
+      "tts": {
+        "text": "大片云在树木上方聚集。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一场大雨会下一两个小时。",
+      "text_markdown": "一场大雨会下一两个小时。",
+      "tts": {
+        "text": "一场大雨会下一两个小时。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "然后太阳又出来了。",
+      "text_markdown": "然后太阳又出来了。",
+      "tts": {
+        "text": "然后太阳又出来了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "叶子闪闪发亮,地上升起水汽。",
+      "text_markdown": "叶子闪闪发亮,地上升起水汽。",
+      "tts": {
+        "text": "叶子闪闪发亮,地上升起水汽。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里没有四个季节。",
+      "text_markdown": "这里没有四个季节。",
+      "tts": {
+        "text": "这里没有四个季节。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "只有较湿的时候和较干的时候。",
+      "text_markdown": "只有较湿的时候和较干的时候。",
+      "tts": {
+        "text": "只有较湿的时候和较干的时候。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "就算在较干的时候,也常常下雨。",
+      "text_markdown": "就算在较干的时候,也常常下雨。",
+      "tts": {
+        "text": "就算在较干的时候,也常常下雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "气候",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "对雨林的植物和动物来说,每一天都差不多。",
+      "text_markdown": "对雨林的植物和动物来说,每一天都差不多。",
+      "tts": {
+        "text": "对雨林的植物和动物来说,每一天都差不多。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地和水",
+      "text_markdown": "土地和水"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨林的土地里生命很丰富,但土壤很薄。",
+      "text_markdown": "雨林的土地里生命很丰富,但土壤很薄。",
+      "tts": {
+        "text": "雨林的土地里生命很丰富,但土壤很薄。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大部分养分都在最上面的几厘米。",
+      "text_markdown": "大部分养分都在最上面的几厘米。",
+      "tts": {
+        "text": "大部分养分都在最上面的几厘米。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片叶子掉下来,虫子和小小的生物很快就把它分解。",
+      "text_markdown": "一片叶子掉下来,虫子和小小的生物很快就把它分解。",
+      "tts": {
+        "text": "一片叶子掉下来,虫子和小小的生物很快就把它分解。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木几乎立刻把养分吸回去。",
+      "text_markdown": "树木几乎立刻把养分吸回去。",
+      "tts": {
+        "text": "树木几乎立刻把养分吸回去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "所以被砍掉的雨林很难再长回来。",
+      "text_markdown": "所以被砍掉的雨林很难再长回来。",
+      "tts": {
+        "text": "所以被砍掉的雨林很难再长回来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "没有树木,雨水会把薄薄的土壤冲走。",
+      "text_markdown": "没有树木,雨水会把薄薄的土壤冲走。",
+      "tts": {
+        "text": "没有树木,雨水会把薄薄的土壤冲走。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "河流穿过每一片雨林。",
+      "text_markdown": "河流穿过每一片雨林。",
+      "tts": {
+        "text": "河流穿过每一片雨林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些河流很大。",
+      "text_markdown": "有些河流很大。",
+      "tts": {
+        "text": "有些河流很大。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "亚马逊河的水量比世界上任何一条河都多。",
+      "text_markdown": "亚马逊河的水量比世界上任何一条河都多。",
+      "tts": {
+        "text": "亚马逊河的水量比世界上任何一条河都多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在多雨的时候,河水会漫到森林深处。",
+      "text_markdown": "在多雨的时候,河水会漫到森林深处。",
+      "tts": {
+        "text": "在多雨的时候,河水会漫到森林深处。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木会在水里站好几个月。",
+      "text_markdown": "树木会在水里站好几个月。",
+      "tts": {
+        "text": "树木会在水里站好几个月。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鱼在树干之间游来游去。",
+      "text_markdown": "鱼在树干之间游来游去。",
+      "tts": {
+        "text": "鱼在树干之间游来游去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另外一些河流又小又清澈,底下有石头。",
+      "text_markdown": "另外一些河流又小又清澈,底下有石头。",
+      "tts": {
+        "text": "另外一些河流又小又清澈,底下有石头。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森林本身分成好几层。",
+      "text_markdown": "森林本身分成好几层。",
+      "tts": {
+        "text": "森林本身分成好几层。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最高的是最高的树,它们的树冠在阳光里张开。",
+      "text_markdown": "最高的是最高的树,它们的树冠在阳光里张开。",
+      "tts": {
+        "text": "最高的是最高的树,它们的树冠在阳光里张开。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "下面是一层厚厚的、绿色的叶子屋顶。",
+      "text_markdown": "下面是一层厚厚的、绿色的叶子屋顶。",
+      "tts": {
+        "text": "下面是一层厚厚的、绿色的叶子屋顶。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在那层屋顶下面,空气阴凉而安静。",
+      "text_markdown": "在那层屋顶下面,空气阴凉而安静。",
+      "tts": {
+        "text": "在那层屋顶下面,空气阴凉而安静。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在地面上,只透进一点点光。",
+      "text_markdown": "在地面上,只透进一点点光。",
+      "tts": {
+        "text": "在地面上,只透进一点点光。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "土地和水",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "每一层都是生物群落里动物和植物的不同家园。",
+      "text_markdown": "每一层都是生物群落里动物和植物的不同家园。",
+      "tts": {
+        "text": "每一层都是生物群落里动物和植物的不同家园。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带雨林的植物种类比陆地上任何其他生物群落都多。",
+      "text_markdown": "热带雨林的植物种类比陆地上任何其他生物群落都多。",
+      "tts": {
+        "text": "热带雨林的植物种类比陆地上任何其他生物群落都多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树是它的核心。",
+      "text_markdown": "树是它的核心。",
+      "tts": {
+        "text": "树是它的核心。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些树长得很高,向着太阳伸去。",
+      "text_markdown": "有些树长得很高,向着太阳伸去。",
+      "tts": {
+        "text": "有些树长得很高,向着太阳伸去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们的树干又直又光滑。",
+      "text_markdown": "它们的树干又直又光滑。",
+      "tts": {
+        "text": "它们的树干又直又光滑。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们的根在底部张得很开,像一道道墙,把树撑在薄薄的土壤里。",
+      "text_markdown": "它们的根在底部张得很开,像一道道墙,把树撑在薄薄的土壤里。",
+      "tts": {
+        "text": "它们的根在底部张得很开,像一道道墙,把树撑在薄薄的土壤里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "藤蔓沿着树干向着光爬上去。",
+      "text_markdown": "藤蔓沿着树干向着光爬上去。",
+      "tts": {
+        "text": "藤蔓沿着树干向着光爬上去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些藤蔓和你的手臂一样粗。",
+      "text_markdown": "有些藤蔓和你的手臂一样粗。",
+      "tts": {
+        "text": "有些藤蔓和你的手臂一样粗。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们绕着树盘旋,从树枝上垂下来。",
+      "text_markdown": "它们绕着树盘旋,从树枝上垂下来。",
+      "tts": {
+        "text": "它们绕着树盘旋,从树枝上垂下来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "还有些植物长在树上,高高地挂在空中。",
+      "text_markdown": "还有些植物长在树上,高高地挂在空中。",
+      "tts": {
+        "text": "还有些植物长在树上,高高地挂在空中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们的根完全不长在地里。",
+      "text_markdown": "它们的根完全不长在地里。",
+      "tts": {
+        "text": "它们的根完全不长在地里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们喝沿着树皮流下来的雨水。",
+      "text_markdown": "它们喝沿着树皮流下来的雨水。",
+      "tts": {
+        "text": "它们喝沿着树皮流下来的雨水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在阴暗的林地上,生长着蕨类和柔软的绿色植物。",
+      "text_markdown": "在阴暗的林地上,生长着蕨类和柔软的绿色植物。",
+      "tts": {
+        "text": "在阴暗的林地上,生长着蕨类和柔软的绿色植物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们有宽阔扁平的叶子,接住每一滴光。",
+      "text_markdown": "它们有宽阔扁平的叶子,接住每一滴光。",
+      "tts": {
+        "text": "它们有宽阔扁平的叶子,接住每一滴光。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "花朵开放,有你能想到的每一种颜色。",
+      "text_markdown": "花朵开放,有你能想到的每一种颜色。",
+      "tts": {
+        "text": "花朵开放,有你能想到的每一种颜色。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有的红,有的黄,有的是深紫色。",
+      "text_markdown": "有的红,有的黄,有的是深紫色。",
+      "tts": {
+        "text": "有的红,有的黄,有的是深紫色。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "很多花在夜里才开。",
+      "text_markdown": "很多花在夜里才开。",
+      "tts": {
+        "text": "很多花在夜里才开。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "果实整年都挂在树枝上。",
+      "text_markdown": "果实整年都挂在树枝上。",
+      "tts": {
+        "text": "果实整年都挂在树枝上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有甜的果子,酸的果子,还有壳很硬的果子。",
+      "text_markdown": "有甜的果子,酸的果子,还有壳很硬的果子。",
+      "tts": {
+        "text": "有甜的果子,酸的果子,还有壳很硬的果子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我们家里吃的许多食物,最早都是在雨林里野生的。",
+      "text_markdown": "我们家里吃的许多食物,最早都是在雨林里野生的。",
+      "tts": {
+        "text": "我们家里吃的许多食物,最早都是在雨林里野生的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "给我们巧克力的可可,来自南美洲的雨林。",
+      "text_markdown": "给我们巧克力的可可,来自南美洲的雨林。",
+      "tts": {
+        "text": "给我们巧克力的可可,来自南美洲的雨林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最早的香蕉树,长在东南亚的雨林里。",
+      "text_markdown": "最早的香蕉树,长在东南亚的雨林里。",
+      "tts": {
+        "text": "最早的香蕉树,长在东南亚的雨林里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我们喜欢的每一种食物,都连着地球上某一片森林的故事。",
+      "text_markdown": "我们喜欢的每一种食物,都连着地球上某一片森林的故事。",
+      "tts": {
+        "text": "我们喜欢的每一种食物,都连着地球上某一片森林的故事。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当你看着一棵雨林里的植物时,它常常找到了一种聪明的活法。",
+      "text_markdown": "当你看着一棵雨林里的植物时,它常常找到了一种聪明的活法。",
+      "tts": {
+        "text": "当你看着一棵雨林里的植物时,它常常找到了一种聪明的活法。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些叶子的尖端长长的,雨水可以很快滑下去。",
+      "text_markdown": "有些叶子的尖端长长的,雨水可以很快滑下去。",
+      "tts": {
+        "text": "有些叶子的尖端长长的,雨水可以很快滑下去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些花只有在夜里才发出甜香,把对的虫子叫来。",
+      "text_markdown": "有些花只有在夜里才发出甜香,把对的虫子叫来。",
+      "tts": {
+        "text": "有些花只有在夜里才发出甜香,把对的虫子叫来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "整片森林就像一台安静的机器,全是绿色做的。",
+      "text_markdown": "整片森林就像一台安静的机器,全是绿色做的。",
+      "tts": {
+        "text": "整片森林就像一台安静的机器,全是绿色做的。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "动物",
+      "text_markdown": "动物"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带雨林里的动物种类比陆地上任何地方都多。",
+      "text_markdown": "热带雨林里的动物种类比陆地上任何地方都多。",
+      "tts": {
+        "text": "热带雨林里的动物种类比陆地上任何地方都多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们大多生活在树上,而不是地面上。",
+      "text_markdown": "它们大多生活在树上,而不是地面上。",
+      "tts": {
+        "text": "它们大多生活在树上,而不是地面上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高处有更多食物,也有更多光。",
+      "text_markdown": "高处有更多食物,也有更多光。",
+      "tts": {
+        "text": "高处有更多食物,也有更多光。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "猴子住在许多雨林里。",
+      "text_markdown": "猴子住在许多雨林里。",
+      "tts": {
+        "text": "猴子住在许多雨林里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们在树枝之间跳来跳去,隔着树木互相呼喊。",
+      "text_markdown": "它们在树枝之间跳来跳去,隔着树木互相呼喊。",
+      "tts": {
+        "text": "它们在树枝之间跳来跳去,隔着树木互相呼喊。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在南美洲的雨林里,有些猴子有长长的尾巴,可以像多一只手一样用。",
+      "text_markdown": "在南美洲的雨林里,有些猴子有长长的尾巴,可以像多一只手一样用。",
+      "tts": {
+        "text": "在南美洲的雨林里,有些猴子有长长的尾巴,可以像多一只手一样用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鹦鹉和别的鲜艳的鸟,在高高的树枝间飞。",
+      "text_markdown": "鹦鹉和别的鲜艳的鸟,在高高的树枝间飞。",
+      "tts": {
+        "text": "鹦鹉和别的鲜艳的鸟,在高高的树枝间飞。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们吃果子和种子。",
+      "text_markdown": "它们吃果子和种子。",
+      "tts": {
+        "text": "它们吃果子和种子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们的羽毛有红色、绿色、蓝色和黄色。",
+      "text_markdown": "它们的羽毛有红色、绿色、蓝色和黄色。",
+      "tts": {
+        "text": "它们的羽毛有红色、绿色、蓝色和黄色。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在许多雨林里,大型猫科动物会在夜里到地面上猎食。",
+      "text_markdown": "在许多雨林里,大型猫科动物会在夜里到地面上猎食。",
+      "tts": {
+        "text": "在许多雨林里,大型猫科动物会在夜里到地面上猎食。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在美洲,这种猫是美洲虎。",
+      "text_markdown": "在美洲,这种猫是美洲虎。",
+      "tts": {
+        "text": "在美洲,这种猫是美洲虎。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在亚洲,是老虎。",
+      "text_markdown": "在亚洲,是老虎。",
+      "tts": {
+        "text": "在亚洲,是老虎。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在非洲,是豹。",
+      "text_markdown": "在非洲,是豹。",
+      "tts": {
+        "text": "在非洲,是豹。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们都强壮而安静,皮毛上有斑点或条纹。",
+      "text_markdown": "它们都强壮而安静,皮毛上有斑点或条纹。",
+      "tts": {
+        "text": "它们都强壮而安静,皮毛上有斑点或条纹。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蛇在叶子和树木之间滑行。",
+      "text_markdown": "蛇在叶子和树木之间滑行。",
+      "tts": {
+        "text": "蛇在叶子和树木之间滑行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些蛇很小,有些蛇很长。",
+      "text_markdown": "有些蛇很小,有些蛇很长。",
+      "tts": {
+        "text": "有些蛇很小,有些蛇很长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们大多很怕人,会躲开人。",
+      "text_markdown": "它们大多很怕人,会躲开人。",
+      "tts": {
+        "text": "它们大多很怕人,会躲开人。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "青蛙每晚都唱歌,特别是下雨之后。",
+      "text_markdown": "青蛙每晚都唱歌,特别是下雨之后。",
+      "tts": {
+        "text": "青蛙每晚都唱歌,特别是下雨之后。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些青蛙又小又鲜艳。",
+      "text_markdown": "有些青蛙又小又鲜艳。",
+      "tts": {
+        "text": "有些青蛙又小又鲜艳。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鲜艳的颜色提醒别的动物不要吃它们。",
+      "text_markdown": "鲜艳的颜色提醒别的动物不要吃它们。",
+      "tts": {
+        "text": "鲜艳的颜色提醒别的动物不要吃它们。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "虫子充满了森林的每一个角落。",
+      "text_markdown": "虫子充满了森林的每一个角落。",
+      "tts": {
+        "text": "虫子充满了森林的每一个角落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨林里的虫子比任何其他种类的动物都多。",
+      "text_markdown": "雨林里的虫子比任何其他种类的动物都多。",
+      "tts": {
+        "text": "雨林里的虫子比任何其他种类的动物都多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蚂蚁排成长长的队伍,走过林地。",
+      "text_markdown": "蚂蚁排成长长的队伍,走过林地。",
+      "tts": {
+        "text": "蚂蚁排成长长的队伍,走过林地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "甲虫爬上树干。",
+      "text_markdown": "甲虫爬上树干。",
+      "tts": {
+        "text": "甲虫爬上树干。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蝴蝶张开宽阔的、像画过的翅膀,在空中漂浮。",
+      "text_markdown": "蝴蝶张开宽阔的、像画过的翅膀,在空中漂浮。",
+      "tts": {
+        "text": "蝴蝶张开宽阔的、像画过的翅膀,在空中漂浮。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鱼住在河里,有许多形状和大小。",
+      "text_markdown": "鱼住在河里,有许多形状和大小。",
+      "tts": {
+        "text": "鱼住在河里,有许多形状和大小。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些鱼又小又银亮,有些鱼比小孩还大。",
+      "text_markdown": "有些鱼又小又银亮,有些鱼比小孩还大。",
+      "tts": {
+        "text": "有些鱼又小又银亮,有些鱼比小孩还大。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在所有这一切之上,鹰在森林的绿色屋顶上滑翔。",
+      "text_markdown": "在所有这一切之上,鹰在森林的绿色屋顶上滑翔。",
+      "tts": {
+        "text": "在所有这一切之上,鹰在森林的绿色屋顶上滑翔。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们注视着下面的动静。",
+      "text_markdown": "它们注视着下面的动静。",
+      "tts": {
+        "text": "它们注视着下面的动静。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "蝙蝠在日落时飞出来,吃果子和虫子。",
+      "text_markdown": "蝙蝠在日落时飞出来,吃果子和虫子。",
+      "tts": {
+        "text": "蝙蝠在日落时飞出来,吃果子和虫子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在一棵雨林的树上,你可能会发现比别处一整个小镇还多的动物种类。",
+      "text_markdown": "在一棵雨林的树上,你可能会发现比别处一整个小镇还多的动物种类。",
+      "tts": {
+        "text": "在一棵雨林的树上,你可能会发现比别处一整个小镇还多的动物种类。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是这个生物群落的奇妙之处。",
+      "text_markdown": "这就是这个生物群落的奇妙之处。",
+      "tts": {
+        "text": "这就是这个生物群落的奇妙之处。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人民",
+      "text_markdown": "人民"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们在热带雨林里生活了很久很久。",
+      "text_markdown": "人们在热带雨林里生活了很久很久。",
+      "tts": {
+        "text": "人们在热带雨林里生活了很久很久。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们学会了和树木、雨水、动物好好相处。",
+      "text_markdown": "他们学会了和树木、雨水、动物好好相处。",
+      "tts": {
+        "text": "他们学会了和树木、雨水、动物好好相处。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨林里的许多人住在小村子里。",
+      "text_markdown": "雨林里的许多人住在小村子里。",
+      "tts": {
+        "text": "雨林里的许多人住在小村子里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "房屋常常建在高高的木桩上,把房子撑在潮湿的地面上方。",
+      "text_markdown": "房屋常常建在高高的木桩上,把房子撑在潮湿的地面上方。",
+      "tts": {
+        "text": "房屋常常建在高高的木桩上,把房子撑在潮湿的地面上方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "屋顶是用厚厚一层一层叶子铺成的。",
+      "text_markdown": "屋顶是用厚厚一层一层叶子铺成的。",
+      "tts": {
+        "text": "屋顶是用厚厚一层一层叶子铺成的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "好的叶子屋顶可以挡住很大的雨。",
+      "text_markdown": "好的叶子屋顶可以挡住很大的雨。",
+      "tts": {
+        "text": "好的叶子屋顶可以挡住很大的雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "墙常常是敞开的,让温暖的空气穿过去。",
+      "text_markdown": "墙常常是敞开的,让温暖的空气穿过去。",
+      "tts": {
+        "text": "墙常常是敞开的,让温暖的空气穿过去。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人们在河里捕鱼,从森林里采集食物。",
+      "text_markdown": "人们在河里捕鱼,从森林里采集食物。",
+      "tts": {
+        "text": "人们在河里捕鱼,从森林里采集食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们用弓和长矛猎小动物。",
+      "text_markdown": "他们用弓和长矛猎小动物。",
+      "tts": {
+        "text": "他们用弓和长矛猎小动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们在从树林里开出来的小园子里种食物。",
+      "text_markdown": "他们在从树林里开出来的小园子里种食物。",
+      "tts": {
+        "text": "他们在从树林里开出来的小园子里种食物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们种什么,要看他们住在哪里。",
+      "text_markdown": "他们种什么,要看他们住在哪里。",
+      "tts": {
+        "text": "他们种什么,要看他们住在哪里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在南美洲的雨林里,人们种木薯和红薯已经几千年了。",
+      "text_markdown": "在南美洲的雨林里,人们种木薯和红薯已经几千年了。",
+      "tts": {
+        "text": "在南美洲的雨林里,人们种木薯和红薯已经几千年了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在非洲的雨林里,人们种山药和棕榈果。",
+      "text_markdown": "在非洲的雨林里,人们种山药和棕榈果。",
+      "tts": {
+        "text": "在非洲的雨林里,人们种山药和棕榈果。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在东南亚和太平洋的雨林里,人们种芋头、大米和面包果。",
+      "text_markdown": "在东南亚和太平洋的雨林里,人们种芋头、大米和面包果。",
+      "tts": {
+        "text": "在东南亚和太平洋的雨林里,人们种芋头、大米和面包果。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "过几年,他们就让园子重新长成森林,再在别的地方开一块新的。",
+      "text_markdown": "过几年,他们就让园子重新长成森林,再在别的地方开一块新的。",
+      "tts": {
+        "text": "过几年,他们就让园子重新长成森林,再在别的地方开一块新的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是森林保持健康的方式。",
+      "text_markdown": "这就是森林保持健康的方式。",
+      "tts": {
+        "text": "这就是森林保持健康的方式。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨林的人们认得几千种植物。",
+      "text_markdown": "雨林的人们认得几千种植物。",
+      "tts": {
+        "text": "雨林的人们认得几千种植物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们知道哪些可以当食物,哪些可以当药,哪些不能吃。",
+      "text_markdown": "他们知道哪些可以当食物,哪些可以当药,哪些不能吃。",
+      "tts": {
+        "text": "他们知道哪些可以当食物,哪些可以当药,哪些不能吃。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们学着辨认鸟的歌声。",
+      "text_markdown": "他们学着辨认鸟的歌声。",
+      "tts": {
+        "text": "他们学着辨认鸟的歌声。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们学着辨认动物的脚印。",
+      "text_markdown": "他们学着辨认动物的脚印。",
+      "tts": {
+        "text": "他们学着辨认动物的脚印。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些知识由父母传给孩子,一年又一年。",
+      "text_markdown": "这些知识由父母传给孩子,一年又一年。",
+      "tts": {
+        "text": "这些知识由父母传给孩子,一年又一年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "人民",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在每一片雨林里,这样的生活都有自己的语言、自己的故事和自己的音乐。",
+      "text_markdown": "在每一片雨林里,这样的生活都有自己的语言、自己的故事和自己的音乐。",
+      "tts": {
+        "text": "在每一片雨林里,这样的生活都有自己的语言、自己的故事和自己的音乐。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今天的雨林",
+      "text_markdown": "今天的雨林"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带雨林是地球上最重要的生物群落之一。",
+      "text_markdown": "热带雨林是地球上最重要的生物群落之一。",
+      "tts": {
+        "text": "热带雨林是地球上最重要的生物群落之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木把水从地下吸上来,再把水气呼到天空里。",
+      "text_markdown": "树木把水从地下吸上来,再把水气呼到天空里。",
+      "tts": {
+        "text": "树木把水从地下吸上来,再把水气呼到天空里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在森林上方形成的云,把雨送到很远的地方。",
+      "text_markdown": "在森林上方形成的云,把雨送到很远的地方。",
+      "tts": {
+        "text": "在森林上方形成的云,把雨送到很远的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木也会呼吸,只是和我们方向相反。",
+      "text_markdown": "树木也会呼吸,只是和我们方向相反。",
+      "tts": {
+        "text": "树木也会呼吸,只是和我们方向相反。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们吸进我们呼出的气,用它来生长。",
+      "text_markdown": "它们吸进我们呼出的气,用它来生长。",
+      "tts": {
+        "text": "它们吸进我们呼出的气,用它来生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们又把我们要吸进去的气还回来。",
+      "text_markdown": "它们又把我们要吸进去的气还回来。",
+      "tts": {
+        "text": "它们又把我们要吸进去的气还回来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但是雨林正面临麻烦。",
+      "text_markdown": "但是雨林正面临麻烦。",
+      "tts": {
+        "text": "但是雨林正面临麻烦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在许多地方,人们砍掉了树木来种庄稼或者养牲畜。",
+      "text_markdown": "在许多地方,人们砍掉了树木来种庄稼或者养牲畜。",
+      "tts": {
+        "text": "在许多地方,人们砍掉了树木来种庄稼或者养牲畜。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木没了,土壤就被冲走,雨也不像从前那样落下了。",
+      "text_markdown": "树木没了,土壤就被冲走,雨也不像从前那样落下了。",
+      "tts": {
+        "text": "树木没了,土壤就被冲走,雨也不像从前那样落下了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "住在那里的动物和人们失去了家园。",
+      "text_markdown": "住在那里的动物和人们失去了家园。",
+      "tts": {
+        "text": "住在那里的动物和人们失去了家园。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界上有许多团体正在努力保护剩下的森林。",
+      "text_markdown": "世界上有许多团体正在努力保护剩下的森林。",
+      "tts": {
+        "text": "世界上有许多团体正在努力保护剩下的森林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们种下新的树。",
+      "text_markdown": "他们种下新的树。",
+      "tts": {
+        "text": "他们种下新的树。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们帮助住在森林里的人照顾森林。",
+      "text_markdown": "他们帮助住在森林里的人照顾森林。",
+      "tts": {
+        "text": "他们帮助住在森林里的人照顾森林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们研究森林,让我们更了解它。",
+      "text_markdown": "他们研究森林,让我们更了解它。",
+      "tts": {
+        "text": "他们研究森林,让我们更了解它。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片雨林要长几百年。",
+      "text_markdown": "一片雨林要长几百年。",
+      "tts": {
+        "text": "一片雨林要长几百年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但是一片健康的雨林,可以一直生长几千年。",
+      "text_markdown": "但是一片健康的雨林,可以一直生长几千年。",
+      "tts": {
+        "text": "但是一片健康的雨林,可以一直生长几千年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "今天的雨林",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它值得我们用心去守护。",
+      "text_markdown": "它值得我们用心去守护。",
+      "tts": {
+        "text": "它值得我们用心去守护。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "结语",
+      "text_markdown": "结语"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是热带雨林。",
+      "text_markdown": "这就是热带雨林。",
+      "tts": {
+        "text": "这就是热带雨林。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个温暖、湿润、绿色、充满生命的世界。",
+      "text_markdown": "一个温暖、湿润、绿色、充满生命的世界。",
+      "tts": {
+        "text": "一个温暖、湿润、绿色、充满生命的世界。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你有一天走进雨林,请站住一分钟。",
+      "text_markdown": "如果你有一天走进雨林,请站住一分钟。",
+      "tts": {
+        "text": "如果你有一天走进雨林,请站住一分钟。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "听一听鸟、青蛙,还有叶子上的雨。",
+      "text_markdown": "听一听鸟、青蛙,还有叶子上的雨。",
+      "tts": {
+        "text": "听一听鸟、青蛙,还有叶子上的雨。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你会听见生物群落的心,就在你身边跳动。",
+      "text_markdown": "你会听见生物群落的心,就在你身边跳动。",
+      "tts": {
+        "text": "你会听见生物群落的心,就在你身边跳动。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

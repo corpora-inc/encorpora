@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "ko",
+  "total_segments": 310,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 글",
+      "text_markdown": "독자에게 드리는 글"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 기록된 역사상 가장 성공한 해적에 관한 실화입니다.",
+      "text_markdown": "이것은 기록된 역사상 가장 성공한 해적에 관한 실화입니다.",
+      "tts": {
+        "text": "이것은 기록된 역사상 가장 성공한 해적에 관한 실화입니다.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 이름은 정이사오이며, 세계 역사상 가장 거대한 해적 함대를 지휘했습니다.",
+      "text_markdown": "그녀의 이름은 정이사오이며, 세계 역사상 가장 거대한 해적 함대를 지휘했습니다.",
+      "tts": {
+        "text": "그녀의 이름은 정이사오이며, 세계 역사상 가장 거대한 해적 함대를 지휘했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전성기에 그녀는 대부분의 국가보다 많은 배를 지배했습니다.",
+      "text_markdown": "전성기에 그녀는 대부분의 국가보다 많은 배를 지배했습니다.",
+      "tts": {
+        "text": "전성기에 그녀는 대부분의 국가보다 많은 배를 지배했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀는 부유하거나 특권 있는 집안에서 태어나지 않았습니다.",
+      "text_markdown": "그녀는 부유하거나 특권 있는 집안에서 태어나지 않았습니다.",
+      "tts": {
+        "text": "그녀는 부유하거나 특권 있는 집안에서 태어나지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "십팔세기 후반, 중국 남부의 가난 속에서 태어났습니다.",
+      "text_markdown": "십팔세기 후반, 중국 남부의 가난 속에서 태어났습니다.",
+      "tts": {
+        "text": "십팔세기 후반, 중국 남부의 가난 속에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀가 이룬 모든 것은 지성, 냉혹함, 그리고 사람을 조직하는 뛰어난 능력으로 이루어졌습니다.",
+      "text_markdown": "그녀가 이룬 모든 것은 지성, 냉혹함, 그리고 사람을 조직하는 뛰어난 능력으로 이루어졌습니다.",
+      "tts": {
+        "text": "그녀가 이룬 모든 것은 지성, 냉혹함, 그리고 사람을 조직하는 뛰어난 능력으로 이루어졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책은 아무것도 가지지 못한 한 여성이 어떻게 남중국해의 절대적 지배자가 되었는지를 이야기합니다.",
+      "text_markdown": "이 책은 아무것도 가지지 못한 한 여성이 어떻게 남중국해의 절대적 지배자가 되었는지를 이야기합니다.",
+      "tts": {
+        "text": "이 책은 아무것도 가지지 못한 한 여성이 어떻게 남중국해의 절대적 지배자가 되었는지를 이야기합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이것은 전쟁, 교역, 법, 그리고 생존에 관한 이야기입니다.",
+      "text_markdown": "이것은 전쟁, 교역, 법, 그리고 생존에 관한 이야기입니다.",
+      "tts": {
+        "text": "이것은 전쟁, 교역, 법, 그리고 생존에 관한 이야기입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "또한 유럽 열강이 아시아 깊숙이 진출하면서 급변하던 세계에 대한 이야기이기도 합니다.",
+      "text_markdown": "또한 유럽 열강이 아시아 깊숙이 진출하면서 급변하던 세계에 대한 이야기이기도 합니다.",
+      "tts": {
+        "text": "또한 유럽 열강이 아시아 깊숙이 진출하면서 급변하던 세계에 대한 이야기이기도 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 책의 모든 사실은 역사적 기록에 근거합니다.",
+      "text_markdown": "이 책의 모든 사실은 역사적 기록에 근거합니다.",
+      "tts": {
+        "text": "이 책의 모든 사실은 역사적 기록에 근거합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기록이 불확실한 경우에는 그 사실을 밝힙니다.",
+      "text_markdown": "기록이 불확실한 경우에는 그 사실을 밝힙니다.",
+      "tts": {
+        "text": "기록이 불확실한 경우에는 그 사실을 밝힙니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 글",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사가들의 의견이 다른 경우, 가장 유력한 증거를 제시합니다.",
+      "text_markdown": "역사가들의 의견이 다른 경우, 가장 유력한 증거를 제시합니다.",
+      "tts": {
+        "text": "역사가들의 의견이 다른 경우, 가장 유력한 증거를 제시합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "남중국해의 세계",
+      "text_markdown": "남중국해의 세계"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남중국해는 지구에서 가장 분주한 해로 중 하나입니다.",
+      "text_markdown": "남중국해는 지구에서 가장 분주한 해로 중 하나입니다.",
+      "tts": {
+        "text": "남중국해는 지구에서 가장 분주한 해로 중 하나입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "서쪽의 베트남 해안에서 동쪽의 필리핀까지 뻗어 있습니다.",
+      "text_markdown": "서쪽의 베트남 해안에서 동쪽의 필리핀까지 뻗어 있습니다.",
+      "tts": {
+        "text": "서쪽의 베트남 해안에서 동쪽의 필리핀까지 뻗어 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "북쪽에는 중국 해안이, 남쪽에는 보르네오 섬과 수마트라 섬이 있습니다.",
+      "text_markdown": "북쪽에는 중국 해안이, 남쪽에는 보르네오 섬과 수마트라 섬이 있습니다.",
+      "tts": {
+        "text": "북쪽에는 중국 해안이, 남쪽에는 보르네오 섬과 수마트라 섬이 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "수천 년 동안 상인들이 이 바다를 항해해 왔습니다.",
+      "text_markdown": "수천 년 동안 상인들이 이 바다를 항해해 왔습니다.",
+      "tts": {
+        "text": "수천 년 동안 상인들이 이 바다를 항해해 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "중국의 정크선이 비단, 도자기, 차를 동남아시아 각지의 항구로 운반했습니다.",
+      "text_markdown": "중국의 정크선이 비단, 도자기, 차를 동남아시아 각지의 항구로 운반했습니다.",
+      "tts": {
+        "text": "중국의 정크선이 비단, 도자기, 차를 동남아시아 각지의 항구로 운반했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 대가로 향신료, 열대 목재, 진귀한 물품이 중국으로 흘러들었습니다.",
+      "text_markdown": "그 대가로 향신료, 열대 목재, 진귀한 물품이 중국으로 흘러들었습니다.",
+      "tts": {
+        "text": "그 대가로 향신료, 열대 목재, 진귀한 물품이 중국으로 흘러들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현재의 광저우, 당시 칸톤이라 불리던 도시가 이 교역의 중심이었습니다.",
+      "text_markdown": "현재의 광저우, 당시 칸톤이라 불리던 도시가 이 교역의 중심이었습니다.",
+      "tts": {
+        "text": "현재의 광저우, 당시 칸톤이라 불리던 도시가 이 교역의 중심이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "칸톤은 십팔세기 세계에서 가장 부유한 도시 중 하나였습니다.",
+      "text_markdown": "칸톤은 십팔세기 세계에서 가장 부유한 도시 중 하나였습니다.",
+      "tts": {
+        "text": "칸톤은 십팔세기 세계에서 가장 부유한 도시 중 하나였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "영국, 프랑스, 포르투갈, 네덜란드의 상인들이 시장 접근을 놓고 경쟁했습니다.",
+      "text_markdown": "영국, 프랑스, 포르투갈, 네덜란드의 상인들이 시장 접근을 놓고 경쟁했습니다.",
+      "tts": {
+        "text": "영국, 프랑스, 포르투갈, 네덜란드의 상인들이 시장 접근을 놓고 경쟁했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 시기 중국을 통치한 것은 청나라였습니다.",
+      "text_markdown": "이 시기 중국을 통치한 것은 청나라였습니다.",
+      "tts": {
+        "text": "이 시기 중국을 통치한 것은 청나라였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "청나라 황제는 한족이 아니라 만주족이었습니다.",
+      "text_markdown": "청나라 황제는 한족이 아니라 만주족이었습니다.",
+      "tts": {
+        "text": "청나라 황제는 한족이 아니라 만주족이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 천육백사십사년에 중국을 정복하고 세계 최대 규모의 제국을 건설했습니다.",
+      "text_markdown": "그들은 천육백사십사년에 중국을 정복하고 세계 최대 규모의 제국을 건설했습니다.",
+      "tts": {
+        "text": "그들은 천육백사십사년에 중국을 정복하고 세계 최대 규모의 제국을 건설했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 천칠백년대 후반이 되자 청나라는 쇠퇴하기 시작했습니다.",
+      "text_markdown": "그러나 천칠백년대 후반이 되자 청나라는 쇠퇴하기 시작했습니다.",
+      "tts": {
+        "text": "그러나 천칠백년대 후반이 되자 청나라는 쇠퇴하기 시작했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "부패가 관료 체계 전반에 퍼졌습니다.",
+      "text_markdown": "부패가 관료 체계 전반에 퍼졌습니다.",
+      "tts": {
+        "text": "부패가 관료 체계 전반에 퍼졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세금 징수관들은 농민과 어부에게서 한 푼이라도 더 쥐어짜냈습니다.",
+      "text_markdown": "세금 징수관들은 농민과 어부에게서 한 푼이라도 더 쥐어짜냈습니다.",
+      "tts": {
+        "text": "세금 징수관들은 농민과 어부에게서 한 푼이라도 더 쥐어짜냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "빈부 격차는 해마다 벌어졌습니다.",
+      "text_markdown": "빈부 격차는 해마다 벌어졌습니다.",
+      "tts": {
+        "text": "빈부 격차는 해마다 벌어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해안 지방에서는 많은 사람들이 극심한 빈곤 속에 살았습니다.",
+      "text_markdown": "해안 지방에서는 많은 사람들이 극심한 빈곤 속에 살았습니다.",
+      "tts": {
+        "text": "해안 지방에서는 많은 사람들이 극심한 빈곤 속에 살았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "광둥 해안의 어촌 마을은 중국에서 가장 가난한 곳이었습니다.",
+      "text_markdown": "광둥 해안의 어촌 마을은 중국에서 가장 가난한 곳이었습니다.",
+      "tts": {
+        "text": "광둥 해안의 어촌 마을은 중국에서 가장 가난한 곳이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "온 가족이 삼판이라는 작은 배 위에서 살았습니다.",
+      "text_markdown": "온 가족이 삼판이라는 작은 배 위에서 살았습니다.",
+      "tts": {
+        "text": "온 가족이 삼판이라는 작은 배 위에서 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 물 위에서 태어나고, 물 위에서 일하고, 물 위에서 죽었습니다.",
+      "text_markdown": "그들은 물 위에서 태어나고, 물 위에서 일하고, 물 위에서 죽었습니다.",
+      "tts": {
+        "text": "그들은 물 위에서 태어나고, 물 위에서 일하고, 물 위에서 죽었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "청나라 정부는 그들을 단가라 부르며 천민으로 취급했습니다.",
+      "text_markdown": "청나라 정부는 그들을 단가라 부르며 천민으로 취급했습니다.",
+      "tts": {
+        "text": "청나라 정부는 그들을 단가라 부르며 천민으로 취급했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "단가 가족들은 많은 지역에서 육지에 거주하는 것이 금지되었습니다.",
+      "text_markdown": "단가 가족들은 많은 지역에서 육지에 거주하는 것이 금지되었습니다.",
+      "tts": {
+        "text": "단가 가족들은 많은 지역에서 육지에 거주하는 것이 금지되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "관직으로 이어지는 과거 시험도 볼 수 없었습니다.",
+      "text_markdown": "관직으로 이어지는 과거 시험도 볼 수 없었습니다.",
+      "tts": {
+        "text": "관직으로 이어지는 과거 시험도 볼 수 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "법률과 관습 모두에 의해 중국 주류 사회에서 배제되었습니다.",
+      "text_markdown": "법률과 관습 모두에 의해 중국 주류 사회에서 배제되었습니다.",
+      "tts": {
+        "text": "법률과 관습 모두에 의해 중국 주류 사회에서 배제되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "여러 세대에 걸쳐 더 나은 삶으로 가는 길이 없었습니다.",
+      "text_markdown": "여러 세대에 걸쳐 더 나은 삶으로 가는 길이 없었습니다.",
+      "tts": {
+        "text": "여러 세대에 걸쳐 더 나은 삶으로 가는 길이 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적질은 하나의 대안을 제시했습니다.",
+      "text_markdown": "해적질은 하나의 대안을 제시했습니다.",
+      "tts": {
+        "text": "해적질은 하나의 대안을 제시했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "합법적인 수단으로 올라갈 수 없다면, 바다에는 바다만의 경제가 있었습니다.",
+      "text_markdown": "합법적인 수단으로 올라갈 수 없다면, 바다에는 바다만의 경제가 있었습니다.",
+      "tts": {
+        "text": "합법적인 수단으로 올라갈 수 없다면, 바다에는 바다만의 경제가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적 함대는 상선을 습격하고, 어촌을 갈취하며, 관군의 순찰을 피해 밀수를 했습니다.",
+      "text_markdown": "해적 함대는 상선을 습격하고, 어촌을 갈취하며, 관군의 순찰을 피해 밀수를 했습니다.",
+      "tts": {
+        "text": "해적 함대는 상선을 습격하고, 어촌을 갈취하며, 관군의 순찰을 피해 밀수를 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해안가의 가난한 사람들에게 해적단에 합류하는 것은 합리적인 경제적 결정이었습니다.",
+      "text_markdown": "해안가의 가난한 사람들에게 해적단에 합류하는 것은 합리적인 경제적 결정이었습니다.",
+      "tts": {
+        "text": "해안가의 가난한 사람들에게 해적단에 합류하는 것은 합리적인 경제적 결정이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남중국해의 해역은 해적질에 이상적이었습니다.",
+      "text_markdown": "남중국해의 해역은 해적질에 이상적이었습니다.",
+      "tts": {
+        "text": "남중국해의 해역은 해적질에 이상적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수천 개의 섬, 만, 하구가 은신처를 제공했습니다.",
+      "text_markdown": "수천 개의 섬, 만, 하구가 은신처를 제공했습니다.",
+      "tts": {
+        "text": "수천 개의 섬, 만, 하구가 은신처를 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "짙은 안개와 갑작스러운 폭풍이 추적을 어렵게 했습니다.",
+      "text_markdown": "짙은 안개와 갑작스러운 폭풍이 추적을 어렵게 했습니다.",
+      "tts": {
+        "text": "짙은 안개와 갑작스러운 폭풍이 추적을 어렵게 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "숙련된 선원을 태운 빠른 정크선은 몇 분 만에 해안선으로 사라질 수 있었습니다.",
+      "text_markdown": "숙련된 선원을 태운 빠른 정크선은 몇 분 만에 해안선으로 사라질 수 있었습니다.",
+      "tts": {
+        "text": "숙련된 선원을 태운 빠른 정크선은 몇 분 만에 해안선으로 사라질 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "한편, 아편 무역이 이 지역을 변화시키기 시작하고 있었습니다.",
+      "text_markdown": "한편, 아편 무역이 이 지역을 변화시키기 시작하고 있었습니다.",
+      "tts": {
+        "text": "한편, 아편 무역이 이 지역을 변화시키기 시작하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국 상인들이 인도에서 중국으로 막대한 양의 아편을 실어 날랐습니다.",
+      "text_markdown": "영국 상인들이 인도에서 중국으로 막대한 양의 아편을 실어 날랐습니다.",
+      "tts": {
+        "text": "영국 상인들이 인도에서 중국으로 막대한 양의 아편을 실어 날랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아편은 중국에서 불법이었지만, 이윤이 너무 커서 거래는 해마다 늘어났습니다.",
+      "text_markdown": "아편은 중국에서 불법이었지만, 이윤이 너무 커서 거래는 해마다 늘어났습니다.",
+      "tts": {
+        "text": "아편은 중국에서 불법이었지만, 이윤이 너무 커서 거래는 해마다 늘어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "밀수 조직은 남부 해안 전역에 퍼져 있었습니다.",
+      "text_markdown": "밀수 조직은 남부 해안 전역에 퍼져 있었습니다.",
+      "tts": {
+        "text": "밀수 조직은 남부 해안 전역에 퍼져 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것이 정이사오를 만들어낸 세계였습니다.",
+      "text_markdown": "이것이 정이사오를 만들어낸 세계였습니다.",
+      "tts": {
+        "text": "이것이 정이사오를 만들어낸 세계였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거대한 부와 극심한 가난이 한 줄기 바다로 나뉜 세계였습니다.",
+      "text_markdown": "거대한 부와 극심한 가난이 한 줄기 바다로 나뉜 세계였습니다.",
+      "tts": {
+        "text": "거대한 부와 극심한 가난이 한 줄기 바다로 나뉜 세계였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "제국들이 경쟁하고, 바다의 법은 그것을 집행할 힘을 가진 자의 것이었던 세계였습니다.",
+      "text_markdown": "제국들이 경쟁하고, 바다의 법은 그것을 집행할 힘을 가진 자의 것이었던 세계였습니다.",
+      "tts": {
+        "text": "제국들이 경쟁하고, 바다의 법은 그것을 집행할 힘을 가진 자의 것이었던 세계였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "유럽 열강은 중국을 열어야 할 시장으로 보았습니다.",
+      "text_markdown": "유럽 열강은 중국을 열어야 할 시장으로 보았습니다.",
+      "tts": {
+        "text": "유럽 열강은 중국을 열어야 할 시장으로 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "청나라 정부는 유럽인을 관리해야 할 오랑캐로 보았습니다.",
+      "text_markdown": "청나라 정부는 유럽인을 관리해야 할 오랑캐로 보았습니다.",
+      "tts": {
+        "text": "청나라 정부는 유럽인을 관리해야 할 오랑캐로 보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그리고 남중국해의 해적들은 양측 사이의 혼란 속에서 기회를 포착했습니다.",
+      "text_markdown": "그리고 남중국해의 해적들은 양측 사이의 혼란 속에서 기회를 포착했습니다.",
+      "tts": {
+        "text": "그리고 남중국해의 해적들은 양측 사이의 혼란 속에서 기회를 포착했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천칠백구십년까지 남중국해의 해적 함대는 수백 척에 달했습니다.",
+      "text_markdown": "천칠백구십년까지 남중국해의 해적 함대는 수백 척에 달했습니다.",
+      "tts": {
+        "text": "천칠백구십년까지 남중국해의 해적 함대는 수백 척에 달했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그들은 무질서한 범죄자가 아니었습니다.",
+      "text_markdown": "그들은 무질서한 범죄자가 아니었습니다.",
+      "tts": {
+        "text": "그들은 무질서한 범죄자가 아니었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 이들이 위계질서와 행동 규범을 갖춘 규율 있는 해군 세력으로 활동했습니다.",
+      "text_markdown": "많은 이들이 위계질서와 행동 규범을 갖춘 규율 있는 해군 세력으로 활동했습니다.",
+      "tts": {
+        "text": "많은 이들이 위계질서와 행동 규범을 갖춘 규율 있는 해군 세력으로 활동했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "남중국해의 세계",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 세력 중 가장 큰 것이 곧 역사상 가장 강력한 해적 함대가 될 참이었습니다.",
+      "text_markdown": "이 세력 중 가장 큰 것이 곧 역사상 가장 강력한 해적 함대가 될 참이었습니다.",
+      "tts": {
+        "text": "이 세력 중 가장 큰 것이 곧 역사상 가장 강력한 해적 함대가 될 참이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "기원",
+      "text_markdown": "기원"
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "훗날 정이사오가 될 여성은 천칠백칠십오년경에 태어났습니다.",
+      "text_markdown": "훗날 정이사오가 될 여성은 천칠백칠십오년경에 태어났습니다.",
+      "tts": {
+        "text": "훗날 정이사오가 될 여성은 천칠백칠십오년경에 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "중국 사료에서는 스샹구라는 이름으로 가장 많이 언급됩니다.",
+      "text_markdown": "중국 사료에서는 스샹구라는 이름으로 가장 많이 언급됩니다.",
+      "tts": {
+        "text": "중국 사료에서는 스샹구라는 이름으로 가장 많이 언급됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "정이사오라는 이름은 단순히 정이의 아내라는 뜻입니다.",
+      "text_markdown": "정이사오라는 이름은 단순히 정이의 아내라는 뜻입니다.",
+      "tts": {
+        "text": "정이사오라는 이름은 단순히 정이의 아내라는 뜻입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀는 광둥성의 단가 수상 생활자 공동체에서 태어났습니다.",
+      "text_markdown": "그녀는 광둥성의 단가 수상 생활자 공동체에서 태어났습니다.",
+      "tts": {
+        "text": "그녀는 광둥성의 단가 수상 생활자 공동체에서 태어났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "거의 모든 단가 가족과 마찬가지로 그녀의 가족도 가난했습니다.",
+      "text_markdown": "거의 모든 단가 가족과 마찬가지로 그녀의 가족도 가난했습니다.",
+      "tts": {
+        "text": "거의 모든 단가 가족과 마찬가지로 그녀의 가족도 가난했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어린 시절을 물 위에서 보내며 해안의 리듬을 익혔습니다.",
+      "text_markdown": "어린 시절을 물 위에서 보내며 해안의 리듬을 익혔습니다.",
+      "tts": {
+        "text": "어린 시절을 물 위에서 보내며 해안의 리듬을 익혔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "젊은 여성으로서 광저우 항구의 수상 유곽에서 일했습니다.",
+      "text_markdown": "젊은 여성으로서 광저우 항구의 수상 유곽에서 일했습니다.",
+      "tts": {
+        "text": "젊은 여성으로서 광저우 항구의 수상 유곽에서 일했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그곳에서는 번화한 항구를 오가는 선원, 상인, 어부들을 상대했습니다.",
+      "text_markdown": "그곳에서는 번화한 항구를 오가는 선원, 상인, 어부들을 상대했습니다.",
+      "tts": {
+        "text": "그곳에서는 번화한 항구를 오가는 선원, 상인, 어부들을 상대했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "힘들고 위험한 일이었지만, 같은 계층의 여성에게는 거의 불가능한 세상에 대한 지식을 얻게 해주었습니다.",
+      "text_markdown": "힘들고 위험한 일이었지만, 같은 계층의 여성에게는 거의 불가능한 세상에 대한 지식을 얻게 해주었습니다.",
+      "tts": {
+        "text": "힘들고 위험한 일이었지만, 같은 계층의 여성에게는 거의 불가능한 세상에 대한 지식을 얻게 해주었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "사람을 빠르고 정확하게 파악하는 법을 배웠습니다.",
+      "text_markdown": "사람을 빠르고 정확하게 파악하는 법을 배웠습니다.",
+      "tts": {
+        "text": "사람을 빠르고 정확하게 파악하는 법을 배웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "교역과 협상의 언어를 익혔습니다.",
+      "text_markdown": "교역과 협상의 언어를 익혔습니다.",
+      "tts": {
+        "text": "교역과 협상의 언어를 익혔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 기술들은 누구도 예상하지 못할 만큼 큰 가치를 지니게 됩니다.",
+      "text_markdown": "이 기술들은 누구도 예상하지 못할 만큼 큰 가치를 지니게 됩니다.",
+      "tts": {
+        "text": "이 기술들은 누구도 예상하지 못할 만큼 큰 가치를 지니게 됩니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천칠백구십팔년, 정이라는 해적 선장이 그녀가 탄 배를 나포했습니다.",
+      "text_markdown": "천칠백구십팔년, 정이라는 해적 선장이 그녀가 탄 배를 나포했습니다.",
+      "tts": {
+        "text": "천칠백구십팔년, 정이라는 해적 선장이 그녀가 탄 배를 나포했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그는 여러 세대에 걸친 해적 가문 출신이었습니다.",
+      "text_markdown": "그는 여러 세대에 걸친 해적 가문 출신이었습니다.",
+      "tts": {
+        "text": "그는 여러 세대에 걸친 해적 가문 출신이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 가문은 청나라 정복자에 맞선 명나라 잔존 세력을 지지했습니다.",
+      "text_markdown": "그의 가문은 청나라 정복자에 맞선 명나라 잔존 세력을 지지했습니다.",
+      "tts": {
+        "text": "그의 가문은 청나라 정복자에 맞선 명나라 잔존 세력을 지지했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이는 그 젊은 여성에게 결혼을 제안했습니다.",
+      "text_markdown": "정이는 그 젊은 여성에게 결혼을 제안했습니다.",
+      "tts": {
+        "text": "정이는 그 젊은 여성에게 결혼을 제안했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대부분의 기록에 따르면, 그녀는 단순히 수락하지 않았습니다.",
+      "text_markdown": "대부분의 기록에 따르면, 그녀는 단순히 수락하지 않았습니다.",
+      "tts": {
+        "text": "대부분의 기록에 따르면, 그녀는 단순히 수락하지 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "결혼에 동의하기 전에 두 사람의 관계 조건을 협상했습니다.",
+      "text_markdown": "결혼에 동의하기 전에 두 사람의 관계 조건을 협상했습니다.",
+      "tts": {
+        "text": "결혼에 동의하기 전에 두 사람의 관계 조건을 협상했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "함대의 동등한 몫과 지휘 결정에서의 동등한 발언권을 요구했습니다.",
+      "text_markdown": "함대의 동등한 몫과 지휘 결정에서의 동등한 발언권을 요구했습니다.",
+      "tts": {
+        "text": "함대의 동등한 몫과 지휘 결정에서의 동등한 발언권을 요구했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이것은 당시로서는 파격적인 일이었습니다.",
+      "text_markdown": "이것은 당시로서는 파격적인 일이었습니다.",
+      "tts": {
+        "text": "이것은 당시로서는 파격적인 일이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "청나라 말기 중국에서 여성의 법적 권리는 매우 제한적이었습니다.",
+      "text_markdown": "청나라 말기 중국에서 여성의 법적 권리는 매우 제한적이었습니다.",
+      "tts": {
+        "text": "청나라 말기 중국에서 여성의 법적 권리는 매우 제한적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "아내는 남편에게 의문 없이 복종해야 했습니다.",
+      "text_markdown": "아내는 남편에게 의문 없이 복종해야 했습니다.",
+      "tts": {
+        "text": "아내는 남편에게 의문 없이 복종해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 이곳은 해적의 세계였고, 해적의 세계에는 자체 규칙이 있었습니다.",
+      "text_markdown": "그러나 이곳은 해적의 세계였고, 해적의 세계에는 자체 규칙이 있었습니다.",
+      "tts": {
+        "text": "그러나 이곳은 해적의 세계였고, 해적의 세계에는 자체 규칙이 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이는 그녀의 조건을 받아들였습니다.",
+      "text_markdown": "정이는 그녀의 조건을 받아들였습니다.",
+      "tts": {
+        "text": "정이는 그녀의 조건을 받아들였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "역사가들은 그가 그녀의 지성과 지도자로서의 잠재력을 알아보았다고 봅니다.",
+      "text_markdown": "역사가들은 그가 그녀의 지성과 지도자로서의 잠재력을 알아보았다고 봅니다.",
+      "tts": {
+        "text": "역사가들은 그가 그녀의 지성과 지도자로서의 잠재력을 알아보았다고 봅니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "두 사람의 결혼은 개인적 유대인 동시에 전략적 동맹이었습니다.",
+      "text_markdown": "두 사람의 결혼은 개인적 유대인 동시에 전략적 동맹이었습니다.",
+      "tts": {
+        "text": "두 사람의 결혼은 개인적 유대인 동시에 전략적 동맹이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "함께, 그들은 전례 없는 것을 만들어갈 것이었습니다.",
+      "text_markdown": "함께, 그들은 전례 없는 것을 만들어갈 것이었습니다.",
+      "tts": {
+        "text": "함께, 그들은 전례 없는 것을 만들어갈 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이에게는 대담한 구상이 있었습니다.",
+      "text_markdown": "정이에게는 대담한 구상이 있었습니다.",
+      "tts": {
+        "text": "정이에게는 대담한 구상이 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남중국해에 흩어진 해적 함대를 하나의 연합으로 통합하려 했습니다.",
+      "text_markdown": "남중국해에 흩어진 해적 함대를 하나의 연합으로 통합하려 했습니다.",
+      "tts": {
+        "text": "남중국해에 흩어진 해적 함대를 하나의 연합으로 통합하려 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "개별 해적 선장들은 항상 서로 경쟁해 왔습니다.",
+      "text_markdown": "개별 해적 선장들은 항상 서로 경쟁해 왔습니다.",
+      "tts": {
+        "text": "개별 해적 선장들은 항상 서로 경쟁해 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정이는 협력하면 훨씬 강해질 수 있다고 믿었습니다.",
+      "text_markdown": "정이는 협력하면 훨씬 강해질 수 있다고 믿었습니다.",
+      "tts": {
+        "text": "정이는 협력하면 훨씬 강해질 수 있다고 믿었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천칠백구십팔년부터 천팔백오년까지 정이는 동맹 구축에 쉼 없이 매진했습니다.",
+      "text_markdown": "천칠백구십팔년부터 천팔백오년까지 정이는 동맹 구축에 쉼 없이 매진했습니다.",
+      "tts": {
+        "text": "천칠백구십팔년부터 천팔백오년까지 정이는 동맹 구축에 쉼 없이 매진했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "외교와 위협을 섞어 경쟁 선장들을 연합에 끌어들였습니다.",
+      "text_markdown": "외교와 위협을 섞어 경쟁 선장들을 연합에 끌어들였습니다.",
+      "tts": {
+        "text": "외교와 위협을 섞어 경쟁 선장들을 연합에 끌어들였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 아내는 이 협상에 깊이 관여했습니다.",
+      "text_markdown": "그의 아내는 이 협상에 깊이 관여했습니다.",
+      "tts": {
+        "text": "그의 아내는 이 협상에 깊이 관여했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 함대를 하나로 묶는 합의서 작성을 도왔습니다.",
+      "text_markdown": "그녀는 함대를 하나로 묶는 합의서 작성을 도왔습니다.",
+      "tts": {
+        "text": "그녀는 함대를 하나로 묶는 합의서 작성을 도왔습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백오년까지 연합이 완성되었습니다.",
+      "text_markdown": "천팔백오년까지 연합이 완성되었습니다.",
+      "tts": {
+        "text": "천팔백오년까지 연합이 완성되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "깃발 색으로 구별되는 여섯 함대로 구성되었습니다.",
+      "text_markdown": "깃발 색으로 구별되는 여섯 함대로 구성되었습니다.",
+      "tts": {
+        "text": "깃발 색으로 구별되는 여섯 함대로 구성되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "홍기함대가 가장 크고 강력했습니다.",
+      "text_markdown": "홍기함대가 가장 크고 강력했습니다.",
+      "tts": {
+        "text": "홍기함대가 가장 크고 강력했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정이가 홍기함대를 직접 지휘했습니다.",
+      "text_markdown": "정이가 홍기함대를 직접 지휘했습니다.",
+      "tts": {
+        "text": "정이가 홍기함대를 직접 지휘했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "연합은 수백 척의 배와 수만 명의 해적을 지배했습니다.",
+      "text_markdown": "연합은 수백 척의 배와 수만 명의 해적을 지배했습니다.",
+      "tts": {
+        "text": "연합은 수백 척의 배와 수만 명의 해적을 지배했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남중국해 전역을 장악했습니다.",
+      "text_markdown": "남중국해 전역을 장악했습니다.",
+      "tts": {
+        "text": "남중국해 전역을 장악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "조공을 바치지 않고는 어떤 상선도 이 해역을 안전하게 통과할 수 없었습니다.",
+      "text_markdown": "조공을 바치지 않고는 어떤 상선도 이 해역을 안전하게 통과할 수 없었습니다.",
+      "tts": {
+        "text": "조공을 바치지 않고는 어떤 상선도 이 해역을 안전하게 통과할 수 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그런데 천팔백칠년 십일월, 정이가 사망했습니다.",
+      "text_markdown": "그런데 천팔백칠년 십일월, 정이가 사망했습니다.",
+      "tts": {
+        "text": "그런데 천팔백칠년 십일월, 정이가 사망했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그의 죽음의 경위는 역사가들 사이에서 논쟁 중입니다.",
+      "text_markdown": "그의 죽음의 경위는 역사가들 사이에서 논쟁 중입니다.",
+      "tts": {
+        "text": "그의 죽음의 경위는 역사가들 사이에서 논쟁 중입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "폭풍에 익사했다는 기록도 있습니다.",
+      "text_markdown": "폭풍에 익사했다는 기록도 있습니다.",
+      "tts": {
+        "text": "폭풍에 익사했다는 기록도 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "베트남 해안의 전투에서 전사했다는 설도 있습니다.",
+      "text_markdown": "베트남 해안의 전투에서 전사했다는 설도 있습니다.",
+      "tts": {
+        "text": "베트남 해안의 전투에서 전사했다는 설도 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그의 죽음은 연합 전체에 위기를 불러왔습니다.",
+      "text_markdown": "그의 죽음은 연합 전체에 위기를 불러왔습니다.",
+      "tts": {
+        "text": "그의 죽음은 연합 전체에 위기를 불러왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그가 구축한 동맹은 그의 개인적 권위로 유지되고 있었습니다.",
+      "text_markdown": "그가 구축한 동맹은 그의 개인적 권위로 유지되고 있었습니다.",
+      "tts": {
+        "text": "그가 구축한 동맹은 그의 개인적 권위로 유지되고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "강력한 지도자 없이는 경쟁 파벌로 분열될 터였습니다.",
+      "text_markdown": "강력한 지도자 없이는 경쟁 파벌로 분열될 터였습니다.",
+      "tts": {
+        "text": "강력한 지도자 없이는 경쟁 파벌로 분열될 터였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들이 쌓아올린 모든 것이 위태로워졌습니다.",
+      "text_markdown": "그들이 쌓아올린 모든 것이 위태로워졌습니다.",
+      "tts": {
+        "text": "그들이 쌓아올린 모든 것이 위태로워졌습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다른 함대의 선장들은 연합이 무너질 것이라 예상했습니다.",
+      "text_markdown": "다른 함대의 선장들은 연합이 무너질 것이라 예상했습니다.",
+      "tts": {
+        "text": "다른 함대의 선장들은 연합이 무너질 것이라 예상했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영토를 차지하기 위해 태세를 갖추기 시작했습니다.",
+      "text_markdown": "영토를 차지하기 위해 태세를 갖추기 시작했습니다.",
+      "tts": {
+        "text": "영토를 차지하기 위해 태세를 갖추기 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 그들은 정이 미망인의 야망과 능력을 간과했습니다.",
+      "text_markdown": "그러나 그들은 정이 미망인의 야망과 능력을 간과했습니다.",
+      "tts": {
+        "text": "그러나 그들은 정이 미망인의 야망과 능력을 간과했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "기원",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 자신이 쌓아올린 것을 포기할 생각이 전혀 없었습니다.",
+      "text_markdown": "그녀는 자신이 쌓아올린 것을 포기할 생각이 전혀 없었습니다.",
+      "tts": {
+        "text": "그녀는 자신이 쌓아올린 것을 포기할 생각이 전혀 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "권력으로의 부상",
+      "text_markdown": "권력으로의 부상"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "남편이 죽은 후 며칠 안에, 정이사오는 계산된 속도로 움직였습니다.",
+      "text_markdown": "남편이 죽은 후 며칠 안에, 정이사오는 계산된 속도로 움직였습니다.",
+      "tts": {
+        "text": "남편이 죽은 후 며칠 안에, 정이사오는 계산된 속도로 움직였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "첫 번째 행동은 남편의 가장 신뢰받는 부관, 장보자이의 충성을 확보하는 것이었습니다.",
+      "text_markdown": "첫 번째 행동은 남편의 가장 신뢰받는 부관, 장보자이의 충성을 확보하는 것이었습니다.",
+      "tts": {
+        "text": "첫 번째 행동은 남편의 가장 신뢰받는 부관, 장보자이의 충성을 확보하는 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "장보자이는 어부의 아들로, 소년 시절 해적에게 잡힌 인물이었습니다.",
+      "text_markdown": "장보자이는 어부의 아들로, 소년 시절 해적에게 잡힌 인물이었습니다.",
+      "tts": {
+        "text": "장보자이는 어부의 아들로, 소년 시절 해적에게 잡힌 인물이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정이가 그를 양자로 삼아 훈련시키고 군사 지휘관으로 길러냈습니다.",
+      "text_markdown": "정이가 그를 양자로 삼아 훈련시키고 군사 지휘관으로 길러냈습니다.",
+      "tts": {
+        "text": "정이가 그를 양자로 삼아 훈련시키고 군사 지휘관으로 길러냈습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오는 장보자이와 개인적이면서도 전략적인 동맹을 맺었습니다.",
+      "text_markdown": "정이사오는 장보자이와 개인적이면서도 전략적인 동맹을 맺었습니다.",
+      "tts": {
+        "text": "정이사오는 장보자이와 개인적이면서도 전략적인 동맹을 맺었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "두 사람은 결국 결혼하게 됩니다.",
+      "text_markdown": "두 사람은 결국 결혼하게 됩니다.",
+      "tts": {
+        "text": "두 사람은 결국 결혼하게 됩니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 초기 결정적 몇 주간은 생존을 위한 제휴였습니다.",
+      "text_markdown": "그러나 초기 결정적 몇 주간은 생존을 위한 제휴였습니다.",
+      "tts": {
+        "text": "그러나 초기 결정적 몇 주간은 생존을 위한 제휴였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "두 사람은 다른 함대 사령관들에게 단결된 모습을 보여주었습니다.",
+      "text_markdown": "두 사람은 다른 함대 사령관들에게 단결된 모습을 보여주었습니다.",
+      "tts": {
+        "text": "두 사람은 다른 함대 사령관들에게 단결된 모습을 보여주었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀는 여섯 함대 선장들의 회의를 소집했습니다.",
+      "text_markdown": "그녀는 여섯 함대 선장들의 회의를 소집했습니다.",
+      "tts": {
+        "text": "그녀는 여섯 함대 선장들의 회의를 소집했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 회의에서 연합의 지도자로서 자신의 입장을 주장했습니다.",
+      "text_markdown": "그 회의에서 연합의 지도자로서 자신의 입장을 주장했습니다.",
+      "tts": {
+        "text": "그 회의에서 연합의 지도자로서 자신의 입장을 주장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이 동맹을 구축하는 데 남편과 동등한 파트너였다고 논증했습니다.",
+      "text_markdown": "이 동맹을 구축하는 데 남편과 동등한 파트너였다고 논증했습니다.",
+      "tts": {
+        "text": "이 동맹을 구축하는 데 남편과 동등한 파트너였다고 논증했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "선장들은 하나둘씩 그녀의 지휘를 따르기로 동의했습니다.",
+      "text_markdown": "선장들은 하나둘씩 그녀의 지휘를 따르기로 동의했습니다.",
+      "tts": {
+        "text": "선장들은 하나둘씩 그녀의 지휘를 따르기로 동의했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "첫 번째 과제는 칠만 명의 해적에게 규율을 세우는 것이었습니다.",
+      "text_markdown": "첫 번째 과제는 칠만 명의 해적에게 규율을 세우는 것이었습니다.",
+      "tts": {
+        "text": "첫 번째 과제는 칠만 명의 해적에게 규율을 세우는 것이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적은 본질적으로 독립적이고 권위를 불신하는 사람들이었습니다.",
+      "text_markdown": "해적은 본질적으로 독립적이고 권위를 불신하는 사람들이었습니다.",
+      "tts": {
+        "text": "해적은 본질적으로 독립적이고 권위를 불신하는 사람들이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "정이사오는 법 없는 함대는 스스로 무너진다는 것을 알고 있었습니다.",
+      "text_markdown": "정이사오는 법 없는 함대는 스스로 무너진다는 것을 알고 있었습니다.",
+      "tts": {
+        "text": "정이사오는 법 없는 함대는 스스로 무너진다는 것을 알고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 해적 역사상 가장 주목할 만한 법전 중 하나를 만들었습니다.",
+      "text_markdown": "그녀는 해적 역사상 가장 주목할 만한 법전 중 하나를 만들었습니다.",
+      "tts": {
+        "text": "그녀는 해적 역사상 가장 주목할 만한 법전 중 하나를 만들었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그 법전은 엄격하고 구체적이었습니다.",
+      "text_markdown": "그 법전은 엄격하고 구체적이었습니다.",
+      "tts": {
+        "text": "그 법전은 엄격하고 구체적이었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상관의 직접 명령에 불복한 해적은 참수되었습니다.",
+      "text_markdown": "상관의 직접 명령에 불복한 해적은 참수되었습니다.",
+      "tts": {
+        "text": "상관의 직접 명령에 불복한 해적은 참수되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "탈영은 사형에 해당했습니다.",
+      "text_markdown": "탈영은 사형에 해당했습니다.",
+      "tts": {
+        "text": "탈영은 사형에 해당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "공동 재산에서 도둑질하는 것도 사형이었습니다.",
+      "text_markdown": "공동 재산에서 도둑질하는 것도 사형이었습니다.",
+      "tts": {
+        "text": "공동 재산에서 도둑질하는 것도 사형이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 법전은 또한 당시로서는 이례적인 방식으로 포로를 보호했습니다.",
+      "text_markdown": "이 법전은 또한 당시로서는 이례적인 방식으로 포로를 보호했습니다.",
+      "tts": {
+        "text": "이 법전은 또한 당시로서는 이례적인 방식으로 포로를 보호했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포로를 폭행한 해적은 엄벌에 처해졌습니다.",
+      "text_markdown": "포로를 폭행한 해적은 엄벌에 처해졌습니다.",
+      "tts": {
+        "text": "포로를 폭행한 해적은 엄벌에 처해졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포로를 아내로 삼은 해적은 그녀에게 충실해야 했습니다.",
+      "text_markdown": "포로를 아내로 삼은 해적은 그녀에게 충실해야 했습니다.",
+      "tts": {
+        "text": "포로를 아내로 삼은 해적은 그녀에게 충실해야 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 규칙들은 제안이 아니라 철의 일관성으로 집행되었습니다.",
+      "text_markdown": "이 규칙들은 제안이 아니라 철의 일관성으로 집행되었습니다.",
+      "tts": {
+        "text": "이 규칙들은 제안이 아니라 철의 일관성으로 집행되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모든 약탈품은 등록되어 고정된 체계에 따라 분배되었습니다.",
+      "text_markdown": "모든 약탈품은 등록되어 고정된 체계에 따라 분배되었습니다.",
+      "tts": {
+        "text": "모든 약탈품은 등록되어 고정된 체계에 따라 분배되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "물품을 노획한 해적은 이십 퍼센트를 받았습니다.",
+      "text_markdown": "물품을 노획한 해적은 이십 퍼센트를 받았습니다.",
+      "tts": {
+        "text": "물품을 노획한 해적은 이십 퍼센트를 받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "나머지 팔십 퍼센트는 공동 기금에 들어갔습니다.",
+      "text_markdown": "나머지 팔십 퍼센트는 공동 기금에 들어갔습니다.",
+      "tts": {
+        "text": "나머지 팔십 퍼센트는 공동 기금에 들어갔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 체계는 대부분의 해적 조직을 무너뜨린 내부 분쟁을 방지했습니다.",
+      "text_markdown": "이 체계는 대부분의 해적 조직을 무너뜨린 내부 분쟁을 방지했습니다.",
+      "tts": {
+        "text": "이 체계는 대부분의 해적 조직을 무너뜨린 내부 분쟁을 방지했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오는 또한 정교한 과세 체계를 구축했습니다.",
+      "text_markdown": "정이사오는 또한 정교한 과세 체계를 구축했습니다.",
+      "tts": {
+        "text": "정이사오는 또한 정교한 과세 체계를 구축했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "상선은 정기적인 요금을 내고 안전한 항해를 보장받을 수 있었습니다.",
+      "text_markdown": "상선은 정기적인 요금을 내고 안전한 항해를 보장받을 수 있었습니다.",
+      "tts": {
+        "text": "상선은 정기적인 요금을 내고 안전한 항해를 보장받을 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해안 어촌은 보호의 대가로 조공을 바쳤습니다.",
+      "text_markdown": "해안 어촌은 보호의 대가로 조공을 바쳤습니다.",
+      "tts": {
+        "text": "해안 어촌은 보호의 대가로 조공을 바쳤습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 체계는 안전 보장의 대가로 세금을 거두는 병렬 정부처럼 기능했습니다.",
+      "text_markdown": "이 체계는 안전 보장의 대가로 세금을 거두는 병렬 정부처럼 기능했습니다.",
+      "tts": {
+        "text": "이 체계는 안전 보장의 대가로 세금을 거두는 병렬 정부처럼 기능했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "청나라 정부는 위협을 인식하고 해적을 격멸하기 위해 해군을 보냈습니다.",
+      "text_markdown": "청나라 정부는 위협을 인식하고 해적을 격멸하기 위해 해군을 보냈습니다.",
+      "tts": {
+        "text": "청나라 정부는 위협을 인식하고 해적을 격멸하기 위해 해군을 보냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "천팔백팔년, 대규모 제국 함대가 남중국해로 출항했습니다.",
+      "text_markdown": "천팔백팔년, 대규모 제국 함대가 남중국해로 출항했습니다.",
+      "tts": {
+        "text": "천팔백팔년, 대규모 제국 함대가 남중국해로 출항했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전투는 정부에게 참패였습니다.",
+      "text_markdown": "전투는 정부에게 참패였습니다.",
+      "tts": {
+        "text": "전투는 정부에게 참패였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정이사오의 군세는 제국 군함 수십 척을 격침하거나 나포했습니다.",
+      "text_markdown": "정이사오의 군세는 제국 군함 수십 척을 격침하거나 나포했습니다.",
+      "tts": {
+        "text": "정이사오의 군세는 제국 군함 수십 척을 격침하거나 나포했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "패배한 제독은 치욕감에 스스로 목숨을 끊었습니다.",
+      "text_markdown": "패배한 제독은 치욕감에 스스로 목숨을 끊었습니다.",
+      "tts": {
+        "text": "패배한 제독은 치욕감에 스스로 목숨을 끊었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "조정은 이 대패의 규모에 경악했습니다.",
+      "text_markdown": "조정은 이 대패의 규모에 경악했습니다.",
+      "tts": {
+        "text": "조정은 이 대패의 규모에 경악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "최고의 배와 가장 경험 많은 지휘관을 보냈지만 패했습니다.",
+      "text_markdown": "최고의 배와 가장 경험 많은 지휘관을 보냈지만 패했습니다.",
+      "tts": {
+        "text": "최고의 배와 가장 경험 많은 지휘관을 보냈지만 패했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적이 이제 정부 해군보다 강해진 것이었습니다.",
+      "text_markdown": "해적이 이제 정부 해군보다 강해진 것이었습니다.",
+      "tts": {
+        "text": "해적이 이제 정부 해군보다 강해진 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오는 가차 없이 우위를 밀어붙였습니다.",
+      "text_markdown": "정이사오는 가차 없이 우위를 밀어붙였습니다.",
+      "tts": {
+        "text": "정이사오는 가차 없이 우위를 밀어붙였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함대는 광둥 해안 전역으로 영토를 넓혔습니다.",
+      "text_markdown": "함대는 광둥 해안 전역으로 영토를 넓혔습니다.",
+      "tts": {
+        "text": "함대는 광둥 해안 전역으로 영토를 넓혔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "섬과 숨겨진 하구에 거점을 세웠습니다.",
+      "text_markdown": "섬과 숨겨진 하구에 거점을 세웠습니다.",
+      "tts": {
+        "text": "섬과 숨겨진 하구에 거점을 세웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정보망은 광저우에서 베트남까지 뻗어 있었습니다.",
+      "text_markdown": "정보망은 광저우에서 베트남까지 뻗어 있었습니다.",
+      "tts": {
+        "text": "정보망은 광저우에서 베트남까지 뻗어 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "청나라 정부는 새로운 전략을 시도했습니다.",
+      "text_markdown": "청나라 정부는 새로운 전략을 시도했습니다.",
+      "tts": {
+        "text": "청나라 정부는 새로운 전략을 시도했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마카오의 포르투갈 식민지에서 군함을 고용하여 해적과 싸우게 했습니다.",
+      "text_markdown": "마카오의 포르투갈 식민지에서 군함을 고용하여 해적과 싸우게 했습니다.",
+      "tts": {
+        "text": "마카오의 포르투갈 식민지에서 군함을 고용하여 해적과 싸우게 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "포르투갈에는 근대식 유럽 대포와 훈련된 해군 장교가 있었습니다.",
+      "text_markdown": "포르투갈에는 근대식 유럽 대포와 훈련된 해군 장교가 있었습니다.",
+      "tts": {
+        "text": "포르투갈에는 근대식 유럽 대포와 훈련된 해군 장교가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "한동안 이 동맹은 해적 함대에 실질적 압박을 가했습니다.",
+      "text_markdown": "한동안 이 동맹은 해적 함대에 실질적 압박을 가했습니다.",
+      "tts": {
+        "text": "한동안 이 동맹은 해적 함대에 실질적 압박을 가했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 정이사오는 빠르게 적응했습니다.",
+      "text_markdown": "그러나 정이사오는 빠르게 적응했습니다.",
+      "tts": {
+        "text": "그러나 정이사오는 빠르게 적응했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "포르투갈 군함과의 직접 대결을 피했습니다.",
+      "text_markdown": "포르투갈 군함과의 직접 대결을 피했습니다.",
+      "tts": {
+        "text": "포르투갈 군함과의 직접 대결을 피했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "대신 보급선을 노리고 동맹의 상선을 공격했습니다.",
+      "text_markdown": "대신 보급선을 노리고 동맹의 상선을 공격했습니다.",
+      "tts": {
+        "text": "대신 보급선을 노리고 동맹의 상선을 공격했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "포르투갈이 보수를 받는 동안만 싸울 것이라는 점을 간파한 것입니다.",
+      "text_markdown": "포르투갈이 보수를 받는 동안만 싸울 것이라는 점을 간파한 것입니다.",
+      "tts": {
+        "text": "포르투갈이 보수를 받는 동안만 싸울 것이라는 점을 간파한 것입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백구년까지 청나라와 포르투갈의 동맹은 그녀를 물리치는 데 실패했습니다.",
+      "text_markdown": "천팔백구년까지 청나라와 포르투갈의 동맹은 그녀를 물리치는 데 실패했습니다.",
+      "tts": {
+        "text": "천팔백구년까지 청나라와 포르투갈의 동맹은 그녀를 물리치는 데 실패했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정부는 막대한 비용을 쓰고 수십 척의 배를 잃었습니다.",
+      "text_markdown": "정부는 막대한 비용을 쓰고 수십 척의 배를 잃었습니다.",
+      "tts": {
+        "text": "정부는 막대한 비용을 쓰고 수십 척의 배를 잃었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적은 그 어느 때보다 견고하게 해안을 장악했습니다.",
+      "text_markdown": "해적은 그 어느 때보다 견고하게 해안을 장악했습니다.",
+      "tts": {
+        "text": "해적은 그 어느 때보다 견고하게 해안을 장악했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "권력으로의 부상",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "정이사오의 연합은 권력의 정점에 있었습니다.",
+      "text_markdown": "정이사오의 연합은 권력의 정점에 있었습니다.",
+      "tts": {
+        "text": "정이사오의 연합은 권력의 정점에 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "절정",
+      "text_markdown": "절정"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "최전성기에 해적 연합은 약 천팔백 척의 선박을 거느렸습니다.",
+      "text_markdown": "최전성기에 해적 연합은 약 천팔백 척의 선박을 거느렸습니다.",
+      "tts": {
+        "text": "최전성기에 해적 연합은 약 천팔백 척의 선박을 거느렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "소형 고속 습격선부터 수십 문의 대포를 탑재한 대형 전투 정크선까지 다양했습니다.",
+      "text_markdown": "소형 고속 습격선부터 수십 문의 대포를 탑재한 대형 전투 정크선까지 다양했습니다.",
+      "tts": {
+        "text": "소형 고속 습격선부터 수십 문의 대포를 탑재한 대형 전투 정크선까지 다양했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "총 전투 병력은 칠만에서 팔만 명에 달했습니다.",
+      "text_markdown": "총 전투 병력은 칠만에서 팔만 명에 달했습니다.",
+      "tts": {
+        "text": "총 전투 병력은 칠만에서 팔만 명에 달했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이는 당시 대부분 유럽 국가의 해군보다 큰 규모였습니다.",
+      "text_markdown": "이는 당시 대부분 유럽 국가의 해군보다 큰 규모였습니다.",
+      "tts": {
+        "text": "이는 당시 대부분 유럽 국가의 해군보다 큰 규모였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "홍기함대만 해도 육백 척에서 팔백 척을 보유했습니다.",
+      "text_markdown": "홍기함대만 해도 육백 척에서 팔백 척을 보유했습니다.",
+      "tts": {
+        "text": "홍기함대만 해도 육백 척에서 팔백 척을 보유했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "연합 내 최대 규모의 단일 함대였습니다.",
+      "text_markdown": "연합 내 최대 규모의 단일 함대였습니다.",
+      "tts": {
+        "text": "연합 내 최대 규모의 단일 함대였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "정이사오가 직접 지휘하고 장보자이가 군사 총책임자였습니다.",
+      "text_markdown": "정이사오가 직접 지휘하고 장보자이가 군사 총책임자였습니다.",
+      "tts": {
+        "text": "정이사오가 직접 지휘하고 장보자이가 군사 총책임자였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "나머지 다섯 함대는 반독립적으로 활동했지만 그녀의 전략적 방침을 따랐습니다.",
+      "text_markdown": "나머지 다섯 함대는 반독립적으로 활동했지만 그녀의 전략적 방침을 따랐습니다.",
+      "tts": {
+        "text": "나머지 다섯 함대는 반독립적으로 활동했지만 그녀의 전략적 방침을 따랐습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "연합의 영토는 천 마일 이상의 해안선에 걸쳐 있었습니다.",
+      "text_markdown": "연합의 영토는 천 마일 이상의 해안선에 걸쳐 있었습니다.",
+      "tts": {
+        "text": "연합의 영토는 천 마일 이상의 해안선에 걸쳐 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남쪽 베트남 국경에서 북쪽 푸젠 해안까지, 해적의 허가 없이 안전한 배는 없었습니다.",
+      "text_markdown": "남쪽 베트남 국경에서 북쪽 푸젠 해안까지, 해적의 허가 없이 안전한 배는 없었습니다.",
+      "tts": {
+        "text": "남쪽 베트남 국경에서 북쪽 푸젠 해안까지, 해적의 허가 없이 안전한 배는 없었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "강대한 영국 동인도회사조차 화물을 잃지 않기 위해 조공을 바쳤습니다.",
+      "text_markdown": "강대한 영국 동인도회사조차 화물을 잃지 않기 위해 조공을 바쳤습니다.",
+      "tts": {
+        "text": "강대한 영국 동인도회사조차 화물을 잃지 않기 위해 조공을 바쳤습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적 정크선에서의 삶은 고되었지만 질서가 있었습니다.",
+      "text_markdown": "해적 정크선에서의 삶은 고되었지만 질서가 있었습니다.",
+      "tts": {
+        "text": "해적 정크선에서의 삶은 고되었지만 질서가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "각 배에는 선장부터 최신 신병까지 명확한 위계가 있었습니다.",
+      "text_markdown": "각 배에는 선장부터 최신 신병까지 명확한 위계가 있었습니다.",
+      "tts": {
+        "text": "각 배에는 선장부터 최신 신병까지 명확한 위계가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "식사는 공동이었고 배급은 균등하게 분배되었습니다.",
+      "text_markdown": "식사는 공동이었고 배급은 균등하게 분배되었습니다.",
+      "tts": {
+        "text": "식사는 공동이었고 배급은 균등하게 분배되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "모든 선원은 계급과 역할에 따른 약탈품의 몫을 받았습니다.",
+      "text_markdown": "모든 선원은 계급과 역할에 따른 약탈품의 몫을 받았습니다.",
+      "tts": {
+        "text": "모든 선원은 계급과 역할에 따른 약탈품의 몫을 받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함대의 많은 배에서 여성이 복무했습니다.",
+      "text_markdown": "함대의 많은 배에서 여성이 복무했습니다.",
+      "tts": {
+        "text": "함대의 많은 배에서 여성이 복무했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "일부는 습격 시 남성과 함께 싸웠습니다.",
+      "text_markdown": "일부는 습격 시 남성과 함께 싸웠습니다.",
+      "tts": {
+        "text": "일부는 습격 시 남성과 함께 싸웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 이들은 보급, 항해, 선박 간 통신을 담당했습니다.",
+      "text_markdown": "다른 이들은 보급, 항해, 선박 간 통신을 담당했습니다.",
+      "tts": {
+        "text": "다른 이들은 보급, 항해, 선박 간 통신을 담당했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적의 세계는 주류 청나라 사회보다 여성에게 더 많은 자유를 주었습니다.",
+      "text_markdown": "해적의 세계는 주류 청나라 사회보다 여성에게 더 많은 자유를 주었습니다.",
+      "tts": {
+        "text": "해적의 세계는 주류 청나라 사회보다 여성에게 더 많은 자유를 주었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "함대의 전투 정크선은 가공할 전투 기계였습니다.",
+      "text_markdown": "함대의 전투 정크선은 가공할 전투 기계였습니다.",
+      "tts": {
+        "text": "함대의 전투 정크선은 가공할 전투 기계였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "대형 정크선은 삼십 문 이상의 대포를 탑재할 수 있었습니다.",
+      "text_markdown": "대형 정크선은 삼십 문 이상의 대포를 탑재할 수 있었습니다.",
+      "tts": {
+        "text": "대형 정크선은 삼십 문 이상의 대포를 탑재할 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선체는 보강되었고 승선 공격을 막기 위해 현측이 높게 제작되었습니다.",
+      "text_markdown": "선체는 보강되었고 승선 공격을 막기 위해 현측이 높게 제작되었습니다.",
+      "tts": {
+        "text": "선체는 보강되었고 승선 공격을 막기 위해 현측이 높게 제작되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "평저선 구조 덕분에 흘수가 깊은 유럽 선박이 따라올 수 없는 얕은 연안 수역을 항해할 수 있었습니다.",
+      "text_markdown": "평저선 구조 덕분에 흘수가 깊은 유럽 선박이 따라올 수 없는 얕은 연안 수역을 항해할 수 있었습니다.",
+      "tts": {
+        "text": "평저선 구조 덕분에 흘수가 깊은 유럽 선박이 따라올 수 없는 얕은 연안 수역을 항해할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오의 정보망은 최대의 무기 중 하나였습니다.",
+      "text_markdown": "정이사오의 정보망은 최대의 무기 중 하나였습니다.",
+      "tts": {
+        "text": "정이사오의 정보망은 최대의 무기 중 하나였습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "광저우, 마카오, 해안의 모든 주요 항구에 첩자가 있었습니다.",
+      "text_markdown": "광저우, 마카오, 해안의 모든 주요 항구에 첩자가 있었습니다.",
+      "tts": {
+        "text": "광저우, 마카오, 해안의 모든 주요 항구에 첩자가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "귀중한 화물선이 언제 출항하고 어떤 항로를 택할지 알고 있었습니다.",
+      "text_markdown": "귀중한 화물선이 언제 출항하고 어떤 항로를 택할지 알고 있었습니다.",
+      "tts": {
+        "text": "귀중한 화물선이 언제 출항하고 어떤 항로를 택할지 알고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이 정보 덕분에 우연에 의존하지 않고 정밀하게 공격할 수 있었습니다.",
+      "text_markdown": "이 정보 덕분에 우연에 의존하지 않고 정밀하게 공격할 수 있었습니다.",
+      "tts": {
+        "text": "이 정보 덕분에 우연에 의존하지 않고 정밀하게 공격할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀가 구축한 과세 체계는 놀라울 정도로 정교했습니다.",
+      "text_markdown": "그녀가 구축한 과세 체계는 놀라울 정도로 정교했습니다.",
+      "tts": {
+        "text": "그녀가 구축한 과세 체계는 놀라울 정도로 정교했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "화물 종류에 따라 세율이 달랐습니다.",
+      "text_markdown": "화물 종류에 따라 세율이 달랐습니다.",
+      "tts": {
+        "text": "화물 종류에 따라 세율이 달랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "비단 상인이 쌀 상인보다 더 많이 냈습니다.",
+      "text_markdown": "비단 상인이 쌀 상인보다 더 많이 냈습니다.",
+      "tts": {
+        "text": "비단 상인이 쌀 상인보다 더 많이 냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "소금 밀수업자는 화물이 이미 불법이었기에 할증료를 냈습니다.",
+      "text_markdown": "소금 밀수업자는 화물이 이미 불법이었기에 할증료를 냈습니다.",
+      "tts": {
+        "text": "소금 밀수업자는 화물이 이미 불법이었기에 할증료를 냈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "전체 체계가 문서화되어 관료적 정확성으로 집행되었습니다.",
+      "text_markdown": "전체 체계가 문서화되어 관료적 정확성으로 집행되었습니다.",
+      "tts": {
+        "text": "전체 체계가 문서화되어 관료적 정확성으로 집행되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해안 마을은 해적과 복잡한 관계를 맺고 있었습니다.",
+      "text_markdown": "해안 마을은 해적과 복잡한 관계를 맺고 있었습니다.",
+      "tts": {
+        "text": "해안 마을은 해적과 복잡한 관계를 맺고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 이들이 해적의 조공 요구에 불만을 품었습니다.",
+      "text_markdown": "많은 이들이 해적의 조공 요구에 불만을 품었습니다.",
+      "tts": {
+        "text": "많은 이들이 해적의 조공 요구에 불만을 품었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 해적은 다른 약탈자와 산적으로부터의 보호도 제공했습니다.",
+      "text_markdown": "그러나 해적은 다른 약탈자와 산적으로부터의 보호도 제공했습니다.",
+      "tts": {
+        "text": "그러나 해적은 다른 약탈자와 산적으로부터의 보호도 제공했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "일부 지역에서는 해적이 제국 정부보다 더 신뢰할 수 있었습니다.",
+      "text_markdown": "일부 지역에서는 해적이 제국 정부보다 더 신뢰할 수 있었습니다.",
+      "tts": {
+        "text": "일부 지역에서는 해적이 제국 정부보다 더 신뢰할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "청나라 조정은 바다를 통제하지 못하는 것에 깊은 치욕을 느꼈습니다.",
+      "text_markdown": "청나라 조정은 바다를 통제하지 못하는 것에 깊은 치욕을 느꼈습니다.",
+      "tts": {
+        "text": "청나라 조정은 바다를 통제하지 못하는 것에 깊은 치욕을 느꼈습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "제국의 관리들은 해적 여왕의 세력 확장에 대한 불안한 보고서를 작성했습니다.",
+      "text_markdown": "제국의 관리들은 해적 여왕의 세력 확장에 대한 불안한 보고서를 작성했습니다.",
+      "tts": {
+        "text": "제국의 관리들은 해적 여왕의 세력 확장에 대한 불안한 보고서를 작성했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적이 육지의 반란 세력과 결합할까 우려했습니다.",
+      "text_markdown": "해적이 육지의 반란 세력과 결합할까 우려했습니다.",
+      "tts": {
+        "text": "해적이 육지의 반란 세력과 결합할까 우려했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "수륙 합동 반란은 왕조 자체를 위협할 수 있었습니다.",
+      "text_markdown": "수륙 합동 반란은 왕조 자체를 위협할 수 있었습니다.",
+      "tts": {
+        "text": "수륙 합동 반란은 왕조 자체를 위협할 수 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "영국은 이 상황을 예리한 관심으로 지켜보았습니다.",
+      "text_markdown": "영국은 이 상황을 예리한 관심으로 지켜보았습니다.",
+      "tts": {
+        "text": "영국은 이 상황을 예리한 관심으로 지켜보았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "중국 해안에서 아편 무역을 확장하고 있었습니다.",
+      "text_markdown": "중국 해안에서 아편 무역을 확장하고 있었습니다.",
+      "tts": {
+        "text": "중국 해안에서 아편 무역을 확장하고 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "해적이 이 무역을 방해하여 영국 상인에게 막대한 손해를 끼쳤습니다.",
+      "text_markdown": "해적이 이 무역을 방해하여 영국 상인에게 막대한 손해를 끼쳤습니다.",
+      "tts": {
+        "text": "해적이 이 무역을 방해하여 영국 상인에게 막대한 손해를 끼쳤습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오의 깃발 아래 항해하는 이들에게 삶은 다른 선택지보다 나았습니다.",
+      "text_markdown": "정이사오의 깃발 아래 항해하는 이들에게 삶은 다른 선택지보다 나았습니다.",
+      "tts": {
+        "text": "정이사오의 깃발 아래 항해하는 이들에게 삶은 다른 선택지보다 나았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적은 정기적인 식사, 약탈품의 몫, 소속감을 얻었습니다.",
+      "text_markdown": "해적은 정기적인 식사, 약탈품의 몫, 소속감을 얻었습니다.",
+      "tts": {
+        "text": "해적은 정기적인 식사, 약탈품의 몫, 소속감을 얻었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "단가 어부가 얻는 것은 가난, 멸시, 그리고 희망 없는 미래뿐이었습니다.",
+      "text_markdown": "단가 어부가 얻는 것은 가난, 멸시, 그리고 희망 없는 미래뿐이었습니다.",
+      "tts": {
+        "text": "단가 어부가 얻는 것은 가난, 멸시, 그리고 희망 없는 미래뿐이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오는 절대적 권위로 이 사회를 통치했습니다.",
+      "text_markdown": "정이사오는 절대적 권위로 이 사회를 통치했습니다.",
+      "tts": {
+        "text": "정이사오는 절대적 권위로 이 사회를 통치했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "함대의 미래를 결정짓는 전략적 결정을 내렸습니다.",
+      "text_markdown": "함대의 미래를 결정짓는 전략적 결정을 내렸습니다.",
+      "tts": {
+        "text": "함대의 미래를 결정짓는 전략적 결정을 내렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "선장들 사이의 분쟁을 중재하고 법전을 집행했습니다.",
+      "text_markdown": "선장들 사이의 분쟁을 중재하고 법전을 집행했습니다.",
+      "tts": {
+        "text": "선장들 사이의 분쟁을 중재하고 법전을 집행했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "절정",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 승인 없이는 어떤 중대한 행동도 취할 수 없었습니다.",
+      "text_markdown": "그녀의 승인 없이는 어떤 중대한 행동도 취할 수 없었습니다.",
+      "tts": {
+        "text": "그녀의 승인 없이는 어떤 중대한 행동도 취할 수 없었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "종말",
+      "text_markdown": "종말"
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백십년까지 연합에 균열이 나타나기 시작했습니다.",
+      "text_markdown": "천팔백십년까지 연합에 균열이 나타나기 시작했습니다.",
+      "tts": {
+        "text": "천팔백십년까지 연합에 균열이 나타나기 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "끊임없는 전쟁이 배와 선원에게 큰 타격을 주었습니다.",
+      "text_markdown": "끊임없는 전쟁이 배와 선원에게 큰 타격을 주었습니다.",
+      "tts": {
+        "text": "끊임없는 전쟁이 배와 선원에게 큰 타격을 주었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "청나라 정부의 해상 봉쇄가 해안 보급선을 차단했습니다.",
+      "text_markdown": "청나라 정부의 해상 봉쇄가 해안 보급선을 차단했습니다.",
+      "tts": {
+        "text": "청나라 정부의 해상 봉쇄가 해안 보급선을 차단했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "함대 선장들 사이의 내부 경쟁도 심화되었습니다.",
+      "text_markdown": "함대 선장들 사이의 내부 경쟁도 심화되었습니다.",
+      "tts": {
+        "text": "함대 선장들 사이의 내부 경쟁도 심화되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 위험한 경쟁은 장보자이와 궈포다이라는 선장 사이에 있었습니다.",
+      "text_markdown": "가장 위험한 경쟁은 장보자이와 궈포다이라는 선장 사이에 있었습니다.",
+      "tts": {
+        "text": "가장 위험한 경쟁은 장보자이와 궈포다이라는 선장 사이에 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "궈포다이는 연합에서 두 번째로 큰 흑기함대를 지휘했습니다.",
+      "text_markdown": "궈포다이는 연합에서 두 번째로 큰 흑기함대를 지휘했습니다.",
+      "tts": {
+        "text": "궈포다이는 연합에서 두 번째로 큰 흑기함대를 지휘했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "장보자이에게서, 나아가 정이사오에게서 명령받는 것을 분개했습니다.",
+      "text_markdown": "장보자이에게서, 나아가 정이사오에게서 명령받는 것을 분개했습니다.",
+      "tts": {
+        "text": "장보자이에게서, 나아가 정이사오에게서 명령받는 것을 분개했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "둘 사이의 긴장은 연합을 둘로 쪼갤 위협이었습니다.",
+      "text_markdown": "둘 사이의 긴장은 연합을 둘로 쪼갤 위협이었습니다.",
+      "tts": {
+        "text": "둘 사이의 긴장은 연합을 둘로 쪼갤 위협이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백십년 초, 궈포다이는 운명적인 결정을 내렸습니다.",
+      "text_markdown": "천팔백십년 초, 궈포다이는 운명적인 결정을 내렸습니다.",
+      "tts": {
+        "text": "천팔백십년 초, 궈포다이는 운명적인 결정을 내렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "청나라 정부와 비밀 협상을 시작한 것입니다.",
+      "text_markdown": "청나라 정부와 비밀 협상을 시작한 것입니다.",
+      "tts": {
+        "text": "청나라 정부와 비밀 협상을 시작한 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "정부는 그에게 완전한 사면, 군직, 금전적 보상을 제안했습니다.",
+      "text_markdown": "정부는 그에게 완전한 사면, 군직, 금전적 보상을 제안했습니다.",
+      "tts": {
+        "text": "정부는 그에게 완전한 사면, 군직, 금전적 보상을 제안했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 대가로 옛 동맹에 등을 돌리라는 것이었습니다.",
+      "text_markdown": "그 대가로 옛 동맹에 등을 돌리라는 것이었습니다.",
+      "tts": {
+        "text": "그 대가로 옛 동맹에 등을 돌리라는 것이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "궈포다이는 거래를 받아들이고 전 함대를 정부에 넘겼습니다.",
+      "text_markdown": "궈포다이는 거래를 받아들이고 전 함대를 정부에 넘겼습니다.",
+      "tts": {
+        "text": "궈포다이는 거래를 받아들이고 전 함대를 정부에 넘겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하룻밤 사이에 연합은 수백 척과 수천 명의 전력을 잃었습니다.",
+      "text_markdown": "하룻밤 사이에 연합은 수백 척과 수천 명의 전력을 잃었습니다.",
+      "tts": {
+        "text": "하룻밤 사이에 연합은 수백 척과 수천 명의 전력을 잃었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "더 나쁜 것은 궈포다이가 정부군 사령관이 되어 해적 전술 지식을 그들에게 사용하기 시작한 것입니다.",
+      "text_markdown": "더 나쁜 것은 궈포다이가 정부군 사령관이 되어 해적 전술 지식을 그들에게 사용하기 시작한 것입니다.",
+      "tts": {
+        "text": "더 나쁜 것은 궈포다이가 정부군 사령관이 되어 해적 전술 지식을 그들에게 사용하기 시작한 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "세력 균형이 극적으로 변했습니다.",
+      "text_markdown": "세력 균형이 극적으로 변했습니다.",
+      "tts": {
+        "text": "세력 균형이 극적으로 변했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오는 특유의 명석함으로 새 상황을 판단했습니다.",
+      "text_markdown": "정이사오는 특유의 명석함으로 새 상황을 판단했습니다.",
+      "tts": {
+        "text": "정이사오는 특유의 명석함으로 새 상황을 판단했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "연합은 약해졌지만 무너지지는 않았습니다.",
+      "text_markdown": "연합은 약해졌지만 무너지지는 않았습니다.",
+      "tts": {
+        "text": "연합은 약해졌지만 무너지지는 않았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "홍기함대와 여러 동맹 함대가 여전히 그녀 휘하에 있었습니다.",
+      "text_markdown": "홍기함대와 여러 동맹 함대가 여전히 그녀 휘하에 있었습니다.",
+      "tts": {
+        "text": "홍기함대와 여러 동맹 함대가 여전히 그녀 휘하에 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그러나 흐름이 바뀌었고 그녀는 그것을 알고 있었습니다.",
+      "text_markdown": "그러나 흐름이 바뀌었고 그녀는 그것을 알고 있었습니다.",
+      "tts": {
+        "text": "그러나 흐름이 바뀌었고 그녀는 그것을 알고 있었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전략적 천재성을 드러내는 결정을 내렸습니다.",
+      "text_markdown": "전략적 천재성을 드러내는 결정을 내렸습니다.",
+      "tts": {
+        "text": "전략적 천재성을 드러내는 결정을 내렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "끝까지 싸우는 대신, 남은 힘을 바탕으로 협상하기로 했습니다.",
+      "text_markdown": "끝까지 싸우는 대신, 남은 힘을 바탕으로 협상하기로 했습니다.",
+      "tts": {
+        "text": "끝까지 싸우는 대신, 남은 힘을 바탕으로 협상하기로 했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "중개인을 통해 청나라 정부와 대화를 시작했습니다.",
+      "text_markdown": "중개인을 통해 청나라 정부와 대화를 시작했습니다.",
+      "tts": {
+        "text": "중개인을 통해 청나라 정부와 대화를 시작했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 요구는 대담하고 구체적이었습니다.",
+      "text_markdown": "그녀의 요구는 대담하고 구체적이었습니다.",
+      "tts": {
+        "text": "그녀의 요구는 대담하고 구체적이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "자신과 장보자이의 완전한 사면을 요구했습니다.",
+      "text_markdown": "자신과 장보자이의 완전한 사면을 요구했습니다.",
+      "tts": {
+        "text": "자신과 장보자이의 완전한 사면을 요구했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적들이 개인 재산을 보유할 수 있도록 요구했습니다.",
+      "text_markdown": "해적들이 개인 재산을 보유할 수 있도록 요구했습니다.",
+      "tts": {
+        "text": "해적들이 개인 재산을 보유할 수 있도록 요구했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "장보자이에게 제국 해군의 직위를 줄 것을 요구했습니다.",
+      "text_markdown": "장보자이에게 제국 해군의 직위를 줄 것을 요구했습니다.",
+      "tts": {
+        "text": "장보자이에게 제국 해군의 직위를 줄 것을 요구했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "투항한 일반 해적이 처벌받지 않을 것도 요구했습니다.",
+      "text_markdown": "투항한 일반 해적이 처벌받지 않을 것도 요구했습니다.",
+      "tts": {
+        "text": "투항한 일반 해적이 처벌받지 않을 것도 요구했습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "청나라 정부는 이토록 관대한 조건을 받아들이기를 꺼렸습니다.",
+      "text_markdown": "청나라 정부는 이토록 관대한 조건을 받아들이기를 꺼렸습니다.",
+      "tts": {
+        "text": "청나라 정부는 이토록 관대한 조건을 받아들이기를 꺼렸습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "해적에게 사면을 내리는 것은 제국의 치욕으로 느껴졌습니다.",
+      "text_markdown": "해적에게 사면을 내리는 것은 제국의 치욕으로 느껴졌습니다.",
+      "tts": {
+        "text": "해적에게 사면을 내리는 것은 제국의 치욕으로 느껴졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그러나 무력을 시도했지만 실패했습니다.",
+      "text_markdown": "그러나 무력을 시도했지만 실패했습니다.",
+      "tts": {
+        "text": "그러나 무력을 시도했지만 실패했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "협상만이 남은 선택지였습니다.",
+      "text_markdown": "협상만이 남은 선택지였습니다.",
+      "tts": {
+        "text": "협상만이 남은 선택지였습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "천팔백십년 사월, 합의가 이루어졌습니다.",
+      "text_markdown": "천팔백십년 사월, 합의가 이루어졌습니다.",
+      "tts": {
+        "text": "천팔백십년 사월, 합의가 이루어졌습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "정이사오는 함대를 정부에 넘겼습니다.",
+      "text_markdown": "정이사오는 함대를 정부에 넘겼습니다.",
+      "tts": {
+        "text": "정이사오는 함대를 정부에 넘겼습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 대가로 요구한 모든 것을 얻었습니다.",
+      "text_markdown": "그 대가로 요구한 모든 것을 얻었습니다.",
+      "tts": {
+        "text": "그 대가로 요구한 모든 것을 얻었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "장보자이는 청나라 해군 부관에 임명되어 이십 척의 지휘권을 받았습니다.",
+      "text_markdown": "장보자이는 청나라 해군 부관에 임명되어 이십 척의 지휘권을 받았습니다.",
+      "tts": {
+        "text": "장보자이는 청나라 해군 부관에 임명되어 이십 척의 지휘권을 받았습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "해적들은 배의 일부를 보유하는 것이 허용되었습니다.",
+      "text_markdown": "해적들은 배의 일부를 보유하는 것이 허용되었습니다.",
+      "tts": {
+        "text": "해적들은 배의 일부를 보유하는 것이 허용되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "민간인 생활로 돌아가고 싶은 자는 자유롭게 그리할 수 있었습니다.",
+      "text_markdown": "민간인 생활로 돌아가고 싶은 자는 자유롭게 그리할 수 있었습니다.",
+      "tts": {
+        "text": "민간인 생활로 돌아가고 싶은 자는 자유롭게 그리할 수 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "제국 해군에 합류하고 싶은 자는 환영받았습니다.",
+      "text_markdown": "제국 해군에 합류하고 싶은 자는 환영받았습니다.",
+      "tts": {
+        "text": "제국 해군에 합류하고 싶은 자는 환영받았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "해적 역사상 가장 유리한 항복이었습니다.",
+      "text_markdown": "해적 역사상 가장 유리한 항복이었습니다.",
+      "tts": {
+        "text": "해적 역사상 가장 유리한 항복이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오는 부유한 여성으로서 바다에서 은퇴했습니다.",
+      "text_markdown": "정이사오는 부유한 여성으로서 바다에서 은퇴했습니다.",
+      "tts": {
+        "text": "정이사오는 부유한 여성으로서 바다에서 은퇴했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "장보자이와 함께 광저우에 정착했습니다.",
+      "text_markdown": "장보자이와 함께 광저우에 정착했습니다.",
+      "tts": {
+        "text": "장보자이와 함께 광저우에 정착했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "둘은 도박장을 열어 시내에서 가장 수익성 좋은 곳 중 하나로 만들었습니다.",
+      "text_markdown": "둘은 도박장을 열어 시내에서 가장 수익성 좋은 곳 중 하나로 만들었습니다.",
+      "tts": {
+        "text": "둘은 도박장을 열어 시내에서 가장 수익성 좋은 곳 중 하나로 만들었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 또한 소금 거래에 투자하여 수년간 안정적인 수입을 올렸습니다.",
+      "text_markdown": "그녀는 또한 소금 거래에 투자하여 수년간 안정적인 수입을 올렸습니다.",
+      "tts": {
+        "text": "그녀는 또한 소금 거래에 투자하여 수년간 안정적인 수입을 올렸습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "장보자이는 제국 해군에서 수년간 공을 세웠습니다.",
+      "text_markdown": "장보자이는 제국 해군에서 수년간 공을 세웠습니다.",
+      "tts": {
+        "text": "장보자이는 제국 해군에서 수년간 공을 세웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "천팔백이십이년, 관직에 있는 채로 사망했습니다.",
+      "text_markdown": "천팔백이십이년, 관직에 있는 채로 사망했습니다.",
+      "tts": {
+        "text": "천팔백이십이년, 관직에 있는 채로 사망했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그의 죽음은 군 최고 예우로 추모되었습니다.",
+      "text_markdown": "그의 죽음은 군 최고 예우로 추모되었습니다.",
+      "tts": {
+        "text": "그의 죽음은 군 최고 예우로 추모되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오는 해적을 그만둔 후 이십 년 넘게 살았습니다.",
+      "text_markdown": "정이사오는 해적을 그만둔 후 이십 년 넘게 살았습니다.",
+      "tts": {
+        "text": "정이사오는 해적을 그만둔 후 이십 년 넘게 살았습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "광저우에서 사업을 운영하고 가족을 키웠습니다.",
+      "text_markdown": "광저우에서 사업을 운영하고 가족을 키웠습니다.",
+      "tts": {
+        "text": "광저우에서 사업을 운영하고 가족을 키웠습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "천팔백사십사년, 약 육십구 세의 나이로 세상을 떠났습니다.",
+      "text_markdown": "천팔백사십사년, 약 육십구 세의 나이로 세상을 떠났습니다.",
+      "tts": {
+        "text": "천팔백사십사년, 약 육십구 세의 나이로 세상을 떠났습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "종말",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "자신의 침대에서, 가족에 둘러싸여, 광저우 사회의 존경받는 일원으로서 숨을 거두었습니다.",
+      "text_markdown": "자신의 침대에서, 가족에 둘러싸여, 광저우 사회의 존경받는 일원으로서 숨을 거두었습니다.",
+      "tts": {
+        "text": "자신의 침대에서, 가족에 둘러싸여, 광저우 사회의 존경받는 일원으로서 숨을 거두었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "유산",
+      "text_markdown": "유산"
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "정이사오의 경력은 해적의 역사에서 유일무이합니다.",
+      "text_markdown": "정이사오의 경력은 해적의 역사에서 유일무이합니다.",
+      "tts": {
+        "text": "정이사오의 경력은 해적의 역사에서 유일무이합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "남녀를 불문하고, 이에 필적하는 규모의 전력을 지휘한 해적은 없습니다.",
+      "text_markdown": "남녀를 불문하고, 이에 필적하는 규모의 전력을 지휘한 해적은 없습니다.",
+      "tts": {
+        "text": "남녀를 불문하고, 이에 필적하는 규모의 전력을 지휘한 해적은 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "이렇게 정교한 법과 통치 체계를 구축한 해적도 없습니다.",
+      "text_markdown": "이렇게 정교한 법과 통치 체계를 구축한 해적도 없습니다.",
+      "tts": {
+        "text": "이렇게 정교한 법과 통치 체계를 구축한 해적도 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "이렇게 유리한 조건으로 은퇴 협상을 한 해적도 없습니다.",
+      "text_markdown": "이렇게 유리한 조건으로 은퇴 협상을 한 해적도 없습니다.",
+      "tts": {
+        "text": "이렇게 유리한 조건으로 은퇴 협상을 한 해적도 없습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 성공은 역사에서 여성의 역할에 대한 많은 고정관념에 도전합니다.",
+      "text_markdown": "그녀의 성공은 역사에서 여성의 역할에 대한 많은 고정관념에 도전합니다.",
+      "tts": {
+        "text": "그녀의 성공은 역사에서 여성의 역할에 대한 많은 고정관념에 도전합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여성에게 거의 법적 권리가 없는 사회에서 권력의 정상에 올랐습니다.",
+      "text_markdown": "여성에게 거의 법적 권리가 없는 사회에서 권력의 정상에 올랐습니다.",
+      "tts": {
+        "text": "여성에게 거의 법적 권리가 없는 사회에서 권력의 정상에 올랐습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "여성을 열등하다고 본 세계에서 수만 명의 남성을 지휘했습니다.",
+      "text_markdown": "여성을 열등하다고 본 세계에서 수만 명의 남성을 지휘했습니다.",
+      "tts": {
+        "text": "여성을 열등하다고 본 세계에서 수만 명의 남성을 지휘했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀의 이야기는 능력에 성별이 없다는 증거입니다.",
+      "text_markdown": "그녀의 이야기는 능력에 성별이 없다는 증거입니다.",
+      "tts": {
+        "text": "그녀의 이야기는 능력에 성별이 없다는 증거입니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "역사가들은 그녀의 비범한 성공의 이유를 논의해 왔습니다.",
+      "text_markdown": "역사가들은 그녀의 비범한 성공의 이유를 논의해 왔습니다.",
+      "tts": {
+        "text": "역사가들은 그녀의 비범한 성공의 이유를 논의해 왔습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "지성, 결단력, 충성을 이끌어내는 능력 같은 개인적 자질을 강조하는 이들도 있습니다.",
+      "text_markdown": "지성, 결단력, 충성을 이끌어내는 능력 같은 개인적 자질을 강조하는 이들도 있습니다.",
+      "tts": {
+        "text": "지성, 결단력, 충성을 이끌어내는 능력 같은 개인적 자질을 강조하는 이들도 있습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "청나라의 쇠퇴, 해안 인구의 빈곤, 남중국해의 지리 같은 구조적 조건을 지적하는 이들도 있습니다.",
+      "text_markdown": "청나라의 쇠퇴, 해안 인구의 빈곤, 남중국해의 지리 같은 구조적 조건을 지적하는 이들도 있습니다.",
+      "tts": {
+        "text": "청나라의 쇠퇴, 해안 인구의 빈곤, 남중국해의 지리 같은 구조적 조건을 지적하는 이들도 있습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "진실은 거의 확실히 양쪽 요소를 모두 포함합니다.",
+      "text_markdown": "진실은 거의 확실히 양쪽 요소를 모두 포함합니다.",
+      "tts": {
+        "text": "진실은 거의 확실히 양쪽 요소를 모두 포함합니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "조건이 없었다면 그녀의 재능에는 무대가 없었을 것입니다.",
+      "text_markdown": "조건이 없었다면 그녀의 재능에는 무대가 없었을 것입니다.",
+      "tts": {
+        "text": "조건이 없었다면 그녀의 재능에는 무대가 없었을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 재능이 없었다면 조건은 혼란만 낳았을 것입니다.",
+      "text_markdown": "그녀의 재능이 없었다면 조건은 혼란만 낳았을 것입니다.",
+      "tts": {
+        "text": "그녀의 재능이 없었다면 조건은 혼란만 낳았을 것입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그녀는 역사의 올바른 순간에 나타난 올바른 인물이었습니다.",
+      "text_markdown": "그녀는 역사의 올바른 순간에 나타난 올바른 인물이었습니다.",
+      "tts": {
+        "text": "그녀는 역사의 올바른 순간에 나타난 올바른 인물이었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그녀의 법전은 은퇴 후에도 수십 년간 해적 통치에 영향을 미쳤습니다.",
+      "text_markdown": "그녀의 법전은 은퇴 후에도 수십 년간 해적 통치에 영향을 미쳤습니다.",
+      "tts": {
+        "text": "그녀의 법전은 은퇴 후에도 수십 년간 해적 통치에 영향을 미쳤습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "이후 남중국해의 해적 지도자들도 유사한 과세와 법 체계를 도입했습니다.",
+      "text_markdown": "이후 남중국해의 해적 지도자들도 유사한 과세와 법 체계를 도입했습니다.",
+      "tts": {
+        "text": "이후 남중국해의 해적 지도자들도 유사한 과세와 법 체계를 도입했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 모델은 해적 함대가 국가 해군만큼 효과적으로 조직될 수 있음을 보여주었습니다.",
+      "text_markdown": "그녀의 모델은 해적 함대가 국가 해군만큼 효과적으로 조직될 수 있음을 보여주었습니다.",
+      "tts": {
+        "text": "그녀의 모델은 해적 함대가 국가 해군만큼 효과적으로 조직될 수 있음을 보여주었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "현대에 정이사오는 문화적 아이콘이 되었습니다.",
+      "text_markdown": "현대에 정이사오는 문화적 아이콘이 되었습니다.",
+      "tts": {
+        "text": "현대에 정이사오는 문화적 아이콘이 되었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-297",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전 세계의 소설, 영화, 비디오 게임에 등장했습니다.",
+      "text_markdown": "전 세계의 소설, 영화, 비디오 게임에 등장했습니다.",
+      "tts": {
+        "text": "전 세계의 소설, 영화, 비디오 게임에 등장했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-298",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 이야기는 수십 개 언어로 번역되었습니다.",
+      "text_markdown": "그녀의 이야기는 수십 개 언어로 번역되었습니다.",
+      "tts": {
+        "text": "그녀의 이야기는 수십 개 언어로 번역되었습니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-299",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그러나 그녀의 삶에 대해 아직 많은 것이 알려져 있지 않습니다.",
+      "text_markdown": "그러나 그녀의 삶에 대해 아직 많은 것이 알려져 있지 않습니다.",
+      "tts": {
+        "text": "그러나 그녀의 삶에 대해 아직 많은 것이 알려져 있지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-300",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그녀의 본명조차 확실히 알 수 없습니다.",
+      "text_markdown": "그녀의 본명조차 확실히 알 수 없습니다.",
+      "tts": {
+        "text": "그녀의 본명조차 확실히 알 수 없습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-301",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그녀의 얼굴이 확인된 이미지는 하나도 남아 있지 않습니다.",
+      "text_markdown": "그녀의 얼굴이 확인된 이미지는 하나도 남아 있지 않습니다.",
+      "tts": {
+        "text": "그녀의 얼굴이 확인된 이미지는 하나도 남아 있지 않습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-302",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "우리가 아는 대부분은 적이 쓴 정부 기록에서 비롯됩니다.",
+      "text_markdown": "우리가 아는 대부분은 적이 쓴 정부 기록에서 비롯됩니다.",
+      "tts": {
+        "text": "우리가 아는 대부분은 적이 쓴 정부 기록에서 비롯됩니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-303",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "청나라 조정에는 그녀의 업적을 축소할 온갖 이유가 있었습니다.",
+      "text_markdown": "청나라 조정에는 그녀의 업적을 축소할 온갖 이유가 있었습니다.",
+      "tts": {
+        "text": "청나라 조정에는 그녀의 업적을 축소할 온갖 이유가 있었습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-304",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "많은 공식 기록은 그녀의 역할을 축소하거나 성공을 장보자이에게 돌립니다.",
+      "text_markdown": "많은 공식 기록은 그녀의 역할을 축소하거나 성공을 장보자이에게 돌립니다.",
+      "tts": {
+        "text": "많은 공식 기록은 그녀의 역할을 축소하거나 성공을 장보자이에게 돌립니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-305",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "역사가들은 이 사료가 정치적 동기로 쓰였음을 염두에 두고 신중히 읽어야 합니다.",
+      "text_markdown": "역사가들은 이 사료가 정치적 동기로 쓰였음을 염두에 두고 신중히 읽어야 합니다.",
+      "tts": {
+        "text": "역사가들은 이 사료가 정치적 동기로 쓰였음을 염두에 두고 신중히 읽어야 합니다.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-306",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기록이 감출 수 없는 것은 그녀의 업적의 규모입니다.",
+      "text_markdown": "기록이 감출 수 없는 것은 그녀의 업적의 규모입니다.",
+      "tts": {
+        "text": "기록이 감출 수 없는 것은 그녀의 업적의 규모입니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-307",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기록된 역사상 최대의 해적 함대를 건설했습니다.",
+      "text_markdown": "기록된 역사상 최대의 해적 함대를 건설했습니다.",
+      "tts": {
+        "text": "기록된 역사상 최대의 해적 함대를 건설했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-308",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "청 제국과 포르투갈 해군의 연합군을 격파했습니다.",
+      "text_markdown": "청 제국과 포르투갈 해군의 연합군을 격파했습니다.",
+      "tts": {
+        "text": "청 제국과 포르투갈 해군의 연합군을 격파했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-309",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "부유하고, 자유롭고, 무패로 은퇴했습니다.",
+      "text_markdown": "부유하고, 자유롭고, 무패로 은퇴했습니다.",
+      "tts": {
+        "text": "부유하고, 자유롭고, 무패로 은퇴했습니다.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-310",
+      "part": 0,
+      "chapter": 6,
+      "title": "유산",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "바다의 긴 역사에서 그것을 해낸 사람은 다른 누구도 없습니다.",
+      "text_markdown": "바다의 긴 역사에서 그것을 해낸 사람은 다른 누구도 없습니다.",
+      "tts": {
+        "text": "바다의 긴 역사에서 그것을 해낸 사람은 다른 누구도 없습니다.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

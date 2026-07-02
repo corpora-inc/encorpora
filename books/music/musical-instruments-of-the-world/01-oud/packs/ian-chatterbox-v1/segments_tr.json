@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "tr",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dinleyiciye Bir Not",
+      "text_markdown": "Dinleyiciye Bir Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitap, telli ve ahşap bir çalgı olan ud hakkındadır.",
+      "text_markdown": "Bu kitap, telli ve ahşap bir çalgı olan ud hakkındadır.",
+      "tts": {
+        "text": "Bu kitap, telli ve ahşap bir çalgı olan ud hakkındadır.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsanlar onu bin yıldan uzun süredir çalıyor.",
+      "text_markdown": "İnsanlar onu bin yıldan uzun süredir çalıyor.",
+      "tts": {
+        "text": "İnsanlar onu bin yıldan uzun süredir çalıyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud sesini deniz kıyısındaki şehirlerde de dağ köylerinde de duyabilirsin.",
+      "text_markdown": "Ud sesini deniz kıyısındaki şehirlerde de dağ köylerinde de duyabilirsin.",
+      "tts": {
+        "text": "Ud sesini deniz kıyısındaki şehirlerde de dağ köylerinde de duyabilirsin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onu eski saraylarda ve küçük ahşap sahnelerde de duyabilirsin.",
+      "text_markdown": "Onu eski saraylarda ve küçük ahşap sahnelerde de duyabilirsin.",
+      "tts": {
+        "text": "Onu eski saraylarda ve küçük ahşap sahnelerde de duyabilirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu kitapta, ud adlı çalgının nasıl göründüğünü, nasıl yapıldığını ve öyküsüne yön veren insanların adlarını öğreneceğiz.",
+      "text_markdown": "Bu kitapta, ud adlı çalgının nasıl göründüğünü, nasıl yapıldığını ve öyküsüne yön veren insanların adlarını öğreneceğiz.",
+      "tts": {
+        "text": "Bu kitapta, ud adlı çalgının nasıl göründüğünü, nasıl yapıldığını ve öyküsüne yön veren insanların adlarını öğreneceğiz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonunda, neden bazen ud için tüm telli çalgıların kralı denildiğini anlayacaksın.",
+      "text_markdown": "Sonunda, neden bazen ud için tüm telli çalgıların kralı denildiğini anlayacaksın.",
+      "tts": {
+        "text": "Sonunda, neden bazen ud için tüm telli çalgıların kralı denildiğini anlayacaksın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 1 — Ud Nedir?",
+      "text_markdown": "Bölüm 1 — Ud Nedir?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud bir telli çalgıdır.",
+      "text_markdown": "Ud bir telli çalgıdır.",
+      "tts": {
+        "text": "Ud bir telli çalgıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yarım armut biçimli gövdesi olan bir lavta türüdür.",
+      "text_markdown": "Yarım armut biçimli gövdesi olan bir lavta türüdür.",
+      "tts": {
+        "text": "Yarım armut biçimli gövdesi olan bir lavta türüdür.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, ahşap bir kase gibi yuvarlak ve derin bir arka gövdeye sahiptir.",
+      "text_markdown": "Ud, ahşap bir kase gibi yuvarlak ve derin bir arka gövdeye sahiptir.",
+      "tts": {
+        "text": "Ud, ahşap bir kase gibi yuvarlak ve derin bir arka gövdeye sahiptir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ön yüzü düzdür.",
+      "text_markdown": "Ön yüzü düzdür.",
+      "tts": {
+        "text": "Ön yüzü düzdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu düz ön yüze ses tablası deriz.",
+      "text_markdown": "Bu düz ön yüze ses tablası deriz.",
+      "tts": {
+        "text": "Bu düz ön yüze ses tablası deriz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, kısa bir sapa sahiptir ve üzerinde perde yoktur.",
+      "text_markdown": "Ud, kısa bir sapa sahiptir ve üzerinde perde yoktur.",
+      "tts": {
+        "text": "Ud, kısa bir sapa sahiptir ve üzerinde perde yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perdeler, gitarda gördüğün küçük metal çizgilerdir.",
+      "text_markdown": "Perdeler, gitarda gördüğün küçük metal çizgilerdir.",
+      "tts": {
+        "text": "Perdeler, gitarda gördüğün küçük metal çizgilerdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Perdeler olmayınca çalan kişi notalar arasında çok pürüzsüz kayabilir.",
+      "text_markdown": "Perdeler olmayınca çalan kişi notalar arasında çok pürüzsüz kayabilir.",
+      "tts": {
+        "text": "Perdeler olmayınca çalan kişi notalar arasında çok pürüzsüz kayabilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çoğu ud modelinde on bir tel vardır ve bunlar altı grup halinde düzenlenir.",
+      "text_markdown": "Çoğu ud modelinde on bir tel vardır ve bunlar altı grup halinde düzenlenir.",
+      "tts": {
+        "text": "Çoğu ud modelinde on bir tel vardır ve bunlar altı grup halinde düzenlenir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu grupların her birine kurs deriz.",
+      "text_markdown": "Bu grupların her birine kurs deriz.",
+      "tts": {
+        "text": "Bu grupların her birine kurs deriz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kursların beşinde, aynı sese akortlanan iki tel bulunur.",
+      "text_markdown": "Kursların beşinde, aynı sese akortlanan iki tel bulunur.",
+      "tts": {
+        "text": "Kursların beşinde, aynı sese akortlanan iki tel bulunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Altıncı kursta ise yalnız bir tel vardır.",
+      "text_markdown": "Altıncı kursta ise yalnız bir tel vardır.",
+      "tts": {
+        "text": "Altıncı kursta ise yalnız bir tel vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Böylece sayı on bir olur.",
+      "text_markdown": "Böylece sayı on bir olur.",
+      "tts": {
+        "text": "Böylece sayı on bir olur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çalgıcı, ud çalarken onu kucağında tutar.",
+      "text_markdown": "Çalgıcı, ud çalarken onu kucağında tutar.",
+      "tts": {
+        "text": "Çalgıcı, ud çalarken onu kucağında tutar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir eli sap üstünde tellere basar.",
+      "text_markdown": "Bir eli sap üstünde tellere basar.",
+      "tts": {
+        "text": "Bir eli sap üstünde tellere basar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Öteki eli ise onları rişa denen ince bir mızrapla çekip çalar.",
+      "text_markdown": "Öteki eli ise onları rişa denen ince bir mızrapla çekip çalar.",
+      "tts": {
+        "text": "Öteki eli ise onları rişa denen ince bir mızrapla çekip çalar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sesi sıcak ve derindir.",
+      "text_markdown": "Sesi sıcak ve derindir.",
+      "tts": {
+        "text": "Sesi sıcak ve derindir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aynı anda biraz hüzünlü, biraz da tatlıdır.",
+      "text_markdown": "Aynı anda biraz hüzünlü, biraz da tatlıdır.",
+      "tts": {
+        "text": "Aynı anda biraz hüzünlü, biraz da tatlıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 2 — Adı Nereden Geliyor?",
+      "text_markdown": "Bölüm 2 — Adı Nereden Geliyor?"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud adı, ahşap demek olan bir Arapça sözdür.",
+      "text_markdown": "Ud adı, ahşap demek olan bir Arapça sözdür.",
+      "tts": {
+        "text": "Ud adı, ahşap demek olan bir Arapça sözdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çalgı, yapıldığı şeyin adını taşır.",
+      "text_markdown": "Çalgı, yapıldığı şeyin adını taşır.",
+      "tts": {
+        "text": "Çalgı, yapıldığı şeyin adını taşır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud ortaya çıkmadan çok önce, barbat denen daha eski bir kuzeni vardı.",
+      "text_markdown": "Ud ortaya çıkmadan çok önce, barbat denen daha eski bir kuzeni vardı.",
+      "tts": {
+        "text": "Ud ortaya çıkmadan çok önce, barbat denen daha eski bir kuzeni vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Barbat, iki bin yıldan daha uzun zaman önce eski Persya'da çalınıyordu.",
+      "text_markdown": "Barbat, iki bin yıldan daha uzun zaman önce eski Persya'da çalınıyordu.",
+      "tts": {
+        "text": "Barbat, iki bin yıldan daha uzun zaman önce eski Persya'da çalınıyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbatın ahşap bir gövdesi ve ipek telleri vardı.",
+      "text_markdown": "Barbatın ahşap bir gövdesi ve ipek telleri vardı.",
+      "tts": {
+        "text": "Barbatın ahşap bir gövdesi ve ipek telleri vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sesi uzun ve yumuşaktı.",
+      "text_markdown": "Sesi uzun ve yumuşaktı.",
+      "tts": {
+        "text": "Sesi uzun ve yumuşaktı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanlar onu kralların saraylarında çalardı.",
+      "text_markdown": "İnsanlar onu kralların saraylarında çalardı.",
+      "tts": {
+        "text": "İnsanlar onu kralların saraylarında çalardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Barbat zamanla değişti.",
+      "text_markdown": "Barbat zamanla değişti.",
+      "tts": {
+        "text": "Barbat zamanla değişti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gövdesi daha yuvarlak oldu, teller çiftlere dönüştü ve sapı kısaldı.",
+      "text_markdown": "Gövdesi daha yuvarlak oldu, teller çiftlere dönüştü ve sapı kısaldı.",
+      "tts": {
+        "text": "Gövdesi daha yuvarlak oldu, teller çiftlere dönüştü ve sapı kısaldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yaklaşık yedi yüz yılına gelindiğinde, Arap dünyasında bugün ud dediğimiz çalgı çalınıyordu.",
+      "text_markdown": "Yaklaşık yedi yüz yılına gelindiğinde, Arap dünyasında bugün ud dediğimiz çalgı çalınıyordu.",
+      "tts": {
+        "text": "Yaklaşık yedi yüz yılına gelindiğinde, Arap dünyasında bugün ud dediğimiz çalgı çalınıyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oradan sonra ud yolculuğa çıktı.",
+      "text_markdown": "Oradan sonra ud yolculuğa çıktı.",
+      "tts": {
+        "text": "Oradan sonra ud yolculuğa çıktı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mısır'a ve Kuzey Afrika'ya gitti.",
+      "text_markdown": "Mısır'a ve Kuzey Afrika'ya gitti.",
+      "tts": {
+        "text": "Mısır'a ve Kuzey Afrika'ya gitti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Denizi aşıp İspanya'ya ulaştı.",
+      "text_markdown": "Denizi aşıp İspanya'ya ulaştı.",
+      "tts": {
+        "text": "Denizi aşıp İspanya'ya ulaştı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kuzeye, Türkiye'ye ve Yunanistan'a gitti.",
+      "text_markdown": "Kuzeye, Türkiye'ye ve Yunanistan'a gitti.",
+      "tts": {
+        "text": "Kuzeye, Türkiye'ye ve Yunanistan'a gitti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Her yer, ud müziğine kendi sesinden biraz kattı.",
+      "text_markdown": "Her yer, ud müziğine kendi sesinden biraz kattı.",
+      "tts": {
+        "text": "Her yer, ud müziğine kendi sesinden biraz kattı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ama adı aynı kaldı.",
+      "text_markdown": "Ama adı aynı kaldı.",
+      "tts": {
+        "text": "Ama adı aynı kaldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nereye giderse gitsin, bu ahşap çalgı yine ud diye anıldı.",
+      "text_markdown": "Nereye giderse gitsin, bu ahşap çalgı yine ud diye anıldı.",
+      "tts": {
+        "text": "Nereye giderse gitsin, bu ahşap çalgı yine ud diye anıldı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 3 — Bir Ud Nasıl Yapılır",
+      "text_markdown": "Bölüm 3 — Bir Ud Nasıl Yapılır"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir ud yapmak uzun zaman alır.",
+      "text_markdown": "Bir ud yapmak uzun zaman alır.",
+      "tts": {
+        "text": "Bir ud yapmak uzun zaman alır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İyi bir yapımcı, tek bir çalgı için haftalar harcayabilir.",
+      "text_markdown": "İyi bir yapımcı, tek bir çalgı için haftalar harcayabilir.",
+      "tts": {
+        "text": "İyi bir yapımcı, tek bir çalgı için haftalar harcayabilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud teknesi, genelde on beş ile yirmi beş arasında ince ahşap şeritten yapılır.",
+      "text_markdown": "Ud teknesi, genelde on beş ile yirmi beş arasında ince ahşap şeritten yapılır.",
+      "tts": {
+        "text": "Ud teknesi, genelde on beş ile yirmi beş arasında ince ahşap şeritten yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her şerit bükülür ve yanındakine yapıştırılır.",
+      "text_markdown": "Her şerit bükülür ve yanındakine yapıştırılır.",
+      "tts": {
+        "text": "Her şerit bükülür ve yanındakine yapıştırılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hepsi birlikte derin ve yuvarlak ud teknesini yapar.",
+      "text_markdown": "Hepsi birlikte derin ve yuvarlak ud teknesini yapar.",
+      "tts": {
+        "text": "Hepsi birlikte derin ve yuvarlak ud teknesini yapar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ahşap seçimi önemlidir.",
+      "text_markdown": "Ahşap seçimi önemlidir.",
+      "tts": {
+        "text": "Ahşap seçimi önemlidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ceviz sıcak bir ses verir, maun daha koyu bir ses verir, dut ise parlak ve çınlayan bir ses verir.",
+      "text_markdown": "Ceviz sıcak bir ses verir, maun daha koyu bir ses verir, dut ise parlak ve çınlayan bir ses verir.",
+      "tts": {
+        "text": "Ceviz sıcak bir ses verir, maun daha koyu bir ses verir, dut ise parlak ve çınlayan bir ses verir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yapımcı, istediği sese göre ahşabı seçer.",
+      "text_markdown": "Yapımcı, istediği sese göre ahşabı seçer.",
+      "tts": {
+        "text": "Yapımcı, istediği sese göre ahşabı seçer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Düz ön yüz, yani ses tablası, ladinden yapılır.",
+      "text_markdown": "Düz ön yüz, yani ses tablası, ladinden yapılır.",
+      "tts": {
+        "text": "Düz ön yüz, yani ses tablası, ladinden yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ladin hafif ve sağlamdır, ayrıca ahşabın kolay titreşmesini sağlar.",
+      "text_markdown": "Ladin hafif ve sağlamdır, ayrıca ahşabın kolay titreşmesini sağlar.",
+      "tts": {
+        "text": "Ladin hafif ve sağlamdır, ayrıca ahşabın kolay titreşmesini sağlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İşte bizim müzik diye duyduğumuz şey o titreşimdir.",
+      "text_markdown": "İşte bizim müzik diye duyduğumuz şey o titreşimdir.",
+      "tts": {
+        "text": "İşte bizim müzik diye duyduğumuz şey o titreşimdir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ses tablasında rozet denen küçük yuvarlak delikler bulunur.",
+      "text_markdown": "Ses tablasında rozet denen küçük yuvarlak delikler bulunur.",
+      "tts": {
+        "text": "Ses tablasında rozet denen küçük yuvarlak delikler bulunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar çoğu zaman güzel desenlerle oyulur.",
+      "text_markdown": "Bunlar çoğu zaman güzel desenlerle oyulur.",
+      "tts": {
+        "text": "Bunlar çoğu zaman güzel desenlerle oyulur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rozetler, sesi teknenin içinden dışarı bırakır.",
+      "text_markdown": "Rozetler, sesi teknenin içinden dışarı bırakır.",
+      "tts": {
+        "text": "Rozetler, sesi teknenin içinden dışarı bırakır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eskiden teller, kurutulmuş hayvan bağırsağından yapılırdı.",
+      "text_markdown": "Eskiden teller, kurutulmuş hayvan bağırsağından yapılırdı.",
+      "tts": {
+        "text": "Eskiden teller, kurutulmuş hayvan bağırsağından yapılırdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bugün tellerin çoğu naylondandır ve en pes tellerin çevresine ince metal sarılır.",
+      "text_markdown": "Bugün tellerin çoğu naylondandır ve en pes tellerin çevresine ince metal sarılır.",
+      "tts": {
+        "text": "Bugün tellerin çoğu naylondandır ve en pes tellerin çevresine ince metal sarılır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çalan kişi telleri rişa ile çeker.",
+      "text_markdown": "Çalan kişi telleri rişa ile çeker.",
+      "tts": {
+        "text": "Çalan kişi telleri rişa ile çeker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Rişa sözcüğü tüy demektir.",
+      "text_markdown": "Rişa sözcüğü tüy demektir.",
+      "tts": {
+        "text": "Rişa sözcüğü tüy demektir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İlk mızraplar kartal tüylerinden yapılırdı.",
+      "text_markdown": "İlk mızraplar kartal tüylerinden yapılırdı.",
+      "tts": {
+        "text": "İlk mızraplar kartal tüylerinden yapılırdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bugün onlar plastikten, kemikten ya da kaplumbağa kabuğundan yapılır.",
+      "text_markdown": "Bugün onlar plastikten, kemikten ya da kaplumbağa kabuğundan yapılır.",
+      "tts": {
+        "text": "Bugün onlar plastikten, kemikten ya da kaplumbağa kabuğundan yapılır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 4 — Ud Nerede Çalınır",
+      "text_markdown": "Bölüm 4 — Ud Nerede Çalınır"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, Arap dünyasının her yanında çalınır.",
+      "text_markdown": "Ud, Arap dünyasının her yanında çalınır.",
+      "tts": {
+        "text": "Ud, Arap dünyasının her yanında çalınır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onu Mısır'da, Suriye'de, Irak'ta, Lübnan'da, Körfez'de ve Kuzey Afrika'da duyarsın.",
+      "text_markdown": "Onu Mısır'da, Suriye'de, Irak'ta, Lübnan'da, Körfez'de ve Kuzey Afrika'da duyarsın.",
+      "tts": {
+        "text": "Onu Mısır'da, Suriye'de, Irak'ta, Lübnan'da, Körfez'de ve Kuzey Afrika'da duyarsın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, Arap dünyasının ötesinde de çalınır.",
+      "text_markdown": "Ud, Arap dünyasının ötesinde de çalınır.",
+      "tts": {
+        "text": "Ud, Arap dünyasının ötesinde de çalınır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Türklerin de kendine özgü bir ud biçimi vardır.",
+      "text_markdown": "Türklerin de kendine özgü bir ud biçimi vardır.",
+      "tts": {
+        "text": "Türklerin de kendine özgü bir ud biçimi vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yunanların da kendine özgü bir ud biçimi vardır.",
+      "text_markdown": "Yunanların da kendine özgü bir ud biçimi vardır.",
+      "tts": {
+        "text": "Yunanların da kendine özgü bir ud biçimi vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ermenilerle İranlılar da onun kuzenlerini çalar.",
+      "text_markdown": "Ermenilerle İranlılar da onun kuzenlerini çalar.",
+      "tts": {
+        "text": "Ermenilerle İranlılar da onun kuzenlerini çalar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "İspanya'da da yüzyıllar boyunca çalındı.",
+      "text_markdown": "İspanya'da da yüzyıllar boyunca çalındı.",
+      "tts": {
+        "text": "İspanya'da da yüzyıllar boyunca çalındı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün üç ana ud türü vardır.",
+      "text_markdown": "Bugün üç ana ud türü vardır.",
+      "tts": {
+        "text": "Bugün üç ana ud türü vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Arap dünyasında çalınan ud büyük ve derindir, sesi de dolu ve ağır akar.",
+      "text_markdown": "Arap dünyasında çalınan ud büyük ve derindir, sesi de dolu ve ağır akar.",
+      "tts": {
+        "text": "Arap dünyasında çalınan ud büyük ve derindir, sesi de dolu ve ağır akar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, Mısır ve Doğu Akdeniz'de kullanılan ud biçimidir.",
+      "text_markdown": "Bu, Mısır ve Doğu Akdeniz'de kullanılan ud biçimidir.",
+      "tts": {
+        "text": "Bu, Mısır ve Doğu Akdeniz'de kullanılan ud biçimidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Türkiye'de çalınan ud daha küçük ve daha parlaktır, ayrıca Arap biçimine göre biraz daha tiz akort edilir.",
+      "text_markdown": "Türkiye'de çalınan ud daha küçük ve daha parlaktır, ayrıca Arap biçimine göre biraz daha tiz akort edilir.",
+      "tts": {
+        "text": "Türkiye'de çalınan ud daha küçük ve daha parlaktır, ayrıca Arap biçimine göre biraz daha tiz akort edilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persya kuzenine barbat denir.",
+      "text_markdown": "Persya kuzenine barbat denir.",
+      "tts": {
+        "text": "Persya kuzenine barbat denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O küçüktür, sesi keskindir ve başka bir nota düzeni kullanır.",
+      "text_markdown": "O küçüktür, sesi keskindir ve başka bir nota düzeni kullanır.",
+      "tts": {
+        "text": "O küçüktür, sesi keskindir ve başka bir nota düzeni kullanır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, klasik Arap müziğinin ve Türk makam müziğinin kalbidir.",
+      "text_markdown": "Ud, klasik Arap müziğinin ve Türk makam müziğinin kalbidir.",
+      "tts": {
+        "text": "Ud, klasik Arap müziğinin ve Türk makam müziğinin kalbidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O, düğünlerde de cenazelerde de çalar, konser salonlarında da dostlarla oturma odalarında da.",
+      "text_markdown": "O, düğünlerde de cenazelerde de çalar, konser salonlarında da dostlarla oturma odalarında da.",
+      "tts": {
+        "text": "O, düğünlerde de cenazelerde de çalar, konser salonlarında da dostlarla oturma odalarında da.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İnsanlar toplanıp ruha dokunan bir müzik istediğinde, birisi eline bir ud alabilir.",
+      "text_markdown": "İnsanlar toplanıp ruha dokunan bir müzik istediğinde, birisi eline bir ud alabilir.",
+      "tts": {
+        "text": "İnsanlar toplanıp ruha dokunan bir müzik istediğinde, birisi eline bir ud alabilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 5 — Makam",
+      "text_markdown": "Bölüm 5 — Makam"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piyano çalarken beyaz tuşlara ve siyah tuşlara basarsın.",
+      "text_markdown": "Piyano çalarken beyaz tuşlara ve siyah tuşlara basarsın.",
+      "tts": {
+        "text": "Piyano çalarken beyaz tuşlara ve siyah tuşlara basarsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her oktavda on iki nota vardır ve her adım aynı büyüklüktedir.",
+      "text_markdown": "Her oktavda on iki nota vardır ve her adım aynı büyüklüktedir.",
+      "tts": {
+        "text": "Her oktavda on iki nota vardır ve her adım aynı büyüklüktedir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Buna eşit aralık düzeni deriz.",
+      "text_markdown": "Buna eşit aralık düzeni deriz.",
+      "tts": {
+        "text": "Buna eşit aralık düzeni deriz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud böyle işlemez.",
+      "text_markdown": "Ud böyle işlemez.",
+      "tts": {
+        "text": "Ud böyle işlemez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ud, makam denen çok daha eski bir düzen kullanır.",
+      "text_markdown": "Ud, makam denen çok daha eski bir düzen kullanır.",
+      "tts": {
+        "text": "Ud, makam denen çok daha eski bir düzen kullanır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam, nota seçmenin bir yoludur ve birçok makam vardır.",
+      "text_markdown": "Makam, nota seçmenin bir yoludur ve birçok makam vardır.",
+      "tts": {
+        "text": "Makam, nota seçmenin bir yoludur ve birçok makam vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her birinin kendi duygusu vardır.",
+      "text_markdown": "Her birinin kendi duygusu vardır.",
+      "tts": {
+        "text": "Her birinin kendi duygusu vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kimi neşelidir, kimi hüzünlüdür, kimi de biraz gizemli gelir.",
+      "text_markdown": "Kimi neşelidir, kimi hüzünlüdür, kimi de biraz gizemli gelir.",
+      "tts": {
+        "text": "Kimi neşelidir, kimi hüzünlüdür, kimi de biraz gizemli gelir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makamın büyük sırrı, piyanodan daha çok notaya sahip olmasıdır.",
+      "text_markdown": "Makamın büyük sırrı, piyanodan daha çok notaya sahip olmasıdır.",
+      "tts": {
+        "text": "Makamın büyük sırrı, piyanodan daha çok notaya sahip olmasıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Beyaz tuşlarla siyah tuşların arasında, çeyrek ses dediğimiz daha küçük adımlar vardır.",
+      "text_markdown": "Beyaz tuşlarla siyah tuşların arasında, çeyrek ses dediğimiz daha küçük adımlar vardır.",
+      "tts": {
+        "text": "Beyaz tuşlarla siyah tuşların arasında, çeyrek ses dediğimiz daha küçük adımlar vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çeyrek ses, yarım sesin yarısıdır.",
+      "text_markdown": "Çeyrek ses, yarım sesin yarısıdır.",
+      "tts": {
+        "text": "Çeyrek ses, yarım sesin yarısıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, bildiğin notaların arasında yaşayan küçücük bir notadır.",
+      "text_markdown": "Bu, bildiğin notaların arasında yaşayan küçücük bir notadır.",
+      "tts": {
+        "text": "Bu, bildiğin notaların arasında yaşayan küçücük bir notadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Piyanoda onu çalamazsın.",
+      "text_markdown": "Piyanoda onu çalamazsın.",
+      "tts": {
+        "text": "Piyanoda onu çalamazsın.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ud üzerinde ise parmağını kaydırarak onu bulabilirsin.",
+      "text_markdown": "Ud üzerinde ise parmağını kaydırarak onu bulabilirsin.",
+      "tts": {
+        "text": "Ud üzerinde ise parmağını kaydırarak onu bulabilirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir makam, küçük nota kümelerinden kurulur.",
+      "text_markdown": "Bir makam, küçük nota kümelerinden kurulur.",
+      "tts": {
+        "text": "Bir makam, küçük nota kümelerinden kurulur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu küçük kümelerin her birine cins denir.",
+      "text_markdown": "Bu küçük kümelerin her birine cins denir.",
+      "tts": {
+        "text": "Bu küçük kümelerin her birine cins denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cinslerin çoğunda dört nota vardır.",
+      "text_markdown": "Cinslerin çoğunda dört nota vardır.",
+      "tts": {
+        "text": "Cinslerin çoğunda dört nota vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir cinsi, müzikten yapılmış küçük bir Lego parçası gibi düşünebilirsin, onları üst üste koyarak bir makam kurarsın.",
+      "text_markdown": "Bir cinsi, müzikten yapılmış küçük bir Lego parçası gibi düşünebilirsin, onları üst üste koyarak bir makam kurarsın.",
+      "tts": {
+        "text": "Bir cinsi, müzikten yapılmış küçük bir Lego parçası gibi düşünebilirsin, onları üst üste koyarak bir makam kurarsın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makam armonik değil, ezgiseldir.",
+      "text_markdown": "Makam armonik değil, ezgiseldir.",
+      "tts": {
+        "text": "Makam armonik değil, ezgiseldir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yani müzik, gitardaki gibi notaları akor yapıp üst üste yığmak yerine, tek tek ilerler.",
+      "text_markdown": "Yani müzik, gitardaki gibi notaları akor yapıp üst üste yığmak yerine, tek tek ilerler.",
+      "tts": {
+        "text": "Yani müzik, gitardaki gibi notaları akor yapıp üst üste yığmak yerine, tek tek ilerler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud yavaş ve kıvrılan bir solo çaldığında, çalgıcı bir makamın içinde dolaşır.",
+      "text_markdown": "Ud yavaş ve kıvrılan bir solo çaldığında, çalgıcı bir makamın içinde dolaşır.",
+      "tts": {
+        "text": "Ud yavaş ve kıvrılan bir solo çaldığında, çalgıcı bir makamın içinde dolaşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Önce bir cinsin notalarını seçer, sonra ötekine kayar.",
+      "text_markdown": "Önce bir cinsin notalarını seçer, sonra ötekine kayar.",
+      "tts": {
+        "text": "Önce bir cinsin notalarını seçer, sonra ötekine kayar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu solonun bir adı vardır.",
+      "text_markdown": "Bu solonun bir adı vardır.",
+      "tts": {
+        "text": "Bu solonun bir adı vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ona taksim deriz.",
+      "text_markdown": "Ona taksim deriz.",
+      "tts": {
+        "text": "Ona taksim deriz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İyi bir taksim seni güldürebilir, ağlatabilir de.",
+      "text_markdown": "İyi bir taksim seni güldürebilir, ağlatabilir de.",
+      "tts": {
+        "text": "İyi bir taksim seni güldürebilir, ağlatabilir de.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ud en güzel haline böyle ulaşır.",
+      "text_markdown": "Ud en güzel haline böyle ulaşır.",
+      "tts": {
+        "text": "Ud en güzel haline böyle ulaşır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 6 — Büyük Ustalar",
+      "text_markdown": "Bölüm 6 — Büyük Ustalar"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, bin yıldan uzun süredir çalınıyor.",
+      "text_markdown": "Ud, bin yıldan uzun süredir çalınıyor.",
+      "tts": {
+        "text": "Ud, bin yıldan uzun süredir çalınıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunca zaman içinde, birkaç kişi onu sonsuza dek değiştirdi.",
+      "text_markdown": "Bunca zaman içinde, birkaç kişi onu sonsuza dek değiştirdi.",
+      "tts": {
+        "text": "Bunca zaman içinde, birkaç kişi onu sonsuza dek değiştirdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlki, çalgıcıdan çok düşünür olan el Farabi idi.",
+      "text_markdown": "İlki, çalgıcıdan çok düşünür olan el Farabi idi.",
+      "tts": {
+        "text": "İlki, çalgıcıdan çok düşünür olan el Farabi idi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yaklaşık sekiz yüz yetmiş iki ile dokuz yüz elli yılları arasında yaşadı ve büyük Bağdat kentinde çalıştı.",
+      "text_markdown": "Yaklaşık sekiz yüz yetmiş iki ile dokuz yüz elli yılları arasında yaşadı ve büyük Bağdat kentinde çalıştı.",
+      "tts": {
+        "text": "Yaklaşık sekiz yüz yetmiş iki ile dokuz yüz elli yılları arasında yaşadı ve büyük Bağdat kentinde çalıştı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "El Farabi müzik üzerine çok büyük bir kitap yazdı.",
+      "text_markdown": "El Farabi müzik üzerine çok büyük bir kitap yazdı.",
+      "tts": {
+        "text": "El Farabi müzik üzerine çok büyük bir kitap yazdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tellerin nasıl titreştiğini anlattı.",
+      "text_markdown": "Tellerin nasıl titreştiğini anlattı.",
+      "tts": {
+        "text": "Tellerin nasıl titreştiğini anlattı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazı notaların neden birlikte tatlı duyulduğunu anlattı.",
+      "text_markdown": "Bazı notaların neden birlikte tatlı duyulduğunu anlattı.",
+      "tts": {
+        "text": "Bazı notaların neden birlikte tatlı duyulduğunu anlattı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Müziğin bir insanın duygusunu neden değiştirebildiğini anlattı.",
+      "text_markdown": "Müziğin bir insanın duygusunu neden değiştirebildiğini anlattı.",
+      "tts": {
+        "text": "Müziğin bir insanın duygusunu neden değiştirebildiğini anlattı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Onun kitabı yüzyıllar boyunca Arapça ve Latince okundu.",
+      "text_markdown": "Onun kitabı yüzyıllar boyunca Arapça ve Latince okundu.",
+      "tts": {
+        "text": "Onun kitabı yüzyıllar boyunca Arapça ve Latince okundu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud tarihinin ikinci büyük ustası, yaklaşık yedi yüz seksen dokuz yılında Irak'ta doğan şarkıcı Ziryab idi.",
+      "text_markdown": "Ud tarihinin ikinci büyük ustası, yaklaşık yedi yüz seksen dokuz yılında Irak'ta doğan şarkıcı Ziryab idi.",
+      "tts": {
+        "text": "Ud tarihinin ikinci büyük ustası, yaklaşık yedi yüz seksen dokuz yılında Irak'ta doğan şarkıcı Ziryab idi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Genç bir adamken Bağdat'tan aceleyle ayrılmak zorunda kaldı.",
+      "text_markdown": "Genç bir adamken Bağdat'tan aceleyle ayrılmak zorunda kaldı.",
+      "tts": {
+        "text": "Genç bir adamken Bağdat'tan aceleyle ayrılmak zorunda kaldı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab, bütün Kuzey Afrika'yı geçip batıya gitti.",
+      "text_markdown": "Ziryab, bütün Kuzey Afrika'yı geçip batıya gitti.",
+      "tts": {
+        "text": "Ziryab, bütün Kuzey Afrika'yı geçip batıya gitti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sekiz yüz yirmi iki yılında İspanya'daki Kurtuba kentine vardı.",
+      "text_markdown": "Sekiz yüz yirmi iki yılında İspanya'daki Kurtuba kentine vardı.",
+      "tts": {
+        "text": "Sekiz yüz yirmi iki yılında İspanya'daki Kurtuba kentine vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kurtuba kralı onun müziğini sevdi ve ona ev, maaş, bir de ders verecek zaman verdi.",
+      "text_markdown": "Kurtuba kralı onun müziğini sevdi ve ona ev, maaş, bir de ders verecek zaman verdi.",
+      "tts": {
+        "text": "Kurtuba kralı onun müziğini sevdi ve ona ev, maaş, bir de ders verecek zaman verdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab, İspanya'da bir müzik okulu açtı.",
+      "text_markdown": "Ziryab, İspanya'da bir müzik okulu açtı.",
+      "tts": {
+        "text": "Ziryab, İspanya'da bir müzik okulu açtı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları, bunun dünyadaki ilk konservatuvar olduğunu söyler.",
+      "text_markdown": "Bazıları, bunun dünyadaki ilk konservatuvar olduğunu söyler.",
+      "tts": {
+        "text": "Bazıları, bunun dünyadaki ilk konservatuvar olduğunu söyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ud için beşinci bir tel çifti ekledi ve mızrapların yapılışını değiştirdi.",
+      "text_markdown": "Ud için beşinci bir tel çifti ekledi ve mızrapların yapılışını değiştirdi.",
+      "tts": {
+        "text": "Ud için beşinci bir tel çifti ekledi ve mızrapların yapılışını değiştirdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab'dan çok sonra, bizim zamanımıza yakın bir dönemde, Iraklı bir çalgıcı ud müziğini yeni bir yere taşıdı.",
+      "text_markdown": "Ziryab'dan çok sonra, bizim zamanımıza yakın bir dönemde, Iraklı bir çalgıcı ud müziğini yeni bir yere taşıdı.",
+      "tts": {
+        "text": "Ziryab'dan çok sonra, bizim zamanımıza yakın bir dönemde, Iraklı bir çalgıcı ud müziğini yeni bir yere taşıdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onun adı Münir Beşir'di ve insanlar onu ud kralı diye anardı.",
+      "text_markdown": "Onun adı Münir Beşir'di ve insanlar onu ud kralı diye anardı.",
+      "tts": {
+        "text": "Onun adı Münir Beşir'di ve insanlar onu ud kralı diye anardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beşir'den önce ud genelde başka çalgılarla birlikte çalardı.",
+      "text_markdown": "Beşir'den önce ud genelde başka çalgılarla birlikte çalardı.",
+      "tts": {
+        "text": "Beşir'den önce ud genelde başka çalgılarla birlikte çalardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Beşir onu sahnede tek başına çaldı ve uzun, sakin, derin sololar yaptı.",
+      "text_markdown": "Beşir onu sahnede tek başına çaldı ve uzun, sakin, derin sololar yaptı.",
+      "tts": {
+        "text": "Beşir onu sahnede tek başına çaldı ve uzun, sakin, derin sololar yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dünyanın dört yanındaki insanlar onu duydu ve ud sesine yeniden aşık oldu.",
+      "text_markdown": "Dünyanın dört yanındaki insanlar onu duydu ve ud sesine yeniden aşık oldu.",
+      "tts": {
+        "text": "Dünyanın dört yanındaki insanlar onu duydu ve ud sesine yeniden aşık oldu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daha niceleri vardı.",
+      "text_markdown": "Daha niceleri vardı.",
+      "tts": {
+        "text": "Daha niceleri vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ferid el Atraş, ud sesini Mısır filmlerinin sesi yaptı.",
+      "text_markdown": "Ferid el Atraş, ud sesini Mısır filmlerinin sesi yaptı.",
+      "tts": {
+        "text": "Ferid el Atraş, ud sesini Mısır filmlerinin sesi yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tunuslu Anuar Brahem, Avrupa'dan ve Amerika'dan cazcılarla ud çalar.",
+      "text_markdown": "Tunuslu Anuar Brahem, Avrupa'dan ve Amerika'dan cazcılarla ud çalar.",
+      "tts": {
+        "text": "Tunuslu Anuar Brahem, Avrupa'dan ve Amerika'dan cazcılarla ud çalar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud hâlâ yaşıyor.",
+      "text_markdown": "Ud hâlâ yaşıyor.",
+      "tts": {
+        "text": "Ud hâlâ yaşıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dünyanın bir yerinde her yıl yeni bir usta doğar.",
+      "text_markdown": "Dünyanın bir yerinde her yıl yeni bir usta doğar.",
+      "tts": {
+        "text": "Dünyanın bir yerinde her yıl yeni bir usta doğar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 7 — Ud ve Dünya",
+      "text_markdown": "Bölüm 7 — Ud ve Dünya"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, Arap dünyasında kalmadı.",
+      "text_markdown": "Ud, Arap dünyasında kalmadı.",
+      "tts": {
+        "text": "Ud, Arap dünyasında kalmadı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yolculuk ettikçe biçimi değişti, adı değişti, ezgileri değişti.",
+      "text_markdown": "Yolculuk ettikçe biçimi değişti, adı değişti, ezgileri değişti.",
+      "tts": {
+        "text": "Yolculuk ettikçe biçimi değişti, adı değişti, ezgileri değişti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud Orta Çağ İspanya'sına ulaşınca, Avrupalı çalgıcılar onun ahşap teknesini ve derin sesini sevdi.",
+      "text_markdown": "Ud Orta Çağ İspanya'sına ulaşınca, Avrupalı çalgıcılar onun ahşap teknesini ve derin sesini sevdi.",
+      "tts": {
+        "text": "Ud Orta Çağ İspanya'sına ulaşınca, Avrupalı çalgıcılar onun ahşap teknesini ve derin sesini sevdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ama onlar, zaten bildikleri küçük çalgılardaki gibi perde istedi.",
+      "text_markdown": "Ama onlar, zaten bildikleri küçük çalgılardaki gibi perde istedi.",
+      "tts": {
+        "text": "Ama onlar, zaten bildikleri küçük çalgılardaki gibi perde istedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bunun üzerine perde eklediler, arkasını biraz düzleştirdiler ve yeni çalgıya lavta dediler.",
+      "text_markdown": "Bunun üzerine perde eklediler, arkasını biraz düzleştirdiler ve yeni çalgıya lavta dediler.",
+      "tts": {
+        "text": "Bunun üzerine perde eklediler, arkasını biraz düzleştirdiler ve yeni çalgıya lavta dediler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beş yüz yıl boyunca lavta, Avrupa'nın gözde çalgısı oldu.",
+      "text_markdown": "Beş yüz yıl boyunca lavta, Avrupa'nın gözde çalgısı oldu.",
+      "tts": {
+        "text": "Beş yüz yıl boyunca lavta, Avrupa'nın gözde çalgısı oldu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Krallar onu çaldı.",
+      "text_markdown": "Krallar onu çaldı.",
+      "tts": {
+        "text": "Krallar onu çaldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şairler onu çaldı.",
+      "text_markdown": "Şairler onu çaldı.",
+      "tts": {
+        "text": "Şairler onu çaldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En büyük besteciler onun için eserler yazdı.",
+      "text_markdown": "En büyük besteciler onun için eserler yazdı.",
+      "tts": {
+        "text": "En büyük besteciler onun için eserler yazdı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra lavta yeniden değişti.",
+      "text_markdown": "Sonra lavta yeniden değişti.",
+      "tts": {
+        "text": "Sonra lavta yeniden değişti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çalgıcılar daha çok tel ekledi, arkasını daha da düzleştirdi ve çalgıya daha küçük, daha hafif bir gövde verdi.",
+      "text_markdown": "Çalgıcılar daha çok tel ekledi, arkasını daha da düzleştirdi ve çalgıya daha küçük, daha hafif bir gövde verdi.",
+      "tts": {
+        "text": "Çalgıcılar daha çok tel ekledi, arkasını daha da düzleştirdi ve çalgıya daha küçük, daha hafif bir gövde verdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yaklaşık bin sekiz yüz yılına gelindiğinde, İspanya'da bu yeni çalgının hepimizin bildiği bir adı vardı.",
+      "text_markdown": "Yaklaşık bin sekiz yüz yılına gelindiğinde, İspanya'da bu yeni çalgının hepimizin bildiği bir adı vardı.",
+      "tts": {
+        "text": "Yaklaşık bin sekiz yüz yılına gelindiğinde, İspanya'da bu yeni çalgının hepimizin bildiği bir adı vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu ad gitardı.",
+      "text_markdown": "Bu ad gitardı.",
+      "tts": {
+        "text": "Bu ad gitardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Demek ki ud, lavta ve gitar aynı ailenin üyeleridir.",
+      "text_markdown": "Demek ki ud, lavta ve gitar aynı ailenin üyeleridir.",
+      "tts": {
+        "text": "Demek ki ud, lavta ve gitar aynı ailenin üyeleridir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onlar kuzenlerdir ve ortak bir büyükbabaları vardır.",
+      "text_markdown": "Onlar kuzenlerdir ve ortak bir büyükbabaları vardır.",
+      "tts": {
+        "text": "Onlar kuzenlerdir ve ortak bir büyükbabaları vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O büyükbaba, ud dediğimiz çalgıdır.",
+      "text_markdown": "O büyükbaba, ud dediğimiz çalgıdır.",
+      "tts": {
+        "text": "O büyükbaba, ud dediğimiz çalgıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün ud ile gitar birlikte çalıyor.",
+      "text_markdown": "Bugün ud ile gitar birlikte çalıyor.",
+      "tts": {
+        "text": "Bugün ud ile gitar birlikte çalıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anuar Brahem udunu caz gitaristleriyle buluşturur.",
+      "text_markdown": "Anuar Brahem udunu caz gitaristleriyle buluşturur.",
+      "tts": {
+        "text": "Anuar Brahem udunu caz gitaristleriyle buluşturur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Münir Beşir orkestralar için çaldı.",
+      "text_markdown": "Münir Beşir orkestralar için çaldı.",
+      "tts": {
+        "text": "Münir Beşir orkestralar için çaldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beyrut'ta, İstanbul'da, Paris'te ve Nyu York'ta genç çalgıcılar ud sesini rockla, hip hopla ve film müzikleriyle birleştiriyor.",
+      "text_markdown": "Beyrut'ta, İstanbul'da, Paris'te ve Nyu York'ta genç çalgıcılar ud sesini rockla, hip hopla ve film müzikleriyle birleştiriyor.",
+      "tts": {
+        "text": "Beyrut'ta, İstanbul'da, Paris'te ve Nyu York'ta genç çalgıcılar ud sesini rockla, hip hopla ve film müzikleriyle birleştiriyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ud, bir çalgıdan fazlasıdır.",
+      "text_markdown": "Ud, bir çalgıdan fazlasıdır.",
+      "tts": {
+        "text": "Ud, bir çalgıdan fazlasıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O bir köprüdür.",
+      "text_markdown": "O bir köprüdür.",
+      "tts": {
+        "text": "O bir köprüdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mezopotamya'dan başlayıp Persya'dan, Arap dünyasından, İspanya'dan ve Avrupa'dan geçerek dünyanın her ülkesine uzanan bir öykü taşır.",
+      "text_markdown": "Mezopotamya'dan başlayıp Persya'dan, Arap dünyasından, İspanya'dan ve Avrupa'dan geçerek dünyanın her ülkesine uzanan bir öykü taşır.",
+      "tts": {
+        "text": "Mezopotamya'dan başlayıp Persya'dan, Arap dünyasından, İspanya'dan ve Avrupa'dan geçerek dünyanın her ülkesine uzanan bir öykü taşır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir gitar duyduğunda, çok derinlerde bir yerde ud sesinin yumuşak ve derin yankısını da duyarsın.",
+      "text_markdown": "Bir gitar duyduğunda, çok derinlerde bir yerde ud sesinin yumuşak ve derin yankısını da duyarsın.",
+      "tts": {
+        "text": "Bir gitar duyduğunda, çok derinlerde bir yerde ud sesinin yumuşak ve derin yankısını da duyarsın.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bu Kitap Hakkında",
+      "text_markdown": "Bu Kitap Hakkında"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Dünyanın Çalgıları dizisinin ilk cildidir.",
+      "text_markdown": "Bu, Dünyanın Çalgıları dizisinin ilk cildidir.",
+      "tts": {
+        "text": "Bu, Dünyanın Çalgıları dizisinin ilk cildidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu dizideki her kitap, tek bir çalgının öyküsünü anlatır.",
+      "text_markdown": "Bu dizideki her kitap, tek bir çalgının öyküsünü anlatır.",
+      "tts": {
+        "text": "Bu dizideki her kitap, tek bir çalgının öyküsünü anlatır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her kitap kısadır ve anlattıkları gerçektir.",
+      "text_markdown": "Her kitap kısadır ve anlattıkları gerçektir.",
+      "tts": {
+        "text": "Her kitap kısadır ve anlattıkları gerçektir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıradaki kitap, çok teli ve derin, çınlayan sesi olan Hindistan'ın büyük, uzun saplı lavtası sitarı anlatıyor.",
+      "text_markdown": "Sıradaki kitap, çok teli ve derin, çınlayan sesi olan Hindistan'ın büyük, uzun saplı lavtası sitarı anlatıyor.",
+      "tts": {
+        "text": "Sıradaki kitap, çok teli ve derin, çınlayan sesi olan Hindistan'ın büyük, uzun saplı lavtası sitarı anlatıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sitardan sonra kora için Batı Afrika'ya, sonra da şakuhachi için Japonya'ya gideceğiz.",
+      "text_markdown": "Sitardan sonra kora için Batı Afrika'ya, sonra da şakuhachi için Japonya'ya gideceğiz.",
+      "tts": {
+        "text": "Sitardan sonra kora için Batı Afrikaya, sonra da şakuhaci için Japonyaya gideceğiz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dinlediğin için teşekkür ederim.",
+      "text_markdown": "Dinlediğin için teşekkür ederim.",
+      "tts": {
+        "text": "Dinlediğin için teşekkür ederim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnternette ya da kendi şehrinde bir ud bul ve onun senin için çalmasına izin ver.",
+      "text_markdown": "İnternette ya da kendi şehrinde bir ud bul ve onun senin için çalmasına izin ver.",
+      "tts": {
+        "text": "İnternette ya da kendi şehrinde bir ud bul ve onun senin için çalmasına izin ver.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

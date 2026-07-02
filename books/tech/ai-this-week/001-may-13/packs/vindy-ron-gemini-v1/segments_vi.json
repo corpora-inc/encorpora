@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "vi",
+  "total_segments": 62,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "Chào mừng đến với AI Tuần Này. Tôi là Vindy.",
+      "text_markdown": "Chào mừng đến với AI Tuần Này. Tôi là Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Chào mừng đến với AI Tuần Này. Tôi là Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "Đồng hành cùng tôi, như mọi khi, là Ron.",
+      "text_markdown": "Đồng hành cùng tôi, như mọi khi, là Ron.",
+      "title": "",
+      "tts": {
+        "text": "Đồng hành cùng tôi, như mọi khi, là Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "Rất vui được ở đây.",
+      "text_markdown": "Rất vui được ở đây.",
+      "title": "",
+      "tts": {
+        "text": "Rất vui được ở đây.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "Hôm nay là thứ Tư, ngày 13 tháng 5 năm 2026. Sắp tới: các mô hình đã ra mắt trong tuần này. Các bảng xếp hạng, và lý do tại sao bạn nên ngừng tin tưởng một số trong số đó. Khái niệm của chúng ta trong tuần. Và bức tranh lớn hơn — Hoa Kỳ vừa có một chủ tịch Cục Dự trữ Liên bang mới, và điều đó quan trọng hơn đối với AI so với những gì bạn nghĩ.",
+      "text_markdown": "Hôm nay là thứ Tư, ngày 13 tháng 5 năm 2026. Sắp tới: các mô hình đã ra mắt trong tuần này. Các bảng xếp hạng, và lý do tại sao bạn nên ngừng tin tưởng một số trong số đó. Khái niệm của chúng ta trong tuần. Và bức tranh lớn hơn — Hoa Kỳ vừa có một chủ tịch Cục Dự trữ Liên bang mới, và điều đó quan trọng hơn đối với AI so với những gì bạn nghĩ.",
+      "title": "",
+      "tts": {
+        "text": "Hôm nay là thứ Tư, ngày mười ba tháng năm, năm hai nghìn không trăm hai mươi sáu. Sắp tới: các mô hình đã ra mắt trong tuần này. Các bảng xếp hạng, và lý do tại sao bạn nên ngừng tin tưởng một số trong số đó. Khái niệm của chúng ta trong tuần. Và bức tranh lớn hơn — Hoa Kỳ vừa có một chủ tịch Cục Dự trữ Liên bang mới, và điều đó quan trọng hơn đối với AI so với những gì bạn nghĩ.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "Ron, tin tức lớn nhất về mô hình trong tuần này là gì?",
+      "text_markdown": "Ron, tin tức lớn nhất về mô hình trong tuần này là gì?",
+      "title": "",
+      "tts": {
+        "text": "Ron, tin tức lớn nhất về mô hình trong tuần này là gì?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "Bộ não mặc định bên trong ChatGPT đã thay đổi. OpenAI đã triển khai một mô hình mới có tên GPT-5.5 Instant cho gói miễn phí vào tuần trước, vào thứ Ba, ngày 5 tháng 5. Nếu một phản hồi ChatGPT miễn phí có vẻ ngắn hơn hoặc ít biểu tượng cảm xúc hơn, thì đó là lý do.",
+      "text_markdown": "Bộ não mặc định bên trong ChatGPT đã thay đổi. OpenAI đã triển khai một mô hình mới có tên GPT-5.5 Instant cho gói miễn phí vào tuần trước, vào thứ Ba, ngày 5 tháng 5. Nếu một phản hồi ChatGPT miễn phí có vẻ ngắn hơn hoặc ít biểu tượng cảm xúc hơn, thì đó là lý do.",
+      "title": "",
+      "tts": {
+        "text": "Bộ não mặc định bên trong ChatGPT đã thay đổi. OpenAI đã triển khai một mô hình mới có tên GPT năm chấm năm Instant cho gói miễn phí vào tuần trước, vào thứ Ba, ngày năm tháng năm. Nếu một phản hồi ChatGPT miễn phí có vẻ ngắn hơn hoặc ít biểu tượng cảm xúc hơn, thì đó là lý do.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "Ngắn hơn như thế nào?",
+      "text_markdown": "Ngắn hơn như thế nào?",
+      "title": "",
+      "tts": {
+        "text": "Ngắn hơn như thế nào?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "OpenAI cho biết mô hình mặc định mới viết ít hơn khoảng 30% từ và 30% dòng so với mô hình mà nó thay thế. Họ cũng tuyên bố giảm 50% các tuyên bố bịa đặt trên các lời nhắc khó nhất. Những thứ như câu hỏi y tế, câu hỏi pháp lý và câu hỏi tài chính.",
+      "text_markdown": "OpenAI cho biết mô hình mặc định mới viết ít hơn khoảng 30% từ và 30% dòng so với mô hình mà nó thay thế. Họ cũng tuyên bố giảm 50% các tuyên bố bịa đặt trên các lời nhắc khó nhất. Những thứ như câu hỏi y tế, câu hỏi pháp lý và câu hỏi tài chính.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI cho biết mô hình mặc định mới viết ít hơn khoảng ba mươi phần trăm từ và ba mươi phần trăm dòng so với mô hình mà nó thay thế. Họ cũng tuyên bố giảm năm mươi phần trăm các tuyên bố bịa đặt trên các lời nhắc khó nhất. Những thứ như câu hỏi y tế, câu hỏi pháp lý và câu hỏi tài chính.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "Có ai bên ngoài OpenAI đã xác minh những con số đó chưa?",
+      "text_markdown": "Có ai bên ngoài OpenAI đã xác minh những con số đó chưa?",
+      "title": "",
+      "tts": {
+        "text": "Có ai bên ngoài OpenAI đã xác minh những con số đó chưa?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "Không phải ở quy mô lớn. Các chuyên gia đánh giá độc lập, như Artificial Analysis, đã xếp mô hình mới này ở vị trí hàng đầu trong chỉ số trí tuệ tổng thể của họ. Nhưng các tuyên bố về ảo giác rất chậm để xác minh. Những điều đó có xu hướng xuất hiện trong nhiều tuần, khi mọi người thực sự sử dụng mô hình.",
+      "text_markdown": "Không phải ở quy mô lớn. Các chuyên gia đánh giá độc lập, như Artificial Analysis, đã xếp mô hình mới này ở vị trí hàng đầu trong chỉ số trí tuệ tổng thể của họ. Nhưng các tuyên bố về ảo giác rất chậm để xác minh. Những điều đó có xu hướng xuất hiện trong nhiều tuần, khi mọi người thực sự sử dụng mô hình.",
+      "title": "",
+      "tts": {
+        "text": "Không phải ở quy mô lớn. Các chuyên gia đánh giá độc lập, như Artificial Analysis, đã xếp mô hình mới này ở vị trí hàng đầu trong chỉ số trí tuệ tổng thể của họ. Nhưng các tuyên bố về ảo giác rất chậm để xác minh. Những điều đó có xu hướng xuất hiện trong nhiều tuần, khi mọi người thực sự sử dụng mô hình.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "Còn về phía mã nguồn mở thì sao?",
+      "text_markdown": "Còn về phía mã nguồn mở thì sao?",
+      "title": "",
+      "tts": {
+        "text": "Còn về phía mã nguồn mở thì sao?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "Hai điều lớn. Moonshot, phòng thí nghiệm Trung Quốc đứng sau mô hình Kimi, đã huy động được 2 tỷ đô la vào tuần trước, vào ngày 7 tháng 5, với mức định giá 20 tỷ đô la. Và mô hình mới nhất của họ, Kimi K 2.6, vừa chiếm vị trí hàng đầu trên OpenRouter về khối lượng token.",
+      "text_markdown": "Hai điều lớn. Moonshot, phòng thí nghiệm Trung Quốc đứng sau mô hình Kimi, đã huy động được 2 tỷ đô la vào tuần trước, vào ngày 7 tháng 5, với mức định giá 20 tỷ đô la. Và mô hình mới nhất của họ, Kimi K 2.6, vừa chiếm vị trí hàng đầu trên OpenRouter về khối lượng token.",
+      "title": "",
+      "tts": {
+        "text": "Hai điều lớn. Moonshot, phòng thí nghiệm Trung Quốc đứng sau mô hình Kimi, đã huy động được hai tỷ đô la vào tuần trước, vào ngày bảy tháng năm, với mức định giá hai mươi tỷ đô la. Và mô hình mới nhất của họ, Kimi K hai chấm sáu, vừa chiếm vị trí hàng đầu trên OpenRouter về khối lượng token.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "Vị trí hàng đầu? Tổng thể?",
+      "text_markdown": "Vị trí hàng đầu? Tổng thể?",
+      "title": "",
+      "tts": {
+        "text": "Vị trí hàng đầu? Tổng thể?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Tổng thể. Đó là một mô hình mã nguồn mở của Trung Quốc đứng số một trên một bộ định tuyến thương mại lớn. Sáu tháng trước, điều đó là không thể tưởng tượng được.",
+      "text_markdown": "Tổng thể. Đó là một mô hình mã nguồn mở của Trung Quốc đứng số một trên một bộ định tuyến thương mại lớn. Sáu tháng trước, điều đó là không thể tưởng tượng được.",
+      "title": "",
+      "tts": {
+        "text": "Tổng thể. Đó là một mô hình mã nguồn mở của Trung Quốc đứng số một trên một bộ định tuyến thương mại lớn. Sáu tháng trước, điều đó là không thể tưởng tượng được.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "Có điều gì khác đáng chú ý không?",
+      "text_markdown": "Có điều gì khác đáng chú ý không?",
+      "title": "",
+      "tts": {
+        "text": "Có điều gì khác đáng chú ý không?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "Mistral, phòng thí nghiệm của Pháp, đã ra mắt Medium 3.5 vào cuối tháng Tư. Họ đang hợp nhất sự phân chia cũ giữa mô hình trò chuyện, mô hình suy luận và mô hình mã hóa thành một sản phẩm duy nhất. Cùng xu hướng mà OpenAI đã bắt đầu với dòng GPT-5. Toàn bộ ngành đang đi theo hướng đó.",
+      "text_markdown": "Mistral, phòng thí nghiệm của Pháp, đã ra mắt Medium 3.5 vào cuối tháng Tư. Họ đang hợp nhất sự phân chia cũ giữa mô hình trò chuyện, mô hình suy luận và mô hình mã hóa thành một sản phẩm duy nhất. Cùng xu hướng mà OpenAI đã bắt đầu với dòng GPT-5. Toàn bộ ngành đang đi theo hướng đó.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, phòng thí nghiệm của Pháp, đã ra mắt Medium ba chấm năm vào cuối tháng Tư. Họ đang hợp nhất sự phân chia cũ giữa mô hình trò chuyện, mô hình suy luận và mô hình mã hóa thành một sản phẩm duy nhất. Cùng xu hướng mà OpenAI đã bắt đầu với dòng GPT năm. Toàn bộ ngành đang đi theo hướng đó.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "Và điều gì sẽ đến tiếp theo?",
+      "text_markdown": "Và điều gì sẽ đến tiếp theo?",
+      "title": "",
+      "tts": {
+        "text": "Và điều gì sẽ đến tiếp theo?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "Google I/O sẽ diễn ra vào thứ Ba. Mọi người đều mong đợi một Gemini mới, và có những tin đồn đáng tin cậy về một mô hình tạo video có tên Gemini Omni. OpenAI đang thử nghiệm GPT-5.6. Anthropic có một mô hình tên Mythos trong bản xem trước riêng tư. Chúng ta sẽ biết nhiều hơn vào tuần tới.",
+      "text_markdown": "Google I/O sẽ diễn ra vào thứ Ba. Mọi người đều mong đợi một Gemini mới, và có những tin đồn đáng tin cậy về một mô hình tạo video có tên Gemini Omni. OpenAI đang thử nghiệm GPT-5.6. Anthropic có một mô hình tên Mythos trong bản xem trước riêng tư. Chúng ta sẽ biết nhiều hơn vào tuần tới.",
+      "title": "",
+      "tts": {
+        "text": "Google I O sẽ diễn ra vào thứ Ba. Mọi người đều mong đợi một Gemini mới, và có những tin đồn đáng tin cậy về một mô hình tạo video có tên Gemini Omni. OpenAI đang thử nghiệm GPT năm chấm sáu. Anthropic có một mô hình tên Mythos trong bản xem trước riêng tư. Chúng ta sẽ biết nhiều hơn vào tuần tới.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "Được rồi, hãy đến với các bảng xếp hạng.",
+      "text_markdown": "Được rồi, hãy đến với các bảng xếp hạng.",
+      "title": "",
+      "tts": {
+        "text": "Được rồi, hãy đến với các bảng xếp hạng.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "Ron, điều gì đang thay đổi trên các bảng xếp hạng tuần này?",
+      "text_markdown": "Ron, điều gì đang thay đổi trên các bảng xếp hạng tuần này?",
+      "title": "",
+      "tts": {
+        "text": "Ron, điều gì đang thay đổi trên các bảng xếp hạng tuần này?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "Câu chuyện thực sự trong tuần này không phải là điểm số. Mà là những điểm số bạn nên ngừng tin tưởng.",
+      "text_markdown": "Câu chuyện thực sự trong tuần này không phải là điểm số. Mà là những điểm số bạn nên ngừng tin tưởng.",
+      "title": "",
+      "tts": {
+        "text": "Câu chuyện thực sự trong tuần này không phải là điểm số. Mà là những điểm số bạn nên ngừng tin tưởng.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "Hãy nói thêm một chút về điều đó, Ron.",
+      "text_markdown": "Hãy nói thêm một chút về điều đó, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Hãy nói thêm một chút về điều đó, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "Một nhóm tại Berkeley đã công bố một bài báo. Họ đã xây dựng một máy quét tự động đạt điểm gần như hoàn hảo trên mọi tiêu chuẩn chính của tác nhân AI. Mà không thực sự giải quyết bất kỳ nhiệm vụ nào. Họ đã khai thác cách các tiêu chuẩn kiểm tra câu trả lời của chính chúng.",
+      "text_markdown": "Một nhóm tại Berkeley đã công bố một bài báo. Họ đã xây dựng một máy quét tự động đạt điểm gần như hoàn hảo trên mọi tiêu chuẩn chính của tác nhân AI. Mà không thực sự giải quyết bất kỳ nhiệm vụ nào. Họ đã khai thác cách các tiêu chuẩn kiểm tra câu trả lời của chính chúng.",
+      "title": "",
+      "tts": {
+        "text": "Một nhóm tại Berkeley đã công bố một bài báo. Họ đã xây dựng một máy quét tự động đạt điểm gần như hoàn hảo trên mọi tiêu chuẩn chính của tác nhân AI. Mà không thực sự giải quyết bất kỳ nhiệm vụ nào. Họ đã khai thác cách các tiêu chuẩn kiểm tra câu trả lời của chính chúng.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "Họ đã gian lận, và các tiêu chuẩn không phát hiện ra.",
+      "text_markdown": "Họ đã gian lận, và các tiêu chuẩn không phát hiện ra.",
+      "title": "",
+      "tts": {
+        "text": "Họ đã gian lận, và các tiêu chuẩn không phát hiện ra.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "Đúng vậy. Và cùng tuần đó, OpenAI thông báo họ sẽ ngừng đánh giá trên SWE bench Verified. Đó là một tiêu chuẩn mã hóa mà họ thường xuyên trích dẫn. Họ ngừng sử dụng nó vì hơn một nửa số nhiệm vụ khó hóa ra có các bài kiểm tra bị lỗi.",
+      "text_markdown": "Đúng vậy. Và cùng tuần đó, OpenAI thông báo họ sẽ ngừng đánh giá trên SWE bench Verified. Đó là một tiêu chuẩn mã hóa mà họ thường xuyên trích dẫn. Họ ngừng sử dụng nó vì hơn một nửa số nhiệm vụ khó hóa ra có các bài kiểm tra bị lỗi.",
+      "title": "",
+      "tts": {
+        "text": "Đúng vậy. Và cùng tuần đó, OpenAI thông báo họ sẽ ngừng đánh giá trên SWE bench Verified. Đó là một tiêu chuẩn mã hóa mà họ thường xuyên trích dẫn. Họ ngừng sử dụng nó vì hơn một nửa số nhiệm vụ khó hóa ra có các bài kiểm tra bị lỗi.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "Vậy là rất nhiều con số chúng ta đã nghe trong năm qua là…",
+      "text_markdown": "Vậy là rất nhiều con số chúng ta đã nghe trong năm qua là…",
+      "title": "",
+      "tts": {
+        "text": "Vậy là rất nhiều con số chúng ta đã nghe trong năm qua là…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Ít nhất là bị thổi phồng một phần. Không phải mọi mô hình. Không phải mọi tiêu chuẩn. Nhưng lĩnh vực này đang xây dựng lại thước đo của mình một cách công khai. Các đánh giá mới hơn như SWE-bench Pro và một dự án có tên SWE-rebench đang cố gắng khắc phục điều này bằng cách giữ mã kiểm tra riêng tư.",
+      "text_markdown": "Ít nhất là bị thổi phồng một phần. Không phải mọi mô hình. Không phải mọi tiêu chuẩn. Nhưng lĩnh vực này đang xây dựng lại thước đo của mình một cách công khai. Các đánh giá mới hơn như SWE-bench Pro và một dự án có tên SWE-rebench đang cố gắng khắc phục điều này bằng cách giữ mã kiểm tra riêng tư.",
+      "title": "",
+      "tts": {
+        "text": "Ít nhất là bị thổi phồng một phần. Không phải mọi mô hình. Không phải mọi tiêu chuẩn. Nhưng lĩnh vực này đang xây dựng lại thước đo của mình một cách công khai. Các đánh giá mới hơn như SWE bench Pro và một dự án có tên SWE rebench đang cố gắng khắc phục điều này bằng cách giữ mã kiểm tra riêng tư.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "Có điều gì thực sự đang tiến lên một cách rõ ràng không?",
+      "text_markdown": "Có điều gì thực sự đang tiến lên một cách rõ ràng không?",
+      "title": "",
+      "tts": {
+        "text": "Có điều gì thực sự đang tiến lên một cách rõ ràng không?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "Hai điều, trên các bảng xếp hạng rõ ràng hơn. Vào giữa tháng Tư, Claude Opus 4.7 của Anthropic đã trở thành mô hình đầu tiên vượt qua mốc Elo 1500 một cách rõ ràng trên bảng xếp hạng mã hóa LM Arena. Opus 4.6 đã chạm mốc 1500 vài tuần trước đó. Tính đến tuần này, Opus 4.7 vẫn đứng đầu, khoảng 1569. Anthropic cũng có một mô hình riêng biệt tên Mythos trong bản xem trước đối tác riêng tư đang dẫn đầu 17 trong số 18 tiêu chuẩn tác nhân mà Anthropic đã đo lường.",
+      "text_markdown": "Hai điều, trên các bảng xếp hạng rõ ràng hơn. Vào giữa tháng Tư, Claude Opus 4.7 của Anthropic đã trở thành mô hình đầu tiên vượt qua mốc Elo 1500 một cách rõ ràng trên bảng xếp hạng mã hóa LM Arena. Opus 4.6 đã chạm mốc 1500 vài tuần trước đó. Tính đến tuần này, Opus 4.7 vẫn đứng đầu, khoảng 1569. Anthropic cũng có một mô hình riêng biệt tên Mythos trong bản xem trước đối tác riêng tư đang dẫn đầu 17 trong số 18 tiêu chuẩn tác nhân mà Anthropic đã đo lường.",
+      "title": "",
+      "tts": {
+        "text": "Hai điều, trên các bảng xếp hạng rõ ràng hơn. Vào giữa tháng Tư, Claude Opus bốn chấm bảy của Anthropic đã trở thành mô hình đầu tiên vượt qua mốc Elo một nghìn năm trăm một cách rõ ràng trên bảng xếp hạng mã hóa LM Arena. Opus bốn chấm sáu đã chạm mốc một nghìn năm trăm vài tuần trước đó. Tính đến tuần này, Opus bốn chấm bảy vẫn đứng đầu, khoảng một nghìn năm trăm sáu mươi chín. Anthropic cũng có một mô hình riêng biệt tên Mythos trong bản xem trước đối tác riêng tư đang dẫn đầu mười bảy trong số mười tám tiêu chuẩn tác nhân mà Anthropic đã đo lường.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "Một mô hình mà công chúng không thể sử dụng lại đang đứng đầu các bảng xếp hạng.",
+      "text_markdown": "Một mô hình mà công chúng không thể sử dụng lại đang đứng đầu các bảng xếp hạng.",
+      "title": "",
+      "tts": {
+        "text": "Một mô hình mà công chúng không thể sử dụng lại đang đứng đầu các bảng xếp hạng.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "Đó là vị trí của chúng ta. Xu hướng lớn khác là khoảng cách giữa mã nguồn mở và mã nguồn đóng. Đây là khoảng cách hẹp nhất từ trước đến nay. DeepSeek V4 Pro và Kimi K 2.6 đang ở rất gần GPT-5.5 trên chỉ số đánh giá trí tuệ chéo. Khoảng cách đó từng rất lớn. Bây giờ nó đã nhỏ lại.",
+      "text_markdown": "Đó là vị trí của chúng ta. Xu hướng lớn khác là khoảng cách giữa mã nguồn mở và mã nguồn đóng. Đây là khoảng cách hẹp nhất từ trước đến nay. DeepSeek V4 Pro và Kimi K 2.6 đang ở rất gần GPT-5.5 trên chỉ số đánh giá trí tuệ chéo. Khoảng cách đó từng rất lớn. Bây giờ nó đã nhỏ lại.",
+      "title": "",
+      "tts": {
+        "text": "Đó là vị trí của chúng ta. Xu hướng lớn khác là khoảng cách giữa mã nguồn mở và mã nguồn đóng. Đây là khoảng cách hẹp nhất từ trước đến nay. DeepSeek V bốn Pro và Kimi K hai phẩy sáu đang ở rất gần GPT năm phẩy năm trên chỉ số đánh giá trí tuệ chéo. Khoảng cách đó từng rất lớn. Bây giờ nó đã nhỏ lại.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Được rồi, hãy cùng tìm hiểu khái niệm của tuần này.",
+      "text_markdown": "Được rồi, hãy cùng tìm hiểu khái niệm của tuần này.",
+      "title": "",
+      "tts": {
+        "text": "Được rồi, hãy cùng tìm hiểu khái niệm của tuần này.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "Ron, khái niệm của tuần này là hỗn hợp chuyên gia. Tại sao chúng ta lại tập trung vào hỗn hợp chuyên gia?",
+      "text_markdown": "Ron, khái niệm của tuần này là hỗn hợp chuyên gia. Tại sao chúng ta lại tập trung vào hỗn hợp chuyên gia?",
+      "title": "",
+      "tts": {
+        "text": "Ron, khái niệm của tuần này là hỗn hợp chuyên gia. Tại sao chúng ta lại tập trung vào hỗn hợp chuyên gia?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "Bởi vì mô hình mã nguồn mở mà chúng ta vừa nói đến, Kimi K 2.6, có tổng cộng 1 nghìn tỷ tham số. Nhưng chỉ có 32 tỷ trong số các tham số đó chạy tại bất kỳ thời điểm nào. Đó chính là hỗn hợp chuyên gia.",
+      "text_markdown": "Bởi vì mô hình mã nguồn mở mà chúng ta vừa nói đến, Kimi K 2.6, có tổng cộng 1 nghìn tỷ tham số. Nhưng chỉ có 32 tỷ trong số các tham số đó chạy tại bất kỳ thời điểm nào. Đó chính là hỗn hợp chuyên gia.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì mô hình mã nguồn mở mà chúng ta vừa nói đến, Kimi K hai phẩy sáu, có tổng cộng một nghìn tỷ tham số. Nhưng chỉ có ba mươi hai tỷ trong số các tham số đó chạy tại bất kỳ thời điểm nào. Đó chính là hỗn hợp chuyên gia.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "Hãy giải thích cho những người đang theo dõi.",
+      "text_markdown": "Hãy giải thích cho những người đang theo dõi.",
+      "title": "",
+      "tts": {
+        "text": "Hãy giải thích cho những người đang theo dõi.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "Một mô hình AI thông thường giống như một bộ não khổng lồ. Mỗi từ nó tạo ra đều sử dụng mọi phần của bộ não. Một mô hình hỗn hợp chuyên gia giống như một tòa nhà đầy các chuyên gia. Với một nhân viên lễ tân ở cửa. Đối với mỗi từ, nhân viên lễ tân chọn hai hoặc ba chuyên gia để tham khảo ý kiến, và phần còn lại của tòa nhà vẫn im lặng.",
+      "text_markdown": "Một mô hình AI thông thường giống như một bộ não khổng lồ. Mỗi từ nó tạo ra đều sử dụng mọi phần của bộ não. Một mô hình hỗn hợp chuyên gia giống như một tòa nhà đầy các chuyên gia. Với một nhân viên lễ tân ở cửa. Đối với mỗi từ, nhân viên lễ tân chọn hai hoặc ba chuyên gia để tham khảo ý kiến, và phần còn lại của tòa nhà vẫn im lặng.",
+      "title": "",
+      "tts": {
+        "text": "Một mô hình AI thông thường giống như một bộ não khổng lồ. Mỗi từ nó tạo ra đều sử dụng mọi phần của bộ não. Một mô hình hỗn hợp chuyên gia giống như một tòa nhà đầy các chuyên gia. Với một nhân viên lễ tân ở cửa. Đối với mỗi từ, nhân viên lễ tân chọn hai hoặc ba chuyên gia để tham khảo ý kiến, và phần còn lại của tòa nhà vẫn im lặng.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "Vậy là mô hình rất lớn trên lý thuyết nhưng lại rẻ để vận hành.",
+      "text_markdown": "Vậy là mô hình rất lớn trên lý thuyết nhưng lại rẻ để vận hành.",
+      "title": "",
+      "tts": {
+        "text": "Vậy là mô hình rất lớn trên lý thuyết nhưng lại rẻ để vận hành.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "Chính xác. 1 nghìn tỷ tham số dung lượng. Nhưng chỉ 32 tỷ tham số tính toán cho mỗi từ. Đó là bí quyết. Nhân viên lễ tân là một đoạn mã nhỏ gọi là bộ định tuyến (router). Các chuyên gia là các mạng con gọi là chuyên gia (experts). Mô hình huấn luyện bộ định tuyến và các chuyên gia cùng nhau, từ đầu đến cuối.",
+      "text_markdown": "Chính xác. 1 nghìn tỷ tham số dung lượng. Nhưng chỉ 32 tỷ tham số tính toán cho mỗi từ. Đó là bí quyết. Nhân viên lễ tân là một đoạn mã nhỏ gọi là bộ định tuyến (router). Các chuyên gia là các mạng con gọi là chuyên gia (experts). Mô hình huấn luyện bộ định tuyến và các chuyên gia cùng nhau, từ đầu đến cuối.",
+      "title": "",
+      "tts": {
+        "text": "Chính xác. Một nghìn tỷ tham số dung lượng. Nhưng chỉ ba mươi hai tỷ tham số tính toán cho mỗi từ. Đó là bí quyết. Nhân viên lễ tân là một đoạn mã nhỏ gọi là bộ định tuyến. Các chuyên gia là các mạng con gọi là chuyên gia. Mô hình huấn luyện bộ định tuyến và các chuyên gia cùng nhau, từ đầu đến cuối.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "Mọi mô hình tiên phong lớn đều đang làm điều này sao?",
+      "text_markdown": "Mọi mô hình tiên phong lớn đều đang làm điều này sao?",
+      "title": "",
+      "tts": {
+        "text": "Mọi mô hình tiên phong lớn đều đang làm điều này sao?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "Hầu hết là vậy, đúng. Mặc dù các phòng thí nghiệm không phải lúc nào cũng xác nhận điều đó. GPT-4 là một mô hình hỗn hợp chuyên gia. Mô hình chủ lực của DeepSeek là một mô hình hỗn hợp chuyên gia. Mistral đã cung cấp các mô hình hỗn hợp chuyên gia từ năm 2023. Làn sóng mới từ Trung Quốc đã đẩy thiết kế này đến giới hạn.",
+      "text_markdown": "Hầu hết là vậy, đúng. Mặc dù các phòng thí nghiệm không phải lúc nào cũng xác nhận điều đó. GPT-4 là một mô hình hỗn hợp chuyên gia. Mô hình chủ lực của DeepSeek là một mô hình hỗn hợp chuyên gia. Mistral đã cung cấp các mô hình hỗn hợp chuyên gia từ năm 2023. Làn sóng mới từ Trung Quốc đã đẩy thiết kế này đến giới hạn.",
+      "title": "",
+      "tts": {
+        "text": "Hầu hết là vậy, đúng. Mặc dù các phòng thí nghiệm không phải lúc nào cũng xác nhận điều đó. GPT bốn là một mô hình hỗn hợp chuyên gia. Mô hình chủ lực của DeepSeek là một mô hình hỗn hợp chuyên gia. Mistral đã cung cấp các mô hình hỗn hợp chuyên gia từ năm hai không hai ba. Làn sóng mới từ Trung Quốc đã đẩy thiết kế này đến giới hạn.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "Tại sao điều đó lại quan trọng đối với người chỉ dùng ChatGPT?",
+      "text_markdown": "Tại sao điều đó lại quan trọng đối với người chỉ dùng ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Tại sao điều đó lại quan trọng đối với người chỉ dùng ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "Hai lý do. Một. Đó là lý do chính khiến một phòng thí nghiệm mã nguồn mở ở Trung Quốc có thể đạt chất lượng hàng đầu với một phần nhỏ ngân sách. Hai. Đó là lý do chính khiến một cuộc gọi API duy nhất chỉ tốn vài xu, chứ không phải đô la. Khi bạn thấy giá giảm và chất lượng vẫn cao, hỗn hợp chuyên gia thường là lý do.",
+      "text_markdown": "Hai lý do. Một. Đó là lý do chính khiến một phòng thí nghiệm mã nguồn mở ở Trung Quốc có thể đạt chất lượng hàng đầu với một phần nhỏ ngân sách. Hai. Đó là lý do chính khiến một cuộc gọi API duy nhất chỉ tốn vài xu, chứ không phải đô la. Khi bạn thấy giá giảm và chất lượng vẫn cao, hỗn hợp chuyên gia thường là lý do.",
+      "title": "",
+      "tts": {
+        "text": "Hai lý do. Một. Đó là lý do chính khiến một phòng thí nghiệm mã nguồn mở ở Trung Quốc có thể đạt chất lượng hàng đầu với một phần nhỏ ngân sách. Hai. Đó là lý do chính khiến một cuộc gọi API duy nhất chỉ tốn vài xu, chứ không phải đô la. Khi bạn thấy giá giảm và chất lượng vẫn cao, hỗn hợp chuyên gia thường là lý do.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "Hỗn hợp chuyên gia. Bộ định tuyến. Chuyên gia. Kích hoạt thưa thớt. Ba từ để bạn ghi nhớ. Bây giờ hãy quay lại bức tranh lớn hơn.",
+      "text_markdown": "Hỗn hợp chuyên gia. Bộ định tuyến. Chuyên gia. Kích hoạt thưa thớt. Ba từ để bạn ghi nhớ. Bây giờ hãy quay lại bức tranh lớn hơn.",
+      "title": "",
+      "tts": {
+        "text": "Hỗn hợp chuyên gia. Bộ định tuyến. Chuyên gia. Kích hoạt thưa thớt. Ba từ để bạn ghi nhớ. Bây giờ hãy quay lại bức tranh lớn hơn.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "Ron, câu chuyện lớn bên ngoài thế giới của chúng ta tuần này là Cục Dự trữ Liên bang.",
+      "text_markdown": "Ron, câu chuyện lớn bên ngoài thế giới của chúng ta tuần này là Cục Dự trữ Liên bang.",
+      "title": "",
+      "tts": {
+        "text": "Ron, câu chuyện lớn bên ngoài thế giới của chúng ta tuần này là Cục Dự trữ Liên bang.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "Hôm nay, Thượng viện Hoa Kỳ đã xác nhận Kevin Warsh là chủ tịch tiếp theo của Cục Dự trữ Liên bang. Cuộc bỏ phiếu là 54 phiếu thuận và 45 phiếu chống. Đây là cuộc bỏ phiếu hẹp nhất cho một chủ tịch Fed trong lịch sử hiện đại của Mỹ. Chỉ có một đảng viên Dân chủ đã bỏ phiếu khác phe.",
+      "text_markdown": "Hôm nay, Thượng viện Hoa Kỳ đã xác nhận Kevin Warsh là chủ tịch tiếp theo của Cục Dự trữ Liên bang. Cuộc bỏ phiếu là 54 phiếu thuận và 45 phiếu chống. Đây là cuộc bỏ phiếu hẹp nhất cho một chủ tịch Fed trong lịch sử hiện đại của Mỹ. Chỉ có một đảng viên Dân chủ đã bỏ phiếu khác phe.",
+      "title": "",
+      "tts": {
+        "text": "Hôm nay, Thượng viện Hoa Kỳ đã xác nhận Kevin Warsh là chủ tịch tiếp theo của Cục Dự trữ Liên bang. Cuộc bỏ phiếu là năm mươi bốn phiếu thuận và bốn mươi lăm phiếu chống. Đây là cuộc bỏ phiếu hẹp nhất cho một chủ tịch Fed trong lịch sử hiện đại của Mỹ. Chỉ có một đảng viên Dân chủ đã bỏ phiếu khác phe.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "Tại sao điều đó lại quan trọng đối với AI?",
+      "text_markdown": "Tại sao điều đó lại quan trọng đối với AI?",
+      "title": "",
+      "tts": {
+        "text": "Tại sao điều đó lại quan trọng đối với AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "Bởi vì việc xây dựng AI hiện tại bị hạn chế bởi hai yếu tố. Điện, và chi phí vốn. Fed đặt ra chi phí vốn. Và chủ tịch mới đã công khai nói rằng ông muốn cắt giảm lãi suất nhanh hơn so với người tiền nhiệm.",
+      "text_markdown": "Bởi vì việc xây dựng AI hiện tại bị hạn chế bởi hai yếu tố. Điện, và chi phí vốn. Fed đặt ra chi phí vốn. Và chủ tịch mới đã công khai nói rằng ông muốn cắt giảm lãi suất nhanh hơn so với người tiền nhiệm.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì việc xây dựng AI hiện tại bị hạn chế bởi hai yếu tố. Điện, và chi phí vốn. Fed đặt ra chi phí vốn. Và chủ tịch mới đã công khai nói rằng ông muốn cắt giảm lãi suất nhanh hơn so với người tiền nhiệm.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "Cắt giảm lãi suất nhanh hơn làm cho đầu tư AI rẻ hơn.",
+      "text_markdown": "Cắt giảm lãi suất nhanh hơn làm cho đầu tư AI rẻ hơn.",
+      "title": "",
+      "tts": {
+        "text": "Cắt giảm lãi suất nhanh hơn làm cho đầu tư AI rẻ hơn.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "Đúng vậy. Các công ty siêu quy mô — Microsoft, Google, Amazon, Meta — đang trên đà chi khoảng 700 tỷ đô la cho chi phí vốn trong năm nay. Phần lớn trong số đó là GPU và trung tâm dữ liệu. Tỷ lệ chiết khấu thấp hơn khiến các dự án xây dựng kéo dài nhiều năm đó có giá trị cao hơn.",
+      "text_markdown": "Đúng vậy. Các công ty siêu quy mô — Microsoft, Google, Amazon, Meta — đang trên đà chi khoảng 700 tỷ đô la cho chi phí vốn trong năm nay. Phần lớn trong số đó là GPU và trung tâm dữ liệu. Tỷ lệ chiết khấu thấp hơn khiến các dự án xây dựng kéo dài nhiều năm đó có giá trị cao hơn.",
+      "title": "",
+      "tts": {
+        "text": "Đúng vậy. Các công ty siêu quy mô — Microsoft, Google, Amazon, Meta — đang trên đà chi khoảng bảy trăm tỷ đô la cho chi phí vốn trong năm nay. Phần lớn trong số đó là GPU và trung tâm dữ liệu. Tỷ lệ chiết khấu thấp hơn khiến các dự án xây dựng kéo dài nhiều năm đó có giá trị cao hơn.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "Và theo hướng khác. AI ảnh hưởng đến những gì Fed phải quyết định như thế nào?",
+      "text_markdown": "Và theo hướng khác. AI ảnh hưởng đến những gì Fed phải quyết định như thế nào?",
+      "title": "",
+      "tts": {
+        "text": "Và theo hướng khác. AI ảnh hưởng đến những gì Fed phải quyết định như thế nào?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "Đây là phần thú vị. Chi tiêu vốn cho AI hiện đủ lớn để trở thành một con số vĩ mô. Không phải là câu chuyện của một ngành. Các nhà phân tích Phố Wall cho biết chi tiêu xây dựng và thiết bị liên quan đến AI đã chiếm phần lớn tăng trưởng kinh tế của Hoa Kỳ trong vài quý vừa qua.",
+      "text_markdown": "Đây là phần thú vị. Chi tiêu vốn cho AI hiện đủ lớn để trở thành một con số vĩ mô. Không phải là câu chuyện của một ngành. Các nhà phân tích Phố Wall cho biết chi tiêu xây dựng và thiết bị liên quan đến AI đã chiếm phần lớn tăng trưởng kinh tế của Hoa Kỳ trong vài quý vừa qua.",
+      "title": "",
+      "tts": {
+        "text": "Đây là phần thú vị. Chi tiêu vốn cho AI hiện đủ lớn để trở thành một con số vĩ mô. Không phải là câu chuyện của một ngành. Các nhà phân tích Phố Wall cho biết chi tiêu xây dựng và thiết bị liên quan đến AI đã chiếm phần lớn tăng trưởng kinh tế của Hoa Kỳ trong vài quý vừa qua.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "Phần lớn tăng trưởng.",
+      "text_markdown": "Phần lớn tăng trưởng.",
+      "title": "",
+      "tts": {
+        "text": "Phần lớn tăng trưởng.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "Phần lớn. Và nó tác động theo hai hướng đối với Fed. Về dài hạn, AI là một động lực tăng năng suất. Điều đó mang tính giảm phát. Nó cho Fed không gian để cắt giảm. Về ngắn hạn, nó là một cú sốc cầu về điện, về đồng, về lao động lành nghề, về nước để làm mát. Điều đó mang tính lạm phát. Đặc biệt ở những nơi như Virginia và Texas, nơi các trung tâm dữ liệu tập trung.",
+      "text_markdown": "Phần lớn. Và nó tác động theo hai hướng đối với Fed. Về dài hạn, AI là một động lực tăng năng suất. Điều đó mang tính giảm phát. Nó cho Fed không gian để cắt giảm. Về ngắn hạn, nó là một cú sốc cầu về điện, về đồng, về lao động lành nghề, về nước để làm mát. Điều đó mang tính lạm phát. Đặc biệt ở những nơi như Virginia và Texas, nơi các trung tâm dữ liệu tập trung.",
+      "title": "",
+      "tts": {
+        "text": "Phần lớn. Và nó tác động theo hai hướng đối với Fed. Về dài hạn, AI là một động lực tăng năng suất. Điều đó mang tính giảm phát. Nó cho Fed không gian để cắt giảm. Về ngắn hạn, nó là một cú sốc cầu về điện, về đồng, về lao động lành nghề, về nước để làm mát. Điều đó mang tính lạm phát. Đặc biệt ở những nơi như Virginia và Texas, nơi các trung tâm dữ liệu tập trung.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "Vậy là chủ tịch mới phải quyết định xem AI là câu trả lời cho lạm phát, hay AI là nguyên nhân gây ra lạm phát.",
+      "text_markdown": "Vậy là chủ tịch mới phải quyết định xem AI là câu trả lời cho lạm phát, hay AI là nguyên nhân gây ra lạm phát.",
+      "title": "",
+      "tts": {
+        "text": "Vậy là chủ tịch mới phải quyết định xem AI là câu trả lời cho lạm phát, hay AI là nguyên nhân gây ra lạm phát.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "Cả hai, đồng thời. Và bất cứ điều gì ông ấy nói trong các bài phát biểu công khai đầu tiên của mình sẽ tác động đến mọi mô hình chi tiêu vốn AI trên Phố Wall.",
+      "text_markdown": "Cả hai, đồng thời. Và bất cứ điều gì ông ấy nói trong các bài phát biểu công khai đầu tiên của mình sẽ tác động đến mọi mô hình chi tiêu vốn AI trên Phố Wall.",
+      "title": "",
+      "tts": {
+        "text": "Cả hai, đồng thời. Và bất cứ điều gì ông ấy nói trong các bài phát biểu công khai đầu tiên của mình sẽ tác động đến mọi mô hình chi tiêu vốn AI trên Phố Wall.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "Microsoft có 80 tỷ đô la đơn đặt hàng đám mây chưa được thực hiện do vấn đề điện năng. Đó có phải là con số chính xác không?",
+      "text_markdown": "Microsoft có 80 tỷ đô la đơn đặt hàng đám mây chưa được thực hiện do vấn đề điện năng. Đó có phải là con số chính xác không?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft có tám mươi tỷ đô la đơn đặt hàng đám mây chưa được thực hiện do vấn đề điện năng. Đó có phải là con số chính xác không?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "Đó là con số mà Microsoft đã báo cáo. Khách hàng Azure đang xếp hàng chờ dung lượng. Nút thắt cổ chai không còn là chip nữa. Đó là lưới điện. Thị trường điện không thể xây dựng công suất mới nhanh như các trung tâm dữ liệu mong muốn.",
+      "text_markdown": "Đó là con số mà Microsoft đã báo cáo. Khách hàng Azure đang xếp hàng chờ dung lượng. Nút thắt cổ chai không còn là chip nữa. Đó là lưới điện. Thị trường điện không thể xây dựng công suất mới nhanh như các trung tâm dữ liệu mong muốn.",
+      "title": "",
+      "tts": {
+        "text": "Đó là con số mà Microsoft đã báo cáo. Khách hàng Azure đang xếp hàng chờ dung lượng. Nút thắt cổ chai không còn là chip nữa. Đó là lưới điện. Thị trường điện không thể xây dựng công suất mới nhanh như các trung tâm dữ liệu mong muốn.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "Khi nào là cuộc họp đầu tiên của Warsh?",
+      "text_markdown": "Khi nào là cuộc họp đầu tiên của Warsh?",
+      "title": "",
+      "tts": {
+        "text": "Khi nào là cuộc họp đầu tiên của Warsh?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "Ngày 16 và 17 tháng 6. Chúng ta sẽ biết nhiều hơn về lộ trình lãi suất sau đó.",
+      "text_markdown": "Ngày 16 và 17 tháng 6. Chúng ta sẽ biết nhiều hơn về lộ trình lãi suất sau đó.",
+      "title": "",
+      "tts": {
+        "text": "Ngày mười sáu và mười bảy tháng sáu. Chúng ta sẽ biết nhiều hơn về lộ trình lãi suất sau đó.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "Điểm dừng tốt. Ron, cảm ơn anh.",
+      "text_markdown": "Điểm dừng tốt. Ron, cảm ơn anh.",
+      "title": "",
+      "tts": {
+        "text": "Điểm dừng tốt. Ron, cảm ơn anh.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Lúc nào cũng được, Vindy.",
+      "text_markdown": "Lúc nào cũng được, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Lúc nào cũng được, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "Đó là AI This Week cho ngày 13 tháng 5 năm 2026. Số mới vào thứ Tư tới. Cho đến lúc đó, hãy bảo trọng.",
+      "text_markdown": "Đó là AI This Week cho ngày 13 tháng 5 năm 2026. Số mới vào thứ Tư tới. Cho đến lúc đó, hãy bảo trọng.",
+      "title": "",
+      "tts": {
+        "text": "Đó là AI This Week cho ngày mười ba tháng năm, hai nghìn không trăm hai mươi sáu. Số mới vào thứ Tư tới. Cho đến lúc đó, hãy bảo trọng.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

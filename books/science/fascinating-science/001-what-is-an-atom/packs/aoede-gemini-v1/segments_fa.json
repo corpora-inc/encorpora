@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "fa",
+  "total_segments": 300,
+  "segments": [
+    {
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "chapter": 1,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p1",
+      "block_type": "heading",
+      "text": "همه چیز از اتم ساخته شده است",
+      "text_markdown": "همه چیز از اتم ساخته شده است",
+      "title": "همه چیز از اتم ساخته شده است"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "به اطراف خود نگاه کنید.",
+      "text_markdown": "به اطراف خود نگاه کنید.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "به اطراف خود نگاه کنید.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "هر چیزی که می‌توانید ببینید از اتم ساخته شده است.",
+      "text_markdown": "هر چیزی که می‌توانید ببینید از اتم ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "هر چیزی که می‌توانید ببینید از اتم ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "هوایی که تنفس می‌کنید از اتم ساخته شده است.",
+      "text_markdown": "هوایی که تنفس می‌کنید از اتم ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "هوایی که تنفس می‌کنید از اتم ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "آبی که می‌نوشید از اتم ساخته شده است.",
+      "text_markdown": "آبی که می‌نوشید از اتم ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "آبی که می‌نوشید از اتم ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "بدن شما از اتم ساخته شده است.",
+      "text_markdown": "بدن شما از اتم ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "بدن شما از اتم ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "text": "زمینی که زیر پای شماست از اتم ساخته شده است.",
+      "text_markdown": "زمینی که زیر پای شماست از اتم ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "زمینی که زیر پای شماست از اتم ساخته شده است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "text": "اتم کوچکترین ذره ماده است که هنوز هویت شیمیایی خود را حفظ می‌کند.",
+      "text_markdown": "اتم کوچکترین ذره ماده است که هنوز هویت شیمیایی خود را حفظ می‌کند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "اتم کوچکترین بخش ماده است که هنوز هویت شیمیایی خود را نگه می‌دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "text": "شما نمی‌توانید یک اتم تنها را با چشمان خود ببینید.",
+      "text_markdown": "شما نمی‌توانید یک اتم تنها را با چشمان خود ببینید.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "شما نمی‌توانید یک اتم تنها را با چشمان خود ببینید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "text": "شما نمی‌توانید یک اتم تنها را با یک میکروسکوپ معمولی ببینید.",
+      "text_markdown": "شما نمی‌توانید یک اتم تنها را با یک میکروسکوپ معمولی ببینید.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "شما نمی‌توانید یک اتم تنها را با یک میکروسکوپ معمولی ببینید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "text": "اتم‌ها اینقدر کوچک هستند.",
+      "text_markdown": "اتم‌ها اینقدر کوچک هستند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "اتم‌ها اینقدر کوچک هستند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "text": "یک دانه شن حدود پنجاه کوئینتیلیون اتم دارد.",
+      "text_markdown": "یک دانه شن حدود پنجاه کوئینتیلیون اتم دارد.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "یک دانه شن حدود پنجاه کوئینتیلیون اتم دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "text": "آن عدد پنجاه است که هجده صفر در پی دارد.",
+      "text_markdown": "آن عدد پنجاه است که هجده صفر در پی دارد.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "آن عدد پنجاه است که هجده صفر در پی دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "text": "تعداد اتم‌ها در یک دانه شن بیشتر از تعداد دانه‌های شن در یک ساحل است.",
+      "text_markdown": "تعداد اتم‌ها در یک دانه شن بیشتر از تعداد دانه‌های شن در یک ساحل است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "تعداد اتم‌ها در یک دانه شن بیشتر از تعداد دانه‌های شن در یک ساحل است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "text": "اتم‌ها بلوک‌های سازنده هر چیزی در دنیای فیزیکی هستند.",
+      "text_markdown": "اتم‌ها بلوک‌های سازنده هر چیزی در دنیای فیزیکی هستند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "اتم‌ها بلوک‌های سازنده هر چیزی در دنیای فیزیکی هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "text": "یک دیوار از آجر ساخته شده است.",
+      "text_markdown": "یک دیوار از آجر ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "یک دیوار از آجر ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "text": "یک جمله از کلمات ساخته شده است.",
+      "text_markdown": "یک جمله از کلمات ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "یک جمله از کلمات ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "text": "جهان از اتم ساخته شده است.",
+      "text_markdown": "جهان از اتم ساخته شده است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "جهان از اتم ساخته شده است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "text": "کلمه اتم از یونان باستان می‌آید.",
+      "text_markdown": "کلمه اتم از یونان باستان می‌آید.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "کلمه اتم از یونان باستان می‌آید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "text": "کلمه یونانی atomos به معنای «غیرقابل برش» است.",
+      "text_markdown": "کلمه یونانی atomos به معنای «غیرقابل برش» است.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "کلمه یونانی atomos به معنای «غیرقابل برش» است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "text": "فیلسوفان یونان باستان فکر می‌کردند اتم‌ها کوچکترین ذرات ممکن ماده هستند.",
+      "text_markdown": "فیلسوفان یونان باستان فکر می‌کردند اتم‌ها کوچکترین ذرات ممکن ماده هستند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "فیلسوفان یونان باستان فکر می‌کردند اتم‌ها کوچکترین ذرات ممکن ماده هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "text": "آن‌ها تقریباً درست می‌گفتند.",
+      "text_markdown": "آن‌ها تقریباً درست می‌گفتند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "آن‌ها تقریباً درست می‌گفتند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "text": "اتم‌ها واقعاً کوچکترین ذرات نیستند، اما کوچکترین واحدهایی هستند که خواص شیمیایی خود را حفظ می‌کنند.",
+      "text_markdown": "اتم‌ها واقعاً کوچکترین ذرات نیستند، اما کوچکترین واحدهایی هستند که خواص شیمیایی خود را حفظ می‌کنند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "اتم‌ها واقعاً کوچکترین ذرات نیستند، اما کوچکترین واحدهایی هستند که خواص شیمیایی خود را حفظ می‌کنند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "text": "اتم‌ها به طرز باورنکردنی بادوام هستند.",
+      "text_markdown": "اتم‌ها به طرز باورنکردنی بادوام هستند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "اتم‌ها به طرز باورنکردنی بادوام هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "text": "اتم‌های بدن شما میلیاردها سال قدمت دارند.",
+      "text_markdown": "اتم‌های بدن شما میلیاردها سال قدمت دارند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "اتم‌های بدن شما میلیاردها سال قدمت دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "text": "برخی از اتم‌های هیدروژن در آبی که امروز نوشیدید، در دقایق اولیه پس از بیگ بنگ ایجاد شدند.",
+      "text_markdown": "برخی از اتم‌های هیدروژن در آبی که امروز نوشیدید، در دقایق اولیه پس از بیگ بنگ ایجاد شدند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "برخی از اتم‌های هیدروژن در آبی که امروز نوشیدید، در دقایق اولیه پس از بیگ بنگ ایجاد شدند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "text": "شما از مواد باستانی ساخته شده‌اید.",
+      "text_markdown": "شما از مواد باستانی ساخته شده‌اید.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "شما از مواد باستانی ساخته شده‌اید.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "اتم‌ها در زندگی عادی هرگز ایجاد یا نابود نمی‌شوند.",
+      "text_markdown": "اتم‌ها در زندگی عادی هرگز ایجاد یا نابود نمی‌شوند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "اتم‌ها در زندگی عادی هرگز ایجاد یا نابود نمی‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "آن‌ها بازآرایی می‌شوند.",
+      "text_markdown": "آن‌ها بازآرایی می‌شوند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "آن‌ها بازآرایی می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "وقتی چوب می‌سوزد، اتم‌ها ناپدید نمی‌شوند.",
+      "text_markdown": "وقتی چوب می‌سوزد، اتم‌ها ناپدید نمی‌شوند.",
+      "title": "همه چیز از اتم ساخته شده است",
+      "tts": {
+        "text": "وقتی چوب می‌سوزد، اتم‌ها ناپدید نمی‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "آنها به دود، خاکستر و گاز بازآرایی می‌شوند.",
+      "text_markdown": "آنها به دود، خاکستر و گاز بازآرایی می‌شوند.",
+      "title": "هر چیزی از اتم‌ها ساخته شده است",
+      "tts": {
+        "text": "آنها به دود، خاکستر و گاز تبدیل می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "وقتی یخ ذوب می‌شود، اتم‌ها ثابت می‌مانند.",
+      "text_markdown": "وقتی یخ ذوب می‌شود، اتم‌ها ثابت می‌مانند.",
+      "title": "هر چیزی از اتم‌ها ساخته شده است",
+      "tts": {
+        "text": "وقتی یخ ذوب می‌شود، اتم‌ها ثابت می‌مانند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "text": "فقط آرایش آنها تغییر می‌کند.",
+      "text_markdown": "فقط آرایش آنها تغییر می‌کند.",
+      "title": "هر چیزی از اتم‌ها ساخته شده است",
+      "tts": {
+        "text": "فقط آرایش آنها تغییر می‌کند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "text": "درک اتم‌ها اساس شیمی است.",
+      "text_markdown": "درک اتم‌ها اساس شیمی است.",
+      "title": "هر چیزی از اتم‌ها ساخته شده است",
+      "tts": {
+        "text": "درک اتم‌ها اساس شیمی است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "text": "شیمی علم چگونگی ترکیب، بازآرایی و تعامل اتم‌ها است.",
+      "text_markdown": "شیمی علم چگونگی ترکیب، بازآرایی و تعامل اتم‌ها است.",
+      "title": "هر چیزی از اتم‌ها ساخته شده است",
+      "tts": {
+        "text": "شیمی علم چگونگی ترکیب، بازآرایی و تعامل اتم‌ها است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "chapter": 1,
+      "part": 0,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "text": "هر اتفاقی که در دنیای فیزیکی می‌افتد به اتم‌ها و کارهایی که انجام می‌دهند، برمی‌گردد.",
+      "text_markdown": "هر اتفاقی که در دنیای فیزیکی می‌افتد به اتم‌ها و کارهایی که انجام می‌دهند، برمی‌گردد.",
+      "title": "هر چیزی از اتم‌ها ساخته شده است",
+      "tts": {
+        "text": "هر اتفاقی که در دنیای فیزیکی می‌افتد به اتم‌ها و کارهایی که انجام می‌دهند، برمی‌گردد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "chapter": 2,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p10",
+      "block_type": "heading",
+      "text": "درون اتم",
+      "text_markdown": "درون اتم",
+      "title": "درون اتم"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "یک اتم سه نوع ذره در درون خود دارد.",
+      "text_markdown": "یک اتم سه نوع ذره در درون خود دارد.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "یک اتم سه نوع ذره در درون خود دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "پروتون‌ها.",
+      "text_markdown": "پروتون‌ها.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "پروتون‌ها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "نوترون‌ها.",
+      "text_markdown": "نوترون‌ها.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "نوترون‌ها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "الکترون‌ها.",
+      "text_markdown": "الکترون‌ها.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "الکترون‌ها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "text": "این سه ذره هر اتمی را در جهان تشکیل می‌دهند.",
+      "text_markdown": "این سه ذره هر اتمی را در جهان تشکیل می‌دهند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "این سه ذره هر اتمی را در جهان تشکیل می‌دهند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "مرکز اتم هسته نامیده می‌شود.",
+      "text_markdown": "مرکز اتم هسته نامیده می‌شود.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "مرکز اتم هسته نامیده می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "هسته حاوی پروتون‌ها و نوترون‌ها است.",
+      "text_markdown": "هسته حاوی پروتون‌ها و نوترون‌ها است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "هسته حاوی پروتون‌ها و نوترون‌ها است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "هسته در مقایسه با کل اتم بسیار کوچک است.",
+      "text_markdown": "هسته در مقایسه با کل اتم بسیار کوچک است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "هسته در مقایسه با کل اتم بسیار کوچک به نظر می‌رسد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "text": "اگر اتم به اندازه یک استادیوم فوتبال بود، هسته به اندازه یک تیله روی خط پنجاه یارد می‌شد.",
+      "text_markdown": "اگر اتم به اندازه یک استادیوم فوتبال بود، هسته به اندازه یک تیله روی خط پنجاه یارد می‌شد.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "اگر اتم به اندازه یک استادیوم فوتبال بود، هسته به اندازه یک تیله روی خط پنجاه یارد می‌شد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "پروتون‌ها بار الکتریکی مثبت دارند.",
+      "text_markdown": "پروتون‌ها بار الکتریکی مثبت دارند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "پروتون‌ها بار الکتریکی مثبت دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "هر پروتون مقدار یکسانی بار مثبت دارد.",
+      "text_markdown": "هر پروتون مقدار یکسانی بار مثبت دارد.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "هر پروتون مقدار یکسانی بار مثبت دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "تعداد پروتون‌ها در یک اتم تعیین می‌کند که آن اتم چه عنصری است.",
+      "text_markdown": "تعداد پروتون‌ها در یک اتم تعیین می‌کند که آن اتم چه عنصری است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "تعداد پروتون‌ها در یک اتم تعیین می‌کند که آن اتم چه عنصری است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "یک پروتون به معنای هیدروژن است.",
+      "text_markdown": "یک پروتون به معنای هیدروژن است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "یک پروتون به معنای هیدروژن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "شش پروتون به معنای کربن است.",
+      "text_markdown": "شش پروتون به معنای کربن است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "شش پروتون به معنای کربن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "بیست و شش پروتون به معنای آهن است.",
+      "text_markdown": "بیست و شش پروتون به معنای آهن است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "بیست و شش پروتون به معنای آهن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "text": "تعداد پروتون‌ها مهم‌ترین واقعیت درباره یک اتم است.",
+      "text_markdown": "تعداد پروتون‌ها مهم‌ترین واقعیت درباره یک اتم است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "تعداد پروتون‌ها مهم‌ترین واقعیت درباره یک اتم است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "نوترون‌ها بار الکتریکی ندارند.",
+      "text_markdown": "نوترون‌ها بار الکتریکی ندارند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "نوترون‌ها بار الکتریکی ندارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "نوترون‌ها خنثی هستند.",
+      "text_markdown": "نوترون‌ها خنثی هستند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "نوترون‌ها خنثی هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "نوترون‌ها در هسته کنار پروتون‌ها قرار می‌گیرند.",
+      "text_markdown": "نوترون‌ها در هسته کنار پروتون‌ها قرار می‌گیرند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "نوترون‌ها در هسته کنار پروتون‌ها قرار می‌گیرند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "نوترون‌ها به نگه داشتن هسته در کنار هم کمک می‌کنند.",
+      "text_markdown": "نوترون‌ها به نگه داشتن هسته در کنار هم کمک می‌کنند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "نوترون‌ها به نگه داشتن هسته در کنار هم کمک می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "text": "بدون نوترون‌ها، پروتون‌ها یکدیگر را از هم دور می‌کردند زیرا همه آنها بار مثبت یکسانی دارند.",
+      "text_markdown": "بدون نوترون‌ها، پروتون‌ها یکدیگر را از هم دور می‌کردند زیرا همه آنها بار مثبت یکسانی دارند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "بدون نوترون‌ها، پروتون‌ها یکدیگر را از هم دور می‌کردند زیرا همه آنها بار مثبت یکسانی دارند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "الکترون‌ها بار الکتریکی منفی دارند.",
+      "text_markdown": "الکترون‌ها بار الکتریکی منفی دارند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "الکترون‌ها بار الکتریکی منفی دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "الکترون‌ها در یک ابر به دور هسته حرکت می‌کنند.",
+      "text_markdown": "الکترون‌ها در یک ابر به دور هسته حرکت می‌کنند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "الکترون‌ها در یک ابر به دور هسته حرکت می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "آنها مانند سیارات به دور خورشید نمی‌چرخند.",
+      "text_markdown": "آنها مانند سیارات به دور خورشید نمی‌چرخند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "آنها مانند سیارات به دور خورشید نمی‌چرخند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "آنها در یک منطقه مبهم از احتمال در اطراف هسته وجود دارند.",
+      "text_markdown": "آنها در یک منطقه مبهم از احتمال در اطراف هسته وجود دارند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "آنها در یک منطقه مبهم از احتمال در اطراف هسته وجود دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "text": "ابر الکترونی جایی است که به احتمال زیاد در هر لحظه یک الکترون را پیدا می‌کنید.",
+      "text_markdown": "ابر الکترونی جایی است که به احتمال زیاد در هر لحظه یک الکترون را پیدا می‌کنید.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "ابر الکترونی جایی است که به احتمال زیاد در هر لحظه یک الکترون را پیدا می‌کنید.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "text": "یک الکترون در مقایسه با پروتون یا نوترون تقریباً جرمی ندارد.",
+      "text_markdown": "یک الکترون در مقایسه با پروتون یا نوترون تقریباً جرمی ندارد.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "یک الکترون در مقایسه با پروتون یا نوترون تقریباً جرمی ندارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "text": "یک پروتون حدود 1,836 برابر سنگین‌تر از یک الکترون است.",
+      "text_markdown": "یک پروتون حدود 1,836 برابر سنگین‌تر از یک الکترون است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "یک پروتون حدود هزار و هشتصد و سی و شش برابر سنگین‌تر از یک الکترون است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "text": "تقریباً تمام جرم یک اتم در هسته آن است.",
+      "text_markdown": "تقریباً تمام جرم یک اتم در هسته آن است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "تقریباً تمام جرم یک اتم در هسته آن است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "text": "در یک اتم خنثی، تعداد الکترون‌ها برابر با تعداد پروتون‌ها است.",
+      "text_markdown": "در یک اتم خنثی، تعداد الکترون‌ها برابر با تعداد پروتون‌ها است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "در یک اتم خنثی، تعداد الکترون‌ها برابر با تعداد پروتون‌ها است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "text": "بارهای مثبت و بارهای منفی یکدیگر را خنثی می‌کنند.",
+      "text_markdown": "بارهای مثبت و بارهای منفی یکدیگر را خنثی می‌کنند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "بارهای مثبت و بارهای منفی یکدیگر را خنثی می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "text": "اتم هیچ بار کلی ندارد.",
+      "text_markdown": "اتم هیچ بار کلی ندارد.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "اتم هیچ بار کلی ندارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "text": "این تعادل حالت پیش‌فرض یک اتم است.",
+      "text_markdown": "این تعادل حالت پیش‌فرض یک اتم است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "این تعادل حالت پیش‌فرض یک اتم است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "بیشتر یک اتم فضای خالی است.",
+      "text_markdown": "بیشتر یک اتم فضای خالی است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "بیشتر یک اتم فضای خالی است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "هسته چگال و بسیار کوچک است.",
+      "text_markdown": "هسته چگال و بسیار کوچک است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "هسته چگال و بسیار کوچک است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "ابر الکترونی بزرگ و عمدتاً هیچ است.",
+      "text_markdown": "ابر الکترونی بزرگ و عمدتاً هیچ است.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "ابر الکترونی بزرگ و عمدتاً هیچ است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "اگر می‌توانستید تمام فضای خالی را از هر اتم در بدن خود حذف کنید، به اندازه‌ای کوچک‌تر از یک دانه نمک کوچک می‌شدید.",
+      "text_markdown": "اگر می‌توانستید تمام فضای خالی را از هر اتم در بدن خود حذف کنید، به اندازه‌ای کوچک‌تر از یک دانه نمک کوچک می‌شدید.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "اگر تمام فضای خالی اتم‌های بدن شما حذف می‌شد، از یک دانه نمک هم کوچک‌تر می‌شدید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "جرم شما ثابت می‌ماند.",
+      "text_markdown": "جرم شما ثابت می‌ماند.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "جرم شما ثابت می‌ماند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "chapter": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "text": "فقط به طرز باورنکردنی چگال می‌شدید.",
+      "text_markdown": "فقط به طرز باورنکردنی چگال می‌شدید.",
+      "title": "درون اتم",
+      "tts": {
+        "text": "فقط به طرز باورنکردنی چگال می‌شدید.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "chapter": 3,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p19",
+      "block_type": "heading",
+      "text": "عناصر",
+      "text_markdown": "عناصر",
+      "title": "عناصر"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "text": "یک عنصر ماده‌ای است که فقط از یک نوع اتم ساخته شده است.",
+      "text_markdown": "یک عنصر ماده‌ای است که فقط از یک نوع اتم ساخته شده است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "یک عنصر ماده‌ای است که فقط از یک نوع اتم ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "text": "طلای خالص یک عنصر است.",
+      "text_markdown": "طلای خالص یک عنصر است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "طلای خالص یک عنصر است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "text": "هر اتم در یک شمش طلای خالص هفتاد و نه پروتون دارد.",
+      "text_markdown": "هر اتم در یک شمش طلای خالص هفتاد و نه پروتون دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هر اتم در یک شمش طلای خالص هفتاد و نه پروتون دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "text": "اکسیژن خالص یک عنصر است.",
+      "text_markdown": "اکسیژن خالص یک عنصر است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "اکسیژن خالص یک عنصر است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "text": "هر اتم در یک مخزن اکسیژن خالص هشت پروتون دارد.",
+      "text_markdown": "هر اتم در یک مخزن اکسیژن خالص هشت پروتون دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هر اتم در یک مخزن اکسیژن خالص هشت پروتون دارد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "text": "حدود نود و دو عنصر به طور طبیعی روی زمین یافت می‌شوند.",
+      "text_markdown": "حدود نود و دو عنصر به طور طبیعی روی زمین یافت می‌شوند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "حدود نود و دو عنصر به طور طبیعی روی زمین یافت می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "text": "دانشمندان عناصر اضافی را در آزمایشگاه‌ها ایجاد کرده‌اند.",
+      "text_markdown": "دانشمندان عناصر اضافی را در آزمایشگاه‌ها ایجاد کرده‌اند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "دانشمندان عناصر اضافی را در آزمایشگاه‌ها ایجاد کرده‌اند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "text": "تعداد کل عناصر شناخته شده بیش از صد و هجده است.",
+      "text_markdown": "تعداد کل عناصر شناخته شده بیش از صد و هجده است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "تعداد کل عناصر شناخته شده بیش از صد و هجده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "text": "هر عنصر تعداد منحصر به فردی از پروتون‌ها دارد.",
+      "text_markdown": "هر عنصر تعداد منحصر به فردی از پروتون‌ها دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هر عنصر تعداد منحصر به فردی از پروتون‌ها دارد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "هر عنصر یک نام و یک نماد دارد.",
+      "text_markdown": "هر عنصر یک نام و یک نماد دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هر عنصر یک نام و یک نماد دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "هیدروژن H است. اکسیژن O است. کربن C است. آهن Fe است.",
+      "text_markdown": "هیدروژن H است. اکسیژن O است. کربن C است. آهن Fe است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هیدروژن اِیچ است. اکسیژن اُو است. کربن سی است. آهن اِف ای است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "طلا Au است.",
+      "text_markdown": "طلا Au است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "طلا اِی یو است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "این نمادها از نام‌های لاتین، یونانی یا انگلیسی گرفته شده‌اند.",
+      "text_markdown": "این نمادها از نام‌های لاتین، یونانی یا انگلیسی گرفته شده‌اند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "این نمادها از نام‌های لاتین، یونانی یا انگلیسی گرفته شده‌اند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "Fe از کلمه لاتین ferrum می‌آید.",
+      "text_markdown": "Fe از کلمه لاتین ferrum می‌آید.",
+      "title": "عناصر",
+      "tts": {
+        "text": "اف ای از کلمه لاتین ferrum می‌آید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "text": "Au از کلمه لاتین aurum می‌آید.",
+      "text_markdown": "Au از کلمه لاتین aurum می‌آید.",
+      "title": "عناصر",
+      "tts": {
+        "text": "ای یو از کلمه لاتین aurum می‌آید.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "text": "هیدروژن ساده‌ترین عنصر است.",
+      "text_markdown": "هیدروژن ساده‌ترین عنصر است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هیدروژن ساده‌ترین عنصر است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "text": "یک اتم هیدروژن یک پروتون و یک الکترون دارد.",
+      "text_markdown": "یک اتم هیدروژن یک پروتون و یک الکترون دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "یک اتم هیدروژن یک پروتون و یک الکترون دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "text": "هیدروژن رایج‌ترین عنصر در جهان است.",
+      "text_markdown": "هیدروژن رایج‌ترین عنصر در جهان است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هیدروژن رایج‌ترین عنصر در جهان است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "text": "ستارگان عمدتاً از هیدروژن ساخته شده‌اند.",
+      "text_markdown": "ستارگان عمدتاً از هیدروژن ساخته شده‌اند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "ستارگان عمدتاً از هیدروژن ساخته شده‌اند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "کربن عنصر حیات است.",
+      "text_markdown": "کربن عنصر حیات است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "کربن عنصر حیات است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "کربن شش پروتون دارد.",
+      "text_markdown": "کربن شش پروتون دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "کربن شش پروتون دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "اتم‌های کربن می‌توانند همزمان با بسیاری از اتم‌های دیگر پیوند تشکیل دهند.",
+      "text_markdown": "اتم‌های کربن می‌توانند همزمان با بسیاری از اتم‌های دیگر پیوند تشکیل دهند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "اتم‌های کربن می‌توانند همزمان با بسیاری از اتم‌های دیگر پیوند تشکیل دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "این توانایی کربن را به ستون فقرات همه موجودات زنده تبدیل می‌کند.",
+      "text_markdown": "این توانایی کربن را به ستون فقرات همه موجودات زنده تبدیل می‌کند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "این توانایی کربن را به ستون فقرات همه موجودات زنده تبدیل می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "text": "هر پروتئین، هر رشته DNA و هر مولکول قند در بدن شما حاوی کربن است.",
+      "text_markdown": "هر پروتئین، هر رشته DNA و هر مولکول قند در بدن شما حاوی کربن است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هر پروتئین، هر رشته DNA و هر مولکول قند در بدن شما حاوی کربن است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "text": "اکسیژن هشت پروتون دارد.",
+      "text_markdown": "اکسیژن هشت پروتون دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "اکسیژن هشت پروتون دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "text": "اکسیژن عنصری است که شما تنفس می‌کنید.",
+      "text_markdown": "اکسیژن عنصری است که شما تنفس می‌کنید.",
+      "title": "عناصر",
+      "tts": {
+        "text": "اکسیژن عنصری است که شما تنفس می‌کنید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "text": "ریه‌های شما اکسیژن را از هوا بیرون کشیده و به خون شما می‌فرستند.",
+      "text_markdown": "ریه‌های شما اکسیژن را از هوا بیرون کشیده و به خون شما می‌فرستند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "ریه‌های شما اکسیژن را از هوا بیرون کشیده و به خون شما می‌فرستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "text": "سلول‌های شما از اکسیژن برای آزاد کردن انرژی از غذا استفاده می‌کنند.",
+      "text_markdown": "سلول‌های شما از اکسیژن برای آزاد کردن انرژی از غذا استفاده می‌کنند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "سلول‌های شما از اکسیژن برای آزاد کردن انرژی از غذا استفاده می‌کنند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "آهن بیست و شش پروتون دارد.",
+      "text_markdown": "آهن بیست و شش پروتون دارد.",
+      "title": "عناصر",
+      "tts": {
+        "text": "آهن بیست و شش پروتون دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "آهن عنصری است که خون شما را قرمز می‌کند.",
+      "text_markdown": "آهن عنصری است که خون شما را قرمز می‌کند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "آهن عنصری است که خون شما را قرمز می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "آهن ماده اصلی در فولاد است.",
+      "text_markdown": "آهن ماده اصلی در فولاد است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "آهن ماده اصلی در فولاد است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "text": "هسته زمین عمدتاً از آهن تشکیل شده است.",
+      "text_markdown": "هسته زمین عمدتاً از آهن تشکیل شده است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هسته زمین عمدتاً از آهن تشکیل شده است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "سبک‌ترین عناصر رایج‌ترین‌ها در جهان هستند.",
+      "text_markdown": "سبک‌ترین عناصر رایج‌ترین‌ها در جهان هستند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "سبک‌ترین عناصر رایج‌ترین‌ها در جهان هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "هیدروژن و هلیوم با هم حدود نود و هشت درصد از تمام اتم‌های جهان را تشکیل می‌دهند.",
+      "text_markdown": "هیدروژن و هلیوم با هم حدود نود و هشت درصد از تمام اتم‌های جهان را تشکیل می‌دهند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هیدروژن و هلیوم با هم حدود نود و هشت درصد از تمام اتم‌های جهان را تشکیل می‌دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "عناصر سنگین‌تر در مقایسه نادر هستند.",
+      "text_markdown": "عناصر سنگین‌تر در مقایسه نادر هستند.",
+      "title": "عناصر",
+      "tts": {
+        "text": "عناصر سنگین‌تر در مقایسه نادر هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "chapter": 3,
+      "part": 0,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "text": "هر اتم از هر عنصر سنگین در داخل یک ستاره شکل گرفته است.",
+      "text_markdown": "هر اتم از هر عنصر سنگین در داخل یک ستاره شکل گرفته است.",
+      "title": "عناصر",
+      "tts": {
+        "text": "هر اتم از هر عنصر سنگین در داخل یک ستاره شکل گرفته است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "chapter": 4,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p28",
+      "block_type": "heading",
+      "text": "جدول تناوبی",
+      "text_markdown": "جدول تناوبی",
+      "title": "جدول تناوبی"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "جدول تناوبی نموداری است که هر عنصر شناخته شده را سازماندهی می‌کند.",
+      "text_markdown": "جدول تناوبی نموداری است که هر عنصر شناخته شده را سازماندهی می‌کند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "جدول تناوبی نموداری است که هر عنصر شناخته شده را سازماندهی می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "این جدول عناصر را بر اساس تعداد پروتون‌هایشان، از کوچکترین تا بزرگترین، مرتب می‌کند.",
+      "text_markdown": "این جدول عناصر را بر اساس تعداد پروتون‌هایشان، از کوچکترین تا بزرگترین، مرتب می‌کند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "این جدول عناصر را بر اساس تعداد پروتون‌هایشان، از کوچکترین تا بزرگترین، مرتب می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "هیدروژن با یک پروتون در جایگاه اول است.",
+      "text_markdown": "هیدروژن با یک پروتون در جایگاه اول است.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "هیدروژن با یک پروتون در جایگاه اول است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "هلیوم با دو پروتون در جایگاه دوم است.",
+      "text_markdown": "هلیوم با دو پروتون در جایگاه دوم است.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "هلیوم با دو پروتون در جایگاه دوم است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "text": "این جدول تا اوگانسون با صد و هجده پروتون ادامه می‌یابد.",
+      "text_markdown": "این جدول تا اوگانسون با صد و هجده پروتون ادامه می‌یابد.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "این جدول تا اوگانسون با صد و هجده پروتون ادامه می‌یابد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "جدول تناوبی دارای ردیف‌ها و ستون‌ها است.",
+      "text_markdown": "جدول تناوبی دارای ردیف‌ها و ستون‌ها است.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "جدول تناوبی دارای ردیف‌ها و ستون‌ها است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "به ردیف‌ها تناوب گفته می‌شود.",
+      "text_markdown": "به ردیف‌ها تناوب گفته می‌شود.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "به ردیف‌ها تناوب گفته می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "به ستون‌ها گروه گفته می‌شود.",
+      "text_markdown": "به ستون‌ها گروه گفته می‌شود.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "به ستون‌ها گروه گفته می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "عناصر در یک گروه مشابه، خواص یکسانی دارند.",
+      "text_markdown": "عناصر در یک گروه مشابه، خواص یکسانی دارند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "عناصر در یک گروه مشابه، خواص یکسانی دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "به همین دلیل است که این جدول تناوبی نامیده می‌شود.",
+      "text_markdown": "به همین دلیل است که این جدول تناوبی نامیده می‌شود.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "به همین دلیل است که این جدول تناوبی نامیده می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "text": "خواص در یک الگوی منظم تکرار می‌شوند.",
+      "text_markdown": "خواص در یک الگوی منظم تکرار می‌شوند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "خواص در یک الگوی منظم تکرار می‌شوند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "عناصر سمت چپ جدول فلزات هستند.",
+      "text_markdown": "عناصر سمت چپ جدول فلزات هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "عناصر سمت چپ جدول فلزات هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "بیشتر عناصر فلز هستند.",
+      "text_markdown": "بیشتر عناصر فلز هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "بیشتر عناصر فلز هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "فلزات براق هستند.",
+      "text_markdown": "فلزات براق هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "فلزات براق هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "فلزات رسانای الکتریسیته هستند.",
+      "text_markdown": "فلزات رسانای الکتریسیته هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "فلزات رسانای الکتریسیته هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "فلزات رسانای گرما هستند.",
+      "text_markdown": "فلزات رسانای گرما هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "فلزات رسانای گرما هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "text": "آهن، مس، طلا و آلومینیوم همگی فلز هستند.",
+      "text_markdown": "آهن، مس، طلا و آلومینیوم همگی فلز هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "آهن، مس، طلا و آلومینیوم همگی فلز هستند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "text": "عناصر سمت راست جدول نافلزات هستند.",
+      "text_markdown": "عناصر سمت راست جدول نافلزات هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "عناصر سمت راست جدول نافلزات هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "text": "نافلزات شامل اکسیژن، نیتروژن، کربن و گوگرد هستند.",
+      "text_markdown": "نافلزات شامل اکسیژن، نیتروژن، کربن و گوگرد هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "نافلزات شامل اکسیژن، نیتروژن، کربن و گوگرد هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "text": "نافلزات رسانای خوب الکتریسیته نیستند.",
+      "text_markdown": "نافلزات رسانای خوب الکتریسیته نیستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "نافلزات رسانای خوب الکتریسیته نیستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "text": "نافلزات عناصری هستند که هوا، آب و موجودات زنده را تشکیل می‌دهند.",
+      "text_markdown": "نافلزات عناصری هستند که هوا، آب و موجودات زنده را تشکیل می‌دهند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "نافلزات عناصری هستند که هوا، آب و موجودات زنده را تشکیل می‌دهند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "تعداد کمی از عناصر در مرز بین فلزات و نافلزات قرار دارند.",
+      "text_markdown": "تعداد کمی از عناصر در مرز بین فلزات و نافلزات قرار دارند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "تعداد کمی از عناصر در مرز بین فلزات و نافلزات قرار دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "این عناصر شبه‌فلز نامیده می‌شوند.",
+      "text_markdown": "این عناصر شبه‌فلز نامیده می‌شوند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "این عناصر شبه‌فلز نامیده می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "سیلیکون یک شبه‌فلز است.",
+      "text_markdown": "سیلیکون یک شبه‌فلز است.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "سیلیکون یک شبه‌فلز است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "سیلیکون کمی الکتریسیته را رسانا است، اما نه به خوبی یک فلز.",
+      "text_markdown": "سیلیکون کمی الکتریسیته را رسانا است، اما نه به خوبی یک فلز.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "سیلیکون کمی الکتریسیته را رسانا است، اما نه به خوبی یک فلز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "text": "این خاصیت سیلیکون را در تراشه‌های کامپیوتری مفید می‌سازد.",
+      "text_markdown": "این خاصیت سیلیکون را در تراشه‌های کامپیوتری مفید می‌سازد.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "این خاصیت سیلیکون را در تراشه‌های کامپیوتری مفید می‌سازد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "گازهای نجیب در آخرین ستون سمت راست قرار دارند.",
+      "text_markdown": "گازهای نجیب در آخرین ستون سمت راست قرار دارند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "گازهای نجیب در آخرین ستون سمت راست قرار دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "هلیوم، نئون، آرگون، کریپتون، زنون و رادون گازهای نجیب هستند.",
+      "text_markdown": "هلیوم، نئون، آرگون، کریپتون، زنون و رادون گازهای نجیب هستند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "هلیوم، نئون، آرگون، کریپتون، زنون و رادون گازهای نجیب هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "گازهای نجیب تقریباً هرگز با عناصر دیگر واکنش نمی‌دهند.",
+      "text_markdown": "گازهای نجیب تقریباً هرگز با عناصر دیگر واکنش نمی‌دهند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "گازهای نجیب تقریباً هرگز با عناصر دیگر واکنش نمی‌دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "آرایش الکترونی آنها از قبل پایدار است.",
+      "text_markdown": "آرایش الکترونی آنها از قبل پایدار است.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "آرایش الکترونی آنها از قبل پایدار است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "text": "آنها نیازی به تشکیل پیوند ندارند.",
+      "text_markdown": "آنها نیازی به تشکیل پیوند ندارند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "آنها نیازی به تشکیل پیوند ندارند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "یک دانشمند روسی به نام دیمیتری مندلیف اولین جدول تناوبی را در سال ۱۸۶۹ ایجاد کرد.",
+      "text_markdown": "یک دانشمند روسی به نام دیمیتری مندلیف اولین جدول تناوبی را در سال ۱۸۶۹ ایجاد کرد.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "یک دانشمند روسی به نام دیمیتری مندلیف اولین جدول تناوبی را در سال هزار و هشتصد و شصت و نه ایجاد کرد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "مندلیف عناصر را بر اساس خواصشان مرتب کرد و متوجه الگوی تکرارشونده شد.",
+      "text_markdown": "مندلیف عناصر را بر اساس خواصشان مرتب کرد و متوجه الگوی تکرارشونده شد.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "مندلیف عناصر را بر پایه خواصشان چید و الگوی تکرارشونده را دید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "او در جدول خود جاهایی را خالی گذاشت که پیش‌بینی می‌کرد عناصر ناشناخته باید در آنجا باشند.",
+      "text_markdown": "او در جدول خود جاهایی را خالی گذاشت که پیش‌بینی می‌کرد عناصر ناشناخته باید در آنجا باشند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "او در جدول خود جاهای خالی گذاشت، چون پیش‌بینی می‌کرد عناصر ناشناخته آنجا قرار بگیرند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "دانشمندان بعدها آن عناصر را کشف کردند.",
+      "text_markdown": "دانشمندان بعدها آن عناصر را کشف کردند.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "دانشمندان بعدها آن عناصر را کشف کردند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "text": "هر پیش‌بینی درست بود.",
+      "text_markdown": "هر پیش‌بینی درست بود.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "هر پیش‌بینی درست بود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p36",
+      "block_type": "text",
+      "text": "جدول تناوبی یکی از قدرتمندترین ابزارهای علم است.",
+      "text_markdown": "جدول تناوبی یکی از قدرتمندترین ابزارهای علم است.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "جدول تناوبی یکی از قدرتمندترین ابزارهای علم است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "chapter": 4,
+      "part": 0,
+      "paragraph_id": "p36",
+      "block_type": "text",
+      "text": "اگر بدانید یک عنصر در کجای جدول قرار دارد، می‌توانید رفتار آن را پیش‌بینی کنید.",
+      "text_markdown": "اگر بدانید یک عنصر در کجای جدول قرار دارد، می‌توانید رفتار آن را پیش‌بینی کنید.",
+      "title": "جدول تناوبی",
+      "tts": {
+        "text": "اگر بدانید یک عنصر در کجای جدول قرار دارد، می‌توانید رفتار آن را پیش‌بینی کنید.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "chapter": 5,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p37",
+      "block_type": "heading",
+      "text": "چگونه اتم‌ها پیوند می‌خورند",
+      "text_markdown": "چگونه اتم‌ها پیوند می‌خورند",
+      "title": "چگونه اتم‌ها پیوند می‌خورند"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "اتم‌ها به ندرت به تنهایی وجود دارند.",
+      "text_markdown": "اتم‌ها به ندرت به تنهایی وجود دارند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "اتم‌ها به ندرت به تنهایی وجود دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "بیشتر اتم‌ها با اتم‌های دیگر پیوند می‌خورند تا مولکول تشکیل دهند.",
+      "text_markdown": "بیشتر اتم‌ها با اتم‌های دیگر پیوند می‌خورند تا مولکول تشکیل دهند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "بیشتر اتم‌ها با اتم‌های دیگر پیوند می‌خورند تا مولکول تشکیل دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "مولکول گروهی از اتم‌هاست که توسط پیوندهای شیمیایی به هم متصل شده‌اند.",
+      "text_markdown": "مولکول گروهی از اتم‌هاست که توسط پیوندهای شیمیایی به هم متصل شده‌اند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "مولکول گروهی از اتم‌هاست که توسط پیوندهای شیمیایی به هم متصل شده‌اند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "آب یک مولکول است.",
+      "text_markdown": "آب یک مولکول است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "آب یک مولکول است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "گاز اکسیژن یک مولکول است.",
+      "text_markdown": "گاز اکسیژن یک مولکول است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "گاز اکسیژن یک مولکول است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "text": "شکر یک مولکول است.",
+      "text_markdown": "شکر یک مولکول است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "شکر یک مولکول است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "اتم‌ها به دلیل الکترون‌هایشان پیوند می‌خورند.",
+      "text_markdown": "اتم‌ها به دلیل الکترون‌هایشان پیوند می‌خورند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "اتم‌ها به دلیل الکترون‌هایشان پیوند می‌خورند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "الکترون‌های موجود در بیرونی‌ترین لایه یک اتم تعیین می‌کنند که آن اتم چگونه با اتم‌های دیگر برهم‌کنش می‌کند.",
+      "text_markdown": "الکترون‌های موجود در بیرونی‌ترین لایه یک اتم تعیین می‌کنند که آن اتم چگونه با اتم‌های دیگر برهم‌کنش می‌کند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "الکترون‌های موجود در بیرونی‌ترین لایه یک اتم تعیین می‌کنند که آن اتم چگونه با اتم‌های دیگر برهم‌کنش می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "این الکترون‌های بیرونی، الکترون‌های ظرفیت نامیده می‌شوند.",
+      "text_markdown": "این الکترون‌های بیرونی، الکترون‌های ظرفیت نامیده می‌شوند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "این الکترون‌های بیرونی، الکترون‌های ظرفیت نامیده می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "اتمی که لایه بیرونی آن کامل است، پایدار است.",
+      "text_markdown": "اتمی که لایه بیرونی آن کامل است، پایدار است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "اتمی که لایه بیرونی آن کامل است، پایدار است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "text": "اتمی که لایه بیرونی آن کامل نیست، به دنبال پر کردن آن خواهد بود.",
+      "text_markdown": "اتمی که لایه بیرونی آن کامل نیست، به دنبال پر کردن آن خواهد بود.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "اتمی که لایه بیرونی آن کامل نیست، به دنبال پر کردن آن خواهد بود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "text": "دو نوع اصلی پیوند شیمیایی وجود دارد.",
+      "text_markdown": "دو نوع اصلی پیوند شیمیایی وجود دارد.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "دو نوع اصلی پیوند شیمیایی وجود دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "text": "پیوندهای کووالانسی و پیوندهای یونی.",
+      "text_markdown": "پیوندهای کووالانسی و پیوندهای یونی.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "پیوندهای کووالانسی و پیوندهای یونی.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "در یک پیوند کووالانسی، دو اتم الکترون‌ها را به اشتراک می‌گذارند.",
+      "text_markdown": "در یک پیوند کووالانسی، دو اتم الکترون‌ها را به اشتراک می‌گذارند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "در یک پیوند کووالانسی، دو اتم الکترون‌ها را به اشتراک می‌گذارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "هر دو اتم الکترون‌ها را به یک جفت مشترک اهدا می‌کنند.",
+      "text_markdown": "هر دو اتم الکترون‌ها را به یک جفت مشترک اهدا می‌کنند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "هر دو اتم الکترون‌ها را به یک جفت مشترک اهدا می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "الکترون‌های مشترک به دور هر دو هسته می‌چرخند.",
+      "text_markdown": "الکترون‌های مشترک به دور هر دو هسته می‌چرخند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "الکترون‌های مشترک به دور هر دو هسته می‌چرخند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "این اشتراک، اتم‌ها را در کنار هم نگه می‌دارد.",
+      "text_markdown": "این اشتراک، اتم‌ها را در کنار هم نگه می‌دارد.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "این اشتراک، اتم‌ها را در کنار هم نگه می‌دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "آب توسط پیوندهای کووالانسی به هم متصل شده است.",
+      "text_markdown": "آب توسط پیوندهای کووالانسی به هم متصل شده است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "آب توسط پیوندهای کووالانسی به هم متصل شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "text": "هر اتم هیدروژن یک الکترون را با اتم اکسیژن به اشتراک می‌گذارد.",
+      "text_markdown": "هر اتم هیدروژن یک الکترون را با اتم اکسیژن به اشتراک می‌گذارد.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "هر اتم هیدروژن یک الکترون را با اتم اکسیژن به اشتراک می‌گذارد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "در یک پیوند یونی، یک اتم الکترون‌ها را به اتم دیگر می‌دهد.",
+      "text_markdown": "در یک پیوند یونی، یک اتم الکترون‌ها را به اتم دیگر می‌دهد.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "در یک پیوند یونی، یک اتم الکترون‌ها را به اتم دیگر می‌دهد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "اتمی که الکترون از دست می‌دهد، دارای بار مثبت می‌شود.",
+      "text_markdown": "اتمی که الکترون از دست می‌دهد، دارای بار مثبت می‌شود.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "اتمی که الکترون از دست می‌دهد، دارای بار مثبت می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "اتمی که الکترون به دست می‌آورد، دارای بار منفی می‌شود.",
+      "text_markdown": "اتمی که الکترون به دست می‌آورد، دارای بار منفی می‌شود.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "اتمی که الکترون به دست می‌آورد، دارای بار منفی می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "بارهای مخالف یکدیگر را جذب می‌کنند.",
+      "text_markdown": "بارهای مخالف یکدیگر را جذب می‌کنند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "بارهای مخالف یکدیگر را جذب می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "این جاذبه دو اتم را در کنار هم نگه می‌دارد.",
+      "text_markdown": "این جاذبه دو اتم را در کنار هم نگه می‌دارد.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "این جاذبه دو اتم را در کنار هم نگه می‌دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "نمک خوراکی توسط پیوندهای یونی به هم متصل شده است.",
+      "text_markdown": "نمک خوراکی توسط پیوندهای یونی به هم متصل شده است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "نمک خوراکی توسط پیوندهای یونی به هم متصل شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "text": "سدیم یک الکترون به کلر می‌دهد.",
+      "text_markdown": "سدیم یک الکترون به کلر می‌دهد.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "سدیم یک الکترون به کلر می‌دهد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "یک مولکول آب شامل دو اتم هیدروژن و یک اتم اکسیژن است.",
+      "text_markdown": "یک مولکول آب شامل دو اتم هیدروژن و یک اتم اکسیژن است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "یک مولکول آب شامل دو اتم هیدروژن و یک اتم اکسیژن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "دانشمندان این را به صورت H2O می‌نویسند.",
+      "text_markdown": "دانشمندان این را به صورت H2O می‌نویسند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "دانشمندان این را به صورت اچ دو او می‌نویسند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "H مخفف هیدروژن است.",
+      "text_markdown": "H مخفف هیدروژن است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "اچ مخفف هیدروژن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "O مخفف اکسیژن است.",
+      "text_markdown": "O مخفف اکسیژن است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "او مخفف اکسیژن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "text": "عدد 2 به این معنی است که دو اتم هیدروژن وجود دارد.",
+      "text_markdown": "عدد 2 به این معنی است که دو اتم هیدروژن وجود دارد.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "عدد دو به این معنی است که دو اتم هیدروژن وجود دارد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "text": "یک مولکول دی‌اکسید کربن شامل یک اتم کربن و دو اتم اکسیژن است.",
+      "text_markdown": "یک مولکول دی‌اکسید کربن شامل یک اتم کربن و دو اتم اکسیژن است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "یک مولکول دی‌اکسید کربن شامل یک اتم کربن و دو اتم اکسیژن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "text": "دانشمندان این را به صورت CO2 می‌نویسند.",
+      "text_markdown": "دانشمندان این را به صورت CO2 می‌نویسند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "دانشمندان این را به صورت سی او دو می‌نویسند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "text": "گیاهان دی‌اکسید کربن را از هوا جذب می‌کنند و از آن برای ساخت مولکول‌های قند استفاده می‌کنند.",
+      "text_markdown": "گیاهان دی‌اکسید کربن را از هوا جذب می‌کنند و از آن برای ساخت مولکول‌های قند استفاده می‌کنند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "گیاهان دی‌اکسید کربن را از هوا جذب می‌کنند و از آن برای ساخت مولکول‌های قند استفاده می‌کنند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "پیوندهای بین اتم‌ها انرژی را ذخیره می‌کنند.",
+      "text_markdown": "پیوندهای بین اتم‌ها انرژی را ذخیره می‌کنند.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "پیوندهای بین اتم‌ها انرژی را ذخیره می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "وقتی پیوندها می‌شکنند، انرژی آزاد می‌شود.",
+      "text_markdown": "وقتی پیوندها می‌شکنند، انرژی آزاد می‌شود.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "وقتی پیوندها می‌شکنند، انرژی آزاد می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "وقتی پیوندها تشکیل می‌شوند، انرژی جذب می‌شود.",
+      "text_markdown": "وقتی پیوندها تشکیل می‌شوند، انرژی جذب می‌شود.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "وقتی پیوندها تشکیل می‌شوند، انرژی جذب می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "chapter": 5,
+      "part": 0,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "text": "هر واکنش شیمیایی در جهان شامل شکستن پیوندهای قدیمی و تشکیل پیوندهای جدید است.",
+      "text_markdown": "هر واکنش شیمیایی در جهان شامل شکستن پیوندهای قدیمی و تشکیل پیوندهای جدید است.",
+      "title": "چگونه اتم‌ها پیوند می‌خورند",
+      "tts": {
+        "text": "هر واکنش شیمیایی در جهان شامل شکستن پیوندهای قدیمی و تشکیل پیوندهای جدید است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "chapter": 6,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p46",
+      "block_type": "heading",
+      "text": "اتم‌ها در حرکت",
+      "text_markdown": "اتم‌ها در حرکت",
+      "title": "اتم‌ها در حرکت"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "اتم‌ها همیشه در حال حرکت هستند.",
+      "text_markdown": "اتم‌ها همیشه در حال حرکت هستند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "اتم‌ها همیشه در حال حرکت هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "آنها هرگز متوقف نمی‌شوند.",
+      "text_markdown": "آنها هرگز متوقف نمی‌شوند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "آنها هرگز متوقف نمی‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "در هر دمایی بالاتر از صفر مطلق، اتم‌ها ارتعاش می‌کنند، می‌چرخند و در فضا حرکت می‌کنند.",
+      "text_markdown": "در هر دمایی بالاتر از صفر مطلق، اتم‌ها ارتعاش می‌کنند، می‌چرخند و در فضا حرکت می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "در هر دمایی بالاتر از صفر مطلق، اتم‌ها ارتعاش می‌کنند، می‌چرخند و در فضا حرکت می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "text": "این حرکت همان چیزی است که ما آن را به عنوان گرما تجربه می‌کنیم.",
+      "text_markdown": "این حرکت همان چیزی است که ما آن را به عنوان گرما تجربه می‌کنیم.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "این حرکت همان چیزی است که ما آن را به عنوان گرما تجربه می‌کنیم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "در یک جامد، اتم‌ها در جای خود ارتعاش می‌کنند.",
+      "text_markdown": "در یک جامد، اتم‌ها در جای خود ارتعاش می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "در یک جامد، اتم‌ها در جای خود ارتعاش می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "آنها در یک ساختار ثابت قفل شده‌اند.",
+      "text_markdown": "آنها در یک ساختار ثابت قفل شده‌اند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "آنها در یک ساختار ثابت قفل شده‌اند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "آنها به جلو و عقب تکان می‌خورند، اما موقعیت خود را ترک نمی‌کنند.",
+      "text_markdown": "آنها به جلو و عقب تکان می‌خورند، اما موقعیت خود را ترک نمی‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "آنها به جلو و عقب تکان می‌خورند، اما موقعیت خود را ترک نمی‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "به همین دلیل است که جامدات شکل خود را حفظ می‌کنند.",
+      "text_markdown": "به همین دلیل است که جامدات شکل خود را حفظ می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "به همین دلیل است که جامدات شکل خود را حفظ می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "text": "اتم‌های موجود در یک قطعه یخ ارتعاش می‌کنند، اما در یک الگوی بلوری سخت باقی می‌مانند.",
+      "text_markdown": "اتم‌های موجود در یک قطعه یخ ارتعاش می‌کنند، اما در یک الگوی بلوری سخت باقی می‌مانند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "اتم‌های موجود در یک قطعه یخ ارتعاش می‌کنند، اما در یک الگوی بلوری سخت باقی می‌مانند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "در یک مایع، اتم‌ها آزادانه‌تر حرکت می‌کنند.",
+      "text_markdown": "در یک مایع، اتم‌ها آزادانه‌تر حرکت می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "در یک مایع، اتم‌ها آزادانه‌تر حرکت می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "آنها از کنار یکدیگر می‌لغزند.",
+      "text_markdown": "آنها از کنار یکدیگر می‌لغزند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "آنها از کنار یکدیگر می‌لغزند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "آنها نزدیک یکدیگر می‌مانند، اما در موقعیت خود قفل نشده‌اند.",
+      "text_markdown": "آنها نزدیک یکدیگر می‌مانند، اما در موقعیت خود قفل نشده‌اند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "آنها نزدیک یکدیگر می‌مانند، اما در موقعیت خود قفل نشده‌اند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "به همین دلیل است که مایعات جریان می‌یابند.",
+      "text_markdown": "به همین دلیل است که مایعات جریان می‌یابند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "به همین دلیل است که مایعات جریان می‌یابند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "text": "اتم‌های موجود در یک لیوان آب دائماً در حال حرکت و بازآرایی هستند، اما نزدیک یکدیگر می‌مانند.",
+      "text_markdown": "اتم‌های موجود در یک لیوان آب دائماً در حال حرکت و بازآرایی هستند، اما نزدیک یکدیگر می‌مانند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "اتم‌های موجود در یک لیوان آب دائماً در حال حرکت و بازآرایی هستند، اما نزدیک یکدیگر می‌مانند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "در یک گاز، اتم‌ها سریع حرکت می‌کنند و از هم جدا می‌شوند.",
+      "text_markdown": "در یک گاز، اتم‌ها سریع حرکت می‌کنند و از هم جدا می‌شوند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "در یک گاز، اتم‌ها سریع حرکت می‌کنند و از هم جدا می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "آنها در خطوط مستقیم پرواز می‌کنند تا زمانی که به اتم دیگری یا دیواری برخورد کنند.",
+      "text_markdown": "آنها در خطوط مستقیم پرواز می‌کنند تا زمانی که به اتم دیگری یا دیواری برخورد کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "آنها در خطوط مستقیم پرواز می‌کنند تا زمانی که به اتم دیگری یا دیواری برخورد کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "آنها از یکدیگر بازمی‌گردند و جهت خود را تغییر می‌دهند.",
+      "text_markdown": "آنها از یکدیگر بازمی‌گردند و جهت خود را تغییر می‌دهند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "آنها از یکدیگر بازمی‌گردند و جهت خود را تغییر می‌دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "به همین دلیل است که یک گاز هر ظرفی را که در آن قرار دهید پر می‌کند.",
+      "text_markdown": "به همین دلیل است که یک گاز هر ظرفی را که در آن قرار دهید پر می‌کند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "به همین دلیل است که یک گاز هر ظرفی را که در آن قرار دهید پر می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "text": "اتم‌های موجود در اتاقی پر از هوا با سرعت صدها متر بر ثانیه در هر جهت حرکت می‌کنند.",
+      "text_markdown": "اتم‌های موجود در اتاقی پر از هوا با سرعت صدها متر بر ثانیه در هر جهت حرکت می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "اتم‌های موجود در اتاقی پر از هوا با سرعت صدها متر بر ثانیه در هر جهت حرکت می‌کنند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "text": "دما معیاری است برای سنجش سرعت حرکت اتم‌ها.",
+      "text_markdown": "دما معیاری است برای سنجش سرعت حرکت اتم‌ها.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "دما معیاری است برای سنجش سرعت حرکت اتم‌ها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "text": "گرم بودن به این معنی است که اتم‌ها سریع حرکت می‌کنند.",
+      "text_markdown": "گرم بودن به این معنی است که اتم‌ها سریع حرکت می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "گرم بودن به این معنی است که اتم‌ها سریع حرکت می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "text": "سرد بودن به این معنی است که اتم‌ها آهسته حرکت می‌کنند.",
+      "text_markdown": "سرد بودن به این معنی است که اتم‌ها آهسته حرکت می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "سرد بودن به این معنی است که اتم‌ها آهسته حرکت می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "text": "وقتی آب را روی اجاق گرم می‌کنید، مولکول‌های آب را وادار به حرکت سریع‌تر می‌کنید.",
+      "text_markdown": "وقتی آب را روی اجاق گرم می‌کنید، مولکول‌های آب را وادار به حرکت سریع‌تر می‌کنید.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "وقتی آب را روی اجاق گرم می‌کنید، مولکول‌های آب را وادار به حرکت سریع‌تر می‌کنید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "text": "وقتی مولکول‌ها به اندازه کافی سریع حرکت کنند، از مایع فرار کرده و بخار می‌شوند.",
+      "text_markdown": "وقتی مولکول‌ها به اندازه کافی سریع حرکت کنند، از مایع فرار کرده و بخار می‌شوند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "وقتی مولکول‌ها به اندازه کافی سریع حرکت کنند، از مایع فرار کرده و بخار می‌شوند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "صفر مطلق سردترین دمای ممکن است.",
+      "text_markdown": "صفر مطلق سردترین دمای ممکن است.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "صفر مطلق سردترین دمای ممکن است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "حدود منفی ۲۷۳ درجه سانتی‌گراد است.",
+      "text_markdown": "حدود منفی ۲۷۳ درجه سانتی‌گراد است.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "حدود منفی دویست و هفتاد و سه درجه سانتی‌گراد است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "در صفر مطلق، اتم‌ها حداقل انرژی ممکن را دارند.",
+      "text_markdown": "در صفر مطلق، اتم‌ها حداقل انرژی ممکن را دارند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "در صفر مطلق، اتم‌ها حداقل انرژی ممکن را دارند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "هیچ چیز نمی‌تواند سردتر از صفر مطلق باشد.",
+      "text_markdown": "هیچ چیز نمی‌تواند سردتر از صفر مطلق باشد.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "هیچ چیز نمی‌تواند سردتر از صفر مطلق باشد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "text": "دانشمندان در آزمایشگاه‌ها به رسیدن به صفر مطلق بسیار نزدیک شده‌اند، اما هیچ‌کس هرگز دقیقاً به آن نرسیده است.",
+      "text_markdown": "دانشمندان در آزمایشگاه‌ها به رسیدن به صفر مطلق بسیار نزدیک شده‌اند، اما هیچ‌کس هرگز دقیقاً به آن نرسیده است.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "دانشمندان در آزمایشگاه‌ها به رسیدن به صفر مطلق بسیار نزدیک شده‌اند، اما هیچ‌کس هرگز دقیقاً به آن نرسیده است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "فشار ناشی از برخورد اتم‌ها به سطوح است.",
+      "text_markdown": "فشار ناشی از برخورد اتم‌ها به سطوح است.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "فشار ناشی از برخورد اتم‌ها به سطوح است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "هوای داخل تایر به سمت بیرون فشار وارد می‌کند زیرا مولکول‌های هوا دائماً به دیواره‌های داخلی تایر برخورد می‌کنند.",
+      "text_markdown": "هوای داخل تایر به سمت بیرون فشار وارد می‌کند زیرا مولکول‌های هوا دائماً به دیواره‌های داخلی تایر برخورد می‌کنند.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "هوای داخل تایر به سمت بیرون فشار وارد می‌کند زیرا مولکول‌های هوا دائماً به دیواره‌های داخلی تایر برخورد می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "مولکول‌های بیشتر یا مولکول‌های سریع‌تر به معنای فشار بیشتر است.",
+      "text_markdown": "مولکول‌های بیشتر یا مولکول‌های سریع‌تر به معنای فشار بیشتر است.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "مولکول‌های بیشتر یا مولکول‌های سریع‌تر به معنای فشار بیشتر است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "chapter": 6,
+      "part": 0,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "text": "به همین دلیل است که وقتی هوا گرم است، تایر سفت‌تر به نظر می‌رسد.",
+      "text_markdown": "به همین دلیل است که وقتی هوا گرم است، تایر سفت‌تر به نظر می‌رسد.",
+      "title": "اتم‌ها در حرکت",
+      "tts": {
+        "text": "به همین دلیل است که وقتی هوا گرم است، تایر سفت‌تر به نظر می‌رسد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "chapter": 7,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p54",
+      "block_type": "heading",
+      "text": "اتم‌ها از کجا می‌آیند",
+      "text_markdown": "اتم‌ها از کجا می‌آیند",
+      "title": "اتم‌ها از کجا می‌آیند"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "هیدروژن و هلیوم موجود در جهان در چند دقیقه اول پس از انفجار بزرگ ایجاد شدند.",
+      "text_markdown": "هیدروژن و هلیوم موجود در جهان در چند دقیقه اول پس از انفجار بزرگ ایجاد شدند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "هیدروژن و هلیوم موجود در جهان در چند دقیقه اول پس از انفجار بزرگ ایجاد شدند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "جهان حدود ۱۳.۸ میلیارد سال پیش به صورت یک نقطه فوق‌العاده داغ و چگال آغاز شد.",
+      "text_markdown": "جهان حدود ۱۳.۸ میلیارد سال پیش به صورت یک نقطه فوق‌العاده داغ و چگال آغاز شد.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "جهان حدود سیزده ممیز هشت میلیارد سال پیش به صورت یک نقطه فوق‌العاده داغ و چگال آغاز شد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "با انبساط و سرد شدن آن، پروتون‌ها و نوترون‌ها شکل گرفتند.",
+      "text_markdown": "با انبساط و سرد شدن آن، پروتون‌ها و نوترون‌ها شکل گرفتند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "با انبساط و سرد شدن آن، پروتون‌ها و نوترون‌ها شکل گرفتند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "آن پروتون‌ها و نوترون‌ها با هم ترکیب شده و ساده‌ترین هسته‌ها را تشکیل دادند.",
+      "text_markdown": "آن پروتون‌ها و نوترون‌ها با هم ترکیب شده و ساده‌ترین هسته‌ها را تشکیل دادند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "آن پروتون‌ها و نوترون‌ها با هم ترکیب شده و ساده‌ترین هسته‌ها را تشکیل دادند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "text": "هیدروژن و هلیوم اولین عناصر بودند.",
+      "text_markdown": "هیدروژن و هلیوم اولین عناصر بودند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "هیدروژن و هلیوم اولین عناصر بودند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "برای میلیون‌ها سال، جهان ابری از گاز هیدروژن و هلیوم بود.",
+      "text_markdown": "برای میلیون‌ها سال، جهان ابری از گاز هیدروژن و هلیوم بود.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "برای میلیون‌ها سال، جهان ابری از گاز هیدروژن و هلیوم بود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "سپس گرانش گاز را به صورت توده‌هایی به هم کشید.",
+      "text_markdown": "سپس گرانش گاز را به صورت توده‌هایی به هم کشید.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "سپس گرانش گاز را به صورت توده‌هایی به هم کشید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "این توده‌ها چگال‌تر و داغ‌تر شدند.",
+      "text_markdown": "این توده‌ها چگال‌تر و داغ‌تر شدند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این توده‌ها چگال‌تر و داغ‌تر شدند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "وقتی مرکز یک توده به حدود ده میلیون درجه رسید، همجوشی هسته‌ای آغاز شد.",
+      "text_markdown": "وقتی مرکز یک توده به حدود ده میلیون درجه رسید، همجوشی هسته‌ای آغاز شد.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "وقتی مرکز یک توده به حدود ده میلیون درجه رسید، همجوشی هسته‌ای آغاز شد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "text": "یک ستاره متولد شد.",
+      "text_markdown": "یک ستاره متولد شد.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "یک ستاره متولد شد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "ستارگان کارخانه‌های اتم‌سازی هستند.",
+      "text_markdown": "ستارگان کارخانه‌های اتم‌سازی هستند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "ستارگان کارخانه‌های اتم‌سازی هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "در داخل یک ستاره، اتم‌های هیدروژن با هم ترکیب می‌شوند تا هلیوم را تشکیل دهند.",
+      "text_markdown": "در داخل یک ستاره، اتم‌های هیدروژن با هم ترکیب می‌شوند تا هلیوم را تشکیل دهند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "در داخل یک ستاره، اتم‌های هیدروژن با هم ترکیب می‌شوند تا هلیوم را تشکیل دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "این همجوشی انرژی عظیمی آزاد می‌کند.",
+      "text_markdown": "این همجوشی انرژی عظیمی آزاد می‌کند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این همجوشی انرژی عظیمی آزاد می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "این انرژی است که باعث درخشش یک ستاره می‌شود.",
+      "text_markdown": "این انرژی است که باعث درخشش یک ستاره می‌شود.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این انرژی است که باعث درخشش یک ستاره می‌شود.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "text": "خورشید ما هر ثانیه حدود ششصد میلیون تن هیدروژن را به هلیوم تبدیل می‌کند.",
+      "text_markdown": "خورشید ما هر ثانیه حدود ششصد میلیون تن هیدروژن را به هلیوم تبدیل می‌کند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "خورشید ما هر ثانیه حدود ششصد میلیون تن هیدروژن را به هلیوم تبدیل می‌کند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "ستارگان بزرگ‌تر عناصر سنگین‌تر را همجوشی می‌کنند.",
+      "text_markdown": "ستارگان بزرگ‌تر عناصر سنگین‌تر را همجوشی می‌کنند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "ستارگان بزرگ‌تر عناصر سنگین‌تر را همجوشی می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "پس از اینکه یک ستاره هیدروژن خود را می‌سوزاند، شروع به همجوشی هلیوم به کربن می‌کند.",
+      "text_markdown": "پس از اینکه یک ستاره هیدروژن خود را می‌سوزاند، شروع به همجوشی هلیوم به کربن می‌کند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "پس از اینکه یک ستاره هیدروژن خود را می‌سوزاند، شروع به همجوشی هلیوم به کربن می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "سپس کربن به اکسیژن.",
+      "text_markdown": "سپس کربن به اکسیژن.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "سپس کربن به اکسیژن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "سپس اکسیژن به سیلیسیوم.",
+      "text_markdown": "سپس اکسیژن به سیلیسیوم.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "سپس اکسیژن به سیلیسیوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "سپس سیلیسیوم به آهن.",
+      "text_markdown": "سپس سیلیسیوم به آهن.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "سپس سیلیسیوم به آهن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "هر مرحله یک عنصر سنگین‌تر تولید می‌کند.",
+      "text_markdown": "هر مرحله یک عنصر سنگین‌تر تولید می‌کند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "هر مرحله یک عنصر سنگین‌تر تولید می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "text": "آهن سنگین‌ترین عنصری است که یک ستاره می‌تواند از طریق همجوشی عادی تولید کند.",
+      "text_markdown": "آهن سنگین‌ترین عنصری است که یک ستاره می‌تواند از طریق همجوشی عادی تولید کند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "آهن سنگین‌ترین عنصری است که یک ستاره می‌تواند از طریق همجوشی عادی تولید کند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "عناصر سنگین‌تر از آهن زمانی ایجاد می‌شوند که ستارگان پرجرم منفجر می‌شوند.",
+      "text_markdown": "عناصر سنگین‌تر از آهن زمانی ایجاد می‌شوند که ستارگان پرجرم منفجر می‌شوند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "عناصر سنگین‌تر از آهن زمانی ایجاد می‌شوند که ستارگان پرجرم منفجر می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "این انفجارها ابرنواختر نامیده می‌شوند.",
+      "text_markdown": "این انفجارها ابرنواختر نامیده می‌شوند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این انفجارها ابرنواختر نامیده می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "یک ابرنواختر در چند ثانیه انرژی بیشتری آزاد می‌کند تا خورشید در کل عمر خود تولید خواهد کرد.",
+      "text_markdown": "یک ابرنواختر در چند ثانیه انرژی بیشتری آزاد می‌کند تا خورشید در کل عمر خود تولید خواهد کرد.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "یک ابرنواختر در چند ثانیه انرژی بیشتری آزاد می‌کند تا خورشید در کل عمر خود تولید خواهد کرد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "text": "شرایط فوق‌العاده یک ابرنواختر عناصری مانند طلا، نقره، پلاتین و اورانیوم را می‌سازد.",
+      "text_markdown": "شرایط فوق‌العاده یک ابرنواختر عناصری مانند طلا، نقره، پلاتین و اورانیوم را می‌سازد.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "شرایط فوق‌العاده یک ابرنواختر عناصری مانند طلا، نقره، پلاتین و اورانیوم را می‌سازد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "این انفجار این عناصر سنگین را در سراسر فضا پراکنده می‌کند.",
+      "text_markdown": "این انفجار این عناصر سنگین را در سراسر فضا پراکنده می‌کند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این انفجار این عناصر سنگین را در سراسر فضا پراکنده می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "این عناصر با ابرهای گاز هیدروژن و هلیوم مخلوط می‌شوند.",
+      "text_markdown": "این عناصر با ابرهای گاز هیدروژن و هلیوم مخلوط می‌شوند.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این عناصر با ابرهای گاز هیدروژن و هلیوم مخلوط می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "در نهایت، گرانش گاز غنی‌شده را گرد هم می‌آورد تا ستارگان و سیارات جدیدی را تشکیل دهد.",
+      "text_markdown": "در نهایت، گرانش گاز غنی‌شده را گرد هم می‌آورد تا ستارگان و سیارات جدیدی را تشکیل دهد.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "در نهایت، گرانش گاز غنی‌شده را گرد هم می‌آورد تا ستارگان و سیارات جدیدی را تشکیل دهد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "text": "منظومه شمسی ما حدود ۴.۶ میلیارد سال پیش از یکی از این ابرهای غنی‌شده تشکیل شد.",
+      "text_markdown": "منظومه شمسی ما حدود ۴.۶ میلیارد سال پیش از یکی از این ابرهای غنی‌شده تشکیل شد.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "منظومه شمسی ما حدود چهار و شش دهم میلیارد سال پیش از یکی از این ابرهای غنی‌شده تشکیل شد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "هر اتمی در بدن شما که سنگین‌تر از هیدروژن است، درون یک ستاره ساخته شده است.",
+      "text_markdown": "هر اتمی در بدن شما که سنگین‌تر از هیدروژن است، درون یک ستاره ساخته شده است.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "هر اتمی در بدن شما که سنگین‌تر از هیدروژن است، درون یک ستاره ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "کلسیم در استخوان‌های شما.",
+      "text_markdown": "کلسیم در استخوان‌های شما.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "کلسیم در استخوان‌های شما.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "آهن در خون شما.",
+      "text_markdown": "آهن در خون شما.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "آهن در خون شما.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "کربن در پوست شما.",
+      "text_markdown": "کربن در پوست شما.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "کربن در پوست شما.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "شما از غبار ستاره‌ای ساخته شده‌اید.",
+      "text_markdown": "شما از غبار ستاره‌ای ساخته شده‌اید.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "شما از غبار ستاره‌ای ساخته شده‌اید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "این یک استعاره نیست.",
+      "text_markdown": "این یک استعاره نیست.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این یک استعاره نیست.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "chapter": 7,
+      "part": 0,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "text": "این یک واقعیت فیزیک هسته‌ای است.",
+      "text_markdown": "این یک واقعیت فیزیک هسته‌ای است.",
+      "title": "اتم‌ها از کجا می‌آیند",
+      "tts": {
+        "text": "این یک واقعیت فیزیک هسته‌ای است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "chapter": 8,
+      "heading_level": 1,
+      "part": 0,
+      "paragraph_id": "p62",
+      "block_type": "heading",
+      "text": "اتم‌ها همه چیز هستند",
+      "text_markdown": "اتم‌ها همه چیز هستند",
+      "title": "اتم‌ها همه چیز هستند"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "اکنون اصول اولیه را می‌دانید.",
+      "text_markdown": "اکنون اصول اولیه را می‌دانید.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اکنون اصول اولیه را می‌دانید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "همه چیز از اتم ساخته شده است.",
+      "text_markdown": "همه چیز از اتم ساخته شده است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "همه چیز از اتم ساخته شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "اتم‌ها حاوی پروتون، نوترون و الکترون هستند.",
+      "text_markdown": "اتم‌ها حاوی پروتون، نوترون و الکترون هستند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اتم‌ها حاوی پروتون، نوترون و الکترون هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "تعداد پروتون‌ها عنصر را تعیین می‌کند.",
+      "text_markdown": "تعداد پروتون‌ها عنصر را تعیین می‌کند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "تعداد پروتون‌ها عنصر را تعیین می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "اتم‌ها برای تشکیل مولکول‌ها پیوند می‌خورند.",
+      "text_markdown": "اتم‌ها برای تشکیل مولکول‌ها پیوند می‌خورند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اتم‌ها برای تشکیل مولکول‌ها پیوند می‌خورند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "اتم‌ها همیشه در حرکت هستند.",
+      "text_markdown": "اتم‌ها همیشه در حرکت هستند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اتم‌ها همیشه در حرکت هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "text": "ستارگان اتم‌هایی را که جهان ما را تشکیل می‌دهند، خلق کردند.",
+      "text_markdown": "ستارگان اتم‌هایی را که جهان ما را تشکیل می‌دهند، خلق کردند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "ستارگان اتم‌هایی را که جهان ما را تشکیل می‌دهند، خلق کردند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "text": "این دانش اساس شیمی، زیست‌شناسی، فیزیک و پزشکی است.",
+      "text_markdown": "این دانش اساس شیمی، زیست‌شناسی، فیزیک و پزشکی است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "این دانش اساس شیمی، زیست‌شناسی، فیزیک و پزشکی است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "text": "هر رشته‌ای از علم به اتم‌ها بازمی‌گردد.",
+      "text_markdown": "هر رشته‌ای از علم به اتم‌ها بازمی‌گردد.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هر رشته‌ای از علم به اتم‌ها بازمی‌گردد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "text": "هنگامی که پزشک دارویی تجویز می‌کند، آن دارو آرایش خاصی از اتم‌هاست که برای تعامل با مولکول‌های بدن شما طراحی شده است.",
+      "text_markdown": "هنگامی که پزشک دارویی تجویز می‌کند، آن دارو آرایش خاصی از اتم‌هاست که برای تعامل با مولکول‌های بدن شما طراحی شده است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هنگامی که پزشک دارویی تجویز می‌کند، آن دارو آرایش خاصی از اتم‌هاست که برای تعامل با مولکول‌های بدن شما طراحی شده است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "text": "هنگامی که یک مهندس پلی می‌سازد، استحکام آن پل به نحوه آرایش اتم‌های آهن در فولاد بستگی دارد.",
+      "text_markdown": "هنگامی که یک مهندس پلی می‌سازد، استحکام آن پل به نحوه آرایش اتم‌های آهن در فولاد بستگی دارد.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هنگامی که یک مهندس پلی می‌سازد، استحکام آن پل به نحوه آرایش اتم‌های آهن در فولاد بستگی دارد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "text": "هنگامی که یک کشاورز محصولی را می‌کارد، محصول رشد می‌کند زیرا اتم‌های کربن از هوا با آب و نور خورشید در داخل برگ‌ها ترکیب می‌شوند.",
+      "text_markdown": "هنگامی که یک کشاورز محصولی را می‌کارد، محصول رشد می‌کند زیرا اتم‌های کربن از هوا با آب و نور خورشید در داخل برگ‌ها ترکیب می‌شوند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هنگامی که یک کشاورز محصولی را می‌کارد، محصول رشد می‌کند زیرا اتم‌های کربن از هوا با آب و نور خورشید در داخل برگ‌ها ترکیب می‌شوند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "آشپزی شیمی است.",
+      "text_markdown": "آشپزی شیمی است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "آشپزی شیمی است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "هنگامی که نان می‌پزید، گرما باعث می‌شود اتم‌های خمیر بازآرایی شوند.",
+      "text_markdown": "هنگامی که نان می‌پزید، گرما باعث می‌شود اتم‌های خمیر بازآرایی شوند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هنگامی که نان می‌پزید، گرما باعث می‌شود اتم‌های خمیر بازآرایی شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "پروتئین‌ها باز می‌شوند.",
+      "text_markdown": "پروتئین‌ها باز می‌شوند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "پروتئین‌ها باز می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "قندها از هم جدا شده و دوباره ترکیب می‌شوند.",
+      "text_markdown": "قندها از هم جدا شده و دوباره ترکیب می‌شوند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "قندها از هم جدا شده و دوباره ترکیب می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "مولکول‌های جدیدی تشکیل می‌شوند که رنگ، بافت و طعم پوسته را ایجاد می‌کنند.",
+      "text_markdown": "مولکول‌های جدیدی تشکیل می‌شوند که رنگ، بافت و طعم پوسته را ایجاد می‌کنند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "مولکول‌های جدیدی تشکیل می‌شوند که رنگ، بافت و طعم پوسته را ایجاد می‌کنند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "text": "هر دستور پختی مجموعه‌ای از دستورالعمل‌ها برای بازآرایی اتم‌هاست.",
+      "text_markdown": "هر دستور پختی مجموعه‌ای از دستورالعمل‌ها برای بازآرایی اتم‌هاست.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هر دستور پختی مجموعه‌ای از دستورالعمل‌ها برای بازآرایی اتم‌هاست.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "تنفس شیمی است.",
+      "text_markdown": "تنفس شیمی است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "تنفس شیمی است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "شما مولکول‌های اکسیژن را استنشاق می‌کنید.",
+      "text_markdown": "شما مولکول‌های اکسیژن را استنشاق می‌کنید.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "شما مولکول‌های اکسیژن را استنشاق می‌کنید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "خون شما آن مولکول‌ها را به سلول‌هایتان حمل می‌کند.",
+      "text_markdown": "خون شما آن مولکول‌ها را به سلول‌هایتان حمل می‌کند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "خون شما آن مولکول‌ها را به سلول‌هایتان حمل می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "در داخل سلول‌های شما، اتم‌های اکسیژن با اتم‌های کربن از غذا ترکیب می‌شوند.",
+      "text_markdown": "در داخل سلول‌های شما، اتم‌های اکسیژن با اتم‌های کربن از غذا ترکیب می‌شوند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "در داخل سلول‌های شما، اتم‌های اکسیژن با اتم‌های کربن از غذا ترکیب می‌شوند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "این واکنش انرژی آزاد می‌کند.",
+      "text_markdown": "این واکنش انرژی آزاد می‌کند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "این واکنش انرژی آزاد می‌کند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "شما کربن و اکسیژن را به صورت دی‌اکسید کربن بازدم می‌کنید.",
+      "text_markdown": "شما کربن و اکسیژن را به صورت دی‌اکسید کربن بازدم می‌کنید.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "شما کربن و اکسیژن را به صورت دی‌اکسید کربن بازدم می‌کنید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "text": "هر نفس یک واکنش شیمیایی است.",
+      "text_markdown": "هر نفس یک واکنش شیمیایی است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هر نفس یک واکنش شیمیایی است.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "زنگ‌زدگی شیمی است.",
+      "text_markdown": "زنگ‌زدگی شیمی است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "زنگ‌زدگی شیمی است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "اتم‌های آهن روی سطح یک میخ با اتم‌های اکسیژن در هوا واکنش می‌دهند.",
+      "text_markdown": "اتم‌های آهن روی سطح یک میخ با اتم‌های اکسیژن در هوا واکنش می‌دهند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اتم‌های آهن روی سطح یک میخ با اتم‌های اکسیژن در هوا واکنش می‌دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "آهن و اکسیژن با هم ترکیب می‌شوند تا ماده جدیدی به نام اکسید آهن را تشکیل دهند.",
+      "text_markdown": "آهن و اکسیژن با هم ترکیب می‌شوند تا ماده جدیدی به نام اکسید آهن را تشکیل دهند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "آهن و اکسیژن با هم ترکیب می‌شوند تا ماده جدیدی به نام اکسید آهن را تشکیل دهند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "اکسید آهن همان ماده قهوه‌ای مایل به قرمزی است که ما آن را زنگ می‌نامیم.",
+      "text_markdown": "اکسید آهن همان ماده قهوه‌ای مایل به قرمزی است که ما آن را زنگ می‌نامیم.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اکسید آهن همان ماده قهوه‌ای مایل به قرمزی است که ما آن را زنگ می‌نامیم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "اتم‌های آهن هنوز آنجا هستند.",
+      "text_markdown": "اتم‌های آهن هنوز آنجا هستند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اتم‌های آهن هنوز آنجا هستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "text": "آنها فقط با اکسیژن پیوند خورده‌اند.",
+      "text_markdown": "آنها فقط با اکسیژن پیوند خورده‌اند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "آنها فقط با اکسیژن پیوند خورده‌اند.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "اتم‌ها انتزاعی نیستند.",
+      "text_markdown": "اتم‌ها انتزاعی نیستند.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اتم‌ها انتزاعی نیستند.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "اتم‌ها واقعیت فیزیکی هر چیزی هستند که لمس می‌کنید، می‌چشید، می‌بینید و بو می‌کنید.",
+      "text_markdown": "اتم‌ها واقعیت فیزیکی هر چیزی هستند که لمس می‌کنید، می‌چشید، می‌بینید و بو می‌کنید.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "اتم‌ها واقعیت فیزیکی هر چیزی هستند که لمس می‌کنید، می‌چشید، می‌بینید و بو می‌کنید.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "هرچه بیشتر اتم‌ها را درک کنید، جهان را بیشتر درک خواهید کرد.",
+      "text_markdown": "هرچه بیشتر اتم‌ها را درک کنید، جهان را بیشتر درک خواهید کرد.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "هرچه بیشتر اتم‌ها را درک کنید، جهان را بیشتر درک خواهید کرد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "این آغاز است.",
+      "text_markdown": "این آغاز است.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "این آغاز است.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "chapter": 8,
+      "part": 0,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "text": "چیزهای بسیار بیشتری برای کاوش وجود دارد.",
+      "text_markdown": "چیزهای بسیار بیشتری برای کاوش وجود دارد.",
+      "title": "اتم‌ها همه چیز هستند",
+      "tts": {
+        "text": "چیزهای بسیار بیشتری برای کاوش وجود دارد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

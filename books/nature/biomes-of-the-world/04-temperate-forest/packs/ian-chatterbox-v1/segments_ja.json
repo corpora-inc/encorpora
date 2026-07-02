@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "温帯林",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "温帯林",
+      "text_markdown": "温帯林"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "温帯林が育つ場所",
+      "text_markdown": "温帯林が育つ場所"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林へようこそ。",
+      "text_markdown": "温帯林へようこそ。",
+      "tts": {
+        "text": "温帯林へようこそ。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここは世界の大きなバイオームの一つです。",
+      "text_markdown": "ここは世界の大きなバイオームの一つです。",
+      "tts": {
+        "text": "ここは世界の大きなバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バイオームとは、地球の一部で、独自の気候、植物、動物を持つ場所です。",
+      "text_markdown": "バイオームとは、地球の一部で、独自の気候、植物、動物を持つ場所です。",
+      "tts": {
+        "text": "バイオームとは、地球の一部で、独自の気候、植物、動物を持つ場所です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林は、幅広い葉を持つ木々の森です。",
+      "text_markdown": "温帯林は、幅広い葉を持つ木々の森です。",
+      "tts": {
+        "text": "温帯林は、幅広い葉を持つ木々の森です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここの木々のほとんどは、年に一度葉を落とし、春に新しい葉を出します。",
+      "text_markdown": "ここの木々のほとんどは、年に一度葉を落とし、春に新しい葉を出します。",
+      "tts": {
+        "text": "ここの木々のほとんどは、年に一度葉を落とし、春に新しい葉を出します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "このように葉を落とす木を、落葉樹と呼びます。",
+      "text_markdown": "このように葉を落とす木を、落葉樹と呼びます。",
+      "tts": {
+        "text": "このように葉を落とす木を、落葉樹と呼びます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林は世界の中ほど、寒い北と暖かい熱帯の間に育ちます。",
+      "text_markdown": "温帯林は世界の中ほど、寒い北と暖かい熱帯の間に育ちます。",
+      "tts": {
+        "text": "温帯林は世界の中ほど、寒い北と暖かい熱帯の間に育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "北アメリカの東部には、大きな温帯林があります。",
+      "text_markdown": "北アメリカの東部には、大きな温帯林があります。",
+      "tts": {
+        "text": "北アメリカの東部には、大きな温帯林があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの多くの地域にも温帯林があります。",
+      "text_markdown": "ヨーロッパの多くの地域にも温帯林があります。",
+      "tts": {
+        "text": "ヨーロッパの多くの地域にも温帯林があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "東アジアの中国、韓国、日本にも温帯林があります。",
+      "text_markdown": "東アジアの中国、韓国、日本にも温帯林があります。",
+      "tts": {
+        "text": "東アジアの中国、韓国、日本にも温帯林があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南アメリカ南部や、オーストラリア南東部、ニュージーランド南部にも小さな森があります。",
+      "text_markdown": "南アメリカ南部や、オーストラリア南東部、ニュージーランド南部にも小さな森があります。",
+      "tts": {
+        "text": "南アメリカ南部や、オーストラリア南東部、ニュージーランド南部にも小さな森があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの森はそれぞれ、互いに遠く離れて独自に育ちました。",
+      "text_markdown": "これらの森はそれぞれ、互いに遠く離れて独自に育ちました。",
+      "tts": {
+        "text": "これらの森はそれぞれ、互いに遠く離れて独自に育ちました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "だから、地域ごとに木や動物の種類が違います。",
+      "text_markdown": "だから、地域ごとに木や動物の種類が違います。",
+      "tts": {
+        "text": "だから、地域ごとに木や動物の種類が違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、どれも同じ形を持っています。",
+      "text_markdown": "でも、どれも同じ形を持っています。",
+      "tts": {
+        "text": "でも、どれも同じ形を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉の茂る木々の天井、落ち葉の柔らかな床、そして四つのまったく違う季節です。",
+      "text_markdown": "葉の茂る木々の天井、落ち葉の柔らかな床、そして四つのまったく違う季節です。",
+      "tts": {
+        "text": "葉の茂る木々の天井、落ち葉の柔らかな床、そして四つのまったく違う季節です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林に足を踏み入れると、空気が涼しく優しく感じられます。",
+      "text_markdown": "温帯林に足を踏み入れると、空気が涼しく優しく感じられます。",
+      "tts": {
+        "text": "温帯林に足を踏み入れると、空気が涼しく優しく感じられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、日差しが葉を通って、柔らかな緑の斑模様になります。",
+      "text_markdown": "夏には、日差しが葉を通って、柔らかな緑の斑模様になります。",
+      "tts": {
+        "text": "夏には、日差しが葉を通って、柔らかな緑の斑模様になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、葉が黄色、オレンジ、赤に染まります。",
+      "text_markdown": "秋には、葉が黄色、オレンジ、赤に染まります。",
+      "tts": {
+        "text": "秋には、葉が黄色、オレンジ、赤に染まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、木々が裸のまま空に向かって立ちます。",
+      "text_markdown": "冬には、木々が裸のまま空に向かって立ちます。",
+      "tts": {
+        "text": "冬には、木々が裸のまま空に向かって立ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春には、小さな緑の芽が現れ、森全体が再び目覚めます。",
+      "text_markdown": "春には、小さな緑の芽が現れ、森全体が再び目覚めます。",
+      "tts": {
+        "text": "春には、小さな緑の芽が現れ、森全体が再び目覚めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが温帯林です。",
+      "text_markdown": "それが温帯林です。",
+      "tts": {
+        "text": "それが温帯林です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "温帯林が育つ場所",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "年に四度、姿を変える緑の世界です。",
+      "text_markdown": "年に四度、姿を変える緑の世界です。",
+      "tts": {
+        "text": "年に四度、姿を変える緑の世界です。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "気候",
+      "text_markdown": "気候"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林の天気は、一年を通して大きく変わります。",
+      "text_markdown": "温帯林の天気は、一年を通して大きく変わります。",
+      "tts": {
+        "text": "温帯林の天気は、一年を通して大きく変わります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四つの季節があり、それぞれがとても違います。",
+      "text_markdown": "四つの季節があり、それぞれがとても違います。",
+      "tts": {
+        "text": "四つの季節があり、それぞれがとても違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、日が長く、暖かくなります。",
+      "text_markdown": "夏には、日が長く、暖かくなります。",
+      "tts": {
+        "text": "夏には、日が長く、暖かくなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨がよく降り、ときには激しい嵐が木々の上を通り過ぎます。",
+      "text_markdown": "雨がよく降り、ときには激しい嵐が木々の上を通り過ぎます。",
+      "tts": {
+        "text": "雨がよく降り、ときには激しい嵐が木々の上を通り過ぎます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森は緑の葉と鳥の歌声で満たされます。",
+      "text_markdown": "森は緑の葉と鳥の歌声で満たされます。",
+      "tts": {
+        "text": "森は緑の葉と鳥の歌声で満たされます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、日が短くなり、空気が涼しくなります。",
+      "text_markdown": "秋には、日が短くなり、空気が涼しくなります。",
+      "tts": {
+        "text": "秋には、日が短くなり、空気が涼しくなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々の葉は色を変え、地面に落ちます。",
+      "text_markdown": "木々の葉は色を変え、地面に落ちます。",
+      "tts": {
+        "text": "木々の葉は色を変え、地面に落ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋の森を歩くのは、柔らかく明るい葉のじゅうたんの上を歩くようなものです。",
+      "text_markdown": "秋の森を歩くのは、柔らかく明るい葉のじゅうたんの上を歩くようなものです。",
+      "tts": {
+        "text": "秋の森を歩くのは、柔らかく明るい葉のじゅうたんの上を歩くようなものです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、日が短く、夜は長く寒くなります。",
+      "text_markdown": "冬には、日が短く、夜は長く寒くなります。",
+      "tts": {
+        "text": "冬には、日が短く、夜は長く寒くなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの場所で、雪が何週間も森をおおいます。",
+      "text_markdown": "多くの場所で、雪が何週間も森をおおいます。",
+      "tts": {
+        "text": "多くの場所で、雪が何週間も森をおおいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "裸の枝が、灰色の空の下で静かに立っています。",
+      "text_markdown": "裸の枝が、灰色の空の下で静かに立っています。",
+      "tts": {
+        "text": "裸の枝が、灰色の空の下で静かに立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの動物は寒さの中で眠ったり、巣穴に隠れたりします。",
+      "text_markdown": "多くの動物は寒さの中で眠ったり、巣穴に隠れたりします。",
+      "tts": {
+        "text": "多くの動物は寒さの中で眠ったり、巣穴に隠れたりします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして春がやってきます。",
+      "text_markdown": "そして春がやってきます。",
+      "tts": {
+        "text": "そして春がやってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雪がとけ、雨がまた降りはじめ、土があたたかくなります。",
+      "text_markdown": "雪がとけ、雨がまた降りはじめ、土があたたかくなります。",
+      "tts": {
+        "text": "雪がとけ、雨がまた降りはじめ、土があたたかくなります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "枝に緑の芽が開き、花が地面から伸び、森はふたたび音と色で満ちあふれます。",
+      "text_markdown": "枝に緑の芽が開き、花が地面から伸び、森はふたたび音と色で満ちあふれます。",
+      "tts": {
+        "text": "枝に緑の芽が開き、花が地面から伸び、森はふたたび音と色で満ちあふれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "気候",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林は、寒さを耐えしのぶ方法と、暖かさが戻るときに喜ぶ方法を知っています。",
+      "text_markdown": "温帯林は、寒さを耐えしのぶ方法と、暖かさが戻るときに喜ぶ方法を知っています。",
+      "tts": {
+        "text": "温帯林は、寒さを耐えしのぶ方法と、暖かさが戻るときに喜ぶ方法を知っています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地と水",
+      "text_markdown": "土地と水"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林の下の土地は豊かです。",
+      "text_markdown": "温帯林の下の土地は豊かです。",
+      "tts": {
+        "text": "温帯林の下の土地は豊かです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年もの間、葉が木から落ち、ゆっくりと暗く柔らかな土になりました。",
+      "text_markdown": "何千年もの間、葉が木から落ち、ゆっくりと暗く柔らかな土になりました。",
+      "tts": {
+        "text": "何千年もの間、葉が木から落ち、ゆっくりと暗く柔らかな土になりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この土は水をよく保ち、木々にたっぷりの栄養を与えます。",
+      "text_markdown": "この土は水をよく保ち、木々にたっぷりの栄養を与えます。",
+      "tts": {
+        "text": "この土は水をよく保ち、木々にたっぷりの栄養を与えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森の地面は、古い葉、折れた小枝、緑のコケの斑点でおおわれています。",
+      "text_markdown": "森の地面は、古い葉、折れた小枝、緑のコケの斑点でおおわれています。",
+      "tts": {
+        "text": "森の地面は、古い葉、折れた小枝、緑のコケの斑点でおおわれています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉をかき分けると、小さな生き物でいっぱいの暗い土が見つかります。",
+      "text_markdown": "葉をかき分けると、小さな生き物でいっぱいの暗い土が見つかります。",
+      "tts": {
+        "text": "葉をかき分けると、小さな生き物でいっぱいの暗い土が見つかります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ミミズや虫が土の中を動いています。",
+      "text_markdown": "ミミズや虫が土の中を動いています。",
+      "tts": {
+        "text": "ミミズや虫が土の中を動いています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨の後には、キノコが下から伸びてきます。",
+      "text_markdown": "雨の後には、キノコが下から伸びてきます。",
+      "tts": {
+        "text": "雨の後には、キノコが下から伸びてきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの温帯林にも小川が曲がりくねって流れています。",
+      "text_markdown": "どの温帯林にも小川が曲がりくねって流れています。",
+      "tts": {
+        "text": "どの温帯林にも小川が曲がりくねって流れています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春には、雪解けの水で冷たく澄んで流れます。",
+      "text_markdown": "春には、雪解けの水で冷たく澄んで流れます。",
+      "tts": {
+        "text": "春には、雪解けの水で冷たく澄んで流れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には流れがゆるやかになり、浅い水に石が顔を出します。",
+      "text_markdown": "夏には流れがゆるやかになり、浅い水に石が顔を出します。",
+      "tts": {
+        "text": "夏には流れがゆるやかになり、浅い水に石が顔を出します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、金色の葉が小さな船のように流れていきます。",
+      "text_markdown": "秋には、金色の葉が小さな船のように流れていきます。",
+      "tts": {
+        "text": "秋には、金色の葉が小さな船のように流れていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、小さな小川が凍り、水は氷の屋根の下に隠れます。",
+      "text_markdown": "冬には、小さな小川が凍り、水は氷の屋根の下に隠れます。",
+      "tts": {
+        "text": "冬には、小さな小川が凍り、水は氷の屋根の下に隠れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯の世界の大きな川の多くは、これらの森から始まります。",
+      "text_markdown": "温帯の世界の大きな川の多くは、これらの森から始まります。",
+      "tts": {
+        "text": "温帯の世界の大きな川の多くは、これらの森から始まります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々が土を支え、小川に少しずつ水を送ります。",
+      "text_markdown": "木々が土を支え、小川に少しずつ水を送ります。",
+      "tts": {
+        "text": "木々が土を支え、小川に少しずつ水を送ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地と水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森がなければ、川は今のようではありません。",
+      "text_markdown": "森がなければ、川は今のようではありません。",
+      "tts": {
+        "text": "森がなければ、川は今のようではありません。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々は温帯林の中心です。",
+      "text_markdown": "木々は温帯林の中心です。",
+      "tts": {
+        "text": "木々は温帯林の中心です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くは高く強く育ち、太い幹と広い枝を持っています。",
+      "text_markdown": "多くは高く強く育ち、太い幹と広い枝を持っています。",
+      "tts": {
+        "text": "多くは高く強く育ち、太い幹と広い枝を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木の材は硬く、一本の木は何百年も生きられます。",
+      "text_markdown": "木の材は硬く、一本の木は何百年も生きられます。",
+      "tts": {
+        "text": "木の材は硬く、一本の木は何百年も生きられます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それより長く生きるものもあります。",
+      "text_markdown": "それより長く生きるものもあります。",
+      "tts": {
+        "text": "それより長く生きるものもあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林で最も有名な木は、オーク、カエデ、ブナ、カバノキです。",
+      "text_markdown": "温帯林で最も有名な木は、オーク、カエデ、ブナ、カバノキです。",
+      "tts": {
+        "text": "温帯林で最も有名な木は、オーク、カエデ、ブナ、カバノキです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地域ごとに、これらの木の種類が違います。",
+      "text_markdown": "地域ごとに、これらの木の種類が違います。",
+      "tts": {
+        "text": "地域ごとに、これらの木の種類が違います。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、同じ形と、同じ一年の物語を持っています。",
+      "text_markdown": "でも、同じ形と、同じ一年の物語を持っています。",
+      "tts": {
+        "text": "でも、同じ形と、同じ一年の物語を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春には、どの枝にも新しい葉が開きます。",
+      "text_markdown": "春には、どの枝にも新しい葉が開きます。",
+      "tts": {
+        "text": "春には、どの枝にも新しい葉が開きます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "葉は薄い緑色で柔らかいです。",
+      "text_markdown": "葉は薄い緑色で柔らかいです。",
+      "tts": {
+        "text": "葉は薄い緑色で柔らかいです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、日差しを受けようと葉が大きく広がります。",
+      "text_markdown": "夏には、日差しを受けようと葉が大きく広がります。",
+      "tts": {
+        "text": "夏には、日差しを受けようと葉が大きく広がります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それぞれの緑の葉は、日差し、水、空気を木の栄養に変えます。",
+      "text_markdown": "それぞれの緑の葉は、日差し、水、空気を木の栄養に変えます。",
+      "tts": {
+        "text": "それぞれの緑の葉は、日差し、水、空気を木の栄養に変えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、葉が落ちる前に色を変えます。",
+      "text_markdown": "秋には、葉が落ちる前に色を変えます。",
+      "tts": {
+        "text": "秋には、葉が落ちる前に色を変えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鮮やかな赤に染まるもの、黄色に輝くもの、深い茶色になるものがあります。",
+      "text_markdown": "鮮やかな赤に染まるもの、黄色に輝くもの、深い茶色になるものがあります。",
+      "tts": {
+        "text": "鮮やかな赤に染まるもの、黄色に輝くもの、深い茶色になるものがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その色は、数週間だけ丘全体を彩ります。",
+      "text_markdown": "その色は、数週間だけ丘全体を彩ります。",
+      "tts": {
+        "text": "その色は、数週間だけ丘全体を彩ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて葉は落ち、木は寒さの中で休みます。",
+      "text_markdown": "やがて葉は落ち、木は寒さの中で休みます。",
+      "tts": {
+        "text": "やがて葉は落ち、木は寒さの中で休みます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木の中の材は、必要なものを深く奥にしまっておきます。",
+      "text_markdown": "木の中の材は、必要なものを深く奥にしまっておきます。",
+      "tts": {
+        "text": "木の中の材は、必要なものを深く奥にしまっておきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春が戻ると、木はまた始めます。",
+      "text_markdown": "春が戻ると、木はまた始めます。",
+      "tts": {
+        "text": "春が戻ると、木はまた始めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い木々の下には、小さな植物が育ちます。",
+      "text_markdown": "高い木々の下には、小さな植物が育ちます。",
+      "tts": {
+        "text": "高い木々の下には、小さな植物が育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "動物が好む実をつける低木があります。",
+      "text_markdown": "動物が好む実をつける低木があります。",
+      "tts": {
+        "text": "動物が好む実をつける低木があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "岩や古い丸太の上には、シダや柔らかなコケがあります。",
+      "text_markdown": "岩や古い丸太の上には、シダや柔らかなコケがあります。",
+      "tts": {
+        "text": "岩や古い丸太の上には、シダや柔らかなコケがあります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "早春には、大きな木に葉が出る前に、野の花が森の地面を埋めます。",
+      "text_markdown": "早春には、大きな木に葉が出る前に、野の花が森の地面を埋めます。",
+      "tts": {
+        "text": "早春には、大きな木に葉が出る前に、野の花が森の地面を埋めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "数週間、地面は青い花や水仙など、明るい花でおおわれます。",
+      "text_markdown": "数週間、地面は青い花や水仙など、明るい花でおおわれます。",
+      "tts": {
+        "text": "数週間、地面は青い花や水仙など、明るい花でおおわれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々が葉を広げて地面に影を落とすと、花は消えていきます。",
+      "text_markdown": "木々が葉を広げて地面に影を落とすと、花は消えていきます。",
+      "tts": {
+        "text": "木々が葉を広げて地面に影を落とすと、花は消えていきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "花は次の春まで土の下で待ちます。",
+      "text_markdown": "花は次の春まで土の下で待ちます。",
+      "tts": {
+        "text": "花は次の春まで土の下で待ちます。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "動物",
+      "text_markdown": "動物"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林は多くの種類の動物のすみかです。",
+      "text_markdown": "温帯林は多くの種類の動物のすみかです。",
+      "tts": {
+        "text": "温帯林は多くの種類の動物のすみかです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木の上でも地面でも、季節の変化に合わせて生きる方法を持っています。",
+      "text_markdown": "木の上でも地面でも、季節の変化に合わせて生きる方法を持っています。",
+      "tts": {
+        "text": "木の上でも地面でも、季節の変化に合わせて生きる方法を持っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "シカは多くの温帯林でよく見られます。",
+      "text_markdown": "シカは多くの温帯林でよく見られます。",
+      "tts": {
+        "text": "シカは多くの温帯林でよく見られます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々の間を静かに歩き、葉、草、小さな植物を食べます。",
+      "text_markdown": "木々の間を静かに歩き、葉、草、小さな植物を食べます。",
+      "tts": {
+        "text": "木々の間を静かに歩き、葉、草、小さな植物を食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "夏には、毛は短く茶色です。",
+      "text_markdown": "夏には、毛は短く茶色です。",
+      "tts": {
+        "text": "夏には、毛は短く茶色です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、毛は厚く灰色になります。",
+      "text_markdown": "冬には、毛は厚く灰色になります。",
+      "tts": {
+        "text": "冬には、毛は厚く灰色になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これらの森にはクマもすんでいます。",
+      "text_markdown": "これらの森にはクマもすんでいます。",
+      "tts": {
+        "text": "これらの森にはクマもすんでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "クマは何でも食べます。木の実、魚、はちみつ、小さな動物などです。",
+      "text_markdown": "クマは何でも食べます。木の実、魚、はちみつ、小さな動物などです。",
+      "tts": {
+        "text": "クマは何でも食べます。木の実、魚、はちみつ、小さな動物などです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、クマはできるだけたくさん食べます。",
+      "text_markdown": "秋には、クマはできるだけたくさん食べます。",
+      "tts": {
+        "text": "秋には、クマはできるだけたくさん食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして静かな場所を見つけて、冬の最も寒い時期を深く眠って過ごします。",
+      "text_markdown": "そして静かな場所を見つけて、冬の最も寒い時期を深く眠って過ごします。",
+      "tts": {
+        "text": "そして静かな場所を見つけて、冬の最も寒い時期を深く眠って過ごします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミとキツネは森で狩りをします。",
+      "text_markdown": "オオカミとキツネは森で狩りをします。",
+      "tts": {
+        "text": "オオカミとキツネは森で狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オオカミは家族の群れで暮らし、毎日長い距離を移動します。",
+      "text_markdown": "オオカミは家族の群れで暮らし、毎日長い距離を移動します。",
+      "tts": {
+        "text": "オオカミは家族の群れで暮らし、毎日長い距離を移動します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キツネはもっと小さく、夜にひとりで狩りをします。",
+      "text_markdown": "キツネはもっと小さく、夜にひとりで狩りをします。",
+      "tts": {
+        "text": "キツネはもっと小さく、夜にひとりで狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "リスはどこにでもいます。",
+      "text_markdown": "リスはどこにでもいます。",
+      "tts": {
+        "text": "リスはどこにでもいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、木の実を集めて森のあちこちに埋めます。",
+      "text_markdown": "秋には、木の実を集めて森のあちこちに埋めます。",
+      "tts": {
+        "text": "秋には、木の実を集めて森のあちこちに埋めます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、隠した蓄えを掘り出して食べます。",
+      "text_markdown": "冬には、隠した蓄えを掘り出して食べます。",
+      "tts": {
+        "text": "冬には、隠した蓄えを掘り出して食べます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ときには忘れてしまい、その木の実が次の木になります。",
+      "text_markdown": "ときには忘れてしまい、その木の実が次の木になります。",
+      "tts": {
+        "text": "ときには忘れてしまい、その木の実が次の木になります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ウサギや小さなネズミは、柔らかな土や倒れた丸太の下に住んでいます。",
+      "text_markdown": "ウサギや小さなネズミは、柔らかな土や倒れた丸太の下に住んでいます。",
+      "tts": {
+        "text": "ウサギや小さなネズミは、柔らかな土や倒れた丸太の下に住んでいます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "多くの種類の鳥が温帯林を声で満たします。",
+      "text_markdown": "多くの種類の鳥が温帯林を声で満たします。",
+      "tts": {
+        "text": "多くの種類の鳥が温帯林を声で満たします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一年中いる鳥もいて、冬の裸の枝でも見ることができます。",
+      "text_markdown": "一年中いる鳥もいて、冬の裸の枝でも見ることができます。",
+      "tts": {
+        "text": "一年中いる鳥もいて、冬の裸の枝でも見ることができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ほかの多くの鳥は冬には南へ飛び、春が戻ると帰ってきます。",
+      "text_markdown": "ほかの多くの鳥は冬には南へ飛び、春が戻ると帰ってきます。",
+      "tts": {
+        "text": "ほかの多くの鳥は冬には南へ飛び、春が戻ると帰ってきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キツツキは木の幹をたたきます。",
+      "text_markdown": "キツツキは木の幹をたたきます。",
+      "tts": {
+        "text": "キツツキは木の幹をたたきます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "フクロウは夜に狩りをします。",
+      "text_markdown": "フクロウは夜に狩りをします。",
+      "tts": {
+        "text": "フクロウは夜に狩りをします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "池や小川では、カエルが鳴き、冬には小さな魚が氷の下を泳ぎます。",
+      "text_markdown": "池や小川では、カエルが鳴き、冬には小さな魚が氷の下を泳ぎます。",
+      "tts": {
+        "text": "池や小川では、カエルが鳴き、冬には小さな魚が氷の下を泳ぎます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "暖かい季節、花が開くと、チョウやミツバチが現れます。",
+      "text_markdown": "暖かい季節、花が開くと、チョウやミツバチが現れます。",
+      "tts": {
+        "text": "暖かい季節、花が開くと、チョウやミツバチが現れます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ここの動物はみな、四つの季節を体で知っています。",
+      "text_markdown": "ここの動物はみな、四つの季節を体で知っています。",
+      "tts": {
+        "text": "ここの動物はみな、四つの季節を体で知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "動物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それぞれが、いつ忙しく動くか、いつ休むか、いつまた目覚めるかを知っています。",
+      "text_markdown": "それぞれが、いつ忙しく動くか、いつ休むか、いつまた目覚めるかを知っています。",
+      "tts": {
+        "text": "それぞれが、いつ忙しく動くか、いつ休むか、いつまた目覚めるかを知っています。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人々",
+      "text_markdown": "人々"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は、何千年もの間、温帯林に住んできました。",
+      "text_markdown": "人々は、何千年もの間、温帯林に住んできました。",
+      "tts": {
+        "text": "人々は、何千年もの間、温帯林に住んできました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "穏やかな季節と豊かな土は、いつも人の暮らしに合っていました。",
+      "text_markdown": "穏やかな季節と豊かな土は、いつも人の暮らしに合っていました。",
+      "tts": {
+        "text": "穏やかな季節と豊かな土は、いつも人の暮らしに合っていました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昔、これらの森の人々は、シカや小さな動物を狩りました。",
+      "text_markdown": "昔、これらの森の人々は、シカや小さな動物を狩りました。",
+      "tts": {
+        "text": "昔、これらの森の人々は、シカや小さな動物を狩りました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森の地面から、木の実、果実、根を集めました。",
+      "text_markdown": "森の地面から、木の実、果実、根を集めました。",
+      "tts": {
+        "text": "森の地面から、木の実、果実、根を集めました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どのキノコが安全で、どれが危ないかを知っていました。",
+      "text_markdown": "どのキノコが安全で、どれが危ないかを知っていました。",
+      "tts": {
+        "text": "どのキノコが安全で、どれが危ないかを知っていました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "周りの木々の材で家を建てました。",
+      "text_markdown": "周りの木々の材で家を建てました。",
+      "tts": {
+        "text": "周りの木々の材で家を建てました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "丸太の家と樹皮の屋根は、長い冬を家族が暖かく過ごすのに役立ちました。",
+      "text_markdown": "丸太の家と樹皮の屋根は、長い冬を家族が暖かく過ごすのに役立ちました。",
+      "tts": {
+        "text": "丸太の家と樹皮の屋根は、長い冬を家族が暖かく過ごすのに役立ちました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "春と夏には、森を切り開いた小さな畑で食べ物を育てました。",
+      "text_markdown": "春と夏には、森を切り開いた小さな畑で食べ物を育てました。",
+      "tts": {
+        "text": "春と夏には、森を切り開いた小さな畑で食べ物を育てました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "涼しい気候によく育つ穀物、豆、根を植えました。",
+      "text_markdown": "涼しい気候によく育つ穀物、豆、根を植えました。",
+      "tts": {
+        "text": "涼しい気候によく育つ穀物、豆、根を植えました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、収穫を集め、寒い季節のためにしまいました。",
+      "text_markdown": "秋には、収穫を集め、寒い季節のためにしまいました。",
+      "tts": {
+        "text": "秋には、収穫を集め、寒い季節のためにしまいました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "冬には、火のそばで道具を直し、物語を語り、春を待ちました。",
+      "text_markdown": "冬には、火のそばで道具を直し、物語を語り、春を待ちました。",
+      "tts": {
+        "text": "冬には、火のそばで道具を直し、物語を語り、春を待ちました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森は、火のための木や、建てるための木材を与えてくれました。",
+      "text_markdown": "森は、火のための木や、建てるための木材を与えてくれました。",
+      "tts": {
+        "text": "森は、火のための木や、建てるための木材を与えてくれました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "薬のための樹皮や葉も与えてくれました。",
+      "text_markdown": "薬のための樹皮や葉も与えてくれました。",
+      "tts": {
+        "text": "薬のための樹皮や葉も与えてくれました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "布の染め物や、どの季節にも食べ物を与えてくれました。",
+      "text_markdown": "布の染め物や、どの季節にも食べ物を与えてくれました。",
+      "tts": {
+        "text": "布の染め物や、どの季節にも食べ物を与えてくれました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "やがて、これらの森の多くは、農場や町をつくるために切り倒されました。",
+      "text_markdown": "やがて、これらの森の多くは、農場や町をつくるために切り倒されました。",
+      "tts": {
+        "text": "やがて、これらの森の多くは、農場や町をつくるために切り倒されました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "村は町になり、町は温帯の世界の大きな都市になりました。",
+      "text_markdown": "村は町になり、町は温帯の世界の大きな都市になりました。",
+      "tts": {
+        "text": "村は町になり、町は温帯の世界の大きな都市になりました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それでも人々は、物語や歌の中で森を知っています。",
+      "text_markdown": "それでも人々は、物語や歌の中で森を知っています。",
+      "tts": {
+        "text": "それでも人々は、物語や歌の中で森を知っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この土地の古い歌や物語の多くは、木、オオカミ、シカ、長い冬の夜で満ちています。",
+      "text_markdown": "この土地の古い歌や物語の多くは、木、オオカミ、シカ、長い冬の夜で満ちています。",
+      "tts": {
+        "text": "この土地の古い歌や物語の多くは、木、オオカミ、シカ、長い冬の夜で満ちています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人々",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "どの温帯林にも、独自の言葉、独自の食べ物、そして春を待つ独自のやり方があります。",
+      "text_markdown": "どの温帯林にも、独自の言葉、独自の食べ物、そして春を待つ独自のやり方があります。",
+      "tts": {
+        "text": "どの温帯林にも、独自の言葉、独自の食べ物、そして春を待つ独自のやり方があります。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今日の森",
+      "text_markdown": "今日の森"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "温帯林は、人々にとって最も大切なバイオームの一つです。",
+      "text_markdown": "温帯林は、人々にとって最も大切なバイオームの一つです。",
+      "tts": {
+        "text": "温帯林は、人々にとって最も大切なバイオームの一つです。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界の大きな都市の多くは、かつて温帯林だった場所に立っています。",
+      "text_markdown": "世界の大きな都市の多くは、かつて温帯林だった場所に立っています。",
+      "tts": {
+        "text": "世界の大きな都市の多くは、かつて温帯林だった場所に立っています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森は、建てるための木材、書くための紙、飲むためのきれいな水を与えてくれます。",
+      "text_markdown": "森は、建てるための木材、書くための紙、飲むためのきれいな水を与えてくれます。",
+      "tts": {
+        "text": "森は、建てるための木材、書くための紙、飲むためのきれいな水を与えてくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "木々は、私たちが吐く息の気体を取り入れて育ちます。",
+      "text_markdown": "木々は、私たちが吐く息の気体を取り入れて育ちます。",
+      "tts": {
+        "text": "木々は、私たちが吐く息の気体を取り入れて育ちます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "そして、私たちが吸う気体を返してくれます。",
+      "text_markdown": "そして、私たちが吸う気体を返してくれます。",
+      "tts": {
+        "text": "そして、私たちが吸う気体を返してくれます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋には、森は地球で最も美しい景色の一つになります。",
+      "text_markdown": "秋には、森は地球で最も美しい景色の一つになります。",
+      "tts": {
+        "text": "秋には、森は地球で最も美しい景色の一つになります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人々は、色づいた葉を見るために遠くから旅をします。",
+      "text_markdown": "人々は、色づいた葉を見るために遠くから旅をします。",
+      "tts": {
+        "text": "人々は、色づいた葉を見るために遠くから旅をします。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "でも、温帯林はその土地の多くを失いました。",
+      "text_markdown": "でも、温帯林はその土地の多くを失いました。",
+      "tts": {
+        "text": "でも、温帯林はその土地の多くを失いました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "何千年もの間に、もとの森の多くが切り倒されました。",
+      "text_markdown": "何千年もの間に、もとの森の多くが切り倒されました。",
+      "tts": {
+        "text": "何千年もの間に、もとの森の多くが切り倒されました。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "かつて果てしない木々があった場所には、今は畑、町、道、都市があります。",
+      "text_markdown": "かつて果てしない木々があった場所には、今は畑、町、道、都市があります。",
+      "tts": {
+        "text": "かつて果てしない木々があった場所には、今は畑、町、道、都市があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "残っている森は、より小さく、ばらばらになっています。",
+      "text_markdown": "残っている森は、より小さく、ばらばらになっています。",
+      "tts": {
+        "text": "残っている森は、より小さく、ばらばらになっています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界中の多くの団体が、残された森を守ろうとしています。",
+      "text_markdown": "世界中の多くの団体が、残された森を守ろうとしています。",
+      "tts": {
+        "text": "世界中の多くの団体が、残された森を守ろうとしています。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "古い木が失われた場所に、新しい木を植えます。",
+      "text_markdown": "古い木が失われた場所に、新しい木を植えます。",
+      "tts": {
+        "text": "古い木が失われた場所に、新しい木を植えます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "古い森が切り倒されないように守ります。",
+      "text_markdown": "古い森が切り倒されないように守ります。",
+      "tts": {
+        "text": "古い森が切り倒されないように守ります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森をよりよく理解するために研究します。",
+      "text_markdown": "森をよりよく理解するために研究します。",
+      "tts": {
+        "text": "森をよりよく理解するために研究します。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "若い森は、百年で再び育つことができます。",
+      "text_markdown": "若い森は、百年で再び育つことができます。",
+      "tts": {
+        "text": "若い森は、百年で再び育つことができます。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "古い森には、近くのどの建物よりも古く生きている木があります。",
+      "text_markdown": "古い森には、近くのどの建物よりも古く生きている木があります。",
+      "tts": {
+        "text": "古い森には、近くのどの建物よりも古く生きている木があります。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "今日の森",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "森は、私たちの心くばりに値します。",
+      "text_markdown": "森は、私たちの心くばりに値します。",
+      "tts": {
+        "text": "森は、私たちの心くばりに値します。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "おわりに",
+      "text_markdown": "おわりに"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "それが温帯林です。",
+      "text_markdown": "それが温帯林です。",
+      "tts": {
+        "text": "それが温帯林です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高い木々、涼しい小川、そして四つのまったく違う季節がある緑の世界です。",
+      "text_markdown": "高い木々、涼しい小川、そして四つのまったく違う季節がある緑の世界です。",
+      "tts": {
+        "text": "高い木々、涼しい小川、そして四つのまったく違う季節がある緑の世界です。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "もし、いつかその中に入ったら、少しの間、立ち止まってみてください。",
+      "text_markdown": "もし、いつかその中に入ったら、少しの間、立ち止まってみてください。",
+      "tts": {
+        "text": "もし、いつかその中に入ったら、少しの間、立ち止まってみてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "頭の上の葉の中の風の音を聞いてください。",
+      "text_markdown": "頭の上の葉の中の風の音を聞いてください。",
+      "tts": {
+        "text": "頭の上の葉の中の風の音を聞いてください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "足元の古い葉の柔らかなじゅうたんを見てください。",
+      "text_markdown": "足元の古い葉の柔らかなじゅうたんを見てください。",
+      "tts": {
+        "text": "足元の古い葉の柔らかなじゅうたんを見てください。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "おわりに",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "あなたの周りで、バイオームの心臓の鼓動が聞こえるでしょう。",
+      "text_markdown": "あなたの周りで、バイオームの心臓の鼓動が聞こえるでしょう。",
+      "tts": {
+        "text": "あなたの周りで、バイオームの心臓の鼓動が聞こえるでしょう。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "vi",
+  "total_segments": 121,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "Chào mừng đến với AI Tuần Này.",
+      "text_markdown": "Chào mừng đến với AI Tuần Này.",
+      "title": "",
+      "tts": {
+        "text": "Chào mừng đến với AI Tuần Này.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "Tôi là Vindy.",
+      "text_markdown": "Tôi là Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Tôi là Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "Cùng tôi, như mọi khi, là Ron.",
+      "text_markdown": "Cùng tôi, như mọi khi, là Ron.",
+      "title": "",
+      "tts": {
+        "text": "Cùng tôi, như mọi khi, là Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "Rất vui được ở đây, Vindy.",
+      "text_markdown": "Rất vui được ở đây, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Rất vui được ở đây, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "Hôm nay là Chủ Nhật, ngày 14 tháng 6 năm 2026.",
+      "text_markdown": "Hôm nay là Chủ Nhật, ngày 14 tháng 6 năm 2026.",
+      "title": "",
+      "tts": {
+        "text": "Hôm nay là Chủ Nhật, ngày mười bốn tháng sáu, năm hai nghìn không trăm hai mươi sáu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "Hai điều khác biệt về ngày hôm nay.",
+      "text_markdown": "Hai điều khác biệt về ngày hôm nay.",
+      "title": "",
+      "tts": {
+        "text": "Hai điều khác biệt về ngày hôm nay.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "Chúng tôi sẽ chuyển sang Chủ Nhật, và lần đầu tiên chúng tôi sẽ cho bạn biết ai thực sự làm ra chương trình này.",
+      "text_markdown": "Chúng tôi sẽ chuyển sang Chủ Nhật, và lần đầu tiên chúng tôi sẽ cho bạn biết ai thực sự làm ra chương trình này.",
+      "title": "",
+      "tts": {
+        "text": "Chúng tôi sẽ chuyển sang Chủ Nhật, và lần đầu tiên chúng tôi sẽ cho bạn biết ai thực sự làm ra chương trình này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "Sau đó quay lại chương trình thường lệ — các trọng số mở, các phòng thí nghiệm nhỏ, và tuần AI rộng hơn.",
+      "text_markdown": "Sau đó quay lại chương trình thường lệ — các trọng số mở, các phòng thí nghiệm nhỏ, và tuần AI rộng hơn.",
+      "title": "",
+      "tts": {
+        "text": "Sau đó quay lại chương trình thường lệ — các trọng số mở, các phòng thí nghiệm nhỏ, và tuần AI rộng hơn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "Tiếp theo — việc thay đổi lịch trình và lý do.",
+      "text_markdown": "Tiếp theo — việc thay đổi lịch trình và lý do.",
+      "title": "",
+      "tts": {
+        "text": "Tiếp theo — việc thay đổi lịch trình và lý do.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "Cái nhìn đầu tiên về Corpora Inc., đội ngũ nhỏ đứng sau ứng dụng Corpán và podcast này.",
+      "text_markdown": "Cái nhìn đầu tiên về Corpora Inc., đội ngũ nhỏ đứng sau ứng dụng Corpán và podcast này.",
+      "title": "",
+      "tts": {
+        "text": "Cái nhìn đầu tiên về Corpora Inc., đội ngũ nhỏ đứng sau ứng dụng Corpán và podcast này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "Một câu chuyện hàng đầu trên beatlounge, gói nhạc mới của chúng tôi ra mắt trong Corpán 0.18.0.",
+      "text_markdown": "Một câu chuyện hàng đầu trên beatlounge, gói nhạc mới của chúng tôi ra mắt trong Corpán 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Một câu chuyện hàng đầu trên beatlounge, gói nhạc mới của chúng tôi ra mắt trong Corpán không chấm một tám chấm không.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "Các trọng số mở của tuần, dẫn đầu bởi mô hình văn bản khuếch tán mở đầu tiên của Google.",
+      "text_markdown": "Các trọng số mở của tuần, dẫn đầu bởi mô hình văn bản khuếch tán mở đầu tiên của Google.",
+      "title": "",
+      "tts": {
+        "text": "Các trọng số mở của tuần, dẫn đầu bởi mô hình văn bản khuếch tán mở đầu tiên của Google.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "Một đoạn tin nhanh các tiêu đề qua lăng kính hệ sinh thái mở.",
+      "text_markdown": "Một đoạn tin nhanh các tiêu đề qua lăng kính hệ sinh thái mở.",
+      "title": "",
+      "tts": {
+        "text": "Một đoạn tin nhanh các tiêu đề qua lăng kính hệ sinh thái mở.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Một phòng thí nghiệm nhỏ của tuần — mười một người ở Paris đang đặt cược ngược dòng vào silicon của AMD.",
+      "text_markdown": "Một phòng thí nghiệm nhỏ của tuần — mười một người ở Paris đang đặt cược ngược dòng vào silicon của AMD.",
+      "title": "",
+      "tts": {
+        "text": "Một phòng thí nghiệm nhỏ của tuần — mười một người ở Paris đang đặt cược ngược dòng vào silicon của A M D.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "Và khái niệm của chúng tôi trong tuần — khuếch tán so với tự hồi quy, thủ thuật đằng sau bản phát hành chính của tuần này.",
+      "text_markdown": "Và khái niệm của chúng tôi trong tuần — khuếch tán so với tự hồi quy, thủ thuật đằng sau bản phát hành chính của tuần này.",
+      "title": "",
+      "tts": {
+        "text": "Và khái niệm của chúng tôi trong tuần — khuếch tán so với tự hồi quy, thủ thuật đằng sau bản phát hành chính của tuần này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "Ron, chúng ta hãy bắt đầu với lịch trình.",
+      "text_markdown": "Ron, chúng ta hãy bắt đầu với lịch trình.",
+      "title": "",
+      "tts": {
+        "text": "Ron, chúng ta hãy bắt đầu với lịch trình.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "Tại sao chúng ta lại rời khỏi thứ Tư?",
+      "text_markdown": "Tại sao chúng ta lại rời khỏi thứ Tư?",
+      "title": "",
+      "tts": {
+        "text": "Tại sao chúng ta lại rời khỏi thứ Tư?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "Thứ Tư là ngày của Odin, và Odin bận rộn cai trị Asgard.",
+      "text_markdown": "Thứ Tư là ngày của Odin, và Odin bận rộn cai trị Asgard.",
+      "title": "",
+      "tts": {
+        "text": "Thứ Tư là ngày của Odin, và Odin bận rộn cai trị Asgard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "Chúng tôi là một đội ngũ nhỏ với công việc ban ngày, và việc cắt giữa tuần chưa bao giờ thực sự suôn sẻ.",
+      "text_markdown": "Chúng tôi là một đội ngũ nhỏ với công việc ban ngày, và việc cắt giữa tuần chưa bao giờ thực sự suôn sẻ.",
+      "title": "",
+      "tts": {
+        "text": "Chúng tôi là một đội ngũ nhỏ với công việc ban ngày, và việc cắt giữa tuần chưa bao giờ thực sự suôn sẻ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "Chủ Nhật kết thúc tuần và bắt đầu tuần mới, điều này cảm thấy như nhịp điệu phù hợp cho một chương trình tin tức.",
+      "text_markdown": "Chủ Nhật kết thúc tuần và bắt đầu tuần mới, điều này cảm thấy như nhịp điệu phù hợp cho một chương trình tin tức.",
+      "title": "",
+      "tts": {
+        "text": "Chủ Nhật kết thúc tuần và bắt đầu tuần mới, điều này cảm thấy như nhịp điệu phù hợp cho một chương trình tin tức.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "Việc triển khai thực tế trông như thế nào?",
+      "text_markdown": "Việc triển khai thực tế trông như thế nào?",
+      "title": "",
+      "tts": {
+        "text": "Việc triển khai thực tế trông như thế nào?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "Nó khởi đầu bằng tiếng Anh vào thứ Bảy và kéo dài tới sáng thứ Hai, lần lượt qua từng ngôn ngữ, khi phần dịch và phần thu âm của mỗi bản được hoàn thiện.",
+      "text_markdown": "Nó khởi đầu bằng tiếng Anh vào thứ Bảy và kéo dài tới sáng thứ Hai, lần lượt qua từng ngôn ngữ, khi phần dịch và phần thu âm của mỗi bản được hoàn thiện.",
+      "title": "",
+      "tts": {
+        "text": "Nó khởi đầu bằng tiếng Anh vào thứ Bảy và kéo dài tới sáng thứ Hai, lần lượt qua từng ngôn ngữ, khi phần dịch và phần thu âm của mỗi bản được hoàn thiện.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "Đến cà phê sáng thứ Hai, chúng ta sẽ có gần năm mươi ngôn ngữ.",
+      "text_markdown": "Đến cà phê sáng thứ Hai, chúng ta sẽ có gần năm mươi ngôn ngữ.",
+      "title": "",
+      "tts": {
+        "text": "Đến cà phê sáng thứ Hai, chúng ta sẽ có gần năm mươi ngôn ngữ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "Điều này đưa chúng ta đến điều mới thứ hai.",
+      "text_markdown": "Điều này đưa chúng ta đến điều mới thứ hai.",
+      "title": "",
+      "tts": {
+        "text": "Điều này đưa chúng ta đến điều mới thứ hai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "Ai làm ra chương trình này.",
+      "text_markdown": "Ai làm ra chương trình này.",
+      "title": "",
+      "tts": {
+        "text": "Ai làm ra chương trình này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "Corpora Inc., một đội ngũ độc lập nhỏ, xây dựng ứng dụng Corpán và sản xuất podcast này.",
+      "text_markdown": "Corpora Inc., một đội ngũ độc lập nhỏ, xây dựng ứng dụng Corpán và sản xuất podcast này.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc., một đội ngũ độc lập nhỏ, xây dựng ứng dụng Corpán và sản xuất podcast này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Corpán là gì.",
+      "text_markdown": "Corpán là gì.",
+      "title": "",
+      "tts": {
+        "text": "Corpán là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "Một sân chơi ngôn ngữ, âm nhạc và học tập được xây dựng ưu tiên trên thiết bị.",
+      "text_markdown": "Một sân chơi ngôn ngữ, âm nhạc và học tập được xây dựng ưu tiên trên thiết bị.",
+      "title": "",
+      "tts": {
+        "text": "Một sân chơi ngôn ngữ, âm nhạc và học tập được xây dựng ưu tiên trên thiết bị.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "Giải thích 'ưu tiên trên thiết bị' — điều đó có nghĩa là gì trong thực tế.",
+      "text_markdown": "Giải thích 'ưu tiên trên thiết bị' — điều đó có nghĩa là gì trong thực tế.",
+      "title": "",
+      "tts": {
+        "text": "Giải thích 'ưu tiên trên thiết bị' — điều đó có nghĩa là gì trong thực tế.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "Nó có nghĩa là chúng tôi ưu tiên chạy cục bộ bất cứ khi nào tính năng cho phép.",
+      "text_markdown": "Nó có nghĩa là chúng tôi ưu tiên chạy cục bộ bất cứ khi nào tính năng cho phép.",
+      "title": "",
+      "tts": {
+        "text": "Nó có nghĩa là chúng tôi ưu tiên chạy cục bộ bất cứ khi nào tính năng cho phép.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "Qwen3-4B cho trợ lý, Whisper large-v3 cho nhận dạng giọng nói, Chatterbox cho tổng hợp giọng nói, Stable Diffusion ba-rưỡi cho hình ảnh, các pipeline LoRA cho gia sư nhân vật.",
+      "text_markdown": "Qwen3-4B cho trợ lý, Whisper large-v3 cho nhận dạng giọng nói, Chatterbox cho tổng hợp giọng nói, Stable Diffusion ba-rưỡi cho hình ảnh, các pipeline LoRA cho gia sư nhân vật.",
+      "title": "",
+      "tts": {
+        "text": "Qwen ba bốn B cho trợ lý, Whisper large v ba cho nhận dạng giọng nói, Chatterbox cho tổng hợp giọng nói, Stable Diffusion ba và một nửa cho hình ảnh, các pipeline LoRA cho gia sư nhân vật.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Tất cả những điều đó chạy trên điện thoại hoặc máy tính bảng của bạn, ngoại tuyến, ở chế độ máy bay, ở nơi hẻo lánh.",
+      "text_markdown": "Tất cả những điều đó chạy trên điện thoại hoặc máy tính bảng của bạn, ngoại tuyến, ở chế độ máy bay, ở nơi hẻo lánh.",
+      "title": "",
+      "tts": {
+        "text": "Tất cả những điều đó chạy trên điện thoại hoặc máy tính bảng của bạn, ngoại tuyến, ở chế độ máy bay, ở nơi hẻo lánh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "Các tính năng thực sự cần mạng — radio thế giới, nhiều người chơi — sử dụng mạng, và chúng tôi không giả vờ khác đi.",
+      "text_markdown": "Các tính năng thực sự cần mạng — radio thế giới, nhiều người chơi — sử dụng mạng, và chúng tôi không giả vờ khác đi.",
+      "title": "",
+      "tts": {
+        "text": "Các tính năng thực sự cần mạng — radio thế giới, nhiều người chơi — sử dụng mạng, và chúng tôi không giả vờ khác đi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "Và khía cạnh kinh doanh.",
+      "text_markdown": "Và khía cạnh kinh doanh.",
+      "title": "",
+      "tts": {
+        "text": "Và khía cạnh kinh doanh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "Đội ngũ độc lập tinh gọn, không có hàng tỷ đô la vốn đằng sau chúng tôi, không quảng cáo trong ứng dụng hôm nay, với một gói miễn phí hào phóng và một gói đăng ký cao cấp tùy chọn dành cho những người muốn hỗ trợ công việc.",
+      "text_markdown": "Đội ngũ độc lập tinh gọn, không có hàng tỷ đô la vốn đằng sau chúng tôi, không quảng cáo trong ứng dụng hôm nay, với một gói miễn phí hào phóng và một gói đăng ký cao cấp tùy chọn dành cho những người muốn hỗ trợ công việc.",
+      "title": "",
+      "tts": {
+        "text": "Đội ngũ độc lập tinh gọn, không có hàng tỷ đô la vốn đằng sau chúng tôi, không quảng cáo trong ứng dụng hôm nay, với một gói miễn phí hào phóng và một gói đăng ký cao cấp tùy chọn dành cho những người muốn hỗ trợ công việc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "Chúng tôi muốn duy trì không quảng cáo càng lâu càng tốt — không hứa hẹn mãi mãi, nhưng đó là định hướng.",
+      "text_markdown": "Chúng tôi muốn duy trì không quảng cáo càng lâu càng tốt — không hứa hẹn mãi mãi, nhưng đó là định hướng.",
+      "title": "",
+      "tts": {
+        "text": "Chúng tôi muốn duy trì không quảng cáo càng lâu càng tốt — không hứa hẹn mãi mãi, nhưng đó là định hướng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "Bằng chứng bạn thực sự đã phát hành là gì.",
+      "text_markdown": "Bằng chứng bạn thực sự đã phát hành là gì.",
+      "title": "",
+      "tts": {
+        "text": "Bằng chứng bạn thực sự đã phát hành là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "Hầu hết các tuần chúng tôi đều phát hành một thứ gì đó — một bản tường thuật sách, một gói, một bản phát hành ứng dụng, chương trình này — trên hơn ba mươi lăm ngôn ngữ hiện nay, và đang tăng lên.",
+      "text_markdown": "Hầu hết các tuần chúng tôi đều phát hành một thứ gì đó — một bản tường thuật sách, một gói, một bản phát hành ứng dụng, chương trình này — trên hơn ba mươi lăm ngôn ngữ hiện nay, và đang tăng lên.",
+      "title": "",
+      "tts": {
+        "text": "Hầu hết các tuần chúng tôi đều phát hành một thứ gì đó — một bản tường thuật sách, một gói, một bản phát hành ứng dụng, chương trình này — trên hơn ba mươi lăm ngôn ngữ hiện nay, và đang tăng lên.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "Tại sao lại làm điều này?",
+      "text_markdown": "Tại sao lại làm điều này?",
+      "title": "",
+      "tts": {
+        "text": "Tại sao lại làm điều này?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "Đó là mục tiêu — chứng minh rằng một trải nghiệm học tập đa ngôn ngữ, chất lượng tiên phong, ưu tiên trên thiết bị có thể đến từ một nhóm nhỏ không có vốn lớn, đồng thời giữ cho ứng dụng không quảng cáo càng lâu càng tốt.",
+      "text_markdown": "Đó là mục tiêu — chứng minh rằng một trải nghiệm học tập đa ngôn ngữ, chất lượng tiên phong, ưu tiên trên thiết bị có thể đến từ một nhóm nhỏ không có vốn lớn, đồng thời giữ cho ứng dụng không quảng cáo càng lâu càng tốt.",
+      "title": "",
+      "tts": {
+        "text": "Đó là mục tiêu — chứng minh rằng một trải nghiệm học tập đa ngôn ngữ, chất lượng tiên phong, ưu tiên trên thiết bị có thể đến từ một nhóm nhỏ không có vốn lớn, đồng thời giữ cho ứng dụng không quảng cáo càng lâu càng tốt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "Điều này đưa chúng ta đến câu chuyện hàng đầu — beatlounge.",
+      "text_markdown": "Điều này đưa chúng ta đến câu chuyện hàng đầu — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Điều này đưa chúng ta đến câu chuyện hàng đầu — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "Nó ra mắt trong Corpán 0.18.0 tuần này.",
+      "text_markdown": "Nó ra mắt trong Corpán 0.18.0 tuần này.",
+      "title": "",
+      "tts": {
+        "text": "Nó ra mắt trong Corpán không chấm một tám chấm không tuần này.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "beatlounge là một bộ tuần tự nhịp điệu và một công cụ ngôn ngữ trong một hộp.",
+      "text_markdown": "beatlounge là một bộ tuần tự nhịp điệu và một công cụ ngôn ngữ trong một hộp.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge là một bộ tuần tự nhịp điệu và một công cụ ngôn ngữ trong một hộp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "Một bộ tuần tự được định địa chỉ theo nhịp với chín trăm sáu mươi xung mỗi phần tư, một công cụ hòa âm nói các chế độ phương Tây, các thaat Ấn Độ, các melakarta Carnatic và các maqamat Ả Rập, và một kho ngữ liệu cụm từ gồm hơn mười triệu cụm từ ngôn ngữ thực trên hơn năm mươi ngôn ngữ.",
+      "text_markdown": "Một bộ tuần tự được định địa chỉ theo nhịp với chín trăm sáu mươi xung mỗi phần tư, một công cụ hòa âm nói các chế độ phương Tây, các thaat Ấn Độ, các melakarta Carnatic và các maqamat Ả Rập, và một kho ngữ liệu cụm từ gồm hơn mười triệu cụm từ ngôn ngữ thực trên hơn năm mươi ngôn ngữ.",
+      "title": "",
+      "tts": {
+        "text": "Một bộ tuần tự được định địa chỉ theo nhịp với chín trăm sáu mươi xung mỗi phần tư, một công cụ hòa âm nói các chế độ phương Tây, các thaat Ấn Độ, các melakarta Carnatic và các maqamat Ả Rập, và một kho ngữ liệu cụm từ gồm hơn mười triệu cụm từ ngôn ngữ thực trên hơn năm mươi ngôn ngữ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "Tất cả đều có thể biểu diễn cao độ, và có thể chơi ngoại tuyến sau khi gói được cài đặt trên thiết bị của bạn.",
+      "text_markdown": "Tất cả đều có thể biểu diễn cao độ, và có thể chơi ngoại tuyến sau khi gói được cài đặt trên thiết bị của bạn.",
+      "title": "",
+      "tts": {
+        "text": "Tất cả đều có thể biểu diễn cao độ, và có thể chơi ngoại tuyến sau khi gói được cài đặt trên thiết bị của bạn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "Vậy nhạc cụ chính là ngôn ngữ.",
+      "text_markdown": "Vậy nhạc cụ chính là ngôn ngữ.",
+      "title": "",
+      "tts": {
+        "text": "Vậy nhạc cụ chính là ngôn ngữ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "Bạn chơi các cụm từ giống như cách bạn chơi các nốt nhạc.",
+      "text_markdown": "Bạn chơi các cụm từ giống như cách bạn chơi các nốt nhạc.",
+      "title": "",
+      "tts": {
+        "text": "Bạn chơi các cụm từ giống như cách bạn chơi các nốt nhạc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "Một cụm từ tiếng Hindi ở nhịp một, một từ xen tiếng Ả Rập ở phía sau nhịp hai, một âm tiết tiếng Quan Thoại như một dải âm tăng dần.",
+      "text_markdown": "Một cụm từ tiếng Hindi ở nhịp một, một từ xen tiếng Ả Rập ở phía sau nhịp hai, một âm tiết tiếng Quan Thoại như một dải âm tăng dần.",
+      "title": "",
+      "tts": {
+        "text": "Một cụm từ tiếng Hindi ở nhịp một, một từ xen tiếng Ả Rập ở phía sau nhịp hai, một âm tiết tiếng Quan Thoại như một dải âm tăng dần.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "Đó là một DAW nơi các mẫu là các câu, được lồng tiếng bởi TTS trên thiết bị.",
+      "text_markdown": "Đó là một DAW nơi các mẫu là các câu, được lồng tiếng bởi TTS trên thiết bị.",
+      "title": "",
+      "tts": {
+        "text": "Đó là một DAW nơi các mẫu là các câu, được lồng tiếng bởi T T S trên thiết bị.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "Không yêu cầu lý thuyết âm nhạc.",
+      "text_markdown": "Không yêu cầu lý thuyết âm nhạc.",
+      "title": "",
+      "tts": {
+        "text": "Không yêu cầu lý thuyết âm nhạc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "Thực sự không có gì.",
+      "text_markdown": "Thực sự không có gì.",
+      "title": "",
+      "tts": {
+        "text": "Thực sự không có gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "Công cụ hòa âm xử lý các quy tắc; bạn chỉ vào những âm thanh bạn thích và các chế độ vẫn sạch sẽ.",
+      "text_markdown": "Công cụ hòa âm xử lý các quy tắc; bạn chỉ vào những âm thanh bạn thích và các chế độ vẫn sạch sẽ.",
+      "title": "",
+      "tts": {
+        "text": "Công cụ hòa âm xử lý các quy tắc; bạn chỉ vào những âm thanh bạn thích và các chế độ vẫn sạch sẽ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "Còn gì khác trong 0.18.0.",
+      "text_markdown": "Còn gì khác trong 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Còn gì khác trong không chấm một tám chấm không.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "Ba phần kỹ thuật bên trong — các đường nối máy chủ cho các gói nội dung đã được triển khai với beatlounge làm thử nghiệm.",
+      "text_markdown": "Ba phần kỹ thuật bên trong — các đường nối máy chủ cho các gói nội dung đã được triển khai với beatlounge làm thử nghiệm.",
+      "title": "",
+      "tts": {
+        "text": "Ba phần kỹ thuật bên trong — các đường nối máy chủ cho các gói nội dung đã được triển khai với beatlounge làm thử nghiệm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "Android hiện thu thập các dấu vết lỗi gốc để các sự cố llama và ggml được chẩn đoán chính xác.",
+      "text_markdown": "Android hiện thu thập các dấu vết lỗi gốc để các sự cố llama và ggml được chẩn đoán chính xác.",
+      "title": "",
+      "tts": {
+        "text": "Android hiện thu thập các dấu vết lỗi gốc để các sự cố llama và g g m l được chẩn đoán chính xác.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "Và chúng tôi đã khắc phục lỗi cài đặt mô hình nhiều gigabyte từng gây OOM iOS — giờ đây nó truyền trực tiếp vào đĩa thay vì đệm hai-rưỡi gigabyte Qwen3-4B vào RAM.",
+      "text_markdown": "Và chúng tôi đã khắc phục lỗi cài đặt mô hình nhiều gigabyte từng gây OOM iOS — giờ đây nó truyền trực tiếp vào đĩa thay vì đệm hai-rưỡi gigabyte Qwen3-4B vào RAM.",
+      "title": "",
+      "tts": {
+        "text": "Và chúng tôi đã khắc phục lỗi cài đặt mô hình nhiều gigabyte từng gây O O M i O S — giờ đây nó truyền trực tiếp vào đĩa thay vì đệm hai và một nửa gigabyte Qwen ba bốn B vào R A M.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "Nhàm chán bên dưới, thú vị bên trên.",
+      "text_markdown": "Nhàm chán bên dưới, thú vị bên trên.",
+      "title": "",
+      "tts": {
+        "text": "Nhàm chán bên dưới, thú vị bên trên.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "Đó đại khái là toàn bộ tóm tắt về công ty.",
+      "text_markdown": "Đó đại khái là toàn bộ tóm tắt về công ty.",
+      "title": "",
+      "tts": {
+        "text": "Đó đại khái là toàn bộ tóm tắt về công ty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "Được rồi, hãy chuyển sang các trọng số mở.",
+      "text_markdown": "Được rồi, hãy chuyển sang các trọng số mở.",
+      "title": "",
+      "tts": {
+        "text": "Được rồi, hãy chuyển sang các trọng số mở.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "Điều lớn nhất tuần này là gì.",
+      "text_markdown": "Điều lớn nhất tuần này là gì.",
+      "title": "",
+      "tts": {
+        "text": "Điều lớn nhất tuần này là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Google đã phát hành DiffusionGemma.",
+      "text_markdown": "Google đã phát hành DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "Google đã phát hành DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "Một mô hình hỗn hợp chuyên gia 26 tỷ tham số với 3,8 tỷ tham số hoạt động, Apache 2.0 trên Hugging Face, tạo văn bản bằng khuếch tán thay vì tự hồi quy.",
+      "text_markdown": "Một mô hình hỗn hợp chuyên gia 26 tỷ tham số với 3,8 tỷ tham số hoạt động, Apache 2.0 trên Hugging Face, tạo văn bản bằng khuếch tán thay vì tự hồi quy.",
+      "title": "",
+      "tts": {
+        "text": "Một mô hình hỗn hợp chuyên gia hai mươi sáu tỷ tham số với ba phẩy tám tỷ tham số hoạt động, Apache hai chấm không trên Hugging Face, tạo văn bản bằng khuếch tán thay vì tự hồi quy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-063",
+      "text": "Nói một cách đơn giản — khuếch tán cho văn bản thực sự có nghĩa là gì.",
+      "text_markdown": "Nói một cách đơn giản — khuếch tán cho văn bản thực sự có nghĩa là gì.",
+      "title": "",
+      "tts": {
+        "text": "Nói một cách đơn giản — khuếch tán cho văn bản thực sự có nghĩa là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-064",
+      "text": "Thay vì dự đoán từng token một, nó khử nhiễu một khối 256 token song song.",
+      "text_markdown": "Thay vì dự đoán từng token một, nó khử nhiễu một khối 256 token song song.",
+      "title": "",
+      "tts": {
+        "text": "Thay vì dự đoán từng token một, nó khử nhiễu một khối hai trăm năm mươi sáu token song song.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-065",
+      "text": "Hơn 1.000 token mỗi giây trên một H100 duy nhất, nhanh hơn khoảng bốn lần so với Gemma tự hồi quy tương đương.",
+      "text_markdown": "Hơn 1.000 token mỗi giây trên một H100 duy nhất, nhanh hơn khoảng bốn lần so với Gemma tự hồi quy tương đương.",
+      "title": "",
+      "tts": {
+        "text": "Hơn một nghìn token mỗi giây trên một H một trăm duy nhất, nhanh hơn khoảng bốn lần so với Gemma tự hồi quy tương đương.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-066",
+      "text": "Và vấn đề là gì.",
+      "text_markdown": "Và vấn đề là gì.",
+      "title": "",
+      "tts": {
+        "text": "Và vấn đề là gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-067",
+      "text": "Điểm thấp hơn trên MMLU và mã hóa — Google tự nhận; bản phát hành này dành cho công việc yêu cầu tốc độ cao, không phải để leo bảng xếp hạng.",
+      "text_markdown": "Điểm thấp hơn trên MMLU và mã hóa — Google tự nhận; bản phát hành này dành cho công việc yêu cầu tốc độ cao, không phải để leo bảng xếp hạng.",
+      "title": "",
+      "tts": {
+        "text": "Điểm thấp hơn trên M M L U và mã hóa — Google tự nhận; bản phát hành này dành cho công việc yêu cầu tốc độ cao, không phải để leo bảng xếp hạng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-068",
+      "text": "Và các mô hình giọng nói mã nguồn mở — bất cứ thứ gì.",
+      "text_markdown": "Và các mô hình giọng nói mã nguồn mở — bất cứ thứ gì.",
+      "title": "",
+      "tts": {
+        "text": "Và các mô hình giọng nói mã nguồn mở — bất cứ thứ gì.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-069",
+      "text": "Hai cái đã được phát hành trong cùng một tuần.",
+      "text_markdown": "Hai cái đã được phát hành trong cùng một tuần.",
+      "title": "",
+      "tts": {
+        "text": "Hai cái đã được phát hành trong cùng một tuần.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-070",
+      "text": "RedNote, mạng xã hội Trung Quốc, đã mở nguồn dots-dot-tts — hai tỷ tham số, hoàn toàn liên tục không có token rời rạc nào trong toàn bộ quy trình, độ trễ token đầu tiên 54 mili giây, Apache 2.0.",
+      "text_markdown": "RedNote, mạng xã hội Trung Quốc, đã mở nguồn dots-dot-tts — hai tỷ tham số, hoàn toàn liên tục không có token rời rạc nào trong toàn bộ quy trình, độ trễ token đầu tiên 54 mili giây, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "RedNote, mạng xã hội Trung Quốc, đã mở nguồn dots chấm tts — hai tỷ tham số, hoàn toàn liên tục không có token rời rạc nào trong toàn bộ quy trình, độ trễ token đầu tiên năm mươi bốn mili giây, Apache hai chấm không.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-071",
+      "text": "Và Boson AI đã phát hành Higgs Audio phiên bản ba — bốn tỷ tham số, 102 ngôn ngữ, 21 token kiểm soát cảm xúc, đầu ra streaming, giấy phép phi thương mại; phần cuối cùng đó là dấu sao.",
+      "text_markdown": "Và Boson AI đã phát hành Higgs Audio phiên bản ba — bốn tỷ tham số, 102 ngôn ngữ, 21 token kiểm soát cảm xúc, đầu ra streaming, giấy phép phi thương mại; phần cuối cùng đó là dấu sao.",
+      "title": "",
+      "tts": {
+        "text": "Và Boson AI đã phát hành Higgs Audio phiên bản ba — bốn tỷ tham số, một trăm linh hai ngôn ngữ, hai mươi mốt token kiểm soát cảm xúc, đầu ra streaming, giấy phép phi thương mại; phần cuối cùng đó là dấu sao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-072",
+      "text": "Nhân bản giọng nói chính thức là một mặt hàng phổ biến.",
+      "text_markdown": "Nhân bản giọng nói chính thức là một mặt hàng phổ biến.",
+      "title": "",
+      "tts": {
+        "text": "Nhân bản giọng nói chính thức là một mặt hàng phổ biến.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-073",
+      "text": "Đúng vậy.",
+      "text_markdown": "Đúng vậy.",
+      "title": "",
+      "tts": {
+        "text": "Đúng vậy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-074",
+      "text": "Thêm một cái nữa về phía mã nguồn mở.",
+      "text_markdown": "Thêm một cái nữa về phía mã nguồn mở.",
+      "title": "",
+      "tts": {
+        "text": "Thêm một cái nữa về phía mã nguồn mở.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-075",
+      "text": "NVIDIA đã âm thầm phát hành Nemotron 3 Ultra — một mô hình lai Mamba-attention 550 tỷ tham số.",
+      "text_markdown": "NVIDIA đã âm thầm phát hành Nemotron 3 Ultra — một mô hình lai Mamba-attention 550 tỷ tham số.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA đã âm thầm phát hành Nemotron ba Ultra — một mô hình lai Mamba-attention năm trăm năm mươi tỷ tham số.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-076",
+      "text": "Trọng số và công thức huấn luyện đầy đủ theo giấy phép Linux Foundation OpenMDW — bản phát hành thực sự mở nhất trong tháng.",
+      "text_markdown": "Trọng số và công thức huấn luyện đầy đủ theo giấy phép Linux Foundation OpenMDW — bản phát hành thực sự mở nhất trong tháng.",
+      "title": "",
+      "tts": {
+        "text": "Trọng số và công thức huấn luyện đầy đủ theo giấy phép Linux Foundation Open M D W — bản phát hành thực sự mở nhất trong tháng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-077",
+      "text": "Và không ai đưa tin về nó.",
+      "text_markdown": "Và không ai đưa tin về nó.",
+      "title": "",
+      "tts": {
+        "text": "Và không ai đưa tin về nó.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-078",
+      "text": "Bởi vì chúng tôi xếp NVIDIA vào mảng silicon, không phải phòng thí nghiệm.",
+      "text_markdown": "Bởi vì chúng tôi xếp NVIDIA vào mảng silicon, không phải phòng thí nghiệm.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì chúng tôi xếp NVIDIA vào mảng silicon, không phải phòng thí nghiệm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-079",
+      "text": "Nhưng tuần này họ đã phát hành mã nguồn mở có thể tái tạo ở quy mô tiên phong.",
+      "text_markdown": "Nhưng tuần này họ đã phát hành mã nguồn mở có thể tái tạo ở quy mô tiên phong.",
+      "title": "",
+      "tts": {
+        "text": "Nhưng tuần này họ đã phát hành mã nguồn mở có thể tái tạo ở quy mô tiên phong.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-080",
+      "text": "Các tiêu đề, tóm tắt nhanh.",
+      "text_markdown": "Các tiêu đề, tóm tắt nhanh.",
+      "title": "",
+      "tts": {
+        "text": "Các tiêu đề, tóm tắt nhanh.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-081",
+      "text": "Thứ nhất.",
+      "text_markdown": "Thứ nhất.",
+      "title": "",
+      "tts": {
+        "text": "Thứ nhất.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-082",
+      "text": "Moonshot đã phát hành Kimi K2.7 Code — một nghìn tỷ tham số, 32 tỷ tham số hoạt động, tuyên bố đánh bại Claude Opus 4.8 trên điểm chuẩn của Moonshot.",
+      "text_markdown": "Moonshot đã phát hành Kimi K2.7 Code — một nghìn tỷ tham số, 32 tỷ tham số hoạt động, tuyên bố đánh bại Claude Opus 4.8 trên điểm chuẩn của Moonshot.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot đã phát hành Kimi K hai chấm bảy Code — một nghìn tỷ tham số, ba mươi hai tỷ tham số hoạt động, tuyên bố đánh bại Claude Opus bốn chấm tám trên điểm chuẩn của Moonshot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-083",
+      "text": "Các chuyên gia đã kiểm tra số liệu và nói rằng các điểm chuẩn không khớp; trọng số tự lưu trữ là 595 gigabyte, chế độ suy nghĩ không thể tắt.",
+      "text_markdown": "Các chuyên gia đã kiểm tra số liệu và nói rằng các điểm chuẩn không khớp; trọng số tự lưu trữ là 595 gigabyte, chế độ suy nghĩ không thể tắt.",
+      "title": "",
+      "tts": {
+        "text": "Các chuyên gia đã kiểm tra số liệu và nói rằng các điểm chuẩn không khớp; trọng số tự lưu trữ là năm trăm chín mươi lăm gigabyte, chế độ suy nghĩ không thể tắt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-084",
+      "text": "Từ \"mở\" đang làm rất nhiều việc trong câu đó.",
+      "text_markdown": "Từ \"mở\" đang làm rất nhiều việc trong câu đó.",
+      "title": "",
+      "tts": {
+        "text": "Từ \"mở\" đang làm rất nhiều việc trong câu đó.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-085",
+      "text": "Thứ hai.",
+      "text_markdown": "Thứ hai.",
+      "title": "",
+      "tts": {
+        "text": "Thứ hai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-086",
+      "text": "Cohere, một phòng thí nghiệm phương Tây gần như không bao giờ phát hành trọng số, đã thực sự phát hành trọng số — North Mini Code, tổng cộng 30 tỷ, 3 tỷ hoạt động, Apache 2.0, chạy trên một H100 duy nhất ở 4-bit.",
+      "text_markdown": "Cohere, một phòng thí nghiệm phương Tây gần như không bao giờ phát hành trọng số, đã thực sự phát hành trọng số — North Mini Code, tổng cộng 30 tỷ, 3 tỷ hoạt động, Apache 2.0, chạy trên một H100 duy nhất ở 4-bit.",
+      "title": "",
+      "tts": {
+        "text": "Cohere, một phòng thí nghiệm phương Tây gần như không bao giờ phát hành trọng số, đã thực sự phát hành trọng số — North Mini Code, tổng cộng ba mươi tỷ, ba tỷ hoạt động, Apache hai chấm không, chạy trên một H một trăm duy nhất ở bốn bit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-087",
+      "text": "Một phòng thí nghiệm phương Tây phát hành Apache 2.0 thực sự vào năm 2026 đã là một tin tức đáng chú ý.",
+      "text_markdown": "Một phòng thí nghiệm phương Tây phát hành Apache 2.0 thực sự vào năm 2026 đã là một tin tức đáng chú ý.",
+      "title": "",
+      "tts": {
+        "text": "Một phòng thí nghiệm phương Tây phát hành Apache hai chấm không thực sự vào năm hai nghìn không trăm hai mươi sáu đã là một tin tức đáng chú ý.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-088",
+      "text": "Thứ ba.",
+      "text_markdown": "Thứ ba.",
+      "title": "",
+      "tts": {
+        "text": "Thứ ba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-089",
+      "text": "Apple đã nhấn mạnh mạnh mẽ tại WWDC về AI trên thiết bị như một câu chuyện chiến lược.",
+      "text_markdown": "Apple đã nhấn mạnh mạnh mẽ tại WWDC về AI trên thiết bị như một câu chuyện chiến lược.",
+      "title": "",
+      "tts": {
+        "text": "Apple đã nhấn mạnh mạnh mẽ tại W W D C về AI trên thiết bị như một câu chuyện chiến lược.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-090",
+      "text": "Nhưng mô hình Siri mới được cho là một phiên bản chắt lọc của Gemini của Google mà Apple cấp phép và thu nhỏ.",
+      "text_markdown": "Nhưng mô hình Siri mới được cho là một phiên bản chắt lọc của Gemini của Google mà Apple cấp phép và thu nhỏ.",
+      "title": "",
+      "tts": {
+        "text": "Nhưng mô hình Siri mới được cho là một phiên bản chắt lọc của Gemini của Google mà Apple cấp phép và thu nhỏ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-091",
+      "text": "Suy luận cục bộ, chuỗi cung ứng phức tạp.",
+      "text_markdown": "Suy luận cục bộ, chuỗi cung ứng phức tạp.",
+      "title": "",
+      "tts": {
+        "text": "Suy luận cục bộ, chuỗi cung ứng phức tạp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-092",
+      "text": "Và thứ tư.",
+      "text_markdown": "Và thứ tư.",
+      "title": "",
+      "tts": {
+        "text": "Và thứ tư.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-093",
+      "text": "Alibaba đã đưa Qwen 3.7-Plus ra mắt rộng rãi — đa phương thức, điều khiển giao diện người dùng đồ họa (GUI) từ ảnh chụp màn hình, khoảng bốn mươi xu cho mỗi triệu token đầu vào.",
+      "text_markdown": "Alibaba đã đưa Qwen 3.7-Plus ra mắt rộng rãi — đa phương thức, điều khiển giao diện người dùng đồ họa (GUI) từ ảnh chụp màn hình, khoảng bốn mươi xu cho mỗi triệu token đầu vào.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba đã đưa Qwen ba chấm bảy Plus ra mắt rộng rãi — đa phương thức, điều khiển G U I từ ảnh chụp màn hình, khoảng bốn mươi xu cho mỗi triệu token đầu vào.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-094",
+      "text": "Mặc dù mang thương hiệu Qwen, phiên bản này chỉ dùng API, không phải mã nguồn mở.",
+      "text_markdown": "Mặc dù mang thương hiệu Qwen, phiên bản này chỉ dùng API, không phải mã nguồn mở.",
+      "title": "",
+      "tts": {
+        "text": "Mặc dù mang thương hiệu Qwen, phiên bản này chỉ dùng A P I, không phải mã nguồn mở.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-095",
+      "text": "Điều đáng biết, vì người nghe thường nhầm lẫn Qwen với mã nguồn mở; phiên bản này thì không.",
+      "text_markdown": "Điều đáng biết, vì người nghe thường nhầm lẫn Qwen với mã nguồn mở; phiên bản này thì không.",
+      "title": "",
+      "tts": {
+        "text": "Điều đáng biết, vì người nghe thường nhầm lẫn Qwen với mã nguồn mở; phiên bản này thì không.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-096",
+      "text": "Phòng thí nghiệm nhỏ của tuần.",
+      "text_markdown": "Phòng thí nghiệm nhỏ của tuần.",
+      "title": "",
+      "tts": {
+        "text": "Phòng thí nghiệm nhỏ của tuần.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-097",
+      "text": "Nó được gọi là Kog.",
+      "text_markdown": "Nó được gọi là Kog.",
+      "title": "",
+      "tts": {
+        "text": "Nó được gọi là Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-098",
+      "text": "Mười một người ở Paris, tuyên bố đạt ba nghìn token đầu ra mỗi giây cho mỗi yêu cầu trên tám GPU AMD MI300X.",
+      "text_markdown": "Mười một người ở Paris, tuyên bố đạt ba nghìn token đầu ra mỗi giây cho mỗi yêu cầu trên tám GPU AMD MI300X.",
+      "title": "",
+      "tts": {
+        "text": "Mười một người ở Paris, tuyên bố đạt ba nghìn token đầu ra mỗi giây cho mỗi yêu cầu trên tám G P U A M D M I ba trăm X.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-099",
+      "text": "Luận điểm của họ — ngành công nghiệp đã chi tiêu quá mức vào chip suy luận tùy chỉnh trong khi nút thắt cổ chai luôn là phần mềm.",
+      "text_markdown": "Luận điểm của họ — ngành công nghiệp đã chi tiêu quá mức vào chip suy luận tùy chỉnh trong khi nút thắt cổ chai luôn là phần mềm.",
+      "title": "",
+      "tts": {
+        "text": "Luận điểm của họ — ngành công nghiệp đã chi tiêu quá mức vào chip suy luận tùy chỉnh trong khi nút thắt cổ chai luôn là phần mềm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-100",
+      "text": "Mười một người, và AMD thay vì NVIDIA.",
+      "text_markdown": "Mười một người, và AMD thay vì NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Mười một người, và AMD thay vì NVIDIA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-101",
+      "text": "Ngay sau một đợt IPO chip tùy chỉnh, thời điểm đối lập hoàn hảo.",
+      "text_markdown": "Ngay sau một đợt IPO chip tùy chỉnh, thời điểm đối lập hoàn hảo.",
+      "title": "",
+      "tts": {
+        "text": "Ngay sau một đợt I P O chip tùy chỉnh, thời điểm đối lập hoàn hảo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-102",
+      "text": "Còn về phần cứng trên bàn thử nghiệm.",
+      "text_markdown": "Còn về phần cứng trên bàn thử nghiệm.",
+      "title": "",
+      "tts": {
+        "text": "Còn về phần cứng trên bàn thử nghiệm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-103",
+      "text": "Raspberry Pi đã xuất xưởng AI HAT+ 2 — bốn mươi TOPS gắn trên một Pi 5.",
+      "text_markdown": "Raspberry Pi đã xuất xưởng AI HAT+ 2 — bốn mươi TOPS gắn trên một Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi đã xuất xưởng A I H A T Plus hai — bốn mươi T O P S gắn trên một Pi năm.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-104",
+      "text": "NVIDIA Jetson Orin Nano Super đạt sáu mươi bảy TOPS với giá dưới ba trăm đô la.",
+      "text_markdown": "NVIDIA Jetson Orin Nano Super đạt sáu mươi bảy TOPS với giá dưới ba trăm đô la.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA Jetson Orin Nano Super đạt sáu mươi bảy T O P S với giá dưới ba trăm đô la.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-105",
+      "text": "Trên thiết bị từng có nghĩa là một máy Mac.",
+      "text_markdown": "Trên thiết bị từng có nghĩa là một máy Mac.",
+      "title": "",
+      "tts": {
+        "text": "Trên thiết bị từng có nghĩa là một máy Mac.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-106",
+      "text": "Bây giờ nó có nghĩa là một bo mạch bạn có thể giấu trong ngăn kéo.",
+      "text_markdown": "Bây giờ nó có nghĩa là một bo mạch bạn có thể giấu trong ngăn kéo.",
+      "title": "",
+      "tts": {
+        "text": "Bây giờ nó có nghĩa là một bo mạch bạn có thể giấu trong ngăn kéo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-107",
+      "text": "Khái niệm của tuần — khuếch tán so với tự hồi quy.",
+      "text_markdown": "Khái niệm của tuần — khuếch tán so với tự hồi quy.",
+      "title": "",
+      "tts": {
+        "text": "Khái niệm của tuần — khuếch tán so với tự hồi quy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-108",
+      "text": "Cùng một đích đến, những con đường khác nhau.",
+      "text_markdown": "Cùng một đích đến, những con đường khác nhau.",
+      "title": "",
+      "tts": {
+        "text": "Cùng một đích đến, những con đường khác nhau.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-109",
+      "text": "Các mô hình tự hồi quy, hầu hết các LLM bạn biết, tạo ra từng token một, dựa trên điều kiện đó, tạo ra token tiếp theo, lặp lại — tuần tự theo thiết kế.",
+      "text_markdown": "Các mô hình tự hồi quy, hầu hết các LLM bạn biết, tạo ra từng token một, dựa trên điều kiện đó, tạo ra token tiếp theo, lặp lại — tuần tự theo thiết kế.",
+      "title": "",
+      "tts": {
+        "text": "Các mô hình tự hồi quy, hầu hết các L L M bạn biết, tạo ra từng token một, dựa trên điều kiện đó, tạo ra token tiếp theo, lặp lại — tuần tự theo thiết kế.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-110",
+      "text": "Các mô hình khuếch tán bắt đầu với một khối nhiễu thuần túy và khử nhiễu tất cả cùng một lúc qua một số bước cố định.",
+      "text_markdown": "Các mô hình khuếch tán bắt đầu với một khối nhiễu thuần túy và khử nhiễu tất cả cùng một lúc qua một số bước cố định.",
+      "title": "",
+      "tts": {
+        "text": "Các mô hình khuếch tán bắt đầu với một khối nhiễu thuần túy và khử nhiễu tất cả cùng một lúc qua một số bước cố định.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-111",
+      "text": "Bạn đánh đổi một phần chất lượng để lấy tính song song, và với số bước nhỏ, bạn sẽ nhận được những con số thông lượng đáng kinh ngạc đó.",
+      "text_markdown": "Bạn đánh đổi một phần chất lượng để lấy tính song song, và với số bước nhỏ, bạn sẽ nhận được những con số thông lượng đáng kinh ngạc đó.",
+      "title": "",
+      "tts": {
+        "text": "Bạn đánh đổi một phần chất lượng để lấy tính song song, và với số bước nhỏ, bạn sẽ nhận được những con số thông lượng đáng kinh ngạc đó.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-112",
+      "text": "Vì vậy, DiffusionGemma là lần đầu tiên chúng ta có các trọng số mở để thực sự cảm nhận sự khác biệt.",
+      "text_markdown": "Vì vậy, DiffusionGemma là lần đầu tiên chúng ta có các trọng số mở để thực sự cảm nhận sự khác biệt.",
+      "title": "",
+      "tts": {
+        "text": "Vì vậy, DiffusionGemma là lần đầu tiên chúng ta có các trọng số mở để thực sự cảm nhận sự khác biệt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-113",
+      "text": "Lần đầu tiên ở quy mô này, vâng.",
+      "text_markdown": "Lần đầu tiên ở quy mô này, vâng.",
+      "title": "",
+      "tts": {
+        "text": "Lần đầu tiên ở quy mô này, vâng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-114",
+      "text": "Và đó là lý do tại sao các nhóm suy luận mã nguồn mở lại quan trọng trong tuần này — llama-dot-cpp, vLLM, MLX — họ là những người sẽ học cách làm cho nó hoạt động hiệu quả trên phần cứng thực tế.",
+      "text_markdown": "Và đó là lý do tại sao các nhóm suy luận mã nguồn mở lại quan trọng trong tuần này — llama-dot-cpp, vLLM, MLX — họ là những người sẽ học cách làm cho nó hoạt động hiệu quả trên phần cứng thực tế.",
+      "title": "",
+      "tts": {
+        "text": "Và đó là lý do tại sao các nhóm suy luận mã nguồn mở lại quan trọng trong tuần này — llama chấm c p p, v L L M, M L X — họ là những người sẽ học cách làm cho nó hoạt động hiệu quả trên phần cứng thực tế.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-115",
+      "text": "Một điểm dừng tốt.",
+      "text_markdown": "Một điểm dừng tốt.",
+      "title": "",
+      "tts": {
+        "text": "Một điểm dừng tốt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-116",
+      "text": "Ron, cảm ơn bạn.",
+      "text_markdown": "Ron, cảm ơn bạn.",
+      "title": "",
+      "tts": {
+        "text": "Ron, cảm ơn bạn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-117",
+      "text": "Lúc nào cũng được, Vindy.",
+      "text_markdown": "Lúc nào cũng được, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Lúc nào cũng được, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-118",
+      "text": "Đó là AI This Week cho ngày 14 tháng 6 năm 2026.",
+      "text_markdown": "Đó là AI This Week cho ngày 14 tháng 6 năm 2026.",
+      "title": "",
+      "tts": {
+        "text": "Đó là A I This Week cho ngày mười bốn tháng sáu năm hai nghìn không trăm hai mươi sáu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-119",
+      "text": "Vẫn là chương trình nhỏ bé đó, nhưng vào khung giờ Chủ Nhật mới.",
+      "text_markdown": "Vẫn là chương trình nhỏ bé đó, nhưng vào khung giờ Chủ Nhật mới.",
+      "title": "",
+      "tts": {
+        "text": "Vẫn là chương trình nhỏ bé đó, nhưng vào khung giờ Chủ Nhật mới.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-120",
+      "text": "Các ngôn ngữ sẽ tiếp tục được phát hành cho đến sáng thứ Hai; Corpán 0.18.0 có mặt ở bất cứ đâu bạn tải ứng dụng — hãy thử beatlounge.",
+      "text_markdown": "Các ngôn ngữ sẽ tiếp tục được phát hành cho đến sáng thứ Hai; Corpán 0.18.0 có mặt ở bất cứ đâu bạn tải ứng dụng — hãy thử beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Các ngôn ngữ sẽ tiếp tục được phát hành cho đến sáng thứ Hai; Corpán không chấm một tám chấm không có mặt ở bất cứ đâu bạn tải ứng dụng — hãy thử beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-121",
+      "text": "Hẹn gặp lại Chủ Nhật tới, bảo trọng.",
+      "text_markdown": "Hẹn gặp lại Chủ Nhật tới, bảo trọng.",
+      "title": "",
+      "tts": {
+        "text": "Hẹn gặp lại Chủ Nhật tới, bảo trọng.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

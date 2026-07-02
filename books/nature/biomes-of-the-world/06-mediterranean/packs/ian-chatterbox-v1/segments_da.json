@@ -1,0 +1,2401 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_mediterranean",
+  "total_segments": 162,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Middelhavsbiomet",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Middelhavsbiomet",
+      "text_markdown": "Middelhavsbiomet"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hvor dette biom vokser",
+      "text_markdown": "Hvor dette biom vokser"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Velkommen til middelhavsbiomet.",
+      "text_markdown": "Velkommen til middelhavsbiomet.",
+      "tts": {
+        "text": "Velkommen til middelhavsbiomet.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er et af verdens store biomer.",
+      "text_markdown": "Dette er et af verdens store biomer.",
+      "tts": {
+        "text": "Dette er et af verdens store biomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et biom er en del af Jorden med sit eget vejr, sine egne planter og sine egne dyr.",
+      "text_markdown": "Et biom er en del af Jorden med sit eget vejr, sine egne planter og sine egne dyr.",
+      "tts": {
+        "text": "Et biom er en del af Jorden med sit eget vejr, sine egne planter og sine egne dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Middelhavsbiomet er opkaldt efter landene omkring Middelhavet.",
+      "text_markdown": "Middelhavsbiomet er opkaldt efter landene omkring Middelhavet.",
+      "tts": {
+        "text": "Middelhavsbiomet er opkaldt efter landene omkring Middelhavet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men det vokser ikke kun der.",
+      "text_markdown": "Men det vokser ikke kun der.",
+      "tts": {
+        "text": "Men det vokser ikke kun der.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Middelhavsbiomet findes i fem små dele af verden.",
+      "text_markdown": "Middelhavsbiomet findes i fem små dele af verden.",
+      "tts": {
+        "text": "Middelhavsbiomet findes i fem små dele af verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vokser i landene omkring Middelhavet, i det sydlige Europa og langs kysten af Nordafrika.",
+      "text_markdown": "Det vokser i landene omkring Middelhavet, i det sydlige Europa og langs kysten af Nordafrika.",
+      "tts": {
+        "text": "Det vokser i landene omkring Middelhavet, i det sydlige Europa og langs kysten af Nordafrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vokser i Californien, i den vestlige del af Nordamerika.",
+      "text_markdown": "Det vokser i Californien, i den vestlige del af Nordamerika.",
+      "tts": {
+        "text": "Det vokser i Californien, i den vestlige del af Nordamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vokser langs midten af kysten i Chile, i Sydamerika.",
+      "text_markdown": "Det vokser langs midten af kysten i Chile, i Sydamerika.",
+      "tts": {
+        "text": "Det vokser langs midten af kysten i Chile, i Sydamerika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vokser nær den sydlige spids af Afrika, omkring Kap Det Gode Håb.",
+      "text_markdown": "Det vokser nær den sydlige spids af Afrika, omkring Kap Det Gode Håb.",
+      "tts": {
+        "text": "Det vokser nær den sydlige spids af Afrika, omkring Kap Det Gode Håb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vokser i de sydvestlige og sydlige dele af Australien.",
+      "text_markdown": "Det vokser i de sydvestlige og sydlige dele af Australien.",
+      "tts": {
+        "text": "Det vokser i de sydvestlige og sydlige dele af Australien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert af disse steder ligger langt fra de andre.",
+      "text_markdown": "Hvert af disse steder ligger langt fra de andre.",
+      "tts": {
+        "text": "Hvert af disse steder ligger langt fra de andre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de deler alle det samme særlige vejr.",
+      "text_markdown": "Men de deler alle det samme særlige vejr.",
+      "tts": {
+        "text": "Men de deler alle det samme særlige vejr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Somrene er varme og tørre, og vintrene er milde og våde.",
+      "text_markdown": "Somrene er varme og tørre, og vintrene er milde og våde.",
+      "tts": {
+        "text": "Somrene er varme og tørre, og vintrene er milde og våde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er sjældent på Jorden.",
+      "text_markdown": "Det er sjældent på Jorden.",
+      "tts": {
+        "text": "Det er sjældent på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste biomer har deres regntid i de varme måneder.",
+      "text_markdown": "De fleste biomer har deres regntid i de varme måneder.",
+      "tts": {
+        "text": "De fleste biomer har deres regntid i de varme måneder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Her falder regnen i de kølige måneder i stedet.",
+      "text_markdown": "Her falder regnen i de kølige måneder i stedet.",
+      "tts": {
+        "text": "Her falder regnen i de kølige måneder i stedet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert af disse fem steder har sine egne planter og dyr.",
+      "text_markdown": "Hvert af disse fem steder har sine egne planter og dyr.",
+      "tts": {
+        "text": "Hvert af disse fem steder har sine egne planter og dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men formerne er de samme.",
+      "text_markdown": "Men formerne er de samme.",
+      "tts": {
+        "text": "Men formerne er de samme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lave hårdføre buske, spredte træer, duftende urter og nøgne stenede bakker.",
+      "text_markdown": "Lave hårdføre buske, spredte træer, duftende urter og nøgne stenede bakker.",
+      "tts": {
+        "text": "Lave hårdføre buske, spredte træer, duftende urter og nøgne stenede bakker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du står i et middelhavsland om sommeren, dufter luften af tørre urter og varme sten.",
+      "text_markdown": "Når du står i et middelhavsland om sommeren, dufter luften af tørre urter og varme sten.",
+      "tts": {
+        "text": "Når du står i et middelhavsland om sommeren, dufter luften af tørre urter og varme sten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyset er stærkt og gyldent.",
+      "text_markdown": "Lyset er stærkt og gyldent.",
+      "tts": {
+        "text": "Lyset er stærkt og gyldent.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bakkerne er prikket med lave sølvgrønne buske.",
+      "text_markdown": "Bakkerne er prikket med lave sølvgrønne buske.",
+      "tts": {
+        "text": "Bakkerne er prikket med lave sølvgrønne buske.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er middelhavsbiomet.",
+      "text_markdown": "Det er middelhavsbiomet.",
+      "tts": {
+        "text": "Det er middelhavsbiomet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Hvor dette biom vokser",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lys, tør, duftende verden, der vokser i fem små hjørner af Jorden.",
+      "text_markdown": "En lys, tør, duftende verden, der vokser i fem små hjørner af Jorden.",
+      "tts": {
+        "text": "En lys, tør, duftende verden, der vokser i fem små hjørner af Jorden.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Vejret",
+      "text_markdown": "Vejret"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vejret i middelhavsbiomet er usædvanligt.",
+      "text_markdown": "Vejret i middelhavsbiomet er usædvanligt.",
+      "tts": {
+        "text": "Vejret i middelhavsbiomet er usædvanligt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er to klare årstider.",
+      "text_markdown": "Der er to klare årstider.",
+      "tts": {
+        "text": "Der er to klare årstider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er en lang, varm, tør sommer.",
+      "text_markdown": "Der er en lang, varm, tør sommer.",
+      "tts": {
+        "text": "Der er en lang, varm, tør sommer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der er en kortere, mild, våd vinter.",
+      "text_markdown": "Der er en kortere, mild, våd vinter.",
+      "tts": {
+        "text": "Der er en kortere, mild, våd vinter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren er himlen blå i flere uger ad gangen.",
+      "text_markdown": "Om sommeren er himlen blå i flere uger ad gangen.",
+      "tts": {
+        "text": "Om sommeren er himlen blå i flere uger ad gangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Solen er stærk, og luften er tør.",
+      "text_markdown": "Solen er stærk, og luften er tør.",
+      "tts": {
+        "text": "Solen er stærk, og luften er tør.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Næsten ingen regn falder i mange måneder.",
+      "text_markdown": "Næsten ingen regn falder i mange måneder.",
+      "tts": {
+        "text": "Næsten ingen regn falder i mange måneder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mod slutningen af sommeren er græsset brunt, og bækkene skrumper ind til nogle få stille vandhuller.",
+      "text_markdown": "Mod slutningen af sommeren er græsset brunt, og bækkene skrumper ind til nogle få stille vandhuller.",
+      "tts": {
+        "text": "Mod slutningen af sommeren er græsset brunt, og bækkene skrumper ind til nogle få stille vandhuller.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om efteråret kommer de første kølige vinde fra havet.",
+      "text_markdown": "Om efteråret kommer de første kølige vinde fra havet.",
+      "tts": {
+        "text": "Om efteråret kommer de første kølige vinde fra havet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skyerne samler sig, og de første kraftige regnskyl falder på den tørre jord.",
+      "text_markdown": "Skyerne samler sig, og de første kraftige regnskyl falder på den tørre jord.",
+      "tts": {
+        "text": "Skyerne samler sig, og de første kraftige regnskyl falder på den tørre jord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landet drikker vandet, og græsset bliver grønt igen.",
+      "text_markdown": "Landet drikker vandet, og græsset bliver grønt igen.",
+      "tts": {
+        "text": "Landet drikker vandet, og græsset bliver grønt igen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vintrene er ikke meget kolde.",
+      "text_markdown": "Vintrene er ikke meget kolde.",
+      "tts": {
+        "text": "Vintrene er ikke meget kolde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det sner sjældent, undtagen højt oppe i bjergene.",
+      "text_markdown": "Det sner sjældent, undtagen højt oppe i bjergene.",
+      "tts": {
+        "text": "Det sner sjældent, undtagen højt oppe i bjergene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Regnen falder i lange, bløde byger, og floderne løber fulde.",
+      "text_markdown": "Regnen falder i lange, bløde byger, og floderne løber fulde.",
+      "tts": {
+        "text": "Regnen falder i lange, bløde byger, og floderne løber fulde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om foråret er luften varm, og bakkerne er grønne.",
+      "text_markdown": "Om foråret er luften varm, og bakkerne er grønne.",
+      "tts": {
+        "text": "Om foråret er luften varm, og bakkerne er grønne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle få korte uger dækker vilde blomster hver skråning.",
+      "text_markdown": "I nogle få korte uger dækker vilde blomster hver skråning.",
+      "tts": {
+        "text": "I nogle få korte uger dækker vilde blomster hver skråning.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så begynder sommeren igen, og cyklussen starter forfra.",
+      "text_markdown": "Så begynder sommeren igen, og cyklussen starter forfra.",
+      "tts": {
+        "text": "Så begynder sommeren igen, og cyklussen starter forfra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ild er også en del af dette biom.",
+      "text_markdown": "Ild er også en del af dette biom.",
+      "tts": {
+        "text": "Ild er også en del af dette biom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I den lange tørre sommer kan et lyn eller en uforsigtig gnist sætte det tørre krat i brand.",
+      "text_markdown": "I den lange tørre sommer kan et lyn eller en uforsigtig gnist sætte det tørre krat i brand.",
+      "tts": {
+        "text": "I den lange tørre sommer kan et lyn eller en uforsigtig gnist sætte det tørre krat i brand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "chapter": 3,
+      "title": "Vejret",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange af planterne her har lært at leve med ild og at vokse hurtigt tilbage, når den passerer.",
+      "text_markdown": "Mange af planterne her har lært at leve med ild og at vokse hurtigt tilbage, når den passerer.",
+      "tts": {
+        "text": "Mange af planterne her har lært at leve med ild og at vokse hurtigt tilbage, når den passerer.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet og vandet",
+      "text_markdown": "Landet og vandet"
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landet i middelhavsbiomet er ofte bakket.",
+      "text_markdown": "Landet i middelhavsbiomet er ofte bakket.",
+      "tts": {
+        "text": "Landet i middelhavsbiomet er ofte bakket.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bjerge rejser sig tæt på kysten i mange af disse områder.",
+      "text_markdown": "Bjerge rejser sig tæt på kysten i mange af disse områder.",
+      "tts": {
+        "text": "Bjerge rejser sig tæt på kysten i mange af disse områder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Skråningerne er stenede, og jorden er ofte tynd.",
+      "text_markdown": "Skråningerne er stenede, og jorden er ofte tynd.",
+      "tts": {
+        "text": "Skråningerne er stenede, og jorden er ofte tynd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Havene og oceanerne i nærheden former vejret.",
+      "text_markdown": "Havene og oceanerne i nærheden former vejret.",
+      "tts": {
+        "text": "Havene og oceanerne i nærheden former vejret.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det kølige vand holder somrene fra at blive lige så varme som en ørken, og vintrene fra at blive lige så kolde som landene længere inde i landet.",
+      "text_markdown": "Det kølige vand holder somrene fra at blive lige så varme som en ørken, og vintrene fra at blive lige så kolde som landene længere inde i landet.",
+      "tts": {
+        "text": "Det kølige vand holder somrene fra at blive lige så varme som en ørken, og vintrene fra at blive lige så kolde som landene længere inde i landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.74
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vand er kostbart her.",
+      "text_markdown": "Vand er kostbart her.",
+      "tts": {
+        "text": "Vand er kostbart her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste floder skrumper ind til en sivende strøm mod slutningen af sommeren.",
+      "text_markdown": "De fleste floder skrumper ind til en sivende strøm mod slutningen af sommeren.",
+      "tts": {
+        "text": "De fleste floder skrumper ind til en sivende strøm mod slutningen af sommeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle mindre bække forsvinder helt.",
+      "text_markdown": "Nogle mindre bække forsvinder helt.",
+      "tts": {
+        "text": "Nogle mindre bække forsvinder helt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når vinterregnen vender tilbage, fyldes floderne hurtigt og strømmer ned ad bakkerne mod havet.",
+      "text_markdown": "Når vinterregnen vender tilbage, fyldes floderne hurtigt og strømmer ned ad bakkerne mod havet.",
+      "tts": {
+        "text": "Når vinterregnen vender tilbage, fyldes floderne hurtigt og strømmer ned ad bakkerne mod havet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle steder stiger dybt underjordisk vand op og danner en kilde.",
+      "text_markdown": "Nogle steder stiger dybt underjordisk vand op og danner en kilde.",
+      "tts": {
+        "text": "Nogle steder stiger dybt underjordisk vand op og danner en kilde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En kilde er en lille pøl af ferskvand, der strømmer ud af klippen hele året.",
+      "text_markdown": "En kilde er en lille pøl af ferskvand, der strømmer ud af klippen hele året.",
+      "tts": {
+        "text": "En kilde er en lille pøl af ferskvand, der strømmer ud af klippen hele året.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tusinder af år har mennesker, dyr og træer samlet sig omkring disse kilder.",
+      "text_markdown": "I tusinder af år har mennesker, dyr og træer samlet sig omkring disse kilder.",
+      "tts": {
+        "text": "I tusinder af år har mennesker, dyr og træer samlet sig omkring disse kilder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs kysten møder landet havet i klipper, strande og små bugter.",
+      "text_markdown": "Langs kysten møder landet havet i klipper, strande og små bugter.",
+      "tts": {
+        "text": "Langs kysten møder landet havet i klipper, strande og små bugter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Havet er fuldt af liv.",
+      "text_markdown": "Havet er fuldt af liv.",
+      "tts": {
+        "text": "Havet er fuldt af liv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fisk, blæksprutter og havfugle finder føde i det varme, salte vand.",
+      "text_markdown": "Fisk, blæksprutter og havfugle finder føde i det varme, salte vand.",
+      "tts": {
+        "text": "Fisk, blæksprutter og havfugle finder føde i det varme, salte vand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "Landet og vandet",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Biomet lever mellem landet, havet og den lange blå sommerhimmel.",
+      "text_markdown": "Biomet lever mellem landet, havet og den lange blå sommerhimmel.",
+      "tts": {
+        "text": "Biomet lever mellem landet, havet og den lange blå sommerhimmel.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Planterne",
+      "text_markdown": "Planterne"
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planterne i middelhavsbiomet er hårdføre og kløgtige.",
+      "text_markdown": "Planterne i middelhavsbiomet er hårdføre og kløgtige.",
+      "tts": {
+        "text": "Planterne i middelhavsbiomet er hårdføre og kløgtige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har lært, hvordan de skal leve gennem en lang, tør sommer.",
+      "text_markdown": "De har lært, hvordan de skal leve gennem en lang, tør sommer.",
+      "tts": {
+        "text": "De har lært, hvordan de skal leve gennem en lang, tør sommer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste af dem er ikke høje.",
+      "text_markdown": "De fleste af dem er ikke høje.",
+      "tts": {
+        "text": "De fleste af dem er ikke høje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vokser som lave buske med tykke, læderagtige blade.",
+      "text_markdown": "De vokser som lave buske med tykke, læderagtige blade.",
+      "tts": {
+        "text": "De vokser som lave buske med tykke, læderagtige blade.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bladene er små og blanke, nogle gange sølv eller gråtgrønne.",
+      "text_markdown": "Bladene er små og blanke, nogle gange sølv eller gråtgrønne.",
+      "tts": {
+        "text": "Bladene er små og blanke, nogle gange sølv eller gråtgrønne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et lille, blankt blad mister mindre vand til solen.",
+      "text_markdown": "Et lille, blankt blad mister mindre vand til solen.",
+      "tts": {
+        "text": "Et lille, blankt blad mister mindre vand til solen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et blegt blad kaster mere af sollyset væk.",
+      "text_markdown": "Et blegt blad kaster mere af sollyset væk.",
+      "tts": {
+        "text": "Et blegt blad kaster mere af sollyset væk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange af planterne afgiver en stærk, sød duft, når man strejfer dem.",
+      "text_markdown": "Mange af planterne afgiver en stærk, sød duft, når man strejfer dem.",
+      "tts": {
+        "text": "Mange af planterne afgiver en stærk, sød duft, når man strejfer dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den duft kommer fra olier inde i bladene.",
+      "text_markdown": "Den duft kommer fra olier inde i bladene.",
+      "tts": {
+        "text": "Den duft kommer fra olier inde i bladene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olierne sænker vandtabet og hjælper planten med at overleve varmen.",
+      "text_markdown": "Olierne sænker vandtabet og hjælper planten med at overleve varmen.",
+      "tts": {
+        "text": "Olierne sænker vandtabet og hjælper planten med at overleve varmen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er derfor, så mange af vores yndlingsurter til madlavning kommer fra disse lande.",
+      "text_markdown": "Det er derfor, så mange af vores yndlingsurter til madlavning kommer fra disse lande.",
+      "tts": {
+        "text": "Det er derfor, så mange af vores yndlingsurter til madlavning kommer fra disse lande.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Planter som rosmarin, salvie, timian, lavendel, mynte og oregano vokser alle vildt i middelhavsbiomet.",
+      "text_markdown": "Planter som rosmarin, salvie, timian, lavendel, mynte og oregano vokser alle vildt i middelhavsbiomet.",
+      "tts": {
+        "text": "Planter som rosmarin, salvie, timian, lavendel, mynte og oregano vokser alle vildt i middelhavsbiomet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det mest berømte træ i dette biom er oliventræet.",
+      "text_markdown": "Det mest berømte træ i dette biom er oliventræet.",
+      "tts": {
+        "text": "Det mest berømte træ i dette biom er oliventræet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et oliventræ har en tyk, snoet stamme og små, sølvgrå blade.",
+      "text_markdown": "Et oliventræ har en tyk, snoet stamme og små, sølvgrå blade.",
+      "tts": {
+        "text": "Et oliventræ har en tyk, snoet stamme og små, sølvgrå blade.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle oliventræer lever i mere end tusind år.",
+      "text_markdown": "Nogle oliventræer lever i mere end tusind år.",
+      "tts": {
+        "text": "Nogle oliventræer lever i mere end tusind år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre almindelige træer er lave stedsegrønne ege, fyrretræer og korkege.",
+      "text_markdown": "Andre almindelige træer er lave stedsegrønne ege, fyrretræer og korkege.",
+      "tts": {
+        "text": "Andre almindelige træer er lave stedsegrønne ege, fyrretræer og korkege.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den vilde vinranke begyndte også i disse lande og klatrede op af buskene.",
+      "text_markdown": "Den vilde vinranke begyndte også i disse lande og klatrede op af buskene.",
+      "tts": {
+        "text": "Den vilde vinranke begyndte også i disse lande og klatrede op af buskene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs kysten kan du finde høje bevoksninger af bambus, figentræer og mandeltræer.",
+      "text_markdown": "Langs kysten kan du finde høje bevoksninger af bambus, figentræer og mandeltræer.",
+      "tts": {
+        "text": "Langs kysten kan du finde høje bevoksninger af bambus, figentræer og mandeltræer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste af planterne her beholder deres blade hele året, i stedet for at smide dem om efteråret.",
+      "text_markdown": "De fleste af planterne her beholder deres blade hele året, i stedet for at smide dem om efteråret.",
+      "tts": {
+        "text": "De fleste af planterne her beholder deres blade hele året, i stedet for at smide dem om efteråret.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De har ikke råd til at vokse nye blade hvert forår.",
+      "text_markdown": "De har ikke råd til at vokse nye blade hvert forår.",
+      "tts": {
+        "text": "De har ikke råd til at vokse nye blade hvert forår.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Så de holder fast på små, sejlige blade hele året rundt.",
+      "text_markdown": "Så de holder fast på små, sejlige blade hele året rundt.",
+      "tts": {
+        "text": "Så de holder fast på små, sejlige blade hele året rundt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Planterne",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det giver middelhavsbiomet dets støvede, stedsegrønne udseende.",
+      "text_markdown": "Det giver middelhavsbiomet dets støvede, stedsegrønne udseende.",
+      "tts": {
+        "text": "Det giver middelhavsbiomet dets støvede, stedsegrønne udseende.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dyrene",
+      "text_markdown": "Dyrene"
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyrene i middelhavsbiomet har mange måder at leve med varmen og den tørre sommer på.",
+      "text_markdown": "Dyrene i middelhavsbiomet har mange måder at leve med varmen og den tørre sommer på.",
+      "tts": {
+        "text": "Dyrene i middelhavsbiomet har mange måder at leve med varmen og den tørre sommer på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fleste af dem er små og hurtige.",
+      "text_markdown": "De fleste af dem er små og hurtige.",
+      "tts": {
+        "text": "De fleste af dem er små og hurtige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et lille dyr kan let gemme sig under en busk eller i en sprække mellem sten.",
+      "text_markdown": "Et lille dyr kan let gemme sig under en busk eller i en sprække mellem sten.",
+      "tts": {
+        "text": "Et lille dyr kan let gemme sig under en busk eller i en sprække mellem sten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange af dem hviler gennem den varme middag og kommer ud i den kølige morgen og aften.",
+      "text_markdown": "Mange af dem hviler gennem den varme middag og kommer ud i den kølige morgen og aften.",
+      "tts": {
+        "text": "Mange af dem hviler gennem den varme middag og kommer ud i den kølige morgen og aften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kaniner og harer lever i mange af disse lande.",
+      "text_markdown": "Kaniner og harer lever i mange af disse lande.",
+      "tts": {
+        "text": "Kaniner og harer lever i mange af disse lande.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De spiser i skumringen og ved daggry, og de tilbringer dagen i en skjult hule under en busk.",
+      "text_markdown": "De spiser i skumringen og ved daggry, og de tilbringer dagen i en skjult hule under en busk.",
+      "tts": {
+        "text": "De spiser i skumringen og ved daggry, og de tilbringer dagen i en skjult hule under en busk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ræve jager kaniner og andre små dyr.",
+      "text_markdown": "Ræve jager kaniner og andre små dyr.",
+      "tts": {
+        "text": "Ræve jager kaniner og andre små dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En ræv kender hver sti gennem krattet.",
+      "text_markdown": "En ræv kender hver sti gennem krattet.",
+      "tts": {
+        "text": "En ræv kender hver sti gennem krattet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vildsvin roder i den bløde jord efter rødder, nødder og små dyr.",
+      "text_markdown": "Vildsvin roder i den bløde jord efter rødder, nødder og små dyr.",
+      "tts": {
+        "text": "Vildsvin roder i den bløde jord efter rødder, nødder og små dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De er stærke og sky, og de bevæger sig i små familiegrupper.",
+      "text_markdown": "De er stærke og sky, og de bevæger sig i små familiegrupper.",
+      "tts": {
+        "text": "De er stærke og sky, og de bevæger sig i små familiegrupper.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I nogle middelhavslande jager små vildkatte om natten.",
+      "text_markdown": "I nogle middelhavslande jager små vildkatte om natten.",
+      "tts": {
+        "text": "I nogle middelhavslande jager små vildkatte om natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Los er en af disse katte, med en kort hale og duskede ører.",
+      "text_markdown": "Los er en af disse katte, med en kort hale og duskede ører.",
+      "tts": {
+        "text": "Los er en af disse katte, med en kort hale og duskede ører.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er nu sjælden og lever kun i nogle få vilde afkroge.",
+      "text_markdown": "Den er nu sjælden og lever kun i nogle få vilde afkroge.",
+      "tts": {
+        "text": "Den er nu sjælden og lever kun i nogle få vilde afkroge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hjorte lever også i skovene i udkanten af biomet.",
+      "text_markdown": "Hjorte lever også i skovene i udkanten af biomet.",
+      "tts": {
+        "text": "Hjorte lever også i skovene i udkanten af biomet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slanger og firben er overalt.",
+      "text_markdown": "Slanger og firben er overalt.",
+      "tts": {
+        "text": "Slanger og firben er overalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et firben, der sidder på en varm sten, er et almindeligt syn om sommeren.",
+      "text_markdown": "Et firben, der sidder på en varm sten, er et almindeligt syn om sommeren.",
+      "tts": {
+        "text": "Et firben, der sidder på en varm sten, er et almindeligt syn om sommeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landskildpadder bevæger sig langsomt gennem krattet og spiser blade og græs.",
+      "text_markdown": "Landskildpadder bevæger sig langsomt gennem krattet og spiser blade og græs.",
+      "tts": {
+        "text": "Landskildpadder bevæger sig langsomt gennem krattet og spiser blade og græs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Middelhavslandskildpadden kan leve i mange årtier.",
+      "text_markdown": "Middelhavslandskildpadden kan leve i mange årtier.",
+      "tts": {
+        "text": "Middelhavslandskildpadden kan leve i mange årtier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange fugle lever her.",
+      "text_markdown": "Mange fugle lever her.",
+      "tts": {
+        "text": "Mange fugle lever her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spurve, rødhalse og sangere fylder buskene med lyd.",
+      "text_markdown": "Spurve, rødhalse og sangere fylder buskene med lyd.",
+      "tts": {
+        "text": "Spurve, rødhalse og sangere fylder buskene med lyd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Højt oppe driver ørne og andre store fugle på den varme eftermiddagsluft.",
+      "text_markdown": "Højt oppe driver ørne og andre store fugle på den varme eftermiddagsluft.",
+      "tts": {
+        "text": "Højt oppe driver ørne og andre store fugle på den varme eftermiddagsluft.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om foråret danser sommerfugle fra blomst til blomst.",
+      "text_markdown": "Om foråret danser sommerfugle fra blomst til blomst.",
+      "tts": {
+        "text": "Om foråret danser sommerfugle fra blomst til blomst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fårekyllinger og græshopper synger i de varme sommeraftener.",
+      "text_markdown": "Fårekyllinger og græshopper synger i de varme sommeraftener.",
+      "tts": {
+        "text": "Fårekyllinger og græshopper synger i de varme sommeraftener.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ved havet bygger måger og andre havfugle rede på klipperne og de stenede øer.",
+      "text_markdown": "Ved havet bygger måger og andre havfugle rede på klipperne og de stenede øer.",
+      "tts": {
+        "text": "Ved havet bygger måger og andre havfugle rede på klipperne og de stenede øer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert dyr her ved, hvordan man finder skygge om sommeren, hvordan man drikker ved kilden, og hvordan man venter på kølingen fra vinterregnen.",
+      "text_markdown": "Hvert dyr her ved, hvordan man finder skygge om sommeren, hvordan man drikker ved kilden, og hvordan man venter på kølingen fra vinterregnen.",
+      "tts": {
+        "text": "Hvert dyr her ved, hvordan man finder skygge om sommeren, hvordan man drikker ved kilden, og hvordan man venter på kølingen fra vinterregnen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Menneskene",
+      "text_markdown": "Menneskene"
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Middelhavsbiomet har været hjem for mennesker i meget lang tid.",
+      "text_markdown": "Middelhavsbiomet har været hjem for mennesker i meget lang tid.",
+      "tts": {
+        "text": "Middelhavsbiomet har været hjem for mennesker i meget lang tid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle af verdens ældste byer og gårde begyndte her.",
+      "text_markdown": "Nogle af verdens ældste byer og gårde begyndte her.",
+      "tts": {
+        "text": "Nogle af verdens ældste byer og gårde begyndte her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tusinder af år har folk ved Middelhavets kyster dyrket tre planter sammen.",
+      "text_markdown": "I tusinder af år har folk ved Middelhavets kyster dyrket tre planter sammen.",
+      "tts": {
+        "text": "I tusinder af år har folk ved Middelhavets kyster dyrket tre planter sammen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dyrker oliventræer for olien.",
+      "text_markdown": "De dyrker oliventræer for olien.",
+      "tts": {
+        "text": "De dyrker oliventræer for olien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dyrker vinstokke for at få frugt og vin.",
+      "text_markdown": "De dyrker vinstokke for at få frugt og vin.",
+      "tts": {
+        "text": "De dyrker vinstokke for at få frugt og vin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dyrker hvede og andre kornsorter til brød.",
+      "text_markdown": "De dyrker hvede og andre kornsorter til brød.",
+      "tts": {
+        "text": "De dyrker hvede og andre kornsorter til brød.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tilsammen kaldes disse tre nogle gange hjertet af middelhavsmaden.",
+      "text_markdown": "Tilsammen kaldes disse tre nogle gange hjertet af middelhavsmaden.",
+      "tts": {
+        "text": "Tilsammen kaldes disse tre nogle gange hjertet af middelhavsmaden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Til dem føjede folket grøntsager, frugter og bakkernes vilde urter.",
+      "text_markdown": "Til dem føjede folket grøntsager, frugter og bakkernes vilde urter.",
+      "tts": {
+        "text": "Til dem føjede folket grøntsager, frugter og bakkernes vilde urter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folk har også holdt flokke af får og geder i disse lande i mange tusinde år.",
+      "text_markdown": "Folk har også holdt flokke af får og geder i disse lande i mange tusinde år.",
+      "tts": {
+        "text": "Folk har også holdt flokke af får og geder i disse lande i mange tusinde år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyrene kan finde føde på de stenede skråninger, hvor det er svært at dyrke afgrøder.",
+      "text_markdown": "Dyrene kan finde føde på de stenede skråninger, hvor det er svært at dyrke afgrøder.",
+      "tts": {
+        "text": "Dyrene kan finde føde på de stenede skråninger, hvor det er svært at dyrke afgrøder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De giver mælk til ost og yoghurt, uld til tøj og kød.",
+      "text_markdown": "De giver mælk til ost og yoghurt, uld til tøj og kød.",
+      "tts": {
+        "text": "De giver mælk til ost og yoghurt, uld til tøj og kød.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fordi havene og oceanerne er tæt på, har folkene i dette biom altid været fiskere og sømænd.",
+      "text_markdown": "Fordi havene og oceanerne er tæt på, har folkene i dette biom altid været fiskere og sømænd.",
+      "tts": {
+        "text": "Fordi havene og oceanerne er tæt på, har folkene i dette biom altid været fiskere og sømænd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Træbåde sejler ud ved daggry og vender tilbage med fisk, blæksprutter og andre havfrugter.",
+      "text_markdown": "Træbåde sejler ud ved daggry og vender tilbage med fisk, blæksprutter og andre havfrugter.",
+      "tts": {
+        "text": "Træbåde sejler ud ved daggry og vender tilbage med fisk, blæksprutter og andre havfrugter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I de andre middelhavslande i verden, i Californien, Chile, det sydlige Afrika og Australien, brugte de folk, som boede der i tusinder af år, de samme vilde planter og dyr på deres egne måder.",
+      "text_markdown": "I de andre middelhavslande i verden, i Californien, Chile, det sydlige Afrika og Australien, brugte de folk, som boede der i tusinder af år, de samme vilde planter og dyr på deres egne måder.",
+      "tts": {
+        "text": "I de andre middelhavslande i verden, i Californien, Chile, det sydlige Afrika og Australien, brugte de folk, som boede der i tusinder af år, de samme vilde planter og dyr på deres egne måder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da bønder fra landene omkring Middelhavet kom til disse steder meget senere, bragte de deres oliven, deres vinranker og deres hvede med sig.",
+      "text_markdown": "Da bønder fra landene omkring Middelhavet kom til disse steder meget senere, bragte de deres oliven, deres vinranker og deres hvede med sig.",
+      "tts": {
+        "text": "Da bønder fra landene omkring Middelhavet kom til disse steder meget senere, bragte de deres oliven, deres vinranker og deres hvede med sig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I dag dyrker alle fem middelhavsområder i verden de samme slags fødevarer.",
+      "text_markdown": "I dag dyrker alle fem middelhavsområder i verden de samme slags fødevarer.",
+      "tts": {
+        "text": "I dag dyrker alle fem middelhavsområder i verden de samme slags fødevarer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landet ser ud til at indbyde til det.",
+      "text_markdown": "Landet ser ud til at indbyde til det.",
+      "tts": {
+        "text": "Landet ser ud til at indbyde til det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Køkkenerne i hvert middelhavsområde deler de samme grundlæggende gaver.",
+      "text_markdown": "Køkkenerne i hvert middelhavsområde deler de samme grundlæggende gaver.",
+      "tts": {
+        "text": "Køkkenerne i hvert middelhavsområde deler de samme grundlæggende gaver.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Brød, ost, olivenolie, friske tomater, fisk, frugt og vin.",
+      "text_markdown": "Brød, ost, olivenolie, friske tomater, fisk, frugt og vin.",
+      "tts": {
+        "text": "Brød, ost, olivenolie, friske tomater, fisk, frugt og vin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Folkene i disse lande har altid vidst, hvordan man får det meste ud af en lang, tør sommer.",
+      "text_markdown": "Folkene i disse lande har altid vidst, hvordan man får det meste ud af en lang, tør sommer.",
+      "tts": {
+        "text": "Folkene i disse lande har altid vidst, hvordan man får det meste ud af en lang, tør sommer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De spiser frisk i de varme måneder.",
+      "text_markdown": "De spiser frisk i de varme måneder.",
+      "tts": {
+        "text": "De spiser frisk i de varme måneder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De gemmer mad i olie, i salt og i krukker til den regnfulde vinter.",
+      "text_markdown": "De gemmer mad i olie, i salt og i krukker til den regnfulde vinter.",
+      "tts": {
+        "text": "De gemmer mad i olie, i salt og i krukker til den regnfulde vinter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Menneskene",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I hvert middelhavsområde har denne slags liv sine egne sprog, sange og fortællinger.",
+      "text_markdown": "I hvert middelhavsområde har denne slags liv sine egne sprog, sange og fortællinger.",
+      "tts": {
+        "text": "I hvert middelhavsområde har denne slags liv sine egne sprog, sange og fortællinger.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Biomet i dag",
+      "text_markdown": "Biomet i dag"
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Middelhavsbiomet er lille, men meget vigtigt.",
+      "text_markdown": "Middelhavsbiomet er lille, men meget vigtigt.",
+      "tts": {
+        "text": "Middelhavsbiomet er lille, men meget vigtigt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Selvom det kun dækker en lille del af Jorden, rummer det et enormt antal planter og dyr, der ikke findes andre steder.",
+      "text_markdown": "Selvom det kun dækker en lille del af Jorden, rummer det et enormt antal planter og dyr, der ikke findes andre steder.",
+      "tts": {
+        "text": "Selvom det kun dækker en lille del af Jorden, rummer det et enormt antal planter og dyr, der ikke findes andre steder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For mennesker har dette biom været vuggen for mad og landbrug i tusinder af år.",
+      "text_markdown": "For mennesker har dette biom været vuggen for mad og landbrug i tusinder af år.",
+      "tts": {
+        "text": "For mennesker har dette biom været vuggen for mad og landbrug i tusinder af år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men biomet er i fare mange steder.",
+      "text_markdown": "Men biomet er i fare mange steder.",
+      "tts": {
+        "text": "Men biomet er i fare mange steder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Byer og landsbyer er vokset op langs kysterne, hvor vejret er mildt, og havet er nær.",
+      "text_markdown": "Byer og landsbyer er vokset op langs kysterne, hvor vejret er mildt, og havet er nær.",
+      "tts": {
+        "text": "Byer og landsbyer er vokset op langs kysterne, hvor vejret er mildt, og havet er nær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veje, huse, hoteller og gårde har erstattet mange af de vilde buske og træer.",
+      "text_markdown": "Veje, huse, hoteller og gårde har erstattet mange af de vilde buske og træer.",
+      "tts": {
+        "text": "Veje, huse, hoteller og gårde har erstattet mange af de vilde buske og træer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lange tørre somre, varmere end før, gør brandene større og farligere.",
+      "text_markdown": "Lange tørre somre, varmere end før, gør brandene større og farligere.",
+      "tts": {
+        "text": "Lange tørre somre, varmere end før, gør brandene større og farligere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nogle dyr, som los og middelhavslandskildpadden, er blevet meget sjældne.",
+      "text_markdown": "Nogle dyr, som los og middelhavslandskildpadden, er blevet meget sjældne.",
+      "tts": {
+        "text": "Nogle dyr, som los og middelhavslandskildpadden, er blevet meget sjældne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange grupper rundt om i verden arbejder på at tage sig af det, der er tilbage.",
+      "text_markdown": "Mange grupper rundt om i verden arbejder på at tage sig af det, der er tilbage.",
+      "tts": {
+        "text": "Mange grupper rundt om i verden arbejder på at tage sig af det, der er tilbage.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De udlægger parker, hvor de vilde planter og dyr stadig kan leve.",
+      "text_markdown": "De udlægger parker, hvor de vilde planter og dyr stadig kan leve.",
+      "tts": {
+        "text": "De udlægger parker, hvor de vilde planter og dyr stadig kan leve.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planter nye oliventræer og beskytter de gamle.",
+      "text_markdown": "De planter nye oliventræer og beskytter de gamle.",
+      "tts": {
+        "text": "De planter nye oliventræer og beskytter de gamle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hjælper bønder med at dyrke mad på måder, der er skånsomme mod landet.",
+      "text_markdown": "De hjælper bønder med at dyrke mad på måder, der er skånsomme mod landet.",
+      "tts": {
+        "text": "De hjælper bønder med at dyrke mad på måder, der er skånsomme mod landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerer biomet, så vi kan forstå det bedre.",
+      "text_markdown": "De studerer biomet, så vi kan forstå det bedre.",
+      "tts": {
+        "text": "De studerer biomet, så vi kan forstå det bedre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et sundt middelhavsbiom er et stille, duftende, smukt sted.",
+      "text_markdown": "Et sundt middelhavsbiom er et stille, duftende, smukt sted.",
+      "tts": {
+        "text": "Et sundt middelhavsbiom er et stille, duftende, smukt sted.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "Biomet i dag",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er vores omsorg værd.",
+      "text_markdown": "Det er vores omsorg værd.",
+      "tts": {
+        "text": "Det er vores omsorg værd.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afslutning",
+      "text_markdown": "Afslutning"
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er middelhavsbiomet.",
+      "text_markdown": "Det er middelhavsbiomet.",
+      "tts": {
+        "text": "Det er middelhavsbiomet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En lys, tør, duftende verden af oliventræer, lave buske og varme sommeraftener.",
+      "text_markdown": "En lys, tør, duftende verden af oliventræer, lave buske og varme sommeraftener.",
+      "tts": {
+        "text": "En lys, tør, duftende verden af oliventræer, lave buske og varme sommeraftener.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du nogensinde står i et, så vær stille et minut.",
+      "text_markdown": "Hvis du nogensinde står i et, så vær stille et minut.",
+      "tts": {
+        "text": "Hvis du nogensinde står i et, så vær stille et minut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-159",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dufte de varme urter i luften.",
+      "text_markdown": "Dufte de varme urter i luften.",
+      "tts": {
+        "text": "Dufte de varme urter i luften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch09-160",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyt til fårekyllingerne i det tørre græs.",
+      "text_markdown": "Lyt til fårekyllingerne i det tørre græs.",
+      "tts": {
+        "text": "Lyt til fårekyllingerne i det tørre græs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-161",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se ud mod havet.",
+      "text_markdown": "Se ud mod havet.",
+      "tts": {
+        "text": "Se ud mod havet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-162",
+      "chapter": 9,
+      "title": "Afslutning",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du vil mærke biomets hjerte slå omkring dig.",
+      "text_markdown": "Du vil mærke biomets hjerte slå omkring dig.",
+      "tts": {
+        "text": "Du vil mærke biomets hjerte slå omkring dig.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

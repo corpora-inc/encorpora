@@ -1,0 +1,2311 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_forest",
+  "total_segments": 156,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "La foresta temperata",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La foresta temperata",
+      "text_markdown": "La foresta temperata"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dove crescono le foreste temperate",
+      "text_markdown": "Dove crescono le foreste temperate"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Benvenuti nella foresta temperata.",
+      "text_markdown": "Benvenuti nella foresta temperata.",
+      "tts": {
+        "text": "Benvenuti nella foresta temperata.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo è uno dei grandi biomi del mondo.",
+      "text_markdown": "Questo è uno dei grandi biomi del mondo.",
+      "tts": {
+        "text": "Questo è uno dei grandi biomi del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bioma è una parte della Terra con il proprio clima, le proprie piante e i propri animali.",
+      "text_markdown": "Un bioma è una parte della Terra con il proprio clima, le proprie piante e i propri animali.",
+      "tts": {
+        "text": "Un bioma è una parte della Terra con il proprio clima, le proprie piante e i propri animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta temperata è una foresta di alberi larghi e frondosi.",
+      "text_markdown": "La foresta temperata è una foresta di alberi larghi e frondosi.",
+      "tts": {
+        "text": "La foresta temperata è una foresta di alberi larghi e frondosi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte degli alberi qui perde le foglie una volta all'anno e ne fa crescere di nuove in primavera.",
+      "text_markdown": "La maggior parte degli alberi qui perde le foglie una volta all'anno e ne fa crescere di nuove in primavera.",
+      "tts": {
+        "text": "La maggior parte degli alberi qui perde le foglie una volta all'anno e ne fa crescere di nuove in primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi che lasciano cadere le foglie in questo modo sono chiamati alberi decidui.",
+      "text_markdown": "Gli alberi che lasciano cadere le foglie in questo modo sono chiamati alberi decidui.",
+      "tts": {
+        "text": "Gli alberi che lasciano cadere le foglie in questo modo sono chiamati alberi decidui.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le foreste temperate crescono nelle parti centrali del mondo, tra il freddo nord e i caldi tropici.",
+      "text_markdown": "Le foreste temperate crescono nelle parti centrali del mondo, tra il freddo nord e i caldi tropici.",
+      "tts": {
+        "text": "Le foreste temperate crescono nelle parti centrali del mondo, tra il freddo nord e i caldi tropici.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono grandi foreste temperate nella parte orientale dell'America del Nord.",
+      "text_markdown": "Ci sono grandi foreste temperate nella parte orientale dell'America del Nord.",
+      "tts": {
+        "text": "Ci sono grandi foreste temperate nella parte orientale dell'America del Nord.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono foreste temperate in gran parte dell'Europa.",
+      "text_markdown": "Ci sono foreste temperate in gran parte dell'Europa.",
+      "tts": {
+        "text": "Ci sono foreste temperate in gran parte dell'Europa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono foreste temperate nell'Asia orientale, in Cina, in Corea e in Giappone.",
+      "text_markdown": "Ci sono foreste temperate nell'Asia orientale, in Cina, in Corea e in Giappone.",
+      "tts": {
+        "text": "Ci sono foreste temperate nell'Asia orientale, in Cina, in Corea e in Giappone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono lembi più piccoli nel sud dell'America del Sud, nel sud est dell'Australia e nel sud della Nuova Zelanda.",
+      "text_markdown": "Ci sono lembi più piccoli nel sud dell'America del Sud, nel sud est dell'Australia e nel sud della Nuova Zelanda.",
+      "tts": {
+        "text": "Ci sono lembi più piccoli nel sud dell'America del Sud, nel sud est dell'Australia e nel sud della Nuova Zelanda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ognuna di queste foreste è cresciuta per conto proprio, lontana dalle altre.",
+      "text_markdown": "Ognuna di queste foreste è cresciuta per conto proprio, lontana dalle altre.",
+      "tts": {
+        "text": "Ognuna di queste foreste è cresciuta per conto proprio, lontana dalle altre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Così i tipi di alberi e di animali sono diversi in ogni parte del mondo.",
+      "text_markdown": "Così i tipi di alberi e di animali sono diversi in ogni parte del mondo.",
+      "tts": {
+        "text": "Così i tipi di alberi e di animali sono diversi in ogni parte del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma tutte condividono lo stesso schema.",
+      "text_markdown": "Ma tutte condividono lo stesso schema.",
+      "tts": {
+        "text": "Ma tutte condividono lo stesso schema.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una volta di alberi frondosi, un morbido tappeto di foglie cadute e quattro stagioni molto diverse.",
+      "text_markdown": "Una volta di alberi frondosi, un morbido tappeto di foglie cadute e quattro stagioni molto diverse.",
+      "tts": {
+        "text": "Una volta di alberi frondosi, un morbido tappeto di foglie cadute e quattro stagioni molto diverse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando entri in una foresta temperata, l'aria sembra fresca e gentile.",
+      "text_markdown": "Quando entri in una foresta temperata, l'aria sembra fresca e gentile.",
+      "tts": {
+        "text": "Quando entri in una foresta temperata, l'aria sembra fresca e gentile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In estate, la luce del sole cade tra le foglie in morbide chiazze verdi.",
+      "text_markdown": "In estate, la luce del sole cade tra le foglie in morbide chiazze verdi.",
+      "tts": {
+        "text": "In estate, la luce del sole cade tra le foglie in morbide chiazze verdi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, le foglie diventano gialle, arancioni e rosse.",
+      "text_markdown": "In autunno, le foglie diventano gialle, arancioni e rosse.",
+      "tts": {
+        "text": "In autunno, le foglie diventano gialle, arancioni e rosse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In inverno, gli alberi si ergono nudi contro il cielo.",
+      "text_markdown": "In inverno, gli alberi si ergono nudi contro il cielo.",
+      "tts": {
+        "text": "In inverno, gli alberi si ergono nudi contro il cielo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In primavera, spuntano piccole gemme verdi e l'intera foresta si risveglia di nuovo.",
+      "text_markdown": "In primavera, spuntano piccole gemme verdi e l'intera foresta si risveglia di nuovo.",
+      "tts": {
+        "text": "In primavera, spuntano piccole gemme verdi e l'intera foresta si risveglia di nuovo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la foresta temperata.",
+      "text_markdown": "Questa è la foresta temperata.",
+      "tts": {
+        "text": "Questa è la foresta temperata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Dove crescono le foreste temperate",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mondo verde che cambia volto quattro volte all'anno.",
+      "text_markdown": "Un mondo verde che cambia volto quattro volte all'anno.",
+      "tts": {
+        "text": "Un mondo verde che cambia volto quattro volte all'anno.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-025",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il clima",
+      "text_markdown": "Il clima"
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il clima della foresta temperata cambia molto nel corso dell'anno.",
+      "text_markdown": "Il clima della foresta temperata cambia molto nel corso dell'anno.",
+      "tts": {
+        "text": "Il clima della foresta temperata cambia molto nel corso dell'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono quattro stagioni, e ognuna è molto diversa.",
+      "text_markdown": "Ci sono quattro stagioni, e ognuna è molto diversa.",
+      "tts": {
+        "text": "Ci sono quattro stagioni, e ognuna è molto diversa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In estate, le giornate sono lunghe e calde.",
+      "text_markdown": "In estate, le giornate sono lunghe e calde.",
+      "tts": {
+        "text": "In estate, le giornate sono lunghe e calde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piove spesso, e a volte un grosso temporale si abbatte sopra gli alberi.",
+      "text_markdown": "Piove spesso, e a volte un grosso temporale si abbatte sopra gli alberi.",
+      "tts": {
+        "text": "Piove spesso, e a volte un grosso temporale si abbatte sopra gli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta è piena di foglie verdi e di canti di uccelli.",
+      "text_markdown": "La foresta è piena di foglie verdi e di canti di uccelli.",
+      "tts": {
+        "text": "La foresta è piena di foglie verdi e di canti di uccelli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, le giornate si accorciano e l'aria diventa fresca.",
+      "text_markdown": "In autunno, le giornate si accorciano e l'aria diventa fresca.",
+      "tts": {
+        "text": "In autunno, le giornate si accorciano e l'aria diventa fresca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le foglie degli alberi cambiano colore e cadono a terra.",
+      "text_markdown": "Le foglie degli alberi cambiano colore e cadono a terra.",
+      "tts": {
+        "text": "Le foglie degli alberi cambiano colore e cadono a terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una passeggiata in una foresta d'autunno è una passeggiata su un morbido e brillante tappeto di foglie.",
+      "text_markdown": "Una passeggiata in una foresta d'autunno è una passeggiata su un morbido e brillante tappeto di foglie.",
+      "tts": {
+        "text": "Una passeggiata in una foresta d'autunno è una passeggiata su un morbido e brillante tappeto di foglie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In inverno, le giornate sono brevi e le notti sono lunghe e fredde.",
+      "text_markdown": "In inverno, le giornate sono brevi e le notti sono lunghe e fredde.",
+      "tts": {
+        "text": "In inverno, le giornate sono brevi e le notti sono lunghe e fredde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In molti luoghi, la neve copre la foresta per settimane intere.",
+      "text_markdown": "In molti luoghi, la neve copre la foresta per settimane intere.",
+      "tts": {
+        "text": "In molti luoghi, la neve copre la foresta per settimane intere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I rami nudi degli alberi rimangono immobili contro un cielo grigio.",
+      "text_markdown": "I rami nudi degli alberi rimangono immobili contro un cielo grigio.",
+      "tts": {
+        "text": "I rami nudi degli alberi rimangono immobili contro un cielo grigio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti animali dormono durante il freddo o si nascondono nelle loro tane.",
+      "text_markdown": "Molti animali dormono durante il freddo o si nascondono nelle loro tane.",
+      "tts": {
+        "text": "Molti animali dormono durante il freddo o si nascondono nelle loro tane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poi arriva la primavera.",
+      "text_markdown": "Poi arriva la primavera.",
+      "tts": {
+        "text": "Poi arriva la primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La neve si scioglie, le piogge ricominciano e il terreno si riscalda.",
+      "text_markdown": "La neve si scioglie, le piogge ricominciano e il terreno si riscalda.",
+      "tts": {
+        "text": "La neve si scioglie, le piogge ricominciano e il terreno si riscalda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gemme verdi si aprono sui rami, i fiori spuntano dal suolo e la foresta si riempie di nuovo di suoni e di colori.",
+      "text_markdown": "Gemme verdi si aprono sui rami, i fiori spuntano dal suolo e la foresta si riempie di nuovo di suoni e di colori.",
+      "tts": {
+        "text": "Gemme verdi si aprono sui rami, i fiori spuntano dal suolo e la foresta si riempie di nuovo di suoni e di colori.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta temperata sa come aspettare nel freddo, e come festeggiare quando torna il caldo.",
+      "text_markdown": "La foresta temperata sa come aspettare nel freddo, e come festeggiare quando torna il caldo.",
+      "tts": {
+        "text": "La foresta temperata sa come aspettare nel freddo, e come festeggiare quando torna il caldo.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-042",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La terra e l'acqua",
+      "text_markdown": "La terra e l'acqua"
+    },
+    {
+      "id": "ch04-043",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suolo sotto una foresta temperata è ricco.",
+      "text_markdown": "Il suolo sotto una foresta temperata è ricco.",
+      "tts": {
+        "text": "Il suolo sotto una foresta temperata è ricco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per migliaia di anni, le foglie sono cadute dagli alberi e si sono trasformate lentamente in un terreno scuro e morbido.",
+      "text_markdown": "Per migliaia di anni, le foglie sono cadute dagli alberi e si sono trasformate lentamente in un terreno scuro e morbido.",
+      "tts": {
+        "text": "Per migliaia di anni, le foglie sono cadute dagli alberi e si sono trasformate lentamente in un terreno scuro e morbido.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo tipo di terreno trattiene bene l'acqua e dà agli alberi molto nutrimento.",
+      "text_markdown": "Questo tipo di terreno trattiene bene l'acqua e dà agli alberi molto nutrimento.",
+      "tts": {
+        "text": "Questo tipo di terreno trattiene bene l'acqua e dà agli alberi molto nutrimento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suolo della foresta è coperto di vecchie foglie, ramoscelli spezzati e chiazze di muschio verde.",
+      "text_markdown": "Il suolo della foresta è coperto di vecchie foglie, ramoscelli spezzati e chiazze di muschio verde.",
+      "tts": {
+        "text": "Il suolo della foresta è coperto di vecchie foglie, ramoscelli spezzati e chiazze di muschio verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando scosti le foglie, trovi un terreno scuro pieno di minuscoli esseri viventi.",
+      "text_markdown": "Quando scosti le foglie, trovi un terreno scuro pieno di minuscoli esseri viventi.",
+      "tts": {
+        "text": "Quando scosti le foglie, trovi un terreno scuro pieno di minuscoli esseri viventi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vermi e insetti si muovono al suo interno.",
+      "text_markdown": "Vermi e insetti si muovono al suo interno.",
+      "tts": {
+        "text": "Vermi e insetti si muovono al suo interno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I funghi spuntano da sotto dopo una pioggia.",
+      "text_markdown": "I funghi spuntano da sotto dopo una pioggia.",
+      "tts": {
+        "text": "I funghi spuntano da sotto dopo una pioggia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I ruscelli serpeggiano attraverso ogni foresta temperata.",
+      "text_markdown": "I ruscelli serpeggiano attraverso ogni foresta temperata.",
+      "tts": {
+        "text": "I ruscelli serpeggiano attraverso ogni foresta temperata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Scorrono freddi e limpidi in primavera, pieni di neve che si scioglie.",
+      "text_markdown": "Scorrono freddi e limpidi in primavera, pieni di neve che si scioglie.",
+      "tts": {
+        "text": "Scorrono freddi e limpidi in primavera, pieni di neve che si scioglie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In estate scorrono più lenti, con le pietre che affiorano nell'acqua bassa.",
+      "text_markdown": "In estate scorrono più lenti, con le pietre che affiorano nell'acqua bassa.",
+      "tts": {
+        "text": "In estate scorrono più lenti, con le pietre che affiorano nell'acqua bassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, foglie dorate scendono galleggiando come piccole barche.",
+      "text_markdown": "In autunno, foglie dorate scendono galleggiando come piccole barche.",
+      "tts": {
+        "text": "In autunno, foglie dorate scendono galleggiando come piccole barche.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In inverno, i ruscelli più piccoli si ghiacciano e l'acqua si nasconde sotto un tetto di ghiaccio.",
+      "text_markdown": "In inverno, i ruscelli più piccoli si ghiacciano e l'acqua si nasconde sotto un tetto di ghiaccio.",
+      "tts": {
+        "text": "In inverno, i ruscelli più piccoli si ghiacciano e l'acqua si nasconde sotto un tetto di ghiaccio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti dei grandi fiumi del mondo temperato hanno origine in queste foreste.",
+      "text_markdown": "Molti dei grandi fiumi del mondo temperato hanno origine in queste foreste.",
+      "tts": {
+        "text": "Molti dei grandi fiumi del mondo temperato hanno origine in queste foreste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi tengono insieme il terreno e alimentano i ruscelli un po' d'acqua alla volta.",
+      "text_markdown": "Gli alberi tengono insieme il terreno e alimentano i ruscelli un po' d'acqua alla volta.",
+      "tts": {
+        "text": "Gli alberi tengono insieme il terreno e alimentano i ruscelli un po' d'acqua alla volta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senza la foresta, i fiumi non sarebbero gli stessi.",
+      "text_markdown": "Senza la foresta, i fiumi non sarebbero gli stessi.",
+      "tts": {
+        "text": "Senza la foresta, i fiumi non sarebbero gli stessi.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-058",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le piante",
+      "text_markdown": "Le piante"
+    },
+    {
+      "id": "ch05-059",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi sono il cuore della foresta temperata.",
+      "text_markdown": "Gli alberi sono il cuore della foresta temperata.",
+      "tts": {
+        "text": "Gli alberi sono il cuore della foresta temperata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti di loro crescono alti e forti, con tronchi spessi e rami larghi.",
+      "text_markdown": "Molti di loro crescono alti e forti, con tronchi spessi e rami larghi.",
+      "tts": {
+        "text": "Molti di loro crescono alti e forti, con tronchi spessi e rami larghi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il loro legno è duro, e un solo albero può vivere per centinaia di anni.",
+      "text_markdown": "Il loro legno è duro, e un solo albero può vivere per centinaia di anni.",
+      "tts": {
+        "text": "Il loro legno è duro, e un solo albero può vivere per centinaia di anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni vivono anche più a lungo.",
+      "text_markdown": "Alcuni vivono anche più a lungo.",
+      "tts": {
+        "text": "Alcuni vivono anche più a lungo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi più famosi della foresta temperata sono la quercia, l'acero, il faggio e la betulla.",
+      "text_markdown": "Gli alberi più famosi della foresta temperata sono la quercia, l'acero, il faggio e la betulla.",
+      "tts": {
+        "text": "Gli alberi più famosi della foresta temperata sono la quercia, l'acero, il faggio e la betulla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In parti diverse del mondo, si trovano specie diverse di questi alberi.",
+      "text_markdown": "In parti diverse del mondo, si trovano specie diverse di questi alberi.",
+      "tts": {
+        "text": "In parti diverse del mondo, si trovano specie diverse di questi alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma condividono la stessa forma e la stessa storia annuale.",
+      "text_markdown": "Ma condividono la stessa forma e la stessa storia annuale.",
+      "tts": {
+        "text": "Ma condividono la stessa forma e la stessa storia annuale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In primavera, nuove foglie si aprono su ogni ramo.",
+      "text_markdown": "In primavera, nuove foglie si aprono su ogni ramo.",
+      "tts": {
+        "text": "In primavera, nuove foglie si aprono su ogni ramo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le foglie sono verde chiaro e morbide.",
+      "text_markdown": "Le foglie sono verde chiaro e morbide.",
+      "tts": {
+        "text": "Le foglie sono verde chiaro e morbide.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante l'estate si allargano per catturare la luce del sole.",
+      "text_markdown": "Durante l'estate si allargano per catturare la luce del sole.",
+      "tts": {
+        "text": "Durante l'estate si allargano per catturare la luce del sole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogni foglia verde trasforma la luce del sole, l'acqua e l'aria in nutrimento per l'albero.",
+      "text_markdown": "Ogni foglia verde trasforma la luce del sole, l'acqua e l'aria in nutrimento per l'albero.",
+      "tts": {
+        "text": "Ogni foglia verde trasforma la luce del sole, l'acqua e l'aria in nutrimento per l'albero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, le foglie cambiano colore prima di cadere.",
+      "text_markdown": "In autunno, le foglie cambiano colore prima di cadere.",
+      "tts": {
+        "text": "In autunno, le foglie cambiano colore prima di cadere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune diventano rosso vivo, altre risplendono di giallo e altre ancora si tingono di un marrone profondo.",
+      "text_markdown": "Alcune diventano rosso vivo, altre risplendono di giallo e altre ancora si tingono di un marrone profondo.",
+      "tts": {
+        "text": "Alcune diventano rosso vivo, altre risplendono di giallo e altre ancora si tingono di un marrone profondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I colori dipingono intere colline per poche brevi settimane.",
+      "text_markdown": "I colori dipingono intere colline per poche brevi settimane.",
+      "tts": {
+        "text": "I colori dipingono intere colline per poche brevi settimane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poi le foglie cadono e l'albero riposa nel freddo.",
+      "text_markdown": "Poi le foglie cadono e l'albero riposa nel freddo.",
+      "tts": {
+        "text": "Poi le foglie cadono e l'albero riposa nel freddo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il legno dell'albero conserva ciò di cui ha bisogno, ben dentro di sé.",
+      "text_markdown": "Il legno dell'albero conserva ciò di cui ha bisogno, ben dentro di sé.",
+      "tts": {
+        "text": "Il legno dell'albero conserva ciò di cui ha bisogno, ben dentro di sé.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando torna la primavera, l'albero ricomincia.",
+      "text_markdown": "Quando torna la primavera, l'albero ricomincia.",
+      "tts": {
+        "text": "Quando torna la primavera, l'albero ricomincia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sotto gli alberi alti, crescono piante più piccole.",
+      "text_markdown": "Sotto gli alberi alti, crescono piante più piccole.",
+      "tts": {
+        "text": "Sotto gli alberi alti, crescono piante più piccole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono cespugli con bacche che gli animali adorano.",
+      "text_markdown": "Ci sono cespugli con bacche che gli animali adorano.",
+      "tts": {
+        "text": "Ci sono cespugli con bacche che gli animali adorano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono felci e muschi morbidi sulle rocce e sui vecchi tronchi.",
+      "text_markdown": "Ci sono felci e muschi morbidi sulle rocce e sui vecchi tronchi.",
+      "tts": {
+        "text": "Ci sono felci e muschi morbidi sulle rocce e sui vecchi tronchi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "All'inizio della primavera, prima che i grandi alberi abbiano le foglie, i fiori selvatici riempiono il suolo della foresta.",
+      "text_markdown": "All'inizio della primavera, prima che i grandi alberi abbiano le foglie, i fiori selvatici riempiono il suolo della foresta.",
+      "tts": {
+        "text": "All'inizio della primavera, prima che i grandi alberi abbiano le foglie, i fiori selvatici riempiono il suolo della foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per alcune settimane, il terreno è coperto di campanule, narcisi o altri fiori vivaci.",
+      "text_markdown": "Per alcune settimane, il terreno è coperto di campanule, narcisi o altri fiori vivaci.",
+      "tts": {
+        "text": "Per alcune settimane, il terreno è coperto di campanule, narcisi o altri fiori vivaci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando gli alberi mettono le foglie e fanno ombra al suolo, i fiori svaniscono.",
+      "text_markdown": "Quando gli alberi mettono le foglie e fanno ombra al suolo, i fiori svaniscono.",
+      "tts": {
+        "text": "Quando gli alberi mettono le foglie e fanno ombra al suolo, i fiori svaniscono.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aspetteranno la prossima primavera sotto il terreno.",
+      "text_markdown": "Aspetteranno la prossima primavera sotto il terreno.",
+      "tts": {
+        "text": "Aspetteranno la prossima primavera sotto il terreno.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gli animali",
+      "text_markdown": "Gli animali"
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta temperata è la casa di molti tipi di animali.",
+      "text_markdown": "La foresta temperata è la casa di molti tipi di animali.",
+      "tts": {
+        "text": "La foresta temperata è la casa di molti tipi di animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sugli alberi e sul terreno, tutti hanno modi per vivere con il cambiare delle stagioni.",
+      "text_markdown": "Sugli alberi e sul terreno, tutti hanno modi per vivere con il cambiare delle stagioni.",
+      "tts": {
+        "text": "Sugli alberi e sul terreno, tutti hanno modi per vivere con il cambiare delle stagioni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I cervi sono comuni in molte foreste temperate.",
+      "text_markdown": "I cervi sono comuni in molte foreste temperate.",
+      "tts": {
+        "text": "I cervi sono comuni in molte foreste temperate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Camminano silenziosi tra gli alberi e mangiano foglie, erba e piccole piante.",
+      "text_markdown": "Camminano silenziosi tra gli alberi e mangiano foglie, erba e piccole piante.",
+      "tts": {
+        "text": "Camminano silenziosi tra gli alberi e mangiano foglie, erba e piccole piante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In estate il loro mantello è corto e marrone.",
+      "text_markdown": "In estate il loro mantello è corto e marrone.",
+      "tts": {
+        "text": "In estate il loro mantello è corto e marrone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In inverno il loro mantello cresce folto e grigio.",
+      "text_markdown": "In inverno il loro mantello cresce folto e grigio.",
+      "tts": {
+        "text": "In inverno il loro mantello cresce folto e grigio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche gli orsi vivono in alcune di queste foreste.",
+      "text_markdown": "Anche gli orsi vivono in alcune di queste foreste.",
+      "tts": {
+        "text": "Anche gli orsi vivono in alcune di queste foreste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un orso mangia quasi di tutto, bacche, pesce, miele e piccoli animali.",
+      "text_markdown": "Un orso mangia quasi di tutto, bacche, pesce, miele e piccoli animali.",
+      "tts": {
+        "text": "Un orso mangia quasi di tutto, bacche, pesce, miele e piccoli animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, un orso mangia quanto più può.",
+      "text_markdown": "In autunno, un orso mangia quanto più può.",
+      "tts": {
+        "text": "In autunno, un orso mangia quanto più può.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poi trova un luogo tranquillo e dorme profondamente durante la parte più fredda dell'inverno.",
+      "text_markdown": "Poi trova un luogo tranquillo e dorme profondamente durante la parte più fredda dell'inverno.",
+      "tts": {
+        "text": "Poi trova un luogo tranquillo e dorme profondamente durante la parte più fredda dell'inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I lupi e le volpi cacciano nella foresta.",
+      "text_markdown": "I lupi e le volpi cacciano nella foresta.",
+      "tts": {
+        "text": "I lupi e le volpi cacciano nella foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I lupi vivono in gruppi familiari e percorrono molte miglia ogni giorno.",
+      "text_markdown": "I lupi vivono in gruppi familiari e percorrono molte miglia ogni giorno.",
+      "tts": {
+        "text": "I lupi vivono in gruppi familiari e percorrono molte miglia ogni giorno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le volpi sono più piccole e cacciano da sole, spesso di notte.",
+      "text_markdown": "Le volpi sono più piccole e cacciano da sole, spesso di notte.",
+      "tts": {
+        "text": "Le volpi sono più piccole e cacciano da sole, spesso di notte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli scoiattoli sono ovunque.",
+      "text_markdown": "Gli scoiattoli sono ovunque.",
+      "tts": {
+        "text": "Gli scoiattoli sono ovunque.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, raccolgono noci e le seppelliscono in tutta la foresta.",
+      "text_markdown": "In autunno, raccolgono noci e le seppelliscono in tutta la foresta.",
+      "tts": {
+        "text": "In autunno, raccolgono noci e le seppelliscono in tutta la foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In inverno, dissotterrano le loro scorte nascoste per mangiarle.",
+      "text_markdown": "In inverno, dissotterrano le loro scorte nascoste per mangiarle.",
+      "tts": {
+        "text": "In inverno, dissotterrano le loro scorte nascoste per mangiarle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A volte se ne dimenticano alcune, e quelle noci diventano i prossimi alberi.",
+      "text_markdown": "A volte se ne dimenticano alcune, e quelle noci diventano i prossimi alberi.",
+      "tts": {
+        "text": "A volte se ne dimenticano alcune, e quelle noci diventano i prossimi alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I conigli e i piccoli topi vivono nel terreno morbido e sotto i tronchi caduti.",
+      "text_markdown": "I conigli e i piccoli topi vivono nel terreno morbido e sotto i tronchi caduti.",
+      "tts": {
+        "text": "I conigli e i piccoli topi vivono nel terreno morbido e sotto i tronchi caduti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti tipi di uccelli riempiono la foresta temperata di suoni.",
+      "text_markdown": "Molti tipi di uccelli riempiono la foresta temperata di suoni.",
+      "tts": {
+        "text": "Molti tipi di uccelli riempiono la foresta temperata di suoni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni uccelli restano tutto l'anno, e puoi vederli sui rami spogli dell'inverno.",
+      "text_markdown": "Alcuni uccelli restano tutto l'anno, e puoi vederli sui rami spogli dell'inverno.",
+      "tts": {
+        "text": "Alcuni uccelli restano tutto l'anno, e puoi vederli sui rami spogli dell'inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti altri uccelli volano a sud per l'inverno e tornano quando arriva la primavera.",
+      "text_markdown": "Molti altri uccelli volano a sud per l'inverno e tornano quando arriva la primavera.",
+      "tts": {
+        "text": "Molti altri uccelli volano a sud per l'inverno e tornano quando arriva la primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I picchi martellano sui tronchi degli alberi.",
+      "text_markdown": "I picchi martellano sui tronchi degli alberi.",
+      "tts": {
+        "text": "I picchi martellano sui tronchi degli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I gufi cacciano di notte.",
+      "text_markdown": "I gufi cacciano di notte.",
+      "tts": {
+        "text": "I gufi cacciano di notte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Negli stagni e nei ruscelli, le rane cantano e piccoli pesci nuotano sotto il ghiaccio in inverno.",
+      "text_markdown": "Negli stagni e nei ruscelli, le rane cantano e piccoli pesci nuotano sotto il ghiaccio in inverno.",
+      "tts": {
+        "text": "Negli stagni e nei ruscelli, le rane cantano e piccoli pesci nuotano sotto il ghiaccio in inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le farfalle e le api escono nei mesi caldi, quando i fiori si aprono.",
+      "text_markdown": "Le farfalle e le api escono nei mesi caldi, quando i fiori si aprono.",
+      "tts": {
+        "text": "Le farfalle e le api escono nei mesi caldi, quando i fiori si aprono.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogni animale qui conosce le quattro stagioni nel proprio corpo.",
+      "text_markdown": "Ogni animale qui conosce le quattro stagioni nel proprio corpo.",
+      "tts": {
+        "text": "Ogni animale qui conosce le quattro stagioni nel proprio corpo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ognuno sa quando essere attivo, quando riposare e quando svegliarsi di nuovo.",
+      "text_markdown": "Ognuno sa quando essere attivo, quando riposare e quando svegliarsi di nuovo.",
+      "tts": {
+        "text": "Ognuno sa quando essere attivo, quando riposare e quando svegliarsi di nuovo.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le persone",
+      "text_markdown": "Le persone"
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le persone vivono nella foresta temperata da molte migliaia di anni.",
+      "text_markdown": "Le persone vivono nella foresta temperata da molte migliaia di anni.",
+      "tts": {
+        "text": "Le persone vivono nella foresta temperata da molte migliaia di anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le stagioni miti e il terreno fertile hanno sempre reso questi luoghi adatti alla vita umana.",
+      "text_markdown": "Le stagioni miti e il terreno fertile hanno sempre reso questi luoghi adatti alla vita umana.",
+      "tts": {
+        "text": "Le stagioni miti e il terreno fertile hanno sempre reso questi luoghi adatti alla vita umana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molto tempo fa, le persone in queste foreste cacciavano cervi e piccoli animali.",
+      "text_markdown": "Molto tempo fa, le persone in queste foreste cacciavano cervi e piccoli animali.",
+      "tts": {
+        "text": "Molto tempo fa, le persone in queste foreste cacciavano cervi e piccoli animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Raccoglievano noci, bacche e radici dal suolo della foresta.",
+      "text_markdown": "Raccoglievano noci, bacche e radici dal suolo della foresta.",
+      "tts": {
+        "text": "Raccoglievano noci, bacche e radici dal suolo della foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sapevano quali funghi erano sicuri e quali no.",
+      "text_markdown": "Sapevano quali funghi erano sicuri e quali no.",
+      "tts": {
+        "text": "Sapevano quali funghi erano sicuri e quali no.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Costruivano le loro case con il legno degli alberi intorno a loro.",
+      "text_markdown": "Costruivano le loro case con il legno degli alberi intorno a loro.",
+      "tts": {
+        "text": "Costruivano le loro case con il legno degli alberi intorno a loro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una casa di tronchi e un tetto di corteccia può tenere una famiglia al caldo per un lungo inverno.",
+      "text_markdown": "Una casa di tronchi e un tetto di corteccia può tenere una famiglia al caldo per un lungo inverno.",
+      "tts": {
+        "text": "Una casa di tronchi e un tetto di corteccia può tenere una famiglia al caldo per un lungo inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In primavera e in estate, coltivavano cibo in piccoli campi ricavati dalla foresta.",
+      "text_markdown": "In primavera e in estate, coltivavano cibo in piccoli campi ricavati dalla foresta.",
+      "tts": {
+        "text": "In primavera e in estate, coltivavano cibo in piccoli campi ricavati dalla foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piantavano cereali, fagioli e radici che crescevano bene nel clima fresco.",
+      "text_markdown": "Piantavano cereali, fagioli e radici che crescevano bene nel clima fresco.",
+      "tts": {
+        "text": "Piantavano cereali, fagioli e radici che crescevano bene nel clima fresco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, raccoglievano il raccolto e lo conservavano per i mesi freddi.",
+      "text_markdown": "In autunno, raccoglievano il raccolto e lo conservavano per i mesi freddi.",
+      "tts": {
+        "text": "In autunno, raccoglievano il raccolto e lo conservavano per i mesi freddi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In inverno, sedevano accanto al fuoco, riparavano i loro strumenti, raccontavano storie e aspettavano la primavera.",
+      "text_markdown": "In inverno, sedevano accanto al fuoco, riparavano i loro strumenti, raccontavano storie e aspettavano la primavera.",
+      "tts": {
+        "text": "In inverno, sedevano accanto al fuoco, riparavano i loro strumenti, raccontavano storie e aspettavano la primavera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta dava loro legna per il fuoco e per costruire.",
+      "text_markdown": "La foresta dava loro legna per il fuoco e per costruire.",
+      "tts": {
+        "text": "La foresta dava loro legna per il fuoco e per costruire.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dava loro corteccia e foglie per le medicine.",
+      "text_markdown": "Dava loro corteccia e foglie per le medicine.",
+      "tts": {
+        "text": "Dava loro corteccia e foglie per le medicine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dava loro tinture per i tessuti e cibo in ogni stagione.",
+      "text_markdown": "Dava loro tinture per i tessuti e cibo in ogni stagione.",
+      "tts": {
+        "text": "Dava loro tinture per i tessuti e cibo in ogni stagione.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Col tempo, molte di queste foreste furono abbattute per fare campi e città.",
+      "text_markdown": "Col tempo, molte di queste foreste furono abbattute per fare campi e città.",
+      "tts": {
+        "text": "Col tempo, molte di queste foreste furono abbattute per fare campi e città.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I villaggi divennero paesi e i paesi divennero le grandi città del mondo temperato.",
+      "text_markdown": "I villaggi divennero paesi e i paesi divennero le grandi città del mondo temperato.",
+      "tts": {
+        "text": "I villaggi divennero paesi e i paesi divennero le grandi città del mondo temperato.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.72
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma le persone conoscono ancora la foresta attraverso le loro storie e i loro canti.",
+      "text_markdown": "Ma le persone conoscono ancora la foresta attraverso le loro storie e i loro canti.",
+      "tts": {
+        "text": "Ma le persone conoscono ancora la foresta attraverso le loro storie e i loro canti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti dei vecchi canti e racconti di queste terre sono pieni di alberi, lupi, cervi e di lunghe notti d'inverno.",
+      "text_markdown": "Molti dei vecchi canti e racconti di queste terre sono pieni di alberi, lupi, cervi e di lunghe notti d'inverno.",
+      "tts": {
+        "text": "Molti dei vecchi canti e racconti di queste terre sono pieni di alberi, lupi, cervi e di lunghe notti d'inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In ogni foresta temperata, questo modo di vivere ha le proprie lingue, i propri cibi e i propri modi di aspettare la primavera.",
+      "text_markdown": "In ogni foresta temperata, questo modo di vivere ha le proprie lingue, i propri cibi e i propri modi di aspettare la primavera.",
+      "tts": {
+        "text": "In ogni foresta temperata, questo modo di vivere ha le proprie lingue, i propri cibi e i propri modi di aspettare la primavera.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La foresta oggi",
+      "text_markdown": "La foresta oggi"
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta temperata è uno dei biomi più importanti per le persone.",
+      "text_markdown": "La foresta temperata è uno dei biomi più importanti per le persone.",
+      "tts": {
+        "text": "La foresta temperata è uno dei biomi più importanti per le persone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte delle grandi città del mondo si trova in luoghi che un tempo erano foresta temperata.",
+      "text_markdown": "La maggior parte delle grandi città del mondo si trova in luoghi che un tempo erano foresta temperata.",
+      "tts": {
+        "text": "La maggior parte delle grandi città del mondo si trova in luoghi che un tempo erano foresta temperata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le foreste ci danno legno per costruire, carta per scrivere e acqua pulita da bere.",
+      "text_markdown": "Le foreste ci danno legno per costruire, carta per scrivere e acqua pulita da bere.",
+      "tts": {
+        "text": "Le foreste ci danno legno per costruire, carta per scrivere e acqua pulita da bere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi assorbono il gas che espiriamo e lo usano per crescere.",
+      "text_markdown": "Gli alberi assorbono il gas che espiriamo e lo usano per crescere.",
+      "tts": {
+        "text": "Gli alberi assorbono il gas che espiriamo e lo usano per crescere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Restituiscono il gas che inspiriamo.",
+      "text_markdown": "Restituiscono il gas che inspiriamo.",
+      "tts": {
+        "text": "Restituiscono il gas che inspiriamo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In autunno, la foresta è una delle viste più belle della Terra.",
+      "text_markdown": "In autunno, la foresta è una delle viste più belle della Terra.",
+      "tts": {
+        "text": "In autunno, la foresta è una delle viste più belle della Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le persone viaggiano a lungo solo per vedere le foglie colorate.",
+      "text_markdown": "Le persone viaggiano a lungo solo per vedere le foglie colorate.",
+      "tts": {
+        "text": "Le persone viaggiano a lungo solo per vedere le foglie colorate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma la foresta temperata ha perso molte delle sue terre.",
+      "text_markdown": "Ma la foresta temperata ha perso molte delle sue terre.",
+      "tts": {
+        "text": "Ma la foresta temperata ha perso molte delle sue terre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel corso di migliaia di anni, gran parte della foresta originaria è stata abbattuta.",
+      "text_markdown": "Nel corso di migliaia di anni, gran parte della foresta originaria è stata abbattuta.",
+      "tts": {
+        "text": "Nel corso di migliaia di anni, gran parte della foresta originaria è stata abbattuta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dove un tempo c'erano alberi senza fine, ora ci sono campi, paesi, strade e città.",
+      "text_markdown": "Dove un tempo c'erano alberi senza fine, ora ci sono campi, paesi, strade e città.",
+      "tts": {
+        "text": "Dove un tempo c'erano alberi senza fine, ora ci sono campi, paesi, strade e città.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le foreste che restano sono più piccole e frammentate.",
+      "text_markdown": "Le foreste che restano sono più piccole e frammentate.",
+      "tts": {
+        "text": "Le foreste che restano sono più piccole e frammentate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti gruppi in tutto il mondo lavorano per prendersi cura di ciò che è rimasto.",
+      "text_markdown": "Molti gruppi in tutto il mondo lavorano per prendersi cura di ciò che è rimasto.",
+      "tts": {
+        "text": "Molti gruppi in tutto il mondo lavorano per prendersi cura di ciò che è rimasto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piantano nuovi alberi dove quelli vecchi sono andati perduti.",
+      "text_markdown": "Piantano nuovi alberi dove quelli vecchi sono andati perduti.",
+      "tts": {
+        "text": "Piantano nuovi alberi dove quelli vecchi sono andati perduti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Proteggono le vecchie foreste dall'essere abbattute.",
+      "text_markdown": "Proteggono le vecchie foreste dall'essere abbattute.",
+      "tts": {
+        "text": "Proteggono le vecchie foreste dall'essere abbattute.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Studiano la foresta così possiamo capirla meglio.",
+      "text_markdown": "Studiano la foresta così possiamo capirla meglio.",
+      "tts": {
+        "text": "Studiano la foresta così possiamo capirla meglio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una giovane foresta può ricrescere in cento anni.",
+      "text_markdown": "Una giovane foresta può ricrescere in cento anni.",
+      "tts": {
+        "text": "Una giovane foresta può ricrescere in cento anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una vecchia foresta può ospitare alberi vivi più antichi di qualsiasi edificio vicino.",
+      "text_markdown": "Una vecchia foresta può ospitare alberi vivi più antichi di qualsiasi edificio vicino.",
+      "tts": {
+        "text": "Una vecchia foresta può ospitare alberi vivi più antichi di qualsiasi edificio vicino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "La foresta oggi",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Merita la nostra cura.",
+      "text_markdown": "Merita la nostra cura.",
+      "tts": {
+        "text": "Merita la nostra cura.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Chiusura",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Chiusura",
+      "text_markdown": "Chiusura"
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Chiusura",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la foresta temperata.",
+      "text_markdown": "Questa è la foresta temperata.",
+      "tts": {
+        "text": "Questa è la foresta temperata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Chiusura",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mondo verde di alberi alti, ruscelli freschi e quattro stagioni molto diverse.",
+      "text_markdown": "Un mondo verde di alberi alti, ruscelli freschi e quattro stagioni molto diverse.",
+      "tts": {
+        "text": "Un mondo verde di alberi alti, ruscelli freschi e quattro stagioni molto diverse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Chiusura",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se mai ne attraverserai una, fermati immobile per un minuto.",
+      "text_markdown": "Se mai ne attraverserai una, fermati immobile per un minuto.",
+      "tts": {
+        "text": "Se mai ne attraverserai una, fermati immobile per un minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Chiusura",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ascolta il vento tra le foglie sopra di te.",
+      "text_markdown": "Ascolta il vento tra le foglie sopra di te.",
+      "tts": {
+        "text": "Ascolta il vento tra le foglie sopra di te.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Chiusura",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Guarda il morbido tappeto di vecchie foglie sotto i tuoi piedi.",
+      "text_markdown": "Guarda il morbido tappeto di vecchie foglie sotto i tuoi piedi.",
+      "tts": {
+        "text": "Guarda il morbido tappeto di vecchie foglie sotto i tuoi piedi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Chiusura",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sentirai il cuore del bioma battere attorno a te.",
+      "text_markdown": "Sentirai il cuore del bioma battere attorno a te.",
+      "tts": {
+        "text": "Sentirai il cuore del bioma battere attorno a te.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

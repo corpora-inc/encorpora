@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "lv",
+  "total_segments": 114,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Laipni lūgti AI Šonedēļ.",
+      "text_markdown": "Laipni lūgti AI Šonedēļ.",
+      "title": "",
+      "tts": {
+        "text": "Laipni lūgti AI Šonedēļ.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mans vārds ir Vindy.",
+      "text_markdown": "Mans vārds ir Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Mans vārds ir Vindi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ar mani, kā vienmēr, ir Rons.",
+      "text_markdown": "Ar mani, kā vienmēr, ir Rons.",
+      "title": "",
+      "tts": {
+        "text": "Ar mani, kā vienmēr, ir Rons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Prieks šeit būt, Vindy.",
+      "text_markdown": "Prieks šeit būt, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Prieks šeit būt, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Šodien ir svētdiena, 2026. gada 21. jūnijs.",
+      "text_markdown": "Šodien ir svētdiena, 2026. gada 21. jūnijs.",
+      "title": "",
+      "tts": {
+        "text": "Šodien ir svētdiena, divi tūkstoši divdesmit sestā gada divdesmit pirmā jūnija.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pagājušajā nedēļā mēs runājām par sevi; šodien mēs dodamies citā virzienā — līdz pat varas centriem.",
+      "text_markdown": "Pagājušajā nedēļā mēs runājām par sevi; šodien mēs dodamies citā virzienā — līdz pat varas centriem.",
+      "title": "",
+      "tts": {
+        "text": "Pagājušajā nedēļā mēs runājām par sevi; šodien mēs dodamies citā virzienā — līdz pat varas centriem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kurš kontrolē AI izvietošanu, kurš maksā par izbūvi, kam pieder silīcijs.",
+      "text_markdown": "Kurš kontrolē AI izvietošanu, kurš maksā par izbūvi, kam pieder silīcijs.",
+      "title": "",
+      "tts": {
+        "text": "Kurš kontrolē AI izvietošanu, kurš maksā par izbūvi, kam pieder silīcijs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tūlīt — ASV Tirdzniecības departaments pagājušajā piektdienā atsauca amerikāņu modeli no publiskas lietošanas, un mēs sāksim ar to.",
+      "text_markdown": "Tūlīt — ASV Tirdzniecības departaments pagājušajā piektdienā atsauca amerikāņu modeli no publiskas lietošanas, un mēs sāksim ar to.",
+      "title": "",
+      "tts": {
+        "text": "Tūlīt — ASV Tirdzniecības departaments pagājušajā piektdienā atsauca amerikāņu modeli no publiskas lietošanas, un mēs sāksim ar to.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pēc tam datu centru izbūve, kur paziņojumi un patiesā situācija nesakrīt.",
+      "text_markdown": "Pēc tam datu centru izbūve, kur paziņojumi un patiesā situācija nesakrīt.",
+      "title": "",
+      "tts": {
+        "text": "Pēc tam datu centru izbūve, kur paziņojumi un patiesā situācija nesakrīt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pēc tam ASV un Ķīnas salīdzinājums, kur klišejas aizstātas ar faktisko ierobežojošo faktoru.",
+      "text_markdown": "Pēc tam ASV un Ķīnas salīdzinājums, kur klišejas aizstātas ar faktisko ierobežojošo faktoru.",
+      "title": "",
+      "tts": {
+        "text": "Pēc tam ASV un Ķīnas salīdzinājums, kur klišejas aizstātas ar faktisko ierobežojošo faktoru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un nedēļas koncepcija — viena rindiņa Oracle bilancē, kas jums pasaka gandrīz visu.",
+      "text_markdown": "Un nedēļas koncepcija — viena rindiņa Oracle bilancē, kas jums pasaka gandrīz visu.",
+      "title": "",
+      "tts": {
+        "text": "Un nedēļas koncepcija — viena rindiņa Oracle bilancē, kas jums pasaka gandrīz visu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Sāksim, Ron, ar uzņēmumu Anthropic.",
+      "text_markdown": "Sāksim, Ron, ar uzņēmumu Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Sāksim, Ron, ar uzņēmumu Antropik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kas notika divpadsmitajā jūnijā.",
+      "text_markdown": "Kas notika divpadsmitajā jūnijā.",
+      "title": "",
+      "tts": {
+        "text": "Kas notika divpadsmitajā jūnijā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Piektdien, divpadsmitajā jūnijā, pulksten piecos divdesmit vienā pēcpusdienā pēc Austrumu laika, Anthropic atslēdza savus divus jaunākos modeļus — Claude Mythos pieci un Claude Fable pieci — no tiešsaistes.",
+      "text_markdown": "Piektdien, divpadsmitajā jūnijā, pulksten piecos divdesmit vienā pēcpusdienā pēc Austrumu laika, Anthropic atslēdza savus divus jaunākos modeļus — Claude Mythos pieci un Claude Fable pieci — no tiešsaistes.",
+      "title": "",
+      "tts": {
+        "text": "Piektdien, divpadsmitajā jūnijā, pulksten piecos divdesmit vienā pēcpusdienā pēc Austrumu laika, Anthropic atslēdza savus divus jaunākos modeļus — Claude Mythos pieci un Claude Fable pieci — no tiešsaistes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ne apkopes dēļ, ne pašu iniciētas drošības pārbaudes dēļ.",
+      "text_markdown": "Ne apkopes dēļ, ne pašu iniciētas drošības pārbaudes dēļ.",
+      "title": "",
+      "tts": {
+        "text": "Ne apkopes dēļ, ne pašu iniciētas drošības pārbaudes dēļ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Viņi tos atslēdza, jo ASV Tirdzniecības departaments izdeva direktīvu, atsaucoties uz eksporta kontroli.",
+      "text_markdown": "Viņi tos atslēdza, jo ASV Tirdzniecības departaments izdeva direktīvu, atsaucoties uz eksporta kontroli.",
+      "title": "",
+      "tts": {
+        "text": "Viņi tos atslēdza, jo ASV Tirdzniecības departaments izdeva direktīvu, atsaucoties uz eksporta kontroli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kāds bija tehniskais iemesls.",
+      "text_markdown": "Kāds bija tehniskais iemesls.",
+      "title": "",
+      "tts": {
+        "text": "Kāds bija tehniskais iemesls.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tika demonstrēta izlaušanās, kā ziņots, ko veica cits uzņēmums, kas radīja izvadi, ko Tirdzniecības departaments uzskatīja par eksporta kontrolētu.",
+      "text_markdown": "Tika demonstrēta izlaušanās, kā ziņots, ko veica cits uzņēmums, kas radīja izvadi, ko Tirdzniecības departaments uzskatīja par eksporta kontrolētu.",
+      "title": "",
+      "tts": {
+        "text": "Tika demonstrēta izlaušanās, kā ziņots, ko veica cits uzņēmums, kas radīja izvadi, ko Tirdzniecības departaments uzskatīja par eksporta kontrolētu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Fortune ziņoja, ka Amazon bija tas, kurš par to brīdināja Balto namu.",
+      "text_markdown": "Fortune ziņoja, ka Amazon bija tas, kurš par to brīdināja Balto namu.",
+      "title": "",
+      "tts": {
+        "text": "Fortune ziņoja, ka Amazon bija tas, kurš par to brīdināja Balto namu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un kāda bija Anthropic atbilde.",
+      "text_markdown": "Un kāda bija Anthropic atbilde.",
+      "title": "",
+      "tts": {
+        "text": "Un kāda bija Antropik atbilde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Anthropic publiski apstrīd pamatojumu.",
+      "text_markdown": "Anthropic publiski apstrīd pamatojumu.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic publiski apstrīd pamatojumu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Viņu paziņojumā šī \"jailbreak\" tika nosaukta — un es citēju — par \"šauru, neuniversālu,\" un piebilda, ka tāda pati izvade ir pieejama no citiem modeļiem, tostarp OpenAI GPT-pieci-punkti-pieci.",
+      "text_markdown": "Viņu paziņojumā šī \"jailbreak\" tika nosaukta — un es citēju — par \"šauru, neuniversālu,\" un piebilda, ka tāda pati izvade ir pieejama no citiem modeļiem, tostarp OpenAI GPT-pieci-punkti-pieci.",
+      "title": "",
+      "tts": {
+        "text": "Viņu paziņojumā šī jailbreak tika nosaukta — un es citēju — par šauru, neuniversālu, un piebilda, ka tāda pati izvade ir pieejama no citiem modeļiem, tostarp OpenAI GPT pieci punkti pieci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Viņu kopsavilkuma rinda: \"valdības rīcība balstās uz pārpratumu.\"",
+      "text_markdown": "Viņu kopsavilkuma rinda: \"valdības rīcība balstās uz pārpratumu.\"",
+      "title": "",
+      "tts": {
+        "text": "Viņu kopsavilkuma rinda: \"valdības rīcība balstās uz pārpratumu.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tas ir neparasti tiešs strīds ar ASV valdību no AI laboratorijas puses.",
+      "text_markdown": "Tas ir neparasti tiešs strīds ar ASV valdību no AI laboratorijas puses.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir neparasti tiešs strīds ar ASV valdību no AI laboratorijas puses.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tieši tā, un galvenais ir strukturālais fakts, kas aiz tā slēpjas.",
+      "text_markdown": "Tieši tā, un galvenais ir strukturālais fakts, kas aiz tā slēpjas.",
+      "title": "",
+      "tts": {
+        "text": "Tieši tā, un galvenais ir strukturālais fakts, kas aiz tā slēpjas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tirdzniecības departaments tagad var pavēlēt privātai amerikāņu AI laboratorijai atslēgt modeli, atsaucoties uz eksporta kontroli, un šis rīkojums tiek izpildīts septiņdesmit divu stundu laikā.",
+      "text_markdown": "Tirdzniecības departaments tagad var pavēlēt privātai amerikāņu AI laboratorijai atslēgt modeli, atsaucoties uz eksporta kontroli, un šis rīkojums tiek izpildīts septiņdesmit divu stundu laikā.",
+      "title": "",
+      "tts": {
+        "text": "Tirdzniecības departaments tagad var pavēlēt privātai amerikāņu AI laboratorijai atslēgt modeli, atsaucoties uz eksporta kontroli, un šis rīkojums tiek izpildīts septiņdesmit divu stundu laikā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Neatkarīgi no tā, vai uzskatāt, ka rīkojums bija pareizs.",
+      "text_markdown": "Neatkarīgi no tā, vai uzskatāt, ka rīkojums bija pareizs.",
+      "title": "",
+      "tts": {
+        "text": "Neatkarīgi no tā, vai uzskatāt, ka rīkojums bija pareizs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Neatkarīgi no tā, vai uzskatāt, ka rīkojums bija pareizs.",
+      "text_markdown": "Neatkarīgi no tā, vai uzskatāt, ka rīkojums bija pareizs.",
+      "title": "",
+      "tts": {
+        "text": "Neatkarīgi no tā, vai uzskatāt, ka rīkojums bija pareizs.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Svarīga ir pati autoritāte, ātrums un precedents.",
+      "text_markdown": "Svarīga ir pati autoritāte, ātrums un precedents.",
+      "title": "",
+      "tts": {
+        "text": "Svarīga ir pati autoritāte, ātrums un precedents.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Šeit svarīga ir arī Amazon loma.",
+      "text_markdown": "Šeit svarīga ir arī Amazon loma.",
+      "title": "",
+      "tts": {
+        "text": "Šeit svarīga ir arī Amezon loma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tā ir daļa, kurai jāpievērš uzmanība.",
+      "text_markdown": "Tā ir daļa, kurai jāpievērš uzmanība.",
+      "title": "",
+      "tts": {
+        "text": "Tā ir daļa, kurai jāpievērš uzmanība.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Amazon ir liels Anthropic investors un arī konkurē ar Anthropic pamata modeļu tirgū ar savu darbu.",
+      "text_markdown": "Amazon ir liels Anthropic investors un arī konkurē ar Anthropic pamata modeļu tirgū ar savu darbu.",
+      "title": "",
+      "tts": {
+        "text": "Amazon ir liels Anthropic investors un arī konkurē ar Anthropic pamata modeļu tirgū ar savu darbu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja konkurenta brīdinājums valdībai var atslēgt sāncenša modeli garā nedēļas nogalē, tas ir jauns veids nozares dinamikai.",
+      "text_markdown": "Ja konkurenta brīdinājums valdībai var atslēgt sāncenša modeli garā nedēļas nogalē, tas ir jauns veids nozares dinamikai.",
+      "title": "",
+      "tts": {
+        "text": "Ja konkurenta brīdinājums valdībai var atslēgt sāncenša modeli garā nedēļas nogalē, tas ir jauns veids nozares dinamikai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pāriesim pie izbūves.",
+      "text_markdown": "Pāriesim pie izbūves.",
+      "title": "",
+      "tts": {
+        "text": "Pāriesim pie izbūves.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Stargate — OpenAI, Oracle, SoftBank datu centra iniciatīva.",
+      "text_markdown": "Stargate — OpenAI, Oracle, SoftBank datu centra iniciatīva.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — OpenAI, Oracle, SoftBank datu centra iniciatīva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kādi ir faktiskie skaitļi.",
+      "text_markdown": "Kādi ir faktiskie skaitļi.",
+      "title": "",
+      "tts": {
+        "text": "Kādi ir faktiskie skaitļi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Stargate ir paziņojis par vienpadsmit gigavatu ASV jaudu.",
+      "text_markdown": "Stargate ir paziņojis par vienpadsmit gigavatu ASV jaudu.",
+      "title": "",
+      "tts": {
+        "text": "Stargate ir paziņojis par vienpadsmit gigavatu Amerikas Savienoto Valstu jaudu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Uz jūnija vidu aptuveni divi simti megavatu ir darboties spējīgi Abilene Teksasas vietnē, Pirmajā fāzē.",
+      "text_markdown": "Uz jūnija vidu aptuveni divi simti megavatu ir darboties spējīgi Abilene Teksasas vietnē, Pirmajā fāzē.",
+      "title": "",
+      "tts": {
+        "text": "Uz jūnija vidu, aptuveni divi simti megavatu ir darboties spējīgi, Abilene Teksasas vietnē, Pirmajā fāzē.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Paziņoti vienpadsmit gigavati, pieslēgti divi simti megavatu.",
+      "text_markdown": "Paziņoti vienpadsmit gigavati, pieslēgti divi simti megavatu.",
+      "title": "",
+      "tts": {
+        "text": "Paziņoti vienpadsmit gigavati, pieslēgti divi simti megavatu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tā ir visa plaisa vienā rindā.",
+      "text_markdown": "Tā ir visa plaisa vienā rindā.",
+      "title": "",
+      "tts": {
+        "text": "Tā ir visa plaisa vienā rindā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tā ir, un tīrākais piemērs atrodas Ņūmeksikā.",
+      "text_markdown": "Tā ir, un tīrākais piemērs atrodas Ņūmeksikā.",
+      "title": "",
+      "tts": {
+        "text": "Tā ir, un tīrākais piemērs atrodas Ņūmeksikā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Doña Ana apgabala vietne ir lielākais atsevišķais Stargate komplekss, plānots ar četri komats pieci gigavatiem.",
+      "text_markdown": "Doña Ana apgabala vietne ir lielākais atsevišķais Stargate komplekss, plānots ar četri komats pieci gigavatiem.",
+      "title": "",
+      "tts": {
+        "text": "Doña Ana apgabala vietne ir lielākais atsevišķais Stargate komplekss, plānots ar četri komats pieci gigavatiem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Astoņpadsmit miljardi dolāru sindicētā projekta finansējuma ir nodrošināti — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus trīs miljardu dolāru kapitāla ieguldījums no Blue Owl.",
+      "text_markdown": "Astoņpadsmit miljardi dolāru sindicētā projekta finansējuma ir nodrošināti — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus trīs miljardu dolāru kapitāla ieguldījums no Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Astoņpadsmit miljardi dolāru sindicētā projekta finansējuma ir nodrošināti — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, em u ef džī — plus trīs miljardu dolāru kapitāla ieguldījums no Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un būvniecības statuss uz vietas.",
+      "text_markdown": "Un būvniecības statuss uz vietas.",
+      "title": "",
+      "tts": {
+        "text": "Un būvniecības statuss uz vietas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pagaidām neviena lāpsta zemē.",
+      "text_markdown": "Pagaidām neviena lāpsta zemē.",
+      "title": "",
+      "tts": {
+        "text": "Pagaidām neviena lāpsta zemē.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vietne gaida gaisa kvalitātes atļauju no Ņūmeksikas Vides departamenta, sākotnēji gaidīta divdesmit otrajā aprīlī, tagad pārcelta uz divdesmit pirmo jūliju pēc vairāk nekā septiņiem tūkstošiem publisku komentāru.",
+      "text_markdown": "Vietne gaida gaisa kvalitātes atļauju no Ņūmeksikas Vides departamenta, sākotnēji gaidīta divdesmit otrajā aprīlī, tagad pārcelta uz divdesmit pirmo jūliju pēc vairāk nekā septiņiem tūkstošiem publisku komentāru.",
+      "title": "",
+      "tts": {
+        "text": "Vietne gaida gaisa kvalitātes atļauju no Ņūmeksikas Vides departamenta, sākotnēji gaidīta aprīļa divdesmit otrajā, tagad pārcelta uz jūlija divdesmit pirmo pēc vairāk nekā septiņiem tūkstošiem publisku komentāru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Astoņpadsmit miljardi dolāru apņemti, neviena lāpsta zemē, viens gaisa kvalitātes atļaujas termiņš.",
+      "text_markdown": "Astoņpadsmit miljardi dolāru apņemti, neviena lāpsta zemē, viens gaisa kvalitātes atļaujas termiņš.",
+      "title": "",
+      "tts": {
+        "text": "Astoņpadsmit miljardi dolāru apņemti, neviena lāpsta zemē, viens gaisa kvalitātes atļaujas termiņš.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kurš ir atbildīgais, ja skaitļi nesakrīt.",
+      "text_markdown": "Kurš ir atbildīgais, ja skaitļi nesakrīt.",
+      "title": "",
+      "tts": {
+        "text": "Kurš ir atbildīgais, ja skaitļi nesakrīt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tas ir tas, kur Oracle kļūst interesants.",
+      "text_markdown": "Tas ir tas, kur Oracle kļūst interesants.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir tas, kur Oracle kļūst interesants.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Oracle atlikušās izpildes saistības — grāmatvedības pozīcija, kas reģistrē līgumā noteiktos ieņēmumus, kas vēl nav piegādāti — sasniedza piecus simtus piecdesmit trīs miljardus dolāru trešajā ceturksnī, fiskālajā divi tūkstoši divdesmit sestajā gadā.",
+      "text_markdown": "Oracle atlikušās izpildes saistības — grāmatvedības pozīcija, kas reģistrē līgumā noteiktos ieņēmumus, kas vēl nav piegādāti — sasniedza piecus simtus piecdesmit trīs miljardus dolāru trešajā ceturksnī, fiskālajā divi tūkstoši divdesmit sestajā gadā.",
+      "title": "",
+      "tts": {
+        "text": "Oracle atlikušās izpildes saistības — grāmatvedības pozīcija, kas reģistrē līgumā noteiktos ieņēmumus, kas vēl nav piegādāti — sasniedza piecus simtus piecdesmit trīs miljardus dolāru trešajā ceturksnī, fiskālajā divi tūkstoši divdesmit sestajā gadā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tas ir par trīs simti divdesmit pieciem procentiem vairāk nekā iepriekšējā gadā, un lielākā daļa šī pieauguma publiski tiek saistīta ar OpenAI un Stargate.",
+      "text_markdown": "Tas ir par trīs simti divdesmit pieciem procentiem vairāk nekā iepriekšējā gadā, un lielākā daļa šī pieauguma publiski tiek saistīta ar OpenAI un Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir par trīs simti divdesmit pieciem procentiem vairāk nekā iepriekšējā gadā, un lielākā daļa šī pieauguma publiski tiek saistīta ar OpenAI un Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un parādu puse.",
+      "text_markdown": "Un parādu puse.",
+      "title": "",
+      "tts": {
+        "text": "Un parādu puse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kopējie aizņēmumi sasniedza simts trīsdesmit četrus komats sešus miljardus dolāru uz divdesmit astoto februāri.",
+      "text_markdown": "Kopējie aizņēmumi sasniedza simts trīsdesmit četrus komats sešus miljardus dolāru uz divdesmit astoto februāri.",
+      "title": "",
+      "tts": {
+        "text": "Kopējie aizņēmumi sasniedza simts trīsdesmit četrus komats sešus miljardus dolāru uz divdesmit astoto februāri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Oracle februārī vien piesaistīja trīsdesmit miljardus — investīciju kategorijas obligācijas plus obligāti konvertējamās priekšrocību akcijas — un deviņu mēnešu periodā emitēja četrdesmit trīs miljardus dolāru jaunu vecāko obligāciju.",
+      "text_markdown": "Oracle februārī vien piesaistīja trīsdesmit miljardus — investīciju kategorijas obligācijas plus obligāti konvertējamās priekšrocību akcijas — un deviņu mēnešu periodā emitēja četrdesmit trīs miljardus dolāru jaunu vecāko obligāciju.",
+      "title": "",
+      "tts": {
+        "text": "Oracle februārī vien piesaistīja trīsdesmit miljardus — investīciju kategorijas obligācijas plus obligāti konvertējamās priekšrocību akcijas — un deviņu mēnešu periodā emitēja četrdesmit trīs miljardus dolāru jaunu vecāko obligāciju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tātad apkoposim situāciju.",
+      "text_markdown": "Tātad apkoposim situāciju.",
+      "title": "",
+      "tts": {
+        "text": "Tātad apkoposim situāciju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pieci simti piecdesmit trīs miljardi dolāru solījumos, simts trīsdesmit četri miljardi dolāru parādos un viens liels klients, kas uzņemas lielāko daļu riska.",
+      "text_markdown": "Pieci simti piecdesmit trīs miljardi dolāru solījumos, simts trīsdesmit četri miljardi dolāru parādos un viens liels klients, kas uzņemas lielāko daļu riska.",
+      "title": "",
+      "tts": {
+        "text": "Pieci simti piecdesmit trīs miljardi dolāru solījumos, simts trīsdesmit četri miljardi dolāru parādos un viens liels klients, kas uzņemas lielāko daļu riska.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tā ir izbūves struktūra vienā teikumā.",
+      "text_markdown": "Tā ir izbūves struktūra vienā teikumā.",
+      "title": "",
+      "tts": {
+        "text": "Tā ir izbūves struktūra vienā teikumā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pāriesim pie ASV un Ķīnas salīdzinājuma.",
+      "text_markdown": "Pāriesim pie ASV un Ķīnas salīdzinājuma.",
+      "title": "",
+      "tts": {
+        "text": "Pāriesim pie Amerikas Savienoto Valstu un Ķīnas salīdzinājuma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Klišejā teikts, ka Ķīna atpaliek par vairākiem mēnešiem.",
+      "text_markdown": "Klišejā teikts, ka Ķīna atpaliek par vairākiem mēnešiem.",
+      "title": "",
+      "tts": {
+        "text": "Klišejā teikts, ka Ķīna atpaliek par vairākiem mēnešiem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Klišejā ir kļūda, jo tā mēra nepareizo lietu.",
+      "text_markdown": "Klišejā ir kļūda, jo tā mēra nepareizo lietu.",
+      "title": "",
+      "tts": {
+        "text": "Klišejā ir kļūda, jo tā mēra nepareizo lietu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pirmdien, devītajā jūnijā, Bloomberg ziņoja par Ķīnas Nacionālās Attīstības un Reformu komisijas plāna projektu — divi triljoni juaņu, aptuveni divi simti deviņdesmit pieci miljardi dolāru, valsts mēroga AI datu centru tīklam līdz divi tūkstoši divdesmit astotajam gadam.",
+      "text_markdown": "Pirmdien, devītajā jūnijā, Bloomberg ziņoja par Ķīnas Nacionālās Attīstības un Reformu komisijas plāna projektu — divi triljoni juaņu, aptuveni divi simti deviņdesmit pieci miljardi dolāru, valsts mēroga AI datu centru tīklam līdz divi tūkstoši divdesmit astotajam gadam.",
+      "title": "",
+      "tts": {
+        "text": "Pirmdien, jūnija devītajā, Bloomberg ziņoja par Ķīnas Nacionālās Attīstības un Reformu komisijas plāna projektu — divi triljoni juaņu, aptuveni divi simti deviņdesmit pieci miljardi dolāru, valsts mēroga A I datu centru tīklam līdz divi tūkstoši divdesmit astotajam gadam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Plāns paredz astoņdesmit procentu vietējo silīciju un tiktu darbināts kā viena savstarpēji savienota skaitļošanas infrastruktūra, ko nodrošinātu China Mobile un China Telecom.",
+      "text_markdown": "Plāns paredz astoņdesmit procentu vietējo silīciju un tiktu darbināts kā viena savstarpēji savienota skaitļošanas infrastruktūra, ko nodrošinātu China Mobile un China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Plāns paredz astoņdesmit procentu vietējo silīciju un tiktu darbināts kā viena savstarpēji savienota skaitļošanas infrastruktūra, ko nodrošinātu China Mobile un China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-063",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un kur ir šī plāna āķis?",
+      "text_markdown": "Un kur ir šī plāna āķis?",
+      "title": "",
+      "tts": {
+        "text": "Un kur ir šī plāna āķis?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-064",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Divi triljoni juaņu, astoņdesmit procentu vietējā silīcija, divi tūkstoši divdesmit astotā gada termiņš — un āķis ir tas, ka ierobežojošais faktors nav loģikas mikroshēmas, bet gan augstas joslas platuma atmiņa.",
+      "text_markdown": "Divi triljoni juaņu, astoņdesmit procentu vietējā silīcija, divi tūkstoši divdesmit astotā gada termiņš — un āķis ir tas, ka ierobežojošais faktors nav loģikas mikroshēmas, bet gan augstas joslas platuma atmiņa.",
+      "title": "",
+      "tts": {
+        "text": "Divi triljoni juaņu, astoņdesmit procentu vietējā silīcija, divi tūkstoši divdesmit astotā gada termiņš — un āķis ir tas, ka ierobežojošais faktors nav loģikas mikroshēmas, bet gan augstas joslas platuma atmiņa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-065",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Izskaidrojiet mums to.",
+      "text_markdown": "Izskaidrojiet mums to.",
+      "title": "",
+      "tts": {
+        "text": "Izskaidrojiet mums to.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-066",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Katram AI paātrinātājam ir nepieciešamas HBM kaudzes, kas piestiprinātas loģikas matricai.",
+      "text_markdown": "Katram AI paātrinātājam ir nepieciešamas HBM kaudzes, kas piestiprinātas loģikas matricai.",
+      "title": "",
+      "tts": {
+        "text": "Katram AI paātrinātājam ir nepieciešamas HBM kaudzes, kas piestiprinātas loģikas matricai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-067",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Bez HBM mikroshēma ir tikai papīra smagums.",
+      "text_markdown": "Bez HBM mikroshēma ir tikai papīra smagums.",
+      "title": "",
+      "tts": {
+        "text": "Bez HBM mikroshēma ir tikai papīra smagums.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-068",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ķīna uzkrāja aptuveni trīspadsmit miljonus HBM kaudžu, pirms eksporta kontroles tika slēgtas — vienpadsmit komats četri miljoni tikai no Samsung.",
+      "text_markdown": "Ķīna uzkrāja aptuveni trīspadsmit miljonus HBM kaudžu, pirms eksporta kontroles tika slēgtas — vienpadsmit komats četri miljoni tikai no Samsung.",
+      "title": "",
+      "tts": {
+        "text": "Ķīna uzkrāja aptuveni trīspadsmit miljonus HBM kaudžu, pirms eksporta kontroles tika slēgtas — vienpadsmit komats četri miljoni tikai no Samsung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-069",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Pie Huawei Ascend deviņi desmit C iepakojuma koeficientiem, šis krājums ir pietiekams aptuveni vienam komats sešiem miljoniem mikroshēmu.",
+      "text_markdown": "Pie Huawei Ascend deviņi desmit C iepakojuma koeficientiem, šis krājums ir pietiekams aptuveni vienam komats sešiem miljoniem mikroshēmu.",
+      "title": "",
+      "tts": {
+        "text": "Pie Huawei Ascend deviņi desmit C iepakojuma koeficientiem, šis krājums ir pietiekams aptuveni vienam komats sešiem miljoniem mikroshēmu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-070",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un tad piegāde beidzas.",
+      "text_markdown": "Un tad piegāde beidzas.",
+      "title": "",
+      "tts": {
+        "text": "Un tad piegāde beidzas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-071",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tad piegāde beidzas — trīspadsmit miljoni HBM kaudžu, pietiekami vienam komats sešiem miljoniem mikroshēmu, un tas ir griesti.",
+      "text_markdown": "Tad piegāde beidzas — trīspadsmit miljoni HBM kaudžu, pietiekami vienam komats sešiem miljoniem mikroshēmu, un tas ir griesti.",
+      "title": "",
+      "tts": {
+        "text": "Tad piegāde beidzas — trīspadsmit miljoni HBM kaudžu, pietiekami vienam komats sešiem miljoniem mikroshēmu, un tas ir griesti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-072",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vietējā Ķīnas HBM no CXMT ir paredzēta aptuveni diviem miljoniem kaudžu divi tūkstoši divdesmit sestajā gadā — pietiekami varbūt diviem simtiem piecdesmit līdz trīs simtiem tūkstošiem paātrinātāju.",
+      "text_markdown": "Vietējā Ķīnas HBM no CXMT ir paredzēta aptuveni diviem miljoniem kaudžu divi tūkstoši divdesmit sestajā gadā — pietiekami varbūt diviem simtiem piecdesmit līdz trīs simtiem tūkstošiem paātrinātāju.",
+      "title": "",
+      "tts": {
+        "text": "Vietējā Ķīnas HBM no C X M T ir paredzēta aptuveni diviem miljoniem kaudžu divi tūkstoši divdesmit sestajā gadā — pietiekami varbūt diviem simtiem piecdesmit līdz trīs simtiem tūkstošiem paātrinātāju.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-073",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tātad, kā izskatās Huawei silīcija plāni?",
+      "text_markdown": "Tātad, kā izskatās Huawei silīcija plāni?",
+      "title": "",
+      "tts": {
+        "text": "Tātad, kā izskatās Huawei silīcija plāni?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-074",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Bloomberg, atsaucoties uz Huawei plāniem, norādīja, ka divi tūkstoši divdesmit sestā gada ražošana būs seši simti tūkstoši deviņi desmit C mikroshēmu, ar plašāku Ascend produktu līniju, kas sasniegs līdz vienam komats sešiem miljoniem matricu kopumā.",
+      "text_markdown": "Bloomberg, atsaucoties uz Huawei plāniem, norādīja, ka divi tūkstoši divdesmit sestā gada ražošana būs seši simti tūkstoši deviņi desmit C mikroshēmu, ar plašāku Ascend produktu līniju, kas sasniegs līdz vienam komats sešiem miljoniem matricu kopumā.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, atsaucoties uz Huawei plāniem, norādīja, ka divi tūkstoši divdesmit sestā gada ražošana būs seši simti tūkstoši deviņi desmit C mikroshēmu, ar plašāku Ascend produktu līniju, kas sasniegs līdz vienam komats sešiem miljoniem matricu kopumā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-075",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Šis skaitlis, seši simti tūkstoši, ir mērķis, nevis piegādātā produkcija.",
+      "text_markdown": "Šis skaitlis, seši simti tūkstoši, ir mērķis, nevis piegādātā produkcija.",
+      "title": "",
+      "tts": {
+        "text": "Šis skaitlis, seši simti tūkstoši, ir mērķis, nevis piegādātā produkcija.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-076",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Un atsevišķi, pirms eksporta kontroles tos atslēdza, Huawei uzkrāja vairāk nekā divi komats deviņi miljoni Ascend matricu, kas tika ražotas TSMC, izmantojot Sophgo un Bitmain fiktīvās kompānijas.",
+      "text_markdown": "Un atsevišķi, pirms eksporta kontroles tos atslēdza, Huawei uzkrāja vairāk nekā divi komats deviņi miljoni Ascend matricu, kas tika ražotas TSMC, izmantojot Sophgo un Bitmain fiktīvās kompānijas.",
+      "title": "",
+      "tts": {
+        "text": "Un atsevišķi, pirms eksporta kontroles tos atslēdza, Huawei uzkrāja vairāk nekā divi komats deviņi miljoni Ascend matricu, kas tika ražotas T S M C, izmantojot Sophgo un Bitmain fiktīvās kompānijas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-077",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Eksporta kontroles darba naratīvā ir divu komats deviņu miljonu matricu liels caurums.",
+      "text_markdown": "Eksporta kontroles darba naratīvā ir divu komats deviņu miljonu matricu liels caurums.",
+      "title": "",
+      "tts": {
+        "text": "Eksporta kontroles darba naratīvā ir divu komats deviņu miljonu matricu liels caurums.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-078",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ātri apskatīsim virsrakstus.",
+      "text_markdown": "Ātri apskatīsim virsrakstus.",
+      "title": "",
+      "tts": {
+        "text": "Ātri apskatīsim virsrakstus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-079",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pirmais virsraksts šonedēļ, Broadcom.",
+      "text_markdown": "Pirmais virsraksts šonedēļ, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Pirmais virsraksts šonedēļ, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-080",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Broadcom tirgus kapitalizācija ir aptuveni divi triljoni dolāru.",
+      "text_markdown": "Broadcom tirgus kapitalizācija ir aptuveni divi triljoni dolāru.",
+      "title": "",
+      "tts": {
+        "text": "Broadcom tirgus kapitalizācija ir aptuveni divi triljoni dolāru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-081",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Viņu izpilddirektors Hoks Tans (Hock Tan) trešā jūnija peļņas izziņošanas zvanā atkārtoti apstiprināja simts miljardu dolāru AI pusvadītāju ieņēmumu mērķi divi tūkstoši divdesmit septītajam fiskālajam gadam, ko atbalsta aptuveni septiņdesmit trīs miljardi dolāru AI neizpildīto pasūtījumu un ilgtermiņa līgumi ar Alphabet un Meta, kas stiepjas līdz divi tūkstoši trīsdesmit pirmajam gadam.",
+      "text_markdown": "Viņu izpilddirektors Hoks Tans (Hock Tan) trešā jūnija peļņas izziņošanas zvanā atkārtoti apstiprināja simts miljardu dolāru AI pusvadītāju ieņēmumu mērķi divi tūkstoši divdesmit septītajam fiskālajam gadam, ko atbalsta aptuveni septiņdesmit trīs miljardi dolāru AI neizpildīto pasūtījumu un ilgtermiņa līgumi ar Alphabet un Meta, kas stiepjas līdz divi tūkstoši trīsdesmit pirmajam gadam.",
+      "title": "",
+      "tts": {
+        "text": "Viņu izpilddirektors Hoks Tans (Hock Tan) jūnija trešā peļņas izziņošanas zvanā atkārtoti apstiprināja simts miljardu dolāru A I pusvadītāju ieņēmumu mērķi divi tūkstoši divdesmit septītajam fiskālajam gadam, ko atbalsta aptuveni septiņdesmit trīs miljardi dolāru A I neizpildīto pasūtījumu un ilgtermiņa līgumi ar Alphabet un Meta, kas stiepjas līdz divi tūkstoši trīsdesmit pirmajam gadam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-082",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Divu triljonu dolāru tirgus kapitalizācija, simts miljardu dolāru AI ieņēmumu mērķis, gandrīz nekāda mazumtirdzniecības zīmola atpazīstamība.",
+      "text_markdown": "Divu triljonu dolāru tirgus kapitalizācija, simts miljardu dolāru AI ieņēmumu mērķis, gandrīz nekāda mazumtirdzniecības zīmola atpazīstamība.",
+      "title": "",
+      "tts": {
+        "text": "Divu triljonu dolāru tirgus kapitalizācija, simts miljardu dolāru A I ieņēmumu mērķis, gandrīz nekāda mazumtirdzniecības zīmola atpazīstamība.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-083",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Otrais virsraksts šonedēļ, ASML.",
+      "text_markdown": "Otrais virsraksts šonedēļ, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Otrais virsraksts šonedēļ, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-084",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "ASML, Nīderlandes uzņēmums, kas būvē litogrāfijas iekārtas, no kurām atkarīga visa vadošā loģika, pārdod savu High-N.A. E.U.V. sistēmu par aptuveni trīs simti septiņdesmit miljoniem dolāru.",
+      "text_markdown": "ASML, Nīderlandes uzņēmums, kas būvē litogrāfijas iekārtas, no kurām atkarīga visa vadošā loģika, pārdod savu High-N.A. E.U.V. sistēmu par aptuveni trīs simti septiņdesmit miljoniem dolāru.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, Nīderlandes uzņēmums, kas būvē litogrāfijas iekārtas, no kurām atkarīga visa vadošā loģika, pārdod savu High N A E U V sistēmu par aptuveni trīs simti septiņdesmit miljoniem dolāru.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-085",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Globālā ražošanas jauda ir mazāka par divdesmit vienībām gadā.",
+      "text_markdown": "Globālā ražošanas jauda ir mazāka par divdesmit vienībām gadā.",
+      "title": "",
+      "tts": {
+        "text": "Globālā ražošanas jauda ir mazāka par divdesmit vienībām gadā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-086",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Trīs simti septiņdesmit miljoni dolāru par mašīnu, mazāk nekā divdesmit mašīnas gadā, viena kompānija tās ražo — tas ir faktiskais vājais punkts globālajā silīcijā, nevis politika.",
+      "text_markdown": "Trīs simti septiņdesmit miljoni dolāru par mašīnu, mazāk nekā divdesmit mašīnas gadā, viena kompānija tās ražo — tas ir faktiskais vājais punkts globālajā silīcijā, nevis politika.",
+      "title": "",
+      "tts": {
+        "text": "Trīs simti septiņdesmit miljoni dolāru par mašīnu, mazāk nekā divdesmit mašīnas gadā, viena kompānija tās ražo — tas ir faktiskais vājais punkts globālajā silīcijā, nevis politika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-087",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Trešais virsraksts šonedēļ, eksporta kontroles.",
+      "text_markdown": "Trešais virsraksts šonedēļ, eksporta kontroles.",
+      "title": "",
+      "tts": {
+        "text": "Trešais virsraksts šonedēļ, eksporta kontroles.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-088",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tirdzniecības departaments atcēla Baidena ēras AI izplatīšanas noteikumu trīspadsmitajā maijā, divi tūkstoši divdesmit piektajā gadā, un neizsniedza jaunu B.I.S. izpildes precizējumu līdz trīsdesmit pirmajai maijam, divi tūkstoši divdesmit sestajā gadā.",
+      "text_markdown": "Tirdzniecības departaments atcēla Baidena ēras AI izplatīšanas noteikumu trīspadsmitajā maijā, divi tūkstoši divdesmit piektajā gadā, un neizsniedza jaunu B.I.S. izpildes precizējumu līdz trīsdesmit pirmajai maijam, divi tūkstoši divdesmit sestajā gadā.",
+      "title": "",
+      "tts": {
+        "text": "Tirdzniecības departaments atcēla Baidena ēras A I izplatīšanas noteikumu maija trīspadsmitajā, divi tūkstoši divdesmit piektajā gadā, un neizsniedza jaunu B I S izpildes precizējumu līdz maija trīsdesmit pirmajai, divi tūkstoši divdesmit sestajā gadā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-089",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tas ir aptuveni gada garumā ilgs periods, kurā licencēšanas prasības netika aktīvi īstenotas.",
+      "text_markdown": "Tas ir aptuveni gada garumā ilgs periods, kurā licencēšanas prasības netika aktīvi īstenotas.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir aptuveni gada garumā ilgs periods, kurā licencēšanas prasības netika aktīvi īstenotas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-090",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tātad, saskaitiet dienas.",
+      "text_markdown": "Tātad, saskaitiet dienas.",
+      "title": "",
+      "tts": {
+        "text": "Tātad, saskaitiet dienas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-091",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Septiņdesmit divas stundas, lai apturētu ASV modeli, trīssimt astoņdesmit dienas, lai ieviestu čipu eksporta noteikumu — šī asimetrija ir galvenais.",
+      "text_markdown": "Septiņdesmit divas stundas, lai apturētu ASV modeli, trīssimt astoņdesmit dienas, lai ieviestu čipu eksporta noteikumu — šī asimetrija ir galvenais.",
+      "title": "",
+      "tts": {
+        "text": "Septiņdesmit divas stundas, lai apturētu Amerikas Savienoto Valstu modeli, trīssimt astoņdesmit dienas, lai ieviestu čipu eksporta noteikumu — šī asimetrija ir galvenais.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-092",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un kur palika čipi šajās trīssimt astoņdesmit dienās.",
+      "text_markdown": "Un kur palika čipi šajās trīssimt astoņdesmit dienās.",
+      "title": "",
+      "tts": {
+        "text": "Un kur palika čipi šajās trīssimt astoņdesmit dienās.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-093",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Lielākā daļa no tiem nonāca Dienvidaustrumāzijā.",
+      "text_markdown": "Lielākā daļa no tiem nonāca Dienvidaustrumāzijā.",
+      "title": "",
+      "tts": {
+        "text": "Lielākā daļa no tiem nonāca Dienvidaustrumāzijā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-094",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tieslietu departaments marta beigās atslepenoja apsūdzības, apgalvojot, ka Nvidia H-100 un A-100 čipi tika novirzīti caur Malaizijas un Singapūras starpniekiem.",
+      "text_markdown": "Tieslietu departaments marta beigās atslepenoja apsūdzības, apgalvojot, ka Nvidia H-100 un A-100 čipi tika novirzīti caur Malaizijas un Singapūras starpniekiem.",
+      "title": "",
+      "tts": {
+        "text": "Tieslietu departaments marta beigās atslepenoja apsūdzības, apgalvojot, ka Nvidia H simts un A simts čipi tika novirzīti caur Malaizijas un Singapūras starpniekiem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-095",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Žurnāls Fortune maijā publicēja šifrētas īsziņas, kas parādīja loģistiku, un Super Micro ir iesaistīts divu ar pusi miljardu dolāru vērtā fiktīvu uzņēmumu lietā.",
+      "text_markdown": "Žurnāls Fortune maijā publicēja šifrētas īsziņas, kas parādīja loģistiku, un Super Micro ir iesaistīts divu ar pusi miljardu dolāru vērtā fiktīvu uzņēmumu lietā.",
+      "title": "",
+      "tts": {
+        "text": "Žurnāls Fortune maijā publicēja šifrētas īsziņas, kas parādīja loģistiku, un Super Micro ir iesaistīts divu ar pusi miljardu dolāru vērtā fiktīvu uzņēmumu lietā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-096",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Trampa administrācija saskaņā ar ziņām izstrādā jaunus čipu eksporta ierobežojumus, kas īpaši vērsti pret Malaiziju un Taizemi.",
+      "text_markdown": "Trampa administrācija saskaņā ar ziņām izstrādā jaunus čipu eksporta ierobežojumus, kas īpaši vērsti pret Malaiziju un Taizemi.",
+      "title": "",
+      "tts": {
+        "text": "Trampa administrācija saskaņā ar ziņām izstrādā jaunus čipu eksporta ierobežojumus, kas īpaši vērsti pret Malaiziju un Taizemi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-097",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tātad aina vienā rindā.",
+      "text_markdown": "Tātad aina vienā rindā.",
+      "title": "",
+      "tts": {
+        "text": "Tātad aina vienā rindā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-098",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Čipi nelido uz Šeņdžeņu — tie vispirms lido uz Penangas un Singapūras pusi.",
+      "text_markdown": "Čipi nelido uz Šeņdžeņu — tie vispirms lido uz Penangas un Singapūras pusi.",
+      "title": "",
+      "tts": {
+        "text": "Čipi nelido uz Šeņdžeņu — tie vispirms lido uz Penangas un Singapūras pusi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-099",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nedēļas jēdziens — Atlikušās izpildes saistības.",
+      "text_markdown": "Nedēļas jēdziens — Atlikušās izpildes saistības.",
+      "title": "",
+      "tts": {
+        "text": "Nedēļas jēdziens — Atlikušās izpildes saistības.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-100",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "R.P.O. ir grāmatvedības rinda, kas reģistrē to līgumu dolāru vērtību, ko uzņēmums ir parakstījis, bet vēl nav izpildījis.",
+      "text_markdown": "R.P.O. ir grāmatvedības rinda, kas reģistrē to līgumu dolāru vērtību, ko uzņēmums ir parakstījis, bet vēl nav izpildījis.",
+      "title": "",
+      "tts": {
+        "text": "Er Pē O ir grāmatvedības rinda, kas reģistrē to līgumu dolāru vērtību, ko uzņēmums ir parakstījis, bet vēl nav izpildījis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-101",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Tas ir uz nākotni vērsts — tas stāsta par nākotnes ieņēmumiem, nevis naudu bankā šodien.",
+      "text_markdown": "Tas ir uz nākotni vērsts — tas stāsta par nākotnes ieņēmumiem, nevis naudu bankā šodien.",
+      "title": "",
+      "tts": {
+        "text": "Tas ir uz nākotni vērsts — tas stāsta par nākotnes ieņēmumiem, nevis naudu bankā šodien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-102",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Un kāpēc tas ir svarīgi Oracle.",
+      "text_markdown": "Un kāpēc tas ir svarīgi Oracle.",
+      "title": "",
+      "tts": {
+        "text": "Un kāpēc tas ir svarīgi Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-103",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Jo piecsimt piecdesmit trīs miljardi dolāru R.P.O., kas lielā mērā koncentrēti pie viena klienta vienam izbūves projektam, nozīmē, ka Oracle ir apsolījis piegādāt milzīgu apjomu skaitļošanas jaudas nākamo vairāku gadu laikā klientam, kura paša ieņēmumu modelis joprojām tiek apspriests.",
+      "text_markdown": "Jo piecsimt piecdesmit trīs miljardi dolāru R.P.O., kas lielā mērā koncentrēti pie viena klienta vienam izbūves projektam, nozīmē, ka Oracle ir apsolījis piegādāt milzīgu apjomu skaitļošanas jaudas nākamo vairāku gadu laikā klientam, kura paša ieņēmumu modelis joprojām tiek apspriests.",
+      "title": "",
+      "tts": {
+        "text": "Jo piecsimt piecdesmit trīs miljardi dolāru Er Pē O, kas lielā mērā koncentrēti pie viena klienta vienam izbūves projektam, nozīmē, ka Oracle ir apsolījis piegādāt milzīgu apjomu skaitļošanas jaudas nākamo vairāku gadu laikā klientam, kura paša ieņēmumu modelis joprojām tiek apspriests.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-104",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja šie līgumi tiks izpildīti, Oracle būs noslēdzis desmitgades darījumu.",
+      "text_markdown": "Ja šie līgumi tiks izpildīti, Oracle būs noslēdzis desmitgades darījumu.",
+      "title": "",
+      "tts": {
+        "text": "Ja šie līgumi tiks izpildīti, Oracle būs noslēdzis desmitgades darījumu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-105",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ja tie aizkavējas — vai tiek pārrunāti — Oracle nesīs parādu, kamēr līgumi saruks.",
+      "text_markdown": "Ja tie aizkavējas — vai tiek pārrunāti — Oracle nesīs parādu, kamēr līgumi saruks.",
+      "title": "",
+      "tts": {
+        "text": "Ja tie aizkavējas — vai tiek pārrunāti — Oracle nesīs parādu, kamēr līgumi saruks.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-106",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tātad, kad redzat R.P.O. skaitli tehnoloģiju uzņēmuma paziņojumā.",
+      "text_markdown": "Tātad, kad redzat R.P.O. skaitli tehnoloģiju uzņēmuma paziņojumā.",
+      "title": "",
+      "tts": {
+        "text": "Tātad, kad redzat R.P.O. skaitli tehnoloģiju uzņēmuma paziņojumā.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-107",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Izlasiet, kas ir klienti, cik koncentrētas ir saistības un kam būtu jānotiek, lai uzņēmums tās patiešām izpildītu.",
+      "text_markdown": "Izlasiet, kas ir klienti, cik koncentrētas ir saistības un kam būtu jānotiek, lai uzņēmums tās patiešām izpildītu.",
+      "title": "",
+      "tts": {
+        "text": "Izlasiet, kas ir klienti, cik koncentrētas ir saistības un kam būtu jānotiek, lai uzņēmums tās patiešām izpildītu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-108",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "R.P.O. ir vieta, kur apakšpiezīmēs parādās zaudējumu nesēji.",
+      "text_markdown": "R.P.O. ir vieta, kur apakšpiezīmēs parādās zaudējumu nesēji.",
+      "title": "",
+      "tts": {
+        "text": "Er Pē O ir vieta, kur apakšpiezīmēs parādās zaudējumu nesēji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-109",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Laba vieta, kur piezemēties.",
+      "text_markdown": "Laba vieta, kur piezemēties.",
+      "title": "",
+      "tts": {
+        "text": "Laba vieta, kur piezemēties.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-110",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, paldies par kopsavilkumu.",
+      "text_markdown": "Ron, paldies par kopsavilkumu.",
+      "title": "",
+      "tts": {
+        "text": "Ron, paldies par kopsavilkumu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-111",
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Jebkurā laikā, Vindy — prieks šeit būt.",
+      "text_markdown": "Jebkurā laikā, Vindy — prieks šeit būt.",
+      "title": "",
+      "tts": {
+        "text": "Jebkurā laikā, Vindy — prieks šeit būt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-112",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tas bija AI Šonedēļ divdesmit pirmajam jūnijam, divi tūkstoši divdesmit sestajam gadam.",
+      "text_markdown": "Tas bija AI Šonedēļ divdesmit pirmajam jūnijam, divi tūkstoši divdesmit sestajam gadam.",
+      "title": "",
+      "tts": {
+        "text": "Tas bija AI Šonedēļ divdesmit pirmajam jūnijam, divi tūkstoši divdesmit sestajam gadam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-113",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nākamnedēļ atgriezīsimies pie atvērtajiem modeļiem un mazo laboratoriju ritma.",
+      "text_markdown": "Nākamnedēļ atgriezīsimies pie atvērtajiem modeļiem un mazo laboratoriju ritma.",
+      "title": "",
+      "tts": {
+        "text": "Nākamnedēļ atgriezīsimies pie atvērtajiem modeļiem un mazo laboratoriju ritma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-114",
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Līdz nākamajai svētdienai, uz redzēšanos.",
+      "text_markdown": "Līdz nākamajai svētdienai, uz redzēšanos.",
+      "title": "",
+      "tts": {
+        "text": "Līdz nākamajai svētdienai, uz redzēšanos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

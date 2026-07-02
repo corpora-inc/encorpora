@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "ko",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "독자에게 드리는 말씀",
+      "text_markdown": "독자에게 드리는 말씀"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이백 년 동안 기차는 세상의 철길이었습니다.",
+      "text_markdown": "이백 년 동안 기차는 세상의 철길이었습니다.",
+      "tts": {
+        "text": "이백 년 동안 기차는 세상의 철길이었습니다.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기차는 사람을 실어 나릅니다.",
+      "text_markdown": "기차는 사람을 실어 나릅니다.",
+      "tts": {
+        "text": "기차는 사람을 실어 나릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기차는 물건을 실어 나릅니다.",
+      "text_markdown": "기차는 물건을 실어 나릅니다.",
+      "tts": {
+        "text": "기차는 물건을 실어 나릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "긴 기차는 마을 하나가 먹을 만큼의 곡식을 실을 수 있습니다.",
+      "text_markdown": "긴 기차는 마을 하나가 먹을 만큼의 곡식을 실을 수 있습니다.",
+      "tts": {
+        "text": "긴 기차는 마을 하나가 먹을 만큼의 곡식을 실을 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "빠른 기차는 고속도로를 달리는 자동차보다 더 빨리 갈 수 있습니다.",
+      "text_markdown": "빠른 기차는 고속도로를 달리는 자동차보다 더 빨리 갈 수 있습니다.",
+      "tts": {
+        "text": "빠른 기차는 고속도로를 달리는 자동차보다 더 빨리 갈 수 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "독자에게 드리는 말씀",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기차의 이야기는 거의 이백 년 전 영국에서 한 사람과 불, 그리고 끓는 물주전자와 함께 시작됩니다.",
+      "text_markdown": "기차의 이야기는 거의 이백 년 전 영국에서 한 사람과 불, 그리고 끓는 물주전자와 함께 시작됩니다.",
+      "tts": {
+        "text": "기차의 이야기는 거의 이백 년 전 영국에서 한 사람과 불, 그리고 끓는 물주전자와 함께 시작됩니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "1장 — 첫 번째 증기 기관차",
+      "text_markdown": "1장 — 첫 번째 증기 기관차"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기차는 쇠 레일 위를 달리는 여러 칸의 차량입니다.",
+      "text_markdown": "기차는 쇠 레일 위를 달리는 여러 칸의 차량입니다.",
+      "tts": {
+        "text": "기차는 쇠 레일 위를 달리는 여러 칸의 차량입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "맨 앞 칸은 기관차입니다.",
+      "text_markdown": "맨 앞 칸은 기관차입니다.",
+      "tts": {
+        "text": "맨 앞 칸은 기관차입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기관차가 나머지 칸들을 모두 끌어갑니다.",
+      "text_markdown": "기관차가 나머지 칸들을 모두 끌어갑니다.",
+      "tts": {
+        "text": "기관차가 나머지 칸들을 모두 끌어갑니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처음의 기차는 증기로 움직였습니다.",
+      "text_markdown": "처음의 기차는 증기로 움직였습니다.",
+      "tts": {
+        "text": "처음의 기차는 증기로 움직였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "증기 기관은 석탄을 태워 물을 끓입니다.",
+      "text_markdown": "증기 기관은 석탄을 태워 물을 끓입니다.",
+      "tts": {
+        "text": "증기 기관은 석탄을 태워 물을 끓입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "뜨거운 증기가 피스톤을 밀어냅니다.",
+      "text_markdown": "뜨거운 증기가 피스톤을 밀어냅니다.",
+      "tts": {
+        "text": "뜨거운 증기가 피스톤을 밀어냅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "피스톤이 바퀴를 돌립니다.",
+      "text_markdown": "피스톤이 바퀴를 돌립니다.",
+      "tts": {
+        "text": "피스톤이 바퀴를 돌립니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "바퀴는 레일 위를 달립니다.",
+      "text_markdown": "바퀴는 레일 위를 달립니다.",
+      "tts": {
+        "text": "바퀴는 레일 위를 달립니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "이 이야기는 영국에서 시작됩니다.",
+      "text_markdown": "이 이야기는 영국에서 시작됩니다.",
+      "tts": {
+        "text": "이 이야기는 영국에서 시작됩니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1825년에 누구나 이용할 수 있는 첫 철도가 문을 열었습니다.",
+      "text_markdown": "1825년에 누구나 이용할 수 있는 첫 철도가 문을 열었습니다.",
+      "tts": {
+        "text": "천팔백이십오 년에 누구나 이용할 수 있는 첫 철도가 문을 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 이름은 스톡턴 앤드 달링턴 철도였습니다.",
+      "text_markdown": "그 이름은 스톡턴 앤드 달링턴 철도였습니다.",
+      "tts": {
+        "text": "그 이름은 스톡턴 앤드 달링턴 철도였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 철도는 광산에서 강까지 석탄을 실어 날랐습니다.",
+      "text_markdown": "그 철도는 광산에서 강까지 석탄을 실어 날랐습니다.",
+      "tts": {
+        "text": "그 철도는 광산에서 강까지 석탄을 실어 날랐습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "조지 스티븐슨이라는 사람이 그 기관차들을 만들었습니다.",
+      "text_markdown": "조지 스티븐슨이라는 사람이 그 기관차들을 만들었습니다.",
+      "tts": {
+        "text": "조지 스티븐슨이라는 사람이 그 기관차들을 만들었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사람들은 그를 철도의 아버지라고 불렀습니다.",
+      "text_markdown": "사람들은 그를 철도의 아버지라고 불렀습니다.",
+      "tts": {
+        "text": "사람들은 그를 철도의 아버지라고 불렀습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1829년에 그의 아들 로버트 스티븐슨은 로켓이라는 유명한 기관차를 만들었습니다.",
+      "text_markdown": "1829년에 그의 아들 로버트 스티븐슨은 로켓이라는 유명한 기관차를 만들었습니다.",
+      "tts": {
+        "text": "천팔백이십구 년에 그의 아들 로버트 스티븐슨은 로켓이라는 유명한 기관차를 만들었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 기관차는 가장 빠른 기차를 뽑는 경주에서 이겼습니다.",
+      "text_markdown": "그 기관차는 가장 빠른 기차를 뽑는 경주에서 이겼습니다.",
+      "tts": {
+        "text": "그 기관차는 가장 빠른 기차를 뽑는 경주에서 이겼습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "로켓은 시속 거의 30마일까지 달릴 수 있었습니다.",
+      "text_markdown": "로켓은 시속 거의 30마일까지 달릴 수 있었습니다.",
+      "tts": {
+        "text": "로켓은 시속 거의 삼십 마일까지 달릴 수 있었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 속도는 어떤 말보다도 빨랐습니다.",
+      "text_markdown": "그 속도는 어떤 말보다도 빨랐습니다.",
+      "tts": {
+        "text": "그 속도는 어떤 말보다도 빨랐습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "1장 — 첫 번째 증기 기관차",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기차의 시대가 시작되었습니다.",
+      "text_markdown": "기차의 시대가 시작되었습니다.",
+      "tts": {
+        "text": "기차의 시대가 시작되었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "2장 — 철길이 퍼져 나가다",
+      "text_markdown": "2장 — 철길이 퍼져 나가다"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "로켓이 나온 뒤 철도는 빠르게 퍼져 나갔습니다.",
+      "text_markdown": "로켓이 나온 뒤 철도는 빠르게 퍼져 나갔습니다.",
+      "tts": {
+        "text": "로켓이 나온 뒤 철도는 빠르게 퍼져 나갔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "영국은 수천 마일의 선로를 놓았습니다.",
+      "text_markdown": "영국은 수천 마일의 선로를 놓았습니다.",
+      "tts": {
+        "text": "영국은 수천 마일의 선로를 놓았습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그리고 다른 나라들도 뒤따랐습니다.",
+      "text_markdown": "그리고 다른 나라들도 뒤따랐습니다.",
+      "tts": {
+        "text": "그리고 다른 나라들도 뒤따랐습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1830년에 미국의 첫 대형 철도가 문을 열었습니다.",
+      "text_markdown": "1830년에 미국의 첫 대형 철도가 문을 열었습니다.",
+      "tts": {
+        "text": "천팔백삼십 년에 미국의 첫 대형 철도가 문을 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 이름은 볼티모어 앤드 오하이오 철도였습니다.",
+      "text_markdown": "그 이름은 볼티모어 앤드 오하이오 철도였습니다.",
+      "tts": {
+        "text": "그 이름은 볼티모어 앤드 오하이오 철도였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 철도는 볼티모어와 오하이오강을 이었습니다.",
+      "text_markdown": "그 철도는 볼티모어와 오하이오강을 이었습니다.",
+      "tts": {
+        "text": "그 철도는 볼티모어와 오하이오강을 이었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "프랑스에서는 1832년에 첫 철도가 문을 열었습니다.",
+      "text_markdown": "프랑스에서는 1832년에 첫 철도가 문을 열었습니다.",
+      "tts": {
+        "text": "프랑스에서는 천팔백삼십이 년에 첫 철도가 문을 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 철도도 영국 노선처럼 석탄을 실어 날랐습니다.",
+      "text_markdown": "그 철도도 영국 노선처럼 석탄을 실어 날랐습니다.",
+      "tts": {
+        "text": "그 철도도 영국 노선처럼 석탄을 실어 날랐습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "독일에서는 1839년에 첫 장거리 철도가 문을 열었습니다.",
+      "text_markdown": "독일에서는 1839년에 첫 장거리 철도가 문을 열었습니다.",
+      "tts": {
+        "text": "독일에서는 천팔백삼십구 년에 첫 장거리 철도가 문을 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 철도는 라이프치히와 드레스덴, 두 도시 사이를 달렸습니다.",
+      "text_markdown": "그 철도는 라이프치히와 드레스덴, 두 도시 사이를 달렸습니다.",
+      "tts": {
+        "text": "그 철도는 라이프치히와 드레스덴, 두 도시 사이를 달렸습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "러시아는 1837년에 첫 철도를 놓았습니다.",
+      "text_markdown": "러시아는 1837년에 첫 철도를 놓았습니다.",
+      "tts": {
+        "text": "러시아는 천팔백삼십칠 년에 첫 철도를 놓았습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 노선은 상트페테르부르크에서 가까운 마을까지 이어졌습니다.",
+      "text_markdown": "그 노선은 상트페테르부르크에서 가까운 마을까지 이어졌습니다.",
+      "tts": {
+        "text": "그 노선은 상트페테르부르크에서 가까운 마을까지 이어졌습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "철도를 만드는 일은 힘든 일이었습니다.",
+      "text_markdown": "철도를 만드는 일은 힘든 일이었습니다.",
+      "tts": {
+        "text": "철도를 만드는 일은 힘든 일이었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "사람들은 산을 뚫어 터널을 팠습니다.",
+      "text_markdown": "사람들은 산을 뚫어 터널을 팠습니다.",
+      "tts": {
+        "text": "사람들은 산을 뚫어 터널을 팠습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그들은 강 위에 다리를 놓았습니다.",
+      "text_markdown": "그들은 강 위에 다리를 놓았습니다.",
+      "tts": {
+        "text": "그들은 강 위에 다리를 놓았습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 레일 하나하나를 손으로 놓았습니다.",
+      "text_markdown": "그들은 레일 하나하나를 손으로 놓았습니다.",
+      "tts": {
+        "text": "그들은 레일 하나하나를 손으로 놓았습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "철길을 따라 마을이 자라났습니다.",
+      "text_markdown": "철길을 따라 마을이 자라났습니다.",
+      "tts": {
+        "text": "철길을 따라 마을이 자라났습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "작은 마을도 역이 생기면 도시가 될 수 있었습니다.",
+      "text_markdown": "작은 마을도 역이 생기면 도시가 될 수 있었습니다.",
+      "tts": {
+        "text": "작은 마을도 역이 생기면 도시가 될 수 있었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기차는 사람들을 데려왔습니다.",
+      "text_markdown": "기차는 사람들을 데려왔습니다.",
+      "tts": {
+        "text": "기차는 사람들을 데려왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "기차는 물건을 실어 왔습니다.",
+      "text_markdown": "기차는 물건을 실어 왔습니다.",
+      "tts": {
+        "text": "기차는 물건을 실어 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "2장 — 철길이 퍼져 나가다",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "기차는 세상을 조금 더 가깝게 만들었습니다.",
+      "text_markdown": "기차는 세상을 조금 더 가깝게 만들었습니다.",
+      "tts": {
+        "text": "기차는 세상을 조금 더 가깝게 만들었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "3장 — 거대한 철도 노선들",
+      "text_markdown": "3장 — 거대한 철도 노선들"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 철도는 짧습니다.",
+      "text_markdown": "어떤 철도는 짧습니다.",
+      "tts": {
+        "text": "어떤 철도는 짧습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어떤 철도는 아주 깁니다.",
+      "text_markdown": "어떤 철도는 아주 깁니다.",
+      "tts": {
+        "text": "어떤 철도는 아주 깁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "가장 긴 노선들은 대륙 전체를 가로질렀습니다.",
+      "text_markdown": "가장 긴 노선들은 대륙 전체를 가로질렀습니다.",
+      "tts": {
+        "text": "가장 긴 노선들은 대륙 전체를 가로질렀습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "미국에서는 두 회사가 나라를 가로지르는 철도를 만들었습니다.",
+      "text_markdown": "미국에서는 두 회사가 나라를 가로지르는 철도를 만들었습니다.",
+      "tts": {
+        "text": "미국에서는 두 회사가 나라를 가로지르는 철도를 만들었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "한 회사는 캘리포니아에서 시작해 동쪽으로 나아갔습니다.",
+      "text_markdown": "한 회사는 캘리포니아에서 시작해 동쪽으로 나아갔습니다.",
+      "tts": {
+        "text": "한 회사는 캘리포니아에서 시작해 동쪽으로 나아갔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다른 회사는 네브래스카에서 시작해 서쪽으로 나아갔습니다.",
+      "text_markdown": "다른 회사는 네브래스카에서 시작해 서쪽으로 나아갔습니다.",
+      "tts": {
+        "text": "다른 회사는 네브래스카에서 시작해 서쪽으로 나아갔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그들은 유타주의 프로몬토리 서밋이라는 곳에서 만났습니다.",
+      "text_markdown": "그들은 유타주의 프로몬토리 서밋이라는 곳에서 만났습니다.",
+      "tts": {
+        "text": "그들은 유타주의 프로몬토리 서밋이라는 곳에서 만났습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그것은 1869년의 일이었습니다.",
+      "text_markdown": "그것은 1869년의 일이었습니다.",
+      "tts": {
+        "text": "그것은 천팔백육십구 년의 일이었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마지막 못은 금으로 만들어졌습니다.",
+      "text_markdown": "마지막 못은 금으로 만들어졌습니다.",
+      "tts": {
+        "text": "마지막 못은 금으로 만들어졌습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "사람들은 그것을 골든 스파이크라고 불렀습니다.",
+      "text_markdown": "사람들은 그것을 골든 스파이크라고 불렀습니다.",
+      "tts": {
+        "text": "사람들은 그것을 골든 스파이크라고 불렀습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 노선은 대륙횡단철도라고 불렸습니다.",
+      "text_markdown": "그 노선은 대륙횡단철도라고 불렸습니다.",
+      "tts": {
+        "text": "그 노선은 대륙횡단철도라고 불렸습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이제 사람들은 기차를 타고 한 바다에서 다른 바다까지 약 일주일 만에 갈 수 있었습니다.",
+      "text_markdown": "이제 사람들은 기차를 타고 한 바다에서 다른 바다까지 약 일주일 만에 갈 수 있었습니다.",
+      "tts": {
+        "text": "이제 사람들은 기차를 타고 한 바다에서 다른 바다까지 약 일주일 만에 갈 수 있었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "러시아는 그보다 더 긴 노선을 만들었습니다.",
+      "text_markdown": "러시아는 그보다 더 긴 노선을 만들었습니다.",
+      "tts": {
+        "text": "러시아는 그보다 더 긴 노선을 만들었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 이름은 시베리아 횡단 철도입니다.",
+      "text_markdown": "그 이름은 시베리아 횡단 철도입니다.",
+      "tts": {
+        "text": "그 이름은 시베리아 횡단 철도입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 철도는 서쪽의 모스크바에서 동쪽의 블라디보스토크까지 이어집니다.",
+      "text_markdown": "그 철도는 서쪽의 모스크바에서 동쪽의 블라디보스토크까지 이어집니다.",
+      "tts": {
+        "text": "그 철도는 서쪽의 모스크바에서 동쪽의 블라디보스토크까지 이어집니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 노선은 1916년에 완성되었습니다.",
+      "text_markdown": "그 노선은 1916년에 완성되었습니다.",
+      "tts": {
+        "text": "그 노선은 천구백십육 년에 완성되었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "그 길이는 9천 킬로미터가 넘습니다.",
+      "text_markdown": "그 길이는 9천 킬로미터가 넘습니다.",
+      "tts": {
+        "text": "그 길이는 구천 킬로미터가 넘습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "끝까지 가는 데는 약 7일이 걸립니다.",
+      "text_markdown": "끝까지 가는 데는 약 7일이 걸립니다.",
+      "tts": {
+        "text": "끝까지 가는 데는 약 칠 일이 걸립니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "3장 — 거대한 철도 노선들",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "그 철도는 지금도 세상에서 가장 긴 철도입니다.",
+      "text_markdown": "그 철도는 지금도 세상에서 가장 긴 철도입니다.",
+      "tts": {
+        "text": "그 철도는 지금도 세상에서 가장 긴 철도입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "4장 — 증기, 디젤, 전기",
+      "text_markdown": "4장 — 증기, 디젤, 전기"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "약 백 년 동안 거의 모든 기차는 증기 기관차였습니다.",
+      "text_markdown": "약 백 년 동안 거의 모든 기차는 증기 기관차였습니다.",
+      "tts": {
+        "text": "약 백 년 동안 거의 모든 기차는 증기 기관차였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "증기 기관차는 크고 시끄러웠습니다.",
+      "text_markdown": "증기 기관차는 크고 시끄러웠습니다.",
+      "tts": {
+        "text": "증기 기관차는 크고 시끄러웠습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 기관차들은 석탄을 태웠습니다.",
+      "text_markdown": "그 기관차들은 석탄을 태웠습니다.",
+      "tts": {
+        "text": "그 기관차들은 석탄을 태웠습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 기관차들은 하늘로 짙은 연기를 뿜어 올렸습니다.",
+      "text_markdown": "그 기관차들은 하늘로 짙은 연기를 뿜어 올렸습니다.",
+      "tts": {
+        "text": "그 기관차들은 하늘로 짙은 연기를 뿜어 올렸습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그다음에는 디젤 기관차가 나왔습니다.",
+      "text_markdown": "그다음에는 디젤 기관차가 나왔습니다.",
+      "tts": {
+        "text": "그다음에는 디젤 기관차가 나왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "디젤 기관은 석탄 대신 기름을 태웁니다.",
+      "text_markdown": "디젤 기관은 석탄 대신 기름을 태웁니다.",
+      "tts": {
+        "text": "디젤 기관은 석탄 대신 기름을 태웁니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그것은 더 작고 더 깨끗합니다.",
+      "text_markdown": "그것은 더 작고 더 깨끗합니다.",
+      "tts": {
+        "text": "그것은 더 작고 더 깨끗합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "디젤 기관은 불과 물탱크가 필요하지 않습니다.",
+      "text_markdown": "디젤 기관은 불과 물탱크가 필요하지 않습니다.",
+      "tts": {
+        "text": "디젤 기관은 불과 물탱크가 필요하지 않습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "디젤 열차는 1940년대와 1950년대에 널리 쓰이게 되었습니다.",
+      "text_markdown": "디젤 열차는 1940년대와 1950년대에 널리 쓰이게 되었습니다.",
+      "tts": {
+        "text": "디젤 열차는 천구백사십 년대와 천구백오십 년대에 널리 쓰이게 되었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "조금씩 거대한 증기 기관차들은 운행을 멈추었습니다.",
+      "text_markdown": "조금씩 거대한 증기 기관차들은 운행을 멈추었습니다.",
+      "tts": {
+        "text": "조금씩 거대한 증기 기관차들은 운행을 멈추었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "몇몇 기관차는 지금도 박물관과 관광 노선에 남아 있습니다.",
+      "text_markdown": "몇몇 기관차는 지금도 박물관과 관광 노선에 남아 있습니다.",
+      "tts": {
+        "text": "몇몇 기관차는 지금도 박물관과 관광 노선에 남아 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "그다음 단계는 전기 열차였습니다.",
+      "text_markdown": "그다음 단계는 전기 열차였습니다.",
+      "tts": {
+        "text": "그다음 단계는 전기 열차였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "전기 열차에는 연료를 태우는 기관이 없습니다.",
+      "text_markdown": "전기 열차에는 연료를 태우는 기관이 없습니다.",
+      "tts": {
+        "text": "전기 열차에는 연료를 태우는 기관이 없습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "전기 열차는 선로 위의 전선이나 선로 옆의 세 번째 레일에서 전기를 받습니다.",
+      "text_markdown": "전기 열차는 선로 위의 전선이나 선로 옆의 세 번째 레일에서 전기를 받습니다.",
+      "tts": {
+        "text": "전기 열차는 선로 위의 전선이나 선로 옆의 세 번째 레일에서 전기를 받습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "전기 열차는 조용하고 아주 깨끗합니다.",
+      "text_markdown": "전기 열차는 조용하고 아주 깨끗합니다.",
+      "tts": {
+        "text": "전기 열차는 조용하고 아주 깨끗합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "또한 힘이 아주 강합니다.",
+      "text_markdown": "또한 힘이 아주 강합니다.",
+      "tts": {
+        "text": "또한 힘이 아주 강합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오늘날 도시의 대부분의 열차와 빠른 열차들은 전기로 움직입니다.",
+      "text_markdown": "오늘날 도시의 대부분의 열차와 빠른 열차들은 전기로 움직입니다.",
+      "tts": {
+        "text": "오늘날 도시의 대부분의 열차와 빠른 열차들은 전기로 움직입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "증기, 디젤, 전기.",
+      "text_markdown": "증기, 디젤, 전기.",
+      "tts": {
+        "text": "증기, 디젤, 전기.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "4장 — 증기, 디젤, 전기",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "세 가지 동력, 세 시대입니다.",
+      "text_markdown": "세 가지 동력, 세 시대입니다.",
+      "tts": {
+        "text": "세 가지 동력, 세 시대입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "5장 — 총알 열차와 속도 경쟁",
+      "text_markdown": "5장 — 총알 열차와 속도 경쟁"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1964년에 일본은 아주 새로운 철도를 열었습니다.",
+      "text_markdown": "1964년에 일본은 아주 새로운 철도를 열었습니다.",
+      "tts": {
+        "text": "천구백육십사 년에 일본은 아주 새로운 철도를 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 철도는 도쿄에서 오사카까지 이어졌습니다.",
+      "text_markdown": "그 철도는 도쿄에서 오사카까지 이어졌습니다.",
+      "tts": {
+        "text": "그 철도는 도쿄에서 오사카까지 이어졌습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 열차들은 길고 하얀 총알처럼 보였습니다.",
+      "text_markdown": "그 열차들은 길고 하얀 총알처럼 보였습니다.",
+      "tts": {
+        "text": "그 열차들은 길고 하얀 총알처럼 보였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "사람들은 그 열차들을 총알 열차라고 불렀습니다.",
+      "text_markdown": "사람들은 그 열차들을 총알 열차라고 불렀습니다.",
+      "tts": {
+        "text": "사람들은 그 열차들을 총알 열차라고 불렀습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "일본어 이름은 신칸센입니다.",
+      "text_markdown": "일본어 이름은 신칸센입니다.",
+      "tts": {
+        "text": "일본어 이름은 신칸센입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "처음의 총알 열차는 시속 130마일로 달렸습니다.",
+      "text_markdown": "처음의 총알 열차는 시속 130마일로 달렸습니다.",
+      "tts": {
+        "text": "처음의 총알 열차는 시속 백삼십 마일로 달렸습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그것은 1964년의 기차로서는 아주 빠른 속도였습니다.",
+      "text_markdown": "그것은 1964년의 기차로서는 아주 빠른 속도였습니다.",
+      "tts": {
+        "text": "그것은 천구백육십사 년의 기차로서는 아주 빠른 속도였습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 노선은 도쿄 올림픽에 맞춰 문을 열었습니다.",
+      "text_markdown": "그 노선은 도쿄 올림픽에 맞춰 문을 열었습니다.",
+      "tts": {
+        "text": "그 노선은 도쿄 올림픽에 맞춰 문을 열었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다른 나라들도 뒤따랐습니다.",
+      "text_markdown": "다른 나라들도 뒤따랐습니다.",
+      "tts": {
+        "text": "다른 나라들도 뒤따랐습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "프랑스는 1981년에 고속 철도 노선을 열었습니다.",
+      "text_markdown": "프랑스는 1981년에 고속 철도 노선을 열었습니다.",
+      "tts": {
+        "text": "프랑스는 천구백팔십일 년에 고속 철도 노선을 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 열차들은 TGV라고 불립니다.",
+      "text_markdown": "그 열차들은 TGV라고 불립니다.",
+      "tts": {
+        "text": "그 열차들은 티 지 브이라고 불립니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "독일도 ICE라는 이름의 열차로 뒤따랐습니다.",
+      "text_markdown": "독일도 ICE라는 이름의 열차로 뒤따랐습니다.",
+      "tts": {
+        "text": "독일도 아이 시 이라는 이름의 열차로 뒤따랐습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "이탈리아와 스페인, 그리고 한국도 자기 나라의 고속 철도 노선을 만들었습니다.",
+      "text_markdown": "이탈리아와 스페인, 그리고 한국도 자기 나라의 고속 철도 노선을 만들었습니다.",
+      "tts": {
+        "text": "이탈리아와 스페인, 그리고 한국도 자기 나라의 고속 철도 노선을 만들었습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "중국은 가장 늦게 시작했지만 아주 빠르게 만들었습니다.",
+      "text_markdown": "중국은 가장 늦게 시작했지만 아주 빠르게 만들었습니다.",
+      "tts": {
+        "text": "중국은 가장 늦게 시작했지만 아주 빠르게 만들었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "오늘날 중국은 세상에서 가장 큰 고속 철도망을 가지고 있습니다.",
+      "text_markdown": "오늘날 중국은 세상에서 가장 큰 고속 철도망을 가지고 있습니다.",
+      "tts": {
+        "text": "오늘날 중국은 세상에서 가장 큰 고속 철도망을 가지고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "그 선로의 길이는 수만 킬로미터에 이릅니다.",
+      "text_markdown": "그 선로의 길이는 수만 킬로미터에 이릅니다.",
+      "tts": {
+        "text": "그 선로의 길이는 수만 킬로미터에 이릅니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "오늘날의 총알 열차는 시속 200마일이 넘는 속도로 달릴 수 있습니다.",
+      "text_markdown": "오늘날의 총알 열차는 시속 200마일이 넘는 속도로 달릴 수 있습니다.",
+      "tts": {
+        "text": "오늘날의 총알 열차는 시속 이백 마일이 넘는 속도로 달릴 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 열차들은 부드럽고 조용하며 거의 언제나 제시간에 도착합니다.",
+      "text_markdown": "그 열차들은 부드럽고 조용하며 거의 언제나 제시간에 도착합니다.",
+      "tts": {
+        "text": "그 열차들은 부드럽고 조용하며 거의 언제나 제시간에 도착합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "5장 — 총알 열차와 속도 경쟁",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "많은 여행에서는 비행기보다 더 빠릅니다.",
+      "text_markdown": "많은 여행에서는 비행기보다 더 빠릅니다.",
+      "tts": {
+        "text": "많은 여행에서는 비행기보다 더 빠릅니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "6장 — 여러 가지 열차",
+      "text_markdown": "6장 — 여러 가지 열차"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "모든 기차가 같은 것은 아닙니다.",
+      "text_markdown": "모든 기차가 같은 것은 아닙니다.",
+      "tts": {
+        "text": "모든 기차가 같은 것은 아닙니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "기차에는 여러 종류가 있습니다.",
+      "text_markdown": "기차에는 여러 종류가 있습니다.",
+      "tts": {
+        "text": "기차에는 여러 종류가 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "여객 열차는 사람을 실어 나릅니다.",
+      "text_markdown": "여객 열차는 사람을 실어 나릅니다.",
+      "tts": {
+        "text": "여객 열차는 사람을 실어 나릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "여객 열차에는 좌석과 창문이 있고, 때로는 식당칸이나 침대칸도 있습니다.",
+      "text_markdown": "여객 열차에는 좌석과 창문이 있고, 때로는 식당칸이나 침대칸도 있습니다.",
+      "tts": {
+        "text": "여객 열차에는 좌석과 창문이 있고, 때로는 식당칸이나 침대칸도 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "화물 열차는 물건을 실어 나릅니다.",
+      "text_markdown": "화물 열차는 물건을 실어 나릅니다.",
+      "tts": {
+        "text": "화물 열차는 물건을 실어 나릅니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 칸들은 화차라고 불립니다.",
+      "text_markdown": "그 칸들은 화차라고 불립니다.",
+      "tts": {
+        "text": "그 칸들은 화차라고 불립니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "어떤 화차는 곡식을 싣습니다.",
+      "text_markdown": "어떤 화차는 곡식을 싣습니다.",
+      "tts": {
+        "text": "어떤 화차는 곡식을 싣습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "어떤 화차는 기름을 싣습니다.",
+      "text_markdown": "어떤 화차는 기름을 싣습니다.",
+      "tts": {
+        "text": "어떤 화차는 기름을 싣습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "어떤 화차는 큰 화물 컨테이너를 두 층으로 쌓아 나릅니다.",
+      "text_markdown": "어떤 화차는 큰 화물 컨테이너를 두 층으로 쌓아 나릅니다.",
+      "tts": {
+        "text": "어떤 화차는 큰 화물 컨테이너를 두 층으로 쌓아 나릅니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "지하철은 도시 안을 다니는 땅속 열차입니다.",
+      "text_markdown": "지하철은 도시 안을 다니는 땅속 열차입니다.",
+      "tts": {
+        "text": "지하철은 도시 안을 다니는 땅속 열차입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "첫 지하철은 1863년에 런던에서 문을 열었습니다.",
+      "text_markdown": "첫 지하철은 1863년에 런던에서 문을 열었습니다.",
+      "tts": {
+        "text": "첫 지하철은 천팔백육십삼 년에 런던에서 문을 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "오늘날 큰 도시들의 길 아래에는 거대한 지하철망이 있습니다.",
+      "text_markdown": "오늘날 큰 도시들의 길 아래에는 거대한 지하철망이 있습니다.",
+      "tts": {
+        "text": "오늘날 큰 도시들의 길 아래에는 거대한 지하철망이 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "트램 또는 경전철은 도시의 길 위를 달리는 작은 열차입니다.",
+      "text_markdown": "트램 또는 경전철은 도시의 길 위를 달리는 작은 열차입니다.",
+      "tts": {
+        "text": "트램 또는 경전철은 도시의 길 위를 달리는 작은 열차입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 열차는 자동차와 버스와 같은 길을 함께 쓰는 일이 많습니다.",
+      "text_markdown": "그 열차는 자동차와 버스와 같은 길을 함께 쓰는 일이 많습니다.",
+      "tts": {
+        "text": "그 열차는 자동차와 버스와 같은 길을 함께 쓰는 일이 많습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "산악 열차는 가파른 언덕을 올라갑니다.",
+      "text_markdown": "산악 열차는 가파른 언덕을 올라갑니다.",
+      "tts": {
+        "text": "산악 열차는 가파른 언덕을 올라갑니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "어떤 산악 열차에는 가운데에 코그라고 하는 특별한 톱니 레일이 있습니다.",
+      "text_markdown": "어떤 산악 열차에는 가운데에 코그라고 하는 특별한 톱니 레일이 있습니다.",
+      "tts": {
+        "text": "어떤 산악 열차에는 가운데에 코그라고 하는 특별한 톱니 레일이 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "기관차는 그 코그를 단단히 잡고 올라가며 안전하게 내려옵니다.",
+      "text_markdown": "기관차는 그 코그를 단단히 잡고 올라가며 안전하게 내려옵니다.",
+      "tts": {
+        "text": "기관차는 그 코그를 단단히 잡고 올라가며 안전하게 내려옵니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "어떤 기차는 관광 열차이기도 합니다.",
+      "text_markdown": "어떤 기차는 관광 열차이기도 합니다.",
+      "tts": {
+        "text": "어떤 기차는 관광 열차이기도 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "6장 — 여러 가지 열차",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 열차들은 풍경을 보여 주려고 숲과 산을 지나 달립니다.",
+      "text_markdown": "그 열차들은 풍경을 보여 주려고 숲과 산을 지나 달립니다.",
+      "tts": {
+        "text": "그 열차들은 풍경을 보여 주려고 숲과 산을 지나 달립니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "7장 — 철길 위의 미래",
+      "text_markdown": "7장 — 철길 위의 미래"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기차의 이야기는 아직 끝나지 않았습니다.",
+      "text_markdown": "기차의 이야기는 아직 끝나지 않았습니다.",
+      "tts": {
+        "text": "기차의 이야기는 아직 끝나지 않았습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바로 지금도 새로운 종류의 기차가 만들어지고 있습니다.",
+      "text_markdown": "바로 지금도 새로운 종류의 기차가 만들어지고 있습니다.",
+      "tts": {
+        "text": "바로 지금도 새로운 종류의 기차가 만들어지고 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "가장 놀라운 것은 자기부상열차입니다.",
+      "text_markdown": "가장 놀라운 것은 자기부상열차입니다.",
+      "tts": {
+        "text": "가장 놀라운 것은 자기부상열차입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "마글레브라는 말은 자기 부상을 뜻하는 말을 줄인 것입니다.",
+      "text_markdown": "마글레브라는 말은 자기 부상을 뜻하는 말을 줄인 것입니다.",
+      "tts": {
+        "text": "마글레브라는 말은 자기 부상을 뜻하는 말을 줄인 것입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "자기부상열차는 선로에 닿지 않습니다.",
+      "text_markdown": "자기부상열차는 선로에 닿지 않습니다.",
+      "tts": {
+        "text": "자기부상열차는 선로에 닿지 않습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "그 열차는 자석의 힘 위에 떠 있습니다.",
+      "text_markdown": "그 열차는 자석의 힘 위에 떠 있습니다.",
+      "tts": {
+        "text": "그 열차는 자석의 힘 위에 떠 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "돌아가는 바퀴가 없습니다.",
+      "text_markdown": "돌아가는 바퀴가 없습니다.",
+      "tts": {
+        "text": "돌아가는 바퀴가 없습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "마찰도 없습니다.",
+      "text_markdown": "마찰도 없습니다.",
+      "tts": {
+        "text": "마찰도 없습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2004년에 중국 상하이에서 자기부상열차 노선이 문을 열었습니다.",
+      "text_markdown": "2004년에 중국 상하이에서 자기부상열차 노선이 문을 열었습니다.",
+      "tts": {
+        "text": "이천사 년에 중국 상하이에서 자기부상열차 노선이 문을 열었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "그 열차는 시속 250마일이 넘는 속도에 이를 수 있습니다.",
+      "text_markdown": "그 열차는 시속 250마일이 넘는 속도에 이를 수 있습니다.",
+      "tts": {
+        "text": "그 열차는 시속 이백오십 마일이 넘는 속도에 이를 수 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "일본에서는 시험용 자기부상열차가 시속 370마일보다 더 빠르게 달린 적이 있습니다.",
+      "text_markdown": "일본에서는 시험용 자기부상열차가 시속 370마일보다 더 빠르게 달린 적이 있습니다.",
+      "tts": {
+        "text": "일본에서는 시험용 자기부상열차가 시속 삼백칠십 마일보다 더 빠르게 달린 적이 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "다른 기술자들은 수소 열차도 만들고 있습니다.",
+      "text_markdown": "다른 기술자들은 수소 열차도 만들고 있습니다.",
+      "tts": {
+        "text": "다른 기술자들은 수소 열차도 만들고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "수소 열차는 작은 연료전지로 전기를 만듭니다.",
+      "text_markdown": "수소 열차는 작은 연료전지로 전기를 만듭니다.",
+      "tts": {
+        "text": "수소 열차는 작은 연료전지로 전기를 만듭니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "엔진에서 나오는 것은 수증기뿐입니다.",
+      "text_markdown": "엔진에서 나오는 것은 수증기뿐입니다.",
+      "tts": {
+        "text": "엔진에서 나오는 것은 수증기뿐입니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "연기도 없습니다.",
+      "text_markdown": "연기도 없습니다.",
+      "tts": {
+        "text": "연기도 없습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "석탄도 없습니다.",
+      "text_markdown": "석탄도 없습니다.",
+      "tts": {
+        "text": "석탄도 없습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "첫 수소 열차는 2018년에 독일에서 운행을 시작했습니다.",
+      "text_markdown": "첫 수소 열차는 2018년에 독일에서 운행을 시작했습니다.",
+      "tts": {
+        "text": "첫 수소 열차는 이천십팔 년에 독일에서 운행을 시작했습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "기차는 아주 오래되었습니다.",
+      "text_markdown": "기차는 아주 오래되었습니다.",
+      "tts": {
+        "text": "기차는 아주 오래되었습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "하지만 아주 새롭기도 합니다.",
+      "text_markdown": "하지만 아주 새롭기도 합니다.",
+      "tts": {
+        "text": "하지만 아주 새롭기도 합니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "7장 — 철길 위의 미래",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "로켓이 나온 지 이백 년이 지난 지금도 철길은 여전히 미래입니다.",
+      "text_markdown": "로켓이 나온 지 이백 년이 지난 지금도 철길은 여전히 미래입니다.",
+      "tts": {
+        "text": "로켓이 나온 지 이백 년이 지난 지금도 철길은 여전히 미래입니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "철길은 계속 이어집니다",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "철길은 계속 이어집니다",
+      "text_markdown": "철길은 계속 이어집니다"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "철길은 계속 이어집니다",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "로켓에서 자기부상열차에 이르기까지 기차는 거의 이백 년 동안 세상을 앞으로 실어 왔습니다.",
+      "text_markdown": "로켓에서 자기부상열차에 이르기까지 기차는 거의 이백 년 동안 세상을 앞으로 실어 왔습니다.",
+      "tts": {
+        "text": "로켓에서 자기부상열차에 이르기까지 기차는 거의 이백 년 동안 세상을 앞으로 실어 왔습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "철길은 계속 이어집니다",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "바로 지금도 사막과 산, 그리고 도시 아래에 새로운 선로가 놓이고 있습니다.",
+      "text_markdown": "바로 지금도 사막과 산, 그리고 도시 아래에 새로운 선로가 놓이고 있습니다.",
+      "tts": {
+        "text": "바로 지금도 사막과 산, 그리고 도시 아래에 새로운 선로가 놓이고 있습니다.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "철길은 계속 이어집니다",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "다음 역은 언제나 저 앞 어딘가에 있습니다.",
+      "text_markdown": "다음 역은 언제나 저 앞 어딘가에 있습니다.",
+      "tts": {
+        "text": "다음 역은 언제나 저 앞 어딘가에 있습니다.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

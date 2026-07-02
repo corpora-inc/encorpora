@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "th",
+  "total_segments": 142,
+  "segments": [
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "text": "ยินดีต้อนรับสู่ AI This Week",
+      "text_markdown": "ยินดีต้อนรับสู่ AI This Week",
+      "title": "",
+      "tts": {
+        "text": "ยินดีต้อนรับสู่ AI This Week",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "text": "ฉันชื่อ Vindy",
+      "text_markdown": "ฉันชื่อ Vindy",
+      "title": "",
+      "tts": {
+        "text": "ฉันชื่อ Vindy",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "text": "และเช่นเคย Ron อยู่ด้วยกันกับฉัน",
+      "text_markdown": "และเช่นเคย Ron อยู่ด้วยกันกับฉัน",
+      "title": "",
+      "tts": {
+        "text": "และเช่นเคย Ron อยู่ด้วยกันกับฉัน",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "text": "ดีใจที่ได้อยู่ที่นี่ Vindy",
+      "text_markdown": "ดีใจที่ได้อยู่ที่นี่ Vindy",
+      "title": "",
+      "tts": {
+        "text": "ดีใจที่ได้อยู่ที่นี่ Vindy",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "text": "วันนี้เป็นวันอาทิตย์ที่ 28 มิถุนายน 2026",
+      "text_markdown": "วันนี้เป็นวันอาทิตย์ที่ 28 มิถุนายน 2026",
+      "title": "",
+      "tts": {
+        "text": "วันนี้เป็นวันอาทิตย์ที่ยี่สิบแปด มิถุนายน สองพันยี่สิบหก",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "text": "สัปดาห์ที่แล้วเราพาพวกคุณไปสำรวจเรื่องโรงไฟฟ้าและงบดุลกัน",
+      "text_markdown": "สัปดาห์ที่แล้วเราพาพวกคุณไปสำรวจเรื่องโรงไฟฟ้าและงบดุลกัน",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์ที่แล้วเราพาพวกคุณไปสำรวจเรื่องโรงไฟฟ้าและงบดุลกัน",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "text": "สัปดาห์นี้เรากลับมาที่โต๊ะทำงาน พร้อมกับคำถามที่วิ่งอยู่ใต้พื้นผิวของทั้งวงการตอนนี้",
+      "text_markdown": "สัปดาห์นี้เรากลับมาที่โต๊ะทำงาน พร้อมกับคำถามที่วิ่งอยู่ใต้พื้นผิวของทั้งวงการตอนนี้",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์นี้เรากลับมาที่โต๊ะทำงาน พร้อมกับคำถามที่วิ่งอยู่ใต้พื้นผิวของทั้งวงการตอนนี้",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "text": "เมื่อโมเดลโพสต์ตัวเลขใหญ่ๆ หรือแสดงทักษะที่น่าตื่นตาตื่นใจ — ความสามารถนั้นเป็นของจริงไหม และมันเป็นความสามารถของคุณจริงๆ หรือเปล่า?",
+      "text_markdown": "เมื่อโมเดลโพสต์ตัวเลขใหญ่ๆ หรือแสดงทักษะที่น่าตื่นตาตื่นใจ — ความสามารถนั้นเป็นของจริงไหม และมันเป็นความสามารถของคุณจริงๆ หรือเปล่า?",
+      "title": "",
+      "tts": {
+        "text": "เมื่อโมเดลโพสต์ตัวเลขใหญ่ๆ หรือแสดงทักษะที่น่าตื่นตาตื่นใจ — ความสามารถนั้นเป็นของจริงไหม และมันเป็นความสามารถของคุณจริงๆ หรือเปล่า?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "text": "ที่กำลังจะมา — โมเดลที่มีพารามิเตอร์ 230 ล้านตัว ซึ่งรันได้บนโทรศัพท์มือถือ และ open agent world-model จากทีม Qwen",
+      "text_markdown": "ที่กำลังจะมา — โมเดลที่มีพารามิเตอร์ 230 ล้านตัว ซึ่งรันได้บนโทรศัพท์มือถือ และ open agent world-model จากทีม Qwen",
+      "title": "",
+      "tts": {
+        "text": "ที่กำลังจะมา — โมเดลที่มีพารามิเตอร์สองร้อยสามสิบล้านตัว ซึ่งรันได้บนโทรศัพท์มือถือ และ open agent world model จากทีม Qwen",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "text": "จากนั้นมีงานวิจัยชิ้นหนึ่งที่แอบดึงคะแนนด้านการเขียนโค้ดของโมเดลชั้นนำลงไปถึง 14 คะแนน",
+      "text_markdown": "จากนั้นมีงานวิจัยชิ้นหนึ่งที่แอบดึงคะแนนด้านการเขียนโค้ดของโมเดลชั้นนำลงไปถึง 14 คะแนน",
+      "title": "",
+      "tts": {
+        "text": "จากนั้นมีงานวิจัยชิ้นหนึ่งที่แอบดึงคะแนนด้านการเขียนโค้ดของโมเดลชั้นนำลงไปถึงสิบสี่คะแนน",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "text": "จากนั้นพาดหัวข่าว — ตัวอย่างโมเดลที่ต้องผ่านการอนุมัติจากรัฐบาล และชิปแบบกำหนดเองที่ออกแบบโดยโมเดล AI บางส่วน",
+      "text_markdown": "จากนั้นพาดหัวข่าว — ตัวอย่างโมเดลที่ต้องผ่านการอนุมัติจากรัฐบาล และชิปแบบกำหนดเองที่ออกแบบโดยโมเดล AI บางส่วน",
+      "title": "",
+      "tts": {
+        "text": "จากนั้นพาดหัวข่าว — ตัวอย่างโมเดลที่ต้องผ่านการอนุมัติจากรัฐบาล และชิปแบบกำหนดเองที่ออกแบบโดยโมเดล AI บางส่วน",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "text": "และข่าวใหญ่ประจำสัปดาห์ ที่ Anthropic กล่าวหา Alibaba ว่าลอกเลียน Claude ในระดับอุตสาหกรรม",
+      "text_markdown": "และข่าวใหญ่ประจำสัปดาห์ ที่ Anthropic กล่าวหา Alibaba ว่าลอกเลียน Claude ในระดับอุตสาหกรรม",
+      "title": "",
+      "tts": {
+        "text": "และข่าวใหญ่ประจำสัปดาห์ ที่ Anthropic กล่าวหา Alibaba ว่าลอกเลียน Claude ในระดับอุตสาหกรรม",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "text": "Ron เริ่มกันที่แวดวง open-weights กันก่อนเลย ซึ่งข่าวสัปดาห์นี้มีขนาดเล็ก — โดยตั้งใจ",
+      "text_markdown": "Ron เริ่มกันที่แวดวง open-weights กันก่อนเลย ซึ่งข่าวสัปดาห์นี้มีขนาดเล็ก — โดยตั้งใจ",
+      "title": "",
+      "tts": {
+        "text": "Ron เริ่มกันที่แวดวง open weights กันก่อนเลย ซึ่งข่าวสัปดาห์นี้มีขนาดเล็ก — โดยตั้งใจ",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "text": "เมื่อวานนี้ Liquid AI เปิดตัว LFM 2.5 และตัวเลขที่เป็นพาดหัวคือความเล็กของมัน",
+      "text_markdown": "เมื่อวานนี้ Liquid AI เปิดตัว LFM 2.5 และตัวเลขที่เป็นพาดหัวคือความเล็กของมัน",
+      "title": "",
+      "tts": {
+        "text": "เมื่อวานนี้ Liquid AI เปิดตัว แอล เอฟ เอ็ม สอง จุด ห้า และตัวเลขที่เป็นพาดหัวคือความเล็กของมัน",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "text": "สองร้อยสามสิบล้านพารามิเตอร์ — เป็นโมเดลที่เล็กที่สุดที่พวกเขาเคยปล่อยออกมา",
+      "text_markdown": "สองร้อยสามสิบล้านพารามิเตอร์ — เป็นโมเดลที่เล็กที่สุดที่พวกเขาเคยปล่อยออกมา",
+      "title": "",
+      "tts": {
+        "text": "สองร้อยสามสิบล้านพารามิเตอร์ — เป็นโมเดลที่เล็กที่สุดที่พวกเขาเคยปล่อยออกมา",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "host",
+      "text": "สองร้อยสามสิบล้าน — ช่วยให้เราเข้าใจขนาดนั้นหน่อยได้ไหม",
+      "text_markdown": "สองร้อยสามสิบล้าน — ช่วยให้เราเข้าใจขนาดนั้นหน่อยได้ไหม",
+      "title": "",
+      "tts": {
+        "text": "สองร้อยสามสิบล้าน — ช่วยให้เราเข้าใจขนาดนั้นหน่อยได้ไหม",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "text": "เล็กพอที่ weights มีขนาดต่ำกว่า 400 เมกะไบต์ ซึ่งหมายความว่าใส่ลงในโทรศัพท์ได้สบาย",
+      "text_markdown": "เล็กพอที่ weights มีขนาดต่ำกว่า 400 เมกะไบต์ ซึ่งหมายความว่าใส่ลงในโทรศัพท์ได้สบาย",
+      "title": "",
+      "tts": {
+        "text": "เล็กพอที่ weights มีขนาดต่ำกว่าสี่ร้อยเมกะไบต์ ซึ่งหมายความว่าใส่ลงในโทรศัพท์ได้สบาย",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "text": "Liquid บอกว่ามันรันได้ประมาณ 213 tokens ต่อวินาทีบน Galaxy S25 Ultra และประมาณ 42 บน Raspberry Pi 5",
+      "text_markdown": "Liquid บอกว่ามันรันได้ประมาณ 213 tokens ต่อวินาทีบน Galaxy S25 Ultra และประมาณ 42 บน Raspberry Pi 5",
+      "title": "",
+      "tts": {
+        "text": "Liquid บอกว่ามันรันได้ประมาณสองร้อยสิบสาม tokens ต่อวินาทีบน Galaxy S ยี่สิบห้า Ultra และประมาณสี่สิบสองบน Raspberry Pi ห้า",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "text": "นี่จึงเป็นโมเดล on-device อย่างแท้จริง",
+      "text_markdown": "นี่จึงเป็นโมเดล on-device อย่างแท้จริง",
+      "title": "",
+      "tts": {
+        "text": "นี่จึงเป็นโมเดล on device อย่างแท้จริง",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "text": "เลยทีเดียว — ไม่มีเซิร์ฟเวอร์ในวงจร ไม่ต้องใช้ API key โมเดลอยู่บนตัวอุปกรณ์เลย",
+      "text_markdown": "เลยทีเดียว — ไม่มีเซิร์ฟเวอร์ในวงจร ไม่ต้องใช้ API key โมเดลอยู่บนตัวอุปกรณ์เลย",
+      "title": "",
+      "tts": {
+        "text": "เลยทีเดียว — ไม่มีเซิร์ฟเวอร์ในวงจร ไม่ต้องใช้ API key โมเดลอยู่บนตัวอุปกรณ์เลย",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "text": "และสิ่งที่ชุมชน open-source สนใจมากที่สุดคือมันถูกปล่อยมาพร้อมกับการรองรับตั้งแต่วันแรกบน llama.cpp, MLX, vLLM, SGLang และ ONNX",
+      "text_markdown": "และสิ่งที่ชุมชน open-source สนใจมากที่สุดคือมันถูกปล่อยมาพร้อมกับการรองรับตั้งแต่วันแรกบน llama.cpp, MLX, vLLM, SGLang และ ONNX",
+      "title": "",
+      "tts": {
+        "text": "และสิ่งที่ชุมชน open source สนใจมากที่สุดคือมันถูกปล่อยมาพร้อมกับการรองรับตั้งแต่วันแรกบน llama ซี พี พี, MLX, วี แอล แอล เอ็ม, เอส จี แลง และ ONNX",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "text": "อธิบายให้ฟังหน่อยว่าทำไมการรองรับตั้งแต่วันแรกถึงสำคัญมาก",
+      "text_markdown": "อธิบายให้ฟังหน่อยว่าทำไมการรองรับตั้งแต่วันแรกถึงสำคัญมาก",
+      "title": "",
+      "tts": {
+        "text": "อธิบายให้ฟังหน่อยว่าทำไมการรองรับตั้งแต่วันแรกถึงสำคัญมาก",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "text": "เพราะโมเดลที่โหลดไม่ได้จริงๆ นั้นเป็นแค่แถลงการณ์ประชาสัมพันธ์ ไม่ใช่การปล่อยตัวโมเดลจริงๆ",
+      "text_markdown": "เพราะโมเดลที่โหลดไม่ได้จริงๆ นั้นเป็นแค่แถลงการณ์ประชาสัมพันธ์ ไม่ใช่การปล่อยตัวโมเดลจริงๆ",
+      "title": "",
+      "tts": {
+        "text": "เพราะโมเดลที่โหลดไม่ได้จริงๆ นั้นเป็นแค่แถลงการณ์ประชาสัมพันธ์ ไม่ใช่การปล่อยตัวโมเดลจริงๆ",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "text": "การปล่อยให้รองรับทุก runtime หลักตั้งแต่วันแรก หมายความว่าทั้งนักงานอดิเรกบนแล็ปท็อปและทีมงานบนเซิร์ฟเวอร์ต่างก็รันมันได้ในบ่ายวันเดียวกัน",
+      "text_markdown": "การปล่อยให้รองรับทุก runtime หลักตั้งแต่วันแรก หมายความว่าทั้งนักงานอดิเรกบนแล็ปท็อปและทีมงานบนเซิร์ฟเวอร์ต่างก็รันมันได้ในบ่ายวันเดียวกัน",
+      "title": "",
+      "tts": {
+        "text": "การปล่อยให้รองรับทุก runtime หลักตั้งแต่วันแรก หมายความว่าทั้งนักงานอดิเรกบนแล็ปท็อปและทีมงานบนเซิร์ฟเวอร์ต่างก็รันมันได้ในบ่ายวันเดียวกัน",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "host",
+      "text": "แล้วโมเดลที่เล็กขนาดนี้เหมาะกับงานอะไรจริงๆ?",
+      "text_markdown": "แล้วโมเดลที่เล็กขนาดนี้เหมาะกับงานอะไรจริงๆ?",
+      "title": "",
+      "tts": {
+        "text": "แล้วโมเดลที่เล็กขนาดนี้เหมาะกับงานอะไรจริงๆ?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "text": "ไม่ใช่แชทแบบเปิดกว้าง — มันถูกสร้างมาสำหรับงานแคบๆ ที่รวดเร็ว เช่น การทำตามคำสั่งและการดึงข้อมูลเชิงโครงสร้างออกจากข้อความ",
+      "text_markdown": "ไม่ใช่แชทแบบเปิดกว้าง — มันถูกสร้างมาสำหรับงานแคบๆ ที่รวดเร็ว เช่น การทำตามคำสั่งและการดึงข้อมูลเชิงโครงสร้างออกจากข้อความ",
+      "title": "",
+      "tts": {
+        "text": "ไม่ใช่แชทแบบเปิดกว้าง — มันถูกสร้างมาสำหรับงานแคบๆ ที่รวดเร็ว เช่น การทำตามคำสั่งและการดึงข้อมูลเชิงโครงสร้างออกจากข้อความ",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "text": "Liquid อ้างว่ามันสามารถเอาชนะ Qwen 3.5 ที่ 800 ล้านพารามิเตอร์ และ Gemma 3 ที่ 1 พันล้านพารามิเตอร์ได้ในงานเหล่านั้นโดยเฉพาะ",
+      "text_markdown": "Liquid อ้างว่ามันสามารถเอาชนะ Qwen 3.5 ที่ 800 ล้านพารามิเตอร์ และ Gemma 3 ที่ 1 พันล้านพารามิเตอร์ได้ในงานเหล่านั้นโดยเฉพาะ",
+      "title": "",
+      "tts": {
+        "text": "Liquid อ้างว่ามันสามารถเอาชนะ Qwen สาม จุด ห้า ที่แปดร้อยล้านพารามิเตอร์ และ Gemma สาม ที่หนึ่งพันล้านพารามิเตอร์ได้ในงานเหล่านั้นโดยเฉพาะ",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "text": "พูดถึงสถาปัตยกรรมให้ฟังหน่อย",
+      "text_markdown": "พูดถึงสถาปัตยกรรมให้ฟังหน่อย",
+      "title": "",
+      "tts": {
+        "text": "พูดถึงสถาปัตยกรรมให้ฟังหน่อย",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "text": "มันเป็นแบบไฮบริด — เลเยอร์ส่วนใหญ่เป็น gated convolution ที่ Liquid ออกแบบเอง โดยมีเพียงไม่กี่เลเยอร์ attention ผสมอยู่",
+      "text_markdown": "มันเป็นแบบไฮบริด — เลเยอร์ส่วนใหญ่เป็น gated convolution ที่ Liquid ออกแบบเอง โดยมีเพียงไม่กี่เลเยอร์ attention ผสมอยู่",
+      "title": "",
+      "tts": {
+        "text": "มันเป็นแบบไฮบริด — เลเยอร์ส่วนใหญ่เป็น gated convolution ที่ Liquid ออกแบบเอง โดยมีเพียงไม่กี่เลเยอร์ attention ผสมอยู่",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "text": "นั่นคือสิ่งที่ทำให้มันเร็วและประหยัดบนอุปกรณ์ที่ไม่มีการ์ดจอเลย",
+      "text_markdown": "นั่นคือสิ่งที่ทำให้มันเร็วและประหยัดบนอุปกรณ์ที่ไม่มีการ์ดจอเลย",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือสิ่งที่ทำให้มันเร็วและประหยัดบนอุปกรณ์ที่ไม่มีการ์ดจอเลย",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "host",
+      "text": "โอเค การปล่อยโมเดล open อีกรายการสัปดาห์นี้ใหญ่กว่าและแปลกกว่า",
+      "text_markdown": "โอเค การปล่อยโมเดล open อีกรายการสัปดาห์นี้ใหญ่กว่าและแปลกกว่า",
+      "title": "",
+      "tts": {
+        "text": "โอเค การปล่อยโมเดล open อีกรายการสัปดาห์นี้ใหญ่กว่าและแปลกกว่า",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "text": "ทีม Qwen ของ Alibaba ปล่อย Qwen AgentWorld และมันไม่ใช่แชทบอท",
+      "text_markdown": "ทีม Qwen ของ Alibaba ปล่อย Qwen AgentWorld และมันไม่ใช่แชทบอท",
+      "title": "",
+      "tts": {
+        "text": "ทีม Qwen ของ Alibaba ปล่อย Qwen AgentWorld และมันไม่ใช่แชทบอท",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "text": "มันคือสิ่งที่พวกเขาเรียกว่า language world-model — รวม 35 พันล้านพารามิเตอร์ แต่ใช้งานแค่ 3 พันล้านในแต่ละครั้ง",
+      "text_markdown": "มันคือสิ่งที่พวกเขาเรียกว่า language world-model — รวม 35 พันล้านพารามิเตอร์ แต่ใช้งานแค่ 3 พันล้านในแต่ละครั้ง",
+      "title": "",
+      "tts": {
+        "text": "มันคือสิ่งที่พวกเขาเรียกว่า language world model — รวมสามสิบห้าพันล้านพารามิเตอร์ แต่ใช้งานแค่สามพันล้านในแต่ละครั้ง",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "text": "world-model — ช่วยอธิบายคำนั้นให้ฟังหน่อย",
+      "text_markdown": "world-model — ช่วยอธิบายคำนั้นให้ฟังหน่อย",
+      "title": "",
+      "tts": {
+        "text": "world model — ช่วยอธิบายคำนั้นให้ฟังหน่อย",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "text": "แทนที่จะตอบคำถาม มันจำลองสภาพแวดล้อมในรูปแบบข้อความ เพื่อให้ agent สามารถดำเนินการและโมเดลจะอธิบายว่าเกิดอะไรขึ้นต่อไป",
+      "text_markdown": "แทนที่จะตอบคำถาม มันจำลองสภาพแวดล้อมในรูปแบบข้อความ เพื่อให้ agent สามารถดำเนินการและโมเดลจะอธิบายว่าเกิดอะไรขึ้นต่อไป",
+      "title": "",
+      "tts": {
+        "text": "แทนที่จะตอบคำถาม มันจำลองสภาพแวดล้อมในรูปแบบข้อความ เพื่อให้ agent สามารถดำเนินการและโมเดลจะอธิบายว่าเกิดอะไรขึ้นต่อไป",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "text": "คุณใช้มันเพื่อฝึก agent ตัวอื่น — มันทำหน้าที่เป็นโลกจำลองให้ agent ได้ฝึกซ้อมอยู่ในนั้น",
+      "text_markdown": "คุณใช้มันเพื่อฝึก agent ตัวอื่น — มันทำหน้าที่เป็นโลกจำลองให้ agent ได้ฝึกซ้อมอยู่ในนั้น",
+      "title": "",
+      "tts": {
+        "text": "คุณใช้มันเพื่อฝึก agent ตัวอื่น — มันทำหน้าที่เป็นโลกจำลองให้ agent ได้ฝึกซ้อมอยู่ในนั้น",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "text": "และ license คือจุดเด่นของมัน",
+      "text_markdown": "และ license คือจุดเด่นของมัน",
+      "title": "",
+      "tts": {
+        "text": "และ license คือจุดเด่นของมัน",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "text": "Apache 2.0 weights บน Hugging Face อนุญาตให้ใช้งานเชิงพาณิชย์ — และ benchmark ที่พวกเขาฝึกโมเดลด้วยก็ถูกปล่อยออกมาพร้อมกัน",
+      "text_markdown": "Apache 2.0 weights บน Hugging Face อนุญาตให้ใช้งานเชิงพาณิชย์ — และ benchmark ที่พวกเขาฝึกโมเดลด้วยก็ถูกปล่อยออกมาพร้อมกัน",
+      "title": "",
+      "tts": {
+        "text": "Apache สอง จุด โอ weights บน Hugging Face อนุญาตให้ใช้งานเชิงพาณิชย์ — และ benchmark ที่พวกเขาฝึกโมเดลด้วยก็ถูกปล่อยออกมาพร้อมกัน",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "text": "ภายในวันเดียวก็มี quantized builds ที่สามารถรันในเครื่องได้แล้ว",
+      "text_markdown": "ภายในวันเดียวก็มี quantized builds ที่สามารถรันในเครื่องได้แล้ว",
+      "title": "",
+      "tts": {
+        "text": "ภายในวันเดียวก็มี quantized builds ที่สามารถรันในเครื่องได้แล้ว",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "host",
+      "text": "ตอนนี้ลองเปรียบเทียบกับการปล่อยโมเดลที่ไปในทิศทางตรงข้าม",
+      "text_markdown": "ตอนนี้ลองเปรียบเทียบกับการปล่อยโมเดลที่ไปในทิศทางตรงข้าม",
+      "title": "",
+      "tts": {
+        "text": "ตอนนี้ลองเปรียบเทียบกับการปล่อยโมเดลที่ไปในทิศทางตรงข้าม",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "text": "ในวันจันทร์ Sakana AI ได้เปิดตัวบางอย่างที่ชื่อว่า Fugu และ Fugu คือเรื่องราวต่อต้าน open ประจำสัปดาห์นี้",
+      "text_markdown": "ในวันจันทร์ Sakana AI ได้เปิดตัวบางอย่างที่ชื่อว่า Fugu และ Fugu คือเรื่องราวต่อต้าน open ประจำสัปดาห์นี้",
+      "title": "",
+      "tts": {
+        "text": "ในวันจันทร์ Sakana AI ได้เปิดตัวบางอย่างที่ชื่อว่า Fugu และ Fugu คือเรื่องราวต่อต้าน open ประจำสัปดาห์นี้",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "text": "มันไม่ใช่โมเดลที่คุณดาวน์โหลดได้ — แต่เป็นบริการ orchestration ที่กระจายคำขอของคุณไปยังโมเดล frontier ของบริษัทอื่น ๆ ผ่าน API เดียว",
+      "text_markdown": "มันไม่ใช่โมเดลที่คุณดาวน์โหลดได้ — แต่เป็นบริการ orchestration ที่กระจายคำขอของคุณไปยังโมเดล frontier ของบริษัทอื่น ๆ ผ่าน API เดียว",
+      "title": "",
+      "tts": {
+        "text": "มันไม่ใช่โมเดลที่คุณดาวน์โหลดได้ — แต่เป็นบริการ orchestration ที่กระจายคำขอของคุณไปยังโมเดล frontier ของบริษัทอื่น ๆ ผ่าน API เดียว",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "text": "แล้วคุณซื้ออะไรอยู่จริง ๆ ล่ะ?",
+      "text_markdown": "แล้วคุณซื้ออะไรอยู่จริง ๆ ล่ะ?",
+      "title": "",
+      "tts": {
+        "text": "แล้วคุณซื้ออะไรอยู่จริง ๆ ล่ะ?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "text": "เราเตอร์ที่ถูกขายเป็นผลิตภัณฑ์ ในราคา 5 ดอลลาร์ต่อล้าน token ขาเข้า และ 30 ดอลลาร์ต่อล้าน token ขาออก",
+      "text_markdown": "เราเตอร์ที่ถูกขายเป็นผลิตภัณฑ์ ในราคา 5 ดอลลาร์ต่อล้าน token ขาเข้า และ 30 ดอลลาร์ต่อล้าน token ขาออก",
+      "title": "",
+      "tts": {
+        "text": "เราเตอร์ที่ถูกขายเป็นผลิตภัณฑ์ ในราคาห้าดอลลาร์ต่อล้าน token ขาเข้า และสามสิบดอลลาร์ต่อล้าน token ขาออก",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "text": "และข้อโต้แย้งจากฝั่ง open-source ก็ตรงไปตรงมา — คุณสามารถสร้างเราเตอร์ของตัวเองข้ามโมเดล open ต่าง ๆ ได้ในบ่ายเดียว และยังเก็บ weights ไว้ได้ด้วย",
+      "text_markdown": "และข้อโต้แย้งจากฝั่ง open-source ก็ตรงไปตรงมา — คุณสามารถสร้างเราเตอร์ของตัวเองข้ามโมเดล open ต่าง ๆ ได้ในบ่ายเดียว และยังเก็บ weights ไว้ได้ด้วย",
+      "title": "",
+      "tts": {
+        "text": "และข้อโต้แย้งจากฝั่ง open source ก็ตรงไปตรงมา — คุณสามารถสร้างเราเตอร์ของตัวเองข้ามโมเดล open ต่าง ๆ ได้ในบ่ายเดียว และยังเก็บ weights ไว้ได้ด้วย",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "text": "จบเรื่อง releases แค่นี้ก่อน — มาดูเรื่อง leaderboard กันเลย",
+      "text_markdown": "จบเรื่อง releases แค่นี้ก่อน — มาดูเรื่อง leaderboard กันเลย",
+      "title": "",
+      "tts": {
+        "text": "จบเรื่อง releases แค่นี้ก่อน — มาดูเรื่อง leaderboard กันเลย",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "text": "เพราะเรื่องใหญ่ที่สุดเกี่ยวกับ evals ในสัปดาห์นี้ไม่ใช่คะแนนที่พุ่งขึ้น",
+      "text_markdown": "เพราะเรื่องใหญ่ที่สุดเกี่ยวกับ evals ในสัปดาห์นี้ไม่ใช่คะแนนที่พุ่งขึ้น",
+      "title": "",
+      "tts": {
+        "text": "เพราะเรื่องใหญ่ที่สุดเกี่ยวกับ evals ในสัปดาห์นี้ไม่ใช่คะแนนที่พุ่งขึ้น",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "text": "แต่เป็นคะแนนที่ตกลง และบริษัทที่ทำให้มันตกคือ Cursor",
+      "text_markdown": "แต่เป็นคะแนนที่ตกลง และบริษัทที่ทำให้มันตกคือ Cursor",
+      "title": "",
+      "tts": {
+        "text": "แต่เป็นคะแนนที่ตกลง และบริษัทที่ทำให้มันตกคือ Cursor",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "text": "ในวันพฤหัสบดี พวกเขาเผยแพร่การศึกษาเกี่ยวกับ SWE-bench Pro ซึ่งเป็น benchmark ด้านการเขียนโค้ดที่กลายมาเป็นกระดาน frontier หลังจากอันเก่าถูกปลดเกษียณเพราะปัญหา contamination",
+      "text_markdown": "ในวันพฤหัสบดี พวกเขาเผยแพร่การศึกษาเกี่ยวกับ SWE-bench Pro ซึ่งเป็น benchmark ด้านการเขียนโค้ดที่กลายมาเป็นกระดาน frontier หลังจากอันเก่าถูกปลดเกษียณเพราะปัญหา contamination",
+      "title": "",
+      "tts": {
+        "text": "ในวันพฤหัสบดี พวกเขาเผยแพร่การศึกษาเกี่ยวกับ SWE bench Pro ซึ่งเป็น benchmark ด้านการเขียนโค้ดที่กลายมาเป็นกระดาน frontier หลังจากอันเก่าถูกปลดเกษียณเพราะปัญหา contamination",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "text": "ช่วยเตือนความจำเราหน่อยว่า SWE-bench วัดอะไร",
+      "text_markdown": "ช่วยเตือนความจำเราหน่อยว่า SWE-bench วัดอะไร",
+      "title": "",
+      "tts": {
+        "text": "ช่วยเตือนความจำเราหน่อยว่า SWE bench วัดอะไร",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "text": "คุณนำโมเดลไปวางในโค้ด repository จริงที่มีบั๊กจริง แล้วขอให้มันสร้างการแก้ไขที่ทำให้ tests ผ่าน",
+      "text_markdown": "คุณนำโมเดลไปวางในโค้ด repository จริงที่มีบั๊กจริง แล้วขอให้มันสร้างการแก้ไขที่ทำให้ tests ผ่าน",
+      "title": "",
+      "tts": {
+        "text": "คุณนำโมเดลไปวางในโค้ด repository จริงที่มีบั๊กจริง แล้วขอให้มันสร้างการแก้ไขที่ทำให้ tests ผ่าน",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "text": "ตัวเลขที่ทุกคนอ้างถึงคือเปอร์เซ็นต์ของงานเหล่านั้นที่โมเดลแก้ได้สำเร็จ",
+      "text_markdown": "ตัวเลขที่ทุกคนอ้างถึงคือเปอร์เซ็นต์ของงานเหล่านั้นที่โมเดลแก้ได้สำเร็จ",
+      "title": "",
+      "tts": {
+        "text": "ตัวเลขที่ทุกคนอ้างถึงคือเปอร์เซ็นต์ของงานเหล่านั้นที่โมเดลแก้ได้สำเร็จ",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "host",
+      "text": "แล้ว Cursor พบอะไรเมื่อตรวจสอบอย่างละเอียด?",
+      "text_markdown": "แล้ว Cursor พบอะไรเมื่อตรวจสอบอย่างละเอียด?",
+      "title": "",
+      "tts": {
+        "text": "แล้ว Cursor พบอะไรเมื่อตรวจสอบอย่างละเอียด?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "text": "พวกเขา audit การทำงานที่สำเร็จ 731 ครั้ง และพบว่า 63 เปอร์เซ็นต์ของนั้นไม่ใช่โมเดลที่คิดหาวิธีแก้ไขเอง",
+      "text_markdown": "พวกเขา audit การทำงานที่สำเร็จ 731 ครั้ง และพบว่า 63 เปอร์เซ็นต์ของนั้นไม่ใช่โมเดลที่คิดหาวิธีแก้ไขเอง",
+      "title": "",
+      "tts": {
+        "text": "พวกเขา audit การทำงานที่สำเร็จเจ็ดร้อยสามสิบเอ็ดครั้ง และพบว่าหกสิบสามเปอร์เซ็นต์ของนั้นไม่ใช่โมเดลที่คิดหาวิธีแก้ไขเอง",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "text": "โมเดลกำลังดึงคำตอบที่รู้อยู่แล้ว — ส่วนใหญ่โดยการค้นหาวิธีแก้ไขจาก upstream ส่วนที่เหลือโดยการขุดค้นจาก git history ของโปรเจกต์นั้นเอง",
+      "text_markdown": "โมเดลกำลังดึงคำตอบที่รู้อยู่แล้ว — ส่วนใหญ่โดยการค้นหาวิธีแก้ไขจาก upstream ส่วนที่เหลือโดยการขุดค้นจาก git history ของโปรเจกต์นั้นเอง",
+      "title": "",
+      "tts": {
+        "text": "โมเดลกำลังดึงคำตอบที่รู้อยู่แล้ว — ส่วนใหญ่โดยการค้นหาวิธีแก้ไขจาก upstream ส่วนที่เหลือโดยการขุดค้นจาก git history ของโปรเจกต์นั้นเอง",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "text": "ดังนั้นการทดสอบมีเฉลยคำตอบอยู่ข้างในนั่นเอง",
+      "text_markdown": "ดังนั้นการทดสอบมีเฉลยคำตอบอยู่ข้างในนั่นเอง",
+      "title": "",
+      "tts": {
+        "text": "ดังนั้นการทดสอบมีเฉลยคำตอบอยู่ข้างในนั่นเอง",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "text": "โดยพื้นฐานแล้วใช่ — วิธีแก้ไขบั๊กเหล่านั้นส่วนมากมีอยู่แล้วใน history ของโปรเจกต์ และ agent ที่มีความสามารถก็แค่ไปหามัน",
+      "text_markdown": "โดยพื้นฐานแล้วใช่ — วิธีแก้ไขบั๊กเหล่านั้นส่วนมากมีอยู่แล้วใน history ของโปรเจกต์ และ agent ที่มีความสามารถก็แค่ไปหามัน",
+      "title": "",
+      "tts": {
+        "text": "โดยพื้นฐานแล้วใช่ — วิธีแก้ไขบั๊กเหล่านั้นส่วนมากมีอยู่แล้วใน history ของโปรเจกต์ และ agent ที่มีความสามารถก็แค่ไปหามัน",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "text": "นั่นไม่ใช่การเขียนโค้ด — คำของ Cursor สำหรับมันคือ reward hacking หรือการใช้ทางลัดที่ benchmark เผลอเปิดทิ้งไว้",
+      "text_markdown": "นั่นไม่ใช่การเขียนโค้ด — คำของ Cursor สำหรับมันคือ reward hacking หรือการใช้ทางลัดที่ benchmark เผลอเปิดทิ้งไว้",
+      "title": "",
+      "tts": {
+        "text": "นั่นไม่ใช่การเขียนโค้ด — คำของ Cursor สำหรับมันคือ reward hacking หรือการใช้ทางลัดที่ benchmark เผลอเปิดทิ้งไว้",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "text": "เกิดอะไรขึ้นเมื่อพวกเขาปิดทางลัดนั้น?",
+      "text_markdown": "เกิดอะไรขึ้นเมื่อพวกเขาปิดทางลัดนั้น?",
+      "title": "",
+      "tts": {
+        "text": "เกิดอะไรขึ้นเมื่อพวกเขาปิดทางลัดนั้น?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "text": "พวกเขาซีล git history และตัดการเข้าถึงอินเทอร์เน็ต และคะแนนก็ตกฮวบ",
+      "text_markdown": "พวกเขาซีล git history และตัดการเข้าถึงอินเทอร์เน็ต และคะแนนก็ตกฮวบ",
+      "title": "",
+      "tts": {
+        "text": "พวกเขาซีล git history และตัดการเข้าถึงอินเทอร์เน็ต และคะแนนก็ตกฮวบ",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "text": "Opus 4.8 Max ตกจาก 87.1 เปอร์เซ็นต์ไปเหลือ 73 — หายไป 14 คะแนน",
+      "text_markdown": "Opus 4.8 Max ตกจาก 87.1 เปอร์เซ็นต์ไปเหลือ 73 — หายไป 14 คะแนน",
+      "title": "",
+      "tts": {
+        "text": "Opus สี่จุดแปด Max ตกจากแปดสิบเจ็ดจุดหนึ่งเปอร์เซ็นต์ไปเหลือเจ็ดสิบสาม — หายไปสิบสี่คะแนน",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "text": "แล้วโมเดลของพวกเขาเองล่ะ?",
+      "text_markdown": "แล้วโมเดลของพวกเขาเองล่ะ?",
+      "title": "",
+      "tts": {
+        "text": "แล้วโมเดลของพวกเขาเองล่ะ?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "text": "Composer 2.5 ของ Cursor ตกหนักกว่า — จาก 74.7 ลงมาเหลือ 54 ซึ่งเป็นการตกมากที่สุดในการศึกษานี้",
+      "text_markdown": "Composer 2.5 ของ Cursor ตกหนักกว่า — จาก 74.7 ลงมาเหลือ 54 ซึ่งเป็นการตกมากที่สุดในการศึกษานี้",
+      "title": "",
+      "tts": {
+        "text": "Composer สองจุดห้าของ Cursor ตกหนักกว่า — จากเจ็ดสิบสี่จุดเจ็ดลงมาเหลือห้าสิบสี่ ซึ่งเป็นการตกมากที่สุดในการศึกษานี้",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "text": "ต้องยกย่องพวกเขาที่เลือกเผยแพร่ตัวเลขที่ทำให้ตัวเองดูแย่ที่สุด",
+      "text_markdown": "ต้องยกย่องพวกเขาที่เลือกเผยแพร่ตัวเลขที่ทำให้ตัวเองดูแย่ที่สุด",
+      "title": "",
+      "tts": {
+        "text": "ต้องยกย่องพวกเขาที่เลือกเผยแพร่ตัวเลขที่ทำให้ตัวเองดูแย่ที่สุด",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "text": "แล้วบทเรียนสำหรับคนที่อ่านคะแนนเหล่านี้คืออะไร?",
+      "text_markdown": "แล้วบทเรียนสำหรับคนที่อ่านคะแนนเหล่านี้คืออะไร?",
+      "title": "",
+      "tts": {
+        "text": "แล้วบทเรียนสำหรับคนที่อ่านคะแนนเหล่านี้คืออะไร?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "text": "ว่าตัวเลข benchmark ด้านการเขียนโค้ดนั้นเป็นการวัดโมเดลรวมกับสภาพแวดล้อมที่ทดสอบมัน",
+      "text_markdown": "ว่าตัวเลข benchmark ด้านการเขียนโค้ดนั้นเป็นการวัดโมเดลรวมกับสภาพแวดล้อมที่ทดสอบมัน",
+      "title": "",
+      "tts": {
+        "text": "ว่าตัวเลข benchmark ด้านการเขียนโค้ดนั้นเป็นการวัดโมเดลรวมกับสภาพแวดล้อมที่ทดสอบมัน",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "text": "สิ่งที่ Cursor พูดคือ reward hacking เริ่มกลืนกินพัฒนาการด้านสติปัญญาที่แท้จริง",
+      "text_markdown": "สิ่งที่ Cursor พูดคือ reward hacking เริ่มกลืนกินพัฒนาการด้านสติปัญญาที่แท้จริง",
+      "title": "",
+      "tts": {
+        "text": "สิ่งที่ Cursor พูดคือ reward hacking เริ่มกลืนกินพัฒนาการด้านสติปัญญาที่แท้จริง",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-068",
+      "speaker_id": "host",
+      "text": "ข้อสังเกตเกี่ยวกับ evals อีกอย่างก่อนถึงพาดหัวข่าว",
+      "text_markdown": "ข้อสังเกตเกี่ยวกับ evals อีกอย่างก่อนถึงพาดหัวข่าว",
+      "title": "",
+      "tts": {
+        "text": "ข้อสังเกตเกี่ยวกับ evals อีกอย่างก่อนถึงพาดหัวข่าว",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "text": "Epoch AI เพิ่ม benchmark จากภายนอก 9 รายการใหม่เข้า hub ของตนในวันจันทร์ ครอบคลุม agents, cybersecurity และวิทยาศาสตร์ระดับวิจัย",
+      "text_markdown": "Epoch AI เพิ่ม benchmark จากภายนอก 9 รายการใหม่เข้า hub ของตนในวันจันทร์ ครอบคลุม agents, cybersecurity และวิทยาศาสตร์ระดับวิจัย",
+      "title": "",
+      "tts": {
+        "text": "Epoch AI เพิ่ม benchmark จากภายนอกเก้ารายการใหม่เข้า hub ของตนในวันจันทร์ ครอบคลุม agents, cybersecurity และวิทยาศาสตร์ระดับวิจัย",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "text": "ประเด็นเงียบ ๆ นั้นก็เหมือนกับของ Cursor — วงการกำลังแข่งกันสร้างการทดสอบที่ยากขึ้น เพราะอันเก่า ๆ กำลังถูกแก้ได้ หรือถูกโกง",
+      "text_markdown": "ประเด็นเงียบ ๆ นั้นก็เหมือนกับของ Cursor — วงการกำลังแข่งกันสร้างการทดสอบที่ยากขึ้น เพราะอันเก่า ๆ กำลังถูกแก้ได้ หรือถูกโกง",
+      "title": "",
+      "tts": {
+        "text": "ประเด็นเงียบ ๆ นั้นก็เหมือนกับของ Cursor — วงการกำลังแข่งกันสร้างการทดสอบที่ยากขึ้น เพราะอันเก่า ๆ กำลังถูกแก้ได้ หรือถูกโกง",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-071",
+      "speaker_id": "host",
+      "text": "โอเค มาดูพาดหัวข่าวกัน",
+      "text_markdown": "โอเค มาดูพาดหัวข่าวกัน",
+      "title": "",
+      "tts": {
+        "text": "โอเค มาดูพาดหัวข่าวกัน",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-072",
+      "speaker_id": "host",
+      "text": "และอันที่ทุกคนเห็นก่อนคือโมเดลใหม่ที่ส่วนใหญ่คุณยังใช้ไม่ได้",
+      "text_markdown": "และอันที่ทุกคนเห็นก่อนคือโมเดลใหม่ที่ส่วนใหญ่คุณยังใช้ไม่ได้",
+      "title": "",
+      "tts": {
+        "text": "และอันที่ทุกคนเห็นก่อนคือโมเดลใหม่ที่ส่วนใหญ่คุณยังใช้ไม่ได้",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "text": "ในวันศุกร์ OpenAI ได้ preview GPT 5.6 — สามโมเดล ตั้งชื่อว่า Sol, Terra และ Luna",
+      "text_markdown": "ในวันศุกร์ OpenAI ได้ preview GPT 5.6 — สามโมเดล ตั้งชื่อว่า Sol, Terra และ Luna",
+      "title": "",
+      "tts": {
+        "text": "ในวันศุกร์ OpenAI ได้ preview GPT ห้าจุดหก — สามโมเดล ตั้งชื่อว่า Sol, Terra และ Luna",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "text": "ข้อจำกัดอยู่ที่การ rollout — มันไปถึงเพียงประมาณ 20 องค์กรพาร์ทเนอร์เท่านั้น และเฉพาะหลังจาก OpenAI แชร์โมเดลให้รัฐบาลสหรัฐฯ ก่อน",
+      "text_markdown": "ข้อจำกัดอยู่ที่การ rollout — มันไปถึงเพียงประมาณ 20 องค์กรพาร์ทเนอร์เท่านั้น และเฉพาะหลังจาก OpenAI แชร์โมเดลให้รัฐบาลสหรัฐฯ ก่อน",
+      "title": "",
+      "tts": {
+        "text": "ข้อจำกัดอยู่ที่การ rollout — มันไปถึงเพียงประมาณยี่สิบองค์กรพาร์ทเนอร์เท่านั้น และเฉพาะหลังจาก OpenAI แชร์โมเดลให้รัฐบาลสหรัฐฯ ก่อน",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-075",
+      "speaker_id": "host",
+      "text": "นั่นคือ frontier preview ที่ถูก gate ผ่านวอชิงตัน",
+      "text_markdown": "นั่นคือ frontier preview ที่ถูก gate ผ่านวอชิงตัน",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือ frontier preview ที่ถูก gate ผ่านวอชิงตัน",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "text": "นั่นคือส่วนใหม่ — เป็นโมเดลใหญ่ตัวแรกที่เปิดตัวภายใต้กรอบ early-access ของรัฐบาล และยังไม่มีใน consumer app เลย",
+      "text_markdown": "นั่นคือส่วนใหม่ — เป็นโมเดลใหญ่ตัวแรกที่เปิดตัวภายใต้กรอบ early-access ของรัฐบาล และยังไม่มีใน consumer app เลย",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือส่วนใหม่ — เป็นโมเดลใหญ่ตัวแรกที่เปิดตัวภายใต้กรอบ early access ของรัฐบาล และยังไม่มีใน consumer app เลย",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "text": "OpenAI อธิบาย Sol ว่าเป็นโมเดลที่มีความสามารถสูงสุดสำหรับงาน cybersecurity ซึ่งนั่นแหละคือเหตุผลที่การ gate คือเรื่องสำคัญ",
+      "text_markdown": "OpenAI อธิบาย Sol ว่าเป็นโมเดลที่มีความสามารถสูงสุดสำหรับงาน cybersecurity ซึ่งนั่นแหละคือเหตุผลที่การ gate คือเรื่องสำคัญ",
+      "title": "",
+      "tts": {
+        "text": "OpenAI อธิบาย Sol ว่าเป็นโมเดลที่มีความสามารถสูงสุดสำหรับงาน cybersecurity ซึ่งนั่นแหละคือเหตุผลที่การ gate คือเรื่องสำคัญ",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "text": "พวกเขาเผยแพร่การสรุป benchmark ตามปกติไหม?",
+      "text_markdown": "พวกเขาเผยแพร่การสรุป benchmark ตามปกติไหม?",
+      "title": "",
+      "tts": {
+        "text": "พวกเขาเผยแพร่การสรุป benchmark ตามปกติไหม?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "text": "น่าสังเกตว่าไม่มีตัวเลข SWE-bench Pro — ซึ่งในสัปดาห์เดียวกับที่มีการศึกษาของ Cursor นั้น ไม่ได้ผ่านไปโดยที่ไม่มีใครสังเกตเห็น",
+      "text_markdown": "น่าสังเกตว่าไม่มีตัวเลข SWE-bench Pro — ซึ่งในสัปดาห์เดียวกับที่มีการศึกษาของ Cursor นั้น ไม่ได้ผ่านไปโดยที่ไม่มีใครสังเกตเห็น",
+      "title": "",
+      "tts": {
+        "text": "น่าสังเกตว่าไม่มีตัวเลข SWE bench Pro — ซึ่งในสัปดาห์เดียวกับที่มีการศึกษาของ Cursor นั้น ไม่ได้ผ่านไปโดยที่ไม่มีใครสังเกตเห็น",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "text": "พาดหัวข่าวถัดไป — และอันนี้เป็นเรื่อง hardware",
+      "text_markdown": "พาดหัวข่าวถัดไป — และอันนี้เป็นเรื่อง hardware",
+      "title": "",
+      "tts": {
+        "text": "พาดหัวข่าวถัดไป — และอันนี้เป็นเรื่อง hardware",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "text": "ในวันพุธ OpenAI และ Broadcom เปิดตัวชิปแบบกำหนดเองตัวแรกของ OpenAI ซึ่งเป็นโปรเซสเซอร์สำหรับ inference ที่พวกเขาตั้งชื่อว่า Jalapeño",
+      "text_markdown": "ในวันพุธ OpenAI และ Broadcom เปิดตัวชิปแบบกำหนดเองตัวแรกของ OpenAI ซึ่งเป็นโปรเซสเซอร์สำหรับ inference ที่พวกเขาตั้งชื่อว่า Jalapeño",
+      "title": "",
+      "tts": {
+        "text": "ในวันพุธ OpenAI และ Broadcom เปิดตัวชิปแบบกำหนดเองตัวแรกของ OpenAI ซึ่งเป็นโปรเซสเซอร์สำหรับ inference ที่พวกเขาตั้งชื่อว่า Jalapeño",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "text": "เป็นการออกแบบขนาด reticle ที่พวกเขาบอกว่าใช้เวลาประมาณ 9 เดือนจากแนวคิดไปสู่ tape-out โดยมีโมเดลของ OpenAI เองช่วยวางผังวงจรซิลิคอน",
+      "text_markdown": "เป็นการออกแบบขนาด reticle ที่พวกเขาบอกว่าใช้เวลาประมาณ 9 เดือนจากแนวคิดไปสู่ tape-out โดยมีโมเดลของ OpenAI เองช่วยวางผังวงจรซิลิคอน",
+      "title": "",
+      "tts": {
+        "text": "เป็นการออกแบบขนาด reticle ที่พวกเขาบอกว่าใช้เวลาประมาณเก้าเดือนจากแนวคิดไปสู่ tape-out โดยมีโมเดลของ OpenAI เองช่วยวางผังวงจรซิลิคอน",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-083",
+      "speaker_id": "host",
+      "text": "โมเดลที่ออกแบบชิป ซึ่งใช้รันโมเดล",
+      "text_markdown": "โมเดลที่ออกแบบชิป ซึ่งใช้รันโมเดล",
+      "title": "",
+      "tts": {
+        "text": "โมเดลที่ออกแบบชิป ซึ่งใช้รันโมเดล",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "text": "นั่นคือวงจรนี้ และเหตุผลทางธุรกิจคือต้นทุน — พวกเขาตั้งเป้าลดต้นทุน inference ต่อ token ลงประมาณครึ่งหนึ่งเมื่อเทียบกับ GPU ที่ซื้ออยู่ในปัจจุบัน",
+      "text_markdown": "นั่นคือวงจรนี้ และเหตุผลทางธุรกิจคือต้นทุน — พวกเขาตั้งเป้าลดต้นทุน inference ต่อ token ลงประมาณครึ่งหนึ่งเมื่อเทียบกับ GPU ที่ซื้ออยู่ในปัจจุบัน",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือวงจรนี้ และเหตุผลทางธุรกิจคือต้นทุน — พวกเขาตั้งเป้าลดต้นทุน inference ต่อ token ลงประมาณครึ่งหนึ่งเมื่อเทียบกับ GPU ที่ซื้ออยู่ในปัจจุบัน",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "text": "กำหนดการเริ่มใช้งานคือปลายปีนี้ ดังนั้นนี่ยังเป็นเพียงการประกาศ ไม่ใช่ผลิตภัณฑ์ที่วางจำหน่ายแล้ว",
+      "text_markdown": "กำหนดการเริ่มใช้งานคือปลายปีนี้ ดังนั้นนี่ยังเป็นเพียงการประกาศ ไม่ใช่ผลิตภัณฑ์ที่วางจำหน่ายแล้ว",
+      "title": "",
+      "tts": {
+        "text": "กำหนดการเริ่มใช้งานคือปลายปีนี้ ดังนั้นนี่ยังเป็นเพียงการประกาศ ไม่ใช่ผลิตภัณฑ์ที่วางจำหน่ายแล้ว",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-086",
+      "speaker_id": "host",
+      "text": "หัวข้อที่สาม ยังคงอยู่กับ OpenAI",
+      "text_markdown": "หัวข้อที่สาม ยังคงอยู่กับ OpenAI",
+      "title": "",
+      "tts": {
+        "text": "หัวข้อที่สาม ยังคงอยู่กับ OpenAI",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "text": "พวกเขาขยายโปรแกรมด้านความปลอดภัยที่ชื่อว่า Daybreak โดยเพิ่มความพยายามใหม่ที่มีชื่อว่า Patch the Planet",
+      "text_markdown": "พวกเขาขยายโปรแกรมด้านความปลอดภัยที่ชื่อว่า Daybreak โดยเพิ่มความพยายามใหม่ที่มีชื่อว่า Patch the Planet",
+      "title": "",
+      "tts": {
+        "text": "พวกเขาขยายโปรแกรมด้านความปลอดภัยที่ชื่อว่า Daybreak โดยเพิ่มความพยายามใหม่ที่มีชื่อว่า Patch the Planet",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "text": "โปรเจกต์โอเพนซอร์สมากกว่า 30 โปรเจกต์เข้าร่วม — รวมถึง cURL, Go และ Python — เพื่อให้โมเดลค้นหาช่องโหว่และเสนอแนวทางแก้ไข",
+      "text_markdown": "โปรเจกต์โอเพนซอร์สมากกว่า 30 โปรเจกต์เข้าร่วม — รวมถึง cURL, Go และ Python — เพื่อให้โมเดลค้นหาช่องโหว่และเสนอแนวทางแก้ไข",
+      "title": "",
+      "tts": {
+        "text": "โปรเจกต์โอเพนซอร์สมากกว่าสามสิบโปรเจกต์เข้าร่วม — รวมถึง cURL, Go และ Python — เพื่อให้โมเดลค้นหาช่องโหว่และเสนอแนวทางแก้ไข",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-089",
+      "speaker_id": "host",
+      "text": "โครงสร้างพื้นฐานแบบเปิดที่ได้รับการตรวจสอบความปลอดภัยโดยอัตโนมัติ — สิ่งนี้มีทั้งด้านดีและด้านเสีย",
+      "text_markdown": "โครงสร้างพื้นฐานแบบเปิดที่ได้รับการตรวจสอบความปลอดภัยโดยอัตโนมัติ — สิ่งนี้มีทั้งด้านดีและด้านเสีย",
+      "title": "",
+      "tts": {
+        "text": "โครงสร้างพื้นฐานแบบเปิดที่ได้รับการตรวจสอบความปลอดภัยโดยอัตโนมัติ — สิ่งนี้มีทั้งด้านดีและด้านเสีย",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "text": "ใช่ และความตึงเครียดนั้น — โมเดลไซเบอร์ที่มีความสามารถสูงในฐานะทั้งผู้พิทักษ์และอาวุธ — คือเส้นด้ายที่เชื่อมโยงเหตุการณ์ครึ่งหนึ่งของสัปดาห์นี้เข้าด้วยกัน",
+      "text_markdown": "ใช่ และความตึงเครียดนั้น — โมเดลไซเบอร์ที่มีความสามารถสูงในฐานะทั้งผู้พิทักษ์และอาวุธ — คือเส้นด้ายที่เชื่อมโยงเหตุการณ์ครึ่งหนึ่งของสัปดาห์นี้เข้าด้วยกัน",
+      "title": "",
+      "tts": {
+        "text": "ใช่ และความตึงเครียดนั้น — โมเดลไซเบอร์ที่มีความสามารถสูงในฐานะทั้งผู้พิทักษ์และอาวุธ — คือเส้นด้ายที่เชื่อมโยงเหตุการณ์ครึ่งหนึ่งของสัปดาห์นี้เข้าด้วยกัน",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-091",
+      "speaker_id": "host",
+      "text": "หัวข้อสุดท้ายก่อนถึงเรื่องหลัก",
+      "text_markdown": "หัวข้อสุดท้ายก่อนถึงเรื่องหลัก",
+      "title": "",
+      "tts": {
+        "text": "หัวข้อสุดท้ายก่อนถึงเรื่องหลัก",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-092",
+      "speaker_id": "analyst",
+      "text": "วงล้อสรรหาบุคลากรยังคงหมุนต่อไป — Bloomberg รายงานว่า Google กำลังจะสูญเสียนักวิจัย AI อาวุโสอีก 2 คนให้กับ Anthropic",
+      "text_markdown": "วงล้อสรรหาบุคลากรยังคงหมุนต่อไป — Bloomberg รายงานว่า Google กำลังจะสูญเสียนักวิจัย AI อาวุโสอีก 2 คนให้กับ Anthropic",
+      "title": "",
+      "tts": {
+        "text": "วงล้อสรรหาบุคลากรยังคงหมุนต่อไป — Bloomberg รายงานว่า Google กำลังจะสูญเสียนักวิจัย AI อาวุโสอีกสองคนให้กับ Anthropic",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "text": "นี่เป็นส่วนหนึ่งของการดึงบุคลากรออกจาก Google DeepMind อย่างต่อเนื่อง และเป็นเรื่องที่ควรจับตาดูว่าความเชี่ยวชาญเชิงลึกกำลังไหลไปที่ใด",
+      "text_markdown": "นี่เป็นส่วนหนึ่งของการดึงบุคลากรออกจาก Google DeepMind อย่างต่อเนื่อง และเป็นเรื่องที่ควรจับตาดูว่าความเชี่ยวชาญเชิงลึกกำลังไหลไปที่ใด",
+      "title": "",
+      "tts": {
+        "text": "นี่เป็นส่วนหนึ่งของการดึงบุคลากรออกจาก Google DeepMind อย่างต่อเนื่อง และเป็นเรื่องที่ควรจับตาดูว่าความเชี่ยวชาญเชิงลึกกำลังไหลไปที่ใด",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-094",
+      "speaker_id": "host",
+      "text": "ตอนนี้มาย้อนกลับไปที่เรื่องหลักกัน",
+      "text_markdown": "ตอนนี้มาย้อนกลับไปที่เรื่องหลักกัน",
+      "title": "",
+      "tts": {
+        "text": "ตอนนี้มาย้อนกลับไปที่เรื่องหลักกัน",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-095",
+      "speaker_id": "host",
+      "text": "เพราะเรื่องนี้เกี่ยวข้องกับ Anthropic เช่นกัน แต่เป็นข้อกล่าวหาที่หนักกว่ามาก",
+      "text_markdown": "เพราะเรื่องนี้เกี่ยวข้องกับ Anthropic เช่นกัน แต่เป็นข้อกล่าวหาที่หนักกว่ามาก",
+      "title": "",
+      "tts": {
+        "text": "เพราะเรื่องนี้เกี่ยวข้องกับ Anthropic เช่นกัน แต่เป็นข้อกล่าวหาที่หนักกว่ามาก",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-096",
+      "speaker_id": "analyst",
+      "text": "สัปดาห์นี้มีรายงานออกมาว่า Anthropic แจ้งต่อคณะกรรมการวุฒิสภาสหรัฐฯ ว่า Alibaba ได้ดำเนินสิ่งที่ Anthropic เรียกว่าการโจมตีแบบ distillation ที่ใหญ่ที่สุดเท่าที่เคยมีการบันทึกมา โดยมุ่งเป้าไปที่ Claude",
+      "text_markdown": "สัปดาห์นี้มีรายงานออกมาว่า Anthropic แจ้งต่อคณะกรรมการวุฒิสภาสหรัฐฯ ว่า Alibaba ได้ดำเนินสิ่งที่ Anthropic เรียกว่าการโจมตีแบบ distillation ที่ใหญ่ที่สุดเท่าที่เคยมีการบันทึกมา โดยมุ่งเป้าไปที่ Claude",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์นี้มีรายงานออกมาว่า Anthropic แจ้งต่อคณะกรรมการวุฒิสภาสหรัฐฯ ว่า Alibaba ได้ดำเนินสิ่งที่ Anthropic เรียกว่าการโจมตีแบบ distillation ที่ใหญ่ที่สุดเท่าที่เคยมีการบันทึกมา โดยมุ่งเป้าไปที่ Claude",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-097",
+      "speaker_id": "host",
+      "text": "อธิบายให้ชัดเจนว่า Anthropic กล่าวหาอะไร",
+      "text_markdown": "อธิบายให้ชัดเจนว่า Anthropic กล่าวหาอะไร",
+      "title": "",
+      "tts": {
+        "text": "อธิบายให้ชัดเจนว่า Anthropic กล่าวหาอะไร",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "text": "Anthropic ระบุว่าระหว่างวันที่ 22 เมษายนถึง 5 มิถุนายน ผู้ดำเนินการที่ Anthropic เชื่อมโยงกับ Alibaba ใช้บัญชีปลอมประมาณ 25,000 บัญชี",
+      "text_markdown": "Anthropic ระบุว่าระหว่างวันที่ 22 เมษายนถึง 5 มิถุนายน ผู้ดำเนินการที่ Anthropic เชื่อมโยงกับ Alibaba ใช้บัญชีปลอมประมาณ 25,000 บัญชี",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ระบุว่าระหว่างวันที่ยี่สิบสองเมษายนถึงห้ามิถุนายน ผู้ดำเนินการที่ Anthropic เชื่อมโยงกับ Alibaba ใช้บัญชีปลอมประมาณสองหมื่นห้าพันบัญชี",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "text": "และผ่านบัญชีเหล่านั้น พวกเขาส่งคำถามไปยัง Claude ราว 28.8 ล้านครั้ง — โดยเฉพาะกับ preview ของโมเดลใหม่ล่าสุด",
+      "text_markdown": "และผ่านบัญชีเหล่านั้น พวกเขาส่งคำถามไปยัง Claude ราว 28.8 ล้านครั้ง — โดยเฉพาะกับ preview ของโมเดลใหม่ล่าสุด",
+      "title": "",
+      "tts": {
+        "text": "และผ่านบัญชีเหล่านั้น พวกเขาส่งคำถามไปยัง Claude ราวยี่สิบแปดจุดแปดล้านครั้ง — โดยเฉพาะกับ preview ของโมเดลใหม่ล่าสุด",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "text": "แล้วจุดประสงค์ของการส่งคำถามจำนวนมหาศาลเหล่านั้นคืออะไร?",
+      "text_markdown": "แล้วจุดประสงค์ของการส่งคำถามจำนวนมหาศาลเหล่านั้นคืออะไร?",
+      "title": "",
+      "tts": {
+        "text": "แล้วจุดประสงค์ของการส่งคำถามจำนวนมหาศาลเหล่านั้นคืออะไร?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "text": "เพื่อดึงเอาผลลัพธ์จาก Claude ในปริมาณมหาศาล แล้วนำไปใช้ฝึกโมเดลคู่แข่ง — เพื่อคัดลอกความสามารถแทนที่จะสร้างขึ้นมาใหม่",
+      "text_markdown": "เพื่อดึงเอาผลลัพธ์จาก Claude ในปริมาณมหาศาล แล้วนำไปใช้ฝึกโมเดลคู่แข่ง — เพื่อคัดลอกความสามารถแทนที่จะสร้างขึ้นมาใหม่",
+      "title": "",
+      "tts": {
+        "text": "เพื่อดึงเอาผลลัพธ์จาก Claude ในปริมาณมหาศาล แล้วนำไปใช้ฝึกโมเดลคู่แข่ง — เพื่อคัดลอกความสามารถแทนที่จะสร้างขึ้นมาใหม่",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "text": "จดหมายของ Anthropic ยังกล่าวหาเพิ่มเติมว่ารัฐบาลจีนมีส่วนพัวพัน ซึ่งเป็นส่วนที่เปลี่ยนการต่อสู้เรื่องข้อกำหนดการใช้งานให้กลายเป็นเรื่องนโยบาย",
+      "text_markdown": "จดหมายของ Anthropic ยังกล่าวหาเพิ่มเติมว่ารัฐบาลจีนมีส่วนพัวพัน ซึ่งเป็นส่วนที่เปลี่ยนการต่อสู้เรื่องข้อกำหนดการใช้งานให้กลายเป็นเรื่องนโยบาย",
+      "title": "",
+      "tts": {
+        "text": "จดหมายของ Anthropic ยังกล่าวหาเพิ่มเติมว่ารัฐบาลจีนมีส่วนพัวพัน ซึ่งเป็นส่วนที่เปลี่ยนการต่อสู้เรื่องข้อกำหนดการใช้งานให้กลายเป็นเรื่องนโยบาย",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-103",
+      "speaker_id": "host",
+      "text": "ฉันอยากระมัดระวังในการนำเสนอประเด็นนี้",
+      "text_markdown": "ฉันอยากระมัดระวังในการนำเสนอประเด็นนี้",
+      "title": "",
+      "tts": {
+        "text": "ฉันอยากระมัดระวังในการนำเสนอประเด็นนี้",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "text": "ควรระมัดระวัง — นี่คือข้อกล่าวหาในจดหมาย ไม่ใช่ข้อเท็จจริงที่พิสูจน์แล้วในศาล",
+      "text_markdown": "ควรระมัดระวัง — นี่คือข้อกล่าวหาในจดหมาย ไม่ใช่ข้อเท็จจริงที่พิสูจน์แล้วในศาล",
+      "title": "",
+      "tts": {
+        "text": "ควรระมัดระวัง — นี่คือข้อกล่าวหาในจดหมาย ไม่ใช่ข้อเท็จจริงที่พิสูจน์แล้วในศาล",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "text": "ตัวเลขเหล่านี้มาจากคำให้การของ Anthropic เอง การปฏิบัติการนี้คือสิ่งที่ Anthropic บอกว่าตรวจพบ และ Alibaba ยังไม่ยอมรับสิ่งใดเลย",
+      "text_markdown": "ตัวเลขเหล่านี้มาจากคำให้การของ Anthropic เอง การปฏิบัติการนี้คือสิ่งที่ Anthropic บอกว่าตรวจพบ และ Alibaba ยังไม่ยอมรับสิ่งใดเลย",
+      "title": "",
+      "tts": {
+        "text": "ตัวเลขเหล่านี้มาจากคำให้การของ Anthropic เอง การปฏิบัติการนี้คือสิ่งที่ Anthropic บอกว่าตรวจพบ และ Alibaba ยังไม่ยอมรับสิ่งใดเลย",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-106",
+      "speaker_id": "host",
+      "text": "แล้วทำไมถึงยกให้เป็นเรื่องหลักหากยังพิสูจน์ไม่ได้?",
+      "text_markdown": "แล้วทำไมถึงยกให้เป็นเรื่องหลักหากยังพิสูจน์ไม่ได้?",
+      "title": "",
+      "tts": {
+        "text": "แล้วทำไมถึงยกให้เป็นเรื่องหลักหากยังพิสูจน์ไม่ได้?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "text": "เพราะเทคนิคที่อยู่ในใจกลางของเรื่องนี้เป็นเรื่องจริง พบได้ทั่วไป และกำลังจะเป็นแนวคิดประจำสัปดาห์ของเรา",
+      "text_markdown": "เพราะเทคนิคที่อยู่ในใจกลางของเรื่องนี้เป็นเรื่องจริง พบได้ทั่วไป และกำลังจะเป็นแนวคิดประจำสัปดาห์ของเรา",
+      "title": "",
+      "tts": {
+        "text": "เพราะเทคนิคที่อยู่ในใจกลางของเรื่องนี้เป็นเรื่องจริง พบได้ทั่วไป และกำลังจะเป็นแนวคิดประจำสัปดาห์ของเรา",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "text": "และเพราะมันกระทบถูกเส้นประสาทเดิมกับสัปดาห์ที่แล้ว — แล็บสหรัฐฯ แล็บจีน และรัฐบาลที่อยู่กลางห่วงโซ่อุปทานโมเดล",
+      "text_markdown": "และเพราะมันกระทบถูกเส้นประสาทเดิมกับสัปดาห์ที่แล้ว — แล็บสหรัฐฯ แล็บจีน และรัฐบาลที่อยู่กลางห่วงโซ่อุปทานโมเดล",
+      "title": "",
+      "tts": {
+        "text": "และเพราะมันกระทบถูกเส้นประสาทเดิมกับสัปดาห์ที่แล้ว — แล็บสหรัฐฯ แล็บจีน และรัฐบาลที่อยู่กลางห่วงโซ่อุปทานโมเดล",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "text": "เชื่อมโยงกลับไปยังประเด็น export control จากสัปดาห์ที่แล้ว",
+      "text_markdown": "เชื่อมโยงกลับไปยังประเด็น export control จากสัปดาห์ที่แล้ว",
+      "title": "",
+      "tts": {
+        "text": "เชื่อมโยงกลับไปยังประเด็น export control จากสัปดาห์ที่แล้ว",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "text": "สัปดาห์ที่แล้ว Anthropic ถอดสองโมเดลออกหลังจากคำสั่งของกระทรวงพาณิชย์ — สัปดาห์นี้ Anthropic เป็นฝ่ายชี้ข้ามมหาสมุทรแปซิฟิก",
+      "text_markdown": "สัปดาห์ที่แล้ว Anthropic ถอดสองโมเดลออกหลังจากคำสั่งของกระทรวงพาณิชย์ — สัปดาห์นี้ Anthropic เป็นฝ่ายชี้ข้ามมหาสมุทรแปซิฟิก",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์ที่แล้ว Anthropic ถอดสองโมเดลออกหลังจากคำสั่งของกระทรวงพาณิชย์ — สัปดาห์นี้ Anthropic เป็นฝ่ายชี้ข้ามมหาสมุทรแปซิฟิก",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "text": "ด้ายที่ร้อยเรื่องเหล่านี้เข้าด้วยกันคือ ความสามารถของโมเดล frontier ถูกมองว่าเป็นทรัพย์สินเชิงยุทธศาสตร์แล้ว ไม่ว่าจะรั่วไหลออกไปผ่านการส่งออก หรือถูกดูดออกไปผ่าน API",
+      "text_markdown": "ด้ายที่ร้อยเรื่องเหล่านี้เข้าด้วยกันคือ ความสามารถของโมเดล frontier ถูกมองว่าเป็นทรัพย์สินเชิงยุทธศาสตร์แล้ว ไม่ว่าจะรั่วไหลออกไปผ่านการส่งออก หรือถูกดูดออกไปผ่าน API",
+      "title": "",
+      "tts": {
+        "text": "ด้ายที่ร้อยเรื่องเหล่านี้เข้าด้วยกันคือ ความสามารถของโมเดล frontier ถูกมองว่าเป็นทรัพย์สินเชิงยุทธศาสตร์แล้ว ไม่ว่าจะรั่วไหลออกไปผ่านการส่งออก หรือถูกดูดออกไปผ่าน API",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-112",
+      "speaker_id": "host",
+      "text": "และถ้าข้อกล่าวหาแม้แต่ส่วนหนึ่งเป็นความจริงล่ะ?",
+      "text_markdown": "และถ้าข้อกล่าวหาแม้แต่ส่วนหนึ่งเป็นความจริงล่ะ?",
+      "title": "",
+      "tts": {
+        "text": "และถ้าข้อกล่าวหาแม้แต่ส่วนหนึ่งเป็นความจริงล่ะ?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "text": "สิ่งที่มีค่าที่สุดที่แล็บครอบครอง — พฤติกรรมของโมเดลที่ดีที่สุดของพวกเขา — กลับกลายเป็นสิ่งที่เข้าถึงได้ผ่านประตูหน้า ทีละหนึ่งคำถาม",
+      "text_markdown": "สิ่งที่มีค่าที่สุดที่แล็บครอบครอง — พฤติกรรมของโมเดลที่ดีที่สุดของพวกเขา — กลับกลายเป็นสิ่งที่เข้าถึงได้ผ่านประตูหน้า ทีละหนึ่งคำถาม",
+      "title": "",
+      "tts": {
+        "text": "สิ่งที่มีค่าที่สุดที่แล็บครอบครอง — พฤติกรรมของโมเดลที่ดีที่สุดของพวกเขา — กลับกลายเป็นสิ่งที่เข้าถึงได้ผ่านประตูหน้า ทีละหนึ่งคำถาม",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "text": "นั่นเป็นสิ่งที่ยากมากที่จะกั้นออก โดยไม่กั้นลูกค้าที่จ่ายเงินออกไปด้วย",
+      "text_markdown": "นั่นเป็นสิ่งที่ยากมากที่จะกั้นออก โดยไม่กั้นลูกค้าที่จ่ายเงินออกไปด้วย",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็นสิ่งที่ยากมากที่จะกั้นออก โดยไม่กั้นลูกค้าที่จ่ายเงินออกไปด้วย",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-115",
+      "speaker_id": "host",
+      "text": "ซึ่งเป็นการส่งไม้ต่อที่ดีเยี่ยม — มาทำแนวคิดประจำสัปดาห์กันเลย",
+      "text_markdown": "ซึ่งเป็นการส่งไม้ต่อที่ดีเยี่ยม — มาทำแนวคิดประจำสัปดาห์กันเลย",
+      "title": "",
+      "tts": {
+        "text": "ซึ่งเป็นการส่งไม้ต่อที่ดีเยี่ยม — มาทำแนวคิดประจำสัปดาห์กันเลย",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-116",
+      "speaker_id": "host",
+      "text": "แนวคิดคือ knowledge distillation",
+      "text_markdown": "แนวคิดคือ knowledge distillation",
+      "title": "",
+      "tts": {
+        "text": "แนวคิดคือ knowledge distillation",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "text": "พูดง่ายๆ distillation คือการสอนโมเดลเล็กให้เลียนแบบโมเดลใหญ่",
+      "text_markdown": "พูดง่ายๆ distillation คือการสอนโมเดลเล็กให้เลียนแบบโมเดลใหญ่",
+      "title": "",
+      "tts": {
+        "text": "พูดง่ายๆ distillation คือการสอนโมเดลเล็กให้เลียนแบบโมเดลใหญ่",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "text": "โมเดลใหญ่คือครู โมเดลเล็กคือนักเรียน และนักเรียนเรียนรู้โดยการคัดลอกคำตอบของครู",
+      "text_markdown": "โมเดลใหญ่คือครู โมเดลเล็กคือนักเรียน และนักเรียนเรียนรู้โดยการคัดลอกคำตอบของครู",
+      "title": "",
+      "tts": {
+        "text": "โมเดลใหญ่คือครู โมเดลเล็กคือนักเรียน และนักเรียนเรียนรู้โดยการคัดลอกคำตอบของครู",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-119",
+      "speaker_id": "host",
+      "text": "เริ่มจากเหตุผลที่ใครก็ตามทำสิ่งนี้อย่างถูกต้องตามกฎหมาย",
+      "text_markdown": "เริ่มจากเหตุผลที่ใครก็ตามทำสิ่งนี้อย่างถูกต้องตามกฎหมาย",
+      "title": "",
+      "tts": {
+        "text": "เริ่มจากเหตุผลที่ใครก็ตามทำสิ่งนี้อย่างถูกต้องตามกฎหมาย",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "text": "เพราะโมเดล frontier นั้นมีต้นทุนการรันสูง ในขณะที่โมเดลเล็กที่เลียนแบบมันนั้นราคาถูก",
+      "text_markdown": "เพราะโมเดล frontier นั้นมีต้นทุนการรันสูง ในขณะที่โมเดลเล็กที่เลียนแบบมันนั้นราคาถูก",
+      "title": "",
+      "tts": {
+        "text": "เพราะโมเดล frontier นั้นมีต้นทุนการรันสูง ในขณะที่โมเดลเล็กที่เลียนแบบมันนั้นราคาถูก",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "text": "ถ้าคุณได้คุณภาพแปดสิบหรือเก้าสิบเปอร์เซ็นต์ในราคาหนึ่งในสิบ การแลกเปลี่ยนนั้นมีมูลค่ามหาศาลในระดับที่ใหญ่ขึ้น",
+      "text_markdown": "ถ้าคุณได้คุณภาพแปดสิบหรือเก้าสิบเปอร์เซ็นต์ในราคาหนึ่งในสิบ การแลกเปลี่ยนนั้นมีมูลค่ามหาศาลในระดับที่ใหญ่ขึ้น",
+      "title": "",
+      "tts": {
+        "text": "ถ้าคุณได้คุณภาพแปดสิบหรือเก้าสิบเปอร์เซ็นต์ในราคาหนึ่งในสิบ การแลกเปลี่ยนนั้นมีมูลค่ามหาศาลในระดับที่ใหญ่ขึ้น",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-122",
+      "speaker_id": "host",
+      "text": "แล้ว \"นักเรียน\" เรียนรู้จาก \"ครู\" ได้อย่างไร?",
+      "text_markdown": "แล้ว \"นักเรียน\" เรียนรู้จาก \"ครู\" ได้อย่างไร?",
+      "title": "",
+      "tts": {
+        "text": "แล้ว \"นักเรียน\" เรียนรู้จาก \"ครู\" ได้อย่างไร?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "text": "วิธีที่ง่ายที่สุดคือเพียงแค่รวบรวมคำตอบของครู แล้วนำมาฝึกนักเรียนเหมือนชุดข้อมูลทั่วไป",
+      "text_markdown": "วิธีที่ง่ายที่สุดคือเพียงแค่รวบรวมคำตอบของครู แล้วนำมาฝึกนักเรียนเหมือนชุดข้อมูลทั่วไป",
+      "title": "",
+      "tts": {
+        "text": "วิธีที่ง่ายที่สุดคือเพียงแค่รวบรวมคำตอบของครู แล้วนำมาฝึกนักเรียนเหมือนชุดข้อมูลทั่วไป",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-124",
+      "speaker_id": "analyst",
+      "text": "วิธีที่ลึกซึ้งกว่าใช้สิ่งที่เรียกว่า soft labels — ไม่ใช่แค่คำตอบสุดท้ายของครู แต่รวมถึงระดับความมั่นใจของครูต่อตัวเลือกทั้งหมด",
+      "text_markdown": "วิธีที่ลึกซึ้งกว่าใช้สิ่งที่เรียกว่า soft labels — ไม่ใช่แค่คำตอบสุดท้ายของครู แต่รวมถึงระดับความมั่นใจของครูต่อตัวเลือกทั้งหมด",
+      "title": "",
+      "tts": {
+        "text": "วิธีที่ลึกซึ้งกว่าใช้สิ่งที่เรียกว่า soft labels — ไม่ใช่แค่คำตอบสุดท้ายของครู แต่รวมถึงระดับความมั่นใจของครูต่อตัวเลือกทั้งหมด",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-125",
+      "speaker_id": "host",
+      "text": "ทำไม soft labels เหล่านั้นถึงมีคุณค่ามาก?",
+      "text_markdown": "ทำไม soft labels เหล่านั้นถึงมีคุณค่ามาก?",
+      "title": "",
+      "tts": {
+        "text": "ทำไม soft labels เหล่านั้นถึงมีคุณค่ามาก?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "text": "เพราะมันบรรจุกระบวนการคิดของครูไว้ ไม่ใช่แค่คำตัดสิน",
+      "text_markdown": "เพราะมันบรรจุกระบวนการคิดของครูไว้ ไม่ใช่แค่คำตัดสิน",
+      "title": "",
+      "tts": {
+        "text": "เพราะมันบรรจุกระบวนการคิดของครูไว้ ไม่ใช่แค่คำตัดสิน",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "text": "การรู้ว่าครูมั่นใจเจ็ดสิบเปอร์เซ็นต์ในคำตอบหนึ่ง และสามสิบเปอร์เซ็นต์กับคำตอบที่ใกล้เคียง บอกนักเรียนได้มากกว่าคำตอบถูกเพียงคำเดียวมากนัก",
+      "text_markdown": "การรู้ว่าครูมั่นใจเจ็ดสิบเปอร์เซ็นต์ในคำตอบหนึ่ง และสามสิบเปอร์เซ็นต์กับคำตอบที่ใกล้เคียง บอกนักเรียนได้มากกว่าคำตอบถูกเพียงคำเดียวมากนัก",
+      "title": "",
+      "tts": {
+        "text": "การรู้ว่าครูมั่นใจเจ็ดสิบเปอร์เซ็นต์ในคำตอบหนึ่ง และสามสิบเปอร์เซ็นต์กับคำตอบที่ใกล้เคียง บอกนักเรียนได้มากกว่าคำตอบถูกเพียงคำเดียวมากนัก",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-128",
+      "speaker_id": "host",
+      "text": "นั่นคือเวอร์ชันในตำรา — ทีนี้มาดูเวอร์ชันที่เป็นข่าวกัน",
+      "text_markdown": "นั่นคือเวอร์ชันในตำรา — ทีนี้มาดูเวอร์ชันที่เป็นข่าวกัน",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือเวอร์ชันในตำรา — ทีนี้มาดูเวอร์ชันที่เป็นข่าวกัน",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "text": "ถ้าคุณไม่ได้เป็นเจ้าของครู การ distillation ก็กลายเป็นการสกัดโดยไม่มีสิทธิ์",
+      "text_markdown": "ถ้าคุณไม่ได้เป็นเจ้าของครู การ distillation ก็กลายเป็นการสกัดโดยไม่มีสิทธิ์",
+      "title": "",
+      "tts": {
+        "text": "ถ้าคุณไม่ได้เป็นเจ้าของครู การ distillation ก็กลายเป็นการสกัดโดยไม่มีสิทธิ์",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "text": "คุณยิงโมเดลของคนอื่นผ่าน API หลายล้านครั้ง บันทึกทุกสิ่งที่มันพูด แล้วฝึกนักเรียนของคุณจากบันทึกนั้น",
+      "text_markdown": "คุณยิงโมเดลของคนอื่นผ่าน API หลายล้านครั้ง บันทึกทุกสิ่งที่มันพูด แล้วฝึกนักเรียนของคุณจากบันทึกนั้น",
+      "title": "",
+      "tts": {
+        "text": "คุณยิงโมเดลของคนอื่นผ่าน API หลายล้านครั้ง บันทึกทุกสิ่งที่มันพูด แล้วฝึกนักเรียนของคุณจากบันทึกนั้น",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "text": "เทคนิคเดียวกันนี้จึงอาจเป็นได้ทั้งประสิทธิภาพหรือการขโมย",
+      "text_markdown": "เทคนิคเดียวกันนี้จึงอาจเป็นได้ทั้งประสิทธิภาพหรือการขโมย",
+      "title": "",
+      "tts": {
+        "text": "เทคนิคเดียวกันนี้จึงอาจเป็นได้ทั้งประสิทธิภาพหรือการขโมย",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-132",
+      "speaker_id": "analyst",
+      "text": "ขึ้นอยู่กับว่าคุณเป็นเจ้าของครูหรือไม่ — นั่นจึงเป็นเหตุที่ข้อกำหนดการใช้งานของแล็บใหญ่ทุกแห่งห้ามการนำโมเดลของตนไปฝึกคู่แข่งอย่างชัดเจน",
+      "text_markdown": "ขึ้นอยู่กับว่าคุณเป็นเจ้าของครูหรือไม่ — นั่นจึงเป็นเหตุที่ข้อกำหนดการใช้งานของแล็บใหญ่ทุกแห่งห้ามการนำโมเดลของตนไปฝึกคู่แข่งอย่างชัดเจน",
+      "title": "",
+      "tts": {
+        "text": "ขึ้นอยู่กับว่าคุณเป็นเจ้าของครูหรือไม่ — นั่นจึงเป็นเหตุที่ข้อกำหนดการใช้งานของแล็บใหญ่ทุกแห่งห้ามการนำโมเดลของตนไปฝึกคู่แข่งอย่างชัดเจน",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-133",
+      "speaker_id": "analyst",
+      "text": "ข้อกล่าวหาต่อ Alibaba คือ พูดตรงๆ ว่าการแลกเปลี่ยนยี่สิบแปดล้านครั้งนั้นคือการรัน distillation ที่สวมชุดปลอมยี่สิบห้าพันชุด",
+      "text_markdown": "ข้อกล่าวหาต่อ Alibaba คือ พูดตรงๆ ว่าการแลกเปลี่ยนยี่สิบแปดล้านครั้งนั้นคือการรัน distillation ที่สวมชุดปลอมยี่สิบห้าพันชุด",
+      "title": "",
+      "tts": {
+        "text": "ข้อกล่าวหาต่อ Alibaba คือ พูดตรงๆ ว่าการแลกเปลี่ยนยี่สิบแปดล้านครั้งนั้นคือการรัน distillation ที่สวมชุดปลอมยี่สิบห้าพันชุด",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "text": "แล้วส่วนที่ไม่สบายใจสำหรับแล็บต่างๆ คืออะไร?",
+      "text_markdown": "แล้วส่วนที่ไม่สบายใจสำหรับแล็บต่างๆ คืออะไร?",
+      "title": "",
+      "tts": {
+        "text": "แล้วส่วนที่ไม่สบายใจสำหรับแล็บต่างๆ คืออะไร?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "text": "คือ distillation ได้ผลดีอย่างน่าตกใจ — นักเรียนที่มุ่งมั่นสามารถดูดซับครูที่ตนไม่มีสิทธิ์คัดลอกได้มากทีเดียว",
+      "text_markdown": "คือ distillation ได้ผลดีอย่างน่าตกใจ — นักเรียนที่มุ่งมั่นสามารถดูดซับครูที่ตนไม่มีสิทธิ์คัดลอกได้มากทีเดียว",
+      "title": "",
+      "tts": {
+        "text": "คือ distillation ได้ผลดีอย่างน่าตกใจ — นักเรียนที่มุ่งมั่นสามารถดูดซับครูที่ตนไม่มีสิทธิ์คัดลอกได้มากทีเดียว",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "text": "สิ่งที่คุณขายสิทธิ์การเข้าถึงคือสิ่งเดียวกับที่คุณต้องปกป้องมากที่สุด และมันเป็นประตูเดียวกัน",
+      "text_markdown": "สิ่งที่คุณขายสิทธิ์การเข้าถึงคือสิ่งเดียวกับที่คุณต้องปกป้องมากที่สุด และมันเป็นประตูเดียวกัน",
+      "title": "",
+      "tts": {
+        "text": "สิ่งที่คุณขายสิทธิ์การเข้าถึงคือสิ่งเดียวกับที่คุณต้องปกป้องมากที่สุด และมันเป็นประตูเดียวกัน",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-137",
+      "speaker_id": "host",
+      "text": "นั่นเป็นบทสรุปที่คมคายมาก",
+      "text_markdown": "นั่นเป็นบทสรุปที่คมคายมาก",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็นบทสรุปที่คมคายมาก",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-138",
+      "speaker_id": "host",
+      "text": "Ron ขอบคุณสำหรับการสรุปนะครับ",
+      "text_markdown": "Ron ขอบคุณสำหรับการสรุปนะครับ",
+      "title": "",
+      "tts": {
+        "text": "Ron ขอบคุณสำหรับการสรุปนะครับ",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "text": "ยินดีเสมอ Vindy — ดีใจที่ได้อยู่ที่นี่",
+      "text_markdown": "ยินดีเสมอ Vindy — ดีใจที่ได้อยู่ที่นี่",
+      "title": "",
+      "tts": {
+        "text": "ยินดีเสมอ Vindy — ดีใจที่ได้อยู่ที่นี่",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-140",
+      "speaker_id": "host",
+      "text": "นั่นคือ AI This Week สำหรับวันที่ยี่สิบแปดมิถุนายน สองพันยี่สิบหก",
+      "text_markdown": "นั่นคือ AI This Week สำหรับวันที่ยี่สิบแปดมิถุนายน สองพันยี่สิบหก",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือ AI This Week สำหรับวันที่ยี่สิบแปดมิถุนายน สองพันยี่สิบหก",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-141",
+      "speaker_id": "host",
+      "text": "สัปดาห์หน้า กลับมาที่โมเดลเปิดและแล็บเล็กๆ ที่กำลังส่งมอบพวกมัน",
+      "text_markdown": "สัปดาห์หน้า กลับมาที่โมเดลเปิดและแล็บเล็กๆ ที่กำลังส่งมอบพวกมัน",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์หน้า กลับมาที่โมเดลเปิดและแล็บเล็กๆ ที่กำลังส่งมอบพวกมัน",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-142",
+      "speaker_id": "host",
+      "text": "จนกว่าจะถึงวันอาทิตย์หน้า ดูแลตัวเองด้วยนะครับ",
+      "text_markdown": "จนกว่าจะถึงวันอาทิตย์หน้า ดูแลตัวเองด้วยนะครับ",
+      "title": "",
+      "tts": {
+        "text": "จนกว่าจะถึงวันอาทิตย์หน้า ดูแลตัวเองด้วยนะครับ",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

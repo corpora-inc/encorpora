@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "sw",
+  "total_segments": 310,
+  "segments": [
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 0,
+      "id": "ch00-001",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Ujumbe kwa Msomaji",
+      "text_markdown": "Ujumbe kwa Msomaji",
+      "title": "Ujumbe kwa Msomaji"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-002",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "text": "Huu ni hadithi ya kweli kuhusu maharamia aliyefanikiwa zaidi katika historia yote iliyoandikwa.",
+      "text_markdown": "Huu ni hadithi ya kweli kuhusu maharamia aliyefanikiwa zaidi katika historia yote iliyoandikwa.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Huu ni hadithi ya kweli kuhusu maharamia aliyefanikiwa zaidi katika historia yote iliyoandikwa.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-003",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "text": "Jina lake alikuwa Zheng Yi Sao, na aliongoza meli kubwa zaidi ya maharamia ambayo ulimwengu umewahi kuona.",
+      "text_markdown": "Jina lake alikuwa Zheng Yi Sao, na aliongoza meli kubwa zaidi ya maharamia ambayo ulimwengu umewahi kuona.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Jina lake alikuwa Zheng Yi Sao, na aliongoza meli kubwa zaidi ya maharamia ambayo ulimwengu umewahi kuona.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-004",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "text": "Katika kilele cha nguvu zake, alidhibiti meli nyingi zaidi kuliko mataifa mengi yalivyomiliki.",
+      "text_markdown": "Katika kilele cha nguvu zake, alidhibiti meli nyingi zaidi kuliko mataifa mengi yalivyomiliki.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Katika kilele cha nguvu zake, alidhibiti meli nyingi zaidi kuliko mataifa mengi yalivyomiliki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-005",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "text": "Hakuzaliwa katika utajiri au upendeleo.",
+      "text_markdown": "Hakuzaliwa katika utajiri au upendeleo.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Hakuzaliwa katika utajiri au upendeleo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-006",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "text": "Alizaliwa katika umaskini kusini mwa Uchina, mwishoni mwa karne ya kumi na nane.",
+      "text_markdown": "Alizaliwa katika umaskini kusini mwa Uchina, mwishoni mwa karne ya kumi na nane.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Alizaliwa katika umaskini kusini mwa Uchina, mwishoni mwa karne ya kumi na nane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-007",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "text": "Kila alichokifanikisha, alikijenga kupitia akili, ukatili, na uwezo wa ajabu wa kuwapanga watu.",
+      "text_markdown": "Kila alichokifanikisha, alikijenga kupitia akili, ukatili, na uwezo wa ajabu wa kuwapanga watu.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Kila alichokifanikisha, alikijenga kupitia akili, ukatili, na uwezo wa ajabu wa kuwapanga watu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-008",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "text": "Kitabu hiki kinasimulia hadithi ya jinsi mwanamke asiye na chochote alivyokuwa mtawala asiyepingika wa Bahari ya Kusini ya China.",
+      "text_markdown": "Kitabu hiki kinasimulia hadithi ya jinsi mwanamke asiye na chochote alivyokuwa mtawala asiyepingika wa Bahari ya Kusini ya China.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Kitabu hiki kinasimulia hadithi ya jinsi mwanamke asiye na chochote alivyokuwa mtawala asiyepingika wa Bahari ya Kusini ya China.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-009",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "text": "Ni hadithi kuhusu vita, biashara, sheria, na kuishi.",
+      "text_markdown": "Ni hadithi kuhusu vita, biashara, sheria, na kuishi.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Ni hadithi kuhusu vita, biashara, sheria, na kuishi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-010",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "text": "Pia ni hadithi kuhusu ulimwengu uliokuwa ukibadilika haraka, huku mataifa ya Ulaya yakisonga mbele zaidi barani Asia.",
+      "text_markdown": "Pia ni hadithi kuhusu ulimwengu uliokuwa ukibadilika haraka, huku mataifa ya Ulaya yakisonga mbele zaidi barani Asia.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Pia ni hadithi kuhusu ulimwengu uliokuwa ukibadilika haraka, huku mataifa ya Ulaya yakisonga mbele zaidi barani Asia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-011",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "text": "Kila ukweli katika kitabu hiki unatokana na rekodi za kihistoria.",
+      "text_markdown": "Kila ukweli katika kitabu hiki unatokana na rekodi za kihistoria.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Kila ukweli katika kitabu hiki unatokana na rekodi za kihistoria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-012",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "text": "Pale ambapo rekodi haina uhakika, tunasema hivyo.",
+      "text_markdown": "Pale ambapo rekodi haina uhakika, tunasema hivyo.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Pale ambapo rekodi haina uhakika, tunasema hivyo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 0,
+      "id": "ch00-013",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "text": "Pale ambapo wanahistoria hawakubaliani, tunatoa ushahidi wenye nguvu zaidi unaopatikana.",
+      "text_markdown": "Pale ambapo wanahistoria hawakubaliani, tunatoa ushahidi wenye nguvu zaidi unaopatikana.",
+      "title": "Ujumbe kwa Msomaji",
+      "tts": {
+        "text": "Pale ambapo wanahistoria hawakubaliani, tunatoa ushahidi wenye nguvu zaidi unaopatikana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 1,
+      "id": "ch01-014",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Ulimwengu wa Bahari ya Kusini ya China",
+      "text_markdown": "Ulimwengu wa Bahari ya Kusini ya China",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-015",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "text": "Bahari ya Kusini ya China ni mojawapo ya njia za maji zenye shughuli nyingi zaidi Duniani.",
+      "text_markdown": "Bahari ya Kusini ya China ni mojawapo ya njia za maji zenye shughuli nyingi zaidi Duniani.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Bahari ya Kusini ya China ni mojawapo ya njia za maji zenye shughuli nyingi zaidi Duniani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "text": "Inanyoosha kutoka pwani ya Vietnam magharibi hadi Ufilipino mashariki.",
+      "text_markdown": "Inanyoosha kutoka pwani ya Vietnam magharibi hadi Ufilipino mashariki.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Inanyoosha kutoka pwani ya Vietnam magharibi hadi Ufilipino mashariki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-017",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "text": "Kaskazini kuna pwani ya China, na kusini kuna visiwa vya Borneo na Sumatra.",
+      "text_markdown": "Kaskazini kuna pwani ya China, na kusini kuna visiwa vya Borneo na Sumatra.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kaskazini kuna pwani ya China, na kusini kuna visiwa vya Borneo na Sumatra.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-018",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "text": "Kwa maelfu ya miaka, wafanyabiashara wamesafiri maji haya.",
+      "text_markdown": "Kwa maelfu ya miaka, wafanyabiashara wamesafiri maji haya.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kwa maelfu ya miaka, wafanyabiashara wamesafiri maji haya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-019",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "text": "Meli za Kichina (junki) zilibeba hariri, kaure, na chai hadi bandari kote Kusini Mashariki mwa Asia.",
+      "text_markdown": "Meli za Kichina (junki) zilibeba hariri, kaure, na chai hadi bandari kote Kusini Mashariki mwa Asia.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Meli za Kichina (junki) zilibeba hariri, kaure, na chai hadi bandari kote Kusini Mashariki mwa Asia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-020",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "text": "Kwa kurudi, viungo, mbao za kitropiki, na bidhaa za kigeni zilirudi China.",
+      "text_markdown": "Kwa kurudi, viungo, mbao za kitropiki, na bidhaa za kigeni zilirudi China.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kwa kurudi, viungo, mbao za kitropiki, na bidhaa za kigeni zilirudi China.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-021",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "text": "Jiji la Canton, sasa linaitwa Guangzhou, lilikuwa katikati ya biashara hii.",
+      "text_markdown": "Jiji la Canton, sasa linaitwa Guangzhou, lilikuwa katikati ya biashara hii.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Jiji la Canton, sasa linaitwa Guangzhou, lilikuwa katikati ya biashara hii.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-022",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "text": "Canton lilikuwa mojawapo ya miji tajiri zaidi duniani katika karne ya kumi na nane.",
+      "text_markdown": "Canton lilikuwa mojawapo ya miji tajiri zaidi duniani katika karne ya kumi na nane.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Canton lilikuwa mojawapo ya miji tajiri zaidi duniani katika karne ya kumi na nane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-023",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "text": "Wafanyabiashara wa kigeni kutoka Uingereza, Ufaransa, Ureno, na Uholanzi wote walishindana kupata fursa ya kuingia masoko yake.",
+      "text_markdown": "Wafanyabiashara wa kigeni kutoka Uingereza, Ufaransa, Ureno, na Uholanzi wote walishindana kupata fursa ya kuingia masoko yake.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Wafanyabiashara wa kigeni kutoka Uingereza, Ufaransa, Ureno, na Uholanzi wote walishindana kupata fursa ya kuingia masoko yake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-024",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "text": "Nasaba ya Qing ilitawala China katika kipindi hiki.",
+      "text_markdown": "Nasaba ya Qing ilitawala China katika kipindi hiki.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Nasaba ya Qing ilitawala China katika kipindi hiki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "text": "Watawala wa Qing walikuwa Wamanjuria, si Wachina wa Han.",
+      "text_markdown": "Watawala wa Qing walikuwa Wamanjuria, si Wachina wa Han.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Watawala wa Qing walikuwa Wamanjuria, si Wachina wa Han.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-026",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "text": "Walikuwa wameiteka China mnamo 1644 na kujenga mojawapo ya falme kubwa zaidi duniani.",
+      "text_markdown": "Walikuwa wameiteka China mnamo 1644 na kujenga mojawapo ya falme kubwa zaidi duniani.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Walikuwa wameiteka China mnamo elfu moja mia sita arobaini na nne na kujenga mojawapo ya falme kubwa zaidi duniani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-027",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "text": "Hata hivyo, kufikia mwishoni mwa miaka ya 1700, nasaba ya Qing ilianza kudhoofika.",
+      "text_markdown": "Hata hivyo, kufikia mwishoni mwa miaka ya 1700, nasaba ya Qing ilianza kudhoofika.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Hata hivyo, kufikia mwishoni mwa miaka ya elfu moja mia saba, nasaba ya Qing ilianza kudhoofika.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-028",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "text": "Ufisadi ulienea katika urasimu wa kifalme.",
+      "text_markdown": "Ufisadi ulienea katika urasimu wa kifalme.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Ufisadi ulienea katika urasimu wa kifalme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "text": "Watoza kodi waliwanyanyasa wakulima na wavuvi kwa kila sarafu waliyoweza kutoa.",
+      "text_markdown": "Watoza kodi waliwanyanyasa wakulima na wavuvi kwa kila sarafu waliyoweza kutoa.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Watoza kodi waliwanyanyasa wakulima na wavuvi kwa kila sarafu waliyoweza kutoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-030",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "text": "Pengo kati ya matajiri na maskini liliongezeka mwaka baada ya mwaka.",
+      "text_markdown": "Pengo kati ya matajiri na maskini liliongezeka mwaka baada ya mwaka.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Pengo kati ya matajiri na maskini liliongezeka mwaka baada ya mwaka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-031",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "text": "Katika mikoa ya pwani, watu wengi waliishi katika umaskini uliokithiri.",
+      "text_markdown": "Katika mikoa ya pwani, watu wengi waliishi katika umaskini uliokithiri.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Katika mikoa ya pwani, watu wengi waliishi katika umaskini uliokithiri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-032",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "text": "Jumuiya za wavuvi kando ya pwani ya Guangdong zilikuwa miongoni mwa maskini zaidi nchini China.",
+      "text_markdown": "Jumuiya za wavuvi kando ya pwani ya Guangdong zilikuwa miongoni mwa maskini zaidi nchini China.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Jumuiya za wavuvi kando ya pwani ya Guangdong zilikuwa miongoni mwa maskini zaidi nchini China.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-033",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "text": "Familia nzima ziliishi kwenye boti ndogo zinazoitwa sampans.",
+      "text_markdown": "Familia nzima ziliishi kwenye boti ndogo zinazoitwa sampans.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Familia nzima ziliishi kwenye boti ndogo zinazoitwa sampans.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-034",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "text": "Walizaliwa majini, walifanya kazi majini, na walikufa majini.",
+      "text_markdown": "Walizaliwa majini, walifanya kazi majini, na walikufa majini.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Walizaliwa majini, walifanya kazi majini, na walikufa majini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-035",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "text": "Serikali ya kifalme iliwaita watu wa Tanka, na iliwatendea kama wahamishwa.",
+      "text_markdown": "Serikali ya kifalme iliwaita watu wa Tanka, na iliwatendea kama wahamishwa.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Serikali ya kifalme iliwaita watu wa Tanka, na iliwatendea kama wahamishwa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-036",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "text": "Familia za Tanka zilikatazwa kuishi nchi kavu katika maeneo mengi.",
+      "text_markdown": "Familia za Tanka zilikatazwa kuishi nchi kavu katika maeneo mengi.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Familia za Tanka zilikatazwa kuishi nchi kavu katika maeneo mengi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-037",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "text": "Hawakuweza kufanya mitihani ya kifalme iliyopelekea kazi za serikali.",
+      "text_markdown": "Hawakuweza kufanya mitihani ya kifalme iliyopelekea kazi za serikali.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Hawakuweza kufanya mitihani ya kifalme iliyopelekea kazi za serikali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-038",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "text": "Walitengwa na jamii kuu ya Wachina kwa sheria na desturi.",
+      "text_markdown": "Walitengwa na jamii kuu ya Wachina kwa sheria na desturi.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Walitengwa na jamii kuu ya Wachina kwa sheria na desturi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-039",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "text": "Kwa vizazi vingi, hawakuwa na njia ya maisha bora.",
+      "text_markdown": "Kwa vizazi vingi, hawakuwa na njia ya maisha bora.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kwa vizazi vingi, hawakuwa na njia ya maisha bora.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-040",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "text": "Uharamia ulitoa mbadala.",
+      "text_markdown": "Uharamia ulitoa mbadala.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Uharamia ulitoa mbadala.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-041",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "text": "Kama usingeweza kufanikiwa kwa njia halali, bahari ilitoa uchumi wake yenyewe.",
+      "text_markdown": "Kama usingeweza kufanikiwa kwa njia halali, bahari ilitoa uchumi wake yenyewe.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kama usingeweza kufanikiwa kwa njia halali, bahari ilitoa uchumi wake yenyewe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-042",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "text": "Meli za maharamia zilivamia meli za wafanyabiashara, ziliwatoza vijiji vya wavuvi, na kusafirisha bidhaa kinyemela kupita doria za kifalme.",
+      "text_markdown": "Meli za maharamia zilivamia meli za wafanyabiashara, ziliwatoza vijiji vya wavuvi, na kusafirisha bidhaa kinyemela kupita doria za kifalme.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Meli za maharamia zilivamia meli za wafanyabiashara, ziliwatoza vijiji vya wavuvi, na kusafirisha bidhaa kinyemela kupita doria za kifalme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-043",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "text": "Kwa maskini wengi wa pwani, kujiunga na kikundi cha maharamia ilikuwa uamuzi wa kiuchumi wenye mantiki.",
+      "text_markdown": "Kwa maskini wengi wa pwani, kujiunga na kikundi cha maharamia ilikuwa uamuzi wa kiuchumi wenye mantiki.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kwa maskini wengi wa pwani, kujiunga na kikundi cha maharamia ilikuwa uamuzi wa kiuchumi wenye mantiki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-044",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "text": "Maji ya Bahari ya Kusini ya China yalifaa sana kwa uharamia.",
+      "text_markdown": "Maji ya Bahari ya Kusini ya China yalifaa sana kwa uharamia.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Maji ya Bahari ya Kusini ya China yalifaa sana kwa uharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-045",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "text": "Maelfu ya visiwa, hori, na midomo ya mito vilitoa maficho.",
+      "text_markdown": "Maelfu ya visiwa, hori, na midomo ya mito vilitoa maficho.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Maelfu ya visiwa, hori, na midomo ya mito vilitoa maficho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-046",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "text": "Ukungu mzito na dhoruba za ghafla zilifanya ufuatiliaji kuwa mgumu.",
+      "text_markdown": "Ukungu mzito na dhoruba za ghafla zilifanya ufuatiliaji kuwa mgumu.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Ukungu mzito na dhoruba za ghafla zilifanya ufuatiliaji kuwa mgumu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-047",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "text": "Meli ya haraka (junk) yenye wafanyakazi stadi ingeweza kutoweka pwani ndani ya dakika chache.",
+      "text_markdown": "Meli ya haraka (junk) yenye wafanyakazi stadi ingeweza kutoweka pwani ndani ya dakika chache.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Meli ya haraka (junk) yenye wafanyakazi stadi ingeweza kutoweka pwani ndani ya dakika chache.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-048",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "text": "Wakati huo huo, biashara ya kasumba ilianza kubadilisha sura ya eneo hilo.",
+      "text_markdown": "Wakati huo huo, biashara ya kasumba ilianza kubadilisha sura ya eneo hilo.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Wakati huo huo, biashara ya kasumba ilianza kubadilisha sura ya eneo hilo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-049",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "text": "Wafanyabiashara wa Uingereza walisafirisha kasumba kutoka India kwenda China kwa idadi kubwa sana.",
+      "text_markdown": "Wafanyabiashara wa Uingereza walisafirisha kasumba kutoka India kwenda China kwa idadi kubwa sana.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Wafanyabiashara wa Uingereza walisafirisha kasumba kutoka India kwenda China kwa idadi kubwa sana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-050",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "text": "Dawa hiyo ilikuwa haramu nchini China, lakini faida zilikuwa kubwa sana hivi kwamba biashara hiyo ilikua kila mwaka.",
+      "text_markdown": "Dawa hiyo ilikuwa haramu nchini China, lakini faida zilikuwa kubwa sana hivi kwamba biashara hiyo ilikua kila mwaka.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Dawa hiyo ilikuwa haramu nchini China, lakini faida zilikuwa kubwa sana hivi kwamba biashara hiyo ilikua kila mwaka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-051",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "text": "Mitandao ya magendo ilienea kando ya pwani yote ya kusini.",
+      "text_markdown": "Mitandao ya magendo ilienea kando ya pwani yote ya kusini.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Mitandao ya magendo ilienea kando ya pwani yote ya kusini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-052",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao alitokana na ulimwengu huu wa bahari na magendo.",
+      "text_markdown": "Zheng Yi Sao alitokana na ulimwengu huu wa bahari na magendo.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Zheng Yi Sao alitokana na ulimwengu huu wa bahari na magendo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-053",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "text": "Ulimwengu wa utajiri mkubwa na umaskini uliokithiri, uliotenganishwa na ukanda mwembamba wa bahari.",
+      "text_markdown": "Ulimwengu wa utajiri mkubwa na umaskini uliokithiri, uliotenganishwa na ukanda mwembamba wa bahari.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Ulimwengu wa utajiri mkubwa na umaskini uliokithiri, uliotenganishwa na ukanda mwembamba wa bahari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-054",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "text": "Ulimwengu ambapo falme zilishindana, na sheria ya bahari ilikuwa ya yeyote aliyekuwa na nguvu za kutosha kuiweka.",
+      "text_markdown": "Ulimwengu ambapo falme zilishindana, na sheria ya bahari ilikuwa ya yeyote aliyekuwa na nguvu za kutosha kuiweka.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Ulimwengu ambapo falme zilishindana, na sheria ya bahari ilikuwa ya yeyote aliyekuwa na nguvu za kutosha kuiweka.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-055",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "text": "Mataifa ya Ulaya yaliiona China kama soko la kufunguliwa.",
+      "text_markdown": "Mataifa ya Ulaya yaliiona China kama soko la kufunguliwa.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Mataifa ya Ulaya yaliiona China kama soko la kufunguliwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-056",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "text": "Serikali ya Qing iliwaona Wazungu kama washenzi wa kusimamiwa.",
+      "text_markdown": "Serikali ya Qing iliwaona Wazungu kama washenzi wa kusimamiwa.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Serikali ya Qing iliwaona Wazungu kama washenzi wa kusimamiwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-057",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "text": "Na maharamia wa Bahari ya Kusini ya China waliona fursa katika machafuko kati yao.",
+      "text_markdown": "Na maharamia wa Bahari ya Kusini ya China waliona fursa katika machafuko kati yao.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Na maharamia wa Bahari ya Kusini ya China waliona fursa katika machafuko kati yao.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-058",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "text": "Kufikia 1790, meli za maharamia katika Bahari ya Kusini ya China zilifikia mamia ya meli.",
+      "text_markdown": "Kufikia 1790, meli za maharamia katika Bahari ya Kusini ya China zilifikia mamia ya meli.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kufikia elfu moja mia saba tisini, meli za maharamia katika Bahari ya Kusini ya China zilifikia mamia ya meli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-059",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "text": "Hawakuwa wahalifu wasio na mpangilio.",
+      "text_markdown": "Hawakuwa wahalifu wasio na mpangilio.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Hawakuwa wahalifu wasio na mpangilio.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-060",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "text": "Wengi walifanya kazi kama vikosi vya majini vilivyopangwa vizuri na kuwa na safu za uongozi na kanuni za maadili.",
+      "text_markdown": "Wengi walifanya kazi kama vikosi vya majini vilivyopangwa vizuri na kuwa na safu za uongozi na kanuni za maadili.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Wengi walifanya kazi kama vikosi vya majini vilivyopangwa vizuri na kuwa na safu za uongozi na kanuni za maadili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-061",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "text": "Kikosi kikubwa zaidi kati ya hivi kilikuwa karibu kuwa meli yenye nguvu zaidi ya maharamia katika historia.",
+      "text_markdown": "Kikosi kikubwa zaidi kati ya hivi kilikuwa karibu kuwa meli yenye nguvu zaidi ya maharamia katika historia.",
+      "title": "Ulimwengu wa Bahari ya Kusini ya China",
+      "tts": {
+        "text": "Kikosi kikubwa zaidi kati ya hivi kilikuwa karibu kuwa meli yenye nguvu zaidi ya maharamia katika historia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 2,
+      "id": "ch02-062",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Asili",
+      "text_markdown": "Asili",
+      "title": "Asili"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-063",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "text": "Mwanamke ambaye angekuwa Zheng Yi Sao alizaliwa karibu mwaka wa 1775.",
+      "text_markdown": "Mwanamke ambaye angekuwa Zheng Yi Sao alizaliwa karibu mwaka wa 1775.",
+      "title": "Asili",
+      "tts": {
+        "text": "Mwanamke ambaye angekuwa Zheng Yi Sao alizaliwa karibu mwaka wa elfu moja mia saba sabini na tano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-064",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "text": "Mara nyingi anajulikana kama Shi Xianggu katika vyanzo vya Kichina.",
+      "text_markdown": "Mara nyingi anajulikana kama Shi Xianggu katika vyanzo vya Kichina.",
+      "title": "Asili",
+      "tts": {
+        "text": "Mara nyingi anajulikana kama Shi Xianggu katika vyanzo vya Kichina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-065",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "text": "Jina Zheng Yi Sao linamaanisha tu mke wa Zheng Yi.",
+      "text_markdown": "Jina Zheng Yi Sao linamaanisha tu mke wa Zheng Yi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Jina Zheng Yi Sao linamaanisha tu mke wa Zheng Yi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-066",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "text": "Alizaliwa katika jamii ya Tanka inayoishi kwenye boti katika Mkoa wa Guangdong.",
+      "text_markdown": "Alizaliwa katika jamii ya Tanka inayoishi kwenye boti katika Mkoa wa Guangdong.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alizaliwa katika jamii ya Tanka inayoishi kwenye boti katika Mkoa wa Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-067",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "text": "Familia yake ilikuwa maskini, kama karibu familia zote za Tanka.",
+      "text_markdown": "Familia yake ilikuwa maskini, kama karibu familia zote za Tanka.",
+      "title": "Asili",
+      "tts": {
+        "text": "Familia yake ilikuwa maskini, kama karibu familia zote za Tanka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-068",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "text": "Alitumia miaka yake ya mapema majini, akijifunza midundo ya pwani.",
+      "text_markdown": "Alitumia miaka yake ya mapema majini, akijifunza midundo ya pwani.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alitumia miaka yake ya mapema majini, akijifunza midundo ya pwani.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-069",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "text": "Akiwa mwanamke mchanga, alifanya kazi katika danguro la kuelea katika bandari ya Canton.",
+      "text_markdown": "Akiwa mwanamke mchanga, alifanya kazi katika danguro la kuelea katika bandari ya Canton.",
+      "title": "Asili",
+      "tts": {
+        "text": "Akiwa mwanamke mchanga, alifanya kazi katika danguro la kuelea katika bandari ya Canton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-070",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "text": "Waliwahudumia mabaharia, wafanyabiashara, na wavuvi waliopita bandari hiyo yenye shughuli nyingi.",
+      "text_markdown": "Waliwahudumia mabaharia, wafanyabiashara, na wavuvi waliopita bandari hiyo yenye shughuli nyingi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Waliwahudumia mabaharia, wafanyabiashara, na wavuvi waliopita bandari hiyo yenye shughuli nyingi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-071",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "text": "Ilikuwa kazi ngumu na hatari, lakini ilimpa ujuzi wa ulimwengu ambao wanawake wachache wa daraja lake wangeweza kuupata.",
+      "text_markdown": "Ilikuwa kazi ngumu na hatari, lakini ilimpa ujuzi wa ulimwengu ambao wanawake wachache wa daraja lake wangeweza kuupata.",
+      "title": "Asili",
+      "tts": {
+        "text": "Ilikuwa kazi ngumu na hatari, lakini ilimpa ujuzi wa ulimwengu ambao wanawake wachache wa daraja lake wangeweza kuupata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-072",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "text": "Alijifunza kusoma watu haraka na kwa usahihi.",
+      "text_markdown": "Alijifunza kusoma watu haraka na kwa usahihi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alijifunza kusoma watu haraka na kwa usahihi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-073",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "text": "Alijifunza lugha za biashara na mazungumzo.",
+      "text_markdown": "Alijifunza lugha za biashara na mazungumzo.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alijifunza lugha za biashara na mazungumzo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-074",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "text": "Ujuzi huu ungethibitika kuwa wa thamani zaidi kuliko mtu yeyote angeweza kutabiri.",
+      "text_markdown": "Ujuzi huu ungethibitika kuwa wa thamani zaidi kuliko mtu yeyote angeweza kutabiri.",
+      "title": "Asili",
+      "tts": {
+        "text": "Ujuzi huu ungethibitika kuwa wa thamani zaidi kuliko mtu yeyote angeweza kutabiri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-075",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "text": "Mnamo 1798, nahodha wa maharamia aitwaye Zheng Yi aliteka chombo alichokuwemo.",
+      "text_markdown": "Mnamo 1798, nahodha wa maharamia aitwaye Zheng Yi aliteka chombo alichokuwemo.",
+      "title": "Asili",
+      "tts": {
+        "text": "Mnamo elfu moja mia saba tisini na nane, nahodha wa maharamia aitwaye Zheng Yi aliteka chombo alichokuwemo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-076",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "text": "Alitoka katika ukoo mrefu wa maharamia, uliorudi nyuma vizazi.",
+      "text_markdown": "Alitoka katika ukoo mrefu wa maharamia, uliorudi nyuma vizazi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alitoka katika ukoo mrefu wa maharamia, uliorudi nyuma vizazi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-077",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "text": "Familia yake iliunga mkono mabaki ya nasaba ya Ming dhidi ya washindi wa Qing.",
+      "text_markdown": "Familia yake iliunga mkono mabaki ya nasaba ya Ming dhidi ya washindi wa Qing.",
+      "title": "Asili",
+      "tts": {
+        "text": "Familia yake iliunga mkono mabaki ya nasaba ya Ming dhidi ya washindi wa Qing.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-078",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "text": "Zheng Yi alipendekeza ndoa kwa mwanamke huyo mchanga.",
+      "text_markdown": "Zheng Yi alipendekeza ndoa kwa mwanamke huyo mchanga.",
+      "title": "Asili",
+      "tts": {
+        "text": "Zheng Yi alipendekeza ndoa kwa mwanamke huyo mchanga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-079",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "text": "Kulingana na akaunti nyingi, hakukubali tu.",
+      "text_markdown": "Kulingana na akaunti nyingi, hakukubali tu.",
+      "title": "Asili",
+      "tts": {
+        "text": "Kulingana na akaunti nyingi, hakukubali tu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-080",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "text": "Alijadili masharti ya ushirikiano wao kabla ya kukubali ndoa.",
+      "text_markdown": "Alijadili masharti ya ushirikiano wao kabla ya kukubali ndoa.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alijadili masharti ya ushirikiano wao kabla ya kukubali ndoa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-081",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "text": "Alidai hisa sawa ya meli yake na sauti sawa katika maamuzi ya amri.",
+      "text_markdown": "Alidai hisa sawa ya meli yake na sauti sawa katika maamuzi ya amri.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alidai hisa sawa ya meli yake na sauti sawa katika maamuzi ya amri.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-082",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "text": "Hili lilikuwa jambo la ajabu kwa wakati huo.",
+      "text_markdown": "Hili lilikuwa jambo la ajabu kwa wakati huo.",
+      "title": "Asili",
+      "tts": {
+        "text": "Hili lilikuwa jambo la ajabu kwa wakati huo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-083",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "text": "Wanawake katika China ya marehemu ya Qing walikuwa na haki chache sana za kisheria.",
+      "text_markdown": "Wanawake katika China ya marehemu ya Qing walikuwa na haki chache sana za kisheria.",
+      "title": "Asili",
+      "tts": {
+        "text": "Wanawake katika China ya marehemu ya Qing walikuwa na haki chache sana za kisheria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-084",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "text": "Mke alitarajiwa kumtii mumewe bila swali.",
+      "text_markdown": "Mke alitarajiwa kumtii mumewe bila swali.",
+      "title": "Asili",
+      "tts": {
+        "text": "Mke alitarajiwa kumtii mumewe bila swali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-085",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "text": "Lakini huu ulikuwa ulimwengu wa maharamia, na ulimwengu wa maharamia uliweka sheria zake.",
+      "text_markdown": "Lakini huu ulikuwa ulimwengu wa maharamia, na ulimwengu wa maharamia uliweka sheria zake.",
+      "title": "Asili",
+      "tts": {
+        "text": "Lakini huu ulikuwa ulimwengu wa maharamia, na ulimwengu wa maharamia uliweka sheria zake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-086",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "text": "Zheng Yi alikubali masharti yake.",
+      "text_markdown": "Zheng Yi alikubali masharti yake.",
+      "title": "Asili",
+      "tts": {
+        "text": "Zheng Yi alikubali masharti yake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-087",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "text": "Wanahistoria wanaamini alitambua akili yake na uwezo wake kama kiongozi.",
+      "text_markdown": "Wanahistoria wanaamini alitambua akili yake na uwezo wake kama kiongozi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Wanahistoria wanaamini alitambua akili yake na uwezo wake kama kiongozi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-088",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "text": "Ndoa yao ilikuwa muungano wa kimkakati kama vile uhusiano wa kibinafsi.",
+      "text_markdown": "Ndoa yao ilikuwa muungano wa kimkakati kama vile uhusiano wa kibinafsi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Ndoa yao ilikuwa muungano wa kimkakati kama vile uhusiano wa kibinafsi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-089",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "text": "Pamoja, wangejenga kitu kisicho na kifani.",
+      "text_markdown": "Pamoja, wangejenga kitu kisicho na kifani.",
+      "title": "Asili",
+      "tts": {
+        "text": "Pamoja, wangejenga kitu kisicho na kifani.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-090",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "text": "Zheng Yi alikuwa na maono ya ujasiri.",
+      "text_markdown": "Zheng Yi alikuwa na maono ya ujasiri.",
+      "title": "Asili",
+      "tts": {
+        "text": "Zheng Yi alikuwa na maono ya ujasiri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-091",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "text": "Alitaka kuunganisha meli za maharamia zilizotawanyika za Bahari ya Kusini ya China kuwa shirikisho moja.",
+      "text_markdown": "Alitaka kuunganisha meli za maharamia zilizotawanyika za Bahari ya Kusini ya China kuwa shirikisho moja.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alitaka kuunganisha meli za maharamia zilizotawanyika za Bahari ya Kusini ya China kuwa shirikisho moja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-092",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "text": "Manahodha binafsi wa maharamia walikuwa wakishindana wao kwa wao kila wakati.",
+      "text_markdown": "Manahodha binafsi wa maharamia walikuwa wakishindana wao kwa wao kila wakati.",
+      "title": "Asili",
+      "tts": {
+        "text": "Manahodha binafsi wa maharamia walikuwa wakishindana wao kwa wao kila wakati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-093",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "text": "Zheng Yi aliamini wangekuwa na nguvu zaidi ikiwa wangeshirikiana.",
+      "text_markdown": "Zheng Yi aliamini wangekuwa na nguvu zaidi ikiwa wangeshirikiana.",
+      "title": "Asili",
+      "tts": {
+        "text": "Zheng Yi aliamini wangekuwa na nguvu zaidi ikiwa wangeshirikiana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-094",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "text": "Kati ya 1798 na 1805, Zheng Yi alifanya kazi bila kuchoka kuunda miungano.",
+      "text_markdown": "Kati ya 1798 na 1805, Zheng Yi alifanya kazi bila kuchoka kuunda miungano.",
+      "title": "Asili",
+      "tts": {
+        "text": "Kati ya elfu moja mia saba tisini na nane na elfu moja mia nane na tano, Zheng Yi alifanya kazi bila kuchoka kuunda miungano.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-095",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "text": "Aliwashawishi manahodha wapinzani kujiunga na shirikisho lake kupitia mchanganyiko wa diplomasia na vitisho.",
+      "text_markdown": "Aliwashawishi manahodha wapinzani kujiunga na shirikisho lake kupitia mchanganyiko wa diplomasia na vitisho.",
+      "title": "Asili",
+      "tts": {
+        "text": "Aliwashawishi manahodha wapinzani kujiunga na shirikisho lake kupitia mchanganyiko wa diplomasia na vitisho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-096",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "text": "Mke wake alihusika sana katika mazungumzo haya.",
+      "text_markdown": "Mke wake alihusika sana katika mazungumzo haya.",
+      "title": "Asili",
+      "tts": {
+        "text": "Mke wake alihusika sana katika mazungumzo haya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-097",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "text": "Alisaidia kuunda makubaliano yaliyofunga meli pamoja.",
+      "text_markdown": "Alisaidia kuunda makubaliano yaliyofunga meli pamoja.",
+      "title": "Asili",
+      "tts": {
+        "text": "Alisaidia kuunda makubaliano yaliyofunga meli pamoja.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-098",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "text": "Kufikia 1805, shirikisho lilikamilika.",
+      "text_markdown": "Kufikia 1805, shirikisho lilikamilika.",
+      "title": "Asili",
+      "tts": {
+        "text": "Kufikia elfu moja mia nane na tano, shirikisho lilikamilika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-099",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "text": "Liliundwa na meli sita, kila moja ikitambuliwa kwa rangi ya bendera yake.",
+      "text_markdown": "Liliundwa na meli sita, kila moja ikitambuliwa kwa rangi ya bendera yake.",
+      "title": "Asili",
+      "tts": {
+        "text": "Liliundwa na meli sita, kila moja ikitambuliwa kwa rangi ya bendera yake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-100",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "text": "Meli ya Bendera Nyekundu ilikuwa kubwa zaidi na yenye nguvu zaidi.",
+      "text_markdown": "Meli ya Bendera Nyekundu ilikuwa kubwa zaidi na yenye nguvu zaidi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Meli ya Bendera Nyekundu ilikuwa kubwa zaidi na yenye nguvu zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-101",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "text": "Zheng Yi aliamuru Meli ya Bendera Nyekundu kibinafsi.",
+      "text_markdown": "Zheng Yi aliamuru Meli ya Bendera Nyekundu kibinafsi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Zheng Yi aliamuru Meli ya Bendera Nyekundu kibinafsi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-102",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "text": "Shirikisho lilidhibiti mamia ya meli na makumi ya maelfu ya maharamia.",
+      "text_markdown": "Shirikisho lilidhibiti mamia ya meli na makumi ya maelfu ya maharamia.",
+      "title": "Asili",
+      "tts": {
+        "text": "Shirikisho lilidhibiti mamia ya meli na makumi ya maelfu ya maharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-103",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "text": "Ilitawala Bahari yote ya Kusini ya China.",
+      "text_markdown": "Ilitawala Bahari yote ya Kusini ya China.",
+      "title": "Asili",
+      "tts": {
+        "text": "Ilitawala Bahari yote ya Kusini ya China.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-104",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "text": "Hakuna chombo cha wafanyabiashara kingeweza kupita katika maji haya bila kulipa kodi au kuhatarisha uharibifu.",
+      "text_markdown": "Hakuna chombo cha wafanyabiashara kingeweza kupita katika maji haya bila kulipa kodi au kuhatarisha uharibifu.",
+      "title": "Asili",
+      "tts": {
+        "text": "Hakuna chombo cha wafanyabiashara kingeweza kupita katika maji haya bila kulipa kodi au kuhatarisha uharibifu.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-105",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "text": "Kisha, mnamo Novemba 1807, Zheng Yi alikufa.",
+      "text_markdown": "Kisha, mnamo Novemba 1807, Zheng Yi alikufa.",
+      "title": "Asili",
+      "tts": {
+        "text": "Kisha, mnamo Novemba elfu moja mia nane na saba, Zheng Yi alikufa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-106",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "text": "Mazingira ya kifo chake yanajadiliwa na wanahistoria.",
+      "text_markdown": "Mazingira ya kifo chake yanajadiliwa na wanahistoria.",
+      "title": "Asili",
+      "tts": {
+        "text": "Mazingira ya kifo chake yanajadiliwa na wanahistoria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-107",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "text": "Baadhi ya akaunti zinasema alizama kwenye dhoruba.",
+      "text_markdown": "Baadhi ya akaunti zinasema alizama kwenye dhoruba.",
+      "title": "Asili",
+      "tts": {
+        "text": "Baadhi ya akaunti zinasema alizama kwenye dhoruba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-108",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "text": "Nyingine zinapendekeza aliuawa vitani karibu na pwani ya Vietnam.",
+      "text_markdown": "Nyingine zinapendekeza aliuawa vitani karibu na pwani ya Vietnam.",
+      "title": "Asili",
+      "tts": {
+        "text": "Nyingine zinapendekeza aliuawa vitani karibu na pwani ya Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-109",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "text": "Kifo chake kilisababisha mgogoro kwa shirikisho lote.",
+      "text_markdown": "Kifo chake kilisababisha mgogoro kwa shirikisho lote.",
+      "title": "Asili",
+      "tts": {
+        "text": "Kifo chake kilisababisha mgogoro kwa shirikisho lote.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-110",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "text": "Muungano alioujenga uliunganishwa na mamlaka yake binafsi.",
+      "text_markdown": "Muungano alioujenga uliunganishwa na mamlaka yake binafsi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Muungano alioujenga uliunganishwa na mamlaka yake binafsi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-111",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "text": "Bila kiongozi imara, ingevunjika na kurudi kwenye makundi yanayoshindana.",
+      "text_markdown": "Bila kiongozi imara, ingevunjika na kurudi kwenye makundi yanayoshindana.",
+      "title": "Asili",
+      "tts": {
+        "text": "Bila kiongozi imara, ingevunjika na kurudi kwenye makundi yanayoshindana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-112",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "text": "Kila kitu walichojenga kilikuwa hatarini.",
+      "text_markdown": "Kila kitu walichojenga kilikuwa hatarini.",
+      "title": "Asili",
+      "tts": {
+        "text": "Kila kitu walichojenga kilikuwa hatarini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-113",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "text": "Manahodha wa meli nyingine walitarajia shirikisho kuanguka.",
+      "text_markdown": "Manahodha wa meli nyingine walitarajia shirikisho kuanguka.",
+      "title": "Asili",
+      "tts": {
+        "text": "Manahodha wa meli nyingine walitarajia shirikisho kuanguka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-114",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "text": "Walianza kujiweka sawa kwa nafasi, wakijiandaa kuteka eneo.",
+      "text_markdown": "Walianza kujiweka sawa kwa nafasi, wakijiandaa kuteka eneo.",
+      "title": "Asili",
+      "tts": {
+        "text": "Walianza kujiweka sawa kwa nafasi, wakijiandaa kuteka eneo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-115",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "text": "Lakini hawakuwa wamezingatia azma na uwezo wa mjane wa Zheng Yi.",
+      "text_markdown": "Lakini hawakuwa wamezingatia azma na uwezo wa mjane wa Zheng Yi.",
+      "title": "Asili",
+      "tts": {
+        "text": "Lakini hawakuwa wamezingatia azma na uwezo wa mjane wa Zheng Yi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-116",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "text": "Hakuwa na nia ya kusalimisha kile alichosaidia kujenga.",
+      "text_markdown": "Hakuwa na nia ya kusalimisha kile alichosaidia kujenga.",
+      "title": "Asili",
+      "tts": {
+        "text": "Hakuwa na nia ya kusalimisha kile alichosaidia kujenga.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 3,
+      "id": "ch03-117",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Kupanda Madarakani",
+      "text_markdown": "Kupanda Madarakani",
+      "title": "Kupanda Madarakani"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-118",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "text": "Katika siku zilizofuata kifo cha mumewe, Zheng Yi Sao alihama kwa kasi iliyopangwa.",
+      "text_markdown": "Katika siku zilizofuata kifo cha mumewe, Zheng Yi Sao alihama kwa kasi iliyopangwa.",
+      "title": "Kupanda Madarakani",
+      "tts": {
+        "text": "Katika siku zilizofuata kifo cha mumewe, Zheng Yi Sao alihama kwa kasi iliyopangwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-119",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "text": "Hatua yake ya kwanza ilikuwa kuhakikisha uaminifu wa Zhang Bao, luteni wake anayeaminika zaidi.",
+      "text_markdown": "Hatua yake ya kwanza ilikuwa kuhakikisha uaminifu wa Zhang Bao, luteni wake anayeaminika zaidi.",
+      "title": "Kupanda Madarakani",
+      "tts": {
+        "text": "Hatua yake ya kwanza ilikuwa kuhakikisha uaminifu wa Zhang Bao, luteni wake anayeaminika zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-120",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "text": "Zhang Bao alikuwa mwana wa mvuvi ambaye alitekwa na maharamia akiwa mvulana.",
+      "text_markdown": "Zhang Bao alikuwa mwana wa mvuvi ambaye alitekwa na maharamia akiwa mvulana.",
+      "title": "Kupanda Madarakani",
+      "tts": {
+        "text": "Zhang Bao alikuwa mwana wa mvuvi ambaye alitekwa na maharamia akiwa mvulana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-121",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "text": "Zheng Yi alikuwa amemlea, akamfunza, na kumkuza kuwa kamanda wa kijeshi.",
+      "text_markdown": "Zheng Yi alikuwa amemlea, akamfunza, na kumkuza kuwa kamanda wa kijeshi.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Zheng Yi alikuwa amemlea, akamfunza, na kumkuza kuwa kamanda wa kijeshi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-122",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao aliunda muungano na Zhang Bao ambao ulikuwa wa kibinafsi na wa kimkakati.",
+      "text_markdown": "Zheng Yi Sao aliunda muungano na Zhang Bao ambao ulikuwa wa kibinafsi na wa kimkakati.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Zheng Yi Sao aliunda muungano na Zhang Bao ambao ulikuwa wa kibinafsi na wa kimkakati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-123",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "text": "Hatimaye wawili hao wangeoana.",
+      "text_markdown": "Hatimaye wawili hao wangeoana.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Hatimaye wawili hao wangeoana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-124",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "text": "Lakini katika wiki hizo za kwanza muhimu, ushirikiano ulikuwa juu ya kuishi.",
+      "text_markdown": "Lakini katika wiki hizo za kwanza muhimu, ushirikiano ulikuwa juu ya kuishi.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Lakini katika wiki hizo za kwanza muhimu, ushirikiano ulikuwa juu ya kuishi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-125",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "text": "Pamoja, waliwasilisha msimamo wa umoja kwa makamanda wengine wa meli.",
+      "text_markdown": "Pamoja, waliwasilisha msimamo wa umoja kwa makamanda wengine wa meli.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Pamoja, waliwasilisha msimamo wa umoja kwa makamanda wengine wa meli.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-126",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "text": "Aliita baraza la manahodha sita wa meli.",
+      "text_markdown": "Aliita baraza la manahodha sita wa meli.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Aliita baraza la manahodha sita wa meli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-127",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "text": "Katika mkutano huo, aliwasilisha hoja yake ya uongozi wa shirikisho.",
+      "text_markdown": "Katika mkutano huo, aliwasilisha hoja yake ya uongozi wa shirikisho.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Katika mkutano huo, aliwasilisha hoja yake ya uongozi wa shirikisho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-128",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "text": "Alisema kuwa alikuwa mshirika sawa na mumewe katika kujenga muungano huu.",
+      "text_markdown": "Alisema kuwa alikuwa mshirika sawa na mumewe katika kujenga muungano huu.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Alisema kuwa alikuwa mshirika sawa na mumewe katika kujenga muungano huu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-129",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "text": "Mmoja baada ya mwingine, manahodha walikubali kufuata amri yake.",
+      "text_markdown": "Mmoja baada ya mwingine, manahodha walikubali kufuata amri yake.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Mmoja baada ya mwingine, manahodha walikubali kufuata amri yake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-130",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "text": "Changamoto yake ya kwanza ilikuwa kuweka nidhamu kwa jeshi la maharamia 70,000.",
+      "text_markdown": "Changamoto yake ya kwanza ilikuwa kuweka nidhamu kwa jeshi la maharamia 70,000.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Changamoto yake ya kwanza ilikuwa kuweka nidhamu kwa jeshi la maharamia sabini elfu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-131",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "text": "Maharamia, kwa asili yao, walikuwa huru na hawakuamini mamlaka.",
+      "text_markdown": "Maharamia, kwa asili yao, walikuwa huru na hawakuamini mamlaka.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Maharamia, kwa asili yao, walikuwa huru na hawakuamini mamlaka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-132",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao alielewa kuwa meli isiyo na sheria ingejitenga yenyewe.",
+      "text_markdown": "Zheng Yi Sao alielewa kuwa meli isiyo na sheria ingejitenga yenyewe.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Zheng Yi Sao alielewa kuwa meli isiyo na sheria ingejitenga yenyewe.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-133",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "text": "Aliunda mojawapo ya kanuni za kisheria za ajabu zaidi katika historia ya maharamia.",
+      "text_markdown": "Aliunda mojawapo ya kanuni za kisheria za ajabu zaidi katika historia ya maharamia.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Aliunda mojawapo ya kanuni za kisheria za ajabu zaidi katika historia ya maharamia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-134",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "text": "Kanuni hiyo ilikuwa kali na maalum.",
+      "text_markdown": "Kanuni hiyo ilikuwa kali na maalum.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Kanuni hiyo ilikuwa kali na maalum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-135",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "text": "Maharamia yeyote aliyekaidi amri ya moja kwa moja kutoka kwa mkuu angekatwa kichwa.",
+      "text_markdown": "Maharamia yeyote aliyekaidi amri ya moja kwa moja kutoka kwa mkuu angekatwa kichwa.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Maharamia yeyote aliyekaidi amri ya moja kwa moja kutoka kwa mkuu angekatwa kichwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-136",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "text": "Kutoroka jukumu kuliadhibiwa kwa kifo.",
+      "text_markdown": "Kutoroka jukumu kuliadhibiwa kwa kifo.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Kutoroka jukumu kuliadhibiwa kwa kifo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-137",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "text": "Kuiba kutoka hazina ya pamoja kuliadhibiwa kwa kifo.",
+      "text_markdown": "Kuiba kutoka hazina ya pamoja kuliadhibiwa kwa kifo.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Kuiba kutoka hazina ya pamoja kuliadhibiwa kwa kifo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-138",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "text": "Kanuni hiyo pia iliwalinda watu waliotekwa kwa njia zisizo za kawaida kwa wakati huo.",
+      "text_markdown": "Kanuni hiyo pia iliwalinda watu waliotekwa kwa njia zisizo za kawaida kwa wakati huo.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Kanuni hiyo pia iliwalinda watu waliotekwa kwa njia zisizo za kawaida kwa wakati huo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-139",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "text": "Maharamia waliowashambulia mateka walikabiliwa na adhabu kali.",
+      "text_markdown": "Maharamia waliowashambulia mateka walikabiliwa na adhabu kali.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Maharamia waliowashambulia mateka walikabiliwa na adhabu kali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-140",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "text": "Ikiwa haramia alimchukua mateka kama mke, alitakiwa kuwa mwaminifu kwake.",
+      "text_markdown": "Ikiwa haramia alimchukua mateka kama mke, alitakiwa kuwa mwaminifu kwake.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Ikiwa haramia alimchukua mateka kama mke, alitakiwa kuwa mwaminifu kwake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-141",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "text": "Sheria hizi hazikuwa mapendekezo; zilitekelezwa kwa uthabiti wa chuma.",
+      "text_markdown": "Sheria hizi hazikuwa mapendekezo; zilitekelezwa kwa uthabiti wa chuma.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Sheria hizi hazikuwa mapendekezo; zilitekelezwa kwa uthabiti wa chuma.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-142",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "text": "Nyara zote zilisajiliwa na kugawanywa kulingana na mfumo maalum.",
+      "text_markdown": "Nyara zote zilisajiliwa na kugawanywa kulingana na mfumo maalum.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Nyara zote zilisajiliwa na kugawanywa kulingana na mfumo maalum.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-143",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "text": "Haramia aliyenasa bidhaa alipokea asilimia 20.",
+      "text_markdown": "Haramia aliyenasa bidhaa alipokea asilimia 20.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Haramia aliyenasa bidhaa alipokea asilimia ishirini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-144",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "text": "Asilimia 80 iliyobaki iliingia kwenye mfuko wa pamoja.",
+      "text_markdown": "Asilimia 80 iliyobaki iliingia kwenye mfuko wa pamoja.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Asilimia themanini iliyobaki iliingia kwenye mfuko wa pamoja.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-145",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "text": "Mfumo huu ulizuia ugomvi wa ndani uliovunja mashirika mengi ya maharamia.",
+      "text_markdown": "Mfumo huu ulizuia ugomvi wa ndani uliovunja mashirika mengi ya maharamia.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Mfumo huu ulizuia ugomvi wa ndani uliovunja mashirika mengi ya maharamia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-146",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao pia alijenga mfumo wa kisasa wa kodi.",
+      "text_markdown": "Zheng Yi Sao pia alijenga mfumo wa kisasa wa kodi.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Zheng Yi Sao pia alijenga mfumo wa kisasa wa kodi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-147",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "text": "Meli za wafanyabiashara zingeweza kununua kifungu salama kwa kulipa ada ya kawaida.",
+      "text_markdown": "Meli za wafanyabiashara zingeweza kununua kifungu salama kwa kulipa ada ya kawaida.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Meli za wafanyabiashara zingeweza kununua kifungu salama kwa kulipa ada ya kawaida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-148",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "text": "Vijiji vya wavuvi kando ya pwani vililipa kodi kwa ajili ya ulinzi.",
+      "text_markdown": "Vijiji vya wavuvi kando ya pwani vililipa kodi kwa ajili ya ulinzi.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Vijiji vya wavuvi kando ya pwani vililipa kodi kwa ajili ya ulinzi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-149",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "text": "Mfumo huo ulifanya kazi kama serikali sambamba, ukikusanya mapato kwa ajili ya usalama.",
+      "text_markdown": "Mfumo huo ulifanya kazi kama serikali sambamba, ukikusanya mapato kwa ajili ya usalama.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Mfumo huo ulifanya kazi kama serikali sambamba, ukikusanya mapato kwa ajili ya usalama.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-150",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "text": "Serikali ya Qing ilitambua tishio hilo na kutuma jeshi lake la wanamaji kuwakandamiza maharamia.",
+      "text_markdown": "Serikali ya Qing ilitambua tishio hilo na kutuma jeshi lake la wanamaji kuwakandamiza maharamia.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Serikali ya Qing ilitambua tishio hilo na kutuma jeshi lake la wanamaji kuwakandamiza maharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-151",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "text": "Mnamo 1808, meli kubwa ya kifalme ilisafiri kuingia Bahari ya Kusini ya China.",
+      "text_markdown": "Mnamo 1808, meli kubwa ya kifalme ilisafiri kuingia Bahari ya Kusini ya China.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Mnamo elfu moja mia nane na nane, meli kubwa ya kifalme ilisafiri kuingia Bahari ya Kusini ya China.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-152",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "text": "Vita hivyo vilikuwa janga kwa serikali.",
+      "text_markdown": "Vita hivyo vilikuwa janga kwa serikali.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Vita hivyo vilikuwa janga kwa serikali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-153",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "text": "Vikosi vya Zheng Yi Sao vilizamisha au kunasa meli kadhaa za kivita za kifalme.",
+      "text_markdown": "Vikosi vya Zheng Yi Sao vilizamisha au kunasa meli kadhaa za kivita za kifalme.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Vikosi vya Zheng Yi Sao vilizamisha au kunasa meli kadhaa za kivita za kifalme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-154",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "text": "Admirali aliyeshindwa alifedheheshwa sana kiasi kwamba alijinyonga.",
+      "text_markdown": "Admirali aliyeshindwa alifedheheshwa sana kiasi kwamba alijinyonga.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Admirali aliyeshindwa alifedheheshwa sana kiasi kwamba alijinyonga.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-155",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "text": "Mahakama ya kifalme ilishangazwa na ukubwa wa hasara hiyo.",
+      "text_markdown": "Mahakama ya kifalme ilishangazwa na ukubwa wa hasara hiyo.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Mahakama ya kifalme ilishangazwa na ukubwa wa hasara hiyo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-156",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "text": "Walikuwa wametuma meli zao bora na kamanda wao mwenye uzoefu zaidi, na walikuwa wameshindwa.",
+      "text_markdown": "Walikuwa wametuma meli zao bora na kamanda wao mwenye uzoefu zaidi, na walikuwa wameshindwa.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Walikuwa wametuma meli zao bora na kamanda wao mwenye uzoefu zaidi, na walikuwa wameshindwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-157",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "text": "Maharamia sasa walikuwa na nguvu zaidi kuliko jeshi la wanamaji la serikali yenyewe.",
+      "text_markdown": "Maharamia sasa walikuwa na nguvu zaidi kuliko jeshi la wanamaji la serikali yenyewe.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Maharamia sasa walikuwa na nguvu zaidi kuliko jeshi la wanamaji la serikali yenyewe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-158",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao alitumia faida yake bila kuchoka.",
+      "text_markdown": "Zheng Yi Sao alitumia faida yake bila kuchoka.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Zheng Yi Sao alitumia faida yake bila kuchoka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-159",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "text": "Meli zake ziliongeza eneo lake kando ya pwani yote ya Guangdong.",
+      "text_markdown": "Meli zake ziliongeza eneo lake kando ya pwani yote ya Guangdong.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Meli zake ziliongeza eneo lake kando ya pwani yote ya Guangdong.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-160",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "text": "Alianzisha vituo kwenye visiwa na katika milango ya mito iliyofichwa.",
+      "text_markdown": "Alianzisha vituo kwenye visiwa na katika milango ya mito iliyofichwa.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Alianzisha vituo kwenye visiwa na katika milango ya mito iliyofichwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-161",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "text": "Mtandao wake wa ujasusi ulienea kutoka Canton hadi Vietnam.",
+      "text_markdown": "Mtandao wake wa ujasusi ulienea kutoka Canton hadi Vietnam.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Mtandao wake wa ujasusi ulienea kutoka Canton hadi Vietnam.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-162",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "text": "Serikali ya Qing ilijaribu mkakati mpya.",
+      "text_markdown": "Serikali ya Qing ilijaribu mkakati mpya.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Serikali ya Qing ilijaribu mkakati mpya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-163",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "text": "Walikodi meli za kivita za Ureno kutoka koloni la Macao kupambana na maharamia.",
+      "text_markdown": "Walikodi meli za kivita za Ureno kutoka koloni la Macao kupambana na maharamia.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Walikodi meli za kivita za Ureno kutoka koloni la Macao kupambana na maharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-164",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "text": "Wareno walikuwa na mizinga ya kisasa ya Ulaya na maafisa wa wanamaji waliofunzwa.",
+      "text_markdown": "Wareno walikuwa na mizinga ya kisasa ya Ulaya na maafisa wa wanamaji waliofunzwa.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Wareno walikuwa na mizinga ya kisasa ya Ulaya na maafisa wa wanamaji waliofunzwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-165",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "text": "Kwa muda, muungano huu uliweka shinikizo kubwa kwa meli za maharamia.",
+      "text_markdown": "Kwa muda, muungano huu uliweka shinikizo kubwa kwa meli za maharamia.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Kwa muda, muungano huu uliweka shinikizo kubwa kwa meli za maharamia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-166",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "text": "Lakini Zheng Yi Sao alibadilika haraka.",
+      "text_markdown": "Lakini Zheng Yi Sao alibadilika haraka.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Lakini Zheng Yi Sao alibadilika haraka.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-167",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "text": "Aliepuka makabiliano ya moja kwa moja na meli za kivita za Ureno.",
+      "text_markdown": "Aliepuka makabiliano ya moja kwa moja na meli za kivita za Ureno.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Aliepuka makabiliano ya moja kwa moja na meli za kivita za Ureno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-168",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "text": "Badala yake, alilenga njia zao za usambazaji na kushambulia washirika wao wafanyabiashara.",
+      "text_markdown": "Badala yake, alilenga njia zao za usambazaji na kushambulia washirika wao wafanyabiashara.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Badala yake, alilenga njia zao za usambazaji na kushambulia washirika wao wafanyabiashara.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-169",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "text": "Alielewa kuwa Wareno wangeendelea kupigana mradi tu walikuwa wakilipwa.",
+      "text_markdown": "Alielewa kuwa Wareno wangeendelea kupigana mradi tu walikuwa wakilipwa.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Alielewa kuwa Wareno wangeendelea kupigana mradi tu walikuwa wakilipwa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-170",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "text": "Kufikia 1809, muungano wa Qing na Ureno ulikuwa umeshindwa kumshinda.",
+      "text_markdown": "Kufikia 1809, muungano wa Qing na Ureno ulikuwa umeshindwa kumshinda.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Kufikia elfu moja mia nane na tisa, muungano wa Qing na Ureno ulikuwa umeshindwa kumshinda.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-171",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "text": "Serikali ilikuwa imetumia kiasi kikubwa cha fedha na kupoteza meli kadhaa.",
+      "text_markdown": "Serikali ilikuwa imetumia kiasi kikubwa cha fedha na kupoteza meli kadhaa.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Serikali ilikuwa imetumia kiasi kikubwa cha fedha na kupoteza meli kadhaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-172",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "text": "Maharamia walidhibiti pwani kwa uthabiti zaidi kuliko hapo awali.",
+      "text_markdown": "Maharamia walidhibiti pwani kwa uthabiti zaidi kuliko hapo awali.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Maharamia walidhibiti pwani kwa uthabiti zaidi kuliko hapo awali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-173",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "text": "Shirikisho la Zheng Yi Sao lilikuwa kileleni mwa nguvu zake.",
+      "text_markdown": "Shirikisho la Zheng Yi Sao lilikuwa kileleni mwa nguvu zake.",
+      "title": "Kupanda kwa Nguvu",
+      "tts": {
+        "text": "Shirikisho la Zheng Yi Sao lilikuwa kileleni mwa nguvu zake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 4,
+      "id": "ch04-174",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Kileleni",
+      "text_markdown": "Kileleni",
+      "title": "Kileleni"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-175",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "text": "Kileleni mwake, shirikisho la maharamia lilikuwa likiongoza takriban vyombo 1,800.",
+      "text_markdown": "Kileleni mwake, shirikisho la maharamia lilikuwa likiongoza takriban vyombo 1,800.",
+      "title": "Kileleni",
+      "tts": {
+        "text": "Kileleni mwake, shirikisho la maharamia lilikuwa likiongoza takriban vyombo elfu moja mia nane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-176",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "text": "Hivi vilianzia kwenye boti ndogo, za haraka za uvamizi hadi majahazi makubwa ya kivita yaliyobeba mizinga mingi.",
+      "text_markdown": "Hivi vilianzia kwenye boti ndogo, za haraka za uvamizi hadi majahazi makubwa ya kivita yaliyobeba mizinga mingi.",
+      "title": "Kileleni",
+      "tts": {
+        "text": "Hivi vilianzia kwenye boti ndogo, za haraka za uvamizi hadi majahazi makubwa ya kivita yaliyobeba mizinga mingi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-177",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "text": "Jumla ya jeshi la mapigano lilikuwa kati ya watu 70,000 na 80,000.",
+      "text_markdown": "Jumla ya jeshi la mapigano lilikuwa kati ya watu 70,000 na 80,000.",
+      "title": "Kileleni",
+      "tts": {
+        "text": "Jumla ya jeshi la mapigano lilikuwa kati ya watu sabini elfu na themanini elfu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-178",
+      "paragraph_id": "p52",
+      "sentence_index": 3,
+      "text": "Hii ilikuwa kubwa kuliko majeshi ya wanamaji ya mataifa mengi ya Ulaya wakati huo.",
+      "text_markdown": "Hii ilikuwa kubwa kuliko majeshi ya wanamaji ya mataifa mengi ya Ulaya wakati huo.",
+      "title": "Kileleni",
+      "tts": {
+        "text": "Hii ilikuwa kubwa kuliko majeshi ya wanamaji ya mataifa mengi ya Ulaya wakati huo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-179",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "text": "Meli ya Bendera Nyekundu pekee ilikuwa na kati ya meli 600 na 800.",
+      "text_markdown": "Meli ya Bendera Nyekundu pekee ilikuwa na kati ya meli 600 na 800.",
+      "title": "Kileleni",
+      "tts": {
+        "text": "Meli ya Bendera Nyekundu pekee ilikuwa na kati ya meli mia sita na mia nane.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-180",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "text": "Ilikuwa meli kubwa zaidi pekee katika shirikisho hilo.",
+      "text_markdown": "Ilikuwa meli kubwa zaidi pekee katika shirikisho hilo.",
+      "title": "Kileleni",
+      "tts": {
+        "text": "Ilikuwa meli kubwa zaidi pekee katika shirikisho hilo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-181",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "text": "Zheng Yi Sao aliiongoza moja kwa moja, huku Zhang Bao akiwa afisa wake mkuu wa kijeshi.",
+      "text_markdown": "Zheng Yi Sao aliiongoza moja kwa moja, huku Zhang Bao akiwa afisa wake mkuu wa kijeshi.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Zheng Yi Sao aliiongoza moja kwa moja, huku Zhang Bao akiwa afisa wake mkuu wa kijeshi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-182",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "text": "Vikosi vingine vitano viliendeshwa kwa uhuru kiasi lakini vilifuata mwelekeo wake wa kimkakati.",
+      "text_markdown": "Vikosi vingine vitano viliendeshwa kwa uhuru kiasi lakini vilifuata mwelekeo wake wa kimkakati.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Vikosi vingine vitano viliendeshwa kwa uhuru kiasi lakini vilifuata mwelekeo wake wa kimkakati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-183",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "text": "Eneo la shirikisho lilienea zaidi ya maili 1,000 za pwani.",
+      "text_markdown": "Eneo la shirikisho lilienea zaidi ya maili 1,000 za pwani.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Eneo la shirikisho lilienea zaidi ya maili elfu moja za pwani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-184",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "text": "Kutoka mpaka wa Vietnam kusini hadi pwani ya Fujian kaskazini, hakuna meli iliyokuwa salama bila ruhusa ya maharamia.",
+      "text_markdown": "Kutoka mpaka wa Vietnam kusini hadi pwani ya Fujian kaskazini, hakuna meli iliyokuwa salama bila ruhusa ya maharamia.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Kutoka mpaka wa Vietnam kusini hadi pwani ya Fujian kaskazini, hakuna meli iliyokuwa salama bila ruhusa ya maharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-185",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "text": "Hata Kampuni kubwa ya British East India ililipa kodi ili kuepuka kupoteza mizigo yake.",
+      "text_markdown": "Hata Kampuni kubwa ya British East India ililipa kodi ili kuepuka kupoteza mizigo yake.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Hata Kampuni kubwa ya British East India ililipa kodi ili kuepuka kupoteza mizigo yake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-186",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "text": "Maisha ndani ya meli ya maharamia (junk) yalikuwa magumu lakini yamepangwa.",
+      "text_markdown": "Maisha ndani ya meli ya maharamia (junk) yalikuwa magumu lakini yamepangwa.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Maisha ndani ya meli ya maharamia (junk) yalikuwa magumu lakini yamepangwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-187",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "text": "Kila meli ilikuwa na safu wazi ya uongozi, kutoka nahodha hadi mwanajeshi mpya zaidi.",
+      "text_markdown": "Kila meli ilikuwa na safu wazi ya uongozi, kutoka nahodha hadi mwanajeshi mpya zaidi.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Kila meli ilikuwa na safu wazi ya uongozi, kutoka nahodha hadi mwanajeshi mpya zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-188",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "text": "Milio ilikuwa ya pamoja, na posho zilisambazwa kwa usawa.",
+      "text_markdown": "Milio ilikuwa ya pamoja, na posho zilisambazwa kwa usawa.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Milio ilikuwa ya pamoja, na posho zilisambazwa kwa usawa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-189",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "text": "Kila mwanachama wa wafanyakazi alipokea sehemu ya nyara kulingana na cheo na jukumu lake.",
+      "text_markdown": "Kila mwanachama wa wafanyakazi alipokea sehemu ya nyara kulingana na cheo na jukumu lake.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Kila mwanachama wa wafanyakazi alipokea sehemu ya nyara kulingana na cheo na jukumu lake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-190",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "text": "Wanawake walihudumu kwenye meli nyingi za maharamia katika kikosi hicho.",
+      "text_markdown": "Wanawake walihudumu kwenye meli nyingi za maharamia katika kikosi hicho.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Wanawake walihudumu kwenye meli nyingi za maharamia katika kikosi hicho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-191",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "text": "Baadhi walipigana pamoja na wanaume wakati wa uvamizi.",
+      "text_markdown": "Baadhi walipigana pamoja na wanaume wakati wa uvamizi.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Baadhi walipigana pamoja na wanaume wakati wa uvamizi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-192",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "text": "Wengine walisimamia vifaa, urambazaji, na mawasiliano kati ya meli.",
+      "text_markdown": "Wengine walisimamia vifaa, urambazaji, na mawasiliano kati ya meli.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Wengine walisimamia vifaa, urambazaji, na mawasiliano kati ya meli.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-193",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "text": "Ulimwengu wa maharamia uliwapa wanawake uhuru zaidi kuliko jamii ya kawaida ya Qing.",
+      "text_markdown": "Ulimwengu wa maharamia uliwapa wanawake uhuru zaidi kuliko jamii ya kawaida ya Qing.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Ulimwengu wa maharamia uliwapa wanawake uhuru zaidi kuliko jamii ya kawaida ya Qing.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-194",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "text": "Meli za kivita za kikosi hicho (war junks) zilikuwa mashine za kivita zenye kutisha.",
+      "text_markdown": "Meli za kivita za kikosi hicho (war junks) zilikuwa mashine za kivita zenye kutisha.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Meli za kivita za kikosi hicho (war junks) zilikuwa mashine za kivita zenye kutisha.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-195",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "text": "Meli kubwa (junk) ingeweza kubeba mizinga 30 au zaidi.",
+      "text_markdown": "Meli kubwa (junk) ingeweza kubeba mizinga 30 au zaidi.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Meli kubwa (junk) ingeweza kubeba mizinga thelathini au zaidi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-196",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "text": "Meli hizo zilijengwa kwa maganda yaliyotiwa nguvu na pande za juu ili kuzuia wavamizi.",
+      "text_markdown": "Meli hizo zilijengwa kwa maganda yaliyotiwa nguvu na pande za juu ili kuzuia wavamizi.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Meli hizo zilijengwa kwa maganda yaliyotiwa nguvu na pande za juu ili kuzuia wavamizi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-197",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "text": "Chini zao tambarare ziliwawezesha kusafiri katika maji ya pwani yasiyo na kina ambapo meli za Ulaya zenye kina kirefu hazingeweza kufuata.",
+      "text_markdown": "Chini zao tambarare ziliwawezesha kusafiri katika maji ya pwani yasiyo na kina ambapo meli za Ulaya zenye kina kirefu hazingeweza kufuata.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Chini zao tambarare ziliwawezesha kusafiri katika maji ya pwani yasiyo na kina ambapo meli za Ulaya zenye kina kirefu hazingeweza kufuata.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-198",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "text": "Mtandao wa ujasusi wa Zheng Yi Sao ulikuwa mojawapo ya silaha zake kuu.",
+      "text_markdown": "Mtandao wa ujasusi wa Zheng Yi Sao ulikuwa mojawapo ya silaha zake kuu.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Mtandao wa ujasusi wa Zheng Yi Sao ulikuwa mojawapo ya silaha zake kuu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-199",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "text": "Alikuwa na wapelelezi Canton, Macao, na katika kila bandari kuu kando ya pwani.",
+      "text_markdown": "Alikuwa na wapelelezi Canton, Macao, na katika kila bandari kuu kando ya pwani.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Alikuwa na wapelelezi Canton, Macao, na katika kila bandari kuu kando ya pwani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-200",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "text": "Alijua ni lini meli za mizigo zenye thamani ziliondoka na njia gani zingechukua.",
+      "text_markdown": "Alijua ni lini meli za mizigo zenye thamani ziliondoka na njia gani zingechukua.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Alijua ni lini meli za mizigo zenye thamani ziliondoka na njia gani zingechukua.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-201",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "text": "Habari hii ilimwezesha kushambulia kwa usahihi badala ya kutegemea bahati.",
+      "text_markdown": "Habari hii ilimwezesha kushambulia kwa usahihi badala ya kutegemea bahati.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Habari hii ilimwezesha kushambulia kwa usahihi badala ya kutegemea bahati.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-202",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "text": "Mfumo wa ushuru alioujenga ulikuwa wa kisasa sana.",
+      "text_markdown": "Mfumo wa ushuru alioujenga ulikuwa wa kisasa sana.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Mfumo wa ushuru alioujenga ulikuwa wa kisasa sana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-203",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "text": "Viwango tofauti vilitumika kwa aina tofauti za mizigo.",
+      "text_markdown": "Viwango tofauti vilitumika kwa aina tofauti za mizigo.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Viwango tofauti vilitumika kwa aina tofauti za mizigo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-204",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "text": "Wafanyabiashara wa hariri walilipa zaidi kuliko wafanyabiashara wa mchele.",
+      "text_markdown": "Wafanyabiashara wa hariri walilipa zaidi kuliko wafanyabiashara wa mchele.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Wafanyabiashara wa hariri walilipa zaidi kuliko wafanyabiashara wa mchele.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-205",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "text": "Wasafirishaji haramu wa chumvi walilipa ziada kwa sababu mizigo yao tayari ilikuwa haramu.",
+      "text_markdown": "Wasafirishaji haramu wa chumvi walilipa ziada kwa sababu mizigo yao tayari ilikuwa haramu.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Wasafirishaji haramu wa chumvi walilipa ziada kwa sababu mizigo yao tayari ilikuwa haramu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-206",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "text": "Mfumo mzima uliandikwa na kutekelezwa kwa usahihi wa kiutawala.",
+      "text_markdown": "Mfumo mzima uliandikwa na kutekelezwa kwa usahihi wa kiutawala.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Mfumo mzima uliandikwa na kutekelezwa kwa usahihi wa kiutawala.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-207",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "text": "Vijiji vya pwani vilikuwa na uhusiano mgumu na maharamia.",
+      "text_markdown": "Vijiji vya pwani vilikuwa na uhusiano mgumu na maharamia.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Vijiji vya pwani vilikuwa na uhusiano mgumu na maharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-208",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "text": "Wengi walichukia malipo ya kodi ambayo maharamia waliyodai.",
+      "text_markdown": "Wengi walichukia malipo ya kodi ambayo maharamia waliyodai.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Wengi walichukia malipo ya kodi ambayo maharamia waliyodai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-209",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "text": "Lakini maharamia pia walitoa ulinzi dhidi ya wavamizi na majambazi wengine.",
+      "text_markdown": "Lakini maharamia pia walitoa ulinzi dhidi ya wavamizi na majambazi wengine.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Lakini maharamia pia walitoa ulinzi dhidi ya wavamizi na majambazi wengine.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-210",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "text": "Katika baadhi ya maeneo, maharamia walikuwa wa kutegemewa zaidi kuliko serikali ya kifalme.",
+      "text_markdown": "Katika baadhi ya maeneo, maharamia walikuwa wa kutegemewa zaidi kuliko serikali ya kifalme.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Katika baadhi ya maeneo, maharamia walikuwa wa kutegemewa zaidi kuliko serikali ya kifalme.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-211",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "text": "Mahakama ya Qing iliaibika sana kwa kutoweza kwake kudhibiti bahari.",
+      "text_markdown": "Mahakama ya Qing iliaibika sana kwa kutoweza kwake kudhibiti bahari.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Mahakama ya Qing iliaibika sana kwa kutoweza kwake kudhibiti bahari.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-212",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "text": "Maafisa wa kifalme waliandika ripoti za wasiwasi kuhusu nguvu inayokua ya malkia wa maharamia.",
+      "text_markdown": "Maafisa wa kifalme waliandika ripoti za wasiwasi kuhusu nguvu inayokua ya malkia wa maharamia.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Maafisa wa kifalme waliandika ripoti za wasiwasi kuhusu nguvu inayokua ya malkia wa maharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-213",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "text": "Waliogopa kwamba maharamia wangeweza kuungana na vikundi vya waasi nchi kavu.",
+      "text_markdown": "Waliogopa kwamba maharamia wangeweza kuungana na vikundi vya waasi nchi kavu.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Waliogopa kwamba maharamia wangeweza kuungana na vikundi vya waasi nchi kavu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-214",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "text": "Uasi wa pamoja wa nchi kavu na baharini ungeweza kutishia nasaba yenyewe.",
+      "text_markdown": "Uasi wa pamoja wa nchi kavu na baharini ungeweza kutishia nasaba yenyewe.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Uasi wa pamoja wa nchi kavu na baharini ungeweza kutishia nasaba yenyewe.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-215",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "text": "Waingereza walifuatilia hali hiyo kwa shauku kubwa.",
+      "text_markdown": "Waingereza walifuatilia hali hiyo kwa shauku kubwa.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Waingereza walifuatilia hali hiyo kwa shauku kubwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-216",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "text": "Walikuwa wakipanua biashara yao ya afyuni kando ya pwani ya Uchina.",
+      "text_markdown": "Walikuwa wakipanua biashara yao ya afyuni kando ya pwani ya Uchina.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Walikuwa wakipanua biashara yao ya afyuni kando ya pwani ya Uchina.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-217",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "text": "Maharamia walivuruga biashara hii, ambayo iliwagharimu wafanyabiashara wa Uingereza kiasi kikubwa cha pesa.",
+      "text_markdown": "Maharamia walivuruga biashara hii, ambayo iliwagharimu wafanyabiashara wa Uingereza kiasi kikubwa cha pesa.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Maharamia walivuruga biashara hii, ambayo iliwagharimu wafanyabiashara wa Uingereza kiasi kikubwa cha pesa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-218",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "text": "Kwa watu waliosafiri chini ya bendera ya Zheng Yi Sao, maisha yalikuwa bora kuliko mbadala.",
+      "text_markdown": "Kwa watu waliosafiri chini ya bendera ya Zheng Yi Sao, maisha yalikuwa bora kuliko mbadala.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Kwa watu waliosafiri chini ya bendera ya Zheng Yi Sao, maisha yalikuwa bora kuliko mbadala.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-219",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "text": "Haramia alipokea chakula cha kawaida, sehemu ya nyara, na hisia ya kuwa mali.",
+      "text_markdown": "Haramia alipokea chakula cha kawaida, sehemu ya nyara, na hisia ya kuwa mali.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Haramia alipokea chakula cha kawaida, sehemu ya nyara, na hisia ya kuwa mali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-220",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "text": "Mvuvi wa Tanka alipokea umaskini, dharau, na hakuna matumaini ya maendeleo.",
+      "text_markdown": "Mvuvi wa Tanka alipokea umaskini, dharau, na hakuna matumaini ya maendeleo.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Mvuvi wa Tanka alipokea umaskini, dharau, na hakuna matumaini ya maendeleo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-221",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao alitawala jamii hii kwa mamlaka kamili.",
+      "text_markdown": "Zheng Yi Sao alitawala jamii hii kwa mamlaka kamili.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Zheng Yi Sao alitawala jamii hii kwa mamlaka kamili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-222",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "text": "Alifanya maamuzi ya kimkakati yaliyounda mustakabali wa kikosi hicho.",
+      "text_markdown": "Alifanya maamuzi ya kimkakati yaliyounda mustakabali wa kikosi hicho.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Alifanya maamuzi ya kimkakati yaliyounda mustakabali wa kikosi hicho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-223",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "text": "Alitatua mizozo kati ya manahodha na kutekeleza sheria.",
+      "text_markdown": "Alitatua mizozo kati ya manahodha na kutekeleza sheria.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Alitatua mizozo kati ya manahodha na kutekeleza sheria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-224",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "text": "Hakuna hatua kubwa iliyochukuliwa bila idhini yake.",
+      "text_markdown": "Hakuna hatua kubwa iliyochukuliwa bila idhini yake.",
+      "title": "Katika Kilele",
+      "tts": {
+        "text": "Hakuna hatua kubwa iliyochukuliwa bila idhini yake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 5,
+      "id": "ch05-225",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Mwisho",
+      "text_markdown": "Mwisho",
+      "title": "Mwisho"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-226",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "text": "Kufikia mwaka 1810, nyufa zilianza kuonekana katika shirikisho.",
+      "text_markdown": "Kufikia mwaka 1810, nyufa zilianza kuonekana katika shirikisho.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Kufikia mwaka elfu moja mia nane kumi, nyufa zilianza kuonekana katika shirikisho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-227",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "text": "Vita vya mara kwa mara vilikuwa vimeathiri meli na wafanyakazi.",
+      "text_markdown": "Vita vya mara kwa mara vilikuwa vimeathiri meli na wafanyakazi.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Vita vya mara kwa mara vilikuwa vimeathiri meli na wafanyakazi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-228",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "text": "Vizuwizi vya serikali ya Qing vilivuruga njia za usambazaji kando ya pwani.",
+      "text_markdown": "Vizuwizi vya serikali ya Qing vilivuruga njia za usambazaji kando ya pwani.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Vizuwizi vya serikali ya Qing vilivuruga njia za usambazaji kando ya pwani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-229",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "text": "Na ushindani wa ndani kati ya manahodha wa kikosi ulikuwa umeongezeka.",
+      "text_markdown": "Na ushindani wa ndani kati ya manahodha wa kikosi ulikuwa umeongezeka.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Na ushindani wa ndani kati ya manahodha wa kikosi ulikuwa umeongezeka.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-230",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "text": "Ushindani hatari zaidi ulikuwa kati ya Zhang Bao na nahodha aliyeitwa Guo Podai.",
+      "text_markdown": "Ushindani hatari zaidi ulikuwa kati ya Zhang Bao na nahodha aliyeitwa Guo Podai.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Ushindani hatari zaidi ulikuwa kati ya Zhang Bao na nahodha aliyeitwa Guo Podai.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-231",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "text": "Guo Podai aliongoza Kikosi cha Bendera Nyeusi, cha pili kwa ukubwa katika shirikisho.",
+      "text_markdown": "Guo Podai aliongoza Kikosi cha Bendera Nyeusi, cha pili kwa ukubwa katika shirikisho.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Guo Podai aliongoza Kikosi cha Bendera Nyeusi, cha pili kwa ukubwa katika shirikisho.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-232",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "text": "Alichukia kupokea amri kutoka kwa Zhang Bao na, kwa upanuzi, kutoka kwa Zheng Yi Sao.",
+      "text_markdown": "Alichukia kupokea amri kutoka kwa Zhang Bao na, kwa upanuzi, kutoka kwa Zheng Yi Sao.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alichukia kupokea amri kutoka kwa Zhang Bao na, kwa upanuzi, kutoka kwa Zheng Yi Sao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-233",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "text": "Mvutano kati yao ulitishia kuligawanya shirikisho katika sehemu mbili.",
+      "text_markdown": "Mvutano kati yao ulitishia kuligawanya shirikisho katika sehemu mbili.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Mvutano kati yao ulitishia kuligawanya shirikisho katika sehemu mbili.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-234",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "text": "Mapema mwaka 1810, Guo Podai alifanya uamuzi muhimu.",
+      "text_markdown": "Mapema mwaka 1810, Guo Podai alifanya uamuzi muhimu.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Mapema mwaka elfu moja mia nane kumi, Guo Podai alifanya uamuzi muhimu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-235",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "text": "Alifungua mazungumzo ya siri na serikali ya Qing.",
+      "text_markdown": "Alifungua mazungumzo ya siri na serikali ya Qing.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alifungua mazungumzo ya siri na serikali ya Qing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-236",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "text": "Serikali ilimpa msamaha kamili, cheo cha kijeshi, na malipo ya pesa taslimu.",
+      "text_markdown": "Serikali ilimpa msamaha kamili, cheo cha kijeshi, na malipo ya pesa taslimu.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Serikali ilimpa msamaha kamili, cheo cha kijeshi, na malipo ya pesa taslimu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-237",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "text": "Kwa malipo, angegeuka dhidi ya washirika wake wa zamani.",
+      "text_markdown": "Kwa malipo, angegeuka dhidi ya washirika wake wa zamani.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Kwa malipo, angegeuka dhidi ya washirika wake wa zamani.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-238",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "text": "Guo Podai alikubali makubaliano hayo. Akasalimisha meli zake zote kwa serikali ya Qing.",
+      "text_markdown": "Guo Podai alikubali mpango huo na kujisalimisha kikosi chake chote kwa serikali.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Guo Podai alikubali makubaliano hayo. Akasalimisha meli zake zote kwa serikali ya Qing.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-239",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "text": "Usiku kucha, shirikisho lilipoteza mamia ya meli na maelfu ya wapiganaji.",
+      "text_markdown": "Usiku kucha, shirikisho lilipoteza mamia ya meli na maelfu ya wapiganaji.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Usiku kucha, shirikisho lilipoteza mamia ya meli na maelfu ya wapiganaji.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-240",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "text": "Mbaya zaidi, Guo Podai sasa alihudumu kama kamanda wa serikali, akitumia ujuzi wake wa mbinu za maharamia dhidi yao.",
+      "text_markdown": "Mbaya zaidi, Guo Podai sasa alihudumu kama kamanda wa serikali, akitumia ujuzi wake wa mbinu za maharamia dhidi yao.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Mbaya zaidi, Guo Podai sasa alihudumu kama kamanda wa serikali, akitumia ujuzi wake wa mbinu za maharamia dhidi yao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-241",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "text": "Mizani ya nguvu ilikuwa imebadilika sana.",
+      "text_markdown": "Mizani ya nguvu ilikuwa imebadilika sana.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Mizani ya nguvu ilikuwa imebadilika sana.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-242",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao alitathmini hali mpya kwa uwazi wake wa kawaida.",
+      "text_markdown": "Zheng Yi Sao alitathmini hali mpya kwa uwazi wake wa kawaida.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Zheng Yi Sao alitathmini hali mpya kwa uwazi wake wa kawaida.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-243",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "text": "Muungano ulikuwa umedhoofika lakini haukuangamizwa.",
+      "text_markdown": "Muungano ulikuwa umedhoofika lakini haukuangamizwa.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Muungano ulikuwa umedhoofika lakini haukuangamizwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-244",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "text": "Bado aliamuru Jeshi la Bendera Nyekundu na majeshi kadhaa yaliyoshirikiana.",
+      "text_markdown": "Bado aliamuru Jeshi la Bendera Nyekundu na majeshi kadhaa yaliyoshirikiana.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Bado aliamuru Jeshi la Bendera Nyekundu na majeshi kadhaa yaliyoshirikiana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-245",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "text": "Lakini kasi ilikuwa imebadilika, naye alijua hilo.",
+      "text_markdown": "Lakini kasi ilikuwa imebadilika, naye alijua hilo.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Lakini kasi ilikuwa imebadilika, naye alijua hilo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-246",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "text": "Alifanya uamuzi uliofunua kipaji chake cha kimkakati.",
+      "text_markdown": "Alifanya uamuzi uliofunua kipaji chake cha kimkakati.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alifanya uamuzi uliofunua kipaji chake cha kimkakati.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-247",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "text": "Badala ya kupigana hadi kufa, alichagua kujadiliana kutoka nafasi ya nguvu iliyobaki.",
+      "text_markdown": "Badala ya kupigana hadi kufa, alichagua kujadiliana kutoka nafasi ya nguvu iliyobaki.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Badala ya kupigana hadi kufa, alichagua kujadiliana kutoka nafasi ya nguvu iliyobaki.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-248",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "text": "Alifungua mazungumzo na serikali ya Qing kupitia waamuzi.",
+      "text_markdown": "Alifungua mazungumzo na serikali ya Qing kupitia waamuzi.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alifungua mazungumzo na serikali ya Qing kupitia waamuzi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-249",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "text": "Madai yake yalikuwa ya ujasiri na mahususi.",
+      "text_markdown": "Madai yake yalikuwa ya ujasiri na mahususi.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Madai yake yalikuwa ya ujasiri na mahususi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-250",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "text": "Alidai msamaha kamili kwake na kwa Zhang Bao.",
+      "text_markdown": "Alidai msamaha kamili kwake na kwa Zhang Bao.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alidai msamaha kamili kwake na kwa Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-251",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "text": "Alidai kwamba maharamia wake waruhusiwe kubaki na utajiri wao binafsi.",
+      "text_markdown": "Alidai kwamba maharamia wake waruhusiwe kubaki na utajiri wao binafsi.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alidai kwamba maharamia wake waruhusiwe kubaki na utajiri wao binafsi.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-252",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "text": "Alidai kwamba Zhang Bao apewe cheo katika jeshi la wanamaji la kifalme.",
+      "text_markdown": "Alidai kwamba Zhang Bao apewe cheo katika jeshi la wanamaji la kifalme.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alidai kwamba Zhang Bao apewe cheo katika jeshi la wanamaji la kifalme.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-253",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "text": "Na alidai kwamba maharamia wa kawaida waliojisalimisha wasikabiliwe na adhabu yoyote.",
+      "text_markdown": "Na alidai kwamba maharamia wa kawaida waliojisalimisha wasikabiliwe na adhabu yoyote.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Na alidai kwamba maharamia wa kawaida waliojisalimisha wasikabiliwe na adhabu yoyote.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-254",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "text": "Serikali ya Qing ilisita kukubali masharti hayo ya ukarimu.",
+      "text_markdown": "Serikali ya Qing ilisita kukubali masharti hayo ya ukarimu.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Serikali ya Qing ilisita kukubali masharti hayo ya ukarimu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-255",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "text": "Kuwapa maharamia msamaha kulionekana kama udhalilishaji kwa himaya.",
+      "text_markdown": "Kuwapa maharamia msamaha kulionekana kama udhalilishaji kwa himaya.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Kuwapa maharamia msamaha kulionekana kama udhalilishaji kwa himaya.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-256",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "text": "Lakini walikuwa wamejaribu kutumia nguvu na kushindwa.",
+      "text_markdown": "Lakini walikuwa wamejaribu kutumia nguvu na kushindwa.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Lakini walikuwa wamejaribu kutumia nguvu na kushindwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-257",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "text": "Mazungumzo yalikuwa ndiyo chaguo pekee lililobaki.",
+      "text_markdown": "Mazungumzo yalikuwa ndiyo chaguo pekee lililobaki.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Mazungumzo yalikuwa ndiyo chaguo pekee lililobaki.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-258",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "text": "Mnamo Aprili 1810, makubaliano yalimalizika.",
+      "text_markdown": "Mnamo Aprili 1810, makubaliano yalimalizika.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Mnamo Aprili ya elfu moja mia nane kumi, makubaliano yalimalizika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-259",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "text": "Zheng Yi Sao alisalimisha meli zake kwa serikali.",
+      "text_markdown": "Zheng Yi Sao alisalimisha meli zake kwa serikali.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Zheng Yi Sao alisalimisha meli zake kwa serikali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-260",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "text": "Kwa kubadilishana, alipokea kila kitu alichokuwa ameomba.",
+      "text_markdown": "Kwa kubadilishana, alipokea kila kitu alichokuwa ameomba.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Kwa kubadilishana, alipokea kila kitu alichokuwa ameomba.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-261",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "text": "Zhang Bao aliteuliwa kuwa luteni katika jeshi la wanamaji la Qing akiwa na amri ya meli 20.",
+      "text_markdown": "Zhang Bao aliteuliwa kuwa luteni katika jeshi la wanamaji la Qing akiwa na amri ya meli 20.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Zhang Bao aliteuliwa kuwa luteni katika jeshi la wanamaji la Qing akiwa na amri ya meli ishirini.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-262",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "text": "Maharamia waliruhusiwa kubaki na sehemu ya meli zao.",
+      "text_markdown": "Maharamia waliruhusiwa kubaki na sehemu ya meli zao.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Maharamia waliruhusiwa kubaki na sehemu ya meli zao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-263",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "text": "Wale waliotaka kurudi kwenye maisha ya kiraia walikuwa huru kufanya hivyo.",
+      "text_markdown": "Wale waliotaka kurudi kwenye maisha ya kiraia walikuwa huru kufanya hivyo.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Wale waliotaka kurudi kwenye maisha ya kiraia walikuwa huru kufanya hivyo.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-264",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "text": "Wale waliotaka kujiunga na jeshi la wanamaji la kifalme walikaribishwa.",
+      "text_markdown": "Wale waliotaka kujiunga na jeshi la wanamaji la kifalme walikaribishwa.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Wale waliotaka kujiunga na jeshi la wanamaji la kifalme walikaribishwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-265",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "text": "Ilikuwa ndiyo kusalimu amri kwa masharti mazuri zaidi katika historia ya uharamia.",
+      "text_markdown": "Ilikuwa ndiyo kusalimu amri kwa masharti mazuri zaidi katika historia ya uharamia.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Ilikuwa ndiyo kusalimu amri kwa masharti mazuri zaidi katika historia ya uharamia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-266",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao alistaafu kutoka baharini kama mwanamke tajiri.",
+      "text_markdown": "Zheng Yi Sao alistaafu kutoka baharini kama mwanamke tajiri.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Zheng Yi Sao alistaafu kutoka baharini kama mwanamke tajiri.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-267",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "text": "Alikaa Canton na Zhang Bao.",
+      "text_markdown": "Alikaa Canton na Zhang Bao.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alikaa Canton na Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-268",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "text": "Pamoja, walifungua nyumba ya kamari iliyokuwa moja ya zenye faida kubwa zaidi jijini.",
+      "text_markdown": "Pamoja, walifungua nyumba ya kamari iliyokuwa moja ya zenye faida kubwa zaidi jijini.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Pamoja, walifungua nyumba ya kamari iliyokuwa moja ya zenye faida kubwa zaidi jijini.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-269",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "text": "Pia aliwekeza katika biashara ya chumvi, ambayo ilizalisha mapato thabiti kwa miaka mingi.",
+      "text_markdown": "Pia aliwekeza katika biashara ya chumvi, ambayo ilizalisha mapato thabiti kwa miaka mingi.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Pia aliwekeza katika biashara ya chumvi, ambayo ilizalisha mapato thabiti kwa miaka mingi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-270",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "text": "Zhang Bao alihudumu katika jeshi la wanamaji la kifalme kwa heshima kwa miaka kadhaa.",
+      "text_markdown": "Zhang Bao alihudumu katika jeshi la wanamaji la kifalme kwa heshima kwa miaka kadhaa.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Zhang Bao alihudumu katika jeshi la wanamaji la kifalme kwa heshima kwa miaka kadhaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-271",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "text": "Alikufa mnamo 1822, akiwa bado katika utumishi wa serikali.",
+      "text_markdown": "Alikufa mnamo 1822, akiwa bado katika utumishi wa serikali.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alikufa mnamo elfu moja mia nane ishirini na mbili, akiwa bado katika utumishi wa serikali.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-272",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "text": "Kifo chake kiliombolezwa kwa heshima kamili za kijeshi.",
+      "text_markdown": "Kifo chake kiliombolezwa kwa heshima kamili za kijeshi.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Kifo chake kiliombolezwa kwa heshima kamili za kijeshi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-273",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "text": "Zheng Yi Sao aliishi kwa zaidi ya miongo miwili baada ya kuacha uharamia.",
+      "text_markdown": "Zheng Yi Sao aliishi kwa zaidi ya miongo miwili baada ya kuacha uharamia.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Zheng Yi Sao aliishi kwa zaidi ya miongo miwili baada ya kuacha uharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-274",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "text": "Alisimamia maslahi yake ya biashara na kulea familia huko Canton.",
+      "text_markdown": "Alisimamia maslahi yake ya biashara na kulea familia huko Canton.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alisimamia maslahi yake ya biashara na kulea familia huko Canton.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-275",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "text": "Alikufa mnamo 1844, akiwa na umri wa takriban miaka 69.",
+      "text_markdown": "Alikufa mnamo 1844, akiwa na umri wa takriban miaka 69.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alikufa mnamo elfu moja mia nane arobaini na nne, akiwa na umri wa takriban miaka sitini na tisa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-276",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "text": "Alikufa kitandani kwake, akizungukwa na familia yake, kama mwanachama anayeheshimika wa jamii ya Canton.",
+      "text_markdown": "Alikufa kitandani kwake, akizungukwa na familia yake, kama mwanachama anayeheshimika wa jamii ya Canton.",
+      "title": "Mwisho",
+      "tts": {
+        "text": "Alikufa kitandani kwake, akizungukwa na familia yake, kama mwanachama anayeheshimika wa jamii ya Canton.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "heading",
+      "chapter": 6,
+      "id": "ch06-277",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "heading_level": 1,
+      "text": "Urithi",
+      "text_markdown": "Urithi",
+      "title": "Urithi"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-278",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "text": "Kazi ya Zheng Yi Sao ni ya kipekee katika historia ya uharamia.",
+      "text_markdown": "Kazi ya Zheng Yi Sao ni ya kipekee katika historia ya uharamia.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Kazi ya Zheng Yi Sao ni ya kipekee katika historia ya uharamia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-279",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "text": "Hakuna mharamia mwingine, mwanamume au mwanamke, aliyewahi kuamuru jeshi la ukubwa unaolingana.",
+      "text_markdown": "Hakuna mharamia mwingine, mwanamume au mwanamke, aliyewahi kuamuru jeshi la ukubwa unaolingana.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Hakuna mharamia mwingine, mwanamume au mwanamke, aliyewahi kuamuru jeshi la ukubwa unaolingana.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-280",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "text": "Hakuna mharamia mwingine aliyejenga mfumo wa kisasa kama huo wa sheria na utawala.",
+      "text_markdown": "Hakuna mharamia mwingine aliyejenga mfumo wa kisasa kama huo wa sheria na utawala.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Hakuna mharamia mwingine aliyejenga mfumo wa kisasa kama huo wa sheria na utawala.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-281",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "text": "Na hakuna mharamia mwingine aliyefanya mazungumzo ya kustaafu kwa masharti mazuri kama hayo.",
+      "text_markdown": "Na hakuna mharamia mwingine aliyefanya mazungumzo ya kustaafu kwa masharti mazuri kama hayo.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Na hakuna mharamia mwingine aliyefanya mazungumzo ya kustaafu kwa masharti mazuri kama hayo.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-282",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "text": "Mafanikio yake yanapinga mawazo mengi kuhusu nafasi ya wanawake katika historia.",
+      "text_markdown": "Mafanikio yake yanapinga mawazo mengi kuhusu nafasi ya wanawake katika historia.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Mafanikio yake yanapinga mawazo mengi kuhusu nafasi ya wanawake katika historia.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-283",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "text": "Alipanda mamlakani katika jamii iliyowapa wanawake karibu haki zozote za kisheria.",
+      "text_markdown": "Alipanda mamlakani katika jamii iliyowapa wanawake karibu haki zozote za kisheria.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Alipanda mamlakani katika jamii iliyowapa wanawake karibu haki zozote za kisheria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-284",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "text": "Aliongoza makumi ya maelfu ya wanaume katika ulimwengu uliowaona wanawake kuwa duni.",
+      "text_markdown": "Aliongoza makumi ya maelfu ya wanaume katika ulimwengu uliowaona wanawake kuwa duni.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Aliongoza makumi ya maelfu ya wanaume katika ulimwengu uliowaona wanawake kuwa duni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-285",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "text": "Hadithi yake ni uthibitisho kwamba uwezo hauna jinsia.",
+      "text_markdown": "Hadithi yake ni uthibitisho kwamba uwezo hauna jinsia.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Hadithi yake ni uthibitisho kwamba uwezo hauna jinsia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-286",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "text": "Wanahistoria wamejadili sababu za mafanikio yake ya ajabu.",
+      "text_markdown": "Wanahistoria wamejadili sababu za mafanikio yake ya ajabu.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Wanahistoria wamejadili sababu za mafanikio yake ya ajabu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-287",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "text": "Wengine wanasisitiza sifa zake binafsi: akili yake, uamuzi wake, uwezo wake wa kuhamasisha uaminifu.",
+      "text_markdown": "Wengine wanasisitiza sifa zake binafsi: akili yake, uamuzi wake, uwezo wake wa kuhamasisha uaminifu.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Wengine wanasisitiza sifa zake binafsi: akili yake, uamuzi wake, uwezo wake wa kuhamasisha uaminifu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-288",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "text": "Wengine wanaelekeza kwenye hali za kimuundo zilizowezesha kupanda kwake: udhaifu wa serikali ya Qing, umaskini wa wakazi wa pwani, na jiografia ya Bahari ya Kusini mwa China.",
+      "text_markdown": "Wengine wanaelekeza kwenye hali za kimuundo zilizowezesha kupanda kwake: udhaifu wa serikali ya Qing, umaskini wa wakazi wa pwani, na jiografia ya Bahari ya Kusini mwa China.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Wengine wanaelekeza kwenye hali za kimuundo zilizowezesha kupanda kwake: udhaifu wa serikali ya Qing, umaskini wa wakazi wa pwani, na jiografia ya Bahari ya Kusini mwa China.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-289",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "text": "Ukweli karibu hakika unajumuisha mambo yote mawili.",
+      "text_markdown": "Ukweli karibu hakika unajumuisha mambo yote mawili.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Ukweli karibu hakika unajumuisha mambo yote mawili.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-290",
+      "paragraph_id": "p83",
+      "sentence_index": 1,
+      "text": "Bila hali hizo, kipaji chake kisingekuwa na jukwaa.",
+      "text_markdown": "Bila hali hizo, kipaji chake kisingekuwa na jukwaa.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Bila hali hizo, kipaji chake kisingekuwa na jukwaa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-291",
+      "paragraph_id": "p83",
+      "sentence_index": 2,
+      "text": "Bila kipaji chake, hali hizo zingezalisha machafuko tu.",
+      "text_markdown": "Bila kipaji chake, hali hizo zingezalisha machafuko tu.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Bila kipaji chake, hali hizo zingezalisha machafuko tu.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-292",
+      "paragraph_id": "p83",
+      "sentence_index": 3,
+      "text": "Alikuwa mtu sahihi kwa wakati sahihi katika historia.",
+      "text_markdown": "Alikuwa mtu sahihi kwa wakati sahihi katika historia.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Alikuwa mtu sahihi kwa wakati sahihi katika historia.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-293",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "text": "Kanuni zake za kisheria ziliathiri utawala wa maharamia kwa miongo kadhaa baada ya kustaafu kwake.",
+      "text_markdown": "Kanuni zake za kisheria ziliathiri utawala wa maharamia kwa miongo kadhaa baada ya kustaafu kwake.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Kanuni zake za kisheria ziliathiri utawala wa maharamia kwa miongo kadhaa baada ya kustaafu kwake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-294",
+      "paragraph_id": "p84",
+      "sentence_index": 1,
+      "text": "Viongozi wa baadaye wa maharamia katika Bahari ya Kusini mwa China walitumia mifumo kama hiyo ya kodi na sheria.",
+      "text_markdown": "Viongozi wa baadaye wa maharamia katika Bahari ya Kusini mwa China walitumia mifumo kama hiyo ya kodi na sheria.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Viongozi wa baadaye wa maharamia katika Bahari ya Kusini mwa China walitumia mifumo kama hiyo ya kodi na sheria.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-295",
+      "paragraph_id": "p84",
+      "sentence_index": 2,
+      "text": "Mfumo wake ulionyesha kwamba meli za maharamia zinaweza kupangwa kwa ufanisi kama majeshi ya wanamaji ya kitaifa.",
+      "text_markdown": "Mfumo wake ulionyesha kwamba meli za maharamia zinaweza kupangwa kwa ufanisi kama majeshi ya wanamaji ya kitaifa.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Mfumo wake ulionyesha kwamba meli za maharamia zinaweza kupangwa kwa ufanisi kama majeshi ya wanamaji ya kitaifa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-296",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "text": "Katika nyakati za kisasa, Zheng Yi Sao amekuwa ishara ya kitamaduni.",
+      "text_markdown": "Katika nyakati za kisasa, Zheng Yi Sao amekuwa ishara ya kitamaduni.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Katika nyakati za kisasa, Zheng Yi Sao amekuwa ishara ya kitamaduni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-297",
+      "paragraph_id": "p85",
+      "sentence_index": 1,
+      "text": "Ameonekana katika riwaya, filamu, na michezo ya video kote ulimwenguni.",
+      "text_markdown": "Ameonekana katika riwaya, filamu, na michezo ya video kote ulimwenguni.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Ameonekana katika riwaya, filamu, na michezo ya video kote ulimwenguni.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-298",
+      "paragraph_id": "p85",
+      "sentence_index": 2,
+      "text": "Hadithi yake imetafsiriwa katika lugha nyingi.",
+      "text_markdown": "Hadithi yake imetafsiriwa katika lugha nyingi.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Hadithi yake imetafsiriwa katika lugha nyingi.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-299",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "text": "Hata hivyo, mengi kuhusu maisha yake bado hayajulikani.",
+      "text_markdown": "Hata hivyo, mengi kuhusu maisha yake bado hayajulikani.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Hata hivyo, mengi kuhusu maisha yake bado hayajulikani.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-300",
+      "paragraph_id": "p86",
+      "sentence_index": 1,
+      "text": "Hatujui jina lake la kuzaliwa kwa uhakika.",
+      "text_markdown": "Hatujui jina lake la kuzaliwa kwa uhakika.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Hatujui jina lake la kuzaliwa kwa uhakika.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-301",
+      "paragraph_id": "p86",
+      "sentence_index": 2,
+      "text": "Hatuna picha hata moja iliyothibitishwa ya uso wake.",
+      "text_markdown": "Hatuna picha hata moja iliyothibitishwa ya uso wake.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Hatuna picha hata moja iliyothibitishwa ya uso wake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-302",
+      "paragraph_id": "p86",
+      "sentence_index": 3,
+      "text": "Mengi tunayoyajua yanatokana na rekodi za serikali zilizoandikwa na maadui zake.",
+      "text_markdown": "Mengi tunayoyajua yanatokana na rekodi za serikali zilizoandikwa na maadui zake.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Mengi tunayoyajua yanatokana na rekodi za serikali zilizoandikwa na maadui zake.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-303",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "text": "Mahakama ya Qing ilikuwa na kila sababu ya kupunguza umuhimu wa mafanikio yake.",
+      "text_markdown": "Mahakama ya Qing ilikuwa na kila sababu ya kupunguza umuhimu wa mafanikio yake.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Mahakama ya Qing ilikuwa na kila sababu ya kupunguza umuhimu wa mafanikio yake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-304",
+      "paragraph_id": "p87",
+      "sentence_index": 1,
+      "text": "Rekodi nyingi rasmi hupunguza umuhimu wa jukumu lake au kuhusisha mafanikio yake na Zhang Bao.",
+      "text_markdown": "Rekodi nyingi rasmi hupunguza umuhimu wa jukumu lake au kuhusisha mafanikio yake na Zhang Bao.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Rekodi nyingi rasmi hupunguza umuhimu wa jukumu lake au kuhusisha mafanikio yake na Zhang Bao.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-305",
+      "paragraph_id": "p87",
+      "sentence_index": 2,
+      "text": "Wanahistoria wanapaswa kusoma vyanzo hivi kwa makini, wakijua viliandikwa kwa nia za kisiasa.",
+      "text_markdown": "Wanahistoria wanapaswa kusoma vyanzo hivi kwa makini, wakijua viliandikwa kwa nia za kisiasa.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Wanahistoria wanapaswa kusoma vyanzo hivi kwa makini, wakijua viliandikwa kwa nia za kisiasa.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-306",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "text": "Kile ambacho rekodi haziwezi kuficha ni ukubwa wa mafanikio yake.",
+      "text_markdown": "Kile ambacho rekodi haziwezi kuficha ni ukubwa wa mafanikio yake.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Kile ambacho rekodi haziwezi kuficha ni ukubwa wa mafanikio yake.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-307",
+      "paragraph_id": "p88",
+      "sentence_index": 1,
+      "text": "Aliunda meli kubwa zaidi ya maharamia katika historia iliyorekodiwa.",
+      "text_markdown": "Aliunda meli kubwa zaidi ya maharamia katika historia iliyorekodiwa.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Aliunda meli kubwa zaidi ya maharamia katika historia iliyorekodiwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-308",
+      "paragraph_id": "p88",
+      "sentence_index": 2,
+      "text": "Aliwashinda vikosi vilivyoungana vya Milki ya Qing na jeshi la wanamaji la Ureno.",
+      "text_markdown": "Aliwashinda vikosi vilivyoungana vya Milki ya Qing na jeshi la wanamaji la Ureno.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Aliwashinda vikosi vilivyoungana vya Milki ya Qing na jeshi la wanamaji la Ureno.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-309",
+      "paragraph_id": "p88",
+      "sentence_index": 3,
+      "text": "Alistaafu akiwa tajiri, huru, na bila kushindwa.",
+      "text_markdown": "Alistaafu akiwa tajiri, huru, na bila kushindwa.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Alistaafu akiwa tajiri, huru, na bila kushindwa.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-310",
+      "paragraph_id": "p88",
+      "sentence_index": 4,
+      "text": "Katika historia ndefu ya bahari, hakuna mwingine aliyefanya hivyo.",
+      "text_markdown": "Katika historia ndefu ya bahari, hakuna mwingine aliyefanya hivyo.",
+      "title": "Urithi",
+      "tts": {
+        "text": "Katika historia ndefu ya bahari, hakuna mwingine aliyefanya hivyo.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

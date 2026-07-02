@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "nl",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Drie vragen",
+      "text_markdown": "Drie vragen",
+      "title": "Drie vragen"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Een koning dacht dat als hij altijd zou weten welke tijd voor elke zaak de belangrijkste is, en zou weten welke mensen het meest nodig zijn, en vooral altijd zou weten welke van alle zaken de belangrijkste is, — hij nooit ergens in zou falen.",
+      "text_markdown": "Een koning dacht dat als hij altijd zou weten welke tijd voor elke zaak de belangrijkste is, en zou weten welke mensen het meest nodig zijn, en vooral altijd zou weten welke van alle zaken de belangrijkste is, — hij nooit ergens in zou falen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Een koning dacht dat als hij altijd zou weten welke tijd voor elke zaak de belangrijkste is, en zou weten welke mensen het meest nodig zijn, en vooral altijd zou weten welke van alle zaken de belangrijkste is, — hij nooit ergens in zou falen.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "En toen hij dit had bedacht, kondigde de koning in zijn koninkrijk aan dat hij een grote beloning zou geven aan degene die hem zou leren hoe hij de juiste tijd voor elke zaak kon kennen, hoe hij kon weten welke mensen het meest nodig zijn, en hoe hij zich niet zou vergissen in welke zaak van allemaal de belangrijkste is.",
+      "text_markdown": "En toen hij dit had bedacht, kondigde de koning in zijn koninkrijk aan dat hij een grote beloning zou geven aan degene die hem zou leren hoe hij de juiste tijd voor elke zaak kon kennen, hoe hij kon weten welke mensen het meest nodig zijn, en hoe hij zich niet zou vergissen in welke zaak van allemaal de belangrijkste is.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En toen hij dit had bedacht, kondigde de koning in zijn koninkrijk aan dat hij een grote beloning zou geven aan degene die hem zou leren hoe hij de juiste tijd voor elke zaak kon kennen, hoe hij kon weten welke mensen het meest nodig zijn, en hoe hij zich niet zou vergissen in welke zaak van allemaal de belangrijkste is.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Geleerde mensen kwamen naar de koning toe en beantwoordden zijn vragen op verschillende manieren.",
+      "text_markdown": "Geleerde mensen kwamen naar de koning toe en beantwoordden zijn vragen op verschillende manieren.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Geleerde mensen kwamen naar de koning toe en beantwoordden zijn vragen op verschillende manieren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Op de eerste vraag zeiden sommigen dat om de juiste tijd voor elke zaak te kennen, men vooraf een schema van dagen, maanden en jaren moest opstellen en daar strikt aan moest houden.",
+      "text_markdown": "Op de eerste vraag zeiden sommigen dat om de juiste tijd voor elke zaak te kennen, men vooraf een schema van dagen, maanden en jaren moest opstellen en daar strikt aan moest houden.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Op de eerste vraag zeiden sommigen dat om de juiste tijd voor elke zaak te kennen, men vooraf een schema van dagen, maanden en jaren moest opstellen en daar strikt aan moest houden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Alleen dan, zeiden zij, zou elke zaak op zijn tijd worden gedaan.",
+      "text_markdown": "Alleen dan, zeiden zij, zou elke zaak op zijn tijd worden gedaan.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Alleen dan, zeiden zij, zou elke zaak op zijn tijd worden gedaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Anderen zeiden dat men vooraf niet kon beslissen welke tijd voor welke zaak de juiste zou zijn, maar dat men, zonder zich te laten afleiden door ijdele vermakelijkheden, altijd aandachtig moest zijn voor alles wat er gebeurde, en dan altijd moest doen wat het meest nodig was.",
+      "text_markdown": "Anderen zeiden dat men vooraf niet kon beslissen welke tijd voor welke zaak de juiste zou zijn, maar dat men, zonder zich te laten afleiden door ijdele vermakelijkheden, altijd aandachtig moest zijn voor alles wat er gebeurde, en dan altijd moest doen wat het meest nodig was.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Anderen zeiden dat men vooraf niet kon beslissen welke tijd voor welke zaak de juiste zou zijn, maar dat men, zonder zich te laten afleiden door ijdele vermakelijkheden, altijd aandachtig moest zijn voor alles wat er gebeurde, en dan altijd moest doen wat het meest nodig was.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Een derde groep zei dat hoe aandachtig de koning ook zou zijn voor alles wat er gebeurde, één persoon niet altijd juist kon beslissen over elke zaak wanneer de tijd ervoor was, maar dat men de raad van wijzen moest hebben en volgens hun raad de tijd voor elke zaak moest bepalen.",
+      "text_markdown": "Een derde groep zei dat hoe aandachtig de koning ook zou zijn voor alles wat er gebeurde, één persoon niet altijd juist kon beslissen over elke zaak wanneer de tijd ervoor was, maar dat men de raad van wijzen moest hebben en volgens hun raad de tijd voor elke zaak moest bepalen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Een derde groep zei dat hoe aandachtig de koning ook zou zijn voor alles wat er gebeurde, één persoon niet altijd juist kon beslissen over elke zaak wanneer de tijd ervoor was, maar dat men de raad van wijzen moest hebben en volgens hun raad de tijd voor elke zaak moest bepalen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Een vierde groep zei dat er zaken waren die onmiddellijk besloten moesten worden, zonder te wachten op overleg, en dat om te weten wanneer precies die voorkwamen, men moest weten wat er in de toekomst zou gebeuren.",
+      "text_markdown": "Een vierde groep zei dat er zaken waren die onmiddellijk besloten moesten worden, zonder te wachten op overleg, en dat om te weten wanneer precies die voorkwamen, men moest weten wat er in de toekomst zou gebeuren.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Een vierde groep zei dat er zaken waren die onmiddellijk besloten moesten worden, zonder te wachten op overleg, en dat om te weten wanneer precies die voorkwamen, men moest weten wat er in de toekomst zou gebeuren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "En dit konden alleen tovenaars weten.",
+      "text_markdown": "En dit konden alleen tovenaars weten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En dit konden alleen tovenaars weten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "En daarom moest men, om de juiste tijd voor elke zaak te kennen, tovenaars raadplegen.",
+      "text_markdown": "En daarom moest men, om de juiste tijd voor elke zaak te kennen, tovenaars raadplegen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En daarom moest men, om de juiste tijd voor elke zaak te kennen, tovenaars raadplegen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Op de tweede vraag werd ook verschillend geantwoord.",
+      "text_markdown": "Op de tweede vraag werd ook verschillend geantwoord.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Op de tweede vraag werd ook verschillend geantwoord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Sommigen zeiden dat de mensen die de koning het meest nodig had de bestuurders waren, anderen zeiden priesters, een derde groep — artsen, een vierde — soldaten.",
+      "text_markdown": "Sommigen zeiden dat de mensen die de koning het meest nodig had de bestuurders waren, anderen zeiden priesters, een derde groep — artsen, een vierde — soldaten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Sommigen zeiden dat de mensen die de koning het meest nodig had de bestuurders waren, anderen zeiden priesters, een derde groep — artsen, een vierde — soldaten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Op de derde vraag — welke zaak de belangrijkste is? — zeiden sommigen dat het belangrijkste ter wereld de wetenschap was; anderen zeiden — krijgskunde, een derde groep zei — vroomheid.",
+      "text_markdown": "Op de derde vraag — welke zaak de belangrijkste is? — zeiden sommigen dat het belangrijkste ter wereld de wetenschap was; anderen zeiden — krijgskunde, een derde groep zei — vroomheid.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Op de derde vraag — welke zaak de belangrijkste is? — zeiden sommigen dat het belangrijkste ter wereld de wetenschap was; anderen zeiden — krijgskunde, een derde groep zei — vroomheid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Alle antwoorden waren verschillend, en daarom was de koning het met geen van allen eens en gaf hij niemand een beloning.",
+      "text_markdown": "Alle antwoorden waren verschillend, en daarom was de koning het met geen van allen eens en gaf hij niemand een beloning.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Alle antwoorden waren verschillend, en daarom was de koning het met geen van allen eens en gaf hij niemand een beloning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Om echter betere antwoorden op zijn vragen te krijgen, besloot hij een kluizenaar te raadplegen, van wie het gerucht ging dat hij een wijs man was.",
+      "text_markdown": "Om echter betere antwoorden op zijn vragen te krijgen, besloot hij een kluizenaar te raadplegen, van wie het gerucht ging dat hij een wijs man was.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Om echter betere antwoorden op zijn vragen te krijgen, besloot hij een kluizenaar te raadplegen, van wie het gerucht ging dat hij een wijs man was.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "De kluizenaar woonde in het bos en kwam daar nooit uit.",
+      "text_markdown": "De kluizenaar woonde in het bos en kwam daar nooit uit.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De kluizenaar woonde in het bos en kwam daar nooit uit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Hij ontving alleen eenvoudige mensen, en daarom kleedde de koning zich eenvoudig aan en, voordat hij bij de woning van de kluizenaar aankwam, steeg hij van zijn paard af en ging alleen naar hem toe.",
+      "text_markdown": "Hij ontving alleen eenvoudige mensen, en daarom kleedde de koning zich eenvoudig aan en, voordat hij bij de woning van de kluizenaar aankwam, steeg hij van zijn paard af en ging alleen naar hem toe.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Hij ontving alleen eenvoudige mensen, en daarom kleedde de koning zich eenvoudig aan en, voordat hij bij de woning van de kluizenaar aankwam, steeg hij van zijn paard af en ging alleen naar hem toe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Toen de koning bij hem kwam, was de kluizenaar voor zijn hutje bedden aan het spitten.",
+      "text_markdown": "Toen de koning bij hem kwam, was de kluizenaar voor zijn hutje bedden aan het spitten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Toen de koning bij hem kwam, was de kluizenaar voor zijn hutje bedden aan het spitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Toen hij de koning zag, knikte de kluizenaar naar hem en ging door met spitten.",
+      "text_markdown": "Toen hij de koning zag, knikte de kluizenaar naar hem en ging door met spitten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Toen hij de koning zag, knikte de kluizenaar naar hem en ging door met spitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "De kluizenaar was mager en zwak en hijgde zwaar terwijl hij de schep in de aarde stak en kleine kluiten aarde omwoelde.",
+      "text_markdown": "De kluizenaar was mager en zwak en hijgde zwaar terwijl hij de schep in de aarde stak en kleine kluiten aarde omwoelde.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De kluizenaar was mager en zwak en hijgde zwaar terwijl hij de schep in de aarde stak en kleine kluiten aarde omwoelde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "De koning kwam naar hem toe en zei:",
+      "text_markdown": "De koning kwam naar hem toe en zei:",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning kwam naar hem toe en zei:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Ik ben naar je gekomen, wijze kluizenaar, om je te vragen mij drie vragen te beantwoorden: welke tijd moet men onthouden en niet voorbij laten gaan, zodat men er later geen spijt van heeft?",
+      "text_markdown": "— Ik ben naar je gekomen, wijze kluizenaar, om je te vragen mij drie vragen te beantwoorden: welke tijd moet men onthouden en niet voorbij laten gaan, zodat men er later geen spijt van heeft?",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Ik ben naar je gekomen, wijze kluizenaar, om je te vragen mij drie vragen te beantwoorden: welke tijd moet men onthouden en niet voorbij laten gaan, zodat men er later geen spijt van heeft?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Welke mensen zijn het meest nodig?",
+      "text_markdown": "Welke mensen zijn het meest nodig?",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Welke mensen zijn het meest nodig?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "En welke zaak is de belangrijkste?",
+      "text_markdown": "En welke zaak is de belangrijkste?",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En welke zaak is de belangrijkste?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "De kluizenaar luisterde naar de koning, maar antwoordde niets, spuwde in zijn hand en begon weer te spitten.",
+      "text_markdown": "De kluizenaar luisterde naar de koning, maar antwoordde niets, spuwde in zijn hand en begon weer te spitten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De kluizenaar luisterde naar de koning, maar antwoordde niets, spuwde in zijn hand en begon weer te spitten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Je bent moe, — zei de koning.",
+      "text_markdown": "— Je bent moe, — zei de koning.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Je bent moe, — zei de koning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Laat mij je helpen.",
+      "text_markdown": "— Laat mij je helpen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Laat mij je helpen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Dank je, — zei de kluizenaar en gaf de koning de schep en ging op de grond zitten.",
+      "text_markdown": "— Dank je, — zei de kluizenaar en gaf de koning de schep en ging op de grond zitten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Dank je, — zei de kluizenaar en gaf de koning de schep en ging op de grond zitten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Nadat hij twee bedden had gespit, stopte de koning en herhaalde zijn vragen.",
+      "text_markdown": "Nadat hij twee bedden had gespit, stopte de koning en herhaalde zijn vragen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Nadat hij twee bedden had gespit, stopte de koning en herhaalde zijn vragen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "De kluizenaar antwoordde weer niet, maar stond op en stak zijn hand uit naar de schep:",
+      "text_markdown": "De kluizenaar antwoordde weer niet, maar stond op en stak zijn hand uit naar de schep:",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De kluizenaar antwoordde weer niet, maar stond op en stak zijn hand uit naar de schep:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Rust nu uit, laat mij, — zei hij.",
+      "text_markdown": "— Rust nu uit, laat mij, — zei hij.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Rust nu uit, laat mij, — zei hij.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Maar de koning gaf de schep niet af en ging door met spitten.",
+      "text_markdown": "Maar de koning gaf de schep niet af en ging door met spitten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Maar de koning gaf de schep niet af en ging door met spitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Er ging een uur voorbij, er ging nog een uur voorbij.",
+      "text_markdown": "Er ging een uur voorbij, er ging nog een uur voorbij.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Er ging een uur voorbij, er ging nog een uur voorbij.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "De zon ging achter de bomen onder.",
+      "text_markdown": "De zon ging achter de bomen onder.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De zon ging achter de bomen onder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "De koning stak de schep in de grond en zei:",
+      "text_markdown": "De koning stak de schep in de grond en zei:",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning stak de schep in de grond en zei:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Ik ben naar je gekomen, wijze man, voor een antwoord op mijn vragen.",
+      "text_markdown": "— Ik ben naar je gekomen, wijze man, voor een antwoord op mijn vragen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Ik ben naar je gekomen, wijze man, voor een antwoord op mijn vragen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Als je mij niet kunt antwoorden, zeg dat dan, en ik ga naar huis.",
+      "text_markdown": "Als je mij niet kunt antwoorden, zeg dat dan, en ik ga naar huis.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Als je mij niet kunt antwoorden, zeg dat dan, en ik ga naar huis.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— Daar komt iemand aanrennen, — zei de kluizenaar.",
+      "text_markdown": "— Daar komt iemand aanrennen, — zei de kluizenaar.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Daar komt iemand aanrennen, — zei de kluizenaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Laten we kijken wie dat is.",
+      "text_markdown": "— Laten we kijken wie dat is.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Laten we kijken wie dat is.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "De koning draaide zich om en zag uit het bos een bebaarde man rennen.",
+      "text_markdown": "De koning draaide zich om en zag uit het bos een bebaarde man rennen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning draaide zich om en zag uit het bos een bebaarde man rennen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Deze man hield zijn handen tegen een wond op zijn buik gedrukt, en onder zijn handen stroomde bloed weg.",
+      "text_markdown": "Deze man hield zijn handen tegen een wond op zijn buik gedrukt, en onder zijn handen stroomde bloed weg.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Deze man hield zijn handen tegen een wond op zijn buik gedrukt, en onder zijn handen stroomde bloed weg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Toen hij de koning had bereikt, viel de man bewusteloos op de grond en lag daar, zacht kreunend.",
+      "text_markdown": "Toen hij de koning had bereikt, viel de man bewusteloos op de grond en lag daar, zacht kreunend.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Toen hij de koning had bereikt, viel de man bewusteloos op de grond en lag daar, zacht kreunend.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "De koning maakte samen met de kluizenaar de kleren van de man los en trok ze uit.",
+      "text_markdown": "De koning maakte samen met de kluizenaar de kleren van de man los en trok ze uit.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning maakte samen met de kluizenaar de kleren van de man los en trok ze uit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "In zijn buik zat een grote wond.",
+      "text_markdown": "In zijn buik zat een grote wond.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "In zijn buik zat een grote wond.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "De koning spoelde de wond zo goed als hij kon schoon en verbond haar met zijn zakdoek en de handdoek van de kluizenaar.",
+      "text_markdown": "De koning spoelde de wond zo goed als hij kon schoon en verbond haar met zijn zakdoek en de handdoek van de kluizenaar.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning spoelde de wond zo goed als hij kon schoon en verbond haar met zijn zakdoek en de handdoek van de kluizenaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Maar het bloed hield niet op.",
+      "text_markdown": "Maar het bloed hield niet op.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Maar het bloed hield niet op.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "De koning haalde het verband verschillende keren weg en spoelde en verbond de wond opnieuw.",
+      "text_markdown": "De koning haalde het verband verschillende keren weg en spoelde en verbond de wond opnieuw.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning haalde het verband verschillende keren weg en spoelde en verbond de wond opnieuw.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Toen het bloed eindelijk stopte, kwam de man bij bewustzijn en vroeg om water.",
+      "text_markdown": "Toen het bloed eindelijk stopte, kwam de man bij bewustzijn en vroeg om water.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Toen het bloed eindelijk stopte, kwam de man bij bewustzijn en vroeg om water.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "De koning bracht hem vers water en gaf hem te drinken.",
+      "text_markdown": "De koning bracht hem vers water en gaf hem te drinken.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning bracht hem vers water en gaf hem te drinken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Ondertussen was de zon helemaal ondergegaan en werd het koud.",
+      "text_markdown": "Ondertussen was de zon helemaal ondergegaan en werd het koud.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Ondertussen was de zon helemaal ondergegaan en werd het koud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "De koning droeg samen met de kluizenaar de gewonde naar de hut en legde hem op het bed.",
+      "text_markdown": "De koning droeg samen met de kluizenaar de gewonde naar de hut en legde hem op het bed.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning droeg samen met de kluizenaar de gewonde naar de hut en legde hem op het bed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "De gewonde sloot zijn ogen en werd stil.",
+      "text_markdown": "De gewonde sloot zijn ogen en werd stil.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De gewonde sloot zijn ogen en werd stil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "De koning was zo vermoeid van het lopen en werken dat hij daar meteen, op de drempel, ging liggen en in slaap viel — hij sliep zo vast dat hij de hele korte zomernacht doorsliep, en toen hij 's ochtends wakker werd, kon hij lange tijd niet begrijpen waar hij was en wie die vreemde bebaarde man was die op het bed lag en hem hardnekkig aankeek met glanzende ogen.",
+      "text_markdown": "De koning was zo vermoeid van het lopen en werken dat hij daar meteen, op de drempel, ging liggen en in slaap viel — hij sliep zo vast dat hij de hele korte zomernacht doorsliep, en toen hij 's ochtends wakker werd, kon hij lange tijd niet begrijpen waar hij was en wie die vreemde bebaarde man was die op het bed lag en hem hardnekkig aankeek met glanzende ogen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning was zo vermoeid van het lopen en werken dat hij daar meteen, op de drempel, ging liggen en in slaap viel — hij sliep zo vast dat hij de hele korte zomernacht doorsliep, en toen hij 's ochtends wakker werd, kon hij lange tijd niet begrijpen waar hij was en wie die vreemde bebaarde man was die op het bed lag en hem hardnekkig aankeek met glanzende ogen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Vergeef me, — zei de bebaarde man met zwakke stem toen hij zag dat de koning wakker was geworden en naar hem keek.",
+      "text_markdown": "— Vergeef me, — zei de bebaarde man met zwakke stem toen hij zag dat de koning wakker was geworden en naar hem keek.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Vergeef me, — zei de bebaarde man met zwakke stem toen hij zag dat de koning wakker was geworden en naar hem keek.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Ik ken je niet en heb je niets te vergeven, — zei de koning.",
+      "text_markdown": "— Ik ken je niet en heb je niets te vergeven, — zei de koning.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Ik ken je niet en heb je niets te vergeven, — zei de koning.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Jij kent mij niet, maar ik ken jou wel.",
+      "text_markdown": "— Jij kent mij niet, maar ik ken jou wel.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Jij kent mij niet, maar ik ken jou wel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Ik ben jouw vijand, diegene die heeft gezworen zich op je te wreken omdat je mijn broer hebt geëxecuteerd en mijn landgoed hebt afgepakt.",
+      "text_markdown": "Ik ben jouw vijand, diegene die heeft gezworen zich op je te wreken omdat je mijn broer hebt geëxecuteerd en mijn landgoed hebt afgepakt.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Ik ben jouw vijand, diegene die heeft gezworen zich op je te wreken omdat je mijn broer hebt geëxecuteerd en mijn landgoed hebt afgepakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Ik wist dat je alleen naar de kluizenaar was gegaan en besloot je op de terugweg te doden.",
+      "text_markdown": "Ik wist dat je alleen naar de kluizenaar was gegaan en besloot je op de terugweg te doden.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Ik wist dat je alleen naar de kluizenaar was gegaan en besloot je op de terugweg te doden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Maar er ging een hele dag voorbij en je kwam maar niet.",
+      "text_markdown": "Maar er ging een hele dag voorbij en je kwam maar niet.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Maar er ging een hele dag voorbij en je kwam maar niet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Toen kwam ik uit mijn hinderlaag om je te zoeken en stuitte op jouw lijfwachten.",
+      "text_markdown": "Toen kwam ik uit mijn hinderlaag om je te zoeken en stuitte op jouw lijfwachten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Toen kwam ik uit mijn hinderlaag om je te zoeken en stuitte op jouw lijfwachten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Ze herkenden me en verwondden me.",
+      "text_markdown": "Ze herkenden me en verwondden me.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Ze herkenden me en verwondden me.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Ik ben voor hen weggevlucht, maar als jij mijn wond niet had verbonden, zou ik gestorven zijn.",
+      "text_markdown": "Ik ben voor hen weggevlucht, maar als jij mijn wond niet had verbonden, zou ik gestorven zijn.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Ik ben voor hen weggevlucht, maar als jij mijn wond niet had verbonden, zou ik gestorven zijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Ik wilde jou doden, maar jij hebt mijn leven gered.",
+      "text_markdown": "Ik wilde jou doden, maar jij hebt mijn leven gered.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Ik wilde jou doden, maar jij hebt mijn leven gered.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Nu, als ik in leven blijf en jij dat wilt, zal ik je dienen als de meest trouwe slaaf, en hetzelfde zal ik mijn zonen bevelen te doen.",
+      "text_markdown": "Nu, als ik in leven blijf en jij dat wilt, zal ik je dienen als de meest trouwe slaaf, en hetzelfde zal ik mijn zonen bevelen te doen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Nu, als ik in leven blijf en jij dat wilt, zal ik je dienen als de meest trouwe slaaf, en hetzelfde zal ik mijn zonen bevelen te doen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Vergeef me.",
+      "text_markdown": "Vergeef me.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Vergeef me.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "De koning was zeer blij dat het hem zo gemakkelijk was gelukt vrede te sluiten met zijn vijand en een vriend te verwerven, en hij vergaf hem en beloofde hem zijn landgoed terug te geven en zijn artsen en dienaren te sturen om voor hem te zorgen.",
+      "text_markdown": "De koning was zeer blij dat het hem zo gemakkelijk was gelukt vrede te sluiten met zijn vijand en een vriend te verwerven, en hij vergaf hem en beloofde hem zijn landgoed terug te geven en zijn artsen en dienaren te sturen om voor hem te zorgen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning was zeer blij dat het hem zo gemakkelijk was gelukt vrede te sluiten met zijn vijand en een vriend te verwerven, en hij vergaf hem en beloofde hem zijn landgoed terug te geven en zijn artsen en dienaren te sturen om voor hem te zorgen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Na afscheid te hebben genomen van de gewonde, ging de koning naar buiten op de veranda en begon met zijn ogen naar de kluizenaar te zoeken.",
+      "text_markdown": "Na afscheid te hebben genomen van de gewonde, ging de koning naar buiten op de veranda en begon met zijn ogen naar de kluizenaar te zoeken.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Na afscheid te hebben genomen van de gewonde, ging de koning naar buiten op de veranda en begon met zijn ogen naar de kluizenaar te zoeken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Voordat hij wegging, wilde hij hem nog een keer om antwoord op zijn vragen vragen.",
+      "text_markdown": "Voordat hij wegging, wilde hij hem nog een keer om antwoord op zijn vragen vragen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Voordat hij wegging, wilde hij hem nog een keer om antwoord op zijn vragen vragen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "De kluizenaar was op de binnenplaats en, op zijn knieën staand, plantte hij zaadjes in de bedden die gisteren waren omgespit.",
+      "text_markdown": "De kluizenaar was op de binnenplaats en, op zijn knieën staand, plantte hij zaadjes in de bedden die gisteren waren omgespit.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De kluizenaar was op de binnenplaats en, op zijn knieën staand, plantte hij zaadjes in de bedden die gisteren waren omgespit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "De koning liep naar hem toe.",
+      "text_markdown": "De koning liep naar hem toe.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "De koning liep naar hem toe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Wijze man, voor de laatste keer vraag ik je: beantwoord mijn vragen.",
+      "text_markdown": "— Wijze man, voor de laatste keer vraag ik je: beantwoord mijn vragen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Wijze man, voor de laatste keer vraag ik je: beantwoord mijn vragen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Maar je hebt al antwoord gekregen, — zei de kluizenaar, op zijn dunne benen gehurkt zittend en van onderaf opkijkend naar de koning die voor hem stond.",
+      "text_markdown": "— Maar je hebt al antwoord gekregen, — zei de kluizenaar, op zijn dunne benen gehurkt zittend en van onderaf opkijkend naar de koning die voor hem stond.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Maar je hebt al antwoord gekregen, — zei de kluizenaar, op zijn dunne benen gehurkt zittend en van onderaf opkijkend naar de koning die voor hem stond.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Hoe heb ik antwoord gekregen? — vroeg de koning.",
+      "text_markdown": "— Hoe heb ik antwoord gekregen? — vroeg de koning.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Hoe heb ik antwoord gekregen? — vroeg de koning.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— Hoe dan? — zei de kluizenaar.",
+      "text_markdown": "— Hoe dan? — zei de kluizenaar.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Hoe dan? — zei de kluizenaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Als je gisteren geen medelijden met me had gehad en niet in mijn plaats deze bedden was gaan graven, maar terug was gegaan, dan zou die man je hebben gedood.",
+      "text_markdown": "— Als je gisteren geen medelijden met me had gehad en niet in mijn plaats deze bedden was gaan graven, maar terug was gegaan, dan zou die man je hebben gedood.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Als je gisteren geen medelijden met me had gehad en niet in mijn plaats deze bedden was gaan graven, maar terug was gegaan, dan zou die man je hebben gedood.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Daarom was de belangrijkste tijd die waarin jij de bedden groef.",
+      "text_markdown": "Daarom was de belangrijkste tijd die waarin jij de bedden groef.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "Daarom was de belangrijkste tijd die waarin jij de bedden groef.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "En de meest noodzakelijke persoon was ik.",
+      "text_markdown": "En de meest noodzakelijke persoon was ik.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En de meest noodzakelijke persoon was ik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "En de belangrijkste zaak was — mij goed te doen.",
+      "text_markdown": "En de belangrijkste zaak was — mij goed te doen.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En de belangrijkste zaak was — mij goed te doen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "En daarna, toen die man kwam aanrennen, was de belangrijkste tijd die waarin jij voor hem zorgde, want als je zijn wond niet had schoongemaakt, zou hij gestorven zijn zonder vrede met je te hebben gesloten.",
+      "text_markdown": "En daarna, toen die man kwam aanrennen, was de belangrijkste tijd die waarin jij voor hem zorgde, want als je zijn wond niet had schoongemaakt, zou hij gestorven zijn zonder vrede met je te hebben gesloten.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En daarna, toen die man kwam aanrennen, was de belangrijkste tijd die waarin jij voor hem zorgde, want als je zijn wond niet had schoongemaakt, zou hij gestorven zijn zonder vrede met je te hebben gesloten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "En daarom was hij de belangrijkste persoon, en het belangrijkste werk was wat jij voor hem deed.",
+      "text_markdown": "En daarom was hij de belangrijkste persoon, en het belangrijkste werk was wat jij voor hem deed.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "En daarom was hij de belangrijkste persoon, en het belangrijkste werk was wat jij voor hem deed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Onthoud dus, — zei de kluizenaar, — dat er maar één belangrijkste tijd is: nu, — en die is het belangrijkste omdat alleen daarin wij macht over onszelf hebben; en de belangrijkste persoon is degene met wie je nu te maken hebt, omdat niemand kan weten of hij nog ooit met een ander mens te maken zal hebben; en het belangrijkste werk is — hem goed te doen, omdat de mens alleen daarvoor in het leven is gezonden.",
+      "text_markdown": "— Onthoud dus, — zei de kluizenaar, — dat er maar één belangrijkste tijd is: nu, — en die is het belangrijkste omdat alleen daarin wij macht over onszelf hebben; en de belangrijkste persoon is degene met wie je nu te maken hebt, omdat niemand kan weten of hij nog ooit met een ander mens te maken zal hebben; en het belangrijkste werk is — hem goed te doen, omdat de mens alleen daarvoor in het leven is gezonden.",
+      "title": "Drie vragen",
+      "tts": {
+        "text": "— Onthoud dus, — zei de kluizenaar, — dat er maar één belangrijkste tijd is: nu, — en die is het belangrijkste omdat alleen daarin wij macht over onszelf hebben; en de belangrijkste persoon is degene met wie je nu te maken hebt, omdat niemand kan weten of hij nog ooit met een ander mens te maken zal hebben; en het belangrijkste werk is — hem goed te doen, omdat de mens alleen daarvoor in het leven is gezonden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

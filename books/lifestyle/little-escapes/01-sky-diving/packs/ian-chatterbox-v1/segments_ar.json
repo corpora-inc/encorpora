@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "الجاذب",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الجاذب",
+      "text_markdown": "الجاذب"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك لحظة، بعد مغادرتك الطائرة مباشرة، أتمنى لو أستطيع أن أهديها لك مجانًا.",
+      "text_markdown": "هناك لحظة، بعد مغادرتك الطائرة مباشرة، أتمنى لو أستطيع أن أهديها لك مجانًا.",
+      "tts": {
+        "text": "هناك لحظة، بعد مغادرتك الطائرة مباشرة، أتمنى لو أستطيع أن أهديها لك مجانًا.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يكفّ العالم عن كونه شيئًا تعيش فيه.",
+      "text_markdown": "يكفّ العالم عن كونه شيئًا تعيش فيه.",
+      "tts": {
+        "text": "يكفّ العالم عن كونه شيئًا تعيش فيه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ويصير شيئًا تسقط عبره.",
+      "text_markdown": "ويصير شيئًا تسقط عبره.",
+      "tts": {
+        "text": "ويصير شيئًا تسقط عبره.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وفي الثواني الأولى، لا يستطيع عقلك أن يلحق تمامًا بما فعله جسدك للتو.",
+      "text_markdown": "وفي الثواني الأولى، لا يستطيع عقلك أن يلحق تمامًا بما فعله جسدك للتو.",
+      "tts": {
+        "text": "وفي الثواني الأولى، لا يستطيع عقلك أن يلحق تمامًا بما فعله جسدك للتو.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يسألني الناس لماذا أقفز.",
+      "text_markdown": "يسألني الناس لماذا أقفز.",
+      "tts": {
+        "text": "يسألني الناس لماذا أقفز.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يتوقعون دائمًا أن أقول إنها نشوة الإثارة.",
+      "text_markdown": "يتوقعون دائمًا أن أقول إنها نشوة الإثارة.",
+      "tts": {
+        "text": "يتوقعون دائمًا أن أقول إنها نشوة الإثارة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ليست نشوة الإثارة.",
+      "text_markdown": "ليست نشوة الإثارة.",
+      "tts": {
+        "text": "ليست نشوة الإثارة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "نشوة الإثارة هي ما تشعر به في قفزاتك الخمس الأولى.",
+      "text_markdown": "نشوة الإثارة هي ما تشعر به في قفزاتك الخمس الأولى.",
+      "tts": {
+        "text": "نشوة الإثارة هي ما تشعر به في قفزاتك الخمس الأولى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "بعد ذلك، يتولى الأمر شيء أكثر هدوءًا.",
+      "text_markdown": "بعد ذلك، يتولى الأمر شيء أكثر هدوءًا.",
+      "tts": {
+        "text": "بعد ذلك، يتولى الأمر شيء أكثر هدوءًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ما أسعى خلفه هو الصفاء.",
+      "text_markdown": "ما أسعى خلفه هو الصفاء.",
+      "tts": {
+        "text": "ما أسعى خلفه هو الصفاء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لمدة ستين ثانية في السقوط الحر، لا يجد عقلك شيئًا آخر يفعله.",
+      "text_markdown": "لمدة ستين ثانية في السقوط الحر، لا يجد عقلك شيئًا آخر يفعله.",
+      "tts": {
+        "text": "لمدة ستين ثانية في السقوط الحر، لا يجد عقلك شيئًا آخر يفعله.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لا هاتف.",
+      "text_markdown": "لا هاتف.",
+      "tts": {
+        "text": "لا هاتف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لا فواتير.",
+      "text_markdown": "لا فواتير.",
+      "tts": {
+        "text": "لا فواتير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "لا قلق صغير على الغد.",
+      "text_markdown": "لا قلق صغير على الغد.",
+      "tts": {
+        "text": "لا قلق صغير على الغد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "فقط الريح، وأنفاسك، وانحناء الأرض البطيء تحتك.",
+      "text_markdown": "فقط الريح، وأنفاسك، وانحناء الأرض البطيء تحتك.",
+      "tts": {
+        "text": "فقط الريح، وأنفاسك، وانحناء الأرض البطيء تحتك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "معظم الحياة صاخبة.",
+      "text_markdown": "معظم الحياة صاخبة.",
+      "tts": {
+        "text": "معظم الحياة صاخبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "تلك الدقيقة ليست كذلك.",
+      "text_markdown": "تلك الدقيقة ليست كذلك.",
+      "tts": {
+        "text": "تلك الدقيقة ليست كذلك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القافزون بالمظلات ليسوا مجانين.",
+      "text_markdown": "القافزون بالمظلات ليسوا مجانين.",
+      "tts": {
+        "text": "القافزون بالمظلات ليسوا مجانين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "معظمنا أناس هادئون وجدوا طريقة ليشعروا بالهدوء أسرع.",
+      "text_markdown": "معظمنا أناس هادئون وجدوا طريقة ليشعروا بالهدوء أسرع.",
+      "tts": {
+        "text": "معظمنا أناس هادئون وجدوا طريقة ليشعروا بالهدوء أسرع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "نحن نقفز من الطائرات كما يتأمل غيرنا.",
+      "text_markdown": "نحن نقفز من الطائرات كما يتأمل غيرنا.",
+      "tts": {
+        "text": "نحن نقفز من الطائرات كما يتأمل غيرنا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "إنها تنقّي شيئًا في داخلنا.",
+      "text_markdown": "إنها تنقّي شيئًا في داخلنا.",
+      "tts": {
+        "text": "إنها تنقّي شيئًا في داخلنا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ثم في كل عطلة أسبوع، تنقّيه من جديد.",
+      "text_markdown": "ثم في كل عطلة أسبوع، تنقّيه من جديد.",
+      "tts": {
+        "text": "ثم في كل عطلة أسبوع، تنقّيه من جديد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أول مرة رأيت فيها مظلة تنفتح فوقي، بكيت في الحزام.",
+      "text_markdown": "أول مرة رأيت فيها مظلة تنفتح فوقي، بكيت في الحزام.",
+      "tts": {
+        "text": "أول مرة رأيت فيها مظلة تنفتح فوقي، بكيت في الحزام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لم أكن أتوقع ذلك.",
+      "text_markdown": "لم أكن أتوقع ذلك.",
+      "tts": {
+        "text": "لم أكن أتوقع ذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "رجل بالغ، معلق في السماء تحت قطعة قماش ناعمة، يبكي لسبب لا يستطيع شرحه.",
+      "text_markdown": "رجل بالغ، معلق في السماء تحت قطعة قماش ناعمة، يبكي لسبب لا يستطيع شرحه.",
+      "tts": {
+        "text": "رجل بالغ، معلق في السماء تحت قطعة قماش ناعمة، يبكي لسبب لا يستطيع شرحه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ضحك مدربي بلطف وربّت على كتفي.",
+      "text_markdown": "ضحك مدربي بلطف وربّت على كتفي.",
+      "tts": {
+        "text": "ضحك مدربي بلطف وربّت على كتفي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "كان قد رأى ذلك مرات كثيرة.",
+      "text_markdown": "كان قد رأى ذلك مرات كثيرة.",
+      "tts": {
+        "text": "كان قد رأى ذلك مرات كثيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تلك كانت اللحظة التي عرفت فيها أنني سأعود.",
+      "text_markdown": "تلك كانت اللحظة التي عرفت فيها أنني سأعود.",
+      "tts": {
+        "text": "تلك كانت اللحظة التي عرفت فيها أنني سأعود.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القفز بالمظلات ليس عن الشجاعة.",
+      "text_markdown": "القفز بالمظلات ليس عن الشجاعة.",
+      "tts": {
+        "text": "القفز بالمظلات ليس عن الشجاعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنه عن إيجاد المكان الوحيد الذي يهدأ فيه عقلك.",
+      "text_markdown": "إنه عن إيجاد المكان الوحيد الذي يهدأ فيه عقلك.",
+      "tts": {
+        "text": "إنه عن إيجاد المكان الوحيد الذي يهدأ فيه عقلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "بالنسبة لبعض الناس، ذلك المكان هو سجادة يوغا.",
+      "text_markdown": "بالنسبة لبعض الناس، ذلك المكان هو سجادة يوغا.",
+      "tts": {
+        "text": "بالنسبة لبعض الناس، ذلك المكان هو سجادة يوغا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لبعضهم، هو جري طويل على طريق فارغ.",
+      "text_markdown": "لبعضهم، هو جري طويل على طريق فارغ.",
+      "tts": {
+        "text": "لبعضهم، هو جري طويل على طريق فارغ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "لبعضهم، هو خيط صنارة، أو بيانو، أو مطبخ في السادسة صباحًا.",
+      "text_markdown": "لبعضهم، هو خيط صنارة، أو بيانو، أو مطبخ في السادسة صباحًا.",
+      "tts": {
+        "text": "لبعضهم، هو خيط صنارة، أو بيانو، أو مطبخ في السادسة صباحًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "بالنسبة لي، هو ثلاثة عشر ألف قدم فوق الأرض، لا شيء أفعله سوى أن أتنفس.",
+      "text_markdown": "بالنسبة لي، هو ثلاثة عشر ألف قدم فوق الأرض، لا شيء أفعله سوى أن أتنفس.",
+      "tts": {
+        "text": "بالنسبة لي، هو ثلاثة عشر ألف قدم فوق الأرض، لا شيء أفعله سوى أن أتنفس.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الانجذاب، حين تشعر به، يصعب وصفه لصديق على العشاء.",
+      "text_markdown": "الانجذاب، حين تشعر به، يصعب وصفه لصديق على العشاء.",
+      "tts": {
+        "text": "الانجذاب، حين تشعر به، يصعب وصفه لصديق على العشاء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ستحاول، وسيبتسمون بأدب، وستستسلم.",
+      "text_markdown": "ستحاول، وسيبتسمون بأدب، وستستسلم.",
+      "tts": {
+        "text": "ستحاول، وسيبتسمون بأدب، وستستسلم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لا بأس بذلك.",
+      "text_markdown": "لا بأس بذلك.",
+      "tts": {
+        "text": "لا بأس بذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لم تبدأ بالقفز كي تشرحه.",
+      "text_markdown": "لم تبدأ بالقفز كي تشرحه.",
+      "tts": {
+        "text": "لم تبدأ بالقفز كي تشرحه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "بدأت تقفز لأنه، أول مرة جربت، قال شيء في داخلك، آه، ها أنت.",
+      "text_markdown": "بدأت تقفز لأنه، أول مرة جربت، قال شيء في داخلك، آه، ها أنت.",
+      "tts": {
+        "text": "بدأت تقفز لأنه، أول مرة جربت، قال شيء في داخلك، آه، ها أنت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هل وقفت يومًا على حافة شيء مرتفع وشعرت أن جسدك يميل نحو الهواء المفتوح؟",
+      "text_markdown": "هل وقفت يومًا على حافة شيء مرتفع وشعرت أن جسدك يميل نحو الهواء المفتوح؟",
+      "tts": {
+        "text": "هل وقفت يومًا على حافة شيء مرتفع وشعرت أن جسدك يميل نحو الهواء المفتوح؟",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ميلًا طفيفًا فقط، للحظة واحدة.",
+      "text_markdown": "ميلًا طفيفًا فقط، للحظة واحدة.",
+      "tts": {
+        "text": "ميلًا طفيفًا فقط، للحظة واحدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إن كنت قد فعلت، فأنت تعرف ما أتحدث عنه.",
+      "text_markdown": "إن كنت قد فعلت، فأنت تعرف ما أتحدث عنه.",
+      "tts": {
+        "text": "إن كنت قد فعلت، فأنت تعرف ما أتحدث عنه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "القفز بالمظلات هو ما يحدث حين تكفّ عن التظاهر بأنك لا تميل.",
+      "text_markdown": "القفز بالمظلات هو ما يحدث حين تكفّ عن التظاهر بأنك لا تميل.",
+      "tts": {
+        "text": "القفز بالمظلات هو ما يحدث حين تكفّ عن التظاهر بأنك لا تميل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تخطو خارجًا، عن قصد، إلى المكان الذي ظل جسدك يسأل عنه بهدوء طوال السنوات.",
+      "text_markdown": "تخطو خارجًا، عن قصد، إلى المكان الذي ظل جسدك يسأل عنه بهدوء طوال السنوات.",
+      "tts": {
+        "text": "تخطو خارجًا، عن قصد، إلى المكان الذي ظل جسدك يسأل عنه بهدوء طوال السنوات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تتعلم بسرعة كبيرة أن الأرض لم تكن قط حيث الخوف.",
+      "text_markdown": "ثم تتعلم بسرعة كبيرة أن الأرض لم تكن قط حيث الخوف.",
+      "tts": {
+        "text": "ثم تتعلم بسرعة كبيرة أن الأرض لم تكن قط حيث الخوف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كان الخوف في الميل.",
+      "text_markdown": "كان الخوف في الميل.",
+      "tts": {
+        "text": "كان الخوف في الميل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "بمجرد أن تقفز، يذهب الخوف.",
+      "text_markdown": "بمجرد أن تقفز، يذهب الخوف.",
+      "tts": {
+        "text": "بمجرد أن تقفز، يذهب الخوف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ما يبقى شيء يكاد يكون كالبيت.",
+      "text_markdown": "ما يبقى شيء يكاد يكون كالبيت.",
+      "tts": {
+        "text": "ما يبقى شيء يكاد يكون كالبيت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يهدأ قلبك.",
+      "text_markdown": "يهدأ قلبك.",
+      "tts": {
+        "text": "يهدأ قلبك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تجد أنفاسك إيقاعًا كانت تبحث عنه.",
+      "text_markdown": "تجد أنفاسك إيقاعًا كانت تبحث عنه.",
+      "tts": {
+        "text": "تجد أنفاسك إيقاعًا كانت تبحث عنه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "يحملك الهواء.",
+      "text_markdown": "يحملك الهواء.",
+      "tts": {
+        "text": "يحملك الهواء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "وتشعر، ربما لأول مرة منذ زمن طويل، أنك بالضبط حيث أنت.",
+      "text_markdown": "وتشعر، ربما لأول مرة منذ زمن طويل، أنك بالضبط حيث أنت.",
+      "tts": {
+        "text": "وتشعر، ربما لأول مرة منذ زمن طويل، أنك بالضبط حيث أنت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا ما كنت سأقوله لك، لو سألتني في نزهة طويلة.",
+      "text_markdown": "هذا ما كنت سأقوله لك، لو سألتني في نزهة طويلة.",
+      "tts": {
+        "text": "هذا ما كنت سأقوله لك، لو سألتني في نزهة طويلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لماذا يستمر شخص هادئ ومعقول في القفز من طائرات سليمة تمامًا؟",
+      "text_markdown": "لماذا يستمر شخص هادئ ومعقول في القفز من طائرات سليمة تمامًا؟",
+      "tts": {
+        "text": "لماذا يستمر شخص هادئ ومعقول في القفز من طائرات سليمة تمامًا؟",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كنت سأقول لك إنه أهدأ شيء أفعله.",
+      "text_markdown": "كنت سأقول لك إنه أهدأ شيء أفعله.",
+      "tts": {
+        "text": "كنت سأقول لك إنه أهدأ شيء أفعله.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكنت سأعني ذلك.",
+      "text_markdown": "وكنت سأعني ذلك.",
+      "tts": {
+        "text": "وكنت سأعني ذلك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "المرة الأولى",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "المرة الأولى",
+      "text_markdown": "المرة الأولى"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دعني أضعك في الطائرة.",
+      "text_markdown": "دعني أضعك في الطائرة.",
+      "tts": {
+        "text": "دعني أضعك في الطائرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أنت جالس على مقعد معدني منخفض، مربوط بحزام إلى مدرب خلفك.",
+      "text_markdown": "أنت جالس على مقعد معدني منخفض، مربوط بحزام إلى مدرب خلفك.",
+      "tts": {
+        "text": "أنت جالس على مقعد معدني منخفض، مربوط بحزام إلى مدرب خلفك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تصعد الطائرة في دوائر بطيئة وكسولة.",
+      "text_markdown": "تصعد الطائرة في دوائر بطيئة وكسولة.",
+      "tts": {
+        "text": "تصعد الطائرة في دوائر بطيئة وكسولة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تصير النافذة المربعة الصغيرة بجانبك أكثر زرقة فأكثر زرقة.",
+      "text_markdown": "تصير النافذة المربعة الصغيرة بجانبك أكثر زرقة فأكثر زرقة.",
+      "tts": {
+        "text": "تصير النافذة المربعة الصغيرة بجانبك أكثر زرقة فأكثر زرقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تشعر بقلبك في حلقك، لكنك لست في حالة هلع.",
+      "text_markdown": "تشعر بقلبك في حلقك، لكنك لست في حالة هلع.",
+      "tts": {
+        "text": "تشعر بقلبك في حلقك، لكنك لست في حالة هلع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "أنت فقط مستيقظ جدًا جدًا.",
+      "text_markdown": "أنت فقط مستيقظ جدًا جدًا.",
+      "tts": {
+        "text": "أنت فقط مستيقظ جدًا جدًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ينحني المدرب قريبًا من أذنك.",
+      "text_markdown": "ينحني المدرب قريبًا من أذنك.",
+      "tts": {
+        "text": "ينحني المدرب قريبًا من أذنك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يخبرك بهدوء أن كل ما عليك فعله، سيخبرك متى تفعله.",
+      "text_markdown": "يخبرك بهدوء أن كل ما عليك فعله، سيخبرك متى تفعله.",
+      "tts": {
+        "text": "يخبرك بهدوء أن كل ما عليك فعله، سيخبرك متى تفعله.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تومئ برأسك.",
+      "text_markdown": "تومئ برأسك.",
+      "tts": {
+        "text": "تومئ برأسك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أومأت برأسك مرات كثيرة في الساعة الماضية حتى بدأت رقبتك تؤلمك.",
+      "text_markdown": "أومأت برأسك مرات كثيرة في الساعة الماضية حتى بدأت رقبتك تؤلمك.",
+      "tts": {
+        "text": "أومأت برأسك مرات كثيرة في الساعة الماضية حتى بدأت رقبتك تؤلمك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم ينفتح الباب.",
+      "text_markdown": "ثم ينفتح الباب.",
+      "tts": {
+        "text": "ثم ينفتح الباب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تأتي الريح كأنها جدار، صاخبة وباردة وحية، وفجأة تبدو الطائرة صغيرة جدًا.",
+      "text_markdown": "تأتي الريح كأنها جدار، صاخبة وباردة وحية، وفجأة تبدو الطائرة صغيرة جدًا.",
+      "tts": {
+        "text": "تأتي الريح كأنها جدار، صاخبة وباردة وحية، وفجأة تبدو الطائرة صغيرة جدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تنزلق نحو الحافة.",
+      "text_markdown": "تنزلق نحو الحافة.",
+      "tts": {
+        "text": "تنزلق نحو الحافة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تتدلى أصابع قدميك في العدم.",
+      "text_markdown": "تتدلى أصابع قدميك في العدم.",
+      "tts": {
+        "text": "تتدلى أصابع قدميك في العدم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تنظر إلى الأسفل، والأرض بعيدة جدًا حتى أنها لم تعد تبدو أرضًا.",
+      "text_markdown": "تنظر إلى الأسفل، والأرض بعيدة جدًا حتى أنها لم تعد تبدو أرضًا.",
+      "tts": {
+        "text": "تنظر إلى الأسفل، والأرض بعيدة جدًا حتى أنها لم تعد تبدو أرضًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تبدو لحافًا.",
+      "text_markdown": "تبدو لحافًا.",
+      "tts": {
+        "text": "تبدو لحافًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "طرق رفيعة كالخيط.",
+      "text_markdown": "طرق رفيعة كالخيط.",
+      "tts": {
+        "text": "طرق رفيعة كالخيط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "نهر بلون فضة باهتة.",
+      "text_markdown": "نهر بلون فضة باهتة.",
+      "tts": {
+        "text": "نهر بلون فضة باهتة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "حقول صغيرة خضراء وبنية مرقّعة معًا بسياج نباتي.",
+      "text_markdown": "حقول صغيرة خضراء وبنية مرقّعة معًا بسياج نباتي.",
+      "tts": {
+        "text": "حقول صغيرة خضراء وبنية مرقّعة معًا بسياج نباتي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعدّ مدربك.",
+      "text_markdown": "يعدّ مدربك.",
+      "tts": {
+        "text": "يعدّ مدربك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يقول واحد.",
+      "text_markdown": "يقول واحد.",
+      "tts": {
+        "text": "يقول واحد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يقول اثنان.",
+      "text_markdown": "يقول اثنان.",
+      "tts": {
+        "text": "يقول اثنان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عند الثلاثة، الطائرة قد ذهبت.",
+      "text_markdown": "عند الثلاثة، الطائرة قد ذهبت.",
+      "tts": {
+        "text": "عند الثلاثة، الطائرة قد ذهبت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الثواني الثلاث الأولى هي الأصعب.",
+      "text_markdown": "الثواني الثلاث الأولى هي الأصعب.",
+      "tts": {
+        "text": "الثواني الثلاث الأولى هي الأصعب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يصدق جسدك أنه يسقط، لأنه بالفعل يسقط، وجسدك لم يخبره أحد قط أن هذا شيء جيد.",
+      "text_markdown": "يصدق جسدك أنه يسقط، لأنه بالفعل يسقط، وجسدك لم يخبره أحد قط أن هذا شيء جيد.",
+      "tts": {
+        "text": "يصدق جسدك أنه يسقط، لأنه بالفعل يسقط، وجسدك لم يخبره أحد قط أن هذا شيء جيد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تصدر صوتًا.",
+      "text_markdown": "تصدر صوتًا.",
+      "tts": {
+        "text": "تصدر صوتًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الجميع يصدر صوتًا.",
+      "text_markdown": "الجميع يصدر صوتًا.",
+      "tts": {
+        "text": "الجميع يصدر صوتًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "لا داعي للحرج من ذلك الصوت.",
+      "text_markdown": "لا داعي للحرج من ذلك الصوت.",
+      "tts": {
+        "text": "لا داعي للحرج من ذلك الصوت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم يحدث شيء استثنائي.",
+      "text_markdown": "ثم يحدث شيء استثنائي.",
+      "tts": {
+        "text": "ثم يحدث شيء استثنائي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يتوقف السقوط عن الإحساس كسقوط.",
+      "text_markdown": "يتوقف السقوط عن الإحساس كسقوط.",
+      "tts": {
+        "text": "يتوقف السقوط عن الإحساس كسقوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تأتي الريح لتلتقيك وتحملك، كما يحملك الماء حين تطفو على ظهرك.",
+      "text_markdown": "تأتي الريح لتلتقيك وتحملك، كما يحملك الماء حين تطفو على ظهرك.",
+      "tts": {
+        "text": "تأتي الريح لتلتقيك وتحملك، كما يحملك الماء حين تطفو على ظهرك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تنفرج ذراعاك وساقاك دون أن تطلب منهما ذلك.",
+      "text_markdown": "تنفرج ذراعاك وساقاك دون أن تطلب منهما ذلك.",
+      "tts": {
+        "text": "تنفرج ذراعاك وساقاك دون أن تطلب منهما ذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يبدو وجهك كأنه يُشدّ في اتجاهات كثيرة في وقت واحد.",
+      "text_markdown": "يبدو وجهك كأنه يُشدّ في اتجاهات كثيرة في وقت واحد.",
+      "tts": {
+        "text": "يبدو وجهك كأنه يُشدّ في اتجاهات كثيرة في وقت واحد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "لا تستطيع أن تجزم إن كنت تبتسم أم تصرخ.",
+      "text_markdown": "لا تستطيع أن تجزم إن كنت تبتسم أم تصرخ.",
+      "tts": {
+        "text": "لا تستطيع أن تجزم إن كنت تبتسم أم تصرخ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "لا يهم ذلك.",
+      "text_markdown": "لا يهم ذلك.",
+      "tts": {
+        "text": "لا يهم ذلك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تنظر حولك.",
+      "text_markdown": "تنظر حولك.",
+      "tts": {
+        "text": "تنظر حولك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الأرض ما زالت بعيدة جدًا تحتك، لكنها أقرب الآن، وتستطيع أن ترى الألوان أوضح.",
+      "text_markdown": "الأرض ما زالت بعيدة جدًا تحتك، لكنها أقرب الآن، وتستطيع أن ترى الألوان أوضح.",
+      "tts": {
+        "text": "الأرض ما زالت بعيدة جدًا تحتك، لكنها أقرب الآن، وتستطيع أن ترى الألوان أوضح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "سيارات على طريق سريع، بطيئة كالنمل.",
+      "text_markdown": "سيارات على طريق سريع، بطيئة كالنمل.",
+      "tts": {
+        "text": "سيارات على طريق سريع، بطيئة كالنمل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "بحيرة، ساكنة تمامًا.",
+      "text_markdown": "بحيرة، ساكنة تمامًا.",
+      "tts": {
+        "text": "بحيرة، ساكنة تمامًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ظل سحابة ينجرف فوق غابة.",
+      "text_markdown": "ظل سحابة ينجرف فوق غابة.",
+      "tts": {
+        "text": "ظل سحابة ينجرف فوق غابة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أنت تطير.",
+      "text_markdown": "أنت تطير.",
+      "tts": {
+        "text": "أنت تطير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ليس داخل طائرة.",
+      "text_markdown": "ليس داخل طائرة.",
+      "tts": {
+        "text": "ليس داخل طائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أنت، جسدك، تطير.",
+      "text_markdown": "أنت، جسدك، تطير.",
+      "tts": {
+        "text": "أنت، جسدك، تطير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يربّت مدربك على كتفك.",
+      "text_markdown": "يربّت مدربك على كتفك.",
+      "tts": {
+        "text": "يربّت مدربك على كتفك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تسحب الحبل.",
+      "text_markdown": "تسحب الحبل.",
+      "tts": {
+        "text": "تسحب الحبل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هناك شدّة لطيفة، كأن أحدًا يمسك ظهر قميصك بلطف.",
+      "text_markdown": "هناك شدّة لطيفة، كأن أحدًا يمسك ظهر قميصك بلطف.",
+      "tts": {
+        "text": "هناك شدّة لطيفة، كأن أحدًا يمسك ظهر قميصك بلطف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ثم شدّة ثانية، أقوى، ترفعك إلى وضع منتصب.",
+      "text_markdown": "ثم شدّة ثانية، أقوى، ترفعك إلى وضع منتصب.",
+      "tts": {
+        "text": "ثم شدّة ثانية، أقوى، ترفعك إلى وضع منتصب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يهدأ العالم.",
+      "text_markdown": "يهدأ العالم.",
+      "tts": {
+        "text": "يهدأ العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ذهبت الريح.",
+      "text_markdown": "ذهبت الريح.",
+      "tts": {
+        "text": "ذهبت الريح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ذهب الزئير.",
+      "text_markdown": "ذهب الزئير.",
+      "tts": {
+        "text": "ذهب الزئير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ذهب السقوط.",
+      "text_markdown": "ذهب السقوط.",
+      "tts": {
+        "text": "ذهب السقوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أنت معلق الآن، في حزام، تحت مستطيل واسع من القماش.",
+      "text_markdown": "أنت معلق الآن، في حزام، تحت مستطيل واسع من القماش.",
+      "tts": {
+        "text": "أنت معلق الآن، في حزام، تحت مستطيل واسع من القماش.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "السماء فجأة ساكنة جدًا جدًا.",
+      "text_markdown": "السماء فجأة ساكنة جدًا جدًا.",
+      "tts": {
+        "text": "السماء فجأة ساكنة جدًا جدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تستطيع أن تسمع الطائر تحتك.",
+      "text_markdown": "تستطيع أن تسمع الطائر تحتك.",
+      "tts": {
+        "text": "تستطيع أن تسمع الطائر تحتك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "تستطيع أن تسمع نفسك تتنفس.",
+      "text_markdown": "تستطيع أن تسمع نفسك تتنفس.",
+      "tts": {
+        "text": "تستطيع أن تسمع نفسك تتنفس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "يضحك مدربك في أذنك ويسألك كيف حالك.",
+      "text_markdown": "يضحك مدربك في أذنك ويسألك كيف حالك.",
+      "tts": {
+        "text": "يضحك مدربك في أذنك ويسألك كيف حالك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "لا تستطيع الإجابة للحظة، لأنك تبكي، أو تضحك، أو الاثنين معًا.",
+      "text_markdown": "لا تستطيع الإجابة للحظة، لأنك تبكي، أو تضحك، أو الاثنين معًا.",
+      "tts": {
+        "text": "لا تستطيع الإجابة للحظة، لأنك تبكي، أو تضحك، أو الاثنين معًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستغرق رحلة قبة المظلة نحو خمس دقائق.",
+      "text_markdown": "تستغرق رحلة قبة المظلة نحو خمس دقائق.",
+      "tts": {
+        "text": "تستغرق رحلة قبة المظلة نحو خمس دقائق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنها خمس من أكثر الدقائق سلامًا في حياتك.",
+      "text_markdown": "إنها خمس من أكثر الدقائق سلامًا في حياتك.",
+      "tts": {
+        "text": "إنها خمس من أكثر الدقائق سلامًا في حياتك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تلمس قدماك الأرض، تخطو ثلاث خطوات جري قصيرة وتتوقف.",
+      "text_markdown": "حين تلمس قدماك الأرض، تخطو ثلاث خطوات جري قصيرة وتتوقف.",
+      "tts": {
+        "text": "حين تلمس قدماك الأرض، تخطو ثلاث خطوات جري قصيرة وتتوقف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "العشب حقيقي مرة أخرى.",
+      "text_markdown": "العشب حقيقي مرة أخرى.",
+      "tts": {
+        "text": "العشب حقيقي مرة أخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "العالم صلب مرة أخرى.",
+      "text_markdown": "العالم صلب مرة أخرى.",
+      "tts": {
+        "text": "العالم صلب مرة أخرى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تستدير وتنظر إلى السماء.",
+      "text_markdown": "تستدير وتنظر إلى السماء.",
+      "tts": {
+        "text": "تستدير وتنظر إلى السماء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وتفهم، لأول مرة، ما كان صديقك يحاول أن يخبرك به طوال هذه السنين.",
+      "text_markdown": "وتفهم، لأول مرة، ما كان صديقك يحاول أن يخبرك به طوال هذه السنين.",
+      "tts": {
+        "text": "وتفهم، لأول مرة، ما كان صديقك يحاول أن يخبرك به طوال هذه السنين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "البداية",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "البداية",
+      "text_markdown": "البداية"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إذًا، كيف تفعل هذا فعلًا، لو قررت يومًا أنك تريد ذلك.",
+      "text_markdown": "إذًا، كيف تفعل هذا فعلًا، لو قررت يومًا أنك تريد ذلك.",
+      "tts": {
+        "text": "إذًا، كيف تفعل هذا فعلًا، لو قررت يومًا أنك تريد ذلك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الإجابة الصادقة هي أنه أسهل مما تظن.",
+      "text_markdown": "الإجابة الصادقة هي أنه أسهل مما تظن.",
+      "tts": {
+        "text": "الإجابة الصادقة هي أنه أسهل مما تظن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تقريبًا أي منطقة هبوط في العالم ستقبل مبتدئًا تامًا في الصباح ذاته.",
+      "text_markdown": "تقريبًا أي منطقة هبوط في العالم ستقبل مبتدئًا تامًا في الصباح ذاته.",
+      "tts": {
+        "text": "تقريبًا أي منطقة هبوط في العالم ستقبل مبتدئًا تامًا في الصباح ذاته.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يضعونك في السماء في قفزة تاندم، مع مدرب على ظهرك.",
+      "text_markdown": "يضعونك في السماء في قفزة تاندم، مع مدرب على ظهرك.",
+      "tts": {
+        "text": "يضعونك في السماء في قفزة تاندم، مع مدرب على ظهرك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تصل، توقّع الأوراق، تشاهد فيديو قصيرًا، وتلتقي بمدربك.",
+      "text_markdown": "تصل، توقّع الأوراق، تشاهد فيديو قصيرًا، وتلتقي بمدربك.",
+      "tts": {
+        "text": "تصل، توقّع الأوراق، تشاهد فيديو قصيرًا، وتلتقي بمدربك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ترتدي بدلة قفز وحزامًا.",
+      "text_markdown": "ترتدي بدلة قفز وحزامًا.",
+      "tts": {
+        "text": "ترتدي بدلة قفز وحزامًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تصعد إلى الطائرة.",
+      "text_markdown": "تصعد إلى الطائرة.",
+      "tts": {
+        "text": "تصعد إلى الطائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "بعد عشرين دقيقة تقريبًا، تسير عائدًا عبر العشب بأكبر ابتسامة في حياتك.",
+      "text_markdown": "بعد عشرين دقيقة تقريبًا، تسير عائدًا عبر العشب بأكبر ابتسامة في حياتك.",
+      "tts": {
+        "text": "بعد عشرين دقيقة تقريبًا، تسير عائدًا عبر العشب بأكبر ابتسامة في حياتك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في قفزتك الأولى، لست بحاجة إلى أن تكون شجاعًا.",
+      "text_markdown": "في قفزتك الأولى، لست بحاجة إلى أن تكون شجاعًا.",
+      "tts": {
+        "text": "في قفزتك الأولى، لست بحاجة إلى أن تكون شجاعًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أنت بحاجة فقط إلى أن تكون مستعدًا.",
+      "text_markdown": "أنت بحاجة فقط إلى أن تكون مستعدًا.",
+      "tts": {
+        "text": "أنت بحاجة فقط إلى أن تكون مستعدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "المدرب يفعل كل شيء.",
+      "text_markdown": "المدرب يفعل كل شيء.",
+      "tts": {
+        "text": "المدرب يفعل كل شيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "هو يسحب المظلة.",
+      "text_markdown": "هو يسحب المظلة.",
+      "tts": {
+        "text": "هو يسحب المظلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هو يقود قبة المظلة.",
+      "text_markdown": "هو يقود قبة المظلة.",
+      "tts": {
+        "text": "هو يقود قبة المظلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "هو ينزلك على الأرض.",
+      "text_markdown": "هو ينزلك على الأرض.",
+      "tts": {
+        "text": "هو ينزلك على الأرض.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "أنت معه في الرحلة، بأفضل مقعد في العالم.",
+      "text_markdown": "أنت معه في الرحلة، بأفضل مقعد في العالم.",
+      "tts": {
+        "text": "أنت معه في الرحلة، بأفضل مقعد في العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إذا كنت بعد تلك القفزة الأولى مهتمًا بالقفز بمفردك، فالطريق يُسمى السقوط الحر المتسارع.",
+      "text_markdown": "إذا كنت بعد تلك القفزة الأولى مهتمًا بالقفز بمفردك، فالطريق يُسمى السقوط الحر المتسارع.",
+      "tts": {
+        "text": "إذا كنت بعد تلك القفزة الأولى مهتمًا بالقفز بمفردك، فالطريق يُسمى السقوط الحر المتسارع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنه برنامج تدريبي، يُدرَّس في كل منطقة هبوط، يعلّمك كيف تكون قافزًا بالمظلة حقيقيًا.",
+      "text_markdown": "إنه برنامج تدريبي، يُدرَّس في كل منطقة هبوط، يعلّمك كيف تكون قافزًا بالمظلة حقيقيًا.",
+      "tts": {
+        "text": "إنه برنامج تدريبي، يُدرَّس في كل منطقة هبوط، يعلّمك كيف تكون قافزًا بالمظلة حقيقيًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لست راكبًا.",
+      "text_markdown": "لست راكبًا.",
+      "tts": {
+        "text": "لست راكبًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "بل قائدًا لجسدك في السماء.",
+      "text_markdown": "بل قائدًا لجسدك في السماء.",
+      "tts": {
+        "text": "بل قائدًا لجسدك في السماء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "المستوى الأول من البرنامج هو يوم طويل في قاعة الدرس.",
+      "text_markdown": "المستوى الأول من البرنامج هو يوم طويل في قاعة الدرس.",
+      "tts": {
+        "text": "المستوى الأول من البرنامج هو يوم طويل في قاعة الدرس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تتعلم كيف تسقط.",
+      "text_markdown": "تتعلم كيف تسقط.",
+      "tts": {
+        "text": "تتعلم كيف تسقط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تتعلم كيف تقرأ مقياس الارتفاع.",
+      "text_markdown": "تتعلم كيف تقرأ مقياس الارتفاع.",
+      "tts": {
+        "text": "تتعلم كيف تقرأ مقياس الارتفاع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تتعلم ماذا تفعل إذا لم تنفتح مظلتك الرئيسية.",
+      "text_markdown": "تتعلم ماذا تفعل إذا لم تنفتح مظلتك الرئيسية.",
+      "tts": {
+        "text": "تتعلم ماذا تفعل إذا لم تنفتح مظلتك الرئيسية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يستغرق يوم القاعة نحو ست أو سبع ساعات.",
+      "text_markdown": "يستغرق يوم القاعة نحو ست أو سبع ساعات.",
+      "tts": {
+        "text": "يستغرق يوم القاعة نحو ست أو سبع ساعات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "بنهايته، تعرف عن المظلات أكثر مما يتعلمه معظم الناس في حياة كاملة.",
+      "text_markdown": "بنهايته، تعرف عن المظلات أكثر مما يتعلمه معظم الناس في حياة كاملة.",
+      "tts": {
+        "text": "بنهايته، تعرف عن المظلات أكثر مما يتعلمه معظم الناس في حياة كاملة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تأتي قفزتك الفردية الأولى.",
+      "text_markdown": "ثم تأتي قفزتك الفردية الأولى.",
+      "tts": {
+        "text": "ثم تأتي قفزتك الفردية الأولى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يقفز معك مدربان، واحد على كل جانب، يمسكان حزامك.",
+      "text_markdown": "يقفز معك مدربان، واحد على كل جانب، يمسكان حزامك.",
+      "tts": {
+        "text": "يقفز معك مدربان، واحد على كل جانب، يمسكان حزامك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يطلقانك في السقوط الحر فور أن تكون مستقرًا.",
+      "text_markdown": "يطلقانك في السقوط الحر فور أن تكون مستقرًا.",
+      "tts": {
+        "text": "يطلقانك في السقوط الحر فور أن تكون مستقرًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تسحب مظلتك بنفسك.",
+      "text_markdown": "تسحب مظلتك بنفسك.",
+      "tts": {
+        "text": "تسحب مظلتك بنفسك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تقود قبة مظلتك حتى الأرض.",
+      "text_markdown": "تقود قبة مظلتك حتى الأرض.",
+      "tts": {
+        "text": "تقود قبة مظلتك حتى الأرض.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "أول مرة تفعل ذلك، سيؤلمك وجهك في اليوم التالي من شدة ما ابتسمت.",
+      "text_markdown": "أول مرة تفعل ذلك، سيؤلمك وجهك في اليوم التالي من شدة ما ابتسمت.",
+      "tts": {
+        "text": "أول مرة تفعل ذلك، سيؤلمك وجهك في اليوم التالي من شدة ما ابتسمت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يأخذك البرنامج الكامل عبر نحو سبع قفزات.",
+      "text_markdown": "يأخذك البرنامج الكامل عبر نحو سبع قفزات.",
+      "tts": {
+        "text": "يأخذك البرنامج الكامل عبر نحو سبع قفزات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بنهايته، تكون تقفز بمفردك.",
+      "text_markdown": "بنهايته، تكون تقفز بمفردك.",
+      "tts": {
+        "text": "بنهايته، تكون تقفز بمفردك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "من هناك، عادة ما يكمل القافزون بالمظلات قفزاتهم المئة الأولى خلال السنة التالية.",
+      "text_markdown": "من هناك، عادة ما يكمل القافزون بالمظلات قفزاتهم المئة الأولى خلال السنة التالية.",
+      "tts": {
+        "text": "من هناك، عادة ما يكمل القافزون بالمظلات قفزاتهم المئة الأولى خلال السنة التالية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "خلال الطريق، يتعلمون الطيران بالنسبة إلى قافزين آخرين.",
+      "text_markdown": "خلال الطريق، يتعلمون الطيران بالنسبة إلى قافزين آخرين.",
+      "tts": {
+        "text": "خلال الطريق، يتعلمون الطيران بالنسبة إلى قافزين آخرين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يتعلمون التتبع عبر السماء.",
+      "text_markdown": "يتعلمون التتبع عبر السماء.",
+      "tts": {
+        "text": "يتعلمون التتبع عبر السماء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يتعلمون طي مظلاتهم بأنفسهم.",
+      "text_markdown": "يتعلمون طي مظلاتهم بأنفسهم.",
+      "tts": {
+        "text": "يتعلمون طي مظلاتهم بأنفسهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "المجتمع صغير، ودود، وصبور.",
+      "text_markdown": "المجتمع صغير، ودود، وصبور.",
+      "tts": {
+        "text": "المجتمع صغير، ودود، وصبور.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "لن يجعلك أحد في منطقة الهبوط تشعر بالغباء لأنك مبتدئ.",
+      "text_markdown": "لن يجعلك أحد في منطقة الهبوط تشعر بالغباء لأنك مبتدئ.",
+      "tts": {
+        "text": "لن يجعلك أحد في منطقة الهبوط تشعر بالغباء لأنك مبتدئ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "كنا جميعًا مبتدئين ذات يوم.",
+      "text_markdown": "كنا جميعًا مبتدئين ذات يوم.",
+      "tts": {
+        "text": "كنا جميعًا مبتدئين ذات يوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "معظمنا ما زال يشعر بأنه مبتدئ.",
+      "text_markdown": "معظمنا ما زال يشعر بأنه مبتدئ.",
+      "tts": {
+        "text": "معظمنا ما زال يشعر بأنه مبتدئ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ماذا عن السلامة.",
+      "text_markdown": "ماذا عن السلامة.",
+      "tts": {
+        "text": "ماذا عن السلامة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا هو السؤال الذي يطرحه كل شخص عاقل، ويستحق إجابة حقيقية.",
+      "text_markdown": "هذا هو السؤال الذي يطرحه كل شخص عاقل، ويستحق إجابة حقيقية.",
+      "tts": {
+        "text": "هذا هو السؤال الذي يطرحه كل شخص عاقل، ويستحق إجابة حقيقية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "القفز بالمظلات في الواقع آمن جدًا.",
+      "text_markdown": "القفز بالمظلات في الواقع آمن جدًا.",
+      "tts": {
+        "text": "القفز بالمظلات في الواقع آمن جدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ليس آمنًا مثل المشي، لكنه أكثر أمانًا من القيادة إلى منطقة الهبوط.",
+      "text_markdown": "ليس آمنًا مثل المشي، لكنه أكثر أمانًا من القيادة إلى منطقة الهبوط.",
+      "tts": {
+        "text": "ليس آمنًا مثل المشي، لكنه أكثر أمانًا من القيادة إلى منطقة الهبوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "المعدات ممتازة.",
+      "text_markdown": "المعدات ممتازة.",
+      "tts": {
+        "text": "المعدات ممتازة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "هناك مظلة رئيسية ومظلة احتياطية، وجهاز آلي يطلق المظلة الاحتياطية إذا لم تستطع أنت.",
+      "text_markdown": "هناك مظلة رئيسية ومظلة احتياطية، وجهاز آلي يطلق المظلة الاحتياطية إذا لم تستطع أنت.",
+      "tts": {
+        "text": "هناك مظلة رئيسية ومظلة احتياطية، وجهاز آلي يطلق المظلة الاحتياطية إذا لم تستطع أنت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "تُدار مناطق الهبوط بواسطة محترفين يهتمون بك.",
+      "text_markdown": "تُدار مناطق الهبوط بواسطة محترفين يهتمون بك.",
+      "tts": {
+        "text": "تُدار مناطق الهبوط بواسطة محترفين يهتمون بك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "المدربون يهتمون، اهتمامًا عميقًا، بكل قفزة.",
+      "text_markdown": "المدربون يهتمون، اهتمامًا عميقًا، بكل قفزة.",
+      "tts": {
+        "text": "المدربون يهتمون، اهتمامًا عميقًا، بكل قفزة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ما هي التكلفة.",
+      "text_markdown": "ما هي التكلفة.",
+      "tts": {
+        "text": "ما هي التكلفة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "قفزة التاندم بسعر عشاء لطيف لشخصين.",
+      "text_markdown": "قفزة التاندم بسعر عشاء لطيف لشخصين.",
+      "tts": {
+        "text": "قفزة التاندم بسعر عشاء لطيف لشخصين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "البرنامج التدريبي بسعر إجازة صغيرة.",
+      "text_markdown": "البرنامج التدريبي بسعر إجازة صغيرة.",
+      "tts": {
+        "text": "البرنامج التدريبي بسعر إجازة صغيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "بعد ذلك، كل قفزة بسعر تذكرة سينما ووجبة.",
+      "text_markdown": "بعد ذلك، كل قفزة بسعر تذكرة سينما ووجبة.",
+      "tts": {
+        "text": "بعد ذلك، كل قفزة بسعر تذكرة سينما ووجبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "أناس بوظائف عادية وحياة عادية يفعلون هذا في كل عطلة أسبوع.",
+      "text_markdown": "أناس بوظائف عادية وحياة عادية يفعلون هذا في كل عطلة أسبوع.",
+      "tts": {
+        "text": "أناس بوظائف عادية وحياة عادية يفعلون هذا في كل عطلة أسبوع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ليسوا أثرياء.",
+      "text_markdown": "ليسوا أثرياء.",
+      "tts": {
+        "text": "ليسوا أثرياء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ليسوا غريبين.",
+      "text_markdown": "ليسوا غريبين.",
+      "tts": {
+        "text": "ليسوا غريبين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "لقد قرروا فقط أن هذا هو الشيء الذي يفعلونه.",
+      "text_markdown": "لقد قرروا فقط أن هذا هو الشيء الذي يفعلونه.",
+      "tts": {
+        "text": "لقد قرروا فقط أن هذا هو الشيء الذي يفعلونه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إذا كنت تفكر في قفزتك الأولى، فإليك النصيحة الوحيدة التي تهم.",
+      "text_markdown": "إذا كنت تفكر في قفزتك الأولى، فإليك النصيحة الوحيدة التي تهم.",
+      "tts": {
+        "text": "إذا كنت تفكر في قفزتك الأولى، فإليك النصيحة الوحيدة التي تهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اختر تاريخًا.",
+      "text_markdown": "اختر تاريخًا.",
+      "tts": {
+        "text": "اختر تاريخًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أخبر صديقًا واحدًا.",
+      "text_markdown": "أخبر صديقًا واحدًا.",
+      "tts": {
+        "text": "أخبر صديقًا واحدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "احضر.",
+      "text_markdown": "احضر.",
+      "tts": {
+        "text": "احضر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الجزء الصعب ليس السقوط.",
+      "text_markdown": "الجزء الصعب ليس السقوط.",
+      "tts": {
+        "text": "الجزء الصعب ليس السقوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الجزء الصعب هو القرار.",
+      "text_markdown": "الجزء الصعب هو القرار.",
+      "tts": {
+        "text": "الجزء الصعب هو القرار.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "بمجرد أن تقرر، تكون السماء بالفعل لك.",
+      "text_markdown": "بمجرد أن تقرر، تكون السماء بالفعل لك.",
+      "tts": {
+        "text": "بمجرد أن تقرر، تكون السماء بالفعل لك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "الحرفة",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الحرفة",
+      "text_markdown": "الحرفة"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك حرفة مختبئة داخل السقوط، وهي الجزء من القفز بالمظلات الذي يبقيك مدى الحياة.",
+      "text_markdown": "هناك حرفة مختبئة داخل السقوط، وهي الجزء من القفز بالمظلات الذي يبقيك مدى الحياة.",
+      "tts": {
+        "text": "هناك حرفة مختبئة داخل السقوط، وهي الجزء من القفز بالمظلات الذي يبقيك مدى الحياة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تشاهد قافزًا بالمظلة متمرسًا في السقوط الحر، لا ترى شخصًا يسقط.",
+      "text_markdown": "حين تشاهد قافزًا بالمظلة متمرسًا في السقوط الحر، لا ترى شخصًا يسقط.",
+      "tts": {
+        "text": "حين تشاهد قافزًا بالمظلة متمرسًا في السقوط الحر، لا ترى شخصًا يسقط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ترى شخصًا يطير.",
+      "text_markdown": "ترى شخصًا يطير.",
+      "tts": {
+        "text": "ترى شخصًا يطير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يستديرون ببطء، عن قصد، بأطراف أصابعهم.",
+      "text_markdown": "يستديرون ببطء، عن قصد، بأطراف أصابعهم.",
+      "tts": {
+        "text": "يستديرون ببطء، عن قصد، بأطراف أصابعهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ينزلقون إلى الأمام عبر السماء لمسافة نصف ميل بإمالة أكتافهم بوصتين إلى الأمام.",
+      "text_markdown": "ينزلقون إلى الأمام عبر السماء لمسافة نصف ميل بإمالة أكتافهم بوصتين إلى الأمام.",
+      "tts": {
+        "text": "ينزلقون إلى الأمام عبر السماء لمسافة نصف ميل بإمالة أكتافهم بوصتين إلى الأمام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يتوقفون، في منتصف السقوط، ويحتفظون بسكون يبدو مستحيلًا.",
+      "text_markdown": "يتوقفون، في منتصف السقوط، ويحتفظون بسكون يبدو مستحيلًا.",
+      "tts": {
+        "text": "يتوقفون، في منتصف السقوط، ويحتفظون بسكون يبدو مستحيلًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الجسد هو الطائرة.",
+      "text_markdown": "الجسد هو الطائرة.",
+      "tts": {
+        "text": "الجسد هو الطائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا هو السر الأول للحرفة.",
+      "text_markdown": "هذا هو السر الأول للحرفة.",
+      "tts": {
+        "text": "هذا هو السر الأول للحرفة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "بمجرد أن تفهم ذلك، يتبع كل شيء آخر.",
+      "text_markdown": "بمجرد أن تفهم ذلك، يتبع كل شيء آخر.",
+      "tts": {
+        "text": "بمجرد أن تفهم ذلك، يتبع كل شيء آخر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الشكل الأساسي لسقوط حر مستقر يُسمى القوس.",
+      "text_markdown": "الشكل الأساسي لسقوط حر مستقر يُسمى القوس.",
+      "tts": {
+        "text": "الشكل الأساسي لسقوط حر مستقر يُسمى القوس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تدفع وركيك إلى الأمام وتترك ذراعيك وساقيك تتدلى خلفك، مثل الموزة.",
+      "text_markdown": "تدفع وركيك إلى الأمام وتترك ذراعيك وساقيك تتدلى خلفك، مثل الموزة.",
+      "tts": {
+        "text": "تدفع وركيك إلى الأمام وتترك ذراعيك وساقيك تتدلى خلفك، مثل الموزة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "القوس هو ما يبقيك متجهًا بوجهك إلى الأرض دون أن تضطر إلى التفكير فيه.",
+      "text_markdown": "القوس هو ما يبقيك متجهًا بوجهك إلى الأرض دون أن تضطر إلى التفكير فيه.",
+      "tts": {
+        "text": "القوس هو ما يبقيك متجهًا بوجهك إلى الأرض دون أن تضطر إلى التفكير فيه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يتعلم القافزون الجدد القوس في حفرة إسفنجية، ثم في نفق هواء، ثم في السماء.",
+      "text_markdown": "يتعلم القافزون الجدد القوس في حفرة إسفنجية، ثم في نفق هواء، ثم في السماء.",
+      "tts": {
+        "text": "يتعلم القافزون الجدد القوس في حفرة إسفنجية، ثم في نفق هواء، ثم في السماء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ما زال القافزون القدامى يتحدثون عن القوس كما يتحدث العداؤون القدامى عن خطوتهم.",
+      "text_markdown": "ما زال القافزون القدامى يتحدثون عن القوس كما يتحدث العداؤون القدامى عن خطوتهم.",
+      "tts": {
+        "text": "ما زال القافزون القدامى يتحدثون عن القوس كما يتحدث العداؤون القدامى عن خطوتهم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بمجرد أن يكون لديك قوس مستقر، يتفتح باقي السقوط الحر.",
+      "text_markdown": "بمجرد أن يكون لديك قوس مستقر، يتفتح باقي السقوط الحر.",
+      "tts": {
+        "text": "بمجرد أن يكون لديك قوس مستقر، يتفتح باقي السقوط الحر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تتعلم أن تسقط ببطء بنشر جسدك على نطاق واسع، فتحول نفسك إلى طائرة ورقية.",
+      "text_markdown": "تتعلم أن تسقط ببطء بنشر جسدك على نطاق واسع، فتحول نفسك إلى طائرة ورقية.",
+      "tts": {
+        "text": "تتعلم أن تسقط ببطء بنشر جسدك على نطاق واسع، فتحول نفسك إلى طائرة ورقية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تتعلم أن تسقط بسرعة بانكماشك صغيرًا، فتحول نفسك إلى حجر.",
+      "text_markdown": "تتعلم أن تسقط بسرعة بانكماشك صغيرًا، فتحول نفسك إلى حجر.",
+      "tts": {
+        "text": "تتعلم أن تسقط بسرعة بانكماشك صغيرًا، فتحول نفسك إلى حجر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تتعلم التتبع، وهو أقرب شيء إلى الطيران يستطيع جسد بشري أن يفعله.",
+      "text_markdown": "تتعلم التتبع، وهو أقرب شيء إلى الطيران يستطيع جسد بشري أن يفعله.",
+      "tts": {
+        "text": "تتعلم التتبع، وهو أقرب شيء إلى الطيران يستطيع جسد بشري أن يفعله.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "متتبع جيد يستطيع أن يقطع ربع ميل عبر السماء في عشرين ثانية.",
+      "text_markdown": "متتبع جيد يستطيع أن يقطع ربع ميل عبر السماء في عشرين ثانية.",
+      "tts": {
+        "text": "متتبع جيد يستطيع أن يقطع ربع ميل عبر السماء في عشرين ثانية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ذراعان مردودتان إلى الخلف، جسد مائل، يتحرك مثل طائرة ورقية تعرف إلى أين تذهب.",
+      "text_markdown": "ذراعان مردودتان إلى الخلف، جسد مائل، يتحرك مثل طائرة ورقية تعرف إلى أين تذهب.",
+      "tts": {
+        "text": "ذراعان مردودتان إلى الخلف، جسد مائل، يتحرك مثل طائرة ورقية تعرف إلى أين تذهب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "النصف الآخر من الحرفة هو قبة المظلة.",
+      "text_markdown": "النصف الآخر من الحرفة هو قبة المظلة.",
+      "tts": {
+        "text": "النصف الآخر من الحرفة هو قبة المظلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "المظلة ليست شيئًا سلبيًا يطفو بك إلى الأرض.",
+      "text_markdown": "المظلة ليست شيئًا سلبيًا يطفو بك إلى الأرض.",
+      "tts": {
+        "text": "المظلة ليست شيئًا سلبيًا يطفو بك إلى الأرض.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هي جناح، وأنت تطيرها.",
+      "text_markdown": "هي جناح، وأنت تطيرها.",
+      "tts": {
+        "text": "هي جناح، وأنت تطيرها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "السحب على المقبض الأيمن يخفض الجناح الأيمن ويحوّلك يمينًا.",
+      "text_markdown": "السحب على المقبض الأيمن يخفض الجناح الأيمن ويحوّلك يمينًا.",
+      "tts": {
+        "text": "السحب على المقبض الأيمن يخفض الجناح الأيمن ويحوّلك يمينًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "السحب على كليهما في الوقت نفسه يبطئك ويتيح لك الهبوط بنعومة.",
+      "text_markdown": "السحب على كليهما في الوقت نفسه يبطئك ويتيح لك الهبوط بنعومة.",
+      "tts": {
+        "text": "السحب على كليهما في الوقت نفسه يبطئك ويتيح لك الهبوط بنعومة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تقرأ الريح، تختار البقعة، تخطط لمسارك.",
+      "text_markdown": "تقرأ الريح، تختار البقعة، تخطط لمسارك.",
+      "tts": {
+        "text": "تقرأ الريح، تختار البقعة، تخطط لمسارك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "تحرّر المظلة في اللحظة الأخيرة، فتقبّل قدماك الأرض بدلًا من أن تصطدم بها.",
+      "text_markdown": "تحرّر المظلة في اللحظة الأخيرة، فتقبّل قدماك الأرض بدلًا من أن تصطدم بها.",
+      "tts": {
+        "text": "تحرّر المظلة في اللحظة الأخيرة، فتقبّل قدماك الأرض بدلًا من أن تصطدم بها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "كل ذلك هو طيران قبة المظلة، وهو تخصص قائم بذاته.",
+      "text_markdown": "كل ذلك هو طيران قبة المظلة، وهو تخصص قائم بذاته.",
+      "tts": {
+        "text": "كل ذلك هو طيران قبة المظلة، وهو تخصص قائم بذاته.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم هناك الطي.",
+      "text_markdown": "ثم هناك الطي.",
+      "tts": {
+        "text": "ثم هناك الطي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل قافز بالمظلة يطوي مظلته بنفسه.",
+      "text_markdown": "كل قافز بالمظلة يطوي مظلته بنفسه.",
+      "tts": {
+        "text": "كل قافز بالمظلة يطوي مظلته بنفسه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في كل مرة.",
+      "text_markdown": "في كل مرة.",
+      "tts": {
+        "text": "في كل مرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تفرد قبة المظلة على حصيرة طويلة.",
+      "text_markdown": "تفرد قبة المظلة على حصيرة طويلة.",
+      "tts": {
+        "text": "تفرد قبة المظلة على حصيرة طويلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تنعّم الخيوط.",
+      "text_markdown": "تنعّم الخيوط.",
+      "tts": {
+        "text": "تنعّم الخيوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تطوي الخلايا.",
+      "text_markdown": "تطوي الخلايا.",
+      "tts": {
+        "text": "تطوي الخلايا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تلفّ القماش، تدخله بهدوء في الكيس، تمرر اللجام، تغلق الحاوية.",
+      "text_markdown": "تلفّ القماش، تدخله بهدوء في الكيس، تمرر اللجام، تغلق الحاوية.",
+      "tts": {
+        "text": "تلفّ القماش، تدخله بهدوء في الكيس، تمرر اللجام، تغلق الحاوية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "يستغرق ذلك نحو خمس عشرة دقيقة، وتفعله ببطء، لأن حياتك ستعتمد على هذه القطعة من القماش بالذات.",
+      "text_markdown": "يستغرق ذلك نحو خمس عشرة دقيقة، وتفعله ببطء، لأن حياتك ستعتمد على هذه القطعة من القماش بالذات.",
+      "tts": {
+        "text": "يستغرق ذلك نحو خمس عشرة دقيقة، وتفعله ببطء، لأن حياتك ستعتمد على هذه القطعة من القماش بالذات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الطي تأمل.",
+      "text_markdown": "الطي تأمل.",
+      "tts": {
+        "text": "الطي تأمل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يقول كثير من القافزين بالمظلات إنه الجزء الذي يحبونه أكثر في اليوم.",
+      "text_markdown": "يقول كثير من القافزين بالمظلات إنه الجزء الذي يحبونه أكثر في اليوم.",
+      "tts": {
+        "text": "يقول كثير من القافزين بالمظلات إنه الجزء الذي يحبونه أكثر في اليوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الحصيرة، الخيوط، الطي البطيء.",
+      "text_markdown": "الحصيرة، الخيوط، الطي البطيء.",
+      "tts": {
+        "text": "الحصيرة، الخيوط، الطي البطيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كتف صديق يطوي إلى جانبك.",
+      "text_markdown": "كتف صديق يطوي إلى جانبك.",
+      "tts": {
+        "text": "كتف صديق يطوي إلى جانبك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "المذياع في الزاوية يعزف أغنية سمعتها مرات كثيرة جدًا.",
+      "text_markdown": "المذياع في الزاوية يعزف أغنية سمعتها مرات كثيرة جدًا.",
+      "tts": {
+        "text": "المذياع في الزاوية يعزف أغنية سمعتها مرات كثيرة جدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "لا استعجال في الطي.",
+      "text_markdown": "لا استعجال في الطي.",
+      "tts": {
+        "text": "لا استعجال في الطي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "السماء لا تكترث بجدولك.",
+      "text_markdown": "السماء لا تكترث بجدولك.",
+      "tts": {
+        "text": "السماء لا تكترث بجدولك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عقلية الحرفة هي الصبر.",
+      "text_markdown": "عقلية الحرفة هي الصبر.",
+      "tts": {
+        "text": "عقلية الحرفة هي الصبر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هي التواضع.",
+      "text_markdown": "هي التواضع.",
+      "tts": {
+        "text": "هي التواضع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هي الاستعداد لمراجعة كل قفزة، حتى المملة منها.",
+      "text_markdown": "هي الاستعداد لمراجعة كل قفزة، حتى المملة منها.",
+      "tts": {
+        "text": "هي الاستعداد لمراجعة كل قفزة، حتى المملة منها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يحب القافزون بالمظلات الحديث بعد القفزة.",
+      "text_markdown": "يحب القافزون بالمظلات الحديث بعد القفزة.",
+      "tts": {
+        "text": "يحب القافزون بالمظلات الحديث بعد القفزة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يجلسون على طاولة نزهة ويستعرضون كل ثانية، وضع جسد بعد وضع جسد.",
+      "text_markdown": "يجلسون على طاولة نزهة ويستعرضون كل ثانية، وضع جسد بعد وضع جسد.",
+      "tts": {
+        "text": "يجلسون على طاولة نزهة ويستعرضون كل ثانية، وضع جسد بعد وضع جسد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ما الذي نجح.",
+      "text_markdown": "ما الذي نجح.",
+      "tts": {
+        "text": "ما الذي نجح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ما الذي كان فوضويًا.",
+      "text_markdown": "ما الذي كان فوضويًا.",
+      "tts": {
+        "text": "ما الذي كان فوضويًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "ما الذي يريدون تجربته في المرة القادمة.",
+      "text_markdown": "ما الذي يريدون تجربته في المرة القادمة.",
+      "tts": {
+        "text": "ما الذي يريدون تجربته في المرة القادمة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا هو السبب الذي يبقي الناس.",
+      "text_markdown": "هذا هو السبب الذي يبقي الناس.",
+      "tts": {
+        "text": "هذا هو السبب الذي يبقي الناس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ليس لأن السقوط مثير.",
+      "text_markdown": "ليس لأن السقوط مثير.",
+      "tts": {
+        "text": "ليس لأن السقوط مثير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "السقوط هو الجزء السهل.",
+      "text_markdown": "السقوط هو الجزء السهل.",
+      "tts": {
+        "text": "السقوط هو الجزء السهل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يبقى الناس لأن هناك دائمًا شيئًا يتعلمونه.",
+      "text_markdown": "يبقى الناس لأن هناك دائمًا شيئًا يتعلمونه.",
+      "tts": {
+        "text": "يبقى الناس لأن هناك دائمًا شيئًا يتعلمونه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هناك دائمًا صديق يتعلمونه معه.",
+      "text_markdown": "هناك دائمًا صديق يتعلمونه معه.",
+      "tts": {
+        "text": "هناك دائمًا صديق يتعلمونه معه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "وهناك سماء تنتظرك ظهر الغد.",
+      "text_markdown": "وهناك سماء تنتظرك ظهر الغد.",
+      "tts": {
+        "text": "وهناك سماء تنتظرك ظهر الغد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "لحظات",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "لحظات",
+      "text_markdown": "لحظات"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دعني أعطيك ثلاثًا.",
+      "text_markdown": "دعني أعطيك ثلاثًا.",
+      "tts": {
+        "text": "دعني أعطيك ثلاثًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأولى هي قفزة عند الغروب.",
+      "text_markdown": "الأولى هي قفزة عند الغروب.",
+      "tts": {
+        "text": "الأولى هي قفزة عند الغروب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تقلع الطائرة قبل غروب الشمس بعشرين دقيقة.",
+      "text_markdown": "تقلع الطائرة قبل غروب الشمس بعشرين دقيقة.",
+      "tts": {
+        "text": "تقلع الطائرة قبل غروب الشمس بعشرين دقيقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تصعد عبر طبقات من الضوء البرتقالي، الكابينة دافئة، وأصدقاؤك صامتون.",
+      "text_markdown": "تصعد عبر طبقات من الضوء البرتقالي، الكابينة دافئة، وأصدقاؤك صامتون.",
+      "tts": {
+        "text": "تصعد عبر طبقات من الضوء البرتقالي، الكابينة دافئة، وأصدقاؤك صامتون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "حين ينفتح الباب هذه المرة، يكون الهواء ورديًا.",
+      "text_markdown": "حين ينفتح الباب هذه المرة، يكون الهواء ورديًا.",
+      "tts": {
+        "text": "حين ينفتح الباب هذه المرة، يكون الهواء ورديًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الأرض تحتك نصفها في الظل، ونصفها في الذهب.",
+      "text_markdown": "الأرض تحتك نصفها في الظل، ونصفها في الذهب.",
+      "tts": {
+        "text": "الأرض تحتك نصفها في الظل، ونصفها في الذهب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تخطو إلى الخارج، ولمدة ستين ثانية تكون ساقطًا داخل غروب الشمس.",
+      "text_markdown": "تخطو إلى الخارج، ولمدة ستين ثانية تكون ساقطًا داخل غروب الشمس.",
+      "tts": {
+        "text": "تخطو إلى الخارج، ولمدة ستين ثانية تكون ساقطًا داخل غروب الشمس.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا يبدو الأمر حقيقيًا.",
+      "text_markdown": "لا يبدو الأمر حقيقيًا.",
+      "tts": {
+        "text": "لا يبدو الأمر حقيقيًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "سترى ألوانًا لم تكن تعرف أن عينيك قادرتان على إيجادها.",
+      "text_markdown": "سترى ألوانًا لم تكن تعرف أن عينيك قادرتان على إيجادها.",
+      "tts": {
+        "text": "سترى ألوانًا لم تكن تعرف أن عينيك قادرتان على إيجادها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "حين تنفتح مظلتك، تكون طافيًا فوق عالم يشتعل لبرهة.",
+      "text_markdown": "حين تنفتح مظلتك، تكون طافيًا فوق عالم يشتعل لبرهة.",
+      "tts": {
+        "text": "حين تنفتح مظلتك، تكون طافيًا فوق عالم يشتعل لبرهة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "هدأت الريح حتى أصبحت معدومة.",
+      "text_markdown": "هدأت الريح حتى أصبحت معدومة.",
+      "tts": {
+        "text": "هدأت الريح حتى أصبحت معدومة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "منطقة الهبوط مربع أخضر صغير تحتك، بضوء واحد دافئ مضاء.",
+      "text_markdown": "منطقة الهبوط مربع أخضر صغير تحتك، بضوء واحد دافئ مضاء.",
+      "tts": {
+        "text": "منطقة الهبوط مربع أخضر صغير تحتك، بضوء واحد دافئ مضاء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تختار دائرة بطيئة وتدع نفسك تهبط أخيرًا، لأن لا أحد يريد لهذا الجزء أن ينتهي.",
+      "text_markdown": "تختار دائرة بطيئة وتدع نفسك تهبط أخيرًا، لأن لا أحد يريد لهذا الجزء أن ينتهي.",
+      "tts": {
+        "text": "تختار دائرة بطيئة وتدع نفسك تهبط أخيرًا، لأن لا أحد يريد لهذا الجزء أن ينتهي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "حين تلمس قدماك العشب، تكون السماء بنفسجية.",
+      "text_markdown": "حين تلمس قدماك العشب، تكون السماء بنفسجية.",
+      "tts": {
+        "text": "حين تلمس قدماك العشب، تكون السماء بنفسجية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "أصدقاؤك يسيرون قادمين من هبوطاتهم.",
+      "text_markdown": "أصدقاؤك يسيرون قادمين من هبوطاتهم.",
+      "tts": {
+        "text": "أصدقاؤك يسيرون قادمين من هبوطاتهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "أحدهم ينظر إليك فقط.",
+      "text_markdown": "أحدهم ينظر إليك فقط.",
+      "tts": {
+        "text": "أحدهم ينظر إليك فقط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "تهزّان رأسيكما معًا.",
+      "text_markdown": "تهزّان رأسيكما معًا.",
+      "tts": {
+        "text": "تهزّان رأسيكما معًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "لا أحد منكما يجد كلمة.",
+      "text_markdown": "لا أحد منكما يجد كلمة.",
+      "tts": {
+        "text": "لا أحد منكما يجد كلمة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الثانية هي قفزة تشكيل.",
+      "text_markdown": "الثانية هي قفزة تشكيل.",
+      "tts": {
+        "text": "الثانية هي قفزة تشكيل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ثمانية منكم في الحمولة.",
+      "text_markdown": "ثمانية منكم في الحمولة.",
+      "tts": {
+        "text": "ثمانية منكم في الحمولة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تجلسون على المقعد، الخوذ في أحضانكم، ويرسم القافز القائد الغوصة على لوح أبيض صغير.",
+      "text_markdown": "تجلسون على المقعد، الخوذ في أحضانكم، ويرسم القافز القائد الغوصة على لوح أبيض صغير.",
+      "tts": {
+        "text": "تجلسون على المقعد، الخوذ في أحضانكم، ويرسم القافز القائد الغوصة على لوح أبيض صغير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ستغادرون الطائرة في عنقود، تسقطون معًا، تبنون دائرة.",
+      "text_markdown": "ستغادرون الطائرة في عنقود، تسقطون معًا، تبنون دائرة.",
+      "tts": {
+        "text": "ستغادرون الطائرة في عنقود، تسقطون معًا، تبنون دائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "كلكم يعرف موضعه.",
+      "text_markdown": "كلكم يعرف موضعه.",
+      "tts": {
+        "text": "كلكم يعرف موضعه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تتلاكمون بقبضاتكم، تفحصون معدات بعضكم بعضًا، تضحكون بتوتر.",
+      "text_markdown": "تتلاكمون بقبضاتكم، تفحصون معدات بعضكم بعضًا، تضحكون بتوتر.",
+      "tts": {
+        "text": "تتلاكمون بقبضاتكم، تفحصون معدات بعضكم بعضًا، تضحكون بتوتر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ثمانية بالغين، خائفون ومرحون في الوقت نفسه، كأطفال في حفلة مبيت.",
+      "text_markdown": "ثمانية بالغين، خائفون ومرحون في الوقت نفسه، كأطفال في حفلة مبيت.",
+      "tts": {
+        "text": "ثمانية بالغين، خائفون ومرحون في الوقت نفسه، كأطفال في حفلة مبيت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تستوي الطائرة.",
+      "text_markdown": "تستوي الطائرة.",
+      "tts": {
+        "text": "تستوي الطائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ينفتح الباب.",
+      "text_markdown": "ينفتح الباب.",
+      "tts": {
+        "text": "ينفتح الباب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يخطو قائدكم إلى الخارج، ثم يتبعه باقيكم، نبضة قلب واحدة بين الواحد والآخر.",
+      "text_markdown": "يخطو قائدكم إلى الخارج، ثم يتبعه باقيكم، نبضة قلب واحدة بين الواحد والآخر.",
+      "tts": {
+        "text": "يخطو قائدكم إلى الخارج، ثم يتبعه باقيكم، نبضة قلب واحدة بين الواحد والآخر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "في السقوط الحر، تجدون بعضكم تقريبًا دون تفكير.",
+      "text_markdown": "في السقوط الحر، تجدون بعضكم تقريبًا دون تفكير.",
+      "tts": {
+        "text": "في السقوط الحر، تجدون بعضكم تقريبًا دون تفكير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "أيدٍ تلتقي أيدٍ.",
+      "text_markdown": "أيدٍ تلتقي أيدٍ.",
+      "tts": {
+        "text": "أيدٍ تلتقي أيدٍ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تتشكل الدائرة.",
+      "text_markdown": "تتشكل الدائرة.",
+      "tts": {
+        "text": "تتشكل الدائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "لبضع ثوان مثالية، يمسك ثمانية بشر ببعضهم في السماء.",
+      "text_markdown": "لبضع ثوان مثالية، يمسك ثمانية بشر ببعضهم في السماء.",
+      "tts": {
+        "text": "لبضع ثوان مثالية، يمسك ثمانية بشر ببعضهم في السماء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "يسقطون بالسرعة نفسها.",
+      "text_markdown": "يسقطون بالسرعة نفسها.",
+      "tts": {
+        "text": "يسقطون بالسرعة نفسها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "ينظرون في عيون بعضهم.",
+      "text_markdown": "ينظرون في عيون بعضهم.",
+      "tts": {
+        "text": "ينظرون في عيون بعضهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "ثم يقول مقياس الارتفاع إن الوقت قد حان.",
+      "text_markdown": "ثم يقول مقياس الارتفاع إن الوقت قد حان.",
+      "tts": {
+        "text": "ثم يقول مقياس الارتفاع إن الوقت قد حان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "تطلقون أيدي بعضكم.",
+      "text_markdown": "تطلقون أيدي بعضكم.",
+      "tts": {
+        "text": "تطلقون أيدي بعضكم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "تتباعدون متتبعين بعيدًا عن بعضكم، لتعطوا مظلاتكم مساحة للانفتاح.",
+      "text_markdown": "تتباعدون متتبعين بعيدًا عن بعضكم، لتعطوا مظلاتكم مساحة للانفتاح.",
+      "tts": {
+        "text": "تتباعدون متتبعين بعيدًا عن بعضكم، لتعطوا مظلاتكم مساحة للانفتاح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "على الأرض، لا تستطيعون التوقف عن العناق.",
+      "text_markdown": "على الأرض، لا تستطيعون التوقف عن العناق.",
+      "tts": {
+        "text": "على الأرض، لا تستطيعون التوقف عن العناق.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الثالثة هي قفزة بعد سنة قاسية.",
+      "text_markdown": "الثالثة هي قفزة بعد سنة قاسية.",
+      "tts": {
+        "text": "الثالثة هي قفزة بعد سنة قاسية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ربما مررت بشيء ما.",
+      "text_markdown": "ربما مررت بشيء ما.",
+      "tts": {
+        "text": "ربما مررت بشيء ما.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "موسم سيئ في العمل.",
+      "text_markdown": "موسم سيئ في العمل.",
+      "tts": {
+        "text": "موسم سيئ في العمل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "علاقة انتهت.",
+      "text_markdown": "علاقة انتهت.",
+      "tts": {
+        "text": "علاقة انتهت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "خسارة جعلت العالم العادي يبدو رقيقًا وبعيدًا.",
+      "text_markdown": "خسارة جعلت العالم العادي يبدو رقيقًا وبعيدًا.",
+      "tts": {
+        "text": "خسارة جعلت العالم العادي يبدو رقيقًا وبعيدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "أنت لا تقفز لأنك تريد أن تشعر بشيء.",
+      "text_markdown": "أنت لا تقفز لأنك تريد أن تشعر بشيء.",
+      "tts": {
+        "text": "أنت لا تقفز لأنك تريد أن تشعر بشيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تقفز لأنك لم تستطع أن تشعر بأي شيء، وتريد أن تعرف إن كنت لا تزال هناك في الداخل.",
+      "text_markdown": "تقفز لأنك لم تستطع أن تشعر بأي شيء، وتريد أن تعرف إن كنت لا تزال هناك في الداخل.",
+      "tts": {
+        "text": "تقفز لأنك لم تستطع أن تشعر بأي شيء، وتريد أن تعرف إن كنت لا تزال هناك في الداخل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تصعد الطائرة.",
+      "text_markdown": "تصعد الطائرة.",
+      "tts": {
+        "text": "تصعد الطائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ينفتح الباب.",
+      "text_markdown": "ينفتح الباب.",
+      "tts": {
+        "text": "ينفتح الباب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تخطو إلى الخارج.",
+      "text_markdown": "تخطو إلى الخارج.",
+      "tts": {
+        "text": "تخطو إلى الخارج.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وفي تلك الثواني الثلاث الأولى، قبل أن تمسك بك الريح، ينكسر شيء في داخلك مفتوحًا.",
+      "text_markdown": "وفي تلك الثواني الثلاث الأولى، قبل أن تمسك بك الريح، ينكسر شيء في داخلك مفتوحًا.",
+      "tts": {
+        "text": "وفي تلك الثواني الثلاث الأولى، قبل أن تمسك بك الريح، ينكسر شيء في داخلك مفتوحًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "لم تخطط للبكاء.",
+      "text_markdown": "لم تخطط للبكاء.",
+      "tts": {
+        "text": "لم تخطط للبكاء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تبكي على أي حال.",
+      "text_markdown": "تبكي على أي حال.",
+      "tts": {
+        "text": "تبكي على أي حال.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "يقوم السقوط الحر بعمله.",
+      "text_markdown": "يقوم السقوط الحر بعمله.",
+      "tts": {
+        "text": "يقوم السقوط الحر بعمله.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "ستون ثانية طويلة من لا شيء سوى ريح ونفس وسقوط.",
+      "text_markdown": "ستون ثانية طويلة من لا شيء سوى ريح ونفس وسقوط.",
+      "tts": {
+        "text": "ستون ثانية طويلة من لا شيء سوى ريح ونفس وسقوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "وفي مكان ما هناك، يضع الجزء الذي ظل يحمل كل شيء كل ذلك أرضًا أخيرًا لمدة دقيقة.",
+      "text_markdown": "وفي مكان ما هناك، يضع الجزء الذي ظل يحمل كل شيء كل ذلك أرضًا أخيرًا لمدة دقيقة.",
+      "tts": {
+        "text": "وفي مكان ما هناك، يضع الجزء الذي ظل يحمل كل شيء كل ذلك أرضًا أخيرًا لمدة دقيقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "تنفتح المظلة.",
+      "text_markdown": "تنفتح المظلة.",
+      "tts": {
+        "text": "تنفتح المظلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "يهدأ العالم.",
+      "text_markdown": "يهدأ العالم.",
+      "tts": {
+        "text": "يهدأ العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "تتعلق في الحزام، وتنتحب، وتضحك، وتنتحب من جديد.",
+      "text_markdown": "تتعلق في الحزام، وتنتحب، وتضحك، وتنتحب من جديد.",
+      "tts": {
+        "text": "تتعلق في الحزام، وتنتحب، وتضحك، وتنتحب من جديد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "لا أحد يستطيع أن يراك.",
+      "text_markdown": "لا أحد يستطيع أن يراك.",
+      "tts": {
+        "text": "لا أحد يستطيع أن يراك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "تلك هي الفكرة.",
+      "text_markdown": "تلك هي الفكرة.",
+      "tts": {
+        "text": "تلك هي الفكرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "حين تهبط، لست شافيًا.",
+      "text_markdown": "حين تهبط، لست شافيًا.",
+      "tts": {
+        "text": "حين تهبط، لست شافيًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ما زلت تحمل كل ما حملته معك إلى هناك.",
+      "text_markdown": "ما زلت تحمل كل ما حملته معك إلى هناك.",
+      "tts": {
+        "text": "ما زلت تحمل كل ما حملته معك إلى هناك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لكن لساعة كاملة هناك في الأعلى، تذكر شيء فيك بالضبط ما يمكن أن يكون عليه إحساس البقاء حيًا.",
+      "text_markdown": "لكن لساعة كاملة هناك في الأعلى، تذكر شيء فيك بالضبط ما يمكن أن يكون عليه إحساس البقاء حيًا.",
+      "tts": {
+        "text": "لكن لساعة كاملة هناك في الأعلى، تذكر شيء فيك بالضبط ما يمكن أن يكون عليه إحساس البقاء حيًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "القفز بالمظلات لم يحلّ سنتك.",
+      "text_markdown": "القفز بالمظلات لم يحلّ سنتك.",
+      "tts": {
+        "text": "القفز بالمظلات لم يحلّ سنتك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "أعادها إليك فقط لمدة ستين ثانية، في قطع صغيرة بما يكفي لتمسكها.",
+      "text_markdown": "أعادها إليك فقط لمدة ستين ثانية، في قطع صغيرة بما يكفي لتمسكها.",
+      "tts": {
+        "text": "أعادها إليك فقط لمدة ستين ثانية، في قطع صغيرة بما يكفي لتمسكها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "لماذا تبقى",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "لماذا تبقى",
+      "text_markdown": "لماذا تبقى"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أقفز منذ زمن طويل الآن.",
+      "text_markdown": "أقفز منذ زمن طويل الآن.",
+      "tts": {
+        "text": "أقفز منذ زمن طويل الآن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وقت طويل بما يكفي لأنني لا أتذكر العدد.",
+      "text_markdown": "وقت طويل بما يكفي لأنني لا أتذكر العدد.",
+      "tts": {
+        "text": "وقت طويل بما يكفي لأنني لا أتذكر العدد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وقت طويل بما يكفي لأن السؤال، لماذا ما زلت تفعل هذا، توقف عن أن يعني لي شيئًا.",
+      "text_markdown": "وقت طويل بما يكفي لأن السؤال، لماذا ما زلت تفعل هذا، توقف عن أن يعني لي شيئًا.",
+      "tts": {
+        "text": "وقت طويل بما يكفي لأن السؤال، لماذا ما زلت تفعل هذا، توقف عن أن يعني لي شيئًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أريد أن أتركك مع بضعة أمور.",
+      "text_markdown": "أريد أن أتركك مع بضعة أمور.",
+      "tts": {
+        "text": "أريد أن أتركك مع بضعة أمور.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأول أن القفز بالمظلات ليس مرحلة عابرة.",
+      "text_markdown": "الأول أن القفز بالمظلات ليس مرحلة عابرة.",
+      "tts": {
+        "text": "الأول أن القفز بالمظلات ليس مرحلة عابرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يقلق الناس حين يرون صديقًا يبدأ به.",
+      "text_markdown": "يقلق الناس حين يرون صديقًا يبدأ به.",
+      "tts": {
+        "text": "يقلق الناس حين يرون صديقًا يبدأ به.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يقلقون من أنه تمرد، أو أزمة منتصف العمر، أو طريقة للهروب من شيء.",
+      "text_markdown": "يقلقون من أنه تمرد، أو أزمة منتصف العمر، أو طريقة للهروب من شيء.",
+      "tts": {
+        "text": "يقلقون من أنه تمرد، أو أزمة منتصف العمر، أو طريقة للهروب من شيء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ليس كذلك.",
+      "text_markdown": "ليس كذلك.",
+      "tts": {
+        "text": "ليس كذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الذين يبقون لا يهربون.",
+      "text_markdown": "الذين يبقون لا يهربون.",
+      "tts": {
+        "text": "الذين يبقون لا يهربون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "لقد بنوا، تقريبًا دون قصد، حياة صغيرة داخل السماء.",
+      "text_markdown": "لقد بنوا، تقريبًا دون قصد، حياة صغيرة داخل السماء.",
+      "tts": {
+        "text": "لقد بنوا، تقريبًا دون قصد، حياة صغيرة داخل السماء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "يحضرون أيام السبت.",
+      "text_markdown": "يحضرون أيام السبت.",
+      "tts": {
+        "text": "يحضرون أيام السبت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "يطوون مظلاتهم.",
+      "text_markdown": "يطوون مظلاتهم.",
+      "tts": {
+        "text": "يطوون مظلاتهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "يعانقون أصدقاءهم.",
+      "text_markdown": "يعانقون أصدقاءهم.",
+      "tts": {
+        "text": "يعانقون أصدقاءهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "يعودون إلى البيت عند الغروب، متعبين بالطريقة الجيدة.",
+      "text_markdown": "يعودون إلى البيت عند الغروب، متعبين بالطريقة الجيدة.",
+      "tts": {
+        "text": "يعودون إلى البيت عند الغروب، متعبين بالطريقة الجيدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "في الإثنين يعودون إلى العمل، وهم ألطف بشكل ملحوظ مما كانوا.",
+      "text_markdown": "في الإثنين يعودون إلى العمل، وهم ألطف بشكل ملحوظ مما كانوا.",
+      "tts": {
+        "text": "في الإثنين يعودون إلى العمل، وهم ألطف بشكل ملحوظ مما كانوا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "السماء تغيّرك، لكن ببطء.",
+      "text_markdown": "السماء تغيّرك، لكن ببطء.",
+      "tts": {
+        "text": "السماء تغيّرك، لكن ببطء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تصبح أكثر حضورًا.",
+      "text_markdown": "تصبح أكثر حضورًا.",
+      "tts": {
+        "text": "تصبح أكثر حضورًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تصبح أقل خوفًا من الأشياء الصغيرة، لأنك تدربت على الصدق مع أشياء أكبر.",
+      "text_markdown": "تصبح أقل خوفًا من الأشياء الصغيرة، لأنك تدربت على الصدق مع أشياء أكبر.",
+      "tts": {
+        "text": "تصبح أقل خوفًا من الأشياء الصغيرة، لأنك تدربت على الصدق مع أشياء أكبر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تضحك بسهولة أكبر.",
+      "text_markdown": "تضحك بسهولة أكبر.",
+      "tts": {
+        "text": "تضحك بسهولة أكبر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تخبر الناس أنك تحبهم أكثر من قبل.",
+      "text_markdown": "تخبر الناس أنك تحبهم أكثر من قبل.",
+      "tts": {
+        "text": "تخبر الناس أنك تحبهم أكثر من قبل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "وقفت في عتبة باب، على ارتفاع اثني عشر ألف قدم، وتذكرت أن لا شيء مضمون.",
+      "text_markdown": "وقفت في عتبة باب، على ارتفاع اثني عشر ألف قدم، وتذكرت أن لا شيء مضمون.",
+      "tts": {
+        "text": "وقفت في عتبة باب، على ارتفاع اثني عشر ألف قدم، وتذكرت أن لا شيء مضمون.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إن وجدت نفسك يومًا على عشاء مع قافز بالمظلة، فإليك ما يمكنك أن تسأله.",
+      "text_markdown": "إن وجدت نفسك يومًا على عشاء مع قافز بالمظلة، فإليك ما يمكنك أن تسأله.",
+      "tts": {
+        "text": "إن وجدت نفسك يومًا على عشاء مع قافز بالمظلة، فإليك ما يمكنك أن تسأله.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يمكنك أن تسأله كيف بدأ في ذلك.",
+      "text_markdown": "يمكنك أن تسأله كيف بدأ في ذلك.",
+      "tts": {
+        "text": "يمكنك أن تسأله كيف بدأ في ذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كل قافز بالمظلة يتذكر قفزته الأولى بتفاصيل حيّة، وسيكون سعيدًا بإخبارك.",
+      "text_markdown": "كل قافز بالمظلة يتذكر قفزته الأولى بتفاصيل حيّة، وسيكون سعيدًا بإخبارك.",
+      "tts": {
+        "text": "كل قافز بالمظلة يتذكر قفزته الأولى بتفاصيل حيّة، وسيكون سعيدًا بإخبارك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يمكنك أن تسأله كم قفزة قام بها.",
+      "text_markdown": "يمكنك أن تسأله كم قفزة قام بها.",
+      "tts": {
+        "text": "يمكنك أن تسأله كم قفزة قام بها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "سيعرف الرقم، تقريبًا، ولن يدّعي أنه أكثر مما هو عليه.",
+      "text_markdown": "سيعرف الرقم، تقريبًا، ولن يدّعي أنه أكثر مما هو عليه.",
+      "tts": {
+        "text": "سيعرف الرقم، تقريبًا، ولن يدّعي أنه أكثر مما هو عليه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يمكنك أن تسأله ما نوع القفزات المفضل لديه.",
+      "text_markdown": "يمكنك أن تسأله ما نوع القفزات المفضل لديه.",
+      "tts": {
+        "text": "يمكنك أن تسأله ما نوع القفزات المفضل لديه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "بعضهم سيقول قفزة الغروب.",
+      "text_markdown": "بعضهم سيقول قفزة الغروب.",
+      "tts": {
+        "text": "بعضهم سيقول قفزة الغروب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "بعضهم سيقول تشكيلة كبيرة.",
+      "text_markdown": "بعضهم سيقول تشكيلة كبيرة.",
+      "tts": {
+        "text": "بعضهم سيقول تشكيلة كبيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "بعضهم سيقول قفزة فردية هادئة في أمسية ساكنة.",
+      "text_markdown": "بعضهم سيقول قفزة فردية هادئة في أمسية ساكنة.",
+      "tts": {
+        "text": "بعضهم سيقول قفزة فردية هادئة في أمسية ساكنة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يمكنك أن تسأله إن كان خائفًا في المرة الأولى.",
+      "text_markdown": "يمكنك أن تسأله إن كان خائفًا في المرة الأولى.",
+      "tts": {
+        "text": "يمكنك أن تسأله إن كان خائفًا في المرة الأولى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بالطبع كان خائفًا.",
+      "text_markdown": "بالطبع كان خائفًا.",
+      "tts": {
+        "text": "بالطبع كان خائفًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الجميع كذلك.",
+      "text_markdown": "الجميع كذلك.",
+      "tts": {
+        "text": "الجميع كذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ربما سيذكر الريح في الباب، والعدّ، وكيف يبدو العالم قبل أن تخطو إلى الخارج بقليل.",
+      "text_markdown": "ربما سيذكر الريح في الباب، والعدّ، وكيف يبدو العالم قبل أن تخطو إلى الخارج بقليل.",
+      "tts": {
+        "text": "ربما سيذكر الريح في الباب، والعدّ، وكيف يبدو العالم قبل أن تخطو إلى الخارج بقليل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "أنصت بعناية.",
+      "text_markdown": "أنصت بعناية.",
+      "tts": {
+        "text": "أنصت بعناية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "هم يقدمون لك هدية صغيرة.",
+      "text_markdown": "هم يقدمون لك هدية صغيرة.",
+      "tts": {
+        "text": "هم يقدمون لك هدية صغيرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إن أردت أن تجعل قافزًا بالمظلة يضيء، اطلب منه أن يصف اللحظة التي تنفتح فيها المظلة.",
+      "text_markdown": "إن أردت أن تجعل قافزًا بالمظلة يضيء، اطلب منه أن يصف اللحظة التي تنفتح فيها المظلة.",
+      "tts": {
+        "text": "إن أردت أن تجعل قافزًا بالمظلة يضيء، اطلب منه أن يصف اللحظة التي تنفتح فيها المظلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "سيغمض عينيه لنصف ثانية.",
+      "text_markdown": "سيغمض عينيه لنصف ثانية.",
+      "tts": {
+        "text": "سيغمض عينيه لنصف ثانية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ثم سيحاول.",
+      "text_markdown": "ثم سيحاول.",
+      "tts": {
+        "text": "ثم سيحاول.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "سيستخدم كلمة مختلفة في كل مرة.",
+      "text_markdown": "سيستخدم كلمة مختلفة في كل مرة.",
+      "tts": {
+        "text": "سيستخدم كلمة مختلفة في كل مرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ربما هادئة.",
+      "text_markdown": "ربما هادئة.",
+      "tts": {
+        "text": "ربما هادئة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "ربما لطيفة.",
+      "text_markdown": "ربما لطيفة.",
+      "tts": {
+        "text": "ربما لطيفة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "كأنك تستيقظ.",
+      "text_markdown": "كأنك تستيقظ.",
+      "tts": {
+        "text": "كأنك تستيقظ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "كأنك تعود إلى البيت.",
+      "text_markdown": "كأنك تعود إلى البيت.",
+      "tts": {
+        "text": "كأنك تعود إلى البيت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "لا أحد يصفها بالطريقة نفسها مرتين.",
+      "text_markdown": "لا أحد يصفها بالطريقة نفسها مرتين.",
+      "tts": {
+        "text": "لا أحد يصفها بالطريقة نفسها مرتين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا تخف من الاعتراف بأنك لم تقفز قط.",
+      "text_markdown": "لا تخف من الاعتراف بأنك لم تقفز قط.",
+      "tts": {
+        "text": "لا تخف من الاعتراف بأنك لم تقفز قط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "القافزون بالمظلات يحبون ذلك السؤال.",
+      "text_markdown": "القافزون بالمظلات يحبون ذلك السؤال.",
+      "tts": {
+        "text": "القافزون بالمظلات يحبون ذلك السؤال.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "القافزون بالمظلات يحبون أيضًا أن يخبروك بأنه يجب أن تجرب، ثم يخبروك، بجدية تامة، بأنهم سيذهبون معك.",
+      "text_markdown": "القافزون بالمظلات يحبون أيضًا أن يخبروك بأنه يجب أن تجرب، ثم يخبروك، بجدية تامة، بأنهم سيذهبون معك.",
+      "tts": {
+        "text": "القافزون بالمظلات يحبون أيضًا أن يخبروك بأنه يجب أن تجرب، ثم يخبروك، بجدية تامة، بأنهم سيذهبون معك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "معظمنا أحضر صديقًا إلى قفزته الأولى.",
+      "text_markdown": "معظمنا أحضر صديقًا إلى قفزته الأولى.",
+      "tts": {
+        "text": "معظمنا أحضر صديقًا إلى قفزته الأولى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "إنها واحدة من أعظم متع الرياضة.",
+      "text_markdown": "إنها واحدة من أعظم متع الرياضة.",
+      "tts": {
+        "text": "إنها واحدة من أعظم متع الرياضة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ليس هناك درس كبير في النهاية.",
+      "text_markdown": "ليس هناك درس كبير في النهاية.",
+      "tts": {
+        "text": "ليس هناك درس كبير في النهاية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "فقط هذا.",
+      "text_markdown": "فقط هذا.",
+      "tts": {
+        "text": "فقط هذا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "في مكان ما من العالم الآن، مجموعة صغيرة من أناس هادئين وصبورين يسيرون نحو طائرة.",
+      "text_markdown": "في مكان ما من العالم الآن، مجموعة صغيرة من أناس هادئين وصبورين يسيرون نحو طائرة.",
+      "tts": {
+        "text": "في مكان ما من العالم الآن، مجموعة صغيرة من أناس هادئين وصبورين يسيرون نحو طائرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الحقل مشمس.",
+      "text_markdown": "الحقل مشمس.",
+      "tts": {
+        "text": "الحقل مشمس.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "العشب دافئ.",
+      "text_markdown": "العشب دافئ.",
+      "tts": {
+        "text": "العشب دافئ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يفحصون معدات بعضهم بعضًا.",
+      "text_markdown": "يفحصون معدات بعضهم بعضًا.",
+      "tts": {
+        "text": "يفحصون معدات بعضهم بعضًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "يبتسمون.",
+      "text_markdown": "يبتسمون.",
+      "tts": {
+        "text": "يبتسمون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "في غضون ثلاثين دقيقة، سيكونون في السماء، يفعلون أهدأ شيء يعرفون كيف يفعلونه.",
+      "text_markdown": "في غضون ثلاثين دقيقة، سيكونون في السماء، يفعلون أهدأ شيء يعرفون كيف يفعلونه.",
+      "tts": {
+        "text": "في غضون ثلاثين دقيقة، سيكونون في السماء، يفعلون أهدأ شيء يعرفون كيف يفعلونه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ربما يومًا ما ستكون واحدًا منهم.",
+      "text_markdown": "ربما يومًا ما ستكون واحدًا منهم.",
+      "tts": {
+        "text": "ربما يومًا ما ستكون واحدًا منهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ربما يومًا ما لن تكون.",
+      "text_markdown": "ربما يومًا ما لن تكون.",
+      "tts": {
+        "text": "ربما يومًا ما لن تكون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "في كلتا الحالتين، السماء هناك.",
+      "text_markdown": "في كلتا الحالتين، السماء هناك.",
+      "tts": {
+        "text": "في كلتا الحالتين، السماء هناك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كانت دائمًا هناك.",
+      "text_markdown": "كانت دائمًا هناك.",
+      "tts": {
+        "text": "كانت دائمًا هناك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "إنها تنتظر، بصبر، في حال شعرت يومًا برغبة في الميل.",
+      "text_markdown": "إنها تنتظر، بصبر، في حال شعرت يومًا برغبة في الميل.",
+      "tts": {
+        "text": "إنها تنتظر، بصبر، في حال شعرت يومًا برغبة في الميل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

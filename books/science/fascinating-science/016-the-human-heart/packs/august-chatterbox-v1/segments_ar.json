@@ -1,0 +1,6014 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_heart",
+  "language": "ar",
+  "total_segments": 402,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "المضخة التي لا تتوقف",
+      "text_markdown": "المضخة التي لا تتوقف"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قلبكَ ينبض الآن.",
+      "text_markdown": "قلبكَ ينبض الآن.",
+      "tts": {
+        "text": "قلبكَ ينبض الآن.",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ينبض وأنتَ نائم.",
+      "text_markdown": "ينبض وأنتَ نائم.",
+      "tts": {
+        "text": "ينبض وأنتَ نائم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ينبض وأنتَ تأكل.",
+      "text_markdown": "ينبض وأنتَ تأكل.",
+      "tts": {
+        "text": "ينبض وأنتَ تأكل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ينبض وأنتَ تقرأ هذه الجملة.",
+      "text_markdown": "ينبض وأنتَ تقرأ هذه الجملة.",
+      "tts": {
+        "text": "ينبض وأنتَ تقرأ هذه الجملة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "قلبكَ لا يأخذ استراحة أبدًا.",
+      "text_markdown": "قلبكَ لا يأخذ استراحة أبدًا.",
+      "tts": {
+        "text": "قلبكَ لا يأخذ استراحة أبدًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p2",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "إنه أكثر مضخة موثوقة في العالم.",
+      "text_markdown": "إنه أكثر مضخة موثوقة في العالم.",
+      "tts": {
+        "text": "إنه أكثر مضخة موثوقة في العالم.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القلب عضو عضلي في صدرك.",
+      "text_markdown": "القلب عضو عضلي في صدرك.",
+      "tts": {
+        "text": "القلب عضو عضلي في صدرك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "العضو جزء من الجسم له وظيفة محددة.",
+      "text_markdown": "العضو جزء من الجسم له وظيفة محددة.",
+      "tts": {
+        "text": "العضو جزء من الجسم له وظيفة محددة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وظيفة القلب هي ضخ الدم.",
+      "text_markdown": "وظيفة القلب هي ضخ الدم.",
+      "tts": {
+        "text": "وظيفة القلب هي ضخ الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يقع إلى يسار منتصف صدرك قليلًا.",
+      "text_markdown": "يقع إلى يسار منتصف صدرك قليلًا.",
+      "tts": {
+        "text": "يقع إلى يسار منتصف صدرك قليلًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "حجمه تقريبًا بحجم قبضة يدك.",
+      "text_markdown": "حجمه تقريبًا بحجم قبضة يدك.",
+      "tts": {
+        "text": "حجمه تقريبًا بحجم قبضة يدك.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القلب مصنوع من نوع خاص من العضلات يُسمى العضلة القلبية.",
+      "text_markdown": "القلب مصنوع من نوع خاص من العضلات يُسمى العضلة القلبية.",
+      "tts": {
+        "text": "القلب مصنوع من نوع خاص من العضلات يُسمى العضلة القلبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كلمة قلبية تعني المتعلقة بالقلب. والعضلة القلبية تختلف عن العضلات الموجودة في ذراعيك وساقيك.",
+      "text_markdown": "كلمة قلبية تعني المتعلقة بالقلب. والعضلة القلبية تختلف عن العضلات الموجودة في ذراعيك وساقيك.",
+      "tts": {
+        "text": "كلمة قلبية تعني المتعلقة بالقلب. والعضلة القلبية تختلف عن العضلات الموجودة في ذراعيك وساقيك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أنتَ تتحكم في عضلات ذراعك بأفكارك.",
+      "text_markdown": "أنتَ تتحكم في عضلات ذراعك بأفكارك.",
+      "tts": {
+        "text": "أنتَ تتحكم في عضلات ذراعك بأفكارك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لا يمكنك التحكم في عضلتك القلبية.",
+      "text_markdown": "لا يمكنك التحكم في عضلتك القلبية.",
+      "tts": {
+        "text": "لا يمكنك التحكم في عضلتك القلبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "إنها تنقبض من تلقاء نفسها.",
+      "text_markdown": "إنها تنقبض من تلقاء نفسها.",
+      "tts": {
+        "text": "إنها تنقبض من تلقاء نفسها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تنقبض تلقائيًا، كل ثانية من حياتك.",
+      "text_markdown": "تنقبض تلقائيًا، كل ثانية من حياتك.",
+      "tts": {
+        "text": "تنقبض تلقائيًا، كل ثانية من حياتك.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كل انقباض يدفع الدم عبر جسمك.",
+      "text_markdown": "كل انقباض يدفع الدم عبر جسمك.",
+      "tts": {
+        "text": "كل انقباض يدفع الدم عبر جسمك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يحمل الدم الأكسجين إلى خلاياك.",
+      "text_markdown": "يحمل الدم الأكسجين إلى خلاياك.",
+      "tts": {
+        "text": "يحمل الدم الأكسجين إلى خلاياك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الأكسجين غاز تحتاجه الخلايا لإنتاج الطاقة.",
+      "text_markdown": "الأكسجين غاز تحتاجه الخلايا لإنتاج الطاقة.",
+      "tts": {
+        "text": "الأكسجين غاز تحتاجه الخلايا لإنتاج الطاقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "بدون الأكسجين، تموت الخلايا خلال دقائق.",
+      "text_markdown": "بدون الأكسجين، تموت الخلايا خلال دقائق.",
+      "tts": {
+        "text": "بدون الأكسجين، تموت الخلايا خلال دقائق.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "القلب يتأكد من وصول الأكسجين إلى كل جزء من جسمك.",
+      "text_markdown": "القلب يتأكد من وصول الأكسجين إلى كل جزء من جسمك.",
+      "tts": {
+        "text": "القلب يتأكد من وصول الأكسجين إلى كل جزء من جسمك.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يضخ قلبك حوالي خمسة لترات من الدم في الدقيقة.",
+      "text_markdown": "يضخ قلبك حوالي خمسة لترات من الدم في الدقيقة.",
+      "tts": {
+        "text": "يضخ قلبك حوالي خمسة لترات من الدم في الدقيقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اللتر يساوي تقريبًا ربع غالون.",
+      "text_markdown": "اللتر يساوي تقريبًا ربع غالون.",
+      "tts": {
+        "text": "اللتر يساوي تقريبًا ربع غالون.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هذا يعني أن كل دمك يدور عبر قلبك مرة واحدة تقريبًا في كل دقيقة.",
+      "text_markdown": "هذا يعني أن كل دمك يدور عبر قلبك مرة واحدة تقريبًا في كل دقيقة.",
+      "tts": {
+        "text": "هذا يعني أن كل دمك يدور عبر قلبك مرة واحدة تقريبًا في كل دقيقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "في يوم واحد، يضخ قلبك ما يقارب 7,500 لتر من الدم.",
+      "text_markdown": "في يوم واحد، يضخ قلبك ما يقارب 7,500 لتر من الدم.",
+      "tts": {
+        "text": "في يوم واحد، يضخ قلبك ما يقارب سبعة آلاف وخمسمئة لتر من الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وفي سنة واحدة، يضخ ما يقارب ثلاثة ملايين لتر.",
+      "text_markdown": "وفي سنة واحدة، يضخ ما يقارب ثلاثة ملايين لتر.",
+      "tts": {
+        "text": "وفي سنة واحدة، يضخ ما يقارب ثلاثة ملايين لتر.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يبدأ القلب البشري بالنبض مبكرًا.",
+      "text_markdown": "يبدأ القلب البشري بالنبض مبكرًا.",
+      "tts": {
+        "text": "يبدأ القلب البشري بالنبض مبكرًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يبدأ بعد حوالي ثلاثة إلى أربعة أسابيع من الحمل.",
+      "text_markdown": "يبدأ بعد حوالي ثلاثة إلى أربعة أسابيع من الحمل.",
+      "tts": {
+        "text": "يبدأ بعد حوالي ثلاثة إلى أربعة أسابيع من الحمل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الحمل هو اللحظة التي تبدأ فيها حياة جديدة.",
+      "text_markdown": "الحمل هو اللحظة التي تبدأ فيها حياة جديدة.",
+      "tts": {
+        "text": "الحمل هو اللحظة التي تبدأ فيها حياة جديدة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "القلب من أوائل الأعضاء التي تتكون.",
+      "text_markdown": "القلب من أوائل الأعضاء التي تتكون.",
+      "tts": {
+        "text": "القلب من أوائل الأعضاء التي تتكون.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ينبض قبل أن يكتمل نمو الدماغ.",
+      "text_markdown": "ينبض قبل أن يكتمل نمو الدماغ.",
+      "tts": {
+        "text": "ينبض قبل أن يكتمل نمو الدماغ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانت الشعوب القديمة تعرف أن القلب مهم.",
+      "text_markdown": "كانت الشعوب القديمة تعرف أن القلب مهم.",
+      "tts": {
+        "text": "كانت الشعوب القديمة تعرف أن القلب مهم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اعتقد المصريون القدماء أن القلب هو مركز الذكاء.",
+      "text_markdown": "اعتقد المصريون القدماء أن القلب هو مركز الذكاء.",
+      "tts": {
+        "text": "اعتقد المصريون القدماء أن القلب هو مركز الذكاء.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تناقش الإغريق فيما إذا كان القلب أم الدماغ هو الذي يتحكم في الجسم.",
+      "text_markdown": "تناقش الإغريق فيما إذا كان القلب أم الدماغ هو الذي يتحكم في الجسم.",
+      "tts": {
+        "text": "تناقش الإغريق فيما إذا كان القلب أم الدماغ هو الذي يتحكم في الجسم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ظن أرسطو أن القلب هو موضع الروح.",
+      "text_markdown": "ظن أرسطو أن القلب هو موضع الروح.",
+      "tts": {
+        "text": "ظن أرسطو أن القلب هو موضع الروح.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "نحن نعلم الآن أن الدماغ هو الذي يتحكم في الفكر.",
+      "text_markdown": "نحن نعلم الآن أن الدماغ هو الذي يتحكم في الفكر.",
+      "tts": {
+        "text": "نحن نعلم الآن أن الدماغ هو الذي يتحكم في الفكر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p8",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "لكن القلب هو الذي يُبقي الدماغ حيًا.",
+      "text_markdown": "لكن القلب هو الذي يُبقي الدماغ حيًا.",
+      "tts": {
+        "text": "لكن القلب هو الذي يُبقي الدماغ حيًا.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الجهاز الدوري هو الشبكة التي تنقل الدم عبر جسمك.",
+      "text_markdown": "الجهاز الدوري هو الشبكة التي تنقل الدم عبر جسمك.",
+      "tts": {
+        "text": "الجهاز الدوري هو الشبكة التي تنقل الدم عبر جسمك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "القلب في مركز هذا الجهاز.",
+      "text_markdown": "القلب في مركز هذا الجهاز.",
+      "tts": {
+        "text": "القلب في مركز هذا الجهاز.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كلمة دوري مشتقة من فعل يدور، أي يتحرك في حلقة.",
+      "text_markdown": "كلمة دوري مشتقة من فعل يدور، أي يتحرك في حلقة.",
+      "tts": {
+        "text": "كلمة دوري مشتقة من فعل يدور، أي يتحرك في حلقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يغادر الدم القلب، ويسافر عبر الجسم، ثم يعود إلى القلب.",
+      "text_markdown": "يغادر الدم القلب، ويسافر عبر الجسم، ثم يعود إلى القلب.",
+      "tts": {
+        "text": "يغادر الدم القلب، ويسافر عبر الجسم، ثم يعود إلى القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذه الحلقة لا تتوقف أبدًا.",
+      "text_markdown": "هذه الحلقة لا تتوقف أبدًا.",
+      "tts": {
+        "text": "هذه الحلقة لا تتوقف أبدًا.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قلبكَ ينبض منذ ما قبل ولادتك.",
+      "text_markdown": "قلبكَ ينبض منذ ما قبل ولادتك.",
+      "tts": {
+        "text": "قلبكَ ينبض منذ ما قبل ولادتك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "المضخة التي لا تتوقف",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "سينبض مليارات المرات خلال حياتك.",
+      "text_markdown": "سينبض مليارات المرات خلال حياتك.",
+      "tts": {
+        "text": "سينبض مليارات المرات خلال حياتك.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "أربع حُجرات",
+      "text_markdown": "أربع حُجرات"
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "للقلب البشري أربع حُجرات.",
+      "text_markdown": "للقلب البشري أربع حُجرات.",
+      "tts": {
+        "text": "للقلب البشري أربع حُجرات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الحُجرة هي مساحة مغلقة.",
+      "text_markdown": "الحُجرة هي مساحة مغلقة.",
+      "tts": {
+        "text": "الحُجرة هي مساحة مغلقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كل حُجرة لها دور محدد في تحريك الدم.",
+      "text_markdown": "كل حُجرة لها دور محدد في تحريك الدم.",
+      "tts": {
+        "text": "كل حُجرة لها دور محدد في تحريك الدم.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الحُجرتان العلويتان تُسميان الأذينين.",
+      "text_markdown": "الحُجرتان العلويتان تُسميان الأذينين.",
+      "tts": {
+        "text": "الحُجرتان العلويتان تُسميان الأذينين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الواحدة منهما تُسمى الأذين.",
+      "text_markdown": "الواحدة منهما تُسمى الأذين.",
+      "tts": {
+        "text": "الواحدة منهما تُسمى الأذين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الأذينان أصغر حجمًا وجدارهما أرق.",
+      "text_markdown": "الأذينان أصغر حجمًا وجدارهما أرق.",
+      "tts": {
+        "text": "الأذينان أصغر حجمًا وجدارهما أرق.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يستقبلان الدم الذي يتدفق إلى القلب.",
+      "text_markdown": "يستقبلان الدم الذي يتدفق إلى القلب.",
+      "tts": {
+        "text": "يستقبلان الدم الذي يتدفق إلى القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p13",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "فكر فيهما كأنهما غرفتا استقبال.",
+      "text_markdown": "فكر فيهما كأنهما غرفتا استقبال.",
+      "tts": {
+        "text": "فكر فيهما كأنهما غرفتا استقبال.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الحُجرتان السفليتان تُسميان البطينين.",
+      "text_markdown": "الحُجرتان السفليتان تُسميان البطينين.",
+      "tts": {
+        "text": "الحُجرتان السفليتان تُسميان البطينين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "البطين حُجرة أكثر سُمكًا وأكثر عضلية.",
+      "text_markdown": "البطين حُجرة أكثر سُمكًا وأكثر عضلية.",
+      "tts": {
+        "text": "البطين حُجرة أكثر سُمكًا وأكثر عضلية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يضخ البطينان الدم خارج القلب.",
+      "text_markdown": "يضخ البطينان الدم خارج القلب.",
+      "tts": {
+        "text": "يضخ البطينان الدم خارج القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "هما يقومان بالعمل الشاق.",
+      "text_markdown": "هما يقومان بالعمل الشاق.",
+      "tts": {
+        "text": "هما يقومان بالعمل الشاق.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يستقبل الأذين الأيمن الدم من الجسم.",
+      "text_markdown": "يستقبل الأذين الأيمن الدم من الجسم.",
+      "tts": {
+        "text": "يستقبل الأذين الأيمن الدم من الجسم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا الدم قد سلّم أكسجينه إلى الخلايا بالفعل.",
+      "text_markdown": "هذا الدم قد سلّم أكسجينه إلى الخلايا بالفعل.",
+      "tts": {
+        "text": "هذا الدم قد سلّم أكسجينه إلى الخلايا بالفعل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنه فقير بالأكسجين.",
+      "text_markdown": "إنه فقير بالأكسجين.",
+      "tts": {
+        "text": "إنه فقير بالأكسجين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لونه أحمر داكن.",
+      "text_markdown": "لونه أحمر داكن.",
+      "tts": {
+        "text": "لونه أحمر داكن.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يدخل الدم إلى الأذين الأيمن عبر وريدين كبيرين.",
+      "text_markdown": "يدخل الدم إلى الأذين الأيمن عبر وريدين كبيرين.",
+      "tts": {
+        "text": "يدخل الدم إلى الأذين الأيمن عبر وريدين كبيرين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الوريد وعاء دموي يحمل الدم نحو القلب.",
+      "text_markdown": "الوريد وعاء دموي يحمل الدم نحو القلب.",
+      "tts": {
+        "text": "الوريد وعاء دموي يحمل الدم نحو القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "الوريدان هما الوريد الأجوف العلوي والوريد الأجوف السفلي.",
+      "text_markdown": "الوريدان هما الوريد الأجوف العلوي والوريد الأجوف السفلي.",
+      "tts": {
+        "text": "الوريدان هما الوريد الأجوف العلوي والوريد الأجوف السفلي.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "كلمة علوي تعني فوق.",
+      "text_markdown": "كلمة علوي تعني فوق.",
+      "tts": {
+        "text": "كلمة علوي تعني فوق.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p15",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "كلمة سفلي تعني تحت.",
+      "text_markdown": "كلمة سفلي تعني تحت.",
+      "tts": {
+        "text": "كلمة سفلي تعني تحت.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من الأذين الأيمن، يتدفق الدم نزولًا إلى البطين الأيمن.",
+      "text_markdown": "من الأذين الأيمن، يتدفق الدم نزولًا إلى البطين الأيمن.",
+      "tts": {
+        "text": "من الأذين الأيمن، يتدفق الدم نزولًا إلى البطين الأيمن.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يضخ البطين الأيمن هذا الدم إلى الرئتين.",
+      "text_markdown": "يضخ البطين الأيمن هذا الدم إلى الرئتين.",
+      "tts": {
+        "text": "يضخ البطين الأيمن هذا الدم إلى الرئتين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "في الرئتين، يلتقط الدم أكسجينًا جديدًا.",
+      "text_markdown": "في الرئتين، يلتقط الدم أكسجينًا جديدًا.",
+      "tts": {
+        "text": "في الرئتين، يلتقط الدم أكسجينًا جديدًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كما يطلق ثاني أكسيد الكربون.",
+      "text_markdown": "كما يطلق ثاني أكسيد الكربون.",
+      "tts": {
+        "text": "كما يطلق ثاني أكسيد الكربون.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ثاني أكسيد الكربون غاز فضلات تنتجه الخلايا.",
+      "text_markdown": "ثاني أكسيد الكربون غاز فضلات تنتجه الخلايا.",
+      "tts": {
+        "text": "ثاني أكسيد الكربون غاز فضلات تنتجه الخلايا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "أنتَ تخرج ثاني أكسيد الكربون مع كل زفير.",
+      "text_markdown": "أنتَ تخرج ثاني أكسيد الكربون مع كل زفير.",
+      "tts": {
+        "text": "أنتَ تخرج ثاني أكسيد الكربون مع كل زفير.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يعود الدم من الرئتين إلى الأذين الأيسر.",
+      "text_markdown": "يعود الدم من الرئتين إلى الأذين الأيسر.",
+      "tts": {
+        "text": "يعود الدم من الرئتين إلى الأذين الأيسر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا الدم الآن غني بالأكسجين.",
+      "text_markdown": "هذا الدم الآن غني بالأكسجين.",
+      "tts": {
+        "text": "هذا الدم الآن غني بالأكسجين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لونه أحمر فاتح.",
+      "text_markdown": "لونه أحمر فاتح.",
+      "tts": {
+        "text": "لونه أحمر فاتح.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يدخل إلى الأذين الأيسر عبر الأوردة الرئوية.",
+      "text_markdown": "يدخل إلى الأذين الأيسر عبر الأوردة الرئوية.",
+      "tts": {
+        "text": "يدخل إلى الأذين الأيسر عبر الأوردة الرئوية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "كلمة رئوية تعني المتعلقة بالرئتين.",
+      "text_markdown": "كلمة رئوية تعني المتعلقة بالرئتين.",
+      "tts": {
+        "text": "كلمة رئوية تعني المتعلقة بالرئتين.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "من الأذين الأيسر، يتدفق الدم إلى البطين الأيسر.",
+      "text_markdown": "من الأذين الأيسر، يتدفق الدم إلى البطين الأيسر.",
+      "tts": {
+        "text": "من الأذين الأيسر، يتدفق الدم إلى البطين الأيسر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "البطين الأيسر هو أقوى حُجرة.",
+      "text_markdown": "البطين الأيسر هو أقوى حُجرة.",
+      "tts": {
+        "text": "البطين الأيسر هو أقوى حُجرة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "جدرانه هي الأسمك.",
+      "text_markdown": "جدرانه هي الأسمك.",
+      "tts": {
+        "text": "جدرانه هي الأسمك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يضخ البطين الأيسر الدم الغني بالأكسجين إلى كامل الجسم.",
+      "text_markdown": "يضخ البطين الأيسر الدم الغني بالأكسجين إلى كامل الجسم.",
+      "tts": {
+        "text": "يضخ البطين الأيسر الدم الغني بالأكسجين إلى كامل الجسم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يجب عليه دفع الدم على طول الطريق إلى أصابع قدميك وأعلى رأسك.",
+      "text_markdown": "يجب عليه دفع الدم على طول الطريق إلى أصابع قدميك وأعلى رأسك.",
+      "tts": {
+        "text": "يجب عليه دفع الدم على طول الطريق إلى أصابع قدميك وأعلى رأسك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p18",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "هذا يتطلب قوة كبيرة.",
+      "text_markdown": "هذا يتطلب قوة كبيرة.",
+      "tts": {
+        "text": "هذا يتطلب قوة كبيرة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بين الحُجرات توجد صمامات.",
+      "text_markdown": "بين الحُجرات توجد صمامات.",
+      "tts": {
+        "text": "بين الحُجرات توجد صمامات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الصمام هو رفرف يفتح في اتجاه واحد.",
+      "text_markdown": "الصمام هو رفرف يفتح في اتجاه واحد.",
+      "tts": {
+        "text": "الصمام هو رفرف يفتح في اتجاه واحد.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تمنع الصمامات الدم من التدفق إلى الخلف.",
+      "text_markdown": "تمنع الصمامات الدم من التدفق إلى الخلف.",
+      "tts": {
+        "text": "تمنع الصمامات الدم من التدفق إلى الخلف.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يوجد في القلب أربعة صمامات.",
+      "text_markdown": "يوجد في القلب أربعة صمامات.",
+      "tts": {
+        "text": "يوجد في القلب أربعة صمامات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الصمام ثلاثي الشُّرفات يقع بين الأذين الأيمن والبطين الأيمن.",
+      "text_markdown": "الصمام ثلاثي الشُّرفات يقع بين الأذين الأيمن والبطين الأيمن.",
+      "tts": {
+        "text": "الصمام ثلاثي الشُّرفات يقع بين الأذين الأيمن والبطين الأيمن.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الصمام المترالي يقع بين الأذين الأيسر والبطين الأيسر.",
+      "text_markdown": "الصمام المترالي يقع بين الأذين الأيسر والبطين الأيسر.",
+      "tts": {
+        "text": "الصمام المترالي يقع بين الأذين الأيسر والبطين الأيسر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "الصمام الرئوي يحرس مخرج البطين الأيمن.",
+      "text_markdown": "الصمام الرئوي يحرس مخرج البطين الأيمن.",
+      "tts": {
+        "text": "الصمام الرئوي يحرس مخرج البطين الأيمن.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p19",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "الصمام الأبهري يحرس مخرج البطين الأيسر.",
+      "text_markdown": "الصمام الأبهري يحرس مخرج البطين الأيسر.",
+      "tts": {
+        "text": "الصمام الأبهري يحرس مخرج البطين الأيسر.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عندما تُغلق الصمامات، تُصدر صوتًا.",
+      "text_markdown": "عندما تُغلق الصمامات، تُصدر صوتًا.",
+      "tts": {
+        "text": "عندما تُغلق الصمامات، تُصدر صوتًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يستطيع الطبيب سماع هذا الصوت بسماعة طبية.",
+      "text_markdown": "يستطيع الطبيب سماع هذا الصوت بسماعة طبية.",
+      "tts": {
+        "text": "يستطيع الطبيب سماع هذا الصوت بسماعة طبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "السماعة الطبية أداة للاستماع إلى الأصوات داخل الجسم.",
+      "text_markdown": "السماعة الطبية أداة للاستماع إلى الأصوات داخل الجسم.",
+      "tts": {
+        "text": "السماعة الطبية أداة للاستماع إلى الأصوات داخل الجسم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "صوت دقات القلب «لَب دَب» يأتي من إغلاق الصمامات.",
+      "text_markdown": "صوت دقات القلب «لَب دَب» يأتي من إغلاق الصمامات.",
+      "tts": {
+        "text": "صوت دقات القلب «لَب دَب» يأتي من إغلاق الصمامات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "صوت «لَب» هو إغلاق الصمام المترالي والصمام ثلاثي الشُّرفات.",
+      "text_markdown": "صوت «لَب» هو إغلاق الصمام المترالي والصمام ثلاثي الشُّرفات.",
+      "tts": {
+        "text": "صوت «لَب» هو إغلاق الصمام المترالي والصمام ثلاثي الشُّرفات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p20",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "صوت «دَب» هو إغلاق الصمام الأبهري والصمام الرئوي.",
+      "text_markdown": "صوت «دَب» هو إغلاق الصمام الأبهري والصمام الرئوي.",
+      "tts": {
+        "text": "صوت «دَب» هو إغلاق الصمام الأبهري والصمام الرئوي.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أربع حُجرات.",
+      "text_markdown": "أربع حُجرات.",
+      "tts": {
+        "text": "أربع حُجرات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أربعة صمامات.",
+      "text_markdown": "أربعة صمامات.",
+      "tts": {
+        "text": "أربعة صمامات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "أربع حُجرات",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "غاية واحدة: إبقاء الدم متحركًا.",
+      "text_markdown": "غاية واحدة: إبقاء الدم متحركًا.",
+      "tts": {
+        "text": "غاية واحدة: إبقاء الدم متحركًا.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الأوعية الدموية",
+      "text_markdown": "الأوعية الدموية"
+    },
+    {
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لا يتدفق الدم بحرية عبر جسمك.",
+      "text_markdown": "لا يتدفق الدم بحرية عبر جسمك.",
+      "tts": {
+        "text": "لا يتدفق الدم بحرية عبر جسمك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنه يسافر عبر أنابيب تُسمى الأوعية الدموية.",
+      "text_markdown": "إنه يسافر عبر أنابيب تُسمى الأوعية الدموية.",
+      "tts": {
+        "text": "إنه يسافر عبر أنابيب تُسمى الأوعية الدموية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تشكّل الأوعية الدموية شبكة تصل إلى كل نسيج في جسمك.",
+      "text_markdown": "تشكّل الأوعية الدموية شبكة تصل إلى كل نسيج في جسمك.",
+      "tts": {
+        "text": "تشكّل الأوعية الدموية شبكة تصل إلى كل نسيج في جسمك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لو رصصتَ كل أوعيتك الدموية طرفًا إلى طرف، لامتدت حوالي 100,000 كيلومتر.",
+      "text_markdown": "لو رصصتَ كل أوعيتك الدموية طرفًا إلى طرف، لامتدت حوالي 100,000 كيلومتر.",
+      "tts": {
+        "text": "لو رصصتَ كل أوعيتك الدموية طرفًا إلى طرف، لامتدت حوالي مئة ألف كيلومتر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذا يكفي للف الأرض مرتين ونصف.",
+      "text_markdown": "هذا يكفي للف الأرض مرتين ونصف.",
+      "tts": {
+        "text": "هذا يكفي للف الأرض مرتين ونصف.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك ثلاثة أنواع رئيسية من الأوعية الدموية: الشرايين، والأوردة، والشعيرات الدموية.",
+      "text_markdown": "هناك ثلاثة أنواع رئيسية من الأوعية الدموية: الشرايين، والأوردة، والشعيرات الدموية.",
+      "tts": {
+        "text": "هناك ثلاثة أنواع رئيسية من الأوعية الدموية: الشرايين، والأوردة، والشعيرات الدموية.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحمل الشرايين الدم بعيدًا عن القلب.",
+      "text_markdown": "تحمل الشرايين الدم بعيدًا عن القلب.",
+      "tts": {
+        "text": "تحمل الشرايين الدم بعيدًا عن القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تذكر هذا هكذا: كلمة شريان وكلمة بعيدًا تبدآن بحرف الشين والباء. تحمل الشرايين الدم الغني بالأكسجين إلى أنسجتك.",
+      "text_markdown": "تذكر هذا هكذا: كلمة شريان وكلمة بعيدًا تبدآن بحرف الشين والباء. تحمل الشرايين الدم الغني بالأكسجين إلى أنسجتك.",
+      "tts": {
+        "text": "تذكر هذا هكذا: كلمة شريان وكلمة بعيدًا تبدآن بحرف الشين والباء. تحمل الشرايين الدم الغني بالأكسجين إلى أنسجتك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أكبر شريان هو الأبهر.",
+      "text_markdown": "أكبر شريان هو الأبهر.",
+      "tts": {
+        "text": "أكبر شريان هو الأبهر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يخرج الأبهر من البطين الأيسر.",
+      "text_markdown": "يخرج الأبهر من البطين الأيسر.",
+      "tts": {
+        "text": "يخرج الأبهر من البطين الأيسر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-114",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p25",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ينحني صعودًا ثم يتجه نزولًا عبر صدرك وبطنك.",
+      "text_markdown": "ينحني صعودًا ثم يتجه نزولًا عبر صدرك وبطنك.",
+      "tts": {
+        "text": "ينحني صعودًا ثم يتجه نزولًا عبر صدرك وبطنك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-115",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p25",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تتفرع فروع من الأبهر وتؤدي إلى كل جزء من جسمك.",
+      "text_markdown": "تتفرع فروع من الأبهر وتؤدي إلى كل جزء من جسمك.",
+      "tts": {
+        "text": "تتفرع فروع من الأبهر وتؤدي إلى كل جزء من جسمك.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-116",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "جدران الشرايين سميكة ومرنة.",
+      "text_markdown": "جدران الشرايين سميكة ومرنة.",
+      "tts": {
+        "text": "جدران الشرايين سميكة ومرنة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كلمة مرنة تعني أنها تستطيع التمدد والعودة إلى وضعها.",
+      "text_markdown": "كلمة مرنة تعني أنها تستطيع التمدد والعودة إلى وضعها.",
+      "tts": {
+        "text": "كلمة مرنة تعني أنها تستطيع التمدد والعودة إلى وضعها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "عندما ينقبض القلب، يدفع موجة من الدم إلى الشرايين.",
+      "text_markdown": "عندما ينقبض القلب، يدفع موجة من الدم إلى الشرايين.",
+      "tts": {
+        "text": "عندما ينقبض القلب، يدفع موجة من الدم إلى الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تتمدد جدران الشرايين لامتصاص هذا الضغط.",
+      "text_markdown": "تتمدد جدران الشرايين لامتصاص هذا الضغط.",
+      "tts": {
+        "text": "تتمدد جدران الشرايين لامتصاص هذا الضغط.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ثم تعود إلى وضعها، دافعةً الدم إلى الأمام.",
+      "text_markdown": "ثم تعود إلى وضعها، دافعةً الدم إلى الأمام.",
+      "tts": {
+        "text": "ثم تعود إلى وضعها، دافعةً الدم إلى الأمام.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "هذا يولّد النبض.",
+      "text_markdown": "هذا يولّد النبض.",
+      "tts": {
+        "text": "هذا يولّد النبض.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "النبض هو خفقان منتظم يمكنك أن تشعر به في أماكن معينة.",
+      "text_markdown": "النبض هو خفقان منتظم يمكنك أن تشعر به في أماكن معينة.",
+      "tts": {
+        "text": "النبض هو خفقان منتظم يمكنك أن تشعر به في أماكن معينة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "يمكنك أن تشعر بنبضك في معصمك أو على جانب رقبتك.",
+      "text_markdown": "يمكنك أن تشعر بنبضك في معصمك أو على جانب رقبتك.",
+      "tts": {
+        "text": "يمكنك أن تشعر بنبضك في معصمك أو على جانب رقبتك.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحمل الأوردة الدم عائدًا نحو القلب.",
+      "text_markdown": "تحمل الأوردة الدم عائدًا نحو القلب.",
+      "tts": {
+        "text": "تحمل الأوردة الدم عائدًا نحو القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "معظم الأوردة تحمل دمًا فقيرًا بالأكسجين.",
+      "text_markdown": "معظم الأوردة تحمل دمًا فقيرًا بالأكسجين.",
+      "tts": {
+        "text": "معظم الأوردة تحمل دمًا فقيرًا بالأكسجين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "جدران الأوردة أرق من جدران الشرايين.",
+      "text_markdown": "جدران الأوردة أرق من جدران الشرايين.",
+      "tts": {
+        "text": "جدران الأوردة أرق من جدران الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يتدفق الدم في الأوردة تحت ضغط أقل.",
+      "text_markdown": "يتدفق الدم في الأوردة تحت ضغط أقل.",
+      "tts": {
+        "text": "يتدفق الدم في الأوردة تحت ضغط أقل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تحتوي الأوردة على صمامات صغيرة في داخلها.",
+      "text_markdown": "تحتوي الأوردة على صمامات صغيرة في داخلها.",
+      "tts": {
+        "text": "تحتوي الأوردة على صمامات صغيرة في داخلها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "هذه الصمامات تمنع الدم من التدفق إلى الخلف.",
+      "text_markdown": "هذه الصمامات تمنع الدم من التدفق إلى الخلف.",
+      "tts": {
+        "text": "هذه الصمامات تمنع الدم من التدفق إلى الخلف.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "عندما تقف، يجب أن يتدفق الدم في ساقيك صعودًا ضد الجاذبية.",
+      "text_markdown": "عندما تقف، يجب أن يتدفق الدم في ساقيك صعودًا ضد الجاذبية.",
+      "tts": {
+        "text": "عندما تقف، يجب أن يتدفق الدم في ساقيك صعودًا ضد الجاذبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p27",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "تُبقي الصمامات الدم متحركًا في الاتجاه الصحيح.",
+      "text_markdown": "تُبقي الصمامات الدم متحركًا في الاتجاه الصحيح.",
+      "tts": {
+        "text": "تُبقي الصمامات الدم متحركًا في الاتجاه الصحيح.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الشعيرات الدموية هي أصغر الأوعية الدموية.",
+      "text_markdown": "الشعيرات الدموية هي أصغر الأوعية الدموية.",
+      "tts": {
+        "text": "الشعيرات الدموية هي أصغر الأوعية الدموية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنها مجهرية.",
+      "text_markdown": "إنها مجهرية.",
+      "tts": {
+        "text": "إنها مجهرية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كلمة مجهرية تعني صغيرة جدًا لدرجة لا تُرى دون مجهر.",
+      "text_markdown": "كلمة مجهرية تعني صغيرة جدًا لدرجة لا تُرى دون مجهر.",
+      "tts": {
+        "text": "كلمة مجهرية تعني صغيرة جدًا لدرجة لا تُرى دون مجهر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "سُمك جدار الشعيرة الدموية خلية واحدة فقط.",
+      "text_markdown": "سُمك جدار الشعيرة الدموية خلية واحدة فقط.",
+      "tts": {
+        "text": "سُمك جدار الشعيرة الدموية خلية واحدة فقط.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذه الرقّة مهمة.",
+      "text_markdown": "هذه الرقّة مهمة.",
+      "tts": {
+        "text": "هذه الرقّة مهمة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يمر الأكسجين عبر جدار الشعيرة الدموية ويدخل إلى النسيج المحيط.",
+      "text_markdown": "يمر الأكسجين عبر جدار الشعيرة الدموية ويدخل إلى النسيج المحيط.",
+      "tts": {
+        "text": "يمر الأكسجين عبر جدار الشعيرة الدموية ويدخل إلى النسيج المحيط.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "يمر ثاني أكسيد الكربون من النسيج إلى الشعيرة الدموية.",
+      "text_markdown": "يمر ثاني أكسيد الكربون من النسيج إلى الشعيرة الدموية.",
+      "tts": {
+        "text": "يمر ثاني أكسيد الكربون من النسيج إلى الشعيرة الدموية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "تخرج المغذيات.",
+      "text_markdown": "تخرج المغذيات.",
+      "tts": {
+        "text": "تخرج المغذيات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "تدخل الفضلات.",
+      "text_markdown": "تدخل الفضلات.",
+      "tts": {
+        "text": "تدخل الفضلات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p28",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "كل التبادل يحدث في الشعيرات الدموية.",
+      "text_markdown": "كل التبادل يحدث في الشعيرات الدموية.",
+      "tts": {
+        "text": "كل التبادل يحدث في الشعيرات الدموية.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تتفرع الشرايين إلى أوعية أصغر فأصغر تُسمى الشرينات.",
+      "text_markdown": "تتفرع الشرايين إلى أوعية أصغر فأصغر تُسمى الشرينات.",
+      "tts": {
+        "text": "تتفرع الشرايين إلى أوعية أصغر فأصغر تُسمى الشرينات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تتصل الشرينات بالشعيرات الدموية.",
+      "text_markdown": "تتصل الشرينات بالشعيرات الدموية.",
+      "tts": {
+        "text": "تتصل الشرينات بالشعيرات الدموية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تندمج الشعيرات الدموية في أوعية أكبر قليلًا تُسمى الوُريدات.",
+      "text_markdown": "تندمج الشعيرات الدموية في أوعية أكبر قليلًا تُسمى الوُريدات.",
+      "tts": {
+        "text": "تندمج الشعيرات الدموية في أوعية أكبر قليلًا تُسمى الوُريدات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تندمج الوُريدات في أوردة.",
+      "text_markdown": "تندمج الوُريدات في أوردة.",
+      "tts": {
+        "text": "تندمج الوُريدات في أوردة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تحمل الأوردة الدم عائدًا إلى القلب.",
+      "text_markdown": "تحمل الأوردة الدم عائدًا إلى القلب.",
+      "tts": {
+        "text": "تحمل الأوردة الدم عائدًا إلى القلب.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه حلقة مغلقة.",
+      "text_markdown": "هذه حلقة مغلقة.",
+      "tts": {
+        "text": "هذه حلقة مغلقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لا يغادر الدم الأوعية أبدًا في الظروف الطبيعية.",
+      "text_markdown": "لا يغادر الدم الأوعية أبدًا في الظروف الطبيعية.",
+      "tts": {
+        "text": "لا يغادر الدم الأوعية أبدًا في الظروف الطبيعية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يدفعه القلب إلى الخارج عبر الشرايين.",
+      "text_markdown": "يدفعه القلب إلى الخارج عبر الشرايين.",
+      "tts": {
+        "text": "يدفعه القلب إلى الخارج عبر الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الشعيرات الدموية تُجري التبادل.",
+      "text_markdown": "الشعيرات الدموية تُجري التبادل.",
+      "tts": {
+        "text": "الشعيرات الدموية تُجري التبادل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "الأوعية الدموية",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الأوردة تُعيده إلى الديار.",
+      "text_markdown": "الأوردة تُعيده إلى الديار.",
+      "tts": {
+        "text": "الأوردة تُعيده إلى الديار.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-152",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "دقات القلب",
+      "text_markdown": "دقات القلب"
+    },
+    {
+      "id": "ch04-153",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ينبض قلبك حوالي 100,000 مرة في اليوم.",
+      "text_markdown": "ينبض قلبك حوالي 100,000 مرة في اليوم.",
+      "tts": {
+        "text": "ينبض قلبك حوالي مئة ألف مرة في اليوم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-154",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كل نبضة هي تسلسل أحداث مضبوط التوقيت بعناية.",
+      "text_markdown": "كل نبضة هي تسلسل أحداث مضبوط التوقيت بعناية.",
+      "tts": {
+        "text": "كل نبضة هي تسلسل أحداث مضبوط التوقيت بعناية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-155",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يتم التحكم في التوقيت بإشارات كهربائية تنشأ داخل القلب نفسه.",
+      "text_markdown": "يتم التحكم في التوقيت بإشارات كهربائية تنشأ داخل القلب نفسه.",
+      "tts": {
+        "text": "يتم التحكم في التوقيت بإشارات كهربائية تنشأ داخل القلب نفسه.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-156",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الناظمة الطبيعية للقلب تُسمى العقدة الجيبية الأذينية.",
+      "text_markdown": "الناظمة الطبيعية للقلب تُسمى العقدة الجيبية الأذينية.",
+      "tts": {
+        "text": "الناظمة الطبيعية للقلب تُسمى العقدة الجيبية الأذينية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-157",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "عادةً ما نُسميها العقدة الجيبية.",
+      "text_markdown": "عادةً ما نُسميها العقدة الجيبية.",
+      "tts": {
+        "text": "عادةً ما نُسميها العقدة الجيبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-158",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنها مجموعة صغيرة من الخلايا في جدار الأذين الأيمن.",
+      "text_markdown": "إنها مجموعة صغيرة من الخلايا في جدار الأذين الأيمن.",
+      "tts": {
+        "text": "إنها مجموعة صغيرة من الخلايا في جدار الأذين الأيمن.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-159",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "المجموعة هي تجمع أشياء قريبة من بعضها.",
+      "text_markdown": "المجموعة هي تجمع أشياء قريبة من بعضها.",
+      "tts": {
+        "text": "المجموعة هي تجمع أشياء قريبة من بعضها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-160",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تُولّد العقدة الجيبية نبضات كهربائية.",
+      "text_markdown": "تُولّد العقدة الجيبية نبضات كهربائية.",
+      "tts": {
+        "text": "تُولّد العقدة الجيبية نبضات كهربائية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-161",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "النبضة هي دفقة مفاجئة من الطاقة.",
+      "text_markdown": "النبضة هي دفقة مفاجئة من الطاقة.",
+      "tts": {
+        "text": "النبضة هي دفقة مفاجئة من الطاقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-162",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "هذه النبضات تحدد إيقاع دقات القلب.",
+      "text_markdown": "هذه النبضات تحدد إيقاع دقات القلب.",
+      "tts": {
+        "text": "هذه النبضات تحدد إيقاع دقات القلب.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-163",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تُطلق العقدة الجيبية حوالي 60 إلى 100 مرة في الدقيقة لدى البالغ المُستريح.",
+      "text_markdown": "تُطلق العقدة الجيبية حوالي 60 إلى 100 مرة في الدقيقة لدى البالغ المُستريح.",
+      "tts": {
+        "text": "تُطلق العقدة الجيبية حوالي ستين إلى مئة مرة في الدقيقة لدى البالغ المُستريح.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-164",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تنتشر كل نبضة عبر الأذينين معًا.",
+      "text_markdown": "تنتشر كل نبضة عبر الأذينين معًا.",
+      "tts": {
+        "text": "تنتشر كل نبضة عبر الأذينين معًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-165",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ينقبض الأذينان معًا.",
+      "text_markdown": "ينقبض الأذينان معًا.",
+      "tts": {
+        "text": "ينقبض الأذينان معًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-166",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يضغطان الدم إلى داخل البطينين.",
+      "text_markdown": "يضغطان الدم إلى داخل البطينين.",
+      "tts": {
+        "text": "يضغطان الدم إلى داخل البطينين.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-167",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم تصل النبضة إلى عقدة أخرى تُسمى العقدة الأذينية البطينية.",
+      "text_markdown": "ثم تصل النبضة إلى عقدة أخرى تُسمى العقدة الأذينية البطينية.",
+      "tts": {
+        "text": "ثم تصل النبضة إلى عقدة أخرى تُسمى العقدة الأذينية البطينية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-168",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "نُسميها العقدة الأذينية البطينية.",
+      "text_markdown": "نُسميها العقدة الأذينية البطينية.",
+      "tts": {
+        "text": "نُسميها العقدة الأذينية البطينية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-169",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تقع العقدة الأذينية البطينية بين الأذينين والبطينين.",
+      "text_markdown": "تقع العقدة الأذينية البطينية بين الأذينين والبطينين.",
+      "tts": {
+        "text": "تقع العقدة الأذينية البطينية بين الأذينين والبطينين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-170",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تؤخر الإشارة لجزء من الثانية.",
+      "text_markdown": "تؤخر الإشارة لجزء من الثانية.",
+      "tts": {
+        "text": "تؤخر الإشارة لجزء من الثانية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-171",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذه الوقفة ضرورية.",
+      "text_markdown": "هذه الوقفة ضرورية.",
+      "tts": {
+        "text": "هذه الوقفة ضرورية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-172",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تمنح الأذينين وقتًا لإنهاء التفريغ قبل أن ينقبض البطينان.",
+      "text_markdown": "تمنح الأذينين وقتًا لإنهاء التفريغ قبل أن ينقبض البطينان.",
+      "tts": {
+        "text": "تمنح الأذينين وقتًا لإنهاء التفريغ قبل أن ينقبض البطينان.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-173",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد الوقفة، تنتقل الإشارة عبر مسار يُسمى حُزمة هيس.",
+      "text_markdown": "بعد الوقفة، تنتقل الإشارة عبر مسار يُسمى حُزمة هيس.",
+      "tts": {
+        "text": "بعد الوقفة، تنتقل الإشارة عبر مسار يُسمى حُزمة هيس.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تُلفظ هيس مثل «هِس». سُميت باسم فيلهلم هيس الابن، العالم الذي اكتشفها.",
+      "text_markdown": "تُلفظ هيس مثل «هِس». سُميت باسم فيلهلم هيس الابن، العالم الذي اكتشفها.",
+      "tts": {
+        "text": "تُلفظ هيس مثل «هِس». سُميت باسم فيلهلم هيس الابن، العالم الذي اكتشفها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تنقسم حُزمة هيس إلى فرعين.",
+      "text_markdown": "تنقسم حُزمة هيس إلى فرعين.",
+      "tts": {
+        "text": "تنقسم حُزمة هيس إلى فرعين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "فرع يذهب إلى البطين الأيمن.",
+      "text_markdown": "فرع يذهب إلى البطين الأيمن.",
+      "tts": {
+        "text": "فرع يذهب إلى البطين الأيمن.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "والآخر يذهب إلى البطين الأيسر.",
+      "text_markdown": "والآخر يذهب إلى البطين الأيسر.",
+      "tts": {
+        "text": "والآخر يذهب إلى البطين الأيسر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "تنتشر الفروع إلى ألياف دقيقة تُسمى ألياف بُركنجي.",
+      "text_markdown": "تنتشر الفروع إلى ألياف دقيقة تُسمى ألياف بُركنجي.",
+      "tts": {
+        "text": "تنتشر الفروع إلى ألياف دقيقة تُسمى ألياف بُركنجي.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "تُوصل هذه الألياف الإشارة إلى الخلايا العضلية في كلا البطينين.",
+      "text_markdown": "تُوصل هذه الألياف الإشارة إلى الخلايا العضلية في كلا البطينين.",
+      "tts": {
+        "text": "تُوصل هذه الألياف الإشارة إلى الخلايا العضلية في كلا البطينين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "ينقبض البطينان بقوة وفي الوقت نفسه.",
+      "text_markdown": "ينقبض البطينان بقوة وفي الوقت نفسه.",
+      "tts": {
+        "text": "ينقبض البطينان بقوة وفي الوقت نفسه.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دورة كاملة من الانقباض والاسترخاء تُسمى الدورة القلبية.",
+      "text_markdown": "دورة كاملة من الانقباض والاسترخاء تُسمى الدورة القلبية.",
+      "tts": {
+        "text": "دورة كاملة من الانقباض والاسترخاء تُسمى الدورة القلبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "مرحلة الانقباض تُسمى الانقباض.",
+      "text_markdown": "مرحلة الانقباض تُسمى الانقباض.",
+      "tts": {
+        "text": "مرحلة الانقباض تُسمى الانقباض.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كلمة الانقباض تأتي من كلمة يونانية تعني «الجمع معًا». مرحلة الاسترخاء تُسمى الانبساط.",
+      "text_markdown": "كلمة الانقباض تأتي من كلمة يونانية تعني «الجمع معًا». مرحلة الاسترخاء تُسمى الانبساط.",
+      "tts": {
+        "text": "كلمة الانقباض تأتي من كلمة يونانية تعني «الجمع معًا». مرحلة الاسترخاء تُسمى الانبساط.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كلمة الانبساط تأتي من كلمة يونانية تعني «التوسع».",
+      "text_markdown": "كلمة الانبساط تأتي من كلمة يونانية تعني «التوسع».",
+      "tts": {
+        "text": "كلمة الانبساط تأتي من كلمة يونانية تعني «التوسع».",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "خلال الانقباض، يضغط البطينان ويدفعان الدم إلى الخارج.",
+      "text_markdown": "خلال الانقباض، يضغط البطينان ويدفعان الدم إلى الخارج.",
+      "tts": {
+        "text": "خلال الانقباض، يضغط البطينان ويدفعان الدم إلى الخارج.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "خلال الانبساط، يسترخي البطينان ويمتلئان بالدم.",
+      "text_markdown": "خلال الانبساط، يسترخي البطينان ويمتلئان بالدم.",
+      "tts": {
+        "text": "خلال الانبساط، يسترخي البطينان ويمتلئان بالدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الدورة تتكرر بلا نهاية.",
+      "text_markdown": "الدورة تتكرر بلا نهاية.",
+      "tts": {
+        "text": "الدورة تتكرر بلا نهاية.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يستطيع الطبيب قياس النشاط الكهربائي للقلب بجهاز يُسمى مخطط كهربية القلب، أو تخطيط القلب.",
+      "text_markdown": "يستطيع الطبيب قياس النشاط الكهربائي للقلب بجهاز يُسمى مخطط كهربية القلب، أو تخطيط القلب.",
+      "tts": {
+        "text": "يستطيع الطبيب قياس النشاط الكهربائي للقلب بجهاز يُسمى مخطط كهربية القلب، أو تخطيط القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يُظهر تخطيط القلب النبضات الكهربائية كأمواج على شاشة.",
+      "text_markdown": "يُظهر تخطيط القلب النبضات الكهربائية كأمواج على شاشة.",
+      "tts": {
+        "text": "يُظهر تخطيط القلب النبضات الكهربائية كأمواج على شاشة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كل موجة لها شكل محدد.",
+      "text_markdown": "كل موجة لها شكل محدد.",
+      "tts": {
+        "text": "كل موجة لها شكل محدد.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يقرأ الأطباء هذه الأشكال للتحقق من أن القلب يعمل بشكل سليم.",
+      "text_markdown": "يقرأ الأطباء هذه الأشكال للتحقق من أن القلب يعمل بشكل سليم.",
+      "tts": {
+        "text": "يقرأ الأطباء هذه الأشكال للتحقق من أن القلب يعمل بشكل سليم.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دقات القلب غير المنتظمة تُسمى اضطراب النَّظم.",
+      "text_markdown": "دقات القلب غير المنتظمة تُسمى اضطراب النَّظم.",
+      "tts": {
+        "text": "دقات القلب غير المنتظمة تُسمى اضطراب النَّظم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اضطراب النَّظم يعني «بدون إيقاع». بعض اضطرابات النَّظم غير ضارة.",
+      "text_markdown": "اضطراب النَّظم يعني «بدون إيقاع». بعض اضطرابات النَّظم غير ضارة.",
+      "tts": {
+        "text": "اضطراب النَّظم يعني «بدون إيقاع». بعض اضطرابات النَّظم غير ضارة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وبعضها الآخر خطير.",
+      "text_markdown": "وبعضها الآخر خطير.",
+      "tts": {
+        "text": "وبعضها الآخر خطير.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "إذا فشلت العقدة الجيبية، يستطيع الأطباء زرع ناظمة قلبية اصطناعية.",
+      "text_markdown": "إذا فشلت العقدة الجيبية، يستطيع الأطباء زرع ناظمة قلبية اصطناعية.",
+      "tts": {
+        "text": "إذا فشلت العقدة الجيبية، يستطيع الأطباء زرع ناظمة قلبية اصطناعية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذا الجهاز الصغير يُرسل إشارات كهربائية لإبقاء القلب ينبض بانتظام.",
+      "text_markdown": "هذا الجهاز الصغير يُرسل إشارات كهربائية لإبقاء القلب ينبض بانتظام.",
+      "tts": {
+        "text": "هذا الجهاز الصغير يُرسل إشارات كهربائية لإبقاء القلب ينبض بانتظام.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القلب هو طبّاله الخاص.",
+      "text_markdown": "القلب هو طبّاله الخاص.",
+      "tts": {
+        "text": "القلب هو طبّاله الخاص.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "دقات القلب",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يضع إيقاعه الخاص ويحافظ على توقيت مثالي.",
+      "text_markdown": "يضع إيقاعه الخاص ويحافظ على توقيت مثالي.",
+      "tts": {
+        "text": "يضع إيقاعه الخاص ويحافظ على توقيت مثالي.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-199",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ضغط الدم",
+      "text_markdown": "ضغط الدم"
+    },
+    {
+      "id": "ch05-200",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يدفع الدم جدران شرايينك أثناء تدفقه.",
+      "text_markdown": "يدفع الدم جدران شرايينك أثناء تدفقه.",
+      "tts": {
+        "text": "يدفع الدم جدران شرايينك أثناء تدفقه.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-201",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا الدفع يُسمى ضغط الدم.",
+      "text_markdown": "هذا الدفع يُسمى ضغط الدم.",
+      "tts": {
+        "text": "هذا الدفع يُسمى ضغط الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-202",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ضغط الدم هو قوة الدم وهو يضغط على جدران أوعيتك الدموية من الداخل.",
+      "text_markdown": "ضغط الدم هو قوة الدم وهو يضغط على جدران أوعيتك الدموية من الداخل.",
+      "tts": {
+        "text": "ضغط الدم هو قوة الدم وهو يضغط على جدران أوعيتك الدموية من الداخل.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-203",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يُقاس ضغط الدم برقمين.",
+      "text_markdown": "يُقاس ضغط الدم برقمين.",
+      "tts": {
+        "text": "يُقاس ضغط الدم برقمين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-204",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الرقم العلوي يُسمى الضغط الانقباضي.",
+      "text_markdown": "الرقم العلوي يُسمى الضغط الانقباضي.",
+      "tts": {
+        "text": "الرقم العلوي يُسمى الضغط الانقباضي.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-205",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الضغط الانقباضي هو القوة عندما ينقبض القلب.",
+      "text_markdown": "الضغط الانقباضي هو القوة عندما ينقبض القلب.",
+      "tts": {
+        "text": "الضغط الانقباضي هو القوة عندما ينقبض القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-206",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "إنه الرقم الأعلى.",
+      "text_markdown": "إنه الرقم الأعلى.",
+      "tts": {
+        "text": "إنه الرقم الأعلى.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-207",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الرقم السفلي يُسمى الضغط الانبساطي.",
+      "text_markdown": "الرقم السفلي يُسمى الضغط الانبساطي.",
+      "tts": {
+        "text": "الرقم السفلي يُسمى الضغط الانبساطي.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-208",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p44",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الضغط الانبساطي هو القوة عندما يسترخي القلب.",
+      "text_markdown": "الضغط الانبساطي هو القوة عندما يسترخي القلب.",
+      "tts": {
+        "text": "الضغط الانبساطي هو القوة عندما يسترخي القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-209",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p44",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "إنه الرقم الأدنى.",
+      "text_markdown": "إنه الرقم الأدنى.",
+      "tts": {
+        "text": "إنه الرقم الأدنى.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-210",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ضغط الدم الصحي للبالغ هو حوالي 120 على 80.",
+      "text_markdown": "ضغط الدم الصحي للبالغ هو حوالي 120 على 80.",
+      "tts": {
+        "text": "ضغط الدم الصحي للبالغ هو حوالي مئة وعشرين على ثمانين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-211",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "نستخدم 120/80 كصيغة للكتابة.",
+      "text_markdown": "نستخدم 120/80 كصيغة للكتابة.",
+      "tts": {
+        "text": "نستخدم مئة وعشرين على ثمانين كصيغة للكتابة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-212",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وحدة القياس هي المليمتر من الزئبق، وتُكتب ملم زئبق.",
+      "text_markdown": "وحدة القياس هي المليمتر من الزئبق، وتُكتب ملم زئبق.",
+      "tts": {
+        "text": "وحدة القياس هي المليمتر من الزئبق، وتُكتب ملم زئبق.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-213",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "هذه الوحدة تأتي من أجهزة قياس الضغط الأولى التي استخدمت عمودًا من الزئبق.",
+      "text_markdown": "هذه الوحدة تأتي من أجهزة قياس الضغط الأولى التي استخدمت عمودًا من الزئبق.",
+      "tts": {
+        "text": "هذه الوحدة تأتي من أجهزة قياس الضغط الأولى التي استخدمت عمودًا من الزئبق.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-214",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يُقاس ضغط الدم بجهاز يُسمى مقياس ضغط الدم.",
+      "text_markdown": "يُقاس ضغط الدم بجهاز يُسمى مقياس ضغط الدم.",
+      "tts": {
+        "text": "يُقاس ضغط الدم بجهاز يُسمى مقياس ضغط الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-215",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذه كلمة طويلة.",
+      "text_markdown": "هذه كلمة طويلة.",
+      "tts": {
+        "text": "هذه كلمة طويلة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-216",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهي تأتي من جذور يونانية تعني «النبض» و«القياس». تُلف كفّة حول ذراعك العلوية.",
+      "text_markdown": "وهي تأتي من جذور يونانية تعني «النبض» و«القياس». تُلف كفّة حول ذراعك العلوية.",
+      "tts": {
+        "text": "وهي تأتي من جذور يونانية تعني «النبض» و«القياس». تُلف كفّة حول ذراعك العلوية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-217",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تنتفخ الكفّة وتضغط على الشريان حتى يُغلق.",
+      "text_markdown": "تنتفخ الكفّة وتضغط على الشريان حتى يُغلق.",
+      "tts": {
+        "text": "تنتفخ الكفّة وتضغط على الشريان حتى يُغلق.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-218",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ثم تتفرغ الكفّة ببطء.",
+      "text_markdown": "ثم تتفرغ الكفّة ببطء.",
+      "tts": {
+        "text": "ثم تتفرغ الكفّة ببطء.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-219",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يستمع الطبيب بسماعة طبية إلى صوت تدفق الدم.",
+      "text_markdown": "يستمع الطبيب بسماعة طبية إلى صوت تدفق الدم.",
+      "tts": {
+        "text": "يستمع الطبيب بسماعة طبية إلى صوت تدفق الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-220",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "النقطة التي يبدأ عندها الصوت هي الضغط الانقباضي.",
+      "text_markdown": "النقطة التي يبدأ عندها الصوت هي الضغط الانقباضي.",
+      "tts": {
+        "text": "النقطة التي يبدأ عندها الصوت هي الضغط الانقباضي.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-221",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "النقطة التي يختفي عندها الصوت هي الضغط الانبساطي.",
+      "text_markdown": "النقطة التي يختفي عندها الصوت هي الضغط الانبساطي.",
+      "tts": {
+        "text": "النقطة التي يختفي عندها الصوت هي الضغط الانبساطي.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-222",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ضغط الدم المرتفع يُسمى ارتفاع ضغط الدم.",
+      "text_markdown": "ضغط الدم المرتفع يُسمى ارتفاع ضغط الدم.",
+      "tts": {
+        "text": "ضغط الدم المرتفع يُسمى ارتفاع ضغط الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-223",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كلمة فرط تعني «فوق» أو «مفرط». والتوتر يشير إلى الضغط.",
+      "text_markdown": "كلمة فرط تعني «فوق» أو «مفرط». والتوتر يشير إلى الضغط.",
+      "tts": {
+        "text": "كلمة فرط تعني «فوق» أو «مفرط». والتوتر يشير إلى الضغط.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-224",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ارتفاع ضغط الدم يعني أن الدم يضغط بقوة شديدة على جدران الشرايين.",
+      "text_markdown": "ارتفاع ضغط الدم يعني أن الدم يضغط بقوة شديدة على جدران الشرايين.",
+      "tts": {
+        "text": "ارتفاع ضغط الدم يعني أن الدم يضغط بقوة شديدة على جدران الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-225",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "مع مرور الوقت، يُتلف هذا الشرايين.",
+      "text_markdown": "مع مرور الوقت، يُتلف هذا الشرايين.",
+      "tts": {
+        "text": "مع مرور الوقت، يُتلف هذا الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يجعل القلب يعمل بجهد أكبر.",
+      "text_markdown": "يجعل القلب يعمل بجهد أكبر.",
+      "tts": {
+        "text": "يجعل القلب يعمل بجهد أكبر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يزيد من خطر النوبة القلبية والسكتة الدماغية.",
+      "text_markdown": "يزيد من خطر النوبة القلبية والسكتة الدماغية.",
+      "tts": {
+        "text": "يزيد من خطر النوبة القلبية والسكتة الدماغية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "تحدث النوبة القلبية عندما يُحجب تدفق الدم إلى جزء من عضلة القلب.",
+      "text_markdown": "تحدث النوبة القلبية عندما يُحجب تدفق الدم إلى جزء من عضلة القلب.",
+      "tts": {
+        "text": "تحدث النوبة القلبية عندما يُحجب تدفق الدم إلى جزء من عضلة القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p47",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "تحدث السكتة الدماغية عندما يُحجب تدفق الدم إلى جزء من الدماغ.",
+      "text_markdown": "تحدث السكتة الدماغية عندما يُحجب تدفق الدم إلى جزء من الدماغ.",
+      "tts": {
+        "text": "تحدث السكتة الدماغية عندما يُحجب تدفق الدم إلى جزء من الدماغ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ارتفاع ضغط الدم يُسمى القاتل الصامت.",
+      "text_markdown": "ارتفاع ضغط الدم يُسمى القاتل الصامت.",
+      "tts": {
+        "text": "ارتفاع ضغط الدم يُسمى القاتل الصامت.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "معظم الناس المصابين بارتفاع ضغط الدم لا يشعرون بأي أعراض.",
+      "text_markdown": "معظم الناس المصابين بارتفاع ضغط الدم لا يشعرون بأي أعراض.",
+      "tts": {
+        "text": "معظم الناس المصابين بارتفاع ضغط الدم لا يشعرون بأي أعراض.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لا يعرفون أنهم مصابون به.",
+      "text_markdown": "لا يعرفون أنهم مصابون به.",
+      "tts": {
+        "text": "لا يعرفون أنهم مصابون به.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ولهذا السبب الفحوصات المنتظمة مهمة.",
+      "text_markdown": "ولهذا السبب الفحوصات المنتظمة مهمة.",
+      "tts": {
+        "text": "ولهذا السبب الفحوصات المنتظمة مهمة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "انخفاض ضغط الدم يُسمى انخفاض ضغط الدم.",
+      "text_markdown": "انخفاض ضغط الدم يُسمى انخفاض ضغط الدم.",
+      "tts": {
+        "text": "انخفاض ضغط الدم يُسمى انخفاض ضغط الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كلمة نقص تعني «تحت». انخفاض ضغط الدم يمكن أن يُسبب الدوخة والإغماء.",
+      "text_markdown": "كلمة نقص تعني «تحت». انخفاض ضغط الدم يمكن أن يُسبب الدوخة والإغماء.",
+      "tts": {
+        "text": "كلمة نقص تعني «تحت». انخفاض ضغط الدم يمكن أن يُسبب الدوخة والإغماء.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يعني أن الجسم لا يحصل على تدفق كافٍ من الدم.",
+      "text_markdown": "يعني أن الجسم لا يحصل على تدفق كافٍ من الدم.",
+      "tts": {
+        "text": "يعني أن الجسم لا يحصل على تدفق كافٍ من الدم.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك عوامل كثيرة تؤثر على ضغط الدم.",
+      "text_markdown": "هناك عوامل كثيرة تؤثر على ضغط الدم.",
+      "tts": {
+        "text": "هناك عوامل كثيرة تؤثر على ضغط الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الملح يرفع ضغط الدم.",
+      "text_markdown": "الملح يرفع ضغط الدم.",
+      "tts": {
+        "text": "الملح يرفع ضغط الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الرياضة ترفعه مؤقتًا لكنها تُحسّنه على المدى البعيد.",
+      "text_markdown": "الرياضة ترفعه مؤقتًا لكنها تُحسّنه على المدى البعيد.",
+      "tts": {
+        "text": "الرياضة ترفعه مؤقتًا لكنها تُحسّنه على المدى البعيد.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "التوتر يرفعه.",
+      "text_markdown": "التوتر يرفعه.",
+      "tts": {
+        "text": "التوتر يرفعه.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "النوم يخفضه.",
+      "text_markdown": "النوم يخفضه.",
+      "tts": {
+        "text": "النوم يخفضه.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "السمنة ترفعه.",
+      "text_markdown": "السمنة ترفعه.",
+      "tts": {
+        "text": "السمنة ترفعه.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "السمنة تعني وجود كمية كبيرة جدًا من الدهون في الجسم.",
+      "text_markdown": "السمنة تعني وجود كمية كبيرة جدًا من الدهون في الجسم.",
+      "tts": {
+        "text": "السمنة تعني وجود كمية كبيرة جدًا من الدهون في الجسم.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إبقاء ضغط الدم في النطاق الصحي يحمي القلب والدماغ والكليتين وكل عضو في الجسم.",
+      "text_markdown": "إبقاء ضغط الدم في النطاق الصحي يحمي القلب والدماغ والكليتين وكل عضو في الجسم.",
+      "tts": {
+        "text": "إبقاء ضغط الدم في النطاق الصحي يحمي القلب والدماغ والكليتين وكل عضو في الجسم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "ضغط الدم",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "القوة التي تقف خلف كل نبضة قلب لها أهمية.",
+      "text_markdown": "القوة التي تقف خلف كل نبضة قلب لها أهمية.",
+      "tts": {
+        "text": "القوة التي تقف خلف كل نبضة قلب لها أهمية.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-246",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "الرياضة والقلب",
+      "text_markdown": "الرياضة والقلب"
+    },
+    {
+      "id": "ch06-247",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الرياضة تجعل قلبك أقوى.",
+      "text_markdown": "الرياضة تجعل قلبك أقوى.",
+      "tts": {
+        "text": "الرياضة تجعل قلبك أقوى.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-248",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "القلب عضلة.",
+      "text_markdown": "القلب عضلة.",
+      "tts": {
+        "text": "القلب عضلة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-249",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ومثل أي عضلة، تصبح أقوى عندما تستخدمها.",
+      "text_markdown": "ومثل أي عضلة، تصبح أقوى عندما تستخدمها.",
+      "tts": {
+        "text": "ومثل أي عضلة، تصبح أقوى عندما تستخدمها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-250",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ممارسة الرياضة بانتظام من أفضل ما يمكنك فعله لقلبك.",
+      "text_markdown": "ممارسة الرياضة بانتظام من أفضل ما يمكنك فعله لقلبك.",
+      "tts": {
+        "text": "ممارسة الرياضة بانتظام من أفضل ما يمكنك فعله لقلبك.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-251",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عندما تمارس الرياضة، تحتاج عضلاتك إلى مزيد من الأكسجين.",
+      "text_markdown": "عندما تمارس الرياضة، تحتاج عضلاتك إلى مزيد من الأكسجين.",
+      "tts": {
+        "text": "عندما تمارس الرياضة، تحتاج عضلاتك إلى مزيد من الأكسجين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-252",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنها تعمل بجهد أكبر.",
+      "text_markdown": "إنها تعمل بجهد أكبر.",
+      "tts": {
+        "text": "إنها تعمل بجهد أكبر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-253",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنها تحرق طاقة أكثر.",
+      "text_markdown": "إنها تحرق طاقة أكثر.",
+      "tts": {
+        "text": "إنها تحرق طاقة أكثر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-254",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لتوصيل مزيد من الأكسجين، ينبض القلب بشكل أسرع.",
+      "text_markdown": "لتوصيل مزيد من الأكسجين، ينبض القلب بشكل أسرع.",
+      "tts": {
+        "text": "لتوصيل مزيد من الأكسجين، ينبض القلب بشكل أسرع.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-255",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "كما ينبض بقوة أكبر.",
+      "text_markdown": "كما ينبض بقوة أكبر.",
+      "tts": {
+        "text": "كما ينبض بقوة أكبر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-256",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يضخ دمًا أكثر مع كل انقباض.",
+      "text_markdown": "يضخ دمًا أكثر مع كل انقباض.",
+      "tts": {
+        "text": "يضخ دمًا أكثر مع كل انقباض.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-257",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p54",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "كمية الدم التي يضخها القلب في الدقيقة تُسمى النتاج القلبي.",
+      "text_markdown": "كمية الدم التي يضخها القلب في الدقيقة تُسمى النتاج القلبي.",
+      "tts": {
+        "text": "كمية الدم التي يضخها القلب في الدقيقة تُسمى النتاج القلبي.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-258",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بالنسبة للبالغ السليم، معدل ضربات القلب أثناء الراحة هو 60 إلى 100 نبضة في الدقيقة.",
+      "text_markdown": "بالنسبة للبالغ السليم، معدل ضربات القلب أثناء الراحة هو 60 إلى 100 نبضة في الدقيقة.",
+      "tts": {
+        "text": "بالنسبة للبالغ السليم، معدل ضربات القلب أثناء الراحة هو ستين إلى مئة نبضة في الدقيقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-259",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أثناء التمرين الشديد، يمكن أن يرتفع معدل ضربات القلب إلى 150 أو 170 أو حتى 200 نبضة في الدقيقة.",
+      "text_markdown": "أثناء التمرين الشديد، يمكن أن يرتفع معدل ضربات القلب إلى 150 أو 170 أو حتى 200 نبضة في الدقيقة.",
+      "tts": {
+        "text": "أثناء التمرين الشديد، يمكن أن يرتفع معدل ضربات القلب إلى مئة وخمسين أو مئة وسبعين أو حتى مئتين نبضة في الدقيقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-260",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "معدل ضربات القلب هو عدد نبضات القلب في دقيقة واحدة.",
+      "text_markdown": "معدل ضربات القلب هو عدد نبضات القلب في دقيقة واحدة.",
+      "tts": {
+        "text": "معدل ضربات القلب هو عدد نبضات القلب في دقيقة واحدة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-261",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يمكنك قياسه بعد نبضك لمدة 15 ثانية ثم الضرب في أربعة.",
+      "text_markdown": "يمكنك قياسه بعد نبضك لمدة 15 ثانية ثم الضرب في أربعة.",
+      "tts": {
+        "text": "يمكنك قياسه بعد نبضك لمدة خمس عشرة ثانية ثم الضرب في أربعة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-262",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الرياضيون غالبًا ما يكون لديهم معدلات ضربات قلب أقل أثناء الراحة.",
+      "text_markdown": "الرياضيون غالبًا ما يكون لديهم معدلات ضربات قلب أقل أثناء الراحة.",
+      "tts": {
+        "text": "الرياضيون غالبًا ما يكون لديهم معدلات ضربات قلب أقل أثناء الراحة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "رياضي التحمل المُدرَّب جيدًا قد يكون معدل ضربات قلبه أثناء الراحة 40 إلى 50 نبضة في الدقيقة.",
+      "text_markdown": "رياضي التحمل المُدرَّب جيدًا قد يكون معدل ضربات قلبه أثناء الراحة 40 إلى 50 نبضة في الدقيقة.",
+      "tts": {
+        "text": "رياضي التحمل المُدرَّب جيدًا قد يكون معدل ضربات قلبه أثناء الراحة أربعين إلى خمسين نبضة في الدقيقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وذلك لأن قلوبهم أقوى.",
+      "text_markdown": "وذلك لأن قلوبهم أقوى.",
+      "tts": {
+        "text": "وذلك لأن قلوبهم أقوى.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "القلب الأقوى يضخ دمًا أكثر مع كل نبضة.",
+      "text_markdown": "القلب الأقوى يضخ دمًا أكثر مع كل نبضة.",
+      "tts": {
+        "text": "القلب الأقوى يضخ دمًا أكثر مع كل نبضة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ولا يحتاج إلى النبض بكثرة.",
+      "text_markdown": "ولا يحتاج إلى النبض بكثرة.",
+      "tts": {
+        "text": "ولا يحتاج إلى النبض بكثرة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "هذا يُسمى حجم الضربة.",
+      "text_markdown": "هذا يُسمى حجم الضربة.",
+      "tts": {
+        "text": "هذا يُسمى حجم الضربة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "حجم الضربة هو كمية الدم المضخوخ مع كل نبضة.",
+      "text_markdown": "حجم الضربة هو كمية الدم المضخوخ مع كل نبضة.",
+      "tts": {
+        "text": "حجم الضربة هو كمية الدم المضخوخ مع كل نبضة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p56",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "التدريب يزيد حجم الضربة.",
+      "text_markdown": "التدريب يزيد حجم الضربة.",
+      "tts": {
+        "text": "التدريب يزيد حجم الضربة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الرياضة الهوائية مفيدة جدًا للقلب.",
+      "text_markdown": "الرياضة الهوائية مفيدة جدًا للقلب.",
+      "tts": {
+        "text": "الرياضة الهوائية مفيدة جدًا للقلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كلمة هوائية تعني «بالأكسجين». الرياضة الهوائية تشمل الجري والسباحة وركوب الدراجة والمشي السريع.",
+      "text_markdown": "كلمة هوائية تعني «بالأكسجين». الرياضة الهوائية تشمل الجري والسباحة وركوب الدراجة والمشي السريع.",
+      "tts": {
+        "text": "كلمة هوائية تعني «بالأكسجين». الرياضة الهوائية تشمل الجري والسباحة وركوب الدراجة والمشي السريع.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أثناء الرياضة الهوائية، يزداد معدل تنفسك.",
+      "text_markdown": "أثناء الرياضة الهوائية، يزداد معدل تنفسك.",
+      "tts": {
+        "text": "أثناء الرياضة الهوائية، يزداد معدل تنفسك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يزداد معدل ضربات قلبك.",
+      "text_markdown": "يزداد معدل ضربات قلبك.",
+      "tts": {
+        "text": "يزداد معدل ضربات قلبك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يستخدم جسمك الأكسجين لحرق الوقود باستمرار على مدى فترة طويلة.",
+      "text_markdown": "يستخدم جسمك الأكسجين لحرق الوقود باستمرار على مدى فترة طويلة.",
+      "tts": {
+        "text": "يستخدم جسمك الأكسجين لحرق الوقود باستمرار على مدى فترة طويلة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الرياضة الهوائية المنتظمة تخفض ضغط الدم أثناء الراحة.",
+      "text_markdown": "الرياضة الهوائية المنتظمة تخفض ضغط الدم أثناء الراحة.",
+      "tts": {
+        "text": "الرياضة الهوائية المنتظمة تخفض ضغط الدم أثناء الراحة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ترفع مستويات الكوليسترول الجيد.",
+      "text_markdown": "ترفع مستويات الكوليسترول الجيد.",
+      "tts": {
+        "text": "ترفع مستويات الكوليسترول الجيد.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الكوليسترول الجيد هو البروتين الدهني عالي الكثافة.",
+      "text_markdown": "الكوليسترول الجيد هو البروتين الدهني عالي الكثافة.",
+      "tts": {
+        "text": "الكوليسترول الجيد هو البروتين الدهني عالي الكثافة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "غالبًا ما يُسمى الكوليسترول «الجيد».",
+      "text_markdown": "غالبًا ما يُسمى الكوليسترول «الجيد».",
+      "tts": {
+        "text": "غالبًا ما يُسمى الكوليسترول «الجيد».",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p58",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يساعد في إزالة الكوليسترول الضار من الشرايين.",
+      "text_markdown": "يساعد في إزالة الكوليسترول الضار من الشرايين.",
+      "tts": {
+        "text": "يساعد في إزالة الكوليسترول الضار من الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p58",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الكوليسترول مادة شمعية في الدم.",
+      "text_markdown": "الكوليسترول مادة شمعية في الدم.",
+      "tts": {
+        "text": "الكوليسترول مادة شمعية في الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p58",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "الكثير من النوع الخاطئ منه يمكن أن يسد الشرايين.",
+      "text_markdown": "الكثير من النوع الخاطئ منه يمكن أن يسد الشرايين.",
+      "tts": {
+        "text": "الكثير من النوع الخاطئ منه يمكن أن يسد الشرايين.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الرياضة تقوّي أيضًا جدران الأوعية الدموية.",
+      "text_markdown": "الرياضة تقوّي أيضًا جدران الأوعية الدموية.",
+      "tts": {
+        "text": "الرياضة تقوّي أيضًا جدران الأوعية الدموية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تجعلها أكثر مرونة.",
+      "text_markdown": "تجعلها أكثر مرونة.",
+      "tts": {
+        "text": "تجعلها أكثر مرونة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الأوعية المرنة تتعامل مع تغيرات الضغط بشكل أفضل.",
+      "text_markdown": "الأوعية المرنة تتعامل مع تغيرات الضغط بشكل أفضل.",
+      "tts": {
+        "text": "الأوعية المرنة تتعامل مع تغيرات الضغط بشكل أفضل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الرياضة تقلل الالتهاب.",
+      "text_markdown": "الرياضة تقلل الالتهاب.",
+      "tts": {
+        "text": "الرياضة تقلل الالتهاب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الالتهاب هو تورم وتهيج في الأنسجة.",
+      "text_markdown": "الالتهاب هو تورم وتهيج في الأنسجة.",
+      "tts": {
+        "text": "الالتهاب هو تورم وتهيج في الأنسجة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الالتهاب المزمن يُتلف الشرايين مع مرور الوقت.",
+      "text_markdown": "الالتهاب المزمن يُتلف الشرايين مع مرور الوقت.",
+      "tts": {
+        "text": "الالتهاب المزمن يُتلف الشرايين مع مرور الوقت.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p59",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "كلمة مزمن تعني طويل الأمد.",
+      "text_markdown": "كلمة مزمن تعني طويل الأمد.",
+      "tts": {
+        "text": "كلمة مزمن تعني طويل الأمد.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الأشخاص الخاملون لديهم خطر أعلى للإصابة بأمراض القلب.",
+      "text_markdown": "الأشخاص الخاملون لديهم خطر أعلى للإصابة بأمراض القلب.",
+      "tts": {
+        "text": "الأشخاص الخاملون لديهم خطر أعلى للإصابة بأمراض القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أمراض القلب هي السبب الرئيسي للوفاة في جميع أنحاء العالم.",
+      "text_markdown": "أمراض القلب هي السبب الرئيسي للوفاة في جميع أنحاء العالم.",
+      "tts": {
+        "text": "أمراض القلب هي السبب الرئيسي للوفاة في جميع أنحاء العالم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "حتى الرياضة المعتدلة تُحدث فرقًا.",
+      "text_markdown": "حتى الرياضة المعتدلة تُحدث فرقًا.",
+      "tts": {
+        "text": "حتى الرياضة المعتدلة تُحدث فرقًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "المشي 30 دقيقة في اليوم يقلل المخاطر بشكل ملحوظ.",
+      "text_markdown": "المشي 30 دقيقة في اليوم يقلل المخاطر بشكل ملحوظ.",
+      "tts": {
+        "text": "المشي ثلاثين دقيقة في اليوم يقلل المخاطر بشكل ملحوظ.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-293",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القلب يستجيب لطريقة عيشك.",
+      "text_markdown": "القلب يستجيب لطريقة عيشك.",
+      "tts": {
+        "text": "القلب يستجيب لطريقة عيشك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-294",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تحدّاه، يصبح أقوى.",
+      "text_markdown": "تحدّاه، يصبح أقوى.",
+      "tts": {
+        "text": "تحدّاه، يصبح أقوى.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-295",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أهمله، يضعف.",
+      "text_markdown": "أهمله، يضعف.",
+      "tts": {
+        "text": "أهمله، يضعف.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-296",
+      "part": 0,
+      "chapter": 6,
+      "title": "الرياضة والقلب",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كل خطوة لها أهمية.",
+      "text_markdown": "كل خطوة لها أهمية.",
+      "tts": {
+        "text": "كل خطوة لها أهمية.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-297",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "القلب قبل الولادة",
+      "text_markdown": "القلب قبل الولادة"
+    },
+    {
+      "id": "ch07-298",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "القلب من أوائل الأعضاء التي تتطور.",
+      "text_markdown": "القلب من أوائل الأعضاء التي تتطور.",
+      "tts": {
+        "text": "القلب من أوائل الأعضاء التي تتطور.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-299",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يتكون مبكرًا لأن الجنين النامي يحتاج إلى تدفق الدم ليبقى على قيد الحياة.",
+      "text_markdown": "يتكون مبكرًا لأن الجنين النامي يحتاج إلى تدفق الدم ليبقى على قيد الحياة.",
+      "tts": {
+        "text": "يتكون مبكرًا لأن الجنين النامي يحتاج إلى تدفق الدم ليبقى على قيد الحياة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-300",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الجنين كائن في أبكر مراحل نموه.",
+      "text_markdown": "الجنين كائن في أبكر مراحل نموه.",
+      "tts": {
+        "text": "الجنين كائن في أبكر مراحل نموه.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-301",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد حوالي 18 إلى 20 يومًا من الحمل، تبدأ خلايا القلب بالظهور.",
+      "text_markdown": "بعد حوالي 18 إلى 20 يومًا من الحمل، تبدأ خلايا القلب بالظهور.",
+      "tts": {
+        "text": "بعد حوالي ثمانية عشر إلى عشرين يومًا من الحمل، تبدأ خلايا القلب بالظهور.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-302",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تشكّل أنبوبًا بسيطًا.",
+      "text_markdown": "تشكّل أنبوبًا بسيطًا.",
+      "tts": {
+        "text": "تشكّل أنبوبًا بسيطًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-303",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يبدأ هذا الأنبوب بالنبض في حوالي اليوم 22.",
+      "text_markdown": "يبدأ هذا الأنبوب بالنبض في حوالي اليوم 22.",
+      "tts": {
+        "text": "يبدأ هذا الأنبوب بالنبض في حوالي اليوم الثاني والعشرين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-304",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "في هذه المرحلة، الجنين أصغر من حبة أرز.",
+      "text_markdown": "في هذه المرحلة، الجنين أصغر من حبة أرز.",
+      "tts": {
+        "text": "في هذه المرحلة، الجنين أصغر من حبة أرز.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-305",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p64",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يدفع الأنبوب النابض السوائل عبر الجسم الصغير.",
+      "text_markdown": "يدفع الأنبوب النابض السوائل عبر الجسم الصغير.",
+      "tts": {
+        "text": "يدفع الأنبوب النابض السوائل عبر الجسم الصغير.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-306",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "خلال الأسابيع القليلة التالية، ينطوي الأنبوب ويلتوي.",
+      "text_markdown": "خلال الأسابيع القليلة التالية، ينطوي الأنبوب ويلتوي.",
+      "tts": {
+        "text": "خلال الأسابيع القليلة التالية، ينطوي الأنبوب ويلتوي.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-307",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ينحني على شكل حرف إس.",
+      "text_markdown": "ينحني على شكل حرف إس.",
+      "tts": {
+        "text": "ينحني على شكل حرف إس.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-308",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ينقسم إلى حُجرات.",
+      "text_markdown": "ينقسم إلى حُجرات.",
+      "tts": {
+        "text": "ينقسم إلى حُجرات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-309",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تنمو جدران تُسمى الحواجز بين الحُجرات.",
+      "text_markdown": "تنمو جدران تُسمى الحواجز بين الحُجرات.",
+      "tts": {
+        "text": "تنمو جدران تُسمى الحواجز بين الحُجرات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-310",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الحاجز هو جدار يفصل بين مساحتين.",
+      "text_markdown": "الحاجز هو جدار يفصل بين مساحتين.",
+      "tts": {
+        "text": "الحاجز هو جدار يفصل بين مساحتين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-311",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "الجمع منها هو الحواجز.",
+      "text_markdown": "الجمع منها هو الحواجز.",
+      "tts": {
+        "text": "الجمع منها هو الحواجز.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-312",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "بحلول حوالي ثمانية أسابيع، يكون للقلب أربع حُجرات مميزة.",
+      "text_markdown": "بحلول حوالي ثمانية أسابيع، يكون للقلب أربع حُجرات مميزة.",
+      "tts": {
+        "text": "بحلول حوالي ثمانية أسابيع، يكون للقلب أربع حُجرات مميزة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-313",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قلب الجنين يعمل بشكل مختلف عن القلب بعد الولادة.",
+      "text_markdown": "قلب الجنين يعمل بشكل مختلف عن القلب بعد الولادة.",
+      "tts": {
+        "text": "قلب الجنين يعمل بشكل مختلف عن القلب بعد الولادة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-314",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الجنين هو طفل لم يولد بعد بعد حوالي ثمانية أسابيع من النمو.",
+      "text_markdown": "الجنين هو طفل لم يولد بعد بعد حوالي ثمانية أسابيع من النمو.",
+      "tts": {
+        "text": "الجنين هو طفل لم يولد بعد بعد حوالي ثمانية أسابيع من النمو.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-315",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الجنين لا يتنفس الهواء.",
+      "text_markdown": "الجنين لا يتنفس الهواء.",
+      "tts": {
+        "text": "الجنين لا يتنفس الهواء.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-316",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "رئتاه مليئتان بالسوائل.",
+      "text_markdown": "رئتاه مليئتان بالسوائل.",
+      "tts": {
+        "text": "رئتاه مليئتان بالسوائل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-317",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "يحصل على الأكسجين من الأم عبر المشيمة.",
+      "text_markdown": "يحصل على الأكسجين من الأم عبر المشيمة.",
+      "tts": {
+        "text": "يحصل على الأكسجين من الأم عبر المشيمة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-318",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "المشيمة عضو يربط الجنين بإمداد دم الأم.",
+      "text_markdown": "المشيمة عضو يربط الجنين بإمداد دم الأم.",
+      "tts": {
+        "text": "المشيمة عضو يربط الجنين بإمداد دم الأم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-319",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p66",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ينتقل الأكسجين والمغذيات من دم الأم إلى دم الجنين عبر المشيمة.",
+      "text_markdown": "ينتقل الأكسجين والمغذيات من دم الأم إلى دم الجنين عبر المشيمة.",
+      "tts": {
+        "text": "ينتقل الأكسجين والمغذيات من دم الأم إلى دم الجنين عبر المشيمة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-320",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ولأن رئتي الجنين ليستا قيد الاستخدام، فإن القلب يملك طريقًا مختصرًا.",
+      "text_markdown": "ولأن رئتي الجنين ليستا قيد الاستخدام، فإن القلب يملك طريقًا مختصرًا.",
+      "tts": {
+        "text": "ولأن رئتي الجنين ليستا قيد الاستخدام، فإن القلب يملك طريقًا مختصرًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-321",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يوجد فتحة بين الأذين الأيمن والأذين الأيسر.",
+      "text_markdown": "يوجد فتحة بين الأذين الأيمن والأذين الأيسر.",
+      "tts": {
+        "text": "يوجد فتحة بين الأذين الأيمن والأذين الأيسر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-322",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هذه الفتحة تُسمى الثقبة البيضوية.",
+      "text_markdown": "هذه الفتحة تُسمى الثقبة البيضوية.",
+      "tts": {
+        "text": "هذه الفتحة تُسمى الثقبة البيضوية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-323",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كلمة ثقبة تعني «فتحة» باللاتينية.",
+      "text_markdown": "كلمة ثقبة تعني «فتحة» باللاتينية.",
+      "tts": {
+        "text": "كلمة ثقبة تعني «فتحة» باللاتينية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-324",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p67",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "كلمة بيضوية تعني «على شكل بيضة». يمر الدم عبر هذه الفتحة، متجاوزًا الرئتين.",
+      "text_markdown": "كلمة بيضوية تعني «على شكل بيضة». يمر الدم عبر هذه الفتحة، متجاوزًا الرئتين.",
+      "tts": {
+        "text": "كلمة بيضوية تعني «على شكل بيضة». يمر الدم عبر هذه الفتحة، متجاوزًا الرئتين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-325",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p67",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "معظم الدم يذهب مباشرة إلى الجانب الأيسر من القلب ثم إلى الجسم.",
+      "text_markdown": "معظم الدم يذهب مباشرة إلى الجانب الأيسر من القلب ثم إلى الجسم.",
+      "tts": {
+        "text": "معظم الدم يذهب مباشرة إلى الجانب الأيسر من القلب ثم إلى الجسم.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-326",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك طريق مختصر آخر يُسمى القناة الشريانية.",
+      "text_markdown": "هناك طريق مختصر آخر يُسمى القناة الشريانية.",
+      "tts": {
+        "text": "هناك طريق مختصر آخر يُسمى القناة الشريانية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-327",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا وعاء دموي صغير يربط الشريان الرئوي بالأبهر.",
+      "text_markdown": "هذا وعاء دموي صغير يربط الشريان الرئوي بالأبهر.",
+      "tts": {
+        "text": "هذا وعاء دموي صغير يربط الشريان الرئوي بالأبهر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-328",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يحوّل الدم بعيدًا عن الرئتين.",
+      "text_markdown": "يحوّل الدم بعيدًا عن الرئتين.",
+      "tts": {
+        "text": "يحوّل الدم بعيدًا عن الرئتين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-329",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "هذان الطريقان المختصران يضمنان وصول الدم إلى الجسم بسرعة دون رحلة مهدورة إلى رئتين لم تعملا بعد.",
+      "text_markdown": "هذان الطريقان المختصران يضمنان وصول الدم إلى الجسم بسرعة دون رحلة مهدورة إلى رئتين لم تعملا بعد.",
+      "tts": {
+        "text": "هذان الطريقان المختصران يضمنان وصول الدم إلى الجسم بسرعة دون رحلة مهدورة إلى رئتين لم تعملا بعد.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-330",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "عند الولادة، يتغير كل شيء.",
+      "text_markdown": "عند الولادة، يتغير كل شيء.",
+      "tts": {
+        "text": "عند الولادة، يتغير كل شيء.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-331",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يأخذ الطفل نَفَسه الأول.",
+      "text_markdown": "يأخذ الطفل نَفَسه الأول.",
+      "tts": {
+        "text": "يأخذ الطفل نَفَسه الأول.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-332",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تتمدد الرئتان.",
+      "text_markdown": "تتمدد الرئتان.",
+      "tts": {
+        "text": "تتمدد الرئتان.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-333",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يبدأ الدم بالتدفق إلى الرئتين لالتقاط الأكسجين.",
+      "text_markdown": "يبدأ الدم بالتدفق إلى الرئتين لالتقاط الأكسجين.",
+      "tts": {
+        "text": "يبدأ الدم بالتدفق إلى الرئتين لالتقاط الأكسجين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-334",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تُغلق الثقبة البيضوية.",
+      "text_markdown": "تُغلق الثقبة البيضوية.",
+      "tts": {
+        "text": "تُغلق الثقبة البيضوية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-335",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "عادةً تُختم تمامًا خلال السنة الأولى من العمر.",
+      "text_markdown": "عادةً تُختم تمامًا خلال السنة الأولى من العمر.",
+      "tts": {
+        "text": "عادةً تُختم تمامًا خلال السنة الأولى من العمر.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-336",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "تُغلق القناة الشريانية أيضًا.",
+      "text_markdown": "تُغلق القناة الشريانية أيضًا.",
+      "tts": {
+        "text": "تُغلق القناة الشريانية أيضًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-337",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p69",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "عادةً ما تُغلق خلال الأيام القليلة الأولى بعد الولادة.",
+      "text_markdown": "عادةً ما تُغلق خلال الأيام القليلة الأولى بعد الولادة.",
+      "tts": {
+        "text": "عادةً ما تُغلق خلال الأيام القليلة الأولى بعد الولادة.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-338",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أحيانًا لا تُغلق هذه التراكيب بشكل سليم.",
+      "text_markdown": "أحيانًا لا تُغلق هذه التراكيب بشكل سليم.",
+      "tts": {
+        "text": "أحيانًا لا تُغلق هذه التراكيب بشكل سليم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-339",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الثقبة البيضوية التي تبقى مفتوحة تُسمى الثقبة البيضوية السالكة.",
+      "text_markdown": "الثقبة البيضوية التي تبقى مفتوحة تُسمى الثقبة البيضوية السالكة.",
+      "tts": {
+        "text": "الثقبة البيضوية التي تبقى مفتوحة تُسمى الثقبة البيضوية السالكة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-340",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كلمة سالكة تعني «مفتوحة». هذه الحالة شائعة.",
+      "text_markdown": "كلمة سالكة تعني «مفتوحة». هذه الحالة شائعة.",
+      "tts": {
+        "text": "كلمة سالكة تعني «مفتوحة». هذه الحالة شائعة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-341",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "حوالي شخص واحد من كل أربعة أشخاص يعاني منها.",
+      "text_markdown": "حوالي شخص واحد من كل أربعة أشخاص يعاني منها.",
+      "tts": {
+        "text": "حوالي شخص واحد من كل أربعة أشخاص يعاني منها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-342",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "معظمهم لا يعرفون ذلك أبدًا.",
+      "text_markdown": "معظمهم لا يعرفون ذلك أبدًا.",
+      "tts": {
+        "text": "معظمهم لا يعرفون ذلك أبدًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-343",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "نادرًا ما تُسبب مشاكل.",
+      "text_markdown": "نادرًا ما تُسبب مشاكل.",
+      "tts": {
+        "text": "نادرًا ما تُسبب مشاكل.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch07-344",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "التحول عند الولادة أمر مدهش.",
+      "text_markdown": "التحول عند الولادة أمر مدهش.",
+      "tts": {
+        "text": "التحول عند الولادة أمر مدهش.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch07-345",
+      "part": 0,
+      "chapter": 7,
+      "title": "القلب قبل الولادة",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في غضون ثوانٍ، يتحول القلب من دورة دموية جنينية إلى نمط الدورة الدموية الذي سيستخدمه لبقية حياته.",
+      "text_markdown": "في غضون ثوانٍ، يتحول القلب من دورة دموية جنينية إلى نمط الدورة الدموية الذي سيستخدمه لبقية حياته.",
+      "tts": {
+        "text": "في غضون ثوانٍ، يتحول القلب من دورة دموية جنينية إلى نمط الدورة الدموية الذي سيستخدمه لبقية حياته.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-346",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "عمر كامل من النبضات",
+      "text_markdown": "عمر كامل من النبضات"
+    },
+    {
+      "id": "ch08-347",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ينبض القلب البشري في المتوسط حوالي 2.5 مليار مرة في حياة كاملة.",
+      "text_markdown": "ينبض القلب البشري في المتوسط حوالي 2.5 مليار مرة في حياة كاملة.",
+      "tts": {
+        "text": "ينبض القلب البشري في المتوسط حوالي اثنين فاصلة خمسة مليار مرة في حياة كاملة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-348",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا الرقم مذهل.",
+      "text_markdown": "هذا الرقم مذهل.",
+      "tts": {
+        "text": "هذا الرقم مذهل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-349",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لا توجد مضخة ميكانيكية في العالم تضاهي هذه الموثوقية.",
+      "text_markdown": "لا توجد مضخة ميكانيكية في العالم تضاهي هذه الموثوقية.",
+      "tts": {
+        "text": "لا توجد مضخة ميكانيكية في العالم تضاهي هذه الموثوقية.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-350",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في مرحلة الرضاعة، ينبض القلب بسرعة.",
+      "text_markdown": "في مرحلة الرضاعة، ينبض القلب بسرعة.",
+      "tts": {
+        "text": "في مرحلة الرضاعة، ينبض القلب بسرعة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-351",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "معدل ضربات قلب المولود الجديد هو 120 إلى 160 نبضة في الدقيقة.",
+      "text_markdown": "معدل ضربات قلب المولود الجديد هو 120 إلى 160 نبضة في الدقيقة.",
+      "tts": {
+        "text": "معدل ضربات قلب المولود الجديد هو مئة وعشرين إلى مئة وستين نبضة في الدقيقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-352",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الأطفال الرضع صغار.",
+      "text_markdown": "الأطفال الرضع صغار.",
+      "tts": {
+        "text": "الأطفال الرضع صغار.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-353",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "قلوبهم صغيرة.",
+      "text_markdown": "قلوبهم صغيرة.",
+      "tts": {
+        "text": "قلوبهم صغيرة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-354",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p74",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "القلوب الصغيرة يجب أن تنبض بشكل أسرع لتضخ ما يكفي من الدم.",
+      "text_markdown": "القلوب الصغيرة يجب أن تنبض بشكل أسرع لتضخ ما يكفي من الدم.",
+      "tts": {
+        "text": "القلوب الصغيرة يجب أن تنبض بشكل أسرع لتضخ ما يكفي من الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-355",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p74",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "كلما نما الطفل، نما قلبه أيضًا.",
+      "text_markdown": "كلما نما الطفل، نما قلبه أيضًا.",
+      "tts": {
+        "text": "كلما نما الطفل، نما قلبه أيضًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-356",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p74",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "يتباطأ معدل ضربات القلب تدريجيًا.",
+      "text_markdown": "يتباطأ معدل ضربات القلب تدريجيًا.",
+      "tts": {
+        "text": "يتباطأ معدل ضربات القلب تدريجيًا.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-357",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بحلول مرحلة البلوغ، يستقر معدل ضربات القلب أثناء الراحة عند 60 إلى 100 نبضة في الدقيقة.",
+      "text_markdown": "بحلول مرحلة البلوغ، يستقر معدل ضربات القلب أثناء الراحة عند 60 إلى 100 نبضة في الدقيقة.",
+      "tts": {
+        "text": "بحلول مرحلة البلوغ، يستقر معدل ضربات القلب أثناء الراحة عند ستين إلى مئة نبضة في الدقيقة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-358",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يبقى هذا المعدل ثابتًا إلى حد ما لعقود.",
+      "text_markdown": "يبقى هذا المعدل ثابتًا إلى حد ما لعقود.",
+      "tts": {
+        "text": "يبقى هذا المعدل ثابتًا إلى حد ما لعقود.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-359",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "في الشيخوخة، قد يتباطأ القلب قليلًا.",
+      "text_markdown": "في الشيخوخة، قد يتباطأ القلب قليلًا.",
+      "tts": {
+        "text": "في الشيخوخة، قد يتباطأ القلب قليلًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-360",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "عضلة القلب تتيبس مع مرور الوقت.",
+      "text_markdown": "عضلة القلب تتيبس مع مرور الوقت.",
+      "tts": {
+        "text": "عضلة القلب تتيبس مع مرور الوقت.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-361",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p75",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "قد تتسمك الصمامات.",
+      "text_markdown": "قد تتسمك الصمامات.",
+      "tts": {
+        "text": "قد تتسمك الصمامات.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-362",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p75",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "قد يصبح الجهاز الكهربائي أقل موثوقية.",
+      "text_markdown": "قد يصبح الجهاز الكهربائي أقل موثوقية.",
+      "tts": {
+        "text": "قد يصبح الجهاز الكهربائي أقل موثوقية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-363",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p75",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "لكن القلب يستمر بالنبض.",
+      "text_markdown": "لكن القلب يستمر بالنبض.",
+      "tts": {
+        "text": "لكن القلب يستمر بالنبض.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-364",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أمراض القلب يمكن أن تُربك هذا الإيقاع.",
+      "text_markdown": "أمراض القلب يمكن أن تُربك هذا الإيقاع.",
+      "tts": {
+        "text": "أمراض القلب يمكن أن تُربك هذا الإيقاع.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-365",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "مرض الشريان التاجي هو أكثرها شيوعًا.",
+      "text_markdown": "مرض الشريان التاجي هو أكثرها شيوعًا.",
+      "tts": {
+        "text": "مرض الشريان التاجي هو أكثرها شيوعًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-366",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الشرايين التاجية هي الأوعية الدموية التي تُغذي عضلة القلب نفسها.",
+      "text_markdown": "الشرايين التاجية هي الأوعية الدموية التي تُغذي عضلة القلب نفسها.",
+      "tts": {
+        "text": "الشرايين التاجية هي الأوعية الدموية التي تُغذي عضلة القلب نفسها.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-367",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يحتاج القلب إلى إمدادات الدم الخاصة به ليعمل.",
+      "text_markdown": "يحتاج القلب إلى إمدادات الدم الخاصة به ليعمل.",
+      "tts": {
+        "text": "يحتاج القلب إلى إمدادات الدم الخاصة به ليعمل.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-368",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p76",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "مرض الشريان التاجي يحدث عندما تتراكم رواسب دهنية تُسمى اللويحات داخل هذه الشرايين.",
+      "text_markdown": "مرض الشريان التاجي يحدث عندما تتراكم رواسب دهنية تُسمى اللويحات داخل هذه الشرايين.",
+      "tts": {
+        "text": "مرض الشريان التاجي يحدث عندما تتراكم رواسب دهنية تُسمى اللويحات داخل هذه الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-369",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p76",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "اللويحات تضيّق الشرايين.",
+      "text_markdown": "اللويحات تضيّق الشرايين.",
+      "tts": {
+        "text": "اللويحات تضيّق الشرايين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-370",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p76",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "تصل كمية دم أقل إلى عضلة القلب.",
+      "text_markdown": "تصل كمية دم أقل إلى عضلة القلب.",
+      "tts": {
+        "text": "تصل كمية دم أقل إلى عضلة القلب.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-371",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إذا تمزقت لويحة، يمكن أن تتكون جلطة دموية.",
+      "text_markdown": "إذا تمزقت لويحة، يمكن أن تتكون جلطة دموية.",
+      "tts": {
+        "text": "إذا تمزقت لويحة، يمكن أن تتكون جلطة دموية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-372",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الجلطة الدموية كتلة صلبة من الدم.",
+      "text_markdown": "الجلطة الدموية كتلة صلبة من الدم.",
+      "tts": {
+        "text": "الجلطة الدموية كتلة صلبة من الدم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-373",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إذا سدّت الجلطة شريانًا تاجيًا تمامًا، يُحرم جزء من عضلة القلب من الأكسجين.",
+      "text_markdown": "إذا سدّت الجلطة شريانًا تاجيًا تمامًا، يُحرم جزء من عضلة القلب من الأكسجين.",
+      "tts": {
+        "text": "إذا سدّت الجلطة شريانًا تاجيًا تمامًا، يُحرم جزء من عضلة القلب من الأكسجين.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-374",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ذلك النسيج العضلي يبدأ بالموت.",
+      "text_markdown": "ذلك النسيج العضلي يبدأ بالموت.",
+      "tts": {
+        "text": "ذلك النسيج العضلي يبدأ بالموت.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-375",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p77",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذه نوبة قلبية.",
+      "text_markdown": "هذه نوبة قلبية.",
+      "tts": {
+        "text": "هذه نوبة قلبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-376",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p77",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "المصطلح الطبي هو احتشاء عضلة القلب.",
+      "text_markdown": "المصطلح الطبي هو احتشاء عضلة القلب.",
+      "tts": {
+        "text": "المصطلح الطبي هو احتشاء عضلة القلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-377",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p77",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "كلمة عضلة القلب تعني «المتعلقة بعضلة القلب». والاحتشاء يعني «موت النسيج بسبب نقص الدم».",
+      "text_markdown": "كلمة عضلة القلب تعني «المتعلقة بعضلة القلب». والاحتشاء يعني «موت النسيج بسبب نقص الدم».",
+      "tts": {
+        "text": "كلمة عضلة القلب تعني «المتعلقة بعضلة القلب». والاحتشاء يعني «موت النسيج بسبب نقص الدم».",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-378",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "العلاج السريع يمكن أن يُنقذ عضلة القلب أثناء النوبة القلبية.",
+      "text_markdown": "العلاج السريع يمكن أن يُنقذ عضلة القلب أثناء النوبة القلبية.",
+      "tts": {
+        "text": "العلاج السريع يمكن أن يُنقذ عضلة القلب أثناء النوبة القلبية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-379",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "قد يضع الأطباء دعامة.",
+      "text_markdown": "قد يضع الأطباء دعامة.",
+      "tts": {
+        "text": "قد يضع الأطباء دعامة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-380",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الدعامة أنبوب شبكي صغير جدًا.",
+      "text_markdown": "الدعامة أنبوب شبكي صغير جدًا.",
+      "tts": {
+        "text": "الدعامة أنبوب شبكي صغير جدًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-381",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "تُبقي الشريان مفتوحًا.",
+      "text_markdown": "تُبقي الشريان مفتوحًا.",
+      "tts": {
+        "text": "تُبقي الشريان مفتوحًا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-382",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p78",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "قد يُجري الأطباء أيضًا جراحة المجازة.",
+      "text_markdown": "قد يُجري الأطباء أيضًا جراحة المجازة.",
+      "tts": {
+        "text": "قد يُجري الأطباء أيضًا جراحة المجازة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-383",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p78",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "يأخذون وعاءً دمويًا سليمًا من جزء آخر من الجسم ويستخدمونه لإعادة توجيه الدم حول الانسداد.",
+      "text_markdown": "يأخذون وعاءً دمويًا سليمًا من جزء آخر من الجسم ويستخدمونه لإعادة توجيه الدم حول الانسداد.",
+      "tts": {
+        "text": "يأخذون وعاءً دمويًا سليمًا من جزء آخر من الجسم ويستخدمونه لإعادة توجيه الدم حول الانسداد.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-384",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "فشل القلب حالة مختلفة.",
+      "text_markdown": "فشل القلب حالة مختلفة.",
+      "tts": {
+        "text": "فشل القلب حالة مختلفة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-385",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في فشل القلب، يكون القلب ضعيفًا جدًا فلا يستطيع ضخ ما يكفي من الدم لتلبية حاجات الجسم.",
+      "text_markdown": "في فشل القلب، يكون القلب ضعيفًا جدًا فلا يستطيع ضخ ما يكفي من الدم لتلبية حاجات الجسم.",
+      "tts": {
+        "text": "في فشل القلب، يكون القلب ضعيفًا جدًا فلا يستطيع ضخ ما يكفي من الدم لتلبية حاجات الجسم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-386",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لا يعني ذلك أن القلب قد توقف.",
+      "text_markdown": "لا يعني ذلك أن القلب قد توقف.",
+      "tts": {
+        "text": "لا يعني ذلك أن القلب قد توقف.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-387",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يعني أن القلب لا يستطيع مواكبة الطلب.",
+      "text_markdown": "يعني أن القلب لا يستطيع مواكبة الطلب.",
+      "tts": {
+        "text": "يعني أن القلب لا يستطيع مواكبة الطلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-388",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p79",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "قد تتراكم السوائل في الرئتين والساقين.",
+      "text_markdown": "قد تتراكم السوائل في الرئتين والساقين.",
+      "tts": {
+        "text": "قد تتراكم السوائل في الرئتين والساقين.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-389",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بالنسبة لبعض المرضى، الخيار الوحيد هو زراعة قلب.",
+      "text_markdown": "بالنسبة لبعض المرضى، الخيار الوحيد هو زراعة قلب.",
+      "tts": {
+        "text": "بالنسبة لبعض المرضى، الخيار الوحيد هو زراعة قلب.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-390",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "زراعة القلب تستبدل قلبًا فاشلًا بقلب سليم من متبرع.",
+      "text_markdown": "زراعة القلب تستبدل قلبًا فاشلًا بقلب سليم من متبرع.",
+      "tts": {
+        "text": "زراعة القلب تستبدل قلبًا فاشلًا بقلب سليم من متبرع.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-391",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "في عام 1967، أجرى الدكتور كريستيان برنارد أول عملية زراعة قلب بشري ناجحة في جنوب أفريقيا.",
+      "text_markdown": "في عام 1967، أجرى الدكتور كريستيان برنارد أول عملية زراعة قلب بشري ناجحة في جنوب أفريقيا.",
+      "tts": {
+        "text": "في عام ألف وتسعمئة وسبعة وستين، أجرى الدكتور كريستيان برنارد أول عملية زراعة قلب بشري ناجحة في جنوب أفريقيا.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-392",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "اليوم، تُجرى آلاف عمليات زراعة القلب كل عام.",
+      "text_markdown": "اليوم، تُجرى آلاف عمليات زراعة القلب كل عام.",
+      "tts": {
+        "text": "اليوم، تُجرى آلاف عمليات زراعة القلب كل عام.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-393",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ابتكر العلم أيضًا قلوبًا اصطناعية.",
+      "text_markdown": "ابتكر العلم أيضًا قلوبًا اصطناعية.",
+      "tts": {
+        "text": "ابتكر العلم أيضًا قلوبًا اصطناعية.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-394",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p81",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذه الأجهزة الميكانيكية يمكنها إبقاء الدم متدفقًا بينما ينتظر المريض عملية الزراعة.",
+      "text_markdown": "هذه الأجهزة الميكانيكية يمكنها إبقاء الدم متدفقًا بينما ينتظر المريض عملية الزراعة.",
+      "tts": {
+        "text": "هذه الأجهزة الميكانيكية يمكنها إبقاء الدم متدفقًا بينما ينتظر المريض عملية الزراعة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-395",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p81",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنها ليست بدائل دائمة بعد.",
+      "text_markdown": "إنها ليست بدائل دائمة بعد.",
+      "tts": {
+        "text": "إنها ليست بدائل دائمة بعد.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-396",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p81",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لكن البحث مستمر.",
+      "text_markdown": "لكن البحث مستمر.",
+      "tts": {
+        "text": "لكن البحث مستمر.",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch08-397",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قلبك مدهش.",
+      "text_markdown": "قلبك مدهش.",
+      "tts": {
+        "text": "قلبك مدهش.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-398",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p82",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يعمل بلا راحة.",
+      "text_markdown": "يعمل بلا راحة.",
+      "tts": {
+        "text": "يعمل بلا راحة.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-399",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p82",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يتكيف مع احتياجاتك.",
+      "text_markdown": "يتكيف مع احتياجاتك.",
+      "tts": {
+        "text": "يتكيف مع احتياجاتك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-400",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p82",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "يستجيب للفرح والخوف والرياضة والنوم.",
+      "text_markdown": "يستجيب للفرح والخوف والرياضة والنوم.",
+      "tts": {
+        "text": "يستجيب للفرح والخوف والرياضة والنوم.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-401",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p82",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "إنه محرّك حياتك.",
+      "text_markdown": "إنه محرّك حياتك.",
+      "tts": {
+        "text": "إنه محرّك حياتك.",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch08-402",
+      "part": 0,
+      "chapter": 8,
+      "title": "عمر كامل من النبضات",
+      "paragraph_id": "p82",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "اعتنِ به، وسيعتني هو بك.",
+      "text_markdown": "اعتنِ به، وسيعتني هو بك.",
+      "tts": {
+        "text": "اعتنِ به، وسيعتني هو بك.",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

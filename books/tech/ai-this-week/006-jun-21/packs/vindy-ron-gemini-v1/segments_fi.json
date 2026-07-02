@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "fi",
+  "total_segments": 114,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tervetuloa AI This Week -ohjelmaan.",
+      "text_markdown": "Tervetuloa AI This Week -ohjelmaan.",
+      "title": "",
+      "tts": {
+        "text": "Tervetuloa AI This Week -ohjelmaan.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Olen Vindy.",
+      "text_markdown": "Olen Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Olen Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kanssani, kuten aina, on Ron.",
+      "text_markdown": "Kanssani, kuten aina, on Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kanssani, kuten aina, on Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Hyvä olla täällä, Vindy.",
+      "text_markdown": "Hyvä olla täällä, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Hyvä olla täällä, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tänään on sunnuntai, 21. kesäkuuta 2026.",
+      "text_markdown": "Tänään on sunnuntai, 21. kesäkuuta 2026.",
+      "title": "",
+      "tts": {
+        "text": "Tänään on sunnuntai, kesäkuun kahdeskymmenesensimmäinen, kaksituhatta kaksikymmentäkuusi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Viime viikolla puhuimme itsestämme; tänään menemme toiseen suuntaan – aina vallan keskuksiin asti.",
+      "text_markdown": "Viime viikolla puhuimme itsestämme; tänään menemme toiseen suuntaan – aina vallan keskuksiin asti.",
+      "title": "",
+      "tts": {
+        "text": "Viime viikolla puhuimme itsestämme; tänään menemme toiseen suuntaan – aina vallan keskuksiin asti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kuka hallitsee tekoälyn käyttöönottoa, kuka maksaa rakentamisesta, kuka omistaa piin.",
+      "text_markdown": "Kuka hallitsee tekoälyn käyttöönottoa, kuka maksaa rakentamisesta, kuka omistaa piin.",
+      "title": "",
+      "tts": {
+        "text": "Kuka hallitsee tekoälyn käyttöönottoa, kuka maksaa rakentamisesta, kuka omistaa piin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Seuraavaksi – Yhdysvaltain kauppaministeriö veti amerikkalaisen mallin julkisesta käytöstä viime perjantaina, ja siitä aloitamme.",
+      "text_markdown": "Seuraavaksi – Yhdysvaltain kauppaministeriö veti amerikkalaisen mallin julkisesta käytöstä viime perjantaina, ja siitä aloitamme.",
+      "title": "",
+      "tts": {
+        "text": "Seuraavaksi – Yhdysvaltain kauppaministeriö veti amerikkalaisen mallin julkisesta käytöstä viime perjantaina, ja siitä aloitamme.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sitten datakeskusten rakentaminen, jossa ilmoitukset ja todellisuus eivät kohtaa.",
+      "text_markdown": "Sitten datakeskusten rakentaminen, jossa ilmoitukset ja todellisuus eivät kohtaa.",
+      "title": "",
+      "tts": {
+        "text": "Sitten datakeskusten rakentaminen, jossa ilmoitukset ja todellisuus eivät kohtaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sitten Yhdysvaltojen ja Kiinan vertailu, jossa klisee on korvattu todellisella rajoittavalla tekijällä.",
+      "text_markdown": "Sitten Yhdysvaltojen ja Kiinan vertailu, jossa klisee on korvattu todellisella rajoittavalla tekijällä.",
+      "title": "",
+      "tts": {
+        "text": "Sitten Yhdysvaltojen ja Kiinan vertailu, jossa klisee on korvattu todellisella rajoittavalla tekijällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja viikon konsepti – yksi rivi Oraclen taseessa, joka kertoo sinulle melkein kaiken.",
+      "text_markdown": "Ja viikon konsepti – yksi rivi Oraclen taseessa, joka kertoo sinulle melkein kaiken.",
+      "title": "",
+      "tts": {
+        "text": "Ja viikon konsepti – yksi rivi Oraclen taseessa, joka kertoo sinulle melkein kaiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, aloitetaan Anthropicista.",
+      "text_markdown": "Ron, aloitetaan Anthropicista.",
+      "title": "",
+      "tts": {
+        "text": "Ron, aloitetaan Anthropicista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mitä tapahtui kesäkuun kahdentenatoista.",
+      "text_markdown": "Mitä tapahtui kesäkuun kahdentenatoista.",
+      "title": "",
+      "tts": {
+        "text": "Mitä tapahtui kesäkuun kahdentenatoista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Perjantaina, kesäkuun kahdentenatoista, kello 17.21 itäistä aikaa, Anthropic veti kaksi uusinta malliaan – Claude Mythos 5 ja Claude Fable 5 – pois käytöstä.",
+      "text_markdown": "Perjantaina, kesäkuun kahdentenatoista, kello 17.21 itäistä aikaa, Anthropic veti kaksi uusinta malliaan – Claude Mythos 5 ja Claude Fable 5 – pois käytöstä.",
+      "title": "",
+      "tts": {
+        "text": "Perjantaina, kesäkuun kahdentenatoista, kello viisi kaksikymmentäyksi iltapäivällä itäistä aikaa, Anthropic veti kaksi uusinta malliaan – Claude Mythos viisi ja Claude Fable viisi – pois käytöstä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ei huollon vuoksi, eikä oman aloitteensa mukaisen turvallisuustarkastuksen vuoksi.",
+      "text_markdown": "Ei huollon vuoksi, eikä oman aloitteensa mukaisen turvallisuustarkastuksen vuoksi.",
+      "title": "",
+      "tts": {
+        "text": "Ei huollon vuoksi, eikä oman aloitteensa mukaisen turvallisuustarkastuksen vuoksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "He poistivat ne käytöstä, koska Yhdysvaltain kauppaministeriö antoi direktiivin vedoten vientivalvontaan.",
+      "text_markdown": "He poistivat ne käytöstä, koska Yhdysvaltain kauppaministeriö antoi direktiivin vedoten vientivalvontaan.",
+      "title": "",
+      "tts": {
+        "text": "He poistivat ne käytöstä, koska Yhdysvaltain kauppaministeriö antoi direktiivin vedoten vientivalvontaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mikä oli tekninen syy.",
+      "text_markdown": "Mikä oli tekninen syy.",
+      "title": "",
+      "tts": {
+        "text": "Mikä oli tekninen syy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jailbreak demonstroitiin, tiettävästi toisen yrityksen toimesta, ja se tuotti tulostetta, jota kauppaministeriö piti vientivalvonnan alaisena.",
+      "text_markdown": "Jailbreak demonstroitiin, tiettävästi toisen yrityksen toimesta, ja se tuotti tulostetta, jota kauppaministeriö piti vientivalvonnan alaisena.",
+      "title": "",
+      "tts": {
+        "text": "Jailbreak demonstroitiin, tiettävästi toisen yrityksen toimesta, ja se tuotti tulostetta, jota kauppaministeriö piti vientivalvonnan alaisena.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Fortune raportoi, että Amazon oli se, joka hälytti Valkoisen talon asiasta.",
+      "text_markdown": "Fortune raportoi, että Amazon oli se, joka hälytti Valkoisen talon asiasta.",
+      "title": "",
+      "tts": {
+        "text": "Fortune raportoi, että Amazon oli se, joka hälytti Valkoisen talon asiasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja miten Anthropic vastasi.",
+      "text_markdown": "Ja miten Anthropic vastasi.",
+      "title": "",
+      "tts": {
+        "text": "Ja miten Anthropic vastasi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Anthropic kiistää julkisesti perustelun.",
+      "text_markdown": "Anthropic kiistää julkisesti perustelun.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic kiistää julkisesti perustelun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Heidän lausunnossaan jailbreakia kutsuttiin – ja lainaan – ”kapeaksi, ei-universaaliksi”, ja lisättiin, että sama tuloste on saatavilla muista malleista, mukaan lukien OpenAI:n GPT-5.5.",
+      "text_markdown": "Heidän lausunnossaan jailbreakia kutsuttiin – ja lainaan – ”kapeaksi, ei-universaaliksi”, ja lisättiin, että sama tuloste on saatavilla muista malleista, mukaan lukien OpenAI:n GPT-5.5.",
+      "title": "",
+      "tts": {
+        "text": "Heidän lausunnossaan jailbreakia kutsuttiin – ja lainaan – ”kapeaksi, ei-universaaliksi”, ja lisättiin, että sama tuloste on saatavilla muista malleista, mukaan lukien OpenAI:n GPT viisi piste viisi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Heidän yhteenvetonsa: ”hallituksen toimet perustuvat väärinkäsitykseen.”",
+      "text_markdown": "Heidän yhteenvetonsa: ”hallituksen toimet perustuvat väärinkäsitykseen.”",
+      "title": "",
+      "tts": {
+        "text": "Heidän yhteenvetonsa: ”hallituksen toimet perustuvat väärinkäsitykseen.”",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tämä on epätavallisen suora erimielisyys Yhdysvaltain hallituksen kanssa tekoälylaboratoriolta.",
+      "text_markdown": "Tämä on epätavallisen suora erimielisyys Yhdysvaltain hallituksen kanssa tekoälylaboratoriolta.",
+      "title": "",
+      "tts": {
+        "text": "Tämä on epätavallisen suora erimielisyys Yhdysvaltain hallituksen kanssa tekoälylaboratoriolta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Niin on, ja sen alla oleva rakenteellinen tosiasia on otsikko.",
+      "text_markdown": "Niin on, ja sen alla oleva rakenteellinen tosiasia on otsikko.",
+      "title": "",
+      "tts": {
+        "text": "Niin on, ja sen alla oleva rakenteellinen tosiasia on otsikko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kauppaministeriö voi nyt määrätä yksityisen amerikkalaisen tekoälylaboratorion poistamaan mallin käytöstä vedoten vientivalvontaan, ja tämä määräys astuu voimaan 72 tunnin kuluessa.",
+      "text_markdown": "Kauppaministeriö voi nyt määrätä yksityisen amerikkalaisen tekoälylaboratorion poistamaan mallin käytöstä vedoten vientivalvontaan, ja tämä määräys astuu voimaan 72 tunnin kuluessa.",
+      "title": "",
+      "tts": {
+        "text": "Kauppaministeriö voi nyt määrätä yksityisen amerikkalaisen tekoälylaboratorion poistamaan mallin käytöstä vedoten vientivalvontaan, ja tämä määräys astuu voimaan seitsemänkymmenenkahden tunnin kuluessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ajattelitpa sitten, että määräys oli oikea tai ei.",
+      "text_markdown": "Ajattelitpa sitten, että määräys oli oikea tai ei.",
+      "title": "",
+      "tts": {
+        "text": "Ajattelitpa sitten, että määräys oli oikea tai ei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ajattelitpa sitten, että määräys oli oikea tai ei.",
+      "text_markdown": "Ajattelitpa sitten, että määräys oli oikea tai ei.",
+      "title": "",
+      "tts": {
+        "text": "Ajattelitpa sitten, että määräys oli oikea tai ei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Itse auktoriteetti, nopeus ja ennakkotapaus ovat ne, jotka merkitsevät.",
+      "text_markdown": "Itse auktoriteetti, nopeus ja ennakkotapaus ovat ne, jotka merkitsevät.",
+      "title": "",
+      "tts": {
+        "text": "Itse auktoriteetti, nopeus ja ennakkotapaus ovat ne, jotka merkitsevät.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja Amazonin rooli tässä.",
+      "text_markdown": "Ja Amazonin rooli tässä.",
+      "title": "",
+      "tts": {
+        "text": "Ja Amazonin rooli tässä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sitä osaa kannattaa seurata.",
+      "text_markdown": "Sitä osaa kannattaa seurata.",
+      "title": "",
+      "tts": {
+        "text": "Sitä osaa kannattaa seurata.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Amazon on merkittävä Anthropicin sijoittaja ja kilpailee myös Anthropicin kanssa perusmallimarkkinoilla oman työnsä kautta.",
+      "text_markdown": "Amazon on merkittävä Anthropicin sijoittaja ja kilpailee myös Anthropicin kanssa perusmallimarkkinoilla oman työnsä kautta.",
+      "title": "",
+      "tts": {
+        "text": "Amazon on merkittävä Anthropicin sijoittaja ja kilpailee myös Anthropicin kanssa perusmallimarkkinoilla oman työnsä kautta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jos kilpailijan varoitus hallitukselle voi poistaa kilpailijan mallin käytöstä pitkän viikonlopun aikana, se antaa uuden muodon alan dynamiikalle.",
+      "text_markdown": "Jos kilpailijan varoitus hallitukselle voi poistaa kilpailijan mallin käytöstä pitkän viikonlopun aikana, se antaa uuden muodon alan dynamiikalle.",
+      "title": "",
+      "tts": {
+        "text": "Jos kilpailijan varoitus hallitukselle voi poistaa kilpailijan mallin käytöstä pitkän viikonlopun aikana, se antaa uuden muodon alan dynamiikalle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siirrytään rakentamiseen.",
+      "text_markdown": "Siirrytään rakentamiseen.",
+      "title": "",
+      "tts": {
+        "text": "Siirrytään rakentamiseen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Stargate – OpenAI:n, Oraclen ja SoftBankin datakeskushanke.",
+      "text_markdown": "Stargate – OpenAI:n, Oraclen ja SoftBankin datakeskushanke.",
+      "title": "",
+      "tts": {
+        "text": "Stargate – OpenAI:n, Oraclen ja SoftBankin datakeskushanke.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mitkä ovat todelliset luvut.",
+      "text_markdown": "Mitkä ovat todelliset luvut.",
+      "title": "",
+      "tts": {
+        "text": "Mitkä ovat todelliset luvut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Stargate on ilmoittanut yhdentoista gigawatin Yhdysvaltain kapasiteetista.",
+      "text_markdown": "Stargate on ilmoittanut yhdentoista gigawatin Yhdysvaltain kapasiteetista.",
+      "title": "",
+      "tts": {
+        "text": "Stargate on ilmoittanut yhdentoista gigawatin Yhdysvaltain kapasiteetista.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kesäkuun puoliväliin mennessä noin kaksisataa megawattia on toiminnassa Abilenen Texasin toimipisteessä, vaihe yksi.",
+      "text_markdown": "Kesäkuun puoliväliin mennessä noin kaksisataa megawattia on toiminnassa Abilenen Texasin toimipisteessä, vaihe yksi.",
+      "title": "",
+      "tts": {
+        "text": "Kesäkuun puoliväliin mennessä noin kaksisataa megawattia on toiminnassa Abilenen Texasin toimipisteessä, vaihe yksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Yhdentoista gigawattia ilmoitettu, kaksisataa megawattia kytketty.",
+      "text_markdown": "Yhdentoista gigawattia ilmoitettu, kaksisataa megawattia kytketty.",
+      "title": "",
+      "tts": {
+        "text": "Yhdentoista gigawattia ilmoitettu, kaksisataa megawattia kytketty.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siinä on koko kuilu yhdellä rivillä.",
+      "text_markdown": "Siinä on koko kuilu yhdellä rivillä.",
+      "title": "",
+      "tts": {
+        "text": "Siinä on koko kuilu yhdellä rivillä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Niin on, ja selkein esimerkki löytyy New Mexicosta.",
+      "text_markdown": "Niin on, ja selkein esimerkki löytyy New Mexicosta.",
+      "title": "",
+      "tts": {
+        "text": "Niin on, ja selkein esimerkki löytyy New Mexicosta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Doña Anan piirikunnan toimipiste on suurin yksittäinen Stargate-kampus, jonka kapasiteetiksi on suunniteltu neljä ja puoli gigawattia.",
+      "text_markdown": "Doña Anan piirikunnan toimipiste on suurin yksittäinen Stargate-kampus, jonka kapasiteetiksi on suunniteltu neljä ja puoli gigawattia.",
+      "title": "",
+      "tts": {
+        "text": "Doña Anan piirikunnan toimipiste on suurin yksittäinen Stargate-kampus, jonka kapasiteetiksi on suunniteltu neljä ja puoli gigawattia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kahdeksantoista miljardia dollaria syndikoitua projektirahoitusta on paikallaan – Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG – plus kolmen miljardin dollarin oman pääoman sijoitus Blue Owlilta.",
+      "text_markdown": "Kahdeksantoista miljardia dollaria syndikoitua projektirahoitusta on paikallaan – Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG – plus kolmen miljardin dollarin oman pääoman sijoitus Blue Owlilta.",
+      "title": "",
+      "tts": {
+        "text": "Kahdeksantoista miljardia dollaria syndikoitua projektirahoitusta on paikallaan – Sumitomo Mitsui, B. N. P. Paribas, Goldman Sachs, M. U. F. G. – plus kolmen miljardin dollarin oman pääoman sijoitus Blue Owlilta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja rakennustilanne paikan päällä.",
+      "text_markdown": "Ja rakennustilanne paikan päällä.",
+      "title": "",
+      "tts": {
+        "text": "Ja rakennustilanne paikan päällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Toistaiseksi ei yhtään lapiota maassa.",
+      "text_markdown": "Toistaiseksi ei yhtään lapiota maassa.",
+      "title": "",
+      "tts": {
+        "text": "Toistaiseksi ei yhtään lapiota maassa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Toimipiste odottaa ilmanlaatulupaa New Mexicon ympäristöministeriöltä, jota odotettiin alun perin huhtikuun 22. päivänä, mutta joka on nyt siirretty heinäkuun 21. päivään yli 7 000 julkisen kommentin jälkeen.",
+      "text_markdown": "Toimipiste odottaa ilmanlaatulupaa New Mexicon ympäristöministeriöltä, jota odotettiin alun perin huhtikuun 22. päivänä, mutta joka on nyt siirretty heinäkuun 21. päivään yli 7 000 julkisen kommentin jälkeen.",
+      "title": "",
+      "tts": {
+        "text": "Toimipiste odottaa ilmanlaatulupaa New Mexicon ympäristöministeriöltä, jota odotettiin alun perin huhtikuun kahdentenakymmenentenätoisena päivänä, mutta joka on nyt siirretty heinäkuun kahdentenakymmenentenäensimmäisenä päivään yli seitsemäntuhannen julkisen kommentin jälkeen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kahdeksantoista miljardia dollaria sitoutettu, nolla lapiota maassa, yksi ilmanlaatulupahakemuksen määräaika.",
+      "text_markdown": "Kahdeksantoista miljardia dollaria sitoutettu, nolla lapiota maassa, yksi ilmanlaatulupahakemuksen määräaika.",
+      "title": "",
+      "tts": {
+        "text": "Kahdeksantoista miljardia dollaria sitoutettu, nolla lapiota maassa, yksi ilmanlaatulupahakemuksen määräaika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kuka kantaa vastuun, jos luvut eivät täsmää.",
+      "text_markdown": "Kuka kantaa vastuun, jos luvut eivät täsmää.",
+      "title": "",
+      "tts": {
+        "text": "Kuka kantaa vastuun, jos luvut eivät täsmää.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siinä vaiheessa Oracle muuttuu mielenkiintoiseksi.",
+      "text_markdown": "Siinä vaiheessa Oracle muuttuu mielenkiintoiseksi.",
+      "title": "",
+      "tts": {
+        "text": "Siinä vaiheessa Oracle muuttuu mielenkiintoiseksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oraclen Remaining Performance Obligations – kirjanpidollinen erä, joka kirjaa sopimukseen perustuvan, mutta vielä toimittamattoman tuoton – nousi 553 miljardiin dollariin Q3-tilikaudella 2026.",
+      "text_markdown": "Oraclen Remaining Performance Obligations – kirjanpidollinen erä, joka kirjaa sopimukseen perustuvan, mutta vielä toimittamattoman tuoton – nousi 553 miljardiin dollariin Q3-tilikaudella 2026.",
+      "title": "",
+      "tts": {
+        "text": "Oraclen Remaining Performance Obligations – kirjanpidollinen erä, joka kirjaa sopimukseen perustuvan, mutta vielä toimittamattoman tuoton – nousi viiteensataanviiteenkymmeneenkolmeen miljardiin dollariin Q kolme -tilikaudella kaksituhatta kaksikymmentäkuusi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Se on kasvanut 325 prosenttia edellisvuodesta, ja suurin osa tästä kasvusta liitetään julkisesti OpenAI:hin ja Stargateen.",
+      "text_markdown": "Se on kasvanut 325 prosenttia edellisvuodesta, ja suurin osa tästä kasvusta liitetään julkisesti OpenAI:hin ja Stargateen.",
+      "title": "",
+      "tts": {
+        "text": "Se on kasvanut kolmesataakaksikymmentäviisi prosenttia edellisvuodesta, ja suurin osa tästä kasvusta liitetään julkisesti OpenAI:hin ja Stargateen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja velkapuoli.",
+      "text_markdown": "Ja velkapuoli.",
+      "title": "",
+      "tts": {
+        "text": "Ja velkapuoli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kokonaismääräiset lainat nousivat 134,6 miljardiin dollariin helmikuun 28. päivään mennessä.",
+      "text_markdown": "Kokonaismääräiset lainat nousivat 134,6 miljardiin dollariin helmikuun 28. päivään mennessä.",
+      "title": "",
+      "tts": {
+        "text": "Kokonaismääräiset lainat nousivat sataaneljäkolmekymmentäneljään komma kuuteen miljardiin dollariin helmikuun kahdeksanteenkymmenenteenkahdeksanteen päivään mennessä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oracle keräsi 30 miljardia helmikuussa yksinään – sijoitusluokan joukkovelkakirjoja sekä pakollisia vaihtovelkakirjoja – ja laski liikkeelle 43 miljardia dollaria uusia senior-velkakirjoja yhdeksän kuukauden aikana.",
+      "text_markdown": "Oracle keräsi 30 miljardia helmikuussa yksinään – sijoitusluokan joukkovelkakirjoja sekä pakollisia vaihtovelkakirjoja – ja laski liikkeelle 43 miljardia dollaria uusia senior-velkakirjoja yhdeksän kuukauden aikana.",
+      "title": "",
+      "tts": {
+        "text": "Oracle keräsi kolmekymmentä miljardia helmikuussa yksinään – sijoitusluokan joukkovelkakirjoja sekä pakollisia vaihtovelkakirjoja – ja laski liikkeelle neljäkymmentäkolme miljardia dollaria uusia senior-velkakirjoja yhdeksän kuukauden aikana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Yhteenveto tilanteesta.",
+      "text_markdown": "Yhteenveto tilanteesta.",
+      "title": "",
+      "tts": {
+        "text": "Yhteenveto tilanteesta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "553 miljardia dollaria lupauksia, 134 miljardia dollaria velkaa ja yksi suuri asiakas kantaa suurimman osan riskistä.",
+      "text_markdown": "553 miljardia dollaria lupauksia, 134 miljardia dollaria velkaa ja yksi suuri asiakas kantaa suurimman osan riskistä.",
+      "title": "",
+      "tts": {
+        "text": "Viisisataaviisikymmentäkolme miljardia dollaria lupauksia, satakolmekymmentäneljä miljardia dollaria velkaa ja yksi suuri asiakas kantaa suurimman osan riskistä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siinä on rakentamisen rakenne yhdellä lauseella.",
+      "text_markdown": "Siinä on rakentamisen rakenne yhdellä lauseella.",
+      "title": "",
+      "tts": {
+        "text": "Siinä on rakentamisen rakenne yhdellä lauseella.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siirrytään Yhdysvaltojen ja Kiinan vertailuun.",
+      "text_markdown": "Siirrytään Yhdysvaltojen ja Kiinan vertailuun.",
+      "title": "",
+      "tts": {
+        "text": "Siirrytään Yhdysvaltojen ja Kiinan vertailuun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Klisee on, että Kiina on jonkin verran kuukausia jäljessä.",
+      "text_markdown": "Klisee on, että Kiina on jonkin verran kuukausia jäljessä.",
+      "title": "",
+      "tts": {
+        "text": "Klisee on, että Kiina on jonkin verran kuukausia jäljessä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Klisee on väärä, koska se mittaa väärää asiaa.",
+      "text_markdown": "Klisee on väärä, koska se mittaa väärää asiaa.",
+      "title": "",
+      "tts": {
+        "text": "Klisee on väärä, koska se mittaa väärää asiaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Maanantaina, kesäkuun yhdeksäntenä, Bloomberg raportoi Kiinan kansallisen kehitys- ja uudistuskomission luonnoksesta suunnitelmasta — kaksi biljoonaa juania, noin kaksisataayhdeksänkymmentäviisi miljardia dollaria, valtakunnalliseen tekoälydatakeskusverkostoon vuoteen kaksituhattakahdeksankymmentäkahdeksan mennessä.",
+      "text_markdown": "Maanantaina, kesäkuun yhdeksäntenä, Bloomberg raportoi Kiinan kansallisen kehitys- ja uudistuskomission luonnoksesta suunnitelmasta — kaksi biljoonaa juania, noin kaksisataayhdeksänkymmentäviisi miljardia dollaria, valtakunnalliseen tekoälydatakeskusverkostoon vuoteen kaksituhattakahdeksankymmentäkahdeksan mennessä.",
+      "title": "",
+      "tts": {
+        "text": "Maanantaina, kesäkuun yhdeksäntenä, Bloomberg raportoi Kiinan kansallisen kehitys- ja uudistuskomission luonnoksesta suunnitelmasta — kaksi biljoonaa juania, noin kaksisataayhdeksänkymmentäviisi miljardia dollaria, valtakunnalliseen tekoälydatakeskusverkostoon vuoteen kaksituhattakahdeksankymmentäkahdeksan mennessä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Suunnitelma edellyttää kahdeksankymmentä prosenttia kotimaista piitä, ja sitä operoisivat China Mobile ja China Telecom yhtenä toisiinsa liitettynä laskentakankaana.",
+      "text_markdown": "Suunnitelma edellyttää kahdeksankymmentä prosenttia kotimaista piitä, ja sitä operoisivat China Mobile ja China Telecom yhtenä toisiinsa liitettynä laskentakankaana.",
+      "title": "",
+      "tts": {
+        "text": "Suunnitelma edellyttää kahdeksankymmentä prosenttia kotimaista piitä, ja sitä operoisivat China Mobile ja China Telecom yhtenä toisiinsa liitettynä laskentakankaana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja missä on suunnitelman koukku?",
+      "text_markdown": "Ja missä on suunnitelman koukku?",
+      "title": "",
+      "tts": {
+        "text": "Ja missä on suunnitelman koukku?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kaksi biljoonaa juania, kahdeksankymmentä prosenttia kotimaista piitä, vuoden kaksituhattakahdeksankymmentäkahdeksan määräaika — ja koukku on se, että sitova rajoite ei ole logiikkapiirit, vaan suuren kaistanleveyden muisti.",
+      "text_markdown": "Kaksi biljoonaa juania, kahdeksankymmentä prosenttia kotimaista piitä, vuoden kaksituhattakahdeksankymmentäkahdeksan määräaika — ja koukku on se, että sitova rajoite ei ole logiikkapiirit, vaan suuren kaistanleveyden muisti.",
+      "title": "",
+      "tts": {
+        "text": "Kaksi biljoonaa juania, kahdeksankymmentä prosenttia kotimaista piitä, vuoden kaksituhattakahdeksankymmentäkahdeksan määräaika — ja koukku on se, että sitova rajoite ei ole logiikkapiirit, vaan suuren kaistanleveyden muisti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Käy se meille läpi.",
+      "text_markdown": "Käy se meille läpi.",
+      "title": "",
+      "tts": {
+        "text": "Käy se meille läpi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jokainen tekoälykiihdytin tarvitsee HBM-pinoja kiinnitettynä logiikkapiiriin.",
+      "text_markdown": "Jokainen tekoälykiihdytin tarvitsee HBM-pinoja kiinnitettynä logiikkapiiriin.",
+      "title": "",
+      "tts": {
+        "text": "Jokainen tekoälykiihdytin tarvitsee HBM-pinoja kiinnitettynä logiikkapiiriin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ilman HBM:ää siru on paperipaino.",
+      "text_markdown": "Ilman HBM:ää siru on paperipaino.",
+      "title": "",
+      "tts": {
+        "text": "Ilman HBM:ää siru on paperipaino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kiina varastoi noin kolmetoista miljoonaa HBM-pinoa ennen vientivalvonnan sulkeutumista — yksitoista pilkku neljä miljoonaa pelkästään Samsungilta.",
+      "text_markdown": "Kiina varastoi noin kolmetoista miljoonaa HBM-pinoa ennen vientivalvonnan sulkeutumista — yksitoista pilkku neljä miljoonaa pelkästään Samsungilta.",
+      "title": "",
+      "tts": {
+        "text": "Kiina varastoi noin kolmetoista miljoonaa H B M -pinoa ennen vientivalvonnan sulkeutumista — yksitoista pilkku neljä miljoonaa pelkästään Samsungilta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Huawein Ascend yhdeksän-kymmenen C -pakkaussuhteilla tuo varasto riittää noin yksi pilkku kuuteen miljoonaan siruun.",
+      "text_markdown": "Huawein Ascend yhdeksän-kymmenen C -pakkaussuhteilla tuo varasto riittää noin yksi pilkku kuuteen miljoonaan siruun.",
+      "title": "",
+      "tts": {
+        "text": "Huawein Ascend yhdeksän-kymmenen C -pakkaussuhteilla tuo varasto riittää noin yksi pilkku kuuteen miljoonaan siruun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja sitten tarjonta loppuu.",
+      "text_markdown": "Ja sitten tarjonta loppuu.",
+      "title": "",
+      "tts": {
+        "text": "Ja sitten tarjonta loppuu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sitten tarjonta loppuu — kolmetoista miljoonaa HBM-pinoa, riittävästi yhteen pilkku kuuteen miljoonaan siruun, ja se on katto.",
+      "text_markdown": "Sitten tarjonta loppuu — kolmetoista miljoonaa HBM-pinoa, riittävästi yhteen pilkku kuuteen miljoonaan siruun, ja se on katto.",
+      "title": "",
+      "tts": {
+        "text": "Sitten tarjonta loppuu — kolmetoista miljoonaa H B M -pinoa, riittävästi yhteen pilkku kuuteen miljoonaan siruun, ja se on katto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kotimainen kiinalainen HBM, CXMT:ltä, on tuottamassa noin kaksi miljoonaa pinoa vuonna kaksituhattakaksikymmentäkuusi — riittävästi ehkä kahdensadanviidenkymmenen tuhannen kolmensadan tuhannen kiihdyttimen valmistukseen.",
+      "text_markdown": "Kotimainen kiinalainen HBM, CXMT:ltä, on tuottamassa noin kaksi miljoonaa pinoa vuonna kaksituhattakaksikymmentäkuusi — riittävästi ehkä kahdensadanviidenkymmenen tuhannen kolmensadan tuhannen kiihdyttimen valmistukseen.",
+      "title": "",
+      "tts": {
+        "text": "Kotimainen kiinalainen H B M, C X M T:ltä, on tuottamassa noin kaksi miljoonaa pinoa vuonna kaksituhattakaksikymmentäkuusi — riittävästi ehkä kahdensadanviidenkymmenen tuhannen kolmensadan tuhannen kiihdyttimen valmistukseen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Miltä Huawein piisuunnitelmat siis näyttävät?",
+      "text_markdown": "Miltä Huawein piisuunnitelmat siis näyttävät?",
+      "title": "",
+      "tts": {
+        "text": "Miltä Huawein piisuunnitelmat siis näyttävät?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Bloomberg, viitaten Huawein suunnitelmiin, asetti vuoden kaksituhattakaksikymmentäkuusi tuotannon kuuteensataan tuhanteen yhdeksän-kymmenen C -siruun, ja laajempi Ascend-tuotelinja saavuttaisi yhteensä jopa yksi pilkku kuusi miljoonaa piisirua.",
+      "text_markdown": "Bloomberg, viitaten Huawein suunnitelmiin, asetti vuoden kaksituhattakaksikymmentäkuusi tuotannon kuuteensataan tuhanteen yhdeksän-kymmenen C -siruun, ja laajempi Ascend-tuotelinja saavuttaisi yhteensä jopa yksi pilkku kuusi miljoonaa piisirua.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, viitaten Huawein suunnitelmiin, asetti vuoden kaksituhattakaksikymmentäkuusi tuotannon kuuteensataan tuhanteen yhdeksän-kymmenen C -siruun, ja laajempi Ascend-tuotelinja saavuttaisi yhteensä jopa yksi pilkku kuusi miljoonaa piisirua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tuo luku, kuusisataa tuhatta, on tavoite, ei toimitettu tuotanto.",
+      "text_markdown": "Tuo luku, kuusisataa tuhatta, on tavoite, ei toimitettu tuotanto.",
+      "title": "",
+      "tts": {
+        "text": "Tuo luku, kuusisataa tuhatta, on tavoite, ei toimitettu tuotanto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja erikseen, ennen kuin vientivalvonta katkaisi heidät, Huawei keräsi yli kaksi pilkku yhdeksän miljoonaa TSMC:llä valmistettua Ascend-piisirua Sophgon ja Bitmainin bulvaaniyhtiöiden kautta.",
+      "text_markdown": "Ja erikseen, ennen kuin vientivalvonta katkaisi heidät, Huawei keräsi yli kaksi pilkku yhdeksän miljoonaa TSMC:llä valmistettua Ascend-piisirua Sophgon ja Bitmainin bulvaaniyhtiöiden kautta.",
+      "title": "",
+      "tts": {
+        "text": "Ja erikseen, ennen kuin vientivalvonta katkaisi heidät, Huawei keräsi yli kaksi pilkku yhdeksän miljoonaa T S M C:llä valmistettua Ascend-piisirua Sophgon ja Bitmainin bulvaaniyhtiöiden kautta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Vientivalvonnan toimivuutta koskevassa narratiivissa on kaksi pilkku yhdeksän miljoonan piisirun aukko.",
+      "text_markdown": "Vientivalvonnan toimivuutta koskevassa narratiivissa on kaksi pilkku yhdeksän miljoonan piisirun aukko.",
+      "title": "",
+      "tts": {
+        "text": "Vientivalvonnan toimivuutta koskevassa narratiivissa on kaksi pilkku yhdeksän miljoonan piisirun aukko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Käydään otsikot läpi nopeasti.",
+      "text_markdown": "Käydään otsikot läpi nopeasti.",
+      "title": "",
+      "tts": {
+        "text": "Käydään otsikot läpi nopeasti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Viikon ensimmäinen otsikko, Broadcom.",
+      "text_markdown": "Viikon ensimmäinen otsikko, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Viikon ensimmäinen otsikko, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Broadcomin markkina-arvo on noin kaksi biljoonaa dollaria.",
+      "text_markdown": "Broadcomin markkina-arvo on noin kaksi biljoonaa dollaria.",
+      "title": "",
+      "tts": {
+        "text": "Broadcomin markkina-arvo on noin kaksi biljoonaa dollaria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Heidän toimitusjohtajansa, Hock Tan, toisti sadan miljardin dollarin tekoälypuolijohdetuotannon liikevaihtotavoitteen tilikaudelle kaksituhattakaksikymmentäseitsemän kesäkuun kolmannen päivän tulosjulkistuspuhelussa, jota tukee noin seitsemänkymmentäkolme miljardia dollaria tekoälytilauskantaa ja pitkäaikaisia sopimuksia Alphabetin ja Metan kanssa, ulottuen vuoteen kaksituhattakolmekymmentäyksi.",
+      "text_markdown": "Heidän toimitusjohtajansa, Hock Tan, toisti sadan miljardin dollarin tekoälypuolijohdetuotannon liikevaihtotavoitteen tilikaudelle kaksituhattakaksikymmentäseitsemän kesäkuun kolmannen päivän tulosjulkistuspuhelussa, jota tukee noin seitsemänkymmentäkolme miljardia dollaria tekoälytilauskantaa ja pitkäaikaisia sopimuksia Alphabetin ja Metan kanssa, ulottuen vuoteen kaksituhattakolmekymmentäyksi.",
+      "title": "",
+      "tts": {
+        "text": "Heidän toimitusjohtajansa, Hock Tan, toisti sadan miljardin dollarin aa ii -puolijohdetuotannon liikevaihtotavoitteen tilikaudelle kaksituhattakaksikymmentäseitsemän kesäkuun kolmannen päivän tulosjulkistuspuhelussa, jota tukee noin seitsemänkymmentäkolme miljardia dollaria aa ii -tilauskantaa ja pitkäaikaisia sopimuksia Alphabetin ja Metan kanssa, ulottuen vuoteen kaksituhattakolmekymmentäyksi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kahden biljoonan dollarin markkina-arvo, sadan miljardin dollarin tekoälyliikevaihtotavoite, lähes olematon vähittäiskaupan bränditunnettuus.",
+      "text_markdown": "Kahden biljoonan dollarin markkina-arvo, sadan miljardin dollarin tekoälyliikevaihtotavoite, lähes olematon vähittäiskaupan bränditunnettuus.",
+      "title": "",
+      "tts": {
+        "text": "Kahden biljoonan dollarin markkina-arvo, sadan miljardin dollarin aa ii -liikevaihtotavoite, lähes olematon vähittäiskaupan bränditunnettuus.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Viikon toinen otsikko, ASML.",
+      "text_markdown": "Viikon toinen otsikko, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Viikon toinen otsikko, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ASML, hollantilainen yritys, joka rakentaa litografiakoneet, joista kaikki huippuluokan logiikka on riippuvainen, myy High-N.A. E.U.V. -järjestelmänsä noin kolmensadan seitsemänkymmenen miljoonan dollarin hintaan.",
+      "text_markdown": "ASML, hollantilainen yritys, joka rakentaa litografiakoneet, joista kaikki huippuluokan logiikka on riippuvainen, myy High-N.A. E.U.V. -järjestelmänsä noin kolmensadan seitsemänkymmenen miljoonan dollarin hintaan.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, hollantilainen yritys, joka rakentaa litografiakoneet, joista kaikki huippuluokan logiikka on riippuvainen, myy High-en aa ee uu vee -järjestelmänsä noin kolmensadan seitsemänkymmenen miljoonan dollarin hintaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Maailmanlaajuinen tuotantokapasiteetti on alle kaksikymmentä yksikköä vuodessa.",
+      "text_markdown": "Maailmanlaajuinen tuotantokapasiteetti on alle kaksikymmentä yksikköä vuodessa.",
+      "title": "",
+      "tts": {
+        "text": "Maailmanlaajuinen tuotantokapasiteetti on alle kaksikymmentä yksikköä vuodessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kolmesataaseitsemänkymmentä miljoonaa dollaria koneelta, alle kaksikymmentä konetta vuodessa, yksi yritys valmistaa ne — se on todellinen pullonkaula maailmanlaajuisessa piin tuotannossa, ei politiikka.",
+      "text_markdown": "Kolmesataaseitsemänkymmentä miljoonaa dollaria koneelta, alle kaksikymmentä konetta vuodessa, yksi yritys valmistaa ne — se on todellinen pullonkaula maailmanlaajuisessa piin tuotannossa, ei politiikka.",
+      "title": "",
+      "tts": {
+        "text": "Kolmesataaseitsemänkymmentä miljoonaa dollaria koneelta, alle kaksikymmentä konetta vuodessa, yksi yritys valmistaa ne — se on todellinen pullonkaula maailmanlaajuisessa piin tuotannossa, ei politiikka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Viikon kolmas otsikko, vientivalvonta.",
+      "text_markdown": "Viikon kolmas otsikko, vientivalvonta.",
+      "title": "",
+      "tts": {
+        "text": "Viikon kolmas otsikko, vientivalvonta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kauppaministeriö kumosi Bidenin aikakauden tekoälyn levitysasetuksen toukokuun kolmastoista päivä, kaksituhattakaksikymmentäviisi, eikä antanut uutta B.I.S. -täytäntöönpanoselvennystä ennen toukokuun kolmaskymmenesensimmäistä päivää, kaksituhattakaksikymmentäkuusi.",
+      "text_markdown": "Kauppaministeriö kumosi Bidenin aikakauden tekoälyn levitysasetuksen toukokuun kolmastoista päivä, kaksituhattakaksikymmentäviisi, eikä antanut uutta B.I.S. -täytäntöönpanoselvennystä ennen toukokuun kolmaskymmenesensimmäistä päivää, kaksituhattakaksikymmentäkuusi.",
+      "title": "",
+      "tts": {
+        "text": "Kauppaministeriö kumosi Bidenin aikakauden aa ii -levitysasetuksen toukokuun kolmastoista päivä, kaksituhattakaksikymmentäviisi, eikä antanut uutta bee ii es -täytäntöönpanoselvennystä ennen toukokuun kolmaskymmenesensimmäistä päivää, kaksituhattakaksikymmentäkuusi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Se on noin vuoden mittainen ajanjakso, jolloin lisensointivaatimuksia ei aktiivisesti valvottu.",
+      "text_markdown": "Se on noin vuoden mittainen ajanjakso, jolloin lisensointivaatimuksia ei aktiivisesti valvottu.",
+      "title": "",
+      "tts": {
+        "text": "Se on noin vuoden mittainen ajanjakso, jolloin lisensointivaatimuksia ei aktiivisesti valvottu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Laske siis päivät.",
+      "text_markdown": "Laske siis päivät.",
+      "title": "",
+      "tts": {
+        "text": "Laske siis päivät.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Seitsemänkymmentäkaksi tuntia yhdysvaltalaisen mallin alasajoon, kolmesataakahdeksankymmentä päivää sirujen vientisäännön toimeenpanoon – tuo epäsymmetria on se juttu.",
+      "text_markdown": "Seitsemänkymmentäkaksi tuntia yhdysvaltalaisen mallin alasajoon, kolmesataakahdeksankymmentä päivää sirujen vientisäännön toimeenpanoon – tuo epäsymmetria on se juttu.",
+      "title": "",
+      "tts": {
+        "text": "Seitsemänkymmentäkaksi tuntia yhdysvaltalaisen mallin alasajoon, kolmesataakahdeksankymmentä päivää sirujen vientisäännön toimeenpanoon – tuo epäsymmetria on se juttu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja minne sirut menivät noiden kolmensadan kahdeksankymmenen päivän aikana.",
+      "text_markdown": "Ja minne sirut menivät noiden kolmensadan kahdeksankymmenen päivän aikana.",
+      "title": "",
+      "tts": {
+        "text": "Ja minne sirut menivät noiden kolmensadan kahdeksankymmenen päivän aikana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kaakkois-Aasiaan suurin osa niistä meni.",
+      "text_markdown": "Kaakkois-Aasiaan suurin osa niistä meni.",
+      "title": "",
+      "tts": {
+        "text": "Kaakkois-Aasiaan suurin osa niistä meni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Oikeusministeriö julkisti maaliskuun lopussa syytteet, joiden mukaan Nvidian H-100- ja A-100-sirut ohjattiin malesialaisten ja singaporelaisten välittäjien kautta.",
+      "text_markdown": "Oikeusministeriö julkisti maaliskuun lopussa syytteet, joiden mukaan Nvidian H-100- ja A-100-sirut ohjattiin malesialaisten ja singaporelaisten välittäjien kautta.",
+      "title": "",
+      "tts": {
+        "text": "Oikeusministeriö julkisti maaliskuun lopussa syytteet, joiden mukaan Nvidian H sata ja A sata sirut ohjattiin malesialaisten ja singaporelaisten välittäjien kautta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Fortune julkaisi salattuja tekstejä toukokuussa, jotka osoittivat logistiikan, ja Super Micro on osallisena kahden ja puolen miljardin dollarin kuoriyhtiötapauksessa.",
+      "text_markdown": "Fortune julkaisi salattuja tekstejä toukokuussa, jotka osoittivat logistiikan, ja Super Micro on osallisena kahden ja puolen miljardin dollarin kuoriyhtiötapauksessa.",
+      "title": "",
+      "tts": {
+        "text": "Fortune julkaisi salattuja tekstejä toukokuussa, jotka osoittivat logistiikan, ja Super Micro on osallisena kahden ja puolen miljardin dollarin kuoriyhtiötapauksessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Trumpin hallinto on tiettävästi laatimassa uusia sirujen vientirajoituksia, jotka on suunnattu erityisesti Malesiaan ja Thaimaahan.",
+      "text_markdown": "Trumpin hallinto on tiettävästi laatimassa uusia sirujen vientirajoituksia, jotka on suunnattu erityisesti Malesiaan ja Thaimaahan.",
+      "title": "",
+      "tts": {
+        "text": "Trumpin hallinto on tiettävästi laatimassa uusia sirujen vientirajoituksia, jotka on suunnattu erityisesti Malesiaan ja Thaimaahan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Eli kuva yhdellä lauseella.",
+      "text_markdown": "Eli kuva yhdellä lauseella.",
+      "title": "",
+      "tts": {
+        "text": "Eli kuva yhdellä lauseella.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Sirut eivät lennä Shenzeniin – ne lentävät ensin Penangiin ja Singaporeen.",
+      "text_markdown": "Sirut eivät lennä Shenzeniin – ne lentävät ensin Penangiin ja Singaporeen.",
+      "title": "",
+      "tts": {
+        "text": "Sirut eivät lennä Shenzeniin – ne lentävät ensin Penangiin ja Singaporeen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Viikon käsite – Jäljellä olevat suoritusvelvoitteet.",
+      "text_markdown": "Viikon käsite – Jäljellä olevat suoritusvelvoitteet.",
+      "title": "",
+      "tts": {
+        "text": "Viikon käsite – Jäljellä olevat suoritusvelvoitteet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "R.P.O. on kirjanpidon erä, joka kirjaa niiden sopimusten dollarimääräisen arvon, jotka yritys on allekirjoittanut mutta joita se ei ole vielä toimittanut.",
+      "text_markdown": "R.P.O. on kirjanpidon erä, joka kirjaa niiden sopimusten dollarimääräisen arvon, jotka yritys on allekirjoittanut mutta joita se ei ole vielä toimittanut.",
+      "title": "",
+      "tts": {
+        "text": "Är pee oo on kirjanpidon erä, joka kirjaa niiden sopimusten dollarimääräisen arvon, jotka yritys on allekirjoittanut mutta joita se ei ole vielä toimittanut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Se on tulevaisuuteen katsova – se kertoo tulevista tuloista, ei tämän päivän pankissa olevasta rahasta.",
+      "text_markdown": "Se on tulevaisuuteen katsova – se kertoo tulevista tuloista, ei tämän päivän pankissa olevasta rahasta.",
+      "title": "",
+      "tts": {
+        "text": "Se on tulevaisuuteen katsova – se kertoo tulevista tuloista, ei tämän päivän pankissa olevasta rahasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja miksi sillä on merkitystä Oraclen kannalta.",
+      "text_markdown": "Ja miksi sillä on merkitystä Oraclen kannalta.",
+      "title": "",
+      "tts": {
+        "text": "Ja miksi sillä on merkitystä Oraclen kannalta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Koska viisisataaviisikymmentäkolme miljardia dollaria R.P.O.:ta, joka on keskittynyt voimakkaasti yhteen asiakkaaseen yhtä rakennusprojektia varten, tarkoittaa, että Oracle on luvannut toimittaa valtavan määrän laskentatehoa seuraavien vuosien aikana asiakkaalle, jonka oma tulomalli on edelleen kiistanalainen.",
+      "text_markdown": "Koska viisisataaviisikymmentäkolme miljardia dollaria R.P.O.:ta, joka on keskittynyt voimakkaasti yhteen asiakkaaseen yhtä rakennusprojektia varten, tarkoittaa, että Oracle on luvannut toimittaa valtavan määrän laskentatehoa seuraavien vuosien aikana asiakkaalle, jonka oma tulomalli on edelleen kiistanalainen.",
+      "title": "",
+      "tts": {
+        "text": "Koska viisisataaviisikymmentäkolme miljardia dollaria är pee oota, joka on keskittynyt voimakkaasti yhteen asiakkaaseen yhtä rakennusprojektia varten, tarkoittaa, että Oracle on luvannut toimittaa valtavan määrän laskentatehoa seuraavien vuosien aikana asiakkaalle, jonka oma tulomalli on edelleen kiistanalainen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jos nämä sopimukset toteutuvat, Oraclella on vuosikymmenen diili.",
+      "text_markdown": "Jos nämä sopimukset toteutuvat, Oraclella on vuosikymmenen diili.",
+      "title": "",
+      "tts": {
+        "text": "Jos nämä sopimukset toteutuvat, Oraclella on vuosikymmenen diili.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Jos ne viivästyvät – tai neuvotellaan uudelleen – Oracle kantaa velkaa samalla kun sopimukset kutistuvat.",
+      "text_markdown": "Jos ne viivästyvät – tai neuvotellaan uudelleen – Oracle kantaa velkaa samalla kun sopimukset kutistuvat.",
+      "title": "",
+      "tts": {
+        "text": "Jos ne viivästyvät – tai neuvotellaan uudelleen – Oracle kantaa velkaa samalla kun sopimukset kutistuvat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Joten kun näet R.P.O.-luvun teknologiayhtiön ilmoituksessa.",
+      "text_markdown": "Joten kun näet R.P.O.-luvun teknologiayhtiön ilmoituksessa.",
+      "title": "",
+      "tts": {
+        "text": "Joten kun näet R.P.O.-luvun teknologiayhtiön ilmoituksessa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Lue, keitä asiakkaat ovat, kuinka keskittyneitä velvoitteet ovat ja mitä pitäisi tapahtua, jotta yritys todella toimittaisi ne.",
+      "text_markdown": "Lue, keitä asiakkaat ovat, kuinka keskittyneitä velvoitteet ovat ja mitä pitäisi tapahtua, jotta yritys todella toimittaisi ne.",
+      "title": "",
+      "tts": {
+        "text": "Lue, keitä asiakkaat ovat, kuinka keskittyneitä velvoitteet ovat ja mitä pitäisi tapahtua, jotta yritys todella toimittaisi ne.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "R.P.O. on paikka, jossa riskin kantajat ilmestyvät alaviitteisiin.",
+      "text_markdown": "R.P.O. on paikka, jossa riskin kantajat ilmestyvät alaviitteisiin.",
+      "title": "",
+      "tts": {
+        "text": "Är pee oo on paikka, jossa riskin kantajat ilmestyvät alaviitteisiin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Hyvä paikka lopettaa.",
+      "text_markdown": "Hyvä paikka lopettaa.",
+      "title": "",
+      "tts": {
+        "text": "Hyvä paikka lopettaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, kiitos yhteenvedosta.",
+      "text_markdown": "Ron, kiitos yhteenvedosta.",
+      "title": "",
+      "tts": {
+        "text": "Ron, kiitos yhteenvedosta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Milloin vain, Vindy – hyvä olla täällä.",
+      "text_markdown": "Milloin vain, Vindy – hyvä olla täällä.",
+      "title": "",
+      "tts": {
+        "text": "Milloin vain, Vindy – hyvä olla täällä.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tämä oli AI This Week kesäkuun kahdennenkymmenennenensimmäisen päivän, kaksituhatta kaksikymmentäkuusi, osalta.",
+      "text_markdown": "Tämä oli AI This Week kesäkuun kahdennenkymmenennenensimmäisen päivän, kaksituhatta kaksikymmentäkuusi, osalta.",
+      "title": "",
+      "tts": {
+        "text": "Tämä oli AI This Week kesäkuun kahdennenkymmenennenensimmäisen päivän, kaksituhatta kaksikymmentäkuusi, osalta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ensi viikolla palataan avointen mallien ja pienten laboratorioiden uutisiin.",
+      "text_markdown": "Ensi viikolla palataan avointen mallien ja pienten laboratorioiden uutisiin.",
+      "title": "",
+      "tts": {
+        "text": "Ensi viikolla palataan avointen mallien ja pienten laboratorioiden uutisiin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ensi sunnuntaihin asti, voikaa hyvin.",
+      "text_markdown": "Ensi sunnuntaihin asti, voikaa hyvin.",
+      "title": "",
+      "tts": {
+        "text": "Ensi sunnuntaihin asti, voikaa hyvin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

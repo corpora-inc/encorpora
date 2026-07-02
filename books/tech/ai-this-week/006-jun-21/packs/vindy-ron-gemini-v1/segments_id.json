@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "id",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Selamat datang di AI This Week.",
+      "text_markdown": "Selamat datang di AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Selamat datang di AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Saya Vindy.",
+      "text_markdown": "Saya Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Saya Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Bersama saya, seperti biasa, ada Ron.",
+      "text_markdown": "Bersama saya, seperti biasa, ada Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bersama saya, seperti biasa, ada Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Senang berada di sini, Vindy.",
+      "text_markdown": "Senang berada di sini, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Senang berada di sini, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Hari ini adalah Minggu, 21 Juni 2026.",
+      "text_markdown": "Hari ini adalah Minggu, 21 Juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Hari ini adalah Minggu, dua puluh satu Juni, dua ribu dua puluh enam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Minggu lalu kita berbicara tentang diri kita sendiri; hari ini kita bergerak ke arah lain — langsung menuju pusat-pusat kekuasaan.",
+      "text_markdown": "Minggu lalu kita berbicara tentang diri kita sendiri; hari ini kita bergerak ke arah lain — langsung menuju pusat-pusat kekuasaan.",
+      "title": "",
+      "tts": {
+        "text": "Minggu lalu kita berbicara tentang diri kita sendiri; hari ini kita bergerak ke arah lain — langsung menuju pusat-pusat kekuasaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Siapa yang mengendalikan penyebaran AI, siapa yang membayar pembangunan, siapa yang memiliki silikon.",
+      "text_markdown": "Siapa yang mengendalikan penyebaran AI, siapa yang membayar pembangunan, siapa yang memiliki silikon.",
+      "title": "",
+      "tts": {
+        "text": "Siapa yang mengendalikan penyebaran AI, siapa yang membayar pembangunan, siapa yang memiliki silikon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Selanjutnya — Departemen Perdagangan A.S. menarik sebuah model Amerika dari penggunaan publik Jumat lalu, dan kita akan mulai dari sana.",
+      "text_markdown": "Selanjutnya — Departemen Perdagangan A.S. menarik sebuah model Amerika dari penggunaan publik Jumat lalu, dan kita akan mulai dari sana.",
+      "title": "",
+      "tts": {
+        "text": "Selanjutnya — Departemen Perdagangan A.S. menarik sebuah model Amerika dari penggunaan publik Jumat lalu, dan kita akan mulai dari sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kemudian pembangunan pusat data, di mana pengumuman dan kenyataan di lapangan tidak sesuai.",
+      "text_markdown": "Kemudian pembangunan pusat data, di mana pengumuman dan kenyataan di lapangan tidak sesuai.",
+      "title": "",
+      "tts": {
+        "text": "Kemudian pembangunan pusat data, di mana pengumuman dan kenyataan di lapangan tidak sesuai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Kemudian perbandingan A.S. dan Tiongkok, dengan klise diganti oleh kendala pengikat yang sebenarnya.",
+      "text_markdown": "Kemudian perbandingan A.S. dan Tiongkok, dengan klise diganti oleh kendala pengikat yang sebenarnya.",
+      "title": "",
+      "tts": {
+        "text": "Kemudian perbandingan A.S. dan Tiongkok, dengan klise diganti oleh kendala pengikat yang sebenarnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan konsep minggu ini — satu baris di neraca Oracle yang memberitahu Anda hampir segalanya.",
+      "text_markdown": "Dan konsep minggu ini — satu baris di neraca Oracle yang memberitahu Anda hampir segalanya.",
+      "title": "",
+      "tts": {
+        "text": "Dan konsep minggu ini — satu baris di neraca Oracle yang memberitahu Anda hampir segalanya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, mari kita mulai dengan Anthropic.",
+      "text_markdown": "Ron, mari kita mulai dengan Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, mari kita mulai dengan Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Apa yang terjadi pada tanggal 12 Juni.",
+      "text_markdown": "Apa yang terjadi pada tanggal 12 Juni.",
+      "title": "",
+      "tts": {
+        "text": "Apa yang terjadi pada tanggal dua belas Juni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pada pukul 5:21 sore Waktu Timur pada Jumat, 12 Juni, Anthropic menonaktifkan dua model terbarunya — Claude Mythos 5 dan Claude Fable 5.",
+      "text_markdown": "Pada pukul 5:21 sore Waktu Timur pada Jumat, 12 Juni, Anthropic menonaktifkan dua model terbarunya — Claude Mythos 5 dan Claude Fable 5.",
+      "title": "",
+      "tts": {
+        "text": "Pada pukul lima dua puluh satu sore Waktu Timur pada Jumat, dua belas Juni, Anthropic menonaktifkan dua model terbarunya — Claude Mythos lima dan Claude Fable lima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bukan untuk pemeliharaan, bukan untuk tinjauan keselamatan atas inisiatif mereka sendiri.",
+      "text_markdown": "Bukan untuk pemeliharaan, bukan untuk tinjauan keselamatan atas inisiatif mereka sendiri.",
+      "title": "",
+      "tts": {
+        "text": "Bukan untuk pemeliharaan, bukan untuk tinjauan keselamatan atas inisiatif mereka sendiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Mereka menonaktifkannya karena Departemen Perdagangan A.S. mengeluarkan arahan yang mengutip kontrol ekspor.",
+      "text_markdown": "Mereka menonaktifkannya karena Departemen Perdagangan A.S. mengeluarkan arahan yang mengutip kontrol ekspor.",
+      "title": "",
+      "tts": {
+        "text": "Mereka menonaktifkannya karena Departemen Perdagangan A.S. mengeluarkan arahan yang mengutip kontrol ekspor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Apa alasan teknisnya.",
+      "text_markdown": "Apa alasan teknisnya.",
+      "title": "",
+      "tts": {
+        "text": "Apa alasan teknisnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Sebuah jailbreak didemonstrasikan, dilaporkan oleh perusahaan lain, yang menghasilkan output yang dianggap oleh Departemen Perdagangan sebagai barang yang dikendalikan ekspor.",
+      "text_markdown": "Sebuah jailbreak didemonstrasikan, dilaporkan oleh perusahaan lain, yang menghasilkan output yang dianggap oleh Departemen Perdagangan sebagai barang yang dikendalikan ekspor.",
+      "title": "",
+      "tts": {
+        "text": "Sebuah jailbreak didemonstrasikan, dilaporkan oleh perusahaan lain, yang menghasilkan output yang dianggap oleh Departemen Perdagangan sebagai barang yang dikendalikan ekspor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Fortune melaporkan bahwa Amazon adalah pihak yang memberi tahu Gedung Putih tentang hal itu.",
+      "text_markdown": "Fortune melaporkan bahwa Amazon adalah pihak yang memberi tahu Gedung Putih tentang hal itu.",
+      "title": "",
+      "tts": {
+        "text": "Fortune melaporkan bahwa Amazon adalah pihak yang memberi tahu Gedung Putih tentang hal itu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan bagaimana Anthropic menanggapi.",
+      "text_markdown": "Dan bagaimana Anthropic menanggapi.",
+      "title": "",
+      "tts": {
+        "text": "Dan bagaimana Anthropic menanggapi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Anthropic secara terbuka membantah alasannya.",
+      "text_markdown": "Anthropic secara terbuka membantah alasannya.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic secara terbuka membantah alasannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pernyataan mereka menyebut jailbreak itu — dan saya mengutip — \"sempit, tidak universal,\" dan menambahkan bahwa output yang sama tersedia dari model lain, termasuk GPT-5.5 milik OpenAI.",
+      "text_markdown": "Pernyataan mereka menyebut jailbreak itu — dan saya mengutip — \"sempit, tidak universal,\" dan menambahkan bahwa output yang sama tersedia dari model lain, termasuk GPT-5.5 milik OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Pernyataan mereka menyebut jailbreak itu — dan saya mengutip — \"sempit, tidak universal,\" dan menambahkan bahwa output yang sama tersedia dari model lain, termasuk GPT lima titik lima milik OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Baris ringkasan mereka: \"tindakan pemerintah didasarkan pada kesalahpahaman.\"",
+      "text_markdown": "Baris ringkasan mereka: \"tindakan pemerintah didasarkan pada kesalahpahaman.\"",
+      "title": "",
+      "tts": {
+        "text": "Baris ringkasan mereka: \"tindakan pemerintah didasarkan pada kesalahpahaman.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Itu adalah ketidaksepakatan yang luar biasa langsung dengan pemerintah A.S. untuk sebuah laboratorium AI.",
+      "text_markdown": "Itu adalah ketidaksepakatan yang luar biasa langsung dengan pemerintah A.S. untuk sebuah laboratorium AI.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah ketidaksepakatan yang luar biasa langsung dengan pemerintah A.S. untuk sebuah laboratorium AI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Memang, dan fakta struktural di baliknya adalah berita utamanya.",
+      "text_markdown": "Memang, dan fakta struktural di baliknya adalah berita utamanya.",
+      "title": "",
+      "tts": {
+        "text": "Memang, dan fakta struktural di baliknya adalah berita utamanya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Departemen Perdagangan kini dapat memerintahkan laboratorium AI swasta Amerika untuk menonaktifkan sebuah model, mengutip kontrol ekspor, dan perintah itu berlaku dalam 72 jam.",
+      "text_markdown": "Departemen Perdagangan kini dapat memerintahkan laboratorium AI swasta Amerika untuk menonaktifkan sebuah model, mengutip kontrol ekspor, dan perintah itu berlaku dalam 72 jam.",
+      "title": "",
+      "tts": {
+        "text": "Departemen Perdagangan kini dapat memerintahkan laboratorium AI swasta Amerika untuk menonaktifkan sebuah model, mengutip kontrol ekspor, dan perintah itu berlaku dalam tujuh puluh dua jam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Terlepas dari apakah Anda menganggap perintah itu benar atau tidak.",
+      "text_markdown": "Terlepas dari apakah Anda menganggap perintah itu benar atau tidak.",
+      "title": "",
+      "tts": {
+        "text": "Terlepas dari apakah Anda menganggap perintah itu benar atau tidak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Terlepas dari apakah Anda menganggap perintah itu benar atau tidak.",
+      "text_markdown": "Terlepas dari apakah Anda menganggap perintah itu benar atau tidak.",
+      "title": "",
+      "tts": {
+        "text": "Terlepas dari apakah Anda menganggap perintah itu benar atau tidak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Otoritas itu sendiri, kecepatan, dan presedenlah yang penting.",
+      "text_markdown": "Otoritas itu sendiri, kecepatan, dan presedenlah yang penting.",
+      "title": "",
+      "tts": {
+        "text": "Otoritas itu sendiri, kecepatan, dan presedenlah yang penting.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan peran Amazon di sini.",
+      "text_markdown": "Dan peran Amazon di sini.",
+      "title": "",
+      "tts": {
+        "text": "Dan peran Amazon di sini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Itu adalah bagian yang perlu diperhatikan.",
+      "text_markdown": "Itu adalah bagian yang perlu diperhatikan.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah bagian yang perlu diperhatikan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Amazon adalah investor utama Anthropic dan juga bersaing dengan Anthropic di pasar model dasar melalui karyanya sendiri.",
+      "text_markdown": "Amazon adalah investor utama Anthropic dan juga bersaing dengan Anthropic di pasar model dasar melalui karyanya sendiri.",
+      "title": "",
+      "tts": {
+        "text": "Amazon adalah investor utama Anthropic dan juga bersaing dengan Anthropic di pasar model dasar melalui karyanya sendiri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Jika peringatan pesaing kepada pemerintah dapat menonaktifkan model saingan dalam waktu akhir pekan yang panjang, itu adalah bentuk baru bagi dinamika industri.",
+      "text_markdown": "Jika peringatan pesaing kepada pemerintah dapat menonaktifkan model saingan dalam waktu akhir pekan yang panjang, itu adalah bentuk baru bagi dinamika industri.",
+      "title": "",
+      "tts": {
+        "text": "Jika peringatan pesaing kepada pemerintah dapat menonaktifkan model saingan dalam waktu akhir pekan yang panjang, itu adalah bentuk baru bagi dinamika industri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Mari kita beralih ke pembangunan.",
+      "text_markdown": "Mari kita beralih ke pembangunan.",
+      "title": "",
+      "tts": {
+        "text": "Mari kita beralih ke pembangunan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Stargate — inisiatif pusat data OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — inisiatif pusat data OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — inisiatif pusat data OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Berapa angka sebenarnya.",
+      "text_markdown": "Berapa angka sebenarnya.",
+      "title": "",
+      "tts": {
+        "text": "Berapa angka sebenarnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Stargate telah mengumumkan kapasitas sebelas gigawatt di AS.",
+      "text_markdown": "Stargate telah mengumumkan kapasitas sebelas gigawatt di AS.",
+      "title": "",
+      "tts": {
+        "text": "Stargate telah mengumumkan kapasitas sebelas gigawatt di Amerika Serikat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pada pertengahan Juni, sekitar 200 megawatt sudah beroperasi di lokasi Abilene, Texas, untuk fase pertama.",
+      "text_markdown": "Pada pertengahan Juni, sekitar 200 megawatt sudah beroperasi di lokasi Abilene, Texas, untuk fase pertama.",
+      "title": "",
+      "tts": {
+        "text": "Pada pertengahan Juni, sekitar dua ratus megawatt sudah beroperasi di lokasi Abilene, Texas, untuk fase pertama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sebelas gigawatt diumumkan, dua ratus megawatt terhubung.",
+      "text_markdown": "Sebelas gigawatt diumumkan, dua ratus megawatt terhubung.",
+      "title": "",
+      "tts": {
+        "text": "Sebelas gigawatt diumumkan, dua ratus megawatt terhubung.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Itu adalah seluruh kesenjangan dalam satu baris.",
+      "text_markdown": "Itu adalah seluruh kesenjangan dalam satu baris.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah seluruh kesenjangan dalam satu baris.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Memang, dan contoh paling jelas ada di New Mexico.",
+      "text_markdown": "Memang, dan contoh paling jelas ada di New Mexico.",
+      "title": "",
+      "tts": {
+        "text": "Memang, dan contoh paling jelas ada di New Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Lokasi Doña Ana County adalah kampus Stargate tunggal terbesar, direncanakan sebesar empat koma lima gigawatt.",
+      "text_markdown": "Lokasi Doña Ana County adalah kampus Stargate tunggal terbesar, direncanakan sebesar empat koma lima gigawatt.",
+      "title": "",
+      "tts": {
+        "text": "Lokasi Doña Ana County adalah kampus Stargate tunggal terbesar, direncanakan sebesar empat koma lima gigawatt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Delapan belas miliar dolar pembiayaan proyek sindikasi telah tersedia — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ditambah cek ekuitas tiga miliar dolar dari Blue Owl.",
+      "text_markdown": "Delapan belas miliar dolar pembiayaan proyek sindikasi telah tersedia — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ditambah cek ekuitas tiga miliar dolar dari Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Delapan belas miliar dolar pembiayaan proyek sindikasi telah tersedia — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — ditambah cek ekuitas tiga miliar dolar dari Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan status konstruksi di lapangan.",
+      "text_markdown": "Dan status konstruksi di lapangan.",
+      "title": "",
+      "tts": {
+        "text": "Dan status konstruksi di lapangan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Sejauh ini belum ada penggalian.",
+      "text_markdown": "Sejauh ini belum ada penggalian.",
+      "title": "",
+      "tts": {
+        "text": "Sejauh ini belum ada penggalian.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Lokasi tersebut sedang menunggu izin kualitas udara dari Departemen Lingkungan New Mexico, yang semula diharapkan pada tanggal dua puluh dua April, kini ditunda hingga tanggal dua puluh satu Juli setelah lebih dari tujuh ribu komentar publik.",
+      "text_markdown": "Lokasi tersebut sedang menunggu izin kualitas udara dari Departemen Lingkungan New Mexico, yang semula diharapkan pada tanggal dua puluh dua April, kini ditunda hingga tanggal dua puluh satu Juli setelah lebih dari tujuh ribu komentar publik.",
+      "title": "",
+      "tts": {
+        "text": "Lokasi tersebut sedang menunggu izin kualitas udara dari Departemen Lingkungan New Mexico, yang semula diharapkan pada tanggal dua puluh dua April, kini ditunda hingga tanggal dua puluh satu Juli setelah lebih dari tujuh ribu komentar publik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Delapan belas miliar dolar berkomitmen, nol penggalian di lapangan, satu tenggat waktu izin kualitas udara.",
+      "text_markdown": "Delapan belas miliar dolar berkomitmen, nol penggalian di lapangan, satu tenggat waktu izin kualitas udara.",
+      "title": "",
+      "tts": {
+        "text": "Delapan belas miliar dolar berkomitmen, nol penggalian di lapangan, satu tenggat waktu izin kualitas udara.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Siapa yang akan menanggung kerugian jika angkanya tidak sesuai perhitungan.",
+      "text_markdown": "Siapa yang akan menanggung kerugian jika angkanya tidak sesuai perhitungan.",
+      "title": "",
+      "tts": {
+        "text": "Siapa yang akan menanggung kerugian jika angkanya tidak sesuai perhitungan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Di situlah Oracle menjadi menarik.",
+      "text_markdown": "Di situlah Oracle menjadi menarik.",
+      "title": "",
+      "tts": {
+        "text": "Di situlah Oracle menjadi menarik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kewajiban Kinerja Tersisa Oracle — lini akuntansi yang mencatat pendapatan kontrak yang belum dikirimkan — mencapai lima ratus lima puluh tiga miliar dolar pada kuartal tiga fiskal dua ribu dua puluh enam.",
+      "text_markdown": "Kewajiban Kinerja Tersisa Oracle — lini akuntansi yang mencatat pendapatan kontrak yang belum dikirimkan — mencapai lima ratus lima puluh tiga miliar dolar pada kuartal tiga fiskal dua ribu dua puluh enam.",
+      "title": "",
+      "tts": {
+        "text": "Kewajiban Kinerja Tersisa Oracle — lini akuntansi yang mencatat pendapatan kontrak yang belum dikirimkan — mencapai lima ratus lima puluh tiga miliar dolar pada kuartal tiga fiskal dua ribu dua puluh enam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Itu naik tiga ratus dua puluh lima persen dari tahun ke tahun, dan sebagian besar peningkatan itu secara publik diidentifikasi dengan OpenAI dan Stargate.",
+      "text_markdown": "Itu naik tiga ratus dua puluh lima persen dari tahun ke tahun, dan sebagian besar peningkatan itu secara publik diidentifikasi dengan OpenAI dan Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Itu naik tiga ratus dua puluh lima persen dari tahun ke tahun, dan sebagian besar peningkatan itu secara publik diidentifikasi dengan OpenAI dan Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan sisi utang.",
+      "text_markdown": "Dan sisi utang.",
+      "title": "",
+      "tts": {
+        "text": "Dan sisi utang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Total pinjaman mencapai seratus tiga puluh empat koma enam miliar dolar per dua puluh delapan Februari.",
+      "text_markdown": "Total pinjaman mencapai seratus tiga puluh empat koma enam miliar dolar per dua puluh delapan Februari.",
+      "title": "",
+      "tts": {
+        "text": "Total pinjaman mencapai seratus tiga puluh empat koma enam miliar dolar per dua puluh delapan Februari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Oracle mengumpulkan tiga puluh miliar dolar pada bulan Februari saja — obligasi peringkat investasi ditambah saham preferen konvertibel wajib — dan menerbitkan empat puluh tiga miliar dolar obligasi senior baru selama periode sembilan bulan.",
+      "text_markdown": "Oracle mengumpulkan tiga puluh miliar dolar pada bulan Februari saja — obligasi peringkat investasi ditambah saham preferen konvertibel wajib — dan menerbitkan empat puluh tiga miliar dolar obligasi senior baru selama periode sembilan bulan.",
+      "title": "",
+      "tts": {
+        "text": "Oracle mengumpulkan tiga puluh miliar dolar pada bulan Februari saja — obligasi peringkat investasi ditambah saham preferen konvertibel wajib — dan menerbitkan empat puluh tiga miliar dolar obligasi senior baru selama periode sembilan bulan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jadi, rangkum posisinya.",
+      "text_markdown": "Jadi, rangkum posisinya.",
+      "title": "",
+      "tts": {
+        "text": "Jadi, rangkum posisinya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Komitmennya mencapai $553 miliar, utangnya $134 miliar, dan satu pelanggan besar menanggung sebagian besar risiko.",
+      "text_markdown": "Komitmennya mencapai $553 miliar, utangnya $134 miliar, dan satu pelanggan besar menanggung sebagian besar risiko.",
+      "title": "",
+      "tts": {
+        "text": "Komitmennya mencapai lima ratus lima puluh tiga miliar dolar, utangnya seratus tiga puluh empat miliar dolar, dan satu pelanggan besar menanggung sebagian besar risiko.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Itu adalah struktur pembangunan dalam satu kalimat.",
+      "text_markdown": "Itu adalah struktur pembangunan dalam satu kalimat.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah struktur pembangunan dalam satu kalimat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Mari kita beralih ke perbandingan AS dan Tiongkok.",
+      "text_markdown": "Mari kita beralih ke perbandingan AS dan Tiongkok.",
+      "title": "",
+      "tts": {
+        "text": "Mari kita beralih ke perbandingan Amerika Serikat dan Tiongkok.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Klishe-nya adalah Tiongkok tertinggal beberapa bulan.",
+      "text_markdown": "Klishe-nya adalah Tiongkok tertinggal beberapa bulan.",
+      "title": "",
+      "tts": {
+        "text": "Klishe-nya adalah Tiongkok tertinggal beberapa bulan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Klishe itu salah karena mengukur hal yang salah.",
+      "text_markdown": "Klishe itu salah karena mengukur hal yang salah.",
+      "title": "",
+      "tts": {
+        "text": "Klishe itu salah karena mengukur hal yang salah.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pada hari Senin, sembilan Juni, Bloomberg melaporkan draf rencana Tiongkok dari Komisi Pembangunan dan Reformasi Nasional — dua triliun yuan, sekitar dua ratus sembilan puluh lima miliar dolar, untuk jaringan pusat data AI nasional pada dua ribu dua puluh delapan.",
+      "text_markdown": "Pada hari Senin, sembilan Juni, Bloomberg melaporkan draf rencana Tiongkok dari Komisi Pembangunan dan Reformasi Nasional — dua triliun yuan, sekitar dua ratus sembilan puluh lima miliar dolar, untuk jaringan pusat data AI nasional pada dua ribu dua puluh delapan.",
+      "title": "",
+      "tts": {
+        "text": "Pada hari Senin, tanggal sembilan Juni, Bloomberg melaporkan draf rencana Tiongkok dari Komisi Pembangunan dan Reformasi Nasional — dua triliun yuan, sekitar dua ratus sembilan puluh lima miliar dolar, untuk jaringan pusat data A I nasional pada tahun dua ribu dua puluh delapan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Rencana tersebut mengamanatkan delapan puluh persen silikon domestik dan akan dioperasikan sebagai satu jaringan komputasi yang saling terhubung oleh China Mobile dan China Telecom.",
+      "text_markdown": "Rencana tersebut mengamanatkan delapan puluh persen silikon domestik dan akan dioperasikan sebagai satu jaringan komputasi yang saling terhubung oleh China Mobile dan China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Rencana tersebut mengamanatkan delapan puluh persen silikon domestik dan akan dioperasikan sebagai satu jaringan komputasi yang saling terhubung oleh China Mobile dan China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-063",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan di mana letak masalah dalam rencana itu?",
+      "text_markdown": "Dan di mana letak masalah dalam rencana itu?",
+      "title": "",
+      "tts": {
+        "text": "Dan di mana letak masalah dalam rencana itu?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dua triliun yuan, delapan puluh persen silikon domestik, tenggat waktu dua ribu dua puluh delapan — dan masalahnya adalah kendala utamanya bukan chip logika, melainkan memori bandwidth tinggi.",
+      "text_markdown": "Dua triliun yuan, delapan puluh persen silikon domestik, tenggat waktu dua ribu dua puluh delapan — dan masalahnya adalah kendala utamanya bukan chip logika, melainkan memori bandwidth tinggi.",
+      "title": "",
+      "tts": {
+        "text": "Dua triliun yuan, delapan puluh persen silikon domestik, tenggat waktu dua ribu dua puluh delapan — dan masalahnya adalah kendala utamanya bukan chip logika, melainkan memori bandwidth tinggi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jelaskan kepada kami tentang itu.",
+      "text_markdown": "Jelaskan kepada kami tentang itu.",
+      "title": "",
+      "tts": {
+        "text": "Jelaskan kepada kami tentang itu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Setiap akselerator AI membutuhkan tumpukan HBM yang dipasang pada die logika.",
+      "text_markdown": "Setiap akselerator AI membutuhkan tumpukan HBM yang dipasang pada die logika.",
+      "title": "",
+      "tts": {
+        "text": "Setiap akselerator A I membutuhkan tumpukan H B M yang dipasang pada die logika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tanpa HBM, chip itu hanyalah pemberat kertas.",
+      "text_markdown": "Tanpa HBM, chip itu hanyalah pemberat kertas.",
+      "title": "",
+      "tts": {
+        "text": "Tanpa H B M, chip itu hanyalah pemberat kertas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tiongkok menimbun sekitar tiga belas juta tumpukan HBM sebelum kontrol ekspor ditutup — sebelas koma empat juta dari Samsung saja.",
+      "text_markdown": "Tiongkok menimbun sekitar tiga belas juta tumpukan HBM sebelum kontrol ekspor ditutup — sebelas koma empat juta dari Samsung saja.",
+      "title": "",
+      "tts": {
+        "text": "Tiongkok menimbun sekitar tiga belas juta tumpukan H B M sebelum kontrol ekspor ditutup — sebelas koma empat juta dari Samsung saja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dengan rasio pengemasan Huawei Ascend sembilan-sepuluh C, persediaan itu cukup untuk sekitar satu koma enam juta chip.",
+      "text_markdown": "Dengan rasio pengemasan Huawei Ascend sembilan-sepuluh C, persediaan itu cukup untuk sekitar satu koma enam juta chip.",
+      "title": "",
+      "tts": {
+        "text": "Dengan rasio pengemasan Huawei Ascend sembilan sepuluh C, persediaan itu cukup untuk sekitar satu koma enam juta chip.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-070",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan kemudian pasokan habis.",
+      "text_markdown": "Dan kemudian pasokan habis.",
+      "title": "",
+      "tts": {
+        "text": "Dan kemudian pasokan habis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-071",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kemudian pasokan habis — tiga belas juta tumpukan HBM, cukup untuk satu koma enam juta chip, dan itulah batasnya.",
+      "text_markdown": "Kemudian pasokan habis — tiga belas juta tumpukan HBM, cukup untuk satu koma enam juta chip, dan itulah batasnya.",
+      "title": "",
+      "tts": {
+        "text": "Kemudian pasokan habis — tiga belas juta tumpukan H B M, cukup untuk satu koma enam juta chip, dan itulah batasnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-072",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "HBM domestik Tiongkok, dari CXMT, diperkirakan akan mencapai sekitar dua juta tumpukan pada dua ribu dua puluh enam — cukup untuk mungkin dua ratus lima puluh hingga tiga ratus ribu akselerator.",
+      "text_markdown": "HBM domestik Tiongkok, dari CXMT, diperkirakan akan mencapai sekitar dua juta tumpukan pada dua ribu dua puluh enam — cukup untuk mungkin dua ratus lima puluh hingga tiga ratus ribu akselerator.",
+      "title": "",
+      "tts": {
+        "text": "H B M domestik Tiongkok, dari C X M T, diperkirakan akan mencapai sekitar dua juta tumpukan pada dua ribu dua puluh enam — cukup untuk mungkin dua ratus lima puluh hingga tiga ratus ribu akselerator.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-073",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jadi, seperti apa rencana silikon Huawei?",
+      "text_markdown": "Jadi, seperti apa rencana silikon Huawei?",
+      "title": "",
+      "tts": {
+        "text": "Jadi, seperti apa rencana silikon Huawei?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Bloomberg, mengutip rencana Huawei, menargetkan produksi dua ribu dua puluh enam sebesar enam ratus ribu chip sembilan-sepuluh C, dengan lini produk Ascend yang lebih luas mencapai total satu koma enam juta die.",
+      "text_markdown": "Bloomberg, mengutip rencana Huawei, menargetkan produksi dua ribu dua puluh enam sebesar enam ratus ribu chip sembilan-sepuluh C, dengan lini produk Ascend yang lebih luas mencapai total satu koma enam juta die.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, mengutip rencana Huawei, menargetkan produksi dua ribu dua puluh enam sebesar enam ratus ribu chip sembilan sepuluh C, dengan lini produk Ascend yang lebih luas mencapai total satu koma enam juta die.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Angka itu, enam ratus ribu, adalah target, bukan hasil pengiriman.",
+      "text_markdown": "Angka itu, enam ratus ribu, adalah target, bukan hasil pengiriman.",
+      "title": "",
+      "tts": {
+        "text": "Angka itu, enam ratus ribu, adalah target, bukan hasil pengiriman.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Dan secara terpisah, sebelum kontrol ekspor memutus pasokan mereka, Huawei mengumpulkan lebih dari dua koma sembilan juta die Ascend yang dibuat di TSMC melalui perusahaan cangkang Sophgo dan Bitmain.",
+      "text_markdown": "Dan secara terpisah, sebelum kontrol ekspor memutus pasokan mereka, Huawei mengumpulkan lebih dari dua koma sembilan juta die Ascend yang dibuat di TSMC melalui perusahaan cangkang Sophgo dan Bitmain.",
+      "title": "",
+      "tts": {
+        "text": "Dan secara terpisah, sebelum kontrol ekspor memutus pasokan mereka, Huawei mengumpulkan lebih dari dua koma sembilan juta die Ascend yang dibuat di T S M C melalui perusahaan cangkang Sophgo dan Bitmain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Narasi 'kontrol ekspor berhasil' memiliki lubang dua koma sembilan juta die di dalamnya.",
+      "text_markdown": "Narasi 'kontrol ekspor berhasil' memiliki lubang dua koma sembilan juta die di dalamnya.",
+      "title": "",
+      "tts": {
+        "text": "Narasi 'kontrol ekspor berhasil' memiliki lubang dua koma sembilan juta die di dalamnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Mari kita bahas berita utama, dengan cepat.",
+      "text_markdown": "Mari kita bahas berita utama, dengan cepat.",
+      "title": "",
+      "tts": {
+        "text": "Mari kita bahas berita utama, dengan cepat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-079",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Berita utama pertama minggu ini, Broadcom.",
+      "text_markdown": "Berita utama pertama minggu ini, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Berita utama pertama minggu ini, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-080",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kapitalisasi pasar Broadcom berada di sekitar dua triliun dolar.",
+      "text_markdown": "Kapitalisasi pasar Broadcom berada di sekitar dua triliun dolar.",
+      "title": "",
+      "tts": {
+        "text": "Kapitalisasi pasar Broadcom berada di sekitar dua triliun dolar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "CEO mereka, Hock Tan, menegaskan kembali target pendapatan semikonduktor AI seratus miliar dolar untuk tahun fiskal dua ribu dua puluh tujuh pada panggilan pendapatan tiga Juni, didukung oleh sekitar tujuh puluh tiga miliar dolar dalam backlog AI dan perjanjian jangka panjang dengan Alphabet dan Meta yang diperpanjang hingga dua ribu tiga puluh satu.",
+      "text_markdown": "CEO mereka, Hock Tan, menegaskan kembali target pendapatan semikonduktor AI seratus miliar dolar untuk tahun fiskal dua ribu dua puluh tujuh pada panggilan pendapatan tiga Juni, didukung oleh sekitar tujuh puluh tiga miliar dolar dalam backlog AI dan perjanjian jangka panjang dengan Alphabet dan Meta yang diperpanjang hingga dua ribu tiga puluh satu.",
+      "title": "",
+      "tts": {
+        "text": "C E O mereka, Hock Tan, menegaskan kembali target pendapatan semikonduktor A I seratus miliar dolar untuk tahun fiskal dua ribu dua puluh tujuh pada panggilan pendapatan tanggal tiga Juni, didukung oleh sekitar tujuh puluh tiga miliar dolar dalam backlog A I dan perjanjian jangka panjang dengan Alphabet dan Meta yang diperpanjang hingga dua ribu tiga puluh satu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kapitalisasi pasar dua triliun dolar, target pendapatan AI seratus miliar dolar, hampir tidak ada pengakuan merek ritel.",
+      "text_markdown": "Kapitalisasi pasar dua triliun dolar, target pendapatan AI seratus miliar dolar, hampir tidak ada pengakuan merek ritel.",
+      "title": "",
+      "tts": {
+        "text": "Kapitalisasi pasar dua triliun dolar, target pendapatan A I seratus miliar dolar, hampir tidak ada pengakuan merek ritel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-083",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Berita utama kedua minggu ini, ASML.",
+      "text_markdown": "Berita utama kedua minggu ini, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Berita utama kedua minggu ini, A S M L.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ASML, perusahaan Belanda yang membuat mesin litografi yang menjadi tumpuan semua logika terdepan, menjual sistem High-N.A. E.U.V. mereka seharga sekitar tiga ratus tujuh puluh juta dolar.",
+      "text_markdown": "ASML, perusahaan Belanda yang membuat mesin litografi yang menjadi tumpuan semua logika terdepan, menjual sistem High-N.A. E.U.V. mereka seharga sekitar tiga ratus tujuh puluh juta dolar.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, perusahaan Belanda yang membuat mesin litografi yang menjadi tumpuan semua logika terdepan, menjual sistem High N A E U V mereka seharga sekitar tiga ratus tujuh puluh juta dolar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Kapasitas produksi global kurang dari dua puluh unit per tahun.",
+      "text_markdown": "Kapasitas produksi global kurang dari dua puluh unit per tahun.",
+      "title": "",
+      "tts": {
+        "text": "Kapasitas produksi global kurang dari dua puluh unit per tahun.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tiga ratus tujuh puluh juta dolar per mesin, kurang dari dua puluh mesin setahun, satu perusahaan yang membuatnya — itulah titik hambatan sebenarnya pada silikon global, bukan kebijakan.",
+      "text_markdown": "Tiga ratus tujuh puluh juta dolar per mesin, kurang dari dua puluh mesin setahun, satu perusahaan yang membuatnya — itulah titik hambatan sebenarnya pada silikon global, bukan kebijakan.",
+      "title": "",
+      "tts": {
+        "text": "Tiga ratus tujuh puluh juta dolar per mesin, kurang dari dua puluh mesin setahun, satu perusahaan yang membuatnya — itulah titik hambatan sebenarnya pada silikon global, bukan kebijakan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-087",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Berita utama ketiga minggu ini, kontrol ekspor.",
+      "text_markdown": "Berita utama ketiga minggu ini, kontrol ekspor.",
+      "title": "",
+      "tts": {
+        "text": "Berita utama ketiga minggu ini, kontrol ekspor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Departemen Perdagangan mencabut Aturan Difusi AI era Biden pada tanggal tiga belas Mei, dua ribu dua puluh lima, dan tidak mengeluarkan klarifikasi penegakan B.I.S. baru hingga tanggal tiga puluh satu Mei, dua ribu dua puluh enam.",
+      "text_markdown": "Departemen Perdagangan mencabut Aturan Difusi AI era Biden pada tanggal tiga belas Mei, dua ribu dua puluh lima, dan tidak mengeluarkan klarifikasi penegakan B.I.S. baru hingga tanggal tiga puluh satu Mei, dua ribu dua puluh enam.",
+      "title": "",
+      "tts": {
+        "text": "Departemen Perdagangan mencabut Aturan Difusi A I era Biden pada tanggal tiga belas Mei, dua ribu dua puluh lima, dan tidak mengeluarkan klarifikasi penegakan B I S baru hingga tanggal tiga puluh satu Mei, dua ribu dua puluh enam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Itu adalah jendela waktu sekitar satu tahun di mana persyaratan lisensi tidak ditegakkan secara aktif.",
+      "text_markdown": "Itu adalah jendela waktu sekitar satu tahun di mana persyaratan lisensi tidak ditegakkan secara aktif.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah jendela waktu sekitar satu tahun di mana persyaratan lisensi tidak ditegakkan secara aktif.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-090",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jadi, hitunglah hari-harinya.",
+      "text_markdown": "Jadi, hitunglah hari-harinya.",
+      "title": "",
+      "tts": {
+        "text": "Jadi, hitunglah hari-harinya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Tujuh puluh dua jam untuk mematikan model A.S., tiga ratus delapan puluh hari untuk menegakkan aturan ekspor chip — asimetri itulah intinya.",
+      "text_markdown": "Tujuh puluh dua jam untuk mematikan model A.S., tiga ratus delapan puluh hari untuk menegakkan aturan ekspor chip — asimetri itulah intinya.",
+      "title": "",
+      "tts": {
+        "text": "Tujuh puluh dua jam untuk mematikan model U S, tiga ratus delapan puluh hari untuk menegakkan aturan ekspor chip — asimetri itulah intinya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan ke mana chip-chip itu pergi dalam tiga ratus delapan puluh hari itu.",
+      "text_markdown": "Dan ke mana chip-chip itu pergi dalam tiga ratus delapan puluh hari itu.",
+      "title": "",
+      "tts": {
+        "text": "Dan ke mana chip-chip itu pergi dalam tiga ratus delapan puluh hari itu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Asia Tenggara adalah tempat sebagian besar dari mereka pergi.",
+      "text_markdown": "Asia Tenggara adalah tempat sebagian besar dari mereka pergi.",
+      "title": "",
+      "tts": {
+        "text": "Asia Tenggara adalah tempat sebagian besar dari mereka pergi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Departemen Kehakiman membuka segel dakwaan pada akhir Maret yang menuduh chip Nvidia H seratus dan A seratus disalurkan melalui perantara Malaysia dan Singapura.",
+      "text_markdown": "Departemen Kehakiman membuka segel dakwaan pada akhir Maret yang menuduh chip Nvidia H seratus dan A seratus disalurkan melalui perantara Malaysia dan Singapura.",
+      "title": "",
+      "tts": {
+        "text": "Departemen Kehakiman membuka segel dakwaan pada akhir Maret yang menuduh chip Nvidia H seratus dan A seratus disalurkan melalui perantara Malaysia dan Singapura.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Fortune menerbitkan teks terenkripsi pada bulan Mei yang menunjukkan logistiknya, dan Super Micro terlibat dalam kasus perusahaan cangkang senilai dua setengah miliar dolar.",
+      "text_markdown": "Fortune menerbitkan teks terenkripsi pada bulan Mei yang menunjukkan logistiknya, dan Super Micro terlibat dalam kasus perusahaan cangkang senilai dua setengah miliar dolar.",
+      "title": "",
+      "tts": {
+        "text": "Fortune menerbitkan teks terenkripsi pada bulan Mei yang menunjukkan logistiknya, dan Super Micro terlibat dalam kasus perusahaan cangkang senilai dua setengah miliar dolar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-096",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Pemerintahan Trump dilaporkan sedang menyusun pembatasan ekspor chip baru yang secara khusus ditujukan untuk Malaysia dan Thailand.",
+      "text_markdown": "Pemerintahan Trump dilaporkan sedang menyusun pembatasan ekspor chip baru yang secara khusus ditujukan untuk Malaysia dan Thailand.",
+      "title": "",
+      "tts": {
+        "text": "Pemerintahan Trump dilaporkan sedang menyusun pembatasan ekspor chip baru yang secara khusus ditujukan untuk Malaysia dan Thailand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-097",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jadi, gambaran singkatnya.",
+      "text_markdown": "Jadi, gambaran singkatnya.",
+      "title": "",
+      "tts": {
+        "text": "Jadi, gambaran singkatnya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Chip-chip itu tidak terbang ke Shenzhen — mereka terbang ke Penang dan Singapura terlebih dahulu.",
+      "text_markdown": "Chip-chip itu tidak terbang ke Shenzhen — mereka terbang ke Penang dan Singapura terlebih dahulu.",
+      "title": "",
+      "tts": {
+        "text": "Chip-chip itu tidak terbang ke Shenzhen — mereka terbang ke Penang dan Singapura terlebih dahulu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-099",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Konsep minggu ini — Kewajiban Kinerja yang Tersisa.",
+      "text_markdown": "Konsep minggu ini — Kewajiban Kinerja yang Tersisa.",
+      "title": "",
+      "tts": {
+        "text": "Konsep minggu ini — Kewajiban Kinerja yang Tersisa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-100",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "R.P.O. adalah baris akuntansi yang mencatat nilai dolar dari kontrak yang telah ditandatangani perusahaan tetapi belum dipenuhi.",
+      "text_markdown": "R.P.O. adalah baris akuntansi yang mencatat nilai dolar dari kontrak yang telah ditandatangani perusahaan tetapi belum dipenuhi.",
+      "title": "",
+      "tts": {
+        "text": "R P O adalah baris akuntansi yang mencatat nilai dolar dari kontrak yang telah ditandatangani perusahaan tetapi belum dipenuhi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Ini berorientasi ke depan — ini memberi tahu Anda tentang pendapatan di masa depan, bukan uang di bank hari ini.",
+      "text_markdown": "Ini berorientasi ke depan — ini memberi tahu Anda tentang pendapatan di masa depan, bukan uang di bank hari ini.",
+      "title": "",
+      "tts": {
+        "text": "Ini berorientasi ke depan — ini memberi tahu Anda tentang pendapatan di masa depan, bukan uang di bank hari ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-102",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Dan mengapa ini penting bagi Oracle.",
+      "text_markdown": "Dan mengapa ini penting bagi Oracle.",
+      "title": "",
+      "tts": {
+        "text": "Dan mengapa ini penting bagi Oracle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Karena lima ratus lima puluh tiga miliar dolar R.P.O., yang sangat terkonsentrasi pada satu pelanggan untuk satu pembangunan, berarti Oracle telah berjanji untuk menyediakan sejumlah besar komputasi selama beberapa tahun ke depan kepada pelanggan yang model pendapatannya sendiri masih diperdebatkan.",
+      "text_markdown": "Karena lima ratus lima puluh tiga miliar dolar R.P.O., yang sangat terkonsentrasi pada satu pelanggan untuk satu pembangunan, berarti Oracle telah berjanji untuk menyediakan sejumlah besar komputasi selama beberapa tahun ke depan kepada pelanggan yang model pendapatannya sendiri masih diperdebatkan.",
+      "title": "",
+      "tts": {
+        "text": "Karena lima ratus lima puluh tiga miliar dolar R P O, yang sangat terkonsentrasi pada satu pelanggan untuk satu pembangunan, berarti Oracle telah berjanji untuk menyediakan sejumlah besar komputasi selama beberapa tahun ke depan kepada pelanggan yang model pendapatannya sendiri masih diperdebatkan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Jika kontrak-kontrak itu terpenuhi, Oracle mendapatkan kesepakatan terbaik dekade ini.",
+      "text_markdown": "Jika kontrak-kontrak itu terpenuhi, Oracle mendapatkan kesepakatan terbaik dekade ini.",
+      "title": "",
+      "tts": {
+        "text": "Jika kontrak-kontrak itu terpenuhi, Oracle mendapatkan kesepakatan terbaik dekade ini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Jika mereka meleset — atau dinegosiasi ulang — Oracle menanggung utang sementara kontrak-kontrak itu menyusut.",
+      "text_markdown": "Jika mereka meleset — atau dinegosiasi ulang — Oracle menanggung utang sementara kontrak-kontrak itu menyusut.",
+      "title": "",
+      "tts": {
+        "text": "Jika mereka meleset — atau dinegosiasi ulang — Oracle menanggung utang sementara kontrak-kontrak itu menyusut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-106",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Jadi, ketika Anda melihat angka R.P.O. dalam pengajuan teknologi.",
+      "text_markdown": "Jadi, ketika Anda melihat angka R.P.O. dalam pengajuan teknologi.",
+      "title": "",
+      "tts": {
+        "text": "Jadi, ketika Anda melihat angka R.P.O. dalam pengajuan teknologi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Baca siapa pelanggannya, seberapa terkonsentrasi kewajiban tersebut, dan apa yang harus terjadi agar perusahaan benar-benar dapat memenuhinya.",
+      "text_markdown": "Baca siapa pelanggannya, seberapa terkonsentrasi kewajiban tersebut, dan apa yang harus terjadi agar perusahaan benar-benar dapat memenuhinya.",
+      "title": "",
+      "tts": {
+        "text": "Baca siapa pelanggannya, seberapa terkonsentrasi kewajiban tersebut, dan apa yang harus terjadi agar perusahaan benar-benar dapat memenuhinya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "R.P.O. adalah tempat para pemegang saham yang merugi muncul di catatan kaki.",
+      "text_markdown": "R.P.O. adalah tempat para pemegang saham yang merugi muncul di catatan kaki.",
+      "title": "",
+      "tts": {
+        "text": "R P O adalah tempat para pemegang saham yang merugi muncul di catatan kaki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Tempat yang bagus untuk mendarat.",
+      "text_markdown": "Tempat yang bagus untuk mendarat.",
+      "title": "",
+      "tts": {
+        "text": "Tempat yang bagus untuk mendarat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-110",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Ron, terima kasih atas ringkasannya.",
+      "text_markdown": "Ron, terima kasih atas ringkasannya.",
+      "title": "",
+      "tts": {
+        "text": "Ron, terima kasih atas ringkasannya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Sama-sama, Vindy — senang bisa di sini.",
+      "text_markdown": "Sama-sama, Vindy — senang bisa di sini.",
+      "title": "",
+      "tts": {
+        "text": "Sama-sama, Vindy — senang bisa di sini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-112",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Itu adalah AI This Week untuk dua puluh satu Juni, dua ribu dua puluh enam.",
+      "text_markdown": "Itu adalah AI This Week untuk dua puluh satu Juni, dua ribu dua puluh enam.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah A I This Week untuk dua puluh satu Juni, dua ribu dua puluh enam.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-113",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Minggu depan, kembali ke liputan open-weights dan lab kecil.",
+      "text_markdown": "Minggu depan, kembali ke liputan open-weights dan lab kecil.",
+      "title": "",
+      "tts": {
+        "text": "Minggu depan, kembali ke liputan open-weights dan lab kecil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-114",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "Sampai Minggu depan, jaga diri.",
+      "text_markdown": "Sampai Minggu depan, jaga diri.",
+      "title": "",
+      "tts": {
+        "text": "Sampai Minggu depan, jaga diri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

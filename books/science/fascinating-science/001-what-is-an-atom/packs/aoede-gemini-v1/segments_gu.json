@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "gu",
+  "total_segments": 300,
+  "segments": [
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "sentence_index": 0,
+      "paragraph_id": "p1",
+      "chapter": 1,
+      "text": "બધું અણુઓનું બનેલું છે",
+      "text_markdown": "બધું અણુઓનું બનેલું છે",
+      "title": "બધું અણુઓનું બનેલું છે"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "sentence_index": 0,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "તમારી આસપાસ જુઓ.",
+      "text_markdown": "તમારી આસપાસ જુઓ.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમારી આસપાસ જુઓ.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-003",
+      "sentence_index": 1,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "તમે જે કંઈ જોઈ શકો છો તે અણુઓનું બનેલું છે.",
+      "text_markdown": "તમે જે કંઈ જોઈ શકો છો તે અણુઓનું બનેલું છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમે જે કંઈ જોઈ શકો છો તે અણુઓનું બનેલું છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "sentence_index": 2,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "તમે જે હવા શ્વાસમાં લો છો તે અણુઓની બનેલી છે.",
+      "text_markdown": "તમે જે હવા શ્વાસમાં લો છો તે અણુઓની બનેલી છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમે જે હવા શ્વાસમાં લો છો તે અણુઓની બનેલી છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "sentence_index": 3,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "તમે જે પાણી પીઓ છો તે અણુઓનું બનેલું છે.",
+      "text_markdown": "તમે જે પાણી પીઓ છો તે અણુઓનું બનેલું છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમે જે પાણી પીઓ છો તે અણુઓનું બનેલું છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-006",
+      "sentence_index": 4,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "તમારું શરીર અણુઓનું બનેલું છે.",
+      "text_markdown": "તમારું શરીર અણુઓનું બનેલું છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમારું શરીર અણુઓનું બનેલું છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-007",
+      "sentence_index": 5,
+      "paragraph_id": "p2",
+      "chapter": 1,
+      "text": "તમારા પગ નીચેની જમીન અણુઓની બનેલી છે.",
+      "text_markdown": "તમારા પગ નીચેની જમીન અણુઓની બનેલી છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમારા પગ નીચેની જમીન અણુઓની બનેલી છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-008",
+      "sentence_index": 0,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "અણુ એ દ્રવ્યનો સૌથી નાનો કણ છે જે હજી પણ રાસાયણિક ઓળખ ધરાવે છે.",
+      "text_markdown": "અણુ એ દ્રવ્યનો સૌથી નાનો કણ છે જે હજી પણ રાસાયણિક ઓળખ ધરાવે છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "અણુ એ દ્રવ્યનો સૌથી નાનો કણ છે જે હજી પણ રાસાયણિક ઓળખ ધરાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-009",
+      "sentence_index": 1,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "તમે તમારી આંખોથી એક પણ અણુ જોઈ શકતા નથી.",
+      "text_markdown": "તમે તમારી આંખોથી એક પણ અણુ જોઈ શકતા નથી.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમે તમારી આંખોથી એક પણ અણુ જોઈ શકતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-010",
+      "sentence_index": 2,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "તમે નિયમિત માઇક્રોસ્કોપથી એક પણ અણુ જોઈ શકતા નથી.",
+      "text_markdown": "તમે નિયમિત માઇક્રોસ્કોપથી એક પણ અણુ જોઈ શકતા નથી.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમે નિયમિત માઇક્રોસ્કોપથી એક પણ અણુ જોઈ શકતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-011",
+      "sentence_index": 3,
+      "paragraph_id": "p3",
+      "chapter": 1,
+      "text": "અણુઓ એટલા નાના હોય છે.",
+      "text_markdown": "અણુઓ એટલા નાના હોય છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "અણુઓ એટલા નાના હોય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "sentence_index": 0,
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "text": "રેતીના એક કણમાં લગભગ પચાસ ક્વિન્ટિલિયન અણુઓ હોય છે.",
+      "text_markdown": "રેતીના એક કણમાં લગભગ પચાસ ક્વિન્ટિલિયન અણુઓ હોય છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "રેતીના એક કણમાં લગભગ પચાસ ક્વિન્ટિલિયન અણુઓ હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-013",
+      "sentence_index": 1,
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "text": "તે સંખ્યા પચાસ પછી અઢાર શૂન્ય છે.",
+      "text_markdown": "તે સંખ્યા પચાસ પછી અઢાર શૂન્ય છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તે સંખ્યા પચાસ પછી અઢાર શૂન્ય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "sentence_index": 2,
+      "paragraph_id": "p4",
+      "chapter": 1,
+      "text": "રેતીના એક કણમાં જેટલા અણુઓ હોય છે, તેટલા રેતીના કણ એક દરિયાકિનારે પણ નથી હોતા.",
+      "text_markdown": "રેતીના એક કણમાં જેટલા અણુઓ હોય છે, તેટલા રેતીના કણ એક દરિયાકિનારે પણ નથી હોતા.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "રેતીના એક કણમાં જેટલા અણુઓ હોય છે, તેટલા રેતીના કણ એક દરિયાકિનારે પણ નથી હોતા.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "sentence_index": 0,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "અણુઓ ભૌતિક વિશ્વમાં દરેક વસ્તુના નિર્માણ બ્લોક્સ છે.",
+      "text_markdown": "અણુઓ ભૌતિક વિશ્વમાં દરેક વસ્તુના નિર્માણ બ્લોક્સ છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "અણુઓ ભૌતિક વિશ્વમાં દરેક વસ્તુના નિર્માણ બ્લોક્સ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-016",
+      "sentence_index": 1,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "એક દીવાલ ઇંટોની બનેલી છે.",
+      "text_markdown": "એક દીવાલ ઇંટોની બનેલી છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "એક દીવાલ ઇંટોની બનેલી છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "sentence_index": 2,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "એક વાક્ય શબ્દોનું બનેલું છે.",
+      "text_markdown": "એક વાક્ય શબ્દોનું બનેલું છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "એક વાક્ય શબ્દોનું બનેલું છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-018",
+      "sentence_index": 3,
+      "paragraph_id": "p5",
+      "chapter": 1,
+      "text": "બ્રહ્માંડ અણુઓનું બનેલું છે.",
+      "text_markdown": "બ્રહ્માંડ અણુઓનું બનેલું છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "બ્રહ્માંડ અણુઓનું બનેલું છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "sentence_index": 0,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "અણુ શબ્દ પ્રાચીન ગ્રીક ભાષામાંથી આવ્યો છે.",
+      "text_markdown": "અણુ શબ્દ પ્રાચીન ગ્રીક ભાષામાંથી આવ્યો છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "અણુ શબ્દ પ્રાચીન ગ્રીક ભાષામાંથી આવ્યો છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-020",
+      "sentence_index": 1,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "ગ્રીક શબ્દ 'એટોમોસ' નો અર્થ 'કાપી ન શકાય તેવું' થાય છે.",
+      "text_markdown": "ગ્રીક શબ્દ 'એટોમોસ' નો અર્થ 'કાપી ન શકાય તેવું' થાય છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "ગ્રીક શબ્દ 'એટોમોસ' નો અર્થ 'કાપી ન શકાય તેવું' થાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-021",
+      "sentence_index": 2,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "પ્રાચીન ગ્રીક ફિલસૂફો માનતા હતા કે અણુઓ દ્રવ્યના સૌથી નાના શક્ય કણો છે.",
+      "text_markdown": "પ્રાચીન ગ્રીક ફિલસૂફો માનતા હતા કે અણુઓ દ્રવ્યના સૌથી નાના શક્ય કણો છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "પ્રાચીન ગ્રીક ફિલસૂફો માનતા હતા કે અણુઓ દ્રવ્યના સૌથી નાના શક્ય કણો છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "sentence_index": 3,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "તેઓ લગભગ સાચા હતા.",
+      "text_markdown": "તેઓ લગભગ સાચા હતા.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તેઓ લગભગ સાચા હતા.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "sentence_index": 4,
+      "paragraph_id": "p6",
+      "chapter": 1,
+      "text": "અણુઓ ખરેખર સૌથી નાના કણો નથી, પરંતુ તેઓ સૌથી નાના એકમો છે જે તેમના રાસાયણિક ગુણધર્મો જાળવી રાખે છે.",
+      "text_markdown": "અણુઓ ખરેખર સૌથી નાના કણો નથી, પરંતુ તેઓ સૌથી નાના એકમો છે જે તેમના રાસાયણિક ગુણધર્મો જાળવી રાખે છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "અણુઓ ખરેખર સૌથી નાના કણો નથી, પરંતુ તેઓ સૌથી નાના એકમો છે જે તેમના રાસાયણિક ગુણધર્મો જાળવી રાખે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-024",
+      "sentence_index": 0,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "અણુઓ અતિ ટકાઉ હોય છે.",
+      "text_markdown": "અણુઓ અતિ ટકાઉ હોય છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "અણુઓ અતિ ટકાઉ હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-025",
+      "sentence_index": 1,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "તમારા શરીરમાં રહેલા અણુઓ અબજો વર્ષ જૂના છે.",
+      "text_markdown": "તમારા શરીરમાં રહેલા અણુઓ અબજો વર્ષ જૂના છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમારા શરીરમાં રહેલા અણુઓ અબજો વર્ષ જૂના છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "sentence_index": 2,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "તમે આજે જે પાણી પીધું તેમાંના કેટલાક હાઇડ્રોજન અણુઓ બિગ બેંગ પછીની પ્રથમ મિનિટોમાં બન્યા હતા.",
+      "text_markdown": "તમે આજે જે પાણી પીધું તેમાંના કેટલાક હાઇડ્રોજન અણુઓ બિગ બેંગ પછીની પ્રથમ મિનિટોમાં બન્યા હતા.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમે આજે જે પાણી પીધું તેમાંના કેટલાક હાઇડ્રોજન અણુઓ બિગ બેંગ પછીની પ્રથમ મિનિટોમાં બન્યા હતા.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "sentence_index": 3,
+      "paragraph_id": "p7",
+      "chapter": 1,
+      "text": "તમે પ્રાચીન પદાર્થોના બનેલા છો.",
+      "text_markdown": "તમે પ્રાચીન પદાર્થોના બનેલા છો.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તમે પ્રાચીન પદાર્થોના બનેલા છો.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-028",
+      "sentence_index": 0,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "સામાન્ય જીવનમાં અણુઓ ક્યારેય બનતા નથી કે નાશ પામતા નથી.",
+      "text_markdown": "સામાન્ય જીવનમાં અણુઓ ક્યારેય બનતા નથી કે નાશ પામતા નથી.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "સામાન્ય જીવનમાં અણુઓ ક્યારેય બનતા નથી કે નાશ પામતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "sentence_index": 1,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "તેઓ ફરીથી ગોઠવાય છે.",
+      "text_markdown": "તેઓ ફરીથી ગોઠવાય છે.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તેઓ ફરીથી ગોઠવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "sentence_index": 2,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "જ્યારે લાકડું બળે છે, ત્યારે અણુઓ અદૃશ્ય થતા નથી.",
+      "text_markdown": "જ્યારે લાકડું બળે છે, ત્યારે અણુઓ અદૃશ્ય થતા નથી.",
+      "title": "બધું અણુઓનું બનેલું છે",
+      "tts": {
+        "text": "જ્યારે લાકડું બળે છે, ત્યારે અણુઓ અદૃશ્ય થતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-031",
+      "sentence_index": 3,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "તેઓ ધુમાડો, રાખ અને વાયુમાં ફરી ગોઠવાય છે.",
+      "text_markdown": "તેઓ ધુમાડો, રાખ અને વાયુમાં ફરી ગોઠવાય છે.",
+      "title": "બધું પરમાણુઓનું બનેલું છે",
+      "tts": {
+        "text": "તેઓ ધુમાડો, રાખ અને વાયુમાં ફરી ગોઠવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "sentence_index": 4,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "જ્યારે બરફ પીગળે છે, ત્યારે પરમાણુઓ એવા જ રહે છે.",
+      "text_markdown": "જ્યારે બરફ પીગળે છે, ત્યારે પરમાણુઓ એવા જ રહે છે.",
+      "title": "બધું પરમાણુઓનું બનેલું છે",
+      "tts": {
+        "text": "જ્યારે બરફ પીગળે છે, ત્યારે પરમાણુઓ એવા જ રહે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "sentence_index": 5,
+      "paragraph_id": "p8",
+      "chapter": 1,
+      "text": "ફક્ત તેમની ગોઠવણી બદલાય છે.",
+      "text_markdown": "ફક્ત તેમની ગોઠવણી બદલાય છે.",
+      "title": "બધું પરમાણુઓનું બનેલું છે",
+      "tts": {
+        "text": "ફક્ત તેમની ગોઠવણી બદલાય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-034",
+      "sentence_index": 0,
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "text": "પરમાણુઓને સમજવું એ રસાયણશાસ્ત્રનો પાયો છે.",
+      "text_markdown": "પરમાણુઓને સમજવું એ રસાયણશાસ્ત્રનો પાયો છે.",
+      "title": "બધું પરમાણુઓનું બનેલું છે",
+      "tts": {
+        "text": "પરમાણુઓને સમજવું એ રસાયણશાસ્ત્રનો પાયો છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-035",
+      "sentence_index": 1,
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "text": "રસાયણશાસ્ત્ર એ પરમાણુઓ કેવી રીતે જોડાય છે, ફરી ગોઠવાય છે અને ક્રિયાપ્રતિક્રિયા કરે છે તેનું વિજ્ઞાન છે.",
+      "text_markdown": "રસાયણશાસ્ત્ર એ પરમાણુઓ કેવી રીતે જોડાય છે, ફરી ગોઠવાય છે અને ક્રિયાપ્રતિક્રિયા કરે છે તેનું વિજ્ઞાન છે.",
+      "title": "બધું પરમાણુઓનું બનેલું છે",
+      "tts": {
+        "text": "રસાયણશાસ્ત્ર એ પરમાણુઓ કેવી રીતે જોડાય છે, ફરી ગોઠવાય છે અને ક્રિયાપ્રતિક્રિયા કરે છે તેનું વિજ્ઞાન છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-036",
+      "sentence_index": 2,
+      "paragraph_id": "p9",
+      "chapter": 1,
+      "text": "ભૌતિક વિશ્વમાં જે કંઈ પણ થાય છે તે પરમાણુઓ અને તેમની ક્રિયાઓ પર આધાર રાખે છે.",
+      "text_markdown": "ભૌતિક વિશ્વમાં જે કંઈ પણ થાય છે તે પરમાણુઓ અને તેમની ક્રિયાઓ પર આધાર રાખે છે.",
+      "title": "બધું પરમાણુઓનું બનેલું છે",
+      "tts": {
+        "text": "ભૌતિક વિશ્વમાં જે કંઈ પણ થાય છે તે પરમાણુઓ અને તેમની ક્રિયાઓ પર આધાર રાખે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch02-037",
+      "sentence_index": 0,
+      "paragraph_id": "p10",
+      "chapter": 2,
+      "text": "પરમાણુની અંદર",
+      "text_markdown": "પરમાણુની અંદર",
+      "title": "પરમાણુની અંદર"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-038",
+      "sentence_index": 0,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "પરમાણુની અંદર ત્રણ પ્રકારના કણો હોય છે.",
+      "text_markdown": "પરમાણુની અંદર ત્રણ પ્રકારના કણો હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પરમાણુની અંદર ત્રણ પ્રકારના કણો હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-039",
+      "sentence_index": 1,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "પ્રોટોન.",
+      "text_markdown": "પ્રોટોન.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પ્રોટોન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-040",
+      "sentence_index": 2,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "ન્યુટ્રોન.",
+      "text_markdown": "ન્યુટ્રોન.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુટ્રોન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-041",
+      "sentence_index": 3,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "ઇલેક્ટ્રોન.",
+      "text_markdown": "ઇલેક્ટ્રોન.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ઇલેક્ટ્રોન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-042",
+      "sentence_index": 4,
+      "paragraph_id": "p11",
+      "chapter": 2,
+      "text": "આ ત્રણ કણો બ્રહ્માંડના દરેક પરમાણુ બનાવે છે.",
+      "text_markdown": "આ ત્રણ કણો બ્રહ્માંડના દરેક પરમાણુ બનાવે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "આ ત્રણ કણો બ્રહ્માંડના દરેક પરમાણુ બનાવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-043",
+      "sentence_index": 0,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "પરમાણુના કેન્દ્રને ન્યુક્લિયસ કહેવાય છે.",
+      "text_markdown": "પરમાણુના કેન્દ્રને ન્યુક્લિયસ કહેવાય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પરમાણુના કેન્દ્રને ન્યુક્લિયસ કહેવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-044",
+      "sentence_index": 1,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "ન્યુક્લિયસમાં પ્રોટોન અને ન્યુટ્રોન હોય છે.",
+      "text_markdown": "ન્યુક્લિયસમાં પ્રોટોન અને ન્યુટ્રોન હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુક્લિયસમાં પ્રોટોન અને ન્યુટ્રોન હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-045",
+      "sentence_index": 2,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "સમગ્ર પરમાણુની સરખામણીમાં ન્યુક્લિયસ ખૂબ નાનું હોય છે.",
+      "text_markdown": "સમગ્ર પરમાણુની સરખામણીમાં ન્યુક્લિયસ ખૂબ નાનું હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "સમગ્ર પરમાણુની સરખામણીમાં ન્યુક્લિયસ ખૂબ નાનું હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-046",
+      "sentence_index": 3,
+      "paragraph_id": "p12",
+      "chapter": 2,
+      "text": "જો પરમાણુ ફૂટબોલ સ્ટેડિયમ જેટલો મોટો હોય, તો ન્યુક્લિયસ પચાસ-યાર્ડ લાઇન પરના આરસના ગોળા જેટલો હશે.",
+      "text_markdown": "જો પરમાણુ ફૂટબોલ સ્ટેડિયમ જેટલો મોટો હોય, તો ન્યુક્લિયસ પચાસ-યાર્ડ લાઇન પરના આરસના ગોળા જેટલો હશે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "જો પરમાણુ ફૂટબોલ સ્ટેડિયમ જેટલો મોટો હોય, તો ન્યુક્લિયસ પચાસ-યાર્ડ લાઇન પરના આરસના ગોળા જેટલો હશે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-047",
+      "sentence_index": 0,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "પ્રોટોન ધન વિદ્યુતભાર ધરાવે છે.",
+      "text_markdown": "પ્રોટોન ધન વિદ્યુતભાર ધરાવે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પ્રોટોન ધન વિદ્યુતભાર ધરાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-048",
+      "sentence_index": 1,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "દરેક પ્રોટોન સમાન માત્રામાં ધન વિદ્યુતભાર ધરાવે છે.",
+      "text_markdown": "દરેક પ્રોટોન સમાન માત્રામાં ધન વિદ્યુતભાર ધરાવે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "દરેક પ્રોટોન સમાન માત્રામાં ધન વિદ્યુતભાર ધરાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-049",
+      "sentence_index": 2,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "પરમાણુમાં પ્રોટોનની સંખ્યા નક્કી કરે છે કે તે પરમાણુ કયું તત્વ છે.",
+      "text_markdown": "પરમાણુમાં પ્રોટોનની સંખ્યા નક્કી કરે છે કે તે પરમાણુ કયું તત્વ છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પરમાણુમાં પ્રોટોનની સંખ્યા નક્કી કરે છે કે તે પરમાણુ કયું તત્વ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-050",
+      "sentence_index": 3,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "એક પ્રોટોન એટલે હાઇડ્રોજન.",
+      "text_markdown": "એક પ્રોટોન એટલે હાઇડ્રોજન.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "એક પ્રોટોન એટલે હાઇડ્રોજન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-051",
+      "sentence_index": 4,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "છ પ્રોટોન એટલે કાર્બન.",
+      "text_markdown": "છ પ્રોટોન એટલે કાર્બન.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "છ પ્રોટોન એટલે કાર્બન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-052",
+      "sentence_index": 5,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "છવ્વીસ પ્રોટોન એટલે આયર્ન.",
+      "text_markdown": "છવ્વીસ પ્રોટોન એટલે આયર્ન.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "છવ્વીસ પ્રોટોન એટલે આયર્ન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-053",
+      "sentence_index": 6,
+      "paragraph_id": "p13",
+      "chapter": 2,
+      "text": "પ્રોટોનની સંખ્યા એ પરમાણુ વિશેની સૌથી મહત્વપૂર્ણ હકીકત છે.",
+      "text_markdown": "પ્રોટોનની સંખ્યા એ પરમાણુ વિશેની સૌથી મહત્વપૂર્ણ હકીકત છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પ્રોટોનની સંખ્યા એ પરમાણુ વિશેની સૌથી મહત્વપૂર્ણ હકીકત છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-054",
+      "sentence_index": 0,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "ન્યુટ્રોન કોઈ વિદ્યુતભાર ધરાવતા નથી.",
+      "text_markdown": "ન્યુટ્રોન કોઈ વિદ્યુતભાર ધરાવતા નથી.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુટ્રોન કોઈ વિદ્યુતભાર ધરાવતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-055",
+      "sentence_index": 1,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "ન્યુટ્રોન તટસ્થ હોય છે.",
+      "text_markdown": "ન્યુટ્રોન તટસ્થ હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુટ્રોન તટસ્થ હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-056",
+      "sentence_index": 2,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "ન્યુટ્રોન પ્રોટોનની બાજુમાં ન્યુક્લિયસમાં હોય છે.",
+      "text_markdown": "ન્યુટ્રોન પ્રોટોનની બાજુમાં ન્યુક્લિયસમાં હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુટ્રોન પ્રોટોનની બાજુમાં ન્યુક્લિયસમાં હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-057",
+      "sentence_index": 3,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "ન્યુટ્રોન ન્યુક્લિયસને એકસાથે પકડી રાખવામાં મદદ કરે છે.",
+      "text_markdown": "ન્યુટ્રોન ન્યુક્લિયસને એકસાથે પકડી રાખવામાં મદદ કરે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુટ્રોન ન્યુક્લિયસને એકસાથે પકડી રાખવામાં મદદ કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-058",
+      "sentence_index": 4,
+      "paragraph_id": "p14",
+      "chapter": 2,
+      "text": "ન્યુટ્રોન વિના, પ્રોટોન એકબીજાને દૂર ધકેલી દેશે કારણ કે તે બધા સમાન ધન વિદ્યુતભાર ધરાવે છે.",
+      "text_markdown": "ન્યુટ્રોન વિના, પ્રોટોન એકબીજાને દૂર ધકેલી દેશે કારણ કે તે બધા સમાન ધન વિદ્યુતભાર ધરાવે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુટ્રોન વિના, પ્રોટોન એકબીજાને દૂર ધકેલી દેશે કારણ કે તે બધા સમાન ધન વિદ્યુતભાર ધરાવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-059",
+      "sentence_index": 0,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "ઇલેક્ટ્રોન ઋણ વિદ્યુતભાર ધરાવે છે.",
+      "text_markdown": "ઇલેક્ટ્રોન ઋણ વિદ્યુતભાર ધરાવે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ઇલેક્ટ્રોન ઋણ વિદ્યુતભાર ધરાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-060",
+      "sentence_index": 1,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "ઇલેક્ટ્રોન ન્યુક્લિયસની આસપાસ વાદળ સ્વરૂપે ફરે છે.",
+      "text_markdown": "ઇલેક્ટ્રોન ન્યુક્લિયસની આસપાસ વાદળ સ્વરૂપે ફરે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ઇલેક્ટ્રોન ન્યુક્લિયસની આસપાસ વાદળ સ્વરૂપે ફરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-061",
+      "sentence_index": 2,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "તેઓ સૂર્યની આસપાસ ગ્રહોની જેમ ભ્રમણ કરતા નથી.",
+      "text_markdown": "તેઓ સૂર્યની આસપાસ ગ્રહોની જેમ ભ્રમણ કરતા નથી.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "તેઓ સૂર્યની આસપાસ ગ્રહોની જેમ ભ્રમણ કરતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-062",
+      "sentence_index": 3,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "તેઓ ન્યુક્લિયસની આસપાસ સંભાવનાના અસ્પષ્ટ ક્ષેત્રમાં અસ્તિત્વ ધરાવે છે.",
+      "text_markdown": "તેઓ ન્યુક્લિયસની આસપાસ સંભાવનાના અસ્પષ્ટ ક્ષેત્રમાં અસ્તિત્વ ધરાવે છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "તેઓ ન્યુક્લિયસની આસપાસ સંભાવનાના અસ્પષ્ટ ક્ષેત્રમાં અસ્તિત્વ ધરાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-063",
+      "sentence_index": 4,
+      "paragraph_id": "p15",
+      "chapter": 2,
+      "text": "ઇલેક્ટ્રોન વાદળ એ એવી જગ્યા છે જ્યાં તમને કોઈપણ ક્ષણે ઇલેક્ટ્રોન મળવાની સંભાવના છે.",
+      "text_markdown": "ઇલેક્ટ્રોન વાદળ એ એવી જગ્યા છે જ્યાં તમને કોઈપણ ક્ષણે ઇલેક્ટ્રોન મળવાની સંભાવના છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ઇલેક્ટ્રોન વાદળ એ એવી જગ્યા છે જ્યાં તમને કોઈપણ ક્ષણે ઇલેક્ટ્રોન મળવાની સંભાવના છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-064",
+      "sentence_index": 0,
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "text": "પ્રોટોન અથવા ન્યુટ્રોનની સરખામણીમાં ઇલેક્ટ્રોનનું દળ લગભગ નહિવત્ હોય છે.",
+      "text_markdown": "પ્રોટોન અથવા ન્યુટ્રોનની સરખામણીમાં ઇલેક્ટ્રોનનું દળ લગભગ નહિવત્ હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પ્રોટોન અથવા ન્યુટ્રોનની સરખામણીમાં ઇલેક્ટ્રોનનું દળ લગભગ નહિવત્ હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-065",
+      "sentence_index": 1,
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "text": "એક પ્રોટોન ઇલેક્ટ્રોન કરતાં લગભગ 1,836 ગણો ભારે હોય છે.",
+      "text_markdown": "એક પ્રોટોન ઇલેક્ટ્રોન કરતાં લગભગ 1,836 ગણો ભારે હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "એક પ્રોટોન ઇલેક્ટ્રોન કરતાં લગભગ એક હજાર આઠસો છત્રીસ ગણો ભારે હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-066",
+      "sentence_index": 2,
+      "paragraph_id": "p16",
+      "chapter": 2,
+      "text": "પરમાણુનું લગભગ બધું જ દળ ન્યુક્લિયસમાં હોય છે.",
+      "text_markdown": "પરમાણુનું લગભગ બધું જ દળ ન્યુક્લિયસમાં હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પરમાણુનું લગભગ બધું જ દળ ન્યુક્લિયસમાં હોય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-067",
+      "sentence_index": 0,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "તટસ્થ પરમાણુમાં, ઇલેક્ટ્રોનની સંખ્યા પ્રોટોનની સંખ્યા જેટલી હોય છે.",
+      "text_markdown": "તટસ્થ પરમાણુમાં, ઇલેક્ટ્રોનની સંખ્યા પ્રોટોનની સંખ્યા જેટલી હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "તટસ્થ પરમાણુમાં, ઇલેક્ટ્રોનની સંખ્યા પ્રોટોનની સંખ્યા જેટલી હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-068",
+      "sentence_index": 1,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "ધન વીજભારો અને ઋણ વીજભારો સંતુલિત થાય છે.",
+      "text_markdown": "ધન વીજભારો અને ઋણ વીજભારો સંતુલિત થાય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ધન વીજભારો અને ઋણ વીજભારો સંતુલિત થાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-069",
+      "sentence_index": 2,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "પરમાણુનો કોઈ એકંદર વીજભાર હોતો નથી.",
+      "text_markdown": "પરમાણુનો કોઈ એકંદર વીજભાર હોતો નથી.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પરમાણુનો કોઈ એકંદર વીજભાર હોતો નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-070",
+      "sentence_index": 3,
+      "paragraph_id": "p17",
+      "chapter": 2,
+      "text": "આ સંતુલન પરમાણુની મૂળભૂત સ્થિતિ છે.",
+      "text_markdown": "આ સંતુલન પરમાણુની મૂળભૂત સ્થિતિ છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "આ સંતુલન પરમાણુની મૂળભૂત સ્થિતિ છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-071",
+      "sentence_index": 0,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "પરમાણુનો મોટાભાગનો ભાગ ખાલી જગ્યા છે.",
+      "text_markdown": "પરમાણુનો મોટાભાગનો ભાગ ખાલી જગ્યા છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "પરમાણુનો મોટાભાગનો ભાગ ખાલી જગ્યા છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-072",
+      "sentence_index": 1,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "ન્યુક્લિયસ ગાઢ અને નાનું હોય છે.",
+      "text_markdown": "ન્યુક્લિયસ ગાઢ અને નાનું હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ન્યુક્લિયસ ગાઢ અને નાનું હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-073",
+      "sentence_index": 2,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "ઇલેક્ટ્રોન વાદળ મોટું અને મોટાભાગે ખાલી હોય છે.",
+      "text_markdown": "ઇલેક્ટ્રોન વાદળ મોટું અને મોટાભાગે ખાલી હોય છે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "ઇલેક્ટ્રોન વાદળ મોટું અને મોટાભાગે ખાલી હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-074",
+      "sentence_index": 3,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "જો તમે તમારા શરીરમાંના દરેક પરમાણુમાંથી બધી ખાલી જગ્યા દૂર કરી શકો, તો તમે મીઠાના દાણા કરતાં પણ નાના કદના થઈ જશો.",
+      "text_markdown": "જો તમે તમારા શરીરમાંના દરેક પરમાણુમાંથી બધી ખાલી જગ્યા દૂર કરી શકો, તો તમે મીઠાના દાણા કરતાં પણ નાના કદના થઈ જશો.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "જો તમે તમારા શરીરમાંના દરેક પરમાણુમાંથી બધી ખાલી જગ્યા દૂર કરી શકો, તો તમે મીઠાના દાણા કરતાં પણ નાના કદના થઈ જશો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-075",
+      "sentence_index": 4,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "તમારું દળ તે જ રહેશે.",
+      "text_markdown": "તમારું દળ તે જ રહેશે.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "તમારું દળ તે જ રહેશે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-076",
+      "sentence_index": 5,
+      "paragraph_id": "p18",
+      "chapter": 2,
+      "text": "તમે ફક્ત અતિ ગાઢ બનશો.",
+      "text_markdown": "તમે ફક્ત અતિ ગાઢ બનશો.",
+      "title": "પરમાણુની અંદર",
+      "tts": {
+        "text": "તમે ફક્ત અતિ ગાઢ બનશો.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch03-077",
+      "sentence_index": 0,
+      "paragraph_id": "p19",
+      "chapter": 3,
+      "text": "તત્વો",
+      "text_markdown": "તત્વો",
+      "title": "તત્વો"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-078",
+      "sentence_index": 0,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "તત્વ એ એક જ પ્રકારના પરમાણુઓથી બનેલો પદાર્થ છે.",
+      "text_markdown": "તત્વ એ એક જ પ્રકારના પરમાણુઓથી બનેલો પદાર્થ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "તત્વ એ એક જ પ્રકારના પરમાણુઓથી બનેલો પદાર્થ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-079",
+      "sentence_index": 1,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "શુદ્ધ સોનું એક તત્વ છે.",
+      "text_markdown": "શુદ્ધ સોનું એક તત્વ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "શુદ્ધ સોનું એક તત્વ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-080",
+      "sentence_index": 2,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "શુદ્ધ સોનાના એક સળિયામાંના દરેક પરમાણુમાં 79 પ્રોટોન હોય છે.",
+      "text_markdown": "શુદ્ધ સોનાના એક સળિયામાંના દરેક પરમાણુમાં 79 પ્રોટોન હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "શુદ્ધ સોનાના એક સળિયામાંના દરેક પરમાણુમાં ઓગણાએંસી પ્રોટોન હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-081",
+      "sentence_index": 3,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "શુદ્ધ ઓક્સિજન એક તત્વ છે.",
+      "text_markdown": "શુદ્ધ ઓક્સિજન એક તત્વ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "શુદ્ધ ઓક્સિજન એક તત્વ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-082",
+      "sentence_index": 4,
+      "paragraph_id": "p20",
+      "chapter": 3,
+      "text": "શુદ્ધ ઓક્સિજનના એક ટાંકીમાંના દરેક પરમાણુમાં 8 પ્રોટોન હોય છે.",
+      "text_markdown": "શુદ્ધ ઓક્સિજનના એક ટાંકીમાંના દરેક પરમાણુમાં 8 પ્રોટોન હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "શુદ્ધ ઓક્સિજનના એક ટાંકીમાંના દરેક પરમાણુમાં આઠ પ્રોટોન હોય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-083",
+      "sentence_index": 0,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "પૃથ્વી પર કુદરતી રીતે લગભગ 92 તત્વો જોવા મળે છે.",
+      "text_markdown": "પૃથ્વી પર કુદરતી રીતે લગભગ 92 તત્વો જોવા મળે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "પૃથ્વી પર કુદરતી રીતે લગભગ બાણું તત્વો જોવા મળે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-084",
+      "sentence_index": 1,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "વૈજ્ઞાનિકોએ પ્રયોગશાળાઓમાં વધારાના તત્વો બનાવ્યા છે.",
+      "text_markdown": "વૈજ્ઞાનિકોએ પ્રયોગશાળાઓમાં વધારાના તત્વો બનાવ્યા છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "વૈજ્ઞાનિકોએ પ્રયોગશાળાઓમાં વધારાના તત્વો બનાવ્યા છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-085",
+      "sentence_index": 2,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "જ્ઞાત તત્વોની કુલ સંખ્યા 118 થી વધુ છે.",
+      "text_markdown": "જ્ઞાત તત્વોની કુલ સંખ્યા 118 થી વધુ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "જ્ઞાત તત્વોની કુલ સંખ્યા એકસો અઢાર થી વધુ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-086",
+      "sentence_index": 3,
+      "paragraph_id": "p21",
+      "chapter": 3,
+      "text": "દરેક તત્વમાં પ્રોટોનની અનન્ય સંખ્યા હોય છે.",
+      "text_markdown": "દરેક તત્વમાં પ્રોટોનની અનન્ય સંખ્યા હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "દરેક તત્વમાં પ્રોટોનની અનન્ય સંખ્યા હોય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-087",
+      "sentence_index": 0,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "દરેક તત્વનું નામ અને પ્રતીક હોય છે.",
+      "text_markdown": "દરેક તત્વનું નામ અને પ્રતીક હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "દરેક તત્વનું નામ અને પ્રતીક હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-088",
+      "sentence_index": 1,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "હાઇડ્રોજન H છે. ઓક્સિજન O છે. કાર્બન C છે. આયર્ન Fe છે.",
+      "text_markdown": "હાઇડ્રોજન H છે. ઓક્સિજન O છે. કાર્બન C છે. આયર્ન Fe છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "હાઇડ્રોજન એચ છે. ઓક્સિજન ઓ છે. કાર્બન સી છે. આયર્ન એફ ઇ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-089",
+      "sentence_index": 2,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "સોનું Au છે.",
+      "text_markdown": "સોનું Au છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "સોનું એ યુ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-090",
+      "sentence_index": 3,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "આ પ્રતીકો લેટિન, ગ્રીક અથવા અંગ્રેજી નામો પરથી આવે છે.",
+      "text_markdown": "આ પ્રતીકો લેટિન, ગ્રીક અથવા અંગ્રેજી નામો પરથી આવે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "આ પ્રતીકો લેટિન, ગ્રીક અથવા અંગ્રેજી નામો પરથી આવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-091",
+      "sentence_index": 4,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "Fe લેટિન શબ્દ ferrum પરથી આવે છે.",
+      "text_markdown": "Fe લેટિન શબ્દ ferrum પરથી આવે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "એફ ઇ લેટિન શબ્દ ferrum પરથી આવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-092",
+      "sentence_index": 5,
+      "paragraph_id": "p22",
+      "chapter": 3,
+      "text": "Au લેટિન શબ્દ aurum પરથી આવે છે.",
+      "text_markdown": "Au લેટિન શબ્દ aurum પરથી આવે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "એ યુ લેટિન શબ્દ aurum પરથી આવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-093",
+      "sentence_index": 0,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "હાઇડ્રોજન સૌથી સરળ તત્વ છે.",
+      "text_markdown": "હાઇડ્રોજન સૌથી સરળ તત્વ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "હાઇડ્રોજન સૌથી સરળ તત્વ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-094",
+      "sentence_index": 1,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "હાઇડ્રોજન પરમાણુમાં એક પ્રોટોન અને એક ઇલેક્ટ્રોન હોય છે.",
+      "text_markdown": "હાઇડ્રોજન પરમાણુમાં એક પ્રોટોન અને એક ઇલેક્ટ્રોન હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "હાઇડ્રોજન પરમાણુમાં એક પ્રોટોન અને એક ઇલેક્ટ્રોન હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-095",
+      "sentence_index": 2,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "હાઇડ્રોજન બ્રહ્માંડમાં સૌથી સામાન્ય તત્વ છે.",
+      "text_markdown": "હાઇડ્રોજન બ્રહ્માંડમાં સૌથી સામાન્ય તત્વ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "હાઇડ્રોજન બ્રહ્માંડમાં સૌથી સામાન્ય તત્વ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-096",
+      "sentence_index": 3,
+      "paragraph_id": "p23",
+      "chapter": 3,
+      "text": "તારાઓ મોટે ભાગે હાઇડ્રોજનના બનેલા હોય છે.",
+      "text_markdown": "તારાઓ મોટે ભાગે હાઇડ્રોજનના બનેલા હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "તારાઓ મોટે ભાગે હાઇડ્રોજનના બનેલા હોય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-097",
+      "sentence_index": 0,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "કાર્બન જીવનનું તત્વ છે.",
+      "text_markdown": "કાર્બન જીવનનું તત્વ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "કાર્બન જીવનનું તત્વ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-098",
+      "sentence_index": 1,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "કાર્બનમાં છ પ્રોટોન હોય છે.",
+      "text_markdown": "કાર્બનમાં છ પ્રોટોન હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "કાર્બનમાં છ પ્રોટોન હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-099",
+      "sentence_index": 2,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "કાર્બન પરમાણુઓ એક જ સમયે અન્ય ઘણા પરમાણુઓ સાથે બંધ બનાવી શકે છે.",
+      "text_markdown": "કાર્બન પરમાણુઓ એક જ સમયે અન્ય ઘણા પરમાણુઓ સાથે બંધ બનાવી શકે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "કાર્બન પરમાણુઓ એક જ સમયે અન્ય ઘણા પરમાણુઓ સાથે બંધ બનાવી શકે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-100",
+      "sentence_index": 3,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "આ ક્ષમતા કાર્બનને તમામ જીવંત વસ્તુઓની કરોડરજ્જુ બનાવે છે.",
+      "text_markdown": "આ ક્ષમતા કાર્બનને તમામ જીવંત વસ્તુઓની કરોડરજ્જુ બનાવે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "આ ક્ષમતા કાર્બનને તમામ જીવંત વસ્તુઓની કરોડરજ્જુ બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-101",
+      "sentence_index": 4,
+      "paragraph_id": "p24",
+      "chapter": 3,
+      "text": "તમારા શરીરમાં દરેક પ્રોટીન, DNA નો દરેક તાંતણો અને દરેક ખાંડનો અણુ કાર્બન ધરાવે છે.",
+      "text_markdown": "તમારા શરીરમાં દરેક પ્રોટીન, DNA નો દરેક તાંતણો અને દરેક ખાંડનો અણુ કાર્બન ધરાવે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "તમારા શરીરમાં દરેક પ્રોટીન, ડી એન એ નો દરેક તાંતણો અને દરેક ખાંડનો અણુ કાર્બન ધરાવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-102",
+      "sentence_index": 0,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "ઓક્સિજનમાં આઠ પ્રોટોન હોય છે.",
+      "text_markdown": "ઓક્સિજનમાં આઠ પ્રોટોન હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "ઓક્સિજનમાં આઠ પ્રોટોન હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-103",
+      "sentence_index": 1,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "ઓક્સિજન એ તત્વ છે જે તમે શ્વાસ લો છો.",
+      "text_markdown": "ઓક્સિજન એ તત્વ છે જે તમે શ્વાસ લો છો.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "ઓક્સિજન એ તત્વ છે જે તમે શ્વાસ લો છો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-104",
+      "sentence_index": 2,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "તમારા ફેફસાં હવામાંથી ઓક્સિજન ખેંચીને તમારા લોહીમાં મોકલે છે.",
+      "text_markdown": "તમારા ફેફસાં હવામાંથી ઓક્સિજન ખેંચીને તમારા લોહીમાં મોકલે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "તમારા ફેફસાં હવામાંથી ઓક્સિજન ખેંચીને તમારા લોહીમાં મોકલે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-105",
+      "sentence_index": 3,
+      "paragraph_id": "p25",
+      "chapter": 3,
+      "text": "તમારા કોષો ખોરાકમાંથી ઊર્જા મુક્ત કરવા માટે ઓક્સિજનનો ઉપયોગ કરે છે.",
+      "text_markdown": "તમારા કોષો ખોરાકમાંથી ઊર્જા મુક્ત કરવા માટે ઓક્સિજનનો ઉપયોગ કરે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "તમારા કોષો ખોરાકમાંથી ઊર્જા મુક્ત કરવા માટે ઓક્સિજનનો ઉપયોગ કરે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-106",
+      "sentence_index": 0,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "લોખંડમાં છવીસ પ્રોટોન હોય છે.",
+      "text_markdown": "લોખંડમાં છવીસ પ્રોટોન હોય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "લોખંડમાં છવીસ પ્રોટોન હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-107",
+      "sentence_index": 1,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "લોખંડ એ તત્વ છે જે તમારા લોહીને લાલ બનાવે છે.",
+      "text_markdown": "લોખંડ એ તત્વ છે જે તમારા લોહીને લાલ બનાવે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "લોખંડ એ તત્વ છે જે તમારા લોહીને લાલ બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-108",
+      "sentence_index": 2,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "લોખંડ સ્ટીલમાં મુખ્ય ઘટક છે.",
+      "text_markdown": "લોખંડ સ્ટીલમાં મુખ્ય ઘટક છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "લોખંડ સ્ટીલમાં મુખ્ય ઘટક છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-109",
+      "sentence_index": 3,
+      "paragraph_id": "p26",
+      "chapter": 3,
+      "text": "પૃથ્વીનો ગર્ભ મોટે ભાગે લોખંડનો બનેલો છે.",
+      "text_markdown": "પૃથ્વીનો ગર્ભ મોટે ભાગે લોખંડનો બનેલો છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "પૃથ્વીનો ગર્ભ મોટે ભાગે લોખંડનો બનેલો છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-110",
+      "sentence_index": 0,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "સૌથી હલકા તત્વો બ્રહ્માંડમાં સૌથી સામાન્ય છે.",
+      "text_markdown": "સૌથી હલકા તત્વો બ્રહ્માંડમાં સૌથી સામાન્ય છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "સૌથી હલકા તત્વો બ્રહ્માંડમાં સૌથી સામાન્ય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-111",
+      "sentence_index": 1,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "હાઇડ્રોજન અને હિલીયમ એકસાથે બ્રહ્માંડના તમામ પરમાણુઓના લગભગ અઠ્ઠાણું ટકા બનાવે છે.",
+      "text_markdown": "હાઇડ્રોજન અને હિલીયમ એકસાથે બ્રહ્માંડના તમામ પરમાણુઓના લગભગ અઠ્ઠાણું ટકા બનાવે છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "હાઇડ્રોજન અને હિલીયમ એકસાથે બ્રહ્માંડના તમામ પરમાણુઓના લગભગ અઠ્ઠાણું ટકા બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-112",
+      "sentence_index": 2,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "તેની સરખામણીમાં ભારે તત્વો દુર્લભ છે.",
+      "text_markdown": "તેની સરખામણીમાં ભારે તત્વો દુર્લભ છે.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "તેની સરખામણીમાં ભારે તત્વો દુર્લભ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-113",
+      "sentence_index": 3,
+      "paragraph_id": "p27",
+      "chapter": 3,
+      "text": "દરેક ભારે તત્વનો દરેક પરમાણુ તારાની અંદર બન્યો હતો.",
+      "text_markdown": "દરેક ભારે તત્વનો દરેક પરમાણુ તારાની અંદર બન્યો હતો.",
+      "title": "તત્વો",
+      "tts": {
+        "text": "દરેક ભારે તત્વનો દરેક પરમાણુ તારાની અંદર બન્યો હતો.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch04-114",
+      "sentence_index": 0,
+      "paragraph_id": "p28",
+      "chapter": 4,
+      "text": "આવર્ત કોષ્ટક",
+      "text_markdown": "આવર્ત કોષ્ટક",
+      "title": "આવર્ત કોષ્ટક"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-115",
+      "sentence_index": 0,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "આવર્ત કોષ્ટક એ એક ચાર્ટ છે જે દરેક જાણીતા તત્વને ગોઠવે છે.",
+      "text_markdown": "આવર્ત કોષ્ટક એ એક ચાર્ટ છે જે દરેક જાણીતા તત્વને ગોઠવે છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આવર્ત કોષ્ટક એ એક ચાર્ટ છે જે દરેક જાણીતા તત્વને ગોઠવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-116",
+      "sentence_index": 1,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "આ કોષ્ટક તત્વોને તેમના પ્રોટોનની સંખ્યા અનુસાર, નાનાથી મોટા ક્રમમાં ગોઠવે છે.",
+      "text_markdown": "આ કોષ્ટક તત્વોને તેમના પ્રોટોનની સંખ્યા અનુસાર, નાનાથી મોટા ક્રમમાં ગોઠવે છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આ કોષ્ટક તત્વોને તેમના પ્રોટોનની સંખ્યા અનુસાર, નાનાથી મોટા ક્રમમાં ગોઠવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-117",
+      "sentence_index": 2,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "હાઇડ્રોજન એક પ્રોટોન સાથે પ્રથમ છે.",
+      "text_markdown": "હાઇડ્રોજન એક પ્રોટોન સાથે પ્રથમ છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "હાઇડ્રોજન એક પ્રોટોન સાથે પ્રથમ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-118",
+      "sentence_index": 3,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "હિલીયમ બે પ્રોટોન સાથે બીજા સ્થાને છે.",
+      "text_markdown": "હિલીયમ બે પ્રોટોન સાથે બીજા સ્થાને છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "હિલીયમ બે પ્રોટોન સાથે બીજા સ્થાને છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-119",
+      "sentence_index": 4,
+      "paragraph_id": "p29",
+      "chapter": 4,
+      "text": "આ કોષ્ટક ઓગ્નેસોન સુધી ચાલુ રહે છે જેમાં એકસો અઢાર પ્રોટોન હોય છે.",
+      "text_markdown": "આ કોષ્ટક ઓગ્નેસોન સુધી ચાલુ રહે છે જેમાં એકસો અઢાર પ્રોટોન હોય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આ કોષ્ટક ઓગ્નેસોન સુધી ચાલુ રહે છે જેમાં એકસો અઢાર પ્રોટોન હોય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-120",
+      "sentence_index": 0,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "આવર્ત કોષ્ટકમાં પંક્તિઓ અને સ્તંભો હોય છે.",
+      "text_markdown": "આવર્ત કોષ્ટકમાં પંક્તિઓ અને સ્તંભો હોય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આવર્ત કોષ્ટકમાં પંક્તિઓ અને સ્તંભો હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-121",
+      "sentence_index": 1,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "પંક્તિઓને પિરિયડ્સ કહેવાય છે.",
+      "text_markdown": "પંક્તિઓને પિરિયડ્સ કહેવાય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "પંક્તિઓને પિરિયડ્સ કહેવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-122",
+      "sentence_index": 2,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "સ્તંભોને સમૂહો કહેવાય છે.",
+      "text_markdown": "સ્તંભોને સમૂહો કહેવાય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "સ્તંભોને સમૂહો કહેવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-123",
+      "sentence_index": 3,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "એક જ સમૂહના તત્વો સમાન ગુણધર્મો ધરાવે છે.",
+      "text_markdown": "એક જ સમૂહના તત્વો સમાન ગુણધર્મો ધરાવે છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "એક જ સમૂહના તત્વો સમાન ગુણધર્મો ધરાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-124",
+      "sentence_index": 4,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "આ જ કારણ છે કે આ કોષ્ટકને આવર્ત કોષ્ટક કહેવાય છે.",
+      "text_markdown": "આ જ કારણ છે કે આ કોષ્ટકને આવર્ત કોષ્ટક કહેવાય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આ જ કારણ છે કે આ કોષ્ટકને આવર્ત કોષ્ટક કહેવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-125",
+      "sentence_index": 5,
+      "paragraph_id": "p30",
+      "chapter": 4,
+      "text": "ગુણધર્મો નિયમિત પેટર્નમાં પુનરાવર્તિત થાય છે.",
+      "text_markdown": "ગુણધર્મો નિયમિત પેટર્નમાં પુનરાવર્તિત થાય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "ગુણધર્મો નિયમિત પેટર્નમાં પુનરાવર્તિત થાય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-126",
+      "sentence_index": 0,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "કોષ્ટકની ડાબી બાજુના તત્વો ધાતુઓ છે.",
+      "text_markdown": "કોષ્ટકની ડાબી બાજુના તત્વો ધાતુઓ છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "કોષ્ટકની ડાબી બાજુના તત્વો ધાતુઓ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-127",
+      "sentence_index": 1,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "મોટાભાગના તત્વો ધાતુઓ છે.",
+      "text_markdown": "મોટાભાગના તત્વો ધાતુઓ છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "મોટાભાગના તત્વો ધાતુઓ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-128",
+      "sentence_index": 2,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "ધાતુઓ ચળકતી હોય છે.",
+      "text_markdown": "ધાતુઓ ચળકતી હોય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "ધાતુઓ ચળકતી હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-129",
+      "sentence_index": 3,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "ધાતુઓ વીજળીનું વહન કરે છે.",
+      "text_markdown": "ધાતુઓ વીજળીનું વહન કરે છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "ધાતુઓ વીજળીનું વહન કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-130",
+      "sentence_index": 4,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "ધાતુઓ ગરમીનું વહન કરે છે.",
+      "text_markdown": "ધાતુઓ ગરમીનું વહન કરે છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "ધાતુઓ ગરમીનું વહન કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-131",
+      "sentence_index": 5,
+      "paragraph_id": "p31",
+      "chapter": 4,
+      "text": "લોખંડ, તાંબુ, સોનું અને એલ્યુમિનિયમ એ બધી ધાતુઓ છે.",
+      "text_markdown": "લોખંડ, તાંબુ, સોનું અને એલ્યુમિનિયમ એ બધી ધાતુઓ છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "લોખંડ, તાંબુ, સોનું અને એલ્યુમિનિયમ એ બધી ધાતુઓ છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-132",
+      "sentence_index": 0,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "કોષ્ટકની જમણી બાજુના તત્વો અધાતુઓ છે.",
+      "text_markdown": "કોષ્ટકની જમણી બાજુના તત્વો અધાતુઓ છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "કોષ્ટકની જમણી બાજુના તત્વો અધાતુઓ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-133",
+      "sentence_index": 1,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "અધાતુઓમાં ઓક્સિજન, નાઇટ્રોજન, કાર્બન અને સલ્ફરનો સમાવેશ થાય છે.",
+      "text_markdown": "અધાતુઓમાં ઓક્સિજન, નાઇટ્રોજન, કાર્બન અને સલ્ફરનો સમાવેશ થાય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "અધાતુઓમાં ઓક્સિજન, નાઇટ્રોજન, કાર્બન અને સલ્ફરનો સમાવેશ થાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-134",
+      "sentence_index": 2,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "અધાતુઓ વીજળીનું સારી રીતે વહન કરતી નથી.",
+      "text_markdown": "અધાતુઓ વીજળીનું સારી રીતે વહન કરતી નથી.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "અધાતુઓ વીજળીનું સારી રીતે વહન કરતી નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-135",
+      "sentence_index": 3,
+      "paragraph_id": "p32",
+      "chapter": 4,
+      "text": "અધાતુઓ એવા તત્વો છે જે હવા, પાણી અને સજીવો બનાવે છે.",
+      "text_markdown": "અધાતુઓ એવા તત્વો છે જે હવા, પાણી અને સજીવો બનાવે છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "અધાતુઓ એવા તત્વો છે જે હવા, પાણી અને સજીવો બનાવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-136",
+      "sentence_index": 0,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "કેટલાક તત્વો ધાતુઓ અને અધાતુઓ વચ્ચેની સીમા પર આવેલા છે.",
+      "text_markdown": "કેટલાક તત્વો ધાતુઓ અને અધાતુઓ વચ્ચેની સીમા પર આવેલા છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "કેટલાક તત્વો ધાતુઓ અને અધાતુઓ વચ્ચેની સીમા પર આવેલા છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-137",
+      "sentence_index": 1,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "આ તત્વોને મેટલોઇડ્સ કહેવાય છે.",
+      "text_markdown": "આ તત્વોને મેટલોઇડ્સ કહેવાય છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આ તત્વોને મેટલોઇડ્સ કહેવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-138",
+      "sentence_index": 2,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "સિલિકોન એક મેટલોઇડ છે.",
+      "text_markdown": "સિલિકોન એક મેટલોઇડ છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "સિલિકોન એક મેટલોઇડ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-139",
+      "sentence_index": 3,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "સિલિકોન થોડી વીજળીનું વહન કરે છે, પરંતુ ધાતુ જેટલું સારી રીતે નહીં.",
+      "text_markdown": "સિલિકોન થોડી વીજળીનું વહન કરે છે, પરંતુ ધાતુ જેટલું સારી રીતે નહીં.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "સિલિકોન થોડી વીજળીનું વહન કરે છે, પરંતુ ધાતુ જેટલું સારી રીતે નહીં.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-140",
+      "sentence_index": 4,
+      "paragraph_id": "p33",
+      "chapter": 4,
+      "text": "આ ગુણધર્મ સિલિકોનને કમ્પ્યુટર ચિપ્સમાં ઉપયોગી બનાવે છે.",
+      "text_markdown": "આ ગુણધર્મ સિલિકોનને કમ્પ્યુટર ચિપ્સમાં ઉપયોગી બનાવે છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આ ગુણધર્મ સિલિકોનને કમ્પ્યુટર ચિપ્સમાં ઉપયોગી બનાવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-141",
+      "sentence_index": 0,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "નિષ્ક્રિય વાયુઓ જમણી બાજુના છેલ્લા સ્તંભમાં છે.",
+      "text_markdown": "નિષ્ક્રિય વાયુઓ જમણી બાજુના છેલ્લા સ્તંભમાં છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "નિષ્ક્રિય વાયુઓ જમણી બાજુના છેલ્લા સ્તંભમાં છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-142",
+      "sentence_index": 1,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "હિલિયમ, નિયોન, આર્ગોન, ક્રિપ્ટોન, ઝેનોન અને રેડોન નિષ્ક્રિય વાયુઓ છે.",
+      "text_markdown": "હિલિયમ, નિયોન, આર્ગોન, ક્રિપ્ટોન, ઝેનોન અને રેડોન નિષ્ક્રિય વાયુઓ છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "હિલિયમ, નિયોન, આર્ગોન, ક્રિપ્ટોન, ઝેનોન અને રેડોન નિષ્ક્રિય વાયુઓ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-143",
+      "sentence_index": 2,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "નિષ્ક્રિય વાયુઓ લગભગ ક્યારેય અન્ય તત્વો સાથે પ્રતિક્રિયા આપતા નથી.",
+      "text_markdown": "નિષ્ક્રિય વાયુઓ લગભગ ક્યારેય અન્ય તત્વો સાથે પ્રતિક્રિયા આપતા નથી.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "નિષ્ક્રિય વાયુઓ લગભગ ક્યારેય અન્ય તત્વો સાથે પ્રતિક્રિયા આપતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-144",
+      "sentence_index": 3,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "તેમની ઇલેક્ટ્રોન ગોઠવણી પહેલેથી જ સ્થિર છે.",
+      "text_markdown": "તેમની ઇલેક્ટ્રોન ગોઠવણી પહેલેથી જ સ્થિર છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "તેમની ઇલેક્ટ્રોન ગોઠવણી પહેલેથી જ સ્થિર છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-145",
+      "sentence_index": 4,
+      "paragraph_id": "p34",
+      "chapter": 4,
+      "text": "તેમને બંધ બનાવવાની જરૂર નથી.",
+      "text_markdown": "તેમને બંધ બનાવવાની જરૂર નથી.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "તેમને બંધ બનાવવાની જરૂર નથી.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-146",
+      "sentence_index": 0,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "દિમિત્રી મેન્ડેલીવ નામના એક રશિયન વૈજ્ઞાનિકે 1869 માં પ્રથમ આવર્ત કોષ્ટક બનાવ્યું.",
+      "text_markdown": "દિમિત્રી મેન્ડેલીવ નામના એક રશિયન વૈજ્ઞાનિકે 1869 માં પ્રથમ આવર્ત કોષ્ટક બનાવ્યું.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "દિમિત્રી મેન્ડેલીવ નામના એક રશિયન વૈજ્ઞાનિકે એક હજાર આઠસો અગણોસિત્તેર માં પ્રથમ આવર્ત કોષ્ટક બનાવ્યું.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-147",
+      "sentence_index": 1,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "મેન્ડેલીવે તત્વોને તેમના ગુણધર્મો અનુસાર ગોઠવ્યા અને પુનરાવર્તિત પેટર્ન નોંધી.",
+      "text_markdown": "મેન્ડેલીવે તત્વોને તેમના ગુણધર્મો અનુસાર ગોઠવ્યા અને પુનરાવર્તિત પેટર્ન નોંધી.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "મેન્ડેલીવે તત્વોને તેમના ગુણધર્મો અનુસાર ગોઠવ્યા અને પુનરાવર્તિત પેટર્ન નોંધી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-148",
+      "sentence_index": 2,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "તેમણે તેમના કોષ્ટકમાં એવી જગ્યાઓ ખાલી રાખી જ્યાં તેમણે અજાણ્યા તત્વો હોવાની આગાહી કરી હતી.",
+      "text_markdown": "તેમણે તેમના કોષ્ટકમાં એવી જગ્યાઓ ખાલી રાખી જ્યાં તેમણે અજાણ્યા તત્વો હોવાની આગાહી કરી હતી.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "તેમણે તેમના કોષ્ટકમાં એવી જગ્યાઓ ખાલી રાખી જ્યાં તેમણે અજાણ્યા તત્વો હોવાની આગાહી કરી હતી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-149",
+      "sentence_index": 3,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "વૈજ્ઞાનિકોએ પાછળથી તે તત્વો શોધી કાઢ્યા.",
+      "text_markdown": "વૈજ્ઞાનિકોએ પાછળથી તે તત્વો શોધી કાઢ્યા.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "વૈજ્ઞાનિકોએ પાછળથી તે તત્વો શોધી કાઢ્યા.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-150",
+      "sentence_index": 4,
+      "paragraph_id": "p35",
+      "chapter": 4,
+      "text": "દરેક આગાહી સાચી પડી.",
+      "text_markdown": "દરેક આગાહી સાચી પડી.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "દરેક આગાહી સાચી પડી.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-151",
+      "sentence_index": 0,
+      "paragraph_id": "p36",
+      "chapter": 4,
+      "text": "આવર્ત કોષ્ટક વિજ્ઞાનના સૌથી શક્તિશાળી સાધનોમાંનું એક છે.",
+      "text_markdown": "આવર્ત કોષ્ટક વિજ્ઞાનના સૌથી શક્તિશાળી સાધનોમાંનું એક છે.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "આવર્ત કોષ્ટક વિજ્ઞાનના સૌથી શક્તિશાળી સાધનોમાંનું એક છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-152",
+      "sentence_index": 1,
+      "paragraph_id": "p36",
+      "chapter": 4,
+      "text": "જો તમે જાણો છો કે કોઈ તત્વ કોષ્ટકમાં ક્યાં છે, તો તમે તેની વર્તણૂકનું અનુમાન કરી શકો છો.",
+      "text_markdown": "જો તમે જાણો છો કે કોઈ તત્વ કોષ્ટકમાં ક્યાં છે, તો તમે તેની વર્તણૂકનું અનુમાન કરી શકો છો.",
+      "title": "આવર્ત કોષ્ટક",
+      "tts": {
+        "text": "જો તમે જાણો છો કે કોઈ તત્વ કોષ્ટકમાં ક્યાં છે, તો તમે તેની વર્તણૂકનું અનુમાન કરી શકો છો.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch05-153",
+      "sentence_index": 0,
+      "paragraph_id": "p37",
+      "chapter": 5,
+      "text": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "text_markdown": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-154",
+      "sentence_index": 0,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "પરમાણુઓ ભાગ્યે જ એકલા અસ્તિત્વ ધરાવે છે.",
+      "text_markdown": "પરમાણુઓ ભાગ્યે જ એકલા અસ્તિત્વ ધરાવે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "પરમાણુઓ ભાગ્યે જ એકલા અસ્તિત્વ ધરાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-155",
+      "sentence_index": 1,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "મોટાભાગના પરમાણુઓ અણુઓ બનાવવા માટે અન્ય પરમાણુઓ સાથે બંધાય છે.",
+      "text_markdown": "મોટાભાગના પરમાણુઓ અણુઓ બનાવવા માટે અન્ય પરમાણુઓ સાથે બંધાય છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "મોટાભાગના પરમાણુઓ અણુઓ બનાવવા માટે અન્ય પરમાણુઓ સાથે બંધાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-156",
+      "sentence_index": 2,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "અણુ એ રાસાયણિક બંધો દ્વારા એકસાથે જોડાયેલા પરમાણુઓનો સમૂહ છે.",
+      "text_markdown": "અણુ એ રાસાયણિક બંધો દ્વારા એકસાથે જોડાયેલા પરમાણુઓનો સમૂહ છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "અણુ એ રાસાયણિક બંધો દ્વારા એકસાથે જોડાયેલા પરમાણુઓનો સમૂહ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-157",
+      "sentence_index": 3,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "પાણી એક અણુ છે.",
+      "text_markdown": "પાણી એક અણુ છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "પાણી એક અણુ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-158",
+      "sentence_index": 4,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "ઓક્સિજન વાયુ એક અણુ છે.",
+      "text_markdown": "ઓક્સિજન વાયુ એક અણુ છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "ઓક્સિજન વાયુ એક અણુ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-159",
+      "sentence_index": 5,
+      "paragraph_id": "p38",
+      "chapter": 5,
+      "text": "ખાંડ એક અણુ છે.",
+      "text_markdown": "ખાંડ એક અણુ છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "ખાંડ એક અણુ છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-160",
+      "sentence_index": 0,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "પરમાણુઓ તેમના ઇલેક્ટ્રોન કારણે બંધાય છે.",
+      "text_markdown": "પરમાણુઓ તેમના ઇલેક્ટ્રોન કારણે બંધાય છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "પરમાણુઓ તેમના ઇલેક્ટ્રોન કારણે બંધાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-161",
+      "sentence_index": 1,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "પરમાણુના સૌથી બહારના કોષમાં રહેલા ઇલેક્ટ્રોન નક્કી કરે છે કે તે પરમાણુ અન્ય પરમાણુઓ સાથે કેવી રીતે ક્રિયાપ્રતિક્રિયા કરે છે.",
+      "text_markdown": "પરમાણુના સૌથી બહારના કોષમાં રહેલા ઇલેક્ટ્રોન નક્કી કરે છે કે તે પરમાણુ અન્ય પરમાણુઓ સાથે કેવી રીતે ક્રિયાપ્રતિક્રિયા કરે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "પરમાણુના સૌથી બહારના કોષમાં રહેલા ઇલેક્ટ્રોન નક્કી કરે છે કે તે પરમાણુ અન્ય પરમાણુઓ સાથે કેવી રીતે ક્રિયાપ્રતિક્રિયા કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-162",
+      "sentence_index": 2,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "આ બહારના ઇલેક્ટ્રોનને વેલેન્સ ઇલેક્ટ્રોન કહેવાય છે.",
+      "text_markdown": "આ બહારના ઇલેક્ટ્રોનને વેલેન્સ ઇલેક્ટ્રોન કહેવાય છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "આ બહારના ઇલેક્ટ્રોનને વેલેન્સ ઇલેક્ટ્રોન કહેવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-163",
+      "sentence_index": 3,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "સંપૂર્ણ બાહ્ય કોષ ધરાવતો પરમાણુ સ્થિર હોય છે.",
+      "text_markdown": "સંપૂર્ણ બાહ્ય કોષ ધરાવતો પરમાણુ સ્થિર હોય છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "સંપૂર્ણ બાહ્ય કોષ ધરાવતો પરમાણુ સ્થિર હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-164",
+      "sentence_index": 4,
+      "paragraph_id": "p39",
+      "chapter": 5,
+      "text": "સંપૂર્ણ બાહ્ય કોષ વિનાનો પરમાણુ તેને ભરવાનો પ્રયાસ કરશે.",
+      "text_markdown": "સંપૂર્ણ બાહ્ય કોષ વિનાનો પરમાણુ તેને ભરવાનો પ્રયાસ કરશે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "સંપૂર્ણ બાહ્ય કોષ વિનાનો પરમાણુ તેને ભરવાનો પ્રયાસ કરશે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-165",
+      "sentence_index": 0,
+      "paragraph_id": "p40",
+      "chapter": 5,
+      "text": "રાસાયણિક બંધોના બે મુખ્ય પ્રકાર છે.",
+      "text_markdown": "રાસાયણિક બંધોના બે મુખ્ય પ્રકાર છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "રાસાયણિક બંધોના બે મુખ્ય પ્રકાર છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-166",
+      "sentence_index": 1,
+      "paragraph_id": "p40",
+      "chapter": 5,
+      "text": "સહસંયોજક બંધો અને આયનીય બંધો.",
+      "text_markdown": "સહસંયોજક બંધો અને આયનીય બંધો.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "સહસંયોજક બંધો અને આયનીય બંધો.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-167",
+      "sentence_index": 0,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "સહસંયોજક બંધમાં, બે પરમાણુઓ ઇલેક્ટ્રોન વહેંચે છે.",
+      "text_markdown": "સહસંયોજક બંધમાં, બે પરમાણુઓ ઇલેક્ટ્રોન વહેંચે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "સહસંયોજક બંધમાં, બે પરમાણુઓ ઇલેક્ટ્રોન વહેંચે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-168",
+      "sentence_index": 1,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "બંને પરમાણુઓ વહેંચાયેલ જોડીમાં ઇલેક્ટ્રોનનું યોગદાન આપે છે.",
+      "text_markdown": "બંને પરમાણુઓ વહેંચાયેલ જોડીમાં ઇલેક્ટ્રોનનું યોગદાન આપે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "બંને પરમાણુઓ વહેંચાયેલ જોડીમાં ઇલેક્ટ્રોનનું યોગદાન આપે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-169",
+      "sentence_index": 2,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "વહેંચાયેલા ઇલેક્ટ્રોન બંને ન્યુક્લિયસની આસપાસ ફરે છે.",
+      "text_markdown": "વહેંચાયેલા ઇલેક્ટ્રોન બંને ન્યુક્લિયસની આસપાસ ફરે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "વહેંચાયેલા ઇલેક્ટ્રોન બંને ન્યુક્લિયસની આસપાસ ફરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-170",
+      "sentence_index": 3,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "આ વહેંચણી પરમાણુઓને એકસાથે જોડી રાખે છે.",
+      "text_markdown": "આ વહેંચણી પરમાણુઓને એકસાથે જોડી રાખે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "આ વહેંચણી પરમાણુઓને એકસાથે જોડી રાખે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-171",
+      "sentence_index": 4,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "પાણી સહસંયોજક બંધો દ્વારા એકસાથે જોડાયેલું છે.",
+      "text_markdown": "પાણી સહસંયોજક બંધો દ્વારા એકસાથે જોડાયેલું છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "પાણી સહસંયોજક બંધો દ્વારા એકસાથે જોડાયેલું છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-172",
+      "sentence_index": 5,
+      "paragraph_id": "p41",
+      "chapter": 5,
+      "text": "દરેક હાઇડ્રોજન પરમાણુ ઓક્સિજન પરમાણુ સાથે એક ઇલેક્ટ્રોન વહેંચે છે.",
+      "text_markdown": "દરેક હાઇડ્રોજન પરમાણુ ઓક્સિજન પરમાણુ સાથે એક ઇલેક્ટ્રોન વહેંચે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "દરેક હાઇડ્રોજન પરમાણુ ઓક્સિજન પરમાણુ સાથે એક ઇલેક્ટ્રોન વહેંચે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-173",
+      "sentence_index": 0,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "આયનીય બંધમાં, એક પરમાણુ બીજા પરમાણુને ઇલેક્ટ્રોન આપે છે.",
+      "text_markdown": "આયનીય બંધમાં, એક પરમાણુ બીજા પરમાણુને ઇલેક્ટ્રોન આપે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "આયનીય બંધમાં, એક પરમાણુ બીજા પરમાણુને ઇલેક્ટ્રોન આપે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-174",
+      "sentence_index": 1,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "જે પરમાણુ ઇલેક્ટ્રોન ગુમાવે છે તે ધન વિદ્યુતભારિત બને છે.",
+      "text_markdown": "જે પરમાણુ ઇલેક્ટ્રોન ગુમાવે છે તે ધન વિદ્યુતભારિત બને છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "જે પરમાણુ ઇલેક્ટ્રોન ગુમાવે છે તે ધન વિદ્યુતભારિત બને છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-175",
+      "sentence_index": 2,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "જે પરમાણુ ઇલેક્ટ્રોન મેળવે છે તે ઋણ વિદ્યુતભારિત બને છે.",
+      "text_markdown": "જે પરમાણુ ઇલેક્ટ્રોન મેળવે છે તે ઋણ વિદ્યુતભારિત બને છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "જે પરમાણુ ઇલેક્ટ્રોન મેળવે છે તે ઋણ વિદ્યુતભારિત બને છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-176",
+      "sentence_index": 3,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "વિરુદ્ધ વિદ્યુતભારો આકર્ષે છે.",
+      "text_markdown": "વિરુદ્ધ વિદ્યુતભારો આકર્ષે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "વિરુદ્ધ વિદ્યુતભારો આકર્ષે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-177",
+      "sentence_index": 4,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "આ આકર્ષણ બે પરમાણુઓને એકસાથે જોડી રાખે છે.",
+      "text_markdown": "આ આકર્ષણ બે પરમાણુઓને એકસાથે જોડી રાખે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "આ આકર્ષણ બે પરમાણુઓને એકસાથે જોડી રાખે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-178",
+      "sentence_index": 5,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "ટેબલ સોલ્ટ આયનીય બંધો દ્વારા એકસાથે જોડાયેલું છે.",
+      "text_markdown": "ટેબલ સોલ્ટ આયનીય બંધો દ્વારા એકસાથે જોડાયેલું છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "ટેબલ સોલ્ટ આયનીય બંધો દ્વારા એકસાથે જોડાયેલું છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-179",
+      "sentence_index": 6,
+      "paragraph_id": "p42",
+      "chapter": 5,
+      "text": "સોડિયમ ક્લોરિનને ઇલેક્ટ્રોન આપે છે.",
+      "text_markdown": "સોડિયમ ક્લોરિનને ઇલેક્ટ્રોન આપે છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "સોડિયમ ક્લોરિનને ઇલેક્ટ્રોન આપે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-180",
+      "sentence_index": 0,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "પાણીના અણુમાં બે હાઇડ્રોજન પરમાણુ અને એક ઓક્સિજન પરમાણુ હોય છે.",
+      "text_markdown": "પાણીના અણુમાં બે હાઇડ્રોજન પરમાણુ અને એક ઓક્સિજન પરમાણુ હોય છે.",
+      "title": "પરમાણુઓ કેવી રીતે બંધાય છે",
+      "tts": {
+        "text": "પાણીના અણુમાં બે હાઇડ્રોજન પરમાણુ અને એક ઓક્સિજન પરમાણુ હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-181",
+      "sentence_index": 1,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "વૈજ્ઞાનિકો આને H2O તરીકે લખે છે.",
+      "text_markdown": "Scientists write this as H2O.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "વૈજ્ઞાનિકો આને એચ ટુ ઓ તરીકે લખે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-182",
+      "sentence_index": 2,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "H એટલે હાઇડ્રોજન.",
+      "text_markdown": "The H stands for hydrogen.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "એચ એટલે હાઇડ્રોજન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-183",
+      "sentence_index": 3,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "O એટલે ઓક્સિજન.",
+      "text_markdown": "The O stands for oxygen.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "ઓ એટલે ઓક્સિજન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-184",
+      "sentence_index": 4,
+      "paragraph_id": "p43",
+      "chapter": 5,
+      "text": "2 નો અર્થ છે કે હાઇડ્રોજનના બે પરમાણુ છે.",
+      "text_markdown": "The 2 means there are two hydrogen atoms.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "બે નો અર્થ છે કે હાઇડ્રોજનના બે પરમાણુ છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-185",
+      "sentence_index": 0,
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "text": "કાર્બન ડાયોક્સાઇડના એક અણુમાં એક કાર્બન પરમાણુ અને બે ઓક્સિજન પરમાણુ હોય છે.",
+      "text_markdown": "કાર્બન ડાયોક્સાઇડના એક અણુમાં એક કાર્બન પરમાણુ અને બે ઓક્સિજન પરમાણુ હોય છે.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "કાર્બન ડાયોક્સાઇડના એક અણુમાં એક કાર્બન પરમાણુ અને બે ઓક્સિજન પરમાણુ હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-186",
+      "sentence_index": 1,
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "text": "વૈજ્ઞાનિકો આને CO2 તરીકે લખે છે.",
+      "text_markdown": "Scientists write this as CO2.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "વૈજ્ઞાનિકો આને સી ઓ ટુ તરીકે લખે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-187",
+      "sentence_index": 2,
+      "paragraph_id": "p44",
+      "chapter": 5,
+      "text": "છોડ હવામાંથી કાર્બન ડાયોક્સાઇડ શોષી લે છે અને તેનો ઉપયોગ ખાંડના અણુઓ બનાવવા માટે કરે છે.",
+      "text_markdown": "છોડ હવામાંથી કાર્બન ડાયોક્સાઇડ શોષી લે છે અને તેનો ઉપયોગ ખાંડના અણુઓ બનાવવા માટે કરે છે.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "છોડ હવામાંથી કાર્બન ડાયોક્સાઇડ શોષી લે છે અને તેનો ઉપયોગ ખાંડના અણુઓ બનાવવા માટે કરે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-188",
+      "sentence_index": 0,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "પરમાણુઓ વચ્ચેના બંધો ઊર્જા સંગ્રહિત કરે છે.",
+      "text_markdown": "પરમાણુઓ વચ્ચેના બંધો ઊર્જા સંગ્રહિત કરે છે.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "પરમાણુઓ વચ્ચેના બંધો ઊર્જા સંગ્રહિત કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-189",
+      "sentence_index": 1,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "જ્યારે બંધો તૂટે છે, ત્યારે ઊર્જા મુક્ત થાય છે.",
+      "text_markdown": "જ્યારે બંધો તૂટે છે, ત્યારે ઊર્જા મુક્ત થાય છે.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "જ્યારે બંધો તૂટે છે, ત્યારે ઊર્જા મુક્ત થાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-190",
+      "sentence_index": 2,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "જ્યારે બંધો બને છે, ત્યારે ઊર્જા શોષાય છે.",
+      "text_markdown": "જ્યારે બંધો બને છે, ત્યારે ઊર્જા શોષાય છે.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "જ્યારે બંધો બને છે, ત્યારે ઊર્જા શોષાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-191",
+      "sentence_index": 3,
+      "paragraph_id": "p45",
+      "chapter": 5,
+      "text": "બ્રહ્માંડમાં દરેક રાસાયણિક પ્રતિક્રિયામાં જૂના બંધો તોડવા અને નવા બનાવવાનો સમાવેશ થાય છે.",
+      "text_markdown": "બ્રહ્માંડમાં દરેક રાસાયણિક પ્રતિક્રિયામાં જૂના બંધો તોડવા અને નવા બનાવવાનો સમાવેશ થાય છે.",
+      "title": "પરમાણુઓ કેવી રીતે જોડાય છે",
+      "tts": {
+        "text": "બ્રહ્માંડમાં દરેક રાસાયણિક પ્રતિક્રિયામાં જૂના બંધો તોડવા અને નવા બનાવવાનો સમાવેશ થાય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch06-192",
+      "sentence_index": 0,
+      "paragraph_id": "p46",
+      "chapter": 6,
+      "text": "ગતિમાં પરમાણુઓ",
+      "text_markdown": "ગતિમાં પરમાણુઓ",
+      "title": "ગતિમાં પરમાણુઓ"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-193",
+      "sentence_index": 0,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "પરમાણુઓ હંમેશા ગતિમાં હોય છે.",
+      "text_markdown": "પરમાણુઓ હંમેશા ગતિમાં હોય છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "પરમાણુઓ હંમેશા ગતિમાં હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-194",
+      "sentence_index": 1,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "તેઓ ક્યારેય અટકતા નથી.",
+      "text_markdown": "તેઓ ક્યારેય અટકતા નથી.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તેઓ ક્યારેય અટકતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-195",
+      "sentence_index": 2,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "નિરપેક્ષ શૂન્યથી ઉપરના કોઈપણ તાપમાને, પરમાણુઓ કંપન કરે છે, ફરે છે અને અવકાશમાં ગતિ કરે છે.",
+      "text_markdown": "નિરપેક્ષ શૂન્યથી ઉપરના કોઈપણ તાપમાને, પરમાણુઓ કંપન કરે છે, ફરે છે અને અવકાશમાં ગતિ કરે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "નિરપેક્ષ શૂન્યથી ઉપરના કોઈપણ તાપમાને, પરમાણુઓ કંપન કરે છે, ફરે છે અને અવકાશમાં ગતિ કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-196",
+      "sentence_index": 3,
+      "paragraph_id": "p47",
+      "chapter": 6,
+      "text": "આ ગતિને આપણે ગરમી તરીકે અનુભવીએ છીએ.",
+      "text_markdown": "આ ગતિને આપણે ગરમી તરીકે અનુભવીએ છીએ.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "આ ગતિને આપણે ગરમી તરીકે અનુભવીએ છીએ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-197",
+      "sentence_index": 0,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "ઘન પદાર્થમાં, પરમાણુઓ પોતાની જગ્યાએ કંપન કરે છે.",
+      "text_markdown": "ઘન પદાર્થમાં, પરમાણુઓ પોતાની જગ્યાએ કંપન કરે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "ઘન પદાર્થમાં, પરમાણુઓ પોતાની જગ્યાએ કંપન કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-198",
+      "sentence_index": 1,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "તેઓ એક નિશ્ચિત બંધારણમાં બંધાયેલા હોય છે.",
+      "text_markdown": "તેઓ એક નિશ્ચિત બંધારણમાં બંધાયેલા હોય છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તેઓ એક નિશ્ચિત બંધારણમાં બંધાયેલા હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-199",
+      "sentence_index": 2,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "તેઓ આગળ-પાછળ ધ્રુજે છે, પરંતુ તેમની જગ્યા છોડતા નથી.",
+      "text_markdown": "તેઓ આગળ-પાછળ ધ્રુજે છે, પરંતુ તેમની જગ્યા છોડતા નથી.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તેઓ આગળ-પાછળ ધ્રુજે છે, પરંતુ તેમની જગ્યા છોડતા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-200",
+      "sentence_index": 3,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "આ જ કારણ છે કે ઘન પદાર્થો તેમનો આકાર જાળવી રાખે છે.",
+      "text_markdown": "આ જ કારણ છે કે ઘન પદાર્થો તેમનો આકાર જાળવી રાખે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "આ જ કારણ છે કે ઘન પદાર્થો તેમનો આકાર જાળવી રાખે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-201",
+      "sentence_index": 4,
+      "paragraph_id": "p48",
+      "chapter": 6,
+      "text": "બરફના ટુકડામાં પરમાણુઓ કંપન કરે છે, પરંતુ તેઓ એક કઠોર સ્ફટિક પેટર્નમાં રહે છે.",
+      "text_markdown": "બરફના ટુકડામાં પરમાણુઓ કંપન કરે છે, પરંતુ તેઓ એક કઠોર સ્ફટિક પેટર્નમાં રહે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "બરફના ટુકડામાં પરમાણુઓ કંપન કરે છે, પરંતુ તેઓ એક કઠોર સ્ફટિક પેટર્નમાં રહે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-202",
+      "sentence_index": 0,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "પ્રવાહીમાં, પરમાણુઓ વધુ મુક્તપણે ગતિ કરે છે.",
+      "text_markdown": "પ્રવાહીમાં, પરમાણુઓ વધુ મુક્તપણે ગતિ કરે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "પ્રવાહીમાં, પરમાણુઓ વધુ મુક્તપણે ગતિ કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-203",
+      "sentence_index": 1,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "તેઓ એકબીજા પર સરકે છે.",
+      "text_markdown": "તેઓ એકબીજા પર સરકે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તેઓ એકબીજા પર સરકે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-204",
+      "sentence_index": 2,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "તેઓ એકબીજાની નજીક રહે છે, પરંતુ સ્થિતિમાં બંધાયેલા નથી.",
+      "text_markdown": "તેઓ એકબીજાની નજીક રહે છે, પરંતુ સ્થિતિમાં બંધાયેલા નથી.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તેઓ એકબીજાની નજીક રહે છે, પરંતુ સ્થિતિમાં બંધાયેલા નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-205",
+      "sentence_index": 3,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "આ જ કારણ છે કે પ્રવાહી વહે છે.",
+      "text_markdown": "આ જ કારણ છે કે પ્રવાહી વહે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "આ જ કારણ છે કે પ્રવાહી વહે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-206",
+      "sentence_index": 4,
+      "paragraph_id": "p49",
+      "chapter": 6,
+      "text": "પાણીના ગ્લાસમાં પરમાણુઓ સતત ગતિ કરે છે અને ફરીથી ગોઠવાય છે, પરંતુ તેઓ એકબીજાની નજીક રહે છે.",
+      "text_markdown": "પાણીના ગ્લાસમાં પરમાણુઓ સતત ગતિ કરે છે અને ફરીથી ગોઠવાય છે, પરંતુ તેઓ એકબીજાની નજીક રહે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "પાણીના ગ્લાસમાં પરમાણુઓ સતત ગતિ કરે છે અને ફરીથી ગોઠવાય છે, પરંતુ તેઓ એકબીજાની નજીક રહે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-207",
+      "sentence_index": 0,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "વાયુમાં, પરમાણુઓ ઝડપથી ગતિ કરે છે અને ફેલાય છે.",
+      "text_markdown": "વાયુમાં, પરમાણુઓ ઝડપથી ગતિ કરે છે અને ફેલાય છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "વાયુમાં, પરમાણુઓ ઝડપથી ગતિ કરે છે અને ફેલાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-208",
+      "sentence_index": 1,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "તેઓ સીધી રેખામાં ઉડે છે જ્યાં સુધી તેઓ બીજા પરમાણુ અથવા દીવાલ સાથે અથડાય નહીં.",
+      "text_markdown": "તેઓ સીધી રેખામાં ઉડે છે જ્યાં સુધી તેઓ બીજા પરમાણુ અથવા દીવાલ સાથે અથડાય નહીં.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તેઓ સીધી રેખામાં ઉડે છે જ્યાં સુધી તેઓ બીજા પરમાણુ અથવા દીવાલ સાથે અથડાય નહીં.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-209",
+      "sentence_index": 2,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "તેઓ એકબીજા સાથે અથડાઈને દિશા બદલે છે.",
+      "text_markdown": "તેઓ એકબીજા સાથે અથડાઈને દિશા બદલે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તેઓ એકબીજા સાથે અથડાઈને દિશા બદલે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-210",
+      "sentence_index": 3,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "આ જ કારણ છે કે વાયુ તમે તેને કોઈપણ પાત્રમાં મૂકો છો તે ભરી દે છે.",
+      "text_markdown": "આ જ કારણ છે કે વાયુ તમે તેને કોઈપણ પાત્રમાં મૂકો છો તે ભરી દે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "આ જ કારણ છે કે વાયુ તમે તેને કોઈપણ પાત્રમાં મૂકો છો તે ભરી દે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-211",
+      "sentence_index": 4,
+      "paragraph_id": "p50",
+      "chapter": 6,
+      "text": "હવા ભરેલા ઓરડામાં પરમાણુઓ સેંકડો મીટર પ્રતિ સેકન્ડની ઝડપે દરેક દિશામાં ગતિ કરી રહ્યા છે.",
+      "text_markdown": "હવા ભરેલા ઓરડામાં પરમાણુઓ સેંકડો મીટર પ્રતિ સેકન્ડની ઝડપે દરેક દિશામાં ગતિ કરી રહ્યા છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "હવા ભરેલા ઓરડામાં પરમાણુઓ સેંકડો મીટર પ્રતિ સેકન્ડની ઝડપે દરેક દિશામાં ગતિ કરી રહ્યા છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-212",
+      "sentence_index": 0,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "તાપમાન એ પરમાણુઓ કેટલી ઝડપથી ગતિ કરી રહ્યા છે તેનું માપ છે.",
+      "text_markdown": "તાપમાન એ પરમાણુઓ કેટલી ઝડપથી ગતિ કરી રહ્યા છે તેનું માપ છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તાપમાન એ પરમાણુઓ કેટલી ઝડપથી ગતિ કરી રહ્યા છે તેનું માપ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-213",
+      "sentence_index": 1,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "ગરમ એટલે પરમાણુઓ ઝડપથી ગતિ કરી રહ્યા છે.",
+      "text_markdown": "ગરમ એટલે પરમાણુઓ ઝડપથી ગતિ કરી રહ્યા છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "ગરમ એટલે પરમાણુઓ ઝડપથી ગતિ કરી રહ્યા છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-214",
+      "sentence_index": 2,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "ઠંડુ એટલે પરમાણુઓ ધીમે ધીમે ગતિ કરી રહ્યા છે.",
+      "text_markdown": "ઠંડુ એટલે પરમાણુઓ ધીમે ધીમે ગતિ કરી રહ્યા છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "ઠંડુ એટલે પરમાણુઓ ધીમે ધીમે ગતિ કરી રહ્યા છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-215",
+      "sentence_index": 3,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "જ્યારે તમે સ્ટવ પર પાણી ગરમ કરો છો, ત્યારે તમે પાણીના અણુઓને વધુ ઝડપથી ગતિ કરાવો છો.",
+      "text_markdown": "જ્યારે તમે સ્ટવ પર પાણી ગરમ કરો છો, ત્યારે તમે પાણીના અણુઓને વધુ ઝડપથી ગતિ કરાવો છો.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "જ્યારે તમે સ્ટવ પર પાણી ગરમ કરો છો, ત્યારે તમે પાણીના અણુઓને વધુ ઝડપથી ગતિ કરાવો છો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-216",
+      "sentence_index": 4,
+      "paragraph_id": "p51",
+      "chapter": 6,
+      "text": "જ્યારે અણુઓ પૂરતી ઝડપથી ગતિ કરે છે, ત્યારે તેઓ પ્રવાહીમાંથી છટકી જાય છે અને વરાળ બની જાય છે.",
+      "text_markdown": "જ્યારે અણુઓ પૂરતી ઝડપથી ગતિ કરે છે, ત્યારે તેઓ પ્રવાહીમાંથી છટકી જાય છે અને વરાળ બની જાય છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "જ્યારે અણુઓ પૂરતી ઝડપથી ગતિ કરે છે, ત્યારે તેઓ પ્રવાહીમાંથી છટકી જાય છે અને વરાળ બની જાય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-217",
+      "sentence_index": 0,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "નિરપેક્ષ શૂન્ય એ સૌથી ઓછું શક્ય તાપમાન છે.",
+      "text_markdown": "નિરપેક્ષ શૂન્ય એ સૌથી ઓછું શક્ય તાપમાન છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "નિરપેક્ષ શૂન્ય એ સૌથી ઓછું શક્ય તાપમાન છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-218",
+      "sentence_index": 1,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "તે લગભગ માઈનસ 273 ડિગ્રી સેલ્સિયસ છે.",
+      "text_markdown": "તે લગભગ માઈનસ 273 ડિગ્રી સેલ્સિયસ છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "તે લગભગ માઈનસ બસો તોતેર ડિગ્રી સેલ્સિયસ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-219",
+      "sentence_index": 2,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "નિરપેક્ષ શૂન્ય પર, પરમાણુઓમાં ન્યૂનતમ શક્ય ઊર્જા હોય છે.",
+      "text_markdown": "નિરપેક્ષ શૂન્ય પર, પરમાણુઓમાં ન્યૂનતમ શક્ય ઊર્જા હોય છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "નિરપેક્ષ શૂન્ય પર, પરમાણુઓમાં ન્યૂનતમ શક્ય ઊર્જા હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-220",
+      "sentence_index": 3,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "નિરપેક્ષ શૂન્ય કરતાં વધુ ઠંડુ કંઈ હોઈ શકે નહીં.",
+      "text_markdown": "નિરપેક્ષ શૂન્ય કરતાં વધુ ઠંડુ કંઈ હોઈ શકે નહીં.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "નિરપેક્ષ શૂન્ય કરતાં વધુ ઠંડુ કંઈ હોઈ શકે નહીં.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-221",
+      "sentence_index": 4,
+      "paragraph_id": "p52",
+      "chapter": 6,
+      "text": "વૈજ્ઞાનિકો પ્રયોગશાળાઓમાં નિરપેક્ષ શૂન્ય સુધી પહોંચવાની ખૂબ નજીક આવ્યા છે, પરંતુ કોઈ પણ તેના સુધી બરાબર પહોંચી શક્યું નથી.",
+      "text_markdown": "વૈજ્ઞાનિકો પ્રયોગશાળાઓમાં નિરપેક્ષ શૂન્ય સુધી પહોંચવાની ખૂબ નજીક આવ્યા છે, પરંતુ કોઈ પણ તેના સુધી બરાબર પહોંચી શક્યું નથી.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "વૈજ્ઞાનિકો પ્રયોગશાળાઓમાં નિરપેક્ષ શૂન્ય સુધી પહોંચવાની ખૂબ નજીક આવ્યા છે, પરંતુ કોઈ પણ તેના સુધી બરાબર પહોંચી શક્યું નથી.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-222",
+      "sentence_index": 0,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "દબાણ એ પરમાણુઓ સપાટીઓ સાથે અથડાવાથી થાય છે.",
+      "text_markdown": "દબાણ એ પરમાણુઓ સપાટીઓ સાથે અથડાવાથી થાય છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "દબાણ એ પરમાણુઓ સપાટીઓ સાથે અથડાવાથી થાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-223",
+      "sentence_index": 1,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "ટાયરમાંની હવા બહારની તરફ ધકેલે છે કારણ કે હવાના અણુઓ સતત ટાયરની અંદરની દિવાલો સાથે અથડાઈ રહ્યા છે.",
+      "text_markdown": "ટાયરમાંની હવા બહારની તરફ ધકેલે છે કારણ કે હવાના અણુઓ સતત ટાયરની અંદરની દિવાલો સાથે અથડાઈ રહ્યા છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "ટાયરમાંની હવા બહારની તરફ ધકેલે છે કારણ કે હવાના અણુઓ સતત ટાયરની અંદરની દિવાલો સાથે અથડાઈ રહ્યા છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-224",
+      "sentence_index": 2,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "વધુ અણુઓ અથવા વધુ ઝડપી અણુઓ એટલે વધુ દબાણ.",
+      "text_markdown": "વધુ અણુઓ અથવા વધુ ઝડપી અણુઓ એટલે વધુ દબાણ.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "વધુ અણુઓ અથવા વધુ ઝડપી અણુઓ એટલે વધુ દબાણ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-225",
+      "sentence_index": 3,
+      "paragraph_id": "p53",
+      "chapter": 6,
+      "text": "આ જ કારણ છે કે જ્યારે હવા ગરમ હોય છે ત્યારે ટાયર વધુ સખત લાગે છે.",
+      "text_markdown": "આ જ કારણ છે કે જ્યારે હવા ગરમ હોય છે ત્યારે ટાયર વધુ સખત લાગે છે.",
+      "title": "ગતિમાં પરમાણુઓ",
+      "tts": {
+        "text": "આ જ કારણ છે કે જ્યારે હવા ગરમ હોય છે ત્યારે ટાયર વધુ સખત લાગે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch07-226",
+      "sentence_index": 0,
+      "paragraph_id": "p54",
+      "chapter": 7,
+      "text": "પરમાણુઓ ક્યાંથી આવે છે",
+      "text_markdown": "પરમાણુઓ ક્યાંથી આવે છે",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-227",
+      "sentence_index": 0,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "બ્રહ્માંડમાં હાઇડ્રોજન અને હિલીયમ બિગ બેંગ પછીની પ્રથમ થોડી મિનિટોમાં બન્યા હતા.",
+      "text_markdown": "બ્રહ્માંડમાં હાઇડ્રોજન અને હિલીયમ બિગ બેંગ પછીની પ્રથમ થોડી મિનિટોમાં બન્યા હતા.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "બ્રહ્માંડમાં હાઇડ્રોજન અને હિલીયમ બિગ બેંગ પછીની પ્રથમ થોડી મિનિટોમાં બન્યા હતા.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-228",
+      "sentence_index": 1,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "બ્રહ્માંડની શરૂઆત લગભગ 13.8 અબજ વર્ષ પહેલાં અત્યંત ગરમ, ગાઢ બિંદુ તરીકે થઈ હતી.",
+      "text_markdown": "બ્રહ્માંડની શરૂઆત લગભગ 13.8 અબજ વર્ષ પહેલાં અત્યંત ગરમ, ગાઢ બિંદુ તરીકે થઈ હતી.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "બ્રહ્માંડની શરૂઆત લગભગ તેર દશાંશ આઠ અબજ વર્ષ પહેલાં અત્યંત ગરમ, ગાઢ બિંદુ તરીકે થઈ હતી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-229",
+      "sentence_index": 2,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "જેમ જેમ તે વિસ્તર્યું અને ઠંડું પડ્યું, પ્રોટોન અને ન્યુટ્રોન બન્યા.",
+      "text_markdown": "જેમ જેમ તે વિસ્તર્યું અને ઠંડું પડ્યું, પ્રોટોન અને ન્યુટ્રોન બન્યા.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "જેમ જેમ તે વિસ્તર્યું અને ઠંડું પડ્યું, પ્રોટોન અને ન્યુટ્રોન બન્યા.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-230",
+      "sentence_index": 3,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "તે પ્રોટોન અને ન્યુટ્રોન સૌથી સરળ ન્યુક્લિયસમાં ભળી ગયા.",
+      "text_markdown": "તે પ્રોટોન અને ન્યુટ્રોન સૌથી સરળ ન્યુક્લિયસમાં ભળી ગયા.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તે પ્રોટોન અને ન્યુટ્રોન સૌથી સરળ ન્યુક્લિયસમાં ભળી ગયા.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-231",
+      "sentence_index": 4,
+      "paragraph_id": "p55",
+      "chapter": 7,
+      "text": "હાઇડ્રોજન અને હિલીયમ પ્રથમ તત્વો હતા.",
+      "text_markdown": "હાઇડ્રોજન અને હિલીયમ પ્રથમ તત્વો હતા.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "હાઇડ્રોજન અને હિલીયમ પ્રથમ તત્વો હતા.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-232",
+      "sentence_index": 0,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "લાખો વર્ષો સુધી, બ્રહ્માંડ હાઇડ્રોજન અને હિલીયમ વાયુનો વાદળ હતું.",
+      "text_markdown": "લાખો વર્ષો સુધી, બ્રહ્માંડ હાઇડ્રોજન અને હિલીયમ વાયુનો વાદળ હતું.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "લાખો વર્ષો સુધી, બ્રહ્માંડ હાઇડ્રોજન અને હિલીયમ વાયુનો વાદળ હતું.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-233",
+      "sentence_index": 1,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "પછી ગુરુત્વાકર્ષણે વાયુને એકસાથે ખેંચ્યો અને ગઠ્ઠાઓમાં ફેરવ્યો.",
+      "text_markdown": "પછી ગુરુત્વાકર્ષણે વાયુને એકસાથે ખેંચ્યો અને ગઠ્ઠાઓમાં ફેરવ્યો.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "પછી ગુરુત્વાકર્ષણે વાયુને એકસાથે ખેંચ્યો અને ગઠ્ઠાઓમાં ફેરવ્યો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-234",
+      "sentence_index": 2,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "તે ગઠ્ઠાઓ વધુ ગાઢ અને ગરમ બન્યા.",
+      "text_markdown": "તે ગઠ્ઠાઓ વધુ ગાઢ અને ગરમ બન્યા.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તે ગઠ્ઠાઓ વધુ ગાઢ અને ગરમ બન્યા.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-235",
+      "sentence_index": 3,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "જ્યારે એક ગઠ્ઠાનું કેન્દ્ર લગભગ દસ મિલિયન ડિગ્રી સુધી પહોંચ્યું, ત્યારે ન્યુક્લિયર ફ્યુઝન પ્રજ્વલિત થયું.",
+      "text_markdown": "જ્યારે એક ગઠ્ઠાનું કેન્દ્ર લગભગ દસ મિલિયન ડિગ્રી સુધી પહોંચ્યું, ત્યારે ન્યુક્લિયર ફ્યુઝન પ્રજ્વલિત થયું.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "જ્યારે એક ગઠ્ઠાનું કેન્દ્ર લગભગ દસ મિલિયન ડિગ્રી સુધી પહોંચ્યું, ત્યારે ન્યુક્લિયર ફ્યુઝન પ્રજ્વલિત થયું.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-236",
+      "sentence_index": 4,
+      "paragraph_id": "p56",
+      "chapter": 7,
+      "text": "એક તારો જન્મ્યો.",
+      "text_markdown": "એક તારો જન્મ્યો.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "એક તારો જન્મ્યો.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-237",
+      "sentence_index": 0,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "તારાઓ પરમાણુ ફેક્ટરીઓ છે.",
+      "text_markdown": "તારાઓ પરમાણુ ફેક્ટરીઓ છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તારાઓ પરમાણુ ફેક્ટરીઓ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-238",
+      "sentence_index": 1,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "તારાની અંદર, હાઇડ્રોજન પરમાણુઓ એકસાથે ભળીને હિલીયમ બનાવે છે.",
+      "text_markdown": "તારાની અંદર, હાઇડ્રોજન પરમાણુઓ એકસાથે ભળીને હિલીયમ બનાવે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તારાની અંદર, હાઇડ્રોજન પરમાણુઓ એકસાથે ભળીને હિલીયમ બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-239",
+      "sentence_index": 2,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "આ ફ્યુઝન પ્રચંડ ઊર્જા મુક્ત કરે છે.",
+      "text_markdown": "આ ફ્યુઝન પ્રચંડ ઊર્જા મુક્ત કરે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "આ ફ્યુઝન પ્રચંડ ઊર્જા મુક્ત કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-240",
+      "sentence_index": 3,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "તે ઊર્જા જ છે જે તારાને ચમકતો બનાવે છે.",
+      "text_markdown": "તે ઊર્જા જ છે જે તારાને ચમકતો બનાવે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તે ઊર્જા જ છે જે તારાને ચમકતો બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-241",
+      "sentence_index": 4,
+      "paragraph_id": "p57",
+      "chapter": 7,
+      "text": "આપણો સૂર્ય દર સેકન્ડે લગભગ છસો મિલિયન ટન હાઇડ્રોજનને હિલિયમમાં સંમિશ્રણ કરે છે.",
+      "text_markdown": "આપણો સૂર્ય દર સેકન્ડે લગભગ છસો મિલિયન ટન હાઇડ્રોજનને હિલિયમમાં સંમિશ્રણ કરે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "આપણો સૂર્ય દર સેકન્ડે લગભગ છસો મિલિયન ટન હાઇડ્રોજનને હિલિયમમાં સંમિશ્રણ કરે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-242",
+      "sentence_index": 0,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "મોટા તારાઓ ભારે તત્વોનું સંમિશ્રણ કરે છે.",
+      "text_markdown": "મોટા તારાઓ ભારે તત્વોનું સંમિશ્રણ કરે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "મોટા તારાઓ ભારે તત્વોનું સંમિશ્રણ કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-243",
+      "sentence_index": 1,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "જ્યારે કોઈ તારો પોતાનો હાઇડ્રોજન બાળી નાખે છે, ત્યારે તે હિલિયમને કાર્બનમાં સંમિશ્રણ કરવાનું શરૂ કરે છે.",
+      "text_markdown": "જ્યારે કોઈ તારો પોતાનો હાઇડ્રોજન બાળી નાખે છે, ત્યારે તે હિલિયમને કાર્બનમાં સંમિશ્રણ કરવાનું શરૂ કરે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "જ્યારે કોઈ તારો પોતાનો હાઇડ્રોજન બાળી નાખે છે, ત્યારે તે હિલિયમને કાર્બનમાં સંમિશ્રણ કરવાનું શરૂ કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-244",
+      "sentence_index": 2,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "પછી કાર્બનને ઓક્સિજનમાં.",
+      "text_markdown": "પછી કાર્બનને ઓક્સિજનમાં.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "પછી કાર્બનને ઓક્સિજનમાં.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-245",
+      "sentence_index": 3,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "પછી ઓક્સિજનને સિલિકોનમાં.",
+      "text_markdown": "પછી ઓક્સિજનને સિલિકોનમાં.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "પછી ઓક્સિજનને સિલિકોનમાં.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-246",
+      "sentence_index": 4,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "પછી સિલિકોનને લોહમાં.",
+      "text_markdown": "પછી સિલિકોનને લોહમાં.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "પછી સિલિકોનને લોહમાં.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-247",
+      "sentence_index": 5,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "દરેક તબક્કો એક ભારે તત્વ ઉત્પન્ન કરે છે.",
+      "text_markdown": "દરેક તબક્કો એક ભારે તત્વ ઉત્પન્ન કરે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "દરેક તબક્કો એક ભારે તત્વ ઉત્પન્ન કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-248",
+      "sentence_index": 6,
+      "paragraph_id": "p58",
+      "chapter": 7,
+      "text": "લોહ એ સૌથી ભારે તત્વ છે જે એક તારો સામાન્ય સંમિશ્રણ દ્વારા ઉત્પન્ન કરી શકે છે.",
+      "text_markdown": "લોહ એ સૌથી ભારે તત્વ છે જે એક તારો સામાન્ય સંમિશ્રણ દ્વારા ઉત્પન્ન કરી શકે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "લોહ એ સૌથી ભારે તત્વ છે જે એક તારો સામાન્ય સંમિશ્રણ દ્વારા ઉત્પન્ન કરી શકે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-249",
+      "sentence_index": 0,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "લોહ કરતાં ભારે તત્વો ત્યારે બને છે જ્યારે વિશાળ તારાઓ વિસ્ફોટ કરે છે.",
+      "text_markdown": "લોહ કરતાં ભારે તત્વો ત્યારે બને છે જ્યારે વિશાળ તારાઓ વિસ્ફોટ કરે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "લોહ કરતાં ભારે તત્વો ત્યારે બને છે જ્યારે વિશાળ તારાઓ વિસ્ફોટ કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-250",
+      "sentence_index": 1,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "આ વિસ્ફોટોને સુપરનોવા કહેવાય છે.",
+      "text_markdown": "આ વિસ્ફોટોને સુપરનોવા કહેવાય છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "આ વિસ્ફોટોને સુપરનોવા કહેવાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-251",
+      "sentence_index": 2,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "એક સુપરનોવા થોડી સેકન્ડમાં સૂર્ય તેના સમગ્ર જીવનકાળમાં જેટલી ઊર્જા ઉત્પન્ન કરશે તેના કરતાં વધુ ઊર્જા મુક્ત કરે છે.",
+      "text_markdown": "એક સુપરનોવા થોડી સેકન્ડમાં સૂર્ય તેના સમગ્ર જીવનકાળમાં જેટલી ઊર્જા ઉત્પન્ન કરશે તેના કરતાં વધુ ઊર્જા મુક્ત કરે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "એક સુપરનોવા થોડી સેકન્ડમાં સૂર્ય તેના સમગ્ર જીવનકાળમાં જેટલી ઊર્જા ઉત્પન્ન કરશે તેના કરતાં વધુ ઊર્જા મુક્ત કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-252",
+      "sentence_index": 3,
+      "paragraph_id": "p59",
+      "chapter": 7,
+      "text": "સુપરનોવાની અત્યંત કઠોર પરિસ્થિતિઓ સોનું, ચાંદી, પ્લેટિનમ અને યુરેનિયમ જેવા તત્વો બનાવે છે.",
+      "text_markdown": "સુપરનોવાની અત્યંત કઠોર પરિસ્થિતિઓ સોનું, ચાંદી, પ્લેટિનમ અને યુરેનિયમ જેવા તત્વો બનાવે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "સુપરનોવાની અત્યંત કઠોર પરિસ્થિતિઓ સોનું, ચાંદી, પ્લેટિનમ અને યુરેનિયમ જેવા તત્વો બનાવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-253",
+      "sentence_index": 0,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "આ વિસ્ફોટ આ ભારે તત્વોને અવકાશમાં વિખેરી નાખે છે.",
+      "text_markdown": "આ વિસ્ફોટ આ ભારે તત્વોને અવકાશમાં વિખેરી નાખે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "આ વિસ્ફોટ આ ભારે તત્વોને અવકાશમાં વિખેરી નાખે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-254",
+      "sentence_index": 1,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "આ તત્વો હાઇડ્રોજન અને હિલિયમ વાયુના વાદળો સાથે ભળી જાય છે.",
+      "text_markdown": "આ તત્વો હાઇડ્રોજન અને હિલિયમ વાયુના વાદળો સાથે ભળી જાય છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "આ તત્વો હાઇડ્રોજન અને હિલિયમ વાયુના વાદળો સાથે ભળી જાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-255",
+      "sentence_index": 2,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "આખરે, ગુરુત્વાકર્ષણ આ સમૃદ્ધ વાયુને એકસાથે ખેંચીને નવા તારાઓ અને ગ્રહો બનાવે છે.",
+      "text_markdown": "આખરે, ગુરુત્વાકર્ષણ આ સમૃદ્ધ વાયુને એકસાથે ખેંચીને નવા તારાઓ અને ગ્રહો બનાવે છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "આખરે, ગુરુત્વાકર્ષણ આ સમૃદ્ધ વાયુને એકસાથે ખેંચીને નવા તારાઓ અને ગ્રહો બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-256",
+      "sentence_index": 3,
+      "paragraph_id": "p60",
+      "chapter": 7,
+      "text": "આપણું સૌરમંડળ લગભગ 4.6 અબજ વર્ષો પહેલાં આવા જ એક સમૃદ્ધ વાદળમાંથી બન્યું હતું.",
+      "text_markdown": "આપણું સૌરમંડળ લગભગ 4.6 અબજ વર્ષો પહેલાં આવા જ એક સમૃદ્ધ વાદળમાંથી બન્યું હતું.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "આપણું સૌરમંડળ લગભગ ચાર દશાંશ છ અબજ વર્ષો પહેલાં આવા જ એક સમૃદ્ધ વાદળમાંથી બન્યું હતું.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-257",
+      "sentence_index": 0,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "તમારા શરીરમાં હાઇડ્રોજન કરતાં ભારે દરેક પરમાણુ એક તારાની અંદર બન્યો હતો.",
+      "text_markdown": "તમારા શરીરમાં હાઇડ્રોજન કરતાં ભારે દરેક પરમાણુ એક તારાની અંદર બન્યો હતો.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તમારા શરીરમાં હાઇડ્રોજન કરતાં ભારે દરેક પરમાણુ એક તારાની અંદર બન્યો હતો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-258",
+      "sentence_index": 1,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "તમારા હાડકાંમાં કેલ્શિયમ.",
+      "text_markdown": "તમારા હાડકાંમાં કેલ્શિયમ.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તમારા હાડકાંમાં કેલ્શિયમ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-259",
+      "sentence_index": 2,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "તમારા લોહીમાં લોહ.",
+      "text_markdown": "તમારા લોહીમાં લોહ.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તમારા લોહીમાં લોહ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-260",
+      "sentence_index": 3,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "તમારી ત્વચામાં કાર્બન.",
+      "text_markdown": "તમારી ત્વચામાં કાર્બન.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તમારી ત્વચામાં કાર્બન.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-261",
+      "sentence_index": 4,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "તમે તારાઓની ધૂળના બનેલા છો.",
+      "text_markdown": "તમે તારાઓની ધૂળના બનેલા છો.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તમે તારાઓની ધૂળના બનેલા છો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-262",
+      "sentence_index": 5,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "તે રૂપક નથી.",
+      "text_markdown": "તે રૂપક નથી.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તે રૂપક નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-263",
+      "sentence_index": 6,
+      "paragraph_id": "p61",
+      "chapter": 7,
+      "text": "તે ન્યુક્લિયર ભૌતિકશાસ્ત્રની એક હકીકત છે.",
+      "text_markdown": "તે ન્યુક્લિયર ભૌતિકશાસ્ત્રની એક હકીકત છે.",
+      "title": "પરમાણુઓ ક્યાંથી આવે છે",
+      "tts": {
+        "text": "તે ન્યુક્લિયર ભૌતિકશાસ્ત્રની એક હકીકત છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "heading_level": 1,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch08-264",
+      "sentence_index": 0,
+      "paragraph_id": "p62",
+      "chapter": 8,
+      "text": "પરમાણુઓ જ બધું છે",
+      "text_markdown": "પરમાણુઓ જ બધું છે",
+      "title": "પરમાણુઓ જ બધું છે"
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-265",
+      "sentence_index": 0,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "તમે હવે મૂળભૂત બાબતો જાણો છો.",
+      "text_markdown": "તમે હવે મૂળભૂત બાબતો જાણો છો.",
+      "title": "પરમાણુઓ જ બધું છે",
+      "tts": {
+        "text": "તમે હવે મૂળભૂત બાબતો જાણો છો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-266",
+      "sentence_index": 1,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "બધું જ પરમાણુઓનું બનેલું છે.",
+      "text_markdown": "બધું જ પરમાણુઓનું બનેલું છે.",
+      "title": "પરમાણુઓ જ બધું છે",
+      "tts": {
+        "text": "બધું જ પરમાણુઓનું બનેલું છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-267",
+      "sentence_index": 2,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "પરમાણુઓમાં પ્રોટોન, ન્યુટ્રોન અને ઇલેક્ટ્રોન હોય છે.",
+      "text_markdown": "પરમાણુઓમાં પ્રોટોન, ન્યુટ્રોન અને ઇલેક્ટ્રોન હોય છે.",
+      "title": "પરમાણુઓ જ બધું છે",
+      "tts": {
+        "text": "પરમાણુઓમાં પ્રોટોન, ન્યુટ્રોન અને ઇલેક્ટ્રોન હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-268",
+      "sentence_index": 3,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "પ્રોટોનની સંખ્યા તત્વ નક્કી કરે છે.",
+      "text_markdown": "પ્રોટોનની સંખ્યા તત્વ નક્કી કરે છે.",
+      "title": "પરમાણુઓ જ બધું છે",
+      "tts": {
+        "text": "પ્રોટોનની સંખ્યા તત્વ નક્કી કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-269",
+      "sentence_index": 4,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "પરમાણુઓ અણુઓ બનાવવા માટે બંધાય છે.",
+      "text_markdown": "પરમાણુઓ અણુઓ બનાવવા માટે બંધાય છે.",
+      "title": "પરમાણુઓ જ બધું છે",
+      "tts": {
+        "text": "પરમાણુઓ અણુઓ બનાવવા માટે બંધાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-270",
+      "sentence_index": 5,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "પરમાણુઓ હંમેશા ગતિમાં હોય છે.",
+      "text_markdown": "પરમાણુઓ હંમેશા ગતિમાં હોય છે.",
+      "title": "પરમાણુઓ જ બધું છે",
+      "tts": {
+        "text": "પરમાણુઓ હંમેશા ગતિમાં હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-271",
+      "sentence_index": 6,
+      "paragraph_id": "p63",
+      "chapter": 8,
+      "text": "તારાઓએ એવા અણુઓ બનાવ્યા છે જે આપણી દુનિયા બનાવે છે.",
+      "text_markdown": "તારાઓએ એવા અણુઓ બનાવ્યા છે જે આપણી દુનિયા બનાવે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તારાઓએ એવા અણુઓ બનાવ્યા છે જે આપણી દુનિયા બનાવે છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-272",
+      "sentence_index": 0,
+      "paragraph_id": "p64",
+      "chapter": 8,
+      "text": "આ જ્ઞાન રસાયણશાસ્ત્ર, જીવવિજ્ઞાન, ભૌતિકશાસ્ત્ર અને દવાઓનો પાયો છે.",
+      "text_markdown": "આ જ્ઞાન રસાયણશાસ્ત્ર, જીવવિજ્ઞાન, ભૌતિકશાસ્ત્ર અને દવાઓનો પાયો છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "આ જ્ઞાન રસાયણશાસ્ત્ર, જીવવિજ્ઞાન, ભૌતિકશાસ્ત્ર અને દવાઓનો પાયો છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-273",
+      "sentence_index": 1,
+      "paragraph_id": "p64",
+      "chapter": 8,
+      "text": "વિજ્ઞાનનું દરેક ક્ષેત્ર અણુઓ સાથે જોડાયેલું છે.",
+      "text_markdown": "વિજ્ઞાનનું દરેક ક્ષેત્ર અણુઓ સાથે જોડાયેલું છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "વિજ્ઞાનનું દરેક ક્ષેત્ર અણુઓ સાથે જોડાયેલું છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-274",
+      "sentence_index": 0,
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "text": "જ્યારે ડૉક્ટર દવા લખે છે, ત્યારે તે દવા અણુઓની એક વિશિષ્ટ ગોઠવણી હોય છે જે તમારા શરીરમાં રહેલા અણુઓ સાથે ક્રિયાપ્રતિક્રિયા કરવા માટે બનાવવામાં આવી હોય છે.",
+      "text_markdown": "જ્યારે ડૉક્ટર દવા લખે છે, ત્યારે તે દવા અણુઓની એક વિશિષ્ટ ગોઠવણી હોય છે જે તમારા શરીરમાં રહેલા અણુઓ સાથે ક્રિયાપ્રતિક્રિયા કરવા માટે બનાવવામાં આવી હોય છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "જ્યારે ડૉક્ટર દવા લખે છે, ત્યારે તે દવા અણુઓની એક વિશિષ્ટ ગોઠવણી હોય છે જે તમારા શરીરમાં રહેલા અણુઓ સાથે ક્રિયાપ્રતિક્રિયા કરવા માટે બનાવવામાં આવી હોય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-275",
+      "sentence_index": 1,
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "text": "જ્યારે કોઈ ઇજનેર પુલ બનાવે છે, ત્યારે તે પુલની મજબૂતી સ્ટીલમાં રહેલા લોખંડના અણુઓ કેવી રીતે ગોઠવાયેલા છે તેના પર આધાર રાખે છે.",
+      "text_markdown": "જ્યારે કોઈ ઇજનેર પુલ બનાવે છે, ત્યારે તે પુલની મજબૂતી સ્ટીલમાં રહેલા લોખંડના અણુઓ કેવી રીતે ગોઠવાયેલા છે તેના પર આધાર રાખે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "જ્યારે કોઈ ઇજનેર પુલ બનાવે છે, ત્યારે તે પુલની મજબૂતી સ્ટીલમાં રહેલા લોખંડના અણુઓ કેવી રીતે ગોઠવાયેલા છે તેના પર આધાર રાખે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-276",
+      "sentence_index": 2,
+      "paragraph_id": "p65",
+      "chapter": 8,
+      "text": "જ્યારે ખેડૂત પાક ઉગાડે છે, ત્યારે પાક એટલા માટે ઉગે છે કારણ કે હવામાંથી કાર્બનના અણુઓ પાંદડાની અંદર પાણી અને સૂર્યપ્રકાશ સાથે ભળી જાય છે.",
+      "text_markdown": "જ્યારે ખેડૂત પાક ઉગાડે છે, ત્યારે પાક એટલા માટે ઉગે છે કારણ કે હવામાંથી કાર્બનના અણુઓ પાંદડાની અંદર પાણી અને સૂર્યપ્રકાશ સાથે ભળી જાય છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "જ્યારે ખેડૂત પાક ઉગાડે છે, ત્યારે પાક એટલા માટે ઉગે છે કારણ કે હવામાંથી કાર્બનના અણુઓ પાંદડાની અંદર પાણી અને સૂર્યપ્રકાશ સાથે ભળી જાય છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-277",
+      "sentence_index": 0,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "રસોઈ એ રસાયણશાસ્ત્ર છે.",
+      "text_markdown": "રસોઈ એ રસાયણશાસ્ત્ર છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "રસોઈ એ રસાયણશાસ્ત્ર છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-278",
+      "sentence_index": 1,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "જ્યારે તમે બ્રેડ શેકો છો, ત્યારે ગરમી કણકમાં રહેલા અણુઓને ફરીથી ગોઠવે છે.",
+      "text_markdown": "જ્યારે તમે બ્રેડ શેકો છો, ત્યારે ગરમી કણકમાં રહેલા અણુઓને ફરીથી ગોઠવે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "જ્યારે તમે બ્રેડ શેકો છો, ત્યારે ગરમી કણકમાં રહેલા અણુઓને ફરીથી ગોઠવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-279",
+      "sentence_index": 2,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "પ્રોટીન ખુલે છે.",
+      "text_markdown": "પ્રોટીન ખુલે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "પ્રોટીન ખુલે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-280",
+      "sentence_index": 3,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "શર્કરા તૂટી જાય છે અને ફરીથી જોડાય છે.",
+      "text_markdown": "શર્કરા તૂટી જાય છે અને ફરીથી જોડાય છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "શર્કરા તૂટી જાય છે અને ફરીથી જોડાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-281",
+      "sentence_index": 4,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "નવા અણુઓ બને છે જે પોપડાનો રંગ, રચના અને સ્વાદ બનાવે છે.",
+      "text_markdown": "નવા અણુઓ બને છે જે પોપડાનો રંગ, રચના અને સ્વાદ બનાવે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "નવા અણુઓ બને છે જે પોપડાનો રંગ, રચના અને સ્વાદ બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-282",
+      "sentence_index": 5,
+      "paragraph_id": "p66",
+      "chapter": 8,
+      "text": "દરેક રેસીપી એ અણુઓને ફરીથી ગોઠવવા માટેની સૂચનાઓનો સમૂહ છે.",
+      "text_markdown": "દરેક રેસીપી એ અણુઓને ફરીથી ગોઠવવા માટેની સૂચનાઓનો સમૂહ છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "દરેક રેસીપી એ અણુઓને ફરીથી ગોઠવવા માટેની સૂચનાઓનો સમૂહ છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-283",
+      "sentence_index": 0,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "શ્વાસ લેવો એ રસાયણશાસ્ત્ર છે.",
+      "text_markdown": "શ્વાસ લેવો એ રસાયણશાસ્ત્ર છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "શ્વાસ લેવો એ રસાયણશાસ્ત્ર છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-284",
+      "sentence_index": 1,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "તમે ઓક્સિજનના અણુઓ શ્વાસમાં લો છો.",
+      "text_markdown": "તમે ઓક્સિજનના અણુઓ શ્વાસમાં લો છો.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તમે ઓક્સિજનના અણુઓ શ્વાસમાં લો છો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-285",
+      "sentence_index": 2,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "તમારું લોહી તે અણુઓને તમારા કોષો સુધી પહોંચાડે છે.",
+      "text_markdown": "તમારું લોહી તે અણુઓને તમારા કોષો સુધી પહોંચાડે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તમારું લોહી તે અણુઓને તમારા કોષો સુધી પહોંચાડે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-286",
+      "sentence_index": 3,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "તમારા કોષોની અંદર, ઓક્સિજનના અણુઓ ખોરાકમાંથી કાર્બનના અણુઓ સાથે જોડાય છે.",
+      "text_markdown": "તમારા કોષોની અંદર, ઓક્સિજનના અણુઓ ખોરાકમાંથી કાર્બનના અણુઓ સાથે જોડાય છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તમારા કોષોની અંદર, ઓક્સિજનના અણુઓ ખોરાકમાંથી કાર્બનના અણુઓ સાથે જોડાય છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-287",
+      "sentence_index": 4,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "આ પ્રતિક્રિયા ઊર્જા મુક્ત કરે છે.",
+      "text_markdown": "આ પ્રતિક્રિયા ઊર્જા મુક્ત કરે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "આ પ્રતિક્રિયા ઊર્જા મુક્ત કરે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-288",
+      "sentence_index": 5,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "તમે કાર્બન અને ઓક્સિજનને કાર્બન ડાયોક્સાઇડ તરીકે બહાર કાઢો છો.",
+      "text_markdown": "તમે કાર્બન અને ઓક્સિજનને કાર્બન ડાયોક્સાઇડ તરીકે બહાર કાઢો છો.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તમે કાર્બન અને ઓક્સિજનને કાર્બન ડાયોક્સાઇડ તરીકે બહાર કાઢો છો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-289",
+      "sentence_index": 6,
+      "paragraph_id": "p67",
+      "chapter": 8,
+      "text": "દરેક શ્વાસ એક રાસાયણિક પ્રતિક્રિયા છે.",
+      "text_markdown": "દરેક શ્વાસ એક રાસાયણિક પ્રતિક્રિયા છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "દરેક શ્વાસ એક રાસાયણિક પ્રતિક્રિયા છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-290",
+      "sentence_index": 0,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "કાટ એ રસાયણશાસ્ત્ર છે.",
+      "text_markdown": "કાટ એ રસાયણશાસ્ત્ર છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "કાટ એ રસાયણશાસ્ત્ર છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-291",
+      "sentence_index": 1,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "ખીલાની સપાટી પરના લોખંડના અણુઓ હવામાં રહેલા ઓક્સિજનના અણુઓ સાથે પ્રતિક્રિયા આપે છે.",
+      "text_markdown": "ખીલાની સપાટી પરના લોખંડના અણુઓ હવામાં રહેલા ઓક્સિજનના અણુઓ સાથે પ્રતિક્રિયા આપે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "ખીલાની સપાટી પરના લોખંડના અણુઓ હવામાં રહેલા ઓક્સિજનના અણુઓ સાથે પ્રતિક્રિયા આપે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-292",
+      "sentence_index": 2,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "લોખંડ અને ઓક્સિજન જોડાઈને આયર્ન ઓક્સાઇડ નામનો નવો પદાર્થ બનાવે છે.",
+      "text_markdown": "લોખંડ અને ઓક્સિજન જોડાઈને આયર્ન ઓક્સાઇડ નામનો નવો પદાર્થ બનાવે છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "લોખંડ અને ઓક્સિજન જોડાઈને આયર્ન ઓક્સાઇડ નામનો નવો પદાર્થ બનાવે છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-293",
+      "sentence_index": 3,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "આયર્ન ઓક્સાઇડ એ લાલ-ભૂરા રંગનો પદાર્થ છે જેને આપણે કાટ કહીએ છીએ.",
+      "text_markdown": "આયર્ન ઓક્સાઇડ એ લાલ-ભૂરા રંગનો પદાર્થ છે જેને આપણે કાટ કહીએ છીએ.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "આયર્ન ઓક્સાઇડ એ લાલ-ભૂરા રંગનો પદાર્થ છે જેને આપણે કાટ કહીએ છીએ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-294",
+      "sentence_index": 4,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "લોખંડના અણુઓ હજુ પણ ત્યાં છે.",
+      "text_markdown": "લોખંડના અણુઓ હજુ પણ ત્યાં છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "લોખંડના અણુઓ હજુ પણ ત્યાં છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-295",
+      "sentence_index": 5,
+      "paragraph_id": "p68",
+      "chapter": 8,
+      "text": "તેઓ ફક્ત ઓક્સિજન સાથે જોડાયેલા છે.",
+      "text_markdown": "તેઓ ફક્ત ઓક્સિજન સાથે જોડાયેલા છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તેઓ ફક્ત ઓક્સિજન સાથે જોડાયેલા છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-296",
+      "sentence_index": 0,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "અણુઓ અમૂર્ત નથી.",
+      "text_markdown": "અણુઓ અમૂર્ત નથી.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "અણુઓ અમૂર્ત નથી.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-297",
+      "sentence_index": 1,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "તમે જે કંઈ સ્પર્શ કરો છો, સ્વાદ લો છો, જુઓ છો અને સૂંઘો છો તે દરેક વસ્તુની ભૌતિક વાસ્તવિકતા અણુઓ છે.",
+      "text_markdown": "તમે જે કંઈ સ્પર્શ કરો છો, સ્વાદ લો છો, જુઓ છો અને સૂંઘો છો તે દરેક વસ્તુની ભૌતિક વાસ્તવિકતા અણુઓ છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તમે જે કંઈ સ્પર્શ કરો છો, સ્વાદ લો છો, જુઓ છો અને સૂંઘો છો તે દરેક વસ્તુની ભૌતિક વાસ્તવિકતા અણુઓ છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-298",
+      "sentence_index": 2,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "તમે અણુઓને જેટલું વધુ સમજશો, તેટલું જ તમે દુનિયાને વધુ સમજશો.",
+      "text_markdown": "તમે અણુઓને જેટલું વધુ સમજશો, તેટલું જ તમે દુનિયાને વધુ સમજશો.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "તમે અણુઓને જેટલું વધુ સમજશો, તેટલું જ તમે દુનિયાને વધુ સમજશો.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-299",
+      "sentence_index": 3,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "આ તો માત્ર શરૂઆત છે.",
+      "text_markdown": "આ તો માત્ર શરૂઆત છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "આ તો માત્ર શરૂઆત છે.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-300",
+      "sentence_index": 4,
+      "paragraph_id": "p69",
+      "chapter": 8,
+      "text": "અન્વેષણ કરવા માટે ઘણું બધું છે.",
+      "text_markdown": "અન્વેષણ કરવા માટે ઘણું બધું છે.",
+      "title": "અણુઓ જ સર્વસ્વ છે",
+      "tts": {
+        "text": "અન્વેષણ કરવા માટે ઘણું બધું છે.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    }
+  ]
+}

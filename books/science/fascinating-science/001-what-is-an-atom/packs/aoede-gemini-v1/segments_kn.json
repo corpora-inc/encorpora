@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "kn",
+  "total_segments": 300,
+  "segments": [
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "id": "ch01-001",
+      "chapter": 1,
+      "text": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "text_markdown": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-002",
+      "chapter": 1,
+      "text": "ನಿಮ್ಮ ಸುತ್ತಲೂ ನೋಡಿ.",
+      "text_markdown": "ನಿಮ್ಮ ಸುತ್ತಲೂ ನೋಡಿ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ಸುತ್ತಲೂ ನೋಡಿ.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-003",
+      "chapter": 1,
+      "text": "ನೀವು ನೋಡುವ ಪ್ರತಿಯೊಂದೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ನೀವು ನೋಡುವ ಪ್ರತಿಯೊಂದೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನೀವು ನೋಡುವ ಪ್ರತಿಯೊಂದೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-004",
+      "chapter": 1,
+      "text": "ನೀವು ಉಸಿರಾಡುವ ಗಾಳಿಯು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ನೀವು ಉಸಿರಾಡುವ ಗಾಳಿಯು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನೀವು ಉಸಿರಾಡುವ ಗಾಳಿಯು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-005",
+      "chapter": 1,
+      "text": "ನೀವು ಕುಡಿಯುವ ನೀರು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ನೀವು ಕುಡಿಯುವ ನೀರು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನೀವು ಕುಡಿಯುವ ನೀರು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-006",
+      "chapter": 1,
+      "text": "ನಿಮ್ಮ ದೇಹವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ನಿಮ್ಮ ದೇಹವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ದೇಹವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-007",
+      "chapter": 1,
+      "text": "ನಿಮ್ಮ ಪಾದಗಳ ಕೆಳಗಿರುವ ನೆಲವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ನಿಮ್ಮ ಪಾದಗಳ ಕೆಳಗಿರುವ ನೆಲವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ಪಾದಗಳ ಕೆಳಗಿರುವ ನೆಲವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p3",
+      "id": "ch01-008",
+      "chapter": 1,
+      "text": "ಅಣುವು ರಾಸಾಯನಿಕ ಗುರುತನ್ನು ಹೊಂದಿರುವ ವಸ್ತುವಿನ ಚಿಕ್ಕ ಭಾಗವಾಗಿದೆ.",
+      "text_markdown": "ಅಣುವು ರಾಸಾಯನಿಕ ಗುರುತನ್ನು ಹೊಂದಿರುವ ವಸ್ತುವಿನ ಚಿಕ್ಕ ಭಾಗವಾಗಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅಣುವು ರಾಸಾಯನಿಕ ಗುರುತನ್ನು ಹೊಂದಿರುವ ವಸ್ತುವಿನ ಚಿಕ್ಕ ಭಾಗವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p3",
+      "id": "ch01-009",
+      "chapter": 1,
+      "text": "ನಿಮ್ಮ ಕಣ್ಣುಗಳಿಂದ ಒಂದೇ ಅಣುವನ್ನು ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "text_markdown": "ನಿಮ್ಮ ಕಣ್ಣುಗಳಿಂದ ಒಂದೇ ಅಣುವನ್ನು ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ಕಣ್ಣುಗಳಿಂದ ಒಂದೇ ಅಣುವನ್ನು ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p3",
+      "id": "ch01-010",
+      "chapter": 1,
+      "text": "ಸಾಮಾನ್ಯ ಸೂಕ್ಷ್ಮದರ್ಶಕದಿಂದಲೂ ಒಂದೇ ಅಣುವನ್ನು ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "text_markdown": "ಸಾಮಾನ್ಯ ಸೂಕ್ಷ್ಮದರ್ಶಕದಿಂದಲೂ ಒಂದೇ ಅಣುವನ್ನು ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಸಾಮಾನ್ಯ ಸೂಕ್ಷ್ಮದರ್ಶಕದಿಂದಲೂ ಒಂದೇ ಅಣುವನ್ನು ನೋಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p3",
+      "id": "ch01-011",
+      "chapter": 1,
+      "text": "ಅಣುಗಳು ಅಷ್ಟು ಚಿಕ್ಕದಾಗಿವೆ.",
+      "text_markdown": "ಅಣುಗಳು ಅಷ್ಟು ಚಿಕ್ಕದಾಗಿವೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅಣುಗಳು ಅಷ್ಟು ಚಿಕ್ಕದಾಗಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p4",
+      "id": "ch01-012",
+      "chapter": 1,
+      "text": "ಒಂದು ಮರಳಿನ ಕಣದಲ್ಲಿ ಸುಮಾರು ಐವತ್ತು ಕ್ವಿಂಟಿಲಿಯನ್ ಅಣುಗಳಿವೆ.",
+      "text_markdown": "ಒಂದು ಮರಳಿನ ಕಣದಲ್ಲಿ ಸುಮಾರು ಐವತ್ತು ಕ್ವಿಂಟಿಲಿಯನ್ ಅಣುಗಳಿವೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಒಂದು ಮರಳಿನ ಕಣದಲ್ಲಿ ಸುಮಾರು ಐವತ್ತು ಕ್ವಿಂಟಿಲಿಯನ್ ಅಣುಗಳಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p4",
+      "id": "ch01-013",
+      "chapter": 1,
+      "text": "ಆ ಸಂಖ್ಯೆಯು ಐವತ್ತು ಮತ್ತು ಅದರ ನಂತರ ಹದಿನೆಂಟು ಸೊನ್ನೆಗಳು.",
+      "text_markdown": "ಆ ಸಂಖ್ಯೆಯು ಐವತ್ತು ಮತ್ತು ಅದರ ನಂತರ ಹದಿನೆಂಟು ಸೊನ್ನೆಗಳು.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಆ ಸಂಖ್ಯೆಯು ಐವತ್ತು ಮತ್ತು ಅದರ ನಂತರ ಹದಿನೆಂಟು ಸೊನ್ನೆಗಳು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p4",
+      "id": "ch01-014",
+      "chapter": 1,
+      "text": "ಒಂದು ಮರಳಿನ ಕಣದಲ್ಲಿ, ಒಂದು ಕಡಲತೀರದಲ್ಲಿರುವ ಮರಳಿನ ಕಣಗಳಿಗಿಂತ ಹೆಚ್ಚು ಅಣುಗಳಿವೆ.",
+      "text_markdown": "ಒಂದು ಮರಳಿನ ಕಣದಲ್ಲಿ, ಒಂದು ಕಡಲತೀರದಲ್ಲಿರುವ ಮರಳಿನ ಕಣಗಳಿಗಿಂತ ಹೆಚ್ಚು ಅಣುಗಳಿವೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಒಂದು ಮರಳಿನ ಕಣವೇ ಕಡಲತೀರದ ಮರಳಿಗಿಂತ ಹೆಚ್ಚು ಅಣುಗಳ ಭಂಡಾರ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p5",
+      "id": "ch01-015",
+      "chapter": 1,
+      "text": "ಅಣುಗಳು ಭೌತಿಕ ಪ್ರಪಂಚದಲ್ಲಿರುವ ಎಲ್ಲದರ ಮೂಲ ಘಟಕಗಳಾಗಿವೆ.",
+      "text_markdown": "ಅಣುಗಳು ಭೌತಿಕ ಪ್ರಪಂಚದಲ್ಲಿರುವ ಎಲ್ಲದರ ಮೂಲ ಘಟಕಗಳಾಗಿವೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅಣುಗಳು ಭೌತಿಕ ಪ್ರಪಂಚದಲ್ಲಿರುವ ಎಲ್ಲದರ ಮೂಲ ಘಟಕಗಳಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p5",
+      "id": "ch01-016",
+      "chapter": 1,
+      "text": "ಗೋಡೆಯು ಇಟ್ಟಿಗೆಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ಗೋಡೆಯು ಇಟ್ಟಿಗೆಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಗೋಡೆಯು ಇಟ್ಟಿಗೆಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p5",
+      "id": "ch01-017",
+      "chapter": 1,
+      "text": "ಒಂದು ವಾಕ್ಯವು ಪದಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ಒಂದು ವಾಕ್ಯವು ಪದಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಒಂದು ವಾಕ್ಯವು ಪದಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p5",
+      "id": "ch01-018",
+      "chapter": 1,
+      "text": "ವಿಶ್ವವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "ವಿಶ್ವವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ವಿಶ್ವವು ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p6",
+      "id": "ch01-019",
+      "chapter": 1,
+      "text": "ಅಣು ಎಂಬ ಪದವು ಪ್ರಾಚೀನ ಗ್ರೀಕ್‌ನಿಂದ ಬಂದಿದೆ.",
+      "text_markdown": "ಅಣು ಎಂಬ ಪದವು ಪ್ರಾಚೀನ ಗ್ರೀಕ್‌ನಿಂದ ಬಂದಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅಣು ಎಂಬ ಪದವು ಪ್ರಾಚೀನ ಗ್ರೀಕ್‌ನಿಂದ ಬಂದಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p6",
+      "id": "ch01-020",
+      "chapter": 1,
+      "text": "ಗ್ರೀಕ್ ಪದ 'ಅಟೋಮೋಸ್' ಎಂದರೆ 'ಕತ್ತರಿಸಲಾಗದ'.",
+      "text_markdown": "ಗ್ರೀಕ್ ಪದ 'ಅಟೋಮೋಸ್' ಎಂದರೆ 'ಕತ್ತರಿಸಲಾಗದ'.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಗ್ರೀಕ್ ಪದ 'ಅಟೋಮೋಸ್' ಎಂದರೆ 'ಕತ್ತರಿಸಲಾಗದ'.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p6",
+      "id": "ch01-021",
+      "chapter": 1,
+      "text": "ಪ್ರಾಚೀನ ಗ್ರೀಕ್ ತತ್ವಜ್ಞಾನಿಗಳು ಅಣುಗಳು ವಸ್ತುವಿನ ಅತಿ ಚಿಕ್ಕ ಭಾಗಗಳೆಂದು ಭಾವಿಸಿದ್ದರು.",
+      "text_markdown": "ಪ್ರಾಚೀನ ಗ್ರೀಕ್ ತತ್ವಜ್ಞಾನಿಗಳು ಅಣುಗಳು ವಸ್ತುವಿನ ಅತಿ ಚಿಕ್ಕ ಭಾಗಗಳೆಂದು ಭಾವಿಸಿದ್ದರು.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಪ್ರಾಚೀನ ಗ್ರೀಕ್ ತತ್ವಜ್ಞಾನಿಗಳು ಅಣುಗಳು ವಸ್ತುವಿನ ಅತಿ ಚಿಕ್ಕ ಭಾಗಗಳೆಂದು ಭಾವಿಸಿದ್ದರು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p6",
+      "id": "ch01-022",
+      "chapter": 1,
+      "text": "ಅವರು ಸರಿ ಎಂದು ಹೇಳಬಹುದು.",
+      "text_markdown": "ಅವರು ಸರಿ ಎಂದು ಹೇಳಬಹುದು.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅವರು ಸರಿ ಎಂದು ಹೇಳಬಹುದು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p6",
+      "id": "ch01-023",
+      "chapter": 1,
+      "text": "ಅಣುಗಳು ನಿಜವಾಗಿಯೂ ಚಿಕ್ಕ ಕಣಗಳಲ್ಲ, ಆದರೆ ಅವು ತಮ್ಮ ರಾಸಾಯನಿಕ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳುವ ಚಿಕ್ಕ ಘಟಕಗಳಾಗಿವೆ.",
+      "text_markdown": "ಅಣುಗಳು ನಿಜವಾಗಿಯೂ ಚಿಕ್ಕ ಕಣಗಳಲ್ಲ, ಆದರೆ ಅವು ತಮ್ಮ ರಾಸಾಯನಿಕ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳುವ ಚಿಕ್ಕ ಘಟಕಗಳಾಗಿವೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅಣುಗಳು ನಿಜವಾಗಿಯೂ ಚಿಕ್ಕ ಕಣಗಳಲ್ಲ, ಆದರೆ ಅವು ತಮ್ಮ ರಾಸಾಯನಿಕ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಉಳಿಸಿಕೊಳ್ಳುವ ಚಿಕ್ಕ ಘಟಕಗಳಾಗಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p7",
+      "id": "ch01-024",
+      "chapter": 1,
+      "text": "ಅಣುಗಳು ನಂಬಲಾಗದಷ್ಟು ಬಾಳಿಕೆ ಬರುವವು.",
+      "text_markdown": "ಅಣುಗಳು ನಂಬಲಾಗದಷ್ಟು ಬಾಳಿಕೆ ಬರುವವು.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅಣುಗಳು ನಂಬಲಾಗದಷ್ಟು ಬಾಳಿಕೆ ಬರುವವು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p7",
+      "id": "ch01-025",
+      "chapter": 1,
+      "text": "ನಿಮ್ಮ ದೇಹದಲ್ಲಿರುವ ಅಣುಗಳು ಶತಕೋಟಿ ವರ್ಷಗಳಷ್ಟು ಹಳೆಯವು.",
+      "text_markdown": "ನಿಮ್ಮ ದೇಹದಲ್ಲಿರುವ ಅಣುಗಳು ಶತಕೋಟಿ ವರ್ಷಗಳಷ್ಟು ಹಳೆಯವು.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ದೇಹದಲ್ಲಿರುವ ಅಣುಗಳು ಶತಕೋಟಿ ವರ್ಷಗಳಷ್ಟು ಹಳೆಯವು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p7",
+      "id": "ch01-026",
+      "chapter": 1,
+      "text": "ನೀವು ಇಂದು ಕುಡಿದ ನೀರಿನಲ್ಲಿರುವ ಕೆಲವು ಹೈಡ್ರೋಜನ್ ಅಣುಗಳು ಬಿಗ್ ಬ್ಯಾಂಗ್ ನಂತರದ ಮೊದಲ ನಿಮಿಷಗಳಲ್ಲಿ ಸೃಷ್ಟಿಯಾದವು.",
+      "text_markdown": "ನೀವು ಇಂದು ಕುಡಿದ ನೀರಿನಲ್ಲಿರುವ ಕೆಲವು ಹೈಡ್ರೋಜನ್ ಅಣುಗಳು ಬಿಗ್ ಬ್ಯಾಂಗ್ ನಂತರದ ಮೊದಲ ನಿಮಿಷಗಳಲ್ಲಿ ಸೃಷ್ಟಿಯಾದವು.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನೀವು ಇಂದು ಕುಡಿದ ನೀರಿನಲ್ಲಿರುವ ಕೆಲವು ಹೈಡ್ರೋಜನ್ ಅಣುಗಳು ಬಿಗ್ ಬ್ಯಾಂಗ್ ನಂತರದ ಮೊದಲ ನಿಮಿಷಗಳಲ್ಲಿ ಸೃಷ್ಟಿಯಾದವು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p7",
+      "id": "ch01-027",
+      "chapter": 1,
+      "text": "ನೀವು ಪ್ರಾಚೀನ ವಸ್ತುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದ್ದೀರಿ.",
+      "text_markdown": "ನೀವು ಪ್ರಾಚೀನ ವಸ್ತುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದ್ದೀರಿ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ನೀವು ಪ್ರಾಚೀನ ವಸ್ತುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದ್ದೀರಿ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-028",
+      "chapter": 1,
+      "text": "ಸಾಮಾನ್ಯ ಜೀವನದಲ್ಲಿ ಅಣುಗಳು ಎಂದಿಗೂ ಸೃಷ್ಟಿಯಾಗುವುದಿಲ್ಲ ಅಥವಾ ನಾಶವಾಗುವುದಿಲ್ಲ.",
+      "text_markdown": "ಸಾಮಾನ್ಯ ಜೀವನದಲ್ಲಿ ಅಣುಗಳು ಎಂದಿಗೂ ಸೃಷ್ಟಿಯಾಗುವುದಿಲ್ಲ ಅಥವಾ ನಾಶವಾಗುವುದಿಲ್ಲ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಸಾಮಾನ್ಯ ಜೀವನದಲ್ಲಿ ಅಣುಗಳು ಎಂದಿಗೂ ಸೃಷ್ಟಿಯಾಗುವುದಿಲ್ಲ ಅಥವಾ ನಾಶವಾಗುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-029",
+      "chapter": 1,
+      "text": "ಅವು ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ.",
+      "text_markdown": "ಅವು ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅವು ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-030",
+      "chapter": 1,
+      "text": "ಮರ ಉರಿದಾಗ, ಅಣುಗಳು ಕಣ್ಮರೆಯಾಗುವುದಿಲ್ಲ.",
+      "text_markdown": "ಮರ ಉರಿದಾಗ, ಅಣುಗಳು ಕಣ್ಮರೆಯಾಗುವುದಿಲ್ಲ.",
+      "title": "ಎಲ್ಲವೂ ಅಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಮರ ಉರಿದಾಗ, ಅಣುಗಳು ಕಣ್ಮರೆಯಾಗುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-031",
+      "chapter": 1,
+      "text": "ಅವು ಹೊಗೆ, ಬೂದಿ ಮತ್ತು ಅನಿಲವಾಗಿ ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ.",
+      "text_markdown": "ಅವು ಹೊಗೆ, ಬೂದಿ ಮತ್ತು ಅನಿಲವಾಗಿ ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ.",
+      "title": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅವು ಹೊಗೆ, ಬೂದಿ ಮತ್ತು ಅನಿಲವಾಗಿ ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-032",
+      "chapter": 1,
+      "text": "ಮಂಜುಗಡ್ಡೆ ಕರಗಿದಾಗ, ಪರಮಾಣುಗಳು ಹಾಗೆಯೇ ಇರುತ್ತವೆ.",
+      "text_markdown": "ಮಂಜುಗಡ್ಡೆ ಕರಗಿದಾಗ, ಪರಮಾಣುಗಳು ಹಾಗೆಯೇ ಇರುತ್ತವೆ.",
+      "title": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಮಂಜುಗಡ್ಡೆ ಕರಗಿದಾಗ, ಪರಮಾಣುಗಳು ಹಾಗೆಯೇ ಇರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-033",
+      "chapter": 1,
+      "text": "ಅವುಗಳ ಜೋಡಣೆ ಮಾತ್ರ ಬದಲಾಗುತ್ತದೆ.",
+      "text_markdown": "ಅವುಗಳ ಜೋಡಣೆ ಮಾತ್ರ ಬದಲಾಗುತ್ತದೆ.",
+      "title": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಅವುಗಳ ಜೋಡಣೆ ಮಾತ್ರ ಬದಲಾಗುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p9",
+      "id": "ch01-034",
+      "chapter": 1,
+      "text": "ಪರಮಾಣುಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು ರಸಾಯನಶಾಸ್ತ್ರದ ಅಡಿಪಾಯವಾಗಿದೆ.",
+      "text_markdown": "ಪರಮಾಣುಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು ರಸಾಯನಶಾಸ್ತ್ರದ ಅಡಿಪಾಯವಾಗಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು ರಸಾಯನಶಾಸ್ತ್ರದ ಅಡಿಪಾಯವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p9",
+      "id": "ch01-035",
+      "chapter": 1,
+      "text": "ರಸಾಯನಶಾಸ್ತ್ರವು ಪರಮಾಣುಗಳು ಹೇಗೆ ಸಂಯೋಜಿಸುತ್ತವೆ, ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ ಮತ್ತು ಪರಸ್ಪರ ವರ್ತಿಸುತ್ತವೆ ಎಂಬುದರ ವಿಜ್ಞಾನವಾಗಿದೆ.",
+      "text_markdown": "ರಸಾಯನಶಾಸ್ತ್ರವು ಪರಮಾಣುಗಳು ಹೇಗೆ ಸಂಯೋಜಿಸುತ್ತವೆ, ಮರುಜೋಡಣೆಯಾಗುತ್ತವೆ ಮತ್ತು ಪರಸ್ಪರ ವರ್ತಿಸುತ್ತವೆ ಎಂಬುದರ ವಿಜ್ಞಾನವಾಗಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ರಸಾಯನಶಾಸ್ತ್ರವು ಪರಮಾಣುಗಳ ಸಂಯೋಜನೆ, ಮರುಜೋಡಣೆ ಮತ್ತು ಪರಸ್ಪರ ಕ್ರಿಯೆಯ ವಿಜ್ಞಾನ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p9",
+      "id": "ch01-036",
+      "chapter": 1,
+      "text": "ಭೌತಿಕ ಜಗತ್ತಿನಲ್ಲಿ ನಡೆಯುವ ಪ್ರತಿಯೊಂದು ವಿಷಯವೂ ಪರಮಾಣುಗಳು ಮತ್ತು ಅವುಗಳ ಕಾರ್ಯಗಳಿಗೆ ಸಂಬಂಧಿಸಿದೆ.",
+      "text_markdown": "ಭೌತಿಕ ಜಗತ್ತಿನಲ್ಲಿ ನಡೆಯುವ ಪ್ರತಿಯೊಂದು ವಿಷಯವೂ ಪರಮಾಣುಗಳು ಮತ್ತು ಅವುಗಳ ಕಾರ್ಯಗಳಿಗೆ ಸಂಬಂಧಿಸಿದೆ.",
+      "title": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ",
+      "tts": {
+        "text": "ಭೌತಿಕ ಜಗತ್ತಿನಲ್ಲಿ ನಡೆಯುವ ಪ್ರತಿಯೊಂದು ವಿಷಯವೂ ಪರಮಾಣುಗಳು ಮತ್ತು ಅವುಗಳ ಕಾರ್ಯಗಳಿಗೆ ಸಂಬಂಧಿಸಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p10",
+      "heading_level": 1,
+      "id": "ch02-037",
+      "chapter": 2,
+      "text": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "text_markdown": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p11",
+      "id": "ch02-038",
+      "chapter": 2,
+      "text": "ಒಂದು ಪರಮಾಣು ತನ್ನೊಳಗೆ ಮೂರು ವಿಧದ ಕಣಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "text_markdown": "ಒಂದು ಪರಮಾಣು ತನ್ನೊಳಗೆ ಮೂರು ವಿಧದ ಕಣಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಒಂದು ಪರಮಾಣು ತನ್ನೊಳಗೆ ಮೂರು ವಿಧದ ಕಣಗಳನ್ನು ಹೊಂದಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p11",
+      "id": "ch02-039",
+      "chapter": 2,
+      "text": "ಪ್ರೋಟಾನ್‌ಗಳು.",
+      "text_markdown": "ಪ್ರೋಟಾನ್‌ಗಳು.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಪ್ರೋಟಾನ್‌ಗಳು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p11",
+      "id": "ch02-040",
+      "chapter": 2,
+      "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು.",
+      "text_markdown": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p11",
+      "id": "ch02-041",
+      "chapter": 2,
+      "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು.",
+      "text_markdown": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p11",
+      "id": "ch02-042",
+      "chapter": 2,
+      "text": "ಈ ಮೂರು ಕಣಗಳು ವಿಶ್ವದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ಪರಮಾಣುವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "text_markdown": "ಈ ಮೂರು ಕಣಗಳು ವಿಶ್ವದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ಪರಮಾಣುವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಈ ಮೂರು ಕಣಗಳು ವಿಶ್ವದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ಪರಮಾಣುವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p12",
+      "id": "ch02-043",
+      "chapter": 2,
+      "text": "ಪರಮಾಣುವಿನ ಕೇಂದ್ರವನ್ನು ನ್ಯೂಕ್ಲಿಯಸ್ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "text_markdown": "ಪರಮಾಣುವಿನ ಕೇಂದ್ರವನ್ನು ನ್ಯೂಕ್ಲಿಯಸ್ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಪರಮಾಣುವಿನ ಮಧ್ಯದ ಭಾಗವೇ ನ್ಯೂಕ್ಲಿಯಸ್.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p12",
+      "id": "ch02-044",
+      "chapter": 2,
+      "text": "ನ್ಯೂಕ್ಲಿಯಸ್ ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿದೆ.",
+      "text_markdown": "ನ್ಯೂಕ್ಲಿಯಸ್ ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ನ್ಯೂಕ್ಲಿಯಸ್ ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳನ್ನು ಒಳಗೊಂಡಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p12",
+      "id": "ch02-045",
+      "chapter": 2,
+      "text": "ಇಡೀ ಪರಮಾಣುವಿಗೆ ಹೋಲಿಸಿದರೆ ನ್ಯೂಕ್ಲಿಯಸ್ ಚಿಕ್ಕದಾಗಿದೆ.",
+      "text_markdown": "ಇಡೀ ಪರಮಾಣುವಿಗೆ ಹೋಲಿಸಿದರೆ ನ್ಯೂಕ್ಲಿಯಸ್ ಚಿಕ್ಕದಾಗಿದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಇಡೀ ಪರಮಾಣುವಿಗೆ ಹೋಲಿಸಿದರೆ ನ್ಯೂಕ್ಲಿಯಸ್ ಚಿಕ್ಕದಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p12",
+      "id": "ch02-046",
+      "chapter": 2,
+      "text": "ಪರಮಾಣು ಒಂದು ಫುಟ್‌ಬಾಲ್ ಕ್ರೀಡಾಂಗಣದ ಗಾತ್ರದಲ್ಲಿದ್ದರೆ, ನ್ಯೂಕ್ಲಿಯಸ್ ಐವತ್ತು-ಯಾರ್ಡ್ ರೇಖೆಯ ಮೇಲಿನ ಒಂದು ಗೋಲಿಯ ಗಾತ್ರದಲ್ಲಿರುತ್ತದೆ.",
+      "text_markdown": "ಪರಮಾಣು ಒಂದು ಫುಟ್‌ಬಾಲ್ ಕ್ರೀಡಾಂಗಣದ ಗಾತ್ರದಲ್ಲಿದ್ದರೆ, ನ್ಯೂಕ್ಲಿಯಸ್ ಐವತ್ತು-ಯಾರ್ಡ್ ರೇಖೆಯ ಮೇಲಿನ ಒಂದು ಗೋಲಿಯ ಗಾತ್ರದಲ್ಲಿರುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಪರಮಾಣು ಫುಟ್‌ಬಾಲ್ ಕ್ರೀಡಾಂಗಣದಷ್ಟು ದೊಡ್ಡದಿದ್ದರೆ, ಅದರ ನ್ಯೂಕ್ಲಿಯಸ್ ಮಧ್ಯರೇಖೆಯ ಮೇಲಿನ ಸಣ್ಣ ಗೋಳ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-047",
+      "chapter": 2,
+      "text": "ಪ್ರೋಟಾನ್‌ಗಳು ಧನಾತ್ಮಕ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+      "text_markdown": "ಪ್ರೋಟಾನ್‌ಗಳು ಧನಾತ್ಮಕ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಪ್ರೋಟಾನ್‌ಗಳು ಧನಾತ್ಮಕ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-048",
+      "chapter": 2,
+      "text": "ಪ್ರತಿಯೊಂದು ಪ್ರೋಟಾನ್ ಒಂದೇ ಪ್ರಮಾಣದ ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "ಪ್ರತಿಯೊಂದು ಪ್ರೋಟಾನ್ ಒಂದೇ ಪ್ರಮಾಣದ ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು ಪ್ರೋಟಾನ್ ಒಂದೇ ಪ್ರಮಾಣದ ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-049",
+      "chapter": 2,
+      "text": "ಒಂದು ಪರಮಾಣುವಿನಲ್ಲಿರುವ ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಆ ಪರಮಾಣು ಯಾವ ಧಾತು ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ.",
+      "text_markdown": "ಒಂದು ಪರಮಾಣುವಿನಲ್ಲಿರುವ ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಆ ಪರಮಾಣು ಯಾವ ಧಾತು ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಒಂದು ಪರಮಾಣುವಿನಲ್ಲಿರುವ ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಆ ಪರಮಾಣು ಯಾವ ಧಾತು ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-050",
+      "chapter": 2,
+      "text": "ಒಂದು ಪ್ರೋಟಾನ್ ಎಂದರೆ ಹೈಡ್ರೋಜನ್.",
+      "text_markdown": "ಒಂದು ಪ್ರೋಟಾನ್ ಎಂದರೆ ಹೈಡ್ರೋಜನ್.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಒಂದು ಪ್ರೋಟಾನ್ ಎಂದರೆ ಹೈಡ್ರೋಜನ್.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-051",
+      "chapter": 2,
+      "text": "ಆರು ಪ್ರೋಟಾನ್‌ಗಳು ಎಂದರೆ ಕಾರ್ಬನ್.",
+      "text_markdown": "ಆರು ಪ್ರೋಟಾನ್‌ಗಳು ಎಂದರೆ ಕಾರ್ಬನ್.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಆರು ಪ್ರೋಟಾನ್‌ಗಳು ಎಂದರೆ ಕಾರ್ಬನ್.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-052",
+      "chapter": 2,
+      "text": "ಇಪ್ಪತ್ತಾರು ಪ್ರೋಟಾನ್‌ಗಳು ಎಂದರೆ ಕಬ್ಬಿಣ.",
+      "text_markdown": "ಇಪ್ಪತ್ತಾರು ಪ್ರೋಟಾನ್‌ಗಳು ಎಂದರೆ ಕಬ್ಬಿಣ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಇಪ್ಪತ್ತಾರು ಪ್ರೋಟಾನ್‌ಗಳು ಎಂದರೆ ಕಬ್ಬಿಣ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-053",
+      "chapter": 2,
+      "text": "ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಒಂದು ಪರಮಾಣುವಿನ ಬಗ್ಗೆ ಅತ್ಯಂತ ಪ್ರಮುಖವಾದ ಸಂಗತಿಯಾಗಿದೆ.",
+      "text_markdown": "ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಒಂದು ಪರಮಾಣುವಿನ ಬಗ್ಗೆ ಅತ್ಯಂತ ಪ್ರಮುಖವಾದ ಸಂಗತಿಯಾಗಿದೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಒಂದು ಪರಮಾಣುವಿನ ಬಗ್ಗೆ ಅತ್ಯಂತ ಪ್ರಮುಖವಾದ ಸಂಗತಿಯಾಗಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p14",
+      "id": "ch02-054",
+      "chapter": 2,
+      "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಯಾವುದೇ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದಿಲ್ಲ.",
+      "text_markdown": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಯಾವುದೇ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದಿಲ್ಲ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಯಾವುದೇ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p14",
+      "id": "ch02-055",
+      "chapter": 2,
+      "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ತಟಸ್ಥವಾಗಿವೆ.",
+      "text_markdown": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ತಟಸ್ಥವಾಗಿವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ತಟಸ್ಥವಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p14",
+      "id": "ch02-056",
+      "chapter": 2,
+      "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್‌ನಲ್ಲಿ ಪ್ರೋಟಾನ್‌ಗಳ ಪಕ್ಕದಲ್ಲಿ ಇರುತ್ತವೆ.",
+      "text_markdown": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್‌ನಲ್ಲಿ ಪ್ರೋಟಾನ್‌ಗಳ ಪಕ್ಕದಲ್ಲಿ ಇರುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್‌ನಲ್ಲಿ ಪ್ರೋಟಾನ್‌ಗಳ ಪಕ್ಕದಲ್ಲಿ ಇರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p14",
+      "id": "ch02-057",
+      "chapter": 2,
+      "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್ ಅನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡಲು ಸಹಾಯ ಮಾಡುತ್ತವೆ.",
+      "text_markdown": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್ ಅನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡಲು ಸಹಾಯ ಮಾಡುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್ ಅನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡಲು ಸಹಾಯ ಮಾಡುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p14",
+      "id": "ch02-058",
+      "chapter": 2,
+      "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳಿಲ್ಲದೆ, ಪ್ರೋಟಾನ್‌ಗಳು ಒಂದೇ ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದರಿಂದ ಪರಸ್ಪರ ದೂರ ತಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "ನ್ಯೂಟ್ರಾನ್‌ಗಳಿಲ್ಲದೆ, ಪ್ರೋಟಾನ್‌ಗಳು ಒಂದೇ ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದರಿಂದ ಪರಸ್ಪರ ದೂರ ತಳ್ಳುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ನ್ಯೂಟ್ರಾನ್‌ಗಳಿಲ್ಲದೆ, ಪ್ರೋಟಾನ್‌ಗಳು ಒಂದೇ ಧನಾತ್ಮಕ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದರಿಂದ ಪರಸ್ಪರ ದೂರ ತಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p15",
+      "id": "ch02-059",
+      "chapter": 2,
+      "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಋಣಾತ್ಮಕ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+      "text_markdown": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಋಣಾತ್ಮಕ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಋಣಾತ್ಮಕ ವಿದ್ಯುತ್ ಆವೇಶವನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p15",
+      "id": "ch02-060",
+      "chapter": 2,
+      "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್ ಸುತ್ತಲೂ ಮೋಡದಂತೆ ಚಲಿಸುತ್ತವೆ.",
+      "text_markdown": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್ ಸುತ್ತಲೂ ಮೋಡದಂತೆ ಚಲಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುವಿನ ಒಳಗೆ",
+      "tts": {
+        "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ನ್ಯೂಕ್ಲಿಯಸ್ ಸುತ್ತಲೂ ಮೋಡದಂತೆ ಚಲಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p15",
+      "id": "ch02-061",
+      "chapter": 2,
+      "text": "ಅವು ಸೂರ್ಯನ ಸುತ್ತ ಗ್ರಹಗಳಂತೆ ಪರಿಭ್ರಮಿಸುವುದಿಲ್ಲ.",
+      "text_markdown": "They do not orbit like planets around a sun.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಅವು ಸೂರ್ಯನ ಸುತ್ತ ಗ್ರಹಗಳಂತೆ ಪರಿಭ್ರಮಿಸುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p15",
+      "id": "ch02-062",
+      "chapter": 2,
+      "text": "ಅವು ನ್ಯೂಕ್ಲಿಯಸ್ ಸುತ್ತ ಸಂಭವನೀಯತೆಯ ಅಸ್ಪಷ್ಟ ಪ್ರದೇಶದಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿವೆ.",
+      "text_markdown": "They exist in a fuzzy region of probability around the nucleus.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಅವು ನ್ಯೂಕ್ಲಿಯಸ್ ಸುತ್ತ ಸಂಭವನೀಯತೆಯ ಅಸ್ಪಷ್ಟ ಪ್ರದೇಶದಲ್ಲಿ ಅಸ್ತಿತ್ವದಲ್ಲಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p15",
+      "id": "ch02-063",
+      "chapter": 2,
+      "text": "ಎಲೆಕ್ಟ್ರಾನ್ ಮೋಡವು ಯಾವುದೇ ಕ್ಷಣದಲ್ಲಿ ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ನೀವು ಕಂಡುಕೊಳ್ಳುವ ಸಾಧ್ಯತೆಯಿರುವ ಸ್ಥಳವಾಗಿದೆ.",
+      "text_markdown": "The electron cloud is where you are likely to find an electron at any given moment.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಎಲೆಕ್ಟ್ರಾನ್ ಮೋಡವು ಯಾವುದೇ ಕ್ಷಣದಲ್ಲಿ ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ನೀವು ಕಂಡುಕೊಳ್ಳುವ ಸಾಧ್ಯತೆಯಿರುವ ಸ್ಥಳವಾಗಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p16",
+      "id": "ch02-064",
+      "chapter": 2,
+      "text": "ಪ್ರೋಟಾನ್ ಅಥವಾ ನ್ಯೂಟ್ರಾನ್‌ಗೆ ಹೋಲಿಸಿದರೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗೆ ಬಹುತೇಕ ದ್ರವ್ಯರಾಶಿ ಇರುವುದಿಲ್ಲ.",
+      "text_markdown": "An electron has almost no mass compared to a proton or neutron.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಪ್ರೋಟಾನ್ ಅಥವಾ ನ್ಯೂಟ್ರಾನ್‌ಗೆ ಹೋಲಿಸಿದರೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗೆ ಬಹುತೇಕ ದ್ರವ್ಯರಾಶಿ ಇರುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p16",
+      "id": "ch02-065",
+      "chapter": 2,
+      "text": "ಒಂದು ಪ್ರೋಟಾನ್ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಿಂತ ಸುಮಾರು 1,836 ಪಟ್ಟು ಭಾರವಾಗಿರುತ್ತದೆ.",
+      "text_markdown": "A proton is about 1,836 times heavier than an electron.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಒಂದು ಪ್ರೋಟಾನ್ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಿಂತ ಸುಮಾರು ಒಂದು ಸಾವಿರದ ಎಂಟು ನೂರ ಮೂವತ್ತಾರು ಪಟ್ಟು ಭಾರವಾಗಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p16",
+      "id": "ch02-066",
+      "chapter": 2,
+      "text": "ಪರಮಾಣುವಿನ ಬಹುತೇಕ ದ್ರವ್ಯರಾಶಿಯು ನ್ಯೂಕ್ಲಿಯಸ್‌ನಲ್ಲಿರುತ್ತದೆ.",
+      "text_markdown": "Almost all of the mass of an atom is in the nucleus.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಪರಮಾಣುವಿನ ಬಹುತೇಕ ದ್ರವ್ಯರಾಶಿಯು ನ್ಯೂಕ್ಲಿಯಸ್‌ನಲ್ಲಿರುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p17",
+      "id": "ch02-067",
+      "chapter": 2,
+      "text": "ತಟಸ್ಥ ಪರಮಾಣುವಿನಲ್ಲಿ, ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಗೆ ಸಮನಾಗಿರುತ್ತದೆ.",
+      "text_markdown": "In a neutral atom, the number of electrons equals the number of protons.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ತಟಸ್ಥ ಪರಮಾಣುವಿನಲ್ಲಿ, ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಗೆ ಸಮನಾಗಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p17",
+      "id": "ch02-068",
+      "chapter": 2,
+      "text": "ಧನಾತ್ಮಕ ಆವೇಶಗಳು ಮತ್ತು ಋಣಾತ್ಮಕ ಆವೇಶಗಳು ಸಮತೋಲನಗೊಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "The positive charges and the negative charges balance out.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಧನಾತ್ಮಕ ಆವೇಶಗಳು ಮತ್ತು ಋಣಾತ್ಮಕ ಆವೇಶಗಳು ಸಮತೋಲನಗೊಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p17",
+      "id": "ch02-069",
+      "chapter": 2,
+      "text": "ಪರಮಾಣು ಒಟ್ಟಾರೆ ಯಾವುದೇ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದಿಲ್ಲ.",
+      "text_markdown": "The atom has no overall charge.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಪರಮಾಣು ಒಟ್ಟಾರೆ ಯಾವುದೇ ಆವೇಶವನ್ನು ಹೊಂದಿರುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p17",
+      "id": "ch02-070",
+      "chapter": 2,
+      "text": "ಈ ಸಮತೋಲನವು ಪರಮಾಣುವಿನ ಪೂರ್ವನಿಯೋಜಿತ ಸ್ಥಿತಿಯಾಗಿದೆ.",
+      "text_markdown": "This balance is the default state of an atom.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಈ ಸಮತೋಲನವು ಪರಮಾಣುವಿನ ಪೂರ್ವನಿಯೋಜಿತ ಸ್ಥಿತಿಯಾಗಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-071",
+      "chapter": 2,
+      "text": "ಪರಮಾಣುವಿನ ಬಹುಪಾಲು ಖಾಲಿ ಜಾಗವಾಗಿರುತ್ತದೆ.",
+      "text_markdown": "Most of an atom is empty space.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಪರಮಾಣುವಿನ ಬಹುಪಾಲು ಖಾಲಿ ಜಾಗವಾಗಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-072",
+      "chapter": 2,
+      "text": "ನ್ಯೂಕ್ಲಿಯಸ್ ದಟ್ಟವಾಗಿರುತ್ತದೆ ಮತ್ತು ಚಿಕ್ಕದಾಗಿರುತ್ತದೆ.",
+      "text_markdown": "The nucleus is dense and tiny.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ನ್ಯೂಕ್ಲಿಯಸ್ ದಟ್ಟವಾಗಿರುತ್ತದೆ ಮತ್ತು ಚಿಕ್ಕದಾಗಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-073",
+      "chapter": 2,
+      "text": "ಎಲೆಕ್ಟ್ರಾನ್ ಮೋಡವು ದೊಡ್ಡದಾಗಿದೆ ಮತ್ತು ಹೆಚ್ಚಾಗಿ ಏನೂ ಇರುವುದಿಲ್ಲ.",
+      "text_markdown": "The electron cloud is large and mostly nothing.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ಎಲೆಕ್ಟ್ರಾನ್ ಮೋಡವು ದೊಡ್ಡದಾಗಿದೆ ಮತ್ತು ಹೆಚ್ಚಾಗಿ ಏನೂ ಇರುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-074",
+      "chapter": 2,
+      "text": "ನಿಮ್ಮ ದೇಹದ ಪ್ರತಿಯೊಂದು ಪರಮಾಣುವಿನ ಖಾಲಿ ಜಾಗವನ್ನೆಲ್ಲ ತೆಗೆದರೆ, ಉಳಿಯುವುದು ಉಪ್ಪಿನ ಕಣಕ್ಕಿಂತಲೂ ಚಿಕ್ಕ ಕಣ.",
+      "text_markdown": "ನಿಮ್ಮ ದೇಹದ ಪ್ರತಿಯೊಂದು ಪರಮಾಣುವಿನ ಖಾಲಿ ಜಾಗವನ್ನೆಲ್ಲ ತೆಗೆದರೆ, ಉಳಿಯುವುದು ಉಪ್ಪಿನ ಕಣಕ್ಕಿಂತಲೂ ಚಿಕ್ಕ ಕಣ.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ನಿಮ್ಮ ದೇಹದ ಪ್ರತಿಯೊಂದು ಪರಮಾಣುವಿನ ಖಾಲಿ ಜಾಗವನ್ನೆಲ್ಲ ತೆಗೆದರೆ, ಉಳಿಯುವುದು ಉಪ್ಪಿನ ಕಣಕ್ಕಿಂತಲೂ ಚಿಕ್ಕ ಕಣ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-075",
+      "chapter": 2,
+      "text": "ನಿಮ್ಮ ದ್ರವ್ಯರಾಶಿ ಹಾಗೆಯೇ ಉಳಿಯುತ್ತದೆ.",
+      "text_markdown": "Your mass would stay the same.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ನಿಮ್ಮ ದ್ರವ್ಯರಾಶಿ ಹಾಗೆಯೇ ಉಳಿಯುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-076",
+      "chapter": 2,
+      "text": "ನೀವು ನಂಬಲಾಗದಷ್ಟು ದಟ್ಟವಾಗಿರುತ್ತೀರಿ.",
+      "text_markdown": "You would just be incredibly dense.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "ನೀವು ನಂಬಲಾಗದಷ್ಟು ದಟ್ಟವಾಗಿರುತ್ತೀರಿ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p19",
+      "heading_level": 1,
+      "id": "ch03-077",
+      "chapter": 3,
+      "text": "Elements",
+      "text_markdown": "Elements",
+      "title": "Elements"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p20",
+      "id": "ch03-078",
+      "chapter": 3,
+      "text": "ಒಂದು ಧಾತುವು ಒಂದೇ ರೀತಿಯ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟ ವಸ್ತುವಾಗಿದೆ.",
+      "text_markdown": "An element is a substance made of only one type of atom.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಒಂದು ಧಾತುವು ಒಂದೇ ರೀತಿಯ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟ ವಸ್ತುವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p20",
+      "id": "ch03-079",
+      "chapter": 3,
+      "text": "ಶುದ್ಧ ಚಿನ್ನ ಒಂದು ಧಾತು.",
+      "text_markdown": "Pure gold is an element.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಶುದ್ಧ ಚಿನ್ನ ಒಂದು ಧಾತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p20",
+      "id": "ch03-080",
+      "chapter": 3,
+      "text": "ಶುದ್ಧ ಚಿನ್ನದ ಒಂದು ಬಾರ್‌ನಲ್ಲಿರುವ ಪ್ರತಿಯೊಂದು ಪರಮಾಣು ಎಪ್ಪತ್ತೊಂಬತ್ತು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "Every atom in a bar of pure gold has seventy-nine protons.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಶುದ್ಧ ಚಿನ್ನದ ಒಂದು ಬಾರ್‌ನಲ್ಲಿರುವ ಪ್ರತಿಯೊಂದು ಪರಮಾಣು ಎಪ್ಪತ್ತೊಂಬತ್ತು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p20",
+      "id": "ch03-081",
+      "chapter": 3,
+      "text": "ಶುದ್ಧ ಆಮ್ಲಜನಕ ಒಂದು ಧಾತು.",
+      "text_markdown": "Pure oxygen is an element.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಶುದ್ಧ ಆಮ್ಲಜನಕ ಒಂದು ಧಾತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p20",
+      "id": "ch03-082",
+      "chapter": 3,
+      "text": "ಶುದ್ಧ ಆಮ್ಲಜನಕದ ಟ್ಯಾಂಕ್‌ನಲ್ಲಿರುವ ಪ್ರತಿಯೊಂದು ಪರಮಾಣು ಎಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "Every atom in a tank of pure oxygen has eight protons.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಶುದ್ಧ ಆಮ್ಲಜನಕದ ಟ್ಯಾಂಕ್‌ನಲ್ಲಿರುವ ಪ್ರತಿಯೊಂದು ಪರಮಾಣು ಎಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p21",
+      "id": "ch03-083",
+      "chapter": 3,
+      "text": "ಭೂಮಿಯ ಮೇಲೆ ನೈಸರ್ಗಿಕವಾಗಿ ತೊಂಬತ್ತೆರಡು ಧಾತುಗಳು ಕಂಡುಬರುತ್ತವೆ.",
+      "text_markdown": "There are about ninety-two elements that occur naturally on Earth.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಭೂಮಿಯ ಮೇಲೆ ನೈಸರ್ಗಿಕವಾಗಿ ತೊಂಬತ್ತೆರಡು ಧಾತುಗಳು ಕಂಡುಬರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p21",
+      "id": "ch03-084",
+      "chapter": 3,
+      "text": "ವಿಜ್ಞಾನಿಗಳು ಪ್ರಯೋಗಾಲಯಗಳಲ್ಲಿ ಹೆಚ್ಚುವರಿ ಧಾತುಗಳನ್ನು ಸೃಷ್ಟಿಸಿದ್ದಾರೆ.",
+      "text_markdown": "Scientists have created additional elements in laboratories.",
+      "title": "Elements",
+      "tts": {
+        "text": "ವಿಜ್ಞಾನಿಗಳು ಪ್ರಯೋಗಾಲಯಗಳಲ್ಲಿ ಹೆಚ್ಚುವರಿ ಧಾತುಗಳನ್ನು ಸೃಷ್ಟಿಸಿದ್ದಾರೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p21",
+      "id": "ch03-085",
+      "chapter": 3,
+      "text": "ತಿಳಿದಿರುವ ಧಾತುಗಳ ಒಟ್ಟು ಸಂಖ್ಯೆ ನೂರ ಹದಿನೆಂಟಕ್ಕಿಂತ ಹೆಚ್ಚಿದೆ.",
+      "text_markdown": "The total number of known elements is over one hundred and eighteen.",
+      "title": "Elements",
+      "tts": {
+        "text": "ತಿಳಿದಿರುವ ಧಾತುಗಳ ಒಟ್ಟು ಸಂಖ್ಯೆ ನೂರ ಹದಿನೆಂಟಕ್ಕಿಂತ ಹೆಚ್ಚಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p21",
+      "id": "ch03-086",
+      "chapter": 3,
+      "text": "ಪ್ರತಿಯೊಂದು ಧಾತುವು ವಿಶಿಷ್ಟ ಸಂಖ್ಯೆಯ ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "Each element has a unique number of protons.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು ಧಾತುವು ವಿಶಿಷ್ಟ ಸಂಖ್ಯೆಯ ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p22",
+      "id": "ch03-087",
+      "chapter": 3,
+      "text": "ಪ್ರತಿಯೊಂದು ಧಾತುವು ಒಂದು ಹೆಸರು ಮತ್ತು ಸಂಕೇತವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "Every element has a name and a symbol.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು ಧಾತುವು ಒಂದು ಹೆಸರು ಮತ್ತು ಸಂಕೇತವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p22",
+      "id": "ch03-088",
+      "chapter": 3,
+      "text": "ಹೈಡ್ರೋಜನ್ H. ಆಮ್ಲಜನಕ O. ಇಂಗಾಲ C. ಕಬ್ಬಿಣ Fe.",
+      "text_markdown": "Hydrogen is H. Oxygen is O. Carbon is C. Iron is Fe.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಹೈಡ್ರೋಜನ್ ಎಚ್. ಆಮ್ಲಜನಕ ಓ. ಇಂಗಾಲ ಸಿ. ಕಬ್ಬಿಣ ಎಫ್ ಇ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p22",
+      "id": "ch03-089",
+      "chapter": 3,
+      "text": "ಚಿನ್ನ Au.",
+      "text_markdown": "Gold is Au.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಚಿನ್ನ ಎ ಯು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p22",
+      "id": "ch03-090",
+      "chapter": 3,
+      "text": "ಈ ಸಂಕೇತಗಳು ಲ್ಯಾಟಿನ್, ಗ್ರೀಕ್ ಅಥವಾ ಇಂಗ್ಲಿಷ್ ಹೆಸರುಗಳಿಂದ ಬಂದಿವೆ.",
+      "text_markdown": "The symbols come from Latin, Greek, or English names.",
+      "title": "Elements",
+      "tts": {
+        "text": "ಈ ಸಂಕೇತಗಳು ಲ್ಯಾಟಿನ್, ಗ್ರೀಕ್ ಅಥವಾ ಇಂಗ್ಲಿಷ್ ಹೆಸರುಗಳಿಂದ ಬಂದಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p22",
+      "id": "ch03-091",
+      "chapter": 3,
+      "text": "Fe ಎಂಬುದು ಲ್ಯಾಟಿನ್ ಪದವಾದ ferrum ನಿಂದ ಬಂದಿದೆ.",
+      "text_markdown": "Fe ಎಂಬುದು ಲ್ಯಾಟಿನ್ ಪದವಾದ ferrum ನಿಂದ ಬಂದಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಎಫ್ ಇ ಎಂಬುದು ಲ್ಯಾಟಿನ್ ಪದವಾದ ferrum ನಿಂದ ಬಂದಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p22",
+      "id": "ch03-092",
+      "chapter": 3,
+      "text": "Au ಎಂಬುದು ಲ್ಯಾಟಿನ್ ಪದವಾದ aurum ನಿಂದ ಬಂದಿದೆ.",
+      "text_markdown": "Au ಎಂಬುದು ಲ್ಯಾಟಿನ್ ಪದವಾದ aurum ನಿಂದ ಬಂದಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಎ ಯು ಎಂಬುದು ಲ್ಯಾಟಿನ್ ಪದವಾದ aurum ನಿಂದ ಬಂದಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p23",
+      "id": "ch03-093",
+      "chapter": 3,
+      "text": "ಹೈಡ್ರೋಜನ್ ಅತ್ಯಂತ ಸರಳವಾದ ಮೂಲಧಾತು.",
+      "text_markdown": "ಹೈಡ್ರೋಜನ್ ಅತ್ಯಂತ ಸರಳವಾದ ಮೂಲಧಾತು.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಹೈಡ್ರೋಜನ್ ಅತ್ಯಂತ ಸರಳವಾದ ಮೂಲಧಾತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p23",
+      "id": "ch03-094",
+      "chapter": 3,
+      "text": "ಒಂದು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣು ಒಂದು ಪ್ರೋಟಾನ್ ಮತ್ತು ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ಹೊಂದಿದೆ.",
+      "text_markdown": "ಒಂದು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣು ಒಂದು ಪ್ರೋಟಾನ್ ಮತ್ತು ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ಹೊಂದಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಒಂದು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುವಿನ ಒಳಗೆ ಒಂದು ಪ್ರೋಟಾನ್ ಮತ್ತು ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p23",
+      "id": "ch03-095",
+      "chapter": 3,
+      "text": "ಹೈಡ್ರೋಜನ್ ವಿಶ್ವದಲ್ಲಿ ಅತ್ಯಂತ ಸಾಮಾನ್ಯವಾದ ಮೂಲಧಾತು.",
+      "text_markdown": "ಹೈಡ್ರೋಜನ್ ವಿಶ್ವದಲ್ಲಿ ಅತ್ಯಂತ ಸಾಮಾನ್ಯವಾದ ಮೂಲಧಾತು.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಹೈಡ್ರೋಜನ್ ವಿಶ್ವದಲ್ಲಿ ಅತ್ಯಂತ ಸಾಮಾನ್ಯವಾದ ಮೂಲಧಾತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p23",
+      "id": "ch03-096",
+      "chapter": 3,
+      "text": "ನಕ್ಷತ್ರಗಳು ಹೆಚ್ಚಾಗಿ ಹೈಡ್ರೋಜನ್‌ನಿಂದ ಮಾಡಲ್ಪಟ್ಟಿವೆ.",
+      "text_markdown": "ನಕ್ಷತ್ರಗಳು ಹೆಚ್ಚಾಗಿ ಹೈಡ್ರೋಜನ್‌ನಿಂದ ಮಾಡಲ್ಪಟ್ಟಿವೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ನಕ್ಷತ್ರಗಳು ಹೆಚ್ಚಾಗಿ ಹೈಡ್ರೋಜನ್‌ನಿಂದ ಮಾಡಲ್ಪಟ್ಟಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p24",
+      "id": "ch03-097",
+      "chapter": 3,
+      "text": "ಕಾರ್ಬನ್ ಜೀವನದ ಮೂಲಧಾತು.",
+      "text_markdown": "ಕಾರ್ಬನ್ ಜೀವನದ ಮೂಲಧಾತು.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಕಾರ್ಬನ್ ಜೀವನದ ಮೂಲಧಾತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p24",
+      "id": "ch03-098",
+      "chapter": 3,
+      "text": "ಕಾರ್ಬನ್ ಆರು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "text_markdown": "ಕಾರ್ಬನ್ ಆರು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಕಾರ್ಬನ್ ಆರು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p24",
+      "id": "ch03-099",
+      "chapter": 3,
+      "text": "ಕಾರ್ಬನ್ ಪರಮಾಣುಗಳು ಒಂದೇ ಸಮಯದಲ್ಲಿ ಅನೇಕ ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಬಂಧಗಳನ್ನು ರೂಪಿಸಬಹುದು.",
+      "text_markdown": "ಕಾರ್ಬನ್ ಪರಮಾಣುಗಳು ಒಂದೇ ಸಮಯದಲ್ಲಿ ಅನೇಕ ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಬಂಧಗಳನ್ನು ರೂಪಿಸಬಹುದು.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಕಾರ್ಬನ್ ಪರಮಾಣುಗಳು ಒಂದೇ ಸಮಯದಲ್ಲಿ ಅನೇಕ ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಬಂಧಗಳನ್ನು ರೂಪಿಸಬಹುದು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p24",
+      "id": "ch03-100",
+      "chapter": 3,
+      "text": "ಈ ಸಾಮರ್ಥ್ಯವು ಕಾರ್ಬನ್ ಅನ್ನು ಎಲ್ಲಾ ಜೀವಿಗಳ ಬೆನ್ನೆಲುಬನ್ನಾಗಿ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ಈ ಸಾಮರ್ಥ್ಯವು ಕಾರ್ಬನ್ ಅನ್ನು ಎಲ್ಲಾ ಜೀವಿಗಳ ಬೆನ್ನೆಲುಬನ್ನಾಗಿ ಮಾಡುತ್ತದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಈ ಸಾಮರ್ಥ್ಯವೇ ಕಾರ್ಬನ್ ಅನ್ನು ಎಲ್ಲಾ ಜೀವಿಗಳ ಮುಖ್ಯ ಆಧಾರ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p24",
+      "id": "ch03-101",
+      "chapter": 3,
+      "text": "ನಿಮ್ಮ ದೇಹದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ಪ್ರೋಟೀನ್, ಡಿಎನ್‌ಎಯ ಪ್ರತಿ ಎಳೆ ಮತ್ತು ಪ್ರತಿ ಸಕ್ಕರೆ ಅಣು ಕಾರ್ಬನ್ ಅನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "ನಿಮ್ಮ ದೇಹದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ಪ್ರೋಟೀನ್, ಡಿಎನ್‌ಎಯ ಪ್ರತಿ ಎಳೆ ಮತ್ತು ಪ್ರತಿ ಸಕ್ಕರೆ ಅಣು ಕಾರ್ಬನ್ ಅನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ನಿಮ್ಮ ದೇಹದ ಪ್ರತಿಯೊಂದು ಪ್ರೋಟೀನ್, ಡಿಎನ್‌ಎಯ ಪ್ರತಿ ಎಳೆ ಮತ್ತು ಪ್ರತಿ ಸಕ್ಕರೆ ಅಣುವಿನೊಳಗೆ ಕಾರ್ಬನ್.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p25",
+      "id": "ch03-102",
+      "chapter": 3,
+      "text": "ಆಮ್ಲಜನಕ ಎಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "text_markdown": "ಆಮ್ಲಜನಕ ಎಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಆಮ್ಲಜನಕ ಎಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p25",
+      "id": "ch03-103",
+      "chapter": 3,
+      "text": "ಆಮ್ಲಜನಕ ನೀವು ಉಸಿರಾಡುವ ಮೂಲಧಾತು.",
+      "text_markdown": "ಆಮ್ಲಜನಕ ನೀವು ಉಸಿರಾಡುವ ಮೂಲಧಾತು.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಆಮ್ಲಜನಕ ನೀವು ಉಸಿರಾಡುವ ಮೂಲಧಾತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p25",
+      "id": "ch03-104",
+      "chapter": 3,
+      "text": "ನಿಮ್ಮ ಶ್ವಾಸಕೋಶಗಳು ಗಾಳಿಯಿಂದ ಆಮ್ಲಜನಕವನ್ನು ಹೊರತೆಗೆದು ಅದನ್ನು ನಿಮ್ಮ ರಕ್ತಕ್ಕೆ ಕಳುಹಿಸುತ್ತವೆ.",
+      "text_markdown": "ನಿಮ್ಮ ಶ್ವಾಸಕೋಶಗಳು ಗಾಳಿಯಿಂದ ಆಮ್ಲಜನಕವನ್ನು ಹೊರತೆಗೆದು ಅದನ್ನು ನಿಮ್ಮ ರಕ್ತಕ್ಕೆ ಕಳುಹಿಸುತ್ತವೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಗಾಳಿಯಿಂದ ಆಮ್ಲಜನಕವನ್ನು ರಕ್ತಕ್ಕೆ ತರುವುದು ನಿಮ್ಮ ಶ್ವಾಸಕೋಶಗಳ ಪಾತ್ರ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p25",
+      "id": "ch03-105",
+      "chapter": 3,
+      "text": "ನಿಮ್ಮ ಕೋಶಗಳು ಆಹಾರದಿಂದ ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡಲು ಆಮ್ಲಜನಕವನ್ನು ಬಳಸುತ್ತವೆ.",
+      "text_markdown": "ನಿಮ್ಮ ಕೋಶಗಳು ಆಹಾರದಿಂದ ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡಲು ಆಮ್ಲಜನಕವನ್ನು ಬಳಸುತ್ತವೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ನಿಮ್ಮ ಕೋಶಗಳು ಆಹಾರದಿಂದ ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡಲು ಆಮ್ಲಜನಕವನ್ನು ಬಳಸುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p26",
+      "id": "ch03-106",
+      "chapter": 3,
+      "text": "ಕಬ್ಬಿಣ ಇಪ್ಪತ್ತಾರು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "text_markdown": "ಕಬ್ಬಿಣ ಇಪ್ಪತ್ತಾರು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣ ಇಪ್ಪತ್ತಾರು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p26",
+      "id": "ch03-107",
+      "chapter": 3,
+      "text": "ಕಬ್ಬಿಣವು ನಿಮ್ಮ ರಕ್ತವನ್ನು ಕೆಂಪು ಮಾಡುವ ಮೂಲಧಾತು.",
+      "text_markdown": "ಕಬ್ಬಿಣವು ನಿಮ್ಮ ರಕ್ತವನ್ನು ಕೆಂಪು ಮಾಡುವ ಮೂಲಧಾತು.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣವು ನಿಮ್ಮ ರಕ್ತವನ್ನು ಕೆಂಪು ಮಾಡುವ ಮೂಲಧಾತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p26",
+      "id": "ch03-108",
+      "chapter": 3,
+      "text": "ಕಬ್ಬಿಣವು ಉಕ್ಕಿನಲ್ಲಿರುವ ಮುಖ್ಯ ಘಟಕಾಂಶವಾಗಿದೆ.",
+      "text_markdown": "ಕಬ್ಬಿಣವು ಉಕ್ಕಿನಲ್ಲಿರುವ ಮುಖ್ಯ ಘಟಕಾಂಶವಾಗಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣವು ಉಕ್ಕಿನಲ್ಲಿರುವ ಮುಖ್ಯ ಘಟಕಾಂಶವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p26",
+      "id": "ch03-109",
+      "chapter": 3,
+      "text": "ಭೂಮಿಯ ತಿರುಳು ಹೆಚ್ಚಾಗಿ ಕಬ್ಬಿಣದಿಂದ ಕೂಡಿದೆ.",
+      "text_markdown": "ಭೂಮಿಯ ತಿರುಳು ಹೆಚ್ಚಾಗಿ ಕಬ್ಬಿಣದಿಂದ ಕೂಡಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಭೂಮಿಯ ತಿರುಳು ಹೆಚ್ಚಾಗಿ ಕಬ್ಬಿಣದಿಂದ ಕೂಡಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p27",
+      "id": "ch03-110",
+      "chapter": 3,
+      "text": "ಅತ್ಯಂತ ಹಗುರವಾದ ಮೂಲಧಾತುಗಳು ವಿಶ್ವದಲ್ಲಿ ಅತ್ಯಂತ ಸಾಮಾನ್ಯವಾದವು.",
+      "text_markdown": "ಅತ್ಯಂತ ಹಗುರವಾದ ಮೂಲಧಾತುಗಳು ವಿಶ್ವದಲ್ಲಿ ಅತ್ಯಂತ ಸಾಮಾನ್ಯವಾದವು.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ವಿಶ್ವದಲ್ಲಿ ಅತ್ಯಂತ ಹಗುರ ಮೂಲಧಾತುಗಳೇ ಹೆಚ್ಚಿನ ಪ್ರಮಾಣ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p27",
+      "id": "ch03-111",
+      "chapter": 3,
+      "text": "ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಒಟ್ಟಾಗಿ ವಿಶ್ವದಲ್ಲಿನ ಎಲ್ಲಾ ಪರಮಾಣುಗಳ ಸುಮಾರು ತೊಂಬತ್ತೆಂಟು ಪ್ರತಿಶತವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "text_markdown": "ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಒಟ್ಟಾಗಿ ವಿಶ್ವದಲ್ಲಿನ ಎಲ್ಲಾ ಪರಮಾಣುಗಳ ಸುಮಾರು ತೊಂಬತ್ತೆಂಟು ಪ್ರತಿಶತವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಸೇರಿ ವಿಶ್ವದ ಎಲ್ಲಾ ಪರಮಾಣುಗಳಲ್ಲಿ ಸುಮಾರು ತೊಂಬತ್ತೆಂಟು ಪ್ರತಿಶತ ಭಾಗ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p27",
+      "id": "ch03-112",
+      "chapter": 3,
+      "text": "ಭಾರವಾದ ಮೂಲಧಾತುಗಳು ಹೋಲಿಕೆಯಲ್ಲಿ ವಿರಳವಾಗಿವೆ.",
+      "text_markdown": "ಭಾರವಾದ ಮೂಲಧಾತುಗಳು ಹೋಲಿಕೆಯಲ್ಲಿ ವಿರಳವಾಗಿವೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಭಾರವಾದ ಮೂಲಧಾತುಗಳು ಹೋಲಿಕೆಯಲ್ಲಿ ವಿರಳವಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p27",
+      "id": "ch03-113",
+      "chapter": 3,
+      "text": "ಪ್ರತಿಯೊಂದು ಭಾರವಾದ ಮೂಲಧಾತುವಿನ ಪ್ರತಿ ಪರಮಾಣು ನಕ್ಷತ್ರದೊಳಗೆ ರೂಪುಗೊಂಡಿದೆ.",
+      "text_markdown": "ಪ್ರತಿಯೊಂದು ಭಾರವಾದ ಮೂಲಧಾತುವಿನ ಪ್ರತಿ ಪರಮಾಣು ನಕ್ಷತ್ರದೊಳಗೆ ರೂಪುಗೊಂಡಿದೆ.",
+      "title": "ಮೂಲಧಾತುಗಳು",
+      "tts": {
+        "text": "ಭಾರವಾದ ಪ್ರತಿಯೊಂದು ಮೂಲಧಾತುವಿನ ಪರಮಾಣುವಿನ ಮೂಲ ನಕ್ಷತ್ರದ ಒಳಭಾಗ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p28",
+      "heading_level": 1,
+      "id": "ch04-114",
+      "chapter": 4,
+      "text": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "text_markdown": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "title": "ಆವರ್ತ ಕೋಷ್ಟಕ"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p29",
+      "id": "ch04-115",
+      "chapter": 4,
+      "text": "ಆವರ್ತ ಕೋಷ್ಟಕವು ತಿಳಿದಿರುವ ಪ್ರತಿಯೊಂದು ಮೂಲಧಾತುವನ್ನು ಸಂಘಟಿಸುವ ಒಂದು ಕೋಷ್ಟಕವಾಗಿದೆ.",
+      "text_markdown": "ಆವರ್ತ ಕೋಷ್ಟಕವು ತಿಳಿದಿರುವ ಪ್ರತಿಯೊಂದು ಮೂಲಧಾತುವನ್ನು ಸಂಘಟಿಸುವ ಒಂದು ಕೋಷ್ಟಕವಾಗಿದೆ.",
+      "title": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಆವರ್ತ ಕೋಷ್ಟಕವು ತಿಳಿದಿರುವ ಪ್ರತಿಯೊಂದು ಮೂಲಧಾತುವನ್ನು ಸಂಘಟಿಸುವ ಒಂದು ಕೋಷ್ಟಕವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p29",
+      "id": "ch04-116",
+      "chapter": 4,
+      "text": "ಕೋಷ್ಟಕವು ಮೂಲಧಾತುಗಳನ್ನು ಅವುಗಳ ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯ ಆಧಾರದ ಮೇಲೆ, ಚಿಕ್ಕದರಿಂದ ದೊಡ್ಡದಕ್ಕೆ ಜೋಡಿಸುತ್ತದೆ.",
+      "text_markdown": "ಕೋಷ್ಟಕವು ಮೂಲಧಾತುಗಳನ್ನು ಅವುಗಳ ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯ ಆಧಾರದ ಮೇಲೆ, ಚಿಕ್ಕದರಿಂದ ದೊಡ್ಡದಕ್ಕೆ ಜೋಡಿಸುತ್ತದೆ.",
+      "title": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಆವರ್ತ ಕೋಷ್ಟಕದಲ್ಲಿ ಮೂಲಧಾತುಗಳ ಜೋಡಣೆ ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯಂತೆ, ಚಿಕ್ಕದರಿಂದ ದೊಡ್ಡದಿನವರೆಗೆ ಕ್ರಮ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p29",
+      "id": "ch04-117",
+      "chapter": 4,
+      "text": "ಹೈಡ್ರೋಜನ್ ಒಂದು ಪ್ರೋಟಾನ್‌ನೊಂದಿಗೆ ಮೊದಲ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "text_markdown": "ಹೈಡ್ರೋಜನ್ ಒಂದು ಪ್ರೋಟಾನ್‌ನೊಂದಿಗೆ ಮೊದಲ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "title": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಹೈಡ್ರೋಜನ್ ಒಂದು ಪ್ರೋಟಾನ್‌ನೊಂದಿಗೆ ಮೊದಲ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p29",
+      "id": "ch04-118",
+      "chapter": 4,
+      "text": "ಹೀಲಿಯಂ ಎರಡು ಪ್ರೋಟಾನ್‌ಗಳೊಂದಿಗೆ ಎರಡನೇ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "text_markdown": "ಹೀಲಿಯಂ ಎರಡು ಪ್ರೋಟಾನ್‌ಗಳೊಂದಿಗೆ ಎರಡನೇ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+      "title": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಹೀಲಿಯಂ ಎರಡು ಪ್ರೋಟಾನ್‌ಗಳೊಂದಿಗೆ ಎರಡನೇ ಸ್ಥಾನದಲ್ಲಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p29",
+      "id": "ch04-119",
+      "chapter": 4,
+      "text": "ಕೋಷ್ಟಕವು ಒಂದು ನೂರ ಹದಿನೆಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುವ ಓಗಾನೆಸನ್ ವರೆಗೆ ಮುಂದುವರಿಯುತ್ತದೆ.",
+      "text_markdown": "ಕೋಷ್ಟಕವು ಒಂದು ನೂರ ಹದಿನೆಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುವ ಓಗಾನೆಸನ್ ವರೆಗೆ ಮುಂದುವರಿಯುತ್ತದೆ.",
+      "title": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಕೋಷ್ಟಕವು ಒಂದು ನೂರ ಹದಿನೆಂಟು ಪ್ರೋಟಾನ್‌ಗಳನ್ನು ಹೊಂದಿರುವ ಓಗಾನೆಸನ್ ವರೆಗೆ ಮುಂದುವರಿಯುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p30",
+      "id": "ch04-120",
+      "chapter": 4,
+      "text": "ಆವರ್ತ ಕೋಷ್ಟಕವು ಸಾಲುಗಳು ಮತ್ತು ಅಂಕಣಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "text_markdown": "ಆವರ್ತ ಕೋಷ್ಟಕವು ಸಾಲುಗಳು ಮತ್ತು ಅಂಕಣಗಳನ್ನು ಹೊಂದಿದೆ.",
+      "title": "ಆವರ್ತ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಆವರ್ತ ಕೋಷ್ಟಕವು ಸಾಲುಗಳು ಮತ್ತು ಅಂಕಣಗಳನ್ನು ಹೊಂದಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p30",
+      "id": "ch04-121",
+      "chapter": 4,
+      "text": "ಸಾಲುಗಳನ್ನು ಪಿರಿಯಡ್‌ಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "text_markdown": "ಸಾಲುಗಳನ್ನು ಪಿರಿಯಡ್‌ಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಸಾಲುಗಳನ್ನು ಪಿರಿಯಡ್‌ಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p30",
+      "id": "ch04-122",
+      "chapter": 4,
+      "text": "ಕಾಲಮ್‌ಗಳನ್ನು ಗುಂಪುಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "text_markdown": "ಕಾಲಮ್‌ಗಳನ್ನು ಗುಂಪುಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಕಾಲಮ್‌ಗಳನ್ನು ಗುಂಪುಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p30",
+      "id": "ch04-123",
+      "chapter": 4,
+      "text": "ಒಂದೇ ಗುಂಪಿನಲ್ಲಿರುವ ಧಾತುಗಳು ಒಂದೇ ರೀತಿಯ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "ಒಂದೇ ಗುಂಪಿನಲ್ಲಿರುವ ಧಾತುಗಳು ಒಂದೇ ರೀತಿಯ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಒಂದೇ ಗುಂಪಿನಲ್ಲಿರುವ ಧಾತುಗಳು ಒಂದೇ ರೀತಿಯ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p30",
+      "id": "ch04-124",
+      "chapter": 4,
+      "text": "ಇದಕ್ಕಾಗಿಯೇ ಕೋಷ್ಟಕವನ್ನು ಆವರ್ತಕ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "text_markdown": "ಇದಕ್ಕಾಗಿಯೇ ಕೋಷ್ಟಕವನ್ನು ಆವರ್ತಕ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಇದಕ್ಕಾಗಿಯೇ ಕೋಷ್ಟಕವನ್ನು ಆವರ್ತಕ ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p30",
+      "id": "ch04-125",
+      "chapter": 4,
+      "text": "ಗುಣಲಕ್ಷಣಗಳು ನಿಯಮಿತ ಮಾದರಿಯಲ್ಲಿ ಪುನರಾವರ್ತಿಸುತ್ತವೆ.",
+      "text_markdown": "ಗುಣಲಕ್ಷಣಗಳು ನಿಯಮಿತ ಮಾದರಿಯಲ್ಲಿ ಪುನರಾವರ್ತಿಸುತ್ತವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಗುಣಲಕ್ಷಣಗಳು ನಿಯಮಿತ ಮಾದರಿಯಲ್ಲಿ ಪುನರಾವರ್ತಿಸುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p31",
+      "id": "ch04-126",
+      "chapter": 4,
+      "text": "ಕೋಷ್ಟಕದ ಎಡಭಾಗದಲ್ಲಿರುವ ಧಾತುಗಳು ಲೋಹಗಳಾಗಿವೆ.",
+      "text_markdown": "ಕೋಷ್ಟಕದ ಎಡಭಾಗದಲ್ಲಿರುವ ಧಾತುಗಳು ಲೋಹಗಳಾಗಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಕೋಷ್ಟಕದ ಎಡಭಾಗದಲ್ಲಿರುವ ಧಾತುಗಳು ಲೋಹಗಳಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p31",
+      "id": "ch04-127",
+      "chapter": 4,
+      "text": "ಹೆಚ್ಚಿನ ಧಾತುಗಳು ಲೋಹಗಳಾಗಿವೆ.",
+      "text_markdown": "ಹೆಚ್ಚಿನ ಧಾತುಗಳು ಲೋಹಗಳಾಗಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಹೆಚ್ಚಿನ ಧಾತುಗಳು ಲೋಹಗಳಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p31",
+      "id": "ch04-128",
+      "chapter": 4,
+      "text": "ಲೋಹಗಳು ಹೊಳೆಯುತ್ತವೆ.",
+      "text_markdown": "ಲೋಹಗಳು ಹೊಳೆಯುತ್ತವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಲೋಹಗಳು ಹೊಳೆಯುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p31",
+      "id": "ch04-129",
+      "chapter": 4,
+      "text": "ಲೋಹಗಳು ವಿದ್ಯುತ್ ಅನ್ನು ನಡೆಸುತ್ತವೆ.",
+      "text_markdown": "ಲೋಹಗಳು ವಿದ್ಯುತ್ ಅನ್ನು ನಡೆಸುತ್ತವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಲೋಹಗಳು ವಿದ್ಯುತ್ ಅನ್ನು ನಡೆಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p31",
+      "id": "ch04-130",
+      "chapter": 4,
+      "text": "ಲೋಹಗಳು ಶಾಖವನ್ನು ನಡೆಸುತ್ತವೆ.",
+      "text_markdown": "ಲೋಹಗಳು ಶಾಖವನ್ನು ನಡೆಸುತ್ತವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಲೋಹಗಳು ಶಾಖವನ್ನು ನಡೆಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p31",
+      "id": "ch04-131",
+      "chapter": 4,
+      "text": "ಕಬ್ಬಿಣ, ತಾಮ್ರ, ಚಿನ್ನ ಮತ್ತು ಅಲ್ಯೂಮಿನಿಯಂ ಎಲ್ಲವೂ ಲೋಹಗಳಾಗಿವೆ.",
+      "text_markdown": "ಕಬ್ಬಿಣ, ತಾಮ್ರ, ಚಿನ್ನ ಮತ್ತು ಅಲ್ಯೂಮಿನಿಯಂ ಎಲ್ಲವೂ ಲೋಹಗಳಾಗಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣ, ತಾಮ್ರ, ಚಿನ್ನ ಮತ್ತು ಅಲ್ಯೂಮಿನಿಯಂ ಎಲ್ಲವೂ ಲೋಹಗಳಾಗಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p32",
+      "id": "ch04-132",
+      "chapter": 4,
+      "text": "ಕೋಷ್ಟಕದ ಬಲಭಾಗದಲ್ಲಿರುವ ಧಾತುಗಳು ಅಲೋಹಗಳಾಗಿವೆ.",
+      "text_markdown": "ಕೋಷ್ಟಕದ ಬಲಭಾಗದಲ್ಲಿರುವ ಧಾತುಗಳು ಅಲೋಹಗಳಾಗಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಕೋಷ್ಟಕದ ಬಲಭಾಗದಲ್ಲಿರುವ ಧಾತುಗಳು ಅಲೋಹಗಳಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p32",
+      "id": "ch04-133",
+      "chapter": 4,
+      "text": "ಅಲೋಹಗಳಲ್ಲಿ ಆಮ್ಲಜನಕ, ಸಾರಜನಕ, ಇಂಗಾಲ ಮತ್ತು ಗಂಧಕ ಸೇರಿವೆ.",
+      "text_markdown": "ಅಲೋಹಗಳಲ್ಲಿ ಆಮ್ಲಜನಕ, ಸಾರಜನಕ, ಇಂಗಾಲ ಮತ್ತು ಗಂಧಕ ಸೇರಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಅಲೋಹಗಳಲ್ಲಿ ಆಮ್ಲಜನಕ, ಸಾರಜನಕ, ಇಂಗಾಲ ಮತ್ತು ಗಂಧಕ ಸೇರಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p32",
+      "id": "ch04-134",
+      "chapter": 4,
+      "text": "ಅಲೋಹಗಳು ವಿದ್ಯುತ್ ಅನ್ನು ಚೆನ್ನಾಗಿ ನಡೆಸುವುದಿಲ್ಲ.",
+      "text_markdown": "ಅಲೋಹಗಳು ವಿದ್ಯುತ್ ಅನ್ನು ಚೆನ್ನಾಗಿ ನಡೆಸುವುದಿಲ್ಲ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಅಲೋಹಗಳು ವಿದ್ಯುತ್ ಅನ್ನು ಚೆನ್ನಾಗಿ ನಡೆಸುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p32",
+      "id": "ch04-135",
+      "chapter": 4,
+      "text": "ಅಲೋಹಗಳು ಗಾಳಿ, ನೀರು ಮತ್ತು ಜೀವಿಗಳನ್ನು ರೂಪಿಸುವ ಧಾತುಗಳಾಗಿವೆ.",
+      "text_markdown": "ಅಲೋಹಗಳು ಗಾಳಿ, ನೀರು ಮತ್ತು ಜೀವಿಗಳನ್ನು ರೂಪಿಸುವ ಧಾತುಗಳಾಗಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಅಲೋಹಗಳು ಗಾಳಿ, ನೀರು ಮತ್ತು ಜೀವಿಗಳನ್ನು ರೂಪಿಸುವ ಧಾತುಗಳಾಗಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p33",
+      "id": "ch04-136",
+      "chapter": 4,
+      "text": "ಕೆಲವು ಧಾತುಗಳು ಲೋಹಗಳು ಮತ್ತು ಅಲೋಹಗಳ ನಡುವಿನ ಗಡಿಯಲ್ಲಿವೆ.",
+      "text_markdown": "ಕೆಲವು ಧಾತುಗಳು ಲೋಹಗಳು ಮತ್ತು ಅಲೋಹಗಳ ನಡುವಿನ ಗಡಿಯಲ್ಲಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಕೆಲವು ಧಾತುಗಳು ಲೋಹಗಳು ಮತ್ತು ಅಲೋಹಗಳ ನಡುವಿನ ಗಡಿಯಲ್ಲಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p33",
+      "id": "ch04-137",
+      "chapter": 4,
+      "text": "ಈ ಧಾತುಗಳನ್ನು ಮೆಟಲಾಯ್ಡ್‌ಗಳು (ಅರ್ಧಲೋಹಗಳು) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "text_markdown": "ಈ ಧಾತುಗಳನ್ನು ಮೆಟಲಾಯ್ಡ್‌ಗಳು (ಅರ್ಧಲೋಹಗಳು) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಈ ಧಾತುಗಳನ್ನು ಮೆಟಲಾಯ್ಡ್‌ಗಳು (ಅರ್ಧಲೋಹಗಳು) ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p33",
+      "id": "ch04-138",
+      "chapter": 4,
+      "text": "ಸಿಲಿಕಾನ್ ಒಂದು ಮೆಟಲಾಯ್ಡ್ (ಅರ್ಧಲೋಹ).",
+      "text_markdown": "ಸಿಲಿಕಾನ್ ಒಂದು ಮೆಟಲಾಯ್ಡ್ (ಅರ್ಧಲೋಹ).",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಸಿಲಿಕಾನ್ ಒಂದು ಮೆಟಲಾಯ್ಡ್ (ಅರ್ಧಲೋಹ).",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p33",
+      "id": "ch04-139",
+      "chapter": 4,
+      "text": "ಸಿಲಿಕಾನ್ ಸ್ವಲ್ಪಮಟ್ಟಿಗೆ ವಿದ್ಯುತ್ ಅನ್ನು ನಡೆಸುತ್ತದೆ, ಆದರೆ ಲೋಹದಷ್ಟು ಚೆನ್ನಾಗಿಲ್ಲ.",
+      "text_markdown": "ಸಿಲಿಕಾನ್ ಸ್ವಲ್ಪಮಟ್ಟಿಗೆ ವಿದ್ಯುತ್ ಅನ್ನು ನಡೆಸುತ್ತದೆ, ಆದರೆ ಲೋಹದಷ್ಟು ಚೆನ್ನಾಗಿಲ್ಲ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಸಿಲಿಕಾನ್ ಸ್ವಲ್ಪಮಟ್ಟಿಗೆ ವಿದ್ಯುತ್ ಅನ್ನು ನಡೆಸುತ್ತದೆ, ಆದರೆ ಲೋಹದಷ್ಟು ಚೆನ್ನಾಗಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p33",
+      "id": "ch04-140",
+      "chapter": 4,
+      "text": "ಈ ಗುಣಲಕ್ಷಣವು ಸಿಲಿಕಾನ್ ಅನ್ನು ಕಂಪ್ಯೂಟರ್ ಚಿಪ್‌ಗಳಲ್ಲಿ ಉಪಯುಕ್ತವಾಗಿಸುತ್ತದೆ.",
+      "text_markdown": "ಈ ಗುಣಲಕ್ಷಣವು ಸಿಲಿಕಾನ್ ಅನ್ನು ಕಂಪ್ಯೂಟರ್ ಚಿಪ್‌ಗಳಲ್ಲಿ ಉಪಯುಕ್ತವಾಗಿಸುತ್ತದೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಈ ಗುಣಲಕ್ಷಣವು ಸಿಲಿಕಾನ್ ಅನ್ನು ಕಂಪ್ಯೂಟರ್ ಚಿಪ್‌ಗಳಲ್ಲಿ ಉಪಯುಕ್ತವಾಗಿಸುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p34",
+      "id": "ch04-141",
+      "chapter": 4,
+      "text": "ಉದಾತ್ತ ಅನಿಲಗಳು ಬಲಭಾಗದಲ್ಲಿರುವ ಕೊನೆಯ ಕಾಲಮ್‌ನಲ್ಲಿವೆ.",
+      "text_markdown": "ಉದಾತ್ತ ಅನಿಲಗಳು ಬಲಭಾಗದಲ್ಲಿರುವ ಕೊನೆಯ ಕಾಲಮ್‌ನಲ್ಲಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಉದಾತ್ತ ಅನಿಲಗಳು ಬಲಭಾಗದಲ್ಲಿರುವ ಕೊನೆಯ ಕಾಲಮ್‌ನಲ್ಲಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p34",
+      "id": "ch04-142",
+      "chapter": 4,
+      "text": "ಹೀಲಿಯಂ, ನಿಯಾನ್, ಆರ್ಗಾನ್, ಕ್ರಿಪ್ಟಾನ್, ಕ್ಸೆನಾನ್ ಮತ್ತು ರೇಡಾನ್ ಉದಾತ್ತ ಅನಿಲಗಳಾಗಿವೆ.",
+      "text_markdown": "ಹೀಲಿಯಂ, ನಿಯಾನ್, ಆರ್ಗಾನ್, ಕ್ರಿಪ್ಟಾನ್, ಕ್ಸೆನಾನ್ ಮತ್ತು ರೇಡಾನ್ ಉದಾತ್ತ ಅನಿಲಗಳಾಗಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಹೀಲಿಯಂ, ನಿಯಾನ್, ಆರ್ಗಾನ್, ಕ್ರಿಪ್ಟಾನ್, ಕ್ಸೆನಾನ್ ಮತ್ತು ರೇಡಾನ್ ಉದಾತ್ತ ಅನಿಲಗಳಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p34",
+      "id": "ch04-143",
+      "chapter": 4,
+      "text": "ಉದಾತ್ತ ಅನಿಲಗಳು ಬಹುತೇಕ ಇತರ ಧಾತುಗಳೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುವುದಿಲ್ಲ.",
+      "text_markdown": "ಉದಾತ್ತ ಅನಿಲಗಳು ಬಹುತೇಕ ಇತರ ಧಾತುಗಳೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುವುದಿಲ್ಲ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಉದಾತ್ತ ಅನಿಲಗಳು ಬಹುತೇಕ ಇತರ ಧಾತುಗಳೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯೆ ತೋರದ ವರ್ಗ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p34",
+      "id": "ch04-144",
+      "chapter": 4,
+      "text": "ಅವುಗಳ ಎಲೆಕ್ಟ್ರಾನ್ ವ್ಯವಸ್ಥೆಗಳು ಈಗಾಗಲೇ ಸ್ಥಿರವಾಗಿವೆ.",
+      "text_markdown": "ಅವುಗಳ ಎಲೆಕ್ಟ್ರಾನ್ ವ್ಯವಸ್ಥೆಗಳು ಈಗಾಗಲೇ ಸ್ಥಿರವಾಗಿವೆ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಅವುಗಳ ಎಲೆಕ್ಟ್ರಾನ್ ವ್ಯವಸ್ಥೆಗಳು ಈಗಾಗಲೇ ಸ್ಥಿರವಾಗಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p34",
+      "id": "ch04-145",
+      "chapter": 4,
+      "text": "ಅವು ಬಂಧಗಳನ್ನು ರೂಪಿಸುವ ಅಗತ್ಯವಿಲ್ಲ.",
+      "text_markdown": "ಅವು ಬಂಧಗಳನ್ನು ರೂಪಿಸುವ ಅಗತ್ಯವಿಲ್ಲ.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಅವು ಬಂಧಗಳನ್ನು ರೂಪಿಸುವ ಅಗತ್ಯವಿಲ್ಲ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p35",
+      "id": "ch04-146",
+      "chapter": 4,
+      "text": "ಡಿಮಿಟ್ರಿ ಮೆಂಡಲೀವ್ ಎಂಬ ರಷ್ಯಾದ ವಿಜ್ಞಾನಿ 1869 ರಲ್ಲಿ ಮೊದಲ ಆವರ್ತಕ ಕೋಷ್ಟಕವನ್ನು ರಚಿಸಿದರು.",
+      "text_markdown": "ಡಿಮಿಟ್ರಿ ಮೆಂಡಲೀವ್ ಎಂಬ ರಷ್ಯಾದ ವಿಜ್ಞಾನಿ 1869 ರಲ್ಲಿ ಮೊದಲ ಆವರ್ತಕ ಕೋಷ್ಟಕವನ್ನು ರಚಿಸಿದರು.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಡಿಮಿಟ್ರಿ ಮೆಂಡಲೀವ್ ಎಂಬ ರಷ್ಯಾದ ವಿಜ್ಞಾನಿ ಹದಿನೆಂಟು ಅರವತ್ತೊಂಬತ್ತರಲ್ಲಿ ಮೊದಲ ಆವರ್ತಕ ಕೋಷ್ಟಕವನ್ನು ರಚಿಸಿದರು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p35",
+      "id": "ch04-147",
+      "chapter": 4,
+      "text": "ಮೆಂಡಲೀವ್ ಧಾತುಗಳನ್ನು ಅವುಗಳ ಗುಣಲಕ್ಷಣಗಳ ಆಧಾರದ ಮೇಲೆ ಜೋಡಿಸಿದರು ಮತ್ತು ಪುನರಾವರ್ತಿತ ಮಾದರಿಯನ್ನು ಗಮನಿಸಿದರು.",
+      "text_markdown": "ಮೆಂಡಲೀವ್ ಧಾತುಗಳನ್ನು ಅವುಗಳ ಗುಣಲಕ್ಷಣಗಳ ಆಧಾರದ ಮೇಲೆ ಜೋಡಿಸಿದರು ಮತ್ತು ಪುನರಾವರ್ತಿತ ಮಾದರಿಯನ್ನು ಗಮನಿಸಿದರು.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಮೆಂಡಲೀವ್ ಧಾತುಗಳನ್ನು ಅವುಗಳ ಗುಣಲಕ್ಷಣಗಳ ಆಧಾರದ ಮೇಲೆ ಜೋಡಿಸಿದರು ಮತ್ತು ಪುನರಾವರ್ತಿತ ಮಾದರಿಯನ್ನು ಗಮನಿಸಿದರು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p35",
+      "id": "ch04-148",
+      "chapter": 4,
+      "text": "ಅವರು ತಮ್ಮ ಕೋಷ್ಟಕದಲ್ಲಿ ಅಜ್ಞಾತ ಧಾತುಗಳು ಇರಬೇಕೆಂದು ಊಹಿಸಿದ ಸ್ಥಳಗಳಲ್ಲಿ ಅಂತರಗಳನ್ನು ಬಿಟ್ಟರು.",
+      "text_markdown": "ಅವರು ತಮ್ಮ ಕೋಷ್ಟಕದಲ್ಲಿ ಅಜ್ಞಾತ ಧಾತುಗಳು ಇರಬೇಕೆಂದು ಊಹಿಸಿದ ಸ್ಥಳಗಳಲ್ಲಿ ಅಂತರಗಳನ್ನು ಬಿಟ್ಟರು.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಅವರು ತಮ್ಮ ಕೋಷ್ಟಕದಲ್ಲಿ ಅಜ್ಞಾತ ಧಾತುಗಳು ಇರಬೇಕೆಂದು ಊಹಿಸಿದ ಸ್ಥಳಗಳಲ್ಲಿ ಅಂತರಗಳನ್ನು ಬಿಟ್ಟರು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p35",
+      "id": "ch04-149",
+      "chapter": 4,
+      "text": "ವಿಜ್ಞಾನಿಗಳು ನಂತರ ಆ ಧಾತುಗಳನ್ನು ಕಂಡುಹಿಡಿದರು.",
+      "text_markdown": "ವಿಜ್ಞಾನಿಗಳು ನಂತರ ಆ ಧಾತುಗಳನ್ನು ಕಂಡುಹಿಡಿದರು.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ವಿಜ್ಞಾನಿಗಳು ನಂತರ ಆ ಧಾತುಗಳನ್ನು ಕಂಡುಹಿಡಿದರು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p35",
+      "id": "ch04-150",
+      "chapter": 4,
+      "text": "ಪ್ರತಿಯೊಂದು ಭವಿಷ್ಯವೂ ಸರಿಯಾಗಿತ್ತು.",
+      "text_markdown": "ಪ್ರತಿಯೊಂದು ಭವಿಷ್ಯವೂ ಸರಿಯಾಗಿತ್ತು.",
+      "title": "ಆವರ್ತಕ ಕೋಷ್ಟಕ",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು ಭವಿಷ್ಯವೂ ಸರಿಯಾಗಿತ್ತು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p36",
+      "id": "ch04-151",
+      "chapter": 4,
+      "text": "ಆವರ್ತ ಕೋಷ್ಟಕವು ವಿಜ್ಞಾನದಲ್ಲಿ ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿ ಸಾಧನಗಳಲ್ಲಿ ಒಂದಾಗಿದೆ.",
+      "text_markdown": "The periodic table is one of the most powerful tools in science.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ಆವರ್ತ ಕೋಷ್ಟಕವು ವಿಜ್ಞಾನದಲ್ಲಿ ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿ ಸಾಧನಗಳಲ್ಲಿ ಒಂದಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p36",
+      "id": "ch04-152",
+      "chapter": 4,
+      "text": "ಒಂದು ಧಾತು ಕೋಷ್ಟಕದಲ್ಲಿ ಎಲ್ಲಿದೆ ಎಂದು ನಿಮಗೆ ತಿಳಿದಿದ್ದರೆ, ಅದು ಹೇಗೆ ವರ್ತಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ನೀವು ಊಹಿಸಬಹುದು.",
+      "text_markdown": "If you know where an element sits on the table, you can predict how it will behave.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "ಒಂದು ಧಾತು ಕೋಷ್ಟಕದಲ್ಲಿ ಎಲ್ಲಿದೆ ಎಂದು ನಿಮಗೆ ತಿಳಿದಿದ್ದರೆ, ಅದು ಹೇಗೆ ವರ್ತಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ನೀವು ಊಹಿಸಬಹುದು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p37",
+      "heading_level": 1,
+      "id": "ch05-153",
+      "chapter": 5,
+      "text": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "text_markdown": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p38",
+      "id": "ch05-154",
+      "chapter": 5,
+      "text": "ಪರಮಾಣುಗಳು ವಿರಳವಾಗಿ ಏಕಾಂಗಿಯಾಗಿ ಅಸ್ತಿತ್ವದಲ್ಲಿರುತ್ತವೆ.",
+      "text_markdown": "ಪರಮಾಣುಗಳು ವಿರಳವಾಗಿ ಏಕಾಂಗಿಯಾಗಿ ಅಸ್ತಿತ್ವದಲ್ಲಿರುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳು ವಿರಳವಾಗಿ ಏಕಾಂಗಿಯಾಗಿ ಅಸ್ತಿತ್ವದಲ್ಲಿರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p38",
+      "id": "ch05-155",
+      "chapter": 5,
+      "text": "ಹೆಚ್ಚಿನ ಪರಮಾಣುಗಳು ಅಣುಗಳನ್ನು ರೂಪಿಸಲು ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಬಂಧಿಸುತ್ತವೆ.",
+      "text_markdown": "ಹೆಚ್ಚಿನ ಪರಮಾಣುಗಳು ಅಣುಗಳನ್ನು ರೂಪಿಸಲು ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಬಂಧಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಹೆಚ್ಚಿನ ಪರಮಾಣುಗಳು ಅಣುಗಳನ್ನು ರೂಪಿಸಲು ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಬಂಧಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p38",
+      "id": "ch05-156",
+      "chapter": 5,
+      "text": "ಒಂದು ಅಣು ರಾಸಾಯನಿಕ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿರುವ ಪರಮಾಣುಗಳ ಗುಂಪು.",
+      "text_markdown": "ಒಂದು ಅಣು ರಾಸಾಯನಿಕ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿರುವ ಪರಮಾಣುಗಳ ಗುಂಪು.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಒಂದು ಅಣು ರಾಸಾಯನಿಕ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿರುವ ಪರಮಾಣುಗಳ ಗುಂಪು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p38",
+      "id": "ch05-157",
+      "chapter": 5,
+      "text": "ನೀರು ಒಂದು ಅಣು.",
+      "text_markdown": "ನೀರು ಒಂದು ಅಣು.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ನೀರು ಒಂದು ಅಣು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p38",
+      "id": "ch05-158",
+      "chapter": 5,
+      "text": "ಆಮ್ಲಜನಕ ಅನಿಲ ಒಂದು ಅಣು.",
+      "text_markdown": "ಆಮ್ಲಜನಕ ಅನಿಲ ಒಂದು ಅಣು.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಆಮ್ಲಜನಕ ಅನಿಲ ಒಂದು ಅಣು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p38",
+      "id": "ch05-159",
+      "chapter": 5,
+      "text": "ಸಕ್ಕರೆ ಒಂದು ಅಣು.",
+      "text_markdown": "ಸಕ್ಕರೆ ಒಂದು ಅಣು.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಸಕ್ಕರೆ ಒಂದು ಅಣು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p39",
+      "id": "ch05-160",
+      "chapter": 5,
+      "text": "ಪರಮಾಣುಗಳು ಅವುಗಳ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳಿಂದಾಗಿ ಬಂಧಿಸುತ್ತವೆ.",
+      "text_markdown": "ಪರಮಾಣುಗಳು ಅವುಗಳ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳಿಂದಾಗಿ ಬಂಧಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳು ಅವುಗಳ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳಿಂದಾಗಿ ಬಂಧಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p39",
+      "id": "ch05-161",
+      "chapter": 5,
+      "text": "ಒಂದು ಪರಮಾಣುವಿನ ಹೊರಗಿನ ಕವಚದಲ್ಲಿರುವ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಆ ಪರಮಾಣು ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಹೇಗೆ ಸಂವಹಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತವೆ.",
+      "text_markdown": "ಒಂದು ಪರಮಾಣುವಿನ ಹೊರಗಿನ ಕವಚದಲ್ಲಿರುವ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಆ ಪರಮಾಣು ಇತರ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಹೇಗೆ ಸಂವಹಿಸುತ್ತದೆ ಎಂಬುದನ್ನು ನಿರ್ಧರಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪರಮಾಣುವಿನ ಹೊರ ಕವಚದ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳೇ ಅದರ ಇತರ ಪರಮಾಣುಗಳೊಡನೆಯ ವರ್ತನ ಕ್ರಮ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p39",
+      "id": "ch05-162",
+      "chapter": 5,
+      "text": "ಈ ಹೊರಗಿನ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ವೇಲೆನ್ಸ್ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "text_markdown": "ಈ ಹೊರಗಿನ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ವೇಲೆನ್ಸ್ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಹೊರಗಿನ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳಿಗೆ ವೇಲೆನ್ಸ್ ಎಲೆಕ್ಟ್ರಾನ್ ಎಂಬ ಪದ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p39",
+      "id": "ch05-163",
+      "chapter": 5,
+      "text": "ಪೂರ್ಣ ಹೊರಗಿನ ಕವಚವನ್ನು ಹೊಂದಿರುವ ಪರಮಾಣು ಸ್ಥಿರವಾಗಿರುತ್ತದೆ.",
+      "text_markdown": "ಪೂರ್ಣ ಹೊರಗಿನ ಕವಚವನ್ನು ಹೊಂದಿರುವ ಪರಮಾಣು ಸ್ಥಿರವಾಗಿರುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪೂರ್ಣ ಹೊರಕವಚದ ಪರಮಾಣು ಎಂದರೆ ಸ್ಥಿರ ಸಮತೋಲನ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p39",
+      "id": "ch05-164",
+      "chapter": 5,
+      "text": "ಪೂರ್ಣ ಹೊರಗಿನ ಕವಚವಿಲ್ಲದ ಪರಮಾಣು ಅದನ್ನು ತುಂಬಲು ಪ್ರಯತ್ನಿಸುತ್ತದೆ.",
+      "text_markdown": "ಪೂರ್ಣ ಹೊರಗಿನ ಕವಚವಿಲ್ಲದ ಪರಮಾಣು ಅದನ್ನು ತುಂಬಲು ಪ್ರಯತ್ನಿಸುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪೂರ್ಣ ಹೊರಗಿನ ಕವಚವಿಲ್ಲದ ಪರಮಾಣು ಅದನ್ನು ತುಂಬಲು ಪ್ರಯತ್ನಿಸುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p40",
+      "id": "ch05-165",
+      "chapter": 5,
+      "text": "ರಾಸಾಯನಿಕ ಬಂಧಗಳಲ್ಲಿ ಎರಡು ಮುಖ್ಯ ವಿಧಗಳಿವೆ.",
+      "text_markdown": "ರಾಸಾಯನಿಕ ಬಂಧಗಳಲ್ಲಿ ಎರಡು ಮುಖ್ಯ ವಿಧಗಳಿವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ರಾಸಾಯನಿಕ ಬಂಧಗಳಲ್ಲಿ ಎರಡು ಮುಖ್ಯ ವಿಧಗಳಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p40",
+      "id": "ch05-166",
+      "chapter": 5,
+      "text": "ಕೋವೆಲೆಂಟ್ ಬಂಧಗಳು ಮತ್ತು ಅಯಾನಿಕ್ ಬಂಧಗಳು.",
+      "text_markdown": "ಕೋವೆಲೆಂಟ್ ಬಂಧಗಳು ಮತ್ತು ಅಯಾನಿಕ್ ಬಂಧಗಳು.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಕೋವೆಲೆಂಟ್ ಬಂಧಗಳು ಮತ್ತು ಅಯಾನಿಕ್ ಬಂಧಗಳು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p41",
+      "id": "ch05-167",
+      "chapter": 5,
+      "text": "ಕೋವೆಲೆಂಟ್ ಬಂಧದಲ್ಲಿ, ಎರಡು ಪರಮಾಣುಗಳು ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "ಕೋವೆಲೆಂಟ್ ಬಂಧದಲ್ಲಿ, ಎರಡು ಪರಮಾಣುಗಳು ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಕೋವೆಲೆಂಟ್ ಬಂಧದಲ್ಲಿ, ಎರಡು ಪರಮಾಣುಗಳು ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p41",
+      "id": "ch05-168",
+      "chapter": 5,
+      "text": "ಎರಡೂ ಪರಮಾಣುಗಳು ಹಂಚಿಕೊಂಡ ಜೋಡಿಗೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಕೊಡುಗೆಯಾಗಿ ನೀಡುತ್ತವೆ.",
+      "text_markdown": "ಎರಡೂ ಪರಮಾಣುಗಳು ಹಂಚಿಕೊಂಡ ಜೋಡಿಗೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಕೊಡುಗೆಯಾಗಿ ನೀಡುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಎರಡೂ ಪರಮಾಣುಗಳು ಹಂಚಿಕೊಂಡ ಜೋಡಿಗೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಕೊಡುಗೆಯಾಗಿ ನೀಡುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p41",
+      "id": "ch05-169",
+      "chapter": 5,
+      "text": "ಹಂಚಿಕೊಂಡ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಎರಡೂ ನ್ಯೂಕ್ಲಿಯಸ್‌ಗಳ ಸುತ್ತ ಸುತ್ತುತ್ತವೆ.",
+      "text_markdown": "ಹಂಚಿಕೊಂಡ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಎರಡೂ ನ್ಯೂಕ್ಲಿಯಸ್‌ಗಳ ಸುತ್ತ ಸುತ್ತುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಹಂಚಿಕೊಂಡ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳು ಎರಡೂ ನ್ಯೂಕ್ಲಿಯಸ್‌ಗಳ ಸುತ್ತ ಸುತ್ತುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p41",
+      "id": "ch05-170",
+      "chapter": 5,
+      "text": "ಈ ಹಂಚಿಕೆ ಪರಮಾಣುಗಳನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡುತ್ತದೆ.",
+      "text_markdown": "ಈ ಹಂಚಿಕೆ ಪರಮಾಣುಗಳನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಹಂಚಿಕೆ ಪರಮಾಣುಗಳನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p41",
+      "id": "ch05-171",
+      "chapter": 5,
+      "text": "ನೀರು ಕೋವೆಲೆಂಟ್ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿದೆ.",
+      "text_markdown": "ನೀರು ಕೋವೆಲೆಂಟ್ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ನೀರು ಕೋವೆಲೆಂಟ್ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p41",
+      "id": "ch05-172",
+      "chapter": 5,
+      "text": "ಪ್ರತಿ ಹೈಡ್ರೋಜನ್ ಪರಮಾಣು ಆಮ್ಲಜನಕ ಪರಮಾಣುವಿನೊಂದಿಗೆ ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ.",
+      "text_markdown": "ಪ್ರತಿ ಹೈಡ್ರೋಜನ್ ಪರಮಾಣು ಆಮ್ಲಜನಕ ಪರಮಾಣುವಿನೊಂದಿಗೆ ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪ್ರತಿ ಹೈಡ್ರೋಜನ್ ಪರಮಾಣು ಆಮ್ಲಜನಕ ಪರಮಾಣುವಿನೊಂದಿಗೆ ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ಹಂಚಿಕೊಳ್ಳುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-173",
+      "chapter": 5,
+      "text": "ಅಯಾನಿಕ್ ಬಂಧದಲ್ಲಿ, ಒಂದು ಪರಮಾಣು ಇನ್ನೊಂದು ಪರಮಾಣುವಿಗೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ನೀಡುತ್ತದೆ.",
+      "text_markdown": "ಅಯಾನಿಕ್ ಬಂಧದಲ್ಲಿ, ಒಂದು ಪರಮಾಣು ಇನ್ನೊಂದು ಪರಮಾಣುವಿಗೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ನೀಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಅಯಾನಿಕ್ ಬಂಧದಲ್ಲಿ, ಒಂದು ಪರಮಾಣು ಇನ್ನೊಂದು ಪರಮಾಣುವಿಗೆ ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ನೀಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-174",
+      "chapter": 5,
+      "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಕಳೆದುಕೊಳ್ಳುವ ಪರಮಾಣು ಧನಾತ್ಮಕವಾಗಿ ಆವೇಶಗೊಳ್ಳುತ್ತದೆ.",
+      "text_markdown": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಕಳೆದುಕೊಳ್ಳುವ ಪರಮಾಣು ಧನಾತ್ಮಕವಾಗಿ ಆವೇಶಗೊಳ್ಳುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಕಳೆದುಕೊಳ್ಳುವ ಪರಮಾಣು ಧನಾತ್ಮಕವಾಗಿ ಆವೇಶಗೊಳ್ಳುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-175",
+      "chapter": 5,
+      "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಪಡೆಯುವ ಪರಮಾಣು ಋಣಾತ್ಮಕವಾಗಿ ಆವೇಶಗೊಳ್ಳುತ್ತದೆ.",
+      "text_markdown": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಪಡೆಯುವ ಪರಮಾಣು ಋಣಾತ್ಮಕವಾಗಿ ಆವೇಶಗೊಳ್ಳುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಎಲೆಕ್ಟ್ರಾನ್‌ಗಳನ್ನು ಪಡೆಯುವ ಪರಮಾಣು ಋಣಾತ್ಮಕವಾಗಿ ಆವೇಶಗೊಳ್ಳುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-176",
+      "chapter": 5,
+      "text": "ವಿರುದ್ಧ ಆವೇಶಗಳು ಆಕರ್ಷಿಸುತ್ತವೆ.",
+      "text_markdown": "ವಿರುದ್ಧ ಆವೇಶಗಳು ಆಕರ್ಷಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ವಿರುದ್ಧ ಆವೇಶಗಳು ಆಕರ್ಷಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-177",
+      "chapter": 5,
+      "text": "ಈ ಆಕರ್ಷಣೆ ಎರಡು ಪರಮಾಣುಗಳನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡುತ್ತದೆ.",
+      "text_markdown": "ಈ ಆಕರ್ಷಣೆ ಎರಡು ಪರಮಾಣುಗಳನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಆಕರ್ಷಣೆ ಎರಡು ಪರಮಾಣುಗಳನ್ನು ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-178",
+      "chapter": 5,
+      "text": "ಅಡುಗೆ ಉಪ್ಪು ಅಯಾನಿಕ್ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿದೆ.",
+      "text_markdown": "ಅಡುಗೆ ಉಪ್ಪು ಅಯಾನಿಕ್ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಅಡುಗೆ ಉಪ್ಪು ಅಯಾನಿಕ್ ಬಂಧಗಳಿಂದ ಒಟ್ಟಾಗಿ ಹಿಡಿದಿಟ್ಟುಕೊಂಡಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p42",
+      "id": "ch05-179",
+      "chapter": 5,
+      "text": "ಸೋಡಿಯಂ ಕ್ಲೋರಿನ್‌ಗೆ ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ನೀಡುತ್ತದೆ.",
+      "text_markdown": "ಸೋಡಿಯಂ ಕ್ಲೋರಿನ್‌ಗೆ ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ನೀಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಸೋಡಿಯಂ ಕ್ಲೋರಿನ್‌ಗೆ ಒಂದು ಎಲೆಕ್ಟ್ರಾನ್ ಅನ್ನು ನೀಡುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p43",
+      "id": "ch05-180",
+      "chapter": 5,
+      "text": "ಒಂದು ನೀರಿನ ಅಣು ಎರಡು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳನ್ನು ಮತ್ತು ಒಂದು ಆಮ್ಲಜನಕ ಪರಮಾಣುವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "ಒಂದು ನೀರಿನ ಅಣು ಎರಡು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳನ್ನು ಮತ್ತು ಒಂದು ಆಮ್ಲಜನಕ ಪರಮಾಣುವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಒಂದು ನೀರಿನ ಅಣು ಎರಡು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳನ್ನು ಮತ್ತು ಒಂದು ಆಮ್ಲಜನಕ ಪರಮಾಣುವನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p43",
+      "id": "ch05-181",
+      "chapter": 5,
+      "text": "ವಿಜ್ಞಾನಿಗಳು ಇದನ್ನು H2O ಎಂದು ಬರೆಯುತ್ತಾರೆ.",
+      "text_markdown": "ವಿಜ್ಞಾನಿಗಳು ಇದನ್ನು H2O ಎಂದು ಬರೆಯುತ್ತಾರೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ವಿಜ್ಞಾನಿಗಳು ಇದನ್ನು ಹೆಚ್ ಎರಡು ಓ ಎಂದು ಬರೆಯುತ್ತಾರೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p43",
+      "id": "ch05-182",
+      "chapter": 5,
+      "text": "H ಹೈಡ್ರೋಜನ್ ಅನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+      "text_markdown": "H ಹೈಡ್ರೋಜನ್ ಅನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಹೆಚ್ ಹೈಡ್ರೋಜನ್ ಅನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p43",
+      "id": "ch05-183",
+      "chapter": 5,
+      "text": "O ಆಮ್ಲಜನಕವನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+      "text_markdown": "O ಆಮ್ಲಜನಕವನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಓ ಆಮ್ಲಜನಕವನ್ನು ಸೂಚಿಸುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p43",
+      "id": "ch05-184",
+      "chapter": 5,
+      "text": "2 ಎಂದರೆ ಎರಡು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳಿವೆ.",
+      "text_markdown": "2 ಎಂದರೆ ಎರಡು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳಿವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಎರಡು ಎಂದರೆ ಎರಡು ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p44",
+      "id": "ch05-185",
+      "chapter": 5,
+      "text": "ಕಾರ್ಬನ್ ಡೈಆಕ್ಸೈಡ್‌ನ ಒಂದು ಅಣು ಒಂದು ಕಾರ್ಬನ್ ಪರಮಾಣು ಮತ್ತು ಎರಡು ಆಮ್ಲಜನಕ ಪರಮಾಣುಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "text_markdown": "ಕಾರ್ಬನ್ ಡೈಆಕ್ಸೈಡ್‌ನ ಒಂದು ಅಣು ಒಂದು ಕಾರ್ಬನ್ ಪರಮಾಣು ಮತ್ತು ಎರಡು ಆಮ್ಲಜನಕ ಪರಮಾಣುಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಕಾರ್ಬನ್ ಡೈಆಕ್ಸೈಡ್‌ನ ಒಂದು ಅಣು ಒಂದು ಕಾರ್ಬನ್ ಪರಮಾಣು ಮತ್ತು ಎರಡು ಆಮ್ಲಜನಕ ಪರಮಾಣುಗಳನ್ನು ಹೊಂದಿರುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p44",
+      "id": "ch05-186",
+      "chapter": 5,
+      "text": "ವಿಜ್ಞಾನಿಗಳು ಇದನ್ನು CO2 ಎಂದು ಬರೆಯುತ್ತಾರೆ.",
+      "text_markdown": "ವಿಜ್ಞಾನಿಗಳು ಇದನ್ನು CO2 ಎಂದು ಬರೆಯುತ್ತಾರೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ವಿಜ್ಞಾನಿಗಳು ಇದನ್ನು ಸಿ ಓ ಎರಡು ಎಂದು ಬರೆಯುತ್ತಾರೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p44",
+      "id": "ch05-187",
+      "chapter": 5,
+      "text": "ಸಸ್ಯಗಳು ಗಾಳಿಯಿಂದ ಕಾರ್ಬನ್ ಡೈಆಕ್ಸೈಡ್ ಅನ್ನು ಹೀರಿಕೊಂಡು ಸಕ್ಕರೆ ಅಣುಗಳನ್ನು ನಿರ್ಮಿಸಲು ಬಳಸುತ್ತವೆ.",
+      "text_markdown": "ಸಸ್ಯಗಳು ಗಾಳಿಯಿಂದ ಕಾರ್ಬನ್ ಡೈಆಕ್ಸೈಡ್ ಅನ್ನು ಹೀರಿಕೊಂಡು ಸಕ್ಕರೆ ಅಣುಗಳನ್ನು ನಿರ್ಮಿಸಲು ಬಳಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಸಸ್ಯಗಳು ಗಾಳಿಯಿಂದ ಕಾರ್ಬನ್ ಡೈಆಕ್ಸೈಡ್ ಅನ್ನು ಹೀರಿಕೊಂಡು ಸಕ್ಕರೆ ಅಣುಗಳನ್ನು ನಿರ್ಮಿಸಲು ಬಳಸುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p45",
+      "id": "ch05-188",
+      "chapter": 5,
+      "text": "ಪರಮಾಣುಗಳ ನಡುವಿನ ಬಂಧಗಳು ಶಕ್ತಿಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತವೆ.",
+      "text_markdown": "ಪರಮಾಣುಗಳ ನಡುವಿನ ಬಂಧಗಳು ಶಕ್ತಿಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳ ನಡುವಿನ ಬಂಧಗಳು ಶಕ್ತಿಯನ್ನು ಸಂಗ್ರಹಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p45",
+      "id": "ch05-189",
+      "chapter": 5,
+      "text": "ಬಂಧಗಳು ಮುರಿದಾಗ, ಶಕ್ತಿ ಬಿಡುಗಡೆಯಾಗುತ್ತದೆ.",
+      "text_markdown": "ಬಂಧಗಳು ಮುರಿದಾಗ, ಶಕ್ತಿ ಬಿಡುಗಡೆಯಾಗುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಬಂಧಗಳು ಮುರಿದಾಗ, ಶಕ್ತಿ ಬಿಡುಗಡೆಯಾಗುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p45",
+      "id": "ch05-190",
+      "chapter": 5,
+      "text": "ಬಂಧಗಳು ರೂಪುಗೊಂಡಾಗ, ಶಕ್ತಿ ಹೀರಲ್ಪಡುತ್ತದೆ.",
+      "text_markdown": "ಬಂಧಗಳು ರೂಪುಗೊಂಡಾಗ, ಶಕ್ತಿ ಹೀರಲ್ಪಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಬಂಧಗಳು ರೂಪುಗೊಂಡಾಗ, ಶಕ್ತಿ ಹೀರಲ್ಪಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p45",
+      "id": "ch05-191",
+      "chapter": 5,
+      "text": "ವಿಶ್ವದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ರಾಸಾಯನಿಕ ಕ್ರಿಯೆಯು ಹಳೆಯ ಬಂಧಗಳನ್ನು ಮುರಿಯುವುದು ಮತ್ತು ಹೊಸದನ್ನು ರೂಪಿಸುವುದನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ.",
+      "text_markdown": "ವಿಶ್ವದಲ್ಲಿನ ಪ್ರತಿಯೊಂದು ರಾಸಾಯನಿಕ ಕ್ರಿಯೆಯು ಹಳೆಯ ಬಂಧಗಳನ್ನು ಮುರಿಯುವುದು ಮತ್ತು ಹೊಸದನ್ನು ರೂಪಿಸುವುದನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಹೇಗೆ ಬಂಧಿಸುತ್ತವೆ",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು ರಾಸಾಯನಿಕ ಕ್ರಿಯೆ ಎಂದರೆ ಹಳೆಯ ಬಂಧಗಳ ಮುರಿತ ಮತ್ತು ಹೊಸ ಬಂಧಗಳ ನಿರ್ಮಾಣ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p46",
+      "heading_level": 1,
+      "id": "ch06-192",
+      "chapter": 6,
+      "text": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "text_markdown": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p47",
+      "id": "ch06-193",
+      "chapter": 6,
+      "text": "ಪರಮಾಣುಗಳು ಯಾವಾಗಲೂ ಚಲಿಸುತ್ತಿರುತ್ತವೆ.",
+      "text_markdown": "ಪರಮಾಣುಗಳು ಯಾವಾಗಲೂ ಚಲಿಸುತ್ತಿರುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳು ಯಾವಾಗಲೂ ಚಲಿಸುತ್ತಿರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p47",
+      "id": "ch06-194",
+      "chapter": 6,
+      "text": "ಅವು ಎಂದಿಗೂ ನಿಲ್ಲುವುದಿಲ್ಲ.",
+      "text_markdown": "ಅವು ಎಂದಿಗೂ ನಿಲ್ಲುವುದಿಲ್ಲ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅವು ಎಂದಿಗೂ ನಿಲ್ಲುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p47",
+      "id": "ch06-195",
+      "chapter": 6,
+      "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯಕ್ಕಿಂತ ಹೆಚ್ಚಿನ ಯಾವುದೇ ತಾಪಮಾನದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಕಂಪಿಸುತ್ತವೆ, ತಿರುಗುತ್ತವೆ ಮತ್ತು ಬಾಹ್ಯಾಕಾಶದ ಮೂಲಕ ಚಲಿಸುತ್ತವೆ.",
+      "text_markdown": "ಸಂಪೂರ್ಣ ಶೂನ್ಯಕ್ಕಿಂತ ಹೆಚ್ಚಿನ ಯಾವುದೇ ತಾಪಮಾನದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಕಂಪಿಸುತ್ತವೆ, ತಿರುಗುತ್ತವೆ ಮತ್ತು ಬಾಹ್ಯಾಕಾಶದ ಮೂಲಕ ಚಲಿಸುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯಕ್ಕಿಂತ ಮೇಲಿನ ಯಾವುದೇ ತಾಪಮಾನದಲ್ಲಿ, ಪರಮಾಣುಗಳಲ್ಲಿ ಕಂಪನ, ತಿರುಗಾಟ ಮತ್ತು ಚಲನ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p47",
+      "id": "ch06-196",
+      "chapter": 6,
+      "text": "ಈ ಚಲನೆಯೇ ನಾವು ಶಾಖ ಎಂದು ಅನುಭವಿಸುವುದು.",
+      "text_markdown": "ಈ ಚಲನೆಯೇ ನಾವು ಶಾಖ ಎಂದು ಅನುಭವಿಸುವುದು.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಈ ಚಲನೆಯೇ ನಾವು ಶಾಖ ಎಂದು ಅನುಭವಿಸುವುದು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p48",
+      "id": "ch06-197",
+      "chapter": 6,
+      "text": "ಘನವಸ್ತುವಿನಲ್ಲಿ, ಪರಮಾಣುಗಳು ತಮ್ಮ ಸ್ಥಾನದಲ್ಲಿ ಕಂಪಿಸುತ್ತವೆ.",
+      "text_markdown": "ಘನವಸ್ತುವಿನಲ್ಲಿ, ಪರಮಾಣುಗಳು ತಮ್ಮ ಸ್ಥಾನದಲ್ಲಿ ಕಂಪಿಸುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಘನವಸ್ತುವಿನಲ್ಲಿ, ಪರಮಾಣುಗಳು ತಮ್ಮ ಸ್ಥಾನದಲ್ಲಿ ಕಂಪಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p48",
+      "id": "ch06-198",
+      "chapter": 6,
+      "text": "ಅವು ಸ್ಥಿರ ರಚನೆಯಲ್ಲಿ ಬಂಧಿಸಲ್ಪಟ್ಟಿವೆ.",
+      "text_markdown": "ಅವು ಸ್ಥಿರ ರಚನೆಯಲ್ಲಿ ಬಂಧಿಸಲ್ಪಟ್ಟಿವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅವು ಸ್ಥಿರ ರಚನೆಯಲ್ಲಿ ಬಂಧಿಸಲ್ಪಟ್ಟಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p48",
+      "id": "ch06-199",
+      "chapter": 6,
+      "text": "ಅವು ಹಿಂದಕ್ಕೆ ಮತ್ತು ಮುಂದಕ್ಕೆ ಕಂಪಿಸುತ್ತವೆ, ಆದರೆ ತಮ್ಮ ಸ್ಥಾನಗಳನ್ನು ಬಿಡುವುದಿಲ್ಲ.",
+      "text_markdown": "ಅವು ಹಿಂದಕ್ಕೆ ಮತ್ತು ಮುಂದಕ್ಕೆ ಕಂಪಿಸುತ್ತವೆ, ಆದರೆ ತಮ್ಮ ಸ್ಥಾನಗಳನ್ನು ಬಿಡುವುದಿಲ್ಲ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅವು ಹಿಂದಕ್ಕೆ ಮತ್ತು ಮುಂದಕ್ಕೆ ಕಂಪಿಸುತ್ತವೆ, ಆದರೆ ತಮ್ಮ ಸ್ಥಾನಗಳನ್ನು ಬಿಡುವುದಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p48",
+      "id": "ch06-200",
+      "chapter": 6,
+      "text": "ಇದರಿಂದಾಗಿಯೇ ಘನವಸ್ತುಗಳು ತಮ್ಮ ಆಕಾರವನ್ನು ಉಳಿಸಿಕೊಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "ಇದರಿಂದಾಗಿಯೇ ಘನವಸ್ತುಗಳು ತಮ್ಮ ಆಕಾರವನ್ನು ಉಳಿಸಿಕೊಳ್ಳುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಇದರಿಂದಾಗಿಯೇ ಘನವಸ್ತುಗಳು ತಮ್ಮ ಆಕಾರವನ್ನು ಉಳಿಸಿಕೊಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p48",
+      "id": "ch06-201",
+      "chapter": 6,
+      "text": "ಒಂದು ಐಸ್ ಬ್ಲಾಕ್‌ನಲ್ಲಿರುವ ಪರಮಾಣುಗಳು ಕಂಪಿಸುತ್ತವೆ, ಆದರೆ ಅವು ಗಟ್ಟಿಯಾದ ಸ್ಫಟಿಕ ಮಾದರಿಯಲ್ಲಿ ಉಳಿಯುತ್ತವೆ.",
+      "text_markdown": "ಒಂದು ಐಸ್ ಬ್ಲಾಕ್‌ನಲ್ಲಿರುವ ಪರಮಾಣುಗಳು ಕಂಪಿಸುತ್ತವೆ, ಆದರೆ ಅವು ಗಟ್ಟಿಯಾದ ಸ್ಫಟಿಕ ಮಾದರಿಯಲ್ಲಿ ಉಳಿಯುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಒಂದು ಐಸ್ ಬ್ಲಾಕ್‌ನಲ್ಲಿರುವ ಪರಮಾಣುಗಳು ಕಂಪಿಸುತ್ತವೆ, ಆದರೆ ಅವು ಗಟ್ಟಿಯಾದ ಸ್ಫಟಿಕ ಮಾದರಿಯಲ್ಲಿ ಉಳಿಯುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p49",
+      "id": "ch06-202",
+      "chapter": 6,
+      "text": "ದ್ರವದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಹೆಚ್ಚು ಮುಕ್ತವಾಗಿ ಚಲಿಸುತ್ತವೆ.",
+      "text_markdown": "ದ್ರವದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಹೆಚ್ಚು ಮುಕ್ತವಾಗಿ ಚಲಿಸುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ದ್ರವದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಹೆಚ್ಚು ಮುಕ್ತವಾಗಿ ಚಲಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p49",
+      "id": "ch06-203",
+      "chapter": 6,
+      "text": "ಅವು ಒಂದಕ್ಕೊಂದು ಜಾರುತ್ತವೆ.",
+      "text_markdown": "ಅವು ಒಂದಕ್ಕೊಂದು ಜಾರುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅವು ಒಂದಕ್ಕೊಂದು ಜಾರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p49",
+      "id": "ch06-204",
+      "chapter": 6,
+      "text": "ಅವು ಹತ್ತಿರದಲ್ಲಿಯೇ ಇರುತ್ತವೆ, ಆದರೆ ಅವು ಸ್ಥಾನದಲ್ಲಿ ಬಂಧಿಸಲ್ಪಟ್ಟಿಲ್ಲ.",
+      "text_markdown": "ಅವು ಹತ್ತಿರದಲ್ಲಿಯೇ ಇರುತ್ತವೆ, ಆದರೆ ಅವು ಸ್ಥಾನದಲ್ಲಿ ಬಂಧಿಸಲ್ಪಟ್ಟಿಲ್ಲ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅವು ಹತ್ತಿರದಲ್ಲಿಯೇ ಇರುತ್ತವೆ, ಆದರೆ ಅವು ಸ್ಥಾನದಲ್ಲಿ ಬಂಧಿಸಲ್ಪಟ್ಟಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p49",
+      "id": "ch06-205",
+      "chapter": 6,
+      "text": "ಇದರಿಂದಾಗಿಯೇ ದ್ರವಗಳು ಹರಿಯುತ್ತವೆ.",
+      "text_markdown": "ಇದರಿಂದಾಗಿಯೇ ದ್ರವಗಳು ಹರಿಯುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಇದರಿಂದಾಗಿಯೇ ದ್ರವಗಳು ಹರಿಯುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p49",
+      "id": "ch06-206",
+      "chapter": 6,
+      "text": "ಒಂದು ಲೋಟ ನೀರಿನಲ್ಲಿರುವ ಪರಮಾಣುಗಳು ನಿರಂತರವಾಗಿ ಚಲಿಸುತ್ತಾ ಮತ್ತು ಮರುಜೋಡಣೆಯಾಗುತ್ತಿರುತ್ತವೆ, ಆದರೆ ಅವು ಒಂದಕ್ಕೊಂದು ಹತ್ತಿರದಲ್ಲಿಯೇ ಇರುತ್ತವೆ.",
+      "text_markdown": "ಒಂದು ಲೋಟ ನೀರಿನಲ್ಲಿರುವ ಪರಮಾಣುಗಳು ನಿರಂತರವಾಗಿ ಚಲಿಸುತ್ತಾ ಮತ್ತು ಮರುಜೋಡಣೆಯಾಗುತ್ತಿರುತ್ತವೆ, ಆದರೆ ಅವು ಒಂದಕ್ಕೊಂದು ಹತ್ತಿರದಲ್ಲಿಯೇ ಇರುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಒಂದು ಲೋಟ ನೀರಿನಲ್ಲಿರುವ ಪರಮಾಣುಗಳು ನಿರಂತರವಾಗಿ ಚಲಿಸುತ್ತಾ ಮತ್ತು ಮರುಜೋಡಣೆಯಾಗುತ್ತಿರುತ್ತವೆ, ಆದರೆ ಅವು ಒಂದಕ್ಕೊಂದು ಹತ್ತಿರದಲ್ಲಿಯೇ ಇರುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p50",
+      "id": "ch06-207",
+      "chapter": 6,
+      "text": "ಅನಿಲದಲ್ಲಿ, ಪರಮಾಣುಗಳು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತವೆ ಮತ್ತು ಹರಡುತ್ತವೆ.",
+      "text_markdown": "ಅನಿಲದಲ್ಲಿ, ಪರಮಾಣುಗಳು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತವೆ ಮತ್ತು ಹರಡುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅನಿಲದಲ್ಲಿ, ಪರಮಾಣುಗಳು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತವೆ ಮತ್ತು ಹರಡುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p50",
+      "id": "ch06-208",
+      "chapter": 6,
+      "text": "ಅವು ಇನ್ನೊಂದು ಪರಮಾಣು ಅಥವಾ ಗೋಡೆಗೆ ತಾಗುವವರೆಗೆ ನೇರ ರೇಖೆಗಳಲ್ಲಿ ಹಾರುತ್ತವೆ.",
+      "text_markdown": "ಅವು ಇನ್ನೊಂದು ಪರಮಾಣು ಅಥವಾ ಗೋಡೆಗೆ ತಾಗುವವರೆಗೆ ನೇರ ರೇಖೆಗಳಲ್ಲಿ ಹಾರುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅವು ಇನ್ನೊಂದು ಪರಮಾಣು ಅಥವಾ ಗೋಡೆಗೆ ತಾಗುವವರೆಗೆ ನೇರ ರೇಖೆಗಳಲ್ಲಿ ಹಾರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p50",
+      "id": "ch06-209",
+      "chapter": 6,
+      "text": "ಅವು ಒಂದಕ್ಕೊಂದು ಡಿಕ್ಕಿ ಹೊಡೆದು ದಿಕ್ಕನ್ನು ಬದಲಾಯಿಸುತ್ತವೆ.",
+      "text_markdown": "ಅವು ಒಂದಕ್ಕೊಂದು ಡಿಕ್ಕಿ ಹೊಡೆದು ದಿಕ್ಕನ್ನು ಬದಲಾಯಿಸುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅವು ಒಂದಕ್ಕೊಂದು ಡಿಕ್ಕಿ ಹೊಡೆದು ದಿಕ್ಕನ್ನು ಬದಲಾಯಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p50",
+      "id": "ch06-210",
+      "chapter": 6,
+      "text": "ಇದರಿಂದಾಗಿಯೇ ಅನಿಲವು ನೀವು ಅದನ್ನು ಹಾಕುವ ಯಾವುದೇ ಪಾತ್ರೆಯನ್ನು ತುಂಬುತ್ತದೆ.",
+      "text_markdown": "ಇದರಿಂದಾಗಿಯೇ ಅನಿಲವು ನೀವು ಅದನ್ನು ಹಾಕುವ ಯಾವುದೇ ಪಾತ್ರೆಯನ್ನು ತುಂಬುತ್ತದೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಇದರಿಂದಾಗಿಯೇ ಅನಿಲವು ನೀವು ಅದನ್ನು ಹಾಕುವ ಯಾವುದೇ ಪಾತ್ರೆಯನ್ನು ತುಂಬುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p50",
+      "id": "ch06-211",
+      "chapter": 6,
+      "text": "ಒಂದು ಕೋಣೆಯಲ್ಲಿರುವ ಗಾಳಿಯಲ್ಲಿನ ಪರಮಾಣುಗಳು ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ನೂರಾರು ಮೀಟರ್ ವೇಗದಲ್ಲಿ ಎಲ್ಲಾ ದಿಕ್ಕುಗಳಲ್ಲಿ ಚಲಿಸುತ್ತಿರುತ್ತವೆ.",
+      "text_markdown": "ಒಂದು ಕೋಣೆಯಲ್ಲಿರುವ ಗಾಳಿಯಲ್ಲಿನ ಪರಮಾಣುಗಳು ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ನೂರಾರು ಮೀಟರ್ ವೇಗದಲ್ಲಿ ಎಲ್ಲಾ ದಿಕ್ಕುಗಳಲ್ಲಿ ಚಲಿಸುತ್ತಿರುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಒಂದು ಕೋಣೆಯಲ್ಲಿರುವ ಗಾಳಿಯಲ್ಲಿನ ಪರಮಾಣುಗಳು ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ನೂರಾರು ಮೀಟರ್ ವೇಗದಲ್ಲಿ ಎಲ್ಲಾ ದಿಕ್ಕುಗಳಲ್ಲಿ ಚಲಿಸುತ್ತಿರುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p51",
+      "id": "ch06-212",
+      "chapter": 6,
+      "text": "ಪರಮಾಣುಗಳು ಎಷ್ಟು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂಬುದರ ಅಳತೆ ತಾಪಮಾನ.",
+      "text_markdown": "ಪರಮಾಣುಗಳು ಎಷ್ಟು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂಬುದರ ಅಳತೆ ತಾಪಮಾನ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳು ಎಷ್ಟು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂಬುದರ ಅಳತೆ ತಾಪಮಾನ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p51",
+      "id": "ch06-213",
+      "chapter": 6,
+      "text": "ಬಿಸಿ ಎಂದರೆ ಪರಮಾಣುಗಳು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂದರ್ಥ.",
+      "text_markdown": "ಬಿಸಿ ಎಂದರೆ ಪರಮಾಣುಗಳು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂದರ್ಥ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಬಿಸಿ ಎಂದರೆ ಪರಮಾಣುಗಳು ವೇಗವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂದರ್ಥ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p51",
+      "id": "ch06-214",
+      "chapter": 6,
+      "text": "ಶೀತ ಎಂದರೆ ಪರಮಾಣುಗಳು ನಿಧಾನವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂದರ್ಥ.",
+      "text_markdown": "ಶೀತ ಎಂದರೆ ಪರಮಾಣುಗಳು ನಿಧಾನವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂದರ್ಥ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಶೀತ ಎಂದರೆ ಪರಮಾಣುಗಳು ನಿಧಾನವಾಗಿ ಚಲಿಸುತ್ತಿವೆ ಎಂದರ್ಥ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p51",
+      "id": "ch06-215",
+      "chapter": 6,
+      "text": "ನೀವು ಒಲೆಯ ಮೇಲೆ ನೀರನ್ನು ಬಿಸಿ ಮಾಡಿದಾಗ, ನೀವು ನೀರಿನ ಅಣುಗಳನ್ನು ವೇಗವಾಗಿ ಚಲಿಸುವಂತೆ ಮಾಡುತ್ತೀರಿ.",
+      "text_markdown": "ನೀವು ಒಲೆಯ ಮೇಲೆ ನೀರನ್ನು ಬಿಸಿ ಮಾಡಿದಾಗ, ನೀವು ನೀರಿನ ಅಣುಗಳನ್ನು ವೇಗವಾಗಿ ಚಲಿಸುವಂತೆ ಮಾಡುತ್ತೀರಿ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ನೀವು ಒಲೆಯ ಮೇಲೆ ನೀರನ್ನು ಬಿಸಿ ಮಾಡಿದಾಗ, ನೀವು ನೀರಿನ ಅಣುಗಳನ್ನು ವೇಗವಾಗಿ ಚಲಿಸುವಂತೆ ಮಾಡುತ್ತೀರಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p51",
+      "id": "ch06-216",
+      "chapter": 6,
+      "text": "ಅಣುಗಳು ಸಾಕಷ್ಟು ವೇಗವಾಗಿ ಚಲಿಸಿದಾಗ, ಅವು ದ್ರವದಿಂದ ಹೊರಬಂದು ಆವಿಯಾಗಿ ಮಾರ್ಪಡುತ್ತವೆ.",
+      "text_markdown": "ಅಣುಗಳು ಸಾಕಷ್ಟು ವೇಗವಾಗಿ ಚಲಿಸಿದಾಗ, ಅವು ದ್ರವದಿಂದ ಹೊರಬಂದು ಆವಿಯಾಗಿ ಮಾರ್ಪಡುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಅಣುಗಳು ಸಾಕಷ್ಟು ವೇಗವಾಗಿ ಚಲಿಸಿದಾಗ, ಅವು ದ್ರವದಿಂದ ಹೊರಬಂದು ಆವಿಯಾಗಿ ಮಾರ್ಪಡುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p52",
+      "id": "ch06-217",
+      "chapter": 6,
+      "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯವು ಸಾಧ್ಯವಿರುವ ಅತ್ಯಂತ ಕಡಿಮೆ ತಾಪಮಾನವಾಗಿದೆ.",
+      "text_markdown": "ಸಂಪೂರ್ಣ ಶೂನ್ಯವು ಸಾಧ್ಯವಿರುವ ಅತ್ಯಂತ ಕಡಿಮೆ ತಾಪಮಾನವಾಗಿದೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯವು ಸಾಧ್ಯವಿರುವ ಅತ್ಯಂತ ಕಡಿಮೆ ತಾಪಮಾನವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p52",
+      "id": "ch06-218",
+      "chapter": 6,
+      "text": "ಇದು ಸುಮಾರು ಮೈನಸ್ 273 ಡಿಗ್ರಿ ಸೆಲ್ಸಿಯಸ್ ಆಗಿದೆ.",
+      "text_markdown": "ಇದು ಸುಮಾರು ಮೈನಸ್ 273 ಡಿಗ್ರಿ ಸೆಲ್ಸಿಯಸ್ ಆಗಿದೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಇದು ಸುಮಾರು ಮೈನಸ್ ಇನ್ನೂರ ಎಪ್ಪತ್ತಮೂರು ಡಿಗ್ರಿ ಸೆಲ್ಸಿಯಸ್ ಆಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p52",
+      "id": "ch06-219",
+      "chapter": 6,
+      "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಸಾಧ್ಯವಿರುವ ಕನಿಷ್ಠ ಶಕ್ತಿಯನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+      "text_markdown": "ಸಂಪೂರ್ಣ ಶೂನ್ಯದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಸಾಧ್ಯವಿರುವ ಕನಿಷ್ಠ ಶಕ್ತಿಯನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯದಲ್ಲಿ, ಪರಮಾಣುಗಳು ಸಾಧ್ಯವಿರುವ ಕನಿಷ್ಠ ಶಕ್ತಿಯನ್ನು ಹೊಂದಿರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p52",
+      "id": "ch06-220",
+      "chapter": 6,
+      "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯಕ್ಕಿಂತ ಕಡಿಮೆ ತಾಪಮಾನ ಯಾವುದೂ ಇರಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "text_markdown": "ಸಂಪೂರ್ಣ ಶೂನ್ಯಕ್ಕಿಂತ ಕಡಿಮೆ ತಾಪಮಾನ ಯಾವುದೂ ಇರಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಸಂಪೂರ್ಣ ಶೂನ್ಯಕ್ಕಿಂತ ಕಡಿಮೆ ತಾಪಮಾನ ಯಾವುದೂ ಇರಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p52",
+      "id": "ch06-221",
+      "chapter": 6,
+      "text": "ವಿಜ್ಞಾನಿಗಳು ಪ್ರಯೋಗಾಲಯಗಳಲ್ಲಿ ಸಂಪೂರ್ಣ ಶೂನ್ಯವನ್ನು ತಲುಪಲು ಬಹಳ ಹತ್ತಿರ ಬಂದಿದ್ದಾರೆ, ಆದರೆ ಯಾರೂ ಅದನ್ನು ನಿಖರವಾಗಿ ತಲುಪಿಲ್ಲ.",
+      "text_markdown": "ವಿಜ್ಞಾನಿಗಳು ಪ್ರಯೋಗಾಲಯಗಳಲ್ಲಿ ಸಂಪೂರ್ಣ ಶೂನ್ಯವನ್ನು ತಲುಪಲು ಬಹಳ ಹತ್ತಿರ ಬಂದಿದ್ದಾರೆ, ಆದರೆ ಯಾರೂ ಅದನ್ನು ನಿಖರವಾಗಿ ತಲುಪಿಲ್ಲ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ವಿಜ್ಞಾನಿಗಳು ಪ್ರಯೋಗಾಲಯಗಳಲ್ಲಿ ಸಂಪೂರ್ಣ ಶೂನ್ಯವನ್ನು ತಲುಪಲು ಬಹಳ ಹತ್ತಿರ ಬಂದಿದ್ದಾರೆ, ಆದರೆ ಯಾರೂ ಅದನ್ನು ನಿಖರವಾಗಿ ತಲುಪಿಲ್ಲ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p53",
+      "id": "ch06-222",
+      "chapter": 6,
+      "text": "ಒತ್ತಡವು ಪರಮಾಣುಗಳು ಮೇಲ್ಮೈಗಳನ್ನು ಅಪ್ಪಳಿಸುವುದರಿಂದ ಉಂಟಾಗುತ್ತದೆ.",
+      "text_markdown": "ಒತ್ತಡವು ಪರಮಾಣುಗಳು ಮೇಲ್ಮೈಗಳನ್ನು ಅಪ್ಪಳಿಸುವುದರಿಂದ ಉಂಟಾಗುತ್ತದೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಒತ್ತಡವು ಪರಮಾಣುಗಳು ಮೇಲ್ಮೈಗಳನ್ನು ಅಪ್ಪಳಿಸುವುದರಿಂದ ಉಂಟಾಗುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p53",
+      "id": "ch06-223",
+      "chapter": 6,
+      "text": "ಟೈರ್‌ನಲ್ಲಿರುವ ಗಾಳಿಯು ಹೊರಕ್ಕೆ ತಳ್ಳುತ್ತದೆ ಏಕೆಂದರೆ ಗಾಳಿಯ ಅಣುಗಳು ನಿರಂತರವಾಗಿ ಟೈರ್‌ನ ಒಳಗಿನ ಗೋಡೆಗಳಿಗೆ ಅಪ್ಪಳಿಸುತ್ತಿರುತ್ತವೆ.",
+      "text_markdown": "ಟೈರ್‌ನಲ್ಲಿರುವ ಗಾಳಿಯು ಹೊರಕ್ಕೆ ತಳ್ಳುತ್ತದೆ ಏಕೆಂದರೆ ಗಾಳಿಯ ಅಣುಗಳು ನಿರಂತರವಾಗಿ ಟೈರ್‌ನ ಒಳಗಿನ ಗೋಡೆಗಳಿಗೆ ಅಪ್ಪಳಿಸುತ್ತಿರುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಟೈರ್‌ನಲ್ಲಿರುವ ಗಾಳಿಯು ಹೊರಕ್ಕೆ ತಳ್ಳುತ್ತದೆ ಏಕೆಂದರೆ ಗಾಳಿಯ ಅಣುಗಳು ನಿರಂತರವಾಗಿ ಟೈರ್‌ನ ಒಳಗಿನ ಗೋಡೆಗಳಿಗೆ ಅಪ್ಪಳಿಸುತ್ತಿರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p53",
+      "id": "ch06-224",
+      "chapter": 6,
+      "text": "ಹೆಚ್ಚು ಅಣುಗಳು ಅಥವಾ ವೇಗವಾಗಿ ಚಲಿಸುವ ಅಣುಗಳು ಹೆಚ್ಚು ಒತ್ತಡವನ್ನು ಅರ್ಥೈಸುತ್ತವೆ.",
+      "text_markdown": "ಹೆಚ್ಚು ಅಣುಗಳು ಅಥವಾ ವೇಗವಾಗಿ ಚಲಿಸುವ ಅಣುಗಳು ಹೆಚ್ಚು ಒತ್ತಡವನ್ನು ಅರ್ಥೈಸುತ್ತವೆ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಹೆಚ್ಚು ಅಣುಗಳು ಅಥವಾ ವೇಗವಾಗಿ ಚಲಿಸುವ ಅಣುಗಳು ಹೆಚ್ಚು ಒತ್ತಡವನ್ನು ಅರ್ಥೈಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p53",
+      "id": "ch06-225",
+      "chapter": 6,
+      "text": "ಗಾಳಿಯು ಬಿಸಿಯಾದಾಗ ಟೈರ್ ಗಟ್ಟಿಯಾಗಿ ಭಾಸವಾಗಲು ಇದೇ ಕಾರಣ.",
+      "text_markdown": "ಗಾಳಿಯು ಬಿಸಿಯಾದಾಗ ಟೈರ್ ಗಟ್ಟಿಯಾಗಿ ಭಾಸವಾಗಲು ಇದೇ ಕಾರಣ.",
+      "title": "ಚಲನೆಯಲ್ಲಿರುವ ಪರಮಾಣುಗಳು",
+      "tts": {
+        "text": "ಗಾಳಿಯು ಬಿಸಿಯಾದಾಗ ಟೈರ್ ಗಟ್ಟಿಯಾಗಿ ಭಾಸವಾಗಲು ಇದೇ ಕಾರಣ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p54",
+      "heading_level": 1,
+      "id": "ch07-226",
+      "chapter": 7,
+      "text": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "text_markdown": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p55",
+      "id": "ch07-227",
+      "chapter": 7,
+      "text": "ಬ್ರಹ್ಮಾಂಡದಲ್ಲಿನ ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಬಿಗ್ ಬ್ಯಾಂಗ್ ನಂತರದ ಮೊದಲ ಕೆಲವು ನಿಮಿಷಗಳಲ್ಲಿ ಸೃಷ್ಟಿಯಾದವು.",
+      "text_markdown": "ಬ್ರಹ್ಮಾಂಡದಲ್ಲಿನ ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಬಿಗ್ ಬ್ಯಾಂಗ್ ನಂತರದ ಮೊದಲ ಕೆಲವು ನಿಮಿಷಗಳಲ್ಲಿ ಸೃಷ್ಟಿಯಾದವು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಬ್ರಹ್ಮಾಂಡದಲ್ಲಿನ ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಬಿಗ್ ಬ್ಯಾಂಗ್ ನಂತರದ ಮೊದಲ ಕೆಲವು ನಿಮಿಷಗಳಲ್ಲಿ ಸೃಷ್ಟಿಯಾದವು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p55",
+      "id": "ch07-228",
+      "chapter": 7,
+      "text": "ಬ್ರಹ್ಮಾಂಡವು ಸುಮಾರು 13.8 ಶತಕೋಟಿ ವರ್ಷಗಳ ಹಿಂದೆ ಅತಿ ಬಿಸಿ ಮತ್ತು ದಟ್ಟವಾದ ಬಿಂದುವಾಗಿ ಪ್ರಾರಂಭವಾಯಿತು.",
+      "text_markdown": "ಬ್ರಹ್ಮಾಂಡವು ಸುಮಾರು 13.8 ಶತಕೋಟಿ ವರ್ಷಗಳ ಹಿಂದೆ ಅತಿ ಬಿಸಿ ಮತ್ತು ದಟ್ಟವಾದ ಬಿಂದುವಾಗಿ ಪ್ರಾರಂಭವಾಯಿತು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಬ್ರಹ್ಮಾಂಡವು ಸುಮಾರು ಹದಿಮೂರು ಪಾಯಿಂಟ್ ಎಂಟು ಶತಕೋಟಿ ವರ್ಷಗಳ ಹಿಂದೆ ಅತಿ ಬಿಸಿ ಮತ್ತು ದಟ್ಟವಾದ ಬಿಂದುವಾಗಿ ಪ್ರಾರಂಭವಾಯಿತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p55",
+      "id": "ch07-229",
+      "chapter": 7,
+      "text": "ಅದು ವಿಸ್ತರಿಸಿದಂತೆ ಮತ್ತು ತಣ್ಣಗಾದಂತೆ, ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳು ರೂಪುಗೊಂಡವು.",
+      "text_markdown": "ಅದು ವಿಸ್ತರಿಸಿದಂತೆ ಮತ್ತು ತಣ್ಣಗಾದಂತೆ, ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳು ರೂಪುಗೊಂಡವು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಅದು ವಿಸ್ತರಿಸಿದಂತೆ ಮತ್ತು ತಣ್ಣಗಾದಂತೆ, ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳು ರೂಪುಗೊಂಡವು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p55",
+      "id": "ch07-230",
+      "chapter": 7,
+      "text": "ಆ ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಸೇರಿ ಸರಳವಾದ ನ್ಯೂಕ್ಲಿಯಸ್‌ಗಳನ್ನು ರೂಪಿಸಿದವು.",
+      "text_markdown": "ಆ ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಸೇರಿ ಸರಳವಾದ ನ್ಯೂಕ್ಲಿಯಸ್‌ಗಳನ್ನು ರೂಪಿಸಿದವು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಆ ಪ್ರೋಟಾನ್‌ಗಳು ಮತ್ತು ನ್ಯೂಟ್ರಾನ್‌ಗಳು ಸೇರಿ ಸರಳವಾದ ನ್ಯೂಕ್ಲಿಯಸ್‌ಗಳನ್ನು ರೂಪಿಸಿದವು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p55",
+      "id": "ch07-231",
+      "chapter": 7,
+      "text": "ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಮೊದಲ ಧಾತುಗಳಾಗಿದ್ದವು.",
+      "text_markdown": "ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಮೊದಲ ಧಾತುಗಳಾಗಿದ್ದವು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಮೊದಲ ಧಾತುಗಳಾಗಿದ್ದವು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p56",
+      "id": "ch07-232",
+      "chapter": 7,
+      "text": "ಲಕ್ಷಾಂತರ ವರ್ಷಗಳ ಕಾಲ, ಬ್ರಹ್ಮಾಂಡವು ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಅನಿಲದ ಮೋಡವಾಗಿತ್ತು.",
+      "text_markdown": "ಲಕ್ಷಾಂತರ ವರ್ಷಗಳ ಕಾಲ, ಬ್ರಹ್ಮಾಂಡವು ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಅನಿಲದ ಮೋಡವಾಗಿತ್ತು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಲಕ್ಷಾಂತರ ವರ್ಷಗಳ ಕಾಲ, ಬ್ರಹ್ಮಾಂಡವು ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಅನಿಲದ ಮೋಡವಾಗಿತ್ತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p56",
+      "id": "ch07-233",
+      "chapter": 7,
+      "text": "ನಂತರ ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಅನಿಲವನ್ನು ಒಟ್ಟಾಗಿ ಗುಂಪುಗಳಾಗಿ ಎಳೆಯಿತು.",
+      "text_markdown": "ನಂತರ ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಅನಿಲವನ್ನು ಒಟ್ಟಾಗಿ ಗುಂಪುಗಳಾಗಿ ಎಳೆಯಿತು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಂತರ ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಅನಿಲವನ್ನು ಒಟ್ಟಾಗಿ ಗುಂಪುಗಳಾಗಿ ಎಳೆಯಿತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p56",
+      "id": "ch07-234",
+      "chapter": 7,
+      "text": "ಗುಂಪುಗಳು ಹೆಚ್ಚು ದಟ್ಟವಾಗಿ ಮತ್ತು ಬಿಸಿಯಾಗಿ ಬೆಳೆದವು.",
+      "text_markdown": "ಗುಂಪುಗಳು ಹೆಚ್ಚು ದಟ್ಟವಾಗಿ ಮತ್ತು ಬಿಸಿಯಾಗಿ ಬೆಳೆದವು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಗುಂಪುಗಳು ಹೆಚ್ಚು ದಟ್ಟವಾಗಿ ಮತ್ತು ಬಿಸಿಯಾಗಿ ಬೆಳೆದವು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p56",
+      "id": "ch07-235",
+      "chapter": 7,
+      "text": "ಒಂದು ಗುಂಪಿನ ಕೇಂದ್ರವು ಸುಮಾರು ಹತ್ತು ಮಿಲಿಯನ್ ಡಿಗ್ರಿ ತಲುಪಿದಾಗ, ಪರಮಾಣು ಸಮ್ಮಿಳನವು ಪ್ರಾರಂಭವಾಯಿತು.",
+      "text_markdown": "ಒಂದು ಗುಂಪಿನ ಕೇಂದ್ರವು ಸುಮಾರು ಹತ್ತು ಮಿಲಿಯನ್ ಡಿಗ್ರಿ ತಲುಪಿದಾಗ, ಪರಮಾಣು ಸಮ್ಮಿಳನವು ಪ್ರಾರಂಭವಾಯಿತು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಒಂದು ಗುಂಪಿನ ಕೇಂದ್ರವು ಸುಮಾರು ಹತ್ತು ಮಿಲಿಯನ್ ಡಿಗ್ರಿ ತಲುಪಿದಾಗ, ಪರಮಾಣು ಸಮ್ಮಿಳನವು ಪ್ರಾರಂಭವಾಯಿತು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p56",
+      "id": "ch07-236",
+      "chapter": 7,
+      "text": "ಒಂದು ನಕ್ಷತ್ರ ಜನಿಸಿತು.",
+      "text_markdown": "ಒಂದು ನಕ್ಷತ್ರ ಜನಿಸಿತು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಒಂದು ನಕ್ಷತ್ರ ಜನಿಸಿತು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p57",
+      "id": "ch07-237",
+      "chapter": 7,
+      "text": "ನಕ್ಷತ್ರಗಳು ಪರಮಾಣು ಕಾರ್ಖಾನೆಗಳು.",
+      "text_markdown": "ನಕ್ಷತ್ರಗಳು ಪರಮಾಣು ಕಾರ್ಖಾನೆಗಳು.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಕ್ಷತ್ರಗಳು ಪರಮಾಣು ಕಾರ್ಖಾನೆಗಳು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p57",
+      "id": "ch07-238",
+      "chapter": 7,
+      "text": "ನಕ್ಷತ್ರದೊಳಗೆ, ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳು ಸೇರಿಕೊಂಡು ಹೀಲಿಯಂ ಅನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "text_markdown": "ನಕ್ಷತ್ರದೊಳಗೆ, ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳು ಸೇರಿಕೊಂಡು ಹೀಲಿಯಂ ಅನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಕ್ಷತ್ರದೊಳಗೆ, ಹೈಡ್ರೋಜನ್ ಪರಮಾಣುಗಳು ಸೇರಿಕೊಂಡು ಹೀಲಿಯಂ ಅನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p57",
+      "id": "ch07-239",
+      "chapter": 7,
+      "text": "ಈ ಸಮ್ಮಿಳನವು ಅಗಾಧ ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ಈ ಸಮ್ಮಿಳನವು ಅಗಾಧ ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಸಮ್ಮಿಳನವು ಅಗಾಧ ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p57",
+      "id": "ch07-240",
+      "chapter": 7,
+      "text": "ಈ ಶಕ್ತಿಯೇ ನಕ್ಷತ್ರವನ್ನು ಹೊಳೆಯುವಂತೆ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ಈ ಶಕ್ತಿಯೇ ನಕ್ಷತ್ರವನ್ನು ಹೊಳೆಯುವಂತೆ ಮಾಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಶಕ್ತಿಯೇ ನಕ್ಷತ್ರವನ್ನು ಹೊಳೆಯುವಂತೆ ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p57",
+      "id": "ch07-241",
+      "chapter": 7,
+      "text": "ನಮ್ಮ ಸೂರ್ಯ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಸುಮಾರು ಆರು ನೂರು ಮಿಲಿಯನ್ ಟನ್ ಹೈಡ್ರೋಜನ್ ಅನ್ನು ಹೀಲಿಯಂ ಆಗಿ ಬೆಸೆಯುತ್ತದೆ.",
+      "text_markdown": "Our sun fuses about six hundred million tons of hydrogen into helium every second.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಮ್ಮ ಸೂರ್ಯ ಪ್ರತಿ ಸೆಕೆಂಡಿಗೆ ಸುಮಾರು ಆರು ನೂರು ಮಿಲಿಯನ್ ಟನ್ ಹೈಡ್ರೋಜನ್ ಅನ್ನು ಹೀಲಿಯಂ ಆಗಿ ಬೆಸೆಯುತ್ತದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-242",
+      "chapter": 7,
+      "text": "ದೊಡ್ಡ ನಕ್ಷತ್ರಗಳು ಭಾರವಾದ ಧಾತುಗಳನ್ನು ಬೆಸೆಯುತ್ತವೆ.",
+      "text_markdown": "Larger stars fuse heavier elements.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ದೊಡ್ಡ ನಕ್ಷತ್ರಗಳು ಭಾರವಾದ ಧಾತುಗಳನ್ನು ಬೆಸೆಯುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-243",
+      "chapter": 7,
+      "text": "ಒಂದು ನಕ್ಷತ್ರವು ತನ್ನ ಹೈಡ್ರೋಜನ್ ಅನ್ನು ಸುಟ್ಟು ಮುಗಿಸಿದ ನಂತರ, ಅದು ಹೀಲಿಯಂ ಅನ್ನು ಇಂಗಾಲವಾಗಿ ಬೆಸೆಯಲು ಪ್ರಾರಂಭಿಸುತ್ತದೆ.",
+      "text_markdown": "After a star burns through its hydrogen, it begins fusing helium into carbon.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಒಂದು ನಕ್ಷತ್ರವು ತನ್ನ ಹೈಡ್ರೋಜನ್ ಅನ್ನು ಸುಟ್ಟು ಮುಗಿಸಿದ ನಂತರ, ಅದು ಹೀಲಿಯಂ ಅನ್ನು ಇಂಗಾಲವಾಗಿ ಬೆಸೆಯಲು ಪ್ರಾರಂಭಿಸುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-244",
+      "chapter": 7,
+      "text": "ನಂತರ ಇಂಗಾಲವನ್ನು ಆಮ್ಲಜನಕವಾಗಿ.",
+      "text_markdown": "Then carbon into oxygen.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಂತರ ಇಂಗಾಲವನ್ನು ಆಮ್ಲಜನಕವಾಗಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-245",
+      "chapter": 7,
+      "text": "ನಂತರ ಆಮ್ಲಜನಕವನ್ನು ಸಿಲಿಕಾನ್ ಆಗಿ.",
+      "text_markdown": "Then oxygen into silicon.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಂತರ ಆಮ್ಲಜನಕವನ್ನು ಸಿಲಿಕಾನ್ ಆಗಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-246",
+      "chapter": 7,
+      "text": "ನಂತರ ಸಿಲಿಕಾನ್ ಅನ್ನು ಕಬ್ಬಿಣವಾಗಿ.",
+      "text_markdown": "Then silicon into iron.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಂತರ ಸಿಲಿಕಾನ್ ಅನ್ನು ಕಬ್ಬಿಣವಾಗಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-247",
+      "chapter": 7,
+      "text": "ಪ್ರತಿ ಹಂತವು ಭಾರವಾದ ಧಾತುವನ್ನು ಉತ್ಪಾದಿಸುತ್ತದೆ.",
+      "text_markdown": "Each stage produces a heavier element.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಪ್ರತಿ ಹಂತವು ಭಾರವಾದ ಧಾತುವನ್ನು ಉತ್ಪಾದಿಸುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p58",
+      "id": "ch07-248",
+      "chapter": 7,
+      "text": "ಸಾಮಾನ್ಯ ಸಮ್ಮಿಳನದ ಮೂಲಕ ನಕ್ಷತ್ರವು ಉತ್ಪಾದಿಸಬಹುದಾದ ಅತ್ಯಂತ ಭಾರವಾದ ಧಾತು ಕಬ್ಬಿಣವಾಗಿದೆ.",
+      "text_markdown": "Iron is the heaviest element a star can produce through normal fusion.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಸಾಮಾನ್ಯ ಸಮ್ಮಿಳನದ ಮೂಲಕ ನಕ್ಷತ್ರವು ಉತ್ಪಾದಿಸಬಹುದಾದ ಅತ್ಯಂತ ಭಾರವಾದ ಧಾತು ಕಬ್ಬಿಣವಾಗಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p59",
+      "id": "ch07-249",
+      "chapter": 7,
+      "text": "ಕಬ್ಬಿಣಕ್ಕಿಂತ ಭಾರವಾದ ಧಾತುಗಳು ಬೃಹತ್ ನಕ್ಷತ್ರಗಳು ಸ್ಫೋಟಗೊಂಡಾಗ ಸೃಷ್ಟಿಯಾಗುತ್ತವೆ.",
+      "text_markdown": "Elements heavier than iron are created when massive stars explode.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣಕ್ಕಿಂತ ಭಾರವಾದ ಧಾತುಗಳು ಬೃಹತ್ ನಕ್ಷತ್ರಗಳು ಸ್ಫೋಟಗೊಂಡಾಗ ಸೃಷ್ಟಿಯಾಗುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p59",
+      "id": "ch07-250",
+      "chapter": 7,
+      "text": "ಈ ಸ್ಫೋಟಗಳನ್ನು ಸೂಪರ್‌ನೋವಾಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+      "text_markdown": "These explosions are called supernovas.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಸ್ಫೋಟಗಳನ್ನು ಸೂಪರ್‌ನೋವಾಗಳು ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p59",
+      "id": "ch07-251",
+      "chapter": 7,
+      "text": "ಒಂದು ಸೂಪರ್‌ನೋವಾ ತನ್ನ ಇಡೀ ಜೀವಿತಾವಧಿಯಲ್ಲಿ ಸೂರ್ಯ ಉತ್ಪಾದಿಸುವುದಕ್ಕಿಂತ ಹೆಚ್ಚು ಶಕ್ತಿಯನ್ನು ಕೆಲವೇ ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "A supernova releases more energy in a few seconds than the sun will produce in its entire lifetime.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಒಂದು ಸೂಪರ್‌ನೋವಾ ತನ್ನ ಇಡೀ ಜೀವಿತಾವಧಿಯಲ್ಲಿ ಸೂರ್ಯ ಉತ್ಪಾದಿಸುವುದಕ್ಕಿಂತ ಹೆಚ್ಚು ಶಕ್ತಿಯನ್ನು ಕೆಲವೇ ಸೆಕೆಂಡುಗಳಲ್ಲಿ ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p59",
+      "id": "ch07-252",
+      "chapter": 7,
+      "text": "ಸೂಪರ್‌ನೋವಾದ ತೀವ್ರ ಪರಿಸ್ಥಿತಿಗಳು ಚಿನ್ನ, ಬೆಳ್ಳಿ, ಪ್ಲಾಟಿನಂ ಮತ್ತು ಯುರೇನಿಯಂನಂತಹ ಧಾತುಗಳನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "text_markdown": "The extreme conditions of a supernova forge elements like gold, silver, platinum, and uranium.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಸೂಪರ್‌ನೋವಾದ ತೀವ್ರ ಪರಿಸ್ಥಿತಿಗಳು ಚಿನ್ನ, ಬೆಳ್ಳಿ, ಪ್ಲಾಟಿನಂ ಮತ್ತು ಯುರೇನಿಯಂನಂತಹ ಧಾತುಗಳನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p60",
+      "id": "ch07-253",
+      "chapter": 7,
+      "text": "ಈ ಸ್ಫೋಟವು ಈ ಭಾರವಾದ ಧಾತುಗಳನ್ನು ಬಾಹ್ಯಾಕಾಶದಾದ್ಯಂತ ಹರಡುತ್ತದೆ.",
+      "text_markdown": "The explosion scatters these heavy elements across space.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಸ್ಫೋಟವು ಈ ಭಾರವಾದ ಧಾತುಗಳನ್ನು ಬಾಹ್ಯಾಕಾಶದಾದ್ಯಂತ ಹರಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p60",
+      "id": "ch07-254",
+      "chapter": 7,
+      "text": "ಈ ಧಾತುಗಳು ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಅನಿಲದ ಮೋಡಗಳೊಂದಿಗೆ ಬೆರೆಯುತ್ತವೆ.",
+      "text_markdown": "The elements mix with clouds of hydrogen and helium gas.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಈ ಧಾತುಗಳು ಹೈಡ್ರೋಜನ್ ಮತ್ತು ಹೀಲಿಯಂ ಅನಿಲದ ಮೋಡಗಳೊಂದಿಗೆ ಬೆರೆಯುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p60",
+      "id": "ch07-255",
+      "chapter": 7,
+      "text": "ಅಂತಿಮವಾಗಿ, ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಈ ಸಮೃದ್ಧ ಅನಿಲವನ್ನು ಒಟ್ಟಿಗೆ ಎಳೆದು ಹೊಸ ನಕ್ಷತ್ರಗಳು ಮತ್ತು ಗ್ರಹಗಳನ್ನು ರೂಪಿಸುತ್ತದೆ.",
+      "text_markdown": "Eventually, gravity pulls the enriched gas together to form new stars and planets.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಅಂತಿಮವಾಗಿ, ಗುರುತ್ವಾಕರ್ಷಣೆಯು ಈ ಸಮೃದ್ಧ ಅನಿಲವನ್ನು ಒಟ್ಟಿಗೆ ಎಳೆದು ಹೊಸ ನಕ್ಷತ್ರಗಳು ಮತ್ತು ಗ್ರಹಗಳನ್ನು ರೂಪಿಸುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p60",
+      "id": "ch07-256",
+      "chapter": 7,
+      "text": "ನಮ್ಮ ಸೌರವ್ಯೂಹವು ಸುಮಾರು 4.6 ಶತಕೋಟಿ ವರ್ಷಗಳ ಹಿಂದೆ ಈ ಸಮೃದ್ಧ ಮೋಡಗಳಲ್ಲಿ ಒಂದರಿಂದ ರೂಪುಗೊಂಡಿತು.",
+      "text_markdown": "Our solar system formed from one of these enriched clouds about 4.6 billion years ago.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಮ್ಮ ಸೌರವ್ಯೂಹವು ಸುಮಾರು ನಾಲ್ಕು ದಶಮಾಂಶ ಆರು ಶತಕೋಟಿ ವರ್ಷಗಳ ಹಿಂದೆ ಈ ಸಮೃದ್ಧ ಮೋಡಗಳಲ್ಲಿ ಒಂದರಿಂದ ರೂಪುಗೊಂಡಿತು.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-257",
+      "chapter": 7,
+      "text": "ನಿಮ್ಮ ದೇಹದಲ್ಲಿರುವ ಹೈಡ್ರೋಜನ್‌ಗಿಂತ ಭಾರವಾದ ಪ್ರತಿಯೊಂದು ಪರಮಾಣು ನಕ್ಷತ್ರದೊಳಗೆ ರೂಪುಗೊಂಡಿದೆ.",
+      "text_markdown": "Every atom in your body heavier than hydrogen was made inside a star.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ದೇಹದಲ್ಲಿರುವ ಹೈಡ್ರೋಜನ್‌ಗಿಂತ ಭಾರವಾದ ಪ್ರತಿಯೊಂದು ಪರಮಾಣು ನಕ್ಷತ್ರದೊಳಗೆ ರೂಪುಗೊಂಡಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-258",
+      "chapter": 7,
+      "text": "ನಿಮ್ಮ ಮೂಳೆಗಳಲ್ಲಿರುವ ಕ್ಯಾಲ್ಸಿಯಂ.",
+      "text_markdown": "The calcium in your bones.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ಮೂಳೆಗಳಲ್ಲಿರುವ ಕ್ಯಾಲ್ಸಿಯಂ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-259",
+      "chapter": 7,
+      "text": "ನಿಮ್ಮ ರಕ್ತದಲ್ಲಿರುವ ಕಬ್ಬಿಣ.",
+      "text_markdown": "The iron in your blood.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ರಕ್ತದಲ್ಲಿರುವ ಕಬ್ಬಿಣ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-260",
+      "chapter": 7,
+      "text": "ನಿಮ್ಮ ಚರ್ಮದಲ್ಲಿರುವ ಇಂಗಾಲ.",
+      "text_markdown": "The carbon in your skin.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ಚರ್ಮದಲ್ಲಿರುವ ಇಂಗಾಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-261",
+      "chapter": 7,
+      "text": "ನೀವು ನಕ್ಷತ್ರ ಧೂಳಿನಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದ್ದೀರಿ.",
+      "text_markdown": "You are made of stardust.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ನೀವು ನಕ್ಷತ್ರ ಧೂಳಿನಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದ್ದೀರಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-262",
+      "chapter": 7,
+      "text": "ಅದು ರೂಪಕವಲ್ಲ.",
+      "text_markdown": "That is not a metaphor.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಅದು ರೂಪಕವಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p61",
+      "id": "ch07-263",
+      "chapter": 7,
+      "text": "ಇದು ಪರಮಾಣು ಭೌತಶಾಸ್ತ್ರದ ಸತ್ಯ.",
+      "text_markdown": "It is a fact of nuclear physics.",
+      "title": "ಪರಮಾಣುಗಳು ಎಲ್ಲಿಂದ ಬರುತ್ತವೆ",
+      "tts": {
+        "text": "ಇದು ಪರಮಾಣು ಭೌತಶಾಸ್ತ್ರದ ಸತ್ಯ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "heading",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "id": "ch08-264",
+      "chapter": 8,
+      "text": "Atoms Are Everything",
+      "text_markdown": "Atoms Are Everything",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-265",
+      "chapter": 8,
+      "text": "ಈಗ ನಿಮಗೆ ಮೂಲಭೂತ ವಿಷಯಗಳು ತಿಳಿದಿವೆ.",
+      "text_markdown": "You now know the basics.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಈಗ ನಿಮಗೆ ಮೂಲಭೂತ ವಿಷಯಗಳು ತಿಳಿದಿವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-266",
+      "chapter": 8,
+      "text": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+      "text_markdown": "Everything is made of atoms.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಎಲ್ಲವೂ ಪರಮಾಣುಗಳಿಂದ ಮಾಡಲ್ಪಟ್ಟಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-267",
+      "chapter": 8,
+      "text": "ಪರಮಾಣುಗಳ ಒಳಗಿನ ಮುಖ್ಯ ಕಣಗಳು ಪ್ರೋಟಾನ್, ನ್ಯೂಟ್ರಾನ್ ಮತ್ತು ಎಲೆಕ್ಟ್ರಾನ್.",
+      "text_markdown": "ಪರಮಾಣುಗಳ ಒಳಗಿನ ಮುಖ್ಯ ಕಣಗಳು ಪ್ರೋಟಾನ್, ನ್ಯೂಟ್ರಾನ್ ಮತ್ತು ಎಲೆಕ್ಟ್ರಾನ್.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳ ಒಳಗಿನ ಮುಖ್ಯ ಕಣಗಳು ಪ್ರೋಟಾನ್, ನ್ಯೂಟ್ರಾನ್ ಮತ್ತು ಎಲೆಕ್ಟ್ರಾನ್.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-268",
+      "chapter": 8,
+      "text": "ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಧಾತುವನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ.",
+      "text_markdown": "The number of protons determines the element.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪ್ರೋಟಾನ್‌ಗಳ ಸಂಖ್ಯೆಯು ಧಾತುವನ್ನು ನಿರ್ಧರಿಸುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-269",
+      "chapter": 8,
+      "text": "ಪರಮಾಣುಗಳು ಅಣುಗಳನ್ನು ರೂಪಿಸಲು ಬಂಧಿಸುತ್ತವೆ.",
+      "text_markdown": "Atoms bond to form molecules.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳು ಅಣುಗಳನ್ನು ರೂಪಿಸಲು ಬಂಧಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-270",
+      "chapter": 8,
+      "text": "ಪರಮಾಣುಗಳು ಯಾವಾಗಲೂ ಚಲನೆಯಲ್ಲಿರುತ್ತವೆ.",
+      "text_markdown": "Atoms are always in motion.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳು ಯಾವಾಗಲೂ ಚಲನೆಯಲ್ಲಿರುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p63",
+      "id": "ch08-271",
+      "chapter": 8,
+      "text": "ನಮ್ಮ ಜಗತ್ತನ್ನು ರೂಪಿಸುವ ಪರಮಾಣುಗಳನ್ನು ನಕ್ಷತ್ರಗಳು ಸೃಷ್ಟಿಸಿವೆ.",
+      "text_markdown": "ನಮ್ಮ ಜಗತ್ತನ್ನು ರೂಪಿಸುವ ಪರಮಾಣುಗಳನ್ನು ನಕ್ಷತ್ರಗಳು ಸೃಷ್ಟಿಸಿವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನಮ್ಮ ಜಗತ್ತನ್ನು ರೂಪಿಸುವ ಪರಮಾಣುಗಳನ್ನು ನಕ್ಷತ್ರಗಳು ಸೃಷ್ಟಿಸಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p64",
+      "id": "ch08-272",
+      "chapter": 8,
+      "text": "ಈ ಜ್ಞಾನವು ರಸಾಯನಶಾಸ್ತ್ರ, ಜೀವಶಾಸ್ತ್ರ, ಭೌತಶಾಸ್ತ್ರ ಮತ್ತು ವೈದ್ಯಕೀಯದ ಅಡಿಪಾಯವಾಗಿದೆ.",
+      "text_markdown": "ಈ ಜ್ಞಾನವು ರಸಾಯನಶಾಸ್ತ್ರ, ಜೀವಶಾಸ್ತ್ರ, ಭೌತಶಾಸ್ತ್ರ ಮತ್ತು ವೈದ್ಯಕೀಯದ ಅಡಿಪಾಯವಾಗಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಈ ಜ್ಞಾನವು ರಸಾಯನಶಾಸ್ತ್ರ, ಜೀವಶಾಸ್ತ್ರ, ಭೌತಶಾಸ್ತ್ರ ಮತ್ತು ವೈದ್ಯಕೀಯದ ಅಡಿಪಾಯವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p64",
+      "id": "ch08-273",
+      "chapter": 8,
+      "text": "ವಿಜ್ಞಾನದ ಪ್ರತಿಯೊಂದು ಕ್ಷೇತ್ರವೂ ಪರಮಾಣುಗಳಿಗೆ ಸಂಬಂಧಿಸಿದೆ.",
+      "text_markdown": "ವಿಜ್ಞಾನದ ಪ್ರತಿಯೊಂದು ಕ್ಷೇತ್ರವೂ ಪರಮಾಣುಗಳಿಗೆ ಸಂಬಂಧಿಸಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ವಿಜ್ಞಾನದ ಪ್ರತಿಯೊಂದು ಕ್ಷೇತ್ರವೂ ಪರಮಾಣುಗಳಿಗೆ ಸಂಬಂಧಿಸಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p65",
+      "id": "ch08-274",
+      "chapter": 8,
+      "text": "ವೈದ್ಯರು ಔಷಧಿಯನ್ನು ಸೂಚಿಸಿದಾಗ, ಆ ಔಷಧಿಯು ನಿಮ್ಮ ದೇಹದಲ್ಲಿನ ಅಣುಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಪರಮಾಣುಗಳ ನಿರ್ದಿಷ್ಟ ವ್ಯವಸ್ಥೆಯಾಗಿದೆ.",
+      "text_markdown": "ವೈದ್ಯರು ಔಷಧಿಯನ್ನು ಸೂಚಿಸಿದಾಗ, ಆ ಔಷಧಿಯು ನಿಮ್ಮ ದೇಹದಲ್ಲಿನ ಅಣುಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಪರಮಾಣುಗಳ ನಿರ್ದಿಷ್ಟ ವ್ಯವಸ್ಥೆಯಾಗಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ವೈದ್ಯರು ಔಷಧಿಯನ್ನು ಸೂಚಿಸಿದಾಗ, ಆ ಔಷಧಿಯು ನಿಮ್ಮ ದೇಹದಲ್ಲಿನ ಅಣುಗಳೊಂದಿಗೆ ಸಂವಹನ ನಡೆಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಪರಮಾಣುಗಳ ನಿರ್ದಿಷ್ಟ ವ್ಯವಸ್ಥೆಯಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p65",
+      "id": "ch08-275",
+      "chapter": 8,
+      "text": "ಒಬ್ಬ ಇಂಜಿನಿಯರ್ ಸೇತುವೆಯನ್ನು ನಿರ್ಮಿಸಿದಾಗ, ಆ ಸೇತುವೆಯ ಬಲವು ಉಕ್ಕಿನಲ್ಲಿರುವ ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಹೇಗೆ ಜೋಡಿಸಲ್ಪಟ್ಟಿವೆ ಎಂಬುದರ ಮೇಲೆ ಅವಲಂಬಿತವಾಗಿರುತ್ತದೆ.",
+      "text_markdown": "ಒಬ್ಬ ಇಂಜಿನಿಯರ್ ಸೇತುವೆಯನ್ನು ನಿರ್ಮಿಸಿದಾಗ, ಆ ಸೇತುವೆಯ ಬಲವು ಉಕ್ಕಿನಲ್ಲಿರುವ ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಹೇಗೆ ಜೋಡಿಸಲ್ಪಟ್ಟಿವೆ ಎಂಬುದರ ಮೇಲೆ ಅವಲಂಬಿತವಾಗಿರುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಇಂಜಿನಿಯರ್ ಸೇತುವೆ ಕಟ್ಟಿದಾಗ, ಅದರ ಬಲ ಉಕ್ಕಿನ ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳ ಬಂಧಕ್ರಮ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p65",
+      "id": "ch08-276",
+      "chapter": 8,
+      "text": "ರೈತ ಬೆಳೆ ಬೆಳೆದಾಗ, ಗಾಳಿಯಲ್ಲಿನ ಇಂಗಾಲದ ಪರಮಾಣುಗಳು ಎಲೆಗಳ ಒಳಗೆ ನೀರು ಮತ್ತು ಸೂರ್ಯನ ಬೆಳಕಿನೊಂದಿಗೆ ಸೇರಿಕೊಳ್ಳುವುದರಿಂದ ಬೆಳೆ ಬೆಳೆಯುತ್ತದೆ.",
+      "text_markdown": "ರೈತ ಬೆಳೆ ಬೆಳೆದಾಗ, ಗಾಳಿಯಲ್ಲಿನ ಇಂಗಾಲದ ಪರಮಾಣುಗಳು ಎಲೆಗಳ ಒಳಗೆ ನೀರು ಮತ್ತು ಸೂರ್ಯನ ಬೆಳಕಿನೊಂದಿಗೆ ಸೇರಿಕೊಳ್ಳುವುದರಿಂದ ಬೆಳೆ ಬೆಳೆಯುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ರೈತನ ಬೆಳೆ ಗಾಳಿಯ ಇಂಗಾಲದ ಪರಮಾಣುಗಳು ನೀರು ಮತ್ತು ಸೂರ್ಯನ ಬೆಳಕಿನೊಂದಿಗೆ ಎಲೆಗಳಲ್ಲಿ ಸೇರುವ ಪರಿಣಾಮ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p66",
+      "id": "ch08-277",
+      "chapter": 8,
+      "text": "ಅಡುಗೆ ಮಾಡುವುದು ರಸಾಯನಶಾಸ್ತ್ರ.",
+      "text_markdown": "ಅಡುಗೆ ಮಾಡುವುದು ರಸಾಯನಶಾಸ್ತ್ರ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಅಡುಗೆ ಮಾಡುವುದು ರಸಾಯನಶಾಸ್ತ್ರ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p66",
+      "id": "ch08-278",
+      "chapter": 8,
+      "text": "ನೀವು ಬ್ರೆಡ್ ತಯಾರಿಸುವಾಗ, ಶಾಖವು ಹಿಟ್ಟಿನಲ್ಲಿರುವ ಪರಮಾಣುಗಳನ್ನು ಮರುಜೋಡಿಸಲು ಕಾರಣವಾಗುತ್ತದೆ.",
+      "text_markdown": "ನೀವು ಬ್ರೆಡ್ ತಯಾರಿಸುವಾಗ, ಶಾಖವು ಹಿಟ್ಟಿನಲ್ಲಿರುವ ಪರಮಾಣುಗಳನ್ನು ಮರುಜೋಡಿಸಲು ಕಾರಣವಾಗುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನೀವು ಬ್ರೆಡ್ ತಯಾರಿಸುವಾಗ, ಶಾಖ ಹಿಟ್ಟಿನ ಪರಮಾಣುಗಳಿಗೆ ಹೊಸ ಮರುಕ್ರಮ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p66",
+      "id": "ch08-279",
+      "chapter": 8,
+      "text": "ಪ್ರೋಟೀನ್‌ಗಳು ಬಿಚ್ಚಿಕೊಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "ಪ್ರೋಟೀನ್‌ಗಳು ಬಿಚ್ಚಿಕೊಳ್ಳುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪ್ರೋಟೀನ್‌ಗಳು ಬಿಚ್ಚಿಕೊಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p66",
+      "id": "ch08-280",
+      "chapter": 8,
+      "text": "ಸಕ್ಕರೆಗಳು ಒಡೆದು ಮತ್ತೆ ಸೇರಿಕೊಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "ಸಕ್ಕರೆಗಳು ಒಡೆದು ಮತ್ತೆ ಸೇರಿಕೊಳ್ಳುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಸಕ್ಕರೆಗಳು ಒಡೆದು ಮತ್ತೆ ಸೇರಿಕೊಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p66",
+      "id": "ch08-281",
+      "chapter": 8,
+      "text": "ಹೊಸ ಅಣುಗಳು ರೂಪುಗೊಂಡು ಹೊರಪದರದ ಬಣ್ಣ, ವಿನ್ಯಾಸ ಮತ್ತು ರುಚಿಯನ್ನು ಸೃಷ್ಟಿಸುತ್ತವೆ.",
+      "text_markdown": "ಹೊಸ ಅಣುಗಳು ರೂಪುಗೊಂಡು ಹೊರಪದರದ ಬಣ್ಣ, ವಿನ್ಯಾಸ ಮತ್ತು ರುಚಿಯನ್ನು ಸೃಷ್ಟಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಹೊಸ ಅಣುಗಳ ರೂಪದಿಂದ ಹೊರಪದರದ ಬಣ್ಣ, ವಿನ್ಯಾಸ ಮತ್ತು ರುಚಿಯ ನಿರ್ಮಾಣ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p66",
+      "id": "ch08-282",
+      "chapter": 8,
+      "text": "ಪ್ರತಿಯೊಂದು ಪಾಕವಿಧಾನವೂ ಪರಮಾಣುಗಳನ್ನು ಮರುಜೋಡಿಸಲು ಸೂಚನೆಗಳ ಒಂದು ಗುಂಪಾಗಿದೆ.",
+      "text_markdown": "ಪ್ರತಿಯೊಂದು ಪಾಕವಿಧಾನವೂ ಪರಮಾಣುಗಳನ್ನು ಮರುಜೋಡಿಸಲು ಸೂಚನೆಗಳ ಒಂದು ಗುಂಪಾಗಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು ಪಾಕವಿಧಾನವೂ ಪರಮಾಣುಗಳನ್ನು ಮರುಜೋಡಿಸಲು ಸೂಚನೆಗಳ ಒಂದು ಗುಂಪಾಗಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-283",
+      "chapter": 8,
+      "text": "ಉಸಿರಾಟವು ರಸಾಯನಶಾಸ್ತ್ರ.",
+      "text_markdown": "ಉಸಿರಾಟವು ರಸಾಯನಶಾಸ್ತ್ರ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಉಸಿರಾಟವು ರಸಾಯನಶಾಸ್ತ್ರ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-284",
+      "chapter": 8,
+      "text": "ನೀವು ಆಮ್ಲಜನಕದ ಅಣುಗಳನ್ನು ಉಸಿರಾಡುತ್ತೀರಿ.",
+      "text_markdown": "ನೀವು ಆಮ್ಲಜನಕದ ಅಣುಗಳನ್ನು ಉಸಿರಾಡುತ್ತೀರಿ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನೀವು ಆಮ್ಲಜನಕದ ಅಣುಗಳನ್ನು ಉಸಿರಾಡುತ್ತೀರಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-285",
+      "chapter": 8,
+      "text": "ನಿಮ್ಮ ರಕ್ತವು ಆ ಅಣುಗಳನ್ನು ನಿಮ್ಮ ಜೀವಕೋಶಗಳಿಗೆ ಒಯ್ಯುತ್ತದೆ.",
+      "text_markdown": "ನಿಮ್ಮ ರಕ್ತವು ಆ ಅಣುಗಳನ್ನು ನಿಮ್ಮ ಜೀವಕೋಶಗಳಿಗೆ ಒಯ್ಯುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ರಕ್ತವು ಆ ಅಣುಗಳನ್ನು ನಿಮ್ಮ ಜೀವಕೋಶಗಳಿಗೆ ಒಯ್ಯುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-286",
+      "chapter": 8,
+      "text": "ನಿಮ್ಮ ಜೀವಕೋಶಗಳ ಒಳಗೆ, ಆಮ್ಲಜನಕದ ಪರಮಾಣುಗಳು ಆಹಾರದಿಂದ ಬರುವ ಇಂಗಾಲದ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಸೇರಿಕೊಳ್ಳುತ್ತವೆ.",
+      "text_markdown": "ನಿಮ್ಮ ಜೀವಕೋಶಗಳ ಒಳಗೆ, ಆಮ್ಲಜನಕದ ಪರಮಾಣುಗಳು ಆಹಾರದಿಂದ ಬರುವ ಇಂಗಾಲದ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಸೇರಿಕೊಳ್ಳುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನಿಮ್ಮ ಜೀವಕೋಶಗಳ ಒಳಗೆ, ಆಮ್ಲಜನಕದ ಪರಮಾಣುಗಳು ಆಹಾರದಿಂದ ಬರುವ ಇಂಗಾಲದ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಸೇರಿಕೊಳ್ಳುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-287",
+      "chapter": 8,
+      "text": "ಈ ಪ್ರತಿಕ್ರಿಯೆಯು ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+      "text_markdown": "ಈ ಪ್ರತಿಕ್ರಿಯೆಯು ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಈ ಪ್ರತಿಕ್ರಿಯೆಯು ಶಕ್ತಿಯನ್ನು ಬಿಡುಗಡೆ ಮಾಡುತ್ತದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-288",
+      "chapter": 8,
+      "text": "ನೀವು ಇಂಗಾಲ ಮತ್ತು ಆಮ್ಲಜನಕವನ್ನು ಇಂಗಾಲದ ಡೈಆಕ್ಸೈಡ್ ಆಗಿ ಹೊರಹಾಕುತ್ತೀರಿ.",
+      "text_markdown": "ನೀವು ಇಂಗಾಲ ಮತ್ತು ಆಮ್ಲಜನಕವನ್ನು ಇಂಗಾಲದ ಡೈಆಕ್ಸೈಡ್ ಆಗಿ ಹೊರಹಾಕುತ್ತೀರಿ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನೀವು ಇಂಗಾಲ ಮತ್ತು ಆಮ್ಲಜನಕವನ್ನು ಇಂಗಾಲದ ಡೈಆಕ್ಸೈಡ್ ಆಗಿ ಹೊರಹಾಕುತ್ತೀರಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "part": 0,
+      "paragraph_id": "p67",
+      "id": "ch08-289",
+      "chapter": 8,
+      "text": "ಪ್ರತಿಯೊಂದು ಉಸಿರಾಟವೂ ಒಂದು ರಾಸಾಯನಿಕ ಪ್ರತಿಕ್ರಿಯೆ.",
+      "text_markdown": "ಪ್ರತಿಯೊಂದು ಉಸಿರಾಟವೂ ಒಂದು ರಾಸಾಯನಿಕ ಪ್ರತಿಕ್ರಿಯೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪ್ರತಿಯೊಂದು ಉಸಿರಾಟವೂ ಒಂದು ರಾಸಾಯನಿಕ ಪ್ರತಿಕ್ರಿಯೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p68",
+      "id": "ch08-290",
+      "chapter": 8,
+      "text": "ತುಕ್ಕು ರಸಾಯನಶಾಸ್ತ್ರ.",
+      "text_markdown": "ತುಕ್ಕು ರಸಾಯನಶಾಸ್ತ್ರ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ತುಕ್ಕು ರಸಾಯನಶಾಸ್ತ್ರ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p68",
+      "id": "ch08-291",
+      "chapter": 8,
+      "text": "ಮೊಳೆಯ ಮೇಲ್ಮೈಯಲ್ಲಿರುವ ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಗಾಳಿಯಲ್ಲಿನ ಆಮ್ಲಜನಕದ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತವೆ.",
+      "text_markdown": "ಮೊಳೆಯ ಮೇಲ್ಮೈಯಲ್ಲಿರುವ ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಗಾಳಿಯಲ್ಲಿನ ಆಮ್ಲಜನಕದ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಮೊಳೆಯ ಮೇಲ್ಮೈಯಲ್ಲಿರುವ ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಗಾಳಿಯಲ್ಲಿನ ಆಮ್ಲಜನಕದ ಪರಮಾಣುಗಳೊಂದಿಗೆ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p68",
+      "id": "ch08-292",
+      "chapter": 8,
+      "text": "ಕಬ್ಬಿಣ ಮತ್ತು ಆಮ್ಲಜನಕ ಸೇರಿ ಕಬ್ಬಿಣದ ಆಕ್ಸೈಡ್ ಎಂಬ ಹೊಸ ವಸ್ತುವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "text_markdown": "ಕಬ್ಬಿಣ ಮತ್ತು ಆಮ್ಲಜನಕ ಸೇರಿ ಕಬ್ಬಿಣದ ಆಕ್ಸೈಡ್ ಎಂಬ ಹೊಸ ವಸ್ತುವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣ ಮತ್ತು ಆಮ್ಲಜನಕ ಸೇರಿ ಕಬ್ಬಿಣದ ಆಕ್ಸೈಡ್ ಎಂಬ ಹೊಸ ವಸ್ತುವನ್ನು ರೂಪಿಸುತ್ತವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p68",
+      "id": "ch08-293",
+      "chapter": 8,
+      "text": "ಕಬ್ಬಿಣದ ಆಕ್ಸೈಡ್ ನಾವು ತುಕ್ಕು ಎಂದು ಕರೆಯುವ ಕೆಂಪು-ಕಂದು ಬಣ್ಣದ ವಸ್ತುವಾಗಿದೆ.",
+      "text_markdown": "ಕಬ್ಬಿಣದ ಆಕ್ಸೈಡ್ ನಾವು ತುಕ್ಕು ಎಂದು ಕರೆಯುವ ಕೆಂಪು-ಕಂದು ಬಣ್ಣದ ವಸ್ತುವಾಗಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣದ ಆಕ್ಸೈಡ್ ನಾವು ತುಕ್ಕು ಎಂದು ಕರೆಯುವ ಕೆಂಪು-ಕಂದು ಬಣ್ಣದ ವಸ್ತುವಾಗಿದೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p68",
+      "id": "ch08-294",
+      "chapter": 8,
+      "text": "ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಇನ್ನೂ ಅಲ್ಲಿಯೇ ಇವೆ.",
+      "text_markdown": "ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಇನ್ನೂ ಅಲ್ಲಿಯೇ ಇವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಕಬ್ಬಿಣದ ಪರಮಾಣುಗಳು ಇನ್ನೂ ಅಲ್ಲಿಯೇ ಇವೆ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "part": 0,
+      "paragraph_id": "p68",
+      "id": "ch08-295",
+      "chapter": 8,
+      "text": "ಅವು ಕೇವಲ ಆಮ್ಲಜನಕದೊಂದಿಗೆ ಬಂಧಿತವಾಗಿವೆ.",
+      "text_markdown": "ಅವು ಕೇವಲ ಆಮ್ಲಜನಕದೊಂದಿಗೆ ಬಂಧಿತವಾಗಿವೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಅವು ಕೇವಲ ಆಮ್ಲಜನಕದೊಂದಿಗೆ ಬಂಧಿತವಾಗಿವೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "part": 0,
+      "paragraph_id": "p69",
+      "id": "ch08-296",
+      "chapter": 8,
+      "text": "ಪರಮಾಣುಗಳು ಅಮೂರ್ತವಲ್ಲ.",
+      "text_markdown": "ಪರಮಾಣುಗಳು ಅಮೂರ್ತವಲ್ಲ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಪರಮಾಣುಗಳು ಅಮೂರ್ತವಲ್ಲ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "part": 0,
+      "paragraph_id": "p69",
+      "id": "ch08-297",
+      "chapter": 8,
+      "text": "ನೀವು ಸ್ಪರ್ಶಿಸುವ, ರುಚಿ ನೋಡುವ, ನೋಡುವ ಮತ್ತು ವಾಸನೆ ಮಾಡುವ ಎಲ್ಲದರ ಭೌತಿಕ ವಾಸ್ತವವೇ ಪರಮಾಣುಗಳು.",
+      "text_markdown": "ನೀವು ಸ್ಪರ್ಶಿಸುವ, ರುಚಿ ನೋಡುವ, ನೋಡುವ ಮತ್ತು ವಾಸನೆ ಮಾಡುವ ಎಲ್ಲದರ ಭೌತಿಕ ವಾಸ್ತವವೇ ಪರಮಾಣುಗಳು.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನೀವು ಸ್ಪರ್ಶಿಸುವ, ರುಚಿ ನೋಡುವ, ನೋಡುವ ಮತ್ತು ವಾಸನೆ ಮಾಡುವ ಎಲ್ಲದರ ಭೌತಿಕ ವಾಸ್ತವವೇ ಪರಮಾಣುಗಳು.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "part": 0,
+      "paragraph_id": "p69",
+      "id": "ch08-298",
+      "chapter": 8,
+      "text": "ನೀವು ಪರಮಾಣುಗಳನ್ನು ಹೆಚ್ಚು ಅರ್ಥಮಾಡಿಕೊಂಡಷ್ಟೂ, ಜಗತ್ತನ್ನು ಹೆಚ್ಚು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುತ್ತೀರಿ.",
+      "text_markdown": "ನೀವು ಪರಮಾಣುಗಳನ್ನು ಹೆಚ್ಚು ಅರ್ಥಮಾಡಿಕೊಂಡಷ್ಟೂ, ಜಗತ್ತನ್ನು ಹೆಚ್ಚು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುತ್ತೀರಿ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ನೀವು ಪರಮಾಣುಗಳನ್ನು ಹೆಚ್ಚು ಅರ್ಥಮಾಡಿಕೊಂಡಷ್ಟೂ, ಜಗತ್ತನ್ನು ಹೆಚ್ಚು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುತ್ತೀರಿ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "part": 0,
+      "paragraph_id": "p69",
+      "id": "ch08-299",
+      "chapter": 8,
+      "text": "ಇದು ಆರಂಭ.",
+      "text_markdown": "ಇದು ಆರಂಭ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಇದು ಆರಂಭ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "part": 0,
+      "paragraph_id": "p69",
+      "id": "ch08-300",
+      "chapter": 8,
+      "text": "ಅನ್ವೇಷಿಸಲು ಇನ್ನೂ ಬಹಳಷ್ಟಿದೆ.",
+      "text_markdown": "ಅನ್ವೇಷಿಸಲು ಇನ್ನೂ ಬಹಳಷ್ಟಿದೆ.",
+      "title": "ಪರಮಾಣುಗಳೇ ಎಲ್ಲವೂ",
+      "tts": {
+        "text": "ಅನ್ವೇಷಿಸಲು ಇನ್ನೂ ಬಹಳಷ್ಟಿದೆ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    }
+  ]
+}

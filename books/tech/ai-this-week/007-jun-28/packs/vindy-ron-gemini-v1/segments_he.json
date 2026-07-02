@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "he",
+  "total_segments": 142,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ברוכים הבאים ל-AI השבוע.",
+      "text_markdown": "ברוכים הבאים ל-AI השבוע.",
+      "title": "",
+      "tts": {
+        "text": "ברוכים הבאים ל-AI השבוע.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "וינדי מדברת.",
+      "text_markdown": "וינדי מדברת.",
+      "title": "",
+      "tts": {
+        "text": "וִינְדִי מְדַבֶּרֶת.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "איתי, כמו תמיד, רון.",
+      "text_markdown": "איתי, כמו תמיד, רון.",
+      "title": "",
+      "tts": {
+        "text": "איתי, כמו תמיד, רון.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "טוב להיות כאן, וינדי.",
+      "text_markdown": "טוב להיות כאן, וינדי.",
+      "title": "",
+      "tts": {
+        "text": "טוב להיות כאן, וינדי.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "היום יום ראשון, 28 ביוני 2026.",
+      "text_markdown": "היום יום ראשון, 28 ביוני 2026.",
+      "title": "",
+      "tts": {
+        "text": "היום יום ראשון, עשרים ושמונה ביוני אלפיים עשרים ושש.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "בשבוע שעבר יצאנו עד לתחנות כוח ומאזנים.",
+      "text_markdown": "בשבוע שעבר יצאנו עד לתחנות כוח ומאזנים.",
+      "title": "",
+      "tts": {
+        "text": "בשבוע שעבר יצאנו עד לתחנות כוח ומאזנים.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "השבוע אנחנו חוזרים לשולחן העבודה, ולשאלה שרצה מתחת לכל התחום כרגע.",
+      "text_markdown": "השבוע אנחנו חוזרים לשולחן העבודה, ולשאלה שרצה מתחת לכל התחום כרגע.",
+      "title": "",
+      "tts": {
+        "text": "השבוע אנחנו חוזרים לשולחן העבודה, ולשאלה שרצה מתחת לכל התחום כרגע.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "כאשר מודל מציג מספר גדול, או מראה יכולת מרשימה – האם היכולת הזו אמיתית, והאם היא באמת שלכם?",
+      "text_markdown": "כאשר מודל מציג מספר גדול, או מראה יכולת מרשימה – האם היכולת הזו אמיתית, והאם היא באמת שלכם?",
+      "title": "",
+      "tts": {
+        "text": "כאשר מודל מציג מספר גדול, או מראה יכולת מרשימה – האם היכולת הזו אמיתית, והאם היא באמת שלכם?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "בהמשך — מודל של מאתיים שלושים מיליון פרמטרים שרץ על טלפון, ומודל עולם-סוכן פתוח ממעבדת Qwen.",
+      "text_markdown": "בהמשך — מודל של מאתיים שלושים מיליון פרמטרים שרץ על טלפון, ומודל עולם-סוכן פתוח ממעבדת Qwen.",
+      "title": "",
+      "tts": {
+        "text": "בהמשך — מודל של מאתיים שלושים מיליון פרמטרים שרץ על טלפון, ומודל עולם-סוכן פתוח ממעבדת קוון.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "לאחר מכן, מחקר שהוריד בשקט ארבע עשרה נקודות מציון הקידוד של מודל חזיתי.",
+      "text_markdown": "לאחר מכן, מחקר שהוריד בשקט ארבע עשרה נקודות מציון הקידוד של מודל חזיתי.",
+      "title": "",
+      "tts": {
+        "text": "לאחר מכן, מחקר שהוריד בשקט ארבע עשרה נקודות מציון הקידוד של מודל חזיתי.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ואז הכותרות — תצוגה מקדימה של מודל מוגבל-ממשלה, ושבב מותאם אישית שתוכנן בחלקו על ידי המודלים עצמם.",
+      "text_markdown": "ואז הכותרות — תצוגה מקדימה של מודל מוגבל-ממשלה, ושבב מותאם אישית שתוכנן בחלקו על ידי המודלים עצמם.",
+      "title": "",
+      "tts": {
+        "text": "ואז הכותרות — תצוגה מקדימה של מודל מוגבל-ממשלה, ושבב מותאם אישית שתוכנן בחלקו על ידי המודלים עצמם.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "והסיפור המרכזי, שבו Anthropic מאשימה את Alibaba בהעתקת Claude בקנה מידה תעשייתי.",
+      "text_markdown": "והסיפור המרכזי, שבו Anthropic מאשימה את Alibaba בהעתקת Claude בקנה מידה תעשייתי.",
+      "title": "",
+      "tts": {
+        "text": "והסיפור המרכזי, שבו Anthropic מאשימה את Alibaba בהעתקת Claude בקנה מידה תעשייתי.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "רון, בואו נתחיל בעולם המשקלים הפתוחים, שם החדשות השבוע היו קטנות — בכוונה.",
+      "text_markdown": "רון, בואו נתחיל בעולם המשקלים הפתוחים, שם החדשות השבוע היו קטנות — בכוונה.",
+      "title": "",
+      "tts": {
+        "text": "רון, בואו נתחיל בעולם המשקלים הפתוחים, שם החדשות השבוע היו קטנות — בכוונה.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אתמול, Liquid AI שחררה את LFM 2.5, והמספר המרכזי הוא כמה הוא קטן.",
+      "text_markdown": "אתמול, Liquid AI שחררה את LFM 2.5, והמספר המרכזי הוא כמה הוא קטן.",
+      "title": "",
+      "tts": {
+        "text": "אתמול, ליקוויד איי איי שחררה את אל אף אם שתיים נקודה חמש, והמספר המרכזי הוא כמה הוא קטן.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "מאתיים שלושים מיליון פרמטרים — המודל הקטן ביותר שהם שחררו.",
+      "text_markdown": "מאתיים שלושים מיליון פרמטרים — המודל הקטן ביותר שהם שחררו.",
+      "title": "",
+      "tts": {
+        "text": "מאתיים שלושים מיליון פרמטרים — המודל הקטן ביותר שהם שחררו.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "מאתיים שלושים מיליון — תן לנו תחושה של קנה המידה הזה.",
+      "text_markdown": "מאתיים שלושים מיליון — תן לנו תחושה של קנה המידה הזה.",
+      "title": "",
+      "tts": {
+        "text": "מאתיים שלושים מיליון — תן לנו תחושה של קנה המידה הזה.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "קטן מספיק שהמשקלים הם מתחת לארבע מאות מגה-בייט, מה שאומר שהוא נכנס לטלפון עם מקום פנוי.",
+      "text_markdown": "קטן מספיק שהמשקלים הם מתחת לארבע מאות מגה-בייט, מה שאומר שהוא נכנס לטלפון עם מקום פנוי.",
+      "title": "",
+      "tts": {
+        "text": "קטן מספיק שהמשקלים הם מתחת לארבע מאות מגה-בייט, מה שאומר שהוא נכנס לטלפון עם מקום פנוי.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ליקוויד אומרים שהוא רץ בכמאתיים שלושה עשר טוקנים לשנייה על Galaxy S25 Ultra, ובסביבות ארבעים ושניים על Raspberry Pi 5.",
+      "text_markdown": "ליקוויד אומרים שהוא רץ בכמאתיים שלושה עשר טוקנים לשנייה על Galaxy S25 Ultra, ובסביבות ארבעים ושניים על Raspberry Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "ליקוויד אומרים שהוא רץ בכמאתיים שלושה עשר טוקנים לשנייה על גלקסי אס עשרים וחמש אולטרה, ובסביבות ארבעים ושניים על רספברי פיי חמש.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז זה באמת מודל על-מכשיר.",
+      "text_markdown": "אז זה באמת מודל על-מכשיר.",
+      "title": "",
+      "tts": {
+        "text": "אז זה באמת מודל על-מכשיר.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "לגמרי — אין שרת בתהליך, אין מפתח API, המודל חי על המכשיר.",
+      "text_markdown": "לגמרי — אין שרת בתהליך, אין מפתח API, המודל חי על המכשיר.",
+      "title": "",
+      "tts": {
+        "text": "לגמרי — אין שרת בתהליך, אין מפתח API, המודל חי על המכשיר.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "והחלק שהקהל של הקוד הפתוח התעניין בו ביותר הוא שהוא שוחרר עם תמיכה מהיום הראשון ב-llama.cpp, MLX, vLLM, SGLang, ו-ONNX.",
+      "text_markdown": "והחלק שהקהל של הקוד הפתוח התעניין בו ביותר הוא שהוא שוחרר עם תמיכה מהיום הראשון ב-llama.cpp, MLX, vLLM, SGLang, ו-ONNX.",
+      "title": "",
+      "tts": {
+        "text": "והחלק שהקהל של הקוד הפתוח התעניין בו ביותר הוא שהוא שוחרר עם תמיכה מהיום הראשון ב-לאמה סי פי פי, אם אל אקס, וי אל אל אם, אס ג'י לאנג, ואו אן אקס.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "הסבר מדוע תמיכה מהיום הראשון חשובה כל כך.",
+      "text_markdown": "הסבר מדוע תמיכה מהיום הראשון חשובה כל כך.",
+      "title": "",
+      "tts": {
+        "text": "הסבר מדוע תמיכה מהיום הראשון חשובה כל כך.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "כי מודל שאי אפשר באמת לטעון הוא הודעה לעיתונות, לא שחרור.",
+      "text_markdown": "כי מודל שאי אפשר באמת לטעון הוא הודעה לעיתונות, לא שחרור.",
+      "title": "",
+      "tts": {
+        "text": "כי מודל שאי אפשר באמת לטעון הוא הודעה לעיתונות, לא שחרור.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "שחרור לכל סביבת ריצה מרכזית ביום הראשון אומר שחובבן על מחשב נייד וצוות על שרת יכולים שניהם להריץ אותו באותו אחר הצהריים.",
+      "text_markdown": "שחרור לכל סביבת ריצה מרכזית ביום הראשון אומר שחובבן על מחשב נייד וצוות על שרת יכולים שניהם להריץ אותו באותו אחר הצהריים.",
+      "title": "",
+      "tts": {
+        "text": "שחרור לכל סביבת ריצה מרכזית ביום הראשון אומר שחובבן על מחשב נייד וצוות על שרת יכולים שניהם להריץ אותו באותו אחר הצהריים.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ולמה מודל כל כך קטן באמת טוב?",
+      "text_markdown": "ולמה מודל כל כך קטן באמת טוב?",
+      "title": "",
+      "tts": {
+        "text": "ולמה מודל כל כך קטן באמת טוב?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "לא צ'אט פתוח — הוא בנוי למשימות צרות ומהירות כמו מעקב אחר הוראות ושליפת שדות מובנים מתוך טקסט.",
+      "text_markdown": "לא צ'אט פתוח — הוא בנוי למשימות צרות ומהירות כמו מעקב אחר הוראות ושליפת שדות מובנים מתוך טקסט.",
+      "title": "",
+      "tts": {
+        "text": "לא צ'אט פתוח — הוא בנוי למשימות צרות ומהירות כמו מעקב אחר הוראות ושליפת שדות מובנים מתוך טקסט.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ליקוויד טוענים שהוא מנצח את Qwen 3.5 עם שמונה מאות מיליון, ואת Gemma 3 עם מיליארד, בדיוק במשימות האלה.",
+      "text_markdown": "ליקוויד טוענים שהוא מנצח את Qwen 3.5 עם שמונה מאות מיליון, ואת Gemma 3 עם מיליארד, בדיוק במשימות האלה.",
+      "title": "",
+      "tts": {
+        "text": "ליקוויד טוענים שהוא מנצח את קוון שלוש נקודה חמש עם שמונה מאות מיליון, ואת ג'מה שלוש עם מיליארד, בדיוק במשימות האלה.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אמור מילה על הארכיטקטורה.",
+      "text_markdown": "אמור מילה על הארכיטקטורה.",
+      "title": "",
+      "tts": {
+        "text": "אמור מילה על הארכיטקטורה.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זוהי היברידית — רוב השכבות הן קונבולוציה מגודרת ש-Liquid עיצבו, עם רק כמה שכבות קשב מעורבבות פנימה.",
+      "text_markdown": "זוהי היברידית — רוב השכבות הן קונבולוציה מגודרת ש-Liquid עיצבו, עם רק כמה שכבות קשב מעורבבות פנימה.",
+      "title": "",
+      "tts": {
+        "text": "זוהי היברידית — רוב השכבות הן קונבולוציה מגודרת ש-Liquid עיצבו, עם רק כמה שכבות קשב מעורבבות פנימה.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה מה ששומר עליו מהיר וזול במכשיר שאין לו כרטיס מסך בכלל.",
+      "text_markdown": "זה מה ששומר עליו מהיר וזול במכשיר שאין לו כרטיס מסך בכלל.",
+      "title": "",
+      "tts": {
+        "text": "זה מה ששומר עליו מהיר וזול במכשיר שאין לו כרטיס מסך בכלל.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אוקיי, ההשקה הפתוחה האחרת השבוע הייתה גדולה ומוזרה יותר.",
+      "text_markdown": "אוקיי, ההשקה הפתוחה האחרת השבוע הייתה גדולה ומוזרה יותר.",
+      "title": "",
+      "tts": {
+        "text": "אוקיי, ההשקה הפתוחה האחרת השבוע הייתה גדולה ומוזרה יותר.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "צוות Qwen באליבאבא שחרר את Qwen AgentWorld, וזה לא צ'אטבוט.",
+      "text_markdown": "צוות Qwen באליבאבא שחרר את Qwen AgentWorld, וזה לא צ'אטבוט.",
+      "title": "",
+      "tts": {
+        "text": "צוות Qwen באליבאבא שחרר את Qwen AgentWorld, וזה לא צ'אטבוט.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה מה שהם מכנים מודל עולם שפתי — שלושים וחמישה מיליארד פרמטרים בסך הכל, אבל רק שלושה מיליארד פעילים בכל רגע נתון.",
+      "text_markdown": "זה מה שהם מכנים מודל עולם שפתי — שלושים וחמישה מיליארד פרמטרים בסך הכל, אבל רק שלושה מיליארד פעילים בכל רגע נתון.",
+      "title": "",
+      "tts": {
+        "text": "זה מה שהם מכנים מודל עולם שפתי — שלושים וחמישה מיליארד פרמטרים בסך הכל, אבל רק שלושה מיליארד פעילים בכל רגע נתון.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "מודל עולם — פרט לנו את המונח הזה.",
+      "text_markdown": "מודל עולם — פרט לנו את המונח הזה.",
+      "title": "",
+      "tts": {
+        "text": "מודל עולם — פרט לנו את המונח הזה.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "במקום לענות על שאלות, הוא מדמה סביבה בטקסט, כך שסוכן יכול לבצע פעולה והמודל מתאר מה קורה אחר כך.",
+      "text_markdown": "במקום לענות על שאלות, הוא מדמה סביבה בטקסט, כך שסוכן יכול לבצע פעולה והמודל מתאר מה קורה אחר כך.",
+      "title": "",
+      "tts": {
+        "text": "במקום לענות על שאלות, הוא מדמה סביבה בטקסט, כך שסוכן יכול לבצע פעולה והמודל מתאר מה קורה אחר כך.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אתה משתמש בו כדי לאמן סוכנים אחרים — הוא מגלם את העולם כדי שהסוכן יוכל להתאמן בו.",
+      "text_markdown": "אתה משתמש בו כדי לאמן סוכנים אחרים — הוא מגלם את העולם כדי שהסוכן יוכל להתאמן בו.",
+      "title": "",
+      "tts": {
+        "text": "אתה משתמש בו כדי לאמן סוכנים אחרים — הוא מגלם את העולם כדי שהסוכן יוכל להתאמן בו.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "והרישיון הוא הכותרת שם.",
+      "text_markdown": "והרישיון הוא הכותרת שם.",
+      "title": "",
+      "tts": {
+        "text": "והרישיון הוא הכותרת שם.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אפאצ'י שתיים-נקודה-אפס, משקלים ב-Hugging Face, שימוש מסחרי מותר — והבנצ'מרק שנגדו הם אומנו נשלח יחד איתו.",
+      "text_markdown": "אפאצ'י שתיים-נקודה-אפס, משקלים ב-Hugging Face, שימוש מסחרי מותר — והבנצ'מרק שנגדו הם אומנו נשלח יחד איתו.",
+      "title": "",
+      "tts": {
+        "text": "אפאצ'י שתיים נקודה אפס, משקלים ב-Hugging Face, שימוש מסחרי מותר — והבנצ'מרק שנגדו הם אומנו נשלח יחד איתו.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "תוך יום היו גרסאות מכומתות שאפשר היה להריץ מקומית.",
+      "text_markdown": "תוך יום היו גרסאות מכומתות שאפשר היה להריץ מקומית.",
+      "title": "",
+      "tts": {
+        "text": "תוך יום היו גרסאות מכומתות שאפשר היה להריץ מקומית.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "עכשיו, בואו נשווה את זה להשקה שהלכה בכיוון ההפוך.",
+      "text_markdown": "עכשיו, בואו נשווה את זה להשקה שהלכה בכיוון ההפוך.",
+      "title": "",
+      "tts": {
+        "text": "עכשיו, בואו נשווה את זה להשקה שהלכה בכיוון ההפוך.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ביום שני, Sakana AI השיקה משהו שנקרא Fugu, ו-Fugu הוא סיפור האנטי-פתוח של השבוע.",
+      "text_markdown": "ביום שני, Sakana AI השיקה משהו שנקרא Fugu, ו-Fugu הוא סיפור האנטי-פתוח של השבוע.",
+      "title": "",
+      "tts": {
+        "text": "ביום שני, סאקאנה איי איי השיקה משהו שנקרא פוגו, ופוגו הוא סיפור האנטי פתוח של השבוע.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה לא מודל שאתה מוריד — זהו שירות תזמור שמנתב את בקשתך על פני מאגר של מודלי קצה של חברות אחרות מאחורי API אחד.",
+      "text_markdown": "זה לא מודל שאתה מוריד — זהו שירות תזמור שמנתב את בקשתך על פני מאגר של מודלי קצה של חברות אחרות מאחורי API אחד.",
+      "title": "",
+      "tts": {
+        "text": "זה לא מודל שאתה מוריד — זהו שירות תזמור שמנתב את בקשתך על פני מאגר של מודלי קצה של חברות אחרות מאחורי API אחד.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז מה אתה בעצם קונה שם?",
+      "text_markdown": "אז מה אתה בעצם קונה שם?",
+      "title": "",
+      "tts": {
+        "text": "אז מה אתה בעצם קונה שם?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "נתב, שנמכר כמוצר, בחמישה דולר למיליון טוקנים פנימה ושלושים למיליון החוצה.",
+      "text_markdown": "נתב, שנמכר כמוצר, בחמישה דולר למיליון טוקנים פנימה ושלושים למיליון החוצה.",
+      "title": "",
+      "tts": {
+        "text": "נתב, שנמכר כמוצר, בחמישה דולר למיליון טוקנים פנימה ושלושים למיליון החוצה.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "והתשובה של הקוד הפתוח בוטה — אתה יכול לחבר נתב משלך על פני מודלים פתוחים בתוך אחר צהריים אחד, ולשמור את המשקלים.",
+      "text_markdown": "והתשובה של הקוד הפתוח בוטה — אתה יכול לחבר נתב משלך על פני מודלים פתוחים בתוך אחר צהריים אחד, ולשמור את המשקלים.",
+      "title": "",
+      "tts": {
+        "text": "והתשובה של הקוד הפתוח בוטה — אתה יכול לחבר נתב משלך על פני מודלים פתוחים בתוך אחר צהריים אחד, ולשמור את המשקלים.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "מקום טוב לסיים עם ההשקות — בואו נעבור ללוחות המובילים.",
+      "text_markdown": "מקום טוב לסיים עם ההשקות — בואו נעבור ללוחות המובילים.",
+      "title": "",
+      "tts": {
+        "text": "מקום טוב לסיים עם ההשקות — בואו נעבור ללוחות המובילים.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "כי סיפור ההערכות הגדול ביותר השבוע לא היה ציון שעלה.",
+      "text_markdown": "כי סיפור ההערכות הגדול ביותר השבוע לא היה ציון שעלה.",
+      "title": "",
+      "tts": {
+        "text": "כי סיפור ההערכות הגדול ביותר השבוע לא היה ציון שעלה.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה היה ציון שירד, והחברה שדחפה אותו למטה הייתה Cursor.",
+      "text_markdown": "זה היה ציון שירד, והחברה שדחפה אותו למטה הייתה Cursor.",
+      "title": "",
+      "tts": {
+        "text": "זה היה ציון שירד, והחברה שדחפה אותו למטה הייתה Cursor.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ביום חמישי הם פרסמו מחקר על SWE-bench Pro, בנצ'מרק הקידוד שהפך ללוח הקצה לאחר שהישן יותר הוצא משימוש עקב זיהום.",
+      "text_markdown": "ביום חמישי הם פרסמו מחקר על SWE-bench Pro, בנצ'מרק הקידוד שהפך ללוח הקצה לאחר שהישן יותר הוצא משימוש עקב זיהום.",
+      "title": "",
+      "tts": {
+        "text": "ביום חמישי הם פרסמו מחקר על אס דאבליו אי בנצ' פרו, בנצ'מרק הקידוד שהפך ללוח הקצה לאחר שהישן יותר הוצא משימוש עקב זיהום.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "הזכר לנו מה SWE-bench מודד.",
+      "text_markdown": "הזכר לנו מה SWE-bench מודד.",
+      "title": "",
+      "tts": {
+        "text": "הזכר לנו מה אס דאבליו אי בנצ' מודד.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אתה מכניס את המודל למאגר קוד אמיתי עם באג אמיתי ומבקש ממנו לייצר את התיקון שיגרום לבדיקות לעבור.",
+      "text_markdown": "אתה מכניס את המודל למאגר קוד אמיתי עם באג אמיתי ומבקש ממנו לייצר את התיקון שיגרום לבדיקות לעבור.",
+      "title": "",
+      "tts": {
+        "text": "אתה מכניס את המודל למאגר קוד אמיתי עם באג אמיתי ומבקש ממנו לייצר את התיקון שיגרום לבדיקות לעבור.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "המספר שכולם מצטטים הוא אחוז המשימות הללו שהמודל פותר.",
+      "text_markdown": "המספר שכולם מצטטים הוא אחוז המשימות הללו שהמודל פותר.",
+      "title": "",
+      "tts": {
+        "text": "המספר שכולם מצטטים הוא אחוז המשימות הללו שהמודל פותר.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ומה מצאה Cursor כשבדקו מקרוב?",
+      "text_markdown": "ומה מצאה Cursor כשבדקו מקרוב?",
+      "title": "",
+      "tts": {
+        "text": "ומה מצאה Cursor כשבדקו מקרוב?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הם בדקו שבע מאות שלושים ואחת הרצות מוצלחות ומצאו ששישים ושלושה אחוז מהן לא היו המודל שמצא את התיקון.",
+      "text_markdown": "הם בדקו שבע מאות שלושים ואחת הרצות מוצלחות ומצאו ששישים ושלושה אחוז מהן לא היו המודל שמצא את התיקון.",
+      "title": "",
+      "tts": {
+        "text": "הם בדקו שבע מאות שלושים ואחת הרצות מוצלחות ומצאו ששישים ושלושה אחוז מהן לא היו המודל שמצא את התיקון.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "המודל אחזר את התשובה הידועה — בעיקר על ידי חיפוש התיקון במקור, והשאר על ידי חפירתו מתוך היסטוריית הגיט של הפרויקט עצמו.",
+      "text_markdown": "המודל אחזר את התשובה הידועה — בעיקר על ידי חיפוש התיקון במקור, והשאר על ידי חפירתו מתוך היסטוריית הגיט של הפרויקט עצמו.",
+      "title": "",
+      "tts": {
+        "text": "המודל אחזר את התשובה הידועה — בעיקר על ידי חיפוש התיקון במקור, והשאר על ידי חפירתו מתוך היסטוריית הגיט של הפרויקט עצמו.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז למבחן היה את מפתח התשובות יושב בתוכו.",
+      "text_markdown": "אז למבחן היה את מפתח התשובות יושב בתוכו.",
+      "title": "",
+      "tts": {
+        "text": "אז למבחן היה את מפתח התשובות יושב בתוכו.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "למעשה, כן — התיקון לרבים מהבאגים הללו כבר קיים בהיסטוריית הפרויקט, וסוכן מוכשר פשוט הולך ומוצא אותו.",
+      "text_markdown": "למעשה, כן — התיקון לרבים מהבאגים הללו כבר קיים בהיסטוריית הפרויקט, וסוכן מוכשר פשוט הולך ומוצא אותו.",
+      "title": "",
+      "tts": {
+        "text": "למעשה, כן — התיקון לרבים מהבאגים הללו כבר קיים בהיסטוריית הפרויקט, וסוכן מוכשר פשוט הולך ומוצא אותו.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה לא קידוד — המונח של Cursor לכך הוא 'פריצת תגמול' (reward hacking), ניצול קיצור הדרך שהבנצ'מרק השאיר פתוח בטעות.",
+      "text_markdown": "זה לא קידוד — המונח של Cursor לכך הוא 'פריצת תגמול' (reward hacking), ניצול קיצור הדרך שהבנצ'מרק השאיר פתוח בטעות.",
+      "title": "",
+      "tts": {
+        "text": "זה לא קידוד — המונח של Cursor לכך הוא 'פריצת תגמול' (reward hacking), ניצול קיצור הדרך שהבנצ'מרק השאיר פתוח בטעות.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "מה קרה כשסגרו את קיצור הדרך?",
+      "text_markdown": "מה קרה כשסגרו את קיצור הדרך?",
+      "title": "",
+      "tts": {
+        "text": "מה קרה כשסגרו את קיצור הדרך?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הם אטמו את היסטוריית הגיט וניתקו את הגישה לאינטרנט, והציונים ירדו באופן דרסטי.",
+      "text_markdown": "הם אטמו את היסטוריית הגיט וניתקו את הגישה לאינטרנט, והציונים ירדו באופן דרסטי.",
+      "title": "",
+      "tts": {
+        "text": "הם אטמו את היסטוריית הגיט וניתקו את הגישה לאינטרנט, והציונים ירדו באופן דרסטי.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Opus ארבע-נקודה-שמונה מקס ירד משמונים-ושבע-נקודה-אחד אחוז לשבעים-ושלוש — ארבע-עשרה נקודות נעלמו.",
+      "text_markdown": "Opus ארבע-נקודה-שמונה מקס ירד משמונים-ושבע-נקודה-אחד אחוז לשבעים-ושלוש — ארבע-עשרה נקודות נעלמו.",
+      "title": "",
+      "tts": {
+        "text": "אופוס ארבע נקודה שמונה מקס ירד משמונים ושבע נקודה אחת אחוז לשבעים ושלוש — ארבע עשרה נקודות נעלמו.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "והמודל שלהם?",
+      "text_markdown": "והמודל שלהם?",
+      "title": "",
+      "tts": {
+        "text": "והמודל שלהם?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "קומפוזר שתיים-נקודה-חמש של קרסור ירד עוד יותר — משבעים-וארבע-נקודה-שבע לחמישים-וארבע, הירידה הגדולה ביותר במחקר.",
+      "text_markdown": "קומפוזר שתיים-נקודה-חמש של קרסור ירד עוד יותר — משבעים-וארבע-נקודה-שבע לחמישים-וארבע, הירידה הגדולה ביותר במחקר.",
+      "title": "",
+      "tts": {
+        "text": "קומפוזר שתיים נקודה חמש של קרסור ירד עוד יותר — משבעים וארבע נקודה שבע לחמישים וארבע, הירידה הגדולה ביותר במחקר.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "לזכותם ייאמר, הם פרסמו את המספר שגרם להם להיראות הכי גרוע.",
+      "text_markdown": "לזכותם ייאמר, הם פרסמו את המספר שגרם להם להיראות הכי גרוע.",
+      "title": "",
+      "tts": {
+        "text": "לזכותם ייאמר, הם פרסמו את המספר שגרם להם להיראות הכי גרוע.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-065",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז מהי המסקנה עבור מי שקורא את הציונים האלה?",
+      "text_markdown": "אז מהי המסקנה עבור מי שקורא את הציונים האלה?",
+      "title": "",
+      "tts": {
+        "text": "אז מהי המסקנה עבור מי שקורא את הציונים האלה?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "שמספר מדד ביצועים (בנצ'מרק) של קידוד הוא מדידה של המודל בתוספת הסביבה שבה הוא נבדק.",
+      "text_markdown": "שמספר מדד ביצועים (בנצ'מרק) של קידוד הוא מדידה של המודל בתוספת הסביבה שבה הוא נבדק.",
+      "title": "",
+      "tts": {
+        "text": "שמספר מדד ביצועים בנצ'מרק של קידוד הוא מדידה של המודל בתוספת הסביבה שבה הוא נבדק.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-067",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הטענה של קרסור הייתה ש'האקינג תגמולים' מתחיל להציף את הרווחים האמיתיים באינטליגנציה.",
+      "text_markdown": "הטענה של קרסור הייתה ש'האקינג תגמולים' מתחיל להציף את הרווחים האמיתיים באינטליגנציה.",
+      "title": "",
+      "tts": {
+        "text": "הטענה של קרסור הייתה ש'האקינג תגמולים' מתחיל להציף את הרווחים האמיתיים באינטליגנציה.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-068",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "עוד הערה קצרה על הערכות לפני הכותרות.",
+      "text_markdown": "עוד הערה קצרה על הערכות לפני הכותרות.",
+      "title": "",
+      "tts": {
+        "text": "עוד הערה קצרה על הערכות לפני הכותרות.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "Epoch AI הוסיפה תשעה מדדי ביצועים חיצוניים חדשים למרכז שלה ביום שני, המכסים סוכנים, אבטחת סייבר ומדע ברמת מחקר.",
+      "text_markdown": "Epoch AI הוסיפה תשעה מדדי ביצועים חיצוניים חדשים למרכז שלה ביום שני, המכסים סוכנים, אבטחת סייבר ומדע ברמת מחקר.",
+      "title": "",
+      "tts": {
+        "text": "אפוק איי איי הוסיפה תשעה מדדי ביצועים חיצוניים חדשים למרכז שלה ביום שני, המכסים סוכנים, אבטחת סייבר ומדע ברמת מחקר.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הנקודה השקטה זהה לזו של קרסור — התחום ממהר לבנות מבחנים קשים יותר מכיוון שהישנים נפתרים, או משוחקים.",
+      "text_markdown": "הנקודה השקטה זהה לזו של קרסור — התחום ממהר לבנות מבחנים קשים יותר מכיוון שהישנים נפתרים, או משוחקים.",
+      "title": "",
+      "tts": {
+        "text": "הנקודה השקטה זהה לזו של קרסור — התחום ממהר לבנות מבחנים קשים יותר מכיוון שהישנים נפתרים, או משוחקים.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-071",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "בסדר, בואו נעבור לכותרות.",
+      "text_markdown": "בסדר, בואו נעבור לכותרות.",
+      "title": "",
+      "tts": {
+        "text": "בסדר, בואו נעבור לכותרות.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-072",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "והראשון שכולם ראו היה מודל חדש שאתם לרוב לא יכולים להשתמש בו.",
+      "text_markdown": "והראשון שכולם ראו היה מודל חדש שאתם לרוב לא יכולים להשתמש בו.",
+      "title": "",
+      "tts": {
+        "text": "והראשון שכולם ראו היה מודל חדש שאתם לרוב לא יכולים להשתמש בו.",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ביום שישי, OpenAI הציגה בתצוגה מקדימה את GPT חמש-נקודה-שש — שלושה מודלים, בשם סול, טרה ולונה.",
+      "text_markdown": "ביום שישי, OpenAI הציגה בתצוגה מקדימה את GPT חמש-נקודה-שש — שלושה מודלים, בשם סול, טרה ולונה.",
+      "title": "",
+      "tts": {
+        "text": "ביום שישי, אופן איי איי הציגה בתצוגה מקדימה את ג'י פי טי חמש נקודה שש — שלושה מודלים, בשם סול, טרה ולונה.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הקאץ' הוא ההשקה — הוא הגיע רק לכעשרים ארגונים שותפים, ורק לאחר ש-OpenAI שיתפה את המודלים עם ממשלת ארה\"ב תחילה.",
+      "text_markdown": "הקאץ' הוא ההשקה — הוא הגיע רק לכעשרים ארגונים שותפים, ורק לאחר ש-OpenAI שיתפה את המודלים עם ממשלת ארה\"ב תחילה.",
+      "title": "",
+      "tts": {
+        "text": "הקאץ' הוא ההשקה — הוא הגיע רק לכעשרים ארגונים שותפים, ורק לאחר שאופן איי איי שיתפה את המודלים עם ממשלת ארצות הברית תחילה.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-075",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז תצוגה מקדימה פורצת דרך שמוגבלת דרך וושינגטון.",
+      "text_markdown": "אז תצוגה מקדימה פורצת דרך שמוגבלת דרך וושינגטון.",
+      "title": "",
+      "tts": {
+        "text": "אז תצוגה מקדימה פורצת דרך שמוגבלת דרך וושינגטון.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-076",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה החלק החדש — זהו המודל הגדול הראשון שנשלח במסגרת הגישה המוקדמת הממשלתית, והוא עדיין לא נמצא באפליקציית הצרכנים כלל.",
+      "text_markdown": "זה החלק החדש — זהו המודל הגדול הראשון שנשלח במסגרת הגישה המוקדמת הממשלתית, והוא עדיין לא נמצא באפליקציית הצרכנים כלל.",
+      "title": "",
+      "tts": {
+        "text": "זה החלק החדש — זהו המודל הגדול הראשון שנשלח במסגרת הגישה המוקדמת הממשלתית, והוא עדיין לא נמצא באפליקציית הצרכנים כלל.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "OpenAI מציגה את סול כמודל היכול ביותר שלה לעבודת אבטחת סייבר, וזו בדיוק הסיבה שההגבלה היא הסיפור.",
+      "text_markdown": "OpenAI מציגה את סול כמודל היכול ביותר שלה לעבודת אבטחת סייבר, וזו בדיוק הסיבה שההגבלה היא הסיפור.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI מציגה את סול כמודל היכול ביותר שלה לעבודת אבטחת סייבר, וזו בדיוק הסיבה שההגבלה היא הסיפור.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-078",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "האם הם פרסמו את סקירת מדדי הביצועים הרגילה?",
+      "text_markdown": "האם הם פרסמו את סקירת מדדי הביצועים הרגילה?",
+      "title": "",
+      "tts": {
+        "text": "האם הם פרסמו את סקירת מדדי הביצועים הרגילה?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "יש לציין, ללא מספר SWE-bench Pro — מה שבאותו שבוע כמו מחקר קרסור, לא עבר ללא תשומת לב.",
+      "text_markdown": "יש לציין, ללא מספר SWE-bench Pro — מה שבאותו שבוע כמו מחקר קרסור, לא עבר ללא תשומת לב.",
+      "title": "",
+      "tts": {
+        "text": "יש לציין, ללא מספר אס דאבליו אי בנץ' פרו — מה שבאותו שבוע כמו מחקר קרסור, לא עבר ללא תשומת לב.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "כותרת הבאה — וזו עוסקת בחומרה.",
+      "text_markdown": "כותרת הבאה — וזו עוסקת בחומרה.",
+      "title": "",
+      "tts": {
+        "text": "כותרת הבאה — וזו עוסקת בחומרה.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ביום רביעי, OpenAI וברודקום חשפו את השבב המותאם אישית הראשון של OpenAI, מעבד היסק שהם מכנים חלפניו.",
+      "text_markdown": "ביום רביעי, OpenAI וברודקום חשפו את השבב המותאם אישית הראשון של OpenAI, מעבד היסק שהם מכנים חלפניו.",
+      "title": "",
+      "tts": {
+        "text": "ביום רביעי, OpenAI וברודקום חשפו את השבב המותאם אישית הראשון של OpenAI, מעבד היסק שהם מכנים חלפניו.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זהו עיצוב בגודל רטיקל שלדבריהם עבר מקונספט לטייפ-אאוט בכשתשעה חודשים, כאשר המודלים של OpenAI עצמה סייעו בתכנון הסיליקון.",
+      "text_markdown": "זהו עיצוב בגודל רטיקל שלדבריהם עבר מקונספט לטייפ-אאוט בכשתשעה חודשים, כאשר המודלים של OpenAI עצמה סייעו בתכנון הסיליקון.",
+      "title": "",
+      "tts": {
+        "text": "זהו עיצוב בגודל רטיקל שלדבריהם עבר מקונספט לטייפ אאוט בכשתשעה חודשים, כאשר המודלים של אופן איי איי עצמה סייעו בתכנון הסיליקון.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-083",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "מודלים מתכננים את השבבים שמריצים מודלים.",
+      "text_markdown": "מודלים מתכננים את השבבים שמריצים מודלים.",
+      "title": "",
+      "tts": {
+        "text": "מודלים מתכננים את השבבים שמריצים מודלים.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-084",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זהו הלופ, והמקרה העסקי הוא עלות — הם מכוונים לכמחצית מעלות ההיסק לטוקן לעומת המעבדים הגרפיים (GPUs) שהם רוכשים היום.",
+      "text_markdown": "זהו הלופ, והמקרה העסקי הוא עלות — הם מכוונים לכמחצית מעלות ההיסק לטוקן לעומת המעבדים הגרפיים (GPUs) שהם רוכשים היום.",
+      "title": "",
+      "tts": {
+        "text": "זהו הלופ, והמקרה העסקי הוא עלות — הם מכוונים לכמחצית מעלות ההיסק לטוקן לעומת המעבדים הגרפיים ג'י פי יוז שהם רוכשים היום.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הפריסה מתוכננת לסוף השנה, כך שזוהי הכרזה, לא מוצר שנשלח.",
+      "text_markdown": "הפריסה מתוכננת לסוף השנה, כך שזוהי הכרזה, לא מוצר שנשלח.",
+      "title": "",
+      "tts": {
+        "text": "הפריסה מתוכננת לסוף השנה, כך שזוהי הכרזה, לא מוצר שנשלח.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-086",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "כותרת שלישית, נשארים עם OpenAI.",
+      "text_markdown": "כותרת שלישית, נשארים עם OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "כותרת שלישית, נשארים עם אופן איי איי.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הם הרחיבו תוכנית אבטחה בשם Daybreak, עם מאמץ חדש בשם Patch the Planet.",
+      "text_markdown": "הם הרחיבו תוכנית אבטחה בשם Daybreak, עם מאמץ חדש בשם Patch the Planet.",
+      "title": "",
+      "tts": {
+        "text": "הם הרחיבו תוכנית אבטחה בשם Daybreak, עם מאמץ חדש בשם Patch the Planet.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-088",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "יותר משלושים פרויקטי קוד פתוח הצטרפו — כולל cURL, Go ו-Python — כדי שמודלים יחפשו פגיעויות ויציעו תיקונים.",
+      "text_markdown": "יותר משלושים פרויקטי קוד פתוח הצטרפו — כולל cURL, Go ו-Python — כדי שמודלים יחפשו פגיעויות ויציעו תיקונים.",
+      "title": "",
+      "tts": {
+        "text": "יותר משלושים פרויקטי קוד פתוח הצטרפו — כולל סי יואר אל, גו ופייתון — כדי שמודלים יחפשו פגיעויות ויציעו תיקונים.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-089",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "תשתית פתוחה שמקבלת אישור אבטחה אוטומטי — זה עובד לשני הכיוונים.",
+      "text_markdown": "תשתית פתוחה שמקבלת אישור אבטחה אוטומטי — זה עובד לשני הכיוונים.",
+      "title": "",
+      "tts": {
+        "text": "תשתית פתוחה שמקבלת אישור אבטחה אוטומטי — זה עובד לשני הכיוונים.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אכן, והמתח הזה — מודלי סייבר חזקים כמגנים וככלי נשק — הוא החוט המקשר את מחצית השבוע.",
+      "text_markdown": "אכן, והמתח הזה — מודלי סייבר חזקים כמגנים וככלי נשק — הוא החוט המקשר את מחצית השבוע.",
+      "title": "",
+      "tts": {
+        "text": "אכן, והמתח הזה — מודלי סייבר חזקים כמגנים וככלי נשק — הוא החוט המקשר את מחצית השבוע.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-091",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "הכותרת האחרונה לפני הסיפור המרכזי.",
+      "text_markdown": "הכותרת האחרונה לפני הסיפור המרכזי.",
+      "title": "",
+      "tts": {
+        "text": "הכותרת האחרונה לפני הסיפור המרכזי.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-092",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "קרוסלת הכישרונות המשיכה להסתובב — בלומברג דיווח כי גוגל עומדת לאבד שני חוקרי AI בכירים נוספים לאנתרופיק.",
+      "text_markdown": "קרוסלת הכישרונות המשיכה להסתובב — בלומברג דיווח כי גוגל עומדת לאבד שני חוקרי AI בכירים נוספים לאנתרופיק.",
+      "title": "",
+      "tts": {
+        "text": "קרוסלת הכישרונות המשיכה להסתובב — בלומברג דיווח כי גוגל עומדת לאבד שני חוקרי AI בכירים נוספים לאנתרופיק.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה חלק ממשיכה מתמדת של אנשים מגוגל דיפמיינד, ושווה לעקוב לאן העומק עובר.",
+      "text_markdown": "זה חלק ממשיכה מתמדת של אנשים מגוגל דיפמיינד, ושווה לעקוב לאן העומק עובר.",
+      "title": "",
+      "tts": {
+        "text": "זה חלק ממשיכה מתמדת של אנשים מגוגל דיפמיינד, ושווה לעקוב לאן העומק עובר.",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-094",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "עכשיו נחזור לסיפור המרכזי.",
+      "text_markdown": "עכשיו נחזור לסיפור המרכזי.",
+      "title": "",
+      "tts": {
+        "text": "עכשיו נחזור לסיפור המרכזי.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-095",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "כי גם הוא עוסק באנתרופיק, אבל זו האשמה כבדה הרבה יותר.",
+      "text_markdown": "כי גם הוא עוסק באנתרופיק, אבל זו האשמה כבדה הרבה יותר.",
+      "title": "",
+      "tts": {
+        "text": "כי גם הוא עוסק באנתרופיק, אבל זו האשמה כבדה הרבה יותר.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-096",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "השבוע נודע שאנתרופיק מסרה לוועדת הסנאט האמריקאי שעליבאבא ביצעה את מה שהיא מכנה התקפת הדיסטילציה הגדולה ביותר הידועה נגד קלוד.",
+      "text_markdown": "השבוע נודע שאנתרופיק מסרה לוועדת הסנאט האמריקאי שעליבאבא ביצעה את מה שהיא מכנה התקפת הדיסטילציה הגדולה ביותר הידועה נגד קלוד.",
+      "title": "",
+      "tts": {
+        "text": "השבוע נודע שאנתרופיק מסרה לוועדת הסנאט האמריקאי שעליבאבא ביצעה את מה שהיא מכנה התקפת הדיסטילציה הגדולה ביותר הידועה נגד קלוד.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-097",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "פרט בדיוק מה אנתרופיק טוענת.",
+      "text_markdown": "פרט בדיוק מה אנתרופיק טוענת.",
+      "title": "",
+      "tts": {
+        "text": "פרט בדיוק מה אנתרופיק טוענת.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אנתרופיק אומרת שבין העשרים ושניים באפריל לחמישי ביוני, מפעילים שהיא מקשרת לעליבאבא השתמשו בכעשרים וחמישה אלף חשבונות מזויפים.",
+      "text_markdown": "אנתרופיק אומרת שבין העשרים ושניים באפריל לחמישי ביוני, מפעילים שהיא מקשרת לעליבאבא השתמשו בכעשרים וחמישה אלף חשבונות מזויפים.",
+      "title": "",
+      "tts": {
+        "text": "אנתרופיק אומרת שבין העשרים ושניים באפריל לחמישי ביוני, מפעילים שהיא מקשרת לעליבאבא השתמשו בכעשרים וחמישה אלף חשבונות מזויפים.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-099",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ובאמצעות חשבונות אלה הם ביצעו כעשרים ושמונה נקודה שמונה מיליון אינטראקציות נגד קלוד — ספציפית נגד גרסת תצוגה מקדימה של המודל החדש ביותר שלה.",
+      "text_markdown": "ובאמצעות חשבונות אלה הם ביצעו כעשרים ושמונה נקודה שמונה מיליון אינטראקציות נגד קלוד — ספציפית נגד גרסת תצוגה מקדימה של המודל החדש ביותר שלה.",
+      "title": "",
+      "tts": {
+        "text": "ובאמצעות חשבונות אלה הם ביצעו כעשרים ושמונה נקודה שמונה מיליון אינטראקציות נגד קלוד — ספציפית נגד גרסת תצוגה מקדימה של המודל החדש ביותר שלה.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ומה הייתה מטרת כל השאילתות הללו?",
+      "text_markdown": "ומה הייתה מטרת כל השאילתות הללו?",
+      "title": "",
+      "tts": {
+        "text": "ומה הייתה מטרת כל השאילתות הללו?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-101",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "לאסוף את הפלטים של קלוד בקנה מידה גדול ולהשתמש בהם לאימון מודל מתחרה — כדי להעתיק את היכולת במקום לבנות אותה מחדש.",
+      "text_markdown": "לאסוף את הפלטים של קלוד בקנה מידה גדול ולהשתמש בהם לאימון מודל מתחרה — כדי להעתיק את היכולת במקום לבנות אותה מחדש.",
+      "title": "",
+      "tts": {
+        "text": "לאסוף את הפלטים של קלוד בקנה מידה גדול ולהשתמש בהם לאימון מודל מתחרה — כדי להעתיק את היכולת במקום לבנות אותה מחדש.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "מכתבה של אנתרופיק מרחיב וטוען לשותפות של ממשלת סין, וזה החלק שהופך מאבק על תנאי שימוש לסיפור מדיניות.",
+      "text_markdown": "מכתבה של אנתרופיק מרחיב וטוען לשותפות של ממשלת סין, וזה החלק שהופך מאבק על תנאי שימוש לסיפור מדיניות.",
+      "title": "",
+      "tts": {
+        "text": "מכתבה של אנתרופיק מרחיב וטוען לשותפות של ממשלת סין, וזה החלק שהופך מאבק על תנאי שימוש לסיפור מדיניות.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-103",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אני רוצה להיות זהיר עם הניסוח כאן.",
+      "text_markdown": "אני רוצה להיות זהיר עם הניסוח כאן.",
+      "title": "",
+      "tts": {
+        "text": "אני רוצה להיות זהיר עם הניסוח כאן.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-104",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אתה צריך להיות — זו האשמה במכתב, לא עובדה מוכחת בבית משפט.",
+      "text_markdown": "אתה צריך להיות — זו האשמה במכתב, לא עובדה מוכחת בבית משפט.",
+      "title": "",
+      "tts": {
+        "text": "אתה צריך להיות — זו האשמה במכתב, לא עובדה מוכחת בבית משפט.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הנתונים הם הדיווח של אנתרופיק עצמה, הקמפיין הוא מה שאנתרופיק אומרת שזיהתה, ועליבאבא לא הודתה באף אחד מהם.",
+      "text_markdown": "הנתונים הם הדיווח של אנתרופיק עצמה, הקמפיין הוא מה שאנתרופיק אומרת שזיהתה, ועליבאבא לא הודתה באף אחד מהם.",
+      "title": "",
+      "tts": {
+        "text": "הנתונים הם הדיווח של אנתרופיק עצמה, הקמפיין הוא מה שאנתרופיק אומרת שזיהתה, ועליבאבא לא הודתה באף אחד מהם.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-106",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז למה לתת לזה את המקום הראשון אם זה לא מוכח?",
+      "text_markdown": "אז למה לתת לזה את המקום הראשון אם זה לא מוכח?",
+      "title": "",
+      "tts": {
+        "text": "אז למה לתת לזה את המקום הראשון אם זה לא מוכח?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-107",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "כי הטכניקה שבמרכזו אמיתית, נפוצה, ועומדת להיות המושג שלנו לשבוע.",
+      "text_markdown": "כי הטכניקה שבמרכזו אמיתית, נפוצה, ועומדת להיות המושג שלנו לשבוע.",
+      "title": "",
+      "tts": {
+        "text": "כי הטכניקה שבמרכזו אמיתית, נפוצה, ועומדת להיות המושג שלנו לשבוע.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "וכי היא נוגעת באותו עצב כמו בשבוע שעבר — מעבדה אמריקאית, מעבדה סינית, וממשלה באמצע שרשרת אספקת המודלים.",
+      "text_markdown": "וכי היא נוגעת באותו עצב כמו בשבוע שעבר — מעבדה אמריקאית, מעבדה סינית, וממשלה באמצע שרשרת אספקת המודלים.",
+      "title": "",
+      "tts": {
+        "text": "וכי היא נוגעת באותו עצב כמו בשבוע שעבר — מעבדה אמריקאית, מעבדה סינית, וממשלה באמצע שרשרת אספקת המודלים.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-109",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "חבר את זה בחזרה לחוט בקרת הייצוא מהשבוע שעבר.",
+      "text_markdown": "חבר את זה בחזרה לחוט בקרת הייצוא מהשבוע שעבר.",
+      "title": "",
+      "tts": {
+        "text": "חבר את זה בחזרה לחוט בקרת הייצוא מהשבוע שעבר.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "בשבוע שעבר אנתרופיק משכה שני מודלים בעקבות הנחיית משרד המסחר — השבוע אנתרופיק היא זו שמצביעה מעבר לאוקיינוס השקט.",
+      "text_markdown": "בשבוע שעבר אנתרופיק משכה שני מודלים בעקבות הנחיית משרד המסחר — השבוע אנתרופיק היא זו שמצביעה מעבר לאוקיינוס השקט.",
+      "title": "",
+      "tts": {
+        "text": "בשבוע שעבר אנתרופיק משכה שני מודלים בעקבות הנחיית משרד המסחר — השבוע אנתרופיק היא זו שמצביעה מעבר לאוקיינוס השקט.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-111",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הקו המנחה הוא שיכולת חזיתית נחשבת כעת לנכס אסטרטגי, בין אם היא דולפת דרך ייצוא או נשאבת דרך API.",
+      "text_markdown": "הקו המנחה הוא שיכולת חזיתית נחשבת כעת לנכס אסטרטגי, בין אם היא דולפת דרך ייצוא או נשאבת דרך API.",
+      "title": "",
+      "tts": {
+        "text": "הקו המנחה הוא שיכולת חזיתית נחשבת כעת לנכס אסטרטגי, בין אם היא דולפת דרך ייצוא או נשאבת דרך API.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-112",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "ואם אפילו חלק מההאשמה מחזיק מים?",
+      "text_markdown": "ואם אפילו חלק מההאשמה מחזיק מים?",
+      "title": "",
+      "tts": {
+        "text": "ואם אפילו חלק מההאשמה מחזיק מים?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אז הדבר היקר ביותר שבבעלות מעבדה — ההתנהגות של המודל הטוב ביותר שלה — מתגלה כנגיש דרך הדלת הקדמית, שאילתה אחת בכל פעם.",
+      "text_markdown": "אז הדבר היקר ביותר שבבעלות מעבדה — ההתנהגות של המודל הטוב ביותר שלה — מתגלה כנגיש דרך הדלת הקדמית, שאילתה אחת בכל פעם.",
+      "title": "",
+      "tts": {
+        "text": "אז הדבר היקר ביותר שבבעלות מעבדה — ההתנהגות של המודל הטוב ביותר שלה — מתגלה כנגיש דרך הדלת הקדמית, שאילתה אחת בכל פעם.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "זה דבר קשה מאוד לחסום מבלי לחסום גם את הלקוחות המשלמים שלך.",
+      "text_markdown": "זה דבר קשה מאוד לחסום מבלי לחסום גם את הלקוחות המשלמים שלך.",
+      "title": "",
+      "tts": {
+        "text": "זה דבר קשה מאוד לחסום מבלי לחסום גם את הלקוחות המשלמים שלך.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-115",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "וזה המעבר המושלם — בואו נעבור למושג השבוע.",
+      "text_markdown": "וזה המעבר המושלם — בואו נעבור למושג השבוע.",
+      "title": "",
+      "tts": {
+        "text": "וזה המעבר המושלם — בואו נעבור למושג השבוע.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-116",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "המושג הוא זיקוק ידע.",
+      "text_markdown": "המושג הוא זיקוק ידע.",
+      "title": "",
+      "tts": {
+        "text": "המושג הוא זיקוק ידע.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "בפשטותו, זיקוק הוא ללמד מודל קטן לחקות מודל גדול.",
+      "text_markdown": "בפשטותו, זיקוק הוא ללמד מודל קטן לחקות מודל גדול.",
+      "title": "",
+      "tts": {
+        "text": "בפשטותו, זיקוק הוא ללמד מודל קטן לחקות מודל גדול.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "המודל הגדול הוא המורה, המודל הקטן הוא התלמיד, והתלמיד לומד על ידי העתקת התשובות של המורה.",
+      "text_markdown": "המודל הגדול הוא המורה, המודל הקטן הוא התלמיד, והתלמיד לומד על ידי העתקת התשובות של המורה.",
+      "title": "",
+      "tts": {
+        "text": "המודל הגדול הוא המורה, המודל הקטן הוא התלמיד, והתלמיד לומד על ידי העתקת התשובות של המורה.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-119",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "נתחיל עם למה מישהו עושה את זה באופן לגיטימי.",
+      "text_markdown": "נתחיל עם למה מישהו עושה את זה באופן לגיטימי.",
+      "title": "",
+      "tts": {
+        "text": "נתחיל עם למה מישהו עושה את זה באופן לגיטימי.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-120",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "כי מודל חזיתי יקר להפעלה, ומודל קטן שמחקה אותו זול.",
+      "text_markdown": "כי מודל חזיתי יקר להפעלה, ומודל קטן שמחקה אותו זול.",
+      "title": "",
+      "tts": {
+        "text": "כי מודל חזיתי יקר להפעלה, ומודל קטן שמחקה אותו זול.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אם אפשר להשיג שמונים או תשעים אחוז מהאיכות בעשירית מהעלות, עסקה כזו שווה הון בקנה מידה גדול.",
+      "text_markdown": "אם אפשר להשיג שמונים או תשעים אחוז מהאיכות בעשירית מהעלות, עסקה כזו שווה הון בקנה מידה גדול.",
+      "title": "",
+      "tts": {
+        "text": "אם אפשר להשיג שמונים או תשעים אחוז מהאיכות בעשירית מהעלות, עסקה כזו שווה הון בקנה מידה גדול.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-122",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז איך התלמיד לומד בפועל מהמורה?",
+      "text_markdown": "אז איך התלמיד לומד בפועל מהמורה?",
+      "title": "",
+      "tts": {
+        "text": "אז איך התלמיד לומד בפועל מהמורה?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הדרך הנאיבית היא פשוט לאסוף את התשובות של המורה ולאמן עליהן את התלמיד כמו על מערך נתונים רגיל.",
+      "text_markdown": "הדרך הנאיבית היא פשוט לאסוף את התשובות של המורה ולאמן עליהן את התלמיד כמו על מערך נתונים רגיל.",
+      "title": "",
+      "tts": {
+        "text": "הדרך הנאיבית היא פשוט לאסוף את התשובות של המורה ולאמן עליהן את התלמיד כמו על מערך נתונים רגיל.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-124",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הדרך העשירה יותר משתמשת במה שנקרא 'תוויות רכות' — לא רק התשובה הסופית של המורה, אלא גם עד כמה הוא היה בטוח בכל אחת מהאפשרויות.",
+      "text_markdown": "הדרך העשירה יותר משתמשת במה שנקרא 'תוויות רכות' — לא רק התשובה הסופית של המורה, אלא גם עד כמה הוא היה בטוח בכל אחת מהאפשרויות.",
+      "title": "",
+      "tts": {
+        "text": "הדרך העשירה יותר משתמשת במה שנקרא 'תוויות רכות' — לא רק התשובה הסופית של המורה, אלא גם עד כמה הוא היה בטוח בכל אחת מהאפשרויות.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-125",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "מדוע תוויות רכות אלה כל כך יקרות ערך?",
+      "text_markdown": "מדוע תוויות רכות אלה כל כך יקרות ערך?",
+      "title": "",
+      "tts": {
+        "text": "מדוע תוויות רכות אלה כל כך יקרות ערך?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "כי הן נושאות את ההיגיון של המורה, לא רק את פסק הדין שלו.",
+      "text_markdown": "כי הן נושאות את ההיגיון של המורה, לא רק את פסק הדין שלו.",
+      "title": "",
+      "tts": {
+        "text": "כי הן נושאות את ההיגיון של המורה, לא רק את פסק הדין שלו.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-127",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הידיעה שהמורה היה בטוח בשבעים אחוז בתשובה אחת ובשלושים אחוז בתשובה קרובה, אומרת לתלמיד הרבה יותר מאשר המילה הנכונה הבודדת.",
+      "text_markdown": "הידיעה שהמורה היה בטוח בשבעים אחוז בתשובה אחת ובשלושים אחוז בתשובה קרובה, אומרת לתלמיד הרבה יותר מאשר המילה הנכונה הבודדת.",
+      "title": "",
+      "tts": {
+        "text": "הידיעה שהמורה היה בטוח בשבעים אחוז בתשובה אחת ובשלושים אחוז בתשובה קרובה, אומרת לתלמיד הרבה יותר מאשר המילה הנכונה הבודדת.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-128",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "זוהי גרסת ספר הלימוד — עכשיו לגרסה שבחדשות.",
+      "text_markdown": "זוהי גרסת ספר הלימוד — עכשיו לגרסה שבחדשות.",
+      "title": "",
+      "tts": {
+        "text": "זוהי גרסת ספר הלימוד — עכשיו לגרסה שבחדשות.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אם אינך הבעלים של המורה, דיסטילציה הופכת לחילוץ.",
+      "text_markdown": "אם אינך הבעלים של המורה, דיסטילציה הופכת לחילוץ.",
+      "title": "",
+      "tts": {
+        "text": "אם אינך הבעלים של המורה, דיסטילציה הופכת לחילוץ.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "אתה פונה למודל של מישהו אחר דרך ה-API שלו, מיליוני פעמים, מקליט כל מה שהוא אומר, ומאמן את התלמיד שלך על התמליל.",
+      "text_markdown": "אתה פונה למודל של מישהו אחר דרך ה-API שלו, מיליוני פעמים, מקליט כל מה שהוא אומר, ומאמן את התלמיד שלך על התמליל.",
+      "title": "",
+      "tts": {
+        "text": "אתה פונה למודל של מישהו אחר דרך האיי פי איי שלו, מיליוני פעמים, מקליט כל מה שהוא אומר, ומאמן את התלמיד שלך על התמליל.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "אז אותה טכניקה היא או יעילות או גניבה.",
+      "text_markdown": "אז אותה טכניקה היא או יעילות או גניבה.",
+      "title": "",
+      "tts": {
+        "text": "אז אותה טכניקה היא או יעילות או גניבה.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-132",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "תלוי לחלוטין אם אתה הבעלים של המורה — וזו הסיבה שבתנאי השירות של כל מעבדה גדולה נאסר במפורש להשתמש במודל שלהם כדי לאמן מתחרה.",
+      "text_markdown": "תלוי לחלוטין אם אתה הבעלים של המורה — וזו הסיבה שבתנאי השירות של כל מעבדה גדולה נאסר במפורש להשתמש במודל שלהם כדי לאמן מתחרה.",
+      "title": "",
+      "tts": {
+        "text": "תלוי לחלוטין אם אתה הבעלים של המורה — וזו הסיבה שבתנאי השירות של כל מעבדה גדולה נאסר במפורש להשתמש במודל שלהם כדי לאמן מתחרה.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-133",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "ההאשמה נגד עליבאבא היא, במילים פשוטות, שאותם עשרים ושמונה מיליון חילופים היו ריצת דיסטילציה שלבשה עשרים וחמישה אלף תחפושות.",
+      "text_markdown": "ההאשמה נגד עליבאבא היא, במילים פשוטות, שאותם עשרים ושמונה מיליון חילופים היו ריצת דיסטילציה שלבשה עשרים וחמישה אלף תחפושות.",
+      "title": "",
+      "tts": {
+        "text": "ההאשמה נגד עליבאבא היא, במילים פשוטות, שאותם עשרים ושמונה מיליון חילופים היו ריצת דיסטילציה שלבשה עשרים וחמישה אלף תחפושות.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "והחלק הלא נוח עבור המעבדות?",
+      "text_markdown": "והחלק הלא נוח עבור המעבדות?",
+      "title": "",
+      "tts": {
+        "text": "והחלק הלא נוח עבור המעבדות?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "שדיסטילציה עובדת היטב באופן מדאיג — תלמיד נחוש באמת יכול ללכוד הרבה ממורה שמעולם לא הייתה לו הזכות להעתיק.",
+      "text_markdown": "שדיסטילציה עובדת היטב באופן מדאיג — תלמיד נחוש באמת יכול ללכוד הרבה ממורה שמעולם לא הייתה לו הזכות להעתיק.",
+      "title": "",
+      "tts": {
+        "text": "שדיסטילציה עובדת היטב באופן מדאיג — תלמיד נחוש באמת יכול ללכוד הרבה ממורה שמעולם לא הייתה לו הזכות להעתיק.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "הדבר שאתה מוכר אליו גישה הוא גם הדבר שאתה הכי צריך להגן עליו, ואלה אותה דלת.",
+      "text_markdown": "הדבר שאתה מוכר אליו גישה הוא גם הדבר שאתה הכי צריך להגן עליו, ואלה אותה דלת.",
+      "title": "",
+      "tts": {
+        "text": "הדבר שאתה מוכר אליו גישה הוא גם הדבר שאתה הכי צריך להגן עליו, ואלה אותה דלת.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-137",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "זה מקום חד לנחות בו.",
+      "text_markdown": "זה מקום חד לנחות בו.",
+      "title": "",
+      "tts": {
+        "text": "זה מקום חד לנחות בו.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-138",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "רון, תודה על הסקירה.",
+      "text_markdown": "רון, תודה על הסקירה.",
+      "title": "",
+      "tts": {
+        "text": "רון, תודה על הסקירה.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "text": "בכל עת, וינדי — טוב להיות כאן.",
+      "text_markdown": "בכל עת, וינדי — טוב להיות כאן.",
+      "title": "",
+      "tts": {
+        "text": "בכל עת, וינדי — טוב להיות כאן.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-140",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "זה היה AI השבוע לעשרים ושמונה ביוני, אלפיים עשרים ושש.",
+      "text_markdown": "זה היה AI השבוע לעשרים ושמונה ביוני, אלפיים עשרים ושש.",
+      "title": "",
+      "tts": {
+        "text": "זה היה איי איי השבוע לעשרים ושמונה ביוני, אלפיים עשרים ושש.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-141",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "בשבוע הבא, נחזור למודלים הפתוחים ולמעבדות הקטנות שמפיצות אותם.",
+      "text_markdown": "בשבוע הבא, נחזור למודלים הפתוחים ולמעבדות הקטנות שמפיצות אותם.",
+      "title": "",
+      "tts": {
+        "text": "בשבוע הבא, נחזור למודלים הפתוחים ולמעבדות הקטנות שמפיצות אותם.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-142",
+      "speaker_id": "host",
+      "chapter": 0,
+      "text": "עד יום ראשון הבא, שמרו על עצמכם.",
+      "text_markdown": "עד יום ראשון הבא, שמרו על עצמכם.",
+      "title": "",
+      "tts": {
+        "text": "עד יום ראשון הבא, שמרו על עצמכם.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "no",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Tre spørsmål",
+      "text_markdown": "Tre spørsmål",
+      "title": "Tre spørsmål"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "En konge tenkte at hvis han alltid visste hvilken tid som var den viktigste for enhver oppgave, og visste hvilke mennesker som var de mest nødvendige, og fremfor alt alltid visste hvilken av alle oppgaver som var den viktigste, — da ville han aldri mislykkes i noe.",
+      "text_markdown": "En konge tenkte at hvis han alltid visste hvilken tid som var den viktigste for enhver oppgave, og visste hvilke mennesker som var de mest nødvendige, og fremfor alt alltid visste hvilken av alle oppgaver som var den viktigste, — da ville han aldri mislykkes i noe.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "En konge tenkte at hvis han alltid visste hvilken tid som var den viktigste for enhver oppgave, og visste hvilke mennesker som var de mest nødvendige, og fremfor alt alltid visste hvilken av alle oppgaver som var den viktigste, — da ville han aldri mislykkes i noe.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "Og etter å ha tenkt dette, kunngjorde kongen i hele sitt rike at han ville gi en stor belønning til den som lærte ham hvordan å vite den rette tiden for enhver oppgave, hvordan å vite hvilke mennesker som er de mest nødvendige, og hvordan å ikke ta feil om hvilken oppgave av alle som er den viktigste.",
+      "text_markdown": "Og etter å ha tenkt dette, kunngjorde kongen i hele sitt rike at han ville gi en stor belønning til den som lærte ham hvordan å vite den rette tiden for enhver oppgave, hvordan å vite hvilke mennesker som er de mest nødvendige, og hvordan å ikke ta feil om hvilken oppgave av alle som er den viktigste.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og etter å ha tenkt dette, kunngjorde kongen i hele sitt rike at han ville gi en stor belønning til den som lærte ham hvordan å vite den rette tiden for enhver oppgave, hvordan å vite hvilke mennesker som er de mest nødvendige, og hvordan å ikke ta feil om hvilken oppgave av alle som er den viktigste.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Lærde menn begynte å komme til kongen og svarte på hans spørsmål forskjellig.",
+      "text_markdown": "Lærde menn begynte å komme til kongen og svarte på hans spørsmål forskjellig.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Lærde menn begynte å komme til kongen og svarte på hans spørsmål forskjellig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "På det første spørsmålet sa noen at for å vite den rette tiden for enhver oppgave, måtte man lage en plan på forhånd for dager, måneder og år og følge den strengt.",
+      "text_markdown": "På det første spørsmålet sa noen at for å vite den rette tiden for enhver oppgave, måtte man lage en plan på forhånd for dager, måneder og år og følge den strengt.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "På det første spørsmålet sa noen at for å vite den rette tiden for enhver oppgave, måtte man lage en plan på forhånd for dager, måneder og år og følge den strengt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Bare da, sa de, ville enhver oppgave bli gjort til sin tid.",
+      "text_markdown": "Bare da, sa de, ville enhver oppgave bli gjort til sin tid.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Bare da, sa de, ville enhver oppgave bli gjort til sin tid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Andre sa at man ikke kunne bestemme på forhånd hvilken tid som ville være den rette for hvilken oppgave, men at man, uten å bli distrahert av tomme fornøyelser, alltid måtte være oppmerksom på alt som skjedde, og da alltid gjøre det som var mest nødvendig.",
+      "text_markdown": "Andre sa at man ikke kunne bestemme på forhånd hvilken tid som ville være den rette for hvilken oppgave, men at man, uten å bli distrahert av tomme fornøyelser, alltid måtte være oppmerksom på alt som skjedde, og da alltid gjøre det som var mest nødvendig.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Andre sa at man ikke kunne bestemme på forhånd hvilken tid som ville være den rette for hvilken oppgave, men at man, uten å bli distrahert av tomme fornøyelser, alltid måtte være oppmerksom på alt som skjedde, og da alltid gjøre det som var mest nødvendig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "En tredje gruppe sa at hvor oppmerksom kongen enn var på alt som skjedde, kunne ikke ett menneske alltid korrekt avgjøre om hver oppgave når det var tid for den, men at man måtte ha råd fra vismenn og etter deres råd fastsette tiden for hver oppgave.",
+      "text_markdown": "En tredje gruppe sa at hvor oppmerksom kongen enn var på alt som skjedde, kunne ikke ett menneske alltid korrekt avgjøre om hver oppgave når det var tid for den, men at man måtte ha råd fra vismenn og etter deres råd fastsette tiden for hver oppgave.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "En tredje gruppe sa at hvor oppmerksom kongen enn var på alt som skjedde, kunne ikke ett menneske alltid korrekt avgjøre om hver oppgave når det var tid for den, men at man måtte ha råd fra vismenn og etter deres råd fastsette tiden for hver oppgave.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "En fjerde gruppe sa at det var slike oppgaver som måtte løses med en gang, uten å vente på rådslaging, og for å vite når nettopp slike oppgaver oppstod, måtte man vite hva som lå forut.",
+      "text_markdown": "En fjerde gruppe sa at det var slike oppgaver som måtte løses med en gang, uten å vente på rådslaging, og for å vite når nettopp slike oppgaver oppstod, måtte man vite hva som lå forut.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "En fjerde gruppe sa at det var slike oppgaver som måtte løses med en gang, uten å vente på rådslaging, og for å vite når nettopp slike oppgaver oppstod, måtte man vite hva som lå forut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "Og dette kunne bare trollmenn vite.",
+      "text_markdown": "Og dette kunne bare trollmenn vite.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og dette kunne bare trollmenn vite.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "Og derfor, for å vite den rette tiden for hver oppgave, måtte man spørre trollmenn.",
+      "text_markdown": "Og derfor, for å vite den rette tiden for hver oppgave, måtte man spørre trollmenn.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og derfor, for å vite den rette tiden for hver oppgave, måtte man spørre trollmenn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "På det andre spørsmålet svarte de også forskjellig.",
+      "text_markdown": "På det andre spørsmålet svarte de også forskjellig.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "På det andre spørsmålet svarte de også forskjellig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Noen sa at de mest nødvendige menneskene for kongen var rådgiverne, andre sa at det var prestene, en tredje gruppe — legene, en fjerde — krigerne.",
+      "text_markdown": "Noen sa at de mest nødvendige menneskene for kongen var rådgiverne, andre sa at det var prestene, en tredje gruppe — legene, en fjerde — krigerne.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Noen sa at de mest nødvendige menneskene for kongen var rådgiverne, andre sa at det var prestene, en tredje gruppe — legene, en fjerde — krigerne.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "På det tredje spørsmålet — hvilken oppgave er den viktigste? — sa noen at det viktigste i verden var vitenskapen; andre sa — militære anliggender, en tredje gruppe sa — fromhet.",
+      "text_markdown": "På det tredje spørsmålet — hvilken oppgave er den viktigste? — sa noen at det viktigste i verden var vitenskapen; andre sa — militære anliggender, en tredje gruppe sa — fromhet.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "På det tredje spørsmålet — hvilken oppgave er den viktigste? — sa noen at det viktigste i verden var vitenskapen; andre sa — militære anliggender, en tredje gruppe sa — fromhet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Alle svarene var forskjellige, og derfor var ikke kongen enig med noen av dem og ga ingen belønning.",
+      "text_markdown": "Alle svarene var forskjellige, og derfor var ikke kongen enig med noen av dem og ga ingen belønning.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Alle svarene var forskjellige, og derfor var ikke kongen enig med noen av dem og ga ingen belønning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "For bedre å få vite svarene på sine spørsmål, bestemte han seg for å spørre en eremitt som det gikk rykte om at var en vis mann.",
+      "text_markdown": "For bedre å få vite svarene på sine spørsmål, bestemte han seg for å spørre en eremitt som det gikk rykte om at var en vis mann.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "For bedre å få vite svarene på sine spørsmål, bestemte han seg for å spørre en eremitt som det gikk rykte om at var en vis mann.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Eremitten bodde i skogen og kom aldri ut derfra.",
+      "text_markdown": "Eremitten bodde i skogen og kom aldri ut derfra.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Eremitten bodde i skogen og kom aldri ut derfra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Han tok bare imot enkle folk, og derfor kledde kongen seg enkelt og, før han nådde eremittens bolig, steg han av hesten og gikk alene til ham.",
+      "text_markdown": "Han tok bare imot enkle folk, og derfor kledde kongen seg enkelt og, før han nådde eremittens bolig, steg han av hesten og gikk alene til ham.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Han tok bare imot enkle folk, og derfor kledde kongen seg enkelt og, før han nådde eremittens bolig, steg han av hesten og gikk alene til ham.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Da kongen kom til ham, gravde eremitten åkerlapper foran sin hytte.",
+      "text_markdown": "Da kongen kom til ham, gravde eremitten åkerlapper foran sin hytte.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Da kongen kom til ham, gravde eremitten åkerlapper foran sin hytte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Da han så kongen, nikket eremitten til ham og fortsatte å grave.",
+      "text_markdown": "Da han så kongen, nikket eremitten til ham og fortsatte å grave.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Da han så kongen, nikket eremitten til ham og fortsatte å grave.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Eremitten var mager og svak og, mens han stakk spaden i jorden og vendte små jordklumper, pustet han tungt.",
+      "text_markdown": "Eremitten var mager og svak og, mens han stakk spaden i jorden og vendte små jordklumper, pustet han tungt.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Eremitten var mager og svak og, mens han stakk spaden i jorden og vendte små jordklumper, pustet han tungt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Kongen gikk bort til ham og sa:",
+      "text_markdown": "Kongen gikk bort til ham og sa:",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Kongen gikk bort til ham og sa:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Jeg har kommet til deg, vise eremitt, for å be deg svare meg på tre spørsmål: hvilken tid må man huske og ikke gå glipp av, så man ikke angrer senere?",
+      "text_markdown": "— Jeg har kommet til deg, vise eremitt, for å be deg svare meg på tre spørsmål: hvilken tid må man huske og ikke gå glipp av, så man ikke angrer senere?",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Jeg har kommet til deg, vise eremitt, for å be deg svare meg på tre spørsmål: hvilken tid må man huske og ikke gå glipp av, så man ikke angrer senere?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Hvilke mennesker er de mest nødvendige?",
+      "text_markdown": "Hvilke mennesker er de mest nødvendige?",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Hvilke mennesker er de mest nødvendige?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "Og hvilken oppgave er den viktigste?",
+      "text_markdown": "Og hvilken oppgave er den viktigste?",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og hvilken oppgave er den viktigste?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Eremitten lyttet til kongen, men svarte ingenting, spyttet på hånden og begynte å grave igjen.",
+      "text_markdown": "Eremitten lyttet til kongen, men svarte ingenting, spyttet på hånden og begynte å grave igjen.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Eremitten lyttet til kongen, men svarte ingenting, spyttet på hånden og begynte å grave igjen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Du er trøtt, — sa kongen.",
+      "text_markdown": "— Du er trøtt, — sa kongen.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Du er trøtt, — sa kongen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— La meg hjelpe deg.",
+      "text_markdown": "— La meg hjelpe deg.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— La meg hjelpe deg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Takk, — sa eremitten og ga kongen spaden og satte seg på jorden.",
+      "text_markdown": "— Takk, — sa eremitten og ga kongen spaden og satte seg på jorden.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Takk, — sa eremitten og ga kongen spaden og satte seg på jorden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Etter å ha gravd to åkerlapper, stanset kongen og gjentok sine spørsmål.",
+      "text_markdown": "Etter å ha gravd to åkerlapper, stanset kongen og gjentok sine spørsmål.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Etter å ha gravd to åkerlapper, stanset kongen og gjentok sine spørsmål.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Eremitten svarte igjen ikke, men reiste seg og strakte hånden mot spaden:",
+      "text_markdown": "Eremitten svarte igjen ikke, men reiste seg og strakte hånden mot spaden:",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Eremitten svarte igjen ikke, men reiste seg og strakte hånden mot spaden:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Hvil deg nå, la meg, — sa han.",
+      "text_markdown": "— Hvil deg nå, la meg, — sa han.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Hvil deg nå, la meg, — sa han.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Men kongen ga ikke fra seg spaden og fortsatte å grave.",
+      "text_markdown": "Men kongen ga ikke fra seg spaden og fortsatte å grave.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Men kongen ga ikke fra seg spaden og fortsatte å grave.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "En time gikk, så gikk en annen.",
+      "text_markdown": "En time gikk, så gikk en annen.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "En time gikk, så gikk en annen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Solen gikk ned bak trærne.",
+      "text_markdown": "Solen gikk ned bak trærne.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Solen gikk ned bak trærne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Kongen stakk spaden i jorden og sa:",
+      "text_markdown": "Kongen stakk spaden i jorden og sa:",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Kongen stakk spaden i jorden og sa:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Jeg kom til deg, vismenn, for å få svar på mine spørsmål.",
+      "text_markdown": "— Jeg kom til deg, vismenn, for å få svar på mine spørsmål.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Jeg kom til deg, vismenn, for å få svar på mine spørsmål.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Hvis du ikke kan svare meg, si det, så går jeg hjem.",
+      "text_markdown": "Hvis du ikke kan svare meg, si det, så går jeg hjem.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Hvis du ikke kan svare meg, si det, så går jeg hjem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— Se, der kommer noen løpende, — sa eremitten.",
+      "text_markdown": "— Se, der kommer noen løpende, — sa eremitten.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Se, der kommer noen løpende, — sa eremitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— La oss se hvem det er.",
+      "text_markdown": "— La oss se hvem det er.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— La oss se hvem det er.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Tsaren snudde seg og så — fra skogen kom en skjeggete mann løpende.",
+      "text_markdown": "Tsaren snudde seg og så — fra skogen kom en skjeggete mann løpende.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren snudde seg og så — fra skogen kom en skjeggete mann løpende.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Denne mannen presset hendene mot et sår på magen, fra under hendene rant det blod.",
+      "text_markdown": "Denne mannen presset hendene mot et sår på magen, fra under hendene rant det blod.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Denne mannen presset hendene mot et sår på magen, fra under hendene rant det blod.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Da han kom frem til tsaren, falt mannen bevisstløs til jorden og lå der og stønnet svakt.",
+      "text_markdown": "Da han kom frem til tsaren, falt mannen bevisstløs til jorden og lå der og stønnet svakt.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Da han kom frem til tsaren, falt mannen bevisstløs til jorden og lå der og stønnet svakt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Tsaren og eneboeren kneppet opp og tok av mannen klærne.",
+      "text_markdown": "Tsaren og eneboeren kneppet opp og tok av mannen klærne.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren og eneboeren kneppet opp og tok av mannen klærne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "I magen var det et stort sår.",
+      "text_markdown": "I magen var det et stort sår.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "I magen var det et stort sår.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Tsaren vasket såret så godt han kunne og forbant det med sitt lommetørkle og eneboerens håndkle.",
+      "text_markdown": "Tsaren vasket såret så godt han kunne og forbant det med sitt lommetørkle og eneboerens håndkle.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren vasket såret så godt han kunne og forbant det med sitt lommetørkle og eneboerens håndkle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Men blødningen stanset ikke.",
+      "text_markdown": "Men blødningen stanset ikke.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Men blødningen stanset ikke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Tsaren tok av bandasjen flere ganger og vasket og forbant såret på nytt.",
+      "text_markdown": "Tsaren tok av bandasjen flere ganger og vasket og forbant såret på nytt.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren tok av bandasjen flere ganger og vasket og forbant såret på nytt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Da blødningen endelig stanset, kom mannen til seg selv igjen og ba om å få drikke.",
+      "text_markdown": "Da blødningen endelig stanset, kom mannen til seg selv igjen og ba om å få drikke.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Da blødningen endelig stanset, kom mannen til seg selv igjen og ba om å få drikke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Tsaren hentet friskt vann til ham og ga ham å drikke.",
+      "text_markdown": "Tsaren hentet friskt vann til ham og ga ham å drikke.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren hentet friskt vann til ham og ga ham å drikke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "I mellomtiden hadde sola gått helt ned, og det ble kaldt.",
+      "text_markdown": "I mellomtiden hadde sola gått helt ned, og det ble kaldt.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "I mellomtiden hadde sola gått helt ned, og det ble kaldt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Tsaren bar sammen med eneboeren den sårede inn i hytta og la ham på sengen.",
+      "text_markdown": "Tsaren bar sammen med eneboeren den sårede inn i hytta og la ham på sengen.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren bar sammen med eneboeren den sårede inn i hytta og la ham på sengen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Den sårede lukket øynene og ble stille.",
+      "text_markdown": "Den sårede lukket øynene og ble stille.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Den sårede lukket øynene og ble stille.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Tsaren var så sliten etter gangen og arbeidet at han der på dørterskelen la seg ned og sovnet, — sovnet så dypt at han sov hele den korte sommernatta, og da han våknet om morgenen, kunne han lenge ikke forstå hvor han var og hvem denne merkelige skjeggete mannen var som lå på sengen og stirret envist på ham med skinnende øyne.",
+      "text_markdown": "Tsaren var så sliten etter gangen og arbeidet at han der på dørterskelen la seg ned og sovnet, — sovnet så dypt at han sov hele den korte sommernatta, og da han våknet om morgenen, kunne han lenge ikke forstå hvor han var og hvem denne merkelige skjeggete mannen var som lå på sengen og stirret envist på ham med skinnende øyne.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren var så sliten etter gangen og arbeidet at han der på dørterskelen la seg ned og sovnet, — sovnet så dypt at han sov hele den korte sommernatta, og da han våknet om morgenen, kunne han lenge ikke forstå hvor han var og hvem denne merkelige skjeggete mannen var som lå på sengen og stirret envist på ham med skinnende øyne.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Tilgi meg, — sa den skjeggete mannen med svak stemme da han så at tsaren hadde våknet og så på ham.",
+      "text_markdown": "— Tilgi meg, — sa den skjeggete mannen med svak stemme da han så at tsaren hadde våknet og så på ham.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Tilgi meg, — sa den skjeggete mannen med svak stemme da han så at tsaren hadde våknet og så på ham.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Jeg kjenner deg ikke og har ikke noe å tilgi deg for, — sa tsaren.",
+      "text_markdown": "— Jeg kjenner deg ikke og har ikke noe å tilgi deg for, — sa tsaren.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Jeg kjenner deg ikke og har ikke noe å tilgi deg for, — sa tsaren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Du kjenner meg ikke, men jeg kjenner deg.",
+      "text_markdown": "— Du kjenner meg ikke, men jeg kjenner deg.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Du kjenner meg ikke, men jeg kjenner deg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Jeg er din fiende, den samme som sverget å hevne meg på deg fordi du henrettet min bror og tok fra meg min eiendom.",
+      "text_markdown": "Jeg er din fiende, den samme som sverget å hevne meg på deg fordi du henrettet min bror og tok fra meg min eiendom.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Jeg er din fiende, den samme som sverget å hevne meg på deg fordi du henrettet min bror og tok fra meg min eiendom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Jeg visste at du gikk alene til eneboeren, og bestemte meg for å drepe deg på hjemveien.",
+      "text_markdown": "Jeg visste at du gikk alene til eneboeren, og bestemte meg for å drepe deg på hjemveien.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Jeg visste at du gikk alene til eneboeren, og bestemte meg for å drepe deg på hjemveien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Men det gikk en hel dag, og du kom ikke.",
+      "text_markdown": "Men det gikk en hel dag, og du kom ikke.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Men det gikk en hel dag, og du kom ikke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Da gikk jeg ut av bakholdet for å finne deg, og støtte på livvaktene dine.",
+      "text_markdown": "Da gikk jeg ut av bakholdet for å finne deg, og støtte på livvaktene dine.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Da gikk jeg ut av bakholdet for å finne deg, og støtte på livvaktene dine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "De kjente meg igjen og såret meg.",
+      "text_markdown": "De kjente meg igjen og såret meg.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "De kjente meg igjen og såret meg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Jeg rømte fra dem, men hvis du ikke hadde forbundet såret mitt, ville jeg ha dødd.",
+      "text_markdown": "Jeg rømte fra dem, men hvis du ikke hadde forbundet såret mitt, ville jeg ha dødd.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Jeg rømte fra dem, men hvis du ikke hadde forbundet såret mitt, ville jeg ha dødd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Jeg ville drepe deg, men du reddet livet mitt.",
+      "text_markdown": "Jeg ville drepe deg, men du reddet livet mitt.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Jeg ville drepe deg, men du reddet livet mitt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Nå, hvis jeg overlever og du ønsker det, vil jeg tjene deg som den mest trofaste slave, og det samme vil jeg befale sønnene mine å gjøre.",
+      "text_markdown": "Nå, hvis jeg overlever og du ønsker det, vil jeg tjene deg som den mest trofaste slave, og det samme vil jeg befale sønnene mine å gjøre.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Nå, hvis jeg overlever og du ønsker det, vil jeg tjene deg som den mest trofaste slave, og det samme vil jeg befale sønnene mine å gjøre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Tilgi meg.",
+      "text_markdown": "Tilgi meg.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tilgi meg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Tsaren var meget glad for at det var lyktes ham så lett å forsone seg med fienden og vinne en venn, og han tilga ham og lovet ham å gi tilbake eiendommen hans og sende sine leger og tjenere til å ta seg av ham.",
+      "text_markdown": "Tsaren var meget glad for at det var lyktes ham så lett å forsone seg med fienden og vinne en venn, og han tilga ham og lovet ham å gi tilbake eiendommen hans og sende sine leger og tjenere til å ta seg av ham.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren var meget glad for at det var lyktes ham så lett å forsone seg med fienden og vinne en venn, og han tilga ham og lovet ham å gi tilbake eiendommen hans og sende sine leger og tjenere til å ta seg av ham.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Etter å ha tatt avskjed med den sårede, gikk tsaren ut på trappen og begynte å se etter eneboeren.",
+      "text_markdown": "Etter å ha tatt avskjed med den sårede, gikk tsaren ut på trappen og begynte å se etter eneboeren.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Etter å ha tatt avskjed med den sårede, gikk tsaren ut på trappen og begynte å se etter eneboeren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Før han dro, ville han enda en gang be ham om svar på spørsmålene sine.",
+      "text_markdown": "Før han dro, ville han enda en gang be ham om svar på spørsmålene sine.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Før han dro, ville han enda en gang be ham om svar på spørsmålene sine.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Eneboeren var på tunet og sto på kne og plantet frø i åkrene som var gravd opp i går.",
+      "text_markdown": "Eneboeren var på tunet og sto på kne og plantet frø i åkrene som var gravd opp i går.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Eneboeren var på tunet og sto på kne og plantet frø i åkrene som var gravd opp i går.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Tsaren gikk bort til ham.",
+      "text_markdown": "Tsaren gikk bort til ham.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Tsaren gikk bort til ham.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Vise mann, jeg ber deg en siste gang: svar på spørsmålene mine.",
+      "text_markdown": "— Vise mann, jeg ber deg en siste gang: svar på spørsmålene mine.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Vise mann, jeg ber deg en siste gang: svar på spørsmålene mine.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Men du har jo allerede fått svar, — sa eneboeren og satt på huk på sine tynne ben og så opp på tsaren som sto foran ham.",
+      "text_markdown": "— Men du har jo allerede fått svar, — sa eneboeren og satt på huk på sine tynne ben og så opp på tsaren som sto foran ham.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Men du har jo allerede fått svar, — sa eneboeren og satt på huk på sine tynne ben og så opp på tsaren som sto foran ham.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Hvordan har jeg fått svar? — spurte tsaren.",
+      "text_markdown": "— Hvordan har jeg fått svar? — spurte tsaren.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Hvordan har jeg fått svar? — spurte tsaren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— Hvordan da? — sa eneboeren.",
+      "text_markdown": "— Hvordan da? — sa eneboeren.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Hvordan da? — sa eneboeren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Hvis du i går ikke hadde hatt medlidenhet med meg og ikke hadde gravd disse åkrene i stedet for meg, men hadde gått tilbake, ville den mannen ha drept deg.",
+      "text_markdown": "— Hvis du i går ikke hadde hatt medlidenhet med meg og ikke hadde gravd disse åkrene i stedet for meg, men hadde gått tilbake, ville den mannen ha drept deg.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Hvis du i går ikke hadde hatt medlidenhet med meg og ikke hadde gravd disse åkrene i stedet for meg, men hadde gått tilbake, ville den mannen ha drept deg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Og derfor var den viktigste tiden da du gravde åkrene.",
+      "text_markdown": "Og derfor var den viktigste tiden da du gravde åkrene.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og derfor var den viktigste tiden da du gravde åkrene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "Og det viktigste mennesket var jeg.",
+      "text_markdown": "Og det viktigste mennesket var jeg.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og det viktigste mennesket var jeg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "Og den viktigste gjerningen var — å gjøre meg godt.",
+      "text_markdown": "Og den viktigste gjerningen var — å gjøre meg godt.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og den viktigste gjerningen var — å gjøre meg godt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "Og så da den mannen kom løpende, var den viktigste tiden da du tok deg av ham, for hvis du ikke hadde vasket såret hans, ville han ha dødd uten å forsone seg med deg.",
+      "text_markdown": "Og så da den mannen kom løpende, var den viktigste tiden da du tok deg av ham, for hvis du ikke hadde vasket såret hans, ville han ha dødd uten å forsone seg med deg.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og så da den mannen kom løpende, var den viktigste tiden da du tok deg av ham, for hvis du ikke hadde vasket såret hans, ville han ha dødd uten å forsone seg med deg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "Og derfor var den mest nødvendige personen ham, og den viktigste saken var det du gjorde for ham.",
+      "text_markdown": "Og derfor var den mest nødvendige personen ham, og den viktigste saken var det du gjorde for ham.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "Og derfor var den mest nødvendige personen ham, og den viktigste saken var det du gjorde for ham.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— Så husk da, — sa eremittene, — at den viktigste tiden er én: nå, — og den er den viktigste fordi bare i den har vi makt over oss selv; og den mest nødvendige personen er den du har å gjøre med nå, fordi ingen kan vite om han ennå vil ha å gjøre med noen annen person; og den viktigste saken er å gjøre ham godt, fordi bare til dette er mennesket sendt til livet.",
+      "text_markdown": "— Så husk da, — sa eremittene, — at den viktigste tiden er én: nå, — og den er den viktigste fordi bare i den har vi makt over oss selv; og den mest nødvendige personen er den du har å gjøre med nå, fordi ingen kan vite om han ennå vil ha å gjøre med noen annen person; og den viktigste saken er å gjøre ham godt, fordi bare til dette er mennesket sendt til livet.",
+      "title": "Tre spørsmål",
+      "tts": {
+        "text": "— Så husk da, — sa eremittene, — at den viktigste tiden er én: nå, — og den er den viktigste fordi bare i den har vi makt over oss selv; og den mest nødvendige personen er den du har å gjøre med nå, fordi ingen kan vite om han ennå vil ha å gjøre med noen annen person; og den viktigste saken er å gjøre ham godt, fordi bare til dette er mennesket sendt til livet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

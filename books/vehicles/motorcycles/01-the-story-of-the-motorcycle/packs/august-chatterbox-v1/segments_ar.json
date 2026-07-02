@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "ar",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ملاحظة إلى القارئ",
+      "text_markdown": "ملاحظة إلى القارئ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذه قصة الدراجة النارية.",
+      "text_markdown": "هذه قصة الدراجة النارية.",
+      "tts": {
+        "text": "هذه قصة الدراجة النارية.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنها قصة حقيقية.",
+      "text_markdown": "إنها قصة حقيقية.",
+      "tts": {
+        "text": "إنها قصة حقيقية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قبل زمن طويل، لم يكن أحد يملك دراجة نارية.",
+      "text_markdown": "قبل زمن طويل، لم يكن أحد يملك دراجة نارية.",
+      "tts": {
+        "text": "قبل زمن طويل، لم يكن أحد يملك دراجة نارية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أما اليوم، فهناك ملايين منها.",
+      "text_markdown": "أما اليوم، فهناك ملايين منها.",
+      "tts": {
+        "text": "أما اليوم، فهناك ملايين منها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "إنها صاخبة وسريعة ولامعة.",
+      "text_markdown": "إنها صاخبة وسريعة ولامعة.",
+      "tts": {
+        "text": "إنها صاخبة وسريعة ولامعة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سنبدأ من البداية تمامًا.",
+      "text_markdown": "سنبدأ من البداية تمامًا.",
+      "tts": {
+        "text": "سنبدأ من البداية تمامًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "سنتعرف على أول صانع، وأول السائقين، وأول السباقات.",
+      "text_markdown": "سنتعرف على أول صانع، وأول السائقين، وأول السباقات.",
+      "tts": {
+        "text": "سنتعرف على أول صانع، وأول السائقين، وأول السباقات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ثم سننظر إلى عالم اليوم.",
+      "text_markdown": "ثم سننظر إلى عالم اليوم.",
+      "tts": {
+        "text": "ثم سننظر إلى عالم اليوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة إلى القارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "في النهاية، ستعرف كيف غيّرت هذه الآلة الصغيرة الطريق إلى الأبد.",
+      "text_markdown": "في النهاية، ستعرف كيف غيّرت هذه الآلة الصغيرة الطريق إلى الأبد.",
+      "tts": {
+        "text": "في النهاية، ستعرف كيف غيّرت هذه الآلة الصغيرة الطريق إلى الأبد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "text_markdown": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الدراجة النارية هي دراجة بمحرك.",
+      "text_markdown": "الدراجة النارية هي دراجة بمحرك.",
+      "tts": {
+        "text": "الدراجة النارية هي دراجة بمحرك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "المحرك يدفع العجلات.",
+      "text_markdown": "المحرك يدفع العجلات.",
+      "tts": {
+        "text": "المحرك يدفع العجلات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "السائق لا يضغط على الدواسات.",
+      "text_markdown": "السائق لا يضغط على الدواسات.",
+      "tts": {
+        "text": "السائق لا يضغط على الدواسات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "قبل زمن طويل، لم تكن هناك دراجات نارية.",
+      "text_markdown": "قبل زمن طويل، لم تكن هناك دراجات نارية.",
+      "tts": {
+        "text": "قبل زمن طويل، لم تكن هناك دراجات نارية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كان الناس يركبون الخيول.",
+      "text_markdown": "كان الناس يركبون الخيول.",
+      "tts": {
+        "text": "كان الناس يركبون الخيول.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كان الناس يركبون الدراجات الهوائية.",
+      "text_markdown": "كان الناس يركبون الدراجات الهوائية.",
+      "tts": {
+        "text": "كان الناس يركبون الدراجات الهوائية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الدراجة الهوائية لها عجلتان وليس فيها محرك.",
+      "text_markdown": "الدراجة الهوائية لها عجلتان وليس فيها محرك.",
+      "tts": {
+        "text": "الدراجة الهوائية لها عجلتان وليس فيها محرك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "عليك أن تدفع الدواسات بقدميك.",
+      "text_markdown": "عليك أن تدفع الدواسات بقدميك.",
+      "tts": {
+        "text": "عليك أن تدفع الدواسات بقدميك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في عام 1885، خطرت لرجل في ألمانيا فكرة كبيرة.",
+      "text_markdown": "في عام 1885، خطرت لرجل في ألمانيا فكرة كبيرة.",
+      "tts": {
+        "text": "في عام ألف وثمانمائة وخمسة وثمانين، خطرت لرجل في ألمانيا فكرة كبيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كان اسمه غوتليب دايملر.",
+      "text_markdown": "كان اسمه غوتليب دايملر.",
+      "tts": {
+        "text": "كان اسمه غوتليب دايملر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أخذ محركًا صغيرًا يعمل بالبنزين ووضعه على دراجة هوائية خشبية.",
+      "text_markdown": "أخذ محركًا صغيرًا يعمل بالبنزين ووضعه على دراجة هوائية خشبية.",
+      "tts": {
+        "text": "أخذ محركًا صغيرًا يعمل بالبنزين ووضعه على دراجة هوائية خشبية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أطلق على آلته اسم رايت فاجن.",
+      "text_markdown": "أطلق على آلته اسم رايت فاجن.",
+      "tts": {
+        "text": "أطلق على آلته اسم رايت فاجن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تعني الكلمة \"عربة الركوب\" بالألمانية.",
+      "text_markdown": "تعني الكلمة \"عربة الركوب\" بالألمانية.",
+      "tts": {
+        "text": "تعني الكلمة \"عربة الركوب\" بالألمانية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كانت أول دراجة نارية في العالم.",
+      "text_markdown": "كانت أول دراجة نارية في العالم.",
+      "tts": {
+        "text": "كانت أول دراجة نارية في العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانت الرايت فاجن صاخبة.",
+      "text_markdown": "كانت الرايت فاجن صاخبة.",
+      "tts": {
+        "text": "كانت الرايت فاجن صاخبة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كانت متعرجة الحركة.",
+      "text_markdown": "كانت متعرجة الحركة.",
+      "tts": {
+        "text": "كانت متعرجة الحركة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كان لها سرعة واحدة فقط.",
+      "text_markdown": "كان لها سرعة واحدة فقط.",
+      "tts": {
+        "text": "كان لها سرعة واحدة فقط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كانت تستطيع السير بسرعة سبعة أميال في الساعة تقريبًا.",
+      "text_markdown": "كانت تستطيع السير بسرعة سبعة أميال في الساعة تقريبًا.",
+      "tts": {
+        "text": "كانت تستطيع السير بسرعة سبعة أميال في الساعة تقريبًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "هذا أبطأ من شخص على دراجة هوائية اليوم.",
+      "text_markdown": "هذا أبطأ من شخص على دراجة هوائية اليوم.",
+      "tts": {
+        "text": "هذا أبطأ من شخص على دراجة هوائية اليوم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "لكنها كانت تستطيع التحرك دون حصان، وتستطيع التحرك دون دواسات.",
+      "text_markdown": "لكنها كانت تستطيع التحرك دون حصان، وتستطيع التحرك دون دواسات.",
+      "tts": {
+        "text": "لكنها كانت تستطيع التحرك دون حصان، وتستطيع التحرك دون دواسات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول — أول دراجة بعجلتين تطلق صوت فروم",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هكذا وُلدت الدراجة النارية.",
+      "text_markdown": "هكذا وُلدت الدراجة النارية.",
+      "tts": {
+        "text": "هكذا وُلدت الدراجة النارية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثاني — أوائل الشركات",
+      "text_markdown": "الفصل الثاني — أوائل الشركات"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد دايملر، أراد أناس آخرون أن يصنعوا الدراجات النارية أيضًا.",
+      "text_markdown": "بعد دايملر، أراد أناس آخرون أن يصنعوا الدراجات النارية أيضًا.",
+      "tts": {
+        "text": "بعد دايملر، أراد أناس آخرون أن يصنعوا الدراجات النارية أيضًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وسرعان ما فُتحت ورش صغيرة في كل مكان من العالم.",
+      "text_markdown": "وسرعان ما فُتحت ورش صغيرة في كل مكان من العالم.",
+      "tts": {
+        "text": "وسرعان ما فُتحت ورش صغيرة في كل مكان من العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في إنجلترا، أسس رجل اسمه زيغفريد بيتمان شركة اسمها ترايمف.",
+      "text_markdown": "في إنجلترا، أسس رجل اسمه زيغفريد بيتمان شركة اسمها ترايمف.",
+      "tts": {
+        "text": "في إنجلترا، أسس رجل اسمه زيغفريد بيتمان شركة اسمها ترايمف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "صُنعت أول دراجة ترايمف في عام 1902.",
+      "text_markdown": "صُنعت أول دراجة ترايمف في عام 1902.",
+      "tts": {
+        "text": "صُنعت أول دراجة ترايمف في عام ألف وتسعمائة واثنين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في أمريكا، صديقان اسمهما ويليام هارلي وآرثر ديفيدسون صنعا أول دراجة لهما في كوخ خشبي صغير.",
+      "text_markdown": "في أمريكا، صديقان اسمهما ويليام هارلي وآرثر ديفيدسون صنعا أول دراجة لهما في كوخ خشبي صغير.",
+      "tts": {
+        "text": "في أمريكا، صديقان اسمهما ويليام هارلي وآرثر ديفيدسون صنعا أول دراجة لهما في كوخ خشبي صغير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كان الكوخ في مدينة ميلواكي.",
+      "text_markdown": "كان الكوخ في مدينة ميلواكي.",
+      "tts": {
+        "text": "كان الكوخ في مدينة ميلواكي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كان ذلك في عام 1903.",
+      "text_markdown": "كان ذلك في عام 1903.",
+      "tts": {
+        "text": "كان ذلك في عام ألف وتسعمائة وثلاثة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أطلقا على الشركة اسم هارلي ديفيدسون.",
+      "text_markdown": "أطلقا على الشركة اسم هارلي ديفيدسون.",
+      "tts": {
+        "text": "أطلقا على الشركة اسم هارلي ديفيدسون.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانت هناك شركة أمريكية أخرى بدأت قبل ذلك بعدة سنوات.",
+      "text_markdown": "كانت هناك شركة أمريكية أخرى بدأت قبل ذلك بعدة سنوات.",
+      "tts": {
+        "text": "كانت هناك شركة أمريكية أخرى بدأت قبل ذلك بعدة سنوات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "رجلان في سبرينغفيلد بولاية ماساتشوستس صنعا أول آلة لهما في عام 1901.",
+      "text_markdown": "رجلان في سبرينغفيلد بولاية ماساتشوستس صنعا أول آلة لهما في عام 1901.",
+      "tts": {
+        "text": "رجلان في سبرينغفيلد بولاية ماساتشوستس صنعا أول آلة لهما في عام ألف وتسعمائة وواحد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أطلقا عليها اسم إنديان.",
+      "text_markdown": "أطلقا عليها اسم إنديان.",
+      "tts": {
+        "text": "أطلقا عليها اسم إنديان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الهند، بدأت شركة اسمها رويال إنفيلد بصنع الدراجات النارية في عام 1901 أيضًا.",
+      "text_markdown": "في الهند، بدأت شركة اسمها رويال إنفيلد بصنع الدراجات النارية في عام 1901 أيضًا.",
+      "tts": {
+        "text": "في الهند، بدأت شركة اسمها رويال إنفيلد بصنع الدراجات النارية في عام ألف وتسعمائة وواحد أيضًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اليوم، رويال إنفيلد هي أقدم شركة دراجات نارية في العالم لا تزال تصنع الدراجات.",
+      "text_markdown": "اليوم، رويال إنفيلد هي أقدم شركة دراجات نارية في العالم لا تزال تصنع الدراجات.",
+      "tts": {
+        "text": "اليوم، رويال إنفيلد هي أقدم شركة دراجات نارية في العالم لا تزال تصنع الدراجات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في ألمانيا، بدأت شركة BMW بصنع الدراجات النارية بعد ذلك بقليل، في عام 1923.",
+      "text_markdown": "في ألمانيا، بدأت شركة BMW بصنع الدراجات النارية بعد ذلك بقليل، في عام 1923.",
+      "tts": {
+        "text": "في ألمانيا، بدأت شركة بي إم دبليو بصنع الدراجات النارية بعد ذلك بقليل، في عام ألف وتسعمائة وثلاثة وعشرين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW تعني \"مصانع المحركات البافارية\" بالألمانية.",
+      "text_markdown": "BMW تعني \"مصانع المحركات البافارية\" بالألمانية.",
+      "tts": {
+        "text": "بي إم دبليو تعني \"مصانع المحركات البافارية\" بالألمانية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بحلول عام 1910، كانت الدراجات النارية في كل مكان.",
+      "text_markdown": "بحلول عام 1910، كانت الدراجات النارية في كل مكان.",
+      "tts": {
+        "text": "بحلول عام ألف وتسعمائة وعشرة، كانت الدراجات النارية في كل مكان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كانت في شوارع المدن وطرق الريف.",
+      "text_markdown": "كانت في شوارع المدن وطرق الريف.",
+      "tts": {
+        "text": "كانت في شوارع المدن وطرق الريف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني — أوائل الشركات",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كان عصر الدراجة النارية قد بدأ فعلًا.",
+      "text_markdown": "كان عصر الدراجة النارية قد بدأ فعلًا.",
+      "tts": {
+        "text": "كان عصر الدراجة النارية قد بدأ فعلًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "text_markdown": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الدراجات النارية سريعة.",
+      "text_markdown": "الدراجات النارية سريعة.",
+      "tts": {
+        "text": "الدراجات النارية سريعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تستطيع المرور في الممرات الضيقة.",
+      "text_markdown": "تستطيع المرور في الممرات الضيقة.",
+      "tts": {
+        "text": "تستطيع المرور في الممرات الضيقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تستطيع نقل الرسائل بين المعسكرات.",
+      "text_markdown": "تستطيع نقل الرسائل بين المعسكرات.",
+      "tts": {
+        "text": "تستطيع نقل الرسائل بين المعسكرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لذلك حين جاءت الحروب، أرادت الجيوش الدراجات النارية.",
+      "text_markdown": "لذلك حين جاءت الحروب، أرادت الجيوش الدراجات النارية.",
+      "tts": {
+        "text": "لذلك حين جاءت الحروب، أرادت الجيوش الدراجات النارية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بدأت الحرب العالمية الأولى في عام 1914.",
+      "text_markdown": "بدأت الحرب العالمية الأولى في عام 1914.",
+      "tts": {
+        "text": "بدأت الحرب العالمية الأولى في عام ألف وتسعمائة وأربعة عشر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "استخدم الجنود دراجات ترايمف النارية لنقل الأوامر.",
+      "text_markdown": "استخدم الجنود دراجات ترايمف النارية لنقل الأوامر.",
+      "tts": {
+        "text": "استخدم الجنود دراجات ترايمف النارية لنقل الأوامر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كانت دراجة ترايمف موديل H قوية وهادئة.",
+      "text_markdown": "كانت دراجة ترايمف موديل H قوية وهادئة.",
+      "tts": {
+        "text": "كانت دراجة ترايمف موديل إتش قوية وهادئة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كانت تستطيع السير حيث لا تستطيع الخيول.",
+      "text_markdown": "كانت تستطيع السير حيث لا تستطيع الخيول.",
+      "tts": {
+        "text": "كانت تستطيع السير حيث لا تستطيع الخيول.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بدأت الحرب العالمية الثانية في عام 1939.",
+      "text_markdown": "بدأت الحرب العالمية الثانية في عام 1939.",
+      "tts": {
+        "text": "بدأت الحرب العالمية الثانية في عام ألف وتسعمائة وتسعة وثلاثين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في ذلك الوقت، كانت الدراجات النارية أسرع وأقوى.",
+      "text_markdown": "في ذلك الوقت، كانت الدراجات النارية أسرع وأقوى.",
+      "tts": {
+        "text": "في ذلك الوقت، كانت الدراجات النارية أسرع وأقوى.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ركب الجنود الأمريكيون دراجة هارلي ديفيدسون WLA.",
+      "text_markdown": "ركب الجنود الأمريكيون دراجة هارلي ديفيدسون WLA.",
+      "tts": {
+        "text": "ركب الجنود الأمريكيون دراجة هارلي ديفيدسون دبليو إل إيه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ركب الجنود الألمان دراجة BMW R75.",
+      "text_markdown": "ركب الجنود الألمان دراجة BMW R75.",
+      "tts": {
+        "text": "ركب الجنود الألمان دراجة بي إم دبليو آر خمسة وسبعين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "كان للدراجة R75 عربة جانبية بعجلة ثالثة ومقعد لجندي آخر.",
+      "text_markdown": "كان للدراجة R75 عربة جانبية بعجلة ثالثة ومقعد لجندي آخر.",
+      "tts": {
+        "text": "كان للدراجة آر خمسة وسبعين عربة جانبية بعجلة ثالثة ومقعد لجندي آخر.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد الحرب، عاد الجنود إلى ديارهم.",
+      "text_markdown": "بعد الحرب، عاد الجنود إلى ديارهم.",
+      "tts": {
+        "text": "بعد الحرب، عاد الجنود إلى ديارهم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أحضروا معهم دراجاتهم النارية.",
+      "text_markdown": "أحضروا معهم دراجاتهم النارية.",
+      "tts": {
+        "text": "أحضروا معهم دراجاتهم النارية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أراد كثيرون منهم أن يواصلوا الركوب.",
+      "text_markdown": "أراد كثيرون منهم أن يواصلوا الركوب.",
+      "tts": {
+        "text": "أراد كثيرون منهم أن يواصلوا الركوب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "بدأ بعضهم نواديهم الخاصة للدراجات النارية.",
+      "text_markdown": "بدأ بعضهم نواديهم الخاصة للدراجات النارية.",
+      "tts": {
+        "text": "بدأ بعضهم نواديهم الخاصة للدراجات النارية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "جعلت الحروب الدراجة النارية مشهورة.",
+      "text_markdown": "جعلت الحروب الدراجة النارية مشهورة.",
+      "tts": {
+        "text": "جعلت الحروب الدراجة النارية مشهورة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ملايين من الناس رأوا واحدة لأول مرة.",
+      "text_markdown": "ملايين من الناس رأوا واحدة لأول مرة.",
+      "tts": {
+        "text": "ملايين من الناس رأوا واحدة لأول مرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث — الدراجات النارية تذهب إلى الحرب",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وأراد كثيرون منهم أن يحصلوا على واحدة لأنفسهم.",
+      "text_markdown": "وأراد كثيرون منهم أن يحصلوا على واحدة لأنفسهم.",
+      "tts": {
+        "text": "وأراد كثيرون منهم أن يحصلوا على واحدة لأنفسهم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الرابع — صعود اليابان",
+      "text_markdown": "الفصل الرابع — صعود اليابان"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد الحرب العالمية الثانية، كانت اليابان فقيرة.",
+      "text_markdown": "بعد الحرب العالمية الثانية، كانت اليابان فقيرة.",
+      "tts": {
+        "text": "بعد الحرب العالمية الثانية، كانت اليابان فقيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كانت معظم السيارات باهظة الثمن.",
+      "text_markdown": "كانت معظم السيارات باهظة الثمن.",
+      "tts": {
+        "text": "كانت معظم السيارات باهظة الثمن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "احتاج الناس إلى وسيلة صغيرة ورخيصة للتنقل.",
+      "text_markdown": "احتاج الناس إلى وسيلة صغيرة ورخيصة للتنقل.",
+      "tts": {
+        "text": "احتاج الناس إلى وسيلة صغيرة ورخيصة للتنقل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "رأى شاب ياباني الفرصة.",
+      "text_markdown": "رأى شاب ياباني الفرصة.",
+      "tts": {
+        "text": "رأى شاب ياباني الفرصة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كان اسمه سويتشيرو هوندا.",
+      "text_markdown": "كان اسمه سويتشيرو هوندا.",
+      "tts": {
+        "text": "كان اسمه سويتشيرو هوندا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أسس شركة صغيرة في عام 1948.",
+      "text_markdown": "أسس شركة صغيرة في عام 1948.",
+      "tts": {
+        "text": "أسس شركة صغيرة في عام ألف وتسعمائة وثمانية وأربعين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "أطلق عليها اسم هوندا.",
+      "text_markdown": "أطلق عليها اسم هوندا.",
+      "tts": {
+        "text": "أطلق عليها اسم هوندا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في عام 1958، صنعت هوندا دراجة نارية صغيرة اسمها سوبر كاب.",
+      "text_markdown": "في عام 1958، صنعت هوندا دراجة نارية صغيرة اسمها سوبر كاب.",
+      "tts": {
+        "text": "في عام ألف وتسعمائة وثمانية وخمسين، صنعت هوندا دراجة نارية صغيرة اسمها سوبر كاب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كانت السوبر كاب سهلة الركوب.",
+      "text_markdown": "كانت السوبر كاب سهلة الركوب.",
+      "tts": {
+        "text": "كانت السوبر كاب سهلة الركوب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كانت سهلة الإصلاح.",
+      "text_markdown": "كانت سهلة الإصلاح.",
+      "tts": {
+        "text": "كانت سهلة الإصلاح.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كانت رخيصة جدًا جدًا.",
+      "text_markdown": "كانت رخيصة جدًا جدًا.",
+      "tts": {
+        "text": "كانت رخيصة جدًا جدًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اشترى الناس في كل أنحاء العالم السوبر كاب.",
+      "text_markdown": "اشترى الناس في كل أنحاء العالم السوبر كاب.",
+      "tts": {
+        "text": "اشترى الناس في كل أنحاء العالم السوبر كاب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اليوم، بيعت أكثر من 100 مليون دراجة سوبر كاب.",
+      "text_markdown": "اليوم، بيعت أكثر من 100 مليون دراجة سوبر كاب.",
+      "tts": {
+        "text": "اليوم، بيعت أكثر من مئة مليون دراجة سوبر كاب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هي أكثر مركبة آلية مبيعًا في كل العصور.",
+      "text_markdown": "هي أكثر مركبة آلية مبيعًا في كل العصور.",
+      "tts": {
+        "text": "هي أكثر مركبة آلية مبيعًا في كل العصور.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وسرعان ما تبعت ثلاث شركات يابانية أخرى هوندا.",
+      "text_markdown": "وسرعان ما تبعت ثلاث شركات يابانية أخرى هوندا.",
+      "tts": {
+        "text": "وسرعان ما تبعت ثلاث شركات يابانية أخرى هوندا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهي ياماها وسوزوكي وكاواساكي.",
+      "text_markdown": "وهي ياماها وسوزوكي وكاواساكي.",
+      "tts": {
+        "text": "وهي ياماها وسوزوكي وكاواساكي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ومع هوندا، تُسمى هذه الشركات الأربع الكبرى.",
+      "text_markdown": "ومع هوندا، تُسمى هذه الشركات الأربع الكبرى.",
+      "tts": {
+        "text": "ومع هوندا، تُسمى هذه الشركات الأربع الكبرى.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "صنعت الشركات الأربع الكبرى دراجات نارية سريعة ورخيصة وسهلة الركوب.",
+      "text_markdown": "صنعت الشركات الأربع الكبرى دراجات نارية سريعة ورخيصة وسهلة الركوب.",
+      "tts": {
+        "text": "صنعت الشركات الأربع الكبرى دراجات نارية سريعة ورخيصة وسهلة الركوب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بحلول الستينات، كانت الدراجات النارية اليابانية في كل مكان.",
+      "text_markdown": "بحلول الستينات، كانت الدراجات النارية اليابانية في كل مكان.",
+      "tts": {
+        "text": "بحلول الستينات، كانت الدراجات النارية اليابانية في كل مكان.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع — صعود اليابان",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كانت ملوك الطريق الجدد.",
+      "text_markdown": "كانت ملوك الطريق الجدد.",
+      "tts": {
+        "text": "كانت ملوك الطريق الجدد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "text_markdown": "الفصل الخامس — أسرع، أسرع، أسرع"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الستينات، أراد السائقون أن يسيروا أسرع.",
+      "text_markdown": "في الستينات، أراد السائقون أن يسيروا أسرع.",
+      "tts": {
+        "text": "في الستينات، أراد السائقون أن يسيروا أسرع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بدأ الصانعون سباقًا لصنع أسرع دراجة نارية في العالم.",
+      "text_markdown": "بدأ الصانعون سباقًا لصنع أسرع دراجة نارية في العالم.",
+      "tts": {
+        "text": "بدأ الصانعون سباقًا لصنع أسرع دراجة نارية في العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في إيطاليا، صنعت شركة صغيرة اسمها MV Agusta دراجات حمراء جميلة فازت في سباق بعد سباق.",
+      "text_markdown": "في إيطاليا، صنعت شركة صغيرة اسمها MV Agusta دراجات حمراء جميلة فازت في سباق بعد سباق.",
+      "tts": {
+        "text": "في إيطاليا، صنعت شركة صغيرة اسمها إم في أغوستا دراجات حمراء جميلة فازت في سباق بعد سباق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "في إنجلترا، صنعت ترايمف ونورتون أيضًا آلات قوية.",
+      "text_markdown": "في إنجلترا، صنعت ترايمف ونورتون أيضًا آلات قوية.",
+      "tts": {
+        "text": "في إنجلترا، صنعت ترايمف ونورتون أيضًا آلات قوية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ثم في عام 1969، فعلت هوندا شيئًا مذهلًا.",
+      "text_markdown": "ثم في عام 1969، فعلت هوندا شيئًا مذهلًا.",
+      "tts": {
+        "text": "ثم في عام ألف وتسعمائة وتسعة وستين، فعلت هوندا شيئًا مذهلًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "صنعوا دراجة نارية اسمها CB 750.",
+      "text_markdown": "صنعوا دراجة نارية اسمها CB 750.",
+      "tts": {
+        "text": "صنعوا دراجة نارية اسمها سي بي سبعمائة وخمسين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كان لها أربع أسطوانات ومحرك كبير.",
+      "text_markdown": "كان لها أربع أسطوانات ومحرك كبير.",
+      "tts": {
+        "text": "كان لها أربع أسطوانات ومحرك كبير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كانت تستطيع السير بأكثر من 120 ميلًا في الساعة.",
+      "text_markdown": "كانت تستطيع السير بأكثر من 120 ميلًا في الساعة.",
+      "tts": {
+        "text": "كانت تستطيع السير بأكثر من مئة وعشرين ميلًا في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "كانت أول دراجة نارية خارقة حقيقية.",
+      "text_markdown": "كانت أول دراجة نارية خارقة حقيقية.",
+      "tts": {
+        "text": "كانت أول دراجة نارية خارقة حقيقية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد الـ CB 750، أرادت كل شركة أن تصنع دراجة نارية خارقة.",
+      "text_markdown": "بعد الـ CB 750، أرادت كل شركة أن تصنع دراجة نارية خارقة.",
+      "tts": {
+        "text": "بعد السي بي سبعمائة وخمسين، أرادت كل شركة أن تصنع دراجة نارية خارقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أصبحت الدراجات أسرع وأسرع.",
+      "text_markdown": "أصبحت الدراجات أسرع وأسرع.",
+      "tts": {
+        "text": "أصبحت الدراجات أسرع وأسرع.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وسرعان ما صار لها أغطية واقية ملونة، وهي أصداف بلاستيكية ناعمة تشق الرياح.",
+      "text_markdown": "وسرعان ما صار لها أغطية واقية ملونة، وهي أصداف بلاستيكية ناعمة تشق الرياح.",
+      "tts": {
+        "text": "وسرعان ما صار لها أغطية واقية ملونة، وهي أصداف بلاستيكية ناعمة تشق الرياح.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في عام 1990، صارت دراجة نارية يابانية اسمها كاواساكي ZX-11 أسرع دراجة نارية في العالم.",
+      "text_markdown": "في عام 1990، صارت دراجة نارية يابانية اسمها كاواساكي ZX-11 أسرع دراجة نارية في العالم.",
+      "tts": {
+        "text": "في عام ألف وتسعمائة وتسعين، صارت دراجة نارية يابانية اسمها كاواساكي زد إكس أحد عشر أسرع دراجة نارية في العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كانت تستطيع السير بقرابة 175 ميلًا في الساعة.",
+      "text_markdown": "كانت تستطيع السير بقرابة 175 ميلًا في الساعة.",
+      "tts": {
+        "text": "كانت تستطيع السير بقرابة مئة وخمسة وسبعين ميلًا في الساعة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "بعد بضع سنوات، سارت سوزوكي هاياباسا أسرع من ذلك.",
+      "text_markdown": "بعد بضع سنوات، سارت سوزوكي هاياباسا أسرع من ذلك.",
+      "tts": {
+        "text": "بعد بضع سنوات، سارت سوزوكي هاياباسا أسرع من ذلك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "بلغت 194 ميلًا في الساعة.",
+      "text_markdown": "بلغت 194 ميلًا في الساعة.",
+      "tts": {
+        "text": "بلغت مئة وأربعة وتسعين ميلًا في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس — أسرع، أسرع، أسرع",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هذا أسرع من معظم السيارات على الطريق اليوم.",
+      "text_markdown": "هذا أسرع من معظم السيارات على الطريق اليوم.",
+      "tts": {
+        "text": "هذا أسرع من معظم السيارات على الطريق اليوم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "text_markdown": "الفصل السادس — أنواع كثيرة من الدراجات النارية"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اليوم، تأتي الدراجات النارية بأشكال كثيرة.",
+      "text_markdown": "اليوم، تأتي الدراجات النارية بأشكال كثيرة.",
+      "tts": {
+        "text": "اليوم، تأتي الدراجات النارية بأشكال كثيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "كل نوع مصنوع لمهمة مختلفة.",
+      "text_markdown": "كل نوع مصنوع لمهمة مختلفة.",
+      "tts": {
+        "text": "كل نوع مصنوع لمهمة مختلفة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الدراجة الرياضية مصنوعة لتسير بسرعة كبيرة.",
+      "text_markdown": "الدراجة الرياضية مصنوعة لتسير بسرعة كبيرة.",
+      "tts": {
+        "text": "الدراجة الرياضية مصنوعة لتسير بسرعة كبيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنها خفيفة ومنخفضة.",
+      "text_markdown": "إنها خفيفة ومنخفضة.",
+      "tts": {
+        "text": "إنها خفيفة ومنخفضة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "السائق يميل إلى الأمام.",
+      "text_markdown": "السائق يميل إلى الأمام.",
+      "tts": {
+        "text": "السائق يميل إلى الأمام.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الدراجات الرياضية مصنوعة للطرق الملساء وحلبات السباق.",
+      "text_markdown": "الدراجات الرياضية مصنوعة للطرق الملساء وحلبات السباق.",
+      "tts": {
+        "text": "الدراجات الرياضية مصنوعة للطرق الملساء وحلبات السباق.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دراجة الطين مصنوعة للوحل والتراب.",
+      "text_markdown": "دراجة الطين مصنوعة للوحل والتراب.",
+      "tts": {
+        "text": "دراجة الطين مصنوعة للوحل والتراب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "لها عجلات طويلة وإطارات كبيرة.",
+      "text_markdown": "لها عجلات طويلة وإطارات كبيرة.",
+      "tts": {
+        "text": "لها عجلات طويلة وإطارات كبيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "تستطيع دراجات الطين القفز فوق التلال.",
+      "text_markdown": "تستطيع دراجات الطين القفز فوق التلال.",
+      "tts": {
+        "text": "تستطيع دراجات الطين القفز فوق التلال.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "كثير من السائقين الصغار يتعلمون على دراجات الطين أولًا.",
+      "text_markdown": "كثير من السائقين الصغار يتعلمون على دراجات الطين أولًا.",
+      "tts": {
+        "text": "كثير من السائقين الصغار يتعلمون على دراجات الطين أولًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دراجة الكروزر طويلة ومنخفضة.",
+      "text_markdown": "دراجة الكروزر طويلة ومنخفضة.",
+      "tts": {
+        "text": "دراجة الكروزر طويلة ومنخفضة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "السائق يجلس منتصبًا ويسير ببطء.",
+      "text_markdown": "السائق يجلس منتصبًا ويسير ببطء.",
+      "tts": {
+        "text": "السائق يجلس منتصبًا ويسير ببطء.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هارلي ديفيدسون مشهورة بصنع الكروزر.",
+      "text_markdown": "هارلي ديفيدسون مشهورة بصنع الكروزر.",
+      "tts": {
+        "text": "هارلي ديفيدسون مشهورة بصنع الكروزر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكذلك إنديان.",
+      "text_markdown": "وكذلك إنديان.",
+      "tts": {
+        "text": "وكذلك إنديان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "دراجة المغامرة مصنوعة للرحلات الطويلة.",
+      "text_markdown": "دراجة المغامرة مصنوعة للرحلات الطويلة.",
+      "tts": {
+        "text": "دراجة المغامرة مصنوعة للرحلات الطويلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "تستطيع السير على الطرق وعلى التراب.",
+      "text_markdown": "تستطيع السير على الطرق وعلى التراب.",
+      "tts": {
+        "text": "تستطيع السير على الطرق وعلى التراب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS دراجة مغامرة مشهورة.",
+      "text_markdown": "BMW GS دراجة مغامرة مشهورة.",
+      "tts": {
+        "text": "بي إم دبليو جي إس دراجة مغامرة مشهورة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكذلك KTM.",
+      "text_markdown": "وكذلك KTM.",
+      "tts": {
+        "text": "وكذلك كي تي إم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هناك أيضًا دراجات تشوبر، وسكوتر، ودراجات سباق، ودراجات كهربائية.",
+      "text_markdown": "هناك أيضًا دراجات تشوبر، وسكوتر، ودراجات سباق، ودراجات كهربائية.",
+      "tts": {
+        "text": "هناك أيضًا دراجات تشوبر، وسكوتر، ودراجات سباق، ودراجات كهربائية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هناك دراجة نارية لكل نوع من الطرق تقريبًا.",
+      "text_markdown": "هناك دراجة نارية لكل نوع من الطرق تقريبًا.",
+      "tts": {
+        "text": "هناك دراجة نارية لكل نوع من الطرق تقريبًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس — أنواع كثيرة من الدراجات النارية",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اليوم، تستطيع أن تجد دراجة نارية في كل بلد في العالم.",
+      "text_markdown": "اليوم، تستطيع أن تجد دراجة نارية في كل بلد في العالم.",
+      "tts": {
+        "text": "اليوم، تستطيع أن تجد دراجة نارية في كل بلد في العالم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السابع — طريق جديد",
+      "text_markdown": "الفصل السابع — طريق جديد"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اليوم، للدراجة النارية نوع جديد من المحركات.",
+      "text_markdown": "اليوم، للدراجة النارية نوع جديد من المحركات.",
+      "tts": {
+        "text": "اليوم، للدراجة النارية نوع جديد من المحركات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "إنه المحرك الكهربائي.",
+      "text_markdown": "إنه المحرك الكهربائي.",
+      "tts": {
+        "text": "إنه المحرك الكهربائي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الدراجة النارية الكهربائية صامتة.",
+      "text_markdown": "الدراجة النارية الكهربائية صامتة.",
+      "tts": {
+        "text": "الدراجة النارية الكهربائية صامتة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "لا تحتاج إلى البنزين.",
+      "text_markdown": "لا تحتاج إلى البنزين.",
+      "tts": {
+        "text": "لا تحتاج إلى البنزين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "تحتاج فقط إلى أن تُوصَل بالكهرباء مثل الهاتف.",
+      "text_markdown": "تحتاج فقط إلى أن تُوصَل بالكهرباء مثل الهاتف.",
+      "tts": {
+        "text": "تحتاج فقط إلى أن تُوصَل بالكهرباء مثل الهاتف.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "شركة اسمها زيرو تصنع دراجات نارية كهربائية في كاليفورنيا.",
+      "text_markdown": "شركة اسمها زيرو تصنع دراجات نارية كهربائية في كاليفورنيا.",
+      "tts": {
+        "text": "شركة اسمها زيرو تصنع دراجات نارية كهربائية في كاليفورنيا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هارلي ديفيدسون تصنع الآن دراجة كهربائية اسمها لايف واير.",
+      "text_markdown": "هارلي ديفيدسون تصنع الآن دراجة كهربائية اسمها لايف واير.",
+      "tts": {
+        "text": "هارلي ديفيدسون تصنع الآن دراجة كهربائية اسمها لايف واير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "شركة إيطالية اسمها إنرجيكا تصنع دراجات سباق كهربائية.",
+      "text_markdown": "شركة إيطالية اسمها إنرجيكا تصنع دراجات سباق كهربائية.",
+      "tts": {
+        "text": "شركة إيطالية اسمها إنرجيكا تصنع دراجات سباق كهربائية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "إنها سريعة جدًا.",
+      "text_markdown": "إنها سريعة جدًا.",
+      "tts": {
+        "text": "إنها سريعة جدًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أول دراجة نارية، الرايت فاجن، كانت تستطيع السير بسرعة سبعة أميال في الساعة.",
+      "text_markdown": "أول دراجة نارية، الرايت فاجن، كانت تستطيع السير بسرعة سبعة أميال في الساعة.",
+      "tts": {
+        "text": "أول دراجة نارية، الرايت فاجن، كانت تستطيع السير بسرعة سبعة أميال في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الدراجات النارية الكهربائية اليوم تستطيع السير بأكثر من 200 ميل في الساعة.",
+      "text_markdown": "الدراجات النارية الكهربائية اليوم تستطيع السير بأكثر من 200 ميل في الساعة.",
+      "tts": {
+        "text": "الدراجات النارية الكهربائية اليوم تستطيع السير بأكثر من مئتي ميل في الساعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هذه قصة الدراجة النارية حتى الآن.",
+      "text_markdown": "هذه قصة الدراجة النارية حتى الآن.",
+      "tts": {
+        "text": "هذه قصة الدراجة النارية حتى الآن.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كانت هذه القصة الكبيرة.",
+      "text_markdown": "كانت هذه القصة الكبيرة.",
+      "tts": {
+        "text": "كانت هذه القصة الكبيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الكتب الأحد عشر التالية ستحكي القصص الصغيرة.",
+      "text_markdown": "الكتب الأحد عشر التالية ستحكي القصص الصغيرة.",
+      "tts": {
+        "text": "الكتب الأحد عشر التالية ستحكي القصص الصغيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كل واحد منها عن جزء واحد من عالم الدراجات النارية.",
+      "text_markdown": "كل واحد منها عن جزء واحد من عالم الدراجات النارية.",
+      "tts": {
+        "text": "كل واحد منها عن جزء واحد من عالم الدراجات النارية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الجزء الثاني عن هارلي ديفيدسون.",
+      "text_markdown": "الجزء الثاني عن هارلي ديفيدسون.",
+      "tts": {
+        "text": "الجزء الثاني عن هارلي ديفيدسون.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الجزء الثالث عن هوندا.",
+      "text_markdown": "الجزء الثالث عن هوندا.",
+      "tts": {
+        "text": "الجزء الثالث عن هوندا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الجزء الرابع عن دوكاتي من إيطاليا.",
+      "text_markdown": "الجزء الرابع عن دوكاتي من إيطاليا.",
+      "tts": {
+        "text": "الجزء الرابع عن دوكاتي من إيطاليا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الجزء الخامس عن BMW من ألمانيا.",
+      "text_markdown": "الجزء الخامس عن BMW من ألمانيا.",
+      "tts": {
+        "text": "الجزء الخامس عن بي إم دبليو من ألمانيا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الجزء السادس عن ترايمف من إنجلترا.",
+      "text_markdown": "الجزء السادس عن ترايمف من إنجلترا.",
+      "tts": {
+        "text": "الجزء السادس عن ترايمف من إنجلترا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الجزء السابع عن دراجات الطين.",
+      "text_markdown": "الجزء السابع عن دراجات الطين.",
+      "tts": {
+        "text": "الجزء السابع عن دراجات الطين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الجزء الثامن عن الدراجات الرياضية.",
+      "text_markdown": "الجزء الثامن عن الدراجات الرياضية.",
+      "tts": {
+        "text": "الجزء الثامن عن الدراجات الرياضية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الجزء التاسع عن دراجات الكروزر والتشوبر.",
+      "text_markdown": "الجزء التاسع عن دراجات الكروزر والتشوبر.",
+      "tts": {
+        "text": "الجزء التاسع عن دراجات الكروزر والتشوبر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الجزء العاشر عن دراجات المغامرة.",
+      "text_markdown": "الجزء العاشر عن دراجات المغامرة.",
+      "tts": {
+        "text": "الجزء العاشر عن دراجات المغامرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "الجزء الحادي عشر عن السباقات.",
+      "text_markdown": "الجزء الحادي عشر عن السباقات.",
+      "tts": {
+        "text": "الجزء الحادي عشر عن السباقات.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "الجزء الثاني عشر عن الدراجات الكهربائية والمستقبل.",
+      "text_markdown": "الجزء الثاني عشر عن الدراجات الكهربائية والمستقبل.",
+      "tts": {
+        "text": "الجزء الثاني عشر عن الدراجات الكهربائية والمستقبل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "اختر الذي يبدو لك أكثرها متعة.",
+      "text_markdown": "اختر الذي يبدو لك أكثرها متعة.",
+      "tts": {
+        "text": "اختر الذي يبدو لك أكثرها متعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع — طريق جديد",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ثم تعال معنا في الرحلة.",
+      "text_markdown": "ثم تعال معنا في الرحلة.",
+      "tts": {
+        "text": "ثم تعال معنا في الرحلة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "عن هذا الكتاب",
+      "text_markdown": "عن هذا الكتاب"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا أول كتاب في سلسلة الدراجات النارية.",
+      "text_markdown": "هذا أول كتاب في سلسلة الدراجات النارية.",
+      "tts": {
+        "text": "هذا أول كتاب في سلسلة الدراجات النارية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يقرؤه بصوته أوغست.",
+      "text_markdown": "يقرؤه بصوته أوغست.",
+      "tts": {
+        "text": "يقرؤه بصوته أوغست.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كل جملة قصيرة وواضحة كي تستطيع متابعة القراءة بأي لغة.",
+      "text_markdown": "كل جملة قصيرة وواضحة كي تستطيع متابعة القراءة بأي لغة.",
+      "tts": {
+        "text": "كل جملة قصيرة وواضحة كي تستطيع متابعة القراءة بأي لغة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إذا أردت أن تسمع كيف تبدو جملة بلغة أخرى، فاستمع إلى الكتاب نفسه بتلك اللغة.",
+      "text_markdown": "إذا أردت أن تسمع كيف تبدو جملة بلغة أخرى، فاستمع إلى الكتاب نفسه بتلك اللغة.",
+      "tts": {
+        "text": "إذا أردت أن تسمع كيف تبدو جملة بلغة أخرى، فاستمع إلى الكتاب نفسه بتلك اللغة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ستطابق الكلمات على الصفحة ما تسمعه.",
+      "text_markdown": "ستطابق الكلمات على الصفحة ما تسمعه.",
+      "tts": {
+        "text": "ستطابق الكلمات على الصفحة ما تسمعه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هكذا تتعلم.",
+      "text_markdown": "هكذا تتعلم.",
+      "tts": {
+        "text": "هكذا تتعلم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والآن اذهب وابحث عن دراجة نارية واستمع إليها وهي تطلق صوت فروم.",
+      "text_markdown": "والآن اذهب وابحث عن دراجة نارية واستمع إليها وهي تطلق صوت فروم.",
+      "tts": {
+        "text": "والآن اذهب وابحث عن دراجة نارية واستمع إليها وهي تطلق صوت فروم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

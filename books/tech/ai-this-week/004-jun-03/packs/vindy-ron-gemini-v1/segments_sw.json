@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "sw",
+  "total_segments": 197,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Karibu kwenye AI Wiki Hii.",
+      "text_markdown": "Karibu kwenye AI Wiki Hii.",
+      "title": "",
+      "tts": {
+        "text": "Karibu kwenye AI Wiki Hii.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mimi ni Vindy.",
+      "text_markdown": "Mimi ni Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Mimi ni Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Pamoja nami, kama kawaida, ni Ron.",
+      "text_markdown": "Pamoja nami, kama kawaida, ni Ron.",
+      "title": "",
+      "tts": {
+        "text": "Pamoja nami, kama kawaida, ni Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Vizuri kuwa hapa, Vindy.",
+      "text_markdown": "Vizuri kuwa hapa, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Vizuri kuwa hapa, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Leo ni Jumatano, Juni 3, 2026.",
+      "text_markdown": "Leo ni Jumatano, Juni 3, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Leo ni Jumatano, Juni tatu, elfu mbili ishirini na sita.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hii ilikuwa wiki tulivu kwa masoko na wiki yenye kelele kwa vifaa.",
+      "text_markdown": "Hii ilikuwa wiki tulivu kwa masoko na wiki yenye kelele kwa vifaa.",
+      "title": "",
+      "tts": {
+        "text": "Hii ilikuwa wiki tulivu kwa masoko na wiki yenye kelele kwa vifaa.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Muundo wa vichwa vya habari ulikuwa usio wa kawaida.",
+      "text_markdown": "Muundo wa vichwa vya habari ulikuwa usio wa kawaida.",
+      "title": "",
+      "tts": {
+        "text": "Muundo wa vichwa vya habari ulikuwa usio wa kawaida.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hotuba kuu ya maabara kubwa, faili ya siri, kompyuta ndogo yenye namba kubwa kwenye sanduku.",
+      "text_markdown": "Hotuba kuu ya maabara kubwa, faili ya siri, kompyuta ndogo yenye namba kubwa kwenye sanduku.",
+      "title": "",
+      "tts": {
+        "text": "Hotuba kuu ya maabara kubwa, faili ya siri, kompyuta ndogo yenye namba kubwa kwenye sanduku.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kinachofuata — kilichobadilika katika uzito huria, kikiongozwa na usanifu mpya wa umakini na modeli huria ya NVIDIA.",
+      "text_markdown": "Kinachofuata — kilichobadilika katika uzito huria, kikiongozwa na usanifu mpya wa umakini na modeli huria ya NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Kinachofuata — kilichobadilika katika uzito huria, kikiongozwa na usanifu mpya wa umakini na modeli huria ya NVIDIA.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ambapo bodi za wanaoongoza zilitua, na hadithi kubwa zaidi chini yake kuhusu jinsi tunavyoamini alama hata kidogo.",
+      "text_markdown": "Ambapo bodi za wanaoongoza zilitua, na hadithi kubwa zaidi chini yake kuhusu jinsi tunavyoamini alama hata kidogo.",
+      "title": "",
+      "tts": {
+        "text": "Ambapo bodi za wanaoongoza zilitua, na hadithi kubwa zaidi chini yake kuhusu jinsi tunavyoamini alama hata kidogo.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kipande cha haraka cha vichwa vya habari unavyoweza kuvifanyia kazi wikendi hii.",
+      "text_markdown": "Kipande cha haraka cha vichwa vya habari unavyoweza kuvifanyia kazi wikendi hii.",
+      "title": "",
+      "tts": {
+        "text": "Kipande cha haraka cha vichwa vya habari unavyoweza kuvifanyia kazi wikendi hii.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Habari yetu kuu, mfumo wa kujitegemea ulikua — utambuzi wa mpaka sasa ni jambo la kawaida kwenye dawati lako.",
+      "text_markdown": "Habari yetu kuu, mfumo wa kujitegemea ulikua — utambuzi wa mpaka sasa ni jambo la kawaida kwenye dawati lako.",
+      "title": "",
+      "tts": {
+        "text": "Habari yetu kuu, mfumo wa kujitegemea ulikua — utambuzi wa mpaka sasa ni jambo la kawaida kwenye dawati lako.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na dhana ya wiki ni usimbaji fiche wa kubahatisha — mbinu inayofanya modeli kubwa kwenye kadi ndogo ihisi haraka.",
+      "text_markdown": "Na dhana ya wiki ni usimbaji fiche wa kubahatisha — mbinu inayofanya modeli kubwa kwenye kadi ndogo ihisi haraka.",
+      "title": "",
+      "tts": {
+        "text": "Na dhana ya wiki ni usimbaji fiche wa kubahatisha — mbinu inayofanya modeli kubwa kwenye kadi ndogo ihisi haraka.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, tuanze katika ulimwengu wa uzito huria.",
+      "text_markdown": "Ron, tuanze katika ulimwengu wa uzito huria.",
+      "title": "",
+      "tts": {
+        "text": "Ron, tuanze katika ulimwengu wa uzito huria.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Wiki iliishia wapi?",
+      "text_markdown": "Wiki iliishia wapi?",
+      "title": "",
+      "tts": {
+        "text": "Wiki iliishia wapi?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wiki hii hadithi huria ilikuwa kuhusu maumbo mapya, si saizi mpya.",
+      "text_markdown": "Wiki hii hadithi huria ilikuwa kuhusu maumbo mapya, si saizi mpya.",
+      "title": "",
+      "tts": {
+        "text": "Wiki hii hadithi huria ilikuwa kuhusu maumbo mapya, si saizi mpya.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Modeli mbili zenye usanifu wa kuvutia zilitolewa siku hiyo hiyo, Juni 1.",
+      "text_markdown": "Modeli mbili zenye usanifu wa kuvutia zilitolewa siku hiyo hiyo, Juni 1.",
+      "title": "",
+      "tts": {
+        "text": "Modeli mbili zenye usanifu wa kuvutia zilitolewa siku hiyo hiyo, Juni moja.",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tueleze kuhusu ya kwanza.",
+      "text_markdown": "Tueleze kuhusu ya kwanza.",
+      "title": "",
+      "tts": {
+        "text": "Tueleze kuhusu ya kwanza.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax ilisafirisha M3.",
+      "text_markdown": "MiniMax ilisafirisha M3.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax ilisafirisha M tatu.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Inatumia muundo mpya wa umakini wanaouita MSA, kifupi cha MiniMax Sparse Attention.",
+      "text_markdown": "Inatumia muundo mpya wa umakini wanaouita MSA, kifupi cha MiniMax Sparse Attention.",
+      "title": "",
+      "tts": {
+        "text": "Inatumia muundo mpya wa umakini wanaouita M S A, kifupi cha MiniMax Sparse Attention.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pendekezo ni muktadha wa tokeni milioni moja, na ujazaji wa awali wa haraka mara tisa na usimbaji fiche wa haraka mara kumi na tano ikilinganishwa na modeli yao ya awali kwa urefu huo.",
+      "text_markdown": "Pendekezo ni muktadha wa tokeni milioni moja, na ujazaji wa awali wa haraka mara tisa na usimbaji fiche wa haraka mara kumi na tano ikilinganishwa na modeli yao ya awali kwa urefu huo.",
+      "title": "",
+      "tts": {
+        "text": "Pendekezo ni muktadha wa tokeni milioni moja, na ujazaji wa awali wa haraka mara tisa na usimbaji fiche wa haraka mara kumi na tano ikilinganishwa na modeli yao ya awali kwa urefu huo.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Lugha rahisi kuhusu kile ambacho umakini haba hufanya.",
+      "text_markdown": "Lugha rahisi kuhusu kile ambacho umakini haba hufanya.",
+      "title": "",
+      "tts": {
+        "text": "Lugha rahisi kuhusu kile ambacho umakini haba hufanya.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Umakini wa kawaida hulinganisha kila tokeni na kila tokeni nyingine, jambo linalofanya muktadha mrefu kuwa ghali sana.",
+      "text_markdown": "Umakini wa kawaida hulinganisha kila tokeni na kila tokeni nyingine, jambo linalofanya muktadha mrefu kuwa ghali sana.",
+      "title": "",
+      "tts": {
+        "text": "Umakini wa kawaida hulinganisha kila tokeni na kila tokeni nyingine, jambo linalofanya muktadha mrefu kuwa ghali sana.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Umakini haba huchuja muktadha mapema katika vizuizi na hufanya tu ulinganisho kamili kwa vizuizi vinavyoonekana vinafaa kwa swali la sasa.",
+      "text_markdown": "Umakini haba huchuja muktadha mapema katika vizuizi na hufanya tu ulinganisho kamili kwa vizuizi vinavyoonekana vinafaa kwa swali la sasa.",
+      "title": "",
+      "tts": {
+        "text": "Umakini haba huchuja muktadha mapema katika vizuizi na hufanya tu ulinganisho kamili kwa vizuizi vinavyoonekana vinafaa kwa swali la sasa.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unapata ubora mwingi kwa sehemu ndogo ya hesabu.",
+      "text_markdown": "Unapata ubora mwingi kwa sehemu ndogo ya hesabu.",
+      "title": "",
+      "tts": {
+        "text": "Unapata ubora mwingi kwa sehemu ndogo ya hesabu.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na dai la kigezo?",
+      "text_markdown": "Na dai la kigezo?",
+      "title": "",
+      "tts": {
+        "text": "Na dai la kigezo?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax inasema asilimia hamsini na tisa kwenye SWE-bench Pro, jambo ambalo lingeiweka mbele ya GPT-5.5 na Gemini 3.5 Pro kwenye bodi hiyo moja.",
+      "text_markdown": "MiniMax inasema asilimia hamsini na tisa kwenye SWE-bench Pro, jambo ambalo lingeiweka mbele ya GPT-5.5 na Gemini 3.5 Pro kwenye bodi hiyo moja.",
+      "title": "",
+      "tts": {
+        "text": "MiniMax inasema asilimia hamsini na tisa kwenye SWE bench Pro, jambo ambalo lingeiweka mbele ya GPT tano nukta tano na Gemini tatu nukta tano Pro kwenye bodi hiyo moja.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nitasema madai — hii ni kadi ya alama ya muuzaji mwenyewe, si utendaji huru.",
+      "text_markdown": "Nitasema madai — hii ni kadi ya alama ya muuzaji mwenyewe, si utendaji huru.",
+      "title": "",
+      "tts": {
+        "text": "Nitasema madai — hii ni kadi ya alama ya muuzaji mwenyewe, si utendaji huru.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Uzito huria pia?",
+      "text_markdown": "Uzito huria pia?",
+      "title": "",
+      "tts": {
+        "text": "Uzito huria pia?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndiyo, M3 imewekwa kama uzito huria; API inapatikana moja kwa moja siku ya kwanza na uzito unawasili kwenye Hugging Face hivi karibuni.",
+      "text_markdown": "Ndiyo, M3 imewekwa kama uzito huria; API inapatikana moja kwa moja siku ya kwanza na uzito unawasili kwenye Hugging Face hivi karibuni.",
+      "title": "",
+      "tts": {
+        "text": "Ndiyo, M tatu imewekwa kama uzito huria; A P I inapatikana moja kwa moja siku ya kwanza na uzito unawasili kwenye Hugging Face hivi karibuni.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa mtaalamu wa ufundi, dau la kuvutia ni usanifu zaidi ya alama.",
+      "text_markdown": "Kwa mtaalamu wa ufundi, dau la kuvutia ni usanifu zaidi ya alama.",
+      "title": "",
+      "tts": {
+        "text": "Kwa mtaalamu wa ufundi, dau la kuvutia ni usanifu zaidi ya alama.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ikiwa MSA itadumu, kila maabara nyingine huru itaiga muundo huo ndani ya miezi.",
+      "text_markdown": "Ikiwa MSA itadumu, kila maabara nyingine huru itaiga muundo huo ndani ya miezi.",
+      "title": "",
+      "tts": {
+        "text": "Ikiwa M S A itadumu, kila maabara nyingine huru itaiga muundo huo ndani ya miezi.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na modeli ya pili?",
+      "text_markdown": "Na modeli ya pili?",
+      "title": "",
+      "tts": {
+        "text": "Na modeli ya pili?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA ilitoa kwa siri Nemotron 3 Ultra kama chanzo huria.",
+      "text_markdown": "NVIDIA ilitoa kwa siri Nemotron 3 Ultra kama chanzo huria.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA ilitoa kwa siri Nemotron tatu Ultra kama chanzo huria.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ni mchanganyiko wa wataalamu wenye bilioni mia tano na hamsini za vigezo, huku takriban bilioni hamsini na tano zikiwa hai kwa kila tokeni.",
+      "text_markdown": "Ni mchanganyiko wa wataalamu wenye bilioni mia tano na hamsini za vigezo, huku takriban bilioni hamsini na tano zikiwa hai kwa kila tokeni.",
+      "title": "",
+      "tts": {
+        "text": "Ni mchanganyiko wa wataalamu wenye bilioni mia tano na hamsini za vigezo, huku takriban bilioni hamsini na tano zikiwa hai kwa kila tokeni.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Msingi wake ni mseto wa Mamba-Transformer, si Transformer safi.",
+      "text_markdown": "Msingi wake ni mseto wa Mamba-Transformer, si Transformer safi.",
+      "title": "",
+      "tts": {
+        "text": "Msingi wake ni mseto wa Mamba Transformer, si Transformer safi.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Lugha rahisi kuhusu Mamba.",
+      "text_markdown": "Lugha rahisi kuhusu Mamba.",
+      "title": "",
+      "tts": {
+        "text": "Lugha rahisi kuhusu Mamba.",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tabaka za Mamba hushughulikia mfuatano mrefu kwa kipimo cha sub-quadratic, ambayo ni njia ya kifahari ya kusema kwamba zinakuwa nafuu kwa kila tokeni kadri muktadha unavyokua.",
+      "text_markdown": "Tabaka za Mamba hushughulikia mfuatano mrefu kwa kipimo cha sub-quadratic, ambayo ni njia ya kifahari ya kusema kwamba zinakuwa nafuu kwa kila tokeni kadri muktadha unavyokua.",
+      "title": "",
+      "tts": {
+        "text": "Tabaka za Mamba hushughulikia mfuatano mrefu kwa kipimo cha sub quadratic, ambayo ni njia ya kifahari ya kusema kwamba zinakuwa nafuu kwa kila tokeni kadri muktadha unavyokua.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA iliweka tabaka chache za umakini katika mrundikano ili kuhifadhi kumbukumbu sahihi kwa mambo kama vile kujibu maswali ya hati ndefu.",
+      "text_markdown": "NVIDIA iliweka tabaka chache za umakini katika mrundikano ili kuhifadhi kumbukumbu sahihi kwa mambo kama vile kujibu maswali ya hati ndefu.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA iliweka tabaka chache za umakini katika mrundikano ili kuhifadhi kumbukumbu sahihi kwa mambo kama vile kujibu maswali ya hati ndefu.",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ni aina ya mseto ambayo imekuwa ikishinda kimya kimya katika utafiti kwa mwaka mmoja.",
+      "text_markdown": "Ni aina ya mseto ambayo imekuwa ikishinda kimya kimya katika utafiti kwa mwaka mmoja.",
+      "title": "",
+      "tts": {
+        "text": "Ni aina ya mseto ambayo imekuwa ikishinda kimya kimya katika utafiti kwa mwaka mmoja.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Vipi kuhusu leseni?",
+      "text_markdown": "Vipi kuhusu leseni?",
+      "title": "",
+      "tts": {
+        "text": "Vipi kuhusu leseni?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Leseni ya Mfumo Huria ya NVIDIA yenyewe, matumizi ya kibiashara yanaruhusiwa.",
+      "text_markdown": "Leseni ya Mfumo Huria ya NVIDIA yenyewe, matumizi ya kibiashara yanaruhusiwa.",
+      "title": "",
+      "tts": {
+        "text": "Leseni ya Mfumo Huria ya NVIDIA yenyewe, matumizi ya kibiashara yanaruhusiwa.",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kila kitu kilitolewa pamoja, ikiwemo uzito, vituo vya ukaguzi vilivyofunzwa baada ya hapo, upimaji wa NVFP4, na mapishi ya mafunzo.",
+      "text_markdown": "Kila kitu kilitolewa pamoja, ikiwemo uzito, vituo vya ukaguzi vilivyofunzwa baada ya hapo, upimaji wa NVFP4, na mapishi ya mafunzo.",
+      "title": "",
+      "tts": {
+        "text": "Kila kitu kilitolewa pamoja, ikiwemo uzito, vituo vya ukaguzi vilivyofunzwa baada ya hapo, en vee eff pee nne quantization, na mapishi ya mafunzo.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo ni kifurushi chenye ukarimu zaidi kuliko matoleo mengi huria.",
+      "text_markdown": "Hiyo ni kifurushi chenye ukarimu zaidi kuliko matoleo mengi huria.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ni kifurushi chenye ukarimu zaidi kuliko matoleo mengi huria.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na nafasi kwenye ubao wa matokeo?",
+      "text_markdown": "Na nafasi kwenye ubao wa matokeo?",
+      "title": "",
+      "tts": {
+        "text": "Na nafasi kwenye ubao wa matokeo?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwenye Kielezo cha Akili Bandia ya Uchambuzi, Nemotron 3 Ultra inatua kwenye arobaini na nane.",
+      "text_markdown": "Kwenye Kielezo cha Akili Bandia ya Uchambuzi, Nemotron 3 Ultra inatua kwenye arobaini na nane.",
+      "title": "",
+      "tts": {
+        "text": "Kwenye Kielezo cha Akili Bandia ya Uchambuzi, Nemotron tatu Ultra inatua kwenye arobaini na nane.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo inaiweka ya tisa kati ya modeli themanini na tisa wanazofuatilia, na mbele ya kila modeli nyingine huria ya Marekani.",
+      "text_markdown": "Hiyo inaiweka ya tisa kati ya modeli themanini na tisa wanazofuatilia, na mbele ya kila modeli nyingine huria ya Marekani.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo inaiweka ya tisa kati ya modeli themanini na tisa wanazofuatilia, na mbele ya kila modeli nyingine huria ya Marekani.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pia inafuatia Kimi K2.6 ya Moonshot, ambayo iko kwenye hamsini na nne.",
+      "text_markdown": "Pia inafuatia Kimi K2.6 ya Moonshot, ambayo iko kwenye hamsini na nne.",
+      "title": "",
+      "tts": {
+        "text": "Pia inafuatia Kimi K mbili nukta sita ya Moonshot, ambayo iko kwenye hamsini na nne.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hivyo hata kwa yote hayo, Uchina bado inaongoza katika chanzo huria.",
+      "text_markdown": "Hivyo hata kwa yote hayo, Uchina bado inaongoza katika chanzo huria.",
+      "title": "",
+      "tts": {
+        "text": "Hivyo hata kwa yote hayo, Uchina bado inaongoza katika chanzo huria.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwenye kiambato hicho kimoja, ndiyo, kwa pointi sita.",
+      "text_markdown": "Kwenye kiambato hicho kimoja, ndiyo, kwa pointi sita.",
+      "title": "",
+      "tts": {
+        "text": "Kwenye kiambato hicho kimoja, ndiyo, kwa pointi sita.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo ni hadithi ndogo chini ya ile kubwa zaidi.",
+      "text_markdown": "Hiyo ni hadithi ndogo chini ya ile kubwa zaidi.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ni hadithi ndogo chini ya ile kubwa zaidi.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kitu chochote kinachohusiana na ndugu?",
+      "text_markdown": "Kitu chochote kinachohusiana na ndugu?",
+      "title": "",
+      "tts": {
+        "text": "Kitu chochote kinachohusiana na ndugu?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndiyo, NVIDIA pia ilitoa Nemotron 3 Nano Omni.",
+      "text_markdown": "Ndiyo, NVIDIA pia ilitoa Nemotron 3 Nano Omni.",
+      "title": "",
+      "tts": {
+        "text": "Ndiyo, NVIDIA pia ilitoa Nemotron tatu Nano Omni.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo ni modeli jumuishi ya kuona, sauti, na lugha, inayodaiwa kuwa na ufanisi mara tisa zaidi kuliko modeli huria za omni zinazofanana.",
+      "text_markdown": "Hiyo ni modeli jumuishi ya kuona, sauti, na lugha, inayodaiwa kuwa na ufanisi mara tisa zaidi kuliko modeli huria za omni zinazofanana.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ni modeli jumuishi ya kuona, sauti, na lugha, inayodaiwa kuwa na ufanisi mara tisa zaidi kuliko modeli huria za omni zinazofanana.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Inalenga mawakala wa kwenye kifaa — simu, kompyuta mpakato, vituo vidogo vya kazi.",
+      "text_markdown": "Inalenga mawakala wa kwenye kifaa — simu, kompyuta mpakato, vituo vidogo vya kazi.",
+      "title": "",
+      "tts": {
+        "text": "Inalenga mawakala wa kwenye kifaa — simu, kompyuta mpakato, vituo vidogo vya kazi.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nini kingine kutoka upande huria?",
+      "text_markdown": "Nini kingine kutoka upande huria?",
+      "title": "",
+      "tts": {
+        "text": "Nini kingine kutoka upande huria?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral Medium 3.5 ilionekana ndani ya Copilot Studio ya Microsoft mnamo Mei 28.",
+      "text_markdown": "Mistral Medium 3.5 ilionekana ndani ya Copilot Studio ya Microsoft mnamo Mei 28.",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium tatu nukta tano ilionekana ndani ya Copilot Studio ya Microsoft mnamo Mei ishirini na nane.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ni modeli mnene yenye vigezo bilioni mia moja ishirini na nane na muktadha wa tokeni laki mbili hamsini na sita elfu.",
+      "text_markdown": "Ni modeli mnene yenye vigezo bilioni mia moja ishirini na nane na muktadha wa tokeni laki mbili hamsini na sita elfu.",
+      "title": "",
+      "tts": {
+        "text": "Ni modeli mnene yenye vigezo bilioni mia moja ishirini na nane na muktadha wa tokeni laki mbili hamsini na sita elfu.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kwa nini nafasi hiyo inavutia?",
+      "text_markdown": "Kwa nini nafasi hiyo inavutia?",
+      "title": "",
+      "tts": {
+        "text": "Kwa nini nafasi hiyo inavutia?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa sababu Microsoft sasa inasambaza modeli ya Ulaya isiyo ya OpenAI kupitia jukwaa lake, ikiwa na uhifadhi wa data wa EU uliounganishwa.",
+      "text_markdown": "Kwa sababu Microsoft sasa inasambaza modeli ya Ulaya isiyo ya OpenAI kupitia jukwaa lake, ikiwa na uhifadhi wa data wa EU uliounganishwa.",
+      "title": "",
+      "tts": {
+        "text": "Kwa sababu Microsoft sasa inasambaza modeli ya Ulaya isiyo ya OpenAI kupitia jukwaa lake, ikiwa na uhifadhi wa data wa E U uliounganishwa.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Miaka miwili iliyopita sentensi hiyo isingewezekana kufikirika.",
+      "text_markdown": "Miaka miwili iliyopita sentensi hiyo isingewezekana kufikirika.",
+      "title": "",
+      "tts": {
+        "text": "Miaka miwili iliyopita sentensi hiyo isingewezekana kufikirika.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na vipi kuhusu Alibaba?",
+      "text_markdown": "Na vipi kuhusu Alibaba?",
+      "title": "",
+      "tts": {
+        "text": "Na vipi kuhusu Alibaba?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-063",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Qwen 3.7 Plus iliwasili Juni 2, lakini inapatikana kwa API pekee kwenye jukwaa la Bailian.",
+      "text_markdown": "Qwen 3.7 Plus iliwasili Juni 2, lakini inapatikana kwa API pekee kwenye jukwaa la Bailian.",
+      "title": "",
+      "tts": {
+        "text": "Qwen tatu nukta saba Plus iliwasili Juni pili, lakini inapatikana kwa API pekee kwenye jukwaa la Bailian.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-064",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mfululizo wa Qwen huria bado unaishia kwenye tatu nukta sita.",
+      "text_markdown": "Mfululizo wa Qwen huria bado unaishia kwenye tatu nukta sita.",
+      "title": "",
+      "tts": {
+        "text": "Mfululizo wa Qwen huria bado unaishia kwenye tatu nukta sita.",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-065",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo inathibitisha mgawanyiko tuliouashiria wiki iliyopita — kiongozi mkuu uliofungwa, kiwango cha kati huria.",
+      "text_markdown": "Hiyo inathibitisha mgawanyiko tuliouashiria wiki iliyopita — kiongozi mkuu uliofungwa, kiwango cha kati huria.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo inathibitisha mgawanyiko tuliouashiria wiki iliyopita — kiongozi mkuu uliofungwa, kiwango cha kati huria.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-066",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mbinu ileile ambayo Mistral imekuwa ikitumia kwa mwaka mmoja.",
+      "text_markdown": "Mbinu ileile ambayo Mistral imekuwa ikitumia kwa mwaka mmoja.",
+      "title": "",
+      "tts": {
+        "text": "Mbinu ileile ambayo Mistral imekuwa ikitumia kwa mwaka mmoja.",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-067",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mistari miwili mifupi ya muktadha kabla hatujaendelea?",
+      "text_markdown": "Mistari miwili mifupi ya muktadha kabla hatujaendelea?",
+      "title": "",
+      "tts": {
+        "text": "Mistari miwili mifupi ya muktadha kabla hatujaendelea?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-068",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndiyo, bila shaka yoyote.",
+      "text_markdown": "Ndiyo, bila shaka yoyote.",
+      "title": "",
+      "tts": {
+        "text": "Ndiyo bila shaka yoyote.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-069",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Miundo huria ya Kichina bado inaongoza kwa kiasi cha tokeni cha OpenRouter — hali ileile kama wiki iliyopita, hakuna mabadiliko.",
+      "text_markdown": "Miundo huria ya Kichina bado inaongoza kwa kiasi cha tokeni cha OpenRouter — hali ileile kama wiki iliyopita, hakuna mabadiliko.",
+      "title": "",
+      "tts": {
+        "text": "Miundo huria ya Kichina bado inaongoza kwa kiasi cha tokeni cha OpenRouter — hali ileile kama wiki iliyopita, hakuna mabadiliko.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-070",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Na DeepSeek V4 ilianza kutumika kwenye jukwaa la Foundry la Microsoft Mei 28, jambo linalomaanisha tu maeneo zaidi ya kuiita.",
+      "text_markdown": "Na DeepSeek V4 ilianza kutumika kwenye jukwaa la Foundry la Microsoft Mei 28, jambo linalomaanisha tu maeneo zaidi ya kuiita.",
+      "title": "",
+      "tts": {
+        "text": "Na DeepSeek V nne ilianza kutumika kwenye jukwaa la Foundry la Microsoft Mei ishirini na nane, jambo linalomaanisha tu maeneo zaidi ya kuiita.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-071",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sawa, twende kwenye orodha za viongozi.",
+      "text_markdown": "Sawa, twende kwenye orodha za viongozi.",
+      "title": "",
+      "tts": {
+        "text": "Sawa, twende kwenye orodha za viongozi.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-072",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Je, kulikuwa na mabadiliko makubwa wiki hii?",
+      "text_markdown": "Je, kulikuwa na mabadiliko makubwa wiki hii?",
+      "title": "",
+      "tts": {
+        "text": "Je, kulikuwa na mabadiliko makubwa wiki hii?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-073",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kulikuwa, na imefungwa — Claude Opus 4.8, ambayo Anthropic ilitoa Mei 28.",
+      "text_markdown": "Kulikuwa, na imefungwa — Claude Opus 4.8, ambayo Anthropic ilitoa Mei 28.",
+      "title": "",
+      "tts": {
+        "text": "Kulikuwa, na imefungwa — Claude Opus nne nukta nane, ambayo Anthropic ilitoa Mei ishirini na nane.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-074",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Inafikia asilimia themanini na nane nukta sita kwenye SWE-bench Verified na asilimia sitini na tisa nukta mbili kwenye SWE-bench Pro.",
+      "text_markdown": "Inafikia asilimia themanini na nane nukta sita kwenye SWE-bench Verified na asilimia sitini na tisa nukta mbili kwenye SWE-bench Pro.",
+      "title": "",
+      "tts": {
+        "text": "Inafikia asilimia themanini na nane nukta sita kwenye SWE benchi Verified na asilimia sitini na tisa nukta mbili kwenye SWE benchi Pro.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-075",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Na sasa inaongoza Kielezo cha Akili Bandia ya Uchambuzi (Artificial Analysis Intelligence Index) kwa alama ya jumla.",
+      "text_markdown": "Na sasa inaongoza Kielezo cha Akili Bandia ya Uchambuzi (Artificial Analysis Intelligence Index) kwa alama ya jumla.",
+      "title": "",
+      "tts": {
+        "text": "Na sasa inaongoza Kielezo cha Akili Bandia ya Uchambuzi (Artificial Analysis Intelligence Index) kwa alama ya jumla.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-076",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mara ya kwanza kwa Anthropic kuongoza hiyo.",
+      "text_markdown": "Mara ya kwanza kwa Anthropic kuongoza hiyo.",
+      "title": "",
+      "tts": {
+        "text": "Mara ya kwanza kwa Anthropic kuongoza hiyo.",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-077",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo ni sahihi kabisa.",
+      "text_markdown": "Hiyo ni sahihi kabisa.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ni sahihi kabisa.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-078",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GPT-5.5 iko nyuma kwa pointi moja, na Gemini 3.5 Pro iko nyuma kwa pointi chache zaidi.",
+      "text_markdown": "GPT-5.5 iko nyuma kwa pointi moja, na Gemini 3.5 Pro iko nyuma kwa pointi chache zaidi.",
+      "title": "",
+      "tts": {
+        "text": "GPT tano nukta tano iko nyuma kwa pointi moja, na Gemini tatu nukta tano Pro iko nyuma kwa pointi chache zaidi.",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-079",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ushindani mkali sana kileleni mwa kundi lililofungwa.",
+      "text_markdown": "Ushindani mkali sana kileleni mwa kundi lililofungwa.",
+      "title": "",
+      "tts": {
+        "text": "Ushindani mkali sana kileleni mwa kundi lililofungwa.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-080",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Lakini hadithi halisi ya tathmini wiki hii ilikuwa kitu kingine.",
+      "text_markdown": "Lakini hadithi halisi ya tathmini wiki hii ilikuwa kitu kingine.",
+      "title": "",
+      "tts": {
+        "text": "Lakini hadithi halisi ya tathmini wiki hii ilikuwa kitu kingine.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-081",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndio, hadithi halisi ni uadilifu.",
+      "text_markdown": "Ndio, hadithi halisi ni uadilifu.",
+      "title": "",
+      "tts": {
+        "text": "Ndio, hadithi halisi ni uadilifu.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-082",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI imesitisha kuripoti kuhusu SWE-bench Verified.",
+      "text_markdown": "OpenAI imesitisha kuripoti kuhusu SWE-bench Verified.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI imesitisha kuripoti kuhusu SWE benchi Verified.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-083",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ukaguzi wa uchafuzi uligundua kuwa takriban asilimia hamsini na tisa ya kazi ngumu zina majaribio ya kitengo yenye kasoro, na miundo inaweza kukumbuka marekebisho sahihi kutoka kwa data ya mafunzo neno kwa neno.",
+      "text_markdown": "Ukaguzi wa uchafuzi uligundua kuwa takriban asilimia hamsini na tisa ya kazi ngumu zina majaribio ya kitengo yenye kasoro, na miundo inaweza kukumbuka marekebisho sahihi kutoka kwa data ya mafunzo neno kwa neno.",
+      "title": "",
+      "tts": {
+        "text": "Ukaguzi wa uchafuzi uligundua kuwa takriban asilimia hamsini na tisa ya kazi ngumu zina majaribio ya kitengo yenye kasoro, na miundo inaweza kukumbuka marekebisho sahihi kutoka kwa data ya mafunzo neno kwa neno.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-084",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kwa hivyo, alama ya juu ilikuwa ikipima kumbukumbu.",
+      "text_markdown": "Kwa hivyo, alama ya juu ilikuwa ikipima kumbukumbu.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo, alama ya juu ilikuwa ikipima kumbukumbu.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-085",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mara nyingi, ndiyo.",
+      "text_markdown": "Mara nyingi, ndiyo.",
+      "title": "",
+      "tts": {
+        "text": "Mara nyingi, ndiyo.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-086",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pro ni toleo lenye kazi mpya na mfumo mgumu zaidi — hiyo ndiyo ishara mpya.",
+      "text_markdown": "Pro ni toleo lenye kazi mpya na mfumo mgumu zaidi — hiyo ndiyo ishara mpya.",
+      "title": "",
+      "tts": {
+        "text": "Pro ni toleo lenye kazi mpya na mfumo mgumu zaidi — hiyo ndiyo ishara mpya.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-087",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Huu ni uthibitisho wa kitaasisi wa wasiwasi wa uchafuzi tuliouzungumzia wiki iliyopita.",
+      "text_markdown": "Huu ni uthibitisho wa kitaasisi wa wasiwasi wa uchafuzi tuliouzungumzia wiki iliyopita.",
+      "title": "",
+      "tts": {
+        "text": "Huu ni uthibitisho wa kitaasisi wa wasiwasi wa uchafuzi tuliouzungumzia wiki iliyopita.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-088",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Je, kulikuwa na karatasi ya mbinu pia?",
+      "text_markdown": "Je, kulikuwa na karatasi ya mbinu pia?",
+      "title": "",
+      "tts": {
+        "text": "Je, kulikuwa na karatasi ya mbinu pia?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-089",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kulikuwa na ripoti kali kutoka kwa kikundi kinachoitwa Kili Technology.",
+      "text_markdown": "Kulikuwa na ripoti kali kutoka kwa kikundi kinachoitwa Kili Technology.",
+      "title": "",
+      "tts": {
+        "text": "Kulikuwa na ripoti kali kutoka kwa kikundi kinachoitwa Kili Technology.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-090",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Walitumia uzito wa mifumo inayofanana kupitia mifumo mitano ya kawaida ya tathmini.",
+      "text_markdown": "Walitumia uzito wa mifumo inayofanana kupitia mifumo mitano ya kawaida ya tathmini.",
+      "title": "",
+      "tts": {
+        "text": "Walitumia uzito wa mifumo inayofanana kupitia mifumo mitano ya kawaida ya tathmini.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-091",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Alama zilitofautiana kwa asilimia kumi hadi ishirini kutokana tu na uchaguzi wa kamba.",
+      "text_markdown": "Alama zilitofautiana kwa asilimia kumi hadi ishirini kutokana tu na uchaguzi wa kamba.",
+      "title": "",
+      "tts": {
+        "text": "Alama zilitofautiana kwa asilimia kumi hadi ishirini kutokana tu na uchaguzi wa kamba.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-092",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Uzito sawa, namba tofauti.",
+      "text_markdown": "Uzito sawa, namba tofauti.",
+      "title": "",
+      "tts": {
+        "text": "Uzito sawa, namba tofauti.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-093",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sawa, bila shaka.",
+      "text_markdown": "Sawa, bila shaka.",
+      "title": "",
+      "tts": {
+        "text": "Sawa bila shaka.",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-094",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ujumbe wao mkuu ulikuwa kwamba nafasi kwenye ubao wa wanaoongoza si ishara tena ya kiwango cha mnunuzi kwa ajili ya ununuzi.",
+      "text_markdown": "Ujumbe wao mkuu ulikuwa kwamba nafasi kwenye ubao wa wanaoongoza si ishara tena ya kiwango cha mnunuzi kwa ajili ya ununuzi.",
+      "title": "",
+      "tts": {
+        "text": "Ujumbe wao mkuu ulikuwa kwamba nafasi kwenye ubao wa wanaoongoza si ishara tena ya kiwango cha mnunuzi kwa ajili ya ununuzi.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-095",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa mjenzi wa kujitegemea, ujumbe mkuu ni mkali zaidi — fanya tathmini zako mwenyewe kwenye vidokezo vyako mwenyewe.",
+      "text_markdown": "Kwa mjenzi wa kujitegemea, ujumbe mkuu ni mkali zaidi — fanya tathmini zako mwenyewe kwenye vidokezo vyako mwenyewe.",
+      "title": "",
+      "tts": {
+        "text": "Kwa mjenzi wa kujitegemea, ujumbe mkuu ni mkali zaidi — fanya tathmini zako mwenyewe kwenye vidokezo vyako mwenyewe.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-096",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hiyo inarudi tena kwenye MSA na Nemotron Ultra.",
+      "text_markdown": "Hiyo inarudi tena kwenye MSA na Nemotron Ultra.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo inarudi tena kwenye M S A na Nemotron Ultra.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-097",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndiyo, hiyo ni sahihi.",
+      "text_markdown": "Ndiyo, hiyo ni sahihi.",
+      "title": "",
+      "tts": {
+        "text": "Ndiyo, hiyo ni sahihi.",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-098",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Amini usanifu na majaribio yako mwenyewe, si chati ya mtu mwingine.",
+      "text_markdown": "Amini usanifu na majaribio yako mwenyewe, si chati ya mtu mwingine.",
+      "title": "",
+      "tts": {
+        "text": "Amini usanifu na majaribio yako mwenyewe, si chati ya mtu mwingine.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-099",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mahali pazuri pa kuacha mada za ubao.",
+      "text_markdown": "Mahali pazuri pa kuacha mada za ubao.",
+      "title": "",
+      "tts": {
+        "text": "Mahali pazuri pa kuacha mada za ubao.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-100",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sasa tufanye vichwa vya habari.",
+      "text_markdown": "Sasa tufanye vichwa vya habari.",
+      "title": "",
+      "tts": {
+        "text": "Sasa tufanye vichwa vya habari.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-101",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kipande kifupi, mtazamo wa mfumo-funguka.",
+      "text_markdown": "Kipande kifupi, mtazamo wa mfumo-funguka.",
+      "title": "",
+      "tts": {
+        "text": "Kipande kifupi, mtazamo wa mfumo funguka.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-102",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwanza, Microsoft Build ilikuwa Juni 2.",
+      "text_markdown": "Kwanza, Microsoft Build ilikuwa Juni 2.",
+      "title": "",
+      "tts": {
+        "text": "Kwanza, Microsoft Build ilikuwa Juni pili.",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-103",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Microsoft ilionyesha mifumo miwili ya kwanza — MAI-Thinking-1 na MAI-Code-1-Flash.",
+      "text_markdown": "Microsoft ilionyesha mifumo miwili ya kwanza — MAI-Thinking-1 na MAI-Code-1-Flash.",
+      "title": "",
+      "tts": {
+        "text": "Microsoft ilionyesha mifumo miwili ya kwanza — M A I Thinking moja na M A I Code moja Flash.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-104",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nini kinachovutia kuhusu hizo?",
+      "text_markdown": "Nini kinachovutia kuhusu hizo?",
+      "title": "",
+      "tts": {
+        "text": "Nini kinachovutia kuhusu hizo?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-105",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Thinking-1 ni mchanganyiko adimu wa wataalamu wenye vigezo bilioni thelathini na tano vinavyotumika, na dirisha la muktadha la tokeni laki mbili na hamsini na sita elfu.",
+      "text_markdown": "Thinking-1 ni mchanganyiko adimu wa wataalamu wenye vigezo bilioni thelathini na tano vinavyotumika, na dirisha la muktadha la tokeni laki mbili na hamsini na sita elfu.",
+      "title": "",
+      "tts": {
+        "text": "Thinking moja ni mchanganyiko adimu wa wataalamu wenye vigezo bilioni thelathini na tano vinavyotumika, na dirisha la muktadha la tokeni laki mbili na hamsini na sita elfu.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-106",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Na Microsoft inasema waziwazi kuwa ilifunzwa kwa data yenye leseni ya kibiashara bila kuchujwa kutoka kwa mfumo wowote wa wahusika wengine.",
+      "text_markdown": "Na Microsoft inasema waziwazi kuwa ilifunzwa kwa data yenye leseni ya kibiashara bila kuchujwa kutoka kwa mfumo wowote wa wahusika wengine.",
+      "title": "",
+      "tts": {
+        "text": "Na Microsoft inasema waziwazi kuwa ilifunzwa kwa data yenye leseni ya kibiashara bila kuchujwa kutoka kwa mfumo wowote wa wahusika wengine.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-107",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hiyo si kawaida.",
+      "text_markdown": "Hiyo si kawaida.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo si kawaida.",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-108",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Si kawaida kabisa, ikizingatiwa jinsi sehemu kubwa ya sekta inavyotegemea data bandia kutoka kwa mifumo ya kisasa.",
+      "text_markdown": "Si kawaida kabisa, ikizingatiwa jinsi sehemu kubwa ya sekta inavyotegemea data bandia kutoka kwa mifumo ya kisasa.",
+      "title": "",
+      "tts": {
+        "text": "Si kawaida kabisa, ikizingatiwa jinsi sehemu kubwa ya sekta inavyotegemea data bandia kutoka kwa mifumo ya kisasa.",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-109",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Code-1-Flash ndiyo ya bei nafuu zaidi — ilianza kusambazwa kwa viwango vyote vya GitHub Copilot mnamo Juni 2.",
+      "text_markdown": "Code-1-Flash ndiyo ya bei nafuu zaidi — ilianza kusambazwa kwa viwango vyote vya GitHub Copilot mnamo Juni 2.",
+      "title": "",
+      "tts": {
+        "text": "Code moja Flash ndiyo ya bei nafuu zaidi — ilianza kusambazwa kwa viwango vyote vya GitHub Copilot mnamo Juni pili.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-110",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa hivyo Microsoft sasa inasambaza Mistral, DeepSeek, OpenAI, na MAI yake yenyewe sambamba katika Copilot Studio.",
+      "text_markdown": "Kwa hivyo Microsoft sasa inasambaza Mistral, DeepSeek, OpenAI, na MAI yake yenyewe sambamba katika Copilot Studio.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo Microsoft sasa inasambaza Mistral, DeepSeek, OpenAI, na M A I yake yenyewe sambamba katika Copilot Studio.",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-111",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kichwa cha habari cha pili?",
+      "text_markdown": "Kichwa cha habari cha pili?",
+      "title": "",
+      "tts": {
+        "text": "Kichwa cha habari cha pili?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-112",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic iliwasilisha kwa siri fomu S-1 kwa SEC mnamo Juni 1.",
+      "text_markdown": "Anthropic iliwasilisha kwa siri fomu S-1 kwa SEC mnamo Juni 1.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic iliwasilisha kwa siri fomu S moja kwa S E C mnamo Juni kwanza.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-113",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo ni nyaraka inayoanza njia ya kuorodheshwa hadharani.",
+      "text_markdown": "Hiyo ni nyaraka inayoanza njia ya kuorodheshwa hadharani.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ni nyaraka inayoanza njia ya kuorodheshwa hadharani.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-114",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kiwango chao cha mapato kilichotajwa ni takriban dola bilioni arobaini na saba, kutoka bilioni kumi mwaka mmoja uliopita.",
+      "text_markdown": "Kiwango chao cha mapato kilichotajwa ni takriban dola bilioni arobaini na saba, kutoka bilioni kumi mwaka mmoja uliopita.",
+      "title": "",
+      "tts": {
+        "text": "Kiwango chao cha mapato kilichotajwa ni takriban dola bilioni arobaini na saba, kutoka bilioni kumi mwaka mmoja uliopita.",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-115",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hakuna alama ya hisa, hakuna bei, hakuna tarehe bado — nyaraka tu.",
+      "text_markdown": "Hakuna alama ya hisa, hakuna bei, hakuna tarehe bado — nyaraka tu.",
+      "title": "",
+      "tts": {
+        "text": "Hakuna alama ya hisa, hakuna bei, hakuna tarehe bado — nyaraka tu.",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-116",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tatu.",
+      "text_markdown": "Tatu.",
+      "title": "",
+      "tts": {
+        "text": "Tatu.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-117",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GitHub Copilot ilihamia kwenye malipo kulingana na matumizi mnamo Juni 1.",
+      "text_markdown": "GitHub Copilot ilihamia kwenye malipo kulingana na matumizi mnamo Juni 1.",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot ilihamia kwenye malipo kulingana na matumizi mnamo Juni kwanza.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-118",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kila mpango sasa unapima ingizo, towe, na tokeni zilizohifadhiwa kwa viwango sawa na API ya mfumo msingi.",
+      "text_markdown": "Kila mpango sasa unapima ingizo, towe, na tokeni zilizohifadhiwa kwa viwango sawa na API ya mfumo msingi.",
+      "title": "",
+      "tts": {
+        "text": "Kila mpango sasa unapima ingizo, towe, na tokeni zilizohifadhiwa kwa viwango sawa na API ya mfumo msingi.",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-119",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Walipunguza ugumu wa mabadiliko kwa kugawa mikopo kwa kila kiwango na mpango mpya wa Copilot Max kwa dola mia moja kwa mwezi kwa watumiaji wazito wa agentic.",
+      "text_markdown": "Walipunguza ugumu wa mabadiliko kwa kugawa mikopo kwa kila kiwango na mpango mpya wa Copilot Max kwa dola mia moja kwa mwezi kwa watumiaji wazito wa agentic.",
+      "title": "",
+      "tts": {
+        "text": "Walipunguza ugumu wa mabadiliko kwa kugawa mikopo kwa kila kiwango na mpango mpya wa Copilot Max kwa dola mia moja kwa mwezi kwa watumiaji wazito wa agentic.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-120",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na waendelezaji walichukuliaje hilo?",
+      "text_markdown": "Na waendelezaji walichukuliaje hilo?",
+      "title": "",
+      "tts": {
+        "text": "Na waendelezaji walichukuliaje hilo?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-121",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Baadhi ya maoni yalikuwa makali sana.",
+      "text_markdown": "Baadhi ya maoni yalikuwa makali sana.",
+      "title": "",
+      "tts": {
+        "text": "Baadhi ya maoni yalikuwa makali sana.",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-122",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Watumiaji wazito wenye mzunguko wa mawakala waliripoti bili zilizokadiriwa kuwa mara kadhaa juu kuliko ada ya zamani ya kudumu.",
+      "text_markdown": "Watumiaji wazito wenye mzunguko wa mawakala waliripoti bili zilizokadiriwa kuwa mara kadhaa juu kuliko ada ya zamani ya kudumu.",
+      "title": "",
+      "tts": {
+        "text": "Watumiaji wazito wenye mzunguko wa mawakala waliripoti bili zilizokadiriwa kuwa mara kadhaa juu kuliko ada ya zamani ya kudumu.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-123",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hili litakuwa muhimu kwa habari yetu kuu — shikilia wazo hilo.",
+      "text_markdown": "Hili litakuwa muhimu kwa habari yetu kuu — shikilia wazo hilo.",
+      "title": "",
+      "tts": {
+        "text": "Hili litakuwa muhimu kwa habari yetu kuu — shikilia wazo hilo.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-124",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nne, kuna chochote cha kurekebisha wikendi hii?",
+      "text_markdown": "Nne, kuna chochote cha kurekebisha wikendi hii?",
+      "title": "",
+      "tts": {
+        "text": "Nne, kuna chochote cha kurekebisha wikendi hii?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-125",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndio, matoleo ya SGLang hadi sifuri nukta tano nukta kumi na moja yana kasoro ya kukataa huduma ya akiba iliyofichuliwa mnamo Juni 3.",
+      "text_markdown": "Ndio, matoleo ya SGLang hadi sifuri nukta tano nukta kumi na moja yana kasoro ya kukataa huduma ya akiba iliyofichuliwa mnamo Juni 3.",
+      "title": "",
+      "tts": {
+        "text": "Ndio, matoleo ya S G Lang hadi sifuri nukta tano nukta kumi na moja yana kasoro ya kukataa huduma ya akiba iliyofichuliwa mnamo Juni tatu.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-126",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kitambulisho ni CVE-2026-10775, ukali ni mdogo, unyonyaji ni wa ndani tu — lakini ukitumia SGLang, rekebisha Jumatatu.",
+      "text_markdown": "Kitambulisho ni CVE-2026-10775, ukali ni mdogo, unyonyaji ni wa ndani tu — lakini ukitumia SGLang, rekebisha Jumatatu.",
+      "title": "",
+      "tts": {
+        "text": "Kitambulisho ni C V E elfu mbili ishirini na sita dash elfu kumi na sabini na saba na tano, ukali ni mdogo, unyonyaji ni wa ndani tu — lakini ukitumia S G Lang, rekebisha Jumatatu.",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-127",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Moja zaidi.",
+      "text_markdown": "Moja zaidi.",
+      "title": "",
+      "tts": {
+        "text": "Moja zaidi.",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-128",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unsloth Studio ilitoa sasisho linalosafirisha urekebishaji kamili moja kwa moja hadi GGUF — sio tu uzito wa adapta.",
+      "text_markdown": "Unsloth Studio ilitoa sasisho linalosafirisha urekebishaji kamili moja kwa moja hadi GGUF — sio tu uzito wa adapta.",
+      "title": "",
+      "tts": {
+        "text": "Unsloth Studio ilitoa sasisho linalosafirisha urekebishaji kamili moja kwa moja hadi G G U F — sio tu uzito wa adapta.",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-129",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kadi ya watumiaji ya gigabaiti ishirini na nne sasa inatosha kwa matumizi muhimu.",
+      "text_markdown": "Kadi ya watumiaji ya gigabaiti ishirini na nne sasa inatosha kwa matumizi muhimu.",
+      "title": "",
+      "tts": {
+        "text": "Kadi ya watumiaji ya gigabaiti ishirini na nne sasa inatosha kwa matumizi muhimu.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-130",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiyo ndiyo miundombinu rahisi inayofanya sehemu iliyobaki ya kipindi hiki kuwa halisi.",
+      "text_markdown": "Hiyo ndiyo miundombinu rahisi inayofanya sehemu iliyobaki ya kipindi hiki kuwa halisi.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ndiyo miundombinu rahisi inayofanya sehemu iliyobaki ya kipindi hiki kuwa halisi.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-131",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sasa turudi kwenye habari kuu.",
+      "text_markdown": "Sasa turudi kwenye habari kuu.",
+      "title": "",
+      "tts": {
+        "text": "Sasa turudi kwenye habari kuu.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-132",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ulitania kuhusu kifaa.",
+      "text_markdown": "Ulitania kuhusu kifaa.",
+      "title": "",
+      "tts": {
+        "text": "Ulitania kuhusu kifaa.",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-133",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndio, na kiini chake ni hiki — kifaa cha kujitengenezea kimekua wiki hii.",
+      "text_markdown": "Ndio, na kiini chake ni hiki — kifaa cha kujitengenezea kimekua wiki hii.",
+      "title": "",
+      "tts": {
+        "text": "Ndio, na kiini chake ni hiki — kifaa cha kujitengenezea kimekua wiki hii.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-134",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Anza na maunzi.",
+      "text_markdown": "Anza na maunzi.",
+      "title": "",
+      "tts": {
+        "text": "Anza na maunzi.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-135",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sanduku mbili sasa zinasafirishwa kwa bei za watumiaji.",
+      "text_markdown": "Sanduku mbili sasa zinasafirishwa kwa bei za watumiaji.",
+      "title": "",
+      "tts": {
+        "text": "Sanduku mbili sasa zinasafirishwa kwa bei za watumiaji.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-136",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "AMD ilifungua maagizo ya awali ya Ryzen AI Halo mini PC mnamo Juni kwa dola elfu tatu mia tisa tisini na tisa.",
+      "text_markdown": "AMD ilifungua maagizo ya awali ya Ryzen AI Halo mini PC mnamo Juni kwa dola elfu tatu mia tisa tisini na tisa.",
+      "title": "",
+      "tts": {
+        "text": "A M D ilifungua maagizo ya awali ya Ryzen A I Halo mini P C mnamo Juni kwa dola elfu tatu mia tisa tisini na tisa.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-137",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Inatumia Ryzen AI Max Plus 395, ikiwa na gigabaiti mia moja ishirini na nane za kumbukumbu iliyounganishwa ya LPDDR5x, na inapatikana pekee Micro Center kwa sasa.",
+      "text_markdown": "Inatumia Ryzen AI Max Plus 395, ikiwa na gigabaiti mia moja ishirini na nane za kumbukumbu iliyounganishwa ya LPDDR5x, na inapatikana pekee Micro Center kwa sasa.",
+      "title": "",
+      "tts": {
+        "text": "Inatumia Ryzen A I Max Plus mia tatu tisini na tano, ikiwa na gigabaiti mia moja ishirini na nane za kumbukumbu iliyounganishwa ya L P D D R tano x, na inapatikana pekee Micro Center kwa sasa.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-138",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na upande wa NVIDIA?",
+      "text_markdown": "Na upande wa NVIDIA?",
+      "title": "",
+      "tts": {
+        "text": "Na upande wa NVIDIA?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-139",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "DGX Spark ya NVIDIA ndiyo sanduku inayofanana.",
+      "text_markdown": "DGX Spark ya NVIDIA ndiyo sanduku inayofanana.",
+      "title": "",
+      "tts": {
+        "text": "D G X Spark ya NVIDIA ndiyo sanduku inayofanana.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-140",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ina chipu ya GB10 Grace Blackwell na gigabaiti mia moja ishirini na nane sawa za kumbukumbu iliyounganishwa.",
+      "text_markdown": "Ina chipu ya GB10 Grace Blackwell na gigabaiti mia moja ishirini na nane sawa za kumbukumbu iliyounganishwa.",
+      "title": "",
+      "tts": {
+        "text": "Ina chipu ya G B kumi Grace Blackwell na gigabaiti mia moja ishirini na nane sawa za kumbukumbu iliyounganishwa.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-141",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Bei hivi karibuni ilipanda kutoka elfu tatu mia tisa tisini na tisa hadi elfu nne mia sita tisini na tisa, ikilaumiwa kwa uhaba wa kumbukumbu duniani.",
+      "text_markdown": "Bei hivi karibuni ilipanda kutoka elfu tatu mia tisa tisini na tisa hadi elfu nne mia sita tisini na tisa, ikilaumiwa kwa uhaba wa kumbukumbu duniani.",
+      "title": "",
+      "tts": {
+        "text": "Bei hivi karibuni ilipanda kutoka elfu tatu mia tisa tisini na tisa hadi elfu nne mia sita tisini na tisa, ikilaumiwa kwa uhaba wa kumbukumbu duniani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-142",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mifumo hii inaweza kuhifadhi modeli kubwa kiasi gani?",
+      "text_markdown": "Mifumo hii inaweza kuhifadhi modeli kubwa kiasi gani?",
+      "title": "",
+      "tts": {
+        "text": "Mifumo hii inaweza kuhifadhi modeli kubwa kiasi gani?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-143",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hadi takriban bilioni mia mbili za vigezo kwenye ukadiriaji wa biti nne, na nafasi ya muktadha.",
+      "text_markdown": "Hadi takriban bilioni mia mbili za vigezo kwenye ukadiriaji wa biti nne, na nafasi ya muktadha.",
+      "title": "",
+      "tts": {
+        "text": "Hadi takriban bilioni mia mbili za vigezo kwenye ukadiriaji wa biti nne, na nafasi ya muktadha.",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-144",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unganisha DGX Sparks mbili pamoja kupitia ConnectX-7 na utafikia takriban eneo la bilioni mia nne.",
+      "text_markdown": "Unganisha DGX Sparks mbili pamoja kupitia ConnectX-7 na utafikia takriban eneo la bilioni mia nne.",
+      "title": "",
+      "tts": {
+        "text": "Unganisha D G X Sparks mbili pamoja kupitia Connect X saba na utafikia takriban eneo la bilioni mia nne.",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-145",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Huo ni kweli mchango wa kiwango cha juu kwenye meza ya jikoni.",
+      "text_markdown": "Huo ni kweli mchango wa kiwango cha juu kwenye meza ya jikoni.",
+      "title": "",
+      "tts": {
+        "text": "Huo ni kweli mchango wa kiwango cha juu kwenye meza ya jikoni.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-146",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sasa, mfumo wa programu.",
+      "text_markdown": "Sasa, mfumo wa programu.",
+      "title": "",
+      "tts": {
+        "text": "Sasa, mfumo wa programu.",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-147",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hiki ndicho kilichobadilika chini ya miguu yetu.",
+      "text_markdown": "Hiki ndicho kilichobadilika chini ya miguu yetu.",
+      "title": "",
+      "tts": {
+        "text": "Hiki ndicho kilichobadilika chini ya miguu yetu.",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-148",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa utoaji wa hitimisho una vLLM, SGLang, llama.cpp, Ollama, na MLX kwenye Apple Silicon — zote zinatunzwa, zote zina kasi.",
+      "text_markdown": "Kwa utoaji wa hitimisho una vLLM, SGLang, llama.cpp, Ollama, na MLX kwenye Apple Silicon — zote zinatunzwa, zote zina kasi.",
+      "title": "",
+      "tts": {
+        "text": "Kwa utoaji wa hitimisho una v L L M, S G Lang, llama C P P, Ollama, na M L X kwenye Apple Silicon — zote zinatunzwa, zote zina kasi.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-149",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa modeli yenyewe una uzito wa Nemotron 3 Ultra wiki hii, pamoja na Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, na uzito wa MiniMax M3 unakuja.",
+      "text_markdown": "Kwa modeli yenyewe una uzito wa Nemotron 3 Ultra wiki hii, pamoja na Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, na uzito wa MiniMax M3 unakuja.",
+      "title": "",
+      "tts": {
+        "text": "Kwa modeli yenyewe una uzito wa Nemotron tatu Ultra wiki hii, pamoja na Kimi K mbili nukta sita, DeepSeek V nne Flash, G L M tano nukta moja, na uzito wa MiniMax M tatu unakuja.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-150",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa urekebishaji sahihi, Unsloth Studio sasa ni urekebishaji kamili wa kubofya mara moja hadi GGUF.",
+      "text_markdown": "Kwa urekebishaji sahihi, Unsloth Studio sasa ni urekebishaji kamili wa kubofya mara moja hadi GGUF.",
+      "title": "",
+      "tts": {
+        "text": "Kwa urekebishaji sahihi, Unsloth Studio sasa ni urekebishaji kamili wa kubofya mara moja hadi G G U F.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-151",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Na kwa mawakala, una Aider, Continue, na LangGraph toleo la kwanza inayoendesha miundo ya vigezo bilioni thelathini na mbili ya ndani kwa uaminifu unaoweza kutumika.",
+      "text_markdown": "Na kwa mawakala, una Aider, Continue, na LangGraph toleo la kwanza inayoendesha miundo ya vigezo bilioni thelathini na mbili ya ndani kwa uaminifu unaoweza kutumika.",
+      "title": "",
+      "tts": {
+        "text": "Na kwa mawakala, una Aider, Continue, na LangGraph toleo la kwanza inayoendesha miundo ya vigezo bilioni thelathini na mbili ya ndani kwa uaminifu unaoweza kutumika.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-152",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Huo ndio mzunguko mzima.",
+      "text_markdown": "Huo ndio mzunguko mzima.",
+      "title": "",
+      "tts": {
+        "text": "Huo ndio mzunguko mzima.",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-153",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Huo ndio mzunguko mzima.",
+      "text_markdown": "Huo ndio mzunguko mzima.",
+      "title": "",
+      "tts": {
+        "text": "Huo ndio mzunguko mzima.",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-154",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Silicon, injini, modeli, urekebishaji, wakala — kila safu ina chaguo wazi la kuaminika, na sasa mini PC ya kando ya dawati ndiyo msingi wa safu hiyo.",
+      "text_markdown": "Silicon, injini, modeli, urekebishaji, wakala — kila safu ina chaguo wazi la kuaminika, na sasa mini PC ya kando ya dawati ndiyo msingi wa safu hiyo.",
+      "title": "",
+      "tts": {
+        "text": "Silicon, injini, modeli, urekebishaji, wakala, kila safu ina chaguo wazi la kuaminika, na sasa mini PC ya kando ya dawati ndiyo msingi wa safu hiyo.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-155",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na uchumi?",
+      "text_markdown": "Na uchumi?",
+      "title": "",
+      "tts": {
+        "text": "Na uchumi?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-156",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Uchumi ulibadilika wiki hii, kwa njia ambayo ni ngumu kuikosa.",
+      "text_markdown": "Uchumi ulibadilika wiki hii, kwa njia ambayo ni ngumu kuikosa.",
+      "title": "",
+      "tts": {
+        "text": "Uchumi ulibadilika wiki hii, kwa njia ambayo ni ngumu kuikosa.",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-157",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Copilot inayopima tokeni, S-1 ya Anthropic inayoashiria shinikizo la bei litakalokuja, na maonyo ya gridi kutoka Texas, Virginia, na Ohio kuhusu majira ya joto magumu.",
+      "text_markdown": "Copilot inayopima tokeni, S-1 ya Anthropic inayoashiria shinikizo la bei litakalokuja, na maonyo ya gridi kutoka Texas, Virginia, na Ohio kuhusu majira ya joto magumu.",
+      "title": "",
+      "tts": {
+        "text": "Copilot inayopima tokeni, S moja ya Anthropic inayoashiria shinikizo la bei litakalokuja, na maonyo ya gridi kutoka Texas, Virginia, na Ohio kuhusu majira ya joto magumu.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-158",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hoja ya kujihost ilikuwa ya kiitikadi.",
+      "text_markdown": "Hoja ya kujihost ilikuwa ya kiitikadi.",
+      "title": "",
+      "tts": {
+        "text": "Hoja ya kujihost ilikuwa ya kiitikadi.",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-159",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wiki hii ikawa lahajedwali.",
+      "text_markdown": "Wiki hii ikawa lahajedwali.",
+      "title": "",
+      "tts": {
+        "text": "Wiki hii ikawa lahajedwali.",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-160",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kuwa mkweli kuhusu kile ambacho hakijabadilika.",
+      "text_markdown": "Kuwa mkweli kuhusu kile ambacho hakijabadilika.",
+      "title": "",
+      "tts": {
+        "text": "Kuwa mkweli kuhusu kile ambacho hakijabadilika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-161",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tahadhari muhimu — kaunta yako haishindi wingu juu ya chati ya ubora.",
+      "text_markdown": "Tahadhari muhimu — kaunta yako haishindi wingu juu ya chati ya ubora.",
+      "title": "",
+      "tts": {
+        "text": "Tahadhari muhimu — kaunta yako haishindi wingu juu ya chati ya ubora.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-162",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 bado inaongoza mchanganyiko, na GPT-5.5 bado inamiliki BrowseComp.",
+      "text_markdown": "Opus 4.8 bado inaongoza mchanganyiko, na GPT-5.5 bado inamiliki BrowseComp.",
+      "title": "",
+      "tts": {
+        "text": "Opus nne nukta nane bado inaongoza mchanganyiko, na GPT tano nukta tano bado inamiliki BrowseComp.",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-163",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kilichobadilika wiki hii ni sakafu.",
+      "text_markdown": "Kilichobadilika wiki hii ni sakafu.",
+      "title": "",
+      "tts": {
+        "text": "Kilichobadilika wiki hii ni sakafu.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-164",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Miundo yenye uwezo, ya daraja la wakala, inayoweza kurekebishwa, kwenye maunzi yako mwenyewe, yenye uzito wazi.",
+      "text_markdown": "Miundo yenye uwezo, ya daraja la wakala, inayoweza kurekebishwa, kwenye maunzi yako mwenyewe, yenye uzito wazi.",
+      "title": "",
+      "tts": {
+        "text": "Miundo yenye uwezo, ya daraja la wakala, inayoweza kurekebishwa, kwenye maunzi yako mwenyewe, yenye uzito wazi.",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-165",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hiyo ndiyo hadithi.",
+      "text_markdown": "Hiyo ndiyo hadithi.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ndiyo hadithi.",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-166",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ilikuwa ikihitaji kituo cha data.",
+      "text_markdown": "Ilikuwa ikihitaji kituo cha data.",
+      "title": "",
+      "tts": {
+        "text": "Ilikuwa ikihitaji kituo cha data.",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-167",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wiki hii, inahitaji kaunta.",
+      "text_markdown": "Wiki hii, inahitaji kaunta.",
+      "title": "",
+      "tts": {
+        "text": "Wiki hii, inahitaji kaunta.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-168",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tufanye dhana ya wiki.",
+      "text_markdown": "Tufanye dhana ya wiki.",
+      "title": "",
+      "tts": {
+        "text": "Tufanye dhana ya wiki.",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-169",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ulichagua usimbaji wa kubahatisha.",
+      "text_markdown": "Ulichagua usimbaji wa kubahatisha.",
+      "title": "",
+      "tts": {
+        "text": "Ulichagua usimbaji wa kubahatisha.",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-170",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ndio, kwa sababu ndio mbinu inayofanya kila kitu tulichozungumza kujisikia haraka.",
+      "text_markdown": "Ndio, kwa sababu ndio mbinu inayofanya kila kitu tulichozungumza kujisikia haraka.",
+      "title": "",
+      "tts": {
+        "text": "Ndio, kwa sababu ndio mbinu inayofanya kila kitu tulichozungumza kujisikia haraka.",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-171",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Madai ya MiniMax ya usimbaji mara kumi na tano yanategemea jamaa.",
+      "text_markdown": "Madai ya MiniMax ya usimbaji mara kumi na tano yanategemea jamaa.",
+      "title": "",
+      "tts": {
+        "text": "Madai ya MiniMax ya usimbaji mara kumi na tano yanategemea jamaa.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-172",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Hali ya modeli ya rasimu ya Llama.cpp ndio wazo hili hasa.",
+      "text_markdown": "Hali ya modeli ya rasimu ya Llama.cpp ndio wazo hili hasa.",
+      "title": "",
+      "tts": {
+        "text": "Hali ya modeli ya rasimu ya Llama.cpp ndio wazo hili hasa.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-173",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hebu tufafanulie.",
+      "text_markdown": "Hebu tufafanulie.",
+      "title": "",
+      "tts": {
+        "text": "Hebu tufafanulie.",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-174",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unaendesha miundo miwili sambamba.",
+      "text_markdown": "Unaendesha miundo miwili sambamba.",
+      "title": "",
+      "tts": {
+        "text": "Unaendesha miundo miwili sambamba.",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-175",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Modeli ndogo, ya haraka inayoitwa mwandishi wa rasimu, na modeli kubwa, polepole inayoitwa mhakiki.",
+      "text_markdown": "Modeli ndogo, ya haraka inayoitwa mwandishi wa rasimu, na modeli kubwa, polepole inayoitwa mhakiki.",
+      "title": "",
+      "tts": {
+        "text": "Modeli ndogo, ya haraka inayoitwa mwandishi wa rasimu, na modeli kubwa, polepole inayoitwa mhakiki.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-176",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mwandishi wa rasimu anakisia, tuseme, tokeni nne zinazofuata kwa mpigo mmoja.",
+      "text_markdown": "Mwandishi wa rasimu anakisia, tuseme, tokeni nne zinazofuata kwa mpigo mmoja.",
+      "title": "",
+      "tts": {
+        "text": "Mwandishi wa rasimu anakisia, tuseme, tokeni nne zinazofuata kwa mpigo mmoja.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-177",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mhakiki huangalia zote nne sambamba.",
+      "text_markdown": "Mhakiki huangalia zote nne sambamba.",
+      "title": "",
+      "tts": {
+        "text": "Mhakiki huangalia zote nne sambamba.",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-178",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na nini kinachofuata?",
+      "text_markdown": "Na nini kinachofuata?",
+      "title": "",
+      "tts": {
+        "text": "Na nini kinachofuata?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-179",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ikiwa mhakiki anakubali, unahifadhi zote nne na kuendelea — umefanya tokeni nne kwa gharama ya takriban moja.",
+      "text_markdown": "Ikiwa mhakiki anakubali, unahifadhi zote nne na kuendelea — umefanya tokeni nne kwa gharama ya takriban moja.",
+      "title": "",
+      "tts": {
+        "text": "Ikiwa mhakiki anakubali, unahifadhi zote nne na kuendelea — umefanya tokeni nne kwa gharama ya takriban moja.",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-180",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ikiwa haikubali, unakubali hadi kutofautiana kwa kwanza na kuruhusu modeli kubwa ichukue nafasi kutoka hapo.",
+      "text_markdown": "Ikiwa haikubali, unakubali hadi kutofautiana kwa kwanza na kuruhusu modeli kubwa ichukue nafasi kutoka hapo.",
+      "title": "",
+      "tts": {
+        "text": "Ikiwa haikubali, unakubali hadi kutofautiana kwa kwanza na kuruhusu modeli kubwa ichukue nafasi kutoka hapo.",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-181",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kwa hivyo jibu ni lilelile.",
+      "text_markdown": "Kwa hivyo jibu ni lilelile.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo jibu ni lilelile.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-182",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sawa, hicho ndicho kipengele maridadi.",
+      "text_markdown": "Sawa, hicho ndicho kipengele maridadi.",
+      "title": "",
+      "tts": {
+        "text": "Sawa, hicho ndicho kipengele maridadi.",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-183",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Matokeo ni yale yale ambayo modeli kubwa ingetoa yenyewe.",
+      "text_markdown": "Matokeo ni yale yale ambayo modeli kubwa ingetoa yenyewe.",
+      "title": "",
+      "tts": {
+        "text": "Matokeo ni yale yale ambayo modeli kubwa ingetoa yenyewe.",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-184",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Umelipia tu hatua chache za mbele.",
+      "text_markdown": "Umelipia tu hatua chache za mbele.",
+      "title": "",
+      "tts": {
+        "text": "Umelipia tu hatua chache za mbele.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-185",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kwa nini hilo ni muhimu kwa mtafiti wa vitu vidogovidogo?",
+      "text_markdown": "Kwa nini hilo ni muhimu kwa mtafiti wa vitu vidogovidogo?",
+      "title": "",
+      "tts": {
+        "text": "Kwa nini hilo ni muhimu kwa mtafiti wa vitu vidogovidogo?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-186",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kwa sababu inabadilisha modeli ya vigezo bilioni sabini kwenye kadi moja kutoka kitu kipya kuwa mazungumzo yanayoweza kutumika.",
+      "text_markdown": "Kwa sababu inabadilisha modeli ya vigezo bilioni sabini kwenye kadi moja kutoka kitu kipya kuwa mazungumzo yanayoweza kutumika.",
+      "title": "",
+      "tts": {
+        "text": "Kwa sababu inabadilisha modeli ya vigezo bilioni sabini kwenye kadi moja kutoka kitu kipya kuwa mazungumzo yanayoweza kutumika.",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-187",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Na kwenye simu, ni sehemu ya jinsi msaidizi halisi wa kifaa anavyohisi kuitikia.",
+      "text_markdown": "Na kwenye simu, ni sehemu ya jinsi msaidizi halisi wa kifaa anavyohisi kuitikia.",
+      "title": "",
+      "tts": {
+        "text": "Na kwenye simu, ni sehemu ya jinsi msaidizi halisi wa kifaa anavyohisi kuitikia.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-188",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dhana ya wiki iliyopita, kodeki za sauti za neva, ilikuwa toleo la sauti la mbinu ileile — hatua chache za gharama kubwa kwa ubora uleule.",
+      "text_markdown": "Dhana ya wiki iliyopita, kodeki za sauti za neva, ilikuwa toleo la sauti la mbinu ileile — hatua chache za gharama kubwa kwa ubora uleule.",
+      "title": "",
+      "tts": {
+        "text": "Dhana ya wiki iliyopita, kodeki za sauti za neva, ilikuwa toleo la sauti la mbinu ileile — hatua chache za gharama kubwa kwa ubora uleule.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-189",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Wenye udadisi wanapaswa kwenda wapi kutoka hapa?",
+      "text_markdown": "Wenye udadisi wanapaswa kwenda wapi kutoka hapa?",
+      "title": "",
+      "tts": {
+        "text": "Wenye udadisi wanapaswa kwenda wapi kutoka hapa?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-190",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tafuta EAGLE-3, Medusa, na lookahead decoding.",
+      "text_markdown": "Tafuta EAGLE-3, Medusa, na lookahead decoding.",
+      "title": "",
+      "tts": {
+        "text": "Tafuta Eagle tatu, Medusa, na lookahead decoding.",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-191",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ni binamu za kisasa za wazo asili la drafter-verifier, na ndivyo injini yako ya inference inavyoendesha chini kwa chini.",
+      "text_markdown": "Ni binamu za kisasa za wazo asili la drafter-verifier, na ndivyo injini yako ya inference inavyoendesha chini kwa chini.",
+      "title": "",
+      "tts": {
+        "text": "Ni binamu za kisasa za wazo asili la drafter verifier, na ndivyo injini yako ya inference inavyoendesha chini kwa chini.",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-192",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mahali pazuri pa kutua.",
+      "text_markdown": "Mahali pazuri pa kutua.",
+      "title": "",
+      "tts": {
+        "text": "Mahali pazuri pa kutua.",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-193",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Asante, Ron.",
+      "text_markdown": "Asante, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Asante, Ron.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-194",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wakati wowote, Vindy.",
+      "text_markdown": "Wakati wowote, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Wakati wowote, Vindy.",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-195",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Huu ulikuwa AI This Week kwa Juni 3, 2026.",
+      "text_markdown": "Huu ulikuwa AI This Week kwa Juni 3, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Huu ulikuwa AI This Week kwa Juni tatu, elfu mbili ishirini na sita.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-196",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Toleo jipya Jumatano ijayo.",
+      "text_markdown": "Toleo jipya Jumatano ijayo.",
+      "title": "",
+      "tts": {
+        "text": "Toleo jipya Jumatano ijayo.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-197",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hadi wakati huo, jitunze.",
+      "text_markdown": "Hadi wakati huo, jitunze.",
+      "title": "",
+      "tts": {
+        "text": "Hadi wakati huo, jitunze.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

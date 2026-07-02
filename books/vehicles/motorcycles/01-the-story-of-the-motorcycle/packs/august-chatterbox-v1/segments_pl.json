@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "pl",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Słowo do czytelnika",
+      "text_markdown": "Słowo do czytelnika"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jest historia motocykla.",
+      "text_markdown": "To jest historia motocykla.",
+      "tts": {
+        "text": "To jest historia motocykla.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To prawdziwa historia.",
+      "text_markdown": "To prawdziwa historia.",
+      "tts": {
+        "text": "To prawdziwa historia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dawno temu nikt nie miał motocykla.",
+      "text_markdown": "Dawno temu nikt nie miał motocykla.",
+      "tts": {
+        "text": "Dawno temu nikt nie miał motocykla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dzisiaj są ich miliony.",
+      "text_markdown": "Dzisiaj są ich miliony.",
+      "tts": {
+        "text": "Dzisiaj są ich miliony.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Są głośne, szybkie i błyszczące.",
+      "text_markdown": "Są głośne, szybkie i błyszczące.",
+      "tts": {
+        "text": "Są głośne, szybkie i błyszczące.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zaczniemy od samego początku.",
+      "text_markdown": "Zaczniemy od samego początku.",
+      "tts": {
+        "text": "Zaczniemy od samego początku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Poznamy pierwszego budowniczego, pierwszych kierowców i pierwsze wyścigi.",
+      "text_markdown": "Poznamy pierwszego budowniczego, pierwszych kierowców i pierwsze wyścigi.",
+      "tts": {
+        "text": "Poznamy pierwszego budowniczego, pierwszych kierowców i pierwsze wyścigi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Potem zobaczymy świat dzisiejszy.",
+      "text_markdown": "Potem zobaczymy świat dzisiejszy.",
+      "tts": {
+        "text": "Potem zobaczymy świat dzisiejszy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Słowo do czytelnika",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Na końcu będziesz wiedzieć, jak ta mała maszyna na zawsze zmieniła drogę.",
+      "text_markdown": "Na końcu będziesz wiedzieć, jak ta mała maszyna na zawsze zmieniła drogę.",
+      "tts": {
+        "text": "Na końcu będziesz wiedzieć, jak ta mała maszyna na zawsze zmieniła drogę.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "text_markdown": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motocykl to rower z silnikiem.",
+      "text_markdown": "Motocykl to rower z silnikiem.",
+      "tts": {
+        "text": "Motocykl to rower z silnikiem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Silnik popycha koła.",
+      "text_markdown": "Silnik popycha koła.",
+      "tts": {
+        "text": "Silnik popycha koła.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kierowca nie pedałuje.",
+      "text_markdown": "Kierowca nie pedałuje.",
+      "tts": {
+        "text": "Kierowca nie pedałuje.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dawno temu nie było motocykli.",
+      "text_markdown": "Dawno temu nie było motocykli.",
+      "tts": {
+        "text": "Dawno temu nie było motocykli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ludzie jeździli na koniach.",
+      "text_markdown": "Ludzie jeździli na koniach.",
+      "tts": {
+        "text": "Ludzie jeździli na koniach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ludzie jeździli na rowerach.",
+      "text_markdown": "Ludzie jeździli na rowerach.",
+      "tts": {
+        "text": "Ludzie jeździli na rowerach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Rower ma dwa koła i nie ma silnika.",
+      "text_markdown": "Rower ma dwa koła i nie ma silnika.",
+      "tts": {
+        "text": "Rower ma dwa koła i nie ma silnika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Trzeba pchać pedały stopami.",
+      "text_markdown": "Trzeba pchać pedały stopami.",
+      "tts": {
+        "text": "Trzeba pchać pedały stopami.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W roku 1885 pewien człowiek w Niemczech miał wielki pomysł.",
+      "text_markdown": "W roku 1885 pewien człowiek w Niemczech miał wielki pomysł.",
+      "tts": {
+        "text": "W roku tysiąc osiemset osiemdziesiąt pięć pewien człowiek w Niemczech miał wielki pomysł.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nazywał się Gottlieb Daimler.",
+      "text_markdown": "Nazywał się Gottlieb Daimler.",
+      "tts": {
+        "text": "Nazywał się Gottlieb Daimler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wziął mały silnik benzynowy i przyczepił go do drewnianego roweru.",
+      "text_markdown": "Wziął mały silnik benzynowy i przyczepił go do drewnianego roweru.",
+      "tts": {
+        "text": "Wziął mały silnik benzynowy i przyczepił go do drewnianego roweru.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Swoją maszynę nazwał Reitwagen.",
+      "text_markdown": "Swoją maszynę nazwał Reitwagen.",
+      "tts": {
+        "text": "Swoją maszynę nazwał Rajt Wagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To słowo znaczy po niemiecku „wóz do jazdy\".",
+      "text_markdown": "To słowo znaczy po niemiecku „wóz do jazdy\".",
+      "tts": {
+        "text": "To słowo znaczy po niemiecku „wóz do jazdy\".",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To był pierwszy motocykl na świecie.",
+      "text_markdown": "To był pierwszy motocykl na świecie.",
+      "tts": {
+        "text": "To był pierwszy motocykl na świecie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen był głośny.",
+      "text_markdown": "Reitwagen był głośny.",
+      "tts": {
+        "text": "Rajt Wagen był głośny.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trząsł się na drodze.",
+      "text_markdown": "Trząsł się na drodze.",
+      "tts": {
+        "text": "Trząsł się na drodze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miał tylko jeden bieg.",
+      "text_markdown": "Miał tylko jeden bieg.",
+      "tts": {
+        "text": "Miał tylko jeden bieg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mógł jechać około 7 mil na godzinę.",
+      "text_markdown": "Mógł jechać około 7 mil na godzinę.",
+      "tts": {
+        "text": "Mógł jechać około siedem mil na godzinę.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "To wolniej niż człowiek na rowerze dzisiaj.",
+      "text_markdown": "To wolniej niż człowiek na rowerze dzisiaj.",
+      "tts": {
+        "text": "To wolniej niż człowiek na rowerze dzisiaj.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ale mógł jechać bez konia i mógł jechać bez pedałów.",
+      "text_markdown": "Ale mógł jechać bez konia i mógł jechać bez pedałów.",
+      "tts": {
+        "text": "Ale mógł jechać bez konia i mógł jechać bez pedałów.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Rozdział 1 — Pierwszy dwukołowiec, który robił wrum",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motocykl się narodził.",
+      "text_markdown": "Motocykl się narodził.",
+      "tts": {
+        "text": "Motocykl się narodził.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Rozdział 2 — Pierwsze firmy",
+      "text_markdown": "Rozdział 2 — Pierwsze firmy"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po Daimlerze inni ludzie też chcieli budować motocykle.",
+      "text_markdown": "Po Daimlerze inni ludzie też chcieli budować motocykle.",
+      "tts": {
+        "text": "Po Daimlerze inni ludzie też chcieli budować motocykle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wkrótce małe warsztaty otwierały się na całym świecie.",
+      "text_markdown": "Wkrótce małe warsztaty otwierały się na całym świecie.",
+      "tts": {
+        "text": "Wkrótce małe warsztaty otwierały się na całym świecie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Anglii człowiek o imieniu Siegfried Bettmann założył firmę o nazwie Triumph.",
+      "text_markdown": "W Anglii człowiek o imieniu Siegfried Bettmann założył firmę o nazwie Triumph.",
+      "tts": {
+        "text": "W Anglii człowiek o imieniu Siegfried Bettmann założył firmę o nazwie Triumph.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pierwszy motocykl Triumph zbudowano w roku 1902.",
+      "text_markdown": "Pierwszy motocykl Triumph zbudowano w roku 1902.",
+      "tts": {
+        "text": "Pierwszy motocykl Triumph zbudowano w roku tysiąc dziewięćset drugim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Ameryce dwóch przyjaciół o imionach William Harley i Arthur Davidson zbudowało swój pierwszy motocykl w małej drewnianej szopie.",
+      "text_markdown": "W Ameryce dwóch przyjaciół o imionach William Harley i Arthur Davidson zbudowało swój pierwszy motocykl w małej drewnianej szopie.",
+      "tts": {
+        "text": "W Ameryce dwóch przyjaciół o imionach William Harley i Arthur Davidson zbudowało swój pierwszy motocykl w małej drewnianej szopie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Szopa stała w mieście Milwaukee.",
+      "text_markdown": "Szopa stała w mieście Milwaukee.",
+      "tts": {
+        "text": "Szopa stała w mieście Milwaukee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był rok 1903.",
+      "text_markdown": "Był rok 1903.",
+      "tts": {
+        "text": "Był rok tysiąc dziewięćset trzeci.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Firmę nazwali Harley-Davidson.",
+      "text_markdown": "Firmę nazwali Harley-Davidson.",
+      "tts": {
+        "text": "Firmę nazwali Harley Davidson.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inna amerykańska firma zaczęła kilka lat wcześniej.",
+      "text_markdown": "Inna amerykańska firma zaczęła kilka lat wcześniej.",
+      "tts": {
+        "text": "Inna amerykańska firma zaczęła kilka lat wcześniej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dwóch mężczyzn w Springfield w Massachusetts zbudowało swoją pierwszą maszynę w 1901 roku.",
+      "text_markdown": "Dwóch mężczyzn w Springfield w Massachusetts zbudowało swoją pierwszą maszynę w 1901 roku.",
+      "tts": {
+        "text": "Dwóch mężczyzn w Springfield w Massachusetts zbudowało swoją pierwszą maszynę w tysiąc dziewięćset pierwszym roku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nazwali ją Indian.",
+      "text_markdown": "Nazwali ją Indian.",
+      "tts": {
+        "text": "Nazwali ją Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Indiach firma o nazwie Royal Enfield zaczęła robić motocykle też w 1901 roku.",
+      "text_markdown": "W Indiach firma o nazwie Royal Enfield zaczęła robić motocykle też w 1901 roku.",
+      "tts": {
+        "text": "W Indiach firma o nazwie Royal Enfield zaczęła robić motocykle też w tysiąc dziewięćset pierwszym roku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dzisiaj Royal Enfield jest najstarszą firmą motocyklową na świecie, która wciąż buduje motocykle.",
+      "text_markdown": "Dzisiaj Royal Enfield jest najstarszą firmą motocyklową na świecie, która wciąż buduje motocykle.",
+      "tts": {
+        "text": "Dzisiaj Royal Enfield jest najstarszą firmą motocyklową na świecie, która wciąż buduje motocykle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W Niemczech firma BMW zaczęła robić motocykle trochę później, w 1923 roku.",
+      "text_markdown": "W Niemczech firma BMW zaczęła robić motocykle trochę później, w 1923 roku.",
+      "tts": {
+        "text": "W Niemczech firma Be Em Wu zaczęła robić motocykle trochę później, w tysiąc dziewięćset dwudziestym trzecim roku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW znaczy po niemiecku „Bawarskie Zakłady Motorowe\".",
+      "text_markdown": "BMW znaczy po niemiecku „Bawarskie Zakłady Motorowe\".",
+      "tts": {
+        "text": "Be Em Wu znaczy po niemiecku „Bawarskie Zakłady Motorowe\".",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Do roku 1910 motocykle były wszędzie.",
+      "text_markdown": "Do roku 1910 motocykle były wszędzie.",
+      "tts": {
+        "text": "Do roku tysiąc dziewięćset dziesiątego motocykle były wszędzie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Były na ulicach miast i na wiejskich drogach.",
+      "text_markdown": "Były na ulicach miast i na wiejskich drogach.",
+      "tts": {
+        "text": "Były na ulicach miast i na wiejskich drogach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Rozdział 2 — Pierwsze firmy",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Era motocykla naprawdę się zaczęła.",
+      "text_markdown": "Era motocykla naprawdę się zaczęła.",
+      "tts": {
+        "text": "Era motocykla naprawdę się zaczęła.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Rozdział 3 — Motocykle idą na wojnę",
+      "text_markdown": "Rozdział 3 — Motocykle idą na wojnę"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motocykle są szybkie.",
+      "text_markdown": "Motocykle są szybkie.",
+      "tts": {
+        "text": "Motocykle są szybkie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mogą się zmieścić na małych ścieżkach.",
+      "text_markdown": "Mogą się zmieścić na małych ścieżkach.",
+      "tts": {
+        "text": "Mogą się zmieścić na małych ścieżkach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mogą wozić wiadomości między obozami.",
+      "text_markdown": "Mogą wozić wiadomości między obozami.",
+      "tts": {
+        "text": "Mogą wozić wiadomości między obozami.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Więc kiedy zaczynały się wojny, armie chciały motocykli.",
+      "text_markdown": "Więc kiedy zaczynały się wojny, armie chciały motocykli.",
+      "tts": {
+        "text": "Więc kiedy zaczynały się wojny, armie chciały motocykli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pierwsza wojna światowa zaczęła się w 1914 roku.",
+      "text_markdown": "Pierwsza wojna światowa zaczęła się w 1914 roku.",
+      "tts": {
+        "text": "Pierwsza wojna światowa zaczęła się w tysiąc dziewięćset czternastym roku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Żołnierze używali motocykli Triumph, żeby wozić rozkazy.",
+      "text_markdown": "Żołnierze używali motocykli Triumph, żeby wozić rozkazy.",
+      "tts": {
+        "text": "Żołnierze używali motocykli Triumph, żeby wozić rozkazy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H był mocny i cichy.",
+      "text_markdown": "Triumph Model H był mocny i cichy.",
+      "tts": {
+        "text": "Triumph Model H był mocny i cichy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mógł jechać tam, gdzie nie mogły konie.",
+      "text_markdown": "Mógł jechać tam, gdzie nie mogły konie.",
+      "tts": {
+        "text": "Mógł jechać tam, gdzie nie mogły konie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Druga wojna światowa zaczęła się w 1939 roku.",
+      "text_markdown": "Druga wojna światowa zaczęła się w 1939 roku.",
+      "tts": {
+        "text": "Druga wojna światowa zaczęła się w tysiąc dziewięćset trzydziestym dziewiątym roku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Do tego czasu motocykle były szybsze i mocniejsze.",
+      "text_markdown": "Do tego czasu motocykle były szybsze i mocniejsze.",
+      "tts": {
+        "text": "Do tego czasu motocykle były szybsze i mocniejsze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerykańscy żołnierze jeździli na Harley-Davidson WLA.",
+      "text_markdown": "Amerykańscy żołnierze jeździli na Harley-Davidson WLA.",
+      "tts": {
+        "text": "Amerykańscy żołnierze jeździli na Harley Davidson Wu El A.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niemieccy żołnierze jeździli na BMW R75.",
+      "text_markdown": "Niemieccy żołnierze jeździli na BMW R75.",
+      "tts": {
+        "text": "Niemieccy żołnierze jeździli na Be Em Wu R siedemdziesiąt pięć.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75 miał wózek boczny z trzecim kołem i miejscem dla drugiego żołnierza.",
+      "text_markdown": "R75 miał wózek boczny z trzecim kołem i miejscem dla drugiego żołnierza.",
+      "tts": {
+        "text": "R siedemdziesiąt pięć miał wózek boczny z trzecim kołem i miejscem dla drugiego żołnierza.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po wojnie żołnierze wrócili do domu.",
+      "text_markdown": "Po wojnie żołnierze wrócili do domu.",
+      "tts": {
+        "text": "Po wojnie żołnierze wrócili do domu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Przywieźli ze sobą swoje motocykle.",
+      "text_markdown": "Przywieźli ze sobą swoje motocykle.",
+      "tts": {
+        "text": "Przywieźli ze sobą swoje motocykle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wielu z nich chciało dalej jeździć.",
+      "text_markdown": "Wielu z nich chciało dalej jeździć.",
+      "tts": {
+        "text": "Wielu z nich chciało dalej jeździć.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niektórzy założyli własne kluby motocyklowe.",
+      "text_markdown": "Niektórzy założyli własne kluby motocyklowe.",
+      "tts": {
+        "text": "Niektórzy założyli własne kluby motocyklowe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wojny uczyniły motocykl sławnym.",
+      "text_markdown": "Wojny uczyniły motocykl sławnym.",
+      "tts": {
+        "text": "Wojny uczyniły motocykl sławnym.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miliony ludzi zobaczyły go pierwszy raz.",
+      "text_markdown": "Miliony ludzi zobaczyły go pierwszy raz.",
+      "tts": {
+        "text": "Miliony ludzi zobaczyły go pierwszy raz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Rozdział 3 — Motocykle idą na wojnę",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wielu chciało mieć swój własny.",
+      "text_markdown": "Wielu chciało mieć swój własny.",
+      "tts": {
+        "text": "Wielu chciało mieć swój własny.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Rozdział 4 — Wzrost Japonii",
+      "text_markdown": "Rozdział 4 — Wzrost Japonii"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po drugiej wojnie światowej Japonia była biedna.",
+      "text_markdown": "Po drugiej wojnie światowej Japonia była biedna.",
+      "tts": {
+        "text": "Po drugiej wojnie światowej Japonia była biedna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Większość samochodów była za droga.",
+      "text_markdown": "Większość samochodów była za droga.",
+      "tts": {
+        "text": "Większość samochodów była za droga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ludzie potrzebowali małego, taniego sposobu, żeby się przemieszczać.",
+      "text_markdown": "Ludzie potrzebowali małego, taniego sposobu, żeby się przemieszczać.",
+      "tts": {
+        "text": "Ludzie potrzebowali małego, taniego sposobu, żeby się przemieszczać.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pewien młody Japończyk zobaczył szansę.",
+      "text_markdown": "Pewien młody Japończyk zobaczył szansę.",
+      "tts": {
+        "text": "Pewien młody Japończyk zobaczył szansę.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nazywał się Soichiro Honda.",
+      "text_markdown": "Nazywał się Soichiro Honda.",
+      "tts": {
+        "text": "Nazywał się Soichiro Honda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Założył małą firmę w 1948 roku.",
+      "text_markdown": "Założył małą firmę w 1948 roku.",
+      "tts": {
+        "text": "Założył małą firmę w tysiąc dziewięćset czterdziestym ósmym roku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nazwał ją Honda.",
+      "text_markdown": "Nazwał ją Honda.",
+      "tts": {
+        "text": "Nazwał ją Honda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1958 roku Honda zbudowała malutki motocykl o nazwie Super Cub.",
+      "text_markdown": "W 1958 roku Honda zbudowała malutki motocykl o nazwie Super Cub.",
+      "tts": {
+        "text": "W tysiąc dziewięćset pięćdziesiątym ósmym roku Honda zbudowała malutki motocykl o nazwie Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cub był łatwy w jeździe.",
+      "text_markdown": "Super Cub był łatwy w jeździe.",
+      "tts": {
+        "text": "Super Cub był łatwy w jeździe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Był łatwy w naprawie.",
+      "text_markdown": "Był łatwy w naprawie.",
+      "tts": {
+        "text": "Był łatwy w naprawie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Był bardzo, bardzo tani.",
+      "text_markdown": "Był bardzo, bardzo tani.",
+      "tts": {
+        "text": "Był bardzo, bardzo tani.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ludzie na całym świecie kupowali Super Cub.",
+      "text_markdown": "Ludzie na całym świecie kupowali Super Cub.",
+      "tts": {
+        "text": "Ludzie na całym świecie kupowali Super Cub.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dzisiaj sprzedano ponad 100 milionów Super Cubów.",
+      "text_markdown": "Dzisiaj sprzedano ponad 100 milionów Super Cubów.",
+      "tts": {
+        "text": "Dzisiaj sprzedano ponad sto milionów Super Cubów.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To najlepiej sprzedający się pojazd silnikowy wszech czasów.",
+      "text_markdown": "To najlepiej sprzedający się pojazd silnikowy wszech czasów.",
+      "tts": {
+        "text": "To najlepiej sprzedający się pojazd silnikowy wszech czasów.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wkrótce trzy kolejne japońskie firmy poszły śladem Hondy.",
+      "text_markdown": "Wkrótce trzy kolejne japońskie firmy poszły śladem Hondy.",
+      "tts": {
+        "text": "Wkrótce trzy kolejne japońskie firmy poszły śladem Hondy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To były Yamaha, Suzuki i Kawasaki.",
+      "text_markdown": "To były Yamaha, Suzuki i Kawasaki.",
+      "tts": {
+        "text": "To były Yamaha, Suzuki i Kawasaki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Razem z Hondą nazywa się je Wielką Czwórką.",
+      "text_markdown": "Razem z Hondą nazywa się je Wielką Czwórką.",
+      "tts": {
+        "text": "Razem z Hondą nazywa się je Wielką Czwórką.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wielka Czwórka robiła motocykle, które były szybkie, tanie i łatwe w jeździe.",
+      "text_markdown": "Wielka Czwórka robiła motocykle, które były szybkie, tanie i łatwe w jeździe.",
+      "tts": {
+        "text": "Wielka Czwórka robiła motocykle, które były szybkie, tanie i łatwe w jeździe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W latach sześćdziesiątych japońskie motocykle były wszędzie.",
+      "text_markdown": "W latach sześćdziesiątych japońskie motocykle były wszędzie.",
+      "tts": {
+        "text": "W latach sześćdziesiątych japońskie motocykle były wszędzie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Rozdział 4 — Wzrost Japonii",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Były nowymi królami drogi.",
+      "text_markdown": "Były nowymi królami drogi.",
+      "tts": {
+        "text": "Były nowymi królami drogi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "text_markdown": "Rozdział 5 — Szybciej, szybciej, szybciej"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W latach sześćdziesiątych kierowcy chcieli jechać szybciej.",
+      "text_markdown": "W latach sześćdziesiątych kierowcy chcieli jechać szybciej.",
+      "tts": {
+        "text": "W latach sześćdziesiątych kierowcy chcieli jechać szybciej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Konstruktorzy zaczęli wyścig, żeby zrobić najszybszy motocykl na świecie.",
+      "text_markdown": "Konstruktorzy zaczęli wyścig, żeby zrobić najszybszy motocykl na świecie.",
+      "tts": {
+        "text": "Konstruktorzy zaczęli wyścig, żeby zrobić najszybszy motocykl na świecie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "We Włoszech mała firma o nazwie MV Agusta budowała piękne czerwone motocykle, które wygrywały wyścig za wyścigiem.",
+      "text_markdown": "We Włoszech mała firma o nazwie MV Agusta budowała piękne czerwone motocykle, które wygrywały wyścig za wyścigiem.",
+      "tts": {
+        "text": "We Włoszech mała firma o nazwie Em Wu Agusta budowała piękne czerwone motocykle, które wygrywały wyścig za wyścigiem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "W Anglii Triumph i Norton też budowały mocne maszyny.",
+      "text_markdown": "W Anglii Triumph i Norton też budowały mocne maszyny.",
+      "tts": {
+        "text": "W Anglii Triumph i Norton też budowały mocne maszyny.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Potem, w 1969 roku, Honda zrobiła coś niesamowitego.",
+      "text_markdown": "Potem, w 1969 roku, Honda zrobiła coś niesamowitego.",
+      "tts": {
+        "text": "Potem, w tysiąc dziewięćset sześćdziesiątym dziewiątym roku, Honda zrobiła coś niesamowitego.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zbudowała motocykl o nazwie CB 750.",
+      "text_markdown": "Zbudowała motocykl o nazwie CB 750.",
+      "tts": {
+        "text": "Zbudowała motocykl o nazwie C B siedemset pięćdziesiąt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Miał cztery cylindry i wielki silnik.",
+      "text_markdown": "Miał cztery cylindry i wielki silnik.",
+      "tts": {
+        "text": "Miał cztery cylindry i wielki silnik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mógł jechać ponad 120 mil na godzinę.",
+      "text_markdown": "Mógł jechać ponad 120 mil na godzinę.",
+      "tts": {
+        "text": "Mógł jechać ponad sto dwadzieścia mil na godzinę.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Był pierwszym prawdziwym superbikiem.",
+      "text_markdown": "Był pierwszym prawdziwym superbikiem.",
+      "tts": {
+        "text": "Był pierwszym prawdziwym superbikiem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Po CB 750 każda firma chciała budować superbike.",
+      "text_markdown": "Po CB 750 każda firma chciała budować superbike.",
+      "tts": {
+        "text": "Po C B siedemset pięćdziesiąt każda firma chciała budować superbike.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motocykle stawały się coraz szybsze.",
+      "text_markdown": "Motocykle stawały się coraz szybsze.",
+      "tts": {
+        "text": "Motocykle stawały się coraz szybsze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wkrótce miały jasne owiewki, gładkie plastikowe osłony, które tną wiatr.",
+      "text_markdown": "Wkrótce miały jasne owiewki, gładkie plastikowe osłony, które tną wiatr.",
+      "tts": {
+        "text": "Wkrótce miały jasne owiewki, gładkie plastikowe osłony, które tną wiatr.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "W 1990 roku japoński motocykl Kawasaki ZX-11 stał się najszybszym motocyklem na świecie.",
+      "text_markdown": "W 1990 roku japoński motocykl Kawasaki ZX-11 stał się najszybszym motocyklem na świecie.",
+      "tts": {
+        "text": "W tysiąc dziewięćset dziewięćdziesiątym roku japoński motocykl Kawasaki Z X jedenaście stał się najszybszym motocyklem na świecie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mógł jechać prawie 175 mil na godzinę.",
+      "text_markdown": "Mógł jechać prawie 175 mil na godzinę.",
+      "tts": {
+        "text": "Mógł jechać prawie sto siedemdziesiąt pięć mil na godzinę.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kilka lat później Suzuki Hayabusa pojechała jeszcze szybciej.",
+      "text_markdown": "Kilka lat później Suzuki Hayabusa pojechała jeszcze szybciej.",
+      "tts": {
+        "text": "Kilka lat później Suzuki Hayabusa pojechała jeszcze szybciej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Osiągnęła 194 mile na godzinę.",
+      "text_markdown": "Osiągnęła 194 mile na godzinę.",
+      "tts": {
+        "text": "Osiągnęła sto dziewięćdziesiąt cztery mile na godzinę.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Rozdział 5 — Szybciej, szybciej, szybciej",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To szybciej niż większość samochodów na drodze dzisiaj.",
+      "text_markdown": "To szybciej niż większość samochodów na drodze dzisiaj.",
+      "tts": {
+        "text": "To szybciej niż większość samochodów na drodze dzisiaj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Rozdział 6 — Wiele rodzajów motocykli",
+      "text_markdown": "Rozdział 6 — Wiele rodzajów motocykli"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dzisiaj motocykle są w wielu kształtach.",
+      "text_markdown": "Dzisiaj motocykle są w wielu kształtach.",
+      "tts": {
+        "text": "Dzisiaj motocykle są w wielu kształtach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Każdy rodzaj jest zbudowany do innej pracy.",
+      "text_markdown": "Każdy rodzaj jest zbudowany do innej pracy.",
+      "tts": {
+        "text": "Każdy rodzaj jest zbudowany do innej pracy.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sportowy motocykl jest zbudowany, żeby jechać bardzo szybko.",
+      "text_markdown": "Sportowy motocykl jest zbudowany, żeby jechać bardzo szybko.",
+      "tts": {
+        "text": "Sportowy motocykl jest zbudowany, żeby jechać bardzo szybko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jest lekki i niski.",
+      "text_markdown": "Jest lekki i niski.",
+      "tts": {
+        "text": "Jest lekki i niski.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kierowca pochyla się do przodu.",
+      "text_markdown": "Kierowca pochyla się do przodu.",
+      "tts": {
+        "text": "Kierowca pochyla się do przodu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sportowe motocykle są zrobione na gładkie drogi i tory wyścigowe.",
+      "text_markdown": "Sportowe motocykle są zrobione na gładkie drogi i tory wyścigowe.",
+      "tts": {
+        "text": "Sportowe motocykle są zrobione na gładkie drogi i tory wyścigowe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Crossowy motocykl jest zbudowany na błoto i ziemię.",
+      "text_markdown": "Crossowy motocykl jest zbudowany na błoto i ziemię.",
+      "tts": {
+        "text": "Crossowy motocykl jest zbudowany na błoto i ziemię.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ma wysokie koła i grube opony.",
+      "text_markdown": "Ma wysokie koła i grube opony.",
+      "tts": {
+        "text": "Ma wysokie koła i grube opony.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Crossowe motocykle mogą skakać nad wzgórzami.",
+      "text_markdown": "Crossowe motocykle mogą skakać nad wzgórzami.",
+      "tts": {
+        "text": "Crossowe motocykle mogą skakać nad wzgórzami.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wielu młodych kierowców uczy się najpierw na crossowych motocyklach.",
+      "text_markdown": "Wielu młodych kierowców uczy się najpierw na crossowych motocyklach.",
+      "tts": {
+        "text": "Wielu młodych kierowców uczy się najpierw na crossowych motocyklach.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cruiser jest długi i niski.",
+      "text_markdown": "Cruiser jest długi i niski.",
+      "tts": {
+        "text": "Cruiser jest długi i niski.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kierowca siedzi prosto i jedzie wolno.",
+      "text_markdown": "Kierowca siedzi prosto i jedzie wolno.",
+      "tts": {
+        "text": "Kierowca siedzi prosto i jedzie wolno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson słynie z cruiserów.",
+      "text_markdown": "Harley-Davidson słynie z cruiserów.",
+      "tts": {
+        "text": "Harley Davidson słynie z cruiserów.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tak samo Indian.",
+      "text_markdown": "Tak samo Indian.",
+      "tts": {
+        "text": "Tak samo Indian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motocykl turystyczny jest zbudowany na długie podróże.",
+      "text_markdown": "Motocykl turystyczny jest zbudowany na długie podróże.",
+      "tts": {
+        "text": "Motocykl turystyczny jest zbudowany na długie podróże.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Może jeździć po drogach i po ziemi.",
+      "text_markdown": "Może jeździć po drogach i po ziemi.",
+      "tts": {
+        "text": "Może jeździć po drogach i po ziemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS to słynny motocykl turystyczny.",
+      "text_markdown": "BMW GS to słynny motocykl turystyczny.",
+      "tts": {
+        "text": "Be Em Wu G eS to słynny motocykl turystyczny.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tak samo KTM.",
+      "text_markdown": "Tak samo KTM.",
+      "tts": {
+        "text": "Tak samo Ka Te Em.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Są też choppery, skutery, motocykle wyścigowe i motocykle elektryczne.",
+      "text_markdown": "Są też choppery, skutery, motocykle wyścigowe i motocykle elektryczne.",
+      "tts": {
+        "text": "Są też choppery, skutery, motocykle wyścigowe i motocykle elektryczne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jest motocykl prawie na każdy rodzaj drogi.",
+      "text_markdown": "Jest motocykl prawie na każdy rodzaj drogi.",
+      "tts": {
+        "text": "Jest motocykl prawie na każdy rodzaj drogi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Rozdział 6 — Wiele rodzajów motocykli",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dzisiaj można znaleźć motocykl w każdym kraju na świecie.",
+      "text_markdown": "Dzisiaj można znaleźć motocykl w każdym kraju na świecie.",
+      "tts": {
+        "text": "Dzisiaj można znaleźć motocykl w każdym kraju na świecie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Rozdział 7 — Nowa droga",
+      "text_markdown": "Rozdział 7 — Nowa droga"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dzisiaj motocykl ma nowy rodzaj silnika.",
+      "text_markdown": "Dzisiaj motocykl ma nowy rodzaj silnika.",
+      "tts": {
+        "text": "Dzisiaj motocykl ma nowy rodzaj silnika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "To silnik elektryczny.",
+      "text_markdown": "To silnik elektryczny.",
+      "tts": {
+        "text": "To silnik elektryczny.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elektryczny motocykl jest cichy.",
+      "text_markdown": "Elektryczny motocykl jest cichy.",
+      "tts": {
+        "text": "Elektryczny motocykl jest cichy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nie potrzebuje benzyny.",
+      "text_markdown": "Nie potrzebuje benzyny.",
+      "tts": {
+        "text": "Nie potrzebuje benzyny.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Trzeba go tylko podłączyć jak telefon.",
+      "text_markdown": "Trzeba go tylko podłączyć jak telefon.",
+      "tts": {
+        "text": "Trzeba go tylko podłączyć jak telefon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Firma o nazwie Zero buduje elektryczne motocykle w Kalifornii.",
+      "text_markdown": "Firma o nazwie Zero buduje elektryczne motocykle w Kalifornii.",
+      "tts": {
+        "text": "Firma o nazwie Zero buduje elektryczne motocykle w Kalifornii.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson teraz buduje elektryczny motocykl o nazwie LiveWire.",
+      "text_markdown": "Harley-Davidson teraz buduje elektryczny motocykl o nazwie LiveWire.",
+      "tts": {
+        "text": "Harley Davidson teraz buduje elektryczny motocykl o nazwie LiveWire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Włoska firma o nazwie Energica buduje elektryczne motocykle wyścigowe.",
+      "text_markdown": "Włoska firma o nazwie Energica buduje elektryczne motocykle wyścigowe.",
+      "tts": {
+        "text": "Włoska firma o nazwie Energica buduje elektryczne motocykle wyścigowe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Są bardzo szybkie.",
+      "text_markdown": "Są bardzo szybkie.",
+      "tts": {
+        "text": "Są bardzo szybkie.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pierwszy motocykl, Reitwagen, mógł jechać 7 mil na godzinę.",
+      "text_markdown": "Pierwszy motocykl, Reitwagen, mógł jechać 7 mil na godzinę.",
+      "tts": {
+        "text": "Pierwszy motocykl, Rajt Wagen, mógł jechać siedem mil na godzinę.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dzisiejsze elektryczne motocykle mogą jechać ponad 200 mil na godzinę.",
+      "text_markdown": "Dzisiejsze elektryczne motocykle mogą jechać ponad 200 mil na godzinę.",
+      "tts": {
+        "text": "Dzisiejsze elektryczne motocykle mogą jechać ponad dwieście mil na godzinę.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "To jak dotąd historia motocykla.",
+      "text_markdown": "To jak dotąd historia motocykla.",
+      "tts": {
+        "text": "To jak dotąd historia motocykla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To była wielka historia.",
+      "text_markdown": "To była wielka historia.",
+      "tts": {
+        "text": "To była wielka historia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Następne jedenaście książek opowie małe historie.",
+      "text_markdown": "Następne jedenaście książek opowie małe historie.",
+      "tts": {
+        "text": "Następne jedenaście książek opowie małe historie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Każda jest o jednej części świata motocykli.",
+      "text_markdown": "Każda jest o jednej części świata motocykli.",
+      "tts": {
+        "text": "Każda jest o jednej części świata motocykli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tom drugi jest o Harley-Davidson.",
+      "text_markdown": "Tom drugi jest o Harley-Davidson.",
+      "tts": {
+        "text": "Tom drugi jest o Harley Davidson.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tom trzeci jest o Hondzie.",
+      "text_markdown": "Tom trzeci jest o Hondzie.",
+      "tts": {
+        "text": "Tom trzeci jest o Hondzie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tom czwarty jest o Ducati z Włoch.",
+      "text_markdown": "Tom czwarty jest o Ducati z Włoch.",
+      "tts": {
+        "text": "Tom czwarty jest o Ducati z Włoch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tom piąty jest o BMW z Niemiec.",
+      "text_markdown": "Tom piąty jest o BMW z Niemiec.",
+      "tts": {
+        "text": "Tom piąty jest o Be Em Wu z Niemiec.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tom szósty jest o Triumphie z Anglii.",
+      "text_markdown": "Tom szósty jest o Triumphie z Anglii.",
+      "tts": {
+        "text": "Tom szósty jest o Triumphie z Anglii.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tom siódmy jest o crossowych motocyklach.",
+      "text_markdown": "Tom siódmy jest o crossowych motocyklach.",
+      "tts": {
+        "text": "Tom siódmy jest o crossowych motocyklach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tom ósmy jest o motocyklach sportowych.",
+      "text_markdown": "Tom ósmy jest o motocyklach sportowych.",
+      "tts": {
+        "text": "Tom ósmy jest o motocyklach sportowych.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tom dziewiąty jest o cruiserach i chopperach.",
+      "text_markdown": "Tom dziewiąty jest o cruiserach i chopperach.",
+      "tts": {
+        "text": "Tom dziewiąty jest o cruiserach i chopperach.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tom dziesiąty jest o motocyklach turystycznych.",
+      "text_markdown": "Tom dziesiąty jest o motocyklach turystycznych.",
+      "tts": {
+        "text": "Tom dziesiąty jest o motocyklach turystycznych.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tom jedenasty jest o wyścigach.",
+      "text_markdown": "Tom jedenasty jest o wyścigach.",
+      "tts": {
+        "text": "Tom jedenasty jest o wyścigach.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tom dwunasty jest o motocyklach elektrycznych i o przyszłości.",
+      "text_markdown": "Tom dwunasty jest o motocyklach elektrycznych i o przyszłości.",
+      "tts": {
+        "text": "Tom dwunasty jest o motocyklach elektrycznych i o przyszłości.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Wybierz ten, który wygląda na najfajniejszy.",
+      "text_markdown": "Wybierz ten, który wygląda na najfajniejszy.",
+      "tts": {
+        "text": "Wybierz ten, który wygląda na najfajniejszy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Rozdział 7 — Nowa droga",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A potem chodź razem na przejażdżkę.",
+      "text_markdown": "A potem chodź razem na przejażdżkę.",
+      "tts": {
+        "text": "A potem chodź razem na przejażdżkę.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "O tej książce",
+      "text_markdown": "O tej książce"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "To jest pierwsza książka z serii Motocykle.",
+      "text_markdown": "To jest pierwsza książka z serii Motocykle.",
+      "tts": {
+        "text": "To jest pierwsza książka z serii Motocykle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Czyta ją na głos August.",
+      "text_markdown": "Czyta ją na głos August.",
+      "tts": {
+        "text": "Czyta ją na głos August.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Każde zdanie jest krótkie i jasne, więc możesz czytać razem w każdym języku.",
+      "text_markdown": "Każde zdanie jest krótkie i jasne, więc możesz czytać razem w każdym języku.",
+      "tts": {
+        "text": "Każde zdanie jest krótkie i jasne, więc możesz czytać razem w każdym języku.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jeśli chcesz usłyszeć, jak zdanie brzmi w innym języku, posłuchaj tej samej książki w tym języku.",
+      "text_markdown": "Jeśli chcesz usłyszeć, jak zdanie brzmi w innym języku, posłuchaj tej samej książki w tym języku.",
+      "tts": {
+        "text": "Jeśli chcesz usłyszeć, jak zdanie brzmi w innym języku, posłuchaj tej samej książki w tym języku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Słowa na stronie będą pasować do tego, co słyszysz.",
+      "text_markdown": "Słowa na stronie będą pasować do tego, co słyszysz.",
+      "tts": {
+        "text": "Słowa na stronie będą pasować do tego, co słyszysz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tak się uczysz.",
+      "text_markdown": "Tak się uczysz.",
+      "tts": {
+        "text": "Tak się uczysz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "O tej książce",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Teraz idź znaleźć motocykl i posłuchaj, jak robi wrum.",
+      "text_markdown": "Teraz idź znaleźć motocykl i posłuchaj, jak robi wrum.",
+      "tts": {
+        "text": "Teraz idź znaleźć motocykl i posłuchaj, jak robi wrum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

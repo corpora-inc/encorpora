@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Притяжение",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Притяжение",
+      "text_markdown": "Притяжение"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть мгновение, сразу после того, как ты покидаешь самолёт, которое мне хотелось бы подарить тебе просто так.",
+      "text_markdown": "Есть мгновение, сразу после того, как ты покидаешь самолёт, которое мне хотелось бы подарить тебе просто так.",
+      "tts": {
+        "text": "Есть мгновение, сразу после того, как ты покидаешь самолёт, которое мне хотелось бы подарить тебе просто так.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Мир перестаёт быть тем, в чём ты живёшь.",
+      "text_markdown": "Мир перестаёт быть тем, в чём ты живёшь.",
+      "tts": {
+        "text": "Мир перестаёт быть тем, в чём ты живёшь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он становится тем, сквозь что ты падаешь.",
+      "text_markdown": "Он становится тем, сквозь что ты падаешь.",
+      "tts": {
+        "text": "Он становится тем, сквозь что ты падаешь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И первые несколько секунд твой разум не может догнать то, что только что сделало твоё тело.",
+      "text_markdown": "И первые несколько секунд твой разум не может догнать то, что только что сделало твоё тело.",
+      "tts": {
+        "text": "И первые несколько секунд твой разум не может догнать то, что только что сделало твоё тело.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Люди спрашивают меня, почему я прыгаю.",
+      "text_markdown": "Люди спрашивают меня, почему я прыгаю.",
+      "tts": {
+        "text": "Люди спрашивают меня, почему я прыгаю.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Они всегда ждут, что я скажу, мол, дело в адреналине.",
+      "text_markdown": "Они всегда ждут, что я скажу, мол, дело в адреналине.",
+      "tts": {
+        "text": "Они всегда ждут, что я скажу, мол, дело в адреналине.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Дело не в адреналине.",
+      "text_markdown": "Дело не в адреналине.",
+      "tts": {
+        "text": "Дело не в адреналине.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Адреналин ты чувствуешь на первых пяти прыжках.",
+      "text_markdown": "Адреналин ты чувствуешь на первых пяти прыжках.",
+      "tts": {
+        "text": "Адреналин ты чувствуешь на первых пяти прыжках.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Потом приходит что-то более тихое.",
+      "text_markdown": "Потом приходит что-то более тихое.",
+      "tts": {
+        "text": "Потом приходит что-то более тихое.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Я гонюсь за ясностью.",
+      "text_markdown": "Я гонюсь за ясностью.",
+      "tts": {
+        "text": "Я гонюсь за ясностью.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Шестьдесят секунд свободного падения, и твоему разуму больше нечего делать.",
+      "text_markdown": "Шестьдесят секунд свободного падения, и твоему разуму больше нечего делать.",
+      "tts": {
+        "text": "Шестьдесят секунд свободного падения, и твоему разуму больше нечего делать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Никакого телефона.",
+      "text_markdown": "Никакого телефона.",
+      "tts": {
+        "text": "Никакого телефона.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Никаких счетов.",
+      "text_markdown": "Никаких счетов.",
+      "tts": {
+        "text": "Никаких счетов.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Никакого мелкого беспокойства о завтрашнем дне.",
+      "text_markdown": "Никакого мелкого беспокойства о завтрашнем дне.",
+      "tts": {
+        "text": "Никакого мелкого беспокойства о завтрашнем дне.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Только ветер, твоё дыхание и медленный изгиб земли под тобой.",
+      "text_markdown": "Только ветер, твоё дыхание и медленный изгиб земли под тобой.",
+      "tts": {
+        "text": "Только ветер, твоё дыхание и медленный изгиб земли под тобой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Большая часть жизни шумная.",
+      "text_markdown": "Большая часть жизни шумная.",
+      "tts": {
+        "text": "Большая часть жизни шумная.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "А эта минута, нет.",
+      "text_markdown": "А эта минута, нет.",
+      "tts": {
+        "text": "А эта минута, нет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Парашютисты не сумасшедшие.",
+      "text_markdown": "Парашютисты не сумасшедшие.",
+      "tts": {
+        "text": "Парашютисты не сумасшедшие.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Большинство из нас спокойные люди, которые нашли способ обрести покой быстрее.",
+      "text_markdown": "Большинство из нас спокойные люди, которые нашли способ обрести покой быстрее.",
+      "tts": {
+        "text": "Большинство из нас спокойные люди, которые нашли способ обрести покой быстрее.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Мы прыгаем из самолётов так, как другие медитируют.",
+      "text_markdown": "Мы прыгаем из самолётов так, как другие медитируют.",
+      "tts": {
+        "text": "Мы прыгаем из самолётов так, как другие медитируют.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Это что-то очищает внутри.",
+      "text_markdown": "Это что-то очищает внутри.",
+      "tts": {
+        "text": "Это что-то очищает внутри.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "А потом, каждые выходные, очищает снова.",
+      "text_markdown": "А потом, каждые выходные, очищает снова.",
+      "tts": {
+        "text": "А потом, каждые выходные, очищает снова.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В первый раз, когда я увидел над собой раскрытый парашют, я заплакал в подвесную систему.",
+      "text_markdown": "В первый раз, когда я увидел над собой раскрытый парашют, я заплакал в подвесную систему.",
+      "tts": {
+        "text": "В первый раз, когда я увидел над собой раскрытый парашют, я заплакал в подвесную систему.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Я этого не ожидал.",
+      "text_markdown": "Я этого не ожидал.",
+      "tts": {
+        "text": "Я этого не ожидал.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Взрослый мужчина, висящий в небе под квадратом мягкой ткани, плачет без причины, которую он мог бы объяснить.",
+      "text_markdown": "Взрослый мужчина, висящий в небе под квадратом мягкой ткани, плачет без причины, которую он мог бы объяснить.",
+      "tts": {
+        "text": "Взрослый мужчина, висящий в небе под квадратом мягкой ткани, плачет без причины, которую он мог бы объяснить.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Мой инструктор мягко рассмеялся и похлопал меня по плечу.",
+      "text_markdown": "Мой инструктор мягко рассмеялся и похлопал меня по плечу.",
+      "tts": {
+        "text": "Мой инструктор мягко рассмеялся и похлопал меня по плечу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Он видел это много раз.",
+      "text_markdown": "Он видел это много раз.",
+      "tts": {
+        "text": "Он видел это много раз.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "В тот момент я понял, что вернусь.",
+      "text_markdown": "В тот момент я понял, что вернусь.",
+      "tts": {
+        "text": "В тот момент я понял, что вернусь.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Парашютный спорт не про храбрость.",
+      "text_markdown": "Парашютный спорт не про храбрость.",
+      "tts": {
+        "text": "Парашютный спорт не про храбрость.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это про то, чтобы найти то самое место, где твой разум становится тихим.",
+      "text_markdown": "Это про то, чтобы найти то самое место, где твой разум становится тихим.",
+      "tts": {
+        "text": "Это про то, чтобы найти то самое место, где твой разум становится тихим.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Для кого-то это коврик для йоги.",
+      "text_markdown": "Для кого-то это коврик для йоги.",
+      "tts": {
+        "text": "Для кого-то это коврик для йоги.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Для кого-то долгая пробежка по пустой дороге.",
+      "text_markdown": "Для кого-то долгая пробежка по пустой дороге.",
+      "tts": {
+        "text": "Для кого-то долгая пробежка по пустой дороге.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Для кого-то это удочка, или пианино, или кухня в шесть утра.",
+      "text_markdown": "Для кого-то это удочка, или пианино, или кухня в шесть утра.",
+      "tts": {
+        "text": "Для кого-то это удочка, или пианино, или кухня в шесть утра.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Для меня это тринадцать тысяч футов над землёй, где остаётся только дышать.",
+      "text_markdown": "Для меня это тринадцать тысяч футов над землёй, где остаётся только дышать.",
+      "tts": {
+        "text": "Для меня это тринадцать тысяч футов над землёй, где остаётся только дышать.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "То притяжение, что ты однажды чувствуешь, трудно описать другу за ужином.",
+      "text_markdown": "То притяжение, что ты однажды чувствуешь, трудно описать другу за ужином.",
+      "tts": {
+        "text": "То притяжение, что ты однажды чувствуешь, трудно описать другу за ужином.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты попробуешь, они вежливо улыбнутся, и ты сдашься.",
+      "text_markdown": "Ты попробуешь, они вежливо улыбнутся, и ты сдашься.",
+      "tts": {
+        "text": "Ты попробуешь, они вежливо улыбнутся, и ты сдашься.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это нормально.",
+      "text_markdown": "Это нормально.",
+      "tts": {
+        "text": "Это нормально.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты начал прыгать не для того, чтобы это объяснять.",
+      "text_markdown": "Ты начал прыгать не для того, чтобы это объяснять.",
+      "tts": {
+        "text": "Ты начал прыгать не для того, чтобы это объяснять.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты начал прыгать потому, что в первый же раз что-то внутри тебя сказало, ах, вот ты где.",
+      "text_markdown": "Ты начал прыгать потому, что в первый же раз что-то внутри тебя сказало, ах, вот ты где.",
+      "tts": {
+        "text": "Ты начал прыгать потому, что в первый же раз что-то внутри тебя сказало, ах, вот ты где.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты когда-нибудь стоял на краю чего-то высокого и чувствовал, как твоё тело тянется к открытому воздуху?",
+      "text_markdown": "Ты когда-нибудь стоял на краю чего-то высокого и чувствовал, как твоё тело тянется к открытому воздуху?",
+      "tts": {
+        "text": "Ты когда-нибудь стоял на краю чего-то высокого и чувствовал, как твоё тело тянется к открытому воздуху?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Совсем чуть-чуть, всего на секунду.",
+      "text_markdown": "Совсем чуть-чуть, всего на секунду.",
+      "tts": {
+        "text": "Совсем чуть-чуть, всего на секунду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Если да, ты уже знаешь, о чём я говорю.",
+      "text_markdown": "Если да, ты уже знаешь, о чём я говорю.",
+      "tts": {
+        "text": "Если да, ты уже знаешь, о чём я говорю.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Парашютный спорт начинается тогда, когда ты перестаёшь притворяться, что не наклоняешься.",
+      "text_markdown": "Парашютный спорт начинается тогда, когда ты перестаёшь притворяться, что не наклоняешься.",
+      "tts": {
+        "text": "Парашютный спорт начинается тогда, когда ты перестаёшь притворяться, что не наклоняешься.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты намеренно делаешь шаг туда, куда твоё тело тихо просилось годами.",
+      "text_markdown": "Ты намеренно делаешь шаг туда, куда твоё тело тихо просилось годами.",
+      "tts": {
+        "text": "Ты намеренно делаешь шаг туда, куда твоё тело тихо просилось годами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А потом, очень быстро, ты понимаешь, что страх никогда не был на земле.",
+      "text_markdown": "А потом, очень быстро, ты понимаешь, что страх никогда не был на земле.",
+      "tts": {
+        "text": "А потом, очень быстро, ты понимаешь, что страх никогда не был на земле.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Страх был в наклоне.",
+      "text_markdown": "Страх был в наклоне.",
+      "tts": {
+        "text": "Страх был в наклоне.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Стоит прыгнуть, и страх уходит.",
+      "text_markdown": "Стоит прыгнуть, и страх уходит.",
+      "tts": {
+        "text": "Стоит прыгнуть, и страх уходит.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Остаётся что-то почти похожее на дом.",
+      "text_markdown": "Остаётся что-то почти похожее на дом.",
+      "tts": {
+        "text": "Остаётся что-то почти похожее на дом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Сердце замедляется.",
+      "text_markdown": "Сердце замедляется.",
+      "tts": {
+        "text": "Сердце замедляется.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Дыхание находит ритм, который оно искало.",
+      "text_markdown": "Дыхание находит ритм, который оно искало.",
+      "tts": {
+        "text": "Дыхание находит ритм, который оно искало.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Воздух держит тебя.",
+      "text_markdown": "Воздух держит тебя.",
+      "tts": {
+        "text": "Воздух держит тебя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "И ты чувствуешь, может быть впервые за долгое время, что находишься ровно там, где находишься.",
+      "text_markdown": "И ты чувствуешь, может быть впервые за долгое время, что находишься ровно там, где находишься.",
+      "tts": {
+        "text": "И ты чувствуешь, может быть впервые за долгое время, что находишься ровно там, где находишься.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вот что я бы тебе сказал, если бы ты спросил меня во время долгой прогулки.",
+      "text_markdown": "Вот что я бы тебе сказал, если бы ты спросил меня во время долгой прогулки.",
+      "tts": {
+        "text": "Вот что я бы тебе сказал, если бы ты спросил меня во время долгой прогулки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Почему спокойный и разумный человек продолжает прыгать из совершенно исправных самолётов?",
+      "text_markdown": "Почему спокойный и разумный человек продолжает прыгать из совершенно исправных самолётов?",
+      "tts": {
+        "text": "Почему спокойный и разумный человек продолжает прыгать из совершенно исправных самолётов?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Я бы ответил, что это самое тихое, что я делаю.",
+      "text_markdown": "Я бы ответил, что это самое тихое, что я делаю.",
+      "tts": {
+        "text": "Я бы ответил, что это самое тихое, что я делаю.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И я бы сказал это всерьёз.",
+      "text_markdown": "И я бы сказал это всерьёз.",
+      "tts": {
+        "text": "И я бы сказал это всерьёз.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Первый раз",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Первый раз",
+      "text_markdown": "Первый раз"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Давай я мысленно посажу тебя в самолёт.",
+      "text_markdown": "Давай я мысленно посажу тебя в самолёт.",
+      "tts": {
+        "text": "Давай я мысленно посажу тебя в самолёт.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты сидишь на низкой металлической скамье, пристёгнутый к инструктору за твоей спиной.",
+      "text_markdown": "Ты сидишь на низкой металлической скамье, пристёгнутый к инструктору за твоей спиной.",
+      "tts": {
+        "text": "Ты сидишь на низкой металлической скамье, пристёгнутый к инструктору за твоей спиной.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Самолёт поднимается медленными, ленивыми кругами.",
+      "text_markdown": "Самолёт поднимается медленными, ленивыми кругами.",
+      "tts": {
+        "text": "Самолёт поднимается медленными, ленивыми кругами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Маленькое квадратное окно рядом с тобой становится всё синее.",
+      "text_markdown": "Маленькое квадратное окно рядом с тобой становится всё синее.",
+      "tts": {
+        "text": "Маленькое квадратное окно рядом с тобой становится всё синее.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты чувствуешь, как сердце колотится в горле, но ты не паникуешь.",
+      "text_markdown": "Ты чувствуешь, как сердце колотится в горле, но ты не паникуешь.",
+      "tts": {
+        "text": "Ты чувствуешь, как сердце колотится в горле, но ты не паникуешь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты просто очень, очень сосредоточен.",
+      "text_markdown": "Ты просто очень, очень сосредоточен.",
+      "tts": {
+        "text": "Ты просто очень, очень сосредоточен.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Инструктор наклоняется к твоему уху.",
+      "text_markdown": "Инструктор наклоняется к твоему уху.",
+      "tts": {
+        "text": "Инструктор наклоняется к твоему уху.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он спокойно говорит, что обо всём, что тебе нужно сделать, он скажет тебе вовремя.",
+      "text_markdown": "Он спокойно говорит, что обо всём, что тебе нужно сделать, он скажет тебе вовремя.",
+      "tts": {
+        "text": "Он спокойно говорит, что обо всём, что тебе нужно сделать, он скажет тебе вовремя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты киваешь.",
+      "text_markdown": "Ты киваешь.",
+      "tts": {
+        "text": "Ты киваешь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты кивал столько раз за последний час, что у тебя начинает болеть шея.",
+      "text_markdown": "Ты кивал столько раз за последний час, что у тебя начинает болеть шея.",
+      "tts": {
+        "text": "Ты кивал столько раз за последний час, что у тебя начинает болеть шея.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом дверь открывается.",
+      "text_markdown": "Потом дверь открывается.",
+      "tts": {
+        "text": "Потом дверь открывается.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ветер врывается стеной, громкий, холодный и живой, и самолёт вдруг кажется очень маленьким.",
+      "text_markdown": "Ветер врывается стеной, громкий, холодный и живой, и самолёт вдруг кажется очень маленьким.",
+      "tts": {
+        "text": "Ветер врывается стеной, громкий, холодный и живой, и самолёт вдруг кажется очень маленьким.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты сдвигаешься к краю.",
+      "text_markdown": "Ты сдвигаешься к краю.",
+      "tts": {
+        "text": "Ты сдвигаешься к краю.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Носки твоих ног висят в пустоте.",
+      "text_markdown": "Носки твоих ног висят в пустоте.",
+      "tts": {
+        "text": "Носки твоих ног висят в пустоте.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты смотришь вниз, и земля так далеко, что больше не похожа на землю.",
+      "text_markdown": "Ты смотришь вниз, и земля так далеко, что больше не похожа на землю.",
+      "tts": {
+        "text": "Ты смотришь вниз, и земля так далеко, что больше не похожа на землю.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Она похожа на лоскутное одеяло.",
+      "text_markdown": "Она похожа на лоскутное одеяло.",
+      "tts": {
+        "text": "Она похожа на лоскутное одеяло.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Дороги тонкие, как нитка.",
+      "text_markdown": "Дороги тонкие, как нитка.",
+      "tts": {
+        "text": "Дороги тонкие, как нитка.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Река цвета тусклого серебра.",
+      "text_markdown": "Река цвета тусклого серебра.",
+      "tts": {
+        "text": "Река цвета тусклого серебра.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Крошечные зелёные и коричневые поля, сшитые между собой живыми изгородями.",
+      "text_markdown": "Крошечные зелёные и коричневые поля, сшитые между собой живыми изгородями.",
+      "tts": {
+        "text": "Крошечные зелёные и коричневые поля, сшитые между собой живыми изгородями.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Твой инструктор считает.",
+      "text_markdown": "Твой инструктор считает.",
+      "tts": {
+        "text": "Твой инструктор считает.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он говорит, раз.",
+      "text_markdown": "Он говорит, раз.",
+      "tts": {
+        "text": "Он говорит, раз.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он говорит, два.",
+      "text_markdown": "Он говорит, два.",
+      "tts": {
+        "text": "Он говорит, два.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На три самолёта уже нет.",
+      "text_markdown": "На три самолёта уже нет.",
+      "tts": {
+        "text": "На три самолёта уже нет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первые три секунды самые тяжёлые.",
+      "text_markdown": "Первые три секунды самые тяжёлые.",
+      "tts": {
+        "text": "Первые три секунды самые тяжёлые.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Твоё тело верит, что оно падает, потому что так и есть, а ему никогда не говорили, что это нормально.",
+      "text_markdown": "Твоё тело верит, что оно падает, потому что так и есть, а ему никогда не говорили, что это нормально.",
+      "tts": {
+        "text": "Твоё тело верит, что оно падает, потому что так и есть, а ему никогда не говорили, что это нормально.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты издаёшь какой-то звук.",
+      "text_markdown": "Ты издаёшь какой-то звук.",
+      "tts": {
+        "text": "Ты издаёшь какой-то звук.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Все издают какой-то звук.",
+      "text_markdown": "Все издают какой-то звук.",
+      "tts": {
+        "text": "Все издают какой-то звук.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Не нужно стесняться этого звука.",
+      "text_markdown": "Не нужно стесняться этого звука.",
+      "tts": {
+        "text": "Не нужно стесняться этого звука.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом происходит нечто удивительное.",
+      "text_markdown": "Потом происходит нечто удивительное.",
+      "tts": {
+        "text": "Потом происходит нечто удивительное.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Падение перестаёт ощущаться как падение.",
+      "text_markdown": "Падение перестаёт ощущаться как падение.",
+      "tts": {
+        "text": "Падение перестаёт ощущаться как падение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ветер поднимается тебе навстречу и держит тебя так, как вода держит, когда ты лежишь на спине.",
+      "text_markdown": "Ветер поднимается тебе навстречу и держит тебя так, как вода держит, когда ты лежишь на спине.",
+      "tts": {
+        "text": "Ветер поднимается тебе навстречу и держит тебя так, как вода держит, когда ты лежишь на спине.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Твои руки и ноги расходятся в стороны сами, без твоей команды.",
+      "text_markdown": "Твои руки и ноги расходятся в стороны сами, без твоей команды.",
+      "tts": {
+        "text": "Твои руки и ноги расходятся в стороны сами, без твоей команды.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Лицо ощущается так, словно его тянут сразу во все стороны.",
+      "text_markdown": "Лицо ощущается так, словно его тянут сразу во все стороны.",
+      "tts": {
+        "text": "Лицо ощущается так, словно его тянут сразу во все стороны.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты не можешь понять, улыбаешься ты или кричишь.",
+      "text_markdown": "Ты не можешь понять, улыбаешься ты или кричишь.",
+      "tts": {
+        "text": "Ты не можешь понять, улыбаешься ты или кричишь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Это неважно.",
+      "text_markdown": "Это неважно.",
+      "tts": {
+        "text": "Это неважно.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты оглядываешься.",
+      "text_markdown": "Ты оглядываешься.",
+      "tts": {
+        "text": "Ты оглядываешься.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Земля всё ещё очень далеко под тобой, но теперь ближе, и ты лучше различаешь цвета.",
+      "text_markdown": "Земля всё ещё очень далеко под тобой, но теперь ближе, и ты лучше различаешь цвета.",
+      "tts": {
+        "text": "Земля всё ещё очень далеко под тобой, но теперь ближе, и ты лучше различаешь цвета.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Машины на шоссе, медленные, как муравьи.",
+      "text_markdown": "Машины на шоссе, медленные, как муравьи.",
+      "tts": {
+        "text": "Машины на шоссе, медленные, как муравьи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Озеро, идеально неподвижное.",
+      "text_markdown": "Озеро, идеально неподвижное.",
+      "tts": {
+        "text": "Озеро, идеально неподвижное.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Тень от облака скользит по лесу.",
+      "text_markdown": "Тень от облака скользит по лесу.",
+      "tts": {
+        "text": "Тень от облака скользит по лесу.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты летишь.",
+      "text_markdown": "Ты летишь.",
+      "tts": {
+        "text": "Ты летишь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Не в самолёте.",
+      "text_markdown": "Не в самолёте.",
+      "tts": {
+        "text": "Не в самолёте.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты, твоё тело, летишь.",
+      "text_markdown": "Ты, твоё тело, летишь.",
+      "tts": {
+        "text": "Ты, твоё тело, летишь.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Твой инструктор хлопает тебя по плечу.",
+      "text_markdown": "Твой инструктор хлопает тебя по плечу.",
+      "tts": {
+        "text": "Твой инструктор хлопает тебя по плечу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты дёргаешь за кольцо.",
+      "text_markdown": "Ты дёргаешь за кольцо.",
+      "tts": {
+        "text": "Ты дёргаешь за кольцо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Происходит мягкий рывок, словно кто-то аккуратно схватил тебя за спину рубашки.",
+      "text_markdown": "Происходит мягкий рывок, словно кто-то аккуратно схватил тебя за спину рубашки.",
+      "tts": {
+        "text": "Происходит мягкий рывок, словно кто-то аккуратно схватил тебя за спину рубашки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Потом второй рывок, посильнее, который ставит тебя вертикально.",
+      "text_markdown": "Потом второй рывок, посильнее, который ставит тебя вертикально.",
+      "tts": {
+        "text": "Потом второй рывок, посильнее, который ставит тебя вертикально.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Мир становится тихим.",
+      "text_markdown": "Мир становится тихим.",
+      "tts": {
+        "text": "Мир становится тихим.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ветра нет.",
+      "text_markdown": "Ветра нет.",
+      "tts": {
+        "text": "Ветра нет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Рёва нет.",
+      "text_markdown": "Рёва нет.",
+      "tts": {
+        "text": "Рёва нет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Падения нет.",
+      "text_markdown": "Падения нет.",
+      "tts": {
+        "text": "Падения нет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Теперь ты висишь в подвесной системе под широким прямоугольником ткани.",
+      "text_markdown": "Теперь ты висишь в подвесной системе под широким прямоугольником ткани.",
+      "tts": {
+        "text": "Теперь ты висишь в подвесной системе под широким прямоугольником ткани.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Небо вдруг становится очень, очень неподвижным.",
+      "text_markdown": "Небо вдруг становится очень, очень неподвижным.",
+      "tts": {
+        "text": "Небо вдруг становится очень, очень неподвижным.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты слышишь птицу под собой.",
+      "text_markdown": "Ты слышишь птицу под собой.",
+      "tts": {
+        "text": "Ты слышишь птицу под собой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ты слышишь собственное дыхание.",
+      "text_markdown": "Ты слышишь собственное дыхание.",
+      "tts": {
+        "text": "Ты слышишь собственное дыхание.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Твой инструктор смеётся тебе в ухо и спрашивает, как ты.",
+      "text_markdown": "Твой инструктор смеётся тебе в ухо и спрашивает, как ты.",
+      "tts": {
+        "text": "Твой инструктор смеётся тебе в ухо и спрашивает, как ты.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Ты не можешь ответить какое-то время, потому что ты плачешь, или смеёшься, или всё вместе.",
+      "text_markdown": "Ты не можешь ответить какое-то время, потому что ты плачешь, или смеёшься, или всё вместе.",
+      "tts": {
+        "text": "Ты не можешь ответить какое-то время, потому что ты плачешь, или смеёшься, или всё вместе.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Полёт под куполом длится около пяти минут.",
+      "text_markdown": "Полёт под куполом длится около пяти минут.",
+      "tts": {
+        "text": "Полёт под куполом длится около пяти минут.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это пять самых мирных минут в твоей жизни.",
+      "text_markdown": "Это пять самых мирных минут в твоей жизни.",
+      "tts": {
+        "text": "Это пять самых мирных минут в твоей жизни.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда твои ноги касаются земли, ты делаешь три коротких бегущих шага и останавливаешься.",
+      "text_markdown": "Когда твои ноги касаются земли, ты делаешь три коротких бегущих шага и останавливаешься.",
+      "tts": {
+        "text": "Когда твои ноги касаются земли, ты делаешь три коротких бегущих шага и останавливаешься.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Трава снова настоящая.",
+      "text_markdown": "Трава снова настоящая.",
+      "tts": {
+        "text": "Трава снова настоящая.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Мир снова твёрдый.",
+      "text_markdown": "Мир снова твёрдый.",
+      "tts": {
+        "text": "Мир снова твёрдый.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты разворачиваешься и смотришь в небо.",
+      "text_markdown": "Ты разворачиваешься и смотришь в небо.",
+      "tts": {
+        "text": "Ты разворачиваешься и смотришь в небо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "И ты впервые понимаешь, что твой друг пытался сказать тебе все эти годы.",
+      "text_markdown": "И ты впервые понимаешь, что твой друг пытался сказать тебе все эти годы.",
+      "tts": {
+        "text": "И ты впервые понимаешь, что твой друг пытался сказать тебе все эти годы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "С чего начать",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "С чего начать",
+      "text_markdown": "С чего начать"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Так как же это сделать на самом деле, если ты однажды решишь, что хочешь.",
+      "text_markdown": "Так как же это сделать на самом деле, если ты однажды решишь, что хочешь.",
+      "tts": {
+        "text": "Так как же это сделать на самом деле, если ты однажды решишь, что хочешь.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Честный ответ, проще, чем ты думаешь.",
+      "text_markdown": "Честный ответ, проще, чем ты думаешь.",
+      "tts": {
+        "text": "Честный ответ, проще, чем ты думаешь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Почти любая зона приземления в мире возьмёт полного новичка тем же утром.",
+      "text_markdown": "Почти любая зона приземления в мире возьмёт полного новичка тем же утром.",
+      "tts": {
+        "text": "Почти любая зона приземления в мире возьмёт полного новичка тем же утром.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Тебя поднимут в небо в тандем-прыжке, с инструктором у тебя за спиной.",
+      "text_markdown": "Тебя поднимут в небо в тандем-прыжке, с инструктором у тебя за спиной.",
+      "tts": {
+        "text": "Тебя поднимут в небо в тандем-прыжке, с инструктором у тебя за спиной.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты приезжаешь, подписываешь бумаги, смотришь короткое видео и знакомишься с инструктором.",
+      "text_markdown": "Ты приезжаешь, подписываешь бумаги, смотришь короткое видео и знакомишься с инструктором.",
+      "tts": {
+        "text": "Ты приезжаешь, подписываешь бумаги, смотришь короткое видео и знакомишься с инструктором.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты надеваешь комбинезон и подвесную систему.",
+      "text_markdown": "Ты надеваешь комбинезон и подвесную систему.",
+      "tts": {
+        "text": "Ты надеваешь комбинезон и подвесную систему.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты залезаешь в самолёт.",
+      "text_markdown": "Ты залезаешь в самолёт.",
+      "tts": {
+        "text": "Ты залезаешь в самолёт.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Примерно через двадцать минут ты идёшь обратно по траве с самой широкой улыбкой в своей жизни.",
+      "text_markdown": "Примерно через двадцать минут ты идёшь обратно по траве с самой широкой улыбкой в своей жизни.",
+      "tts": {
+        "text": "Примерно через двадцать минут ты идёшь обратно по траве с самой широкой улыбкой в своей жизни.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Для первого прыжка тебе не нужно быть храбрым.",
+      "text_markdown": "Для первого прыжка тебе не нужно быть храбрым.",
+      "tts": {
+        "text": "Для первого прыжка тебе не нужно быть храбрым.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Тебе нужно только быть готовым.",
+      "text_markdown": "Тебе нужно только быть готовым.",
+      "tts": {
+        "text": "Тебе нужно только быть готовым.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Инструктор делает всё.",
+      "text_markdown": "Инструктор делает всё.",
+      "tts": {
+        "text": "Инструктор делает всё.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он раскрывает парашют.",
+      "text_markdown": "Он раскрывает парашют.",
+      "tts": {
+        "text": "Он раскрывает парашют.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Он управляет куполом.",
+      "text_markdown": "Он управляет куполом.",
+      "tts": {
+        "text": "Он управляет куполом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Он приземляет тебя.",
+      "text_markdown": "Он приземляет тебя.",
+      "tts": {
+        "text": "Он приземляет тебя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ты просто пассажир, и у тебя лучшее место в мире.",
+      "text_markdown": "Ты просто пассажир, и у тебя лучшее место в мире.",
+      "tts": {
+        "text": "Ты просто пассажир, и у тебя лучшее место в мире.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если после первого прыжка тебе захочется прыгать самому, такой путь называется Ускоренное Свободное Падение.",
+      "text_markdown": "Если после первого прыжка тебе захочется прыгать самому, такой путь называется Ускоренное Свободное Падение.",
+      "tts": {
+        "text": "Если после первого прыжка тебе захочется прыгать самому, такой путь называется Ускоренное Свободное Падение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это учебная программа, которой обучают на каждой зоне приземления и которая делает из тебя настоящего парашютиста.",
+      "text_markdown": "Это учебная программа, которой обучают на каждой зоне приземления и которая делает из тебя настоящего парашютиста.",
+      "tts": {
+        "text": "Это учебная программа, которой обучают на каждой зоне приземления и которая делает из тебя настоящего парашютиста.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Не пассажира.",
+      "text_markdown": "Не пассажира.",
+      "tts": {
+        "text": "Не пассажира.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Пилота собственного тела в небе.",
+      "text_markdown": "Пилота собственного тела в небе.",
+      "tts": {
+        "text": "Пилота собственного тела в небе.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первый уровень программы это долгий день в классе.",
+      "text_markdown": "Первый уровень программы это долгий день в классе.",
+      "tts": {
+        "text": "Первый уровень программы это долгий день в классе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты учишься падать.",
+      "text_markdown": "Ты учишься падать.",
+      "tts": {
+        "text": "Ты учишься падать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты учишься читать показания высотомера.",
+      "text_markdown": "Ты учишься читать показания высотомера.",
+      "tts": {
+        "text": "Ты учишься читать показания высотомера.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты учишься, что делать, если основной парашют не раскроется.",
+      "text_markdown": "Ты учишься, что делать, если основной парашют не раскроется.",
+      "tts": {
+        "text": "Ты учишься, что делать, если основной парашют не раскроется.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "День в классе занимает около шести или семи часов.",
+      "text_markdown": "День в классе занимает около шести или семи часов.",
+      "tts": {
+        "text": "День в классе занимает около шести или семи часов.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "К его концу ты знаешь о парашютах больше, чем большинство людей узнают за всю жизнь.",
+      "text_markdown": "К его концу ты знаешь о парашютах больше, чем большинство людей узнают за всю жизнь.",
+      "tts": {
+        "text": "К его концу ты знаешь о парашютах больше, чем большинство людей узнают за всю жизнь.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом наступает твой первый самостоятельный прыжок.",
+      "text_markdown": "Потом наступает твой первый самостоятельный прыжок.",
+      "tts": {
+        "text": "Потом наступает твой первый самостоятельный прыжок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Два инструктора прыгают вместе с тобой, по одному с каждой стороны, держась за твою подвесную систему.",
+      "text_markdown": "Два инструктора прыгают вместе с тобой, по одному с каждой стороны, держась за твою подвесную систему.",
+      "tts": {
+        "text": "Два инструктора прыгают вместе с тобой, по одному с каждой стороны, держась за твою подвесную систему.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они отпускают тебя в свободном падении, как только ты стабилен.",
+      "text_markdown": "Они отпускают тебя в свободном падении, как только ты стабилен.",
+      "tts": {
+        "text": "Они отпускают тебя в свободном падении, как только ты стабилен.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты сам раскрываешь свой парашют.",
+      "text_markdown": "Ты сам раскрываешь свой парашют.",
+      "tts": {
+        "text": "Ты сам раскрываешь свой парашют.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты сам ведёшь свой купол до земли.",
+      "text_markdown": "Ты сам ведёшь свой купол до земли.",
+      "tts": {
+        "text": "Ты сам ведёшь свой купол до земли.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "В первый раз, когда ты это сделаешь, на следующий день у тебя будет болеть лицо от того, как сильно ты улыбался.",
+      "text_markdown": "В первый раз, когда ты это сделаешь, на следующий день у тебя будет болеть лицо от того, как сильно ты улыбался.",
+      "tts": {
+        "text": "В первый раз, когда ты это сделаешь, на следующий день у тебя будет болеть лицо от того, как сильно ты улыбался.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Полная программа проведёт тебя через примерно семь прыжков.",
+      "text_markdown": "Полная программа проведёт тебя через примерно семь прыжков.",
+      "tts": {
+        "text": "Полная программа проведёт тебя через примерно семь прыжков.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "К концу ты прыгаешь сам.",
+      "text_markdown": "К концу ты прыгаешь сам.",
+      "tts": {
+        "text": "К концу ты прыгаешь сам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "После этого парашютисты обычно набирают первые сто прыжков в течение следующего года.",
+      "text_markdown": "После этого парашютисты обычно набирают первые сто прыжков в течение следующего года.",
+      "tts": {
+        "text": "После этого парашютисты обычно набирают первые сто прыжков в течение следующего года.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "По пути они учатся летать относительно других прыгунов.",
+      "text_markdown": "По пути они учатся летать относительно других прыгунов.",
+      "tts": {
+        "text": "По пути они учатся летать относительно других прыгунов.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Они учатся скользить через небо.",
+      "text_markdown": "Они учатся скользить через небо.",
+      "tts": {
+        "text": "Они учатся скользить через небо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Они учатся сами укладывать свой парашют.",
+      "text_markdown": "Они учатся сами укладывать свой парашют.",
+      "tts": {
+        "text": "Они учатся сами укладывать свой парашют.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Сообщество маленькое, дружелюбное и терпеливое.",
+      "text_markdown": "Сообщество маленькое, дружелюбное и терпеливое.",
+      "tts": {
+        "text": "Сообщество маленькое, дружелюбное и терпеливое.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Никто на зоне приземления не заставит тебя почувствовать себя глупо из-за того, что ты новичок.",
+      "text_markdown": "Никто на зоне приземления не заставит тебя почувствовать себя глупо из-за того, что ты новичок.",
+      "tts": {
+        "text": "Никто на зоне приземления не заставит тебя почувствовать себя глупо из-за того, что ты новичок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Мы все когда-то были новичками.",
+      "text_markdown": "Мы все когда-то были новичками.",
+      "tts": {
+        "text": "Мы все когда-то были новичками.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Большинство из нас всё ещё чувствуют себя новичками.",
+      "text_markdown": "Большинство из нас всё ещё чувствуют себя новичками.",
+      "tts": {
+        "text": "Большинство из нас всё ещё чувствуют себя новичками.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А что насчёт безопасности.",
+      "text_markdown": "А что насчёт безопасности.",
+      "tts": {
+        "text": "А что насчёт безопасности.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это вопрос, который задаёт каждый разумный человек, и он заслуживает настоящего ответа.",
+      "text_markdown": "Это вопрос, который задаёт каждый разумный человек, и он заслуживает настоящего ответа.",
+      "tts": {
+        "text": "Это вопрос, который задаёт каждый разумный человек, и он заслуживает настоящего ответа.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Парашютный спорт, на самом деле, очень безопасен.",
+      "text_markdown": "Парашютный спорт, на самом деле, очень безопасен.",
+      "tts": {
+        "text": "Парашютный спорт, на самом деле, очень безопасен.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Не настолько, как ходить пешком, но безопаснее, чем ехать за рулём до зоны приземления.",
+      "text_markdown": "Не настолько, как ходить пешком, но безопаснее, чем ехать за рулём до зоны приземления.",
+      "tts": {
+        "text": "Не настолько, как ходить пешком, но безопаснее, чем ехать за рулём до зоны приземления.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Снаряжение отличное.",
+      "text_markdown": "Снаряжение отличное.",
+      "tts": {
+        "text": "Снаряжение отличное.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Есть основной парашют и запасной парашют, а ещё автоматическое устройство, которое раскроет запасной, если ты сам не сможешь.",
+      "text_markdown": "Есть основной парашют и запасной парашют, а ещё автоматическое устройство, которое раскроет запасной, если ты сам не сможешь.",
+      "tts": {
+        "text": "Есть основной парашют и запасной парашют, а ещё автоматическое устройство, которое раскроет запасной, если ты сам не сможешь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Зонами приземления управляют профессионалы, которым ты не безразличен.",
+      "text_markdown": "Зонами приземления управляют профессионалы, которым ты не безразличен.",
+      "tts": {
+        "text": "Зонами приземления управляют профессионалы, которым ты не безразличен.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Инструкторы глубоко переживают за каждый прыжок.",
+      "text_markdown": "Инструкторы глубоко переживают за каждый прыжок.",
+      "tts": {
+        "text": "Инструкторы глубоко переживают за каждый прыжок.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А что со стоимостью.",
+      "text_markdown": "А что со стоимостью.",
+      "tts": {
+        "text": "А что со стоимостью.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Тандем-прыжок стоит как хороший ужин на двоих.",
+      "text_markdown": "Тандем-прыжок стоит как хороший ужин на двоих.",
+      "tts": {
+        "text": "Тандем-прыжок стоит как хороший ужин на двоих.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Учебная программа стоит как небольшой отпуск.",
+      "text_markdown": "Учебная программа стоит как небольшой отпуск.",
+      "tts": {
+        "text": "Учебная программа стоит как небольшой отпуск.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "После этого каждый прыжок стоит как билет в кино и обед.",
+      "text_markdown": "После этого каждый прыжок стоит как билет в кино и обед.",
+      "tts": {
+        "text": "После этого каждый прыжок стоит как билет в кино и обед.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Люди с обычной работой и обычной жизнью делают это каждые выходные.",
+      "text_markdown": "Люди с обычной работой и обычной жизнью делают это каждые выходные.",
+      "tts": {
+        "text": "Люди с обычной работой и обычной жизнью делают это каждые выходные.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Они не богаты.",
+      "text_markdown": "Они не богаты.",
+      "tts": {
+        "text": "Они не богаты.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Они не особенные.",
+      "text_markdown": "Они не особенные.",
+      "tts": {
+        "text": "Они не особенные.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Они просто решили, что это то, чем они занимаются.",
+      "text_markdown": "Они просто решили, что это то, чем они занимаются.",
+      "tts": {
+        "text": "Они просто решили, что это то, чем они занимаются.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если ты думаешь о своём первом прыжке, вот единственный совет, который имеет значение.",
+      "text_markdown": "Если ты думаешь о своём первом прыжке, вот единственный совет, который имеет значение.",
+      "tts": {
+        "text": "Если ты думаешь о своём первом прыжке, вот единственный совет, который имеет значение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Выбери дату.",
+      "text_markdown": "Выбери дату.",
+      "tts": {
+        "text": "Выбери дату.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Скажи одному другу.",
+      "text_markdown": "Скажи одному другу.",
+      "tts": {
+        "text": "Скажи одному другу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Приди.",
+      "text_markdown": "Приди.",
+      "tts": {
+        "text": "Приди.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Сложная часть это не падение.",
+      "text_markdown": "Сложная часть это не падение.",
+      "tts": {
+        "text": "Сложная часть это не падение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Сложная часть это решение.",
+      "text_markdown": "Сложная часть это решение.",
+      "tts": {
+        "text": "Сложная часть это решение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Как только ты решил, небо уже твоё.",
+      "text_markdown": "Как только ты решил, небо уже твоё.",
+      "tts": {
+        "text": "Как только ты решил, небо уже твоё.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Мастерство",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Мастерство",
+      "text_markdown": "Мастерство"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Внутри падения скрыто мастерство, и именно эта часть парашютного спорта удерживает тебя на всю жизнь.",
+      "text_markdown": "Внутри падения скрыто мастерство, и именно эта часть парашютного спорта удерживает тебя на всю жизнь.",
+      "tts": {
+        "text": "Внутри падения скрыто мастерство, и именно эта часть парашютного спорта удерживает тебя на всю жизнь.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда ты смотришь, как опытный парашютист летит в свободном падении, ты не видишь падающего человека.",
+      "text_markdown": "Когда ты смотришь, как опытный парашютист летит в свободном падении, ты не видишь падающего человека.",
+      "tts": {
+        "text": "Когда ты смотришь, как опытный парашютист летит в свободном падении, ты не видишь падающего человека.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты видишь летящего.",
+      "text_markdown": "Ты видишь летящего.",
+      "tts": {
+        "text": "Ты видишь летящего.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они медленно поворачиваются, осознанно, кончиками пальцев.",
+      "text_markdown": "Они медленно поворачиваются, осознанно, кончиками пальцев.",
+      "tts": {
+        "text": "Они медленно поворачиваются, осознанно, кончиками пальцев.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Они скользят вперёд через небо на полмили, наклонив плечи на пару дюймов.",
+      "text_markdown": "Они скользят вперёд через небо на полмили, наклонив плечи на пару дюймов.",
+      "tts": {
+        "text": "Они скользят вперёд через небо на полмили, наклонив плечи на пару дюймов.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Они останавливаются прямо посреди падения и держат неподвижность, которая кажется невозможной.",
+      "text_markdown": "Они останавливаются прямо посреди падения и держат неподвижность, которая кажется невозможной.",
+      "tts": {
+        "text": "Они останавливаются прямо посреди падения и держат неподвижность, которая кажется невозможной.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тело это самолёт.",
+      "text_markdown": "Тело это самолёт.",
+      "tts": {
+        "text": "Тело это самолёт.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это первый секрет мастерства.",
+      "text_markdown": "Это первый секрет мастерства.",
+      "tts": {
+        "text": "Это первый секрет мастерства.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Стоит понять это, и всё остальное приходит само.",
+      "text_markdown": "Стоит понять это, и всё остальное приходит само.",
+      "tts": {
+        "text": "Стоит понять это, и всё остальное приходит само.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Базовая поза стабильного свободного падения называется аркой.",
+      "text_markdown": "Базовая поза стабильного свободного падения называется аркой.",
+      "tts": {
+        "text": "Базовая поза стабильного свободного падения называется аркой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты подаёшь бёдра вперёд и позволяешь рукам и ногам уходить назад, словно ты банан.",
+      "text_markdown": "Ты подаёшь бёдра вперёд и позволяешь рукам и ногам уходить назад, словно ты банан.",
+      "tts": {
+        "text": "Ты подаёшь бёдра вперёд и позволяешь рукам и ногам уходить назад, словно ты банан.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Арка это то, что удерживает тебя лицом к земле, и тебе даже не приходится об этом думать.",
+      "text_markdown": "Арка это то, что удерживает тебя лицом к земле, и тебе даже не приходится об этом думать.",
+      "tts": {
+        "text": "Арка это то, что удерживает тебя лицом к земле, и тебе даже не приходится об этом думать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Новички осваивают арку сначала в поролоновой яме, потом в аэротрубе, потом в небе.",
+      "text_markdown": "Новички осваивают арку сначала в поролоновой яме, потом в аэротрубе, потом в небе.",
+      "tts": {
+        "text": "Новички осваивают арку сначала в поролоновой яме, потом в аэротрубе, потом в небе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Опытные парашютисты говорят об арке так, как старые бегуны говорят о своём шаге.",
+      "text_markdown": "Опытные парашютисты говорят об арке так, как старые бегуны говорят о своём шаге.",
+      "tts": {
+        "text": "Опытные парашютисты говорят об арке так, как старые бегуны говорят о своём шаге.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда у тебя есть стабильная арка, остальное свободное падение открывается.",
+      "text_markdown": "Когда у тебя есть стабильная арка, остальное свободное падение открывается.",
+      "tts": {
+        "text": "Когда у тебя есть стабильная арка, остальное свободное падение открывается.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты учишься падать медленно, раскрываясь широко, превращая себя в воздушного змея.",
+      "text_markdown": "Ты учишься падать медленно, раскрываясь широко, превращая себя в воздушного змея.",
+      "tts": {
+        "text": "Ты учишься падать медленно, раскрываясь широко, превращая себя в воздушного змея.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты учишься падать быстро, поджимаясь, превращая себя в камень.",
+      "text_markdown": "Ты учишься падать быстро, поджимаясь, превращая себя в камень.",
+      "tts": {
+        "text": "Ты учишься падать быстро, поджимаясь, превращая себя в камень.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты учишься скользить, и это самое близкое к полёту, что может делать человеческое тело.",
+      "text_markdown": "Ты учишься скользить, и это самое близкое к полёту, что может делать человеческое тело.",
+      "tts": {
+        "text": "Ты учишься скользить, и это самое близкое к полёту, что может делать человеческое тело.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Хороший скользящий может покрыть четверть мили по небу за двадцать секунд.",
+      "text_markdown": "Хороший скользящий может покрыть четверть мили по небу за двадцать секунд.",
+      "tts": {
+        "text": "Хороший скользящий может покрыть четверть мили по небу за двадцать секунд.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Руки отведены назад, тело под углом, движется как бумажный самолётик, который знает, куда летит.",
+      "text_markdown": "Руки отведены назад, тело под углом, движется как бумажный самолётик, который знает, куда летит.",
+      "tts": {
+        "text": "Руки отведены назад, тело под углом, движется как бумажный самолётик, который знает, куда летит.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Другая половина мастерства это купол.",
+      "text_markdown": "Другая половина мастерства это купол.",
+      "tts": {
+        "text": "Другая половина мастерства это купол.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Парашют это не пассивная штука, которая просто плавно опускает тебя.",
+      "text_markdown": "Парашют это не пассивная штука, которая просто плавно опускает тебя.",
+      "tts": {
+        "text": "Парашют это не пассивная штука, которая просто плавно опускает тебя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это крыло, и ты на нём летишь.",
+      "text_markdown": "Это крыло, и ты на нём летишь.",
+      "tts": {
+        "text": "Это крыло, и ты на нём летишь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Если потянуть за правую клеванту, правое крыло опускается, и ты поворачиваешь направо.",
+      "text_markdown": "Если потянуть за правую клеванту, правое крыло опускается, и ты поворачиваешь направо.",
+      "tts": {
+        "text": "Если потянуть за правую клеванту, правое крыло опускается, и ты поворачиваешь направо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Если потянуть за обе сразу, ты замедляешься и можешь мягко приземлиться.",
+      "text_markdown": "Если потянуть за обе сразу, ты замедляешься и можешь мягко приземлиться.",
+      "tts": {
+        "text": "Если потянуть за обе сразу, ты замедляешься и можешь мягко приземлиться.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты читаешь ветер, выбираешь точку, планируешь свой круг.",
+      "text_markdown": "Ты читаешь ветер, выбираешь точку, планируешь свой круг.",
+      "tts": {
+        "text": "Ты читаешь ветер, выбираешь точку, планируешь свой круг.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ты делаешь подушку в последнюю секунду, чтобы твои ноги поцеловали землю, а не ударились о неё.",
+      "text_markdown": "Ты делаешь подушку в последнюю секунду, чтобы твои ноги поцеловали землю, а не ударились о неё.",
+      "tts": {
+        "text": "Ты делаешь подушку в последнюю секунду, чтобы твои ноги поцеловали землю, а не ударились о неё.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Всё это пилотирование купола, и это отдельная дисциплина.",
+      "text_markdown": "Всё это пилотирование купола, и это отдельная дисциплина.",
+      "tts": {
+        "text": "Всё это пилотирование купола, и это отдельная дисциплина.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А ещё есть укладка.",
+      "text_markdown": "А ещё есть укладка.",
+      "tts": {
+        "text": "А ещё есть укладка.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Каждый парашютист сам укладывает свой парашют.",
+      "text_markdown": "Каждый парашютист сам укладывает свой парашют.",
+      "tts": {
+        "text": "Каждый парашютист сам укладывает свой парашют.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждый раз.",
+      "text_markdown": "Каждый раз.",
+      "tts": {
+        "text": "Каждый раз.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты раскладываешь купол на длинном мате.",
+      "text_markdown": "Ты раскладываешь купол на длинном мате.",
+      "tts": {
+        "text": "Ты раскладываешь купол на длинном мате.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты разглаживаешь стропы.",
+      "text_markdown": "Ты разглаживаешь стропы.",
+      "tts": {
+        "text": "Ты разглаживаешь стропы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты складываешь секции.",
+      "text_markdown": "Ты складываешь секции.",
+      "tts": {
+        "text": "Ты складываешь секции.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты собираешь ткань коконом, аккуратно вкладываешь её в чехол, прокладываешь уздечку, закрываешь ранец.",
+      "text_markdown": "Ты собираешь ткань коконом, аккуратно вкладываешь её в чехол, прокладываешь уздечку, закрываешь ранец.",
+      "tts": {
+        "text": "Ты собираешь ткань коконом, аккуратно вкладываешь её в чехол, прокладываешь уздечку, закрываешь ранец.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Это занимает около пятнадцати минут, и ты делаешь это медленно, потому что от этого самого куска ткани будет зависеть твоя жизнь.",
+      "text_markdown": "Это занимает около пятнадцати минут, и ты делаешь это медленно, потому что от этого самого куска ткани будет зависеть твоя жизнь.",
+      "tts": {
+        "text": "Это занимает около пятнадцати минут, и ты делаешь это медленно, потому что от этого самого куска ткани будет зависеть твоя жизнь.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Укладка это медитация.",
+      "text_markdown": "Укладка это медитация.",
+      "tts": {
+        "text": "Укладка это медитация.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Многие парашютисты говорят, что это самая любимая часть дня.",
+      "text_markdown": "Многие парашютисты говорят, что это самая любимая часть дня.",
+      "tts": {
+        "text": "Многие парашютисты говорят, что это самая любимая часть дня.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Мат, стропы, медленное складывание.",
+      "text_markdown": "Мат, стропы, медленное складывание.",
+      "tts": {
+        "text": "Мат, стропы, медленное складывание.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Плечо друга, который укладывается рядом.",
+      "text_markdown": "Плечо друга, который укладывается рядом.",
+      "tts": {
+        "text": "Плечо друга, который укладывается рядом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Радио в углу играет песню, которую ты слышал слишком много раз.",
+      "text_markdown": "Радио в углу играет песню, которую ты слышал слишком много раз.",
+      "tts": {
+        "text": "Радио в углу играет песню, которую ты слышал слишком много раз.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Спешить с укладкой нельзя.",
+      "text_markdown": "Спешить с укладкой нельзя.",
+      "tts": {
+        "text": "Спешить с укладкой нельзя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Небу нет дела до твоего расписания.",
+      "text_markdown": "Небу нет дела до твоего расписания.",
+      "tts": {
+        "text": "Небу нет дела до твоего расписания.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Образ мысли мастерства это терпение.",
+      "text_markdown": "Образ мысли мастерства это терпение.",
+      "tts": {
+        "text": "Образ мысли мастерства это терпение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это смирение.",
+      "text_markdown": "Это смирение.",
+      "tts": {
+        "text": "Это смирение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это готовность разбирать каждый прыжок, даже скучные.",
+      "text_markdown": "Это готовность разбирать каждый прыжок, даже скучные.",
+      "tts": {
+        "text": "Это готовность разбирать каждый прыжок, даже скучные.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Парашютисты обожают разговаривать после прыжка.",
+      "text_markdown": "Парашютисты обожают разговаривать после прыжка.",
+      "tts": {
+        "text": "Парашютисты обожают разговаривать после прыжка.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Они сидят за столом для пикника и проходят каждую секунду, поза за позой.",
+      "text_markdown": "Они сидят за столом для пикника и проходят каждую секунду, поза за позой.",
+      "tts": {
+        "text": "Они сидят за столом для пикника и проходят каждую секунду, поза за позой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Что получилось.",
+      "text_markdown": "Что получилось.",
+      "tts": {
+        "text": "Что получилось.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Что было неаккуратно.",
+      "text_markdown": "Что было неаккуратно.",
+      "tts": {
+        "text": "Что было неаккуратно.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Что они хотят попробовать в следующий раз.",
+      "text_markdown": "Что они хотят попробовать в следующий раз.",
+      "tts": {
+        "text": "Что они хотят попробовать в следующий раз.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Вот почему люди остаются.",
+      "text_markdown": "Вот почему люди остаются.",
+      "tts": {
+        "text": "Вот почему люди остаются.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Не потому, что падение это волнующе.",
+      "text_markdown": "Не потому, что падение это волнующе.",
+      "tts": {
+        "text": "Не потому, что падение это волнующе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Падение это лёгкая часть.",
+      "text_markdown": "Падение это лёгкая часть.",
+      "tts": {
+        "text": "Падение это лёгкая часть.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Люди остаются потому, что всегда есть чему учиться.",
+      "text_markdown": "Люди остаются потому, что всегда есть чему учиться.",
+      "tts": {
+        "text": "Люди остаются потому, что всегда есть чему учиться.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Всегда есть друг, с которым можно учиться.",
+      "text_markdown": "Всегда есть друг, с которым можно учиться.",
+      "tts": {
+        "text": "Всегда есть друг, с которым можно учиться.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "И всегда есть небо, которое ждёт тебя завтра в полдень.",
+      "text_markdown": "И всегда есть небо, которое ждёт тебя завтра в полдень.",
+      "tts": {
+        "text": "И всегда есть небо, которое ждёт тебя завтра в полдень.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Мгновения",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Мгновения",
+      "text_markdown": "Мгновения"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Дам тебе три.",
+      "text_markdown": "Дам тебе три.",
+      "tts": {
+        "text": "Дам тебе три.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первое это закатный вылет.",
+      "text_markdown": "Первое это закатный вылет.",
+      "tts": {
+        "text": "Первое это закатный вылет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Самолёт взлетает за двадцать минут до заката.",
+      "text_markdown": "Самолёт взлетает за двадцать минут до заката.",
+      "tts": {
+        "text": "Самолёт взлетает за двадцать минут до заката.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты поднимаешься сквозь слои оранжевого света, в кабине тепло, друзья молчат.",
+      "text_markdown": "Ты поднимаешься сквозь слои оранжевого света, в кабине тепло, друзья молчат.",
+      "tts": {
+        "text": "Ты поднимаешься сквозь слои оранжевого света, в кабине тепло, друзья молчат.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Когда дверь открывается на этот раз, воздух розовый.",
+      "text_markdown": "Когда дверь открывается на этот раз, воздух розовый.",
+      "tts": {
+        "text": "Когда дверь открывается на этот раз, воздух розовый.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Земля под тобой наполовину в тени, наполовину в золоте.",
+      "text_markdown": "Земля под тобой наполовину в тени, наполовину в золоте.",
+      "tts": {
+        "text": "Земля под тобой наполовину в тени, наполовину в золоте.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты делаешь шаг наружу, и шестьдесят секунд ты падаешь сквозь нутро заката.",
+      "text_markdown": "Ты делаешь шаг наружу, и шестьдесят секунд ты падаешь сквозь нутро заката.",
+      "tts": {
+        "text": "Ты делаешь шаг наружу, и шестьдесят секунд ты падаешь сквозь нутро заката.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это не выглядит реальным.",
+      "text_markdown": "Это не выглядит реальным.",
+      "tts": {
+        "text": "Это не выглядит реальным.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты увидишь цвета, о существовании которых твои глаза и не подозревали.",
+      "text_markdown": "Ты увидишь цвета, о существовании которых твои глаза и не подозревали.",
+      "tts": {
+        "text": "Ты увидишь цвета, о существовании которых твои глаза и не подозревали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Когда раскрывается твой парашют, ты паришь над миром, который на короткое время в огне.",
+      "text_markdown": "Когда раскрывается твой парашют, ты паришь над миром, который на короткое время в огне.",
+      "tts": {
+        "text": "Когда раскрывается твой парашют, ты паришь над миром, который на короткое время в огне.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ветер стих до полной тишины.",
+      "text_markdown": "Ветер стих до полной тишины.",
+      "tts": {
+        "text": "Ветер стих до полной тишины.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Зона приземления это крошечный зелёный квадрат под тобой, и горит один тёплый огонёк.",
+      "text_markdown": "Зона приземления это крошечный зелёный квадрат под тобой, и горит один тёплый огонёк.",
+      "tts": {
+        "text": "Зона приземления это крошечный зелёный квадрат под тобой, и горит один тёплый огонёк.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты выбираешь медленный круг и позволяешь себе приземлиться последним, потому что никто не хочет, чтобы это закончилось.",
+      "text_markdown": "Ты выбираешь медленный круг и позволяешь себе приземлиться последним, потому что никто не хочет, чтобы это закончилось.",
+      "tts": {
+        "text": "Ты выбираешь медленный круг и позволяешь себе приземлиться последним, потому что никто не хочет, чтобы это закончилось.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Когда твои ноги касаются травы, небо фиолетовое.",
+      "text_markdown": "Когда твои ноги касаются травы, небо фиолетовое.",
+      "tts": {
+        "text": "Когда твои ноги касаются травы, небо фиолетовое.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Твои друзья подходят со своих приземлений.",
+      "text_markdown": "Твои друзья подходят со своих приземлений.",
+      "tts": {
+        "text": "Твои друзья подходят со своих приземлений.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Один из них просто смотрит на тебя.",
+      "text_markdown": "Один из них просто смотрит на тебя.",
+      "tts": {
+        "text": "Один из них просто смотрит на тебя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Вы оба качаете головой.",
+      "text_markdown": "Вы оба качаете головой.",
+      "tts": {
+        "text": "Вы оба качаете головой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Никто из вас не может найти слов.",
+      "text_markdown": "Никто из вас не может найти слов.",
+      "tts": {
+        "text": "Никто из вас не может найти слов.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Второе это групповой прыжок.",
+      "text_markdown": "Второе это групповой прыжок.",
+      "tts": {
+        "text": "Второе это групповой прыжок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Вас восемь человек на этом вылете.",
+      "text_markdown": "Вас восемь человек на этом вылете.",
+      "tts": {
+        "text": "Вас восемь человек на этом вылете.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Вы сидите на скамье, шлемы на коленях, и ведущий рисует прыжок на маленькой доске.",
+      "text_markdown": "Вы сидите на скамье, шлемы на коленях, и ведущий рисует прыжок на маленькой доске.",
+      "tts": {
+        "text": "Вы сидите на скамье, шлемы на коленях, и ведущий рисует прыжок на маленькой доске.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Вы покинете самолёт кучкой, упадёте вместе, построите круг.",
+      "text_markdown": "Вы покинете самолёт кучкой, упадёте вместе, построите круг.",
+      "tts": {
+        "text": "Вы покинете самолёт кучкой, упадёте вместе, построите круг.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Каждый знает своё место.",
+      "text_markdown": "Каждый знает своё место.",
+      "tts": {
+        "text": "Каждый знает своё место.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Вы стукаетесь кулаками, проверяете снаряжение друг у друга, нервно смеётесь.",
+      "text_markdown": "Вы стукаетесь кулаками, проверяете снаряжение друг у друга, нервно смеётесь.",
+      "tts": {
+        "text": "Вы стукаетесь кулаками, проверяете снаряжение друг у друга, нервно смеётесь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Восемь взрослых людей, испуганных и взбудораженных одновременно, как дети на ночёвке.",
+      "text_markdown": "Восемь взрослых людей, испуганных и взбудораженных одновременно, как дети на ночёвке.",
+      "tts": {
+        "text": "Восемь взрослых людей, испуганных и взбудораженных одновременно, как дети на ночёвке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самолёт выравнивается.",
+      "text_markdown": "Самолёт выравнивается.",
+      "tts": {
+        "text": "Самолёт выравнивается.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Дверь открывается.",
+      "text_markdown": "Дверь открывается.",
+      "tts": {
+        "text": "Дверь открывается.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ваш ведущий шагает наружу, и остальные следуют за ним, в одно биение сердца друг от друга.",
+      "text_markdown": "Ваш ведущий шагает наружу, и остальные следуют за ним, в одно биение сердца друг от друга.",
+      "tts": {
+        "text": "Ваш ведущий шагает наружу, и остальные следуют за ним, в одно биение сердца друг от друга.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "В свободном падении вы находите друг друга почти не думая.",
+      "text_markdown": "В свободном падении вы находите друг друга почти не думая.",
+      "tts": {
+        "text": "В свободном падении вы находите друг друга почти не думая.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Руки встречают руки.",
+      "text_markdown": "Руки встречают руки.",
+      "tts": {
+        "text": "Руки встречают руки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Круг складывается.",
+      "text_markdown": "Круг складывается.",
+      "tts": {
+        "text": "Круг складывается.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "На несколько идеальных секунд восемь человек держат друг друга в небе.",
+      "text_markdown": "На несколько идеальных секунд восемь человек держат друг друга в небе.",
+      "tts": {
+        "text": "На несколько идеальных секунд восемь человек держат друг друга в небе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Падают с одинаковой скоростью.",
+      "text_markdown": "Падают с одинаковой скоростью.",
+      "tts": {
+        "text": "Падают с одинаковой скоростью.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Смотрят друг другу в глаза.",
+      "text_markdown": "Смотрят друг другу в глаза.",
+      "tts": {
+        "text": "Смотрят друг другу в глаза.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Потом высотомер говорит, что пора.",
+      "text_markdown": "Потом высотомер говорит, что пора.",
+      "tts": {
+        "text": "Потом высотомер говорит, что пора.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Вы отпускаете друг друга.",
+      "text_markdown": "Вы отпускаете друг друга.",
+      "tts": {
+        "text": "Вы отпускаете друг друга.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Вы расходитесь в стороны, чтобы вашим парашютам хватило места раскрыться.",
+      "text_markdown": "Вы расходитесь в стороны, чтобы вашим парашютам хватило места раскрыться.",
+      "tts": {
+        "text": "Вы расходитесь в стороны, чтобы вашим парашютам хватило места раскрыться.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "На земле вы не можете перестать обниматься.",
+      "text_markdown": "На земле вы не можете перестать обниматься.",
+      "tts": {
+        "text": "На земле вы не можете перестать обниматься.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Третье это прыжок после тяжёлого года.",
+      "text_markdown": "Третье это прыжок после тяжёлого года.",
+      "tts": {
+        "text": "Третье это прыжок после тяжёлого года.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Может, ты через что-то прошёл.",
+      "text_markdown": "Может, ты через что-то прошёл.",
+      "tts": {
+        "text": "Может, ты через что-то прошёл.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Плохой период на работе.",
+      "text_markdown": "Плохой период на работе.",
+      "tts": {
+        "text": "Плохой период на работе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Закончившиеся отношения.",
+      "text_markdown": "Закончившиеся отношения.",
+      "tts": {
+        "text": "Закончившиеся отношения.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Потеря, от которой обычный мир стал казаться тонким и далёким.",
+      "text_markdown": "Потеря, от которой обычный мир стал казаться тонким и далёким.",
+      "tts": {
+        "text": "Потеря, от которой обычный мир стал казаться тонким и далёким.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты прыгаешь не потому, что хочешь что-то почувствовать.",
+      "text_markdown": "Ты прыгаешь не потому, что хочешь что-то почувствовать.",
+      "tts": {
+        "text": "Ты прыгаешь не потому, что хочешь что-то почувствовать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты прыгаешь потому, что давно ничего не мог почувствовать, и хочешь узнать, ты всё ещё там, внутри.",
+      "text_markdown": "Ты прыгаешь потому, что давно ничего не мог почувствовать, и хочешь узнать, ты всё ещё там, внутри.",
+      "tts": {
+        "text": "Ты прыгаешь потому, что давно ничего не мог почувствовать, и хочешь узнать, ты всё ещё там, внутри.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самолёт набирает высоту.",
+      "text_markdown": "Самолёт набирает высоту.",
+      "tts": {
+        "text": "Самолёт набирает высоту.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Дверь открывается.",
+      "text_markdown": "Дверь открывается.",
+      "tts": {
+        "text": "Дверь открывается.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты делаешь шаг наружу.",
+      "text_markdown": "Ты делаешь шаг наружу.",
+      "tts": {
+        "text": "Ты делаешь шаг наружу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И в первые три секунды, прежде чем ветер тебя поймает, что-то внутри тебя раскрывается.",
+      "text_markdown": "И в первые три секунды, прежде чем ветер тебя поймает, что-то внутри тебя раскрывается.",
+      "tts": {
+        "text": "И в первые три секунды, прежде чем ветер тебя поймает, что-то внутри тебя раскрывается.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты не собирался плакать.",
+      "text_markdown": "Ты не собирался плакать.",
+      "tts": {
+        "text": "Ты не собирался плакать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты всё равно плачешь.",
+      "text_markdown": "Ты всё равно плачешь.",
+      "tts": {
+        "text": "Ты всё равно плачешь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Свободное падение делает свою работу.",
+      "text_markdown": "Свободное падение делает свою работу.",
+      "tts": {
+        "text": "Свободное падение делает свою работу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Шестьдесят долгих секунд, в которых только ветер, дыхание и падение.",
+      "text_markdown": "Шестьдесят долгих секунд, в которых только ветер, дыхание и падение.",
+      "tts": {
+        "text": "Шестьдесят долгих секунд, в которых только ветер, дыхание и падение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "И где-то там та часть тебя, что держала всё, наконец на минуту это откладывает.",
+      "text_markdown": "И где-то там та часть тебя, что держала всё, наконец на минуту это откладывает.",
+      "tts": {
+        "text": "И где-то там та часть тебя, что держала всё, наконец на минуту это откладывает.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Парашют раскрывается.",
+      "text_markdown": "Парашют раскрывается.",
+      "tts": {
+        "text": "Парашют раскрывается.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Мир становится тихим.",
+      "text_markdown": "Мир становится тихим.",
+      "tts": {
+        "text": "Мир становится тихим.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Ты висишь в подвесной системе, плачешь, смеёшься и снова плачешь.",
+      "text_markdown": "Ты висишь в подвесной системе, плачешь, смеёшься и снова плачешь.",
+      "tts": {
+        "text": "Ты висишь в подвесной системе, плачешь, смеёшься и снова плачешь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Никто тебя не видит.",
+      "text_markdown": "Никто тебя не видит.",
+      "tts": {
+        "text": "Никто тебя не видит.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "В этом и есть смысл.",
+      "text_markdown": "В этом и есть смысл.",
+      "tts": {
+        "text": "В этом и есть смысл.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Когда ты приземляешься, ты не починен.",
+      "text_markdown": "Когда ты приземляешься, ты не починен.",
+      "tts": {
+        "text": "Когда ты приземляешься, ты не починен.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты всё ещё несёшь то, что принёс туда наверх.",
+      "text_markdown": "Ты всё ещё несёшь то, что принёс туда наверх.",
+      "tts": {
+        "text": "Ты всё ещё несёшь то, что принёс туда наверх.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Но один полный час там, наверху, что-то в тебе вспомнило, как именно ощущается быть живым.",
+      "text_markdown": "Но один полный час там, наверху, что-то в тебе вспомнило, как именно ощущается быть живым.",
+      "tts": {
+        "text": "Но один полный час там, наверху, что-то в тебе вспомнило, как именно ощущается быть живым.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Парашютный спорт не решил твой год.",
+      "text_markdown": "Парашютный спорт не решил твой год.",
+      "tts": {
+        "text": "Парашютный спорт не решил твой год.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Он просто вернул его тебе на шестьдесят секунд, кусочками, которые можно удержать в руках.",
+      "text_markdown": "Он просто вернул его тебе на шестьдесят секунд, кусочками, которые можно удержать в руках.",
+      "tts": {
+        "text": "Он просто вернул его тебе на шестьдесят секунд, кусочками, которые можно удержать в руках.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Почему это остаётся",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Почему это остаётся",
+      "text_markdown": "Почему это остаётся"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Я прыгаю уже долгое время.",
+      "text_markdown": "Я прыгаю уже долгое время.",
+      "tts": {
+        "text": "Я прыгаю уже долгое время.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Достаточно долго, чтобы не помнить точного счёта.",
+      "text_markdown": "Достаточно долго, чтобы не помнить точного счёта.",
+      "tts": {
+        "text": "Достаточно долго, чтобы не помнить точного счёта.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Достаточно долго, чтобы вопрос, почему ты этим всё ещё занимаешься, перестал что-либо для меня значить.",
+      "text_markdown": "Достаточно долго, чтобы вопрос, почему ты этим всё ещё занимаешься, перестал что-либо для меня значить.",
+      "tts": {
+        "text": "Достаточно долго, чтобы вопрос, почему ты этим всё ещё занимаешься, перестал что-либо для меня значить.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Я хочу оставить тебе несколько вещей.",
+      "text_markdown": "Я хочу оставить тебе несколько вещей.",
+      "tts": {
+        "text": "Я хочу оставить тебе несколько вещей.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первое, парашютный спорт это не временное увлечение.",
+      "text_markdown": "Первое, парашютный спорт это не временное увлечение.",
+      "tts": {
+        "text": "Первое, парашютный спорт это не временное увлечение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Люди беспокоятся, когда видят, как этим занимается их друг.",
+      "text_markdown": "Люди беспокоятся, когда видят, как этим занимается их друг.",
+      "tts": {
+        "text": "Люди беспокоятся, когда видят, как этим занимается их друг.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Они думают, что это бунт, кризис среднего возраста, способ от чего-то убежать.",
+      "text_markdown": "Они думают, что это бунт, кризис среднего возраста, способ от чего-то убежать.",
+      "tts": {
+        "text": "Они думают, что это бунт, кризис среднего возраста, способ от чего-то убежать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Это не так.",
+      "text_markdown": "Это не так.",
+      "tts": {
+        "text": "Это не так.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Те, кто остаются, ни от чего не убегают.",
+      "text_markdown": "Те, кто остаются, ни от чего не убегают.",
+      "tts": {
+        "text": "Те, кто остаются, ни от чего не убегают.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Они, почти не осознавая этого, построили маленькую жизнь внутри неба.",
+      "text_markdown": "Они, почти не осознавая этого, построили маленькую жизнь внутри неба.",
+      "tts": {
+        "text": "Они, почти не осознавая этого, построили маленькую жизнь внутри неба.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Они приходят по субботам.",
+      "text_markdown": "Они приходят по субботам.",
+      "tts": {
+        "text": "Они приходят по субботам.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Они укладывают свои парашюты.",
+      "text_markdown": "Они укладывают свои парашюты.",
+      "tts": {
+        "text": "Они укладывают свои парашюты.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Они обнимают друзей.",
+      "text_markdown": "Они обнимают друзей.",
+      "tts": {
+        "text": "Они обнимают друзей.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Они едут домой на закате, уставшие в хорошем смысле.",
+      "text_markdown": "Они едут домой на закате, уставшие в хорошем смысле.",
+      "tts": {
+        "text": "Они едут домой на закате, уставшие в хорошем смысле.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "В понедельник они идут на работу и заметно добрее, чем были раньше.",
+      "text_markdown": "В понедельник они идут на работу и заметно добрее, чем были раньше.",
+      "tts": {
+        "text": "В понедельник они идут на работу и заметно добрее, чем были раньше.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Небо меняет тебя, но медленно.",
+      "text_markdown": "Небо меняет тебя, но медленно.",
+      "tts": {
+        "text": "Небо меняет тебя, но медленно.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ты становишься более присутствующим.",
+      "text_markdown": "Ты становишься более присутствующим.",
+      "tts": {
+        "text": "Ты становишься более присутствующим.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты меньше боишься мелочей, потому что у тебя была практика быть честным с большими вещами.",
+      "text_markdown": "Ты меньше боишься мелочей, потому что у тебя была практика быть честным с большими вещами.",
+      "tts": {
+        "text": "Ты меньше боишься мелочей, потому что у тебя была практика быть честным с большими вещами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ты легче смеёшься.",
+      "text_markdown": "Ты легче смеёшься.",
+      "tts": {
+        "text": "Ты легче смеёшься.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты чаще говоришь людям, что любишь их.",
+      "text_markdown": "Ты чаще говоришь людям, что любишь их.",
+      "tts": {
+        "text": "Ты чаще говоришь людям, что любишь их.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ты стоял в дверном проёме на двенадцати тысячах футов и помнил, что ничего не обещано.",
+      "text_markdown": "Ты стоял в дверном проёме на двенадцати тысячах футов и помнил, что ничего не обещано.",
+      "tts": {
+        "text": "Ты стоял в дверном проёме на двенадцати тысячах футов и помнил, что ничего не обещано.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если ты когда-нибудь окажешься за ужином с парашютистом, вот о чём ты можешь его спросить.",
+      "text_markdown": "Если ты когда-нибудь окажешься за ужином с парашютистом, вот о чём ты можешь его спросить.",
+      "tts": {
+        "text": "Если ты когда-нибудь окажешься за ужином с парашютистом, вот о чём ты можешь его спросить.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты можешь спросить, как он к этому пришёл.",
+      "text_markdown": "Ты можешь спросить, как он к этому пришёл.",
+      "tts": {
+        "text": "Ты можешь спросить, как он к этому пришёл.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Каждый парашютист помнит свой первый прыжок в ярких деталях, и он будет рад тебе рассказать.",
+      "text_markdown": "Каждый парашютист помнит свой первый прыжок в ярких деталях, и он будет рад тебе рассказать.",
+      "tts": {
+        "text": "Каждый парашютист помнит свой первый прыжок в ярких деталях, и он будет рад тебе рассказать.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ты можешь спросить, сколько прыжков он сделал.",
+      "text_markdown": "Ты можешь спросить, сколько прыжков он сделал.",
+      "tts": {
+        "text": "Ты можешь спросить, сколько прыжков он сделал.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он будет знать число с точностью до нескольких и не станет делать вид, что их больше, чем на самом деле.",
+      "text_markdown": "Он будет знать число с точностью до нескольких и не станет делать вид, что их больше, чем на самом деле.",
+      "tts": {
+        "text": "Он будет знать число с точностью до нескольких и не станет делать вид, что их больше, чем на самом деле.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ты можешь спросить, какой его любимый вид прыжка.",
+      "text_markdown": "Ты можешь спросить, какой его любимый вид прыжка.",
+      "tts": {
+        "text": "Ты можешь спросить, какой его любимый вид прыжка.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Кто-то скажет, закатный.",
+      "text_markdown": "Кто-то скажет, закатный.",
+      "tts": {
+        "text": "Кто-то скажет, закатный.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Кто-то скажет, большая формация.",
+      "text_markdown": "Кто-то скажет, большая формация.",
+      "tts": {
+        "text": "Кто-то скажет, большая формация.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Кто-то скажет, тихий одиночный прыжок спокойным вечером.",
+      "text_markdown": "Кто-то скажет, тихий одиночный прыжок спокойным вечером.",
+      "tts": {
+        "text": "Кто-то скажет, тихий одиночный прыжок спокойным вечером.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ты можешь спросить, было ли ему страшно в первый раз.",
+      "text_markdown": "Ты можешь спросить, было ли ему страшно в первый раз.",
+      "tts": {
+        "text": "Ты можешь спросить, было ли ему страшно в первый раз.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Конечно, было.",
+      "text_markdown": "Конечно, было.",
+      "tts": {
+        "text": "Конечно, было.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Всем страшно.",
+      "text_markdown": "Всем страшно.",
+      "tts": {
+        "text": "Всем страшно.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Он, скорее всего, упомянет ветер в дверях, счёт и то, как выглядит мир за мгновение до того, как ты делаешь шаг.",
+      "text_markdown": "Он, скорее всего, упомянет ветер в дверях, счёт и то, как выглядит мир за мгновение до того, как ты делаешь шаг.",
+      "tts": {
+        "text": "Он, скорее всего, упомянет ветер в дверях, счёт и то, как выглядит мир за мгновение до того, как ты делаешь шаг.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Слушай внимательно.",
+      "text_markdown": "Слушай внимательно.",
+      "tts": {
+        "text": "Слушай внимательно.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Он делает тебе маленький подарок.",
+      "text_markdown": "Он делает тебе маленький подарок.",
+      "tts": {
+        "text": "Он делает тебе маленький подарок.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если хочешь увидеть, как у парашютиста загораются глаза, попроси его описать тот момент, когда раскрывается парашют.",
+      "text_markdown": "Если хочешь увидеть, как у парашютиста загораются глаза, попроси его описать тот момент, когда раскрывается парашют.",
+      "tts": {
+        "text": "Если хочешь увидеть, как у парашютиста загораются глаза, попроси его описать тот момент, когда раскрывается парашют.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он закроет глаза на полсекунды.",
+      "text_markdown": "Он закроет глаза на полсекунды.",
+      "tts": {
+        "text": "Он закроет глаза на полсекунды.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Потом попробует.",
+      "text_markdown": "Потом попробует.",
+      "tts": {
+        "text": "Потом попробует.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Каждый раз он будет использовать другое слово.",
+      "text_markdown": "Каждый раз он будет использовать другое слово.",
+      "tts": {
+        "text": "Каждый раз он будет использовать другое слово.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Может, тихо.",
+      "text_markdown": "Может, тихо.",
+      "tts": {
+        "text": "Может, тихо.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Может, мягко.",
+      "text_markdown": "Может, мягко.",
+      "tts": {
+        "text": "Может, мягко.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Как пробуждение.",
+      "text_markdown": "Как пробуждение.",
+      "tts": {
+        "text": "Как пробуждение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Как возвращение домой.",
+      "text_markdown": "Как возвращение домой.",
+      "tts": {
+        "text": "Как возвращение домой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Никто не описывает это дважды одинаково.",
+      "text_markdown": "Никто не описывает это дважды одинаково.",
+      "tts": {
+        "text": "Никто не описывает это дважды одинаково.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Не бойся признаться, что ты никогда не прыгал.",
+      "text_markdown": "Не бойся признаться, что ты никогда не прыгал.",
+      "tts": {
+        "text": "Не бойся признаться, что ты никогда не прыгал.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Парашютисты обожают этот вопрос.",
+      "text_markdown": "Парашютисты обожают этот вопрос.",
+      "tts": {
+        "text": "Парашютисты обожают этот вопрос.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Парашютисты ещё обожают говорить тебе, что тебе стоит попробовать, и потом очень серьёзно говорить, что они пойдут вместе с тобой.",
+      "text_markdown": "Парашютисты ещё обожают говорить тебе, что тебе стоит попробовать, и потом очень серьёзно говорить, что они пойдут вместе с тобой.",
+      "tts": {
+        "text": "Парашютисты ещё обожают говорить тебе, что тебе стоит попробовать, и потом очень серьёзно говорить, что они пойдут вместе с тобой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Большинство из нас приводили друга на его первый прыжок.",
+      "text_markdown": "Большинство из нас приводили друга на его первый прыжок.",
+      "tts": {
+        "text": "Большинство из нас приводили друга на его первый прыжок.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Это одно из величайших удовольствий этого спорта.",
+      "text_markdown": "Это одно из величайших удовольствий этого спорта.",
+      "tts": {
+        "text": "Это одно из величайших удовольствий этого спорта.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В конце этой книги нет большого урока.",
+      "text_markdown": "В конце этой книги нет большого урока.",
+      "tts": {
+        "text": "В конце этой книги нет большого урока.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Только это.",
+      "text_markdown": "Только это.",
+      "tts": {
+        "text": "Только это.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Где-то в мире прямо сейчас маленькая группа спокойных и терпеливых людей идёт к самолёту.",
+      "text_markdown": "Где-то в мире прямо сейчас маленькая группа спокойных и терпеливых людей идёт к самолёту.",
+      "tts": {
+        "text": "Где-то в мире прямо сейчас маленькая группа спокойных и терпеливых людей идёт к самолёту.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Поле залито солнцем.",
+      "text_markdown": "Поле залито солнцем.",
+      "tts": {
+        "text": "Поле залито солнцем.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Трава тёплая.",
+      "text_markdown": "Трава тёплая.",
+      "tts": {
+        "text": "Трава тёплая.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Они проверяют снаряжение друг у друга.",
+      "text_markdown": "Они проверяют снаряжение друг у друга.",
+      "tts": {
+        "text": "Они проверяют снаряжение друг у друга.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Они улыбаются.",
+      "text_markdown": "Они улыбаются.",
+      "tts": {
+        "text": "Они улыбаются.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Через тридцать минут они будут в небе и будут заниматься самой тихой вещью, которую умеют.",
+      "text_markdown": "Через тридцать минут они будут в небе и будут заниматься самой тихой вещью, которую умеют.",
+      "tts": {
+        "text": "Через тридцать минут они будут в небе и будут заниматься самой тихой вещью, которую умеют.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Может, однажды ты будешь одним из них.",
+      "text_markdown": "Может, однажды ты будешь одним из них.",
+      "tts": {
+        "text": "Может, однажды ты будешь одним из них.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Может, однажды нет.",
+      "text_markdown": "Может, однажды нет.",
+      "tts": {
+        "text": "Может, однажды нет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Так или иначе, небо есть.",
+      "text_markdown": "Так или иначе, небо есть.",
+      "tts": {
+        "text": "Так или иначе, небо есть.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Оно всегда было.",
+      "text_markdown": "Оно всегда было.",
+      "tts": {
+        "text": "Оно всегда было.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Оно ждёт, терпеливо, на случай если тебе когда-нибудь захочется наклониться.",
+      "text_markdown": "Оно ждёт, терпеливо, на случай если тебе когда-нибудь захочется наклониться.",
+      "tts": {
+        "text": "Оно ждёт, терпеливо, на случай если тебе когда-нибудь захочется наклониться.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

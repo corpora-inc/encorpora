@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "he",
+  "total_segments": 121,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ברוכים הבאים ל-AI השבוע.",
+      "text_markdown": "ברוכים הבאים ל-AI השבוע.",
+      "title": "",
+      "tts": {
+        "text": "ברוכים הבאים ל-AI השבוע.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אני וינדי.",
+      "text_markdown": "אני וינדי.",
+      "title": "",
+      "tts": {
+        "text": "אני וינדי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "איתי, כרגיל, רון.",
+      "text_markdown": "איתי, כרגיל, רון.",
+      "title": "",
+      "tts": {
+        "text": "איתי, כרגיל, רון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "טוב להיות כאן, וינדי.",
+      "text_markdown": "טוב להיות כאן, וינדי.",
+      "title": "",
+      "tts": {
+        "text": "טוב להיות כאן, וינדי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "היום יום ראשון, 14 ביוני, 2026.",
+      "text_markdown": "היום יום ראשון, 14 ביוני, 2026.",
+      "title": "",
+      "tts": {
+        "text": "היום יום ראשון, ארבעה עשר ביוני, אלפיים עשרים ושש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "שני דברים שונים היום.",
+      "text_markdown": "שני דברים שונים היום.",
+      "title": "",
+      "tts": {
+        "text": "שני דברים שונים היום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אנחנו עוברים לימי ראשון, ולראשונה אנחנו הולכים לספר לכם מי באמת עושה את התוכנית הזו.",
+      "text_markdown": "אנחנו עוברים לימי ראשון, ולראשונה אנחנו הולכים לספר לכם מי באמת עושה את התוכנית הזו.",
+      "title": "",
+      "tts": {
+        "text": "אנחנו עוברים לימי ראשון, ולראשונה אנחנו הולכים לספר לכם מי באמת עושה את התוכנית הזו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ואז חזרה לתוכנית הרגילה – משקלים פתוחים, מעבדות קטנות, ושבוע ה-AI הרחב יותר.",
+      "text_markdown": "ואז חזרה לתוכנית הרגילה – משקלים פתוחים, מעבדות קטנות, ושבוע ה-AI הרחב יותר.",
+      "title": "",
+      "tts": {
+        "text": "ואז חזרה לתוכנית הרגילה – משקלים פתוחים, מעבדות קטנות, ושבוע ה-AI הרחב יותר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בהמשך – שינוי לוח הזמנים ולמה.",
+      "text_markdown": "בהמשך – שינוי לוח הזמנים ולמה.",
+      "title": "",
+      "tts": {
+        "text": "בהמשך – שינוי לוח הזמנים ולמה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מבט ראשון על Corpora Inc., הצוות הקטן שמאחורי אפליקציית Corpán והפודקאסט הזה.",
+      "text_markdown": "מבט ראשון על Corpora Inc., הצוות הקטן שמאחורי אפליקציית Corpán והפודקאסט הזה.",
+      "title": "",
+      "tts": {
+        "text": "מבט ראשון על Corpora Inc., הצוות הקטן שמאחורי אפליקציית Corpán והפודקאסט הזה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "כתבה מובילה על beatlounge, חבילת המוזיקה החדשה שלנו שמושקת ב-Corpán 0.18.0.",
+      "text_markdown": "כתבה מובילה על beatlounge, חבילת המוזיקה החדשה שלנו שמושקת ב-Corpán 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "כתבה מובילה על beatlounge, חבילת המוזיקה החדשה שלנו שמושקת ב-Corpán אפס נקודה אחד שמונה נקודה אפס.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "משקלים פתוחים של השבוע, בהובלת מודל טקסט הדיפוזיה הפתוח הראשון של גוגל.",
+      "text_markdown": "משקלים פתוחים של השבוע, בהובלת מודל טקסט הדיפוזיה הפתוח הראשון של גוגל.",
+      "title": "",
+      "tts": {
+        "text": "משקלים פתוחים של השבוע, בהובלת מודל טקסט הדיפוזיה הפתוח הראשון של גוגל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "קליפ מהיר של כותרות דרך עדשת האקוסיסטם הפתוח.",
+      "text_markdown": "קליפ מהיר של כותרות דרך עדשת האקוסיסטם הפתוח.",
+      "title": "",
+      "tts": {
+        "text": "קליפ מהיר של כותרות דרך עדשת האקוסיסטם הפתוח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מעבדה קטנה של השבוע – אחד עשר אנשים בפריז שעושים הימור קונטררי על סיליקון AMD.",
+      "text_markdown": "מעבדה קטנה של השבוע – אחד עשר אנשים בפריז שעושים הימור קונטררי על סיליקון AMD.",
+      "title": "",
+      "tts": {
+        "text": "מעבדה קטנה של השבוע – אחד עשר אנשים בפריז שעושים הימור קונטררי על סיליקון AMD.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "והקונספט שלנו לשבוע – דיפוזיה מול אוטורגרסיבי, הטריק שמאחורי ההשקה המובילה של השבוע.",
+      "text_markdown": "והקונספט שלנו לשבוע – דיפוזיה מול אוטורגרסיבי, הטריק שמאחורי ההשקה המובילה של השבוע.",
+      "title": "",
+      "tts": {
+        "text": "והקונספט שלנו לשבוע – דיפוזיה מול אוטורגרסיבי, הטריק שמאחורי ההשקה המובילה של השבוע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "רון, בוא נתחיל עם לוח הזמנים.",
+      "text_markdown": "רון, בוא נתחיל עם לוח הזמנים.",
+      "title": "",
+      "tts": {
+        "text": "רון, בוא נתחיל עם לוח הזמנים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "למה אנחנו עוזבים את ימי רביעי?",
+      "text_markdown": "למה אנחנו עוזבים את ימי רביעי?",
+      "title": "",
+      "tts": {
+        "text": "למה אנחנו עוזבים את ימי רביעי?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "יום רביעי היה יומו של אודין, ואודין היה עסוק בשלטון באסגרד.",
+      "text_markdown": "יום רביעי היה יומו של אודין, ואודין היה עסוק בשלטון באסגרד.",
+      "title": "",
+      "tts": {
+        "text": "יום רביעי היה יומו של אודין, ואודין היה עסוק בשלטון באסגרד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אנחנו צוות קטן עם עבודות יום, וקיצוץ באמצע השבוע מעולם לא יצא חלק באמת.",
+      "text_markdown": "אנחנו צוות קטן עם עבודות יום, וקיצוץ באמצע השבוע מעולם לא יצא חלק באמת.",
+      "title": "",
+      "tts": {
+        "text": "אנחנו צוות קטן עם עבודות יום, וקיצוץ באמצע השבוע מעולם לא יצא חלק באמת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ימי ראשון מסיימים את השבוע ומתחילים את הבא, מה שהרגיש כמו הקצב הנכון לתוכנית חדשות.",
+      "text_markdown": "ימי ראשון מסיימים את השבוע ומתחילים את הבא, מה שהרגיש כמו הקצב הנכון לתוכנית חדשות.",
+      "title": "",
+      "tts": {
+        "text": "ימי ראשון מסיימים את השבוע ומתחילים את הבא, מה שהרגיש כמו הקצב הנכון לתוכנית חדשות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "איך נראית ההשקה בפועל?",
+      "text_markdown": "איך נראית ההשקה בפועל?",
+      "title": "",
+      "tts": {
+        "text": "איך נראית ההשקה בפועל?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זה מתחיל בשבת באנגלית ומתגלגל עד יום שני בבוקר, שפה אחר שפה, ככל שכל תרגום ומעבר אודיו מסתיימים.",
+      "text_markdown": "זה מתחיל בשבת באנגלית ומתגלגל עד יום שני בבוקר, שפה אחר שפה, ככל שכל תרגום ומעבר אודיו מסתיימים.",
+      "title": "",
+      "tts": {
+        "text": "זה מתחיל בשבת באנגלית ומתגלגל עד יום שני בבוקר, שפה אחר שפה, ככל שכל תרגום ומעבר אודיו מסתיימים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "עד קפה של יום שני, אנחנו אמורים להיות קרוב לחמישים שפות.",
+      "text_markdown": "עד קפה של יום שני, אנחנו אמורים להיות קרוב לחמישים שפות.",
+      "title": "",
+      "tts": {
+        "text": "עד קפה של יום שני, אנחנו אמורים להיות קרוב לחמישים שפות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה שמביא אותנו לדבר החדש השני.",
+      "text_markdown": "מה שמביא אותנו לדבר החדש השני.",
+      "title": "",
+      "tts": {
+        "text": "מה שמביא אותנו לדבר החדש השני.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מי עושה את התוכנית הזו.",
+      "text_markdown": "מי עושה את התוכנית הזו.",
+      "title": "",
+      "tts": {
+        "text": "מי עושה את התוכנית הזו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Corpora Inc., צוות קטן ועצמאי, בונה את אפליקציית Corpán ומפיק את הפודקאסט הזה.",
+      "text_markdown": "Corpora Inc., צוות קטן ועצמאי, בונה את אפליקציית Corpán ומפיק את הפודקאסט הזה.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc., צוות קטן ועצמאי, בונה את אפליקציית Corpán ומפיק את הפודקאסט הזה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה זה Corpán?",
+      "text_markdown": "מה זה Corpán?",
+      "title": "",
+      "tts": {
+        "text": "מה זה Corpán?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מגרש משחקים לשפה, מוזיקה ולמידה שנבנה בגישת 'מכשיר-ראשון'.",
+      "text_markdown": "מגרש משחקים לשפה, מוזיקה ולמידה שנבנה בגישת 'מכשיר-ראשון'.",
+      "title": "",
+      "tts": {
+        "text": "מגרש משחקים לשפה, מוזיקה ולמידה שנבנה בגישת 'מכשיר ראשון'.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "פרט את 'מכשיר-ראשון' – מה זה אומר בפועל?",
+      "text_markdown": "פרט את 'מכשיר-ראשון' – מה זה אומר בפועל?",
+      "title": "",
+      "tts": {
+        "text": "פרט את 'מכשיר ראשון' – מה זה אומר בפועל?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זה אומר שאנחנו נותנים עדיפות להרצה מקומית בכל פעם שהתכונה מאפשרת זאת.",
+      "text_markdown": "זה אומר שאנחנו נותנים עדיפות להרצה מקומית בכל פעם שהתכונה מאפשרת זאת.",
+      "title": "",
+      "tts": {
+        "text": "זה אומר שאנחנו נותנים עדיפות להרצה מקומית בכל פעם שהתכונה מאפשרת זאת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "קוון3-4B לעוזר, וויספר לארג'-v3 לזיהוי דיבור, צ'אטרבוקס לסינתזת קול, סטייבל דיפיוז'ן שלוש-וחצי לתמונות, פייפליינס של LoRA למנחים לדמויות.",
+      "text_markdown": "קוון3-4B לעוזר, וויספר לארג'-v3 לזיהוי דיבור, צ'אטרבוקס לסינתזת קול, סטייבל דיפיוז'ן שלוש-וחצי לתמונות, פייפליינס של LoRA למנחים לדמויות.",
+      "title": "",
+      "tts": {
+        "text": "קוון שלוש ארבע בי לעוזר, וויספר לארג' וי שלוש לזיהוי דיבור, צ'אטרבוקס לסינתזת קול, סטייבל דיפיוז'ן שלוש וחצי לתמונות, פייפליינס של לורה למנחים לדמויות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "כל זה רץ על הטלפון או הטאבלט שלכם, אופליין, במצב טיסה, באמצע שום מקום.",
+      "text_markdown": "כל זה רץ על הטלפון או הטאבלט שלכם, אופליין, במצב טיסה, באמצע שום מקום.",
+      "title": "",
+      "tts": {
+        "text": "כל זה רץ על הטלפון או הטאבלט שלכם, אופליין, במצב טיסה, באמצע שום מקום.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "פיצ'רים שבאמת זקוקים לרשת — רדיו עולמי, מרובה משתתפים — משתמשים ברשת, ואנחנו לא מעמידים פנים אחרת.",
+      "text_markdown": "פיצ'רים שבאמת זקוקים לרשת — רדיו עולמי, מרובה משתתפים — משתמשים ברשת, ואנחנו לא מעמידים פנים אחרת.",
+      "title": "",
+      "tts": {
+        "text": "פיצ'רים שבאמת זקוקים לרשת — רדיו עולמי, מרובה משתתפים — משתמשים ברשת, ואנחנו לא מעמידים פנים אחרת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "וגם הצד העסקי.",
+      "text_markdown": "וגם הצד העסקי.",
+      "title": "",
+      "tts": {
+        "text": "וגם הצד העסקי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "צוות עצמאי ורזה, ללא מיליארד דולר של הון מאחורינו, ללא פרסומות באפליקציה היום, עם שכבת שימוש חינמית נדיבה ומנוי פרימיום אופציונלי לאנשים שרוצים לתמוך בעבודה.",
+      "text_markdown": "צוות עצמאי ורזה, ללא מיליארד דולר של הון מאחורינו, ללא פרסומות באפליקציה היום, עם שכבת שימוש חינמית נדיבה ומנוי פרימיום אופציונלי לאנשים שרוצים לתמוך בעבודה.",
+      "title": "",
+      "tts": {
+        "text": "צוות עצמאי ורזה, ללא מיליארד דולר של הון מאחורינו, ללא פרסומות באפליקציה היום, עם שכבת שימוש חינמית נדיבה ומנוי פרימיום אופציונלי לאנשים שרוצים לתמוך בעבודה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "נשמח להישאר ללא פרסומות כל עוד נוכל — אין הבטחות לנצח, אבל זה הכיוון.",
+      "text_markdown": "נשמח להישאר ללא פרסומות כל עוד נוכל — אין הבטחות לנצח, אבל זה הכיוון.",
+      "title": "",
+      "tts": {
+        "text": "נשמח להישאר ללא פרסומות כל עוד נוכל — אין הבטחות לנצח, אבל זה הכיוון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מהי ההוכחה שאתם באמת מספקים.",
+      "text_markdown": "מהי ההוכחה שאתם באמת מספקים.",
+      "title": "",
+      "tts": {
+        "text": "מהי ההוכחה שאתם באמת מספקים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ברוב השבועות אנחנו מספקים משהו — קריינות ספר, חבילה, גרסת אפליקציה, התוכנית הזו — ביותר משלושים וחמש שפות היום, והמספר עולה.",
+      "text_markdown": "ברוב השבועות אנחנו מספקים משהו — קריינות ספר, חבילה, גרסת אפליקציה, התוכנית הזו — ביותר משלושים וחמש שפות היום, והמספר עולה.",
+      "title": "",
+      "tts": {
+        "text": "ברוב השבועות אנחנו מספקים משהו — קריינות ספר, חבילה, גרסת אפליקציה, התוכנית הזו — ביותר משלושים וחמש פלוס שפות היום, והמספר עולה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "למה לעשות את זה בכלל.",
+      "text_markdown": "למה לעשות את זה בכלל.",
+      "title": "",
+      "tts": {
+        "text": "למה לעשות את זה בכלל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זהו הפיץ' — להוכיח שחווית למידה רב-לשונית, איכותית ופורצת דרך, המבוססת קודם כל על המכשיר, יכולה להגיע מצוות קטן ללא הון גדול, תוך שמירה על האפליקציה ללא פרסומות כל עוד נוכל.",
+      "text_markdown": "זהו הפיץ' — להוכיח שחווית למידה רב-לשונית, איכותית ופורצת דרך, המבוססת קודם כל על המכשיר, יכולה להגיע מצוות קטן ללא הון גדול, תוך שמירה על האפליקציה ללא פרסומות כל עוד נוכל.",
+      "title": "",
+      "tts": {
+        "text": "זהו הפיץ' — להוכיח שחווית למידה רב-לשונית, איכותית ופורצת דרך, המבוססת קודם כל על המכשיר, יכולה להגיע מצוות קטן ללא הון גדול, תוך שמירה על האפליקציה ללא פרסומות כל עוד נוכל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה שמביא אותנו לסיפור המרכזי — ביטלנג'.",
+      "text_markdown": "מה שמביא אותנו לסיפור המרכזי — ביטלנג'.",
+      "title": "",
+      "tts": {
+        "text": "מה שמביא אותנו לסיפור המרכזי — ביטלנג'.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "הוא מושק בקורפאן 0.18.0 השבוע.",
+      "text_markdown": "הוא מושק בקורפאן 0.18.0 השבוע.",
+      "title": "",
+      "tts": {
+        "text": "הוא מושק בקורפאן אפס נקודה אחד שמונה נקודה אפס השבוע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ביטלנג' הוא סיקוונסר ביטים וכלי שפה בקופסה אחת.",
+      "text_markdown": "ביטלנג' הוא סיקוונסר ביטים וכלי שפה בקופסה אחת.",
+      "title": "",
+      "tts": {
+        "text": "ביטלנג' הוא סיקוונסר ביטים וכלי שפה בקופסה אחת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "סיקוונסר מבוסס טיקים בתשע מאות שישים פולסים לרבע, מנוע הרמוניה שמדבר מודוסים מערביים, ת'אטים הודיים, מלקארטות קרנאטיות, ומקאמאת ערביים, וקורפוס ביטויים של יותר מעשרה מיליון ביטויי שפה אמיתיים ביותר מחמישים שפות.",
+      "text_markdown": "סיקוונסר מבוסס טיקים בתשע מאות שישים פולסים לרבע, מנוע הרמוניה שמדבר מודוסים מערביים, ת'אטים הודיים, מלקארטות קרנאטיות, ומקאמאת ערביים, וקורפוס ביטויים של יותר מעשרה מיליון ביטויי שפה אמיתיים ביותר מחמישים שפות.",
+      "title": "",
+      "tts": {
+        "text": "סיקוונסר מבוסס טיקים בתשע מאות שישים פולסים לרבע, מנוע הרמוניה שמדבר מודוסים מערביים, ת'אטים הודיים, מלקארטות קרנאטיות, ומקאמאת ערביים, וקורפוס ביטויים של יותר מעשרה מיליון ביטויי שפה אמיתיים ביותר מחמישים שפות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "כולם ניתנים לביצוע בפיץ', וניתנים לנגינה אופליין ברגע שהחבילה נמצאת במכשיר שלכם.",
+      "text_markdown": "כולם ניתנים לביצוע בפיץ', וניתנים לנגינה אופליין ברגע שהחבילה נמצאת במכשיר שלכם.",
+      "title": "",
+      "tts": {
+        "text": "כולם ניתנים לביצוע בפיץ', וניתנים לנגינה אופליין ברגע שהחבילה נמצאת במכשיר שלכם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אז הכלי הוא השפה.",
+      "text_markdown": "אז הכלי הוא השפה.",
+      "title": "",
+      "tts": {
+        "text": "אז הכלי הוא השפה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אתם מנגנים ביטויים כמו שהייתם מנגנים תווים.",
+      "text_markdown": "אתם מנגנים ביטויים כמו שהייתם מנגנים תווים.",
+      "title": "",
+      "tts": {
+        "text": "אתם מנגנים ביטויים כמו שהייתם מנגנים תווים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ביטוי הינדי על ביט אחד, קריאת ביניים ערבית על גב שניים, הברה מנדרינית כהתנפחות סרט.",
+      "text_markdown": "ביטוי הינדי על ביט אחד, קריאת ביניים ערבית על גב שניים, הברה מנדרינית כהתנפחות סרט.",
+      "title": "",
+      "tts": {
+        "text": "ביטוי הינדי על ביט אחד, קריאת ביניים ערבית על גב שניים, הברה מנדרינית כהתנפחות סרט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "זוהי DAW שבה הדגימות הן משפטים, מדובבים על ידי TTS במכשיר.",
+      "text_markdown": "זוהי DAW שבה הדגימות הן משפטים, מדובבים על ידי TTS במכשיר.",
+      "title": "",
+      "tts": {
+        "text": "זוהי די.איי.דאב שבה הדגימות הן משפטים, מדובבים על ידי טי.טי.אס במכשיר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אין צורך בתורת המוזיקה.",
+      "text_markdown": "אין צורך בתורת המוזיקה.",
+      "title": "",
+      "tts": {
+        "text": "אין צורך בתורת המוזיקה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שום דבר באמת.",
+      "text_markdown": "שום דבר באמת.",
+      "title": "",
+      "tts": {
+        "text": "שום דבר באמת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מנוע ההרמוניה מטפל בכללים; אתם מצביעים על צלילים שאתם אוהבים והמודוסים נשארים נקיים.",
+      "text_markdown": "מנוע ההרמוניה מטפל בכללים; אתם מצביעים על צלילים שאתם אוהבים והמודוסים נשארים נקיים.",
+      "title": "",
+      "tts": {
+        "text": "מנוע ההרמוניה מטפל בכללים; אתם מצביעים על צלילים שאתם אוהבים והמודוסים נשארים נקיים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה עוד יש ב-0.18.0.",
+      "text_markdown": "מה עוד יש ב-0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "מה עוד יש באפס נקודה אחד שמונה נקודה אפס.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שלושה פריטי הנדסה מתחת למכסה המנוע — תפרי מארח לחבילות תוכן עלו לאוויר עם ביטלנג' כפיילוט.",
+      "text_markdown": "שלושה פריטי הנדסה מתחת למכסה המנוע — תפרי מארח לחבילות תוכן עלו לאוויר עם ביטלנג' כפיילוט.",
+      "title": "",
+      "tts": {
+        "text": "שלושה פריטי הנדסה מתחת למכסה המנוע — תפרי מארח לחבילות תוכן עלו לאוויר עם ביטלנג' כפיילוט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אנדרואיד לוכד כעת פירורי לחם של תקלות מקוריות כך שקריסות של לאמה ו-ggml מאובחנות כראוי.",
+      "text_markdown": "אנדרואיד לוכד כעת פירורי לחם של תקלות מקוריות כך שקריסות של לאמה ו-ggml מאובחנות כראוי.",
+      "title": "",
+      "tts": {
+        "text": "אנדרואיד לוכד כעת פירורי לחם של תקלות מקוריות כך שקריסות של לאמה וג'י ג'י אם אל מאובחנות כראוי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ותיקנו את התקנת המודל מרובה הג'יגה-בייט שנהגה לגרום ל-OOM ב-iOS — כעת הוא מזרימים לדיסק במקום לאגור שניים וחצי ג'יגה-בייט של קוון3-4B ב-RAM.",
+      "text_markdown": "ותיקנו את התקנת המודל מרובה הג'יגה-בייט שנהגה לגרום ל-OOM ב-iOS — כעת הוא מזרימים לדיסק במקום לאגור שניים וחצי ג'יגה-בייט של קוון3-4B ב-RAM.",
+      "title": "",
+      "tts": {
+        "text": "ותיקנו את התקנת המודל מרובה הג'יגה-בייט שנהגה לגרום לאו.או.אם באיי.או.אס — כעת הוא מזרימים לדיסק במקום לאגור שניים וחצי ג'יגה-בייט של קוון שלוש ארבע בי בראם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "משעמם מתחת, כיף למעלה.",
+      "text_markdown": "משעמם מתחת, כיף למעלה.",
+      "title": "",
+      "tts": {
+        "text": "משעמם מתחת, כיף למעלה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שזה בערך תקציר החברה כולה.",
+      "text_markdown": "שזה בערך תקציר החברה כולה.",
+      "title": "",
+      "tts": {
+        "text": "שזה בערך תקציר החברה כולה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אוקיי, בואו נעבור למשקלים פתוחים.",
+      "text_markdown": "אוקיי, בואו נעבור למשקלים פתוחים.",
+      "title": "",
+      "tts": {
+        "text": "אוקיי, בואו נעבור למשקלים פתוחים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה היה הדבר הגדול השבוע.",
+      "text_markdown": "מה היה הדבר הגדול השבוע.",
+      "title": "",
+      "tts": {
+        "text": "מה היה הדבר הגדול השבוע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "גוגל השיקה את DiffusionGemma.",
+      "text_markdown": "גוגל השיקה את DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "גוגל השיקה את DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "תערובת מומחים עם עשרים ושישה מיליארד פרמטרים, מתוכם שלושה נקודה שמונה מיליארד פעילים, ברישיון Apache 2.0 ב-Hugging Face, שמייצרת טקסט באמצעות דיפוזיה במקום אוטורגרסיה.",
+      "text_markdown": "תערובת מומחים עם עשרים ושישה מיליארד פרמטרים, מתוכם שלושה נקודה שמונה מיליארד פעילים, ברישיון Apache 2.0 ב-Hugging Face, שמייצרת טקסט באמצעות דיפוזיה במקום אוטורגרסיה.",
+      "title": "",
+      "tts": {
+        "text": "תערובת מומחים עם עשרים ושישה מיליארד פרמטרים, מתוכם שלושה נקודה שמונה מיליארד פעילים, ברישיון אפאצ'י שתיים נקודה אפס ב-Hugging Face, שמייצרת טקסט באמצעות דיפוזיה במקום אוטורגרסיה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "בשפה פשוטה — מה בעצם אומרת דיפוזיה-לטקסט.",
+      "text_markdown": "בשפה פשוטה — מה בעצם אומרת דיפוזיה-לטקסט.",
+      "title": "",
+      "tts": {
+        "text": "בשפה פשוטה — מה בעצם אומרת דיפוזיה לטקסט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "במקום לחזות טוקן אחד בכל פעם, הוא מנקה רעש מבלוק של מאתיים חמישים ושישה טוקנים במקביל.",
+      "text_markdown": "במקום לחזות טוקן אחד בכל פעם, הוא מנקה רעש מבלוק של מאתיים חמישים ושישה טוקנים במקביל.",
+      "title": "",
+      "tts": {
+        "text": "במקום לחזות טוקן אחד בכל פעם, הוא מנקה רעש מבלוק של מאתיים חמישים ושישה טוקנים במקביל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מעל אלף טוקנים בשנייה על H100 בודד, בערך פי ארבעה מהר יותר מה-Gemma האוטורגרסיבי המקביל.",
+      "text_markdown": "מעל אלף טוקנים בשנייה על H100 בודד, בערך פי ארבעה מהר יותר מה-Gemma האוטורגרסיבי המקביל.",
+      "title": "",
+      "tts": {
+        "text": "מעל אלף טוקנים בשנייה על H מאה בודד, בערך פי ארבעה מהר יותר מה-Gemma האוטורגרסיבי המקביל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "והמכשול.",
+      "text_markdown": "והמכשול.",
+      "title": "",
+      "tts": {
+        "text": "והמכשול.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ציונים נמוכים יותר ב-MMLU ובקידוד — גוגל אומרת זאת בעצמה; מהדורה זו מיועדת לעבודה קריטית למהירות, לא לטיפוס בטבלאות המובילים.",
+      "text_markdown": "ציונים נמוכים יותר ב-MMLU ובקידוד — גוגל אומרת זאת בעצמה; מהדורה זו מיועדת לעבודה קריטית למהירות, לא לטיפוס בטבלאות המובילים.",
+      "title": "",
+      "tts": {
+        "text": "ציונים נמוכים יותר ב-MMLU ובקידוד — גוגל אומרת זאת בעצמה; מהדורה זו מיועדת לעבודה קריטית למהירות, לא לטיפוס בטבלאות המובילים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ומודלי קול פתוחים — כל דבר.",
+      "text_markdown": "ומודלי קול פתוחים — כל דבר.",
+      "title": "",
+      "tts": {
+        "text": "ומודלי קול פתוחים — כל דבר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שניים יצאו באותו שבוע.",
+      "text_markdown": "שניים יצאו באותו שבוע.",
+      "title": "",
+      "tts": {
+        "text": "שניים יצאו באותו שבוע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "RedNote, הרשת החברתית הסינית, שחררה בקוד פתוח את dots-dot-tts — שני מיליארד פרמטרים, רציף לחלוטין ללא טוקנים בדידים בשום מקום בצינור העיבוד, חמישים וארבע מילישניות השהיה לטוקן ראשון, Apache 2.0.",
+      "text_markdown": "RedNote, הרשת החברתית הסינית, שחררה בקוד פתוח את dots-dot-tts — שני מיליארד פרמטרים, רציף לחלוטין ללא טוקנים בדידים בשום מקום בצינור העיבוד, חמישים וארבע מילישניות השהיה לטוקן ראשון, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "RedNote, הרשת החברתית הסינית, שחררה בקוד פתוח את dots dot tts — שני מיליארד פרמטרים, רציף לחלוטין ללא טוקנים בדידים בשום מקום בצינור העיבוד, חמישים וארבע מילישניות השהיה לטוקן ראשון, אפאצ'י שתיים נקודה אפס.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ו-Boson AI השיקה את Higgs Audio גרסה שלוש — ארבעה מיליארד פרמטרים, מאה ושתיים שפות, עשרים ואחד טוקני בקרת רגש, פלט סטרימינג, רישיון לא מסחרי; החלק האחרון הוא הכוכבית.",
+      "text_markdown": "ו-Boson AI השיקה את Higgs Audio גרסה שלוש — ארבעה מיליארד פרמטרים, מאה ושתיים שפות, עשרים ואחד טוקני בקרת רגש, פלט סטרימינג, רישיון לא מסחרי; החלק האחרון הוא הכוכבית.",
+      "title": "",
+      "tts": {
+        "text": "ו-Boson AI השיקה את Higgs Audio גרסה שלוש — ארבעה מיליארד פרמטרים, מאה ושתיים שפות, עשרים ואחד טוקני בקרת רגש, פלט סטרימינג, רישיון לא מסחרי; החלק האחרון הוא הכוכבית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "שכפול קול הוא רשמית סחורה.",
+      "text_markdown": "שכפול קול הוא רשמית סחורה.",
+      "title": "",
+      "tts": {
+        "text": "שכפול קול הוא רשמית סחורה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אכן.",
+      "text_markdown": "אכן.",
+      "title": "",
+      "tts": {
+        "text": "אכן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "עוד אחד בצד הפתוח.",
+      "text_markdown": "עוד אחד בצד הפתוח.",
+      "title": "",
+      "tts": {
+        "text": "עוד אחד בצד הפתוח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "NVIDIA שחררה בשקט את Nemotron 3 Ultra — מודל היברידי Mamba-attention עם חמש מאות וחמישים מיליארד פרמטרים.",
+      "text_markdown": "NVIDIA שחררה בשקט את Nemotron 3 Ultra — מודל היברידי Mamba-attention עם חמש מאות וחמישים מיליארד פרמטרים.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA שחררה בשקט את Nemotron שלוש Ultra — מודל היברידי Mamba attention עם חמש מאות וחמישים מיליארד פרמטרים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "משקלים ומתכון האימון המלא תחת רישיון Linux Foundation OpenMDW — המהדורה הפתוחה ביותר בפועל של החודש.",
+      "text_markdown": "משקלים ומתכון האימון המלא תחת רישיון Linux Foundation OpenMDW — המהדורה הפתוחה ביותר בפועל של החודש.",
+      "title": "",
+      "tts": {
+        "text": "משקלים ומתכון האימון המלא תחת רישיון Linux Foundation OpenMDW — המהדורה הפתוחה ביותר בפועל של החודש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ואף אחד לא סיקר את זה.",
+      "text_markdown": "ואף אחד לא סיקר את זה.",
+      "title": "",
+      "tts": {
+        "text": "ואף אחד לא סיקר את זה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "כי אנחנו מסווגים את NVIDIA תחת סיליקון, לא מעבדה.",
+      "text_markdown": "כי אנחנו מסווגים את NVIDIA תחת סיליקון, לא מעבדה.",
+      "title": "",
+      "tts": {
+        "text": "כי אנחנו מסווגים את NVIDIA תחת סיליקון, לא מעבדה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אבל השבוע הם השיקו קוד פתוח-ניתן-לשחזור בקנה מידה חלוצי.",
+      "text_markdown": "אבל השבוע הם השיקו קוד פתוח-ניתן-לשחזור בקנה מידה חלוצי.",
+      "title": "",
+      "tts": {
+        "text": "אבל השבוע הם השיקו קוד פתוח ניתן לשחזור בקנה מידה חלוצי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "כותרות, בקצרה.",
+      "text_markdown": "כותרות, בקצרה.",
+      "title": "",
+      "tts": {
+        "text": "כותרות, בקצרה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ראשית.",
+      "text_markdown": "ראשית.",
+      "title": "",
+      "tts": {
+        "text": "ראשית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Moonshot שחררה את Kimi K2.7-Code — טריליון פרמטרים, שלושים ושניים מיליארד פעילים, טוענת שהיא מנצחת את Claude Opus 4.8 במבחן הביצועים של Moonshot עצמה.",
+      "text_markdown": "Moonshot שחררה את Kimi K2.7-Code — טריליון פרמטרים, שלושים ושניים מיליארד פעילים, טוענת שהיא מנצחת את Claude Opus 4.8 במבחן הביצועים של Moonshot עצמה.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot שחררה את Kimi K שתיים נקודה שבע קוד — טריליון פרמטרים, שלושים ושניים מיליארד פעילים, טוענת שהיא מנצחת את Claude Opus ארבע נקודה שמונה במבחן הביצועים של Moonshot עצמה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מתרגלים בדקו את הנתונים ואומרים שמבחני הביצועים אינם תואמים; המשקלים המתארחים עצמית הם חמש מאות תשעים וחמישה גיגה-בייט, מצב חשיבה לא ניתן לכיבוי.",
+      "text_markdown": "מתרגלים בדקו את הנתונים ואומרים שמבחני הביצועים אינם תואמים; המשקלים המתארחים עצמית הם חמש מאות תשעים וחמישה גיגה-בייט, מצב חשיבה לא ניתן לכיבוי.",
+      "title": "",
+      "tts": {
+        "text": "מתרגלים בדקו את הנתונים ואומרים שמבחני הביצועים אינם תואמים; המשקלים המתארחים עצמית הם חמש מאות תשעים וחמישה גיגה-בייט, מצב חשיבה לא ניתן לכיבוי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "המילה 'פתוח' עושה הרבה עבודה במשפט הזה.",
+      "text_markdown": "המילה 'פתוח' עושה הרבה עבודה במשפט הזה.",
+      "title": "",
+      "tts": {
+        "text": "המילה 'פתוח' עושה הרבה עבודה במשפט הזה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "שנית.",
+      "text_markdown": "שנית.",
+      "title": "",
+      "tts": {
+        "text": "שנית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Cohere, מעבדה מערבית שכמעט אף פעם לא משחררת משקלים, דווקא שחררה משקלים — North Mini Code, שלושים מיליארד בסך הכל, שלושה מיליארד פעילים, Apache 2.0, רץ על H100 בודד בארבעה ביט.",
+      "text_markdown": "Cohere, מעבדה מערבית שכמעט אף פעם לא משחררת משקלים, דווקא שחררה משקלים — North Mini Code, שלושים מיליארד בסך הכל, שלושה מיליארד פעילים, Apache 2.0, רץ על H100 בודד בארבעה ביט.",
+      "title": "",
+      "tts": {
+        "text": "Cohere, מעבדה מערבית שכמעט אף פעם לא משחררת משקלים, דווקא שחררה משקלים — North Mini Code, שלושים מיליארד בסך הכל, שלושה מיליארד פעילים, אפאצ'י שתיים נקודה אפס, רץ על H מאה בודד בארבעה ביט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מעבדה מערבית שמשחררת Apache 2.0 אמיתי בשנת 2026 היא חדשה בפני עצמה.",
+      "text_markdown": "מעבדה מערבית שמשחררת Apache 2.0 אמיתי בשנת 2026 היא חדשה בפני עצמה.",
+      "title": "",
+      "tts": {
+        "text": "מעבדה מערבית שמשחררת אפאצ'י שתיים נקודה אפס אמיתי בשנת עשרים עשרים ושש היא חדשה בפני עצמה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "שלישית.",
+      "text_markdown": "שלישית.",
+      "title": "",
+      "tts": {
+        "text": "שלישית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אפל הדגישה מאוד ב-WWDC את ה-AI על המכשיר כסיפור האסטרטגי.",
+      "text_markdown": "אפל הדגישה מאוד ב-WWDC את ה-AI על המכשיר כסיפור האסטרטגי.",
+      "title": "",
+      "tts": {
+        "text": "אפל הדגישה מאוד ב-WWDC את ה-AI על המכשיר כסיפור האסטרטגי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אבל מודל סירי החדש הוא, לפי הדיווחים, זיקוק של Gemini של גוגל שאפל רוכשת ברישיון ומכווצת.",
+      "text_markdown": "אבל מודל סירי החדש הוא, לפי הדיווחים, זיקוק של Gemini של גוגל שאפל רוכשת ברישיון ומכווצת.",
+      "title": "",
+      "tts": {
+        "text": "אבל מודל סירי החדש הוא, לפי הדיווחים, זיקוק של Gemini של גוגל שאפל רוכשת ברישיון ומכווצת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "הסקה מקומית, שרשרת אספקה מורכבת.",
+      "text_markdown": "הסקה מקומית, שרשרת אספקה מורכבת.",
+      "title": "",
+      "tts": {
+        "text": "הסקה מקומית, שרשרת אספקה מורכבת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ורביעית.",
+      "text_markdown": "ורביעית.",
+      "title": "",
+      "tts": {
+        "text": "ורביעית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "עליבאבא השיקה את Qwen 3.7-Plus לזמינות כללית — מולטימודלי, מפעיל ממשקי משתמש מגרפי מסך, בסביבות ארבעים סנט למיליון אסימוני קלט.",
+      "text_markdown": "עליבאבא השיקה את Qwen 3.7-Plus לזמינות כללית — מולטימודלי, מפעיל ממשקי משתמש מגרפי מסך, בסביבות ארבעים סנט למיליון אסימוני קלט.",
+      "title": "",
+      "tts": {
+        "text": "עליבאבא השיקה את Qwen 3.7-Plus לזמינות כללית — מולטימודלי, מפעיל ממשקי משתמש מגרפי מסך, בסביבות ארבעים סנט למיליון אסימוני קלט.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "למרות המותג Qwen, זהו API-בלבד, לא משקלים פתוחים.",
+      "text_markdown": "למרות המותג Qwen, זהו API-בלבד, לא משקלים פתוחים.",
+      "title": "",
+      "tts": {
+        "text": "למרות המותג Qwen, זהו A.P.I. בלבד, לא משקלים פתוחים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "שווה לדעת, כי מאזינים מבלבלים את Qwen עם קוד פתוח; זה לא המקרה כאן.",
+      "text_markdown": "שווה לדעת, כי מאזינים מבלבלים את Qwen עם קוד פתוח; זה לא המקרה כאן.",
+      "title": "",
+      "tts": {
+        "text": "שווה לדעת, כי מאזינים מבלבלים את Qwen עם קוד פתוח; זה לא המקרה כאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מעבדת השבוע הקטנה.",
+      "text_markdown": "מעבדת השבוע הקטנה.",
+      "title": "",
+      "tts": {
+        "text": "מעבדת השבוע הקטנה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "היא נקראת Kog.",
+      "text_markdown": "היא נקראת Kog.",
+      "title": "",
+      "tts": {
+        "text": "היא נקראת Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אחד עשר אנשים בפריז, הטוענים לשלושת אלפים אסימוני פלט לשנייה לבקשה על שמונה מעבדי AMD MI300X גרפיים.",
+      "text_markdown": "אחד עשר אנשים בפריז, הטוענים לשלושת אלפים אסימוני פלט לשנייה לבקשה על שמונה מעבדי AMD MI300X גרפיים.",
+      "title": "",
+      "tts": {
+        "text": "אחד עשר אנשים בפריז, הטוענים לשלושת אלפים אסימוני פלט לשנייה לבקשה על שמונה מעבדי AMD MI300X גרפיים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "הטיעון שלהם — התעשייה הוציאה יותר מדי על סיליקון הסקה מותאם אישית כשהצוואר בקבוק היה תמיד התוכנה.",
+      "text_markdown": "הטיעון שלהם — התעשייה הוציאה יותר מדי על סיליקון הסקה מותאם אישית כשהצוואר בקבוק היה תמיד התוכנה.",
+      "title": "",
+      "tts": {
+        "text": "הטיעון שלהם — התעשייה הוציאה יותר מדי על סיליקון הסקה מותאם אישית כשהצוואר בקבוק היה תמיד התוכנה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אחד עשר אנשים, ו-AMD במקום NVIDIA.",
+      "text_markdown": "אחד עשר אנשים, ו-AMD במקום NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "אחד עשר אנשים, ו-A.M.D. במקום NVIDIA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מיד לאחר הנפקת סיליקון מותאם אישית, תזמון קונטרה מושלם.",
+      "text_markdown": "מיד לאחר הנפקת סיליקון מותאם אישית, תזמון קונטרה מושלם.",
+      "title": "",
+      "tts": {
+        "text": "מיד לאחר הנפקת סיליקון מותאם אישית, תזמון קונטרה מושלם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מה לגבי חומרה על הספסל.",
+      "text_markdown": "מה לגבי חומרה על הספסל.",
+      "title": "",
+      "tts": {
+        "text": "מה לגבי חומרה על הספסל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Raspberry Pi השיקה את ה-AI HAT+ 2 — ארבעים TOPS מחוברים ל-Pi 5.",
+      "text_markdown": "Raspberry Pi השיקה את ה-AI HAT+ 2 — ארבעים TOPS מחוברים ל-Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi השיקה את ה-A.I. H.A.T. פלוס שתיים — ארבעים T.O.P.S. מחוברים ל-Pi חמש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "NVIDIA's Jetson Orin Nano Super מבצע שישים ושבעה TOPS בפחות משלוש מאות דולר.",
+      "text_markdown": "NVIDIA's Jetson Orin Nano Super מבצע שישים ושבעה TOPS בפחות משלוש מאות דולר.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA's Jetson Orin Nano Super מבצע שישים ושבעה T.O.P.S. בפחות משלוש מאות דולר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "על המכשיר נהג להתייחס למק.",
+      "text_markdown": "על המכשיר נהג להתייחס למק.",
+      "title": "",
+      "tts": {
+        "text": "על המכשיר נהג להתייחס למק.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "עכשיו זה אומר לוח שאתה יכול להחביא במגירה.",
+      "text_markdown": "עכשיו זה אומר לוח שאתה יכול להחביא במגירה.",
+      "title": "",
+      "tts": {
+        "text": "עכשיו זה אומר לוח שאתה יכול להחביא במגירה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מושג השבוע — דיפוזיה מול אוטורגרסיבי.",
+      "text_markdown": "מושג השבוע — דיפוזיה מול אוטורגרסיבי.",
+      "title": "",
+      "tts": {
+        "text": "מושג השבוע — דיפוזיה מול אוטורגרסיבי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אותו יעד, דרכים שונות.",
+      "text_markdown": "אותו יעד, דרכים שונות.",
+      "title": "",
+      "tts": {
+        "text": "אותו יעד, דרכים שונות.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מודלים אוטורגרסיביים, רוב מודלי השפה הגדולים שאתם מכירים, מייצרים אסימון אחד בכל פעם, מתנים עליו, מייצרים את הבא, חוזרים על הפעולה — סדרתיים בעיצובם.",
+      "text_markdown": "מודלים אוטורגרסיביים, רוב מודלי השפה הגדולים שאתם מכירים, מייצרים אסימון אחד בכל פעם, מתנים עליו, מייצרים את הבא, חוזרים על הפעולה — סדרתיים בעיצובם.",
+      "title": "",
+      "tts": {
+        "text": "מודלים אוטורגרסיביים, רוב מודלי השפה הגדולים שאתם מכירים, מייצרים אסימון אחד בכל פעם, מתנים עליו, מייצרים את הבא, חוזרים על הפעולה — סדרתיים בעיצובם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "מודלי דיפוזיה מתחילים עם בלוק של רעש טהור ומסירים את הרעש בבת אחת על פני מספר קבוע של צעדים.",
+      "text_markdown": "מודלי דיפוזיה מתחילים עם בלוק של רעש טהור ומסירים את הרעש בבת אחת על פני מספר קבוע של צעדים.",
+      "title": "",
+      "tts": {
+        "text": "מודלי דיפוזיה מתחילים עם בלוק של רעש טהור ומסירים את הרעש בבת אחת על פני מספר קבוע של צעדים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "אתה מחליף קצת איכות במקביל, ובמספר צעדים קטן אתה מקבל את מספרי התפוקה המדהימים האלה.",
+      "text_markdown": "אתה מחליף קצת איכות במקביל, ובמספר צעדים קטן אתה מקבל את מספרי התפוקה המדהימים האלה.",
+      "title": "",
+      "tts": {
+        "text": "אתה מחליף קצת איכות במקביל, ובמספר צעדים קטן אתה מקבל את מספרי התפוקה המדהימים האלה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אז DiffusionGemma היא הפעם הראשונה שיש לנו משקלים פתוחים כדי להרגיש באמת את ההבדל.",
+      "text_markdown": "אז DiffusionGemma היא הפעם הראשונה שיש לנו משקלים פתוחים כדי להרגיש באמת את ההבדל.",
+      "title": "",
+      "tts": {
+        "text": "אז DiffusionGemma היא הפעם הראשונה שיש לנו משקלים פתוחים כדי להרגיש באמת את ההבדל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "פעם ראשונה בקנה מידה כזה, כן.",
+      "text_markdown": "פעם ראשונה בקנה מידה כזה, כן.",
+      "title": "",
+      "tts": {
+        "text": "פעם ראשונה בקנה מידה כזה, כן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "וזו הסיבה שצוותי ההסקה בקוד פתוח חשובים השבוע — llama-dot-cpp, vLLM, MLX — הם אלה שילמדו לגרום לזה לעבוד בצורה מיטבית על חומרה אמיתית.",
+      "text_markdown": "וזו הסיבה שצוותי ההסקה בקוד פתוח חשובים השבוע — llama-dot-cpp, vLLM, MLX — הם אלה שילמדו לגרום לזה לעבוד בצורה מיטבית על חומרה אמיתית.",
+      "title": "",
+      "tts": {
+        "text": "וזו הסיבה שצוותי ההסקה בקוד פתוח חשובים השבוע — לאמה נקודה סי פי פי, וי אל אל אם, אם אל אקס — הם אלה שילמדו לגרום לזה לעבוד בצורה מיטבית על חומרה אמיתית.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "מקום טוב לסיים.",
+      "text_markdown": "מקום טוב לסיים.",
+      "title": "",
+      "tts": {
+        "text": "מקום טוב לסיים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "רון, תודה לך.",
+      "text_markdown": "רון, תודה לך.",
+      "title": "",
+      "tts": {
+        "text": "רון, תודה לך.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "בכל עת, וינדי.",
+      "text_markdown": "בכל עת, וינדי.",
+      "title": "",
+      "tts": {
+        "text": "בכל עת, וינדי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "זה היה AI This Week ל-14 ביוני 2026.",
+      "text_markdown": "זה היה AI This Week ל-14 ביוני 2026.",
+      "title": "",
+      "tts": {
+        "text": "זה היה A.I. This Week לארבעה עשר ביוני אלפיים עשרים ושש.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "אותה תוכנית תוססת, משבצת חדשה ביום ראשון.",
+      "text_markdown": "אותה תוכנית תוססת, משבצת חדשה ביום ראשון.",
+      "title": "",
+      "tts": {
+        "text": "אותה תוכנית תוססת, משבצת חדשה ביום ראשון.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "שפות ימשיכו לצאת עד יום שני בבוקר; Corpán 0.18.0 נמצא בכל מקום שבו אתם משיגים אפליקציות — נסו את beatlounge.",
+      "text_markdown": "שפות ימשיכו לצאת עד יום שני בבוקר; Corpán 0.18.0 נמצא בכל מקום שבו אתם משיגים אפליקציות — נסו את beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "שפות ימשיכו לצאת עד יום שני בבוקר; Corpán אפס נקודה אחד שמונה נקודה אפס נמצא בכל מקום שבו אתם משיגים אפליקציות — נסו את beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "עד יום ראשון הבא, תשמרו על עצמכם.",
+      "text_markdown": "עד יום ראשון הבא, תשמרו על עצמכם.",
+      "title": "",
+      "tts": {
+        "text": "עד יום ראשון הבא, תשמרו על עצמכם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

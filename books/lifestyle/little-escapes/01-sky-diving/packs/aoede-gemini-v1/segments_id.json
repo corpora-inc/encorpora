@@ -1,0 +1,5968 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "language": "id",
+  "total_segments": 374,
+  "segments": [
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p1",
+      "heading_level": 1,
+      "id": "ch01-001",
+      "chapter": 1,
+      "block_type": "heading",
+      "text": "Pancingan",
+      "text_markdown": "Pancingan",
+      "title": "Pancingan"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p2",
+      "id": "ch01-002",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ada satu momen, tepat setelah Anda meninggalkan pesawat, yang saya harap bisa saya berikan secara gratis.",
+      "text_markdown": "Ada satu momen, tepat setelah Anda meninggalkan pesawat, yang saya harap bisa saya berikan secara gratis.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Ada satu momen, tepat setelah Anda meninggalkan pesawat, yang saya harap bisa saya berikan secara gratis.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p2",
+      "id": "ch01-003",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Dunia berhenti menjadi tempat tinggal Anda.",
+      "text_markdown": "Dunia berhenti menjadi tempat tinggal Anda.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Dunia berhenti menjadi tempat tinggal Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p2",
+      "id": "ch01-004",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ia menjadi sesuatu yang Anda lalui saat jatuh.",
+      "text_markdown": "Ia menjadi sesuatu yang Anda lalui saat jatuh.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Ia menjadi sesuatu yang Anda lalui saat jatuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p2",
+      "id": "ch01-005",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Dan selama beberapa detik pertama, pikiran Anda tidak bisa sepenuhnya mengikuti apa yang baru saja dilakukan tubuh Anda.",
+      "text_markdown": "Dan selama beberapa detik pertama, pikiran Anda tidak bisa sepenuhnya mengikuti apa yang baru saja dilakukan tubuh Anda.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Dan selama beberapa detik pertama, pikiran Anda tidak bisa sepenuhnya mengikuti apa yang baru saja dilakukan tubuh Anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p3",
+      "id": "ch01-006",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Orang-orang bertanya mengapa saya melompat.",
+      "text_markdown": "Orang-orang bertanya mengapa saya melompat.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Orang-orang bertanya mengapa saya melompat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p3",
+      "id": "ch01-007",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Mereka selalu berharap saya mengatakan itu karena sensasi mendebarkan.",
+      "text_markdown": "Mereka selalu berharap saya mengatakan itu karena sensasi mendebarkan.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Mereka selalu berharap saya mengatakan itu karena sensasi mendebarkan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p3",
+      "id": "ch01-008",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Bukan sensasi mendebarkan itu.",
+      "text_markdown": "Bukan sensasi mendebarkan itu.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Bukan sensasi mendebarkan itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p3",
+      "id": "ch01-009",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Sensasi mendebarkan itu adalah apa yang Anda rasakan pada 5 lompatan pertama Anda.",
+      "text_markdown": "Sensasi mendebarkan itu adalah apa yang Anda rasakan pada 5 lompatan pertama Anda.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Sensasi mendebarkan itu adalah apa yang Anda rasakan pada lima lompatan pertama Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p3",
+      "id": "ch01-010",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Setelah itu, sesuatu yang lebih tenang mengambil alih.",
+      "text_markdown": "Setelah itu, sesuatu yang lebih tenang mengambil alih.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Setelah itu, sesuatu yang lebih tenang mengambil alih.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p4",
+      "id": "ch01-011",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Yang saya kejar adalah kejernihan.",
+      "text_markdown": "Yang saya kejar adalah kejernihan.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Yang saya kejar adalah kejernihan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p4",
+      "id": "ch01-012",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Selama 60 detik dalam jatuh bebas, pikiran Anda tidak punya hal lain untuk dilakukan.",
+      "text_markdown": "Selama 60 detik dalam jatuh bebas, pikiran Anda tidak punya hal lain untuk dilakukan.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Selama enam puluh detik dalam jatuh bebas, pikiran Anda tidak punya hal lain untuk dilakukan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p4",
+      "id": "ch01-013",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Tidak ada telepon.",
+      "text_markdown": "Tidak ada telepon.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Tidak ada telepon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p4",
+      "id": "ch01-014",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Tidak ada tagihan.",
+      "text_markdown": "Tidak ada tagihan.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Tidak ada tagihan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p4",
+      "id": "ch01-015",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Tidak ada sedikit pun kekhawatiran tentang hari esok.",
+      "text_markdown": "Tidak ada sedikit pun kekhawatiran tentang hari esok.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Tidak ada sedikit pun kekhawatiran tentang hari esok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p4",
+      "id": "ch01-016",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Hanya angin, napas Anda, dan lengkungan bumi yang perlahan di bawah Anda.",
+      "text_markdown": "Hanya angin, napas Anda, dan lengkungan bumi yang perlahan di bawah Anda.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Hanya angin, napas Anda, dan lengkungan bumi yang perlahan di bawah Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p4",
+      "id": "ch01-017",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Sebagian besar hidup itu bising.",
+      "text_markdown": "Sebagian besar hidup itu bising.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Sebagian besar hidup itu bising.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p4",
+      "id": "ch01-018",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Menit itu tidak.",
+      "text_markdown": "Menit itu tidak.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Menit itu tidak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p5",
+      "id": "ch01-019",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Penerjun payung tidak gila.",
+      "text_markdown": "Penerjun payung tidak gila.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Penerjun payung tidak gila.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p5",
+      "id": "ch01-020",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Sebagian besar dari kami adalah orang-orang tenang yang menemukan cara untuk merasa tenang lebih cepat.",
+      "text_markdown": "Sebagian besar dari kami adalah orang-orang tenang yang menemukan cara untuk merasa tenang lebih cepat.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Sebagian besar dari kami adalah orang-orang tenang yang menemukan cara untuk merasa tenang lebih cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p5",
+      "id": "ch01-021",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Kami melompat dari pesawat seperti orang lain bermeditasi.",
+      "text_markdown": "Kami melompat dari pesawat seperti orang lain bermeditasi.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Kami melompat dari pesawat seperti orang lain bermeditasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p5",
+      "id": "ch01-022",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Itu menjernihkan sesuatu.",
+      "text_markdown": "Itu menjernihkan sesuatu.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Itu menjernihkan sesuatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p5",
+      "id": "ch01-023",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Dan kemudian, setiap akhir pekan, itu menjernihkannya lagi.",
+      "text_markdown": "Dan kemudian, setiap akhir pekan, itu menjernihkannya lagi.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Dan kemudian, setiap akhir pekan, itu menjernihkannya lagi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p6",
+      "id": "ch01-024",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Pertama kali saya melihat parasut terbuka di atas saya, saya menangis di dalam sabuk pengaman.",
+      "text_markdown": "Pertama kali saya melihat parasut terbuka di atas saya, saya menangis di dalam sabuk pengaman.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Pertama kali saya melihat parasut terbuka di atas saya, saya menangis di dalam sabuk pengaman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p6",
+      "id": "ch01-025",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Saya tidak menyangka akan begitu.",
+      "text_markdown": "Saya tidak menyangka akan begitu.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Saya tidak menyangka akan begitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p6",
+      "id": "ch01-026",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Seorang dewasa, tergantung di langit di bawah selembar kain lembut, menangis tanpa alasan yang bisa dia jelaskan.",
+      "text_markdown": "Seorang dewasa, tergantung di langit di bawah selembar kain lembut, menangis tanpa alasan yang bisa dia jelaskan.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Seorang dewasa, tergantung di langit di bawah selembar kain lembut, menangis tanpa alasan yang bisa dia jelaskan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p6",
+      "id": "ch01-027",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Instruktur saya tertawa pelan dan menepuk bahu saya.",
+      "text_markdown": "Instruktur saya tertawa pelan dan menepuk bahu saya.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Instruktur saya tertawa pelan dan menepuk bahu saya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p6",
+      "id": "ch01-028",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Dia sudah sering melihatnya.",
+      "text_markdown": "Dia sudah sering melihatnya.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Dia sudah sering melihatnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p6",
+      "id": "ch01-029",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Itulah momen saya tahu saya akan kembali.",
+      "text_markdown": "Itulah momen saya tahu saya akan kembali.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Itulah momen saya tahu saya akan kembali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p7",
+      "id": "ch01-030",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Terjun payung bukan tentang menjadi berani.",
+      "text_markdown": "Terjun payung bukan tentang menjadi berani.",
+      "title": "Pancingan",
+      "tts": {
+        "text": "Terjun payung bukan tentang menjadi berani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p7",
+      "id": "ch01-031",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ini tentang menemukan satu tempat di mana pikiranmu menjadi tenang.",
+      "text_markdown": "Ini tentang menemukan satu tempat di mana pikiranmu menjadi tenang.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Ini tentang menemukan satu tempat di mana pikiranmu menjadi tenang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p7",
+      "id": "ch01-032",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Bagi sebagian orang, tempat itu adalah matras yoga.",
+      "text_markdown": "Bagi sebagian orang, tempat itu adalah matras yoga.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Bagi sebagian orang, tempat itu adalah matras yoga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p7",
+      "id": "ch01-033",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Bagi sebagian orang, itu adalah lari panjang di jalanan yang sepi.",
+      "text_markdown": "Bagi sebagian orang, itu adalah lari panjang di jalanan yang sepi.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Bagi sebagian orang, itu adalah lari panjang di jalanan yang sepi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p7",
+      "id": "ch01-034",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Bagi sebagian orang, itu adalah pancing, atau piano, atau dapur pada pukul enam pagi.",
+      "text_markdown": "Bagi sebagian orang, itu adalah pancing, atau piano, atau dapur pada pukul enam pagi.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Bagi sebagian orang, itu adalah pancing, atau piano, atau dapur pada pukul enam pagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p7",
+      "id": "ch01-035",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Bagi saya, itu tiga belas ribu kaki di atas tanah, tanpa melakukan apa pun selain bernapas.",
+      "text_markdown": "Bagi saya, itu tiga belas ribu kaki di atas tanah, tanpa melakukan apa pun selain bernapas.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Bagi saya, itu tiga belas ribu kaki di atas tanah, tanpa melakukan apa pun selain bernapas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p8",
+      "id": "ch01-036",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Daya tarik itu, begitu Anda merasakannya, sulit dijelaskan kepada teman saat makan malam.",
+      "text_markdown": "Daya tarik itu, begitu Anda merasakannya, sulit dijelaskan kepada teman saat makan malam.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Daya tarik itu, begitu Anda merasakannya, sulit dijelaskan kepada teman saat makan malam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p8",
+      "id": "ch01-037",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Anda akan mencoba, dan mereka akan tersenyum sopan, dan Anda akan menyerah.",
+      "text_markdown": "Anda akan mencoba, dan mereka akan tersenyum sopan, dan Anda akan menyerah.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Anda akan mencoba, dan mereka akan tersenyum sopan, dan Anda akan menyerah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p8",
+      "id": "ch01-038",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Tidak apa-apa.",
+      "text_markdown": "Tidak apa-apa.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Tidak apa-apa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p8",
+      "id": "ch01-039",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Anda tidak mulai melompat untuk menjelaskannya.",
+      "text_markdown": "Anda tidak mulai melompat untuk menjelaskannya.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Anda tidak mulai melompat untuk menjelaskannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p8",
+      "id": "ch01-040",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Anda mulai melompat karena, pertama kali Anda mencoba, sesuatu dalam diri Anda berkata, oh, itu dia.",
+      "text_markdown": "Anda mulai melompat karena, pertama kali Anda mencoba, sesuatu dalam diri Anda berkata, oh, itu dia.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Anda mulai melompat karena, pertama kali Anda mencoba, sesuatu dalam diri Anda berkata, oh, itu dia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p9",
+      "id": "ch01-041",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Pernahkah Anda berdiri di tepi sesuatu yang tinggi dan merasakan tubuh Anda condong ke arah udara terbuka?",
+      "text_markdown": "Pernahkah Anda berdiri di tepi sesuatu yang tinggi dan merasakan tubuh Anda condong ke arah udara terbuka?",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Pernahkah Anda berdiri di tepi sesuatu yang tinggi dan merasakan tubuh Anda condong ke arah udara terbuka?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p9",
+      "id": "ch01-042",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Hanya sedikit, hanya sesaat.",
+      "text_markdown": "Hanya sedikit, hanya sesaat.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Hanya sedikit, hanya sesaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p9",
+      "id": "ch01-043",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Jika ya, Anda sudah tahu apa yang saya bicarakan.",
+      "text_markdown": "Jika ya, Anda sudah tahu apa yang saya bicarakan.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Jika ya, Anda sudah tahu apa yang saya bicarakan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p9",
+      "id": "ch01-044",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Terjun payung adalah apa yang terjadi ketika Anda berhenti berpura-pura tidak condong.",
+      "text_markdown": "Terjun payung adalah apa yang terjadi ketika Anda berhenti berpura-pura tidak condong.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Terjun payung adalah apa yang terjadi ketika Anda berhenti berpura-pura tidak condong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p9",
+      "id": "ch01-045",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Anda melangkah keluar, dengan sengaja, ke tempat yang selama bertahun-tahun telah ditanyakan oleh tubuh Anda secara diam-diam.",
+      "text_markdown": "Anda melangkah keluar, dengan sengaja, ke tempat yang selama bertahun-tahun telah ditanyakan oleh tubuh Anda secara diam-diam.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Anda melangkah keluar, dengan sengaja, ke tempat yang selama bertahun-tahun telah ditanyakan oleh tubuh Anda secara diam-diam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p10",
+      "id": "ch01-046",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Dan kemudian, dengan sangat cepat, Anda menyadari bahwa tanah tidak pernah menjadi tempat ketakutan itu berada.",
+      "text_markdown": "Dan kemudian, dengan sangat cepat, Anda menyadari bahwa tanah tidak pernah menjadi tempat ketakutan itu berada.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Dan kemudian, dengan sangat cepat, Anda menyadari bahwa tanah tidak pernah menjadi tempat ketakutan itu berada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p10",
+      "id": "ch01-047",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Ketakutan itu ada pada condongnya.",
+      "text_markdown": "Ketakutan itu ada pada condongnya.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Ketakutan itu ada pada condongnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p10",
+      "id": "ch01-048",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Begitu Anda melompat, ketakutan itu hilang.",
+      "text_markdown": "Begitu Anda melompat, ketakutan itu hilang.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Begitu Anda melompat, ketakutan itu hilang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p10",
+      "id": "ch01-049",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Yang tersisa adalah sesuatu yang hampir seperti rumah.",
+      "text_markdown": "Yang tersisa adalah sesuatu yang hampir seperti rumah.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Yang tersisa adalah sesuatu yang hampir seperti rumah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p10",
+      "id": "ch01-050",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Jantung Anda melambat.",
+      "text_markdown": "Jantung Anda melambat.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Jantung Anda melambat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p10",
+      "id": "ch01-051",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Napas Anda menemukan ritme yang selama ini dicarinya.",
+      "text_markdown": "Napas Anda menemukan ritme yang selama ini dicarinya.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Napas Anda menemukan ritme yang selama ini dicarinya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p10",
+      "id": "ch01-052",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Udara menopang Anda.",
+      "text_markdown": "Udara menopang Anda.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Udara menopang Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p10",
+      "id": "ch01-053",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Dan Anda merasa, mungkin untuk pertama kalinya dalam waktu yang lama, bahwa Anda berada persis di tempat Anda berada.",
+      "text_markdown": "Dan Anda merasa, mungkin untuk pertama kalinya dalam waktu yang lama, bahwa Anda berada persis di tempat Anda berada.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Dan Anda merasa, mungkin untuk pertama kalinya dalam waktu yang lama, bahwa Anda berada persis di tempat Anda berada.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p11",
+      "id": "ch01-054",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Itulah yang akan saya katakan kepada Anda, jika Anda bertanya kepada saya saat berjalan-jalan panjang.",
+      "text_markdown": "Itulah yang akan saya katakan kepada Anda, jika Anda bertanya kepada saya saat berjalan-jalan panjang.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Itulah yang akan saya katakan kepada Anda, jika Anda bertanya kepada saya saat berjalan-jalan panjang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p11",
+      "id": "ch01-055",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Mengapa orang yang tenang dan masuk akal terus melompat keluar dari pesawat yang baik-baik saja?",
+      "text_markdown": "Mengapa orang yang tenang dan masuk akal terus melompat keluar dari pesawat yang baik-baik saja?",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Mengapa orang yang tenang dan masuk akal terus melompat keluar dari pesawat yang baik-baik saja?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p11",
+      "id": "ch01-056",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Saya akan memberi tahu Anda bahwa itu adalah hal paling tenang yang saya lakukan.",
+      "text_markdown": "Saya akan memberi tahu Anda bahwa itu adalah hal paling tenang yang saya lakukan.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Saya akan memberi tahu Anda bahwa itu adalah hal paling tenang yang saya lakukan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p11",
+      "id": "ch01-057",
+      "chapter": 1,
+      "block_type": "text",
+      "text": "Dan saya bersungguh-sungguh.",
+      "text_markdown": "Dan saya bersungguh-sungguh.",
+      "title": "Daya Tarik",
+      "tts": {
+        "text": "Dan saya bersungguh-sungguh.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p12",
+      "heading_level": 1,
+      "id": "ch02-058",
+      "chapter": 2,
+      "block_type": "heading",
+      "text": "Pertama Kali",
+      "text_markdown": "Pertama Kali",
+      "title": "Pertama Kali"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p13",
+      "id": "ch02-059",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Biarkan saya menempatkan Anda di dalam pesawat.",
+      "text_markdown": "Biarkan saya menempatkan Anda di dalam pesawat.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Biarkan saya menempatkan Anda di dalam pesawat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p14",
+      "id": "ch02-060",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda duduk di bangku logam rendah, terikat pada seorang instruktur di belakang Anda.",
+      "text_markdown": "Anda duduk di bangku logam rendah, terikat pada seorang instruktur di belakang Anda.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Anda duduk di bangku logam rendah, terikat pada seorang instruktur di belakang Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p14",
+      "id": "ch02-061",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Pesawat naik dalam lingkaran yang lambat dan malas.",
+      "text_markdown": "Pesawat naik dalam lingkaran yang lambat dan malas.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Pesawat naik dalam lingkaran yang lambat dan malas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p14",
+      "id": "ch02-062",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Jendela persegi kecil di sampingmu semakin biru dan biru.",
+      "text_markdown": "Jendela persegi kecil di sampingmu semakin biru dan biru.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Jendela persegi kecil di sampingmu semakin biru dan biru.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p14",
+      "id": "ch02-063",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Jantungmu terasa berdebar kencang, tapi kamu tidak panik.",
+      "text_markdown": "Jantungmu terasa berdebar kencang, tapi kamu tidak panik.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Jantungmu terasa berdebar kencang, tapi kamu tidak panik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p14",
+      "id": "ch02-064",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Kamu hanya sangat, sangat terjaga.",
+      "text_markdown": "Kamu hanya sangat, sangat terjaga.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Kamu hanya sangat, sangat terjaga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p15",
+      "id": "ch02-065",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Instruktur mendekat ke telingamu.",
+      "text_markdown": "Instruktur mendekat ke telingamu.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Instruktur mendekat ke telingamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p15",
+      "id": "ch02-066",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Dia memberitahumu, dengan tenang, bahwa semua yang perlu kamu lakukan, dia akan memberitahumu kapan.",
+      "text_markdown": "Dia memberitahumu, dengan tenang, bahwa semua yang perlu kamu lakukan, dia akan memberitahumu kapan.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Dia memberitahumu, dengan tenang, bahwa semua yang perlu kamu lakukan, dia akan memberitahumu kapan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p15",
+      "id": "ch02-067",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Kamu mengangguk.",
+      "text_markdown": "Kamu mengangguk.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Kamu mengangguk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p15",
+      "id": "ch02-068",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Kamu sudah mengangguk berkali-kali dalam satu jam terakhir sampai lehermu mulai terasa sakit.",
+      "text_markdown": "Kamu sudah mengangguk berkali-kali dalam satu jam terakhir sampai lehermu mulai terasa sakit.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Kamu sudah mengangguk berkali-kali dalam satu jam terakhir sampai lehermu mulai terasa sakit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p16",
+      "id": "ch02-069",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Lalu pintu terbuka.",
+      "text_markdown": "Lalu pintu terbuka.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Lalu pintu terbuka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p17",
+      "id": "ch02-070",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Angin masuk seperti dinding, berisik dan dingin dan hidup, dan tiba-tiba pesawat terasa sangat kecil.",
+      "text_markdown": "Angin masuk seperti dinding, berisik dan dingin dan hidup, dan tiba-tiba pesawat terasa sangat kecil.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Angin masuk seperti dinding, berisik dan dingin dan hidup, dan tiba-tiba pesawat terasa sangat kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p17",
+      "id": "ch02-071",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Kamu beringsut ke tepi.",
+      "text_markdown": "Kamu beringsut ke tepi.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Kamu beringsut ke tepi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p17",
+      "id": "ch02-072",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Jari-jari kakimu menggantung di kehampaan.",
+      "text_markdown": "Jari-jari kakimu menggantung di kehampaan.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Jari-jari kakimu menggantung di kehampaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p17",
+      "id": "ch02-073",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Kamu melihat ke bawah, dan tanah begitu jauh sehingga tidak terlihat seperti tanah lagi.",
+      "text_markdown": "Kamu melihat ke bawah, dan tanah begitu jauh sehingga tidak terlihat seperti tanah lagi.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Kamu melihat ke bawah, dan tanah begitu jauh sehingga tidak terlihat seperti tanah lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p17",
+      "id": "ch02-074",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Terlihat seperti selimut perca.",
+      "text_markdown": "Terlihat seperti selimut perca.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Terlihat seperti selimut perca.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p17",
+      "id": "ch02-075",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Jalanan setipis benang.",
+      "text_markdown": "Jalanan setipis benang.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Jalanan setipis benang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p17",
+      "id": "ch02-076",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Sungai berwarna perak kusam.",
+      "text_markdown": "Sungai berwarna perak kusam.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Sungai berwarna perak kusam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p17",
+      "id": "ch02-077",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ladang hijau dan cokelat kecil yang dijahit bersama oleh pagar tanaman.",
+      "text_markdown": "Ladang hijau dan cokelat kecil yang dijahit bersama oleh pagar tanaman.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Ladang hijau dan cokelat kecil yang dijahit bersama oleh pagar tanaman.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p18",
+      "id": "ch02-078",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Instrukturmu menghitung.",
+      "text_markdown": "Instrukturmu menghitung.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Instrukturmu menghitung.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p18",
+      "id": "ch02-079",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Dia bilang satu.",
+      "text_markdown": "Dia bilang satu.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Dia bilang satu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p18",
+      "id": "ch02-080",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Dia bilang dua.",
+      "text_markdown": "Dia bilang dua.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Dia bilang dua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p19",
+      "id": "ch02-081",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Pada hitungan ketiga, pesawat itu hilang.",
+      "text_markdown": "Pada hitungan ketiga, pesawat itu hilang.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Pada hitungan ketiga, pesawat itu hilang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p20",
+      "id": "ch02-082",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Tiga detik pertama adalah yang tersulit.",
+      "text_markdown": "Tiga detik pertama adalah yang tersulit.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Tiga detik pertama adalah yang tersulit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p20",
+      "id": "ch02-083",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Tubuhmu percaya ia sedang jatuh, karena memang begitu, dan tubuhmu belum pernah diberitahu bahwa ini tidak apa-apa.",
+      "text_markdown": "Tubuhmu percaya ia sedang jatuh, karena memang begitu, dan tubuhmu belum pernah diberitahu bahwa ini tidak apa-apa.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Tubuhmu percaya ia sedang jatuh, karena memang begitu, dan tubuhmu belum pernah diberitahu bahwa ini tidak apa-apa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p20",
+      "id": "ch02-084",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Kamu mengeluarkan suara.",
+      "text_markdown": "Kamu mengeluarkan suara.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Kamu mengeluarkan suara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p20",
+      "id": "ch02-085",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Semua orang mengeluarkan suara.",
+      "text_markdown": "Semua orang mengeluarkan suara.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Semua orang mengeluarkan suara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p20",
+      "id": "ch02-086",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Tidak perlu malu dengan suara itu.",
+      "text_markdown": "Tidak perlu malu dengan suara itu.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Tidak perlu malu dengan suara itu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p21",
+      "id": "ch02-087",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Lalu sesuatu yang luar biasa terjadi.",
+      "text_markdown": "Lalu sesuatu yang luar biasa terjadi.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Lalu sesuatu yang luar biasa terjadi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p21",
+      "id": "ch02-088",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Jatuh itu berhenti terasa seperti jatuh.",
+      "text_markdown": "Jatuh itu berhenti terasa seperti jatuh.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Jatuh itu berhenti terasa seperti jatuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p21",
+      "id": "ch02-089",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Angin datang menyambutmu dan menahanmu, seperti air menahanmu saat kamu mengapung telentang.",
+      "text_markdown": "Angin datang menyambutmu dan menahanmu, seperti air menahanmu saat kamu mengapung telentang.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Angin datang menyambutmu dan menahanmu, seperti air menahanmu saat kamu mengapung telentang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p21",
+      "id": "ch02-090",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Lengan dan kakimu terentang tanpa kamu memintanya.",
+      "text_markdown": "Lengan dan kakimu terentang tanpa kamu memintanya.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Lengan dan kakimu terentang tanpa kamu memintanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p21",
+      "id": "ch02-091",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Wajah Anda terasa seperti ditarik ke berbagai arah sekaligus.",
+      "text_markdown": "Wajah Anda terasa seperti ditarik ke berbagai arah sekaligus.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Wajah Anda terasa seperti ditarik ke berbagai arah sekaligus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p21",
+      "id": "ch02-092",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda tidak bisa membedakan apakah Anda tersenyum atau berteriak.",
+      "text_markdown": "Anda tidak bisa membedakan apakah Anda tersenyum atau berteriak.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda tidak bisa membedakan apakah Anda tersenyum atau berteriak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p21",
+      "id": "ch02-093",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Itu tidak penting.",
+      "text_markdown": "Itu tidak penting.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Itu tidak penting.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p22",
+      "id": "ch02-094",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda melihat sekeliling.",
+      "text_markdown": "Anda melihat sekeliling.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda melihat sekeliling.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p22",
+      "id": "ch02-095",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Bumi masih sangat jauh di bawah Anda, tetapi sekarang lebih dekat, dan Anda bisa melihat warna-warnanya dengan lebih jelas.",
+      "text_markdown": "Bumi masih sangat jauh di bawah Anda, tetapi sekarang lebih dekat, dan Anda bisa melihat warna-warnanya dengan lebih jelas.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Bumi masih sangat jauh di bawah Anda, tetapi sekarang lebih dekat, dan Anda bisa melihat warna-warnanya dengan lebih jelas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p22",
+      "id": "ch02-096",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Mobil-mobil di jalan raya, lambat seperti semut.",
+      "text_markdown": "Mobil-mobil di jalan raya, lambat seperti semut.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Mobil-mobil di jalan raya, lambat seperti semut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p22",
+      "id": "ch02-097",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Sebuah danau, sangat tenang.",
+      "text_markdown": "Sebuah danau, sangat tenang.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Sebuah danau, sangat tenang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p22",
+      "id": "ch02-098",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Bayangan awan melayang melintasi hutan.",
+      "text_markdown": "Bayangan awan melayang melintasi hutan.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Bayangan awan melayang melintasi hutan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p23",
+      "id": "ch02-099",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda terbang.",
+      "text_markdown": "Anda terbang.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda terbang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p23",
+      "id": "ch02-100",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Bukan di dalam pesawat.",
+      "text_markdown": "Bukan di dalam pesawat.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Bukan di dalam pesawat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p23",
+      "id": "ch02-101",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda, tubuh Anda, sedang terbang.",
+      "text_markdown": "Anda, tubuh Anda, sedang terbang.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda, tubuh Anda, sedang terbang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p24",
+      "id": "ch02-102",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Instruktur Anda menepuk bahu Anda.",
+      "text_markdown": "Instruktur Anda menepuk bahu Anda.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Instruktur Anda menepuk bahu Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p24",
+      "id": "ch02-103",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda menarik tali.",
+      "text_markdown": "Anda menarik tali.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda menarik tali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p24",
+      "id": "ch02-104",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ada sentakan lembut, seperti seseorang dengan perlahan menarik bagian belakang kemeja Anda.",
+      "text_markdown": "Ada sentakan lembut, seperti seseorang dengan perlahan menarik bagian belakang kemeja Anda.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Ada sentakan lembut, seperti seseorang dengan perlahan menarik bagian belakang kemeja Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p24",
+      "id": "ch02-105",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Kemudian sentakan kedua, lebih keras, yang mengangkat Anda tegak.",
+      "text_markdown": "Kemudian sentakan kedua, lebih keras, yang mengangkat Anda tegak.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Kemudian sentakan kedua, lebih keras, yang mengangkat Anda tegak.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p25",
+      "id": "ch02-106",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Dunia menjadi sunyi.",
+      "text_markdown": "Dunia menjadi sunyi.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Dunia menjadi sunyi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p26",
+      "id": "ch02-107",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Angin telah hilang.",
+      "text_markdown": "Angin telah hilang.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Angin telah hilang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p26",
+      "id": "ch02-108",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Deru telah hilang.",
+      "text_markdown": "Deru telah hilang.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Deru telah hilang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p26",
+      "id": "ch02-109",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Jatuhnya telah hilang.",
+      "text_markdown": "Jatuhnya telah hilang.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Jatuhnya telah hilang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p26",
+      "id": "ch02-110",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda sekarang tergantung, dalam sebuah harnes, di bawah selembar kain persegi panjang yang lebar.",
+      "text_markdown": "Anda sekarang tergantung, dalam sebuah harnes, di bawah selembar kain persegi panjang yang lebar.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda sekarang tergantung, dalam sebuah harnes, di bawah selembar kain persegi panjang yang lebar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p26",
+      "id": "ch02-111",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Langit tiba-tiba menjadi sangat, sangat tenang.",
+      "text_markdown": "Langit tiba-tiba menjadi sangat, sangat tenang.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Langit tiba-tiba menjadi sangat, sangat tenang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p26",
+      "id": "ch02-112",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda bisa mendengar burung di bawah Anda.",
+      "text_markdown": "Anda bisa mendengar burung di bawah Anda.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda bisa mendengar burung di bawah Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p26",
+      "id": "ch02-113",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda bisa mendengar napas Anda sendiri.",
+      "text_markdown": "Anda bisa mendengar napas Anda sendiri.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda bisa mendengar napas Anda sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p26",
+      "id": "ch02-114",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Instruktur Anda tertawa di telinga Anda dan bertanya bagaimana kabar Anda.",
+      "text_markdown": "Instruktur Anda tertawa di telinga Anda dan bertanya bagaimana kabar Anda.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Instruktur Anda tertawa di telinga Anda dan bertanya bagaimana kabar Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 8,
+      "paragraph_id": "p26",
+      "id": "ch02-115",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda tidak bisa menjawab sejenak, karena Anda menangis, atau tertawa, atau keduanya.",
+      "text_markdown": "Anda tidak bisa menjawab sejenak, karena Anda menangis, atau tertawa, atau keduanya.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Anda tidak bisa menjawab sejenak, karena Anda menangis, atau tertawa, atau keduanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p27",
+      "id": "ch02-116",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Perjalanan dengan parasut memakan waktu sekitar lima menit.",
+      "text_markdown": "Perjalanan dengan parasut memakan waktu sekitar lima menit.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Perjalanan dengan parasut memakan waktu sekitar lima menit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p27",
+      "id": "ch02-117",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Itu adalah lima menit paling damai dalam hidup Anda.",
+      "text_markdown": "Itu adalah lima menit paling damai dalam hidup Anda.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Itu adalah lima menit paling damai dalam hidup Anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p28",
+      "id": "ch02-118",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Ketika kaki Anda menyentuh tanah, Anda mengambil tiga langkah lari pendek dan berhenti.",
+      "text_markdown": "Ketika kaki Anda menyentuh tanah, Anda mengambil tiga langkah lari pendek dan berhenti.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Ketika kaki Anda menyentuh tanah, Anda mengambil tiga langkah lari pendek dan berhenti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p28",
+      "id": "ch02-119",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Rumput terasa nyata lagi.",
+      "text_markdown": "Rumput terasa nyata lagi.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Rumput terasa nyata lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p28",
+      "id": "ch02-120",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Dunia terasa padat lagi.",
+      "text_markdown": "Dunia terasa padat lagi.",
+      "title": "Pengalaman Pertama",
+      "tts": {
+        "text": "Dunia terasa padat lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p28",
+      "id": "ch02-121",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Anda berbalik dan menatap langit.",
+      "text_markdown": "Anda berbalik dan menatap langit.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Anda berbalik dan menatap langit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p28",
+      "id": "ch02-122",
+      "chapter": 2,
+      "block_type": "text",
+      "text": "Dan Anda mengerti, untuk pertama kalinya, apa yang teman Anda coba katakan selama bertahun-tahun ini.",
+      "text_markdown": "Dan Anda mengerti, untuk pertama kalinya, apa yang teman Anda coba katakan selama bertahun-tahun ini.",
+      "title": "Pertama Kali",
+      "tts": {
+        "text": "Dan Anda mengerti, untuk pertama kalinya, apa yang teman Anda coba katakan selama bertahun-tahun ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p29",
+      "heading_level": 1,
+      "id": "ch03-123",
+      "chapter": 3,
+      "block_type": "heading",
+      "text": "Memulai",
+      "text_markdown": "Memulai",
+      "title": "Memulai"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p30",
+      "id": "ch03-124",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Jadi, bagaimana Anda melakukannya, jika suatu hari Anda memutuskan untuk mencobanya.",
+      "text_markdown": "Jadi, bagaimana Anda melakukannya, jika suatu hari Anda memutuskan untuk mencobanya.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Jadi, bagaimana Anda melakukannya, jika suatu hari Anda memutuskan untuk mencobanya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p31",
+      "id": "ch03-125",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Jawabannya jujur, lebih mudah dari yang Anda kira.",
+      "text_markdown": "Jawabannya jujur, lebih mudah dari yang Anda kira.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Jawabannya jujur, lebih mudah dari yang Anda kira.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p31",
+      "id": "ch03-126",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Hampir semua zona terjun di dunia akan menerima pemula total pada pagi yang sama.",
+      "text_markdown": "Hampir semua zona terjun di dunia akan menerima pemula total pada pagi yang sama.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Hampir semua zona terjun di dunia akan menerima pemula total pada pagi yang sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p31",
+      "id": "ch03-127",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Mereka menempatkan Anda di langit dalam terjun tandem, dengan seorang instruktur di punggung Anda.",
+      "text_markdown": "Mereka menempatkan Anda di langit dalam terjun tandem, dengan seorang instruktur di punggung Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Mereka menempatkan Anda di langit dalam terjun tandem, dengan seorang instruktur di punggung Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p31",
+      "id": "ch03-128",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda tiba, Anda menandatangani dokumen, Anda menonton video singkat, dan Anda bertemu instruktur Anda.",
+      "text_markdown": "Anda tiba, Anda menandatangani dokumen, Anda menonton video singkat, dan Anda bertemu instruktur Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda tiba, Anda menandatangani dokumen, Anda menonton video singkat, dan Anda bertemu instruktur Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p31",
+      "id": "ch03-129",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda mengenakan baju parasut dan harnes.",
+      "text_markdown": "Anda mengenakan baju parasut dan harnes.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda mengenakan baju parasut dan harnes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p31",
+      "id": "ch03-130",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda naik ke pesawat.",
+      "text_markdown": "Anda naik ke pesawat.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda naik ke pesawat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p31",
+      "id": "ch03-131",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Sekitar dua puluh menit kemudian, Anda berjalan kembali melintasi rumput dengan senyum terlebar dalam hidup Anda.",
+      "text_markdown": "Sekitar dua puluh menit kemudian, Anda berjalan kembali melintasi rumput dengan senyum terlebar dalam hidup Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Sekitar dua puluh menit kemudian, Anda berjalan kembali melintasi rumput dengan senyum terlebar dalam hidup Anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p32",
+      "id": "ch03-132",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Untuk terjun pertama Anda, Anda tidak perlu berani.",
+      "text_markdown": "Untuk terjun pertama Anda, Anda tidak perlu berani.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Untuk terjun pertama Anda, Anda tidak perlu berani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p32",
+      "id": "ch03-133",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda hanya perlu bersedia.",
+      "text_markdown": "Anda hanya perlu bersedia.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda hanya perlu bersedia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p32",
+      "id": "ch03-134",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Instruktur melakukan segalanya.",
+      "text_markdown": "Instruktur melakukan segalanya.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Instruktur melakukan segalanya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p32",
+      "id": "ch03-135",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Dia menarik parasut.",
+      "text_markdown": "Dia menarik parasut.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Dia menarik parasut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p32",
+      "id": "ch03-136",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Dia menerbangkan kanopi.",
+      "text_markdown": "Dia menerbangkan kanopi.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Dia menerbangkan kanopi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p32",
+      "id": "ch03-137",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Dia mendaratkan Anda.",
+      "text_markdown": "Dia mendaratkan Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Dia mendaratkan Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p32",
+      "id": "ch03-138",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda ikut serta dalam perjalanan, dengan tempat duduk terbaik di dunia.",
+      "text_markdown": "Anda ikut serta dalam perjalanan, dengan tempat duduk terbaik di dunia.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda ikut serta dalam perjalanan, dengan tempat duduk terbaik di dunia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p33",
+      "id": "ch03-139",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Jika setelah terjun pertama itu Anda tertarik untuk terjun sendiri, jalur tersebut disebut Accelerated Free Fall.",
+      "text_markdown": "Jika setelah terjun pertama itu Anda tertarik untuk terjun sendiri, jalur tersebut disebut Accelerated Free Fall.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Jika setelah terjun pertama itu Anda tertarik untuk terjun sendiri, jalur tersebut disebut Accelerated Free Fall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p33",
+      "id": "ch03-140",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Ini adalah program pelatihan, yang diajarkan di setiap zona terjun, yang mengajarkan Anda bagaimana menjadi penerjun payung sungguhan.",
+      "text_markdown": "Ini adalah program pelatihan, yang diajarkan di setiap zona terjun, yang mengajarkan Anda bagaimana menjadi penerjun payung sungguhan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Ini adalah program pelatihan, yang diajarkan di setiap zona terjun, yang mengajarkan Anda bagaimana menjadi penerjun payung sungguhan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p33",
+      "id": "ch03-141",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Bukan seorang penumpang.",
+      "text_markdown": "Bukan seorang penumpang.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Bukan seorang penumpang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p33",
+      "id": "ch03-142",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Seorang pilot tubuh Anda sendiri di langit.",
+      "text_markdown": "Seorang pilot tubuh Anda sendiri di langit.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Seorang pilot tubuh Anda sendiri di langit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p34",
+      "id": "ch03-143",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Tingkat pertama program ini adalah hari kelas yang panjang.",
+      "text_markdown": "Tingkat pertama program ini adalah hari kelas yang panjang.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Tingkat pertama program ini adalah hari kelas yang panjang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p34",
+      "id": "ch03-144",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda belajar cara jatuh.",
+      "text_markdown": "Anda belajar cara jatuh.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda belajar cara jatuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p34",
+      "id": "ch03-145",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda belajar cara membaca altimeter Anda.",
+      "text_markdown": "Anda belajar cara membaca altimeter Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda belajar cara membaca altimeter Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p34",
+      "id": "ch03-146",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda belajar apa yang harus dilakukan jika parasut utama Anda tidak terbuka.",
+      "text_markdown": "Anda belajar apa yang harus dilakukan jika parasut utama Anda tidak terbuka.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda belajar apa yang harus dilakukan jika parasut utama Anda tidak terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p34",
+      "id": "ch03-147",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Hari kelas memakan waktu sekitar enam atau tujuh jam.",
+      "text_markdown": "Hari kelas memakan waktu sekitar enam atau tujuh jam.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Hari kelas memakan waktu sekitar enam atau tujuh jam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p34",
+      "id": "ch03-148",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Pada akhirnya, Anda tahu lebih banyak tentang parasut daripada yang dipelajari kebanyakan orang seumur hidup.",
+      "text_markdown": "Pada akhirnya, Anda tahu lebih banyak tentang parasut daripada yang dipelajari kebanyakan orang seumur hidup.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Pada akhirnya, Anda tahu lebih banyak tentang parasut daripada yang dipelajari kebanyakan orang seumur hidup.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p35",
+      "id": "ch03-149",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Kemudian datanglah terjun solo pertama Anda.",
+      "text_markdown": "Kemudian datanglah terjun solo pertama Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Kemudian datanglah terjun solo pertama Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p35",
+      "id": "ch03-150",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Dua instruktur terjun bersama Anda, satu di setiap sisi, memegang harnes Anda.",
+      "text_markdown": "Dua instruktur terjun bersama Anda, satu di setiap sisi, memegang harnes Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Dua instruktur terjun bersama Anda, satu di setiap sisi, memegang harnes Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p35",
+      "id": "ch03-151",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Mereka melepaskan Anda dalam jatuh bebas setelah Anda stabil.",
+      "text_markdown": "Mereka melepaskan Anda dalam jatuh bebas setelah Anda stabil.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Mereka melepaskan Anda dalam jatuh bebas setelah Anda stabil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p35",
+      "id": "ch03-152",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda menarik parasut Anda sendiri.",
+      "text_markdown": "Anda menarik parasut Anda sendiri.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda menarik parasut Anda sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p35",
+      "id": "ch03-153",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Anda menerbangkan kanopi Anda sendiri ke tanah.",
+      "text_markdown": "Anda menerbangkan kanopi Anda sendiri ke tanah.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Anda menerbangkan kanopi Anda sendiri ke tanah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p35",
+      "id": "ch03-154",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Pertama kali Anda melakukan ini, wajah Anda akan terasa sakit keesokan harinya karena betapa kerasnya Anda tersenyum.",
+      "text_markdown": "Pertama kali Anda melakukan ini, wajah Anda akan terasa sakit keesokan harinya karena betapa kerasnya Anda tersenyum.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Pertama kali Anda melakukan ini, wajah Anda akan terasa sakit keesokan harinya karena betapa kerasnya Anda tersenyum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p36",
+      "id": "ch03-155",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Program lengkap akan membawa Anda melalui sekitar tujuh kali lompatan.",
+      "text_markdown": "Program lengkap akan membawa Anda melalui sekitar tujuh kali lompatan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Program lengkap akan membawa Anda melalui sekitar tujuh kali lompatan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p36",
+      "id": "ch03-156",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Pada akhirnya, Anda melompat sendiri.",
+      "text_markdown": "Pada akhirnya, Anda melompat sendiri.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Pada akhirnya, Anda melompat sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p36",
+      "id": "ch03-157",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Dari sana, para penerjun payung biasanya menyelesaikan seratus lompatan pertama mereka selama setahun berikutnya.",
+      "text_markdown": "Dari sana, para penerjun payung biasanya menyelesaikan seratus lompatan pertama mereka selama setahun berikutnya.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Dari sana, para penerjun payung biasanya menyelesaikan seratus lompatan pertama mereka selama satu tahun berikutnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p36",
+      "id": "ch03-158",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Sepanjang jalan, mereka belajar terbang relatif terhadap penerjun lain.",
+      "text_markdown": "Sepanjang jalan, mereka belajar terbang relatif terhadap penerjun lain.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Sepanjang jalan, mereka belajar terbang relatif terhadap penerjun lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p36",
+      "id": "ch03-159",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Mereka belajar melacak melintasi langit.",
+      "text_markdown": "Mereka belajar melacak melintasi langit.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Mereka belajar melacak melintasi langit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p36",
+      "id": "ch03-160",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Mereka belajar melipat parasut mereka sendiri.",
+      "text_markdown": "Mereka belajar melipat parasut mereka sendiri.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Mereka belajar melipat parasut mereka sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p36",
+      "id": "ch03-161",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Komunitasnya kecil, ramah, dan sabar.",
+      "text_markdown": "Komunitasnya kecil, ramah, dan sabar.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Komunitasnya kecil, ramah, dan sabar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p36",
+      "id": "ch03-162",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Tidak ada seorang pun di zona pendaratan yang akan membuat Anda merasa bodoh karena menjadi pemula.",
+      "text_markdown": "Tidak ada seorang pun di zona pendaratan yang akan membuat Anda merasa bodoh karena menjadi pemula.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Tidak ada seorang pun di zona pendaratan yang akan membuat Anda merasa bodoh karena menjadi pemula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 8,
+      "paragraph_id": "p36",
+      "id": "ch03-163",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Kita semua pernah menjadi pemula.",
+      "text_markdown": "Kita semua pernah menjadi pemula.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Kita semua pernah menjadi pemula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 9,
+      "paragraph_id": "p36",
+      "id": "ch03-164",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Kebanyakan dari kita masih merasa seperti pemula.",
+      "text_markdown": "Kebanyakan dari kita masih merasa seperti pemula.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Kebanyakan dari kita masih merasa seperti pemula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p37",
+      "id": "ch03-165",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Bagaimana dengan keamanan?",
+      "text_markdown": "Bagaimana dengan keamanan?",
+      "title": "Memulai",
+      "tts": {
+        "text": "Bagaimana dengan keamanan?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p37",
+      "id": "ch03-166",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Ini adalah pertanyaan yang diajukan setiap orang yang masuk akal, dan itu pantas mendapatkan jawaban yang nyata.",
+      "text_markdown": "Ini adalah pertanyaan yang diajukan setiap orang yang masuk akal, dan itu pantas mendapatkan jawaban yang nyata.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Ini adalah pertanyaan yang diajukan setiap orang yang masuk akal, dan itu pantas mendapatkan jawaban yang nyata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p37",
+      "id": "ch03-167",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Terjun payung, pada kenyataannya, sangat aman.",
+      "text_markdown": "Terjun payung, pada kenyataannya, sangat aman.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Terjun payung, pada kenyataannya, sangat aman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p37",
+      "id": "ch03-168",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Tidak seaman berjalan kaki, tetapi lebih aman daripada berkendara ke zona pendaratan.",
+      "text_markdown": "Tidak seaman berjalan kaki, tetapi lebih aman daripada berkendara ke zona pendaratan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Tidak seaman berjalan kaki, tetapi lebih aman daripada berkendara ke zona pendaratan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p37",
+      "id": "ch03-169",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Peralatannya sangat bagus.",
+      "text_markdown": "Peralatannya sangat bagus.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Peralatannya sangat bagus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p37",
+      "id": "ch03-170",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Ada parasut utama dan parasut cadangan, serta perangkat otomatis yang akan mengaktifkan parasut cadangan jika Anda tidak bisa.",
+      "text_markdown": "Ada parasut utama dan parasut cadangan, serta perangkat otomatis yang akan mengaktifkan parasut cadangan jika Anda tidak bisa.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Ada parasut utama dan parasut cadangan, serta perangkat otomatis yang akan mengaktifkan parasut cadangan jika Anda tidak bisa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p37",
+      "id": "ch03-171",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Zona pendaratan dijalankan oleh para profesional yang peduli pada Anda.",
+      "text_markdown": "Zona pendaratan dijalankan oleh para profesional yang peduli pada Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Zona pendaratan dijalankan oleh para profesional yang peduli pada Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p37",
+      "id": "ch03-172",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Instruktur sangat peduli, pada setiap lompatan.",
+      "text_markdown": "Instruktur sangat peduli, pada setiap lompatan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Instruktur sangat peduli, pada setiap lompatan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p38",
+      "id": "ch03-173",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Berapa biayanya?",
+      "text_markdown": "Berapa biayanya?",
+      "title": "Memulai",
+      "tts": {
+        "text": "Berapa biayanya?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p38",
+      "id": "ch03-174",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Lompatan tandem adalah harga makan malam yang menyenangkan untuk dua orang.",
+      "text_markdown": "Lompatan tandem adalah harga makan malam yang menyenangkan untuk dua orang.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Lompatan tandem adalah harga makan malam yang menyenangkan untuk dua orang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p38",
+      "id": "ch03-175",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Program pelatihan adalah harga liburan kecil.",
+      "text_markdown": "Program pelatihan adalah harga liburan kecil.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Program pelatihan adalah harga liburan kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p38",
+      "id": "ch03-176",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Setelah itu, setiap lompatan adalah harga tiket bioskop dan makanan.",
+      "text_markdown": "Setelah itu, setiap lompatan adalah harga tiket bioskop dan makanan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Setelah itu, setiap lompatan adalah harga tiket bioskop dan makanan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p38",
+      "id": "ch03-177",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Orang-orang dengan pekerjaan normal dan kehidupan normal melakukan ini setiap akhir pekan.",
+      "text_markdown": "Orang-orang dengan pekerjaan normal dan kehidupan normal melakukan ini setiap akhir pekan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Orang-orang dengan pekerjaan normal dan kehidupan normal melakukan ini setiap akhir pekan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p38",
+      "id": "ch03-178",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Mereka tidak kaya.",
+      "text_markdown": "Mereka tidak kaya.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Mereka tidak kaya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p38",
+      "id": "ch03-179",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Mereka tidak aneh.",
+      "text_markdown": "Mereka tidak aneh.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Mereka tidak aneh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p38",
+      "id": "ch03-180",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Mereka hanya memutuskan bahwa inilah yang mereka lakukan.",
+      "text_markdown": "Mereka hanya memutuskan bahwa inilah yang mereka lakukan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Mereka hanya memutuskan bahwa inilah yang mereka lakukan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p39",
+      "id": "ch03-181",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Jika Anda memikirkan lompatan pertama Anda, inilah satu-satunya nasihat yang penting.",
+      "text_markdown": "Jika Anda memikirkan lompatan pertama Anda, inilah satu-satunya nasihat yang penting.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Jika Anda memikirkan lompatan pertama Anda, inilah satu-satunya nasihat yang penting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p39",
+      "id": "ch03-182",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Pilih tanggal.",
+      "text_markdown": "Pilih tanggal.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Pilih tanggal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p39",
+      "id": "ch03-183",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Beritahu satu teman.",
+      "text_markdown": "Beritahu satu teman.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Beritahu satu teman.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p39",
+      "id": "ch03-184",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Datanglah.",
+      "text_markdown": "Datanglah.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Datanglah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p39",
+      "id": "ch03-185",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Bagian yang sulit bukanlah jatuh.",
+      "text_markdown": "Bagian yang sulit bukanlah jatuh.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Bagian yang sulit bukanlah jatuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p39",
+      "id": "ch03-186",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Bagian yang sulit adalah memutuskan.",
+      "text_markdown": "Bagian yang sulit adalah memutuskan.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Bagian yang sulit adalah memutuskan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p39",
+      "id": "ch03-187",
+      "chapter": 3,
+      "block_type": "text",
+      "text": "Setelah Anda memutuskan, langit sudah menjadi milik Anda.",
+      "text_markdown": "Setelah Anda memutuskan, langit sudah menjadi milik Anda.",
+      "title": "Memulai",
+      "tts": {
+        "text": "Setelah Anda memutuskan, langit sudah menjadi milik Anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p40",
+      "heading_level": 1,
+      "id": "ch04-188",
+      "chapter": 4,
+      "block_type": "heading",
+      "text": "Keahliannya",
+      "text_markdown": "Keahliannya",
+      "title": "Keahliannya"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p41",
+      "id": "ch04-189",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Ada keahlian tersembunyi di dalam proses jatuh, dan itulah bagian dari skydiving yang membuat Anda bertahan seumur hidup.",
+      "text_markdown": "Ada keahlian tersembunyi di dalam proses jatuh, dan itulah bagian dari skydiving yang membuat Anda bertahan seumur hidup.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Ada keahlian tersembunyi di dalam proses jatuh, dan itulah bagian dari skydiving yang membuat Anda bertahan seumur hidup.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p42",
+      "id": "ch04-190",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Ketika Anda melihat seorang penerjun payung berpengalaman dalam jatuh bebas, Anda tidak melihat seseorang jatuh.",
+      "text_markdown": "Ketika Anda melihat seorang penerjun payung berpengalaman dalam jatuh bebas, Anda tidak melihat seseorang jatuh.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Ketika Anda melihat seorang penerjun payung berpengalaman dalam jatuh bebas, Anda tidak melihat seseorang jatuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p42",
+      "id": "ch04-191",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda melihat seseorang terbang.",
+      "text_markdown": "Anda melihat seseorang terbang.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Anda melihat seseorang terbang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p42",
+      "id": "ch04-192",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Mereka berputar perlahan, dengan sengaja, menggunakan ujung jari mereka.",
+      "text_markdown": "Mereka berputar perlahan, dengan sengaja, menggunakan ujung jari mereka.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Mereka berputar perlahan, dengan sengaja, menggunakan ujung jari mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p42",
+      "id": "ch04-193",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Mereka meluncur maju melintasi langit sejauh setengah mil dengan memiringkan bahu mereka ke depan dua inci.",
+      "text_markdown": "Mereka meluncur maju melintasi langit sejauh setengah mil dengan memiringkan bahu mereka ke depan dua inci.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Mereka meluncur maju melintasi langit sejauh setengah mil dengan memiringkan bahu mereka ke depan dua inci.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p42",
+      "id": "ch04-194",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Mereka berhenti, di tengah jatuh, dan mempertahankan ketenangan yang terlihat mustahil.",
+      "text_markdown": "Mereka berhenti, di tengah jatuh, dan mempertahankan ketenangan yang terlihat mustahil.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Mereka berhenti, di tengah jatuh, dan mempertahankan ketenangan yang terlihat mustahil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p43",
+      "id": "ch04-195",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Tubuh adalah pesawat terbang.",
+      "text_markdown": "Tubuh adalah pesawat terbang.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Tubuh adalah pesawat terbang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p43",
+      "id": "ch04-196",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Itu adalah rahasia pertama dari keahlian ini.",
+      "text_markdown": "Itu adalah rahasia pertama dari keahlian ini.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Itu adalah rahasia pertama dari keahlian ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p43",
+      "id": "ch04-197",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Setelah Anda memahami itu, segalanya akan mengikuti.",
+      "text_markdown": "Setelah Anda memahami itu, segalanya akan mengikuti.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Setelah Anda memahami itu, segalanya akan mengikuti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p44",
+      "id": "ch04-198",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Bentuk dasar dari jatuh bebas yang stabil disebut arch.",
+      "text_markdown": "Bentuk dasar dari jatuh bebas yang stabil disebut arch.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Bentuk dasar dari jatuh bebas yang stabil disebut arch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p44",
+      "id": "ch04-199",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda mendorong pinggul ke depan dan membiarkan lengan serta kaki Anda menjuntai ke belakang, seperti pisang.",
+      "text_markdown": "Anda mendorong pinggul ke depan dan membiarkan lengan serta kaki Anda menjuntai ke belakang, seperti pisang.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Anda mendorong pinggul ke depan dan membiarkan lengan serta kaki Anda menjuntai ke belakang, seperti pisang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p44",
+      "id": "ch04-200",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Arch inilah yang membuat Anda menghadap ke bawah ke bumi tanpa harus memikirkannya.",
+      "text_markdown": "Arch inilah yang membuat Anda menghadap ke bawah ke bumi tanpa harus memikirkannya.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Arch inilah yang membuat Anda menghadap ke bawah ke bumi tanpa harus memikirkannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p44",
+      "id": "ch04-201",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Penerjun baru mempelajari arch di lubang busa, lalu di terowongan angin, kemudian di langit.",
+      "text_markdown": "Penerjun baru mempelajari arch di lubang busa, lalu di terowongan angin, kemudian di langit.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Penerjun baru mempelajari arch di lubang busa, lalu di terowongan angin, kemudian di langit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p44",
+      "id": "ch04-202",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Penerjun lama masih membicarakan arch seperti pelari lama membicarakan langkah mereka.",
+      "text_markdown": "Penerjun lama masih membicarakan arch seperti pelari lama membicarakan langkah mereka.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Penerjun lama masih membicarakan arch seperti pelari lama membicarakan langkah mereka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p45",
+      "id": "ch04-203",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Setelah Anda memiliki arch yang stabil, sisa dari jatuh bebas akan terbuka.",
+      "text_markdown": "Setelah Anda memiliki arch yang stabil, sisa dari jatuh bebas akan terbuka.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Setelah Anda memiliki arch yang stabil, sisa dari jatuh bebas akan terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p45",
+      "id": "ch04-204",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda belajar jatuh perlahan dengan merentangkan diri lebar-lebar, mengubah diri Anda menjadi layang-layang.",
+      "text_markdown": "Anda belajar jatuh perlahan dengan merentangkan diri lebar-lebar, mengubah diri Anda menjadi layang-layang.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Anda belajar jatuh perlahan dengan merentangkan diri lebar-lebar, mengubah diri Anda menjadi layang-layang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p45",
+      "id": "ch04-205",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda belajar jatuh cepat dengan meringkuk kecil, mengubah diri Anda menjadi batu.",
+      "text_markdown": "Anda belajar jatuh cepat dengan meringkuk kecil, mengubah diri Anda menjadi batu.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Anda belajar jatuh cepat dengan meringkuk kecil, mengubah diri Anda menjadi batu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p45",
+      "id": "ch04-206",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda belajar untuk tracking, yang merupakan hal terdekat dengan terbang yang bisa dilakukan tubuh manusia.",
+      "text_markdown": "Anda belajar untuk tracking, yang merupakan hal terdekat dengan terbang yang bisa dilakukan tubuh manusia.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Anda belajar untuk tracking, yang merupakan hal terdekat dengan terbang yang bisa dilakukan tubuh manusia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p45",
+      "id": "ch04-207",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Seorang tracker yang baik dapat menempuh seperempat mil melintasi langit dalam dua puluh detik.",
+      "text_markdown": "Seorang tracker yang baik dapat menempuh seperempat mil melintasi langit dalam dua puluh detik.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Seorang tracker yang baik dapat menempuh seperempat mil melintasi langit dalam dua puluh detik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p45",
+      "id": "ch04-208",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Lengan disapu ke belakang, tubuh miring, bergerak seperti pesawat kertas yang tahu ke mana ia pergi.",
+      "text_markdown": "Lengan disapu ke belakang, tubuh miring, bergerak seperti pesawat kertas yang tahu ke mana ia pergi.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Lengan disapu ke belakang, tubuh miring, bergerak seperti pesawat kertas yang tahu ke mana ia pergi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p46",
+      "id": "ch04-209",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Setengah bagian lain dari keahlian ini adalah kanopi.",
+      "text_markdown": "Setengah bagian lain dari keahlian ini adalah kanopi.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Setengah bagian lain dari keahlian ini adalah kanopi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p46",
+      "id": "ch04-210",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Parasut bukanlah benda pasif yang hanya mengapungkan Anda ke bawah.",
+      "text_markdown": "Parasut bukanlah benda pasif yang hanya mengapungkan Anda ke bawah.",
+      "title": "Keahliannya",
+      "tts": {
+        "text": "Parasut bukanlah benda pasif yang hanya mengapungkan Anda ke bawah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p46",
+      "id": "ch04-211",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Itu adalah sayap, dan Anda menerbangkannya.",
+      "text_markdown": "Itu adalah sayap, dan Anda menerbangkannya.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Itu adalah sayap, dan Anda menerbangkannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p46",
+      "id": "ch04-212",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Menarik tuas kanan akan menurunkan sayap kanan dan membelokkan Anda ke kanan.",
+      "text_markdown": "Menarik tuas kanan akan menurunkan sayap kanan dan membelokkan Anda ke kanan.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Menarik tuas kanan akan menurunkan sayap kanan dan membelokkan Anda ke kanan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p46",
+      "id": "ch04-213",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Menarik keduanya secara bersamaan akan memperlambat Anda dan memungkinkan Anda mendarat dengan lembut.",
+      "text_markdown": "Menarik keduanya secara bersamaan akan memperlambat Anda dan memungkinkan Anda mendarat dengan lembut.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Menarik keduanya secara bersamaan akan memperlambat Anda dan memungkinkan Anda mendarat dengan lembut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p46",
+      "id": "ch04-214",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda membaca arah angin, Anda memilih lokasi, Anda merencanakan jalur pendaratan Anda.",
+      "text_markdown": "Anda membaca arah angin, Anda memilih lokasi, Anda merencanakan jalur pendaratan Anda.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Anda membaca arah angin, Anda memilih lokasi, Anda merencanakan jalur pendaratan Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p46",
+      "id": "ch04-215",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda melakukan *flare* di detik terakhir, sehingga kaki Anda menyentuh tanah dengan lembut alih-alih menghantamnya.",
+      "text_markdown": "Anda melakukan *flare* di detik terakhir, sehingga kaki Anda menyentuh tanah dengan lembut alih-alih menghantamnya.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Anda melakukan *flare* di detik terakhir, sehingga kaki Anda menyentuh tanah dengan lembut alih-alih menghantamnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p46",
+      "id": "ch04-216",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Semua itu adalah penerbangan parasut, dan itu adalah disiplin ilmunya sendiri.",
+      "text_markdown": "Semua itu adalah penerbangan parasut, dan itu adalah disiplin ilmunya sendiri.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Semua itu adalah penerbangan parasut, dan itu adalah disiplin ilmunya sendiri.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p47",
+      "id": "ch04-217",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Dan kemudian ada melipat parasut.",
+      "text_markdown": "Dan kemudian ada melipat parasut.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Dan kemudian ada melipat parasut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p48",
+      "id": "ch04-218",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Setiap penerjun payung melipat parasutnya sendiri.",
+      "text_markdown": "Setiap penerjun payung melipat parasutnya sendiri.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Setiap penerjun payung melipat parasutnya sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p48",
+      "id": "ch04-219",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Setiap kali.",
+      "text_markdown": "Setiap kali.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Setiap kali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p48",
+      "id": "ch04-220",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda membentangkan parasut di atas alas panjang.",
+      "text_markdown": "Anda membentangkan parasut di atas alas panjang.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Anda membentangkan parasut di atas alas panjang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p48",
+      "id": "ch04-221",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda merapikan tali-tali.",
+      "text_markdown": "Anda merapikan tali-tali.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Anda merapikan tali-tali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p48",
+      "id": "ch04-222",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda melipat sel-selnya.",
+      "text_markdown": "Anda melipat sel-selnya.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Anda melipat sel-selnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p48",
+      "id": "ch04-223",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Anda membungkus kainnya, memasukkannya perlahan ke dalam tas, merapikan tali kendali, menutup wadahnya.",
+      "text_markdown": "Anda membungkus kainnya, memasukkannya perlahan ke dalam tas, merapikan tali kendali, menutup wadahnya.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Anda membungkus kainnya, memasukkannya perlahan ke dalam tas, merapikan tali kendali, menutup wadahnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p48",
+      "id": "ch04-224",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Dibutuhkan sekitar lima belas menit, dan Anda melakukannya perlahan, karena hidup Anda akan bergantung pada selembar kain ini.",
+      "text_markdown": "Dibutuhkan sekitar lima belas menit, dan Anda melakukannya perlahan, karena hidup Anda akan bergantung pada selembar kain ini.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Dibutuhkan sekitar lima belas menit, dan Anda melakukannya perlahan, karena hidup Anda akan bergantung pada selembar kain ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p49",
+      "id": "ch04-225",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Melipat parasut adalah meditasi.",
+      "text_markdown": "Melipat parasut adalah meditasi.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Melipat parasut adalah meditasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p49",
+      "id": "ch04-226",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Banyak penerjun payung mengatakan itu adalah bagian hari yang paling mereka sukai.",
+      "text_markdown": "Banyak penerjun payung mengatakan itu adalah bagian hari yang paling mereka sukai.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Banyak penerjun payung mengatakan itu adalah bagian hari yang paling mereka sukai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p49",
+      "id": "ch04-227",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Alas, tali-tali, lipatan yang perlahan.",
+      "text_markdown": "Alas, tali-tali, lipatan yang perlahan.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Alas, tali-tali, lipatan yang perlahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p49",
+      "id": "ch04-228",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Bahu seorang teman yang melipat parasut di samping Anda.",
+      "text_markdown": "Bahu seorang teman yang melipat parasut di samping Anda.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Bahu seorang teman yang melipat parasut di samping Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p49",
+      "id": "ch04-229",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Radio di sudut memutar lagu yang sudah terlalu sering Anda dengar.",
+      "text_markdown": "Radio di sudut memutar lagu yang sudah terlalu sering Anda dengar.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Radio di sudut memutar lagu yang sudah terlalu sering Anda dengar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p49",
+      "id": "ch04-230",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Tidak ada terburu-buru saat melipat parasut.",
+      "text_markdown": "Tidak ada terburu-buru saat melipat parasut.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Tidak ada terburu-buru saat melipat parasut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p49",
+      "id": "ch04-231",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Langit tidak peduli dengan jadwal Anda.",
+      "text_markdown": "Langit tidak peduli dengan jadwal Anda.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Langit tidak peduli dengan jadwal Anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p50",
+      "id": "ch04-232",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Pola pikir dalam keahlian ini adalah kesabaran.",
+      "text_markdown": "Pola pikir dalam keahlian ini adalah kesabaran.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Pola pikir dalam keahlian ini adalah kesabaran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p50",
+      "id": "ch04-233",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Ini adalah kerendahan hati.",
+      "text_markdown": "Ini adalah kerendahan hati.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Ini adalah kerendahan hati.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p50",
+      "id": "ch04-234",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Ini adalah kesediaan untuk melakukan *debriefing* setiap kali melompat, bahkan yang membosankan sekalipun.",
+      "text_markdown": "Ini adalah kesediaan untuk melakukan *debriefing* setiap kali melompat, bahkan yang membosankan sekalipun.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Ini adalah kesediaan untuk melakukan *debriefing* setiap kali melompat, bahkan yang membosankan sekalipun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p50",
+      "id": "ch04-235",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Penerjun payung suka berbicara setelah melompat.",
+      "text_markdown": "Penerjun payung suka berbicara setelah melompat.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Penerjun payung suka berbicara setelah melompat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p50",
+      "id": "ch04-236",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Mereka akan duduk di meja piknik dan membahas setiap detik, posisi tubuh demi posisi tubuh.",
+      "text_markdown": "Mereka akan duduk di meja piknik dan membahas setiap detik, posisi tubuh demi posisi tubuh.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Mereka akan duduk di meja piknik dan membahas setiap detik, posisi tubuh demi posisi tubuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p50",
+      "id": "ch04-237",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Apa yang berhasil.",
+      "text_markdown": "Apa yang berhasil.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Apa yang berhasil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p50",
+      "id": "ch04-238",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Apa yang ceroboh.",
+      "text_markdown": "Apa yang ceroboh.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Apa yang ceroboh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p50",
+      "id": "ch04-239",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Apa yang ingin mereka coba lain kali.",
+      "text_markdown": "Apa yang ingin mereka coba lain kali.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Apa yang ingin mereka coba lain kali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p51",
+      "id": "ch04-240",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Itulah mengapa orang-orang bertahan.",
+      "text_markdown": "Itulah mengapa orang-orang bertahan.",
+      "title": "Keahlian Ini",
+      "tts": {
+        "text": "Itulah mengapa orang-orang bertahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p51",
+      "id": "ch04-241",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Bukan karena jatuh itu mengasyikkan.",
+      "text_markdown": "Bukan karena jatuh itu mengasyikkan.",
+      "title": "Keahlian",
+      "tts": {
+        "text": "Bukan karena jatuh itu mengasyikkan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p51",
+      "id": "ch04-242",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Jatuh adalah bagian yang mudah.",
+      "text_markdown": "Jatuh adalah bagian yang mudah.",
+      "title": "Keahlian",
+      "tts": {
+        "text": "Jatuh adalah bagian yang mudah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p51",
+      "id": "ch04-243",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Orang-orang bertahan karena selalu ada sesuatu untuk dipelajari.",
+      "text_markdown": "Orang-orang bertahan karena selalu ada sesuatu untuk dipelajari.",
+      "title": "Keahlian",
+      "tts": {
+        "text": "Orang-orang bertahan karena selalu ada sesuatu untuk dipelajari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p51",
+      "id": "ch04-244",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Selalu ada teman untuk belajar bersama.",
+      "text_markdown": "Selalu ada teman untuk belajar bersama.",
+      "title": "Keahlian",
+      "tts": {
+        "text": "Selalu ada teman untuk belajar bersama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p51",
+      "id": "ch04-245",
+      "chapter": 4,
+      "block_type": "text",
+      "text": "Dan ada langit yang menantimu besok siang.",
+      "text_markdown": "Dan ada langit yang menantimu besok siang.",
+      "title": "Keahlian",
+      "tts": {
+        "text": "Dan ada langit yang menantimu besok siang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p52",
+      "heading_level": 1,
+      "id": "ch05-246",
+      "chapter": 5,
+      "block_type": "heading",
+      "text": "Momen",
+      "text_markdown": "Momen",
+      "title": "Momen"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p53",
+      "id": "ch05-247",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Izinkan saya memberi Anda tiga.",
+      "text_markdown": "Izinkan saya memberi Anda tiga.",
+      "title": "Momen",
+      "tts": {
+        "text": "Izinkan saya memberi Anda tiga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p54",
+      "id": "ch05-248",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Yang pertama adalah penerbangan senja.",
+      "text_markdown": "Yang pertama adalah penerbangan senja.",
+      "title": "Momen",
+      "tts": {
+        "text": "Yang pertama adalah penerbangan senja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p54",
+      "id": "ch05-249",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Pesawat lepas landas dua puluh menit sebelum matahari terbenam.",
+      "text_markdown": "Pesawat lepas landas dua puluh menit sebelum matahari terbenam.",
+      "title": "Momen",
+      "tts": {
+        "text": "Pesawat lepas landas dua puluh menit sebelum matahari terbenam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p54",
+      "id": "ch05-250",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda naik menembus lapisan cahaya oranye, kabin hangat, teman-teman Anda hening.",
+      "text_markdown": "Anda naik menembus lapisan cahaya oranye, kabin hangat, teman-teman Anda hening.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda naik menembus lapisan cahaya oranye, kabin hangat, teman-teman Anda hening.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p54",
+      "id": "ch05-251",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Ketika pintu terbuka kali ini, udaranya berwarna merah muda.",
+      "text_markdown": "Ketika pintu terbuka kali ini, udaranya berwarna merah muda.",
+      "title": "Momen",
+      "tts": {
+        "text": "Ketika pintu terbuka kali ini, udaranya berwarna merah muda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p54",
+      "id": "ch05-252",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Bumi di bawah Anda separuh dalam bayangan, separuh dalam emas.",
+      "text_markdown": "Bumi di bawah Anda separuh dalam bayangan, separuh dalam emas.",
+      "title": "Momen",
+      "tts": {
+        "text": "Bumi di bawah Anda separuh dalam bayangan, separuh dalam emas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p54",
+      "id": "ch05-253",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda melangkah keluar, dan selama enam puluh detik Anda jatuh menembus bagian dalam matahari terbenam.",
+      "text_markdown": "Anda melangkah keluar, dan selama enam puluh detik Anda jatuh menembus bagian dalam matahari terbenam.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda melangkah keluar, dan selama enam puluh detik Anda jatuh menembus bagian dalam matahari terbenam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p55",
+      "id": "ch05-254",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Itu tidak terlihat nyata.",
+      "text_markdown": "Itu tidak terlihat nyata.",
+      "title": "Momen",
+      "tts": {
+        "text": "Itu tidak terlihat nyata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p55",
+      "id": "ch05-255",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda akan melihat warna-warna yang tidak Anda ketahui bisa ditemukan oleh mata Anda.",
+      "text_markdown": "Anda akan melihat warna-warna yang tidak Anda ketahui bisa ditemukan oleh mata Anda.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda akan melihat warna-warna yang tidak Anda ketahui bisa ditemukan oleh mata Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p55",
+      "id": "ch05-256",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Ketika parasut Anda terbuka, Anda mengambang di atas dunia yang sejenak terbakar.",
+      "text_markdown": "Ketika parasut Anda terbuka, Anda mengambang di atas dunia yang sejenak terbakar.",
+      "title": "Momen",
+      "tts": {
+        "text": "Ketika parasut Anda terbuka, Anda mengambang di atas dunia yang sejenak terbakar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p55",
+      "id": "ch05-257",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Angin telah mereda menjadi tidak ada.",
+      "text_markdown": "Angin telah mereda menjadi tidak ada.",
+      "title": "Momen",
+      "tts": {
+        "text": "Angin telah mereda menjadi tidak ada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p55",
+      "id": "ch05-258",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Zona pendaratan adalah kotak hijau kecil di bawah Anda, dengan satu lampu hangat menyala.",
+      "text_markdown": "Zona pendaratan adalah kotak hijau kecil di bawah Anda, dengan satu lampu hangat menyala.",
+      "title": "Momen",
+      "tts": {
+        "text": "Zona pendaratan adalah kotak hijau kecil di bawah Anda, dengan satu lampu hangat menyala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p55",
+      "id": "ch05-259",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda memilih lingkaran lambat dan membiarkan diri Anda mendarat terakhir, karena tidak ada yang ingin bagian ini berakhir.",
+      "text_markdown": "Anda memilih lingkaran lambat dan membiarkan diri Anda mendarat terakhir, karena tidak ada yang ingin bagian ini berakhir.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda memilih lingkaran lambat dan membiarkan diri Anda mendarat terakhir, karena tidak ada yang ingin bagian ini berakhir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p55",
+      "id": "ch05-260",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Ketika kaki Anda menyentuh rumput, langit berwarna ungu.",
+      "text_markdown": "Ketika kaki Anda menyentuh rumput, langit berwarna ungu.",
+      "title": "Momen",
+      "tts": {
+        "text": "Ketika kaki Anda menyentuh rumput, langit berwarna ungu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p55",
+      "id": "ch05-261",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Teman-teman Anda berjalan masuk dari pendaratan mereka sendiri.",
+      "text_markdown": "Teman-teman Anda berjalan masuk dari pendaratan mereka sendiri.",
+      "title": "Momen",
+      "tts": {
+        "text": "Teman-teman Anda berjalan masuk dari pendaratan mereka sendiri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 8,
+      "paragraph_id": "p55",
+      "id": "ch05-262",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Salah satu dari mereka hanya menatap Anda.",
+      "text_markdown": "Salah satu dari mereka hanya menatap Anda.",
+      "title": "Momen",
+      "tts": {
+        "text": "Salah satu dari mereka hanya menatap Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 9,
+      "paragraph_id": "p55",
+      "id": "ch05-263",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kalian berdua menggelengkan kepala.",
+      "text_markdown": "Kalian berdua menggelengkan kepala.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kalian berdua menggelengkan kepala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 10,
+      "paragraph_id": "p55",
+      "id": "ch05-264",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Tidak ada dari kalian yang bisa menemukan kata-kata.",
+      "text_markdown": "Tidak ada dari kalian yang bisa menemukan kata-kata.",
+      "title": "Momen",
+      "tts": {
+        "text": "Tidak ada dari kalian yang bisa menemukan kata-kata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p56",
+      "id": "ch05-265",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Yang kedua adalah lompatan formasi.",
+      "text_markdown": "Yang kedua adalah lompatan formasi.",
+      "title": "Momen",
+      "tts": {
+        "text": "Yang kedua adalah lompatan formasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p56",
+      "id": "ch05-266",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Ada delapan dari kalian di penerbangan itu.",
+      "text_markdown": "Ada delapan dari kalian di penerbangan itu.",
+      "title": "Momen",
+      "tts": {
+        "text": "Ada delapan dari kalian di penerbangan itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p56",
+      "id": "ch05-267",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda duduk di bangku, helm di pangkuan, dan penerjun utama menggambar lompatan di papan tulis kecil.",
+      "text_markdown": "Anda duduk di bangku, helm di pangkuan, dan penerjun utama menggambar lompatan di papan tulis kecil.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda duduk di bangku, helm di pangkuan, dan penerjun utama menggambar lompatan di papan tulis kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p56",
+      "id": "ch05-268",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda akan meninggalkan pesawat dalam kelompok, jatuh bersama, membentuk lingkaran.",
+      "text_markdown": "Anda akan meninggalkan pesawat dalam kelompok, jatuh bersama, membentuk lingkaran.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda akan meninggalkan pesawat dalam kelompok, jatuh bersama, membentuk lingkaran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p56",
+      "id": "ch05-269",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kalian semua tahu posisi kalian.",
+      "text_markdown": "Kalian semua tahu posisi kalian.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kalian semua tahu posisi kalian.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p56",
+      "id": "ch05-270",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kalian beradu kepalan tangan, kalian memeriksa perlengkapan masing-masing, kalian tertawa gugup.",
+      "text_markdown": "Kalian beradu kepalan tangan, kalian memeriksa perlengkapan masing-masing, kalian tertawa gugup.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kalian beradu kepalan tangan, kalian memeriksa perlengkapan masing-masing, kalian tertawa gugup.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p56",
+      "id": "ch05-271",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Delapan orang dewasa, takut dan gembira pada saat yang sama, seperti anak-anak di pesta menginap.",
+      "text_markdown": "Delapan orang dewasa, takut dan gembira pada saat yang sama, seperti anak-anak di pesta menginap.",
+      "title": "Momen",
+      "tts": {
+        "text": "Delapan orang dewasa, takut dan gembira pada saat yang sama, seperti anak-anak di pesta menginap.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p57",
+      "id": "ch05-272",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Pesawat meratakan diri.",
+      "text_markdown": "Pesawat meratakan diri.",
+      "title": "Momen",
+      "tts": {
+        "text": "Pesawat meratakan diri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p57",
+      "id": "ch05-273",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Pintu terbuka.",
+      "text_markdown": "Pintu terbuka.",
+      "title": "Momen",
+      "tts": {
+        "text": "Pintu terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p57",
+      "id": "ch05-274",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Pemimpinmu melangkah keluar, dan kalian yang lain mengikuti, satu detak jantung terpisah.",
+      "text_markdown": "Pemimpinmu melangkah keluar, dan kalian yang lain mengikuti, satu detak jantung terpisah.",
+      "title": "Momen",
+      "tts": {
+        "text": "Pemimpinmu melangkah keluar, dan kalian yang lain mengikuti, satu detak jantung terpisah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p57",
+      "id": "ch05-275",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Dalam terjun bebas, kalian menemukan satu sama lain hampir tanpa berpikir.",
+      "text_markdown": "Dalam terjun bebas, kalian menemukan satu sama lain hampir tanpa berpikir.",
+      "title": "Momen",
+      "tts": {
+        "text": "Dalam terjun bebas, kalian menemukan satu sama lain hampir tanpa berpikir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p57",
+      "id": "ch05-276",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Tangan bertemu tangan.",
+      "text_markdown": "Tangan bertemu tangan.",
+      "title": "Momen",
+      "tts": {
+        "text": "Tangan bertemu tangan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p57",
+      "id": "ch05-277",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Lingkaran terbentuk.",
+      "text_markdown": "Lingkaran terbentuk.",
+      "title": "Momen",
+      "tts": {
+        "text": "Lingkaran terbentuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p57",
+      "id": "ch05-278",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Selama beberapa detik yang sempurna, delapan manusia saling berpegangan di langit.",
+      "text_markdown": "Selama beberapa detik yang sempurna, delapan manusia saling berpegangan di langit.",
+      "title": "Momen",
+      "tts": {
+        "text": "Selama beberapa detik yang sempurna, delapan manusia saling berpegangan di langit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p57",
+      "id": "ch05-279",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Jatuh dengan kecepatan yang sama.",
+      "text_markdown": "Jatuh dengan kecepatan yang sama.",
+      "title": "Momen",
+      "tts": {
+        "text": "Jatuh dengan kecepatan yang sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 8,
+      "paragraph_id": "p57",
+      "id": "ch05-280",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Saling menatap mata.",
+      "text_markdown": "Saling menatap mata.",
+      "title": "Momen",
+      "tts": {
+        "text": "Saling menatap mata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 9,
+      "paragraph_id": "p57",
+      "id": "ch05-281",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kemudian altimetermu mengatakan sudah waktunya.",
+      "text_markdown": "Kemudian altimetermu mengatakan sudah waktunya.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kemudian altimetermu mengatakan sudah waktunya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 10,
+      "paragraph_id": "p57",
+      "id": "ch05-282",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kalian melepaskan.",
+      "text_markdown": "Kalian melepaskan.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kalian melepaskan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 11,
+      "paragraph_id": "p57",
+      "id": "ch05-283",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kalian menjauh satu sama lain, untuk memberi parasut kalian ruang untuk terbuka.",
+      "text_markdown": "Kalian menjauh satu sama lain, untuk memberi parasut kalian ruang untuk terbuka.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kalian menjauh satu sama lain, untuk memberi parasut kalian ruang untuk terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 12,
+      "paragraph_id": "p57",
+      "id": "ch05-284",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Di darat, kalian tidak bisa berhenti berpelukan.",
+      "text_markdown": "Di darat, kalian tidak bisa berhenti berpelukan.",
+      "title": "Momen",
+      "tts": {
+        "text": "Di darat, kalian tidak bisa berhenti berpelukan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p58",
+      "id": "ch05-285",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Yang ketiga adalah lompatan setelah tahun yang sulit.",
+      "text_markdown": "Yang ketiga adalah lompatan setelah tahun yang sulit.",
+      "title": "Momen",
+      "tts": {
+        "text": "Yang ketiga adalah lompatan setelah tahun yang sulit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p59",
+      "id": "ch05-286",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Mungkin kamu telah melalui sesuatu.",
+      "text_markdown": "Mungkin kamu telah melalui sesuatu.",
+      "title": "Momen",
+      "tts": {
+        "text": "Mungkin kamu telah melalui sesuatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p59",
+      "id": "ch05-287",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Musim yang buruk di tempat kerja.",
+      "text_markdown": "Musim yang buruk di tempat kerja.",
+      "title": "Momen",
+      "tts": {
+        "text": "Musim yang buruk di tempat kerja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p59",
+      "id": "ch05-288",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Hubungan yang berakhir.",
+      "text_markdown": "Hubungan yang berakhir.",
+      "title": "Momen",
+      "tts": {
+        "text": "Hubungan yang berakhir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p59",
+      "id": "ch05-289",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kehilangan yang membuat dunia biasa terasa tipis dan jauh.",
+      "text_markdown": "Kehilangan yang membuat dunia biasa terasa tipis dan jauh.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kehilangan yang membuat dunia biasa terasa tipis dan jauh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p59",
+      "id": "ch05-290",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kamu tidak melompat karena ingin merasakan sesuatu.",
+      "text_markdown": "Kamu tidak melompat karena ingin merasakan sesuatu.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kamu tidak melompat karena ingin merasakan sesuatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p59",
+      "id": "ch05-291",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kamu melompat karena kamu belum bisa merasakan apa-apa, dan kamu ingin tahu apakah kamu masih ada di sana.",
+      "text_markdown": "Kamu melompat karena kamu belum bisa merasakan apa-apa, dan kamu ingin tahu apakah kamu masih ada di sana.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kamu melompat karena kamu belum bisa merasakan apa-apa, dan kamu ingin tahu apakah kamu masih ada di sana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p60",
+      "id": "ch05-292",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Pesawat menanjak.",
+      "text_markdown": "Pesawat menanjak.",
+      "title": "Momen",
+      "tts": {
+        "text": "Pesawat menanjak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p60",
+      "id": "ch05-293",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Pintu terbuka.",
+      "text_markdown": "Pintu terbuka.",
+      "title": "Momen",
+      "tts": {
+        "text": "Pintu terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p60",
+      "id": "ch05-294",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kamu melangkah keluar.",
+      "text_markdown": "Kamu melangkah keluar.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kamu melangkah keluar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p60",
+      "id": "ch05-295",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Dan dalam tiga detik pertama itu, sebelum angin menangkapmu, sesuatu di dalam dirimu retak terbuka.",
+      "text_markdown": "Dan dalam tiga detik pertama itu, sebelum angin menangkapmu, sesuatu di dalam dirimu retak terbuka.",
+      "title": "Momen",
+      "tts": {
+        "text": "Dan dalam tiga detik pertama itu, sebelum angin menangkapmu, sesuatu di dalam dirimu retak terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p60",
+      "id": "ch05-296",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kamu tidak berencana untuk menangis.",
+      "text_markdown": "Kamu tidak berencana untuk menangis.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kamu tidak berencana untuk menangis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p60",
+      "id": "ch05-297",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Kamu tetap menangis.",
+      "text_markdown": "Kamu tetap menangis.",
+      "title": "Momen",
+      "tts": {
+        "text": "Kamu tetap menangis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p60",
+      "id": "ch05-298",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Terjun bebas melakukan tugasnya.",
+      "text_markdown": "Terjun bebas melakukan tugasnya.",
+      "title": "Momen",
+      "tts": {
+        "text": "Terjun bebas melakukan tugasnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p60",
+      "id": "ch05-299",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Enam puluh detik panjang yang hanya berisi angin dan napas dan jatuh.",
+      "text_markdown": "Enam puluh detik panjang yang hanya berisi angin dan napas dan jatuh.",
+      "title": "Momen",
+      "tts": {
+        "text": "Enam puluh detik panjang yang hanya berisi angin dan napas dan jatuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 8,
+      "paragraph_id": "p60",
+      "id": "ch05-300",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Dan di suatu tempat di sana, bagian dari dirimu yang selama ini menahan segalanya akhirnya meletakkannya sejenak.",
+      "text_markdown": "Dan di suatu tempat di sana, bagian dari dirimu yang selama ini menahan segalanya akhirnya meletakkannya sejenak.",
+      "title": "Momen",
+      "tts": {
+        "text": "Dan di suatu tempat di sana, bagian dari dirimu yang selama ini menahan segalanya akhirnya meletakkannya sejenak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 9,
+      "paragraph_id": "p60",
+      "id": "ch05-301",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Parasut terbuka.",
+      "text_markdown": "Parasut terbuka.",
+      "title": "Momen",
+      "tts": {
+        "text": "Parasut terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 10,
+      "paragraph_id": "p60",
+      "id": "ch05-302",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Dunia menjadi sunyi.",
+      "text_markdown": "Dunia menjadi sunyi.",
+      "title": "Momen",
+      "tts": {
+        "text": "Dunia menjadi sunyi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 11,
+      "paragraph_id": "p60",
+      "id": "ch05-303",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda tergantung di tali kekang, dan Anda menangis, dan Anda tertawa, dan Anda menangis lagi.",
+      "text_markdown": "Anda tergantung di tali kekang, dan Anda menangis, dan Anda tertawa, dan Anda menangis lagi.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda tergantung di tali kekang, dan Anda menangis, dan Anda tertawa, dan Anda menangis lagi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 12,
+      "paragraph_id": "p60",
+      "id": "ch05-304",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Tidak ada yang bisa melihat Anda.",
+      "text_markdown": "Tidak ada yang bisa melihat Anda.",
+      "title": "Momen",
+      "tts": {
+        "text": "Tidak ada yang bisa melihat Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 13,
+      "paragraph_id": "p60",
+      "id": "ch05-305",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Itulah intinya.",
+      "text_markdown": "Itulah intinya.",
+      "title": "Momen",
+      "tts": {
+        "text": "Itulah intinya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p61",
+      "id": "ch05-306",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Saat Anda mendarat, Anda tidak sembuh.",
+      "text_markdown": "Saat Anda mendarat, Anda tidak sembuh.",
+      "title": "Momen",
+      "tts": {
+        "text": "Saat Anda mendarat, Anda tidak sembuh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p61",
+      "id": "ch05-307",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Anda masih membawa apa pun yang Anda bawa ke atas sana.",
+      "text_markdown": "Anda masih membawa apa pun yang Anda bawa ke atas sana.",
+      "title": "Momen",
+      "tts": {
+        "text": "Anda masih membawa apa pun yang Anda bawa ke atas sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p61",
+      "id": "ch05-308",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Namun selama satu jam penuh di atas sana, sesuatu dalam diri Anda teringat persis bagaimana rasanya hidup.",
+      "text_markdown": "Namun selama satu jam penuh di atas sana, sesuatu dalam diri Anda teringat persis bagaimana rasanya hidup.",
+      "title": "Momen",
+      "tts": {
+        "text": "Namun selama satu jam penuh di atas sana, sesuatu dalam diri Anda teringat persis bagaimana rasanya hidup.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p61",
+      "id": "ch05-309",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Terjun payung tidak menyelesaikan tahun Anda.",
+      "text_markdown": "Terjun payung tidak menyelesaikan tahun Anda.",
+      "title": "Momen",
+      "tts": {
+        "text": "Terjun payung tidak menyelesaikan tahun Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p61",
+      "id": "ch05-310",
+      "chapter": 5,
+      "block_type": "text",
+      "text": "Itu hanya mengembalikannya kepada Anda selama enam puluh detik, dalam potongan-potongan yang cukup kecil untuk digenggam.",
+      "text_markdown": "Itu hanya mengembalikannya kepada Anda selama enam puluh detik, dalam potongan-potongan yang cukup kecil untuk digenggam.",
+      "title": "Momen",
+      "tts": {
+        "text": "Itu hanya mengembalikannya kepada Anda selama enam puluh detik, dalam potongan-potongan yang cukup kecil untuk digenggam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p62",
+      "heading_level": 1,
+      "id": "ch06-311",
+      "chapter": 6,
+      "block_type": "heading",
+      "text": "Mengapa Itu Bertahan",
+      "text_markdown": "Mengapa Itu Bertahan",
+      "title": "Mengapa Itu Bertahan"
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p63",
+      "id": "ch06-312",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Saya sudah lama terjun sekarang.",
+      "text_markdown": "Saya sudah lama terjun sekarang.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Saya sudah lama terjun sekarang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p63",
+      "id": "ch06-313",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Cukup lama sehingga saya tidak ingat hitungannya.",
+      "text_markdown": "Cukup lama sehingga saya tidak ingat hitungannya.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Cukup lama sehingga saya tidak ingat hitungannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p63",
+      "id": "ch06-314",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Cukup lama sehingga pertanyaan, mengapa Anda masih melakukan ini, tidak lagi berarti apa-apa bagi saya.",
+      "text_markdown": "Cukup lama sehingga pertanyaan, mengapa Anda masih melakukan ini, tidak lagi berarti apa-apa bagi saya.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Cukup lama sehingga pertanyaan, mengapa Anda masih melakukan ini, tidak lagi berarti apa-apa bagi saya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p64",
+      "id": "ch06-315",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Saya ingin meninggalkan beberapa hal untuk Anda.",
+      "text_markdown": "Saya ingin meninggalkan beberapa hal untuk Anda.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Saya ingin meninggalkan beberapa hal untuk Anda.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p65",
+      "id": "ch06-316",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Yang pertama adalah bahwa terjun payung bukanlah sebuah fase.",
+      "text_markdown": "Yang pertama adalah bahwa terjun payung bukanlah sebuah fase.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Yang pertama adalah bahwa terjun payung bukanlah sebuah fase.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p65",
+      "id": "ch06-317",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Orang-orang khawatir, ketika mereka melihat seorang teman mulai melakukannya.",
+      "text_markdown": "Orang-orang khawatir, ketika mereka melihat seorang teman mulai melakukannya.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Orang-orang khawatir, ketika mereka melihat seorang teman mulai melakukannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p65",
+      "id": "ch06-318",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka khawatir itu adalah pemberontakan, krisis paruh baya, cara melarikan diri dari sesuatu.",
+      "text_markdown": "Mereka khawatir itu adalah pemberontakan, krisis paruh baya, cara melarikan diri dari sesuatu.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Mereka khawatir itu adalah pemberontakan, krisis paruh baya, cara melarikan diri dari sesuatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p65",
+      "id": "ch06-319",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Bukan begitu.",
+      "text_markdown": "Bukan begitu.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Bukan begitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p65",
+      "id": "ch06-320",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Orang-orang yang bertahan tidak melarikan diri.",
+      "text_markdown": "Orang-orang yang bertahan tidak melarikan diri.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Orang-orang yang bertahan tidak melarikan diri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p65",
+      "id": "ch06-321",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka telah, hampir tanpa sengaja, membangun kehidupan kecil di dalam langit.",
+      "text_markdown": "Mereka telah, hampir tanpa sengaja, membangun kehidupan kecil di dalam langit.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Mereka telah, hampir tanpa sengaja, membangun kehidupan kecil di dalam langit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p65",
+      "id": "ch06-322",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka datang pada hari Sabtu.",
+      "text_markdown": "Mereka datang pada hari Sabtu.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Mereka datang pada hari Sabtu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p65",
+      "id": "ch06-323",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka melipat parasut mereka.",
+      "text_markdown": "Mereka melipat parasut mereka.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Mereka melipat parasut mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 8,
+      "paragraph_id": "p65",
+      "id": "ch06-324",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka memeluk teman-teman mereka.",
+      "text_markdown": "Mereka memeluk teman-teman mereka.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Mereka memeluk teman-teman mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 9,
+      "paragraph_id": "p65",
+      "id": "ch06-325",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka pulang saat matahari terbenam, lelah dengan cara yang baik.",
+      "text_markdown": "Mereka pulang saat matahari terbenam, lelah dengan cara yang baik.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Mereka pulang saat matahari terbenam, lelah dengan cara yang baik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 10,
+      "paragraph_id": "p65",
+      "id": "ch06-326",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Pada hari Senin mereka kembali bekerja, dan mereka jauh lebih ramah daripada sebelumnya.",
+      "text_markdown": "Pada hari Senin mereka kembali bekerja, dan mereka jauh lebih ramah daripada sebelumnya.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Pada hari Senin mereka kembali bekerja, dan mereka jauh lebih ramah daripada sebelumnya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p66",
+      "id": "ch06-327",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Langit mengubah Anda, tapi perlahan.",
+      "text_markdown": "Langit mengubah Anda, tapi perlahan.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Langit mengubah Anda, tapi perlahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p66",
+      "id": "ch06-328",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda menjadi lebih hadir.",
+      "text_markdown": "Anda menjadi lebih hadir.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Anda menjadi lebih hadir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p66",
+      "id": "ch06-329",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda menjadi tidak terlalu takut pada hal-hal kecil, karena Anda telah berlatih jujur dengan hal-hal yang lebih besar.",
+      "text_markdown": "Anda menjadi tidak terlalu takut pada hal-hal kecil, karena Anda telah berlatih jujur dengan hal-hal yang lebih besar.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Anda menjadi tidak terlalu takut pada hal-hal kecil, karena Anda telah berlatih jujur dengan hal-hal yang lebih besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p66",
+      "id": "ch06-330",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda tertawa lebih mudah.",
+      "text_markdown": "Anda tertawa lebih mudah.",
+      "title": "Mengapa Itu Bertahan",
+      "tts": {
+        "text": "Anda tertawa lebih mudah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p66",
+      "id": "ch06-331",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda lebih sering mengatakan 'aku mencintaimu' kepada orang lain.",
+      "text_markdown": "Anda lebih sering mengatakan 'aku mencintaimu' kepada orang lain.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Anda lebih sering mengatakan 'aku mencintaimu' kepada orang lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p66",
+      "id": "ch06-332",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda pernah berdiri di ambang pintu, dua belas ribu kaki di atas, dan teringat bahwa tidak ada yang pasti.",
+      "text_markdown": "Anda pernah berdiri di ambang pintu, dua belas ribu kaki di atas, dan teringat bahwa tidak ada yang pasti.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Anda pernah berdiri di ambang pintu, dua belas ribu kaki di atas, dan teringat bahwa tidak ada yang pasti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p67",
+      "id": "ch06-333",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Jika Anda pernah makan malam dengan seorang penerjun payung, inilah hal-hal yang bisa Anda tanyakan.",
+      "text_markdown": "Jika Anda pernah makan malam dengan seorang penerjun payung, inilah hal-hal yang bisa Anda tanyakan.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Jika Anda pernah makan malam dengan seorang penerjun payung, inilah hal-hal yang bisa Anda tanyakan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p68",
+      "id": "ch06-334",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda bisa bertanya bagaimana mereka bisa terjun payung.",
+      "text_markdown": "Anda bisa bertanya bagaimana mereka bisa terjun payung.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Anda bisa bertanya bagaimana mereka bisa terjun payung.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p68",
+      "id": "ch06-335",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Setiap penerjun payung mengingat terjun pertama mereka dengan detail yang jelas, dan mereka akan senang menceritakannya kepada Anda.",
+      "text_markdown": "Setiap penerjun payung mengingat terjun pertama mereka dengan detail yang jelas, dan mereka akan senang menceritakannya kepada Anda.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Setiap penerjun payung mengingat terjun pertama mereka dengan detail yang jelas, dan mereka akan senang menceritakannya kepada Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p68",
+      "id": "ch06-336",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda bisa bertanya berapa kali mereka sudah terjun.",
+      "text_markdown": "Anda bisa bertanya berapa kali mereka sudah terjun.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Anda bisa bertanya berapa kali mereka sudah terjun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p68",
+      "id": "ch06-337",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka akan tahu jumlahnya, kurang lebih, dan mereka tidak akan berpura-pura bahwa itu lebih dari yang sebenarnya.",
+      "text_markdown": "Mereka akan tahu jumlahnya, kurang lebih, dan mereka tidak akan berpura-pura bahwa itu lebih dari yang sebenarnya.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Mereka akan tahu jumlahnya, kurang lebih, dan mereka tidak akan berpura-pura bahwa itu lebih dari yang sebenarnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p68",
+      "id": "ch06-338",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda bisa bertanya jenis terjun apa yang paling mereka sukai.",
+      "text_markdown": "Anda bisa bertanya jenis terjun apa yang paling mereka sukai.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Anda bisa bertanya jenis terjun apa yang paling mereka sukai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p68",
+      "id": "ch06-339",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Beberapa akan mengatakan terjun saat matahari terbenam.",
+      "text_markdown": "Beberapa akan mengatakan terjun saat matahari terbenam.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Beberapa akan mengatakan terjun saat matahari terbenam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p68",
+      "id": "ch06-340",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Beberapa akan mengatakan formasi besar.",
+      "text_markdown": "Beberapa akan mengatakan formasi besar.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Beberapa akan mengatakan formasi besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p68",
+      "id": "ch06-341",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Beberapa akan mengatakan terjun solo yang tenang di malam yang damai.",
+      "text_markdown": "Beberapa akan mengatakan terjun solo yang tenang di malam yang damai.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Beberapa akan mengatakan terjun solo yang tenang di malam yang damai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p69",
+      "id": "ch06-342",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Anda bisa bertanya apakah mereka takut pertama kali.",
+      "text_markdown": "Anda bisa bertanya apakah mereka takut pertama kali.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Anda bisa bertanya apakah mereka takut pertama kali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p69",
+      "id": "ch06-343",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Tentu saja mereka takut.",
+      "text_markdown": "Tentu saja mereka takut.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Tentu saja mereka takut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p69",
+      "id": "ch06-344",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Semua orang juga begitu.",
+      "text_markdown": "Semua orang juga begitu.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Semua orang juga begitu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p69",
+      "id": "ch06-345",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka mungkin akan menyebutkan angin di pintu, hitungan, dan bagaimana dunia terlihat tepat sebelum Anda melangkah keluar.",
+      "text_markdown": "Mereka mungkin akan menyebutkan angin di pintu, hitungan, dan bagaimana dunia terlihat tepat sebelum Anda melangkah keluar.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Mereka mungkin akan menyebutkan angin di pintu, hitungan, dan bagaimana dunia terlihat tepat sebelum Anda melangkah keluar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p69",
+      "id": "ch06-346",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Dengarkan baik-baik.",
+      "text_markdown": "Dengarkan baik-baik.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Dengarkan baik-baik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p69",
+      "id": "ch06-347",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka memberi Anda hadiah kecil.",
+      "text_markdown": "Mereka memberi Anda hadiah kecil.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Mereka memberi Anda hadiah kecil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p70",
+      "id": "ch06-348",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Jika Anda ingin membuat seorang penerjun payung bersemangat, mintalah mereka menggambarkan saat parasut terbuka.",
+      "text_markdown": "Jika Anda ingin membuat seorang penerjun payung bersemangat, mintalah mereka menggambarkan saat parasut terbuka.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Jika Anda ingin membuat seorang penerjun payung bersemangat, mintalah mereka menggambarkan saat parasut terbuka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p70",
+      "id": "ch06-349",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka akan memejamkan mata selama setengah detik.",
+      "text_markdown": "Mereka akan memejamkan mata selama setengah detik.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Mereka akan memejamkan mata selama setengah detik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p70",
+      "id": "ch06-350",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Lalu mereka akan mencoba.",
+      "text_markdown": "Lalu mereka akan mencoba.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Lalu mereka akan mencoba.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p70",
+      "id": "ch06-351",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka akan menggunakan kata yang berbeda setiap kali.",
+      "text_markdown": "Mereka akan menggunakan kata yang berbeda setiap kali.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Mereka akan menggunakan kata yang berbeda setiap kali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p70",
+      "id": "ch06-352",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mungkin tenang.",
+      "text_markdown": "Mungkin tenang.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Mungkin tenang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p70",
+      "id": "ch06-353",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mungkin lembut.",
+      "text_markdown": "Mungkin lembut.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Mungkin lembut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p70",
+      "id": "ch06-354",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Seperti terbangun.",
+      "text_markdown": "Seperti terbangun.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Seperti terbangun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p70",
+      "id": "ch06-355",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Seperti pulang ke rumah.",
+      "text_markdown": "Seperti pulang ke rumah.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Seperti pulang ke rumah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 8,
+      "paragraph_id": "p70",
+      "id": "ch06-356",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Tidak ada yang menggambarkannya dengan cara yang sama dua kali.",
+      "text_markdown": "Tidak ada yang menggambarkannya dengan cara yang sama dua kali.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Tidak ada yang menggambarkannya dengan cara yang sama dua kali.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p71",
+      "id": "ch06-357",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Jangan takut mengakui bahwa Anda belum pernah terjun.",
+      "text_markdown": "Jangan takut mengakui bahwa Anda belum pernah terjun.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Jangan takut mengakui bahwa Anda belum pernah terjun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p71",
+      "id": "ch06-358",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Penerjun payung menyukai pertanyaan itu.",
+      "text_markdown": "Penerjun payung menyukai pertanyaan itu.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Penerjun payung menyukai pertanyaan itu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p71",
+      "id": "ch06-359",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Penerjun payung juga suka memberitahu Anda bahwa Anda harus mencoba, dan kemudian memberitahu Anda, dengan sangat serius, bahwa mereka akan pergi bersama Anda.",
+      "text_markdown": "Penerjun payung juga suka memberitahu Anda bahwa Anda harus mencoba, dan kemudian memberitahu Anda, dengan sangat serius, bahwa mereka akan pergi bersama Anda.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Penerjun payung juga suka memberitahu Anda bahwa Anda harus mencoba, dan kemudian memberitahu Anda, dengan sangat serius, bahwa mereka akan pergi bersama Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p71",
+      "id": "ch06-360",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Sebagian besar dari kami pernah membawa seorang teman untuk terjun pertama mereka.",
+      "text_markdown": "Sebagian besar dari kami pernah membawa seorang teman untuk terjun pertama mereka.",
+      "title": "Mengapa Ini Bertahan",
+      "tts": {
+        "text": "Sebagian besar dari kami pernah membawa seorang teman untuk terjun pertama mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p71",
+      "id": "ch06-361",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Itu adalah salah satu kenikmatan terbesar dari olahraga ini.",
+      "text_markdown": "Itu adalah salah satu kenikmatan terbesar dari olahraga ini.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Itu adalah salah satu kenikmatan terbesar dari olahraga ini.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p72",
+      "id": "ch06-362",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Tidak ada pelajaran besar di akhir ini.",
+      "text_markdown": "Tidak ada pelajaran besar di akhir ini.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Tidak ada pelajaran besar di akhir ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p72",
+      "id": "ch06-363",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Hanya ini.",
+      "text_markdown": "Hanya ini.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Hanya ini.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p72",
+      "id": "ch06-364",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Di suatu tempat di dunia saat ini, sekelompok kecil orang yang tenang dan sabar sedang berjalan menuju pesawat.",
+      "text_markdown": "Di suatu tempat di dunia saat ini, sekelompok kecil orang yang tenang dan sabar sedang berjalan menuju pesawat.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Di suatu tempat di dunia saat ini, sekelompok kecil orang yang tenang dan sabar sedang berjalan menuju pesawat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p72",
+      "id": "ch06-365",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Lapangan itu bermandikan cahaya matahari.",
+      "text_markdown": "Lapangan itu bermandikan cahaya matahari.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Lapangan itu bermandikan cahaya matahari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p72",
+      "id": "ch06-366",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Rumputnya hangat.",
+      "text_markdown": "Rumputnya hangat.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Rumputnya hangat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 5,
+      "paragraph_id": "p72",
+      "id": "ch06-367",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka memeriksa perlengkapan satu sama lain.",
+      "text_markdown": "Mereka memeriksa perlengkapan satu sama lain.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Mereka memeriksa perlengkapan satu sama lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 6,
+      "paragraph_id": "p72",
+      "id": "ch06-368",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mereka tersenyum.",
+      "text_markdown": "Mereka tersenyum.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Mereka tersenyum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 7,
+      "paragraph_id": "p72",
+      "id": "ch06-369",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Dalam tiga puluh menit, mereka akan berada di langit, melakukan hal paling tenang yang mereka tahu cara melakukannya.",
+      "text_markdown": "Dalam tiga puluh menit, mereka akan berada di langit, melakukan hal paling tenang yang mereka tahu cara melakukannya.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Dalam tiga puluh menit, mereka akan berada di langit, melakukan hal paling tenang yang mereka tahu cara melakukannya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 0,
+      "paragraph_id": "p73",
+      "id": "ch06-370",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mungkin suatu hari nanti Anda akan menjadi salah satu dari mereka.",
+      "text_markdown": "Mungkin suatu hari nanti Anda akan menjadi salah satu dari mereka.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Mungkin suatu hari nanti Anda akan menjadi salah satu dari mereka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 1,
+      "paragraph_id": "p73",
+      "id": "ch06-371",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Mungkin suatu hari nanti Anda tidak akan.",
+      "text_markdown": "Mungkin suatu hari nanti Anda tidak akan.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Mungkin suatu hari nanti Anda tidak akan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 2,
+      "paragraph_id": "p73",
+      "id": "ch06-372",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Bagaimanapun juga, langit ada di sana.",
+      "text_markdown": "Bagaimanapun juga, langit ada di sana.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Bagaimanapun juga, langit ada di sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 3,
+      "paragraph_id": "p73",
+      "id": "ch06-373",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Ia selalu ada di sana.",
+      "text_markdown": "Ia selalu ada di sana.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Ia selalu ada di sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "sentence_index": 4,
+      "paragraph_id": "p73",
+      "id": "ch06-374",
+      "chapter": 6,
+      "block_type": "text",
+      "text": "Ia menunggu, dengan sabar, seandainya Anda ingin bersandar.",
+      "text_markdown": "Ia menunggu, dengan sabar, seandainya Anda ingin bersandar.",
+      "title": "Mengapa Ia Tetap Ada",
+      "tts": {
+        "text": "Ia menunggu, dengan sabar, seandainya Anda ingin bersandar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

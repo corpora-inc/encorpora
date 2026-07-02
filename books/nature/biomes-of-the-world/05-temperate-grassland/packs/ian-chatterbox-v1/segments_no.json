@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Den tempererte gressletten",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Den tempererte gressletten",
+      "text_markdown": "Den tempererte gressletten"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hvor tempererte gressletter vokser",
+      "text_markdown": "Hvor tempererte gressletter vokser"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Velkommen til den tempererte gressletten.",
+      "text_markdown": "Velkommen til den tempererte gressletten.",
+      "tts": {
+        "text": "Velkommen til den tempererte gressletten.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette er et av verdens store biomer.",
+      "text_markdown": "Dette er et av verdens store biomer.",
+      "tts": {
+        "text": "Dette er et av verdens store biomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et biom er en del av Jorden med sitt eget slags vær, planter og dyr.",
+      "text_markdown": "Et biom er en del av Jorden med sitt eget slags vær, planter og dyr.",
+      "tts": {
+        "text": "Et biom er en del av Jorden med sitt eget slags vær, planter og dyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tempererte gressletten er en stor, åpen slette med gress overalt.",
+      "text_markdown": "Den tempererte gressletten er en stor, åpen slette med gress overalt.",
+      "tts": {
+        "text": "Den tempererte gressletten er en stor, åpen slette med gress overalt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den ligger i de midtre delene av verden, mellom den kalde nord og de varme tropene.",
+      "text_markdown": "Den ligger i de midtre delene av verden, mellom den kalde nord og de varme tropene.",
+      "tts": {
+        "text": "Den ligger i de midtre delene av verden, mellom den kalde nord og de varme tropene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I motsetning til den tropiske savannen, har dette landet kalde vintre og varme somre.",
+      "text_markdown": "I motsetning til den tropiske savannen, har dette landet kalde vintre og varme somre.",
+      "tts": {
+        "text": "I motsetning til den tropiske savannen, har dette landet kalde vintre og varme somre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De største tempererte gresslettene i verden ligger i Nord Amerika og i Eurasia.",
+      "text_markdown": "De største tempererte gresslettene i verden ligger i Nord Amerika og i Eurasia.",
+      "tts": {
+        "text": "De største tempererte gresslettene i verden ligger i Nord Amerika og i Eurasia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Nord Amerika kalles de store sentrale slettene for prærier.",
+      "text_markdown": "I Nord Amerika kalles de store sentrale slettene for prærier.",
+      "tts": {
+        "text": "I Nord Amerika kalles de store sentrale slettene for prærier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Russland, Ukraina, Kasakhstan og Mongolia kalles de stepper.",
+      "text_markdown": "I Russland, Ukraina, Kasakhstan og Mongolia kalles de stepper.",
+      "tts": {
+        "text": "I Russland, Ukraina, Kasakhstan og Mongolia kalles de stepper.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Argentina og Uruguay kalles de pampas.",
+      "text_markdown": "I Argentina og Uruguay kalles de pampas.",
+      "tts": {
+        "text": "I Argentina og Uruguay kalles de pampas.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes mindre tempererte gressletter i det sørlige Afrika og i deler av Australia.",
+      "text_markdown": "Det finnes mindre tempererte gressletter i det sørlige Afrika og i deler av Australia.",
+      "tts": {
+        "text": "Det finnes mindre tempererte gressletter i det sørlige Afrika og i deler av Australia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver av disse gresslettene vokste fram for seg selv.",
+      "text_markdown": "Hver av disse gresslettene vokste fram for seg selv.",
+      "tts": {
+        "text": "Hver av disse gresslettene vokste fram for seg selv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Derfor er plantene og dyrene forskjellige i hver del av verden.",
+      "text_markdown": "Derfor er plantene og dyrene forskjellige i hver del av verden.",
+      "tts": {
+        "text": "Derfor er plantene og dyrene forskjellige i hver del av verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men de deler alle det samme mønsteret.",
+      "text_markdown": "Men de deler alle det samme mønsteret.",
+      "tts": {
+        "text": "Men de deler alle det samme mønsteret.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Et hav av gress, en stor åpen himmel, sterke vinder, og bare noen få trær langs elvene.",
+      "text_markdown": "Et hav av gress, en stor åpen himmel, sterke vinder, og bare noen få trær langs elvene.",
+      "tts": {
+        "text": "Et hav av gress, en stor åpen himmel, sterke vinder, og bare noen få trær langs elvene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Når du står på en temperert gresslette, blåser vinden nesten alltid.",
+      "text_markdown": "Når du står på en temperert gresslette, blåser vinden nesten alltid.",
+      "tts": {
+        "text": "Når du står på en temperert gresslette, blåser vinden nesten alltid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresset beveger seg som havets overflate.",
+      "text_markdown": "Gresset beveger seg som havets overflate.",
+      "tts": {
+        "text": "Gresset beveger seg som havets overflate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du kan se langt i alle retninger.",
+      "text_markdown": "Du kan se langt i alle retninger.",
+      "tts": {
+        "text": "Du kan se langt i alle retninger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Himmelen føles dobbelt så stor som i noen skog.",
+      "text_markdown": "Himmelen føles dobbelt så stor som i noen skog.",
+      "tts": {
+        "text": "Himmelen føles dobbelt så stor som i noen skog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren er gresset høyt og grønt.",
+      "text_markdown": "Om sommeren er gresset høyt og grønt.",
+      "tts": {
+        "text": "Om sommeren er gresset høyt og grønt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten blir det gyllenbrunt.",
+      "text_markdown": "Om høsten blir det gyllenbrunt.",
+      "tts": {
+        "text": "Om høsten blir det gyllenbrunt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren er det brunt og stivt under snøen.",
+      "text_markdown": "Om vinteren er det brunt og stivt under snøen.",
+      "tts": {
+        "text": "Om vinteren er det brunt og stivt under snøen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om våren vokser det fram igjen, friskt og lyst.",
+      "text_markdown": "Om våren vokser det fram igjen, friskt og lyst.",
+      "tts": {
+        "text": "Om våren vokser det fram igjen, friskt og lyst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den tempererte gressletten.",
+      "text_markdown": "Det er den tempererte gressletten.",
+      "tts": {
+        "text": "Det er den tempererte gressletten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Hvor tempererte gressletter vokser",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En vid, vindfull verden av gress, himmel og skiftende årstider.",
+      "text_markdown": "En vid, vindfull verden av gress, himmel og skiftende årstider.",
+      "tts": {
+        "text": "En vid, vindfull verden av gress, himmel og skiftende årstider.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Været",
+      "text_markdown": "Været"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Været på den tempererte gressletten formes av den åpne himmelen.",
+      "text_markdown": "Været på den tempererte gressletten formes av den åpne himmelen.",
+      "tts": {
+        "text": "Været på den tempererte gressletten formes av den åpne himmelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er svært få trær og få åser som kan bremse vinden.",
+      "text_markdown": "Det er svært få trær og få åser som kan bremse vinden.",
+      "tts": {
+        "text": "Det er svært få trær og få åser som kan bremse vinden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er fire årstider, og hver av dem er sterk.",
+      "text_markdown": "Det er fire årstider, og hver av dem er sterk.",
+      "tts": {
+        "text": "Det er fire årstider, og hver av dem er sterk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Somrene er varme og lyse.",
+      "text_markdown": "Somrene er varme og lyse.",
+      "tts": {
+        "text": "Somrene er varme og lyse.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Solen steker ned på det åpne gresset, og dagene er lange.",
+      "text_markdown": "Solen steker ned på det åpne gresset, og dagene er lange.",
+      "tts": {
+        "text": "Solen steker ned på det åpne gresset, og dagene er lange.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På en enkelt ettermiddag kan et stort uvær rulle inn fra horisonten.",
+      "text_markdown": "På en enkelt ettermiddag kan et stort uvær rulle inn fra horisonten.",
+      "tts": {
+        "text": "På en enkelt ettermiddag kan et stort uvær rulle inn fra horisonten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lyn glimter langt borte, og tungt regn faller på én gang.",
+      "text_markdown": "Lyn glimter langt borte, og tungt regn faller på én gang.",
+      "tts": {
+        "text": "Lyn glimter langt borte, og tungt regn faller på én gang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vintrene er kalde.",
+      "text_markdown": "Vintrene er kalde.",
+      "tts": {
+        "text": "Vintrene er kalde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På noen gressletter kan temperaturen falle langt under frysepunktet i flere uker av gangen.",
+      "text_markdown": "På noen gressletter kan temperaturen falle langt under frysepunktet i flere uker av gangen.",
+      "tts": {
+        "text": "På noen gressletter kan temperaturen falle langt under frysepunktet i flere uker av gangen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Snø blåser over det åpne landet og samler seg i lange driver.",
+      "text_markdown": "Snø blåser over det åpne landet og samler seg i lange driver.",
+      "tts": {
+        "text": "Snø blåser over det åpne landet og samler seg i lange driver.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden om vinteren er sterk og skarp.",
+      "text_markdown": "Vinden om vinteren er sterk og skarp.",
+      "tts": {
+        "text": "Vinden om vinteren er sterk og skarp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om våren smelter snøen, og elvene går høyt.",
+      "text_markdown": "Om våren smelter snøen, og elvene går høyt.",
+      "tts": {
+        "text": "Om våren smelter snøen, og elvene går høyt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresset blir grønt nesten over natten.",
+      "text_markdown": "Gresset blir grønt nesten over natten.",
+      "tts": {
+        "text": "Gresset blir grønt nesten over natten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fugler vender tilbake fra varmere land og fyller luften med lyd.",
+      "text_markdown": "Fugler vender tilbake fra varmere land og fyller luften med lyd.",
+      "tts": {
+        "text": "Fugler vender tilbake fra varmere land og fyller luften med lyd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om høsten blir gresset gyllent, vinden blir kjøligere, og flokkene trekker mot ly.",
+      "text_markdown": "Om høsten blir gresset gyllent, vinden blir kjøligere, og flokkene trekker mot ly.",
+      "tts": {
+        "text": "Om høsten blir gresset gyllent, vinden blir kjøligere, og flokkene trekker mot ly.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gressletten får akkurat nok regn til å nære gresset.",
+      "text_markdown": "Gressletten får akkurat nok regn til å nære gresset.",
+      "tts": {
+        "text": "Gressletten får akkurat nok regn til å nære gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Været",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er ikke nok regn til å gi store skoger, men det er rikelig for gresset og dyrene som trenger det.",
+      "text_markdown": "Det er ikke nok regn til å gi store skoger, men det er rikelig for gresset og dyrene som trenger det.",
+      "tts": {
+        "text": "Det er ikke nok regn til å gi store skoger, men det er rikelig for gresset og dyrene som trenger det.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Landet og vannet",
+      "text_markdown": "Landet og vannet"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Landet på den tempererte gressletten er stort sett flatt eller svakt bølgende.",
+      "text_markdown": "Landet på den tempererte gressletten er stort sett flatt eller svakt bølgende.",
+      "tts": {
+        "text": "Landet på den tempererte gressletten er stort sett flatt eller svakt bølgende.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På enkelte steder hever lave åser seg opp av gresset.",
+      "text_markdown": "På enkelte steder hever lave åser seg opp av gresset.",
+      "tts": {
+        "text": "På enkelte steder hever lave åser seg opp av gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre steder er landet så flatt at du kan se horisonten som en perfekt rett linje.",
+      "text_markdown": "Andre steder er landet så flatt at du kan se horisonten som en perfekt rett linje.",
+      "tts": {
+        "text": "Andre steder er landet så flatt at du kan se horisonten som en perfekt rett linje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jorden her er noe av den rikeste jorden på Jorden.",
+      "text_markdown": "Jorden her er noe av den rikeste jorden på Jorden.",
+      "tts": {
+        "text": "Jorden her er noe av den rikeste jorden på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tusenvis av år har gress vokst, dødd og råtnet ned i bakken.",
+      "text_markdown": "I tusenvis av år har gress vokst, dødd og råtnet ned i bakken.",
+      "tts": {
+        "text": "I tusenvis av år har gress vokst, dødd og råtnet ned i bakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dette har skapt en tykk, mørk jord som er full av næring for planter.",
+      "text_markdown": "Dette har skapt en tykk, mørk jord som er full av næring for planter.",
+      "tts": {
+        "text": "Dette har skapt en tykk, mørk jord som er full av næring for planter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Derfor er så mange av disse landene blitt gjort om til store hvete og mais gårder.",
+      "text_markdown": "Derfor er så mange av disse landene blitt gjort om til store hvete og mais gårder.",
+      "tts": {
+        "text": "Derfor er så mange av disse landene blitt gjort om til store hvete og mais gårder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elver bukter seg gjennom gresslettene i lange, langsomme svinger.",
+      "text_markdown": "Elver bukter seg gjennom gresslettene i lange, langsomme svinger.",
+      "tts": {
+        "text": "Elver bukter seg gjennom gresslettene i lange, langsomme svinger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elvene fører vann fra fjerne fjell og smeltevann over det åpne landet.",
+      "text_markdown": "Elvene fører vann fra fjerne fjell og smeltevann over det åpne landet.",
+      "tts": {
+        "text": "Elvene fører vann fra fjerne fjell og smeltevann over det åpne landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs elvebreddene finner du en tynn linje av trær.",
+      "text_markdown": "Langs elvebreddene finner du en tynn linje av trær.",
+      "tts": {
+        "text": "Langs elvebreddene finner du en tynn linje av trær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Disse trærne følger vannet og skiller seg ut som grønne bånd i det vide gresshavet.",
+      "text_markdown": "Disse trærne følger vannet og skiller seg ut som grønne bånd i det vide gresshavet.",
+      "tts": {
+        "text": "Disse trærne følger vannet og skiller seg ut som grønne bånd i det vide gresshavet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Borte fra elvene er det svært få trær.",
+      "text_markdown": "Borte fra elvene er det svært få trær.",
+      "tts": {
+        "text": "Borte fra elvene er det svært få trær.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vinden, de kalde vintrene og de tørre somrene hindrer de fleste trær i å vokse her.",
+      "text_markdown": "Vinden, de kalde vintrene og de tørre somrene hindrer de fleste trær i å vokse her.",
+      "tts": {
+        "text": "Vinden, de kalde vintrene og de tørre somrene hindrer de fleste trær i å vokse her.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men gresset trenger ikke mye.",
+      "text_markdown": "Men gresset trenger ikke mye.",
+      "tts": {
+        "text": "Men gresset trenger ikke mye.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lange røttene strekker seg dypt ned i den rike jorden, og det kommer tilbake hver vår.",
+      "text_markdown": "De lange røttene strekker seg dypt ned i den rike jorden, og det kommer tilbake hver vår.",
+      "tts": {
+        "text": "De lange røttene strekker seg dypt ned i den rike jorden, og det kommer tilbake hver vår.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Brann beveger seg også gjennom disse landene fra tid til annen.",
+      "text_markdown": "Brann beveger seg også gjennom disse landene fra tid til annen.",
+      "tts": {
+        "text": "Brann beveger seg også gjennom disse landene fra tid til annen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresset brenner raskt, men de dype røttene holder seg i live.",
+      "text_markdown": "Gresset brenner raskt, men de dype røttene holder seg i live.",
+      "tts": {
+        "text": "Gresset brenner raskt, men de dype røttene holder seg i live.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Landet og vannet",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Etter et regn vokser gresset tilbake grønnere og sterkere enn før.",
+      "text_markdown": "Etter et regn vokser gresset tilbake grønnere og sterkere enn før.",
+      "tts": {
+        "text": "Etter et regn vokser gresset tilbake grønnere og sterkere enn før.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Plantene",
+      "text_markdown": "Plantene"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gressene er hjertet i dette biomet.",
+      "text_markdown": "Gressene er hjertet i dette biomet.",
+      "tts": {
+        "text": "Gressene er hjertet i dette biomet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finnes mange ulike slags gress på en temperert gresslette.",
+      "text_markdown": "Det finnes mange ulike slags gress på en temperert gresslette.",
+      "tts": {
+        "text": "Det finnes mange ulike slags gress på en temperert gresslette.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Noen gress vokser bare opp til anklene.",
+      "text_markdown": "Noen gress vokser bare opp til anklene.",
+      "tts": {
+        "text": "Noen gress vokser bare opp til anklene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andre står like høyt som et menneske.",
+      "text_markdown": "Andre står like høyt som et menneske.",
+      "tts": {
+        "text": "Andre står like høyt som et menneske.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hver slags gress har et langt, mykt hode fullt av frø på toppen.",
+      "text_markdown": "Hver slags gress har et langt, mykt hode fullt av frø på toppen.",
+      "tts": {
+        "text": "Hver slags gress har et langt, mykt hode fullt av frø på toppen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren bærer vinden bølger av frøhoder over landet.",
+      "text_markdown": "Om sommeren bærer vinden bølger av frøhoder over landet.",
+      "tts": {
+        "text": "Om sommeren bærer vinden bølger av frøhoder over landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresset har svært lange røtter som strekker seg dypt ned i den mørke jorden.",
+      "text_markdown": "Gresset har svært lange røtter som strekker seg dypt ned i den mørke jorden.",
+      "tts": {
+        "text": "Gresset har svært lange røtter som strekker seg dypt ned i den mørke jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Røttene kan være lengre under bakken enn gresset er høyt over bakken.",
+      "text_markdown": "Røttene kan være lengre under bakken enn gresset er høyt over bakken.",
+      "tts": {
+        "text": "Røttene kan være lengre under bakken enn gresset er høyt over bakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slik overlever gresset de tørre tidene og de kalde vintrene.",
+      "text_markdown": "Slik overlever gresset de tørre tidene og de kalde vintrene.",
+      "tts": {
+        "text": "Slik overlever gresset de tørre tidene og de kalde vintrene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er også slik gresset raskt kommer tilbake etter en brann.",
+      "text_markdown": "Det er også slik gresset raskt kommer tilbake etter en brann.",
+      "tts": {
+        "text": "Det er også slik gresset raskt kommer tilbake etter en brann.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mellom gressene blomstrer små blomster i de varme månedene.",
+      "text_markdown": "Mellom gressene blomstrer små blomster i de varme månedene.",
+      "tts": {
+        "text": "Mellom gressene blomstrer små blomster i de varme månedene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ville solsikker og mange andre lyse blomster fyller gressletten om sommeren.",
+      "text_markdown": "Ville solsikker og mange andre lyse blomster fyller gressletten om sommeren.",
+      "tts": {
+        "text": "Ville solsikker og mange andre lyse blomster fyller gressletten om sommeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bier og sommerfugler flytter seg fra én blomst til den neste.",
+      "text_markdown": "Bier og sommerfugler flytter seg fra én blomst til den neste.",
+      "tts": {
+        "text": "Bier og sommerfugler flytter seg fra én blomst til den neste.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er svært få trær på det meste av gressletten.",
+      "text_markdown": "Det er svært få trær på det meste av gressletten.",
+      "tts": {
+        "text": "Det er svært få trær på det meste av gressletten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der de vokser, pleier de å være små og seige.",
+      "text_markdown": "Der de vokser, pleier de å være små og seige.",
+      "tts": {
+        "text": "Der de vokser, pleier de å være små og seige.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vokser langs elvene, der det er mer vann, eller i lave steder hvor snø samler seg om vinteren.",
+      "text_markdown": "De vokser langs elvene, der det er mer vann, eller i lave steder hvor snø samler seg om vinteren.",
+      "tts": {
+        "text": "De vokser langs elvene, der det er mer vann, eller i lave steder hvor snø samler seg om vinteren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ute på den åpne sletten er gresset alene.",
+      "text_markdown": "Ute på den åpne sletten er gresset alene.",
+      "tts": {
+        "text": "Ute på den åpne sletten er gresset alene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Plantene",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er det grønne, gylne og sølvfargede teppet som holder hele biomet sammen.",
+      "text_markdown": "Det er det grønne, gylne og sølvfargede teppet som holder hele biomet sammen.",
+      "tts": {
+        "text": "Det er det grønne, gylne og sølvfargede teppet som holder hele biomet sammen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dyrene",
+      "text_markdown": "Dyrene"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dyrene på den tempererte gressletten er bygd for en åpen, vindfull verden.",
+      "text_markdown": "Dyrene på den tempererte gressletten er bygd for en åpen, vindfull verden.",
+      "tts": {
+        "text": "Dyrene på den tempererte gressletten er bygd for en åpen, vindfull verden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De største dyrene her er store beitedyr.",
+      "text_markdown": "De største dyrene her er store beitedyr.",
+      "tts": {
+        "text": "De største dyrene her er store beitedyr.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De spiser gresset og beveger seg i store flokker over det åpne landet.",
+      "text_markdown": "De spiser gresset og beveger seg i store flokker over det åpne landet.",
+      "tts": {
+        "text": "De spiser gresset og beveger seg i store flokker over det åpne landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Nord Amerika er den mest kjente av disse bisonen.",
+      "text_markdown": "I Nord Amerika er den mest kjente av disse bisonen.",
+      "tts": {
+        "text": "I Nord Amerika er den mest kjente av disse bisonen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En bison er enorm, tung og lodden, med et stort brunt hode.",
+      "text_markdown": "En bison er enorm, tung og lodden, med et stort brunt hode.",
+      "tts": {
+        "text": "En bison er enorm, tung og lodden, med et stort brunt hode.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bison beveget seg en gang over slettene i flokker på millioner.",
+      "text_markdown": "Bison beveget seg en gang over slettene i flokker på millioner.",
+      "tts": {
+        "text": "Bison beveget seg en gang over slettene i flokker på millioner.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Eurasia beveget villhester seg en gang på samme måte over steppene.",
+      "text_markdown": "I Eurasia beveget villhester seg en gang på samme måte over steppene.",
+      "tts": {
+        "text": "I Eurasia beveget villhester seg en gang på samme måte over steppene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På pampasen i Sør Amerika tok mindre hjort og andre beitedyr deres plass.",
+      "text_markdown": "På pampasen i Sør Amerika tok mindre hjort og andre beitedyr deres plass.",
+      "tts": {
+        "text": "På pampasen i Sør Amerika tok mindre hjort og andre beitedyr deres plass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange mindre dyr lever under gresset.",
+      "text_markdown": "Mange mindre dyr lever under gresset.",
+      "tts": {
+        "text": "Mange mindre dyr lever under gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prærihunder, jordekorn og andre små dyr graver lange tunneler og rom i jorden.",
+      "text_markdown": "Prærihunder, jordekorn og andre små dyr graver lange tunneler og rom i jorden.",
+      "tts": {
+        "text": "Prærihunder, jordekorn og andre små dyr graver lange tunneler og rom i jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kommer opp for å spise om dagen og dukker tilbake ned i hullene sine for sikkerhets skyld.",
+      "text_markdown": "De kommer opp for å spise om dagen og dukker tilbake ned i hullene sine for sikkerhets skyld.",
+      "tts": {
+        "text": "De kommer opp for å spise om dagen og dukker tilbake ned i hullene sine for sikkerhets skyld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En gresslette full av disse små dyrene er full av små hull i bakken.",
+      "text_markdown": "En gresslette full av disse små dyrene er full av små hull i bakken.",
+      "tts": {
+        "text": "En gresslette full av disse små dyrene er full av små hull i bakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ulver, rever og små villkatter jakter over gresset.",
+      "text_markdown": "Ulver, rever og små villkatter jakter over gresset.",
+      "tts": {
+        "text": "Ulver, rever og små villkatter jakter over gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ulven er den store jegeren på de åpne slettene.",
+      "text_markdown": "Ulven er den store jegeren på de åpne slettene.",
+      "tts": {
+        "text": "Ulven er den store jegeren på de åpne slettene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mindre jegere som reven og villkatten fanger mus, kaniner og fugler.",
+      "text_markdown": "Mindre jegere som reven og villkatten fanger mus, kaniner og fugler.",
+      "tts": {
+        "text": "Mindre jegere som reven og villkatten fanger mus, kaniner og fugler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Høyt oppe på himmelen sirkler hauker og ørner langsomt.",
+      "text_markdown": "Høyt oppe på himmelen sirkler hauker og ørner langsomt.",
+      "tts": {
+        "text": "Høyt oppe på himmelen sirkler hauker og ørner langsomt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De ser etter bevegelse i gresset under.",
+      "text_markdown": "De ser etter bevegelse i gresset under.",
+      "tts": {
+        "text": "De ser etter bevegelse i gresset under.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange slags fugler bygger reir rett på bakken, gjemt i det høye gresset.",
+      "text_markdown": "Mange slags fugler bygger reir rett på bakken, gjemt i det høye gresset.",
+      "tts": {
+        "text": "Mange slags fugler bygger reir rett på bakken, gjemt i det høye gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren er luften full av insekter.",
+      "text_markdown": "Om sommeren er luften full av insekter.",
+      "tts": {
+        "text": "Om sommeren er luften full av insekter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresshopper klikker og hopper i den varme vinden.",
+      "text_markdown": "Gresshopper klikker og hopper i den varme vinden.",
+      "tts": {
+        "text": "Gresshopper klikker og hopper i den varme vinden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommerfugler og bier flytter seg fra blomst til blomst.",
+      "text_markdown": "Sommerfugler og bier flytter seg fra blomst til blomst.",
+      "tts": {
+        "text": "Sommerfugler og bier flytter seg fra blomst til blomst.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slanger glir gjennom gresset, på leting etter mus og fugleegg.",
+      "text_markdown": "Slanger glir gjennom gresset, på leting etter mus og fugleegg.",
+      "tts": {
+        "text": "Slanger glir gjennom gresset, på leting etter mus og fugleegg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvert dyr her kjenner de samme lærdommene.",
+      "text_markdown": "Hvert dyr her kjenner de samme lærdommene.",
+      "tts": {
+        "text": "Hvert dyr her kjenner de samme lærdommene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beveg deg med årstidene.",
+      "text_markdown": "Beveg deg med årstidene.",
+      "tts": {
+        "text": "Beveg deg med årstidene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gjem deg for den varme solen.",
+      "text_markdown": "Gjem deg for den varme solen.",
+      "tts": {
+        "text": "Gjem deg for den varme solen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Løp fra den kalde vinden.",
+      "text_markdown": "Løp fra den kalde vinden.",
+      "tts": {
+        "text": "Løp fra den kalde vinden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Dyrene",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drikk fra elven når du kan finne den.",
+      "text_markdown": "Drikk fra elven når du kan finne den.",
+      "tts": {
+        "text": "Drikk fra elven når du kan finne den.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Folkene",
+      "text_markdown": "Folkene"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mennesker har levd på den tempererte gressletten i mange tusen år.",
+      "text_markdown": "Mennesker har levd på den tempererte gressletten i mange tusen år.",
+      "tts": {
+        "text": "Mennesker har levd på den tempererte gressletten i mange tusen år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det vide åpne landet, dyreflokkene og den rike jorden har formet livet deres.",
+      "text_markdown": "Det vide åpne landet, dyreflokkene og den rike jorden har formet livet deres.",
+      "tts": {
+        "text": "Det vide åpne landet, dyreflokkene og den rike jorden har formet livet deres.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "For lenge siden temmet folkene på steppene i Asia den ville hesten.",
+      "text_markdown": "For lenge siden temmet folkene på steppene i Asia den ville hesten.",
+      "tts": {
+        "text": "For lenge siden temmet folkene på steppene i Asia den ville hesten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På ryggen av en hest kunne en person krysse de åpne slettene mye raskere enn til fots.",
+      "text_markdown": "På ryggen av en hest kunne en person krysse de åpne slettene mye raskere enn til fots.",
+      "tts": {
+        "text": "På ryggen av en hest kunne en person krysse de åpne slettene mye raskere enn til fots.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hesten forandret alt for folkene på gresslettene.",
+      "text_markdown": "Hesten forandret alt for folkene på gresslettene.",
+      "tts": {
+        "text": "Hesten forandret alt for folkene på gresslettene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den forandret hvordan de jaktet, hvordan de reiste, og hvordan de kjempet.",
+      "text_markdown": "Den forandret hvordan de jaktet, hvordan de reiste, og hvordan de kjempet.",
+      "tts": {
+        "text": "Den forandret hvordan de jaktet, hvordan de reiste, og hvordan de kjempet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange av de gamle folkene på steppene var nomader.",
+      "text_markdown": "Mange av de gamle folkene på steppene var nomader.",
+      "tts": {
+        "text": "Mange av de gamle folkene på steppene var nomader.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De flyttet flokkene sine av hester, storfe, sauer og geiter fra én del av gressletten til en annen.",
+      "text_markdown": "De flyttet flokkene sine av hester, storfe, sauer og geiter fra én del av gressletten til en annen.",
+      "tts": {
+        "text": "De flyttet flokkene sine av hester, storfe, sauer og geiter fra én del av gressletten til en annen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om sommeren reiste de til de kjølige høysletter.",
+      "text_markdown": "Om sommeren reiste de til de kjølige høysletter.",
+      "tts": {
+        "text": "Om sommeren reiste de til de kjølige høysletter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om vinteren kom de ned til lavere, varmere daler.",
+      "text_markdown": "Om vinteren kom de ned til lavere, varmere daler.",
+      "tts": {
+        "text": "Om vinteren kom de ned til lavere, varmere daler.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hjemmene deres var runde jurter laget av filt og tre.",
+      "text_markdown": "Hjemmene deres var runde jurter laget av filt og tre.",
+      "tts": {
+        "text": "Hjemmene deres var runde jurter laget av filt og tre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En slik rund jurte kan tas fra hverandre på en time, pakkes på ryggen av et dyr, og settes opp igjen et annet sted.",
+      "text_markdown": "En slik rund jurte kan tas fra hverandre på en time, pakkes på ryggen av et dyr, og settes opp igjen et annet sted.",
+      "tts": {
+        "text": "En slik rund jurte kan tas fra hverandre på en time, pakkes på ryggen av et dyr, og settes opp igjen et annet sted.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Nord Amerika levde folkene på slettene i tusenvis av år sammen med de store bisonflokkene.",
+      "text_markdown": "I Nord Amerika levde folkene på slettene i tusenvis av år sammen med de store bisonflokkene.",
+      "tts": {
+        "text": "I Nord Amerika levde folkene på slettene i tusenvis av år sammen med de store bisonflokkene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De fulgte flokkene over det åpne landet.",
+      "text_markdown": "De fulgte flokkene over det åpne landet.",
+      "tts": {
+        "text": "De fulgte flokkene over det åpne landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hjemmene deres var høye telt av skinn strukket over trestenger.",
+      "text_markdown": "Hjemmene deres var høye telt av skinn strukket over trestenger.",
+      "tts": {
+        "text": "Hjemmene deres var høye telt av skinn strukket over trestenger.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Da hesten kom til slettene, ble livet der også dypt forandret.",
+      "text_markdown": "Da hesten kom til slettene, ble livet der også dypt forandret.",
+      "tts": {
+        "text": "Da hesten kom til slettene, ble livet der også dypt forandret.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På pampasen i Sør Amerika ble hyrder til hest også en del av landet.",
+      "text_markdown": "På pampasen i Sør Amerika ble hyrder til hest også en del av landet.",
+      "tts": {
+        "text": "På pampasen i Sør Amerika ble hyrder til hest også en del av landet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I de siste få hundre årene har mye av den tempererte gressletten endret seg igjen.",
+      "text_markdown": "I de siste få hundre årene har mye av den tempererte gressletten endret seg igjen.",
+      "tts": {
+        "text": "I de siste få hundre årene har mye av den tempererte gressletten endret seg igjen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den dype, rike jorden er blitt pløyd opp for å dyrke hvete, mais og andre kornslag.",
+      "text_markdown": "Den dype, rike jorden er blitt pløyd opp for å dyrke hvete, mais og andre kornslag.",
+      "tts": {
+        "text": "Den dype, rike jorden er blitt pløyd opp for å dyrke hvete, mais og andre kornslag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I dag kommer mye av kornet som mater verden fra disse landene.",
+      "text_markdown": "I dag kommer mye av kornet som mater verden fra disse landene.",
+      "tts": {
+        "text": "I dag kommer mye av kornet som mater verden fra disse landene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den gamle måten å flytte med flokkene på er borte på mange steder.",
+      "text_markdown": "Den gamle måten å flytte med flokkene på er borte på mange steder.",
+      "tts": {
+        "text": "Den gamle måten å flytte med flokkene på er borte på mange steder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men sangene, fortellingene og kjærligheten til den åpne himmelen lever videre.",
+      "text_markdown": "Men sangene, fortellingene og kjærligheten til den åpne himmelen lever videre.",
+      "tts": {
+        "text": "Men sangene, fortellingene og kjærligheten til den åpne himmelen lever videre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Folkene",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På hver stor gresslette bærer folkene som vokste opp der vinden i hjertet.",
+      "text_markdown": "På hver stor gresslette bærer folkene som vokste opp der vinden i hjertet.",
+      "tts": {
+        "text": "På hver stor gresslette bærer folkene som vokste opp der vinden i hjertet.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gressletten i dag",
+      "text_markdown": "Gressletten i dag"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den tempererte gressletten er et av de viktigste biomene for mennesker.",
+      "text_markdown": "Den tempererte gressletten er et av de viktigste biomene for mennesker.",
+      "tts": {
+        "text": "Den tempererte gressletten er et av de viktigste biomene for mennesker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den dype, rike jorden gjør den perfekt for å dyrke mat.",
+      "text_markdown": "Den dype, rike jorden gjør den perfekt for å dyrke mat.",
+      "tts": {
+        "text": "Den dype, rike jorden gjør den perfekt for å dyrke mat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mye av brødet, pastaen og maisen som verden spiser kommer fra disse landene.",
+      "text_markdown": "Mye av brødet, pastaen og maisen som verden spiser kommer fra disse landene.",
+      "tts": {
+        "text": "Mye av brødet, pastaen og maisen som verden spiser kommer fra disse landene.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men prisen har vært høy.",
+      "text_markdown": "Men prisen har vært høy.",
+      "tts": {
+        "text": "Men prisen har vært høy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det meste av verdens opprinnelige gressletter er blitt pløyd opp.",
+      "text_markdown": "Det meste av verdens opprinnelige gressletter er blitt pløyd opp.",
+      "tts": {
+        "text": "Det meste av verdens opprinnelige gressletter er blitt pløyd opp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De store flokkene av bison og villhester er stort sett borte.",
+      "text_markdown": "De store flokkene av bison og villhester er stort sett borte.",
+      "tts": {
+        "text": "De store flokkene av bison og villhester er stort sett borte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De små gravende dyrene har færre steder å bo.",
+      "text_markdown": "De små gravende dyrene har færre steder å bo.",
+      "tts": {
+        "text": "De små gravende dyrene har færre steder å bo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gresset som en gang strakte seg helt til horisonten vokser nå bare i små flekker.",
+      "text_markdown": "Gresset som en gang strakte seg helt til horisonten vokser nå bare i små flekker.",
+      "tts": {
+        "text": "Gresset som en gang strakte seg helt til horisonten vokser nå bare i små flekker.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "På noen steder, når gresset er borte og jorden ligger bar, blåser vinden den mørke jorden bort.",
+      "text_markdown": "På noen steder, når gresset er borte og jorden ligger bar, blåser vinden den mørke jorden bort.",
+      "tts": {
+        "text": "På noen steder, når gresset er borte og jorden ligger bar, blåser vinden den mørke jorden bort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mange grupper rundt om i verden arbeider for å ta vare på det som er igjen.",
+      "text_markdown": "Mange grupper rundt om i verden arbeider for å ta vare på det som er igjen.",
+      "tts": {
+        "text": "Mange grupper rundt om i verden arbeider for å ta vare på det som er igjen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De setter av parker hvor gresset kan vokse seg høyt igjen.",
+      "text_markdown": "De setter av parker hvor gresset kan vokse seg høyt igjen.",
+      "tts": {
+        "text": "De setter av parker hvor gresset kan vokse seg høyt igjen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hjelper bison og andre dyr å komme tilbake til land de en gang fylte.",
+      "text_markdown": "De hjelper bison og andre dyr å komme tilbake til land de en gang fylte.",
+      "tts": {
+        "text": "De hjelper bison og andre dyr å komme tilbake til land de en gang fylte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De studerer den dype jorden så vi kan bruke den uten å miste den.",
+      "text_markdown": "De studerer den dype jorden så vi kan bruke den uten å miste den.",
+      "tts": {
+        "text": "De studerer den dype jorden så vi kan bruke den uten å miste den.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En frisk gresslette er et av de mest levende stedene på Jorden.",
+      "text_markdown": "En frisk gresslette er et av de mest levende stedene på Jorden.",
+      "tts": {
+        "text": "En frisk gresslette er et av de mest levende stedene på Jorden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Gressletten i dag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den er verdt vår omsorg.",
+      "text_markdown": "Den er verdt vår omsorg.",
+      "tts": {
+        "text": "Den er verdt vår omsorg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Avslutning",
+      "text_markdown": "Avslutning"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det er den tempererte gressletten.",
+      "text_markdown": "Det er den tempererte gressletten.",
+      "tts": {
+        "text": "Det er den tempererte gressletten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En vid, vindfull verden av gress, stor himmel og skiftende årstider.",
+      "text_markdown": "En vid, vindfull verden av gress, stor himmel og skiftende årstider.",
+      "tts": {
+        "text": "En vid, vindfull verden av gress, stor himmel og skiftende årstider.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hvis du noen gang står på en av dem, vær stille et øyeblikk.",
+      "text_markdown": "Hvis du noen gang står på en av dem, vær stille et øyeblikk.",
+      "tts": {
+        "text": "Hvis du noen gang står på en av dem, vær stille et øyeblikk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lytt til vinden som beveger seg over gresset.",
+      "text_markdown": "Lytt til vinden som beveger seg over gresset.",
+      "tts": {
+        "text": "Lytt til vinden som beveger seg over gresset.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se ut mot den lange horisonten.",
+      "text_markdown": "Se ut mot den lange horisonten.",
+      "tts": {
+        "text": "Se ut mot den lange horisonten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Avslutning",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Du vil kjenne biomets hjerte slå rundt deg.",
+      "text_markdown": "Du vil kjenne biomets hjerte slå rundt deg.",
+      "tts": {
+        "text": "Du vil kjenne biomets hjerte slå rundt deg.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

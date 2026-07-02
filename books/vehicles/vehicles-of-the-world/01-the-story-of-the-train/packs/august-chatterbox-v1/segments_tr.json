@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "tr",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Bir Not",
+      "text_markdown": "Okuyucuya Bir Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tren, iki yüz yıldır dünyanın demiryoludur.",
+      "text_markdown": "Tren, iki yüz yıldır dünyanın demiryoludur.",
+      "tts": {
+        "text": "Tren, iki yüz yıldır dünyanın demiryoludur.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Trenler insan taşır.",
+      "text_markdown": "Trenler insan taşır.",
+      "tts": {
+        "text": "Trenler insan taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trenler yük taşır.",
+      "text_markdown": "Trenler yük taşır.",
+      "tts": {
+        "text": "Trenler yük taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uzun bir tren, koca bir kasabanın tahılını taşıyabilir.",
+      "text_markdown": "Uzun bir tren, koca bir kasabanın tahılını taşıyabilir.",
+      "tts": {
+        "text": "Uzun bir tren, koca bir kasabanın tahılını taşıyabilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hızlı bir tren, otoyolda giden bir arabayı geçebilir.",
+      "text_markdown": "Hızlı bir tren, otoyolda giden bir arabayı geçebilir.",
+      "tts": {
+        "text": "Hızlı bir tren, otoyolda giden bir arabayı geçebilir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trenin hikayesi, neredeyse iki yüz yıl önce İngiltere'de, bir adam, bir ateş ve kaynayan su dolu bir çaydanlıkla başlar.",
+      "text_markdown": "Trenin hikayesi, neredeyse iki yüz yıl önce İngiltere'de, bir adam, bir ateş ve kaynayan su dolu bir çaydanlıkla başlar.",
+      "tts": {
+        "text": "Trenin hikayesi, neredeyse iki yüz yıl önce İngiltere de, bir adam, bir ateş ve kaynayan su dolu bir çaydanlıkla başlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 1 — İlk Buharlı Tren",
+      "text_markdown": "Bölüm 1 — İlk Buharlı Tren"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tren, demir raylar üzerinde giden bir dizi vagondur.",
+      "text_markdown": "Tren, demir raylar üzerinde giden bir dizi vagondur.",
+      "tts": {
+        "text": "Tren, demir raylar üzerinde giden bir dizi vagondur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En öndeki araç lokomotiftir.",
+      "text_markdown": "En öndeki araç lokomotiftir.",
+      "tts": {
+        "text": "En öndeki araç lokomotiftir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Diğerlerinin hepsini o çeker.",
+      "text_markdown": "Diğerlerinin hepsini o çeker.",
+      "tts": {
+        "text": "Diğerlerinin hepsini o çeker.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk trenler buharla çalışıyordu.",
+      "text_markdown": "İlk trenler buharla çalışıyordu.",
+      "tts": {
+        "text": "İlk trenler buharla çalışıyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bir buhar makinesi, suyu kaynatmak için kömür yakar.",
+      "text_markdown": "Bir buhar makinesi, suyu kaynatmak için kömür yakar.",
+      "tts": {
+        "text": "Bir buhar makinesi, suyu kaynatmak için kömür yakar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sıcak buhar pistonları iter.",
+      "text_markdown": "Sıcak buhar pistonları iter.",
+      "tts": {
+        "text": "Sıcak buhar pistonları iter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pistonlar tekerlekleri döndürür.",
+      "text_markdown": "Pistonlar tekerlekleri döndürür.",
+      "tts": {
+        "text": "Pistonlar tekerlekleri döndürür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tekerlekler rayların üstünde gider.",
+      "text_markdown": "Tekerlekler rayların üstünde gider.",
+      "tts": {
+        "text": "Tekerlekler rayların üstünde gider.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hikaye İngiltere'de başlar.",
+      "text_markdown": "Hikaye İngiltere'de başlar.",
+      "tts": {
+        "text": "Hikaye İngiltere de başlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1825 yılında, halka açık ilk demiryolu açıldı.",
+      "text_markdown": "1825 yılında, halka açık ilk demiryolu açıldı.",
+      "tts": {
+        "text": "bin sekiz yüz yirmi beş yılında, halka açık ilk demiryolu açıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Adı Stockton and Darlington Railway idi.",
+      "text_markdown": "Adı Stockton and Darlington Railway idi.",
+      "tts": {
+        "text": "Adı Stoktın end Darlingtın demiryolu idi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir madenden nehre kömür taşıyordu.",
+      "text_markdown": "Bir madenden nehre kömür taşıyordu.",
+      "tts": {
+        "text": "Bir madenden nehre kömür taşıyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "George Stephenson adında bir adam bu lokomotifleri yaptı.",
+      "text_markdown": "George Stephenson adında bir adam bu lokomotifleri yaptı.",
+      "tts": {
+        "text": "Corc Stefınsın adında bir adam bu lokomotifleri yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsanlar ona Demiryollarının Babası diyordu.",
+      "text_markdown": "İnsanlar ona Demiryollarının Babası diyordu.",
+      "tts": {
+        "text": "İnsanlar ona Demiryollarının Babası diyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1829 yılında, oğlu Robert Stephenson, Rocket adlı ünlü bir lokomotif yaptı.",
+      "text_markdown": "1829 yılında, oğlu Robert Stephenson, Rocket adlı ünlü bir lokomotif yaptı.",
+      "tts": {
+        "text": "bin sekiz yüz yirmi dokuz yılında, oğlu Rabırt Stefınsın, Rokıt adlı ünlü bir lokomotif yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En hızlı tren yarışını kazandı.",
+      "text_markdown": "En hızlı tren yarışını kazandı.",
+      "tts": {
+        "text": "En hızlı tren yarışını kazandı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rocket, saatte neredeyse 30 mil hıza çıkabiliyordu.",
+      "text_markdown": "Rocket, saatte neredeyse 30 mil hıza çıkabiliyordu.",
+      "tts": {
+        "text": "Rokıt, saatte neredeyse otuz mil hıza çıkabiliyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu, her attan daha hızlıydı.",
+      "text_markdown": "Bu, her attan daha hızlıydı.",
+      "tts": {
+        "text": "Bu, her attan daha hızlıydı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — İlk Buharlı Tren",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tren çağı başlamıştı.",
+      "text_markdown": "Tren çağı başlamıştı.",
+      "tts": {
+        "text": "Tren çağı başlamıştı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 2 — Demiryolu Yayılıyor",
+      "text_markdown": "Bölüm 2 — Demiryolu Yayılıyor"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rocket'tan sonra demiryolları hızla yayıldı.",
+      "text_markdown": "Rocket'tan sonra demiryolları hızla yayıldı.",
+      "tts": {
+        "text": "Rokıt tan sonra demiryolları hızla yayıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Britanya binlerce mil ray döşedi.",
+      "text_markdown": "Britanya binlerce mil ray döşedi.",
+      "tts": {
+        "text": "Britanya binlerce mil ray döşedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonra dünyanın geri kalanı onu izledi.",
+      "text_markdown": "Sonra dünyanın geri kalanı onu izledi.",
+      "tts": {
+        "text": "Sonra dünyanın geri kalanı onu izledi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1830 yılında, Amerika'daki ilk büyük demiryolu açıldı.",
+      "text_markdown": "1830 yılında, Amerika'daki ilk büyük demiryolu açıldı.",
+      "tts": {
+        "text": "bin sekiz yüz otuz yılında, Amerika daki ilk büyük demiryolu açıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Baltimore and Ohio idi.",
+      "text_markdown": "Adı Baltimore and Ohio idi.",
+      "tts": {
+        "text": "Adı Baltimor end Ohaio idi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Baltimore kentini Ohio Nehri'ne bağladı.",
+      "text_markdown": "Baltimore kentini Ohio Nehri'ne bağladı.",
+      "tts": {
+        "text": "Baltimor kentini Ohaio Nehri ne bağladı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fransa'da ilk demiryolu 1832 yılında açıldı.",
+      "text_markdown": "Fransa'da ilk demiryolu 1832 yılında açıldı.",
+      "tts": {
+        "text": "Fransa da ilk demiryolu bin sekiz yüz otuz iki yılında açıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiliz hattı gibi kömür taşıyordu.",
+      "text_markdown": "İngiliz hattı gibi kömür taşıyordu.",
+      "tts": {
+        "text": "İngiliz hattı gibi kömür taşıyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Almanya'da ilk uzun demiryolu 1839 yılında açıldı.",
+      "text_markdown": "Almanya'da ilk uzun demiryolu 1839 yılında açıldı.",
+      "tts": {
+        "text": "Almanya da ilk uzun demiryolu bin sekiz yüz otuz dokuz yılında açıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Leipzig ile Dresden arasında gidiyordu.",
+      "text_markdown": "Leipzig ile Dresden arasında gidiyordu.",
+      "tts": {
+        "text": "Layptsig ile Drezden arasında gidiyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rusya ilk demiryolunu 1837 yılında yaptı.",
+      "text_markdown": "Rusya ilk demiryolunu 1837 yılında yaptı.",
+      "tts": {
+        "text": "Rusya ilk demiryolunu bin sekiz yüz otuz yedi yılında yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hat, Sankt Petersburg'dan yakındaki bir kasabaya gidiyordu.",
+      "text_markdown": "Hat, Sankt Petersburg'dan yakındaki bir kasabaya gidiyordu.",
+      "tts": {
+        "text": "Hat, Sankt Pitersburg dan yakındaki bir kasabaya gidiyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Demiryolu yapmak çok zor bir işti.",
+      "text_markdown": "Demiryolu yapmak çok zor bir işti.",
+      "tts": {
+        "text": "Demiryolu yapmak çok zor bir işti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İşçiler dağların içinden tüneller kazdı.",
+      "text_markdown": "İşçiler dağların içinden tüneller kazdı.",
+      "tts": {
+        "text": "İşçiler dağların içinden tüneller kazdı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nehirlerin üstüne köprüler yaptılar.",
+      "text_markdown": "Nehirlerin üstüne köprüler yaptılar.",
+      "tts": {
+        "text": "Nehirlerin üstüne köprüler yaptılar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Her rayı elle döşediler.",
+      "text_markdown": "Her rayı elle döşediler.",
+      "tts": {
+        "text": "Her rayı elle döşediler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hatlar boyunca kasabalar büyüdü.",
+      "text_markdown": "Hatlar boyunca kasabalar büyüdü.",
+      "tts": {
+        "text": "Hatlar boyunca kasabalar büyüdü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İstasyonu olan küçük bir köy bir şehre dönüşebilirdi.",
+      "text_markdown": "İstasyonu olan küçük bir köy bir şehre dönüşebilirdi.",
+      "tts": {
+        "text": "İstasyonu olan küçük bir köy bir şehre dönüşebilirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tren insanları getirdi.",
+      "text_markdown": "Tren insanları getirdi.",
+      "tts": {
+        "text": "Tren insanları getirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tren yük getirdi.",
+      "text_markdown": "Tren yük getirdi.",
+      "tts": {
+        "text": "Tren yük getirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — Demiryolu Yayılıyor",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tren dünyayı biraz daha yakınlaştırdı.",
+      "text_markdown": "Tren dünyayı biraz daha yakınlaştırdı.",
+      "tts": {
+        "text": "Tren dünyayı biraz daha yakınlaştırdı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 3 — Büyük Hatlar",
+      "text_markdown": "Bölüm 3 — Büyük Hatlar"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı demiryolları kısadır.",
+      "text_markdown": "Bazı demiryolları kısadır.",
+      "tts": {
+        "text": "Bazı demiryolları kısadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazıları çok uzundur.",
+      "text_markdown": "Bazıları çok uzundur.",
+      "tts": {
+        "text": "Bazıları çok uzundur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "En uzun hatlar koca kıtaları baştan başa geçti.",
+      "text_markdown": "En uzun hatlar koca kıtaları baştan başa geçti.",
+      "tts": {
+        "text": "En uzun hatlar koca kıtaları baştan başa geçti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerika Birleşik Devletleri'nde iki şirket ülkenin bir ucundan öbür ucuna bir demiryolu yaptı.",
+      "text_markdown": "Amerika Birleşik Devletleri'nde iki şirket ülkenin bir ucundan öbür ucuna bir demiryolu yaptı.",
+      "tts": {
+        "text": "Amerika Birleşik Devletleri nde iki şirket ülkenin bir ucundan öbür ucuna bir demiryolu yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Biri Kaliforniya'da başladı ve doğuya doğru ilerledi.",
+      "text_markdown": "Biri Kaliforniya'da başladı ve doğuya doğru ilerledi.",
+      "tts": {
+        "text": "Biri Kaliforniya da başladı ve doğuya doğru ilerledi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Öteki Nebraska'da başladı ve batıya doğru ilerledi.",
+      "text_markdown": "Öteki Nebraska'da başladı ve batıya doğru ilerledi.",
+      "tts": {
+        "text": "Öteki Nebraska da başladı ve batıya doğru ilerledi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Utah'ta Promontory Summit denen bir yerde buluştular.",
+      "text_markdown": "Utah'ta Promontory Summit denen bir yerde buluştular.",
+      "tts": {
+        "text": "Utah ta Promıntıri Samit denen bir yerde buluştular.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, 1869 yılında oldu.",
+      "text_markdown": "Bu, 1869 yılında oldu.",
+      "tts": {
+        "text": "Bu, bin sekiz yüz altmış dokuz yılında oldu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Son çivi altından yapılmıştı.",
+      "text_markdown": "Son çivi altından yapılmıştı.",
+      "tts": {
+        "text": "Son çivi altından yapılmıştı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanlar ona Altın Çivi diyordu.",
+      "text_markdown": "İnsanlar ona Altın Çivi diyordu.",
+      "tts": {
+        "text": "İnsanlar ona Altın Çivi diyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu hat Transcontinental Railroad diye biliniyordu.",
+      "text_markdown": "Bu hat Transcontinental Railroad diye biliniyordu.",
+      "tts": {
+        "text": "Bu hat Transkıntinentıl demiryolu diye biliniyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Artık yaklaşık bir haftada bir okyanustan ötekine trenle gidebilirdiniz.",
+      "text_markdown": "Artık yaklaşık bir haftada bir okyanustan ötekine trenle gidebilirdiniz.",
+      "tts": {
+        "text": "Artık yaklaşık bir haftada bir okyanustan ötekine trenle gidebilirdiniz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rusya bundan da uzun bir hat yaptı.",
+      "text_markdown": "Rusya bundan da uzun bir hat yaptı.",
+      "tts": {
+        "text": "Rusya bundan da uzun bir hat yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Trans Siberian Railway'dir.",
+      "text_markdown": "Adı Trans Siberian Railway'dir.",
+      "tts": {
+        "text": "Adı Trans Sibirya demiryolu dir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Batıda Moskova'dan doğuda Vladivostok'a kadar uzanır.",
+      "text_markdown": "Batıda Moskova'dan doğuda Vladivostok'a kadar uzanır.",
+      "tts": {
+        "text": "Batıda Moskova dan doğuda Vladıvostok a kadar uzanır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hat 1916 yılında tamamlandı.",
+      "text_markdown": "Hat 1916 yılında tamamlandı.",
+      "tts": {
+        "text": "Hat bin dokuz yüz on altı yılında tamamlandı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Uzunluğu dokuz bin kilometreden fazladır.",
+      "text_markdown": "Uzunluğu dokuz bin kilometreden fazladır.",
+      "tts": {
+        "text": "Uzunluğu dokuz bin kilometreden fazladır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Tam bir yolculuk yaklaşık yedi gün sürer.",
+      "text_markdown": "Tam bir yolculuk yaklaşık yedi gün sürer.",
+      "tts": {
+        "text": "Tam bir yolculuk yaklaşık yedi gün sürer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Büyük Hatlar",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Hâlâ dünyanın en uzun demiryoludur.",
+      "text_markdown": "Hâlâ dünyanın en uzun demiryoludur.",
+      "tts": {
+        "text": "Hâlâ dünyanın en uzun demiryoludur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "text_markdown": "Bölüm 4 — Buhar, Dizel, Elektrik"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yaklaşık yüz yıl boyunca, neredeyse her tren buharlıydı.",
+      "text_markdown": "Yaklaşık yüz yıl boyunca, neredeyse her tren buharlıydı.",
+      "tts": {
+        "text": "Yaklaşık yüz yıl boyunca, neredeyse her tren buharlıydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Buharlı lokomotifler büyük ve gürültülüydü.",
+      "text_markdown": "Buharlı lokomotifler büyük ve gürültülüydü.",
+      "tts": {
+        "text": "Buharlı lokomotifler büyük ve gürültülüydü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kömür yakarlardı.",
+      "text_markdown": "Kömür yakarlardı.",
+      "tts": {
+        "text": "Kömür yakarlardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Gökyüzüne kalın duman salarlardı.",
+      "text_markdown": "Gökyüzüne kalın duman salarlardı.",
+      "tts": {
+        "text": "Gökyüzüne kalın duman salarlardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra dizel lokomotif geldi.",
+      "text_markdown": "Sonra dizel lokomotif geldi.",
+      "tts": {
+        "text": "Sonra dizel lokomotif geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dizel motor, kömür yerine sıvı yakıt yakar.",
+      "text_markdown": "Dizel motor, kömür yerine sıvı yakıt yakar.",
+      "tts": {
+        "text": "Dizel motor, kömür yerine sıvı yakıt yakar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Daha küçük ve daha temizdir.",
+      "text_markdown": "Daha küçük ve daha temizdir.",
+      "tts": {
+        "text": "Daha küçük ve daha temizdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bir ateşe ve bir su tankına ihtiyaç duymaz.",
+      "text_markdown": "Bir ateşe ve bir su tankına ihtiyaç duymaz.",
+      "tts": {
+        "text": "Bir ateşe ve bir su tankına ihtiyaç duymaz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dizel trenler 1940'lı ve 1950'li yıllarda yaygınlaştı.",
+      "text_markdown": "Dizel trenler 1940'lı ve 1950'li yıllarda yaygınlaştı.",
+      "tts": {
+        "text": "Dizel trenler bin dokuz yüz kırklı ve bin dokuz yüz ellili yıllarda yaygınlaştı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Büyük buharlı lokomotifler yavaş yavaş hizmetten çekildi.",
+      "text_markdown": "Büyük buharlı lokomotifler yavaş yavaş hizmetten çekildi.",
+      "tts": {
+        "text": "Büyük buharlı lokomotifler yavaş yavaş hizmetten çekildi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birkaçı hâlâ müzelerde ve turistik hatlarda korunuyor.",
+      "text_markdown": "Birkaçı hâlâ müzelerde ve turistik hatlarda korunuyor.",
+      "tts": {
+        "text": "Birkaçı hâlâ müzelerde ve turistik hatlarda korunuyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sıradaki adım elektrikli tren oldu.",
+      "text_markdown": "Sıradaki adım elektrikli tren oldu.",
+      "tts": {
+        "text": "Sıradaki adım elektrikli tren oldu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elektrikli trende yakıt yakan bir motor yoktur.",
+      "text_markdown": "Elektrikli trende yakıt yakan bir motor yoktur.",
+      "tts": {
+        "text": "Elektrikli trende yakıt yakan bir motor yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gücünü, rayın üstündeki bir telden ya da rayın yanındaki üçüncü bir raydan alır.",
+      "text_markdown": "Gücünü, rayın üstündeki bir telden ya da rayın yanındaki üçüncü bir raydan alır.",
+      "tts": {
+        "text": "Gücünü, rayın üstündeki bir telden ya da rayın yanındaki üçüncü bir raydan alır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elektrikli trenler sessizdir ve çok temizdir.",
+      "text_markdown": "Elektrikli trenler sessizdir ve çok temizdir.",
+      "tts": {
+        "text": "Elektrikli trenler sessizdir ve çok temizdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ayrıca çok güçlüdürler.",
+      "text_markdown": "Ayrıca çok güçlüdürler.",
+      "tts": {
+        "text": "Ayrıca çok güçlüdürler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bugün şehirlerdeki trenlerin çoğu ve hızlı trenlerin çoğu elektriklidir.",
+      "text_markdown": "Bugün şehirlerdeki trenlerin çoğu ve hızlı trenlerin çoğu elektriklidir.",
+      "tts": {
+        "text": "Bugün şehirlerdeki trenlerin çoğu ve hızlı trenlerin çoğu elektriklidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Buhar, dizel, elektrik.",
+      "text_markdown": "Buhar, dizel, elektrik.",
+      "tts": {
+        "text": "Buhar, dizel, elektrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Buhar, Dizel, Elektrik",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üç motor, üç çağ.",
+      "text_markdown": "Üç motor, üç çağ.",
+      "tts": {
+        "text": "Üç motor, üç çağ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "text_markdown": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1964 yılında Japonya yepyeni bir demiryolu açtı.",
+      "text_markdown": "1964 yılında Japonya yepyeni bir demiryolu açtı.",
+      "tts": {
+        "text": "bin dokuz yüz altmış dört yılında Japonya yepyeni bir demiryolu açtı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tokyo'dan Osaka'ya gidiyordu.",
+      "text_markdown": "Tokyo'dan Osaka'ya gidiyordu.",
+      "tts": {
+        "text": "Tokyo dan Osaka ya gidiyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Trenler uzun beyaz mermilere benziyordu.",
+      "text_markdown": "Trenler uzun beyaz mermilere benziyordu.",
+      "tts": {
+        "text": "Trenler uzun beyaz mermilere benziyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "İnsanlar onlara mermi trenler diyordu.",
+      "text_markdown": "İnsanlar onlara mermi trenler diyordu.",
+      "tts": {
+        "text": "İnsanlar onlara mermi trenler diyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Japonca adı Shinkansen'dir.",
+      "text_markdown": "Japonca adı Shinkansen'dir.",
+      "tts": {
+        "text": "Japonca adı Şinkansen dir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk mermi trenler saatte 130 mil gidiyordu.",
+      "text_markdown": "İlk mermi trenler saatte 130 mil gidiyordu.",
+      "tts": {
+        "text": "İlk mermi trenler saatte yüz otuz mil gidiyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, 1964 yılında bir tren için çok hızlıydı.",
+      "text_markdown": "Bu, 1964 yılında bir tren için çok hızlıydı.",
+      "tts": {
+        "text": "Bu, bin dokuz yüz altmış dört yılında bir tren için çok hızlıydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hat, Tokyo Olimpiyat Oyunları'na tam zamanında açıldı.",
+      "text_markdown": "Hat, Tokyo Olimpiyat Oyunları'na tam zamanında açıldı.",
+      "tts": {
+        "text": "Hat, Tokyo Olimpiyat Oyunları na tam zamanında açıldı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başka ülkeler de onu izledi.",
+      "text_markdown": "Başka ülkeler de onu izledi.",
+      "tts": {
+        "text": "Başka ülkeler de onu izledi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fransa hızlı tren hattını 1981 yılında açtı.",
+      "text_markdown": "Fransa hızlı tren hattını 1981 yılında açtı.",
+      "tts": {
+        "text": "Fransa hızlı tren hattını bin dokuz yüz seksen bir yılında açtı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu trenlere TGV denir.",
+      "text_markdown": "Bu trenlere TGV denir.",
+      "tts": {
+        "text": "Bu trenlere te je ve denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Almanya'da ICE ile onu izledi.",
+      "text_markdown": "Almanya'da ICE ile onu izledi.",
+      "tts": {
+        "text": "Almanya da i tse e ile onu izledi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "İtalya, İspanya ve Kore kendi hızlı tren hatlarını kurdu.",
+      "text_markdown": "İtalya, İspanya ve Kore kendi hızlı tren hatlarını kurdu.",
+      "tts": {
+        "text": "İtalya, İspanya ve Kore kendi hızlı tren hatlarını kurdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çin en son başladı, ama hızla inşa etti.",
+      "text_markdown": "Çin en son başladı, ama hızla inşa etti.",
+      "tts": {
+        "text": "Çin en son başladı, ama hızla inşa etti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bugün Çin, dünyanın en büyük hızlı tren ağına sahiptir.",
+      "text_markdown": "Bugün Çin, dünyanın en büyük hızlı tren ağına sahiptir.",
+      "tts": {
+        "text": "Bugün Çin, dünyanın en büyük hızlı tren ağına sahiptir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "On binlerce kilometre ray vardır.",
+      "text_markdown": "On binlerce kilometre ray vardır.",
+      "tts": {
+        "text": "On binlerce kilometre ray vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Modern mermi trenler saatte 200 milden fazla hızla gidebilir.",
+      "text_markdown": "Modern mermi trenler saatte 200 milden fazla hızla gidebilir.",
+      "tts": {
+        "text": "Modern mermi trenler saatte iki yüz milden fazla hızla gidebilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sarsıntısızdırlar, sessizdirler ve neredeyse hep zamanında gelirler.",
+      "text_markdown": "Sarsıntısızdırlar, sessizdirler ve neredeyse hep zamanında gelirler.",
+      "tts": {
+        "text": "Sarsıntısızdırlar, sessizdirler ve neredeyse hep zamanında gelirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Hızlı Trenler ve Hız Yarışı",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Birçok yolculukta uçmaktan daha hızlıdırlar.",
+      "text_markdown": "Birçok yolculukta uçmaktan daha hızlıdırlar.",
+      "tts": {
+        "text": "Birçok yolculukta uçmaktan daha hızlıdırlar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 6 — Birçok Tren Türü",
+      "text_markdown": "Bölüm 6 — Birçok Tren Türü"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bütün trenler aynı değildir.",
+      "text_markdown": "Bütün trenler aynı değildir.",
+      "tts": {
+        "text": "Bütün trenler aynı değildir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Birçok tür vardır.",
+      "text_markdown": "Birçok tür vardır.",
+      "tts": {
+        "text": "Birçok tür vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yolcu treni insan taşır.",
+      "text_markdown": "Yolcu treni insan taşır.",
+      "tts": {
+        "text": "Yolcu treni insan taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Koltukları, pencereleri ve bazen bir yemek vagonu ya da yataklı bir vagonu vardır.",
+      "text_markdown": "Koltukları, pencereleri ve bazen bir yemek vagonu ya da yataklı bir vagonu vardır.",
+      "tts": {
+        "text": "Koltukları, pencereleri ve bazen bir yemek vagonu ya da yataklı bir vagonu vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yük treni yük taşır.",
+      "text_markdown": "Yük treni yük taşır.",
+      "tts": {
+        "text": "Yük treni yük taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu araçlara vagon denir.",
+      "text_markdown": "Bu araçlara vagon denir.",
+      "tts": {
+        "text": "Bu araçlara vagon denir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bazıları tahıl taşır.",
+      "text_markdown": "Bazıları tahıl taşır.",
+      "tts": {
+        "text": "Bazıları tahıl taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazıları petrol taşır.",
+      "text_markdown": "Bazıları petrol taşır.",
+      "tts": {
+        "text": "Bazıları petrol taşır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bazıları, üst üste iki kat dizilmiş yük konteynerleri taşır.",
+      "text_markdown": "Bazıları, üst üste iki kat dizilmiş yük konteynerleri taşır.",
+      "tts": {
+        "text": "Bazıları, üst üste iki kat dizilmiş yük konteynerleri taşır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Metro, şehirde yer altında giden bir trendir.",
+      "text_markdown": "Metro, şehirde yer altında giden bir trendir.",
+      "tts": {
+        "text": "Metro, şehirde yer altında giden bir trendir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İlk metro Londra'da 1863 yılında açıldı.",
+      "text_markdown": "İlk metro Londra'da 1863 yılında açıldı.",
+      "tts": {
+        "text": "İlk metro Londra da bin sekiz yüz altmış üç yılında açıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bugün büyük şehirlerin sokaklarının altında dev metro ağları vardır.",
+      "text_markdown": "Bugün büyük şehirlerin sokaklarının altında dev metro ağları vardır.",
+      "tts": {
+        "text": "Bugün büyük şehirlerin sokaklarının altında dev metro ağları vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tramvay ya da hafif raylı sistem, şehir sokaklarında giden küçük bir trendir.",
+      "text_markdown": "Tramvay ya da hafif raylı sistem, şehir sokaklarında giden küçük bir trendir.",
+      "tts": {
+        "text": "Tramvay ya da hafif raylı sistem, şehir sokaklarında giden küçük bir trendir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sık sık yolu arabalar ve otobüslerle paylaşır.",
+      "text_markdown": "Sık sık yolu arabalar ve otobüslerle paylaşır.",
+      "tts": {
+        "text": "Sık sık yolu arabalar ve otobüslerle paylaşır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dağ treni dik yamaçlara tırmanır.",
+      "text_markdown": "Dağ treni dik yamaçlara tırmanır.",
+      "tts": {
+        "text": "Dağ treni dik yamaçlara tırmanır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bazılarının ortasında, cog denen özel dişli bir ray vardır.",
+      "text_markdown": "Bazılarının ortasında, cog denen özel dişli bir ray vardır.",
+      "tts": {
+        "text": "Bazılarının ortasında, kog denen özel dişli bir ray vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lokomotif, yukarı çıkmak ve güvenle aşağı inmek için bu dişliyi kavrar.",
+      "text_markdown": "Lokomotif, yukarı çıkmak ve güvenle aşağı inmek için bu dişliyi kavrar.",
+      "tts": {
+        "text": "Lokomotif, yukarı çıkmak ve güvenle aşağı inmek için bu dişliyi kavrar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bazı trenler aynı zamanda turistik trenlerdir.",
+      "text_markdown": "Bazı trenler aynı zamanda turistik trenlerdir.",
+      "tts": {
+        "text": "Bazı trenler aynı zamanda turistik trenlerdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Birçok Tren Türü",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sadece manzara için ormanların ve dağların içinden geçerler.",
+      "text_markdown": "Sadece manzara için ormanların ve dağların içinden geçerler.",
+      "tts": {
+        "text": "Sadece manzara için ormanların ve dağların içinden geçerler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 7 — Raylardaki Gelecek",
+      "text_markdown": "Bölüm 7 — Raylardaki Gelecek"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trenin hikayesi bitmedi.",
+      "text_markdown": "Trenin hikayesi bitmedi.",
+      "tts": {
+        "text": "Trenin hikayesi bitmedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şu anda yeni tren türleri yapılıyor.",
+      "text_markdown": "Şu anda yeni tren türleri yapılıyor.",
+      "tts": {
+        "text": "Şu anda yeni tren türleri yapılıyor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En şaşırtıcısı maglevdir.",
+      "text_markdown": "En şaşırtıcısı maglevdir.",
+      "tts": {
+        "text": "En şaşırtıcısı maglevdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maglev sözcüğü, manyetik levitasyonun kısaltmasıdır.",
+      "text_markdown": "Maglev sözcüğü, manyetik levitasyonun kısaltmasıdır.",
+      "tts": {
+        "text": "Maglev sözcüğü, manyetik levitasyonun kısaltmasıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maglev treni rayına değmez.",
+      "text_markdown": "Maglev treni rayına değmez.",
+      "tts": {
+        "text": "Maglev treni rayına değmez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mıknatısların oluşturduğu bir yastığın üstünde süzülür.",
+      "text_markdown": "Mıknatısların oluşturduğu bir yastığın üstünde süzülür.",
+      "tts": {
+        "text": "Mıknatısların oluşturduğu bir yastığın üstünde süzülür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Dönen tekerlekler yoktur.",
+      "text_markdown": "Dönen tekerlekler yoktur.",
+      "tts": {
+        "text": "Dönen tekerlekler yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sürtünme yoktur.",
+      "text_markdown": "Sürtünme yoktur.",
+      "tts": {
+        "text": "Sürtünme yoktur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "2004 yılında, Çin'in Şanghay kentinde bir maglev hattı açıldı.",
+      "text_markdown": "2004 yılında, Çin'in Şanghay kentinde bir maglev hattı açıldı.",
+      "tts": {
+        "text": "iki bin dört yılında, Çin in Şanghay kentinde bir maglev hattı açıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu tren saatte 250 milden fazla hıza ulaşabilir.",
+      "text_markdown": "Bu tren saatte 250 milden fazla hıza ulaşabilir.",
+      "tts": {
+        "text": "Bu tren saatte iki yüz elli milden fazla hıza ulaşabilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Japonya'da bir deneme maglev treni saatte 370 milden daha hızlı gitmiştir.",
+      "text_markdown": "Japonya'da bir deneme maglev treni saatte 370 milden daha hızlı gitmiştir.",
+      "tts": {
+        "text": "Japonya da bir deneme maglev treni saatte üç yüz yetmiş milden daha hızlı gitmiştir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başka mühendisler hidrojenli tren üzerinde çalışıyor.",
+      "text_markdown": "Başka mühendisler hidrojenli tren üzerinde çalışıyor.",
+      "tts": {
+        "text": "Başka mühendisler hidrojenli tren üzerinde çalışıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hidrojenli tren, küçük bir yakıt hücresinden elektrik üretir.",
+      "text_markdown": "Hidrojenli tren, küçük bir yakıt hücresinden elektrik üretir.",
+      "tts": {
+        "text": "Hidrojenli tren, küçük bir yakıt hücresinden elektrik üretir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Motordan çıkan tek şey su buharıdır.",
+      "text_markdown": "Motordan çıkan tek şey su buharıdır.",
+      "tts": {
+        "text": "Motordan çıkan tek şey su buharıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Duman yok.",
+      "text_markdown": "Duman yok.",
+      "tts": {
+        "text": "Duman yok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kömür yok.",
+      "text_markdown": "Kömür yok.",
+      "tts": {
+        "text": "Kömür yok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "İlk hidrojenli trenler 2018 yılında Almanya'da hizmete girdi.",
+      "text_markdown": "İlk hidrojenli trenler 2018 yılında Almanya'da hizmete girdi.",
+      "tts": {
+        "text": "İlk hidrojenli trenler iki bin on sekiz yılında Almanya da hizmete girdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Trenler çok eskidir.",
+      "text_markdown": "Trenler çok eskidir.",
+      "tts": {
+        "text": "Trenler çok eskidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aynı zamanda çok yenidirler.",
+      "text_markdown": "Aynı zamanda çok yenidirler.",
+      "tts": {
+        "text": "Aynı zamanda çok yenidirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Raylardaki Gelecek",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rocket'tan iki yüz yıl sonra bile raylar hâlâ geleceğin bir parçasıdır.",
+      "text_markdown": "Rocket'tan iki yüz yıl sonra bile raylar hâlâ geleceğin bir parçasıdır.",
+      "tts": {
+        "text": "Rokıt tan iki yüz yıl sonra bile raylar hâlâ geleceğin bir parçasıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Demiryolu Devam Ediyor",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Demiryolu Devam Ediyor",
+      "text_markdown": "Demiryolu Devam Ediyor"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Demiryolu Devam Ediyor",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rocket'tan maglev'e kadar tren, neredeyse iki yüz yıldır dünyayı ileri taşıyor.",
+      "text_markdown": "Rocket'tan maglev'e kadar tren, neredeyse iki yüz yıldır dünyayı ileri taşıyor.",
+      "tts": {
+        "text": "Rokıt tan maglev e kadar tren, neredeyse iki yüz yıldır dünyayı ileri taşıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Demiryolu Devam Ediyor",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şu anda çöllerde, dağlarda ve şehirlerin altında yeni hatlar döşeniyor.",
+      "text_markdown": "Şu anda çöllerde, dağlarda ve şehirlerin altında yeni hatlar döşeniyor.",
+      "tts": {
+        "text": "Şu anda çöllerde, dağlarda ve şehirlerin altında yeni hatlar döşeniyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Demiryolu Devam Ediyor",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bir sonraki istasyon her zaman biraz ileridedir.",
+      "text_markdown": "Bir sonraki istasyon her zaman biraz ileridedir.",
+      "tts": {
+        "text": "Bir sonraki istasyon her zaman biraz ileridedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

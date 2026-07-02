@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "sv",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-001",
+      "text": "Välkommen till AI denna vecka.",
+      "text_markdown": "Välkommen till AI denna vecka.",
+      "title": "",
+      "tts": {
+        "text": "Välkommen till AI denna vecka.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-002",
+      "text": "Jag är Vindy.",
+      "text_markdown": "Jag är Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Jag är Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-003",
+      "text": "Med mig, som alltid, är Ron.",
+      "text_markdown": "Med mig, som alltid, är Ron.",
+      "title": "",
+      "tts": {
+        "text": "Med mig, som alltid, är Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-004",
+      "text": "Kul att vara här, Vindy.",
+      "text_markdown": "Kul att vara här, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Kul att vara här, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-005",
+      "text": "Idag är det söndag den 21 juni 2026.",
+      "text_markdown": "Idag är det söndag den 21 juni 2026.",
+      "title": "",
+      "tts": {
+        "text": "Idag är det söndag den tjugoförsta juni tjugohundratjugosex.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-006",
+      "text": "Förra veckan pratade vi om oss själva; idag går vi åt andra hållet – hela vägen ut till maktens centra.",
+      "text_markdown": "Förra veckan pratade vi om oss själva; idag går vi åt andra hållet – hela vägen ut till maktens centra.",
+      "title": "",
+      "tts": {
+        "text": "Förra veckan pratade vi om oss själva; idag går vi åt andra hållet – hela vägen ut till maktens centra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-007",
+      "text": "Vem kontrollerar AI-utrullningen, vem betalar för utbyggnaden, vem äger kisel.",
+      "text_markdown": "Vem kontrollerar AI-utrullningen, vem betalar för utbyggnaden, vem äger kisel.",
+      "title": "",
+      "tts": {
+        "text": "Vem kontrollerar AI-utrullningen, vem betalar för utbyggnaden, vem äger kisel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-008",
+      "text": "Strax – det amerikanska handelsdepartementet drog tillbaka en amerikansk modell från offentligt bruk i fredags, och vi ska börja där.",
+      "text_markdown": "Strax – det amerikanska handelsdepartementet drog tillbaka en amerikansk modell från offentligt bruk i fredags, och vi ska börja där.",
+      "title": "",
+      "tts": {
+        "text": "Strax – det amerikanska handelsdepartementet drog tillbaka en amerikansk modell från offentligt bruk i fredags, och vi ska börja där.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-009",
+      "text": "Sedan utbyggnaden av datacenter, där tillkännagivandena och verkligheten inte stämmer överens.",
+      "text_markdown": "Sedan utbyggnaden av datacenter, där tillkännagivandena och verkligheten inte stämmer överens.",
+      "title": "",
+      "tts": {
+        "text": "Sedan utbyggnaden av datacenter, där tillkännagivandena och verkligheten inte stämmer överens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-010",
+      "text": "Sedan jämförelsen mellan USA och Kina, där klichén ersätts av den faktiska bindande begränsningen.",
+      "text_markdown": "Sedan jämförelsen mellan USA och Kina, där klichén ersätts av den faktiska bindande begränsningen.",
+      "title": "",
+      "tts": {
+        "text": "Sedan jämförelsen mellan USA och Kina, där klichén ersätts av den faktiska bindande begränsningen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-011",
+      "text": "Och veckans koncept – en enda rad i Oracles balansräkning som berättar nästan allt.",
+      "text_markdown": "Och veckans koncept – en enda rad i Oracles balansräkning som berättar nästan allt.",
+      "title": "",
+      "tts": {
+        "text": "Och veckans koncept – en enda rad i Oracles balansräkning som berättar nästan allt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-012",
+      "text": "Ron, låt oss börja med Anthropic.",
+      "text_markdown": "Ron, låt oss börja med Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, låt oss börja med Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-013",
+      "text": "Vad hände den tolfte juni.",
+      "text_markdown": "Vad hände den tolfte juni.",
+      "title": "",
+      "tts": {
+        "text": "Vad hände den tolfte juni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-014",
+      "text": "Klockan fem tjugoett på eftermiddagen Eastern tid på fredagen den tolfte juni tog Anthropic sina två nyaste modeller – Claude Mythos fem och Claude Fable fem – offline.",
+      "text_markdown": "Klockan fem tjugoett på eftermiddagen Eastern tid på fredagen den tolfte juni tog Anthropic sina två nyaste modeller – Claude Mythos fem och Claude Fable fem – offline.",
+      "title": "",
+      "tts": {
+        "text": "Klockan fem tjugoett på eftermiddagen Eastern tid på fredagen den tolfte juni tog Anthropic sina två nyaste modeller – Claude Mythos fem och Claude Fable fem – offline.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-015",
+      "text": "Inte för underhåll, inte för en säkerhetsgranskning på eget initiativ.",
+      "text_markdown": "Inte för underhåll, inte för en säkerhetsgranskning på eget initiativ.",
+      "title": "",
+      "tts": {
+        "text": "Inte för underhåll, inte för en säkerhetsgranskning på eget initiativ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-016",
+      "text": "De tog ner dem eftersom det amerikanska handelsdepartementet utfärdade ett direktiv med hänvisning till exportkontroller.",
+      "text_markdown": "De tog ner dem eftersom det amerikanska handelsdepartementet utfärdade ett direktiv med hänvisning till exportkontroller.",
+      "title": "",
+      "tts": {
+        "text": "De tog ner dem eftersom det amerikanska handelsdepartementet utfärdade ett direktiv med hänvisning till exportkontroller.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-017",
+      "text": "Vad var den tekniska anledningen.",
+      "text_markdown": "Vad var den tekniska anledningen.",
+      "title": "",
+      "tts": {
+        "text": "Vad var den tekniska anledningen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-018",
+      "text": "En jailbreak demonstrerades, enligt uppgift av ett annat företag, som producerade utdata som Handelsdepartementet ansåg vara exportkontrollerat.",
+      "text_markdown": "En jailbreak demonstrerades, enligt uppgift av ett annat företag, som producerade utdata som Handelsdepartementet ansåg vara exportkontrollerat.",
+      "title": "",
+      "tts": {
+        "text": "En jailbreak demonstrerades, enligt uppgift av ett annat företag, som producerade utdata som Handelsdepartementet ansåg vara exportkontrollerat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-019",
+      "text": "Fortune rapporterade att det var Amazon som larmade Vita huset om det.",
+      "text_markdown": "Fortune rapporterade att det var Amazon som larmade Vita huset om det.",
+      "title": "",
+      "tts": {
+        "text": "Fortune rapporterade att det var Amazon som larmade Vita huset om det.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-020",
+      "text": "Och hur svarade Anthropic.",
+      "text_markdown": "Och hur svarade Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Och hur svarade Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-021",
+      "text": "Anthropic bestrider offentligt motiveringen.",
+      "text_markdown": "Anthropic bestrider offentligt motiveringen.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic bestrider offentligt motiveringen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-022",
+      "text": "Deras uttalande kallade jailbreaken – och jag citerar – ”snäv, icke-universell”, och tillade att samma utdata finns tillgänglig från andra modeller, inklusive OpenAI:s GPT-fem-punkt-fem.",
+      "text_markdown": "Deras uttalande kallade jailbreaken – och jag citerar – ”snäv, icke-universell”, och tillade att samma utdata finns tillgänglig från andra modeller, inklusive OpenAI:s GPT-fem-punkt-fem.",
+      "title": "",
+      "tts": {
+        "text": "Deras uttalande kallade jailbreaken – och jag citerar – ”snäv, icke-universell”, och tillade att samma utdata finns tillgänglig från andra modeller, inklusive OpenAI:s GPT fem punkt fem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-023",
+      "text": "Deras sammanfattande rad: ”regeringens agerande bygger på ett missförstånd.”",
+      "text_markdown": "Deras sammanfattande rad: ”regeringens agerande bygger på ett missförstånd.”",
+      "title": "",
+      "tts": {
+        "text": "Deras sammanfattande rad: ”regeringens agerande bygger på ett missförstånd.”",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-024",
+      "text": "Det är en ovanligt direkt oenighet med den amerikanska regeringen för ett AI-labb.",
+      "text_markdown": "Det är en ovanligt direkt oenighet med den amerikanska regeringen för ett AI-labb.",
+      "title": "",
+      "tts": {
+        "text": "Det är en ovanligt direkt oenighet med den amerikanska regeringen för ett AI-labb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-025",
+      "text": "Det är det, och det strukturella faktum som ligger under det är rubriken.",
+      "text_markdown": "Det är det, och det strukturella faktum som ligger under det är rubriken.",
+      "title": "",
+      "tts": {
+        "text": "Det är det, och det strukturella faktum som ligger under det är rubriken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-026",
+      "text": "Handelsdepartementet kan nu beordra ett privat amerikanskt AI-labb att ta en modell offline, med hänvisning till exportkontroller, och den ordern verkställs inom sjuttiotvå timmar.",
+      "text_markdown": "Handelsdepartementet kan nu beordra ett privat amerikanskt AI-labb att ta en modell offline, med hänvisning till exportkontroller, och den ordern verkställs inom sjuttiotvå timmar.",
+      "title": "",
+      "tts": {
+        "text": "Handelsdepartementet kan nu beordra ett privat amerikanskt AI-labb att ta en modell offline, med hänvisning till exportkontroller, och den ordern verkställs inom sjuttiotvå timmar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-027",
+      "text": "Oavsett om du tycker att ordern var rätt eller inte.",
+      "text_markdown": "Oavsett om du tycker att ordern var rätt eller inte.",
+      "title": "",
+      "tts": {
+        "text": "Oavsett om du tycker att ordern var rätt eller inte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-028",
+      "text": "Oavsett om du tycker att ordern var rätt eller inte.",
+      "text_markdown": "Oavsett om du tycker att ordern var rätt eller inte.",
+      "title": "",
+      "tts": {
+        "text": "Oavsett om du tycker att ordern var rätt eller inte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-029",
+      "text": "Själva befogenheten, hastigheten och prejudikatet är det som spelar roll.",
+      "text_markdown": "Själva befogenheten, hastigheten och prejudikatet är det som spelar roll.",
+      "title": "",
+      "tts": {
+        "text": "Själva befogenheten, hastigheten och prejudikatet är det som spelar roll.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-030",
+      "text": "Och Amazons roll här.",
+      "text_markdown": "Och Amazons roll här.",
+      "title": "",
+      "tts": {
+        "text": "Och Amazons roll här.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-031",
+      "text": "Det är den del som man ska hålla ögonen på.",
+      "text_markdown": "Det är den del som man ska hålla ögonen på.",
+      "title": "",
+      "tts": {
+        "text": "Det är den del som man ska hålla ögonen på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-032",
+      "text": "Amazon är en stor investerare i Anthropic och konkurrerar även med Anthropic på marknaden för grundmodeller genom sitt eget arbete.",
+      "text_markdown": "Amazon är en stor investerare i Anthropic och konkurrerar även med Anthropic på marknaden för grundmodeller genom sitt eget arbete.",
+      "title": "",
+      "tts": {
+        "text": "Amazon är en stor investerare i Anthropic och konkurrerar även med Anthropic på marknaden för grundmodeller genom sitt eget arbete.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-033",
+      "text": "Om en konkurrents varning till regeringen kan ta en rivals modell offline under en långhelg, då är det en ny form för branschdynamiken.",
+      "text_markdown": "Om en konkurrents varning till regeringen kan ta en rivals modell offline under en långhelg, då är det en ny form för branschdynamiken.",
+      "title": "",
+      "tts": {
+        "text": "Om en konkurrents varning till regeringen kan ta en rivals modell offline under en långhelg, då är det en ny form för branschdynamiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-034",
+      "text": "Låt oss gå vidare till utbyggnaden.",
+      "text_markdown": "Låt oss gå vidare till utbyggnaden.",
+      "title": "",
+      "tts": {
+        "text": "Låt oss gå vidare till utbyggnaden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-035",
+      "text": "Stargate — OpenAI, Oracle, SoftBanks datacenterinitiativ.",
+      "text_markdown": "Stargate — OpenAI, Oracle, SoftBanks datacenterinitiativ.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — OpenAI, Oracle, SoftBanks datacenterinitiativ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-036",
+      "text": "Vad är de faktiska siffrorna.",
+      "text_markdown": "Vad är de faktiska siffrorna.",
+      "title": "",
+      "tts": {
+        "text": "Vad är de faktiska siffrorna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-037",
+      "text": "Stargate har meddelat elva gigawatt amerikansk kapacitet.",
+      "text_markdown": "Stargate har meddelat elva gigawatt amerikansk kapacitet.",
+      "title": "",
+      "tts": {
+        "text": "Stargate har meddelat elva gigawatt amerikansk kapacitet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-038",
+      "text": "I mitten av juni är cirka tvåhundra megawatt i drift, vid Abilene Texas-anläggningen, Fas Ett.",
+      "text_markdown": "I mitten av juni är cirka tvåhundra megawatt i drift, vid Abilene Texas-anläggningen, Fas Ett.",
+      "title": "",
+      "tts": {
+        "text": "I mitten av juni är cirka tvåhundra megawatt i drift, vid Abilene Texas-anläggningen, Fas Ett.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-039",
+      "text": "Elva gigawatt meddelat, tvåhundra megawatt inkopplat.",
+      "text_markdown": "Elva gigawatt meddelat, tvåhundra megawatt inkopplat.",
+      "title": "",
+      "tts": {
+        "text": "Elva gigawatt meddelat, tvåhundra megawatt inkopplat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-040",
+      "text": "Det är hela klyftan i en enda mening.",
+      "text_markdown": "Det är hela klyftan i en enda mening.",
+      "title": "",
+      "tts": {
+        "text": "Det är hela klyftan i en enda mening.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-041",
+      "text": "Det är det, och det tydligaste exemplet finns i New Mexico.",
+      "text_markdown": "Det är det, och det tydligaste exemplet finns i New Mexico.",
+      "title": "",
+      "tts": {
+        "text": "Det är det, och det tydligaste exemplet finns i New Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-042",
+      "text": "Anläggningen i Doña Ana County är det största enskilda Stargate-campusområdet, planerat till fyra komma fem gigawatt.",
+      "text_markdown": "Anläggningen i Doña Ana County är det största enskilda Stargate-campusområdet, planerat till fyra komma fem gigawatt.",
+      "title": "",
+      "tts": {
+        "text": "Anläggningen i Doña Ana County är det största enskilda Stargate-campusområdet, planerat till fyra komma fem gigawatt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-043",
+      "text": "Arton miljarder dollar i syndikerad projektfinansiering är på plats — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus en kapitalinvestering på tre miljarder dollar från Blue Owl.",
+      "text_markdown": "Arton miljarder dollar i syndikerad projektfinansiering är på plats — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus en kapitalinvestering på tre miljarder dollar från Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Arton miljarder dollar i syndikerad projektfinansiering är på plats — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — plus en kapitalinvestering på tre miljarder dollar från Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-044",
+      "text": "Och byggstatusen på plats.",
+      "text_markdown": "Och byggstatusen på plats.",
+      "title": "",
+      "tts": {
+        "text": "Och byggstatusen på plats.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-045",
+      "text": "Noll spadar i marken hittills.",
+      "text_markdown": "Noll spadar i marken hittills.",
+      "title": "",
+      "tts": {
+        "text": "Noll spadar i marken hittills.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-046",
+      "text": "Anläggningen väntar på ett luftkvalitetstillstånd från New Mexico Environment Department, ursprungligen förväntat den tjugoandra april, nu framskjutet till den tjugoförsta juli efter mer än sjutusen offentliga kommentarer.",
+      "text_markdown": "Anläggningen väntar på ett luftkvalitetstillstånd från New Mexico Environment Department, ursprungligen förväntat den tjugoandra april, nu framskjutet till den tjugoförsta juli efter mer än sjutusen offentliga kommentarer.",
+      "title": "",
+      "tts": {
+        "text": "Anläggningen väntar på ett luftkvalitetstillstånd från New Mexico Environment Department, ursprungligen förväntat den tjugoandra april, nu framskjutet till den tjugoförsta juli efter mer än sjutusen offentliga kommentarer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-047",
+      "text": "Arton miljarder dollar har åtagits, noll spadar i marken, en deadline för luftkvalitetstillstånd.",
+      "text_markdown": "Arton miljarder dollar har åtagits, noll spadar i marken, en deadline för luftkvalitetstillstånd.",
+      "title": "",
+      "tts": {
+        "text": "Arton miljarder dollar har åtagits, noll spadar i marken, en deadline för luftkvalitetstillstånd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-048",
+      "text": "Vem blir den som får ta smällen om siffrorna inte går ihop.",
+      "text_markdown": "Vem blir den som får ta smällen om siffrorna inte går ihop.",
+      "title": "",
+      "tts": {
+        "text": "Vem blir den som får ta smällen om siffrorna inte går ihop.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-049",
+      "text": "Det är där Oracle blir intressant.",
+      "text_markdown": "Det är där Oracle blir intressant.",
+      "title": "",
+      "tts": {
+        "text": "Det är där Oracle blir intressant.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-050",
+      "text": "Oracles Remaining Performance Obligations — den redovisningspost som registrerar avtalade intäkter som ännu inte levererats — nådde femhundrafemtiotre miljarder dollar under Q tre räkenskapsåret tjugotjugosex.",
+      "text_markdown": "Oracles Remaining Performance Obligations — den redovisningspost som registrerar avtalade intäkter som ännu inte levererats — nådde femhundrafemtiotre miljarder dollar under Q tre räkenskapsåret tjugotjugosex.",
+      "title": "",
+      "tts": {
+        "text": "Oracles Remaining Performance Obligations — den redovisningspost som registrerar avtalade intäkter som ännu inte levererats — nådde femhundrafemtiotre miljarder dollar under Q tre räkenskapsåret tjugotjugosex.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-051",
+      "text": "Det är en ökning med trehundratjugofem procent jämfört med föregående år, och majoriteten av den ökningen är offentligt kopplad till OpenAI och Stargate.",
+      "text_markdown": "Det är en ökning med trehundratjugofem procent jämfört med föregående år, och majoriteten av den ökningen är offentligt kopplad till OpenAI och Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Det är en ökning med trehundratjugofem procent jämfört med föregående år, och majoriteten av den ökningen är offentligt kopplad till OpenAI och Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-052",
+      "text": "Och skuldsidan.",
+      "text_markdown": "Och skuldsidan.",
+      "title": "",
+      "tts": {
+        "text": "Och skuldsidan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-053",
+      "text": "De totala lånen uppgick till etthundratrettiofyra komma sex miljarder dollar per den tjugoåttonde februari.",
+      "text_markdown": "De totala lånen uppgick till etthundratrettiofyra komma sex miljarder dollar per den tjugoåttonde februari.",
+      "title": "",
+      "tts": {
+        "text": "De totala lånen uppgick till etthundratrettiofyra komma sex miljarder dollar per den tjugoåttonde februari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-054",
+      "text": "Oracle tog in trettio miljarder i februari enbart — investment-grade-obligationer plus obligatoriska konvertibla preferensaktier — och emitterade fyrtiotre miljarder dollar i nya seniora obligationer under niomånadersperioden.",
+      "text_markdown": "Oracle tog in trettio miljarder i februari enbart — investment-grade-obligationer plus obligatoriska konvertibla preferensaktier — och emitterade fyrtiotre miljarder dollar i nya seniora obligationer under niomånadersperioden.",
+      "title": "",
+      "tts": {
+        "text": "Oracle tog in trettio miljarder i februari enbart — investment-grade-obligationer plus obligatoriska konvertibla preferensaktier — och emitterade fyrtiotre miljarder dollar i nya seniora obligationer under niomånadersperioden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-055",
+      "text": "Så, sammanfatta läget.",
+      "text_markdown": "Så, sammanfatta läget.",
+      "title": "",
+      "tts": {
+        "text": "Så, sammanfatta läget.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-056",
+      "text": "Femhundrafemtiotre miljarder dollar i löften, etthundratrettiofyra miljarder dollar i skuld, och en stor kund som bär det mesta av risken.",
+      "text_markdown": "Femhundrafemtiotre miljarder dollar i löften, etthundratrettiofyra miljarder dollar i skuld, och en stor kund som bär det mesta av risken.",
+      "title": "",
+      "tts": {
+        "text": "Femhundrafemtiotre miljarder dollar i löften, etthundratrettiofyra miljarder dollar i skuld, och en stor kund som bär det mesta av risken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-057",
+      "text": "Det är strukturen för utbyggnaden i en mening.",
+      "text_markdown": "Det är strukturen för utbyggnaden i en mening.",
+      "title": "",
+      "tts": {
+        "text": "Det är strukturen för utbyggnaden i en mening.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-058",
+      "text": "Låt oss gå till jämförelsen mellan USA och Kina.",
+      "text_markdown": "Låt oss gå till jämförelsen mellan USA och Kina.",
+      "title": "",
+      "tts": {
+        "text": "Låt oss gå till jämförelsen mellan U S A och Kina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-059",
+      "text": "Klichén är att Kina ligger ett antal månader efter.",
+      "text_markdown": "Klichén är att Kina ligger ett antal månader efter.",
+      "title": "",
+      "tts": {
+        "text": "Klichén är att Kina ligger ett antal månader efter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-060",
+      "text": "Klichén är felaktig eftersom den mäter fel sak.",
+      "text_markdown": "Klichén är felaktig eftersom den mäter fel sak.",
+      "title": "",
+      "tts": {
+        "text": "Klichén är felaktig eftersom den mäter fel sak.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-061",
+      "text": "Måndagen den nionde juni rapporterade Bloomberg om ett utkast till en kinesisk plan från Nationella utvecklings- och reformkommissionen — två biljoner yuan, ungefär tvåhundranittiofem miljarder dollar, för ett nationellt AI-datacenter-nätverk till 2028.",
+      "text_markdown": "Måndagen den nionde juni rapporterade Bloomberg om ett utkast till en kinesisk plan från Nationella utvecklings- och reformkommissionen — två biljoner yuan, ungefär tvåhundranittiofem miljarder dollar, för ett nationellt AI-datacenter-nätverk till 2028.",
+      "title": "",
+      "tts": {
+        "text": "Måndagen den nionde juni rapporterade Bloomberg om ett utkast till en kinesisk plan från Nationella utvecklings- och reformkommissionen — två biljoner yuan, ungefär tvåhundranittiofem miljarder dollar, för ett nationellt A I-datacenter-nätverk till tjugotjugoåtta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-062",
+      "text": "Planen kräver 80 procent inhemskt kisel och skulle drivas som ett sammankopplat beräkningsnätverk av China Mobile och China Telecom.",
+      "text_markdown": "Planen kräver 80 procent inhemskt kisel och skulle drivas som ett sammankopplat beräkningsnätverk av China Mobile och China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Planen kräver åttio procent inhemskt kisel och skulle drivas som ett sammankopplat beräkningsnätverk av China Mobile och China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-063",
+      "text": "Och var är haken med den planen.",
+      "text_markdown": "Och var är haken med den planen.",
+      "title": "",
+      "tts": {
+        "text": "Och var är haken med den planen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-064",
+      "text": "Två biljoner yuan, 80 procent inhemskt kisel, 2028 deadline — och haken är att den bindande begränsningen inte är logikchip, det är minne med hög bandbredd.",
+      "text_markdown": "Två biljoner yuan, 80 procent inhemskt kisel, 2028 deadline — och haken är att den bindande begränsningen inte är logikchip, det är minne med hög bandbredd.",
+      "title": "",
+      "tts": {
+        "text": "Två biljoner yuan, åttio procent inhemskt kisel, tjugotjugoåtta deadline — och haken är att den bindande begränsningen inte är logikchip, det är minne med hög bandbredd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-065",
+      "text": "Förklara det för oss.",
+      "text_markdown": "Förklara det för oss.",
+      "title": "",
+      "tts": {
+        "text": "Förklara det för oss.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-066",
+      "text": "Varje AI-accelerator behöver HBM-stackar monterade på logikchipet.",
+      "text_markdown": "Varje AI-accelerator behöver HBM-stackar monterade på logikchipet.",
+      "title": "",
+      "tts": {
+        "text": "Varje A I-accelerator behöver H B M-stackar monterade på logikchipet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-067",
+      "text": "Utan HBM är chipet en pappersvikt.",
+      "text_markdown": "Utan HBM är chipet en pappersvikt.",
+      "title": "",
+      "tts": {
+        "text": "Utan HBM är chipet en pappersvikt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-068",
+      "text": "Kina lagrade cirka 13 miljoner HBM-stackar innan exportkontrollerna stängdes — 11,4 miljoner från Samsung ensamt.",
+      "text_markdown": "Kina lagrade cirka 13 miljoner HBM-stackar innan exportkontrollerna stängdes — 11,4 miljoner från Samsung ensamt.",
+      "title": "",
+      "tts": {
+        "text": "Kina lagrade cirka tretton miljoner H B M-stackar innan exportkontrollerna stängdes — elva komma fyra miljoner från Samsung ensamt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-069",
+      "text": "Med Huawei Ascend 910C-förpackningsförhållanden räcker det lagret för ungefär 1,6 miljoner chip.",
+      "text_markdown": "Med Huawei Ascend 910C-förpackningsförhållanden räcker det lagret för ungefär 1,6 miljoner chip.",
+      "title": "",
+      "tts": {
+        "text": "Med Huawei Ascend nio tio C-förpackningsförhållanden räcker det lagret för ungefär en komma sex miljoner chip.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-070",
+      "text": "Och sedan tar lagret slut.",
+      "text_markdown": "Och sedan tar lagret slut.",
+      "title": "",
+      "tts": {
+        "text": "Och sedan tar lagret slut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-071",
+      "text": "Sedan tar lagret slut — 13 miljoner HBM-stackar, tillräckligt för 1,6 miljoner chip, och det är taket.",
+      "text_markdown": "Sedan tar lagret slut — 13 miljoner HBM-stackar, tillräckligt för 1,6 miljoner chip, och det är taket.",
+      "title": "",
+      "tts": {
+        "text": "Sedan tar lagret slut — tretton miljoner H B M-stackar, tillräckligt för en komma sex miljoner chip, och det är taket.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-072",
+      "text": "Inhemsk kinesisk HBM, från CXMT, beräknas nå cirka 2 miljoner stackar år 2026 — tillräckligt för kanske 250 000 till 300 000 acceleratorer.",
+      "text_markdown": "Inhemsk kinesisk HBM, från CXMT, beräknas nå cirka 2 miljoner stackar år 2026 — tillräckligt för kanske 250 000 till 300 000 acceleratorer.",
+      "title": "",
+      "tts": {
+        "text": "Inhemsk kinesisk H B M, från C X M T, beräknas nå cirka två miljoner stackar år tjugotjugosex — tillräckligt för kanske tvåhundrafemtio till trehundratusen acceleratorer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-073",
+      "text": "Så hur ser Huaweis kiselplaner ut.",
+      "text_markdown": "Så hur ser Huaweis kiselplaner ut.",
+      "title": "",
+      "tts": {
+        "text": "Så hur ser Huaweis kiselplaner ut.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-074",
+      "text": "Bloomberg, med hänvisning till Huaweis planer, satte produktionen för 2026 till 600 000 910C-chip, med den bredare Ascend-produktlinjen som når upp till totalt 1,6 miljoner chip.",
+      "text_markdown": "Bloomberg, med hänvisning till Huaweis planer, satte produktionen för 2026 till 600 000 910C-chip, med den bredare Ascend-produktlinjen som når upp till totalt 1,6 miljoner chip.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, med hänvisning till Huaweis planer, satte produktionen för tjugotjugosex till sexhundratusen nio tio C-chip, med den bredare Ascend-produktlinjen som når upp till totalt en komma sex miljoner chip.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-075",
+      "text": "Det numret, 600 000, är ett mål, inte levererad produktion.",
+      "text_markdown": "Det numret, 600 000, är ett mål, inte levererad produktion.",
+      "title": "",
+      "tts": {
+        "text": "Det numret, sexhundratusen, är ett mål, inte levererad produktion.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-076",
+      "text": "Och separat, innan exportkontrollerna stoppade dem, ackumulerade Huawei mer än 2,9 miljoner Ascend-chip tillverkade hos TSMC via Sophgo och Bitmains skalbolag.",
+      "text_markdown": "Och separat, innan exportkontrollerna stoppade dem, ackumulerade Huawei mer än 2,9 miljoner Ascend-chip tillverkade hos TSMC via Sophgo och Bitmains skalbolag.",
+      "title": "",
+      "tts": {
+        "text": "Och separat, innan exportkontrollerna stoppade dem, ackumulerade Huawei mer än två komma nio miljoner Ascend-chip tillverkade hos T S M C via Sophgo och Bitmains skalbolag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-077",
+      "text": "Berättelsen om att exportkontrollerna fungerar har ett 2,9 miljoner chip-hål i sig.",
+      "text_markdown": "Berättelsen om att exportkontrollerna fungerar har ett 2,9 miljoner chip-hål i sig.",
+      "title": "",
+      "tts": {
+        "text": "Berättelsen om att exportkontrollerna fungerar har ett två komma nio miljoner chip-hål i sig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-078",
+      "text": "Låt oss gå igenom rubrikerna, snabbt.",
+      "text_markdown": "Låt oss gå igenom rubrikerna, snabbt.",
+      "title": "",
+      "tts": {
+        "text": "Låt oss gå igenom rubrikerna, snabbt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-079",
+      "text": "Veckans första rubrik, Broadcom.",
+      "text_markdown": "Veckans första rubrik, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Veckans första rubrik, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-080",
+      "text": "Broadcoms marknadsvärde är omkring 2 biljoner dollar.",
+      "text_markdown": "Broadcoms marknadsvärde är omkring 2 biljoner dollar.",
+      "title": "",
+      "tts": {
+        "text": "Broadcoms marknadsvärde är omkring två biljoner dollar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-081",
+      "text": "Deras VD, Hock Tan, upprepade ett intäktsmål på 100 miljarder dollar för AI-halvledare för räkenskapsåret 2027 vid vinstsamtalet den tredje juni, stödd av cirka 73 miljarder dollar i AI-eftersläpning och långsiktiga avtal med Alphabet och Meta som sträcker sig till 2031.",
+      "text_markdown": "Deras VD, Hock Tan, upprepade ett intäktsmål på 100 miljarder dollar för AI-halvledare för räkenskapsåret 2027 vid vinstsamtalet den tredje juni, stödd av cirka 73 miljarder dollar i AI-eftersläpning och långsiktiga avtal med Alphabet och Meta som sträcker sig till 2031.",
+      "title": "",
+      "tts": {
+        "text": "Deras VD, Hock Tan, upprepade ett intäktsmål på hundra miljarder dollar för A I-halvledare för räkenskapsåret tjugotjugosju vid vinstsamtalet den tredje juni, stödd av cirka sjuttiotre miljarder dollar i A I-eftersläpning och långsiktiga avtal med Alphabet och Meta som sträcker sig till tjugotrettioett.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-082",
+      "text": "2 biljoner dollar i marknadsvärde, 100 miljarder dollar i AI-intäktsmål, nästan ingen varumärkeskännedom bland konsumenter.",
+      "text_markdown": "2 biljoner dollar i marknadsvärde, 100 miljarder dollar i AI-intäktsmål, nästan ingen varumärkeskännedom bland konsumenter.",
+      "title": "",
+      "tts": {
+        "text": "Två biljoner dollar i marknadsvärde, hundra miljarder dollar i A I-intäktsmål, nästan ingen varumärkeskännedom bland konsumenter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-083",
+      "text": "Veckans andra rubrik, ASML.",
+      "text_markdown": "Veckans andra rubrik, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Veckans andra rubrik, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-084",
+      "text": "ASML, det nederländska företaget som bygger litografimaskinerna som all banbrytande logik är beroende av, säljer sitt High-N.A. E.U.V.-system för cirka 370 miljoner dollar.",
+      "text_markdown": "ASML, det nederländska företaget som bygger litografimaskinerna som all banbrytande logik är beroende av, säljer sitt High-N.A. E.U.V.-system för cirka 370 miljoner dollar.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, det nederländska företaget som bygger litografimaskinerna som all banbrytande logik är beroende av, säljer sitt High N A E U V-system för cirka trehundrasjuttio miljoner dollar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-085",
+      "text": "Den globala produktionskapaciteten är färre än 20 enheter per år.",
+      "text_markdown": "Den globala produktionskapaciteten är färre än 20 enheter per år.",
+      "title": "",
+      "tts": {
+        "text": "Den globala produktionskapaciteten är färre än tjugo enheter per år.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-086",
+      "text": "370 miljoner dollar per maskin, färre än 20 maskiner om året, ett företag tillverkar dem — det är den verkliga flaskhalsen för globalt kisel, inte politik.",
+      "text_markdown": "370 miljoner dollar per maskin, färre än 20 maskiner om året, ett företag tillverkar dem — det är den verkliga flaskhalsen för globalt kisel, inte politik.",
+      "title": "",
+      "tts": {
+        "text": "Trehundrasjuttio miljoner dollar per maskin, färre än tjugo maskiner om året, ett företag tillverkar dem — det är den verkliga flaskhalsen för globalt kisel, inte politik.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-087",
+      "text": "Veckans tredje rubrik, exportkontroller.",
+      "text_markdown": "Veckans tredje rubrik, exportkontroller.",
+      "title": "",
+      "tts": {
+        "text": "Veckans tredje rubrik, exportkontroller.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-088",
+      "text": "Handelsdepartementet upphävde Biden-erans A.I. Diffusion Rule den 13 maj 2025 och utfärdade ingen ny B.I.S.-verkställighetsförtydligande förrän den 31 maj 2026.",
+      "text_markdown": "Handelsdepartementet upphävde Biden-erans A.I. Diffusion Rule den 13 maj 2025 och utfärdade ingen ny B.I.S.-verkställighetsförtydligande förrän den 31 maj 2026.",
+      "title": "",
+      "tts": {
+        "text": "Handelsdepartementet upphävde Biden-erans A I Diffusion Rule den trettonde maj tjugotjugofem och utfärdade ingen ny B I S-verkställighetsförtydligande förrän den trettioförsta maj tjugotjugosex.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-089",
+      "text": "Det är ett ungefär ett år långt fönster där licenskraven inte aktivt upprätthölls.",
+      "text_markdown": "Det är ett ungefär ett år långt fönster där licenskraven inte aktivt upprätthölls.",
+      "title": "",
+      "tts": {
+        "text": "Det är ett ungefär ett år långt fönster där licenskraven inte aktivt upprätthölls.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-090",
+      "text": "Så räkna dagarna.",
+      "text_markdown": "Så räkna dagarna.",
+      "title": "",
+      "tts": {
+        "text": "Så räkna dagarna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-091",
+      "text": "Sjuttiofyra timmar för att stänga ner en amerikansk modell, trehundraåttio dagar för att genomdriva en regel för chipexport – den asymmetrin är det som är grejen.",
+      "text_markdown": "Sjuttiofyra timmar för att stänga ner en amerikansk modell, trehundraåttio dagar för att genomdriva en regel för chipexport – den asymmetrin är det som är grejen.",
+      "title": "",
+      "tts": {
+        "text": "Sjuttiofyra timmar för att stänga ner en United States-modell, trehundraåttio dagar för att genomdriva en regel för chipexport – den asymmetrin är det som är grejen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-092",
+      "text": "Och vart tog chipen vägen under de trehundraåttio dagarna?",
+      "text_markdown": "Och vart tog chipen vägen under de trehundraåttio dagarna?",
+      "title": "",
+      "tts": {
+        "text": "Och vart tog chipen vägen under de trehundraåttio dagarna?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-093",
+      "text": "Sydostasien är dit de flesta av dem tog vägen.",
+      "text_markdown": "Sydostasien är dit de flesta av dem tog vägen.",
+      "title": "",
+      "tts": {
+        "text": "Sydostasien är dit de flesta av dem tog vägen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-094",
+      "text": "Justitiedepartementet avslöjade åtal i slutet av mars där det påstods att Nvidia H100- och A100-chip dirigerades via malaysiska och singaporianska mellanhänder.",
+      "text_markdown": "Justitiedepartementet avslöjade åtal i slutet av mars där det påstods att Nvidia H100- och A100-chip dirigerades via malaysiska och singaporianska mellanhänder.",
+      "title": "",
+      "tts": {
+        "text": "Justitiedepartementet avslöjade åtal i slutet av mars där det påstods att Nvidia H etthundra och A etthundra chip dirigerades via malaysiska och singaporianska mellanhänder.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-095",
+      "text": "Fortune publicerade krypterade meddelanden i maj som visade logistiken, och Super Micro är inblandat i ett mål om bulvanföretag på två och en halv miljard dollar.",
+      "text_markdown": "Fortune publicerade krypterade meddelanden i maj som visade logistiken, och Super Micro är inblandat i ett mål om bulvanföretag på två och en halv miljard dollar.",
+      "title": "",
+      "tts": {
+        "text": "Fortune publicerade krypterade meddelanden i maj som visade logistiken, och Super Micro är inblandat i ett mål om bulvanföretag på två och en halv miljard dollar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-096",
+      "text": "Trump-administrationen uppges utarbeta nya restriktioner för chipexport som specifikt riktas mot Malaysia och Thailand.",
+      "text_markdown": "Trump-administrationen uppges utarbeta nya restriktioner för chipexport som specifikt riktas mot Malaysia och Thailand.",
+      "title": "",
+      "tts": {
+        "text": "Trump-administrationen uppges utarbeta nya restriktioner för chipexport som specifikt riktas mot Malaysia och Thailand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-097",
+      "text": "Så bilden i korthet.",
+      "text_markdown": "Så bilden i korthet.",
+      "title": "",
+      "tts": {
+        "text": "Så bilden i korthet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-098",
+      "text": "Chipen flyger inte till Shenzhen – de flyger först till Penang och Singapore.",
+      "text_markdown": "Chipen flyger inte till Shenzhen – de flyger först till Penang och Singapore.",
+      "title": "",
+      "tts": {
+        "text": "Chipen flyger inte till Shenzhen – de flyger först till Penang och Singapore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-099",
+      "text": "Veckans begrepp – Återstående prestationsskyldigheter.",
+      "text_markdown": "Veckans begrepp – Återstående prestationsskyldigheter.",
+      "title": "",
+      "tts": {
+        "text": "Veckans begrepp – Återstående prestationsskyldigheter.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-100",
+      "text": "R.P.O. är en redovisningspost som registrerar dollarvärdet av kontrakt ett företag har tecknat men ännu inte levererat mot.",
+      "text_markdown": "R.P.O. är en redovisningspost som registrerar dollarvärdet av kontrakt ett företag har tecknat men ännu inte levererat mot.",
+      "title": "",
+      "tts": {
+        "text": "Ärr Pe O är en redovisningspost som registrerar dollarvärdet av kontrakt ett företag har tecknat men ännu inte levererat mot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-101",
+      "text": "Det är framåtblickande – det berättar om framtida intäkter, inte pengar på banken idag.",
+      "text_markdown": "Det är framåtblickande – det berättar om framtida intäkter, inte pengar på banken idag.",
+      "title": "",
+      "tts": {
+        "text": "Det är framåtblickande – det berättar om framtida intäkter, inte pengar på banken idag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-102",
+      "text": "Och varför spelar det roll för Oracle?",
+      "text_markdown": "Och varför spelar det roll för Oracle?",
+      "title": "",
+      "tts": {
+        "text": "Och varför spelar det roll för Oracle?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-103",
+      "text": "Eftersom femhundrafemtiotre miljarder dollar i R.P.O., kraftigt koncentrerat till en kund för en utbyggnad, innebär att Oracle har lovat att leverera en enorm mängd beräkningskraft under de kommande åren gentemot en kund vars egen intäktsmodell fortfarande diskuteras.",
+      "text_markdown": "Eftersom femhundrafemtiotre miljarder dollar i R.P.O., kraftigt koncentrerat till en kund för en utbyggnad, innebär att Oracle har lovat att leverera en enorm mängd beräkningskraft under de kommande åren gentemot en kund vars egen intäktsmodell fortfarande diskuteras.",
+      "title": "",
+      "tts": {
+        "text": "Eftersom femhundrafemtiotre miljarder dollar i Ärr Pe O, kraftigt koncentrerat till en kund för en utbyggnad, innebär att Oracle har lovat att leverera en enorm mängd beräkningskraft under de kommande åren gentemot en kund vars egen intäktsmodell fortfarande diskuteras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-104",
+      "text": "Om dessa kontrakt levereras har Oracle årtiondets affär.",
+      "text_markdown": "Om dessa kontrakt levereras har Oracle årtiondets affär.",
+      "title": "",
+      "tts": {
+        "text": "Om dessa kontrakt levereras har Oracle årtiondets affär.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-105",
+      "text": "Om de försenas – eller omförhandlas – bär Oracle skulden medan kontrakten krymper.",
+      "text_markdown": "Om de försenas – eller omförhandlas – bär Oracle skulden medan kontrakten krymper.",
+      "title": "",
+      "tts": {
+        "text": "Om de försenas – eller omförhandlas – bär Oracle skulden medan kontrakten krymper.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-106",
+      "text": "Så när du ser en R.P.O.-siffra i en teknikrapport.",
+      "text_markdown": "Så när du ser en R.P.O.-siffra i en teknikrapport.",
+      "title": "",
+      "tts": {
+        "text": "Så när du ser en R.P.O.-siffra i en teknikrapport.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-107",
+      "text": "Läs vilka kunderna är, hur koncentrerade åtagandena är, och vad som skulle behöva hända för att företaget faktiskt ska kunna leverera dem.",
+      "text_markdown": "Läs vilka kunderna är, hur koncentrerade åtagandena är, och vad som skulle behöva hända för att företaget faktiskt ska kunna leverera dem.",
+      "title": "",
+      "tts": {
+        "text": "Läs vilka kunderna är, hur koncentrerade åtagandena är, och vad som skulle behöva hända för att företaget faktiskt ska kunna leverera dem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-108",
+      "text": "R.P.O. är där de som sitter med svartepetter dyker upp i fotnoterna.",
+      "text_markdown": "R.P.O. är där de som sitter med svartepetter dyker upp i fotnoterna.",
+      "title": "",
+      "tts": {
+        "text": "Ärr Pe O är där de som sitter med svartepetter dyker upp i fotnoterna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-109",
+      "text": "Ett bra ställe att avsluta på.",
+      "text_markdown": "Ett bra ställe att avsluta på.",
+      "title": "",
+      "tts": {
+        "text": "Ett bra ställe att avsluta på.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-110",
+      "text": "Ron, tack för sammanfattningen.",
+      "text_markdown": "Ron, tack för sammanfattningen.",
+      "title": "",
+      "tts": {
+        "text": "Ron, tack för sammanfattningen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "id": "ch00-111",
+      "text": "När som helst, Vindy – kul att vara här.",
+      "text_markdown": "När som helst, Vindy – kul att vara här.",
+      "title": "",
+      "tts": {
+        "text": "När som helst, Vindy – kul att vara här.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-112",
+      "text": "Det var AI This Week för den tjugoförsta juni tjugohundratjugosex.",
+      "text_markdown": "Det var AI This Week för den tjugoförsta juni tjugohundratjugosex.",
+      "title": "",
+      "tts": {
+        "text": "Det var AI This Week för den tjugoförsta juni tjugohundratjugosex.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-113",
+      "text": "Nästa vecka, tillbaka till open-weights och bevakningen av små labb.",
+      "text_markdown": "Nästa vecka, tillbaka till open-weights och bevakningen av små labb.",
+      "title": "",
+      "tts": {
+        "text": "Nästa vecka, tillbaka till open-weights och bevakningen av små labb.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "speaker_id": "host",
+      "chapter": 0,
+      "id": "ch00-114",
+      "text": "Tills nästa söndag, ha det bra.",
+      "text_markdown": "Tills nästa söndag, ha det bra.",
+      "title": "",
+      "tts": {
+        "text": "Tills nästa söndag, ha det bra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

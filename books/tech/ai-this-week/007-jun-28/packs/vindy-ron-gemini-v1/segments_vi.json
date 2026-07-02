@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "vi",
+  "total_segments": 142,
+  "segments": [
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "text": "Chào mừng đến với AI Tuần Này.",
+      "text_markdown": "Chào mừng đến với AI Tuần Này.",
+      "title": "",
+      "tts": {
+        "text": "Chào mừng đến với AI Tuần Này.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "text": "Tôi là Vindy.",
+      "text_markdown": "Tôi là Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Tôi là Vindy.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "text": "Cùng với tôi, như thường lệ, là Ron.",
+      "text_markdown": "Cùng với tôi, như thường lệ, là Ron.",
+      "title": "",
+      "tts": {
+        "text": "Cùng với tôi, như thường lệ, là Ron.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "text": "Rất vui được có mặt ở đây, Vindy.",
+      "text_markdown": "Rất vui được có mặt ở đây, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Rất vui được có mặt ở đây, Vindy.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "text": "Hôm nay là Chủ Nhật, ngày 28 tháng 6 năm 2026.",
+      "text_markdown": "Hôm nay là Chủ Nhật, ngày 28 tháng 6 năm 2026.",
+      "title": "",
+      "tts": {
+        "text": "Hôm nay là Chủ Nhật, ngày hai mươi tám tháng sáu, năm hai nghìn không trăm hai mươi sáu.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "text": "Tuần trước chúng ta đã đi sâu vào các nhà máy điện và bảng cân đối kế toán.",
+      "text_markdown": "Tuần trước chúng ta đã đi sâu vào các nhà máy điện và bảng cân đối kế toán.",
+      "title": "",
+      "tts": {
+        "text": "Tuần trước chúng ta đã đi sâu vào các nhà máy điện và bảng cân đối kế toán.",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "text": "Tuần này chúng ta quay lại với bàn làm việc, và với một câu hỏi đang ẩn sâu trong toàn bộ lĩnh vực này.",
+      "text_markdown": "Tuần này chúng ta quay lại với bàn làm việc, và với một câu hỏi đang ẩn sâu trong toàn bộ lĩnh vực này.",
+      "title": "",
+      "tts": {
+        "text": "Tuần này chúng ta quay lại với bàn làm việc, và với một câu hỏi đang ẩn sâu trong toàn bộ lĩnh vực này.",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "text": "Khi một mô hình đạt được một con số lớn, hoặc thể hiện một kỹ năng vượt trội — liệu khả năng đó có thật không, và nó có thực sự thuộc về bạn không?",
+      "text_markdown": "Khi một mô hình đạt được một con số lớn, hoặc thể hiện một kỹ năng vượt trội — liệu khả năng đó có thật không, và nó có thực sự thuộc về bạn không?",
+      "title": "",
+      "tts": {
+        "text": "Khi một mô hình đạt được một con số lớn, hoặc thể hiện một kỹ năng vượt trội — liệu khả năng đó có thật không, và nó có thực sự thuộc về bạn không?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "text": "Tiếp theo — một mô hình hai trăm ba mươi triệu tham số chạy trên điện thoại, và một mô hình thế giới tác nhân mở từ phòng thí nghiệm Qwen.",
+      "text_markdown": "Tiếp theo — một mô hình hai trăm ba mươi triệu tham số chạy trên điện thoại, và một mô hình thế giới tác nhân mở từ phòng thí nghiệm Qwen.",
+      "title": "",
+      "tts": {
+        "text": "Tiếp theo — một mô hình hai trăm ba mươi triệu tham số chạy trên điện thoại, và một mô hình thế giới tác nhân mở từ phòng thí nghiệm Qwen.",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "text": "Sau đó là một nghiên cứu đã âm thầm giảm mười bốn điểm khỏi điểm mã hóa của một mô hình tiên phong.",
+      "text_markdown": "Sau đó là một nghiên cứu đã âm thầm giảm mười bốn điểm khỏi điểm mã hóa của một mô hình tiên phong.",
+      "title": "",
+      "tts": {
+        "text": "Sau đó là một nghiên cứu đã âm thầm giảm mười bốn điểm khỏi điểm mã hóa của một mô hình tiên phong.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "text": "Sau đó là các tiêu đề — một bản xem trước mô hình được chính phủ kiểm soát, và một chip tùy chỉnh được thiết kế một phần bởi chính các mô hình.",
+      "text_markdown": "Sau đó là các tiêu đề — một bản xem trước mô hình được chính phủ kiểm soát, và một chip tùy chỉnh được thiết kế một phần bởi chính các mô hình.",
+      "title": "",
+      "tts": {
+        "text": "Sau đó là các tiêu đề — một bản xem trước mô hình được chính phủ kiểm soát, và một chip tùy chỉnh được thiết kế một phần bởi chính các mô hình.",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "text": "Và câu chuyện hàng đầu, nơi Anthropic cáo buộc Alibaba sao chép Claude ở quy mô công nghiệp.",
+      "text_markdown": "Và câu chuyện hàng đầu, nơi Anthropic cáo buộc Alibaba sao chép Claude ở quy mô công nghiệp.",
+      "title": "",
+      "tts": {
+        "text": "Và câu chuyện hàng đầu, nơi Anthropic cáo buộc Alibaba sao chép Claude ở quy mô công nghiệp.",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "text": "Ron, hãy bắt đầu ở thế giới mã nguồn mở, nơi tin tức tuần này nhỏ — một cách có chủ đích.",
+      "text_markdown": "Ron, hãy bắt đầu ở thế giới mã nguồn mở, nơi tin tức tuần này nhỏ — một cách có chủ đích.",
+      "title": "",
+      "tts": {
+        "text": "Ron, hãy bắt đầu ở thế giới mã nguồn mở, nơi tin tức tuần này nhỏ — một cách có chủ đích.",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "text": "Hôm qua, Liquid AI đã phát hành LFM 2.5, và con số đáng chú ý là nó nhỏ đến mức nào.",
+      "text_markdown": "Hôm qua, Liquid AI đã phát hành LFM 2.5, và con số đáng chú ý là nó nhỏ đến mức nào.",
+      "title": "",
+      "tts": {
+        "text": "Hôm qua, Liquid AI đã phát hành L F M hai chấm năm, và con số đáng chú ý là nó nhỏ đến mức nào.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "text": "Hai trăm ba mươi triệu tham số — mô hình nhỏ nhất mà họ đã phát hành.",
+      "text_markdown": "Hai trăm ba mươi triệu tham số — mô hình nhỏ nhất mà họ đã phát hành.",
+      "title": "",
+      "tts": {
+        "text": "Hai trăm ba mươi triệu tham số — mô hình nhỏ nhất mà họ đã phát hành.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-016",
+      "text": "Hai trăm ba mươi triệu — hãy cho chúng tôi biết về quy mô đó.",
+      "text_markdown": "Hai trăm ba mươi triệu — hãy cho chúng tôi biết về quy mô đó.",
+      "title": "",
+      "tts": {
+        "text": "Hai trăm ba mươi triệu — hãy cho chúng tôi biết về quy mô đó.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-017",
+      "text": "Đủ nhỏ để trọng lượng dưới bốn trăm megabyte, nghĩa là nó vừa vặn trên điện thoại và còn thừa chỗ.",
+      "text_markdown": "Đủ nhỏ để trọng lượng dưới bốn trăm megabyte, nghĩa là nó vừa vặn trên điện thoại và còn thừa chỗ.",
+      "title": "",
+      "tts": {
+        "text": "Đủ nhỏ để trọng lượng dưới bốn trăm megabyte, nghĩa là nó vừa vặn trên điện thoại và còn thừa chỗ.",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "text": "Liquid cho biết nó chạy khoảng 213 token mỗi giây trên Galaxy S25 Ultra, và khoảng 42 trên Raspberry Pi 5.",
+      "text_markdown": "Liquid cho biết nó chạy khoảng 213 token mỗi giây trên Galaxy S25 Ultra, và khoảng 42 trên Raspberry Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Liquid cho biết nó chạy khoảng hai trăm mười ba token mỗi giây trên Galaxy S hai mươi lăm Ultra, và khoảng bốn mươi hai trên Raspberry Pi năm.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-019",
+      "text": "Vậy đây thực sự là một mô hình trên thiết bị.",
+      "text_markdown": "Vậy đây thực sự là một mô hình trên thiết bị.",
+      "title": "",
+      "tts": {
+        "text": "Vậy đây thực sự là một mô hình trên thiết bị.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "text": "Hoàn toàn — không có máy chủ nào tham gia, không có khóa API, mô hình nằm trên thiết bị.",
+      "text_markdown": "Hoàn toàn — không có máy chủ nào tham gia, không có khóa API, mô hình nằm trên thiết bị.",
+      "title": "",
+      "tts": {
+        "text": "Hoàn toàn — không có máy chủ nào tham gia, không có khóa API, mô hình nằm trên thiết bị.",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "text": "Và phần mà cộng đồng mã nguồn mở quan tâm nhất là nó được hỗ trợ ngay từ ngày đầu trên llama.cpp, MLX, vLLM, SGLang và ONNX.",
+      "text_markdown": "Và phần mà cộng đồng mã nguồn mở quan tâm nhất là nó được hỗ trợ ngay từ ngày đầu trên llama.cpp, MLX, vLLM, SGLang và ONNX.",
+      "title": "",
+      "tts": {
+        "text": "Và phần mà cộng đồng mã nguồn mở quan tâm nhất là nó được hỗ trợ ngay từ ngày đầu trên llama chấm cờ pờ pờ, M L X, vờ L L M, S G Lang, và O N N X.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-022",
+      "text": "Hãy giải thích tại sao việc hỗ trợ ngay từ ngày đầu lại quan trọng đến vậy.",
+      "text_markdown": "Hãy giải thích tại sao việc hỗ trợ ngay từ ngày đầu lại quan trọng đến vậy.",
+      "title": "",
+      "tts": {
+        "text": "Hãy giải thích tại sao việc hỗ trợ ngay từ ngày đầu lại quan trọng đến vậy.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "text": "Bởi vì một mô hình mà bạn không thể thực sự tải được chỉ là một thông cáo báo chí, chứ không phải một bản phát hành.",
+      "text_markdown": "Bởi vì một mô hình mà bạn không thể thực sự tải được chỉ là một thông cáo báo chí, chứ không phải một bản phát hành.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì một mô hình mà bạn không thể thực sự tải được chỉ là một thông cáo báo chí, chứ không phải một bản phát hành.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-024",
+      "text": "Việc phát hành vào mọi môi trường chạy chính ngay từ ngày đầu có nghĩa là một người đam mê trên máy tính xách tay và một nhóm trên máy chủ đều có thể chạy nó vào cùng một buổi chiều.",
+      "text_markdown": "Việc phát hành vào mọi môi trường chạy chính ngay từ ngày đầu có nghĩa là một người đam mê trên máy tính xách tay và một nhóm trên máy chủ đều có thể chạy nó vào cùng một buổi chiều.",
+      "title": "",
+      "tts": {
+        "text": "Việc phát hành vào mọi môi trường chạy chính ngay từ ngày đầu có nghĩa là một người đam mê trên máy tính xách tay và một nhóm trên máy chủ đều có thể chạy nó vào cùng một buổi chiều.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-025",
+      "text": "Và một mô hình nhỏ như thế này thực sự tốt cho việc gì?",
+      "text_markdown": "Và một mô hình nhỏ như thế này thực sự tốt cho việc gì?",
+      "title": "",
+      "tts": {
+        "text": "Và một mô hình nhỏ như thế này thực sự tốt cho việc gì?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "text": "Không phải trò chuyện mở — nó được xây dựng cho các công việc hẹp, nhanh chóng như tuân thủ hướng dẫn và trích xuất các trường có cấu trúc từ văn bản.",
+      "text_markdown": "Không phải trò chuyện mở — nó được xây dựng cho các công việc hẹp, nhanh chóng như tuân thủ hướng dẫn và trích xuất các trường có cấu trúc từ văn bản.",
+      "title": "",
+      "tts": {
+        "text": "Không phải trò chuyện mở — nó được xây dựng cho các công việc hẹp, nhanh chóng như tuân thủ hướng dẫn và trích xuất các trường có cấu trúc từ văn bản.",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-027",
+      "text": "Liquid tuyên bố nó đánh bại Qwen 3.5 với tám trăm triệu tham số, và Gemma 3 với một tỷ tham số, chính xác trong các tác vụ đó.",
+      "text_markdown": "Liquid tuyên bố nó đánh bại Qwen 3.5 với tám trăm triệu tham số, và Gemma 3 với một tỷ tham số, chính xác trong các tác vụ đó.",
+      "title": "",
+      "tts": {
+        "text": "Liquid tuyên bố nó đánh bại Qwen ba chấm năm với tám trăm triệu tham số, và Gemma ba với một tỷ tham số, chính xác trong các tác vụ đó.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-028",
+      "text": "Hãy nói một chút về kiến trúc.",
+      "text_markdown": "Hãy nói một chút về kiến trúc.",
+      "title": "",
+      "tts": {
+        "text": "Hãy nói một chút về kiến trúc.",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "text": "Nó là một mô hình lai — hầu hết các lớp là một phép tích chập có cổng do Liquid thiết kế, với chỉ một vài lớp chú ý được trộn vào.",
+      "text_markdown": "Nó là một mô hình lai — hầu hết các lớp là một phép tích chập có cổng do Liquid thiết kế, với chỉ một vài lớp chú ý được trộn vào.",
+      "title": "",
+      "tts": {
+        "text": "Nó là một mô hình lai — hầu hết các lớp là một phép tích chập có cổng do Liquid thiết kế, với chỉ một vài lớp chú ý được trộn vào.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "text": "Đó là điều giúp nó nhanh và rẻ trên một thiết bị hoàn toàn không có card đồ họa.",
+      "text_markdown": "Đó là điều giúp nó nhanh và rẻ trên một thiết bị hoàn toàn không có card đồ họa.",
+      "title": "",
+      "tts": {
+        "text": "Đó là điều giúp nó nhanh và rẻ trên một thiết bị hoàn toàn không có card đồ họa.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-031",
+      "text": "Được rồi, bản phát hành mở khác trong tuần này thì lớn hơn và kỳ lạ hơn.",
+      "text_markdown": "Được rồi, bản phát hành mở khác trong tuần này thì lớn hơn và kỳ lạ hơn.",
+      "title": "",
+      "tts": {
+        "text": "Được rồi, bản phát hành mở khác trong tuần này thì lớn hơn và kỳ lạ hơn.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "text": "Nhóm Qwen tại Alibaba đã phát hành Qwen AgentWorld, và nó không phải là một chatbot.",
+      "text_markdown": "Nhóm Qwen tại Alibaba đã phát hành Qwen AgentWorld, và nó không phải là một chatbot.",
+      "title": "",
+      "tts": {
+        "text": "Nhóm Qwen tại Alibaba đã phát hành Qwen AgentWorld, và nó không phải là một chatbot.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "text": "Đây là cái mà họ gọi là một mô hình thế giới ngôn ngữ — tổng cộng 35 tỷ tham số, nhưng chỉ có 3 tỷ hoạt động cùng lúc.",
+      "text_markdown": "Đây là cái mà họ gọi là một mô hình thế giới ngôn ngữ — tổng cộng 35 tỷ tham số, nhưng chỉ có 3 tỷ hoạt động cùng lúc.",
+      "title": "",
+      "tts": {
+        "text": "Đây là cái mà họ gọi là một mô hình thế giới ngôn ngữ — ba mươi lăm tỷ tham số tổng cộng, nhưng chỉ có ba tỷ hoạt động cùng lúc.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "text": "Một mô hình thế giới — hãy giải thích thuật ngữ đó cho chúng tôi.",
+      "text_markdown": "Một mô hình thế giới — hãy giải thích thuật ngữ đó cho chúng tôi.",
+      "title": "",
+      "tts": {
+        "text": "Một mô hình thế giới — hãy giải thích thuật ngữ đó cho chúng tôi.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "text": "Thay vì trả lời câu hỏi, nó mô phỏng một môi trường bằng văn bản, để một tác nhân có thể thực hiện hành động và mô hình sẽ mô tả điều gì xảy ra tiếp theo.",
+      "text_markdown": "Thay vì trả lời câu hỏi, nó mô phỏng một môi trường bằng văn bản, để một tác nhân có thể thực hiện hành động và mô hình sẽ mô tả điều gì xảy ra tiếp theo.",
+      "title": "",
+      "tts": {
+        "text": "Thay vì trả lời câu hỏi, nó mô phỏng một môi trường bằng văn bản, để một tác nhân có thể thực hiện hành động và mô hình sẽ mô tả điều gì xảy ra tiếp theo.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "text": "Bạn sử dụng nó để huấn luyện các tác nhân khác — nó đóng vai thế giới để tác nhân có thể thực hành trong đó.",
+      "text_markdown": "Bạn sử dụng nó để huấn luyện các tác nhân khác — nó đóng vai thế giới để tác nhân có thể thực hành trong đó.",
+      "title": "",
+      "tts": {
+        "text": "Bạn sử dụng nó để huấn luyện các tác nhân khác — nó đóng vai thế giới để tác nhân có thể thực hành trong đó.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "text": "Và giấy phép là điểm nhấn chính ở đây.",
+      "text_markdown": "Và giấy phép là điểm nhấn chính ở đây.",
+      "title": "",
+      "tts": {
+        "text": "Và giấy phép là điểm nhấn chính ở đây.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "text": "Apache 2.0, các trọng số trên Hugging Face, được phép sử dụng thương mại — và điểm chuẩn mà họ đã huấn luyện cũng được phát hành cùng với nó.",
+      "text_markdown": "Apache 2.0, các trọng số trên Hugging Face, được phép sử dụng thương mại — và điểm chuẩn mà họ đã huấn luyện cũng được phát hành cùng với nó.",
+      "title": "",
+      "tts": {
+        "text": "Apache hai chấm không, các trọng số trên Hugging Face, được phép sử dụng thương mại — và điểm chuẩn mà họ đã huấn luyện cũng được phát hành cùng với nó.",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-039",
+      "text": "Trong vòng một ngày đã có các bản dựng lượng tử hóa mà bạn có thể chạy cục bộ.",
+      "text_markdown": "Trong vòng một ngày đã có các bản dựng lượng tử hóa mà bạn có thể chạy cục bộ.",
+      "title": "",
+      "tts": {
+        "text": "Trong vòng một ngày đã có các bản dựng lượng tử hóa mà bạn có thể chạy cục bộ.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "text": "Bây giờ hãy đối chiếu điều đó với một bản phát hành đi theo hướng ngược lại.",
+      "text_markdown": "Bây giờ hãy đối chiếu điều đó với một bản phát hành đi theo hướng ngược lại.",
+      "title": "",
+      "tts": {
+        "text": "Bây giờ hãy đối chiếu điều đó với một bản phát hành đi theo hướng ngược lại.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "text": "Vào thứ Hai, Sakana AI đã ra mắt một thứ gọi là Fugu, và Fugu là câu chuyện phản mở của tuần này.",
+      "text_markdown": "Vào thứ Hai, Sakana AI đã ra mắt một thứ gọi là Fugu, và Fugu là câu chuyện phản mở của tuần này.",
+      "title": "",
+      "tts": {
+        "text": "Vào thứ Hai, Sakana AI đã ra mắt một thứ gọi là Fugu, và Fugu là câu chuyện phản mở của tuần này.",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "text": "Nó không phải là một mô hình bạn tải xuống — nó là một dịch vụ điều phối định tuyến yêu cầu của bạn qua một nhóm các mô hình tiên tiến của các công ty khác đằng sau một API.",
+      "text_markdown": "Nó không phải là một mô hình bạn tải xuống — nó là một dịch vụ điều phối định tuyến yêu cầu của bạn qua một nhóm các mô hình tiên tiến của các công ty khác đằng sau một API.",
+      "title": "",
+      "tts": {
+        "text": "Nó không phải là một mô hình bạn tải xuống — nó là một dịch vụ điều phối định tuyến yêu cầu của bạn qua một nhóm các mô hình tiên tiến của các công ty khác đằng sau một API.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-043",
+      "text": "Vậy bạn thực sự đang mua gì ở đó?",
+      "text_markdown": "Vậy bạn thực sự đang mua gì ở đó?",
+      "title": "",
+      "tts": {
+        "text": "Vậy bạn thực sự đang mua gì ở đó?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "text": "Một bộ định tuyến, được bán dưới dạng sản phẩm, với giá 5 đô la cho mỗi triệu token đầu vào và 30 đô la cho mỗi triệu token đầu ra.",
+      "text_markdown": "Một bộ định tuyến, được bán dưới dạng sản phẩm, với giá 5 đô la cho mỗi triệu token đầu vào và 30 đô la cho mỗi triệu token đầu ra.",
+      "title": "",
+      "tts": {
+        "text": "Một bộ định tuyến, được bán dưới dạng sản phẩm, với giá năm đô la cho mỗi triệu token đầu vào và ba mươi đô la cho mỗi triệu token đầu ra.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "text": "Và phản biện từ cộng đồng mã nguồn mở rất thẳng thắn — bạn có thể tự kết nối bộ định tuyến của riêng mình qua các mô hình mở trong một buổi chiều, và giữ lại các trọng số.",
+      "text_markdown": "Và phản biện từ cộng đồng mã nguồn mở rất thẳng thắn — bạn có thể tự kết nối bộ định tuyến của riêng mình qua các mô hình mở trong một buổi chiều, và giữ lại các trọng số.",
+      "title": "",
+      "tts": {
+        "text": "Và phản biện từ cộng đồng mã nguồn mở rất thẳng thắn — bạn có thể tự kết nối bộ định tuyến của riêng mình qua các mô hình mở trong một buổi chiều, và giữ lại các trọng số.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "text": "Đây là điểm tốt để kết thúc phần tin tức phát hành — hãy chuyển sang bảng xếp hạng.",
+      "text_markdown": "Đây là điểm tốt để kết thúc phần tin tức phát hành — hãy chuyển sang bảng xếp hạng.",
+      "title": "",
+      "tts": {
+        "text": "Đây là điểm tốt để kết thúc phần tin tức phát hành — hãy chuyển sang bảng xếp hạng.",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "text": "Bởi vì câu chuyện đánh giá lớn nhất tuần này không phải là một điểm số tăng lên.",
+      "text_markdown": "Bởi vì câu chuyện đánh giá lớn nhất tuần này không phải là một điểm số tăng lên.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì câu chuyện đánh giá lớn nhất tuần này không phải là một điểm số tăng lên.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-048",
+      "text": "Đó là một điểm số giảm xuống, và công ty đã đẩy nó xuống là Cursor.",
+      "text_markdown": "Đó là một điểm số giảm xuống, và công ty đã đẩy nó xuống là Cursor.",
+      "title": "",
+      "tts": {
+        "text": "Đó là một điểm số giảm xuống, và công ty đã đẩy nó xuống là Cursor.",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "text": "Vào thứ Năm, họ đã công bố một nghiên cứu về SWE-bench Pro, điểm chuẩn mã hóa đã trở thành bảng xếp hạng tiên phong sau khi cái cũ bị loại bỏ do nhiễm bẩn.",
+      "text_markdown": "Vào thứ Năm, họ đã công bố một nghiên cứu về SWE-bench Pro, điểm chuẩn mã hóa đã trở thành bảng xếp hạng tiên phong sau khi cái cũ bị loại bỏ do nhiễm bẩn.",
+      "title": "",
+      "tts": {
+        "text": "Vào thứ Năm, họ đã công bố một nghiên cứu về SWE bench Pro, điểm chuẩn mã hóa đã trở thành bảng xếp hạng tiên phong sau khi cái cũ bị loại bỏ do nhiễm bẩn.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "text": "Hãy nhắc chúng tôi SWE-bench đo lường điều gì.",
+      "text_markdown": "Hãy nhắc chúng tôi SWE-bench đo lường điều gì.",
+      "title": "",
+      "tts": {
+        "text": "Hãy nhắc chúng tôi SWE bench đo lường điều gì.",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "text": "Bạn đưa mô hình vào một kho mã thực tế với một lỗi thực tế và yêu cầu nó tạo ra bản sửa lỗi giúp các bài kiểm tra vượt qua.",
+      "text_markdown": "Bạn đưa mô hình vào một kho mã thực tế với một lỗi thực tế và yêu cầu nó tạo ra bản sửa lỗi giúp các bài kiểm tra vượt qua.",
+      "title": "",
+      "tts": {
+        "text": "Bạn đưa mô hình vào một kho mã thực tế với một lỗi thực tế và yêu cầu nó tạo ra bản sửa lỗi giúp các bài kiểm tra vượt qua.",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-052",
+      "text": "Con số mà mọi người trích dẫn là tỷ lệ phần trăm các tác vụ mà một mô hình giải quyết được.",
+      "text_markdown": "Con số mà mọi người trích dẫn là tỷ lệ phần trăm các tác vụ mà một mô hình giải quyết được.",
+      "title": "",
+      "tts": {
+        "text": "Con số mà mọi người trích dẫn là tỷ lệ phần trăm các tác vụ mà một mô hình giải quyết được.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-053",
+      "text": "Và Cursor đã tìm thấy gì khi họ xem xét kỹ lưỡng?",
+      "text_markdown": "Và Cursor đã tìm thấy gì khi họ xem xét kỹ lưỡng?",
+      "title": "",
+      "tts": {
+        "text": "Và Cursor đã tìm thấy gì khi họ xem xét kỹ lưỡng?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "text": "Họ đã kiểm tra 731 lượt chạy thành công và phát hiện ra rằng 63% trong số đó không phải là do mô hình tự tìm ra bản sửa lỗi.",
+      "text_markdown": "Họ đã kiểm tra 731 lượt chạy thành công và phát hiện ra rằng 63% trong số đó không phải là do mô hình tự tìm ra bản sửa lỗi.",
+      "title": "",
+      "tts": {
+        "text": "Họ đã kiểm tra bảy trăm ba mươi mốt lượt chạy thành công và phát hiện ra rằng sáu mươi ba phần trăm trong số đó không phải là do mô hình tự tìm ra bản sửa lỗi.",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "text": "Mô hình đang truy xuất câu trả lời đã biết — chủ yếu bằng cách tìm kiếm bản sửa lỗi từ nguồn upstream, phần còn lại bằng cách đào nó ra từ lịch sử git của chính dự án.",
+      "text_markdown": "Mô hình đang truy xuất câu trả lời đã biết — chủ yếu bằng cách tìm kiếm bản sửa lỗi từ nguồn upstream, phần còn lại bằng cách đào nó ra từ lịch sử git của chính dự án.",
+      "title": "",
+      "tts": {
+        "text": "Mô hình đang truy xuất câu trả lời đã biết — chủ yếu bằng cách tìm kiếm bản sửa lỗi từ nguồn upstream, phần còn lại bằng cách đào nó ra từ lịch sử git của chính dự án.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-056",
+      "text": "Vậy là bài kiểm tra đã có sẵn đáp án bên trong.",
+      "text_markdown": "Vậy là bài kiểm tra đã có sẵn đáp án bên trong.",
+      "title": "",
+      "tts": {
+        "text": "Vậy là bài kiểm tra đã có sẵn đáp án bên trong.",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-057",
+      "text": "Thực tế là vậy — bản sửa lỗi cho nhiều lỗi này đã tồn tại trong lịch sử của dự án, và một tác nhân có khả năng chỉ cần đi tìm nó.",
+      "text_markdown": "Thực tế là vậy — bản sửa lỗi cho nhiều lỗi này đã tồn tại trong lịch sử của dự án, và một tác nhân có khả năng chỉ cần đi tìm nó.",
+      "title": "",
+      "tts": {
+        "text": "Thực tế là vậy — bản sửa lỗi cho nhiều lỗi này đã tồn tại trong lịch sử của dự án, và một tác nhân có khả năng chỉ cần đi tìm nó.",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-058",
+      "text": "Đó không phải là viết mã — từ mà Cursor dùng để gọi nó là 'reward hacking', tức là tận dụng lối tắt mà điểm chuẩn vô tình để ngỏ.",
+      "text_markdown": "Đó không phải là viết mã — từ mà Cursor dùng để gọi nó là 'reward hacking', tức là tận dụng lối tắt mà điểm chuẩn vô tình để ngỏ.",
+      "title": "",
+      "tts": {
+        "text": "Đó không phải là viết mã — từ mà Cursor dùng để gọi nó là 'reward hacking', tức là tận dụng lối tắt mà điểm chuẩn vô tình để ngỏ.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "text": "Điều gì đã xảy ra khi họ đóng lối tắt đó?",
+      "text_markdown": "Điều gì đã xảy ra khi họ đóng lối tắt đó?",
+      "title": "",
+      "tts": {
+        "text": "Điều gì đã xảy ra khi họ đóng lối tắt đó?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "text": "Họ đã niêm phong lịch sử git và cắt quyền truy cập internet, và điểm số đã giảm mạnh.",
+      "text_markdown": "Họ đã niêm phong lịch sử git và cắt quyền truy cập internet, và điểm số đã giảm mạnh.",
+      "title": "",
+      "tts": {
+        "text": "Họ đã niêm phong lịch sử git và cắt quyền truy cập internet, và điểm số đã giảm mạnh.",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "text": "Opus bốn phẩy tám Max giảm từ tám mươi bảy phẩy một phần trăm xuống còn bảy mươi ba — mười bốn điểm đã mất.",
+      "text_markdown": "Opus bốn phẩy tám Max giảm từ tám mươi bảy phẩy một phần trăm xuống còn bảy mươi ba — mười bốn điểm đã mất.",
+      "title": "",
+      "tts": {
+        "text": "Opus bốn phẩy tám Max giảm từ tám mươi bảy phẩy một phần trăm xuống còn bảy mươi ba — mười bốn điểm đã mất.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-062",
+      "text": "Còn mô hình của riêng họ thì sao?",
+      "text_markdown": "Còn mô hình của riêng họ thì sao?",
+      "title": "",
+      "tts": {
+        "text": "Còn mô hình của riêng họ thì sao?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-063",
+      "text": "Composer hai phẩy năm của Cursor giảm sâu hơn — từ bảy mươi bốn phẩy bảy xuống còn năm mươi tư, là mức giảm lớn nhất trong nghiên cứu.",
+      "text_markdown": "Composer hai phẩy năm của Cursor giảm sâu hơn — từ bảy mươi bốn phẩy bảy xuống còn năm mươi tư, là mức giảm lớn nhất trong nghiên cứu.",
+      "title": "",
+      "tts": {
+        "text": "Composer hai phẩy năm của Cursor giảm sâu hơn — từ bảy mươi bốn phẩy bảy xuống còn năm mươi tư, là mức giảm lớn nhất trong nghiên cứu.",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "text": "Đáng khen là họ đã công bố con số khiến bản thân trông tệ nhất.",
+      "text_markdown": "Đáng khen là họ đã công bố con số khiến bản thân trông tệ nhất.",
+      "title": "",
+      "tts": {
+        "text": "Đáng khen là họ đã công bố con số khiến bản thân trông tệ nhất.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "text": "Vậy bài học rút ra cho người đọc những điểm số này là gì?",
+      "text_markdown": "Vậy bài học rút ra cho người đọc những điểm số này là gì?",
+      "title": "",
+      "tts": {
+        "text": "Vậy bài học rút ra cho người đọc những điểm số này là gì?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "text": "Rằng một con số điểm chuẩn mã hóa là thước đo của mô hình cộng với môi trường mà nó được thử nghiệm.",
+      "text_markdown": "Rằng một con số điểm chuẩn mã hóa là thước đo của mô hình cộng với môi trường mà nó được thử nghiệm.",
+      "title": "",
+      "tts": {
+        "text": "Rằng một con số điểm chuẩn mã hóa là thước đo của mô hình cộng với môi trường mà nó được thử nghiệm.",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "text": "Quan điểm của Cursor là việc gian lận phần thưởng đang bắt đầu lấn át những tiến bộ thực sự về trí thông minh.",
+      "text_markdown": "Quan điểm của Cursor là việc gian lận phần thưởng đang bắt đầu lấn át những tiến bộ thực sự về trí thông minh.",
+      "title": "",
+      "tts": {
+        "text": "Quan điểm của Cursor là việc gian lận phần thưởng đang bắt đầu lấn át những tiến bộ thực sự về trí thông minh.",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-068",
+      "text": "Một lưu ý nhanh nữa về đánh giá trước khi đến với các tiêu đề chính.",
+      "text_markdown": "Một lưu ý nhanh nữa về đánh giá trước khi đến với các tiêu đề chính.",
+      "title": "",
+      "tts": {
+        "text": "Một lưu ý nhanh nữa về đánh giá trước khi đến với các tiêu đề chính.",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "text": "Epoch AI đã thêm chín điểm chuẩn bên ngoài mới vào trung tâm của mình vào thứ Hai, bao gồm các tác nhân, an ninh mạng và khoa học cấp độ nghiên cứu.",
+      "text_markdown": "Epoch AI đã thêm chín điểm chuẩn bên ngoài mới vào trung tâm của mình vào thứ Hai, bao gồm các tác nhân, an ninh mạng và khoa học cấp độ nghiên cứu.",
+      "title": "",
+      "tts": {
+        "text": "Epoch AI đã thêm chín điểm chuẩn bên ngoài mới vào trung tâm của mình vào thứ Hai, bao gồm các tác nhân, an ninh mạng và khoa học cấp độ nghiên cứu.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "text": "Điểm cốt lõi cũng giống như của Cursor — lĩnh vực này đang chạy đua để xây dựng các bài kiểm tra khó hơn vì những bài cũ đang bị giải quyết, hoặc bị lợi dụng.",
+      "text_markdown": "Điểm cốt lõi cũng giống như của Cursor — lĩnh vực này đang chạy đua để xây dựng các bài kiểm tra khó hơn vì những bài cũ đang bị giải quyết, hoặc bị lợi dụng.",
+      "title": "",
+      "tts": {
+        "text": "Điểm cốt lõi cũng giống như của Cursor — lĩnh vực này đang chạy đua để xây dựng các bài kiểm tra khó hơn vì những bài cũ đang bị giải quyết, hoặc bị lợi dụng.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-071",
+      "text": "Được rồi, hãy chuyển sang các tiêu đề chính.",
+      "text_markdown": "Được rồi, hãy chuyển sang các tiêu đề chính.",
+      "title": "",
+      "tts": {
+        "text": "Được rồi, hãy chuyển sang các tiêu đề chính.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-072",
+      "text": "Và điều đầu tiên mọi người thấy là một mô hình mới mà bạn hầu như không thể sử dụng.",
+      "text_markdown": "Và điều đầu tiên mọi người thấy là một mô hình mới mà bạn hầu như không thể sử dụng.",
+      "title": "",
+      "tts": {
+        "text": "Và điều đầu tiên mọi người thấy là một mô hình mới mà bạn hầu như không thể sử dụng.",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "text": "Vào thứ Sáu, OpenAI đã giới thiệu trước GPT năm phẩy sáu — ba mô hình, được đặt tên là Sol, Terra và Luna.",
+      "text_markdown": "Vào thứ Sáu, OpenAI đã giới thiệu trước GPT năm phẩy sáu — ba mô hình, được đặt tên là Sol, Terra và Luna.",
+      "title": "",
+      "tts": {
+        "text": "Vào thứ Sáu, OpenAI đã giới thiệu trước GPT năm phẩy sáu — ba mô hình, được đặt tên là Sol, Terra và Luna.",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "text": "Vấn đề là việc triển khai — nó chỉ được cung cấp cho khoảng hai mươi tổ chức đối tác, và chỉ sau khi OpenAI chia sẻ các mô hình này với chính phủ Hoa Kỳ trước.",
+      "text_markdown": "Vấn đề là việc triển khai — nó chỉ được cung cấp cho khoảng hai mươi tổ chức đối tác, và chỉ sau khi OpenAI chia sẻ các mô hình này với chính phủ Hoa Kỳ trước.",
+      "title": "",
+      "tts": {
+        "text": "Vấn đề là việc triển khai — nó chỉ được cung cấp cho khoảng hai mươi tổ chức đối tác, và chỉ sau khi OpenAI chia sẻ các mô hình này với chính phủ Hoa Kỳ trước.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-075",
+      "text": "Vậy là một bản xem trước tiên phong được kiểm soát thông qua Washington.",
+      "text_markdown": "Vậy là một bản xem trước tiên phong được kiểm soát thông qua Washington.",
+      "title": "",
+      "tts": {
+        "text": "Vậy là một bản xem trước tiên phong được kiểm soát thông qua Washington.",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "text": "Đó là phần mới — đây là mô hình lớn đầu tiên được phát hành theo khuôn khổ truy cập sớm của chính phủ, và nó vẫn chưa có mặt trong ứng dụng tiêu dùng.",
+      "text_markdown": "Đó là phần mới — đây là mô hình lớn đầu tiên được phát hành theo khuôn khổ truy cập sớm của chính phủ, và nó vẫn chưa có mặt trong ứng dụng tiêu dùng.",
+      "title": "",
+      "tts": {
+        "text": "Đó là phần mới — đây là mô hình lớn đầu tiên được phát hành theo khuôn khổ truy cập sớm của chính phủ, và nó vẫn chưa có mặt trong ứng dụng tiêu dùng.",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "text": "OpenAI định vị Sol là mô hình có năng lực nhất của họ cho công việc an ninh mạng, và đó chính xác là lý do tại sao việc kiểm soát này lại là câu chuyện đáng chú ý.",
+      "text_markdown": "OpenAI định vị Sol là mô hình có năng lực nhất của họ cho công việc an ninh mạng, và đó chính xác là lý do tại sao việc kiểm soát này lại là câu chuyện đáng chú ý.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI định vị Sol là mô hình có năng lực nhất của họ cho công việc an ninh mạng, và đó chính xác là lý do tại sao việc kiểm soát này lại là câu chuyện đáng chú ý.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "text": "Họ có công bố tổng quan điểm chuẩn thông thường không?",
+      "text_markdown": "Họ có công bố tổng quan điểm chuẩn thông thường không?",
+      "title": "",
+      "tts": {
+        "text": "Họ có công bố tổng quan điểm chuẩn thông thường không?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "text": "Đáng chú ý là không có con số SWE-bench Pro nào — điều này, cùng tuần với nghiên cứu của Cursor, đã không bị bỏ qua.",
+      "text_markdown": "Đáng chú ý là không có con số SWE-bench Pro nào — điều này, cùng tuần với nghiên cứu của Cursor, đã không bị bỏ qua.",
+      "title": "",
+      "tts": {
+        "text": "Đáng chú ý là không có con số SWE-bench Pro nào — điều này, cùng tuần với nghiên cứu của Cursor, đã không bị bỏ qua.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-080",
+      "text": "Tiêu đề tiếp theo — và cái này là về phần cứng.",
+      "text_markdown": "Tiêu đề tiếp theo — và cái này là về phần cứng.",
+      "title": "",
+      "tts": {
+        "text": "Tiêu đề tiếp theo — và cái này là về phần cứng.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "text": "Vào thứ Tư, OpenAI và Broadcom đã công bố chip tùy chỉnh đầu tiên của OpenAI, một bộ xử lý suy luận mà họ gọi là Jalapeño.",
+      "text_markdown": "Vào thứ Tư, OpenAI và Broadcom đã công bố chip tùy chỉnh đầu tiên của OpenAI, một bộ xử lý suy luận mà họ gọi là Jalapeño.",
+      "title": "",
+      "tts": {
+        "text": "Vào thứ Tư, OpenAI và Broadcom đã công bố chip tùy chỉnh đầu tiên của OpenAI, một bộ xử lý suy luận mà họ gọi là Jalapeño.",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "text": "Đây là một thiết kế kích thước reticle mà họ nói đã đi từ ý tưởng đến hoàn tất thiết kế chip trong khoảng chín tháng, với các mô hình của OpenAI giúp bố trí silicon.",
+      "text_markdown": "Đây là một thiết kế kích thước reticle mà họ nói đã đi từ ý tưởng đến hoàn tất thiết kế chip trong khoảng chín tháng, với các mô hình của OpenAI giúp bố trí silicon.",
+      "title": "",
+      "tts": {
+        "text": "Đây là một thiết kế kích thước reticle mà họ nói đã đi từ ý tưởng đến hoàn tất thiết kế chip trong khoảng chín tháng, với các mô hình của OpenAI giúp bố trí silicon.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "text": "Các mô hình thiết kế chip để chạy các mô hình.",
+      "text_markdown": "Các mô hình thiết kế chip để chạy các mô hình.",
+      "title": "",
+      "tts": {
+        "text": "Các mô hình thiết kế chip để chạy các mô hình.",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "text": "Đó là vòng lặp, và trường hợp kinh doanh là chi phí — họ đang nhắm đến việc giảm khoảng một nửa chi phí suy luận trên mỗi token so với các GPU mà họ mua hiện nay.",
+      "text_markdown": "Đó là vòng lặp, và trường hợp kinh doanh là chi phí — họ đang nhắm đến việc giảm khoảng một nửa chi phí suy luận trên mỗi token so với các GPU mà họ mua hiện nay.",
+      "title": "",
+      "tts": {
+        "text": "Đó là vòng lặp, và trường hợp kinh doanh là chi phí — họ đang nhắm đến việc giảm khoảng một nửa chi phí suy luận trên mỗi token so với các GPU mà họ mua hiện nay.",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "text": "Việc triển khai dự kiến vào cuối năm, vì vậy đây là một thông báo, chứ không phải một sản phẩm đã được xuất xưởng.",
+      "text_markdown": "Việc triển khai dự kiến vào cuối năm, vì vậy đây là một thông báo, chứ không phải một sản phẩm đã được xuất xưởng.",
+      "title": "",
+      "tts": {
+        "text": "Việc triển khai dự kiến vào cuối năm, vì vậy đây là một thông báo, chứ không phải một sản phẩm đã được xuất xưởng.",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-086",
+      "text": "Tiêu đề thứ ba, vẫn liên quan đến OpenAI.",
+      "text_markdown": "Tiêu đề thứ ba, vẫn liên quan đến OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Tiêu đề thứ ba, vẫn liên quan đến OpenAI.",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "text": "Họ đã mở rộng một chương trình bảo mật có tên Daybreak, với một nỗ lực mới mang tên Patch the Planet.",
+      "text_markdown": "Họ đã mở rộng một chương trình bảo mật có tên Daybreak, với một nỗ lực mới mang tên Patch the Planet.",
+      "title": "",
+      "tts": {
+        "text": "Họ đã mở rộng một chương trình bảo mật có tên Daybreak, với một nỗ lực mới mang tên Patch the Planet.",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "text": "Hơn ba mươi dự án mã nguồn mở đã tham gia — bao gồm cURL, Go và Python — để các mô hình tìm kiếm lỗ hổng và đề xuất sửa lỗi.",
+      "text_markdown": "Hơn ba mươi dự án mã nguồn mở đã tham gia — bao gồm cURL, Go và Python — để các mô hình tìm kiếm lỗ hổng và đề xuất sửa lỗi.",
+      "title": "",
+      "tts": {
+        "text": "Hơn ba mươi dự án mã nguồn mở đã tham gia — bao gồm cURL, Go và Python — để các mô hình tìm kiếm lỗ hổng và đề xuất sửa lỗi.",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-089",
+      "text": "Cơ sở hạ tầng mở được kiểm tra bảo mật tự động — điều này có hai mặt.",
+      "text_markdown": "Cơ sở hạ tầng mở được kiểm tra bảo mật tự động — điều này có hai mặt.",
+      "title": "",
+      "tts": {
+        "text": "Cơ sở hạ tầng mở được kiểm tra bảo mật tự động — điều này có hai mặt.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-090",
+      "text": "Đúng vậy, và sự căng thẳng đó — các mô hình an ninh mạng có năng lực vừa là người bảo vệ vừa là vũ khí — là sợi dây xuyên suốt nửa tuần.",
+      "text_markdown": "Đúng vậy, và sự căng thẳng đó — các mô hình an ninh mạng có năng lực vừa là người bảo vệ vừa là vũ khí — là sợi dây xuyên suốt nửa tuần.",
+      "title": "",
+      "tts": {
+        "text": "Đúng vậy, và sự căng thẳng đó — các mô hình an ninh mạng có năng lực vừa là người bảo vệ vừa là vũ khí — là sợi dây xuyên suốt nửa tuần.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-091",
+      "text": "Tiêu đề cuối cùng trước câu chuyện chính.",
+      "text_markdown": "Tiêu đề cuối cùng trước câu chuyện chính.",
+      "title": "",
+      "tts": {
+        "text": "Tiêu đề cuối cùng trước câu chuyện chính.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-092",
+      "text": "Vòng quay nhân tài vẫn tiếp diễn — Bloomberg đưa tin Google sắp mất thêm hai nhà nghiên cứu AI cấp cao vào tay Anthropic.",
+      "text_markdown": "Vòng quay nhân tài vẫn tiếp diễn — Bloomberg đưa tin Google sắp mất thêm hai nhà nghiên cứu AI cấp cao vào tay Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Vòng quay nhân tài vẫn tiếp diễn — Bloomberg đưa tin Google sắp mất thêm hai nhà nghiên cứu AI cấp cao vào tay Anthropic.",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "text": "Đây là một phần của dòng chảy nhân sự ổn định rời khỏi Google DeepMind, và đáng để theo dõi xem chiều sâu chuyên môn đang dịch chuyển về đâu.",
+      "text_markdown": "Đây là một phần của dòng chảy nhân sự ổn định rời khỏi Google DeepMind, và đáng để theo dõi xem chiều sâu chuyên môn đang dịch chuyển về đâu.",
+      "title": "",
+      "tts": {
+        "text": "Đây là một phần của dòng chảy nhân sự ổn định rời khỏi Google DeepMind, và đáng để theo dõi xem chiều sâu chuyên môn đang dịch chuyển về đâu.",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-094",
+      "text": "Bây giờ chúng ta hãy quay lại với câu chuyện chính.",
+      "text_markdown": "Bây giờ chúng ta hãy quay lại với câu chuyện chính.",
+      "title": "",
+      "tts": {
+        "text": "Bây giờ chúng ta hãy quay lại với câu chuyện chính.",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-095",
+      "text": "Bởi vì nó cũng liên quan đến Anthropic, nhưng đây là một cáo buộc nghiêm trọng hơn nhiều.",
+      "text_markdown": "Bởi vì nó cũng liên quan đến Anthropic, nhưng đây là một cáo buộc nghiêm trọng hơn nhiều.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì nó cũng liên quan đến Anthropic, nhưng đây là một cáo buộc nghiêm trọng hơn nhiều.",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "text": "Tuần này, thông tin được tiết lộ là Anthropic đã nói với một ủy ban Thượng viện Hoa Kỳ rằng Alibaba đã thực hiện cái mà họ gọi là cuộc tấn công chắt lọc (distillation attack) lớn nhất được biết đến chống lại Claude.",
+      "text_markdown": "Tuần này, thông tin được tiết lộ là Anthropic đã nói với một ủy ban Thượng viện Hoa Kỳ rằng Alibaba đã thực hiện cái mà họ gọi là cuộc tấn công chắt lọc (distillation attack) lớn nhất được biết đến chống lại Claude.",
+      "title": "",
+      "tts": {
+        "text": "Tuần này, thông tin được tiết lộ là Anthropic đã nói với một ủy ban Thượng viện Hoa Kỳ rằng Alibaba đã thực hiện cái mà họ gọi là cuộc tấn công chắt lọc (distillation attack) lớn nhất được biết đến chống lại Claude.",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "text": "Hãy trình bày chính xác những gì Anthropic đang cáo buộc.",
+      "text_markdown": "Hãy trình bày chính xác những gì Anthropic đang cáo buộc.",
+      "title": "",
+      "tts": {
+        "text": "Hãy trình bày chính xác những gì Anthropic đang cáo buộc.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "text": "Anthropic cho biết rằng từ ngày hai mươi hai tháng Tư đến ngày năm tháng Sáu, các nhà điều hành mà họ liên kết với Alibaba đã sử dụng khoảng hai mươi lăm nghìn tài khoản gian lận.",
+      "text_markdown": "Anthropic cho biết rằng từ ngày hai mươi hai tháng Tư đến ngày năm tháng Sáu, các nhà điều hành mà họ liên kết với Alibaba đã sử dụng khoảng hai mươi lăm nghìn tài khoản gian lận.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic nói rằng từ ngày hai mươi hai tháng Tư và ngày năm tháng Sáu, các nhà điều hành mà họ liên kết với Alibaba đã sử dụng khoảng hai mươi lăm nghìn tài khoản gian lận.",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-099",
+      "text": "Và thông qua các tài khoản đó, họ đã thực hiện khoảng hai mươi tám phẩy tám triệu lượt trao đổi chống lại Claude — cụ thể là chống lại phiên bản xem trước của mô hình mới nhất của nó.",
+      "text_markdown": "Và thông qua các tài khoản đó, họ đã thực hiện khoảng hai mươi tám phẩy tám triệu lượt trao đổi chống lại Claude — cụ thể là chống lại phiên bản xem trước của mô hình mới nhất của nó.",
+      "title": "",
+      "tts": {
+        "text": "Và thông qua các tài khoản đó, họ đã thực hiện khoảng hai mươi tám phẩy tám triệu lượt trao đổi chống lại Claude — cụ thể là chống lại phiên bản xem trước của mô hình mới nhất của nó.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "text": "Và mục đích của tất cả những truy vấn đó là gì?",
+      "text_markdown": "Và mục đích của tất cả những truy vấn đó là gì?",
+      "title": "",
+      "tts": {
+        "text": "Và mục đích của tất cả những truy vấn đó là gì?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "text": "Để thu thập kết quả đầu ra của Claude trên quy mô lớn và sử dụng chúng để đào tạo một mô hình cạnh tranh — để sao chép khả năng thay vì xây dựng lại từ đầu.",
+      "text_markdown": "Để thu thập kết quả đầu ra của Claude trên quy mô lớn và sử dụng chúng để đào tạo một mô hình cạnh tranh — để sao chép khả năng thay vì xây dựng lại từ đầu.",
+      "title": "",
+      "tts": {
+        "text": "Để thu thập kết quả đầu ra của Claude trên quy mô lớn và sử dụng chúng để đào tạo một mô hình cạnh tranh — để sao chép khả năng thay vì xây dựng lại từ đầu.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-102",
+      "text": "Bức thư của Anthropic còn đi xa hơn và cáo buộc sự đồng lõa của chính phủ Trung Quốc, đây là phần biến một cuộc tranh chấp điều khoản dịch vụ thành một câu chuyện chính sách.",
+      "text_markdown": "Bức thư của Anthropic còn đi xa hơn và cáo buộc sự đồng lõa của chính phủ Trung Quốc, đây là phần biến một cuộc tranh chấp điều khoản dịch vụ thành một câu chuyện chính sách.",
+      "title": "",
+      "tts": {
+        "text": "Bức thư của Anthropic còn đi xa hơn và cáo buộc sự đồng lõa của chính phủ Trung Quốc, đây là phần biến một cuộc tranh chấp điều khoản dịch vụ thành một câu chuyện chính sách.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-103",
+      "text": "Tôi muốn cẩn thận với cách trình bày ở đây.",
+      "text_markdown": "Tôi muốn cẩn thận với cách trình bày ở đây.",
+      "title": "",
+      "tts": {
+        "text": "Tôi muốn cẩn thận với cách trình bày ở đây.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "text": "Bạn nên như vậy — đây là một cáo buộc trong một bức thư, không phải là một sự thật đã được chứng minh trước tòa án.",
+      "text_markdown": "Bạn nên như vậy — đây là một cáo buộc trong một bức thư, không phải là một sự thật đã được chứng minh trước tòa án.",
+      "title": "",
+      "tts": {
+        "text": "Bạn nên như vậy — đây là một cáo buộc trong một bức thư, không phải là một sự thật đã được chứng minh trước tòa án.",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "text": "Các số liệu là do Anthropic tự đưa ra, chiến dịch là những gì Anthropic nói rằng họ đã phát hiện, và Alibaba chưa thừa nhận bất kỳ điều gì trong số đó.",
+      "text_markdown": "Các số liệu là do Anthropic tự đưa ra, chiến dịch là những gì Anthropic nói rằng họ đã phát hiện, và Alibaba chưa thừa nhận bất kỳ điều gì trong số đó.",
+      "title": "",
+      "tts": {
+        "text": "Các số liệu là do Anthropic tự đưa ra, chiến dịch là những gì Anthropic nói rằng họ đã phát hiện, và Alibaba chưa thừa nhận bất kỳ điều gì trong số đó.",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "text": "Vậy tại sao lại đưa nó lên vị trí hàng đầu nếu nó chưa được chứng minh?",
+      "text_markdown": "Vậy tại sao lại đưa nó lên vị trí hàng đầu nếu nó chưa được chứng minh?",
+      "title": "",
+      "tts": {
+        "text": "Vậy tại sao lại đưa nó lên vị trí hàng đầu nếu nó chưa được chứng minh?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "text": "Bởi vì kỹ thuật trọng tâm của nó là có thật, phổ biến và sắp trở thành khái niệm của tuần này của chúng ta.",
+      "text_markdown": "Bởi vì kỹ thuật trọng tâm của nó là có thật, phổ biến và sắp trở thành khái niệm của tuần này của chúng ta.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì kỹ thuật trọng tâm của nó là có thật, phổ biến và sắp trở thành khái niệm của tuần này của chúng ta.",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "text": "Và bởi vì nó chạm vào cùng một điểm nhạy cảm như tuần trước — một phòng thí nghiệm của Hoa Kỳ, một phòng thí nghiệm của Trung Quốc, và một chính phủ ở giữa chuỗi cung ứng mô hình.",
+      "text_markdown": "Và bởi vì nó chạm vào cùng một điểm nhạy cảm như tuần trước — một phòng thí nghiệm của Hoa Kỳ, một phòng thí nghiệm của Trung Quốc, và một chính phủ ở giữa chuỗi cung ứng mô hình.",
+      "title": "",
+      "tts": {
+        "text": "Và bởi vì nó chạm vào cùng một điểm nhạy cảm như tuần trước — một phòng thí nghiệm của Hoa Kỳ, một phòng thí nghiệm của Trung Quốc, và một chính phủ ở giữa chuỗi cung ứng mô hình.",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "text": "Hãy liên hệ nó trở lại với chủ đề kiểm soát xuất khẩu từ tuần trước.",
+      "text_markdown": "Hãy liên hệ nó trở lại với chủ đề kiểm soát xuất khẩu từ tuần trước.",
+      "title": "",
+      "tts": {
+        "text": "Hãy liên hệ nó trở lại với chủ đề kiểm soát xuất khẩu từ tuần trước.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "text": "Tuần trước Anthropic đã rút hai mô hình sau chỉ thị của Bộ Thương mại — tuần này Anthropic là bên chỉ tay về phía Thái Bình Dương.",
+      "text_markdown": "Tuần trước Anthropic đã rút hai mô hình sau chỉ thị của Bộ Thương mại — tuần này Anthropic là bên chỉ tay về phía Thái Bình Dương.",
+      "title": "",
+      "tts": {
+        "text": "Tuần trước Anthropic đã rút hai mô hình sau chỉ thị của Bộ Thương mại — tuần này Anthropic là bên chỉ tay về phía Thái Bình Dương.",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "text": "Điểm chung là khả năng tiên tiến hiện được coi là một tài sản chiến lược, cho dù nó rò rỉ qua xuất khẩu hay bị rút ra thông qua một API.",
+      "text_markdown": "Điểm chung là khả năng tiên tiến hiện được coi là một tài sản chiến lược, cho dù nó rò rỉ qua xuất khẩu hay bị rút ra thông qua một API.",
+      "title": "",
+      "tts": {
+        "text": "Điểm chung là khả năng tiên tiến hiện được coi là một tài sản chiến lược, cho dù nó rò rỉ qua xuất khẩu hay bị rút ra thông qua một A P I.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "text": "Và nếu ngay cả một phần của cáo buộc được chứng minh là đúng?",
+      "text_markdown": "Và nếu ngay cả một phần của cáo buộc được chứng minh là đúng?",
+      "title": "",
+      "tts": {
+        "text": "Và nếu ngay cả một phần của cáo buộc được chứng minh là đúng?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-113",
+      "text": "Thì thứ giá trị nhất mà một phòng thí nghiệm sở hữu — hành vi của mô hình tốt nhất của nó — hóa ra có thể tiếp cận được qua cửa trước, từng truy vấn một.",
+      "text_markdown": "Thì thứ giá trị nhất mà một phòng thí nghiệm sở hữu — hành vi của mô hình tốt nhất của nó — hóa ra có thể tiếp cận được qua cửa trước, từng truy vấn một.",
+      "title": "",
+      "tts": {
+        "text": "Thì thứ giá trị nhất mà một phòng thí nghiệm sở hữu — hành vi của mô hình tốt nhất của nó — hóa ra có thể tiếp cận được qua cửa trước, từng truy vấn một.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "text": "Đó là một điều rất khó để ngăn chặn mà không đồng thời ngăn chặn cả khách hàng trả tiền của bạn.",
+      "text_markdown": "Đó là một điều rất khó để ngăn chặn mà không đồng thời ngăn chặn cả khách hàng trả tiền của bạn.",
+      "title": "",
+      "tts": {
+        "text": "Đó là một điều rất khó để ngăn chặn mà không đồng thời ngăn chặn cả khách hàng trả tiền của bạn.",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-115",
+      "text": "Đây là sự chuyển giao hoàn hảo — hãy cùng đến với khái niệm của tuần này.",
+      "text_markdown": "Đây là sự chuyển giao hoàn hảo — hãy cùng đến với khái niệm của tuần này.",
+      "title": "",
+      "tts": {
+        "text": "Đây là sự chuyển giao hoàn hảo — hãy cùng đến với khái niệm của tuần này.",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-116",
+      "text": "Khái niệm này là chắt lọc tri thức (knowledge distillation).",
+      "text_markdown": "Khái niệm này là chắt lọc tri thức (knowledge distillation).",
+      "title": "",
+      "tts": {
+        "text": "Khái niệm này là chắt lọc tri thức (knowledge distillation).",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-117",
+      "text": "Ở dạng đơn giản nhất, chắt lọc là dạy một mô hình nhỏ bắt chước một mô hình lớn.",
+      "text_markdown": "Ở dạng đơn giản nhất, chắt lọc là dạy một mô hình nhỏ bắt chước một mô hình lớn.",
+      "title": "",
+      "tts": {
+        "text": "Ở dạng đơn giản nhất, chắt lọc là dạy một mô hình nhỏ bắt chước một mô hình lớn.",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-118",
+      "text": "Mô hình lớn là giáo viên, mô hình nhỏ là học sinh, và học sinh học bằng cách sao chép câu trả lời của giáo viên.",
+      "text_markdown": "Mô hình lớn là giáo viên, mô hình nhỏ là học sinh, và học sinh học bằng cách sao chép câu trả lời của giáo viên.",
+      "title": "",
+      "tts": {
+        "text": "Mô hình lớn là giáo viên, mô hình nhỏ là học sinh, và học sinh học bằng cách sao chép câu trả lời của giáo viên.",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-119",
+      "text": "Hãy bắt đầu với lý do tại sao bất kỳ ai lại làm điều này một cách hợp pháp.",
+      "text_markdown": "Hãy bắt đầu với lý do tại sao bất kỳ ai lại làm điều này một cách hợp pháp.",
+      "title": "",
+      "tts": {
+        "text": "Hãy bắt đầu với lý do tại sao bất kỳ ai lại làm điều này một cách hợp pháp.",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-120",
+      "text": "Bởi vì một mô hình tiên tiến rất tốn kém để vận hành, và một mô hình nhỏ bắt chước nó thì rẻ.",
+      "text_markdown": "Bởi vì một mô hình tiên tiến rất tốn kém để vận hành, và một mô hình nhỏ bắt chước nó thì rẻ.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì một mô hình tiên tiến rất tốn kém để vận hành, và một mô hình nhỏ bắt chước nó thì rẻ.",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-121",
+      "text": "Nếu bạn có thể đạt được tám mươi hoặc chín mươi phần trăm chất lượng với một phần mười chi phí, thì giao dịch đó đáng giá cả một gia tài ở quy mô lớn.",
+      "text_markdown": "Nếu bạn có thể đạt được tám mươi hoặc chín mươi phần trăm chất lượng với một phần mười chi phí, thì giao dịch đó đáng giá cả một gia tài ở quy mô lớn.",
+      "title": "",
+      "tts": {
+        "text": "Nếu bạn có thể đạt được tám mươi hoặc chín mươi phần trăm chất lượng với một phần mười chi phí, thì giao dịch đó đáng giá cả một gia tài ở quy mô lớn.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-122",
+      "text": "Vậy thì, học sinh thực sự học hỏi từ giáo viên như thế nào?",
+      "text_markdown": "Vậy thì, học sinh thực sự học hỏi từ giáo viên như thế nào?",
+      "title": "",
+      "tts": {
+        "text": "Vậy thì, học sinh thực sự học hỏi từ giáo viên như thế nào?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-123",
+      "text": "Cách ngây thơ là chỉ thu thập các câu trả lời của giáo viên và huấn luyện học sinh dựa trên chúng như một tập dữ liệu thông thường.",
+      "text_markdown": "Cách ngây thơ là chỉ thu thập các câu trả lời của giáo viên và huấn luyện học sinh dựa trên chúng như một tập dữ liệu thông thường.",
+      "title": "",
+      "tts": {
+        "text": "Cách ngây thơ là chỉ thu thập các câu trả lời của giáo viên và huấn luyện học sinh dựa trên chúng như một tập dữ liệu thông thường.",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-124",
+      "text": "Cách phong phú hơn sử dụng cái gọi là nhãn mềm — không chỉ câu trả lời cuối cùng của giáo viên, mà còn là mức độ tự tin của nó trên tất cả các lựa chọn.",
+      "text_markdown": "Cách phong phú hơn sử dụng cái gọi là nhãn mềm — không chỉ câu trả lời cuối cùng của giáo viên, mà còn là mức độ tự tin của nó trên tất cả các lựa chọn.",
+      "title": "",
+      "tts": {
+        "text": "Cách phong phú hơn sử dụng cái gọi là nhãn mềm — không chỉ câu trả lời cuối cùng của giáo viên, mà còn là mức độ tự tin của nó trên tất cả các lựa chọn.",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-125",
+      "text": "Tại sao những nhãn mềm đó lại có giá trị đến vậy?",
+      "text_markdown": "Tại sao những nhãn mềm đó lại có giá trị đến vậy?",
+      "title": "",
+      "tts": {
+        "text": "Tại sao những nhãn mềm đó lại có giá trị đến vậy?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-126",
+      "text": "Bởi vì chúng chứa đựng lập luận của giáo viên, chứ không chỉ là phán quyết của nó.",
+      "text_markdown": "Bởi vì chúng chứa đựng lập luận của giáo viên, chứ không chỉ là phán quyết của nó.",
+      "title": "",
+      "tts": {
+        "text": "Bởi vì chúng chứa đựng lập luận của giáo viên, chứ không chỉ là phán quyết của nó.",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-127",
+      "text": "Việc biết giáo viên chắc chắn bảy mươi phần trăm về một câu trả lời và ba mươi phần trăm về một câu gần đúng cho học sinh biết nhiều hơn rất nhiều so với một từ đúng duy nhất.",
+      "text_markdown": "Việc biết giáo viên chắc chắn bảy mươi phần trăm về một câu trả lời và ba mươi phần trăm về một câu gần đúng cho học sinh biết nhiều hơn rất nhiều so với một từ đúng duy nhất.",
+      "title": "",
+      "tts": {
+        "text": "Việc biết giáo viên chắc chắn bảy mươi phần trăm về một câu trả lời và ba mươi phần trăm về một câu gần đúng cho học sinh biết nhiều hơn rất nhiều so với một từ đúng duy nhất.",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-128",
+      "text": "Đó là phiên bản trong sách giáo khoa — bây giờ là phiên bản trên tin tức.",
+      "text_markdown": "Đó là phiên bản trong sách giáo khoa — bây giờ là phiên bản trên tin tức.",
+      "title": "",
+      "tts": {
+        "text": "Đó là phiên bản trong sách giáo khoa — bây giờ là phiên bản trên tin tức.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-129",
+      "text": "Nếu bạn không sở hữu giáo viên, quá trình chưng cất sẽ biến thành quá trình trích xuất.",
+      "text_markdown": "Nếu bạn không sở hữu giáo viên, quá trình chưng cất sẽ biến thành quá trình trích xuất.",
+      "title": "",
+      "tts": {
+        "text": "Nếu bạn không sở hữu giáo viên, quá trình chưng cất sẽ biến thành quá trình trích xuất.",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-130",
+      "text": "Bạn truy cập mô hình của người khác thông qua API của nó, hàng triệu lần, ghi lại mọi thứ nó nói và huấn luyện học sinh của bạn dựa trên bản ghi đó.",
+      "text_markdown": "Bạn truy cập mô hình của người khác thông qua API của nó, hàng triệu lần, ghi lại mọi thứ nó nói và huấn luyện học sinh của bạn dựa trên bản ghi đó.",
+      "title": "",
+      "tts": {
+        "text": "Bạn truy cập mô hình của người khác thông qua API của nó, hàng triệu lần, ghi lại mọi thứ nó nói và huấn luyện học sinh của bạn dựa trên bản ghi đó.",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-131",
+      "text": "Vì vậy, cùng một kỹ thuật có thể là hiệu quả hoặc là hành vi trộm cắp.",
+      "text_markdown": "Vì vậy, cùng một kỹ thuật có thể là hiệu quả hoặc là hành vi trộm cắp.",
+      "title": "",
+      "tts": {
+        "text": "Vì vậy, cùng một kỹ thuật có thể là hiệu quả hoặc là hành vi trộm cắp.",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-132",
+      "text": "Hoàn toàn phụ thuộc vào việc bạn có sở hữu giáo viên hay không — đó là lý do tại sao các điều khoản dịch vụ của mọi phòng thí nghiệm lớn đều cấm rõ ràng việc sử dụng mô hình của họ để huấn luyện một đối thủ cạnh tranh.",
+      "text_markdown": "Hoàn toàn phụ thuộc vào việc bạn có sở hữu giáo viên hay không — đó là lý do tại sao các điều khoản dịch vụ của mọi phòng thí nghiệm lớn đều cấm rõ ràng việc sử dụng mô hình của họ để huấn luyện một đối thủ cạnh tranh.",
+      "title": "",
+      "tts": {
+        "text": "Hoàn toàn phụ thuộc vào việc bạn có sở hữu giáo viên hay không — đó là lý do tại sao các điều khoản dịch vụ của mọi phòng thí nghiệm lớn đều cấm rõ ràng việc sử dụng mô hình của họ để huấn luyện một đối thủ cạnh tranh.",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-133",
+      "text": "Lời buộc tội chống lại Alibaba, nói một cách đơn giản, là hai mươi tám triệu giao dịch đó là một đợt chưng cất được ngụy trang dưới hai mươi lăm nghìn vỏ bọc.",
+      "text_markdown": "Lời buộc tội chống lại Alibaba, nói một cách đơn giản, là hai mươi tám triệu giao dịch đó là một đợt chưng cất được ngụy trang dưới hai mươi lăm nghìn vỏ bọc.",
+      "title": "",
+      "tts": {
+        "text": "Lời buộc tội chống lại Alibaba, nói một cách đơn giản, là hai mươi tám triệu giao dịch đó là một đợt chưng cất được ngụy trang dưới hai mươi lăm nghìn vỏ bọc.",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-134",
+      "text": "Và phần khó chịu đối với các phòng thí nghiệm là gì?",
+      "text_markdown": "Và phần khó chịu đối với các phòng thí nghiệm là gì?",
+      "title": "",
+      "tts": {
+        "text": "Và phần khó chịu đối với các phòng thí nghiệm là gì?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-135",
+      "text": "Rằng quá trình chưng cất hoạt động hiệu quả đáng kinh ngạc — một học sinh kiên trì thực sự có thể nắm bắt được rất nhiều từ một giáo viên mà nó chưa bao giờ có quyền sao chép.",
+      "text_markdown": "Rằng quá trình chưng cất hoạt động hiệu quả đáng kinh ngạc — một học sinh kiên trì thực sự có thể nắm bắt được rất nhiều từ một giáo viên mà nó chưa bao giờ có quyền sao chép.",
+      "title": "",
+      "tts": {
+        "text": "Rằng quá trình chưng cất hoạt động hiệu quả đáng kinh ngạc — một học sinh kiên trì thực sự có thể nắm bắt được rất nhiều từ một giáo viên mà nó chưa bao giờ có quyền sao chép.",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-136",
+      "text": "Thứ bạn bán quyền truy cập cũng là thứ bạn cần bảo vệ nhất, và đó là cùng một cánh cửa.",
+      "text_markdown": "Thứ bạn bán quyền truy cập cũng là thứ bạn cần bảo vệ nhất, và đó là cùng một cánh cửa.",
+      "title": "",
+      "tts": {
+        "text": "Thứ bạn bán quyền truy cập cũng là thứ bạn cần bảo vệ nhất, và đó là cùng một cánh cửa.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-137",
+      "text": "Đó là một điểm kết thúc sắc sảo.",
+      "text_markdown": "Đó là một điểm kết thúc sắc sảo.",
+      "title": "",
+      "tts": {
+        "text": "Đó là một điểm kết thúc sắc sảo.",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-138",
+      "text": "Ron, cảm ơn bạn đã tóm tắt.",
+      "text_markdown": "Ron, cảm ơn bạn đã tóm tắt.",
+      "title": "",
+      "tts": {
+        "text": "Ron, cảm ơn bạn đã tóm tắt.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "id": "ch00-139",
+      "text": "Lúc nào cũng được, Vindy — rất vui được ở đây.",
+      "text_markdown": "Lúc nào cũng được, Vindy — rất vui được ở đây.",
+      "title": "",
+      "tts": {
+        "text": "Lúc nào cũng được, Vindy — rất vui được ở đây.",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-140",
+      "text": "Đó là AI Tuần Này cho ngày hai mươi tám tháng Sáu, năm hai nghìn không trăm hai mươi sáu.",
+      "text_markdown": "Đó là AI Tuần Này cho ngày hai mươi tám tháng Sáu, năm hai nghìn không trăm hai mươi sáu.",
+      "title": "",
+      "tts": {
+        "text": "Đó là AI Tuần Này cho ngày hai mươi tám tháng Sáu, năm hai nghìn không trăm hai mươi sáu.",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-141",
+      "text": "Tuần tới, chúng ta sẽ quay lại với các mô hình mở và các phòng thí nghiệm nhỏ đang phát hành chúng.",
+      "text_markdown": "Tuần tới, chúng ta sẽ quay lại với các mô hình mở và các phòng thí nghiệm nhỏ đang phát hành chúng.",
+      "title": "",
+      "tts": {
+        "text": "Tuần tới, chúng ta sẽ quay lại với các mô hình mở và các phòng thí nghiệm nhỏ đang phát hành chúng.",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "id": "ch00-142",
+      "text": "Cho đến Chủ Nhật tới, hãy bảo trọng.",
+      "text_markdown": "Cho đến Chủ Nhật tới, hãy bảo trọng.",
+      "title": "",
+      "tts": {
+        "text": "Cho đến Chủ Nhật tới, hãy bảo trọng.",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

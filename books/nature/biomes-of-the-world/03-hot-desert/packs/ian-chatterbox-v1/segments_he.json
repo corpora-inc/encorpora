@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "The Hot Desert",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "המדבר החם",
+      "text_markdown": "המדבר החם"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "היכן נמצאים המדבריות",
+      "text_markdown": "היכן נמצאים המדבריות"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ברוכים הבאים אל המדבר החם.",
+      "text_markdown": "ברוכים הבאים אל המדבר החם.",
+      "tts": {
+        "text": "בְרוּכִים הַבָּאִים אֶל הַמִּדְבָּר הַחָם.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו אחד הביומים הגדולים של העולם.",
+      "text_markdown": "זהו אחד הביומים הגדולים של העולם.",
+      "tts": {
+        "text": "זֶהוּ אֶחָד הַבְּיוֹמִים הַגְּדוֹלִים שֶׁל הָעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ביום הוא חלק של כדור הארץ עם מזג אוויר, צמחים ובעלי חיים שלו.",
+      "text_markdown": "ביום הוא חלק של כדור הארץ עם מזג אוויר, צמחים ובעלי חיים שלו.",
+      "tts": {
+        "text": "בְיוֹם הוּא חֵלֶק שֶׁל כְּדוּר הָאָרֶץ עִם מִזַּג אָוִויר, צְמָחִים וּבַעֲלֵי חַיִּים שֶׁלּוֹ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המדבר החם הוא מקום יבש.",
+      "text_markdown": "המדבר החם הוא מקום יבש.",
+      "tts": {
+        "text": "הַמִּדְבָּר הַחָם הוּא מְקוֹם יָבֵּשׁ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מעט מאד גשם יורד כאן.",
+      "text_markdown": "מעט מאד גשם יורד כאן.",
+      "tts": {
+        "text": "מְעַט מְאֹד גֶּשֶׁם יוֹרֵד כָּאן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רב הימים חמים מאד, ורב הלילות קרירים או קרים.",
+      "text_markdown": "רב הימים חמים מאד, ורב הלילות קרירים או קרים.",
+      "tts": {
+        "text": "רֹב הַיָּמִים חַמִּים מְאֹד, וְרֹב הַלֵּילוֹת קְרִירִים אוֹ קָרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המדבר החם הגדול ביותר בעולם הוא סהרה, בצפון אפריקה.",
+      "text_markdown": "המדבר החם הגדול ביותר בעולם הוא סהרה, בצפון אפריקה.",
+      "tts": {
+        "text": "הַמִּדְבָּר הַחָם הַגָּדוֹל בְּיוֹתֵר בָּעוֹלָם הוּא סַהֲרָה, בְּצָפוֹן אַפְרִיקָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא משתרע מן האוקינוס האטלנטי כמעט עד ים סוף.",
+      "text_markdown": "הוא משתרע מן האוקינוס האטלנטי כמעט עד ים סוף.",
+      "tts": {
+        "text": "הוּא מִשְׁתָּרַע מִן הָאוֹקְיָנוּס הָאַטְלַנְטִי כִּמְעַט עַד יַם סוּף.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ישנם מדבריות גדולים במרכז ערב, כמו הרבע הריק.",
+      "text_markdown": "ישנם מדבריות גדולים במרכז ערב, כמו הרבע הריק.",
+      "tts": {
+        "text": "יִשְׁנָם מִדְבָּרִיּוֹת גְּדוֹלִים בְּמֶרְכַּז עֲרָב, כְּמוֹ הָרֻבַּע הָרִיק.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ישנם מדבריות חמים בצפון אמריקה, במקומות כמו דרום מערב ארצות הברית וצפון מקסיקו.",
+      "text_markdown": "ישנם מדבריות חמים בצפון אמריקה, במקומות כמו דרום מערב ארצות הברית וצפון מקסיקו.",
+      "tts": {
+        "text": "יִשְׁנָם מִדְבָּרִיּוֹת חַמִּים בְּצָפוֹן אָמֵרִיקָה, בִּמְקוֹמוֹת כְּמוֹ דָּרוֹם מַעֲרָב אַרְצוֹת הַבְּרִית וְצָפוֹן מֶקְסִיקוֹ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ישנם מדבריות קטנים יותר בדרום אמריקה, בדרום אפריקה, בהודו, וברחבי חלק גדול של אוסטרליה.",
+      "text_markdown": "ישנם מדבריות קטנים יותר בדרום אמריקה, בדרום אפריקה, בהודו, וברחבי חלק גדול של אוסטרליה.",
+      "tts": {
+        "text": "יִשְׁנָם מִדְבָּרִיּוֹת קְטַנִּים יוֹתֵר בְּדָרוֹם אָמֵרִיקָה, בְּדָרוֹם אַפְרִיקָה, בְּהוֹדוּ, וּבְרַחֲבֵי חֵלֶק גָּדוֹל שֶׁל אוֹסְטְרָלְיָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל אחד מן המדבריות הללו צמח בכחות עצמו, הרחוק מן האחרים.",
+      "text_markdown": "כל אחד מן המדבריות הללו צמח בכחות עצמו, הרחוק מן האחרים.",
+      "tts": {
+        "text": "כָּל אֶחָד מִן הַמִּדְבָּרִיּוֹת הַלָּלוּ צָמַח בְּכֹחוֹת עַצְמוֹ, הָרָחוֹק מִן הָאֲחֵרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ולכן הצמחים ובעלי החיים שונים בכל חלק של העולם.",
+      "text_markdown": "ולכן הצמחים ובעלי החיים שונים בכל חלק של העולם.",
+      "tts": {
+        "text": "וּלְכֵן הַצְּמָחִים וּבַעֲלֵי הַחַיִּים שׁוֹנִים בְּכָל חֵלֶק שֶׁל הָעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קקטוס שאתה רואה במדבר אחד אינו אותו קקטוס שאתה רואה במדבר אחר.",
+      "text_markdown": "קקטוס שאתה רואה במדבר אחד אינו אותו קקטוס שאתה רואה במדבר אחר.",
+      "tts": {
+        "text": "קַקְטוּס שֶׁאַתָּה רוֹאֶה בְּמִדְבָּר אֶחָד אֵינוֹ אוֹתוֹ קַקְטוּס שֶׁאַתָּה רוֹאֶה בְּמִדְבָּר אַחֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אך כלם הם חלק מאותו הביום.",
+      "text_markdown": "אך כלם הם חלק מאותו הביום.",
+      "tts": {
+        "text": "אַךְ כֻּלָּם הֵם חֵלֶק מֵאוֹתוֹ הַבְּיוֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשאתה עומד במדבר חם, האוויר מרגיש יבש.",
+      "text_markdown": "כשאתה עומד במדבר חם, האוויר מרגיש יבש.",
+      "tts": {
+        "text": "כְּשַׁאַתָּה עוֹמֵד בְּמִדְבָּר חָם, הָאָוִויר מַרְגִּישׁ יָבֵּשׁ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השמש חזקה על פניך.",
+      "text_markdown": "השמש חזקה על פניך.",
+      "tts": {
+        "text": "הַשֶּׁמֶשׁ חֲזָקָה עַל פָּנֶיךָ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקרקע סלעית במקומות רבים, וחולית במקומות אחרים.",
+      "text_markdown": "הקרקע סלעית במקומות רבים, וחולית במקומות אחרים.",
+      "tts": {
+        "text": "הַקַּרְקַע סְלָעִית בִּמְקוֹמוֹת רַבִּים, וְחוּלִית בִּמְקוֹמוֹת אֲחֵרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אתה יכול לראות למרחק רב מאד.",
+      "text_markdown": "אתה יכול לראות למרחק רב מאד.",
+      "tts": {
+        "text": "אַתָּה יָכוֹל לִרְאוֹת לְמֶרְחָק רַב מְאֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "השמים עצומים.",
+      "text_markdown": "השמים עצומים.",
+      "tts": {
+        "text": "הַשָּׁמַיִם עָצוּמִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ייתכן שלא תראה אדם אחר או בעל חיים אחר במשך יום שלם.",
+      "text_markdown": "ייתכן שלא תראה אדם אחר או בעל חיים אחר במשך יום שלם.",
+      "tts": {
+        "text": "יִיתְכֵּן שֶׁלֹּא תִרְאֶה אָדָם אַחֵר אוֹ בַעַל חַיִּים אַחֵר בְמִשְׁךְ יוֹם שָׁלֵם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו המדבר החם.",
+      "text_markdown": "זהו המדבר החם.",
+      "tts": {
+        "text": "זֶהוּ הַמִּדְבָּר הַחַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Where Deserts Are",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ארץ רחבה ויבשה של חול, סלע, ושמש בוערת.",
+      "text_markdown": "ארץ רחבה ויבשה של חול, סלע, ושמש בוערת.",
+      "tts": {
+        "text": "אֶרֶץ רְחָבָה וַיְבֵשָׁה שֶׁל חוֹל, סֶלַע, וְשֶׁמֶשׁ בּוֹעֶרֶת.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "מזג האוויר",
+      "text_markdown": "מזג האוויר"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מזג האוויר במדבר החם מעוצב על ידי שני דברים.",
+      "text_markdown": "מזג האוויר במדבר החם מעוצב על ידי שני דברים.",
+      "tts": {
+        "text": "מֶזֶג הָאוֹוִיר בַּמִּדְבָּר הַחַם מְעוּצָּב עַל יְדֵי שְׁנֵי דְבָרִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "יש יותר מדי שמש, ואין מספיק גשם.",
+      "text_markdown": "יש יותר מדי שמש, ואין מספיק גשם.",
+      "tts": {
+        "text": "יֵשׁ יוֹתֵר מִדַּי שֶׁמֶשׁ, וְאֵין מַסְפִּיק גָּשֶׁם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במדבריות מסוימים, יורד גשם רק מספר ימים בשנה.",
+      "text_markdown": "במדבריות מסוימים, יורד גשם רק מספר ימים בשנה.",
+      "tts": {
+        "text": "בְמִדְבָּרִיּוֹת מְסוּיָּמִים, יוֹרֵד גָּשֶׁם רַק מִסְפַּר יָמִים בַּשָּׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות אחרים, אין גשם כלל במשך שנים רבות.",
+      "text_markdown": "במקומות אחרים, אין גשם כלל במשך שנים רבות.",
+      "tts": {
+        "text": "בִּמְקוֹמוֹת אַחֲרִים, אֵין גָּשֶׁם כְּלַל בְמִשְׁךְ שָׁנִים רַבּוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הימים חמים מאד.",
+      "text_markdown": "הימים חמים מאד.",
+      "tts": {
+        "text": "הַיָּמִים חַמִּים מְאֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעיצומו של היום, השמש יכולה לחמם את החול לטמפרטורה שתשרף את כפות רגליך.",
+      "text_markdown": "בעיצומו של היום, השמש יכולה לחמם את החול לטמפרטורה שתשרף את כפות רגליך.",
+      "tts": {
+        "text": "בְעִיצּוּמוֹ שֶׁל הַיּוֹם, הַשֶּׁמֶשׁ יְכוֹלָה לַחְמֵם אֶת הַחוֹל לְטֶמְפְּרָטוּרָה שֶׁתִּשְׂרֹף אֶת כַּפּוֹת רַגְלֶיךָ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אך הלילות שונים מאד.",
+      "text_markdown": "אך הלילות שונים מאד.",
+      "tts": {
+        "text": "אַךְ הַלֵּילוֹת שׁוֹנִים מְאֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אין עננים ואין עצים שיחזיקו את החום.",
+      "text_markdown": "אין עננים ואין עצים שיחזיקו את החום.",
+      "tts": {
+        "text": "אֵין עֲנָנִים וְאֵין עֵצִים שֶׁיַּחְזִיקוּ אֶת הַחוֹם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ולכן ברגע שהשמש שוקעת, החום בורח אל השמים.",
+      "text_markdown": "ולכן ברגע שהשמש שוקעת, החום בורח אל השמים.",
+      "tts": {
+        "text": "וּלְכֵן בִּרְגַע שֶׁהַשֶּׁמֶשׁ שׁוֹקַעַת, הַחוֹם בּוֹרֵחַ אֶל הַשָּׁמַיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באמצע הלילה, אפשר להרגיש קריר, ואף קר.",
+      "text_markdown": "באמצע הלילה, אפשר להרגיש קריר, ואף קר.",
+      "tts": {
+        "text": "בְאֶמְצַע הַלַּיְלָה, אֶפְשָׁר לְהַרְגִּישׁ קָרִיר, וְאַף קַר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בבוקר, הסלעים קרירים למגע.",
+      "text_markdown": "בבוקר, הסלעים קרירים למגע.",
+      "tts": {
+        "text": "בַּבּוֹקֶר, הַסְּלָעִים קָרִירִים לִמְגַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז השמש זורחת, והחום מתחיל שוב.",
+      "text_markdown": "ואז השמש זורחת, והחום מתחיל שוב.",
+      "tts": {
+        "text": "וְאָז הַשֶּׁמֶשׁ זוֹרַחַת, וְהַחוֹם מִתְחִיל שׁוּב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהגשם בא, הוא לרב בא בבת אחת.",
+      "text_markdown": "כשהגשם בא, הוא לרב בא בבת אחת.",
+      "tts": {
+        "text": "כְּשֶׁהַגָּשֶׁם בָּא, הוּא לְרֹב בָּא בְבַת אַחַת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "סופה גדולה מתגלגלת פנימה, ומים נתכים במשך שעה.",
+      "text_markdown": "סופה גדולה מתגלגלת פנימה, ומים נתכים במשך שעה.",
+      "tts": {
+        "text": "סוּפָה גְּדוֹלָה מִתְגַּלְגֶּלֶת פְּנִימָה, וּמַיִם נִתְּכִים בְמִשְׁךְ שָׁעָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הנהרות היבשים מתמלאים, ומים שוטפים על החול.",
+      "text_markdown": "הנהרות היבשים מתמלאים, ומים שוטפים על החול.",
+      "tts": {
+        "text": "הַנְּהָרוֹת הַיְבֵשִׁים מִתְמַלְּאִים, וּמַיִם שׁוֹטְפִים עַל הַחוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז השמש חוזרת, ותוך יום המים נעלמים שוב.",
+      "text_markdown": "ואז השמש חוזרת, ותוך יום המים נעלמים שוב.",
+      "tts": {
+        "text": "וְאָז הַשֶּׁמֶשׁ חוֹזֶרֶת, וּתוֹךְ יוֹם הַמַּיִם נַעֲלָמִים שׁוּב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "The Weather",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עבור הצמחים ובעלי החיים של המדבר, כל טפת של המים האלה חשובה.",
+      "text_markdown": "עבור הצמחים ובעלי החיים של המדבר, כל טפת של המים האלה חשובה.",
+      "tts": {
+        "text": "עַבוּר הַצְּמָחִים וּבַעֲלֵי הַחַיִּים שֶׁל הַמִּדְבָּר, כָּל טִפַּת שֶׁל הַמַּיִם הָאֵלֶּה חֲשׁוּבָה.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הארץ והמים",
+      "text_markdown": "הארץ והמים"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רב המדבר החם אינו עשוי מחול.",
+      "text_markdown": "רב המדבר החם אינו עשוי מחול.",
+      "tts": {
+        "text": "רֹב הַמִּדְבָּר הַחַם אֵינוֹ עָשׂוּי מֵחוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רבו סלע, חצץ, וקרקע יבשה וקשה.",
+      "text_markdown": "רבו סלע, חצץ, וקרקע יבשה וקשה.",
+      "tts": {
+        "text": "רֻבּוֹ סֶלַע, חַצָּץ, וְקַרְקַע יְבֵשָׁה וְקָשָׁה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ישנם גם מקומות עם ימים עצומים של דיונות.",
+      "text_markdown": "ישנם גם מקומות עם ימים עצומים של דיונות.",
+      "tts": {
+        "text": "יֵשְׁנָם גַּם מְקוֹמוֹת עִם יַמִּים עֲצוּמִים שֶׁל דִּיּוּנוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרוח מזיזה את הדיונות לאט על פני הארץ.",
+      "text_markdown": "הרוח מזיזה את הדיונות לאט על פני הארץ.",
+      "tts": {
+        "text": "הָרוּחַ מְזִיזָה אֶת הַדִּיּוּנוֹת לְאַט עַל פְּנֵי הָאָרֶץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "דיונה יכולה להיות קטנה יותר מבית, או גבוהה יותר מבנין גבוה.",
+      "text_markdown": "דיונה יכולה להיות קטנה יותר מבית, או גבוהה יותר מבנין גבוה.",
+      "tts": {
+        "text": "דִּיּוּנָה יְכוֹלָה לִהְיוֹת קְטַנָּה יוֹתֵר מִבַּיִת, אוֹ גְּבוֹהָה יוֹתֵר מִבִּנְיַן גָּבוֹהַ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות מסימים, הרים מתרוממים מתוך המדבר.",
+      "text_markdown": "במקומות מסימים, הרים מתרוממים מתוך המדבר.",
+      "tts": {
+        "text": "בִּמְקוֹמוֹת מְסֻיָּמִים, הָרִים מִתְרוֹמְמִים מִתּוֹךְ הַמִּדְבָּר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רוח וחול מגלפים את הסלעים לצורות מוזרות במשך שנים רבות.",
+      "text_markdown": "רוח וחול מגלפים את הסלעים לצורות מוזרות במשך שנים רבות.",
+      "tts": {
+        "text": "רוּחַ וְחוֹל מְגַלְּפִים אֶת הַסְּלָעִים לִצְּוּרוֹת מוּזָרוֹת בְּמִשֶּׁךְ שָׁנִים רַבּוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המים הם הדבר הנדיר והיקר ביותר במדבר.",
+      "text_markdown": "המים הם הדבר הנדיר והיקר ביותר במדבר.",
+      "tts": {
+        "text": "הַמַּיִם הֵם הַדָּבָר הַנָּדִיר וְהַיָּקָר בְּיוֹתֵר בַּמִּדְבָּר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רב הנהרות זורמים רק לאחר סופה, ואז הם מתייבשו.",
+      "text_markdown": "רב הנהרות זורמים רק לאחר סופה, ואז הם מתייבשו.",
+      "tts": {
+        "text": "רֹב הַנְּהָרוֹת זוֹרְמִים רַק לְאַחַר סוּפָה, וְאַז הֵם מִתְיַיְּבְשׁוּ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אך עמוק מתחת לחול, מים יכולים לנוח בתוך הסלעים.",
+      "text_markdown": "אך עמוק מתחת לחול, מים יכולים לנוח בתוך הסלעים.",
+      "tts": {
+        "text": "אַךְ עָמוֹק מִתַּחַת לַחוֹל, מַיִם יְכוֹלִים לָנוּחַ בְּתוֹךְ הַסְּלָעִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות מסימים, המים הנסתרים האלה עולים אל פני השטח ויוצרים ברכה קטנה של ירוק.",
+      "text_markdown": "במקומות מסימים, המים הנסתרים האלה עולים אל פני השטח ויוצרים ברכה קטנה של ירוק.",
+      "tts": {
+        "text": "בִּמְקוֹמוֹת מְסֻיָּמִים, הַמַּיִם הַנִּסְתָּרִים הָאֵלֶּה עוֹלִים אֶל פְּנֵי הַשָּׁטַח וְיוֹצְרִים בְּרֵכָה קְטַנָּה שֶׁל יָרוֹק.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זה נקרא נות מדבר.",
+      "text_markdown": "זה נקרא נות מדבר.",
+      "tts": {
+        "text": "זֶה נִקְרָא נְוַת מִדְבָּר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בנות המדבר, עצים גדלים, צפורים שרות, ואנשים עוצרים לשתות.",
+      "text_markdown": "בנות המדבר, עצים גדלים, צפורים שרות, ואנשים עוצרים לשתות.",
+      "tts": {
+        "text": "בִּנְוַת הַמִּדְבָּר, עֲצִים גְּדֵלִים, צִפּוֹרִים שָׁרוֹת, וְאֲנָשִׁים עוֹצְרִים לִשְׁתּוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "נות מדבר יכולה להיות טבעת קטנה של דקלים בים עצום של חול.",
+      "text_markdown": "נות מדבר יכולה להיות טבעת קטנה של דקלים בים עצום של חול.",
+      "tts": {
+        "text": "נְוַת מִדְבָּר יְכוֹלָה לִהְיוֹת טַבַּעַת קְטַנָּה שֶׁל דְּקָלִים בְּיַם עֲצוּם שֶׁל חוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "The Land and the Water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ללא נקודות המים האלה, איש לא היה יכול לחצות את המדבריות הגדולים כלל.",
+      "text_markdown": "ללא נקודות המים האלה, איש לא היה יכול לחצות את המדבריות הגדולים כלל.",
+      "tts": {
+        "text": "לְלֹא נְקוּדוֹת הַמַּיִם הָאֵלֶּה, אִישׁ לֹא הָיָה יְכוֹל לַחֲצוֹת אֶת הַמִּדְבָּרִיּוֹת הַגְּדוֹלִים כְּלָל.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "הצמחים",
+      "text_markdown": "הצמחים"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחי המדבר החם הם אומני ההמתנה.",
+      "text_markdown": "צמחי המדבר החם הם אומני ההמתנה.",
+      "tts": {
+        "text": "צִמְחֵי הַמִּדְבָּר הַחַם הֵם אוֹמְנֵי הַהַמְתָּנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם למדו לחיות כמעט בלי מים.",
+      "text_markdown": "הם למדו לחיות כמעט בלי מים.",
+      "tts": {
+        "text": "הֵם לָמְדוּ לַחֲיוֹת כִּמְעַט בְּלִי מַיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלקם מגדלים שורשים ארכים שמגיעים עמוק לתוך הקרקע.",
+      "text_markdown": "חלקם מגדלים שורשים ארכים שמגיעים עמוק לתוך הקרקע.",
+      "tts": {
+        "text": "חֶלְקָם מְגַדְּלִים שׁוֹרָשִׁים אֲרֻכִּים שֶׁמַּגִּיעִים עָמוֹק לְתוֹךְ הַקַּרְקַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים אחרים בעלי שורשים רחבים ורדודים שמתפשטים בסמוך לפני השטח.",
+      "text_markdown": "צמחים אחרים בעלי שורשים רחבים ורדודים שמתפשטים בסמוך לפני השטח.",
+      "tts": {
+        "text": "צְמָחִים אֲחֵרִים בְּעָלֵי שׁוֹרָשִׁים רְחָבִים וּרְדוּדִים שֶׁמִּתְפַּשְּׁטִים בִּסְמוֹךְ לִפְנֵי הַשָּׁטַח.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לאחר סופת גשם, השורשים האלה שותים כל טפת מים לפני שהיא מתייבשת.",
+      "text_markdown": "לאחר סופת גשם, השורשים האלה שותים כל טפת מים לפני שהיא מתייבשת.",
+      "tts": {
+        "text": "לְאַחַר סוּפַת גָּשֶׁם, הַשׁוֹרָשִׁים הָאֵלֶּה שׁוֹתִים כָּל טִפַּת מַיִם לִפְנֵי שֶׁהִיא מִתְיַיְּבֶשֶׁת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחי מדבר רבים אוגרים מים בתוך גופם לזמן היבש הארוך.",
+      "text_markdown": "צמחי מדבר רבים אוגרים מים בתוך גופם לזמן היבש הארוך.",
+      "tts": {
+        "text": "צִמְחֵי מִדְבָּר רַבִּים אוֹגְרִים מַיִם בְתוֹךְ גוּפָם לִזְמַן הַיָּבֵשׁ הָאָרוֹךְ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הגבעולים והעלים העבים שלהם יכולים להחזיק מים במשך חודשים, ואף שנים.",
+      "text_markdown": "הגבעולים והעלים העבים שלהם יכולים להחזיק מים במשך חודשים, ואף שנים.",
+      "tts": {
+        "text": "הַגְּבָעוֹלִים וְהָעָלִים הָעֲבִים שֶׁלָּהֶם יְכוֹלִים לְהַחֲזִיק מַיִם בְמִשְׁךְ חוֹדָשִׁים, וְאַף שָׁנִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במדבריות של היבשות האמריקאיות, יש צמחים הנקראים קקטוסים.",
+      "text_markdown": "במדבריות של היבשות האמריקאיות, יש צמחים הנקראים קקטוסים.",
+      "tts": {
+        "text": "בְמִדְבְּרִיּוֹת שֶׁל הַיַּבָּשׁוֹת הָאַמְרִיקָאִיּוֹת, יֵשׁ צִמְחִים הַנִּקְרָאִים קַקְטוּסִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לקקטוסים יש גבעולים ירוקים ועבים מלאים במים, וקוצים חדים במקום עלים רכים.",
+      "text_markdown": "לקקטוסים יש גבעולים ירוקים ועבים מלאים במים, וקוצים חדים במקום עלים רכים.",
+      "tts": {
+        "text": "לַקַּקְטוּסִים יֵשׁ גְּבָעוֹלִים יְרוֹקִים וַעֲבִים מְלֵאִים בְמַיִם, וְקוֹצִים חַדִּים בִּמְקוֹם עָלִים רַכִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקוצים מונעים מבעלי חיים לאכול את הצמחים.",
+      "text_markdown": "הקוצים מונעים מבעלי חיים לאכול את הצמחים.",
+      "tts": {
+        "text": "הַקּוֹצִים מוֹנְעִים מִבַּעֲלֵי חַיִּים לֶאֱכוֹל אֶת הַצִּמְחִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקוצים גם יוצרים מעט צל מפני השמש החזקה.",
+      "text_markdown": "הקוצים גם יוצרים מעט צל מפני השמש החזקה.",
+      "tts": {
+        "text": "הַקּוֹצִים גַּם יוֹצְרִים מְעַט צֵל מִפְּנֵי הַשֶּׁמֶשׁ הַחֲזָקָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במדבריות של אפריקה ואסיה, צמחים עבים אחרים עושים את אותה העבודה.",
+      "text_markdown": "במדבריות של אפריקה ואסיה, צמחים עבים אחרים עושים את אותה העבודה.",
+      "tts": {
+        "text": "בְמִדְבְּרִיּוֹת שֶׁל אַפְרִיקָה וְאַסְיָה, צִמְחִים עֲבִים אֲחֵרִים עוֹשִׂים אֶת אוֹתָהּ הָעֲבוֹדָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחי מדבר רבים הם אפורים או ירוקים בהירים.",
+      "text_markdown": "צמחי מדבר רבים הם אפורים או ירוקים בהירים.",
+      "tts": {
+        "text": "צִמְחֵי מִדְבָּר רַבִּים הֵם אֲפוֹרִים אוֹ יְרוֹקִים בְהִירִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צבע בהיר מחזיר את אור השמש החוצה.",
+      "text_markdown": "צבע בהיר מחזיר את אור השמש החוצה.",
+      "tts": {
+        "text": "צֶבַע בָּהִיר מַחְזִיר אֶת אוֹר הַשֶּׁמֶשׁ הַחוּצָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "צמחים מסוימים משירים את עליהם כשבאה העונה היבשה.",
+      "text_markdown": "צמחים מסוימים משירים את עליהם כשבאה העונה היבשה.",
+      "tts": {
+        "text": "צִמְחִים מְסוּיָּמִים מַשִּׁירִים אֶת עָלֵיהֶם כְּשֶׁבָּאָה הָעוֹנָה הַיָּבְשָׁה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם נשארים בחיים כענפים חומים וחשופים עד הגשם הבא.",
+      "text_markdown": "הם נשארים בחיים כענפים חומים וחשופים עד הגשם הבא.",
+      "tts": {
+        "text": "הֵם נִשְׁאָרִים בַּחַיִּים כַּעֲנָפִים חוּמִים וַחֲשׁוּפִים עַד הַגֶּשֶׁם הַבָּא.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לאחר גשם כבד, המדבר יכול להשתנות בין לילה.",
+      "text_markdown": "לאחר גשם כבד, המדבר יכול להשתנות בין לילה.",
+      "tts": {
+        "text": "לְאַחַר גֶּשֶׁם כָּבֵד, הַמִּדְבָּר יָכוֹל לְהִשְׁתַּנּוֹת בֵּין לַיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זרעים זעירים שהמתינו באדמה במשך שנים פורצים לפריחה.",
+      "text_markdown": "זרעים זעירים שהמתינו באדמה במשך שנים פורצים לפריחה.",
+      "tts": {
+        "text": "זְרָעִים זְעִירִים שֶׁהִמְתִּינוּ בָּאֲדָמָה בְמִשְׁךְ שָׁנִים פּוֹרְצִים לִפְרִיחָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במשך מספר שבועות, חלקים מן המדבר מכסים בפריחות אדומות, צהובות וסגולות.",
+      "text_markdown": "במשך מספר שבועות, חלקים מן המדבר מכסים בפריחות אדומות, צהובות וסגולות.",
+      "tts": {
+        "text": "בְמִשְׁךְ מִסְפַּר שָׁבוּעוֹת, חֲלָקִים מִן הַמִּדְבָּר מְכֻסִּים בִּפְרִיחוֹת אֲדוּמוֹת, צְהוּבוֹת וּסְגוֹלוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "The Plants",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ואז הפרחים נובלים, הזרעים נופלים, והמדבר ממתין שוב.",
+      "text_markdown": "ואז הפרחים נובלים, הזרעים נופלים, והמדבר ממתין שוב.",
+      "tts": {
+        "text": "וְאָז הַפְּרָחִים נוֹבְלִים, הַזְּרָעִים נוֹפְלִים, וְהַמִּדְבָּר מִמְתִּין שׁוּב.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "בעלי החיים",
+      "text_markdown": "בעלי החיים"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לבעלי החיים של המדבר החם יש דרכים חכמות רבות לשרוד.",
+      "text_markdown": "לבעלי החיים של המדבר החם יש דרכים חכמות רבות לשרוד.",
+      "tts": {
+        "text": "לְבַעֲלֵי הַחַיִּים שֶׁל הַמִּדְבָּר הַחַם יֵשׁ דְּרָכִים חֲכָמוֹת רַבּוֹת לִשְׂרוֹד.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "רובם יישנו במהלך אמצע היום החם.",
+      "text_markdown": "רובם יישנו במהלך אמצע היום החם.",
+      "tts": {
+        "text": "רוּבָם יִישְׁנוּ בִּמְהַלַּךְ אֶמְצַע הַיּוֹם הַחַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם יוצאים בקרירות הבוקר, הערב והלילה.",
+      "text_markdown": "הם יוצאים בקרירות הבוקר, הערב והלילה.",
+      "tts": {
+        "text": "הֵם יוֹצְאִים בִּקְרִירוּת הַבּוֹקֶר, הָעֶרֶב וְהַלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעלי חיים רבים במדבר חופרים מאורות בחול או מתחת לסלעים.",
+      "text_markdown": "בעלי חיים רבים במדבר חופרים מאורות בחול או מתחת לסלעים.",
+      "tts": {
+        "text": "בַּעֲלֵי חַיִּים רַבִּים בַּמִּדְבָּר חוֹפְרִים מְאוּרוֹת בַּחוֹל אוֹ מִתַּחַת לַסְּלָעִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מאורה נשארת קרירה כשהאויר בחוץ בוער.",
+      "text_markdown": "מאורה נשארת קרירה כשהאויר בחוץ בוער.",
+      "tts": {
+        "text": "מְאוּרָה נִשְׁאָרֶת קָרִירָה כְּשֶׁהָאֲוִיר בַּחוּץ בּוֹעֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עכבר קטן יכול לישון כל היום במאורה שלו ולא להרגיש את החום לעולם.",
+      "text_markdown": "עכבר קטן יכול לישון כל היום במאורה שלו ולא להרגיש את החום לעולם.",
+      "tts": {
+        "text": "עַכְבָּר קָטָן יָכוֹל לִישׁוֹן כָּל הַיּוֹם בִּמְאוּרָה שֶׁלּוֹ וְלֹא לְהַרְגִּישׁ אֶת הַחוֹם לְעוֹלָם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לטאות נפוצות מאוד במדבר החם.",
+      "text_markdown": "לטאות נפוצות מאוד במדבר החם.",
+      "tts": {
+        "text": "לְטָאוֹת נָפוּצוֹת מְאוֹד בַּמִּדְבָּר הַחַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הן יושבות על אבנים חמות בשמש המוקדמת.",
+      "text_markdown": "הן יושבות על אבנים חמות בשמש המוקדמת.",
+      "tts": {
+        "text": "הֵן יוֹשְׁבוֹת עַל אֲבָנִים חַמּוֹת בַּשֶּׁמֶשׁ הַמּוּקְדֶּמֶת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהיום נעשה חם מדי, הן מחליקות אל הצל או אל מתחת לסלע.",
+      "text_markdown": "כשהיום נעשה חם מדי, הן מחליקות אל הצל או אל מתחת לסלע.",
+      "tts": {
+        "text": "כְּשֶׁהַיּוֹם נַעֲשָׂה חַם מִדַּי, הֵן מַחְלִיקוֹת אֶל הַצֵּל אוֹ אֶל מִתַּחַת לַסֶּלַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גם נחשים נפוצים.",
+      "text_markdown": "גם נחשים נפוצים.",
+      "tts": {
+        "text": "גַּם נְחָשִׁים נָפוּצִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מחליקים על פני החול ומחפשים בעלי חיים קטנים לאכול.",
+      "text_markdown": "הם מחליקים על פני החול ומחפשים בעלי חיים קטנים לאכול.",
+      "tts": {
+        "text": "הֵם מַחְלִיקִים עַל פְּנֵי הַחוֹל וּמְחַפְּשִׂים בַּעֲלֵי חַיִּים קְטַנִּים לֶאֱכוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "לחלק מן הנחשים יש דרך מיחדת לנוע הצדעה על פני חול חם כדי להרחיק את גופם מן הקרקע.",
+      "text_markdown": "לחלק מן הנחשים יש דרך מיחדת לנוע הצדעה על פני חול חם כדי להרחיק את גופם מן הקרקע.",
+      "tts": {
+        "text": "לְחֵלֶק מִן הַנְּחָשִׁים יֵשׁ דֶּרֶךְ מְיֻחֶּדֶת לָנוּעַ הַצִּדְעָה עַל פְּנֵי חוֹל חַם כְּדֵי לְהַרְחִיק אֶת גּוּפָם מִן הַקַּרְקַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עקרבים צודים בלילה, כשזנבותיהם מרומים גבוה.",
+      "text_markdown": "עקרבים צודים בלילה, כשזנבותיהם מרומים גבוה.",
+      "tts": {
+        "text": "עַקְרָבִים צוֹדִים בַּלַּיְלָה, כְּשִׁזְנָבוֹתֵיהֶם מְרוּמִים גָּבוֹהַ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עכבישים וחפושיות חיים בכל חלק של המדבר.",
+      "text_markdown": "עכבישים וחפושיות חיים בכל חלק של המדבר.",
+      "tts": {
+        "text": "עַכְבִּישִׁים וַחִפּוּשִׁיּוֹת חַיִּים בְּכָל חֵלֶק שֶׁל הַמִּדְבָּר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חפושיות מדבר רבות יכולות לשרוד מבלי לשתות מים אף פעם.",
+      "text_markdown": "חפושיות מדבר רבות יכולות לשרוד מבלי לשתות מים אף פעם.",
+      "tts": {
+        "text": "חִפּוּשִׁיּוֹת מִדְבָּר רַבּוֹת יְכוֹלוֹת לִשְׁרוֹד מִבְּלִי לִשְׁתּוֹת מַיִם אַף פַּעַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הן מקבלות את כל המים הדרושים להן מן המזון שהן אוכלות.",
+      "text_markdown": "הן מקבלות את כל המים הדרושים להן מן המזון שהן אוכלות.",
+      "tts": {
+        "text": "הֵן מְקַבְּלוֹת אֶת כָּל הַמַּיִם הַדְּרוּשִׁים לָהֵן מִן הַמָּזוֹן שֶׁהֵן אוֹכְלוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בעל החיים הגדול ביותר במדבריות אפריקה וערב הוא הגמל.",
+      "text_markdown": "בעל החיים הגדול ביותר במדבריות אפריקה וערב הוא הגמל.",
+      "tts": {
+        "text": "בַּעַל הַחַיִּים הַגָּדוֹל בְּיוֹתֵר בַּמִּדְבָּרִיּוֹת אַפְרִיקָה וְעֲרַב הוּא הַגָּמָל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גמל יכול לשתות כמות עצומה של מים בבת אחת, ואז להמשיך ימים רבים מבלי לשתות שוב.",
+      "text_markdown": "גמל יכול לשתות כמות עצומה של מים בבת אחת, ואז להמשיך ימים רבים מבלי לשתות שוב.",
+      "tts": {
+        "text": "גָּמָל יָכוֹל לִשְׁתּוֹת כַּמּוּת עֲצוּמָה שֶׁל מַיִם בְּבַת אַחַת, וְאָז לְהַמְשִׁיךְ יָמִים רַבִּים מִבְּלִי לִשְׁתּוֹת שׁוּב.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כפות הרגלים הרכות והרחבות שלו מונעות ממנו לשקוע בחול.",
+      "text_markdown": "כפות הרגלים הרכות והרחבות שלו מונעות ממנו לשקוע בחול.",
+      "tts": {
+        "text": "כַּפּוֹת הָרַגְלַיִם הָרַכּוֹת וְהָרְחָבוֹת שֶׁלּוֹ מוֹנְעוֹת מִמֶּנּוּ לִשְׁקוֹעַ בַּחוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במדבריות של צפון אמריקה, שועלים וחתולי בר קטנים צודים בלילה.",
+      "text_markdown": "במדבריות של צפון אמריקה, שועלים וחתולי בר קטנים צודים בלילה.",
+      "tts": {
+        "text": "בְּמִדְבָּרִיּוֹת שֶׁל צָפוֹן אַמְרִיקָה, שׁוּעָלִים וַחֲתוּלֵי בַּר קְטַנִּים צוֹדִים בַּלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באפריקה, שועלים קטנים עם אזנים גדולות מאוד חיים בחול.",
+      "text_markdown": "באפריקה, שועלים קטנים עם אזנים גדולות מאוד חיים בחול.",
+      "tts": {
+        "text": "בְּאַפְרִיקָה, שׁוּעָלִים קְטַנִּים עִם אָזְנַיִם גְּדוֹלוֹת מְאוֹד חַיִּים בַּחוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האזנים הגדולות עוזרות להם לשמוע בעלי חיים קטנים הזזים מתחת לקרקע.",
+      "text_markdown": "האזנים הגדולות עוזרות להם לשמוע בעלי חיים קטנים הזזים מתחת לקרקע.",
+      "tts": {
+        "text": "הָאָזְנַיִם הַגְּדוֹלוֹת עוֹזְרוֹת לָהֶם לִשְׁמוֹעַ בַּעֲלֵי חַיִּים קְטַנִּים הִזָּזִים מִתַּחַת לַקַּרְקַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האזנים הגדולות גם עוזרות להם לאבד חום בקרירות הלילה.",
+      "text_markdown": "האזנים הגדולות גם עוזרות להם לאבד חום בקרירות הלילה.",
+      "tts": {
+        "text": "הָאָזְנַיִם הַגְּדוֹלוֹת גַּם עוֹזְרוֹת לָהֶם לְאַבֵּד חוֹם בִּקְרִירוּת הַלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "גבוה למעלה, נשרים ועיטים שוטים על אויר המדבר החם.",
+      "text_markdown": "גבוה למעלה, נשרים ועיטים שוטים על אויר המדבר החם.",
+      "tts": {
+        "text": "גָּבוֹהַ לְמַעְלָה, נְשָׁרִים וַעֲיִטִּים שׁוֹטִים עַל אֲוִיר הַמִּדְבָּר הַחַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם צופים בכל תנועה קטנה על הקרקע.",
+      "text_markdown": "הם צופים בכל תנועה קטנה על הקרקע.",
+      "tts": {
+        "text": "הֵם צוֹפִים בְּכָל תְּנוּעָה קְטַנָּה עַל הַקַּרְקַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "The Animals",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כל בעל חיים כאן יודע איך להמתין לקרירות, איך למצוא צל, ואיך לגרום לכל לגימת מים להחזיק.",
+      "text_markdown": "כל בעל חיים כאן יודע איך להמתין לקרירות, איך למצוא צל, ואיך לגרום לכל לגימת מים להחזיק.",
+      "tts": {
+        "text": "כּל בַעַל חַיִּים כָּאן יוֹדֵעַ אֵיךְ לְהַמְתִּין לִקְרִירוּת, אֵיךְ לִמְצוֹא צֵל, וְאֵיךְ לִגְרוֹם לְכָל לְגִימַת מַיִם לְהַחֲזִיק.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "האנשים",
+      "text_markdown": "האנשים"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשים חיים במדבר החם במשך אלפי שנים.",
+      "text_markdown": "אנשים חיים במדבר החם במשך אלפי שנים.",
+      "tts": {
+        "text": "אֲנָשִׁים חַיִּים בַּמִּדְבָּר הַחַם בְּמֶשֶׁךְ אַלְפֵי שָׁנִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מצאו דרכים שלהם לחיות בארץ של שמש וחול.",
+      "text_markdown": "הם מצאו דרכים שלהם לחיות בארץ של שמש וחול.",
+      "tts": {
+        "text": "הֵם מָצְאוּ דְרָכִים שֶׁלָּהֶם לַחֲיוֹת בְּאֶרֶץ שֶׁל שֶׁמֶשׁ וְחוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במדבריות רבים, משפחות נודדות ממקום אחד לשני עם עדריהן.",
+      "text_markdown": "במדבריות רבים, משפחות נודדות ממקום אחד לשני עם עדריהן.",
+      "tts": {
+        "text": "בְּמִדְבָּרִיּוֹת רַבִּים, מִשְׁפָּחוֹת נוֹדְדוֹת מִמָּקוֹם אֶחָד לְשֵׁנִי עִם עֲדָרֵיהֶן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בסהררה ובמדבריות של ערב, אנשים מחזיקים עדרים של גמלים, עזים וכבשים.",
+      "text_markdown": "בסהררה ובמדבריות של ערב, אנשים מחזיקים עדרים של גמלים, עזים וכבשים.",
+      "tts": {
+        "text": "בַּסַּהַרְרָה וּבְמִדְבָּרִיּוֹת שֶׁל עֲרָב, אֲנָשִׁים מַחְזִיקִים עֲדָרִים שֶׁל גְּמָלִים, עִזִּים וּכְבָשִׂים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "החיות יכולות ללכת לזמן רב בין לגימות של מים.",
+      "text_markdown": "החיות יכולות ללכת לזמן רב בין לגימות של מים.",
+      "tts": {
+        "text": "הַחַיּוֹת יְכוֹלוֹת לָלֶכֶת לְזָמַן רָב בֵּין לְגִימוֹת שֶׁל מַיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האנשים הולכים אחרי החיות, והחיות מובילות אותם אל המזון.",
+      "text_markdown": "האנשים הולכים אחרי החיות, והחיות מובילות אותם אל המזון.",
+      "tts": {
+        "text": "הָאֲנָשִׁים הוֹלְכִים אַחֲרֵי הַחַיּוֹת, וְהַחַיּוֹת מוֹבִילוֹת אוֹתָם אֶל הַמָּזוֹן.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "האהלים שלהם עשויים מבד הארוג משער החיות שלהם.",
+      "text_markdown": "האהלים שלהם עשויים מבד הארוג משער החיות שלהם.",
+      "tts": {
+        "text": "הָאֻהָלִים שֶׁלָּהֶם עֲשׂוּיִים מִבַּד הָאָרוּג מִשְּׂעַר הַחַיּוֹת שֶׁלָּהֶם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אהל אפשר להקים בשעה ולפרק בשעה.",
+      "text_markdown": "אהל אפשר להקים בשעה ולפרק בשעה.",
+      "tts": {
+        "text": "אֹהֶל אֶפְשָׁר לְהַקִּים בְּשָׁעָה וּלְפָרֵק בְּשָׁעָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא מונע מן השמש הבוערת להיכנס, ומאפשר לאויר הקריר של הלילה לעבור דרכו.",
+      "text_markdown": "הוא מונע מן השמש הבוערת להיכנס, ומאפשר לאויר הקריר של הלילה לעבור דרכו.",
+      "tts": {
+        "text": "הוּא מוֹנֵעַ מִן הַשֶּׁמֶשׁ הַבּוֹעֶרֶת לְהִיָּכְנַס, וּמְאַפְשֵׁר לַאֲוִיר הַקָּרִיר שֶׁל הַלַּיְלָה לַעֲבוֹר דְּרָכוֹ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשי המדבר לובשים בגדים ארוכים ורפויים.",
+      "text_markdown": "אנשי המדבר לובשים בגדים ארוכים ורפויים.",
+      "tts": {
+        "text": "אַנְשֵׁי הַמִּדְבָּר לוֹבְשִׁים בְּגָדִים אֲרוּכִים וּרְפוּיִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שרולים ארוכים וראש מכסה שומרים על קרירות הגוף ומגנים עליו מפני השמש.",
+      "text_markdown": "שרולים ארוכים וראש מכסה שומרים על קרירות הגוף ומגנים עליו מפני השמש.",
+      "tts": {
+        "text": "שְׁרוּלִים אֲרוּכִים וְרֹאשׁ מְכֻסֶּה שׁוֹמְרִים עַל קְרִירוּת הַגּוּף וּמְגִנִים עָלָיו מִפְּנֵי הַשֶּׁמֶשׁ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "דגמה צבועונית של בד עוזרת לחבר לראות אותך ממרחק.",
+      "text_markdown": "דגמה צבועונית של בד עוזרת לחבר לראות אותך ממרחק.",
+      "tts": {
+        "text": "דֻּגְמָה צְבוּעוֹנִית שֶׁל בַּד עוֹזֶרֶת לְחָבֵר לִרְאוֹת אוֹתְךָ מִמֶּרְחָק.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "חלק מאנשי המדבר חיים בעירות הבנויות סביב נוה מדבר.",
+      "text_markdown": "חלק מאנשי המדבר חיים בעירות הבנויות סביב נוה מדבר.",
+      "tts": {
+        "text": "חֵלֶק מֵאַנְשֵׁי הַמִּדְבָּר חַיִּים בַּעֲיָרוֹת הַבְּנוּיוֹת סָבִיב נְוֵה מִדְבָּר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם מגדלים דקלי תמרים, פירות ודגנים בטבעת הירוקה סביב המים.",
+      "text_markdown": "הם מגדלים דקלי תמרים, פירות ודגנים בטבעת הירוקה סביב המים.",
+      "tts": {
+        "text": "הֵם מְגַדְּלִים דְּקָלֵי תְּמָרִים, פֵּירוֹת וְדָגָנִים בְּטַבַּעַת הַיְרוּקָה סָבִיב הַמַּיִם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם למדו לחפור בארות עמוקות כדי למצוא את המים הנסתרים מתחת לחול.",
+      "text_markdown": "הם למדו לחפור בארות עמוקות כדי למצוא את המים הנסתרים מתחת לחול.",
+      "tts": {
+        "text": "הֵם לָמְדוּ לַחְפּוֹר בְּאָרוֹת עֲמוּקוֹת כְּדֵי לִמְצוֹא אֶת הַמַּיִם הַנִּסְתָּרִים מִתַּחַת לַחוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מטילים ממרחקים באים אל נוה המדבר כדי לנוח ולמלא את שקי המים שלהם.",
+      "text_markdown": "מטילים ממרחקים באים אל נוה המדבר כדי לנוח ולמלא את שקי המים שלהם.",
+      "tts": {
+        "text": "מַטַּיְלִים מִמֶּרְחָקִים בָּאִים אֶל נְוֵה הַמִּדְבָּר כְּדֵי לָנוּחַ וּלְמַלֵּא אֶת שְׂקֵי הַמַּיִם שֶׁלָּהֶם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אנשי המדבר מכירים כל כוכב בשמי הלילה.",
+      "text_markdown": "אנשי המדבר מכירים כל כוכב בשמי הלילה.",
+      "tts": {
+        "text": "אַנְשֵׁי הַמִּדְבָּר מַכִּירִים כָּל כּוֹכָב בִּשְׁמֵי הַלַּיְלָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם יודעים את שמותיה של כל רוח שנושבת.",
+      "text_markdown": "הם יודעים את שמותיה של כל רוח שנושבת.",
+      "tts": {
+        "text": "הֵם יוֹדְעִים אֶת שְׁמוֹתֶיהָ שֶׁל כָּל רוּחַ שֶׁנוֹשֶׁבֶת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם יכולים לקרוא את עקבותיו של כל בעל חיים בחול.",
+      "text_markdown": "הם יכולים לקרוא את עקבותיו של כל בעל חיים בחול.",
+      "tts": {
+        "text": "הֵם יְכוֹלִים לִקְרוֹא אֶת עִקְבוֹתָיו שֶׁל כָּל בַּעַל חַיִּים בַּחוֹל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הידע הזה עובר מהורים לילדים, שנה אחר שנה.",
+      "text_markdown": "הידע הזה עובר מהורים לילדים, שנה אחר שנה.",
+      "tts": {
+        "text": "הַיְדַע הַזֶּה עוֹבֵר מֵהוֹרִים לִילָדִים, שָׁנָה אַחַר שָׁנָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "The People",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "בכל מדבר גדול, לאורח החיים הזה יש שפות, שירים וספורים שלו.",
+      "text_markdown": "בכל מדבר גדול, לאורח החיים הזה יש שפות, שירים וספורים שלו.",
+      "tts": {
+        "text": "בְכָל מִדְבָּר גָּדוֹל, לְאוֹרַח הַחַיִּים הַזֶּה יֵשׁ שָׂפוֹת, שִׁירִים וְסִפּוּרִים שֶׁלּוֹ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "המדבר היום",
+      "text_markdown": "המדבר היום"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "המדבר החם הוא ביום יפה ותובעני.",
+      "text_markdown": "המדבר החם הוא ביום יפה ותובעני.",
+      "tts": {
+        "text": "הַמִּדְבָּר הַחַם הוּא בְיוֹם יָפֶה וְתוֹבְעָנִי.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא מכסה חלק גדול של היבשת על כדור הארץ.",
+      "text_markdown": "הוא מכסה חלק גדול של היבשת על כדור הארץ.",
+      "tts": {
+        "text": "הוּא מְכַסֶּה חֵלֶק גָּדוֹל שֶׁל הַיַּבֶּשֶׁת עַל כְּדוּר הָאָרֶץ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שמש המדבר החזקה היא גם אחד המקורות הגדולים ביותר של אנרגיה נקיה שלנו.",
+      "text_markdown": "שמש המדבר החזקה היא גם אחד המקורות הגדולים ביותר של אנרגיה נקיה שלנו.",
+      "tts": {
+        "text": "שֶׁמֶשׁ הַמִּדְבָּר הַחֲזָקָה הִיא גַּם אַחַד הַמְּקוֹרוֹת הַגְּדוֹלִים בְּיוֹתֵר שֶׁל אֵנֶרְגִּיָּה נְקִיָּה שֶׁלָּנוּ.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "שדות גדולים של פנלים קולטי שמש נבנים במדבריות רבים.",
+      "text_markdown": "שדות גדולים של פנלים קולטי שמש נבנים במדבריות רבים.",
+      "tts": {
+        "text": "שְׂדוֹת גְּדוֹלִים שֶׁל פַּנְלִים קוֹלְטֵי שֶׁמֶשׁ נִבְנִים בְּמִדְבְּרִיוֹת רַבִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם הופכים את שמש המדבר לחשמל עבור ערים רחוקות.",
+      "text_markdown": "הם הופכים את שמש המדבר לחשמל עבור ערים רחוקות.",
+      "tts": {
+        "text": "הֵם הוֹפְכִים אֶת שֶׁמֶשׁ הַמִּדְבָּר לְחַשְׁמַל עֲבוּר עָרִים רְחוֹקוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אך המדבר נמצא בצרה במקומות מסוימים.",
+      "text_markdown": "אך המדבר נמצא בצרה במקומות מסוימים.",
+      "tts": {
+        "text": "אַךְ הַמִּדְבָּר נִמְצָא בְּצָרָה בִּמְקוֹמוֹת מְסוּיְּמִים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "באזורים מסוימים, המדבר גדל, מפני שאנשים השתמשו עד תום במים ובדשא שבקצותיו.",
+      "text_markdown": "באזורים מסוימים, המדבר גדל, מפני שאנשים השתמשו עד תום במים ובדשא שבקצותיו.",
+      "tts": {
+        "text": "בְּאֲזוֹרִים מְסוּיְּמִים, הַמִּדְבָּר גָּדֵל, מִפְּנֵי שֶׁאֲנָשִׁים הִשְׁתַּמְּשׁוּ עַד תּוֹם בַּמַּיִם וּבַדֶּשֶׁא שֶׁבִּקְצוֹתָיו.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הדשא מת, העצים הולכים, והחול נכנס.",
+      "text_markdown": "הדשא מת, העצים הולכים, והחול נכנס.",
+      "tts": {
+        "text": "הַדֶּשֶׁא מֵת, הָעֵצִים הוֹלְכִים, וְהַחוֹל נִכְנַס.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "במקומות אחרים, העירות שבקצה המדבר משתמשות ביותר מדי מן המים הנסתרים שמתחת לקרקע.",
+      "text_markdown": "במקומות אחרים, העירות שבקצה המדבר משתמשות ביותר מדי מן המים הנסתרים שמתחת לקרקע.",
+      "tts": {
+        "text": "בִּמְקוֹמוֹת אֲחֵרִים, הָעַיָּרוֹת שֶׁבִּקְצֵה הַמִּדְבָּר מִשְׁתַּמְּשׁוֹת בְּיוֹתֵר מִדַּי מִן הַמַּיִם הַנִּסְתָּרִים שֶׁמִּתַּחַת לַקַּרְקַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "כשהמים העמקים נגמרו, גם נאות המדבר מתיבשים.",
+      "text_markdown": "כשהמים העמקים נגמרו, גם נאות המדבר מתיבשים.",
+      "tts": {
+        "text": "כְּשֶׁהַמַּיִם הָעֲמֻקִּים נִגְמְרוּ, גַּם נְאוֹת הַמִּדְבָּר מִתְיַבְּשִׁים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "קבוצות רבות ברחבי העולם פועלות כדי לטפל במדבריות.",
+      "text_markdown": "קבוצות רבות ברחבי העולם פועלות כדי לטפל במדבריות.",
+      "tts": {
+        "text": "קְבוּצוֹת רַבּוֹת בִּרְחַבֵּי הָעוֹלָם פּוֹעֲלוֹת כְּדֵי לְטַפֵּל בְּמִדְבְּרִיוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם נוטעים שורות של עצים ועשבים כדי לעצר את החול הנע.",
+      "text_markdown": "הם נוטעים שורות של עצים ועשבים כדי לעצר את החול הנע.",
+      "tts": {
+        "text": "הֵם נוֹטְעִים שׁוּרוֹת שֶׁל עֵצִים וְעַשְׂבִים כְּדֵי לַעֲצֹר אֶת הַחוֹל הַנָּע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם עוזרים לאנשים החיים במדבר להשתמש במים בחכמה.",
+      "text_markdown": "הם עוזרים לאנשים החיים במדבר להשתמש במים בחכמה.",
+      "tts": {
+        "text": "הֵם עוֹזְרִים לְאֲנָשִׁים הַחַיִּים בַּמִּדְבָּר לְהִשְׁתַּמֵּשׁ בַּמַּיִם בְּחָכְמָה.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הם חוקרים את המדבריות כדי שנוכל להבין אותם טוב יותר.",
+      "text_markdown": "הם חוקרים את המדבריות כדי שנוכל להבין אותם טוב יותר.",
+      "tts": {
+        "text": "הֵם חוֹקְרִים אֶת הַמִּדְבְּרִיוֹת כְּדֵי שֶׁנּוּכַל לְהָבִין אוֹתָם טוֹב יוֹתֵר.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "מדבר בריא מלא בחיים שלא היית מצפה להם.",
+      "text_markdown": "מדבר בריא מלא בחיים שלא היית מצפה להם.",
+      "tts": {
+        "text": "מִדְבָּר בָּרִיא מָלֵא בַּחַיִּים שֶׁלֹּא הָיִיתָ מְצַפֶּה לָהֶם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "The Desert Today",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הוא ראוי לטפולנו.",
+      "text_markdown": "הוא ראוי לטפולנו.",
+      "tts": {
+        "text": "הוּא רָאוּי לִטִּפּוּלֵנוּ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "סיכום",
+      "text_markdown": "סיכום"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "זהו המדבר החם.",
+      "text_markdown": "זהו המדבר החם.",
+      "tts": {
+        "text": "זֶהוּ הַמִּדְבָּר הַחַם.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "עולם יבש ושטוף שמש של חול, סלע, וחיים סבלניים.",
+      "text_markdown": "עולם יבש ושטוף שמש של חול, סלע, וחיים סבלניים.",
+      "tts": {
+        "text": "עוֹלָם יָבֵשׁ וְשָׁטוּף שֶׁמֶשׁ שֶׁל חוֹל, סֶלַע, וְחַיִּים סַבְלָנִיִּים.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "אם תעמוד אי פעם באחד מהם, השאר דומם לרגע.",
+      "text_markdown": "אם תעמוד אי פעם באחד מהם, השאר דומם לרגע.",
+      "tts": {
+        "text": "אִם תַּעֲמוֹד אִי פַּעַם בְּאַחַד מֵהֶם, הַשְּׁאָר דּוֹמֵם לְרֶגַע.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הקשב לרוח הנושבת על פני הדיונות.",
+      "text_markdown": "הקשב לרוח הנושבת על פני הדיונות.",
+      "tts": {
+        "text": "הַקְשֵׁב לָרוּחַ הַנּוֹשְׁבֶת עַל פְּנֵי הַדְּיוּנוֹת.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "הרגש את חום השמש ואת קרירות הצל.",
+      "text_markdown": "הרגש את חום השמש ואת קרירות הצל.",
+      "tts": {
+        "text": "הַרְגֵּשׁ אֶת חוּם הַשֶּׁמֶשׁ וְאֶת קְרִירוּת הַצֵּל.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Closing",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "תשמע את לב הביום פועם סביבך.",
+      "text_markdown": "תשמע את לב הביום פועם סביבך.",
+      "tts": {
+        "text": "תִּשְׁמַע אֶת לֵב הַבִּיּוּם פּוֹעֵם סְבִיבְךָ.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

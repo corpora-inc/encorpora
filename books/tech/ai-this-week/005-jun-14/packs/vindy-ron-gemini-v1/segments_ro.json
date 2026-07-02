@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "ro",
+  "total_segments": 121,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "Bun venit la AI This Week.",
+      "text_markdown": "Bun venit la AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Bun venit la AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "Eu sunt Vindy.",
+      "text_markdown": "Eu sunt Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Eu sunt Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "Alături de mine, ca întotdeauna, este Ron.",
+      "text_markdown": "Alături de mine, ca întotdeauna, este Ron.",
+      "title": "",
+      "tts": {
+        "text": "Alături de mine, ca întotdeauna, este Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "Mă bucur să fiu aici, Vindy.",
+      "text_markdown": "Mă bucur să fiu aici, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Mă bucur să fiu aici, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "Astăzi este duminică, 14 iunie 2026.",
+      "text_markdown": "Astăzi este duminică, 14 iunie 2026.",
+      "title": "",
+      "tts": {
+        "text": "Astăzi este duminică, paisprezece iunie două mii douăzeci și șase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "Două lucruri sunt diferite astăzi.",
+      "text_markdown": "Două lucruri sunt diferite astăzi.",
+      "title": "",
+      "tts": {
+        "text": "Două lucruri sunt diferite astăzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "Ne mutăm duminica, iar pentru prima dată vă vom spune cine realizează de fapt această emisiune.",
+      "text_markdown": "Ne mutăm duminica, iar pentru prima dată vă vom spune cine realizează de fapt această emisiune.",
+      "title": "",
+      "tts": {
+        "text": "Ne mutăm duminica, iar pentru prima dată vă vom spune cine realizează de fapt această emisiune.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "Apoi înapoi la programul obișnuit — open weights, laboratoare mici și săptămâna AI în sens larg.",
+      "text_markdown": "Apoi înapoi la programul obișnuit — open weights, laboratoare mici și săptămâna AI în sens larg.",
+      "title": "",
+      "tts": {
+        "text": "Apoi înapoi la programul obișnuit — open weights, laboratoare mici și săptămâna AI în sens larg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "Urmează — mutarea programului și de ce.",
+      "text_markdown": "Urmează — mutarea programului și de ce.",
+      "title": "",
+      "tts": {
+        "text": "Urmează — mutarea programului și de ce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "O primă privire la Corpora Inc., echipa mică din spatele aplicației Corpán și a acestui podcast.",
+      "text_markdown": "O primă privire la Corpora Inc., echipa mică din spatele aplicației Corpán și a acestui podcast.",
+      "title": "",
+      "tts": {
+        "text": "O primă privire la Corpora Inc., echipa mică din spatele aplicației Corpán și a acestui podcast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "O știre importantă despre beatlounge, noul nostru pachet muzical lansat în Corpán 0.18.0.",
+      "text_markdown": "O știre importantă despre beatlounge, noul nostru pachet muzical lansat în Corpán 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "O știre importantă despre beatlounge, noul nostru pachet muzical lansat în Corpán zero punct unu opt punct zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "Open weights ale săptămânii, conduse de primul model de text cu difuzie deschisă de la Google.",
+      "text_markdown": "Open weights ale săptămânii, conduse de primul model de text cu difuzie deschisă de la Google.",
+      "title": "",
+      "tts": {
+        "text": "Open weights ale săptămânii, conduse de primul model de text cu difuzie deschisă de la Google.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "O scurtă prezentare a titlurilor prin prisma ecosistemului deschis.",
+      "text_markdown": "O scurtă prezentare a titlurilor prin prisma ecosistemului deschis.",
+      "title": "",
+      "tts": {
+        "text": "O scurtă prezentare a titlurilor prin prisma ecosistemului deschis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "Un mic laborator al săptămânii — unsprezece persoane din Paris care fac un pariu contrarian pe siliciul AMD.",
+      "text_markdown": "Un mic laborator al săptămânii — unsprezece persoane din Paris care fac un pariu contrarian pe siliciul AMD.",
+      "title": "",
+      "tts": {
+        "text": "Un mic laborator al săptămânii — unsprezece persoane din Paris care fac un pariu contrarian pe siliciul A. M. D.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "Și conceptul nostru al săptămânii — difuzie versus autoregresiv, trucul din spatele lansării principale din această săptămână.",
+      "text_markdown": "Și conceptul nostru al săptămânii — difuzie versus autoregresiv, trucul din spatele lansării principale din această săptămână.",
+      "title": "",
+      "tts": {
+        "text": "Și conceptul nostru al săptămânii — difuzie versus autoregresiv, trucul din spatele lansării principale din această săptămână.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "Ron, să începem cu programul.",
+      "text_markdown": "Ron, să începem cu programul.",
+      "title": "",
+      "tts": {
+        "text": "Ron, să începem cu programul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "De ce ne mutăm de miercuri?",
+      "text_markdown": "De ce ne mutăm de miercuri?",
+      "title": "",
+      "tts": {
+        "text": "De ce ne mutăm de miercuri?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "Miercuri era ziua lui Odin, iar Odin era ocupat să conducă Asgardul.",
+      "text_markdown": "Miercuri era ziua lui Odin, iar Odin era ocupat să conducă Asgardul.",
+      "title": "",
+      "tts": {
+        "text": "Miercuri era ziua lui Odin, iar Odin era ocupat să conducă Asgardul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "Suntem o echipă mică cu slujbe de zi, iar o tăietură la mijlocul săptămânii nu a ieșit niciodată perfect.",
+      "text_markdown": "Suntem o echipă mică cu slujbe de zi, iar o tăietură la mijlocul săptămânii nu a ieșit niciodată perfect.",
+      "title": "",
+      "tts": {
+        "text": "Suntem o echipă mică cu slujbe de zi, iar o tăietură la mijlocul săptămânii nu a ieșit niciodată perfect.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "Duminicile încheie săptămâna și o încep pe următoarea, ceea ce a părut ritmul potrivit pentru o emisiune de știri.",
+      "text_markdown": "Duminicile încheie săptămâna și o încep pe următoarea, ceea ce a părut ritmul potrivit pentru o emisiune de știri.",
+      "title": "",
+      "tts": {
+        "text": "Duminicile încheie săptămâna și o încep pe următoarea, ceea ce a părut ritmul potrivit pentru o emisiune de știri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "Cum arată de fapt lansarea?",
+      "text_markdown": "Cum arată de fapt lansarea?",
+      "title": "",
+      "tts": {
+        "text": "Cum arată de fapt lansarea?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "Începe sâmbătă în engleză și continuă până luni dimineață, limbă cu limbă, pe măsură ce fiecare traducere și trecere audio se finalizează.",
+      "text_markdown": "Începe sâmbătă în engleză și continuă până luni dimineață, limbă cu limbă, pe măsură ce fiecare traducere și trecere audio se finalizează.",
+      "title": "",
+      "tts": {
+        "text": "Începe sâmbătă în engleză și continuă până luni dimineață, limbă cu limbă, pe măsură ce fiecare traducere și trecere audio se finalizează.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "Până la cafeaua de luni, ar trebui să fim aproape de cincizeci de limbi.",
+      "text_markdown": "Până la cafeaua de luni, ar trebui să fim aproape de cincizeci de limbi.",
+      "title": "",
+      "tts": {
+        "text": "Până la cafeaua de luni, ar trebui să fim aproape de cincizeci de limbi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "Ceea ce ne aduce la al doilea lucru nou.",
+      "text_markdown": "Ceea ce ne aduce la al doilea lucru nou.",
+      "title": "",
+      "tts": {
+        "text": "Ceea ce ne aduce la al doilea lucru nou.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "Cine realizează această emisiune.",
+      "text_markdown": "Cine realizează această emisiune.",
+      "title": "",
+      "tts": {
+        "text": "Cine realizează această emisiune.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "Corpora Inc., o mică echipă independentă, construiește aplicația Corpán și produce acest podcast.",
+      "text_markdown": "Corpora Inc., o mică echipă independentă, construiește aplicația Corpán și produce acest podcast.",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc., o mică echipă independentă, construiește aplicația Corpán și produce acest podcast.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "Ce este Corpán.",
+      "text_markdown": "Ce este Corpán.",
+      "title": "",
+      "tts": {
+        "text": "Ce este Corpán.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "Un loc de joacă pentru limbă, muzică și învățare, construit cu prioritate pe dispozitiv.",
+      "text_markdown": "Un loc de joacă pentru limbă, muzică și învățare, construit cu prioritate pe dispozitiv.",
+      "title": "",
+      "tts": {
+        "text": "Un loc de joacă pentru limbă, muzică și învățare, construit cu prioritate pe dispozitiv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Explicați „on-device-first” — ce înseamnă asta în practică.",
+      "text_markdown": "Explicați „on-device-first” — ce înseamnă asta în practică.",
+      "title": "",
+      "tts": {
+        "text": "Explicați „on device first” — ce înseamnă asta în practică.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "Înseamnă că prioritizăm rularea locală ori de câte ori funcționalitatea permite.",
+      "text_markdown": "Înseamnă că prioritizăm rularea locală ori de câte ori funcționalitatea permite.",
+      "title": "",
+      "tts": {
+        "text": "Înseamnă că prioritizăm rularea locală ori de câte ori funcționalitatea permite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "Qwen3-4B pentru asistent, Whisper large-v3 pentru recunoaștere vocală, Chatterbox pentru sinteză vocală, Stable Diffusion trei și jumătate pentru imagini, pipeline-uri LoRA pentru tutori de personaje.",
+      "text_markdown": "Qwen3-4B pentru asistent, Whisper large-v3 pentru recunoaștere vocală, Chatterbox pentru sinteză vocală, Stable Diffusion trei și jumătate pentru imagini, pipeline-uri LoRA pentru tutori de personaje.",
+      "title": "",
+      "tts": {
+        "text": "Qwen trei patru B pentru asistent, Whisper large v trei pentru recunoaștere vocală, Chatterbox pentru sinteză vocală, Stable Diffusion trei și jumătate pentru imagini, pipeline-uri LoRA pentru tutori de personaje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "Toate acestea rulează pe telefonul sau tableta dumneavoastră, offline, în modul avion, în mijlocul pustietății.",
+      "text_markdown": "Toate acestea rulează pe telefonul sau tableta dumneavoastră, offline, în modul avion, în mijlocul pustietății.",
+      "title": "",
+      "tts": {
+        "text": "Toate acestea rulează pe telefonul sau tableta dumneavoastră, offline, în modul avion, în mijlocul pustietății.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "Funcționalitățile care necesită cu adevărat rețeaua — radio mondial, multiplayer — folosesc rețeaua, și nu pretindem altfel.",
+      "text_markdown": "Funcționalitățile care necesită cu adevărat rețeaua — radio mondial, multiplayer — folosesc rețeaua, și nu pretindem altfel.",
+      "title": "",
+      "tts": {
+        "text": "Funcționalitățile care necesită cu adevărat rețeaua — radio mondial, multiplayer — folosesc rețeaua, și nu pretindem altfel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "Și partea de afaceri.",
+      "text_markdown": "Și partea de afaceri.",
+      "title": "",
+      "tts": {
+        "text": "Și partea de afaceri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "Echipă independentă și suplă, fără miliarde de dolari capital în spate, fără reclame în aplicație astăzi, cu un nivel gratuit generos și un abonament premium opțional pentru persoanele care doresc să susțină munca.",
+      "text_markdown": "Echipă independentă și suplă, fără miliarde de dolari capital în spate, fără reclame în aplicație astăzi, cu un nivel gratuit generos și un abonament premium opțional pentru persoanele care doresc să susțină munca.",
+      "title": "",
+      "tts": {
+        "text": "Echipă independentă și suplă, fără miliarde de dolari capital în spate, fără reclame în aplicație astăzi, cu un nivel gratuit generos și un abonament premium opțional pentru persoanele care doresc să susțină munca.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "Am dori să rămânem fără reclame cât de mult putem — nu promitem pentru totdeauna, dar aceasta este direcția.",
+      "text_markdown": "Am dori să rămânem fără reclame cât de mult putem — nu promitem pentru totdeauna, dar aceasta este direcția.",
+      "title": "",
+      "tts": {
+        "text": "Am dori să rămânem fără reclame cât de mult putem — nu promitem pentru totdeauna, dar aceasta este direcția.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "Care este dovada că livrați efectiv.",
+      "text_markdown": "Care este dovada că livrați efectiv.",
+      "title": "",
+      "tts": {
+        "text": "Care este dovada că livrați efectiv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "În majoritatea săptămânilor livrăm ceva — o narațiune de carte, un pachet, o lansare de aplicație, această emisiune — în peste treizeci și cinci de limbi astăzi, și în creștere.",
+      "text_markdown": "În majoritatea săptămânilor livrăm ceva — o narațiune de carte, un pachet, o lansare de aplicație, această emisiune — în peste treizeci și cinci de limbi astăzi, și în creștere.",
+      "title": "",
+      "tts": {
+        "text": "În majoritatea săptămânilor livrăm ceva — o narațiune de carte, un pachet, o lansare de aplicație, această emisiune — în peste treizeci și cinci plus de limbi astăzi, și în creștere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "De ce să facem asta deloc.",
+      "text_markdown": "De ce să facem asta deloc.",
+      "title": "",
+      "tts": {
+        "text": "De ce să facem asta deloc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "Aceasta este propunerea — dovedind că o experiență de învățare multilingvă, de calitate de frontieră, prioritar pe dispozitiv, poate proveni de la o echipă mică fără capital mare, menținând în același timp aplicația fără reclame cât de mult putem.",
+      "text_markdown": "Aceasta este propunerea — dovedind că o experiență de învățare multilingvă, de calitate de frontieră, prioritar pe dispozitiv, poate proveni de la o echipă mică fără capital mare, menținând în același timp aplicația fără reclame cât de mult putem.",
+      "title": "",
+      "tts": {
+        "text": "Aceasta este propunerea — dovedind că o experiență de învățare multilingvă, de calitate de frontieră, prioritar pe dispozitiv, poate proveni de la o echipă mică fără capital mare, menținând în același timp aplicația fără reclame cât de mult putem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "Ceea ce ne aduce la știrea principală — beatlounge.",
+      "text_markdown": "Ceea ce ne aduce la știrea principală — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Ceea ce ne aduce la știrea principală — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "Se lansează în Corpán 0.18.0 săptămâna aceasta.",
+      "text_markdown": "Se lansează în Corpán 0.18.0 săptămâna aceasta.",
+      "title": "",
+      "tts": {
+        "text": "Se lansează în Corpán zero punct unu opt punct zero săptămâna aceasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "beatlounge este un sequencer de ritm și un instrument lingvistic într-o singură cutie.",
+      "text_markdown": "beatlounge este un sequencer de ritm și un instrument lingvistic într-o singură cutie.",
+      "title": "",
+      "tts": {
+        "text": "beatlounge este un sequencer de ritm și un instrument lingvistic într-o singură cutie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "Un sequencer adresat prin tick-uri la nouă sute șaizeci de impulsuri pe pătrime, un motor de armonie care vorbește moduri occidentale, thaats indiene, melakartas carnatic și maqamat arabe, și un corpus de fraze de peste zece milioane de fraze în limbaj real, în peste cincizeci de limbi.",
+      "text_markdown": "Un sequencer adresat prin tick-uri la nouă sute șaizeci de impulsuri pe pătrime, un motor de armonie care vorbește moduri occidentale, thaats indiene, melakartas carnatic și maqamat arabe, și un corpus de fraze de peste zece milioane de fraze în limbaj real, în peste cincizeci de limbi.",
+      "title": "",
+      "tts": {
+        "text": "Un sequencer adresat prin tick-uri la nouă sute șaizeci de impulsuri pe pătrime, un motor de armonie care vorbește moduri occidentale, thaats indiene, melakartas carnatic și maqamat arabe, și un corpus de fraze de peste zece milioane de fraze în limbaj real, în peste cincizeci de limbi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "Toate cu performanță de înălțime, și redabile offline odată ce pachetul este pe dispozitivul dumneavoastră.",
+      "text_markdown": "Toate cu performanță de înălțime, și redabile offline odată ce pachetul este pe dispozitivul dumneavoastră.",
+      "title": "",
+      "tts": {
+        "text": "Toate cu performanță de înălțime, și redabile offline odată ce pachetul este pe dispozitivul dumneavoastră.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "Deci instrumentul este limbajul.",
+      "text_markdown": "Deci instrumentul este limbajul.",
+      "title": "",
+      "tts": {
+        "text": "Deci instrumentul este limbajul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "Redați fraze așa cum ați reda note.",
+      "text_markdown": "Redați fraze așa cum ați reda note.",
+      "title": "",
+      "tts": {
+        "text": "Redați fraze așa cum ați reda note.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "O frază hindi pe ritmul unu, o interjecție arabă pe spatele ritmului doi, o silabă mandarină ca o undă de panglică.",
+      "text_markdown": "O frază hindi pe ritmul unu, o interjecție arabă pe spatele ritmului doi, o silabă mandarină ca o undă de panglică.",
+      "title": "",
+      "tts": {
+        "text": "O frază hindi pe ritmul unu, o interjecție arabă pe spatele ritmului doi, o silabă mandarină ca o undă de panglică.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "Este un DAW unde eșantioanele sunt propoziții, vocalizate de TTS-ul de pe dispozitiv.",
+      "text_markdown": "Este un DAW unde eșantioanele sunt propoziții, vocalizate de TTS-ul de pe dispozitiv.",
+      "title": "",
+      "tts": {
+        "text": "Este un DAW unde eșantioanele sunt propoziții, vocalizate de T T S-ul de pe dispozitiv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "Nu este necesară teoria muzicală.",
+      "text_markdown": "Nu este necesară teoria muzicală.",
+      "title": "",
+      "tts": {
+        "text": "Nu este necesară teoria muzicală.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Nimic de fapt.",
+      "text_markdown": "Nimic de fapt.",
+      "title": "",
+      "tts": {
+        "text": "Nimic de fapt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "Motorul de armonie gestionează regulile; indicați sunetele care vă plac și modurile rămân curate.",
+      "text_markdown": "Motorul de armonie gestionează regulile; indicați sunetele care vă plac și modurile rămân curate.",
+      "title": "",
+      "tts": {
+        "text": "Motorul de armonie gestionează regulile; indicați sunetele care vă plac și modurile rămân curate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "Ce altceva este în 0.18.0.",
+      "text_markdown": "Ce altceva este în 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Ce altceva este în zero punct unu opt punct zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "Trei elemente de inginerie sub capotă — cusăturile gazdă pentru pachetele de conținut au fost activate cu beatlounge ca pilot.",
+      "text_markdown": "Trei elemente de inginerie sub capotă — cusăturile gazdă pentru pachetele de conținut au fost activate cu beatlounge ca pilot.",
+      "title": "",
+      "tts": {
+        "text": "Trei elemente de inginerie sub capotă — cusăturile gazdă pentru pachetele de conținut au fost activate cu beatlounge ca pilot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Android captează acum firimituri de erori native, astfel încât blocările llama și ggml să fie diagnosticate corect.",
+      "text_markdown": "Android captează acum firimituri de erori native, astfel încât blocările llama și ggml să fie diagnosticate corect.",
+      "title": "",
+      "tts": {
+        "text": "Android captează acum firimituri de erori native, astfel încât blocările llama și ggml să fie diagnosticate corect.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "Și am remediat instalarea modelului multi-gigabyte care obișnuia să OOM iOS — acum transmite pe disc în loc să bufferizeze doi gigabytes și jumătate de Qwen3-4B în RAM.",
+      "text_markdown": "Și am remediat instalarea modelului multi-gigabyte care obișnuia să OOM iOS — acum transmite pe disc în loc să bufferizeze doi gigabytes și jumătate de Qwen3-4B în RAM.",
+      "title": "",
+      "tts": {
+        "text": "Și am remediat instalarea modelului multi-gigabyte care obișnuia să OOM iOS — acum transmite pe disc în loc să bufferizeze doi și jumătate gigabytes de Qwen trei patru B în RAM.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "Plictisitor dedesubt, distractiv deasupra.",
+      "text_markdown": "Plictisitor dedesubt, distractiv deasupra.",
+      "title": "",
+      "tts": {
+        "text": "Plictisitor dedesubt, distractiv deasupra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "Ceea ce este, în mare, întregul rezumat al companiei.",
+      "text_markdown": "Ceea ce este, în mare, întregul rezumat al companiei.",
+      "title": "",
+      "tts": {
+        "text": "Ceea ce este, în mare, întregul rezumat al companiei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "Bine, să trecem la open weights.",
+      "text_markdown": "Bine, să trecem la open weights.",
+      "title": "",
+      "tts": {
+        "text": "Bine, să trecem la open weights.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "Care a fost cel mare săptămâna aceasta.",
+      "text_markdown": "Care a fost cel mare săptămâna aceasta.",
+      "title": "",
+      "tts": {
+        "text": "Care a fost cel mare săptămâna aceasta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "Google a lansat DiffusionGemma.",
+      "text_markdown": "Google a lansat DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "Google a lansat DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "Un amestec de experți cu douăzeci și șase de miliarde de parametri, cu trei virgulă opt miliarde activi, Apache 2.0 pe Hugging Face, care generează text prin difuzie în loc de autoregresie.",
+      "text_markdown": "Un amestec de experți cu douăzeci și șase de miliarde de parametri, cu trei virgulă opt miliarde activi, Apache 2.0 pe Hugging Face, care generează text prin difuzie în loc de autoregresie.",
+      "title": "",
+      "tts": {
+        "text": "Un amestec de experți cu douăzeci și șase de miliarde de parametri, cu trei virgulă opt miliarde activi, Apache doi punct zero pe Hugging Face, care generează text prin difuzie în loc de autoregresie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-063",
+      "text": "În limbaj simplu — ce înseamnă de fapt difuzia-pentru-text.",
+      "text_markdown": "În limbaj simplu — ce înseamnă de fapt difuzia-pentru-text.",
+      "title": "",
+      "tts": {
+        "text": "În limbaj simplu — ce înseamnă de fapt difuzia pentru text.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-064",
+      "text": "În loc să prezică un token pe rând, denoisează un bloc de două sute cincizeci și șase de tokeni în paralel.",
+      "text_markdown": "În loc să prezică un token pe rând, denoisează un bloc de două sute cincizeci și șase de tokeni în paralel.",
+      "title": "",
+      "tts": {
+        "text": "În loc să prezică un token pe rând, denoisează un bloc de două sute cincizeci și șase de tokeni în paralel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-065",
+      "text": "Peste o mie de tokeni pe secundă pe un singur H100, de aproximativ patru ori mai rapid decât Gemma autoregresivă comparabilă.",
+      "text_markdown": "Peste o mie de tokeni pe secundă pe un singur H100, de aproximativ patru ori mai rapid decât Gemma autoregresivă comparabilă.",
+      "title": "",
+      "tts": {
+        "text": "Peste o mie de tokeni pe secundă pe un singur H o sută, de aproximativ patru ori mai rapid decât Gemma autoregresivă comparabilă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-066",
+      "text": "Și dezavantajul.",
+      "text_markdown": "Și dezavantajul.",
+      "title": "",
+      "tts": {
+        "text": "Și dezavantajul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-067",
+      "text": "Scoruri mai mici la MMLU și codare — Google o spune chiar ei; această lansare este pentru sarcini critice de viteză, nu pentru a urca în clasament.",
+      "text_markdown": "Scoruri mai mici la MMLU și codare — Google o spune chiar ei; această lansare este pentru sarcini critice de viteză, nu pentru a urca în clasament.",
+      "title": "",
+      "tts": {
+        "text": "Scoruri mai mici la M M L U și codare — Google o spune chiar ei; această lansare este pentru sarcini critice de viteză, nu pentru a urca în clasament.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-068",
+      "text": "Și modele vocale deschise — vreo noutate?",
+      "text_markdown": "Și modele vocale deschise — orice.",
+      "title": "",
+      "tts": {
+        "text": "Și modele vocale deschise, vreo noutate?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-069",
+      "text": "Două au fost lansate în aceeași săptămână.",
+      "text_markdown": "Două au fost lansate în aceeași săptămână.",
+      "title": "",
+      "tts": {
+        "text": "Două au fost lansate în aceeași săptămână.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-070",
+      "text": "RedNote, rețeaua socială chineză, a lansat open-source dots-dot-tts — două miliarde de parametri, complet continuu, fără tokeni discreți nicăieri în pipeline, latență de cincizeci și patru de milisecunde pentru primul token, Apache 2.0.",
+      "text_markdown": "RedNote, rețeaua socială chineză, a lansat open-source dots-dot-tts — două miliarde de parametri, complet continuu, fără tokeni discreți nicăieri în pipeline, latență de cincizeci și patru de milisecunde pentru primul token, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "RedNote, rețeaua socială chineză, a lansat open-source dots dot t t s — două miliarde de parametri, complet continuu, fără tokeni discreți nicăieri în pipeline, latență de cincizeci și patru de milisecunde pentru primul token, Apache doi punct zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-071",
+      "text": "Și Boson AI a lansat Higgs Audio versiunea trei — patru miliarde de parametri, o sută două limbi, douăzeci și unu de tokeni de control al emoțiilor, ieșire în streaming, licență non-comercială; ultima parte este asteriscul.",
+      "text_markdown": "Și Boson AI a lansat Higgs Audio versiunea trei — patru miliarde de parametri, o sută două limbi, douăzeci și unu de tokeni de control al emoțiilor, ieșire în streaming, licență non-comercială; ultima parte este asteriscul.",
+      "title": "",
+      "tts": {
+        "text": "Și Boson A I a lansat Higgs Audio versiunea trei — patru miliarde de parametri, o sută două limbi, douăzeci și unu de tokeni de control al emoțiilor, ieșire în streaming, licență non-comercială; ultima parte este asteriscul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-072",
+      "text": "Clonarea vocii este oficial o marfă.",
+      "text_markdown": "Clonarea vocii este oficial o marfă.",
+      "title": "",
+      "tts": {
+        "text": "Clonarea vocii este oficial o marfă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-073",
+      "text": "Așa este.",
+      "text_markdown": "Așa este.",
+      "title": "",
+      "tts": {
+        "text": "Așa este.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-074",
+      "text": "Încă unul din partea deschisă.",
+      "text_markdown": "Încă unul din partea deschisă.",
+      "title": "",
+      "tts": {
+        "text": "Încă unul din partea deschisă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-075",
+      "text": "NVIDIA a lansat în liniște Nemotron 3 Ultra — un model hibrid Mamba-atenție cu cinci sute cincizeci de miliarde de parametri.",
+      "text_markdown": "NVIDIA a lansat în liniște Nemotron 3 Ultra — un model hibrid Mamba-atenție cu cinci sute cincizeci de miliarde de parametri.",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA a lansat în liniște Nemotron trei Ultra — un model hibrid Mamba-atenție cu cinci sute cincizeci de miliarde de parametri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-076",
+      "text": "Ponderile și rețeta completă de antrenament sub licența Linux Foundation OpenMDW — cea mai cu adevărat deschisă lansare a lunii.",
+      "text_markdown": "Ponderile și rețeta completă de antrenament sub licența Linux Foundation OpenMDW — cea mai cu adevărat deschisă lansare a lunii.",
+      "title": "",
+      "tts": {
+        "text": "Ponderile și rețeta completă de antrenament sub licența Linux Foundation Open M D W — cea mai cu adevărat deschisă lansare a lunii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-077",
+      "text": "Și nimeni nu a acoperit-o.",
+      "text_markdown": "Și nimeni nu a acoperit-o.",
+      "title": "",
+      "tts": {
+        "text": "Și nimeni nu a acoperit-o.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-078",
+      "text": "Pentru că înregistrăm NVIDIA la categoria siliciu, nu laborator.",
+      "text_markdown": "Pentru că înregistrăm NVIDIA la categoria siliciu, nu laborator.",
+      "title": "",
+      "tts": {
+        "text": "Pentru că înregistrăm NVIDIA la categoria siliciu, nu laborator.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-079",
+      "text": "Dar săptămâna aceasta au lansat open-reproductibil la scară de frontieră.",
+      "text_markdown": "Dar săptămâna aceasta au lansat open-reproductibil la scară de frontieră.",
+      "title": "",
+      "tts": {
+        "text": "Dar săptămâna aceasta au lansat open reproductibil la scară de frontieră.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-080",
+      "text": "Titluri, scurt și rapid.",
+      "text_markdown": "Titluri, scurt și rapid.",
+      "title": "",
+      "tts": {
+        "text": "Titluri, scurt și rapid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-081",
+      "text": "În primul rând.",
+      "text_markdown": "În primul rând.",
+      "title": "",
+      "tts": {
+        "text": "În primul rând.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-082",
+      "text": "Moonshot a lansat Kimi K2-punct-șapte-Code — un trilion de parametri, treizeci și două de miliarde activi, pretinde că depășește Claude Opus 4.8 pe propriul benchmark al Moonshot.",
+      "text_markdown": "Moonshot a lansat Kimi K2-punct-șapte-Code — un trilion de parametri, treizeci și două de miliarde activi, pretinde că depășește Claude Opus 4.8 pe propriul benchmark al Moonshot.",
+      "title": "",
+      "tts": {
+        "text": "Moonshot a lansat Kimi K doi punct șapte Code — un trilion de parametri, treizeci și două de miliarde activi, pretinde că depășește Claude Opus patru punct opt pe propriul benchmark al Moonshot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-083",
+      "text": "Practicienii au verificat cifrele și spun că benchmark-urile nu se confirmă; ponderile auto-găzduite sunt de cinci sute nouăzeci și cinci de gigabytes, modul de gândire nu poate fi dezactivat.",
+      "text_markdown": "Practicienii au verificat cifrele și spun că benchmark-urile nu se confirmă; ponderile auto-găzduite sunt de cinci sute nouăzeci și cinci de gigabytes, modul de gândire nu poate fi dezactivat.",
+      "title": "",
+      "tts": {
+        "text": "Practicienii au verificat cifrele și spun că benchmark-urile nu se confirmă; ponderile auto-găzduite sunt de cinci sute nouăzeci și cinci de gigabytes, modul de gândire nu poate fi dezactivat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-084",
+      "text": "Cuvântul „deschis” face multă treabă în acea propoziție.",
+      "text_markdown": "Cuvântul „deschis” face multă treabă în acea propoziție.",
+      "title": "",
+      "tts": {
+        "text": "Cuvântul „deschis” face multă treabă în acea propoziție.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-085",
+      "text": "În al doilea rând.",
+      "text_markdown": "În al doilea rând.",
+      "title": "",
+      "tts": {
+        "text": "În al doilea rând.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-086",
+      "text": "Cohere, un laborator occidental care aproape niciodată nu lansează ponderi, a lansat de fapt ponderi — North Mini Code, treizeci de miliarde în total, trei miliarde activi, Apache 2.0, rulează pe un singur H100 la patru biți.",
+      "text_markdown": "Cohere, un laborator occidental care aproape niciodată nu lansează ponderi, a lansat de fapt ponderi — North Mini Code, treizeci de miliarde în total, trei miliarde activi, Apache 2.0, rulează pe un singur H100 la patru biți.",
+      "title": "",
+      "tts": {
+        "text": "Cohere, un laborator occidental care aproape niciodată nu lansează ponderi, a lansat de fapt ponderi — North Mini Code, treizeci de miliarde în total, trei miliarde activi, Apache doi punct zero, rulează pe un singur H o sută la patru biți.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-087",
+      "text": "Un laborator occidental care livrează un adevărat Apache 2.0 în 2026 este o știre în sine.",
+      "text_markdown": "Un laborator occidental care livrează un adevărat Apache 2.0 în 2026 este o știre în sine.",
+      "title": "",
+      "tts": {
+        "text": "Un laborator occidental care livrează un adevărat Apache doi punct zero în două mii douăzeci și șase este o știre în sine.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-088",
+      "text": "În al treilea rând.",
+      "text_markdown": "În al treilea rând.",
+      "title": "",
+      "tts": {
+        "text": "În al treilea rând.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-089",
+      "text": "Apple a pus un accent puternic la WWDC pe AI-ul pe dispozitiv ca poveste strategică.",
+      "text_markdown": "Apple a pus un accent puternic la WWDC pe AI-ul pe dispozitiv ca poveste strategică.",
+      "title": "",
+      "tts": {
+        "text": "Apple a pus un accent puternic la W W D C pe A I-ul pe dispozitiv ca poveste strategică.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-090",
+      "text": "Dar noul model Siri este, se pare, o distilare a Gemini de la Google, pe care Apple o licențiază și o micșorează.",
+      "text_markdown": "Dar noul model Siri este, se pare, o distilare a Gemini de la Google, pe care Apple o licențiază și o micșorează.",
+      "title": "",
+      "tts": {
+        "text": "Dar noul model Siri este, se pare, o distilare a Gemini de la Google, pe care Apple o licențiază și o micșorează.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-091",
+      "text": "Inferență locală, lanț de aprovizionare complicat.",
+      "text_markdown": "Inferență locală, lanț de aprovizionare complicat.",
+      "title": "",
+      "tts": {
+        "text": "Inferență locală, lanț de aprovizionare complicat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-092",
+      "text": "Și al patrulea.",
+      "text_markdown": "Și al patrulea.",
+      "title": "",
+      "tts": {
+        "text": "Și al patrulea.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-093",
+      "text": "Alibaba a lansat Qwen 3.7-Plus pentru disponibilitate generală, multimodal, generează interfețe grafice din capturi de ecran, aproximativ patruzeci de cenți per milion de tokenuri de intrare.",
+      "text_markdown": "Alibaba a lansat Qwen 3.7-Plus pentru disponibilitate generală, multimodal, generează interfețe grafice din capturi de ecran, aproximativ patruzeci de cenți per milion de tokenuri de intrare.",
+      "title": "",
+      "tts": {
+        "text": "Alibaba a lansat Qwen trei punct șapte Plus pentru disponibilitate generală, multimodal, generează interfețe grafice din capturi de ecran, aproximativ patruzeci de cenți per milion de tokenuri de intrare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-094",
+      "text": "În ciuda brandului Qwen, acesta este doar API, nu cu ponderi deschise.",
+      "text_markdown": "În ciuda brandului Qwen, acesta este doar API, nu cu ponderi deschise.",
+      "title": "",
+      "tts": {
+        "text": "În ciuda brandului Qwen, acesta este doar A P I, nu cu ponderi deschise.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-095",
+      "text": "Merită știut, deoarece ascultătorii confundă Qwen cu open; acesta nu este.",
+      "text_markdown": "Merită știut, deoarece ascultătorii confundă Qwen cu open; acesta nu este.",
+      "title": "",
+      "tts": {
+        "text": "Merită știut, deoarece ascultătorii confundă Qwen cu open; acesta nu este.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-096",
+      "text": "Micul laborator al săptămânii.",
+      "text_markdown": "Micul laborator al săptămânii.",
+      "title": "",
+      "tts": {
+        "text": "Micul laborator al săptămânii.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-097",
+      "text": "Se numește Kog.",
+      "text_markdown": "Se numește Kog.",
+      "title": "",
+      "tts": {
+        "text": "Se numește Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-098",
+      "text": "Unsprezece persoane la Paris, pretinzând trei mii de tokenuri de ieșire pe secundă per cerere pe opt GPU-uri AMD MI300X.",
+      "text_markdown": "Unsprezece persoane la Paris, pretinzând trei mii de tokenuri de ieșire pe secundă per cerere pe opt GPU-uri AMD MI300X.",
+      "title": "",
+      "tts": {
+        "text": "Unsprezece persoane la Paris, pretinzând trei mii de tokenuri de ieșire pe secundă per cerere pe opt A M D M I trei sute X G P U-uri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-099",
+      "text": "Argumentul lor — industria a cheltuit prea mult pe siliciu personalizat pentru inferență, când blocajul a fost software-ul dintotdeauna.",
+      "text_markdown": "Argumentul lor — industria a cheltuit prea mult pe siliciu personalizat pentru inferență, când blocajul a fost software-ul dintotdeauna.",
+      "title": "",
+      "tts": {
+        "text": "Argumentul lor — industria a cheltuit prea mult pe siliciu personalizat pentru inferență, când blocajul a fost software-ul dintotdeauna.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-100",
+      "text": "Unsprezece persoane, și AMD în loc de NVIDIA.",
+      "text_markdown": "Unsprezece persoane, și AMD în loc de NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Unsprezece persoane, și AMD în loc de NVIDIA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-101",
+      "text": "Imediat după un IPO de siliciu personalizat, un timing contrarian perfect.",
+      "text_markdown": "Imediat după un IPO de siliciu personalizat, un timing contrarian perfect.",
+      "title": "",
+      "tts": {
+        "text": "Imediat după un I P O de siliciu personalizat, un timing contrarian perfect.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-102",
+      "text": "Ce ziceți de hardware-ul de pe bancă.",
+      "text_markdown": "Ce ziceți de hardware-ul de pe bancă.",
+      "title": "",
+      "tts": {
+        "text": "Ce ziceți de hardware-ul de pe bancă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-103",
+      "text": "Raspberry Pi a lansat AI HAT+ 2 — patruzeci de TOPS atașați unui Pi 5.",
+      "text_markdown": "Raspberry Pi a lansat AI HAT+ 2 — patruzeci de TOPS atașați unui Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi a lansat A I H A T plus doi — patruzeci de T O P S atașați unui Pi cinci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-104",
+      "text": "Jetson Orin Nano Super de la NVIDIA realizează șaizeci și șapte de TOPS pentru sub trei sute de dolari.",
+      "text_markdown": "Jetson Orin Nano Super de la NVIDIA realizează șaizeci și șapte de TOPS pentru sub trei sute de dolari.",
+      "title": "",
+      "tts": {
+        "text": "Jetson Orin Nano Super de la N V I D I A realizează șaizeci și șapte de T O P S pentru sub trei sute de dolari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-105",
+      "text": "Pe dispozitiv însemna odinioară un Mac.",
+      "text_markdown": "Pe dispozitiv însemna odinioară un Mac.",
+      "title": "",
+      "tts": {
+        "text": "Pe dispozitiv însemna odinioară un Mac.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-106",
+      "text": "Acum înseamnă o placă pe care o poți ascunde într-un sertar.",
+      "text_markdown": "Acum înseamnă o placă pe care o poți ascunde într-un sertar.",
+      "title": "",
+      "tts": {
+        "text": "Acum înseamnă o placă pe care o poți ascunde într-un sertar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-107",
+      "text": "Conceptul săptămânii — difuzie versus autoregresiv.",
+      "text_markdown": "Conceptul săptămânii — difuzie versus autoregresiv.",
+      "title": "",
+      "tts": {
+        "text": "Conceptul săptămânii — difuzie versus autoregresiv.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-108",
+      "text": "Aceeași destinație, rute diferite.",
+      "text_markdown": "Aceeași destinație, rute diferite.",
+      "title": "",
+      "tts": {
+        "text": "Aceeași destinație, rute diferite.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-109",
+      "text": "Modelele autoregresive, majoritatea LLM-urilor pe care le cunoașteți, generează un token pe rând, se bazează pe el, generează următorul, repetă — secvențial prin design.",
+      "text_markdown": "Modelele autoregresive, majoritatea LLM-urilor pe care le cunoașteți, generează un token pe rând, se bazează pe el, generează următorul, repetă — secvențial prin design.",
+      "title": "",
+      "tts": {
+        "text": "Modelele autoregresive, majoritatea LLM-urilor pe care le cunoașteți, generează un token pe rând, se bazează pe el, generează următorul, repetă — secvențial prin design.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-110",
+      "text": "Modelele de difuzie încep cu un bloc de zgomot pur și îl denoizează pe tot odată, pe parcursul unui număr fix de pași.",
+      "text_markdown": "Modelele de difuzie încep cu un bloc de zgomot pur și îl denoizează pe tot odată, pe parcursul unui număr fix de pași.",
+      "title": "",
+      "tts": {
+        "text": "Modelele de difuzie încep cu un bloc de zgomot pur și îl denoizează pe tot odată, pe parcursul unui număr fix de pași.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-111",
+      "text": "Sacrifici puțină calitate pentru paralelism, iar la un număr mic de pași obții acele numere impresionante de debit.",
+      "text_markdown": "Sacrifici puțină calitate pentru paralelism, iar la un număr mic de pași obții acele numere impresionante de debit.",
+      "title": "",
+      "tts": {
+        "text": "Sacrifici puțină calitate pentru paralelism, iar la un număr mic de pași obții acele numere impresionante de debit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-112",
+      "text": "Așadar, DiffusionGemma este prima dată când avem ponderi deschise pentru a simți cu adevărat diferența.",
+      "text_markdown": "Așadar, DiffusionGemma este prima dată când avem ponderi deschise pentru a simți cu adevărat diferența.",
+      "title": "",
+      "tts": {
+        "text": "Așadar, DiffusionGemma este prima dată când avem ponderi deschise pentru a simți cu adevărat diferența.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-113",
+      "text": "Prima dată la această scară, da.",
+      "text_markdown": "Prima dată la această scară, da.",
+      "title": "",
+      "tts": {
+        "text": "Prima dată la această scară, da.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-114",
+      "text": "Și de aceea echipele de inferență open-source contează săptămâna aceasta — llama-dot-cpp, vLLM, MLX — ei sunt cei care vor învăța să o facă să funcționeze perfect pe hardware real.",
+      "text_markdown": "Și de aceea echipele de inferență open-source contează săptămâna aceasta — llama-dot-cpp, vLLM, MLX — ei sunt cei care vor învăța să o facă să funcționeze perfect pe hardware real.",
+      "title": "",
+      "tts": {
+        "text": "Și de aceea echipele de inferență open-source contează săptămâna aceasta — llama dot c p p, v L L M, M L X — ei sunt cei care vor învăța să o facă să funcționeze perfect pe hardware real.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-115",
+      "text": "Un loc bun de încheiere.",
+      "text_markdown": "Un loc bun de încheiere.",
+      "title": "",
+      "tts": {
+        "text": "Un loc bun de încheiere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-116",
+      "text": "Ron, mulțumesc.",
+      "text_markdown": "Ron, mulțumesc.",
+      "title": "",
+      "tts": {
+        "text": "Ron, mulțumesc.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-117",
+      "text": "Oricând, Vindy.",
+      "text_markdown": "Oricând, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Oricând, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-118",
+      "text": "Acesta a fost AI This Week pentru 14 iunie 2026.",
+      "text_markdown": "Acesta a fost AI This Week pentru 14 iunie 2026.",
+      "title": "",
+      "tts": {
+        "text": "Acesta a fost A I This Week pentru paisprezece iunie două mii douăzeci și șase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-119",
+      "text": "Același spectacol modest, un nou interval orar duminical.",
+      "text_markdown": "Același spectacol modest, un nou interval orar duminical.",
+      "title": "",
+      "tts": {
+        "text": "Același spectacol modest, un nou interval orar duminical.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-120",
+      "text": "Limbile vor continua să apară până luni dimineață; Corpán 0.18.0 este disponibil oriunde găsești aplicații — încearcă beatlounge.",
+      "text_markdown": "Limbile vor continua să apară până luni dimineață; Corpán 0.18.0 este disponibil oriunde găsești aplicații — încearcă beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Limbile vor continua să apară până luni dimineață; Corpán zero punct unu opt punct zero este disponibil oriunde găsești aplicații — încearcă beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-121",
+      "text": "Până duminica viitoare, aveți grijă.",
+      "text_markdown": "Până duminica viitoare, aveți grijă.",
+      "title": "",
+      "tts": {
+        "text": "Până duminica viitoare, aveți grijă.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

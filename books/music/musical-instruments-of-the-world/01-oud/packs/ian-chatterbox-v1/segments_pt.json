@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_oud_history",
+  "language": "pt",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Uma Nota para o Ouvinte",
+      "text_markdown": "Uma Nota para o Ouvinte"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este é um livro sobre o ud, um instrumento musical de madeira com cordas.",
+      "text_markdown": "Este é um livro sobre o ud, um instrumento musical de madeira com cordas.",
+      "tts": {
+        "text": "Este é um livro sobre o ud, um instrumento musical de madeira com cordas.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "As pessoas tocam-no há mais de mil anos.",
+      "text_markdown": "As pessoas tocam-no há mais de mil anos.",
+      "tts": {
+        "text": "As pessoas tocam o ud há mais de mil anos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pode ouvir o ud tanto em aldeias nas montanhas quanto em cidades do litoral.",
+      "text_markdown": "Pode ouvir o ud tanto em aldeias nas montanhas quanto em cidades do litoral.",
+      "tts": {
+        "text": "Pode ouvir o ud tanto em aldeias nas montanhas quanto em cidades do litoral.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pode ouvi-lo em palácios antigos e em pequenos palcos de madeira.",
+      "text_markdown": "Pode ouvi-lo em palácios antigos e em pequenos palcos de madeira.",
+      "tts": {
+        "text": "Pode ouvir o ud em palácios antigos e em pequenos palcos de madeira.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Neste livro, vamos aprender como é o ud, como ele é construído, e os nomes das pessoas que marcaram a sua trajetória.",
+      "text_markdown": "Neste livro, vamos aprender como é o ud, como ele é construído, e os nomes das pessoas que marcaram a sua trajetória.",
+      "tts": {
+        "text": "Neste livro, vamos aprender como é o ud, como ele é construído, e os nomes das pessoas que marcaram a sua trajetória.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "No fim, saberá por que razão o ud às vezes é chamado o rei de todas as cordas.",
+      "text_markdown": "No fim, saberá por que razão o ud às vezes é chamado o rei de todas as cordas.",
+      "tts": {
+        "text": "No fim, saberá por que razão o ud às vezes é chamado o rei de todas as cordas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 1 — O que é um ud?",
+      "text_markdown": "Capítulo 1 — O que é um ud?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um ud é um instrumento de cordas.",
+      "text_markdown": "Um ud é um instrumento de cordas.",
+      "tts": {
+        "text": "Um ud é um instrumento de cordas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É um tipo de alaúde, com um corpo em forma de pera cortada ao meio.",
+      "text_markdown": "É um tipo de alaúde, com um corpo em forma de pera cortada ao meio.",
+      "tts": {
+        "text": "É um tipo de alaúde, com um corpo em forma de pera cortada ao meio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A parte de trás do ud é redonda e funda, como um bojo de madeira.",
+      "text_markdown": "A parte de trás do ud é redonda e funda, como um bojo de madeira.",
+      "tts": {
+        "text": "A parte de trás do ud é redonda e funda, como um bojo de madeira.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A frente é plana.",
+      "text_markdown": "A frente é plana.",
+      "tts": {
+        "text": "A frente é plana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chamamos tampo harmónico a essa frente plana.",
+      "text_markdown": "Chamamos tampo harmónico a essa frente plana.",
+      "tts": {
+        "text": "Chamamos tampo harmónico a essa frente plana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O braço do ud é curto, e não tem trastes.",
+      "text_markdown": "O braço do ud é curto, e não tem trastes.",
+      "tts": {
+        "text": "O braço do ud é curto, e não tem trastes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os trastes são as pequenas linhas de metal que vê numa guitarra.",
+      "text_markdown": "Os trastes são as pequenas linhas de metal que vê numa guitarra.",
+      "tts": {
+        "text": "Os trastes são as pequenas linhas de metal que vê numa guitarra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sem eles, quem toca pode deslizar entre as notas com muita suavidade.",
+      "text_markdown": "Sem eles, quem toca pode deslizar entre as notas com muita suavidade.",
+      "tts": {
+        "text": "Sem eles, quem toca pode deslizar entre as notas com muita suavidade.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A maioria dos udes tem onze cordas, agrupadas em seis pares distintos.",
+      "text_markdown": "A maioria dos udes tem onze cordas, agrupadas em seis pares distintos.",
+      "tts": {
+        "text": "A maioria dos udes tem onze cordas, agrupadas em seis pares distintos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chamamos ordem a cada par.",
+      "text_markdown": "Chamamos ordem a cada par.",
+      "tts": {
+        "text": "Chamamos ordem a cada par.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cinco das ordens têm duas cordas afinadas da mesma maneira.",
+      "text_markdown": "Cinco das ordens têm duas cordas afinadas da mesma maneira.",
+      "tts": {
+        "text": "Cinco das ordens têm duas cordas afinadas da mesma maneira.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "A sexta ordem tem só uma corda.",
+      "text_markdown": "A sexta ordem tem só uma corda.",
+      "tts": {
+        "text": "A sexta ordem tem só uma corda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "É assim que chegamos a onze.",
+      "text_markdown": "É assim que chegamos a onze.",
+      "tts": {
+        "text": "É assim que chegamos a onze.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quem toca segura o ud sobre o colo.",
+      "text_markdown": "Quem toca segura o ud sobre o colo.",
+      "tts": {
+        "text": "Quem toca segura o ud sobre o colo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uma mão pressiona as cordas no braço.",
+      "text_markdown": "Uma mão pressiona as cordas no braço.",
+      "tts": {
+        "text": "Uma mão pressiona as cordas no braço.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A outra mão toca-as com uma palheta fina chamada risha.",
+      "text_markdown": "A outra mão toca-as com uma palheta fina chamada risha.",
+      "tts": {
+        "text": "A outra mão toca as cordas com uma palheta fina chamada richa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O som é quente e profundo.",
+      "text_markdown": "O som é quente e profundo.",
+      "tts": {
+        "text": "O som é quente e profundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É um pouco triste e um pouco doce, tudo ao mesmo tempo.",
+      "text_markdown": "É um pouco triste e um pouco doce, tudo ao mesmo tempo.",
+      "tts": {
+        "text": "É um pouco triste e um pouco doce, tudo ao mesmo tempo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 2 — De onde vem o nome",
+      "text_markdown": "Capítulo 2 — De onde vem o nome"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O nome ud é uma palavra árabe que significa madeira.",
+      "text_markdown": "O nome ud é uma palavra árabe que significa madeira.",
+      "tts": {
+        "text": "O nome ud é uma palavra árabe que significa madeira.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O instrumento recebe o nome da matéria de que é feito.",
+      "text_markdown": "O instrumento recebe o nome da matéria de que é feito.",
+      "tts": {
+        "text": "O instrumento recebe o nome da matéria de que é feito.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muito antes do ud, havia um primo mais antigo chamado barbat.",
+      "text_markdown": "Muito antes do ud, havia um primo mais antigo chamado barbat.",
+      "tts": {
+        "text": "Muito antes do ud, havia um primo mais antigo chamado barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O barbat era tocado na antiga Pérsia há mais de dois mil anos.",
+      "text_markdown": "O barbat era tocado na antiga Pérsia há mais de dois mil anos.",
+      "tts": {
+        "text": "O barbat era tocado na antiga Pérsia há mais de dois mil anos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O barbat tinha um corpo de madeira e cordas de seda.",
+      "text_markdown": "O barbat tinha um corpo de madeira e cordas de seda.",
+      "tts": {
+        "text": "O barbat tinha um corpo de madeira e cordas de seda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O seu som era longo e suave.",
+      "text_markdown": "O seu som era longo e suave.",
+      "tts": {
+        "text": "O seu som era longo e suave.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os músicos das cortes dos reis tocavam-no.",
+      "text_markdown": "Os músicos das cortes dos reis tocavam-no.",
+      "tts": {
+        "text": "Os músicos das cortes dos reis tocavam o barbat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Devagar, o barbat foi mudando.",
+      "text_markdown": "Devagar, o barbat foi mudando.",
+      "tts": {
+        "text": "Devagar, o barbat foi mudando.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O corpo ficou mais redondo, as cordas passaram a pares, e o braço ficou mais curto.",
+      "text_markdown": "O corpo ficou mais redondo, as cordas passaram a pares, e o braço ficou mais curto.",
+      "tts": {
+        "text": "O corpo ficou mais redondo, as cordas passaram a pares, e o braço ficou mais curto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Por volta do ano setecentos, no mundo árabe, já se tocava o que hoje chamamos ud.",
+      "text_markdown": "Por volta do ano setecentos, no mundo árabe, já se tocava o que hoje chamamos ud.",
+      "tts": {
+        "text": "Por volta do ano setecentos, no mundo árabe, já se tocava o que hoje chamamos ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A partir daí, o ud viajou.",
+      "text_markdown": "A partir daí, o ud viajou.",
+      "tts": {
+        "text": "A partir daí, o ud viajou.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Foi para o Egito e para o Norte de África.",
+      "text_markdown": "Foi para o Egito e para o Norte de África.",
+      "tts": {
+        "text": "Foi para o Egito e para o Norte de África.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Atravessou o mar até Espanha.",
+      "text_markdown": "Atravessou o mar até Espanha.",
+      "tts": {
+        "text": "Atravessou o mar até Espanha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Subiu para norte, até à Turquia e à Grécia.",
+      "text_markdown": "Subiu para norte, até à Turquia e à Grécia.",
+      "tts": {
+        "text": "Subiu para norte, até à Turquia e à Grécia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Cada lugar deu ao ud um pouco da sua própria voz.",
+      "text_markdown": "Cada lugar deu ao ud um pouco da sua própria voz.",
+      "tts": {
+        "text": "Cada lugar deu ao ud um pouco da sua própria voz.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mas o nome ficou o mesmo.",
+      "text_markdown": "Mas o nome ficou o mesmo.",
+      "tts": {
+        "text": "Mas o nome ficou o mesmo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Onde quer que fosse, o instrumento de madeira continuava a ser o ud.",
+      "text_markdown": "Onde quer que fosse, o instrumento de madeira continuava a ser o ud.",
+      "tts": {
+        "text": "Onde quer que fosse, o instrumento de madeira continuava a ser o ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 3 — Como se constrói um ud",
+      "text_markdown": "Capítulo 3 — Como se constrói um ud"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Construir um ud leva muito tempo.",
+      "text_markdown": "Construir um ud leva muito tempo.",
+      "tts": {
+        "text": "Construir um ud leva muito tempo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Um bom construtor pode passar muitas semanas num só instrumento.",
+      "text_markdown": "Um bom construtor pode passar muitas semanas num só instrumento.",
+      "tts": {
+        "text": "Um bom construtor pode passar muitas semanas num só instrumento.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O bojo é feito de tiras finas de madeira, geralmente entre quinze e vinte e cinco.",
+      "text_markdown": "O bojo é feito de tiras finas de madeira, geralmente entre quinze e vinte e cinco.",
+      "tts": {
+        "text": "O bojo é feito de tiras finas de madeira, geralmente entre quinze e vinte e cinco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cada tira é curvada e colada à seguinte.",
+      "text_markdown": "Cada tira é curvada e colada à seguinte.",
+      "tts": {
+        "text": "Cada tira é curvada e colada à seguinte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Juntas, formam as costas fundas e redondas do ud.",
+      "text_markdown": "Juntas, formam as costas fundas e redondas do ud.",
+      "tts": {
+        "text": "Juntas, formam as costas fundas e redondas do ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A madeira importa.",
+      "text_markdown": "A madeira importa.",
+      "tts": {
+        "text": "A madeira importa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A nogueira dá um som quente, o mogno dá um som mais escuro, e a amoreira dá um som claro e vibrante.",
+      "text_markdown": "A nogueira dá um som quente, o mogno dá um som mais escuro, e a amoreira dá um som claro e vibrante.",
+      "tts": {
+        "text": "A nogueira dá um som quente, o mogno dá um som mais escuro, e a amoreira dá um som claro e vibrante.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O construtor escolhe a madeira pela voz que quer.",
+      "text_markdown": "O construtor escolhe a madeira pela voz que quer.",
+      "tts": {
+        "text": "O construtor escolhe a madeira pela voz que quer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "A frente plana, o tampo harmónico, é feita de abeto.",
+      "text_markdown": "A frente plana, o tampo harmónico, é feita de abeto.",
+      "tts": {
+        "text": "A frente plana, o tampo harmónico, é feita de abeto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O abeto é leve e forte, e deixa a madeira vibrar com facilidade.",
+      "text_markdown": "O abeto é leve e forte, e deixa a madeira vibrar com facilidade.",
+      "tts": {
+        "text": "O abeto é leve e forte, e deixa a madeira vibrar com facilidade.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É essa vibração que ouvimos como música.",
+      "text_markdown": "É essa vibração que ouvimos como música.",
+      "tts": {
+        "text": "É essa vibração que ouvimos como música.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "No tampo harmónico, há rosetas, que são pequenos orifícios redondos.",
+      "text_markdown": "No tampo harmónico, há rosetas, que são pequenos orifícios redondos.",
+      "tts": {
+        "text": "No tampo harmónico, há rosetas, que são pequenos orifícios redondos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Muitas vezes, são talhados com belos desenhos decorativos.",
+      "text_markdown": "Muitas vezes, são talhados com belos desenhos decorativos.",
+      "tts": {
+        "text": "Muitas vezes, são talhados com belos desenhos decorativos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As rosetas deixam o som sair do bojo.",
+      "text_markdown": "As rosetas deixam o som sair do bojo.",
+      "tts": {
+        "text": "As rosetas deixam o som sair do bojo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Antigamente, as cordas eram feitas de tripa, um tipo de tendão animal seco.",
+      "text_markdown": "Antigamente, as cordas eram feitas de tripa, um tipo de tendão animal seco.",
+      "tts": {
+        "text": "Antigamente, as cordas eram feitas de tripa, um tipo de tendão animal seco.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hoje, a maioria das cordas é de nylon, com um fio fino de metal enrolado nas mais graves.",
+      "text_markdown": "Hoje, a maioria das cordas é de nylon, com um fio fino de metal enrolado nas mais graves.",
+      "tts": {
+        "text": "Hoje, a maioria das cordas é de nylon, com um fio fino de metal enrolado nas mais graves.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O músico toca as cordas com uma risha.",
+      "text_markdown": "O músico toca as cordas com uma risha.",
+      "tts": {
+        "text": "O músico toca as cordas com uma richa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "A palavra risha significa pena.",
+      "text_markdown": "A palavra risha significa pena.",
+      "tts": {
+        "text": "A palavra richa significa pena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "As primeiras palhetas eram feitas de penas de águia.",
+      "text_markdown": "As primeiras palhetas eram feitas de penas de águia.",
+      "tts": {
+        "text": "As primeiras palhetas eram feitas de penas de águia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hoje, são feitas de plástico, osso ou casco de tartaruga.",
+      "text_markdown": "Hoje, são feitas de plástico, osso ou casco de tartaruga.",
+      "tts": {
+        "text": "Hoje, são feitas de plástico, osso ou casco de tartaruga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 4 — Onde se toca o ud",
+      "text_markdown": "Capítulo 4 — Onde se toca o ud"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud é tocado em todo o mundo árabe.",
+      "text_markdown": "O ud é tocado em todo o mundo árabe.",
+      "tts": {
+        "text": "O ud é tocado em todo o mundo árabe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pode ouvi-lo no Egito, na Síria, no Iraque, no Líbano, no Golfo e no Norte de África.",
+      "text_markdown": "Pode ouvi-lo no Egito, na Síria, no Iraque, no Líbano, no Golfo e no Norte de África.",
+      "tts": {
+        "text": "Pode ouvir o ud no Egito, na Síria, no Iraque, no Líbano, no Golfo e no Norte de África.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Também é tocado fora do mundo árabe.",
+      "text_markdown": "Também é tocado fora do mundo árabe.",
+      "tts": {
+        "text": "Também é tocado fora do mundo árabe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os turcos têm o seu próprio ud.",
+      "text_markdown": "Os turcos têm o seu próprio ud.",
+      "tts": {
+        "text": "Os turcos têm o seu próprio ud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os gregos têm o seu próprio ud.",
+      "text_markdown": "Os gregos têm o seu próprio ud.",
+      "tts": {
+        "text": "Os gregos têm o seu próprio ud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os arménios e os iranianos tocam instrumentos aparentados.",
+      "text_markdown": "Os arménios e os iranianos tocam instrumentos aparentados.",
+      "tts": {
+        "text": "Os arménios e os iranianos tocam instrumentos aparentados.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Em Espanha, foi tocado durante centenas de anos.",
+      "text_markdown": "Em Espanha, foi tocado durante centenas de anos.",
+      "tts": {
+        "text": "Em Espanha, foi tocado durante centenas de anos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoje, há três tipos principais de ud.",
+      "text_markdown": "Hoje, há três tipos principais de ud.",
+      "tts": {
+        "text": "Hoje, há três tipos principais de ud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O ud árabe é grande e fundo, com um som cheio e lento.",
+      "text_markdown": "O ud árabe é grande e fundo, com um som cheio e lento.",
+      "tts": {
+        "text": "O ud árabe é grande e fundo, com um som cheio e lento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "É o ud do Egito e do Levante.",
+      "text_markdown": "É o ud do Egito e do Levante.",
+      "tts": {
+        "text": "É o ud do Egito e do Levante.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud turco é menor e mais brilhante, afinado um pouco mais alto do que o ud árabe.",
+      "text_markdown": "O ud turco é menor e mais brilhante, afinado um pouco mais alto do que o ud árabe.",
+      "tts": {
+        "text": "O ud turco é menor e mais brilhante, afinado um pouco mais alto do que o ud árabe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O primo persa chama-se barbat.",
+      "text_markdown": "O primo persa chama-se barbat.",
+      "tts": {
+        "text": "O primo persa tem o nome de barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É pequeno e agudo, e usa um conjunto diferente de notas.",
+      "text_markdown": "É pequeno e agudo, e usa um conjunto diferente de notas.",
+      "tts": {
+        "text": "É pequeno e agudo, e usa um conjunto diferente de notas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud é o coração da música árabe clássica e da música turca de makam.",
+      "text_markdown": "O ud é o coração da música árabe clássica e da música turca de makam.",
+      "tts": {
+        "text": "O ud é o coração da música árabe clássica e da música turca de macam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toca-se em casamentos e funerais, em salas de concerto e em salas de estar com amigos.",
+      "text_markdown": "Toca-se em casamentos e funerais, em salas de concerto e em salas de estar com amigos.",
+      "tts": {
+        "text": "O ud toca em casamentos e funerais, em salas de concerto e em salas de estar com amigos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Onde as pessoas se juntam e querem música com alma, alguém pode tirar um ud.",
+      "text_markdown": "Onde as pessoas se juntam e querem música com alma, alguém pode tirar um ud.",
+      "tts": {
+        "text": "Onde as pessoas se juntam e querem música com alma, alguém pode tirar um ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 5 — O Maqam",
+      "text_markdown": "Capítulo 5 — O Maqam"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando toca piano, carrega nas teclas brancas e pretas.",
+      "text_markdown": "Quando toca piano, carrega nas teclas brancas e pretas.",
+      "tts": {
+        "text": "Quando toca piano, carrega nas teclas brancas e pretas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Há doze notas em cada oitava, e cada passo tem o mesmo tamanho.",
+      "text_markdown": "Há doze notas em cada oitava, e cada passo tem o mesmo tamanho.",
+      "tts": {
+        "text": "Há doze notas em cada oitava, e cada passo tem o mesmo tamanho.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Chamamos a isto temperamento igual.",
+      "text_markdown": "Chamamos a isto temperamento igual.",
+      "tts": {
+        "text": "Chamamos a isto temperamento igual.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud não funciona assim.",
+      "text_markdown": "O ud não funciona assim.",
+      "tts": {
+        "text": "O ud não funciona assim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O ud usa um sistema muito mais antigo, chamado maqam.",
+      "text_markdown": "O ud usa um sistema muito mais antigo, chamado maqam.",
+      "tts": {
+        "text": "O ud usa um sistema muito mais antigo, chamado macam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um maqam é uma forma de escolher notas, e há muitos maqamat.",
+      "text_markdown": "Um maqam é uma forma de escolher notas, e há muitos maqamat.",
+      "tts": {
+        "text": "Um macam é uma forma de escolher notas, e há muitos macamat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cada um tem o seu próprio clima.",
+      "text_markdown": "Cada um tem o seu próprio clima.",
+      "tts": {
+        "text": "Cada um tem o seu próprio clima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Alguns são felizes, alguns são tristes, e alguns soam um pouco misteriosos.",
+      "text_markdown": "Alguns são felizes, alguns são tristes, e alguns soam um pouco misteriosos.",
+      "tts": {
+        "text": "Alguns são felizes, alguns são tristes, e alguns soam um pouco misteriosos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O grande segredo do maqam é que ele tem mais notas do que um piano.",
+      "text_markdown": "O grande segredo do maqam é que ele tem mais notas do que um piano.",
+      "tts": {
+        "text": "O grande segredo do macam é que ele tem mais notas do que um piano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Entre as teclas brancas e pretas, há passos menores a que chamamos quartos de tom.",
+      "text_markdown": "Entre as teclas brancas e pretas, há passos menores a que chamamos quartos de tom.",
+      "tts": {
+        "text": "Entre as teclas brancas e pretas, há passos menores a que chamamos quartos de tom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um quarto de tom é metade de um semitom.",
+      "text_markdown": "Um quarto de tom é metade de um semitom.",
+      "tts": {
+        "text": "Um quarto de tom é metade de um semitom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É uma nota minúscula que vive entre as notas que conhece.",
+      "text_markdown": "É uma nota minúscula que vive entre as notas que conhece.",
+      "tts": {
+        "text": "É uma nota minúscula que vive entre as notas que conhece.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Num piano, não a pode tocar.",
+      "text_markdown": "Num piano, não a pode tocar.",
+      "tts": {
+        "text": "Num piano, não a pode tocar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Num ud, desliza o dedo para a encontrar.",
+      "text_markdown": "Num ud, desliza o dedo para a encontrar.",
+      "tts": {
+        "text": "Num ud, desliza o dedo para a encontrar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um maqam constrói-se com pequenos grupos de notas.",
+      "text_markdown": "Um maqam constrói-se com pequenos grupos de notas.",
+      "tts": {
+        "text": "Um macam é construído com pequenos grupos de notas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Djins é o nome dado a cada pequeno grupo.",
+      "text_markdown": "Djins é o nome dado a cada pequeno grupo.",
+      "tts": {
+        "text": "Djins é o nome dado a cada pequeno grupo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "A maioria dos ajnas tem quatro notas.",
+      "text_markdown": "A maioria dos ajnas tem quatro notas.",
+      "tts": {
+        "text": "A maioria dos ajnas tem quatro notas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pode pensar num jins como uma peça de Lego musical, e empilhar várias para fazer um maqam.",
+      "text_markdown": "Pode pensar num jins como uma peça de Lego musical, e empilhar várias para fazer um maqam.",
+      "tts": {
+        "text": "Pode pensar num djins como uma peça de Lego musical, e empilhar várias para fazer um macam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O maqam é melódico, não harmónico.",
+      "text_markdown": "O maqam é melódico, não harmónico.",
+      "tts": {
+        "text": "O macam é melódico, não harmónico.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Isso quer dizer que a música avança uma nota de cada vez, em vez de empilhar notas em acordes, como na guitarra.",
+      "text_markdown": "Isso quer dizer que a música avança uma nota de cada vez, em vez de empilhar notas em acordes, como na guitarra.",
+      "tts": {
+        "text": "Isso quer dizer que a música avança uma nota de cada vez, em vez de empilhar notas em acordes, como na guitarra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando um ud faz um solo lento e sinuoso, o músico move-se dentro de um maqam.",
+      "text_markdown": "Quando um ud faz um solo lento e sinuoso, o músico move-se dentro de um maqam.",
+      "tts": {
+        "text": "Quando um ud faz um solo lento e sinuoso, o músico percorre um macam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vai tirando notas da peça, e depois desliza para a seguinte.",
+      "text_markdown": "Vai tirando notas da peça, e depois desliza para a seguinte.",
+      "tts": {
+        "text": "Vai tirando notas da peça, e depois desliza para a seguinte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esse solo tem um nome.",
+      "text_markdown": "Esse solo tem um nome.",
+      "tts": {
+        "text": "Esse solo tem um nome.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Chamamos-lhe taqsim.",
+      "text_markdown": "Chamamos-lhe taqsim.",
+      "tts": {
+        "text": "Chamamos esse solo de tacsim.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Um bom taqsim pode fazê-lo rir, e pode fazê-lo chorar.",
+      "text_markdown": "Um bom taqsim pode fazê-lo rir, e pode fazê-lo chorar.",
+      "tts": {
+        "text": "Um bom tacsim pode fazer rir, e pode fazer chorar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É o ud na sua forma mais bela.",
+      "text_markdown": "É o ud na sua forma mais bela.",
+      "tts": {
+        "text": "É o ud na sua forma mais bela.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 6 — Os grandes mestres",
+      "text_markdown": "Capítulo 6 — Os grandes mestres"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud é tocado há mais de mil anos.",
+      "text_markdown": "O ud é tocado há mais de mil anos.",
+      "tts": {
+        "text": "O ud é tocado há mais de mil anos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Em todo esse tempo, algumas pessoas mudaram-no para sempre.",
+      "text_markdown": "Em todo esse tempo, algumas pessoas mudaram-no para sempre.",
+      "tts": {
+        "text": "Em todo esse tempo, algumas pessoas mudaram o ud para sempre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O primeiro foi mais pensador do que músico, e chamava-se al-Farabi.",
+      "text_markdown": "O primeiro foi mais pensador do que músico, e chamava-se al-Farabi.",
+      "tts": {
+        "text": "O primeiro foi mais pensador do que músico, e o nome dele era al Farabi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Viveu, mais ou menos, de oitocentos e setenta e dois a novecentos e cinquenta, e trabalhou na grande cidade de Bagdade.",
+      "text_markdown": "Viveu, mais ou menos, de oitocentos e setenta e dois a novecentos e cinquenta, e trabalhou na grande cidade de Bagdade.",
+      "tts": {
+        "text": "Viveu, mais ou menos, de oitocentos e setenta e dois a novecentos e cinquenta, e trabalhou na grande cidade de Bagdade.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al-Farabi escreveu um livro enorme sobre música.",
+      "text_markdown": "Al-Farabi escreveu um livro enorme sobre música.",
+      "tts": {
+        "text": "Al Farabi escreveu um livro enorme sobre música.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Explicou como vibram as cordas.",
+      "text_markdown": "Explicou como vibram as cordas.",
+      "tts": {
+        "text": "Explicou como vibram as cordas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Explicou por que razão algumas notas soam doces juntas.",
+      "text_markdown": "Explicou por que razão algumas notas soam doces juntas.",
+      "tts": {
+        "text": "Explicou por que razão algumas notas soam doces juntas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Explicou por que razão a música pode mudar o que uma pessoa sente.",
+      "text_markdown": "Explicou por que razão a música pode mudar o que uma pessoa sente.",
+      "tts": {
+        "text": "Explicou por que razão a música pode mudar o que uma pessoa sente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "O seu livro foi lido em árabe e em latim durante séculos.",
+      "text_markdown": "O seu livro foi lido em árabe e em latim durante séculos.",
+      "tts": {
+        "text": "O seu livro foi lido em árabe e em latim durante séculos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O segundo grande mestre do ud foi um cantor chamado Ziryab, nascido no Iraque por volta de setecentos e oitenta e nove.",
+      "text_markdown": "O segundo grande mestre do ud foi um cantor chamado Ziryab, nascido no Iraque por volta de setecentos e oitenta e nove.",
+      "tts": {
+        "text": "O segundo grande mestre do ud foi um cantor chamado Ziriab, nascido no Iraque por volta de setecentos e oitenta e nove.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Em jovem, teve de sair de Bagdade à pressa.",
+      "text_markdown": "Em jovem, teve de sair de Bagdade à pressa.",
+      "tts": {
+        "text": "Em jovem, teve de sair de Bagdade à pressa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab viajou para oeste por todo o Norte de África.",
+      "text_markdown": "Ziryab viajou para oeste por todo o Norte de África.",
+      "tts": {
+        "text": "Ziriab viajou para oeste por todo o Norte de África.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chegou à cidade de Córdova, em Espanha, no ano oitocentos e vinte e dois.",
+      "text_markdown": "Chegou à cidade de Córdova, em Espanha, no ano oitocentos e vinte e dois.",
+      "tts": {
+        "text": "Chegou à cidade de Córdova, em Espanha, no ano oitocentos e vinte e dois.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O rei de Córdova adorou a sua música e deu-lhe casa, salário e tempo para ensinar.",
+      "text_markdown": "O rei de Córdova adorou a sua música e deu-lhe casa, salário e tempo para ensinar.",
+      "tts": {
+        "text": "O rei de Córdova adorou a sua música e deu a ele casa, salário e tempo para ensinar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Em Espanha, Ziryab abriu uma escola de música.",
+      "text_markdown": "Em Espanha, Ziryab abriu uma escola de música.",
+      "tts": {
+        "text": "Em Espanha, Ziriab abriu uma escola de música.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alguns dizem que foi o primeiro conservatório do mundo.",
+      "text_markdown": "Alguns dizem que foi o primeiro conservatório do mundo.",
+      "tts": {
+        "text": "Alguns dizem que foi o primeiro conservatório do mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Acrescentou ao ud uma quinta ordem de cordas, e mudou a forma de fazer as palhetas.",
+      "text_markdown": "Acrescentou ao ud uma quinta ordem de cordas, e mudou a forma de fazer as palhetas.",
+      "tts": {
+        "text": "Acrescentou ao ud uma quinta ordem de cordas, e mudou a forma de fazer as palhetas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Muito depois de Ziryab, já no nosso tempo, um músico do Iraque levou o ud a um novo lugar.",
+      "text_markdown": "Muito depois de Ziryab, já no nosso tempo, um músico do Iraque levou o ud a um novo lugar.",
+      "tts": {
+        "text": "Muito depois de Ziriab, já no nosso tempo, um músico do Iraque levou o ud a um novo lugar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Chamava-se Munir Bashir, e as pessoas chamavam-lhe o rei do ud.",
+      "text_markdown": "Chamava-se Munir Bashir, e as pessoas chamavam-lhe o rei do ud.",
+      "tts": {
+        "text": "O nome dele era Munir Bashir, e as pessoas diziam que ele era o rei do ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Antes de Bashir, o ud costumava tocar com outros instrumentos.",
+      "text_markdown": "Antes de Bashir, o ud costumava tocar com outros instrumentos.",
+      "tts": {
+        "text": "Antes de Bashir, o ud costumava tocar com outros instrumentos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bashir pô-lo sozinho em palco, e tocou solos longos, calmos e profundos.",
+      "text_markdown": "Bashir pô-lo sozinho em palco, e tocou solos longos, calmos e profundos.",
+      "tts": {
+        "text": "Bashir colocou o ud sozinho em palco, e tocou solos longos, calmos e profundos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pessoas de todo o mundo ouviram-no e voltaram a apaixonar-se pelo ud.",
+      "text_markdown": "Pessoas de todo o mundo ouviram-no e voltaram a apaixonar-se pelo ud.",
+      "tts": {
+        "text": "Pessoas de todo o mundo ouviram Bashir e voltaram a amar o ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Houve muitos outros.",
+      "text_markdown": "Houve muitos outros.",
+      "tts": {
+        "text": "Houve muitos outros.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farid al-Atrash fez do ud a voz dos filmes egípcios.",
+      "text_markdown": "Farid al-Atrash fez do ud a voz dos filmes egípcios.",
+      "tts": {
+        "text": "Farid al Atrash fez do ud a voz dos filmes egípcios.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anuar Braem, da Tunísia, toca ud com músicos de jazz europeus e americanos.",
+      "text_markdown": "Anuar Braem, da Tunísia, toca ud com músicos de jazz europeus e americanos.",
+      "tts": {
+        "text": "Anuar Braem, da Tunísia, toca ud com músicos de jazz europeus e americanos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud continua vivo.",
+      "text_markdown": "O ud continua vivo.",
+      "tts": {
+        "text": "O ud continua vivo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Todos os anos, nasce algures no mundo um novo mestre.",
+      "text_markdown": "Todos os anos, nasce algures no mundo um novo mestre.",
+      "tts": {
+        "text": "Todos os anos, nasce algures no mundo um novo mestre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Capítulo 7 — O ud e o mundo",
+      "text_markdown": "Capítulo 7 — O ud e o mundo"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud não ficou no mundo árabe.",
+      "text_markdown": "O ud não ficou no mundo árabe.",
+      "tts": {
+        "text": "O ud não ficou no mundo árabe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "À medida que viajou, mudou de forma, mudou de nome e mudou de canções.",
+      "text_markdown": "À medida que viajou, mudou de forma, mudou de nome e mudou de canções.",
+      "tts": {
+        "text": "À medida que viajou, mudou de forma, mudou de nome e mudou de canções.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando o ud chegou à Espanha medieval, os tocadores europeus gostaram do bojo de madeira e do som profundo.",
+      "text_markdown": "Quando o ud chegou à Espanha medieval, os tocadores europeus gostaram do bojo de madeira e do som profundo.",
+      "tts": {
+        "text": "Quando o ud chegou à Espanha medieval, os tocadores europeus gostaram do bojo de madeira e do som profundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mas queriam trastes, como nos instrumentos pequenos que já conheciam.",
+      "text_markdown": "Mas queriam trastes, como nos instrumentos pequenos que já conheciam.",
+      "tts": {
+        "text": "Mas queriam trastes, como nos instrumentos pequenos que já conheciam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Por isso, acrescentaram trastes, achataram um pouco as costas, e chamaram ao novo instrumento o alaúde.",
+      "text_markdown": "Por isso, acrescentaram trastes, achataram um pouco as costas, e chamaram ao novo instrumento o alaúde.",
+      "tts": {
+        "text": "Por isso, acrescentaram trastes, achataram um pouco as costas, e chamaram ao novo instrumento o alaúde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Durante quinhentos anos, o alaúde foi o instrumento favorito da Europa.",
+      "text_markdown": "Durante quinhentos anos, o alaúde foi o instrumento favorito da Europa.",
+      "tts": {
+        "text": "Durante quinhentos anos, o alaúde foi o instrumento favorito da Europa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os reis tocavam-no.",
+      "text_markdown": "Os reis tocavam-no.",
+      "tts": {
+        "text": "Os reis tocavam o alaúde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Os poetas tocavam-no.",
+      "text_markdown": "Os poetas tocavam-no.",
+      "tts": {
+        "text": "Os poetas tocavam o alaúde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Os maiores compositores escreveram peças para ele.",
+      "text_markdown": "Os maiores compositores escreveram peças para ele.",
+      "tts": {
+        "text": "Os maiores compositores escreveram peças para ele.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Depois, o alaúde mudou outra vez.",
+      "text_markdown": "Depois, o alaúde mudou outra vez.",
+      "tts": {
+        "text": "Depois, o alaúde mudou outra vez.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Os tocadores puseram mais cordas, achataram ainda mais as costas, e deram-lhe um corpo menor e mais leve.",
+      "text_markdown": "Os tocadores puseram mais cordas, achataram ainda mais as costas, e deram-lhe um corpo menor e mais leve.",
+      "tts": {
+        "text": "Os tocadores puseram mais cordas, achataram ainda mais as costas, e deram ao instrumento um corpo menor e mais leve.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Por volta do ano mil e oitocentos, em Espanha, esse novo instrumento já tinha um nome que todos conhecemos.",
+      "text_markdown": "Por volta do ano mil e oitocentos, em Espanha, esse novo instrumento já tinha um nome que todos conhecemos.",
+      "tts": {
+        "text": "Por volta do ano mil e oitocentos, em Espanha, esse novo instrumento já tinha um nome que todos conhecemos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Era a guitarra.",
+      "text_markdown": "Era a guitarra.",
+      "tts": {
+        "text": "Era a guitarra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Assim, o ud, o alaúde e a guitarra são todos membros da mesma família.",
+      "text_markdown": "Assim, o ud, o alaúde e a guitarra são todos membros da mesma família.",
+      "tts": {
+        "text": "Assim, o ud, o alaúde e a guitarra são todos membros da mesma família.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "São primos, e partilham um avô.",
+      "text_markdown": "São primos, e partilham um avô.",
+      "tts": {
+        "text": "São primos, e partilham um avô.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Esse avô é o ud.",
+      "text_markdown": "Esse avô é o ud.",
+      "tts": {
+        "text": "Esse avô é o ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoje, o ud e a guitarra tocam juntos.",
+      "text_markdown": "Hoje, o ud e a guitarra tocam juntos.",
+      "tts": {
+        "text": "Hoje, o ud e a guitarra tocam juntos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anouar Brahem toca ud com guitarristas de jazz.",
+      "text_markdown": "Anouar Brahem toca ud com guitarristas de jazz.",
+      "tts": {
+        "text": "Anuar Braem toca ud com guitarristas de jazz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Munir Bashir tocou com orquestras.",
+      "text_markdown": "Munir Bashir tocou com orquestras.",
+      "tts": {
+        "text": "Munir Bashir tocou com orquestras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jovens músicos em Beirute, Istambul, Paris e Nova Iorque estão a misturar o ud com rock, hip hop e música de cinema.",
+      "text_markdown": "Jovens músicos em Beirute, Istambul, Paris e Nova Iorque estão a misturar o ud com rock, hip hop e música de cinema.",
+      "tts": {
+        "text": "Jovens músicos em Beirute, Istambul, Paris e Nova Iorque estão a misturar o ud com rock, hip hop e música de cinema.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O ud é mais do que um instrumento.",
+      "text_markdown": "O ud é mais do que um instrumento.",
+      "tts": {
+        "text": "O ud é mais do que um instrumento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "É uma ponte.",
+      "text_markdown": "É uma ponte.",
+      "tts": {
+        "text": "É uma ponte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Leva uma história da Mesopotâmia, pela Pérsia, pelo mundo árabe, até Espanha, até à Europa, e de volta a todos os países do mundo.",
+      "text_markdown": "Leva uma história da Mesopotâmia, pela Pérsia, pelo mundo árabe, até Espanha, até à Europa, e de volta a todos os países do mundo.",
+      "tts": {
+        "text": "Leva uma história da Mesopotâmia, pela Pérsia, pelo mundo árabe, até Espanha, até à Europa, e de volta a todos os países do mundo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sempre que ouve uma guitarra, lá no fundo, pode ouvir a voz suave e profunda do ud.",
+      "text_markdown": "Sempre que ouve uma guitarra, lá no fundo, pode ouvir a voz suave e profunda do ud.",
+      "tts": {
+        "text": "Sempre que ouve uma guitarra, lá no fundo, pode ouvir a voz suave e profunda do ud.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Sobre este livro",
+      "text_markdown": "Sobre este livro"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Este é o primeiro volume de Instrumentos Musicais do Mundo.",
+      "text_markdown": "Este é o primeiro volume de Instrumentos Musicais do Mundo.",
+      "tts": {
+        "text": "Este é o primeiro volume de Instrumentos Musicais do Mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Cada livro desta série conta a história de um só instrumento.",
+      "text_markdown": "Cada livro desta série conta a história de um só instrumento.",
+      "tts": {
+        "text": "Cada livro desta série conta a história de um só instrumento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Cada livro é curto e mantém-se fiel ao que aconteceu.",
+      "text_markdown": "Cada livro é curto e mantém-se fiel ao que aconteceu.",
+      "tts": {
+        "text": "Cada livro é curto e mantém-se fiel ao que aconteceu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "O próximo livro é sobre o sitar, o grande alaúde indiano de braço comprido, com as suas muitas cordas e a sua voz funda e vibrante.",
+      "text_markdown": "O próximo livro é sobre o sitar, o grande alaúde indiano de braço comprido, com as suas muitas cordas e a sua voz funda e vibrante.",
+      "tts": {
+        "text": "O próximo livro é sobre o sitar, o grande alaúde indiano de braço comprido, com as suas muitas cordas e a sua voz funda e vibrante.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Depois do sitar, iremos à África Ocidental para a kora, e depois ao Japão para o shakuhachi.",
+      "text_markdown": "Depois do sitar, iremos à África Ocidental para a kora, e depois ao Japão para o shakuhachi.",
+      "tts": {
+        "text": "Depois do sitar, iremos à África Ocidental para a cora, e depois ao Japão para o xakuhatchi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Obrigado por ouvir.",
+      "text_markdown": "Obrigado por ouvir.",
+      "tts": {
+        "text": "Obrigado por ouvir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vá procurar um ud, na internet ou na sua cidade, e deixe que ele toque para si.",
+      "text_markdown": "Vá procurar um ud, na internet ou na sua cidade, e deixe que ele toque para si.",
+      "tts": {
+        "text": "Vá procurar um ud, na internet ou na sua cidade, e deixe que ele toque para si.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

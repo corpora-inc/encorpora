@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "fil",
+  "total_segments": 121,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Maligayang pagdating sa AI This Week.",
+      "text_markdown": "Maligayang pagdating sa AI This Week.",
+      "title": "",
+      "tts": {
+        "text": "Maligayang pagdating sa AI This Week.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ako si Vindy.",
+      "text_markdown": "Ako si Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Ako si Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kasama ko, gaya ng dati, si Ron.",
+      "text_markdown": "Kasama ko, gaya ng dati, si Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kasama ko, gaya ng dati, si Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mabuting narito ako, Vindy.",
+      "text_markdown": "Mabuting narito ako, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Mabuting narito ako, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ngayon ay Linggo, Hunyo 14, 2026.",
+      "text_markdown": "Ngayon ay Linggo, Hunyo 14, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Ngayon ay Linggo, Hunyo labing-apat, dalawang libo dalawampu't anim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Dalawang bagay ang naiiba ngayon.",
+      "text_markdown": "Dalawang bagay ang naiiba ngayon.",
+      "title": "",
+      "tts": {
+        "text": "Dalawang bagay ang naiiba ngayon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Lilipat tayo sa Linggo, at sa unang pagkakataon ay sasabihin namin sa inyo kung sino talaga ang gumagawa ng palabas na ito.",
+      "text_markdown": "Lilipat tayo sa Linggo, at sa unang pagkakataon ay sasabihin namin sa inyo kung sino talaga ang gumagawa ng palabas na ito.",
+      "title": "",
+      "tts": {
+        "text": "Lilipat tayo sa Linggo, at sa unang pagkakataon ay sasabihin namin sa inyo kung sino talaga ang gumagawa ng palabas na ito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Pagkatapos, balik sa regular na programa — open weights, maliliit na lab, at ang mas malawak na AI week.",
+      "text_markdown": "Pagkatapos, balik sa regular na programa — open weights, maliliit na lab, at ang mas malawak na AI week.",
+      "title": "",
+      "tts": {
+        "text": "Pagkatapos, balik sa regular na programa — open weights, maliliit na lab, at ang mas malawak na AI week.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Paparating — ang paglipat ng iskedyul at kung bakit.",
+      "text_markdown": "Paparating — ang paglipat ng iskedyul at kung bakit.",
+      "title": "",
+      "tts": {
+        "text": "Paparating — ang paglipat ng iskedyul at kung bakit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Isang unang pagtingin sa Corpora Inc., ang maliit na koponan sa likod ng Corpán app at ng podcast na ito.",
+      "text_markdown": "Isang unang pagtingin sa Corpora Inc., ang maliit na koponan sa likod ng Corpán app at ng podcast na ito.",
+      "title": "",
+      "tts": {
+        "text": "Isang unang pagtingin sa Corpora Inc., ang maliit na koponan sa likod ng Corpán app at ng podcast na ito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Isang pangunahing balita sa beatlounge, ang aming bagong music pack na ilulunsad sa Corpán 0.18.0.",
+      "text_markdown": "Isang pangunahing balita sa beatlounge, ang aming bagong music pack na ilulunsad sa Corpán 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Isang pangunahing balita sa beatlounge, ang aming bagong music pack na ilulunsad sa Corpán zero point one eight point zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Open weights ng linggo, pinangunahan ng unang open diffusion text model ng Google.",
+      "text_markdown": "Open weights ng linggo, pinangunahan ng unang open diffusion text model ng Google.",
+      "title": "",
+      "tts": {
+        "text": "Open weights ng linggo, pinangunahan ng unang open diffusion text model ng Google.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Isang mabilis na sulyap sa mga headline sa pamamagitan ng open-ecosystem lens.",
+      "text_markdown": "Isang mabilis na sulyap sa mga headline sa pamamagitan ng open-ecosystem lens.",
+      "title": "",
+      "tts": {
+        "text": "Isang mabilis na sulyap sa mga headline sa pamamagitan ng open ecosystem lens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Isang maliit na lab ng linggo — labing-isang tao sa Paris ang gumagawa ng isang salungat na pusta sa AMD silicon.",
+      "text_markdown": "Isang maliit na lab ng linggo — labing-isang tao sa Paris ang gumagawa ng isang salungat na pusta sa AMD silicon.",
+      "title": "",
+      "tts": {
+        "text": "Isang maliit na lab ng linggo — labing-isang tao sa Paris ang gumagawa ng isang salungat na pusta sa A. M. D. silicon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "At ang aming konsepto ng linggo — diffusion versus autoregressive, ang trick sa likod ng pangunahing release ngayong linggo.",
+      "text_markdown": "At ang aming konsepto ng linggo — diffusion versus autoregressive, ang trick sa likod ng pangunahing release ngayong linggo.",
+      "title": "",
+      "tts": {
+        "text": "At ang aming konsepto ng linggo — diffusion versus autoregressive, ang trick sa likod ng pangunahing release ngayong linggo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, simulan natin sa iskedyul.",
+      "text_markdown": "Ron, simulan natin sa iskedyul.",
+      "title": "",
+      "tts": {
+        "text": "Ron, simulan natin sa iskedyul.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Bakit tayo lumilipat mula sa Miyerkules?",
+      "text_markdown": "Bakit tayo lumilipat mula sa Miyerkules?",
+      "title": "",
+      "tts": {
+        "text": "Bakit tayo lumilipat mula sa Miyerkules?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang Miyerkules ay araw ni Odin, at si Odin ay abala sa pamamahala sa Asgard.",
+      "text_markdown": "Ang Miyerkules ay araw ni Odin, at si Odin ay abala sa pamamahala sa Asgard.",
+      "title": "",
+      "tts": {
+        "text": "Ang Miyerkules ay araw ni Odin, at si Odin ay abala sa pamamahala sa Asgard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kami ay isang maliit na koponan na may mga day job, at ang midweek cut ay hindi talaga naging malinis.",
+      "text_markdown": "Kami ay isang maliit na koponan na may mga day job, at ang midweek cut ay hindi talaga naging malinis.",
+      "title": "",
+      "tts": {
+        "text": "Kami ay isang maliit na koponan na may mga day job, at ang midweek cut ay hindi talaga naging malinis.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang Linggo ang nagtatapos ng linggo at nagsisimula ng susunod, na tila ang tamang ritmo para sa isang news show.",
+      "text_markdown": "Ang Linggo ang nagtatapos ng linggo at nagsisimula ng susunod, na tila ang tamang ritmo para sa isang news show.",
+      "title": "",
+      "tts": {
+        "text": "Ang Linggo ang nagtatapos ng linggo at nagsisimula ng susunod, na tila ang tamang ritmo para sa isang news show.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ano ba talaga ang hitsura ng rollout?",
+      "text_markdown": "Ano ba talaga ang hitsura ng rollout?",
+      "title": "",
+      "tts": {
+        "text": "Ano ba talaga ang hitsura ng rollout?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nagsisimula ito ng Sabado sa Ingles at nagpapatuloy hanggang Lunes ng umaga, wika sa wika, habang natatapos ang bawat pagsasalin at audio pass.",
+      "text_markdown": "Nagsisimula ito ng Sabado sa Ingles at nagpapatuloy hanggang Lunes ng umaga, wika sa wika, habang natatapos ang bawat pagsasalin at audio pass.",
+      "title": "",
+      "tts": {
+        "text": "Nagsisimula ito ng Sabado sa Ingles at nagpapatuloy hanggang Lunes ng umaga, wika sa wika, habang natatapos ang bawat pagsasalin at audio pass.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pagdating ng kape sa Lunes, dapat ay malapit na tayo sa limampung wika.",
+      "text_markdown": "Pagdating ng kape sa Lunes, dapat ay malapit na tayo sa limampung wika.",
+      "title": "",
+      "tts": {
+        "text": "Pagdating ng kape sa Lunes, dapat ay malapit na tayo sa limampung wika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na nagdadala sa atin sa pangalawang bagong bagay.",
+      "text_markdown": "Na nagdadala sa atin sa pangalawang bagong bagay.",
+      "title": "",
+      "tts": {
+        "text": "Na nagdadala sa atin sa pangalawang bagong bagay.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sino ang gumagawa ng palabas na ito.",
+      "text_markdown": "Sino ang gumagawa ng palabas na ito.",
+      "title": "",
+      "tts": {
+        "text": "Sino ang gumagawa ng palabas na ito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang Corpora Inc., isang maliit na independiyenteng koponan, ang gumagawa ng Corpán app at gumagawa ng podcast na ito.",
+      "text_markdown": "Ang Corpora Inc., isang maliit na independiyenteng koponan, ang gumagawa ng Corpán app at gumagawa ng podcast na ito.",
+      "title": "",
+      "tts": {
+        "text": "Ang Corpora Inc., isang maliit na independiyenteng koponan, ang gumagawa ng Corpán app at gumagawa ng podcast na ito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ano ang Corpán.",
+      "text_markdown": "Ano ang Corpán.",
+      "title": "",
+      "tts": {
+        "text": "Ano ang Corpán.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Isang playground para sa wika, musika, at pag-aaral na binuo na on-device-first.",
+      "text_markdown": "Isang playground para sa wika, musika, at pag-aaral na binuo na on-device-first.",
+      "title": "",
+      "tts": {
+        "text": "Isang playground para sa wika, musika, at pag-aaral na binuo na on device first.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ipaliwanag ang on-device-first — ano ang ibig sabihin niyan sa praktika.",
+      "text_markdown": "Ipaliwanag ang on-device-first — ano ang ibig sabihin niyan sa praktika.",
+      "title": "",
+      "tts": {
+        "text": "Ipaliwanag ang on device first — ano ang ibig sabihin niyan sa praktika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ibig sabihin, inuuna namin ang pagpapatakbo nang lokal tuwing pinapayagan ng feature.",
+      "text_markdown": "Ibig sabihin, inuuna namin ang pagpapatakbo nang lokal tuwing pinapayagan ng feature.",
+      "title": "",
+      "tts": {
+        "text": "Ibig sabihin, inuuna namin ang pagpapatakbo nang lokal tuwing pinapayagan ng feature.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Qwen3-4B para sa assistant, Whisper large-v3 para sa pagkilala ng boses, Chatterbox para sa sintesis ng boses, Stable Diffusion three-and-a-half para sa mga larawan, LoRA pipelines para sa mga character tutor.",
+      "text_markdown": "Qwen3-4B para sa assistant, Whisper large-v3 para sa pagkilala ng boses, Chatterbox para sa sintesis ng boses, Stable Diffusion three-and-a-half para sa mga larawan, LoRA pipelines para sa mga character tutor.",
+      "title": "",
+      "tts": {
+        "text": "Qwen tatlo apat B para sa assistant, Whisper large v tatlo para sa pagkilala ng boses, Chatterbox para sa sintesis ng boses, Stable Diffusion tatlo at kalahati para sa mga larawan, LoRA pipelines para sa mga character tutor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Lahat ng iyon ay tumatakbo sa iyong telepono o tablet, offline, sa airplane mode, sa gitna ng kawalan.",
+      "text_markdown": "Lahat ng iyon ay tumatakbo sa iyong telepono o tablet, offline, sa airplane mode, sa gitna ng kawalan.",
+      "title": "",
+      "tts": {
+        "text": "Lahat ng iyon ay tumatakbo sa iyong telepono o tablet, offline, sa airplane mode, sa gitna ng kawalan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang mga feature na talagang nangangailangan ng network — world radio, multiplayer — ay gumagamit ng network, at hindi kami nagpapanggap na iba.",
+      "text_markdown": "Ang mga feature na talagang nangangailangan ng network — world radio, multiplayer — ay gumagamit ng network, at hindi kami nagpapanggap na iba.",
+      "title": "",
+      "tts": {
+        "text": "Ang mga feature na talagang nangangailangan ng network — world radio, multiplayer — ay gumagamit ng network, at hindi kami nagpapanggap na iba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "At ang panig ng negosyo.",
+      "text_markdown": "At ang panig ng negosyo.",
+      "title": "",
+      "tts": {
+        "text": "At ang panig ng negosyo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Maliit na independiyenteng team, walang bilyong dolyar na kapital sa likod namin, walang ad sa app ngayon, na may mapagbigay na libreng tier at isang opsyonal na premium subscription para sa mga taong gustong suportahan ang trabaho.",
+      "text_markdown": "Maliit na independiyenteng team, walang bilyong dolyar na kapital sa likod namin, walang ad sa app ngayon, na may mapagbigay na libreng tier at isang opsyonal na premium subscription para sa mga taong gustong suportahan ang trabaho.",
+      "title": "",
+      "tts": {
+        "text": "Maliit na independiyenteng team, walang bilyong dolyar na kapital sa likod namin, walang ad sa app ngayon, na may mapagbigay na libreng tier at isang opsyonal na premium subscription para sa mga taong gustong suportahan ang trabaho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Gusto naming manatiling walang ad hangga't maaari — walang pangako magpakailanman, ngunit iyon ang direksyon.",
+      "text_markdown": "Gusto naming manatiling walang ad hangga't maaari — walang pangako magpakailanman, ngunit iyon ang direksyon.",
+      "title": "",
+      "tts": {
+        "text": "Gusto naming manatiling walang ad hangga't maaari — walang pangako magpakailanman, ngunit iyon ang direksyon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ano ang patunay na talagang naglalabas kayo.",
+      "text_markdown": "Ano ang patunay na talagang naglalabas kayo.",
+      "title": "",
+      "tts": {
+        "text": "Ano ang patunay na talagang naglalabas kayo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Karamihan sa mga linggo ay naglalabas kami ng isang bagay — isang narasyon ng libro, isang pack, isang app release, ang palabas na ito — sa mahigit tatlumpu't limang wika ngayon, at patuloy na dumarami.",
+      "text_markdown": "Karamihan sa mga linggo ay naglalabas kami ng isang bagay — isang narasyon ng libro, isang pack, isang app release, ang palabas na ito — sa mahigit tatlumpu't limang wika ngayon, at patuloy na dumarami.",
+      "title": "",
+      "tts": {
+        "text": "Karamihan sa mga linggo ay naglalabas kami ng isang bagay — isang narasyon ng libro, isang pack, isang app release, ang palabas na ito — sa mahigit tatlumpu't limang wika ngayon, at patuloy na dumarami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Bakit ito ginagawa?",
+      "text_markdown": "Bakit ito ginagawa?",
+      "title": "",
+      "tts": {
+        "text": "Bakit ito ginagawa?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Iyan ang pitch — pinapatunayan na ang isang frontier-quality, on-device-first, multilingual learning experience ay maaaring magmula sa isang maliit na team nang walang malaking kapital, habang pinapanatiling walang ad ang app hangga't maaari.",
+      "text_markdown": "Iyan ang pitch — pinapatunayan na ang isang frontier-quality, on-device-first, multilingual learning experience ay maaaring magmula sa isang maliit na team nang walang malaking kapital, habang pinapanatiling walang ad ang app hangga't maaari.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang pitch — pinapatunayan na ang isang frontier quality, on device first, multilingual learning experience ay maaaring magmula sa isang maliit na team nang walang malaking kapital, habang pinapanatiling walang ad ang app hangga't maaari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Na nagdadala sa atin sa pangunahing balita — beatlounge.",
+      "text_markdown": "Na nagdadala sa atin sa pangunahing balita — beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Na nagdadala sa atin sa pangunahing balita — beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ilulunsad ito sa Corpán 0.18.0 ngayong linggo.",
+      "text_markdown": "Ilulunsad ito sa Corpán 0.18.0 ngayong linggo.",
+      "title": "",
+      "tts": {
+        "text": "Ilulunsad ito sa Corpán zero point one eight point zero ngayong linggo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang beatlounge ay isang beat sequencer at isang tool sa wika sa isang kahon.",
+      "text_markdown": "Ang beatlounge ay isang beat sequencer at isang tool sa wika sa isang kahon.",
+      "title": "",
+      "tts": {
+        "text": "Ang beatlounge ay isang beat sequencer at isang tool sa wika sa isang kahon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Isang tick-addressed sequencer sa siyam na raan animnapung pulso bawat quarter, isang harmony engine na nagsasalita ng Western modes, Indian thaats, Carnatic melakartas, at Arabic maqamat, at isang phrase corpus ng higit sa sampung milyong tunay na parirala ng wika sa mahigit limampung wika.",
+      "text_markdown": "Isang tick-addressed sequencer sa siyam na raan animnapung pulso bawat quarter, isang harmony engine na nagsasalita ng Western modes, Indian thaats, Carnatic melakartas, at Arabic maqamat, at isang phrase corpus ng higit sa sampung milyong tunay na parirala ng wika sa mahigit limampung wika.",
+      "title": "",
+      "tts": {
+        "text": "Isang tick addressed sequencer sa siyam na raan animnapung pulso bawat quarter, isang harmony engine na nagsasalita ng Western modes, Indian thaats, Carnatic melakartas, at Arabic maqamat, at isang phrase corpus ng higit sa sampung milyong tunay na parirala ng wika sa mahigit limampung wika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Lahat ay pitch-performable, at puwedeng laruin offline kapag nasa iyong device na ang pack.",
+      "text_markdown": "Lahat ay pitch-performable, at puwedeng laruin offline kapag nasa iyong device na ang pack.",
+      "title": "",
+      "tts": {
+        "text": "Lahat ay pitch performable, at puwedeng laruin offline kapag nasa iyong device na ang pack.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kaya ang instrumento ay ang wika.",
+      "text_markdown": "Kaya ang instrumento ay ang wika.",
+      "title": "",
+      "tts": {
+        "text": "Kaya ang instrumento ay ang wika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pinapatugtog mo ang mga parirala sa paraan ng pagtugtog mo ng mga nota.",
+      "text_markdown": "Pinapatugtog mo ang mga parirala sa paraan ng pagtugtog mo ng mga nota.",
+      "title": "",
+      "tts": {
+        "text": "Pinapatugtog mo ang mga parirala sa paraan ng pagtugtog mo ng mga nota.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Isang pariralang Hindi sa beat one, isang Arabic interjection sa likod ng two, isang Mandarin syllable bilang ribbon swell.",
+      "text_markdown": "Isang pariralang Hindi sa beat one, isang Arabic interjection sa likod ng two, isang Mandarin syllable bilang ribbon swell.",
+      "title": "",
+      "tts": {
+        "text": "Isang pariralang Hindi sa beat one, isang Arabic interjection sa likod ng two, isang Mandarin syllable bilang ribbon swell.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ito ay isang DAW kung saan ang mga sample ay mga pangungusap, na binibigkas ng on-device TTS.",
+      "text_markdown": "Ito ay isang DAW kung saan ang mga sample ay mga pangungusap, na binibigkas ng on-device TTS.",
+      "title": "",
+      "tts": {
+        "text": "Ito ay isang DAW kung saan ang mga sample ay mga pangungusap, na binibigkas ng on device T T S.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Walang kinakailangang teorya ng musika.",
+      "text_markdown": "Walang kinakailangang teorya ng musika.",
+      "title": "",
+      "tts": {
+        "text": "Walang kinakailangang teorya ng musika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Wala naman talaga.",
+      "text_markdown": "Wala naman talaga.",
+      "title": "",
+      "tts": {
+        "text": "Wala naman talaga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang harmony engine ang humahawak sa mga patakaran; itinuturo mo ang mga tunog na gusto mo at nananatiling malinis ang mga mode.",
+      "text_markdown": "Ang harmony engine ang humahawak sa mga patakaran; itinuturo mo ang mga tunog na gusto mo at nananatiling malinis ang mga mode.",
+      "title": "",
+      "tts": {
+        "text": "Ang harmony engine ang humahawak sa mga patakaran; itinuturo mo ang mga tunog na gusto mo at nananatiling malinis ang mga mode.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ano pa ang nasa 0.18.0.",
+      "text_markdown": "Ano pa ang nasa 0.18.0.",
+      "title": "",
+      "tts": {
+        "text": "Ano pa ang nasa zero point one eight point zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tatlong piraso ng engineering sa ilalim ng hood — ang host seams para sa content packs ay inilabas kasama ang beatlounge bilang pilot.",
+      "text_markdown": "Tatlong piraso ng engineering sa ilalim ng hood — ang host seams para sa content packs ay inilabas kasama ang beatlounge bilang pilot.",
+      "title": "",
+      "tts": {
+        "text": "Tatlong piraso ng engineering sa ilalim ng hood — ang host seams para sa content packs ay inilabas kasama ang beatlounge bilang pilot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kinukuha na ngayon ng Android ang native-fault breadcrumbs upang ang mga pag-crash ng llama at ggml ay maayos na masuri.",
+      "text_markdown": "Kinukuha na ngayon ng Android ang native-fault breadcrumbs upang ang mga pag-crash ng llama at ggml ay maayos na masuri.",
+      "title": "",
+      "tts": {
+        "text": "Kinukuha na ngayon ng Android ang native fault breadcrumbs upang ang mga pag-crash ng llama at G G M L ay maayos na masuri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "At inayos namin ang multi-gigabyte model install na dating nag-OOM sa iOS — ngayon ay nag-i-stream na ito sa disk sa halip na mag-buffer ng dalawa't kalahating gigabytes ng Qwen3-4B sa RAM.",
+      "text_markdown": "At inayos namin ang multi-gigabyte model install na dating nag-OOM sa iOS — ngayon ay nag-i-stream na ito sa disk sa halip na mag-buffer ng dalawa't kalahating gigabytes ng Qwen3-4B sa RAM.",
+      "title": "",
+      "tts": {
+        "text": "At inayos namin ang multi gigabyte model install na dating nag O O M sa iOS — ngayon ay nag-i-stream na ito sa disk sa halip na mag-buffer ng dalawa at kalahating gigabytes ng Qwen tatlo apat B sa R A M.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Nakakainip sa ilalim, masaya sa ibabaw.",
+      "text_markdown": "Nakakainip sa ilalim, masaya sa ibabaw.",
+      "title": "",
+      "tts": {
+        "text": "Nakakainip sa ilalim, masaya sa ibabaw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Na halos ang buong brief ng kumpanya.",
+      "text_markdown": "Na halos ang buong brief ng kumpanya.",
+      "title": "",
+      "tts": {
+        "text": "Na halos ang buong brief ng kumpanya.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Okay, lumipat tayo sa open weights.",
+      "text_markdown": "Okay, lumipat tayo sa open weights.",
+      "title": "",
+      "tts": {
+        "text": "Okay, lumipat tayo sa open weights.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ano ang malaking balita ngayong linggo.",
+      "text_markdown": "Ano ang malaking balita ngayong linggo.",
+      "title": "",
+      "tts": {
+        "text": "Ano ang malaking balita ngayong linggo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Inilabas ng Google ang DiffusionGemma.",
+      "text_markdown": "Inilabas ng Google ang DiffusionGemma.",
+      "title": "",
+      "tts": {
+        "text": "Inilabas ng Google ang DiffusionGemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Isang dalawampu't anim na bilyong parameter na mixture of experts na may tatlong punto walong bilyong aktibo, Apache 2.0 sa Hugging Face, na bumubuo ng text sa pamamagitan ng diffusion sa halip na autoregression.",
+      "text_markdown": "Isang dalawampu't anim na bilyong parameter na mixture of experts na may tatlong punto walong bilyong aktibo, Apache 2.0 sa Hugging Face, na bumubuo ng text sa pamamagitan ng diffusion sa halip na autoregression.",
+      "title": "",
+      "tts": {
+        "text": "Isang dalawampu't anim na bilyong parameter na mixture of experts na may tatlong punto walong bilyong aktibo, Apache dalawang punto zero sa Hugging Face, na bumubuo ng text sa pamamagitan ng diffusion sa halip na autoregression.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Sa simpleng salita — ano ba talaga ang ibig sabihin ng diffusion-for-text.",
+      "text_markdown": "Sa simpleng salita — ano ba talaga ang ibig sabihin ng diffusion-for-text.",
+      "title": "",
+      "tts": {
+        "text": "Sa simpleng salita — ano ba talaga ang ibig sabihin ng diffusion for text.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sa halip na hulaan ang isang token sa bawat pagkakataon, inaalis nito ang ingay sa isang dalawang daan limampu't anim na token block nang sabay-sabay.",
+      "text_markdown": "Sa halip na hulaan ang isang token sa bawat pagkakataon, inaalis nito ang ingay sa isang dalawang daan limampu't anim na token block nang sabay-sabay.",
+      "title": "",
+      "tts": {
+        "text": "Sa halip na hulaan ang isang token sa bawat pagkakataon, inaalis nito ang ingay sa isang dalawang daan limampu't anim na token block nang sabay-sabay.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mahigit isang libong token kada segundo sa isang H100, humigit-kumulang apat na beses na mas mabilis kaysa sa maihahambing na autoregressive Gemma.",
+      "text_markdown": "Mahigit isang libong token kada segundo sa isang H100, humigit-kumulang apat na beses na mas mabilis kaysa sa maihahambing na autoregressive Gemma.",
+      "title": "",
+      "tts": {
+        "text": "Mahigit isang libong token kada segundo sa isang H isandaan, humigit-kumulang apat na beses na mas mabilis kaysa sa maihahambing na autoregressive Gemma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "At ang catch.",
+      "text_markdown": "At ang catch.",
+      "title": "",
+      "tts": {
+        "text": "At ang catch.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mas mababang scores sa MMLU at coding — sinabi mismo ng Google; ang release na ito ay para sa speed-critical na trabaho, hindi para sa pag-akyat sa leaderboard.",
+      "text_markdown": "Mas mababang scores sa MMLU at coding — sinabi mismo ng Google; ang release na ito ay para sa speed-critical na trabaho, hindi para sa pag-akyat sa leaderboard.",
+      "title": "",
+      "tts": {
+        "text": "Mas mababang scores sa M M L U at coding — sinabi mismo ng Google; ang release na ito ay para sa speed critical na trabaho, hindi para sa pag-akyat sa leaderboard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "At mga open voice model — kahit ano.",
+      "text_markdown": "At mga open voice model — kahit ano.",
+      "title": "",
+      "tts": {
+        "text": "At mga open voice model — kahit ano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dalawa ang inilabas sa parehong linggo.",
+      "text_markdown": "Dalawa ang inilabas sa parehong linggo.",
+      "title": "",
+      "tts": {
+        "text": "Dalawa ang inilabas sa parehong linggo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang RedNote, ang Chinese social network, ay nag-open-source ng dots-dot-tts — dalawang bilyong parameter, ganap na continuous na walang discrete tokens saanman sa pipeline, limampu't apat na millisecond na first-token latency, Apache 2.0.",
+      "text_markdown": "Ang RedNote, ang Chinese social network, ay nag-open-source ng dots-dot-tts — dalawang bilyong parameter, ganap na continuous na walang discrete tokens saanman sa pipeline, limampu't apat na millisecond na first-token latency, Apache 2.0.",
+      "title": "",
+      "tts": {
+        "text": "Ang RedNote, ang Chinese social network, ay nag-open-source ng dots dot t t s — dalawang bilyong parameter, ganap na continuous na walang discrete tokens saanman sa pipeline, limampu't apat na millisecond na first-token latency, Apache dalawang punto zero.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "At ipinadala ng Boson AI ang Higgs Audio version three — apat na bilyong parameter, isang daan at dalawang wika, dalawampu't isang emotion control tokens, streaming output, non-commercial license; ang huling bahagi na iyon ang asterisk.",
+      "text_markdown": "At ipinadala ng Boson AI ang Higgs Audio version three — apat na bilyong parameter, isang daan at dalawang wika, dalawampu't isang emotion control tokens, streaming output, non-commercial license; ang huling bahagi na iyon ang asterisk.",
+      "title": "",
+      "tts": {
+        "text": "At ipinadala ng Boson A I ang Higgs Audio version three — apat na bilyong parameter, isang daan at dalawang wika, dalawampu't isang emotion control tokens, streaming output, non commercial license; ang huling bahagi na iyon ang asterisk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ang voice cloning ay opisyal nang isang commodity.",
+      "text_markdown": "Ang voice cloning ay opisyal nang isang commodity.",
+      "title": "",
+      "tts": {
+        "text": "Ang voice cloning ay opisyal nang isang commodity.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Oo.",
+      "text_markdown": "Oo.",
+      "title": "",
+      "tts": {
+        "text": "Oo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Isa pa sa open side.",
+      "text_markdown": "Isa pa sa open side.",
+      "title": "",
+      "tts": {
+        "text": "Isa pa sa open side.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tahimik na inilabas ng NVIDIA ang Nemotron 3 Ultra — isang limang daan limampu't bilyong parameter na hybrid Mamba-attention model.",
+      "text_markdown": "Tahimik na inilabas ng NVIDIA ang Nemotron 3 Ultra — isang limang daan limampu't bilyong parameter na hybrid Mamba-attention model.",
+      "title": "",
+      "tts": {
+        "text": "Tahimik na inilabas ng N V I D I A ang Nemotron three Ultra — isang limang daan limampu't bilyong parameter na hybrid Mamba attention model.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mga weights at ang buong training recipe sa ilalim ng Linux Foundation OpenMDW license — ang pinaka-aktwal na open release ng buwan.",
+      "text_markdown": "Mga weights at ang buong training recipe sa ilalim ng Linux Foundation OpenMDW license — ang pinaka-aktwal na open release ng buwan.",
+      "title": "",
+      "tts": {
+        "text": "Mga weights at ang buong training recipe sa ilalim ng Linux Foundation Open M D W license — ang pinaka-aktwal na open release ng buwan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "At walang nagbalita tungkol dito.",
+      "text_markdown": "At walang nagbalita tungkol dito.",
+      "title": "",
+      "tts": {
+        "text": "At walang nagbalita tungkol dito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Dahil inilalagay namin ang NVIDIA sa ilalim ng silicon, hindi lab.",
+      "text_markdown": "Dahil inilalagay namin ang NVIDIA sa ilalim ng silicon, hindi lab.",
+      "title": "",
+      "tts": {
+        "text": "Dahil inilalagay namin ang NVIDIA sa ilalim ng silicon, hindi lab.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ngunit ngayong linggo ay nagpadala sila ng reproducible-open sa frontier scale.",
+      "text_markdown": "Ngunit ngayong linggo ay nagpadala sila ng reproducible-open sa frontier scale.",
+      "title": "",
+      "tts": {
+        "text": "Ngunit ngayong linggo ay nagpadala sila ng reproducible open at frontier scale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mga headline, mabilis na clip.",
+      "text_markdown": "Mga headline, mabilis na clip.",
+      "title": "",
+      "tts": {
+        "text": "Mga headline, mabilis na clip.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Una.",
+      "text_markdown": "Una.",
+      "title": "",
+      "tts": {
+        "text": "Una.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Inilabas ng Moonshot ang Kimi K2-point-seven-Code — isang trilyong parameter, tatlumpu't dalawang bilyong aktibo, inaangkin na mas mahusay kaysa sa Claude Opus 4.8 sa sariling benchmark ng Moonshot.",
+      "text_markdown": "Inilabas ng Moonshot ang Kimi K2-point-seven-Code — isang trilyong parameter, tatlumpu't dalawang bilyong aktibo, inaangkin na mas mahusay kaysa sa Claude Opus 4.8 sa sariling benchmark ng Moonshot.",
+      "title": "",
+      "tts": {
+        "text": "Inilabas ng Moonshot ang Kimi K two point seven Code — isang trilyong parameter, tatlumpu't dalawang bilyong aktibo, inaangkin na mas mahusay kaysa sa Claude Opus four point eight sa sariling benchmark ng Moonshot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sinuri ng mga practitioner ang mga numero at sinabing hindi tugma ang mga benchmark; ang self-hosted weights ay limang daan siyamnapu't limang gigabytes, hindi maaaring patayin ang thinking mode.",
+      "text_markdown": "Sinuri ng mga practitioner ang mga numero at sinabing hindi tugma ang mga benchmark; ang self-hosted weights ay limang daan siyamnapu't limang gigabytes, hindi maaaring patayin ang thinking mode.",
+      "title": "",
+      "tts": {
+        "text": "Sinuri ng mga practitioner ang mga numero at sinabing hindi tugma ang mga benchmark; ang self hosted weights ay limang daan siyamnapu't limang gigabytes, hindi maaaring patayin ang thinking mode.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Maraming ibig sabihin ang 'Open' sa pangungusap na iyon.",
+      "text_markdown": "Maraming ibig sabihin ang 'Open' sa pangungusap na iyon.",
+      "title": "",
+      "tts": {
+        "text": "Maraming ibig sabihin ang 'Open' sa pangungusap na iyon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Pangalawa.",
+      "text_markdown": "Pangalawa.",
+      "title": "",
+      "tts": {
+        "text": "Pangalawa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang Cohere, isang Western lab na halos hindi naglalabas ng weights, ay naglabas nga ng weights — North Mini Code, tatlumpung bilyong kabuuan, tatlong bilyong aktibo, Apache 2.0, tumatakbo sa isang H100 sa four-bit.",
+      "text_markdown": "Ang Cohere, isang Western lab na halos hindi naglalabas ng weights, ay naglabas nga ng weights — North Mini Code, tatlumpung bilyong kabuuan, tatlong bilyong aktibo, Apache 2.0, tumatakbo sa isang H100 sa four-bit.",
+      "title": "",
+      "tts": {
+        "text": "Ang Cohere, isang Western lab na halos hindi naglalabas ng weights, ay naglabas nga ng weights — North Mini Code, tatlumpung bilyong kabuuan, tatlong bilyong aktibo, Apache dalawang punto zero, tumatakbo sa isang H isandaan sa four bit.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang isang Western lab na naglalabas ng totoong Apache 2.0 sa 2026 ay balita na sa sarili nito.",
+      "text_markdown": "Ang isang Western lab na naglalabas ng totoong Apache 2.0 sa 2026 ay balita na sa sarili nito.",
+      "title": "",
+      "tts": {
+        "text": "Ang isang Western lab na naglalabas ng totoong Apache dalawang punto zero sa dalawang libo dalawampu't anim ay balita na sa sarili nito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Pangatlo.",
+      "text_markdown": "Pangatlo.",
+      "title": "",
+      "tts": {
+        "text": "Pangatlo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mariing itinampok ng Apple sa WWDC ang on-device AI bilang estratehikong kuwento.",
+      "text_markdown": "Mariing itinampok ng Apple sa WWDC ang on-device AI bilang estratehikong kuwento.",
+      "title": "",
+      "tts": {
+        "text": "Mariing itinampok ng Apple sa W W D C ang on device A I bilang estratehikong kuwento.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ngunit ang bagong Siri model ay iniulat na isang distillation ng Gemini ng Google na lisensyado at pinapaliit ng Apple.",
+      "text_markdown": "Ngunit ang bagong Siri model ay iniulat na isang distillation ng Gemini ng Google na lisensyado at pinapaliit ng Apple.",
+      "title": "",
+      "tts": {
+        "text": "Ngunit ang bagong Siri model ay iniulat na isang distillation ng Gemini ng Google na lisensyado at pinapaliit ng Apple.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Lokal na inference, kumplikadong supply chain.",
+      "text_markdown": "Lokal na inference, kumplikadong supply chain.",
+      "title": "",
+      "tts": {
+        "text": "Lokal na inference, kumplikadong supply chain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "At ikaapat.",
+      "text_markdown": "At ikaapat.",
+      "title": "",
+      "tts": {
+        "text": "At ikaapat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Itinulak ng Alibaba ang Qwen 3.7-Plus sa pangkalahatang availability — multimodal, nagpapagana ng mga GUI mula sa mga screenshot, humigit-kumulang apatnapung sentimo bawat milyong input token.",
+      "text_markdown": "Itinulak ng Alibaba ang Qwen 3.7-Plus sa pangkalahatang availability — multimodal, nagpapagana ng mga GUI mula sa mga screenshot, humigit-kumulang apatnapung sentimo bawat milyong input token.",
+      "title": "",
+      "tts": {
+        "text": "Itinulak ng Alibaba ang Qwen three point seven Plus sa pangkalahatang availability — multimodal, nagpapagana ng mga G U I mula sa mga screenshot, humigit-kumulang apatnapung sentimo bawat milyong input token.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sa kabila ng tatak na Qwen, ito ay API-only, hindi open weights.",
+      "text_markdown": "Sa kabila ng tatak na Qwen, ito ay API-only, hindi open weights.",
+      "title": "",
+      "tts": {
+        "text": "Sa kabila ng tatak na Qwen, ito ay A P I only, hindi open weights.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mahalagang malaman, dahil ipinagkakamali ng mga tagapakinig ang Qwen sa open; ito ay hindi.",
+      "text_markdown": "Mahalagang malaman, dahil ipinagkakamali ng mga tagapakinig ang Qwen sa open; ito ay hindi.",
+      "title": "",
+      "tts": {
+        "text": "Mahalagang malaman, dahil ipinagkakamali ng mga tagapakinig ang Qwen sa open; ito ay hindi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Maliit na lab ng linggo.",
+      "text_markdown": "Maliit na lab ng linggo.",
+      "title": "",
+      "tts": {
+        "text": "Maliit na lab ng linggo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ito ay tinatawag na Kog.",
+      "text_markdown": "Ito ay tinatawag na Kog.",
+      "title": "",
+      "tts": {
+        "text": "Ito ay tinatawag na Kog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Labing-isang tao sa Paris, nag-aangkin ng tatlong libong output token bawat segundo bawat request sa walong AMD MI300X GPU.",
+      "text_markdown": "Labing-isang tao sa Paris, nag-aangkin ng tatlong libong output token bawat segundo bawat request sa walong AMD MI300X GPU.",
+      "title": "",
+      "tts": {
+        "text": "Labing-isang tao sa Paris, nag-aangkin ng tatlong libong output token bawat segundo bawat request sa walong A M D M I three hundred X G P U.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang kanilang pahayag — labis na gumastos ang industriya sa custom inference silicon samantalang software ang bottleneck sa simula pa lang.",
+      "text_markdown": "Ang kanilang pahayag — labis na gumastos ang industriya sa custom inference silicon samantalang software ang bottleneck sa simula pa lang.",
+      "title": "",
+      "tts": {
+        "text": "Ang kanilang pahayag — labis na gumastos ang industriya sa custom inference silicon samantalang software ang bottleneck sa simula pa lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Labing-isang tao, at AMD sa halip na NVIDIA.",
+      "text_markdown": "Labing-isang tao, at AMD sa halip na NVIDIA.",
+      "title": "",
+      "tts": {
+        "text": "Labing-isang tao, at AMD sa halip na NVIDIA.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pagkatapos mismo ng isang custom-silicon IPO, perpektong contrarian timing.",
+      "text_markdown": "Pagkatapos mismo ng isang custom-silicon IPO, perpektong contrarian timing.",
+      "title": "",
+      "tts": {
+        "text": "Pagkatapos mismo ng isang custom silicon I P O, perpektong contrarian timing.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Paano naman ang hardware sa bench.",
+      "text_markdown": "Paano naman ang hardware sa bench.",
+      "title": "",
+      "tts": {
+        "text": "Paano naman ang hardware sa bench.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Nagpadala ang Raspberry Pi ng AI HAT+ 2 — apatnapung TOPS na nakakabit sa isang Pi 5.",
+      "text_markdown": "Nagpadala ang Raspberry Pi ng AI HAT+ 2 — apatnapung TOPS na nakakabit sa isang Pi 5.",
+      "title": "",
+      "tts": {
+        "text": "Nagpadala ang Raspberry Pi ng A I H A T plus two — apatnapung T O P S na nakakabit sa isang Pi five.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang Jetson Orin Nano Super ng NVIDIA ay gumagawa ng animnapu't pitong TOPS sa halagang mas mababa sa tatlong daang dolyar.",
+      "text_markdown": "Ang Jetson Orin Nano Super ng NVIDIA ay gumagawa ng animnapu't pitong TOPS sa halagang mas mababa sa tatlong daang dolyar.",
+      "title": "",
+      "tts": {
+        "text": "Ang Jetson Orin Nano Super ng N V I D I A ay gumagawa ng animnapu't pitong T O P S sa halagang mas mababa sa tatlong daang dolyar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ang on-device ay nangangahulugang isang Mac noon.",
+      "text_markdown": "Ang on-device ay nangangahulugang isang Mac noon.",
+      "title": "",
+      "tts": {
+        "text": "Ang on device ay nangangahulugang isang Mac noon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ngayon, nangangahulugan ito ng isang board na maaari mong itago sa isang drawer.",
+      "text_markdown": "Ngayon, nangangahulugan ito ng isang board na maaari mong itago sa isang drawer.",
+      "title": "",
+      "tts": {
+        "text": "Ngayon, nangangahulugan ito ng isang board na maaari mong itago sa isang drawer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Konsepto ng linggo — diffusion versus autoregressive.",
+      "text_markdown": "Konsepto ng linggo — diffusion versus autoregressive.",
+      "title": "",
+      "tts": {
+        "text": "Konsepto ng linggo — diffusion versus autoregressive.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Parehong destinasyon, iba't ibang ruta.",
+      "text_markdown": "Parehong destinasyon, iba't ibang ruta.",
+      "title": "",
+      "tts": {
+        "text": "Parehong destinasyon, iba't ibang ruta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang mga autoregressive model, karamihan sa mga LLM na alam mo, ay bumubuo ng isang token sa bawat pagkakataon, kino-condition dito, bumubuo ng susunod, inuulit — sequential sa disenyo.",
+      "text_markdown": "Ang mga autoregressive model, karamihan sa mga LLM na alam mo, ay bumubuo ng isang token sa bawat pagkakataon, kino-condition dito, bumubuo ng susunod, inuulit — sequential sa disenyo.",
+      "title": "",
+      "tts": {
+        "text": "Ang mga autoregressive model, karamihan sa mga LLM na alam mo, ay bumubuo ng isang token sa bawat pagkakataon, kino-condition dito, bumubuo ng susunod, inuulit — sequential sa disenyo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ang mga diffusion model ay nagsisimula sa isang block ng purong ingay at inaalis ang ingay nito nang sabay-sabay sa loob ng nakapirming bilang ng mga hakbang.",
+      "text_markdown": "Ang mga diffusion model ay nagsisimula sa isang block ng purong ingay at inaalis ang ingay nito nang sabay-sabay sa loob ng nakapirming bilang ng mga hakbang.",
+      "title": "",
+      "tts": {
+        "text": "Ang mga diffusion model ay nagsisimula sa isang block ng purong ingay at inaalis ang ingay nito nang sabay-sabay sa loob ng nakapirming bilang ng mga hakbang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Ipinagpapalit mo ang ilang kalidad para sa parallelism, at sa maliit na bilang ng hakbang ay nakukuha mo ang mga nakamamanghang throughput number na iyon.",
+      "text_markdown": "Ipinagpapalit mo ang ilang kalidad para sa parallelism, at sa maliit na bilang ng hakbang ay nakukuha mo ang mga nakamamanghang throughput number na iyon.",
+      "title": "",
+      "tts": {
+        "text": "Ipinagpapalit mo ang ilang kalidad para sa parallelism, at sa maliit na bilang ng hakbang ay nakukuha mo ang mga nakamamanghang throughput number na iyon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Kaya ang DiffusionGemma ang unang pagkakataon na mayroon tayong open weights upang maramdaman talaga ang pagkakaiba.",
+      "text_markdown": "Kaya ang DiffusionGemma ang unang pagkakataon na mayroon tayong open weights upang maramdaman talaga ang pagkakaiba.",
+      "title": "",
+      "tts": {
+        "text": "Kaya ang DiffusionGemma ang unang pagkakataon na mayroon tayong open weights upang maramdaman talaga ang pagkakaiba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unang pagkakataon sa ganitong sukat, oo.",
+      "text_markdown": "Unang pagkakataon sa ganitong sukat, oo.",
+      "title": "",
+      "tts": {
+        "text": "Unang pagkakataon sa ganitong sukat, oo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "At iyan ang dahilan kung bakit mahalaga ang mga open-source inference team ngayong linggo — llama-dot-cpp, vLLM, MLX — sila ang matututo kung paano ito patakbuhin nang maayos sa totoong hardware.",
+      "text_markdown": "At iyan ang dahilan kung bakit mahalaga ang mga open-source inference team ngayong linggo — llama-dot-cpp, vLLM, MLX — sila ang matututo kung paano ito patakbuhin nang maayos sa totoong hardware.",
+      "title": "",
+      "tts": {
+        "text": "At iyan ang dahilan kung bakit mahalaga ang mga open source inference team ngayong linggo — llama dot c p p, v L L M, M L X — sila ang matututo kung paano ito patakbuhin nang maayos sa totoong hardware.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Magandang lugar para magtapos.",
+      "text_markdown": "Magandang lugar para magtapos.",
+      "title": "",
+      "tts": {
+        "text": "Magandang lugar para magtapos.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, salamat.",
+      "text_markdown": "Ron, salamat.",
+      "title": "",
+      "tts": {
+        "text": "Ron, salamat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anumang oras, Vindy.",
+      "text_markdown": "Anumang oras, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Anumang oras, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Iyan ang AI This Week para sa Hunyo 14, 2026.",
+      "text_markdown": "Iyan ang AI This Week para sa Hunyo 14, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Iyan ang A I This Week para sa Hunyo labing-apat, dalawang libo dalawampu't anim.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Parehong scrappy show, bagong Sunday slot.",
+      "text_markdown": "Parehong scrappy show, bagong Sunday slot.",
+      "title": "",
+      "tts": {
+        "text": "Parehong scrappy show, bagong Sunday slot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Patuloy na maglalabas ng mga wika hanggang Lunes ng umaga; ang Corpán 0.18.0 ay makukuha kung saan ka kumukuha ng apps — subukan ang beatlounge.",
+      "text_markdown": "Patuloy na maglalabas ng mga wika hanggang Lunes ng umaga; ang Corpán 0.18.0 ay makukuha kung saan ka kumukuha ng apps — subukan ang beatlounge.",
+      "title": "",
+      "tts": {
+        "text": "Patuloy na maglalabas ng mga wika hanggang Lunes ng umaga; ang Corpán zero point one eight point zero ay makukuha kung saan ka kumukuha ng apps — subukan ang beatlounge.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Hanggang sa susunod na Linggo, mag-ingat.",
+      "text_markdown": "Hanggang sa susunod na Linggo, mag-ingat.",
+      "title": "",
+      "tts": {
+        "text": "Hanggang sa susunod na Linggo, mag-ingat.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

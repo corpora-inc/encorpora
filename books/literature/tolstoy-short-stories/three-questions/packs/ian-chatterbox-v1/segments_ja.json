@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "ja",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "三つの質問",
+      "text_markdown": "三つの質問",
+      "title": "三つの質問"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "ある王は、もしもいつもどんな時がどんな仕事にとって最も重要なのかを知り、どんな人々が最も必要な人なのかを知り、そして何より、いつもどの仕事が最も重要なのかを知ることができれば、決して何事においても失敗することはないだろうと考えた。",
+      "text_markdown": "ある王は、もしもいつもどんな時がどんな仕事にとって最も重要なのかを知り、どんな人々が最も必要な人なのかを知り、そして何より、いつもどの仕事が最も重要なのかを知ることができれば、決して何事においても失敗することはないだろうと考えた。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "ある王は、もしもいつもどんな時がどんな仕事にとって最も重要なのかを知り、どんな人々が最も必要な人なのかを知り、そして何より、いつもどの仕事が最も重要なのかを知ることができれば、決して何事においても失敗することはないだろうと考えた。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "そう考えた王は、自分の王国に布告を出し、どんな仕事にとっても適切な時を知る方法、どんな人々が最も必要なのかを知る方法、そしてどの仕事が最も重要なのかについて間違いを犯さない方法を教えてくれる者には、大いなる報償を与えると発表した。",
+      "text_markdown": "そう考えた王は、自分の王国に布告を出し、どんな仕事にとっても適切な時を知る方法、どんな人々が最も必要なのかを知る方法、そしてどの仕事が最も重要なのかについて間違いを犯さない方法を教えてくれる者には、大いなる報償を与えると発表した。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "そう考えた王は、自分の王国に布告を出し、どんな仕事にとっても適切な時を知る方法、どんな人々が最も必要なのかを知る方法、そしてどの仕事が最も重要なのかについて間違いを犯さない方法を教えてくれる者には、大いなる報償を与えると発表した。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "王のもとに学者たちがやって来て、彼の質問にそれぞれ異なった答えをした。",
+      "text_markdown": "王のもとに学者たちがやって来て、彼の質問にそれぞれ異なった答えをした。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "王のもとに学者たちがやって来て、彼の質問にそれぞれ異なった答えをした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "第一の質問に対して、ある者たちは、どんな仕事にとっても適切な時を知るためには、あらかじめ日、月、年の予定表を作り、それに厳格に従わなければならないと言った。",
+      "text_markdown": "第一の質問に対して、ある者たちは、どんな仕事にとっても適切な時を知るためには、あらかじめ日、月、年の予定表を作り、それに厳格に従わなければならないと言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "第一の質問に対して、ある者たちは、どんな仕事にとっても適切な時を知るためには、あらかじめ日、月、年の予定表を作り、それに厳格に従わなければならないと言った。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "そうすれば、彼らが言うには、どんな仕事もその時にすることができるのだ。",
+      "text_markdown": "そうすれば、彼らが言うには、どんな仕事もその時にすることができるのだ。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "そうすれば、彼らが言うには、どんな仕事もその時にすることができるのだ。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "別の者たちは、どの仕事にどの時が適切なのかをあらかじめ決めることはできない、むしろ無益な娯楽に気を取られることなく、いつも起こっていることすべてに注意を払っていれば、いつも必要なことをすることができると言った。",
+      "text_markdown": "別の者たちは、どの仕事にどの時が適切なのかをあらかじめ決めることはできない、むしろ無益な娯楽に気を取られることなく、いつも起こっていることすべてに注意を払っていれば、いつも必要なことをすることができると言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "別の者たちは、どの仕事にどの時が適切なのかをあらかじめ決めることはできない、むしろ無益な娯楽に気を取られることなく、いつも起こっていることすべてに注意を払っていれば、いつも必要なことをすることができると言った。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "第三の者たちは、王がどんなに起こっていることすべてに注意を払おうとも、一人の人間がいつも各々の仕事について、いつそれをすべき時なのかを正しく決めることはできない、賢者たちの助言を求め、その助言に従って各々の仕事の時を決めるべきだと言った。",
+      "text_markdown": "第三の者たちは、王がどんなに起こっていることすべてに注意を払おうとも、一人の人間がいつも各々の仕事について、いつそれをすべき時なのかを正しく決めることはできない、賢者たちの助言を求め、その助言に従って各々の仕事の時を決めるべきだと言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "第三の者たちは、王がどんなに起こっていることすべてに注意を払おうとも、一人の人間がいつも各々の仕事について、いつそれをすべき時なのかを正しく決めることはできない、賢者たちの助言を求め、その助言に従って各々の仕事の時を決めるべきだと言った。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "第四の者たちは、相談を待つことなく即座に決めなければならない仕事があり、それがいつなのかを知るためには、将来何が起こるかを知らなければならないと言った。",
+      "text_markdown": "第四の者たちは、相談を待つことなく即座に決めなければならない仕事があり、それがいつなのかを知るためには、将来何が起こるかを知らなければならないと言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "第四の者たちは、相談を待つことなく即座に決めなければならない仕事があり、それがいつなのかを知るためには、将来何が起こるかを知らなければならないと言った。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "そしてそれを知ることができるのは魔法使いだけである。",
+      "text_markdown": "そしてそれを知ることができるのは魔法使いだけである。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "そしてそれを知ることができるのは魔法使いだけである。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "それゆえ、各々の仕事にとって適切な時を知るためには、魔法使いに尋ねなければならない。",
+      "text_markdown": "それゆえ、各々の仕事にとって適切な時を知るためには、魔法使いに尋ねなければならない。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "それゆえ、各々の仕事にとって適切な時を知るためには、魔法使いに尋ねなければならない。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "第二の質問にも同様に様々な答えがあった。",
+      "text_markdown": "第二の質問にも同様に様々な答えがあった。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "第二の質問にも同様に様々な答えがあった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "ある者たちは、王にとって最も必要な人々は統治者だと言い、別の者たちは聖職者、第三の者たちは医者、第四の者たちは戦士だと言った。",
+      "text_markdown": "ある者たちは、王にとって最も必要な人々は統治者だと言い、別の者たちは聖職者、第三の者たちは医者、第四の者たちは戦士だと言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "ある者たちは、王にとって最も必要な人々は統治者だと言い、別の者たちは聖職者、第三の者たちは医者、第四の者たちは戦士だと言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "第三の質問—どの仕事が最も重要か—に対して、ある者たちは世界で最も重要なのは学問だと言い、別の者たちは軍事、第三の者たちは敬虔さだと言った。",
+      "text_markdown": "第三の質問—どの仕事が最も重要か—に対して、ある者たちは世界で最も重要なのは学問だと言い、別の者たちは軍事、第三の者たちは敬虔さだと言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "第三の質問—どの仕事が最も重要か—に対して、ある者たちは世界で最も重要なのは学問だと言い、別の者たちは軍事、第三の者たちは敬虔さだと言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "すべての答えが異なっていたため、王は誰の答えにも同意せず、誰にも報償を与えなかった。",
+      "text_markdown": "すべての答えが異なっていたため、王は誰の答えにも同意せず、誰にも報償を与えなかった。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "すべての答えが異なっていたため、王は誰の答えにも同意せず、誰にも報償を与えなかった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "自分の質問に対する答えをよりよく知るために、王は賢い人だという評判の隠者に尋ねることにした。",
+      "text_markdown": "自分の質問に対する答えをよりよく知るために、王は賢い人だという評判の隠者に尋ねることにした。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "自分の質問に対する答えをよりよく知るために、王は賢い人だという評判の隠者に尋ねることにした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "隠者は森に住んでおり、決してそこから出ることはなかった。",
+      "text_markdown": "隠者は森に住んでおり、決してそこから出ることはなかった。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "隠者は森に住んでおり、決してそこから出ることはなかった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "彼は質素な人々だけを迎え入れたので、王は質素な服を着て、隠者の住居に着く前に馬から降り、一人で彼のもとに向かった。",
+      "text_markdown": "彼は質素な人々だけを迎え入れたので、王は質素な服を着て、隠者の住居に着く前に馬から降り、一人で彼のもとに向かった。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "彼は質素な人々だけを迎え入れたので、王は質素な服を着て、隠者の住居に着く前に馬から降り、一人で彼のもとに向かった。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "王が彼のもとに近づいたとき、隠者は自分の小屋の前で畑を耕していた。",
+      "text_markdown": "王が彼のもとに近づいたとき、隠者は自分の小屋の前で畑を耕していた。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "王が彼のもとに近づいたとき、隠者は自分の小屋の前で畑を耕していた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "王を見ると、隠者は会釈して耕作を続けた。",
+      "text_markdown": "王を見ると、隠者は会釈して耕作を続けた。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "王を見ると、隠者は会釈して耕作を続けた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "隠者は痩せて弱く、スコップを土に突き刺して小さな土塊を掘り返しながら、苦しそうに息を吐いていた。",
+      "text_markdown": "隠者は痩せて弱く、スコップを土に突き刺して小さな土塊を掘り返しながら、苦しそうに息を吐いていた。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "隠者は痩せて弱く、スコップを土に突き刺して小さな土塊を掘り返しながら、苦しそうに息を吐いていた。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "王は彼のもとに近づいて言った。",
+      "text_markdown": "王は彼のもとに近づいて言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "王は彼のもとに近づいて言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "「私はあなたのもとに来ました、賢い隠者よ、三つの質問に答えていただくために。どの時を覚えておき、逃してはならないのでしょうか、後で後悔しないために？」",
+      "text_markdown": "「私はあなたのもとに来ました、賢い隠者よ、三つの質問に答えていただくために。どの時を覚えておき、逃してはならないのでしょうか、後で後悔しないために？」",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「私はあなたのもとに来ました、賢い隠者よ、三つの質問に答えていただくために。どの時を覚えておき、逃してはならないのでしょうか、後で後悔しないために？」",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "「どんな人々が最も必要なのでしょうか？」",
+      "text_markdown": "「どんな人々が最も必要なのでしょうか？」",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「どんな人々が最も必要なのでしょうか？」",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "「そしてどの仕事が最も重要なのでしょうか？」",
+      "text_markdown": "「そしてどの仕事が最も重要なのでしょうか？」",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「そしてどの仕事が最も重要なのでしょうか？」",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "隠者は王の話を聞いたが、何も答えず、手に唾を吐いてまた耕し始めた。",
+      "text_markdown": "隠者は王の話を聞いたが、何も答えず、手に唾を吐いてまた耕し始めた。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "隠者は王の話を聞いたが、何も答えず、手に唾を吐いてまた耕し始めた。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "「お疲れでしょう」と王は言った。",
+      "text_markdown": "「お疲れでしょう」と王は言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「お疲れでしょう」と王は言った。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "「お手伝いしましょう。」",
+      "text_markdown": "「お手伝いしましょう。」",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「お手伝いしましょう。」",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "「ありがとうございます」と隠者は言って、王にスコップを渡し、地面に座った。",
+      "text_markdown": "「ありがとうございます」と隠者は言って、王にスコップを渡し、地面に座った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「ありがとうございます」と隠者は言って、王にスコップを渡し、地面に座った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "二つの畑を耕した後、王は立ち止まって自分の質問を繰り返した。",
+      "text_markdown": "二つの畑を耕した後、王は立ち止まって自分の質問を繰り返した。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "ふたつの畑を耕した後、王は立ち止まって自分の質問を繰り返した。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "隠者はまた答えず、立ち上がってスコップに手を伸ばした。",
+      "text_markdown": "隠者はまた答えず、立ち上がってスコップに手を伸ばした。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "隠者はまた答えず、立ち上がってスコップに手を伸ばした。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "「今度は休んでください、私がやります」と彼は言った。",
+      "text_markdown": "「今度は休んでください、私がやります」と彼は言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「今度は休んでください、私がやります」と彼は言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "しかし王はスコップを渡さず、耕作を続けた。",
+      "text_markdown": "しかし王はスコップを渡さず、耕作を続けた。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "しかし王はスコップを渡さず、耕作を続けた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "一時間が過ぎ、また一時間が過ぎた。",
+      "text_markdown": "一時間が過ぎ、また一時間が過ぎた。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "いちじかんが過ぎ、またいちじかんが過ぎた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "太陽が木々の向こうに沈んだ。",
+      "text_markdown": "太陽が木々の向こうに沈んだ。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "太陽が木々の向こうに沈んだ。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "王はスコップを土に突き刺して言った。",
+      "text_markdown": "王はスコップを土に突き刺して言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "王はスコップを土に突き刺して言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "「私はあなたのもとに来ました、賢者よ、私の質問への答えを求めて。",
+      "text_markdown": "「私はあなたのもとに来ました、賢者よ、私の質問への答えを求めて。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「私はあなたのもとに来ました、賢者よ、私の質問への答えを求めて。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "もしあなたが答えることができないなら、そう言ってください、そうすれば私は家に帰ります。」",
+      "text_markdown": "もしあなたが答えることができないなら、そう言ってください、そうすれば私は家に帰ります。」",
+      "title": "三つの質問",
+      "tts": {
+        "text": "もしあなたが答えることができないなら、そう言ってください、そうすれば私は家に帰ります。」",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "「ほら、誰かが走ってきます」と隠者は言った。",
+      "text_markdown": "「ほら、誰かが走ってきます」と隠者は言った。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「ほら、誰かが走ってきます」と隠者は言った。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "「誰なのか見てみましょう。」",
+      "text_markdown": "「誰なのか見てみましょう。」",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「誰なのか見てみましょう。」",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "王は振り返ると、森から髭を生やした男が走って来るのが見えた。",
+      "text_markdown": "王は振り返ると、森から髭を生やした男が走って来るのが見えた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は振り返ると、森から髭を生やした男が走って来るのが見えた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "その男は腹の傷口を両手で押さえており、手の間から血が流れていた。",
+      "text_markdown": "その男は腹の傷口を両手で押さえており、手の間から血が流れていた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "その男は腹の傷口を両手で押さえており、手の間から血が流れていた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "王のもとまで駆けて来ると、男は意識を失って地面に倒れ、静かに呻いていた。",
+      "text_markdown": "王のもとまで駆けて来ると、男は意識を失って地面に倒れ、静かに呻いていた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王のもとまで駆けて来ると、男は意識を失って地面に倒れ、静かに呻いていた。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "王は隠者と一緒に男の衣服のボタンを外し、脱がせた。",
+      "text_markdown": "王は隠者と一緒に男の衣服のボタンを外し、脱がせた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は隠者と一緒に男の衣服のボタンを外し、脱がせた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "腹には大きな傷があった。",
+      "text_markdown": "腹には大きな傷があった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "腹には大きな傷があった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "王は自分なりのやり方で傷口を洗い、自分のハンカチと隠者のタオルで包帯を巻いた。",
+      "text_markdown": "王は自分なりのやり方で傷口を洗い、自分のハンカチと隠者のタオルで包帯を巻いた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は自分なりのやり方で傷口を洗い、自分のハンカチと隠者のタオルで包帯を巻いた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "しかし血は止まらなかった。",
+      "text_markdown": "しかし血は止まらなかった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "しかし血は止まらなかった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "王は何度も包帯を外し、再び洗って包帯を巻き直した。",
+      "text_markdown": "王は何度も包帯を外し、再び洗って包帯を巻き直した。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は何度も包帯を外し、再び洗って包帯を巻き直した。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "ようやく血が治まると、男は意識を取り戻し、水を欲しがった。",
+      "text_markdown": "ようやく血が治まると、男は意識を取り戻し、水を欲しがった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "ようやく血が治まると、男は意識を取り戻し、水を欲しがった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "王は新鮮な水を持って来て、彼に飲ませた。",
+      "text_markdown": "王は新鮮な水を持って来て、彼に飲ませた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は新鮮な水を持って来て、彼に飲ませた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "その間に太陽は完全に沈み、寒くなった。",
+      "text_markdown": "その間に太陽は完全に沈み、寒くなった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "その間に太陽は完全に沈み、寒くなった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "王は隠者と一緒に負傷した男を小屋に運び、ベッドに寝かせた。",
+      "text_markdown": "王は隠者と一緒に負傷した男を小屋に運び、ベッドに寝かせた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は隠者と一緒に負傷した男を小屋に運び、ベッドに寝かせた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "負傷した男は目を閉じて静かになった。",
+      "text_markdown": "負傷した男は目を閉じて静かになった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "負傷した男は目を閉じて静かになった。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "王は歩き回ったり働いたりしてとても疲れていたので、その場で敷居のところに横になって眠った。短い夏の夜をぐっすり眠り、朝目覚めた時、自分がどこにいるのか、ベッドに横たわって輝く目で自分をじっと見つめているあの奇妙な髭の男が誰なのか、しばらく理解できなかった。",
+      "text_markdown": "王は歩き回ったり働いたりしてとても疲れていたので、その場で敷居のところに横になって眠った。短い夏の夜をぐっすり眠り、朝目覚めた時、自分がどこにいるのか、ベッドに横たわって輝く目で自分をじっと見つめているあの奇妙な髭の男が誰なのか、しばらく理解できなかった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は歩き回ったり働いたりしてとても疲れていたので、その場で敷居のところに横になって眠った。短い夏の夜をぐっすり眠り、朝目覚めた時、自分がどこにいるのか、ベッドに横たわって輝く目で自分をじっと見つめているあの奇妙な髭の男が誰なのか、しばらく理解できなかった。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "「お許しください」と髭の男は、王が目を覚まして自分を見ているのに気づくと、弱々しい声で言った。",
+      "text_markdown": "「お許しください」と髭の男は、王が目を覚まして自分を見ているのに気づくと、弱々しい声で言った。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「お許しください」と髭の男は、王が目を覚まして自分を見ているのに気づくと、弱々しい声で言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "「私はあなたを知らないし、あなたを許す理由もない」と王は言った。",
+      "text_markdown": "「私はあなたを知らないし、あなたを許す理由もない」と王は言った。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「私はあなたを知らないし、あなたを許す理由もない」と王は言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "「あなたは私を知らないが、私はあなたを知っている。",
+      "text_markdown": "「あなたは私を知らないが、私はあなたを知っている。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「あなたは私を知らないが、私はあなたを知っている。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "私はあなたの敵、あなたが私の兄を処刑し、私の領地を奪ったことに対して復讐を誓ったその当人です。",
+      "text_markdown": "私はあなたの敵、あなたが私の兄を処刑し、私の領地を奪ったことに対して復讐を誓ったその当人です。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "私はあなたの敵、あなたが私の兄を処刑し、私の領地を奪ったことに対して復讐を誓ったその当人です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "あなたが一人で隠者のもとに行くことを知り、帰り道であなたを殺そうと決めた。",
+      "text_markdown": "あなたが一人で隠者のもとに行くことを知り、帰り道であなたを殺そうと決めた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "あなたが一人で隠者のもとに行くことを知り、帰り道であなたを殺そうと決めた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "しかし丸一日が過ぎても、あなたは一向に現れなかった。",
+      "text_markdown": "しかし丸一日が過ぎても、あなたは一向に現れなかった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "しかし丸一日が過ぎても、あなたは一向に現れなかった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "そこで私は待ち伏せ場所から出てあなたを探し、あなたの護衛たちに出くわした。",
+      "text_markdown": "そこで私は待ち伏せ場所から出てあなたを探し、あなたの護衛たちに出くわした。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "そこで私は待ち伏せ場所から出てあなたを探し、あなたの護衛たちに出くわした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "彼らは私を見つけて傷を負わせた。",
+      "text_markdown": "彼らは私を見つけて傷を負わせた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "彼らは私を見つけて傷を負わせた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "私は彼らから逃げたが、もしあなたが私の傷の手当てをしてくれなかったら、私は死んでいただろう。",
+      "text_markdown": "私は彼らから逃げたが、もしあなたが私の傷の手当てをしてくれなかったら、私は死んでいただろう。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "私は彼らから逃げたが、もしあなたが私の傷の手当てをしてくれなかったら、私は死んでいただろう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "私はあなたを殺そうとしたのに、あなたは私の命を救ってくれた。",
+      "text_markdown": "私はあなたを殺そうとしたのに、あなたは私の命を救ってくれた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "私はあなたを殺そうとしたのに、あなたは私の命を救ってくれた。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "今、もし私が生き延び、あなたがそれを望むなら、私は最も忠実な奴隷としてあなたにお仕えし、同じことを息子たちにも命じます。",
+      "text_markdown": "今、もし私が生き延び、あなたがそれを望むなら、私は最も忠実な奴隷としてあなたにお仕えし、同じことを息子たちにも命じます。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "今、もし私が生き延び、あなたがそれを望むなら、私は最も忠実な奴隷としてあなたにお仕えし、同じことを息子たちにも命じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "お許しください。",
+      "text_markdown": "お許しください。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "お許しください。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "王は敵とこんなに簡単に和解し、友を得ることができたことをとても喜び、彼を許し、領地を返すことと、世話をするために自分の医者と召使いを送ることを約束した。",
+      "text_markdown": "王は敵とこんなに簡単に和解し、友を得ることができたことをとても喜び、彼を許し、領地を返すことと、世話をするために自分の医者と召使いを送ることを約束した。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は敵とこんなに簡単に和解し、友を得ることができたことをとても喜び、彼を許し、領地を返すことと、世話をするために自分の医者と召使いを送ることを約束した。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "負傷した男に別れを告げると、王は玄関に出て隠者を探した。",
+      "text_markdown": "負傷した男に別れを告げると、王は玄関に出て隠者を探した。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "負傷した男に別れを告げると、王は玄関に出て隠者を探した。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "去る前に、もう一度自分の質問への答えを求めたかった。",
+      "text_markdown": "去る前に、もう一度自分の質問への答えを求めたかった。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "去る前に、もう一度自分の質問への答えを求めたかった。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "隠者は中庭にいて、膝をついて昨日掘った畝に種を蒔いていた。",
+      "text_markdown": "隠者は中庭にいて、膝をついて昨日掘った畝に種を蒔いていた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "隠者は中庭にいて、膝をついて昨日掘った畝に種を蒔いていた。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "王は彼のもとに歩み寄った。",
+      "text_markdown": "王は彼のもとに歩み寄った。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "王は彼のもとに歩み寄った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "「賢い人よ、最後にお願いします。私の質問に答えてください。」",
+      "text_markdown": "「賢い人よ、最後にお願いします。私の質問に答えてください。」",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「賢い人よ、最後にお願いします。私の質問に答えてください。」",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "「あなたはもう答えを得ているではありませんか」と隠者は、細い脚でしゃがみこみ、目の前に立つ王を見上げながら言った。",
+      "text_markdown": "「あなたはもう答えを得ているではありませんか」と隠者は、細い脚でしゃがみこみ、目の前に立つ王を見上げながら言った。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「あなたはもう答えを得ているではありませんか」と隠者は、細い脚でしゃがみこみ、目の前に立つ王を見上げながら言った。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "「どうして答えを得たのですか？」と王は尋ねた。",
+      "text_markdown": "「どうして答えを得たのですか？」と王は尋ねた。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「どうして答えを得たのですか？」と王は尋ねた。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "「どうしてって？」と隠者は言った。",
+      "text_markdown": "「どうしてって？」と隠者は言った。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「どうしてって？」と隠者は言った。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "「もしあなたが昨日私を憐れんで、私の代わりにこの畝を掘らずに帰っていたなら、あの男があなたを殺していたでしょう。",
+      "text_markdown": "「もしあなたが昨日私を憐れんで、私の代わりにこの畝を掘らずに帰っていたなら、あの男があなたを殺していたでしょう。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "「もしあなたが昨日私を憐れんで、私の代わりにこの畝を掘らずに帰っていたなら、あの男があなたを殺していたでしょう。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "だから最も重要な時間は、あなたが畝を掘っていた時だったのです。",
+      "text_markdown": "だから最も重要な時間は、あなたが畝を掘っていた時だったのです。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "だから最も重要な時間は、あなたが畝を掘っていた時だったのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "そして最も必要な人間は私でした。",
+      "text_markdown": "そして最も必要な人間は私でした。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "そして最も必要な人間は私でした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "そして最も重要な行いは、私に善をなすことでした。",
+      "text_markdown": "そして最も重要な行いは、私に善をなすことでした。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "そして最も重要な行いは、私に善をなすことでした。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "そして後に、あの男が駆け込んで来た時、最も重要な時間は、あなたが彼の世話をしていた時でした。なぜなら、もしあなたが彼の傷を洗わなかったら、彼はあなたと和解することなく死んでいたでしょうから。",
+      "text_markdown": "そして後に、あの男が駆け込んで来た時、最も重要な時間は、あなたが彼の世話をしていた時でした。なぜなら、もしあなたが彼の傷を洗わなかったら、彼はあなたと和解することなく死んでいたでしょうから。",
+      "title": "三つの問い",
+      "tts": {
+        "text": "そして後に、あの男が駆け込んで来た時、最も重要な時間は、あなたが彼の世話をしていた時でした。なぜなら、もしあなたが彼の傷を洗わなかったら、彼はあなたと和解することなく死んでいたでしょうから。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "だから最も必要な人間は彼であり、最も重要な仕事はあなたが彼にしてあげたことだったのです。",
+      "text_markdown": "だから最も必要な人間は彼であり、最も重要な仕事はあなたが彼にしてあげたことだったのです。",
+      "title": "三つの質問",
+      "tts": {
+        "text": "だから最も必要な人間は彼であり、最も重要な仕事はあなたが彼にしてあげたことだったのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "「だから覚えておきなさい」と隠者は言った。「最も重要な時は一つしかない。それは今この瞬間だ。なぜなら、今この瞬間においてのみ、我々は自分自身を支配できるからだ。そして最も必要な人間とは、今あなたが関わっている人のことだ。なぜなら、その人が今後他の誰かと関わることになるかどうかは、誰にもわからないからだ。そして最も重要な仕事とは、その人に善を行うことだ。なぜなら、人間がこの世に送られてきたのは、そのためだけだからだ。」",
+      "text_markdown": "「だから覚えておきなさい」と隠者は言った。「最も重要な時は一つしかない。それは今この瞬間だ。なぜなら、今この瞬間においてのみ、我々は自分自身を支配できるからだ。そして最も必要な人間とは、今あなたが関わっている人のことだ。なぜなら、その人が今後他の誰かと関わることになるかどうかは、誰にもわからないからだ。そして最も重要な仕事とは、その人に善を行うことだ。なぜなら、人間がこの世に送られてきたのは、そのためだけだからだ。」",
+      "title": "三つの質問",
+      "tts": {
+        "text": "「だから覚えておきなさい」と隠者は言った。「最も重要な時は一つしかない。それは今この瞬間だ。なぜなら、今この瞬間においてのみ、我々は自分自身を支配できるからだ。そして最も必要な人間とは、今あなたが関わっている人のことだ。なぜなら、その人が今後他の誰かと関わることになるかどうかは、誰にもわからないからだ。そして最も重要な仕事とは、その人に善を行うことだ。なぜなら、人間がこの世に送られてきたのは、そのためだけだからだ。」",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

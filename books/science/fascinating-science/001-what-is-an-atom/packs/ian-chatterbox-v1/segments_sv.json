@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "sv",
+  "total_segments": 300,
+  "segments": [
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "chapter": 1,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "text": "Allt är gjort av atomer",
+      "text_markdown": "Allt är gjort av atomer",
+      "title": "Allt är gjort av atomer"
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "text": "Titta runt omkring dig.",
+      "text_markdown": "Titta runt omkring dig.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Titta runt omkring dig.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "text": "Allt du kan se är gjort av atomer.",
+      "text_markdown": "Allt du kan se är gjort av atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Allt du kan se är gjort av atomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "text": "Luften du andas är gjord av atomer.",
+      "text_markdown": "Luften du andas är gjord av atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Luften du andas är gjord av atomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "text": "Vattnet du dricker är gjort av atomer.",
+      "text_markdown": "Vattnet du dricker är gjort av atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Vattnet du dricker är gjort av atomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "text": "Din kropp är gjord av atomer.",
+      "text_markdown": "Din kropp är gjord av atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Din kropp är gjord av atomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "text": "Marken under dina fötter är gjord av atomer.",
+      "text_markdown": "Marken under dina fötter är gjord av atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Marken under dina fötter är gjord av atomer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "text": "En atom är den minsta biten av materia som fortfarande har en kemisk identitet.",
+      "text_markdown": "En atom är den minsta biten av materia som fortfarande har en kemisk identitet.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "En atom är den minsta biten av materia som fortfarande har en kemisk identitet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "text": "Du kan inte se en enda atom med dina ögon.",
+      "text_markdown": "Du kan inte se en enda atom med dina ögon.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Du kan inte se en enda atom med dina ögon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "text": "Du kan inte se en enda atom med ett vanligt mikroskop.",
+      "text_markdown": "Du kan inte se en enda atom med ett vanligt mikroskop.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Du kan inte se en enda atom med ett vanligt mikroskop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "text": "Så små är atomer.",
+      "text_markdown": "Så små är atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Så små är atomer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "text": "Ett enda sandkorn innehåller ungefär femtio triljoner atomer.",
+      "text_markdown": "Ett enda sandkorn innehåller ungefär femtio triljoner atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Ett enda sandkorn innehåller ungefär femtio triljoner atomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "text": "Det talet är femtio följt av arton nollor.",
+      "text_markdown": "Det talet är femtio följt av arton nollor.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Det talet är femtio följt av arton nollor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "text": "Det finns fler atomer i ett sandkorn än det finns sandkorn på en strand.",
+      "text_markdown": "Det finns fler atomer i ett sandkorn än det finns sandkorn på en strand.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Det finns fler atomer i ett sandkorn än det finns sandkorn på en strand.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "text": "Atomer är byggstenarna i allt i den fysiska världen.",
+      "text_markdown": "Atomer är byggstenarna i allt i den fysiska världen.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Atomer är byggstenarna i allt i den fysiska världen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "text": "En mur är gjord av tegelstenar.",
+      "text_markdown": "En mur är gjord av tegelstenar.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "En mur är gjord av tegelstenar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "text": "En mening är gjord av ord.",
+      "text_markdown": "En mening är gjord av ord.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "En mening är gjord av ord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "text": "Universum är gjort av atomer.",
+      "text_markdown": "Universum är gjort av atomer.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Universum är gjort av atomer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "text": "Ordet atom kommer från forngrekiskan.",
+      "text_markdown": "Ordet atom kommer från forngrekiskan.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Ordet atom kommer från forngrekiskan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "text": "Det grekiska ordet atomos betyder odelbar.",
+      "text_markdown": "Det grekiska ordet atomos betyder odelbar.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Det grekiska ordet atomos betyder odelbar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "text": "Antikens grekiska filosofer trodde att atomer var de minsta möjliga bitarna av materia.",
+      "text_markdown": "Antikens grekiska filosofer trodde att atomer var de minsta möjliga bitarna av materia.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Antikens grekiska filosofer trodde att atomer var de minsta möjliga bitarna av materia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "text": "De hade nästan rätt.",
+      "text_markdown": "De hade nästan rätt.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "De hade nästan rätt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "text": "Atomer är inte riktigt de minsta partiklarna, men de är de minsta enheterna som behåller sina kemiska egenskaper.",
+      "text_markdown": "Atomer är inte riktigt de minsta partiklarna, men de är de minsta enheterna som behåller sina kemiska egenskaper.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Atomer är inte riktigt de minsta partiklarna, men de är de minsta enheterna som behåller sina kemiska egenskaper.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "text": "Atomer är otroligt hållbara.",
+      "text_markdown": "Atomer är otroligt hållbara.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Atomer är otroligt hållbara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "text": "Atomerna i din kropp är miljarder år gamla.",
+      "text_markdown": "Atomerna i din kropp är miljarder år gamla.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Atomerna i din kropp är miljarder år gamla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "text": "Några av väteatatomerna i vattnet du drack idag skapades under de första minuterna efter Big Bang.",
+      "text_markdown": "Några av väteatatomerna i vattnet du drack idag skapades under de första minuterna efter Big Bang.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Några av väteatatomerna i vattnet du drack idag skapades under de första minuterna efter Big Bang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "text": "Du är gjord av uråldriga material.",
+      "text_markdown": "Du är gjord av uråldriga material.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Du är gjord av uråldriga material.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "text": "Atomer skapas eller förstörs aldrig i vardagslivet.",
+      "text_markdown": "Atomer skapas eller förstörs aldrig i vardagslivet.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Atomer skapas eller förstörs aldrig i vardagslivet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "text": "De omorganiseras.",
+      "text_markdown": "De omorganiseras.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "De omorganiseras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "text": "När trä brinner försvinner inte atomerna.",
+      "text_markdown": "När trä brinner försvinner inte atomerna.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "När trä brinner försvinner inte atomerna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "text": "De omorganiseras till rök, aska och gas.",
+      "text_markdown": "De omorganiseras till rök, aska och gas.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "De omorganiseras till rök, aska och gas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "text": "När is smälter förblir atomerna desamma.",
+      "text_markdown": "När is smälter förblir atomerna desamma.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "När is smälter förblir atomerna desamma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "text": "Bara deras ordning förändras.",
+      "text_markdown": "Bara deras ordning förändras.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Bara deras ordning förändras.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "text": "Att förstå atomer är grunden för kemi.",
+      "text_markdown": "Att förstå atomer är grunden för kemi.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Att förstå atomer är grunden för kemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "text": "Kemi är vetenskapen om hur atomer kombineras, omorganiseras och samverkar.",
+      "text_markdown": "Kemi är vetenskapen om hur atomer kombineras, omorganiseras och samverkar.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Kemi är vetenskapen om hur atomer kombineras, omorganiseras och samverkar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "text": "Allt som händer i den fysiska världen handlar till slut om atomer och vad de gör.",
+      "text_markdown": "Allt som händer i den fysiska världen handlar till slut om atomer och vad de gör.",
+      "title": "Allt är gjort av atomer",
+      "tts": {
+        "text": "Allt som händer i den fysiska världen handlar till slut om atomer och vad de gör.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "chapter": 2,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "text": "Inuti atomen",
+      "text_markdown": "Inuti atomen",
+      "title": "Inuti atomen"
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "text": "En atom har tre typer av partiklar inuti sig.",
+      "text_markdown": "En atom har tre typer av partiklar inuti sig.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "En atom har tre typer av partiklar inuti sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "text": "Protoner.",
+      "text_markdown": "Protoner.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Protoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "text": "Neutroner.",
+      "text_markdown": "Neutroner.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Neutroner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "text": "Elektroner.",
+      "text_markdown": "Elektroner.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Elektroner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "text": "Dessa tre partiklar utgör varje atom i universum.",
+      "text_markdown": "Dessa tre partiklar utgör varje atom i universum.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Dessa tre partiklar utgör varje atom i universum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "text": "Mitten av atomen kallas kärnan.",
+      "text_markdown": "Mitten av atomen kallas kärnan.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Mitten av atomen kallas kärnan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "text": "Kärnan innehåller protonerna och neutronerna.",
+      "text_markdown": "Kärnan innehåller protonerna och neutronerna.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Kärnan innehåller protonerna och neutronerna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "text": "Kärnan är liten jämfört med hela atomen.",
+      "text_markdown": "Kärnan är liten jämfört med hela atomen.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Kärnan är liten jämfört med hela atomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "text": "Om atomen vore lika stor som en fotbollsarena, skulle kärnan vara lika stor som en kula på mittlinjen.",
+      "text_markdown": "Om atomen vore lika stor som en fotbollsarena, skulle kärnan vara lika stor som en kula på mittlinjen.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Om atomen vore lika stor som en fotbollsarena, skulle kärnan vara lika stor som en kula på mittlinjen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "text": "Protoner bär en positiv elektrisk laddning.",
+      "text_markdown": "Protoner bär en positiv elektrisk laddning.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Protoner bär en positiv elektrisk laddning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "text": "Varje proton har samma mängd positiv laddning.",
+      "text_markdown": "Varje proton har samma mängd positiv laddning.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Varje proton har samma mängd positiv laddning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "text": "Antalet protoner i en atom bestämmer vilket grundämne atomen är.",
+      "text_markdown": "Antalet protoner i en atom bestämmer vilket grundämne atomen är.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Antalet protoner i en atom bestämmer vilket grundämne atomen är.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "text": "En proton betyder väte.",
+      "text_markdown": "En proton betyder väte.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "En proton betyder väte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "text": "Sex protoner betyder kol.",
+      "text_markdown": "Sex protoner betyder kol.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Sex protoner betyder kol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "text": "Tjugosex protoner betyder järn.",
+      "text_markdown": "Tjugosex protoner betyder järn.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Tjugosex protoner betyder järn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "text": "Antalet protoner är det viktigaste faktumet om en atom.",
+      "text_markdown": "Antalet protoner är det viktigaste faktumet om en atom.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Antalet protoner är det viktigaste faktumet om en atom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "text": "Neutroner bär ingen elektrisk laddning.",
+      "text_markdown": "Neutroner bär ingen elektrisk laddning.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Neutroner bär ingen elektrisk laddning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "text": "Neutroner är neutrala.",
+      "text_markdown": "Neutroner är neutrala.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Neutroner är neutrala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "text": "Neutroner sitter i kärnan bredvid protonerna.",
+      "text_markdown": "Neutroner sitter i kärnan bredvid protonerna.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Neutroner sitter i kärnan bredvid protonerna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "text": "Neutroner hjälper till att hålla ihop kärnan.",
+      "text_markdown": "Neutroner hjälper till att hålla ihop kärnan.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Neutroner hjälper till att hålla ihop kärnan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "text": "Utan neutroner skulle protonerna knuffa bort varandra eftersom de alla bär samma positiva laddning.",
+      "text_markdown": "Utan neutroner skulle protonerna knuffa bort varandra eftersom de alla bär samma positiva laddning.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Utan neutroner skulle protonerna knuffa bort varandra eftersom de alla bär samma positiva laddning.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "text": "Elektroner bär en negativ elektrisk laddning.",
+      "text_markdown": "Elektroner bär en negativ elektrisk laddning.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Elektroner bär en negativ elektrisk laddning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "text": "Elektroner rör sig runt kärnan i ett moln.",
+      "text_markdown": "Elektroner rör sig runt kärnan i ett moln.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Elektroner rör sig runt kärnan i ett moln.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "text": "De kretsar inte som planeter runt en sol.",
+      "text_markdown": "De kretsar inte som planeter runt en sol.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "De kretsar inte som planeter runt en sol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "text": "De finns i ett suddigt område av sannolikhet runt kärnan.",
+      "text_markdown": "De finns i ett suddigt område av sannolikhet runt kärnan.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "De finns i ett suddigt område av sannolikhet runt kärnan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "text": "Elektronmolnet är där du sannolikt hittar en elektron vid varje givet ögonblick.",
+      "text_markdown": "Elektronmolnet är där du sannolikt hittar en elektron vid varje givet ögonblick.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Elektronmolnet är där du sannolikt hittar en elektron vid varje givet ögonblick.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "text": "En elektron har nästan ingen massa jämfört med en proton eller neutron.",
+      "text_markdown": "En elektron har nästan ingen massa jämfört med en proton eller neutron.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "En elektron har nästan ingen massa jämfört med en proton eller neutron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "text": "En proton är ungefär 1 836 gånger tyngre än en elektron.",
+      "text_markdown": "En proton är ungefär 1 836 gånger tyngre än en elektron.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "En proton är ungefär ettusenåttahundratrettiosex gånger tyngre än en elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "text": "Nästan all massa i en atom finns i kärnan.",
+      "text_markdown": "Nästan all massa i en atom finns i kärnan.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Nästan all massa i en atom finns i kärnan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "text": "I en neutral atom är antalet elektroner lika med antalet protoner.",
+      "text_markdown": "I en neutral atom är antalet elektroner lika med antalet protoner.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "I en neutral atom är antalet elektroner lika med antalet protoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "text": "De positiva laddningarna och de negativa laddningarna tar ut varandra.",
+      "text_markdown": "De positiva laddningarna och de negativa laddningarna tar ut varandra.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "De positiva laddningarna och de negativa laddningarna tar ut varandra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "text": "Atomen har ingen total laddning.",
+      "text_markdown": "Atomen har ingen total laddning.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Atomen har ingen total laddning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "text": "Denna balans är atomens normaltillstånd.",
+      "text_markdown": "Denna balans är atomens normaltillstånd.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Denna balans är atomens normaltillstånd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "text": "Största delen av en atom är tomt utrymme.",
+      "text_markdown": "Största delen av en atom är tomt utrymme.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Största delen av en atom är tomt utrymme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "text": "Kärnan är tät och liten.",
+      "text_markdown": "Kärnan är tät och liten.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Kärnan är tät och liten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "text": "Elektronmolnet är stort och mestadels ingenting.",
+      "text_markdown": "Elektronmolnet är stort och mestadels ingenting.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Elektronmolnet är stort och mestadels ingenting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "text": "Om du kunde ta bort allt tomt utrymme från varje atom i din kropp, skulle du krympa till en storlek mindre än ett saltkorn.",
+      "text_markdown": "Om du kunde ta bort allt tomt utrymme från varje atom i din kropp, skulle du krympa till en storlek mindre än ett saltkorn.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Om du kunde ta bort allt tomt utrymme från varje atom i din kropp, skulle du krympa till en storlek mindre än ett saltkorn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "text": "Din massa skulle förbli densamma.",
+      "text_markdown": "Din massa skulle förbli densamma.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Din massa skulle förbli densamma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "text": "Du skulle bara vara otroligt tät.",
+      "text_markdown": "Du skulle bara vara otroligt tät.",
+      "title": "Inuti atomen",
+      "tts": {
+        "text": "Du skulle bara vara otroligt tät.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "chapter": 3,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "text": "Grundämnen",
+      "text_markdown": "Grundämnen",
+      "title": "Grundämnen"
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "text": "Ett grundämne är ett ämne som består av bara en typ av atom.",
+      "text_markdown": "Ett grundämne är ett ämne som består av bara en typ av atom.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Ett grundämne är ett ämne som består av bara en typ av atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "text": "Rent guld är ett grundämne.",
+      "text_markdown": "Rent guld är ett grundämne.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Rent guld är ett grundämne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "text": "Varje atom i en guldtacka av rent guld har sjuttonio protoner.",
+      "text_markdown": "Varje atom i en guldtacka av rent guld har sjuttonio protoner.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Varje atom i en guldtacka av rent guld har sjuttonio protoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "text": "Rent syre är ett grundämne.",
+      "text_markdown": "Rent syre är ett grundämne.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Rent syre är ett grundämne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "text": "Varje atom i en tank med rent syre har åtta protoner.",
+      "text_markdown": "Varje atom i en tank med rent syre har åtta protoner.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Varje atom i en tank med rent syre har åtta protoner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "text": "Det finns ungefär nittiotvå grundämnen som förekommer naturligt på jorden.",
+      "text_markdown": "Det finns ungefär nittiotvå grundämnen som förekommer naturligt på jorden.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Det finns ungefär nittiotvå grundämnen som förekommer naturligt på jorden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "text": "Forskare har skapat ytterligare grundämnen i laboratorier.",
+      "text_markdown": "Forskare har skapat ytterligare grundämnen i laboratorier.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Forskare har skapat ytterligare grundämnen i laboratorier.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "text": "Det totala antalet kända grundämnen är över hundraarton.",
+      "text_markdown": "Det totala antalet kända grundämnen är över hundraarton.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Det totala antalet kända grundämnen är över hundraarton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "text": "Varje grundämne har ett unikt antal protoner.",
+      "text_markdown": "Varje grundämne har ett unikt antal protoner.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Varje grundämne har ett unikt antal protoner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "text": "Varje grundämne har ett namn och en symbol.",
+      "text_markdown": "Varje grundämne har ett namn och en symbol.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Varje grundämne har ett namn och en symbol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "text": "Väte är H. Syre är O. Kol är C. Järn är Fe.",
+      "text_markdown": "Väte är H. Syre är O. Kol är C. Järn är Fe.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Väte är hå. Syre är o. Kol är se. Järn är eff e.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "text": "Guld är Au.",
+      "text_markdown": "Guld är Au.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Guld är a u.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "text": "Symbolerna kommer från latinska, grekiska eller engelska namn.",
+      "text_markdown": "Symbolerna kommer från latinska, grekiska eller engelska namn.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Symbolerna kommer från latinska, grekiska eller engelska namn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "text": "Fe kommer från det latinska ordet ferrum.",
+      "text_markdown": "Fe kommer från det latinska ordet ferrum.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Eff e kommer från det latinska ordet ferrum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "text": "Au kommer från det latinska ordet aurum.",
+      "text_markdown": "Au kommer från det latinska ordet aurum.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "A u kommer från det latinska ordet aurum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "text": "Väte är det enklaste grundämnet.",
+      "text_markdown": "Väte är det enklaste grundämnet.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Väte är det enklaste grundämnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "text": "En väteatom har en proton och en elektron.",
+      "text_markdown": "En väteatom har en proton och en elektron.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "En väteatom har en proton och en elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "text": "Väte är det vanligaste grundämnet i universum.",
+      "text_markdown": "Väte är det vanligaste grundämnet i universum.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Väte är det vanligaste grundämnet i universum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "text": "Stjärnor består mestadels av väte.",
+      "text_markdown": "Stjärnor består mestadels av väte.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Stjärnor består mestadels av väte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "text": "Kol är livets grundämne.",
+      "text_markdown": "Kol är livets grundämne.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Kol är livets grundämne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "text": "Kol har sex protoner.",
+      "text_markdown": "Kol har sex protoner.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Kol har sex protoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "text": "Kolatomer kan bilda bindningar med många andra atomer samtidigt.",
+      "text_markdown": "Kolatomer kan bilda bindningar med många andra atomer samtidigt.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Kolatomer kan bilda bindningar med många andra atomer samtidigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "text": "Denna förmåga gör kol till ryggraden i alla levande varelser.",
+      "text_markdown": "Denna förmåga gör kol till ryggraden i alla levande varelser.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Denna förmåga gör kol till ryggraden i alla levande varelser.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "text": "Varje protein, varje DNA-sträng och varje sockermolekyl i din kropp innehåller kol.",
+      "text_markdown": "Varje protein, varje DNA-sträng och varje sockermolekyl i din kropp innehåller kol.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Varje protein, varje DNA-sträng och varje sockermolekyl i din kropp innehåller kol.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "text": "Syre har åtta protoner.",
+      "text_markdown": "Syre har åtta protoner.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Syre har åtta protoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "text": "Syre är grundämnet du andas.",
+      "text_markdown": "Syre är grundämnet du andas.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Syre är grundämnet du andas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "text": "Dina lungor tar upp syre ur luften och skickar det ut i blodet.",
+      "text_markdown": "Dina lungor tar upp syre ur luften och skickar det ut i blodet.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Dina lungor tar upp syre ur luften och skickar det ut i blodet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "text": "Dina celler använder syre för att frigöra energi från maten.",
+      "text_markdown": "Dina celler använder syre för att frigöra energi från maten.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Dina celler använder syre för att frigöra energi från maten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "text": "Järn har tjugosex protoner.",
+      "text_markdown": "Järn har tjugosex protoner.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Järn har tjugosex protoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "text": "Järn är grundämnet som gör ditt blod rött.",
+      "text_markdown": "Järn är grundämnet som gör ditt blod rött.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Järn är grundämnet som gör ditt blod rött.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "text": "Järn är huvudingrediensen i stål.",
+      "text_markdown": "Järn är huvudingrediensen i stål.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Järn är huvudingrediensen i stål.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "text": "Jordens kärna består mestadels av järn.",
+      "text_markdown": "Jordens kärna består mestadels av järn.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Jordens kärna består mestadels av järn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "text": "De lättaste grundämnena är de vanligaste i universum.",
+      "text_markdown": "De lättaste grundämnena är de vanligaste i universum.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "De lättaste grundämnena är de vanligaste i universum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "text": "Väte och helium utgör tillsammans ungefär nittioåtta procent av alla atomer i universum.",
+      "text_markdown": "Väte och helium utgör tillsammans ungefär nittioåtta procent av alla atomer i universum.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Väte och helium utgör tillsammans ungefär nittioåtta procent av alla atomer i universum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "text": "De tyngre grundämnena är sällsynta i jämförelse.",
+      "text_markdown": "De tyngre grundämnena är sällsynta i jämförelse.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "De tyngre grundämnena är sällsynta i jämförelse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "text": "Varje atom av varje tungt grundämne smiddes inuti en stjärna.",
+      "text_markdown": "Varje atom av varje tungt grundämne smiddes inuti en stjärna.",
+      "title": "Grundämnen",
+      "tts": {
+        "text": "Varje atom av varje tungt grundämne smiddes inuti en stjärna.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "chapter": 4,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "text": "Periodiska systemet",
+      "text_markdown": "Periodiska systemet",
+      "title": "Periodiska systemet"
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "text": "Periodiska systemet är ett diagram som organiserar alla kända grundämnen.",
+      "text_markdown": "Periodiska systemet är ett diagram som organiserar alla kända grundämnen.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Periodiska systemet är ett diagram som organiserar alla kända grundämnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "text": "Tabellen ordnar grundämnena efter deras antal protoner, från minsta till största.",
+      "text_markdown": "Tabellen ordnar grundämnena efter deras antal protoner, från minsta till största.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Tabellen ordnar grundämnena efter deras antal protoner, från minsta till största.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "text": "Väte är först med en proton.",
+      "text_markdown": "Väte är först med en proton.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Väte är först med en proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "text": "Helium är tvåa med två protoner.",
+      "text_markdown": "Helium är tvåa med två protoner.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Helium är tvåa med två protoner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "text": "Tabellen fortsätter hela vägen till oganesson med hundraarton protoner.",
+      "text_markdown": "Tabellen fortsätter hela vägen till oganesson med hundraarton protoner.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Tabellen fortsätter hela vägen till oganesson med hundraarton protoner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "text": "Periodiska systemet har rader och kolumner.",
+      "text_markdown": "Periodiska systemet har rader och kolumner.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Periodiska systemet har rader och kolumner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "text": "Raderna kallas perioder.",
+      "text_markdown": "Raderna kallas perioder.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Raderna kallas perioder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "text": "Kolumnerna kallas grupper.",
+      "text_markdown": "Kolumnerna kallas grupper.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Kolumnerna kallas grupper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "text": "Grundämnen i samma grupp delar liknande egenskaper.",
+      "text_markdown": "Grundämnen i samma grupp delar liknande egenskaper.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Grundämnen i samma grupp delar liknande egenskaper.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "text": "Det är därför tabellen kallas periodisk.",
+      "text_markdown": "Det är därför tabellen kallas periodisk.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Det är därför tabellen kallas periodisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "text": "Egenskaperna upprepas i ett regelbundet mönster.",
+      "text_markdown": "Egenskaperna upprepas i ett regelbundet mönster.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Egenskaperna upprepas i ett regelbundet mönster.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "text": "Grundämnena på vänstra sidan av tabellen är metaller.",
+      "text_markdown": "Grundämnena på vänstra sidan av tabellen är metaller.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Grundämnena på vänstra sidan av tabellen är metaller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "text": "De flesta grundämnen är metaller.",
+      "text_markdown": "De flesta grundämnen är metaller.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "De flesta grundämnen är metaller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "text": "Metaller är blanka.",
+      "text_markdown": "Metaller är blanka.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Metaller är blanka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "text": "Metaller leder elektricitet.",
+      "text_markdown": "Metaller leder elektricitet.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Metaller leder elektricitet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "text": "Metaller leder värme.",
+      "text_markdown": "Metaller leder värme.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Metaller leder värme.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "text": "Järn, koppar, guld och aluminium är alla metaller.",
+      "text_markdown": "Järn, koppar, guld och aluminium är alla metaller.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Järn, koppar, guld och aluminium är alla metaller.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "text": "Grundämnena på högra sidan av tabellen är ickemetaller.",
+      "text_markdown": "Grundämnena på högra sidan av tabellen är ickemetaller.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Grundämnena på högra sidan av tabellen är ickemetaller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "text": "Ickemetaller inkluderar syre, kväve, kol och svavel.",
+      "text_markdown": "Ickemetaller inkluderar syre, kväve, kol och svavel.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Ickemetaller inkluderar syre, kväve, kol och svavel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "text": "Ickemetaller leder inte elektricitet bra.",
+      "text_markdown": "Ickemetaller leder inte elektricitet bra.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Ickemetaller leder inte elektricitet bra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "text": "Ickemetaller är de grundämnen som utgör luft, vatten och levande varelser.",
+      "text_markdown": "Ickemetaller är de grundämnen som utgör luft, vatten och levande varelser.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Ickemetaller är de grundämnen som utgör luft, vatten och levande varelser.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "text": "Några grundämnen befinner sig på gränsen mellan metaller och ickemetaller.",
+      "text_markdown": "Några grundämnen befinner sig på gränsen mellan metaller och ickemetaller.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Några grundämnen befinner sig på gränsen mellan metaller och ickemetaller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "text": "Dessa grundämnen kallas halv­metaller.",
+      "text_markdown": "Dessa grundämnen kallas halv­metaller.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Dessa grundämnen kallas halv­metaller.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "text": "Kisel är en halvmetall.",
+      "text_markdown": "Kisel är en halvmetall.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Kisel är en halvmetall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "text": "Kisel leder elektricitet lite grann, men inte lika bra som en metall.",
+      "text_markdown": "Kisel leder elektricitet lite grann, men inte lika bra som en metall.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Kisel leder elektricitet lite grann, men inte lika bra som en metall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "text": "Denna egenskap gör kisel användbart i datorchip.",
+      "text_markdown": "Denna egenskap gör kisel användbart i datorchip.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Denna egenskap gör kisel användbart i datorchip.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "text": "Ädelgaserna finns i den sista kolumnen till höger.",
+      "text_markdown": "Ädelgaserna finns i den sista kolumnen till höger.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Ädelgaserna finns i den sista kolumnen till höger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "text": "Helium, neon, argon, krypton, xenon och radon är ädelgaser.",
+      "text_markdown": "Helium, neon, argon, krypton, xenon och radon är ädelgaser.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Helium, neon, argon, krypton, xenon och radon är ädelgaser.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "text": "Ädelgaser reagerar nästan aldrig med andra grundämnen.",
+      "text_markdown": "Ädelgaser reagerar nästan aldrig med andra grundämnen.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Ädelgaser reagerar nästan aldrig med andra grundämnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "text": "Deras elektronarrangemang är redan stabila.",
+      "text_markdown": "Deras elektronarrangemang är redan stabila.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Deras elektronarrangemang är redan stabila.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "text": "De behöver inte bilda bindningar.",
+      "text_markdown": "De behöver inte bilda bindningar.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "De behöver inte bilda bindningar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "text": "En rysk vetenskapsman vid namn Dmitrij Mendelejev skapade det första periodiska systemet 1869.",
+      "text_markdown": "En rysk vetenskapsman vid namn Dmitrij Mendelejev skapade det första periodiska systemet 1869.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "En rysk vetenskapsman vid namn Dmitrij Mendelejev skapade det första periodiska systemet artonhundrasextionio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "text": "Mendelejev ordnade grundämnena efter deras egenskaper och lade märke till det återkommande mönstret.",
+      "text_markdown": "Mendelejev ordnade grundämnena efter deras egenskaper och lade märke till det återkommande mönstret.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Mendelejev ordnade grundämnena efter deras egenskaper och lade märke till det återkommande mönstret.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "text": "Han lämnade luckor i sin tabell där han förutsade att okända grundämnen borde finnas.",
+      "text_markdown": "Han lämnade luckor i sin tabell där han förutsade att okända grundämnen borde finnas.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Han lämnade luckor i sin tabell där han förutsade att okända grundämnen borde finnas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "text": "Forskare upptäckte senare dessa grundämnen.",
+      "text_markdown": "Forskare upptäckte senare dessa grundämnen.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Forskare upptäckte senare dessa grundämnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "text": "Varje förutsägelse stämde.",
+      "text_markdown": "Varje förutsägelse stämde.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Varje förutsägelse stämde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "text": "Periodiska systemet är ett av de mest kraftfulla verktygen inom vetenskapen.",
+      "text_markdown": "Periodiska systemet är ett av de mest kraftfulla verktygen inom vetenskapen.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Periodiska systemet är ett av de mest kraftfulla verktygen inom vetenskapen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "text": "Om du vet var ett grundämne sitter i tabellen kan du förutsäga hur det kommer att bete sig.",
+      "text_markdown": "Om du vet var ett grundämne sitter i tabellen kan du förutsäga hur det kommer att bete sig.",
+      "title": "Periodiska systemet",
+      "tts": {
+        "text": "Om du vet var ett grundämne sitter i tabellen kan du förutsäga hur det kommer att bete sig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "chapter": 5,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "text": "Hur atomer binder sig",
+      "text_markdown": "Hur atomer binder sig",
+      "title": "Hur atomer binder sig"
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "text": "Atomer finns sällan ensamma.",
+      "text_markdown": "Atomer finns sällan ensamma.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Atomer finns sällan ensamma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "text": "De flesta atomer binder sig med andra atomer och bildar molekyler.",
+      "text_markdown": "De flesta atomer binder sig med andra atomer och bildar molekyler.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "De flesta atomer binder sig med andra atomer och bildar molekyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "text": "En molekyl är en grupp atomer som hålls ihop av kemiska bindningar.",
+      "text_markdown": "En molekyl är en grupp atomer som hålls ihop av kemiska bindningar.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "En molekyl är en grupp atomer som hålls ihop av kemiska bindningar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "text": "Vatten är en molekyl.",
+      "text_markdown": "Vatten är en molekyl.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Vatten är en molekyl.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "text": "Syrgas är en molekyl.",
+      "text_markdown": "Syrgas är en molekyl.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Syrgas är en molekyl.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "text": "Socker är en molekyl.",
+      "text_markdown": "Socker är en molekyl.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Socker är en molekyl.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "text": "Atomer binder sig på grund av sina elektroner.",
+      "text_markdown": "Atomer binder sig på grund av sina elektroner.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Atomer binder sig på grund av sina elektroner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "text": "Elektronerna i det yttersta skalet av en atom bestämmer hur den atomen samverkar med andra atomer.",
+      "text_markdown": "Elektronerna i det yttersta skalet av en atom bestämmer hur den atomen samverkar med andra atomer.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Elektronerna i det yttersta skalet av en atom bestämmer hur den atomen samverkar med andra atomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "text": "Dessa yttre elektroner kallas valenselektroner.",
+      "text_markdown": "Dessa yttre elektroner kallas valenselektroner.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Dessa yttre elektroner kallas valenselektroner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "text": "En atom med ett fullt yttre skal är stabil.",
+      "text_markdown": "En atom med ett fullt yttre skal är stabil.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "En atom med ett fullt yttre skal är stabil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "text": "En atom utan ett fullt yttre skal kommer att försöka fylla det.",
+      "text_markdown": "En atom utan ett fullt yttre skal kommer att försöka fylla det.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "En atom utan ett fullt yttre skal kommer att försöka fylla det.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "text": "Det finns två huvudtyper av kemiska bindningar.",
+      "text_markdown": "Det finns två huvudtyper av kemiska bindningar.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Det finns två huvudtyper av kemiska bindningar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "text": "Kovalenta bindningar och jonbindningar.",
+      "text_markdown": "Kovalenta bindningar och jonbindningar.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Kovalenta bindningar och jonbindningar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "text": "I en kovalent bindning delar två atomer elektroner.",
+      "text_markdown": "I en kovalent bindning delar två atomer elektroner.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "I en kovalent bindning delar två atomer elektroner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "text": "Båda atomerna bidrar med elektroner till ett delat par.",
+      "text_markdown": "Båda atomerna bidrar med elektroner till ett delat par.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Båda atomerna bidrar med elektroner till ett delat par.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "text": "De delade elektronerna kretsar runt båda kärnorna.",
+      "text_markdown": "De delade elektronerna kretsar runt båda kärnorna.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "De delade elektronerna kretsar runt båda kärnorna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "text": "Denna delning håller atomerna ihop.",
+      "text_markdown": "Denna delning håller atomerna ihop.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Denna delning håller atomerna ihop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "text": "Vatten hålls ihop av kovalenta bindningar.",
+      "text_markdown": "Vatten hålls ihop av kovalenta bindningar.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Vatten hålls ihop av kovalenta bindningar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "text": "Varje väteatom delar en elektron med syreatomen.",
+      "text_markdown": "Varje väteatom delar en elektron med syreatomen.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Varje väteatom delar en elektron med syreatomen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "text": "I en jonbindning ger en atom elektroner till en annan atom.",
+      "text_markdown": "I en jonbindning ger en atom elektroner till en annan atom.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "I en jonbindning ger en atom elektroner till en annan atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "text": "Atomen som förlorar elektroner blir positivt laddad.",
+      "text_markdown": "Atomen som förlorar elektroner blir positivt laddad.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Atomen som förlorar elektroner blir positivt laddad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "text": "Atomen som tar emot elektroner blir negativt laddad.",
+      "text_markdown": "Atomen som tar emot elektroner blir negativt laddad.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Atomen som tar emot elektroner blir negativt laddad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "text": "Motsatta laddningar attraherar varandra.",
+      "text_markdown": "Motsatta laddningar attraherar varandra.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Motsatta laddningar attraherar varandra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "text": "Denna attraktion håller de två atomerna ihop.",
+      "text_markdown": "Denna attraktion håller de två atomerna ihop.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Denna attraktion håller de två atomerna ihop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "text": "Bordssalt hålls ihop av jonbindningar.",
+      "text_markdown": "Bordssalt hålls ihop av jonbindningar.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Bordssalt hålls ihop av jonbindningar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "text": "Natrium ger en elektron till klor.",
+      "text_markdown": "Natrium ger en elektron till klor.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Natrium ger en elektron till klor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "text": "En vattenmolekyl innehåller två väteatomer och en syreatom.",
+      "text_markdown": "En vattenmolekyl innehåller två väteatomer och en syreatom.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "En vattenmolekyl innehåller två väteatomer och en syreatom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "text": "Forskare skriver detta som H2O.",
+      "text_markdown": "Forskare skriver detta som H2O.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Forskare skriver detta som hå två o.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "text": "H:et står för väte.",
+      "text_markdown": "H:et står för väte.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Hå står för väte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "text": "O:et står för syre.",
+      "text_markdown": "O:et står för syre.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "O står för syre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "text": "Tvåan betyder att det finns två väteatomer.",
+      "text_markdown": "Tvåan betyder att det finns två väteatomer.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Tvåan betyder att det finns två väteatomer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "text": "En molekyl koldioxid innehåller en kolatom och två syreatomer.",
+      "text_markdown": "En molekyl koldioxid innehåller en kolatom och två syreatomer.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "En molekyl koldioxid innehåller en kolatom och två syreatomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "text": "Forskare skriver detta som CO2.",
+      "text_markdown": "Forskare skriver detta som CO2.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Forskare skriver detta som se o två.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "text": "Växter tar upp koldioxid från luften och använder den för att bygga sockermolekyler.",
+      "text_markdown": "Växter tar upp koldioxid från luften och använder den för att bygga sockermolekyler.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Växter tar upp koldioxid från luften och använder den för att bygga sockermolekyler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "text": "Bindningarna mellan atomer lagrar energi.",
+      "text_markdown": "Bindningarna mellan atomer lagrar energi.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Bindningarna mellan atomer lagrar energi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "text": "När bindningar bryts frigörs energi.",
+      "text_markdown": "När bindningar bryts frigörs energi.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "När bindningar bryts frigörs energi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "text": "När bindningar bildas absorberas energi.",
+      "text_markdown": "När bindningar bildas absorberas energi.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "När bindningar bildas absorberas energi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "text": "Varje kemisk reaktion i universum innebär att gamla bindningar bryts och nya bildas.",
+      "text_markdown": "Varje kemisk reaktion i universum innebär att gamla bindningar bryts och nya bildas.",
+      "title": "Hur atomer binder sig",
+      "tts": {
+        "text": "Varje kemisk reaktion i universum innebär att gamla bindningar bryts och nya bildas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "chapter": 6,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "text": "Atomer i rörelse",
+      "text_markdown": "Atomer i rörelse",
+      "title": "Atomer i rörelse"
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "text": "Atomer rör sig alltid.",
+      "text_markdown": "Atomer rör sig alltid.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Atomer rör sig alltid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "text": "De stannar aldrig.",
+      "text_markdown": "De stannar aldrig.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "De stannar aldrig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "text": "Vid varje temperatur över absoluta nollpunkten vibrerar, roterar och rör sig atomer genom rymden.",
+      "text_markdown": "Vid varje temperatur över absoluta nollpunkten vibrerar, roterar och rör sig atomer genom rymden.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Vid varje temperatur över absoluta nollpunkten vibrerar, roterar och rör sig atomer genom rymden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "text": "Denna rörelse är vad vi upplever som värme.",
+      "text_markdown": "Denna rörelse är vad vi upplever som värme.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Denna rörelse är vad vi upplever som värme.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "text": "I ett fast ämne vibrerar atomerna på plats.",
+      "text_markdown": "I ett fast ämne vibrerar atomerna på plats.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "I ett fast ämne vibrerar atomerna på plats.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "text": "De är låsta i en fast struktur.",
+      "text_markdown": "De är låsta i en fast struktur.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "De är låsta i en fast struktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "text": "De skakar fram och tillbaka, men de lämnar inte sina positioner.",
+      "text_markdown": "De skakar fram och tillbaka, men de lämnar inte sina positioner.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "De skakar fram och tillbaka, men de lämnar inte sina positioner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "text": "Det är därför fasta ämnen behåller sin form.",
+      "text_markdown": "Det är därför fasta ämnen behåller sin form.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Det är därför fasta ämnen behåller sin form.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "text": "Atomerna i ett isblock vibrerar, men de stannar i ett stelt kristallmönster.",
+      "text_markdown": "Atomerna i ett isblock vibrerar, men de stannar i ett stelt kristallmönster.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Atomerna i ett isblock vibrerar, men de stannar i ett stelt kristallmönster.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "text": "I en vätska rör sig atomer mer fritt.",
+      "text_markdown": "I en vätska rör sig atomer mer fritt.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "I en vätska rör sig atomer mer fritt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "text": "De glider förbi varandra.",
+      "text_markdown": "De glider förbi varandra.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "De glider förbi varandra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "text": "De håller sig nära varandra, men de är inte låsta i position.",
+      "text_markdown": "De håller sig nära varandra, men de är inte låsta i position.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "De håller sig nära varandra, men de är inte låsta i position.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "text": "Det är därför vätskor flödar.",
+      "text_markdown": "Det är därför vätskor flödar.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Det är därför vätskor flödar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "text": "Atomerna i ett glas vatten rör sig och omorganiseras hela tiden, men de håller sig nära varandra.",
+      "text_markdown": "Atomerna i ett glas vatten rör sig och omorganiseras hela tiden, men de håller sig nära varandra.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Atomerna i ett glas vatten rör sig och omorganiseras hela tiden, men de håller sig nära varandra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "text": "I en gas rör sig atomer snabbt och sprider sig.",
+      "text_markdown": "I en gas rör sig atomer snabbt och sprider sig.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "I en gas rör sig atomer snabbt och sprider sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "text": "De flyger i raka linjer tills de träffar en annan atom eller en vägg.",
+      "text_markdown": "De flyger i raka linjer tills de träffar en annan atom eller en vägg.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "De flyger i raka linjer tills de träffar en annan atom eller en vägg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "text": "De studsar mot varandra och byter riktning.",
+      "text_markdown": "De studsar mot varandra och byter riktning.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "De studsar mot varandra och byter riktning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "text": "Det är därför en gas fyller vilken behållare du än sätter den i.",
+      "text_markdown": "Det är därför en gas fyller vilken behållare du än sätter den i.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Det är därför en gas fyller vilken behållare du än sätter den i.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "text": "Atomerna i ett rum fullt av luft susar i alla riktningar med hundratals meter per sekund.",
+      "text_markdown": "Atomerna i ett rum fullt av luft susar i alla riktningar med hundratals meter per sekund.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Atomerna i ett rum fullt av luft susar i alla riktningar med hundratals meter per sekund.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "text": "Temperatur är ett mått på hur snabbt atomer rör sig.",
+      "text_markdown": "Temperatur är ett mått på hur snabbt atomer rör sig.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Temperatur är ett mått på hur snabbt atomer rör sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "text": "Varmt betyder att atomerna rör sig snabbt.",
+      "text_markdown": "Varmt betyder att atomerna rör sig snabbt.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Varmt betyder att atomerna rör sig snabbt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "text": "Kallt betyder att atomerna rör sig långsamt.",
+      "text_markdown": "Kallt betyder att atomerna rör sig långsamt.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Kallt betyder att atomerna rör sig långsamt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "text": "När du värmer vatten på spisen får du vattenmolekylerna att röra sig snabbare.",
+      "text_markdown": "När du värmer vatten på spisen får du vattenmolekylerna att röra sig snabbare.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "När du värmer vatten på spisen får du vattenmolekylerna att röra sig snabbare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "text": "När molekylerna rör sig tillräckligt snabbt lämnar de vätskan och blir ånga.",
+      "text_markdown": "När molekylerna rör sig tillräckligt snabbt lämnar de vätskan och blir ånga.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "När molekylerna rör sig tillräckligt snabbt lämnar de vätskan och blir ånga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "text": "Absoluta nollpunkten är den kallaste möjliga temperaturen.",
+      "text_markdown": "Absoluta nollpunkten är den kallaste möjliga temperaturen.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Absoluta nollpunkten är den kallaste möjliga temperaturen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "text": "Den är ungefär minus 273 grader Celsius.",
+      "text_markdown": "Den är ungefär minus 273 grader Celsius.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Den är ungefär minus tvåhundrasjuttiotre grader Celsius.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "text": "Vid absoluta nollpunkten har atomer så lite energi som möjligt.",
+      "text_markdown": "Vid absoluta nollpunkten har atomer så lite energi som möjligt.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Vid absoluta nollpunkten har atomer så lite energi som möjligt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "text": "Ingenting kan vara kallare än absoluta nollpunkten.",
+      "text_markdown": "Ingenting kan vara kallare än absoluta nollpunkten.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Ingenting kan vara kallare än absoluta nollpunkten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "text": "Forskare har kommit väldigt nära absoluta nollpunkten i laboratorier, men ingen har någonsin nått den exakt.",
+      "text_markdown": "Forskare har kommit väldigt nära absoluta nollpunkten i laboratorier, men ingen har någonsin nått den exakt.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Forskare har kommit väldigt nära absoluta nollpunkten i laboratorier, men ingen har någonsin nått den exakt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "text": "Tryck orsakas av att atomer träffar ytor.",
+      "text_markdown": "Tryck orsakas av att atomer träffar ytor.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Tryck orsakas av att atomer träffar ytor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "text": "Luften i ett däck trycker utåt eftersom luftmolekyler hela tiden studsar mot insidan av däckets väggar.",
+      "text_markdown": "Luften i ett däck trycker utåt eftersom luftmolekyler hela tiden studsar mot insidan av däckets väggar.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Luften i ett däck trycker utåt eftersom luftmolekyler hela tiden studsar mot insidan av däckets väggar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "text": "Fler molekyler eller snabbare molekyler ger högre tryck.",
+      "text_markdown": "Fler molekyler eller snabbare molekyler ger högre tryck.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Fler molekyler eller snabbare molekyler ger högre tryck.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "text": "Det är därför ett däck känns hårdare när luften är varm.",
+      "text_markdown": "Det är därför ett däck känns hårdare när luften är varm.",
+      "title": "Atomer i rörelse",
+      "tts": {
+        "text": "Det är därför ett däck känns hårdare när luften är varm.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "part": 0,
+      "chapter": 7,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "text": "Var atomer kommer ifrån",
+      "text_markdown": "Var atomer kommer ifrån",
+      "title": "Var atomer kommer ifrån"
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "text": "Vätet och heliumet i universum skapades under de första minuterna efter Big Bang.",
+      "text_markdown": "Vätet och heliumet i universum skapades under de första minuterna efter Big Bang.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Vätet och heliumet i universum skapades under de första minuterna efter Big Bang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "text": "Universum började som en otroligt het och tät punkt för ungefär 13,8 miljarder år sedan.",
+      "text_markdown": "Universum började som en otroligt het och tät punkt för ungefär 13,8 miljarder år sedan.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Universum började som en otroligt het och tät punkt för ungefär tretton komma åtta miljarder år sedan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "text": "När det expanderade och svalnade bildades protoner och neutroner.",
+      "text_markdown": "När det expanderade och svalnade bildades protoner och neutroner.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "När det expanderade och svalnade bildades protoner och neutroner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "text": "Dessa protoner och neutroner kombinerades till de enklaste kärnorna.",
+      "text_markdown": "Dessa protoner och neutroner kombinerades till de enklaste kärnorna.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Dessa protoner och neutroner kombinerades till de enklaste kärnorna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "text": "Väte och helium var de första grundämnena.",
+      "text_markdown": "Väte och helium var de första grundämnena.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Väte och helium var de första grundämnena.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "text": "I miljontals år var universum ett moln av väte- och heliumgas.",
+      "text_markdown": "I miljontals år var universum ett moln av väte- och heliumgas.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "I miljontals år var universum ett moln av väte- och heliumgas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "text": "Sedan drog gravitationen ihop gasen till klumpar.",
+      "text_markdown": "Sedan drog gravitationen ihop gasen till klumpar.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Sedan drog gravitationen ihop gasen till klumpar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "text": "Klumparna blev tätare och hetare.",
+      "text_markdown": "Klumparna blev tätare och hetare.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Klumparna blev tätare och hetare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "text": "När mitten av en klump nådde ungefär tio miljoner grader tändes kärnfusion.",
+      "text_markdown": "När mitten av en klump nådde ungefär tio miljoner grader tändes kärnfusion.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "När mitten av en klump nådde ungefär tio miljoner grader tändes kärnfusion.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "text": "En stjärna föddes.",
+      "text_markdown": "En stjärna föddes.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "En stjärna föddes.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "text": "Stjärnor är atomfabriker.",
+      "text_markdown": "Stjärnor är atomfabriker.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Stjärnor är atomfabriker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "text": "Inuti en stjärna smälter väteatomer samman och bildar helium.",
+      "text_markdown": "Inuti en stjärna smälter väteatomer samman och bildar helium.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Inuti en stjärna smälter väteatomer samman och bildar helium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "text": "Denna fusion frigör enorm energi.",
+      "text_markdown": "Denna fusion frigör enorm energi.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Denna fusion frigör enorm energi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "text": "Energin är det som får en stjärna att lysa.",
+      "text_markdown": "Energin är det som får en stjärna att lysa.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Energin är det som får en stjärna att lysa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "text": "Vår sol smälter samman ungefär sexhundra miljoner ton väte till helium varje sekund.",
+      "text_markdown": "Vår sol smälter samman ungefär sexhundra miljoner ton väte till helium varje sekund.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Vår sol smälter samman ungefär sexhundra miljoner ton väte till helium varje sekund.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "text": "Större stjärnor smälter samman tyngre grundämnen.",
+      "text_markdown": "Större stjärnor smälter samman tyngre grundämnen.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Större stjärnor smälter samman tyngre grundämnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "text": "Efter att en stjärna bränt igenom sitt väte börjar den smälta samman helium till kol.",
+      "text_markdown": "Efter att en stjärna bränt igenom sitt väte börjar den smälta samman helium till kol.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Efter att en stjärna bränt igenom sitt väte börjar den smälta samman helium till kol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "text": "Sedan kol till syre.",
+      "text_markdown": "Sedan kol till syre.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Sedan kol till syre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "text": "Sedan syre till kisel.",
+      "text_markdown": "Sedan syre till kisel.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Sedan syre till kisel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "text": "Sedan kisel till järn.",
+      "text_markdown": "Sedan kisel till järn.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Sedan kisel till järn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "text": "Varje steg producerar ett tyngre grundämne.",
+      "text_markdown": "Varje steg producerar ett tyngre grundämne.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Varje steg producerar ett tyngre grundämne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "text": "Järn är det tyngsta grundämnet en stjärna kan producera genom vanlig fusion.",
+      "text_markdown": "Järn är det tyngsta grundämnet en stjärna kan producera genom vanlig fusion.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Järn är det tyngsta grundämnet en stjärna kan producera genom vanlig fusion.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "text": "Grundämnen tyngre än järn skapas när massiva stjärnor exploderar.",
+      "text_markdown": "Grundämnen tyngre än järn skapas när massiva stjärnor exploderar.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Grundämnen tyngre än järn skapas när massiva stjärnor exploderar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "text": "Dessa explosioner kallas supernovor.",
+      "text_markdown": "Dessa explosioner kallas supernovor.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Dessa explosioner kallas supernovor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "text": "En supernova frigör mer energi på några sekunder än solen kommer att producera under hela sin livstid.",
+      "text_markdown": "En supernova frigör mer energi på några sekunder än solen kommer att producera under hela sin livstid.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "En supernova frigör mer energi på några sekunder än solen kommer att producera under hela sin livstid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "text": "De extrema förhållandena i en supernova smidar grundämnen som guld, silver, platina och uran.",
+      "text_markdown": "De extrema förhållandena i en supernova smidar grundämnen som guld, silver, platina och uran.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "De extrema förhållandena i en supernova smidar grundämnen som guld, silver, platina och uran.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "text": "Explosionen sprider dessa tunga grundämnen över rymden.",
+      "text_markdown": "Explosionen sprider dessa tunga grundämnen över rymden.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Explosionen sprider dessa tunga grundämnen över rymden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "text": "Grundämnena blandas med moln av väte- och heliumgas.",
+      "text_markdown": "Grundämnena blandas med moln av väte- och heliumgas.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Grundämnena blandas med moln av väte- och heliumgas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "text": "Till slut drar gravitationen ihop den berikade gasen och bildar nya stjärnor och planeter.",
+      "text_markdown": "Till slut drar gravitationen ihop den berikade gasen och bildar nya stjärnor och planeter.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Till slut drar gravitationen ihop den berikade gasen och bildar nya stjärnor och planeter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "text": "Vårt solsystem bildades från ett av dessa berikade moln för ungefär 4,6 miljarder år sedan.",
+      "text_markdown": "Vårt solsystem bildades från ett av dessa berikade moln för ungefär 4,6 miljarder år sedan.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Vårt solsystem bildades från ett av dessa berikade moln för ungefär fyra komma sex miljarder år sedan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "text": "Varje atom i din kropp som är tyngre än väte skapades inuti en stjärna.",
+      "text_markdown": "Varje atom i din kropp som är tyngre än väte skapades inuti en stjärna.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Varje atom i din kropp som är tyngre än väte skapades inuti en stjärna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "text": "Kalciumet i dina ben.",
+      "text_markdown": "Kalciumet i dina ben.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Kalciumet i dina ben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "text": "Järnet i ditt blod.",
+      "text_markdown": "Järnet i ditt blod.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Järnet i ditt blod.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "text": "Kolet i din hud.",
+      "text_markdown": "Kolet i din hud.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Kolet i din hud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "text": "Du är gjord av stjärnstoft.",
+      "text_markdown": "Du är gjord av stjärnstoft.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Du är gjord av stjärnstoft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "text": "Det är ingen metafor.",
+      "text_markdown": "Det är ingen metafor.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Det är ingen metafor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 7,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "text": "Det är ett faktum inom kärnfysiken.",
+      "text_markdown": "Det är ett faktum inom kärnfysiken.",
+      "title": "Var atomer kommer ifrån",
+      "tts": {
+        "text": "Det är ett faktum inom kärnfysiken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p62",
+      "part": 0,
+      "chapter": 8,
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "text": "Atomer är allt",
+      "text_markdown": "Atomer är allt",
+      "title": "Atomer är allt"
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "text": "Nu kan du grunderna.",
+      "text_markdown": "Nu kan du grunderna.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Nu kan du grunderna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "text": "Allt är gjort av atomer.",
+      "text_markdown": "Allt är gjort av atomer.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Allt är gjort av atomer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "text": "Atomer innehåller protoner, neutroner och elektroner.",
+      "text_markdown": "Atomer innehåller protoner, neutroner och elektroner.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Atomer innehåller protoner, neutroner och elektroner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "text": "Antalet protoner bestämmer grundämnet.",
+      "text_markdown": "Antalet protoner bestämmer grundämnet.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Antalet protoner bestämmer grundämnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "text": "Atomer binder sig för att bilda molekyler.",
+      "text_markdown": "Atomer binder sig för att bilda molekyler.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Atomer binder sig för att bilda molekyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "text": "Atomer är alltid i rörelse.",
+      "text_markdown": "Atomer är alltid i rörelse.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Atomer är alltid i rörelse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "text": "Stjärnor skapade atomerna som utgör vår värld.",
+      "text_markdown": "Stjärnor skapade atomerna som utgör vår värld.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Stjärnor skapade atomerna som utgör vår värld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "text": "Denna kunskap är grunden för kemi, biologi, fysik och medicin.",
+      "text_markdown": "Denna kunskap är grunden för kemi, biologi, fysik och medicin.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Denna kunskap är grunden för kemi, biologi, fysik och medicin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "text": "Varje vetenskapligt fält kopplar tillbaka till atomer.",
+      "text_markdown": "Varje vetenskapligt fält kopplar tillbaka till atomer.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Varje vetenskapligt fält kopplar tillbaka till atomer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "text": "När en läkare skriver ut ett läkemedel är det läkemedlet en specifik ordning av atomer utformad för att samverka med molekylerna i din kropp.",
+      "text_markdown": "När en läkare skriver ut ett läkemedel är det läkemedlet en specifik ordning av atomer utformad för att samverka med molekylerna i din kropp.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "När en läkare skriver ut ett läkemedel är det läkemedlet en specifik ordning av atomer utformad för att samverka med molekylerna i din kropp.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "text": "När en ingenjör bygger en bro beror brons styrka på hur järnatomerna i stålet är ordnade.",
+      "text_markdown": "När en ingenjör bygger en bro beror brons styrka på hur järnatomerna i stålet är ordnade.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "När en ingenjör bygger en bro beror brons styrka på hur järnatomerna i stålet är ordnade.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p65",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "text": "När en bonde odlar en gröda växer grödan för att kolatomer från luften kombineras med vatten och solljus inuti bladen.",
+      "text_markdown": "När en bonde odlar en gröda växer grödan för att kolatomer från luften kombineras med vatten och solljus inuti bladen.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "När en bonde odlar en gröda växer grödan för att kolatomer från luften kombineras med vatten och solljus inuti bladen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "text": "Matlagning är kemi.",
+      "text_markdown": "Matlagning är kemi.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Matlagning är kemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "text": "När du bakar bröd får värmen atomerna i degen att omorganiseras.",
+      "text_markdown": "När du bakar bröd får värmen atomerna i degen att omorganiseras.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "När du bakar bröd får värmen atomerna i degen att omorganiseras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "text": "Proteiner vecklar ut sig.",
+      "text_markdown": "Proteiner vecklar ut sig.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Proteiner vecklar ut sig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "text": "Sockerarter bryts ner och kombineras på nytt.",
+      "text_markdown": "Sockerarter bryts ner och kombineras på nytt.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Sockerarter bryts ner och kombineras på nytt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "text": "Nya molekyler bildas som skapar färgen, konsistensen och smaken hos skorpan.",
+      "text_markdown": "Nya molekyler bildas som skapar färgen, konsistensen och smaken hos skorpan.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Nya molekyler bildas som skapar färgen, konsistensen och smaken hos skorpan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "text": "Varje recept är en uppsättning instruktioner för att omorganisera atomer.",
+      "text_markdown": "Varje recept är en uppsättning instruktioner för att omorganisera atomer.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Varje recept är en uppsättning instruktioner för att omorganisera atomer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "text": "Att andas är kemi.",
+      "text_markdown": "Att andas är kemi.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Att andas är kemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "text": "Du andas in syremolekyler.",
+      "text_markdown": "Du andas in syremolekyler.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Du andas in syremolekyler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "text": "Ditt blod transporterar dessa molekyler till dina celler.",
+      "text_markdown": "Ditt blod transporterar dessa molekyler till dina celler.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Ditt blod transporterar dessa molekyler till dina celler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "text": "Inuti dina celler kombineras syreatomer med kolatomer från maten.",
+      "text_markdown": "Inuti dina celler kombineras syreatomer med kolatomer från maten.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Inuti dina celler kombineras syreatomer med kolatomer från maten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "text": "Reaktionen frigör energi.",
+      "text_markdown": "Reaktionen frigör energi.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Reaktionen frigör energi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "text": "Du andas ut kolet och syret som koldioxid.",
+      "text_markdown": "Du andas ut kolet och syret som koldioxid.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Du andas ut kolet och syret som koldioxid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "text": "Varje andetag är en kemisk reaktion.",
+      "text_markdown": "Varje andetag är en kemisk reaktion.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Varje andetag är en kemisk reaktion.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "text": "Rost är kemi.",
+      "text_markdown": "Rost är kemi.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Rost är kemi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "text": "Järnatomer på ytan av en spik reagerar med syreatomer i luften.",
+      "text_markdown": "Järnatomer på ytan av en spik reagerar med syreatomer i luften.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Järnatomer på ytan av en spik reagerar med syreatomer i luften.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "text": "Järnet och syret kombineras till ett nytt ämne som kallas järnoxid.",
+      "text_markdown": "Järnet och syret kombineras till ett nytt ämne som kallas järnoxid.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Järnet och syret kombineras till ett nytt ämne som kallas järnoxid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "text": "Järnoxid är det rödbruna materialet vi kallar rost.",
+      "text_markdown": "Järnoxid är det rödbruna materialet vi kallar rost.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Järnoxid är det rödbruna materialet vi kallar rost.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "text": "Järnatomerna finns fortfarande kvar.",
+      "text_markdown": "Järnatomerna finns fortfarande kvar.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Järnatomerna finns fortfarande kvar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "text": "De har bara bundit sig med syre.",
+      "text_markdown": "De har bara bundit sig med syre.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "De har bara bundit sig med syre.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "text": "Atomer är inte abstrakta.",
+      "text_markdown": "Atomer är inte abstrakta.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Atomer är inte abstrakta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "text": "Atomer är den fysiska verkligheten i allt du rör vid, smakar, ser och luktar.",
+      "text_markdown": "Atomer är den fysiska verkligheten i allt du rör vid, smakar, ser och luktar.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Atomer är den fysiska verkligheten i allt du rör vid, smakar, ser och luktar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "text": "Ju mer du förstår atomer, desto mer förstår du världen.",
+      "text_markdown": "Ju mer du förstår atomer, desto mer förstår du världen.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Ju mer du förstår atomer, desto mer förstår du världen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "text": "Det här är bara början.",
+      "text_markdown": "Det här är bara början.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Det här är bara början.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 8,
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "text": "Det finns mycket mer att utforska.",
+      "text_markdown": "Det finns mycket mer att utforska.",
+      "title": "Atomer är allt",
+      "tts": {
+        "text": "Det finns mycket mer att utforska.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

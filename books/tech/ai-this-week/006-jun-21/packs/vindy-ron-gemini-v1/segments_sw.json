@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "sw",
+  "total_segments": 114,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Karibu kwenye AI Wiki Hii.",
+      "text_markdown": "Karibu kwenye AI Wiki Hii.",
+      "title": "",
+      "tts": {
+        "text": "Karibu kwenye AI Wiki Hii.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mimi ni Vindy.",
+      "text_markdown": "Mimi ni Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Mimi ni Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Pamoja nami, kama kawaida, ni Ron.",
+      "text_markdown": "Pamoja nami, kama kawaida, ni Ron.",
+      "title": "",
+      "tts": {
+        "text": "Pamoja nami, kama kawaida, ni Ron.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Vizuri kuwa hapa, Vindy.",
+      "text_markdown": "Vizuri kuwa hapa, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Vizuri kuwa hapa, Vindy.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Leo ni Jumapili, Juni 21, 2026.",
+      "text_markdown": "Leo ni Jumapili, Juni 21, 2026.",
+      "title": "",
+      "tts": {
+        "text": "Leo ni Jumapili, Juni ishirini na moja, elfu mbili ishirini na sita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Wiki iliyopita tulizungumza kuhusu sisi wenyewe; leo tunaelekea upande mwingine — moja kwa moja hadi vituo vya mamlaka.",
+      "text_markdown": "Wiki iliyopita tulizungumza kuhusu sisi wenyewe; leo tunaelekea upande mwingine — moja kwa moja hadi vituo vya mamlaka.",
+      "title": "",
+      "tts": {
+        "text": "Wiki iliyopita tulizungumza kuhusu sisi wenyewe; leo tunaelekea upande mwingine — moja kwa moja hadi vituo vya mamlaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nani anadhibiti uwekaji wa AI, nani analipia ujenzi, nani anamiliki silikoni.",
+      "text_markdown": "Nani anadhibiti uwekaji wa AI, nani analipia ujenzi, nani anamiliki silikoni.",
+      "title": "",
+      "tts": {
+        "text": "Nani anadhibiti uwekaji wa AI, nani analipia ujenzi, nani anamiliki silikoni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kinachofuata — Idara ya Biashara ya Marekani iliondoa modeli ya Kimarekani kutoka matumizi ya umma Ijumaa iliyopita, na tutaanza hapo.",
+      "text_markdown": "Kinachofuata — Idara ya Biashara ya Marekani iliondoa modeli ya Kimarekani kutoka matumizi ya umma Ijumaa iliyopita, na tutaanza hapo.",
+      "title": "",
+      "tts": {
+        "text": "Kinachofuata — Idara ya Biashara ya Marekani iliondoa modeli ya Kimarekani kutoka matumizi ya umma Ijumaa iliyopita, na tutaanza hapo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kisha ujenzi wa kituo cha data, ambapo matangazo na ukweli halisi haviendani.",
+      "text_markdown": "Kisha ujenzi wa kituo cha data, ambapo matangazo na ukweli halisi haviendani.",
+      "title": "",
+      "tts": {
+        "text": "Kisha ujenzi wa kituo cha data, ambapo matangazo na ukweli halisi haviendani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kisha kulinganisha Marekani na China, huku msemo wa kawaida ukibadilishwa na kizuizi halisi kinachofunga.",
+      "text_markdown": "Kisha kulinganisha Marekani na China, huku msemo wa kawaida ukibadilishwa na kizuizi halisi kinachofunga.",
+      "title": "",
+      "tts": {
+        "text": "Kisha kulinganisha Marekani na China, huku msemo wa kawaida ukibadilishwa na kizuizi halisi kinachofunga.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na dhana ya wiki — mstari mmoja kwenye mizania ya Oracle unaokueleza karibu kila kitu.",
+      "text_markdown": "Na dhana ya wiki — mstari mmoja kwenye mizania ya Oracle unaokueleza karibu kila kitu.",
+      "title": "",
+      "tts": {
+        "text": "Na dhana ya wiki — mstari mmoja kwenye mizania ya Oracle unaokueleza karibu kila kitu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, tuanze na Anthropic.",
+      "text_markdown": "Ron, tuanze na Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Ron, tuanze na Anthropic.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nini kilitokea Juni kumi na mbili.",
+      "text_markdown": "Nini kilitokea Juni kumi na mbili.",
+      "title": "",
+      "tts": {
+        "text": "Nini kilitokea Juni kumi na mbili.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Saa tano na dakika ishirini na moja alasiri kwa saa za Mashariki Ijumaa, Juni kumi na mbili, Anthropic iliondoa mifumo yake miwili mipya zaidi — Claude Mythos tano na Claude Fable tano — nje ya mtandao.",
+      "text_markdown": "Saa tano na dakika ishirini na moja alasiri kwa saa za Mashariki Ijumaa, Juni kumi na mbili, Anthropic iliondoa mifumo yake miwili mipya zaidi — Claude Mythos tano na Claude Fable tano — nje ya mtandao.",
+      "title": "",
+      "tts": {
+        "text": "Saa tano na dakika ishirini na moja alasiri kwa saa za Mashariki Ijumaa, Juni kumi na mbili, Anthropic iliondoa mifumo yake miwili mipya zaidi — Claude Mythos tano na Claude Fable tano — nje ya mtandao.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Sio kwa ajili ya matengenezo, wala sio kwa ukaguzi wa usalama kwa hiari yao wenyewe.",
+      "text_markdown": "Sio kwa ajili ya matengenezo, wala sio kwa ukaguzi wa usalama kwa hiari yao wenyewe.",
+      "title": "",
+      "tts": {
+        "text": "Sio kwa ajili ya matengenezo, wala sio kwa ukaguzi wa usalama kwa hiari yao wenyewe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Waliiondoa kwa sababu Idara ya Biashara ya Marekani ilitoa agizo ikitaja udhibiti wa usafirishaji nje.",
+      "text_markdown": "Waliiondoa kwa sababu Idara ya Biashara ya Marekani ilitoa agizo ikitaja udhibiti wa usafirishaji nje.",
+      "title": "",
+      "tts": {
+        "text": "Waliiondoa kwa sababu Idara ya Biashara ya Marekani ilitoa agizo ikitaja udhibiti wa usafirishaji nje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nini kilikuwa sababu ya kiufundi.",
+      "text_markdown": "Nini kilikuwa sababu ya kiufundi.",
+      "title": "",
+      "tts": {
+        "text": "Nini kilikuwa sababu ya kiufundi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Uvunjaji wa mfumo (jailbreak) ulionyeshwa, inasemekana na kampuni nyingine, uliotoa matokeo ambayo Idara ya Biashara iliyaona kuwa yanadhibitiwa kwa usafirishaji nje.",
+      "text_markdown": "Uvunjaji wa mfumo (jailbreak) ulionyeshwa, inasemekana na kampuni nyingine, uliotoa matokeo ambayo Idara ya Biashara iliyaona kuwa yanadhibitiwa kwa usafirishaji nje.",
+      "title": "",
+      "tts": {
+        "text": "Uvunjaji wa mfumo (jailbreak) ulionyeshwa, inasemekana na kampuni nyingine, uliotoa matokeo ambayo Idara ya Biashara iliyaona kuwa yanadhibitiwa kwa usafirishaji nje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Fortune iliripoti kuwa Amazon ndiyo iliyoarifu Ikulu ya White House kuhusu hilo.",
+      "text_markdown": "Fortune iliripoti kuwa Amazon ndiyo iliyoarifu Ikulu ya White House kuhusu hilo.",
+      "title": "",
+      "tts": {
+        "text": "Fortune iliripoti kuwa Amazon ndiyo iliyoarifu Ikulu ya White House kuhusu hilo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na Anthropic ilijibuje.",
+      "text_markdown": "Na Anthropic ilijibuje.",
+      "title": "",
+      "tts": {
+        "text": "Na Anthropic ilijibuje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Anthropic inapinga hadharani sababu hiyo.",
+      "text_markdown": "Anthropic inapinga hadharani sababu hiyo.",
+      "title": "",
+      "tts": {
+        "text": "Anthropic inapinga hadharani sababu hiyo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Taarifa yao iliita uvunjaji wa mfumo (jailbreak) — na ninanukuu — \"finyu, isiyo ya jumla,\" na kuongeza kuwa matokeo hayo yanapatikana kutoka kwa mifumo mingine, ikiwemo GPT-5.5 ya OpenAI.",
+      "text_markdown": "Taarifa yao iliita uvunjaji wa mfumo (jailbreak) — na ninanukuu — \"finyu, isiyo ya jumla,\" na kuongeza kuwa matokeo hayo yanapatikana kutoka kwa mifumo mingine, ikiwemo GPT-5.5 ya OpenAI.",
+      "title": "",
+      "tts": {
+        "text": "Taarifa yao iliita uvunjaji wa mfumo (jailbreak) — na ninanukuu — \"finyu, isiyo ya jumla,\" na kuongeza kuwa matokeo hayo yanapatikana kutoka kwa mifumo mingine, ikiwemo GPT tano nukta tano ya OpenAI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mstari wao wa muhtasari: \"hatua ya serikali inatokana na kutoelewana.\"",
+      "text_markdown": "Mstari wao wa muhtasari: \"hatua ya serikali inatokana na kutoelewana.\"",
+      "title": "",
+      "tts": {
+        "text": "Mstari wao wa muhtasari: \"hatua ya serikali inatokana na kutoelewana.\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Huo ni kutokubaliana kwa uwazi usio wa kawaida na serikali ya Marekani kwa maabara ya AI.",
+      "text_markdown": "Huo ni kutokubaliana kwa uwazi usio wa kawaida na serikali ya Marekani kwa maabara ya AI.",
+      "title": "",
+      "tts": {
+        "text": "Huo ni kutokubaliana kwa uwazi usio wa kawaida na serikali ya Marekani kwa maabara ya AI.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ni kweli, na ukweli wa kimuundo ulio chini yake ndio habari kuu.",
+      "text_markdown": "Ni kweli, na ukweli wa kimuundo ulio chini yake ndio habari kuu.",
+      "title": "",
+      "tts": {
+        "text": "Ni kweli, na ukweli wa kimuundo ulio chini yake ndio habari kuu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Idara ya Biashara sasa inaweza kuamuru maabara ya kibinafsi ya AI ya Kimarekani kuondoa mfumo nje ya mtandao, ikitaja udhibiti wa usafirishaji nje, na agizo hilo linafika ndani ya saa sabini na mbili.",
+      "text_markdown": "Idara ya Biashara sasa inaweza kuamuru maabara ya kibinafsi ya AI ya Kimarekani kuondoa mfumo nje ya mtandao, ikitaja udhibiti wa usafirishaji nje, na agizo hilo linafika ndani ya saa sabini na mbili.",
+      "title": "",
+      "tts": {
+        "text": "Idara ya Biashara sasa inaweza kuamuru maabara ya kibinafsi ya AI ya Kimarekani kuondoa mfumo nje ya mtandao, ikitaja udhibiti wa usafirishaji nje, na agizo hilo linafika ndani ya saa sabini na mbili.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Iwe unafikiri agizo hilo lilikuwa sahihi au la.",
+      "text_markdown": "Iwe unafikiri agizo hilo lilikuwa sahihi au la.",
+      "title": "",
+      "tts": {
+        "text": "Iwe unafikiri agizo hilo lilikuwa sahihi au la.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Iwe unafikiri agizo hilo lilikuwa sahihi au la.",
+      "text_markdown": "Iwe unafikiri agizo hilo lilikuwa sahihi au la.",
+      "title": "",
+      "tts": {
+        "text": "Iwe unafikiri agizo hilo lilikuwa sahihi au la.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mamlaka yenyewe, kasi, na mfumo uliowekwa ndio muhimu.",
+      "text_markdown": "Mamlaka yenyewe, kasi, na mfumo uliowekwa ndio muhimu.",
+      "title": "",
+      "tts": {
+        "text": "Mamlaka yenyewe, kasi, na mfumo uliowekwa ndio muhimu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na jukumu la Amazon hapa.",
+      "text_markdown": "Na jukumu la Amazon hapa.",
+      "title": "",
+      "tts": {
+        "text": "Na jukumu la Amazon hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hiyo ndiyo sehemu ya kutazama.",
+      "text_markdown": "Hiyo ndiyo sehemu ya kutazama.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ndiyo sehemu ya kutazama.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Amazon ni mwekezaji mkuu wa Anthropic na pia inashindana na Anthropic katika soko la mifumo msingi kupitia kazi yake yenyewe.",
+      "text_markdown": "Amazon ni mwekezaji mkuu wa Anthropic na pia inashindana na Anthropic katika soko la mifumo msingi kupitia kazi yake yenyewe.",
+      "title": "",
+      "tts": {
+        "text": "Amazon ni mwekezaji mkuu wa Anthropic na pia inashindana na Anthropic katika soko la mifumo msingi kupitia kazi yake yenyewe.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ikiwa onyo la mshindani kwa serikali linaweza kuzima mfumo wa mpinzani katika wikendi ndefu, hiyo ni sura mpya kwa mienendo ya tasnia.",
+      "text_markdown": "Ikiwa onyo la mshindani kwa serikali linaweza kuzima mfumo wa mpinzani katika wikendi ndefu, hiyo ni sura mpya kwa mienendo ya tasnia.",
+      "title": "",
+      "tts": {
+        "text": "Ikiwa onyo la mshindani kwa serikali linaweza kuzima mfumo wa mpinzani katika wikendi ndefu, hiyo ni sura mpya kwa mienendo ya tasnia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tusonge kwenye ujenzi.",
+      "text_markdown": "Tusonge kwenye ujenzi.",
+      "title": "",
+      "tts": {
+        "text": "Tusonge kwenye ujenzi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Stargate — mpango wa kituo cha data cha OpenAI, Oracle, SoftBank.",
+      "text_markdown": "Stargate — mpango wa kituo cha data cha OpenAI, Oracle, SoftBank.",
+      "title": "",
+      "tts": {
+        "text": "Stargate — mpango wa kituo cha data cha OpenAI, Oracle, SoftBank.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nambari halisi ni zipi?",
+      "text_markdown": "Nambari halisi ni zipi?",
+      "title": "",
+      "tts": {
+        "text": "Nambari halisi ni zipi?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Stargate imetangaza gigawati kumi na moja za uwezo wa Marekani.",
+      "text_markdown": "Stargate imetangaza gigawati kumi na moja za uwezo wa Marekani.",
+      "title": "",
+      "tts": {
+        "text": "Stargate imetangaza gigawati kumi na moja za uwezo wa Marekani.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kufikia katikati ya Juni, takriban megawati mia mbili zinafanya kazi, katika eneo la Abilene Texas, Awamu ya Kwanza.",
+      "text_markdown": "Kufikia katikati ya Juni, takriban megawati mia mbili zinafanya kazi, katika eneo la Abilene Texas, Awamu ya Kwanza.",
+      "title": "",
+      "tts": {
+        "text": "Kufikia katikati ya Juni, takriban megawati mia mbili zinafanya kazi, katika eneo la Abilene Texas, Awamu ya Kwanza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Gigawati kumi na moja zimetangazwa, megawati mia mbili zimechomekwa.",
+      "text_markdown": "Gigawati kumi na moja zimetangazwa, megawati mia mbili zimechomekwa.",
+      "title": "",
+      "tts": {
+        "text": "Gigawati kumi na moja zimetangazwa, megawati mia mbili zimechomekwa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Huo ndio pengo lote kwa mstari mmoja.",
+      "text_markdown": "Huo ndio pengo lote kwa mstari mmoja.",
+      "title": "",
+      "tts": {
+        "text": "Huo ndio pengo lote kwa mstari mmoja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ndivyo ilivyo, na mfano safi zaidi unapatikana New Mexico.",
+      "text_markdown": "Ndivyo ilivyo, na mfano safi zaidi unapatikana New Mexico.",
+      "title": "",
+      "tts": {
+        "text": "Ndivyo ilivyo, na mfano safi zaidi unapatikana New Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Eneo la Kaunti ya Doña Ana ndilo kampasi kubwa zaidi ya Stargate, iliyopangwa kuwa gigawati nne nukta tano.",
+      "text_markdown": "Eneo la Kaunti ya Doña Ana ndilo kampasi kubwa zaidi ya Stargate, iliyopangwa kuwa gigawati nne nukta tano.",
+      "title": "",
+      "tts": {
+        "text": "Eneo la Kaunti ya Doña Ana ndilo kampasi kubwa zaidi ya Stargate, iliyopangwa kuwa gigawati nne nukta tano.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dola bilioni kumi na nane za ufadhili wa mradi uliounganishwa zipo — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — pamoja na hundi ya hisa ya dola bilioni tatu kutoka Blue Owl.",
+      "text_markdown": "Dola bilioni kumi na nane za ufadhili wa mradi uliounganishwa zipo — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — pamoja na hundi ya hisa ya dola bilioni tatu kutoka Blue Owl.",
+      "title": "",
+      "tts": {
+        "text": "Dola bilioni kumi na nane za ufadhili wa mradi uliounganishwa zipo — Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG — pamoja na hundi ya hisa ya dola bilioni tatu kutoka Blue Owl.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na hali ya ujenzi ardhini.",
+      "text_markdown": "Na hali ya ujenzi ardhini.",
+      "title": "",
+      "tts": {
+        "text": "Na hali ya ujenzi ardhini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hakuna koleo hata moja ardhini hadi sasa.",
+      "text_markdown": "Hakuna koleo hata moja ardhini hadi sasa.",
+      "title": "",
+      "tts": {
+        "text": "Hakuna koleo hata moja ardhini hadi sasa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Eneo hilo linasubiri kibali cha ubora wa hewa kutoka Idara ya Mazingira ya New Mexico, kilichotarajiwa awali Aprili ishirini na mbili, sasa kimesogezwa hadi Julai ishirini na moja baada ya maoni ya umma zaidi ya elfu saba.",
+      "text_markdown": "Eneo hilo linasubiri kibali cha ubora wa hewa kutoka Idara ya Mazingira ya New Mexico, kilichotarajiwa awali Aprili ishirini na mbili, sasa kimesogezwa hadi Julai ishirini na moja baada ya maoni ya umma zaidi ya elfu saba.",
+      "title": "",
+      "tts": {
+        "text": "Eneo hilo linasubiri kibali cha ubora wa hewa kutoka Idara ya Mazingira ya New Mexico, kilichotarajiwa awali Aprili ishirini na mbili, sasa kimesogezwa hadi Julai ishirini na moja baada ya maoni ya umma zaidi ya elfu saba.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Dola bilioni kumi na nane zimetengwa, hakuna koleo hata moja ardhini, makataa moja ya kibali cha ubora wa hewa.",
+      "text_markdown": "Dola bilioni kumi na nane zimetengwa, hakuna koleo hata moja ardhini, makataa moja ya kibali cha ubora wa hewa.",
+      "title": "",
+      "tts": {
+        "text": "Dola bilioni kumi na nane zimetengwa, hakuna koleo hata moja ardhini, makataa moja ya kibali cha ubora wa hewa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Nani atabeba mzigo ikiwa nambari hazitafanya kazi?",
+      "text_markdown": "Nani atabeba mzigo ikiwa nambari hazitafanya kazi?",
+      "title": "",
+      "tts": {
+        "text": "Nani atabeba mzigo ikiwa nambari hazitafanya kazi?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hapo ndipo Oracle inapoanza kuvutia.",
+      "text_markdown": "Hapo ndipo Oracle inapoanza kuvutia.",
+      "title": "",
+      "tts": {
+        "text": "Hapo ndipo Oracle inapoanza kuvutia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Majukumu ya Utendaji Yaliyosalia ya Oracle — mstari wa uhasibu unaorekodi mapato yaliyokubaliwa ambayo bado hayajatolewa — yalifikia dola bilioni mia tano hamsini na tatu katika robo ya tatu ya mwaka wa fedha elfu mbili ishirini na sita.",
+      "text_markdown": "Majukumu ya Utendaji Yaliyosalia ya Oracle — mstari wa uhasibu unaorekodi mapato yaliyokubaliwa ambayo bado hayajatolewa — yalifikia dola bilioni mia tano hamsini na tatu katika robo ya tatu ya mwaka wa fedha elfu mbili ishirini na sita.",
+      "title": "",
+      "tts": {
+        "text": "Majukumu ya Utendaji Yaliyosalia ya Oracle — mstari wa uhasibu unaorekodi mapato yaliyokubaliwa ambayo bado hayajatolewa — yalifikia dola bilioni mia tano hamsini na tatu katika robo ya tatu ya mwaka wa fedha elfu mbili ishirini na sita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hiyo ni ongezeko la asilimia mia tatu ishirini na tano mwaka hadi mwaka, na sehemu kubwa ya ongezeko hilo inatambulika hadharani na OpenAI na Stargate.",
+      "text_markdown": "Hiyo ni ongezeko la asilimia mia tatu ishirini na tano mwaka hadi mwaka, na sehemu kubwa ya ongezeko hilo inatambulika hadharani na OpenAI na Stargate.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ni ongezeko la asilimia mia tatu ishirini na tano mwaka hadi mwaka, na sehemu kubwa ya ongezeko hilo inatambulika hadharani na OpenAI na Stargate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na upande wa deni.",
+      "text_markdown": "Na upande wa deni.",
+      "title": "",
+      "tts": {
+        "text": "Na upande wa deni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Jumla ya mikopo ilifikia dola bilioni mia moja thelathini na nne nukta sita kufikia Februari ishirini na nane.",
+      "text_markdown": "Jumla ya mikopo ilifikia dola bilioni mia moja thelathini na nne nukta sita kufikia Februari ishirini na nane.",
+      "title": "",
+      "tts": {
+        "text": "Jumla ya mikopo ilifikia dola bilioni mia moja thelathini na nne nukta sita kufikia Februari ishirini na nane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Oracle ilipata bilioni thelathini mwezi Februari pekee — dhamana za daraja la uwekezaji pamoja na hisa za upendeleo zinazoweza kubadilishwa kwa lazima — na kutoa dola bilioni arobaini na tatu za noti mpya za wakubwa katika kipindi cha miezi tisa.",
+      "text_markdown": "Oracle ilipata bilioni thelathini mwezi Februari pekee — dhamana za daraja la uwekezaji pamoja na hisa za upendeleo zinazoweza kubadilishwa kwa lazima — na kutoa dola bilioni arobaini na tatu za noti mpya za wakubwa katika kipindi cha miezi tisa.",
+      "title": "",
+      "tts": {
+        "text": "Oracle ilipata bilioni thelathini mwezi Februari pekee — dhamana za daraja la uwekezaji pamoja na hisa za upendeleo zinazoweza kubadilishwa kwa lazima — na kutoa dola bilioni arobaini na tatu za noti mpya za wakubwa katika kipindi cha miezi tisa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hivyo, fupisha hali hiyo.",
+      "text_markdown": "Hivyo, fupisha hali hiyo.",
+      "title": "",
+      "tts": {
+        "text": "Hivyo, fupisha hali hiyo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dola bilioni mia tano hamsini na tatu katika ahadi, dola bilioni mia moja thelathini na nne katika deni, na mteja mmoja mkubwa anayebeba hatari nyingi.",
+      "text_markdown": "Dola bilioni mia tano hamsini na tatu katika ahadi, dola bilioni mia moja thelathini na nne katika deni, na mteja mmoja mkubwa anayebeba hatari nyingi.",
+      "title": "",
+      "tts": {
+        "text": "Dola bilioni mia tano hamsini na tatu katika ahadi, dola bilioni mia moja thelathini na nne katika deni, na mteja mmoja mkubwa anayebeba hatari nyingi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hiyo ndiyo muundo wa ujenzi kwa sentensi moja.",
+      "text_markdown": "Hiyo ndiyo muundo wa ujenzi kwa sentensi moja.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ndiyo muundo wa ujenzi kwa sentensi moja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tusonge kwenye ulinganisho wa Marekani na Uchina.",
+      "text_markdown": "Tusonge kwenye ulinganisho wa Marekani na Uchina.",
+      "title": "",
+      "tts": {
+        "text": "Tusonge kwenye ulinganisho wa Marekani na Uchina.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kauli mbiu ni kwamba Uchina iko nyuma kwa miezi kadhaa.",
+      "text_markdown": "Kauli mbiu ni kwamba Uchina iko nyuma kwa miezi kadhaa.",
+      "title": "",
+      "tts": {
+        "text": "Kauli mbiu ni kwamba Uchina iko nyuma kwa miezi kadhaa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kauli mbiu hiyo si sahihi kwa sababu inapima kitu kisicho sahihi.",
+      "text_markdown": "Kauli mbiu hiyo si sahihi kwa sababu inapima kitu kisicho sahihi.",
+      "title": "",
+      "tts": {
+        "text": "Kauli mbiu hiyo si sahihi kwa sababu inapima kitu kisicho sahihi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Siku ya Jumatatu, Juni tisa, Bloomberg iliripoti rasimu ya mpango wa China kutoka Tume ya Kitaifa ya Maendeleo na Marekebisho — yuan trilioni mbili, takriban dola bilioni mia mbili tisini na tano, kwa ajili ya gridi ya kitaifa ya vituo vya data vya AI ifikapo mwaka elfu mbili ishirini na nane.",
+      "text_markdown": "Siku ya Jumatatu, Juni tisa, Bloomberg iliripoti rasimu ya mpango wa China kutoka Tume ya Kitaifa ya Maendeleo na Marekebisho — yuan trilioni mbili, takriban dola bilioni mia mbili tisini na tano, kwa ajili ya gridi ya kitaifa ya vituo vya data vya AI ifikapo mwaka elfu mbili ishirini na nane.",
+      "title": "",
+      "tts": {
+        "text": "Siku ya Jumatatu, Juni tisa, Bloomberg iliripoti rasimu ya mpango wa China kutoka Tume ya Kitaifa ya Maendeleo na Marekebisho — yuan trilioni mbili, takriban dola bilioni mia mbili tisini na tano, kwa ajili ya gridi ya kitaifa ya vituo vya data vya A I ifikapo mwaka elfu mbili ishirini na nane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mpango huo unahitaji asilimia themanini ya silikoni ya ndani na utaendeshwa kama mfumo mmoja wa kompyuta uliounganishwa na China Mobile na China Telecom.",
+      "text_markdown": "Mpango huo unahitaji asilimia themanini ya silikoni ya ndani na utaendeshwa kama mfumo mmoja wa kompyuta uliounganishwa na China Mobile na China Telecom.",
+      "title": "",
+      "tts": {
+        "text": "Mpango huo unahitaji asilimia themanini ya silikoni ya ndani na utaendeshwa kama mfumo mmoja wa kompyuta uliounganishwa na China Mobile na China Telecom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na wapi ndo mtego katika mpango huo.",
+      "text_markdown": "Na wapi ndo mtego katika mpango huo.",
+      "title": "",
+      "tts": {
+        "text": "Na wapi ndo mtego katika mpango huo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Yuan trilioni mbili, asilimia themanini ya silikoni ya ndani, tarehe ya mwisho elfu mbili ishirini na nane — na mtego ni kwamba kikwazo kinachofunga si chips za mantiki, bali ni kumbukumbu ya upana wa juu (HBM).",
+      "text_markdown": "Yuan trilioni mbili, asilimia themanini ya silikoni ya ndani, tarehe ya mwisho elfu mbili ishirini na nane — na mtego ni kwamba kikwazo kinachofunga si chips za mantiki, bali ni kumbukumbu ya upana wa juu (HBM).",
+      "title": "",
+      "tts": {
+        "text": "Yuan trilioni mbili, asilimia themanini ya silikoni ya ndani, tarehe ya mwisho elfu mbili ishirini na nane — na mtego ni kwamba kikwazo kinachofunga si chips za mantiki, bali ni kumbukumbu ya upana wa juu, H B M.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Tufafanulie hilo.",
+      "text_markdown": "Tufafanulie hilo.",
+      "title": "",
+      "tts": {
+        "text": "Tufafanulie hilo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kila kichapuzi cha AI kinahitaji staki za HBM zilizounganishwa kwenye die ya mantiki.",
+      "text_markdown": "Kila kichapuzi cha AI kinahitaji staki za HBM zilizounganishwa kwenye die ya mantiki.",
+      "title": "",
+      "tts": {
+        "text": "Kila kichapuzi cha A I kinahitaji staki za H B M zilizounganishwa kwenye die ya mantiki.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Bila HBM, chip ni uzito wa karatasi.",
+      "text_markdown": "Bila HBM, chip ni uzito wa karatasi.",
+      "title": "",
+      "tts": {
+        "text": "Bila H B M, chip ni uzito wa karatasi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "China ilihifadhi takriban staki milioni kumi na tatu za HBM kabla ya udhibiti wa usafirishaji kufungwa — milioni kumi na moja nukta nne kutoka Samsung pekee.",
+      "text_markdown": "China ilihifadhi takriban staki milioni kumi na tatu za HBM kabla ya udhibiti wa usafirishaji kufungwa — milioni kumi na moja nukta nne kutoka Samsung pekee.",
+      "title": "",
+      "tts": {
+        "text": "China ilihifadhi takriban staki milioni kumi na tatu za H B M kabla ya udhibiti wa usafirishaji kufungwa — milioni kumi na moja nukta nne kutoka Samsung pekee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kwa uwiano wa ufungaji wa Huawei Ascend tisa-kumi C, hifadhi hiyo inatosha kwa takriban chips milioni moja nukta sita.",
+      "text_markdown": "Kwa uwiano wa ufungaji wa Huawei Ascend tisa-kumi C, hifadhi hiyo inatosha kwa takriban chips milioni moja nukta sita.",
+      "title": "",
+      "tts": {
+        "text": "Kwa uwiano wa ufungaji wa Huawei Ascend tisa kumi C, hifadhi hiyo inatosha kwa takriban chips milioni moja nukta sita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na kisha usambazaji huisha.",
+      "text_markdown": "Na kisha usambazaji huisha.",
+      "title": "",
+      "tts": {
+        "text": "Na kisha usambazaji huisha.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kisha usambazaji huisha — staki milioni kumi na tatu za HBM, zinazotosha kwa chips milioni moja nukta sita, na hilo ndilo kikomo.",
+      "text_markdown": "Kisha usambazaji huisha — staki milioni kumi na tatu za HBM, zinazotosha kwa chips milioni moja nukta sita, na hilo ndilo kikomo.",
+      "title": "",
+      "tts": {
+        "text": "Kisha usambazaji huisha — staki milioni kumi na tatu za H B M, zinazotosha kwa chips milioni moja nukta sita, na hilo ndilo kikomo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "HBM ya ndani ya China, kutoka CXMT, inatarajiwa kufikia takriban staki milioni mbili ifikapo elfu mbili ishirini na sita — zinazotosha kwa labda vichapuzi elfu mia mbili hamsini hadi elfu mia tatu.",
+      "text_markdown": "HBM ya ndani ya China, kutoka CXMT, inatarajiwa kufikia takriban staki milioni mbili ifikapo elfu mbili ishirini na sita — zinazotosha kwa labda vichapuzi elfu mia mbili hamsini hadi elfu mia tatu.",
+      "title": "",
+      "tts": {
+        "text": "H B M ya ndani ya China, kutoka C X M T, inatarajiwa kufikia takriban staki milioni mbili ifikapo elfu mbili ishirini na sita — zinazotosha kwa labda vichapuzi elfu mia mbili hamsini hadi elfu mia tatu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa hivyo mipango ya silikoni ya Huawei inaonekanaje.",
+      "text_markdown": "Kwa hivyo mipango ya silikoni ya Huawei inaonekanaje.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo mipango ya silikoni ya Huawei inaonekanaje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Bloomberg, ikinukuu mipango ya Huawei, ilisema uzalishaji wa 2026 ungefikia chipu 600,000 za Ascend 910C, huku safu pana ya bidhaa za Ascend ikifikia jumla ya vipande vya chipu milioni 1.6.",
+      "text_markdown": "Bloomberg, ikinukuu mipango ya Huawei, ilisema uzalishaji wa 2026 ungefikia chipu 600,000 za Ascend 910C, huku safu pana ya bidhaa za Ascend ikifikia jumla ya vipande vya chipu milioni 1.6.",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg, ikinukuu mipango ya Huawei, ilisema uzalishaji wa elfu mbili ishirini na sita ungefikia chipu laki sita za Ascend tisa moja sifuri C, huku safu pana ya bidhaa za Ascend ikifikia jumla ya vipande vya chipu milioni moja nukta sita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Nambari hiyo, elfu mia sita, ni lengo, si pato lililosafirishwa.",
+      "text_markdown": "Nambari hiyo, elfu mia sita, ni lengo, si pato lililosafirishwa.",
+      "title": "",
+      "tts": {
+        "text": "Nambari hiyo, elfu mia sita, ni lengo, si pato lililosafirishwa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Na kando, kabla ya udhibiti wa usafirishaji kuwazuia, Huawei ilikusanya zaidi ya dies milioni mbili nukta tisa za Ascend zilizotengenezwa katika TSMC kupitia kampuni za Sophgo na Bitmain.",
+      "text_markdown": "Na kando, kabla ya udhibiti wa usafirishaji kuwazuia, Huawei ilikusanya zaidi ya dies milioni mbili nukta tisa za Ascend zilizotengenezwa katika TSMC kupitia kampuni za Sophgo na Bitmain.",
+      "title": "",
+      "tts": {
+        "text": "Na kando, kabla ya udhibiti wa usafirishaji kuwazuia, Huawei ilikusanya zaidi ya dies milioni mbili nukta tisa za Ascend zilizotengenezwa katika T S M C kupitia kampuni za Sophgo na Bitmain.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Simulizi ya udhibiti wa usafirishaji ina shimo la dies milioni mbili nukta tisa ndani yake.",
+      "text_markdown": "Simulizi ya udhibiti wa usafirishaji ina shimo la dies milioni mbili nukta tisa ndani yake.",
+      "title": "",
+      "tts": {
+        "text": "Simulizi ya udhibiti wa usafirishaji ina shimo la dies milioni mbili nukta tisa ndani yake.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hebu tuangalie vichwa vya habari, kwa haraka.",
+      "text_markdown": "Hebu tuangalie vichwa vya habari, kwa haraka.",
+      "title": "",
+      "tts": {
+        "text": "Hebu tuangalie vichwa vya habari, kwa haraka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kichwa cha habari cha kwanza wiki hii, Broadcom.",
+      "text_markdown": "Kichwa cha habari cha kwanza wiki hii, Broadcom.",
+      "title": "",
+      "tts": {
+        "text": "Kichwa cha habari cha kwanza wiki hii, Broadcom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Thamani ya soko ya Broadcom ni takriban dola trilioni mbili.",
+      "text_markdown": "Thamani ya soko ya Broadcom ni takriban dola trilioni mbili.",
+      "title": "",
+      "tts": {
+        "text": "Thamani ya soko ya Broadcom ni takriban dola trilioni mbili.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Mkurugenzi Mtendaji wao, Hock Tan, alisisitiza lengo la mapato ya semiconductor ya AI ya dola bilioni mia moja kwa mwaka wa fedha elfu mbili ishirini na saba kwenye simu ya ripoti ya mapato ya Juni tatu, ikiungwa mkono na takriban dola bilioni sabini na tatu katika akiba ya AI na mikataba ya muda mrefu na Alphabet na Meta inayoendelea hadi elfu mbili thelathini na moja.",
+      "text_markdown": "Mkurugenzi Mtendaji wao, Hock Tan, alisisitiza lengo la mapato ya semiconductor ya AI ya dola bilioni mia moja kwa mwaka wa fedha elfu mbili ishirini na saba kwenye simu ya ripoti ya mapato ya Juni tatu, ikiungwa mkono na takriban dola bilioni sabini na tatu katika akiba ya AI na mikataba ya muda mrefu na Alphabet na Meta inayoendelea hadi elfu mbili thelathini na moja.",
+      "title": "",
+      "tts": {
+        "text": "Mkurugenzi Mtendaji wao, Hock Tan, alisisitiza lengo la mapato ya semiconductor ya A I ya dola bilioni mia moja kwa mwaka wa fedha elfu mbili ishirini na saba kwenye simu ya ripoti ya mapato ya Juni tatu, ikiungwa mkono na takriban dola bilioni sabini na tatu katika akiba ya A I na mikataba ya muda mrefu na Alphabet na Meta inayoendelea hadi elfu mbili thelathini na moja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Thamani ya soko ya dola trilioni mbili, lengo la mapato ya AI ya dola bilioni mia moja, karibu hakuna utambuzi wa chapa kwa wateja wa rejareja.",
+      "text_markdown": "Thamani ya soko ya dola trilioni mbili, lengo la mapato ya AI ya dola bilioni mia moja, karibu hakuna utambuzi wa chapa kwa wateja wa rejareja.",
+      "title": "",
+      "tts": {
+        "text": "Thamani ya soko ya dola trilioni mbili, lengo la mapato ya A I ya dola bilioni mia moja, karibu hakuna utambuzi wa chapa kwa wateja wa rejareja.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kichwa cha habari cha pili wiki hii, ASML.",
+      "text_markdown": "Kichwa cha habari cha pili wiki hii, ASML.",
+      "title": "",
+      "tts": {
+        "text": "Kichwa cha habari cha pili wiki hii, ASML.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "ASML, kampuni ya Uholanzi inayotengeneza mashine za lithography ambazo mantiki zote za kisasa hutegemea, inauza mfumo wake wa High-N.A. E.U.V. kwa takriban dola milioni mia tatu sabini.",
+      "text_markdown": "ASML, kampuni ya Uholanzi inayotengeneza mashine za lithography ambazo mantiki zote za kisasa hutegemea, inauza mfumo wake wa High-N.A. E.U.V. kwa takriban dola milioni mia tatu sabini.",
+      "title": "",
+      "tts": {
+        "text": "A S M L, kampuni ya Uholanzi inayotengeneza mashine za lithography ambazo mantiki zote za kisasa hutegemea, inauza mfumo wake wa High N A E U V kwa takriban dola milioni mia tatu sabini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Uwezo wa uzalishaji duniani ni chini ya vitengo ishirini kwa mwaka.",
+      "text_markdown": "Uwezo wa uzalishaji duniani ni chini ya vitengo ishirini kwa mwaka.",
+      "title": "",
+      "tts": {
+        "text": "Uwezo wa uzalishaji duniani ni chini ya vitengo ishirini kwa mwaka.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Dola milioni mia tatu sabini kwa mashine, chini ya mashine ishirini kwa mwaka, kampuni moja inazitengeneza — hilo ndilo kikwazo halisi cha silikoni duniani, si sera.",
+      "text_markdown": "Dola milioni mia tatu sabini kwa mashine, chini ya mashine ishirini kwa mwaka, kampuni moja inazitengeneza — hilo ndilo kikwazo halisi cha silikoni duniani, si sera.",
+      "title": "",
+      "tts": {
+        "text": "Dola milioni mia tatu sabini kwa mashine, chini ya mashine ishirini kwa mwaka, kampuni moja inazitengeneza — hilo ndilo kikwazo halisi cha silikoni duniani, si sera.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kichwa cha habari cha tatu wiki hii, udhibiti wa usafirishaji.",
+      "text_markdown": "Kichwa cha habari cha tatu wiki hii, udhibiti wa usafirishaji.",
+      "title": "",
+      "tts": {
+        "text": "Kichwa cha habari cha tatu wiki hii, udhibiti wa usafirishaji.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Commerce ilifuta Kanuni ya Uenezaji wa AI ya enzi ya Biden mnamo Mei kumi na tatu, elfu mbili ishirini na tano, na haikutoa ufafanuzi mpya wa utekelezaji wa B.I.S. hadi Mei thelathini na moja, elfu mbili ishirini na sita.",
+      "text_markdown": "Commerce ilifuta Kanuni ya Uenezaji wa AI ya enzi ya Biden mnamo Mei kumi na tatu, elfu mbili ishirini na tano, na haikutoa ufafanuzi mpya wa utekelezaji wa B.I.S. hadi Mei thelathini na moja, elfu mbili ishirini na sita.",
+      "title": "",
+      "tts": {
+        "text": "Commerce ilifuta Kanuni ya Uenezaji wa A I ya enzi ya Biden mnamo Mei kumi na tatu, elfu mbili ishirini na tano, na haikutoa ufafanuzi mpya wa utekelezaji wa B I S hadi Mei thelathini na moja, elfu mbili ishirini na sita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Hiyo ni dirisha la takriban mwaka mmoja ambapo mahitaji ya leseni hayakutekelezwa kikamilifu.",
+      "text_markdown": "Hiyo ni dirisha la takriban mwaka mmoja ambapo mahitaji ya leseni hayakutekelezwa kikamilifu.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ni dirisha la takriban mwaka mmoja ambapo mahitaji ya leseni hayakutekelezwa kikamilifu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa hivyo hesabu siku.",
+      "text_markdown": "Kwa hivyo hesabu siku.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo hesabu siku.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Saa sabini na mbili za kuzima mfumo wa Marekani, siku mia tatu na themanini za kutekeleza sheria ya usafirishaji wa chipu — kutolingana huko ndio onyesho.",
+      "text_markdown": "Saa sabini na mbili za kuzima mfumo wa Marekani, siku mia tatu na themanini za kutekeleza sheria ya usafirishaji wa chipu — kutolingana huko ndio onyesho.",
+      "title": "",
+      "tts": {
+        "text": "Saa sabini na mbili za kuzima mfumo wa Marekani, siku mia tatu na themanini za kutekeleza sheria ya usafirishaji wa chipu — kutolingana huko ndio onyesho.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na chipu hizo zilikwenda wapi katika siku hizo mia tatu na themanini?",
+      "text_markdown": "Na chipu hizo zilikwenda wapi katika siku hizo mia tatu na themanini?",
+      "title": "",
+      "tts": {
+        "text": "Na chipu hizo zilikwenda wapi katika siku hizo mia tatu na themanini?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Asia ya Kusini-Mashariki ndiko nyingi zilikokwenda.",
+      "text_markdown": "Asia ya Kusini-Mashariki ndiko nyingi zilikokwenda.",
+      "title": "",
+      "tts": {
+        "text": "Asia ya Kusini-Mashariki ndiko nyingi zilikokwenda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Idara ya Sheria ilifichua mashtaka mwishoni mwa Machi ikidai chipu za Nvidia H mia moja na A mia moja zilipitishwa kupitia waamuzi wa Malaysia na Singapore.",
+      "text_markdown": "Idara ya Sheria ilifichua mashtaka mwishoni mwa Machi ikidai chipu za Nvidia H mia moja na A mia moja zilipitishwa kupitia waamuzi wa Malaysia na Singapore.",
+      "title": "",
+      "tts": {
+        "text": "Idara ya Sheria ilifichua mashtaka mwishoni mwa Machi ikidai chipu za Nvidia H mia moja na A mia moja zilipitishwa kupitia waamuzi wa Malaysia na Singapore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Fortune ilichapisha jumbe zilizosimbwa mwezi Mei zikionyesha mipango ya usafirishaji, na Super Micro inashutumiwa katika kesi ya kampuni hewa ya dola bilioni mbili na nusu.",
+      "text_markdown": "Fortune ilichapisha jumbe zilizosimbwa mwezi Mei zikionyesha mipango ya usafirishaji, na Super Micro inashutumiwa katika kesi ya kampuni hewa ya dola bilioni mbili na nusu.",
+      "title": "",
+      "tts": {
+        "text": "Fortune ilichapisha jumbe zilizosimbwa mwezi Mei zikionyesha mipango ya usafirishaji, na Super Micro inashutumiwa katika kesi ya kampuni hewa ya dola bilioni mbili na nusu.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Utawala wa Trump unaripotiwa kuandaa vikwazo vipya vya usafirishaji wa chipu vinavyolenga hasa Malaysia na Thailand.",
+      "text_markdown": "Utawala wa Trump unaripotiwa kuandaa vikwazo vipya vya usafirishaji wa chipu vinavyolenga hasa Malaysia na Thailand.",
+      "title": "",
+      "tts": {
+        "text": "Utawala wa Trump unaripotiwa kuandaa vikwazo vipya vya usafirishaji wa chipu vinavyolenga hasa Malaysia na Thailand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa hivyo, picha kwa kifupi.",
+      "text_markdown": "Kwa hivyo, picha kwa kifupi.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo, picha kwa kifupi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Chipu haziruki kwenda Shenzhen — huruka kwenda Penang na Singapore kwanza.",
+      "text_markdown": "Chipu haziruki kwenda Shenzhen — huruka kwenda Penang na Singapore kwanza.",
+      "title": "",
+      "tts": {
+        "text": "Chipu haziruki kwenda Shenzhen — huruka kwenda Penang na Singapore kwanza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Dhana ya wiki — Wajibu wa Utendaji Uliosalia.",
+      "text_markdown": "Dhana ya wiki — Wajibu wa Utendaji Uliosalia.",
+      "title": "",
+      "tts": {
+        "text": "Dhana ya wiki — Wajibu wa Utendaji Uliosalia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "R.P.O. ni kipengee cha uhasibu kinachorekodi thamani ya dola ya mikataba ambayo kampuni imetia saini lakini bado haijatimiza.",
+      "text_markdown": "R.P.O. ni kipengee cha uhasibu kinachorekodi thamani ya dola ya mikataba ambayo kampuni imetia saini lakini bado haijatimiza.",
+      "title": "",
+      "tts": {
+        "text": "R.P.O. ni kipengee cha uhasibu kinachorekodi thamani ya dola ya mikataba ambayo kampuni imetia saini lakini bado haijatimiza.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Inaangalia mbele — inakuambia kuhusu mapato ya baadaye, si pesa benki leo.",
+      "text_markdown": "Inaangalia mbele — inakuambia kuhusu mapato ya baadaye, si pesa benki leo.",
+      "title": "",
+      "tts": {
+        "text": "Inaangalia mbele — inakuambia kuhusu mapato ya baadaye, si pesa benki leo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Na kwa nini inajali kwa Oracle?",
+      "text_markdown": "Na kwa nini inajali kwa Oracle?",
+      "title": "",
+      "tts": {
+        "text": "Na kwa nini inajali kwa Oracle?",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Kwa sababu dola bilioni mia tano hamsini na tatu za R.P.O., zilizojikita sana kwa mteja mmoja kwa ajili ya ujenzi mmoja, inamaanisha Oracle imeahidi kutoa kiasi kikubwa sana cha kompyuta katika miaka kadhaa ijayo dhidi ya mteja ambaye mfumo wake wa mapato bado unajadiliwa.",
+      "text_markdown": "Kwa sababu dola bilioni mia tano hamsini na tatu za R.P.O., zilizojikita sana kwa mteja mmoja kwa ajili ya ujenzi mmoja, inamaanisha Oracle imeahidi kutoa kiasi kikubwa sana cha kompyuta katika miaka kadhaa ijayo dhidi ya mteja ambaye mfumo wake wa mapato bado unajadiliwa.",
+      "title": "",
+      "tts": {
+        "text": "Kwa sababu dola bilioni mia tano hamsini na tatu za R.P.O., zilizojikita sana kwa mteja mmoja kwa ajili ya ujenzi mmoja, inamaanisha Oracle imeahidi kutoa kiasi kikubwa sana cha kompyuta katika miaka kadhaa ijayo dhidi ya mteja ambaye mfumo wake wa mapato bado unajadiliwa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Ikiwa mikataba hiyo itatimia, Oracle itakuwa na mpango bora wa muongo.",
+      "text_markdown": "Ikiwa mikataba hiyo itatimia, Oracle itakuwa na mpango bora wa muongo.",
+      "title": "",
+      "tts": {
+        "text": "Ikiwa mikataba hiyo itatimia, Oracle itakuwa na mpango bora wa muongo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Zikichelewa — au zikijadiliwa upya — Oracle inabeba deni huku mikataba ikipungua.",
+      "text_markdown": "Zikichelewa — au zikijadiliwa upya — Oracle inabeba deni huku mikataba ikipungua.",
+      "title": "",
+      "tts": {
+        "text": "Zikichelewa — au zikijadiliwa upya — Oracle inabeba deni huku mikataba ikipungua.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Kwa hivyo unapoona namba ya R.P.O. katika hati ya teknolojia.",
+      "text_markdown": "Kwa hivyo unapoona namba ya R.P.O. katika hati ya teknolojia.",
+      "title": "",
+      "tts": {
+        "text": "Kwa hivyo unapoona namba ya R.P.O. katika hati ya teknolojia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Soma wateja ni akina nani, wajibu huo umejikita kiasi gani, na nini kingetokea ili kampuni iweze kuutimiza kweli.",
+      "text_markdown": "Soma wateja ni akina nani, wajibu huo umejikita kiasi gani, na nini kingetokea ili kampuni iweze kuutimiza kweli.",
+      "title": "",
+      "tts": {
+        "text": "Soma wateja ni akina nani, wajibu huo umejikita kiasi gani, na nini kingetokea ili kampuni iweze kuutimiza kweli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "R.P.O. ndipo waliobeba mzigo huonekana katika maelezo ya chini.",
+      "text_markdown": "R.P.O. ndipo waliobeba mzigo huonekana katika maelezo ya chini.",
+      "title": "",
+      "tts": {
+        "text": "R.P.O. ndipo waliobeba mzigo huonekana katika maelezo ya chini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Mahali pazuri pa kumalizia.",
+      "text_markdown": "Mahali pazuri pa kumalizia.",
+      "title": "",
+      "tts": {
+        "text": "Mahali pazuri pa kumalizia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron, asante kwa muhtasari.",
+      "text_markdown": "Ron, asante kwa muhtasari.",
+      "title": "",
+      "tts": {
+        "text": "Ron, asante kwa muhtasari.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Wakati wowote, Vindy — nimefurahi kuwa hapa.",
+      "text_markdown": "Wakati wowote, Vindy — nimefurahi kuwa hapa.",
+      "title": "",
+      "tts": {
+        "text": "Wakati wowote, Vindy — nimefurahi kuwa hapa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hiyo ilikuwa AI This Week kwa Juni ishirini na moja, elfu mbili ishirini na sita.",
+      "text_markdown": "Hiyo ilikuwa AI This Week kwa Juni ishirini na moja, elfu mbili ishirini na sita.",
+      "title": "",
+      "tts": {
+        "text": "Hiyo ilikuwa AI This Week kwa Juni ishirini na moja, elfu mbili ishirini na sita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Wiki ijayo, tutarejea kwenye uzito huru na habari za maabara ndogo.",
+      "text_markdown": "Wiki ijayo, tutarejea kwenye uzito huru na habari za maabara ndogo.",
+      "title": "",
+      "tts": {
+        "text": "Wiki ijayo, tutarejea kwenye uzito huru na habari za maabara ndogo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Hadi Jumapili ijayo, jihadharini.",
+      "text_markdown": "Hadi Jumapili ijayo, jihadharini.",
+      "title": "",
+      "tts": {
+        "text": "Hadi Jumapili ijayo, jihadharini.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

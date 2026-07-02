@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "De Roep",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De Roep",
+      "text_markdown": "De Roep"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is een moment, vlak nadat je het vliegtuig hebt verlaten, dat ik je het liefst gratis zou geven.",
+      "text_markdown": "Er is een moment, vlak nadat je het vliegtuig hebt verlaten, dat ik je het liefst gratis zou geven.",
+      "tts": {
+        "text": "Er is een moment, vlak nadat je het vliegtuig hebt verlaten, dat ik je het liefst gratis zou geven.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De wereld is niet langer iets waarin je leeft.",
+      "text_markdown": "De wereld is niet langer iets waarin je leeft.",
+      "tts": {
+        "text": "De wereld is niet langer iets waarin je leeft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij wordt iets waardoor je valt.",
+      "text_markdown": "Hij wordt iets waardoor je valt.",
+      "tts": {
+        "text": "Hij wordt iets waardoor je valt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En die eerste paar seconden kan je hoofd niet helemaal bijbenen wat je lichaam zojuist heeft gedaan.",
+      "text_markdown": "En die eerste paar seconden kan je hoofd niet helemaal bijbenen wat je lichaam zojuist heeft gedaan.",
+      "tts": {
+        "text": "En die eerste paar seconden kan je hoofd niet helemaal bijbenen wat je lichaam zojuist heeft gedaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen vragen me waarom ik spring.",
+      "text_markdown": "Mensen vragen me waarom ik spring.",
+      "tts": {
+        "text": "Mensen vragen me waarom ik spring.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze verwachten altijd dat ik zeg dat het om de kick gaat.",
+      "text_markdown": "Ze verwachten altijd dat ik zeg dat het om de kick gaat.",
+      "tts": {
+        "text": "Ze verwachten altijd dat ik zeg dat het om de kick gaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het gaat niet om de kick.",
+      "text_markdown": "Het gaat niet om de kick.",
+      "tts": {
+        "text": "Het gaat niet om de kick.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De kick is wat je voelt bij je eerste vijf sprongen.",
+      "text_markdown": "De kick is wat je voelt bij je eerste vijf sprongen.",
+      "tts": {
+        "text": "De kick is wat je voelt bij je eerste vijf sprongen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Daarna neemt iets stillers het over.",
+      "text_markdown": "Daarna neemt iets stillers het over.",
+      "tts": {
+        "text": "Daarna neemt iets stillers het over.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wat ik najaag is de helderheid.",
+      "text_markdown": "Wat ik najaag is de helderheid.",
+      "tts": {
+        "text": "Wat ik najaag is de helderheid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zestig seconden lang in vrije val heeft je hoofd niets anders te doen.",
+      "text_markdown": "Zestig seconden lang in vrije val heeft je hoofd niets anders te doen.",
+      "tts": {
+        "text": "Zestig seconden lang in vrije val heeft je hoofd niets anders te doen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geen telefoon.",
+      "text_markdown": "Geen telefoon.",
+      "tts": {
+        "text": "Geen telefoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Geen rekeningen.",
+      "text_markdown": "Geen rekeningen.",
+      "tts": {
+        "text": "Geen rekeningen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Geen kleine zorg over morgen.",
+      "text_markdown": "Geen kleine zorg over morgen.",
+      "tts": {
+        "text": "Geen kleine zorg over morgen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Alleen de wind, je adem, en de trage kromming van de aarde onder je.",
+      "text_markdown": "Alleen de wind, je adem, en de trage kromming van de aarde onder je.",
+      "tts": {
+        "text": "Alleen de wind, je adem, en de trage kromming van de aarde onder je.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Het meeste van het leven is luidruchtig.",
+      "text_markdown": "Het meeste van het leven is luidruchtig.",
+      "tts": {
+        "text": "Het meeste van het leven is luidruchtig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Die minuut niet.",
+      "text_markdown": "Die minuut niet.",
+      "tts": {
+        "text": "Die minuut niet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parachutisten zijn niet gek.",
+      "text_markdown": "Parachutisten zijn niet gek.",
+      "tts": {
+        "text": "Parachutisten zijn niet gek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De meesten van ons zijn rustige mensen die een manier hebben gevonden om sneller rustig te worden.",
+      "text_markdown": "De meesten van ons zijn rustige mensen die een manier hebben gevonden om sneller rustig te worden.",
+      "tts": {
+        "text": "De meesten van ons zijn rustige mensen die een manier hebben gevonden om sneller rustig te worden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wij springen uit vliegtuigen zoals andere mensen mediteren.",
+      "text_markdown": "Wij springen uit vliegtuigen zoals andere mensen mediteren.",
+      "tts": {
+        "text": "Wij springen uit vliegtuigen zoals andere mensen mediteren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het maakt iets schoon.",
+      "text_markdown": "Het maakt iets schoon.",
+      "tts": {
+        "text": "Het maakt iets schoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "En dan, elk weekend, maakt het het opnieuw schoon.",
+      "text_markdown": "En dan, elk weekend, maakt het het opnieuw schoon.",
+      "tts": {
+        "text": "En dan, elk weekend, maakt het het opnieuw schoon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste keer dat ik een parachute boven me zag opengaan, huilde ik in mijn harnas.",
+      "text_markdown": "De eerste keer dat ik een parachute boven me zag opengaan, huilde ik in mijn harnas.",
+      "tts": {
+        "text": "De eerste keer dat ik een parachute boven me zag opengaan, huilde ik in mijn harnas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ik had het niet verwacht.",
+      "text_markdown": "Ik had het niet verwacht.",
+      "tts": {
+        "text": "Ik had het niet verwacht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een volwassen man, hangend in de lucht onder een vierkant van zachte stof, huilend om geen reden die hij kon uitleggen.",
+      "text_markdown": "Een volwassen man, hangend in de lucht onder een vierkant van zachte stof, huilend om geen reden die hij kon uitleggen.",
+      "tts": {
+        "text": "Een volwassen man, hangend in de lucht onder een vierkant van zachte stof, huilend om geen reden die hij kon uitleggen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mijn instructeur lachte zacht en klopte me op mijn schouder.",
+      "text_markdown": "Mijn instructeur lachte zacht en klopte me op mijn schouder.",
+      "tts": {
+        "text": "Mijn instructeur lachte zacht en klopte me op mijn schouder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hij had het al vele keren gezien.",
+      "text_markdown": "Hij had het al vele keren gezien.",
+      "tts": {
+        "text": "Hij had het al vele keren gezien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Dat was het moment waarop ik wist dat ik terug zou komen.",
+      "text_markdown": "Dat was het moment waarop ik wist dat ik terug zou komen.",
+      "tts": {
+        "text": "Dat was het moment waarop ik wist dat ik terug zou komen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Parachutespringen gaat niet om dapper zijn.",
+      "text_markdown": "Parachutespringen gaat niet om dapper zijn.",
+      "tts": {
+        "text": "Parachutespringen gaat niet om dapper zijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het gaat erom de ene plek te vinden waar je hoofd stil wordt.",
+      "text_markdown": "Het gaat erom de ene plek te vinden waar je hoofd stil wordt.",
+      "tts": {
+        "text": "Het gaat erom de ene plek te vinden waar je hoofd stil wordt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Voor sommige mensen is die plek een yogamatje.",
+      "text_markdown": "Voor sommige mensen is die plek een yogamatje.",
+      "tts": {
+        "text": "Voor sommige mensen is die plek een yogamatje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Voor sommigen is het een lange hardloopronde over een lege weg.",
+      "text_markdown": "Voor sommigen is het een lange hardloopronde over een lege weg.",
+      "tts": {
+        "text": "Voor sommigen is het een lange hardloopronde over een lege weg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Voor sommigen is het een hengelsnoer, of een piano, of een keuken om zes uur in de ochtend.",
+      "text_markdown": "Voor sommigen is het een hengelsnoer, of een piano, of een keuken om zes uur in de ochtend.",
+      "tts": {
+        "text": "Voor sommigen is het een hengelsnoer, of een piano, of een keuken om zes uur in de ochtend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Voor mij is het dertienduizend voet boven de grond, met niets te doen behalve ademen.",
+      "text_markdown": "Voor mij is het dertienduizend voet boven de grond, met niets te doen behalve ademen.",
+      "tts": {
+        "text": "Voor mij is het dertienduizend voet boven de grond, met niets te doen behalve ademen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De aantrekkingskracht, als je hem eenmaal voelt, is moeilijk uit te leggen aan een vriend bij het diner.",
+      "text_markdown": "De aantrekkingskracht, als je hem eenmaal voelt, is moeilijk uit te leggen aan een vriend bij het diner.",
+      "tts": {
+        "text": "De aantrekkingskracht, als je hem eenmaal voelt, is moeilijk uit te leggen aan een vriend bij het diner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je zult het proberen, en zij zullen beleefd glimlachen, en je geeft het op.",
+      "text_markdown": "Je zult het proberen, en zij zullen beleefd glimlachen, en je geeft het op.",
+      "tts": {
+        "text": "Je zult het proberen, en zij zullen beleefd glimlachen, en je geeft het op.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dat is prima.",
+      "text_markdown": "Dat is prima.",
+      "tts": {
+        "text": "Dat is prima.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je begon niet met springen om het uit te leggen.",
+      "text_markdown": "Je begon niet met springen om het uit te leggen.",
+      "tts": {
+        "text": "Je begon niet met springen om het uit te leggen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je begon met springen omdat, de eerste keer dat je het probeerde, iets in je zei, oh, daar ben je dus.",
+      "text_markdown": "Je begon met springen omdat, de eerste keer dat je het probeerde, iets in je zei, oh, daar ben je dus.",
+      "tts": {
+        "text": "Je begon met springen omdat, de eerste keer dat je het probeerde, iets in je zei, oh, daar ben je dus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Heb je ooit aan de rand van iets hoogs gestaan en je lichaam naar de open lucht voelen leunen?",
+      "text_markdown": "Heb je ooit aan de rand van iets hoogs gestaan en je lichaam naar de open lucht voelen leunen?",
+      "tts": {
+        "text": "Heb je ooit aan de rand van iets hoogs gestaan en je lichaam naar de open lucht voelen leunen?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maar heel licht, en maar voor een seconde.",
+      "text_markdown": "Maar heel licht, en maar voor een seconde.",
+      "tts": {
+        "text": "Maar heel licht, en maar voor een seconde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Als dat zo is, weet je al waar ik het over heb.",
+      "text_markdown": "Als dat zo is, weet je al waar ik het over heb.",
+      "tts": {
+        "text": "Als dat zo is, weet je al waar ik het over heb.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Parachutespringen is wat er gebeurt als je stopt te doen alsof je niet leunt.",
+      "text_markdown": "Parachutespringen is wat er gebeurt als je stopt te doen alsof je niet leunt.",
+      "tts": {
+        "text": "Parachutespringen is wat er gebeurt als je stopt te doen alsof je niet leunt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je stapt eruit, met opzet, naar de plek waar je lichaam al jaren stilletjes naar vraagt.",
+      "text_markdown": "Je stapt eruit, met opzet, naar de plek waar je lichaam al jaren stilletjes naar vraagt.",
+      "tts": {
+        "text": "Je stapt eruit, met opzet, naar de plek waar je lichaam al jaren stilletjes naar vraagt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En dan, heel snel, leer je dat de grond nooit was waar de angst zat.",
+      "text_markdown": "En dan, heel snel, leer je dat de grond nooit was waar de angst zat.",
+      "tts": {
+        "text": "En dan, heel snel, leer je dat de grond nooit was waar de angst zat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De angst zat in het leunen.",
+      "text_markdown": "De angst zat in het leunen.",
+      "tts": {
+        "text": "De angst zat in het leunen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zodra je springt, gaat de angst weg.",
+      "text_markdown": "Zodra je springt, gaat de angst weg.",
+      "tts": {
+        "text": "Zodra je springt, gaat de angst weg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wat overblijft voelt bijna als thuiskomen.",
+      "text_markdown": "Wat overblijft voelt bijna als thuiskomen.",
+      "tts": {
+        "text": "Wat overblijft voelt bijna als thuiskomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je hartslag wordt rustiger.",
+      "text_markdown": "Je hartslag wordt rustiger.",
+      "tts": {
+        "text": "Je hartslag wordt rustiger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je adem vindt een ritme waar hij al lang naar zocht.",
+      "text_markdown": "Je adem vindt een ritme waar hij al lang naar zocht.",
+      "tts": {
+        "text": "Je adem vindt een ritme waar hij al lang naar zocht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De lucht draagt je.",
+      "text_markdown": "De lucht draagt je.",
+      "tts": {
+        "text": "De lucht draagt je.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "En je voelt, misschien voor het eerst in lange tijd, dat je precies bent waar je bent.",
+      "text_markdown": "En je voelt, misschien voor het eerst in lange tijd, dat je precies bent waar je bent.",
+      "tts": {
+        "text": "En je voelt, misschien voor het eerst in lange tijd, dat je precies bent waar je bent.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is wat ik je zou vertellen, als je het me zou vragen tijdens een lange wandeling.",
+      "text_markdown": "Dat is wat ik je zou vertellen, als je het me zou vragen tijdens een lange wandeling.",
+      "tts": {
+        "text": "Dat is wat ik je zou vertellen, als je het me zou vragen tijdens een lange wandeling.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waarom blijft een rustig en redelijk mens uit prima werkende vliegtuigen springen?",
+      "text_markdown": "Waarom blijft een rustig en redelijk mens uit prima werkende vliegtuigen springen?",
+      "tts": {
+        "text": "Waarom blijft een rustig en redelijk mens uit prima werkende vliegtuigen springen?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ik zou je vertellen dat het het stilste is wat ik doe.",
+      "text_markdown": "Ik zou je vertellen dat het het stilste is wat ik doe.",
+      "tts": {
+        "text": "Ik zou je vertellen dat het het stilste is wat ik doe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En ik zou het menen.",
+      "text_markdown": "En ik zou het menen.",
+      "tts": {
+        "text": "En ik zou het menen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "De Eerste Keer",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De Eerste Keer",
+      "text_markdown": "De Eerste Keer"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laat me je in het vliegtuig zetten.",
+      "text_markdown": "Laat me je in het vliegtuig zetten.",
+      "tts": {
+        "text": "Laat me je in het vliegtuig zetten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je zit op een lage metalen bank, vastgegespt aan een instructeur achter je.",
+      "text_markdown": "Je zit op een lage metalen bank, vastgegespt aan een instructeur achter je.",
+      "tts": {
+        "text": "Je zit op een lage metalen bank, vastgegespt aan een instructeur achter je.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het vliegtuig klimt in trage, luie cirkels.",
+      "text_markdown": "Het vliegtuig klimt in trage, luie cirkels.",
+      "tts": {
+        "text": "Het vliegtuig klimt in trage, luie cirkels.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het kleine vierkante raampje naast je wordt blauwer en blauwer.",
+      "text_markdown": "Het kleine vierkante raampje naast je wordt blauwer en blauwer.",
+      "tts": {
+        "text": "Het kleine vierkante raampje naast je wordt blauwer en blauwer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je voelt je hart in je keel kloppen, maar je raakt niet in paniek.",
+      "text_markdown": "Je voelt je hart in je keel kloppen, maar je raakt niet in paniek.",
+      "tts": {
+        "text": "Je voelt je hart in je keel kloppen, maar je raakt niet in paniek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je bent gewoon heel, heel erg wakker.",
+      "text_markdown": "Je bent gewoon heel, heel erg wakker.",
+      "tts": {
+        "text": "Je bent gewoon heel, heel erg wakker.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De instructeur leunt dicht bij je oor.",
+      "text_markdown": "De instructeur leunt dicht bij je oor.",
+      "tts": {
+        "text": "De instructeur leunt dicht bij je oor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij vertelt je, kalm, dat alles wat je moet doen, hij je op tijd zal zeggen.",
+      "text_markdown": "Hij vertelt je, kalm, dat alles wat je moet doen, hij je op tijd zal zeggen.",
+      "tts": {
+        "text": "Hij vertelt je, kalm, dat alles wat je moet doen, hij je op tijd zal zeggen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je knikt.",
+      "text_markdown": "Je knikt.",
+      "tts": {
+        "text": "Je knikt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je hebt het afgelopen uur zo vaak geknikt dat je nek pijn begint te doen.",
+      "text_markdown": "Je hebt het afgelopen uur zo vaak geknikt dat je nek pijn begint te doen.",
+      "tts": {
+        "text": "Je hebt het afgelopen uur zo vaak geknikt dat je nek pijn begint te doen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan gaat de deur open.",
+      "text_markdown": "Dan gaat de deur open.",
+      "tts": {
+        "text": "Dan gaat de deur open.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wind komt binnen als een muur, luid en koud en levend, en plotseling voelt het vliegtuig heel klein.",
+      "text_markdown": "De wind komt binnen als een muur, luid en koud en levend, en plotseling voelt het vliegtuig heel klein.",
+      "tts": {
+        "text": "De wind komt binnen als een muur, luid en koud en levend, en plotseling voelt het vliegtuig heel klein.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je schuift naar de rand.",
+      "text_markdown": "Je schuift naar de rand.",
+      "tts": {
+        "text": "Je schuift naar de rand.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je tenen hangen in het niets.",
+      "text_markdown": "Je tenen hangen in het niets.",
+      "tts": {
+        "text": "Je tenen hangen in het niets.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je kijkt naar beneden, en de grond is zo ver weg dat het niet meer op grond lijkt.",
+      "text_markdown": "Je kijkt naar beneden, en de grond is zo ver weg dat het niet meer op grond lijkt.",
+      "tts": {
+        "text": "Je kijkt naar beneden, en de grond is zo ver weg dat het niet meer op grond lijkt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het lijkt op een lappendeken.",
+      "text_markdown": "Het lijkt op een lappendeken.",
+      "tts": {
+        "text": "Het lijkt op een lappendeken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wegen zo dun als draad.",
+      "text_markdown": "Wegen zo dun als draad.",
+      "tts": {
+        "text": "Wegen zo dun als draad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Een rivier in de kleur van dof zilver.",
+      "text_markdown": "Een rivier in de kleur van dof zilver.",
+      "tts": {
+        "text": "Een rivier in de kleur van dof zilver.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Piepkleine groene en bruine velden, aan elkaar genaaid door heggen.",
+      "text_markdown": "Piepkleine groene en bruine velden, aan elkaar genaaid door heggen.",
+      "tts": {
+        "text": "Piepkleine groene en bruine velden, aan elkaar genaaid door heggen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je instructeur telt af.",
+      "text_markdown": "Je instructeur telt af.",
+      "tts": {
+        "text": "Je instructeur telt af.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij zegt een.",
+      "text_markdown": "Hij zegt een.",
+      "tts": {
+        "text": "Hij zegt een.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij zegt twee.",
+      "text_markdown": "Hij zegt twee.",
+      "tts": {
+        "text": "Hij zegt twee.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bij drie is het vliegtuig weg.",
+      "text_markdown": "Bij drie is het vliegtuig weg.",
+      "tts": {
+        "text": "Bij drie is het vliegtuig weg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste drie seconden zijn het zwaarst.",
+      "text_markdown": "De eerste drie seconden zijn het zwaarst.",
+      "tts": {
+        "text": "De eerste drie seconden zijn het zwaarst.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je lichaam denkt dat het valt, want dat is ook zo, en je lichaam is nooit verteld dat dit oké is.",
+      "text_markdown": "Je lichaam denkt dat het valt, want dat is ook zo, en je lichaam is nooit verteld dat dit oké is.",
+      "tts": {
+        "text": "Je lichaam denkt dat het valt, want dat is ook zo, en je lichaam is nooit verteld dat dit oké is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je maakt een geluid.",
+      "text_markdown": "Je maakt een geluid.",
+      "tts": {
+        "text": "Je maakt een geluid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Iedereen maakt een geluid.",
+      "text_markdown": "Iedereen maakt een geluid.",
+      "tts": {
+        "text": "Iedereen maakt een geluid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je hoeft je niet te schamen voor dat geluid.",
+      "text_markdown": "Je hoeft je niet te schamen voor dat geluid.",
+      "tts": {
+        "text": "Je hoeft je niet te schamen voor dat geluid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan gebeurt er iets buitengewoons.",
+      "text_markdown": "Dan gebeurt er iets buitengewoons.",
+      "tts": {
+        "text": "Dan gebeurt er iets buitengewoons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De val voelt niet langer als vallen.",
+      "text_markdown": "De val voelt niet langer als vallen.",
+      "tts": {
+        "text": "De val voelt niet langer als vallen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De wind komt omhoog om je te ontmoeten en houdt je vast, zoals water je vasthoudt als je op je rug drijft.",
+      "text_markdown": "De wind komt omhoog om je te ontmoeten en houdt je vast, zoals water je vasthoudt als je op je rug drijft.",
+      "tts": {
+        "text": "De wind komt omhoog om je te ontmoeten en houdt je vast, zoals water je vasthoudt als je op je rug drijft.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je armen en benen spreiden zich uit zonder dat je het ze vraagt.",
+      "text_markdown": "Je armen en benen spreiden zich uit zonder dat je het ze vraagt.",
+      "tts": {
+        "text": "Je armen en benen spreiden zich uit zonder dat je het ze vraagt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je gezicht voelt alsof het in vele richtingen tegelijk wordt getrokken.",
+      "text_markdown": "Je gezicht voelt alsof het in vele richtingen tegelijk wordt getrokken.",
+      "tts": {
+        "text": "Je gezicht voelt alsof het in vele richtingen tegelijk wordt getrokken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je kunt niet zeggen of je glimlacht of schreeuwt.",
+      "text_markdown": "Je kunt niet zeggen of je glimlacht of schreeuwt.",
+      "tts": {
+        "text": "Je kunt niet zeggen of je glimlacht of schreeuwt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Het maakt niet uit.",
+      "text_markdown": "Het maakt niet uit.",
+      "tts": {
+        "text": "Het maakt niet uit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je kijkt om je heen.",
+      "text_markdown": "Je kijkt om je heen.",
+      "tts": {
+        "text": "Je kijkt om je heen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De aarde is nog steeds heel ver onder je, maar hij is dichterbij nu, en je kunt de kleuren beter zien.",
+      "text_markdown": "De aarde is nog steeds heel ver onder je, maar hij is dichterbij nu, en je kunt de kleuren beter zien.",
+      "tts": {
+        "text": "De aarde is nog steeds heel ver onder je, maar hij is dichterbij nu, en je kunt de kleuren beter zien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Auto’s op een snelweg, traag als mieren.",
+      "text_markdown": "Auto’s op een snelweg, traag als mieren.",
+      "tts": {
+        "text": "Auto’s op een snelweg, traag als mieren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een meer, perfect stil.",
+      "text_markdown": "Een meer, perfect stil.",
+      "tts": {
+        "text": "Een meer, perfect stil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Een wolkenschaduw die over een bos drijft.",
+      "text_markdown": "Een wolkenschaduw die over een bos drijft.",
+      "tts": {
+        "text": "Een wolkenschaduw die over een bos drijft.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je vliegt.",
+      "text_markdown": "Je vliegt.",
+      "tts": {
+        "text": "Je vliegt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Niet in een vliegtuig.",
+      "text_markdown": "Niet in een vliegtuig.",
+      "tts": {
+        "text": "Niet in een vliegtuig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jij, je lichaam, vliegt.",
+      "text_markdown": "Jij, je lichaam, vliegt.",
+      "tts": {
+        "text": "Jij, je lichaam, vliegt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je instructeur tikt je op de schouder.",
+      "text_markdown": "Je instructeur tikt je op de schouder.",
+      "tts": {
+        "text": "Je instructeur tikt je op de schouder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je trekt aan het koord.",
+      "text_markdown": "Je trekt aan het koord.",
+      "tts": {
+        "text": "Je trekt aan het koord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er is een zachte ruk, alsof iemand voorzichtig je shirt achter aan je rug pakt.",
+      "text_markdown": "Er is een zachte ruk, alsof iemand voorzichtig je shirt achter aan je rug pakt.",
+      "tts": {
+        "text": "Er is een zachte ruk, alsof iemand voorzichtig je shirt achter aan je rug pakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dan een tweede ruk, harder, die je rechtop trekt.",
+      "text_markdown": "Dan een tweede ruk, harder, die je rechtop trekt.",
+      "tts": {
+        "text": "Dan een tweede ruk, harder, die je rechtop trekt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wereld wordt stil.",
+      "text_markdown": "De wereld wordt stil.",
+      "tts": {
+        "text": "De wereld wordt stil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wind is weg.",
+      "text_markdown": "De wind is weg.",
+      "tts": {
+        "text": "De wind is weg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het gebrul is weg.",
+      "text_markdown": "Het gebrul is weg.",
+      "tts": {
+        "text": "Het gebrul is weg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De val is weg.",
+      "text_markdown": "De val is weg.",
+      "tts": {
+        "text": "De val is weg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je hangt nu, in een harnas, onder een brede rechthoek van stof.",
+      "text_markdown": "Je hangt nu, in een harnas, onder een brede rechthoek van stof.",
+      "tts": {
+        "text": "Je hangt nu, in een harnas, onder een brede rechthoek van stof.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De lucht is plotseling heel, heel stil.",
+      "text_markdown": "De lucht is plotseling heel, heel stil.",
+      "tts": {
+        "text": "De lucht is plotseling heel, heel stil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je kunt de vogel onder je horen.",
+      "text_markdown": "Je kunt de vogel onder je horen.",
+      "tts": {
+        "text": "Je kunt de vogel onder je horen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Je kunt jezelf horen ademen.",
+      "text_markdown": "Je kunt jezelf horen ademen.",
+      "tts": {
+        "text": "Je kunt jezelf horen ademen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Je instructeur lacht in je oor en vraagt hoe het gaat.",
+      "text_markdown": "Je instructeur lacht in je oor en vraagt hoe het gaat.",
+      "tts": {
+        "text": "Je instructeur lacht in je oor en vraagt hoe het gaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Je kunt even geen antwoord geven, want je huilt, of je lacht, of allebei.",
+      "text_markdown": "Je kunt even geen antwoord geven, want je huilt, of je lacht, of allebei.",
+      "tts": {
+        "text": "Je kunt even geen antwoord geven, want je huilt, of je lacht, of allebei.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De rit onder de koepel duurt ongeveer vijf minuten.",
+      "text_markdown": "De rit onder de koepel duurt ongeveer vijf minuten.",
+      "tts": {
+        "text": "De rit onder de koepel duurt ongeveer vijf minuten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het zijn vijf van de meest vredige minuten van je leven.",
+      "text_markdown": "Het zijn vijf van de meest vredige minuten van je leven.",
+      "tts": {
+        "text": "Het zijn vijf van de meest vredige minuten van je leven.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je voeten de grond raken, doe je drie korte rennende passen en stop je.",
+      "text_markdown": "Als je voeten de grond raken, doe je drie korte rennende passen en stop je.",
+      "tts": {
+        "text": "Als je voeten de grond raken, doe je drie korte rennende passen en stop je.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het gras is weer echt.",
+      "text_markdown": "Het gras is weer echt.",
+      "tts": {
+        "text": "Het gras is weer echt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De wereld is weer vast.",
+      "text_markdown": "De wereld is weer vast.",
+      "tts": {
+        "text": "De wereld is weer vast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je draait je om en kijkt omhoog naar de lucht.",
+      "text_markdown": "Je draait je om en kijkt omhoog naar de lucht.",
+      "tts": {
+        "text": "Je draait je om en kijkt omhoog naar de lucht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "En je begrijpt, voor het eerst, wat je vriend je al die jaren probeert te vertellen.",
+      "text_markdown": "En je begrijpt, voor het eerst, wat je vriend je al die jaren probeert te vertellen.",
+      "tts": {
+        "text": "En je begrijpt, voor het eerst, wat je vriend je al die jaren probeert te vertellen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Beginnen",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Beginnen",
+      "text_markdown": "Beginnen"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoe doe je dit eigenlijk, als je op een dag besluit dat je het wil.",
+      "text_markdown": "Hoe doe je dit eigenlijk, als je op een dag besluit dat je het wil.",
+      "tts": {
+        "text": "Hoe doe je dit eigenlijk, als je op een dag besluit dat je het wil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het eerlijke antwoord is, makkelijker dan je denkt.",
+      "text_markdown": "Het eerlijke antwoord is, makkelijker dan je denkt.",
+      "tts": {
+        "text": "Het eerlijke antwoord is, makkelijker dan je denkt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bijna elke dropzone ter wereld neemt diezelfde ochtend nog een complete beginner aan.",
+      "text_markdown": "Bijna elke dropzone ter wereld neemt diezelfde ochtend nog een complete beginner aan.",
+      "tts": {
+        "text": "Bijna elke dropzone ter wereld neemt diezelfde ochtend nog een complete beginner aan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze zetten je in de lucht met een tandemsprong, met een instructeur op je rug.",
+      "text_markdown": "Ze zetten je in de lucht met een tandemsprong, met een instructeur op je rug.",
+      "tts": {
+        "text": "Ze zetten je in de lucht met een tandemsprong, met een instructeur op je rug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je komt aan, je tekent de papieren, je kijkt een korte video, en dan ontmoet je de instructeur die met je gaat springen.",
+      "text_markdown": "Je komt aan, je tekent de papieren, je kijkt een korte video, en dan ontmoet je de instructeur die met je gaat springen.",
+      "tts": {
+        "text": "Je komt aan, je tekent de papieren, je kijkt een korte video, en dan ontmoet je de instructeur die met je gaat springen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je draagt een springpak en een harnas.",
+      "text_markdown": "Je draagt een springpak en een harnas.",
+      "tts": {
+        "text": "Je draagt een springpak en een harnas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je klimt in het vliegtuig.",
+      "text_markdown": "Je klimt in het vliegtuig.",
+      "tts": {
+        "text": "Je klimt in het vliegtuig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ongeveer twintig minuten later loop je terug over het gras met de grootste grijns van je leven.",
+      "text_markdown": "Ongeveer twintig minuten later loop je terug over het gras met de grootste grijns van je leven.",
+      "tts": {
+        "text": "Ongeveer twintig minuten later loop je terug over het gras met de grootste grijns van je leven.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voor je eerste sprong hoef je niet dapper te zijn.",
+      "text_markdown": "Voor je eerste sprong hoef je niet dapper te zijn.",
+      "tts": {
+        "text": "Voor je eerste sprong hoef je niet dapper te zijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je hoeft alleen bereid te zijn.",
+      "text_markdown": "Je hoeft alleen bereid te zijn.",
+      "tts": {
+        "text": "Je hoeft alleen bereid te zijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De instructeur doet alles.",
+      "text_markdown": "De instructeur doet alles.",
+      "tts": {
+        "text": "De instructeur doet alles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij trekt de parachute.",
+      "text_markdown": "Hij trekt de parachute.",
+      "tts": {
+        "text": "Hij trekt de parachute.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hij stuurt de koepel.",
+      "text_markdown": "Hij stuurt de koepel.",
+      "tts": {
+        "text": "Hij stuurt de koepel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hij landt jou.",
+      "text_markdown": "Hij landt jou.",
+      "tts": {
+        "text": "Hij landt jou.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Jij gaat mee voor de rit, met de beste plek ter wereld.",
+      "text_markdown": "Jij gaat mee voor de rit, met de beste plek ter wereld.",
+      "tts": {
+        "text": "Jij gaat mee voor de rit, met de beste plek ter wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je na die eerste sprong geïnteresseerd bent in zelfstandig springen, heet de weg Versnelde Vrije Val.",
+      "text_markdown": "Als je na die eerste sprong geïnteresseerd bent in zelfstandig springen, heet de weg Versnelde Vrije Val.",
+      "tts": {
+        "text": "Als je na die eerste sprong geïnteresseerd bent in zelfstandig springen, heet de weg Versnelde Vrije Val.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is een trainingsprogramma, dat op elke dropzone wordt gegeven, en dat je leert hoe je een echte parachutist wordt.",
+      "text_markdown": "Het is een trainingsprogramma, dat op elke dropzone wordt gegeven, en dat je leert hoe je een echte parachutist wordt.",
+      "tts": {
+        "text": "Het is een trainingsprogramma, dat op elke dropzone wordt gegeven, en dat je leert hoe je een echte parachutist wordt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Geen passagier.",
+      "text_markdown": "Geen passagier.",
+      "tts": {
+        "text": "Geen passagier.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een piloot van je eigen lichaam in de lucht.",
+      "text_markdown": "Een piloot van je eigen lichaam in de lucht.",
+      "tts": {
+        "text": "Een piloot van je eigen lichaam in de lucht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het eerste niveau van het programma is een lange klaslokaaldag.",
+      "text_markdown": "Het eerste niveau van het programma is een lange klaslokaaldag.",
+      "tts": {
+        "text": "Het eerste niveau van het programma is een lange klaslokaaldag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je leert hoe je moet vallen.",
+      "text_markdown": "Je leert hoe je moet vallen.",
+      "tts": {
+        "text": "Je leert hoe je moet vallen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je leert hoe je je hoogtemeter moet aflezen.",
+      "text_markdown": "Je leert hoe je je hoogtemeter moet aflezen.",
+      "tts": {
+        "text": "Je leert hoe je je hoogtemeter moet aflezen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je leert wat je moet doen als je hoofdparachute niet opengaat.",
+      "text_markdown": "Je leert wat je moet doen als je hoofdparachute niet opengaat.",
+      "tts": {
+        "text": "Je leert wat je moet doen als je hoofdparachute niet opengaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De klaslokaaldag duurt ongeveer zes of zeven uur.",
+      "text_markdown": "De klaslokaaldag duurt ongeveer zes of zeven uur.",
+      "tts": {
+        "text": "De klaslokaaldag duurt ongeveer zes of zeven uur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Aan het einde ervan weet je meer over parachutes dan de meeste mensen in een heel leven leren.",
+      "text_markdown": "Aan het einde ervan weet je meer over parachutes dan de meeste mensen in een heel leven leren.",
+      "tts": {
+        "text": "Aan het einde ervan weet je meer over parachutes dan de meeste mensen in een heel leven leren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan komt je eerste solosprong.",
+      "text_markdown": "Dan komt je eerste solosprong.",
+      "tts": {
+        "text": "Dan komt je eerste solosprong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Twee instructeurs springen met je mee, één aan elke kant, en houden je harnas vast.",
+      "text_markdown": "Twee instructeurs springen met je mee, één aan elke kant, en houden je harnas vast.",
+      "tts": {
+        "text": "Twee instructeurs springen met je mee, één aan elke kant, en houden je harnas vast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze laten je los in vrije val zodra je stabiel bent.",
+      "text_markdown": "Ze laten je los in vrije val zodra je stabiel bent.",
+      "tts": {
+        "text": "Ze laten je los in vrije val zodra je stabiel bent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je trekt zelf je parachute.",
+      "text_markdown": "Je trekt zelf je parachute.",
+      "tts": {
+        "text": "Je trekt zelf je parachute.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je vliegt zelf je koepel naar de grond.",
+      "text_markdown": "Je vliegt zelf je koepel naar de grond.",
+      "tts": {
+        "text": "Je vliegt zelf je koepel naar de grond.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De eerste keer dat je dit doet, doet je gezicht de volgende dag pijn van het brede glimlachen.",
+      "text_markdown": "De eerste keer dat je dit doet, doet je gezicht de volgende dag pijn van het brede glimlachen.",
+      "tts": {
+        "text": "De eerste keer dat je dit doet, doet je gezicht de volgende dag pijn van het brede glimlachen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het volledige programma neemt je mee door ongeveer zeven sprongen.",
+      "text_markdown": "Het volledige programma neemt je mee door ongeveer zeven sprongen.",
+      "tts": {
+        "text": "Het volledige programma neemt je mee door ongeveer zeven sprongen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aan het einde spring je in je eentje.",
+      "text_markdown": "Aan het einde spring je in je eentje.",
+      "tts": {
+        "text": "Aan het einde spring je in je eentje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vanaf daar maken parachutisten meestal hun eerste honderd sprongen af in het volgende jaar.",
+      "text_markdown": "Vanaf daar maken parachutisten meestal hun eerste honderd sprongen af in het volgende jaar.",
+      "tts": {
+        "text": "Vanaf daar maken parachutisten meestal hun eerste honderd sprongen af in het volgende jaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onderweg leren ze relatief ten opzichte van andere springers te vliegen.",
+      "text_markdown": "Onderweg leren ze relatief ten opzichte van andere springers te vliegen.",
+      "tts": {
+        "text": "Onderweg leren ze relatief ten opzichte van andere springers te vliegen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ze leren te tracken door de lucht.",
+      "text_markdown": "Ze leren te tracken door de lucht.",
+      "tts": {
+        "text": "Ze leren te tracken door de lucht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ze leren hun eigen parachute in te pakken.",
+      "text_markdown": "Ze leren hun eigen parachute in te pakken.",
+      "tts": {
+        "text": "Ze leren hun eigen parachute in te pakken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De gemeenschap is klein, vriendelijk, en geduldig.",
+      "text_markdown": "De gemeenschap is klein, vriendelijk, en geduldig.",
+      "tts": {
+        "text": "De gemeenschap is klein, vriendelijk, en geduldig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Niemand op een dropzone zal je ooit dom laten voelen omdat je een beginner bent.",
+      "text_markdown": "Niemand op een dropzone zal je ooit dom laten voelen omdat je een beginner bent.",
+      "tts": {
+        "text": "Niemand op een dropzone zal je ooit dom laten voelen omdat je een beginner bent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "We waren allemaal ooit beginners.",
+      "text_markdown": "We waren allemaal ooit beginners.",
+      "tts": {
+        "text": "We waren allemaal ooit beginners.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "De meesten van ons voelen zich nog steeds als beginners.",
+      "text_markdown": "De meesten van ons voelen zich nog steeds als beginners.",
+      "tts": {
+        "text": "De meesten van ons voelen zich nog steeds als beginners.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En hoe zit het met veiligheid.",
+      "text_markdown": "En hoe zit het met veiligheid.",
+      "tts": {
+        "text": "En hoe zit het met veiligheid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat is de vraag die elk redelijk mens stelt, en hij verdient een echt antwoord.",
+      "text_markdown": "Dat is de vraag die elk redelijk mens stelt, en hij verdient een echt antwoord.",
+      "tts": {
+        "text": "Dat is de vraag die elk redelijk mens stelt, en hij verdient een echt antwoord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Parachutespringen is in feite heel veilig.",
+      "text_markdown": "Parachutespringen is in feite heel veilig.",
+      "tts": {
+        "text": "Parachutespringen is in feite heel veilig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Niet zo veilig als wandelen, maar veiliger dan rijden naar de dropzone.",
+      "text_markdown": "Niet zo veilig als wandelen, maar veiliger dan rijden naar de dropzone.",
+      "tts": {
+        "text": "Niet zo veilig als wandelen, maar veiliger dan rijden naar de dropzone.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De uitrusting is uitstekend.",
+      "text_markdown": "De uitrusting is uitstekend.",
+      "tts": {
+        "text": "De uitrusting is uitstekend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Er is een hoofdparachute en een reserveparachute, en een automatisch apparaat dat de reserve afvuurt als jij dat niet kunt.",
+      "text_markdown": "Er is een hoofdparachute en een reserveparachute, en een automatisch apparaat dat de reserve afvuurt als jij dat niet kunt.",
+      "tts": {
+        "text": "Er is een hoofdparachute en een reserveparachute, en een automatisch apparaat dat de reserve afvuurt als jij dat niet kunt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Dropzones worden gerund door professionals die om je geven.",
+      "text_markdown": "Dropzones worden gerund door professionals die om je geven.",
+      "tts": {
+        "text": "Dropzones worden gerund door professionals die om je geven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Instructeurs geven, diepgaand, om elke sprong.",
+      "text_markdown": "Instructeurs geven, diepgaand, om elke sprong.",
+      "tts": {
+        "text": "Instructeurs geven, diepgaand, om elke sprong.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wat zijn de kosten.",
+      "text_markdown": "Wat zijn de kosten.",
+      "tts": {
+        "text": "Wat zijn de kosten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een tandemsprong kost ongeveer evenveel als een mooi diner voor twee.",
+      "text_markdown": "Een tandemsprong kost ongeveer evenveel als een mooi diner voor twee.",
+      "tts": {
+        "text": "Een tandemsprong kost ongeveer evenveel als een mooi diner voor twee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het trainingsprogramma kost ongeveer evenveel als een korte vakantie.",
+      "text_markdown": "Het trainingsprogramma kost ongeveer evenveel als een korte vakantie.",
+      "tts": {
+        "text": "Het trainingsprogramma kost ongeveer evenveel als een korte vakantie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Daarna kost elke sprong ongeveer evenveel als een bioscoopkaartje en een maaltijd.",
+      "text_markdown": "Daarna kost elke sprong ongeveer evenveel als een bioscoopkaartje en een maaltijd.",
+      "tts": {
+        "text": "Daarna kost elke sprong ongeveer evenveel als een bioscoopkaartje en een maaltijd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Mensen met gewone banen en gewone levens doen dit elk weekend.",
+      "text_markdown": "Mensen met gewone banen en gewone levens doen dit elk weekend.",
+      "tts": {
+        "text": "Mensen met gewone banen en gewone levens doen dit elk weekend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ze zijn niet rijk.",
+      "text_markdown": "Ze zijn niet rijk.",
+      "tts": {
+        "text": "Ze zijn niet rijk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ze zijn niet bijzonder.",
+      "text_markdown": "Ze zijn niet bijzonder.",
+      "tts": {
+        "text": "Ze zijn niet bijzonder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ze hebben gewoon besloten dat dit het is wat zij doen.",
+      "text_markdown": "Ze hebben gewoon besloten dat dit het is wat zij doen.",
+      "tts": {
+        "text": "Ze hebben gewoon besloten dat dit het is wat zij doen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je nadenkt over je eerste sprong, hier is het enige advies dat ertoe doet.",
+      "text_markdown": "Als je nadenkt over je eerste sprong, hier is het enige advies dat ertoe doet.",
+      "tts": {
+        "text": "Als je nadenkt over je eerste sprong, hier is het enige advies dat ertoe doet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kies een datum.",
+      "text_markdown": "Kies een datum.",
+      "tts": {
+        "text": "Kies een datum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vertel het aan één vriend.",
+      "text_markdown": "Vertel het aan één vriend.",
+      "tts": {
+        "text": "Vertel het aan één vriend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kom opdagen.",
+      "text_markdown": "Kom opdagen.",
+      "tts": {
+        "text": "Kom opdagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het zware deel is niet het vallen.",
+      "text_markdown": "Het zware deel is niet het vallen.",
+      "tts": {
+        "text": "Het zware deel is niet het vallen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Het zware deel is het beslissen.",
+      "text_markdown": "Het zware deel is het beslissen.",
+      "tts": {
+        "text": "Het zware deel is het beslissen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Zodra je beslist, is de lucht al van jou.",
+      "text_markdown": "Zodra je beslist, is de lucht al van jou.",
+      "tts": {
+        "text": "Zodra je beslist, is de lucht al van jou.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Het Vak",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het Vak",
+      "text_markdown": "Het Vak"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zit een vak verborgen in het vallen, en dat is het deel van het parachutespringen dat je voor het leven vasthoudt.",
+      "text_markdown": "Er zit een vak verborgen in het vallen, en dat is het deel van het parachutespringen dat je voor het leven vasthoudt.",
+      "tts": {
+        "text": "Er zit een vak verborgen in het vallen, en dat is het deel van het parachutespringen dat je voor het leven vasthoudt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer je een ervaren parachutist in vrije val ziet, zie je geen vallend mens.",
+      "text_markdown": "Wanneer je een ervaren parachutist in vrije val ziet, zie je geen vallend mens.",
+      "tts": {
+        "text": "Wanneer je een ervaren parachutist in vrije val ziet, zie je geen vallend mens.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je ziet iemand vliegen.",
+      "text_markdown": "Je ziet iemand vliegen.",
+      "tts": {
+        "text": "Je ziet iemand vliegen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze draaien langzaam, met opzet, met hun vingertoppen.",
+      "text_markdown": "Ze draaien langzaam, met opzet, met hun vingertoppen.",
+      "tts": {
+        "text": "Ze draaien langzaam, met opzet, met hun vingertoppen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze schuiven een halve mijl door de lucht door hun schouders een paar centimeter naar voren te kantelen.",
+      "text_markdown": "Ze schuiven een halve mijl door de lucht door hun schouders een paar centimeter naar voren te kantelen.",
+      "tts": {
+        "text": "Ze schuiven een halve mijl door de lucht door hun schouders een paar centimeter naar voren te kantelen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ze stoppen, midden in de val, en houden een stilte vast die onmogelijk lijkt.",
+      "text_markdown": "Ze stoppen, midden in de val, en houden een stilte vast die onmogelijk lijkt.",
+      "tts": {
+        "text": "Ze stoppen, midden in de val, en houden een stilte vast die onmogelijk lijkt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het lichaam is het vliegtuig.",
+      "text_markdown": "Het lichaam is het vliegtuig.",
+      "tts": {
+        "text": "Het lichaam is het vliegtuig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat is het eerste geheim van het vak.",
+      "text_markdown": "Dat is het eerste geheim van het vak.",
+      "tts": {
+        "text": "Dat is het eerste geheim van het vak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zodra je dat begrijpt, volgt al het andere vanzelf.",
+      "text_markdown": "Zodra je dat begrijpt, volgt al het andere vanzelf.",
+      "tts": {
+        "text": "Zodra je dat begrijpt, volgt al het andere vanzelf.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De basisvorm van een stabiele vrije val heet de boog.",
+      "text_markdown": "De basisvorm van een stabiele vrije val heet de boog.",
+      "tts": {
+        "text": "De basisvorm van een stabiele vrije val heet de boog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je duwt je heupen naar voren en laat je armen en benen achter je hangen, als een banaan.",
+      "text_markdown": "Je duwt je heupen naar voren en laat je armen en benen achter je hangen, als een banaan.",
+      "tts": {
+        "text": "Je duwt je heupen naar voren en laat je armen en benen achter je hangen, als een banaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De boog is wat je met je gezicht naar de aarde houdt zonder dat je erover hoeft na te denken.",
+      "text_markdown": "De boog is wat je met je gezicht naar de aarde houdt zonder dat je erover hoeft na te denken.",
+      "tts": {
+        "text": "De boog is wat je met je gezicht naar de aarde houdt zonder dat je erover hoeft na te denken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nieuwe springers leren de boog eerst in een schuimkuil, dan in een windtunnel, en dan in de lucht.",
+      "text_markdown": "Nieuwe springers leren de boog eerst in een schuimkuil, dan in een windtunnel, en dan in de lucht.",
+      "tts": {
+        "text": "Nieuwe springers leren de boog eerst in een schuimkuil, dan in een windtunnel, en dan in de lucht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Oude springers praten nog steeds over de boog zoals oude hardlopers over hun pas praten.",
+      "text_markdown": "Oude springers praten nog steeds over de boog zoals oude hardlopers over hun pas praten.",
+      "tts": {
+        "text": "Oude springers praten nog steeds over de boog zoals oude hardlopers over hun pas praten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zodra je een stabiele boog hebt, opent de rest van de vrije val zich voor je.",
+      "text_markdown": "Zodra je een stabiele boog hebt, opent de rest van de vrije val zich voor je.",
+      "tts": {
+        "text": "Zodra je een stabiele boog hebt, opent de rest van de vrije val zich voor je.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je leert langzaam te vallen door je breed uit te spreiden, jezelf in een vlieger te veranderen.",
+      "text_markdown": "Je leert langzaam te vallen door je breed uit te spreiden, jezelf in een vlieger te veranderen.",
+      "tts": {
+        "text": "Je leert langzaam te vallen door je breed uit te spreiden, jezelf in een vlieger te veranderen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je leert snel te vallen door je klein op te rollen, jezelf in een steen te veranderen.",
+      "text_markdown": "Je leert snel te vallen door je klein op te rollen, jezelf in een steen te veranderen.",
+      "tts": {
+        "text": "Je leert snel te vallen door je klein op te rollen, jezelf in een steen te veranderen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je leert tracken, wat het dichtst is bij vliegen dat een menselijk lichaam kan komen.",
+      "text_markdown": "Je leert tracken, wat het dichtst is bij vliegen dat een menselijk lichaam kan komen.",
+      "tts": {
+        "text": "Je leert tracken, wat het dichtst is bij vliegen dat een menselijk lichaam kan komen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Een goede tracker kan in twintig seconden een kwart mijl door de lucht afleggen.",
+      "text_markdown": "Een goede tracker kan in twintig seconden een kwart mijl door de lucht afleggen.",
+      "tts": {
+        "text": "Een goede tracker kan in twintig seconden een kwart mijl door de lucht afleggen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Armen naar achteren, lichaam onder een hoek, bewegend als een papieren vliegtuigje dat weet waar het heen gaat.",
+      "text_markdown": "Armen naar achteren, lichaam onder een hoek, bewegend als een papieren vliegtuigje dat weet waar het heen gaat.",
+      "tts": {
+        "text": "Armen naar achteren, lichaam onder een hoek, bewegend als een papieren vliegtuigje dat weet waar het heen gaat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De andere helft van het vak is de koepel.",
+      "text_markdown": "De andere helft van het vak is de koepel.",
+      "tts": {
+        "text": "De andere helft van het vak is de koepel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De parachute is geen passief ding dat je naar beneden laat zweven.",
+      "text_markdown": "De parachute is geen passief ding dat je naar beneden laat zweven.",
+      "tts": {
+        "text": "De parachute is geen passief ding dat je naar beneden laat zweven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij is een vleugel, en jij vliegt hem.",
+      "text_markdown": "Hij is een vleugel, en jij vliegt hem.",
+      "tts": {
+        "text": "Hij is een vleugel, en jij vliegt hem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Trekken aan de rechterhandgreep dipt de rechtervleugel en draait je naar rechts.",
+      "text_markdown": "Trekken aan de rechterhandgreep dipt de rechtervleugel en draait je naar rechts.",
+      "tts": {
+        "text": "Trekken aan de rechterhandgreep dipt de rechtervleugel en draait je naar rechts.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Aan beide tegelijk trekken vertraagt je en laat je zacht landen.",
+      "text_markdown": "Aan beide tegelijk trekken vertraagt je en laat je zacht landen.",
+      "tts": {
+        "text": "Aan beide tegelijk trekken vertraagt je en laat je zacht landen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je leest de wind, je kiest de plek, je plant je circuit.",
+      "text_markdown": "Je leest de wind, je kiest de plek, je plant je circuit.",
+      "tts": {
+        "text": "Je leest de wind, je kiest de plek, je plant je circuit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Je flaart op het laatste moment, zodat je voeten de grond kussen in plaats van erin te knallen.",
+      "text_markdown": "Je flaart op het laatste moment, zodat je voeten de grond kussen in plaats van erin te knallen.",
+      "tts": {
+        "text": "Je flaart op het laatste moment, zodat je voeten de grond kussen in plaats van erin te knallen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Dat alles is koepelvliegen, en het is een eigen discipline.",
+      "text_markdown": "Dat alles is koepelvliegen, en het is een eigen discipline.",
+      "tts": {
+        "text": "Dat alles is koepelvliegen, en het is een eigen discipline.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En dan is er nog het inpakken.",
+      "text_markdown": "En dan is er nog het inpakken.",
+      "tts": {
+        "text": "En dan is er nog het inpakken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elke parachutist pakt zijn eigen parachute in.",
+      "text_markdown": "Elke parachutist pakt zijn eigen parachute in.",
+      "tts": {
+        "text": "Elke parachutist pakt zijn eigen parachute in.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elke keer opnieuw.",
+      "text_markdown": "Elke keer opnieuw.",
+      "tts": {
+        "text": "Elke keer opnieuw.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je legt de koepel uit op een lange mat.",
+      "text_markdown": "Je legt de koepel uit op een lange mat.",
+      "tts": {
+        "text": "Je legt de koepel uit op een lange mat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je strijkt de lijnen glad.",
+      "text_markdown": "Je strijkt de lijnen glad.",
+      "tts": {
+        "text": "Je strijkt de lijnen glad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je vouwt de cellen.",
+      "text_markdown": "Je vouwt de cellen.",
+      "tts": {
+        "text": "Je vouwt de cellen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je rolt de stof samen, glijdt hem in de zak, leidt het brugkoord, sluit de container.",
+      "text_markdown": "Je rolt de stof samen, glijdt hem in de zak, leidt het brugkoord, sluit de container.",
+      "tts": {
+        "text": "Je rolt de stof samen, glijdt hem in de zak, leidt het brugkoord, sluit de container.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Het duurt ongeveer vijftien minuten, en je doet het langzaam, omdat je leven zal afhangen van precies dit stuk stof.",
+      "text_markdown": "Het duurt ongeveer vijftien minuten, en je doet het langzaam, omdat je leven zal afhangen van precies dit stuk stof.",
+      "tts": {
+        "text": "Het duurt ongeveer vijftien minuten, en je doet het langzaam, omdat je leven zal afhangen van precies dit stuk stof.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Inpakken is meditatie.",
+      "text_markdown": "Inpakken is meditatie.",
+      "tts": {
+        "text": "Inpakken is meditatie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Veel parachutisten zeggen dat het het deel van de dag is waar ze het meest van houden.",
+      "text_markdown": "Veel parachutisten zeggen dat het het deel van de dag is waar ze het meest van houden.",
+      "tts": {
+        "text": "Veel parachutisten zeggen dat het het deel van de dag is waar ze het meest van houden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De mat, de lijnen, het langzame vouwen.",
+      "text_markdown": "De mat, de lijnen, het langzame vouwen.",
+      "tts": {
+        "text": "De mat, de lijnen, het langzame vouwen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De schouder van een vriend die naast je inpakt.",
+      "text_markdown": "De schouder van een vriend die naast je inpakt.",
+      "tts": {
+        "text": "De schouder van een vriend die naast je inpakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De radio in de hoek die een liedje speelt dat je al te vaak hebt gehoord.",
+      "text_markdown": "De radio in de hoek die een liedje speelt dat je al te vaak hebt gehoord.",
+      "tts": {
+        "text": "De radio in de hoek die een liedje speelt dat je al te vaak hebt gehoord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je kunt het inpakken niet haasten.",
+      "text_markdown": "Je kunt het inpakken niet haasten.",
+      "tts": {
+        "text": "Je kunt het inpakken niet haasten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De lucht geeft niets om jouw schema.",
+      "text_markdown": "De lucht geeft niets om jouw schema.",
+      "tts": {
+        "text": "De lucht geeft niets om jouw schema.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mentaliteit van het vak is geduld.",
+      "text_markdown": "De mentaliteit van het vak is geduld.",
+      "tts": {
+        "text": "De mentaliteit van het vak is geduld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is bescheidenheid.",
+      "text_markdown": "Het is bescheidenheid.",
+      "tts": {
+        "text": "Het is bescheidenheid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het is de bereidheid om elke sprong na te bespreken, zelfs de saaie.",
+      "text_markdown": "Het is de bereidheid om elke sprong na te bespreken, zelfs de saaie.",
+      "tts": {
+        "text": "Het is de bereidheid om elke sprong na te bespreken, zelfs de saaie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Parachutisten praten graag na een sprong.",
+      "text_markdown": "Parachutisten praten graag na een sprong.",
+      "tts": {
+        "text": "Parachutisten praten graag na een sprong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ze gaan op een picknicktafel zitten en lopen elke seconde door, lichaamshouding voor lichaamshouding.",
+      "text_markdown": "Ze gaan op een picknicktafel zitten en lopen elke seconde door, lichaamshouding voor lichaamshouding.",
+      "tts": {
+        "text": "Ze gaan op een picknicktafel zitten en lopen elke seconde door, lichaamshouding voor lichaamshouding.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Wat werkte er.",
+      "text_markdown": "Wat werkte er.",
+      "tts": {
+        "text": "Wat werkte er.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wat was slordig.",
+      "text_markdown": "Wat was slordig.",
+      "tts": {
+        "text": "Wat was slordig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Wat ze de volgende keer willen proberen.",
+      "text_markdown": "Wat ze de volgende keer willen proberen.",
+      "tts": {
+        "text": "Wat ze de volgende keer willen proberen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarom blijven mensen.",
+      "text_markdown": "Daarom blijven mensen.",
+      "tts": {
+        "text": "Daarom blijven mensen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Niet omdat het vallen spannend is.",
+      "text_markdown": "Niet omdat het vallen spannend is.",
+      "tts": {
+        "text": "Niet omdat het vallen spannend is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Het vallen is het makkelijke deel.",
+      "text_markdown": "Het vallen is het makkelijke deel.",
+      "tts": {
+        "text": "Het vallen is het makkelijke deel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mensen blijven omdat er altijd iets te leren valt.",
+      "text_markdown": "Mensen blijven omdat er altijd iets te leren valt.",
+      "tts": {
+        "text": "Mensen blijven omdat er altijd iets te leren valt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Er is altijd een vriend om het mee te leren.",
+      "text_markdown": "Er is altijd een vriend om het mee te leren.",
+      "tts": {
+        "text": "Er is altijd een vriend om het mee te leren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "En er is morgenmiddag een lucht die op je wacht.",
+      "text_markdown": "En er is morgenmiddag een lucht die op je wacht.",
+      "tts": {
+        "text": "En er is morgenmiddag een lucht die op je wacht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Momenten",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Momenten",
+      "text_markdown": "Momenten"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laat me je er drie geven.",
+      "text_markdown": "Laat me je er drie geven.",
+      "tts": {
+        "text": "Laat me je er drie geven.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste is een zonsondergangsprong.",
+      "text_markdown": "De eerste is een zonsondergangsprong.",
+      "tts": {
+        "text": "De eerste is een zonsondergangsprong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het vliegtuig stijgt op twintig minuten voordat de zon ondergaat.",
+      "text_markdown": "Het vliegtuig stijgt op twintig minuten voordat de zon ondergaat.",
+      "tts": {
+        "text": "Het vliegtuig stijgt op twintig minuten voordat de zon ondergaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je klimt door lagen oranje licht, de cabine warm, je vrienden stil.",
+      "text_markdown": "Je klimt door lagen oranje licht, de cabine warm, je vrienden stil.",
+      "tts": {
+        "text": "Je klimt door lagen oranje licht, de cabine warm, je vrienden stil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Wanneer de deur deze keer opengaat, is de lucht roze.",
+      "text_markdown": "Wanneer de deur deze keer opengaat, is de lucht roze.",
+      "tts": {
+        "text": "Wanneer de deur deze keer opengaat, is de lucht roze.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De aarde onder je is half in schaduw, half in goud.",
+      "text_markdown": "De aarde onder je is half in schaduw, half in goud.",
+      "tts": {
+        "text": "De aarde onder je is half in schaduw, half in goud.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je stapt eruit, en zestig seconden lang val je door de binnenkant van een zonsondergang.",
+      "text_markdown": "Je stapt eruit, en zestig seconden lang val je door de binnenkant van een zonsondergang.",
+      "tts": {
+        "text": "Je stapt eruit, en zestig seconden lang val je door de binnenkant van een zonsondergang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het lijkt niet echt.",
+      "text_markdown": "Het lijkt niet echt.",
+      "tts": {
+        "text": "Het lijkt niet echt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je zult kleuren zien waarvan je niet wist dat je ogen ze konden vinden.",
+      "text_markdown": "Je zult kleuren zien waarvan je niet wist dat je ogen ze konden vinden.",
+      "tts": {
+        "text": "Je zult kleuren zien waarvan je niet wist dat je ogen ze konden vinden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Wanneer je parachute opengaat, zweef je boven een wereld die heel even in vuur en vlam staat.",
+      "text_markdown": "Wanneer je parachute opengaat, zweef je boven een wereld die heel even in vuur en vlam staat.",
+      "tts": {
+        "text": "Wanneer je parachute opengaat, zweef je boven een wereld die heel even in vuur en vlam staat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De wind is volledig gaan liggen.",
+      "text_markdown": "De wind is volledig gaan liggen.",
+      "tts": {
+        "text": "De wind is volledig gaan liggen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De dropzone is een klein groen vierkantje onder je, met één warm licht aan.",
+      "text_markdown": "De dropzone is een klein groen vierkantje onder je, met één warm licht aan.",
+      "tts": {
+        "text": "De dropzone is een klein groen vierkantje onder je, met één warm licht aan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je kiest een trage cirkel en laat jezelf als laatste landen, omdat niemand wil dat dit deel eindigt.",
+      "text_markdown": "Je kiest een trage cirkel en laat jezelf als laatste landen, omdat niemand wil dat dit deel eindigt.",
+      "tts": {
+        "text": "Je kiest een trage cirkel en laat jezelf als laatste landen, omdat niemand wil dat dit deel eindigt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Wanneer je voeten het gras raken, is de lucht paars.",
+      "text_markdown": "Wanneer je voeten het gras raken, is de lucht paars.",
+      "tts": {
+        "text": "Wanneer je voeten het gras raken, is de lucht paars.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Je vrienden komen aanlopen vanaf hun eigen landingen.",
+      "text_markdown": "Je vrienden komen aanlopen vanaf hun eigen landingen.",
+      "tts": {
+        "text": "Je vrienden komen aanlopen vanaf hun eigen landingen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Eén van hen kijkt je gewoon aan.",
+      "text_markdown": "Eén van hen kijkt je gewoon aan.",
+      "tts": {
+        "text": "Eén van hen kijkt je gewoon aan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Jullie schudden allebei je hoofd.",
+      "text_markdown": "Jullie schudden allebei je hoofd.",
+      "tts": {
+        "text": "Jullie schudden allebei je hoofd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Geen van jullie kan een woord vinden.",
+      "text_markdown": "Geen van jullie kan een woord vinden.",
+      "tts": {
+        "text": "Geen van jullie kan een woord vinden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tweede is een formatiesprong.",
+      "text_markdown": "De tweede is een formatiesprong.",
+      "tts": {
+        "text": "De tweede is een formatiesprong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jullie zijn met zijn achten op deze sprong.",
+      "text_markdown": "Jullie zijn met zijn achten op deze sprong.",
+      "tts": {
+        "text": "Jullie zijn met zijn achten op deze sprong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jullie zitten op de bank, helmen op schoot, en de leider tekent de duik op een klein whiteboard.",
+      "text_markdown": "Jullie zitten op de bank, helmen op schoot, en de leider tekent de duik op een klein whiteboard.",
+      "tts": {
+        "text": "Jullie zitten op de bank, helmen op schoot, en de leider tekent de duik op een klein whiteboard.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jullie verlaten het vliegtuig in een groep, vallen samen, bouwen een cirkel.",
+      "text_markdown": "Jullie verlaten het vliegtuig in een groep, vallen samen, bouwen een cirkel.",
+      "tts": {
+        "text": "Jullie verlaten het vliegtuig in een groep, vallen samen, bouwen een cirkel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Jullie kennen allemaal je plek.",
+      "text_markdown": "Jullie kennen allemaal je plek.",
+      "tts": {
+        "text": "Jullie kennen allemaal je plek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Jullie boksen vuisten, controleren elkaars uitrusting, lachen nerveus.",
+      "text_markdown": "Jullie boksen vuisten, controleren elkaars uitrusting, lachen nerveus.",
+      "tts": {
+        "text": "Jullie boksen vuisten, controleren elkaars uitrusting, lachen nerveus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Acht volwassen mensen, bang en uitgelaten tegelijk, als kinderen op een logeerpartij.",
+      "text_markdown": "Acht volwassen mensen, bang en uitgelaten tegelijk, als kinderen op een logeerpartij.",
+      "tts": {
+        "text": "Acht volwassen mensen, bang en uitgelaten tegelijk, als kinderen op een logeerpartij.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het vliegtuig vliegt horizontaal.",
+      "text_markdown": "Het vliegtuig vliegt horizontaal.",
+      "tts": {
+        "text": "Het vliegtuig vliegt horizontaal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De deur gaat open.",
+      "text_markdown": "De deur gaat open.",
+      "tts": {
+        "text": "De deur gaat open.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jullie leider stapt eruit, en de rest volgt, één hartslag uit elkaar.",
+      "text_markdown": "Jullie leider stapt eruit, en de rest volgt, één hartslag uit elkaar.",
+      "tts": {
+        "text": "Jullie leider stapt eruit, en de rest volgt, één hartslag uit elkaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "In vrije val vinden jullie elkaar bijna zonder na te denken.",
+      "text_markdown": "In vrije val vinden jullie elkaar bijna zonder na te denken.",
+      "tts": {
+        "text": "In vrije val vinden jullie elkaar bijna zonder na te denken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Handen ontmoeten handen.",
+      "text_markdown": "Handen ontmoeten handen.",
+      "tts": {
+        "text": "Handen ontmoeten handen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De cirkel vormt zich.",
+      "text_markdown": "De cirkel vormt zich.",
+      "tts": {
+        "text": "De cirkel vormt zich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Voor een paar perfecte seconden houden acht mensen elkaar vast in de lucht.",
+      "text_markdown": "Voor een paar perfecte seconden houden acht mensen elkaar vast in de lucht.",
+      "tts": {
+        "text": "Voor een paar perfecte seconden houden acht mensen elkaar vast in de lucht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Vallend met dezelfde snelheid.",
+      "text_markdown": "Vallend met dezelfde snelheid.",
+      "tts": {
+        "text": "Vallend met dezelfde snelheid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Elkaar in de ogen kijkend.",
+      "text_markdown": "Elkaar in de ogen kijkend.",
+      "tts": {
+        "text": "Elkaar in de ogen kijkend.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Dan zegt je hoogtemeter dat het tijd is.",
+      "text_markdown": "Dan zegt je hoogtemeter dat het tijd is.",
+      "tts": {
+        "text": "Dan zegt je hoogtemeter dat het tijd is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Je laat los.",
+      "text_markdown": "Je laat los.",
+      "tts": {
+        "text": "Je laat los.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Jullie tracken weg van elkaar, om jullie parachutes ruimte te geven om open te gaan.",
+      "text_markdown": "Jullie tracken weg van elkaar, om jullie parachutes ruimte te geven om open te gaan.",
+      "tts": {
+        "text": "Jullie tracken weg van elkaar, om jullie parachutes ruimte te geven om open te gaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Op de grond kunnen jullie niet stoppen met elkaar omhelzen.",
+      "text_markdown": "Op de grond kunnen jullie niet stoppen met elkaar omhelzen.",
+      "tts": {
+        "text": "Op de grond kunnen jullie niet stoppen met elkaar omhelzen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De derde is een sprong na een zwaar jaar.",
+      "text_markdown": "De derde is een sprong na een zwaar jaar.",
+      "tts": {
+        "text": "De derde is een sprong na een zwaar jaar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Misschien heb je iets meegemaakt.",
+      "text_markdown": "Misschien heb je iets meegemaakt.",
+      "tts": {
+        "text": "Misschien heb je iets meegemaakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een slecht seizoen op het werk.",
+      "text_markdown": "Een slecht seizoen op het werk.",
+      "tts": {
+        "text": "Een slecht seizoen op het werk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Een relatie die eindigde.",
+      "text_markdown": "Een relatie die eindigde.",
+      "tts": {
+        "text": "Een relatie die eindigde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Een verlies dat de gewone wereld dun en ver weg liet voelen.",
+      "text_markdown": "Een verlies dat de gewone wereld dun en ver weg liet voelen.",
+      "tts": {
+        "text": "Een verlies dat de gewone wereld dun en ver weg liet voelen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je springt niet omdat je iets wil voelen.",
+      "text_markdown": "Je springt niet omdat je iets wil voelen.",
+      "tts": {
+        "text": "Je springt niet omdat je iets wil voelen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je springt omdat je niets meer hebt kunnen voelen, en je wil weten of je er nog steeds bent.",
+      "text_markdown": "Je springt omdat je niets meer hebt kunnen voelen, en je wil weten of je er nog steeds bent.",
+      "tts": {
+        "text": "Je springt omdat je niets meer hebt kunnen voelen, en je wil weten of je er nog steeds bent.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het vliegtuig klimt.",
+      "text_markdown": "Het vliegtuig klimt.",
+      "tts": {
+        "text": "Het vliegtuig klimt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De deur gaat open.",
+      "text_markdown": "De deur gaat open.",
+      "tts": {
+        "text": "De deur gaat open.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je stapt eruit.",
+      "text_markdown": "Je stapt eruit.",
+      "tts": {
+        "text": "Je stapt eruit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En in die eerste drie seconden, voordat de wind je opvangt, breekt iets in je open.",
+      "text_markdown": "En in die eerste drie seconden, voordat de wind je opvangt, breekt iets in je open.",
+      "tts": {
+        "text": "En in die eerste drie seconden, voordat de wind je opvangt, breekt iets in je open.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je was niet van plan te huilen.",
+      "text_markdown": "Je was niet van plan te huilen.",
+      "tts": {
+        "text": "Je was niet van plan te huilen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je huilt toch.",
+      "text_markdown": "Je huilt toch.",
+      "tts": {
+        "text": "Je huilt toch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "De vrije val doet zijn werk.",
+      "text_markdown": "De vrije val doet zijn werk.",
+      "tts": {
+        "text": "De vrije val doet zijn werk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Zestig lange seconden van niets dan wind en adem en vallen.",
+      "text_markdown": "Zestig lange seconden van niets dan wind en adem en vallen.",
+      "tts": {
+        "text": "Zestig lange seconden van niets dan wind en adem en vallen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "En ergens daarbinnen legt het deel van jou dat alles vasthoudt het eindelijk een minuut neer.",
+      "text_markdown": "En ergens daarbinnen legt het deel van jou dat alles vasthoudt het eindelijk een minuut neer.",
+      "tts": {
+        "text": "En ergens daarbinnen legt het deel van jou dat alles vasthoudt het eindelijk een minuut neer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "De parachute gaat open.",
+      "text_markdown": "De parachute gaat open.",
+      "tts": {
+        "text": "De parachute gaat open.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "De wereld wordt stil.",
+      "text_markdown": "De wereld wordt stil.",
+      "tts": {
+        "text": "De wereld wordt stil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Je hangt in het harnas, je huilt, je lacht, en je huilt opnieuw met heel je lichaam.",
+      "text_markdown": "Je hangt in het harnas, je huilt, je lacht, en je huilt opnieuw met heel je lichaam.",
+      "tts": {
+        "text": "Je hangt in het harnas, je huilt, je lacht, en je huilt opnieuw met heel je lichaam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Niemand kan je zien.",
+      "text_markdown": "Niemand kan je zien.",
+      "tts": {
+        "text": "Niemand kan je zien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "Dat is precies de bedoeling.",
+      "text_markdown": "Dat is precies de bedoeling.",
+      "tts": {
+        "text": "Dat is precies de bedoeling.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer je landt, ben je niet gemaakt.",
+      "text_markdown": "Wanneer je landt, ben je niet gemaakt.",
+      "tts": {
+        "text": "Wanneer je landt, ben je niet gemaakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je draagt nog steeds wat je daarboven mee naar boven nam.",
+      "text_markdown": "Je draagt nog steeds wat je daarboven mee naar boven nam.",
+      "tts": {
+        "text": "Je draagt nog steeds wat je daarboven mee naar boven nam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maar één heel uur lang daarboven herinnerde iets in jou zich precies hoe levend zijn kan voelen.",
+      "text_markdown": "Maar één heel uur lang daarboven herinnerde iets in jou zich precies hoe levend zijn kan voelen.",
+      "tts": {
+        "text": "Maar één heel uur lang daarboven herinnerde iets in jou zich precies hoe levend zijn kan voelen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Parachutespringen heeft jouw jaar niet opgelost.",
+      "text_markdown": "Parachutespringen heeft jouw jaar niet opgelost.",
+      "tts": {
+        "text": "Parachutespringen heeft jouw jaar niet opgelost.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het gaf het je gewoon zestig seconden lang terug, in stukken klein genoeg om vast te houden.",
+      "text_markdown": "Het gaf het je gewoon zestig seconden lang terug, in stukken klein genoeg om vast te houden.",
+      "tts": {
+        "text": "Het gaf het je gewoon zestig seconden lang terug, in stukken klein genoeg om vast te houden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Waarom Het Blijft",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waarom Het Blijft",
+      "text_markdown": "Waarom Het Blijft"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ik spring nu al een lange tijd.",
+      "text_markdown": "Ik spring nu al een lange tijd.",
+      "tts": {
+        "text": "Ik spring nu al een lange tijd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lang genoeg dat ik de telling niet meer weet.",
+      "text_markdown": "Lang genoeg dat ik de telling niet meer weet.",
+      "tts": {
+        "text": "Lang genoeg dat ik de telling niet meer weet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Lang genoeg dat de vraag, waarom doe je dit nog steeds, voor mij niets meer betekent.",
+      "text_markdown": "Lang genoeg dat de vraag, waarom doe je dit nog steeds, voor mij niets meer betekent.",
+      "tts": {
+        "text": "Lang genoeg dat de vraag, waarom doe je dit nog steeds, voor mij niets meer betekent.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ik wil je met een paar dingen achterlaten.",
+      "text_markdown": "Ik wil je met een paar dingen achterlaten.",
+      "tts": {
+        "text": "Ik wil je met een paar dingen achterlaten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het eerste is dat parachutespringen geen fase is.",
+      "text_markdown": "Het eerste is dat parachutespringen geen fase is.",
+      "tts": {
+        "text": "Het eerste is dat parachutespringen geen fase is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mensen maken zich zorgen, wanneer ze een vriend ermee zien beginnen.",
+      "text_markdown": "Mensen maken zich zorgen, wanneer ze een vriend ermee zien beginnen.",
+      "tts": {
+        "text": "Mensen maken zich zorgen, wanneer ze een vriend ermee zien beginnen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ze zijn bang dat het een rebellie is, een midlifeding, een manier om ergens voor weg te lopen.",
+      "text_markdown": "Ze zijn bang dat het een rebellie is, een midlifeding, een manier om ergens voor weg te lopen.",
+      "tts": {
+        "text": "Ze zijn bang dat het een rebellie is, een midlifeding, een manier om ergens voor weg te lopen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dat is het niet.",
+      "text_markdown": "Dat is het niet.",
+      "tts": {
+        "text": "Dat is het niet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "De mensen die blijven, lopen niet weg.",
+      "text_markdown": "De mensen die blijven, lopen niet weg.",
+      "tts": {
+        "text": "De mensen die blijven, lopen niet weg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ze hebben, bijna zonder dat ze het wilden, een klein leven gebouwd binnen de lucht.",
+      "text_markdown": "Ze hebben, bijna zonder dat ze het wilden, een klein leven gebouwd binnen de lucht.",
+      "tts": {
+        "text": "Ze hebben, bijna zonder dat ze het wilden, een klein leven gebouwd binnen de lucht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ze komen op zaterdagen opdagen.",
+      "text_markdown": "Ze komen op zaterdagen opdagen.",
+      "tts": {
+        "text": "Ze komen op zaterdagen opdagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ze pakken hun parachutes in.",
+      "text_markdown": "Ze pakken hun parachutes in.",
+      "tts": {
+        "text": "Ze pakken hun parachutes in.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Ze omhelzen hun vrienden.",
+      "text_markdown": "Ze omhelzen hun vrienden.",
+      "tts": {
+        "text": "Ze omhelzen hun vrienden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Ze gaan bij zonsondergang naar huis, moe op de goede manier.",
+      "text_markdown": "Ze gaan bij zonsondergang naar huis, moe op de goede manier.",
+      "tts": {
+        "text": "Ze gaan bij zonsondergang naar huis, moe op de goede manier.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Op maandag gaan ze terug naar hun werk, en ze zijn merkbaar vriendelijker dan ze vroeger waren.",
+      "text_markdown": "Op maandag gaan ze terug naar hun werk, en ze zijn merkbaar vriendelijker dan ze vroeger waren.",
+      "tts": {
+        "text": "Op maandag gaan ze terug naar hun werk, en ze zijn merkbaar vriendelijker dan ze vroeger waren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De lucht verandert je, maar langzaam.",
+      "text_markdown": "De lucht verandert je, maar langzaam.",
+      "tts": {
+        "text": "De lucht verandert je, maar langzaam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je wordt meer aanwezig.",
+      "text_markdown": "Je wordt meer aanwezig.",
+      "tts": {
+        "text": "Je wordt meer aanwezig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je wordt minder bang voor kleine dingen, omdat je hebt geoefend om eerlijk te zijn over grotere dingen.",
+      "text_markdown": "Je wordt minder bang voor kleine dingen, omdat je hebt geoefend om eerlijk te zijn over grotere dingen.",
+      "tts": {
+        "text": "Je wordt minder bang voor kleine dingen, omdat je hebt geoefend om eerlijk te zijn over grotere dingen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je lacht makkelijker.",
+      "text_markdown": "Je lacht makkelijker.",
+      "tts": {
+        "text": "Je lacht makkelijker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je vertelt mensen vaker dat je van ze houdt.",
+      "text_markdown": "Je vertelt mensen vaker dat je van ze houdt.",
+      "tts": {
+        "text": "Je vertelt mensen vaker dat je van ze houdt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Je hebt in een deuropening gestaan, twaalfduizend voet boven de grond, en je herinnerd dat niets verzekerd is.",
+      "text_markdown": "Je hebt in een deuropening gestaan, twaalfduizend voet boven de grond, en je herinnerd dat niets verzekerd is.",
+      "tts": {
+        "text": "Je hebt in een deuropening gestaan, twaalfduizend voet boven de grond, en je herinnerd dat niets verzekerd is.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je ooit aan het diner zit met een parachutist, hier zijn de dingen die je kunt vragen.",
+      "text_markdown": "Als je ooit aan het diner zit met een parachutist, hier zijn de dingen die je kunt vragen.",
+      "tts": {
+        "text": "Als je ooit aan het diner zit met een parachutist, hier zijn de dingen die je kunt vragen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je kunt vragen hoe ze ermee begonnen zijn.",
+      "text_markdown": "Je kunt vragen hoe ze ermee begonnen zijn.",
+      "tts": {
+        "text": "Je kunt vragen hoe ze ermee begonnen zijn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elke parachutist herinnert zich zijn eerste sprong tot in detail, en ze zullen het je graag vertellen.",
+      "text_markdown": "Elke parachutist herinnert zich zijn eerste sprong tot in detail, en ze zullen het je graag vertellen.",
+      "tts": {
+        "text": "Elke parachutist herinnert zich zijn eerste sprong tot in detail, en ze zullen het je graag vertellen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Je kunt vragen hoeveel sprongen ze hebben gemaakt.",
+      "text_markdown": "Je kunt vragen hoeveel sprongen ze hebben gemaakt.",
+      "tts": {
+        "text": "Je kunt vragen hoeveel sprongen ze hebben gemaakt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze kennen het getal, op een paar na, en ze zullen niet doen alsof het meer is dan het is.",
+      "text_markdown": "Ze kennen het getal, op een paar na, en ze zullen niet doen alsof het meer is dan het is.",
+      "tts": {
+        "text": "Ze kennen het getal, op een paar na, en ze zullen niet doen alsof het meer is dan het is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Je kunt vragen wat hun favoriete soort sprong is.",
+      "text_markdown": "Je kunt vragen wat hun favoriete soort sprong is.",
+      "tts": {
+        "text": "Je kunt vragen wat hun favoriete soort sprong is.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sommigen zullen zeggen een zonsondergang.",
+      "text_markdown": "Sommigen zullen zeggen een zonsondergang.",
+      "tts": {
+        "text": "Sommigen zullen zeggen een zonsondergang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sommigen zullen zeggen een grote formatie.",
+      "text_markdown": "Sommigen zullen zeggen een grote formatie.",
+      "tts": {
+        "text": "Sommigen zullen zeggen een grote formatie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Sommigen zullen zeggen een rustige solo op een kalme avond.",
+      "text_markdown": "Sommigen zullen zeggen een rustige solo op een kalme avond.",
+      "tts": {
+        "text": "Sommigen zullen zeggen een rustige solo op een kalme avond.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je kunt vragen of ze de eerste keer bang waren.",
+      "text_markdown": "Je kunt vragen of ze de eerste keer bang waren.",
+      "tts": {
+        "text": "Je kunt vragen of ze de eerste keer bang waren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Natuurlijk waren ze dat.",
+      "text_markdown": "Natuurlijk waren ze dat.",
+      "tts": {
+        "text": "Natuurlijk waren ze dat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iedereen is dat.",
+      "text_markdown": "Iedereen is dat.",
+      "tts": {
+        "text": "Iedereen is dat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze zullen waarschijnlijk de wind in de deuropening noemen, het aftellen, en hoe de wereld eruitziet vlak voordat je eruit stapt.",
+      "text_markdown": "Ze zullen waarschijnlijk de wind in de deuropening noemen, het aftellen, en hoe de wereld eruitziet vlak voordat je eruit stapt.",
+      "tts": {
+        "text": "Ze zullen waarschijnlijk de wind in de deuropening noemen, het aftellen, en hoe de wereld eruitziet vlak voordat je eruit stapt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Luister goed.",
+      "text_markdown": "Luister goed.",
+      "tts": {
+        "text": "Luister goed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ze geven je een klein cadeau.",
+      "text_markdown": "Ze geven je een klein cadeau.",
+      "tts": {
+        "text": "Ze geven je een klein cadeau.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je een parachutist wil zien oplichten, vraag hem dan om het moment te beschrijven dat de parachute opengaat.",
+      "text_markdown": "Als je een parachutist wil zien oplichten, vraag hem dan om het moment te beschrijven dat de parachute opengaat.",
+      "tts": {
+        "text": "Als je een parachutist wil zien oplichten, vraag hem dan om het moment te beschrijven dat de parachute opengaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze sluiten een halve seconde hun ogen.",
+      "text_markdown": "Ze sluiten een halve seconde hun ogen.",
+      "tts": {
+        "text": "Ze sluiten een halve seconde hun ogen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dan zullen ze het proberen.",
+      "text_markdown": "Dan zullen ze het proberen.",
+      "tts": {
+        "text": "Dan zullen ze het proberen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ze gebruiken elke keer een ander woord.",
+      "text_markdown": "Ze gebruiken elke keer een ander woord.",
+      "tts": {
+        "text": "Ze gebruiken elke keer een ander woord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Misschien stil.",
+      "text_markdown": "Misschien stil.",
+      "tts": {
+        "text": "Misschien stil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Misschien zacht.",
+      "text_markdown": "Misschien zacht.",
+      "tts": {
+        "text": "Misschien zacht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Als wakker worden.",
+      "text_markdown": "Als wakker worden.",
+      "tts": {
+        "text": "Als wakker worden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Als thuiskomen.",
+      "text_markdown": "Als thuiskomen.",
+      "tts": {
+        "text": "Als thuiskomen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Niemand beschrijft het twee keer hetzelfde.",
+      "text_markdown": "Niemand beschrijft het twee keer hetzelfde.",
+      "tts": {
+        "text": "Niemand beschrijft het twee keer hetzelfde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wees niet bang om toe te geven dat je nog nooit gesprongen bent.",
+      "text_markdown": "Wees niet bang om toe te geven dat je nog nooit gesprongen bent.",
+      "tts": {
+        "text": "Wees niet bang om toe te geven dat je nog nooit gesprongen bent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Parachutisten houden van die vraag.",
+      "text_markdown": "Parachutisten houden van die vraag.",
+      "tts": {
+        "text": "Parachutisten houden van die vraag.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Parachutisten houden er ook van om je te vertellen dat je het zou moeten proberen, en je dan, heel serieus, te vertellen dat ze met je mee zullen gaan.",
+      "text_markdown": "Parachutisten houden er ook van om je te vertellen dat je het zou moeten proberen, en je dan, heel serieus, te vertellen dat ze met je mee zullen gaan.",
+      "tts": {
+        "text": "Parachutisten houden er ook van om je te vertellen dat je het zou moeten proberen, en je dan, heel serieus, te vertellen dat ze met je mee zullen gaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De meesten van ons hebben een vriend meegenomen naar zijn eerste sprong.",
+      "text_markdown": "De meesten van ons hebben een vriend meegenomen naar zijn eerste sprong.",
+      "tts": {
+        "text": "De meesten van ons hebben een vriend meegenomen naar zijn eerste sprong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het is een van de grote genoegens van de sport.",
+      "text_markdown": "Het is een van de grote genoegens van de sport.",
+      "tts": {
+        "text": "Het is een van de grote genoegens van de sport.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is geen grote les aan het einde van dit verhaal.",
+      "text_markdown": "Er is geen grote les aan het einde van dit verhaal.",
+      "tts": {
+        "text": "Er is geen grote les aan het einde van dit verhaal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Alleen dit.",
+      "text_markdown": "Alleen dit.",
+      "tts": {
+        "text": "Alleen dit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ergens in de wereld lopen op dit moment een kleine groep rustige en geduldige mensen naar een vliegtuig.",
+      "text_markdown": "Ergens in de wereld lopen op dit moment een kleine groep rustige en geduldige mensen naar een vliegtuig.",
+      "tts": {
+        "text": "Ergens in de wereld lopen op dit moment een kleine groep rustige en geduldige mensen naar een vliegtuig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het veld is zonovergoten.",
+      "text_markdown": "Het veld is zonovergoten.",
+      "tts": {
+        "text": "Het veld is zonovergoten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Het gras is warm.",
+      "text_markdown": "Het gras is warm.",
+      "tts": {
+        "text": "Het gras is warm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ze controleren elkaars uitrusting.",
+      "text_markdown": "Ze controleren elkaars uitrusting.",
+      "tts": {
+        "text": "Ze controleren elkaars uitrusting.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ze glimlachen.",
+      "text_markdown": "Ze glimlachen.",
+      "tts": {
+        "text": "Ze glimlachen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Over dertig minuten zullen ze in de lucht zijn, het stilste te doen wat ze weten te doen.",
+      "text_markdown": "Over dertig minuten zullen ze in de lucht zijn, het stilste te doen wat ze weten te doen.",
+      "tts": {
+        "text": "Over dertig minuten zullen ze in de lucht zijn, het stilste te doen wat ze weten te doen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Misschien word jij op een dag een van hen.",
+      "text_markdown": "Misschien word jij op een dag een van hen.",
+      "tts": {
+        "text": "Misschien word jij op een dag een van hen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Misschien word je dat niet.",
+      "text_markdown": "Misschien word je dat niet.",
+      "tts": {
+        "text": "Misschien word je dat niet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hoe dan ook, de lucht is daar.",
+      "text_markdown": "Hoe dan ook, de lucht is daar.",
+      "tts": {
+        "text": "Hoe dan ook, de lucht is daar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij is er altijd geweest.",
+      "text_markdown": "Hij is er altijd geweest.",
+      "tts": {
+        "text": "Hij is er altijd geweest.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hij wacht, geduldig, voor het geval je ooit zin hebt om te leunen.",
+      "text_markdown": "Hij wacht, geduldig, voor het geval je ooit zin hebt om te leunen.",
+      "tts": {
+        "text": "Hij wacht, geduldig, voor het geval je ooit zin hebt om te leunen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

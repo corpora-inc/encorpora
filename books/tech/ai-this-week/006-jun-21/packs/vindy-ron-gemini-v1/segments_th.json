@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "th",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ยินดีต้อนรับสู่ AI This Week",
+      "text_markdown": "ยินดีต้อนรับสู่ AI This Week",
+      "title": "",
+      "tts": {
+        "text": "ยินดีต้อนรับสู่ AI This Week",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ฉันชื่อ Vindy",
+      "text_markdown": "ฉันชื่อ Vindy",
+      "title": "",
+      "tts": {
+        "text": "ฉันชื่อ Vindy",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "และเช่นเคย Ron อยู่ที่นี่ด้วย",
+      "text_markdown": "และเช่นเคย Ron อยู่ที่นี่ด้วย",
+      "title": "",
+      "tts": {
+        "text": "และเช่นเคย Ron อยู่ที่นี่ด้วย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ดีใจที่ได้มาอยู่ที่นี่ Vindy",
+      "text_markdown": "ดีใจที่ได้มาอยู่ที่นี่ Vindy",
+      "title": "",
+      "tts": {
+        "text": "ดีใจที่ได้มาอยู่ที่นี่ Vindy",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "วันนี้คือวันอาทิตย์ที่ 21 มิถุนายน 2026",
+      "text_markdown": "วันนี้คือวันอาทิตย์ที่ 21 มิถุนายน 2026",
+      "title": "",
+      "tts": {
+        "text": "วันนี้คือวันอาทิตย์ที่ยี่สิบเอ็ด มิถุนายน สองพันยี่สิบหก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "สัปดาห์ที่แล้วเราพูดถึงตัวเอง วันนี้เราจะมองออกไปในทิศทางตรงข้าม — ไปยังศูนย์กลางแห่งอำนาจ",
+      "text_markdown": "สัปดาห์ที่แล้วเราพูดถึงตัวเอง วันนี้เราจะมองออกไปในทิศทางตรงข้าม — ไปยังศูนย์กลางแห่งอำนาจ",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์ที่แล้วเราพูดถึงตัวเอง วันนี้เราจะมองออกไปในทิศทางตรงข้าม — ไปยังศูนย์กลางแห่งอำนาจ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ใครควบคุมการใช้งาน AI ใครจ่ายเงินสร้างโครงสร้างพื้นฐาน และใครเป็นเจ้าของซิลิกอน",
+      "text_markdown": "ใครควบคุมการใช้งาน AI ใครจ่ายเงินสร้างโครงสร้างพื้นฐาน และใครเป็นเจ้าของซิลิกอน",
+      "title": "",
+      "tts": {
+        "text": "ใครควบคุมการใช้งาน AI ใครจ่ายเงินสร้างโครงสร้างพื้นฐาน และใครเป็นเจ้าของซิลิกอน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ต่อไป — กระทรวงพาณิชย์สหรัฐฯ ดึงโมเดลอเมริกันออกจากการใช้งานสาธารณะเมื่อวันศุกร์ที่ผ่านมา และเราจะเริ่มที่เรื่องนั้น",
+      "text_markdown": "ต่อไป — กระทรวงพาณิชย์สหรัฐฯ ดึงโมเดลอเมริกันออกจากการใช้งานสาธารณะเมื่อวันศุกร์ที่ผ่านมา และเราจะเริ่มที่เรื่องนั้น",
+      "title": "",
+      "tts": {
+        "text": "ต่อไป — กระทรวงพาณิชย์สหรัฐฯ ดึงโมเดลอเมริกันออกจากการใช้งานสาธารณะเมื่อวันศุกร์ที่ผ่านมา และเราจะเริ่มที่เรื่องนั้น",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "จากนั้นคือการก่อสร้างดาต้าเซ็นเตอร์ ที่ตัวเลขประกาศกับความเป็นจริงบนพื้นดินไม่ตรงกัน",
+      "text_markdown": "จากนั้นคือการก่อสร้างดาต้าเซ็นเตอร์ ที่ตัวเลขประกาศกับความเป็นจริงบนพื้นดินไม่ตรงกัน",
+      "title": "",
+      "tts": {
+        "text": "จากนั้นคือการก่อสร้างดาต้าเซ็นเตอร์ ที่ตัวเลขประกาศกับความเป็นจริงบนพื้นดินไม่ตรงกัน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "จากนั้นคือการเปรียบเทียบสหรัฐฯ กับจีน โดยแทนที่คำพูดติดปากด้วยข้อจำกัดที่แท้จริง",
+      "text_markdown": "จากนั้นคือการเปรียบเทียบสหรัฐฯ กับจีน โดยแทนที่คำพูดติดปากด้วยข้อจำกัดที่แท้จริง",
+      "title": "",
+      "tts": {
+        "text": "จากนั้นคือการเปรียบเทียบสหรัฐฯ กับจีน โดยแทนที่คำพูดติดปากด้วยข้อจำกัดที่แท้จริง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "และแนวคิดประจำสัปดาห์ — ตัวเลขบรรทัดเดียวในงบดุลของ Oracle ที่บอกได้แทบทุกอย่าง",
+      "text_markdown": "และแนวคิดประจำสัปดาห์ — ตัวเลขบรรทัดเดียวในงบดุลของ Oracle ที่บอกได้แทบทุกอย่าง",
+      "title": "",
+      "tts": {
+        "text": "และแนวคิดประจำสัปดาห์ — ตัวเลขบรรทัดเดียวในงบดุลของ Oracle ที่บอกได้แทบทุกอย่าง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron เริ่มกันที่ Anthropic เลย",
+      "text_markdown": "Ron เริ่มกันที่ Anthropic เลย",
+      "title": "",
+      "tts": {
+        "text": "Ron เริ่มกันที่ Anthropic เลย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "เกิดอะไรขึ้นเมื่อวันที่สิบสอง มิถุนายน",
+      "text_markdown": "เกิดอะไรขึ้นเมื่อวันที่สิบสอง มิถุนายน",
+      "title": "",
+      "tts": {
+        "text": "เกิดอะไรขึ้นเมื่อวันที่สิบสอง มิถุนายน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "เวลา 17:21 น. ตามเวลาฝั่งตะวันออก วันศุกร์ที่สิบสอง มิถุนายน Anthropic ได้นำโมเดลใหม่สองตัว — Claude Mythos 5 และ Claude Fable 5 — ออกจากระบบ",
+      "text_markdown": "เวลา 17:21 น. ตามเวลาฝั่งตะวันออก วันศุกร์ที่สิบสอง มิถุนายน Anthropic ได้นำโมเดลใหม่สองตัว — Claude Mythos 5 และ Claude Fable 5 — ออกจากระบบ",
+      "title": "",
+      "tts": {
+        "text": "เวลาห้าโมงยี่สิบเอ็ดนาที ตามเวลาฝั่งตะวันออก วันศุกร์ที่สิบสอง มิถุนายน Anthropic ได้นำโมเดลใหม่สองตัว — Claude Mythos ห้า และ Claude Fable ห้า — ออกจากระบบ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ไม่ใช่เพื่อการบำรุงรักษา และไม่ใช่เพื่อการตรวจสอบความปลอดภัยตามความคิดริเริ่มของตัวเอง",
+      "text_markdown": "ไม่ใช่เพื่อการบำรุงรักษา และไม่ใช่เพื่อการตรวจสอบความปลอดภัยตามความคิดริเริ่มของตัวเอง",
+      "title": "",
+      "tts": {
+        "text": "ไม่ใช่เพื่อการบำรุงรักษา และไม่ใช่เพื่อการตรวจสอบความปลอดภัยตามความคิดริเริ่มของตัวเอง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "พวกเขาดึงโมเดลออกเพราะกระทรวงพาณิชย์สหรัฐฯ ออกคำสั่งโดยอ้างมาตรการควบคุมการส่งออก",
+      "text_markdown": "พวกเขาดึงโมเดลออกเพราะกระทรวงพาณิชย์สหรัฐฯ ออกคำสั่งโดยอ้างมาตรการควบคุมการส่งออก",
+      "title": "",
+      "tts": {
+        "text": "พวกเขาดึงโมเดลออกเพราะกระทรวงพาณิชย์สหรัฐฯ ออกคำสั่งโดยอ้างมาตรการควบคุมการส่งออก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "เหตุผลทางเทคนิคคืออะไร",
+      "text_markdown": "เหตุผลทางเทคนิคคืออะไร",
+      "title": "",
+      "tts": {
+        "text": "เหตุผลทางเทคนิคคืออะไร",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "มีการสาธิต jailbreak โดยรายงานว่าเป็นฝีมือของบริษัทอื่น ซึ่งสร้างผลลัพธ์ที่กระทรวงพาณิชย์พิจารณาว่าอยู่ภายใต้การควบคุมการส่งออก",
+      "text_markdown": "มีการสาธิต jailbreak โดยรายงานว่าเป็นฝีมือของบริษัทอื่น ซึ่งสร้างผลลัพธ์ที่กระทรวงพาณิชย์พิจารณาว่าอยู่ภายใต้การควบคุมการส่งออก",
+      "title": "",
+      "tts": {
+        "text": "มีการสาธิต jailbreak โดยรายงานว่าเป็นฝีมือของบริษัทอื่น ซึ่งสร้างผลลัพธ์ที่กระทรวงพาณิชย์พิจารณาว่าอยู่ภายใต้การควบคุมการส่งออก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Fortune รายงานว่า Amazon เป็นผู้แจ้งเรื่องนี้ต่อทำเนียบขาว",
+      "text_markdown": "Fortune รายงานว่า Amazon เป็นผู้แจ้งเรื่องนี้ต่อทำเนียบขาว",
+      "title": "",
+      "tts": {
+        "text": "Fortune รายงานว่า Amazon เป็นผู้แจ้งเรื่องนี้ต่อทำเนียบขาว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "แล้ว Anthropic ตอบสนองอย่างไร",
+      "text_markdown": "แล้ว Anthropic ตอบสนองอย่างไร",
+      "title": "",
+      "tts": {
+        "text": "แล้ว Anthropic ตอบสนองอย่างไร",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Anthropic โต้แย้งเหตุผลดังกล่าวอย่างเปิดเผย",
+      "text_markdown": "Anthropic โต้แย้งเหตุผลดังกล่าวอย่างเปิดเผย",
+      "title": "",
+      "tts": {
+        "text": "Anthropic โต้แย้งเหตุผลดังกล่าวอย่างเปิดเผย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "แถลงการณ์ของพวกเขาบรรยาย jailbreak ดังกล่าว — และนี่คือการอ้างอิงตรงๆ — ว่า \"แคบ ไม่ครอบคลุมทั่วไป\" และเพิ่มเติมว่าผลลัพธ์แบบเดียวกันนี้มีให้จากโมเดลอื่น รวมถึง GPT-5.5 ของ OpenAI",
+      "text_markdown": "แถลงการณ์ของพวกเขาบรรยาย jailbreak ดังกล่าว — และนี่คือการอ้างอิงตรงๆ — ว่า \"แคบ ไม่ครอบคลุมทั่วไป\" และเพิ่มเติมว่าผลลัพธ์แบบเดียวกันนี้มีให้จากโมเดลอื่น รวมถึง GPT-5.5 ของ OpenAI",
+      "title": "",
+      "tts": {
+        "text": "แถลงการณ์ของพวกเขาบรรยาย jailbreak ดังกล่าว — และนี่คือการอ้างอิงตรงๆ — ว่า \"แคบ ไม่ครอบคลุมทั่วไป\" และเพิ่มเติมว่าผลลัพธ์แบบเดียวกันนี้มีให้จากโมเดลอื่น รวมถึง GPT ห้าจุดห้าของ OpenAI",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "บรรทัดสรุปของพวกเขาคือ: \"การดำเนินการของรัฐบาลนั้นอยู่บนพื้นฐานของความเข้าใจผิด\"",
+      "text_markdown": "บรรทัดสรุปของพวกเขาคือ: \"การดำเนินการของรัฐบาลนั้นอยู่บนพื้นฐานของความเข้าใจผิด\"",
+      "title": "",
+      "tts": {
+        "text": "บรรทัดสรุปของพวกเขาคือ: \"การดำเนินการของรัฐบาลนั้นอยู่บนพื้นฐานของความเข้าใจผิด\"",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "นั่นเป็นการแสดงความไม่เห็นด้วยกับรัฐบาลสหรัฐฯ อย่างตรงไปตรงมาอย่างผิดปกติสำหรับห้องปฏิบัติการ AI",
+      "text_markdown": "นั่นเป็นการแสดงความไม่เห็นด้วยกับรัฐบาลสหรัฐฯ อย่างตรงไปตรงมาอย่างผิดปกติสำหรับห้องปฏิบัติการ AI",
+      "title": "",
+      "tts": {
+        "text": "นั่นเป็นการแสดงความไม่เห็นด้วยกับรัฐบาลสหรัฐฯ อย่างตรงไปตรงมาอย่างผิดปกติสำหรับห้องปฏิบัติการ AI",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ใช่ และข้อเท็จจริงเชิงโครงสร้างที่อยู่เบื้องหลังนั้นคือหัวข้อหลัก",
+      "text_markdown": "ใช่ และข้อเท็จจริงเชิงโครงสร้างที่อยู่เบื้องหลังนั้นคือหัวข้อหลัก",
+      "title": "",
+      "tts": {
+        "text": "ใช่ และข้อเท็จจริงเชิงโครงสร้างที่อยู่เบื้องหลังนั้นคือหัวข้อหลัก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ตอนนี้กระทรวงพาณิชย์สามารถสั่งให้ห้องปฏิบัติการ AI เอกชนของอเมริกานำโมเดลออกจากระบบ โดยอ้างมาตรการควบคุมการส่งออก และคำสั่งนั้นมีผลภายใน 72 ชั่วโมง",
+      "text_markdown": "ตอนนี้กระทรวงพาณิชย์สามารถสั่งให้ห้องปฏิบัติการ AI เอกชนของอเมริกานำโมเดลออกจากระบบ โดยอ้างมาตรการควบคุมการส่งออก และคำสั่งนั้นมีผลภายใน 72 ชั่วโมง",
+      "title": "",
+      "tts": {
+        "text": "ตอนนี้กระทรวงพาณิชย์สามารถสั่งให้ห้องปฏิบัติการ AI เอกชนของอเมริกานำโมเดลออกจากระบบ โดยอ้างมาตรการควบคุมการส่งออก และคำสั่งนั้นมีผลภายในเจ็ดสิบสองชั่วโมง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ไม่ว่าคุณจะคิดว่าคำสั่งนั้นถูกต้องหรือไม่",
+      "text_markdown": "ไม่ว่าคุณจะคิดว่าคำสั่งนั้นถูกต้องหรือไม่",
+      "title": "",
+      "tts": {
+        "text": "ไม่ว่าคุณจะคิดว่าคำสั่งนั้นถูกต้องหรือไม่",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ไม่ว่าคุณจะคิดว่าคำสั่งนั้นถูกต้องหรือไม่",
+      "text_markdown": "ไม่ว่าคุณจะคิดว่าคำสั่งนั้นถูกต้องหรือไม่",
+      "title": "",
+      "tts": {
+        "text": "ไม่ว่าคุณจะคิดว่าคำสั่งนั้นถูกต้องหรือไม่",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "อำนาจในตัวมันเอง ความรวดเร็ว และบรรทัดฐานที่เกิดขึ้นต่างหากที่สำคัญ",
+      "text_markdown": "อำนาจในตัวมันเอง ความรวดเร็ว และบรรทัดฐานที่เกิดขึ้นต่างหากที่สำคัญ",
+      "title": "",
+      "tts": {
+        "text": "อำนาจในตัวมันเอง ความรวดเร็ว และบรรทัดฐานที่เกิดขึ้นต่างหากที่สำคัญ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "แล้วบทบาทของ Amazon ในที่นี้คืออะไร",
+      "text_markdown": "แล้วบทบาทของ Amazon ในที่นี้คืออะไร",
+      "title": "",
+      "tts": {
+        "text": "แล้วบทบาทของ Amazon ในที่นี้คืออะไร",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "นั่นแหละคือส่วนที่ต้องจับตามอง",
+      "text_markdown": "นั่นแหละคือส่วนที่ต้องจับตามอง",
+      "title": "",
+      "tts": {
+        "text": "นั่นแหละคือส่วนที่ต้องจับตามอง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Amazon เป็นทั้งนักลงทุนรายใหญ่ของ Anthropic และยังแข่งขันกับ Anthropic ในตลาด foundation model ผ่านงานของตัวเอง",
+      "text_markdown": "Amazon เป็นทั้งนักลงทุนรายใหญ่ของ Anthropic และยังแข่งขันกับ Anthropic ในตลาด foundation model ผ่านงานของตัวเอง",
+      "title": "",
+      "tts": {
+        "text": "Amazon เป็นทั้งนักลงทุนรายใหญ่ของ Anthropic และยังแข่งขันกับ Anthropic ในตลาด foundation model ผ่านงานของตัวเอง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "หากคำเตือนจากคู่แข่งที่ส่งถึงรัฐบาลสามารถดึงโมเดลของคู่แข่งออกจากระบบได้ภายในสุดสัปดาห์ยาว นั่นคือรูปแบบใหม่ของพลวัตในอุตสาหกรรม",
+      "text_markdown": "หากคำเตือนจากคู่แข่งที่ส่งถึงรัฐบาลสามารถดึงโมเดลของคู่แข่งออกจากระบบได้ภายในสุดสัปดาห์ยาว นั่นคือรูปแบบใหม่ของพลวัตในอุตสาหกรรม",
+      "title": "",
+      "tts": {
+        "text": "หากคำเตือนจากคู่แข่งที่ส่งถึงรัฐบาลสามารถดึงโมเดลของคู่แข่งออกจากระบบได้ภายในสุดสัปดาห์ยาว นั่นคือรูปแบบใหม่ของพลวัตในอุตสาหกรรม",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "มาพูดถึงการก่อสร้างโครงสร้างพื้นฐานกัน",
+      "text_markdown": "มาพูดถึงการก่อสร้างโครงสร้างพื้นฐานกัน",
+      "title": "",
+      "tts": {
+        "text": "มาพูดถึงการก่อสร้างโครงสร้างพื้นฐานกัน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Stargate — โครงการดาต้าเซ็นเตอร์ของ OpenAI, Oracle และ SoftBank",
+      "text_markdown": "Stargate — โครงการดาต้าเซ็นเตอร์ของ OpenAI, Oracle และ SoftBank",
+      "title": "",
+      "tts": {
+        "text": "Stargate — โครงการดาต้าเซ็นเตอร์ของ OpenAI, Oracle และ SoftBank",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ตัวเลขจริงๆ คืออะไร",
+      "text_markdown": "ตัวเลขจริงๆ คืออะไร",
+      "title": "",
+      "tts": {
+        "text": "ตัวเลขจริงๆ คืออะไร",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Stargate ประกาศกำลังการผลิต 11 กิกะวัตต์ในสหรัฐฯ",
+      "text_markdown": "Stargate ประกาศกำลังการผลิต 11 กิกะวัตต์ในสหรัฐฯ",
+      "title": "",
+      "tts": {
+        "text": "Stargate ประกาศกำลังการผลิตสิบเอ็ดกิกะวัตต์ในสหรัฐฯ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ณ กลางเดือนมิถุนายน มีประมาณ 200 เมกะวัตต์ที่ใช้งานได้จริง ที่ไซต์ Abilene รัฐเท็กซัส เฟสแรก",
+      "text_markdown": "ณ กลางเดือนมิถุนายน มีประมาณ 200 เมกะวัตต์ที่ใช้งานได้จริง ที่ไซต์ Abilene รัฐเท็กซัส เฟสแรก",
+      "title": "",
+      "tts": {
+        "text": "ณ กลางเดือนมิถุนายน มีประมาณสองร้อยเมกะวัตต์ที่ใช้งานได้จริง ที่ไซต์ Abilene รัฐเท็กซัส เฟสแรก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ประกาศ 11 กิกะวัตต์ แต่เปิดใช้งานจริง 200 เมกะวัตต์",
+      "text_markdown": "ประกาศ 11 กิกะวัตต์ แต่เปิดใช้งานจริง 200 เมกะวัตต์",
+      "title": "",
+      "tts": {
+        "text": "ประกาศสิบเอ็ดกิกะวัตต์ แต่เปิดใช้งานจริงสองร้อยเมกะวัตต์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "นั่นคือช่องว่างทั้งหมดในบรรทัดเดียว",
+      "text_markdown": "นั่นคือช่องว่างทั้งหมดในบรรทัดเดียว",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือช่องว่างทั้งหมดในบรรทัดเดียว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ใช่ และตัวอย่างที่ชัดเจนที่สุดอยู่ในรัฐนิวเม็กซิโก",
+      "text_markdown": "ใช่ และตัวอย่างที่ชัดเจนที่สุดอยู่ในรัฐนิวเม็กซิโก",
+      "title": "",
+      "tts": {
+        "text": "ใช่ และตัวอย่างที่ชัดเจนที่สุดอยู่ในรัฐนิวเม็กซิโก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ไซต์ใน Doña Ana County คือวิทยาเขต Stargate แห่งเดียวที่ใหญ่ที่สุด โดยมีกำลังไฟฟ้าที่วางแผนไว้ที่ 4.5 กิกะวัตต์",
+      "text_markdown": "ไซต์ใน Doña Ana County คือวิทยาเขต Stargate แห่งเดียวที่ใหญ่ที่สุด โดยมีกำลังไฟฟ้าที่วางแผนไว้ที่ 4.5 กิกะวัตต์",
+      "title": "",
+      "tts": {
+        "text": "ไซต์ใน Doña Ana County คือวิทยาเขต Stargate แห่งเดียวที่ใหญ่ที่สุด โดยมีกำลังไฟฟ้าที่วางแผนไว้ที่สี่จุดห้า กิกะวัตต์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "มีการจัดหาเงินทุนโครงการแบบซินดิเคตมูลค่า 18,000 ล้านดอลลาร์แล้ว ได้แก่ Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG รวมถึงเงินทุนส่วนของผู้ถือหุ้นอีก 3,000 ล้านดอลลาร์จาก Blue Owl",
+      "text_markdown": "มีการจัดหาเงินทุนโครงการแบบซินดิเคตมูลค่า 18,000 ล้านดอลลาร์แล้ว ได้แก่ Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG รวมถึงเงินทุนส่วนของผู้ถือหุ้นอีก 3,000 ล้านดอลลาร์จาก Blue Owl",
+      "title": "",
+      "tts": {
+        "text": "มีการจัดหาเงินทุนโครงการแบบซินดิเคตมูลค่าหนึ่งหมื่นแปดพันล้านดอลลาร์แล้ว ได้แก่ Sumitomo Mitsui, BNP Paribas, Goldman Sachs, MUFG รวมถึงเงินทุนส่วนของผู้ถือหุ้นอีกสามพันล้านดอลลาร์จาก Blue Owl",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "และสถานะการก่อสร้างในพื้นที่จริง",
+      "text_markdown": "และสถานะการก่อสร้างในพื้นที่จริง",
+      "title": "",
+      "tts": {
+        "text": "และสถานะการก่อสร้างในพื้นที่จริง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ยังไม่มีการลงมือก่อสร้างแม้แต่นิดเดียว",
+      "text_markdown": "ยังไม่มีการลงมือก่อสร้างแม้แต่นิดเดียว",
+      "title": "",
+      "tts": {
+        "text": "ยังไม่มีการลงมือก่อสร้างแม้แต่นิดเดียว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ไซต์กำลังรอใบอนุญาตด้านคุณภาพอากาศจาก New Mexico Environment Department ซึ่งเดิมคาดว่าจะได้รับในวันที่ 22 เมษายน แต่ถูกเลื่อนออกไปเป็นวันที่ 21 กรกฎาคม หลังมีความคิดเห็นสาธารณะมากกว่า 7,000 รายการ",
+      "text_markdown": "ไซต์กำลังรอใบอนุญาตด้านคุณภาพอากาศจาก New Mexico Environment Department ซึ่งเดิมคาดว่าจะได้รับในวันที่ 22 เมษายน แต่ถูกเลื่อนออกไปเป็นวันที่ 21 กรกฎาคม หลังมีความคิดเห็นสาธารณะมากกว่า 7,000 รายการ",
+      "title": "",
+      "tts": {
+        "text": "ไซต์กำลังรอใบอนุญาตด้านคุณภาพอากาศจาก New Mexico Environment Department ซึ่งเดิมคาดว่าจะได้รับในวันที่ยี่สิบสองเมษายน แต่ถูกเลื่อนออกไปเป็นวันที่ยี่สิบเอ็ดกรกฎาคม หลังมีความคิดเห็นสาธารณะมากกว่าเจ็ดพันรายการ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "เงิน 18,000 ล้านดอลลาร์ที่ผูกพันแล้ว ยังไม่มีการลงมือก่อสร้างแม้แต่นิดเดียว และมีกำหนดเส้นตายใบอนุญาตด้านคุณภาพอากาศหนึ่งฉบับ",
+      "text_markdown": "เงิน 18,000 ล้านดอลลาร์ที่ผูกพันแล้ว ยังไม่มีการลงมือก่อสร้างแม้แต่นิดเดียว และมีกำหนดเส้นตายใบอนุญาตด้านคุณภาพอากาศหนึ่งฉบับ",
+      "title": "",
+      "tts": {
+        "text": "เงินหนึ่งหมื่นแปดพันล้านดอลลาร์ที่ผูกพันแล้ว ยังไม่มีการลงมือก่อสร้างแม้แต่นิดเดียว และมีกำหนดเส้นตายใบอนุญาตด้านคุณภาพอากาศหนึ่งฉบับ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ใครจะต้องรับผิดชอบหากตัวเลขไม่เป็นไปตามที่คาดหวัง",
+      "text_markdown": "ใครจะต้องรับผิดชอบหากตัวเลขไม่เป็นไปตามที่คาดหวัง",
+      "title": "",
+      "tts": {
+        "text": "ใครจะต้องรับผิดชอบหากตัวเลขไม่เป็นไปตามที่คาดหวัง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "นั่นคือจุดที่ Oracle น่าสนใจ",
+      "text_markdown": "นั่นคือจุดที่ Oracle น่าสนใจ",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือจุดที่ Oracle น่าสนใจ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Remaining Performance Obligations ของ Oracle — รายการบัญชีที่บันทึกรายได้ตามสัญญาที่ยังไม่ได้ส่งมอบ — แตะระดับ 553,000 ล้านดอลลาร์ในไตรมาส 3 ของปีงบประมาณ 2026",
+      "text_markdown": "Remaining Performance Obligations ของ Oracle — รายการบัญชีที่บันทึกรายได้ตามสัญญาที่ยังไม่ได้ส่งมอบ — แตะระดับ 553,000 ล้านดอลลาร์ในไตรมาส 3 ของปีงบประมาณ 2026",
+      "title": "",
+      "tts": {
+        "text": "Remaining Performance Obligations ของ Oracle — รายการบัญชีที่บันทึกรายได้ตามสัญญาที่ยังไม่ได้ส่งมอบ — แตะระดับห้าร้อยห้าสิบสามพันล้านดอลลาร์ในไตรมาสสามของปีงบประมาณสองพันยี่สิบหก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "นั่นคือเพิ่มขึ้น 325 เปอร์เซ็นต์เมื่อเทียบปีต่อปี และส่วนใหญ่ของการเพิ่มขึ้นนั้นได้รับการระบุอย่างเปิดเผยว่าเกี่ยวข้องกับ OpenAI และ Stargate",
+      "text_markdown": "นั่นคือเพิ่มขึ้น 325 เปอร์เซ็นต์เมื่อเทียบปีต่อปี และส่วนใหญ่ของการเพิ่มขึ้นนั้นได้รับการระบุอย่างเปิดเผยว่าเกี่ยวข้องกับ OpenAI และ Stargate",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือเพิ่มขึ้นสามร้อยยี่สิบห้าเปอร์เซ็นต์เมื่อเทียบปีต่อปี และส่วนใหญ่ของการเพิ่มขึ้นนั้นได้รับการระบุอย่างเปิดเผยว่าเกี่ยวข้องกับ OpenAI และ Stargate",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "และในส่วนของหนี้สิน",
+      "text_markdown": "และในส่วนของหนี้สิน",
+      "title": "",
+      "tts": {
+        "text": "และในส่วนของหนี้สิน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ยอดเงินกู้รวมแตะระดับ 134,600 ล้านดอลลาร์ ณ วันที่ 28 กุมภาพันธ์",
+      "text_markdown": "ยอดเงินกู้รวมแตะระดับ 134,600 ล้านดอลลาร์ ณ วันที่ 28 กุมภาพันธ์",
+      "title": "",
+      "tts": {
+        "text": "ยอดเงินกู้รวมแตะระดับหนึ่งแสนสามหมื่นสี่พันหกร้อยล้านดอลลาร์ ณ วันที่ยี่สิบแปดกุมภาพันธ์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Oracle ระดมทุนได้ 30,000 ล้านดอลลาร์ในเดือนกุมภาพันธ์เพียงเดือนเดียว ทั้งพันธบัตรระดับ investment-grade และหุ้นบุริมสิทธิ์แบบบังคับแปลงสภาพ และออกหุ้นกู้อาวุโสใหม่มูลค่า 43,000 ล้านดอลลาร์ในช่วงเก้าเดือนที่ผ่านมา",
+      "text_markdown": "Oracle ระดมทุนได้ 30,000 ล้านดอลลาร์ในเดือนกุมภาพันธ์เพียงเดือนเดียว ทั้งพันธบัตรระดับ investment-grade และหุ้นบุริมสิทธิ์แบบบังคับแปลงสภาพ และออกหุ้นกู้อาวุโสใหม่มูลค่า 43,000 ล้านดอลลาร์ในช่วงเก้าเดือนที่ผ่านมา",
+      "title": "",
+      "tts": {
+        "text": "Oracle ระดมทุนได้สามหมื่นล้านดอลลาร์ในเดือนกุมภาพันธ์เพียงเดือนเดียว ทั้งพันธบัตรระดับ investment-grade และหุ้นบุริมสิทธิ์แบบบังคับแปลงสภาพ และออกหุ้นกู้อาวุโสใหม่มูลค่าสี่หมื่นสามพันล้านดอลลาร์ในช่วงเก้าเดือนที่ผ่านมา",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ขอให้สรุปภาพรวมของสถานการณ์",
+      "text_markdown": "ขอให้สรุปภาพรวมของสถานการณ์",
+      "title": "",
+      "tts": {
+        "text": "ขอให้สรุปภาพรวมของสถานการณ์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ภาระผูกพัน 553,000 ล้านดอลลาร์ หนี้สิน 134,000 ล้านดอลลาร์ และลูกค้ารายใหญ่รายหนึ่งแบกรับความเสี่ยงส่วนใหญ่",
+      "text_markdown": "ภาระผูกพัน 553,000 ล้านดอลลาร์ หนี้สิน 134,000 ล้านดอลลาร์ และลูกค้ารายใหญ่รายหนึ่งแบกรับความเสี่ยงส่วนใหญ่",
+      "title": "",
+      "tts": {
+        "text": "ภาระผูกพันห้าร้อยห้าสิบสามพันล้านดอลลาร์ หนี้สินหนึ่งแสนสามหมื่นสี่พันล้านดอลลาร์ และลูกค้ารายใหญ่รายหนึ่งแบกรับความเสี่ยงส่วนใหญ่",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "นั่นคือโครงสร้างของการก่อสร้างครั้งนี้ในประโยคเดียว",
+      "text_markdown": "นั่นคือโครงสร้างของการก่อสร้างครั้งนี้ในประโยคเดียว",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือโครงสร้างของการก่อสร้างครั้งนี้ในประโยคเดียว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "มาดูการเปรียบเทียบระหว่างสหรัฐฯ กับจีนกัน",
+      "text_markdown": "มาดูการเปรียบเทียบระหว่างสหรัฐฯ กับจีนกัน",
+      "title": "",
+      "tts": {
+        "text": "มาดูการเปรียบเทียบระหว่างสหรัฐฯ กับจีนกัน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "คำพูดที่ซ้ำๆ กันคือจีนล้าหลังอยู่จำนวนเดือนหนึ่ง",
+      "text_markdown": "คำพูดที่ซ้ำๆ กันคือจีนล้าหลังอยู่จำนวนเดือนหนึ่ง",
+      "title": "",
+      "tts": {
+        "text": "คำพูดที่ซ้ำๆ กันคือจีนล้าหลังอยู่จำนวนเดือนหนึ่ง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "คำพูดนั้นผิด เพราะมันวัดสิ่งที่ไม่ถูกต้อง",
+      "text_markdown": "คำพูดนั้นผิด เพราะมันวัดสิ่งที่ไม่ถูกต้อง",
+      "title": "",
+      "tts": {
+        "text": "คำพูดนั้นผิด เพราะมันวัดสิ่งที่ไม่ถูกต้อง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "เมื่อวันจันทร์ที่ 9 มิถุนายน Bloomberg รายงานว่ามีร่างแผนของจีนจาก National Development and Reform Commission มูลค่า 2 ล้านล้านหยวน หรือประมาณ 295,000 ล้านดอลลาร์ สำหรับการสร้างเครือข่ายศูนย์ข้อมูล AI ทั่วประเทศภายในปี 2028",
+      "text_markdown": "เมื่อวันจันทร์ที่ 9 มิถุนายน Bloomberg รายงานว่ามีร่างแผนของจีนจาก National Development and Reform Commission มูลค่า 2 ล้านล้านหยวน หรือประมาณ 295,000 ล้านดอลลาร์ สำหรับการสร้างเครือข่ายศูนย์ข้อมูล AI ทั่วประเทศภายในปี 2028",
+      "title": "",
+      "tts": {
+        "text": "เมื่อวันจันทร์ที่เก้ามิถุนายน Bloomberg รายงานว่ามีร่างแผนของจีนจาก National Development and Reform Commission มูลค่าสองล้านล้านหยวน หรือประมาณสองแสนเก้าหมื่นห้าพันล้านดอลลาร์ สำหรับการสร้างเครือข่ายศูนย์ข้อมูล AI ทั่วประเทศภายในปีสองพันยี่สิบแปด",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "แผนดังกล่าวกำหนดให้ใช้ชิปในประเทศ 80 เปอร์เซ็นต์ และจะดำเนินการในรูปแบบโครงสร้างพื้นฐานการประมวลผลแบบเชื่อมต่อกันโดย China Mobile และ China Telecom",
+      "text_markdown": "แผนดังกล่าวกำหนดให้ใช้ชิปในประเทศ 80 เปอร์เซ็นต์ และจะดำเนินการในรูปแบบโครงสร้างพื้นฐานการประมวลผลแบบเชื่อมต่อกันโดย China Mobile และ China Telecom",
+      "title": "",
+      "tts": {
+        "text": "แผนดังกล่าวกำหนดให้ใช้ชิปในประเทศแปดสิบเปอร์เซ็นต์ และจะดำเนินการในรูปแบบโครงสร้างพื้นฐานการประมวลผลแบบเชื่อมต่อกันโดย China Mobile และ China Telecom",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "แล้วจุดอ่อนของแผนนั้นอยู่ที่ไหน",
+      "text_markdown": "แล้วจุดอ่อนของแผนนั้นอยู่ที่ไหน",
+      "title": "",
+      "tts": {
+        "text": "แล้วจุดอ่อนของแผนนั้นอยู่ที่ไหน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "2 ล้านล้านหยวน ชิปในประเทศ 80 เปอร์เซ็นต์ กำหนดเส้นตายปี 2028 — และจุดอ่อนคือข้อจำกัดที่แท้จริงไม่ใช่ชิปลอจิก แต่คือหน่วยความจำ high-bandwidth memory",
+      "text_markdown": "2 ล้านล้านหยวน ชิปในประเทศ 80 เปอร์เซ็นต์ กำหนดเส้นตายปี 2028 — และจุดอ่อนคือข้อจำกัดที่แท้จริงไม่ใช่ชิปลอจิก แต่คือหน่วยความจำ high-bandwidth memory",
+      "title": "",
+      "tts": {
+        "text": "สองล้านล้านหยวน ชิปในประเทศแปดสิบเปอร์เซ็นต์ กำหนดเส้นตายปีสองพันยี่สิบแปด — และจุดอ่อนคือข้อจำกัดที่แท้จริงไม่ใช่ชิปลอจิก แต่คือหน่วยความจำ high-bandwidth memory",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ช่วยอธิบายให้ฟังหน่อย",
+      "text_markdown": "ช่วยอธิบายให้ฟังหน่อย",
+      "title": "",
+      "tts": {
+        "text": "ช่วยอธิบายให้ฟังหน่อย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ตัวเร่งความเร็ว AI ทุกตัวต้องการ HBM stack ติดอยู่บนชิปลอจิก",
+      "text_markdown": "ตัวเร่งความเร็ว AI ทุกตัวต้องการ HBM stack ติดอยู่บนชิปลอจิก",
+      "title": "",
+      "tts": {
+        "text": "ตัวเร่งความเร็ว AI ทุกตัวต้องการ HBM stack ติดอยู่บนชิปลอจิก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "หากไม่มี HBM ชิปก็แทบไร้ประโยชน์",
+      "text_markdown": "หากไม่มี HBM ชิปก็แทบไร้ประโยชน์",
+      "title": "",
+      "tts": {
+        "text": "หากไม่มี HBM ชิปก็แทบไร้ประโยชน์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "จีนสะสม HBM stack ไว้ประมาณ 13 ล้านชิ้นก่อนที่มาตรการควบคุมการส่งออกจะปิดช่องทาง — 11.4 ล้านชิ้นจาก Samsung เพียงรายเดียว",
+      "text_markdown": "จีนสะสม HBM stack ไว้ประมาณ 13 ล้านชิ้นก่อนที่มาตรการควบคุมการส่งออกจะปิดช่องทาง — 11.4 ล้านชิ้นจาก Samsung เพียงรายเดียว",
+      "title": "",
+      "tts": {
+        "text": "จีนสะสม HBM stack ไว้ประมาณสิบสามล้านชิ้นก่อนที่มาตรการควบคุมการส่งออกจะปิดช่องทาง — สิบเอ็ดจุดสี่ล้านชิ้นจาก Samsung เพียงรายเดียว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ในอัตราส่วนการบรรจุชิป Huawei Ascend 910C ปริมาณสำรองนั้นเพียงพอสำหรับชิปประมาณ 1.6 ล้านตัว",
+      "text_markdown": "ในอัตราส่วนการบรรจุชิป Huawei Ascend 910C ปริมาณสำรองนั้นเพียงพอสำหรับชิปประมาณ 1.6 ล้านตัว",
+      "title": "",
+      "tts": {
+        "text": "ในอัตราส่วนการบรรจุชิป Huawei Ascend เก้าสิบสิบ C ปริมาณสำรองนั้นเพียงพอสำหรับชิปประมาณหนึ่งจุดหกล้านตัว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "และจากนั้นปริมาณสำรองก็จะหมดลง",
+      "text_markdown": "และจากนั้นปริมาณสำรองก็จะหมดลง",
+      "title": "",
+      "tts": {
+        "text": "และจากนั้นปริมาณสำรองก็จะหมดลง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "จากนั้นปริมาณสำรองก็จะหมดลง — HBM stack 13 ล้านชิ้น เพียงพอสำหรับชิป 1.6 ล้านตัว และนั่นคือเพดานสูงสุด",
+      "text_markdown": "จากนั้นปริมาณสำรองก็จะหมดลง — HBM stack 13 ล้านชิ้น เพียงพอสำหรับชิป 1.6 ล้านตัว และนั่นคือเพดานสูงสุด",
+      "title": "",
+      "tts": {
+        "text": "จากนั้นปริมาณสำรองก็จะหมดลง — HBM stack สิบสามล้านชิ้น เพียงพอสำหรับชิปหนึ่งจุดหกล้านตัว และนั่นคือเพดานสูงสุด",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "HBM ของจีนในประเทศจาก CXMT คาดว่าจะผลิตได้ประมาณ 2 ล้านชิ้นในปี 2026 — เพียงพอสำหรับตัวเร่งความเร็วประมาณ 250,000 ถึง 300,000 ตัว",
+      "text_markdown": "HBM ของจีนในประเทศจาก CXMT คาดว่าจะผลิตได้ประมาณ 2 ล้านชิ้นในปี 2026 — เพียงพอสำหรับตัวเร่งความเร็วประมาณ 250,000 ถึง 300,000 ตัว",
+      "title": "",
+      "tts": {
+        "text": "HBM ของจีนในประเทศจาก CXMT คาดว่าจะผลิตได้ประมาณสองล้านชิ้นในปีสองพันยี่สิบหก — เพียงพอสำหรับตัวเร่งความเร็วประมาณสองแสนห้าหมื่นถึงสามแสนตัว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "แล้วแผนการผลิตชิปของ Huawei มีลักษณะอย่างไร",
+      "text_markdown": "แล้วแผนการผลิตชิปของ Huawei มีลักษณะอย่างไร",
+      "title": "",
+      "tts": {
+        "text": "แล้วแผนการผลิตชิปของ Huawei มีลักษณะอย่างไร",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Bloomberg อ้างอิงแผนของ Huawei ว่ายอดผลิตในปี 2026 อยู่ที่ 600,000 ชิ้นสำหรับ 910C โดยผลิตภัณฑ์ในกลุ่ม Ascend ทั้งหมดมีเป้าหมายสูงถึง 1.6 ล้านชิ้น",
+      "text_markdown": "Bloomberg อ้างอิงแผนของ Huawei ว่ายอดผลิตในปี 2026 อยู่ที่ 600,000 ชิ้นสำหรับ 910C โดยผลิตภัณฑ์ในกลุ่ม Ascend ทั้งหมดมีเป้าหมายสูงถึง 1.6 ล้านชิ้น",
+      "title": "",
+      "tts": {
+        "text": "Bloomberg อ้างอิงแผนของ Huawei ว่ายอดผลิตในปีสองพันยี่สิบหกอยู่ที่หกแสนชิ้นสำหรับเก้าสิบสิบ C โดยผลิตภัณฑ์ในกลุ่ม Ascend ทั้งหมดมีเป้าหมายสูงถึงหนึ่งจุดหกล้านชิ้น",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ตัวเลขนั้น 600,000 ชิ้น คือเป้าหมาย ไม่ใช่ยอดที่ส่งออกไปจริง",
+      "text_markdown": "ตัวเลขนั้น 600,000 ชิ้น คือเป้าหมาย ไม่ใช่ยอดที่ส่งออกไปจริง",
+      "title": "",
+      "tts": {
+        "text": "ตัวเลขนั้น หกแสนชิ้น คือเป้าหมาย ไม่ใช่ยอดที่ส่งออกไปจริง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "และแยกจากกัน ก่อนที่มาตรการควบคุมการส่งออกจะตัดช่องทาง Huawei สะสม Ascend die ที่ผลิตที่ TSMC ผ่านบริษัทหน้าฉากอย่าง Sophgo และ Bitmain ไว้มากกว่า 2.9 ล้านชิ้น",
+      "text_markdown": "และแยกจากกัน ก่อนที่มาตรการควบคุมการส่งออกจะตัดช่องทาง Huawei สะสม Ascend die ที่ผลิตที่ TSMC ผ่านบริษัทหน้าฉากอย่าง Sophgo และ Bitmain ไว้มากกว่า 2.9 ล้านชิ้น",
+      "title": "",
+      "tts": {
+        "text": "และแยกจากกัน ก่อนที่มาตรการควบคุมการส่งออกจะตัดช่องทาง Huawei สะสม Ascend die ที่ผลิตที่ TSMC ผ่านบริษัทหน้าฉากอย่าง Sophgo และ Bitmain ไว้มากกว่าสองจุดเก้าล้านชิ้น",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "เรื่องเล่าที่ว่ามาตรการควบคุมการส่งออกได้ผลนั้นมีช่องโหว่ขนาด 2.9 ล้านชิ้นอยู่ในนั้น",
+      "text_markdown": "เรื่องเล่าที่ว่ามาตรการควบคุมการส่งออกได้ผลนั้นมีช่องโหว่ขนาด 2.9 ล้านชิ้นอยู่ในนั้น",
+      "title": "",
+      "tts": {
+        "text": "เรื่องเล่าที่ว่ามาตรการควบคุมการส่งออกได้ผลนั้นมีช่องโหว่ขนาดสองจุดเก้าล้านชิ้นอยู่ในนั้น",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "มาอ่านพาดหัวข่าวกันแบบรวดเร็ว",
+      "text_markdown": "มาอ่านพาดหัวข่าวกันแบบรวดเร็ว",
+      "title": "",
+      "tts": {
+        "text": "มาอ่านพาดหัวข่าวกันแบบรวดเร็ว",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "พาดหัวข่าวแรกของสัปดาห์นี้ Broadcom",
+      "text_markdown": "พาดหัวข่าวแรกของสัปดาห์นี้ Broadcom",
+      "title": "",
+      "tts": {
+        "text": "พาดหัวข่าวแรกของสัปดาห์นี้ Broadcom",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "มูลค่าตลาด (market capitalization) ของ Broadcom อยู่ที่ประมาณ 2 ล้านล้านดอลลาร์",
+      "text_markdown": "มูลค่าตลาด (market capitalization) ของ Broadcom อยู่ที่ประมาณ 2 ล้านล้านดอลลาร์",
+      "title": "",
+      "tts": {
+        "text": "มูลค่าตลาดของ Broadcom อยู่ที่ประมาณสองล้านล้านดอลลาร์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "CEO ของพวกเขา Hock Tan ย้ำเป้าหมายรายได้จากเซมิคอนดักเตอร์ A.I. ที่หนึ่งแสนล้านดอลลาร์สำหรับปีงบประมาณ 2027 ในการประชุมผลประกอบการวันที่ 3 มิถุนายน โดยได้รับการหนุนหลังจากคำสั่งซื้อสะสม A.I. มูลค่าราว 73,000 ล้านดอลลาร์ และข้อตกลงระยะยาวกับ Alphabet และ Meta ที่ขยายออกไปจนถึงปี 2031",
+      "text_markdown": "CEO ของพวกเขา Hock Tan ย้ำเป้าหมายรายได้จากเซมิคอนดักเตอร์ A.I. ที่หนึ่งแสนล้านดอลลาร์สำหรับปีงบประมาณ 2027 ในการประชุมผลประกอบการวันที่ 3 มิถุนายน โดยได้รับการหนุนหลังจากคำสั่งซื้อสะสม A.I. มูลค่าราว 73,000 ล้านดอลลาร์ และข้อตกลงระยะยาวกับ Alphabet และ Meta ที่ขยายออกไปจนถึงปี 2031",
+      "title": "",
+      "tts": {
+        "text": "ซีอีโอของพวกเขา ฮ็อก แทน ย้ำเป้าหมายรายได้จากเซมิคอนดักเตอร์เอไอที่หนึ่งแสนล้านดอลลาร์สำหรับปีงบประมาณสองพันยี่สิบเจ็ด ในการประชุมผลประกอบการวันที่สามมิถุนายน โดยได้รับการหนุนหลังจากคำสั่งซื้อสะสมเอไอมูลค่าราวเจ็ดหมื่นสามพันล้านดอลลาร์ และข้อตกลงระยะยาวกับแอลฟาเบตและเมตา ที่ขยายออกไปจนถึงปีสองพันสามสิบเอ็ด",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "มูลค่าตลาด 2 ล้านล้านดอลลาร์ เป้าหมายรายได้ A.I. หนึ่งแสนล้านดอลลาร์ แทบไม่มีการรับรู้แบรนด์ในระดับผู้บริโภคทั่วไปเลย",
+      "text_markdown": "มูลค่าตลาด 2 ล้านล้านดอลลาร์ เป้าหมายรายได้ A.I. หนึ่งแสนล้านดอลลาร์ แทบไม่มีการรับรู้แบรนด์ในระดับผู้บริโภคทั่วไปเลย",
+      "title": "",
+      "tts": {
+        "text": "มูลค่าตลาดสองล้านล้านดอลลาร์ เป้าหมายรายได้เอไอหนึ่งแสนล้านดอลลาร์ แทบไม่มีการรับรู้แบรนด์ในระดับผู้บริโภคทั่วไปเลย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ข่าวใหญ่อันดับสองของสัปดาห์นี้ ASML",
+      "text_markdown": "ข่าวใหญ่อันดับสองของสัปดาห์นี้ ASML",
+      "title": "",
+      "tts": {
+        "text": "ข่าวใหญ่อันดับสองของสัปดาห์นี้ ASML",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ASML บริษัทดัตช์ที่สร้างเครื่องลิโทกราฟีซึ่งเป็นที่พึ่งพาของชิปลอจิกขอบเขตล้ำหน้าทุกชิ้น ขายระบบ High-N.A. E.U.V. ของตนในราคาประมาณ 370 ล้านดอลลาร์",
+      "text_markdown": "ASML บริษัทดัตช์ที่สร้างเครื่องลิโทกราฟีซึ่งเป็นที่พึ่งพาของชิปลอจิกขอบเขตล้ำหน้าทุกชิ้น ขายระบบ High-N.A. E.U.V. ของตนในราคาประมาณ 370 ล้านดอลลาร์",
+      "title": "",
+      "tts": {
+        "text": "เอเอสเอ็มแอล บริษัทดัตช์ที่สร้างเครื่องลิโทกราฟีซึ่งเป็นที่พึ่งพาของชิปลอจิกขอบเขตล้ำหน้าทุกชิ้น ขายระบบไฮ เอ็นเอ อียูวี ของตนในราคาประมาณสามร้อยเจ็ดสิบล้านดอลลาร์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "กำลังการผลิตทั่วโลกอยู่ที่ไม่ถึง 20 เครื่องต่อปี",
+      "text_markdown": "กำลังการผลิตทั่วโลกอยู่ที่ไม่ถึง 20 เครื่องต่อปี",
+      "title": "",
+      "tts": {
+        "text": "กำลังการผลิตทั่วโลกอยู่ที่ไม่ถึงยี่สิบเครื่องต่อปี",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "สามร้อยเจ็ดสิบล้านดอลลาร์ต่อเครื่อง ไม่ถึงยี่สิบเครื่องต่อปี มีบริษัทเดียวที่ผลิต — นั่นคือจุดคอขวดที่แท้จริงของซิลิกอนโลก ไม่ใช่นโยบาย",
+      "text_markdown": "สามร้อยเจ็ดสิบล้านดอลลาร์ต่อเครื่อง ไม่ถึงยี่สิบเครื่องต่อปี มีบริษัทเดียวที่ผลิต — นั่นคือจุดคอขวดที่แท้จริงของซิลิกอนโลก ไม่ใช่นโยบาย",
+      "title": "",
+      "tts": {
+        "text": "สามร้อยเจ็ดสิบล้านดอลลาร์ต่อเครื่อง ไม่ถึงยี่สิบเครื่องต่อปี มีบริษัทเดียวที่ผลิต นั่นคือจุดคอขวดที่แท้จริงของซิลิกอนโลก ไม่ใช่นโยบาย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ข่าวใหญ่อันดับสามของสัปดาห์นี้ มาตรการควบคุมการส่งออก",
+      "text_markdown": "ข่าวใหญ่อันดับสามของสัปดาห์นี้ มาตรการควบคุมการส่งออก",
+      "title": "",
+      "tts": {
+        "text": "ข่าวใหญ่อันดับสามของสัปดาห์นี้ มาตรการควบคุมการส่งออก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "กระทรวงพาณิชย์ยกเลิก A.I. Diffusion Rule สมัยไบเดน เมื่อวันที่ 13 พฤษภาคม 2025 และไม่ได้ออกคำชี้แจงการบังคับใช้ B.I.S. ฉบับใหม่จนกระทั่งวันที่ 31 พฤษภาคม 2026",
+      "text_markdown": "กระทรวงพาณิชย์ยกเลิก A.I. Diffusion Rule สมัยไบเดน เมื่อวันที่ 13 พฤษภาคม 2025 และไม่ได้ออกคำชี้แจงการบังคับใช้ B.I.S. ฉบับใหม่จนกระทั่งวันที่ 31 พฤษภาคม 2026",
+      "title": "",
+      "tts": {
+        "text": "กระทรวงพาณิชย์ยกเลิก เอไอ ดิฟฟิวชัน รูล สมัยไบเดน เมื่อวันที่สิบสามพฤษภาคม สองพันยี่สิบห้า และไม่ได้ออกคำชี้แจงการบังคับใช้ บีไอเอส ฉบับใหม่จนกระทั่งวันที่สามสิบเอ็ดพฤษภาคม สองพันยี่สิบหก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "นั่นคือช่วงเวลาราวหนึ่งปีที่ข้อกำหนดการขอใบอนุญาตไม่ได้รับการบังคับใช้อย่างจริงจัง",
+      "text_markdown": "นั่นคือช่วงเวลาราวหนึ่งปีที่ข้อกำหนดการขอใบอนุญาตไม่ได้รับการบังคับใช้อย่างจริงจัง",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือช่วงเวลาราวหนึ่งปีที่ข้อกำหนดการขอใบอนุญาตไม่ได้รับการบังคับใช้อย่างจริงจัง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ลองนับวันดูสิ",
+      "text_markdown": "ลองนับวันดูสิ",
+      "title": "",
+      "tts": {
+        "text": "ลองนับวันดูสิ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "72 ชั่วโมงในการปิดตัวโมเดลของสหรัฐฯ 380 วันในการบังคับใช้กฎควบคุมการส่งออกชิป — ความไม่สมดุลนั้นคือแก่นของเรื่องนี้",
+      "text_markdown": "72 ชั่วโมงในการปิดตัวโมเดลของสหรัฐฯ 380 วันในการบังคับใช้กฎควบคุมการส่งออกชิป — ความไม่สมดุลนั้นคือแก่นของเรื่องนี้",
+      "title": "",
+      "tts": {
+        "text": "เจ็ดสิบสองชั่วโมงในการปิดตัวโมเดลของสหรัฐฯ สามร้อยแปดสิบวันในการบังคับใช้กฎควบคุมการส่งออกชิป ความไม่สมดุลนั้นคือแก่นของเรื่องนี้",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "แล้วชิปเหล่านั้นไปอยู่ที่ไหนใน 380 วันนั้น",
+      "text_markdown": "แล้วชิปเหล่านั้นไปอยู่ที่ไหนใน 380 วันนั้น",
+      "title": "",
+      "tts": {
+        "text": "แล้วชิปเหล่านั้นไปอยู่ที่ไหนในสามร้อยแปดสิบวันนั้น",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "เอเชียตะวันออกเฉียงใต้คือที่ที่ชิปส่วนใหญ่ไปลงเอย",
+      "text_markdown": "เอเชียตะวันออกเฉียงใต้คือที่ที่ชิปส่วนใหญ่ไปลงเอย",
+      "title": "",
+      "tts": {
+        "text": "เอเชียตะวันออกเฉียงใต้คือที่ที่ชิปส่วนใหญ่ไปลงเอย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "กระทรวงยุติธรรมเปิดเผยคำฟ้องในช่วงปลายเดือนมีนาคม โดยอ้างว่าชิป Nvidia H100 และ A100 ถูกลำเลียงผ่านตัวกลางในมาเลเซียและสิงคโปร์",
+      "text_markdown": "กระทรวงยุติธรรมเปิดเผยคำฟ้องในช่วงปลายเดือนมีนาคม โดยอ้างว่าชิป Nvidia H100 และ A100 ถูกลำเลียงผ่านตัวกลางในมาเลเซียและสิงคโปร์",
+      "title": "",
+      "tts": {
+        "text": "กระทรวงยุติธรรมเปิดเผยคำฟ้องในช่วงปลายเดือนมีนาคม โดยอ้างว่าชิป เอ็นวิเดีย เอชหนึ่งร้อย และเอหนึ่งร้อย ถูกลำเลียงผ่านตัวกลางในมาเลเซียและสิงคโปร์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "Fortune เผยแพร่ข้อความที่เข้ารหัสในเดือนพฤษภาคมซึ่งแสดงให้เห็นกระบวนการขนส่ง และ Super Micro ถูกพัวพันในคดีบริษัทเชลล์มูลค่า 2.5 พันล้านดอลลาร์",
+      "text_markdown": "Fortune เผยแพร่ข้อความที่เข้ารหัสในเดือนพฤษภาคมซึ่งแสดงให้เห็นกระบวนการขนส่ง และ Super Micro ถูกพัวพันในคดีบริษัทเชลล์มูลค่า 2.5 พันล้านดอลลาร์",
+      "title": "",
+      "tts": {
+        "text": "ฟอร์จูน เผยแพร่ข้อความที่เข้ารหัสในเดือนพฤษภาคมซึ่งแสดงให้เห็นกระบวนการขนส่ง และ ซูเปอร์ ไมโคร ถูกพัวพันในคดีบริษัทเชลล์มูลค่าสองพันห้าร้อยล้านดอลลาร์",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "รัฐบาลทรัมป์กำลังร่างมาตรการควบคุมการส่งออกชิปฉบับใหม่ที่มุ่งเป้าไปที่มาเลเซียและไทยโดยเฉพาะ",
+      "text_markdown": "รัฐบาลทรัมป์กำลังร่างมาตรการควบคุมการส่งออกชิปฉบับใหม่ที่มุ่งเป้าไปที่มาเลเซียและไทยโดยเฉพาะ",
+      "title": "",
+      "tts": {
+        "text": "รัฐบาลทรัมป์กำลังร่างมาตรการควบคุมการส่งออกชิปฉบับใหม่ที่มุ่งเป้าไปที่มาเลเซียและไทยโดยเฉพาะ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ภาพรวมในหนึ่งบรรทัด",
+      "text_markdown": "ภาพรวมในหนึ่งบรรทัด",
+      "title": "",
+      "tts": {
+        "text": "ภาพรวมในหนึ่งบรรทัด",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ชิปไม่ได้บินตรงไปเซินเจิ้น — แต่บินไปปีนังและสิงคโปร์ก่อน",
+      "text_markdown": "ชิปไม่ได้บินตรงไปเซินเจิ้น — แต่บินไปปีนังและสิงคโปร์ก่อน",
+      "title": "",
+      "tts": {
+        "text": "ชิปไม่ได้บินตรงไปเซินเจิ้น — แต่บินไปปีนังและสิงคโปร์ก่อน",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "แนวคิดประจำสัปดาห์ — Remaining Performance Obligations หรือภาระผูกพันด้านผลการดำเนินงานที่เหลืออยู่",
+      "text_markdown": "แนวคิดประจำสัปดาห์ — Remaining Performance Obligations หรือภาระผูกพันด้านผลการดำเนินงานที่เหลืออยู่",
+      "title": "",
+      "tts": {
+        "text": "แนวคิดประจำสัปดาห์ — Remaining Performance Obligations หรือภาระผูกพันด้านผลการดำเนินงานที่เหลืออยู่",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "R.P.O. คือรายการทางบัญชีที่บันทึกมูลค่าเป็นตัวเงินของสัญญาที่บริษัทได้ลงนามแล้วแต่ยังไม่ได้ส่งมอบ",
+      "text_markdown": "R.P.O. คือรายการทางบัญชีที่บันทึกมูลค่าเป็นตัวเงินของสัญญาที่บริษัทได้ลงนามแล้วแต่ยังไม่ได้ส่งมอบ",
+      "title": "",
+      "tts": {
+        "text": "อาร์พีโอ คือรายการทางบัญชีที่บันทึกมูลค่าเป็นตัวเงินของสัญญาที่บริษัทได้ลงนามแล้วแต่ยังไม่ได้ส่งมอบ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "มันคือการมองไปข้างหน้า — มันบอกเกี่ยวกับรายได้ในอนาคต ไม่ใช่เงินที่อยู่ในบัญชีวันนี้",
+      "text_markdown": "มันคือการมองไปข้างหน้า — มันบอกเกี่ยวกับรายได้ในอนาคต ไม่ใช่เงินที่อยู่ในบัญชีวันนี้",
+      "title": "",
+      "tts": {
+        "text": "มันคือการมองไปข้างหน้า — มันบอกเกี่ยวกับรายได้ในอนาคต ไม่ใช่เงินที่อยู่ในบัญชีวันนี้",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "แล้วทำไมมันถึงสำคัญสำหรับ Oracle",
+      "text_markdown": "แล้วทำไมมันถึงสำคัญสำหรับ Oracle",
+      "title": "",
+      "tts": {
+        "text": "แล้วทำไมมันถึงสำคัญสำหรับ Oracle",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "เพราะ R.P.O. มูลค่า 553,000 ล้านดอลลาร์ ที่กระจุกตัวอยู่กับลูกค้ารายเดียวสำหรับการก่อสร้างเดียว หมายความว่า Oracle ได้สัญญาว่าจะส่งมอบ compute จำนวนมหาศาลในช่วงหลายปีข้างหน้า ให้กับลูกค้าที่โมเดลรายได้ของตัวเองยังคงเป็นที่ถกเถียงกันอยู่",
+      "text_markdown": "เพราะ R.P.O. มูลค่า 553,000 ล้านดอลลาร์ ที่กระจุกตัวอยู่กับลูกค้ารายเดียวสำหรับการก่อสร้างเดียว หมายความว่า Oracle ได้สัญญาว่าจะส่งมอบ compute จำนวนมหาศาลในช่วงหลายปีข้างหน้า ให้กับลูกค้าที่โมเดลรายได้ของตัวเองยังคงเป็นที่ถกเถียงกันอยู่",
+      "title": "",
+      "tts": {
+        "text": "เพราะ อาร์พีโอ มูลค่าห้าร้อยห้าสิบสามพันล้านดอลลาร์ ที่กระจุกตัวอยู่กับลูกค้ารายเดียวสำหรับการก่อสร้างเดียว หมายความว่า ออราเคิล ได้สัญญาว่าจะส่งมอบ คอมพิวต์ จำนวนมหาศาลในช่วงหลายปีข้างหน้า ให้กับลูกค้าที่โมเดลรายได้ของตัวเองยังคงเป็นที่ถกเถียงกันอยู่",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ถ้าสัญญาเหล่านั้นสำเร็จ Oracle ก็ได้ดีลแห่งทศวรรษ",
+      "text_markdown": "ถ้าสัญญาเหล่านั้นสำเร็จ Oracle ก็ได้ดีลแห่งทศวรรษ",
+      "title": "",
+      "tts": {
+        "text": "ถ้าสัญญาเหล่านั้นสำเร็จ Oracle ก็ได้ดีลแห่งทศวรรษ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ถ้ามันล่าช้า — หรือถูกเจรจาใหม่ — Oracle ก็แบกหนี้ไว้ขณะที่สัญญาหดตัวลง",
+      "text_markdown": "ถ้ามันล่าช้า — หรือถูกเจรจาใหม่ — Oracle ก็แบกหนี้ไว้ขณะที่สัญญาหดตัวลง",
+      "title": "",
+      "tts": {
+        "text": "ถ้ามันล่าช้า — หรือถูกเจรจาใหม่ — Oracle ก็แบกหนี้ไว้ขณะที่สัญญาหดตัวลง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "ดังนั้นเมื่อคุณเห็นตัวเลข R.P.O. ในการยื่นเอกสารของบริษัทเทค",
+      "text_markdown": "ดังนั้นเมื่อคุณเห็นตัวเลข R.P.O. ในการยื่นเอกสารของบริษัทเทค",
+      "title": "",
+      "tts": {
+        "text": "ดังนั้นเมื่อคุณเห็นตัวเลข อาร์พีโอ ในการยื่นเอกสารของบริษัทเทค",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ให้อ่านว่าลูกค้าคือใคร ภาระผูกพันกระจุกตัวแค่ไหน และต้องเกิดอะไรขึ้นบ้างเพื่อให้บริษัทส่งมอบได้จริง",
+      "text_markdown": "ให้อ่านว่าลูกค้าคือใคร ภาระผูกพันกระจุกตัวแค่ไหน และต้องเกิดอะไรขึ้นบ้างเพื่อให้บริษัทส่งมอบได้จริง",
+      "title": "",
+      "tts": {
+        "text": "ให้อ่านว่าลูกค้าคือใคร ภาระผูกพันกระจุกตัวแค่ไหน และต้องเกิดอะไรขึ้นบ้างเพื่อให้บริษัทส่งมอบได้จริง",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "R.P.O. คือที่ที่ผู้แบกถุงปรากฏตัวอยู่ในหมายเหตุประกอบ",
+      "text_markdown": "R.P.O. คือที่ที่ผู้แบกถุงปรากฏตัวอยู่ในหมายเหตุประกอบ",
+      "title": "",
+      "tts": {
+        "text": "อาร์พีโอ คือที่ที่ผู้แบกถุงปรากฏตัวอยู่ในหมายเหตุประกอบ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "จุดจบที่ดี",
+      "text_markdown": "จุดจบที่ดี",
+      "title": "",
+      "tts": {
+        "text": "จุดจบที่ดี",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "Ron ขอบคุณสำหรับการสรุปนะ",
+      "text_markdown": "Ron ขอบคุณสำหรับการสรุปนะ",
+      "title": "",
+      "tts": {
+        "text": "Ron ขอบคุณสำหรับการสรุปนะ",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "text": "ยินดีเสมอ Vindy — ดีใจที่ได้มาร่วมด้วย",
+      "text_markdown": "ยินดีเสมอ Vindy — ดีใจที่ได้มาร่วมด้วย",
+      "title": "",
+      "tts": {
+        "text": "ยินดีเสมอ Vindy — ดีใจที่ได้มาร่วมด้วย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "นั่นคือ AI This Week สำหรับวันที่ 21 มิถุนายน 2026",
+      "text_markdown": "นั่นคือ AI This Week สำหรับวันที่ 21 มิถุนายน 2026",
+      "title": "",
+      "tts": {
+        "text": "นั่นคือ เอไอ ดิส วีก สำหรับวันที่ยี่สิบเอ็ดมิถุนายน สองพันยี่สิบหก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "สัปดาห์หน้า กลับมาที่ open-weights และสายข่าวแล็บขนาดเล็ก",
+      "text_markdown": "สัปดาห์หน้า กลับมาที่ open-weights และสายข่าวแล็บขนาดเล็ก",
+      "title": "",
+      "tts": {
+        "text": "สัปดาห์หน้า กลับมาที่ โอเพนเวทส์ และสายข่าวแล็บขนาดเล็ก",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "host",
+      "text": "จนกว่าจะพบกันวันอาทิตย์หน้า ดูแลตัวเองด้วย",
+      "text_markdown": "จนกว่าจะพบกันวันอาทิตย์หน้า ดูแลตัวเองด้วย",
+      "title": "",
+      "tts": {
+        "text": "จนกว่าจะพบกันวันอาทิตย์หน้า ดูแลตัวเองด้วย",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

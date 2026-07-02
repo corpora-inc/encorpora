@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "language": "ru",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Заметка для читателя",
+      "text_markdown": "Заметка для читателя"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Привет.",
+      "text_markdown": "Привет.",
+      "tts": {
+        "text": "Привет.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Меня зовут Kym.",
+      "text_markdown": "Меня зовут Kym.",
+      "tts": {
+        "text": "Меня зовут Ким.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Я люблю еду.",
+      "text_markdown": "Я люблю еду.",
+      "tts": {
+        "text": "Я люблю еду.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Я люблю истории о еде.",
+      "text_markdown": "Я люблю истории о еде.",
+      "tts": {
+        "text": "Я люблю истории о еде.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это маленькая книга о большой кухне.",
+      "text_markdown": "Это маленькая книга о большой кухне.",
+      "tts": {
+        "text": "Это маленькая книга о большой кухне.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это персидская кухня.",
+      "text_markdown": "Это персидская кухня.",
+      "tts": {
+        "text": "Это персидская кухня.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это кухня Ирана.",
+      "text_markdown": "Это кухня Ирана.",
+      "tts": {
+        "text": "Это кухня Ирана.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Это и кухня гораздо более древней страны по имени Персия.",
+      "text_markdown": "Это и кухня гораздо более древней страны по имени Персия.",
+      "tts": {
+        "text": "Это и кухня гораздо более древней страны по имени Персия.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персия это одно из древнейших мест на земле, где люди очень рано занялись земледелием.",
+      "text_markdown": "Персия это одно из древнейших мест на земле, где люди очень рано занялись земледелием.",
+      "tts": {
+        "text": "Персия это одно из древнейших мест на земле, где люди очень рано занялись земледелием.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Пшеница, ячмень, персик, абрикос, гранат, шпинат, шафран. Многое на вашей тарелке родом оттуда.",
+      "text_markdown": "Пшеница, ячмень, персик, абрикос, гранат, шпинат, шафран. Многое на вашей тарелке родом оттуда.",
+      "tts": {
+        "text": "Пшеница, ячмень, персик, абрикос, гранат, шпинат, шафран. Многое на вашей тарелке родом оттуда.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Мы начнём с земли.",
+      "text_markdown": "Мы начнём с земли.",
+      "tts": {
+        "text": "Мы начнём с земли.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Потом посмотрим, что там растёт.",
+      "text_markdown": "Потом посмотрим, что там растёт.",
+      "tts": {
+        "text": "Потом посмотрим, что там растёт.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Потом посмотрим на рис, хлеб, мясо и рагу.",
+      "text_markdown": "Потом посмотрим на рис, хлеб, мясо и рагу.",
+      "tts": {
+        "text": "Потом посмотрим на рис, хлеб, мясо и рагу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "К концу книги вы будете знать, что стоит на персидском столе. И откуда это пришло.",
+      "text_markdown": "К концу книги вы будете знать, что стоит на персидском столе. И откуда это пришло.",
+      "tts": {
+        "text": "К концу книги вы будете знать, что стоит на персидском столе. И откуда это пришло.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Садитесь.",
+      "text_markdown": "Садитесь.",
+      "tts": {
+        "text": "Садитесь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Налейте чаю.",
+      "text_markdown": "Налейте чаю.",
+      "tts": {
+        "text": "Налейте чаю.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Начнём.",
+      "text_markdown": "Начнём.",
+      "tts": {
+        "text": "Начнём.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 1 — Земля, где началось земледелие",
+      "text_markdown": "Глава 1 — Земля, где началось земледелие"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персия это высокая и сухая земля.",
+      "text_markdown": "Персия это высокая и сухая земля.",
+      "tts": {
+        "text": "Персия это высокая и сухая земля.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она лежит между Каспийским морем на севере и Персидским заливом на юге.",
+      "text_markdown": "Она лежит между Каспийским морем на севере и Персидским заливом на юге.",
+      "tts": {
+        "text": "Она лежит между Каспийским морем на севере и Персидским заливом на юге.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "На западе Месопотамия.",
+      "text_markdown": "На западе Месопотамия.",
+      "tts": {
+        "text": "На западе Месопотамия.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "На востоке Индия.",
+      "text_markdown": "На востоке Индия.",
+      "tts": {
+        "text": "На востоке Индия.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Посередине горы и пустыни.",
+      "text_markdown": "Посередине горы и пустыни.",
+      "tts": {
+        "text": "Посередине горы и пустыни.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Совсем рядом, примерно десять тысяч лет назад, люди впервые стали специально выращивать пшеницу и ячмень.",
+      "text_markdown": "Совсем рядом, примерно десять тысяч лет назад, люди впервые стали специально выращивать пшеницу и ячмень.",
+      "tts": {
+        "text": "Совсем рядом, примерно десять тысяч лет назад, люди впервые стали специально выращивать пшеницу и ячмень.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Там родилось земледелие.",
+      "text_markdown": "Там родилось земледелие.",
+      "tts": {
+        "text": "Там родилось земледелие.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Персия одной из первых научилась этому.",
+      "text_markdown": "Персия одной из первых научилась этому.",
+      "tts": {
+        "text": "Персия одной из первых научилась этому.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Это древнее преимущество чувствуется в каждом персидском блюде.",
+      "text_markdown": "Это древнее преимущество чувствуется в каждом персидском блюде.",
+      "tts": {
+        "text": "Это древнее преимущество чувствуется в каждом персидском блюде.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Персик родом из Персии.",
+      "text_markdown": "Персик родом из Персии.",
+      "tts": {
+        "text": "Персик родом из Персии.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Римляне называли его Персика, то есть персидский плод. И слово персик связано с этим названием.",
+      "text_markdown": "Римляне называли его Персика, то есть персидский плод. И слово персик связано с этим названием.",
+      "tts": {
+        "text": "Римляне называли его Персика, то есть персидский плод. И слово персик связано с этим названием.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Абрикос тоже оттуда.",
+      "text_markdown": "Абрикос тоже оттуда.",
+      "tts": {
+        "text": "Абрикос тоже оттуда.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "И гранат тоже.",
+      "text_markdown": "И гранат тоже.",
+      "tts": {
+        "text": "И гранат тоже.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "И грецкий орех тоже.",
+      "text_markdown": "И грецкий орех тоже.",
+      "tts": {
+        "text": "И грецкий орех тоже.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И кислая вишня тоже.",
+      "text_markdown": "И кислая вишня тоже.",
+      "tts": {
+        "text": "И кислая вишня тоже.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "И шпинат, одна из первых салатных зелёных культур, тоже оттуда.",
+      "text_markdown": "И шпинат, одна из первых салатных зелёных культур, тоже оттуда.",
+      "tts": {
+        "text": "И шпинат, одна из первых салатных зелёных культур, тоже оттуда.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Английское слово spinach, то есть шпинат, происходит от персидского слова эсфанадж.",
+      "text_markdown": "Английское слово spinach, то есть шпинат, происходит от персидского слова эсфанадж.",
+      "tts": {
+        "text": "Английское слово спинэч, то есть шпинат, происходит от персидского слова эсфанадж.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Даже слово рай это персидское слово.",
+      "text_markdown": "Даже слово рай это персидское слово.",
+      "tts": {
+        "text": "Даже слово рай это персидское слово.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Оно происходит от слова пардис, то есть ограждённый сад.",
+      "text_markdown": "Оно происходит от слова пардис, то есть ограждённый сад.",
+      "tts": {
+        "text": "Оно происходит от слова пардис, то есть ограждённый сад.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Первый рай был персидским садом, полным гранатовых деревьев.",
+      "text_markdown": "Первый рай был персидским садом, полным гранатовых деревьев.",
+      "tts": {
+        "text": "Первый рай был персидским садом, полным гранатовых деревьев.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персия не просто хорошо ела.",
+      "text_markdown": "Персия не просто хорошо ела.",
+      "tts": {
+        "text": "Персия не просто хорошо ела.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Персия научила мир хорошо есть.",
+      "text_markdown": "Персия научила мир хорошо есть.",
+      "tts": {
+        "text": "Персия научила мир хорошо есть.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 2 — Кладовая родной земли",
+      "text_markdown": "Глава 2 — Кладовая родной земли"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Откройте персидскую кладовую.",
+      "text_markdown": "Откройте персидскую кладовую.",
+      "tts": {
+        "text": "Откройте персидскую кладовую.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Запахи сами расскажут историю.",
+      "text_markdown": "Запахи сами расскажут историю.",
+      "tts": {
+        "text": "Запахи сами расскажут историю.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Первый запах это шафран.",
+      "text_markdown": "Первый запах это шафран.",
+      "tts": {
+        "text": "Первый запах это шафран.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Иран выращивает около девяноста процентов мирового шафрана.",
+      "text_markdown": "Иран выращивает около девяноста процентов мирового шафрана.",
+      "tts": {
+        "text": "Иран выращивает около девяноста процентов мирового шафрана.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Большая часть приходит из провинции Хорасан.",
+      "text_markdown": "Большая часть приходит из провинции Хорасан.",
+      "tts": {
+        "text": "Большая часть приходит из провинции Хорасан.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Чтобы получить один грамм, фермер вручную собирает красные нити примерно с двухсот цветков крокуса.",
+      "text_markdown": "Чтобы получить один грамм, фермер вручную собирает красные нити примерно с двухсот цветков крокуса.",
+      "tts": {
+        "text": "Чтобы получить один грамм, фермер вручную собирает красные нити примерно с двухсот цветков крокуса.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Эту работу делают на холодном осеннем рассвете.",
+      "text_markdown": "Эту работу делают на холодном осеннем рассвете.",
+      "tts": {
+        "text": "Эту работу делают на холодном осеннем рассвете.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Шафран это самая дорогая пряность в мире.",
+      "text_markdown": "Шафран это самая дорогая пряность в мире.",
+      "tts": {
+        "text": "Шафран это самая дорогая пряность в мире.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Щепотка делает рис золотым и превращает воду в духи.",
+      "text_markdown": "Щепотка делает рис золотым и превращает воду в духи.",
+      "tts": {
+        "text": "Щепотка делает рис золотым и превращает воду в духи.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Второй запах это гранат.",
+      "text_markdown": "Второй запах это гранат.",
+      "tts": {
+        "text": "Второй запах это гранат.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Персы выращивают гранаты уже тысячи лет.",
+      "text_markdown": "Персы выращивают гранаты уже тысячи лет.",
+      "tts": {
+        "text": "Персы выращивают гранаты уже тысячи лет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Этот плод символизирует любовь и рай.",
+      "text_markdown": "Этот плод символизирует любовь и рай.",
+      "tts": {
+        "text": "Этот плод символизирует любовь и рай.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Сок выжимают для рагу.",
+      "text_markdown": "Сок выжимают для рагу.",
+      "tts": {
+        "text": "Сок выжимают для рагу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Зёрна посыпают рис и салаты.",
+      "text_markdown": "Зёрна посыпают рис и салаты.",
+      "tts": {
+        "text": "Зёрна посыпают рис и салаты.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом идут фисташки.",
+      "text_markdown": "Потом идут фисташки.",
+      "tts": {
+        "text": "Потом идут фисташки.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В Иране есть фисташковые рощи возрастом три тысячи лет.",
+      "text_markdown": "В Иране есть фисташковые рощи возрастом три тысячи лет.",
+      "tts": {
+        "text": "В Иране есть фисташковые рощи возрастом три тысячи лет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Фисташка, которую вы едите в любой стране, часто потомок персидского дерева.",
+      "text_markdown": "Фисташка, которую вы едите в любой стране, часто потомок персидского дерева.",
+      "tts": {
+        "text": "Фисташка, которую вы едите в любой стране, часто потомок персидского дерева.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Там есть грецкие орехи, кислые вишни, айва, дыни и финики.",
+      "text_markdown": "Там есть грецкие орехи, кислые вишни, айва, дыни и финики.",
+      "tts": {
+        "text": "Там есть грецкие орехи, кислые вишни, айва, дыни и финики.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Есть и сумах, тёмно красная кислая пряность из дикого куста.",
+      "text_markdown": "Есть и сумах, тёмно красная кислая пряность из дикого куста.",
+      "tts": {
+        "text": "Есть и сумах, тёмно красная кислая пряность из дикого куста.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "До того как лимоны стали обычными, сумах делал вкус еды ярче.",
+      "text_markdown": "До того как лимоны стали обычными, сумах делал вкус еды ярче.",
+      "tts": {
+        "text": "До того как лимоны стали обычными, сумах делал вкус еды ярче.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И до сих пор делает.",
+      "text_markdown": "И до сих пор делает.",
+      "tts": {
+        "text": "И до сих пор делает.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "В персидской кладовой хранится половина истории фруктов.",
+      "text_markdown": "В персидской кладовой хранится половина истории фруктов.",
+      "tts": {
+        "text": "В персидской кладовой хранится половина истории фруктов.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 3 — Рис, хлеб и священная корочка",
+      "text_markdown": "Глава 3 — Рис, хлеб и священная корочка"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Рис пришёл в Персию из Индии около двух тысяч пятисот лет назад.",
+      "text_markdown": "Рис пришёл в Персию из Индии около двух тысяч пятисот лет назад.",
+      "tts": {
+        "text": "Рис пришёл в Персию из Индии около двух тысяч пятисот лет назад.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Он стал сердцем стола.",
+      "text_markdown": "Он стал сердцем стола.",
+      "tts": {
+        "text": "Он стал сердцем стола.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персы готовят рис двумя способами.",
+      "text_markdown": "Персы готовят рис двумя способами.",
+      "tts": {
+        "text": "Персы готовят рис двумя способами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Простой рис называется челоу.",
+      "text_markdown": "Простой рис называется челоу.",
+      "tts": {
+        "text": "Простой рис называется челоу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Рис с травами, мясом или фруктами называется полоу.",
+      "text_markdown": "Рис с травами, мясом или фруктами называется полоу.",
+      "tts": {
+        "text": "Рис с травами, мясом или фруктами называется полоу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "В обоих случаях зёрна длинные, лёгкие и не слипаются.",
+      "text_markdown": "В обоих случаях зёрна длинные, лёгкие и не слипаются.",
+      "tts": {
+        "text": "В обоих случаях зёрна длинные, лёгкие и не слипаются.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Но волшебство ждёт на дне кастрюли.",
+      "text_markdown": "Но волшебство ждёт на дне кастрюли.",
+      "tts": {
+        "text": "Но волшебство ждёт на дне кастрюли.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это называется тахдиг.",
+      "text_markdown": "Это называется тахдиг.",
+      "tts": {
+        "text": "Это называется тахдиг.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Повар кладёт тонкий слой на дно кастрюли. Иногда это шафрановый рис, иногда ломтик картофеля, иногда кусок хлеба.",
+      "text_markdown": "Повар кладёт тонкий слой на дно кастрюли. Иногда это шафрановый рис, иногда ломтик картофеля, иногда кусок хлеба.",
+      "tts": {
+        "text": "Повар кладёт тонкий слой на дно кастрюли. Иногда это шафрановый рис, иногда ломтик картофеля, иногда кусок хлеба.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Потом сверху кладут рис.",
+      "text_markdown": "Потом сверху кладут рис.",
+      "tts": {
+        "text": "Потом сверху кладут рис.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Потом надевают крышку, обёрнутую чайным полотенцем, и дальше работает пар.",
+      "text_markdown": "Потом надевают крышку, обёрнутую чайным полотенцем, и дальше работает пар.",
+      "tts": {
+        "text": "Потом надевают крышку, обёрнутую чайным полотенцем, и дальше работает пар.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Через час этот нижний слой становится золотистым и хрустящим.",
+      "text_markdown": "Через час этот нижний слой становится золотистым и хрустящим.",
+      "tts": {
+        "text": "Через час этот нижний слой становится золотистым и хрустящим.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Тахдиг священен.",
+      "text_markdown": "Тахдиг священен.",
+      "tts": {
+        "text": "Тахдиг священен.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "За него спорят целые семьи.",
+      "text_markdown": "За него спорят целые семьи.",
+      "tts": {
+        "text": "За него спорят целые семьи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "На иранском телевидении есть целые передачи о том, кто делает лучший тахдиг.",
+      "text_markdown": "На иранском телевидении есть целые передачи о том, кто делает лучший тахдиг.",
+      "tts": {
+        "text": "На иранском телевидении есть целые передачи о том, кто делает лучший тахдиг.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Идеальный тахдиг выходит из кастрюли одним красивым круглым диском.",
+      "text_markdown": "Идеальный тахдиг выходит из кастрюли одним красивым круглым диском.",
+      "tts": {
+        "text": "Идеальный тахдиг выходит из кастрюли одним красивым круглым диском.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А теперь хлеб.",
+      "text_markdown": "А теперь хлеб.",
+      "tts": {
+        "text": "А теперь хлеб.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Самый знаменитый это сангак.",
+      "text_markdown": "Самый знаменитый это сангак.",
+      "tts": {
+        "text": "Самый знаменитый это сангак.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Сангак пекут на слое горячих камешков. Этому способу пять тысяч лет.",
+      "text_markdown": "Сангак пекут на слое горячих камешков. Этому способу пять тысяч лет.",
+      "tts": {
+        "text": "Сангак пекут на слое горячих камешков. Этому способу пять тысяч лет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Камешки всё ещё попадаются в хлебе.",
+      "text_markdown": "Камешки всё ещё попадаются в хлебе.",
+      "tts": {
+        "text": "Камешки всё ещё попадаются в хлебе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Их вынимают прямо за столом.",
+      "text_markdown": "Их вынимают прямо за столом.",
+      "tts": {
+        "text": "Их вынимают прямо за столом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Есть и другие хлеба: барбари, лаваш и тафтун.",
+      "text_markdown": "Есть и другие хлеба: барбари, лаваш и тафтун.",
+      "tts": {
+        "text": "Есть и другие хлеба: барбари, лаваш и тафтун.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Персидский завтрак это хлеб, чай и мягкий белый сыр.",
+      "text_markdown": "Персидский завтрак это хлеб, чай и мягкий белый сыр.",
+      "tts": {
+        "text": "Персидский завтрак это хлеб, чай и мягкий белый сыр.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 4 — Кебаб и неторопливое рагу",
+      "text_markdown": "Глава 4 — Кебаб и неторопливое рагу"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Слово кебаб персидское.",
+      "text_markdown": "Слово кебаб персидское.",
+      "tts": {
+        "text": "Слово кебаб персидское.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это кабаб, то есть мясо, приготовленное на огне.",
+      "text_markdown": "Это кабаб, то есть мясо, приготовленное на огне.",
+      "tts": {
+        "text": "Это кабаб, то есть мясо, приготовленное на огне.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Персы жарят баранину на длинных плоских шампурах уже тысячи лет.",
+      "text_markdown": "Персы жарят баранину на длинных плоских шампурах уже тысячи лет.",
+      "tts": {
+        "text": "Персы жарят баранину на длинных плоских шампурах уже тысячи лет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самый популярный кебаб сегодня это кубиде.",
+      "text_markdown": "Самый популярный кебаб сегодня это кубиде.",
+      "tts": {
+        "text": "Самый популярный кебаб сегодня это кубиде.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это рубленая баранина или говядина с луком и солью. Её прижимают к широкому плоскому шампуру и жарят на углях.",
+      "text_markdown": "Это рубленая баранина или говядина с луком и солью. Её прижимают к широкому плоскому шампуру и жарят на углях.",
+      "tts": {
+        "text": "Это рубленая баранина или говядина с луком и солью. Её прижимают к широкому плоскому шампуру и жарят на углях.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Он выглядит древним.",
+      "text_markdown": "Он выглядит древним.",
+      "tts": {
+        "text": "Он выглядит древним.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Но он не древний.",
+      "text_markdown": "Но он не древний.",
+      "tts": {
+        "text": "Но он не древний.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Мясорубка пришла в Иран только в конце девятнадцатого века.",
+      "text_markdown": "Мясорубка пришла в Иран только в конце девятнадцатого века.",
+      "tts": {
+        "text": "Мясорубка пришла в Иран только в конце девятнадцатого века.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Кубиде, самый персидский из кебабов, едва старше ста лет.",
+      "text_markdown": "Кубиде, самый персидский из кебабов, едва старше ста лет.",
+      "tts": {
+        "text": "Кубиде, самый персидский из кебабов, едва старше ста лет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Более старые кебабы делают из нарезанного мяса.",
+      "text_markdown": "Более старые кебабы делают из нарезанного мяса.",
+      "tts": {
+        "text": "Более старые кебабы делают из нарезанного мяса.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Джудже это курица в шафране и йогурте.",
+      "text_markdown": "Джудже это курица в шафране и йогурте.",
+      "tts": {
+        "text": "Джудже это курица в шафране и йогурте.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Барг это тонкое филе баранины.",
+      "text_markdown": "Барг это тонкое филе баранины.",
+      "tts": {
+        "text": "Барг это тонкое филе баранины.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Оба подают на подушке из шафранового риса с жареным помидором.",
+      "text_markdown": "Оба подают на подушке из шафранового риса с жареным помидором.",
+      "tts": {
+        "text": "Оба подают на подушке из шафранового риса с жареным помидором.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А теперь познакомимся с терпеливым блюдом: хореш, персидским рагу.",
+      "text_markdown": "А теперь познакомимся с терпеливым блюдом: хореш, персидским рагу.",
+      "tts": {
+        "text": "А теперь познакомимся с терпеливым блюдом: хореш, персидским рагу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Хореш готовится часами.",
+      "text_markdown": "Хореш готовится часами.",
+      "tts": {
+        "text": "Хореш готовится часами.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самый знаменитый это фесенджан.",
+      "text_markdown": "Самый знаменитый это фесенджан.",
+      "tts": {
+        "text": "Самый знаменитый это фесенджан.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это курица или утка, медленно приготовленная в густом соусе из молотых грецких орехов и гранатового сока.",
+      "text_markdown": "Это курица или утка, медленно приготовленная в густом соусе из молотых грецких орехов и гранатового сока.",
+      "tts": {
+        "text": "Это курица или утка, медленно приготовленная в густом соусе из молотых грецких орехов и гранатового сока.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это один из древнейших известных рецептов рагу.",
+      "text_markdown": "Это один из древнейших известных рецептов рагу.",
+      "tts": {
+        "text": "Это один из древнейших известных рецептов рагу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Его разновидность записана на клинописных табличках из руин Персеполя.",
+      "text_markdown": "Его разновидность записана на клинописных табличках из руин Персеполя.",
+      "tts": {
+        "text": "Его разновидность записана на клинописных табличках из руин Персеполя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Значит, ему больше двух тысяч пятисот лет.",
+      "text_markdown": "Значит, ему больше двух тысяч пятисот лет.",
+      "tts": {
+        "text": "Значит, ему больше двух тысяч пятисот лет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Люди до сих пор готовят его почти так же.",
+      "text_markdown": "Люди до сих пор готовят его почти так же.",
+      "tts": {
+        "text": "Люди до сих пор готовят его почти так же.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ещё одна классика это горме сабзи: баранина, фасоль и гора свежих трав, томлёные с сушёным лаймом.",
+      "text_markdown": "Ещё одна классика это горме сабзи: баранина, фасоль и гора свежих трав, томлёные с сушёным лаймом.",
+      "tts": {
+        "text": "Ещё одна классика это горме сабзи: баранина, фасоль и гора свежих трав, томлёные с сушёным лаймом.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Многие иранцы называют его национальным блюдом.",
+      "text_markdown": "Многие иранцы называют его национальным блюдом.",
+      "tts": {
+        "text": "Многие иранцы называют его национальным блюдом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 5 — Йогурт, чай и самые древние сладости",
+      "text_markdown": "Глава 5 — Йогурт, чай и самые древние сладости"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персы едят йогурт почти со всем.",
+      "text_markdown": "Персы едят йогурт почти со всем.",
+      "tts": {
+        "text": "Персы едят йогурт почти со всем.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Простой йогурт называется маст.",
+      "text_markdown": "Простой йогурт называется маст.",
+      "tts": {
+        "text": "Простой йогурт называется маст.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Маст с огурцом и сушёной мятой называется маст о хиар.",
+      "text_markdown": "Маст с огурцом и сушёной мятой называется маст о хиар.",
+      "tts": {
+        "text": "Маст с огурцом и сушёной мятой называется маст о хиар.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Солёный йогуртовый напиток с мятой называется дуг.",
+      "text_markdown": "Солёный йогуртовый напиток с мятой называется дуг.",
+      "tts": {
+        "text": "Солёный йогуртовый напиток с мятой называется дуг.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Есть ещё кашк, сушёная сыворотка с насыщенным вкусом, её кладут в супы.",
+      "text_markdown": "Есть ещё кашк, сушёная сыворотка с насыщенным вкусом, её кладут в супы.",
+      "tts": {
+        "text": "Есть ещё кашк, сушёная сыворотка с насыщенным вкусом, её кладут в супы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Потом чай.",
+      "text_markdown": "Потом чай.",
+      "tts": {
+        "text": "Потом чай.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Персы пьют его утром, днём и ночью. Его заваривают крепким в высоком чайнике на самоваре.",
+      "text_markdown": "Персы пьют его утром, днём и ночью. Его заваривают крепким в высоком чайнике на самоваре.",
+      "tts": {
+        "text": "Персы пьют его утром, днём и ночью. Его заваривают крепким в высоком чайнике на самоваре.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Чай так важен, что многие удивляются, узнав, как поздно он появился.",
+      "text_markdown": "Чай так важен, что многие удивляются, узнав, как поздно он появился.",
+      "tts": {
+        "text": "Чай так важен, что многие удивляются, узнав, как поздно он появился.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Большую часть персидской истории главным напитком был кофе.",
+      "text_markdown": "Большую часть персидской истории главным напитком был кофе.",
+      "tts": {
+        "text": "Большую часть персидской истории главным напитком был кофе.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Чай стал главным только в конце девятнадцатого века.",
+      "text_markdown": "Чай стал главным только в конце девятнадцатого века.",
+      "tts": {
+        "text": "Чай стал главным только в конце девятнадцатого века.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Сегодня Иран одна из стран, где больше всего пьют чай.",
+      "text_markdown": "Сегодня Иран одна из стран, где больше всего пьют чай.",
+      "tts": {
+        "text": "Сегодня Иран одна из стран, где больше всего пьют чай.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "С этим связан маленький ритуал.",
+      "text_markdown": "С этим связан маленький ритуал.",
+      "tts": {
+        "text": "С этим связан маленький ритуал.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Вы держите кусочек сахара между зубами.",
+      "text_markdown": "Вы держите кусочек сахара между зубами.",
+      "tts": {
+        "text": "Вы держите кусочек сахара между зубами.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "И пьёте чай через этот кусочек.",
+      "text_markdown": "И пьёте чай через этот кусочек.",
+      "tts": {
+        "text": "И пьёте чай через этот кусочек.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Кусочек понемногу тает.",
+      "text_markdown": "Кусочек понемногу тает.",
+      "tts": {
+        "text": "Кусочек понемногу тает.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "И чай кажется горячим, тёмным и сладким.",
+      "text_markdown": "И чай кажется горячим, тёмным и сладким.",
+      "tts": {
+        "text": "И чай кажется горячим, тёмным и сладким.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Теперь о сладостях.",
+      "text_markdown": "Теперь о сладостях.",
+      "tts": {
+        "text": "Теперь о сладостях.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Персидские сладости древние, насыщенные и небольшие.",
+      "text_markdown": "Персидские сладости древние, насыщенные и небольшие.",
+      "tts": {
+        "text": "Персидские сладости древние, насыщенные и небольшие.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Самая древняя это фалуде.",
+      "text_markdown": "Самая древняя это фалуде.",
+      "tts": {
+        "text": "Самая древняя это фалуде.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это тонкая рисовая лапша, замороженная в сиропе из розовой воды, с соком лайма и фисташками.",
+      "text_markdown": "Это тонкая рисовая лапша, замороженная в сиропе из розовой воды, с соком лайма и фисташками.",
+      "tts": {
+        "text": "Это тонкая рисовая лапша, замороженная в сиропе из розовой воды, с соком лайма и фисташками.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Персидские авторы описывали её ещё примерно за четыреста лет до нашей эры.",
+      "text_markdown": "Персидские авторы описывали её ещё примерно за четыреста лет до нашей эры.",
+      "tts": {
+        "text": "Персидские авторы описывали её ещё примерно за четыреста лет до нашей эры.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Значит, фалуде один из древнейших замороженных десертов в мире.",
+      "text_markdown": "Значит, фалуде один из древнейших замороженных десертов в мире.",
+      "tts": {
+        "text": "Значит, фалуде один из древнейших замороженных десертов в мире.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Он старше мороженого больше чем на две тысячи лет.",
+      "text_markdown": "Он старше мороженого больше чем на две тысячи лет.",
+      "tts": {
+        "text": "Он старше мороженого больше чем на две тысячи лет.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ещё одна классика это пахлава из Тебриза, легче турецкой, с грецким орехом и розовой водой.",
+      "text_markdown": "Ещё одна классика это пахлава из Тебриза, легче турецкой, с грецким орехом и розовой водой.",
+      "tts": {
+        "text": "Ещё одна классика это пахлава из Тебриза, легче турецкой, с грецким орехом и розовой водой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Халва это плотная масса из кунжута или шафрана.",
+      "text_markdown": "Халва это плотная масса из кунжута или шафрана.",
+      "tts": {
+        "text": "Халва это плотная масса из кунжута или шафрана.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Газ из Исфахана это мягкая нуга с фисташками.",
+      "text_markdown": "Газ из Исфахана это мягкая нуга с фисташками.",
+      "tts": {
+        "text": "Газ из Исфахана это мягкая нуга с фисташками.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Сохан это хрупкая золотая шафрановая ириска.",
+      "text_markdown": "Сохан это хрупкая золотая шафрановая ириска.",
+      "tts": {
+        "text": "Сохан это хрупкая золотая шафрановая ириска.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Нохудчи из Кума это маленькое печенье из нута.",
+      "text_markdown": "Нохудчи из Кума это маленькое печенье из нута.",
+      "tts": {
+        "text": "Нохудчи из Кума это маленькое печенье из нута.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Маленькая тарелка сладостей, чашка чая, медленный разговор.",
+      "text_markdown": "Маленькая тарелка сладостей, чашка чая, медленный разговор.",
+      "tts": {
+        "text": "Маленькая тарелка сладостей, чашка чая, медленный разговор.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Вот такой персидский послеобеденный час.",
+      "text_markdown": "Вот такой персидский послеобеденный час.",
+      "tts": {
+        "text": "Вот такой персидский послеобеденный час.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 6 — Что Персия дала и что Персия взяла",
+      "text_markdown": "Глава 6 — Что Персия дала и что Персия взяла"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персия была в самом центре старого мира.",
+      "text_markdown": "Персия была в самом центре старого мира.",
+      "tts": {
+        "text": "Персия была в самом центре старого мира.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Её пересекали караваны.",
+      "text_markdown": "Её пересекали караваны.",
+      "tts": {
+        "text": "Её пересекали караваны.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "На этой земле поднимались и падали империи.",
+      "text_markdown": "На этой земле поднимались и падали империи.",
+      "tts": {
+        "text": "На этой земле поднимались и падали империи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Еда тоже проходила через неё в обе стороны.",
+      "text_markdown": "Еда тоже проходила через неё в обе стороны.",
+      "tts": {
+        "text": "Еда тоже проходила через неё в обе стороны.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Посмотрите на слова.",
+      "text_markdown": "Посмотрите на слова.",
+      "tts": {
+        "text": "Посмотрите на слова.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Английский язык взял из персидского десятки слов о еде.",
+      "text_markdown": "Английский язык взял из персидского десятки слов о еде.",
+      "tts": {
+        "text": "Английский язык взял из персидского десятки слов о еде.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Слова сахар, конфета, лимон, апельсин, жасмин, сирень, тюльпан, киоск, шербет и рай имеют персидское происхождение.",
+      "text_markdown": "Слова сахар, конфета, лимон, апельсин, жасмин, сирень, тюльпан, киоск, шербет и рай имеют персидское происхождение.",
+      "tts": {
+        "text": "Слова сахар, конфета, лимон, апельсин, жасмин, сирень, тюльпан, киоск, шербет и рай имеют персидское происхождение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И выражение шах и мат тоже отсюда. Оно идёт от слов шах мат, то есть король беспомощен. Персия вложила свои слова в речь половины мира.",
+      "text_markdown": "И выражение шах и мат тоже отсюда. Оно идёт от слов шах мат, то есть король беспомощен. Персия вложила свои слова в речь половины мира.",
+      "tts": {
+        "text": "И выражение шах и мат тоже отсюда. Оно идёт от слов шах мат, то есть король беспомощен. Персия вложила свои слова в речь половины мира.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персидский способ готовить рис ушёл на восток.",
+      "text_markdown": "Персидский способ готовить рис ушёл на восток.",
+      "tts": {
+        "text": "Персидский способ готовить рис ушёл на восток.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Могольские правители Индии любили персидскую кухню и привозили ко двору персидских поваров.",
+      "text_markdown": "Могольские правители Индии любили персидскую кухню и привозили ко двору персидских поваров.",
+      "tts": {
+        "text": "Могольские правители Индии любили персидскую кухню и привозили ко двору персидских поваров.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Именно эти повара приготовили бирьяни.",
+      "text_markdown": "Именно эти повара приготовили бирьяни.",
+      "tts": {
+        "text": "Именно эти повара приготовили бирьяни.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Плов, длиннозёрное блюдо с пряностями от Средиземноморья до степей Центральной Азии, уходит корнями в персидскую рисовую традицию.",
+      "text_markdown": "Плов, длиннозёрное блюдо с пряностями от Средиземноморья до степей Центральной Азии, уходит корнями в персидскую рисовую традицию.",
+      "tts": {
+        "text": "Плов, длиннозёрное блюдо с пряностями от Средиземноморья до степей Центральной Азии, уходит корнями в персидскую рисовую традицию.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персидские фрукты ушли на запад.",
+      "text_markdown": "Персидские фрукты ушли на запад.",
+      "tts": {
+        "text": "Персидские фрукты ушли на запад.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Римляне выращивали персик в Италии, потому что получили его из Персии.",
+      "text_markdown": "Римляне выращивали персик в Италии, потому что получили его из Персии.",
+      "tts": {
+        "text": "Римляне выращивали персик в Италии, потому что получили его из Персии.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Шпинат пришёл в Европу через Испанию, его принесли торговцы из персидского мира.",
+      "text_markdown": "Шпинат пришёл в Европу через Испанию, его принесли торговцы из персидского мира.",
+      "tts": {
+        "text": "Шпинат пришёл в Европу через Испанию, его принесли торговцы из персидского мира.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Тюльпаны, символ Нидерландов, сначала выращивали в Персии и Турции, и только потом они попали в Голландию.",
+      "text_markdown": "Тюльпаны, символ Нидерландов, сначала выращивали в Персии и Турции, и только потом они попали в Голландию.",
+      "tts": {
+        "text": "Тюльпаны, символ Нидерландов, сначала выращивали в Персии и Турции, и только потом они попали в Голландию.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персия тоже многое заимствовала.",
+      "text_markdown": "Персия тоже многое заимствовала.",
+      "tts": {
+        "text": "Персия тоже многое заимствовала.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Монголы, которые вторглись в тринадцатом веке, принесли более сильную любовь к жареному и печёному мясу.",
+      "text_markdown": "Монголы, которые вторглись в тринадцатом веке, принесли более сильную любовь к жареному и печёному мясу.",
+      "tts": {
+        "text": "Монголы, которые вторглись в тринадцатом веке, принесли более сильную любовь к жареному и печёному мясу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Арабское земледелие принесло с юга и востока сахарный тростник, цитрусы и рис.",
+      "text_markdown": "Арабское земледелие принесло с юга и востока сахарный тростник, цитрусы и рис.",
+      "tts": {
+        "text": "Арабское земледелие принесло с юга и востока сахарный тростник, цитрусы и рис.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Самовар пришёл с севера, из России, в восемнадцатом веке.",
+      "text_markdown": "Самовар пришёл с севера, из России, в восемнадцатом веке.",
+      "tts": {
+        "text": "Самовар пришёл с севера, из России, в восемнадцатом веке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Греческий историк Геродот, писавший две тысячи пятьсот лет назад, говорил, что персы отмечали дни рождения щедрее любого другого дня в году.",
+      "text_markdown": "Греческий историк Геродот, писавший две тысячи пятьсот лет назад, говорил, что персы отмечали дни рождения щедрее любого другого дня в году.",
+      "tts": {
+        "text": "Греческий историк Геродот, писавший две тысячи пятьсот лет назад, говорил, что персы отмечали дни рождения щедрее любого другого дня в году.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "В этот день, писал он, на стол ставили больше обычного.",
+      "text_markdown": "В этот день, писал он, на стол ставили больше обычного.",
+      "tts": {
+        "text": "В этот день, писал он, на стол ставили больше обычного.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Кое что не изменилось.",
+      "text_markdown": "Кое что не изменилось.",
+      "tts": {
+        "text": "Кое что не изменилось.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Глава 7 — За персидским столом",
+      "text_markdown": "Глава 7 — За персидским столом"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "А теперь сядем за стол.",
+      "text_markdown": "А теперь сядем за стол.",
+      "tts": {
+        "text": "А теперь сядем за стол.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персидский год начинается в день весеннего равноденствия, примерно двадцать первого марта.",
+      "text_markdown": "Персидский год начинается в день весеннего равноденствия, примерно двадцать первого марта.",
+      "tts": {
+        "text": "Персидский год начинается в день весеннего равноденствия, примерно двадцать первого марта.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Этот праздник называется Навруз, Новый день.",
+      "text_markdown": "Этот праздник называется Навруз, Новый день.",
+      "tts": {
+        "text": "Этот праздник называется Навруз, Новый день.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Это самый важный праздник года.",
+      "text_markdown": "Это самый важный праздник года.",
+      "tts": {
+        "text": "Это самый важный праздник года.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Каждая семья накрывает особый стол, который называется хафт син.",
+      "text_markdown": "Каждая семья накрывает особый стол, который называется хафт син.",
+      "tts": {
+        "text": "Каждая семья накрывает особый стол, который называется хафт син.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Хафт значит семь.",
+      "text_markdown": "Хафт значит семь.",
+      "tts": {
+        "text": "Хафт значит семь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Син означает букву с. На стол кладут семь вещей, которые в персидском начинаются с этой буквы.",
+      "text_markdown": "Син означает букву с. На стол кладут семь вещей, которые в персидском начинаются с этой буквы.",
+      "tts": {
+        "text": "Син означает букву с. На стол кладут семь вещей, которые в персидском начинаются с этой буквы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Там есть сиб, яблоко.",
+      "text_markdown": "Там есть сиб, яблоко.",
+      "tts": {
+        "text": "Там есть сиб, яблоко.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Секке, монета.",
+      "text_markdown": "Секке, монета.",
+      "tts": {
+        "text": "Секке, монета.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Сонбол, цветок гиацинта.",
+      "text_markdown": "Сонбол, цветок гиацинта.",
+      "tts": {
+        "text": "Сонбол, цветок гиацинта.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Саману, сладкий пудинг из пшеницы.",
+      "text_markdown": "Саману, сладкий пудинг из пшеницы.",
+      "tts": {
+        "text": "Саману, сладкий пудинг из пшеницы.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Сенджед, сушёный плод дерева лох.",
+      "text_markdown": "Сенджед, сушёный плод дерева лох.",
+      "tts": {
+        "text": "Сенджед, сушёный плод дерева лох.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Сомаг, то есть сумах.",
+      "text_markdown": "Сомаг, то есть сумах.",
+      "tts": {
+        "text": "Сомаг, то есть сумах.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Серке, уксус.",
+      "text_markdown": "Серке, уксус.",
+      "tts": {
+        "text": "Серке, уксус.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Каждая вещь означает что то. Здоровье, богатство, красоту, терпение, любовь, восходящее солнце и ход времени.",
+      "text_markdown": "Каждая вещь означает что то. Здоровье, богатство, красоту, терпение, любовь, восходящее солнце и ход времени.",
+      "tts": {
+        "text": "Каждая вещь означает что то. Здоровье, богатство, красоту, терпение, любовь, восходящее солнце и ход времени.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На Новый год едят сабзи полоу с махи.",
+      "text_markdown": "На Новый год едят сабзи полоу с махи.",
+      "tts": {
+        "text": "На Новый год едят сабзи полоу с махи.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Это рис, густо зелёный от рубленых свежих трав, его подают с белой рыбой.",
+      "text_markdown": "Это рис, густо зелёный от рубленых свежих трав, его подают с белой рыбой.",
+      "tts": {
+        "text": "Это рис, густо зелёный от рубленых свежих трав, его подают с белой рыбой.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Весна на тарелке.",
+      "text_markdown": "Весна на тарелке.",
+      "tts": {
+        "text": "Весна на тарелке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ещё одна классика это аш реште, густой суп из фасоли, трав, жареного лука, кашка и лапши.",
+      "text_markdown": "Ещё одна классика это аш реште, густой суп из фасоли, трав, жареного лука, кашка и лапши.",
+      "tts": {
+        "text": "Ещё одна классика это аш реште, густой суп из фасоли, трав, жареного лука, кашка и лапши.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Персы говорят, что его стоит есть перед трудным решением.",
+      "text_markdown": "Персы говорят, что его стоит есть перед трудным решением.",
+      "tts": {
+        "text": "Персы говорят, что его стоит есть перед трудным решением.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Говорят, лапша распутывает нити судьбы.",
+      "text_markdown": "Говорят, лапша распутывает нити судьбы.",
+      "tts": {
+        "text": "Говорят, лапша распутывает нити судьбы.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Чайный дом тоже персидское изобретение.",
+      "text_markdown": "Чайный дом тоже персидское изобретение.",
+      "tts": {
+        "text": "Чайный дом тоже персидское изобретение.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Его называют кахвех хане, буквально кофейный дом, хотя теперь там пьют чай.",
+      "text_markdown": "Его называют кахвех хане, буквально кофейный дом, хотя теперь там пьют чай.",
+      "tts": {
+        "text": "Его называют кахвех хане, буквально кофейный дом, хотя теперь там пьют чай.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Уже пятьсот лет мужчины и женщины собираются там играть в нарды, слушать стихи и спорить о мире.",
+      "text_markdown": "Уже пятьсот лет мужчины и женщины собираются там играть в нарды, слушать стихи и спорить о мире.",
+      "tts": {
+        "text": "Уже пятьсот лет мужчины и женщины собираются там играть в нарды, слушать стихи и спорить о мире.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Многие великие персидские истории впервые рассказывали за дымящимся стаканом чая.",
+      "text_markdown": "Многие великие персидские истории впервые рассказывали за дымящимся стаканом чая.",
+      "tts": {
+        "text": "Многие великие персидские истории впервые рассказывали за дымящимся стаканом чая.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Знаменитый персидский врач Авиценна, живший тысячу лет назад, учил, что вся еда бывает либо горячей, либо холодной.",
+      "text_markdown": "Знаменитый персидский врач Авиценна, живший тысячу лет назад, учил, что вся еда бывает либо горячей, либо холодной.",
+      "tts": {
+        "text": "Знаменитый персидский врач Авиценна, живший тысячу лет назад, учил, что вся еда бывает либо горячей, либо холодной.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Шафран, грецкие орехи и баранина горячие.",
+      "text_markdown": "Шафран, грецкие орехи и баранина горячие.",
+      "tts": {
+        "text": "Шафран, грецкие орехи и баранина горячие.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Йогурт, огурец и арбуз холодные.",
+      "text_markdown": "Йогурт, огурец и арбуз холодные.",
+      "tts": {
+        "text": "Йогурт, огурец и арбуз холодные.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Хорошая трапеза уравновешивает их.",
+      "text_markdown": "Хорошая трапеза уравновешивает их.",
+      "tts": {
+        "text": "Хорошая трапеза уравновешивает их.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Во многих персидских домах эта мысль до сих пор жива за обедом.",
+      "text_markdown": "Во многих персидских домах эта мысль до сих пор жива за обедом.",
+      "tts": {
+        "text": "Во многих персидских домах эта мысль до сих пор жива за обедом.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Персидская кухня терпелива.",
+      "text_markdown": "Персидская кухня терпелива.",
+      "tts": {
+        "text": "Персидская кухня терпелива.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Она щедрая.",
+      "text_markdown": "Она щедрая.",
+      "tts": {
+        "text": "Она щедрая.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Она древняя.",
+      "text_markdown": "Она древняя.",
+      "tts": {
+        "text": "Она древняя.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "И её до сих пор готовят каждый день на миллионах плит.",
+      "text_markdown": "И её до сих пор готовят каждый день на миллионах плит.",
+      "tts": {
+        "text": "И её до сих пор готовят каждый день на миллионах плит.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "До свидания",
+      "text_markdown": "До свидания"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "На этом заканчивается наше короткое путешествие.",
+      "text_markdown": "На этом заканчивается наше короткое путешествие.",
+      "tts": {
+        "text": "На этом заканчивается наше короткое путешествие.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Надеюсь, вы узнали что то новое.",
+      "text_markdown": "Надеюсь, вы узнали что то новое.",
+      "tts": {
+        "text": "Надеюсь, вы узнали что то новое.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Надеюсь, что то на этих страницах разбудило ваш аппетит.",
+      "text_markdown": "Надеюсь, что то на этих страницах разбудило ваш аппетит.",
+      "tts": {
+        "text": "Надеюсь, что то на этих страницах разбудило ваш аппетит.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Шафран и рис.",
+      "text_markdown": "Шафран и рис.",
+      "tts": {
+        "text": "Шафран и рис.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Гранат и грецкий орех.",
+      "text_markdown": "Гранат и грецкий орех.",
+      "tts": {
+        "text": "Гранат и грецкий орех.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Маленькая сладость на маленькой тарелке.",
+      "text_markdown": "Маленькая сладость на маленькой тарелке.",
+      "tts": {
+        "text": "Маленькая сладость на маленькой тарелке.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Если сможете, найдите рядом персидский ресторан.",
+      "text_markdown": "Если сможете, найдите рядом персидский ресторан.",
+      "tts": {
+        "text": "Если сможете, найдите рядом персидский ресторан.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Или откройте персидскую кулинарную книгу.",
+      "text_markdown": "Или откройте персидскую кулинарную книгу.",
+      "tts": {
+        "text": "Или откройте персидскую кулинарную книгу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Попробуйте одно рагу.",
+      "text_markdown": "Попробуйте одно рагу.",
+      "tts": {
+        "text": "Попробуйте одно рагу.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Попробуйте чашку чая.",
+      "text_markdown": "Попробуйте чашку чая.",
+      "tts": {
+        "text": "Попробуйте чашку чая.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Эта кухня ждёт уже тысячи лет.",
+      "text_markdown": "Эта кухня ждёт уже тысячи лет.",
+      "tts": {
+        "text": "Эта кухня ждёт уже тысячи лет.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Она может подождать и вас.",
+      "text_markdown": "Она может подождать и вас.",
+      "tts": {
+        "text": "Она может подождать и вас.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Спасибо, что слушали.",
+      "text_markdown": "Спасибо, что слушали.",
+      "tts": {
+        "text": "Спасибо, что слушали.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Приготовьте что нибудь.",
+      "text_markdown": "Приготовьте что нибудь.",
+      "tts": {
+        "text": "Приготовьте что нибудь.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ешьте вместе с другими.",
+      "text_markdown": "Ешьте вместе с другими.",
+      "tts": {
+        "text": "Ешьте вместе с другими.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Меня зовут Kym.",
+      "text_markdown": "Меня зовут Kym.",
+      "tts": {
+        "text": "Меня зовут Ким.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "До свидания.",
+      "text_markdown": "До свидания.",
+      "tts": {
+        "text": "До свидания.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

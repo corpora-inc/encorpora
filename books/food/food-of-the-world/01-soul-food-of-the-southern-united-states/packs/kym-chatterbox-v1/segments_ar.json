@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "ar",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "ملاحظة للقارئ",
+      "text_markdown": "ملاحظة للقارئ"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا كتاب صغير عن طعام كبير.",
+      "text_markdown": "هذا كتاب صغير عن طعام كبير.",
+      "tts": {
+        "text": "هذا كتاب صغير عن طعام كبير.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "هذا الطعام هو سول فود، من جنوب الولايات المتحدة.",
+      "text_markdown": "هذا الطعام هو سول فود، من جنوب الولايات المتحدة.",
+      "tts": {
+        "text": "هذا الطعام هو سول فود، من جنوب الولايات المتحدة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سول فود طعام حقيقي.",
+      "text_markdown": "سول فود طعام حقيقي.",
+      "tts": {
+        "text": "سول فود طعام حقيقي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "الناس يطبخونه في البيت.",
+      "text_markdown": "الناس يطبخونه في البيت.",
+      "tts": {
+        "text": "الناس يطبخونه في البيت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "الناس يأكلونه يوم الأحد.",
+      "text_markdown": "الناس يأكلونه يوم الأحد.",
+      "tts": {
+        "text": "الناس يأكلونه يوم الأحد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ويأكله الناس يوم الثلاثاء أيضًا.",
+      "text_markdown": "ويأكله الناس يوم الثلاثاء أيضًا.",
+      "tts": {
+        "text": "ويأكله الناس يوم الثلاثاء أيضًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سنبدأ بالاسم.",
+      "text_markdown": "سنبدأ بالاسم.",
+      "tts": {
+        "text": "سنبدأ بالاسم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ثم سننظر إلى النباتات والحيوانات.",
+      "text_markdown": "ثم سننظر إلى النباتات والحيوانات.",
+      "tts": {
+        "text": "ثم سننظر إلى النباتات والحيوانات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ثم سننظر إلى القدور والمقالي.",
+      "text_markdown": "ثم سننظر إلى القدور والمقالي.",
+      "tts": {
+        "text": "ثم سننظر إلى القدور والمقالي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وفي النهاية، ستعرف ما الذي يوجد على الطبق، وستعرف من أين جاء.",
+      "text_markdown": "وفي النهاية، ستعرف ما الذي يوجد على الطبق، وستعرف من أين جاء.",
+      "tts": {
+        "text": "وفي النهاية، ستعرف ما الذي يوجد على الطبق، وستعرف من أين جاء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "ملاحظة للقارئ",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "اسمي Kym وسأحكي لك القصة.",
+      "text_markdown": "صديقة اسمها كيم ستحكي لك القصة.",
+      "tts": {
+        "text": "اسمي كيم وسأحكي لك القصة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الأول: ما هو سول فود",
+      "text_markdown": "الفصل الأول: ما هو سول فود"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "سول فود هو الطعام اليومي للعائلات السوداء في الجنوب الأمريكي.",
+      "text_markdown": "سول فود هو الطعام اليومي للعائلات السوداء في الجنوب الأمريكي.",
+      "tts": {
+        "text": "سول فود هو الطعام اليومي للعائلات السوداء في الجنوب الأمريكي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أصبح اسم \"سول فود\" شائعًا في ستينيات القرن العشرين.",
+      "text_markdown": "أصبح اسم \"سول فود\" شائعًا في ستينيات القرن العشرين.",
+      "tts": {
+        "text": "أصبح اسم \"سول فود\" شائعًا في ستينيات القرن العشرين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "جاءت كلمة \"سول\" من الموسيقى ومن الكنيسة.",
+      "text_markdown": "جاءت كلمة \"سول\" من الموسيقى ومن الكنيسة.",
+      "tts": {
+        "text": "جاءت كلمة \"سول\" من الموسيقى ومن الكنيسة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كانت تعني شيئًا عميقًا وصادقًا.",
+      "text_markdown": "كانت تعني شيئًا عميقًا وصادقًا.",
+      "tts": {
+        "text": "كانت تعني شيئًا عميقًا وصادقًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكانت تعني شيئًا أسود ومعتزًا بنفسه.",
+      "text_markdown": "وكانت تعني شيئًا أسود ومعتزًا بنفسه.",
+      "tts": {
+        "text": "وكانت تعني شيئًا أسود ومعتزًا بنفسه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لكن الطعام نفسه أقدم بكثير.",
+      "text_markdown": "لكن الطعام نفسه أقدم بكثير.",
+      "tts": {
+        "text": "لكن الطعام نفسه أقدم بكثير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "جاء من مطابخ المزارع في القرنين الثامن عشر والتاسع عشر.",
+      "text_markdown": "جاء من مطابخ المزارع في القرنين الثامن عشر والتاسع عشر.",
+      "tts": {
+        "text": "جاء من مطابخ المزارع في القرنين الثامن عشر والتاسع عشر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "أخذ الطهاة الأفارقة المستعبدون ما كان لديهم من نباتات وحيوانات، وصنعوا العشاء.",
+      "text_markdown": "أخذ الطهاة الأفارقة المستعبدون ما كان لديهم من نباتات وحيوانات، وصنعوا العشاء.",
+      "tts": {
+        "text": "أخذ الطهاة الأفارقة المستعبدون ما كان لديهم من نباتات وحيوانات، وصنعوا العشاء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "كان هؤلاء الطهاة بارعين جدًا.",
+      "text_markdown": "كان هؤلاء الطهاة بارعين جدًا.",
+      "tts": {
+        "text": "كان هؤلاء الطهاة بارعين جدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "عملوا بالقليل، وأطعموا كثيرين.",
+      "text_markdown": "عملوا بالقليل، وأطعموا كثيرين.",
+      "tts": {
+        "text": "عملوا بالقليل، وأطعموا كثيرين.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وحفظوا كل جزء من الخنزير.",
+      "text_markdown": "وحفظوا كل جزء من الخنزير.",
+      "tts": {
+        "text": "وحفظوا كل جزء من الخنزير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وجعلوا الخضار الورقية بطعم حلو.",
+      "text_markdown": "وجعلوا الخضار الورقية بطعم حلو.",
+      "tts": {
+        "text": "وجعلوا الخضار الورقية بطعم حلو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وحولوا دقيق الذرة إلى خبز، وإلى عصيدة، وإلى مئة شيء صغير.",
+      "text_markdown": "وحولوا دقيق الذرة إلى خبز، وإلى عصيدة، وإلى مئة شيء صغير.",
+      "tts": {
+        "text": "وحولوا دقيق الذرة إلى خبز، وإلى عصيدة، وإلى مئة شيء صغير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وعندما انتقلت العائلات السوداء إلى الشمال في القرن العشرين، أخذت الطعام معها.",
+      "text_markdown": "وعندما انتقلت العائلات السوداء إلى الشمال في القرن العشرين، أخذت الطعام معها.",
+      "tts": {
+        "text": "وعندما انتقلت العائلات السوداء إلى الشمال في القرن العشرين، أخذت الطعام معها.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والآن يوجد سول فود في شيكاغو، وفي نيويورك، وفي ديترويت، وفي كل بلدة جنوبية.",
+      "text_markdown": "والآن يوجد سول فود في شيكاغو، وفي نيويورك، وفي ديترويت، وفي كل بلدة جنوبية.",
+      "tts": {
+        "text": "والآن يوجد سول فود في شيكاغو، وفي نيويورك، وفي ديترويت، وفي كل بلدة جنوبية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "الفصل الأول: ما هو سول فود",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "لكن مركزه ما زال في الجنوب.",
+      "text_markdown": "لكن مركزه ما زال في الجنوب.",
+      "tts": {
+        "text": "لكن مركزه ما زال في الجنوب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثاني: المكونات",
+      "text_markdown": "الفصل الثاني: المكونات"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "لسول فود جذران كبيران.",
+      "text_markdown": "لسول فود جذران كبيران.",
+      "tts": {
+        "text": "لسول فود جذران كبيران.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أحدهما غرب أفريقيا.",
+      "text_markdown": "أحدهما غرب أفريقيا.",
+      "tts": {
+        "text": "أحدهما غرب أفريقيا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "والآخر هو الأمريكتان.",
+      "text_markdown": "والآخر هو الأمريكتان.",
+      "tts": {
+        "text": "والآخر هو الأمريكتان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومن غرب أفريقيا جاءت البامية.",
+      "text_markdown": "ومن غرب أفريقيا جاءت البامية.",
+      "tts": {
+        "text": "ومن غرب أفريقيا جاءت البامية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "البامية قرن أخضر.",
+      "text_markdown": "البامية قرن أخضر.",
+      "tts": {
+        "text": "البامية قرن أخضر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهي تنمو على نبتة طويلة.",
+      "text_markdown": "وهي تنمو على نبتة طويلة.",
+      "tts": {
+        "text": "وهي تنمو على نبتة طويلة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وعندما تطبخ، تصبح طرية ولزجة قليلًا.",
+      "text_markdown": "وعندما تطبخ، تصبح طرية ولزجة قليلًا.",
+      "tts": {
+        "text": "وعندما تطبخ، تصبح طرية ولزجة قليلًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وتدخل في غامبو، كما تُقلى بعد تغطيتها بدقيق الذرة.",
+      "text_markdown": "وتدخل في غامبو، كما تُقلى بعد تغطيتها بدقيق الذرة.",
+      "tts": {
+        "text": "وتدخل في غامبو، كما تُقلى بعد تغطيتها بدقيق الذرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وجاءت لوبيا العين السوداء من غرب أفريقيا أيضًا.",
+      "text_markdown": "وجاءت لوبيا العين السوداء من غرب أفريقيا أيضًا.",
+      "tts": {
+        "text": "وجاءت لوبيا العين السوداء من غرب أفريقيا أيضًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكذلك البطيخ.",
+      "text_markdown": "وكذلك البطيخ.",
+      "tts": {
+        "text": "وكذلك البطيخ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكذلك بذور السمسم.",
+      "text_markdown": "وكذلك بذور السمسم.",
+      "tts": {
+        "text": "وكذلك بذور السمسم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكان الطهاة الجنوبيون القدامى يسمون السمسم \"بيني\". وكانوا يضعون بيني في البسكويت وعلى الخبز.",
+      "text_markdown": "وكان الطهاة الجنوبيون القدامى يسمون السمسم \"بيني\". وكانوا يضعون بيني في البسكويت وعلى الخبز.",
+      "tts": {
+        "text": "وكان الطهاة الجنوبيون القدامى يسمون السمسم \"بيني\". وكانوا يضعون بيني في البسكويت وعلى الخبز.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وجاء الأرز عبر المحيط أيضًا.",
+      "text_markdown": "وجاء الأرز عبر المحيط أيضًا.",
+      "tts": {
+        "text": "وجاء الأرز عبر المحيط أيضًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان المزارعون الأفارقة يزرعون الأرز منذ ألف سنة.",
+      "text_markdown": "وكان المزارعون الأفارقة يزرعون الأرز منذ ألف سنة.",
+      "tts": {
+        "text": "وكان المزارعون الأفارقة يزرعون الأرز منذ ألف سنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وفي كارولاينا الجنوبية، بنت تلك المعرفة بلدات كاملة.",
+      "text_markdown": "وفي كارولاينا الجنوبية، بنت تلك المعرفة بلدات كاملة.",
+      "tts": {
+        "text": "وفي كارولاينا الجنوبية، بنت تلك المعرفة بلدات كاملة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومن الأمريكتين جاءت الذرة.",
+      "text_markdown": "ومن الأمريكتين جاءت الذرة.",
+      "tts": {
+        "text": "ومن الأمريكتين جاءت الذرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والذرة أصلها من المكسيك.",
+      "text_markdown": "والذرة أصلها من المكسيك.",
+      "tts": {
+        "text": "والذرة أصلها من المكسيك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وقد انتقلت شمالًا إلى الشيروكي والشوكتاو قبل وقت طويل من مجيء الإسبان.",
+      "text_markdown": "وقد انتقلت شمالًا إلى الشيروكي والشوكتاو قبل وقت طويل من مجيء الإسبان.",
+      "tts": {
+        "text": "وقد انتقلت شمالًا إلى الشيروكي والشوكتاو قبل وقت طويل من مجيء الإسبان.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ومن الأمريكتين أيضًا جاءت البطاطا الحلوة والفول السوداني وأنواع كثيرة من الفاصولياء.",
+      "text_markdown": "ومن الأمريكتين أيضًا جاءت البطاطا الحلوة والفول السوداني وأنواع كثيرة من الفاصولياء.",
+      "tts": {
+        "text": "ومن الأمريكتين أيضًا جاءت البطاطا الحلوة والفول السوداني وأنواع كثيرة من الفاصولياء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "الفصل الثاني: المكونات",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وسول فود هو ما حدث حين التقى هذان المخزونان في مطبخ واحد.",
+      "text_markdown": "وسول فود هو ما حدث حين التقى هذان المخزونان في مطبخ واحد.",
+      "tts": {
+        "text": "وسول فود هو ما حدث حين التقى هذان المخزونان في مطبخ واحد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الثالث: اللحوم والسمك",
+      "text_markdown": "الفصل الثالث: اللحوم والسمك"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "أهم لحم في سول فود هو لحم الخنزير.",
+      "text_markdown": "أهم لحم في سول فود هو لحم الخنزير.",
+      "tts": {
+        "text": "أهم لحم في سول فود هو لحم الخنزير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وكانت المزرعة الصغيرة تستطيع أن تربي خنزيرًا واحدًا.",
+      "text_markdown": "وكانت المزرعة الصغيرة تستطيع أن تربي خنزيرًا واحدًا.",
+      "tts": {
+        "text": "وكانت المزرعة الصغيرة تستطيع أن تربي خنزيرًا واحدًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان الخنزير يأكل البقايا.",
+      "text_markdown": "وكان الخنزير يأكل البقايا.",
+      "tts": {
+        "text": "وكان الخنزير يأكل البقايا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وفي الخريف، كانت العائلة تذبح الخنزير، وتستخدم كل جزء منه.",
+      "text_markdown": "وفي الخريف، كانت العائلة تذبح الخنزير، وتستخدم كل جزء منه.",
+      "tts": {
+        "text": "وفي الخريف، كانت العائلة تذبح الخنزير، وتستخدم كل جزء منه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكانوا يدخنون الفخذ.",
+      "text_markdown": "وكانوا يدخنون الفخذ.",
+      "tts": {
+        "text": "وكانوا يدخنون الفخذ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وكانوا يملحون اللحم المقدد.",
+      "text_markdown": "وكانوا يملحون اللحم المقدد.",
+      "tts": {
+        "text": "وكانوا يملحون اللحم المقدد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "وكانوا يطبخون الأقدام في الخل.",
+      "text_markdown": "وكانوا يطبخون الأقدام في الخل.",
+      "tts": {
+        "text": "وكانوا يطبخون الأقدام في الخل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "وكانوا يحتفظون بالدهن لعمل البسكويت.",
+      "text_markdown": "وكانوا يحتفظون بالدهن لعمل البسكويت.",
+      "tts": {
+        "text": "وكانوا يحتفظون بالدهن لعمل البسكويت.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "واللحم المهم التالي هو الدجاج.",
+      "text_markdown": "واللحم المهم التالي هو الدجاج.",
+      "tts": {
+        "text": "واللحم المهم التالي هو الدجاج.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وكان الدجاج يعيش في الساحة.",
+      "text_markdown": "وكان الدجاج يعيش في الساحة.",
+      "tts": {
+        "text": "وكان الدجاج يعيش في الساحة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكان يبيض في الصباح، ويصبح عشاء يوم الأحد.",
+      "text_markdown": "وكان يبيض في الصباح، ويصبح عشاء يوم الأحد.",
+      "tts": {
+        "text": "وكان يبيض في الصباح، ويصبح عشاء يوم الأحد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والدجاج المقلي هو أشهر طبق جنوبي.",
+      "text_markdown": "والدجاج المقلي هو أشهر طبق جنوبي.",
+      "tts": {
+        "text": "والدجاج المقلي هو أشهر طبق جنوبي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويُغلف الدجاج بالدقيق والملح والفلفل.",
+      "text_markdown": "ويُغلف الدجاج بالدقيق والملح والفلفل.",
+      "tts": {
+        "text": "ويُغلف الدجاج بالدقيق والملح والفلفل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ثم يُوضع في زيت ساخن.",
+      "text_markdown": "ثم يُوضع في زيت ساخن.",
+      "tts": {
+        "text": "ثم يُوضع في زيت ساخن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "فتصبح القشرة مقرمشة وذهبية.",
+      "text_markdown": "فتصبح القشرة مقرمشة وذهبية.",
+      "tts": {
+        "text": "فتصبح القشرة مقرمشة وذهبية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويعيش سمك السلور في الأنهار والبحيرات.",
+      "text_markdown": "ويعيش سمك السلور في الأنهار والبحيرات.",
+      "tts": {
+        "text": "ويعيش سمك السلور في الأنهار والبحيرات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويغلف الطهاة الجنوبيون سمك السلور بدقيق الذرة ويقلونه.",
+      "text_markdown": "ويغلف الطهاة الجنوبيون سمك السلور بدقيق الذرة ويقلونه.",
+      "tts": {
+        "text": "ويغلف الطهاة الجنوبيون سمك السلور بدقيق الذرة ويقلونه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ويأكلونه مع هش بابيز، وهي كرات صغيرة من دقيق الذرة المقلي.",
+      "text_markdown": "ويأكلونه مع هش بابيز، وهي كرات صغيرة من دقيق الذرة المقلي.",
+      "tts": {
+        "text": "ويأكلونه مع هش بابيز، وهي كرات صغيرة من دقيق الذرة المقلي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "الفصل الثالث: اللحوم والسمك",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "الاسم مضحك، لكن الطعام جاد.",
+      "text_markdown": "الاسم مضحك، لكن الطعام جاد.",
+      "tts": {
+        "text": "الاسم مضحك، لكن الطعام جاد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الرابع: طرق الطهي",
+      "text_markdown": "الفصل الرابع: طرق الطهي"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "تحمل ثلاث طرق في الطهي معظم سول فود، وهي القلي، والطهي البطيء في القدر، والتدخين.",
+      "text_markdown": "تحمل ثلاث طرق في الطهي معظم سول فود، وهي القلي، والطهي البطيء في القدر، والتدخين.",
+      "tts": {
+        "text": "تحمل ثلاث طرق في الطهي معظم سول فود، وهي القلي، والطهي البطيء في القدر، والتدخين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يكون القلي في مقلاة ثقيلة تسمى مقلاة من حديد الزهر.",
+      "text_markdown": "يكون القلي في مقلاة ثقيلة تسمى مقلاة من حديد الزهر.",
+      "tts": {
+        "text": "يكون القلي في مقلاة ثقيلة تسمى مقلاة من حديد الزهر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وحديد الزهر يحتفظ بالحرارة وقتًا طويلًا.",
+      "text_markdown": "وحديد الزهر يحتفظ بالحرارة وقتًا طويلًا.",
+      "tts": {
+        "text": "وحديد الزهر يحتفظ بالحرارة وقتًا طويلًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "والمقلاة الجيدة أقدم من الطاهي.",
+      "text_markdown": "والمقلاة الجيدة أقدم من الطاهي.",
+      "tts": {
+        "text": "والمقلاة الجيدة أقدم من الطاهي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وهي تنتقل من الأم إلى الابنة.",
+      "text_markdown": "وهي تنتقل من الأم إلى الابنة.",
+      "tts": {
+        "text": "وهي تنتقل من الأم إلى الابنة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويحدث الطهي البطيء في قدر كبير على الجزء الخلفي من الموقد.",
+      "text_markdown": "ويحدث الطهي البطيء في قدر كبير على الجزء الخلفي من الموقد.",
+      "tts": {
+        "text": "ويحدث الطهي البطيء في قدر كبير على الجزء الخلفي من الموقد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وتدخل الخضار الورقية إلى القدر لساعتين أو ثلاث ساعات.",
+      "text_markdown": "وتدخل الخضار الورقية إلى القدر لساعتين أو ثلاث ساعات.",
+      "tts": {
+        "text": "وتدخل الخضار الورقية إلى القدر لساعتين أو ثلاث ساعات.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وتدخل معها قطعة من لحم الخنزير المدخن من أجل النكهة.",
+      "text_markdown": "وتدخل معها قطعة من لحم الخنزير المدخن من أجل النكهة.",
+      "tts": {
+        "text": "وتدخل معها قطعة من لحم الخنزير المدخن من أجل النكهة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ويتحول الماء إلى مرق داكن وغني.",
+      "text_markdown": "ويتحول الماء إلى مرق داكن وغني.",
+      "tts": {
+        "text": "ويتحول الماء إلى مرق داكن وغني.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ويسمي الناس هذا المرق \"بوت ليكر\"، ويسكبونه فوق خبز الذرة.",
+      "text_markdown": "ويسمي الناس هذا المرق \"بوت ليكر\"، ويسكبونه فوق خبز الذرة.",
+      "tts": {
+        "text": "ويسمي الناس هذا المرق \"بوت ليكر\"، ويسكبونه فوق خبز الذرة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويحدث التدخين في الخارج، في بيت دخان أو في برميل.",
+      "text_markdown": "ويحدث التدخين في الخارج، في بيت دخان أو في برميل.",
+      "tts": {
+        "text": "ويحدث التدخين في الخارج، في بيت دخان أو في برميل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويحترق الخشب ببطء تحت اللحم.",
+      "text_markdown": "ويحترق الخشب ببطء تحت اللحم.",
+      "tts": {
+        "text": "ويحترق الخشب ببطء تحت اللحم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وخشب الهيكوري هو المفضل.",
+      "text_markdown": "وخشب الهيكوري هو المفضل.",
+      "tts": {
+        "text": "وخشب الهيكوري هو المفضل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ويصبغ الدخان اللحم باللون البني ويمنحه نكهة عميقة.",
+      "text_markdown": "ويصبغ الدخان اللحم باللون البني ويمنحه نكهة عميقة.",
+      "tts": {
+        "text": "ويصبغ الدخان اللحم باللون البني ويمنحه نكهة عميقة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ويدخن كتف الخنزير لساعات كثيرة، وأحيانًا ليوم كامل.",
+      "text_markdown": "ويدخن كتف الخنزير لساعات كثيرة، وأحيانًا ليوم كامل.",
+      "tts": {
+        "text": "ويدخن كتف الخنزير لساعات كثيرة، وأحيانًا ليوم كامل.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "الفصل الرابع: طرق الطهي",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والمطبخ الجنوبي الجيد فيه نار ووقت وعناية.",
+      "text_markdown": "والمطبخ الجنوبي الجيد فيه نار ووقت وعناية.",
+      "tts": {
+        "text": "والمطبخ الجنوبي الجيد فيه نار ووقت وعناية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل الخامس: الشواء الإقليمي",
+      "text_markdown": "الفصل الخامس: الشواء الإقليمي"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الجنوب، تعني كلمة \"باربكيو\" لحمًا يطهى ببطء على دخان الخشب.",
+      "text_markdown": "في الجنوب، تعني كلمة \"باربكيو\" لحمًا يطهى ببطء على دخان الخشب.",
+      "tts": {
+        "text": "في الجنوب، تعني كلمة \"باربكيو\" لحمًا يطهى ببطء على دخان الخشب.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ولكل منطقة طريقتها الخاصة.",
+      "text_markdown": "ولكل منطقة طريقتها الخاصة.",
+      "tts": {
+        "text": "ولكل منطقة طريقتها الخاصة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "في الكارولاينتين، يكون الباربكيو من لحم الخنزير.",
+      "text_markdown": "في الكارولاينتين، يكون الباربكيو من لحم الخنزير.",
+      "tts": {
+        "text": "في الكارولاينتين، يكون الباربكيو من لحم الخنزير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفي الجزء الشرقي من كارولاينا الشمالية، تُصنع الصلصة من الخل والفلفل.",
+      "text_markdown": "وفي الجزء الشرقي من كارولاينا الشمالية، تُصنع الصلصة من الخل والفلفل.",
+      "tts": {
+        "text": "وفي الجزء الشرقي من كارولاينا الشمالية، تُصنع الصلصة من الخل والفلفل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهي خفيفة ولاذعة.",
+      "text_markdown": "وهي خفيفة ولاذعة.",
+      "tts": {
+        "text": "وهي خفيفة ولاذعة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وفي كارولاينا الجنوبية، تكون الصلصة صفراء ومصنوعة من الخردل.",
+      "text_markdown": "وفي كارولاينا الجنوبية، تكون الصلصة صفراء ومصنوعة من الخردل.",
+      "tts": {
+        "text": "وفي كارولاينا الجنوبية، تكون الصلصة صفراء ومصنوعة من الخردل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "وهي حلوة قليلًا.",
+      "text_markdown": "وهي حلوة قليلًا.",
+      "tts": {
+        "text": "وهي حلوة قليلًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي ممفيس، في ولاية تينيسي، يكون اللحم هو أضلاع الخنزير.",
+      "text_markdown": "وفي ممفيس، في ولاية تينيسي، يكون اللحم هو أضلاع الخنزير.",
+      "tts": {
+        "text": "وفي ممفيس، في ولاية تينيسي، يكون اللحم هو أضلاع الخنزير.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وتفرك الأضلاع بخليط جاف من الملح والفلفل وتوابل كثيرة.",
+      "text_markdown": "وتفرك الأضلاع بخليط جاف من الملح والفلفل وتوابل كثيرة.",
+      "tts": {
+        "text": "وتفرك الأضلاع بخليط جاف من الملح والفلفل وتوابل كثيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "اللحم هو النجم، والصلصة ليست الأساس.",
+      "text_markdown": "اللحم هو النجم، والصلصة ليست الأساس.",
+      "tts": {
+        "text": "اللحم هو النجم، والصلصة ليست الأساس.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي تكساس، يكون الباربكيو من لحم البقر.",
+      "text_markdown": "وفي تكساس، يكون الباربكيو من لحم البقر.",
+      "tts": {
+        "text": "وفي تكساس، يكون الباربكيو من لحم البقر.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويُسمى هذا الجزء بريسكيت.",
+      "text_markdown": "ويُسمى هذا الجزء بريسكيت.",
+      "tts": {
+        "text": "ويُسمى هذا الجزء بريسكيت.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ويُدخن من اثنتي عشرة إلى أربع عشرة ساعة على خشب البلوط.",
+      "text_markdown": "ويُدخن من اثنتي عشرة إلى أربع عشرة ساعة على خشب البلوط.",
+      "tts": {
+        "text": "ويُدخن من اثنتي عشرة إلى أربع عشرة ساعة على خشب البلوط.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وعندما يكون كما يجب، يمكنك أن تمزقه بأصابعك.",
+      "text_markdown": "وعندما يكون كما يجب، يمكنك أن تمزقه بأصابعك.",
+      "tts": {
+        "text": "وعندما يكون كما يجب، يمكنك أن تمزقه بأصابعك.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي كانساس سيتي، يكون الباربكيو من لحوم كثيرة، مثل الخنزير والبقر والدجاج وحتى النقانق.",
+      "text_markdown": "وفي كانساس سيتي، يكون الباربكيو من لحوم كثيرة، مثل الخنزير والبقر والدجاج وحتى النقانق.",
+      "tts": {
+        "text": "وفي كانساس سيتي، يكون الباربكيو من لحوم كثيرة، مثل الخنزير والبقر والدجاج وحتى النقانق.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والصلصة كثيفة وحلوة وحمراء، ومصنوعة من الطماطم والدبس.",
+      "text_markdown": "والصلصة كثيفة وحلوة وحمراء، ومصنوعة من الطماطم والدبس.",
+      "tts": {
+        "text": "والصلصة كثيفة وحلوة وحمراء، ومصنوعة من الطماطم والدبس.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "الفصل الخامس: الشواء الإقليمي",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وخريطة الباربكيو الجنوبي هي خريطة مناطق وأنهار.",
+      "text_markdown": "وخريطة الباربكيو الجنوبي هي خريطة مناطق وأنهار.",
+      "tts": {
+        "text": "وخريطة الباربكيو الجنوبي هي خريطة مناطق وأنهار.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السادس: الطبق الكلاسيكي",
+      "text_markdown": "الفصل السادس: الطبق الكلاسيكي"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "طبق عشاء يوم الأحد يكون ممتلئًا.",
+      "text_markdown": "طبق عشاء يوم الأحد يكون ممتلئًا.",
+      "tts": {
+        "text": "طبق عشاء يوم الأحد يكون ممتلئًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي الوسط يوجد دجاج مقلي.",
+      "text_markdown": "وفي الوسط يوجد دجاج مقلي.",
+      "tts": {
+        "text": "وفي الوسط يوجد دجاج مقلي.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وإلى جانب الدجاج توجد مغرفة من البطاطا المهروسة مع صلصة بنية.",
+      "text_markdown": "وإلى جانب الدجاج توجد مغرفة من البطاطا المهروسة مع صلصة بنية.",
+      "tts": {
+        "text": "وإلى جانب الدجاج توجد مغرفة من البطاطا المهروسة مع صلصة بنية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وعلى أحد الجانبين توجد كومة من أوراق الكولارد المطهية ببطء مع لحم خنزير مدخن.",
+      "text_markdown": "وعلى أحد الجانبين توجد كومة من أوراق الكولارد المطهية ببطء مع لحم خنزير مدخن.",
+      "tts": {
+        "text": "وعلى أحد الجانبين توجد كومة من أوراق الكولارد المطهية ببطء مع لحم خنزير مدخن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وهذه الأوراق داكنة وطرية.",
+      "text_markdown": "وهذه الأوراق داكنة وطرية.",
+      "tts": {
+        "text": "وهذه الأوراق داكنة وطرية.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وعلى الجانب الآخر توجد مكرونة بالجبن، مخبوزة حتى يصير أعلاها ذهبيًا ومقرمشًا.",
+      "text_markdown": "وعلى الجانب الآخر توجد مكرونة بالجبن، مخبوزة حتى يصير أعلاها ذهبيًا ومقرمشًا.",
+      "tts": {
+        "text": "وعلى الجانب الآخر توجد مكرونة بالجبن، مخبوزة حتى يصير أعلاها ذهبيًا ومقرمشًا.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويضيف كثير من الطهاة طبقة من الجبن فوقها.",
+      "text_markdown": "ويضيف كثير من الطهاة طبقة من الجبن فوقها.",
+      "tts": {
+        "text": "ويضيف كثير من الطهاة طبقة من الجبن فوقها.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويوجد خبز الذرة على المائدة.",
+      "text_markdown": "ويوجد خبز الذرة على المائدة.",
+      "tts": {
+        "text": "ويوجد خبز الذرة على المائدة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويُصنع خبز الذرة من دقيق الذرة الأصفر ويُخبز في مقلاة حديدية ساخنة.",
+      "text_markdown": "ويُصنع خبز الذرة من دقيق الذرة الأصفر ويُخبز في مقلاة حديدية ساخنة.",
+      "tts": {
+        "text": "ويُصنع خبز الذرة من دقيق الذرة الأصفر ويُخبز في مقلاة حديدية ساخنة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهو ثقيل قليلًا، وحلو قليلًا، ومثالي مع الزبدة.",
+      "text_markdown": "وهو ثقيل قليلًا، وحلو قليلًا، ومثالي مع الزبدة.",
+      "tts": {
+        "text": "وهو ثقيل قليلًا، وحلو قليلًا، ومثالي مع الزبدة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وللشرب، يوجد شاي حلو.",
+      "text_markdown": "وللشرب، يوجد شاي حلو.",
+      "tts": {
+        "text": "وللشرب، يوجد شاي حلو.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والشاي الحلو هو شاي أسود يُحضَّر قويًا ويُخلط بالسكر وهو ساخن.",
+      "text_markdown": "والشاي الحلو هو شاي أسود يُحضَّر قويًا ويُخلط بالسكر وهو ساخن.",
+      "tts": {
+        "text": "والشاي الحلو هو شاي أسود يُحضَّر قويًا ويُخلط بالسكر وهو ساخن.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ويُقدَّم باردًا فوق الثلج.",
+      "text_markdown": "ويُقدَّم باردًا فوق الثلج.",
+      "tts": {
+        "text": "ويُقدَّم باردًا فوق الثلج.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وبعد العشاء تأتي الفطيرة.",
+      "text_markdown": "وبعد العشاء تأتي الفطيرة.",
+      "tts": {
+        "text": "وبعد العشاء تأتي الفطيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وفطيرة البطاطا الحلوة هي الفطيرة الأكثر جنوبية.",
+      "text_markdown": "وفطيرة البطاطا الحلوة هي الفطيرة الأكثر جنوبية.",
+      "tts": {
+        "text": "وفطيرة البطاطا الحلوة هي الفطيرة الأكثر جنوبية.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وهي بنية وناعمة ودافئة مع القرفة وجوزة الطيب.",
+      "text_markdown": "وهي بنية وناعمة ودافئة مع القرفة وجوزة الطيب.",
+      "tts": {
+        "text": "وهي بنية وناعمة ودافئة مع القرفة وجوزة الطيب.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "الفصل السادس: الطبق الكلاسيكي",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا هو الطبق الكلاسيكي.",
+      "text_markdown": "هذا هو الطبق الكلاسيكي.",
+      "tts": {
+        "text": "هذا هو الطبق الكلاسيكي.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "الفصل السابع: المائدة",
+      "text_markdown": "الفصل السابع: المائدة"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "يحدث العشاء الجنوبي على المائدة، والجميع معًا.",
+      "text_markdown": "يحدث العشاء الجنوبي على المائدة، والجميع معًا.",
+      "tts": {
+        "text": "يحدث العشاء الجنوبي على المائدة، والجميع معًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويُجلب الطعام إلى المائدة في أوعية كبيرة وعلى أطباق كبيرة.",
+      "text_markdown": "ويُجلب الطعام إلى المائدة في أوعية كبيرة وعلى أطباق كبيرة.",
+      "tts": {
+        "text": "ويُجلب الطعام إلى المائدة في أوعية كبيرة وعلى أطباق كبيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "يُسمى هذا \"التقديم العائلي\". وكل شخص يمرر الوعاء إلى الذي يليه.",
+      "text_markdown": "يُسمى هذا \"التقديم العائلي\". وكل شخص يمرر الوعاء إلى الذي يليه.",
+      "tts": {
+        "text": "يُسمى هذا \"التقديم العائلي\". وكل شخص يمرر الوعاء إلى الذي يليه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "وكل شخص يأخذ ما يريد.",
+      "text_markdown": "وكل شخص يأخذ ما يريد.",
+      "tts": {
+        "text": "وكل شخص يأخذ ما يريد.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والشوك والسكاكين بسيطة.",
+      "text_markdown": "والشوك والسكاكين بسيطة.",
+      "tts": {
+        "text": "والشوك والسكاكين بسيطة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ولا يوجد ترتيب خاص.",
+      "text_markdown": "ولا يوجد ترتيب خاص.",
+      "tts": {
+        "text": "ولا يوجد ترتيب خاص.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "يمكنك أن تأكل الدجاج بالشوكة، أو ترفعه بيديك.",
+      "text_markdown": "يمكنك أن تأكل الدجاج بالشوكة، أو ترفعه بيديك.",
+      "tts": {
+        "text": "يمكنك أن تأكل الدجاج بالشوكة، أو ترفعه بيديك.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "وكلتا الطريقتين بخير.",
+      "text_markdown": "وكلتا الطريقتين بخير.",
+      "tts": {
+        "text": "وكلتا الطريقتين بخير.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ويُكسر خبز الذرة باليد، ولا يُقطع أبدًا بالسكين.",
+      "text_markdown": "ويُكسر خبز الذرة باليد، ولا يُقطع أبدًا بالسكين.",
+      "tts": {
+        "text": "ويُكسر خبز الذرة باليد، ولا يُقطع أبدًا بالسكين.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وقبل الوجبة، يقول أحدهم غالبًا صلاة قصيرة.",
+      "text_markdown": "وقبل الوجبة، يقول أحدهم غالبًا صلاة قصيرة.",
+      "tts": {
+        "text": "وقبل الوجبة، يقول أحدهم غالبًا صلاة قصيرة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ويشكرون الله على الطعام وعلى الطهاة.",
+      "text_markdown": "ويشكرون الله على الطعام وعلى الطهاة.",
+      "tts": {
+        "text": "ويشكرون الله على الطعام وعلى الطهاة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وإذا كنت ضيفًا، فسيقال لك أن تأخذ المزيد، ثم المزيد، ثم المزيد.",
+      "text_markdown": "وإذا كنت ضيفًا، فسيقال لك أن تأخذ المزيد، ثم المزيد، ثم المزيد.",
+      "tts": {
+        "text": "وإذا كنت ضيفًا، فسيقال لك أن تأخذ المزيد، ثم المزيد، ثم المزيد.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "وعليك أن تقول نعم مرتين على الأقل.",
+      "text_markdown": "وعليك أن تقول نعم مرتين على الأقل.",
+      "tts": {
+        "text": "وعليك أن تقول نعم مرتين على الأقل.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ولا يجوز أن تغادر جائعًا.",
+      "text_markdown": "ولا يجوز أن تغادر جائعًا.",
+      "tts": {
+        "text": "ولا يجوز أن تغادر جائعًا.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "وفي نهاية الوجبة، لا يستعجل أحد أن يقف.",
+      "text_markdown": "وفي نهاية الوجبة، لا يستعجل أحد أن يقف.",
+      "tts": {
+        "text": "وفي نهاية الوجبة، لا يستعجل أحد أن يقف.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "الفصل السابع: المائدة",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والحديث هو نصف العشاء.",
+      "text_markdown": "والحديث هو نصف العشاء.",
+      "tts": {
+        "text": "والحديث هو نصف العشاء.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "عن هذا الكتاب",
+      "text_markdown": "عن هذا الكتاب"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "هذا هو الكتاب الأول في سلسلة طعام العالم.",
+      "text_markdown": "هذا هو الكتاب الأول في سلسلة طعام العالم.",
+      "tts": {
+        "text": "هذا هو الكتاب الأول في سلسلة طعام العالم.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "أنا صديقك Kym، وأقرأه لك بصوت عال.",
+      "text_markdown": "وتقرأه كيم بصوت عال.",
+      "tts": {
+        "text": "أنا صديقك كيم، وأقرأه لك بصوت عال.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "كل جملة قصيرة وواضحة حتى تستطيع أن تقرأ معه بأي لغة.",
+      "text_markdown": "كل جملة قصيرة وواضحة حتى تستطيع أن تقرأ معه بأي لغة.",
+      "tts": {
+        "text": "كل جملة قصيرة وواضحة حتى تستطيع أن تقرأ معه بأي لغة.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "إذا أردت أن تسمع كيف تبدو جملة في لغة أخرى، فاستمع إلى الكتاب نفسه بتلك اللغة.",
+      "text_markdown": "إذا أردت أن تسمع كيف تبدو جملة في لغة أخرى، فاستمع إلى الكتاب نفسه بتلك اللغة.",
+      "tts": {
+        "text": "إذا أردت أن تسمع كيف تبدو جملة في لغة أخرى، فاستمع إلى الكتاب نفسه بتلك اللغة.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "والكلمات على الصفحة ستطابق ما تسمعه.",
+      "text_markdown": "والكلمات على الصفحة ستطابق ما تسمعه.",
+      "tts": {
+        "text": "والكلمات على الصفحة ستطابق ما تسمعه.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "هكذا تتعلم.",
+      "text_markdown": "هكذا تتعلم.",
+      "tts": {
+        "text": "هكذا تتعلم.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "عن هذا الكتاب",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "والآن اذهب وابحث عن طعام طيب، وعن صديق تشاركه إياه.",
+      "text_markdown": "والآن اذهب وابحث عن طعام طيب، وعن صديق تشاركه إياه.",
+      "tts": {
+        "text": "والآن اذهب وابحث عن طعام طيب، وعن صديق تشاركه إياه.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

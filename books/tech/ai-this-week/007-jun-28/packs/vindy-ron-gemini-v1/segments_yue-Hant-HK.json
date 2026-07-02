@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "yue-Hant-HK",
+  "total_segments": 142,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "歡迎收睇《本週AI》。",
+      "text_markdown": "歡迎收睇《本週AI》。",
+      "title": "",
+      "tts": {
+        "text": "歡迎收睇《本週AI》。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "我係Vindy。",
+      "text_markdown": "我係Vindy。",
+      "title": "",
+      "tts": {
+        "text": "我係Vindy。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "一如既往，Ron喺我身邊。",
+      "text_markdown": "一如既往，Ron喺我身邊。",
+      "title": "",
+      "tts": {
+        "text": "一如既往，Ron喺我身邊。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "好開心喺度，Vindy。",
+      "text_markdown": "好開心喺度，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "好開心喺度，Vindy。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "今日係2026年6月28日，星期日。",
+      "text_markdown": "今日係2026年6月28日，星期日。",
+      "title": "",
+      "tts": {
+        "text": "今日係二零二六年六月二十八日，星期日。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "上星期我哋講到發電廠同資產負債表。",
+      "text_markdown": "上星期我哋講到發電廠同資產負債表。",
+      "title": "",
+      "tts": {
+        "text": "上星期我哋講到發電廠同資產負債表。",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "今個星期我哋返番嚟工作台，探討一個現時貫穿整個領域嘅問題。",
+      "text_markdown": "今個星期我哋返番嚟工作台，探討一個現時貫穿整個領域嘅問題。",
+      "title": "",
+      "tts": {
+        "text": "今個星期我哋返番嚟工作台，探討一個現時貫穿整個領域嘅問題。",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "當一個模型展示出驚人嘅數字，或者展現出強大嘅技能——呢種能力係咪真實嘅？又係咪真係屬於你嘅？",
+      "text_markdown": "當一個模型展示出驚人嘅數字，或者展現出強大嘅技能——呢種能力係咪真實嘅？又係咪真係屬於你嘅？",
+      "title": "",
+      "tts": {
+        "text": "當一個模型展示出驚人嘅數字，或者展現出強大嘅技能——呢種能力係咪真實嘅？又係咪真係屬於你嘅？",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "稍後將會介紹一個有2.3億個參數、可以喺手機上運行嘅模型，以及來自Qwen實驗室嘅一個開放代理世界模型。",
+      "text_markdown": "稍後將會介紹一個有2.3億個參數、可以喺手機上運行嘅模型，以及來自Qwen實驗室嘅一個開放代理世界模型。",
+      "title": "",
+      "tts": {
+        "text": "稍後將會介紹一個有二億三千萬個參數、可以喺手機上運行嘅模型，以及來自Qwen實驗室嘅一個開放代理世界模型。",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "之後會講一個研究，佢靜悄悄咁將一個前沿模型嘅編碼分數扣咗14分。",
+      "text_markdown": "之後會講一個研究，佢靜悄悄咁將一個前沿模型嘅編碼分數扣咗14分。",
+      "title": "",
+      "tts": {
+        "text": "之後會講一個研究，佢靜悄悄咁將一個前沿模型嘅編碼分數扣咗十四分。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "之後係頭條新聞——一個由政府把關嘅模型預覽，同埋一個部分由模型本身設計嘅自訂晶片。",
+      "text_markdown": "之後係頭條新聞——一個由政府把關嘅模型預覽，同埋一個部分由模型本身設計嘅自訂晶片。",
+      "title": "",
+      "tts": {
+        "text": "之後係頭條新聞——一個由政府把關嘅模型預覽，同埋一個部分由模型本身設計嘅自訂晶片。",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "而頭條新聞係，Anthropic指控阿里巴巴大規模抄襲Claude。",
+      "text_markdown": "而頭條新聞係，Anthropic指控阿里巴巴大規模抄襲Claude。",
+      "title": "",
+      "tts": {
+        "text": "而頭條新聞係，Anthropic指控阿里巴巴大規模抄襲Claude。",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron，我哋由開源權重領域講起，今個星期嘅新聞好細——係特登嘅。",
+      "text_markdown": "Ron，我哋由開源權重領域講起，今個星期嘅新聞好細——係特登嘅。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我哋由開源權重領域講起，今個星期嘅新聞好細——係特登嘅。",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "尋日，Liquid AI發布咗LFM 2.5，而佢嘅重點就係佢有幾細。",
+      "text_markdown": "尋日，Liquid AI發布咗LFM 2.5，而佢嘅重點就係佢有幾細。",
+      "title": "",
+      "tts": {
+        "text": "尋日，Liquid AI發布咗L F M 二點五，而佢嘅重點就係佢有幾細。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "2.3億個參數——佢哋發布過最細嘅模型。",
+      "text_markdown": "2.3億個參數——佢哋發布過最細嘅模型。",
+      "title": "",
+      "tts": {
+        "text": "二億三千萬個參數——佢哋發布過最細嘅模型。",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "2.3億——俾我哋了解吓呢個規模。",
+      "text_markdown": "2.3億——俾我哋了解吓呢個規模。",
+      "title": "",
+      "tts": {
+        "text": "二億三千萬——俾我哋了解吓呢個規模。",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "細到權重唔夠400MB，即係話佢可以裝落手機，仲有好多位剩。",
+      "text_markdown": "細到權重唔夠400MB，即係話佢可以裝落手機，仲有好多位剩。",
+      "title": "",
+      "tts": {
+        "text": "細到權重唔夠四百兆字節，即係話佢可以裝落手機，仲有好多位剩。",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Liquid話，佢喺Galaxy S25 Ultra上每秒運行大約213個token，喺Raspberry Pi 5上大約42個。",
+      "text_markdown": "Liquid話，佢喺Galaxy S25 Ultra上每秒運行大約213個token，喺Raspberry Pi 5上大約42個。",
+      "title": "",
+      "tts": {
+        "text": "Liquid話，佢喺Galaxy S二十五 Ultra上每秒運行大約二百一十三個token，喺Raspberry Pi 五上大約四十二個。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "所以呢個係一個真正嘅裝置上模型。",
+      "text_markdown": "所以呢個係一個真正嘅裝置上模型。",
+      "title": "",
+      "tts": {
+        "text": "所以呢個係一個真正嘅裝置上模型。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "完全係——冇伺服器參與，冇API密鑰，模型就喺裝置上面。",
+      "text_markdown": "完全係——冇伺服器參與，冇API密鑰，模型就喺裝置上面。",
+      "title": "",
+      "tts": {
+        "text": "完全係——冇伺服器參與，冇API密鑰，模型就喺裝置上面。",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "而開源社群最關心嘅係，佢喺第一日就支援llama.cpp、MLX、vLLM、SGLang同ONNX。",
+      "text_markdown": "而開源社群最關心嘅係，佢喺第一日就支援llama.cpp、MLX、vLLM、SGLang同ONNX。",
+      "title": "",
+      "tts": {
+        "text": "而開源社群最關心嘅係，佢喺第一日就支援llama點cpp、M L X、v L L M、S G Lang同O N N X。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "解釋吓點解第一日就支援咁重要。",
+      "text_markdown": "解釋吓點解第一日就支援咁重要。",
+      "title": "",
+      "tts": {
+        "text": "解釋吓點解第一日就支援咁重要。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "因為一個你實際上載入唔到嘅模型，只係一份新聞稿，而唔係真正嘅發布。",
+      "text_markdown": "因為一個你實際上載入唔到嘅模型，只係一份新聞稿，而唔係真正嘅發布。",
+      "title": "",
+      "tts": {
+        "text": "因為一個你實際上載入唔到嘅模型，只係一份新聞稿，而唔係真正嘅發布。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "喺第一日就支援所有主要運行時，意味住無論係用手提電腦嘅業餘愛好者，定係用伺服器嘅團隊，都可以喺同一個下晝運行佢。",
+      "text_markdown": "喺第一日就支援所有主要運行時，意味住無論係用手提電腦嘅業餘愛好者，定係用伺服器嘅團隊，都可以喺同一個下晝運行佢。",
+      "title": "",
+      "tts": {
+        "text": "喺第一日就支援所有主要運行時，意味住無論係用手提電腦嘅業餘愛好者，定係用伺服器嘅團隊，都可以喺同一個下晝運行佢。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "咁呢個咁細嘅模型實際上有咩用呢？",
+      "text_markdown": "咁呢個咁細嘅模型實際上有咩用呢？",
+      "title": "",
+      "tts": {
+        "text": "咁呢個咁細嘅模型實際上有咩用呢？",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "唔係為咗開放式對話——佢係為咗狹窄、快速嘅任務而設計，例如指令遵循同從文本中提取結構化欄位。",
+      "text_markdown": "唔係為咗開放式對話——佢係為咗狹窄、快速嘅任務而設計，例如指令遵循同從文本中提取結構化欄位。",
+      "title": "",
+      "tts": {
+        "text": "唔係為咗開放式對話——佢係為咗狹窄、快速嘅任務而設計，例如指令遵循同從文本中提取結構化欄位。",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Liquid聲稱，喺呢啲任務上，佢擊敗咗8億參數嘅Qwen 3.5同10億參數嘅Gemma 3。",
+      "text_markdown": "Liquid聲稱，喺呢啲任務上，佢擊敗咗8億參數嘅Qwen 3.5同10億參數嘅Gemma 3。",
+      "title": "",
+      "tts": {
+        "text": "Liquid聲稱，喺呢啲任務上，佢擊敗咗八億參數嘅Qwen 三點五同十億參數嘅Gemma 三。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "講吓佢嘅架構。",
+      "text_markdown": "講吓佢嘅架構。",
+      "title": "",
+      "tts": {
+        "text": "講吓佢嘅架構。",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢係一個混合體——大部分層都係Liquid設計嘅門控卷積，只係混合咗少量注意力層。",
+      "text_markdown": "佢係一個混合體——大部分層都係Liquid設計嘅門控卷積，只係混合咗少量注意力層。",
+      "title": "",
+      "tts": {
+        "text": "佢係一個混合體——大部分層都係Liquid設計嘅門控卷積，只係混合咗少量注意力層。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "就係咁樣，佢先可以喺完全冇顯示卡嘅裝置上保持快速同低成本。",
+      "text_markdown": "就係咁樣，佢先可以喺完全冇顯示卡嘅裝置上保持快速同低成本。",
+      "title": "",
+      "tts": {
+        "text": "就係咁樣，佢先可以喺完全冇顯示卡嘅裝置上保持快速同低成本。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "好啦，今個星期另一個開源發佈更大、更奇怪。",
+      "text_markdown": "好啦，今個星期另一個開源發佈更大、更奇怪。",
+      "title": "",
+      "tts": {
+        "text": "好啦，今個星期另一個開源發佈更大、更奇怪。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "阿里巴巴嘅Qwen團隊發佈咗Qwen AgentWorld，佢唔係一個聊天機械人。",
+      "text_markdown": "阿里巴巴嘅Qwen團隊發佈咗Qwen AgentWorld，佢唔係一個聊天機械人。",
+      "title": "",
+      "tts": {
+        "text": "阿里巴巴嘅Qwen團隊發佈咗Qwen AgentWorld，佢唔係一個聊天機械人。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢哋稱之為語言世界模型——總共有三百五十億個參數，但係每次只會啟用三十億個。",
+      "text_markdown": "佢哋稱之為語言世界模型——總共有三百五十億個參數，但係每次只會啟用三十億個。",
+      "title": "",
+      "tts": {
+        "text": "佢哋稱之為語言世界模型——總共有三百五十億個參數，但係每次只會啟用三十億個。",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "一個世界模型——為我哋解釋下呢個詞語。",
+      "text_markdown": "一個世界模型——為我哋解釋下呢個詞語。",
+      "title": "",
+      "tts": {
+        "text": "一個世界模型——為我哋解釋下呢個詞語。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢唔係回答問題，而係喺文本中模擬一個環境，咁代理就可以採取行動，模型就會描述接下來會發生咩事。",
+      "text_markdown": "佢唔係回答問題，而係喺文本中模擬一個環境，咁代理就可以採取行動，模型就會描述接下來會發生咩事。",
+      "title": "",
+      "tts": {
+        "text": "佢唔係回答問題，而係喺文本中模擬一個環境，咁代理就可以採取行動，模型就會描述接下來會發生咩事。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "你用佢嚟訓練其他代理——佢扮演世界，等代理可以喺入面練習。",
+      "text_markdown": "你用佢嚟訓練其他代理——佢扮演世界，等代理可以喺入面練習。",
+      "title": "",
+      "tts": {
+        "text": "你用佢嚟訓練其他代理——佢扮演世界，等代理可以喺入面練習。",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "而許可證就係嗰度嘅重點。",
+      "text_markdown": "而許可證就係嗰度嘅重點。",
+      "title": "",
+      "tts": {
+        "text": "而許可證就係嗰度嘅重點。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Apache 2.0，權重喺Hugging Face上面，允許商業用途——佢哋用嚟訓練嘅基準測試亦都一齊發佈咗。",
+      "text_markdown": "Apache 2.0，權重喺Hugging Face上面，允許商業用途——佢哋用嚟訓練嘅基準測試亦都一齊發佈咗。",
+      "title": "",
+      "tts": {
+        "text": "Apache 二點零，權重喺Hugging Face上面，允許商業用途——佢哋用嚟訓練嘅基準測試亦都一齊發佈咗。",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "一日之內就有量化版本可以喺本地運行。",
+      "text_markdown": "一日之內就有量化版本可以喺本地運行。",
+      "title": "",
+      "tts": {
+        "text": "一日之內就有量化版本可以喺本地運行。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "而家將呢個同另一個方向嘅發佈做個對比。",
+      "text_markdown": "而家將呢個同另一個方向嘅發佈做個對比。",
+      "title": "",
+      "tts": {
+        "text": "而家將呢個同另一個方向嘅發佈做個對比。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "星期一，Sakana AI推出咗一個叫做Fugu嘅嘢，而Fugu就係今個星期嘅反開源故事。",
+      "text_markdown": "星期一，Sakana AI推出咗一個叫做Fugu嘅嘢，而Fugu就係今個星期嘅反開源故事。",
+      "title": "",
+      "tts": {
+        "text": "星期一，Sakana AI推出咗一個叫做Fugu嘅嘢，而Fugu就係今個星期嘅反開源故事。",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢唔係一個你可以下載嘅模型——佢係一個編排服務，透過一個API將你嘅請求路由到其他公司嘅前沿模型池。",
+      "text_markdown": "佢唔係一個你可以下載嘅模型——佢係一個編排服務，透過一個API將你嘅請求路由到其他公司嘅前沿模型池。",
+      "title": "",
+      "tts": {
+        "text": "佢唔係一個你可以下載嘅模型——佢係一個編排服務，透過一個API將你嘅請求路由到其他公司嘅前沿模型池。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "咁你喺嗰度實際買緊啲咩？",
+      "text_markdown": "咁你喺嗰度實際買緊啲咩？",
+      "title": "",
+      "tts": {
+        "text": "咁你喺嗰度實際買緊啲咩？",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "一個路由器，作為產品出售，每百萬個輸入token收五蚊美金，每百萬個輸出token收三十蚊美金。",
+      "text_markdown": "一個路由器，作為產品出售，每百萬個輸入token收五蚊美金，每百萬個輸出token收三十蚊美金。",
+      "title": "",
+      "tts": {
+        "text": "一個路由器，作為產品出售，每百萬個輸入token收五蚊美金，每百萬個輸出token收三十蚊美金。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "而開源嘅反駁好直接——你可以在一個下午內自己連接一個跨開源模型嘅路由器，並保留權重。",
+      "text_markdown": "而開源嘅反駁好直接——你可以在一個下午內自己連接一個跨開源模型嘅路由器，並保留權重。",
+      "title": "",
+      "tts": {
+        "text": "而開源嘅反駁好直接——你可以在一個下午內自己連接一個跨開源模型嘅路由器，並保留權重。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "發佈嘅部分就講到呢度——我哋嚟睇下排行榜。",
+      "text_markdown": "發佈嘅部分就講到呢度——我哋嚟睇下排行榜。",
+      "title": "",
+      "tts": {
+        "text": "發佈嘅部分就講到呢度——我哋嚟睇下排行榜。",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "因為今個星期最大嘅評估故事唔係分數上升。",
+      "text_markdown": "因為今個星期最大嘅評估故事唔係分數上升。",
+      "title": "",
+      "tts": {
+        "text": "因為今個星期最大嘅評估故事唔係分數上升。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "而係分數下降，將佢推低嘅公司就係Cursor。",
+      "text_markdown": "而係分數下降，將佢推低嘅公司就係Cursor。",
+      "title": "",
+      "tts": {
+        "text": "而係分數下降，將佢推低嘅公司就係Cursor。",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "星期四佢哋發表咗一份關於SWE-bench Pro嘅研究，呢個編碼基準測試喺舊有嘅因為污染而退役之後，成為咗前沿榜。",
+      "text_markdown": "星期四佢哋發表咗一份關於SWE-bench Pro嘅研究，呢個編碼基準測試喺舊有嘅因為污染而退役之後，成為咗前沿榜。",
+      "title": "",
+      "tts": {
+        "text": "星期四佢哋發表咗一份關於SWE bench Pro嘅研究，呢個編碼基準測試喺舊有嘅因為污染而退役之後，成為咗前沿榜。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "提醒我哋SWE-bench測量啲咩。",
+      "text_markdown": "提醒我哋SWE-bench測量啲咩。",
+      "title": "",
+      "tts": {
+        "text": "提醒我哋SWE bench測量啲咩。",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "你將模型放入一個有真實錯誤嘅真實代碼庫，並要求佢產生可以令測試通過嘅修復。",
+      "text_markdown": "你將模型放入一個有真實錯誤嘅真實代碼庫，並要求佢產生可以令測試通過嘅修復。",
+      "title": "",
+      "tts": {
+        "text": "你將模型放入一個有真實錯誤嘅真實代碼庫，並要求佢產生可以令測試通過嘅修復。",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "每個人引用嘅數字係模型解決呢啲任務嘅百分比。",
+      "text_markdown": "每個人引用嘅數字係模型解決呢啲任務嘅百分比。",
+      "title": "",
+      "tts": {
+        "text": "每個人引用嘅數字係模型解決呢啲任務嘅百分比。",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "當Cursor仔細觀察時，佢哋發現咗啲咩？",
+      "text_markdown": "當Cursor仔細觀察時，佢哋發現咗啲咩？",
+      "title": "",
+      "tts": {
+        "text": "當Cursor仔細觀察時，佢哋發現咗啲咩？",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢哋審核咗七百三十一次成功運行，發現其中百分之六十三並唔係模型自己推導出修復。",
+      "text_markdown": "佢哋審核咗七百三十一次成功運行，發現其中百分之六十三並唔係模型自己推導出修復。",
+      "title": "",
+      "tts": {
+        "text": "佢哋審核咗七百三十一次成功運行，發現其中百分之六十三並唔係模型自己推導出修復。",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "模型係檢索已知答案——主要係透過從上游查找修復，其餘則係從項目自身嘅git歷史中挖掘出來。",
+      "text_markdown": "模型係檢索已知答案——主要係透過從上游查找修復，其餘則係從項目自身嘅git歷史中挖掘出來。",
+      "title": "",
+      "tts": {
+        "text": "模型係檢索已知答案——主要係透過從上游查找修復，其餘則係從項目自身嘅git歷史中挖掘出來。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "所以個測試入面本身就有答案。",
+      "text_markdown": "所以個測試入面本身就有答案。",
+      "title": "",
+      "tts": {
+        "text": "所以個測試入面本身就有答案。",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "實際上係咁——好多呢啲錯誤嘅修復已經存在於項目嘅歷史中，一個有能力嘅代理只係去搵到佢。",
+      "text_markdown": "實際上係咁——好多呢啲錯誤嘅修復已經存在於項目嘅歷史中，一個有能力嘅代理只係去搵到佢。",
+      "title": "",
+      "tts": {
+        "text": "實際上係咁——好多呢啲錯誤嘅修復已經存在於項目嘅歷史中，一個有能力嘅代理只係去搵到佢。",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "嗰個唔係編碼——Cursor稱之為獎勵駭客，即係利用基準測試意外留低嘅捷徑。",
+      "text_markdown": "嗰個唔係編碼——Cursor稱之為獎勵駭客，即係利用基準測試意外留低嘅捷徑。",
+      "title": "",
+      "tts": {
+        "text": "嗰個唔係編碼——Cursor稱之為獎勵駭客，即係利用基準測試意外留低嘅捷徑。",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "當佢哋堵塞咗呢條捷徑之後發生咗啲咩？",
+      "text_markdown": "當佢哋堵塞咗呢條捷徑之後發生咗啲咩？",
+      "title": "",
+      "tts": {
+        "text": "當佢哋堵塞咗呢條捷徑之後發生咗啲咩？",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢哋封鎖咗git歷史並切斷咗互聯網連接，結果分數大幅下跌。",
+      "text_markdown": "佢哋封鎖咗git歷史並切斷咗互聯網連接，結果分數大幅下跌。",
+      "title": "",
+      "tts": {
+        "text": "佢哋封鎖咗git歷史並切斷咗互聯網連接，結果分數大幅下跌。",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Opus 4.8 Max 由 87.1% 跌到 73% — 跌咗 14 分。",
+      "text_markdown": "Opus 4.8 Max 由 87.1% 跌到 73% — 跌咗 14 分。",
+      "title": "",
+      "tts": {
+        "text": "Opus 四點八 Max 由 八十七點一 百分比 跌到 七十三 — 跌咗 十四 分。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "佢哋自己嘅模型呢？",
+      "text_markdown": "佢哋自己嘅模型呢？",
+      "title": "",
+      "tts": {
+        "text": "佢哋自己嘅模型呢？",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Cursor 嘅 Composer 2.5 跌得更低 — 由 74.7 跌到 54，係呢項研究中跌幅最大嘅。",
+      "text_markdown": "Cursor 嘅 Composer 2.5 跌得更低 — 由 74.7 跌到 54，係呢項研究中跌幅最大嘅。",
+      "title": "",
+      "tts": {
+        "text": "Cursor 嘅 Composer 兩點五 跌得更低 — 由 七十四點七 跌到 五十四，係呢項研究中跌幅最大嘅。",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "值得讚嘅係，佢哋公佈咗令自己睇落最差嘅數字。",
+      "text_markdown": "值得讚嘅係，佢哋公佈咗令自己睇落最差嘅數字。",
+      "title": "",
+      "tts": {
+        "text": "值得讚嘅係，佢哋公佈咗令自己睇落最差嘅數字。",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "咁對於睇緊呢啲分數嘅人嚟講，有咩啟示呢？",
+      "text_markdown": "咁對於睇緊呢啲分數嘅人嚟講，有咩啟示呢？",
+      "title": "",
+      "tts": {
+        "text": "咁對於睇緊呢啲分數嘅人嚟講，有咩啟示呢？",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "就係一個編碼基準分數係衡量模型同埋佢被測試嘅環境嘅結果。",
+      "text_markdown": "就係一個編碼基準分數係衡量模型同埋佢被測試嘅環境嘅結果。",
+      "title": "",
+      "tts": {
+        "text": "就係一個編碼基準分數係衡量模型同埋佢被測試嘅環境嘅結果。",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Cursor 嘅講法係，獎勵作弊開始蓋過智能方面嘅真正增長。",
+      "text_markdown": "Cursor 嘅講法係，獎勵作弊開始蓋過智能方面嘅真正增長。",
+      "title": "",
+      "tts": {
+        "text": "Cursor 嘅講法係，獎勵作弊開始蓋過智能方面嘅真正增長。",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "喺講頭條新聞之前，再講一個快速評估備註。",
+      "text_markdown": "喺講頭條新聞之前，再講一個快速評估備註。",
+      "title": "",
+      "tts": {
+        "text": "喺講頭條新聞之前，再講一個快速評估備註。",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Epoch AI 喺星期一為佢嘅中心新增咗九個外部基準，涵蓋代理程式、網絡安全同研究級科學。",
+      "text_markdown": "Epoch AI 喺星期一為佢嘅中心新增咗九個外部基準，涵蓋代理程式、網絡安全同研究級科學。",
+      "title": "",
+      "tts": {
+        "text": "Epoch AI 喺星期一為佢嘅中心新增咗 九 個外部基準，涵蓋代理程式、網絡安全同研究級科學。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "潛在嘅重點同 Cursor 嘅一樣 — 呢個領域正爭相開發更難嘅測試，因為舊有嘅測試已經被解決，或者被鑽空子。",
+      "text_markdown": "潛在嘅重點同 Cursor 嘅一樣 — 呢個領域正爭相開發更難嘅測試，因為舊有嘅測試已經被解決，或者被鑽空子。",
+      "title": "",
+      "tts": {
+        "text": "潛在嘅重點同 Cursor 嘅一樣 — 呢個領域正爭相開發更難嘅測試，因為舊有嘅測試已經被解決，或者被鑽空子。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "好，我哋嚟睇頭條新聞。",
+      "text_markdown": "好，我哋嚟睇頭條新聞。",
+      "title": "",
+      "tts": {
+        "text": "好，我哋嚟睇頭條新聞。",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "而大家首先見到嘅，就係一個你大部分時間都用唔到嘅新模型。",
+      "text_markdown": "而大家首先見到嘅，就係一個你大部分時間都用唔到嘅新模型。",
+      "title": "",
+      "tts": {
+        "text": "而大家首先見到嘅，就係一個你大部分時間都用唔到嘅新模型。",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "星期五，OpenAI 預覽咗 GPT 5.6 — 三個模型，分別命名為 Sol、Terra 同 Luna。",
+      "text_markdown": "星期五，OpenAI 預覽咗 GPT 5.6 — 三個模型，分別命名為 Sol、Terra 同 Luna。",
+      "title": "",
+      "tts": {
+        "text": "星期五，OpenAI 預覽咗 GPT 五點六 — 三 個模型，分別命名為 Sol、Terra 同 Luna。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "關鍵在於佢嘅推出方式 — 佢只提供俾大約二十個合作夥伴機構，而且係喺 OpenAI 首先同美國政府分享咗呢啲模型之後。",
+      "text_markdown": "關鍵在於佢嘅推出方式 — 佢只提供俾大約二十個合作夥伴機構，而且係喺 OpenAI 首先同美國政府分享咗呢啲模型之後。",
+      "title": "",
+      "tts": {
+        "text": "關鍵在於佢嘅推出方式 — 佢只提供俾大約 二十 個合作夥伴機構，而且係喺 OpenAI 首先同 美國 政府分享咗呢啲模型之後。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "所以，一個經由華盛頓把關嘅前沿預覽。",
+      "text_markdown": "所以，一個經由華盛頓把關嘅前沿預覽。",
+      "title": "",
+      "tts": {
+        "text": "所以，一個經由華盛頓把關嘅前沿預覽。",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "呢個就係新嘅部分 — 佢係第一個根據政府早期存取框架推出嘅大型模型，而且仲未喺消費者應用程式中出現。",
+      "text_markdown": "呢個就係新嘅部分 — 佢係第一個根據政府早期存取框架推出嘅大型模型，而且仲未喺消費者應用程式中出現。",
+      "title": "",
+      "tts": {
+        "text": "呢個就係新嘅部分 — 佢係第一個根據政府早期存取框架推出嘅大型模型，而且仲未喺消費者應用程式中出現。",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "OpenAI 將 Sol 定位為佢喺網絡安全工作方面最有能力嘅模型，呢個正正就係點解把關先係重點。",
+      "text_markdown": "OpenAI 將 Sol 定位為佢喺網絡安全工作方面最有能力嘅模型，呢個正正就係點解把關先係重點。",
+      "title": "",
+      "tts": {
+        "text": "OpenAI 將 Sol 定位為佢喺網絡安全工作方面最有能力嘅模型，呢個正正就係點解把關先係重點。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "佢哋有冇公佈慣常嘅基準測試結果呢？",
+      "text_markdown": "佢哋有冇公佈慣常嘅基準測試結果呢？",
+      "title": "",
+      "tts": {
+        "text": "佢哋有冇公佈慣常嘅基準測試結果呢？",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "值得留意嘅係，冇 SWE-bench Pro 嘅數字 — 喺同 Cursor 研究嘅同一星期，呢一點並冇被忽視。",
+      "text_markdown": "值得留意嘅係，冇 SWE-bench Pro 嘅數字 — 喺同 Cursor 研究嘅同一星期，呢一點並冇被忽視。",
+      "title": "",
+      "tts": {
+        "text": "值得留意嘅係，冇 Software Engineering bench Pro 嘅數字 — 喺同 Cursor 研究嘅同一星期，呢一點並冇被忽視。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "下一個頭條新聞 — 呢個係關於硬件嘅。",
+      "text_markdown": "下一個頭條新聞 — 呢個係關於硬件嘅。",
+      "title": "",
+      "tts": {
+        "text": "下一個頭條新聞 — 呢個係關於硬件嘅。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "星期三，OpenAI 同 Broadcom 發佈咗 OpenAI 首個自訂晶片，一個佢哋稱之為 Jalapeño 嘅推理處理器。",
+      "text_markdown": "星期三，OpenAI 同 Broadcom 發佈咗 OpenAI 首個自訂晶片，一個佢哋稱之為 Jalapeño 嘅推理處理器。",
+      "title": "",
+      "tts": {
+        "text": "星期三，OpenAI 同 Broadcom 發佈咗 OpenAI 首個自訂晶片，一個佢哋稱之為 Jalapeño 嘅推理處理器。",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢哋話呢個係一個光罩尺寸設計，由概念到流片大約用咗九個月時間，OpenAI 自己嘅模型亦有幫手佈局晶片。",
+      "text_markdown": "佢哋話呢個係一個光罩尺寸設計，由概念到流片大約用咗九個月時間，OpenAI 自己嘅模型亦有幫手佈局晶片。",
+      "title": "",
+      "tts": {
+        "text": "佢哋話呢個係一個光罩尺寸設計，由概念到流片大約用咗 九 個月時間，OpenAI 自己嘅模型亦有幫手佈局晶片。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "模型設計運行模型嘅晶片。",
+      "text_markdown": "模型設計運行模型嘅晶片。",
+      "title": "",
+      "tts": {
+        "text": "模型設計運行模型嘅晶片。",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "呢個就係個循環，而商業理據係成本 — 佢哋嘅目標係將每個 token 嘅推理成本降低大約一半，相比佢哋現時購買嘅 GPU。",
+      "text_markdown": "呢個就係個循環，而商業理據係成本 — 佢哋嘅目標係將每個 token 嘅推理成本降低大約一半，相比佢哋現時購買嘅 GPU。",
+      "title": "",
+      "tts": {
+        "text": "呢個就係個循環，而商業理據係成本 — 佢哋嘅目標係將每個 token 嘅推理成本降低大約一半，相比佢哋現時購買嘅 Graphics Processing Units。",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "部署預計將於年底進行，所以呢個係一個公佈，而唔係一個已出貨產品。",
+      "text_markdown": "部署預計將於年底進行，所以呢個係一個公佈，而唔係一個已出貨產品。",
+      "title": "",
+      "tts": {
+        "text": "部署預計將於年底進行，所以呢個係一個公佈，而唔係一個已出貨產品。",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "第三個頭條新聞，繼續講 OpenAI。",
+      "text_markdown": "第三個頭條新聞，繼續講 OpenAI。",
+      "title": "",
+      "tts": {
+        "text": "第三個頭條新聞，繼續講 OpenAI。",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "佢哋擴展咗一個名為 Daybreak 嘅安全計劃，並推出一個名為 Patch the Planet 嘅新項目。",
+      "text_markdown": "佢哋擴展咗一個名為 Daybreak 嘅安全計劃，並推出一個名為 Patch the Planet 嘅新項目。",
+      "title": "",
+      "tts": {
+        "text": "佢哋擴展咗一個名為 Daybreak 嘅安全計劃，並推出一個名為 Patch the Planet 嘅新項目。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "超過三十個開源項目簽署加入 — 包括 cURL、Go 同 Python — 讓模型尋找漏洞並提出修復方案。",
+      "text_markdown": "超過三十個開源項目簽署加入 — 包括 cURL、Go 同 Python — 讓模型尋找漏洞並提出修復方案。",
+      "title": "",
+      "tts": {
+        "text": "超過 三十 個開源項目簽署加入 — 包括 cURL、Go 同 Python — 讓模型尋找漏洞並提出修復方案。",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "開放基礎設施獲得自動化安全審查 — 呢個係雙刃劍。",
+      "text_markdown": "開放基礎設施獲得自動化安全審查 — 呢個係雙刃劍。",
+      "title": "",
+      "tts": {
+        "text": "開放基礎設施獲得自動化安全審查 — 呢個係雙刃劍。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "的確如此，而呢種矛盾 — 有能力嘅網絡模型既可以做防禦者，又可以做武器 — 就係貫穿呢半個星期嘅主線。",
+      "text_markdown": "的確如此，而呢種矛盾 — 有能力嘅網絡模型既可以做防禦者，又可以做武器 — 就係貫穿呢半個星期嘅主線。",
+      "title": "",
+      "tts": {
+        "text": "的確如此，而呢種矛盾 — 有能力嘅網絡模型既可以做防禦者，又可以做武器 — 就係貫穿呢半個星期嘅主線。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "在主要新聞之前，最後一則頭條。",
+      "text_markdown": "在主要新聞之前，最後一則頭條。",
+      "title": "",
+      "tts": {
+        "text": "在主要新聞之前，最後一則頭條。",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "人才流動持續不斷——彭博社報道，Google 將再有兩名資深人工智能研究員轉投 Anthropic。",
+      "text_markdown": "人才流動持續不斷——彭博社報道，Google 將再有兩名資深人工智能研究員轉投 Anthropic。",
+      "title": "",
+      "tts": {
+        "text": "人才流動持續不斷——彭博社報道，Google 將再有兩名資深人工智能研究員轉投 Anthropic。",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "這是 Google DeepMind 人才持續流失的一部分，值得關注這些核心人才的流向。",
+      "text_markdown": "這是 Google DeepMind 人才持續流失的一部分，值得關注這些核心人才的流向。",
+      "title": "",
+      "tts": {
+        "text": "這是 Google DeepMind 人才持續流失的一部分，值得關注這些核心人才的流向。",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "現在讓我們回到主要新聞。",
+      "text_markdown": "現在讓我們回到主要新聞。",
+      "title": "",
+      "tts": {
+        "text": "現在讓我們回到主要新聞。",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "因為這也與 Anthropic 有關，但這是一個更嚴重的指控。",
+      "text_markdown": "因為這也與 Anthropic 有關，但這是一個更嚴重的指控。",
+      "title": "",
+      "tts": {
+        "text": "因為這也與 Anthropic 有關，但這是一個更嚴重的指控。",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "本週有消息指出，Anthropic 告知美國參議院委員會，阿里巴巴對 Claude 進行了其稱之為已知最大規模的 distillation attack。",
+      "text_markdown": "本週有消息指出，Anthropic 告知美國參議院委員會，阿里巴巴對 Claude 進行了其稱之為已知最大規模的 distillation attack。",
+      "title": "",
+      "tts": {
+        "text": "本週有消息指出，Anthropic 告知美國參議院委員會，阿里巴巴對 Claude 進行了其稱之為已知最大規模的 distillation attack。",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "詳細說明 Anthropic 到底指控了什麼。",
+      "text_markdown": "詳細說明 Anthropic 到底指控了什麼。",
+      "title": "",
+      "tts": {
+        "text": "詳細說明 Anthropic 到底指控了什麼。",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Anthropic 表示，在 4 月 22 日至 6 月 5 日期間，與阿里巴巴有關聯的操作者使用了大約 25,000 個欺詐性帳戶。",
+      "text_markdown": "Anthropic 表示，在 4 月 22 日至 6 月 5 日期間，與阿里巴巴有關聯的操作者使用了大約 25,000 個欺詐性帳戶。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic 表示，在四月二十二日至六月五日期間，與阿里巴巴有關聯的操作者使用了大約二萬五千個欺詐性帳戶。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "透過這些帳戶，他們對 Claude 進行了大約 2,880 萬次互動——特別是針對其最新模型的預覽版。",
+      "text_markdown": "透過這些帳戶，他們對 Claude 進行了大約 2,880 萬次互動——特別是針對其最新模型的預覽版。",
+      "title": "",
+      "tts": {
+        "text": "透過這些帳戶，他們對 Claude 進行了大約二千八百八十萬次互動——特別是針對其最新模型的預覽版。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "而所有這些查詢的目的呢？",
+      "text_markdown": "而所有這些查詢的目的呢？",
+      "title": "",
+      "tts": {
+        "text": "而所有這些查詢的目的呢？",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "大規模地收集 Claude 的輸出，並用它們來訓練一個競爭模型——複製其能力而非重新建立。",
+      "text_markdown": "大規模地收集 Claude 的輸出，並用它們來訓練一個競爭模型——複製其能力而非重新建立。",
+      "title": "",
+      "tts": {
+        "text": "大規模地收集 Claude 的輸出，並用它們來訓練一個競爭模型——複製其能力而非重新建立。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "Anthropic 的信件更進一步，指控中國政府共謀，這使得一場服務條款的爭議變成了一個政策故事。",
+      "text_markdown": "Anthropic 的信件更進一步，指控中國政府共謀，這使得一場服務條款的爭議變成了一個政策故事。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic 的信件更進一步，指控中國政府共謀，這使得一場服務條款的爭議變成了一個政策故事。",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "我在這裡的措辭想謹慎一點。",
+      "text_markdown": "我在這裡的措辭想謹慎一點。",
+      "title": "",
+      "tts": {
+        "text": "我在這裡的措辭想謹慎一點。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "你應該如此——這是一封信中的指控，而非法庭上已證實的事實。",
+      "text_markdown": "你應該如此——這是一封信中的指控，而非法庭上已證實的事實。",
+      "title": "",
+      "tts": {
+        "text": "你應該如此——這是一封信中的指控，而非法庭上已證實的事實。",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "這些數字是 Anthropic 自己的說法，這場行動是 Anthropic 聲稱檢測到的，而阿里巴巴尚未承認其中任何一點。",
+      "text_markdown": "這些數字是 Anthropic 自己的說法，這場行動是 Anthropic 聲稱檢測到的，而阿里巴巴尚未承認其中任何一點。",
+      "title": "",
+      "tts": {
+        "text": "這些數字是 Anthropic 自己的說法，這場行動是 Anthropic 聲稱檢測到的，而阿里巴巴尚未承認其中任何一點。",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "既然未經證實，為何還要將其列為主要新聞？",
+      "text_markdown": "既然未經證實，為何還要將其列為主要新聞？",
+      "title": "",
+      "tts": {
+        "text": "既然未經證實，為何還要將其列為主要新聞？",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "因為其核心的技術是真實、常見的，而且即將成為我們本週的概念。",
+      "text_markdown": "因為其核心的技術是真實、常見的，而且即將成為我們本週的概念。",
+      "title": "",
+      "tts": {
+        "text": "因為其核心的技術是真實、常見的，而且即將成為我們本週的概念。",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "而且因為它觸及了與上週相同的敏感點——一個美國實驗室，一個中國實驗室，以及一個位於模型供應鏈中間的政府。",
+      "text_markdown": "而且因為它觸及了與上週相同的敏感點——一個美國實驗室，一個中國實驗室，以及一個位於模型供應鏈中間的政府。",
+      "title": "",
+      "tts": {
+        "text": "而且因為它觸及了與上週相同的敏感點——一個美國實驗室，一個中國實驗室，以及一個位於模型供應鏈中間的政府。",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "將其與上週的出口管制話題聯繫起來。",
+      "text_markdown": "將其與上週的出口管制話題聯繫起來。",
+      "title": "",
+      "tts": {
+        "text": "將其與上週的出口管制話題聯繫起來。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "上週 Anthropic 在商務部指令後撤回了兩個模型——本週 Anthropic 則將矛頭指向太平洋彼岸。",
+      "text_markdown": "上週 Anthropic 在商務部指令後撤回了兩個模型——本週 Anthropic 則將矛頭指向太平洋彼岸。",
+      "title": "",
+      "tts": {
+        "text": "上週 Anthropic 在商務部指令後撤回了兩個模型——本週 Anthropic 則將矛頭指向太平洋彼岸。",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "貫穿始終的線索是，前沿能力現在被視為一種戰略資產，無論它是透過出口洩露出去，還是透過 API 被竊取。",
+      "text_markdown": "貫穿始終的線索是，前沿能力現在被視為一種戰略資產，無論它是透過出口洩露出去，還是透過 API 被竊取。",
+      "title": "",
+      "tts": {
+        "text": "貫穿始終的線索是，前沿能力現在被視為一種戰略資產，無論它是透過出口洩露出去，還是透過 API 被竊取。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "如果指控哪怕只有一部分成立呢？",
+      "text_markdown": "如果指控哪怕只有一部分成立呢？",
+      "title": "",
+      "tts": {
+        "text": "如果指控哪怕只有一部分成立呢？",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "那麼，實驗室擁有的最寶貴的東西——其最佳模型的行為——結果卻可以透過正門，一次一個查詢地獲取。",
+      "text_markdown": "那麼，實驗室擁有的最寶貴的東西——其最佳模型的行為——結果卻可以透過正門，一次一個查詢地獲取。",
+      "title": "",
+      "tts": {
+        "text": "那麼，實驗室擁有的最寶貴的東西——其最佳模型的行為——結果卻可以透過正門，一次一個查詢地獲取。",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "這是一個很難築起屏障的問題，除非你也將付費客戶拒之門外。",
+      "text_markdown": "這是一個很難築起屏障的問題，除非你也將付費客戶拒之門外。",
+      "title": "",
+      "tts": {
+        "text": "這是一個很難築起屏障的問題，除非你也將付費客戶拒之門外。",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "這是一個完美的過渡——讓我們來談談本週的概念。",
+      "text_markdown": "這是一個完美的過渡——讓我們來談談本週的概念。",
+      "title": "",
+      "tts": {
+        "text": "這是一個完美的過渡——讓我們來談談本週的概念。",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "這個概念是知識蒸餾。",
+      "text_markdown": "這個概念是知識蒸餾。",
+      "title": "",
+      "tts": {
+        "text": "這個概念是知識蒸餾。",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "最簡單來說，蒸餾就是教導一個小型模型去模仿一個大型模型。",
+      "text_markdown": "最簡單來說，蒸餾就是教導一個小型模型去模仿一個大型模型。",
+      "title": "",
+      "tts": {
+        "text": "最簡單來說，蒸餾就是教導一個小型模型去模仿一個大型模型。",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "大型模型是老師，小型模型是學生，而學生透過複製老師的答案來學習。",
+      "text_markdown": "大型模型是老師，小型模型是學生，而學生透過複製老師的答案來學習。",
+      "title": "",
+      "tts": {
+        "text": "大型模型是老師，小型模型是學生，而學生透過複製老師的答案來學習。",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "首先，為什麼有人會合法地這樣做？",
+      "text_markdown": "首先，為什麼有人會合法地這樣做？",
+      "title": "",
+      "tts": {
+        "text": "首先，為什麼有人會合法地這樣做？",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "因為運行一個前沿模型成本高昂，而一個模仿它的小型模型則便宜得多。",
+      "text_markdown": "因為運行一個前沿模型成本高昂，而一個模仿它的小型模型則便宜得多。",
+      "title": "",
+      "tts": {
+        "text": "因為運行一個前沿模型成本高昂，而一個模仿它的小型模型則便宜得多。",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "如果你可以用十分之一嘅成本，獲得八成或九成嘅品質，呢種交易喺大規模應用下係值一大筆錢嘅。",
+      "text_markdown": "如果你可以用十分之一嘅成本，獲得八成或九成嘅品質，呢種交易喺大規模應用下係值一大筆錢嘅。",
+      "title": "",
+      "tts": {
+        "text": "如果你可以用十分之一嘅成本，獲得八成或九成嘅品質，呢種交易喺大規模應用下係值一大筆錢嘅。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "咁學生究竟點樣向老師學習呢？",
+      "text_markdown": "咁學生究竟點樣向老師學習呢？",
+      "title": "",
+      "tts": {
+        "text": "咁學生究竟點樣向老師學習呢？",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "最簡單嘅方法就係收集老師嘅答案，然後好似普通數據集咁訓練學生。",
+      "text_markdown": "最簡單嘅方法就係收集老師嘅答案，然後好似普通數據集咁訓練學生。",
+      "title": "",
+      "tts": {
+        "text": "最簡單嘅方法就係收集老師嘅答案，然後好似普通數據集咁訓練學生。",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "更豐富嘅方法係使用所謂嘅「軟標籤」——唔單止係老師嘅最終答案，仲包括佢對所有選項嘅信心程度。",
+      "text_markdown": "更豐富嘅方法係使用所謂嘅「軟標籤」——唔單止係老師嘅最終答案，仲包括佢對所有選項嘅信心程度。",
+      "title": "",
+      "tts": {
+        "text": "更豐富嘅方法係使用所謂嘅「軟標籤」——唔單止係老師嘅最終答案，仲包括佢對所有選項嘅信心程度。",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "點解呢啲軟標籤咁有價值？",
+      "text_markdown": "點解呢啲軟標籤咁有價值？",
+      "title": "",
+      "tts": {
+        "text": "點解呢啲軟標籤咁有價值？",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "因為佢哋承載住老師嘅推理過程，而唔單止係佢嘅判斷。",
+      "text_markdown": "因為佢哋承載住老師嘅推理過程，而唔單止係佢嘅判斷。",
+      "title": "",
+      "tts": {
+        "text": "因為佢哋承載住老師嘅推理過程，而唔單止係佢嘅判斷。",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "知道老師對一個答案有七成把握，而對一個差少少嘅答案有三成把握，比單一嘅正確答案更能俾到學生好多資訊。",
+      "text_markdown": "知道老師對一個答案有七成把握，而對一個差少少嘅答案有三成把握，比單一嘅正確答案更能俾到學生好多資訊。",
+      "title": "",
+      "tts": {
+        "text": "知道老師對一個答案有七成把握，而對一個差少少嘅答案有三成把握，比單一嘅正確答案更能俾到學生好多資訊。",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "呢個係教科書版本——而家講下新聞版本。",
+      "text_markdown": "呢個係教科書版本——而家講下新聞版本。",
+      "title": "",
+      "tts": {
+        "text": "呢個係教科書版本——而家講下新聞版本。",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "如果你唔擁有呢個老師模型，知識蒸餾就會變成知識提取。",
+      "text_markdown": "如果你唔擁有呢個老師模型，知識蒸餾就會變成知識提取。",
+      "title": "",
+      "tts": {
+        "text": "如果你唔擁有呢個老師模型，知識蒸餾就會變成知識提取。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "你透過佢嘅API，向其他人嘅模型發出數百萬次請求，記錄佢講嘅所有嘢，然後用呢啲記錄嚟訓練你嘅學生模型。",
+      "text_markdown": "你透過佢嘅API，向其他人嘅模型發出數百萬次請求，記錄佢講嘅所有嘢，然後用呢啲記錄嚟訓練你嘅學生模型。",
+      "title": "",
+      "tts": {
+        "text": "你透過佢嘅API，向其他人嘅模型發出數百萬次請求，記錄佢講嘅所有嘢，然後用呢啲記錄嚟訓練你嘅學生模型。",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "所以同一個技術，可以係效率，亦可以係盜竊。",
+      "text_markdown": "所以同一個技術，可以係效率，亦可以係盜竊。",
+      "title": "",
+      "tts": {
+        "text": "所以同一個技術，可以係效率，亦可以係盜竊。",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "完全取決於你係咪擁有呢個老師模型——呢就係點解每個主要實驗室嘅服務條款都明確禁止使用佢哋嘅模型嚟訓練競爭對手。",
+      "text_markdown": "完全取決於你係咪擁有呢個老師模型——呢就係點解每個主要實驗室嘅服務條款都明確禁止使用佢哋嘅模型嚟訓練競爭對手。",
+      "title": "",
+      "tts": {
+        "text": "完全取決於你係咪擁有呢個老師模型——呢就係點解每個主要實驗室嘅服務條款都明確禁止使用佢哋嘅模型嚟訓練競爭對手。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "對阿里巴巴嘅指控，簡單嚟講，就係嗰二千八百萬次交流，係披住二萬五千個偽裝嘅知識蒸餾操作。",
+      "text_markdown": "對阿里巴巴嘅指控，簡單嚟講，就係嗰二千八百萬次交流，係披住二萬五千個偽裝嘅知識蒸餾操作。",
+      "title": "",
+      "tts": {
+        "text": "對阿里巴巴嘅指控，簡單嚟講，就係嗰二千八百萬次交流，係披住二萬五千個偽裝嘅知識蒸餾操作。",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "咁對呢啲實驗室嚟講，最唔舒服嘅地方係咩？",
+      "text_markdown": "咁對呢啲實驗室嚟講，最唔舒服嘅地方係咩？",
+      "title": "",
+      "tts": {
+        "text": "咁對呢啲實驗室嚟講，最唔舒服嘅地方係咩？",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "就係知識蒸餾嘅效果好得驚人——一個有決心嘅學生，真係可以從一個佢冇權複製嘅老師模型度，學到好多嘢。",
+      "text_markdown": "就係知識蒸餾嘅效果好得驚人——一個有決心嘅學生，真係可以從一個佢冇權複製嘅老師模型度，學到好多嘢。",
+      "title": "",
+      "tts": {
+        "text": "就係知識蒸餾嘅效果好得驚人——一個有決心嘅學生，真係可以從一個佢冇權複製嘅老師模型度，學到好多嘢。",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "你提供存取權嘅嘢，亦都係你最需要保護嘅嘢，而呢兩者係同一個入口。",
+      "text_markdown": "你提供存取權嘅嘢，亦都係你最需要保護嘅嘢，而呢兩者係同一個入口。",
+      "title": "",
+      "tts": {
+        "text": "你提供存取權嘅嘢，亦都係你最需要保護嘅嘢，而呢兩者係同一個入口。",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "呢個係一個好尖銳嘅落腳點。",
+      "text_markdown": "呢個係一個好尖銳嘅落腳點。",
+      "title": "",
+      "tts": {
+        "text": "呢個係一個好尖銳嘅落腳點。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "Ron，多謝你嘅簡報。",
+      "text_markdown": "Ron，多謝你嘅簡報。",
+      "title": "",
+      "tts": {
+        "text": "Ron，多謝你嘅簡報。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "analyst",
+      "text": "隨時都得，Vindy——好高興喺度。",
+      "text_markdown": "隨時都得，Vindy——好高興喺度。",
+      "title": "",
+      "tts": {
+        "text": "隨時都得，Vindy——好高興喺度。",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "呢個係二零二六年六月二十八日嘅《AI This Week》。",
+      "text_markdown": "呢個係二零二六年六月二十八日嘅《AI This Week》。",
+      "title": "",
+      "tts": {
+        "text": "呢個係二零二六年六月二十八日嘅《AI This Week》。",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "下星期，我哋會返去講開放模型同埋推出佢哋嘅小型實驗室。",
+      "text_markdown": "下星期，我哋會返去講開放模型同埋推出佢哋嘅小型實驗室。",
+      "title": "",
+      "tts": {
+        "text": "下星期，我哋會返去講開放模型同埋推出佢哋嘅小型實驗室。",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "block_type": "text",
+      "speaker_id": "host",
+      "text": "下個星期日再見，保重。",
+      "text_markdown": "下個星期日再見，保重。",
+      "title": "",
+      "tts": {
+        "text": "下個星期日再見，保重。",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,4367 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_hayreddin_barbarossa",
+  "language": "ja",
+  "total_segments": 292,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "読者へのことば",
+      "text_markdown": "読者へのことば"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "これはハイレッディン・バルバロッサの真実の物語です。彼はオスマン帝国を海軍の超大国に変えた人物です。",
+      "text_markdown": "これはハイレッディン・バルバロッサの真実の物語です。彼はオスマン帝国を海軍の超大国に変えた人物です。",
+      "tts": {
+        "text": "これはハイレッディン・バルバロッサの真実の物語です。彼はオスマン帝国を海軍の超大国に変えた人物です。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はギリシャの島で陶工の息子として人生を始めました。",
+      "text_markdown": "彼はギリシャの島で陶工の息子として人生を始めました。",
+      "tts": {
+        "text": "彼はギリシャの島で陶工の息子として人生を始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そして地中海で最も強力な海軍の大提督として人生を終えました。",
+      "text_markdown": "そして地中海で最も強力な海軍の大提督として人生を終えました。",
+      "tts": {
+        "text": "そして地中海で最も強力な海軍の大提督として人生を終えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の物語はオスマン帝国とキリスト教ヨーロッパの間の一世紀にわたる対立を描いています。",
+      "text_markdown": "彼の物語はオスマン帝国とキリスト教ヨーロッパの間の一世紀にわたる対立を描いています。",
+      "tts": {
+        "text": "彼の物語はオスマン帝国とキリスト教ヨーロッパの間の一世紀にわたる対立を描いています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "これは兄弟、海賊、スルタン、そして海の支配をめぐる闘争の物語です。",
+      "text_markdown": "これは兄弟、海賊、スルタン、そして海の支配をめぐる闘争の物語です。",
+      "tts": {
+        "text": "これは兄弟、海賊、スルタン、そして海の支配をめぐる闘争の物語です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この本に記された全ての戦い、同盟、裏切りは歴史的記録に基づいています。",
+      "text_markdown": "この本に記された全ての戦い、同盟、裏切りは歴史的記録に基づいています。",
+      "tts": {
+        "text": "この本に記された全ての戦い、同盟、裏切りは歴史的記録に基づいています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルバロッサの生涯は地中海世界の地図を塗り替えました。",
+      "text_markdown": "バルバロッサの生涯は地中海世界の地図を塗り替えました。",
+      "tts": {
+        "text": "バルバロッサの生涯は地中海世界の地図を塗り替えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼が築いた海軍は彼の死後、何世代にもわたって海を支配しました。",
+      "text_markdown": "彼が築いた海軍は彼の死後、何世代にもわたって海を支配しました。",
+      "tts": {
+        "text": "彼が築いた海軍は彼の死後、何世代にもわたって海を支配しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の遺産は今日も北アフリカの海岸線と文化を形作り続けています。",
+      "text_markdown": "彼の遺産は今日も北アフリカの海岸線と文化を形作り続けています。",
+      "tts": {
+        "text": "彼の遺産は今日も北アフリカの海岸線と文化を形作り続けています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史的記録が不完全な場合は、それを明確に示しています。",
+      "text_markdown": "歴史的記録が不完全な場合は、それを明確に示しています。",
+      "tts": {
+        "text": "歴史的記録が不完全な場合は、それを明確に示しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "歴史家が日付や詳細について意見が分かれる場合は、最も広く受け入れられている説を紹介しています。",
+      "text_markdown": "歴史家が日付や詳細について意見が分かれる場合は、最も広く受け入れられている説を紹介しています。",
+      "tts": {
+        "text": "歴史家が日付や詳細について意見が分かれる場合は、最も広く受け入れられている説を紹介しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "読者へのことば",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これは伝説ではなく歴史であり、それにふさわしい慎重さをもって扱っています。",
+      "text_markdown": "これは伝説ではなく歴史であり、それにふさわしい慎重さをもって扱っています。",
+      "tts": {
+        "text": "これは伝説ではなく歴史であり、それにふさわしい慎重さをもって扱っています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "地中海の世界",
+      "text_markdown": "地中海の世界"
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海は三つの大陸の交差点に位置しています。",
+      "text_markdown": "地中海は三つの大陸の交差点に位置しています。",
+      "tts": {
+        "text": "地中海は三つの大陸の交差点に位置しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "北にヨーロッパ、南にアフリカ、東にアジアがあります。",
+      "text_markdown": "北にヨーロッパ、南にアフリカ、東にアジアがあります。",
+      "tts": {
+        "text": "北にヨーロッパ、南にアフリカ、東にアジアがあります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何千年もの間、その沿岸のあらゆる偉大な文明がその支配をめぐって争ってきました。",
+      "text_markdown": "何千年もの間、その沿岸のあらゆる偉大な文明がその支配をめぐって争ってきました。",
+      "tts": {
+        "text": "何千年もの間、その沿岸のあらゆる偉大な文明がその支配をめぐって争ってきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "十五世紀末までに、地中海は二つの大国間の戦場となっていました。",
+      "text_markdown": "十五世紀末までに、地中海は二つの大国間の戦場となっていました。",
+      "tts": {
+        "text": "十五世紀末までに、地中海は二つの大国間の戦場となっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "東では、オスマン帝国が野心的なスルタンたちのもとで急速に拡大していました。",
+      "text_markdown": "東では、オスマン帝国が野心的なスルタンたちのもとで急速に拡大していました。",
+      "tts": {
+        "text": "東では、オスマン帝国が野心的なスルタンたちのもとで急速に拡大していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "西では、スペイン王国とカール五世率いる神聖ローマ帝国が反撃を試みていました。",
+      "text_markdown": "西では、スペイン王国とカール五世率いる神聖ローマ帝国が反撃を試みていました。",
+      "tts": {
+        "text": "西では、スペイン王国とカール五世率いる神聖ローマ帝国が反撃を試みていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オスマン帝国は千四百五十三年にコンスタンティノープルを征服していました。",
+      "text_markdown": "オスマン帝国は千四百五十三年にコンスタンティノープルを征服していました。",
+      "tts": {
+        "text": "オスマン帝国は千四百五十三年にコンスタンティノープルを征服していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その勝利はビザンツ帝国に終止符を打ち、オスマン帝国に東地中海の支配権を与えました。",
+      "text_markdown": "その勝利はビザンツ帝国に終止符を打ち、オスマン帝国に東地中海の支配権を与えました。",
+      "tts": {
+        "text": "その勝利はビザンツ帝国に終止符を打ち、オスマン帝国に東地中海の支配権を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "都市はイスタンブールと改名され、広大で成長し続ける帝国の首都となりました。",
+      "text_markdown": "都市はイスタンブールと改名され、広大で成長し続ける帝国の首都となりました。",
+      "tts": {
+        "text": "都市はイスタンブールと改名され、広大で成長し続ける帝国の首都となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その港、金角湾はオスマン艦隊の母港となりました。",
+      "text_markdown": "その港、金角湾はオスマン艦隊の母港となりました。",
+      "tts": {
+        "text": "その港、金角湾はオスマン艦隊の母港となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一方、スペインはレコンキスタを完了したばかりでした。",
+      "text_markdown": "一方、スペインはレコンキスタを完了したばかりでした。",
+      "tts": {
+        "text": "一方、スペインはレコンキスタを完了したばかりでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1492年、スペインの君主フェルナンドとイサベラはイベリア半島最後のイスラム王国であるグラナダを征服しました。",
+      "text_markdown": "1492年、スペインの君主フェルナンドとイサベラはイベリア半島最後のイスラム王国であるグラナダを征服しました。",
+      "tts": {
+        "text": "千四百九十二年、スペインの君主フェルナンドとイサベラはイベリア半島最後のイスラム王国であるグラナダを征服しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その後の数年間に何十万人ものイスラム教徒とユダヤ人がスペインから追放されました。",
+      "text_markdown": "その後の数年間に何十万人ものイスラム教徒とユダヤ人がスペインから追放されました。",
+      "tts": {
+        "text": "その後の数年間に何十万人ものイスラム教徒とユダヤ人がスペインから追放されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らの多くは北アフリカやオスマン帝国に逃れました。",
+      "text_markdown": "彼らの多くは北アフリカやオスマン帝国に逃れました。",
+      "tts": {
+        "text": "彼らの多くは北アフリカやオスマン帝国に逃れました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "バルバリア海岸として知られる北アフリカの沿岸はこれらの亡命者の避難所となりました。",
+      "text_markdown": "バルバリア海岸として知られる北アフリカの沿岸はこれらの亡命者の避難所となりました。",
+      "tts": {
+        "text": "バルバリア海岸として知られる北アフリカの沿岸はこれらの亡命者の避難所となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェ、チュニス、トリポリなどの都市はスペインからの難民の波を受け入れました。",
+      "text_markdown": "アルジェ、チュニス、トリポリなどの都市はスペインからの難民の波を受け入れました。",
+      "tts": {
+        "text": "アルジェ、チュニス、トリポリなどの都市はスペインからの難民の波を受け入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの移住させられた共同体はスペイン王室に対する深い恨みを抱いていました。",
+      "text_markdown": "これらの移住させられた共同体はスペイン王室に対する深い恨みを抱いていました。",
+      "tts": {
+        "text": "これらの移住させられた共同体はスペイン王室に対する深い恨みを抱いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "多くの者が、生計を立てることと復讐の両方を胸に、海賊稼業へと身を投じていきました。",
+      "text_markdown": "多くの者が、生計を立てることと復讐の両方を胸に、海賊稼業へと身を投じていきました。",
+      "tts": {
+        "text": "多くの者が、生計を立てることと復讐の両方を胸に、海賊稼業へと身を投じていきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "海賊と私掠船は異なるものでした。",
+      "text_markdown": "海賊と私掠船は異なるものでした。",
+      "tts": {
+        "text": "海賊と私掠船は異なるものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "私掠船員は政府や支配者の許可を得て活動していました。",
+      "text_markdown": "私掠船員は政府や支配者の許可を得て活動していました。",
+      "tts": {
+        "text": "私掠船員は政府や支配者の許可を得て活動していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは敵の船を攻撃し、利益を後援国と分け合いました。",
+      "text_markdown": "彼らは敵の船を攻撃し、利益を後援国と分け合いました。",
+      "tts": {
+        "text": "彼らは敵の船を攻撃し、利益を後援国と分け合いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p12",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "このように、私掠行為は民間人が行う海上戦争の一形態でした。",
+      "text_markdown": "このように、私掠行為は民間人が行う海上戦争の一形態でした。",
+      "tts": {
+        "text": "このように、私掠行為は民間人が行う海上戦争の一形態でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "キリスト教とイスラム教の両方の勢力が私掠船員を広く利用しました。",
+      "text_markdown": "キリスト教とイスラム教の両方の勢力が私掠船員を広く利用しました。",
+      "tts": {
+        "text": "キリスト教とイスラム教の両方の勢力が私掠船員を広く利用しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ロドス島、後にマルタ島を拠点とした聖ヨハネ騎士団はイスラム教徒の船を襲撃するキリスト教の私掠船員でした。",
+      "text_markdown": "ロドス島、後にマルタ島を拠点とした聖ヨハネ騎士団はイスラム教徒の船を襲撃するキリスト教の私掠船員でした。",
+      "tts": {
+        "text": "ロドス島、後にマルタ島を拠点とした聖ヨハネ騎士団はイスラム教徒の船を襲撃するキリスト教の私掠船員でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "北アフリカを拠点とするイスラム教徒の私掠船員はその見返りにキリスト教徒の船を襲撃しました。",
+      "text_markdown": "北アフリカを拠点とするイスラム教徒の私掠船員はその見返りにキリスト教徒の船を襲撃しました。",
+      "tts": {
+        "text": "北アフリカを拠点とするイスラム教徒の私掠船員はその見返りにキリスト教徒の船を襲撃しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p13",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "地中海は絶え間ない低強度の戦争の海でした。",
+      "text_markdown": "地中海は絶え間ない低強度の戦争の海でした。",
+      "tts": {
+        "text": "地中海は絶え間ない低強度の戦争の海でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "貿易はこの紛争を駆り立てた賞品でした。",
+      "text_markdown": "貿易はこの紛争を駆り立てた賞品でした。",
+      "tts": {
+        "text": "貿易はこの紛争を駆り立てた賞品でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "地中海は中国からの絹、インドからの香辛料、エジプトからの穀物、ヨーロッパからの羊毛を運んでいました。",
+      "text_markdown": "地中海は中国からの絹、インドからの香辛料、エジプトからの穀物、ヨーロッパからの羊毛を運んでいました。",
+      "tts": {
+        "text": "地中海は中国からの絹、インドからの香辛料、エジプトからの穀物、ヨーロッパからの羊毛を運んでいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの交易路の支配は莫大な富を意味しました。",
+      "text_markdown": "これらの交易路の支配は莫大な富を意味しました。",
+      "tts": {
+        "text": "これらの交易路の支配は莫大な富を意味しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "全ての港湾都市は生存のために海に依存していました。",
+      "text_markdown": "全ての港湾都市は生存のために海に依存していました。",
+      "tts": {
+        "text": "全ての港湾都市は生存のために海に依存していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地中海の島々は戦略的に重要な宝でした。",
+      "text_markdown": "地中海の島々は戦略的に重要な宝でした。",
+      "tts": {
+        "text": "地中海の島々は戦略的に重要な宝でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "島々を支配する者がそれらの間の航路を支配しました。",
+      "text_markdown": "島々を支配する者がそれらの間の航路を支配しました。",
+      "tts": {
+        "text": "島々を支配する者がそれらの間の航路を支配しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ロドス、キプロス、クレタ、シチリア、マルタは何世紀にもわたって繰り返し支配者が変わりました。",
+      "text_markdown": "ロドス、キプロス、クレタ、シチリア、マルタは何世紀にもわたって繰り返し支配者が変わりました。",
+      "tts": {
+        "text": "ロドス、キプロス、クレタ、シチリア、マルタは何世紀にもわたって繰り返し支配者が変わりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海軍力がどの帝国がそれらを保持するかを決定しました。",
+      "text_markdown": "海軍力がどの帝国がそれらを保持するかを決定しました。",
+      "tts": {
+        "text": "海軍力がどの帝国がそれらを保持するかを決定しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時代の地中海の軍艦はガレー船でした。",
+      "text_markdown": "この時代の地中海の軍艦はガレー船でした。",
+      "tts": {
+        "text": "この時代の地中海の軍艦はガレー船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ガレー船はオールと帆で動く細長い船でした。",
+      "text_markdown": "ガレー船はオールと帆で動く細長い船でした。",
+      "tts": {
+        "text": "ガレー船はオールと帆で動く細長い船でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "各ガレー船には何百人もの漕ぎ手が乗り、その多くは奴隷か捕虜でした。",
+      "text_markdown": "各ガレー船には何百人もの漕ぎ手が乗り、その多くは奴隷か捕虜でした。",
+      "tts": {
+        "text": "各ガレー船には何百人もの漕ぎ手が乗り、その多くは奴隷か捕虜でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "戦闘では、ガレー船は敵船に衝角攻撃を行い、その後武装兵士を乗り込ませて白兵戦を行いました。",
+      "text_markdown": "戦闘では、ガレー船は敵船に衝角攻撃を行い、その後武装兵士を乗り込ませて白兵戦を行いました。",
+      "tts": {
+        "text": "戦闘では、ガレー船は敵船に衝角攻撃を行い、その後武装兵士を乗り込ませて白兵戦を行いました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ガレー船の奴隷制度は筆舌に尽くしがたいほど残酷なものでした。",
+      "text_markdown": "ガレー船の奴隷制度は筆舌に尽くしがたいほど残酷なものでした。",
+      "tts": {
+        "text": "ガレー船の奴隷制度は筆舌に尽くしがたいほど残酷なものでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "戦争や襲撃で捕らえられた者はオールに鎖でつながれ、死ぬまで漕がされました。",
+      "text_markdown": "戦争や襲撃で捕らえられた者はオールに鎖でつながれ、死ぬまで漕がされました。",
+      "tts": {
+        "text": "戦争や襲撃で捕らえられた者はオールに鎖でつながれ、死ぬまで漕がされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "キリスト教徒はイスラム教徒を奴隷にし、イスラム教徒はキリスト教徒を奴隷にしました。",
+      "text_markdown": "キリスト教徒はイスラム教徒を奴隷にし、イスラム教徒はキリスト教徒を奴隷にしました。",
+      "tts": {
+        "text": "キリスト教徒はイスラム教徒を奴隷にし、イスラム教徒はキリスト教徒を奴隷にしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この残酷さは日常的なものとなり、双方がそれを普通のこととして受け入れていました。",
+      "text_markdown": "この残酷さは日常的なものとなり、双方がそれを普通のこととして受け入れていました。",
+      "tts": {
+        "text": "この残酷さは日常的なものとなり、双方がそれを普通のこととして受け入れていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ローマの教皇はオスマン帝国の脅威に対してキリスト教諸国を団結させようと繰り返し試みました。",
+      "text_markdown": "ローマの教皇はオスマン帝国の脅威に対してキリスト教諸国を団結させようと繰り返し試みました。",
+      "tts": {
+        "text": "ローマの教皇はオスマン帝国の脅威に対してキリスト教諸国を団結させようと繰り返し試みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-058",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "神聖同盟と呼ばれるこれらの同盟はスペイン、ヴェネツィア、ジェノヴァ、教皇領からの船を集結させました。",
+      "text_markdown": "神聖同盟と呼ばれるこれらの同盟はスペイン、ヴェネツィア、ジェノヴァ、教皇領からの船を集結させました。",
+      "tts": {
+        "text": "神聖同盟と呼ばれるこれらの同盟はスペイン、ヴェネツィア、ジェノヴァ、教皇領からの船を集結させました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-059",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかしキリスト教諸国はオスマン帝国を恐れるのとほぼ同じくらい、互いを信用できないありさまでした。",
+      "text_markdown": "しかしキリスト教諸国はオスマン帝国を恐れるのとほぼ同じくらい、互いを信用できないありさまでした。",
+      "tts": {
+        "text": "しかしキリスト教諸国はオスマン帝国を恐れるのとほぼ同じくらい、互いを信用できないありさまでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-060",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これらの同盟は脆く、長く続く成果を残す前にしばしば崩れてしまいました。",
+      "text_markdown": "これらの同盟は脆く、長く続く成果を残す前にしばしば崩れてしまいました。",
+      "tts": {
+        "text": "これらの同盟は脆く、長く続く成果を残す前にしばしば崩れてしまいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch01-061",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この暴力的で争いの絶えない世界に、オスマン帝国支配下のギリシャの島で二人の兄弟が生まれました。",
+      "text_markdown": "この暴力的で争いの絶えない世界に、オスマン帝国支配下のギリシャの島で二人の兄弟が生まれました。",
+      "tts": {
+        "text": "この暴力的で争いの絶えない世界に、オスマン帝国支配下のギリシャの島で二人の兄弟が生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-062",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らの名前はアルージュとヒズルでした。",
+      "text_markdown": "彼らの名前はアルージュとヒズルでした。",
+      "tts": {
+        "text": "彼らの名前はアルージュとヒズルでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-063",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヒズルは後にハイレッディン・バルバロッサとして世界に知られることになります。",
+      "text_markdown": "ヒズルは後にハイレッディン・バルバロッサとして世界に知られることになります。",
+      "tts": {
+        "text": "ヒズルは後にハイレッディン・バルバロッサとして世界に知られることになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch01-064",
+      "part": 0,
+      "chapter": 1,
+      "title": "地中海の世界",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "二人は力を合わせて地中海全体の勢力均衡を塗り替えることになります。",
+      "text_markdown": "二人は力を合わせて地中海全体の勢力均衡を塗り替えることになります。",
+      "tts": {
+        "text": "二人は力を合わせて地中海全体の勢力均衡を塗り替えることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源"
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディン・バルバロッサは1478年頃、レスボス島で生まれました。",
+      "text_markdown": "ハイレッディン・バルバロッサは1478年頃、レスボス島で生まれました。",
+      "tts": {
+        "text": "ハイレッディン・バルバロッサは千四百七十八年頃、レスボス島で生まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "レスボス島はエーゲ海北東部にある大きなギリシャの島で、現代トルコの海岸近くに位置しています。",
+      "text_markdown": "レスボス島はエーゲ海北東部にある大きなギリシャの島で、現代トルコの海岸近くに位置しています。",
+      "tts": {
+        "text": "レスボス島はエーゲ海北東部にある大きなギリシャの島で、現代トルコの海岸近くに位置しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼が生まれた頃、島は最近オスマン帝国の支配下に入ったばかりでした。",
+      "text_markdown": "彼が生まれた頃、島は最近オスマン帝国の支配下に入ったばかりでした。",
+      "tts": {
+        "text": "彼が生まれた頃、島は最近オスマン帝国の支配下に入ったばかりでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "父はヤクブといい、軍務を終えた後レスボス島に定住した元オスマン帝国の兵士でした。",
+      "text_markdown": "父はヤクブといい、軍務を終えた後レスボス島に定住した元オスマン帝国の兵士でした。",
+      "tts": {
+        "text": "父はヤクブといい、軍務を終えた後レスボス島に定住した元オスマン帝国の兵士でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ヤクブは陶工として働いており、大方の記録によれば質素な職人でした。",
+      "text_markdown": "ヤクブは陶工として働いており、大方の記録によれば質素な職人でした。",
+      "tts": {
+        "text": "ヤクブは陶工として働いており、大方の記録によれば質素な職人でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "母はカテリーナという名の地元のギリシャ人女性で、おそらくキリスト教徒の出身でした。",
+      "text_markdown": "母はカテリーナという名の地元のギリシャ人女性で、おそらくキリスト教徒の出身でした。",
+      "tts": {
+        "text": "母はカテリーナという名の地元のギリシャ人女性で、おそらくキリスト教徒の出身でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一家は裕福ではありませんでしたが、困窮してもいませんでした。",
+      "text_markdown": "一家は裕福ではありませんでしたが、困窮してもいませんでした。",
+      "tts": {
+        "text": "一家は裕福ではありませんでしたが、困窮してもいませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヤクブとカテリーナには四人の息子がいました。",
+      "text_markdown": "ヤクブとカテリーナには四人の息子がいました。",
+      "tts": {
+        "text": "ヤクブとカテリーナには四人の息子がいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "長男はイシャク、次にアルージュ、そしてヒズル、末っ子がイリヤスでした。",
+      "text_markdown": "長男はイシャク、次にアルージュ、そしてヒズル、末っ子がイリヤスでした。",
+      "tts": {
+        "text": "長男はイシャク、次にアルージュ、そしてヒズル、末っ子がイリヤスでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヒズルが後にハイレッディン・バルバロッサとなる少年でした。",
+      "text_markdown": "ヒズルが後にハイレッディン・バルバロッサとなる少年でした。",
+      "tts": {
+        "text": "ヒズルが後にハイレッディン・バルバロッサとなる少年でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "四人の兄弟は全員やがて海に出ることになります。",
+      "text_markdown": "四人の兄弟は全員やがて海に出ることになります。",
+      "tts": {
+        "text": "四人の兄弟は全員やがて海に出ることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟たちは海に形作られた世界で育ちました。",
+      "text_markdown": "兄弟たちは海に形作られた世界で育ちました。",
+      "tts": {
+        "text": "兄弟たちは海に形作られた世界で育ちました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "レスボス島の経済が依存していたのは、漁業と海上貿易でした。",
+      "text_markdown": "レスボス島の経済が依存していたのは、漁業と海上貿易でした。",
+      "tts": {
+        "text": "レスボス島の経済が依存していたのは、漁業と海上貿易でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "島のどの少年も読み書きを覚える前に船の操縦を学びました。",
+      "text_markdown": "島のどの少年も読み書きを覚える前に船の操縦を学びました。",
+      "tts": {
+        "text": "島のどの少年も読み書きを覚える前に船の操縦を学びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海は彼らにとって抽象的なものではなく、日々の現実そのものでした。",
+      "text_markdown": "海は彼らにとって抽象的なものではなく、日々の現実そのものでした。",
+      "tts": {
+        "text": "海は彼らにとって抽象的なものではなく、日々の現実そのものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "青年になると、兄弟たちは船乗りと商人として働き始めました。",
+      "text_markdown": "青年になると、兄弟たちは船乗りと商人として働き始めました。",
+      "tts": {
+        "text": "青年になると、兄弟たちは船乗りと商人として働き始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはエーゲ海の島々とオスマン帝国本土の間で商品を運びました。",
+      "text_markdown": "彼らはエーゲ海の島々とオスマン帝国本土の間で商品を運びました。",
+      "tts": {
+        "text": "彼らはエーゲ海の島々とオスマン帝国本土の間で商品を運びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "しかし私掠船員であふれる海での貿易は危険な商売でした。",
+      "text_markdown": "しかし私掠船員であふれる海での貿易は危険な商売でした。",
+      "tts": {
+        "text": "しかし私掠船員であふれる海での貿易は危険な商売でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "初期の航海の一つで、兄弟たちは聖ヨハネ騎士団に襲撃されました。",
+      "text_markdown": "初期の航海の一つで、兄弟たちは聖ヨハネ騎士団に襲撃されました。",
+      "tts": {
+        "text": "初期の航海の一つで、兄弟たちは聖ヨハネ騎士団に襲撃されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "聖ヨハネ騎士団はロドス島を拠点とするキリスト教の軍事修道会でした。",
+      "text_markdown": "聖ヨハネ騎士団はロドス島を拠点とするキリスト教の軍事修道会でした。",
+      "tts": {
+        "text": "聖ヨハネ騎士団はロドス島を拠点とするキリスト教の軍事修道会でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは地中海で最も恐れられた私掠船員の一つでした。",
+      "text_markdown": "彼らは地中海で最も恐れられた私掠船員の一つでした。",
+      "tts": {
+        "text": "彼らは地中海で最も恐れられた私掠船員の一つでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らは容赦なくイスラム教徒の船を攻撃し、商品を奪い、乗組員を奴隷にしました。",
+      "text_markdown": "彼らは容赦なくイスラム教徒の船を攻撃し、商品を奪い、乗組員を奴隷にしました。",
+      "tts": {
+        "text": "彼らは容赦なくイスラム教徒の船を攻撃し、商品を奪い、乗組員を奴隷にしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "兄弟の船への攻撃の際、末弟のイリヤスが殺されました。",
+      "text_markdown": "兄弟の船への攻撃の際、末弟のイリヤスが殺されました。",
+      "tts": {
+        "text": "兄弟の船への攻撃の際、末弟のイリヤスが殺されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟の中で最も攻撃的だったアルージュは捕らえられ、奴隷にされました。",
+      "text_markdown": "兄弟の中で最も攻撃的だったアルージュは捕らえられ、奴隷にされました。",
+      "tts": {
+        "text": "兄弟の中で最も攻撃的だったアルージュは捕らえられ、奴隷にされました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はキリスト教徒の軍船のオールに鎖でつながれ、ガレー船の奴隷として数年間を過ごしました。",
+      "text_markdown": "彼はキリスト教徒の軍船のオールに鎖でつながれ、ガレー船の奴隷として数年間を過ごしました。",
+      "tts": {
+        "text": "彼はキリスト教徒の軍船のオールに鎖でつながれ、ガレー船の奴隷として数年間を過ごしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その経験は彼の残りの人生を形作るほど彼を鍛えました。",
+      "text_markdown": "その経験は彼の残りの人生を形作るほど彼を鍛えました。",
+      "tts": {
+        "text": "その経験は彼の残りの人生を形作るほど彼を鍛えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p27",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼が最終的に身請けされるか脱出した時、彼は全く別人になっていました。",
+      "text_markdown": "彼が最終的に身請けされるか脱出した時、彼は全く別人になっていました。",
+      "tts": {
+        "text": "彼が最終的に身請けされるか脱出した時、彼は全く別人になっていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルージュは自ら私掠船員になることを決意しました。",
+      "text_markdown": "アルージュは自ら私掠船員になることを決意しました。",
+      "tts": {
+        "text": "アルージュは自ら私掠船員になることを決意しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は船と乗組員を手に入れ、東地中海でキリスト教徒の船を襲撃し始めました。",
+      "text_markdown": "彼は船と乗組員を手に入れ、東地中海でキリスト教徒の船を襲撃し始めました。",
+      "tts": {
+        "text": "彼は船と乗組員を手に入れ、東地中海でキリスト教徒の船を襲撃し始めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "弟のヒズルが副官として彼に加わりました。",
+      "text_markdown": "弟のヒズルが副官として彼に加わりました。",
+      "tts": {
+        "text": "弟のヒズルが副官として彼に加わりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "二人は共に極めて有能な海上略奪者であることを証明しました。",
+      "text_markdown": "二人は共に極めて有能な海上略奪者であることを証明しました。",
+      "tts": {
+        "text": "二人は共に極めて有能な海上略奪者であることを証明しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟は活動拠点を西地中海に移しました。",
+      "text_markdown": "兄弟は活動拠点を西地中海に移しました。",
+      "tts": {
+        "text": "兄弟は活動拠点を西地中海に移しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らは現代チュニジアの海岸沖にあるジェルバ島に拠点を置きました。",
+      "text_markdown": "彼らは現代チュニジアの海岸沖にあるジェルバ島に拠点を置きました。",
+      "tts": {
+        "text": "彼らは現代チュニジアの海岸沖にあるジェルバ島に拠点を置きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ジェルバからは繁忙な交易路沿いのスペインやイタリアの船を襲撃できました。",
+      "text_markdown": "ジェルバからは繁忙な交易路沿いのスペインやイタリアの船を襲撃できました。",
+      "tts": {
+        "text": "ジェルバからは繁忙な交易路沿いのスペインやイタリアの船を襲撃できました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らの評判は味方にも敵にも急速に広まりました。",
+      "text_markdown": "彼らの評判は味方にも敵にも急速に広まりました。",
+      "tts": {
+        "text": "彼らの評判は味方にも敵にも急速に広まりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルージュは彼らのパートナーシップの表の顔でした。",
+      "text_markdown": "アルージュは彼らのパートナーシップの表の顔でした。",
+      "tts": {
+        "text": "アルージュは彼らのパートナーシップの表の顔でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は大胆でカリスマ的、そして体格も堂々としていました。",
+      "text_markdown": "彼は大胆でカリスマ的、そして体格も堂々としていました。",
+      "tts": {
+        "text": "彼は大胆でカリスマ的、そして体格も堂々としていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ヨーロッパの資料は彼が赤い髭を持っていたと記しており、これが兄弟に有名なあだ名を与えました。",
+      "text_markdown": "ヨーロッパの資料は彼が赤い髭を持っていたと記しており、これが兄弟に有名なあだ名を与えました。",
+      "tts": {
+        "text": "ヨーロッパの資料は彼が赤い髭を持っていたと記しており、これが兄弟に有名なあだ名を与えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "赤い髭を意味するバルバロッサという名は元々アルージュに付けられ、後にハイレッディンに引き継がれました。",
+      "text_markdown": "赤い髭を意味するバルバロッサという名は元々アルージュに付けられ、後にハイレッディンに引き継がれました。",
+      "tts": {
+        "text": "赤い髭を意味するバルバロッサという名は元々アルージュに付けられ、後にハイレッディンに引き継がれました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヒズルは裏方の戦略家であり組織者でした。",
+      "text_markdown": "ヒズルは裏方の戦略家であり組織者でした。",
+      "tts": {
+        "text": "ヒズルは裏方の戦略家であり組織者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は成長する艦隊の兵站を管理し、地元の支配者との同盟を維持しました。",
+      "text_markdown": "彼は成長する艦隊の兵站を管理し、地元の支配者との同盟を維持しました。",
+      "tts": {
+        "text": "彼は成長する艦隊の兵站を管理し、地元の支配者との同盟を維持しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "アルージュが自ら襲撃を率いる一方、ヒズルは事業が円滑に運営されるよう取り計らいました。",
+      "text_markdown": "アルージュが自ら襲撃を率いる一方、ヒズルは事業が円滑に運営されるよう取り計らいました。",
+      "tts": {
+        "text": "アルージュが自ら襲撃を率いる一方、ヒズルは事業が円滑に運営されるよう取り計らいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らの対照的な能力が彼らを手ごわいチームにしました。",
+      "text_markdown": "彼らの対照的な能力が彼らを手ごわいチームにしました。",
+      "tts": {
+        "text": "彼らの対照的な能力が彼らを手ごわいチームにしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "兄弟の襲撃は個人的な利益を超えた目的に奉仕していました。",
+      "text_markdown": "兄弟の襲撃は個人的な利益を超えた目的に奉仕していました。",
+      "tts": {
+        "text": "兄弟の襲撃は個人的な利益を超えた目的に奉仕していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼らはスペインの宗教裁判から逃れるイスラム教徒の難民を救出しました。",
+      "text_markdown": "彼らはスペインの宗教裁判から逃れるイスラム教徒の難民を救出しました。",
+      "tts": {
+        "text": "彼らはスペインの宗教裁判から逃れるイスラム教徒の難民を救出しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1504年から1510年の間に、彼らは何千人ものイスラム教徒をスペインから北アフリカへ輸送しました。",
+      "text_markdown": "1504年から1510年の間に、彼らは何千人ものイスラム教徒をスペインから北アフリカへ輸送しました。",
+      "tts": {
+        "text": "千五百四年から千五百十年の間に、彼らは何千人ものイスラム教徒をスペインから北アフリカへ輸送しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これにより彼らはバルバリア海岸のイスラム教徒の共同体から絶大な敬意を得ました。",
+      "text_markdown": "これにより彼らはバルバリア海岸のイスラム教徒の共同体から絶大な敬意を得ました。",
+      "tts": {
+        "text": "これにより彼らはバルバリア海岸のイスラム教徒の共同体から絶大な敬意を得ました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルージュが目を向けたのは、襲撃よりもさらに大きな獲物でした。",
+      "text_markdown": "アルージュが目を向けたのは、襲撃よりもさらに大きな獲物でした。",
+      "tts": {
+        "text": "アルージュが目を向けたのは、襲撃よりもさらに大きな獲物でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は都市を占領し、スペインの力に対抗できる拠点を築きたいと考えていました。",
+      "text_markdown": "彼は都市を占領し、スペインの力に対抗できる拠点を築きたいと考えていました。",
+      "tts": {
+        "text": "彼は都市を占領し、スペインの力に対抗できる拠点を築きたいと考えていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の目標は北アフリカ沿岸にある壮大な天然の港を持つ港湾都市アルジェでした。",
+      "text_markdown": "彼の目標は北アフリカ沿岸にある壮大な天然の港を持つ港湾都市アルジェでした。",
+      "tts": {
+        "text": "彼の目標は北アフリカ沿岸にある壮大な天然の港を持つ港湾都市アルジェでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "起源",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アルジェの占領は兄弟を私掠船員から支配者へと変えるものでした。",
+      "text_markdown": "アルジェの占領は兄弟を私掠船員から支配者へと変えるものでした。",
+      "tts": {
+        "text": "アルジェの占領は兄弟を私掠船員から支配者へと変えるものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-117",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "権力の台頭",
+      "text_markdown": "権力の台頭"
+    },
+    {
+      "id": "ch03-118",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1516年、アルージュはアルジェの街を占領しました。",
+      "text_markdown": "1516年、アルージュはアルジェの街を占領しました。",
+      "tts": {
+        "text": "千五百十六年、アルージュはアルジェの街を占領しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-119",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は地元の支配者を打倒し、自らをアルジェのスルタンと宣言しました。",
+      "text_markdown": "彼は地元の支配者を打倒し、自らをアルジェのスルタンと宣言しました。",
+      "tts": {
+        "text": "彼は地元の支配者を打倒し、自らをアルジェのスルタンと宣言しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-120",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはスペイン帝国を警戒させる大胆で果敢な行動でした。",
+      "text_markdown": "それはスペイン帝国を警戒させる大胆で果敢な行動でした。",
+      "tts": {
+        "text": "それはスペイン帝国を警戒させる大胆で果敢な行動でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-121",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アルジェは今や私掠船の戦国大名の手中にありました。",
+      "text_markdown": "アルジェは今や私掠船の戦国大名の手中にありました。",
+      "tts": {
+        "text": "アルジェは今や私掠船の戦国大名の手中にありました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-122",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アルージュは有能だが冷酷な支配者であることを証明しました。",
+      "text_markdown": "アルージュは有能だが冷酷な支配者であることを証明しました。",
+      "tts": {
+        "text": "アルージュは有能だが冷酷な支配者であることを証明しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は北アフリカ沿岸に沿って領土を拡大しました。",
+      "text_markdown": "彼は北アフリカ沿岸に沿って領土を拡大しました。",
+      "tts": {
+        "text": "彼は北アフリカ沿岸に沿って領土を拡大しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は地元のベルベル部族やイスラム教徒の難民共同体と同盟を結びました。",
+      "text_markdown": "彼は地元のベルベル部族やイスラム教徒の難民共同体と同盟を結びました。",
+      "tts": {
+        "text": "彼は地元のベルベル部族やイスラム教徒の難民共同体と同盟を結びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし彼の攻撃的な拡大はスペインとの直接対立を招きました。",
+      "text_markdown": "しかし彼の攻撃的な拡大はスペインとの直接対立を招きました。",
+      "tts": {
+        "text": "しかし彼の攻撃的な拡大はスペインとの直接対立を招きました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1518年、大規模なスペイン軍がアルージュの拠点であるトレムセンの街を包囲しました。",
+      "text_markdown": "1518年、大規模なスペイン軍がアルージュの拠点であるトレムセンの街を包囲しました。",
+      "tts": {
+        "text": "千五百十八年、大規模なスペイン軍がアルージュの拠点であるトレムセンの街を包囲しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルージュは少数の部隊で脱出を試みました。",
+      "text_markdown": "アルージュは少数の部隊で脱出を試みました。",
+      "tts": {
+        "text": "アルージュは少数の部隊で脱出を試みました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "撤退中にスペイン兵に捕らえられ殺されました。",
+      "text_markdown": "撤退中にスペイン兵に捕らえられ殺されました。",
+      "tts": {
+        "text": "撤退中にスペイン兵に捕らえられ殺されました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の死によりヒズルは唯一生き残った兄弟となり、アルージュが築いた全てを率いることになりました。",
+      "text_markdown": "彼の死によりヒズルは唯一生き残った兄弟となり、アルージュが築いた全てを率いることになりました。",
+      "tts": {
+        "text": "彼の死によりヒズルは唯一生き残った兄弟となり、アルージュが築いた全てを率いることになりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "四十代前半のヒズルは不可能な状況に直面していました。",
+      "text_markdown": "四十代前半のヒズルは不可能な状況に直面していました。",
+      "tts": {
+        "text": "四十代前半のヒズルは不可能な状況に直面していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スペイン軍は進撃し、兄は死に、兵力は劣勢でした。",
+      "text_markdown": "スペイン軍は進撃し、兄は死に、兵力は劣勢でした。",
+      "tts": {
+        "text": "スペイン軍は進撃し、兄は死に、兵力は劣勢でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "強力な同盟者が必要でした。さもなければ全てを失うことになります。",
+      "text_markdown": "強力な同盟者が必要でした。さもなければ全てを失うことになります。",
+      "tts": {
+        "text": "強力な同盟者が必要でした。さもなければ全てを失うことになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はイスラム世界最大の勢力であるオスマン帝国に助けを求めました。",
+      "text_markdown": "彼はイスラム世界最大の勢力であるオスマン帝国に助けを求めました。",
+      "tts": {
+        "text": "彼はイスラム世界最大の勢力であるオスマン帝国に助けを求めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヒズルはイスタンブールのスルタン・セリム一世に使者を送りました。",
+      "text_markdown": "ヒズルはイスタンブールのスルタン・セリム一世に使者を送りました。",
+      "tts": {
+        "text": "ヒズルはイスタンブールのスルタン・セリム一世に使者を送りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "軍事支援と引き換えにアルジェをオスマン帝国の主権下に置くことを申し出ました。",
+      "text_markdown": "軍事支援と引き換えにアルジェをオスマン帝国の主権下に置くことを申し出ました。",
+      "tts": {
+        "text": "軍事支援と引き換えにアルジェをオスマン帝国の主権下に置くことを申し出ました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スルタンは西地中海における忠実な拠点の戦略的価値を認識しました。",
+      "text_markdown": "スルタンは西地中海における忠実な拠点の戦略的価値を認識しました。",
+      "tts": {
+        "text": "スルタンは西地中海における忠実な拠点の戦略的価値を認識しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は申し出を受け入れ、ヒズルの支援のために兵士、大砲、ガレー船の艦隊を送りました。",
+      "text_markdown": "彼は申し出を受け入れ、ヒズルの支援のために兵士、大砲、ガレー船の艦隊を送りました。",
+      "tts": {
+        "text": "彼は申し出を受け入れ、ヒズルの支援のために兵士、大砲、ガレー船の艦隊を送りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この時点以降、ヒズルはもはや単なる私掠船員ではありませんでした。",
+      "text_markdown": "この時点以降、ヒズルはもはや単なる私掠船員ではありませんでした。",
+      "tts": {
+        "text": "この時点以降、ヒズルはもはや単なる私掠船員ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はスルタンの名のもとにアルジェを統治するオスマン帝国の総督となりました。",
+      "text_markdown": "彼はスルタンの名のもとにアルジェを統治するオスマン帝国の総督となりました。",
+      "tts": {
+        "text": "彼はスルタンの名のもとにアルジェを統治するオスマン帝国の総督となりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は信仰の善を意味するハイレッディンという敬称を名乗りました。",
+      "text_markdown": "彼は信仰の善を意味するハイレッディンという敬称を名乗りました。",
+      "tts": {
+        "text": "彼は信仰の善を意味するハイレッディンという敬称を名乗りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "オスマン帝国の資源と彼自身の海軍的才能の組み合わせは彼を止められないものにしました。",
+      "text_markdown": "オスマン帝国の資源と彼自身の海軍的才能の組み合わせは彼を止められないものにしました。",
+      "tts": {
+        "text": "オスマン帝国の資源と彼自身の海軍的才能の組み合わせは彼を止められないものにしました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンはその後の十年間を北アフリカ沿岸でオスマン帝国の権力を固めることに費やしました。",
+      "text_markdown": "ハイレッディンはその後の十年間を北アフリカ沿岸でオスマン帝国の権力を固めることに費やしました。",
+      "tts": {
+        "text": "ハイレッディンはその後の十年間を北アフリカ沿岸でオスマン帝国の権力を固めることに費やしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はチュニスを占領し、主要な要塞からスペインの守備隊を追い出し、私掠艦隊を拡大しました。",
+      "text_markdown": "彼はチュニスを占領し、主要な要塞からスペインの守備隊を追い出し、私掠艦隊を拡大しました。",
+      "tts": {
+        "text": "彼はチュニスを占領し、主要な要塞からスペインの守備隊を追い出し、私掠艦隊を拡大しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は何十年もオスマン帝国に仕えることになる新世代の海軍指揮官を育成しました。",
+      "text_markdown": "彼は何十年もオスマン帝国に仕えることになる新世代の海軍指揮官を育成しました。",
+      "tts": {
+        "text": "彼は何十年もオスマン帝国に仕えることになる新世代の海軍指揮官を育成しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の艦隊は西地中海の支配的勢力となりました。",
+      "text_markdown": "彼の艦隊は西地中海の支配的勢力となりました。",
+      "tts": {
+        "text": "彼の艦隊は西地中海の支配的勢力となりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1533年、スレイマン大帝はハイレッディンをイスタンブールに召喚しました。",
+      "text_markdown": "1533年、スレイマン大帝はハイレッディンをイスタンブールに召喚しました。",
+      "tts": {
+        "text": "千五百三十三年、スレイマン大帝はハイレッディンをイスタンブールに召喚しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スレイマンは当時世界で最も強力な支配者でした。",
+      "text_markdown": "スレイマンは当時世界で最も強力な支配者でした。",
+      "tts": {
+        "text": "スレイマンは当時世界で最も強力な支配者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はオスマン帝国がその伝説的な陸軍に匹敵する専門的な海軍を必要としていると認識しました。",
+      "text_markdown": "彼はオスマン帝国がその伝説的な陸軍に匹敵する専門的な海軍を必要としていると認識しました。",
+      "tts": {
+        "text": "彼はオスマン帝国がその伝説的な陸軍に匹敵する専門的な海軍を必要としていると認識しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はハイレッディンをカプダン・パシャ、すなわちオスマン艦隊全体の大提督に任命しました。",
+      "text_markdown": "彼はハイレッディンをカプダン・パシャ、すなわちオスマン艦隊全体の大提督に任命しました。",
+      "tts": {
+        "text": "彼はハイレッディンをカプダン・パシャ、すなわちオスマン艦隊全体の大提督に任命しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "この任命は地中海の歴史における転換点でした。",
+      "text_markdown": "この任命は地中海の歴史における転換点でした。",
+      "tts": {
+        "text": "この任命は地中海の歴史における転換点でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "オスマン海軍は有能ではあったものの支配的ではありませんでした。",
+      "text_markdown": "オスマン海軍は有能ではあったものの支配的ではありませんでした。",
+      "tts": {
+        "text": "オスマン海軍は有能ではあったものの支配的ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハイレッディンの指揮下で、それは世界で最も恐れられる海軍力となるのです。",
+      "text_markdown": "ハイレッディンの指揮下で、それは世界で最も恐れられる海軍力となるのです。",
+      "tts": {
+        "text": "ハイレッディンの指揮下で、それは世界で最も恐れられる海軍力となるのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はイスタンブールの造船所から艦隊を再建し、何十年もの私掠戦争で学んだ全てを応用しました。",
+      "text_markdown": "彼はイスタンブールの造船所から艦隊を再建し、何十年もの私掠戦争で学んだ全てを応用しました。",
+      "tts": {
+        "text": "彼はイスタンブールの造船所から艦隊を再建し、何十年もの私掠戦争で学んだ全てを応用しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンはオスマン帝国の造船技術を近代化しました。",
+      "text_markdown": "ハイレッディンはオスマン帝国の造船技術を近代化しました。",
+      "tts": {
+        "text": "ハイレッディンはオスマン帝国の造船技術を近代化しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は私掠船を基にしたより速く機動性の高いガレー船を設計しました。",
+      "text_markdown": "彼は私掠船を基にしたより速く機動性の高いガレー船を設計しました。",
+      "tts": {
+        "text": "彼は私掠船を基にしたより速く機動性の高いガレー船を設計しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はオスマン帝国海軍将校のための訓練プログラムを設立しました。",
+      "text_markdown": "彼はオスマン帝国海軍将校のための訓練プログラムを設立しました。",
+      "tts": {
+        "text": "彼はオスマン帝国海軍将校のための訓練プログラムを設立しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は地中海中から経験豊富な私掠船員を船長として募集しました。",
+      "text_markdown": "彼は地中海中から経験豊富な私掠船員を船長として募集しました。",
+      "tts": {
+        "text": "彼は地中海中から経験豊富な私掠船員を船長として募集しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大提督としての最初の大規模な遠征はイタリア沿岸を標的としました。",
+      "text_markdown": "大提督としての最初の大規模な遠征はイタリア沿岸を標的としました。",
+      "tts": {
+        "text": "大提督としての最初の大規模な遠征はイタリア沿岸を標的としました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1534年、彼は南イタリアの海岸に対する壊滅的な襲撃でオスマン艦隊を率いました。",
+      "text_markdown": "1534年、彼は南イタリアの海岸に対する壊滅的な襲撃でオスマン艦隊を率いました。",
+      "tts": {
+        "text": "千五百三十四年、彼は南イタリアの海岸に対する壊滅的な襲撃でオスマン艦隊を率いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はチュニスの街を占領し、オスマン帝国の海軍基地として確立しました。",
+      "text_markdown": "彼はチュニスの街を占領し、オスマン帝国の海軍基地として確立しました。",
+      "tts": {
+        "text": "彼はチュニスの街を占領し、オスマン帝国の海軍基地として確立しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この襲撃はキリスト教諸国を恐怖に陥れ、オスマン帝国の海軍力の到達範囲を示しました。",
+      "text_markdown": "この襲撃はキリスト教諸国を恐怖に陥れ、オスマン帝国の海軍力の到達範囲を示しました。",
+      "tts": {
+        "text": "この襲撃はキリスト教諸国を恐怖に陥れ、オスマン帝国の海軍力の到達範囲を示しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "神聖ローマ帝国皇帝カール五世は大規模な反撃で応じました。",
+      "text_markdown": "神聖ローマ帝国皇帝カール五世は大規模な反撃で応じました。",
+      "tts": {
+        "text": "神聖ローマ帝国皇帝カール五世は大規模な反撃で応じました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1535年、カールはチュニスを奪還するためヨーロッパ史上最大級の艦隊を編成しました。",
+      "text_markdown": "1535年、カールはチュニスを奪還するためヨーロッパ史上最大級の艦隊を編成しました。",
+      "tts": {
+        "text": "千五百三十五年、カールはチュニスを奪還するためヨーロッパ史上最大級の艦隊を編成しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "その艦隊にはスペイン、イタリア、ポルトガル、教皇領からの船が含まれていました。",
+      "text_markdown": "その艦隊にはスペイン、イタリア、ポルトガル、教皇領からの船が含まれていました。",
+      "tts": {
+        "text": "その艦隊にはスペイン、イタリア、ポルトガル、教皇領からの船が含まれていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "カールはチュニスの占領に成功しましたが、ハイレッディンは艦隊の主力を維持したまま脱出しました。",
+      "text_markdown": "カールはチュニスの占領に成功しましたが、ハイレッディンは艦隊の主力を維持したまま脱出しました。",
+      "tts": {
+        "text": "カールはチュニスの占領に成功しましたが、ハイレッディンは艦隊の主力を維持したまま脱出しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "チュニスの喪失は後退でしたが、敗北ではありませんでした。",
+      "text_markdown": "チュニスの喪失は後退でしたが、敗北ではありませんでした。",
+      "tts": {
+        "text": "チュニスの喪失は後退でしたが、敗北ではありませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハイレッディンはアルジェに撤退し、直ちに戦力の再建を開始しました。",
+      "text_markdown": "ハイレッディンはアルジェに撤退し、直ちに戦力の再建を開始しました。",
+      "tts": {
+        "text": "ハイレッディンはアルジェに撤退し、直ちに戦力の再建を開始しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はキリスト教徒の同盟が一時的なもので、差し迫った脅威が去れば瓦解すると知っていました。",
+      "text_markdown": "彼はキリスト教徒の同盟が一時的なもので、差し迫った脅威が去れば瓦解すると知っていました。",
+      "tts": {
+        "text": "彼はキリスト教徒の同盟が一時的なもので、差し迫った脅威が去れば瓦解すると知っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の読みは正しく、数ヶ月以内に同盟は崩壊し始めました。",
+      "text_markdown": "彼の読みは正しく、数ヶ月以内に同盟は崩壊し始めました。",
+      "tts": {
+        "text": "彼の読みは正しく、数ヶ月以内に同盟は崩壊し始めました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二年以内に、ハイレッディンは最大の戦いの準備を整えていました。",
+      "text_markdown": "二年以内に、ハイレッディンは最大の戦いの準備を整えていました。",
+      "tts": {
+        "text": "二年以内に、ハイレッディンは最大の戦いの準備を整えていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の遺産を決定づける対決が近づいていました。",
+      "text_markdown": "彼の遺産を決定づける対決が近づいていました。",
+      "tts": {
+        "text": "彼の遺産を決定づける対決が近づいていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "それはギリシャ西海岸沖の海域で行われることになります。",
+      "text_markdown": "それはギリシャ西海岸沖の海域で行われることになります。",
+      "tts": {
+        "text": "それはギリシャ西海岸沖の海域で行われることになります。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "権力の台頭",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "その戦いの名はプレヴェザであり、地中海を永遠に変えることになります。",
+      "text_markdown": "その戦いの名はプレヴェザであり、地中海を永遠に変えることになります。",
+      "tts": {
+        "text": "その戦いの名はプレヴェザであり、地中海を永遠に変えることになります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-174",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "頂点にて",
+      "text_markdown": "頂点にて"
+    },
+    {
+      "id": "ch04-175",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "プレヴェザの海戦は1538年9月28日に行われました。",
+      "text_markdown": "プレヴェザの海戦は1538年9月28日に行われました。",
+      "tts": {
+        "text": "プレヴェザの海戦は千五百三十八年九月二十八日に行われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-176",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは十六世紀の地中海における決定的な海戦でした。",
+      "text_markdown": "それは十六世紀の地中海における決定的な海戦でした。",
+      "tts": {
+        "text": "それは十六世紀の地中海における決定的な海戦でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-177",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一方にはハイレッディン・バルバロッサ率いるオスマン艦隊がいました。",
+      "text_markdown": "一方にはハイレッディン・バルバロッサ率いるオスマン艦隊がいました。",
+      "tts": {
+        "text": "一方にはハイレッディン・バルバロッサ率いるオスマン艦隊がいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-178",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他方にはキリスト教国の同盟である神聖同盟の連合艦隊がいました。",
+      "text_markdown": "他方にはキリスト教国の同盟である神聖同盟の連合艦隊がいました。",
+      "tts": {
+        "text": "他方にはキリスト教国の同盟である神聖同盟の連合艦隊がいました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-179",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "神聖同盟の艦隊はジェノヴァの提督アンドレア・ドーリアが指揮していました。",
+      "text_markdown": "神聖同盟の艦隊はジェノヴァの提督アンドレア・ドーリアが指揮していました。",
+      "tts": {
+        "text": "神聖同盟の艦隊はジェノヴァの提督アンドレア・ドーリアが指揮していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-180",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはスペイン、ヴェネツィア、教皇領、ジェノヴァから約300隻の船で構成されていました。",
+      "text_markdown": "それはスペイン、ヴェネツィア、教皇領、ジェノヴァから約300隻の船で構成されていました。",
+      "tts": {
+        "text": "それはスペイン、ヴェネツィア、教皇領、ジェノヴァから約三百隻の船で構成されていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-181",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数字の上ではキリスト教徒の艦隊はオスマン軍を大きく上回っていました。",
+      "text_markdown": "数字の上ではキリスト教徒の艦隊はオスマン軍を大きく上回っていました。",
+      "tts": {
+        "text": "数字の上ではキリスト教徒の艦隊はオスマン軍を大きく上回っていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-182",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし規模だけでは海戦には勝てません。",
+      "text_markdown": "しかし規模だけでは海戦には勝てません。",
+      "tts": {
+        "text": "しかし規模だけでは海戦には勝てません。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-183",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンは約150隻のガレー船と小型の支援船を率いていました。",
+      "text_markdown": "ハイレッディンは約150隻のガレー船と小型の支援船を率いていました。",
+      "tts": {
+        "text": "ハイレッディンは約百五十隻のガレー船と小型の支援船を率いていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-184",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の艦隊は数では劣っていましたが、より良く訓練され、より良く統率され、より優れた指揮のもとにありました。",
+      "text_markdown": "彼の艦隊は数では劣っていましたが、より良く訓練され、より良く統率され、より優れた指揮のもとにありました。",
+      "tts": {
+        "text": "彼の艦隊は数では劣っていましたが、より良く訓練され、より良く統率され、より優れた指揮のもとにありました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-185",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハイレッディンは何十年もこの海域で戦い、あらゆる海流、風のパターン、海岸線が提供する全ての戦術的優位を熟知していました。",
+      "text_markdown": "ハイレッディンは何十年もこの海域で戦い、あらゆる海流、風のパターン、海岸線が提供する全ての戦術的優位を熟知していました。",
+      "tts": {
+        "text": "ハイレッディンは何十年もこの海域で戦い、あらゆる海流、風のパターン、海岸線が提供する全ての戦術的優位を熟知していました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-186",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "戦いはギリシャ西海岸沖のアンブラキア湾の入り口付近で行われました。",
+      "text_markdown": "戦いはギリシャ西海岸沖のアンブラキア湾の入り口付近で行われました。",
+      "tts": {
+        "text": "戦いはギリシャ西海岸沖のアンブラキア湾の入り口付近で行われました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-187",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハイレッディンは卓越した風を利用するために艦隊を配置しました。",
+      "text_markdown": "ハイレッディンは卓越した風を利用するために艦隊を配置しました。",
+      "tts": {
+        "text": "ハイレッディンは卓越した風を利用するために艦隊を配置しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はガレー船を三日月形の陣形に並べ、孤立した敵の集団に火力を集中できるようにしました。",
+      "text_markdown": "彼はガレー船を三日月形の陣形に並べ、孤立した敵の集団に火力を集中できるようにしました。",
+      "tts": {
+        "text": "彼はガレー船を三日月形の陣形に並べ、孤立した敵の集団に火力を集中できるようにしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の戦術的配置は見事なものでした。",
+      "text_markdown": "彼の戦術的配置は見事なものでした。",
+      "tts": {
+        "text": "彼の戦術的配置は見事なものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "アンドレア・ドーリアは決定的な瞬間にためらいました。",
+      "text_markdown": "アンドレア・ドーリアは決定的な瞬間にためらいました。",
+      "tts": {
+        "text": "アンドレア・ドーリアは決定的な瞬間にためらいました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "数的優位にもかかわらず、彼は全艦隊を接近戦に投入することを躊躇しました。",
+      "text_markdown": "数的優位にもかかわらず、彼は全艦隊を接近戦に投入することを躊躇しました。",
+      "tts": {
+        "text": "数的優位にもかかわらず、彼は全艦隊を接近戦に投入することを躊躇しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は最良の船を予備として温存し、より良い位置取りのために機動しようとしました。",
+      "text_markdown": "彼は最良の船を予備として温存し、より良い位置取りのために機動しようとしました。",
+      "tts": {
+        "text": "彼は最良の船を予備として温存し、より良い位置取りのために機動しようとしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この慎重さはキリスト教徒側にとって致命的なものとなりました。",
+      "text_markdown": "この慎重さはキリスト教徒側にとって致命的なものとなりました。",
+      "tts": {
+        "text": "この慎重さはキリスト教徒側にとって致命的なものとなりました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンは積極的に攻撃し、主力艦隊より前に進出していたヴェネツィアと教皇の船を狙いました。",
+      "text_markdown": "ハイレッディンは積極的に攻撃し、主力艦隊より前に進出していたヴェネツィアと教皇の船を狙いました。",
+      "tts": {
+        "text": "ハイレッディンは積極的に攻撃し、主力艦隊より前に進出していたヴェネツィアと教皇の船を狙いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼のガレー船は素早く接近し、至近距離で交戦しました。",
+      "text_markdown": "彼のガレー船は素早く接近し、至近距離で交戦しました。",
+      "tts": {
+        "text": "彼のガレー船は素早く接近し、至近距離で交戦しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "戦闘は激烈を極め、何十隻もの船で砲撃と白兵戦が繰り広げられました。",
+      "text_markdown": "戦闘は激烈を極め、何十隻もの船で砲撃と白兵戦が繰り広げられました。",
+      "tts": {
+        "text": "戦闘は激烈を極め、何十隻もの船で砲撃と白兵戦が繰り広げられました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "孤立したキリスト教徒の部隊は一つずつ圧倒されました。",
+      "text_markdown": "孤立したキリスト教徒の部隊は一つずつ圧倒されました。",
+      "tts": {
+        "text": "孤立したキリスト教徒の部隊は一つずつ圧倒されました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "日が暮れる頃には、神聖同盟は壊滅的な敗北を喫していました。",
+      "text_markdown": "日が暮れる頃には、神聖同盟は壊滅的な敗北を喫していました。",
+      "tts": {
+        "text": "日が暮れる頃には、神聖同盟は壊滅的な敗北を喫していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ハイレッディンの軍は数十隻のキリスト教徒の軍船を拿捕または撃沈しました。",
+      "text_markdown": "ハイレッディンの軍は数十隻のキリスト教徒の軍船を拿捕または撃沈しました。",
+      "tts": {
+        "text": "ハイレッディンの軍は数十隻のキリスト教徒の軍船を拿捕または撃沈しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何千人ものキリスト教徒の水兵と兵士が殺されるか捕虜になりました。",
+      "text_markdown": "何千人ものキリスト教徒の水兵と兵士が殺されるか捕虜になりました。",
+      "tts": {
+        "text": "何千人ものキリスト教徒の水兵と兵士が殺されるか捕虜になりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "アンドレア・ドーリアは残存艦隊とともに撤退し、海をオスマン帝国に明け渡しました。",
+      "text_markdown": "アンドレア・ドーリアは残存艦隊とともに撤退し、海をオスマン帝国に明け渡しました。",
+      "tts": {
+        "text": "アンドレア・ドーリアは残存艦隊とともに撤退し、海をオスマン帝国に明け渡しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "プレヴェザの海戦は地中海におけるオスマン帝国の海軍覇権を確立しました。",
+      "text_markdown": "プレヴェザの海戦は地中海におけるオスマン帝国の海軍覇権を確立しました。",
+      "tts": {
+        "text": "プレヴェザの海戦は地中海におけるオスマン帝国の海軍覇権を確立しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "その後数十年間、いかなるキリスト教徒の艦隊も東部および中部の海に対するオスマン帝国の支配に挑むことはできませんでした。",
+      "text_markdown": "その後数十年間、いかなるキリスト教徒の艦隊も東部および中部の海に対するオスマン帝国の支配に挑むことはできませんでした。",
+      "tts": {
+        "text": "その後数十年間、いかなるキリスト教徒の艦隊も東部および中部の海に対するオスマン帝国の支配に挑むことはできませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オスマン帝国は今や北アフリカ沿岸全域とイタリア半島に対して軍事力を投射できるようになりました。",
+      "text_markdown": "オスマン帝国は今や北アフリカ沿岸全域とイタリア半島に対して軍事力を投射できるようになりました。",
+      "tts": {
+        "text": "オスマン帝国は今や北アフリカ沿岸全域とイタリア半島に対して軍事力を投射できるようになりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "これは十六世紀で最も重要な海戦の勝利でした。",
+      "text_markdown": "これは十六世紀で最も重要な海戦の勝利でした。",
+      "tts": {
+        "text": "これは十六世紀で最も重要な海戦の勝利でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンは征服者の英雄としてイスタンブールに帰還しました。",
+      "text_markdown": "ハイレッディンは征服者の英雄としてイスタンブールに帰還しました。",
+      "tts": {
+        "text": "ハイレッディンは征服者の英雄としてイスタンブールに帰還しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "スルタン・スレイマンは帝国が授けうる最高の栄誉をもって彼を迎え入れました。",
+      "text_markdown": "スルタン・スレイマンは帝国が授けうる最高の栄誉をもって彼を迎え入れました。",
+      "tts": {
+        "text": "スルタン・スレイマンは帝国が授けうる最高の栄誉をもって彼を迎え入れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "大提督はスルタンが求めたことを成し遂げたのです。",
+      "text_markdown": "大提督はスルタンが求めたことを成し遂げたのです。",
+      "tts": {
+        "text": "大提督はスルタンが求めたことを成し遂げたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼はオスマン海軍を地中海の最高戦力にしたのです。",
+      "text_markdown": "彼はオスマン海軍を地中海の最高戦力にしたのです。",
+      "tts": {
+        "text": "彼はオスマン海軍を地中海の最高戦力にしたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "プレヴェザ以降の数年間、ハイレッディンはオスマン艦隊の指揮を続けました。",
+      "text_markdown": "プレヴェザ以降の数年間、ハイレッディンはオスマン艦隊の指揮を続けました。",
+      "tts": {
+        "text": "プレヴェザ以降の数年間、ハイレッディンはオスマン艦隊の指揮を続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はスペインやイタリアの沿岸都市に対する襲撃を行いました。",
+      "text_markdown": "彼はスペインやイタリアの沿岸都市に対する襲撃を行いました。",
+      "tts": {
+        "text": "彼はスペインやイタリアの沿岸都市に対する襲撃を行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はフランス王フランソワ一世と交渉し、フランソワは共通の敵カール五世に対してオスマン帝国と同盟を結びました。",
+      "text_markdown": "彼はフランス王フランソワ一世と交渉し、フランソワは共通の敵カール五世に対してオスマン帝国と同盟を結びました。",
+      "tts": {
+        "text": "彼はフランス王フランソワ一世と交渉し、フランソワは共通の敵カール五世に対してオスマン帝国と同盟を結びました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "イスラム帝国とキリスト教王国の間のこの同盟はヨーロッパ中に衝撃を与えました。",
+      "text_markdown": "イスラム帝国とキリスト教王国の間のこの同盟はヨーロッパ中に衝撃を与えました。",
+      "tts": {
+        "text": "イスラム帝国とキリスト教王国の間のこの同盟はヨーロッパ中に衝撃を与えました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1543年の冬、ハイレッディンはフランスの港トゥーロンに艦隊を停泊させました。",
+      "text_markdown": "1543年の冬、ハイレッディンはフランスの港トゥーロンに艦隊を停泊させました。",
+      "tts": {
+        "text": "千五百四十三年の冬、ハイレッディンはフランスの港トゥーロンに艦隊を停泊させました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "フランス王はスペインに対する共同作戦の基地として港を提供していました。",
+      "text_markdown": "フランス王はスペインに対する共同作戦の基地として港を提供していました。",
+      "tts": {
+        "text": "フランス王はスペインに対する共同作戦の基地として港を提供していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "数ヶ月間、オスマン帝国の軍船がフランスの港から作戦行動を行いました。",
+      "text_markdown": "数ヶ月間、オスマン帝国の軍船がフランスの港から作戦行動を行いました。",
+      "tts": {
+        "text": "数ヶ月間、オスマン帝国の軍船がフランスの港から作戦行動を行いました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それはキリスト教世界を驚愕させ、権力政治が宗教的分裂を超え得ることを示した驚くべき光景でした。",
+      "text_markdown": "それはキリスト教世界を驚愕させ、権力政治が宗教的分裂を超え得ることを示した驚くべき光景でした。",
+      "tts": {
+        "text": "それはキリスト教世界を驚愕させ、権力政治が宗教的分裂を超え得ることを示した驚くべき光景でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンのアルジェ統治は海軍遠征と並行して続きました。",
+      "text_markdown": "ハイレッディンのアルジェ統治は海軍遠征と並行して続きました。",
+      "tts": {
+        "text": "ハイレッディンのアルジェ統治は海軍遠征と並行して続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は市内にモスク、公衆浴場、要塞を建設しました。",
+      "text_markdown": "彼は市内にモスク、公衆浴場、要塞を建設しました。",
+      "tts": {
+        "text": "彼は市内にモスク、公衆浴場、要塞を建設しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は貿易を奨励し、イスラム世界中から熟練した職人を誘致しました。",
+      "text_markdown": "彼は貿易を奨励し、イスラム世界中から熟練した職人を誘致しました。",
+      "tts": {
+        "text": "彼は貿易を奨励し、イスラム世界中から熟練した職人を誘致しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の統治下でアルジェは小さな港から北アフリカで最も重要な都市の一つに成長しました。",
+      "text_markdown": "彼の統治下でアルジェは小さな港から北アフリカで最も重要な都市の一つに成長しました。",
+      "tts": {
+        "text": "彼の統治下でアルジェは小さな港から北アフリカで最も重要な都市の一つに成長しました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼の艦隊はイスタンブールと西地中海を結ぶオスマン帝国の交易路を守りました。",
+      "text_markdown": "彼の艦隊はイスタンブールと西地中海を結ぶオスマン帝国の交易路を守りました。",
+      "tts": {
+        "text": "彼の艦隊はイスタンブールと西地中海を結ぶオスマン帝国の交易路を守りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "穀物、織物、工業製品を運ぶ商船は彼の軍船の護衛のもとで航行しました。",
+      "text_markdown": "穀物、織物、工業製品を運ぶ商船は彼の軍船の護衛のもとで航行しました。",
+      "tts": {
+        "text": "穀物、織物、工業製品を運ぶ商船は彼の軍船の護衛のもとで航行しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "オスマン帝国の地中海における経済的繁栄はハイレッディンが築いた海軍に大きく依存していました。",
+      "text_markdown": "オスマン帝国の地中海における経済的繁栄はハイレッディンが築いた海軍に大きく依存していました。",
+      "tts": {
+        "text": "オスマン帝国の地中海における経済的繁栄はハイレッディンが築いた海軍に大きく依存していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "頂点にて",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は私掠行為を帝国権力の道具へと変貌させたのです。",
+      "text_markdown": "彼は私掠行為を帝国権力の道具へと変貌させたのです。",
+      "tts": {
+        "text": "彼は私掠行為を帝国権力の道具へと変貌させたのです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-226",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終焉",
+      "text_markdown": "終焉"
+    },
+    {
+      "id": "ch05-227",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "千五百四十年代初頭までに、ハイレッディン・バルバロッサは六十代半ばになっていました。",
+      "text_markdown": "千五百四十年代初頭までに、ハイレッディン・バルバロッサは六十代半ばになっていました。",
+      "tts": {
+        "text": "千五百四十年代初頭までに、ハイレッディン・バルバロッサは六十代半ばになっていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-228",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は四十年以上を海で戦い、築き、指揮して過ごしてきました。",
+      "text_markdown": "彼は四十年以上を海で戦い、築き、指揮して過ごしてきました。",
+      "tts": {
+        "text": "彼は四十年以上を海で戦い、築き、指揮して過ごしてきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-229",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何十年もの戦争、厳しい天候、船上生活の肉体的な過酷さによって彼の体は消耗していました。",
+      "text_markdown": "何十年もの戦争、厳しい天候、船上生活の肉体的な過酷さによって彼の体は消耗していました。",
+      "tts": {
+        "text": "何十年もの戦争、厳しい天候、船上生活の肉体的な過酷さによって彼の体は消耗していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-230",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p64",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "しかし彼の頭脳は鋭さを保ち、その権威は揺るぎませんでした。",
+      "text_markdown": "しかし彼の頭脳は鋭さを保ち、その権威は揺るぎませんでした。",
+      "tts": {
+        "text": "しかし彼の頭脳は鋭さを保ち、その権威は揺るぎませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-231",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1543年のトゥーロン遠征の後、ハイレッディンはイスタンブールに戻りました。",
+      "text_markdown": "1543年のトゥーロン遠征の後、ハイレッディンはイスタンブールに戻りました。",
+      "tts": {
+        "text": "千五百四十三年のトゥーロン遠征の後、ハイレッディンはイスタンブールに戻りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-232",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は最後の大規模な海軍作戦を完了していました。",
+      "text_markdown": "彼は最後の大規模な海軍作戦を完了していました。",
+      "tts": {
+        "text": "彼は最後の大規模な海軍作戦を完了していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-233",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "スルタンは彼にもう一つの遠征を率いるよう求めませんでした。",
+      "text_markdown": "スルタンは彼にもう一つの遠征を率いるよう求めませんでした。",
+      "tts": {
+        "text": "スルタンは彼にもう一つの遠征を率いるよう求めませんでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-234",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼の年齢と業績からすれば、引退は当然かつ適切なものでした。",
+      "text_markdown": "彼の年齢と業績からすれば、引退は当然かつ適切なものでした。",
+      "tts": {
+        "text": "彼の年齢と業績からすれば、引退は当然かつ適切なものでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-235",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンは晩年をイスタンブールでボスポラス海峡を見下ろす壮大な宮殿で過ごしました。",
+      "text_markdown": "ハイレッディンは晩年をイスタンブールでボスポラス海峡を見下ろす壮大な宮殿で過ごしました。",
+      "tts": {
+        "text": "ハイレッディンは晩年をイスタンブールでボスポラス海峡を見下ろす壮大な宮殿で過ごしました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-236",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼は書記に回顧録を口述し、地中海の海賊史における最も重要な一次資料の一つを作り上げました。",
+      "text_markdown": "彼は書記に回顧録を口述し、地中海の海賊史における最も重要な一次資料の一つを作り上げました。",
+      "tts": {
+        "text": "彼は書記に回顧録を口述し、地中海の海賊史における最も重要な一次資料の一つを作り上げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-237",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ガザヴァート・ハイレッディン・パシャとして知られるこの回顧録は手稿の形で現存しています。",
+      "text_markdown": "ガザヴァート・ハイレッディン・パシャとして知られるこの回顧録は手稿の形で現存しています。",
+      "tts": {
+        "text": "ガザヴァート・ハイレッディン・パシャとして知られるこの回顧録は手稿の形で現存しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-238",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それは何世紀にもわたり歴史家たちによって研究されてきました。",
+      "text_markdown": "それは何世紀にもわたり歴史家たちによって研究されてきました。",
+      "tts": {
+        "text": "それは何世紀にもわたり歴史家たちによって研究されてきました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-239",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "彼は顧問として引き続きオスマン帝国の海軍に関与しました。",
+      "text_markdown": "彼は顧問として引き続きオスマン帝国の海軍に関与しました。",
+      "tts": {
+        "text": "彼は顧問として引き続きオスマン帝国の海軍に関与しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-240",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "若い提督たちは戦略と造船について彼の助言を求めました。",
+      "text_markdown": "若い提督たちは戦略と造船について彼の助言を求めました。",
+      "tts": {
+        "text": "若い提督たちは戦略と造船について彼の助言を求めました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-241",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼は自らの仕事を引き継ぐ海軍将校の一世代を育て上げていました。",
+      "text_markdown": "彼は自らの仕事を引き継ぐ海軍将校の一世代を育て上げていました。",
+      "tts": {
+        "text": "彼は自らの仕事を引き継ぐ海軍将校の一世代を育て上げていました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-242",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p67",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼がオスマン海軍に築いた制度的知識は彼の最も持続的な貢献でした。",
+      "text_markdown": "彼がオスマン海軍に築いた制度的知識は彼の最も持続的な貢献でした。",
+      "tts": {
+        "text": "彼がオスマン海軍に築いた制度的知識は彼の最も持続的な貢献でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-243",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディン・バルバロッサは1546年7月4日、イスタンブールで亡くなりました。",
+      "text_markdown": "ハイレッディン・バルバロッサは1546年7月4日、イスタンブールで亡くなりました。",
+      "tts": {
+        "text": "ハイレッディン・バルバロッサは千五百四十六年七月四日、イスタンブールで亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-244",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "享年およそ六十八歳でした。",
+      "text_markdown": "享年およそ六十八歳でした。",
+      "tts": {
+        "text": "享年およそ六十八歳でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-245",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の死はオスマン帝国全土で悼まれました。",
+      "text_markdown": "彼の死はオスマン帝国全土で悼まれました。",
+      "tts": {
+        "text": "彼の死はオスマン帝国全土で悼まれました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "スルタン・スレイマンはボスポラス海峡のほとり、ベシクタシュに彼のための壮大な墓廟の建設を命じました。",
+      "text_markdown": "スルタン・スレイマンはボスポラス海峡のほとり、ベシクタシュに彼のための壮大な墓廟の建設を命じました。",
+      "tts": {
+        "text": "スルタン・スレイマンはボスポラス海峡のほとり、ベシクタシュに彼のための壮大な墓廟の建設を命じました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "その墓廟は今日もイスタンブールのベシクタシュ地区に立っています。",
+      "text_markdown": "その墓廟は今日もイスタンブールのベシクタシュ地区に立っています。",
+      "tts": {
+        "text": "その墓廟は今日もイスタンブールのベシクタシュ地区に立っています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それはタイルと書道で装飾されたオスマン建築の記念碑です。",
+      "text_markdown": "それはタイルと書道で装飾されたオスマン建築の記念碑です。",
+      "tts": {
+        "text": "それはタイルと書道で装飾されたオスマン建築の記念碑です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "何世紀にもわたり、オスマン帝国の船乗りたちは航海に出る前にこの墓廟を訪れました。",
+      "text_markdown": "何世紀にもわたり、オスマン帝国の船乗りたちは航海に出る前にこの墓廟を訪れました。",
+      "tts": {
+        "text": "何世紀にもわたり、オスマン帝国の船乗りたちは航海に出る前にこの墓廟を訪れました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼らは安全な航海と偉大な提督の魂による導きを祈りました。",
+      "text_markdown": "彼らは安全な航海と偉大な提督の魂による導きを祈りました。",
+      "tts": {
+        "text": "彼らは安全な航海と偉大な提督の魂による導きを祈りました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "オスマン海軍における彼の後継者たちは、彼が築いた艦隊を守り続けていったのでした。",
+      "text_markdown": "オスマン海軍における彼の後継者たちは、彼が築いた艦隊を守り続けていったのでした。",
+      "tts": {
+        "text": "オスマン海軍における彼の後継者たちは、彼が築いた艦隊を守り続けていったのでした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トゥルグト・レイスやピヤレ・パシャといった提督たちは何十年にもわたりオスマン海軍の覇権を維持し続けました。",
+      "text_markdown": "トゥルグト・レイスやピヤレ・パシャといった提督たちは何十年にもわたりオスマン海軍の覇権を維持し続けました。",
+      "tts": {
+        "text": "トゥルグト・レイスやピヤレ・パシャといった提督たちは何十年にもわたりオスマン海軍の覇権を維持し続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼らはハイレッディンのもとで技を磨き、彼の戦術思想を受け継いでいきました。",
+      "text_markdown": "彼らはハイレッディンのもとで技を磨き、彼の戦術思想を受け継いでいきました。",
+      "tts": {
+        "text": "彼らはハイレッディンのもとで技を磨き、彼の戦術思想を受け継いでいきました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "千五百七十一年のレパントの海戦はやがて海上におけるオスマン帝国の覇権に終止符を打ちますが、その敗北でさえハイレッディンが創り上げた海軍を破壊するには至りませんでした。",
+      "text_markdown": "千五百七十一年のレパントの海戦はやがて海上におけるオスマン帝国の覇権に終止符を打ちますが、その敗北でさえハイレッディンが創り上げた海軍を破壊するには至りませんでした。",
+      "tts": {
+        "text": "千五百七十一年のレパントの海戦はやがて海上におけるオスマン帝国の覇権に終止符を打ちますが、その敗北でさえハイレッディンが創り上げた海軍を破壊するには至りませんでした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンがオスマン帝国の支配下に置いた北アフリカの領土は何世紀にもわたりオスマン帝国の州であり続けました。",
+      "text_markdown": "ハイレッディンがオスマン帝国の支配下に置いた北アフリカの領土は何世紀にもわたりオスマン帝国の州であり続けました。",
+      "tts": {
+        "text": "ハイレッディンがオスマン帝国の支配下に置いた北アフリカの領土は何世紀にもわたりオスマン帝国の州であり続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェ、チュニス、トリポリは十九世紀まで私掠船の拠点であり続けました。",
+      "text_markdown": "アルジェ、チュニス、トリポリは十九世紀まで私掠船の拠点であり続けました。",
+      "tts": {
+        "text": "アルジェ、チュニス、トリポリは十九世紀まで私掠船の拠点であり続けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ハイレッディンが確立に貢献したバルバリア海岸の私掠の伝統は三百年間続きました。",
+      "text_markdown": "ハイレッディンが確立に貢献したバルバリア海岸の私掠の伝統は三百年間続きました。",
+      "tts": {
+        "text": "ハイレッディンが確立に貢献したバルバリア海岸の私掠の伝統は三百年間続きました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "それを最終的に終わらせるにはフランスとイギリスの合同の力が必要でした。",
+      "text_markdown": "それを最終的に終わらせるにはフランスとイギリスの合同の力が必要でした。",
+      "tts": {
+        "text": "それを最終的に終わらせるにはフランスとイギリスの合同の力が必要でした。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンはオスマン帝国への奉仕のさなか、生きたまま死にました。",
+      "text_markdown": "ハイレッディンはオスマン帝国への奉仕のさなか、生きたまま死にました。",
+      "tts": {
+        "text": "ハイレッディンはオスマン帝国への奉仕のさなか、生きたまま死にました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はギリシャの島で陶工の息子として出発しました。",
+      "text_markdown": "彼はギリシャの島で陶工の息子として出発しました。",
+      "tts": {
+        "text": "彼はギリシャの島で陶工の息子として出発しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "そしてオスマン帝国史上最も称えられた提督として人生を終えました。",
+      "text_markdown": "そしてオスマン帝国史上最も称えられた提督として人生を終えました。",
+      "tts": {
+        "text": "そしてオスマン帝国史上最も称えられた提督として人生を終えました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "終焉",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "レスボス島から大提督の地位への彼の旅路は海軍史上最も驚くべき経歴の一つです。",
+      "text_markdown": "レスボス島から大提督の地位への彼の旅路は海軍史上最も驚くべき経歴の一つです。",
+      "tts": {
+        "text": "レスボス島から大提督の地位への彼の旅路は海軍史上最も驚くべき経歴の一つです。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-263",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺産",
+      "text_markdown": "遺産"
+    },
+    {
+      "id": "ch06-264",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディン・バルバロッサはオスマン帝国を陸軍大国から海軍超大国へと変貌させました。",
+      "text_markdown": "ハイレッディン・バルバロッサはオスマン帝国を陸軍大国から海軍超大国へと変貌させました。",
+      "tts": {
+        "text": "ハイレッディン・バルバロッサはオスマン帝国を陸軍大国から海軍超大国へと変貌させました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-265",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の生涯以前、オスマン帝国は陸では強大でしたが海では周辺的な存在でした。",
+      "text_markdown": "彼の生涯以前、オスマン帝国は陸では強大でしたが海では周辺的な存在でした。",
+      "tts": {
+        "text": "彼の生涯以前、オスマン帝国は陸では強大でしたが海では周辺的な存在でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-266",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の生涯以後、オスマン海軍は何世代にもわたり地中海を支配しました。",
+      "text_markdown": "彼の生涯以後、オスマン海軍は何世代にもわたり地中海を支配しました。",
+      "tts": {
+        "text": "彼の生涯以後、オスマン海軍は何世代にもわたり地中海を支配しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-267",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p74",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "この変革は十六世紀の最も重要な軍事的偉業の一つに数えられます。",
+      "text_markdown": "この変革は十六世紀の最も重要な軍事的偉業の一つに数えられます。",
+      "tts": {
+        "text": "この変革は十六世紀の最も重要な軍事的偉業の一つに数えられます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-268",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "プレヴェザでの彼の勝利は今日も世界中の海軍士官学校で研究されています。",
+      "text_markdown": "プレヴェザでの彼の勝利は今日も世界中の海軍士官学校で研究されています。",
+      "tts": {
+        "text": "プレヴェザでの彼の勝利は今日も世界中の海軍士官学校で研究されています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-269",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "それは優れた指導力と戦術がいかに数的不利を克服しうるかを示しています。",
+      "text_markdown": "それは優れた指導力と戦術がいかに数的不利を克服しうるかを示しています。",
+      "tts": {
+        "text": "それは優れた指導力と戦術がいかに数的不利を克服しうるかを示しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-270",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "この海戦は、よく統率された艦隊がより大きいが統率の悪い艦隊を打ち破れることを証明しました。",
+      "text_markdown": "この海戦は、よく統率された艦隊がより大きいが統率の悪い艦隊を打ち破れることを証明しました。",
+      "tts": {
+        "text": "この海戦は、よく統率された艦隊がより大きいが統率の悪い艦隊を打ち破れることを証明しました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-271",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p75",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "五世紀を経た今なお海軍戦略の教科書的事例であり続けています。",
+      "text_markdown": "五世紀を経た今なお海軍戦略の教科書的事例であり続けています。",
+      "tts": {
+        "text": "五世紀を経た今なお海軍戦略の教科書的事例であり続けています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-272",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ハイレッディンの北アフリカへの影響も同様に深遠でした。",
+      "text_markdown": "ハイレッディンの北アフリカへの影響も同様に深遠でした。",
+      "tts": {
+        "text": "ハイレッディンの北アフリカへの影響も同様に深遠でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-273",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "アルジェやその他の都市をオスマン帝国の支配下に置くことで、彼は何世紀も続く政治構造を創り上げました。",
+      "text_markdown": "アルジェやその他の都市をオスマン帝国の支配下に置くことで、彼は何世紀も続く政治構造を創り上げました。",
+      "tts": {
+        "text": "アルジェやその他の都市をオスマン帝国の支配下に置くことで、彼は何世紀も続く政治構造を創り上げました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-274",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "これらの都市の住民はスペインからの難民を歓迎する彼の政策によって形作られました。",
+      "text_markdown": "これらの都市の住民はスペインからの難民を歓迎する彼の政策によって形作られました。",
+      "tts": {
+        "text": "これらの都市の住民はスペインからの難民を歓迎する彼の政策によって形作られました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-275",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p76",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "今日のマグレブを特徴づけるベルベル、アラブ、トルコ、アンダルシアの文化的混合は、ハイレッディンが創り上げた世界にその根源があります。",
+      "text_markdown": "今日のマグレブを特徴づけるベルベル、アラブ、トルコ、アンダルシアの文化的混合は、ハイレッディンが創り上げた世界にその根源があります。",
+      "tts": {
+        "text": "今日のマグレブを特徴づけるベルベル、アラブ、トルコ、アンダルシアの文化的混合は、ハイレッディンが創り上げた世界にその根源があります。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-276",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "トルコではハイレッディン・バルバロッサは国民的英雄です。",
+      "text_markdown": "トルコではハイレッディン・バルバロッサは国民的英雄です。",
+      "tts": {
+        "text": "トルコではハイレッディン・バルバロッサは国民的英雄です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-277",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "トルコ海軍は最初の潜水艦に彼の名を付けました。",
+      "text_markdown": "トルコ海軍は最初の潜水艦に彼の名を付けました。",
+      "tts": {
+        "text": "トルコ海軍は最初の潜水艦に彼の名を付けました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-278",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の姿は記念碑、切手、通貨に登場しています。",
+      "text_markdown": "彼の姿は記念碑、切手、通貨に登場しています。",
+      "tts": {
+        "text": "彼の姿は記念碑、切手、通貨に登場しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-279",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p77",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "トルコの全ての子供たちが彼の名前と物語を学びます。",
+      "text_markdown": "トルコの全ての子供たちが彼の名前と物語を学びます。",
+      "tts": {
+        "text": "トルコの全ての子供たちが彼の名前と物語を学びます。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-280",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ヨーロッパの歴史的記憶の中では、バルバロッサはより複雑な人物です。",
+      "text_markdown": "ヨーロッパの歴史的記憶の中では、バルバロッサはより複雑な人物です。",
+      "tts": {
+        "text": "ヨーロッパの歴史的記憶の中では、バルバロッサはより複雑な人物です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-281",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼の時代のスペイン人やイタリア人にとって、彼は恐れられた敵であり冷酷な略奪者でした。",
+      "text_markdown": "彼の時代のスペイン人やイタリア人にとって、彼は恐れられた敵であり冷酷な略奪者でした。",
+      "tts": {
+        "text": "彼の時代のスペイン人やイタリア人にとって、彼は恐れられた敵であり冷酷な略奪者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-282",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "フランス人にとって、彼は共通のスペインという敵に対する予想外の同盟者でした。",
+      "text_markdown": "フランス人にとって、彼は共通のスペインという敵に対する予想外の同盟者でした。",
+      "tts": {
+        "text": "フランス人にとって、彼は共通のスペインという敵に対する予想外の同盟者でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-283",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p78",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ヨーロッパにおける彼の遺産は地中海の歴史の分裂した争いの多い性質を反映しています。",
+      "text_markdown": "ヨーロッパにおける彼の遺産は地中海の歴史の分裂した争いの多い性質を反映しています。",
+      "tts": {
+        "text": "ヨーロッパにおける彼の遺産は地中海の歴史の分裂した争いの多い性質を反映しています。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-284",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "歴史家たちはハイレッディンを海賊と呼ぶべきかどうかを議論しています。",
+      "text_markdown": "歴史家たちはハイレッディンを海賊と呼ぶべきかどうかを議論しています。",
+      "tts": {
+        "text": "歴史家たちはハイレッディンを海賊と呼ぶべきかどうかを議論しています。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-285",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "彼はその経歴の大半においてオスマン帝国のスルタンの明確な権限のもとで活動していました。",
+      "text_markdown": "彼はその経歴の大半においてオスマン帝国のスルタンの明確な権限のもとで活動していました。",
+      "tts": {
+        "text": "彼はその経歴の大半においてオスマン帝国のスルタンの明確な権限のもとで活動していました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-286",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼の私掠活動は十六世紀の地中海において認められた海上戦争の一形態でした。",
+      "text_markdown": "彼の私掠活動は十六世紀の地中海において認められた海上戦争の一形態でした。",
+      "tts": {
+        "text": "彼の私掠活動は十六世紀の地中海において認められた海上戦争の一形態でした。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-287",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p79",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "海賊行為と国家が支援する海上戦争の境界線は曖昧であり、ハイレッディンはその両側に身を置いていました。",
+      "text_markdown": "海賊行為と国家が支援する海上戦争の境界線は曖昧であり、ハイレッディンはその両側に身を置いていました。",
+      "tts": {
+        "text": "海賊行為と国家が支援する海上戦争の境界線は曖昧であり、ハイレッディンはその両側に身を置いていました。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "id": "ch06-288",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "議論の余地がないのは彼の業績の規模です。",
+      "text_markdown": "議論の余地がないのは彼の業績の規模です。",
+      "tts": {
+        "text": "議論の余地がないのは彼の業績の規模です。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-289",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ギリシャの島の陶工の息子が地中海で最も強力な海軍を築き上げたのです。",
+      "text_markdown": "ギリシャの島の陶工の息子が地中海で最も強力な海軍を築き上げたのです。",
+      "tts": {
+        "text": "ギリシャの島の陶工の息子が地中海で最も強力な海軍を築き上げたのです。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-290",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "彼はヨーロッパで最も強力なキリスト教国の連合艦隊を打ち破りました。",
+      "text_markdown": "彼はヨーロッパで最も強力なキリスト教国の連合艦隊を打ち破りました。",
+      "tts": {
+        "text": "彼はヨーロッパで最も強力なキリスト教国の連合艦隊を打ち破りました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-291",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "彼は大都市を統治し、一つの大陸の政治を形作り、世界で最も強力な帝国に栄誉を受けて亡くなりました。",
+      "text_markdown": "彼は大都市を統治し、一つの大陸の政治を形作り、世界で最も強力な帝国に栄誉を受けて亡くなりました。",
+      "tts": {
+        "text": "彼は大都市を統治し、一つの大陸の政治を形作り、世界で最も強力な帝国に栄誉を受けて亡くなりました。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "id": "ch06-292",
+      "part": 0,
+      "chapter": 6,
+      "title": "遺産",
+      "paragraph_id": "p80",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "彼の人生は、野心、技量、機会が歴史の正しい瞬間に出会った時に何を生み出せるかの証です。",
+      "text_markdown": "彼の人生は、野心、技量、機会が歴史の正しい瞬間に出会った時に何を生み出せるかの証です。",
+      "tts": {
+        "text": "彼の人生は、野心、技量、機会が歴史の正しい瞬間に出会った時に何を生み出せるかの証です。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

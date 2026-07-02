@@ -1,0 +1,2340 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_soul_food_southern_us",
+  "language": "zh",
+  "total_segments": 148,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "给读者的话",
+      "text_markdown": "给读者的话"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是一本小书，说的却是一种大食物。",
+      "text_markdown": "这是一本小书，说的却是一种大食物。",
+      "tts": {
+        "text": "这是一本小书，说的却是一种大食物。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "说的就是来自美国南方的灵魂食物。",
+      "text_markdown": "说的就是来自美国南方的灵魂食物。",
+      "tts": {
+        "text": "说的就是来自美国南方的灵魂食物。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "灵魂食物是正经饭菜。",
+      "text_markdown": "灵魂食物是正经饭菜。",
+      "tts": {
+        "text": "灵魂食物是正经饭菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "人们在家里做它。",
+      "text_markdown": "人们在家里做它。",
+      "tts": {
+        "text": "人们在家里做它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人们会在星期天吃它。",
+      "text_markdown": "人们会在星期天吃它。",
+      "tts": {
+        "text": "人们会在星期天吃它。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到了星期二，人们也会吃它。",
+      "text_markdown": "到了星期二，人们也会吃它。",
+      "tts": {
+        "text": "到了星期二，人们也会吃它。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我们先从这个名字说起。",
+      "text_markdown": "我们先从这个名字说起。",
+      "tts": {
+        "text": "我们先从这个名字说起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "然后我们看看植物和动物。",
+      "text_markdown": "然后我们看看植物和动物。",
+      "tts": {
+        "text": "然后我们看看植物和动物。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "再看看锅碗瓢盆。",
+      "text_markdown": "再看看锅碗瓢盆。",
+      "tts": {
+        "text": "再看看锅碗瓢盆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "到最后，你会知道盘子里有什么，也会知道它从哪里来。",
+      "text_markdown": "到最后，你会知道盘子里有什么，也会知道它从哪里来。",
+      "tts": {
+        "text": "到最后，你会知道盘子里有什么，也会知道它从哪里来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "给读者的话",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "我叫Kym，我来给你讲这个故事。",
+      "text_markdown": "一位叫凯姆的朋友会把这个故事讲给你听。",
+      "tts": {
+        "text": "我叫Kym，我来给你讲这个故事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第一章：什么是灵魂食物",
+      "text_markdown": "第一章：什么是灵魂食物"
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "灵魂食物，是美国南方黑人家庭的日常饭菜。",
+      "text_markdown": "灵魂食物，是美国南方黑人家庭的日常饭菜。",
+      "tts": {
+        "text": "灵魂食物，是美国南方黑人家庭的日常饭菜。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "“soul food”这个名字，在二十世纪六十年代开始常见起来。",
+      "text_markdown": "“soul food”这个名字，在二十世纪六十年代开始常见起来。",
+      "tts": {
+        "text": "“骚尔 富德”这个名字，在二十世纪六十年代开始常见起来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "“soul”这个词，来自音乐，也来自教会。",
+      "text_markdown": "“soul”这个词，来自音乐，也来自教会。",
+      "tts": {
+        "text": "“骚尔”这个词，来自音乐，也来自教会。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它指的是某种很深，很真的东西。",
+      "text_markdown": "它指的是某种很深，很真的东西。",
+      "tts": {
+        "text": "它指的是某种很深，很真的东西。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它也指一种黑人身份的自豪。",
+      "text_markdown": "它也指一种黑人身份的自豪。",
+      "tts": {
+        "text": "它也指一种黑人身份的自豪。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但这种食物本身，要老得多。",
+      "text_markdown": "但这种食物本身，要老得多。",
+      "tts": {
+        "text": "但这种食物本身，要老得多。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "它来自十八世纪和十九世纪种植园里的厨房。",
+      "text_markdown": "它来自十八世纪和十九世纪种植园里的厨房。",
+      "tts": {
+        "text": "它来自十八世纪和十九世纪种植园里的厨房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "被奴役的非洲裔厨师用手边的植物和牲畜，把晚饭做了出来。",
+      "text_markdown": "被奴役的非洲裔厨师用手边的植物和牲畜，把晚饭做了出来。",
+      "tts": {
+        "text": "被奴役的非洲裔厨师用手边的植物和牲畜，把晚饭做了出来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些厨师非常了不起。",
+      "text_markdown": "这些厨师非常了不起。",
+      "tts": {
+        "text": "这些厨师非常了不起。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们手里的东西不多，却喂饱了很多人。",
+      "text_markdown": "他们手里的东西不多，却喂饱了很多人。",
+      "tts": {
+        "text": "他们手里的东西不多，却喂饱了很多人。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "他们把猪身上的每个部位都留了下来。",
+      "text_markdown": "他们把猪身上的每个部位都留了下来。",
+      "tts": {
+        "text": "他们把猪身上的每个部位都留了下来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们把绿叶菜做出了清甜味。",
+      "text_markdown": "他们把绿叶菜做出了清甜味。",
+      "tts": {
+        "text": "他们把绿叶菜做出了清甜味。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他们把玉米面做成面包，做成粥，也做成许许多多别的吃食。",
+      "text_markdown": "他们把玉米面做成面包，做成粥，也做成许许多多别的吃食。",
+      "tts": {
+        "text": "他们把玉米面做成面包，做成粥，也做成许许多多别的吃食。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "二十世纪，黑人家庭往北方搬的时候，也把这种食物带了过去。",
+      "text_markdown": "二十世纪，黑人家庭往北方搬的时候，也把这种食物带了过去。",
+      "tts": {
+        "text": "二十世纪，黑人家庭往北方搬的时候，也把这种食物带了过去。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "现在，芝加哥，纽约，底特律，还有每一座南方小镇里，都能见到灵魂食物。",
+      "text_markdown": "现在，芝加哥，纽约，底特律，还有每一座南方小镇里，都能见到灵魂食物。",
+      "tts": {
+        "text": "现在，芝加哥，纽约，底特律，还有每一座南方小镇里，都能见到灵魂食物。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "第一章：什么是灵魂食物",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "但它的中心，还是在南方。",
+      "text_markdown": "但它的中心，还是在南方。",
+      "tts": {
+        "text": "但它的中心，还是在南方。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第二章：食材",
+      "text_markdown": "第二章：食材"
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "灵魂食物有两条很大的根。",
+      "text_markdown": "灵魂食物有两条很大的根。",
+      "tts": {
+        "text": "灵魂食物有两条很大的根。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "一条根在西非。",
+      "text_markdown": "一条根在西非。",
+      "tts": {
+        "text": "一条根在西非。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "另一条根在美洲。",
+      "text_markdown": "另一条根在美洲。",
+      "tts": {
+        "text": "另一条根在美洲。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秋葵来自西非。",
+      "text_markdown": "秋葵来自西非。",
+      "tts": {
+        "text": "秋葵来自西非。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "秋葵是一种绿色的荚。",
+      "text_markdown": "秋葵是一种绿色的荚。",
+      "tts": {
+        "text": "秋葵是一种绿色的荚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它长在高高的植株上。",
+      "text_markdown": "它长在高高的植株上。",
+      "tts": {
+        "text": "它长在高高的植株上。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "一煮，它就会变软，还会有一点滑。",
+      "text_markdown": "一煮，它就会变软，还会有一点滑。",
+      "tts": {
+        "text": "一煮，它就会变软，还会有一点滑。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它会放进秋葵浓汤里，也会裹上玉米面下锅炸。",
+      "text_markdown": "它会放进秋葵浓汤里，也会裹上玉米面下锅炸。",
+      "tts": {
+        "text": "它会放进秋葵浓汤里，也会裹上玉米面下锅炸。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "黑眼豆也来自西非。",
+      "text_markdown": "黑眼豆也来自西非。",
+      "tts": {
+        "text": "黑眼豆也来自西非。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "西瓜也是。",
+      "text_markdown": "西瓜也是。",
+      "tts": {
+        "text": "西瓜也是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "芝麻也是。",
+      "text_markdown": "芝麻也是。",
+      "tts": {
+        "text": "芝麻也是。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "老一辈南方厨师把芝麻叫作“benne”。他们会把benne放进饼干里，也撒在面包上。",
+      "text_markdown": "老一辈南方厨师把芝麻叫作“benne”。他们会把benne放进饼干里，也撒在面包上。",
+      "tts": {
+        "text": "老一辈南方厨师把芝麻叫作“贝尼”。他们会把贝尼放进饼干里，也撒在面包上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稻米也是这样跨过海洋来的。",
+      "text_markdown": "稻米也是这样跨过海洋来的。",
+      "tts": {
+        "text": "稻米也是这样跨过海洋来的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "非洲农民种稻米，已经有一千年了。",
+      "text_markdown": "非洲农民种稻米，已经有一千年了。",
+      "tts": {
+        "text": "非洲农民种稻米，已经有一千年了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "在南卡罗来纳，这份知识让整座整座的城镇兴了起来。",
+      "text_markdown": "在南卡罗来纳，这份知识让整座整座的城镇兴了起来。",
+      "tts": {
+        "text": "在南卡罗来纳，这份知识让整座整座的城镇兴了起来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "来自美洲的，还有玉米。",
+      "text_markdown": "来自美洲的，还有玉米。",
+      "tts": {
+        "text": "来自美洲的，还有玉米。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "玉米原产于墨西哥。",
+      "text_markdown": "玉米原产于墨西哥。",
+      "tts": {
+        "text": "玉米原产于墨西哥。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "早在西班牙人到来之前，它就一路往北传到了切罗基人和乔克托人那里。",
+      "text_markdown": "早在西班牙人到来之前，它就一路往北传到了切罗基人和乔克托人那里。",
+      "tts": {
+        "text": "早在西班牙人到来之前，它就一路往北传到了切罗基人和乔克托人那里。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "来自美洲的，还有红薯，花生，还有很多种豆类。",
+      "text_markdown": "来自美洲的，还有红薯，花生，还有很多种豆类。",
+      "tts": {
+        "text": "来自美洲的，还有红薯，花生，还有很多种豆类。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "第二章：食材",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "灵魂食物，就是这两套食材在同一个厨房里相遇后发生的事。",
+      "text_markdown": "灵魂食物，就是这两套食材在同一个厨房里相遇后发生的事。",
+      "tts": {
+        "text": "灵魂食物，就是这两套食材在同一个厨房里相遇后发生的事。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第三章：肉类和鱼",
+      "text_markdown": "第三章：肉类和鱼"
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "灵魂食物里最重要的肉，是猪肉。",
+      "text_markdown": "灵魂食物里最重要的肉，是猪肉。",
+      "tts": {
+        "text": "灵魂食物里最重要的肉，是猪肉。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个小农场也养得起一头猪。",
+      "text_markdown": "一个小农场也养得起一头猪。",
+      "tts": {
+        "text": "一个小农场也养得起一头猪。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "猪吃剩饭剩菜。",
+      "text_markdown": "猪吃剩饭剩菜。",
+      "tts": {
+        "text": "猪吃剩饭剩菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "到了秋天，一家人会杀猪，把每个部位都用上。",
+      "text_markdown": "到了秋天，一家人会杀猪，把每个部位都用上。",
+      "tts": {
+        "text": "到了秋天，一家人会杀猪，把每个部位都用上。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "他们把火腿熏起来。",
+      "text_markdown": "他们把火腿熏起来。",
+      "tts": {
+        "text": "他们把火腿熏起来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "他们把培根腌起来。",
+      "text_markdown": "他们把培根腌起来。",
+      "tts": {
+        "text": "他们把培根腌起来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p22",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "他们用醋来煮猪脚。",
+      "text_markdown": "他们用醋来煮猪脚。",
+      "tts": {
+        "text": "他们用醋来煮猪脚。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p22",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "他们把油脂留着做比司吉。",
+      "text_markdown": "他们把油脂留着做比司吉。",
+      "tts": {
+        "text": "他们把油脂留着做比司吉。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "接下来最重要的肉，就是鸡。",
+      "text_markdown": "接下来最重要的肉，就是鸡。",
+      "tts": {
+        "text": "接下来最重要的肉，就是鸡。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "鸡就养在院子里。",
+      "text_markdown": "鸡就养在院子里。",
+      "tts": {
+        "text": "鸡就养在院子里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它们早上下蛋，到了星期天也能变成一顿正餐。",
+      "text_markdown": "它们早上下蛋，到了星期天也能变成一顿正餐。",
+      "tts": {
+        "text": "它们早上下蛋，到了星期天也能变成一顿正餐。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "炸鸡是美国南方最有名的一道菜。",
+      "text_markdown": "炸鸡是美国南方最有名的一道菜。",
+      "tts": {
+        "text": "炸鸡是美国南方最有名的一道菜。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "鸡肉会裹上面粉，盐，还有胡椒。",
+      "text_markdown": "鸡肉会裹上面粉，盐，还有胡椒。",
+      "tts": {
+        "text": "鸡肉会裹上面粉，盐，还有胡椒。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "然后放进热油里。",
+      "text_markdown": "然后放进热油里。",
+      "tts": {
+        "text": "然后放进热油里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "鸡皮会变得又脆又金黄。",
+      "text_markdown": "鸡皮会变得又脆又金黄。",
+      "tts": {
+        "text": "鸡皮会变得又脆又金黄。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鲶鱼生活在河里和湖里。",
+      "text_markdown": "鲶鱼生活在河里和湖里。",
+      "tts": {
+        "text": "鲶鱼生活在河里和湖里。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "南方厨师会把鲶鱼裹上玉米粉再下锅炸。",
+      "text_markdown": "南方厨师会把鲶鱼裹上玉米粉再下锅炸。",
+      "tts": {
+        "text": "南方厨师会把鲶鱼裹上玉米粉再下锅炸。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "人们会配着一种叫哈什帕比的小小炸玉米面球一起吃。",
+      "text_markdown": "人们会配着一种叫哈什帕比的小小炸玉米面球一起吃。",
+      "tts": {
+        "text": "人们会配着一种叫哈什帕比的小小炸玉米面球一起吃。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "第三章：肉类和鱼",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "名字听着挺逗，可这吃食一点也不含糊。",
+      "text_markdown": "名字听着挺逗，可这吃食一点也不含糊。",
+      "tts": {
+        "text": "名字听着挺逗，可这吃食一点也不含糊。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第四章：烹饪方法",
+      "text_markdown": "第四章：烹饪方法"
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "灵魂食物最常见的三种做法，就是油炸，慢炖，还有烟熏。",
+      "text_markdown": "灵魂食物最常见的三种做法，就是油炸，慢炖，还有烟熏。",
+      "tts": {
+        "text": "灵魂食物最常见的三种做法，就是油炸，慢炖，还有烟熏。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "油炸通常用一种很重的锅，叫铸铁煎锅。",
+      "text_markdown": "油炸通常用一种很重的锅，叫铸铁煎锅。",
+      "tts": {
+        "text": "油炸通常用一种很重的锅，叫铸铁煎锅。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "铸铁能把热度留很久。",
+      "text_markdown": "铸铁能把热度留很久。",
+      "tts": {
+        "text": "铸铁能把热度留很久。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "一口好煎锅，往往比厨师本人年纪还大。",
+      "text_markdown": "一口好煎锅，往往比厨师本人年纪还大。",
+      "tts": {
+        "text": "一口好煎锅，往往比厨师本人年纪还大。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "它会从母亲手里传给女儿。",
+      "text_markdown": "它会从母亲手里传给女儿。",
+      "tts": {
+        "text": "它会从母亲手里传给女儿。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "慢炖是在炉子后面的一个大锅里做的。",
+      "text_markdown": "慢炖是在炉子后面的一个大锅里做的。",
+      "tts": {
+        "text": "慢炖是在炉子后面的一个大锅里做的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "绿叶菜要在锅里煮上两三个小时。",
+      "text_markdown": "绿叶菜要在锅里煮上两三个小时。",
+      "tts": {
+        "text": "绿叶菜要在锅里煮上两三个小时。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "再放一块烟熏猪肉进去提味。",
+      "text_markdown": "再放一块烟熏猪肉进去提味。",
+      "tts": {
+        "text": "再放一块烟熏猪肉进去提味。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "锅里的水会变成颜色很深，很浓的汤。",
+      "text_markdown": "锅里的水会变成颜色很深，很浓的汤。",
+      "tts": {
+        "text": "锅里的水会变成颜色很深，很浓的汤。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "人们把这种汤汁叫作“pot likker”，还会把它浇在玉米面包上。",
+      "text_markdown": "人们把这种汤汁叫作“pot likker”，还会把它浇在玉米面包上。",
+      "tts": {
+        "text": "人们把这种汤汁叫作“帕特 利克尔”，还会把它浇在玉米面包上。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "烟熏是在屋外做的，用的是熏房或者木桶。",
+      "text_markdown": "烟熏是在屋外做的，用的是熏房或者木桶。",
+      "tts": {
+        "text": "烟熏是在屋外做的，用的是熏房或者木桶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "木头在肉下面慢慢烧。",
+      "text_markdown": "木头在肉下面慢慢烧。",
+      "tts": {
+        "text": "木头在肉下面慢慢烧。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "最受欢迎的是山胡桃木。",
+      "text_markdown": "最受欢迎的是山胡桃木。",
+      "tts": {
+        "text": "最受欢迎的是山胡桃木。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "烟会把肉染成褐色，也会给它很深的味道。",
+      "text_markdown": "烟会把肉染成褐色，也会给它很深的味道。",
+      "tts": {
+        "text": "烟会把肉染成褐色，也会给它很深的味道。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "猪肩肉要熏很多个小时，有时要整整一天。",
+      "text_markdown": "猪肩肉要熏很多个小时，有时要整整一天。",
+      "tts": {
+        "text": "猪肩肉要熏很多个小时，有时要整整一天。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "第四章：烹饪方法",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一个好的南方厨房，得有火候，有时间，也得有用心。",
+      "text_markdown": "一个好的南方厨房，得有火候，有时间，也得有用心。",
+      "tts": {
+        "text": "一个好的南方厨房，得有火候，有时间，也得有用心。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第五章：各地的烧烤",
+      "text_markdown": "第五章：各地的烧烤"
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在美国南方，“barbecue”指的是用木烟慢慢烤熟的肉。",
+      "text_markdown": "在美国南方，“barbecue”指的是用木烟慢慢烤熟的肉。",
+      "tts": {
+        "text": "在美国南方，“芭比丘”指的是用木烟慢慢烤熟的肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "每个地方都有自己的做法。",
+      "text_markdown": "每个地方都有自己的做法。",
+      "tts": {
+        "text": "每个地方都有自己的做法。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在卡罗来纳地区，烧烤就是猪肉。",
+      "text_markdown": "在卡罗来纳地区，烧烤就是猪肉。",
+      "tts": {
+        "text": "在卡罗来纳地区，烧烤就是猪肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "在北卡罗来纳东部，酱汁是用醋和胡椒做的。",
+      "text_markdown": "在北卡罗来纳东部，酱汁是用醋和胡椒做的。",
+      "tts": {
+        "text": "在北卡罗来纳东部，酱汁是用醋和胡椒做的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它很稀，味道也很冲。",
+      "text_markdown": "它很稀，味道也很冲。",
+      "tts": {
+        "text": "它很稀，味道也很冲。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "在南卡罗来纳，酱汁是黄色的，用芥末做。",
+      "text_markdown": "在南卡罗来纳，酱汁是黄色的，用芥末做。",
+      "tts": {
+        "text": "在南卡罗来纳，酱汁是黄色的，用芥末做。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "它带一点甜味。",
+      "text_markdown": "它带一点甜味。",
+      "tts": {
+        "text": "它带一点甜味。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在田纳西州的孟菲斯，肉是猪肋排。",
+      "text_markdown": "在田纳西州的孟菲斯，肉是猪肋排。",
+      "tts": {
+        "text": "在田纳西州的孟菲斯，肉是猪肋排。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "肋排会先抹上一层干香料，里面有盐，胡椒，还有各种调料。",
+      "text_markdown": "肋排会先抹上一层干香料，里面有盐，胡椒，还有各种调料。",
+      "tts": {
+        "text": "肋排会先抹上一层干香料，里面有盐，胡椒，还有各种调料。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "主角是肉，酱汁只是陪衬。",
+      "text_markdown": "主角是肉，酱汁只是陪衬。",
+      "tts": {
+        "text": "主角是肉，酱汁只是陪衬。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在得州，烧烤做的是牛肉。",
+      "text_markdown": "在得州，烧烤做的是牛肉。",
+      "tts": {
+        "text": "在得州，烧烤做的是牛肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这个部位叫牛胸肉。",
+      "text_markdown": "这个部位叫牛胸肉。",
+      "tts": {
+        "text": "这个部位叫牛胸肉。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它会用橡木烟熏十二到十四个小时。",
+      "text_markdown": "它会用橡木烟熏十二到十四个小时。",
+      "tts": {
+        "text": "它会用橡木烟熏十二到十四个小时。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "火候对了，你用手指就能把它撕开。",
+      "text_markdown": "火候对了，你用手指就能把它撕开。",
+      "tts": {
+        "text": "火候对了，你用手指就能把它撕开。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在堪萨斯城，烧烤会用很多种肉，猪肉，牛肉，鸡肉，连香肠都有。",
+      "text_markdown": "在堪萨斯城，烧烤会用很多种肉，猪肉，牛肉，鸡肉，连香肠都有。",
+      "tts": {
+        "text": "在堪萨斯城，烧烤会用很多种肉，猪肉，牛肉，鸡肉，连香肠都有。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "酱汁又浓又甜，颜色发红，是用番茄和糖蜜做的。",
+      "text_markdown": "酱汁又浓又甜，颜色发红，是用番茄和糖蜜做的。",
+      "tts": {
+        "text": "酱汁又浓又甜，颜色发红，是用番茄和糖蜜做的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "第五章：各地的烧烤",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "美国南方烧烤的地图，也是一张地区和河流的地图。",
+      "text_markdown": "美国南方烧烤的地图，也是一张地区和河流的地图。",
+      "tts": {
+        "text": "美国南方烧烤的地图，也是一张地区和河流的地图。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第六章：经典的一盘",
+      "text_markdown": "第六章：经典的一盘"
+    },
+    {
+      "id": "ch06-107",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "星期天正餐的一盘，总是满满的。",
+      "text_markdown": "星期天正餐的一盘，总是满满的。",
+      "tts": {
+        "text": "星期天正餐的一盘，总是满满的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-108",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "中间是炸鸡。",
+      "text_markdown": "中间是炸鸡。",
+      "tts": {
+        "text": "中间是炸鸡。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-109",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "炸鸡旁边，是一勺浇了褐色肉汁的土豆泥。",
+      "text_markdown": "炸鸡旁边，是一勺浇了褐色肉汁的土豆泥。",
+      "tts": {
+        "text": "炸鸡旁边，是一勺浇了褐色肉汁的土豆泥。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一边是一堆绿叶甘蓝，和烟熏猪肉一起慢慢炖过。",
+      "text_markdown": "一边是一堆绿叶甘蓝，和烟熏猪肉一起慢慢炖过。",
+      "tts": {
+        "text": "一边是一堆绿叶甘蓝，和烟熏猪肉一起慢慢炖过。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这些菜叶颜色很深，也很软。",
+      "text_markdown": "这些菜叶颜色很深，也很软。",
+      "tts": {
+        "text": "这些菜叶颜色很深，也很软。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "另一边是奶酪通心粉，烤到上面金黄酥脆。",
+      "text_markdown": "另一边是奶酪通心粉，烤到上面金黄酥脆。",
+      "tts": {
+        "text": "另一边是奶酪通心粉，烤到上面金黄酥脆。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "很多厨师还会在上面再加一层奶酪。",
+      "text_markdown": "很多厨师还会在上面再加一层奶酪。",
+      "tts": {
+        "text": "很多厨师还会在上面再加一层奶酪。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "桌上还放着玉米面包。",
+      "text_markdown": "桌上还放着玉米面包。",
+      "tts": {
+        "text": "桌上还放着玉米面包。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "玉米面包是用黄色玉米粉做的，在烧热的铁煎锅里烤。",
+      "text_markdown": "玉米面包是用黄色玉米粉做的，在烧热的铁煎锅里烤。",
+      "tts": {
+        "text": "玉米面包是用黄色玉米粉做的，在烧热的铁煎锅里烤。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它扎实，带一点甜味，配黄油正好。",
+      "text_markdown": "它扎实，带一点甜味，配黄油正好。",
+      "tts": {
+        "text": "它扎实，带一点甜味，配黄油正好。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "喝的则是甜茶。",
+      "text_markdown": "喝的则是甜茶。",
+      "tts": {
+        "text": "喝的则是甜茶。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "甜茶就是红茶，先泡得很浓，再趁热拌进糖。",
+      "text_markdown": "甜茶就是红茶，先泡得很浓，再趁热拌进糖。",
+      "tts": {
+        "text": "甜茶就是红茶，先泡得很浓，再趁热拌进糖。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它会加上冰，凉凉地端上来。",
+      "text_markdown": "它会加上冰，凉凉地端上来。",
+      "tts": {
+        "text": "它会加上冰，凉凉地端上来。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "吃完正餐，就该上派了。",
+      "text_markdown": "吃完正餐，就该上派了。",
+      "tts": {
+        "text": "吃完正餐，就该上派了。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "红薯派最有南方味。",
+      "text_markdown": "红薯派最有南方味。",
+      "tts": {
+        "text": "红薯派最有南方味。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "它是棕色的，很细滑，还带着肉桂和肉豆蔻的味道。",
+      "text_markdown": "它是棕色的，很细滑，还带着肉桂和肉豆蔻的味道。",
+      "tts": {
+        "text": "它是棕色的，很细滑，还带着肉桂和肉豆蔻的味道。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "第六章：经典的一盘",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是经典的一盘。",
+      "text_markdown": "这就是经典的一盘。",
+      "tts": {
+        "text": "这就是经典的一盘。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-124",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "第七章：餐桌",
+      "text_markdown": "第七章：餐桌"
+    },
+    {
+      "id": "ch07-125",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一顿南方式晚餐，是大家一起坐在桌边吃的。",
+      "text_markdown": "一顿南方式晚餐，是大家一起坐在桌边吃的。",
+      "tts": {
+        "text": "一顿南方式晚餐，是大家一起坐在桌边吃的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-126",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "食物会装在大碗和大盘里端上桌。",
+      "text_markdown": "食物会装在大碗和大盘里端上桌。",
+      "tts": {
+        "text": "食物会装在大碗和大盘里端上桌。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这叫“family-style”。每个人都把碗递给下一个人。",
+      "text_markdown": "这叫“family-style”。每个人都把碗递给下一个人。",
+      "tts": {
+        "text": "这叫“发么利 斯泰尔”。每个人都把碗递给下一个人。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-128",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每个人拿自己想吃的。",
+      "text_markdown": "每个人拿自己想吃的。",
+      "tts": {
+        "text": "每个人拿自己想吃的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-129",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "叉子和刀都很普通。",
+      "text_markdown": "叉子和刀都很普通。",
+      "tts": {
+        "text": "叉子和刀都很普通。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "没有什么特别的顺序。",
+      "text_markdown": "没有什么特别的顺序。",
+      "tts": {
+        "text": "没有什么特别的顺序。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "你可以用叉子吃鸡，也可以直接用手拿起来。",
+      "text_markdown": "你可以用叉子吃鸡，也可以直接用手拿起来。",
+      "tts": {
+        "text": "你可以用叉子吃鸡，也可以直接用手拿起来。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "两种都可以。",
+      "text_markdown": "两种都可以。",
+      "tts": {
+        "text": "两种都可以。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "玉米面包要用手掰，绝不用刀切。",
+      "text_markdown": "玉米面包要用手掰，绝不用刀切。",
+      "tts": {
+        "text": "玉米面包要用手掰，绝不用刀切。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "开饭前，常常会有人说一小段祷告。",
+      "text_markdown": "开饭前，常常会有人说一小段祷告。",
+      "tts": {
+        "text": "开饭前，常常会有人说一小段祷告。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "他们感谢上帝赐下食物，也感谢做饭的人。",
+      "text_markdown": "他们感谢上帝赐下食物，也感谢做饭的人。",
+      "tts": {
+        "text": "他们感谢上帝赐下食物，也感谢做饭的人。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你是客人，别人会劝你再来一点，再来一点，再来一点。",
+      "text_markdown": "如果你是客人，别人会劝你再来一点，再来一点，再来一点。",
+      "tts": {
+        "text": "如果你是客人，别人会劝你再来一点，再来一点，再来一点。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "你至少要说两次“好”。",
+      "text_markdown": "你至少要说两次“好”。",
+      "tts": {
+        "text": "你至少要说两次“好”。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "饿着肚子离开，是不行的。",
+      "text_markdown": "饿着肚子离开，是不行的。",
+      "tts": {
+        "text": "饿着肚子离开，是不行的。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "饭快结束的时候，谁也不急着起身。",
+      "text_markdown": "饭快结束的时候，谁也不急着起身。",
+      "tts": {
+        "text": "饭快结束的时候，谁也不急着起身。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "第七章：餐桌",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "晚饭有一半，都在聊天。",
+      "text_markdown": "晚饭有一半，都在聊天。",
+      "tts": {
+        "text": "晚饭有一半，都在聊天。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "关于这本书",
+      "text_markdown": "关于这本书"
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是世界美食系列的第一本书。",
+      "text_markdown": "这是世界美食系列的第一本书。",
+      "tts": {
+        "text": "这是世界美食系列的第一本书。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "这本书是我，你的朋友Kym，读给你听的。",
+      "text_markdown": "这本书由凯姆朗读。",
+      "tts": {
+        "text": "这本书是我，你的朋友Kym，读给你听的。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "每句话都短而清楚，这样你用任何语言都能跟着读。",
+      "text_markdown": "每句话都短而清楚，这样你用任何语言都能跟着读。",
+      "tts": {
+        "text": "每句话都短而清楚，这样你用任何语言都能跟着读。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你想听一句话换成另一种语言会怎么说，就去听那种语言版本的这本书。",
+      "text_markdown": "如果你想听一句话换成另一种语言会怎么说，就去听那种语言版本的这本书。",
+      "tts": {
+        "text": "如果你想听一句话换成另一种语言会怎么说，就去听那种语言版本的这本书。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "书页上的字，会和你听到的一样。",
+      "text_markdown": "书页上的字，会和你听到的一样。",
+      "tts": {
+        "text": "书页上的字，会和你听到的一样。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "这就是你学习的方法。",
+      "text_markdown": "这就是你学习的方法。",
+      "tts": {
+        "text": "这就是你学习的方法。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "关于这本书",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "现在去找点好吃的，再找个朋友一起分享吧。",
+      "text_markdown": "现在去找点好吃的，再找个朋友一起分享吧。",
+      "tts": {
+        "text": "现在去找点好吃的，再找个朋友一起分享吧。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2
+      }
+    }
+  ]
+}

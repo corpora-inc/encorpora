@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "बुलावा",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "बुलावा",
+      "text_markdown": "बुलावा"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक पल होता है, ठीक उसी वक्त जब तुम विमान से बाहर निकलते हो, और मैं चाहता हूँ कि वो पल मैं तुम्हें मुफ्त में दे पाऊँ।",
+      "text_markdown": "एक पल होता है, ठीक उसी वक्त जब तुम विमान से बाहर निकलते हो, और मैं चाहता हूँ कि वो पल मैं तुम्हें मुफ्त में दे पाऊँ।",
+      "tts": {
+        "text": "एक पल होता है, ठीक उसी वक्त जब तुम विमान से बाहर निकलते हो, और मैं चाहता हूँ कि वो पल मैं तुम्हें मुफ्त में दे पाऊँ।",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "दुनिया अब वो जगह नहीं रहती जहाँ तुम रहते हो।",
+      "text_markdown": "दुनिया अब वो जगह नहीं रहती जहाँ तुम रहते हो।",
+      "tts": {
+        "text": "दुनिया अब वो जगह नहीं रहती जहाँ तुम रहते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वो वो चीज़ बन जाती है जिसमें से तुम गिरते हो।",
+      "text_markdown": "वो वो चीज़ बन जाती है जिसमें से तुम गिरते हो।",
+      "tts": {
+        "text": "वो वो चीज़ बन जाती है जिसमें से तुम गिरते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "और शुरुआती कुछ सेकंड तक, तुम्हारा दिमाग समझ ही नहीं पाता कि तुम्हारे शरीर ने अभी क्या किया है।",
+      "text_markdown": "और शुरुआती कुछ सेकंड तक, तुम्हारा दिमाग समझ ही नहीं पाता कि तुम्हारे शरीर ने अभी क्या किया है।",
+      "tts": {
+        "text": "और शुरुआती कुछ सेकंड तक, तुम्हारा दिमाग समझ ही नहीं पाता कि तुम्हारे शरीर ने अभी क्या किया है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "लोग मुझसे पूछते हैं कि मैं क्यों कूदता हूँ।",
+      "text_markdown": "लोग मुझसे पूछते हैं कि मैं क्यों कूदता हूँ।",
+      "tts": {
+        "text": "लोग मुझसे पूछते हैं कि मैं क्यों कूदता हूँ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वो हमेशा सोचते हैं कि मैं कहूँगा कि बस रोमांच के लिए।",
+      "text_markdown": "वो हमेशा सोचते हैं कि मैं कहूँगा कि बस रोमांच के लिए।",
+      "tts": {
+        "text": "वो हमेशा सोचते हैं कि मैं कहूँगा कि बस रोमांच के लिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ये रोमांच की बात नहीं है।",
+      "text_markdown": "ये रोमांच की बात नहीं है।",
+      "tts": {
+        "text": "ये रोमांच की बात नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "रोमांच तो वो होता है जो तुम्हें पहली पाँच छलाँगों में महसूस होता है।",
+      "text_markdown": "रोमांच तो वो होता है जो तुम्हें पहली पाँच छलाँगों में महसूस होता है।",
+      "tts": {
+        "text": "रोमांच तो वो होता है जो तुम्हें पहली पाँच छलाँगों में महसूस होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उसके बाद, कुछ और शांत-सी चीज़ अपनी जगह बना लेती है।",
+      "text_markdown": "उसके बाद, कुछ और शांत-सी चीज़ अपनी जगह बना लेती है।",
+      "tts": {
+        "text": "उसके बाद, कुछ और शांत-सी चीज़ अपनी जगह बना लेती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मैं जिसके पीछे भागता हूँ, वो है साफ़ नज़र।",
+      "text_markdown": "मैं जिसके पीछे भागता हूँ, वो है साफ़ नज़र।",
+      "tts": {
+        "text": "मैं जिसके पीछे भागता हूँ, वो है साफ़ नज़र।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मुक्त गिरावट के साठ सेकंड में, तुम्हारे दिमाग के पास और कुछ करने को नहीं होता।",
+      "text_markdown": "मुक्त गिरावट के साठ सेकंड में, तुम्हारे दिमाग के पास और कुछ करने को नहीं होता।",
+      "tts": {
+        "text": "मुक्त गिरावट के साठ सेकंड में, तुम्हारे दिमाग के पास और कुछ करने को नहीं होता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कोई फ़ोन नहीं।",
+      "text_markdown": "कोई फ़ोन नहीं।",
+      "tts": {
+        "text": "कोई फ़ोन नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "कोई बिल नहीं।",
+      "text_markdown": "कोई बिल नहीं।",
+      "tts": {
+        "text": "कोई बिल नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कल की कोई छोटी-मोटी चिंता नहीं।",
+      "text_markdown": "कल की कोई छोटी-मोटी चिंता नहीं।",
+      "tts": {
+        "text": "कल की कोई छोटी-मोटी चिंता नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "बस हवा, तुम्हारी साँस, और नीचे ज़मीन का धीरे-धीरे झुकता हुआ घुमाव।",
+      "text_markdown": "बस हवा, तुम्हारी साँस, और नीचे ज़मीन का धीरे-धीरे झुकता हुआ घुमाव।",
+      "tts": {
+        "text": "बस हवा, तुम्हारी साँस, और नीचे ज़मीन का धीरे-धीरे झुकता हुआ घुमाव।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ज़िंदगी का ज़्यादातर हिस्सा शोरगुल भरा होता है।",
+      "text_markdown": "ज़िंदगी का ज़्यादातर हिस्सा शोरगुल भरा होता है।",
+      "tts": {
+        "text": "ज़िंदगी का ज़्यादातर हिस्सा शोरगुल भरा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "वो एक मिनट नहीं होता।",
+      "text_markdown": "वो एक मिनट नहीं होता।",
+      "tts": {
+        "text": "वो एक मिनट नहीं होता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "स्काइडाइवर पागल नहीं होते।",
+      "text_markdown": "स्काइडाइवर पागल नहीं होते।",
+      "tts": {
+        "text": "स्काइडाइवर पागल नहीं होते।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हममें से ज़्यादातर शांत लोग हैं जिन्होंने जल्दी शांत महसूस करने का तरीका ढूँढ लिया है।",
+      "text_markdown": "हममें से ज़्यादातर शांत लोग हैं जिन्होंने जल्दी शांत महसूस करने का तरीका ढूँढ लिया है।",
+      "tts": {
+        "text": "हममें से ज़्यादातर शांत लोग हैं जिन्होंने जल्दी शांत महसूस करने का तरीका ढूँढ लिया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हम विमानों से वैसे ही कूदते हैं जैसे दूसरे लोग ध्यान करते हैं।",
+      "text_markdown": "हम विमानों से वैसे ही कूदते हैं जैसे दूसरे लोग ध्यान करते हैं।",
+      "tts": {
+        "text": "हम विमानों से वैसे ही कूदते हैं जैसे दूसरे लोग ध्यान करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ये कुछ साफ़ कर देता है।",
+      "text_markdown": "ये कुछ साफ़ कर देता है।",
+      "tts": {
+        "text": "ये कुछ साफ़ कर देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "और फिर, हर हफ़्ते के अंत में, ये उसे फिर से साफ़ कर देता है।",
+      "text_markdown": "और फिर, हर हफ़्ते के अंत में, ये उसे फिर से साफ़ कर देता है।",
+      "tts": {
+        "text": "और फिर, हर हफ़्ते के अंत में, ये उसे फिर से साफ़ कर देता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहली बार जब मैंने अपने ऊपर पैराशूट खुलते देखा, तो मैं हार्नेस में रोने लगा।",
+      "text_markdown": "पहली बार जब मैंने अपने ऊपर पैराशूट खुलते देखा, तो मैं हार्नेस में रोने लगा।",
+      "tts": {
+        "text": "पहली बार जब मैंने अपने ऊपर पैराशूट खुलते देखा, तो मैं हार्नेस में रोने लगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "मुझे ये उम्मीद नहीं थी।",
+      "text_markdown": "मुझे ये उम्मीद नहीं थी।",
+      "tts": {
+        "text": "मुझे ये उम्मीद नहीं थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "एक बड़ा-बूढ़ा आदमी, आसमान में मुलायम कपड़े के एक चौकोर टुकड़े के नीचे लटका, बिना किसी वजह के रो रहा था जिसे वो खुद समझा नहीं सकता था।",
+      "text_markdown": "एक बड़ा-बूढ़ा आदमी, आसमान में मुलायम कपड़े के एक चौकोर टुकड़े के नीचे लटका, बिना किसी वजह के रो रहा था जिसे वो खुद समझा नहीं सकता था।",
+      "tts": {
+        "text": "एक बड़ा-बूढ़ा आदमी, आसमान में मुलायम कपड़े के एक चौकोर टुकड़े के नीचे लटका, बिना किसी वजह के रो रहा था जिसे वो खुद समझा नहीं सकता था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "मेरे प्रशिक्षक ने धीरे से हँसकर मेरे कंधे पर थपकी दी।",
+      "text_markdown": "मेरे प्रशिक्षक ने धीरे से हँसकर मेरे कंधे पर थपकी दी।",
+      "tts": {
+        "text": "मेरे प्रशिक्षक ने धीरे से हँसकर मेरे कंधे पर थपकी दी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वो ये कई बार देख चुका था।",
+      "text_markdown": "वो ये कई बार देख चुका था।",
+      "tts": {
+        "text": "वो ये कई बार देख चुका था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "उसी पल मुझे पता चल गया कि मैं फिर लौटूँगा।",
+      "text_markdown": "उसी पल मुझे पता चल गया कि मैं फिर लौटूँगा।",
+      "tts": {
+        "text": "उसी पल मुझे पता चल गया कि मैं फिर लौटूँगा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "स्काइडाइविंग बहादुरी की बात नहीं है।",
+      "text_markdown": "स्काइडाइविंग बहादुरी की बात नहीं है।",
+      "tts": {
+        "text": "स्काइडाइविंग बहादुरी की बात नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ये उस एक जगह को ढूँढने की बात है जहाँ तुम्हारा दिमाग शांत हो जाता है।",
+      "text_markdown": "ये उस एक जगह को ढूँढने की बात है जहाँ तुम्हारा दिमाग शांत हो जाता है।",
+      "tts": {
+        "text": "ये उस एक जगह को ढूँढने की बात है जहाँ तुम्हारा दिमाग शांत हो जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "कुछ लोगों के लिए वो जगह योग की चटाई है।",
+      "text_markdown": "कुछ लोगों के लिए वो जगह योग की चटाई है।",
+      "tts": {
+        "text": "कुछ लोगों के लिए वो जगह योग की चटाई है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "कुछ के लिए, ये किसी सुनसान सड़क पर लंबी दौड़ है।",
+      "text_markdown": "कुछ के लिए, ये किसी सुनसान सड़क पर लंबी दौड़ है।",
+      "tts": {
+        "text": "कुछ के लिए, ये किसी सुनसान सड़क पर लंबी दौड़ है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कुछ के लिए, ये मछली पकड़ने की डोर है, या पियानो, या सुबह छह बजे की रसोई।",
+      "text_markdown": "कुछ के लिए, ये मछली पकड़ने की डोर है, या पियानो, या सुबह छह बजे की रसोई।",
+      "tts": {
+        "text": "कुछ के लिए, ये मछली पकड़ने की डोर है, या पियानो, या सुबह छह बजे की रसोई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "मेरे लिए, ये ज़मीन से तेरह हज़ार फ़ीट ऊपर है, जहाँ साँस लेने के सिवा कुछ करने को नहीं।",
+      "text_markdown": "मेरे लिए, ये ज़मीन से तेरह हज़ार फ़ीट ऊपर है, जहाँ साँस लेने के सिवा कुछ करने को नहीं।",
+      "tts": {
+        "text": "मेरे लिए, ये ज़मीन से तेरह हज़ार फ़ीट ऊपर है, जहाँ साँस लेने के सिवा कुछ करने को नहीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये खिंचाव, जब तुम इसे एक बार महसूस कर लो, किसी दोस्त को रात के खाने पर समझाना मुश्किल होता है।",
+      "text_markdown": "ये खिंचाव, जब तुम इसे एक बार महसूस कर लो, किसी दोस्त को रात के खाने पर समझाना मुश्किल होता है।",
+      "tts": {
+        "text": "ये खिंचाव, जब तुम इसे एक बार महसूस कर लो, किसी दोस्त को रात के खाने पर समझाना मुश्किल होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम कोशिश करोगे, वो विनम्रता से मुस्कुराएँगे, और तुम हार मान लोगे।",
+      "text_markdown": "तुम कोशिश करोगे, वो विनम्रता से मुस्कुराएँगे, और तुम हार मान लोगे।",
+      "tts": {
+        "text": "तुम कोशिश करोगे, वो विनम्रता से मुस्कुराएँगे, और तुम हार मान लोगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ये ठीक है।",
+      "text_markdown": "ये ठीक है।",
+      "tts": {
+        "text": "ये ठीक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुमने कूदना समझाने के लिए शुरू नहीं किया था।",
+      "text_markdown": "तुमने कूदना समझाने के लिए शुरू नहीं किया था।",
+      "tts": {
+        "text": "तुमने कूदना समझाने के लिए शुरू नहीं किया था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुमने कूदना इसलिए शुरू किया, क्योंकि पहली बार जब तुमने कोशिश की, तुम्हारे अंदर कुछ बोला, अरे, तुम यहाँ हो।",
+      "text_markdown": "तुमने कूदना इसलिए शुरू किया, क्योंकि पहली बार जब तुमने कोशिश की, तुम्हारे अंदर कुछ बोला, अरे, तुम यहाँ हो।",
+      "tts": {
+        "text": "तुमने कूदना इसलिए शुरू किया, क्योंकि पहली बार जब तुमने कोशिश की, तुम्हारे अंदर कुछ बोला, अरे, तुम यहाँ हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "क्या तुम कभी किसी ऊँची जगह के किनारे खड़े हुए हो और अपने शरीर को खुली हवा की ओर झुकता महसूस किया है?",
+      "text_markdown": "क्या तुम कभी किसी ऊँची जगह के किनारे खड़े हुए हो और अपने शरीर को खुली हवा की ओर झुकता महसूस किया है?",
+      "tts": {
+        "text": "क्या तुम कभी किसी ऊँची जगह के किनारे खड़े हुए हो और अपने शरीर को खुली हवा की ओर झुकता महसूस किया है?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बस ज़रा-सा, बस एक सेकंड के लिए।",
+      "text_markdown": "बस ज़रा-सा, बस एक सेकंड के लिए।",
+      "tts": {
+        "text": "बस ज़रा-सा, बस एक सेकंड के लिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अगर हाँ, तो तुम पहले से जानते हो कि मैं किसकी बात कर रहा हूँ।",
+      "text_markdown": "अगर हाँ, तो तुम पहले से जानते हो कि मैं किसकी बात कर रहा हूँ।",
+      "tts": {
+        "text": "अगर हाँ, तो तुम पहले से जानते हो कि मैं किसकी बात कर रहा हूँ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "स्काइडाइविंग वही है जो तब होता है जब तुम झुकाव से इनकार करना बंद कर देते हो।",
+      "text_markdown": "स्काइडाइविंग वही है जो तब होता है जब तुम झुकाव से इनकार करना बंद कर देते हो।",
+      "tts": {
+        "text": "स्काइडाइविंग वही है जो तब होता है जब तुम झुकाव से इनकार करना बंद कर देते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम जान-बूझकर बाहर कदम रखते हो, उस जगह में जिसके बारे में तुम्हारा शरीर सालों से चुपचाप पूछ रहा था।",
+      "text_markdown": "तुम जान-बूझकर बाहर कदम रखते हो, उस जगह में जिसके बारे में तुम्हारा शरीर सालों से चुपचाप पूछ रहा था।",
+      "tts": {
+        "text": "तुम जान-बूझकर बाहर कदम रखते हो, उस जगह में जिसके बारे में तुम्हारा शरीर सालों से चुपचाप पूछ रहा था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "और फिर, बहुत जल्दी, तुम सीख जाते हो कि डर ज़मीन पर कभी था ही नहीं।",
+      "text_markdown": "और फिर, बहुत जल्दी, तुम सीख जाते हो कि डर ज़मीन पर कभी था ही नहीं।",
+      "tts": {
+        "text": "और फिर, बहुत जल्दी, तुम सीख जाते हो कि डर ज़मीन पर कभी था ही नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "डर तो उस झुकाव में था।",
+      "text_markdown": "डर तो उस झुकाव में था।",
+      "tts": {
+        "text": "डर तो उस झुकाव में था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "एक बार जब तुम कूद जाते हो, डर चला जाता है।",
+      "text_markdown": "एक बार जब तुम कूद जाते हो, डर चला जाता है।",
+      "tts": {
+        "text": "एक बार जब तुम कूद जाते हो, डर चला जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "जो बचता है वो लगभग घर जैसा कुछ है।",
+      "text_markdown": "जो बचता है वो लगभग घर जैसा कुछ है।",
+      "tts": {
+        "text": "जो बचता है वो लगभग घर जैसा कुछ है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम्हारा दिल धीमा हो जाता है।",
+      "text_markdown": "तुम्हारा दिल धीमा हो जाता है।",
+      "tts": {
+        "text": "तुम्हारा दिल धीमा हो जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम्हारी साँस को वो लय मिल जाती है जिसे वो ढूँढ रही थी।",
+      "text_markdown": "तुम्हारी साँस को वो लय मिल जाती है जिसे वो ढूँढ रही थी।",
+      "tts": {
+        "text": "तुम्हारी साँस को वो लय मिल जाती है जिसे वो ढूँढ रही थी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "हवा तुम्हें थाम लेती है।",
+      "text_markdown": "हवा तुम्हें थाम लेती है।",
+      "tts": {
+        "text": "हवा तुम्हें थाम लेती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "और तुम महसूस करते हो, शायद बहुत अरसे बाद पहली बार, कि तुम बिल्कुल वहीं हो जहाँ तुम हो।",
+      "text_markdown": "और तुम महसूस करते हो, शायद बहुत अरसे बाद पहली बार, कि तुम बिल्कुल वहीं हो जहाँ तुम हो।",
+      "tts": {
+        "text": "और तुम महसूस करते हो, शायद बहुत अरसे बाद पहली बार, कि तुम बिल्कुल वहीं हो जहाँ तुम हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर तुम मुझसे लंबी सैर पर पूछो, तो यही मैं तुम्हें बताऊँगा।",
+      "text_markdown": "अगर तुम मुझसे लंबी सैर पर पूछो, तो यही मैं तुम्हें बताऊँगा।",
+      "tts": {
+        "text": "अगर तुम मुझसे लंबी सैर पर पूछो, तो यही मैं तुम्हें बताऊँगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक शांत और समझदार इंसान बार-बार बिल्कुल भले-चंगे विमानों से क्यों कूदता रहता है?",
+      "text_markdown": "एक शांत और समझदार इंसान बार-बार बिल्कुल भले-चंगे विमानों से क्यों कूदता रहता है?",
+      "tts": {
+        "text": "एक शांत और समझदार इंसान बार-बार बिल्कुल भले-चंगे विमानों से क्यों कूदता रहता है?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "मैं तुम्हें बताऊँगा कि ये मेरी सबसे शांत आदत है।",
+      "text_markdown": "मैं तुम्हें बताऊँगा कि ये मेरी सबसे शांत आदत है।",
+      "tts": {
+        "text": "मैं तुम्हें बताऊँगा कि ये मेरी सबसे शांत आदत है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "और मेरा मतलब ठीक यही होगा।",
+      "text_markdown": "और मेरा मतलब ठीक यही होगा।",
+      "tts": {
+        "text": "और मेरा मतलब ठीक यही होगा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "पहली बार",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "पहली बार",
+      "text_markdown": "पहली बार"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "चलो, मैं तुम्हें विमान में बिठाता हूँ।",
+      "text_markdown": "चलो, मैं तुम्हें विमान में बिठाता हूँ।",
+      "tts": {
+        "text": "चलो, मैं तुम्हें विमान में बिठाता हूँ।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुम एक नीची धातु की बेंच पर बैठे हो, अपने पीछे एक प्रशिक्षक के साथ हार्नेस से बँधे हुए।",
+      "text_markdown": "तुम एक नीची धातु की बेंच पर बैठे हो, अपने पीछे एक प्रशिक्षक के साथ हार्नेस से बँधे हुए।",
+      "tts": {
+        "text": "तुम एक नीची धातु की बेंच पर बैठे हो, अपने पीछे एक प्रशिक्षक के साथ हार्नेस से बँधे हुए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "विमान धीमे, सुस्त गोल चक्करों में ऊपर चढ़ता है।",
+      "text_markdown": "विमान धीमे, सुस्त गोल चक्करों में ऊपर चढ़ता है।",
+      "tts": {
+        "text": "विमान धीमे, सुस्त गोल चक्करों में ऊपर चढ़ता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम्हारी बगल वाली छोटी चौकोर खिड़की और नीली, और नीली होती जाती है।",
+      "text_markdown": "तुम्हारी बगल वाली छोटी चौकोर खिड़की और नीली, और नीली होती जाती है।",
+      "tts": {
+        "text": "तुम्हारी बगल वाली छोटी चौकोर खिड़की और नीली, और नीली होती जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम अपने दिल को गले में महसूस कर सकते हो, पर तुम घबरा नहीं रहे।",
+      "text_markdown": "तुम अपने दिल को गले में महसूस कर सकते हो, पर तुम घबरा नहीं रहे।",
+      "tts": {
+        "text": "तुम अपने दिल को गले में महसूस कर सकते हो, पर तुम घबरा नहीं रहे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम बस बहुत, बहुत जागे हुए हो।",
+      "text_markdown": "तुम बस बहुत, बहुत जागे हुए हो।",
+      "tts": {
+        "text": "तुम बस बहुत, बहुत जागे हुए हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "प्रशिक्षक तुम्हारे कान के पास झुकता है।",
+      "text_markdown": "प्रशिक्षक तुम्हारे कान के पास झुकता है।",
+      "tts": {
+        "text": "प्रशिक्षक तुम्हारे कान के पास झुकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वो तुम्हें शांति से बताता है कि जो भी करना है, वो तुम्हें वक्त पर बता देगा।",
+      "text_markdown": "वो तुम्हें शांति से बताता है कि जो भी करना है, वो तुम्हें वक्त पर बता देगा।",
+      "tts": {
+        "text": "वो तुम्हें शांति से बताता है कि जो भी करना है, वो तुम्हें वक्त पर बता देगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम सिर हिलाते हो।",
+      "text_markdown": "तुम सिर हिलाते हो।",
+      "tts": {
+        "text": "तुम सिर हिलाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पिछले एक घंटे में तुमने इतनी बार सिर हिलाया है कि तुम्हारी गर्दन दुखने लगी है।",
+      "text_markdown": "पिछले एक घंटे में तुमने इतनी बार सिर हिलाया है कि तुम्हारी गर्दन दुखने लगी है।",
+      "tts": {
+        "text": "पिछले एक घंटे में तुमने इतनी बार सिर हिलाया है कि तुम्हारी गर्दन दुखने लगी है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर दरवाज़ा खुलता है।",
+      "text_markdown": "फिर दरवाज़ा खुलता है।",
+      "tts": {
+        "text": "फिर दरवाज़ा खुलता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हवा एक दीवार की तरह अंदर आती है, ज़ोरदार और ठंडी और जीवंत, और अचानक विमान बहुत छोटा महसूस होता है।",
+      "text_markdown": "हवा एक दीवार की तरह अंदर आती है, ज़ोरदार और ठंडी और जीवंत, और अचानक विमान बहुत छोटा महसूस होता है।",
+      "tts": {
+        "text": "हवा एक दीवार की तरह अंदर आती है, ज़ोरदार और ठंडी और जीवंत, और अचानक विमान बहुत छोटा महसूस होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम सरककर किनारे आ जाते हो।",
+      "text_markdown": "तुम सरककर किनारे आ जाते हो।",
+      "tts": {
+        "text": "तुम सरककर किनारे आ जाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम्हारे पैर की उँगलियाँ शून्य में लटकती हैं।",
+      "text_markdown": "तुम्हारे पैर की उँगलियाँ शून्य में लटकती हैं।",
+      "tts": {
+        "text": "तुम्हारे पैर की उँगलियाँ शून्य में लटकती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम नीचे देखते हो, और ज़मीन इतनी दूर है कि वो अब ज़मीन जैसी नहीं लगती।",
+      "text_markdown": "तुम नीचे देखते हो, और ज़मीन इतनी दूर है कि वो अब ज़मीन जैसी नहीं लगती।",
+      "tts": {
+        "text": "तुम नीचे देखते हो, और ज़मीन इतनी दूर है कि वो अब ज़मीन जैसी नहीं लगती।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वो एक चादर जैसी लगती है।",
+      "text_markdown": "वो एक चादर जैसी लगती है।",
+      "tts": {
+        "text": "वो एक चादर जैसी लगती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "धागे जितनी पतली सड़कें।",
+      "text_markdown": "धागे जितनी पतली सड़कें।",
+      "tts": {
+        "text": "धागे जितनी पतली सड़कें।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "हल्के चाँदी के रंग की एक नदी।",
+      "text_markdown": "हल्के चाँदी के रंग की एक नदी।",
+      "tts": {
+        "text": "हल्के चाँदी के रंग की एक नदी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "हरे और भूरे छोटे-छोटे खेत, झाड़ियों से जुड़े हुए।",
+      "text_markdown": "हरे और भूरे छोटे-छोटे खेत, झाड़ियों से जुड़े हुए।",
+      "tts": {
+        "text": "हरे और भूरे छोटे-छोटे खेत, झाड़ियों से जुड़े हुए।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुम्हारा प्रशिक्षक गिनती करता है।",
+      "text_markdown": "तुम्हारा प्रशिक्षक गिनती करता है।",
+      "tts": {
+        "text": "तुम्हारा प्रशिक्षक गिनती करता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वो कहता है एक।",
+      "text_markdown": "वो कहता है एक।",
+      "tts": {
+        "text": "वो कहता है एक।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वो कहता है दो।",
+      "text_markdown": "वो कहता है दो।",
+      "tts": {
+        "text": "वो कहता है दो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तीन पर, विमान गायब हो जाता है।",
+      "text_markdown": "तीन पर, विमान गायब हो जाता है।",
+      "tts": {
+        "text": "तीन पर, विमान गायब हो जाता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहले तीन सेकंड सबसे मुश्किल होते हैं।",
+      "text_markdown": "पहले तीन सेकंड सबसे मुश्किल होते हैं।",
+      "tts": {
+        "text": "पहले तीन सेकंड सबसे मुश्किल होते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम्हारा शरीर मानता है कि वो गिर रहा है, क्योंकि वो गिर ही रहा है, और तुम्हारे शरीर को कभी नहीं बताया गया कि ये ठीक है।",
+      "text_markdown": "तुम्हारा शरीर मानता है कि वो गिर रहा है, क्योंकि वो गिर ही रहा है, और तुम्हारे शरीर को कभी नहीं बताया गया कि ये ठीक है।",
+      "tts": {
+        "text": "तुम्हारा शरीर मानता है कि वो गिर रहा है, क्योंकि वो गिर ही रहा है, और तुम्हारे शरीर को कभी नहीं बताया गया कि ये ठीक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम एक आवाज़ निकालते हो।",
+      "text_markdown": "तुम एक आवाज़ निकालते हो।",
+      "tts": {
+        "text": "तुम एक आवाज़ निकालते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "हर कोई एक आवाज़ निकालता है।",
+      "text_markdown": "हर कोई एक आवाज़ निकालता है।",
+      "tts": {
+        "text": "हर कोई एक आवाज़ निकालता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उस आवाज़ पर शर्मिंदा होने की कोई ज़रूरत नहीं।",
+      "text_markdown": "उस आवाज़ पर शर्मिंदा होने की कोई ज़रूरत नहीं।",
+      "tts": {
+        "text": "उस आवाज़ पर शर्मिंदा होने की कोई ज़रूरत नहीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर कुछ अनोखा होता है।",
+      "text_markdown": "फिर कुछ अनोखा होता है।",
+      "tts": {
+        "text": "फिर कुछ अनोखा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "गिरना, गिरने जैसा लगना बंद कर देता है।",
+      "text_markdown": "गिरना, गिरने जैसा लगना बंद कर देता है।",
+      "tts": {
+        "text": "गिरना, गिरने जैसा लगना बंद कर देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हवा ऊपर आकर तुम्हें थाम लेती है, वैसे ही जैसे पानी तुम्हें तब थामता है जब तुम पीठ के बल तैरते हो।",
+      "text_markdown": "हवा ऊपर आकर तुम्हें थाम लेती है, वैसे ही जैसे पानी तुम्हें तब थामता है जब तुम पीठ के बल तैरते हो।",
+      "tts": {
+        "text": "हवा ऊपर आकर तुम्हें थाम लेती है, वैसे ही जैसे पानी तुम्हें तब थामता है जब तुम पीठ के बल तैरते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम्हारी बाँहें और टाँगें बिना तुम्हारे कहे ही फैल जाती हैं।",
+      "text_markdown": "तुम्हारी बाँहें और टाँगें बिना तुम्हारे कहे ही फैल जाती हैं।",
+      "tts": {
+        "text": "तुम्हारी बाँहें और टाँगें बिना तुम्हारे कहे ही फैल जाती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम्हारा चेहरा ऐसा लगता है जैसे कई दिशाओं में एक साथ खींचा जा रहा हो।",
+      "text_markdown": "तुम्हारा चेहरा ऐसा लगता है जैसे कई दिशाओं में एक साथ खींचा जा रहा हो।",
+      "tts": {
+        "text": "तुम्हारा चेहरा ऐसा लगता है जैसे कई दिशाओं में एक साथ खींचा जा रहा हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम बता नहीं पाते कि तुम मुस्कुरा रहे हो या चिल्ला रहे हो।",
+      "text_markdown": "तुम बता नहीं पाते कि तुम मुस्कुरा रहे हो या चिल्ला रहे हो।",
+      "tts": {
+        "text": "तुम बता नहीं पाते कि तुम मुस्कुरा रहे हो या चिल्ला रहे हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "इससे फ़र्क नहीं पड़ता।",
+      "text_markdown": "इससे फ़र्क नहीं पड़ता।",
+      "tts": {
+        "text": "इससे फ़र्क नहीं पड़ता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुम चारों तरफ़ देखते हो।",
+      "text_markdown": "तुम चारों तरफ़ देखते हो।",
+      "tts": {
+        "text": "तुम चारों तरफ़ देखते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ज़मीन अब भी तुमसे बहुत नीचे है, पर अब और करीब है, और तुम रंग बेहतर देख सकते हो।",
+      "text_markdown": "ज़मीन अब भी तुमसे बहुत नीचे है, पर अब और करीब है, और तुम रंग बेहतर देख सकते हो।",
+      "tts": {
+        "text": "ज़मीन अब भी तुमसे बहुत नीचे है, पर अब और करीब है, और तुम रंग बेहतर देख सकते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हाईवे पर गाड़ियाँ, चींटियों जितनी धीमी।",
+      "text_markdown": "हाईवे पर गाड़ियाँ, चींटियों जितनी धीमी।",
+      "tts": {
+        "text": "हाईवे पर गाड़ियाँ, चींटियों जितनी धीमी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "एक झील, बिल्कुल शांत।",
+      "text_markdown": "एक झील, बिल्कुल शांत।",
+      "tts": {
+        "text": "एक झील, बिल्कुल शांत।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "एक जंगल पर बादलों की परछाई बहती हुई।",
+      "text_markdown": "एक जंगल पर बादलों की परछाई बहती हुई।",
+      "tts": {
+        "text": "एक जंगल पर बादलों की परछाई बहती हुई।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुम उड़ रहे हो।",
+      "text_markdown": "तुम उड़ रहे हो।",
+      "tts": {
+        "text": "तुम उड़ रहे हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "विमान में नहीं।",
+      "text_markdown": "विमान में नहीं।",
+      "tts": {
+        "text": "विमान में नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम, तुम्हारा शरीर, उड़ रहा है।",
+      "text_markdown": "तुम, तुम्हारा शरीर, उड़ रहा है।",
+      "tts": {
+        "text": "तुम, तुम्हारा शरीर, उड़ रहा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुम्हारा प्रशिक्षक तुम्हारे कंधे पर थपकी देता है।",
+      "text_markdown": "तुम्हारा प्रशिक्षक तुम्हारे कंधे पर थपकी देता है।",
+      "tts": {
+        "text": "तुम्हारा प्रशिक्षक तुम्हारे कंधे पर थपकी देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम डोरी खींचते हो।",
+      "text_markdown": "तुम डोरी खींचते हो।",
+      "tts": {
+        "text": "तुम डोरी खींचते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "एक हल्का झटका लगता है, जैसे कोई धीरे से तुम्हारी कमीज़ की पीठ पकड़ ले।",
+      "text_markdown": "एक हल्का झटका लगता है, जैसे कोई धीरे से तुम्हारी कमीज़ की पीठ पकड़ ले।",
+      "tts": {
+        "text": "एक हल्का झटका लगता है, जैसे कोई धीरे से तुम्हारी कमीज़ की पीठ पकड़ ले।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "फिर एक दूसरा झटका, और ज़ोरदार, जो तुम्हें सीधा खड़ा कर देता है।",
+      "text_markdown": "फिर एक दूसरा झटका, और ज़ोरदार, जो तुम्हें सीधा खड़ा कर देता है।",
+      "tts": {
+        "text": "फिर एक दूसरा झटका, और ज़ोरदार, जो तुम्हें सीधा खड़ा कर देता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दुनिया खामोश हो जाती है।",
+      "text_markdown": "दुनिया खामोश हो जाती है।",
+      "tts": {
+        "text": "दुनिया खामोश हो जाती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हवा चली गई।",
+      "text_markdown": "हवा चली गई।",
+      "tts": {
+        "text": "हवा चली गई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "गर्जना चली गई।",
+      "text_markdown": "गर्जना चली गई।",
+      "tts": {
+        "text": "गर्जना चली गई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "गिरना चला गया।",
+      "text_markdown": "गिरना चला गया।",
+      "tts": {
+        "text": "गिरना चला गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम अब लटक रहे हो, एक हार्नेस में, कपड़े के एक चौड़े आयत के नीचे।",
+      "text_markdown": "तुम अब लटक रहे हो, एक हार्नेस में, कपड़े के एक चौड़े आयत के नीचे।",
+      "tts": {
+        "text": "तुम अब लटक रहे हो, एक हार्नेस में, कपड़े के एक चौड़े आयत के नीचे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "आसमान अचानक बहुत, बहुत स्थिर हो गया है।",
+      "text_markdown": "आसमान अचानक बहुत, बहुत स्थिर हो गया है।",
+      "tts": {
+        "text": "आसमान अचानक बहुत, बहुत स्थिर हो गया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम अपने नीचे की चिड़िया सुन सकते हो।",
+      "text_markdown": "तुम अपने नीचे की चिड़िया सुन सकते हो।",
+      "tts": {
+        "text": "तुम अपने नीचे की चिड़िया सुन सकते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "तुम खुद को साँस लेते सुन सकते हो।",
+      "text_markdown": "तुम खुद को साँस लेते सुन सकते हो।",
+      "tts": {
+        "text": "तुम खुद को साँस लेते सुन सकते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "तुम्हारा प्रशिक्षक तुम्हारे कान में हँसता है और पूछता है कि तुम कैसे हो।",
+      "text_markdown": "तुम्हारा प्रशिक्षक तुम्हारे कान में हँसता है और पूछता है कि तुम कैसे हो।",
+      "tts": {
+        "text": "तुम्हारा प्रशिक्षक तुम्हारे कान में हँसता है और पूछता है कि तुम कैसे हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "तुम एक पल तक जवाब नहीं दे पाते, क्योंकि तुम रो रहे हो, या हँस रहे हो, या दोनों।",
+      "text_markdown": "तुम एक पल तक जवाब नहीं दे पाते, क्योंकि तुम रो रहे हो, या हँस रहे हो, या दोनों।",
+      "tts": {
+        "text": "तुम एक पल तक जवाब नहीं दे पाते, क्योंकि तुम रो रहे हो, या हँस रहे हो, या दोनों।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कैनोपी की सवारी करीब पाँच मिनट की होती है।",
+      "text_markdown": "कैनोपी की सवारी करीब पाँच मिनट की होती है।",
+      "tts": {
+        "text": "कैनोपी की सवारी करीब पाँच मिनट की होती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वो तुम्हारी ज़िंदगी के सबसे शांत पाँच मिनटों में से होते हैं।",
+      "text_markdown": "वो तुम्हारी ज़िंदगी के सबसे शांत पाँच मिनटों में से होते हैं।",
+      "tts": {
+        "text": "वो तुम्हारी ज़िंदगी के सबसे शांत पाँच मिनटों में से होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब तुम्हारे पैर ज़मीन छूते हैं, तुम तीन छोटे दौड़ते कदम लेते हो और रुक जाते हो।",
+      "text_markdown": "जब तुम्हारे पैर ज़मीन छूते हैं, तुम तीन छोटे दौड़ते कदम लेते हो और रुक जाते हो।",
+      "tts": {
+        "text": "जब तुम्हारे पैर ज़मीन छूते हैं, तुम तीन छोटे दौड़ते कदम लेते हो और रुक जाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "घास फिर से असली है।",
+      "text_markdown": "घास फिर से असली है।",
+      "tts": {
+        "text": "घास फिर से असली है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "दुनिया फिर से ठोस है।",
+      "text_markdown": "दुनिया फिर से ठोस है।",
+      "tts": {
+        "text": "दुनिया फिर से ठोस है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम पलटकर आसमान की ओर देखते हो।",
+      "text_markdown": "तुम पलटकर आसमान की ओर देखते हो।",
+      "tts": {
+        "text": "तुम पलटकर आसमान की ओर देखते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "और तुम पहली बार समझते हो कि तुम्हारा दोस्त इन सब सालों से तुम्हें क्या बताने की कोशिश कर रहा था।",
+      "text_markdown": "और तुम पहली बार समझते हो कि तुम्हारा दोस्त इन सब सालों से तुम्हें क्या बताने की कोशिश कर रहा था।",
+      "tts": {
+        "text": "और तुम पहली बार समझते हो कि तुम्हारा दोस्त इन सब सालों से तुम्हें क्या बताने की कोशिश कर रहा था।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "शुरुआत",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "शुरुआत",
+      "text_markdown": "शुरुआत"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तो तुम ये असल में करते कैसे हो, अगर एक दिन तुम तय कर लो कि तुम करना चाहते हो।",
+      "text_markdown": "तो तुम ये असल में करते कैसे हो, अगर एक दिन तुम तय कर लो कि तुम करना चाहते हो।",
+      "tts": {
+        "text": "तो तुम ये असल में करते कैसे हो, अगर एक दिन तुम तय कर लो कि तुम करना चाहते हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ईमानदार जवाब है, जितना तुम सोचते हो उससे आसान।",
+      "text_markdown": "ईमानदार जवाब है, जितना तुम सोचते हो उससे आसान।",
+      "tts": {
+        "text": "ईमानदार जवाब है, जितना तुम सोचते हो उससे आसान।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "दुनिया का लगभग कोई भी लैंडिंग ज़ोन उसी सुबह तुम्हें बिल्कुल नौसिखिए के तौर पर ले लेगा।",
+      "text_markdown": "दुनिया का लगभग कोई भी लैंडिंग ज़ोन उसी सुबह तुम्हें बिल्कुल नौसिखिए के तौर पर ले लेगा।",
+      "tts": {
+        "text": "दुनिया का लगभग कोई भी लैंडिंग ज़ोन उसी सुबह तुम्हें बिल्कुल नौसिखिए के तौर पर ले लेगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वो तुम्हें टैंडम छलाँग पर आसमान में डाल देते हैं, तुम्हारी पीठ पर एक प्रशिक्षक बँधा होता है।",
+      "text_markdown": "वो तुम्हें टैंडम छलाँग पर आसमान में डाल देते हैं, तुम्हारी पीठ पर एक प्रशिक्षक बँधा होता है।",
+      "tts": {
+        "text": "वो तुम्हें टैंडम छलाँग पर आसमान में डाल देते हैं, तुम्हारी पीठ पर एक प्रशिक्षक बँधा होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम पहुँचते हो, कागज़ों पर दस्तखत करते हो, एक छोटी वीडियो देखते हो, और अपने प्रशिक्षक से मिलते हो।",
+      "text_markdown": "तुम पहुँचते हो, कागज़ों पर दस्तखत करते हो, एक छोटी वीडियो देखते हो, और अपने प्रशिक्षक से मिलते हो।",
+      "tts": {
+        "text": "तुम पहुँचते हो, कागज़ों पर दस्तखत करते हो, एक छोटी वीडियो देखते हो, और अपने प्रशिक्षक से मिलते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम जंपसूट और हार्नेस पहनते हो।",
+      "text_markdown": "तुम जंपसूट और हार्नेस पहनते हो।",
+      "tts": {
+        "text": "तुम जंपसूट और हार्नेस पहनते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम विमान में चढ़ते हो।",
+      "text_markdown": "तुम विमान में चढ़ते हो।",
+      "tts": {
+        "text": "तुम विमान में चढ़ते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "करीब बीस मिनट बाद, तुम अपनी ज़िंदगी की सबसे बड़ी मुस्कान के साथ घास पर वापस चलते हो।",
+      "text_markdown": "करीब बीस मिनट बाद, तुम अपनी ज़िंदगी की सबसे बड़ी मुस्कान के साथ घास पर वापस चलते हो।",
+      "tts": {
+        "text": "करीब बीस मिनट बाद, तुम अपनी ज़िंदगी की सबसे बड़ी मुस्कान के साथ घास पर वापस चलते हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अपनी पहली छलाँग के लिए तुम्हें बहादुर होने की ज़रूरत नहीं।",
+      "text_markdown": "अपनी पहली छलाँग के लिए तुम्हें बहादुर होने की ज़रूरत नहीं।",
+      "tts": {
+        "text": "अपनी पहली छलाँग के लिए तुम्हें बहादुर होने की ज़रूरत नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम्हें बस तैयार होने की ज़रूरत है।",
+      "text_markdown": "तुम्हें बस तैयार होने की ज़रूरत है।",
+      "tts": {
+        "text": "तुम्हें बस तैयार होने की ज़रूरत है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "प्रशिक्षक सब कुछ करता है।",
+      "text_markdown": "प्रशिक्षक सब कुछ करता है।",
+      "tts": {
+        "text": "प्रशिक्षक सब कुछ करता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वो पैराशूट खींचता है।",
+      "text_markdown": "वो पैराशूट खींचता है।",
+      "tts": {
+        "text": "वो पैराशूट खींचता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वो कैनोपी उड़ाता है।",
+      "text_markdown": "वो कैनोपी उड़ाता है।",
+      "tts": {
+        "text": "वो कैनोपी उड़ाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "वो तुम्हें उतारता है।",
+      "text_markdown": "वो तुम्हें उतारता है।",
+      "tts": {
+        "text": "वो तुम्हें उतारता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "तुम सिर्फ़ साथ के लिए हो, दुनिया की सबसे बढ़िया सीट पर।",
+      "text_markdown": "तुम सिर्फ़ साथ के लिए हो, दुनिया की सबसे बढ़िया सीट पर।",
+      "tts": {
+        "text": "तुम सिर्फ़ साथ के लिए हो, दुनिया की सबसे बढ़िया सीट पर।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर उस पहली छलाँग के बाद तुम्हें खुद कूदने में दिलचस्पी हो, तो उस रास्ते को त्वरित मुक्त गिरावट कहते हैं।",
+      "text_markdown": "अगर उस पहली छलाँग के बाद तुम्हें खुद कूदने में दिलचस्पी हो, तो उस रास्ते को त्वरित मुक्त गिरावट कहते हैं।",
+      "tts": {
+        "text": "अगर उस पहली छलाँग के बाद तुम्हें खुद कूदने में दिलचस्पी हो, तो उस रास्ते को त्वरित मुक्त गिरावट कहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ये एक प्रशिक्षण कार्यक्रम है, हर लैंडिंग ज़ोन में पढ़ाया जाता है, जो तुम्हें असली स्काइडाइवर बनना सिखाता है।",
+      "text_markdown": "ये एक प्रशिक्षण कार्यक्रम है, हर लैंडिंग ज़ोन में पढ़ाया जाता है, जो तुम्हें असली स्काइडाइवर बनना सिखाता है।",
+      "tts": {
+        "text": "ये एक प्रशिक्षण कार्यक्रम है, हर लैंडिंग ज़ोन में पढ़ाया जाता है, जो तुम्हें असली स्काइडाइवर बनना सिखाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "मुसाफ़िर नहीं।",
+      "text_markdown": "मुसाफ़िर नहीं।",
+      "tts": {
+        "text": "मुसाफ़िर नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "आसमान में अपने ही शरीर का चालक।",
+      "text_markdown": "आसमान में अपने ही शरीर का चालक।",
+      "tts": {
+        "text": "आसमान में अपने ही शरीर का चालक।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "कार्यक्रम का पहला स्तर एक लंबा कक्षा का दिन होता है।",
+      "text_markdown": "कार्यक्रम का पहला स्तर एक लंबा कक्षा का दिन होता है।",
+      "tts": {
+        "text": "कार्यक्रम का पहला स्तर एक लंबा कक्षा का दिन होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम सीखते हो कि कैसे गिरना है।",
+      "text_markdown": "तुम सीखते हो कि कैसे गिरना है।",
+      "tts": {
+        "text": "तुम सीखते हो कि कैसे गिरना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम सीखते हो कि अपने ऊंचाईमापी को कैसे पढ़ना है।",
+      "text_markdown": "तुम सीखते हो कि अपने ऊंचाईमापी को कैसे पढ़ना है।",
+      "tts": {
+        "text": "तुम सीखते हो कि अपने ऊंचाईमापी को कैसे पढ़ना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम सीखते हो कि अगर तुम्हारा मुख्य पैराशूट न खुले तो क्या करना है।",
+      "text_markdown": "तुम सीखते हो कि अगर तुम्हारा मुख्य पैराशूट न खुले तो क्या करना है।",
+      "tts": {
+        "text": "तुम सीखते हो कि अगर तुम्हारा मुख्य पैराशूट न खुले तो क्या करना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कक्षा का दिन करीब छह या सात घंटे का होता है।",
+      "text_markdown": "कक्षा का दिन करीब छह या सात घंटे का होता है।",
+      "tts": {
+        "text": "कक्षा का दिन करीब छह या सात घंटे का होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "उसके अंत तक, तुम पैराशूट के बारे में उससे ज़्यादा जानते हो जितना ज़्यादातर लोग पूरी ज़िंदगी में सीखते हैं।",
+      "text_markdown": "उसके अंत तक, तुम पैराशूट के बारे में उससे ज़्यादा जानते हो जितना ज़्यादातर लोग पूरी ज़िंदगी में सीखते हैं।",
+      "tts": {
+        "text": "उसके अंत तक, तुम पैराशूट के बारे में उससे ज़्यादा जानते हो जितना ज़्यादातर लोग पूरी ज़िंदगी में सीखते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "फिर आती है तुम्हारी पहली अकेली छलाँग।",
+      "text_markdown": "फिर आती है तुम्हारी पहली अकेली छलाँग।",
+      "tts": {
+        "text": "फिर आती है तुम्हारी पहली अकेली छलाँग।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "दो प्रशिक्षक तुम्हारे साथ कूदते हैं, एक हर तरफ़, तुम्हारे हार्नेस को थामे हुए।",
+      "text_markdown": "दो प्रशिक्षक तुम्हारे साथ कूदते हैं, एक हर तरफ़, तुम्हारे हार्नेस को थामे हुए।",
+      "tts": {
+        "text": "दो प्रशिक्षक तुम्हारे साथ कूदते हैं, एक हर तरफ़, तुम्हारे हार्नेस को थामे हुए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "जब तुम स्थिर हो जाते हो, वो तुम्हें मुक्त गिरावट में छोड़ देते हैं।",
+      "text_markdown": "जब तुम स्थिर हो जाते हो, वो तुम्हें मुक्त गिरावट में छोड़ देते हैं।",
+      "tts": {
+        "text": "जब तुम स्थिर हो जाते हो, वो तुम्हें मुक्त गिरावट में छोड़ देते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम अपना खुद का पैराशूट खींचते हो।",
+      "text_markdown": "तुम अपना खुद का पैराशूट खींचते हो।",
+      "tts": {
+        "text": "तुम अपना खुद का पैराशूट खींचते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम अपनी कैनोपी खुद उड़ाते हुए ज़मीन तक आते हो।",
+      "text_markdown": "तुम अपनी कैनोपी खुद उड़ाते हुए ज़मीन तक आते हो।",
+      "tts": {
+        "text": "तुम अपनी कैनोपी खुद उड़ाते हुए ज़मीन तक आते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "पहली बार जब तुम ये करते हो, अगले दिन तुम्हारा चेहरा इतना ज़ोर से मुस्कुराने से दुखेगा।",
+      "text_markdown": "पहली बार जब तुम ये करते हो, अगले दिन तुम्हारा चेहरा इतना ज़ोर से मुस्कुराने से दुखेगा।",
+      "tts": {
+        "text": "पहली बार जब तुम ये करते हो, अगले दिन तुम्हारा चेहरा इतना ज़ोर से मुस्कुराने से दुखेगा।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पूरा कार्यक्रम तुम्हें करीब सात छलाँगों से गुज़ारता है।",
+      "text_markdown": "पूरा कार्यक्रम तुम्हें करीब सात छलाँगों से गुज़ारता है।",
+      "tts": {
+        "text": "पूरा कार्यक्रम तुम्हें करीब सात छलाँगों से गुज़ारता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "अंत तक, तुम अकेले कूद रहे होते हो।",
+      "text_markdown": "अंत तक, तुम अकेले कूद रहे होते हो।",
+      "tts": {
+        "text": "अंत तक, तुम अकेले कूद रहे होते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वहाँ से, स्काइडाइवर आमतौर पर अगले एक साल में अपनी पहली एक सौ छलाँगें पूरी कर लेते हैं।",
+      "text_markdown": "वहाँ से, स्काइडाइवर आमतौर पर अगले एक साल में अपनी पहली एक सौ छलाँगें पूरी कर लेते हैं।",
+      "tts": {
+        "text": "वहाँ से, स्काइडाइवर आमतौर पर अगले एक साल में अपनी पहली एक सौ छलाँगें पूरी कर लेते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "रास्ते में, वो दूसरे कूदने वालों के सापेक्ष उड़ना सीखते हैं।",
+      "text_markdown": "रास्ते में, वो दूसरे कूदने वालों के सापेक्ष उड़ना सीखते हैं।",
+      "tts": {
+        "text": "रास्ते में, वो दूसरे कूदने वालों के सापेक्ष उड़ना सीखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वो आसमान भर में दौड़ना सीखते हैं।",
+      "text_markdown": "वो आसमान भर में दौड़ना सीखते हैं।",
+      "tts": {
+        "text": "वो आसमान भर में दौड़ना सीखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "वो अपना पैराशूट खुद बाँधना सीखते हैं।",
+      "text_markdown": "वो अपना पैराशूट खुद बाँधना सीखते हैं।",
+      "tts": {
+        "text": "वो अपना पैराशूट खुद बाँधना सीखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "ये समुदाय छोटा, दोस्ताना, और धैर्यवान है।",
+      "text_markdown": "ये समुदाय छोटा, दोस्ताना, और धैर्यवान है।",
+      "tts": {
+        "text": "ये समुदाय छोटा, दोस्ताना, और धैर्यवान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "लैंडिंग ज़ोन पर कोई भी तुम्हें नौसिखिया होने पर बेवकूफ़ महसूस नहीं कराएगा।",
+      "text_markdown": "लैंडिंग ज़ोन पर कोई भी तुम्हें नौसिखिया होने पर बेवकूफ़ महसूस नहीं कराएगा।",
+      "tts": {
+        "text": "लैंडिंग ज़ोन पर कोई भी तुम्हें नौसिखिया होने पर बेवकूफ़ महसूस नहीं कराएगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "हम सब कभी नौसिखिए थे।",
+      "text_markdown": "हम सब कभी नौसिखिए थे।",
+      "tts": {
+        "text": "हम सब कभी नौसिखिए थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "हममें से ज़्यादातर अब भी खुद को नौसिखिया जैसा महसूस करते हैं।",
+      "text_markdown": "हममें से ज़्यादातर अब भी खुद को नौसिखिया जैसा महसूस करते हैं।",
+      "tts": {
+        "text": "हममें से ज़्यादातर अब भी खुद को नौसिखिया जैसा महसूस करते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "और सुरक्षा का क्या।",
+      "text_markdown": "और सुरक्षा का क्या।",
+      "tts": {
+        "text": "और सुरक्षा का क्या।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ये सवाल हर समझदार इंसान पूछता है, और इसका सच्चा जवाब मिलना चाहिए।",
+      "text_markdown": "ये सवाल हर समझदार इंसान पूछता है, और इसका सच्चा जवाब मिलना चाहिए।",
+      "tts": {
+        "text": "ये सवाल हर समझदार इंसान पूछता है, और इसका सच्चा जवाब मिलना चाहिए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "स्काइडाइविंग, असल में, बहुत सुरक्षित है।",
+      "text_markdown": "स्काइडाइविंग, असल में, बहुत सुरक्षित है।",
+      "tts": {
+        "text": "स्काइडाइविंग, असल में, बहुत सुरक्षित है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "चलने जितनी सुरक्षित नहीं, पर लैंडिंग ज़ोन तक गाड़ी चलाने से ज़्यादा सुरक्षित।",
+      "text_markdown": "चलने जितनी सुरक्षित नहीं, पर लैंडिंग ज़ोन तक गाड़ी चलाने से ज़्यादा सुरक्षित।",
+      "tts": {
+        "text": "चलने जितनी सुरक्षित नहीं, पर लैंडिंग ज़ोन तक गाड़ी चलाने से ज़्यादा सुरक्षित।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "साज़ोसामान बेहतरीन है।",
+      "text_markdown": "साज़ोसामान बेहतरीन है।",
+      "tts": {
+        "text": "साज़ोसामान बेहतरीन है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "एक मुख्य पैराशूट और एक रिज़र्व पैराशूट है, और एक स्वचालित यंत्र जो रिज़र्व खोल देगा अगर तुम न खोल पाओ।",
+      "text_markdown": "एक मुख्य पैराशूट और एक रिज़र्व पैराशूट है, और एक स्वचालित यंत्र जो रिज़र्व खोल देगा अगर तुम न खोल पाओ।",
+      "tts": {
+        "text": "एक मुख्य पैराशूट और एक रिज़र्व पैराशूट है, और एक स्वचालित यंत्र जो रिज़र्व खोल देगा अगर तुम न खोल पाओ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "लैंडिंग ज़ोन ऐसे पेशेवरों द्वारा चलाए जाते हैं जो तुम्हारी परवाह करते हैं।",
+      "text_markdown": "लैंडिंग ज़ोन ऐसे पेशेवरों द्वारा चलाए जाते हैं जो तुम्हारी परवाह करते हैं।",
+      "tts": {
+        "text": "लैंडिंग ज़ोन ऐसे पेशेवरों द्वारा चलाए जाते हैं जो तुम्हारी परवाह करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "प्रशिक्षक हर छलाँग की गहराई से परवाह करते हैं।",
+      "text_markdown": "प्रशिक्षक हर छलाँग की गहराई से परवाह करते हैं।",
+      "tts": {
+        "text": "प्रशिक्षक हर छलाँग की गहराई से परवाह करते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "और कीमत क्या है।",
+      "text_markdown": "और कीमत क्या है।",
+      "tts": {
+        "text": "और कीमत क्या है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक टैंडम छलाँग की कीमत दो लोगों के अच्छे रात के खाने जितनी है।",
+      "text_markdown": "एक टैंडम छलाँग की कीमत दो लोगों के अच्छे रात के खाने जितनी है।",
+      "tts": {
+        "text": "एक टैंडम छलाँग की कीमत दो लोगों के अच्छे रात के खाने जितनी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "प्रशिक्षण कार्यक्रम की कीमत एक छोटी छुट्टी जितनी है।",
+      "text_markdown": "प्रशिक्षण कार्यक्रम की कीमत एक छोटी छुट्टी जितनी है।",
+      "tts": {
+        "text": "प्रशिक्षण कार्यक्रम की कीमत एक छोटी छुट्टी जितनी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उसके बाद, हर छलाँग की कीमत एक फ़िल्म की टिकट और एक खाने जितनी है।",
+      "text_markdown": "उसके बाद, हर छलाँग की कीमत एक फ़िल्म की टिकट और एक खाने जितनी है।",
+      "tts": {
+        "text": "उसके बाद, हर छलाँग की कीमत एक फ़िल्म की टिकट और एक खाने जितनी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "आम काम और आम ज़िंदगी वाले लोग ये हर हफ़्ते के अंत में करते हैं।",
+      "text_markdown": "आम काम और आम ज़िंदगी वाले लोग ये हर हफ़्ते के अंत में करते हैं।",
+      "tts": {
+        "text": "आम काम और आम ज़िंदगी वाले लोग ये हर हफ़्ते के अंत में करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "वो अमीर नहीं हैं।",
+      "text_markdown": "वो अमीर नहीं हैं।",
+      "tts": {
+        "text": "वो अमीर नहीं हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "वो असाधारण नहीं हैं।",
+      "text_markdown": "वो असाधारण नहीं हैं।",
+      "tts": {
+        "text": "वो असाधारण नहीं हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "उन्होंने बस ये तय किया है कि यही वो काम है जो वो करते हैं।",
+      "text_markdown": "उन्होंने बस ये तय किया है कि यही वो काम है जो वो करते हैं।",
+      "tts": {
+        "text": "उन्होंने बस ये तय किया है कि यही वो काम है जो वो करते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर तुम अपनी पहली छलाँग के बारे में सोच रहे हो, तो यही एकमात्र सलाह है जो मायने रखती है।",
+      "text_markdown": "अगर तुम अपनी पहली छलाँग के बारे में सोच रहे हो, तो यही एकमात्र सलाह है जो मायने रखती है।",
+      "tts": {
+        "text": "अगर तुम अपनी पहली छलाँग के बारे में सोच रहे हो, तो यही एकमात्र सलाह है जो मायने रखती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "एक तारीख चुनो।",
+      "text_markdown": "एक तारीख चुनो।",
+      "tts": {
+        "text": "एक तारीख चुनो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "एक दोस्त को बताओ।",
+      "text_markdown": "एक दोस्त को बताओ।",
+      "tts": {
+        "text": "एक दोस्त को बताओ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "पहुँच जाओ।",
+      "text_markdown": "पहुँच जाओ।",
+      "tts": {
+        "text": "पहुँच जाओ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "मुश्किल हिस्सा गिरना नहीं है।",
+      "text_markdown": "मुश्किल हिस्सा गिरना नहीं है।",
+      "tts": {
+        "text": "मुश्किल हिस्सा गिरना नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "मुश्किल हिस्सा फ़ैसला करना है।",
+      "text_markdown": "मुश्किल हिस्सा फ़ैसला करना है।",
+      "tts": {
+        "text": "मुश्किल हिस्सा फ़ैसला करना है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "एक बार जब तुम तय कर लेते हो, आसमान पहले से ही तुम्हारा है।",
+      "text_markdown": "एक बार जब तुम तय कर लेते हो, आसमान पहले से ही तुम्हारा है।",
+      "tts": {
+        "text": "एक बार जब तुम तय कर लेते हो, आसमान पहले से ही तुम्हारा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "हुनर",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "हुनर",
+      "text_markdown": "हुनर"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "गिरने के अंदर एक हुनर छिपा है, और यही वो हिस्सा है जो स्काइडाइविंग को तुम्हारे साथ ज़िंदगी भर रखता है।",
+      "text_markdown": "गिरने के अंदर एक हुनर छिपा है, और यही वो हिस्सा है जो स्काइडाइविंग को तुम्हारे साथ ज़िंदगी भर रखता है।",
+      "tts": {
+        "text": "गिरने के अंदर एक हुनर छिपा है, और यही वो हिस्सा है जो स्काइडाइविंग को तुम्हारे साथ ज़िंदगी भर रखता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब तुम किसी अनुभवी स्काइडाइवर को मुक्त गिरावट में देखते हो, तो तुम्हें कोई गिरता हुआ नहीं दिखता।",
+      "text_markdown": "जब तुम किसी अनुभवी स्काइडाइवर को मुक्त गिरावट में देखते हो, तो तुम्हें कोई गिरता हुआ नहीं दिखता।",
+      "tts": {
+        "text": "जब तुम किसी अनुभवी स्काइडाइवर को मुक्त गिरावट में देखते हो, तो तुम्हें कोई गिरता हुआ नहीं दिखता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम्हें कोई उड़ता हुआ दिखता है।",
+      "text_markdown": "तुम्हें कोई उड़ता हुआ दिखता है।",
+      "tts": {
+        "text": "तुम्हें कोई उड़ता हुआ दिखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "वो धीरे-धीरे, जान-बूझकर, अपनी उँगलियों के सिरों से मुड़ते हैं।",
+      "text_markdown": "वो धीरे-धीरे, जान-बूझकर, अपनी उँगलियों के सिरों से मुड़ते हैं।",
+      "tts": {
+        "text": "वो धीरे-धीरे, जान-बूझकर, अपनी उँगलियों के सिरों से मुड़ते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वो आसमान भर में आधा मील आगे फिसलते हैं, अपने कंधों को दो इंच आगे झुकाकर।",
+      "text_markdown": "वो आसमान भर में आधा मील आगे फिसलते हैं, अपने कंधों को दो इंच आगे झुकाकर।",
+      "tts": {
+        "text": "वो आसमान भर में आधा मील आगे फिसलते हैं, अपने कंधों को दो इंच आगे झुकाकर।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वो बीच गिरावट में रुक जाते हैं, और एक ऐसी ठहरी हुई स्थिति बनाए रखते हैं जो असंभव लगती है।",
+      "text_markdown": "वो बीच गिरावट में रुक जाते हैं, और एक ऐसी ठहरी हुई स्थिति बनाए रखते हैं जो असंभव लगती है।",
+      "tts": {
+        "text": "वो बीच गिरावट में रुक जाते हैं, और एक ऐसी ठहरी हुई स्थिति बनाए रखते हैं जो असंभव लगती है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "शरीर ही विमान है।",
+      "text_markdown": "शरीर ही विमान है।",
+      "tts": {
+        "text": "शरीर ही विमान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ये हुनर का पहला राज़ है।",
+      "text_markdown": "ये हुनर का पहला राज़ है।",
+      "tts": {
+        "text": "ये हुनर का पहला राज़ है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "एक बार ये समझ जाओ, बाकी सब अपने आप होता है।",
+      "text_markdown": "एक बार ये समझ जाओ, बाकी सब अपने आप होता है।",
+      "tts": {
+        "text": "एक बार ये समझ जाओ, बाकी सब अपने आप होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "स्थिर मुक्त गिरावट का बुनियादी आकार आर्च कहलाता है।",
+      "text_markdown": "स्थिर मुक्त गिरावट का बुनियादी आकार आर्च कहलाता है।",
+      "tts": {
+        "text": "स्थिर मुक्त गिरावट का बुनियादी आकार आर्च कहलाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम अपनी कमर आगे धकेलते हो और अपनी बाँहों और टाँगों को पीछे लटकने देते हो, एक केले की तरह।",
+      "text_markdown": "तुम अपनी कमर आगे धकेलते हो और अपनी बाँहों और टाँगों को पीछे लटकने देते हो, एक केले की तरह।",
+      "tts": {
+        "text": "तुम अपनी कमर आगे धकेलते हो और अपनी बाँहों और टाँगों को पीछे लटकने देते हो, एक केले की तरह।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "आर्च ही वो है जो तुम्हें ज़मीन की तरफ़ चेहरा रखे बिना सोचे रखता है।",
+      "text_markdown": "आर्च ही वो है जो तुम्हें ज़मीन की तरफ़ चेहरा रखे बिना सोचे रखता है।",
+      "tts": {
+        "text": "आर्च ही वो है जो तुम्हें ज़मीन की तरफ़ चेहरा रखे बिना सोचे रखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "नए कूदने वाले आर्च को पहले एक फ़ोम के गड्ढे में सीखते हैं, फिर हवा की सुरंग में, फिर आसमान में।",
+      "text_markdown": "नए कूदने वाले आर्च को पहले एक फ़ोम के गड्ढे में सीखते हैं, फिर हवा की सुरंग में, फिर आसमान में।",
+      "tts": {
+        "text": "नए कूदने वाले आर्च को पहले एक फ़ोम के गड्ढे में सीखते हैं, फिर हवा की सुरंग में, फिर आसमान में।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "पुराने कूदने वाले आज भी आर्च के बारे में वैसे ही बात करते हैं जैसे पुराने धावक अपनी कदम-चाल के बारे में।",
+      "text_markdown": "पुराने कूदने वाले आज भी आर्च के बारे में वैसे ही बात करते हैं जैसे पुराने धावक अपनी कदम-चाल के बारे में।",
+      "tts": {
+        "text": "पुराने कूदने वाले आज भी आर्च के बारे में वैसे ही बात करते हैं जैसे पुराने धावक अपनी कदम-चाल के बारे में।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "एक बार जब तुम्हारा आर्च स्थिर हो जाए, बाकी की मुक्त गिरावट खुल जाती है।",
+      "text_markdown": "एक बार जब तुम्हारा आर्च स्थिर हो जाए, बाकी की मुक्त गिरावट खुल जाती है।",
+      "tts": {
+        "text": "एक बार जब तुम्हारा आर्च स्थिर हो जाए, बाकी की मुक्त गिरावट खुल जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम सीखते हो कि चौड़ा फैलकर धीरे कैसे गिरना है, खुद को पतंग में बदलकर।",
+      "text_markdown": "तुम सीखते हो कि चौड़ा फैलकर धीरे कैसे गिरना है, खुद को पतंग में बदलकर।",
+      "tts": {
+        "text": "तुम सीखते हो कि चौड़ा फैलकर धीरे कैसे गिरना है, खुद को पतंग में बदलकर।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम सीखते हो कि छोटा सिकुड़कर तेज़ कैसे गिरना है, खुद को पत्थर में बदलकर।",
+      "text_markdown": "तुम सीखते हो कि छोटा सिकुड़कर तेज़ कैसे गिरना है, खुद को पत्थर में बदलकर।",
+      "tts": {
+        "text": "तुम सीखते हो कि छोटा सिकुड़कर तेज़ कैसे गिरना है, खुद को पत्थर में बदलकर।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम दौड़ना सीखते हो, जो उड़ने के सबसे करीब है जो एक इंसान का शरीर कर सकता है।",
+      "text_markdown": "तुम दौड़ना सीखते हो, जो उड़ने के सबसे करीब है जो एक इंसान का शरीर कर सकता है।",
+      "tts": {
+        "text": "तुम दौड़ना सीखते हो, जो उड़ने के सबसे करीब है जो एक इंसान का शरीर कर सकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "एक अच्छा दौड़ने वाला आसमान भर में बीस सेकंड में चौथाई मील तय कर सकता है।",
+      "text_markdown": "एक अच्छा दौड़ने वाला आसमान भर में बीस सेकंड में चौथाई मील तय कर सकता है।",
+      "tts": {
+        "text": "एक अच्छा दौड़ने वाला आसमान भर में बीस सेकंड में चौथाई मील तय कर सकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "बाँहें पीछे, शरीर तिरछा, एक कागज़ी विमान की तरह चलते हुए जो जानता है कि वो कहाँ जा रहा है।",
+      "text_markdown": "बाँहें पीछे, शरीर तिरछा, एक कागज़ी विमान की तरह चलते हुए जो जानता है कि वो कहाँ जा रहा है।",
+      "tts": {
+        "text": "बाँहें पीछे, शरीर तिरछा, एक कागज़ी विमान की तरह चलते हुए जो जानता है कि वो कहाँ जा रहा है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हुनर का दूसरा आधा हिस्सा है कैनोपी।",
+      "text_markdown": "हुनर का दूसरा आधा हिस्सा है कैनोपी।",
+      "tts": {
+        "text": "हुनर का दूसरा आधा हिस्सा है कैनोपी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "पैराशूट कोई बेजान चीज़ नहीं है जो तुम्हें बस तैराकर नीचे लाती है।",
+      "text_markdown": "पैराशूट कोई बेजान चीज़ नहीं है जो तुम्हें बस तैराकर नीचे लाती है।",
+      "tts": {
+        "text": "पैराशूट कोई बेजान चीज़ नहीं है जो तुम्हें बस तैराकर नीचे लाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ये एक पंख है, और तुम इसे उड़ाते हो।",
+      "text_markdown": "ये एक पंख है, और तुम इसे उड़ाते हो।",
+      "tts": {
+        "text": "ये एक पंख है, और तुम इसे उड़ाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "दाएँ टॉगल को खींचने से दायाँ पंख डुबकी लगाता है और तुम्हें दाईं ओर मोड़ देता है।",
+      "text_markdown": "दाएँ टॉगल को खींचने से दायाँ पंख डुबकी लगाता है और तुम्हें दाईं ओर मोड़ देता है।",
+      "tts": {
+        "text": "दाएँ टॉगल को खींचने से दायाँ पंख डुबकी लगाता है और तुम्हें दाईं ओर मोड़ देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "दोनों को एक साथ खींचने से तुम धीमे होते हो और हल्के से उतर पाते हो।",
+      "text_markdown": "दोनों को एक साथ खींचने से तुम धीमे होते हो और हल्के से उतर पाते हो।",
+      "tts": {
+        "text": "दोनों को एक साथ खींचने से तुम धीमे होते हो और हल्के से उतर पाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम हवा को पढ़ते हो, जगह चुनते हो, अपना रास्ता तय करते हो।",
+      "text_markdown": "तुम हवा को पढ़ते हो, जगह चुनते हो, अपना रास्ता तय करते हो।",
+      "tts": {
+        "text": "तुम हवा को पढ़ते हो, जगह चुनते हो, अपना रास्ता तय करते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "आख़िरी सेकंड में तुम फ़्लेयर करते हो, ताकि तुम्हारे पैर ज़मीन को टकराने के बजाय चूम लें।",
+      "text_markdown": "आख़िरी सेकंड में तुम फ़्लेयर करते हो, ताकि तुम्हारे पैर ज़मीन को टकराने के बजाय चूम लें।",
+      "tts": {
+        "text": "आख़िरी सेकंड में तुम फ़्लेयर करते हो, ताकि तुम्हारे पैर ज़मीन को टकराने के बजाय चूम लें।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "ये सब कैनोपी की उड़ान है, और ये अपनी ही एक कला है।",
+      "text_markdown": "ये सब कैनोपी की उड़ान है, और ये अपनी ही एक कला है।",
+      "tts": {
+        "text": "ये सब कैनोपी की उड़ान है, और ये अपनी ही एक कला है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "और फिर है पैकिंग।",
+      "text_markdown": "और फिर है पैकिंग।",
+      "tts": {
+        "text": "और फिर है पैकिंग।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हर स्काइडाइवर अपना पैराशूट खुद बाँधता है।",
+      "text_markdown": "हर स्काइडाइवर अपना पैराशूट खुद बाँधता है।",
+      "tts": {
+        "text": "हर स्काइडाइवर अपना पैराशूट खुद बाँधता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर एक बार।",
+      "text_markdown": "हर एक बार।",
+      "tts": {
+        "text": "हर एक बार।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम कैनोपी को एक लंबी चटाई पर बिछाते हो।",
+      "text_markdown": "तुम कैनोपी को एक लंबी चटाई पर बिछाते हो।",
+      "tts": {
+        "text": "तुम कैनोपी को एक लंबी चटाई पर बिछाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम डोरियों को सीधा करते हो।",
+      "text_markdown": "तुम डोरियों को सीधा करते हो।",
+      "tts": {
+        "text": "तुम डोरियों को सीधा करते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम कोशिकाओं को मोड़ते हो।",
+      "text_markdown": "तुम कोशिकाओं को मोड़ते हो।",
+      "tts": {
+        "text": "तुम कोशिकाओं को मोड़ते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम कपड़े को लपेटते हो, उसे थैले में आराम से डालते हो, ब्रिडल को रास्ता देते हो, डिब्बा बंद करते हो।",
+      "text_markdown": "तुम कपड़े को लपेटते हो, उसे थैले में आराम से डालते हो, ब्रिडल को रास्ता देते हो, डिब्बा बंद करते हो।",
+      "tts": {
+        "text": "तुम कपड़े को लपेटते हो, उसे थैले में आराम से डालते हो, ब्रिडल को रास्ता देते हो, डिब्बा बंद करते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "इसमें करीब पंद्रह मिनट लगते हैं, और तुम धीरे-धीरे करते हो, क्योंकि तुम्हारी ज़िंदगी इसी कपड़े के टुकड़े पर निर्भर होगी।",
+      "text_markdown": "इसमें करीब पंद्रह मिनट लगते हैं, और तुम धीरे-धीरे करते हो, क्योंकि तुम्हारी ज़िंदगी इसी कपड़े के टुकड़े पर निर्भर होगी।",
+      "tts": {
+        "text": "इसमें करीब पंद्रह मिनट लगते हैं, और तुम धीरे-धीरे करते हो, क्योंकि तुम्हारी ज़िंदगी इसी कपड़े के टुकड़े पर निर्भर होगी।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पैकिंग ध्यान है।",
+      "text_markdown": "पैकिंग ध्यान है।",
+      "tts": {
+        "text": "पैकिंग ध्यान है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "कई स्काइडाइवर कहते हैं कि ये दिन का वो हिस्सा है जो उन्हें सबसे ज़्यादा पसंद है।",
+      "text_markdown": "कई स्काइडाइवर कहते हैं कि ये दिन का वो हिस्सा है जो उन्हें सबसे ज़्यादा पसंद है।",
+      "tts": {
+        "text": "कई स्काइडाइवर कहते हैं कि ये दिन का वो हिस्सा है जो उन्हें सबसे ज़्यादा पसंद है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "चटाई, डोरियाँ, धीमी मोड़।",
+      "text_markdown": "चटाई, डोरियाँ, धीमी मोड़।",
+      "tts": {
+        "text": "चटाई, डोरियाँ, धीमी मोड़।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम्हारे साथ बैठे एक दोस्त का कंधा।",
+      "text_markdown": "तुम्हारे साथ बैठे एक दोस्त का कंधा।",
+      "tts": {
+        "text": "तुम्हारे साथ बैठे एक दोस्त का कंधा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "कोने में रेडियो पर एक गाना जिसे तुम बहुत बार सुन चुके हो।",
+      "text_markdown": "कोने में रेडियो पर एक गाना जिसे तुम बहुत बार सुन चुके हो।",
+      "tts": {
+        "text": "कोने में रेडियो पर एक गाना जिसे तुम बहुत बार सुन चुके हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "पैकिंग में जल्दबाज़ी नहीं चलती।",
+      "text_markdown": "पैकिंग में जल्दबाज़ी नहीं चलती।",
+      "tts": {
+        "text": "पैकिंग में जल्दबाज़ी नहीं चलती।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "आसमान को तुम्हारे कार्यक्रम की परवाह नहीं।",
+      "text_markdown": "आसमान को तुम्हारे कार्यक्रम की परवाह नहीं।",
+      "tts": {
+        "text": "आसमान को तुम्हारे कार्यक्रम की परवाह नहीं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इस हुनर का स्वभाव है धैर्य।",
+      "text_markdown": "इस हुनर का स्वभाव है धैर्य।",
+      "tts": {
+        "text": "इस हुनर का स्वभाव है धैर्य।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "ये विनम्रता है।",
+      "text_markdown": "ये विनम्रता है।",
+      "tts": {
+        "text": "ये विनम्रता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "ये हर एक छलाँग की समीक्षा करने की इच्छा है, यहाँ तक कि उबाऊ छलाँगों की भी।",
+      "text_markdown": "ये हर एक छलाँग की समीक्षा करने की इच्छा है, यहाँ तक कि उबाऊ छलाँगों की भी।",
+      "tts": {
+        "text": "ये हर एक छलाँग की समीक्षा करने की इच्छा है, यहाँ तक कि उबाऊ छलाँगों की भी।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "स्काइडाइवर छलाँग के बाद बातें करना पसंद करते हैं।",
+      "text_markdown": "स्काइडाइवर छलाँग के बाद बातें करना पसंद करते हैं।",
+      "tts": {
+        "text": "स्काइडाइवर छलाँग के बाद बातें करना पसंद करते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वो एक पिकनिक मेज़ पर बैठेंगे और हर सेकंड को, शरीर की हर मुद्रा को दोहराएँगे।",
+      "text_markdown": "वो एक पिकनिक मेज़ पर बैठेंगे और हर सेकंड को, शरीर की हर मुद्रा को दोहराएँगे।",
+      "tts": {
+        "text": "वो एक पिकनिक मेज़ पर बैठेंगे और हर सेकंड को, शरीर की हर मुद्रा को दोहराएँगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "क्या काम आया।",
+      "text_markdown": "क्या काम आया।",
+      "tts": {
+        "text": "क्या काम आया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "क्या लापरवाह था।",
+      "text_markdown": "क्या लापरवाह था।",
+      "tts": {
+        "text": "क्या लापरवाह था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "अगली बार वो क्या आज़माना चाहते हैं।",
+      "text_markdown": "अगली बार वो क्या आज़माना चाहते हैं।",
+      "tts": {
+        "text": "अगली बार वो क्या आज़माना चाहते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसीलिए लोग रुकते हैं।",
+      "text_markdown": "इसीलिए लोग रुकते हैं।",
+      "tts": {
+        "text": "इसीलिए लोग रुकते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इसलिए नहीं कि गिरना रोमांचक है।",
+      "text_markdown": "इसलिए नहीं कि गिरना रोमांचक है।",
+      "tts": {
+        "text": "इसलिए नहीं कि गिरना रोमांचक है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "गिरना तो आसान हिस्सा है।",
+      "text_markdown": "गिरना तो आसान हिस्सा है।",
+      "tts": {
+        "text": "गिरना तो आसान हिस्सा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "लोग रुकते हैं क्योंकि सीखने को हमेशा कुछ होता है।",
+      "text_markdown": "लोग रुकते हैं क्योंकि सीखने को हमेशा कुछ होता है।",
+      "tts": {
+        "text": "लोग रुकते हैं क्योंकि सीखने को हमेशा कुछ होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "साथ में सीखने के लिए हमेशा एक दोस्त होता है।",
+      "text_markdown": "साथ में सीखने के लिए हमेशा एक दोस्त होता है।",
+      "tts": {
+        "text": "साथ में सीखने के लिए हमेशा एक दोस्त होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "और कल दोपहर तुम्हारा इंतज़ार कर रहा एक आसमान होता है।",
+      "text_markdown": "और कल दोपहर तुम्हारा इंतज़ार कर रहा एक आसमान होता है।",
+      "tts": {
+        "text": "और कल दोपहर तुम्हारा इंतज़ार कर रहा एक आसमान होता है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "लम्हे",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "लम्हे",
+      "text_markdown": "लम्हे"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मैं तुम्हें तीन देता हूँ।",
+      "text_markdown": "मैं तुम्हें तीन देता हूँ।",
+      "tts": {
+        "text": "मैं तुम्हें तीन देता हूँ।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहला है एक सूर्यास्त की उड़ान।",
+      "text_markdown": "पहला है एक सूर्यास्त की उड़ान।",
+      "tts": {
+        "text": "पहला है एक सूर्यास्त की उड़ान।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "विमान सूरज ढलने से बीस मिनट पहले उड़ान भरता है।",
+      "text_markdown": "विमान सूरज ढलने से बीस मिनट पहले उड़ान भरता है।",
+      "tts": {
+        "text": "विमान सूरज ढलने से बीस मिनट पहले उड़ान भरता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम नारंगी रोशनी की परतों से होकर ऊपर चढ़ते हो, केबिन गर्म, तुम्हारे दोस्त खामोश।",
+      "text_markdown": "तुम नारंगी रोशनी की परतों से होकर ऊपर चढ़ते हो, केबिन गर्म, तुम्हारे दोस्त खामोश।",
+      "tts": {
+        "text": "तुम नारंगी रोशनी की परतों से होकर ऊपर चढ़ते हो, केबिन गर्म, तुम्हारे दोस्त खामोश।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "इस बार जब दरवाज़ा खुलता है, हवा गुलाबी है।",
+      "text_markdown": "इस बार जब दरवाज़ा खुलता है, हवा गुलाबी है।",
+      "tts": {
+        "text": "इस बार जब दरवाज़ा खुलता है, हवा गुलाबी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम्हारे नीचे की ज़मीन आधी छाया में, आधी सोने में है।",
+      "text_markdown": "तुम्हारे नीचे की ज़मीन आधी छाया में, आधी सोने में है।",
+      "tts": {
+        "text": "तुम्हारे नीचे की ज़मीन आधी छाया में, आधी सोने में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम बाहर कदम रखते हो, और साठ सेकंड तक तुम एक सूर्यास्त के अंदर से गिरते हो।",
+      "text_markdown": "तुम बाहर कदम रखते हो, और साठ सेकंड तक तुम एक सूर्यास्त के अंदर से गिरते हो।",
+      "tts": {
+        "text": "तुम बाहर कदम रखते हो, और साठ सेकंड तक तुम एक सूर्यास्त के अंदर से गिरते हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये असली नहीं लगता।",
+      "text_markdown": "ये असली नहीं लगता।",
+      "tts": {
+        "text": "ये असली नहीं लगता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम ऐसे रंग देखोगे जो तुम जानते भी नहीं थे कि तुम्हारी आँखें ढूँढ सकती हैं।",
+      "text_markdown": "तुम ऐसे रंग देखोगे जो तुम जानते भी नहीं थे कि तुम्हारी आँखें ढूँढ सकती हैं।",
+      "tts": {
+        "text": "तुम ऐसे रंग देखोगे जो तुम जानते भी नहीं थे कि तुम्हारी आँखें ढूँढ सकती हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "जब तुम्हारा पैराशूट खुलता है, तुम एक ऐसी दुनिया के ऊपर तैर रहे हो जो थोड़ी देर के लिए आग में है।",
+      "text_markdown": "जब तुम्हारा पैराशूट खुलता है, तुम एक ऐसी दुनिया के ऊपर तैर रहे हो जो थोड़ी देर के लिए आग में है।",
+      "tts": {
+        "text": "जब तुम्हारा पैराशूट खुलता है, तुम एक ऐसी दुनिया के ऊपर तैर रहे हो जो थोड़ी देर के लिए आग में है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "हवा थमकर शून्य हो गई है।",
+      "text_markdown": "हवा थमकर शून्य हो गई है।",
+      "tts": {
+        "text": "हवा थमकर शून्य हो गई है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "लैंडिंग ज़ोन तुम्हारे नीचे एक छोटा हरा चौकोर है, जिस पर एक गर्म रोशनी जली है।",
+      "text_markdown": "लैंडिंग ज़ोन तुम्हारे नीचे एक छोटा हरा चौकोर है, जिस पर एक गर्म रोशनी जली है।",
+      "tts": {
+        "text": "लैंडिंग ज़ोन तुम्हारे नीचे एक छोटा हरा चौकोर है, जिस पर एक गर्म रोशनी जली है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम धीमा गोल चक्कर चुनते हो और खुद को सबसे आख़िर में उतरने देते हो, क्योंकि कोई भी ये हिस्सा खत्म नहीं होने देना चाहता।",
+      "text_markdown": "तुम धीमा गोल चक्कर चुनते हो और खुद को सबसे आख़िर में उतरने देते हो, क्योंकि कोई भी ये हिस्सा खत्म नहीं होने देना चाहता।",
+      "tts": {
+        "text": "तुम धीमा गोल चक्कर चुनते हो और खुद को सबसे आख़िर में उतरने देते हो, क्योंकि कोई भी ये हिस्सा खत्म नहीं होने देना चाहता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "जब तुम्हारे पैर घास छूते हैं, आसमान बैंगनी है।",
+      "text_markdown": "जब तुम्हारे पैर घास छूते हैं, आसमान बैंगनी है।",
+      "tts": {
+        "text": "जब तुम्हारे पैर घास छूते हैं, आसमान बैंगनी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "तुम्हारे दोस्त अपनी-अपनी लैंडिंग से चलकर आ रहे हैं।",
+      "text_markdown": "तुम्हारे दोस्त अपनी-अपनी लैंडिंग से चलकर आ रहे हैं।",
+      "tts": {
+        "text": "तुम्हारे दोस्त अपनी-अपनी लैंडिंग से चलकर आ रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "उनमें से एक बस तुम्हें देखता है।",
+      "text_markdown": "उनमें से एक बस तुम्हें देखता है।",
+      "tts": {
+        "text": "उनमें से एक बस तुम्हें देखता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "तुम दोनों सिर हिलाते हो।",
+      "text_markdown": "तुम दोनों सिर हिलाते हो।",
+      "tts": {
+        "text": "तुम दोनों सिर हिलाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "तुम दोनों में से कोई शब्द नहीं ढूँढ पाता।",
+      "text_markdown": "तुम दोनों में से कोई शब्द नहीं ढूँढ पाता।",
+      "tts": {
+        "text": "तुम दोनों में से कोई शब्द नहीं ढूँढ पाता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "दूसरा है एक रचना छलाँग।",
+      "text_markdown": "दूसरा है एक रचना छलाँग।",
+      "tts": {
+        "text": "दूसरा है एक रचना छलाँग।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "उड़ान में तुम आठ हो।",
+      "text_markdown": "उड़ान में तुम आठ हो।",
+      "tts": {
+        "text": "उड़ान में तुम आठ हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम बेंच पर बैठे हो, हेलमेट गोद में, और प्रमुख कूदने वाला एक छोटे सफ़ेद बोर्ड पर गोता खींचता है।",
+      "text_markdown": "तुम बेंच पर बैठे हो, हेलमेट गोद में, और प्रमुख कूदने वाला एक छोटे सफ़ेद बोर्ड पर गोता खींचता है।",
+      "tts": {
+        "text": "तुम बेंच पर बैठे हो, हेलमेट गोद में, और प्रमुख कूदने वाला एक छोटे सफ़ेद बोर्ड पर गोता खींचता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम विमान को एक झुंड में छोड़ोगे, साथ गिरोगे, एक घेरा बनाओगे।",
+      "text_markdown": "तुम विमान को एक झुंड में छोड़ोगे, साथ गिरोगे, एक घेरा बनाओगे।",
+      "tts": {
+        "text": "तुम विमान को एक झुंड में छोड़ोगे, साथ गिरोगे, एक घेरा बनाओगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम सब अपनी जगह जानते हो।",
+      "text_markdown": "तुम सब अपनी जगह जानते हो।",
+      "tts": {
+        "text": "तुम सब अपनी जगह जानते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम मुक्के टकराते हो, एक-दूसरे का साज़ोसामान जाँचते हो, घबराहट में हँसते हो।",
+      "text_markdown": "तुम मुक्के टकराते हो, एक-दूसरे का साज़ोसामान जाँचते हो, घबराहट में हँसते हो।",
+      "tts": {
+        "text": "तुम मुक्के टकराते हो, एक-दूसरे का साज़ोसामान जाँचते हो, घबराहट में हँसते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "आठ बड़े-बूढ़े, डरे हुए और खुश एक साथ, बच्चों जैसे जो रात भर साथ रुके हों।",
+      "text_markdown": "आठ बड़े-बूढ़े, डरे हुए और खुश एक साथ, बच्चों जैसे जो रात भर साथ रुके हों।",
+      "tts": {
+        "text": "आठ बड़े-बूढ़े, डरे हुए और खुश एक साथ, बच्चों जैसे जो रात भर साथ रुके हों।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "विमान सीधा हो जाता है।",
+      "text_markdown": "विमान सीधा हो जाता है।",
+      "tts": {
+        "text": "विमान सीधा हो जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "दरवाज़ा खुलता है।",
+      "text_markdown": "दरवाज़ा खुलता है।",
+      "tts": {
+        "text": "दरवाज़ा खुलता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम्हारा प्रमुख बाहर कदम रखता है, और बाकी तुम सब उसके पीछे, एक-एक धड़कन के अंतर पर।",
+      "text_markdown": "तुम्हारा प्रमुख बाहर कदम रखता है, और बाकी तुम सब उसके पीछे, एक-एक धड़कन के अंतर पर।",
+      "tts": {
+        "text": "तुम्हारा प्रमुख बाहर कदम रखता है, और बाकी तुम सब उसके पीछे, एक-एक धड़कन के अंतर पर।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "मुक्त गिरावट में, तुम लगभग बिना सोचे एक-दूसरे को ढूँढ लेते हो।",
+      "text_markdown": "मुक्त गिरावट में, तुम लगभग बिना सोचे एक-दूसरे को ढूँढ लेते हो।",
+      "tts": {
+        "text": "मुक्त गिरावट में, तुम लगभग बिना सोचे एक-दूसरे को ढूँढ लेते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "हाथ हाथों से मिलते हैं।",
+      "text_markdown": "हाथ हाथों से मिलते हैं।",
+      "tts": {
+        "text": "हाथ हाथों से मिलते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "घेरा बनता है।",
+      "text_markdown": "घेरा बनता है।",
+      "tts": {
+        "text": "घेरा बनता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "कुछ बेहतरीन सेकंडों के लिए, आठ इंसान एक-दूसरे को आसमान में थामे रहते हैं।",
+      "text_markdown": "कुछ बेहतरीन सेकंडों के लिए, आठ इंसान एक-दूसरे को आसमान में थामे रहते हैं।",
+      "tts": {
+        "text": "कुछ बेहतरीन सेकंडों के लिए, आठ इंसान एक-दूसरे को आसमान में थामे रहते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "एक ही रफ़्तार से गिरते हुए।",
+      "text_markdown": "एक ही रफ़्तार से गिरते हुए।",
+      "tts": {
+        "text": "एक ही रफ़्तार से गिरते हुए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "एक-दूसरे की आँखों में देखते हुए।",
+      "text_markdown": "एक-दूसरे की आँखों में देखते हुए।",
+      "tts": {
+        "text": "एक-दूसरे की आँखों में देखते हुए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "फिर तुम्हारा ऊंचाईमापी कहता है कि वक्त हो गया।",
+      "text_markdown": "फिर तुम्हारा ऊंचाईमापी कहता है कि वक्त हो गया।",
+      "tts": {
+        "text": "फिर तुम्हारा ऊंचाईमापी कहता है कि वक्त हो गया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "तुम छोड़ देते हो।",
+      "text_markdown": "तुम छोड़ देते हो।",
+      "tts": {
+        "text": "तुम छोड़ देते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "तुम एक-दूसरे से दूर दौड़ते हो, ताकि तुम्हारे पैराशूटों को खुलने की जगह मिल सके।",
+      "text_markdown": "तुम एक-दूसरे से दूर दौड़ते हो, ताकि तुम्हारे पैराशूटों को खुलने की जगह मिल सके।",
+      "tts": {
+        "text": "तुम एक-दूसरे से दूर दौड़ते हो, ताकि तुम्हारे पैराशूटों को खुलने की जगह मिल सके।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "ज़मीन पर, तुम गले मिलना बंद नहीं कर पाते।",
+      "text_markdown": "ज़मीन पर, तुम गले मिलना बंद नहीं कर पाते।",
+      "tts": {
+        "text": "ज़मीन पर, तुम गले मिलना बंद नहीं कर पाते।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तीसरा है एक मुश्किल साल के बाद की छलाँग।",
+      "text_markdown": "तीसरा है एक मुश्किल साल के बाद की छलाँग।",
+      "tts": {
+        "text": "तीसरा है एक मुश्किल साल के बाद की छलाँग।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "हो सकता है तुम कुछ कठिन से गुज़रे हो।",
+      "text_markdown": "हो सकता है तुम कुछ कठिन से गुज़रे हो।",
+      "tts": {
+        "text": "हो सकता है तुम कुछ कठिन से गुज़रे हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "काम पर एक बुरा दौर।",
+      "text_markdown": "काम पर एक बुरा दौर।",
+      "tts": {
+        "text": "काम पर एक बुरा दौर।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "एक रिश्ता जो खत्म हुआ।",
+      "text_markdown": "एक रिश्ता जो खत्म हुआ।",
+      "tts": {
+        "text": "एक रिश्ता जो खत्म हुआ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "एक नुक़सान जिसने आम दुनिया को पतला और दूर महसूस कराया।",
+      "text_markdown": "एक नुक़सान जिसने आम दुनिया को पतला और दूर महसूस कराया।",
+      "tts": {
+        "text": "एक नुक़सान जिसने आम दुनिया को पतला और दूर महसूस कराया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम इसलिए नहीं कूदते कि तुम कुछ महसूस करना चाहते हो।",
+      "text_markdown": "तुम इसलिए नहीं कूदते कि तुम कुछ महसूस करना चाहते हो।",
+      "tts": {
+        "text": "तुम इसलिए नहीं कूदते कि तुम कुछ महसूस करना चाहते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम इसलिए कूदते हो क्योंकि तुम कुछ भी महसूस नहीं कर पा रहे हो, और तुम जानना चाहते हो कि क्या तुम अब भी अंदर हो।",
+      "text_markdown": "तुम इसलिए कूदते हो क्योंकि तुम कुछ भी महसूस नहीं कर पा रहे हो, और तुम जानना चाहते हो कि क्या तुम अब भी अंदर हो।",
+      "tts": {
+        "text": "तुम इसलिए कूदते हो क्योंकि तुम कुछ भी महसूस नहीं कर पा रहे हो, और तुम जानना चाहते हो कि क्या तुम अब भी अंदर हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "विमान ऊपर चढ़ता है।",
+      "text_markdown": "विमान ऊपर चढ़ता है।",
+      "tts": {
+        "text": "विमान ऊपर चढ़ता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "दरवाज़ा खुलता है।",
+      "text_markdown": "दरवाज़ा खुलता है।",
+      "tts": {
+        "text": "दरवाज़ा खुलता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम बाहर कदम रखते हो।",
+      "text_markdown": "तुम बाहर कदम रखते हो।",
+      "tts": {
+        "text": "तुम बाहर कदम रखते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "और उन पहले तीन सेकंडों में, हवा के तुम्हें थामने से पहले, तुम्हारे अंदर कुछ टूटकर खुल जाता है।",
+      "text_markdown": "और उन पहले तीन सेकंडों में, हवा के तुम्हें थामने से पहले, तुम्हारे अंदर कुछ टूटकर खुल जाता है।",
+      "tts": {
+        "text": "और उन पहले तीन सेकंडों में, हवा के तुम्हें थामने से पहले, तुम्हारे अंदर कुछ टूटकर खुल जाता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुमने रोने का इरादा नहीं किया था।",
+      "text_markdown": "तुमने रोने का इरादा नहीं किया था।",
+      "tts": {
+        "text": "तुमने रोने का इरादा नहीं किया था।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम फिर भी रोते हो।",
+      "text_markdown": "तुम फिर भी रोते हो।",
+      "tts": {
+        "text": "तुम फिर भी रोते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "मुक्त गिरावट अपना काम कर देती है।",
+      "text_markdown": "मुक्त गिरावट अपना काम कर देती है।",
+      "tts": {
+        "text": "मुक्त गिरावट अपना काम कर देती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "साठ लंबे सेकंड बस हवा, साँस और गिरने के।",
+      "text_markdown": "साठ लंबे सेकंड बस हवा, साँस और गिरने के।",
+      "tts": {
+        "text": "साठ लंबे सेकंड बस हवा, साँस और गिरने के।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "और कहीं उन सेकंडों में, तुम्हारा वो हिस्सा जो सब कुछ थामे रहा है, एक मिनट के लिए सब कुछ नीचे रख देता है।",
+      "text_markdown": "और कहीं उन सेकंडों में, तुम्हारा वो हिस्सा जो सब कुछ थामे रहा है, एक मिनट के लिए सब कुछ नीचे रख देता है।",
+      "tts": {
+        "text": "और कहीं उन सेकंडों में, तुम्हारा वो हिस्सा जो सब कुछ थामे रहा है, एक मिनट के लिए सब कुछ नीचे रख देता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "पैराशूट खुलता है।",
+      "text_markdown": "पैराशूट खुलता है।",
+      "tts": {
+        "text": "पैराशूट खुलता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "दुनिया खामोश हो जाती है।",
+      "text_markdown": "दुनिया खामोश हो जाती है।",
+      "tts": {
+        "text": "दुनिया खामोश हो जाती है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "तुम हार्नेस में लटके रहते हो, और रोते हो, और हँसते हो, और फिर रोते हो।",
+      "text_markdown": "तुम हार्नेस में लटके रहते हो, और रोते हो, और हँसते हो, और फिर रोते हो।",
+      "tts": {
+        "text": "तुम हार्नेस में लटके रहते हो, और रोते हो, और हँसते हो, और फिर रोते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "तुम्हें कोई नहीं देख सकता।",
+      "text_markdown": "तुम्हें कोई नहीं देख सकता।",
+      "tts": {
+        "text": "तुम्हें कोई नहीं देख सकता।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "यही तो बात है।",
+      "text_markdown": "यही तो बात है।",
+      "tts": {
+        "text": "यही तो बात है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "जब तुम उतरते हो, तुम ठीक नहीं हुए हो।",
+      "text_markdown": "जब तुम उतरते हो, तुम ठीक नहीं हुए हो।",
+      "tts": {
+        "text": "जब तुम उतरते हो, तुम ठीक नहीं हुए हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम अब भी वो सब उठाए हुए हो जो तुम वहाँ ले गए थे।",
+      "text_markdown": "तुम अब भी वो सब उठाए हुए हो जो तुम वहाँ ले गए थे।",
+      "tts": {
+        "text": "तुम अब भी वो सब उठाए हुए हो जो तुम वहाँ ले गए थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "पर वहाँ ऊपर एक पूरे घंटे के लिए, तुम्हारे अंदर कुछ ने बिल्कुल याद किया कि ज़िंदा होना कैसा महसूस हो सकता है।",
+      "text_markdown": "पर वहाँ ऊपर एक पूरे घंटे के लिए, तुम्हारे अंदर कुछ ने बिल्कुल याद किया कि ज़िंदा होना कैसा महसूस हो सकता है।",
+      "tts": {
+        "text": "पर वहाँ ऊपर एक पूरे घंटे के लिए, तुम्हारे अंदर कुछ ने बिल्कुल याद किया कि ज़िंदा होना कैसा महसूस हो सकता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "स्काइडाइविंग ने तुम्हारा साल नहीं सुलझाया।",
+      "text_markdown": "स्काइडाइविंग ने तुम्हारा साल नहीं सुलझाया।",
+      "tts": {
+        "text": "स्काइडाइविंग ने तुम्हारा साल नहीं सुलझाया।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "उसने बस तुम्हें वो साठ सेकंड के लिए वापस दिया, इतने छोटे टुकड़ों में कि उन्हें थामा जा सके।",
+      "text_markdown": "उसने बस तुम्हें वो साठ सेकंड के लिए वापस दिया, इतने छोटे टुकड़ों में कि उन्हें थामा जा सके।",
+      "tts": {
+        "text": "उसने बस तुम्हें वो साठ सेकंड के लिए वापस दिया, इतने छोटे टुकड़ों में कि उन्हें थामा जा सके।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "क्यों यह ठहरता है",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "क्यों यह ठहरता है",
+      "text_markdown": "क्यों यह ठहरता है"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अब मैं बहुत अरसे से कूद रहा हूँ।",
+      "text_markdown": "अब मैं बहुत अरसे से कूद रहा हूँ।",
+      "tts": {
+        "text": "अब मैं बहुत अरसे से कूद रहा हूँ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "इतने अरसे से कि अब गिनती याद नहीं।",
+      "text_markdown": "इतने अरसे से कि अब गिनती याद नहीं।",
+      "tts": {
+        "text": "इतने अरसे से कि अब गिनती याद नहीं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "इतने अरसे से कि वो सवाल, तुम अब भी ये क्यों कर रहे हो, मेरे लिए कोई मायने नहीं रखता।",
+      "text_markdown": "इतने अरसे से कि वो सवाल, तुम अब भी ये क्यों कर रहे हो, मेरे लिए कोई मायने नहीं रखता।",
+      "tts": {
+        "text": "इतने अरसे से कि वो सवाल, तुम अब भी ये क्यों कर रहे हो, मेरे लिए कोई मायने नहीं रखता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "मैं तुम्हें कुछ बातें बताकर जाना चाहता हूँ।",
+      "text_markdown": "मैं तुम्हें कुछ बातें बताकर जाना चाहता हूँ।",
+      "tts": {
+        "text": "मैं तुम्हें कुछ बातें बताकर जाना चाहता हूँ।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "पहली ये है कि स्काइडाइविंग कोई दौर नहीं है।",
+      "text_markdown": "पहली ये है कि स्काइडाइविंग कोई दौर नहीं है।",
+      "tts": {
+        "text": "पहली ये है कि स्काइडाइविंग कोई दौर नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "लोग चिंता करते हैं, जब वो किसी दोस्त को इसे अपनाते देखते हैं।",
+      "text_markdown": "लोग चिंता करते हैं, जब वो किसी दोस्त को इसे अपनाते देखते हैं।",
+      "tts": {
+        "text": "लोग चिंता करते हैं, जब वो किसी दोस्त को इसे अपनाते देखते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "उन्हें लगता है ये बग़ावत है, अधेड़ उम्र की कोई बात है, किसी चीज़ से भागने का तरीका है।",
+      "text_markdown": "उन्हें लगता है ये बग़ावत है, अधेड़ उम्र की कोई बात है, किसी चीज़ से भागने का तरीका है।",
+      "tts": {
+        "text": "उन्हें लगता है ये बग़ावत है, अधेड़ उम्र की कोई बात है, किसी चीज़ से भागने का तरीका है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "ये नहीं है।",
+      "text_markdown": "ये नहीं है।",
+      "tts": {
+        "text": "ये नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "जो लोग रुकते हैं, वो भाग नहीं रहे।",
+      "text_markdown": "जो लोग रुकते हैं, वो भाग नहीं रहे।",
+      "tts": {
+        "text": "जो लोग रुकते हैं, वो भाग नहीं रहे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "उन्होंने, लगभग बिना मतलब के, आसमान के अंदर एक छोटी ज़िंदगी बना ली है।",
+      "text_markdown": "उन्होंने, लगभग बिना मतलब के, आसमान के अंदर एक छोटी ज़िंदगी बना ली है।",
+      "tts": {
+        "text": "उन्होंने, लगभग बिना मतलब के, आसमान के अंदर एक छोटी ज़िंदगी बना ली है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "वो शनिवार को पहुँचते हैं।",
+      "text_markdown": "वो शनिवार को पहुँचते हैं।",
+      "tts": {
+        "text": "वो शनिवार को पहुँचते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "वो अपने पैराशूट बाँधते हैं।",
+      "text_markdown": "वो अपने पैराशूट बाँधते हैं।",
+      "tts": {
+        "text": "वो अपने पैराशूट बाँधते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "वो अपने दोस्तों को गले लगाते हैं।",
+      "text_markdown": "वो अपने दोस्तों को गले लगाते हैं।",
+      "tts": {
+        "text": "वो अपने दोस्तों को गले लगाते हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "वो सूर्यास्त के समय घर जाते हैं, अच्छी थकान के साथ।",
+      "text_markdown": "वो सूर्यास्त के समय घर जाते हैं, अच्छी थकान के साथ।",
+      "tts": {
+        "text": "वो सूर्यास्त के समय घर जाते हैं, अच्छी थकान के साथ।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "सोमवार को वो काम पर वापस जाते हैं, और वो पहले से साफ़ तौर पर दयालु हो चुके होते हैं।",
+      "text_markdown": "सोमवार को वो काम पर वापस जाते हैं, और वो पहले से साफ़ तौर पर दयालु हो चुके होते हैं।",
+      "tts": {
+        "text": "सोमवार को वो काम पर वापस जाते हैं, और वो पहले से साफ़ तौर पर दयालु हो चुके होते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "आसमान तुम्हें बदलता है, पर धीरे-धीरे।",
+      "text_markdown": "आसमान तुम्हें बदलता है, पर धीरे-धीरे।",
+      "tts": {
+        "text": "आसमान तुम्हें बदलता है, पर धीरे-धीरे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "तुम ज़्यादा मौजूद हो जाते हो।",
+      "text_markdown": "तुम ज़्यादा मौजूद हो जाते हो।",
+      "tts": {
+        "text": "तुम ज़्यादा मौजूद हो जाते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम छोटी चीज़ों से कम डरते हो, क्योंकि तुम बड़ी चीज़ों के साथ ईमानदार होने का अभ्यास कर चुके हो।",
+      "text_markdown": "तुम छोटी चीज़ों से कम डरते हो, क्योंकि तुम बड़ी चीज़ों के साथ ईमानदार होने का अभ्यास कर चुके हो।",
+      "tts": {
+        "text": "तुम छोटी चीज़ों से कम डरते हो, क्योंकि तुम बड़ी चीज़ों के साथ ईमानदार होने का अभ्यास कर चुके हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "तुम आसानी से हँसते हो।",
+      "text_markdown": "तुम आसानी से हँसते हो।",
+      "tts": {
+        "text": "तुम आसानी से हँसते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम लोगों को ज़्यादा बार बताते हो कि तुम उनसे प्यार करते हो।",
+      "text_markdown": "तुम लोगों को ज़्यादा बार बताते हो कि तुम उनसे प्यार करते हो।",
+      "tts": {
+        "text": "तुम लोगों को ज़्यादा बार बताते हो कि तुम उनसे प्यार करते हो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "तुम बारह हज़ार फ़ीट ऊपर एक दरवाज़े पर खड़े हुए हो, और याद किया है कि कोई वादा नहीं होता।",
+      "text_markdown": "तुम बारह हज़ार फ़ीट ऊपर एक दरवाज़े पर खड़े हुए हो, और याद किया है कि कोई वादा नहीं होता।",
+      "tts": {
+        "text": "तुम बारह हज़ार फ़ीट ऊपर एक दरवाज़े पर खड़े हुए हो, और याद किया है कि कोई वादा नहीं होता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर तुम कभी किसी स्काइडाइवर के साथ रात के खाने पर खुद को पाओ, तो ये हैं जो तुम पूछ सकते हो।",
+      "text_markdown": "अगर तुम कभी किसी स्काइडाइवर के साथ रात के खाने पर खुद को पाओ, तो ये हैं जो तुम पूछ सकते हो।",
+      "tts": {
+        "text": "अगर तुम कभी किसी स्काइडाइवर के साथ रात के खाने पर खुद को पाओ, तो ये हैं जो तुम पूछ सकते हो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुम पूछ सकते हो कि वो इसमें कैसे आए।",
+      "text_markdown": "तुम पूछ सकते हो कि वो इसमें कैसे आए।",
+      "tts": {
+        "text": "तुम पूछ सकते हो कि वो इसमें कैसे आए।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "हर स्काइडाइवर अपनी पहली छलाँग को साफ़ तौर पर याद रखता है, और वो तुम्हें खुशी से बताएगा।",
+      "text_markdown": "हर स्काइडाइवर अपनी पहली छलाँग को साफ़ तौर पर याद रखता है, और वो तुम्हें खुशी से बताएगा।",
+      "tts": {
+        "text": "हर स्काइडाइवर अपनी पहली छलाँग को साफ़ तौर पर याद रखता है, और वो तुम्हें खुशी से बताएगा।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "तुम पूछ सकते हो कि उन्होंने कितनी छलाँगें लगाईं।",
+      "text_markdown": "तुम पूछ सकते हो कि उन्होंने कितनी छलाँगें लगाईं।",
+      "tts": {
+        "text": "तुम पूछ सकते हो कि उन्होंने कितनी छलाँगें लगाईं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "उन्हें संख्या पता होगी, थोड़ी कम या ज़्यादा, और वो दिखावा नहीं करेंगे कि वो उससे ज़्यादा है।",
+      "text_markdown": "उन्हें संख्या पता होगी, थोड़ी कम या ज़्यादा, और वो दिखावा नहीं करेंगे कि वो उससे ज़्यादा है।",
+      "tts": {
+        "text": "उन्हें संख्या पता होगी, थोड़ी कम या ज़्यादा, और वो दिखावा नहीं करेंगे कि वो उससे ज़्यादा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "तुम पूछ सकते हो कि उनकी पसंदीदा छलाँग कौन-सी है।",
+      "text_markdown": "तुम पूछ सकते हो कि उनकी पसंदीदा छलाँग कौन-सी है।",
+      "tts": {
+        "text": "तुम पूछ सकते हो कि उनकी पसंदीदा छलाँग कौन-सी है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "कुछ कहेंगे सूर्यास्त।",
+      "text_markdown": "कुछ कहेंगे सूर्यास्त।",
+      "tts": {
+        "text": "कुछ कहेंगे सूर्यास्त।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "कुछ कहेंगे एक बड़ी रचना।",
+      "text_markdown": "कुछ कहेंगे एक बड़ी रचना।",
+      "tts": {
+        "text": "कुछ कहेंगे एक बड़ी रचना।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "कुछ कहेंगे एक शांत शाम पर एक खामोश अकेली छलाँग।",
+      "text_markdown": "कुछ कहेंगे एक शांत शाम पर एक खामोश अकेली छलाँग।",
+      "tts": {
+        "text": "कुछ कहेंगे एक शांत शाम पर एक खामोश अकेली छलाँग।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "तुम पूछ सकते हो कि क्या वो पहली बार डरे थे।",
+      "text_markdown": "तुम पूछ सकते हो कि क्या वो पहली बार डरे थे।",
+      "tts": {
+        "text": "तुम पूछ सकते हो कि क्या वो पहली बार डरे थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बेशक डरे थे।",
+      "text_markdown": "बेशक डरे थे।",
+      "tts": {
+        "text": "बेशक डरे थे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "हर कोई होता है।",
+      "text_markdown": "हर कोई होता है।",
+      "tts": {
+        "text": "हर कोई होता है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वो शायद दरवाज़े की हवा का ज़िक्र करेंगे, गिनती का, और बाहर कदम रखने से ठीक पहले दुनिया कैसी दिखती है इसका।",
+      "text_markdown": "वो शायद दरवाज़े की हवा का ज़िक्र करेंगे, गिनती का, और बाहर कदम रखने से ठीक पहले दुनिया कैसी दिखती है इसका।",
+      "tts": {
+        "text": "वो शायद दरवाज़े की हवा का ज़िक्र करेंगे, गिनती का, और बाहर कदम रखने से ठीक पहले दुनिया कैसी दिखती है इसका।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ध्यान से सुनो।",
+      "text_markdown": "ध्यान से सुनो।",
+      "tts": {
+        "text": "ध्यान से सुनो।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "वो तुम्हें एक छोटा-सा तोहफ़ा दे रहे हैं।",
+      "text_markdown": "वो तुम्हें एक छोटा-सा तोहफ़ा दे रहे हैं।",
+      "tts": {
+        "text": "वो तुम्हें एक छोटा-सा तोहफ़ा दे रहे हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "अगर तुम किसी स्काइडाइवर का चेहरा रोशन करना चाहते हो, तो उनसे पूछो कि पैराशूट खुलने वाले पल को बयान करें।",
+      "text_markdown": "अगर तुम किसी स्काइडाइवर का चेहरा रोशन करना चाहते हो, तो उनसे पूछो कि पैराशूट खुलने वाले पल को बयान करें।",
+      "tts": {
+        "text": "अगर तुम किसी स्काइडाइवर का चेहरा रोशन करना चाहते हो, तो उनसे पूछो कि पैराशूट खुलने वाले पल को बयान करें।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "वो आधा सेकंड के लिए अपनी आँखें बंद कर लेंगे।",
+      "text_markdown": "वो आधा सेकंड के लिए अपनी आँखें बंद कर लेंगे।",
+      "tts": {
+        "text": "वो आधा सेकंड के लिए अपनी आँखें बंद कर लेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "फिर वो कोशिश करेंगे।",
+      "text_markdown": "फिर वो कोशिश करेंगे।",
+      "tts": {
+        "text": "फिर वो कोशिश करेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वो हर बार एक अलग शब्द इस्तेमाल करेंगे।",
+      "text_markdown": "वो हर बार एक अलग शब्द इस्तेमाल करेंगे।",
+      "tts": {
+        "text": "वो हर बार एक अलग शब्द इस्तेमाल करेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "शायद खामोश।",
+      "text_markdown": "शायद खामोश।",
+      "tts": {
+        "text": "शायद खामोश।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "शायद कोमल।",
+      "text_markdown": "शायद कोमल।",
+      "tts": {
+        "text": "शायद कोमल।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "जैसे जागना।",
+      "text_markdown": "जैसे जागना।",
+      "tts": {
+        "text": "जैसे जागना।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "जैसे घर लौटना।",
+      "text_markdown": "जैसे घर लौटना।",
+      "tts": {
+        "text": "जैसे घर लौटना।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "कोई भी इसे दो बार एक जैसा बयान नहीं करता।",
+      "text_markdown": "कोई भी इसे दो बार एक जैसा बयान नहीं करता।",
+      "tts": {
+        "text": "कोई भी इसे दो बार एक जैसा बयान नहीं करता।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "ये मानने से मत डरो कि तुमने कभी छलाँग नहीं लगाई।",
+      "text_markdown": "ये मानने से मत डरो कि तुमने कभी छलाँग नहीं लगाई।",
+      "tts": {
+        "text": "ये मानने से मत डरो कि तुमने कभी छलाँग नहीं लगाई।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "स्काइडाइवरों को ये सवाल बहुत पसंद है।",
+      "text_markdown": "स्काइडाइवरों को ये सवाल बहुत पसंद है।",
+      "tts": {
+        "text": "स्काइडाइवरों को ये सवाल बहुत पसंद है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "स्काइडाइवरों को ये बताना भी पसंद है कि तुम्हें कोशिश करनी चाहिए, और फिर बहुत संजीदगी से बताना कि वो तुम्हारे साथ चलेंगे।",
+      "text_markdown": "स्काइडाइवरों को ये बताना भी पसंद है कि तुम्हें कोशिश करनी चाहिए, और फिर बहुत संजीदगी से बताना कि वो तुम्हारे साथ चलेंगे।",
+      "tts": {
+        "text": "स्काइडाइवरों को ये बताना भी पसंद है कि तुम्हें कोशिश करनी चाहिए, और फिर बहुत संजीदगी से बताना कि वो तुम्हारे साथ चलेंगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "हममें से ज़्यादातर ने किसी दोस्त को उसकी पहली छलाँग पर लाया है।",
+      "text_markdown": "हममें से ज़्यादातर ने किसी दोस्त को उसकी पहली छलाँग पर लाया है।",
+      "tts": {
+        "text": "हममें से ज़्यादातर ने किसी दोस्त को उसकी पहली छलाँग पर लाया है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "ये इस खेल की सबसे बड़ी खुशियों में से एक है।",
+      "text_markdown": "ये इस खेल की सबसे बड़ी खुशियों में से एक है।",
+      "tts": {
+        "text": "ये इस खेल की सबसे बड़ी खुशियों में से एक है।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "इसके अंत में कोई बड़ा सबक नहीं है।",
+      "text_markdown": "इसके अंत में कोई बड़ा सबक नहीं है।",
+      "tts": {
+        "text": "इसके अंत में कोई बड़ा सबक नहीं है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "बस इतना।",
+      "text_markdown": "बस इतना।",
+      "tts": {
+        "text": "बस इतना।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "अभी इस वक्त दुनिया में कहीं, शांत और धैर्यवान लोगों का एक छोटा समूह एक विमान की ओर चल रहा है।",
+      "text_markdown": "अभी इस वक्त दुनिया में कहीं, शांत और धैर्यवान लोगों का एक छोटा समूह एक विमान की ओर चल रहा है।",
+      "tts": {
+        "text": "अभी इस वक्त दुनिया में कहीं, शांत और धैर्यवान लोगों का एक छोटा समूह एक विमान की ओर चल रहा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "खेत धूप से भरा है।",
+      "text_markdown": "खेत धूप से भरा है।",
+      "tts": {
+        "text": "खेत धूप से भरा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "घास गर्म है।",
+      "text_markdown": "घास गर्म है।",
+      "tts": {
+        "text": "घास गर्म है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "वो एक-दूसरे का साज़ोसामान जाँच रहे हैं।",
+      "text_markdown": "वो एक-दूसरे का साज़ोसामान जाँच रहे हैं।",
+      "tts": {
+        "text": "वो एक-दूसरे का साज़ोसामान जाँच रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "वो मुस्कुरा रहे हैं।",
+      "text_markdown": "वो मुस्कुरा रहे हैं।",
+      "tts": {
+        "text": "वो मुस्कुरा रहे हैं।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "तीस मिनट में, वो आसमान में होंगे, वो सबसे शांत काम कर रहे होंगे जो वो जानते हैं।",
+      "text_markdown": "तीस मिनट में, वो आसमान में होंगे, वो सबसे शांत काम कर रहे होंगे जो वो जानते हैं।",
+      "tts": {
+        "text": "तीस मिनट में, वो आसमान में होंगे, वो सबसे शांत काम कर रहे होंगे जो वो जानते हैं।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "शायद एक दिन तुम उनमें से एक होगे।",
+      "text_markdown": "शायद एक दिन तुम उनमें से एक होगे।",
+      "tts": {
+        "text": "शायद एक दिन तुम उनमें से एक होगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "शायद एक दिन तुम नहीं होगे।",
+      "text_markdown": "शायद एक दिन तुम नहीं होगे।",
+      "tts": {
+        "text": "शायद एक दिन तुम नहीं होगे।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "किसी भी तरह, आसमान वहाँ है।",
+      "text_markdown": "किसी भी तरह, आसमान वहाँ है।",
+      "tts": {
+        "text": "किसी भी तरह, आसमान वहाँ है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "वो हमेशा से वहाँ रहा है।",
+      "text_markdown": "वो हमेशा से वहाँ रहा है।",
+      "tts": {
+        "text": "वो हमेशा से वहाँ रहा है।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "वो धैर्य से इंतज़ार कर रहा है, अगर कभी तुम झुकने का मन करो।",
+      "text_markdown": "वो धैर्य से इंतज़ार कर रहा है, अगर कभी तुम झुकने का मन करो।",
+      "tts": {
+        "text": "वो धैर्य से इंतज़ार कर रहा है, अगर कभी तुम झुकने का मन करो।",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

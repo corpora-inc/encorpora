@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "ne",
+  "total_segments": 197,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कृत्रिम बुद्धिमत्ताको यस साप्ताहिक प्रस्तुतिमा तपाईंलाई हार्दिक स्वागत गर्दछौँ।",
+      "text_markdown": "कृत्रिम बुद्धिमत्ताको यस साप्ताहिक प्रस्तुतिमा तपाईंलाई हार्दिक स्वागत गर्दछौँ।",
+      "title": "",
+      "tts": {
+        "text": "कृत्रिम बुद्धिमत्ताको यस साप्ताहिक प्रस्तुतिमा तपाईंलाई हार्दिक स्वागत गर्दछौँ।",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मेरो नाम Vindy हो, मलाई विन्डी भन्नुहोस्।",
+      "text_markdown": "मेरो नाम Vindy हो, मलाई विन्डी भन्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "मेरो नाम विन्डी हो, मलाई विन्डी भन्नुहोस्।",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मसँग, सधैं जस्तै, Ron छ।",
+      "text_markdown": "मसँग, सधैं जस्तै, Ron छ।",
+      "title": "",
+      "tts": {
+        "text": "मसँग, सधैं जस्तै, Ron छ।",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Vindy, यहाँ आउन पाएकोमा म निकै खुसी भएँ।",
+      "text_markdown": "Vindy, यहाँ आउन पाएकोमा म निकै खुसी भएँ।",
+      "title": "",
+      "tts": {
+        "text": "विन्डी, यहाँ आउन पाएकोमा म निकै खुसी भएँ।",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आज बुधबार, जुन 3, 2026 हो।",
+      "text_markdown": "आज बुधबार, जुन 3, 2026 हो।",
+      "title": "",
+      "tts": {
+        "text": "आज बुधबार, जुन तीन, दुई हजार छब्बीस हो।",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो हप्ता मार्केटिंगका लागि शान्त थियो, तर हार्डवेयरका लागि चर्को गतिविधिको समय बन्यो।",
+      "text_markdown": "यो हप्ता मार्केटिंगका लागि शान्त थियो, तर हार्डवेयरका लागि चर्को गतिविधिको समय बन्यो।",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता मार्केटिंगका लागि शान्त थियो, तर हार्डवेयरका लागि चर्को गतिविधिको समय बन्यो।",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "शीर्षकहरूको आकार असामान्य देखिन्थ्यो।",
+      "text_markdown": "शीर्षकहरूको आकार असामान्य देखिन्थ्यो।",
+      "title": "",
+      "tts": {
+        "text": "शीर्षकहरूको आकार असामान्य देखिन्थ्यो।",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "एउटा भव्य मुख्य सम्बोधन, गोप्य रूपमा बुझाइएको कागजात, अनि बक्समा ठूलो अंक लेखिएको सानो तर निकै शक्तिशाली यन्त्र।",
+      "text_markdown": "एउटा भव्य मुख्य सम्बोधन, गोप्य रूपमा बुझाइएको कागजात, अनि बक्समा ठूलो अंक लेखिएको सानो तर निकै शक्तिशाली यन्त्र।",
+      "title": "",
+      "tts": {
+        "text": "एउटा भव्य मुख्य सम्बोधन, गोप्य रूपमा बुझाइएको कागजात, अनि बक्समा ठूलो अंक लेखिएको सानो तर निकै शक्तिशाली यन्त्र।",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब हेरौँ, open weights मा के परिवर्तन भयो र नयाँ attention architecture तथा NVIDIA को open model कसरी अग्रस्थानमा पुगे।",
+      "text_markdown": "अब हेरौँ, open weights मा के परिवर्तन भयो र नयाँ attention architecture तथा NVIDIA को open model कसरी अग्रस्थानमा पुगे।",
+      "title": "",
+      "tts": {
+        "text": "अब हेरौँ, ओपन वेट्समा के परिवर्तन भयो र नयाँ अटेन्सन आर्किटेक्चर तथा एनभिडियाको ओपन मोडल कसरी अग्रस्थानमा पुगे।",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Leaderboards कहाँ पुगे, र तिनीहरूको मुनि रहेको ठूलो कथा हामी कसरी स्कोरहरूलाई विश्वास गर्छौं।",
+      "text_markdown": "Leaderboards कहाँ पुगे, र तिनीहरूको मुनि रहेको ठूलो कथा हामी कसरी स्कोरहरूलाई विश्वास गर्छौं।",
+      "title": "",
+      "tts": {
+        "text": "Leaderboards कहाँ पुगे, र तिनीहरूको मुनि रहेको ठूलो कथा हामी कसरी स्कोरहरूलाई विश्वास गर्छौं।",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो सप्ताहान्तमा तपाईंले काम गर्न सक्ने हेडलाइनहरूको द्रुत सारांश।",
+      "text_markdown": "यो सप्ताहान्तमा तपाईंले काम गर्न सक्ने हेडलाइनहरूको द्रुत सारांश।",
+      "title": "",
+      "tts": {
+        "text": "यो सप्ताहान्तमा तपाईंले काम गर्न सक्ने हेडलाइनहरूको द्रुत सारांश।",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "हाम्रो मुख्य खबर, do-it-yourself rig ठूलो भयो — frontier inference अब तपाईंको डेस्कमा एक कुरा भयो।",
+      "text_markdown": "हाम्रो मुख्य खबर, do-it-yourself rig ठूलो भयो — frontier inference अब तपाईंको डेस्कमा एक कुरा भयो।",
+      "title": "",
+      "tts": {
+        "text": "हाम्रो मुख्य खबर, do it yourself rig ठूलो भयो — frontier inference अब तपाईंको डेस्कमा एक कुरा भयो।",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र हप्ताको अवधारणा speculative decoding हो — सानो कार्डमा ठूलो model लाई छिटो महसुस गराउने चाल।",
+      "text_markdown": "र हप्ताको अवधारणा speculative decoding हो — सानो कार्डमा ठूलो model लाई छिटो महसुस गराउने चाल।",
+      "title": "",
+      "tts": {
+        "text": "र हप्ताको अवधारणा speculative decoding हो — सानो कार्डमा ठूलो model लाई छिटो महसुस गराउने चाल।",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "रोन, सुरुमा खुला भारहरूको संसारबारे कुरा गरौं।",
+      "text_markdown": "रोन, सुरुमा खुला भारहरूको संसारबारे कुरा गरौं।",
+      "title": "",
+      "tts": {
+        "text": "रोन, सुरुमा खुला भारहरूको संसारबारे कुरा गरौँ।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो हप्ता कहाँसम्म आइपुगिसक्यो?",
+      "text_markdown": "यो हप्ता कहाँसम्म आइपुगिसक्यो?",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता कहाँसम्म आइपुगिसक्यो?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हप्ता open कथा नयाँ आकारहरूको बारेमा थियो, नयाँ साइजहरूको होइन।",
+      "text_markdown": "यो हप्ता open कथा नयाँ आकारहरूको बारेमा थियो, नयाँ साइजहरूको होइन।",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता open कथा नयाँ आकारहरूको बारेमा थियो, नयाँ साइजहरूको होइन।",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "जुन 1 मै एकै दिन दुईवटा वास्तुगत रूपमा रोचक मोडेल सार्वजनिक भएका थिए।",
+      "text_markdown": "जुन 1 मै एकै दिन दुईवटा वास्तुगत रूपमा रोचक मोडेल सार्वजनिक भएका थिए।",
+      "title": "",
+      "tts": {
+        "text": "जुन एक मै एकै दिन दुईवटा वास्तुगत रूपमा रोचक मोडेल सार्वजनिक भएका रहेछन्।",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "हामीलाई पहिलोको बारेमा बताउनुहोस्।",
+      "text_markdown": "हामीलाई पहिलोको बारेमा बताउनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "हामीलाई पहिलोको बारेमा बताउनुहोस्।",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax ले M3 बजारमा ल्यायो।",
+      "text_markdown": "MiniMax ले M3 बजारमा ल्यायो।",
+      "title": "",
+      "tts": {
+        "text": "मिनिम्याक्स ले एम तीन बजारमा ल्यायो।",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले नयाँ attention design प्रयोग गर्छ, जसलाई तिनीहरूले MSA भन्दै छन्, र MiniMax Sparse Attention नै यसको पूरा नाम हो।",
+      "text_markdown": "यसले नयाँ attention design प्रयोग गर्छ, जसलाई तिनीहरूले MSA भन्दै छन्, र MiniMax Sparse Attention नै यसको पूरा नाम हो।",
+      "title": "",
+      "tts": {
+        "text": "यसले नयाँ अटेन्सन डिजाइन प्रयोग गर्छ, जसलाई तिनीहरूले एम एस ए भन्दै छन्, र मिनिम्याक्स स्पार्स अटेन्सन नै यसको पूरा नाम हो।",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pitch एक मिलियन-token context हो, जुन त्यो लम्बाइमा तिनीहरूको अघिल्लो model भन्दा लगभग नौ गुणा छिटो prefill र पन्ध्र गुणा छिटो decode गर्न सक्षम छ।",
+      "text_markdown": "Pitch एक मिलियन-token context हो, जुन त्यो लम्बाइमा तिनीहरूको अघिल्लो model भन्दा लगभग नौ गुणा छिटो prefill र पन्ध्र गुणा छिटो decode गर्न सक्षम छ।",
+      "title": "",
+      "tts": {
+        "text": "Pitch एक लाख token context हो, जुन त्यो लम्बाइमा तिनीहरूको अघिल्लो model भन्दा लगभग नौ गुणा छिटो prefill र पन्ध्र गुणा छिटो decode गर्न सक्षम छ।",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "विरल ध्यानले वास्तवमा के गर्छ भन्ने सरल व्याख्या।",
+      "text_markdown": "विरल ध्यानले वास्तवमा के गर्छ भन्ने सरल व्याख्या।",
+      "title": "",
+      "tts": {
+        "text": "विरल ध्यानले वास्तवमा के गर्छ भन्ने सरल व्याख्या।",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "नियमित attention ले हरेक token लाई अर्को हरेक token सँग तुलना गर्छ, त्यसैले लामो context प्रशोधन गर्दा निकै महंगो लागत पर्छ।",
+      "text_markdown": "नियमित attention ले हरेक token लाई अर्को हरेक token सँग तुलना गर्छ, त्यसैले लामो context प्रशोधन गर्दा निकै महंगो लागत पर्छ।",
+      "title": "",
+      "tts": {
+        "text": "नियमित attention ले हरेक token लाई अर्को हरेक token सँग तुलना गर्छ, त्यसैले लामो context प्रशोधन गर्दा निकै महंगो लागत पर्छ।",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Sparse attention ले context लाई blocks मा pre-filter गर्छ र वर्तमान प्रश्नसँग सान्दर्भिक देखिने blocks को लागि मात्र पूर्ण तुलना गर्छ।",
+      "text_markdown": "Sparse attention ले context लाई blocks मा pre-filter गर्छ र वर्तमान प्रश्नसँग सान्दर्भिक देखिने blocks को लागि मात्र पूर्ण तुलना गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "Sparse attention ले context लाई blocks मा pre filter गर्छ र वर्तमान प्रश्नसँग सान्दर्भिक देखिने blocks को लागि मात्र पूर्ण तुलना गर्छ।",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईंले compute को एक अंशमा धेरैजसो गुणस्तर पाउनुहुन्छ।",
+      "text_markdown": "तपाईंले compute को एक अंशमा धेरैजसो गुणस्तर पाउनुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले compute को एक अंशमा धेरैजसो गुणस्तर पाउनुहुन्छ।",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र benchmark सम्बन्धी दाबी चाहिँ कस्तो छ?",
+      "text_markdown": "र benchmark सम्बन्धी दाबी चाहिँ कस्तो छ?",
+      "title": "",
+      "tts": {
+        "text": "र बेन्चमार्क सम्बन्धी दाबी चाहिँ कस्तो छ?",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax ले SWE-bench Pro मा 59 प्रतिशत भन्छ, जसले यसलाई त्यो एक बोर्डमा GPT-5.5 र Gemini 3.5 Pro भन्दा अगाडि राख्छ।",
+      "text_markdown": "MiniMax ले SWE-bench Pro मा 59 प्रतिशत भन्छ, जसले यसलाई त्यो एक बोर्डमा GPT-5.5 र Gemini 3.5 Pro भन्दा अगाडि राख्छ।",
+      "title": "",
+      "tts": {
+        "text": "MiniMax ले SWE bench Pro मा उनान्साठी प्रतिशत भन्छ, जसले यसलाई त्यो एक बोर्डमा GPT पाँच दशमलव पाँच र Gemini तीन दशमलव पाँच Pro भन्दा अगाडि राख्छ।",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "म दाबीहरू भन्छु — यो vendor को आफ्नै scorecard हो, स्वतन्त्र run होइन।",
+      "text_markdown": "म दाबीहरू भन्छु — यो vendor को आफ्नै scorecard हो, स्वतन्त्र run होइन।",
+      "title": "",
+      "tts": {
+        "text": "म दाबीहरू भन्छु — यो vendor को आफ्नै scorecard हो, स्वतन्त्र run होइन।",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मोडलका भारहरू पनि खुला रूपमा उपलब्ध गराइएका हुन् कि होइनन्?",
+      "text_markdown": "मोडलका भारहरू पनि खुला रूपमा उपलब्ध गराइएका हुन् कि होइनन्?",
+      "title": "",
+      "tts": {
+        "text": "मोडलका भारहरू पनि खुला रूपमा उपलब्ध गराइएका हुन् कि होइनन्?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हो, M3 लाई open-weight को रूपमा राखिएको छ; API पहिलो दिनदेखि live छ र weights Hugging Face मा छिट्टै आउँदैछ।",
+      "text_markdown": "हो, M3 लाई open-weight को रूपमा राखिएको छ; API पहिलो दिनदेखि live छ र weights Hugging Face मा छिट्टै आउँदैछ।",
+      "title": "",
+      "tts": {
+        "text": "हो, एम तीन लाई open weight को रूपमा राखिएको छ; API पहिलो दिनदेखि live छ र weights Hugging Face मा छिट्टै आउँदैछ।",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Tinkerer को लागि, रोचक दांव score भन्दा architecture बढी छ।",
+      "text_markdown": "Tinkerer को लागि, रोचक दांव score भन्दा architecture बढी छ।",
+      "title": "",
+      "tts": {
+        "text": "Tinkerer को लागि, रोचक दांव score भन्दा architecture बढी छ।",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यदि MSA ठिक रह्यो भने, केही महिनामै अरू हरेक open lab बाट यसको आकारको नक्कल सुरु हुनेछ।",
+      "text_markdown": "यदि MSA ठिक रह्यो भने, केही महिनामै अरू हरेक open lab बाट यसको आकारको नक्कल सुरु हुनेछ।",
+      "title": "",
+      "tts": {
+        "text": "यदि एम एस ए ठिक रह्यो भने, केही महिनामै अरू हरेक ओपन ल्याबबाट यसको आकारको नक्कल सुरु हुनेछ।",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र दोस्रो मोडलचाहिँ कुन हो, बताऊ न?",
+      "text_markdown": "र दोस्रो मोडलचाहिँ कुन हो, बताऊ न?",
+      "title": "",
+      "tts": {
+        "text": "र दोस्रो मोडलचाहिँ कुन हो, बताऊ न?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA ले चुपचाप Nemotron 3 Ultra लाई खुला स्रोतका रूपमा सार्वजनिक गर्‍यो।",
+      "text_markdown": "NVIDIA ले चुपचाप Nemotron 3 Ultra लाई खुला स्रोतका रूपमा सार्वजनिक गर्‍यो।",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA ले चुपचाप Nemotron तीन Ultra लाई खुला स्रोतका रूपमा सार्वजनिक गर्‍यो।",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो 550 अर्ब parameter mixture of experts हो, जसमा प्रति token लगभग 55 अर्ब parameter सक्रिय हुन्छन्।",
+      "text_markdown": "यो 550 अर्ब parameter mixture of experts हो, जसमा प्रति token लगभग 55 अर्ब parameter सक्रिय हुन्छन्।",
+      "title": "",
+      "tts": {
+        "text": "यो पाँच सय पचास अर्ब parameter mixture of experts हो, जसमा प्रति token लगभग पचपन्न अर्ब parameter सक्रिय हुन्छन्।",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो pure Transformer होइन, बरु hybrid Mamba-Transformer backbone भएको मोडल हो।",
+      "text_markdown": "यो pure Transformer होइन, बरु hybrid Mamba-Transformer backbone भएको मोडल हो।",
+      "title": "",
+      "tts": {
+        "text": "यो प्योर ट्रान्सफर्मर होइन, बरु हाइब्रिड माम्बा ट्रान्सफर्मर ब्याकबोन भएको मोडल हो।",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "सरल भाषामा माम्बाको व्याख्या।",
+      "text_markdown": "सरल भाषामा माम्बाको व्याख्या।",
+      "title": "",
+      "tts": {
+        "text": "सरल भाषामा माम्बाको व्याख्या।",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mamba layers ले sub-quadratic scaling सहित लामो sequences handle गर्छ, जुन context बढ्दै जाँदा तिनीहरू प्रति token सस्तो हुन्छन् भन्ने फ्यान्सी तरिका हो।",
+      "text_markdown": "Mamba layers ले sub-quadratic scaling सहित लामो sequences handle गर्छ, जुन context बढ्दै जाँदा तिनीहरू प्रति token सस्तो हुन्छन् भन्ने फ्यान्सी तरिका हो।",
+      "title": "",
+      "tts": {
+        "text": "Mamba layers ले sub quadratic scaling सहित लामो sequences handle गर्छ, जुन context बढ्दै जाँदा तिनीहरू प्रति token सस्तो हुन्छन् भन्ने फ्यान्सी तरिका हो।",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA ले long-document question answering जस्ता कुराहरूमा precise recall जोगाउन आफ्नो stack मा केही attention layers समावेश गरेको थियो।",
+      "text_markdown": "NVIDIA ले long-document question answering जस्ता कुराहरूमा precise recall जोगाउन आफ्नो stack मा केही attention layers समावेश गरेको थियो।",
+      "title": "",
+      "tts": {
+        "text": "एनभिडियाले लङ डकुमेन्ट क्वेस्चन आन्सरिङ जस्ता कुराहरूमा प्रिसाइज रिकोल जोगाउन आफ्नो स्ट्याकमा केही अटेन्सन लेयर्स समावेश गरेको थियो।",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो एक वर्षदेखि अनुसन्धानमा चुपचाप जित्दै आएको हाइब्रिडको प्रकार हो।",
+      "text_markdown": "यो एक वर्षदेखि अनुसन्धानमा चुपचाप जित्दै आएको हाइब्रिडको प्रकार हो।",
+      "title": "",
+      "tts": {
+        "text": "यो एक वर्षदेखि अनुसन्धानमा चुपचाप जित्दै आएको हाइब्रिडको प्रकार हो।",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "इजाजतपत्रको बारेमा के छ?",
+      "text_markdown": "इजाजतपत्रको बारेमा के छ?",
+      "title": "",
+      "tts": {
+        "text": "इजाजतपत्रको बारेमा के छ?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA को आफ्नै Open Model License ले व्यावसायिक प्रयोग गर्न अनुमति दिन्छ।",
+      "text_markdown": "NVIDIA को आफ्नै Open Model License ले व्यावसायिक प्रयोग गर्न अनुमति दिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "एनभिडियाको आफ्नै ओपन मोडल लाइसेन्सले व्यावसायिक प्रयोग गर्न अनुमति दिन्छ।",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "weights, post-trained checkpoints, NVFP4 quantization, र training recipes सहित सबै कुरा उपलब्ध गराइएको थियो एउटै प्याकेजभित्र।",
+      "text_markdown": "weights, post-trained checkpoints, NVFP4 quantization, र training recipes सहित सबै कुरा उपलब्ध गराइएको थियो एउटै प्याकेजभित्र।",
+      "title": "",
+      "tts": {
+        "text": "वेट्स, पोस्ट ट्रेन गरिएका चेकपोइन्ट्स, एन भी एफ पी चार क्वान्टाइजेसन, र ट्रेनिङ रेसिपीज सहित सबै कुरा उपलब्ध गराइएको थियो एउटै प्याकेजभित्र।",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो धेरैजसो खुला रिलिजहरूभन्दा बढी उदार प्याकेज हो।",
+      "text_markdown": "त्यो धेरैजसो खुला रिलिजहरूभन्दा बढी उदार प्याकेज हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो धेरैजसो खुला रिलिजहरूभन्दा बढी उदार प्याकेज हो।",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र स्कोरबोर्डमा स्थान निर्धारण?",
+      "text_markdown": "र स्कोरबोर्डमा स्थान निर्धारण?",
+      "title": "",
+      "tts": {
+        "text": "र स्कोरबोर्डमा स्थान निर्धारण?",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Artificial Analysis Intelligence Index मा, Nemotron 3 Ultra ले 48 अंक हासिल गरेको देखिन्छ।",
+      "text_markdown": "Artificial Analysis Intelligence Index मा, Nemotron 3 Ultra ले 48 अंक हासिल गरेको देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "आर्टिफिसियल एनालिसिस इन्टेलिजेन्स इन्डेक्समा, नेमोट्रोन तीन अल्ट्राले अठचालिस अंक हासिल गरेको देखिन्छ।",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले यसलाई तिनीहरूले ट्र्याक गर्ने 89 मोडेलहरू मध्ये नवौं स्थानमा राख्छ, र अन्य सबै US खुला मोडेलहरूभन्दा अगाडि।",
+      "text_markdown": "यसले यसलाई तिनीहरूले ट्र्याक गर्ने 89 मोडेलहरू मध्ये नवौं स्थानमा राख्छ, र अन्य सबै US खुला मोडेलहरूभन्दा अगाडि।",
+      "title": "",
+      "tts": {
+        "text": "यसले यसलाई तिनीहरूले ट्र्याक गर्ने उनान्नब्बै मोडेलहरू मध्ये नवौं स्थानमा राख्छ, र अन्य सबै यु एस खुला मोडेलहरूभन्दा अगाडि।",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो Moonshot को Kimi K2.6 भन्दा पछि छ, जुन 54 मा छ।",
+      "text_markdown": "यो Moonshot को Kimi K2.6 भन्दा पछि छ, जुन 54 मा छ।",
+      "title": "",
+      "tts": {
+        "text": "यो Moonshot को Kimi K दुई दशमलव छ भन्दा पछि छ, जुन चौपन्न मा छ।",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले त्यो सबै भएपछि पनि, चीनले खुलामा अझै नेतृत्व गर्छ।",
+      "text_markdown": "त्यसैले त्यो सबै भएपछि पनि, चीनले खुलामा अझै नेतृत्व गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले त्यो सबै भएपछि पनि, चीनले खुलामा अझै नेतृत्व गर्छ।",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो एक composite मा, हो, 6 अंकले।",
+      "text_markdown": "त्यो एक composite मा, हो, 6 अंकले।",
+      "title": "",
+      "tts": {
+        "text": "त्यो एक composite मा, हो, छ अंकले।",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो ठूलो कथामुनिको सानो कथा हो।",
+      "text_markdown": "त्यो ठूलो कथामुनिको सानो कथा हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो ठूलो कथामुनिको सानो कथा हो।",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "sibling-wise केही कुरा छ?",
+      "text_markdown": "sibling-wise केही कुरा छ?",
+      "title": "",
+      "tts": {
+        "text": "sibling wise केही कुरा छ?",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हो, NVIDIA ले Nemotron 3 Nano Omni पनि सार्वजनिक गर्‍यो।",
+      "text_markdown": "हो, NVIDIA ले Nemotron 3 Nano Omni पनि सार्वजनिक गर्‍यो।",
+      "title": "",
+      "tts": {
+        "text": "हो, NVIDIA ले Nemotron तीन Nano Omni पनि सार्वजनिक गर्‍यो।",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो एक unified vision, audio, र language मोडेल हो, peer खुला omni मोडेलहरूभन्दा लगभग 9 गुणा बढी कुशल भएको दाबी छ।",
+      "text_markdown": "त्यो एक unified vision, audio, र language मोडेल हो, peer खुला omni मोडेलहरूभन्दा लगभग 9 गुणा बढी कुशल भएको दाबी छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो एक unified vision, audio, र language मोडेल हो, peer खुला omni मोडेलहरूभन्दा लगभग नौ गुणा बढी कुशल भएको दाबी छ।",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो on-device agents का लागि लक्षित छ, विशेष गरी फोन, ल्यापटप र सानो workstation।",
+      "text_markdown": "यो on-device agents का लागि लक्षित छ, विशेष गरी फोन, ल्यापटप र सानो workstation।",
+      "title": "",
+      "tts": {
+        "text": "यो अन डिभाइस एजेन्ट्सका लागि लक्षित छ, विशेष गरी फोन, ल्यापटप र सानो वर्कस्टेशन।",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "खुला पक्षबाट अरू के छ?",
+      "text_markdown": "खुला पक्षबाट अरू के छ?",
+      "title": "",
+      "tts": {
+        "text": "खुला पक्षबाट अरू के छ?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Microsoft ले 28 मेमा Copilot Studio मार्फत Mistral Medium 3.5 उपलब्ध गरायो।",
+      "text_markdown": "Microsoft ले 28 मेमा Copilot Studio मार्फत Mistral Medium 3.5 उपलब्ध गरायो।",
+      "title": "",
+      "tts": {
+        "text": "माइक्रोसफ्टले अठ्ठाइस मेमा कोपाइलट स्टुडियोमार्फत मिस्ट्रल मिडियम तीन दशमलव पाँच उपलब्ध गरायो।",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो 128 billion parameter भएको dense मोडेल हो र यसले 256 हजार token सम्मको context सहज रूपमा व्यवस्थापन गर्न सक्छ।",
+      "text_markdown": "यो 128 billion parameter भएको dense मोडेल हो र यसले 256 हजार token सम्मको context सहज रूपमा व्यवस्थापन गर्न सक्छ।",
+      "title": "",
+      "tts": {
+        "text": "यो एक सय अठ्ठाइस billion parameter भएको dense मोडेल हो र यसले दुई सय छप्पन्न हजार token सम्मको context सहज रूपमा व्यवस्थापन गर्न सक्छ।",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो स्थान किन यति रोचक छ?",
+      "text_markdown": "त्यो स्थान किन यति रोचक छ?",
+      "title": "",
+      "tts": {
+        "text": "त्यो स्थान किन यति रोचक छ?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने Microsoft ले अब आफ्नै प्लेटफर्ममार्फत EU डाटा residency सहितको एक non-OpenAI यूरोपीय मोडेल वितरण गरिरहेको छ।",
+      "text_markdown": "किनभने Microsoft ले अब आफ्नै प्लेटफर्ममार्फत EU डाटा residency सहितको एक non-OpenAI यूरोपीय मोडेल वितरण गरिरहेको छ।",
+      "title": "",
+      "tts": {
+        "text": "किनभने Microsoft ले अब आफ्नै प्लेटफर्ममार्फत ई यु डाटा residency सहितको एक non OpenAI यूरोपीय मोडेल वितरण गरिरहेको छ।",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "दुई वर्ष पहिले त्यो वाक्य अकल्पनीय हुने थियो।",
+      "text_markdown": "दुई वर्ष पहिले त्यो वाक्य अकल्पनीय हुने थियो।",
+      "title": "",
+      "tts": {
+        "text": "दुई वर्ष पहिले त्यो वाक्य अकल्पनीय हुने थियो।",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र, Alibaba को अवस्थाबारे चाहिँ के भन्न सकिन्छ?",
+      "text_markdown": "र, Alibaba को अवस्थाबारे चाहिँ के भन्न सकिन्छ?",
+      "title": "",
+      "tts": {
+        "text": "र, अलिबाबाको अवस्थाबारे चाहिँ के भन्न सकिन्छ?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Qwen 3.7 Plus जुन 2 मा आयो, तर यो Bailian प्लेटफर्मको API मार्फत मात्र उपलब्ध छ।",
+      "text_markdown": "Qwen 3.7 Plus जुन 2 मा आयो, तर यो Bailian प्लेटफर्मको API मार्फत मात्र उपलब्ध छ।",
+      "title": "",
+      "tts": {
+        "text": "Qwen तीन दशमलव सात Plus जुन दुईमा आयो, तर यो Bailian प्लेटफर्मको ए पी आई मार्फत मात्र उपलब्ध छ।",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "खुला Qwen line अझै 3.6 मा रोकिन्छ।",
+      "text_markdown": "खुला Qwen line अझै 3.6 मा रोकिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "खुला Qwen line अझै तीन दशमलव छ मा रोकिन्छ।",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले गत हप्ता हामीले झण्डा उठाएको विभाजनलाई पुष्टि गर्छ — बन्द flagship, खुला mid-tier।",
+      "text_markdown": "यसले गत हप्ता हामीले झण्डा उठाएको विभाजनलाई पुष्टि गर्छ — बन्द flagship, खुला mid-tier।",
+      "title": "",
+      "tts": {
+        "text": "यसले गत हप्ता हामीले झण्डा उठाएको विभाजनलाई पुष्टि गर्छ — बन्द flagship, खुला mid tier।",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral ले एक वर्षदेखि चलाएको उही playbook।",
+      "text_markdown": "Mistral ले एक वर्षदेखि चलाएको उही playbook।",
+      "title": "",
+      "tts": {
+        "text": "Mistral ले एक वर्षदेखि चलाएको उही playbook।",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "हामी अगाडि बढ्नुअघि दुईवटा छिटो सन्दर्भ लाइन?",
+      "text_markdown": "हामी अगाडि बढ्नुअघि दुईवटा छिटो सन्दर्भ लाइन?",
+      "title": "",
+      "tts": {
+        "text": "हामी अगाडि बढ्नुअघि दुईवटा छिटो सन्दर्भ लाइन?",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ठिक छ।",
+      "text_markdown": "ठिक छ।",
+      "title": "",
+      "tts": {
+        "text": "ठिक छ।",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "चिनियाँ खुला मोडेलहरूले अझै OpenRouter token volume को नेतृत्व गर्छन् — गत हप्ता जस्तै beat, कुनै परिवर्तन छैन।",
+      "text_markdown": "चिनियाँ खुला मोडेलहरूले अझै OpenRouter token volume को नेतृत्व गर्छन् — गत हप्ता जस्तै beat, कुनै परिवर्तन छैन।",
+      "title": "",
+      "tts": {
+        "text": "चिनियाँ खुला मोडेलहरूले अझै OpenRouter token volume को नेतृत्व गर्छन् — गत हप्ता जस्तै beat, कुनै परिवर्तन छैन।",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र DeepSeek V4, 28 मेमा Microsoft को Foundry प्लेटफर्ममा लाइभ भयो, जसको मतलब यसलाई कल गर्न थप ठाउँहरू उपलब्ध भए।",
+      "text_markdown": "र DeepSeek V4, 28 मेमा Microsoft को Foundry प्लेटफर्ममा लाइभ भयो, जसको मतलब यसलाई कल गर्न थप ठाउँहरू उपलब्ध भए।",
+      "title": "",
+      "tts": {
+        "text": "र डीपसिक भी चार, अठ्ठाइस मेमा माइक्रोसफ्टको फाउन्ड्री प्लेटफर्ममा लाइभ भयो, जसको मतलब यसलाई कल गर्न थप ठाउँहरू उपलब्ध भए।",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ठीक छ, अब अंकतालिका खोलौं।",
+      "text_markdown": "ठीक छ, अब अंकतालिका खोलौं।",
+      "title": "",
+      "tts": {
+        "text": "ठीक छ, अब अंकतालिका खोलौं।",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो हप्ता सबैभन्दा ठूलो हलचल कुन कुराले ल्यायो?",
+      "text_markdown": "यो हप्ता सबैभन्दा ठूलो हलचल कुन कुराले ल्यायो?",
+      "title": "",
+      "tts": {
+        "text": "यो हप्ता सबैभन्दा ठूलो हलचल कुन कुराले ल्यायो?",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "थियो, र यो बन्द छ — Claude Opus 4.8, जुन Anthropic ले मे 28 मा पठायो।",
+      "text_markdown": "थियो, र यो बन्द छ — Claude Opus 4.8, जुन Anthropic ले मे 28 मा पठायो।",
+      "title": "",
+      "tts": {
+        "text": "थियो, र यो बन्द छ — Claude Opus चार दशमलव आठ, जुन Anthropic ले मे अठ्ठाइस मा पठायो।",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसले SWE-bench Verified मा 88.6 प्रतिशत र SWE-bench Pro मा 69.2 प्रतिशतको नतिजा हासिल गरेको छ।",
+      "text_markdown": "यसले SWE-bench Verified मा 88.6 प्रतिशत र SWE-bench Pro मा 69.2 प्रतिशतको नतिजा हासिल गरेको छ।",
+      "title": "",
+      "tts": {
+        "text": "यसले एस डब्ल्यू ई बेन्च भेरिफाइडमा अठासी दशमलव छ प्रतिशत र एस डब्ल्यू ई बेन्च प्रोमा उनान्सत्तरी दशमलव दुई प्रतिशतको नतिजा हासिल गरेको छ।",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र यसले अब composite score मा Artificial Analysis Intelligence Index को नेतृत्व गर्छ।",
+      "text_markdown": "र यसले अब composite score मा Artificial Analysis Intelligence Index को नेतृत्व गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "र यसले अब composite score मा Artificial Analysis Intelligence Index को नेतृत्व गर्छ।",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "पहिलो पटक Anthropic ले त्यसको नेतृत्व गरेको छ।",
+      "text_markdown": "पहिलो पटक Anthropic ले त्यसको नेतृत्व गरेको छ।",
+      "title": "",
+      "tts": {
+        "text": "पहिलो पटक Anthropic ले त्यसको नेतृत्व गरेको छ।",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो कुरा बिल्कुल सही साबित हुन्छ।",
+      "text_markdown": "त्यो कुरा बिल्कुल सही साबित हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो कुरा बिल्कुल सही साबित हुन्छ।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GPT-5.5 एक अंकले पछि छ, र Gemini 3.5 Pro त्यसको केही अंक पछाडि रहेको देखिन्छ।",
+      "text_markdown": "GPT-5.5 एक अंकले पछि छ, र Gemini 3.5 Pro त्यसको केही अंक पछाडि रहेको देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "जीपीटी पाँच दशमलव पाँच एक अंकले पछि छ, र जेमिनाइ तीन दशमलव पाँच प्रो त्यसको केही अंक पछाडि रहेको देखिन्छ।",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "बन्द pack को शीर्षमा धेरै कडा छ।",
+      "text_markdown": "बन्द pack को शीर्षमा धेरै कडा छ।",
+      "title": "",
+      "tts": {
+        "text": "बन्द pack को शीर्षमा धेरै कडा छ।",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तर यो हप्ताको वास्तविक eval कथा अरू कुरा थियो।",
+      "text_markdown": "तर यो हप्ताको वास्तविक eval कथा अरू कुरा थियो।",
+      "title": "",
+      "tts": {
+        "text": "तर यो हप्ताको वास्तविक eval कथा अरू कुरा थियो।",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हो, वास्तविक कथा भनेको निष्ठा हो।",
+      "text_markdown": "हो, वास्तविक कथा भनेको निष्ठा हो।",
+      "title": "",
+      "tts": {
+        "text": "हो, वास्तविक कथा भनेको निष्ठा हो।",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI ले SWE-bench Verified मा प्रतिवेदन दिन प्रभावकारी रूपमा बन्द गरेको छ।",
+      "text_markdown": "OpenAI ले SWE-bench Verified मा प्रतिवेदन दिन प्रभावकारी रूपमा बन्द गरेको छ।",
+      "title": "",
+      "tts": {
+        "text": "ओपन एआई ले एस डब्ल्यू ई बेन्च भेरिफाइडमा प्रतिवेदन दिन प्रभावकारी रूपमा बन्द गरेको छ।",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "contamination audit ले कठिन कार्यहरूको करिब ५९ प्रतिशतमा त्रुटिपूर्ण unit tests छन् भनेर फेला पार्यो, र models ले training data बाट सही patches शब्दशः सम्झना गर्न सक्छन्।",
+      "text_markdown": "contamination audit ले कठिन कार्यहरूको करिब ५९ प्रतिशतमा त्रुटिपूर्ण unit tests छन् भनेर फेला पार्यो, र models ले training data बाट सही patches शब्दशः सम्झना गर्न सक्छन्।",
+      "title": "",
+      "tts": {
+        "text": "contamination audit ले कठिन कार्यहरूको करिब उनान्साठी प्रतिशतमा त्रुटिपूर्ण unit tests छन् भनेर फेला पार्यो, र models ले training data बाट सही patches शब्दशः सम्झना गर्न सक्छन्।",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले उच्च स्कोरले स्मृति मापिरहेको थियो।",
+      "text_markdown": "त्यसैले उच्च स्कोरले स्मृति मापिरहेको थियो।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले उच्च स्कोरले स्मृति मापिरहेको थियो।",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "प्रायः, कुरा यही नै हो।",
+      "text_markdown": "प्रायः, कुरा यही नै हो।",
+      "title": "",
+      "tts": {
+        "text": "प्रायः, कुरा यही नै हो।",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pro भनेको नयाँ कार्यहरू र कठिन scaffolding भएको संस्करण हो, र यसको नयाँ संकेत पनि यही विशेषता हो।",
+      "text_markdown": "Pro भनेको नयाँ कार्यहरू र कठिन scaffolding भएको संस्करण हो, र यसको नयाँ संकेत पनि यही विशेषता हो।",
+      "title": "",
+      "tts": {
+        "text": "प्रो भनेको नयाँ कार्यहरू र कठिन स्क्याफोल्डिङ भएको संस्करण हो, र यसको नयाँ सङ्केत पनि यही विशेषता हो।",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो गत हप्ता हामीले hedge गरेको contamination चिन्ताको संस्थागत पुष्टि हो।",
+      "text_markdown": "यो गत हप्ता हामीले hedge गरेको contamination चिन्ताको संस्थागत पुष्टि हो।",
+      "title": "",
+      "tts": {
+        "text": "यो गत हप्ता हामीले hedge गरेको contamination चिन्ताको संस्थागत पुष्टि हो।",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "के त्यो methodology paper मा पनि समावेश थियो?",
+      "text_markdown": "के त्यो methodology paper मा पनि समावेश थियो?",
+      "title": "",
+      "tts": {
+        "text": "के त्यो मेथोडोलोजी पेपरमा पनि समावेश भएको थियो?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Kili Technology भनिने समूहबाट तीखो रिपोर्ट आएको थियो।",
+      "text_markdown": "Kili Technology भनिने समूहबाट तीखो रिपोर्ट आएको थियो।",
+      "title": "",
+      "tts": {
+        "text": "Kili Technology भनिने समूहबाट तीखो रिपोर्ट आएको थियो।",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूले समान model weights लाई पाँचवटा सामान्य evaluation harnesses मार्फत परीक्षण गरे।",
+      "text_markdown": "उनीहरूले समान model weights लाई पाँचवटा सामान्य evaluation harnesses मार्फत परीक्षण गरे।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले समान मोडल वेट्सलाई पाँचवटा सामान्य इभ्यालुएसन हार्नेसमार्फत परीक्षण गरे।",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "केवल परीक्षण प्रणालीको छनोटकै कारण अङ्कहरू १० देखि २० प्रतिशत अङ्कसम्म फरक देखिए।",
+      "text_markdown": "केवल परीक्षण प्रणालीको छनोटकै कारण अङ्कहरू १० देखि २० प्रतिशत अङ्कसम्म फरक देखिए।",
+      "title": "",
+      "tts": {
+        "text": "केवल परीक्षण प्रणालीको छनोटकै कारण अङ्कहरू दसदेखि बीस प्रतिशत अङ्कसम्म फरक देखिए।",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "समान भार हुन्छ, तर संख्या फरक हुन्छ।",
+      "text_markdown": "समान भार हुन्छ, तर संख्या फरक हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "समान भार हुन्छ, तर संख्या फरक हुन्छ।",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "बिल्कुल।",
+      "text_markdown": "बिल्कुल।",
+      "title": "",
+      "tts": {
+        "text": "बिल्कुल।",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूको निष्कर्ष यो थियो कि leaderboard rank अब procurement को लागि buyer-grade signal छैन।",
+      "text_markdown": "उनीहरूको निष्कर्ष यो थियो कि leaderboard rank अब procurement को लागि buyer-grade signal छैन।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूको निष्कर्ष यो थियो कि leaderboard rank अब procurement को लागि buyer grade signal छैन।",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "do-it-yourself builder को लागि, निष्कर्ष अझ तीखो छ — आफ्नै prompts मा आफ्नै evals चलाउनुहोस्।",
+      "text_markdown": "do-it-yourself builder को लागि, निष्कर्ष अझ तीखो छ — आफ्नै prompts मा आफ्नै evals चलाउनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "do it yourself builder को लागि, निष्कर्ष अझ तीखो छ — आफ्नै prompts मा आफ्नै evals चलाउनुहोस्।",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो वास्तवमा MSA र Nemotron Ultra मा फर्केर जान्छ।",
+      "text_markdown": "त्यो वास्तवमा MSA र Nemotron Ultra मा फर्केर जान्छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो वास्तवमा M S A र Nemotron Ultra मा फर्केर जान्छ।",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हुन्छ।",
+      "text_markdown": "हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "हुन्छ।",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "architecture र आफ्नै परीक्षणहरूमा भरोसा गर्नुहोस्, अरू कसैको chart मा नगर्नुहोस्।",
+      "text_markdown": "architecture र आफ्नै परीक्षणहरूमा भरोसा गर्नुहोस्, अरू कसैको chart मा नगर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "architecture र आफ्नै परीक्षणहरूमा भरोसा गर्नुहोस्, अरू कसैको chart मा नगर्नुहोस्।",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "बोर्डहरू छोड्नका लागि राम्रो स्थान।",
+      "text_markdown": "बोर्डहरू छोड्नका लागि राम्रो स्थान।",
+      "title": "",
+      "tts": {
+        "text": "बोर्डहरू छोड्नका लागि राम्रो स्थान।",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब मुख्य headlines हेरौं।",
+      "text_markdown": "अब मुख्य headlines हेरौं।",
+      "title": "",
+      "tts": {
+        "text": "अब मुख्य हेडलाइन्स हेरौँ।",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "खुला इकोसिस्टमको दृष्टिकोणबाट यो छोटो क्लिप छिट्टै हेरौँ।",
+      "text_markdown": "खुला इकोसिस्टमको दृष्टिकोणबाट यो छोटो क्लिप छिट्टै हेरौँ।",
+      "title": "",
+      "tts": {
+        "text": "खुला इकोसिस्टमको दृष्टिकोणबाट यो छोटो क्लिप छिट्टै हेरौँ।",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पहिले, Microsoft Build जुन २ मा थियो।",
+      "text_markdown": "पहिले, Microsoft Build जुन २ मा थियो।",
+      "title": "",
+      "tts": {
+        "text": "पहिले, Microsoft Build जुन दुईमा थियो।",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Microsoft ले आफ्नै दुईवटा मोडल, MAI-Thinking-1 र MAI-Code-1-Flash, सार्वजनिक रूपमा प्रस्तुत गर्‍यो।",
+      "text_markdown": "Microsoft ले आफ्नै दुईवटा मोडल, MAI-Thinking-1 र MAI-Code-1-Flash, सार्वजनिक रूपमा प्रस्तुत गर्‍यो।",
+      "title": "",
+      "tts": {
+        "text": "माइक्रोसफ्टले आफ्नै दुईवटा मोडल, एम ए आई थिङ्किङ एक र एम ए आई कोड एक फ्ल्यास, सार्वजनिक रूपमा प्रस्तुत गर्‍यो।",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तीबारे कुन कुरा तपाईंलाई सबैभन्दा रोचक लाग्छ?",
+      "text_markdown": "तीबारे कुन कुरा तपाईंलाई सबैभन्दा रोचक लाग्छ?",
+      "title": "",
+      "tts": {
+        "text": "तीबारे कुन कुरा तपाईंलाई सबैभन्दा रोचक लाग्छ?",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Thinking-1 भनेको 35 billion active parameter भएको sparse mixture of experts हो, र यसले 256 हजार token को context window उपलब्ध गराउँछ।",
+      "text_markdown": "Thinking-1 भनेको 35 billion active parameter भएको sparse mixture of experts हो, र यसले 256 हजार token को context window उपलब्ध गराउँछ।",
+      "title": "",
+      "tts": {
+        "text": "थिंकिङ एक भनेको पैंतीस बिलियन एक्टिभ प्यारामिटर भएको स्पार्स मिक्स्चर अफ एक्सपर्ट्स हो, र यसले दुई सय छप्पन्न हजार टोकनको कन्टेक्स्ट विन्डो उपलब्ध गराउँछ।",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र Microsoft ले विशेष रूपमा यो मोडेल कुनै third-party model बाट distillation नगरी, व्यावसायिक रूपमा licensed data मा train गरिएको कुरा स्पष्ट पार्‍यो।",
+      "text_markdown": "र Microsoft ले विशेष रूपमा यो मोडेल कुनै third-party model बाट distillation नगरी, व्यावसायिक रूपमा licensed data मा train गरिएको कुरा स्पष्ट पार्‍यो।",
+      "title": "",
+      "tts": {
+        "text": "र माइक्रोसफ्टले विशेष रूपमा यो मोडेल कुनै थर्ड पार्टी मोडेलबाट डिस्टिलेसन नगरी, व्यावसायिक रूपमा लाइसेन्स्ड डेटामा ट्रेन गरिएको कुरा स्पष्ट पार्‍यो।",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो असामान्य छ।",
+      "text_markdown": "त्यो असामान्य छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यो असामान्य छ।",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "धेरै असामान्य, बाँकी क्षेत्र frontier models बाट synthetic data मा कति धेरै निर्भर छ भनेर हेर्दा।",
+      "text_markdown": "धेरै असामान्य, बाँकी क्षेत्र frontier models बाट synthetic data मा कति धेरै निर्भर छ भनेर हेर्दा।",
+      "title": "",
+      "tts": {
+        "text": "धेरै असामान्य, बाँकी क्षेत्र frontier models बाट synthetic data मा कति धेरै निर्भर छ भनेर हेर्दा।",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Code-1-Flash सस्तो वाला हो, र सबै GitHub Copilot tiers मा यसको rollout जुन २ देखि सुरु भयो।",
+      "text_markdown": "Code-1-Flash सस्तो वाला हो, र सबै GitHub Copilot tiers मा यसको rollout जुन २ देखि सुरु भयो।",
+      "title": "",
+      "tts": {
+        "text": "Code एक Flash सस्तो वाला हो, र सबै GitHub Copilot tiers मा यसको rollout जुन दुईदेखि सुरु भयो।",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यसैले Microsoft ले अब Copilot Studio मा Mistral, DeepSeek, OpenAI र आफ्नै MAI समेत उपलब्ध गराउन थालेको छ।",
+      "text_markdown": "त्यसैले Microsoft ले अब Copilot Studio मा Mistral, DeepSeek, OpenAI र आफ्नै MAI समेत उपलब्ध गराउन थालेको छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले माइक्रोसफ्टले अब कोपाइलट स्टुडियोमा मिस्ट्रल, डीपसिक, ओपनएआई र आफ्नै एम ए आई समेत उपलब्ध गराउन थालेको छ।",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "दोस्रो समाचार शीर्षक के रहेछ?",
+      "text_markdown": "दोस्रो समाचार शीर्षक के रहेछ?",
+      "title": "",
+      "tts": {
+        "text": "दोस्रो समाचार शीर्षक के रहेछ?",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic ले जुन १ मा SEC सँग गोप्य रूपमा S-1 file पेश गरेको थियो भन्ने खुलासा भयो।",
+      "text_markdown": "Anthropic ले जुन १ मा SEC सँग गोप्य रूपमा S-1 file पेश गरेको थियो भन्ने खुलासा भयो।",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ले जुन एकमा SEC सँग गोप्य रूपमा S एक file पेश गरेको थियो भन्ने खुलासा भयो।",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो public listing को बाटो सुरु गर्ने कागजी कार्य हो।",
+      "text_markdown": "त्यो public listing को बाटो सुरु गर्ने कागजी कार्य हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो public listing को बाटो सुरु गर्ने कागजी कार्य हो।",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूले बताएको वार्षिक आम्दानी दर एक वर्षअघिको करिब 10 अर्ब डलरबाट बढेर अहिले करिब 47 अर्ब डलर पुगेको छ।",
+      "text_markdown": "उनीहरूले बताएको वार्षिक आम्दानी दर एक वर्षअघिको करिब 10 अर्ब डलरबाट बढेर अहिले करिब 47 अर्ब डलर पुगेको छ।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले बताएको वार्षिक आम्दानी दर एक वर्षअघिको करिब दस अर्ब डलरबाट बढेर अहिले करिब सैंतालीस अर्ब डलर पुगेको छ।",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "कुनै ticker, price range, मिति छैन अझैसम्म — केवल कागजी कार्य।",
+      "text_markdown": "कुनै ticker, price range, मिति छैन अझैसम्म — केवल कागजी कार्य।",
+      "title": "",
+      "tts": {
+        "text": "कुनै ticker, price range, मिति छैन अझैसम्म — केवल कागजी कार्य।",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तेस्रो।",
+      "text_markdown": "तेस्रो।",
+      "title": "",
+      "tts": {
+        "text": "तेस्रो।",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GitHub Copilot जुन १ मा usage-based billing प्रणालीतर्फ सरेको थियो।",
+      "text_markdown": "GitHub Copilot जुन १ मा usage-based billing प्रणालीतर्फ सरेको थियो।",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot जुन एकमा usage based billing प्रणालीतर्फ सरेको थियो।",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हरेक plan ले अब input, output, र cached tokens लाई underlying model API कै rates अनुसार meter गरेर हिसाब राख्छ।",
+      "text_markdown": "हरेक plan ले अब input, output, र cached tokens लाई underlying model API कै rates अनुसार meter गरेर हिसाब राख्छ।",
+      "title": "",
+      "tts": {
+        "text": "हरेक plan ले अब input, output, र cached tokens लाई underlying model API कै rates अनुसार meter गरेर हिसाब राख्छ।",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूले टियरअनुसार क्रेडिट बाँडफाँट गरे र धेरै एजेन्टिक प्रयोगकर्ताका लागि मासिक 100 डलरको नयाँ कोपाइलट म्याक्स योजना ल्याएर ल्यान्डिङ सहज बनाए।",
+      "text_markdown": "उनीहरूले टियरअनुसार क्रेडिट बाँडफाँट गरे र धेरै एजेन्टिक प्रयोगकर्ताका लागि मासिक 100 डलरको नयाँ कोपाइलट म्याक्स योजना ल्याएर ल्यान्डिङ सहज बनाए।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले टियरअनुसार क्रेडिट बाँडफाँट गरे र धेरै एजेन्टिक प्रयोगकर्ताका लागि मासिक एक सय डलरको नयाँ कोपाइलट म्याक्स योजना ल्याएर ल्यान्डिङ सहज बनाए।",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र developers ले त्यो कसरी लिए?",
+      "text_markdown": "र developers ले त्यो कसरी लिए?",
+      "title": "",
+      "tts": {
+        "text": "र developers ले त्यो कसरी लिए?",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "केही विचारहरू एकदमै तीखा थिए।",
+      "text_markdown": "केही विचारहरू एकदमै तीखा थिए।",
+      "title": "",
+      "tts": {
+        "text": "केही विचारहरू एकदमै तीखा थिए।",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "एजेन्ट लूपसहित भारी प्रयोगकर्ताहरूले पुरानो फ्ल्याट फिभन्दा धेरै गुणा बढी अनुमानित बिलहरूको रिपोर्ट गरे।",
+      "text_markdown": "एजेन्ट लूपसहित भारी प्रयोगकर्ताहरूले पुरानो फ्ल्याट फिभन्दा धेरै गुणा बढी अनुमानित बिलहरूको रिपोर्ट गरे।",
+      "title": "",
+      "tts": {
+        "text": "एजेन्ट लूपसहित भारी प्रयोगकर्ताहरूले पुरानो फ्ल्याट फिभन्दा धेरै गुणा बढी अनुमानित बिलहरूको रिपोर्ट गरे।",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हाम्रो मुख्य समाचारको लागि महत्त्वपूर्ण छ — त्यो विचार समातेर राख्नुहोस्।",
+      "text_markdown": "यो हाम्रो मुख्य समाचारको लागि महत्त्वपूर्ण छ — त्यो विचार समातेर राख्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "यो हाम्रो मुख्य समाचारको लागि महत्त्वपूर्ण छ — त्यो विचार समातेर राख्नुहोस्।",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "चौथो, यो सप्ताहन्तमा प्याच गर्न केही छ?",
+      "text_markdown": "चौथो, यो सप्ताहन्तमा प्याच गर्न केही छ?",
+      "title": "",
+      "tts": {
+        "text": "चौथो, यो सप्ताहन्तमा प्याच गर्न केही छ?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हो, SGLang संस्करण 0.5.11 सम्मका मा जून 3 मा खुलासा गरिएको क्यास denial-of-service खामी छ।",
+      "text_markdown": "हो, SGLang संस्करण 0.5.11 सम्मका मा जून 3 मा खुलासा गरिएको क्यास denial-of-service खामी छ।",
+      "title": "",
+      "tts": {
+        "text": "हो, एस जी ल्याङ संस्करण शून्य दशमलव पाँच दशमलव एघार सम्मका मा जून तीन मा खुलासा गरिएको क्यास डिनायल अफ सर्भिस खामी छ।",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पहिचानकर्ता CVE-2026-10775 हो, गम्भीरता कम छ, शोषण स्थानीय मात्र हो — तर यदि तपाईंले SGLang बाट सेवा दिनुहुन्छ भने, तपाईंले सोमबार प्याच गर्नुहोस्।",
+      "text_markdown": "पहिचानकर्ता CVE-2026-10775 हो, गम्भीरता कम छ, शोषण स्थानीय मात्र हो — तर यदि तपाईंले SGLang बाट सेवा दिनुहुन्छ भने, तपाईंले सोमबार प्याच गर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "पहिचानकर्ता सी भी ई दुई हजार छब्बीस ड्यास एक शून्य सात सात पाँच हो, गम्भीरता कम छ, शोषण स्थानीय मात्र हो — तर यदि तपाईंले एस जी ल्याङ बाट सेवा दिनुहुन्छ भने, तपाईंले सोमबार प्याच गर्नुहोस्।",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अझ एउटा थप।",
+      "text_markdown": "अझ एउटा थप।",
+      "title": "",
+      "tts": {
+        "text": "अझ एउटा थप।",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unsloth Studio ले एक अपडेट ल्यायो जसले पूर्ण fine-tune लाई सिधै GGUF मा निर्यात गर्छ — केवल एडाप्टर वेटहरू मात्र होइन।",
+      "text_markdown": "Unsloth Studio ले एक अपडेट ल्यायो जसले पूर्ण fine-tune लाई सिधै GGUF मा निर्यात गर्छ — केवल एडाप्टर वेटहरू मात्र होइन।",
+      "title": "",
+      "tts": {
+        "text": "अनस्लोथ स्टुडियोले एक अपडेट ल्यायो जसले पूर्ण फाइन ट्युनलाई सिधै जी जी यू एफ मा निर्यात गर्छ — केवल एडाप्टर वेटहरू मात्र होइन।",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "24 gigabyte उपभोक्ता कार्ड अब उपयोगी रनहरूको लागि पर्याप्त छ।",
+      "text_markdown": "24 gigabyte उपभोक्ता कार्ड अब उपयोगी रनहरूको लागि पर्याप्त छ।",
+      "title": "",
+      "tts": {
+        "text": "चौबीस गिगाबाइट उपभोक्ता कार्ड अब उपयोगी रनहरूको लागि पर्याप्त छ।",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो यस एपिसोडको बाँकी भागलाई वास्तविक बनाउने सरल प्लम्बिङ हो।",
+      "text_markdown": "त्यो यस एपिसोडको बाँकी भागलाई वास्तविक बनाउने सरल प्लम्बिङ हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो यस एपिसोडको बाँकी भागलाई वास्तविक बनाउने सरल प्लम्बिङ हो।",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब फेरि मुख्य समाचारतिर ध्यान दिऔँ।",
+      "text_markdown": "अब फेरि मुख्य समाचारतिर ध्यान दिऔँ।",
+      "title": "",
+      "tts": {
+        "text": "अब फेरि मुख्य समाचारतिर ध्यान दिऔँ।",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तपाईंले एक रिगको संकेत दिनुभयो।",
+      "text_markdown": "तपाईंले एक रिगको संकेत दिनुभयो।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले एक रिगको संकेत दिनुभयो।",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मैले दिएँ, र मुख्य कुरा के हो भने, do-it-yourself रिग यस हप्ता परिपक्व अवस्थामा पुग्यो।",
+      "text_markdown": "मैले दिएँ, र मुख्य कुरा के हो भने, do-it-yourself रिग यस हप्ता परिपक्व अवस्थामा पुग्यो।",
+      "title": "",
+      "tts": {
+        "text": "मैले दिएँ, र मुख्य कुरा के हो भने, डु इट योरसेल्फ रिग यस हप्ता परिपक्व अवस्थामा पुग्यो।",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "पहिले हार्डवेयरतिर लागौँ।",
+      "text_markdown": "पहिले हार्डवेयरतिर लागौँ।",
+      "title": "",
+      "tts": {
+        "text": "पहिले हार्डवेयरतिर लागौँ।",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "दुई बक्सहरू अब वास्तवमा उपभोक्ता मूल्यमा ढुवानी भइरहेका छन्।",
+      "text_markdown": "दुई बक्सहरू अब वास्तवमा उपभोक्ता मूल्यमा ढुवानी भइरहेका छन्।",
+      "title": "",
+      "tts": {
+        "text": "दुई बक्सहरू अब वास्तवमा उपभोक्ता मूल्यमा ढुवानी भइरहेका छन्।",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "AMD ले जूनमा Ryzen AI Halo mini PC को प्री-अर्डर $3999 मा उपलब्ध गरायो।",
+      "text_markdown": "AMD ले जूनमा Ryzen AI Halo mini PC को प्री-अर्डर $3999 मा उपलब्ध गरायो।",
+      "title": "",
+      "tts": {
+        "text": "ए एम डीले जूनमा राइजेन ए आई हेलो मिनी पी सीको प्री अर्डर तीन हजार नौ सय उनान्सत्तरी डलरमा उपलब्ध गरायो।",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "अहिलेका लागि विशेष रूपमा Micro Center मा उपलब्ध यो सिस्टमले Ryzen AI Max Plus 395 चलाउँछ र 128 gigabytes एकीकृत LPDDR5x मेमोरीले सुसज्जित छ।",
+      "text_markdown": "अहिलेका लागि विशेष रूपमा Micro Center मा उपलब्ध यो सिस्टमले Ryzen AI Max Plus 395 चलाउँछ र 128 gigabytes एकीकृत LPDDR5x मेमोरीले सुसज्जित छ।",
+      "title": "",
+      "tts": {
+        "text": "अहिलेका लागि विशेष रूपमा माइक्रो सेन्टरमा उपलब्ध यो सिस्टमले राइजेन ए आई म्याक्स प्लस तीन सय पंचानब्बे चलाउँछ र एक सय अट्ठाईस गिगाबाइट एकीकृत एल पी डी डी आर पाँच एक्स मेमोरीले सुसज्जित छ।",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र NVIDIA पक्ष?",
+      "text_markdown": "र NVIDIA पक्ष?",
+      "title": "",
+      "tts": {
+        "text": "र NVIDIA पक्ष?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA को DGX Spark तुलनीय बक्सका रूपमा प्रस्तुत हुन्छ।",
+      "text_markdown": "NVIDIA को DGX Spark तुलनीय बक्सका रूपमा प्रस्तुत हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "एन भिडियाको डीजीएक्स स्पार्क तुलनीय बक्सका रूपमा प्रस्तुत हुन्छ।",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसमा GB10 Grace Blackwell चिप र उही 128 gigabytes को एकीकृत मेमोरी उपलब्ध छ।",
+      "text_markdown": "यसमा GB10 Grace Blackwell चिप र उही 128 gigabytes को एकीकृत मेमोरी उपलब्ध छ।",
+      "title": "",
+      "tts": {
+        "text": "यसमा जी बी दश ग्रेस ब्ल्याकवेल चिप र उही एक सय अट्ठाईस गिगाबाइटको एकीकृत मेमोरी उपलब्ध छ।",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "विश्वव्यापी मेमोरी संकटका कारण मूल्य भर्खरै $3999 बाट $4699 सम्म बढेको देखिन्छ।",
+      "text_markdown": "विश्वव्यापी मेमोरी संकटका कारण मूल्य भर्खरै $3999 बाट $4699 सम्म बढेको देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "विश्वव्यापी मेमोरी संकटका कारण मूल्य भर्खरै तीन हजार नौ सय उनान्सय डलरबाट चार हजार छ सय उनान्सय डलरसम्म बढेको देखिन्छ।",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यिनीहरूले वास्तवमा कति ठूलो मोडेल समात्छन्?",
+      "text_markdown": "यिनीहरूले वास्तवमा कति ठूलो मोडेल समात्छन्?",
+      "title": "",
+      "tts": {
+        "text": "यिनीहरूले वास्तवमा कति ठूलो मोडेल समात्छन्?",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "4-bit क्वान्टाइजेसनमा लगभग 200 billion parameter सम्म, कन्टेक्स्टको लागि ठाउँसहित।",
+      "text_markdown": "4-bit क्वान्टाइजेसनमा लगभग 200 billion parameter सम्म, कन्टेक्स्टको लागि ठाउँसहित।",
+      "title": "",
+      "tts": {
+        "text": "चार बिट क्वान्टाइजेसनमा लगभग दुई सय बिलियन प्यारामिटर सम्म, कन्टेक्स्टको लागि ठाउँसहित।",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "दुई DGX Sparks लाई ConnectX-7 मार्फत जोडेर तपाईंले लगभग 400 billion को इलाकामा पुग्नुहुन्छ।",
+      "text_markdown": "दुई DGX Sparks लाई ConnectX-7 मार्फत जोडेर तपाईंले लगभग 400 billion को इलाकामा पुग्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "दुई डी जी एक्स स्पार्कलाई कनेक्ट एक्स सात मार्फत जोडेर तपाईंले लगभग चार सय बिलियनको इलाकामा पुग्नुहुन्छ।",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो साँच्चै frontier-class फुटप्रिन्ट भएको काउन्टरटप उपकरण हो।",
+      "text_markdown": "त्यो साँच्चै frontier-class फुटप्रिन्ट भएको काउन्टरटप उपकरण हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो साँच्चै फ्रन्टियर क्लास फुटप्रिन्ट भएको काउन्टरटप उपकरण हो।",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब सफ्टवेयर स्ट्याकबारे चर्चा सुरु गरौँ।",
+      "text_markdown": "अब सफ्टवेयर स्ट्याकबारे चर्चा सुरु गरौँ।",
+      "title": "",
+      "tts": {
+        "text": "अब सफ्टवेयर स्ट्याकबारे चर्चा सुरु गरौँ।",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो हाम्रो खुट्टामुनि परिवर्तन भएको कुरा हो।",
+      "text_markdown": "यो हाम्रो खुट्टामुनि परिवर्तन भएको कुरा हो।",
+      "title": "",
+      "tts": {
+        "text": "यो हाम्रो खुट्टामुनि परिवर्तन भएको कुरा हो।",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Inference को लागि तपाईंसँग vLLM, SGLang, llama.cpp, Ollama, र Apple Silicon मा MLX छ — सबै राखरखाव गरिएका, सबै छिटो।",
+      "text_markdown": "Inference को लागि तपाईंसँग vLLM, SGLang, llama.cpp, Ollama, र Apple Silicon मा MLX छ — सबै राखरखाव गरिएका, सबै छिटो।",
+      "title": "",
+      "tts": {
+        "text": "इन्फरेन्सको लागि तपाईंसँग भी एल एल एम, एस जी ल्याङ, लामा सी पी पी, ओल्लामा, र एप्पल सिलिकनमा एम एल एक्स छ — सबै राखरखाव गरिएका, सबै छिटो।",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मोडेलको लागि तपाईंसँग यस हप्ता Nemotron 3 Ultra वेट्स छ, साथै Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, र MiniMax M3 वेट्स आउँदैछ।",
+      "text_markdown": "मोडेलको लागि तपाईंसँग यस हप्ता Nemotron 3 Ultra वेट्स छ, साथै Kimi K2.6, DeepSeek V4-Flash, GLM-5.1, र MiniMax M3 वेट्स आउँदैछ।",
+      "title": "",
+      "tts": {
+        "text": "मोडेलको लागि तपाईंसँग यस हप्ता नेमोट्रोन तीन अल्ट्रा वेट्स छ, साथै किमी के दुई दशमलव छ, डीपसिक भी चार फ्ल्यास, जी एल एम पाँच दशमलव एक, र मिनीम्याक्स एम तीन वेट्स आउँदैछ।",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Fine-tuning को लागि, Unsloth Studio ले अब GGUF मा one-click बाट पूर्ण ट्युनिङ गर्छ।",
+      "text_markdown": "Fine-tuning को लागि, Unsloth Studio ले अब GGUF मा one-click बाट पूर्ण ट्युनिङ गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "फाइन ट्युनिङको लागि, अनस्लोथ स्टुडियोले अब जी जी यू एफमा वन क्लिकबाट पूर्ण ट्युनिङ गर्छ।",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र एजेन्टहरूको लागि, तपाईंसँग Aider, Continue, र LangGraph संस्करण 1 छ जसले स्थानीय 32 billion parameter मोडेलहरू प्रयोगयोग्य विश्वसनीयतामा चलाउँछ।",
+      "text_markdown": "र एजेन्टहरूको लागि, तपाईंसँग Aider, Continue, र LangGraph संस्करण 1 छ जसले स्थानीय 32 billion parameter मोडेलहरू प्रयोगयोग्य विश्वसनीयतामा चलाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "र एजेन्टहरूको लागि, तपाईंसँग एडर, कन्टिन्यू, र ल्याङग्राफ संस्करण एक छ जसले स्थानीय बत्तीस बिलियन प्यारामिटर मोडेलहरू प्रयोगयोग्य विश्वसनीयतामा चलाउँछ।",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यही नै पूरा लूप हो।",
+      "text_markdown": "यही नै पूरा लूप हो।",
+      "title": "",
+      "tts": {
+        "text": "यही नै पूरा लूप हो।",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "त्यो पूरै लूप हो।",
+      "text_markdown": "त्यो पूरै लूप हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यो पूरै लूप हो।",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सिलिकन, इन्जिन, मोडेल, fine-tune र एजेन्ट, प्रत्येक तहमा विश्वसनीय खुला विकल्प छ, र तल्लो तह अब desk-side mini PC का रूपमा उपलब्ध छ।",
+      "text_markdown": "सिलिकन, इन्जिन, मोडेल, fine-tune र एजेन्ट, प्रत्येक तहमा विश्वसनीय खुला विकल्प छ, र तल्लो तह अब desk-side mini PC का रूपमा उपलब्ध छ।",
+      "title": "",
+      "tts": {
+        "text": "सिलिकन, इन्जिन, मोडेल, फाइन ट्युन र एजेन्ट, प्रत्येक तहमा विश्वसनीय खुला विकल्प छ, र तल्लो तह अब डेस्क साइड मिनी पी सी का रूपमा उपलब्ध छ।",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र अर्थशास्त्र?",
+      "text_markdown": "र अर्थशास्त्र?",
+      "title": "",
+      "tts": {
+        "text": "र अर्थशास्त्र?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "अर्थशास्त्र यस हप्ता उल्टियो, जसलाई बेवास्ता गर्न गाह्रो छ।",
+      "text_markdown": "अर्थशास्त्र यस हप्ता उल्टियो, जसलाई बेवास्ता गर्न गाह्रो छ।",
+      "title": "",
+      "tts": {
+        "text": "अर्थशास्त्र यस हप्ता उल्टियो, जसलाई बेवास्ता गर्न गाह्रो छ।",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "टोकन प्रयोगअनुसार शुल्क लाग्ने Copilot, आउँदो मूल्य निर्धारण दबाबको संकेत दिने Anthropic S-1, अनि Texas, Virginia र Ohio मा कडा गर्मीका कारण जारी ग्रिड चेतावनीहरू।",
+      "text_markdown": "टोकन प्रयोगअनुसार शुल्क लाग्ने Copilot, आउँदो मूल्य निर्धारण दबाबको संकेत दिने Anthropic S-1, अनि Texas, Virginia र Ohio मा कडा गर्मीका कारण जारी ग्रिड चेतावनीहरू।",
+      "title": "",
+      "tts": {
+        "text": "टोकन प्रयोगअनुसार शुल्क लाग्ने कोपाइलट, आउँदो मूल्य निर्धारण दबाबको संकेत दिने एन्थ्रोपिक एस एक, अनि टेक्सास, भर्जिनिया र ओहायोमा कडा गर्मीका कारण जारी ग्रिड चेतावनीहरू।",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Self-host को मामला पहिले वैचारिक थियो।",
+      "text_markdown": "Self-host को मामला पहिले वैचारिक थियो।",
+      "title": "",
+      "tts": {
+        "text": "सेल्फ होस्टको मामला पहिले वैचारिक थियो।",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यस हप्ता हामीले यो स्प्रेडशिट तयार पारेर पूरा गर्‍यौँ।",
+      "text_markdown": "यस हप्ता हामीले यो स्प्रेडशिट तयार पारेर पूरा गर्‍यौँ।",
+      "title": "",
+      "tts": {
+        "text": "यस हप्ता हामीले यो स्प्रेडशिट तयार पारेर पूरा गर्‍यौँ।",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "के परिवर्तन भएको छैन भन्ने बारेमा इमानदार हुनुहोस्।",
+      "text_markdown": "के परिवर्तन भएको छैन भन्ने बारेमा इमानदार हुनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "के परिवर्तन भएको छैन भन्ने बारेमा इमानदार हुनुहोस्।",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "महत्वपूर्ण सतर्कता — तपाईंको काउन्टरटप गुणस्तर चार्टको शीर्षमा क्लाउडलाई पराजित गर्दैन।",
+      "text_markdown": "महत्वपूर्ण सतर्कता — तपाईंको काउन्टरटप गुणस्तर चार्टको शीर्षमा क्लाउडलाई पराजित गर्दैन।",
+      "title": "",
+      "tts": {
+        "text": "महत्वपूर्ण सतर्कता — तपाईंको काउन्टरटप गुणस्तर चार्टको शीर्षमा क्लाउडलाई पराजित गर्दैन।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 अझै पनि कम्पोजिटमा अगुवाइ गर्छ, र GPT-5.5 अझै पनि BrowseComp को मालिक छ।",
+      "text_markdown": "Opus 4.8 अझै पनि कम्पोजिटमा अगुवाइ गर्छ, र GPT-5.5 अझै पनि BrowseComp को मालिक छ।",
+      "title": "",
+      "tts": {
+        "text": "Opus चार दशमलव आठ अझै पनि कम्पोजिटमा अगुवाइ गर्छ, र GPT पाँच दशमलव पाँच अझै पनि BrowseComp को मालिक छ।",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यस हप्ता के परिवर्तन भयो भने तलछ।",
+      "text_markdown": "यस हप्ता के परिवर्तन भयो भने तलछ।",
+      "title": "",
+      "tts": {
+        "text": "यस हप्ता के परिवर्तन भयो भने तलछ।",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सक्षम, एजेन्ट-ग्रेड, फाइन-ट्युन गर्न मिल्ने मोडेलहरू, खुला वजनसहित तपाईंको आफ्नै हार्डवेयरमा चलाउन सकिन्छ।",
+      "text_markdown": "सक्षम, एजेन्ट-ग्रेड, फाइन-ट्युन गर्न मिल्ने मोडेलहरू, खुला वजनसहित तपाईंको आफ्नै हार्डवेयरमा चलाउन सकिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "सक्षम, एजेन्ट ग्रेड, फाइन ट्युन गर्न मिल्ने मोडेलहरू, खुला वजनसहित तपाईंको आफ्नै हार्डवेयरमा चलाउन सकिन्छ।",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आखिर त्यही नै कहानीको सार रहेछ।",
+      "text_markdown": "आखिर त्यही नै कहानीको सार रहेछ।",
+      "title": "",
+      "tts": {
+        "text": "आखिर त्यही नै कहानीको सार रहेछ।",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पहिले डाटा सेन्टर चाहिन्थ्यो।",
+      "text_markdown": "पहिले डाटा सेन्टर चाहिन्थ्यो।",
+      "title": "",
+      "tts": {
+        "text": "पहिले डाटा सेन्टर चाहिन्थ्यो।",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यस हप्ता, काउन्टरटपको आवश्यकता छ।",
+      "text_markdown": "यस हप्ता, काउन्टरटपको आवश्यकता छ।",
+      "title": "",
+      "tts": {
+        "text": "यस हप्ता, काउन्टरटपको आवश्यकता रहेको छ।",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आउनुहोस्, हप्ताको अवधारणा स्पष्ट पारौँ।",
+      "text_markdown": "आउनुहोस्, हप्ताको अवधारणा स्पष्ट पारौँ।",
+      "title": "",
+      "tts": {
+        "text": "आउनुहोस्, हप्ताको अवधारणा स्पष्ट पारौँ।",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तपाईंले speculative decoding छान्नुभयो।",
+      "text_markdown": "तपाईंले speculative decoding छान्नुभयो।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले speculative decoding छान्नुभयो।",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "मैले छानें, किनभने यो त्यो चाल हो जसले हामीले भर्खरै कुरा गरेको सबै कुरालाई छिटो महसुस गराउँछ।",
+      "text_markdown": "मैले छानें, किनभने यो त्यो चाल हो जसले हामीले भर्खरै कुरा गरेको सबै कुरालाई छिटो महसुस गराउँछ।",
+      "title": "",
+      "tts": {
+        "text": "मैले छानें, किनभने यो त्यो चाल हो जसले हामीले भर्खरै कुरा गरेको सबै कुरालाई छिटो महसुस गराउँछ।",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax को पन्ध्र गुणा decode दावी एक सम्बन्धीमा आधारित छ।",
+      "text_markdown": "MiniMax को पन्ध्र गुणा decode दावी एक सम्बन्धीमा आधारित छ।",
+      "title": "",
+      "tts": {
+        "text": "MiniMax को पन्ध्र गुणा decode दावी एक सम्बन्धीमा आधारित छ।",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "वास्तवमा, Llama.cpp को draft model mode यही विचारमा आधारित छ।",
+      "text_markdown": "वास्तवमा, Llama.cpp को draft model mode यही विचारमा आधारित छ।",
+      "title": "",
+      "tts": {
+        "text": "वास्तवमा, लामा डट सी प्लस प्लसको ड्राफ्ट मोडल मोड यही विचारमा आधारित छ।",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कृपया हामीलाई यस विषयबारे विस्तृत जानकारी दिनुहोस्।",
+      "text_markdown": "कृपया हामीलाई यस विषयबारे विस्तृत जानकारी दिनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "कृपया हामीलाई यस विषयबारे विस्तृत जानकारी दिनुहोस्।",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईं दुई मोडेलहरू साथसाथै चलाउनुहुन्छ।",
+      "text_markdown": "तपाईं दुई मोडेलहरू साथसाथै चलाउनुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तपाईं दुई मोडेलहरू साथसाथै चलाउनुहुन्छ।",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "एक सानो, छिटो मोडेल जसलाई drafter भनिन्छ, र ठूलो, ढिलो मोडेल जसलाई verifier भनिन्छ।",
+      "text_markdown": "एक सानो, छिटो मोडेल जसलाई drafter भनिन्छ, र ठूलो, ढिलो मोडेल जसलाई verifier भनिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "एक सानो, छिटो मोडेल जसलाई drafter भनिन्छ, र ठूलो, ढिलो मोडेल जसलाई verifier भनिन्छ।",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Drafter ले अनुमान गर्छ, भनौं, अर्को चार token हरू एकै पटकमा।",
+      "text_markdown": "Drafter ले अनुमान गर्छ, भनौं, अर्को चार token हरू एकै पटकमा।",
+      "title": "",
+      "tts": {
+        "text": "Drafter ले अनुमान गर्छ, भनौं, अर्को चार token हरू एकै पटकमा।",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Verifier ले सबै चारलाई समानान्तरमा जाँच गर्छ।",
+      "text_markdown": "Verifier ले सबै चारलाई समानान्तरमा जाँच गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "Verifier ले सबै चारलाई समानान्तरमा जाँच गर्छ।",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र त्यसपछि?",
+      "text_markdown": "र त्यसपछि?",
+      "title": "",
+      "tts": {
+        "text": "र त्यसपछि?",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यदि verifier सहमत छ भने, तपाईं सबै चार राख्नुहुन्छ र अगाडि बढ्नुहुन्छ, अर्थात् तपाईंले भर्खरै लगभग एउटाको लागतमा चार token तयार पार्नुभयो।",
+      "text_markdown": "यदि verifier सहमत छ भने, तपाईं सबै चार राख्नुहुन्छ र अगाडि बढ्नुहुन्छ, अर्थात् तपाईंले भर्खरै लगभग एउटाको लागतमा चार token तयार पार्नुभयो।",
+      "title": "",
+      "tts": {
+        "text": "यदि verifier सहमत छ भने, तपाईं सबै चार राख्नुहुन्छ र अगाडि बढ्नुहुन्छ, अर्थात् तपाईंले भर्खरै लगभग एउटाको लागतमा चार token तयार पार्नुभयो।",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यदि यो असहमत छ भने, तपाईं पहिलो बेमेल सम्म स्वीकार गर्नुहुन्छ र ठूलो मोडेललाई त्यहाँबाट नियन्त्रण लिन दिनुहुन्छ।",
+      "text_markdown": "यदि यो असहमत छ भने, तपाईं पहिलो बेमेल सम्म स्वीकार गर्नुहुन्छ र ठूलो मोडेललाई त्यहाँबाट नियन्त्रण लिन दिनुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यदि यो असहमत छ भने, तपाईं पहिलो बेमेल सम्म स्वीकार गर्नुहुन्छ र ठूलो मोडेललाई त्यहाँबाट नियन्त्रण लिन दिनुहुन्छ।",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले जवाफ समान छ।",
+      "text_markdown": "त्यसैले जवाफ समान छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले जवाफ समान छ।",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ठीक, त्यो नै सुन्दर भाग हो।",
+      "text_markdown": "ठीक, त्यो नै सुन्दर भाग हो।",
+      "title": "",
+      "tts": {
+        "text": "ठीक, त्यो नै सुन्दर भाग हो।",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "आउटपुट ठूलो मोडेलले आफैंमा उत्पादन गरेको जस्तै हुन्छ।",
+      "text_markdown": "आउटपुट ठूलो मोडेलले आफैंमा उत्पादन गरेको जस्तै हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "आउटपुट ठूलो मोडेलले आफैंमा उत्पादन गरेको जस्तै हुन्छ।",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईंले यसका कम forward pass हरूको लागि मात्र भुक्तानी गर्नुभयो।",
+      "text_markdown": "तपाईंले यसका कम forward pass हरूको लागि मात्र भुक्तानी गर्नुभयो।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले यसका कम forward pass हरूको लागि मात्र भुक्तानी गर्नुभयो।",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "tinkerer को लागि यो किन महत्वपूर्ण छ?",
+      "text_markdown": "tinkerer को लागि यो किन महत्वपूर्ण छ?",
+      "title": "",
+      "tts": {
+        "text": "tinkerer को लागि यो किन महत्वपूर्ण छ?",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने यसले एकल कार्डमा सत्तरी बिलियन प्यारामिटर मोडेललाई नवीनताबाट प्रयोगयोग्य कुराकानीमा परिवर्तन गर्छ।",
+      "text_markdown": "किनभने यसले एकल कार्डमा सत्तरी बिलियन प्यारामिटर मोडेललाई नवीनताबाट प्रयोगयोग्य कुराकानीमा परिवर्तन गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "किनभने यसले एकल कार्डमा सत्तरी बिलियन प्यारामिटर मोडेललाई नवीनताबाट प्रयोगयोग्य कुराकानीमा परिवर्तन गर्छ।",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र फोनमा, यो वास्तविक on-device सहायकलाई उत्तरदायी महसुस गराउने तरिकाको भाग हो।",
+      "text_markdown": "र फोनमा, यो वास्तविक on-device सहायकलाई उत्तरदायी महसुस गराउने तरिकाको भाग हो।",
+      "title": "",
+      "tts": {
+        "text": "र फोनमा, यो वास्तविक on device सहायकलाई उत्तरदायी महसुस गराउने तरिकाको भाग हो।",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "गत हप्ताको अवधारणा, neural audio codecs, उही चालको अडियो संस्करण थियो — समान गुणस्तरको लागि कम महँगो चरणहरू।",
+      "text_markdown": "गत हप्ताको अवधारणा, neural audio codecs, उही चालको अडियो संस्करण थियो — समान गुणस्तरको लागि कम महँगो चरणहरू।",
+      "title": "",
+      "tts": {
+        "text": "गत हप्ताको अवधारणा, neural audio codecs, उही चालको अडियो संस्करण थियो — समान गुणस्तरको लागि कम महँगो चरणहरू।",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "जिज्ञासुहरूले यहाँबाट कहाँ जानुपर्छ?",
+      "text_markdown": "जिज्ञासुहरूले यहाँबाट कहाँ जानुपर्छ?",
+      "title": "",
+      "tts": {
+        "text": "जिज्ञासुहरूले यहाँबाट कहाँ जानुपर्छ?",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "EAGLE-3, Medusa र lookahead decoding लाई पनि ध्यानपूर्वक नियाल्नुहोस्।",
+      "text_markdown": "EAGLE-3, Medusa र lookahead decoding लाई पनि ध्यानपूर्वक नियाल्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "इगल तीन, मेडुसा र लुकअहेड डिकोडिङलाई पनि ध्यानपूर्वक नियाल्नुहोस्।",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तिनीहरू मूल drafter-verifier विचारका आधुनिक चचेरे भाइहरू हुन्, र तपाईंको inference engine ले हुडमुनि वास्तवमा यिनै आधुनिक संयन्त्रहरू चलाउँछ।",
+      "text_markdown": "तिनीहरू मूल drafter-verifier विचारका आधुनिक चचेरे भाइहरू हुन्, र तपाईंको inference engine ले हुडमुनि वास्तवमा यिनै आधुनिक संयन्त्रहरू चलाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "तिनीहरू मूल ड्राफ्टर भेरिफायर विचारका आधुनिक चचेरे भाइहरू हुन्, र तपाईंको इन्फरेन्स इन्जिनले हुडमुनि वास्तवमा यिनै आधुनिक संयन्त्रहरू चलाउँछ।",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अवतरण गर्न राम्रो ठाउँ।",
+      "text_markdown": "अवतरण गर्न राम्रो ठाउँ।",
+      "title": "",
+      "tts": {
+        "text": "अवतरण गर्न राम्रो ठाउँ।",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, तपाईंलाई हार्दिक धन्यवाद व्यक्त गर्दछु।",
+      "text_markdown": "Ron, तपाईंलाई हार्दिक धन्यवाद व्यक्त गर्दछु।",
+      "title": "",
+      "tts": {
+        "text": "रोन, तपाईंलाई हार्दिक धन्यवाद व्यक्त गर्दछु।",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "जहिले पनि, Vindy।",
+      "text_markdown": "जहिले पनि, Vindy।",
+      "title": "",
+      "tts": {
+        "text": "जहिले पनि, Vindy।",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "जुन 3, 2026 को एआईको यो साप्ताहिक अंकको समापन यहीँ हुन्छ।",
+      "text_markdown": "जुन 3, 2026 को एआईको यो साप्ताहिक अंकको समापन यहीँ हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "जुन तीन, दुई हजार छब्बीस को एआईको यो साप्ताहिक अंकको समापन यहीँ हुन्छ।",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "नयाँ अंक अर्को बुधबार आउँदै छ।",
+      "text_markdown": "नयाँ अंक अर्को बुधबार आउँदै छ।",
+      "title": "",
+      "tts": {
+        "text": "नयाँ अंक अर्को बुधबार आउँदै छ।",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यस बेलासम्म, ख्याल राख्नुहोस्।",
+      "text_markdown": "त्यस बेलासम्म, ख्याल राख्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "त्यस बेलासम्म, ख्याल राख्नुहोस्।",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

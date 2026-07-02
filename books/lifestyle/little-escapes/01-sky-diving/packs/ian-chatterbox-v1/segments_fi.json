@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Koukku",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Koukku",
+      "text_markdown": "Koukku"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On olemassa hetki, juuri sen jälkeen kun olet jättänyt koneen, jonka soisin sinulle ilmaiseksi.",
+      "text_markdown": "On olemassa hetki, juuri sen jälkeen kun olet jättänyt koneen, jonka soisin sinulle ilmaiseksi.",
+      "tts": {
+        "text": "On olemassa hetki, juuri sen jälkeen kun olet jättänyt koneen, jonka soisin sinulle ilmaiseksi.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maailma lakkaa olemasta paikka, jossa elät.",
+      "text_markdown": "Maailma lakkaa olemasta paikka, jossa elät.",
+      "tts": {
+        "text": "Maailma lakkaa olemasta paikka, jossa elät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Siitä tulee jotain, jonka läpi putoat.",
+      "text_markdown": "Siitä tulee jotain, jonka läpi putoat.",
+      "tts": {
+        "text": "Siitä tulee jotain, jonka läpi putoat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ja muutaman ensimmäisen sekunnin ajan mielesi ei ihan pysy mukana siinä, mitä kehosi juuri teki.",
+      "text_markdown": "Ja muutaman ensimmäisen sekunnin ajan mielesi ei ihan pysy mukana siinä, mitä kehosi juuri teki.",
+      "tts": {
+        "text": "Ja muutaman ensimmäisen sekunnin ajan mielesi ei ihan pysy mukana siinä, mitä kehosi juuri teki.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ihmiset kysyvät minulta, miksi hyppään.",
+      "text_markdown": "Ihmiset kysyvät minulta, miksi hyppään.",
+      "tts": {
+        "text": "Ihmiset kysyvät minulta, miksi hyppään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "He odottavat aina, että sanoisin sen olevan jännityksen vuoksi.",
+      "text_markdown": "He odottavat aina, että sanoisin sen olevan jännityksen vuoksi.",
+      "tts": {
+        "text": "He odottavat aina, että sanoisin sen olevan jännityksen vuoksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se ei ole jännitys.",
+      "text_markdown": "Se ei ole jännitys.",
+      "tts": {
+        "text": "Se ei ole jännitys.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jännitys on sitä, mitä tunnet viidellä ensimmäisellä hypylläsi.",
+      "text_markdown": "Jännitys on sitä, mitä tunnet viidellä ensimmäisellä hypylläsi.",
+      "tts": {
+        "text": "Jännitys on sitä, mitä tunnet viidellä ensimmäisellä hypylläsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sen jälkeen jokin hiljaisempi ottaa vallan.",
+      "text_markdown": "Sen jälkeen jokin hiljaisempi ottaa vallan.",
+      "tts": {
+        "text": "Sen jälkeen jokin hiljaisempi ottaa vallan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se mitä jahtaan, on selkeys.",
+      "text_markdown": "Se mitä jahtaan, on selkeys.",
+      "tts": {
+        "text": "Se mitä jahtaan, on selkeys.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kuusikymmentä sekuntia vapaapudotuksessa, eikä mielelläsi ole mitään muuta tekemistä.",
+      "text_markdown": "Kuusikymmentä sekuntia vapaapudotuksessa, eikä mielelläsi ole mitään muuta tekemistä.",
+      "tts": {
+        "text": "Kuusikymmentä sekuntia vapaapudotuksessa, eikä mielelläsi ole mitään muuta tekemistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ei puhelinta.",
+      "text_markdown": "Ei puhelinta.",
+      "tts": {
+        "text": "Ei puhelinta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ei laskuja.",
+      "text_markdown": "Ei laskuja.",
+      "tts": {
+        "text": "Ei laskuja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ei pientä huolta huomisesta.",
+      "text_markdown": "Ei pientä huolta huomisesta.",
+      "tts": {
+        "text": "Ei pientä huolta huomisesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Vain tuuli, sinun hengityksesi ja maan hidas kaari altasi.",
+      "text_markdown": "Vain tuuli, sinun hengityksesi ja maan hidas kaari altasi.",
+      "tts": {
+        "text": "Vain tuuli, sinun hengityksesi ja maan hidas kaari altasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Suurin osa elämästä on meluisaa.",
+      "text_markdown": "Suurin osa elämästä on meluisaa.",
+      "tts": {
+        "text": "Suurin osa elämästä on meluisaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Tuo minuutti ei ole.",
+      "text_markdown": "Tuo minuutti ei ole.",
+      "tts": {
+        "text": "Tuo minuutti ei ole.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laskuvarjohyppääjät eivät ole hulluja.",
+      "text_markdown": "Laskuvarjohyppääjät eivät ole hulluja.",
+      "tts": {
+        "text": "Laskuvarjohyppääjät eivät ole hulluja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Useimmat meistä ovat rauhallisia ihmisiä, jotka löysivät tavan tuntea olonsa rauhalliseksi nopeammin.",
+      "text_markdown": "Useimmat meistä ovat rauhallisia ihmisiä, jotka löysivät tavan tuntea olonsa rauhalliseksi nopeammin.",
+      "tts": {
+        "text": "Useimmat meistä ovat rauhallisia ihmisiä, jotka löysivät tavan tuntea olonsa rauhalliseksi nopeammin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Me hyppäämme ulos lentokoneista samalla tavalla kuin toiset meditoivat.",
+      "text_markdown": "Me hyppäämme ulos lentokoneista samalla tavalla kuin toiset meditoivat.",
+      "tts": {
+        "text": "Me hyppäämme ulos lentokoneista samalla tavalla kuin toiset meditoivat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se puhdistaa jotain.",
+      "text_markdown": "Se puhdistaa jotain.",
+      "tts": {
+        "text": "Se puhdistaa jotain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ja sitten, joka viikonloppu, se puhdistaa sen taas.",
+      "text_markdown": "Ja sitten, joka viikonloppu, se puhdistaa sen taas.",
+      "tts": {
+        "text": "Ja sitten, joka viikonloppu, se puhdistaa sen taas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäisellä kerralla, kun näin laskuvarjon avautuvan ylläni, itkin valjaisiin.",
+      "text_markdown": "Ensimmäisellä kerralla, kun näin laskuvarjon avautuvan ylläni, itkin valjaisiin.",
+      "tts": {
+        "text": "Ensimmäisellä kerralla, kun näin laskuvarjon avautuvan ylläni, itkin valjaisiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En odottanut tekeväni niin.",
+      "text_markdown": "En odottanut tekeväni niin.",
+      "tts": {
+        "text": "En odottanut tekeväni niin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Aikuinen mies, taivaalla pehmeän kangasneliön alla, itkien syystä, jota ei pystynyt selittämään.",
+      "text_markdown": "Aikuinen mies, taivaalla pehmeän kangasneliön alla, itkien syystä, jota ei pystynyt selittämään.",
+      "tts": {
+        "text": "Aikuinen mies, taivaalla pehmeän kangasneliön alla, itkien syystä, jota ei pystynyt selittämään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ohjaajani nauroi lempeästi ja taputti minua olalle.",
+      "text_markdown": "Ohjaajani nauroi lempeästi ja taputti minua olalle.",
+      "tts": {
+        "text": "Ohjaajani nauroi lempeästi ja taputti minua olalle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hän oli nähnyt sen monta kertaa.",
+      "text_markdown": "Hän oli nähnyt sen monta kertaa.",
+      "tts": {
+        "text": "Hän oli nähnyt sen monta kertaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sillä hetkellä tiesin, että palaisin.",
+      "text_markdown": "Sillä hetkellä tiesin, että palaisin.",
+      "tts": {
+        "text": "Sillä hetkellä tiesin, että palaisin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Laskuvarjohyppy ei ole rohkeudesta.",
+      "text_markdown": "Laskuvarjohyppy ei ole rohkeudesta.",
+      "tts": {
+        "text": "Laskuvarjohyppy ei ole rohkeudesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on yhden paikan löytämistä, jossa mielesi hiljenee.",
+      "text_markdown": "Se on yhden paikan löytämistä, jossa mielesi hiljenee.",
+      "tts": {
+        "text": "Se on yhden paikan löytämistä, jossa mielesi hiljenee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Joillekin ihmisille se paikka on joogamatto.",
+      "text_markdown": "Joillekin ihmisille se paikka on joogamatto.",
+      "tts": {
+        "text": "Joillekin ihmisille se paikka on joogamatto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Joillekin se on pitkä juoksu tyhjällä tiellä.",
+      "text_markdown": "Joillekin se on pitkä juoksu tyhjällä tiellä.",
+      "tts": {
+        "text": "Joillekin se on pitkä juoksu tyhjällä tiellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Joillekin se on onki, tai piano, tai keittiö aamukuudelta.",
+      "text_markdown": "Joillekin se on onki, tai piano, tai keittiö aamukuudelta.",
+      "tts": {
+        "text": "Joillekin se on onki, tai piano, tai keittiö aamukuudelta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Minulle se on neljätuhatta metriä maan yläpuolella, eikä siellä ole muuta tekemistä kuin hengittää.",
+      "text_markdown": "Minulle se on neljätuhatta metriä maan yläpuolella, eikä siellä ole muuta tekemistä kuin hengittää.",
+      "tts": {
+        "text": "Minulle se on neljätuhatta metriä maan yläpuolella, eikä siellä ole muuta tekemistä kuin hengittää.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vetovoimaa, kun sen kerran tunnet, on vaikea kuvailla ystävälle illallisella.",
+      "text_markdown": "Vetovoimaa, kun sen kerran tunnet, on vaikea kuvailla ystävälle illallisella.",
+      "tts": {
+        "text": "Vetovoimaa, kun sen kerran tunnet, on vaikea kuvailla ystävälle illallisella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yrität, ja he hymyilevät kohteliaasti, ja sinä luovutat.",
+      "text_markdown": "Yrität, ja he hymyilevät kohteliaasti, ja sinä luovutat.",
+      "tts": {
+        "text": "Yrität, ja he hymyilevät kohteliaasti, ja sinä luovutat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on ihan hyvä.",
+      "text_markdown": "Se on ihan hyvä.",
+      "tts": {
+        "text": "Se on ihan hyvä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Et alkanut hypätä selittääksesi sitä.",
+      "text_markdown": "Et alkanut hypätä selittääksesi sitä.",
+      "tts": {
+        "text": "Et alkanut hypätä selittääksesi sitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Aloit hyppiä, koska ensimmäisellä yrittämisellä jokin sisälläsi sanoi, ahaa, siellä sinä olet.",
+      "text_markdown": "Aloit hyppiä, koska ensimmäisellä yrittämisellä jokin sisälläsi sanoi, ahaa, siellä sinä olet.",
+      "tts": {
+        "text": "Aloit hyppiä, koska ensimmäisellä yrittämisellä jokin sisälläsi sanoi, ahaa, siellä sinä olet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Oletko koskaan seissyt jonkin korkean reunalla ja tuntenut, että kehosi nojaa avoimeen ilmaan?",
+      "text_markdown": "Oletko koskaan seissyt jonkin korkean reunalla ja tuntenut, että kehosi nojaa avoimeen ilmaan?",
+      "tts": {
+        "text": "Oletko koskaan seissyt jonkin korkean reunalla ja tuntenut, että kehosi nojaa avoimeen ilmaan?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vain hieman, vain sekunnin verran.",
+      "text_markdown": "Vain hieman, vain sekunnin verran.",
+      "tts": {
+        "text": "Vain hieman, vain sekunnin verran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jos olet, tiedät jo mistä puhun.",
+      "text_markdown": "Jos olet, tiedät jo mistä puhun.",
+      "tts": {
+        "text": "Jos olet, tiedät jo mistä puhun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Laskuvarjohyppy on sitä, mitä tapahtuu, kun lakkaat teeskentelemästä, ettet nojaa.",
+      "text_markdown": "Laskuvarjohyppy on sitä, mitä tapahtuu, kun lakkaat teeskentelemästä, ettet nojaa.",
+      "tts": {
+        "text": "Laskuvarjohyppy on sitä, mitä tapahtuu, kun lakkaat teeskentelemästä, ettet nojaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Astut ulos, tarkoituksella, siihen paikkaan, josta kehosi on hiljaisesti kysellyt vuosien ajan.",
+      "text_markdown": "Astut ulos, tarkoituksella, siihen paikkaan, josta kehosi on hiljaisesti kysellyt vuosien ajan.",
+      "tts": {
+        "text": "Astut ulos, tarkoituksella, siihen paikkaan, josta kehosi on hiljaisesti kysellyt vuosien ajan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ja sitten, hyvin nopeasti, opit, että maa ei koskaan ollut se paikka, jossa pelko oli.",
+      "text_markdown": "Ja sitten, hyvin nopeasti, opit, että maa ei koskaan ollut se paikka, jossa pelko oli.",
+      "tts": {
+        "text": "Ja sitten, hyvin nopeasti, opit, että maa ei koskaan ollut se paikka, jossa pelko oli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pelko oli nojaamisessa.",
+      "text_markdown": "Pelko oli nojaamisessa.",
+      "tts": {
+        "text": "Pelko oli nojaamisessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kun hyppäät, pelko menee pois.",
+      "text_markdown": "Kun hyppäät, pelko menee pois.",
+      "tts": {
+        "text": "Kun hyppäät, pelko menee pois.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jäljelle jää jotain, mikä tuntuu melkein kodilta.",
+      "text_markdown": "Jäljelle jää jotain, mikä tuntuu melkein kodilta.",
+      "tts": {
+        "text": "Jäljelle jää jotain, mikä tuntuu melkein kodilta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sydämesi hidastuu.",
+      "text_markdown": "Sydämesi hidastuu.",
+      "tts": {
+        "text": "Sydämesi hidastuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hengityksesi löytää rytmin, jota se on etsinyt.",
+      "text_markdown": "Hengityksesi löytää rytmin, jota se on etsinyt.",
+      "tts": {
+        "text": "Hengityksesi löytää rytmin, jota se on etsinyt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ilma kannattelee sinua.",
+      "text_markdown": "Ilma kannattelee sinua.",
+      "tts": {
+        "text": "Ilma kannattelee sinua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ja tunnet, ehkä ensimmäistä kertaa pitkään aikaan, että olet juuri siinä missä olet.",
+      "text_markdown": "Ja tunnet, ehkä ensimmäistä kertaa pitkään aikaan, että olet juuri siinä missä olet.",
+      "tts": {
+        "text": "Ja tunnet, ehkä ensimmäistä kertaa pitkään aikaan, että olet juuri siinä missä olet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Niin sen sinulle kertoisin, jos kysyisit minulta pitkällä kävelyllä.",
+      "text_markdown": "Niin sen sinulle kertoisin, jos kysyisit minulta pitkällä kävelyllä.",
+      "tts": {
+        "text": "Niin sen sinulle kertoisin, jos kysyisit minulta pitkällä kävelyllä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Miksi rauhallinen ja järkevä ihminen jatkaa hyppimistä täysin toimivista lentokoneista?",
+      "text_markdown": "Miksi rauhallinen ja järkevä ihminen jatkaa hyppimistä täysin toimivista lentokoneista?",
+      "tts": {
+        "text": "Miksi rauhallinen ja järkevä ihminen jatkaa hyppimistä täysin toimivista lentokoneista?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sanoisin sinulle, että se on hiljaisin asia, jonka teen.",
+      "text_markdown": "Sanoisin sinulle, että se on hiljaisin asia, jonka teen.",
+      "tts": {
+        "text": "Sanoisin sinulle, että se on hiljaisin asia, jonka teen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ja tarkoittaisin sitä.",
+      "text_markdown": "Ja tarkoittaisin sitä.",
+      "tts": {
+        "text": "Ja tarkoittaisin sitä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Ensimmäinen kerta",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ensimmäinen kerta",
+      "text_markdown": "Ensimmäinen kerta"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Annapa kun laitan sinut koneeseen.",
+      "text_markdown": "Annapa kun laitan sinut koneeseen.",
+      "tts": {
+        "text": "Annapa kun laitan sinut koneeseen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Istut matalalla metallipenkillä, valjastettuna kiinni ohjaajaan takanasi.",
+      "text_markdown": "Istut matalalla metallipenkillä, valjastettuna kiinni ohjaajaan takanasi.",
+      "tts": {
+        "text": "Istut matalalla metallipenkillä, valjastettuna kiinni ohjaajaan takanasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kone nousee hitaina, laiskoina kaarteina.",
+      "text_markdown": "Kone nousee hitaina, laiskoina kaarteina.",
+      "tts": {
+        "text": "Kone nousee hitaina, laiskoina kaarteina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pieni nelikulmainen ikkuna vieressäsi muuttuu yhä sinisemmäksi.",
+      "text_markdown": "Pieni nelikulmainen ikkuna vieressäsi muuttuu yhä sinisemmäksi.",
+      "tts": {
+        "text": "Pieni nelikulmainen ikkuna vieressäsi muuttuu yhä sinisemmäksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tunnet sydämesi kurkussasi, mutta et panikoi.",
+      "text_markdown": "Tunnet sydämesi kurkussasi, mutta et panikoi.",
+      "tts": {
+        "text": "Tunnet sydämesi kurkussasi, mutta et panikoi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Olet vain hyvin, hyvin valveilla.",
+      "text_markdown": "Olet vain hyvin, hyvin valveilla.",
+      "tts": {
+        "text": "Olet vain hyvin, hyvin valveilla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ohjaaja kumartuu lähelle korvaasi.",
+      "text_markdown": "Ohjaaja kumartuu lähelle korvaasi.",
+      "tts": {
+        "text": "Ohjaaja kumartuu lähelle korvaasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän kertoo sinulle, rauhallisesti, että kaiken mitä sinun täytyy tehdä, hän kertoo sinulle silloin kun.",
+      "text_markdown": "Hän kertoo sinulle, rauhallisesti, että kaiken mitä sinun täytyy tehdä, hän kertoo sinulle silloin kun.",
+      "tts": {
+        "text": "Hän kertoo sinulle, rauhallisesti, että kaiken mitä sinun täytyy tehdä, hän kertoo sinulle silloin kun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nyökkäät.",
+      "text_markdown": "Nyökkäät.",
+      "tts": {
+        "text": "Nyökkäät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Olet nyökännyt niin monta kertaa viimeisen tunnin aikana, että niskasi alkaa olla kipeä.",
+      "text_markdown": "Olet nyökännyt niin monta kertaa viimeisen tunnin aikana, että niskasi alkaa olla kipeä.",
+      "tts": {
+        "text": "Olet nyökännyt niin monta kertaa viimeisen tunnin aikana, että niskasi alkaa olla kipeä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten ovi avautuu.",
+      "text_markdown": "Sitten ovi avautuu.",
+      "tts": {
+        "text": "Sitten ovi avautuu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuuli tulee sisään kuin seinä, äänekkäänä ja kylmänä ja elävänä, ja yhtäkkiä kone tuntuu hyvin pieneltä.",
+      "text_markdown": "Tuuli tulee sisään kuin seinä, äänekkäänä ja kylmänä ja elävänä, ja yhtäkkiä kone tuntuu hyvin pieneltä.",
+      "tts": {
+        "text": "Tuuli tulee sisään kuin seinä, äänekkäänä ja kylmänä ja elävänä, ja yhtäkkiä kone tuntuu hyvin pieneltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Liu'ut reunalle.",
+      "text_markdown": "Liu'ut reunalle.",
+      "tts": {
+        "text": "Liu'ut reunalle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Varpaasi roikkuvat tyhjyydessä.",
+      "text_markdown": "Varpaasi roikkuvat tyhjyydessä.",
+      "tts": {
+        "text": "Varpaasi roikkuvat tyhjyydessä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Katsot alas, ja maa on niin kaukana, ettei se enää näytä maalta.",
+      "text_markdown": "Katsot alas, ja maa on niin kaukana, ettei se enää näytä maalta.",
+      "tts": {
+        "text": "Katsot alas, ja maa on niin kaukana, ettei se enää näytä maalta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se näyttää tilkkutäkiltä.",
+      "text_markdown": "Se näyttää tilkkutäkiltä.",
+      "tts": {
+        "text": "Se näyttää tilkkutäkiltä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Tiet ohuita kuin lankaa.",
+      "text_markdown": "Tiet ohuita kuin lankaa.",
+      "tts": {
+        "text": "Tiet ohuita kuin lankaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Joki, väriltään himmeää hopeaa.",
+      "text_markdown": "Joki, väriltään himmeää hopeaa.",
+      "tts": {
+        "text": "Joki, väriltään himmeää hopeaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Pikkuisia vihreitä ja ruskeita peltoja, joita pensasaidat liittävät yhteen.",
+      "text_markdown": "Pikkuisia vihreitä ja ruskeita peltoja, joita pensasaidat liittävät yhteen.",
+      "tts": {
+        "text": "Pikkuisia vihreitä ja ruskeita peltoja, joita pensasaidat liittävät yhteen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ohjaajasi laskee.",
+      "text_markdown": "Ohjaajasi laskee.",
+      "tts": {
+        "text": "Ohjaajasi laskee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän sanoo yksi.",
+      "text_markdown": "Hän sanoo yksi.",
+      "tts": {
+        "text": "Hän sanoo yksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hän sanoo kaksi.",
+      "text_markdown": "Hän sanoo kaksi.",
+      "tts": {
+        "text": "Hän sanoo kaksi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kolmosella kone on poissa.",
+      "text_markdown": "Kolmosella kone on poissa.",
+      "tts": {
+        "text": "Kolmosella kone on poissa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kolme ensimmäistä sekuntia ovat vaikeimmat.",
+      "text_markdown": "Kolme ensimmäistä sekuntia ovat vaikeimmat.",
+      "tts": {
+        "text": "Kolme ensimmäistä sekuntia ovat vaikeimmat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kehosi uskoo putoavansa, koska se putoaa, eikä kehollesi ole koskaan kerrottu, että tämä on okei.",
+      "text_markdown": "Kehosi uskoo putoavansa, koska se putoaa, eikä kehollesi ole koskaan kerrottu, että tämä on okei.",
+      "tts": {
+        "text": "Kehosi uskoo putoavansa, koska se putoaa, eikä kehollesi ole koskaan kerrottu, että tämä on okei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Päästät äänen.",
+      "text_markdown": "Päästät äänen.",
+      "tts": {
+        "text": "Päästät äänen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kaikki päästävät äänen.",
+      "text_markdown": "Kaikki päästävät äänen.",
+      "tts": {
+        "text": "Kaikki päästävät äänen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ei ole mitään syytä hävetä sitä ääntä.",
+      "text_markdown": "Ei ole mitään syytä hävetä sitä ääntä.",
+      "tts": {
+        "text": "Ei ole mitään syytä hävetä sitä ääntä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten tapahtuu jotain ihmeellistä.",
+      "text_markdown": "Sitten tapahtuu jotain ihmeellistä.",
+      "tts": {
+        "text": "Sitten tapahtuu jotain ihmeellistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Putoaminen lakkaa tuntumasta putoamiselta.",
+      "text_markdown": "Putoaminen lakkaa tuntumasta putoamiselta.",
+      "tts": {
+        "text": "Putoaminen lakkaa tuntumasta putoamiselta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tuuli nousee vastaan ja kannattelee sinua, niin kuin vesi kannattelee sinua, kun kellut selälläsi.",
+      "text_markdown": "Tuuli nousee vastaan ja kannattelee sinua, niin kuin vesi kannattelee sinua, kun kellut selälläsi.",
+      "tts": {
+        "text": "Tuuli nousee vastaan ja kannattelee sinua, niin kuin vesi kannattelee sinua, kun kellut selälläsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kätesi ja jalkasi levittäytyvät ilman että pyydät niitä.",
+      "text_markdown": "Kätesi ja jalkasi levittäytyvät ilman että pyydät niitä.",
+      "tts": {
+        "text": "Kätesi ja jalkasi levittäytyvät ilman että pyydät niitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kasvojasi tuntuu vedettävän moneen suuntaan yhtä aikaa.",
+      "text_markdown": "Kasvojasi tuntuu vedettävän moneen suuntaan yhtä aikaa.",
+      "tts": {
+        "text": "Kasvojasi tuntuu vedettävän moneen suuntaan yhtä aikaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Et osaa sanoa, hymyiletkö vai huudatko.",
+      "text_markdown": "Et osaa sanoa, hymyiletkö vai huudatko.",
+      "tts": {
+        "text": "Et osaa sanoa, hymyiletkö vai huudatko.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sillä ei ole väliä.",
+      "text_markdown": "Sillä ei ole väliä.",
+      "tts": {
+        "text": "Sillä ei ole väliä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Katsot ympärillesi.",
+      "text_markdown": "Katsot ympärillesi.",
+      "tts": {
+        "text": "Katsot ympärillesi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maa on yhä hyvin kaukana altasi, mutta se on lähempänä nyt, ja näet värit paremmin.",
+      "text_markdown": "Maa on yhä hyvin kaukana altasi, mutta se on lähempänä nyt, ja näet värit paremmin.",
+      "tts": {
+        "text": "Maa on yhä hyvin kaukana altasi, mutta se on lähempänä nyt, ja näet värit paremmin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Autoja moottoritiellä, hitaita kuin muurahaisia.",
+      "text_markdown": "Autoja moottoritiellä, hitaita kuin muurahaisia.",
+      "tts": {
+        "text": "Autoja moottoritiellä, hitaita kuin muurahaisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Järvi, täysin tyyni.",
+      "text_markdown": "Järvi, täysin tyyni.",
+      "tts": {
+        "text": "Järvi, täysin tyyni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Pilven varjo liukuu metsän yli.",
+      "text_markdown": "Pilven varjo liukuu metsän yli.",
+      "tts": {
+        "text": "Pilven varjo liukuu metsän yli.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sinä lennät.",
+      "text_markdown": "Sinä lennät.",
+      "tts": {
+        "text": "Sinä lennät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Et koneessa.",
+      "text_markdown": "Et koneessa.",
+      "tts": {
+        "text": "Et koneessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sinä, sinun kehosi, lentää.",
+      "text_markdown": "Sinä, sinun kehosi, lentää.",
+      "tts": {
+        "text": "Sinä, sinun kehosi, lentää.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ohjaajasi taputtaa sinua olalle.",
+      "text_markdown": "Ohjaajasi taputtaa sinua olalle.",
+      "tts": {
+        "text": "Ohjaajasi taputtaa sinua olalle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vedät narusta.",
+      "text_markdown": "Vedät narusta.",
+      "tts": {
+        "text": "Vedät narusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tulee pehmeä nykäisy, kuin joku tarttuisi varovasti paitasi takaa.",
+      "text_markdown": "Tulee pehmeä nykäisy, kuin joku tarttuisi varovasti paitasi takaa.",
+      "tts": {
+        "text": "Tulee pehmeä nykäisy, kuin joku tarttuisi varovasti paitasi takaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sitten toinen nykäisy, kovempi, joka nostaa sinut pystyyn.",
+      "text_markdown": "Sitten toinen nykäisy, kovempi, joka nostaa sinut pystyyn.",
+      "tts": {
+        "text": "Sitten toinen nykäisy, kovempi, joka nostaa sinut pystyyn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maailma hiljenee.",
+      "text_markdown": "Maailma hiljenee.",
+      "tts": {
+        "text": "Maailma hiljenee.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tuuli on poissa.",
+      "text_markdown": "Tuuli on poissa.",
+      "tts": {
+        "text": "Tuuli on poissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Pauhu on poissa.",
+      "text_markdown": "Pauhu on poissa.",
+      "tts": {
+        "text": "Pauhu on poissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Putoaminen on poissa.",
+      "text_markdown": "Putoaminen on poissa.",
+      "tts": {
+        "text": "Putoaminen on poissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Roikut nyt valjaissa, leveän kankaisen suorakulmion alla.",
+      "text_markdown": "Roikut nyt valjaissa, leveän kankaisen suorakulmion alla.",
+      "tts": {
+        "text": "Roikut nyt valjaissa, leveän kankaisen suorakulmion alla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Taivas on yhtäkkiä hyvin, hyvin tyyni.",
+      "text_markdown": "Taivas on yhtäkkiä hyvin, hyvin tyyni.",
+      "tts": {
+        "text": "Taivas on yhtäkkiä hyvin, hyvin tyyni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kuulet linnun altasi.",
+      "text_markdown": "Kuulet linnun altasi.",
+      "tts": {
+        "text": "Kuulet linnun altasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kuulet oman hengityksesi.",
+      "text_markdown": "Kuulet oman hengityksesi.",
+      "tts": {
+        "text": "Kuulet oman hengityksesi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ohjaajasi nauraa korvaasi ja kysyy, miten voit.",
+      "text_markdown": "Ohjaajasi nauraa korvaasi ja kysyy, miten voit.",
+      "tts": {
+        "text": "Ohjaajasi nauraa korvaasi ja kysyy, miten voit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Et pysty vastaamaan hetkeen, koska itket, tai naurat, tai molempia.",
+      "text_markdown": "Et pysty vastaamaan hetkeen, koska itket, tai naurat, tai molempia.",
+      "tts": {
+        "text": "Et pysty vastaamaan hetkeen, koska itket, tai naurat, tai molempia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kupun matka kestää noin viisi minuuttia.",
+      "text_markdown": "Kupun matka kestää noin viisi minuuttia.",
+      "tts": {
+        "text": "Kupun matka kestää noin viisi minuuttia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ne ovat elämäsi viisi rauhallisinta minuuttia.",
+      "text_markdown": "Ne ovat elämäsi viisi rauhallisinta minuuttia.",
+      "tts": {
+        "text": "Ne ovat elämäsi viisi rauhallisinta minuuttia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun jalkasi koskettavat maata, otat kolme lyhyttä juoksuaskelta ja pysähdyt.",
+      "text_markdown": "Kun jalkasi koskettavat maata, otat kolme lyhyttä juoksuaskelta ja pysähdyt.",
+      "tts": {
+        "text": "Kun jalkasi koskettavat maata, otat kolme lyhyttä juoksuaskelta ja pysähdyt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ruoho on taas todellista.",
+      "text_markdown": "Ruoho on taas todellista.",
+      "tts": {
+        "text": "Ruoho on taas todellista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Maailma on taas kiinteä.",
+      "text_markdown": "Maailma on taas kiinteä.",
+      "tts": {
+        "text": "Maailma on taas kiinteä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Käännyt ympäri ja katsot ylös taivaalle.",
+      "text_markdown": "Käännyt ympäri ja katsot ylös taivaalle.",
+      "tts": {
+        "text": "Käännyt ympäri ja katsot ylös taivaalle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ja ymmärrät, ensimmäistä kertaa, mitä ystäväsi on yrittänyt sinulle kertoa kaikki nämä vuodet.",
+      "text_markdown": "Ja ymmärrät, ensimmäistä kertaa, mitä ystäväsi on yrittänyt sinulle kertoa kaikki nämä vuodet.",
+      "tts": {
+        "text": "Ja ymmärrät, ensimmäistä kertaa, mitä ystäväsi on yrittänyt sinulle kertoa kaikki nämä vuodet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Alkuun pääseminen",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Alkuun pääseminen",
+      "text_markdown": "Alkuun pääseminen"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eli miten tämän käytännössä tehdään, jos jonain päivänä päätät että haluat.",
+      "text_markdown": "Eli miten tämän käytännössä tehdään, jos jonain päivänä päätät että haluat.",
+      "tts": {
+        "text": "Eli miten tämän käytännössä tehdään, jos jonain päivänä päätät että haluat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rehellinen vastaus on, helpommin kuin luulet.",
+      "text_markdown": "Rehellinen vastaus on, helpommin kuin luulet.",
+      "tts": {
+        "text": "Rehellinen vastaus on, helpommin kuin luulet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lähes mikä tahansa hyppyalue maailmassa ottaa täysin aloittelijan vastaan samana aamuna.",
+      "text_markdown": "Lähes mikä tahansa hyppyalue maailmassa ottaa täysin aloittelijan vastaan samana aamuna.",
+      "tts": {
+        "text": "Lähes mikä tahansa hyppyalue maailmassa ottaa täysin aloittelijan vastaan samana aamuna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He vievät sinut taivaalle tandemhypyllä, ohjaaja selässäsi.",
+      "text_markdown": "He vievät sinut taivaalle tandemhypyllä, ohjaaja selässäsi.",
+      "tts": {
+        "text": "He vievät sinut taivaalle tandemhypyllä, ohjaaja selässäsi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saavut paikalle, allekirjoitat paperit, katsot lyhyen videon ja tapaat ohjaajasi.",
+      "text_markdown": "Saavut paikalle, allekirjoitat paperit, katsot lyhyen videon ja tapaat ohjaajasi.",
+      "tts": {
+        "text": "Saavut paikalle, allekirjoitat paperit, katsot lyhyen videon ja tapaat ohjaajasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Päälläsi on hyppyhaalari ja valjaat.",
+      "text_markdown": "Päälläsi on hyppyhaalari ja valjaat.",
+      "tts": {
+        "text": "Päälläsi on hyppyhaalari ja valjaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kiipeät koneeseen.",
+      "text_markdown": "Kiipeät koneeseen.",
+      "tts": {
+        "text": "Kiipeät koneeseen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Noin kaksikymmentä minuuttia myöhemmin kävelet takaisin nurmikon yli elämäsi suurin virne kasvoillasi.",
+      "text_markdown": "Noin kaksikymmentä minuuttia myöhemmin kävelet takaisin nurmikon yli elämäsi suurin virne kasvoillasi.",
+      "tts": {
+        "text": "Noin kaksikymmentä minuuttia myöhemmin kävelet takaisin nurmikon yli elämäsi suurin virne kasvoillasi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäistä hyppyäsi varten sinun ei tarvitse olla rohkea.",
+      "text_markdown": "Ensimmäistä hyppyäsi varten sinun ei tarvitse olla rohkea.",
+      "tts": {
+        "text": "Ensimmäistä hyppyäsi varten sinun ei tarvitse olla rohkea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sinun täytyy vain olla halukas.",
+      "text_markdown": "Sinun täytyy vain olla halukas.",
+      "tts": {
+        "text": "Sinun täytyy vain olla halukas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ohjaaja tekee kaiken.",
+      "text_markdown": "Ohjaaja tekee kaiken.",
+      "tts": {
+        "text": "Ohjaaja tekee kaiken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän vetää laskuvarjon.",
+      "text_markdown": "Hän vetää laskuvarjon.",
+      "tts": {
+        "text": "Hän vetää laskuvarjon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hän ohjaa kupua.",
+      "text_markdown": "Hän ohjaa kupua.",
+      "tts": {
+        "text": "Hän ohjaa kupua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hän laskeuttaa sinut.",
+      "text_markdown": "Hän laskeuttaa sinut.",
+      "tts": {
+        "text": "Hän laskeuttaa sinut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sinä olet mukana matkalla, maailman parhaalla paikalla.",
+      "text_markdown": "Sinä olet mukana matkalla, maailman parhaalla paikalla.",
+      "tts": {
+        "text": "Sinä olet mukana matkalla, maailman parhaalla paikalla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos tuon ensimmäisen hypyn jälkeen olet kiinnostunut hyppäämään yksin, polun nimi on Kiihdytetty Vapaapudotus.",
+      "text_markdown": "Jos tuon ensimmäisen hypyn jälkeen olet kiinnostunut hyppäämään yksin, polun nimi on Kiihdytetty Vapaapudotus.",
+      "tts": {
+        "text": "Jos tuon ensimmäisen hypyn jälkeen olet kiinnostunut hyppäämään yksin, polun nimi on Kiihdytetty Vapaapudotus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on koulutusohjelma, jota opetetaan jokaisella hyppyalueella ja joka opettaa sinut olemaan oikea laskuvarjohyppääjä.",
+      "text_markdown": "Se on koulutusohjelma, jota opetetaan jokaisella hyppyalueella ja joka opettaa sinut olemaan oikea laskuvarjohyppääjä.",
+      "tts": {
+        "text": "Se on koulutusohjelma, jota opetetaan jokaisella hyppyalueella ja joka opettaa sinut olemaan oikea laskuvarjohyppääjä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ei matkustaja.",
+      "text_markdown": "Ei matkustaja.",
+      "tts": {
+        "text": "Ei matkustaja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Oman kehosi lentäjä taivaalla.",
+      "text_markdown": "Oman kehosi lentäjä taivaalla.",
+      "tts": {
+        "text": "Oman kehosi lentäjä taivaalla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ohjelman ensimmäinen taso on pitkä luokkahuonepäivä.",
+      "text_markdown": "Ohjelman ensimmäinen taso on pitkä luokkahuonepäivä.",
+      "tts": {
+        "text": "Ohjelman ensimmäinen taso on pitkä luokkahuonepäivä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Opit, miten pudota.",
+      "text_markdown": "Opit, miten pudota.",
+      "tts": {
+        "text": "Opit, miten pudota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Opit lukemaan korkeusmittariasi.",
+      "text_markdown": "Opit lukemaan korkeusmittariasi.",
+      "tts": {
+        "text": "Opit lukemaan korkeusmittariasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Opit, mitä tehdä jos pääkupusi ei aukea.",
+      "text_markdown": "Opit, mitä tehdä jos pääkupusi ei aukea.",
+      "tts": {
+        "text": "Opit, mitä tehdä jos pääkupusi ei aukea.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Luokkahuonepäivä kestää noin kuusi tai seitsemän tuntia.",
+      "text_markdown": "Luokkahuonepäivä kestää noin kuusi tai seitsemän tuntia.",
+      "tts": {
+        "text": "Luokkahuonepäivä kestää noin kuusi tai seitsemän tuntia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sen lopussa tiedät laskuvarjoista enemmän kuin useimmat ihmiset oppivat eliniässään.",
+      "text_markdown": "Sen lopussa tiedät laskuvarjoista enemmän kuin useimmat ihmiset oppivat eliniässään.",
+      "tts": {
+        "text": "Sen lopussa tiedät laskuvarjoista enemmän kuin useimmat ihmiset oppivat eliniässään.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sitten tulee ensimmäinen yksinhyppysi.",
+      "text_markdown": "Sitten tulee ensimmäinen yksinhyppysi.",
+      "tts": {
+        "text": "Sitten tulee ensimmäinen yksinhyppysi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kaksi ohjaajaa hyppää kanssasi, yksi kummallakin puolella, pitäen valjaistasi kiinni.",
+      "text_markdown": "Kaksi ohjaajaa hyppää kanssasi, yksi kummallakin puolella, pitäen valjaistasi kiinni.",
+      "tts": {
+        "text": "Kaksi ohjaajaa hyppää kanssasi, yksi kummallakin puolella, pitäen valjaistasi kiinni.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He päästävät sinut irti vapaapudotuksessa, kun olet vakaa.",
+      "text_markdown": "He päästävät sinut irti vapaapudotuksessa, kun olet vakaa.",
+      "tts": {
+        "text": "He päästävät sinut irti vapaapudotuksessa, kun olet vakaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vedät oman laskuvarjosi.",
+      "text_markdown": "Vedät oman laskuvarjosi.",
+      "tts": {
+        "text": "Vedät oman laskuvarjosi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Lennät oman kupusi alas maahan.",
+      "text_markdown": "Lennät oman kupusi alas maahan.",
+      "tts": {
+        "text": "Lennät oman kupusi alas maahan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ensimmäisellä kerralla, kun teet näin, kasvojasi särkee seuraavana päivänä siitä, kuinka kovaa olet hymyillyt.",
+      "text_markdown": "Ensimmäisellä kerralla, kun teet näin, kasvojasi särkee seuraavana päivänä siitä, kuinka kovaa olet hymyillyt.",
+      "tts": {
+        "text": "Ensimmäisellä kerralla, kun teet näin, kasvojasi särkee seuraavana päivänä siitä, kuinka kovaa olet hymyillyt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Koko ohjelma vie sinut läpi noin seitsemän hyppyä.",
+      "text_markdown": "Koko ohjelma vie sinut läpi noin seitsemän hyppyä.",
+      "tts": {
+        "text": "Koko ohjelma vie sinut läpi noin seitsemän hyppyä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Lopulta hyppäät yksin.",
+      "text_markdown": "Lopulta hyppäät yksin.",
+      "tts": {
+        "text": "Lopulta hyppäät yksin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sieltä eteenpäin laskuvarjohyppääjät tekevät yleensä ensimmäiset sata hyppyään seuraavan vuoden aikana.",
+      "text_markdown": "Sieltä eteenpäin laskuvarjohyppääjät tekevät yleensä ensimmäiset sata hyppyään seuraavan vuoden aikana.",
+      "tts": {
+        "text": "Sieltä eteenpäin laskuvarjohyppääjät tekevät yleensä ensimmäiset sata hyppyään seuraavan vuoden aikana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Matkan varrella he oppivat lentämään suhteessa muihin hyppääjiin.",
+      "text_markdown": "Matkan varrella he oppivat lentämään suhteessa muihin hyppääjiin.",
+      "tts": {
+        "text": "Matkan varrella he oppivat lentämään suhteessa muihin hyppääjiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "He oppivat lentämään taivaan poikki.",
+      "text_markdown": "He oppivat lentämään taivaan poikki.",
+      "tts": {
+        "text": "He oppivat lentämään taivaan poikki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "He oppivat pakkaamaan oman laskuvarjonsa.",
+      "text_markdown": "He oppivat pakkaamaan oman laskuvarjonsa.",
+      "tts": {
+        "text": "He oppivat pakkaamaan oman laskuvarjonsa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Yhteisö on pieni, ystävällinen ja kärsivällinen.",
+      "text_markdown": "Yhteisö on pieni, ystävällinen ja kärsivällinen.",
+      "tts": {
+        "text": "Yhteisö on pieni, ystävällinen ja kärsivällinen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Kukaan hyppyalueella ei koskaan saa sinua tuntemaan tyhmäksi siitä, että olet aloittelija.",
+      "text_markdown": "Kukaan hyppyalueella ei koskaan saa sinua tuntemaan tyhmäksi siitä, että olet aloittelija.",
+      "tts": {
+        "text": "Kukaan hyppyalueella ei koskaan saa sinua tuntemaan tyhmäksi siitä, että olet aloittelija.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Olemme kaikki olleet aloittelijoita joskus.",
+      "text_markdown": "Olemme kaikki olleet aloittelijoita joskus.",
+      "tts": {
+        "text": "Olemme kaikki olleet aloittelijoita joskus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Useimmat meistä tuntevat olevansa yhä aloittelijoita.",
+      "text_markdown": "Useimmat meistä tuntevat olevansa yhä aloittelijoita.",
+      "tts": {
+        "text": "Useimmat meistä tuntevat olevansa yhä aloittelijoita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entäpä turvallisuus.",
+      "text_markdown": "Entäpä turvallisuus.",
+      "tts": {
+        "text": "Entäpä turvallisuus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tämä on kysymys, jonka jokainen järkevä ihminen esittää, ja se ansaitsee oikean vastauksen.",
+      "text_markdown": "Tämä on kysymys, jonka jokainen järkevä ihminen esittää, ja se ansaitsee oikean vastauksen.",
+      "tts": {
+        "text": "Tämä on kysymys, jonka jokainen järkevä ihminen esittää, ja se ansaitsee oikean vastauksen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Laskuvarjohyppy on itse asiassa hyvin turvallista.",
+      "text_markdown": "Laskuvarjohyppy on itse asiassa hyvin turvallista.",
+      "tts": {
+        "text": "Laskuvarjohyppy on itse asiassa hyvin turvallista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ei niin turvallista kuin kävely, mutta turvallisempaa kuin ajaminen hyppyalueelle.",
+      "text_markdown": "Ei niin turvallista kuin kävely, mutta turvallisempaa kuin ajaminen hyppyalueelle.",
+      "tts": {
+        "text": "Ei niin turvallista kuin kävely, mutta turvallisempaa kuin ajaminen hyppyalueelle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Varusteet ovat erinomaiset.",
+      "text_markdown": "Varusteet ovat erinomaiset.",
+      "tts": {
+        "text": "Varusteet ovat erinomaiset.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "On olemassa pääkupu ja varakupu, sekä automaattinen laite, joka avaa varakuvun, jos sinä et siihen pysty.",
+      "text_markdown": "On olemassa pääkupu ja varakupu, sekä automaattinen laite, joka avaa varakuvun, jos sinä et siihen pysty.",
+      "tts": {
+        "text": "On olemassa pääkupu ja varakupu, sekä automaattinen laite, joka avaa varakuvun, jos sinä et siihen pysty.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Hyppyalueita pyörittävät ammattilaiset, jotka välittävät sinusta.",
+      "text_markdown": "Hyppyalueita pyörittävät ammattilaiset, jotka välittävät sinusta.",
+      "tts": {
+        "text": "Hyppyalueita pyörittävät ammattilaiset, jotka välittävät sinusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ohjaajat välittävät, syvästi, jokaisesta hypystä.",
+      "text_markdown": "Ohjaajat välittävät, syvästi, jokaisesta hypystä.",
+      "tts": {
+        "text": "Ohjaajat välittävät, syvästi, jokaisesta hypystä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mitä se maksaa.",
+      "text_markdown": "Mitä se maksaa.",
+      "tts": {
+        "text": "Mitä se maksaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tandemhyppy on mukavan kahden illallisen hintainen.",
+      "text_markdown": "Tandemhyppy on mukavan kahden illallisen hintainen.",
+      "tts": {
+        "text": "Tandemhyppy on mukavan kahden illallisen hintainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Koulutusohjelma on pienen loman hintainen.",
+      "text_markdown": "Koulutusohjelma on pienen loman hintainen.",
+      "tts": {
+        "text": "Koulutusohjelma on pienen loman hintainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sen jälkeen jokainen hyppy on elokuvalipun ja aterian hintainen.",
+      "text_markdown": "Sen jälkeen jokainen hyppy on elokuvalipun ja aterian hintainen.",
+      "tts": {
+        "text": "Sen jälkeen jokainen hyppy on elokuvalipun ja aterian hintainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tavallisten töiden ja tavallisten elämien ihmiset tekevät tätä joka viikonloppu.",
+      "text_markdown": "Tavallisten töiden ja tavallisten elämien ihmiset tekevät tätä joka viikonloppu.",
+      "tts": {
+        "text": "Tavallisten töiden ja tavallisten elämien ihmiset tekevät tätä joka viikonloppu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "He eivät ole rikkaita.",
+      "text_markdown": "He eivät ole rikkaita.",
+      "tts": {
+        "text": "He eivät ole rikkaita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "He eivät ole epätavallisia.",
+      "text_markdown": "He eivät ole epätavallisia.",
+      "tts": {
+        "text": "He eivät ole epätavallisia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "He ovat vain päättäneet, että tämä on se asia, jota he tekevät.",
+      "text_markdown": "He ovat vain päättäneet, että tämä on se asia, jota he tekevät.",
+      "tts": {
+        "text": "He ovat vain päättäneet, että tämä on se asia, jota he tekevät.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos mietit ensimmäistä hyppyäsi, tässä on ainoa neuvo, jolla on merkitystä.",
+      "text_markdown": "Jos mietit ensimmäistä hyppyäsi, tässä on ainoa neuvo, jolla on merkitystä.",
+      "tts": {
+        "text": "Jos mietit ensimmäistä hyppyäsi, tässä on ainoa neuvo, jolla on merkitystä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Valitse päivämäärä.",
+      "text_markdown": "Valitse päivämäärä.",
+      "tts": {
+        "text": "Valitse päivämäärä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kerro yhdelle ystävälle.",
+      "text_markdown": "Kerro yhdelle ystävälle.",
+      "tts": {
+        "text": "Kerro yhdelle ystävälle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tule paikalle.",
+      "text_markdown": "Tule paikalle.",
+      "tts": {
+        "text": "Tule paikalle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Vaikein osa ei ole putoaminen.",
+      "text_markdown": "Vaikein osa ei ole putoaminen.",
+      "tts": {
+        "text": "Vaikein osa ei ole putoaminen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Vaikein osa on päättäminen.",
+      "text_markdown": "Vaikein osa on päättäminen.",
+      "tts": {
+        "text": "Vaikein osa on päättäminen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kun kerran päätät, taivas on jo sinun.",
+      "text_markdown": "Kun kerran päätät, taivas on jo sinun.",
+      "tts": {
+        "text": "Kun kerran päätät, taivas on jo sinun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Taidon ydin",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Taidon ydin",
+      "text_markdown": "Taidon ydin"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Putoamisen sisällä on piilossa taito, ja se on se osa laskuvarjohypystä, joka pitää sinusta kiinni koko elämäsi.",
+      "text_markdown": "Putoamisen sisällä on piilossa taito, ja se on se osa laskuvarjohypystä, joka pitää sinusta kiinni koko elämäsi.",
+      "tts": {
+        "text": "Putoamisen sisällä on piilossa taito, ja se on se osa laskuvarjohypystä, joka pitää sinusta kiinni koko elämäsi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun katsot kokenutta laskuvarjohyppääjää vapaapudotuksessa, et näe putoavaa ihmistä.",
+      "text_markdown": "Kun katsot kokenutta laskuvarjohyppääjää vapaapudotuksessa, et näe putoavaa ihmistä.",
+      "tts": {
+        "text": "Kun katsot kokenutta laskuvarjohyppääjää vapaapudotuksessa, et näe putoavaa ihmistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Näet ihmisen, joka lentää.",
+      "text_markdown": "Näet ihmisen, joka lentää.",
+      "tts": {
+        "text": "Näet ihmisen, joka lentää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He kääntyvät hitaasti, tarkoituksella, sormenpäillään.",
+      "text_markdown": "He kääntyvät hitaasti, tarkoituksella, sormenpäillään.",
+      "tts": {
+        "text": "He kääntyvät hitaasti, tarkoituksella, sormenpäillään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "He liukuvat eteenpäin taivaan poikki puoli kilometriä kallistamalla olkapäitään eteenpäin pari senttiä.",
+      "text_markdown": "He liukuvat eteenpäin taivaan poikki puoli kilometriä kallistamalla olkapäitään eteenpäin pari senttiä.",
+      "tts": {
+        "text": "He liukuvat eteenpäin taivaan poikki puoli kilometriä kallistamalla olkapäitään eteenpäin pari senttiä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "He pysähtyvät, kesken putoamisen, ja pitävät paikoillaan tyyneyden, joka näyttää mahdottomalta.",
+      "text_markdown": "He pysähtyvät, kesken putoamisen, ja pitävät paikoillaan tyyneyden, joka näyttää mahdottomalta.",
+      "tts": {
+        "text": "He pysähtyvät, kesken putoamisen, ja pitävät paikoillaan tyyneyden, joka näyttää mahdottomalta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Keho on lentokone.",
+      "text_markdown": "Keho on lentokone.",
+      "tts": {
+        "text": "Keho on lentokone.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on taidon ensimmäinen salaisuus.",
+      "text_markdown": "Se on taidon ensimmäinen salaisuus.",
+      "tts": {
+        "text": "Se on taidon ensimmäinen salaisuus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kun ymmärrät tuon, kaikki muu seuraa.",
+      "text_markdown": "Kun ymmärrät tuon, kaikki muu seuraa.",
+      "tts": {
+        "text": "Kun ymmärrät tuon, kaikki muu seuraa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vakaan vapaapudotuksen perusmuotoa kutsutaan kaareksi.",
+      "text_markdown": "Vakaan vapaapudotuksen perusmuotoa kutsutaan kaareksi.",
+      "tts": {
+        "text": "Vakaan vapaapudotuksen perusmuotoa kutsutaan kaareksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Työnnät lantiosi eteenpäin ja annat käsiesi ja jalkojesi roikkua perässä, kuin banaani.",
+      "text_markdown": "Työnnät lantiosi eteenpäin ja annat käsiesi ja jalkojesi roikkua perässä, kuin banaani.",
+      "tts": {
+        "text": "Työnnät lantiosi eteenpäin ja annat käsiesi ja jalkojesi roikkua perässä, kuin banaani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaari on se, mikä pitää sinut kasvot maahan päin ilman että sinun tarvitsee miettiä sitä.",
+      "text_markdown": "Kaari on se, mikä pitää sinut kasvot maahan päin ilman että sinun tarvitsee miettiä sitä.",
+      "tts": {
+        "text": "Kaari on se, mikä pitää sinut kasvot maahan päin ilman että sinun tarvitsee miettiä sitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Uudet hyppääjät opettelevat kaaren ensin vaahtokuopassa, sitten tuulitunnelissa, sitten taivaalla.",
+      "text_markdown": "Uudet hyppääjät opettelevat kaaren ensin vaahtokuopassa, sitten tuulitunnelissa, sitten taivaalla.",
+      "tts": {
+        "text": "Uudet hyppääjät opettelevat kaaren ensin vaahtokuopassa, sitten tuulitunnelissa, sitten taivaalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Vanhat hyppääjät puhuvat yhä kaaresta samaan tapaan kuin vanhat juoksijat puhuvat askelluksestaan.",
+      "text_markdown": "Vanhat hyppääjät puhuvat yhä kaaresta samaan tapaan kuin vanhat juoksijat puhuvat askelluksestaan.",
+      "tts": {
+        "text": "Vanhat hyppääjät puhuvat yhä kaaresta samaan tapaan kuin vanhat juoksijat puhuvat askelluksestaan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun sinulla on vakaa kaari, muu vapaapudotus avautuu.",
+      "text_markdown": "Kun sinulla on vakaa kaari, muu vapaapudotus avautuu.",
+      "tts": {
+        "text": "Kun sinulla on vakaa kaari, muu vapaapudotus avautuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Opit putoamaan hitaasti levittäytymällä leveäksi, muuttumalla leijaksi.",
+      "text_markdown": "Opit putoamaan hitaasti levittäytymällä leveäksi, muuttumalla leijaksi.",
+      "tts": {
+        "text": "Opit putoamaan hitaasti levittäytymällä leveäksi, muuttumalla leijaksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Opit putoamaan nopeasti käpertymällä pieneksi, muuttumalla kiveksi.",
+      "text_markdown": "Opit putoamaan nopeasti käpertymällä pieneksi, muuttumalla kiveksi.",
+      "tts": {
+        "text": "Opit putoamaan nopeasti käpertymällä pieneksi, muuttumalla kiveksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Opit lentämään taivaan poikki, mikä on lähimpänä lentämistä, mihin ihmiskeho pystyy.",
+      "text_markdown": "Opit lentämään taivaan poikki, mikä on lähimpänä lentämistä, mihin ihmiskeho pystyy.",
+      "tts": {
+        "text": "Opit lentämään taivaan poikki, mikä on lähimpänä lentämistä, mihin ihmiskeho pystyy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hyvä lentäjä voi peittää neljäsosakilometrin taivaan poikki kahdessakymmenessä sekunnissa.",
+      "text_markdown": "Hyvä lentäjä voi peittää neljäsosakilometrin taivaan poikki kahdessakymmenessä sekunnissa.",
+      "tts": {
+        "text": "Hyvä lentäjä voi peittää neljäsosakilometrin taivaan poikki kahdessakymmenessä sekunnissa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kädet taakse pyyhkäistynä, keho kallellaan, liikkuen kuin paperilennokki, joka tietää minne on menossa.",
+      "text_markdown": "Kädet taakse pyyhkäistynä, keho kallellaan, liikkuen kuin paperilennokki, joka tietää minne on menossa.",
+      "tts": {
+        "text": "Kädet taakse pyyhkäistynä, keho kallellaan, liikkuen kuin paperilennokki, joka tietää minne on menossa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taidon toinen puoli on kupu.",
+      "text_markdown": "Taidon toinen puoli on kupu.",
+      "tts": {
+        "text": "Taidon toinen puoli on kupu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Laskuvarjo ei ole passiivinen kapine, joka leijuttaa sinut alas.",
+      "text_markdown": "Laskuvarjo ei ole passiivinen kapine, joka leijuttaa sinut alas.",
+      "tts": {
+        "text": "Laskuvarjo ei ole passiivinen kapine, joka leijuttaa sinut alas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on siipi, ja sinä lennät sitä.",
+      "text_markdown": "Se on siipi, ja sinä lennät sitä.",
+      "tts": {
+        "text": "Se on siipi, ja sinä lennät sitä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vetäminen oikeasta ohjaimesta painaa oikeaa siipeä alas ja kääntää sinua oikealle.",
+      "text_markdown": "Vetäminen oikeasta ohjaimesta painaa oikeaa siipeä alas ja kääntää sinua oikealle.",
+      "tts": {
+        "text": "Vetäminen oikeasta ohjaimesta painaa oikeaa siipeä alas ja kääntää sinua oikealle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Vetäminen molemmista samaan aikaan hidastaa sinua ja antaa sinun laskeutua pehmeästi.",
+      "text_markdown": "Vetäminen molemmista samaan aikaan hidastaa sinua ja antaa sinun laskeutua pehmeästi.",
+      "tts": {
+        "text": "Vetäminen molemmista samaan aikaan hidastaa sinua ja antaa sinun laskeutua pehmeästi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Luet tuulta, valitset paikan, suunnittelet kierroksesi.",
+      "text_markdown": "Luet tuulta, valitset paikan, suunnittelet kierroksesi.",
+      "tts": {
+        "text": "Luet tuulta, valitset paikan, suunnittelet kierroksesi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Päästät kupua viime sekunnilla, jotta jalkasi suutelevat maata sen sijaan, että iskeytyisivät siihen.",
+      "text_markdown": "Päästät kupua viime sekunnilla, jotta jalkasi suutelevat maata sen sijaan, että iskeytyisivät siihen.",
+      "tts": {
+        "text": "Päästät kupua viime sekunnilla, jotta jalkasi suutelevat maata sen sijaan, että iskeytyisivät siihen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Kaikki tuo on kupun lentämistä, ja se on oma lajinsa.",
+      "text_markdown": "Kaikki tuo on kupun lentämistä, ja se on oma lajinsa.",
+      "tts": {
+        "text": "Kaikki tuo on kupun lentämistä, ja se on oma lajinsa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ja sitten on pakkaaminen.",
+      "text_markdown": "Ja sitten on pakkaaminen.",
+      "tts": {
+        "text": "Ja sitten on pakkaaminen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jokainen laskuvarjohyppääjä pakkaa oman laskuvarjonsa.",
+      "text_markdown": "Jokainen laskuvarjohyppääjä pakkaa oman laskuvarjonsa.",
+      "tts": {
+        "text": "Jokainen laskuvarjohyppääjä pakkaa oman laskuvarjonsa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joka ainoa kerta.",
+      "text_markdown": "Joka ainoa kerta.",
+      "tts": {
+        "text": "Joka ainoa kerta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Levität kupun pitkälle matolle.",
+      "text_markdown": "Levität kupun pitkälle matolle.",
+      "tts": {
+        "text": "Levität kupun pitkälle matolle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Silität narut.",
+      "text_markdown": "Silität narut.",
+      "tts": {
+        "text": "Silität narut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Taittelet kennot.",
+      "text_markdown": "Taittelet kennot.",
+      "tts": {
+        "text": "Taittelet kennot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Kuorit kankaan kasaan, sujautat sen pussiin, asetat avaajan, suljet kontin.",
+      "text_markdown": "Kuorit kankaan kasaan, sujautat sen pussiin, asetat avaajan, suljet kontin.",
+      "tts": {
+        "text": "Kuorit kankaan kasaan, sujautat sen pussiin, asetat avaajan, suljet kontin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Se kestää noin viisitoista minuuttia, ja teet sen hitaasti, koska elämäsi tulee riippumaan juuri tästä kangaspalasta.",
+      "text_markdown": "Se kestää noin viisitoista minuuttia, ja teet sen hitaasti, koska elämäsi tulee riippumaan juuri tästä kangaspalasta.",
+      "tts": {
+        "text": "Se kestää noin viisitoista minuuttia, ja teet sen hitaasti, koska elämäsi tulee riippumaan juuri tästä kangaspalasta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Pakkaaminen on meditaatiota.",
+      "text_markdown": "Pakkaaminen on meditaatiota.",
+      "tts": {
+        "text": "Pakkaaminen on meditaatiota.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Monet laskuvarjohyppääjät sanovat, että se on päivän osa, jota he rakastavat eniten.",
+      "text_markdown": "Monet laskuvarjohyppääjät sanovat, että se on päivän osa, jota he rakastavat eniten.",
+      "tts": {
+        "text": "Monet laskuvarjohyppääjät sanovat, että se on päivän osa, jota he rakastavat eniten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Matto, narut, hidas taittelu.",
+      "text_markdown": "Matto, narut, hidas taittelu.",
+      "tts": {
+        "text": "Matto, narut, hidas taittelu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vieressäsi pakkaavan ystävän olkapää.",
+      "text_markdown": "Vieressäsi pakkaavan ystävän olkapää.",
+      "tts": {
+        "text": "Vieressäsi pakkaavan ystävän olkapää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nurkassa soiva radio, joka soittaa kappaletta, jonka olet kuullut liian monta kertaa.",
+      "text_markdown": "Nurkassa soiva radio, joka soittaa kappaletta, jonka olet kuullut liian monta kertaa.",
+      "tts": {
+        "text": "Nurkassa soiva radio, joka soittaa kappaletta, jonka olet kuullut liian monta kertaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Pakkaamista ei kiirehditä.",
+      "text_markdown": "Pakkaamista ei kiirehditä.",
+      "tts": {
+        "text": "Pakkaamista ei kiirehditä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Taivas ei välitä aikataulustasi.",
+      "text_markdown": "Taivas ei välitä aikataulustasi.",
+      "tts": {
+        "text": "Taivas ei välitä aikataulustasi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taidon mielenlaatu on kärsivällisyyttä.",
+      "text_markdown": "Taidon mielenlaatu on kärsivällisyyttä.",
+      "tts": {
+        "text": "Taidon mielenlaatu on kärsivällisyyttä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Se on nöyryyttä.",
+      "text_markdown": "Se on nöyryyttä.",
+      "tts": {
+        "text": "Se on nöyryyttä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Se on halua käydä läpi jokainen ainoa hyppy, myös tylsät.",
+      "text_markdown": "Se on halua käydä läpi jokainen ainoa hyppy, myös tylsät.",
+      "tts": {
+        "text": "Se on halua käydä läpi jokainen ainoa hyppy, myös tylsät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Laskuvarjohyppääjät rakastavat puhumista hypyn jälkeen.",
+      "text_markdown": "Laskuvarjohyppääjät rakastavat puhumista hypyn jälkeen.",
+      "tts": {
+        "text": "Laskuvarjohyppääjät rakastavat puhumista hypyn jälkeen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "He istuvat eväspöydällä ja käyvät läpi jokaisen sekunnin, kehon asento kerrallaan.",
+      "text_markdown": "He istuvat eväspöydällä ja käyvät läpi jokaisen sekunnin, kehon asento kerrallaan.",
+      "tts": {
+        "text": "He istuvat eväspöydällä ja käyvät läpi jokaisen sekunnin, kehon asento kerrallaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Mikä toimi.",
+      "text_markdown": "Mikä toimi.",
+      "tts": {
+        "text": "Mikä toimi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Mikä oli huolimatonta.",
+      "text_markdown": "Mikä oli huolimatonta.",
+      "tts": {
+        "text": "Mikä oli huolimatonta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Mitä he haluavat kokeilla seuraavalla kerralla.",
+      "text_markdown": "Mitä he haluavat kokeilla seuraavalla kerralla.",
+      "tts": {
+        "text": "Mitä he haluavat kokeilla seuraavalla kerralla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Siksi ihmiset jäävät.",
+      "text_markdown": "Siksi ihmiset jäävät.",
+      "tts": {
+        "text": "Siksi ihmiset jäävät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ei siksi, että putoaminen on jännittävää.",
+      "text_markdown": "Ei siksi, että putoaminen on jännittävää.",
+      "tts": {
+        "text": "Ei siksi, että putoaminen on jännittävää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Putoaminen on helppo osa.",
+      "text_markdown": "Putoaminen on helppo osa.",
+      "tts": {
+        "text": "Putoaminen on helppo osa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ihmiset jäävät, koska aina on jotain opittavaa.",
+      "text_markdown": "Ihmiset jäävät, koska aina on jotain opittavaa.",
+      "tts": {
+        "text": "Ihmiset jäävät, koska aina on jotain opittavaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Aina on ystävä, jonka kanssa oppia se.",
+      "text_markdown": "Aina on ystävä, jonka kanssa oppia se.",
+      "tts": {
+        "text": "Aina on ystävä, jonka kanssa oppia se.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ja taivas odottaa sinua puolelta päivin huomenna.",
+      "text_markdown": "Ja taivas odottaa sinua puolelta päivin huomenna.",
+      "tts": {
+        "text": "Ja taivas odottaa sinua puolelta päivin huomenna.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Hetkiä",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hetkiä",
+      "text_markdown": "Hetkiä"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Annapa kun kerron sinulle kolme.",
+      "text_markdown": "Annapa kun kerron sinulle kolme.",
+      "tts": {
+        "text": "Annapa kun kerron sinulle kolme.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäinen on auringonlaskun nousu.",
+      "text_markdown": "Ensimmäinen on auringonlaskun nousu.",
+      "tts": {
+        "text": "Ensimmäinen on auringonlaskun nousu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kone nousee kaksikymmentä minuuttia ennen auringonlaskua.",
+      "text_markdown": "Kone nousee kaksikymmentä minuuttia ennen auringonlaskua.",
+      "tts": {
+        "text": "Kone nousee kaksikymmentä minuuttia ennen auringonlaskua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nouset oranssin valon kerrosten läpi, ohjaamo lämpimänä, ystäväsi hiljaisina.",
+      "text_markdown": "Nouset oranssin valon kerrosten läpi, ohjaamo lämpimänä, ystäväsi hiljaisina.",
+      "tts": {
+        "text": "Nouset oranssin valon kerrosten läpi, ohjaamo lämpimänä, ystäväsi hiljaisina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kun ovi avautuu tällä kertaa, ilma on vaaleanpunainen.",
+      "text_markdown": "Kun ovi avautuu tällä kertaa, ilma on vaaleanpunainen.",
+      "tts": {
+        "text": "Kun ovi avautuu tällä kertaa, ilma on vaaleanpunainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Maa altasi on puoliksi varjossa, puoliksi kullassa.",
+      "text_markdown": "Maa altasi on puoliksi varjossa, puoliksi kullassa.",
+      "tts": {
+        "text": "Maa altasi on puoliksi varjossa, puoliksi kullassa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Astut ulos, ja kuusikymmentä sekuntia putoat auringonlaskun sisällä.",
+      "text_markdown": "Astut ulos, ja kuusikymmentä sekuntia putoat auringonlaskun sisällä.",
+      "tts": {
+        "text": "Astut ulos, ja kuusikymmentä sekuntia putoat auringonlaskun sisällä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se ei näytä todelliselta.",
+      "text_markdown": "Se ei näytä todelliselta.",
+      "tts": {
+        "text": "Se ei näytä todelliselta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Näet värejä, joita et tiennyt silmiesi pystyvän löytämään.",
+      "text_markdown": "Näet värejä, joita et tiennyt silmiesi pystyvän löytämään.",
+      "tts": {
+        "text": "Näet värejä, joita et tiennyt silmiesi pystyvän löytämään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kun laskuvarjosi avautuu, leijut maailman yllä, joka palaa hetken.",
+      "text_markdown": "Kun laskuvarjosi avautuu, leijut maailman yllä, joka palaa hetken.",
+      "tts": {
+        "text": "Kun laskuvarjosi avautuu, leijut maailman yllä, joka palaa hetken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tuuli on tyyntynyt olemattomiin.",
+      "text_markdown": "Tuuli on tyyntynyt olemattomiin.",
+      "tts": {
+        "text": "Tuuli on tyyntynyt olemattomiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hyppyalue on pieni vihreä neliö altasi, yksi lämmin valo päällä.",
+      "text_markdown": "Hyppyalue on pieni vihreä neliö altasi, yksi lämmin valo päällä.",
+      "tts": {
+        "text": "Hyppyalue on pieni vihreä neliö altasi, yksi lämmin valo päällä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Valitset hitaan kierroksen ja annat itsesi laskeutua viimeisenä, koska kukaan ei halua tämän osan loppuvan.",
+      "text_markdown": "Valitset hitaan kierroksen ja annat itsesi laskeutua viimeisenä, koska kukaan ei halua tämän osan loppuvan.",
+      "tts": {
+        "text": "Valitset hitaan kierroksen ja annat itsesi laskeutua viimeisenä, koska kukaan ei halua tämän osan loppuvan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kun jalkasi koskettavat ruohoa, taivas on violetti.",
+      "text_markdown": "Kun jalkasi koskettavat ruohoa, taivas on violetti.",
+      "tts": {
+        "text": "Kun jalkasi koskettavat ruohoa, taivas on violetti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ystäväsi kävelevät sisään omilta laskeutumisiltaan.",
+      "text_markdown": "Ystäväsi kävelevät sisään omilta laskeutumisiltaan.",
+      "tts": {
+        "text": "Ystäväsi kävelevät sisään omilta laskeutumisiltaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Yksi heistä vain katsoo sinua.",
+      "text_markdown": "Yksi heistä vain katsoo sinua.",
+      "tts": {
+        "text": "Yksi heistä vain katsoo sinua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Te molemmat puistatte päitänne.",
+      "text_markdown": "Te molemmat puistatte päitänne.",
+      "tts": {
+        "text": "Te molemmat puistatte päitänne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Kumpikaan teistä ei löydä sanoja.",
+      "text_markdown": "Kumpikaan teistä ei löydä sanoja.",
+      "tts": {
+        "text": "Kumpikaan teistä ei löydä sanoja.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toinen on muodostelmahyppy.",
+      "text_markdown": "Toinen on muodostelmahyppy.",
+      "tts": {
+        "text": "Toinen on muodostelmahyppy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Teitä on kahdeksan koneessa.",
+      "text_markdown": "Teitä on kahdeksan koneessa.",
+      "tts": {
+        "text": "Teitä on kahdeksan koneessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Istutte penkillä, kypärät sylissä, ja johtava hyppääjä piirtää hypyn pienelle valkotaululle.",
+      "text_markdown": "Istutte penkillä, kypärät sylissä, ja johtava hyppääjä piirtää hypyn pienelle valkotaululle.",
+      "tts": {
+        "text": "Istutte penkillä, kypärät sylissä, ja johtava hyppääjä piirtää hypyn pienelle valkotaululle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Lähdette koneesta ryppäänä, putoatte yhdessä, rakennatte ympyrän.",
+      "text_markdown": "Lähdette koneesta ryppäänä, putoatte yhdessä, rakennatte ympyrän.",
+      "tts": {
+        "text": "Lähdette koneesta ryppäänä, putoatte yhdessä, rakennatte ympyrän.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tiedätte kaikki paikkanne.",
+      "text_markdown": "Tiedätte kaikki paikkanne.",
+      "tts": {
+        "text": "Tiedätte kaikki paikkanne.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Töksäytätte nyrkkejä yhteen, tarkistatte toistenne varusteet, naurahdatte hermostuneesti.",
+      "text_markdown": "Töksäytätte nyrkkejä yhteen, tarkistatte toistenne varusteet, naurahdatte hermostuneesti.",
+      "tts": {
+        "text": "Töksäytätte nyrkkejä yhteen, tarkistatte toistenne varusteet, naurahdatte hermostuneesti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kahdeksan aikuista, peloissaan ja innoissaan samaan aikaan, kuin lapset yökyläilyssä.",
+      "text_markdown": "Kahdeksan aikuista, peloissaan ja innoissaan samaan aikaan, kuin lapset yökyläilyssä.",
+      "tts": {
+        "text": "Kahdeksan aikuista, peloissaan ja innoissaan samaan aikaan, kuin lapset yökyläilyssä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kone tasaantuu.",
+      "text_markdown": "Kone tasaantuu.",
+      "tts": {
+        "text": "Kone tasaantuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ovi avautuu.",
+      "text_markdown": "Ovi avautuu.",
+      "tts": {
+        "text": "Ovi avautuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Johtajanne astuu ulos, ja loput teistä seuraavat, sydämenlyönnin välein.",
+      "text_markdown": "Johtajanne astuu ulos, ja loput teistä seuraavat, sydämenlyönnin välein.",
+      "tts": {
+        "text": "Johtajanne astuu ulos, ja loput teistä seuraavat, sydämenlyönnin välein.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vapaapudotuksessa löydätte toisenne melkein ajattelematta.",
+      "text_markdown": "Vapaapudotuksessa löydätte toisenne melkein ajattelematta.",
+      "tts": {
+        "text": "Vapaapudotuksessa löydätte toisenne melkein ajattelematta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kädet kohtaavat kädet.",
+      "text_markdown": "Kädet kohtaavat kädet.",
+      "tts": {
+        "text": "Kädet kohtaavat kädet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ympyrä muodostuu.",
+      "text_markdown": "Ympyrä muodostuu.",
+      "tts": {
+        "text": "Ympyrä muodostuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Muutaman täydellisen sekunnin ajan kahdeksan ihmistä pitää toisistaan kiinni taivaalla.",
+      "text_markdown": "Muutaman täydellisen sekunnin ajan kahdeksan ihmistä pitää toisistaan kiinni taivaalla.",
+      "tts": {
+        "text": "Muutaman täydellisen sekunnin ajan kahdeksan ihmistä pitää toisistaan kiinni taivaalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Putoatte samalla nopeudella.",
+      "text_markdown": "Putoatte samalla nopeudella.",
+      "tts": {
+        "text": "Putoatte samalla nopeudella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Katsotte toisianne silmiin.",
+      "text_markdown": "Katsotte toisianne silmiin.",
+      "tts": {
+        "text": "Katsotte toisianne silmiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Sitten korkeusmittarisi sanoo, että on aika.",
+      "text_markdown": "Sitten korkeusmittarisi sanoo, että on aika.",
+      "tts": {
+        "text": "Sitten korkeusmittarisi sanoo, että on aika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Päästätte irti.",
+      "text_markdown": "Päästätte irti.",
+      "tts": {
+        "text": "Päästätte irti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Lennätte erilleen toisistanne, jotta laskuvarjoillenne jää tilaa avautua.",
+      "text_markdown": "Lennätte erilleen toisistanne, jotta laskuvarjoillenne jää tilaa avautua.",
+      "tts": {
+        "text": "Lennätte erilleen toisistanne, jotta laskuvarjoillenne jää tilaa avautua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Maassa et pysty lopettamaan halaamista.",
+      "text_markdown": "Maassa et pysty lopettamaan halaamista.",
+      "tts": {
+        "text": "Maassa et pysty lopettamaan halaamista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kolmas on hyppy vaikean vuoden jälkeen.",
+      "text_markdown": "Kolmas on hyppy vaikean vuoden jälkeen.",
+      "tts": {
+        "text": "Kolmas on hyppy vaikean vuoden jälkeen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ehkä olet käynyt läpi jotakin.",
+      "text_markdown": "Ehkä olet käynyt läpi jotakin.",
+      "tts": {
+        "text": "Ehkä olet käynyt läpi jotakin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Huonon kauden töissä.",
+      "text_markdown": "Huonon kauden töissä.",
+      "tts": {
+        "text": "Huonon kauden töissä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Päättyneen suhteen.",
+      "text_markdown": "Päättyneen suhteen.",
+      "tts": {
+        "text": "Päättyneen suhteen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Menetyksen, joka sai tavallisen maailman tuntumaan ohuelta ja kaukaiselta.",
+      "text_markdown": "Menetyksen, joka sai tavallisen maailman tuntumaan ohuelta ja kaukaiselta.",
+      "tts": {
+        "text": "Menetyksen, joka sai tavallisen maailman tuntumaan ohuelta ja kaukaiselta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Et hyppää, koska haluat tuntea jotain.",
+      "text_markdown": "Et hyppää, koska haluat tuntea jotain.",
+      "tts": {
+        "text": "Et hyppää, koska haluat tuntea jotain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hyppäät, koska et ole pystynyt tuntemaan mitään, ja haluat tietää oletko vielä siellä sisällä.",
+      "text_markdown": "Hyppäät, koska et ole pystynyt tuntemaan mitään, ja haluat tietää oletko vielä siellä sisällä.",
+      "tts": {
+        "text": "Hyppäät, koska et ole pystynyt tuntemaan mitään, ja haluat tietää oletko vielä siellä sisällä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kone nousee.",
+      "text_markdown": "Kone nousee.",
+      "tts": {
+        "text": "Kone nousee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ovi avautuu.",
+      "text_markdown": "Ovi avautuu.",
+      "tts": {
+        "text": "Ovi avautuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Astut ulos.",
+      "text_markdown": "Astut ulos.",
+      "tts": {
+        "text": "Astut ulos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ja niiden kolmen ensimmäisen sekunnin aikana, ennen kuin tuuli ottaa sinut kiinni, jokin sisälläsi murtuu auki.",
+      "text_markdown": "Ja niiden kolmen ensimmäisen sekunnin aikana, ennen kuin tuuli ottaa sinut kiinni, jokin sisälläsi murtuu auki.",
+      "tts": {
+        "text": "Ja niiden kolmen ensimmäisen sekunnin aikana, ennen kuin tuuli ottaa sinut kiinni, jokin sisälläsi murtuu auki.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Et aikonut itkeä.",
+      "text_markdown": "Et aikonut itkeä.",
+      "tts": {
+        "text": "Et aikonut itkeä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Itket kuitenkin.",
+      "text_markdown": "Itket kuitenkin.",
+      "tts": {
+        "text": "Itket kuitenkin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Vapaapudotus tekee työnsä.",
+      "text_markdown": "Vapaapudotus tekee työnsä.",
+      "tts": {
+        "text": "Vapaapudotus tekee työnsä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Kuusikymmentä pitkää sekuntia, joissa ei ole muuta kuin tuulta ja hengitystä ja putoamista.",
+      "text_markdown": "Kuusikymmentä pitkää sekuntia, joissa ei ole muuta kuin tuulta ja hengitystä ja putoamista.",
+      "tts": {
+        "text": "Kuusikymmentä pitkää sekuntia, joissa ei ole muuta kuin tuulta ja hengitystä ja putoamista.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Ja jossain siellä se osa sinusta, joka on kannatellut kaikkea, vihdoin laskee sen alas hetkeksi.",
+      "text_markdown": "Ja jossain siellä se osa sinusta, joka on kannatellut kaikkea, vihdoin laskee sen alas hetkeksi.",
+      "tts": {
+        "text": "Ja jossain siellä se osa sinusta, joka on kannatellut kaikkea, vihdoin laskee sen alas hetkeksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Laskuvarjo avautuu.",
+      "text_markdown": "Laskuvarjo avautuu.",
+      "tts": {
+        "text": "Laskuvarjo avautuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Maailma hiljenee.",
+      "text_markdown": "Maailma hiljenee.",
+      "tts": {
+        "text": "Maailma hiljenee.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Roikut valjaissa, ja itket, ja naurat, ja itket taas.",
+      "text_markdown": "Roikut valjaissa, ja itket, ja naurat, ja itket taas.",
+      "tts": {
+        "text": "Roikut valjaissa, ja itket, ja naurat, ja itket taas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Kukaan ei näe sinua.",
+      "text_markdown": "Kukaan ei näe sinua.",
+      "tts": {
+        "text": "Kukaan ei näe sinua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "Se on koko juju.",
+      "text_markdown": "Se on koko juju.",
+      "tts": {
+        "text": "Se on koko juju.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kun laskeudut, et ole korjautunut.",
+      "text_markdown": "Kun laskeudut, et ole korjautunut.",
+      "tts": {
+        "text": "Kun laskeudut, et ole korjautunut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kannat yhä mukanasi sitä, minkä toit sinne ylös.",
+      "text_markdown": "Kannat yhä mukanasi sitä, minkä toit sinne ylös.",
+      "tts": {
+        "text": "Kannat yhä mukanasi sitä, minkä toit sinne ylös.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mutta yhden kokonaisen tunnin ajan siellä ylhäällä jokin sisälläsi muisti tarkalleen, miltä elossa oleminen voi tuntua.",
+      "text_markdown": "Mutta yhden kokonaisen tunnin ajan siellä ylhäällä jokin sisälläsi muisti tarkalleen, miltä elossa oleminen voi tuntua.",
+      "tts": {
+        "text": "Mutta yhden kokonaisen tunnin ajan siellä ylhäällä jokin sisälläsi muisti tarkalleen, miltä elossa oleminen voi tuntua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Laskuvarjohyppy ei ratkaissut vuottasi.",
+      "text_markdown": "Laskuvarjohyppy ei ratkaissut vuottasi.",
+      "tts": {
+        "text": "Laskuvarjohyppy ei ratkaissut vuottasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se vain antoi sen takaisin sinulle kuudeksikymmeneksi sekunniksi, paloina jotka olivat tarpeeksi pieniä pidellä.",
+      "text_markdown": "Se vain antoi sen takaisin sinulle kuudeksikymmeneksi sekunniksi, paloina jotka olivat tarpeeksi pieniä pidellä.",
+      "tts": {
+        "text": "Se vain antoi sen takaisin sinulle kuudeksikymmeneksi sekunniksi, paloina jotka olivat tarpeeksi pieniä pidellä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Miksi se pysyy",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Miksi se pysyy",
+      "text_markdown": "Miksi se pysyy"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Olen hypännyt jo pitkään.",
+      "text_markdown": "Olen hypännyt jo pitkään.",
+      "tts": {
+        "text": "Olen hypännyt jo pitkään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tarpeeksi pitkään, etten muista lukua.",
+      "text_markdown": "Tarpeeksi pitkään, etten muista lukua.",
+      "tts": {
+        "text": "Tarpeeksi pitkään, etten muista lukua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tarpeeksi pitkään, että kysymys, miksi yhä teet tätä, on lakannut merkitsemästä minulle mitään.",
+      "text_markdown": "Tarpeeksi pitkään, että kysymys, miksi yhä teet tätä, on lakannut merkitsemästä minulle mitään.",
+      "tts": {
+        "text": "Tarpeeksi pitkään, että kysymys, miksi yhä teet tätä, on lakannut merkitsemästä minulle mitään.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Haluan jättää sinulle muutaman asian.",
+      "text_markdown": "Haluan jättää sinulle muutaman asian.",
+      "tts": {
+        "text": "Haluan jättää sinulle muutaman asian.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ensimmäinen on, että laskuvarjohyppy ei ole vaihe.",
+      "text_markdown": "Ensimmäinen on, että laskuvarjohyppy ei ole vaihe.",
+      "tts": {
+        "text": "Ensimmäinen on, että laskuvarjohyppy ei ole vaihe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ihmiset huolestuvat, kun näkevät ystävän aloittavan sen.",
+      "text_markdown": "Ihmiset huolestuvat, kun näkevät ystävän aloittavan sen.",
+      "tts": {
+        "text": "Ihmiset huolestuvat, kun näkevät ystävän aloittavan sen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "He pelkäävät, että se on kapinaa, keski-iän juttu, tapa paeta jotain.",
+      "text_markdown": "He pelkäävät, että se on kapinaa, keski-iän juttu, tapa paeta jotain.",
+      "tts": {
+        "text": "He pelkäävät, että se on kapinaa, keski-iän juttu, tapa paeta jotain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se ei ole.",
+      "text_markdown": "Se ei ole.",
+      "tts": {
+        "text": "Se ei ole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ne, jotka jäävät, eivät pakene.",
+      "text_markdown": "Ne, jotka jäävät, eivät pakene.",
+      "tts": {
+        "text": "Ne, jotka jäävät, eivät pakene.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "He ovat, melkein huomaamattaan, rakentaneet pienen elämän taivaan sisään.",
+      "text_markdown": "He ovat, melkein huomaamattaan, rakentaneet pienen elämän taivaan sisään.",
+      "tts": {
+        "text": "He ovat, melkein huomaamattaan, rakentaneet pienen elämän taivaan sisään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "He saapuvat lauantaisin.",
+      "text_markdown": "He saapuvat lauantaisin.",
+      "tts": {
+        "text": "He saapuvat lauantaisin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "He pakkaavat laskuvarjonsa.",
+      "text_markdown": "He pakkaavat laskuvarjonsa.",
+      "tts": {
+        "text": "He pakkaavat laskuvarjonsa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "He halaavat ystäviään.",
+      "text_markdown": "He halaavat ystäviään.",
+      "tts": {
+        "text": "He halaavat ystäviään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "He menevät kotiin auringonlaskun aikaan, hyvällä tavalla väsyneinä.",
+      "text_markdown": "He menevät kotiin auringonlaskun aikaan, hyvällä tavalla väsyneinä.",
+      "tts": {
+        "text": "He menevät kotiin auringonlaskun aikaan, hyvällä tavalla väsyneinä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Maanantaina he palaavat töihin, ja he ovat huomattavasti ystävällisempiä kuin ennen.",
+      "text_markdown": "Maanantaina he palaavat töihin, ja he ovat huomattavasti ystävällisempiä kuin ennen.",
+      "tts": {
+        "text": "Maanantaina he palaavat töihin, ja he ovat huomattavasti ystävällisempiä kuin ennen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Taivas muuttaa sinua, mutta hitaasti.",
+      "text_markdown": "Taivas muuttaa sinua, mutta hitaasti.",
+      "tts": {
+        "text": "Taivas muuttaa sinua, mutta hitaasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sinusta tulee läsnäolevampi.",
+      "text_markdown": "Sinusta tulee läsnäolevampi.",
+      "tts": {
+        "text": "Sinusta tulee läsnäolevampi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pelkäät vähemmän pieniä asioita, koska olet harjoitellut rehellisyyttä isompien asioiden kanssa.",
+      "text_markdown": "Pelkäät vähemmän pieniä asioita, koska olet harjoitellut rehellisyyttä isompien asioiden kanssa.",
+      "tts": {
+        "text": "Pelkäät vähemmän pieniä asioita, koska olet harjoitellut rehellisyyttä isompien asioiden kanssa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Naurat helpommin.",
+      "text_markdown": "Naurat helpommin.",
+      "tts": {
+        "text": "Naurat helpommin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sanot ihmisille rakastavasi heitä useammin.",
+      "text_markdown": "Sanot ihmisille rakastavasi heitä useammin.",
+      "tts": {
+        "text": "Sanot ihmisille rakastavasi heitä useammin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Olet seissyt oviaukossa, neljätuhatta metriä korkealla, ja muistanut, ettei mitään ole luvattu.",
+      "text_markdown": "Olet seissyt oviaukossa, neljätuhatta metriä korkealla, ja muistanut, ettei mitään ole luvattu.",
+      "tts": {
+        "text": "Olet seissyt oviaukossa, neljätuhatta metriä korkealla, ja muistanut, ettei mitään ole luvattu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos joskus löydät itsesi illalliselta laskuvarjohyppääjän kanssa, tässä ovat asiat, joita voit kysyä.",
+      "text_markdown": "Jos joskus löydät itsesi illalliselta laskuvarjohyppääjän kanssa, tässä ovat asiat, joita voit kysyä.",
+      "tts": {
+        "text": "Jos joskus löydät itsesi illalliselta laskuvarjohyppääjän kanssa, tässä ovat asiat, joita voit kysyä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voit kysyä, miten hän pääsi mukaan siihen.",
+      "text_markdown": "Voit kysyä, miten hän pääsi mukaan siihen.",
+      "tts": {
+        "text": "Voit kysyä, miten hän pääsi mukaan siihen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jokainen laskuvarjohyppääjä muistaa ensimmäisen hyppynsä elävinä yksityiskohtina, ja kertoo sinulle siitä mielellään.",
+      "text_markdown": "Jokainen laskuvarjohyppääjä muistaa ensimmäisen hyppynsä elävinä yksityiskohtina, ja kertoo sinulle siitä mielellään.",
+      "tts": {
+        "text": "Jokainen laskuvarjohyppääjä muistaa ensimmäisen hyppynsä elävinä yksityiskohtina, ja kertoo sinulle siitä mielellään.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Voit kysyä, kuinka monta hyppyä hän on tehnyt.",
+      "text_markdown": "Voit kysyä, kuinka monta hyppyä hän on tehnyt.",
+      "tts": {
+        "text": "Voit kysyä, kuinka monta hyppyä hän on tehnyt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän tietää luvun, plus miinus muutama, eikä teeskentele sen olevan enempää kuin se on.",
+      "text_markdown": "Hän tietää luvun, plus miinus muutama, eikä teeskentele sen olevan enempää kuin se on.",
+      "tts": {
+        "text": "Hän tietää luvun, plus miinus muutama, eikä teeskentele sen olevan enempää kuin se on.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Voit kysyä, mikä hänen lempihyppynsä on.",
+      "text_markdown": "Voit kysyä, mikä hänen lempihyppynsä on.",
+      "tts": {
+        "text": "Voit kysyä, mikä hänen lempihyppynsä on.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Joku sanoo auringonlasku.",
+      "text_markdown": "Joku sanoo auringonlasku.",
+      "tts": {
+        "text": "Joku sanoo auringonlasku.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Joku sanoo iso muodostelma.",
+      "text_markdown": "Joku sanoo iso muodostelma.",
+      "tts": {
+        "text": "Joku sanoo iso muodostelma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Joku sanoo hiljainen yksinhyppy rauhallisena iltana.",
+      "text_markdown": "Joku sanoo hiljainen yksinhyppy rauhallisena iltana.",
+      "tts": {
+        "text": "Joku sanoo hiljainen yksinhyppy rauhallisena iltana.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voit kysyä, oliko hän peloissaan ensimmäisellä kerralla.",
+      "text_markdown": "Voit kysyä, oliko hän peloissaan ensimmäisellä kerralla.",
+      "tts": {
+        "text": "Voit kysyä, oliko hän peloissaan ensimmäisellä kerralla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tietenkin oli.",
+      "text_markdown": "Tietenkin oli.",
+      "tts": {
+        "text": "Tietenkin oli.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kaikki ovat.",
+      "text_markdown": "Kaikki ovat.",
+      "tts": {
+        "text": "Kaikki ovat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän mainitsee luultavasti tuulen ovella, laskennan, ja sen miltä maailma näyttää juuri ennen kuin astut ulos.",
+      "text_markdown": "Hän mainitsee luultavasti tuulen ovella, laskennan, ja sen miltä maailma näyttää juuri ennen kuin astut ulos.",
+      "tts": {
+        "text": "Hän mainitsee luultavasti tuulen ovella, laskennan, ja sen miltä maailma näyttää juuri ennen kuin astut ulos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kuuntele tarkasti.",
+      "text_markdown": "Kuuntele tarkasti.",
+      "tts": {
+        "text": "Kuuntele tarkasti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Hän antaa sinulle pienen lahjan.",
+      "text_markdown": "Hän antaa sinulle pienen lahjan.",
+      "tts": {
+        "text": "Hän antaa sinulle pienen lahjan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jos haluat saada laskuvarjohyppääjän kasvot loistamaan, pyydä häntä kuvailemaan se hetki, jolloin laskuvarjo avautuu.",
+      "text_markdown": "Jos haluat saada laskuvarjohyppääjän kasvot loistamaan, pyydä häntä kuvailemaan se hetki, jolloin laskuvarjo avautuu.",
+      "tts": {
+        "text": "Jos haluat saada laskuvarjohyppääjän kasvot loistamaan, pyydä häntä kuvailemaan se hetki, jolloin laskuvarjo avautuu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hän sulkee silmänsä puoleksi sekunniksi.",
+      "text_markdown": "Hän sulkee silmänsä puoleksi sekunniksi.",
+      "tts": {
+        "text": "Hän sulkee silmänsä puoleksi sekunniksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sitten hän yrittää.",
+      "text_markdown": "Sitten hän yrittää.",
+      "tts": {
+        "text": "Sitten hän yrittää.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hän käyttää joka kerta eri sanaa.",
+      "text_markdown": "Hän käyttää joka kerta eri sanaa.",
+      "tts": {
+        "text": "Hän käyttää joka kerta eri sanaa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ehkä hiljainen.",
+      "text_markdown": "Ehkä hiljainen.",
+      "tts": {
+        "text": "Ehkä hiljainen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ehkä lempeä.",
+      "text_markdown": "Ehkä lempeä.",
+      "tts": {
+        "text": "Ehkä lempeä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Kuin heräisi.",
+      "text_markdown": "Kuin heräisi.",
+      "tts": {
+        "text": "Kuin heräisi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Kuin tulisi kotiin.",
+      "text_markdown": "Kuin tulisi kotiin.",
+      "tts": {
+        "text": "Kuin tulisi kotiin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Kukaan ei kuvaile sitä kahdesti samalla tavalla.",
+      "text_markdown": "Kukaan ei kuvaile sitä kahdesti samalla tavalla.",
+      "tts": {
+        "text": "Kukaan ei kuvaile sitä kahdesti samalla tavalla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Älä pelkää myöntää, ettet ole koskaan hypännyt.",
+      "text_markdown": "Älä pelkää myöntää, ettet ole koskaan hypännyt.",
+      "tts": {
+        "text": "Älä pelkää myöntää, ettet ole koskaan hypännyt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Laskuvarjohyppääjät rakastavat tuota kysymystä.",
+      "text_markdown": "Laskuvarjohyppääjät rakastavat tuota kysymystä.",
+      "tts": {
+        "text": "Laskuvarjohyppääjät rakastavat tuota kysymystä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Laskuvarjohyppääjät rakastavat myös sanoa sinulle, että sinun pitäisi kokeilla, ja sitten sanoa, hyvin vakavasti, että he tulevat mukaasi.",
+      "text_markdown": "Laskuvarjohyppääjät rakastavat myös sanoa sinulle, että sinun pitäisi kokeilla, ja sitten sanoa, hyvin vakavasti, että he tulevat mukaasi.",
+      "tts": {
+        "text": "Laskuvarjohyppääjät rakastavat myös sanoa sinulle, että sinun pitäisi kokeilla, ja sitten sanoa, hyvin vakavasti, että he tulevat mukaasi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Useimmat meistä ovat tuoneet ystävän ensimmäiselle hypylleen.",
+      "text_markdown": "Useimmat meistä ovat tuoneet ystävän ensimmäiselle hypylleen.",
+      "tts": {
+        "text": "Useimmat meistä ovat tuoneet ystävän ensimmäiselle hypylleen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se on yksi lajin suurimmista nautinnoista.",
+      "text_markdown": "Se on yksi lajin suurimmista nautinnoista.",
+      "tts": {
+        "text": "Se on yksi lajin suurimmista nautinnoista.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tämän lopussa ei ole isoa opetusta.",
+      "text_markdown": "Tämän lopussa ei ole isoa opetusta.",
+      "tts": {
+        "text": "Tämän lopussa ei ole isoa opetusta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vain tämä.",
+      "text_markdown": "Vain tämä.",
+      "tts": {
+        "text": "Vain tämä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jossain päin maailmaa juuri nyt pieni joukko rauhallisia ja kärsivällisiä ihmisiä kävelee koneelle.",
+      "text_markdown": "Jossain päin maailmaa juuri nyt pieni joukko rauhallisia ja kärsivällisiä ihmisiä kävelee koneelle.",
+      "tts": {
+        "text": "Jossain päin maailmaa juuri nyt pieni joukko rauhallisia ja kärsivällisiä ihmisiä kävelee koneelle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kenttä on auringonpaisteessa.",
+      "text_markdown": "Kenttä on auringonpaisteessa.",
+      "tts": {
+        "text": "Kenttä on auringonpaisteessa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ruoho on lämmintä.",
+      "text_markdown": "Ruoho on lämmintä.",
+      "tts": {
+        "text": "Ruoho on lämmintä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "He tarkistavat toistensa varusteita.",
+      "text_markdown": "He tarkistavat toistensa varusteita.",
+      "tts": {
+        "text": "He tarkistavat toistensa varusteita.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "He hymyilevät.",
+      "text_markdown": "He hymyilevät.",
+      "tts": {
+        "text": "He hymyilevät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Puolen tunnin kuluttua he ovat taivaalla, tekemässä hiljaisinta asiaa, jonka osaavat tehdä.",
+      "text_markdown": "Puolen tunnin kuluttua he ovat taivaalla, tekemässä hiljaisinta asiaa, jonka osaavat tehdä.",
+      "tts": {
+        "text": "Puolen tunnin kuluttua he ovat taivaalla, tekemässä hiljaisinta asiaa, jonka osaavat tehdä.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ehkä jonain päivänä olet yksi heistä.",
+      "text_markdown": "Ehkä jonain päivänä olet yksi heistä.",
+      "tts": {
+        "text": "Ehkä jonain päivänä olet yksi heistä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ehkä jonain päivänä et ole.",
+      "text_markdown": "Ehkä jonain päivänä et ole.",
+      "tts": {
+        "text": "Ehkä jonain päivänä et ole.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Joka tapauksessa, taivas on siellä.",
+      "text_markdown": "Joka tapauksessa, taivas on siellä.",
+      "tts": {
+        "text": "Joka tapauksessa, taivas on siellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Se on aina ollut siellä.",
+      "text_markdown": "Se on aina ollut siellä.",
+      "tts": {
+        "text": "Se on aina ollut siellä.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Se odottaa, kärsivällisesti, siltä varalta että joskus tunnet halua nojata.",
+      "text_markdown": "Se odottaa, kärsivällisesti, siltä varalta että joskus tunnet halua nojata.",
+      "tts": {
+        "text": "Se odottaa, kärsivällisesti, siltä varalta että joskus tunnet halua nojata.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

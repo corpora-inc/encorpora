@@ -1,0 +1,6728 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_volcanoes",
+  "language": "ko",
+  "total_segments": 422,
+  "segments": [
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 1,
+      "id": "ch01-001",
+      "sentence_index": 0,
+      "text": "땅에서 나오는 불",
+      "text_markdown": "땅에서 나오는 불",
+      "title": "땅에서 나오는 불"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-002",
+      "sentence_index": 0,
+      "text": "화산은 녹은 바위, 가스, 화산재가 땅속에서 빠져나오는 지구 표면의 구멍이에요.",
+      "text_markdown": "화산은 녹은 바위, 가스, 화산재가 땅속에서 빠져나오는 지구 표면의 구멍이에요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산은 녹은 바위, 가스, 화산재가 땅속에서 빠져나오는 지구 표면의 구멍이에요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-003",
+      "sentence_index": 0,
+      "text": "화산이라는 영어 단어 'volcano'는 로마의 불의 신 불카누스에서 나온 거예요.",
+      "text_markdown": "화산이라는 영어 단어 'volcano'는 로마의 불의 신 불카누스에서 나온 거예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산이라는 영어 단어 'volcano'는 로마의 불의 신 불카누스에서 나온 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-004",
+      "sentence_index": 0,
+      "text": "화산은 드물지 않아요.",
+      "text_markdown": "화산은 드물지 않아요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산은 드물지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-005",
+      "sentence_index": 0,
+      "text": "육지에는 활동할 가능성이 있는 화산이 약 1,500개 있어요.",
+      "text_markdown": "육지에는 활동할 가능성이 있는 화산이 약 1,500개 있어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "육지에는 활동할 가능성이 있는 화산이 약 천오백 개 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-006",
+      "sentence_index": 0,
+      "text": "바다 밑에는 더 많은 화산이 있어요.",
+      "text_markdown": "바다 밑에는 더 많은 화산이 있어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "바다 밑에는 더 많은 화산이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-007",
+      "sentence_index": 0,
+      "text": "화산 분화는 지구에서 가장 강력한 사건 중 하나예요.",
+      "text_markdown": "화산 분화는 지구에서 가장 강력한 사건 중 하나예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산 분화는 지구에서 가장 강력한 사건 중 하나예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-008",
+      "sentence_index": 0,
+      "text": "분화는 화산 안에서 물질이 밖으로 나오는 거예요.",
+      "text_markdown": "분화는 화산 안에서 물질이 밖으로 나오는 거예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "분화는 화산 안에서 물질이 밖으로 나오는 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-009",
+      "sentence_index": 0,
+      "text": "어떤 분화는 조용해요.",
+      "text_markdown": "어떤 분화는 조용해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "어떤 분화는 조용해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-010",
+      "sentence_index": 0,
+      "text": "용암이 비탈을 따라 천천히 흘러내려요.",
+      "text_markdown": "용암이 비탈을 따라 천천히 흘러내려요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "용암이 비탈을 따라 천천히 흘러내려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-011",
+      "sentence_index": 0,
+      "text": "용암은 지표면에 도달한 녹은 바위예요.",
+      "text_markdown": "용암은 지표면에 도달한 녹은 바위예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "용암은 지표면에 도달한 녹은 바위예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-012",
+      "sentence_index": 0,
+      "text": "다른 분화는 아주 격렬해요.",
+      "text_markdown": "다른 분화는 아주 격렬해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "다른 분화는 아주 격렬해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-013",
+      "sentence_index": 0,
+      "text": "바위, 화산재, 가스가 하늘 높이 폭발해요.",
+      "text_markdown": "바위, 화산재, 가스가 하늘 높이 폭발해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "바위, 화산재, 가스가 하늘 높이 폭발해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-014",
+      "sentence_index": 0,
+      "text": "가장 큰 분화는 땅의 모습을 완전히 바꿔 놓아요.",
+      "text_markdown": "가장 큰 분화는 땅의 모습을 완전히 바꿔 놓아요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "가장 큰 분화는 땅의 모습을 완전히 바꿔 놓아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-015",
+      "sentence_index": 0,
+      "text": "지구 안쪽이 뜨겁기 때문에 화산이 존재해요.",
+      "text_markdown": "지구 안쪽이 뜨겁기 때문에 화산이 존재해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "지구 안쪽이 뜨겁기 때문에 화산이 존재해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-016",
+      "sentence_index": 0,
+      "text": "깊이 들어갈수록 더 뜨거워져요.",
+      "text_markdown": "깊이 들어갈수록 더 뜨거워져요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "깊이 들어갈수록 더 뜨거워져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-017",
+      "sentence_index": 0,
+      "text": "지구 중심의 온도는 약 5,500도에 달해요.",
+      "text_markdown": "지구 중심의 온도는 약 5,500도에 달해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "지구 중심의 온도는 약 오천오백 도에 달해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-018",
+      "sentence_index": 0,
+      "text": "이것은 태양 표면의 온도와 비슷해요.",
+      "text_markdown": "이것은 태양 표면의 온도와 비슷해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "이것은 태양 표면의 온도와 비슷해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-019",
+      "sentence_index": 0,
+      "text": "이 내부의 열이 바위의 움직임과 화산 분화를 일으켜요.",
+      "text_markdown": "이 내부의 열이 바위의 움직임과 화산 분화를 일으켜요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "이 내부의 열이 바위의 움직임과 화산 분화를 일으켜요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-020",
+      "sentence_index": 0,
+      "text": "인간은 역사 내내 화산과 함께 살아왔어요.",
+      "text_markdown": "인간은 역사 내내 화산과 함께 살아왔어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "인간은 역사 내내 화산과 함께 살아왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-021",
+      "sentence_index": 0,
+      "text": "고대 문명은 화산 비탈에 도시를 세웠어요.",
+      "text_markdown": "고대 문명은 화산 비탈에 도시를 세웠어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "고대 문명은 화산 비탈에 도시를 세웠어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-022",
+      "sentence_index": 0,
+      "text": "화산 토양은 광물이 풍부해요.",
+      "text_markdown": "화산 토양은 광물이 풍부해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산 토양은 광물이 풍부해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-023",
+      "sentence_index": 0,
+      "text": "광물은 특정한 화학 성분을 가진 천연 비생물 물질이에요.",
+      "text_markdown": "광물은 특정한 화학 성분을 가진 천연 비생물 물질이에요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "광물은 특정한 화학 성분을 가진 천연 비생물 물질이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-024",
+      "sentence_index": 0,
+      "text": "식물은 화산 토양에서 잘 자라요.",
+      "text_markdown": "식물은 화산 토양에서 잘 자라요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "식물은 화산 토양에서 잘 자라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-025",
+      "sentence_index": 0,
+      "text": "농부들은 이것을 늘 알고 있었어요.",
+      "text_markdown": "농부들은 이것을 늘 알고 있었어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "농부들은 이것을 늘 알고 있었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-026",
+      "sentence_index": 0,
+      "text": "분화의 위험은 비옥한 땅을 얻기 위한 대가예요.",
+      "text_markdown": "분화의 위험은 비옥한 땅을 얻기 위한 대가예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "분화의 위험은 비옥한 땅을 얻기 위한 대가예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-027",
+      "sentence_index": 0,
+      "text": "화산은 지구에만 있는 것이 아니에요.",
+      "text_markdown": "화산은 지구에만 있는 것이 아니에요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산은 지구에만 있는 것이 아니에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-028",
+      "sentence_index": 0,
+      "text": "화성에는 태양계에서 가장 큰 화산이 있어요.",
+      "text_markdown": "화성에는 태양계에서 가장 큰 화산이 있어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화성에는 태양계에서 가장 큰 화산이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-029",
+      "sentence_index": 0,
+      "text": "그것은 올림푸스 몬스라고 불려요.",
+      "text_markdown": "그것은 올림푸스 몬스라고 불려요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "그것은 올림푸스 몬스라고 불려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-030",
+      "sentence_index": 0,
+      "text": "높이가 약 22킬로미터나 돼요.",
+      "text_markdown": "높이가 약 22킬로미터나 돼요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "높이가 약 이십이 킬로미터나 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-031",
+      "sentence_index": 0,
+      "text": "에베레스트산 높이의 거의 세 배예요.",
+      "text_markdown": "에베레스트산 높이의 거의 세 배예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "에베레스트산 높이의 거의 세 배예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-032",
+      "sentence_index": 0,
+      "text": "목성의 위성 이오는 태양계에서 화산 활동이 가장 활발한 천체예요.",
+      "text_markdown": "목성의 위성 이오는 태양계에서 화산 활동이 가장 활발한 천체예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "목성의 위성 이오는 태양계에서 화산 활동이 가장 활발한 천체예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-033",
+      "sentence_index": 0,
+      "text": "이오의 표면은 분화로 끊임없이 바뀌고 있어요.",
+      "text_markdown": "이오의 표면은 분화로 끊임없이 바뀌고 있어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "이오의 표면은 분화로 끊임없이 바뀌고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-034",
+      "sentence_index": 0,
+      "text": "내부에 충분한 열이 있는 암석 천체라면 어디든 화산이 있어요.",
+      "text_markdown": "내부에 충분한 열이 있는 암석 천체라면 어디든 화산이 있어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "내부에 충분한 열이 있는 암석 천체라면 어디든 화산이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-035",
+      "sentence_index": 0,
+      "text": "지구에서 화산은 아무 곳에나 있지 않아요.",
+      "text_markdown": "지구에서 화산은 아무 곳에나 있지 않아요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "지구에서 화산은 아무 곳에나 있지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-036",
+      "sentence_index": 0,
+      "text": "특정한 띠와 지대를 따라 모여 있어요.",
+      "text_markdown": "특정한 띠와 지대를 따라 모여 있어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "특정한 띠와 지대를 따라 모여 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-037",
+      "sentence_index": 0,
+      "text": "가장 유명한 것은 불의 고리예요.",
+      "text_markdown": "가장 유명한 것은 불의 고리예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "가장 유명한 것은 불의 고리예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-038",
+      "sentence_index": 0,
+      "text": "불의 고리는 태평양을 둘러싼 말발굽 모양의 화산과 지진 지대예요.",
+      "text_markdown": "불의 고리는 태평양을 둘러싼 말발굽 모양의 화산과 지진 지대예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "불의 고리는 태평양을 둘러싼 말발굽 모양의 화산과 지진 지대예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-039",
+      "sentence_index": 0,
+      "text": "지구 활화산의 약 75퍼센트가 이 고리를 따라 있어요.",
+      "text_markdown": "지구 활화산의 약 75퍼센트가 이 고리를 따라 있어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "지구 활화산의 약 칠십오 퍼센트가 이 고리를 따라 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-040",
+      "sentence_index": 0,
+      "text": "불의 고리는 판의 움직임 때문에 존재해요.",
+      "text_markdown": "불의 고리는 판의 움직임 때문에 존재해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "불의 고리는 판의 움직임 때문에 존재해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-041",
+      "sentence_index": 0,
+      "text": "판은 지구의 바깥 층을 이루는 거대한 바위 덩어리예요.",
+      "text_markdown": "판은 지구의 바깥 층을 이루는 거대한 바위 덩어리예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "판은 지구의 바깥 층을 이루는 거대한 바위 덩어리예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-042",
+      "sentence_index": 0,
+      "text": "화산은 파괴적이에요.",
+      "text_markdown": "화산은 파괴적이에요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산은 파괴적이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-043",
+      "sentence_index": 0,
+      "text": "도시를 묻어 버려요.",
+      "text_markdown": "도시를 묻어 버려요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "도시를 묻어 버려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-044",
+      "sentence_index": 0,
+      "text": "하늘을 어둡게 만들어요.",
+      "text_markdown": "하늘을 어둡게 만들어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "하늘을 어둡게 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-045",
+      "sentence_index": 0,
+      "text": "기후를 바꿔 놓아요.",
+      "text_markdown": "기후를 바꿔 놓아요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "기후를 바꿔 놓아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-046",
+      "sentence_index": 0,
+      "text": "하지만 화산은 또한 만들어 내기도 해요.",
+      "text_markdown": "하지만 화산은 또한 만들어 내기도 해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "하지만 화산은 또한 만들어 내기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-047",
+      "sentence_index": 0,
+      "text": "섬을 만들어요.",
+      "text_markdown": "섬을 만들어요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "섬을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-048",
+      "sentence_index": 0,
+      "text": "토양을 비옥하게 해요.",
+      "text_markdown": "토양을 비옥하게 해요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "토양을 비옥하게 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-049",
+      "sentence_index": 0,
+      "text": "대기를 이루는 기체를 내보내요.",
+      "text_markdown": "대기를 이루는 기체를 내보내요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "대기를 이루는 기체를 내보내요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 1,
+      "id": "ch01-050",
+      "sentence_index": 0,
+      "text": "화산의 이야기는 곧 지구의 이야기예요.",
+      "text_markdown": "화산의 이야기는 곧 지구의 이야기예요.",
+      "title": "땅에서 나오는 불",
+      "tts": {
+        "text": "화산의 이야기는 곧 지구의 이야기예요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 2,
+      "id": "ch02-051",
+      "sentence_index": 0,
+      "text": "지구 속으로",
+      "text_markdown": "지구 속으로",
+      "title": "지구 속으로"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-052",
+      "sentence_index": 0,
+      "text": "지구는 여러 층으로 되어 있어요.",
+      "text_markdown": "지구는 여러 층으로 되어 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "지구는 여러 층으로 되어 있어요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-053",
+      "sentence_index": 0,
+      "text": "이 층들을 이해하는 것은 화산을 이해하는 데 꼭 필요해요.",
+      "text_markdown": "이 층들을 이해하는 것은 화산을 이해하는 데 꼭 필요해요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "이 층들을 이해하는 것은 화산을 이해하는 데 꼭 필요해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-054",
+      "sentence_index": 0,
+      "text": "화산에서 분출하는 물질은 지구 깊은 곳에서 와요.",
+      "text_markdown": "화산에서 분출하는 물질은 지구 깊은 곳에서 와요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "화산에서 분출하는 물질은 지구 깊은 곳에서 와요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-055",
+      "sentence_index": 0,
+      "text": "가장 바깥 층은 지각이에요.",
+      "text_markdown": "가장 바깥 층은 지각이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "가장 바깥 층은 지각이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-056",
+      "sentence_index": 0,
+      "text": "지각은 지구 표면의 얇고 단단한 바위 껍질이에요.",
+      "text_markdown": "지각은 지구 표면의 얇고 단단한 바위 껍질이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "지각은 지구 표면의 얇고 단단한 바위 껍질이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-057",
+      "sentence_index": 0,
+      "text": "여러분이 서 있는 땅이 바로 지각이에요.",
+      "text_markdown": "여러분이 서 있는 땅이 바로 지각이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "여러분이 서 있는 땅이 바로 지각이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-058",
+      "sentence_index": 0,
+      "text": "지각에는 두 종류가 있어요.",
+      "text_markdown": "지각에는 두 종류가 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "지각에는 두 종류가 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-059",
+      "sentence_index": 0,
+      "text": "대륙 지각은 육지를 이루어요.",
+      "text_markdown": "대륙 지각은 육지를 이루어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "대륙 지각은 육지를 이루어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-060",
+      "sentence_index": 0,
+      "text": "대륙 지각은 더 두껍고, 평균 약 35킬로미터예요.",
+      "text_markdown": "대륙 지각은 더 두껍고, 평균 약 35킬로미터예요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "대륙 지각은 더 두껍고, 평균 약 삼십오 킬로미터예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-061",
+      "sentence_index": 0,
+      "text": "해양 지각은 바다 바닥을 이루어요.",
+      "text_markdown": "해양 지각은 바다 바닥을 이루어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "해양 지각은 바다 바닥을 이루어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-062",
+      "sentence_index": 0,
+      "text": "해양 지각은 더 얇고, 평균 약 7킬로미터예요.",
+      "text_markdown": "해양 지각은 더 얇고, 평균 약 7킬로미터예요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "해양 지각은 더 얇고, 평균 약 칠 킬로미터예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-063",
+      "sentence_index": 0,
+      "text": "두 종류의 지각 모두 단단한 바위지만, 성분과 밀도가 달라요.",
+      "text_markdown": "두 종류의 지각 모두 단단한 바위지만, 성분과 밀도가 달라요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "두 종류의 지각 모두 단단한 바위지만, 성분과 밀도가 달라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-064",
+      "sentence_index": 0,
+      "text": "밀도는 물질의 단위 부피당 질량이에요.",
+      "text_markdown": "밀도는 물질의 단위 부피당 질량이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "밀도는 물질의 단위 부피당 질량이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-065",
+      "sentence_index": 0,
+      "text": "지각 아래에는 맨틀이 있어요.",
+      "text_markdown": "지각 아래에는 맨틀이 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "지각 아래에는 맨틀이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-066",
+      "sentence_index": 0,
+      "text": "맨틀은 약 2,900킬로미터 깊이까지 뻗어 있는 두꺼운 바위 층이에요.",
+      "text_markdown": "맨틀은 약 2,900킬로미터 깊이까지 뻗어 있는 두꺼운 바위 층이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "맨틀은 약 이천구백 킬로미터 깊이까지 뻗어 있는 두꺼운 바위 층이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-067",
+      "sentence_index": 0,
+      "text": "맨틀은 액체가 아니에요.",
+      "text_markdown": "맨틀은 액체가 아니에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "맨틀은 액체가 아니에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-068",
+      "sentence_index": 0,
+      "text": "대부분은 고체예요.",
+      "text_markdown": "대부분은 고체예요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "대부분은 고체예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-069",
+      "sentence_index": 0,
+      "text": "하지만 너무 뜨겁고 압력이 높아서 아주 긴 시간에 걸쳐 천천히 흘러요.",
+      "text_markdown": "하지만 너무 뜨겁고 압력이 높아서 아주 긴 시간에 걸쳐 천천히 흘러요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "하지만 너무 뜨겁고 압력이 높아서 아주 긴 시간에 걸쳐 천천히 흘러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-070",
+      "sentence_index": 0,
+      "text": "이 느린 흐름을 대류라고 해요.",
+      "text_markdown": "이 느린 흐름을 대류라고 해요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "이 느린 흐름을 대류라고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-071",
+      "sentence_index": 0,
+      "text": "대류는 온도 차이에 의해 물질이 움직이는 것이에요.",
+      "text_markdown": "대류는 온도 차이에 의해 물질이 움직이는 것이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "대류는 온도 차이에 의해 물질이 움직이는 것이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-072",
+      "sentence_index": 0,
+      "text": "뜨거운 물질은 위로 올라가요.",
+      "text_markdown": "뜨거운 물질은 위로 올라가요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "뜨거운 물질은 위로 올라가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-073",
+      "sentence_index": 0,
+      "text": "차가운 물질은 아래로 가라앉아요.",
+      "text_markdown": "차가운 물질은 아래로 가라앉아요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "차가운 물질은 아래로 가라앉아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-074",
+      "sentence_index": 0,
+      "text": "이 순환이 맨틀에 흐름을 만들고, 그 위의 판을 움직여요.",
+      "text_markdown": "이 순환이 맨틀에 흐름을 만들고, 그 위의 판을 움직여요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "이 순환이 맨틀에 흐름을 만들고, 그 위의 판을 움직여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-075",
+      "sentence_index": 0,
+      "text": "맨틀 위쪽, 지각 바로 아래에는 연약권이라는 구역이 있어요.",
+      "text_markdown": "맨틀 위쪽, 지각 바로 아래에는 연약권이라는 구역이 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "맨틀 위쪽, 지각 바로 아래에는 연약권이라는 구역이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-076",
+      "sentence_index": 0,
+      "text": "연약권은 부분적으로 녹은 부드러운 바위 층이에요.",
+      "text_markdown": "연약권은 부분적으로 녹은 부드러운 바위 층이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "연약권은 부분적으로 녹은 부드러운 바위 층이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-077",
+      "sentence_index": 0,
+      "text": "부분적으로 녹았다는 것은 바위의 일부는 녹고 나머지는 여전히 고체라는 뜻이에요.",
+      "text_markdown": "부분적으로 녹았다는 것은 바위의 일부는 녹고 나머지는 여전히 고체라는 뜻이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "부분적으로 녹았다는 것은 바위의 일부는 녹고 나머지는 여전히 고체라는 뜻이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-078",
+      "sentence_index": 0,
+      "text": "판은 연약권 위에 놓여서 그 위를 미끄러져요.",
+      "text_markdown": "판은 연약권 위에 놓여서 그 위를 미끄러져요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "판은 연약권 위에 놓여서 그 위를 미끄러져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-079",
+      "sentence_index": 0,
+      "text": "연약권은 대부분의 마그마가 만들어지는 곳이에요.",
+      "text_markdown": "연약권은 대부분의 마그마가 만들어지는 곳이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "연약권은 대부분의 마그마가 만들어지는 곳이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-080",
+      "sentence_index": 0,
+      "text": "마그마는 지구 표면 아래에 있는 녹은 바위예요.",
+      "text_markdown": "마그마는 지구 표면 아래에 있는 녹은 바위예요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "마그마는 지구 표면 아래에 있는 녹은 바위예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-081",
+      "sentence_index": 0,
+      "text": "마그마가 지표면에 도달하면 용암이라고 불러요.",
+      "text_markdown": "마그마가 지표면에 도달하면 용암이라고 불러요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "마그마가 지표면에 도달하면 용암이라고 불러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-082",
+      "sentence_index": 0,
+      "text": "맨틀 아래에는 외핵이 있어요.",
+      "text_markdown": "맨틀 아래에는 외핵이 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "맨틀 아래에는 외핵이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-083",
+      "sentence_index": 0,
+      "text": "외핵은 주로 철과 니켈로 된 액체 금속 층이에요.",
+      "text_markdown": "외핵은 주로 철과 니켈로 된 액체 금속 층이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "외핵은 주로 철과 니켈로 된 액체 금속 층이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-084",
+      "sentence_index": 0,
+      "text": "약 2,900킬로미터에서 5,100킬로미터 깊이까지 뻗어 있어요.",
+      "text_markdown": "약 2,900킬로미터에서 5,100킬로미터 깊이까지 뻗어 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "약 이천구백 킬로미터에서 오천백 킬로미터 깊이까지 뻗어 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-085",
+      "sentence_index": 0,
+      "text": "이곳의 온도는 약 4,400도에서 6,100도 사이예요.",
+      "text_markdown": "이곳의 온도는 약 4,400도에서 6,100도 사이예요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "이곳의 온도는 약 사천사백 도에서 육천백 도 사이예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-086",
+      "sentence_index": 0,
+      "text": "이 액체 금속의 움직임이 지구의 자기장을 만들어요.",
+      "text_markdown": "이 액체 금속의 움직임이 지구의 자기장을 만들어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "이 액체 금속의 움직임이 지구의 자기장을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-087",
+      "sentence_index": 0,
+      "text": "가장 중심에는 내핵이 있어요.",
+      "text_markdown": "가장 중심에는 내핵이 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "가장 중심에는 내핵이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-088",
+      "sentence_index": 0,
+      "text": "내핵은 철과 니켈로 된 단단한 공이에요.",
+      "text_markdown": "내핵은 철과 니켈로 된 단단한 공이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "내핵은 철과 니켈로 된 단단한 공이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-089",
+      "sentence_index": 0,
+      "text": "온도가 약 5,500도나 되지만, 압력이 너무 높아서 고체로 남아 있어요.",
+      "text_markdown": "온도가 약 5,500도나 되지만, 압력이 너무 높아서 고체로 남아 있어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "온도가 약 오천오백 도나 되지만, 압력이 너무 높아서 고체로 남아 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-090",
+      "sentence_index": 0,
+      "text": "지구 중심의 압력은 지표면 압력의 약 360만 배예요.",
+      "text_markdown": "지구 중심의 압력은 지표면 압력의 약 360만 배예요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "지구 중심의 압력은 지표면 압력의 약 삼백육십만 배예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-091",
+      "sentence_index": 0,
+      "text": "열은 핵에서 맨틀을 통해 표면 쪽으로 흘러요.",
+      "text_markdown": "열은 핵에서 맨틀을 통해 표면 쪽으로 흘러요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "열은 핵에서 맨틀을 통해 표면 쪽으로 흘러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-092",
+      "sentence_index": 0,
+      "text": "이 열이 모든 것을 움직여요.",
+      "text_markdown": "이 열이 모든 것을 움직여요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "이 열이 모든 것을 움직여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-093",
+      "sentence_index": 0,
+      "text": "맨틀의 대류를 일으켜요.",
+      "text_markdown": "맨틀의 대류를 일으켜요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "맨틀의 대류를 일으켜요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-094",
+      "sentence_index": 0,
+      "text": "판을 움직여요.",
+      "text_markdown": "판을 움직여요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "판을 움직여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-095",
+      "sentence_index": 0,
+      "text": "바위를 녹여 마그마로 만들어요.",
+      "text_markdown": "바위를 녹여 마그마로 만들어요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "바위를 녹여 마그마로 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-096",
+      "sentence_index": 0,
+      "text": "마그마를 지각의 틈과 약한 곳을 통해 위로 밀어 올려요.",
+      "text_markdown": "마그마를 지각의 틈과 약한 곳을 통해 위로 밀어 올려요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "마그마를 지각의 틈과 약한 곳을 통해 위로 밀어 올려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-097",
+      "sentence_index": 0,
+      "text": "그 마그마가 지표면에 도달하면 화산이 분화해요.",
+      "text_markdown": "그 마그마가 지표면에 도달하면 화산이 분화해요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "그 마그마가 지표면에 도달하면 화산이 분화해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-098",
+      "sentence_index": 0,
+      "text": "지구는 차갑고 죽은 바위가 아니에요.",
+      "text_markdown": "지구는 차갑고 죽은 바위가 아니에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "지구는 차갑고 죽은 바위가 아니에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-099",
+      "sentence_index": 0,
+      "text": "활발하고 뜨거운 행성이에요.",
+      "text_markdown": "활발하고 뜨거운 행성이에요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "활발하고 뜨거운 행성이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-100",
+      "sentence_index": 0,
+      "text": "지구 내부는 끊임없이 움직이고 흘러요.",
+      "text_markdown": "지구 내부는 끊임없이 움직이고 흘러요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "지구 내부는 끊임없이 움직이고 흘러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 2,
+      "id": "ch02-101",
+      "sentence_index": 0,
+      "text": "화산은 우리 발아래 숨겨진 열과 움직임의 살아 있는 증거예요.",
+      "text_markdown": "화산은 우리 발아래 숨겨진 열과 움직임의 살아 있는 증거예요.",
+      "title": "지구 속으로",
+      "tts": {
+        "text": "화산은 우리 발아래 숨겨진 열과 움직임의 살아 있는 증거예요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 3,
+      "id": "ch03-102",
+      "sentence_index": 0,
+      "text": "판",
+      "text_markdown": "판",
+      "title": "판"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-103",
+      "sentence_index": 0,
+      "text": "지구의 바깥 껍질은 판이라고 불리는 큰 조각들로 나뉘어 있어요.",
+      "text_markdown": "지구의 바깥 껍질은 판이라고 불리는 큰 조각들로 나뉘어 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "지구의 바깥 껍질은 판이라고 불리는 큰 조각들로 나뉘어 있어요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-104",
+      "sentence_index": 0,
+      "text": "판은 지각과 맨틀 윗부분을 포함하는 단단한 바위 조각이에요.",
+      "text_markdown": "판은 지각과 맨틀 윗부분을 포함하는 단단한 바위 조각이에요.",
+      "title": "판",
+      "tts": {
+        "text": "판은 지각과 맨틀 윗부분을 포함하는 단단한 바위 조각이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-105",
+      "sentence_index": 0,
+      "text": "지각과 이 맨틀 윗부분을 합쳐서 암석권이라고 해요.",
+      "text_markdown": "지각과 이 맨틀 윗부분을 합쳐서 암석권이라고 해요.",
+      "title": "판",
+      "tts": {
+        "text": "지각과 이 맨틀 윗부분을 합쳐서 암석권이라고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-106",
+      "sentence_index": 0,
+      "text": "암석권은 지구의 단단한 바깥 껍질이에요.",
+      "text_markdown": "암석권은 지구의 단단한 바깥 껍질이에요.",
+      "title": "판",
+      "tts": {
+        "text": "암석권은 지구의 단단한 바깥 껍질이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-107",
+      "sentence_index": 0,
+      "text": "주요 판은 약 15개이고, 작은 판도 여러 개 있어요.",
+      "text_markdown": "주요 판은 약 15개이고, 작은 판도 여러 개 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "주요 판은 약 열다섯 개이고, 작은 판도 여러 개 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-108",
+      "sentence_index": 0,
+      "text": "태평양판이 가장 커요.",
+      "text_markdown": "태평양판이 가장 커요.",
+      "title": "판",
+      "tts": {
+        "text": "태평양판이 가장 커요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-109",
+      "sentence_index": 0,
+      "text": "북아메리카판, 유라시아판, 아프리카판 등이 있어요.",
+      "text_markdown": "북아메리카판, 유라시아판, 아프리카판 등이 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "북아메리카판, 유라시아판, 아프리카판 등이 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-110",
+      "sentence_index": 0,
+      "text": "이 판들은 가만히 있지 않아요.",
+      "text_markdown": "이 판들은 가만히 있지 않아요.",
+      "title": "판",
+      "tts": {
+        "text": "이 판들은 가만히 있지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-111",
+      "sentence_index": 0,
+      "text": "움직여요.",
+      "text_markdown": "움직여요.",
+      "title": "판",
+      "tts": {
+        "text": "움직여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-112",
+      "sentence_index": 0,
+      "text": "미끄러지고, 부딪히고, 벌어져요.",
+      "text_markdown": "미끄러지고, 부딪히고, 벌어져요.",
+      "title": "판",
+      "tts": {
+        "text": "미끄러지고, 부딪히고, 벌어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-113",
+      "sentence_index": 0,
+      "text": "움직임은 느려요.",
+      "text_markdown": "움직임은 느려요.",
+      "title": "판",
+      "tts": {
+        "text": "움직임은 느려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-114",
+      "sentence_index": 0,
+      "text": "대부분의 판은 1년에 2~10센티미터씩 움직여요.",
+      "text_markdown": "대부분의 판은 1년에 2~10센티미터씩 움직여요.",
+      "title": "판",
+      "tts": {
+        "text": "대부분의 판은 일 년에 이에서 십 센티미터씩 움직여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-115",
+      "sentence_index": 0,
+      "text": "대략 손톱이 자라는 속도와 비슷해요.",
+      "text_markdown": "대략 손톱이 자라는 속도와 비슷해요.",
+      "title": "판",
+      "tts": {
+        "text": "대략 손톱이 자라는 속도와 비슷해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-116",
+      "sentence_index": 0,
+      "text": "판은 그 아래 맨틀의 대류 때문에 움직여요.",
+      "text_markdown": "판은 그 아래 맨틀의 대류 때문에 움직여요.",
+      "title": "판",
+      "tts": {
+        "text": "판은 그 아래 맨틀의 대류 때문에 움직여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-117",
+      "sentence_index": 0,
+      "text": "뜨거운 바위가 맨틀 깊은 곳에서 올라와요.",
+      "text_markdown": "뜨거운 바위가 맨틀 깊은 곳에서 올라와요.",
+      "title": "판",
+      "tts": {
+        "text": "뜨거운 바위가 맨틀 깊은 곳에서 올라와요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-118",
+      "sentence_index": 0,
+      "text": "암석권 아래에서 옆으로 퍼져요.",
+      "text_markdown": "암석권 아래에서 옆으로 퍼져요.",
+      "title": "판",
+      "tts": {
+        "text": "암석권 아래에서 옆으로 퍼져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-119",
+      "sentence_index": 0,
+      "text": "판을 함께 끌고 가요.",
+      "text_markdown": "판을 함께 끌고 가요.",
+      "title": "판",
+      "tts": {
+        "text": "판을 함께 끌고 가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-120",
+      "sentence_index": 0,
+      "text": "그러고 나서 식으면 다시 아래로 가라앉아요.",
+      "text_markdown": "그러고 나서 식으면 다시 아래로 가라앉아요.",
+      "title": "판",
+      "tts": {
+        "text": "그러고 나서 식으면 다시 아래로 가라앉아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-121",
+      "sentence_index": 0,
+      "text": "이 순환이 끊임없이 반복돼요.",
+      "text_markdown": "이 순환이 끊임없이 반복돼요.",
+      "title": "판",
+      "tts": {
+        "text": "이 순환이 끊임없이 반복돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-122",
+      "sentence_index": 0,
+      "text": "대부분의 화산은 판이 만나는 경계에서 생겨요.",
+      "text_markdown": "대부분의 화산은 판이 만나는 경계에서 생겨요.",
+      "title": "판",
+      "tts": {
+        "text": "대부분의 화산은 판이 만나는 경계에서 생겨요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-123",
+      "sentence_index": 0,
+      "text": "판 경계에는 세 가지 종류가 있어요.",
+      "text_markdown": "판 경계에는 세 가지 종류가 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "판 경계에는 세 가지 종류가 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-124",
+      "sentence_index": 0,
+      "text": "각 종류는 서로 다른 화산 활동을 만들어요.",
+      "text_markdown": "각 종류는 서로 다른 화산 활동을 만들어요.",
+      "title": "판",
+      "tts": {
+        "text": "각 종류는 서로 다른 화산 활동을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-125",
+      "sentence_index": 0,
+      "text": "발산 경계에서는 판이 서로 멀어져요.",
+      "text_markdown": "발산 경계에서는 판이 서로 멀어져요.",
+      "title": "판",
+      "tts": {
+        "text": "발산 경계에서는 판이 서로 멀어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-126",
+      "sentence_index": 0,
+      "text": "발산이란 서로 멀어지는 것을 뜻해요.",
+      "text_markdown": "발산이란 서로 멀어지는 것을 뜻해요.",
+      "title": "판",
+      "tts": {
+        "text": "발산이란 서로 멀어지는 것을 뜻해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-127",
+      "sentence_index": 0,
+      "text": "마그마가 맨틀에서 올라와 틈을 메워요.",
+      "text_markdown": "마그마가 맨틀에서 올라와 틈을 메워요.",
+      "title": "판",
+      "tts": {
+        "text": "마그마가 맨틀에서 올라와 틈을 메워요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-128",
+      "sentence_index": 0,
+      "text": "이것이 새로운 지각을 만들어요.",
+      "text_markdown": "이것이 새로운 지각을 만들어요.",
+      "title": "판",
+      "tts": {
+        "text": "이것이 새로운 지각을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-129",
+      "sentence_index": 0,
+      "text": "대서양 중앙 해령은 발산 경계예요.",
+      "text_markdown": "대서양 중앙 해령은 발산 경계예요.",
+      "title": "판",
+      "tts": {
+        "text": "대서양 중앙 해령은 발산 경계예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-130",
+      "sentence_index": 0,
+      "text": "대서양 한가운데를 따라 뻗어 있어요.",
+      "text_markdown": "대서양 한가운데를 따라 뻗어 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "대서양 한가운데를 따라 뻗어 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-131",
+      "sentence_index": 0,
+      "text": "아이슬란드는 이 해령 위에 있어요.",
+      "text_markdown": "아이슬란드는 이 해령 위에 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "아이슬란드는 이 해령 위에 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-132",
+      "sentence_index": 0,
+      "text": "아이슬란드에는 마그마가 끊임없이 올라오기 때문에 활화산이 많아요.",
+      "text_markdown": "아이슬란드에는 마그마가 끊임없이 올라오기 때문에 활화산이 많아요.",
+      "title": "판",
+      "tts": {
+        "text": "아이슬란드에는 마그마가 끊임없이 올라오기 때문에 활화산이 많아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-133",
+      "sentence_index": 0,
+      "text": "수렴 경계에서는 판이 서로 밀려요.",
+      "text_markdown": "수렴 경계에서는 판이 서로 밀려요.",
+      "title": "판",
+      "tts": {
+        "text": "수렴 경계에서는 판이 서로 밀려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-134",
+      "sentence_index": 0,
+      "text": "수렴이란 서로 가까워지는 것을 뜻해요.",
+      "text_markdown": "수렴이란 서로 가까워지는 것을 뜻해요.",
+      "title": "판",
+      "tts": {
+        "text": "수렴이란 서로 가까워지는 것을 뜻해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-135",
+      "sentence_index": 0,
+      "text": "해양판이 대륙판을 만나면, 더 무거운 해양판이 더 가벼운 대륙판 아래로 미끄러져 들어가요.",
+      "text_markdown": "해양판이 대륙판을 만나면, 더 무거운 해양판이 더 가벼운 대륙판 아래로 미끄러져 들어가요.",
+      "title": "판",
+      "tts": {
+        "text": "해양판이 대륙판을 만나면, 더 무거운 해양판이 더 가벼운 대륙판 아래로 미끄러져 들어가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-136",
+      "sentence_index": 0,
+      "text": "이 과정을 섭입이라고 해요.",
+      "text_markdown": "이 과정을 섭입이라고 해요.",
+      "title": "판",
+      "tts": {
+        "text": "이 과정을 섭입이라고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-137",
+      "sentence_index": 0,
+      "text": "섭입하는 판이 맨틀 속으로 내려가면 강한 열에 의해 녹아요.",
+      "text_markdown": "섭입하는 판이 맨틀 속으로 내려가면 강한 열에 의해 녹아요.",
+      "title": "판",
+      "tts": {
+        "text": "섭입하는 판이 맨틀 속으로 내려가면 강한 열에 의해 녹아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-138",
+      "sentence_index": 0,
+      "text": "녹은 바위가 마그마가 되어 올라오고, 위의 화산에 마그마를 공급해요.",
+      "text_markdown": "녹은 바위가 마그마가 되어 올라오고, 위의 화산에 마그마를 공급해요.",
+      "title": "판",
+      "tts": {
+        "text": "녹은 바위가 마그마가 되어 올라오고, 위의 화산에 마그마를 공급해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-139",
+      "sentence_index": 0,
+      "text": "남아메리카의 안데스산맥은 이렇게 만들어졌어요.",
+      "text_markdown": "남아메리카의 안데스산맥은 이렇게 만들어졌어요.",
+      "title": "판",
+      "tts": {
+        "text": "남아메리카의 안데스산맥은 이렇게 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-140",
+      "sentence_index": 0,
+      "text": "미국 북서부의 캐스케이드산맥도 같은 방식으로 만들어졌어요.",
+      "text_markdown": "미국 북서부의 캐스케이드산맥도 같은 방식으로 만들어졌어요.",
+      "title": "판",
+      "tts": {
+        "text": "미국 북서부의 캐스케이드산맥도 같은 방식으로 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-141",
+      "sentence_index": 0,
+      "text": "변환 경계에서는 판이 서로 옆으로 미끄러져요.",
+      "text_markdown": "변환 경계에서는 판이 서로 옆으로 미끄러져요.",
+      "title": "판",
+      "tts": {
+        "text": "변환 경계에서는 판이 서로 옆으로 미끄러져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-142",
+      "sentence_index": 0,
+      "text": "변환 경계는 지진을 일으키지만, 보통 화산은 만들지 않아요.",
+      "text_markdown": "변환 경계는 지진을 일으키지만, 보통 화산은 만들지 않아요.",
+      "title": "판",
+      "tts": {
+        "text": "변환 경계는 지진을 일으키지만, 보통 화산은 만들지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-143",
+      "sentence_index": 0,
+      "text": "캘리포니아의 산안드레아스 단층은 변환 경계예요.",
+      "text_markdown": "캘리포니아의 산안드레아스 단층은 변환 경계예요.",
+      "title": "판",
+      "tts": {
+        "text": "캘리포니아의 산안드레아스 단층은 변환 경계예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-144",
+      "sentence_index": 0,
+      "text": "어떤 화산은 판 경계에서 멀리 떨어진 곳에서 생겨요.",
+      "text_markdown": "어떤 화산은 판 경계에서 멀리 떨어진 곳에서 생겨요.",
+      "title": "판",
+      "tts": {
+        "text": "어떤 화산은 판 경계에서 멀리 떨어진 곳에서 생겨요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-145",
+      "sentence_index": 0,
+      "text": "이런 화산을 열점 화산이라고 해요.",
+      "text_markdown": "이런 화산을 열점 화산이라고 해요.",
+      "title": "판",
+      "tts": {
+        "text": "이런 화산을 열점 화산이라고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-146",
+      "sentence_index": 0,
+      "text": "열점은 맨틀 깊은 곳에서 아주 뜨거운 바위 기둥이 올라오는 장소예요.",
+      "text_markdown": "열점은 맨틀 깊은 곳에서 아주 뜨거운 바위 기둥이 올라오는 장소예요.",
+      "title": "판",
+      "tts": {
+        "text": "열점은 맨틀 깊은 곳에서 아주 뜨거운 바위 기둥이 올라오는 장소예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-147",
+      "sentence_index": 0,
+      "text": "이 기둥이 위의 판을 뚫고 올라와요.",
+      "text_markdown": "이 기둥이 위의 판을 뚫고 올라와요.",
+      "title": "판",
+      "tts": {
+        "text": "이 기둥이 위의 판을 뚫고 올라와요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-148",
+      "sentence_index": 0,
+      "text": "하와이 제도는 열점 위에서 만들어졌어요.",
+      "text_markdown": "하와이 제도는 열점 위에서 만들어졌어요.",
+      "title": "판",
+      "tts": {
+        "text": "하와이 제도는 열점 위에서 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-149",
+      "sentence_index": 0,
+      "text": "태평양판이 고정된 열점 위를 지나가요.",
+      "text_markdown": "태평양판이 고정된 열점 위를 지나가요.",
+      "title": "판",
+      "tts": {
+        "text": "태평양판이 고정된 열점 위를 지나가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-150",
+      "sentence_index": 0,
+      "text": "판이 기둥을 지나가면서 각 섬이 만들어졌어요.",
+      "text_markdown": "판이 기둥을 지나가면서 각 섬이 만들어졌어요.",
+      "title": "판",
+      "tts": {
+        "text": "판이 기둥을 지나가면서 각 섬이 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-151",
+      "sentence_index": 0,
+      "text": "가장 오래된 섬은 열점에서 가장 멀어요.",
+      "text_markdown": "가장 오래된 섬은 열점에서 가장 멀어요.",
+      "title": "판",
+      "tts": {
+        "text": "가장 오래된 섬은 열점에서 가장 멀어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-152",
+      "sentence_index": 0,
+      "text": "가장 젊은 섬인 하와이는 지금 바로 열점 위에 있어요.",
+      "text_markdown": "가장 젊은 섬인 하와이는 지금 바로 열점 위에 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "가장 젊은 섬인 하와이는 지금 바로 열점 위에 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-153",
+      "sentence_index": 0,
+      "text": "판은 화산이 어디에 있는지를 결정해요.",
+      "text_markdown": "판은 화산이 어디에 있는지를 결정해요.",
+      "title": "판",
+      "tts": {
+        "text": "판은 화산이 어디에 있는지를 결정해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 3,
+      "id": "ch03-154",
+      "sentence_index": 0,
+      "text": "화산 지도는 판 경계 지도이고, 열점은 그 사이에 흩어져 있어요.",
+      "text_markdown": "화산 지도는 판 경계 지도이고, 열점은 그 사이에 흩어져 있어요.",
+      "title": "판",
+      "tts": {
+        "text": "화산 지도는 판 경계 지도이고, 열점은 그 사이에 흩어져 있어요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 4,
+      "id": "ch04-155",
+      "sentence_index": 0,
+      "text": "화산은 어떻게 분화해요?",
+      "text_markdown": "화산은 어떻게 분화해요?",
+      "title": "화산은 어떻게 분화해요?"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-156",
+      "sentence_index": 0,
+      "text": "분화는 땅 깊은 곳에서 시작돼요.",
+      "text_markdown": "분화는 땅 깊은 곳에서 시작돼요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "분화는 땅 깊은 곳에서 시작돼요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-157",
+      "sentence_index": 0,
+      "text": "맨틀의 바위가 녹아서 마그마가 돼요.",
+      "text_markdown": "맨틀의 바위가 녹아서 마그마가 돼요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "맨틀의 바위가 녹아서 마그마가 돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-158",
+      "sentence_index": 0,
+      "text": "마그마는 주변의 단단한 바위보다 밀도가 낮아요.",
+      "text_markdown": "마그마는 주변의 단단한 바위보다 밀도가 낮아요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마는 주변의 단단한 바위보다 밀도가 낮아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-159",
+      "sentence_index": 0,
+      "text": "밀도가 낮기 때문에 위로 올라가요.",
+      "text_markdown": "밀도가 낮기 때문에 위로 올라가요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "밀도가 낮기 때문에 위로 올라가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-160",
+      "sentence_index": 0,
+      "text": "지각의 틈과 약한 곳을 통해 위로 밀고 올라가요.",
+      "text_markdown": "지각의 틈과 약한 곳을 통해 위로 밀고 올라가요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "지각의 틈과 약한 곳을 통해 위로 밀고 올라가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-161",
+      "sentence_index": 0,
+      "text": "마그마는 지하의 방에 모여요.",
+      "text_markdown": "마그마는 지하의 방에 모여요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마는 지하의 방에 모여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-162",
+      "sentence_index": 0,
+      "text": "마그마방은 화산 아래에 있는 큰 녹은 바위 웅덩이예요.",
+      "text_markdown": "마그마방은 화산 아래에 있는 큰 녹은 바위 웅덩이예요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마방은 화산 아래에 있는 큰 녹은 바위 웅덩이예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-163",
+      "sentence_index": 0,
+      "text": "마그마방은 지표면 아래 몇 킬로미터에서 수십 킬로미터까지 어디에나 있을 수 있어요.",
+      "text_markdown": "마그마방은 지표면 아래 몇 킬로미터에서 수십 킬로미터까지 어디에나 있을 수 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마방은 지표면 아래 몇 킬로미터에서 수십 킬로미터까지 어디에나 있을 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-164",
+      "sentence_index": 0,
+      "text": "마그마는 분화하기 전에 수천 년 동안 방 안에 머물 수 있어요.",
+      "text_markdown": "마그마는 분화하기 전에 수천 년 동안 방 안에 머물 수 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마는 분화하기 전에 수천 년 동안 방 안에 머물 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-165",
+      "sentence_index": 0,
+      "text": "새로운 마그마가 아래에서 계속 올라와 압력을 높여요.",
+      "text_markdown": "새로운 마그마가 아래에서 계속 올라와 압력을 높여요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "새로운 마그마가 아래에서 계속 올라와 압력을 높여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-166",
+      "sentence_index": 0,
+      "text": "압력이 분화의 핵심이에요.",
+      "text_markdown": "압력이 분화의 핵심이에요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "압력이 분화의 핵심이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-167",
+      "sentence_index": 0,
+      "text": "마그마에는 녹아 있는 가스가 들어 있어요.",
+      "text_markdown": "마그마에는 녹아 있는 가스가 들어 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마에는 녹아 있는 가스가 들어 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-168",
+      "sentence_index": 0,
+      "text": "주요 가스는 수증기, 이산화탄소, 이산화황이에요.",
+      "text_markdown": "주요 가스는 수증기, 이산화탄소, 이산화황이에요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "주요 가스는 수증기, 이산화탄소, 이산화황이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-169",
+      "sentence_index": 0,
+      "text": "마그마가 깊은 곳에 있을 때는 위의 바위 무게가 이 가스들을 녹아 있게 해요.",
+      "text_markdown": "마그마가 깊은 곳에 있을 때는 위의 바위 무게가 이 가스들을 녹아 있게 해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마가 깊은 곳에 있을 때는 위의 바위 무게가 이 가스들을 녹아 있게 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-170",
+      "sentence_index": 0,
+      "text": "마그마가 올라오면서 압력이 줄어들면, 가스가 빠져나오기 시작해요.",
+      "text_markdown": "마그마가 올라오면서 압력이 줄어들면, 가스가 빠져나오기 시작해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마가 올라오면서 압력이 줄어들면, 가스가 빠져나오기 시작해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-171",
+      "sentence_index": 0,
+      "text": "거품이 생겨요.",
+      "text_markdown": "거품이 생겨요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "거품이 생겨요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-172",
+      "sentence_index": 0,
+      "text": "탄산수 병을 열 때 일어나는 일과 비슷해요.",
+      "text_markdown": "탄산수 병을 열 때 일어나는 일과 비슷해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "탄산수 병을 열 때 일어나는 일과 비슷해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-173",
+      "sentence_index": 0,
+      "text": "압력이 줄어들면 녹아 있던 가스가 거품을 만들어요.",
+      "text_markdown": "압력이 줄어들면 녹아 있던 가스가 거품을 만들어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "압력이 줄어들면 녹아 있던 가스가 거품을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-174",
+      "sentence_index": 0,
+      "text": "거품은 올라가면서 커져요.",
+      "text_markdown": "거품은 올라가면서 커져요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "거품은 올라가면서 커져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-175",
+      "sentence_index": 0,
+      "text": "거품이 마그마를 부풀게 하고 밀도를 낮춰요.",
+      "text_markdown": "거품이 마그마를 부풀게 하고 밀도를 낮춰요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "거품이 마그마를 부풀게 하고 밀도를 낮춰요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-176",
+      "sentence_index": 0,
+      "text": "이것이 마그마를 더 빠르게 위로 밀어 올려요.",
+      "text_markdown": "이것이 마그마를 더 빠르게 위로 밀어 올려요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "이것이 마그마를 더 빠르게 위로 밀어 올려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-177",
+      "sentence_index": 0,
+      "text": "결국 위의 바위가 압력을 이기지 못해요.",
+      "text_markdown": "결국 위의 바위가 압력을 이기지 못해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "결국 위의 바위가 압력을 이기지 못해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-178",
+      "sentence_index": 0,
+      "text": "화산이 분화해요.",
+      "text_markdown": "화산이 분화해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "화산이 분화해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-179",
+      "sentence_index": 0,
+      "text": "분화 방식은 마그마의 점성과 가스 함량에 달려 있어요.",
+      "text_markdown": "분화 방식은 마그마의 점성과 가스 함량에 달려 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "분화 방식은 마그마의 점성과 가스 함량에 달려 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-180",
+      "sentence_index": 0,
+      "text": "점성은 액체가 얼마나 쉽게 흐르는지를 나타내는 척도예요.",
+      "text_markdown": "점성은 액체가 얼마나 쉽게 흐르는지를 나타내는 척도예요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "점성은 액체가 얼마나 쉽게 흐르는지를 나타내는 척도예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-181",
+      "sentence_index": 0,
+      "text": "점성이 낮은 마그마는 묽어요.",
+      "text_markdown": "점성이 낮은 마그마는 묽어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "점성이 낮은 마그마는 묽어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-182",
+      "sentence_index": 0,
+      "text": "쉽게 흘러요.",
+      "text_markdown": "쉽게 흘러요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "쉽게 흘러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-183",
+      "sentence_index": 0,
+      "text": "가스가 부드럽게 빠져나가요.",
+      "text_markdown": "가스가 부드럽게 빠져나가요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "가스가 부드럽게 빠져나가요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-184",
+      "sentence_index": 0,
+      "text": "점성이 낮은 마그마의 분화는 용출성인 경우가 많아요.",
+      "text_markdown": "점성이 낮은 마그마의 분화는 용출성인 경우가 많아요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "점성이 낮은 마그마의 분화는 용출성인 경우가 많아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-185",
+      "sentence_index": 0,
+      "text": "용출성이란 용암이 폭발하지 않고 흘러나온다는 뜻이에요.",
+      "text_markdown": "용출성이란 용암이 폭발하지 않고 흘러나온다는 뜻이에요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "용출성이란 용암이 폭발하지 않고 흘러나온다는 뜻이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-186",
+      "sentence_index": 0,
+      "text": "하와이 화산은 이런 방식으로 분화해요.",
+      "text_markdown": "하와이 화산은 이런 방식으로 분화해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "하와이 화산은 이런 방식으로 분화해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-187",
+      "sentence_index": 0,
+      "text": "용암이 분화구에서 강과 분수처럼 쏟아져 나와요.",
+      "text_markdown": "용암이 분화구에서 강과 분수처럼 쏟아져 나와요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "용암이 분화구에서 강과 분수처럼 쏟아져 나와요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-188",
+      "sentence_index": 0,
+      "text": "분화구는 화산 꼭대기에 있는 그릇 모양의 움푹 파인 곳이에요.",
+      "text_markdown": "분화구는 화산 꼭대기에 있는 그릇 모양의 움푹 파인 곳이에요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "분화구는 화산 꼭대기에 있는 그릇 모양의 움푹 파인 곳이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-189",
+      "sentence_index": 0,
+      "text": "점성이 높은 마그마는 걸쭉하고 끈적끈적해요.",
+      "text_markdown": "점성이 높은 마그마는 걸쭉하고 끈적끈적해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "점성이 높은 마그마는 걸쭉하고 끈적끈적해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-190",
+      "sentence_index": 0,
+      "text": "가스가 쉽게 빠져나가지 못해요.",
+      "text_markdown": "가스가 쉽게 빠져나가지 못해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "가스가 쉽게 빠져나가지 못해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-191",
+      "sentence_index": 0,
+      "text": "마그마가 폭발할 때까지 압력이 쌓여요.",
+      "text_markdown": "마그마가 폭발할 때까지 압력이 쌓여요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마가 폭발할 때까지 압력이 쌓여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-192",
+      "sentence_index": 0,
+      "text": "이런 분화를 폭발적 분화라고 해요.",
+      "text_markdown": "이런 분화를 폭발적 분화라고 해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "이런 분화를 폭발적 분화라고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-193",
+      "sentence_index": 0,
+      "text": "화산재, 가스, 바위 조각들이 대기 높이 솟아올라요.",
+      "text_markdown": "화산재, 가스, 바위 조각들이 대기 높이 솟아올라요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "화산재, 가스, 바위 조각들이 대기 높이 솟아올라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-194",
+      "sentence_index": 0,
+      "text": "이 조각들을 테프라라고 해요.",
+      "text_markdown": "이 조각들을 테프라라고 해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "이 조각들을 테프라라고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-195",
+      "sentence_index": 0,
+      "text": "테프라에는 고운 화산재부터 큰 바위까지 모든 것이 포함돼요.",
+      "text_markdown": "테프라에는 고운 화산재부터 큰 바위까지 모든 것이 포함돼요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "테프라에는 고운 화산재부터 큰 바위까지 모든 것이 포함돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-196",
+      "sentence_index": 0,
+      "text": "1980년 세인트헬렌스산의 분화는 폭발적 분화였어요.",
+      "text_markdown": "1980년 세인트헬렌스산의 분화는 폭발적 분화였어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "천구백팔십 년 세인트헬렌스산의 분화는 폭발적 분화였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-197",
+      "sentence_index": 0,
+      "text": "폭발로 숲이 쓰러지고 화산재 구름이 여러 주까지 퍼졌어요.",
+      "text_markdown": "폭발로 숲이 쓰러지고 화산재 구름이 여러 주까지 퍼졌어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "폭발로 숲이 쓰러지고 화산재 구름이 여러 주까지 퍼졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-198",
+      "sentence_index": 0,
+      "text": "어떤 분화는 화쇄류를 만들어요.",
+      "text_markdown": "어떤 분화는 화쇄류를 만들어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "어떤 분화는 화쇄류를 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-199",
+      "sentence_index": 0,
+      "text": "화쇄류는 뜨거운 가스, 화산재, 바위 조각이 빠르게 흐르는 것이에요.",
+      "text_markdown": "화쇄류는 뜨거운 가스, 화산재, 바위 조각이 빠르게 흐르는 것이에요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "화쇄류는 뜨거운 가스, 화산재, 바위 조각이 빠르게 흐르는 것이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-200",
+      "sentence_index": 0,
+      "text": "화쇄류는 시속 700킬로미터가 넘는 속도로 이동할 수 있어요.",
+      "text_markdown": "화쇄류는 시속 700킬로미터가 넘는 속도로 이동할 수 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "화쇄류는 시속 칠백 킬로미터가 넘는 속도로 이동할 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-201",
+      "sentence_index": 0,
+      "text": "온도는 700도를 넘을 수 있어요.",
+      "text_markdown": "온도는 700도를 넘을 수 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "온도는 칠백 도를 넘을 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-202",
+      "sentence_index": 0,
+      "text": "화쇄류는 지나가는 곳의 모든 것을 파괴해요.",
+      "text_markdown": "화쇄류는 지나가는 곳의 모든 것을 파괴해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "화쇄류는 지나가는 곳의 모든 것을 파괴해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-203",
+      "sentence_index": 0,
+      "text": "화쇄류는 가장 치명적인 화산 위험이에요.",
+      "text_markdown": "화쇄류는 가장 치명적인 화산 위험이에요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "화쇄류는 가장 치명적인 화산 위험이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-204",
+      "sentence_index": 0,
+      "text": "모든 분화가 같지는 않아요.",
+      "text_markdown": "모든 분화가 같지는 않아요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "모든 분화가 같지는 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-205",
+      "sentence_index": 0,
+      "text": "어떤 화산은 수년 동안 조용하게 용암을 흘려요.",
+      "text_markdown": "어떤 화산은 수년 동안 조용하게 용암을 흘려요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "어떤 화산은 수년 동안 조용하게 용암을 흘려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-206",
+      "sentence_index": 0,
+      "text": "다른 화산은 수백 년을 잠자다가 엄청난 힘으로 폭발해요.",
+      "text_markdown": "다른 화산은 수백 년을 잠자다가 엄청난 힘으로 폭발해요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "다른 화산은 수백 년을 잠자다가 엄청난 힘으로 폭발해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-207",
+      "sentence_index": 0,
+      "text": "분화 방식은 마그마에 달려 있어요.",
+      "text_markdown": "분화 방식은 마그마에 달려 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "분화 방식은 마그마에 달려 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-208",
+      "sentence_index": 0,
+      "text": "마그마는 화산 아래의 지질에 달려 있어요.",
+      "text_markdown": "마그마는 화산 아래의 지질에 달려 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "마그마는 화산 아래의 지질에 달려 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 4,
+      "id": "ch04-209",
+      "sentence_index": 0,
+      "text": "모든 화산은 저마다의 성격이 있어요.",
+      "text_markdown": "모든 화산은 저마다의 성격이 있어요.",
+      "title": "화산은 어떻게 분화해요?",
+      "tts": {
+        "text": "모든 화산은 저마다의 성격이 있어요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 5,
+      "id": "ch05-210",
+      "sentence_index": 0,
+      "text": "화산의 종류",
+      "text_markdown": "화산의 종류",
+      "title": "화산의 종류"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-211",
+      "sentence_index": 0,
+      "text": "모든 화산이 같은 모양은 아니에요.",
+      "text_markdown": "모든 화산이 같은 모양은 아니에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "모든 화산이 같은 모양은 아니에요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-212",
+      "sentence_index": 0,
+      "text": "화산의 모양은 무엇이 어떻게 분출하느냐에 달려 있어요.",
+      "text_markdown": "화산의 모양은 무엇이 어떻게 분출하느냐에 달려 있어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "화산의 모양은 무엇이 어떻게 분출하느냐에 달려 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-213",
+      "sentence_index": 0,
+      "text": "과학자들은 구조와 분화 방식에 따라 화산을 여러 종류로 나눠요.",
+      "text_markdown": "과학자들은 구조와 분화 방식에 따라 화산을 여러 종류로 나눠요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "과학자들은 구조와 분화 방식에 따라 화산을 여러 종류로 나눠요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-214",
+      "sentence_index": 0,
+      "text": "순상 화산은 넓고 경사가 완만해요.",
+      "text_markdown": "순상 화산은 넓고 경사가 완만해요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "순상 화산은 넓고 경사가 완만해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-215",
+      "sentence_index": 0,
+      "text": "땅에 놓인 전사의 방패처럼 생겼어요.",
+      "text_markdown": "땅에 놓인 전사의 방패처럼 생겼어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "땅에 놓인 전사의 방패처럼 생겼어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-216",
+      "sentence_index": 0,
+      "text": "순상 화산은 점성이 낮은 용암의 분출로 만들어져요.",
+      "text_markdown": "순상 화산은 점성이 낮은 용암의 분출로 만들어져요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "순상 화산은 점성이 낮은 용암의 분출로 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-217",
+      "sentence_index": 0,
+      "text": "용암이 쉽게 흘러서 식기 전에 넓은 지역에 퍼져요.",
+      "text_markdown": "용암이 쉽게 흘러서 식기 전에 넓은 지역에 퍼져요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "용암이 쉽게 흘러서 식기 전에 넓은 지역에 퍼져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-218",
+      "sentence_index": 0,
+      "text": "얇은 용암 층이 겹겹이 쌓이면서 넓고 돔 모양의 산을 만들어요.",
+      "text_markdown": "얇은 용암 층이 겹겹이 쌓이면서 넓고 돔 모양의 산을 만들어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "얇은 용암 층이 겹겹이 쌓이면서 넓고 돔 모양의 산을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-219",
+      "sentence_index": 0,
+      "text": "하와이의 마우나로아는 순상 화산이에요.",
+      "text_markdown": "하와이의 마우나로아는 순상 화산이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "하와이의 마우나로아는 순상 화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-220",
+      "sentence_index": 0,
+      "text": "부피로 따지면 지구에서 가장 큰 활화산이에요.",
+      "text_markdown": "부피로 따지면 지구에서 가장 큰 활화산이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "부피로 따지면 지구에서 가장 큰 활화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-221",
+      "sentence_index": 0,
+      "text": "해저 바닥부터 꼭대기까지 마우나로아는 9,000미터 넘게 솟아 있어요.",
+      "text_markdown": "해저 바닥부터 꼭대기까지 마우나로아는 9,000미터 넘게 솟아 있어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "해저 바닥부터 꼭대기까지 마우나로아는 구천 미터 넘게 솟아 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-222",
+      "sentence_index": 0,
+      "text": "바닥부터 꼭대기까지 재면 에베레스트산보다 높아요.",
+      "text_markdown": "바닥부터 꼭대기까지 재면 에베레스트산보다 높아요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "바닥부터 꼭대기까지 재면 에베레스트산보다 높아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-223",
+      "sentence_index": 0,
+      "text": "성층 화산은 높고, 가파르고, 원뿔 모양이에요.",
+      "text_markdown": "성층 화산은 높고, 가파르고, 원뿔 모양이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "성층 화산은 높고, 가파르고, 원뿔 모양이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-224",
+      "sentence_index": 0,
+      "text": "복합 화산이라고도 불러요.",
+      "text_markdown": "복합 화산이라고도 불러요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "복합 화산이라고도 불러요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-225",
+      "sentence_index": 0,
+      "text": "복합이란 여러 가지 물질로 이루어진 것을 뜻해요.",
+      "text_markdown": "복합이란 여러 가지 물질로 이루어진 것을 뜻해요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "복합이란 여러 가지 물질로 이루어진 것을 뜻해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-226",
+      "sentence_index": 0,
+      "text": "성층 화산은 용암, 화산재, 바위 조각이 번갈아 쌓여서 만들어져요.",
+      "text_markdown": "성층 화산은 용암, 화산재, 바위 조각이 번갈아 쌓여서 만들어져요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "성층 화산은 용암, 화산재, 바위 조각이 번갈아 쌓여서 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-227",
+      "sentence_index": 0,
+      "text": "용출성과 폭발적 분화가 모두 일어나요.",
+      "text_markdown": "용출성과 폭발적 분화가 모두 일어나요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "용출성과 폭발적 분화가 모두 일어나요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-228",
+      "sentence_index": 0,
+      "text": "번갈아 쌓인 층이 튼튼하고 가파른 구조를 만들어요.",
+      "text_markdown": "번갈아 쌓인 층이 튼튼하고 가파른 구조를 만들어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "번갈아 쌓인 층이 튼튼하고 가파른 구조를 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-229",
+      "sentence_index": 0,
+      "text": "일본의 후지산은 성층 화산이에요.",
+      "text_markdown": "일본의 후지산은 성층 화산이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "일본의 후지산은 성층 화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-230",
+      "sentence_index": 0,
+      "text": "워싱턴주의 레이니어산은 성층 화산이에요.",
+      "text_markdown": "워싱턴주의 레이니어산은 성층 화산이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "워싱턴주의 레이니어산은 성층 화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-231",
+      "sentence_index": 0,
+      "text": "이 화산들은 지구에서 가장 아름답고 가장 위험한 화산이에요.",
+      "text_markdown": "이 화산들은 지구에서 가장 아름답고 가장 위험한 화산이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "이 화산들은 지구에서 가장 아름답고 가장 위험한 화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-232",
+      "sentence_index": 0,
+      "text": "분석구는 가장 작고 단순한 종류의 화산이에요.",
+      "text_markdown": "분석구는 가장 작고 단순한 종류의 화산이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "분석구는 가장 작고 단순한 종류의 화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-233",
+      "sentence_index": 0,
+      "text": "가스가 많은 마그마가 분출하면서 작은 조각을 공중으로 날려 보낼 때 만들어져요.",
+      "text_markdown": "가스가 많은 마그마가 분출하면서 작은 조각을 공중으로 날려 보낼 때 만들어져요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "가스가 많은 마그마가 분출하면서 작은 조각을 공중으로 날려 보낼 때 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-234",
+      "sentence_index": 0,
+      "text": "분석이라고 불리는 이 조각들이 분출구 주위에 떨어져 원뿔 모양으로 쌓여요.",
+      "text_markdown": "분석이라고 불리는 이 조각들이 분출구 주위에 떨어져 원뿔 모양으로 쌓여요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "분석이라고 불리는 이 조각들이 분출구 주위에 떨어져 원뿔 모양으로 쌓여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-235",
+      "sentence_index": 0,
+      "text": "분출구는 화산 물질이 빠져나오는 구멍이에요.",
+      "text_markdown": "분출구는 화산 물질이 빠져나오는 구멍이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "분출구는 화산 물질이 빠져나오는 구멍이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-236",
+      "sentence_index": 0,
+      "text": "분석구의 높이는 300미터를 넘는 경우가 드물어요.",
+      "text_markdown": "분석구의 높이는 300미터를 넘는 경우가 드물어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "분석구의 높이는 삼백 미터를 넘는 경우가 드물어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-237",
+      "sentence_index": 0,
+      "text": "분석구는 더 큰 화산의 옆면에 생기기도 해요.",
+      "text_markdown": "분석구는 더 큰 화산의 옆면에 생기기도 해요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "분석구는 더 큰 화산의 옆면에 생기기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-238",
+      "sentence_index": 0,
+      "text": "멕시코의 파리쿠틴은 유명한 분석구예요.",
+      "text_markdown": "멕시코의 파리쿠틴은 유명한 분석구예요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "멕시코의 파리쿠틴은 유명한 분석구예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-239",
+      "sentence_index": 0,
+      "text": "1943년에 농부의 옥수수밭에서 갑자기 나타났어요.",
+      "text_markdown": "1943년에 농부의 옥수수밭에서 갑자기 나타났어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "천구백사십삼 년에 농부의 옥수수밭에서 갑자기 나타났어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-240",
+      "sentence_index": 0,
+      "text": "1년 만에 300미터 넘게 자랐어요.",
+      "text_markdown": "1년 만에 300미터 넘게 자랐어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "일 년 만에 삼백 미터 넘게 자랐어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-241",
+      "sentence_index": 0,
+      "text": "용암 돔은 걸쭉하고 끈적한 용암이 천천히 분출하여 분출구 주변에 쌓일 때 만들어져요.",
+      "text_markdown": "용암 돔은 걸쭉하고 끈적한 용암이 천천히 분출하여 분출구 주변에 쌓일 때 만들어져요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "용암 돔은 걸쭉하고 끈적한 용암이 천천히 분출하여 분출구 주변에 쌓일 때 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-242",
+      "sentence_index": 0,
+      "text": "용암이 너무 끈적해서 멀리 흐르지 못해요.",
+      "text_markdown": "용암이 너무 끈적해서 멀리 흐르지 못해요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "용암이 너무 끈적해서 멀리 흐르지 못해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-243",
+      "sentence_index": 0,
+      "text": "둥글고 볼록한 둔덕이 만들어져요.",
+      "text_markdown": "둥글고 볼록한 둔덕이 만들어져요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "둥글고 볼록한 둔덕이 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-244",
+      "sentence_index": 0,
+      "text": "용암 돔은 위험할 수 있어요.",
+      "text_markdown": "용암 돔은 위험할 수 있어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "용암 돔은 위험할 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-245",
+      "sentence_index": 0,
+      "text": "불안정해요.",
+      "text_markdown": "불안정해요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "불안정해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-246",
+      "sentence_index": 0,
+      "text": "돔이 무너지면 화쇄류를 일으킬 수 있어요.",
+      "text_markdown": "돔이 무너지면 화쇄류를 일으킬 수 있어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "돔이 무너지면 화쇄류를 일으킬 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-247",
+      "sentence_index": 0,
+      "text": "1980년 분화 이후 세인트헬렌스산의 분화구 안에서 용암 돔이 자랐어요.",
+      "text_markdown": "1980년 분화 이후 세인트헬렌스산의 분화구 안에서 용암 돔이 자랐어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "천구백팔십 년 분화 이후 세인트헬렌스산의 분화구 안에서 용암 돔이 자랐어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-248",
+      "sentence_index": 0,
+      "text": "칼데라는 화산의 종류가 아니라 화산 지형의 한 종류예요.",
+      "text_markdown": "칼데라는 화산의 종류가 아니라 화산 지형의 한 종류예요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "칼데라는 화산의 종류가 아니라 화산 지형의 한 종류예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-249",
+      "sentence_index": 0,
+      "text": "칼데라는 분화 중에 마그마방이 비워지면서 만들어지는 크고 그릇 모양으로 움푹 꺼진 곳이에요.",
+      "text_markdown": "칼데라는 분화 중에 마그마방이 비워지면서 만들어지는 크고 그릇 모양으로 움푹 꺼진 곳이에요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "칼데라는 분화 중에 마그마방이 비워지면서 만들어지는 크고 그릇 모양으로 움푹 꺼진 곳이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-250",
+      "sentence_index": 0,
+      "text": "비워진 마그마방 위의 땅이 안쪽으로 꺼져요.",
+      "text_markdown": "비워진 마그마방 위의 땅이 안쪽으로 꺼져요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "비워진 마그마방 위의 땅이 안쪽으로 꺼져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-251",
+      "sentence_index": 0,
+      "text": "칼데라는 아주 클 수 있어요.",
+      "text_markdown": "칼데라는 아주 클 수 있어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "칼데라는 아주 클 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-252",
+      "sentence_index": 0,
+      "text": "와이오밍의 옐로스톤 칼데라는 길이가 약 72킬로미터예요.",
+      "text_markdown": "와이오밍의 옐로스톤 칼데라는 길이가 약 72킬로미터예요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "와이오밍의 옐로스톤 칼데라는 길이가 약 칠십이 킬로미터예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-253",
+      "sentence_index": 0,
+      "text": "약 640,000년 전 거대한 분화로 만들어졌어요.",
+      "text_markdown": "약 640,000년 전 거대한 분화로 만들어졌어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "약 육십사만 년 전 거대한 분화로 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-254",
+      "sentence_index": 0,
+      "text": "옐로스톤 지역 전체가 초화산 위에 있어요.",
+      "text_markdown": "옐로스톤 지역 전체가 초화산 위에 있어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "옐로스톤 지역 전체가 초화산 위에 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-255",
+      "sentence_index": 0,
+      "text": "초화산은 화산 폭발 지수 8등급의 분화를 일으킬 수 있는 화산으로, 1,000세제곱킬로미터 넘는 물질을 뿜어내요.",
+      "text_markdown": "초화산은 화산 폭발 지수 8등급의 분화를 일으킬 수 있는 화산으로, 1,000세제곱킬로미터 넘는 물질을 뿜어내요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "초화산은 화산 폭발 지수 팔 등급의 분화를 일으킬 수 있는 화산으로, 천 세제곱킬로미터 넘는 물질을 뿜어내요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-256",
+      "sentence_index": 0,
+      "text": "화산의 종류마다 그것을 먹여 살리는 마그마에 대한 이야기를 담고 있어요.",
+      "text_markdown": "화산의 종류마다 그것을 먹여 살리는 마그마에 대한 이야기를 담고 있어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "화산의 종류마다 그것을 먹여 살리는 마그마에 대한 이야기를 담고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-257",
+      "sentence_index": 0,
+      "text": "묽은 마그마는 넓은 순상 화산을 만들어요.",
+      "text_markdown": "묽은 마그마는 넓은 순상 화산을 만들어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "묽은 마그마는 넓은 순상 화산을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-258",
+      "sentence_index": 0,
+      "text": "끈적한 마그마는 가파른 원뿔을 만들어요.",
+      "text_markdown": "끈적한 마그마는 가파른 원뿔을 만들어요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "끈적한 마그마는 가파른 원뿔을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 5,
+      "id": "ch05-259",
+      "sentence_index": 0,
+      "text": "모양은 물리 법칙을 따라요.",
+      "text_markdown": "모양은 물리 법칙을 따라요.",
+      "title": "화산의 종류",
+      "tts": {
+        "text": "모양은 물리 법칙을 따라요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 6,
+      "id": "ch06-260",
+      "sentence_index": 0,
+      "text": "용암과 화산재",
+      "text_markdown": "용암과 화산재",
+      "title": "용암과 화산재"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-261",
+      "sentence_index": 0,
+      "text": "화산이 분화하면 물질을 세 가지 형태로 내보내요: 액체, 고체, 기체예요.",
+      "text_markdown": "화산이 분화하면 물질을 세 가지 형태로 내보내요: 액체, 고체, 기체예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산이 분화하면 물질을 세 가지 형태로 내보내요: 액체, 고체, 기체예요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-262",
+      "sentence_index": 0,
+      "text": "각 형태는 다르게 움직이고, 다른 위험과 지형을 만들어요.",
+      "text_markdown": "각 형태는 다르게 움직이고, 다른 위험과 지형을 만들어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "각 형태는 다르게 움직이고, 다른 위험과 지형을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-263",
+      "sentence_index": 0,
+      "text": "용암은 액체 형태예요.",
+      "text_markdown": "용암은 액체 형태예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "용암은 액체 형태예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-264",
+      "sentence_index": 0,
+      "text": "지표면에 도달한 마그마예요.",
+      "text_markdown": "지표면에 도달한 마그마예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "지표면에 도달한 마그마예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-265",
+      "sentence_index": 0,
+      "text": "용암의 온도는 보통 700도에서 1,200도 사이예요.",
+      "text_markdown": "용암의 온도는 보통 700도에서 1,200도 사이예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "용암의 온도는 보통 칠백 도에서 천이백 도 사이예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-266",
+      "sentence_index": 0,
+      "text": "온도에 따라 색이 달라져요.",
+      "text_markdown": "온도에 따라 색이 달라져요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "온도에 따라 색이 달라져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-267",
+      "sentence_index": 0,
+      "text": "가장 뜨거운 용암은 하얗거나 노랗게 빛나요.",
+      "text_markdown": "가장 뜨거운 용암은 하얗거나 노랗게 빛나요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "가장 뜨거운 용암은 하얗거나 노랗게 빛나요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-268",
+      "sentence_index": 0,
+      "text": "좀 더 식은 용암은 주황색으로 빛나요.",
+      "text_markdown": "좀 더 식은 용암은 주황색으로 빛나요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "좀 더 식은 용암은 주황색으로 빛나요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-269",
+      "sentence_index": 0,
+      "text": "더 식으면 빨간색이 되고, 그다음에는 어두워져요.",
+      "text_markdown": "더 식으면 빨간색이 되고, 그다음에는 어두워져요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "더 식으면 빨간색이 되고, 그다음에는 어두워져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-270",
+      "sentence_index": 0,
+      "text": "용암류에는 여러 종류가 있어요.",
+      "text_markdown": "용암류에는 여러 종류가 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "용암류에는 여러 종류가 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-271",
+      "sentence_index": 0,
+      "text": "파호이호이 용암은 매끈하고 밧줄 모양이에요.",
+      "text_markdown": "파호이호이 용암은 매끈하고 밧줄 모양이에요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "파호이호이 용암은 매끈하고 밧줄 모양이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-272",
+      "sentence_index": 0,
+      "text": "이 단어는 하와이어예요.",
+      "text_markdown": "이 단어는 하와이어예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "이 단어는 하와이어예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-273",
+      "sentence_index": 0,
+      "text": "파호이호이 용암은 유동성 용암이 천천히 흐르면서 표면이 매끈하고 접힌 껍질로 식을 때 만들어져요.",
+      "text_markdown": "파호이호이 용암은 유동성 용암이 천천히 흐르면서 표면이 매끈하고 접힌 껍질로 식을 때 만들어져요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "파호이호이 용암은 유동성 용암이 천천히 흐르면서 표면이 매끈하고 접힌 껍질로 식을 때 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-274",
+      "sentence_index": 0,
+      "text": "아아 용암은 거칠고 울퉁불퉁해요.",
+      "text_markdown": "아아 용암은 거칠고 울퉁불퉁해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "아아 용암은 거칠고 울퉁불퉁해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-275",
+      "sentence_index": 0,
+      "text": "아아 용암은 용암이 빠르게 흐르면서 표면이 날카롭고 불규칙한 덩어리로 깨질 때 만들어져요.",
+      "text_markdown": "아아 용암은 용암이 빠르게 흐르면서 표면이 날카롭고 불규칙한 덩어리로 깨질 때 만들어져요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "아아 용암은 용암이 빠르게 흐르면서 표면이 날카롭고 불규칙한 덩어리로 깨질 때 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-276",
+      "sentence_index": 0,
+      "text": "베개 용암은 용암이 물속에서 분출할 때 만들어져요.",
+      "text_markdown": "베개 용암은 용암이 물속에서 분출할 때 만들어져요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "베개 용암은 용암이 물속에서 분출할 때 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-277",
+      "sentence_index": 0,
+      "text": "물이 바깥 표면을 즉시 식혀서 둥글고 베개 모양의 덩어리가 만들어져요.",
+      "text_markdown": "물이 바깥 표면을 즉시 식혀서 둥글고 베개 모양의 덩어리가 만들어져요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "물이 바깥 표면을 즉시 식혀서 둥글고 베개 모양의 덩어리가 만들어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-278",
+      "sentence_index": 0,
+      "text": "용암류는 덮는 모든 것을 파괴해요.",
+      "text_markdown": "용암류는 덮는 모든 것을 파괴해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "용암류는 덮는 모든 것을 파괴해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-279",
+      "sentence_index": 0,
+      "text": "도로, 건물, 농경지를 묻어요.",
+      "text_markdown": "도로, 건물, 농경지를 묻어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "도로, 건물, 농경지를 묻어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-280",
+      "sentence_index": 0,
+      "text": "하지만 용암류는 보통 사람들이 대피할 수 있을 만큼 느려요.",
+      "text_markdown": "하지만 용암류는 보통 사람들이 대피할 수 있을 만큼 느려요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "하지만 용암류는 보통 사람들이 대피할 수 있을 만큼 느려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-281",
+      "sentence_index": 0,
+      "text": "직접 사람을 죽이는 경우는 드물어요.",
+      "text_markdown": "직접 사람을 죽이는 경우는 드물어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "직접 사람을 죽이는 경우는 드물어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-282",
+      "sentence_index": 0,
+      "text": "더 큰 위험은 화산이 공중으로 내뿜는 것에서 와요.",
+      "text_markdown": "더 큰 위험은 화산이 공중으로 내뿜는 것에서 와요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "더 큰 위험은 화산이 공중으로 내뿜는 것에서 와요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-283",
+      "sentence_index": 0,
+      "text": "화산재는 가장 널리 퍼지는 화산 산물이에요.",
+      "text_markdown": "화산재는 가장 널리 퍼지는 화산 산물이에요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산재는 가장 널리 퍼지는 화산 산물이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-284",
+      "sentence_index": 0,
+      "text": "화산재는 불에서 나오는 재와는 달라요.",
+      "text_markdown": "화산재는 불에서 나오는 재와는 달라요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산재는 불에서 나오는 재와는 달라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-285",
+      "sentence_index": 0,
+      "text": "바위와 유리가 아주 잘게 부서진 조각으로 만들어져 있어요.",
+      "text_markdown": "바위와 유리가 아주 잘게 부서진 조각으로 만들어져 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "바위와 유리가 아주 잘게 부서진 조각으로 만들어져 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-286",
+      "sentence_index": 0,
+      "text": "'분쇄된'이란 아주 고운 조각으로 부서진 것을 뜻해요.",
+      "text_markdown": "'분쇄된'이란 아주 고운 조각으로 부서진 것을 뜻해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "'분쇄된'이란 아주 고운 조각으로 부서진 것을 뜻해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-287",
+      "sentence_index": 0,
+      "text": "그 조각들은 날카롭고 단단해요.",
+      "text_markdown": "그 조각들은 날카롭고 단단해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "그 조각들은 날카롭고 단단해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-288",
+      "sentence_index": 0,
+      "text": "대규모 분화는 화산재를 성층권까지 보낼 수 있어요.",
+      "text_markdown": "대규모 분화는 화산재를 성층권까지 보낼 수 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "대규모 분화는 화산재를 성층권까지 보낼 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-289",
+      "sentence_index": 0,
+      "text": "성층권은 날씨가 만들어지는 구역 위에 있는 대기층이에요.",
+      "text_markdown": "성층권은 날씨가 만들어지는 구역 위에 있는 대기층이에요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "성층권은 날씨가 만들어지는 구역 위에 있는 대기층이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-290",
+      "sentence_index": 0,
+      "text": "성층권에 있는 화산재는 전 세계를 돌 수 있어요.",
+      "text_markdown": "성층권에 있는 화산재는 전 세계를 돌 수 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "성층권에 있는 화산재는 전 세계를 돌 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-291",
+      "sentence_index": 0,
+      "text": "떨어지는 화산재는 땅을 뒤덮어요.",
+      "text_markdown": "떨어지는 화산재는 땅을 뒤덮어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "떨어지는 화산재는 땅을 뒤덮어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-292",
+      "sentence_index": 0,
+      "text": "몇 센티미터의 화산재만으로도 지붕이 무게를 못 이기고 무너질 수 있어요.",
+      "text_markdown": "몇 센티미터의 화산재만으로도 지붕이 무게를 못 이기고 무너질 수 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "몇 센티미터의 화산재만으로도 지붕이 무게를 못 이기고 무너질 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-293",
+      "sentence_index": 0,
+      "text": "화산재는 엔진을 막히게 하고, 수도를 오염시키고, 폐를 상하게 해요.",
+      "text_markdown": "화산재는 엔진을 막히게 하고, 수도를 오염시키고, 폐를 상하게 해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산재는 엔진을 막히게 하고, 수도를 오염시키고, 폐를 상하게 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-294",
+      "sentence_index": 0,
+      "text": "고운 화산재 입자는 며칠이나 몇 주 동안 공중에 떠 있을 수 있어요.",
+      "text_markdown": "고운 화산재 입자는 며칠이나 몇 주 동안 공중에 떠 있을 수 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "고운 화산재 입자는 며칠이나 몇 주 동안 공중에 떠 있을 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-295",
+      "sentence_index": 0,
+      "text": "화산에서 날아가는 더 큰 조각을 화산탄이라고 해요.",
+      "text_markdown": "화산에서 날아가는 더 큰 조각을 화산탄이라고 해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산에서 날아가는 더 큰 조각을 화산탄이라고 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-296",
+      "sentence_index": 0,
+      "text": "화산탄은 공중을 날면서 굳어지는 녹은 바위 덩어리예요.",
+      "text_markdown": "화산탄은 공중을 날면서 굳어지는 녹은 바위 덩어리예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산탄은 공중을 날면서 굳어지는 녹은 바위 덩어리예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-297",
+      "sentence_index": 0,
+      "text": "주먹만 한 것도 있어요.",
+      "text_markdown": "주먹만 한 것도 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "주먹만 한 것도 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-298",
+      "sentence_index": 0,
+      "text": "자동차만 한 것도 있어요.",
+      "text_markdown": "자동차만 한 것도 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "자동차만 한 것도 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-299",
+      "sentence_index": 0,
+      "text": "화산 근처에 엄청난 힘으로 떨어져요.",
+      "text_markdown": "화산 근처에 엄청난 힘으로 떨어져요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산 근처에 엄청난 힘으로 떨어져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-300",
+      "sentence_index": 0,
+      "text": "화산 가스는 눈에 보이지 않는 분출 산물이에요.",
+      "text_markdown": "화산 가스는 눈에 보이지 않는 분출 산물이에요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산 가스는 눈에 보이지 않는 분출 산물이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-301",
+      "sentence_index": 0,
+      "text": "가장 많은 가스는 수증기예요.",
+      "text_markdown": "가장 많은 가스는 수증기예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "가장 많은 가스는 수증기예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-302",
+      "sentence_index": 0,
+      "text": "이산화황도 흔한 화산 가스예요.",
+      "text_markdown": "이산화황도 흔한 화산 가스예요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "이산화황도 흔한 화산 가스예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-303",
+      "sentence_index": 0,
+      "text": "이산화황이 높은 대기에 도달하면 물과 결합하여 황산 방울을 만들어요.",
+      "text_markdown": "이산화황이 높은 대기에 도달하면 물과 결합하여 황산 방울을 만들어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "이산화황이 높은 대기에 도달하면 물과 결합하여 황산 방울을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-304",
+      "sentence_index": 0,
+      "text": "이 방울들은 햇빛을 우주로 반사해요.",
+      "text_markdown": "이 방울들은 햇빛을 우주로 반사해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "이 방울들은 햇빛을 우주로 반사해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-305",
+      "sentence_index": 0,
+      "text": "대규모 분화는 몇 달 또는 몇 년 동안 전 세계 기온을 낮출 수 있어요.",
+      "text_markdown": "대규모 분화는 몇 달 또는 몇 년 동안 전 세계 기온을 낮출 수 있어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "대규모 분화는 몇 달 또는 몇 년 동안 전 세계 기온을 낮출 수 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-306",
+      "sentence_index": 0,
+      "text": "1991년 필리핀의 피나투보산 분화는 전 세계 평균 기온을 약 0.5도 낮추었고, 이 효과는 거의 2년간 지속되었어요.",
+      "text_markdown": "1991년 필리핀의 피나투보산 분화는 전 세계 평균 기온을 약 0.5도 낮추었고, 이 효과는 거의 2년간 지속되었어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "천구백구십일 년 필리핀의 피나투보산 분화는 전 세계 평균 기온을 약 영 점 오 도 낮추었고, 이 효과는 거의 이 년간 지속되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-307",
+      "sentence_index": 0,
+      "text": "이산화탄소도 방출돼요.",
+      "text_markdown": "이산화탄소도 방출돼요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "이산화탄소도 방출돼요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-308",
+      "sentence_index": 0,
+      "text": "드문 경우에 이산화탄소는 공기보다 무겁기 때문에 낮은 곳에 모여요.",
+      "text_markdown": "드문 경우에 이산화탄소는 공기보다 무겁기 때문에 낮은 곳에 모여요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "드문 경우에 이산화탄소는 공기보다 무겁기 때문에 낮은 곳에 모여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-309",
+      "sentence_index": 0,
+      "text": "1986년에 카메룬의 니오스 호수에서 이산화탄소 구름이 분출했어요.",
+      "text_markdown": "1986년에 카메룬의 니오스 호수에서 이산화탄소 구름이 분출했어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "천구백팔십육 년에 카메룬의 니오스 호수에서 이산화탄소 구름이 분출했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-310",
+      "sentence_index": 0,
+      "text": "가스가 언덕을 따라 흘러내리면서 1,700명 넘는 사람이 질식했어요.",
+      "text_markdown": "가스가 언덕을 따라 흘러내리면서 1,700명 넘는 사람이 질식했어요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "가스가 언덕을 따라 흘러내리면서 천칠백 명 넘는 사람이 질식했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-311",
+      "sentence_index": 0,
+      "text": "화산이 만들어 내는 물질은 위험해요.",
+      "text_markdown": "화산이 만들어 내는 물질은 위험해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "화산이 만들어 내는 물질은 위험해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-312",
+      "sentence_index": 0,
+      "text": "하지만 그것은 또한 새로운 땅, 새로운 토양, 새로운 대기의 원료이기도 해요.",
+      "text_markdown": "하지만 그것은 또한 새로운 땅, 새로운 토양, 새로운 대기의 원료이기도 해요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "하지만 그것은 또한 새로운 땅, 새로운 토양, 새로운 대기의 원료이기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 6,
+      "id": "ch06-313",
+      "sentence_index": 0,
+      "text": "파괴와 창조는 같은 분화에서 나와요.",
+      "text_markdown": "파괴와 창조는 같은 분화에서 나와요.",
+      "title": "용암과 화산재",
+      "tts": {
+        "text": "파괴와 창조는 같은 분화에서 나와요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 7,
+      "id": "ch07-314",
+      "sentence_index": 0,
+      "text": "유명한 화산들",
+      "text_markdown": "유명한 화산들",
+      "title": "유명한 화산들"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-315",
+      "sentence_index": 0,
+      "text": "어떤 분화들은 역사의 흐름을 바꿨어요.",
+      "text_markdown": "어떤 분화들은 역사의 흐름을 바꿨어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "어떤 분화들은 역사의 흐름을 바꿨어요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-316",
+      "sentence_index": 0,
+      "text": "도시를 파괴하고, 기후를 바꾸고, 지도를 다시 그리게 했어요.",
+      "text_markdown": "도시를 파괴하고, 기후를 바꾸고, 지도를 다시 그리게 했어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "도시를 파괴하고, 기후를 바꾸고, 지도를 다시 그리게 했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-317",
+      "sentence_index": 0,
+      "text": "유명한 분화마다 지구 표면 아래의 힘에 대해 무엇인가를 가르쳐 줘요.",
+      "text_markdown": "유명한 분화마다 지구 표면 아래의 힘에 대해 무엇인가를 가르쳐 줘요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "유명한 분화마다 지구 표면 아래의 힘에 대해 무엇인가를 가르쳐 줘요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-318",
+      "sentence_index": 0,
+      "text": "베수비오산은 이탈리아 남부 나폴리 근처에 있어요.",
+      "text_markdown": "베수비오산은 이탈리아 남부 나폴리 근처에 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "베수비오산은 이탈리아 남부 나폴리 근처에 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-319",
+      "sentence_index": 0,
+      "text": "서기 79년에 아무 경고 없이 분화했어요.",
+      "text_markdown": "서기 79년에 아무 경고 없이 분화했어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "서기 칠십구 년에 아무 경고 없이 분화했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-320",
+      "sentence_index": 0,
+      "text": "화산재와 부석이 하늘 높이 솟아올랐어요.",
+      "text_markdown": "화산재와 부석이 하늘 높이 솟아올랐어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화산재와 부석이 하늘 높이 솟아올랐어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-321",
+      "sentence_index": 0,
+      "text": "부석은 가스 기포가 가득한 가벼운 화산암이에요.",
+      "text_markdown": "부석은 가스 기포가 가득한 가벼운 화산암이에요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "부석은 가스 기포가 가득한 가벼운 화산암이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-322",
+      "sentence_index": 0,
+      "text": "화산재가 로마의 도시 폼페이와 헤르쿨라네움에 비처럼 쏟아졌어요.",
+      "text_markdown": "화산재가 로마의 도시 폼페이와 헤르쿨라네움에 비처럼 쏟아졌어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화산재가 로마의 도시 폼페이와 헤르쿨라네움에 비처럼 쏟아졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-323",
+      "sentence_index": 0,
+      "text": "그러고 나서 화쇄류가 덮쳤어요.",
+      "text_markdown": "그러고 나서 화쇄류가 덮쳤어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "그러고 나서 화쇄류가 덮쳤어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-324",
+      "sentence_index": 0,
+      "text": "화쇄류가 두 도시를 뜨거운 화산재와 바위 아래 몇 미터나 묻었어요.",
+      "text_markdown": "화쇄류가 두 도시를 뜨거운 화산재와 바위 아래 몇 미터나 묻었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화쇄류가 두 도시를 뜨거운 화산재와 바위 아래 몇 미터나 묻었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-325",
+      "sentence_index": 0,
+      "text": "수천 명이 목숨을 잃었어요.",
+      "text_markdown": "수천 명이 목숨을 잃었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "수천 명이 목숨을 잃었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-326",
+      "sentence_index": 0,
+      "text": "이 도시들은 거의 1,700년 동안 사라져 있었어요.",
+      "text_markdown": "이 도시들은 거의 1,700년 동안 사라져 있었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "이 도시들은 거의 천칠백 년 동안 사라져 있었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-327",
+      "sentence_index": 0,
+      "text": "고고학자들이 폼페이를 발굴했을 때, 건물, 거리, 심지어 음식까지 화산재 속에 보존되어 있었어요.",
+      "text_markdown": "고고학자들이 폼페이를 발굴했을 때, 건물, 거리, 심지어 음식까지 화산재 속에 보존되어 있었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "고고학자들이 폼페이를 발굴했을 때, 건물, 거리, 심지어 음식까지 화산재 속에 보존되어 있었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-328",
+      "sentence_index": 0,
+      "text": "베수비오산은 아직도 활화산이에요.",
+      "text_markdown": "베수비오산은 아직도 활화산이에요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "베수비오산은 아직도 활화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-329",
+      "sentence_index": 0,
+      "text": "오늘날 삼백만 명 넘는 사람들이 그 그늘 아래에 살고 있어요.",
+      "text_markdown": "오늘날 삼백만 명 넘는 사람들이 그 그늘 아래에 살고 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "오늘날 삼백만 명 넘는 사람들이 그 그늘 아래에 살고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-330",
+      "sentence_index": 0,
+      "text": "크라카토아는 인도네시아의 화산섬이에요.",
+      "text_markdown": "크라카토아는 인도네시아의 화산섬이에요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "크라카토아는 인도네시아의 화산섬이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-331",
+      "sentence_index": 0,
+      "text": "1883년에 역사상 가장 큰 소리를 낸 분화 중 하나를 일으켰어요.",
+      "text_markdown": "1883년에 역사상 가장 큰 소리를 낸 분화 중 하나를 일으켰어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "천팔백팔십삼 년에 역사상 가장 큰 소리를 낸 분화 중 하나를 일으켰어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-332",
+      "sentence_index": 0,
+      "text": "그 소리는 거의 5,000킬로미터 밖에서도 들렸어요.",
+      "text_markdown": "그 소리는 거의 5,000킬로미터 밖에서도 들렸어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "그 소리는 거의 오천 킬로미터 밖에서도 들렸어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-333",
+      "sentence_index": 0,
+      "text": "분화로 섬의 대부분이 파괴되었어요.",
+      "text_markdown": "분화로 섬의 대부분이 파괴되었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "분화로 섬의 대부분이 파괴되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-334",
+      "sentence_index": 0,
+      "text": "쓰나미가 발생해서 36,000명 넘는 사람이 목숨을 잃었어요.",
+      "text_markdown": "쓰나미가 발생해서 36,000명 넘는 사람이 목숨을 잃었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "쓰나미가 발생해서 삼만 육천 명 넘는 사람이 목숨을 잃었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-335",
+      "sentence_index": 0,
+      "text": "쓰나미는 해저 지각변동으로 일어나는 큰 바다 파도예요.",
+      "text_markdown": "쓰나미는 해저 지각변동으로 일어나는 큰 바다 파도예요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "쓰나미는 해저 지각변동으로 일어나는 큰 바다 파도예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-336",
+      "sentence_index": 0,
+      "text": "화산재가 지구를 돌며 몇 달 동안 선명한 붉은 석양을 만들었어요.",
+      "text_markdown": "화산재가 지구를 돌며 몇 달 동안 선명한 붉은 석양을 만들었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화산재가 지구를 돌며 몇 달 동안 선명한 붉은 석양을 만들었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-337",
+      "sentence_index": 0,
+      "text": "전 세계 기온이 눈에 띄게 떨어졌어요.",
+      "text_markdown": "전 세계 기온이 눈에 띄게 떨어졌어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "전 세계 기온이 눈에 띄게 떨어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-338",
+      "sentence_index": 0,
+      "text": "새로운 화산섬 아낙 크라카토아가 1927년부터 같은 자리에서 자라고 있어요.",
+      "text_markdown": "새로운 화산섬 아낙 크라카토아가 1927년부터 같은 자리에서 자라고 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "새로운 화산섬 아낙 크라카토아가 천구백이십칠 년부터 같은 자리에서 자라고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-339",
+      "sentence_index": 0,
+      "text": "아낙은 아이라는 뜻이에요.",
+      "text_markdown": "아낙은 아이라는 뜻이에요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "아낙은 아이라는 뜻이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-340",
+      "sentence_index": 0,
+      "text": "크라카토아의 아이는 아직도 분화하고 있어요.",
+      "text_markdown": "크라카토아의 아이는 아직도 분화하고 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "크라카토아의 아이는 아직도 분화하고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-341",
+      "sentence_index": 0,
+      "text": "세인트헬렌스산은 미국 워싱턴주에 있어요.",
+      "text_markdown": "세인트헬렌스산은 미국 워싱턴주에 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "세인트헬렌스산은 미국 워싱턴주에 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-342",
+      "sentence_index": 0,
+      "text": "1980년 5월 18일, 지진이 북쪽 면에서 거대한 산사태를 일으켰어요.",
+      "text_markdown": "1980년 5월 18일, 지진이 북쪽 면에서 거대한 산사태를 일으켰어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "천구백팔십 년 오월 십팔 일, 지진이 북쪽 면에서 거대한 산사태를 일으켰어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-343",
+      "sentence_index": 0,
+      "text": "이 산사태는 역사상 가장 큰 산사태였어요.",
+      "text_markdown": "이 산사태는 역사상 가장 큰 산사태였어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "이 산사태는 역사상 가장 큰 산사태였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-344",
+      "sentence_index": 0,
+      "text": "산사태가 안에 있던 마그마의 압력을 풀어 주었어요.",
+      "text_markdown": "산사태가 안에 있던 마그마의 압력을 풀어 주었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "산사태가 안에 있던 마그마의 압력을 풀어 주었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-345",
+      "sentence_index": 0,
+      "text": "화산이 옆으로 폭발했어요.",
+      "text_markdown": "화산이 옆으로 폭발했어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화산이 옆으로 폭발했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-346",
+      "sentence_index": 0,
+      "text": "측면 폭발로 600제곱킬로미터의 숲이 쓰러졌어요.",
+      "text_markdown": "측면 폭발로 600제곱킬로미터의 숲이 쓰러졌어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "측면 폭발로 육백 제곱킬로미터의 숲이 쓰러졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-347",
+      "sentence_index": 0,
+      "text": "화산재가 24킬로미터 높이의 대기까지 올라갔어요.",
+      "text_markdown": "화산재가 24킬로미터 높이의 대기까지 올라갔어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화산재가 이십사 킬로미터 높이의 대기까지 올라갔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-348",
+      "sentence_index": 0,
+      "text": "57명이 목숨을 잃었어요.",
+      "text_markdown": "57명이 목숨을 잃었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "57명이 목숨을 잃었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-349",
+      "sentence_index": 0,
+      "text": "분화로 산의 높이가 약 400미터 줄었어요.",
+      "text_markdown": "분화로 산의 높이가 약 400미터 줄었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "분화로 산의 높이가 약 사백 미터 줄었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-350",
+      "sentence_index": 0,
+      "text": "오늘날 과학자들은 세인트헬렌스산을 계속 감시하고 있어요.",
+      "text_markdown": "오늘날 과학자들은 세인트헬렌스산을 계속 감시하고 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "오늘날 과학자들은 세인트헬렌스산을 계속 감시하고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-351",
+      "sentence_index": 0,
+      "text": "새로운 용암 돔이 분화구 안에서 천천히 자라고 있어요.",
+      "text_markdown": "새로운 용암 돔이 분화구 안에서 천천히 자라고 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "새로운 용암 돔이 분화구 안에서 천천히 자라고 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-352",
+      "sentence_index": 0,
+      "text": "피나투보산은 필리핀에 있어요.",
+      "text_markdown": "피나투보산은 필리핀에 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "피나투보산은 필리핀에 있어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-353",
+      "sentence_index": 0,
+      "text": "1991년 6월, 600년간의 휴면 끝에 분화했어요.",
+      "text_markdown": "1991년 6월, 600년간의 휴면 끝에 분화했어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "천구백구십일 년 유월, 육백 년간의 휴면 끝에 분화했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-354",
+      "sentence_index": 0,
+      "text": "휴면이란 활동하지 않는 기간을 뜻해요.",
+      "text_markdown": "휴면이란 활동하지 않는 기간을 뜻해요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "휴면이란 활동하지 않는 기간을 뜻해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-355",
+      "sentence_index": 0,
+      "text": "이 분화는 약 10세제곱킬로미터의 물질을 뿜어냈어요.",
+      "text_markdown": "이 분화는 약 10세제곱킬로미터의 물질을 뿜어냈어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "이 분화는 약 십 세제곱킬로미터의 물질을 뿜어냈어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-356",
+      "sentence_index": 0,
+      "text": "20세기에서 두 번째로 큰 분화였어요.",
+      "text_markdown": "20세기에서 두 번째로 큰 분화였어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "20세기에서 두 번째로 큰 분화였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-357",
+      "sentence_index": 0,
+      "text": "분출된 이산화황이 전 세계적인 안개를 만들어 약 0.5도 동안 2년간 지구를 식혔어요.",
+      "text_markdown": "분출된 이산화황이 전 세계적인 안개를 만들어 약 0.5도 동안 2년간 지구를 식혔어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "분출된 이산화황이 전 세계적인 안개를 만들어 약 영 점 오 도 동안 이 년간 지구를 식혔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-358",
+      "sentence_index": 0,
+      "text": "에이야피야틀라요쿨은 아이슬란드의 화산이에요.",
+      "text_markdown": "에이야피야틀라요쿨은 아이슬란드의 화산이에요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "에이야피야틀라요쿨은 아이슬란드의 화산이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-359",
+      "sentence_index": 0,
+      "text": "2010년에 빙하 밑에서 분화했어요.",
+      "text_markdown": "2010년에 빙하 밑에서 분화했어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "이천십 년에 빙하 밑에서 분화했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-360",
+      "sentence_index": 0,
+      "text": "용암과 얼음이 만나면서 엄청난 양의 고운 화산재 구름이 생겼어요.",
+      "text_markdown": "용암과 얼음이 만나면서 엄청난 양의 고운 화산재 구름이 생겼어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "용암과 얼음이 만나면서 엄청난 양의 고운 화산재 구름이 생겼어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-361",
+      "sentence_index": 0,
+      "text": "화산재 구름 때문에 유럽 항공 교통이 6일간 멈췄어요.",
+      "text_markdown": "화산재 구름 때문에 유럽 항공 교통이 6일간 멈췄어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화산재 구름 때문에 유럽 항공 교통이 6일간 멈췄어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-362",
+      "sentence_index": 0,
+      "text": "100,000편 넘는 항공편이 취소되었어요.",
+      "text_markdown": "100,000편 넘는 항공편이 취소되었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "십만 편 넘는 항공편이 취소되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-363",
+      "sentence_index": 0,
+      "text": "이 분화는 화산 기준으로는 작은 편이었어요.",
+      "text_markdown": "이 분화는 화산 기준으로는 작은 편이었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "이 분화는 화산 기준으로는 작은 편이었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-364",
+      "sentence_index": 0,
+      "text": "하지만 그 위치와 시기 때문에 작은 분화도 현대 문명을 혼란에 빠뜨릴 수 있다는 것을 보여 주었어요.",
+      "text_markdown": "하지만 그 위치와 시기 때문에 작은 분화도 현대 문명을 혼란에 빠뜨릴 수 있다는 것을 보여 주었어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "하지만 그 위치와 시기 때문에 작은 분화도 현대 문명을 혼란에 빠뜨릴 수 있다는 것을 보여 주었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-365",
+      "sentence_index": 0,
+      "text": "이런 분화들은 화산이 자기만의 시간표대로 움직인다는 것을 일깨워 줘요.",
+      "text_markdown": "이런 분화들은 화산이 자기만의 시간표대로 움직인다는 것을 일깨워 줘요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "이런 분화들은 화산이 자기만의 시간표대로 움직인다는 것을 일깨워 줘요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-366",
+      "sentence_index": 0,
+      "text": "화산은 인간의 계획을 따르지 않아요.",
+      "text_markdown": "화산은 인간의 계획을 따르지 않아요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "화산은 인간의 계획을 따르지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 7,
+      "id": "ch07-367",
+      "sentence_index": 0,
+      "text": "수백 년을 잠자다가 아무 예고 없이 깨어날 수 있어요.",
+      "text_markdown": "수백 년을 잠자다가 아무 예고 없이 깨어날 수 있어요.",
+      "title": "유명한 화산들",
+      "tts": {
+        "text": "수백 년을 잠자다가 아무 예고 없이 깨어날 수 있어요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "h1",
+      "part": 0,
+      "heading_level": 1,
+      "block_type": "heading",
+      "chapter": 8,
+      "id": "ch08-368",
+      "sentence_index": 0,
+      "text": "화산이 세상을 만들어요",
+      "text_markdown": "화산이 세상을 만들어요",
+      "title": "화산이 세상을 만들어요"
+    },
+    {
+      "paragraph_id": "p1",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-369",
+      "sentence_index": 0,
+      "text": "화산은 파괴적이에요.",
+      "text_markdown": "화산은 파괴적이에요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 파괴적이에요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p2",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-370",
+      "sentence_index": 0,
+      "text": "하지만 만들어 내기도 해요.",
+      "text_markdown": "하지만 만들어 내기도 해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "하지만 만들어 내기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p3",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-371",
+      "sentence_index": 0,
+      "text": "오랜 지질학적 시간 동안 화산은 우리가 사는 세상의 많은 부분을 만들어 왔어요.",
+      "text_markdown": "오랜 지질학적 시간 동안 화산은 우리가 사는 세상의 많은 부분을 만들어 왔어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "오랜 지질학적 시간 동안 화산은 우리가 사는 세상의 많은 부분을 만들어 왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p4",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-372",
+      "sentence_index": 0,
+      "text": "지구의 대기는 부분적으로 화산 덕분에 존재해요.",
+      "text_markdown": "지구의 대기는 부분적으로 화산 덕분에 존재해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "지구의 대기는 부분적으로 화산 덕분에 존재해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p5",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-373",
+      "sentence_index": 0,
+      "text": "지구 역사 초기에 화산은 엄청난 양의 가스를 내뿜었어요.",
+      "text_markdown": "지구 역사 초기에 화산은 엄청난 양의 가스를 내뿜었어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "지구 역사 초기에 화산은 엄청난 양의 가스를 내뿜었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p6",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-374",
+      "sentence_index": 0,
+      "text": "주요 가스는 수증기, 이산화탄소, 질소였어요.",
+      "text_markdown": "주요 가스는 수증기, 이산화탄소, 질소였어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "주요 가스는 수증기, 이산화탄소, 질소였어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p7",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-375",
+      "sentence_index": 0,
+      "text": "수증기가 응결해서 결국 바다가 되었어요.",
+      "text_markdown": "수증기가 응결해서 결국 바다가 되었어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "수증기가 응결해서 결국 바다가 되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p8",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-376",
+      "sentence_index": 0,
+      "text": "질소는 대기에서 가장 많은 기체가 되었어요.",
+      "text_markdown": "질소는 대기에서 가장 많은 기체가 되었어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "질소는 대기에서 가장 많은 기체가 되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p9",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-377",
+      "sentence_index": 0,
+      "text": "질소는 오늘날 여러분이 들이마시는 공기의 약 78퍼센트를 차지해요.",
+      "text_markdown": "질소는 오늘날 여러분이 들이마시는 공기의 약 78퍼센트를 차지해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "질소는 오늘날 여러분이 들이마시는 공기의 약 칠십팔 퍼센트를 차지해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p10",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-378",
+      "sentence_index": 0,
+      "text": "화산의 가스 방출이 없었다면 지구에는 대기도 바다도 없었을 거예요.",
+      "text_markdown": "화산의 가스 방출이 없었다면 지구에는 대기도 바다도 없었을 거예요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산의 가스 방출이 없었다면 지구에는 대기도 바다도 없었을 거예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p11",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-379",
+      "sentence_index": 0,
+      "text": "가스 방출은 행성 내부에서 가스가 빠져나오는 것을 말해요.",
+      "text_markdown": "가스 방출은 행성 내부에서 가스가 빠져나오는 것을 말해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "가스 방출은 행성 내부에서 가스가 빠져나오는 것을 말해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p12",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-380",
+      "sentence_index": 0,
+      "text": "화산은 새로운 땅을 만들어요.",
+      "text_markdown": "화산은 새로운 땅을 만들어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 새로운 땅을 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p13",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-381",
+      "sentence_index": 0,
+      "text": "하와이의 모든 섬은 태평양의 열점 위에서 화산 분화로 만들어졌어요.",
+      "text_markdown": "하와이의 모든 섬은 태평양의 열점 위에서 화산 분화로 만들어졌어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "하와이의 모든 섬은 태평양의 열점 위에서 화산 분화로 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p14",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-382",
+      "sentence_index": 0,
+      "text": "아이슬란드는 대서양 중앙 해령의 분화로 만들어졌어요.",
+      "text_markdown": "아이슬란드는 대서양 중앙 해령의 분화로 만들어졌어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "아이슬란드는 대서양 중앙 해령의 분화로 만들어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p15",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-383",
+      "sentence_index": 0,
+      "text": "태평양, 대서양, 인도양에 있는 많은 섬이 화산에서 시작되었어요.",
+      "text_markdown": "태평양, 대서양, 인도양에 있는 많은 섬이 화산에서 시작되었어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "태평양, 대서양, 인도양에 있는 많은 섬이 화산에서 시작되었어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p16",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-384",
+      "sentence_index": 0,
+      "text": "해저 바닥 자체가 판이 벌어지는 중앙 해령에서 만들어진 화산암이에요.",
+      "text_markdown": "해저 바닥 자체가 판이 벌어지는 중앙 해령에서 만들어진 화산암이에요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "해저 바닥 자체가 판이 벌어지는 중앙 해령에서 만들어진 화산암이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p17",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-385",
+      "sentence_index": 0,
+      "text": "화산 토양은 지구에서 가장 비옥한 토양 중 하나예요.",
+      "text_markdown": "화산 토양은 지구에서 가장 비옥한 토양 중 하나예요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산 토양은 지구에서 가장 비옥한 토양 중 하나예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p18",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-386",
+      "sentence_index": 0,
+      "text": "용암과 화산재가 시간이 지나면서 분해되면 토양에 광물을 방출해요.",
+      "text_markdown": "용암과 화산재가 시간이 지나면서 분해되면 토양에 광물을 방출해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "용암과 화산재가 시간이 지나면서 분해되면 토양에 광물을 방출해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p19",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-387",
+      "sentence_index": 0,
+      "text": "칼륨, 인, 칼슘 같은 광물은 식물에 꼭 필요한 영양소예요.",
+      "text_markdown": "칼륨, 인, 칼슘 같은 광물은 식물에 꼭 필요한 영양소예요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "칼륨, 인, 칼슘 같은 광물은 식물에 꼭 필요한 영양소예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p20",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-388",
+      "sentence_index": 0,
+      "text": "화산 토양이 있는 지역은 풍성한 농업이 가능해요.",
+      "text_markdown": "화산 토양이 있는 지역은 풍성한 농업이 가능해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산 토양이 있는 지역은 풍성한 농업이 가능해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p21",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-389",
+      "sentence_index": 0,
+      "text": "시칠리아의 에트나산 비탈에는 포도밭과 과수원이 가득해요.",
+      "text_markdown": "시칠리아의 에트나산 비탈에는 포도밭과 과수원이 가득해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "시칠리아의 에트나산 비탈에는 포도밭과 과수원이 가득해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p22",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-390",
+      "sentence_index": 0,
+      "text": "인도네시아의 자바섬은 비옥한 화산 토양 덕분에 지구에서 가장 인구 밀도가 높은 곳 중 하나예요.",
+      "text_markdown": "인도네시아의 자바섬은 비옥한 화산 토양 덕분에 지구에서 가장 인구 밀도가 높은 곳 중 하나예요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "인도네시아의 자바섬은 비옥한 화산 토양 덕분에 지구에서 가장 인구 밀도가 높은 곳 중 하나예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p23",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-391",
+      "sentence_index": 0,
+      "text": "화산은 전 세계 기후에 영향을 미쳐요.",
+      "text_markdown": "화산은 전 세계 기후에 영향을 미쳐요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 전 세계 기후에 영향을 미쳐요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p24",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-392",
+      "sentence_index": 0,
+      "text": "대규모 분화는 이산화황을 성층권에 뿜어 올려요.",
+      "text_markdown": "대규모 분화는 이산화황을 성층권에 뿜어 올려요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "대규모 분화는 이산화황을 성층권에 뿜어 올려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p25",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-393",
+      "sentence_index": 0,
+      "text": "이산화황은 황산 에어로졸로 변해요.",
+      "text_markdown": "이산화황은 황산 에어로졸로 변해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "이산화황은 황산 에어로졸로 변해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p26",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-394",
+      "sentence_index": 0,
+      "text": "에어로졸은 대기 중에 떠 있는 아주 작은 입자예요.",
+      "text_markdown": "에어로졸은 대기 중에 떠 있는 아주 작은 입자예요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "에어로졸은 대기 중에 떠 있는 아주 작은 입자예요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p27",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-395",
+      "sentence_index": 0,
+      "text": "이 에어로졸은 들어오는 햇빛을 반사해서 지구를 식혀요.",
+      "text_markdown": "이 에어로졸은 들어오는 햇빛을 반사해서 지구를 식혀요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "이 에어로졸은 들어오는 햇빛을 반사해서 지구를 식혀요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p28",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-396",
+      "sentence_index": 0,
+      "text": "1815년 인도네시아 탐보라산의 분화는 1816년에 '여름 없는 해'를 일으켰어요.",
+      "text_markdown": "1815년 인도네시아 탐보라산의 분화는 1816년에 '여름 없는 해'를 일으켰어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "천팔백십오 년 인도네시아 탐보라산의 분화는 천팔백십육 년에 '여름 없는 해'를 일으켰어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p29",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-397",
+      "sentence_index": 0,
+      "text": "유럽과 북아메리카 전역에서 농작물이 망했어요.",
+      "text_markdown": "유럽과 북아메리카 전역에서 농작물이 망했어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "유럽과 북아메리카 전역에서 농작물이 망했어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p30",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-398",
+      "sentence_index": 0,
+      "text": "일부 지역에서는 기온이 몇 도나 떨어졌어요.",
+      "text_markdown": "일부 지역에서는 기온이 몇 도나 떨어졌어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "일부 지역에서는 기온이 몇 도나 떨어졌어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p31",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-399",
+      "sentence_index": 0,
+      "text": "더 긴 시간 규모에서 보면, 화산이 내뿜는 이산화탄소는 지구 온도를 조절하는 데 도움을 줬어요.",
+      "text_markdown": "더 긴 시간 규모에서 보면, 화산이 내뿜는 이산화탄소는 지구 온도를 조절하는 데 도움을 줬어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "더 긴 시간 규모에서 보면, 화산이 내뿜는 이산화탄소는 지구 온도를 조절하는 데 도움을 줬어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p32",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-400",
+      "sentence_index": 0,
+      "text": "화산 활동이 늘어나면 대기에 이산화탄소가 더 많이 들어가서 지구가 따뜻해져요.",
+      "text_markdown": "화산 활동이 늘어나면 대기에 이산화탄소가 더 많이 들어가서 지구가 따뜻해져요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산 활동이 늘어나면 대기에 이산화탄소가 더 많이 들어가서 지구가 따뜻해져요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p33",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-401",
+      "sentence_index": 0,
+      "text": "활동이 줄어들면 지구가 식어요.",
+      "text_markdown": "활동이 줄어들면 지구가 식어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "활동이 줄어들면 지구가 식어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p34",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-402",
+      "sentence_index": 0,
+      "text": "이 화산 온도 조절 장치는 수십억 년 동안 작동해 왔어요.",
+      "text_markdown": "이 화산 온도 조절 장치는 수십억 년 동안 작동해 왔어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "이 화산 온도 조절 장치는 수십억 년 동안 작동해 왔어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p35",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-403",
+      "sentence_index": 0,
+      "text": "화산은 지열 에너지를 제공해요.",
+      "text_markdown": "화산은 지열 에너지를 제공해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 지열 에너지를 제공해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p36",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-404",
+      "sentence_index": 0,
+      "text": "지열 에너지는 지구 내부의 열을 이용하여 전기를 만드는 것이에요.",
+      "text_markdown": "지열 에너지는 지구 내부의 열을 이용하여 전기를 만드는 것이에요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "지열 에너지는 지구 내부의 열을 이용하여 전기를 만드는 것이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p37",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-405",
+      "sentence_index": 0,
+      "text": "아이슬란드에서는 지열 발전소가 나라 전체 전기의 약 25퍼센트를 만들어요.",
+      "text_markdown": "아이슬란드에서는 지열 발전소가 나라 전체 전기의 약 25퍼센트를 만들어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "아이슬란드에서는 지열 발전소가 나라 전체 전기의 약 이십오 퍼센트를 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p38",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-406",
+      "sentence_index": 0,
+      "text": "화산 지역의 뜨거운 물은 집과 온실을 데우는 데 쓰여요.",
+      "text_markdown": "화산 지역의 뜨거운 물은 집과 온실을 데우는 데 쓰여요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산 지역의 뜨거운 물은 집과 온실을 데우는 데 쓰여요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p39",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-407",
+      "sentence_index": 0,
+      "text": "지열 에너지는 재생 가능하고 배출량이 매우 적어요.",
+      "text_markdown": "지열 에너지는 재생 가능하고 배출량이 매우 적어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "지열 에너지는 재생 가능하고 배출량이 매우 적어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p40",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-408",
+      "sentence_index": 0,
+      "text": "화산은 독특한 생태계도 만들어요.",
+      "text_markdown": "화산은 독특한 생태계도 만들어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 독특한 생태계도 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p41",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-409",
+      "sentence_index": 0,
+      "text": "분화 후 황량한 땅은 오래 황량하지 않아요.",
+      "text_markdown": "분화 후 황량한 땅은 오래 황량하지 않아요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "분화 후 황량한 땅은 오래 황량하지 않아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p42",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-410",
+      "sentence_index": 0,
+      "text": "개척 종이 새로운 바위에 자리 잡아요.",
+      "text_markdown": "개척 종이 새로운 바위에 자리 잡아요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "개척 종이 새로운 바위에 자리 잡아요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p43",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-411",
+      "sentence_index": 0,
+      "text": "개척 종은 변화된 환경에 처음으로 사는 생물이에요.",
+      "text_markdown": "개척 종은 변화된 환경에 처음으로 사는 생물이에요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "개척 종은 변화된 환경에 처음으로 사는 생물이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p44",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-412",
+      "sentence_index": 0,
+      "text": "지의류가 바위를 분해해요.",
+      "text_markdown": "지의류가 바위를 분해해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "지의류가 바위를 분해해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p45",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-413",
+      "sentence_index": 0,
+      "text": "이끼가 뿌리를 내려요.",
+      "text_markdown": "이끼가 뿌리를 내려요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "이끼가 뿌리를 내려요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p46",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-414",
+      "sentence_index": 0,
+      "text": "풀이 뒤따라요.",
+      "text_markdown": "풀이 뒤따라요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "풀이 뒤따라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p47",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-415",
+      "sentence_index": 0,
+      "text": "결국 숲이 자라요.",
+      "text_markdown": "결국 숲이 자라요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "결국 숲이 자라요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p48",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-416",
+      "sentence_index": 0,
+      "text": "화산 지대에서 일어나는 생태 천이 과정은 생명이 분화가 파괴한 것을 어떻게 되찾는지 보여 줘요.",
+      "text_markdown": "화산 지대에서 일어나는 생태 천이 과정은 생명이 분화가 파괴한 것을 어떻게 되찾는지 보여 줘요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산 지대에서 일어나는 생태 천이 과정은 생명이 분화가 파괴한 것을 어떻게 되찾는지 보여 줘요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p49",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-417",
+      "sentence_index": 0,
+      "text": "화산은 역설이에요.",
+      "text_markdown": "화산은 역설이에요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 역설이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p50",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-418",
+      "sentence_index": 0,
+      "text": "역설이란 모순되어 보이지만 사실인 것이에요.",
+      "text_markdown": "역설이란 모순되어 보이지만 사실인 것이에요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "역설이란 모순되어 보이지만 사실인 것이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p51",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-419",
+      "sentence_index": 0,
+      "text": "화산은 파괴하고 또 만들어요.",
+      "text_markdown": "화산은 파괴하고 또 만들어요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 파괴하고 또 만들어요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p52",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-420",
+      "sentence_index": 0,
+      "text": "죽이기도 하고 생명을 주기도 해요.",
+      "text_markdown": "죽이기도 하고 생명을 주기도 해요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "죽이기도 하고 생명을 주기도 해요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p53",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-421",
+      "sentence_index": 0,
+      "text": "화산은 지구가 스스로를 새롭게 하는 방법이에요.",
+      "text_markdown": "화산은 지구가 스스로를 새롭게 하는 방법이에요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산은 지구가 스스로를 새롭게 하는 방법이에요.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "paragraph_id": "p54",
+      "part": 0,
+      "block_type": "text",
+      "chapter": 8,
+      "id": "ch08-422",
+      "sentence_index": 0,
+      "text": "화산이 없는 지구는 더 춥고, 더 조용하고, 살기 더 어려운 세상일 거예요.",
+      "text_markdown": "화산이 없는 지구는 더 춥고, 더 조용하고, 살기 더 어려운 세상일 거예요.",
+      "title": "화산이 세상을 만들어요",
+      "tts": {
+        "text": "화산이 없는 지구는 더 춥고, 더 조용하고, 살기 더 어려운 세상일 거예요.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

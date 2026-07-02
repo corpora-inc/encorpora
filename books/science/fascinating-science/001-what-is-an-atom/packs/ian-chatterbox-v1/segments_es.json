@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "es",
+  "total_segments": 300,
+  "segments": [
+    {
+      "part": 0,
+      "chapter": 1,
+      "heading_level": 1,
+      "paragraph_id": "p1",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "text": "Todo Está Hecho de Átomos",
+      "text_markdown": "Todo Está Hecho de Átomos",
+      "title": "Todo Está Hecho de Átomos"
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "text": "Mira a tu alrededor.",
+      "text_markdown": "Mira a tu alrededor.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Mira a tu alrededor.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "text": "Todo lo que puedes ver está hecho de átomos.",
+      "text_markdown": "Todo lo que puedes ver está hecho de átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Todo lo que puedes ver está hecho de átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "text": "El aire que respiras está hecho de átomos.",
+      "text_markdown": "El aire que respiras está hecho de átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "El aire que respiras está hecho de átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "text": "El agua que bebes está hecha de átomos.",
+      "text_markdown": "El agua que bebes está hecha de átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "El agua que bebes está hecha de átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "text": "Tu cuerpo está hecho de átomos.",
+      "text_markdown": "Tu cuerpo está hecho de átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Tu cuerpo está hecho de átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "text": "El suelo bajo tus pies está hecho de átomos.",
+      "text_markdown": "El suelo bajo tus pies está hecho de átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "El suelo bajo tus pies está hecho de átomos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "text": "Un átomo es la pieza más pequeña de materia que todavía tiene una identidad química.",
+      "text_markdown": "Un átomo es la pieza más pequeña de materia que todavía tiene una identidad química.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Un átomo es la pieza más pequeña de materia que todavía tiene una identidad química.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "text": "No puedes ver un solo átomo con tus ojos.",
+      "text_markdown": "No puedes ver un solo átomo con tus ojos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "No puedes ver un solo átomo con tus ojos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "text": "No puedes ver un solo átomo con un microscopio normal.",
+      "text_markdown": "No puedes ver un solo átomo con un microscopio normal.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "No puedes ver un solo átomo con un microscopio normal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "text": "Así de pequeños son los átomos.",
+      "text_markdown": "Así de pequeños son los átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Así de pequeños son los átomos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "text": "Un solo grano de arena contiene alrededor de cincuenta trillones de átomos.",
+      "text_markdown": "Un solo grano de arena contiene alrededor de cincuenta trillones de átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Un solo grano de arena contiene alrededor de cincuenta trillones de átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "text": "Ese número es un cincuenta seguido de dieciocho ceros.",
+      "text_markdown": "Ese número es un cincuenta seguido de dieciocho ceros.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Ese número es un cincuenta seguido de dieciocho ceros.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "text": "Hay más átomos en un grano de arena que granos de arena en una playa.",
+      "text_markdown": "Hay más átomos en un grano de arena que granos de arena en una playa.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Hay más átomos en un grano de arena que granos de arena en una playa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "text": "Los átomos son los bloques de construcción de todo en el mundo físico.",
+      "text_markdown": "Los átomos son los bloques de construcción de todo en el mundo físico.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Los átomos son los bloques de construcción de todo en el mundo físico.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "text": "Una pared está hecha de ladrillos.",
+      "text_markdown": "Una pared está hecha de ladrillos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Una pared está hecha de ladrillos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "text": "Una oración está hecha de palabras.",
+      "text_markdown": "Una oración está hecha de palabras.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Una oración está hecha de palabras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "text": "El universo está hecho de átomos.",
+      "text_markdown": "El universo está hecho de átomos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "El universo está hecho de átomos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "text": "La palabra átomo viene del griego antiguo.",
+      "text_markdown": "La palabra átomo viene del griego antiguo.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "La palabra átomo viene del griego antiguo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "text": "La palabra griega átomos significa indivisible.",
+      "text_markdown": "La palabra griega átomos significa indivisible.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "La palabra griega átomos significa indivisible.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "text": "Los filósofos de la antigua Grecia pensaban que los átomos eran las piezas más pequeñas posibles de materia.",
+      "text_markdown": "Los filósofos de la antigua Grecia pensaban que los átomos eran las piezas más pequeñas posibles de materia.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Los filósofos de la antigua Grecia pensaban que los átomos eran las piezas más pequeñas posibles de materia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "text": "Casi tenían razón.",
+      "text_markdown": "Casi tenían razón.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Casi tenían razón.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "text": "Los átomos no son realmente las partículas más pequeñas, pero son las unidades más pequeñas que conservan sus propiedades químicas.",
+      "text_markdown": "Los átomos no son realmente las partículas más pequeñas, pero son las unidades más pequeñas que conservan sus propiedades químicas.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Los átomos no son realmente las partículas más pequeñas, pero son las unidades más pequeñas que conservan sus propiedades químicas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "text": "Los átomos son increíblemente resistentes.",
+      "text_markdown": "Los átomos son increíblemente resistentes.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Los átomos son increíblemente resistentes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "text": "Los átomos en tu cuerpo tienen miles de millones de años.",
+      "text_markdown": "Los átomos en tu cuerpo tienen miles de millones de años.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Los átomos en tu cuerpo tienen miles de millones de años.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "text": "Algunos de los átomos de hidrógeno en el agua que bebiste hoy se crearon en los primeros minutos después del Big Bang.",
+      "text_markdown": "Algunos de los átomos de hidrógeno en el agua que bebiste hoy se crearon en los primeros minutos después del Big Bang.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Algunos de los átomos de hidrógeno en el agua que bebiste hoy se crearon en los primeros minutos después del Big Bang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "text": "Estás hecho de materiales antiguos.",
+      "text_markdown": "Estás hecho de materiales antiguos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Estás hecho de materiales antiguos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "text": "Los átomos nunca se crean ni se destruyen en la vida cotidiana.",
+      "text_markdown": "Los átomos nunca se crean ni se destruyen en la vida cotidiana.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Los átomos nunca se crean ni se destruyen en la vida cotidiana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "text": "Se reorganizan.",
+      "text_markdown": "Se reorganizan.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Se reorganizan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "text": "Cuando la madera se quema, los átomos no desaparecen.",
+      "text_markdown": "Cuando la madera se quema, los átomos no desaparecen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Cuando la madera se quema, los átomos no desaparecen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "text": "Se reorganizan en humo, ceniza y gas.",
+      "text_markdown": "Se reorganizan en humo, ceniza y gas.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Se reorganizan en humo, ceniza y gas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "text": "Cuando el hielo se derrite, los átomos siguen siendo los mismos.",
+      "text_markdown": "Cuando el hielo se derrite, los átomos siguen siendo los mismos.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Cuando el hielo se derrite, los átomos siguen siendo los mismos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "text": "Solo cambia su disposición.",
+      "text_markdown": "Solo cambia su disposición.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Solo cambia su disposición.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "text": "Entender los átomos es la base de la química.",
+      "text_markdown": "Entender los átomos es la base de la química.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Entender los átomos es la base de la química.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "text": "La química es la ciencia de cómo los átomos se combinan, se reorganizan e interactúan.",
+      "text_markdown": "La química es la ciencia de cómo los átomos se combinan, se reorganizan e interactúan.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "La química es la ciencia de cómo los átomos se combinan, se reorganizan e interactúan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "text": "Todo lo que sucede en el mundo físico se reduce a los átomos y lo que hacen.",
+      "text_markdown": "Todo lo que sucede en el mundo físico se reduce a los átomos y lo que hacen.",
+      "title": "Everything Is Made of Atoms",
+      "tts": {
+        "text": "Todo lo que sucede en el mundo físico se reduce a los átomos y lo que hacen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "heading_level": 1,
+      "paragraph_id": "p10",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "text": "Dentro del Átomo",
+      "text_markdown": "Dentro del Átomo",
+      "title": "Dentro del Átomo"
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "text": "Un átomo tiene tres tipos de partículas en su interior.",
+      "text_markdown": "Un átomo tiene tres tipos de partículas en su interior.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Un átomo tiene tres tipos de partículas en su interior.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "text": "Protones.",
+      "text_markdown": "Protones.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "text": "Neutrones.",
+      "text_markdown": "Neutrones.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Neutrones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "text": "Electrones.",
+      "text_markdown": "Electrones.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Electrones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "text": "Estas tres partículas forman cada átomo en el universo.",
+      "text_markdown": "Estas tres partículas forman cada átomo en el universo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Estas tres partículas forman cada átomo en el universo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "text": "El centro del átomo se llama núcleo.",
+      "text_markdown": "El centro del átomo se llama núcleo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "El centro del átomo se llama núcleo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "text": "El núcleo contiene los protones y los neutrones.",
+      "text_markdown": "El núcleo contiene los protones y los neutrones.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "El núcleo contiene los protones y los neutrones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "text": "El núcleo es diminuto comparado con todo el átomo.",
+      "text_markdown": "El núcleo es diminuto comparado con todo el átomo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "El núcleo es diminuto comparado con todo el átomo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "text": "Si el átomo fuera del tamaño de un estadio de fútbol, el núcleo sería del tamaño de una canica en el centro del campo.",
+      "text_markdown": "Si el átomo fuera del tamaño de un estadio de fútbol, el núcleo sería del tamaño de una canica en el centro del campo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Si el átomo fuera del tamaño de un estadio de fútbol, el núcleo sería del tamaño de una canica en el centro del campo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "text": "Los protones tienen una carga eléctrica positiva.",
+      "text_markdown": "Los protones tienen una carga eléctrica positiva.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Los protones tienen una carga eléctrica positiva.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "text": "Cada protón tiene la misma cantidad de carga positiva.",
+      "text_markdown": "Cada protón tiene la misma cantidad de carga positiva.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Cada protón tiene la misma cantidad de carga positiva.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "text": "El número de protones en un átomo determina qué elemento es el átomo.",
+      "text_markdown": "El número de protones en un átomo determina qué elemento es el átomo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "El número de protones en un átomo determina qué elemento es el átomo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "text": "Un protón significa hidrógeno.",
+      "text_markdown": "Un protón significa hidrógeno.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Un protón significa hidrógeno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "text": "Seis protones significan carbono.",
+      "text_markdown": "Seis protones significan carbono.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Seis protones significan carbono.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "text": "Veintiséis protones significan hierro.",
+      "text_markdown": "Veintiséis protones significan hierro.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Veintiséis protones significan hierro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "text": "El número de protones es el dato más importante sobre un átomo.",
+      "text_markdown": "El número de protones es el dato más importante sobre un átomo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "El número de protones es el dato más importante sobre un átomo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "text": "Los neutrones no tienen carga eléctrica.",
+      "text_markdown": "Los neutrones no tienen carga eléctrica.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Los neutrones no tienen carga eléctrica.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "text": "Los neutrones son neutros.",
+      "text_markdown": "Los neutrones son neutros.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Los neutrones son neutros.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "text": "Los neutrones están en el núcleo junto a los protones.",
+      "text_markdown": "Los neutrones están en el núcleo junto a los protones.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Los neutrones están en el núcleo junto a los protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "text": "Los neutrones ayudan a mantener unido el núcleo.",
+      "text_markdown": "Los neutrones ayudan a mantener unido el núcleo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Los neutrones ayudan a mantener unido el núcleo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "text": "Sin los neutrones, los protones se repelerían entre sí porque todos tienen la misma carga positiva.",
+      "text_markdown": "Sin los neutrones, los protones se repelerían entre sí porque todos tienen la misma carga positiva.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Sin los neutrones, los protones se repelerían entre sí porque todos tienen la misma carga positiva.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "text": "Los electrones tienen una carga eléctrica negativa.",
+      "text_markdown": "Los electrones tienen una carga eléctrica negativa.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Los electrones tienen una carga eléctrica negativa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "text": "Los electrones se mueven alrededor del núcleo en una nube.",
+      "text_markdown": "Los electrones se mueven alrededor del núcleo en una nube.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Los electrones se mueven alrededor del núcleo en una nube.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "text": "No orbitan como planetas alrededor de un sol.",
+      "text_markdown": "No orbitan como planetas alrededor de un sol.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "No orbitan como planetas alrededor de un sol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "text": "Existen en una región difusa de probabilidad alrededor del núcleo.",
+      "text_markdown": "Existen en una región difusa de probabilidad alrededor del núcleo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Existen en una región difusa de probabilidad alrededor del núcleo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "text": "La nube de electrones es donde es probable encontrar un electrón en cualquier momento.",
+      "text_markdown": "La nube de electrones es donde es probable encontrar un electrón en cualquier momento.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "La nube de electrones es donde es probable encontrar un electrón en cualquier momento.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "text": "Un electrón tiene casi nada de masa comparado con un protón o neutrón.",
+      "text_markdown": "Un electrón tiene casi nada de masa comparado con un protón o neutrón.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Un electrón tiene casi nada de masa comparado con un protón o neutrón.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "text": "Un protón es unas 1.836 veces más pesado que un electrón.",
+      "text_markdown": "Un protón es unas 1.836 veces más pesado que un electrón.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Un protón es unas mil ochocientas treinta y seis veces más pesado que un electrón.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "text": "Casi toda la masa de un átomo está en el núcleo.",
+      "text_markdown": "Casi toda la masa de un átomo está en el núcleo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Casi toda la masa de un átomo está en el núcleo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "text": "En un átomo neutro, el número de electrones es igual al número de protones.",
+      "text_markdown": "En un átomo neutro, el número de electrones es igual al número de protones.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "En un átomo neutro, el número de electrones es igual al número de protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "text": "Las cargas positivas y las cargas negativas se equilibran.",
+      "text_markdown": "Las cargas positivas y las cargas negativas se equilibran.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Las cargas positivas y las cargas negativas se equilibran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "text": "El átomo no tiene carga total.",
+      "text_markdown": "El átomo no tiene carga total.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "El átomo no tiene carga total.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "text": "Este equilibrio es el estado natural de un átomo.",
+      "text_markdown": "Este equilibrio es el estado natural de un átomo.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Este equilibrio es el estado natural de un átomo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "text": "La mayor parte de un átomo es espacio vacío.",
+      "text_markdown": "La mayor parte de un átomo es espacio vacío.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "La mayor parte de un átomo es espacio vacío.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "text": "El núcleo es denso y diminuto.",
+      "text_markdown": "El núcleo es denso y diminuto.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "El núcleo es denso y diminuto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "text": "La nube de electrones es grande y casi toda vacía.",
+      "text_markdown": "La nube de electrones es grande y casi toda vacía.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "La nube de electrones es grande y casi toda vacía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "text": "Si pudieras quitar todo el espacio vacío de cada átomo en tu cuerpo, te reducirías a un tamaño más pequeño que un grano de sal.",
+      "text_markdown": "Si pudieras quitar todo el espacio vacío de cada átomo en tu cuerpo, te reducirías a un tamaño más pequeño que un grano de sal.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Si pudieras quitar todo el espacio vacío de cada átomo en tu cuerpo, te reducirías a un tamaño más pequeño que un grano de sal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "text": "Tu masa seguiría siendo la misma.",
+      "text_markdown": "Tu masa seguiría siendo la misma.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Tu masa seguiría siendo la misma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "text": "Solo serías increíblemente denso.",
+      "text_markdown": "Solo serías increíblemente denso.",
+      "title": "Inside the Atom",
+      "tts": {
+        "text": "Solo serías increíblemente denso.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "heading_level": 1,
+      "paragraph_id": "p19",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "text": "Elementos",
+      "text_markdown": "Elementos",
+      "title": "Elementos"
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "text": "Un elemento es una sustancia hecha de un solo tipo de átomo.",
+      "text_markdown": "Un elemento es una sustancia hecha de un solo tipo de átomo.",
+      "title": "Elements",
+      "tts": {
+        "text": "Un elemento es una sustancia hecha de un solo tipo de átomo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "text": "El oro puro es un elemento.",
+      "text_markdown": "El oro puro es un elemento.",
+      "title": "Elements",
+      "tts": {
+        "text": "El oro puro es un elemento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "text": "Cada átomo en una barra de oro puro tiene setenta y nueve protones.",
+      "text_markdown": "Cada átomo en una barra de oro puro tiene setenta y nueve protones.",
+      "title": "Elements",
+      "tts": {
+        "text": "Cada átomo en una barra de oro puro tiene setenta y nueve protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "text": "El oxígeno puro es un elemento.",
+      "text_markdown": "El oxígeno puro es un elemento.",
+      "title": "Elements",
+      "tts": {
+        "text": "El oxígeno puro es un elemento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "text": "Cada átomo en un tanque de oxígeno puro tiene ocho protones.",
+      "text_markdown": "Cada átomo en un tanque de oxígeno puro tiene ocho protones.",
+      "title": "Elements",
+      "tts": {
+        "text": "Cada átomo en un tanque de oxígeno puro tiene ocho protones.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "text": "Hay alrededor de noventa y dos elementos que se encuentran de forma natural en la Tierra.",
+      "text_markdown": "Hay alrededor de noventa y dos elementos que se encuentran de forma natural en la Tierra.",
+      "title": "Elements",
+      "tts": {
+        "text": "Hay alrededor de noventa y dos elementos que se encuentran de forma natural en la Tierra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "text": "Los científicos han creado elementos adicionales en laboratorios.",
+      "text_markdown": "Los científicos han creado elementos adicionales en laboratorios.",
+      "title": "Elements",
+      "tts": {
+        "text": "Los científicos han creado elementos adicionales en laboratorios.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "text": "El número total de elementos conocidos es más de ciento dieciocho.",
+      "text_markdown": "El número total de elementos conocidos es más de ciento dieciocho.",
+      "title": "Elements",
+      "tts": {
+        "text": "El número total de elementos conocidos es más de ciento dieciocho.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "text": "Cada elemento tiene un número único de protones.",
+      "text_markdown": "Cada elemento tiene un número único de protones.",
+      "title": "Elements",
+      "tts": {
+        "text": "Cada elemento tiene un número único de protones.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "text": "Cada elemento tiene un nombre y un símbolo.",
+      "text_markdown": "Cada elemento tiene un nombre y un símbolo.",
+      "title": "Elements",
+      "tts": {
+        "text": "Cada elemento tiene un nombre y un símbolo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "text": "El hidrógeno es H. El oxígeno es O. El carbono es C. El hierro es Fe.",
+      "text_markdown": "El hidrógeno es H. El oxígeno es O. El carbono es C. El hierro es Fe.",
+      "title": "Elements",
+      "tts": {
+        "text": "El hidrógeno es hache. El oxígeno es o. El carbono es ce. El hierro es efe e.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "text": "El oro es Au.",
+      "text_markdown": "El oro es Au.",
+      "title": "Elements",
+      "tts": {
+        "text": "El oro es a u.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "text": "Los símbolos provienen de nombres en latín, griego o inglés.",
+      "text_markdown": "Los símbolos provienen de nombres en latín, griego o inglés.",
+      "title": "Elements",
+      "tts": {
+        "text": "Los símbolos provienen de nombres en latín, griego o inglés.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "text": "Fe proviene de la palabra latina ferrum.",
+      "text_markdown": "Fe proviene de la palabra latina ferrum.",
+      "title": "Elements",
+      "tts": {
+        "text": "Efe e proviene de la palabra latina ferrum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "text": "Au proviene de la palabra latina aurum.",
+      "text_markdown": "Au proviene de la palabra latina aurum.",
+      "title": "Elements",
+      "tts": {
+        "text": "A u proviene de la palabra latina aurum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "text": "El hidrógeno es el elemento más simple.",
+      "text_markdown": "El hidrógeno es el elemento más simple.",
+      "title": "Elements",
+      "tts": {
+        "text": "El hidrógeno es el elemento más simple.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "text": "Un átomo de hidrógeno tiene un protón y un electrón.",
+      "text_markdown": "Un átomo de hidrógeno tiene un protón y un electrón.",
+      "title": "Elements",
+      "tts": {
+        "text": "Un átomo de hidrógeno tiene un protón y un electrón.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "text": "El hidrógeno es el elemento más común en el universo.",
+      "text_markdown": "El hidrógeno es el elemento más común en el universo.",
+      "title": "Elements",
+      "tts": {
+        "text": "El hidrógeno es el elemento más común en el universo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "text": "Las estrellas están hechas principalmente de hidrógeno.",
+      "text_markdown": "Las estrellas están hechas principalmente de hidrógeno.",
+      "title": "Elements",
+      "tts": {
+        "text": "Las estrellas están hechas principalmente de hidrógeno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "text": "El carbono es el elemento de la vida.",
+      "text_markdown": "El carbono es el elemento de la vida.",
+      "title": "Elements",
+      "tts": {
+        "text": "El carbono es el elemento de la vida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "text": "El carbono tiene seis protones.",
+      "text_markdown": "El carbono tiene seis protones.",
+      "title": "Elements",
+      "tts": {
+        "text": "El carbono tiene seis protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "text": "Los átomos de carbono pueden formar enlaces con muchos otros átomos al mismo tiempo.",
+      "text_markdown": "Los átomos de carbono pueden formar enlaces con muchos otros átomos al mismo tiempo.",
+      "title": "Elements",
+      "tts": {
+        "text": "Los átomos de carbono pueden formar enlaces con muchos otros átomos al mismo tiempo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "text": "Esta capacidad hace que el carbono sea la columna vertebral de todos los seres vivos.",
+      "text_markdown": "Esta capacidad hace que el carbono sea la columna vertebral de todos los seres vivos.",
+      "title": "Elements",
+      "tts": {
+        "text": "Esta capacidad hace que el carbono sea la columna vertebral de todos los seres vivos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "text": "Cada proteína, cada cadena de ADN y cada molécula de azúcar en tu cuerpo contiene carbono.",
+      "text_markdown": "Cada proteína, cada cadena de ADN y cada molécula de azúcar en tu cuerpo contiene carbono.",
+      "title": "Elements",
+      "tts": {
+        "text": "Cada proteína, cada cadena de ADN y cada molécula de azúcar en tu cuerpo contiene carbono.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "text": "El oxígeno tiene ocho protones.",
+      "text_markdown": "El oxígeno tiene ocho protones.",
+      "title": "Elements",
+      "tts": {
+        "text": "El oxígeno tiene ocho protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "text": "El oxígeno es el elemento que respiras.",
+      "text_markdown": "El oxígeno es el elemento que respiras.",
+      "title": "Elements",
+      "tts": {
+        "text": "El oxígeno es el elemento que respiras.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "text": "Tus pulmones extraen oxígeno del aire y lo envían a tu sangre.",
+      "text_markdown": "Tus pulmones extraen oxígeno del aire y lo envían a tu sangre.",
+      "title": "Elements",
+      "tts": {
+        "text": "Tus pulmones extraen oxígeno del aire y lo envían a tu sangre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "text": "Tus células usan oxígeno para liberar energía de los alimentos.",
+      "text_markdown": "Tus células usan oxígeno para liberar energía de los alimentos.",
+      "title": "Elements",
+      "tts": {
+        "text": "Tus células usan oxígeno para liberar energía de los alimentos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "text": "El hierro tiene veintiséis protones.",
+      "text_markdown": "El hierro tiene veintiséis protones.",
+      "title": "Elements",
+      "tts": {
+        "text": "El hierro tiene veintiséis protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "text": "El hierro es el elemento que hace que tu sangre sea roja.",
+      "text_markdown": "El hierro es el elemento que hace que tu sangre sea roja.",
+      "title": "Elements",
+      "tts": {
+        "text": "El hierro es el elemento que hace que tu sangre sea roja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "text": "El hierro es el ingrediente principal del acero.",
+      "text_markdown": "El hierro es el ingrediente principal del acero.",
+      "title": "Elements",
+      "tts": {
+        "text": "El hierro es el ingrediente principal del acero.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "text": "El centro de la Tierra es principalmente hierro.",
+      "text_markdown": "El centro de la Tierra es principalmente hierro.",
+      "title": "Elements",
+      "tts": {
+        "text": "El centro de la Tierra es principalmente hierro.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "text": "Los elementos más ligeros son los más comunes en el universo.",
+      "text_markdown": "Los elementos más ligeros son los más comunes en el universo.",
+      "title": "Elements",
+      "tts": {
+        "text": "Los elementos más ligeros son los más comunes en el universo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "text": "El hidrógeno y el helio juntos forman alrededor del noventa y ocho por ciento de todos los átomos en el universo.",
+      "text_markdown": "El hidrógeno y el helio juntos forman alrededor del noventa y ocho por ciento de todos los átomos en el universo.",
+      "title": "Elements",
+      "tts": {
+        "text": "El hidrógeno y el helio juntos forman alrededor del noventa y ocho por ciento de todos los átomos en el universo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "text": "Los elementos más pesados son raros en comparación.",
+      "text_markdown": "Los elementos más pesados son raros en comparación.",
+      "title": "Elements",
+      "tts": {
+        "text": "Los elementos más pesados son raros en comparación.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "text": "Cada átomo de cada elemento pesado fue forjado dentro de una estrella.",
+      "text_markdown": "Cada átomo de cada elemento pesado fue forjado dentro de una estrella.",
+      "title": "Elements",
+      "tts": {
+        "text": "Cada átomo de cada elemento pesado fue forjado dentro de una estrella.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "heading_level": 1,
+      "paragraph_id": "p28",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "text": "La Tabla Periódica",
+      "text_markdown": "La Tabla Periódica",
+      "title": "La Tabla Periódica"
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "text": "La tabla periódica es un cuadro que organiza todos los elementos conocidos.",
+      "text_markdown": "La tabla periódica es un cuadro que organiza todos los elementos conocidos.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "La tabla periódica es un cuadro que organiza todos los elementos conocidos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "text": "La tabla organiza los elementos por su número de protones, del más pequeño al más grande.",
+      "text_markdown": "La tabla organiza los elementos por su número de protones, del más pequeño al más grande.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "La tabla organiza los elementos por su número de protones, del más pequeño al más grande.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "text": "El hidrógeno es el primero con un protón.",
+      "text_markdown": "El hidrógeno es el primero con un protón.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "El hidrógeno es el primero con un protón.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "text": "El helio es el segundo con dos protones.",
+      "text_markdown": "El helio es el segundo con dos protones.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "El helio es el segundo con dos protones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "text": "La tabla continúa hasta el oganesón con ciento dieciocho protones.",
+      "text_markdown": "La tabla continúa hasta el oganesón con ciento dieciocho protones.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "La tabla continúa hasta el oganesón con ciento dieciocho protones.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "text": "La tabla periódica tiene filas y columnas.",
+      "text_markdown": "La tabla periódica tiene filas y columnas.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "La tabla periódica tiene filas y columnas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "text": "Las filas se llaman períodos.",
+      "text_markdown": "Las filas se llaman períodos.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Las filas se llaman períodos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "text": "Las columnas se llaman grupos.",
+      "text_markdown": "Las columnas se llaman grupos.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Las columnas se llaman grupos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "text": "Los elementos del mismo grupo comparten propiedades similares.",
+      "text_markdown": "Los elementos del mismo grupo comparten propiedades similares.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los elementos del mismo grupo comparten propiedades similares.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "text": "Por eso la tabla se llama periódica.",
+      "text_markdown": "Por eso la tabla se llama periódica.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Por eso la tabla se llama periódica.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "text": "Las propiedades se repiten en un patrón regular.",
+      "text_markdown": "Las propiedades se repiten en un patrón regular.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Las propiedades se repiten en un patrón regular.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "text": "Los elementos del lado izquierdo de la tabla son metales.",
+      "text_markdown": "Los elementos del lado izquierdo de la tabla son metales.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los elementos del lado izquierdo de la tabla son metales.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "text": "La mayoría de los elementos son metales.",
+      "text_markdown": "La mayoría de los elementos son metales.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "La mayoría de los elementos son metales.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "text": "Los metales son brillantes.",
+      "text_markdown": "Los metales son brillantes.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los metales son brillantes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "text": "Los metales conducen la electricidad.",
+      "text_markdown": "Los metales conducen la electricidad.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los metales conducen la electricidad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "text": "Los metales conducen el calor.",
+      "text_markdown": "Los metales conducen el calor.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los metales conducen el calor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "text": "El hierro, el cobre, el oro y el aluminio son todos metales.",
+      "text_markdown": "El hierro, el cobre, el oro y el aluminio son todos metales.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "El hierro, el cobre, el oro y el aluminio son todos metales.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "text": "Los elementos del lado derecho de la tabla son no metales.",
+      "text_markdown": "Los elementos del lado derecho de la tabla son no metales.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los elementos del lado derecho de la tabla son no metales.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "text": "Los no metales incluyen el oxígeno, el nitrógeno, el carbono y el azufre.",
+      "text_markdown": "Los no metales incluyen el oxígeno, el nitrógeno, el carbono y el azufre.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los no metales incluyen el oxígeno, el nitrógeno, el carbono y el azufre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "text": "Los no metales no conducen bien la electricidad.",
+      "text_markdown": "Los no metales no conducen bien la electricidad.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los no metales no conducen bien la electricidad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "text": "Los no metales son los elementos que forman el aire, el agua y los seres vivos.",
+      "text_markdown": "Los no metales son los elementos que forman el aire, el agua y los seres vivos.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los no metales son los elementos que forman el aire, el agua y los seres vivos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "text": "Algunos elementos se encuentran en la frontera entre los metales y los no metales.",
+      "text_markdown": "Algunos elementos se encuentran en la frontera entre los metales y los no metales.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Algunos elementos se encuentran en la frontera entre los metales y los no metales.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "text": "Estos elementos se llaman metaloides.",
+      "text_markdown": "Estos elementos se llaman metaloides.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Estos elementos se llaman metaloides.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "text": "El silicio es un metaloide.",
+      "text_markdown": "El silicio es un metaloide.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "El silicio es un metaloide.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "text": "El silicio conduce la electricidad un poco, pero no tan bien como un metal.",
+      "text_markdown": "El silicio conduce la electricidad un poco, pero no tan bien como un metal.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "El silicio conduce la electricidad un poco, pero no tan bien como un metal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "text": "Esta propiedad hace que el silicio sea útil en los chips de computadora.",
+      "text_markdown": "Esta propiedad hace que el silicio sea útil en los chips de computadora.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Esta propiedad hace que el silicio sea útil en los chips de computadora.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "text": "Los gases nobles están en la última columna a la derecha.",
+      "text_markdown": "Los gases nobles están en la última columna a la derecha.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los gases nobles están en la última columna a la derecha.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "text": "El helio, el neón, el argón, el criptón, el xenón y el radón son gases nobles.",
+      "text_markdown": "El helio, el neón, el argón, el criptón, el xenón y el radón son gases nobles.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "El helio, el neón, el argón, el criptón, el xenón y el radón son gases nobles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "text": "Los gases nobles casi nunca reaccionan con otros elementos.",
+      "text_markdown": "Los gases nobles casi nunca reaccionan con otros elementos.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los gases nobles casi nunca reaccionan con otros elementos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "text": "Sus configuraciones de electrones ya son estables.",
+      "text_markdown": "Sus configuraciones de electrones ya son estables.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Sus configuraciones de electrones ya son estables.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "text": "No necesitan formar enlaces.",
+      "text_markdown": "No necesitan formar enlaces.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "No necesitan formar enlaces.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "text": "Un científico ruso llamado Dmitri Mendeléyev creó la primera tabla periódica en 1869.",
+      "text_markdown": "Un científico ruso llamado Dmitri Mendeléyev creó la primera tabla periódica en 1869.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Un científico ruso llamado Dmitri Mendeléyev creó la primera tabla periódica en mil ochocientos sesenta y nueve.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "text": "Mendeléyev organizó los elementos por sus propiedades y notó el patrón repetitivo.",
+      "text_markdown": "Mendeléyev organizó los elementos por sus propiedades y notó el patrón repetitivo.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Mendeléyev organizó los elementos por sus propiedades y notó el patrón repetitivo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "text": "Dejó espacios vacíos en su tabla donde predijo que deberían estar elementos desconocidos.",
+      "text_markdown": "Dejó espacios vacíos en su tabla donde predijo que deberían estar elementos desconocidos.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Dejó espacios vacíos en su tabla donde predijo que deberían estar elementos desconocidos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "text": "Los científicos descubrieron esos elementos más tarde.",
+      "text_markdown": "Los científicos descubrieron esos elementos más tarde.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Los científicos descubrieron esos elementos más tarde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "text": "Cada predicción fue correcta.",
+      "text_markdown": "Cada predicción fue correcta.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Cada predicción fue correcta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "text": "La tabla periódica es una de las herramientas más poderosas de la ciencia.",
+      "text_markdown": "La tabla periódica es una de las herramientas más poderosas de la ciencia.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "La tabla periódica es una de las herramientas más poderosas de la ciencia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "text": "Si sabes dónde se ubica un elemento en la tabla, puedes predecir cómo se va a comportar.",
+      "text_markdown": "Si sabes dónde se ubica un elemento en la tabla, puedes predecir cómo se va a comportar.",
+      "title": "The Periodic Table",
+      "tts": {
+        "text": "Si sabes dónde se ubica un elemento en la tabla, puedes predecir cómo se va a comportar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "heading_level": 1,
+      "paragraph_id": "p37",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "text": "Cómo se Enlazan los Átomos",
+      "text_markdown": "Cómo se Enlazan los Átomos",
+      "title": "Cómo se Enlazan los Átomos"
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "text": "Los átomos rara vez existen solos.",
+      "text_markdown": "Los átomos rara vez existen solos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Los átomos rara vez existen solos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "text": "La mayoría de los átomos se enlazan con otros átomos para formar moléculas.",
+      "text_markdown": "La mayoría de los átomos se enlazan con otros átomos para formar moléculas.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "La mayoría de los átomos se enlazan con otros átomos para formar moléculas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "text": "Una molécula es un grupo de átomos unidos por enlaces químicos.",
+      "text_markdown": "Una molécula es un grupo de átomos unidos por enlaces químicos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Una molécula es un grupo de átomos unidos por enlaces químicos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "text": "El agua es una molécula.",
+      "text_markdown": "El agua es una molécula.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El agua es una molécula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "text": "El oxígeno gaseoso es una molécula.",
+      "text_markdown": "El oxígeno gaseoso es una molécula.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El oxígeno gaseoso es una molécula.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "text": "El azúcar es una molécula.",
+      "text_markdown": "El azúcar es una molécula.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El azúcar es una molécula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "text": "Los átomos se enlazan por sus electrones.",
+      "text_markdown": "Los átomos se enlazan por sus electrones.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Los átomos se enlazan por sus electrones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "text": "Los electrones en la capa más externa de un átomo determinan cómo ese átomo interactúa con otros átomos.",
+      "text_markdown": "Los electrones en la capa más externa de un átomo determinan cómo ese átomo interactúa con otros átomos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Los electrones en la capa más externa de un átomo determinan cómo ese átomo interactúa con otros átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "text": "Estos electrones externos se llaman electrones de valencia.",
+      "text_markdown": "Estos electrones externos se llaman electrones de valencia.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Estos electrones externos se llaman electrones de valencia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "text": "Un átomo con la capa externa completa es estable.",
+      "text_markdown": "Un átomo con la capa externa completa es estable.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Un átomo con la capa externa completa es estable.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "text": "Un átomo sin la capa externa completa buscará llenarla.",
+      "text_markdown": "Un átomo sin la capa externa completa buscará llenarla.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Un átomo sin la capa externa completa buscará llenarla.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "text": "Hay dos tipos principales de enlaces químicos.",
+      "text_markdown": "Hay dos tipos principales de enlaces químicos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Hay dos tipos principales de enlaces químicos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "text": "Enlaces covalentes y enlaces iónicos.",
+      "text_markdown": "Enlaces covalentes y enlaces iónicos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Enlaces covalentes y enlaces iónicos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "text": "En un enlace covalente, dos átomos comparten electrones.",
+      "text_markdown": "En un enlace covalente, dos átomos comparten electrones.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "En un enlace covalente, dos átomos comparten electrones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "text": "Ambos átomos contribuyen electrones a un par compartido.",
+      "text_markdown": "Ambos átomos contribuyen electrones a un par compartido.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Ambos átomos contribuyen electrones a un par compartido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "text": "Los electrones compartidos orbitan ambos núcleos.",
+      "text_markdown": "Los electrones compartidos orbitan ambos núcleos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Los electrones compartidos orbitan ambos núcleos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "text": "Este intercambio mantiene a los átomos unidos.",
+      "text_markdown": "Este intercambio mantiene a los átomos unidos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Este intercambio mantiene a los átomos unidos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "text": "El agua se mantiene unida por enlaces covalentes.",
+      "text_markdown": "El agua se mantiene unida por enlaces covalentes.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El agua se mantiene unida por enlaces covalentes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "text": "Cada átomo de hidrógeno comparte un electrón con el átomo de oxígeno.",
+      "text_markdown": "Cada átomo de hidrógeno comparte un electrón con el átomo de oxígeno.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Cada átomo de hidrógeno comparte un electrón con el átomo de oxígeno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "text": "En un enlace iónico, un átomo le da electrones a otro átomo.",
+      "text_markdown": "En un enlace iónico, un átomo le da electrones a otro átomo.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "En un enlace iónico, un átomo le da electrones a otro átomo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "text": "El átomo que pierde electrones se carga positivamente.",
+      "text_markdown": "El átomo que pierde electrones se carga positivamente.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El átomo que pierde electrones se carga positivamente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "text": "El átomo que gana electrones se carga negativamente.",
+      "text_markdown": "El átomo que gana electrones se carga negativamente.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El átomo que gana electrones se carga negativamente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "text": "Las cargas opuestas se atraen.",
+      "text_markdown": "Las cargas opuestas se atraen.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Las cargas opuestas se atraen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "text": "Esta atracción mantiene a los dos átomos unidos.",
+      "text_markdown": "Esta atracción mantiene a los dos átomos unidos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Esta atracción mantiene a los dos átomos unidos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "text": "La sal de mesa se mantiene unida por enlaces iónicos.",
+      "text_markdown": "La sal de mesa se mantiene unida por enlaces iónicos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "La sal de mesa se mantiene unida por enlaces iónicos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "text": "El sodio le da un electrón al cloro.",
+      "text_markdown": "El sodio le da un electrón al cloro.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El sodio le da un electrón al cloro.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "text": "Una molécula de agua contiene dos átomos de hidrógeno y un átomo de oxígeno.",
+      "text_markdown": "Una molécula de agua contiene dos átomos de hidrógeno y un átomo de oxígeno.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Una molécula de agua contiene dos átomos de hidrógeno y un átomo de oxígeno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "text": "Los científicos lo escriben como H2O.",
+      "text_markdown": "Los científicos lo escriben como H2O.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Los científicos lo escriben como hache dos o.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "text": "La H representa el hidrógeno.",
+      "text_markdown": "La H representa el hidrógeno.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "La hache representa el hidrógeno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "text": "La O representa el oxígeno.",
+      "text_markdown": "La O representa el oxígeno.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "La o representa el oxígeno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "text": "El 2 significa que hay dos átomos de hidrógeno.",
+      "text_markdown": "El 2 significa que hay dos átomos de hidrógeno.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "El dos significa que hay dos átomos de hidrógeno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "text": "Una molécula de dióxido de carbono contiene un átomo de carbono y dos átomos de oxígeno.",
+      "text_markdown": "Una molécula de dióxido de carbono contiene un átomo de carbono y dos átomos de oxígeno.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Una molécula de dióxido de carbono contiene un átomo de carbono y dos átomos de oxígeno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "text": "Los científicos lo escriben como CO2.",
+      "text_markdown": "Los científicos lo escriben como CO2.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Los científicos lo escriben como ce o dos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "text": "Las plantas absorben dióxido de carbono del aire y lo usan para construir moléculas de azúcar.",
+      "text_markdown": "Las plantas absorben dióxido de carbono del aire y lo usan para construir moléculas de azúcar.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Las plantas absorben dióxido de carbono del aire y lo usan para construir moléculas de azúcar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "text": "Los enlaces entre átomos almacenan energía.",
+      "text_markdown": "Los enlaces entre átomos almacenan energía.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Los enlaces entre átomos almacenan energía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "text": "Cuando los enlaces se rompen, se libera energía.",
+      "text_markdown": "Cuando los enlaces se rompen, se libera energía.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Cuando los enlaces se rompen, se libera energía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "text": "Cuando se forman enlaces, se absorbe energía.",
+      "text_markdown": "Cuando se forman enlaces, se absorbe energía.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Cuando se forman enlaces, se absorbe energía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "text": "Cada reacción química en el universo implica romper enlaces viejos y formar nuevos.",
+      "text_markdown": "Cada reacción química en el universo implica romper enlaces viejos y formar nuevos.",
+      "title": "How Atoms Bond",
+      "tts": {
+        "text": "Cada reacción química en el universo implica romper enlaces viejos y formar nuevos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "heading_level": 1,
+      "paragraph_id": "p46",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "text": "Átomos en Movimiento",
+      "text_markdown": "Átomos en Movimiento",
+      "title": "Átomos en Movimiento"
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "text": "Los átomos siempre se están moviendo.",
+      "text_markdown": "Los átomos siempre se están moviendo.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Los átomos siempre se están moviendo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "text": "Nunca se detienen.",
+      "text_markdown": "Nunca se detienen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Nunca se detienen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "text": "A cualquier temperatura por encima del cero absoluto, los átomos vibran, rotan y viajan a través del espacio.",
+      "text_markdown": "A cualquier temperatura por encima del cero absoluto, los átomos vibran, rotan y viajan a través del espacio.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "A cualquier temperatura por encima del cero absoluto, los átomos vibran, rotan y viajan a través del espacio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "text": "Este movimiento es lo que experimentamos como calor.",
+      "text_markdown": "Este movimiento es lo que experimentamos como calor.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Este movimiento es lo que experimentamos como calor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "text": "En un sólido, los átomos vibran en su lugar.",
+      "text_markdown": "En un sólido, los átomos vibran en su lugar.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "En un sólido, los átomos vibran en su lugar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "text": "Están encerrados en una estructura fija.",
+      "text_markdown": "Están encerrados en una estructura fija.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Están encerrados en una estructura fija.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "text": "Se agitan de un lado a otro, pero no abandonan sus posiciones.",
+      "text_markdown": "Se agitan de un lado a otro, pero no abandonan sus posiciones.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Se agitan de un lado a otro, pero no abandonan sus posiciones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "text": "Por eso los sólidos mantienen su forma.",
+      "text_markdown": "Por eso los sólidos mantienen su forma.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Por eso los sólidos mantienen su forma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "text": "Los átomos en un bloque de hielo vibran, pero se mantienen en un patrón de cristal rígido.",
+      "text_markdown": "Los átomos en un bloque de hielo vibran, pero se mantienen en un patrón de cristal rígido.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Los átomos en un bloque de hielo vibran, pero se mantienen en un patrón de cristal rígido.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "text": "En un líquido, los átomos se mueven con más libertad.",
+      "text_markdown": "En un líquido, los átomos se mueven con más libertad.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "En un líquido, los átomos se mueven con más libertad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "text": "Se deslizan unos sobre otros.",
+      "text_markdown": "Se deslizan unos sobre otros.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Se deslizan unos sobre otros.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "text": "Se mantienen juntos, pero no están fijos en su posición.",
+      "text_markdown": "Se mantienen juntos, pero no están fijos en su posición.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Se mantienen juntos, pero no están fijos en su posición.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "text": "Por eso los líquidos fluyen.",
+      "text_markdown": "Por eso los líquidos fluyen.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Por eso los líquidos fluyen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "text": "Los átomos en un vaso de agua se mueven y se reorganizan constantemente, pero se mantienen cerca unos de otros.",
+      "text_markdown": "Los átomos en un vaso de agua se mueven y se reorganizan constantemente, pero se mantienen cerca unos de otros.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Los átomos en un vaso de agua se mueven y se reorganizan constantemente, pero se mantienen cerca unos de otros.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "text": "En un gas, los átomos se mueven rápido y se separan.",
+      "text_markdown": "En un gas, los átomos se mueven rápido y se separan.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "En un gas, los átomos se mueven rápido y se separan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "text": "Vuelan en línea recta hasta que chocan con otro átomo o con una pared.",
+      "text_markdown": "Vuelan en línea recta hasta que chocan con otro átomo o con una pared.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Vuelan en línea recta hasta que chocan con otro átomo o con una pared.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "text": "Rebotan entre sí y cambian de dirección.",
+      "text_markdown": "Rebotan entre sí y cambian de dirección.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Rebotan entre sí y cambian de dirección.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "text": "Por eso un gas llena cualquier recipiente en el que lo pongas.",
+      "text_markdown": "Por eso un gas llena cualquier recipiente en el que lo pongas.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Por eso un gas llena cualquier recipiente en el que lo pongas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "text": "Los átomos en una habitación llena de aire se mueven en todas las direcciones a cientos de metros por segundo.",
+      "text_markdown": "Los átomos en una habitación llena de aire se mueven en todas las direcciones a cientos de metros por segundo.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Los átomos en una habitación llena de aire se mueven en todas las direcciones a cientos de metros por segundo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "text": "La temperatura es una medida de qué tan rápido se mueven los átomos.",
+      "text_markdown": "La temperatura es una medida de qué tan rápido se mueven los átomos.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "La temperatura es una medida de qué tan rápido se mueven los átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "text": "Caliente significa que los átomos se mueven rápido.",
+      "text_markdown": "Caliente significa que los átomos se mueven rápido.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Caliente significa que los átomos se mueven rápido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "text": "Frío significa que los átomos se mueven lentamente.",
+      "text_markdown": "Frío significa que los átomos se mueven lentamente.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Frío significa que los átomos se mueven lentamente.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "text": "Cuando calientas agua en una estufa, estás haciendo que las moléculas de agua se muevan más rápido.",
+      "text_markdown": "Cuando calientas agua en una estufa, estás haciendo que las moléculas de agua se muevan más rápido.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Cuando calientas agua en una estufa, estás haciendo que las moléculas de agua se muevan más rápido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "text": "Cuando las moléculas se mueven lo suficientemente rápido, escapan del líquido y se convierten en vapor.",
+      "text_markdown": "Cuando las moléculas se mueven lo suficientemente rápido, escapan del líquido y se convierten en vapor.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Cuando las moléculas se mueven lo suficientemente rápido, escapan del líquido y se convierten en vapor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "text": "El cero absoluto es la temperatura más fría posible.",
+      "text_markdown": "El cero absoluto es la temperatura más fría posible.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "El cero absoluto es la temperatura más fría posible.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "text": "Es aproximadamente menos 273 grados Celsius.",
+      "text_markdown": "Es aproximadamente menos 273 grados Celsius.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Es aproximadamente menos doscientos setenta y tres grados Celsius.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "text": "En el cero absoluto, los átomos tienen la mínima energía posible.",
+      "text_markdown": "En el cero absoluto, los átomos tienen la mínima energía posible.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "En el cero absoluto, los átomos tienen la mínima energía posible.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "text": "Nada puede estar más frío que el cero absoluto.",
+      "text_markdown": "Nada puede estar más frío que el cero absoluto.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Nada puede estar más frío que el cero absoluto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "text": "Los científicos han estado muy cerca de alcanzar el cero absoluto en laboratorios, pero nadie lo ha alcanzado exactamente.",
+      "text_markdown": "Los científicos han estado muy cerca de alcanzar el cero absoluto en laboratorios, pero nadie lo ha alcanzado exactamente.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Los científicos han estado muy cerca de alcanzar el cero absoluto en laboratorios, pero nadie lo ha alcanzado exactamente.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "text": "La presión es causada por los átomos golpeando las superficies.",
+      "text_markdown": "La presión es causada por los átomos golpeando las superficies.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "La presión es causada por los átomos golpeando las superficies.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "text": "El aire en una llanta empuja hacia afuera porque las moléculas de aire están constantemente rebotando contra las paredes internas de la llanta.",
+      "text_markdown": "El aire en una llanta empuja hacia afuera porque las moléculas de aire están constantemente rebotando contra las paredes internas de la llanta.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "El aire en una llanta empuja hacia afuera porque las moléculas de aire están constantemente rebotando contra las paredes internas de la llanta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "text": "Más moléculas o moléculas más rápidas significan más presión.",
+      "text_markdown": "Más moléculas o moléculas más rápidas significan más presión.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Más moléculas o moléculas más rápidas significan más presión.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "text": "Por eso una llanta se siente más dura cuando el aire está caliente.",
+      "text_markdown": "Por eso una llanta se siente más dura cuando el aire está caliente.",
+      "title": "Atoms in Motion",
+      "tts": {
+        "text": "Por eso una llanta se siente más dura cuando el aire está caliente.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "heading_level": 1,
+      "paragraph_id": "p54",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "text": "De Dónde Vienen los Átomos",
+      "text_markdown": "De Dónde Vienen los Átomos",
+      "title": "De Dónde Vienen los Átomos"
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "text": "El hidrógeno y el helio del universo se crearon en los primeros minutos después del Big Bang.",
+      "text_markdown": "El hidrógeno y el helio del universo se crearon en los primeros minutos después del Big Bang.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "El hidrógeno y el helio del universo se crearon en los primeros minutos después del Big Bang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "text": "El universo comenzó como un punto increíblemente caliente y denso hace unos 13.8 mil millones de años.",
+      "text_markdown": "El universo comenzó como un punto increíblemente caliente y denso hace unos 13.8 mil millones de años.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "El universo comenzó como un punto increíblemente caliente y denso hace unos trece punto ocho mil millones de años.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "text": "A medida que se expandió y se enfrió, se formaron los protones y los neutrones.",
+      "text_markdown": "A medida que se expandió y se enfrió, se formaron los protones y los neutrones.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "A medida que se expandió y se enfrió, se formaron los protones y los neutrones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "text": "Esos protones y neutrones se combinaron en los núcleos más simples.",
+      "text_markdown": "Esos protones y neutrones se combinaron en los núcleos más simples.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Esos protones y neutrones se combinaron en los núcleos más simples.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "text": "El hidrógeno y el helio fueron los primeros elementos.",
+      "text_markdown": "El hidrógeno y el helio fueron los primeros elementos.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "El hidrógeno y el helio fueron los primeros elementos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "text": "Durante millones de años, el universo fue una nube de gas de hidrógeno y helio.",
+      "text_markdown": "Durante millones de años, el universo fue una nube de gas de hidrógeno y helio.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Durante millones de años, el universo fue una nube de gas de hidrógeno y helio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "text": "Luego la gravedad juntó el gas en grumos.",
+      "text_markdown": "Luego la gravedad juntó el gas en grumos.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Luego la gravedad juntó el gas en grumos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "text": "Los grumos se volvieron más densos y más calientes.",
+      "text_markdown": "Los grumos se volvieron más densos y más calientes.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Los grumos se volvieron más densos y más calientes.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "text": "Cuando el centro de un grumo alcanzó unos diez millones de grados, la fusión nuclear se encendió.",
+      "text_markdown": "Cuando el centro de un grumo alcanzó unos diez millones de grados, la fusión nuclear se encendió.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Cuando el centro de un grumo alcanzó unos diez millones de grados, la fusión nuclear se encendió.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "text": "Nació una estrella.",
+      "text_markdown": "Nació una estrella.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nació una estrella.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "text": "Las estrellas son fábricas de átomos.",
+      "text_markdown": "Las estrellas son fábricas de átomos.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Las estrellas son fábricas de átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "text": "Dentro de una estrella, los átomos de hidrógeno se fusionan para formar helio.",
+      "text_markdown": "Dentro de una estrella, los átomos de hidrógeno se fusionan para formar helio.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Dentro de una estrella, los átomos de hidrógeno se fusionan para formar helio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "text": "Esta fusión libera una enorme cantidad de energía.",
+      "text_markdown": "Esta fusión libera una enorme cantidad de energía.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Esta fusión libera una enorme cantidad de energía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "text": "La energía es lo que hace que una estrella brille.",
+      "text_markdown": "La energía es lo que hace que una estrella brille.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "La energía es lo que hace que una estrella brille.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "text": "Nuestro sol fusiona alrededor de seiscientos millones de toneladas de hidrógeno en helio cada segundo.",
+      "text_markdown": "Nuestro sol fusiona alrededor de seiscientos millones de toneladas de hidrógeno en helio cada segundo.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nuestro sol fusiona alrededor de seiscientos millones de toneladas de hidrógeno en helio cada segundo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "text": "Las estrellas más grandes fusionan elementos más pesados.",
+      "text_markdown": "Las estrellas más grandes fusionan elementos más pesados.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Las estrellas más grandes fusionan elementos más pesados.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "text": "Después de que una estrella consume todo su hidrógeno, comienza a fusionar helio en carbono.",
+      "text_markdown": "Después de que una estrella consume todo su hidrógeno, comienza a fusionar helio en carbono.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Después de que una estrella consume todo su hidrógeno, comienza a fusionar helio en carbono.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "text": "Luego carbono en oxígeno.",
+      "text_markdown": "Luego carbono en oxígeno.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Luego carbono en oxígeno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "text": "Luego oxígeno en silicio.",
+      "text_markdown": "Luego oxígeno en silicio.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Luego oxígeno en silicio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "text": "Luego silicio en hierro.",
+      "text_markdown": "Luego silicio en hierro.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Luego silicio en hierro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "text": "Cada etapa produce un elemento más pesado.",
+      "text_markdown": "Cada etapa produce un elemento más pesado.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Cada etapa produce un elemento más pesado.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "text": "El hierro es el elemento más pesado que una estrella puede producir mediante la fusión normal.",
+      "text_markdown": "El hierro es el elemento más pesado que una estrella puede producir mediante la fusión normal.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "El hierro es el elemento más pesado que una estrella puede producir mediante la fusión normal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "text": "Los elementos más pesados que el hierro se crean cuando las estrellas masivas explotan.",
+      "text_markdown": "Los elementos más pesados que el hierro se crean cuando las estrellas masivas explotan.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Los elementos más pesados que el hierro se crean cuando las estrellas masivas explotan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "text": "Estas explosiones se llaman supernovas.",
+      "text_markdown": "Estas explosiones se llaman supernovas.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Estas explosiones se llaman supernovas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "text": "Una supernova libera más energía en unos segundos de la que el sol producirá en toda su vida.",
+      "text_markdown": "Una supernova libera más energía en unos segundos de la que el sol producirá en toda su vida.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Una supernova libera más energía en unos segundos de la que el sol producirá en toda su vida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "text": "Las condiciones extremas de una supernova forjan elementos como el oro, la plata, el platino y el uranio.",
+      "text_markdown": "Las condiciones extremas de una supernova forjan elementos como el oro, la plata, el platino y el uranio.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Las condiciones extremas de una supernova forjan elementos como el oro, la plata, el platino y el uranio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "text": "La explosión esparce estos elementos pesados por el espacio.",
+      "text_markdown": "La explosión esparce estos elementos pesados por el espacio.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "La explosión esparce estos elementos pesados por el espacio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "text": "Los elementos se mezclan con nubes de gas de hidrógeno y helio.",
+      "text_markdown": "Los elementos se mezclan con nubes de gas de hidrógeno y helio.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Los elementos se mezclan con nubes de gas de hidrógeno y helio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "text": "Con el tiempo, la gravedad junta el gas enriquecido para formar nuevas estrellas y planetas.",
+      "text_markdown": "Con el tiempo, la gravedad junta el gas enriquecido para formar nuevas estrellas y planetas.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Con el tiempo, la gravedad junta el gas enriquecido para formar nuevas estrellas y planetas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "text": "Nuestro sistema solar se formó a partir de una de estas nubes enriquecidas hace unos 4.6 mil millones de años.",
+      "text_markdown": "Nuestro sistema solar se formó a partir de una de estas nubes enriquecidas hace unos 4.6 mil millones de años.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Nuestro sistema solar se formó a partir de una de estas nubes enriquecidas hace unos cuatro punto seis mil millones de años.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "text": "Cada átomo en tu cuerpo más pesado que el hidrógeno fue hecho dentro de una estrella.",
+      "text_markdown": "Cada átomo en tu cuerpo más pesado que el hidrógeno fue hecho dentro de una estrella.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Cada átomo en tu cuerpo más pesado que el hidrógeno fue hecho dentro de una estrella.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "text": "El calcio en tus huesos.",
+      "text_markdown": "El calcio en tus huesos.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "El calcio en tus huesos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "text": "El hierro en tu sangre.",
+      "text_markdown": "El hierro en tu sangre.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "El hierro en tu sangre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "text": "El carbono en tu piel.",
+      "text_markdown": "El carbono en tu piel.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "El carbono en tu piel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "text": "Estás hecho de polvo de estrellas.",
+      "text_markdown": "Estás hecho de polvo de estrellas.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Estás hecho de polvo de estrellas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "text": "Eso no es una metáfora.",
+      "text_markdown": "Eso no es una metáfora.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Eso no es una metáfora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "text": "Es un hecho de la física nuclear.",
+      "text_markdown": "Es un hecho de la física nuclear.",
+      "title": "Where Atoms Come From",
+      "tts": {
+        "text": "Es un hecho de la física nuclear.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "heading_level": 1,
+      "paragraph_id": "p62",
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "text": "Los Átomos lo Son Todo",
+      "text_markdown": "Los Átomos lo Son Todo",
+      "title": "Los Átomos lo Son Todo"
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "text": "Ahora ya conoces lo básico.",
+      "text_markdown": "Ahora ya conoces lo básico.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Ahora ya conoces lo básico.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "text": "Todo está hecho de átomos.",
+      "text_markdown": "Todo está hecho de átomos.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Todo está hecho de átomos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "text": "Los átomos contienen protones, neutrones y electrones.",
+      "text_markdown": "Los átomos contienen protones, neutrones y electrones.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los átomos contienen protones, neutrones y electrones.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "text": "El número de protones determina el elemento.",
+      "text_markdown": "El número de protones determina el elemento.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "El número de protones determina el elemento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "text": "Los átomos se enlazan para formar moléculas.",
+      "text_markdown": "Los átomos se enlazan para formar moléculas.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los átomos se enlazan para formar moléculas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "text": "Los átomos siempre están en movimiento.",
+      "text_markdown": "Los átomos siempre están en movimiento.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los átomos siempre están en movimiento.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "text": "Las estrellas crearon los átomos que forman nuestro mundo.",
+      "text_markdown": "Las estrellas crearon los átomos que forman nuestro mundo.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Las estrellas crearon los átomos que forman nuestro mundo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "text": "Este conocimiento es la base de la química, la biología, la física y la medicina.",
+      "text_markdown": "Este conocimiento es la base de la química, la biología, la física y la medicina.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Este conocimiento es la base de la química, la biología, la física y la medicina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "text": "Cada campo de la ciencia se conecta con los átomos.",
+      "text_markdown": "Cada campo de la ciencia se conecta con los átomos.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cada campo de la ciencia se conecta con los átomos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "text": "Cuando un doctor receta una medicina, esa medicina es una disposición específica de átomos diseñada para interactuar con las moléculas de tu cuerpo.",
+      "text_markdown": "Cuando un doctor receta una medicina, esa medicina es una disposición específica de átomos diseñada para interactuar con las moléculas de tu cuerpo.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cuando un doctor receta una medicina, esa medicina es una disposición específica de átomos diseñada para interactuar con las moléculas de tu cuerpo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "text": "Cuando un ingeniero construye un puente, la resistencia de ese puente depende de cómo están dispuestos los átomos de hierro en el acero.",
+      "text_markdown": "Cuando un ingeniero construye un puente, la resistencia de ese puente depende de cómo están dispuestos los átomos de hierro en el acero.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cuando un ingeniero construye un puente, la resistencia de ese puente depende de cómo están dispuestos los átomos de hierro en el acero.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "text": "Cuando un granjero cultiva una cosecha, la cosecha crece porque los átomos de carbono del aire se combinan con el agua y la luz del sol dentro de las hojas.",
+      "text_markdown": "Cuando un granjero cultiva una cosecha, la cosecha crece porque los átomos de carbono del aire se combinan con el agua y la luz del sol dentro de las hojas.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cuando un granjero cultiva una cosecha, la cosecha crece porque los átomos de carbono del aire se combinan con el agua y la luz del sol dentro de las hojas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "text": "Cocinar es química.",
+      "text_markdown": "Cocinar es química.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cocinar es química.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "text": "Cuando horneas pan, el calor hace que los átomos en la masa se reorganicen.",
+      "text_markdown": "Cuando horneas pan, el calor hace que los átomos en la masa se reorganicen.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cuando horneas pan, el calor hace que los átomos en la masa se reorganicen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "text": "Las proteínas se despliegan.",
+      "text_markdown": "Las proteínas se despliegan.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Las proteínas se despliegan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "text": "Los azúcares se descomponen y se recombinan.",
+      "text_markdown": "Los azúcares se descomponen y se recombinan.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los azúcares se descomponen y se recombinan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "text": "Se forman nuevas moléculas que crean el color, la textura y el sabor de la corteza.",
+      "text_markdown": "Se forman nuevas moléculas que crean el color, la textura y el sabor de la corteza.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Se forman nuevas moléculas que crean el color, la textura y el sabor de la corteza.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "text": "Cada receta es un conjunto de instrucciones para reorganizar átomos.",
+      "text_markdown": "Cada receta es un conjunto de instrucciones para reorganizar átomos.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cada receta es un conjunto de instrucciones para reorganizar átomos.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "text": "Respirar es química.",
+      "text_markdown": "Respirar es química.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Respirar es química.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "text": "Inhalas moléculas de oxígeno.",
+      "text_markdown": "Inhalas moléculas de oxígeno.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Inhalas moléculas de oxígeno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "text": "Tu sangre lleva esas moléculas a tus células.",
+      "text_markdown": "Tu sangre lleva esas moléculas a tus células.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Tu sangre lleva esas moléculas a tus células.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "text": "Dentro de tus células, los átomos de oxígeno se combinan con los átomos de carbono de los alimentos.",
+      "text_markdown": "Dentro de tus células, los átomos de oxígeno se combinan con los átomos de carbono de los alimentos.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Dentro de tus células, los átomos de oxígeno se combinan con los átomos de carbono de los alimentos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "text": "La reacción libera energía.",
+      "text_markdown": "La reacción libera energía.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "La reacción libera energía.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "text": "Exhalas el carbono y el oxígeno como dióxido de carbono.",
+      "text_markdown": "Exhalas el carbono y el oxígeno como dióxido de carbono.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Exhalas el carbono y el oxígeno como dióxido de carbono.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "text": "Cada respiración es una reacción química.",
+      "text_markdown": "Cada respiración es una reacción química.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cada respiración es una reacción química.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "text": "La oxidación es química.",
+      "text_markdown": "La oxidación es química.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "La oxidación es química.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "text": "Los átomos de hierro en la superficie de un clavo reaccionan con los átomos de oxígeno del aire.",
+      "text_markdown": "Los átomos de hierro en la superficie de un clavo reaccionan con los átomos de oxígeno del aire.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los átomos de hierro en la superficie de un clavo reaccionan con los átomos de oxígeno del aire.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "text": "El hierro y el oxígeno se combinan para formar una nueva sustancia llamada óxido de hierro.",
+      "text_markdown": "El hierro y el oxígeno se combinan para formar una nueva sustancia llamada óxido de hierro.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "El hierro y el oxígeno se combinan para formar una nueva sustancia llamada óxido de hierro.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "text": "El óxido de hierro es el material café rojizo que llamamos óxido.",
+      "text_markdown": "El óxido de hierro es el material café rojizo que llamamos óxido.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "El óxido de hierro es el material café rojizo que llamamos óxido.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "text": "Los átomos de hierro siguen ahí.",
+      "text_markdown": "Los átomos de hierro siguen ahí.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los átomos de hierro siguen ahí.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "text": "Solo se han enlazado con el oxígeno.",
+      "text_markdown": "Solo se han enlazado con el oxígeno.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Solo se han enlazado con el oxígeno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "text": "Los átomos no son algo abstracto.",
+      "text_markdown": "Los átomos no son algo abstracto.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los átomos no son algo abstracto.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "text": "Los átomos son la realidad física de todo lo que tocas, saboreas, ves y hueles.",
+      "text_markdown": "Los átomos son la realidad física de todo lo que tocas, saboreas, ves y hueles.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Los átomos son la realidad física de todo lo que tocas, saboreas, ves y hueles.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "text": "Cuanto más entiendes los átomos, más entiendes el mundo.",
+      "text_markdown": "Cuanto más entiendes los átomos, más entiendes el mundo.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Cuanto más entiendes los átomos, más entiendes el mundo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "text": "Este es el comienzo.",
+      "text_markdown": "Este es el comienzo.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Este es el comienzo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "text": "Hay mucho más por explorar.",
+      "text_markdown": "Hay mucho más por explorar.",
+      "title": "Atoms Are Everything",
+      "tts": {
+        "text": "Hay mucho más por explorar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

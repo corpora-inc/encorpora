@@ -1,0 +1,4776 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_atom",
+  "language": "id",
+  "total_segments": 300,
+  "segments": [
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "text": "Segala Sesuatu Terbuat dari Atom",
+      "text_markdown": "Segala Sesuatu Terbuat dari Atom",
+      "title": "Segala Sesuatu Terbuat dari Atom"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "Lihatlah sekelilingmu.",
+      "text_markdown": "Lihatlah sekelilingmu.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Lihatlah sekelilingmu.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "Segala sesuatu yang bisa kamu lihat terbuat dari atom.",
+      "text_markdown": "Segala sesuatu yang bisa kamu lihat terbuat dari atom.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Segala sesuatu yang bisa kamu lihat terbuat dari atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "Udara yang kamu hirup terbuat dari atom.",
+      "text_markdown": "Udara yang kamu hirup terbuat dari atom.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Udara yang kamu hirup terbuat dari atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "Air yang kamu minum terbuat dari atom.",
+      "text_markdown": "Air yang kamu minum terbuat dari atom.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Air yang kamu minum terbuat dari atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "Tubuhmu terbuat dari atom.",
+      "text_markdown": "Tubuhmu terbuat dari atom.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Tubuhmu terbuat dari atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "text": "Tanah di bawah kakimu terbuat dari atom.",
+      "text_markdown": "Tanah di bawah kakimu terbuat dari atom.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Tanah di bawah kakimu terbuat dari atom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "Atom adalah bagian terkecil dari materi yang masih memiliki identitas kimia.",
+      "text_markdown": "Atom adalah bagian terkecil dari materi yang masih memiliki identitas kimia.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Atom adalah bagian terkecil dari materi yang masih memiliki identitas kimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "Kamu tidak bisa melihat satu atom pun dengan matamu.",
+      "text_markdown": "Kamu tidak bisa melihat satu atom pun dengan matamu.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Kamu tidak bisa melihat satu atom pun dengan matamu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "Kamu tidak bisa melihat satu atom pun dengan mikroskop biasa.",
+      "text_markdown": "Kamu tidak bisa melihat satu atom pun dengan mikroskop biasa.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Kamu tidak bisa melihat satu atom pun dengan mikroskop biasa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "text": "Atom sangat kecil.",
+      "text_markdown": "Atom sangat kecil.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Atom sangat kecil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "text": "Satu butir pasir mengandung sekitar lima puluh kuintiliun atom.",
+      "text_markdown": "Satu butir pasir mengandung sekitar lima puluh kuintiliun atom.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Satu butir pasir mengandung sekitar lima puluh kuintiliun atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "text": "Angka itu adalah lima puluh diikuti oleh delapan belas nol.",
+      "text_markdown": "Angka itu adalah lima puluh diikuti oleh delapan belas nol.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Angka itu adalah lima puluh diikuti oleh delapan belas nol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "text": "Ada lebih banyak atom dalam satu butir pasir daripada butiran pasir di pantai.",
+      "text_markdown": "Ada lebih banyak atom dalam satu butir pasir daripada butiran pasir di pantai.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Ada lebih banyak atom dalam satu butir pasir daripada butiran pasir di pantai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "Atom adalah blok bangunan dari segala sesuatu di dunia fisik.",
+      "text_markdown": "Atom adalah blok bangunan dari segala sesuatu di dunia fisik.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Atom adalah blok bangunan dari segala sesuatu di dunia fisik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "Dinding terbuat dari batu bata.",
+      "text_markdown": "Dinding terbuat dari batu bata.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Dinding terbuat dari batu bata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "Sebuah kalimat terbuat dari kata-kata.",
+      "text_markdown": "Sebuah kalimat terbuat dari kata-kata.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Sebuah kalimat terbuat dari kata-kata.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "text": "Alam semesta terbuat dari atom.",
+      "text_markdown": "Alam semesta terbuat dari atom.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Alam semesta terbuat dari atom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "Kata atom berasal dari bahasa Yunani kuno.",
+      "text_markdown": "Kata atom berasal dari bahasa Yunani kuno.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Kata atom berasal dari bahasa Yunani kuno.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "Kata Yunani atomos berarti tidak dapat dipotong.",
+      "text_markdown": "Kata Yunani atomos berarti tidak dapat dipotong.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Kata Yunani atomos berarti tidak dapat dipotong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "Para filsuf Yunani kuno berpendapat bahwa atom adalah bagian materi terkecil yang mungkin.",
+      "text_markdown": "Para filsuf Yunani kuno berpendapat bahwa atom adalah bagian materi terkecil yang mungkin.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Para filsuf Yunani kuno berpendapat bahwa atom adalah bagian materi terkecil yang mungkin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "Mereka hampir benar.",
+      "text_markdown": "Mereka hampir benar.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Mereka hampir benar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "text": "Atom sebenarnya bukan partikel terkecil, tetapi mereka adalah unit terkecil yang mempertahankan sifat kimianya.",
+      "text_markdown": "Atom sebenarnya bukan partikel terkecil, tetapi mereka adalah unit terkecil yang mempertahankan sifat kimianya.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Atom sebenarnya bukan partikel terkecil, tetapi mereka adalah unit terkecil yang mempertahankan sifat kimianya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "Atom sangatlah tahan lama.",
+      "text_markdown": "Atom sangatlah tahan lama.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Atom sangatlah tahan lama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "Atom-atom dalam tubuhmu berusia miliaran tahun.",
+      "text_markdown": "Atom-atom dalam tubuhmu berusia miliaran tahun.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Atom-atom dalam tubuhmu berusia miliaran tahun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "Beberapa atom hidrogen dalam air yang kamu minum hari ini terbentuk pada menit-menit pertama setelah Big Bang.",
+      "text_markdown": "Beberapa atom hidrogen dalam air yang kamu minum hari ini terbentuk pada menit-menit pertama setelah Big Bang.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Beberapa atom hidrogen dalam air yang kamu minum hari ini terbentuk pada menit-menit pertama setelah Big Bang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "text": "Kamu terbuat dari materi kuno.",
+      "text_markdown": "Kamu terbuat dari materi kuno.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Kamu terbuat dari materi kuno.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "Atom tidak pernah diciptakan atau dihancurkan dalam kehidupan sehari-hari.",
+      "text_markdown": "Atom tidak pernah diciptakan atau dihancurkan dalam kehidupan sehari-hari.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Atom tidak pernah diciptakan atau dihancurkan dalam kehidupan sehari-hari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "Mereka menata ulang diri.",
+      "text_markdown": "Mereka menata ulang diri.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Mereka menata ulang diri.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "Ketika kayu terbakar, atom-atom tidak menghilang.",
+      "text_markdown": "Ketika kayu terbakar, atom-atom tidak menghilang.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Ketika kayu terbakar, atom-atom tidak menghilang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "Mereka menata ulang menjadi asap, abu, dan gas.",
+      "text_markdown": "They rearrange into smoke, ash, and gas.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Mereka menata ulang menjadi asap, abu, dan gas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "Saat es mencair, atom-atomnya tetap sama.",
+      "text_markdown": "When ice melts, the atoms stay the same.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Saat es mencair, atom-atomnya tetap sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "text": "Hanya susunannya yang berubah.",
+      "text_markdown": "Only their arrangement changes.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Hanya susunannya yang berubah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "text": "Memahami atom adalah dasar kimia.",
+      "text_markdown": "Understanding atoms is the foundation of chemistry.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Memahami atom adalah dasar kimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "text": "Kimia adalah ilmu tentang bagaimana atom bergabung, menata ulang, dan berinteraksi.",
+      "text_markdown": "Chemistry is the science of how atoms combine, rearrange, and interact.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Kimia adalah ilmu tentang bagaimana atom bergabung, menata ulang, dan berinteraksi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "text": "Segala sesuatu yang terjadi di dunia fisik bermuara pada atom dan apa yang mereka lakukan.",
+      "text_markdown": "Everything that happens in the physical world comes down to atoms and what they do.",
+      "title": "Segala Sesuatu Terbuat dari Atom",
+      "tts": {
+        "text": "Segala sesuatu yang terjadi di dunia fisik bermuara pada atom dan apa yang mereka lakukan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p10",
+      "text": "Di Dalam Atom",
+      "text_markdown": "Di Dalam Atom",
+      "title": "Di Dalam Atom"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "Sebuah atom memiliki tiga jenis partikel di dalamnya.",
+      "text_markdown": "Sebuah atom memiliki tiga jenis partikel di dalamnya.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Sebuah atom memiliki tiga jenis partikel di dalamnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "Proton.",
+      "text_markdown": "Proton.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "Neutron.",
+      "text_markdown": "Neutron.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Neutron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "Elektron.",
+      "text_markdown": "Elektron.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p11",
+      "text": "Ketiga partikel ini membentuk setiap atom di alam semesta.",
+      "text_markdown": "Ketiga partikel ini membentuk setiap atom di alam semesta.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Ketiga partikel ini membentuk setiap atom di alam semesta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "Pusat atom disebut nukleus.",
+      "text_markdown": "Pusat atom disebut nukleus.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Pusat atom disebut nukleus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "Nukleus mengandung proton dan neutron.",
+      "text_markdown": "Nukleus mengandung proton dan neutron.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Nukleus mengandung proton dan neutron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "Nukleus sangat kecil dibandingkan dengan keseluruhan atom.",
+      "text_markdown": "Nukleus sangat kecil dibandingkan dengan keseluruhan atom.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Nukleus sangat kecil dibandingkan dengan keseluruhan atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p12",
+      "text": "Jika atom seukuran stadion sepak bola, nukleus akan seukuran kelereng di garis lima puluh yard.",
+      "text_markdown": "Jika atom seukuran stadion sepak bola, nukleus akan seukuran kelereng di garis lima puluh yard.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Jika atom seukuran stadion sepak bola, nukleus akan seukuran kelereng di garis lima puluh yard.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "Proton membawa muatan listrik positif.",
+      "text_markdown": "Proton membawa muatan listrik positif.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Proton membawa muatan listrik positif.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "Setiap proton memiliki jumlah muatan positif yang sama.",
+      "text_markdown": "Setiap proton memiliki jumlah muatan positif yang sama.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Setiap proton memiliki jumlah muatan positif yang sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "Jumlah proton dalam atom menentukan unsur apa atom tersebut.",
+      "text_markdown": "Jumlah proton dalam atom menentukan unsur apa atom tersebut.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Jumlah proton dalam atom menentukan unsur apa atom tersebut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "Satu proton berarti hidrogen.",
+      "text_markdown": "Satu proton berarti hidrogen.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Satu proton berarti hidrogen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "Enam proton berarti karbon.",
+      "text_markdown": "Enam proton berarti karbon.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Enam proton berarti karbon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "Dua puluh enam proton berarti besi.",
+      "text_markdown": "Dua puluh enam proton berarti besi.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Dua puluh enam proton berarti besi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p13",
+      "text": "Jumlah proton adalah fakta terpenting tentang atom.",
+      "text_markdown": "Jumlah proton adalah fakta terpenting tentang atom.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Jumlah proton adalah fakta terpenting tentang atom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "Neutron tidak membawa muatan listrik.",
+      "text_markdown": "Neutron tidak membawa muatan listrik.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Neutron tidak membawa muatan listrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "Neutron bersifat netral.",
+      "text_markdown": "Neutron bersifat netral.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Neutron bersifat netral.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "Neutron berada di nukleus di samping proton.",
+      "text_markdown": "Neutron berada di nukleus di samping proton.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Neutron berada di nukleus di samping proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "Neutron membantu menjaga nukleus tetap bersatu.",
+      "text_markdown": "Neutron membantu menjaga nukleus tetap bersatu.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Neutron membantu menjaga nukleus tetap bersatu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p14",
+      "text": "Tanpa neutron, proton akan saling mendorong menjauh karena semuanya membawa muatan positif yang sama.",
+      "text_markdown": "Tanpa neutron, proton akan saling mendorong menjauh karena semuanya membawa muatan positif yang sama.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Tanpa neutron, proton akan saling mendorong menjauh karena semuanya membawa muatan positif yang sama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "Elektron membawa muatan listrik negatif.",
+      "text_markdown": "Elektron membawa muatan listrik negatif.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Elektron membawa muatan listrik negatif.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "Elektron bergerak mengelilingi nukleus dalam awan.",
+      "text_markdown": "Elektron bergerak mengelilingi nukleus dalam awan.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Elektron bergerak mengelilingi nukleus dalam awan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "Mereka tidak mengorbit seperti planet mengelilingi matahari.",
+      "text_markdown": "Mereka tidak mengorbit seperti planet mengelilingi matahari.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Mereka tidak mengorbit seperti planet mengelilingi matahari.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "Mereka berada di wilayah probabilitas yang tidak jelas di sekitar nukleus.",
+      "text_markdown": "Mereka berada di wilayah probabilitas yang tidak jelas di sekitar nukleus.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Mereka berada di wilayah probabilitas yang tidak jelas di sekitar nukleus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p15",
+      "text": "Awan elektron adalah tempat Anda kemungkinan besar menemukan elektron pada saat tertentu.",
+      "text_markdown": "Awan elektron adalah tempat Anda kemungkinan besar menemukan elektron pada saat tertentu.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Awan elektron adalah tempat Anda kemungkinan besar menemukan elektron pada saat tertentu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "text": "Elektron hampir tidak memiliki massa dibandingkan dengan proton atau neutron.",
+      "text_markdown": "Elektron hampir tidak memiliki massa dibandingkan dengan proton atau neutron.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Elektron hampir tidak memiliki massa dibandingkan dengan proton atau neutron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "text": "Proton sekitar 1.836 kali lebih berat daripada elektron.",
+      "text_markdown": "Proton sekitar 1.836 kali lebih berat daripada elektron.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Proton sekitar seribu delapan ratus tiga puluh enam kali lebih berat daripada elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p16",
+      "text": "Hampir seluruh massa atom berada di nukleus.",
+      "text_markdown": "Hampir seluruh massa atom berada di nukleus.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Hampir seluruh massa atom berada di nukleus.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "Dalam atom netral, jumlah elektron sama dengan jumlah proton.",
+      "text_markdown": "Dalam atom netral, jumlah elektron sama dengan jumlah proton.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Dalam atom netral, jumlah elektron sama dengan jumlah proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "Muatan positif dan muatan negatif saling menyeimbangkan.",
+      "text_markdown": "Muatan positif dan muatan negatif saling menyeimbangkan.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Muatan positif dan muatan negatif saling menyeimbangkan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "Atom tidak memiliki muatan keseluruhan.",
+      "text_markdown": "Atom tidak memiliki muatan keseluruhan.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Atom tidak memiliki muatan keseluruhan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p17",
+      "text": "Keseimbangan ini adalah keadaan bawaan sebuah atom.",
+      "text_markdown": "Keseimbangan ini adalah keadaan bawaan sebuah atom.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Keseimbangan ini adalah keadaan bawaan sebuah atom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "Sebagian besar atom adalah ruang kosong.",
+      "text_markdown": "Sebagian besar atom adalah ruang kosong.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Sebagian besar atom adalah ruang kosong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "Nukleus padat dan sangat kecil.",
+      "text_markdown": "Nukleus padat dan sangat kecil.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Nukleus padat dan sangat kecil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "Awan elektron besar dan sebagian besar kosong.",
+      "text_markdown": "Awan elektron besar dan sebagian besar kosong.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Awan elektron besar dan sebagian besar kosong.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "Jika Anda bisa menghilangkan semua ruang kosong dari setiap atom di tubuh Anda, Anda akan menyusut menjadi ukuran yang lebih kecil dari sebutir garam.",
+      "text_markdown": "Jika Anda bisa menghilangkan semua ruang kosong dari setiap atom di tubuh Anda, Anda akan menyusut menjadi ukuran yang lebih kecil dari sebutir garam.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Jika Anda bisa menghilangkan semua ruang kosong dari setiap atom di tubuh Anda, Anda akan menyusut menjadi ukuran yang lebih kecil dari sebutir garam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "Massa Anda akan tetap sama.",
+      "text_markdown": "Massa Anda akan tetap sama.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Massa Anda akan tetap sama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "paragraph_id": "p18",
+      "text": "Anda hanya akan menjadi sangat padat.",
+      "text_markdown": "Anda hanya akan menjadi sangat padat.",
+      "title": "Di Dalam Atom",
+      "tts": {
+        "text": "Anda hanya akan menjadi sangat padat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p19",
+      "text": "Unsur-unsur",
+      "text_markdown": "Unsur-unsur",
+      "title": "Unsur-unsur"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "Unsur adalah zat yang hanya terbuat dari satu jenis atom.",
+      "text_markdown": "Unsur adalah zat yang hanya terbuat dari satu jenis atom.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Unsur adalah zat yang hanya terbuat dari satu jenis atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "Emas murni adalah unsur.",
+      "text_markdown": "Emas murni adalah unsur.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Emas murni adalah unsur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "Setiap atom dalam batangan emas murni memiliki tujuh puluh sembilan proton.",
+      "text_markdown": "Setiap atom dalam batangan emas murni memiliki tujuh puluh sembilan proton.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Setiap atom dalam batangan emas murni memiliki tujuh puluh sembilan proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "Oksigen murni adalah unsur.",
+      "text_markdown": "Oksigen murni adalah unsur.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Oksigen murni adalah unsur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p20",
+      "text": "Setiap atom dalam tangki oksigen murni memiliki delapan proton.",
+      "text_markdown": "Setiap atom dalam tangki oksigen murni memiliki delapan proton.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Setiap atom dalam tangki oksigen murni memiliki delapan proton.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "Ada sekitar sembilan puluh dua unsur yang terjadi secara alami di Bumi.",
+      "text_markdown": "Ada sekitar sembilan puluh dua unsur yang terjadi secara alami di Bumi.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Ada sekitar sembilan puluh dua unsur yang terjadi secara alami di Bumi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "Para ilmuwan telah menciptakan unsur-unsur tambahan di laboratorium.",
+      "text_markdown": "Para ilmuwan telah menciptakan unsur-unsur tambahan di laboratorium.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Para ilmuwan telah menciptakan unsur-unsur tambahan di laboratorium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "Jumlah total unsur yang diketahui lebih dari seratus delapan belas.",
+      "text_markdown": "Jumlah total unsur yang diketahui lebih dari seratus delapan belas.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Jumlah total unsur yang diketahui lebih dari seratus delapan belas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p21",
+      "text": "Setiap unsur memiliki jumlah proton yang unik.",
+      "text_markdown": "Setiap unsur memiliki jumlah proton yang unik.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Setiap unsur memiliki jumlah proton yang unik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Setiap unsur memiliki nama dan simbol.",
+      "text_markdown": "Setiap unsur memiliki nama dan simbol.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Setiap unsur memiliki nama dan simbol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Hidrogen adalah H. Oksigen adalah O. Karbon adalah C. Besi adalah Fe.",
+      "text_markdown": "Hidrogen adalah H. Oksigen adalah O. Karbon adalah C. Besi adalah Fe.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Hidrogen adalah ha. Oksigen adalah o. Karbon adalah ce. Besi adalah ef e.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-089",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Emas adalah Au.",
+      "text_markdown": "Emas adalah Au.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Emas adalah a u.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-090",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Simbol-simbol tersebut berasal dari nama Latin, Yunani, atau Inggris.",
+      "text_markdown": "Simbol-simbol tersebut berasal dari nama Latin, Yunani, atau Inggris.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Simbol-simbol tersebut berasal dari nama Latin, Yunani, atau Inggris.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-091",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Fe berasal dari kata Latin ferrum.",
+      "text_markdown": "Fe comes from the Latin word ferrum.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "F e berasal dari kata Latin ferrum.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch03-092",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p22",
+      "text": "Au berasal dari kata Latin aurum.",
+      "text_markdown": "Au comes from the Latin word aurum.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "A u berasal dari kata Latin aurum.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-093",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "Hidrogen adalah unsur paling sederhana.",
+      "text_markdown": "Hydrogen is the simplest element.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Hidrogen adalah unsur paling sederhana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-094",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "Sebuah atom hidrogen memiliki satu proton dan satu elektron.",
+      "text_markdown": "A hydrogen atom has one proton and one electron.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Sebuah atom hidrogen memiliki satu proton dan satu elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-095",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "Hidrogen adalah unsur paling umum di alam semesta.",
+      "text_markdown": "Hydrogen is the most common element in the universe.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Hidrogen adalah unsur paling umum di alam semesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-096",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p23",
+      "text": "Bintang sebagian besar terbuat dari hidrogen.",
+      "text_markdown": "Stars are made mostly of hydrogen.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Bintang sebagian besar terbuat dari hidrogen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-097",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "Karbon adalah unsur kehidupan.",
+      "text_markdown": "Carbon is the element of life.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Karbon adalah unsur kehidupan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-098",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "Karbon memiliki enam proton.",
+      "text_markdown": "Carbon has six protons.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Karbon memiliki enam proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-099",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "Atom karbon dapat membentuk ikatan dengan banyak atom lain pada saat yang bersamaan.",
+      "text_markdown": "Carbon atoms can form bonds with many other atoms at the same time.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Atom karbon dapat membentuk ikatan dengan banyak atom lain pada saat yang bersamaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-100",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "Kemampuan ini menjadikan karbon tulang punggung semua makhluk hidup.",
+      "text_markdown": "This ability makes carbon the backbone of all living things.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Kemampuan ini menjadikan karbon tulang punggung semua makhluk hidup.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch03-101",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p24",
+      "text": "Setiap protein, setiap untai DNA, dan setiap molekul gula dalam tubuh Anda mengandung karbon.",
+      "text_markdown": "Every protein, every strand of DNA, and every sugar molecule in your body contains carbon.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Setiap protein, setiap untai D N A, dan setiap molekul gula dalam tubuh Anda mengandung karbon.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-102",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "Oksigen memiliki delapan proton.",
+      "text_markdown": "Oxygen has eight protons.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Oksigen memiliki delapan proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-103",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "Oksigen adalah unsur yang Anda hirup.",
+      "text_markdown": "Oxygen is the element you breathe.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Oksigen adalah unsur yang Anda hirup.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-104",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "Paru-paru Anda menarik oksigen dari udara dan mengirimkannya ke dalam darah Anda.",
+      "text_markdown": "Your lungs pull oxygen out of the air and send it into your blood.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Paru-paru Anda menarik oksigen dari udara dan mengirimkannya ke dalam darah Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-105",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p25",
+      "text": "Sel Anda menggunakan oksigen untuk melepaskan energi dari makanan.",
+      "text_markdown": "Your cells use oxygen to release energy from food.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Sel Anda menggunakan oksigen untuk melepaskan energi dari makanan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-106",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "Besi memiliki dua puluh enam proton.",
+      "text_markdown": "Iron has twenty-six protons.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Besi memiliki dua puluh enam proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-107",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "Besi adalah unsur yang membuat darah Anda merah.",
+      "text_markdown": "Iron is the element that makes your blood red.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Besi adalah unsur yang membuat darah Anda merah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-108",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "Besi adalah bahan utama dalam baja.",
+      "text_markdown": "Iron is the main ingredient in steel.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Besi adalah bahan utama dalam baja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-109",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p26",
+      "text": "Inti Bumi sebagian besar terdiri dari besi.",
+      "text_markdown": "The core of the Earth is mostly iron.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Inti Bumi sebagian besar terdiri dari besi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch03-110",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "Unsur-unsur teringan adalah yang paling umum di alam semesta.",
+      "text_markdown": "The lightest elements are the most common in the universe.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Unsur-unsur teringan adalah yang paling umum di alam semesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch03-111",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "Hidrogen dan helium bersama-sama membentuk sekitar sembilan puluh delapan persen dari semua atom di alam semesta.",
+      "text_markdown": "Hydrogen and helium together make up about ninety-eight percent of all the atoms in the universe.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Hidrogen dan helium bersama-sama membentuk sekitar sembilan puluh delapan persen dari semua atom di alam semesta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch03-112",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "Unsur-unsur yang lebih berat relatif langka.",
+      "text_markdown": "The heavier elements are rare by comparison.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Unsur-unsur yang lebih berat relatif langka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch03-113",
+      "part": 0,
+      "chapter": 3,
+      "paragraph_id": "p27",
+      "text": "Setiap atom dari setiap unsur berat ditempa di dalam sebuah bintang.",
+      "text_markdown": "Every atom of every heavy element was forged inside a star.",
+      "title": "Unsur-unsur",
+      "tts": {
+        "text": "Setiap atom dari setiap unsur berat ditempa di dalam sebuah bintang.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch04-114",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p28",
+      "text": "Tabel Periodik",
+      "text_markdown": "Tabel Periodik",
+      "title": "Tabel Periodik"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-115",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "Tabel periodik adalah bagan yang mengorganisir setiap unsur yang diketahui.",
+      "text_markdown": "Tabel periodik adalah bagan yang mengorganisir setiap unsur yang diketahui.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Tabel periodik adalah bagan yang mengorganisir setiap unsur yang diketahui.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-116",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "Tabel ini menyusun unsur-unsur berdasarkan jumlah protonnya, dari yang terkecil hingga terbesar.",
+      "text_markdown": "Tabel ini menyusun unsur-unsur berdasarkan jumlah protonnya, dari yang terkecil hingga terbesar.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Tabel ini menyusun unsur-unsur berdasarkan jumlah protonnya, dari yang terkecil hingga terbesar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-117",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "Hidrogen berada di urutan pertama dengan satu proton.",
+      "text_markdown": "Hidrogen berada di urutan pertama dengan satu proton.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Hidrogen berada di urutan pertama dengan satu proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-118",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "Helium berada di urutan kedua dengan dua proton.",
+      "text_markdown": "Helium berada di urutan kedua dengan dua proton.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Helium berada di urutan kedua dengan dua proton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-119",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p29",
+      "text": "Tabel ini berlanjut hingga oganesson dengan seratus delapan belas proton.",
+      "text_markdown": "Tabel ini berlanjut hingga oganesson dengan seratus delapan belas proton.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Tabel ini berlanjut hingga oganesson dengan seratus delapan belas proton.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-120",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "Tabel periodik memiliki baris dan kolom.",
+      "text_markdown": "Tabel periodik memiliki baris dan kolom.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Tabel periodik memiliki baris dan kolom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-121",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "Baris-baris tersebut disebut periode.",
+      "text_markdown": "Baris-baris tersebut disebut periode.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Baris-baris tersebut disebut periode.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-122",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "Kolom-kolom tersebut disebut golongan.",
+      "text_markdown": "Kolom-kolom tersebut disebut golongan.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Kolom-kolom tersebut disebut golongan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-123",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "Unsur-unsur dalam golongan yang sama memiliki sifat-sifat yang serupa.",
+      "text_markdown": "Unsur-unsur dalam golongan yang sama memiliki sifat-sifat yang serupa.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Unsur-unsur dalam golongan yang sama memiliki sifat-sifat yang serupa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-124",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "Inilah mengapa tabel tersebut disebut periodik.",
+      "text_markdown": "Inilah mengapa tabel tersebut disebut periodik.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Inilah mengapa tabel tersebut disebut periodik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-125",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p30",
+      "text": "Sifat-sifat tersebut berulang dalam pola yang teratur.",
+      "text_markdown": "Sifat-sifat tersebut berulang dalam pola yang teratur.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Sifat-sifat tersebut berulang dalam pola yang teratur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-126",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "Unsur-unsur di sisi kiri tabel adalah logam.",
+      "text_markdown": "Unsur-unsur di sisi kiri tabel adalah logam.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Unsur-unsur di sisi kiri tabel adalah logam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-127",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "Sebagian besar unsur adalah logam.",
+      "text_markdown": "Sebagian besar unsur adalah logam.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Sebagian besar unsur adalah logam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-128",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "Logam bersifat mengkilap.",
+      "text_markdown": "Logam bersifat mengkilap.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Logam bersifat mengkilap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-129",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "Logam menghantarkan listrik.",
+      "text_markdown": "Logam menghantarkan listrik.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Logam menghantarkan listrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-130",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "Logam menghantarkan panas.",
+      "text_markdown": "Logam menghantarkan panas.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Logam menghantarkan panas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch04-131",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p31",
+      "text": "Besi, tembaga, emas, dan aluminium semuanya adalah logam.",
+      "text_markdown": "Besi, tembaga, emas, dan aluminium semuanya adalah logam.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Besi, tembaga, emas, dan aluminium semuanya adalah logam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-132",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "Unsur-unsur di sisi kanan tabel adalah nonlogam.",
+      "text_markdown": "Unsur-unsur di sisi kanan tabel adalah nonlogam.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Unsur-unsur di sisi kanan tabel adalah nonlogam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-133",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "Nonlogam meliputi oksigen, nitrogen, karbon, dan belerang.",
+      "text_markdown": "Nonlogam meliputi oksigen, nitrogen, karbon, dan belerang.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Nonlogam meliputi oksigen, nitrogen, karbon, dan belerang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-134",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "Nonlogam tidak menghantarkan listrik dengan baik.",
+      "text_markdown": "Nonlogam tidak menghantarkan listrik dengan baik.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Nonlogam tidak menghantarkan listrik dengan baik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-135",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p32",
+      "text": "Nonlogam adalah unsur-unsur yang membentuk udara, air, dan makhluk hidup.",
+      "text_markdown": "Nonlogam adalah unsur-unsur yang membentuk udara, air, dan makhluk hidup.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Nonlogam adalah unsur-unsur yang membentuk udara, air, dan makhluk hidup.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-136",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "Beberapa unsur berada di batas antara logam dan nonlogam.",
+      "text_markdown": "Beberapa unsur berada di batas antara logam dan nonlogam.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Beberapa unsur berada di batas antara logam dan nonlogam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-137",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "Unsur-unsur ini disebut metaloid.",
+      "text_markdown": "Unsur-unsur ini disebut metaloid.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Unsur-unsur ini disebut metaloid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-138",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "Silikon adalah metaloid.",
+      "text_markdown": "Silikon adalah metaloid.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Silikon adalah metaloid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-139",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "Silikon menghantarkan listrik sedikit, tetapi tidak sebaik logam.",
+      "text_markdown": "Silikon menghantarkan listrik sedikit, tetapi tidak sebaik logam.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Silikon menghantarkan listrik sedikit, tetapi tidak sebaik logam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-140",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p33",
+      "text": "Sifat ini membuat silikon berguna dalam cip komputer.",
+      "text_markdown": "Sifat ini membuat silikon berguna dalam cip komputer.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Sifat ini membuat silikon berguna dalam cip komputer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-141",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "Gas mulia berada di kolom terakhir di sebelah kanan.",
+      "text_markdown": "Gas mulia berada di kolom terakhir di sebelah kanan.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Gas mulia berada di kolom terakhir di sebelah kanan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-142",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "Helium, neon, argon, kripton, xenon, dan radon adalah gas mulia.",
+      "text_markdown": "Helium, neon, argon, kripton, xenon, dan radon adalah gas mulia.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Helium, neon, argon, kripton, xenon, dan radon adalah gas mulia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-143",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "Gas mulia hampir tidak pernah bereaksi dengan unsur lain.",
+      "text_markdown": "Gas mulia hampir tidak pernah bereaksi dengan unsur lain.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Gas mulia hampir tidak pernah bereaksi dengan unsur lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-144",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "Susunan elektronnya sudah stabil.",
+      "text_markdown": "Susunan elektronnya sudah stabil.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Susunan elektronnya sudah stabil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-145",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p34",
+      "text": "Mereka tidak perlu membentuk ikatan.",
+      "text_markdown": "Mereka tidak perlu membentuk ikatan.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Mereka tidak perlu membentuk ikatan.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-146",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "Seorang ilmuwan Rusia bernama Dmitri Mendeleev menciptakan tabel periodik pertama pada tahun 1869.",
+      "text_markdown": "Seorang ilmuwan Rusia bernama Dmitri Mendeleev menciptakan tabel periodik pertama pada tahun 1869.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Seorang ilmuwan Rusia bernama Dmitri Mendeleev menciptakan tabel periodik pertama pada tahun seribu delapan ratus enam puluh sembilan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-147",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "Mendeleev menyusun unsur-unsur berdasarkan sifat-sifatnya dan memperhatikan pola yang berulang.",
+      "text_markdown": "Mendeleev menyusun unsur-unsur berdasarkan sifat-sifatnya dan memperhatikan pola yang berulang.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Mendeleev menyusun unsur-unsur berdasarkan sifat-sifatnya dan memperhatikan pola yang berulang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch04-148",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "Ia meninggalkan celah dalam tabelnya di mana ia memprediksi unsur-unsur yang belum diketahui seharusnya berada.",
+      "text_markdown": "Ia meninggalkan celah dalam tabelnya di mana ia memprediksi unsur-unsur yang belum diketahui seharusnya berada.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Ia meninggalkan celah dalam tabelnya di mana ia memprediksi unsur-unsur yang belum diketahui seharusnya berada.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch04-149",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "Para ilmuwan kemudian menemukan unsur-unsur tersebut.",
+      "text_markdown": "Para ilmuwan kemudian menemukan unsur-unsur tersebut.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Para ilmuwan kemudian menemukan unsur-unsur tersebut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch04-150",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p35",
+      "text": "Setiap prediksi terbukti benar.",
+      "text_markdown": "Setiap prediksi terbukti benar.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Setiap prediksi terbukti benar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch04-151",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "text": "Tabel periodik adalah salah satu alat paling ampuh dalam sains.",
+      "text_markdown": "Tabel periodik adalah salah satu alat paling ampuh dalam sains.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Tabel periodik adalah salah satu alat paling ampuh dalam sains.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch04-152",
+      "part": 0,
+      "chapter": 4,
+      "paragraph_id": "p36",
+      "text": "Jika Anda tahu posisi suatu unsur dalam tabel, Anda dapat memprediksi perilakunya.",
+      "text_markdown": "Jika Anda tahu posisi suatu unsur dalam tabel, Anda dapat memprediksi perilakunya.",
+      "title": "Tabel Periodik",
+      "tts": {
+        "text": "Jika Anda tahu posisi suatu unsur dalam tabel, Anda dapat memprediksi perilakunya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch05-153",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p37",
+      "text": "Bagaimana Atom Berikatan",
+      "text_markdown": "Bagaimana Atom Berikatan",
+      "title": "Bagaimana Atom Berikatan"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-154",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "Atom jarang ada sendirian.",
+      "text_markdown": "Atom jarang ada sendirian.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Atom jarang ada sendirian.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-155",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "Sebagian besar atom berikatan dengan atom lain untuk membentuk molekul.",
+      "text_markdown": "Sebagian besar atom berikatan dengan atom lain untuk membentuk molekul.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Sebagian besar atom berikatan dengan atom lain untuk membentuk molekul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-156",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "Molekul adalah sekelompok atom yang disatukan oleh ikatan kimia.",
+      "text_markdown": "Molekul adalah sekelompok atom yang disatukan oleh ikatan kimia.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Molekul adalah sekelompok atom yang disatukan oleh ikatan kimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-157",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "Air adalah molekul.",
+      "text_markdown": "Air adalah molekul.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Air adalah molekul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-158",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "Gas oksigen adalah molekul.",
+      "text_markdown": "Gas oksigen adalah molekul.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Gas oksigen adalah molekul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-159",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p38",
+      "text": "Gula adalah molekul.",
+      "text_markdown": "Gula adalah molekul.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Gula adalah molekul.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-160",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "Atom berikatan karena elektronnya.",
+      "text_markdown": "Atom berikatan karena elektronnya.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Atom berikatan karena elektronnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-161",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "Elektron di kulit terluar atom menentukan bagaimana atom tersebut berinteraksi dengan atom lain.",
+      "text_markdown": "Elektron di kulit terluar atom menentukan bagaimana atom tersebut berinteraksi dengan atom lain.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Elektron di kulit terluar atom menentukan bagaimana atom tersebut berinteraksi dengan atom lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-162",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "Elektron terluar ini disebut elektron valensi.",
+      "text_markdown": "Elektron terluar ini disebut elektron valensi.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Elektron terluar ini disebut elektron valensi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-163",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "Atom dengan kulit terluar yang penuh bersifat stabil.",
+      "text_markdown": "Atom dengan kulit terluar yang penuh bersifat stabil.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Atom dengan kulit terluar yang penuh bersifat stabil.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-164",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p39",
+      "text": "Atom tanpa kulit terluar yang penuh akan berusaha untuk mengisinya.",
+      "text_markdown": "Atom tanpa kulit terluar yang penuh akan berusaha untuk mengisinya.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Atom tanpa kulit terluar yang penuh akan berusaha untuk mengisinya.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-165",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "text": "Ada dua jenis utama ikatan kimia.",
+      "text_markdown": "Ada dua jenis utama ikatan kimia.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Ada dua jenis utama ikatan kimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-166",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p40",
+      "text": "Ikatan kovalen dan ikatan ionik.",
+      "text_markdown": "Ikatan kovalen dan ikatan ionik.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Ikatan kovalen dan ikatan ionik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-167",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "Dalam ikatan kovalen, dua atom berbagi elektron.",
+      "text_markdown": "Dalam ikatan kovalen, dua atom berbagi elektron.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Dalam ikatan kovalen, dua atom berbagi elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-168",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "Kedua atom menyumbangkan elektron ke pasangan bersama.",
+      "text_markdown": "Kedua atom menyumbangkan elektron ke pasangan bersama.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Kedua atom menyumbangkan elektron ke pasangan bersama.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-169",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "Elektron yang dibagi mengelilingi kedua inti.",
+      "text_markdown": "Elektron yang dibagi mengelilingi kedua inti.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Elektron yang dibagi mengelilingi kedua inti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-170",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "Pembagian ini menyatukan atom-atom tersebut.",
+      "text_markdown": "Pembagian ini menyatukan atom-atom tersebut.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Pembagian ini menyatukan atom-atom tersebut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-171",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "Air disatukan oleh ikatan kovalen.",
+      "text_markdown": "Air disatukan oleh ikatan kovalen.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Air disatukan oleh ikatan kovalen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-172",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p41",
+      "text": "Setiap atom hidrogen berbagi satu elektron dengan atom oksigen.",
+      "text_markdown": "Setiap atom hidrogen berbagi satu elektron dengan atom oksigen.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Setiap atom hidrogen berbagi satu elektron dengan atom oksigen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-173",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "Dalam ikatan ionik, satu atom memberikan elektron kepada atom lain.",
+      "text_markdown": "Dalam ikatan ionik, satu atom memberikan elektron kepada atom lain.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Dalam ikatan ionik, satu atom memberikan elektron kepada atom lain.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-174",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "Atom yang kehilangan elektron menjadi bermuatan positif.",
+      "text_markdown": "Atom yang kehilangan elektron menjadi bermuatan positif.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Atom yang kehilangan elektron menjadi bermuatan positif.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-175",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "Atom yang mendapatkan elektron menjadi bermuatan negatif.",
+      "text_markdown": "Atom yang mendapatkan elektron menjadi bermuatan negatif.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Atom yang mendapatkan elektron menjadi bermuatan negatif.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-176",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "Muatan yang berlawanan saling menarik.",
+      "text_markdown": "Muatan yang berlawanan saling menarik.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Muatan yang berlawanan saling menarik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-177",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "Tarikan ini menyatukan kedua atom.",
+      "text_markdown": "Tarikan ini menyatukan kedua atom.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Tarikan ini menyatukan kedua atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch05-178",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "Garam dapur disatukan oleh ikatan ionik.",
+      "text_markdown": "Garam dapur disatukan oleh ikatan ionik.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Garam dapur disatukan oleh ikatan ionik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch05-179",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p42",
+      "text": "Natrium memberikan satu elektron kepada klorin.",
+      "text_markdown": "Natrium memberikan satu elektron kepada klorin.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Natrium memberikan satu elektron kepada klorin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-180",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "Satu molekul air mengandung dua atom hidrogen dan satu atom oksigen.",
+      "text_markdown": "Satu molekul air mengandung dua atom hidrogen dan satu atom oksigen.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Satu molekul air mengandung dua atom hidrogen dan satu atom oksigen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-181",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "Para ilmuwan menulis ini sebagai H2O.",
+      "text_markdown": "Para ilmuwan menulis ini sebagai H2O.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Para ilmuwan menulis ini sebagai Ha dua O.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-182",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "H adalah singkatan dari hidrogen.",
+      "text_markdown": "H adalah singkatan dari hidrogen.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Ha adalah singkatan dari hidrogen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-183",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "O adalah singkatan dari oksigen.",
+      "text_markdown": "O adalah singkatan dari oksigen.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "O adalah singkatan dari oksigen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch05-184",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p43",
+      "text": "Angka 2 berarti ada dua atom hidrogen.",
+      "text_markdown": "Angka 2 berarti ada dua atom hidrogen.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Angka dua berarti ada dua atom hidrogen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-185",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "text": "Satu molekul karbon dioksida mengandung satu atom karbon dan dua atom oksigen.",
+      "text_markdown": "Satu molekul karbon dioksida mengandung satu atom karbon dan dua atom oksigen.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Satu molekul karbon dioksida mengandung satu atom karbon dan dua atom oksigen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-186",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "text": "Para ilmuwan menulis ini sebagai CO2.",
+      "text_markdown": "Para ilmuwan menulis ini sebagai CO2.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Para ilmuwan menulis ini sebagai Ce O dua.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-187",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p44",
+      "text": "Tumbuhan menyerap karbon dioksida dari udara dan menggunakannya untuk membangun molekul gula.",
+      "text_markdown": "Tumbuhan menyerap karbon dioksida dari udara dan menggunakannya untuk membangun molekul gula.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Tumbuhan menyerap karbon dioksida dari udara dan menggunakannya untuk membangun molekul gula.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch05-188",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "Ikatan antar atom menyimpan energi.",
+      "text_markdown": "Ikatan antar atom menyimpan energi.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Ikatan antar atom menyimpan energi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch05-189",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "Ketika ikatan putus, energi dilepaskan.",
+      "text_markdown": "Ketika ikatan putus, energi dilepaskan.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Ketika ikatan putus, energi dilepaskan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch05-190",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "Ketika ikatan terbentuk, energi diserap.",
+      "text_markdown": "Ketika ikatan terbentuk, energi diserap.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Ketika ikatan terbentuk, energi diserap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch05-191",
+      "part": 0,
+      "chapter": 5,
+      "paragraph_id": "p45",
+      "text": "Setiap reaksi kimia di alam semesta melibatkan pemutusan ikatan lama dan pembentukan ikatan baru.",
+      "text_markdown": "Setiap reaksi kimia di alam semesta melibatkan pemutusan ikatan lama dan pembentukan ikatan baru.",
+      "title": "Bagaimana Atom Berikatan",
+      "tts": {
+        "text": "Setiap reaksi kimia di alam semesta melibatkan pemutusan ikatan lama dan pembentukan ikatan baru.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch06-192",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p46",
+      "text": "Atom dalam Gerak",
+      "text_markdown": "Atom dalam Gerak",
+      "title": "Atom dalam Gerak"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-193",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "Atom selalu bergerak.",
+      "text_markdown": "Atom selalu bergerak.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Atom selalu bergerak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-194",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "Mereka tidak pernah berhenti.",
+      "text_markdown": "Mereka tidak pernah berhenti.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Mereka tidak pernah berhenti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-195",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "Pada suhu berapa pun di atas nol mutlak, atom bergetar, berputar, dan bergerak melalui ruang.",
+      "text_markdown": "Pada suhu berapa pun di atas nol mutlak, atom bergetar, berputar, dan bergerak melalui ruang.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Pada suhu berapa pun di atas nol mutlak, atom bergetar, berputar, dan bergerak melalui ruang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-196",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p47",
+      "text": "Gerakan inilah yang kita alami sebagai panas.",
+      "text_markdown": "Gerakan inilah yang kita alami sebagai panas.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Gerakan inilah yang kita alami sebagai panas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-197",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "Dalam zat padat, atom bergetar di tempatnya.",
+      "text_markdown": "Dalam zat padat, atom bergetar di tempatnya.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Dalam zat padat, atom bergetar di tempatnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-198",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "Mereka terkunci dalam struktur yang tetap.",
+      "text_markdown": "Mereka terkunci dalam struktur yang tetap.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Mereka terkunci dalam struktur yang tetap.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-199",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "Mereka bergetar maju mundur, tetapi tidak meninggalkan posisinya.",
+      "text_markdown": "Mereka bergetar maju mundur, tetapi tidak meninggalkan posisinya.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Mereka bergetar maju mundur, tetapi tidak meninggalkan posisinya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-200",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "Inilah sebabnya zat padat mempertahankan bentuknya.",
+      "text_markdown": "Inilah sebabnya zat padat mempertahankan bentuknya.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Inilah sebabnya zat padat mempertahankan bentuknya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-201",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p48",
+      "text": "Atom-atom dalam sebongkah es bergetar, tetapi mereka tetap dalam pola kristal yang kaku.",
+      "text_markdown": "Atom-atom dalam sebongkah es bergetar, tetapi mereka tetap dalam pola kristal yang kaku.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Atom-atom dalam sebongkah es bergetar, tetapi mereka tetap dalam pola kristal yang kaku.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-202",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "Dalam zat cair, atom bergerak lebih bebas.",
+      "text_markdown": "Dalam zat cair, atom bergerak lebih bebas.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Dalam zat cair, atom bergerak lebih bebas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-203",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "Mereka saling bergeser.",
+      "text_markdown": "Mereka saling bergeser.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Mereka saling bergeser.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-204",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "Mereka tetap berdekatan, tetapi tidak terkunci pada posisinya.",
+      "text_markdown": "Mereka tetap berdekatan, tetapi tidak terkunci pada posisinya.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Mereka tetap berdekatan, tetapi tidak terkunci pada posisinya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-205",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "Inilah sebabnya zat cair mengalir.",
+      "text_markdown": "Inilah sebabnya zat cair mengalir.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Inilah sebabnya zat cair mengalir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-206",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p49",
+      "text": "Atom-atom dalam segelas air terus-menerus bergerak dan menata ulang, tetapi mereka tetap berdekatan satu sama lain.",
+      "text_markdown": "Atom-atom dalam segelas air terus-menerus bergerak dan menata ulang, tetapi mereka tetap berdekatan satu sama lain.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Atom-atom dalam segelas air terus-menerus bergerak dan menata ulang, tetapi mereka tetap berdekatan satu sama lain.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-207",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "Dalam gas, atom bergerak cepat dan menyebar.",
+      "text_markdown": "Dalam gas, atom bergerak cepat dan menyebar.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Dalam gas, atom bergerak cepat dan menyebar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-208",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "Mereka terbang dalam garis lurus sampai menabrak atom lain atau dinding.",
+      "text_markdown": "Mereka terbang dalam garis lurus sampai menabrak atom lain atau dinding.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Mereka terbang dalam garis lurus sampai menabrak atom lain atau dinding.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-209",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "Mereka memantul satu sama lain dan mengubah arah.",
+      "text_markdown": "Mereka memantul satu sama lain dan mengubah arah.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Mereka memantul satu sama lain dan mengubah arah.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-210",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "Inilah sebabnya gas mengisi wadah apa pun tempat Anda meletakkannya.",
+      "text_markdown": "Inilah sebabnya gas mengisi wadah apa pun tempat Anda meletakkannya.",
+      "title": "Atom dalam Gerak",
+      "tts": {
+        "text": "Inilah sebabnya gas mengisi wadah apa pun tempat Anda meletakkannya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-211",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p50",
+      "text": "Atom-atom di ruangan yang penuh udara bergerak sangat cepat ke segala arah dengan kecepatan ratusan meter per detik.",
+      "text_markdown": "Atom-atom di ruangan yang penuh udara bergerak sangat cepat ke segala arah dengan kecepatan ratusan meter per detik.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Atom-atom di ruangan yang penuh udara bergerak sangat cepat ke segala arah dengan kecepatan ratusan meter per detik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-212",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "Suhu adalah ukuran seberapa cepat atom bergerak.",
+      "text_markdown": "Suhu adalah ukuran seberapa cepat atom bergerak.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Suhu adalah ukuran seberapa cepat atom bergerak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-213",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "Panas berarti atom-atom bergerak cepat.",
+      "text_markdown": "Panas berarti atom-atom bergerak cepat.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Panas berarti atom-atom bergerak cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-214",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "Dingin berarti atom-atom bergerak lambat.",
+      "text_markdown": "Dingin berarti atom-atom bergerak lambat.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Dingin berarti atom-atom bergerak lambat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-215",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "Ketika Anda memanaskan air di atas kompor, Anda membuat molekul air bergerak lebih cepat.",
+      "text_markdown": "Ketika Anda memanaskan air di atas kompor, Anda membuat molekul air bergerak lebih cepat.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Ketika Anda memanaskan air di atas kompor, Anda membuat molekul air bergerak lebih cepat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-216",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p51",
+      "text": "Ketika molekul-molekul bergerak cukup cepat, mereka melepaskan diri dari cairan dan menjadi uap.",
+      "text_markdown": "Ketika molekul-molekul bergerak cukup cepat, mereka melepaskan diri dari cairan dan menjadi uap.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Ketika molekul-molekul bergerak cukup cepat, mereka melepaskan diri dari cairan dan menjadi uap.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-217",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "Nol mutlak adalah suhu terdingin yang mungkin.",
+      "text_markdown": "Nol mutlak adalah suhu terdingin yang mungkin.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Nol mutlak adalah suhu terdingin yang mungkin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-218",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "Suhu itu sekitar minus 273 derajat Celsius.",
+      "text_markdown": "Suhu itu sekitar minus 273 derajat Celsius.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Suhu itu sekitar minus dua ratus tujuh puluh tiga derajat Celsius.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-219",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "Pada nol mutlak, atom memiliki energi minimum yang mungkin.",
+      "text_markdown": "Pada nol mutlak, atom memiliki energi minimum yang mungkin.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Pada nol mutlak, atom memiliki energi minimum yang mungkin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-220",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "Tidak ada yang bisa lebih dingin dari nol mutlak.",
+      "text_markdown": "Tidak ada yang bisa lebih dingin dari nol mutlak.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Tidak ada yang bisa lebih dingin dari nol mutlak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch06-221",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p52",
+      "text": "Para ilmuwan telah sangat dekat untuk mencapai nol mutlak di laboratorium, tetapi belum ada yang pernah mencapainya dengan tepat.",
+      "text_markdown": "Para ilmuwan telah sangat dekat untuk mencapai nol mutlak di laboratorium, tetapi belum ada yang pernah mencapainya dengan tepat.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Para ilmuwan telah sangat dekat untuk mencapai nol mutlak di laboratorium, tetapi belum ada yang pernah mencapainya dengan tepat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch06-222",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "Tekanan disebabkan oleh atom-atom yang menabrak permukaan.",
+      "text_markdown": "Tekanan disebabkan oleh atom-atom yang menabrak permukaan.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Tekanan disebabkan oleh atom-atom yang menabrak permukaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch06-223",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "Udara dalam ban mendorong keluar karena molekul udara terus-menerus memantul dari dinding bagian dalam ban.",
+      "text_markdown": "Udara dalam ban mendorong keluar karena molekul udara terus-menerus memantul dari dinding bagian dalam ban.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Udara dalam ban mendorong keluar karena molekul udara terus-menerus memantul dari dinding bagian dalam ban.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch06-224",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "Lebih banyak molekul atau molekul yang lebih cepat berarti tekanan yang lebih besar.",
+      "text_markdown": "Lebih banyak molekul atau molekul yang lebih cepat berarti tekanan yang lebih besar.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Lebih banyak molekul atau molekul yang lebih cepat berarti tekanan yang lebih besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch06-225",
+      "part": 0,
+      "chapter": 6,
+      "paragraph_id": "p53",
+      "text": "Inilah sebabnya mengapa ban terasa lebih keras saat udaranya panas.",
+      "text_markdown": "Inilah sebabnya mengapa ban terasa lebih keras saat udaranya panas.",
+      "title": "Atom dalam Gerakan",
+      "tts": {
+        "text": "Inilah sebabnya mengapa ban terasa lebih keras saat udaranya panas.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch07-226",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p54",
+      "text": "Asal Mula Atom",
+      "text_markdown": "Asal Mula Atom",
+      "title": "Asal Mula Atom"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-227",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "Hidrogen dan helium di alam semesta tercipta dalam beberapa menit pertama setelah Big Bang.",
+      "text_markdown": "Hidrogen dan helium di alam semesta tercipta dalam beberapa menit pertama setelah Big Bang.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Hidrogen dan helium di alam semesta tercipta dalam beberapa menit pertama setelah Big Bang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-228",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "Alam semesta dimulai sebagai titik yang sangat panas dan padat sekitar 13,8 miliar tahun yang lalu.",
+      "text_markdown": "Alam semesta dimulai sebagai titik yang sangat panas dan padat sekitar 13,8 miliar tahun yang lalu.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Alam semesta dimulai sebagai titik yang sangat panas dan padat sekitar tiga belas koma delapan miliar tahun yang lalu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-229",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "Saat mengembang dan mendingin, proton dan neutron terbentuk.",
+      "text_markdown": "Saat mengembang dan mendingin, proton dan neutron terbentuk.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Saat mengembang dan mendingin, proton dan neutron terbentuk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-230",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "Proton dan neutron tersebut bergabung membentuk inti atom paling sederhana.",
+      "text_markdown": "Proton dan neutron tersebut bergabung membentuk inti atom paling sederhana.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Proton dan neutron tersebut bergabung membentuk inti atom paling sederhana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-231",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p55",
+      "text": "Hidrogen dan helium adalah unsur pertama.",
+      "text_markdown": "Hidrogen dan helium adalah unsur pertama.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Hidrogen dan helium adalah unsur pertama.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-232",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "Selama jutaan tahun, alam semesta adalah awan gas hidrogen dan helium.",
+      "text_markdown": "Selama jutaan tahun, alam semesta adalah awan gas hidrogen dan helium.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Selama jutaan tahun, alam semesta adalah awan gas hidrogen dan helium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-233",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "Kemudian gravitasi menarik gas tersebut menjadi gumpalan.",
+      "text_markdown": "Kemudian gravitasi menarik gas tersebut menjadi gumpalan.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Kemudian gravitasi menarik gas tersebut menjadi gumpalan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-234",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "Gumpalan-gumpalan itu menjadi lebih padat dan lebih panas.",
+      "text_markdown": "Gumpalan-gumpalan itu menjadi lebih padat dan lebih panas.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Gumpalan-gumpalan itu menjadi lebih padat dan lebih panas.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-235",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "Ketika pusat gumpalan mencapai sekitar sepuluh juta derajat, fusi nuklir menyala.",
+      "text_markdown": "Ketika pusat gumpalan mencapai sekitar sepuluh juta derajat, fusi nuklir menyala.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Ketika pusat gumpalan mencapai sekitar sepuluh juta derajat, fusi nuklir menyala.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-236",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p56",
+      "text": "Sebuah bintang lahir.",
+      "text_markdown": "Sebuah bintang lahir.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Sebuah bintang lahir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-237",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "Bintang adalah pabrik atom.",
+      "text_markdown": "Bintang adalah pabrik atom.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Bintang adalah pabrik atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-238",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "Di dalam bintang, atom hidrogen menyatu membentuk helium.",
+      "text_markdown": "Di dalam bintang, atom hidrogen menyatu membentuk helium.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Di dalam bintang, atom hidrogen menyatu membentuk helium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-239",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "Fusi ini melepaskan energi yang sangat besar.",
+      "text_markdown": "Fusi ini melepaskan energi yang sangat besar.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Fusi ini melepaskan energi yang sangat besar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-240",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "Energi inilah yang membuat bintang bersinar.",
+      "text_markdown": "Energi inilah yang membuat bintang bersinar.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Energi inilah yang membuat bintang bersinar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-241",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p57",
+      "text": "Matahari kita memadukan sekitar enam ratus juta ton hidrogen menjadi helium setiap detik.",
+      "text_markdown": "Matahari kita memadukan sekitar enam ratus juta ton hidrogen menjadi helium setiap detik.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Matahari kita memadukan sekitar enam ratus juta ton hidrogen menjadi helium setiap detik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-242",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "Bintang-bintang yang lebih besar memadukan unsur-unsur yang lebih berat.",
+      "text_markdown": "Bintang-bintang yang lebih besar memadukan unsur-unsur yang lebih berat.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Bintang-bintang yang lebih besar memadukan unsur-unsur yang lebih berat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-243",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "Setelah sebuah bintang membakar habis hidrogennya, ia mulai memadukan helium menjadi karbon.",
+      "text_markdown": "Setelah sebuah bintang membakar habis hidrogennya, ia mulai memadukan helium menjadi karbon.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Setelah sebuah bintang membakar habis hidrogennya, ia mulai memadukan helium menjadi karbon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-244",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "Kemudian karbon menjadi oksigen.",
+      "text_markdown": "Kemudian karbon menjadi oksigen.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Kemudian karbon menjadi oksigen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-245",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "Kemudian oksigen menjadi silikon.",
+      "text_markdown": "Kemudian oksigen menjadi silikon.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Kemudian oksigen menjadi silikon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-246",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "Kemudian silikon menjadi besi.",
+      "text_markdown": "Kemudian silikon menjadi besi.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Kemudian silikon menjadi besi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-247",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "Setiap tahapan menghasilkan unsur yang lebih berat.",
+      "text_markdown": "Setiap tahapan menghasilkan unsur yang lebih berat.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Setiap tahapan menghasilkan unsur yang lebih berat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-248",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p58",
+      "text": "Besi adalah unsur terberat yang dapat dihasilkan bintang melalui fusi normal.",
+      "text_markdown": "Besi adalah unsur terberat yang dapat dihasilkan bintang melalui fusi normal.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Besi adalah unsur terberat yang dapat dihasilkan bintang melalui fusi normal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-249",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "Unsur-unsur yang lebih berat dari besi tercipta ketika bintang-bintang masif meledak.",
+      "text_markdown": "Unsur-unsur yang lebih berat dari besi tercipta ketika bintang-bintang masif meledak.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Unsur-unsur yang lebih berat dari besi tercipta ketika bintang-bintang masif meledak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-250",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "Ledakan-ledakan ini disebut supernova.",
+      "text_markdown": "Ledakan-ledakan ini disebut supernova.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Ledakan-ledakan ini disebut supernova.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-251",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "Sebuah supernova melepaskan lebih banyak energi dalam beberapa detik daripada yang akan dihasilkan matahari sepanjang umurnya.",
+      "text_markdown": "Sebuah supernova melepaskan lebih banyak energi dalam beberapa detik daripada yang akan dihasilkan matahari sepanjang umurnya.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Sebuah supernova melepaskan lebih banyak energi dalam beberapa detik daripada yang akan dihasilkan matahari sepanjang umurnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-252",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p59",
+      "text": "Kondisi ekstrem supernova membentuk unsur-unsur seperti emas, perak, platina, dan uranium.",
+      "text_markdown": "Kondisi ekstrem supernova membentuk unsur-unsur seperti emas, perak, platina, dan uranium.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Kondisi ekstrem supernova membentuk unsur-unsur seperti emas, perak, platina, dan uranium.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-253",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "Ledakan itu menyebarkan unsur-unsur berat ini ke seluruh angkasa.",
+      "text_markdown": "Ledakan itu menyebarkan unsur-unsur berat ini ke seluruh angkasa.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Ledakan itu menyebarkan unsur-unsur berat ini ke seluruh angkasa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-254",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "Unsur-unsur tersebut bercampur dengan awan gas hidrogen dan helium.",
+      "text_markdown": "Unsur-unsur tersebut bercampur dengan awan gas hidrogen dan helium.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Unsur-unsur tersebut bercampur dengan awan gas hidrogen dan helium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-255",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "Akhirnya, gravitasi menarik gas yang diperkaya itu bersama-sama untuk membentuk bintang dan planet baru.",
+      "text_markdown": "Akhirnya, gravitasi menarik gas yang diperkaya itu bersama-sama untuk membentuk bintang dan planet baru.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Akhirnya, gravitasi menarik gas yang diperkaya itu bersama-sama untuk membentuk bintang dan planet baru.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-256",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p60",
+      "text": "Tata surya kita terbentuk dari salah satu awan yang diperkaya ini sekitar 4,6 miliar tahun yang lalu.",
+      "text_markdown": "Tata surya kita terbentuk dari salah satu awan yang diperkaya ini sekitar 4,6 miliar tahun yang lalu.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Tata surya kita terbentuk dari salah satu awan yang diperkaya ini sekitar empat koma enam miliar tahun yang lalu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch07-257",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "Setiap atom dalam tubuh Anda yang lebih berat dari hidrogen dibuat di dalam bintang.",
+      "text_markdown": "Setiap atom dalam tubuh Anda yang lebih berat dari hidrogen dibuat di dalam bintang.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Setiap atom dalam tubuh Anda yang lebih berat dari hidrogen dibuat di dalam bintang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch07-258",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "Kalsium di tulang Anda.",
+      "text_markdown": "Kalsium di tulang Anda.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Kalsium di tulang Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch07-259",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "Besi dalam darah Anda.",
+      "text_markdown": "Besi dalam darah Anda.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Besi dalam darah Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch07-260",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "Karbon di kulit Anda.",
+      "text_markdown": "Karbon di kulit Anda.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Karbon di kulit Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch07-261",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "Anda terbuat dari debu bintang.",
+      "text_markdown": "Anda terbuat dari debu bintang.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Anda terbuat dari debu bintang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch07-262",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "Itu bukan metafora.",
+      "text_markdown": "Itu bukan metafora.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Itu bukan metafora.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch07-263",
+      "part": 0,
+      "chapter": 7,
+      "paragraph_id": "p61",
+      "text": "Itu adalah fakta fisika nuklir.",
+      "text_markdown": "Itu adalah fakta fisika nuklir.",
+      "title": "Asal Mula Atom",
+      "tts": {
+        "text": "Itu adalah fakta fisika nuklir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "heading_level": 1,
+      "block_type": "heading",
+      "sentence_index": 0,
+      "id": "ch08-264",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p62",
+      "text": "Atom Adalah Segalanya",
+      "text_markdown": "Atom Adalah Segalanya",
+      "title": "Atom Adalah Segalanya"
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-265",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "Anda sekarang tahu dasarnya.",
+      "text_markdown": "Anda sekarang tahu dasarnya.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Anda sekarang tahu dasarnya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-266",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "Segalanya terbuat dari atom.",
+      "text_markdown": "Segalanya terbuat dari atom.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Segalanya terbuat dari atom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-267",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "Atom mengandung proton, neutron, dan elektron.",
+      "text_markdown": "Atom mengandung proton, neutron, dan elektron.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Atom mengandung proton, neutron, dan elektron.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-268",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "Jumlah proton menentukan unsur.",
+      "text_markdown": "Jumlah proton menentukan unsur.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Jumlah proton menentukan unsur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-269",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "Atom berikatan membentuk molekul.",
+      "text_markdown": "Atom berikatan membentuk molekul.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Atom berikatan membentuk molekul.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-270",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "Atom selalu bergerak.",
+      "text_markdown": "Atom selalu bergerak.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Atom selalu bergerak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-271",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p63",
+      "text": "Bintang-bintang menciptakan atom-atom yang membentuk dunia kita.",
+      "text_markdown": "Bintang-bintang menciptakan atom-atom yang membentuk dunia kita.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Bintang-bintang menciptakan atom-atom yang membentuk dunia kita.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-272",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "text": "Pengetahuan ini adalah dasar dari kimia, biologi, fisika, dan kedokteran.",
+      "text_markdown": "Pengetahuan ini adalah dasar dari kimia, biologi, fisika, dan kedokteran.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Pengetahuan ini adalah dasar dari kimia, biologi, fisika, dan kedokteran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-273",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p64",
+      "text": "Setiap bidang ilmu pengetahuan terhubung kembali dengan atom.",
+      "text_markdown": "Setiap bidang ilmu pengetahuan terhubung kembali dengan atom.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Setiap bidang ilmu pengetahuan terhubung kembali dengan atom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-274",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "text": "Ketika seorang dokter meresepkan obat, obat tersebut adalah susunan atom spesifik yang dirancang untuk berinteraksi dengan molekul dalam tubuh Anda.",
+      "text_markdown": "Ketika seorang dokter meresepkan obat, obat tersebut adalah susunan atom spesifik yang dirancang untuk berinteraksi dengan molekul dalam tubuh Anda.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Ketika seorang dokter meresepkan obat, obat tersebut adalah susunan atom spesifik yang dirancang untuk berinteraksi dengan molekul dalam tubuh Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-275",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "text": "Ketika seorang insinyur membangun jembatan, kekuatan jembatan itu bergantung pada bagaimana atom besi dalam baja tersusun.",
+      "text_markdown": "Ketika seorang insinyur membangun jembatan, kekuatan jembatan itu bergantung pada bagaimana atom besi dalam baja tersusun.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Ketika seorang insinyur membangun jembatan, kekuatan jembatan itu bergantung pada bagaimana atom besi dalam baja tersusun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-276",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p65",
+      "text": "Ketika seorang petani menanam tanaman, tanaman itu tumbuh karena atom karbon dari udara bergabung dengan air dan sinar matahari di dalam daun.",
+      "text_markdown": "Ketika seorang petani menanam tanaman, tanaman itu tumbuh karena atom karbon dari udara bergabung dengan air dan sinar matahari di dalam daun.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Ketika seorang petani menanam tanaman, tanaman itu tumbuh karena atom karbon dari udara bergabung dengan air dan sinar matahari di dalam daun.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-277",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "Memasak adalah kimia.",
+      "text_markdown": "Memasak adalah kimia.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Memasak adalah kimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-278",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "Ketika Anda memanggang roti, panas menyebabkan atom-atom dalam adonan tersusun ulang.",
+      "text_markdown": "Ketika Anda memanggang roti, panas menyebabkan atom-atom dalam adonan tersusun ulang.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Ketika Anda memanggang roti, panas menyebabkan atom-atom dalam adonan tersusun ulang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-279",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "Protein terurai.",
+      "text_markdown": "Protein terurai.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Protein terurai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-280",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "Gula terpecah dan bergabung kembali.",
+      "text_markdown": "Gula terpecah dan bergabung kembali.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Gula terpecah dan bergabung kembali.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-281",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "Molekul baru terbentuk yang menciptakan warna, tekstur, dan rasa kerak.",
+      "text_markdown": "Molekul baru terbentuk yang menciptakan warna, tekstur, dan rasa kerak.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Molekul baru terbentuk yang menciptakan warna, tekstur, dan rasa kerak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-282",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p66",
+      "text": "Setiap resep adalah serangkaian instruksi untuk menyusun ulang atom.",
+      "text_markdown": "Setiap resep adalah serangkaian instruksi untuk menyusun ulang atom.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Setiap resep adalah serangkaian instruksi untuk menyusun ulang atom.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-283",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "Bernapas adalah kimia.",
+      "text_markdown": "Bernapas adalah kimia.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Bernapas adalah kimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-284",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "Anda menghirup molekul oksigen.",
+      "text_markdown": "Anda menghirup molekul oksigen.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Anda menghirup molekul oksigen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-285",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "Darah Anda membawa molekul-molekul itu ke sel-sel Anda.",
+      "text_markdown": "Darah Anda membawa molekul-molekul itu ke sel-sel Anda.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Darah Anda membawa molekul-molekul itu ke sel-sel Anda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-286",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "Di dalam sel Anda, atom oksigen bergabung dengan atom karbon dari makanan.",
+      "text_markdown": "Di dalam sel Anda, atom oksigen bergabung dengan atom karbon dari makanan.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Di dalam sel Anda, atom oksigen bergabung dengan atom karbon dari makanan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-287",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "Reaksi tersebut melepaskan energi.",
+      "text_markdown": "Reaksi tersebut melepaskan energi.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Reaksi tersebut melepaskan energi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-288",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "Anda menghembuskan karbon dan oksigen sebagai karbon dioksida.",
+      "text_markdown": "Anda menghembuskan karbon dan oksigen sebagai karbon dioksida.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Anda menghembuskan karbon dan oksigen sebagai karbon dioksida.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 6,
+      "id": "ch08-289",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p67",
+      "text": "Setiap napas adalah reaksi kimia.",
+      "text_markdown": "Setiap napas adalah reaksi kimia.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Setiap napas adalah reaksi kimia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-290",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "Karat adalah kimia.",
+      "text_markdown": "Karat adalah kimia.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Karat adalah kimia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-291",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "Atom besi di permukaan paku bereaksi dengan atom oksigen di udara.",
+      "text_markdown": "Atom besi di permukaan paku bereaksi dengan atom oksigen di udara.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Atom besi di permukaan paku bereaksi dengan atom oksigen di udara.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-292",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "Besi dan oksigen bergabung membentuk zat baru yang disebut oksida besi.",
+      "text_markdown": "Besi dan oksigen bergabung membentuk zat baru yang disebut oksida besi.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Besi dan oksigen bergabung membentuk zat baru yang disebut oksida besi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-293",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "Oksida besi adalah bahan berwarna cokelat kemerahan yang kita sebut karat.",
+      "text_markdown": "Oksida besi adalah bahan berwarna cokelat kemerahan yang kita sebut karat.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Oksida besi adalah bahan berwarna cokelat kemerahan yang kita sebut karat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-294",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "Atom-atom besi masih ada di sana.",
+      "text_markdown": "Atom-atom besi masih ada di sana.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Atom-atom besi masih ada di sana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 5,
+      "id": "ch08-295",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p68",
+      "text": "Mereka baru saja berikatan dengan oksigen.",
+      "text_markdown": "Mereka baru saja berikatan dengan oksigen.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Mereka baru saja berikatan dengan oksigen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 0,
+      "id": "ch08-296",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "Atom tidaklah abstrak.",
+      "text_markdown": "Atom tidaklah abstrak.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Atom tidaklah abstrak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 1,
+      "id": "ch08-297",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "Atom adalah realitas fisik dari segala sesuatu yang Anda sentuh, cicipi, lihat, dan cium.",
+      "text_markdown": "Atom adalah realitas fisik dari segala sesuatu yang Anda sentuh, cicipi, lihat, dan cium.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Atom adalah realitas fisik dari segala sesuatu yang Anda sentuh, cicipi, lihat, dan cium.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 2,
+      "id": "ch08-298",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "Semakin Anda memahami atom, semakin Anda memahami dunia.",
+      "text_markdown": "Semakin Anda memahami atom, semakin Anda memahami dunia.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Semakin Anda memahami atom, semakin Anda memahami dunia.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.64
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 3,
+      "id": "ch08-299",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "Ini adalah permulaan.",
+      "text_markdown": "Ini adalah permulaan.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Ini adalah permulaan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "block_type": "text",
+      "sentence_index": 4,
+      "id": "ch08-300",
+      "part": 0,
+      "chapter": 8,
+      "paragraph_id": "p69",
+      "text": "Ada banyak lagi yang bisa dijelajahi.",
+      "text_markdown": "Ada banyak lagi yang bisa dijelajahi.",
+      "title": "Atom Adalah Segalanya",
+      "tts": {
+        "text": "Ada banyak lagi yang bisa dijelajahi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "de",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an die Leser",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ein Wort an die Leser",
+      "text_markdown": "Ein Wort an die Leser"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an die Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Seit zweihundert Jahren ist der Zug der eiserne Weg der Welt.",
+      "text_markdown": "Seit zweihundert Jahren ist der Zug der eiserne Weg der Welt.",
+      "tts": {
+        "text": "Seit zweihundert Jahren ist der Zug der eiserne Weg der Welt.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an die Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Züge befördern Menschen.",
+      "text_markdown": "Züge befördern Menschen.",
+      "tts": {
+        "text": "Züge befördern Menschen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an die Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Züge befördern Waren.",
+      "text_markdown": "Züge befördern Waren.",
+      "tts": {
+        "text": "Züge befördern Waren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an die Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ein langer Zug kann genug Getreide für eine ganze Stadt tragen.",
+      "text_markdown": "Ein langer Zug kann genug Getreide für eine ganze Stadt tragen.",
+      "tts": {
+        "text": "Ein langer Zug kann genug Getreide für eine ganze Stadt tragen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an die Leser",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ein schneller Zug kann ein Auto auf der Autobahn hinter sich lassen.",
+      "text_markdown": "Ein schneller Zug kann ein Auto auf der Autobahn hinter sich lassen.",
+      "tts": {
+        "text": "Ein schneller Zug kann ein Auto auf der Autobahn hinter sich lassen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ein Wort an die Leser",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Geschichte des Zuges beginnt in England, vor fast zweihundert Jahren, mit einem Mann, einem Feuer und einem Kessel mit kochendem Wasser.",
+      "text_markdown": "Die Geschichte des Zuges beginnt in England, vor fast zweihundert Jahren, mit einem Mann, einem Feuer und einem Kessel mit kochendem Wasser.",
+      "tts": {
+        "text": "Die Geschichte des Zuges beginnt in England, vor fast zweihundert Jahren, mit einem Mann, einem Feuer und einem Kessel mit kochendem Wasser.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 1 — Der erste Dampfzug",
+      "text_markdown": "Kapitel 1 — Der erste Dampfzug"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Zug ist eine Reihe von Waggons, die auf eisernen Schienen fährt.",
+      "text_markdown": "Ein Zug ist eine Reihe von Waggons, die auf eisernen Schienen fährt.",
+      "tts": {
+        "text": "Ein Zug ist eine Reihe von Waggons, die auf eisernen Schienen fährt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ganz vorne ist die Lokomotive.",
+      "text_markdown": "Ganz vorne ist die Lokomotive.",
+      "tts": {
+        "text": "Ganz vorne ist die Lokomotive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie zieht alle anderen.",
+      "text_markdown": "Sie zieht alle anderen.",
+      "tts": {
+        "text": "Sie zieht alle anderen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die ersten Züge wurden mit Dampf angetrieben.",
+      "text_markdown": "Die ersten Züge wurden mit Dampf angetrieben.",
+      "tts": {
+        "text": "Die ersten Züge wurden mit Dampf angetrieben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eine Dampfmaschine verbrennt Kohle, um Wasser zu kochen.",
+      "text_markdown": "Eine Dampfmaschine verbrennt Kohle, um Wasser zu kochen.",
+      "tts": {
+        "text": "Eine Dampfmaschine verbrennt Kohle, um Wasser zu kochen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der heiße Dampf bewegt Kolben.",
+      "text_markdown": "Der heiße Dampf bewegt Kolben.",
+      "tts": {
+        "text": "Der heiße Dampf bewegt Kolben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Kolben drehen die Räder.",
+      "text_markdown": "Die Kolben drehen die Räder.",
+      "tts": {
+        "text": "Die Kolben drehen die Räder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Die Räder laufen auf den Schienen.",
+      "text_markdown": "Die Räder laufen auf den Schienen.",
+      "tts": {
+        "text": "Die Räder laufen auf den Schienen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Geschichte beginnt in England.",
+      "text_markdown": "Die Geschichte beginnt in England.",
+      "tts": {
+        "text": "Die Geschichte beginnt in England.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Im Jahr 1825 wurde die erste öffentliche Eisenbahn eröffnet.",
+      "text_markdown": "Im Jahr 1825 wurde die erste öffentliche Eisenbahn eröffnet.",
+      "tts": {
+        "text": "Im Jahr achtzehnhundert fünfundzwanzig wurde die erste öffentliche Eisenbahn eröffnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie hieß Stockton and Darlington Railway.",
+      "text_markdown": "Sie hieß Stockton and Darlington Railway.",
+      "tts": {
+        "text": "Sie hieß Stockton and Darlington Reilwei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie brachte Kohle aus einer Mine zum Fluss.",
+      "text_markdown": "Sie brachte Kohle aus einer Mine zum Fluss.",
+      "tts": {
+        "text": "Sie brachte Kohle aus einer Mine zum Fluss.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Mann namens George Stephenson baute die Lokomotiven.",
+      "text_markdown": "Ein Mann namens George Stephenson baute die Lokomotiven.",
+      "tts": {
+        "text": "Ein Mann namens Dschordsch Stevenson baute die Lokomotiven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Leute nannten ihn den Vater der Eisenbahn.",
+      "text_markdown": "Die Leute nannten ihn den Vater der Eisenbahn.",
+      "tts": {
+        "text": "Die Leute nannten ihn den Vater der Eisenbahn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1829 baute sein Sohn Robert Stephenson eine berühmte Lokomotive namens Rocket.",
+      "text_markdown": "Im Jahr 1829 baute sein Sohn Robert Stephenson eine berühmte Lokomotive namens Rocket.",
+      "tts": {
+        "text": "Im Jahr achtzehnhundert neunundzwanzig baute sein Sohn Robert Stevenson eine berühmte Lokomotive namens Rockit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie gewann ein Rennen um den schnellsten Zug.",
+      "text_markdown": "Sie gewann ein Rennen um den schnellsten Zug.",
+      "tts": {
+        "text": "Sie gewann ein Rennen um den schnellsten Zug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Rocket konnte fast 30 Meilen pro Stunde fahren.",
+      "text_markdown": "Die Rocket konnte fast 30 Meilen pro Stunde fahren.",
+      "tts": {
+        "text": "Die Rockit konnte fast dreißig Meilen pro Stunde fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Das war schneller als jedes Pferd.",
+      "text_markdown": "Das war schneller als jedes Pferd.",
+      "tts": {
+        "text": "Das war schneller als jedes Pferd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Der erste Dampfzug",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das Zeitalter der Eisenbahn hatte begonnen.",
+      "text_markdown": "Das Zeitalter der Eisenbahn hatte begonnen.",
+      "tts": {
+        "text": "Das Zeitalter der Eisenbahn hatte begonnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "text_markdown": "Kapitel 2 — Der eiserne Weg breitet sich aus"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nach der Rocket breiteten sich Eisenbahnen schnell aus.",
+      "text_markdown": "Nach der Rocket breiteten sich Eisenbahnen schnell aus.",
+      "tts": {
+        "text": "Nach der Rockit breiteten sich Eisenbahnen schnell aus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Großbritannien verlegte Tausende von Meilen Gleis.",
+      "text_markdown": "Großbritannien verlegte Tausende von Meilen Gleis.",
+      "tts": {
+        "text": "Großbritannien verlegte Tausende von Meilen Gleis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dann folgte der Rest der Welt.",
+      "text_markdown": "Dann folgte der Rest der Welt.",
+      "tts": {
+        "text": "Dann folgte der Rest der Welt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1830 wurde die erste große amerikanische Eisenbahn eröffnet.",
+      "text_markdown": "Im Jahr 1830 wurde die erste große amerikanische Eisenbahn eröffnet.",
+      "tts": {
+        "text": "Im Jahr achtzehnhundert dreißig wurde die erste große amerikanische Eisenbahn eröffnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie hieß Baltimore and Ohio.",
+      "text_markdown": "Sie hieß Baltimore and Ohio.",
+      "tts": {
+        "text": "Sie hieß Baltimore and Ohaio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie verband die Stadt Baltimore mit dem Fluss Ohio.",
+      "text_markdown": "Sie verband die Stadt Baltimore mit dem Fluss Ohio.",
+      "tts": {
+        "text": "Sie verband die Stadt Baltimore mit dem Fluss Ohaio.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Frankreich wurde 1832 die erste Eisenbahn eröffnet.",
+      "text_markdown": "In Frankreich wurde 1832 die erste Eisenbahn eröffnet.",
+      "tts": {
+        "text": "In Frankreich wurde achtzehnhundert zweiunddreißig die erste Eisenbahn eröffnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie transportierte Kohle, wie die britische Strecke.",
+      "text_markdown": "Sie transportierte Kohle, wie die britische Strecke.",
+      "tts": {
+        "text": "Sie transportierte Kohle, wie die britische Strecke.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Deutschland wurde 1839 die erste lange Eisenbahn eröffnet.",
+      "text_markdown": "In Deutschland wurde 1839 die erste lange Eisenbahn eröffnet.",
+      "tts": {
+        "text": "In Deutschland wurde achtzehnhundert neununddreißig die erste lange Eisenbahn eröffnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie fuhr zwischen zwei Städten, Leipzig und Dresden.",
+      "text_markdown": "Sie fuhr zwischen zwei Städten, Leipzig und Dresden.",
+      "tts": {
+        "text": "Sie fuhr zwischen zwei Städten, Leipzig und Dresden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Russland baute 1837 seine erste Eisenbahn.",
+      "text_markdown": "Russland baute 1837 seine erste Eisenbahn.",
+      "tts": {
+        "text": "Russland baute achtzehnhundert siebenunddreißig seine erste Eisenbahn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Strecke führte von Sankt Petersburg zu einer Stadt in der Nähe.",
+      "text_markdown": "Die Strecke führte von Sankt Petersburg zu einer Stadt in der Nähe.",
+      "tts": {
+        "text": "Die Strecke führte von Sankt Petersburg zu einer Stadt in der Nähe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine Eisenbahn zu bauen war harte Arbeit.",
+      "text_markdown": "Eine Eisenbahn zu bauen war harte Arbeit.",
+      "tts": {
+        "text": "Eine Eisenbahn zu bauen war harte Arbeit.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Männer gruben Tunnel durch Berge.",
+      "text_markdown": "Männer gruben Tunnel durch Berge.",
+      "tts": {
+        "text": "Männer gruben Tunnel durch Berge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie bauten Brücken über Flüsse.",
+      "text_markdown": "Sie bauten Brücken über Flüsse.",
+      "tts": {
+        "text": "Sie bauten Brücken über Flüsse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie verlegten jede Schiene von Hand.",
+      "text_markdown": "Sie verlegten jede Schiene von Hand.",
+      "tts": {
+        "text": "Sie verlegten jede Schiene von Hand.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Entlang der Strecken wuchsen Orte.",
+      "text_markdown": "Entlang der Strecken wuchsen Orte.",
+      "tts": {
+        "text": "Entlang der Strecken wuchsen Orte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein kleines Dorf mit einem Bahnhof konnte zu einer Stadt werden.",
+      "text_markdown": "Ein kleines Dorf mit einem Bahnhof konnte zu einer Stadt werden.",
+      "tts": {
+        "text": "Ein kleines Dorf mit einem Bahnhof konnte zu einer Stadt werden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Der Zug brachte Menschen.",
+      "text_markdown": "Der Zug brachte Menschen.",
+      "tts": {
+        "text": "Der Zug brachte Menschen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Der Zug brachte Waren.",
+      "text_markdown": "Der Zug brachte Waren.",
+      "tts": {
+        "text": "Der Zug brachte Waren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Der eiserne Weg breitet sich aus",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Der Zug brachte die Welt ein wenig näher zusammen.",
+      "text_markdown": "Der Zug brachte die Welt ein wenig näher zusammen.",
+      "tts": {
+        "text": "Der Zug brachte die Welt ein wenig näher zusammen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 3 — Die großen Linien",
+      "text_markdown": "Kapitel 3 — Die großen Linien"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Bahnlinien sind kurz.",
+      "text_markdown": "Manche Bahnlinien sind kurz.",
+      "tts": {
+        "text": "Manche Bahnlinien sind kurz.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Manche sind sehr lang.",
+      "text_markdown": "Manche sind sehr lang.",
+      "tts": {
+        "text": "Manche sind sehr lang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die längsten Bahnlinien durchquerten ganze Kontinente.",
+      "text_markdown": "Die längsten Bahnlinien durchquerten ganze Kontinente.",
+      "tts": {
+        "text": "Die längsten Bahnlinien durchquerten ganze Kontinente.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In den Vereinigten Staaten bauten zwei Firmen eine Eisenbahn quer durchs Land.",
+      "text_markdown": "In den Vereinigten Staaten bauten zwei Firmen eine Eisenbahn quer durchs Land.",
+      "tts": {
+        "text": "In den Vereinigten Staaten bauten zwei Firmen eine Eisenbahn quer durchs Land.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eine begann in Kalifornien und baute nach Osten.",
+      "text_markdown": "Eine begann in Kalifornien und baute nach Osten.",
+      "tts": {
+        "text": "Eine begann in Kalifornien und baute nach Osten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die andere begann in Nebraska und baute nach Westen.",
+      "text_markdown": "Die andere begann in Nebraska und baute nach Westen.",
+      "tts": {
+        "text": "Die andere begann in Nebraska und baute nach Westen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie trafen sich an einem Ort namens Promontory Summit in Utah.",
+      "text_markdown": "Sie trafen sich an einem Ort namens Promontory Summit in Utah.",
+      "tts": {
+        "text": "Sie trafen sich an einem Ort namens Promontory Summit in Jutah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Das war im Jahr 1869.",
+      "text_markdown": "Das war im Jahr 1869.",
+      "tts": {
+        "text": "Das war im Jahr achtzehnhundert neunundsechzig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der letzte Nagel war aus Gold.",
+      "text_markdown": "Der letzte Nagel war aus Gold.",
+      "tts": {
+        "text": "Der letzte Nagel war aus Gold.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Leute nannten ihn den Goldenen Nagel.",
+      "text_markdown": "Die Leute nannten ihn den Goldenen Nagel.",
+      "tts": {
+        "text": "Die Leute nannten ihn den Goldenen Nagel.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Strecke hieß Transcontinental Railroad.",
+      "text_markdown": "Die Strecke hieß Transcontinental Railroad.",
+      "tts": {
+        "text": "Die Strecke hieß Transkontinental Reilrohd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nun konnte man in etwa einer Woche mit dem Zug von einem Ozean zum anderen fahren.",
+      "text_markdown": "Nun konnte man in etwa einer Woche mit dem Zug von einem Ozean zum anderen fahren.",
+      "tts": {
+        "text": "Nun konnte man in etwa einer Woche mit dem Zug von einem Ozean zum anderen fahren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Russland baute eine noch längere Strecke.",
+      "text_markdown": "Russland baute eine noch längere Strecke.",
+      "tts": {
+        "text": "Russland baute eine noch längere Strecke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie heißt Trans Siberian Railway.",
+      "text_markdown": "Sie heißt Trans Siberian Railway.",
+      "tts": {
+        "text": "Sie heißt Trans Sibirien Reilwei.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie führt von Moskau im Westen bis nach Wladiwostok im Osten.",
+      "text_markdown": "Sie führt von Moskau im Westen bis nach Wladiwostok im Osten.",
+      "tts": {
+        "text": "Sie führt von Moskau im Westen bis nach Wladiwostok im Osten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Strecke wurde 1916 fertiggestellt.",
+      "text_markdown": "Die Strecke wurde 1916 fertiggestellt.",
+      "tts": {
+        "text": "Die Strecke wurde neunzehnhundert sechzehn fertiggestellt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sie ist mehr als 9000 Kilometer lang.",
+      "text_markdown": "Sie ist mehr als 9000 Kilometer lang.",
+      "tts": {
+        "text": "Sie ist mehr als neuntausend Kilometer lang.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Eine ganze Reise dauert etwa sieben Tage.",
+      "text_markdown": "Eine ganze Reise dauert etwa sieben Tage.",
+      "tts": {
+        "text": "Eine ganze Reise dauert etwa sieben Tage.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — Die großen Linien",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Sie ist noch immer die längste Eisenbahn der Welt.",
+      "text_markdown": "Sie ist noch immer die längste Eisenbahn der Welt.",
+      "tts": {
+        "text": "Sie ist noch immer die längste Eisenbahn der Welt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 4 — Dampf, Diesel, Strom",
+      "text_markdown": "Kapitel 4 — Dampf, Diesel, Strom"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fast hundert Jahre lang war fast jeder Zug ein Dampfzug.",
+      "text_markdown": "Fast hundert Jahre lang war fast jeder Zug ein Dampfzug.",
+      "tts": {
+        "text": "Fast hundert Jahre lang war fast jeder Zug ein Dampfzug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dampflokomotiven waren groß und laut.",
+      "text_markdown": "Dampflokomotiven waren groß und laut.",
+      "tts": {
+        "text": "Dampflokomotiven waren groß und laut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sie verbrannten Kohle.",
+      "text_markdown": "Sie verbrannten Kohle.",
+      "tts": {
+        "text": "Sie verbrannten Kohle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sie bliesen dicken Rauch in den Himmel.",
+      "text_markdown": "Sie bliesen dicken Rauch in den Himmel.",
+      "tts": {
+        "text": "Sie bliesen dicken Rauch in den Himmel.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dann kam die Diesellokomotive.",
+      "text_markdown": "Dann kam die Diesellokomotive.",
+      "tts": {
+        "text": "Dann kam die Diesellokomotive.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Dieselmotor verbrennt Öl statt Kohle.",
+      "text_markdown": "Ein Dieselmotor verbrennt Öl statt Kohle.",
+      "tts": {
+        "text": "Ein Dieselmotor verbrennt Öl statt Kohle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er ist kleiner und sauberer.",
+      "text_markdown": "Er ist kleiner und sauberer.",
+      "tts": {
+        "text": "Er ist kleiner und sauberer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er braucht kein Feuer und keinen Wassertank.",
+      "text_markdown": "Er braucht kein Feuer und keinen Wassertank.",
+      "tts": {
+        "text": "Er braucht kein Feuer und keinen Wassertank.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieselzüge wurden in den 1940er und 1950er Jahren üblich.",
+      "text_markdown": "Dieselzüge wurden in den 1940er und 1950er Jahren üblich.",
+      "tts": {
+        "text": "Dieselzüge wurden in den vierziger und fünfziger Jahren des zwanzigsten Jahrhunderts üblich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Langsam wurden die großen Dampflokomotiven ausgemustert.",
+      "text_markdown": "Langsam wurden die großen Dampflokomotiven ausgemustert.",
+      "tts": {
+        "text": "Langsam wurden die großen Dampflokomotiven ausgemustert.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein paar stehen noch in Museen und auf Touristenbahnen.",
+      "text_markdown": "Ein paar stehen noch in Museen und auf Touristenbahnen.",
+      "tts": {
+        "text": "Ein paar stehen noch in Museen und auf Touristenbahnen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Der nächste Schritt war der elektrische Zug.",
+      "text_markdown": "Der nächste Schritt war der elektrische Zug.",
+      "tts": {
+        "text": "Der nächste Schritt war der elektrische Zug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein elektrischer Zug hat keinen Motor, der Treibstoff verbrennt.",
+      "text_markdown": "Ein elektrischer Zug hat keinen Motor, der Treibstoff verbrennt.",
+      "tts": {
+        "text": "Ein elektrischer Zug hat keinen Motor, der Treibstoff verbrennt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Er bekommt Strom von einer Leitung über dem Gleis oder von einer dritten Schiene neben dem Gleis.",
+      "text_markdown": "Er bekommt Strom von einer Leitung über dem Gleis oder von einer dritten Schiene neben dem Gleis.",
+      "tts": {
+        "text": "Er bekommt Strom von einer Leitung über dem Gleis oder von einer dritten Schiene neben dem Gleis.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elektrische Züge sind leise und sehr sauber.",
+      "text_markdown": "Elektrische Züge sind leise und sehr sauber.",
+      "tts": {
+        "text": "Elektrische Züge sind leise und sehr sauber.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie sind auch sehr stark.",
+      "text_markdown": "Sie sind auch sehr stark.",
+      "tts": {
+        "text": "Sie sind auch sehr stark.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die meisten Züge in Städten und die meisten schnellen Züge heute sind elektrisch.",
+      "text_markdown": "Die meisten Züge in Städten und die meisten schnellen Züge heute sind elektrisch.",
+      "tts": {
+        "text": "Die meisten Züge in Städten und die meisten schnellen Züge heute sind elektrisch.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dampf, Diesel, Strom.",
+      "text_markdown": "Dampf, Diesel, Strom.",
+      "tts": {
+        "text": "Dampf, Diesel, Strom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Dampf, Diesel, Strom",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Drei Antriebe, drei Zeitalter.",
+      "text_markdown": "Drei Antriebe, drei Zeitalter.",
+      "tts": {
+        "text": "Drei Antriebe, drei Zeitalter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "text_markdown": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 1964 eröffnete Japan eine ganz neue Bahnstrecke.",
+      "text_markdown": "Im Jahr 1964 eröffnete Japan eine ganz neue Bahnstrecke.",
+      "tts": {
+        "text": "Im Jahr neunzehnhundert vierundsechzig eröffnete Japan eine ganz neue Bahnstrecke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie führte von Tokio nach Osaka.",
+      "text_markdown": "Sie führte von Tokio nach Osaka.",
+      "tts": {
+        "text": "Sie führte von Tokio nach Osaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Züge sahen aus wie lange weiße Geschosse.",
+      "text_markdown": "Die Züge sahen aus wie lange weiße Geschosse.",
+      "tts": {
+        "text": "Die Züge sahen aus wie lange weiße Geschosse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die Leute nannten sie Geschosszüge.",
+      "text_markdown": "Die Leute nannten sie Geschosszüge.",
+      "tts": {
+        "text": "Die Leute nannten sie Geschosszüge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Der japanische Name ist Shinkansen.",
+      "text_markdown": "Der japanische Name ist Shinkansen.",
+      "tts": {
+        "text": "Der japanische Name ist Schinkansen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die ersten Hochgeschwindigkeitszüge fuhren 130 Meilen pro Stunde.",
+      "text_markdown": "Die ersten Hochgeschwindigkeitszüge fuhren 130 Meilen pro Stunde.",
+      "tts": {
+        "text": "Die ersten Hochgeschwindigkeitszüge fuhren hundertdreißig Meilen pro Stunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das war für einen Zug im Jahr 1964 sehr schnell.",
+      "text_markdown": "Das war für einen Zug im Jahr 1964 sehr schnell.",
+      "tts": {
+        "text": "Das war für einen Zug im Jahr neunzehnhundert vierundsechzig sehr schnell.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Strecke wurde genau rechtzeitig für die Olympischen Spiele in Tokio eröffnet.",
+      "text_markdown": "Die Strecke wurde genau rechtzeitig für die Olympischen Spiele in Tokio eröffnet.",
+      "tts": {
+        "text": "Die Strecke wurde genau rechtzeitig für die Olympischen Spiele in Tokio eröffnet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere Länder folgten.",
+      "text_markdown": "Andere Länder folgten.",
+      "tts": {
+        "text": "Andere Länder folgten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Im Jahr 1981 eröffnete Frankreich seine Hochgeschwindigkeitsstrecke.",
+      "text_markdown": "Im Jahr 1981 eröffnete Frankreich seine Hochgeschwindigkeitsstrecke.",
+      "tts": {
+        "text": "Im Jahr neunzehnhundert einundachtzig eröffnete Frankreich seine Hochgeschwindigkeitsstrecke.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Züge heißen TGV.",
+      "text_markdown": "Die Züge heißen TGV.",
+      "tts": {
+        "text": "Die Züge heißen Te Ge Vau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Deutschland folgte mit dem ICE.",
+      "text_markdown": "Deutschland folgte mit dem ICE.",
+      "tts": {
+        "text": "Deutschland folgte mit dem I Ce E.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Italien, Spanien und Korea bauten ihre eigenen Hochgeschwindigkeitsstrecken.",
+      "text_markdown": "Italien, Spanien und Korea bauten ihre eigenen Hochgeschwindigkeitsstrecken.",
+      "tts": {
+        "text": "Italien, Spanien und Korea bauten ihre eigenen Hochgeschwindigkeitsstrecken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "China begann als Letztes, baute aber schnell.",
+      "text_markdown": "China begann als Letztes, baute aber schnell.",
+      "tts": {
+        "text": "China begann als Letztes, baute aber schnell.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Heute hat China das größte Hochgeschwindigkeitsnetz der Welt.",
+      "text_markdown": "Heute hat China das größte Hochgeschwindigkeitsnetz der Welt.",
+      "tts": {
+        "text": "Heute hat China das größte Hochgeschwindigkeitsnetz der Welt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Es gibt Zehntausende von Kilometern Gleis.",
+      "text_markdown": "Es gibt Zehntausende von Kilometern Gleis.",
+      "tts": {
+        "text": "Es gibt Zehntausende von Kilometern Gleis.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moderne Hochgeschwindigkeitszüge können mit mehr als 200 Meilen pro Stunde fahren.",
+      "text_markdown": "Moderne Hochgeschwindigkeitszüge können mit mehr als 200 Meilen pro Stunde fahren.",
+      "tts": {
+        "text": "Moderne Hochgeschwindigkeitszüge können mit mehr als zweihundert Meilen pro Stunde fahren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie fahren ruhig, leise und fast immer pünktlich.",
+      "text_markdown": "Sie fahren ruhig, leise und fast immer pünktlich.",
+      "tts": {
+        "text": "Sie fahren ruhig, leise und fast immer pünktlich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Hochgeschwindigkeitszüge und das Rennen um Tempo",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Für viele Reisen sind sie schneller als das Fliegen.",
+      "text_markdown": "Für viele Reisen sind sie schneller als das Fliegen.",
+      "tts": {
+        "text": "Für viele Reisen sind sie schneller als das Fliegen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 6 — Viele Arten von Zügen",
+      "text_markdown": "Kapitel 6 — Viele Arten von Zügen"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nicht alle Züge sind gleich.",
+      "text_markdown": "Nicht alle Züge sind gleich.",
+      "tts": {
+        "text": "Nicht alle Züge sind gleich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Es gibt viele Arten.",
+      "text_markdown": "Es gibt viele Arten.",
+      "tts": {
+        "text": "Es gibt viele Arten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Personenzug befördert Menschen.",
+      "text_markdown": "Ein Personenzug befördert Menschen.",
+      "tts": {
+        "text": "Ein Personenzug befördert Menschen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er hat Sitze, Fenster und manchmal einen Speisewagen oder einen Schlafwagen.",
+      "text_markdown": "Er hat Sitze, Fenster und manchmal einen Speisewagen oder einen Schlafwagen.",
+      "tts": {
+        "text": "Er hat Sitze, Fenster und manchmal einen Speisewagen oder einen Schlafwagen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Güterzug befördert Waren.",
+      "text_markdown": "Ein Güterzug befördert Waren.",
+      "tts": {
+        "text": "Ein Güterzug befördert Waren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die Wagen nennt man Waggons.",
+      "text_markdown": "Die Wagen nennt man Waggons.",
+      "tts": {
+        "text": "Die Wagen nennt man Waggons.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Manche transportieren Getreide.",
+      "text_markdown": "Manche transportieren Getreide.",
+      "tts": {
+        "text": "Manche transportieren Getreide.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Manche transportieren Öl.",
+      "text_markdown": "Manche transportieren Öl.",
+      "tts": {
+        "text": "Manche transportieren Öl.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Manche transportieren ganze Container, die zwei hoch gestapelt sind.",
+      "text_markdown": "Manche transportieren ganze Container, die zwei hoch gestapelt sind.",
+      "tts": {
+        "text": "Manche transportieren ganze Container, die zwei hoch gestapelt sind.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine U-Bahn ist ein unterirdischer Zug in einer Stadt.",
+      "text_markdown": "Eine U-Bahn ist ein unterirdischer Zug in einer Stadt.",
+      "tts": {
+        "text": "Eine U Bahn ist ein unterirdischer Zug in einer Stadt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Die erste U-Bahn wurde 1863 in London eröffnet.",
+      "text_markdown": "Die erste U-Bahn wurde 1863 in London eröffnet.",
+      "tts": {
+        "text": "Die erste U Bahn wurde achtzehnhundert dreiundsechzig in London eröffnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Heute haben große Städte riesige U-Bahn-Netze unter ihren Straßen.",
+      "text_markdown": "Heute haben große Städte riesige U-Bahn-Netze unter ihren Straßen.",
+      "tts": {
+        "text": "Heute haben große Städte riesige U Bahn Netze unter ihren Straßen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eine Straßenbahn oder Stadtbahn ist ein kleiner Zug, der auf den Straßen einer Stadt fährt.",
+      "text_markdown": "Eine Straßenbahn oder Stadtbahn ist ein kleiner Zug, der auf den Straßen einer Stadt fährt.",
+      "tts": {
+        "text": "Eine Straßenbahn oder Stadtbahn ist ein kleiner Zug, der auf den Straßen einer Stadt fährt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Er teilt sich die Straße oft mit Autos und Bussen.",
+      "text_markdown": "Er teilt sich die Straße oft mit Autos und Bussen.",
+      "tts": {
+        "text": "Er teilt sich die Straße oft mit Autos und Bussen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ein Bergzug fährt steile Hänge hinauf.",
+      "text_markdown": "Ein Bergzug fährt steile Hänge hinauf.",
+      "tts": {
+        "text": "Ein Bergzug fährt steile Hänge hinauf.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Manche haben in der Mitte eine besondere Schiene mit Zähnen, die Zahnstange genannt wird.",
+      "text_markdown": "Manche haben in der Mitte eine besondere Schiene mit Zähnen, die Zahnstange genannt wird.",
+      "tts": {
+        "text": "Manche haben in der Mitte eine besondere Schiene mit Zähnen, die Zahnstange genannt wird.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die Lok greift in die Zahnstange, um sicher hinauf und wieder hinunter zu fahren.",
+      "text_markdown": "Die Lok greift in die Zahnstange, um sicher hinauf und wieder hinunter zu fahren.",
+      "tts": {
+        "text": "Die Lok greift in die Zahnstange, um sicher hinauf und wieder hinunter zu fahren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Manche Züge sind auch Touristenzüge.",
+      "text_markdown": "Manche Züge sind auch Touristenzüge.",
+      "tts": {
+        "text": "Manche Züge sind auch Touristenzüge.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Viele Arten von Zügen",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie fahren durch Wälder und Berge, nur wegen der Aussicht.",
+      "text_markdown": "Sie fahren durch Wälder und Berge, nur wegen der Aussicht.",
+      "tts": {
+        "text": "Sie fahren durch Wälder und Berge, nur wegen der Aussicht.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 7 — Die Zukunft auf Schienen",
+      "text_markdown": "Kapitel 7 — Die Zukunft auf Schienen"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Die Geschichte des Zuges ist noch nicht zu Ende.",
+      "text_markdown": "Die Geschichte des Zuges ist noch nicht zu Ende.",
+      "tts": {
+        "text": "Die Geschichte des Zuges ist noch nicht zu Ende.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gerade jetzt werden neue Arten von Zügen gebaut.",
+      "text_markdown": "Gerade jetzt werden neue Arten von Zügen gebaut.",
+      "tts": {
+        "text": "Gerade jetzt werden neue Arten von Zügen gebaut.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Am erstaunlichsten ist der Maglev.",
+      "text_markdown": "Am erstaunlichsten ist der Maglev.",
+      "tts": {
+        "text": "Am erstaunlichsten ist der Mäglev.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Das Wort Maglev ist eine Kurzform für magnetische Levitation.",
+      "text_markdown": "Das Wort Maglev ist eine Kurzform für magnetische Levitation.",
+      "tts": {
+        "text": "Das Wort Mäglev ist eine Kurzform für magnetische Levitation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ein Maglev-Zug berührt seine Strecke nicht.",
+      "text_markdown": "Ein Maglev-Zug berührt seine Strecke nicht.",
+      "tts": {
+        "text": "Ein Mäglev Zug berührt seine Strecke nicht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Er schwebt auf einem Kissen aus Magneten.",
+      "text_markdown": "Er schwebt auf einem Kissen aus Magneten.",
+      "tts": {
+        "text": "Er schwebt auf einem Kissen aus Magneten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Es drehen sich keine Räder.",
+      "text_markdown": "Es drehen sich keine Räder.",
+      "tts": {
+        "text": "Es drehen sich keine Räder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Es gibt keine Reibung.",
+      "text_markdown": "Es gibt keine Reibung.",
+      "tts": {
+        "text": "Es gibt keine Reibung.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Im Jahr 2004 wurde in Shanghai in China eine Maglev-Strecke eröffnet.",
+      "text_markdown": "Im Jahr 2004 wurde in Shanghai in China eine Maglev-Strecke eröffnet.",
+      "tts": {
+        "text": "Im Jahr zweitausend vier wurde in Shanghai in China eine Mäglev Strecke eröffnet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Der Zug kann mehr als 250 Meilen pro Stunde erreichen.",
+      "text_markdown": "Der Zug kann mehr als 250 Meilen pro Stunde erreichen.",
+      "tts": {
+        "text": "Der Zug kann mehr als zweihundertfünfzig Meilen pro Stunde erreichen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "In Japan ist ein Maglev-Testzug schneller als 370 Meilen pro Stunde gefahren.",
+      "text_markdown": "In Japan ist ein Maglev-Testzug schneller als 370 Meilen pro Stunde gefahren.",
+      "tts": {
+        "text": "In Japan ist ein Mäglev Testzug schneller als dreihundertsiebzig Meilen pro Stunde gefahren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere Ingenieure arbeiten am Wasserstoffzug.",
+      "text_markdown": "Andere Ingenieure arbeiten am Wasserstoffzug.",
+      "tts": {
+        "text": "Andere Ingenieure arbeiten am Wasserstoffzug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ein Wasserstoffzug macht Strom aus einer kleinen Brennstoffzelle.",
+      "text_markdown": "Ein Wasserstoffzug macht Strom aus einer kleinen Brennstoffzelle.",
+      "tts": {
+        "text": "Ein Wasserstoffzug macht Strom aus einer kleinen Brennstoffzelle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Das Einzige, was aus dem Motor kommt, ist Wasserdampf.",
+      "text_markdown": "Das Einzige, was aus dem Motor kommt, ist Wasserdampf.",
+      "tts": {
+        "text": "Das Einzige, was aus dem Motor kommt, ist Wasserdampf.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kein Rauch.",
+      "text_markdown": "Kein Rauch.",
+      "tts": {
+        "text": "Kein Rauch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Keine Kohle.",
+      "text_markdown": "Keine Kohle.",
+      "tts": {
+        "text": "Keine Kohle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Im Jahr 2018 nahmen die ersten Wasserstoffzüge in Deutschland den Dienst auf.",
+      "text_markdown": "Im Jahr 2018 nahmen die ersten Wasserstoffzüge in Deutschland den Dienst auf.",
+      "tts": {
+        "text": "Im Jahr zweitausend achtzehn nahmen die ersten Wasserstoffzüge in Deutschland den Dienst auf.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Züge sind sehr alt.",
+      "text_markdown": "Züge sind sehr alt.",
+      "tts": {
+        "text": "Züge sind sehr alt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sie sind auch sehr neu.",
+      "text_markdown": "Sie sind auch sehr neu.",
+      "tts": {
+        "text": "Sie sind auch sehr neu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Die Zukunft auf Schienen",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zweihundert Jahre nach der Rocket sind die Schienen noch immer die Zukunft.",
+      "text_markdown": "Zweihundert Jahre nach der Rocket sind die Schienen noch immer die Zukunft.",
+      "tts": {
+        "text": "Zweihundert Jahre nach der Rockit sind die Schienen noch immer die Zukunft.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Der eiserne Weg geht weiter",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Der eiserne Weg geht weiter",
+      "text_markdown": "Der eiserne Weg geht weiter"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Der eiserne Weg geht weiter",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Von der Rocket bis zum Maglev hat der Zug die Welt fast zweihundert Jahre lang vorangebracht.",
+      "text_markdown": "Von der Rocket bis zum Maglev hat der Zug die Welt fast zweihundert Jahre lang vorangebracht.",
+      "tts": {
+        "text": "Von der Rockit bis zum Mäglev hat der Zug die Welt fast zweihundert Jahre lang vorangebracht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Der eiserne Weg geht weiter",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Gerade jetzt werden neue Strecken verlegt, in Wüsten, in Bergen und unter Städten.",
+      "text_markdown": "Gerade jetzt werden neue Strecken verlegt, in Wüsten, in Bergen und unter Städten.",
+      "tts": {
+        "text": "Gerade jetzt werden neue Strecken verlegt, in Wüsten, in Bergen und unter Städten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Der eiserne Weg geht weiter",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die nächste Station liegt immer irgendwo vor uns.",
+      "text_markdown": "Die nächste Station liegt immer irgendwo vor uns.",
+      "tts": {
+        "text": "Die nächste Station liegt immer irgendwo vor uns.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

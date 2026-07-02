@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_temperate_grassland",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "Het Gematigd Grasland",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het Gematigd Grasland",
+      "text_markdown": "Het Gematigd Grasland"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waar Gematigde Graslanden Groeien",
+      "text_markdown": "Waar Gematigde Graslanden Groeien"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welkom in het gematigd grasland.",
+      "text_markdown": "Welkom in het gematigd grasland.",
+      "tts": {
+        "text": "Welkom in het gematigd grasland.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een van de grote biomen van de wereld.",
+      "text_markdown": "Dit is een van de grote biomen van de wereld.",
+      "tts": {
+        "text": "Dit is een van de grote biomen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "text_markdown": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "tts": {
+        "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gematigd grasland is een wijd land van gras met heel weinig bomen.",
+      "text_markdown": "Het gematigd grasland is een wijd land van gras met heel weinig bomen.",
+      "tts": {
+        "text": "Het gematigd grasland is een wijd land van gras met heel weinig bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het ligt in de middendelen van de wereld, tussen het koude noorden en de warme tropen.",
+      "text_markdown": "Het ligt in de middendelen van de wereld, tussen het koude noorden en de warme tropen.",
+      "tts": {
+        "text": "Het ligt in de middendelen van de wereld, tussen het koude noorden en de warme tropen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anders dan de tropische savanne heeft dit land koude winters en warme zomers.",
+      "text_markdown": "Anders dan de tropische savanne heeft dit land koude winters en warme zomers.",
+      "tts": {
+        "text": "Anders dan de tropische savanne heeft dit land koude winters en warme zomers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grootste gematigde graslanden ter wereld liggen in Noord-Amerika en in Eurazië.",
+      "text_markdown": "De grootste gematigde graslanden ter wereld liggen in Noord-Amerika en in Eurazië.",
+      "tts": {
+        "text": "De grootste gematigde graslanden ter wereld liggen in Noord Amerika en in Eurazië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Noord-Amerika worden de grote centrale vlaktes de prairies genoemd.",
+      "text_markdown": "In Noord-Amerika worden de grote centrale vlaktes de prairies genoemd.",
+      "tts": {
+        "text": "In Noord Amerika worden de grote centrale vlaktes de prairies genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Rusland, Oekraïne, Kazachstan en Mongolië worden ze de steppen genoemd.",
+      "text_markdown": "In Rusland, Oekraïne, Kazachstan en Mongolië worden ze de steppen genoemd.",
+      "tts": {
+        "text": "In Rusland, Oekraïne, Kazachstan en Mongolië worden ze de steppen genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Argentinië en Uruguay worden ze de pampa genoemd.",
+      "text_markdown": "In Argentinië en Uruguay worden ze de pampa genoemd.",
+      "tts": {
+        "text": "In Argentinië en Uruguay worden ze de pampa genoemd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn kleinere gematigde graslanden in zuidelijk Afrika en in delen van Australië.",
+      "text_markdown": "Er zijn kleinere gematigde graslanden in zuidelijk Afrika en in delen van Australië.",
+      "tts": {
+        "text": "Er zijn kleinere gematigde graslanden in zuidelijk Afrika en in delen van Australië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk van deze graslanden is op zichzelf ontstaan.",
+      "text_markdown": "Elk van deze graslanden is op zichzelf ontstaan.",
+      "tts": {
+        "text": "Elk van deze graslanden is op zichzelf ontstaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dus de planten en dieren zijn in elk deel van de wereld anders.",
+      "text_markdown": "Dus de planten en dieren zijn in elk deel van de wereld anders.",
+      "tts": {
+        "text": "Dus de planten en dieren zijn in elk deel van de wereld anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar ze delen allemaal hetzelfde patroon.",
+      "text_markdown": "Maar ze delen allemaal hetzelfde patroon.",
+      "tts": {
+        "text": "Maar ze delen allemaal hetzelfde patroon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een zee van gras, een grote open hemel, sterke winden en slechts een paar bomen langs de rivieren.",
+      "text_markdown": "Een zee van gras, een grote open hemel, sterke winden en slechts een paar bomen langs de rivieren.",
+      "tts": {
+        "text": "Een zee van gras, een grote open hemel, sterke winden en slechts een paar bomen langs de rivieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer je op een gematigd grasland staat, waait de wind bijna altijd.",
+      "text_markdown": "Wanneer je op een gematigd grasland staat, waait de wind bijna altijd.",
+      "tts": {
+        "text": "Wanneer je op een gematigd grasland staat, waait de wind bijna altijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras beweegt als het oppervlak van de zee.",
+      "text_markdown": "Het gras beweegt als het oppervlak van de zee.",
+      "tts": {
+        "text": "Het gras beweegt als het oppervlak van de zee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je kunt mijlenver in elke richting kijken.",
+      "text_markdown": "Je kunt mijlenver in elke richting kijken.",
+      "tts": {
+        "text": "Je kunt mijlenver in elke richting kijken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hemel voelt twee keer zo groot als in welk bos dan ook.",
+      "text_markdown": "De hemel voelt twee keer zo groot als in welk bos dan ook.",
+      "tts": {
+        "text": "De hemel voelt twee keer zo groot als in welk bos dan ook.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer is het gras hoog en groen.",
+      "text_markdown": "In de zomer is het gras hoog en groen.",
+      "tts": {
+        "text": "In de zomer is het gras hoog en groen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst wordt het goudbruin.",
+      "text_markdown": "In de herfst wordt het goudbruin.",
+      "tts": {
+        "text": "In de herfst wordt het goudbruin.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter ligt het bruin en stijf onder de sneeuwlaag.",
+      "text_markdown": "In de winter ligt het bruin en stijf onder de sneeuwlaag.",
+      "tts": {
+        "text": "In de winter ligt het bruin en stijf onder de sneeuwlaag.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lente groeit het weer fris en helder terug.",
+      "text_markdown": "In de lente groeit het weer fris en helder terug.",
+      "tts": {
+        "text": "In de lente groeit het weer fris en helder terug.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het gematigd grasland.",
+      "text_markdown": "Dat is het gematigd grasland.",
+      "tts": {
+        "text": "Dat is het gematigd grasland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Waar Gematigde Graslanden Groeien",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een wijde, winderige wereld van gras, hemel en wisselende seizoenen.",
+      "text_markdown": "Een wijde, winderige wereld van gras, hemel en wisselende seizoenen.",
+      "tts": {
+        "text": "Een wijde, winderige wereld van gras, hemel en wisselende seizoenen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het Weer",
+      "text_markdown": "Het Weer"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het weer in het gematigd grasland wordt gevormd door de open hemel.",
+      "text_markdown": "Het weer in het gematigd grasland wordt gevormd door de open hemel.",
+      "tts": {
+        "text": "Het weer in het gematigd grasland wordt gevormd door de open hemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn heel weinig bomen en weinig heuvels om de wind te vertragen.",
+      "text_markdown": "Er zijn heel weinig bomen en weinig heuvels om de wind te vertragen.",
+      "tts": {
+        "text": "Er zijn heel weinig bomen en weinig heuvels om de wind te vertragen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vier seizoenen zijn er, en elk seizoen is sterk aanwezig.",
+      "text_markdown": "Vier seizoenen zijn er, en elk seizoen is sterk aanwezig.",
+      "tts": {
+        "text": "Vier seizoenen zijn er, en elk seizoen is sterk aanwezig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zomers zijn helder en heet.",
+      "text_markdown": "De zomers zijn helder en heet.",
+      "tts": {
+        "text": "De zomers zijn helder en heet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zon brandt op het open gras, en de dagen zijn lang.",
+      "text_markdown": "De zon brandt op het open gras, en de dagen zijn lang.",
+      "tts": {
+        "text": "De zon brandt op het open gras, en de dagen zijn lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In één middag kan een enorme storm vanaf de horizon komen aanrollen.",
+      "text_markdown": "In één middag kan een enorme storm vanaf de horizon komen aanrollen.",
+      "tts": {
+        "text": "In één middag kan een enorme storm vanaf de horizon komen aanrollen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bliksem flitst in de verte, en zware regen valt in één keer naar beneden.",
+      "text_markdown": "Bliksem flitst in de verte, en zware regen valt in één keer naar beneden.",
+      "tts": {
+        "text": "Bliksem flitst in de verte, en zware regen valt in één keer naar beneden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wintermaanden zijn koud.",
+      "text_markdown": "Wintermaanden zijn koud.",
+      "tts": {
+        "text": "Wintermaanden zijn koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In sommige graslanden kan de temperatuur wekenlang ver onder het vriespunt zakken.",
+      "text_markdown": "In sommige graslanden kan de temperatuur wekenlang ver onder het vriespunt zakken.",
+      "tts": {
+        "text": "In sommige graslanden kan de temperatuur wekenlang ver onder het vriespunt zakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sneeuw waait over het open land en hoopt zich op in lange driften.",
+      "text_markdown": "Sneeuw waait over het open land en hoopt zich op in lange driften.",
+      "tts": {
+        "text": "Sneeuw waait over het open land en hoopt zich op in lange driften.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wind in de winter is sterk en scherp.",
+      "text_markdown": "De wind in de winter is sterk en scherp.",
+      "tts": {
+        "text": "De wind in de winter is sterk en scherp.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de lente smelt de sneeuw, en de rivieren staan hoog.",
+      "text_markdown": "In de lente smelt de sneeuw, en de rivieren staan hoog.",
+      "tts": {
+        "text": "In de lente smelt de sneeuw, en de rivieren staan hoog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras wordt bijna van de ene op de andere dag groen.",
+      "text_markdown": "Het gras wordt bijna van de ene op de andere dag groen.",
+      "tts": {
+        "text": "Het gras wordt bijna van de ene op de andere dag groen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vogels keren terug uit warmere landen en vullen de lucht met geluid.",
+      "text_markdown": "Vogels keren terug uit warmere landen en vullen de lucht met geluid.",
+      "tts": {
+        "text": "Vogels keren terug uit warmere landen en vullen de lucht met geluid.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de herfst wordt het gras goudkleurig, de wind wordt koeler, en de kuddes trekken naar beschutting.",
+      "text_markdown": "In de herfst wordt het gras goudkleurig, de wind wordt koeler, en de kuddes trekken naar beschutting.",
+      "tts": {
+        "text": "In de herfst wordt het gras goudkleurig, de wind wordt koeler, en de kuddes trekken naar beschutting.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grasland krijgt net genoeg regen om het gras te voeden.",
+      "text_markdown": "Het grasland krijgt net genoeg regen om het gras te voeden.",
+      "tts": {
+        "text": "Het grasland krijgt net genoeg regen om het gras te voeden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Het Weer",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is niet genoeg regen om grote bossen te laten groeien, maar het is ruim voldoende voor het gras en de dieren die het nodig hebben.",
+      "text_markdown": "Het is niet genoeg regen om grote bossen te laten groeien, maar het is ruim voldoende voor het gras en de dieren die het nodig hebben.",
+      "tts": {
+        "text": "Het is niet genoeg regen om grote bossen te laten groeien, maar het is ruim voldoende voor het gras en de dieren die het nodig hebben.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het Land en het Water",
+      "text_markdown": "Het Land en het Water"
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het land van het gematigd grasland is meestal vlak of zacht glooiend.",
+      "text_markdown": "Het land van het gematigd grasland is meestal vlak of zacht glooiend.",
+      "tts": {
+        "text": "Het land van het gematigd grasland is meestal vlak of zacht glooiend.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken rijzen lage heuvels uit het gras op.",
+      "text_markdown": "Op sommige plekken rijzen lage heuvels uit het gras op.",
+      "tts": {
+        "text": "Op sommige plekken rijzen lage heuvels uit het gras op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op andere is het land zo vlak dat je de horizon als een perfecte rechte lijn kunt zien.",
+      "text_markdown": "Op andere is het land zo vlak dat je de horizon als een perfecte rechte lijn kunt zien.",
+      "tts": {
+        "text": "Op andere is het land zo vlak dat je de horizon als een perfecte rechte lijn kunt zien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grond hier is een van de rijkste grondsoorten op Aarde.",
+      "text_markdown": "De grond hier is een van de rijkste grondsoorten op Aarde.",
+      "tts": {
+        "text": "De grond hier is een van de rijkste grondsoorten op Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Duizenden jaren lang zijn grassen gegroeid, gestorven en in de bodem verrot.",
+      "text_markdown": "Duizenden jaren lang zijn grassen gegroeid, gestorven en in de bodem verrot.",
+      "tts": {
+        "text": "Duizenden jaren lang zijn grassen gegroeid, gestorven en in de bodem verrot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit heeft een dikke, donkere grond gemaakt die vol voedsel zit voor planten.",
+      "text_markdown": "Dit heeft een dikke, donkere grond gemaakt die vol voedsel zit voor planten.",
+      "tts": {
+        "text": "Dit heeft een dikke, donkere grond gemaakt die vol voedsel zit voor planten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarom zijn zoveel van deze landen veranderd in grote tarwe- en maïsboerderijen.",
+      "text_markdown": "Daarom zijn zoveel van deze landen veranderd in grote tarwe- en maïsboerderijen.",
+      "tts": {
+        "text": "Daarom zijn zoveel van deze landen veranderd in grote tarwe en maïsboerderijen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Rivieren kronkelen door de graslanden in lange, trage bochten.",
+      "text_markdown": "Rivieren kronkelen door de graslanden in lange, trage bochten.",
+      "tts": {
+        "text": "Rivieren kronkelen door de graslanden in lange, trage bochten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De rivieren voeren water vanuit verre bergen en gesmolten sneeuw over het open land.",
+      "text_markdown": "De rivieren voeren water vanuit verre bergen en gesmolten sneeuw over het open land.",
+      "tts": {
+        "text": "De rivieren voeren water vanuit verre bergen en gesmolten sneeuw over het open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langs de oevers van de rivieren vind je een dunne lijn van bomen.",
+      "text_markdown": "Langs de oevers van de rivieren vind je een dunne lijn van bomen.",
+      "tts": {
+        "text": "Langs de oevers van de rivieren vind je een dunne lijn van bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze bomen volgen het water en steken af als groene linten in de wijde zee van gras.",
+      "text_markdown": "Deze bomen volgen het water en steken af als groene linten in de wijde zee van gras.",
+      "tts": {
+        "text": "Deze bomen volgen het water en steken af als groene linten in de wijde zee van gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Weg van de rivieren zijn er heel weinig bomen.",
+      "text_markdown": "Weg van de rivieren zijn er heel weinig bomen.",
+      "tts": {
+        "text": "Weg van de rivieren zijn er heel weinig bomen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wind, de koude winters en de droge zomers houden de meeste bomen hier weg van groei.",
+      "text_markdown": "De wind, de koude winters en de droge zomers houden de meeste bomen hier weg van groei.",
+      "tts": {
+        "text": "De wind, de koude winters en de droge zomers houden de meeste bomen hier weg van groei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar het gras heeft niet veel nodig.",
+      "text_markdown": "Maar het gras heeft niet veel nodig.",
+      "tts": {
+        "text": "Maar het gras heeft niet veel nodig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn lange wortels reiken diep in de rijke grond, en het komt elke lente terug.",
+      "text_markdown": "Zijn lange wortels reiken diep in de rijke grond, en het komt elke lente terug.",
+      "tts": {
+        "text": "Zijn lange wortels reiken diep in de rijke grond, en het komt elke lente terug.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vuur trekt ook van tijd tot tijd door deze landen.",
+      "text_markdown": "Vuur trekt ook van tijd tot tijd door deze landen.",
+      "tts": {
+        "text": "Vuur trekt ook van tijd tot tijd door deze landen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras brandt snel op, maar de diepe wortels blijven leven.",
+      "text_markdown": "Het gras brandt snel op, maar de diepe wortels blijven leven.",
+      "tts": {
+        "text": "Het gras brandt snel op, maar de diepe wortels blijven leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "Het Land en het Water",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na een regenbui groeit het gras groener en sterker terug dan voorheen.",
+      "text_markdown": "Na een regenbui groeit het gras groener en sterker terug dan voorheen.",
+      "tts": {
+        "text": "Na een regenbui groeit het gras groener en sterker terug dan voorheen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De Planten",
+      "text_markdown": "De Planten"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grassen zijn het hart van dit bioom.",
+      "text_markdown": "De grassen zijn het hart van dit bioom.",
+      "tts": {
+        "text": "De grassen zijn het hart van dit bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn veel verschillende soorten gras in een gematigd grasland.",
+      "text_markdown": "Er zijn veel verschillende soorten gras in een gematigd grasland.",
+      "tts": {
+        "text": "Er zijn veel verschillende soorten gras in een gematigd grasland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige grassen groeien maar tot enkelhoogte.",
+      "text_markdown": "Sommige grassen groeien maar tot enkelhoogte.",
+      "tts": {
+        "text": "Sommige grassen groeien maar tot enkelhoogte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere staan zo hoog als een mens.",
+      "text_markdown": "Andere staan zo hoog als een mens.",
+      "tts": {
+        "text": "Andere staan zo hoog als een mens.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elke soort gras heeft een lange, zachte aar vol zaden aan de top.",
+      "text_markdown": "Elke soort gras heeft een lange, zachte aar vol zaden aan de top.",
+      "tts": {
+        "text": "Elke soort gras heeft een lange, zachte aar vol zaden aan de top.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer draagt de wind golven van zaadaren over het land.",
+      "text_markdown": "In de zomer draagt de wind golven van zaadaren over het land.",
+      "tts": {
+        "text": "In de zomer draagt de wind golven van zaadaren over het land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras heeft heel lange wortels die diep in de donkere grond reiken.",
+      "text_markdown": "Het gras heeft heel lange wortels die diep in de donkere grond reiken.",
+      "tts": {
+        "text": "Het gras heeft heel lange wortels die diep in de donkere grond reiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wortels kunnen onder de grond langer zijn dan het gras boven de grond hoog is.",
+      "text_markdown": "De wortels kunnen onder de grond langer zijn dan het gras boven de grond hoog is.",
+      "tts": {
+        "text": "De wortels kunnen onder de grond langer zijn dan het gras boven de grond hoog is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zo overleeft het gras de droge tijden en de koude winters.",
+      "text_markdown": "Zo overleeft het gras de droge tijden en de koude winters.",
+      "tts": {
+        "text": "Zo overleeft het gras de droge tijden en de koude winters.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zo komt het gras ook snel terug na een brand.",
+      "text_markdown": "Zo komt het gras ook snel terug na een brand.",
+      "tts": {
+        "text": "Zo komt het gras ook snel terug na een brand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tussen de grassen bloeien kleine bloemen in de warme maanden.",
+      "text_markdown": "Tussen de grassen bloeien kleine bloemen in de warme maanden.",
+      "tts": {
+        "text": "Tussen de grassen bloeien kleine bloemen in de warme maanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wilde zonnebloemen en vele andere felle bloemen vullen het grasland in de zomer.",
+      "text_markdown": "Wilde zonnebloemen en vele andere felle bloemen vullen het grasland in de zomer.",
+      "tts": {
+        "text": "Wilde zonnebloemen en vele andere felle bloemen vullen het grasland in de zomer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bijen en vlinders gaan van de ene bloesem naar de andere.",
+      "text_markdown": "Bijen en vlinders gaan van de ene bloesem naar de andere.",
+      "tts": {
+        "text": "Bijen en vlinders gaan van de ene bloesem naar de andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn heel weinig bomen in het grootste deel van het grasland.",
+      "text_markdown": "Er zijn heel weinig bomen in het grootste deel van het grasland.",
+      "tts": {
+        "text": "Er zijn heel weinig bomen in het grootste deel van het grasland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waar ze wel groeien, zijn ze meestal klein en taai.",
+      "text_markdown": "Waar ze wel groeien, zijn ze meestal klein en taai.",
+      "tts": {
+        "text": "Waar ze wel groeien, zijn ze meestal klein en taai.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze groeien langs de rivieren, waar meer water is, of in lage plekken waar sneeuw zich in de winter ophoopt.",
+      "text_markdown": "Ze groeien langs de rivieren, waar meer water is, of in lage plekken waar sneeuw zich in de winter ophoopt.",
+      "tts": {
+        "text": "Ze groeien langs de rivieren, waar meer water is, of in lage plekken waar sneeuw zich in de winter ophoopt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op de open vlakte staat het gras alleen.",
+      "text_markdown": "Op de open vlakte staat het gras alleen.",
+      "tts": {
+        "text": "Op de open vlakte staat het gras alleen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "De Planten",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is het groene, gouden en zilveren tapijt dat het hele bioom bijeenhoudt.",
+      "text_markdown": "Het is het groene, gouden en zilveren tapijt dat het hele bioom bijeenhoudt.",
+      "tts": {
+        "text": "Het is het groene, gouden en zilveren tapijt dat het hele bioom bijeenhoudt.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De Dieren",
+      "text_markdown": "De Dieren"
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren van het gematigd grasland zijn gebouwd voor een open, winderige wereld.",
+      "text_markdown": "De dieren van het gematigd grasland zijn gebouwd voor een open, winderige wereld.",
+      "tts": {
+        "text": "De dieren van het gematigd grasland zijn gebouwd voor een open, winderige wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grootste dieren hier zijn grote grazers.",
+      "text_markdown": "De grootste dieren hier zijn grote grazers.",
+      "tts": {
+        "text": "De grootste dieren hier zijn grote grazers.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze eten het gras en trekken in grote kuddes over het open land.",
+      "text_markdown": "Ze eten het gras en trekken in grote kuddes over het open land.",
+      "tts": {
+        "text": "Ze eten het gras en trekken in grote kuddes over het open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Noord-Amerika is de bekendste daarvan de bizon.",
+      "text_markdown": "In Noord-Amerika is de bekendste daarvan de bizon.",
+      "tts": {
+        "text": "In Noord Amerika is de bekendste daarvan de bizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bizon is enorm, zwaar en ruig, met een grote bruine kop.",
+      "text_markdown": "Een bizon is enorm, zwaar en ruig, met een grote bruine kop.",
+      "tts": {
+        "text": "Een bizon is enorm, zwaar en ruig, met een grote bruine kop.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bizons trokken vroeger in kuddes van miljoenen over de vlaktes.",
+      "text_markdown": "Bizons trokken vroeger in kuddes van miljoenen over de vlaktes.",
+      "tts": {
+        "text": "Bizons trokken vroeger in kuddes van miljoenen over de vlaktes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Eurazië trokken wilde paarden ooit op dezelfde manier over de steppen.",
+      "text_markdown": "In Eurazië trokken wilde paarden ooit op dezelfde manier over de steppen.",
+      "tts": {
+        "text": "In Eurazië trokken wilde paarden ooit op dezelfde manier over de steppen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de pampa van Zuid-Amerika namen kleinere herten en andere grazende dieren hun plaats in.",
+      "text_markdown": "In de pampa van Zuid-Amerika namen kleinere herten en andere grazende dieren hun plaats in.",
+      "tts": {
+        "text": "In de pampa van Zuid Amerika namen kleinere herten en andere grazende dieren hun plaats in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel kleinere dieren leven onder het gras.",
+      "text_markdown": "Veel kleinere dieren leven onder het gras.",
+      "tts": {
+        "text": "Veel kleinere dieren leven onder het gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prairiehonden, grondeekhoorns en andere kleine dieren graven lange tunnels en kamers in de grond.",
+      "text_markdown": "Prairiehonden, grondeekhoorns en andere kleine dieren graven lange tunnels en kamers in de grond.",
+      "tts": {
+        "text": "Prairiehonden, grondeekhoorns en andere kleine dieren graven lange tunnels en kamers in de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze komen overdag naar boven om te eten en duiken voor veiligheid weer hun holen in.",
+      "text_markdown": "Ze komen overdag naar boven om te eten en duiken voor veiligheid weer hun holen in.",
+      "tts": {
+        "text": "Ze komen overdag naar boven om te eten en duiken voor veiligheid weer hun holen in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een grasland vol van deze kleine dieren zit vol met kleine gaatjes in de grond.",
+      "text_markdown": "Een grasland vol van deze kleine dieren zit vol met kleine gaatjes in de grond.",
+      "tts": {
+        "text": "Een grasland vol van deze kleine dieren zit vol met kleine gaatjes in de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wolven, vossen en kleine wilde katten jagen over het gras.",
+      "text_markdown": "Wolven, vossen en kleine wilde katten jagen over het gras.",
+      "tts": {
+        "text": "Wolven, vossen en kleine wilde katten jagen over het gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wolf is de grote jager van de open vlaktes.",
+      "text_markdown": "De wolf is de grote jager van de open vlaktes.",
+      "tts": {
+        "text": "De wolf is de grote jager van de open vlaktes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kleinere jagers zoals de vos en de wilde kat vangen muizen, konijnen en vogels.",
+      "text_markdown": "Kleinere jagers zoals de vos en de wilde kat vangen muizen, konijnen en vogels.",
+      "tts": {
+        "text": "Kleinere jagers zoals de vos en de wilde kat vangen muizen, konijnen en vogels.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoog in de lucht cirkelen haviken en arenden langzaam rond.",
+      "text_markdown": "Hoog in de lucht cirkelen haviken en arenden langzaam rond.",
+      "tts": {
+        "text": "Hoog in de lucht cirkelen haviken en arenden langzaam rond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze letten op beweging in het gras beneden.",
+      "text_markdown": "Ze letten op beweging in het gras beneden.",
+      "tts": {
+        "text": "Ze letten op beweging in het gras beneden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel soorten vogels nestelen recht op de grond, verborgen in het lange gras.",
+      "text_markdown": "Veel soorten vogels nestelen recht op de grond, verborgen in het lange gras.",
+      "tts": {
+        "text": "Veel soorten vogels nestelen recht op de grond, verborgen in het lange gras.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer is de lucht vol insecten.",
+      "text_markdown": "In de zomer is de lucht vol insecten.",
+      "tts": {
+        "text": "In de zomer is de lucht vol insecten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sprinkhanen zingen en springen door de warme wind.",
+      "text_markdown": "Sprinkhanen zingen en springen door de warme wind.",
+      "tts": {
+        "text": "Sprinkhanen zingen en springen door de warme wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vlinders en bijen gaan van bloem naar bloem.",
+      "text_markdown": "Vlinders en bijen gaan van bloem naar bloem.",
+      "tts": {
+        "text": "Vlinders en bijen gaan van bloem naar bloem.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slangen glijden door het gras op zoek naar muizen en vogeleieren.",
+      "text_markdown": "Slangen glijden door het gras op zoek naar muizen en vogeleieren.",
+      "tts": {
+        "text": "Slangen glijden door het gras op zoek naar muizen en vogeleieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk dier hier kent dezelfde lessen.",
+      "text_markdown": "Elk dier hier kent dezelfde lessen.",
+      "tts": {
+        "text": "Elk dier hier kent dezelfde lessen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Beweeg met de seizoenen mee.",
+      "text_markdown": "Beweeg met de seizoenen mee.",
+      "tts": {
+        "text": "Beweeg met de seizoenen mee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Verberg je voor de hete zon.",
+      "text_markdown": "Verberg je voor de hete zon.",
+      "tts": {
+        "text": "Verberg je voor de hete zon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vlucht voor de koude wind.",
+      "text_markdown": "Vlucht voor de koude wind.",
+      "tts": {
+        "text": "Vlucht voor de koude wind.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "De Dieren",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Drink uit de rivier wanneer je hem kunt vinden.",
+      "text_markdown": "Drink uit de rivier wanneer je hem kunt vinden.",
+      "tts": {
+        "text": "Drink uit de rivier wanneer je hem kunt vinden.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De Mensen",
+      "text_markdown": "De Mensen"
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen wonen al vele duizenden jaren in het gematigd grasland.",
+      "text_markdown": "Mensen wonen al vele duizenden jaren in het gematigd grasland.",
+      "tts": {
+        "text": "Mensen wonen al vele duizenden jaren in het gematigd grasland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het wijde open land, de kuddes dieren en de rijke grond hebben hun manier van leven gevormd.",
+      "text_markdown": "Het wijde open land, de kuddes dieren en de rijke grond hebben hun manier van leven gevormd.",
+      "tts": {
+        "text": "Het wijde open land, de kuddes dieren en de rijke grond hebben hun manier van leven gevormd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lang geleden temden de mensen van de steppen van Azië het wilde paard.",
+      "text_markdown": "Lang geleden temden de mensen van de steppen van Azië het wilde paard.",
+      "tts": {
+        "text": "Lang geleden temden de mensen van de steppen van Azië het wilde paard.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op de rug van een paard kon iemand de open vlaktes veel sneller oversteken dan te voet.",
+      "text_markdown": "Op de rug van een paard kon iemand de open vlaktes veel sneller oversteken dan te voet.",
+      "tts": {
+        "text": "Op de rug van een paard kon iemand de open vlaktes veel sneller oversteken dan te voet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het paard veranderde alles voor de mensen van de graslanden.",
+      "text_markdown": "Het paard veranderde alles voor de mensen van de graslanden.",
+      "tts": {
+        "text": "Het paard veranderde alles voor de mensen van de graslanden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het veranderde hoe ze jaagden, hoe ze reisden en hoe ze vochten.",
+      "text_markdown": "Het veranderde hoe ze jaagden, hoe ze reisden en hoe ze vochten.",
+      "tts": {
+        "text": "Het veranderde hoe ze jaagden, hoe ze reisden en hoe ze vochten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van de oude volken van de steppen waren nomaden.",
+      "text_markdown": "Veel van de oude volken van de steppen waren nomaden.",
+      "tts": {
+        "text": "Veel van de oude volken van de steppen waren nomaden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze verplaatsten hun kuddes paarden, vee, schapen en geiten van het ene deel van het grasland naar het andere.",
+      "text_markdown": "Ze verplaatsten hun kuddes paarden, vee, schapen en geiten van het ene deel van het grasland naar het andere.",
+      "tts": {
+        "text": "Ze verplaatsten hun kuddes paarden, vee, schapen en geiten van het ene deel van het grasland naar het andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de zomer reisden ze naar de koele hoge vlaktes.",
+      "text_markdown": "In de zomer reisden ze naar de koele hoge vlaktes.",
+      "tts": {
+        "text": "In de zomer reisden ze naar de koele hoge vlaktes.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de winter daalden ze af naar lagere, warmere valleien.",
+      "text_markdown": "In de winter daalden ze af naar lagere, warmere valleien.",
+      "tts": {
+        "text": "In de winter daalden ze af naar lagere, warmere valleien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun huizen waren ronde tenten gemaakt van vilt en hout.",
+      "text_markdown": "Hun huizen waren ronde tenten gemaakt van vilt en hout.",
+      "tts": {
+        "text": "Hun huizen waren ronde tenten gemaakt van vilt en hout.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zo'n ronde tent kan in een uur uit elkaar worden gehaald, op de rug van een dier worden geladen en ergens anders weer worden opgezet.",
+      "text_markdown": "Zo'n ronde tent kan in een uur uit elkaar worden gehaald, op de rug van een dier worden geladen en ergens anders weer worden opgezet.",
+      "tts": {
+        "text": "Zo'n ronde tent kan in een uur uit elkaar worden gehaald, op de rug van een dier worden geladen en ergens anders weer worden opgezet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Noord-Amerika leefden de mensen van de vlaktes duizenden jaren lang naast de grote kuddes bizons.",
+      "text_markdown": "In Noord-Amerika leefden de mensen van de vlaktes duizenden jaren lang naast de grote kuddes bizons.",
+      "tts": {
+        "text": "In Noord Amerika leefden de mensen van de vlaktes duizenden jaren lang naast de grote kuddes bizons.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze volgden de kuddes over het open land.",
+      "text_markdown": "Ze volgden de kuddes over het open land.",
+      "tts": {
+        "text": "Ze volgden de kuddes over het open land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun huizen waren hoge tenten van huid gespannen over houten palen.",
+      "text_markdown": "Hun huizen waren hoge tenten van huid gespannen over houten palen.",
+      "tts": {
+        "text": "Hun huizen waren hoge tenten van huid gespannen over houten palen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toen het paard naar de vlaktes kwam, veranderde ook daar de manier van leven diepgaand.",
+      "text_markdown": "Toen het paard naar de vlaktes kwam, veranderde ook daar de manier van leven diepgaand.",
+      "tts": {
+        "text": "Toen het paard naar de vlaktes kwam, veranderde ook daar de manier van leven diepgaand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de pampa van Zuid-Amerika werden ook herders te paard deel van het land.",
+      "text_markdown": "In de pampa van Zuid-Amerika werden ook herders te paard deel van het land.",
+      "tts": {
+        "text": "In de pampa van Zuid Amerika werden ook herders te paard deel van het land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de laatste paar honderd jaar is veel van het gematigd grasland opnieuw veranderd.",
+      "text_markdown": "In de laatste paar honderd jaar is veel van het gematigd grasland opnieuw veranderd.",
+      "tts": {
+        "text": "In de laatste paar honderd jaar is veel van het gematigd grasland opnieuw veranderd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De diepe, rijke grond is opengeploegd om tarwe, maïs en andere granen te verbouwen.",
+      "text_markdown": "De diepe, rijke grond is opengeploegd om tarwe, maïs en andere granen te verbouwen.",
+      "tts": {
+        "text": "De diepe, rijke grond is opengeploegd om tarwe, maïs en andere granen te verbouwen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tegenwoordig komt veel van het graan dat de wereld voedt uit deze landen.",
+      "text_markdown": "Tegenwoordig komt veel van het graan dat de wereld voedt uit deze landen.",
+      "tts": {
+        "text": "Tegenwoordig komt veel van het graan dat de wereld voedt uit deze landen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oude manier van met de kuddes meetrekken is op veel plekken verdwenen.",
+      "text_markdown": "De oude manier van met de kuddes meetrekken is op veel plekken verdwenen.",
+      "tts": {
+        "text": "De oude manier van met de kuddes meetrekken is op veel plekken verdwenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de liederen, de verhalen en de liefde voor de open hemel leven voort.",
+      "text_markdown": "Maar de liederen, de verhalen en de liefde voor de open hemel leven voort.",
+      "tts": {
+        "text": "Maar de liederen, de verhalen en de liefde voor de open hemel leven voort.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "De Mensen",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In elk groot grasland dragen de mensen die er zijn opgegroeid de wind in hun hart.",
+      "text_markdown": "In elk groot grasland dragen de mensen die er zijn opgegroeid de wind in hun hart.",
+      "tts": {
+        "text": "In elk groot grasland dragen de mensen die er zijn opgegroeid de wind in hun hart.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het Grasland Vandaag",
+      "text_markdown": "Het Grasland Vandaag"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gematigd grasland is een van de belangrijkste biomen voor mensen.",
+      "text_markdown": "Het gematigd grasland is een van de belangrijkste biomen voor mensen.",
+      "tts": {
+        "text": "Het gematigd grasland is een van de belangrijkste biomen voor mensen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De diepe, rijke grond maakt het perfect om voedsel te verbouwen.",
+      "text_markdown": "De diepe, rijke grond maakt het perfect om voedsel te verbouwen.",
+      "tts": {
+        "text": "De diepe, rijke grond maakt het perfect om voedsel te verbouwen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel van het brood, de pasta en de maïs die de wereld eet komen uit deze landen.",
+      "text_markdown": "Veel van het brood, de pasta en de maïs die de wereld eet komen uit deze landen.",
+      "tts": {
+        "text": "Veel van het brood, de pasta en de maïs die de wereld eet komen uit deze landen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de prijs is hoog geweest.",
+      "text_markdown": "Maar de prijs is hoog geweest.",
+      "tts": {
+        "text": "Maar de prijs is hoog geweest.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grootste deel van de oorspronkelijke graslanden van de wereld is opengeploegd.",
+      "text_markdown": "Het grootste deel van de oorspronkelijke graslanden van de wereld is opengeploegd.",
+      "tts": {
+        "text": "Het grootste deel van de oorspronkelijke graslanden van de wereld is opengeploegd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grote kuddes bizons en wilde paarden zijn grotendeels verdwenen.",
+      "text_markdown": "De grote kuddes bizons en wilde paarden zijn grotendeels verdwenen.",
+      "tts": {
+        "text": "De grote kuddes bizons en wilde paarden zijn grotendeels verdwenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kleine gravende dieren hebben minder plekken om te leven.",
+      "text_markdown": "De kleine gravende dieren hebben minder plekken om te leven.",
+      "tts": {
+        "text": "De kleine gravende dieren hebben minder plekken om te leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras dat ooit tot aan de horizon reikte, groeit nu nog maar in kleine plekken.",
+      "text_markdown": "Het gras dat ooit tot aan de horizon reikte, groeit nu nog maar in kleine plekken.",
+      "tts": {
+        "text": "Het gras dat ooit tot aan de horizon reikte, groeit nu nog maar in kleine plekken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken, wanneer het gras weg is en de grond kaal is achtergelaten, blaast de wind de donkere aarde weg.",
+      "text_markdown": "Op sommige plekken, wanneer het gras weg is en de grond kaal is achtergelaten, blaast de wind de donkere aarde weg.",
+      "tts": {
+        "text": "Op sommige plekken, wanneer het gras weg is en de grond kaal is achtergelaten, blaast de wind de donkere aarde weg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er nog over is.",
+      "text_markdown": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er nog over is.",
+      "tts": {
+        "text": "Veel groepen over de hele wereld werken eraan om te zorgen voor wat er nog over is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze leggen parken aan waar het gras weer hoog kan groeien.",
+      "text_markdown": "Ze leggen parken aan waar het gras weer hoog kan groeien.",
+      "tts": {
+        "text": "Ze leggen parken aan waar het gras weer hoog kan groeien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze helpen bizons en andere dieren terug te komen naar landen die ze ooit vulden.",
+      "text_markdown": "Ze helpen bizons en andere dieren terug te komen naar landen die ze ooit vulden.",
+      "tts": {
+        "text": "Ze helpen bizons en andere dieren terug te komen naar landen die ze ooit vulden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bestuderen de diepe grond zodat we hem kunnen gebruiken zonder hem te verliezen.",
+      "text_markdown": "Ze bestuderen de diepe grond zodat we hem kunnen gebruiken zonder hem te verliezen.",
+      "tts": {
+        "text": "Ze bestuderen de diepe grond zodat we hem kunnen gebruiken zonder hem te verliezen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een gezond grasland is een van de meest levendige plekken op Aarde.",
+      "text_markdown": "Een gezond grasland is een van de meest levendige plekken op Aarde.",
+      "tts": {
+        "text": "Een gezond grasland is een van de meest levendige plekken op Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "Het Grasland Vandaag",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het is onze zorg waard.",
+      "text_markdown": "Het is onze zorg waard.",
+      "tts": {
+        "text": "Het is onze zorg waard.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Afsluiting",
+      "text_markdown": "Afsluiting"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is het gematigd grasland.",
+      "text_markdown": "Dat is het gematigd grasland.",
+      "tts": {
+        "text": "Dat is het gematigd grasland.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een wijde, winderige wereld van gras, een grote hemel en wisselende seizoenen.",
+      "text_markdown": "Een wijde, winderige wereld van gras, een grote hemel en wisselende seizoenen.",
+      "tts": {
+        "text": "Een wijde, winderige wereld van gras, een grote hemel en wisselende seizoenen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je er ooit in een staat, sta dan een minuut stil.",
+      "text_markdown": "Als je er ooit in een staat, sta dan een minuut stil.",
+      "tts": {
+        "text": "Als je er ooit in een staat, sta dan een minuut stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luister naar de wind die over het gras beweegt.",
+      "text_markdown": "Luister naar de wind die over het gras beweegt.",
+      "tts": {
+        "text": "Luister naar de wind die over het gras beweegt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kijk uit over de lange horizon.",
+      "text_markdown": "Kijk uit over de lange horizon.",
+      "tts": {
+        "text": "Kijk uit over de lange horizon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "Afsluiting",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je zult het hart van het bioom om je heen voelen kloppen.",
+      "text_markdown": "Je zult het hart van het bioom om je heen voelen kloppen.",
+      "tts": {
+        "text": "Je zult het hart van het bioom om je heen voelen kloppen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

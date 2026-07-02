@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "hu",
+  "total_segments": 62,
+  "segments": [
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "Üdvözöljük az AI This Week adásában. Vindy vagyok.",
+      "text_markdown": "Üdvözöljük az AI This Week adásában. Vindy vagyok.",
+      "title": "",
+      "tts": {
+        "text": "Üdvözöljük az AI This Week adásában. Vindy vagyok.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "Velem van, mint mindig, Ron.",
+      "text_markdown": "Velem van, mint mindig, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Velem van, mint mindig, Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "Jó itt lenni.",
+      "text_markdown": "Jó itt lenni.",
+      "title": "",
+      "tts": {
+        "text": "Jó itt lenni.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "Ma szerda van, 2026. május 13. Következik: a héten megjelent modellek. A ranglisták, és hogy miért kellene némelyikben már nem bíznunk. A hét koncepciója. És a nagyobb kép – az Egyesült Államoknak új Federal Reserve elnöke lett, és ez jobban számít az AI számára, mint gondolnánk.",
+      "text_markdown": "Ma szerda van, 2026. május 13. Következik: a héten megjelent modellek. A ranglisták, és hogy miért kellene némelyikben már nem bíznunk. A hét koncepciója. És a nagyobb kép – az Egyesült Államoknak új Federal Reserve elnöke lett, és ez jobban számít az AI számára, mint gondolnánk.",
+      "title": "",
+      "tts": {
+        "text": "Ma szerda van, május tizenharmadika, kétezerhuszonhat. Következik: a héten megjelent modellek. A ranglisták, és hogy miért kellene némelyikben már nem bíznunk. A hét koncepciója. És a nagyobb kép – az Egyesült Államoknak új Federal Reserve elnöke lett, és ez jobban számít az AI számára, mint gondolnánk.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "Ron, mi a hét legnagyobb modellhíre?",
+      "text_markdown": "Ron, mi a hét legnagyobb modellhíre?",
+      "title": "",
+      "tts": {
+        "text": "Ron, mi a hét legnagyobb modellhíre?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "Megváltozott a ChatGPT alapértelmezett agya. Az OpenAI a múlt héten, május 5-én, kedden bevezette a GPT-5.5 Instant nevű új modellt az ingyenes szintre. Ha egy ingyenes ChatGPT válasz rövidebbnek vagy kevesebb emojival telinek tűnt, az ezért van.",
+      "text_markdown": "Megváltozott a ChatGPT alapértelmezett agya. Az OpenAI a múlt héten, május 5-én, kedden bevezette a GPT-5.5 Instant nevű új modellt az ingyenes szintre. Ha egy ingyenes ChatGPT válasz rövidebbnek vagy kevesebb emojival telinek tűnt, az ezért van.",
+      "title": "",
+      "tts": {
+        "text": "Megváltozott a ChatGPT alapértelmezett agya. Az OpenAI a múlt héten, május ötödikén, kedden bevezette a GPT öt pont öt Instant nevű új modellt az ingyenes szintre. Ha egy ingyenes ChatGPT válasz rövidebbnek vagy kevesebb emojival telinek tűnt, az ezért van.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "Rövidebb, hogyan?",
+      "text_markdown": "Rövidebb, hogyan?",
+      "title": "",
+      "tts": {
+        "text": "Rövidebb, hogyan?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "Az OpenAI szerint az új alapértelmezett modell nagyjából 30%-kal kevesebb szót és 30%-kal kevesebb sort ír, mint az általa felváltott modell. Azt is állítják, hogy 50%-kal csökkent a hallucinált állítások száma a legnehezebb promptoknál. Olyan dolgoknál, mint az orvosi, jogi és pénzügyi kérdések.",
+      "text_markdown": "Az OpenAI szerint az új alapértelmezett modell nagyjából 30%-kal kevesebb szót és 30%-kal kevesebb sort ír, mint az általa felváltott modell. Azt is állítják, hogy 50%-kal csökkent a hallucinált állítások száma a legnehezebb promptoknál. Olyan dolgoknál, mint az orvosi, jogi és pénzügyi kérdések.",
+      "title": "",
+      "tts": {
+        "text": "Az OpenAI szerint az új alapértelmezett modell nagyjából harminc százalékkal kevesebb szót és harminc százalékkal kevesebb sort ír, mint az általa felváltott modell. Azt is állítják, hogy ötven százalékkal csökkent a hallucinált állítások száma a legnehezebb promptoknál. Olyan dolgoknál, mint az orvosi, jogi és pénzügyi kérdések.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "Az OpenAI-n kívül bárki ellenőrizte ezeket a számokat?",
+      "text_markdown": "Az OpenAI-n kívül bárki ellenőrizte ezeket a számokat?",
+      "title": "",
+      "tts": {
+        "text": "Az OpenAI-n kívül bárki ellenőrizte ezeket a számokat?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "Nem nagyságrendileg. A független benchmark-szakértők, mint például az Artificial Analysis, az új modellt az általános intelligencia indexük élére helyezték. De a hallucinációs állításokat lassan lehet ellenőrizni. Ezek általában hetek alatt derülnek ki, ahogy az emberek ténylegesen használják a modellt.",
+      "text_markdown": "Nem nagyságrendileg. A független benchmark-szakértők, mint például az Artificial Analysis, az új modellt az általános intelligencia indexük élére helyezték. De a hallucinációs állításokat lassan lehet ellenőrizni. Ezek általában hetek alatt derülnek ki, ahogy az emberek ténylegesen használják a modellt.",
+      "title": "",
+      "tts": {
+        "text": "Nem nagyságrendileg. A független benchmark-szakértők, mint például az Artificial Analysis, az új modellt az általános intelligencia indexük élére helyezték. De a hallucinációs állításokat lassan lehet ellenőrizni. Ezek általában hetek alatt derülnek ki, ahogy az emberek ténylegesen használják a modellt.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "És a nyílt súlyozású modellek terén?",
+      "text_markdown": "És a nyílt súlyozású modellek terén?",
+      "title": "",
+      "tts": {
+        "text": "És a nyílt súlyozású modellek terén?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "Két nagy dolog. A Moonshot, a Kimi modell mögött álló kínai labor, a múlt héten, május 7-én 2 milliárd dollárt gyűjtött 20 milliárd dolláros értékelés mellett. Legújabb modelljük, a Kimi K 2.6, pedig épp most szerezte meg az első helyet az OpenRouter tokenforgalmi listáján.",
+      "text_markdown": "Két nagy dolog. A Moonshot, a Kimi modell mögött álló kínai labor, a múlt héten, május 7-én 2 milliárd dollárt gyűjtött 20 milliárd dolláros értékelés mellett. Legújabb modelljük, a Kimi K 2.6, pedig épp most szerezte meg az első helyet az OpenRouter tokenforgalmi listáján.",
+      "title": "",
+      "tts": {
+        "text": "Két nagy dolog. A Moonshot, a Kimi modell mögött álló kínai labor, a múlt héten, május hetedikén kétmilliárd dollárt gyűjtött húszmilliárd dolláros értékelés mellett. Legújabb modelljük, a Kimi K kettő pont hat, pedig épp most szerezte meg az első helyet az OpenRouter tokenforgalmi listáján.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "Az első hely? Összességében?",
+      "text_markdown": "Az első hely? Összességében?",
+      "title": "",
+      "tts": {
+        "text": "Az első hely? Összességében?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "Összességében. Ez egy kínai nyílt súlyozású modell az első helyen egy jelentős kereskedelmi routeren. Hat hónappal ezelőtt ez elképzelhetetlen lett volna.",
+      "text_markdown": "Összességében. Ez egy kínai nyílt súlyozású modell az első helyen egy jelentős kereskedelmi routeren. Hat hónappal ezelőtt ez elképzelhetetlen lett volna.",
+      "title": "",
+      "tts": {
+        "text": "Összességében. Ez egy kínai nyílt súlyozású modell az első helyen egy jelentős kereskedelmi routeren. Hat hónappal ezelőtt ez elképzelhetetlen lett volna.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "Valami más, amit érdemes megemlíteni?",
+      "text_markdown": "Valami más, amit érdemes megemlíteni?",
+      "title": "",
+      "tts": {
+        "text": "Valami más, amit érdemes megemlíteni?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "A Mistral, a francia labor, április végén dobta piacra a Medium 3.5-öt. Összevonják a chat modell, a gondolkodó modell és a kódoló modell közötti régi felosztást egyetlen termékbe. Ugyanez a tendencia, amit az OpenAI indított a GPT-5 családdal. Az egész iparág ebbe az irányba halad.",
+      "text_markdown": "A Mistral, a francia labor, április végén dobta piacra a Medium 3.5-öt. Összevonják a chat modell, a gondolkodó modell és a kódoló modell közötti régi felosztást egyetlen termékbe. Ugyanez a tendencia, amit az OpenAI indított a GPT-5 családdal. Az egész iparág ebbe az irányba halad.",
+      "title": "",
+      "tts": {
+        "text": "A Mistral, a francia labor, április végén dobta piacra a Medium három pont ötöt. Összevonják a chat modell, a gondolkodó modell és a kódoló modell közötti régi felosztást egyetlen termékbe. Ugyanez a tendencia, amit az OpenAI indított a GPT öt családdal. Az egész iparág ebbe az irányba halad.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "És mi jön legközelebb?",
+      "text_markdown": "És mi jön legközelebb?",
+      "title": "",
+      "tts": {
+        "text": "És mi jön legközelebb?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "Kedden lesz a Google I/O. Mindenki új Geminit vár, és hiteles pletykák keringenek egy Gemini Omni nevű videógeneráló modellről. Az OpenAI a GPT-5.6-ot teszteli. Az Anthropic egy Mythos nevű modellt tart privát előzetesben. Jövő héten sokkal többet tudunk majd.",
+      "text_markdown": "Kedden lesz a Google I/O. Mindenki új Geminit vár, és hiteles pletykák keringenek egy Gemini Omni nevű videógeneráló modellről. Az OpenAI a GPT-5.6-ot teszteli. Az Anthropic egy Mythos nevű modellt tart privát előzetesben. Jövő héten sokkal többet tudunk majd.",
+      "title": "",
+      "tts": {
+        "text": "Kedden lesz a Google I O. Mindenki új Geminit vár, és hiteles pletykák keringenek egy Gemini Omni nevű videógeneráló modellről. Az OpenAI a GPT öt pont hatot teszteli. Az Anthropic egy Mythos nevű modellt tart privát előzetesben. Jövő héten sokkal többet tudunk majd.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "Rendben, térjünk rá a ranglistákra.",
+      "text_markdown": "Rendben, térjünk rá a ranglistákra.",
+      "title": "",
+      "tts": {
+        "text": "Rendben, térjünk rá a ranglistákra.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "Ron, mi mozog a listákon ezen a héten?",
+      "text_markdown": "Ron, mi mozog a listákon ezen a héten?",
+      "title": "",
+      "tts": {
+        "text": "Ron, mi mozog a listákon ezen a héten?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "A hét igazi története nem a pontszámok. Hanem azok a pontszámok, amelyekben már nem szabadna bíznunk.",
+      "text_markdown": "A hét igazi története nem a pontszámok. Hanem azok a pontszámok, amelyekben már nem szabadna bíznunk.",
+      "title": "",
+      "tts": {
+        "text": "A hét igazi története nem a pontszámok. Hanem azok a pontszámok, amelyekben már nem szabadna bíznunk.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "Mesélj erről egy kicsit bővebben, Ron.",
+      "text_markdown": "Mesélj erről egy kicsit bővebben, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Mesélj erről egy kicsit bővebben, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "Egy Berkeley-i csoport publikált egy tanulmányt. Építettek egy automatizált szkennert, amely majdnem tökéletes pontszámot ért el minden jelentős AI ügynök benchmarkon. Anélkül, hogy egyetlen feladatot is megoldott volna. Kihasználták azt a módszert, ahogyan a benchmarkok ellenőrzik a saját válaszaikat.",
+      "text_markdown": "Egy Berkeley-i csoport publikált egy tanulmányt. Építettek egy automatizált szkennert, amely majdnem tökéletes pontszámot ért el minden jelentős AI ügynök benchmarkon. Anélkül, hogy egyetlen feladatot is megoldott volna. Kihasználták azt a módszert, ahogyan a benchmarkok ellenőrzik a saját válaszaikat.",
+      "title": "",
+      "tts": {
+        "text": "Egy Berkeley-i csoport publikált egy tanulmányt. Építettek egy automatizált szkennert, amely majdnem tökéletes pontszámot ért el minden jelentős AI ügynök benchmarkon. Anélkül, hogy egyetlen feladatot is megoldott volna. Kihasználták azt a módszert, ahogyan a benchmarkok ellenőrzik a saját válaszaikat.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "Csaltak, és a benchmarkok nem vették észre.",
+      "text_markdown": "Csaltak, és a benchmarkok nem vették észre.",
+      "title": "",
+      "tts": {
+        "text": "Csaltak, és a benchmarkok nem vették észre.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "Így van. És ugyanezen a héten az OpenAI bejelentette, hogy visszavonja a SWE bench Verified értékeléseit. Ez egy kódolási benchmark, amit állandóan idéztek. Azért vonták vissza, mert a nehéz feladatok több mint felénél kiderült, hogy hibásak a tesztek.",
+      "text_markdown": "Így van. És ugyanezen a héten az OpenAI bejelentette, hogy visszavonja a SWE bench Verified értékeléseit. Ez egy kódolási benchmark, amit állandóan idéztek. Azért vonták vissza, mert a nehéz feladatok több mint felénél kiderült, hogy hibásak a tesztek.",
+      "title": "",
+      "tts": {
+        "text": "Így van. És ugyanezen a héten az OpenAI bejelentette, hogy visszavonja a SWE bench Verified értékeléseit. Ez egy kódolási benchmark, amit állandóan idéztek. Azért vonták vissza, mert a nehéz feladatok több mint felénél kiderült, hogy hibásak a tesztek.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "Szóval sok olyan szám, amit az elmúlt évben hallottunk, az…",
+      "text_markdown": "Szóval sok olyan szám, amit az elmúlt évben hallottunk, az…",
+      "title": "",
+      "tts": {
+        "text": "Szóval sok olyan szám, amit az elmúlt évben hallottunk, az…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "Legalább részben felfújtak. Nem minden modell. Nem minden benchmark. De a terület nyilvánosan építi újra a mérőszalagját. Újabb értékelések, mint a SWE-bench Pro és egy SWE-rebench nevű projekt, megpróbálják ezt orvosolni azáltal, hogy a tesztkódot privátban tartják.",
+      "text_markdown": "Legalább részben felfújtak. Nem minden modell. Nem minden benchmark. De a terület nyilvánosan építi újra a mérőszalagját. Újabb értékelések, mint a SWE-bench Pro és egy SWE-rebench nevű projekt, megpróbálják ezt orvosolni azáltal, hogy a tesztkódot privátban tartják.",
+      "title": "",
+      "tts": {
+        "text": "Legalább részben felfújtak. Nem minden modell. Nem minden benchmark. De a terület nyilvánosan építi újra a mérőszalagját. Újabb értékelések, mint a SWE bench Pro és egy SWE rebench nevű projekt, megpróbálják ezt orvosolni azáltal, hogy a tesztkódot privátban tartják.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "Valami tényleg tisztán felfelé mozog?",
+      "text_markdown": "Valami tényleg tisztán felfelé mozog?",
+      "title": "",
+      "tts": {
+        "text": "Valami tényleg tisztán felfelé mozog?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Két dolog, tisztább listákon. Április közepén az Anthropic Claude Opus 4.7-je lett az első modell, amely tisztán átlépte az 1500-as Elo pontszámot az LM Arena kódolási ranglistáján. Az Opus 4.6 néhány héttel korábban érte el az 1500-at. Ezen a héten az Opus 4.7 még mindig az élen áll, körülbelül 1569 ponttal. Az Anthropicnak van egy külön Mythos nevű modellje is egy privát partneri előzetesben, amely az Anthropic által mért 18 ügynök benchmarkból 17-et vezet.",
+      "text_markdown": "Két dolog, tisztább listákon. Április közepén az Anthropic Claude Opus 4.7-je lett az első modell, amely tisztán átlépte az 1500-as Elo pontszámot az LM Arena kódolási ranglistáján. Az Opus 4.6 néhány héttel korábban érte el az 1500-at. Ezen a héten az Opus 4.7 még mindig az élen áll, körülbelül 1569 ponttal. Az Anthropicnak van egy külön Mythos nevű modellje is egy privát partneri előzetesben, amely az Anthropic által mért 18 ügynök benchmarkból 17-et vezet.",
+      "title": "",
+      "tts": {
+        "text": "Két dolog, tisztább listákon. Április közepén az Anthropic Claude Opus négy pont hétje lett az első modell, amely tisztán átlépte az ezerötszázas Elo pontszámot az LM Arena kódolási ranglistáján. Az Opus négy pont hat néhány héttel korábban érte el az ezerötszázat. Ezen a héten az Opus négy pont hét még mindig az élen áll, körülbelül ezerötszázhatvankilenc ponttal. Az Anthropicnak van egy külön Mythos nevű modellje is egy privát partneri előzetesben, amely az Anthropic által mért tizennyolc ügynök benchmarkból tizenhetet vezet.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "Egy olyan modell áll a listák élén, amit a nyilvánosság nem használhat.",
+      "text_markdown": "Egy olyan modell áll a listák élén, amit a nyilvánosság nem használhat.",
+      "title": "",
+      "tts": {
+        "text": "Egy olyan modell áll a listák élén, amit a nyilvánosság nem használhat.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "Itt tartunk. A másik nagy trend a nyílt és zárt rendszerek közötti szakadék. Ez most a legszűkebb, ami valaha volt. A DeepSeek V4 Pro és a Kimi K 2.6 ütőtávolságon belül van a GPT-5.5-höz képest a keresztértékelési intelligencia indexen. Ez a szakadék korábban hatalmas volt. Most kicsi.",
+      "text_markdown": "Itt tartunk. A másik nagy trend a nyílt és zárt rendszerek közötti szakadék. Ez most a legszűkebb, ami valaha volt. A DeepSeek V4 Pro és a Kimi K 2.6 ütőtávolságon belül van a GPT-5.5-höz képest a keresztértékelési intelligencia indexen. Ez a szakadék korábban hatalmas volt. Most kicsi.",
+      "title": "",
+      "tts": {
+        "text": "Itt tartunk. A másik nagy trend a nyílt és zárt rendszerek közötti szakadék. Ez most a legszűkebb, ami valaha volt. A DeepSeek V négy Pro és a Kimi K kettő pont hat ütőtávolságon belül van a GPT öt pont öthöz képest a keresztértékelési intelligencia indexen. Ez a szakadék korábban hatalmas volt. Most kicsi.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "Rendben, térjünk rá a hét koncepciójára.",
+      "text_markdown": "Rendben, térjünk rá a hét koncepciójára.",
+      "title": "",
+      "tts": {
+        "text": "Rendben, térjünk rá a hét koncepciójára.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "Ron, a hét koncepciója a szakértők keveréke (mixture of experts). Miért erre fókuszálunk?",
+      "text_markdown": "Ron, a hét koncepciója a szakértők keveréke (mixture of experts). Miért erre fókuszálunk?",
+      "title": "",
+      "tts": {
+        "text": "Ron, a hét koncepciója a szakértők keveréke (mixture of experts). Miért erre fókuszálunk?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "Mert a nyílt súlyozású modell, amiről az imént beszéltünk, a Kimi K 2.6, összesen 1 billió paraméterrel rendelkezik. De ebből a paraméterből csak 32 milliárd fut bármely adott pillanatban. Ez a szakértők keveréke.",
+      "text_markdown": "Mert a nyílt súlyozású modell, amiről az imént beszéltünk, a Kimi K 2.6, összesen 1 billió paraméterrel rendelkezik. De ebből a paraméterből csak 32 milliárd fut bármely adott pillanatban. Ez a szakértők keveréke.",
+      "title": "",
+      "tts": {
+        "text": "Mert a nyílt súlyozású modell, amiről az imént beszéltünk, a Kimi K kettő pont hat, összesen egy billió paraméterrel rendelkezik. De ebből a paraméterből csak harminckét milliárd fut bármely adott pillanatban. Ez a szakértők keveréke.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "Magyarázd el azoknak, akik most kapcsolódtak be.",
+      "text_markdown": "Magyarázd el azoknak, akik most kapcsolódtak be.",
+      "title": "",
+      "tts": {
+        "text": "Magyarázd el azoknak, akik most kapcsolódtak be.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "Egy hagyományos AI modell olyan, mint egy óriási agy. Minden szó, amit generál, az agy minden részét felhasználja. Egy szakértők keveréke modell inkább olyan, mint egy épület tele specialistákkal. Egy recepcióssal az ajtóban. Minden szóhoz a recepciós kiválaszt két-három specialistát, akivel konzultál, a többiek pedig csendben maradnak.",
+      "text_markdown": "Egy hagyományos AI modell olyan, mint egy óriási agy. Minden szó, amit generál, az agy minden részét felhasználja. Egy szakértők keveréke modell inkább olyan, mint egy épület tele specialistákkal. Egy recepcióssal az ajtóban. Minden szóhoz a recepciós kiválaszt két-három specialistát, akivel konzultál, a többiek pedig csendben maradnak.",
+      "title": "",
+      "tts": {
+        "text": "Egy hagyományos AI modell olyan, mint egy óriási agy. Minden szó, amit generál, az agy minden részét felhasználja. Egy szakértők keveréke modell inkább olyan, mint egy épület tele specialistákkal. Egy recepcióssal az ajtóban. Minden szóhoz a recepciós kiválaszt két-három specialistát, akivel konzultál, a többiek pedig csendben maradnak.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "Tehát a modell papíron hatalmas, de olcsó a futtatása.",
+      "text_markdown": "Tehát a modell papíron hatalmas, de olcsó a futtatása.",
+      "title": "",
+      "tts": {
+        "text": "Tehát a modell papíron hatalmas, de olcsó a futtatása.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "Pontosan. 1 billió paraméter kapacitás, de csak 32 milliárd paraméter számítás szavanként. Ez a trükk. A recepciós egy apró kódrészlet, amit routernek hívnak. A specialisták alhálózatok, amiket szakértőknek neveznek. A modell a routert és a szakértőket együtt, végponttól végpontig képzi.",
+      "text_markdown": "Pontosan. 1 billió paraméter kapacitás, de csak 32 milliárd paraméter számítás szavanként. Ez a trükk. A recepciós egy apró kódrészlet, amit routernek hívnak. A specialisták alhálózatok, amiket szakértőknek neveznek. A modell a routert és a szakértőket együtt, végponttól végpontig képzi.",
+      "title": "",
+      "tts": {
+        "text": "Pontosan. Egy billió paraméter kapacitás, de csak harminckét milliárd paraméter számítás szavanként. Ez a trükk. A recepciós egy apró kódrészlet, amit routernek hívnak. A specialisták alhálózatok, amiket szakértőknek neveznek. A modell a routert és a szakértőket együtt, végponttól végpontig képzi.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "Minden nagyobb élvonalbeli modell ezt csinálja?",
+      "text_markdown": "Minden nagyobb élvonalbeli modell ezt csinálja?",
+      "title": "",
+      "tts": {
+        "text": "Minden nagyobb élvonalbeli modell ezt csinálja?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "A legtöbbjük igen. Bár a laborok nem mindig erősítik meg. A GPT-4 egy szakértők keveréke modell volt. A DeepSeek zászlóshajója egy szakértők keveréke modell. A Mistral 2023 óta szállít szakértők keveréke modelleket. A Kínából érkező új hullám a határig tolta ezt a designt.",
+      "text_markdown": "A legtöbbjük igen. Bár a laborok nem mindig erősítik meg. A GPT-4 egy szakértők keveréke modell volt. A DeepSeek zászlóshajója egy szakértők keveréke modell. A Mistral 2023 óta szállít szakértők keveréke modelleket. A Kínából érkező új hullám a határig tolta ezt a designt.",
+      "title": "",
+      "tts": {
+        "text": "A legtöbbjük igen. Bár a laborok nem mindig erősítik meg. A GPT négy egy szakértők keveréke modell volt. A DeepSeek zászlóshajója egy szakértők keveréke modell. A Mistral kétezer huszonhárom óta szállít szakértők keveréke modelleket. A Kínából érkező új hullám a határig tolta ezt a designt.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "Miért fontos ez annak, aki csak a ChatGPT-t használja?",
+      "text_markdown": "Miért fontos ez annak, aki csak a ChatGPT-t használja?",
+      "title": "",
+      "tts": {
+        "text": "Miért fontos ez annak, aki csak a ChatGPT-t használja?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "Két okból. Egy. Ez a fő oka annak, hogy egy nyílt súlyozású labor Kínában a költségvetés töredékéből élvonalbeli minőséget tud nyújtani. Kettő. Ez a fő oka annak, hogy egyetlen API hívás centekbe kerül, nem dollárokba. Amikor az árak esnek, és a minőség magas marad, az általában a szakértők keveréke miatt van.",
+      "text_markdown": "Két okból. Egy. Ez a fő oka annak, hogy egy nyílt súlyozású labor Kínában a költségvetés töredékéből élvonalbeli minőséget tud nyújtani. Kettő. Ez a fő oka annak, hogy egyetlen API hívás centekbe kerül, nem dollárokba. Amikor az árak esnek, és a minőség magas marad, az általában a szakértők keveréke miatt van.",
+      "title": "",
+      "tts": {
+        "text": "Két okból. Egy. Ez a fő oka annak, hogy egy nyílt súlyozású labor Kínában a költségvetés töredékéből élvonalbeli minőséget tud nyújtani. Kettő. Ez a fő oka annak, hogy egyetlen API hívás centekbe kerül, nem dollárokba. Amikor az árak esnek, és a minőség magas marad, az általában a szakértők keveréke miatt van.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "Szakértők keveréke. Router. Szakértők. Ritka aktiválás. Három szó, amit vigyél magaddal. Most térjünk vissza a nagyobb képhez.",
+      "text_markdown": "Szakértők keveréke. Router. Szakértők. Ritka aktiválás. Három szó, amit vigyél magaddal. Most térjünk vissza a nagyobb képhez.",
+      "title": "",
+      "tts": {
+        "text": "Szakértők keveréke. Router. Szakértők. Ritka aktiválás. Három szó, amit vigyél magaddal. Most térjünk vissza a nagyobb képhez.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "Ron, a héten a világunkon kívüli nagy hír a Federal Reserve.",
+      "text_markdown": "Ron, a héten a világunkon kívüli nagy hír a Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, a héten a világunkon kívüli nagy hír a Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "Ma az Egyesült Államok Szenátusa megerősítette Kevin Warsh-t a Federal Reserve következő elnökének. A szavazás 54-45 arányú volt. Ez volt a legszorosabb szavazás egy Fed elnök esetében a modern amerikai történelemben. Csak egy demokrata szavazott át a másik oldalra.",
+      "text_markdown": "Ma az Egyesült Államok Szenátusa megerősítette Kevin Warsh-t a Federal Reserve következő elnökének. A szavazás 54-45 arányú volt. Ez volt a legszorosabb szavazás egy Fed elnök esetében a modern amerikai történelemben. Csak egy demokrata szavazott át a másik oldalra.",
+      "title": "",
+      "tts": {
+        "text": "Ma az Egyesült Államok Szenátusa megerősítette Kevin Warsh-t a Federal Reserve következő elnökének. A szavazás ötvennégy-negyvenöt arányú volt. Ez volt a legszorosabb szavazás egy Fed elnök esetében a modern amerikai történelemben. Csak egy demokrata szavazott át a másik oldalra.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "Miért fontos ez az AI számára?",
+      "text_markdown": "Miért fontos ez az AI számára?",
+      "title": "",
+      "tts": {
+        "text": "Miért fontos ez az AI számára?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "Mert az AI kiépítését jelenleg két dolog korlátozza. Az elektromosság és a tőkeköltség. A Fed határozza meg a tőkeköltséget. Az új elnök pedig korábban kijelentette, hogy gyorsabban akarja csökkenteni a kamatokat, mint elődje tette volna.",
+      "text_markdown": "Mert az AI kiépítését jelenleg két dolog korlátozza. Az elektromosság és a tőkeköltség. A Fed határozza meg a tőkeköltséget. Az új elnök pedig korábban kijelentette, hogy gyorsabban akarja csökkenteni a kamatokat, mint elődje tette volna.",
+      "title": "",
+      "tts": {
+        "text": "Mert az AI kiépítését jelenleg két dolog korlátozza. Az elektromosság és a tőkeköltség. A Fed határozza meg a tőkeköltséget. Az új elnök pedig korábban kijelentette, hogy gyorsabban akarja csökkenteni a kamatokat, mint elődje tette volna.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "A gyorsabb kamatcsökkentések olcsóbbá teszik az AI befektetéseket.",
+      "text_markdown": "A gyorsabb kamatcsökkentések olcsóbbá teszik az AI befektetéseket.",
+      "title": "",
+      "tts": {
+        "text": "A gyorsabb kamatcsökkentések olcsóbbá teszik az AI befektetéseket.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "Igen. A hiperskála szolgáltatók – a Microsoft, a Google, az Amazon, a Meta – idén nagyjából 700 milliárd dollárt fognak elkölteni tőkebefektetésekre. Ennek nagy része GPU-k és adatközpontok. Az alacsonyabb diszkontráta magasabb értékelések mellett teszi kifizetődővé ezeket a többéves kiépítéseket.",
+      "text_markdown": "Igen. A hiperskála szolgáltatók – a Microsoft, a Google, az Amazon, a Meta – idén nagyjából 700 milliárd dollárt fognak elkölteni tőkebefektetésekre. Ennek nagy része GPU-k és adatközpontok. Az alacsonyabb diszkontráta magasabb értékelések mellett teszi kifizetődővé ezeket a többéves kiépítéseket.",
+      "title": "",
+      "tts": {
+        "text": "Igen. A hiperskála szolgáltatók – a Microsoft, a Google, az Amazon, a Meta – idén nagyjából hétszázmilliárd dollárt fognak elkölteni tőkebefektetésekre. Ennek nagy része GPU-k és adatközpontok. Az alacsonyabb diszkontráta magasabb értékelések mellett teszi kifizetődővé ezeket a többéves kiépítéseket.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "És a másik irány. Hogyan befolyásolja az AI azt, amiről a Fednek döntenie kell?",
+      "text_markdown": "És a másik irány. Hogyan befolyásolja az AI azt, amiről a Fednek döntenie kell?",
+      "title": "",
+      "tts": {
+        "text": "És a másik irány. Hogyan befolyásolja az AI azt, amiről a Fednek döntenie kell?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Ez az érdekes rész. Az AI tőkekiadások mára elég nagyok ahhoz, hogy makroszámok legyenek. Nem egy szektorspecifikus történet. A Wall Street-i elemzők szerint az AI-val kapcsolatos építési és berendezéskiadások adták az Egyesült Államok gazdasági növekedésének többségét az elmúlt néhány negyedévben.",
+      "text_markdown": "Ez az érdekes rész. Az AI tőkekiadások mára elég nagyok ahhoz, hogy makroszámok legyenek. Nem egy szektorspecifikus történet. A Wall Street-i elemzők szerint az AI-val kapcsolatos építési és berendezéskiadások adták az Egyesült Államok gazdasági növekedésének többségét az elmúlt néhány negyedévben.",
+      "title": "",
+      "tts": {
+        "text": "Ez az érdekes rész. Az AI tőkekiadások mára elég nagyok ahhoz, hogy makroszámok legyenek. Nem egy szektorspecifikus történet. A Wall Street-i elemzők szerint az AI-val kapcsolatos építési és berendezéskiadások adták az Egyesült Államok gazdasági növekedésének többségét az elmúlt néhány negyedévben.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "A növekedés többségét.",
+      "text_markdown": "A növekedés többségét.",
+      "title": "",
+      "tts": {
+        "text": "A növekedés többségét.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "A többségét. És ez két irányban hat a Fedre. Hosszú távon az AI termelékenységi hajtóerő. Ez deflációs. Teret ad a Fednek a kamatcsökkentésre. Rövid távon viszont keresleti sokk az energia, a réz, a szakképzett munkaerő, a hűtéshez szükséges víz terén. Ez inflációs. Különösen olyan helyeken, mint Virginia és Texas, ahol az adatközpontok koncentrálódnak.",
+      "text_markdown": "A többségét. És ez két irányban hat a Fedre. Hosszú távon az AI termelékenységi hajtóerő. Ez deflációs. Teret ad a Fednek a kamatcsökkentésre. Rövid távon viszont keresleti sokk az energia, a réz, a szakképzett munkaerő, a hűtéshez szükséges víz terén. Ez inflációs. Különösen olyan helyeken, mint Virginia és Texas, ahol az adatközpontok koncentrálódnak.",
+      "title": "",
+      "tts": {
+        "text": "A többségét. És ez két irányban hat a Fedre. Hosszú távon az AI termelékenységi hajtóerő. Ez deflációs. Teret ad a Fednek a kamatcsökkentésre. Rövid távon viszont keresleti sokk az energia, a réz, a szakképzett munkaerő, a hűtéshez szükséges víz terén. Ez inflációs. Különösen olyan helyeken, mint Virginia és Texas, ahol az adatközpontok koncentrálódnak.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "Tehát az új elnöknek el kell döntenie, hogy az AI az inflációra a válasz, vagy az AI az infláció oka.",
+      "text_markdown": "Tehát az új elnöknek el kell döntenie, hogy az AI az inflációra a válasz, vagy az AI az infláció oka.",
+      "title": "",
+      "tts": {
+        "text": "Tehát az új elnöknek el kell döntenie, hogy az AI az inflációra a válasz, vagy az AI az infláció oka.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Mindkettő, egyszerre. És bármit is mond az első nyilvános beszédeiben, az meg fogja mozgatni az összes AI tőkekiadási modellt a Wall Streeten.",
+      "text_markdown": "Mindkettő, egyszerre. És bármit is mond az első nyilvános beszédeiben, az meg fogja mozgatni az összes AI tőkekiadási modellt a Wall Streeten.",
+      "title": "",
+      "tts": {
+        "text": "Mindkettő, egyszerre. És bármit is mond az első nyilvános beszédeiben, az meg fogja mozgatni az összes AI tőkekiadási modellt a Wall Streeten.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "A Microsoftnak 80 milliárd dollár értékű, teljesítetlen felhőmegrendelése van az energia miatt. Ez a helyes szám?",
+      "text_markdown": "A Microsoftnak 80 milliárd dollár értékű, teljesítetlen felhőmegrendelése van az energia miatt. Ez a helyes szám?",
+      "title": "",
+      "tts": {
+        "text": "A Microsoftnak nyolcvan milliárd dollár értékű, teljesítetlen felhőmegrendelése van az energia miatt. Ez a helyes szám?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "Ez az a szám, amit a Microsoft jelentett. Az Azure ügyfelei sorban állnak a kapacitásért. A szűk keresztmetszet már nem a chipek. Hanem az elektromos hálózat. Az energiapiacok nem tudnak olyan gyorsan új kapacitást építeni, ahogy az adatközpontok szeretnék.",
+      "text_markdown": "Ez az a szám, amit a Microsoft jelentett. Az Azure ügyfelei sorban állnak a kapacitásért. A szűk keresztmetszet már nem a chipek. Hanem az elektromos hálózat. Az energiapiacok nem tudnak olyan gyorsan új kapacitást építeni, ahogy az adatközpontok szeretnék.",
+      "title": "",
+      "tts": {
+        "text": "Ez az a szám, amit a Microsoft jelentett. Az Azure ügyfelei sorban állnak a kapacitásért. A szűk keresztmetszet már nem a chipek. Hanem az elektromos hálózat. Az energiapiacok nem tudnak olyan gyorsan új kapacitást építeni, ahogy az adatközpontok szeretnék.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "Mikor van Warsh első találkozója?",
+      "text_markdown": "Mikor van Warsh első találkozója?",
+      "title": "",
+      "tts": {
+        "text": "Mikor van Warsh első találkozója?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "Június 16-án és 17-én. Utána sokkal többet fogunk tudni a kamatpályáról.",
+      "text_markdown": "Június 16-án és 17-én. Utána sokkal többet fogunk tudni a kamatpályáról.",
+      "title": "",
+      "tts": {
+        "text": "Június tizenhatodikán és tizenhetedikén. Utána sokkal többet fogunk tudni a kamatpályáról.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "Jó helyen landoltunk. Ron, köszönöm.",
+      "text_markdown": "Jó helyen landoltunk. Ron, köszönöm.",
+      "title": "",
+      "tts": {
+        "text": "Jó helyen landoltunk. Ron, köszönöm.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "Bármikor, Vindy.",
+      "text_markdown": "Bármikor, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Bármikor, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "Ez volt az AI This Week 2026. május 13-ra. Új adás jövő szerdán. Addig is vigyázzatok magatokra.",
+      "text_markdown": "Ez volt az AI This Week 2026. május 13-ra. Új adás jövő szerdán. Addig is vigyázzatok magatokra.",
+      "title": "",
+      "tts": {
+        "text": "Ez volt az AI This Week kétezerhuszonhat május tizenharmadikára. Új adás jövő szerdán. Addig is vigyázzatok magatokra.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2692 @@
+{
+  "book_id": "book_oud_history",
+  "language": "nl",
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Een woord voor de luisteraar",
+      "text_markdown": "Een woord voor de luisteraar"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een boek over de oud, een houten snaarinstrument.",
+      "text_markdown": "Dit is een boek over de oud, een houten snaarinstrument.",
+      "tts": {
+        "text": "Dit is een boek over de oed, een houten snaarinstrument.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mensen spelen het al meer dan duizend jaar.",
+      "text_markdown": "Mensen spelen het al meer dan duizend jaar.",
+      "tts": {
+        "text": "Mensen spelen het al meer dan duizend jaar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je hoort de oud in steden aan zee en in bergdorpen.",
+      "text_markdown": "Je hoort de oud in steden aan zee en in bergdorpen.",
+      "tts": {
+        "text": "Je hoort de oed in steden aan zee en in bergdorpen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je hoort hem in oude paleizen en op kleine houten podia.",
+      "text_markdown": "Je hoort hem in oude paleizen en op kleine houten podia.",
+      "tts": {
+        "text": "Je hoort hem in oude paleizen en op kleine houten podia.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In dit boek leren we hoe de oud eruitziet, hoe hij wordt gebouwd en wie zijn verhaal vormgaven.",
+      "text_markdown": "In dit boek leren we hoe de oud eruitziet, hoe hij wordt gebouwd en wie zijn verhaal vormgaven.",
+      "tts": {
+        "text": "In dit boek leren we hoe de oed eruitziet, hoe hij wordt gebouwd en wie zijn verhaal vormgaven.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Listener",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Aan het eind weet je waarom de oud soms de koning van de snaarinstrumenten heet.",
+      "text_markdown": "Aan het eind weet je waarom de oud soms de koning van de snaarinstrumenten heet.",
+      "tts": {
+        "text": "Aan het eind weet je waarom de oed soms de koning van de snaarinstrumenten heet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 1 — Wat is een oud?",
+      "text_markdown": "Hoofdstuk 1 — Wat is een oud?"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een oud is een snaarinstrument.",
+      "text_markdown": "Een oud is een snaarinstrument.",
+      "tts": {
+        "text": "Een oed is een snaarinstrument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is een soort luit, met een klankkast als een doormidden gesneden peer.",
+      "text_markdown": "Het is een soort luit, met een klankkast als een doormidden gesneden peer.",
+      "tts": {
+        "text": "Het is een soort luit, met een klankkast als een doormidden gesneden peer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De achterkant van de oud is rond en diep, als een houten kom.",
+      "text_markdown": "De achterkant van de oud is rond en diep, als een houten kom.",
+      "tts": {
+        "text": "De achterkant van de oed is rond en diep, als een houten kom.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De voorkant is vlak.",
+      "text_markdown": "De voorkant is vlak.",
+      "tts": {
+        "text": "De voorkant is vlak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die vlakke voorkant heet het klankbord.",
+      "text_markdown": "Die vlakke voorkant heet het klankbord.",
+      "tts": {
+        "text": "Die vlakke voorkant heet het klankbord.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hals van de oud is kort en heeft geen fretten.",
+      "text_markdown": "De hals van de oud is kort en heeft geen fretten.",
+      "tts": {
+        "text": "De hals van de oed is kort en heeft geen fretten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Fretten zijn de kleine metalen streepjes die je op een gitaar ziet.",
+      "text_markdown": "Fretten zijn de kleine metalen streepjes die je op een gitaar ziet.",
+      "tts": {
+        "text": "Fretten zijn de kleine metalen streepjes die je op een gitaar ziet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Zonder fretten kan de speler heel vloeiend tussen tonen glijden.",
+      "text_markdown": "Zonder fretten kan de speler heel vloeiend tussen tonen glijden.",
+      "tts": {
+        "text": "Zonder fretten kan de speler heel vloeiend tussen tonen glijden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste ouds hebben elf snaren, verdeeld over zes paren.",
+      "text_markdown": "De meeste ouds hebben elf snaren, verdeeld over zes paren.",
+      "tts": {
+        "text": "De meeste oeds hebben elf snaren, verdeeld over zes paren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zo'n paar heet een koor.",
+      "text_markdown": "Zo'n paar heet een koor.",
+      "tts": {
+        "text": "Zo'n paar heet een koor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vijf koren hebben elk twee snaren die gelijk zijn gestemd.",
+      "text_markdown": "Vijf koren hebben elk twee snaren die gelijk zijn gestemd.",
+      "tts": {
+        "text": "Vijf koren hebben elk twee snaren die gelijk zijn gestemd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Het zesde koor heeft maar één snaar.",
+      "text_markdown": "Het zesde koor heeft maar één snaar.",
+      "tts": {
+        "text": "Het zesde koor heeft maar één snaar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Zo kom je uit op elf.",
+      "text_markdown": "Zo kom je uit op elf.",
+      "tts": {
+        "text": "Zo kom je uit op elf.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De speler houdt de oud dwars over de schoot.",
+      "text_markdown": "De speler houdt de oud dwars over de schoot.",
+      "tts": {
+        "text": "De speler houdt de oed dwars over de schoot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De ene hand drukt de snaren op de hals.",
+      "text_markdown": "De ene hand drukt de snaren op de hals.",
+      "tts": {
+        "text": "De ene hand drukt de snaren op de hals.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De andere hand tokkelt ze met een dun plectrum dat een risha heet.",
+      "text_markdown": "De andere hand tokkelt ze met een dun plectrum dat een risha heet.",
+      "tts": {
+        "text": "De andere hand tokkelt ze met een dun plektrum dat een riesja heet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De klank is warm en diep.",
+      "text_markdown": "De klank is warm en diep.",
+      "tts": {
+        "text": "De klank is warm en diep.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — What Is an Oud?",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij klinkt tegelijk een beetje droevig en een beetje zoet.",
+      "text_markdown": "Hij klinkt tegelijk een beetje droevig en een beetje zoet.",
+      "tts": {
+        "text": "Hij klinkt tegelijk een beetje droevig en een beetje zoet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-027",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 2 — Waar de naam vandaan komt",
+      "text_markdown": "Hoofdstuk 2 — Waar de naam vandaan komt"
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De naam oud is een Arabisch woord dat hout betekent.",
+      "text_markdown": "De naam oud is een Arabisch woord dat hout betekent.",
+      "tts": {
+        "text": "De naam oed is een Arabisch woord dat hout betekent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het instrument is genoemd naar het materiaal waarvan het is gemaakt.",
+      "text_markdown": "Het instrument is genoemd naar het materiaal waarvan het is gemaakt.",
+      "tts": {
+        "text": "Het instrument is genoemd naar het materiaal waarvan het is gemaakt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lang vóór de oud was er een oudere verwant, de barbat.",
+      "text_markdown": "Lang vóór de oud was er een oudere verwant, de barbat.",
+      "tts": {
+        "text": "Lang vóór de oed was er een oudere verwant, de barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De barbat werd meer dan tweeduizend jaar geleden in het oude Perzië bespeeld.",
+      "text_markdown": "De barbat werd meer dan tweeduizend jaar geleden in het oude Perzië bespeeld.",
+      "tts": {
+        "text": "De barbat werd meer dan tweeduizend jaar geleden in het oude Perzie bespeeld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De barbat had een houten klankkast en zijden snaren.",
+      "text_markdown": "De barbat had een houten klankkast en zijden snaren.",
+      "tts": {
+        "text": "De barbat had een houten klankkast en zijden snaren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De klank was lang en zacht.",
+      "text_markdown": "De klank was lang en zacht.",
+      "tts": {
+        "text": "De klank was lang en zacht.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mensen aan koninklijke hoven speelden erop.",
+      "text_markdown": "Mensen aan koninklijke hoven speelden erop.",
+      "tts": {
+        "text": "Mensen aan koninklijke hoven speelden erop.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Langzaam veranderde de barbat.",
+      "text_markdown": "Langzaam veranderde de barbat.",
+      "tts": {
+        "text": "Langzaam veranderde de barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De klankkast werd ronder, de snaren werden verdubbeld tot paren en de hals werd korter.",
+      "text_markdown": "De klankkast werd ronder, de snaren werden verdubbeld tot paren en de hals werd korter.",
+      "tts": {
+        "text": "De klankkast werd ronder, de snaren werden verdubbeld tot paren en de hals werd korter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rond het jaar zevenhonderd speelden mensen in de Arabische wereld wat wij nu de oud noemen.",
+      "text_markdown": "Rond het jaar zevenhonderd speelden mensen in de Arabische wereld wat wij nu de oud noemen.",
+      "tts": {
+        "text": "Rond het jaar zevenhonderd speelden mensen in de Arabische wereld wat wij nu de oed noemen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Van daaruit reisde de oud verder.",
+      "text_markdown": "Van daaruit reisde de oud verder.",
+      "tts": {
+        "text": "Van daaruit reisde de oed verder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij ging naar Egypte en Noord-Afrika.",
+      "text_markdown": "Hij ging naar Egypte en Noord-Afrika.",
+      "tts": {
+        "text": "Hij ging naar Egypte en Noord Afrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij stak de zee over naar Spanje.",
+      "text_markdown": "Hij stak de zee over naar Spanje.",
+      "tts": {
+        "text": "Hij stak de zee over naar Spanje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij trok noordwaarts naar Turkije en Griekenland.",
+      "text_markdown": "Hij trok noordwaarts naar Turkije en Griekenland.",
+      "tts": {
+        "text": "Hij trok noordwaarts naar Turkije en Griekenland.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Elke plek gaf de oud iets van zijn eigen stem.",
+      "text_markdown": "Elke plek gaf de oud iets van zijn eigen stem.",
+      "tts": {
+        "text": "Elke plek gaf de oed iets van zijn eigen stem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de naam bleef hetzelfde.",
+      "text_markdown": "Maar de naam bleef hetzelfde.",
+      "tts": {
+        "text": "Maar de naam bleef hetzelfde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — Where the Name Comes From",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Waar hij ook kwam, het houten instrument bleef de oed heten.",
+      "text_markdown": "Waar hij ook kwam, het houten instrument bleef de oed heten.",
+      "tts": {
+        "text": "Waar hij ook kwam, het houten instrument bleef de oed heten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-045",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 3 — Hoe een oud wordt gebouwd",
+      "text_markdown": "Hoofdstuk 3 — Hoe een oud wordt gebouwd"
+    },
+    {
+      "id": "ch03-046",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een oud bouwen kost veel tijd.",
+      "text_markdown": "Een oud bouwen kost veel tijd.",
+      "tts": {
+        "text": "Een oed bouwen kost veel tijd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-047",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een goede bouwer kan weken aan één instrument werken.",
+      "text_markdown": "Een goede bouwer kan weken aan één instrument werken.",
+      "tts": {
+        "text": "Een goede bouwer kan weken aan één instrument werken.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-048",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De kom wordt gemaakt van dunne stroken hout, meestal tussen vijftien en vijfentwintig.",
+      "text_markdown": "De kom wordt gemaakt van dunne stroken hout, meestal tussen vijftien en vijfentwintig.",
+      "tts": {
+        "text": "De kom wordt gemaakt van dunne stroken hout, meestal tussen vijftien en vijfentwintig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-049",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elke strook wordt gebogen en aan de volgende gelijmd.",
+      "text_markdown": "Elke strook wordt gebogen en aan de volgende gelijmd.",
+      "tts": {
+        "text": "Elke strook wordt gebogen en aan de volgende gelijmd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Samen vormen ze de diepe, ronde achterkant van de oud.",
+      "text_markdown": "Samen vormen ze de diepe, ronde achterkant van de oud.",
+      "tts": {
+        "text": "Samen vormen ze de diepe, ronde achterkant van de oed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De houtsoort doet ertoe.",
+      "text_markdown": "De houtsoort doet ertoe.",
+      "tts": {
+        "text": "De houtsoort doet ertoe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Walnoot geeft een warme klank, mahonie een donkere, en moerbei een heldere, zingende klank.",
+      "text_markdown": "Walnoot geeft een warme klank, mahonie een donkere, en moerbei een heldere, zingende klank.",
+      "tts": {
+        "text": "Walnoot geeft een warme klank, mahonie een donkere, en moerbei een heldere, zingende klank.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De bouwer kiest het hout voor de klank die hij wil.",
+      "text_markdown": "De bouwer kiest het hout voor de klank die hij wil.",
+      "tts": {
+        "text": "De bouwer kiest het hout voor de klank die hij wil.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De vlakke voorkant, het klankbord, is van sparrenhout.",
+      "text_markdown": "De vlakke voorkant, het klankbord, is van sparrenhout.",
+      "tts": {
+        "text": "De vlakke voorkant, het klankbord, is van sparrenhout.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sparrenhout is licht en sterk, en het laat de klankkast gemakkelijk trillen.",
+      "text_markdown": "Sparrenhout is licht en sterk, en het laat de klankkast gemakkelijk trillen.",
+      "tts": {
+        "text": "Sparrenhout is licht en sterk, en het laat de klankkast gemakkelijk trillen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die trilling horen wij als muziek.",
+      "text_markdown": "Die trilling horen wij als muziek.",
+      "tts": {
+        "text": "Die trilling horen wij als muziek.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In het klankbord zitten kleine ronde gaten die rozetten heten.",
+      "text_markdown": "In het klankbord zitten kleine ronde gaten die rozetten heten.",
+      "tts": {
+        "text": "In het klankbord zitten kleine ronde gaten die rozetten heten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ze zijn vaak uitgesneden in mooie patronen.",
+      "text_markdown": "Ze zijn vaak uitgesneden in mooie patronen.",
+      "tts": {
+        "text": "Ze zijn vaak uitgesneden in mooie patronen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De rozetten laten het geluid uit de kom komen.",
+      "text_markdown": "De rozetten laten het geluid uit de kom komen.",
+      "tts": {
+        "text": "De rozetten laten het geluid uit de kom komen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vroeger waren snaren van darm, een soort gedroogde dierlijke pees.",
+      "text_markdown": "Vroeger waren snaren van darm, een soort gedroogde dierlijke pees.",
+      "tts": {
+        "text": "Vroeger waren snaren van darm, een soort gedroogde dierlijke pees.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nu zijn de meeste snaren van nylon, met een dun metalen draad om de laagste.",
+      "text_markdown": "Nu zijn de meeste snaren van nylon, met een dun metalen draad om de laagste.",
+      "tts": {
+        "text": "Nu zijn de meeste snaren van nylon, met een dun metalen draad om de laagste.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De speler slaat de snaren aan met een risha.",
+      "text_markdown": "De speler slaat de snaren aan met een risha.",
+      "tts": {
+        "text": "De speler slaat de snaren aan met een riesja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het woord risha betekent veer.",
+      "text_markdown": "Het woord risha betekent veer.",
+      "tts": {
+        "text": "Het woord riesja betekent veer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De eerste plectrums werden gemaakt van adelaarsveren.",
+      "text_markdown": "De eerste plectrums werden gemaakt van adelaarsveren.",
+      "tts": {
+        "text": "De eerste plektrums werden gemaakt van adelaarsveren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — How an Oud Is Built",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Nu worden ze gemaakt van plastic, bot of schildpadschild.",
+      "text_markdown": "Nu worden ze gemaakt van plastic, bot of schildpadschild.",
+      "tts": {
+        "text": "Nu worden ze gemaakt van plastic, bot of schildpadschild.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 4 — Waar de oud wordt bespeeld",
+      "text_markdown": "Hoofdstuk 4 — Waar de oud wordt bespeeld"
+    },
+    {
+      "id": "ch04-067",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oud wordt overal in de Arabische wereld bespeeld.",
+      "text_markdown": "De oud wordt overal in de Arabische wereld bespeeld.",
+      "tts": {
+        "text": "De oed wordt overal in de Arabische wereld bespeeld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-068",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Je hoort hem in Egypte, Syrië, Irak, Libanon, de Golf en Noord-Afrika.",
+      "text_markdown": "Je hoort hem in Egypte, Syrië, Irak, Libanon, de Golf en Noord-Afrika.",
+      "tts": {
+        "text": "Je hoort hem in Egypte, Syrië, Irak, Libanon, de Golf en Noord Afrika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-069",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij wordt ook buiten de Arabische wereld bespeeld.",
+      "text_markdown": "Hij wordt ook buiten de Arabische wereld bespeeld.",
+      "tts": {
+        "text": "Hij wordt ook buiten de Arabische wereld bespeeld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Turken hebben hun eigen oud.",
+      "text_markdown": "De Turken hebben hun eigen oud.",
+      "tts": {
+        "text": "De Turken hebben hun eigen oed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De Grieken hebben hun eigen oud.",
+      "text_markdown": "De Grieken hebben hun eigen oud.",
+      "tts": {
+        "text": "De Grieken hebben hun eigen oed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Armeniërs en Iraniërs bespelen verwanten ervan.",
+      "text_markdown": "Armeniërs en Iraniërs bespelen verwanten ervan.",
+      "tts": {
+        "text": "Armeniërs en Iraniërs bespelen verwanten ervan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p29",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "In Spanje werd hij honderden jaren bespeeld.",
+      "text_markdown": "In Spanje werd hij honderden jaren bespeeld.",
+      "tts": {
+        "text": "In Spanje werd hij honderden jaren bespeeld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tegenwoordig zijn er drie hoofdtypen oud.",
+      "text_markdown": "Tegenwoordig zijn er drie hoofdtypen oud.",
+      "tts": {
+        "text": "Tegenwoordig zijn er drie hoofdtypen oed.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De Arabische oud is groot en diep, met een volle en trage klank.",
+      "text_markdown": "De Arabische oud is groot en diep, met een volle en trage klank.",
+      "tts": {
+        "text": "De Arabische oed is groot en diep, met een volle en trage klank.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dat is de oud van Egypte en de Levant.",
+      "text_markdown": "Dat is de oud van Egypte en de Levant.",
+      "tts": {
+        "text": "Dat is de oed van Egypte en de Levant.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Turkse oud is kleiner en helderder, en staat wat hoger gestemd dan de Arabische oud.",
+      "text_markdown": "De Turkse oud is kleiner en helderder, en staat wat hoger gestemd dan de Arabische oud.",
+      "tts": {
+        "text": "De Turkse oed is kleiner en helderder, en staat wat hoger gestemd dan de Arabische oed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De Perzische verwant heet de barbat.",
+      "text_markdown": "De Perzische verwant heet de barbat.",
+      "tts": {
+        "text": "De Perzische verwant heet de barbat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij is klein en scherp, en gebruikt een andere reeks tonen.",
+      "text_markdown": "Hij is klein en scherp, en gebruikt een andere reeks tonen.",
+      "tts": {
+        "text": "Hij is klein en scherp, en gebruikt een andere reeks tonen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oud is het hart van klassieke Arabische muziek en van Turkse makam muziek.",
+      "text_markdown": "De oud is het hart van klassieke Arabische muziek en van Turkse makam muziek.",
+      "tts": {
+        "text": "De oed is het hart van klassieke Arabische muziek en van Turkse makam muziek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij klinkt op bruiloften en begrafenissen, in concertzalen en in woonkamers met vrienden.",
+      "text_markdown": "Hij klinkt op bruiloften en begrafenissen, in concertzalen en in woonkamers met vrienden.",
+      "tts": {
+        "text": "Hij klinkt op bruiloften en begrafenissen, in concertzalen en in woonkamers met vrienden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — Where the Oud Is Played",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Waar mensen ook samenkomen en muziek met ziel willen, kan iemand een oud tevoorschijn halen.",
+      "text_markdown": "Waar mensen ook samenkomen en muziek met ziel willen, kan iemand een oud tevoorschijn halen.",
+      "tts": {
+        "text": "Waar mensen ook samenkomen en muziek met ziel willen, kan iemand een oed tevoorschijn halen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 5 — De maqam",
+      "text_markdown": "Hoofdstuk 5 — De maqam"
+    },
+    {
+      "id": "ch05-084",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je piano speelt, druk je op witte en zwarte toetsen.",
+      "text_markdown": "Als je piano speelt, druk je op witte en zwarte toetsen.",
+      "tts": {
+        "text": "Als je piano speelt, druk je op witte en zwarte toetsen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-085",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In elk octaaf zitten twaalf tonen, en elke stap is even groot.",
+      "text_markdown": "In elk octaaf zitten twaalf tonen, en elke stap is even groot.",
+      "tts": {
+        "text": "In elk octaaf zitten twaalf tonen, en elke stap is even groot.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-086",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dat noemen we gelijkzwevende stemming.",
+      "text_markdown": "Dat noemen we gelijkzwevende stemming.",
+      "tts": {
+        "text": "Dat noemen we gelijkzwevende stemming.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zo werkt de oud niet.",
+      "text_markdown": "Zo werkt de oud niet.",
+      "tts": {
+        "text": "Zo werkt de oed niet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-088",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De oud gebruikt een veel ouder systeem, de maqam.",
+      "text_markdown": "De oud gebruikt een veel ouder systeem, de maqam.",
+      "tts": {
+        "text": "De oed gebruikt een veel ouder systeem, de makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-089",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een maqam is een manier om tonen te kiezen, en er zijn veel maqamat.",
+      "text_markdown": "Een maqam is een manier om tonen te kiezen, en er zijn veel maqamat.",
+      "tts": {
+        "text": "Een makam is een manier om tonen te kiezen, en er zijn veel makamaat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elke maqam heeft zijn eigen sfeer.",
+      "text_markdown": "Elke maqam heeft zijn eigen sfeer.",
+      "tts": {
+        "text": "Elke makam heeft zijn eigen sfeer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sommige zijn vrolijk, sommige droevig, en sommige klinken een beetje geheimzinnig.",
+      "text_markdown": "Sommige zijn vrolijk, sommige droevig, en sommige klinken een beetje geheimzinnig.",
+      "tts": {
+        "text": "Sommige zijn vrolijk, sommige droevig, en sommige klinken een beetje geheimzinnig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grote geheim van de maqam is dat hij meer tonen heeft dan een piano.",
+      "text_markdown": "Het grote geheim van de maqam is dat hij meer tonen heeft dan een piano.",
+      "tts": {
+        "text": "Het grote geheim van de makam is dat hij meer tonen heeft dan een piano.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tussen de witte en zwarte toetsen zitten kleinere stappen die we kwarttonen noemen.",
+      "text_markdown": "Tussen de witte en zwarte toetsen zitten kleinere stappen die we kwarttonen noemen.",
+      "tts": {
+        "text": "Tussen de witte en zwarte toetsen zitten kleinere stappen die we kwarttonen noemen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een kwarttoon is de helft van een halve toon.",
+      "text_markdown": "Een kwarttoon is de helft van een halve toon.",
+      "tts": {
+        "text": "Een kwarttoon is de helft van een halve toon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het is een piepkleine toon tussen de tonen die je kent.",
+      "text_markdown": "Het is een piepkleine toon tussen de tonen die je kent.",
+      "tts": {
+        "text": "Het is een piepkleine toon tussen de tonen die je kent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Op een piano kun je die niet spelen.",
+      "text_markdown": "Op een piano kun je die niet spelen.",
+      "tts": {
+        "text": "Op een piano kun je die niet spelen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Op een oud schuif je je vinger ernaartoe.",
+      "text_markdown": "Op een oud schuif je je vinger ernaartoe.",
+      "tts": {
+        "text": "Op een oed schuif je je vinger ernaartoe.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een maqam is opgebouwd uit kleine groepen tonen.",
+      "text_markdown": "Een maqam is opgebouwd uit kleine groepen tonen.",
+      "tts": {
+        "text": "Een makam is opgebouwd uit kleine groepen tonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Een djins is de naam voor zo'n kleine groep.",
+      "text_markdown": "Een djins is de naam voor zo'n kleine groep.",
+      "tts": {
+        "text": "Een djins is de naam voor zo'n kleine groep.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De meeste ajnas hebben vier tonen.",
+      "text_markdown": "De meeste ajnas hebben vier tonen.",
+      "tts": {
+        "text": "De meeste ajnaas hebben vier tonen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Je kunt een jins zien als een klein Lego blokje van muziek, en daarmee bouw je een maqam.",
+      "text_markdown": "Je kunt een jins zien als een klein Lego blokje van muziek, en daarmee bouw je een maqam.",
+      "tts": {
+        "text": "Je kunt een djins zien als een klein Lego blokje van muziek, en daarmee bouw je een makam.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De maqam is melodisch, niet harmonisch.",
+      "text_markdown": "De maqam is melodisch, niet harmonisch.",
+      "tts": {
+        "text": "De makam is melodisch, niet harmonisch.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Dat betekent dat de muziek toon voor toon beweegt, in plaats van tonen te stapelen tot akkoorden zoals op een gitaar.",
+      "text_markdown": "Dat betekent dat de muziek toon voor toon beweegt, in plaats van tonen te stapelen tot akkoorden zoals op een gitaar.",
+      "tts": {
+        "text": "Dat betekent dat de muziek toon voor toon beweegt, in plaats van tonen te stapelen tot akkoorden zoals op een gitaar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als een oud een langzame, slingerende solo speelt, beweegt de speler zich in een maqam.",
+      "text_markdown": "Als een oud een langzame, slingerende solo speelt, beweegt de speler zich in een maqam.",
+      "tts": {
+        "text": "Als een oed een langzame, slingerende solo speelt, beweegt de speler zich in een makam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij kiest tonen uit het blokje en glijdt dan naar het volgende.",
+      "text_markdown": "Hij kiest tonen uit het blokje en glijdt dan naar het volgende.",
+      "tts": {
+        "text": "Hij kiest tonen uit het blokje en glijdt dan naar het volgende.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die solo heeft een naam.",
+      "text_markdown": "Die solo heeft een naam.",
+      "tts": {
+        "text": "Die solo heeft een naam.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Die noemen we een taqsim.",
+      "text_markdown": "Die noemen we een taqsim.",
+      "tts": {
+        "text": "Die noemen we een taksiem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een goede taqsim kan je laten lachen en laten huilen.",
+      "text_markdown": "Een goede taqsim kan je laten lachen en laten huilen.",
+      "tts": {
+        "text": "Een goede taksiem kan je laten lachen en laten huilen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — The Maqam",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Daar klinkt de oud op zijn mooist.",
+      "text_markdown": "Daar klinkt de oud op zijn mooist.",
+      "tts": {
+        "text": "Daar klinkt de oed op zijn mooist.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 6 — De grote meesters",
+      "text_markdown": "Hoofdstuk 6 — De grote meesters"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oud wordt al meer dan duizend jaar bespeeld.",
+      "text_markdown": "De oud wordt al meer dan duizend jaar bespeeld.",
+      "tts": {
+        "text": "De oed wordt al meer dan duizend jaar bespeeld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In al die tijd hebben een paar mensen hem voorgoed veranderd.",
+      "text_markdown": "In al die tijd hebben een paar mensen hem voorgoed veranderd.",
+      "tts": {
+        "text": "In al die tijd hebben een paar mensen hem voorgoed veranderd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De eerste was meer een denker dan een speler, en heette al-Farabi.",
+      "text_markdown": "De eerste was meer een denker dan een speler, en heette al-Farabi.",
+      "tts": {
+        "text": "De eerste was meer een denker dan een speler, en heette al Faarabi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij leefde ongeveer van achthonderdtweeënzeventig tot negenhonderdvijftig en werkte in de grote stad Bagdad.",
+      "text_markdown": "Hij leefde ongeveer van achthonderdtweeënzeventig tot negenhonderdvijftig en werkte in de grote stad Bagdad.",
+      "tts": {
+        "text": "Hij leefde ongeveer van achthonderdtweeënzeventig tot negenhonderdvijftig en werkte in de grote stad Bagdad.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Al-Farabi schreef een enorm boek over muziek.",
+      "text_markdown": "Al-Farabi schreef een enorm boek over muziek.",
+      "tts": {
+        "text": "Al Faarabi schreef een enorm boek over muziek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij legde uit hoe snaren trillen.",
+      "text_markdown": "Hij legde uit hoe snaren trillen.",
+      "tts": {
+        "text": "Hij legde uit hoe snaren trillen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij legde uit waarom sommige tonen samen mooi klinken.",
+      "text_markdown": "Hij legde uit waarom sommige tonen samen mooi klinken.",
+      "tts": {
+        "text": "Hij legde uit waarom sommige tonen samen mooi klinken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Hij legde uit waarom muziek kan veranderen hoe iemand zich voelt.",
+      "text_markdown": "Hij legde uit waarom muziek kan veranderen hoe iemand zich voelt.",
+      "tts": {
+        "text": "Hij legde uit waarom muziek kan veranderen hoe iemand zich voelt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Zijn boek werd eeuwenlang in het Arabisch en in het Latijn gelezen.",
+      "text_markdown": "Zijn boek werd eeuwenlang in het Arabisch en in het Latijn gelezen.",
+      "tts": {
+        "text": "Zijn boek werd eeuwenlang in het Arabisch en in het Latijn gelezen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De tweede grote meester van de oud was de zanger Ziryab, geboren in Irak rond zevenhonderdnegenentachtig.",
+      "text_markdown": "De tweede grote meester van de oud was de zanger Ziryab, geboren in Irak rond zevenhonderdnegenentachtig.",
+      "tts": {
+        "text": "De tweede grote meester van de oed was de zanger Zirjaab, geboren in Irak rond zevenhonderdnegenentachtig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Als jonge man moest hij Bagdad haastig verlaten.",
+      "text_markdown": "Als jonge man moest hij Bagdad haastig verlaten.",
+      "tts": {
+        "text": "Als jonge man moest hij Bagdad haastig verlaten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ziryab reisde westwaarts door heel Noord-Afrika.",
+      "text_markdown": "Ziryab reisde westwaarts door heel Noord-Afrika.",
+      "tts": {
+        "text": "Zirjaab reisde westwaarts door heel Noord Afrika.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "In het jaar achthonderdtweeëntwintig kwam hij aan in Córdoba, in Spanje.",
+      "text_markdown": "In het jaar achthonderdtweeëntwintig kwam hij aan in Córdoba, in Spanje.",
+      "tts": {
+        "text": "In het jaar achthonderdtweeëntwintig kwam hij aan in Kordoba, in Spanje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De koning van Córdoba hield van zijn muziek en gaf hem een huis, een salaris en tijd om les te geven.",
+      "text_markdown": "De koning van Córdoba hield van zijn muziek en gaf hem een huis, een salaris en tijd om les te geven.",
+      "tts": {
+        "text": "De koning van Kordoba hield van zijn muziek en gaf hem een huis, een salaris en tijd om les te geven.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Spanje opende Ziryab een muziekschool.",
+      "text_markdown": "In Spanje opende Ziryab een muziekschool.",
+      "tts": {
+        "text": "In Spanje opende Zirjaab een muziekschool.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sommigen zeggen dat het het eerste conservatorium ter wereld was.",
+      "text_markdown": "Sommigen zeggen dat het het eerste conservatorium ter wereld was.",
+      "tts": {
+        "text": "Sommigen zeggen dat het het eerste conservatorium ter wereld was.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij voegde een vijfde snaarkoor toe aan de oud, en hij veranderde hoe plectrums werden gemaakt.",
+      "text_markdown": "Hij voegde een vijfde snaarkoor toe aan de oud, en hij veranderde hoe plectrums werden gemaakt.",
+      "tts": {
+        "text": "Hij voegde een vijfde snaarkoor toe aan de oed, en hij veranderde hoe plektrums werden gemaakt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lang na Ziryab bracht een speler uit Irak de oud in onze tijd naar een nieuw niveau.",
+      "text_markdown": "Lang na Ziryab bracht een speler uit Irak de oud in onze tijd naar een nieuw niveau.",
+      "tts": {
+        "text": "Lang na Zirjaab bracht een speler uit Irak de oed in onze tijd naar een nieuw niveau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij heette Munir Bashir, en mensen noemden hem de koning van de oud.",
+      "text_markdown": "Hij heette Munir Bashir, en mensen noemden hem de koning van de oud.",
+      "tts": {
+        "text": "Hij heette Moenir Basjier, en mensen noemden hem de koning van de oed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vóór Bashir speelde de oud meestal samen met andere instrumenten.",
+      "text_markdown": "Vóór Bashir speelde de oud meestal samen met andere instrumenten.",
+      "tts": {
+        "text": "Vóór Basjier speelde de oed meestal samen met andere instrumenten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bashir zette hem alleen op het podium en speelde lange, stille, diepe solo's.",
+      "text_markdown": "Bashir zette hem alleen op het podium en speelde lange, stille, diepe solo's.",
+      "tts": {
+        "text": "Basjier zette hem alleen op het podium en speelde lange, stille, diepe solos.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mensen overal ter wereld hoorden hem en werden opnieuw verliefd op de oud.",
+      "text_markdown": "Mensen overal ter wereld hoorden hem en werden opnieuw verliefd op de oud.",
+      "tts": {
+        "text": "Mensen overal ter wereld hoorden hem en werden opnieuw verliefd op de oed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er waren er nog veel meer.",
+      "text_markdown": "Er waren er nog veel meer.",
+      "tts": {
+        "text": "Er waren er nog veel meer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-134",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Farid al-Atrash maakte van de oud de stem van Egyptische films.",
+      "text_markdown": "Farid al-Atrash maakte van de oud de stem van Egyptische films.",
+      "tts": {
+        "text": "Faried al Atrash maakte van de oed de stem van Egyptische films.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-135",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Anouar Brahem uit Tunesië speelt oud met jazzmuzikanten uit Europa en Amerika.",
+      "text_markdown": "Anouar Brahem uit Tunesië speelt oud met jazzmuzikanten uit Europa en Amerika.",
+      "tts": {
+        "text": "Anoear Brahem uit Tunesie speelt oed met jazzmuzikanten uit Europa en Amerika.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-136",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oud leeft nog altijd.",
+      "text_markdown": "De oud leeft nog altijd.",
+      "tts": {
+        "text": "De oed leeft nog altijd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-137",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — The Great Masters",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elk jaar wordt ergens op de wereld een nieuwe meester geboren.",
+      "text_markdown": "Elk jaar wordt ergens op de wereld een nieuwe meester geboren.",
+      "tts": {
+        "text": "Elk jaar wordt ergens op de wereld een nieuwe meester geboren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Hoofdstuk 7 — De oud en de wereld",
+      "text_markdown": "Hoofdstuk 7 — De oud en de wereld"
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oud bleef niet in de Arabische wereld.",
+      "text_markdown": "De oud bleef niet in de Arabische wereld.",
+      "tts": {
+        "text": "De oed bleef niet in de Arabische wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Toen hij reisde, veranderden zijn vorm, zijn naam en zijn liederen.",
+      "text_markdown": "Toen hij reisde, veranderden zijn vorm, zijn naam en zijn liederen.",
+      "tts": {
+        "text": "Toen hij reisde, veranderden zijn vorm, zijn naam en zijn liederen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Toen de oud het middeleeuwse Spanje bereikte, hielden Europese spelers van de houten kom en de diepe klank.",
+      "text_markdown": "Toen de oud het middeleeuwse Spanje bereikte, hielden Europese spelers van de houten kom en de diepe klank.",
+      "tts": {
+        "text": "Toen de oed het middeleeuwse Spanje bereikte, hielden Europese spelers van de houten kom en de diepe klank.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maar ze wilden fretten, zoals op de kleine instrumenten die ze al kenden.",
+      "text_markdown": "Maar ze wilden fretten, zoals op de kleine instrumenten die ze al kenden.",
+      "tts": {
+        "text": "Maar ze wilden fretten, zoals op de kleine instrumenten die ze al kenden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dus voegden ze fretten toe, maakten de achterkant wat vlakker en noemden het nieuwe instrument de luit.",
+      "text_markdown": "Dus voegden ze fretten toe, maakten de achterkant wat vlakker en noemden het nieuwe instrument de luit.",
+      "tts": {
+        "text": "Dus voegden ze fretten toe, maakten de achterkant wat vlakker en noemden het nieuwe instrument de luit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vijfhonderd jaar lang was de luit het lievelingsinstrument van Europa.",
+      "text_markdown": "Vijfhonderd jaar lang was de luit het lievelingsinstrument van Europa.",
+      "tts": {
+        "text": "Vijfhonderd jaar lang was de luit het lievelingsinstrument van Europa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Koningen speelden erop.",
+      "text_markdown": "Koningen speelden erop.",
+      "tts": {
+        "text": "Koningen speelden erop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dichters speelden erop.",
+      "text_markdown": "Dichters speelden erop.",
+      "tts": {
+        "text": "Dichters speelden erop.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De grootste componisten schreven er muziek voor.",
+      "text_markdown": "De grootste componisten schreven er muziek voor.",
+      "tts": {
+        "text": "De grootste componisten schreven er muziek voor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daarna veranderde de luit opnieuw.",
+      "text_markdown": "Daarna veranderde de luit opnieuw.",
+      "tts": {
+        "text": "Daarna veranderde de luit opnieuw.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Spelers voegden meer snaren toe, maakten de achterkant nog vlakker en gaven hem een kleinere, lichtere klankkast.",
+      "text_markdown": "Spelers voegden meer snaren toe, maakten de achterkant nog vlakker en gaven hem een kleinere, lichtere klankkast.",
+      "tts": {
+        "text": "Spelers voegden meer snaren toe, maakten de achterkant nog vlakker en gaven hem een kleinere, lichtere klankkast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rond het jaar achttienhonderd kreeg dit nieuwe instrument in Spanje een naam die wij allemaal kennen.",
+      "text_markdown": "Rond het jaar achttienhonderd kreeg dit nieuwe instrument in Spanje een naam die wij allemaal kennen.",
+      "tts": {
+        "text": "Rond het jaar achttienhonderd kreeg dit nieuwe instrument in Spanje een naam die wij allemaal kennen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Dat was de gitaar.",
+      "text_markdown": "Dat was de gitaar.",
+      "tts": {
+        "text": "Dat was de gitaar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dus de oud, de luit en de gitaar horen allemaal bij dezelfde familie.",
+      "text_markdown": "Dus de oud, de luit en de gitaar horen allemaal bij dezelfde familie.",
+      "tts": {
+        "text": "Dus de oed, de luit en de gitaar horen allemaal bij dezelfde familie.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Het zijn verwanten, en ze delen een grootvader.",
+      "text_markdown": "Het zijn verwanten, en ze delen een grootvader.",
+      "tts": {
+        "text": "Het zijn verwanten, en ze delen een grootvader.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Die grootvader is de oud.",
+      "text_markdown": "Die grootvader is de oud.",
+      "tts": {
+        "text": "Die grootvader is de oed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vandaag spelen de oud en de gitaar samen.",
+      "text_markdown": "Vandaag spelen de oud en de gitaar samen.",
+      "tts": {
+        "text": "Vandaag spelen de oed en de gitaar samen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Anouar Brahem speelt oud met jazzgitaristen.",
+      "text_markdown": "Anouar Brahem speelt oud met jazzgitaristen.",
+      "tts": {
+        "text": "Anoear Brahem speelt oed met jazzgitaristen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Munir Bashir speelde voor orkesten.",
+      "text_markdown": "Munir Bashir speelde voor orkesten.",
+      "tts": {
+        "text": "Moenir Basjier speelde voor orkesten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jonge spelers in Beiroet, Istanbul, Parijs en New York mengen de oud met rock, hiphop en filmmuziek.",
+      "text_markdown": "Jonge spelers in Beiroet, Istanbul, Parijs en New York mengen de oud met rock, hiphop en filmmuziek.",
+      "tts": {
+        "text": "Jonge spelers in Beiroet, Istanbul, Parijs en New York mengen de oed met rock, hiphop en filmmuziek.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De oud is meer dan een instrument.",
+      "text_markdown": "De oud is meer dan een instrument.",
+      "tts": {
+        "text": "De oed is meer dan een instrument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hij is een brug.",
+      "text_markdown": "Hij is een brug.",
+      "tts": {
+        "text": "Hij is een brug.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Hij draagt een verhaal van Mesopotamië, door Perzië en de Arabische wereld, naar Spanje, naar Europa en weer verder naar elk land ter wereld.",
+      "text_markdown": "Hij draagt een verhaal van Mesopotamië, door Perzië en de Arabische wereld, naar Spanje, naar Europa en weer verder naar elk land ter wereld.",
+      "tts": {
+        "text": "Hij draagt een verhaal van Mesopotamie, door Perzie en de Arabische wereld, naar Spanje, naar Europa en weer verder naar elk land ter wereld.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — The Oud and the World",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wanneer je een gitaar hoort, hoor je diep daaronder ook de zachte, diepe stem van de oud.",
+      "text_markdown": "Wanneer je een gitaar hoort, hoor je diep daaronder ook de zachte, diepe stem van de oud.",
+      "tts": {
+        "text": "Wanneer je een gitaar hoort, hoor je diep daaronder ook de zachte, diepe stem van de oed.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Over dit boek",
+      "text_markdown": "Over dit boek"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is het eerste deel van Muziekinstrumenten van de wereld.",
+      "text_markdown": "Dit is het eerste deel van Muziekinstrumenten van de wereld.",
+      "tts": {
+        "text": "Dit is het eerste deel van Muziekinstrumenten van de wereld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Elk boek in deze reeks vertelt het verhaal van één instrument.",
+      "text_markdown": "Elk boek in deze reeks vertelt het verhaal van één instrument.",
+      "tts": {
+        "text": "Elk boek in deze reeks vertelt het verhaal van één instrument.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elk boek is kort, en elk boek is waarheidsgetrouw.",
+      "text_markdown": "Elk boek is kort, en elk boek is waarheidsgetrouw.",
+      "tts": {
+        "text": "Elk boek is kort, en elk boek is waarheidsgetrouw.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.7
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het volgende boek gaat over de sitar, de grote luit met lange hals uit India, met veel snaren en een diepe, klinkende stem.",
+      "text_markdown": "Het volgende boek gaat over de sitar, de grote luit met lange hals uit India, met veel snaren en een diepe, klinkende stem.",
+      "tts": {
+        "text": "Het volgende boek gaat over de sietar, de grote luit met lange hals uit India, met veel snaren en een diepe, klinkende stem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p67",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Na de sitar reizen we naar West-Afrika voor de kora, en daarna naar Japan voor de shakuhachi.",
+      "text_markdown": "Na de sitar reizen we naar West-Afrika voor de kora, en daarna naar Japan voor de shakuhachi.",
+      "tts": {
+        "text": "Na de sietar reizen we naar West Afrika voor de kora, en daarna naar Japan voor de sjakoehatsji.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dank je wel voor het luisteren.",
+      "text_markdown": "Dank je wel voor het luisteren.",
+      "tts": {
+        "text": "Dank je wel voor het luisteren.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "About This Book",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Zoek een oud, online of in je stad, en laat hem voor je spelen.",
+      "text_markdown": "Zoek een oud, online of in je stad, en laat hem voor je spelen.",
+      "tts": {
+        "text": "Zoek een oed, online of in je stad, en laat hem voor je spelen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "total_segments": 170,
+  "version": "2.0.0"
+}

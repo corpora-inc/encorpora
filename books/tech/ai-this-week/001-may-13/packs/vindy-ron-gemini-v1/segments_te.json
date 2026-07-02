@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "te",
+  "total_segments": 62,
+  "segments": [
+    {
+      "chapter": 0,
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "AI This Week కు స్వాగతం. నేను విండి.",
+      "text_markdown": "AI This Week కు స్వాగతం. నేను విండి.",
+      "title": "",
+      "tts": {
+        "text": "AI This Week కు స్వాగతం. నేను విండి.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "నాతో, ఎల్లప్పుడూ లాగా, రాన్ ఉన్నాడు.",
+      "text_markdown": "నాతో, ఎల్లప్పుడూ లాగా, రాన్ ఉన్నాడు.",
+      "title": "",
+      "tts": {
+        "text": "నాతో, ఎల్లప్పుడూ లాగా, రాన్ ఉన్నాడు.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-003",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇక్కడ ఉండటం మంచిది.",
+      "text_markdown": "ఇక్కడ ఉండటం మంచిది.",
+      "title": "",
+      "tts": {
+        "text": "ఇక్కడ ఉండటం మంచిది.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-004",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఈరోజు బుధవారం, మే పదమూడు, రెండు వేల ఇరవై ఆరు. రాబోయేవి ఈ వారం విడుదలైన మోడళ్లు. లీడర్ బోర్డులు, అలాగే వాటిలో కొన్నింటిని మీరు ఎందుకు నమ్మడం మానేయాలో. మా వారపు కాన్సెప్ట్. ఇంకా పెద్ద చిత్రాన్ని చూస్తే, అమెరికాలో కొత్త ఫెడరల్ రిజర్వ్ చైర్ బాధ్యతలు చేపట్టారు, ఈ మార్పు ఎ ఐ కి మీరు అనుకున్నదానికంటే మరింత కీలకమైన పరిణామంగా నిలుస్తుంది.",
+      "text_markdown": "ఈరోజు బుధవారం, మే పదమూడు, రెండు వేల ఇరవై ఆరు. రాబోయేవి ఈ వారం విడుదలైన మోడళ్లు. లీడర్ బోర్డులు, అలాగే వాటిలో కొన్నింటిని మీరు ఎందుకు నమ్మడం మానేయాలో. మా వారపు కాన్సెప్ట్. ఇంకా పెద్ద చిత్రాన్ని చూస్తే, అమెరికాలో కొత్త ఫెడరల్ రిజర్వ్ చైర్ బాధ్యతలు చేపట్టారు, ఈ మార్పు ఎ ఐ కి మీరు అనుకున్నదానికంటే మరింత కీలకమైన పరిణామంగా నిలుస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "ఈరోజు బుధవారం, మే పదమూడు, రెండు వేల ఇరవై ఆరు. రాబోయేవి ఈ వారం విడుదలైన మోడళ్లు. లీడర్ బోర్డులు, అలాగే వాటిలో కొన్నింటిని మీరు ఎందుకు నమ్మడం మానేయాలో. మా వారపు కాన్సెప్ట్. ఇంకా పెద్ద చిత్రాన్ని చూస్తే, అమెరికాలో కొత్త ఫెడరల్ రిజర్వ్ చైర్ బాధ్యతలు చేపట్టారు, ఈ మార్పు ఎ ఐ కి మీరు అనుకున్నదానికంటే మరింత కీలకమైన పరిణామంగా నిలుస్తుంది.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రాన్, ఈ వారంలో అతిపెద్ద model వార్త ఏమిటి?",
+      "text_markdown": "రాన్, ఈ వారంలో అతిపెద్ద model వార్త ఏమిటి?",
+      "title": "",
+      "tts": {
+        "text": "రాన్, ఈ వారంలో అతిపెద్ద model వార్త ఏమిటి?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-006",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ChatGPT లోని default brain మారిపోయింది. OpenAI గత వారం, మంగళవారం, మే 5న GPT-5.5 Instant అని పిలువబడే కొత్త model ను free tier కు roll out చేసింది. ఒకవేళ free ChatGPT response చిన్నగా లేదా తక్కువ emojis తో అనిపిస్తుంటే, అదే కారణం.",
+      "text_markdown": "ChatGPT లోని default brain మారిపోయింది. OpenAI గత వారం, మంగళవారం, మే 5న GPT-5.5 Instant అని పిలువబడే కొత్త model ను free tier కు roll out చేసింది. ఒకవేళ free ChatGPT response చిన్నగా లేదా తక్కువ emojis తో అనిపిస్తుంటే, అదే కారణం.",
+      "title": "",
+      "tts": {
+        "text": "చాట్‌జీపీటీ లోని డిఫాల్ట్ బ్రెయిన్ మారిపోయింది. ఓపెన్‌ఎఐ గత వారం, మంగళవారం, మే ఐదవ తేదీన జీపీటీ ఐదు పాయింట్ ఐదు ఇన్‌స్టంట్ అని పిలువబడే కొత్త మోడల్ ను ఫ్రీ టైయర్ కు రోల్ అవుట్ చేసింది. ఒకవేళ ఫ్రీ చాట్‌జీపీటీ రెస్పాన్స్ చిన్నగా లేదా తక్కువ ఇమోజీలతో అనిపిస్తుంటే, అదే కారణం.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ఎలా చిన్నగా?",
+      "text_markdown": "ఎలా చిన్నగా?",
+      "title": "",
+      "tts": {
+        "text": "ఎలా చిన్నగా?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-008",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI ప్రకారం కొత్త default అది replace చేసిన model కంటే దాదాపు 30% తక్కువ పదాలు మరియు 30% తక్కువ లైన్లు వ్రాస్తుంది. వారు కష్టమైన prompts లో hallucinated claims లో 50% తగ్గుదల కూడా claim చేస్తున్నారు. వైద్య ప్రశ్నలు, చట్టపరమైన ప్రశ్నలు మరియు ఆర్థిక ప్రశ్నలు వంటివి.",
+      "text_markdown": "OpenAI ప్రకారం కొత్త default అది replace చేసిన model కంటే దాదాపు 30% తక్కువ పదాలు మరియు 30% తక్కువ లైన్లు వ్రాస్తుంది. వారు కష్టమైన prompts లో hallucinated claims లో 50% తగ్గుదల కూడా claim చేస్తున్నారు. వైద్య ప్రశ్నలు, చట్టపరమైన ప్రశ్నలు మరియు ఆర్థిక ప్రశ్నలు వంటివి.",
+      "title": "",
+      "tts": {
+        "text": "ఓపెన్‌ఎఐ ప్రకారం కొత్త డిఫాల్ట్ అది రిప్లేస్ చేసిన మోడల్ కంటే దాదాపు ముప్పై శాతం తక్కువ పదాలు మరియు ముప్పై శాతం తక్కువ లైన్లు వ్రాస్తుంది. వారు కష్టమైన ప్రాంప్ట్స్ లో హ్యాలూసినేటెడ్ క్లెయిమ్స్ లో యాభై శాతం తగ్గుదల కూడా క్లెయిమ్ చేస్తున్నారు. వైద్య ప్రశ్నలు, చట్టపరమైన ప్రశ్నలు మరియు ఆర్థిక ప్రశ్నలు వంటివి.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "OpenAI వెలుపల ఎవరైనా ఆ సంఖ్యలను ధృవీకరించారా?",
+      "text_markdown": "OpenAI వెలుపల ఎవరైనా ఆ సంఖ్యలను ధృవీకరించారా?",
+      "title": "",
+      "tts": {
+        "text": "ఓపెన్ ఏఐ వెలుపల ఎవరైనా ఆ సంఖ్యలను ధృవీకరించారా?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-010",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Scale లో కాదు. Artificial Analysis వంటి independent benchmark వ్యక్తులు కొత్త model ను వారి overall intelligence index లో టాప్‌లో ఉంచారు. కానీ hallucination claims verify చేయడానికి సమయం పడుతుంది. ప్రజలు వాస్తవంగా model ను ఉపయోగించడంతో, అవి వారాలలో surface అవుతాయి.",
+      "text_markdown": "Scale లో కాదు. Artificial Analysis వంటి independent benchmark వ్యక్తులు కొత్త model ను వారి overall intelligence index లో టాప్‌లో ఉంచారు. కానీ hallucination claims verify చేయడానికి సమయం పడుతుంది. ప్రజలు వాస్తవంగా model ను ఉపయోగించడంతో, అవి వారాలలో surface అవుతాయి.",
+      "title": "",
+      "tts": {
+        "text": "Scale లో కాదు. Artificial Analysis వంటి independent benchmark వ్యక్తులు కొత్త model ను వారి overall intelligence index లో టాప్‌లో ఉంచారు. కానీ hallucination claims verify చేయడానికి సమయం పడుతుంది. ప్రజలు వాస్తవంగా model ను ఉపయోగించడంతో, అవి వారాలలో surface అవుతాయి.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు open weights వైపు?",
+      "text_markdown": "మరియు open weights వైపు?",
+      "title": "",
+      "tts": {
+        "text": "మరియు open weights వైపు?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-012",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెండు పెద్ద విషయాలు, Kimi model వెనుక ఉన్న Chinese lab Moonshot గత వారం మే 7న $20 billion విలువతో $2 billion సమీకరించింది, అలాగే వారి latest model Kimi K 2.6 ఇప్పుడు OpenRouter లో token volume పరంగా మొదటి స్థానానికి చేరుకుంది.",
+      "text_markdown": "రెండు పెద్ద విషయాలు, Kimi model వెనుక ఉన్న Chinese lab Moonshot గత వారం మే 7న $20 billion విలువతో $2 billion సమీకరించింది, అలాగే వారి latest model Kimi K 2.6 ఇప్పుడు OpenRouter లో token volume పరంగా మొదటి స్థానానికి చేరుకుంది.",
+      "title": "",
+      "tts": {
+        "text": "రెండు పెద్ద విషయాలు, కిమి మోడల్ వెనుక ఉన్న చైనీస్ ల్యాబ్ మూన్ షాట్ గత వారం మే ఏడో తేదీన ఇరవై బిలియన్ డాలర్ల విలువతో రెండు బిలియన్ డాలర్లు సమీకరించింది, అలాగే వారి లేటెస్ట్ మోడల్ కిమి కే రెండు పాయింట్ ఆరు ఇప్పుడు ఓపెన్ రౌటర్ లో టోకెన్ వాల్యూం పరంగా మొదటి స్థానానికి చేరుకుంది.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మొదటి స్థానం? మొత్తం మీదా?",
+      "text_markdown": "మొదటి స్థానం? మొత్తం మీదా?",
+      "title": "",
+      "tts": {
+        "text": "మొదటి స్థానం? మొత్తం మీదా?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Overall గా. అది major commercial router లో number one లో ఉన్న Chinese open weights model. ఆరు నెలల క్రితం, అది unthinkable గా అనిపించేది.",
+      "text_markdown": "Overall గా. అది major commercial router లో number one లో ఉన్న Chinese open weights model. ఆరు నెలల క్రితం, అది unthinkable గా అనిపించేది.",
+      "title": "",
+      "tts": {
+        "text": "Overall గా. అది major commercial router లో number one లో ఉన్న Chinese open weights model. ఆరు నెలల క్రితం, అది unthinkable గా అనిపించేది.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Flag చేయదగిన మరేమైనా ఉందా?",
+      "text_markdown": "Flag చేయదగిన మరేమైనా ఉందా?",
+      "title": "",
+      "tts": {
+        "text": "Flag చేయదగిన మరేమైనా ఉందా?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "French lab అయిన Mistral ఏప్రిల్ చివర్లో Medium 3.5ని విడుదల చేసి, chat, reasoning, coding models మధ్య ఉన్న పాత విభజనను ఒకే product గా కలుపుతోంది, అంటే OpenAI GPT-5 family తో మొదలైన అదే trend దిశలోనే ఇప్పుడు మొత్తం industry సాగుతోంది.",
+      "text_markdown": "French lab అయిన Mistral ఏప్రిల్ చివర్లో Medium 3.5ని విడుదల చేసి, chat, reasoning, coding models మధ్య ఉన్న పాత విభజనను ఒకే product గా కలుపుతోంది, అంటే OpenAI GPT-5 family తో మొదలైన అదే trend దిశలోనే ఇప్పుడు మొత్తం industry సాగుతోంది.",
+      "title": "",
+      "tts": {
+        "text": "ఫ్రెంచ్ ల్యాబ్ అయిన మిస్ట్రల్ ఏప్రిల్ చివర్లో మీడియమ్ మూడు పాయింట్ ఐదును విడుదల చేసి, చాట్, రీజనింగ్, కోడింగ్ మోడళ్ల మధ్య ఉన్న పాత విభజనను ఒకే ప్రోడక్ట్ గా కలుపుతోంది, అంటే ఓపెన్ ఏఐ జీపీటీ ఐదు ఫ్యామిలీ తో మొదలైన అదే ట్రెండ్ దిశలోనే ఇప్పుడు మొత్తం ఇండస్ట్రీ సాగుతోంది.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు తర్వాత ఏమి వస్తోంది?",
+      "text_markdown": "మరియు తర్వాత ఏమి వస్తోంది?",
+      "title": "",
+      "tts": {
+        "text": "మరియు తర్వాత ఏమి వస్తోంది?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "గూగుల్ ఐఓ ఈ మంగళవారం జరుగుతుంది. అందరూ కొత్త జెమినికోసం ఎదురుచూస్తున్నారు, అలాగే జెమిని ఓమ్ని అనే వీడియో జనరేషన్ మోడల్ గురించీ నమ్మదగిన మాట వినిపిస్తోంది. ఓపెన్ ఎఐ జీపీటీ ఐదు పాయింట్ ఆరును టెస్టింగ్ లో ఉంచింది. ఆంత్రోపిక్ వద్ద మైథాస్ అనే మోడల్ ప్రైవేట్ ప్రివ్యూలో ఉంది. వచ్చే వారం ఈ సంగతులన్నింటిపైనా మనకు మరింత స్పష్టమైన చిత్రం కనిపిస్తుంది.",
+      "text_markdown": "గూగుల్ ఐఓ ఈ మంగళవారం జరుగుతుంది. అందరూ కొత్త జెమినికోసం ఎదురుచూస్తున్నారు, అలాగే జెమిని ఓమ్ని అనే వీడియో జనరేషన్ మోడల్ గురించీ నమ్మదగిన మాట వినిపిస్తోంది. ఓపెన్ ఎఐ జీపీటీ ఐదు పాయింట్ ఆరును టెస్టింగ్ లో ఉంచింది. ఆంత్రోపిక్ వద్ద మైథాస్ అనే మోడల్ ప్రైవేట్ ప్రివ్యూలో ఉంది. వచ్చే వారం ఈ సంగతులన్నింటిపైనా మనకు మరింత స్పష్టమైన చిత్రం కనిపిస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "గూగుల్ ఐఓ ఈ మంగళవారం జరుగుతుంది. అందరూ కొత్త జెమినికోసం ఎదురుచూస్తున్నారు, అలాగే జెమిని ఓమ్ని అనే వీడియో జనరేషన్ మోడల్ గురించీ నమ్మదగిన మాట వినిపిస్తోంది. ఓపెన్ ఎఐ జీపీటీ ఐదు పాయింట్ ఆరును టెస్టింగ్ లో ఉంచింది. ఆంత్రోపిక్ వద్ద మైథాస్ అనే మోడల్ ప్రైవేట్ ప్రివ్యూలో ఉంది. వచ్చే వారం ఈ సంగతులన్నింటిపైనా మనకు మరింత స్పష్టమైన చిత్రం కనిపిస్తుంది.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "సరే, leaderboards కు వెళ్లాం.",
+      "text_markdown": "సరే, leaderboards కు వెళ్లాం.",
+      "title": "",
+      "tts": {
+        "text": "సరే, leaderboards కు వెళ్లాం.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రాన్, ఈ వారం boards లో ఏమి move అవుతోంది?",
+      "text_markdown": "రాన్, ఈ వారం boards లో ఏమి move అవుతోంది?",
+      "title": "",
+      "tts": {
+        "text": "రాన్, ఈ వారం boards లో ఏమి move అవుతోంది?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఈ వారంలో అసలు కథ scores కాదు. మీరు నమ్మడం మానేయాల్సిన scores అది.",
+      "text_markdown": "ఈ వారంలో అసలు కథ scores కాదు. మీరు నమ్మడం మానేయాల్సిన scores అది.",
+      "title": "",
+      "tts": {
+        "text": "ఈ వారంలో అసలు కథ scores కాదు. మీరు నమ్మడం మానేయాల్సిన scores అది.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "దాని గురించి మాకు కొంచం ఎక్కువ చెప్పు, రాన్.",
+      "text_markdown": "దాని గురించి మాకు కొంచం ఎక్కువ చెప్పు, రాన్.",
+      "title": "",
+      "tts": {
+        "text": "దాని గురించి మాకు కొంచం ఎక్కువ చెప్పు, రాన్.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Berkeley లో ఒక group paper publish చేసింది, వారు benchmarks తమ answers ను తామే check చేసుకునే లోపాన్ని వాడుకుని, నిజంగా ఒక్క task కూడా solve చేయకుండా ప్రతి major AI agent benchmark లో near perfect score తెచ్చే automated scanner ను నిర్మించారు.",
+      "text_markdown": "Berkeley లో ఒక group paper publish చేసింది, వారు benchmarks తమ answers ను తామే check చేసుకునే లోపాన్ని వాడుకుని, నిజంగా ఒక్క task కూడా solve చేయకుండా ప్రతి major AI agent benchmark లో near perfect score తెచ్చే automated scanner ను నిర్మించారు.",
+      "title": "",
+      "tts": {
+        "text": "బర్క్లీ లో ఒక గ్రూప్ పేపర్ పబ్లిష్ చేసింది, వారు బెంచ్‌మార్క్స్ తమ ఆన్సర్స్ ను తామే చెక్ చేసుకునే లోపాన్ని వాడుకుని, నిజంగా ఒక్క టాస్క్ కూడా సాల్వ్ చేయకుండా ప్రతి మేజర్ ఏఐ ఏజెంట్ బెంచ్‌మార్క్ లో నియర్ పర్ఫెక్ట్ స్కోర్ తెచ్చే ఆటోమేటెడ్ స్కానర్ ను నిర్మించారు.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "వారు cheat చేసారు, మరియు benchmarks దాన్ని catch చేయలేదు.",
+      "text_markdown": "వారు cheat చేసారు, మరియు benchmarks దాన్ని catch చేయలేదు.",
+      "title": "",
+      "tts": {
+        "text": "వారు cheat చేసారు, మరియు benchmarks దాన్ని catch చేయలేదు.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "సరిగానే ఉంది, అదే వారంలో ఓపెన్ ఏఐ వారు ఎప్పుడూ ప్రస్తావించే కోడింగ్ ప్రమాణమైన ఎస్ డబ్ల్యూ ఈ బెంచ్ వెరిఫైడ్ లో ఇక తమ మూల్యాంకనాలను ఆపేస్తున్నామని ప్రకటించారు, ఎందుకంటే కఠినమైన టాస్కుల్లో సగానికి మించిన పరీక్షలే అసలు సరిగా పనిచేయడం లేదని తేలడంతోనే వాటిని నిలిపేయాలని తీర్మానించారు.",
+      "text_markdown": "సరిగానే ఉంది, అదే వారంలో ఓపెన్ ఏఐ వారు ఎప్పుడూ ప్రస్తావించే కోడింగ్ ప్రమాణమైన ఎస్ డబ్ల్యూ ఈ బెంచ్ వెరిఫైడ్ లో ఇక తమ మూల్యాంకనాలను ఆపేస్తున్నామని ప్రకటించారు, ఎందుకంటే కఠినమైన టాస్కుల్లో సగానికి మించిన పరీక్షలే అసలు సరిగా పనిచేయడం లేదని తేలడంతోనే వాటిని నిలిపేయాలని తీర్మానించారు.",
+      "title": "",
+      "tts": {
+        "text": "సరిగానే ఉంది, అదే వారంలో ఓపెన్ ఏఐ వారు ఎప్పుడూ ప్రస్తావించే కోడింగ్ ప్రమాణమైన ఎస్ డబ్ల్యూ ఈ బెంచ్ వెరిఫైడ్ లో ఇక తమ మూల్యాంకనాలను ఆపేస్తున్నామని ప్రకటించారు, ఎందుకంటే కఠినమైన టాస్కుల్లో సగానికి మించిన పరీక్షలే అసలు సరిగా పనిచేయడం లేదని తేలడంతోనే వాటిని నిలిపేయాలని తీర్మానించారు.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కాబట్టి గత సంవత్సరం మనం వింటున్న సంఖ్యలలో చాలావరకు...",
+      "text_markdown": "కాబట్టి గత సంవత్సరం మనం వింటున్న సంఖ్యలలో చాలావరకు...",
+      "title": "",
+      "tts": {
+        "text": "కాబట్టి గత సంవత్సరం మనం వింటున్న సంఖ్యలలో చాలావరకు...",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "కనీసం కొంతవరకు inflated. ప్రతి model కాదు. ప్రతి benchmark కాదు. కానీ field తన measuring tape ను public లో rebuild చేసుకుంటోంది. SWE-bench Pro మరియు SWE-rebench అని పిలువబడే project వంటి కొత్త evaluations test code ను private గా ఉంచడం ద్వారా దీన్ని fix చేయడానికి ప్రయత్నిస్తున్నాయి.",
+      "text_markdown": "కనీసం కొంతవరకు inflated. ప్రతి model కాదు. ప్రతి benchmark కాదు. కానీ field తన measuring tape ను public లో rebuild చేసుకుంటోంది. SWE-bench Pro మరియు SWE-rebench అని పిలువబడే project వంటి కొత్త evaluations test code ను private గా ఉంచడం ద్వారా దీన్ని fix చేయడానికి ప్రయత్నిస్తున్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "కనీసం కొంతవరకు ఇన్‌ఫ్లేటెడ్. ప్రతి మోడల్ కాదు. ప్రతి బెంచ్‌మార్క్ కాదు. కానీ ఫీల్డ్ తన మెజరింగ్ టేప్ ను పబ్లిక్ లో రీబిల్డ్ చేసుకుంటోంది. ఎస్‌డబ్ల్యూఈ బెంచ్ ప్రో మరియు ఎస్‌డబ్ల్యూఈ రీబెంచ్ అని పిలువబడే ప్రాజెక్ట్ వంటి కొత్త ఇవాల్యుయేషన్స్ టెస్ట్ కోడ్ ను ప్రైవేట్ గా ఉంచడం ద్వారా దీన్ని ఫిక్స్ చేయడానికి ప్రయత్నిస్తున్నాయి.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "వాస్తవంగా ఏదైనా cleanly up అవుతోందా?",
+      "text_markdown": "వాస్తవంగా ఏదైనా cleanly up అవుతోందా?",
+      "title": "",
+      "tts": {
+        "text": "వాస్తవంగా ఏదైనా cleanly up అవుతోందా?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "లీడర్ బోర్డ్స్ విషయానికి వస్తే రెండు ప్రధాన అంశాలు ఉన్నాయి, ఏప్రిల్ మధ్యలో ఆంత్రోపిక్ యొక్క క్లాడ్ ఓపస్ నాలుగు పాయింట్ ఏడు ఎల్ ఎమ్ అరేనా కోడింగ్ లీడర్ బోర్డ్ లో పదిహేను వందల ఈలో స్కోరును స్పష్టంగా దాటిన తొలి మోడల్ అయింది, ఓపస్ నాలుగు పాయింట్ ఆరు రెండు వారాల ముందే పదిహేను వందలను తాకినా ఈ వారం నాటికి ఓపస్ నాలుగు పాయింట్ ఏడు దాదాపు పదిహేను అరవై తొమ్మిది స్కోరుతో ఇంకా అగ్రస్థానంలో ఉంది, అలాగే మైథాస్ అని పిలిచే ఆంత్రోపిక్ యొక్క మరో మోడల్ ప్రైవేట్ పార్ట్నర్ ప్రివ్యూ దశలోనే ఉండి ఆంత్రోపిక్ కొలిచిన పంతొమ్మిది ఏజెంట్ బెంచ్ మార్క్స్ లో పదిహేడు చోట్ల ముందంజను చూపిస్తోంది",
+      "text_markdown": "లీడర్ బోర్డ్స్ విషయానికి వస్తే రెండు ప్రధాన అంశాలు ఉన్నాయి, ఏప్రిల్ మధ్యలో ఆంత్రోపిక్ యొక్క క్లాడ్ ఓపస్ నాలుగు పాయింట్ ఏడు ఎల్ ఎమ్ అరేనా కోడింగ్ లీడర్ బోర్డ్ లో పదిహేను వందల ఈలో స్కోరును స్పష్టంగా దాటిన తొలి మోడల్ అయింది, ఓపస్ నాలుగు పాయింట్ ఆరు రెండు వారాల ముందే పదిహేను వందలను తాకినా ఈ వారం నాటికి ఓపస్ నాలుగు పాయింట్ ఏడు దాదాపు పదిహేను అరవై తొమ్మిది స్కోరుతో ఇంకా అగ్రస్థానంలో ఉంది, అలాగే మైథాస్ అని పిలిచే ఆంత్రోపిక్ యొక్క మరో మోడల్ ప్రైవేట్ పార్ట్నర్ ప్రివ్యూ దశలోనే ఉండి ఆంత్రోపిక్ కొలిచిన పంతొమ్మిది ఏజెంట్ బెంచ్ మార్క్స్ లో పదిహేడు చోట్ల ముందంజను చూపిస్తోంది",
+      "title": "",
+      "tts": {
+        "text": "లీడర్ బోర్డ్స్ విషయానికి వస్తే రెండు ప్రధాన అంశాలు ఉన్నాయి, ఏప్రిల్ మధ్యలో ఆంత్రోపిక్ యొక్క క్లాడ్ ఓపస్ నాలుగు పాయింట్ ఏడు ఎల్ ఎమ్ అరేనా కోడింగ్ లీడర్ బోర్డ్ లో పదిహేను వందల ఈలో స్కోరును స్పష్టంగా దాటిన తొలి మోడల్ అయింది, ఓపస్ నాలుగు పాయింట్ ఆరు రెండు వారాల ముందే పదిహేను వందలను తాకినా ఈ వారం నాటికి ఓపస్ నాలుగు పాయింట్ ఏడు దాదాపు పదిహేను అరవై తొమ్మిది స్కోరుతో ఇంకా అగ్రస్థానంలో ఉంది, అలాగే మైథాస్ అని పిలిచే ఆంత్రోపిక్ యొక్క మరో మోడల్ ప్రైవేట్ పార్ట్నర్ ప్రివ్యూ దశలోనే ఉండి ఆంత్రోపిక్ కొలిచిన పంతొమ్మిది ఏజెంట్ బెంచ్ మార్క్స్ లో పదిహేడు చోట్ల ముందంజను చూపిస్తోంది",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ప్రజలు ఉపయోగించలేని model boards లో top లో ఉంది.",
+      "text_markdown": "ప్రజలు ఉపయోగించలేని model boards లో top లో ఉంది.",
+      "title": "",
+      "tts": {
+        "text": "ప్రజలు ఉపయోగించలేని model boards లో top లో ఉంది.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అదే మన స్థితి. మరొక పెద్ద trend open versus closed gap. ఇది ఎప్పుడూ లేనంతగా narrow గా ఉంది. DeepSeek V4 Pro మరియు Kimi K 2.6 cross evaluation intelligence index లో GPT-5.5 కు striking distance లో ఉన్నాయి. ఆ gap చాలా పెద్దది అయ్యేది. ఇప్పుడు చిన్నది.",
+      "text_markdown": "అదే మన స్థితి. మరొక పెద్ద trend open versus closed gap. ఇది ఎప్పుడూ లేనంతగా narrow గా ఉంది. DeepSeek V4 Pro మరియు Kimi K 2.6 cross evaluation intelligence index లో GPT-5.5 కు striking distance లో ఉన్నాయి. ఆ gap చాలా పెద్దది అయ్యేది. ఇప్పుడు చిన్నది.",
+      "title": "",
+      "tts": {
+        "text": "అదే మన స్థితి. మరొక పెద్ద ట్రెండ్ ఓపెన్ వర్సెస్ క్లోజ్డ్ గ్యాప్. ఇది ఎప్పుడూ లేనంతగా నారో గా ఉంది. డీప్‌సీక్ వీ నాలుగు ప్రో మరియు కిమి కే రెండు పాయింట్ ఆరు క్రాస్ ఇవాల్యుయేషన్ ఇంటెలిజెన్స్ ఇండెక్స్ లో జీపీటీ ఐదు పాయింట్ ఐదు కు స్ట్రైకింగ్ డిస్టెన్స్ లో ఉన్నాయి. ఆ గ్యాప్ చాలా పెద్దది అయ్యేది. ఇప్పుడు చిన్నది.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-032",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "సరే, వారపు concept లోకి వెళ్లాం.",
+      "text_markdown": "సరే, వారపు concept లోకి వెళ్లాం.",
+      "title": "",
+      "tts": {
+        "text": "సరే, వారపు concept లోకి వెళ్లాం.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రాన్, ఈ వారపు concept mixture of experts. Mixture of experts పై ఎందుకు focus చేస్తున్నాం?",
+      "text_markdown": "రాన్, ఈ వారపు concept mixture of experts. Mixture of experts పై ఎందుకు focus చేస్తున్నాం?",
+      "title": "",
+      "tts": {
+        "text": "రాన్, ఈ వారపు concept mixture of experts. Mixture of experts పై ఎందుకు focus చేస్తున్నాం?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఎందుకంటే మనం ఇప్పుడే మాట్లాడిన open weights model, Kimi K 2.6, మొత్తంగా 1 trillion parameters ఉన్నా, వాటిలో 32 billion మాత్రమే ఏదైనా ఒక క్షణంలో run అవుతాయి, అదే mixture of experts అనే విధానం.",
+      "text_markdown": "ఎందుకంటే మనం ఇప్పుడే మాట్లాడిన open weights model, Kimi K 2.6, మొత్తంగా 1 trillion parameters ఉన్నా, వాటిలో 32 billion మాత్రమే ఏదైనా ఒక క్షణంలో run అవుతాయి, అదే mixture of experts అనే విధానం.",
+      "title": "",
+      "tts": {
+        "text": "ఎందుకంటే మనం ఇప్పుడే మాట్లాడిన ఓపెన్ వెయిట్స్ మోడల్, కిమి కే రెండు పాయింట్ ఆరు, మొత్తంగా ఒక ట్రిలియన్ పేరామీటర్లు ఉన్నా, వాటిలో ముప్పై రెండు బిలియన్ మాత్రమే ఏదైనా ఒక క్షణంలో రన్ అవుతాయి, అదే మిక్స్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్ అనే విధానం.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Tune అవుతున్న వారికి దాన్ని వివరించు.",
+      "text_markdown": "Tune అవుతున్న వారికి దాన్ని వివరించు.",
+      "title": "",
+      "tts": {
+        "text": "Tune అవుతున్న వారికి దాన్ని వివరించు.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "సాధారణ AI model ఒక పెద్ద brain లా ఉంటుంది. అది generate చేసే ప్రతి పదం brain లోని ప్రతి భాగాన్ని ఉపయోగిస్తుంది. Mixture of experts model specialists తో నిండిన building లాంటిది. Door వద్ద receptionist తో. ప్రతి పదం కోసం, receptionist రెండు లేదా మూడు specialists ని pick చేస్తుంది, మరియు మిగిలిన building quiet గా ఉంటుంది.",
+      "text_markdown": "సాధారణ AI model ఒక పెద్ద brain లా ఉంటుంది. అది generate చేసే ప్రతి పదం brain లోని ప్రతి భాగాన్ని ఉపయోగిస్తుంది. Mixture of experts model specialists తో నిండిన building లాంటిది. Door వద్ద receptionist తో. ప్రతి పదం కోసం, receptionist రెండు లేదా మూడు specialists ని pick చేస్తుంది, మరియు మిగిలిన building quiet గా ఉంటుంది.",
+      "title": "",
+      "tts": {
+        "text": "సాధారణ AI model ఒక పెద్ద brain లా ఉంటుంది. అది generate చేసే ప్రతి పదం brain లోని ప్రతి భాగాన్ని ఉపయోగిస్తుంది. Mixture of experts model specialists తో నిండిన building లాంటిది. Door వద్ద receptionist తో. ప్రతి పదం కోసం, receptionist రెండు లేదా మూడు specialists ని pick చేస్తుంది, మరియు మిగిలిన building quiet గా ఉంటుంది.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కాబట్టి model కాగితంపై huge కానీ run చేయడానికి cheap.",
+      "text_markdown": "కాబట్టి model కాగితంపై huge కానీ run చేయడానికి cheap.",
+      "title": "",
+      "tts": {
+        "text": "కాబట్టి model కాగితంపై huge కానీ run చేయడానికి cheap.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "సరిగ్గా, 1 ట్రిలియన్ పారామీటర్ల కెపాసిటీ ఉన్నా, ఒక్కో పదానికి 32 బిలియన్ పారామీటర్ల కంప్యూట్ మాత్రమే వాడుతుంది, అదే ట్రిక్, రిసెప్షనిస్ట్ రౌటర్ అని పిలిచే చిన్న కోడ్ భాగం ఉంటుంది, స్పెషలిస్టులు, అంటే ఎక్స్‌పర్ట్స్ అని పిలిచే సబ్‌నెట్‌వర్క్స్ ఉంటాయి, మోడల్‌లో రౌటర్, ఎక్స్‌పర్ట్స్ రెండూ కలిసి ఎండ్ టు ఎండ్‌గా శిక్షణ పొందుతాయి.",
+      "text_markdown": "సరిగ్గా, 1 ట్రిలియన్ పారామీటర్ల కెపాసిటీ ఉన్నా, ఒక్కో పదానికి 32 బిలియన్ పారామీటర్ల కంప్యూట్ మాత్రమే వాడుతుంది, అదే ట్రిక్, రిసెప్షనిస్ట్ రౌటర్ అని పిలిచే చిన్న కోడ్ భాగం ఉంటుంది, స్పెషలిస్టులు, అంటే ఎక్స్‌పర్ట్స్ అని పిలిచే సబ్‌నెట్‌వర్క్స్ ఉంటాయి, మోడల్‌లో రౌటర్, ఎక్స్‌పర్ట్స్ రెండూ కలిసి ఎండ్ టు ఎండ్‌గా శిక్షణ పొందుతాయి.",
+      "title": "",
+      "tts": {
+        "text": "సరిగ్గా, ఒక ట్రిలియన్ పారామీటర్ల కెపాసిటీ ఉన్నా, ఒక్కో పదానికి ముప్పై రెండు బిలియన్ పారామీటర్ల కంప్యూట్ మాత్రమే వాడుతుంది, అదే ట్రిక్, రిసెప్షనిస్ట్ రౌటర్ అని పిలిచే చిన్న కోడ్ భాగం ఉంటుంది, స్పెషలిస్టులు, అంటే ఎక్స్‌పర్ట్స్ అని పిలిచే సబ్‌నెట్‌వర్క్స్ ఉంటాయి, మోడల్‌లో రౌటర్, ఎక్స్‌పర్ట్స్ రెండూ కలిసి ఎండ్ టు ఎండ్‌గా శిక్షణ పొందుతాయి.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ప్రతి major frontier model ఇలా చేస్తుందా?",
+      "text_markdown": "ప్రతి major frontier model ఇలా చేస్తుందా?",
+      "title": "",
+      "tts": {
+        "text": "ప్రతి major frontier model ఇలా చేస్తుందా?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "వాటిలో చాలా వరకు, అవును. అయినా ల్యాబ్స్ దాన్ని ఎల్లప్పుడూ ధృవీకరించవు. జీపీటీ నాలుగు నిపుణుల కలయిక మోడల్ గా మారింది. డీప్‌సీక్ దగ్గర కూడా ఒక ప్రధాన నిపుణుల కలయిక మోడల్ ఉంది. మిస్ట్రల్ రెండు వేల ఇరవై మూడు నుంచే అలాంటి నిపుణుల కలయిక మోడళ్లను విడుదల చేస్తోంది. చైనా నుంచి వచ్చిన కొత్త తరంగం ఈ రూపకల్పనను హద్దుల దాకా తీసుకెళ్లింది.",
+      "text_markdown": "వాటిలో చాలా వరకు, అవును. అయినా ల్యాబ్స్ దాన్ని ఎల్లప్పుడూ ధృవీకరించవు. జీపీటీ నాలుగు నిపుణుల కలయిక మోడల్ గా మారింది. డీప్‌సీక్ దగ్గర కూడా ఒక ప్రధాన నిపుణుల కలయిక మోడల్ ఉంది. మిస్ట్రల్ రెండు వేల ఇరవై మూడు నుంచే అలాంటి నిపుణుల కలయిక మోడళ్లను విడుదల చేస్తోంది. చైనా నుంచి వచ్చిన కొత్త తరంగం ఈ రూపకల్పనను హద్దుల దాకా తీసుకెళ్లింది.",
+      "title": "",
+      "tts": {
+        "text": "వాటిలో చాలా వరకు, అవును. అయినా ల్యాబ్స్ దాన్ని ఎల్లప్పుడూ ధృవీకరించవు. జీపీటీ నాలుగు నిపుణుల కలయిక మోడల్ గా మారింది. డీప్‌సీక్ దగ్గర కూడా ఒక ప్రధాన నిపుణుల కలయిక మోడల్ ఉంది. మిస్ట్రల్ రెండు వేల ఇరవై మూడు నుంచే అలాంటి నిపుణుల కలయిక మోడళ్లను విడుదల చేస్తోంది. చైనా నుంచి వచ్చిన కొత్త తరంగం ఈ రూపకల్పనను హద్దుల దాకా తీసుకెళ్లింది.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ChatGPT మాత్రమే వాడే వ్యక్తికి ఇది ఎందుకు ముఖ్యం?",
+      "text_markdown": "ChatGPT మాత్రమే వాడే వ్యక్తికి ఇది ఎందుకు ముఖ్యం?",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT మాత్రమే వాడే వ్యక్తికి ఇది ఎందుకు ముఖ్యం?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెండు కారణాలు. మొదటిది. చైనాలోని ఓపెన్ వెయిట్స్ ల్యాబ్ ఫ్రంటియర్ స్థాయి నాణ్యతను మొత్తం బడ్జెట్ లోని చిన్న భాగంతోనే నడపగలగడానికి ఇదే ప్రధాన కారణం. రెండోది. ఒకే ఏపీఐ కాల్ ఖర్చు డాలర్లలో కాదు, సెంట్లలోనే ఉండడానికి కూడా ఇదే ప్రధాన కారణం. ధరలు తగ్గి నాణ్యత ఎక్కువగా కనిపించినప్పుడు, దాని వెనుక సాధారణంగా నిపుణుల మిశ్రమం ఉంటుంది, అంటే మిక్స్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్ అనే నిర్మాణం.",
+      "text_markdown": "రెండు కారణాలు. మొదటిది. చైనాలోని ఓపెన్ వెయిట్స్ ల్యాబ్ ఫ్రంటియర్ స్థాయి నాణ్యతను మొత్తం బడ్జెట్ లోని చిన్న భాగంతోనే నడపగలగడానికి ఇదే ప్రధాన కారణం. రెండోది. ఒకే ఏపీఐ కాల్ ఖర్చు డాలర్లలో కాదు, సెంట్లలోనే ఉండడానికి కూడా ఇదే ప్రధాన కారణం. ధరలు తగ్గి నాణ్యత ఎక్కువగా కనిపించినప్పుడు, దాని వెనుక సాధారణంగా నిపుణుల మిశ్రమం ఉంటుంది, అంటే మిక్స్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్ అనే నిర్మాణం.",
+      "title": "",
+      "tts": {
+        "text": "రెండు కారణాలు. మొదటిది. చైనాలోని ఓపెన్ వెయిట్స్ ల్యాబ్ ఫ్రంటియర్ స్థాయి నాణ్యతను మొత్తం బడ్జెట్ లోని చిన్న భాగంతోనే నడపగలగడానికి ఇదే ప్రధాన కారణం. రెండోది. ఒకే ఏపీఐ కాల్ ఖర్చు డాలర్లలో కాదు, సెంట్లలోనే ఉండడానికి కూడా ఇదే ప్రధాన కారణం. ధరలు తగ్గి నాణ్యత ఎక్కువగా కనిపించినప్పుడు, దాని వెనుక సాధారణంగా నిపుణుల మిశ్రమం ఉంటుంది, అంటే మిక్స్చర్ ఆఫ్ ఎక్స్‌పర్ట్స్ అనే నిర్మాణం.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mixture of experts. Router. Experts. Sparse activation. మీతో తీసుకెళ్లాల్సిన మూడు పదాలు. ఇప్పుడు పెద్ద చిత్రానికి తిరిగి వద్దాం.",
+      "text_markdown": "Mixture of experts. Router. Experts. Sparse activation. మీతో తీసుకెళ్లాల్సిన మూడు పదాలు. ఇప్పుడు పెద్ద చిత్రానికి తిరిగి వద్దాం.",
+      "title": "",
+      "tts": {
+        "text": "Mixture of experts. Router. Experts. Sparse activation. మీతో తీసుకెళ్లాల్సిన మూడు పదాలు. ఇప్పుడు పెద్ద చిత్రానికి తిరిగి వద్దాం.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "రాన్, మన ప్రపంచం వెలుపల ఈ వారం పెద్ద కథ Federal Reserve.",
+      "text_markdown": "రాన్, మన ప్రపంచం వెలుపల ఈ వారం పెద్ద కథ Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "రాన్, మన ప్రపంచం వెలుపల ఈ వారం పెద్ద కథ Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఈరోజు, U.S. సెనేట్ Kevin Warsh ను Federal Reserve యొక్క తదుపరి చైర్‌గా ధృవీకరించింది. ఓటింగ్ 54 కు 45. ఆధునిక అమెరికన్ చరిత్రలో Fed చైర్‌కు అత్యంత తక్కువ ఓట్లతో. కేవలం ఒక డెమొక్రాట్ మాత్రమే వైపు మార్చారు.",
+      "text_markdown": "ఈరోజు, U.S. సెనేట్ Kevin Warsh ను Federal Reserve యొక్క తదుపరి చైర్‌గా ధృవీకరించింది. ఓటింగ్ 54 కు 45. ఆధునిక అమెరికన్ చరిత్రలో Fed చైర్‌కు అత్యంత తక్కువ ఓట్లతో. కేవలం ఒక డెమొక్రాట్ మాత్రమే వైపు మార్చారు.",
+      "title": "",
+      "tts": {
+        "text": "ఈరోజు, యు ఎస్ సెనేట్ కెవిన్ వార్ష్ ను ఫెడరల్ రిజర్వ్ యొక్క తదుపరి చైర్‌గా ధృవీకరించింది. ఓటింగ్ యాభై నాలుగు కు నలభై అయిదు. ఆధునిక అమెరికన్ చరిత్రలో ఫెడ్ చైర్‌కు అత్యంత తక్కువ ఓట్లతో. కేవలం ఒక డెమొక్రాట్ మాత్రమే వైపు మార్చారు.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కృత్రిమ మేధస్సుకు అది ఎందుకు ముఖ్యం?",
+      "text_markdown": "కృత్రిమ మేధస్సుకు అది ఎందుకు ముఖ్యం?",
+      "title": "",
+      "tts": {
+        "text": "కృత్రిమ మేధస్సుకు అది ఎందుకు ముఖ్యం?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఎందుకంటే ప్రస్తుతం ఏఐ విస్తరణ రెండు విషయాల మీదే ఆధారపడి ఉంది, అవి విద్యుత్తు మరియు పెట్టుబడి ఖర్చు, ఆ ఖర్చును ఫెడరల్ రిజర్వ్ నిర్ణయిస్తుంది, కొత్త చైర్ తన పూర్వీకుడికంటే వడ్డీ రేట్లను వేగంగా తగ్గించాలన్నారు.",
+      "text_markdown": "ఎందుకంటే ప్రస్తుతం ఏఐ విస్తరణ రెండు విషయాల మీదే ఆధారపడి ఉంది, అవి విద్యుత్తు మరియు పెట్టుబడి ఖర్చు, ఆ ఖర్చును ఫెడరల్ రిజర్వ్ నిర్ణయిస్తుంది, కొత్త చైర్ తన పూర్వీకుడికంటే వడ్డీ రేట్లను వేగంగా తగ్గించాలన్నారు.",
+      "title": "",
+      "tts": {
+        "text": "ఎందుకంటే ప్రస్తుతం ఏఐ విస్తరణ రెండు విషయాల మీదే ఆధారపడి ఉంది, అవి విద్యుత్తు మరియు పెట్టుబడి ఖర్చు, ఆ ఖర్చును ఫెడరల్ రిజర్వ్ నిర్ణయిస్తుంది, కొత్త చైర్ తన పూర్వీకుడికంటే వడ్డీ రేట్లను వేగంగా తగ్గించాలన్నారు.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "వేగవంతమైన రేట్ కట్స్ AI పెట్టుబడిని చౌకగా చేస్తాయి.",
+      "text_markdown": "వేగవంతమైన రేట్ కట్స్ AI పెట్టుబడిని చౌకగా చేస్తాయి.",
+      "title": "",
+      "tts": {
+        "text": "వేగవంతమైన రేట్ కట్స్ AI పెట్టుబడిని చౌకగా చేస్తాయి.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అవును. Microsoft, Google, Amazon, Meta వంటి hyperscalers ఈ సంవత్సరం మూలధన వ్యయం కోసం సుమారు $700 billion ఖర్చు చేసే దారిలో ఉన్నాయి. అందులో ఎక్కువ భాగం GPUs మరియు data centers కోసమే. తక్కువ discount rate వల్ల ఆ ఎన్నో సంవత్సరాలు సాగే విస్తరణలు అధిక విలువల వద్ద కూడా సబబుగా నిలుస్తాయి.",
+      "text_markdown": "అవును. Microsoft, Google, Amazon, Meta వంటి hyperscalers ఈ సంవత్సరం మూలధన వ్యయం కోసం సుమారు $700 billion ఖర్చు చేసే దారిలో ఉన్నాయి. అందులో ఎక్కువ భాగం GPUs మరియు data centers కోసమే. తక్కువ discount rate వల్ల ఆ ఎన్నో సంవత్సరాలు సాగే విస్తరణలు అధిక విలువల వద్ద కూడా సబబుగా నిలుస్తాయి.",
+      "title": "",
+      "tts": {
+        "text": "అవును. మైక్రోసాఫ్ట్, గూగుల్, అమెజాన్, మెటా వంటి హైపర్ స్కేలర్లు ఈ సంవత్సరం మూలధన వ్యయం కోసం సుమారు ఏడు వందల బిలియన్ డాలర్లు ఖర్చు చేసే దారిలో ఉన్నాయి. అందులో ఎక్కువ భాగం జీపీయూలు మరియు డేటా సెంటర్ల కోసమే. తక్కువ డిస్కౌంట్ రేట్ వల్ల ఆ ఎన్నో సంవత్సరాలు సాగే విస్తరణలు అధిక విలువల వద్ద కూడా సబబుగా నిలుస్తాయి.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "మరియు మరో దిశ. Fed నిర్ణయించాల్సిన దానిని AI ఎలా ప్రభావితం చేస్తుంది?",
+      "text_markdown": "మరియు మరో దిశ. Fed నిర్ణయించాల్సిన దానిని AI ఎలా ప్రభావితం చేస్తుంది?",
+      "title": "",
+      "tts": {
+        "text": "మరియు మరో దిశ. Fed నిర్ణయించాల్సిన దానిని AI ఎలా ప్రభావితం చేస్తుంది?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఇది ఆసక్తికరమైన భాగం. AI capital spending ఇప్పుడు macro number అయ్యేంత పెద్దది. sector story కాదు. Wall Street analysts చెప్పుతున్నారు AI సంబంధిత construction మరియు equipment spending గత అనేక quarters లో U.S. ఆర్థిక వృద్ధిలో మెజారిటీ అని.",
+      "text_markdown": "ఇది ఆసక్తికరమైన భాగం. AI capital spending ఇప్పుడు macro number అయ్యేంత పెద్దది. sector story కాదు. Wall Street analysts చెప్పుతున్నారు AI సంబంధిత construction మరియు equipment spending గత అనేక quarters లో U.S. ఆర్థిక వృద్ధిలో మెజారిటీ అని.",
+      "title": "",
+      "tts": {
+        "text": "ఇది ఆసక్తికరమైన భాగం. AI capital spending ఇప్పుడు macro number అయ్యేంత పెద్దది. sector story కాదు. Wall Street analysts చెప్పుతున్నారు AI సంబంధిత construction మరియు equipment spending గత అనేక quarters లో U.S. ఆర్థిక వృద్ధిలో మెజారిటీ అని.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అధికుల సంఖ్య పెరుగుతోంది.",
+      "text_markdown": "అధికుల సంఖ్య పెరుగుతోంది.",
+      "title": "",
+      "tts": {
+        "text": "అధికుల సంఖ్య పెరుగుతోంది.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "మెజారిటీ దృష్టిలో ఇది ఫెడ్ కు రెండు వైపులా పనిచేస్తుంది, దీర్ఘకాలంలో ఏఐ ఉత్పాదకతను పెంచే శక్తిగా ఉండటం వల్ల అది డిఫ్లేషనరీ ప్రభావం చూపి ఫెడ్ కు రేట్లు తగ్గించే అవకాశం ఇస్తుంది, కానీ స్వల్పకాలంలో పవర్, కాపర్, నైపుణ్యం ఉన్న కార్మికులు, ఇంకా కూలింగ్ కోసం నీటిపై డిమాండ్ షాక్ తీసుకువచ్చి అది ఇన్‌ఫ్లేషనరీగా మారుతుంది, ముఖ్యంగా వర్జీనియా మరియు టెక్సాస్ లాంటి ప్రాంతాల్లో డేటా సెంటర్ల కేంద్రీకరణ ఎక్కువగా ఉన్నప్పుడు ద్రవ్యోల్బణ ఒత్తిడి పెరుగుతుంది.",
+      "text_markdown": "మెజారిటీ దృష్టిలో ఇది ఫెడ్ కు రెండు వైపులా పనిచేస్తుంది, దీర్ఘకాలంలో ఏఐ ఉత్పాదకతను పెంచే శక్తిగా ఉండటం వల్ల అది డిఫ్లేషనరీ ప్రభావం చూపి ఫెడ్ కు రేట్లు తగ్గించే అవకాశం ఇస్తుంది, కానీ స్వల్పకాలంలో పవర్, కాపర్, నైపుణ్యం ఉన్న కార్మికులు, ఇంకా కూలింగ్ కోసం నీటిపై డిమాండ్ షాక్ తీసుకువచ్చి అది ఇన్‌ఫ్లేషనరీగా మారుతుంది, ముఖ్యంగా వర్జీనియా మరియు టెక్సాస్ లాంటి ప్రాంతాల్లో డేటా సెంటర్ల కేంద్రీకరణ ఎక్కువగా ఉన్నప్పుడు ద్రవ్యోల్బణ ఒత్తిడి పెరుగుతుంది.",
+      "title": "",
+      "tts": {
+        "text": "మెజారిటీ దృష్టిలో ఇది ఫెడ్ కు రెండు వైపులా పనిచేస్తుంది, దీర్ఘకాలంలో ఏఐ ఉత్పాదకతను పెంచే శక్తిగా ఉండటం వల్ల అది డిఫ్లేషనరీ ప్రభావం చూపి ఫెడ్ కు రేట్లు తగ్గించే అవకాశం ఇస్తుంది, కానీ స్వల్పకాలంలో పవర్, కాపర్, నైపుణ్యం ఉన్న కార్మికులు, ఇంకా కూలింగ్ కోసం నీటిపై డిమాండ్ షాక్ తీసుకువచ్చి అది ఇన్‌ఫ్లేషనరీగా మారుతుంది, ముఖ్యంగా వర్జీనియా మరియు టెక్సాస్ లాంటి ప్రాంతాల్లో డేటా సెంటర్ల కేంద్రీకరణ ఎక్కువగా ఉన్నప్పుడు ద్రవ్యోల్బణ ఒత్తిడి పెరుగుతుంది.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "కాబట్టి కొత్త చైర్ AI inflation కు సమాధానమా, లేదా AI inflation కు కారణమా అని నిర్ణయించాలి.",
+      "text_markdown": "కాబట్టి కొత్త చైర్ AI inflation కు సమాధానమా, లేదా AI inflation కు కారణమా అని నిర్ణయించాలి.",
+      "title": "",
+      "tts": {
+        "text": "కాబట్టి కొత్త చైర్ AI inflation కు సమాధానమా, లేదా AI inflation కు కారణమా అని నిర్ణయించాలి.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "రెండూ, ఏకకాలంలో. మరియు అతని మొదటి పబ్లిక్ ప్రసంగాలలో ఆయన ఏది చెప్పినా Wall Street లోని ప్రతి AI capital expenditure model ను కదిలిస్తుంది.",
+      "text_markdown": "రెండూ, ఏకకాలంలో. మరియు అతని మొదటి పబ్లిక్ ప్రసంగాలలో ఆయన ఏది చెప్పినా Wall Street లోని ప్రతి AI capital expenditure model ను కదిలిస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "రెండూ, ఏకకాలంలో. మరియు అతని మొదటి పబ్లిక్ ప్రసంగాలలో ఆయన ఏది చెప్పినా Wall Street లోని ప్రతి AI capital expenditure model ను కదిలిస్తుంది.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Microsoft కి power వల్ల $80 billion unfulfilled cloud orders ఉన్నాయి. అది సరైన సంఖ్యా?",
+      "text_markdown": "Microsoft కి power వల్ల $80 billion unfulfilled cloud orders ఉన్నాయి. అది సరైన సంఖ్యా?",
+      "title": "",
+      "tts": {
+        "text": "మైక్రోసాఫ్ట్ కి పవర్ వల్ల ఎనభై బిలియన్ డాలర్లు అన్‌ఫుల్‌ఫిల్డ్ క్లౌడ్ ఆర్డర్లు ఉన్నాయి. అది సరైన సంఖ్యా?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "అది Microsoft రిపోర్ట్ చేసిన సంఖ్య. Azure కస్టమర్లు capacity కోసం లైన్‌లో వేచి ఉన్నారు. Bottleneck ఇకపై chips కాదు. Electrical grid. Power markets డేటా సెంటర్లు కోరుకున్నంత వేగంగా కొత్త capacity ని build చేయలేకపోతున్నాయి.",
+      "text_markdown": "అది Microsoft రిపోర్ట్ చేసిన సంఖ్య. Azure కస్టమర్లు capacity కోసం లైన్‌లో వేచి ఉన్నారు. Bottleneck ఇకపై chips కాదు. Electrical grid. Power markets డేటా సెంటర్లు కోరుకున్నంత వేగంగా కొత్త capacity ని build చేయలేకపోతున్నాయి.",
+      "title": "",
+      "tts": {
+        "text": "అది Microsoft రిపోర్ట్ చేసిన సంఖ్య. Azure కస్టమర్లు capacity కోసం లైన్‌లో వేచి ఉన్నారు. Bottleneck ఇకపై chips కాదు. Electrical grid. Power markets డేటా సెంటర్లు కోరుకున్నంత వేగంగా కొత్త capacity ని build చేయలేకపోతున్నాయి.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Warsh యొక్క మొదటి మీటింగ్ ఎప్పుడు?",
+      "text_markdown": "Warsh యొక్క మొదటి మీటింగ్ ఎప్పుడు?",
+      "title": "",
+      "tts": {
+        "text": "Warsh యొక్క మొదటి మీటింగ్ ఎప్పుడు?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "జూన్ 16 మరియు 17. దాని తర్వాత రేట్ path గురించి మనకు చాలా ఎక్కువ తెలుస్తుంది.",
+      "text_markdown": "జూన్ 16 మరియు 17. దాని తర్వాత రేట్ path గురించి మనకు చాలా ఎక్కువ తెలుస్తుంది.",
+      "title": "",
+      "tts": {
+        "text": "జూన్ పదహారు మరియు పదిహేడు. దాని తర్వాత రేట్ పాత్ గురించి మనకు చాలా ఎక్కువ తెలుస్తుంది.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "దిగడానికి మంచి స్థలం. రాన్, ధన్యవాదాలు.",
+      "text_markdown": "దిగడానికి మంచి స్థలం. రాన్, ధన్యవాదాలు.",
+      "title": "",
+      "tts": {
+        "text": "దిగడానికి మంచి స్థలం. రాన్, ధన్యవాదాలు.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ఎప్పుడైనా, Vindy.",
+      "text_markdown": "ఎప్పుడైనా, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "ఎప్పుడైనా, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "chapter": 0,
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "అది మే 13, 2026 కోసం AI This Week. తదుపరి సంచిక వచ్చే బుధవారం. అప్పటి వరకు, జాగ్రత్తగా ఉండండి.",
+      "text_markdown": "అది మే 13, 2026 కోసం AI This Week. తదుపరి సంచిక వచ్చే బుధవారం. అప్పటి వరకు, జాగ్రత్తగా ఉండండి.",
+      "title": "",
+      "tts": {
+        "text": "అది మే పదమూడు, రెండు వేల ఇరవై ఆరు కోసం ఏ ఐ దిస్ వీక్. తదుపరి సంచిక వచ్చే బుధవారం. అప్పటి వరకు, జాగ్రత్తగా ఉండండి.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

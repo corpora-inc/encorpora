@@ -1,0 +1,2341 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_savanna",
+  "total_segments": 158,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "热带稀树草原",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "热带稀树草原",
+      "text_markdown": "热带稀树草原"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "稀树草原在哪里生长",
+      "text_markdown": "稀树草原在哪里生长"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "欢迎来到热带稀树草原。",
+      "text_markdown": "欢迎来到热带稀树草原。",
+      "tts": {
+        "text": "欢迎来到热带稀树草原。",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这是世界上几大生物群落之一。",
+      "text_markdown": "这是世界上几大生物群落之一。",
+      "tts": {
+        "text": "这是世界上几大生物群落之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "生物群落是地球上的一片区域,有着自己独特的天气、植物和动物。",
+      "text_markdown": "生物群落是地球上的一片区域,有着自己独特的天气、植物和动物。",
+      "tts": {
+        "text": "生物群落是地球上的一片区域,有着自己独特的天气、植物和动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原是一片宽广的草原,上面散布着树木。",
+      "text_markdown": "稀树草原是一片宽广的草原,上面散布着树木。",
+      "tts": {
+        "text": "稀树草原是一片宽广的草原,上面散布着树木。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里一年到头都很温暖。",
+      "text_markdown": "这里一年到头都很温暖。",
+      "tts": {
+        "text": "这里一年到头都很温暖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它有一个漫长的旱季和一个较短的雨季。",
+      "text_markdown": "它有一个漫长的旱季和一个较短的雨季。",
+      "tts": {
+        "text": "它有一个漫长的旱季和一个较短的雨季。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界上最大的稀树草原在非洲。",
+      "text_markdown": "世界上最大的稀树草原在非洲。",
+      "tts": {
+        "text": "世界上最大的稀树草原在非洲。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们横跨这片大陆的中部大部分地区。",
+      "text_markdown": "它们横跨这片大陆的中部大部分地区。",
+      "tts": {
+        "text": "它们横跨这片大陆的中部大部分地区。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "南美洲也有大片的稀树草原,被称为塞拉多。",
+      "text_markdown": "南美洲也有大片的稀树草原,被称为塞拉多。",
+      "tts": {
+        "text": "南美洲也有大片的稀树草原,被称为塞拉多。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "澳大利亚北部也分布着热带稀树草原。",
+      "text_markdown": "澳大利亚北部也分布着热带稀树草原。",
+      "tts": {
+        "text": "澳大利亚北部也分布着热带稀树草原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "印度和东南亚也有较小的稀树草原。",
+      "text_markdown": "印度和东南亚也有较小的稀树草原。",
+      "tts": {
+        "text": "印度和东南亚也有较小的稀树草原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些草原各自独立地形成,彼此相距遥远。",
+      "text_markdown": "这些草原各自独立地形成,彼此相距遥远。",
+      "tts": {
+        "text": "这些草原各自独立地形成,彼此相距遥远。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "所以世界各地的植物和动物各不相同。",
+      "text_markdown": "所以世界各地的植物和动物各不相同。",
+      "tts": {
+        "text": "所以世界各地的植物和动物各不相同。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "非洲的食草动物与南美洲或澳大利亚的食草动物不一样。",
+      "text_markdown": "非洲的食草动物与南美洲或澳大利亚的食草动物不一样。",
+      "tts": {
+        "text": "非洲的食草动物与南美洲或澳大利亚的食草动物不一样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但它们都属于同一个生物群落。",
+      "text_markdown": "但它们都属于同一个生物群落。",
+      "tts": {
+        "text": "但它们都属于同一个生物群落。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当你站在稀树草原上,可以看得很远很远。",
+      "text_markdown": "当你站在稀树草原上,可以看得很远很远。",
+      "tts": {
+        "text": "当你站在稀树草原上,可以看得很远很远。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草长到你的腰部或更高。",
+      "text_markdown": "草长到你的腰部或更高。",
+      "tts": {
+        "text": "草长到你的腰部或更高。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "几棵树冠平展的树木从草丛中高高耸起。",
+      "text_markdown": "几棵树冠平展的树木从草丛中高高耸起。",
+      "tts": {
+        "text": "几棵树冠平展的树木从草丛中高高耸起。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "天空辽阔无边。",
+      "text_markdown": "天空辽阔无边。",
+      "tts": {
+        "text": "天空辽阔无边。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "阳光呈金色。",
+      "text_markdown": "阳光呈金色。",
+      "tts": {
+        "text": "阳光呈金色。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你听见风穿过草丛的声音。",
+      "text_markdown": "你听见风穿过草丛的声音。",
+      "tts": {
+        "text": "你听见风穿过草丛的声音。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你听见远处鸟儿的鸣叫。",
+      "text_markdown": "你听见远处鸟儿的鸣叫。",
+      "tts": {
+        "text": "你听见远处鸟儿的鸣叫。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是稀树草原。",
+      "text_markdown": "这就是稀树草原。",
+      "tts": {
+        "text": "这就是稀树草原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "稀树草原在哪里生长",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片宽广开阔的土地,长满草、零星散布的树木和广阔的天空。",
+      "text_markdown": "一片宽广开阔的土地,长满草、零星散布的树木和广阔的天空。",
+      "tts": {
+        "text": "一片宽广开阔的土地,长满草、零星散布的树木和广阔的天空。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "天气",
+      "text_markdown": "天气"
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带稀树草原的天气很简单。",
+      "text_markdown": "热带稀树草原的天气很简单。",
+      "tts": {
+        "text": "热带稀树草原的天气很简单。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里一年到头都很温暖。",
+      "text_markdown": "这里一年到头都很温暖。",
+      "tts": {
+        "text": "这里一年到头都很温暖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但与雨林不同,稀树草原有两个截然不同的季节。",
+      "text_markdown": "但与雨林不同,稀树草原有两个截然不同的季节。",
+      "tts": {
+        "text": "但与雨林不同,稀树草原有两个截然不同的季节。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有一个漫长的旱季和一个较短的雨季。",
+      "text_markdown": "有一个漫长的旱季和一个较短的雨季。",
+      "tts": {
+        "text": "有一个漫长的旱季和一个较短的雨季。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "旱季时,天空连续好几个月都晴朗无云。",
+      "text_markdown": "旱季时,天空连续好几个月都晴朗无云。",
+      "tts": {
+        "text": "旱季时,天空连续好几个月都晴朗无云。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草变成金黄色,而且变得很脆。",
+      "text_markdown": "草变成金黄色,而且变得很脆。",
+      "tts": {
+        "text": "草变成金黄色,而且变得很脆。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "河流变窄,许多小池塘完全干涸。",
+      "text_markdown": "河流变窄,许多小池塘完全干涸。",
+      "tts": {
+        "text": "河流变窄,许多小池塘完全干涸。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木落叶以节省水分。",
+      "text_markdown": "树木落叶以节省水分。",
+      "tts": {
+        "text": "树木落叶以节省水分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季开始时,大片云团在地平线上层层堆积。",
+      "text_markdown": "雨季开始时,大片云团在地平线上层层堆积。",
+      "tts": {
+        "text": "雨季开始时,大片云团在地平线上层层堆积。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "最初的几场雨伴着雷电倾盆而下。",
+      "text_markdown": "最初的几场雨伴着雷电倾盆而下。",
+      "tts": {
+        "text": "最初的几场雨伴着雷电倾盆而下。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨水一来,稀树草原一夜之间就变了样。",
+      "text_markdown": "雨水一来,稀树草原一夜之间就变了样。",
+      "tts": {
+        "text": "雨水一来,稀树草原一夜之间就变了样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "新的草芽从干涸的泥土里钻了出来。",
+      "text_markdown": "新的草芽从干涸的泥土里钻了出来。",
+      "tts": {
+        "text": "新的草芽从干涸的泥土里钻了出来。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "树木长出鲜嫩的绿叶。",
+      "text_markdown": "树木长出鲜嫩的绿叶。",
+      "tts": {
+        "text": "树木长出鲜嫩的绿叶。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鲜花一波又一波地盛开,五彩缤纷。",
+      "text_markdown": "鲜花一波又一波地盛开,五彩缤纷。",
+      "tts": {
+        "text": "鲜花一波又一波地盛开,五彩缤纷。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨季很短,但大部分生命活动都发生在这个时候。",
+      "text_markdown": "雨季很短,但大部分生命活动都发生在这个时候。",
+      "tts": {
+        "text": "雨季很短,但大部分生命活动都发生在这个时候。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "旱季很长,但稀树草原天生就能适应。",
+      "text_markdown": "旱季很长,但稀树草原天生就能适应。",
+      "tts": {
+        "text": "旱季很长,但稀树草原天生就能适应。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "天气",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里的每一种植物和每一种动物,都懂得如何等待雨水。",
+      "text_markdown": "这里的每一种植物和每一种动物,都懂得如何等待雨水。",
+      "tts": {
+        "text": "这里的每一种植物和每一种动物,都懂得如何等待雨水。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "土地与水",
+      "text_markdown": "土地与水"
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原的土地大部分平坦而宽阔。",
+      "text_markdown": "稀树草原的土地大部分平坦而宽阔。",
+      "tts": {
+        "text": "稀树草原的土地大部分平坦而宽阔。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在有些地方,低矮起伏的丘陵从草丛中升起。",
+      "text_markdown": "在有些地方,低矮起伏的丘陵从草丛中升起。",
+      "tts": {
+        "text": "在有些地方,低矮起伏的丘陵从草丛中升起。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "偶尔会有一大块岩石孤零零地矗立在平原上。",
+      "text_markdown": "偶尔会有一大块岩石孤零零地矗立在平原上。",
+      "tts": {
+        "text": "偶尔会有一大块岩石孤零零地矗立在平原上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草下的土壤在稀树草原的不同地方各有不同。",
+      "text_markdown": "草下的土壤在稀树草原的不同地方各有不同。",
+      "tts": {
+        "text": "草下的土壤在稀树草原的不同地方各有不同。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些地方的土壤又黑又肥沃。",
+      "text_markdown": "有些地方的土壤又黑又肥沃。",
+      "tts": {
+        "text": "有些地方的土壤又黑又肥沃。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些地方的土壤多沙或很贫瘠。",
+      "text_markdown": "有些地方的土壤多沙或很贫瘠。",
+      "tts": {
+        "text": "有些地方的土壤多沙或很贫瘠。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草已经学会在所有这些土壤里生长。",
+      "text_markdown": "草已经学会在所有这些土壤里生长。",
+      "tts": {
+        "text": "草已经学会在所有这些土壤里生长。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "雨水来临时,水积聚在低洼处,形成池塘和浅湖。",
+      "text_markdown": "雨水来临时,水积聚在低洼处,形成池塘和浅湖。",
+      "tts": {
+        "text": "雨水来临时,水积聚在低洼处,形成池塘和浅湖。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些可以维持好几个月,有些则在几周内就干涸了。",
+      "text_markdown": "有些可以维持好几个月,有些则在几周内就干涸了。",
+      "tts": {
+        "text": "有些可以维持好几个月,有些则在几周内就干涸了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "河流在稀树草原上蜿蜒曲折,缓缓流淌。",
+      "text_markdown": "河流在稀树草原上蜿蜒曲折,缓缓流淌。",
+      "tts": {
+        "text": "河流在稀树草原上蜿蜒曲折,缓缓流淌。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在雨季,河水又宽又满。",
+      "text_markdown": "在雨季,河水又宽又满。",
+      "tts": {
+        "text": "在雨季,河水又宽又满。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在旱季,河水缩成沙地里细细的一股,或变成一串静静的小水洼。",
+      "text_markdown": "在旱季,河水缩成沙地里细细的一股,或变成一串静静的小水洼。",
+      "tts": {
+        "text": "在旱季,河水缩成沙地里细细的一股,或变成一串静静的小水洼。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原上的许多动物都聚集到这些河流和池塘边来喝水。",
+      "text_markdown": "稀树草原上的许多动物都聚集到这些河流和池塘边来喝水。",
+      "tts": {
+        "text": "稀树草原上的许多动物都聚集到这些河流和池塘边来喝水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "旱季的池塘是一个热闹的地方。",
+      "text_markdown": "旱季的池塘是一个热闹的地方。",
+      "tts": {
+        "text": "旱季的池塘是一个热闹的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "平时不会碰面的动物,此时也站得很近一起喝水。",
+      "text_markdown": "平时不会碰面的动物,此时也站得很近一起喝水。",
+      "tts": {
+        "text": "平时不会碰面的动物,此时也站得很近一起喝水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "河流两旁还带来一条更高大的树木带。",
+      "text_markdown": "河流两旁还带来一条更高大的树木带。",
+      "tts": {
+        "text": "河流两旁还带来一条更高大的树木带。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿着河岸,即使在旱季,树木依然茂密翠绿。",
+      "text_markdown": "沿着河岸,即使在旱季,树木依然茂密翠绿。",
+      "tts": {
+        "text": "沿着河岸,即使在旱季,树木依然茂密翠绿。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些森林像绿色的道路一样,横穿开阔的稀树草原。",
+      "text_markdown": "这些森林像绿色的道路一样,横穿开阔的稀树草原。",
+      "tts": {
+        "text": "这些森林像绿色的道路一样,横穿开阔的稀树草原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "土地与水",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们是那些一年四季都需要阴凉和水的动物的家园。",
+      "text_markdown": "它们是那些一年四季都需要阴凉和水的动物的家园。",
+      "tts": {
+        "text": "它们是那些一年四季都需要阴凉和水的动物的家园。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "植物",
+      "text_markdown": "植物"
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原的核心是草。",
+      "text_markdown": "稀树草原的核心是草。",
+      "tts": {
+        "text": "稀树草原的核心是草。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "高高的草覆盖着四面八方的土地。",
+      "text_markdown": "高高的草覆盖着四面八方的土地。",
+      "tts": {
+        "text": "高高的草覆盖着四面八方的土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些草长得跟人一样高。",
+      "text_markdown": "有些草长得跟人一样高。",
+      "tts": {
+        "text": "有些草长得跟人一样高。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们的根深深扎进土壤里寻找水分。",
+      "text_markdown": "它们的根深深扎进土壤里寻找水分。",
+      "tts": {
+        "text": "它们的根深深扎进土壤里寻找水分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当大火席卷稀树草原时,草的顶部被烧掉了。",
+      "text_markdown": "当大火席卷稀树草原时,草的顶部被烧掉了。",
+      "tts": {
+        "text": "当大火席卷稀树草原时,草的顶部被烧掉了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但根在地下依然活着。",
+      "text_markdown": "但根在地下依然活着。",
+      "tts": {
+        "text": "但根在地下依然活着。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "下一场雨过后,草又重新长出来,鲜嫩翠绿。",
+      "text_markdown": "下一场雨过后,草又重新长出来,鲜嫩翠绿。",
+      "tts": {
+        "text": "下一场雨过后,草又重新长出来,鲜嫩翠绿。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "火是这个生物群落自然的一部分。",
+      "text_markdown": "火是这个生物群落自然的一部分。",
+      "tts": {
+        "text": "火是这个生物群落自然的一部分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这里许多植物都需要火来保持健康。",
+      "text_markdown": "这里许多植物都需要火来保持健康。",
+      "tts": {
+        "text": "这里许多植物都需要火来保持健康。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原上也有树木,但它们是零散分布的。",
+      "text_markdown": "稀树草原上也有树木,但它们是零散分布的。",
+      "tts": {
+        "text": "稀树草原上也有树木,但它们是零散分布的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们相隔很远,中间长着草。",
+      "text_markdown": "它们相隔很远,中间长着草。",
+      "tts": {
+        "text": "它们相隔很远,中间长着草。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "大多数稀树草原上的树木个头不高,树冠又宽又平。",
+      "text_markdown": "大多数稀树草原上的树木个头不高,树冠又宽又平。",
+      "tts": {
+        "text": "大多数稀树草原上的树木个头不高,树冠又宽又平。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "平展的树冠就像一把宽大的叶伞,接住每一滴阳光。",
+      "text_markdown": "平展的树冠就像一把宽大的叶伞,接住每一滴阳光。",
+      "tts": {
+        "text": "平展的树冠就像一把宽大的叶伞,接住每一滴阳光。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "许多稀树草原的树都有刺,防止大型动物吃掉它们。",
+      "text_markdown": "许多稀树草原的树都有刺,防止大型动物吃掉它们。",
+      "tts": {
+        "text": "许多稀树草原的树都有刺,防止大型动物吃掉它们。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "著名的猴面包树是一种巨大的稀树草原树,树干粗壮结实。",
+      "text_markdown": "著名的猴面包树是一种巨大的稀树草原树,树干粗壮结实。",
+      "tts": {
+        "text": "著名的猴面包树是一种巨大的稀树草原树,树干粗壮结实。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它能在树干里储存水分,以度过漫长的旱季。",
+      "text_markdown": "它能在树干里储存水分,以度过漫长的旱季。",
+      "tts": {
+        "text": "它能在树干里储存水分,以度过漫长的旱季。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有些猴面包树能活一千多年。",
+      "text_markdown": "有些猴面包树能活一千多年。",
+      "tts": {
+        "text": "有些猴面包树能活一千多年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "沿着河流,更高的树木长成一条细细的绿色带子。",
+      "text_markdown": "沿着河流,更高的树木长成一条细细的绿色带子。",
+      "tts": {
+        "text": "沿着河流,更高的树木长成一条细细的绿色带子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在开阔的平原上,延绵数里你能看到的只有草和几棵零星散布的树。",
+      "text_markdown": "在开阔的平原上,延绵数里你能看到的只有草和几棵零星散布的树。",
+      "tts": {
+        "text": "在开阔的平原上,延绵数里你能看到的只有草和几棵零星散布的树。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在雨季,小小的花朵在草丛间绽放。",
+      "text_markdown": "在雨季,小小的花朵在草丛间绽放。",
+      "tts": {
+        "text": "在雨季,小小的花朵在草丛间绽放。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们开得很快,只持续几个星期。",
+      "text_markdown": "它们开得很快,只持续几个星期。",
+      "tts": {
+        "text": "它们开得很快,只持续几个星期。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "植物",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原是一台安静的机器,由草、零星散布的树木、阳光和耐心的根组成。",
+      "text_markdown": "稀树草原是一台安静的机器,由草、零星散布的树木、阳光和耐心的根组成。",
+      "tts": {
+        "text": "稀树草原是一台安静的机器,由草、零星散布的树木、阳光和耐心的根组成。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "动物",
+      "text_markdown": "动物"
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带稀树草原以它的动物闻名于世。",
+      "text_markdown": "热带稀树草原以它的动物闻名于世。",
+      "tts": {
+        "text": "热带稀树草原以它的动物闻名于世。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "青草养活着庞大的食草动物群。",
+      "text_markdown": "青草养活着庞大的食草动物群。",
+      "tts": {
+        "text": "青草养活着庞大的食草动物群。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在非洲,庞大的斑马群、羚羊群和水牛群穿越平原。",
+      "text_markdown": "在非洲,庞大的斑马群、羚羊群和水牛群穿越平原。",
+      "tts": {
+        "text": "在非洲,庞大的斑马群、羚羊群和水牛群穿越平原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它们追随雨水从稀树草原的一处移动到另一处。",
+      "text_markdown": "它们追随雨水从稀树草原的一处移动到另一处。",
+      "tts": {
+        "text": "它们追随雨水从稀树草原的一处移动到另一处。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "地球上最大的陆地动物大象就生活在非洲的稀树草原上。",
+      "text_markdown": "地球上最大的陆地动物大象就生活在非洲的稀树草原上。",
+      "tts": {
+        "text": "地球上最大的陆地动物大象就生活在非洲的稀树草原上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一群大象由一位年长的母象带领,缓缓地走过草地。",
+      "text_markdown": "一群大象由一位年长的母象带领,缓缓地走过草地。",
+      "tts": {
+        "text": "一群大象由一位年长的母象带领,缓缓地走过草地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "长颈鹿在旁边一起走,用它长长的脖子去吃树叶。",
+      "text_markdown": "长颈鹿在旁边一起走,用它长长的脖子去吃树叶。",
+      "tts": {
+        "text": "长颈鹿在旁边一起走,用它长长的脖子去吃树叶。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "有食草动物多的地方,也有捕猎者。",
+      "text_markdown": "有食草动物多的地方,也有捕猎者。",
+      "tts": {
+        "text": "有食草动物多的地方,也有捕猎者。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "狮子是非洲稀树草原上伟大的捕猎者。",
+      "text_markdown": "狮子是非洲稀树草原上伟大的捕猎者。",
+      "tts": {
+        "text": "狮子是非洲稀树草原上伟大的捕猎者。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "狮子组成家族群一起生活,这种家族群叫做狮群。",
+      "text_markdown": "狮子组成家族群一起生活,这种家族群叫做狮群。",
+      "tts": {
+        "text": "狮子组成家族群一起生活,这种家族群叫做狮群。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "猎豹是陆地上跑得最快的动物。",
+      "text_markdown": "猎豹是陆地上跑得最快的动物。",
+      "tts": {
+        "text": "猎豹是陆地上跑得最快的动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它能短距离爆发性冲刺,去捕捉在平原上吃草的羚羊。",
+      "text_markdown": "它能短距离爆发性冲刺,去捕捉在平原上吃草的羚羊。",
+      "tts": {
+        "text": "它能短距离爆发性冲刺,去捕捉在平原上吃草的羚羊。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "豹是一种安静的捕猎者,它会爬上树,把猎物拖到树枝上。",
+      "text_markdown": "豹是一种安静的捕猎者,它会爬上树,把猎物拖到树枝上。",
+      "tts": {
+        "text": "豹是一种安静的捕猎者,它会爬上树,把猎物拖到树枝上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鬣狗成群结队地捕猎,把大型捕猎者吃剩下的残骸清理干净。",
+      "text_markdown": "鬣狗成群结队地捕猎,把大型捕猎者吃剩下的残骸清理干净。",
+      "tts": {
+        "text": "鬣狗成群结队地捕猎,把大型捕猎者吃剩下的残骸清理干净。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "小一些的动物也到处都是。",
+      "text_markdown": "小一些的动物也到处都是。",
+      "tts": {
+        "text": "小一些的动物也到处都是。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "狒狒成群结队地在草地上和树林间吵闹地穿行。",
+      "text_markdown": "狒狒成群结队地在草地上和树林间吵闹地穿行。",
+      "tts": {
+        "text": "狒狒成群结队地在草地上和树林间吵闹地穿行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "鸵鸟是一种大鸟,它用长长的腿在开阔的平原上奔跑。",
+      "text_markdown": "鸵鸟是一种大鸟,它用长长的腿在开阔的平原上奔跑。",
+      "tts": {
+        "text": "鸵鸟是一种大鸟,它用长长的腿在开阔的平原上奔跑。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "秃鹫在高空盘旋,留意着死去的动物。",
+      "text_markdown": "秃鹫在高空盘旋,留意着死去的动物。",
+      "tts": {
+        "text": "秃鹫在高空盘旋,留意着死去的动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在雨季,青蛙每天晚上都在新形成的池塘边鸣唱。",
+      "text_markdown": "在雨季,青蛙每天晚上都在新形成的池塘边鸣唱。",
+      "tts": {
+        "text": "在雨季,青蛙每天晚上都在新形成的池塘边鸣唱。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "昆虫充满了温暖的空气,蝴蝶在花丛间飞舞。",
+      "text_markdown": "昆虫充满了温暖的空气,蝴蝶在花丛间飞舞。",
+      "tts": {
+        "text": "昆虫充满了温暖的空气,蝴蝶在花丛间飞舞。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在河里,河马整天泡在水里休息,夜晚才出来到草地上吃草。",
+      "text_markdown": "在河里,河马整天泡在水里休息,夜晚才出来到草地上吃草。",
+      "tts": {
+        "text": "在河里,河马整天泡在水里休息,夜晚才出来到草地上吃草。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在南美洲的稀树草原上,大型啮齿动物和大型鸟类取代了非洲的那些动物。",
+      "text_markdown": "在南美洲的稀树草原上,大型啮齿动物和大型鸟类取代了非洲的那些动物。",
+      "tts": {
+        "text": "在南美洲的稀树草原上,大型啮齿动物和大型鸟类取代了非洲的那些动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在澳大利亚的稀树草原上,袋鼠在草地上跳跃,代替了奔跑的羚羊。",
+      "text_markdown": "在澳大利亚的稀树草原上,袋鼠在草地上跳跃,代替了奔跑的羚羊。",
+      "tts": {
+        "text": "在澳大利亚的稀树草原上,袋鼠在草地上跳跃,代替了奔跑的羚羊。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在每一片这样的土地上,动物的样子各不相同。",
+      "text_markdown": "在每一片这样的土地上,动物的样子各不相同。",
+      "tts": {
+        "text": "在每一片这样的土地上,动物的样子各不相同。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但模式都是一样的。",
+      "text_markdown": "但模式都是一样的。",
+      "tts": {
+        "text": "但模式都是一样的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原上有庞大的食草动物群、悄无声息的捕猎者,天空中有大群的鸟。",
+      "text_markdown": "草原上有庞大的食草动物群、悄无声息的捕猎者,天空中有大群的鸟。",
+      "tts": {
+        "text": "草原上有庞大的食草动物群、悄无声息的捕猎者,天空中有大群的鸟。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "动物",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是稀树草原。",
+      "text_markdown": "这就是稀树草原。",
+      "tts": {
+        "text": "这就是稀树草原。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "人们",
+      "text_markdown": "人们"
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "人类在热带稀树草原上生活了非常漫长的时间。",
+      "text_markdown": "人类在热带稀树草原上生活了非常漫长的时间。",
+      "tts": {
+        "text": "人类在热带稀树草原上生活了非常漫长的时间。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "事实上,我们的祖先最初就是在这样的稀树草原上站起来,开始行走的。",
+      "text_markdown": "事实上,我们的祖先最初就是在这样的稀树草原上站起来,开始行走的。",
+      "tts": {
+        "text": "事实上,我们的祖先最初就是在这样的稀树草原上站起来,开始行走的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "开阔的草地和零星散布的树木塑造了我们身体的运动方式。",
+      "text_markdown": "开阔的草地和零星散布的树木塑造了我们身体的运动方式。",
+      "tts": {
+        "text": "开阔的草地和零星散布的树木塑造了我们身体的运动方式。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原上的许多人都饲养成群的动物。",
+      "text_markdown": "稀树草原上的许多人都饲养成群的动物。",
+      "tts": {
+        "text": "稀树草原上的许多人都饲养成群的动物。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在非洲,人们一家一户地在草原上放牧牛、山羊和绵羊。",
+      "text_markdown": "在非洲,人们一家一户地在草原上放牧牛、山羊和绵羊。",
+      "tts": {
+        "text": "在非洲,人们一家一户地在草原上放牧牛、山羊和绵羊。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些动物吃草,把草转化成牛奶和肉供人们食用。",
+      "text_markdown": "这些动物吃草,把草转化成牛奶和肉供人们食用。",
+      "tts": {
+        "text": "这些动物吃草,把草转化成牛奶和肉供人们食用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "牧民们随着他们的牲畜一起移动,追随着雨水。",
+      "text_markdown": "牧民们随着他们的牲畜一起移动,追随着雨水。",
+      "tts": {
+        "text": "牧民们随着他们的牲畜一起移动,追随着雨水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在旱季,他们朝着河流的方向迁徙。",
+      "text_markdown": "在旱季,他们朝着河流的方向迁徙。",
+      "tts": {
+        "text": "在旱季,他们朝着河流的方向迁徙。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在雨季,他们散布在翠绿的平原上。",
+      "text_markdown": "在雨季,他们散布在翠绿的平原上。",
+      "tts": {
+        "text": "在雨季,他们散布在翠绿的平原上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们的家通常很容易拆卸,可以搬到新的地方。",
+      "text_markdown": "他们的家通常很容易拆卸,可以搬到新的地方。",
+      "tts": {
+        "text": "他们的家通常很容易拆卸,可以搬到新的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原上的另一些人在小块田地里种粮食。",
+      "text_markdown": "稀树草原上的另一些人在小块田地里种粮食。",
+      "tts": {
+        "text": "稀树草原上的另一些人在小块田地里种粮食。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在土壤肥沃的地方,他们种谷物和豆类。",
+      "text_markdown": "在土壤肥沃的地方,他们种谷物和豆类。",
+      "tts": {
+        "text": "在土壤肥沃的地方,他们种谷物和豆类。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们小心地用火来开垦新的田地,并让草地保持新鲜,以喂养他们的牲畜。",
+      "text_markdown": "他们小心地用火来开垦新的田地,并让草地保持新鲜,以喂养他们的牲畜。",
+      "tts": {
+        "text": "他们小心地用火来开垦新的田地,并让草地保持新鲜,以喂养他们的牲畜。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "稀树草原上的人们对这片土地非常了解。",
+      "text_markdown": "稀树草原上的人们对这片土地非常了解。",
+      "tts": {
+        "text": "稀树草原上的人们对这片土地非常了解。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们知道哪些植物可以放心地食用,哪些可以入药。",
+      "text_markdown": "他们知道哪些植物可以放心地食用,哪些可以入药。",
+      "tts": {
+        "text": "他们知道哪些植物可以放心地食用,哪些可以入药。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们能从尘土中辨别出每一种动物的足迹。",
+      "text_markdown": "他们能从尘土中辨别出每一种动物的足迹。",
+      "tts": {
+        "text": "他们能从尘土中辨别出每一种动物的足迹。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们也懂得天空中每一种云的含义。",
+      "text_markdown": "他们也懂得天空中每一种云的含义。",
+      "tts": {
+        "text": "他们也懂得天空中每一种云的含义。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这些知识年复一年地由父母传给孩子。",
+      "text_markdown": "这些知识年复一年地由父母传给孩子。",
+      "tts": {
+        "text": "这些知识年复一年地由父母传给孩子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "人们",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在每一片稀树草原上,这样的生活都有它自己的语言、自己的歌曲和自己的故事。",
+      "text_markdown": "在每一片稀树草原上,这样的生活都有它自己的语言、自己的歌曲和自己的故事。",
+      "tts": {
+        "text": "在每一片稀树草原上,这样的生活都有它自己的语言、自己的歌曲和自己的故事。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "今天的稀树草原",
+      "text_markdown": "今天的稀树草原"
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "热带稀树草原是地球上几大野生土地之一。",
+      "text_markdown": "热带稀树草原是地球上几大野生土地之一。",
+      "tts": {
+        "text": "热带稀树草原是地球上几大野生土地之一。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它养活着数量巨大的动物群。",
+      "text_markdown": "它养活着数量巨大的动物群。",
+      "tts": {
+        "text": "它养活着数量巨大的动物群。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它支撑着数千年来一直生活在这里的牧民和农民。",
+      "text_markdown": "它支撑着数千年来一直生活在这里的牧民和农民。",
+      "tts": {
+        "text": "它支撑着数千年来一直生活在这里的牧民和农民。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "草原也在它深深的根里储存了大量的水和养分。",
+      "text_markdown": "草原也在它深深的根里储存了大量的水和养分。",
+      "tts": {
+        "text": "草原也在它深深的根里储存了大量的水和养分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "但稀树草原也陷入了麻烦。",
+      "text_markdown": "但稀树草原也陷入了麻烦。",
+      "tts": {
+        "text": "但稀树草原也陷入了麻烦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "在许多地方,人们把草地翻开来种庄稼,或者圈起来养牛。",
+      "text_markdown": "在许多地方,人们把草地翻开来种庄稼,或者圈起来养牛。",
+      "tts": {
+        "text": "在许多地方,人们把草地翻开来种庄稼,或者圈起来养牛。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "当草地被分割开来,野生动物群就失去了开阔的通道。",
+      "text_markdown": "当草地被分割开来,野生动物群就失去了开阔的通道。",
+      "tts": {
+        "text": "当草地被分割开来,野生动物群就失去了开阔的通道。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "道路和围栏切断了大象和羚羊世世代代走过的路线。",
+      "text_markdown": "道路和围栏切断了大象和羚羊世世代代走过的路线。",
+      "tts": {
+        "text": "道路和围栏切断了大象和羚羊世世代代走过的路线。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一些稀树草原上的动物,比如犀牛和猎豹,已经变得非常稀少。",
+      "text_markdown": "一些稀树草原上的动物,比如犀牛和猎豹,已经变得非常稀少。",
+      "tts": {
+        "text": "一些稀树草原上的动物,比如犀牛和猎豹,已经变得非常稀少。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "世界各地许多团体都在努力保护剩下的部分。",
+      "text_markdown": "世界各地许多团体都在努力保护剩下的部分。",
+      "tts": {
+        "text": "世界各地许多团体都在努力保护剩下的部分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-147",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们划出大片的保护区,让野生动物还能自由地活动。",
+      "text_markdown": "他们划出大片的保护区,让野生动物还能自由地活动。",
+      "tts": {
+        "text": "他们划出大片的保护区,让野生动物还能自由地活动。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-148",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们与住在保护区附近的人们合作,共同分享这片土地。",
+      "text_markdown": "他们与住在保护区附近的人们合作,共同分享这片土地。",
+      "tts": {
+        "text": "他们与住在保护区附近的人们合作,共同分享这片土地。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-149",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "他们研究草、树木和动物群,以便我们更好地了解它。",
+      "text_markdown": "他们研究草、树木和动物群,以便我们更好地了解它。",
+      "tts": {
+        "text": "他们研究草、树木和动物群,以便我们更好地了解它。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片健康的稀树草原能比几乎任何其他陆地生物群落养活更多的生命。",
+      "text_markdown": "一片健康的稀树草原能比几乎任何其他陆地生物群落养活更多的生命。",
+      "tts": {
+        "text": "一片健康的稀树草原能比几乎任何其他陆地生物群落养活更多的生命。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "今天的稀树草原",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "它值得我们去关心爱护。",
+      "text_markdown": "它值得我们去关心爱护。",
+      "tts": {
+        "text": "它值得我们去关心爱护。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "结语",
+      "text_markdown": "结语"
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "这就是热带稀树草原。",
+      "text_markdown": "这就是热带稀树草原。",
+      "tts": {
+        "text": "这就是热带稀树草原。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-154",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "一片宽阔温暖的土地,长满草,零星散布着树木,还有庞大的动物群。",
+      "text_markdown": "一片宽阔温暖的土地,长满草,零星散布着树木,还有庞大的动物群。",
+      "tts": {
+        "text": "一片宽阔温暖的土地,长满草,零星散布着树木,还有庞大的动物群。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch09-155",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "如果你有机会站在一片稀树草原上,请安静地待上一分钟。",
+      "text_markdown": "如果你有机会站在一片稀树草原上,请安静地待上一分钟。",
+      "tts": {
+        "text": "如果你有机会站在一片稀树草原上,请安静地待上一分钟。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-156",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "听听草地里的风声和远处的鸟鸣。",
+      "text_markdown": "听听草地里的风声和远处的鸟鸣。",
+      "tts": {
+        "text": "听听草地里的风声和远处的鸟鸣。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch09-157",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "眺望远方长长的地平线。",
+      "text_markdown": "眺望远方长长的地平线。",
+      "tts": {
+        "text": "眺望远方长长的地平线。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-158",
+      "chapter": 9,
+      "title": "结语",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "你会感觉到生物群落的心脏在你周围跳动。",
+      "text_markdown": "你会感觉到生物群落的心脏在你周围跳动。",
+      "tts": {
+        "text": "你会感觉到生物群落的心脏在你周围跳动。",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

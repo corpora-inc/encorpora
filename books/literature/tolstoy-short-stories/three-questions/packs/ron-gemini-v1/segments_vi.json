@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "vi",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Ba câu hỏi",
+      "text_markdown": "Ba câu hỏi",
+      "title": "Ba câu hỏi"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Một vị vua nọ nghĩ rằng, nếu lúc nào mình cũng biết đúng thời khắc cho mọi việc, biết những người nào là cần thiết nhất, và trên hết, luôn biết trong mọi việc thì việc nào là quan trọng nhất, thì mình sẽ chẳng bao giờ thất bại trong bất cứ điều gì.",
+      "text_markdown": "Một vị vua nọ nghĩ rằng, nếu lúc nào mình cũng biết đúng thời khắc cho mọi việc, biết những người nào là cần thiết nhất, và trên hết, luôn biết trong mọi việc thì việc nào là quan trọng nhất, thì mình sẽ chẳng bao giờ thất bại trong bất cứ điều gì.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Một vị vua nọ nghĩ rằng, nếu lúc nào mình cũng biết đúng thời khắc cho mọi việc, biết những người nào là cần thiết nhất, và trên hết, luôn biết trong mọi việc thì việc nào là quan trọng nhất, thì mình sẽ chẳng bao giờ thất bại trong bất cứ điều gì.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "Nghĩ vậy rồi, nhà vua ban bố khắp vương quốc rằng ngài sẽ trọng thưởng cho bất cứ ai dạy được ngài cách biết đúng thời khắc cho mọi việc, cách biết những người nào là cần thiết nhất, và cách khỏi lầm lẫn khi định đoạt trong mọi việc thì việc nào là quan trọng nhất.",
+      "text_markdown": "Nghĩ vậy rồi, nhà vua ban bố khắp vương quốc rằng ngài sẽ trọng thưởng cho bất cứ ai dạy được ngài cách biết đúng thời khắc cho mọi việc, cách biết những người nào là cần thiết nhất, và cách khỏi lầm lẫn khi định đoạt trong mọi việc thì việc nào là quan trọng nhất.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nghĩ vậy rồi, nhà vua ban bố khắp vương quốc rằng ngài sẽ trọng thưởng cho bất cứ ai dạy được ngài cách biết đúng thời khắc cho mọi việc, cách biết những người nào là cần thiết nhất, và cách khỏi lầm lẫn khi định đoạt trong mọi việc thì việc nào là quan trọng nhất.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Các bậc học giả bắt đầu đến yết kiến nhà vua và trả lời những câu hỏi của ngài theo nhiều cách khác nhau.",
+      "text_markdown": "Các bậc học giả bắt đầu đến yết kiến nhà vua và trả lời những câu hỏi của ngài theo nhiều cách khác nhau.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Các bậc học giả bắt đầu đến yết kiến nhà vua và trả lời những câu hỏi của ngài theo nhiều cách khác nhau.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Về câu hỏi thứ nhất, có người nói rằng muốn biết đúng thời khắc cho mọi việc, người ta phải lập sẵn một lịch trình ngày, tháng, năm, rồi nghiêm ngặt theo đó mà làm.",
+      "text_markdown": "Về câu hỏi thứ nhất, có người nói rằng muốn biết đúng thời khắc cho mọi việc, người ta phải lập sẵn một lịch trình ngày, tháng, năm, rồi nghiêm ngặt theo đó mà làm.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Về câu hỏi thứ nhất, có người nói rằng muốn biết đúng thời khắc cho mọi việc, người ta phải lập sẵn một lịch trình ngày, tháng, năm, rồi nghiêm ngặt theo đó mà làm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Chỉ khi ấy, họ nói, mọi việc mới được làm vào đúng thời điểm của nó.",
+      "text_markdown": "Chỉ khi ấy, họ nói, mọi việc mới được làm vào đúng thời điểm của nó.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Chỉ khi ấy, họ nói, mọi việc mới được làm vào đúng thời điểm của nó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Những người khác nói rằng không thể định trước thời khắc nào sẽ là đúng cho việc nào, nhưng người ta phải, không để mình bị xao lãng bởi những trò vui nhàn rỗi, luôn chú tâm đến mọi điều đang diễn ra, rồi khi ấy luôn làm điều cần thiết nhất.",
+      "text_markdown": "Những người khác nói rằng không thể định trước thời khắc nào sẽ là đúng cho việc nào, nhưng người ta phải, không để mình bị xao lãng bởi những trò vui nhàn rỗi, luôn chú tâm đến mọi điều đang diễn ra, rồi khi ấy luôn làm điều cần thiết nhất.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Những người khác nói rằng không thể định trước thời khắc nào sẽ là đúng cho việc nào, nhưng người ta phải, không để mình bị xao lãng bởi những trò vui nhàn rỗi, luôn chú tâm đến mọi điều đang diễn ra, rồi khi ấy luôn làm điều cần thiết nhất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Lại có những người nói rằng dù nhà vua có chú tâm đến mọi điều đang diễn ra đến đâu, một người cũng không thể luôn quyết định đúng về mọi việc khi thời khắc của nó đã đến, mà cần phải có lời khuyên của các bậc hiền triết, và nhờ lời khuyên ấy mà ấn định thời khắc cho từng việc.",
+      "text_markdown": "Lại có những người nói rằng dù nhà vua có chú tâm đến mọi điều đang diễn ra đến đâu, một người cũng không thể luôn quyết định đúng về mọi việc khi thời khắc của nó đã đến, mà cần phải có lời khuyên của các bậc hiền triết, và nhờ lời khuyên ấy mà ấn định thời khắc cho từng việc.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Lại có những người nói rằng dù nhà vua có chú tâm đến mọi điều đang diễn ra đến đâu, một người cũng không thể luôn quyết định đúng về mọi việc khi thời khắc của nó đã đến, mà cần phải có lời khuyên của các bậc hiền triết, và nhờ lời khuyên ấy mà ấn định thời khắc cho từng việc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Một nhóm thứ tư nói rằng có những việc phải được quyết định tức khắc, không thể chờ bàn bạc, và muốn biết chính xác khi nào những việc ấy xảy ra, người ta phải biết điều gì sẽ đến trong tương lai.",
+      "text_markdown": "Một nhóm thứ tư nói rằng có những việc phải được quyết định tức khắc, không thể chờ bàn bạc, và muốn biết chính xác khi nào những việc ấy xảy ra, người ta phải biết điều gì sẽ đến trong tương lai.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Một nhóm thứ tư nói rằng có những việc phải được quyết định tức khắc, không thể chờ bàn bạc, và muốn biết chính xác khi nào những việc ấy xảy ra, người ta phải biết điều gì sẽ đến trong tương lai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "Và chỉ các pháp sư mới biết được điều ấy.",
+      "text_markdown": "Và chỉ các pháp sư mới biết được điều ấy.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Và chỉ các pháp sư mới biết được điều ấy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "Vì vậy, muốn biết đúng thời khắc cho mỗi việc, người ta phải hỏi ý các pháp sư.",
+      "text_markdown": "Vì vậy, muốn biết đúng thời khắc cho mỗi việc, người ta phải hỏi ý các pháp sư.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vì vậy, muốn biết đúng thời khắc cho mỗi việc, người ta phải hỏi ý các pháp sư.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Về câu hỏi thứ hai, họ cũng trả lời khác nhau.",
+      "text_markdown": "Về câu hỏi thứ hai, họ cũng trả lời khác nhau.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Về câu hỏi thứ hai, họ cũng trả lời khác nhau.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Có người nói những người cần thiết nhất đối với nhà vua là các cố vấn của ngài; người khác nói là các tư tế; kẻ khác nữa là thầy thuốc; và nhóm thứ tư là các chiến binh.",
+      "text_markdown": "Có người nói những người cần thiết nhất đối với nhà vua là các cố vấn của ngài; người khác nói là các tư tế; kẻ khác nữa là thầy thuốc; và nhóm thứ tư là các chiến binh.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Có người nói những người cần thiết nhất đối với nhà vua là các cố vấn của ngài; người khác nói là các tư tế; kẻ khác nữa là thầy thuốc; và nhóm thứ tư là các chiến binh.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Về câu hỏi thứ ba, việc nào là quan trọng nhất? có người nói điều quan trọng nhất trên đời là khoa học; người khác nói là binh sự; kẻ khác nữa nói là lòng mộ đạo.",
+      "text_markdown": "Về câu hỏi thứ ba, việc nào là quan trọng nhất? có người nói điều quan trọng nhất trên đời là khoa học; người khác nói là binh sự; kẻ khác nữa nói là lòng mộ đạo.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Về câu hỏi thứ ba, việc nào là quan trọng nhất? có người nói điều quan trọng nhất trên đời là khoa học; người khác nói là binh sự; kẻ khác nữa nói là lòng mộ đạo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Mọi câu trả lời đều khác nhau, vì thế nhà vua không đồng ý với ai và cũng không ban thưởng cho ai.",
+      "text_markdown": "Mọi câu trả lời đều khác nhau, vì thế nhà vua không đồng ý với ai và cũng không ban thưởng cho ai.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Mọi câu trả lời đều khác nhau, vì thế nhà vua không đồng ý với ai và cũng không ban thưởng cho ai.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Để hiểu rõ hơn lời giải đáp cho những câu hỏi của mình, ngài quyết định hỏi một ẩn sĩ mà thiên hạ đồn rằng là bậc hiền nhân.",
+      "text_markdown": "Để hiểu rõ hơn lời giải đáp cho những câu hỏi của mình, ngài quyết định hỏi một ẩn sĩ mà thiên hạ đồn rằng là bậc hiền nhân.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Để hiểu rõ hơn lời giải đáp cho những câu hỏi của mình, ngài quyết định hỏi một ẩn sĩ mà thiên hạ đồn rằng là bậc hiền nhân.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Vị ẩn sĩ sống trong rừng và chẳng bao giờ ra khỏi đó.",
+      "text_markdown": "Vị ẩn sĩ sống trong rừng và chẳng bao giờ ra khỏi đó.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vị ẩn sĩ sống trong rừng và chẳng bao giờ ra khỏi đó.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Ông chỉ tiếp những người bình dị, nên nhà vua ăn mặc giản dị, và trước khi đến nơi ở của ẩn sĩ, ngài xuống ngựa rồi một mình đi bộ đến gặp ông.",
+      "text_markdown": "Ông chỉ tiếp những người bình dị, nên nhà vua ăn mặc giản dị, và trước khi đến nơi ở của ẩn sĩ, ngài xuống ngựa rồi một mình đi bộ đến gặp ông.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Ông chỉ tiếp những người bình dị, nên nhà vua ăn mặc giản dị, và trước khi đến nơi ở của ẩn sĩ, ngài xuống ngựa rồi một mình đi bộ đến gặp ông.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Khi nhà vua đến gần, vị ẩn sĩ đang cuốc luống trước túp lều của mình.",
+      "text_markdown": "Khi nhà vua đến gần, vị ẩn sĩ đang cuốc luống trước túp lều của mình.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Khi nhà vua đến gần, vị ẩn sĩ đang cuốc luống trước túp lều của mình.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Thấy nhà vua, vị ẩn sĩ gật đầu chào rồi tiếp tục cuốc đất.",
+      "text_markdown": "Thấy nhà vua, vị ẩn sĩ gật đầu chào rồi tiếp tục cuốc đất.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Thấy nhà vua, vị ẩn sĩ gật đầu chào rồi tiếp tục cuốc đất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Vị ẩn sĩ gầy gò yếu ớt, mỗi lần cắm mai xuống đất và lật những cục đất nhỏ lên, ông lại thở khò khè nặng nhọc.",
+      "text_markdown": "Vị ẩn sĩ gầy gò yếu ớt, mỗi lần cắm mai xuống đất và lật những cục đất nhỏ lên, ông lại thở khò khè nặng nhọc.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vị ẩn sĩ gầy gò yếu ớt, mỗi lần cắm mai xuống đất và lật những cục đất nhỏ lên, ông lại thở khò khè nặng nhọc.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Nhà vua đến gần ông và nói:",
+      "text_markdown": "Nhà vua đến gần ông và nói:",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua đến gần ông và nói:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "\"Ta đến với ông, thưa ẩn sĩ hiền minh, để xin ông trả lời cho ta ba câu hỏi: thời khắc nào người ta phải ghi nhớ và không bỏ lỡ, để về sau khỏi hối tiếc?",
+      "text_markdown": "\"Ta đến với ông, thưa ẩn sĩ hiền minh, để xin ông trả lời cho ta ba câu hỏi: thời khắc nào người ta phải ghi nhớ và không bỏ lỡ, để về sau khỏi hối tiếc?",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Ta đến với ông, thưa ẩn sĩ hiền minh, để xin ông trả lời cho ta ba câu hỏi: thời khắc nào người ta phải ghi nhớ và không bỏ lỡ, để về sau khỏi hối tiếc?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Những người nào là cần thiết nhất?",
+      "text_markdown": "Những người nào là cần thiết nhất?",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Những người nào là cần thiết nhất?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "Và việc nào là quan trọng nhất?\"",
+      "text_markdown": "Và việc nào là quan trọng nhất?\"",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Và việc nào là quan trọng nhất?\"",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Vị ẩn sĩ lắng nghe nhà vua, nhưng không đáp lời, chỉ nhổ nước bọt vào tay rồi lại bắt đầu cuốc.",
+      "text_markdown": "Vị ẩn sĩ lắng nghe nhà vua, nhưng không đáp lời, chỉ nhổ nước bọt vào tay rồi lại bắt đầu cuốc.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vị ẩn sĩ lắng nghe nhà vua, nhưng không đáp lời, chỉ nhổ nước bọt vào tay rồi lại bắt đầu cuốc.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "\"Ông đã mệt rồi,\" nhà vua nói.",
+      "text_markdown": "\"Ông đã mệt rồi,\" nhà vua nói.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Ông đã mệt rồi,\" nhà vua nói.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "\"Hãy để ta giúp ông.\"",
+      "text_markdown": "\"Hãy để ta giúp ông.\"",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Hãy để ta giúp ông.\"",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "\"Cảm tạ ngài,\" vị ẩn sĩ nói, rồi trao chiếc mai cho nhà vua và ngồi xuống đất.",
+      "text_markdown": "\"Cảm tạ ngài,\" vị ẩn sĩ nói, rồi trao chiếc mai cho nhà vua và ngồi xuống đất.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Cảm tạ ngài,\" vị ẩn sĩ nói, rồi trao chiếc mai cho nhà vua và ngồi xuống đất.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Cuốc xong hai luống, nhà vua dừng lại và lặp lại những câu hỏi của mình.",
+      "text_markdown": "Cuốc xong hai luống, nhà vua dừng lại và lặp lại những câu hỏi của mình.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Cuốc xong hai luống, nhà vua dừng lại và lặp lại những câu hỏi của mình.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Vị ẩn sĩ vẫn không trả lời, mà đứng dậy và đưa tay về phía chiếc mai:",
+      "text_markdown": "Vị ẩn sĩ vẫn không trả lời, mà đứng dậy và đưa tay về phía chiếc mai:",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vị ẩn sĩ vẫn không trả lời, mà đứng dậy và đưa tay về phía chiếc mai:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "\"Giờ ngài hãy nghỉ, để tôi làm,\" ông nói.",
+      "text_markdown": "\"Giờ ngài hãy nghỉ, để tôi làm,\" ông nói.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Giờ ngài hãy nghỉ, để tôi làm,\" ông nói.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Nhưng nhà vua không đưa mai cho ông, mà tiếp tục cuốc.",
+      "text_markdown": "Nhưng nhà vua không đưa mai cho ông, mà tiếp tục cuốc.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhưng nhà vua không đưa mai cho ông, mà tiếp tục cuốc.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Một giờ trôi qua, rồi thêm một giờ nữa.",
+      "text_markdown": "Một giờ trôi qua, rồi thêm một giờ nữa.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Một giờ trôi qua, rồi thêm một giờ nữa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Mặt trời lặn xuống sau những hàng cây.",
+      "text_markdown": "Mặt trời lặn xuống sau những hàng cây.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Mặt trời lặn xuống sau những hàng cây.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Nhà vua cắm chiếc mai xuống đất và nói:",
+      "text_markdown": "Nhà vua cắm chiếc mai xuống đất và nói:",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua cắm chiếc mai xuống đất và nói:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "\"Ta đến với ông, thưa bậc hiền nhân, để tìm lời đáp cho những câu hỏi của ta.",
+      "text_markdown": "\"Ta đến với ông, thưa bậc hiền nhân, để tìm lời đáp cho những câu hỏi của ta.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Ta đến với ông, thưa bậc hiền nhân, để tìm lời đáp cho những câu hỏi của ta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Nếu ông không thể trả lời ta, hãy nói vậy, rồi ta sẽ trở về nhà.\"",
+      "text_markdown": "Nếu ông không thể trả lời ta, hãy nói vậy, rồi ta sẽ trở về nhà.\"",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nếu ông không thể trả lời ta, hãy nói vậy, rồi ta sẽ trở về nhà.\"",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "\"Nhưng có ai đó đang chạy đến,\" vị ẩn sĩ nói.",
+      "text_markdown": "\"Nhưng có ai đó đang chạy đến,\" vị ẩn sĩ nói.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Nhưng có ai đó đang chạy đến,\" vị ẩn sĩ nói.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "\"Chúng ta hãy xem đó là ai.\"",
+      "text_markdown": "\"Chúng ta hãy xem đó là ai.\"",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Chúng ta hãy xem đó là ai.\"",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Nhà vua quay lại và thấy một người đàn ông râu rậm đang chạy từ trong rừng ra.",
+      "text_markdown": "Nhà vua quay lại và thấy một người đàn ông râu rậm đang chạy từ trong rừng ra.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua quay lại và thấy một người đàn ông râu rậm đang chạy từ trong rừng ra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Người ấy đang ép hai tay vào một vết thương trên bụng, và máu chảy ra từ dưới hai bàn tay.",
+      "text_markdown": "Người ấy đang ép hai tay vào một vết thương trên bụng, và máu chảy ra từ dưới hai bàn tay.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Người ấy đang ép hai tay vào một vết thương trên bụng, và máu chảy ra từ dưới hai bàn tay.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Chạy đến bên nhà vua, người ấy ngã vật xuống đất bất tỉnh và nằm đó, khẽ rên rỉ.",
+      "text_markdown": "Chạy đến bên nhà vua, người ấy ngã vật xuống đất bất tỉnh và nằm đó, khẽ rên rỉ.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Chạy đến bên nhà vua, người ấy ngã vật xuống đất bất tỉnh và nằm đó, khẽ rên rỉ.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Nhà vua cùng vị ẩn sĩ cởi khuy và tháo bỏ áo quần của người ấy.",
+      "text_markdown": "Nhà vua cùng vị ẩn sĩ cởi khuy và tháo bỏ áo quần của người ấy.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua cùng vị ẩn sĩ cởi khuy và tháo bỏ áo quần của người ấy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Trên bụng người ấy có một vết thương lớn.",
+      "text_markdown": "Trên bụng người ấy có một vết thương lớn.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Trên bụng người ấy có một vết thương lớn.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Nhà vua, hết sức mình có thể, rửa vết thương và băng lại bằng khăn tay của ngài cùng chiếc khăn của vị ẩn sĩ.",
+      "text_markdown": "Nhà vua, hết sức mình có thể, rửa vết thương và băng lại bằng khăn tay của ngài cùng chiếc khăn của vị ẩn sĩ.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua, hết sức mình có thể, rửa vết thương và băng lại bằng khăn tay của ngài cùng chiếc khăn của vị ẩn sĩ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Nhưng máu vẫn không ngừng chảy.",
+      "text_markdown": "Nhưng máu vẫn không ngừng chảy.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhưng máu vẫn không ngừng chảy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Nhà vua nhiều lần tháo băng ra, lại rửa và băng vết thương lần nữa.",
+      "text_markdown": "Nhà vua nhiều lần tháo băng ra, lại rửa và băng vết thương lần nữa.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua nhiều lần tháo băng ra, lại rửa và băng vết thương lần nữa.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Cuối cùng, khi máu đã dịu lại, người ấy tỉnh lại và xin nước.",
+      "text_markdown": "Cuối cùng, khi máu đã dịu lại, người ấy tỉnh lại và xin nước.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Cuối cùng, khi máu đã dịu lại, người ấy tỉnh lại và xin nước.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Nhà vua mang nước mát đến và cho người ấy uống.",
+      "text_markdown": "Nhà vua mang nước mát đến và cho người ấy uống.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua mang nước mát đến và cho người ấy uống.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Trong khi ấy, mặt trời đã lặn hẳn, và trời trở lạnh.",
+      "text_markdown": "Trong khi ấy, mặt trời đã lặn hẳn, và trời trở lạnh.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Trong khi ấy, mặt trời đã lặn hẳn, và trời trở lạnh.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Nhờ vị ẩn sĩ giúp sức, nhà vua đưa người bị thương vào lều và đặt anh ta lên giường.",
+      "text_markdown": "Nhờ vị ẩn sĩ giúp sức, nhà vua đưa người bị thương vào lều và đặt anh ta lên giường.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhờ vị ẩn sĩ giúp sức, nhà vua đưa người bị thương vào lều và đặt anh ta lên giường.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Người bị thương nhắm mắt và nằm yên.",
+      "text_markdown": "Người bị thương nhắm mắt và nằm yên.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Người bị thương nhắm mắt và nằm yên.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Nhà vua mệt mỏi đến nỗi, vì đi đường và lao tác, ngài nằm xuống ngay nơi ngưỡng cửa và ngủ thiếp đi; ngài ngủ say đến mức ngủ suốt cả đêm hè ngắn ngủi, và khi thức dậy vào buổi sáng, hồi lâu ngài không hiểu mình đang ở đâu, cũng không hiểu người đàn ông râu rậm xa lạ đang nằm trên giường và chăm chú nhìn ngài bằng đôi mắt sáng kia là ai.",
+      "text_markdown": "Nhà vua mệt mỏi đến nỗi, vì đi đường và lao tác, ngài nằm xuống ngay nơi ngưỡng cửa và ngủ thiếp đi; ngài ngủ say đến mức ngủ suốt cả đêm hè ngắn ngủi, và khi thức dậy vào buổi sáng, hồi lâu ngài không hiểu mình đang ở đâu, cũng không hiểu người đàn ông râu rậm xa lạ đang nằm trên giường và chăm chú nhìn ngài bằng đôi mắt sáng kia là ai.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua mệt mỏi đến nỗi, vì đi đường và lao tác, ngài nằm xuống ngay nơi ngưỡng cửa và ngủ thiếp đi; ngài ngủ say đến mức ngủ suốt cả đêm hè ngắn ngủi, và khi thức dậy vào buổi sáng, hồi lâu ngài không hiểu mình đang ở đâu, cũng không hiểu người đàn ông râu rậm xa lạ đang nằm trên giường và chăm chú nhìn ngài bằng đôi mắt sáng kia là ai.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "\"Xin tha thứ cho tôi,\" người đàn ông râu rậm nói bằng giọng yếu ớt khi thấy nhà vua đã thức dậy và đang nhìn mình.",
+      "text_markdown": "\"Xin tha thứ cho tôi,\" người đàn ông râu rậm nói bằng giọng yếu ớt khi thấy nhà vua đã thức dậy và đang nhìn mình.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Xin tha thứ cho tôi,\" người đàn ông râu rậm nói bằng giọng yếu ớt khi thấy nhà vua đã thức dậy và đang nhìn mình.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "\"Ta không biết ngươi, và cũng chẳng có gì để tha thứ cho ngươi,\" nhà vua nói.",
+      "text_markdown": "\"Ta không biết ngươi, và cũng chẳng có gì để tha thứ cho ngươi,\" nhà vua nói.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Ta không biết ngươi, và cũng chẳng có gì để tha thứ cho ngươi,\" nhà vua nói.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "\"Ngài không biết tôi, nhưng tôi biết ngài.",
+      "text_markdown": "\"Ngài không biết tôi, nhưng tôi biết ngài.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Ngài không biết tôi, nhưng tôi biết ngài.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Tôi là kẻ thù của ngài, chính là người đã thề báo thù ngài vì ngài xử tử anh tôi và tịch thu điền sản của tôi.",
+      "text_markdown": "Tôi là kẻ thù của ngài, chính là người đã thề báo thù ngài vì ngài xử tử anh tôi và tịch thu điền sản của tôi.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Tôi là kẻ thù của ngài, chính là người đã thề báo thù ngài vì ngài xử tử anh tôi và tịch thu điền sản của tôi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Tôi biết ngài đã một mình đến gặp vị ẩn sĩ, nên tôi quyết định giết ngài trên đường ngài trở về.",
+      "text_markdown": "Tôi biết ngài đã một mình đến gặp vị ẩn sĩ, nên tôi quyết định giết ngài trên đường ngài trở về.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Tôi biết ngài đã một mình đến gặp vị ẩn sĩ, nên tôi quyết định giết ngài trên đường ngài trở về.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Nhưng cả một ngày đã qua, mà ngài vẫn chưa xuất hiện.",
+      "text_markdown": "Nhưng cả một ngày đã qua, mà ngài vẫn chưa xuất hiện.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhưng cả một ngày đã qua, mà ngài vẫn chưa xuất hiện.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Bấy giờ tôi rời chỗ mai phục để đi tìm ngài, và đụng phải các vệ sĩ của ngài.",
+      "text_markdown": "Bấy giờ tôi rời chỗ mai phục để đi tìm ngài, và đụng phải các vệ sĩ của ngài.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Bấy giờ tôi rời chỗ mai phục để đi tìm ngài, và đụng phải các vệ sĩ của ngài.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Họ nhận ra tôi và làm tôi bị thương.",
+      "text_markdown": "Họ nhận ra tôi và làm tôi bị thương.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Họ nhận ra tôi và làm tôi bị thương.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Tôi chạy trốn khỏi họ, nhưng nếu ngài không băng vết thương cho tôi, tôi đã chết.",
+      "text_markdown": "Tôi chạy trốn khỏi họ, nhưng nếu ngài không băng vết thương cho tôi, tôi đã chết.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Tôi chạy trốn khỏi họ, nhưng nếu ngài không băng vết thương cho tôi, tôi đã chết.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Tôi muốn giết ngài, còn ngài lại cứu mạng tôi.",
+      "text_markdown": "Tôi muốn giết ngài, còn ngài lại cứu mạng tôi.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Tôi muốn giết ngài, còn ngài lại cứu mạng tôi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Nay, nếu tôi còn sống và ngài muốn, tôi sẽ phụng sự ngài như kẻ nô bộc trung thành nhất, và tôi sẽ truyền cho các con tôi cũng làm như vậy.",
+      "text_markdown": "Nay, nếu tôi còn sống và ngài muốn, tôi sẽ phụng sự ngài như kẻ nô bộc trung thành nhất, và tôi sẽ truyền cho các con tôi cũng làm như vậy.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nay, nếu tôi còn sống và ngài muốn, tôi sẽ phụng sự ngài như kẻ nô bộc trung thành nhất, và tôi sẽ truyền cho các con tôi cũng làm như vậy.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Xin tha thứ cho tôi.",
+      "text_markdown": "Xin tha thứ cho tôi.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Xin tha thứ cho tôi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Nhà vua rất vui mừng vì đã dễ dàng làm hòa được với kẻ thù và có thêm một người bạn; ngài tha thứ cho anh ta, hứa trả lại điền sản, và sai thầy thuốc cùng người hầu của mình đến chăm sóc anh ta.",
+      "text_markdown": "Nhà vua rất vui mừng vì đã dễ dàng làm hòa được với kẻ thù và có thêm một người bạn; ngài tha thứ cho anh ta, hứa trả lại điền sản, và sai thầy thuốc cùng người hầu của mình đến chăm sóc anh ta.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua rất vui mừng vì đã dễ dàng làm hòa được với kẻ thù và có thêm một người bạn; ngài tha thứ cho anh ta, hứa trả lại điền sản, và sai thầy thuốc cùng người hầu của mình đến chăm sóc anh ta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Từ biệt người bị thương xong, nhà vua bước ra thềm và bắt đầu tìm vị ẩn sĩ.",
+      "text_markdown": "Từ biệt người bị thương xong, nhà vua bước ra thềm và bắt đầu tìm vị ẩn sĩ.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Từ biệt người bị thương xong, nhà vua bước ra thềm và bắt đầu tìm vị ẩn sĩ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Trước khi ra đi, ngài muốn hỏi ông một lần nữa về lời đáp cho những câu hỏi của mình.",
+      "text_markdown": "Trước khi ra đi, ngài muốn hỏi ông một lần nữa về lời đáp cho những câu hỏi của mình.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Trước khi ra đi, ngài muốn hỏi ông một lần nữa về lời đáp cho những câu hỏi của mình.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Vị ẩn sĩ đang ở ngoài sân, quỳ gối, gieo hạt vào những luống đất đã cuốc ngày hôm qua.",
+      "text_markdown": "Vị ẩn sĩ đang ở ngoài sân, quỳ gối, gieo hạt vào những luống đất đã cuốc ngày hôm qua.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vị ẩn sĩ đang ở ngoài sân, quỳ gối, gieo hạt vào những luống đất đã cuốc ngày hôm qua.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Nhà vua đến gần ông.",
+      "text_markdown": "Nhà vua đến gần ông.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Nhà vua đến gần ông.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "\"Thưa bậc hiền nhân, lần cuối cùng ta xin ông: hãy trả lời những câu hỏi của ta.\"",
+      "text_markdown": "\"Thưa bậc hiền nhân, lần cuối cùng ta xin ông: hãy trả lời những câu hỏi của ta.\"",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Thưa bậc hiền nhân, lần cuối cùng ta xin ông: hãy trả lời những câu hỏi của ta.\"",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "\"Nhưng ngài đã nhận được lời đáp rồi,\" vị ẩn sĩ nói, ngồi xổm trên đôi chân gầy guộc và từ dưới nhìn lên nhà vua đang đứng trước mặt ông.",
+      "text_markdown": "\"Nhưng ngài đã nhận được lời đáp rồi,\" vị ẩn sĩ nói, ngồi xổm trên đôi chân gầy guộc và từ dưới nhìn lên nhà vua đang đứng trước mặt ông.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Nhưng ngài đã nhận được lời đáp rồi,\" vị ẩn sĩ nói, ngồi xổm trên đôi chân gầy guộc và từ dưới nhìn lên nhà vua đang đứng trước mặt ông.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "\"Ta đã nhận được lời đáp thế nào?\" nhà vua hỏi.",
+      "text_markdown": "\"Ta đã nhận được lời đáp thế nào?\" nhà vua hỏi.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Ta đã nhận được lời đáp thế nào?\" nhà vua hỏi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "\"Thế nào ư?\" vị ẩn sĩ nói.",
+      "text_markdown": "\"Thế nào ư?\" vị ẩn sĩ nói.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Thế nào ư?\" vị ẩn sĩ nói.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "\"Nếu hôm qua ngài không thương tôi, không ở lại cuốc những luống này thay tôi, mà quay trở về, thì người kia đã giết ngài rồi.",
+      "text_markdown": "\"Nếu hôm qua ngài không thương tôi, không ở lại cuốc những luống này thay tôi, mà quay trở về, thì người kia đã giết ngài rồi.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Nếu hôm qua ngài không thương tôi, không ở lại cuốc những luống này thay tôi, mà quay trở về, thì người kia đã giết ngài rồi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Vì thế, thời khắc quan trọng nhất là lúc ngài đang cuốc những luống đất.",
+      "text_markdown": "Vì thế, thời khắc quan trọng nhất là lúc ngài đang cuốc những luống đất.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vì thế, thời khắc quan trọng nhất là lúc ngài đang cuốc những luống đất.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "Và người cần thiết nhất là tôi.",
+      "text_markdown": "Và người cần thiết nhất là tôi.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Và người cần thiết nhất là tôi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "Và việc quan trọng nhất là làm điều lành cho tôi.",
+      "text_markdown": "Và việc quan trọng nhất là làm điều lành cho tôi.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Và việc quan trọng nhất là làm điều lành cho tôi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "Rồi sau đó, khi người kia chạy đến, thời khắc quan trọng nhất là lúc ngài chăm sóc anh ta, bởi nếu ngài không rửa vết thương cho anh ta, anh ta đã chết mà chưa kịp làm hòa với ngài.",
+      "text_markdown": "Rồi sau đó, khi người kia chạy đến, thời khắc quan trọng nhất là lúc ngài chăm sóc anh ta, bởi nếu ngài không rửa vết thương cho anh ta, anh ta đã chết mà chưa kịp làm hòa với ngài.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Rồi sau đó, khi người kia chạy đến, thời khắc quan trọng nhất là lúc ngài chăm sóc anh ta, bởi nếu ngài không rửa vết thương cho anh ta, anh ta đã chết mà chưa kịp làm hòa với ngài.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "Vì thế, người cần thiết nhất là anh ta, và việc quan trọng nhất là điều ngài đã làm cho anh ta.",
+      "text_markdown": "Vì thế, người cần thiết nhất là anh ta, và việc quan trọng nhất là điều ngài đã làm cho anh ta.",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "Vì thế, người cần thiết nhất là anh ta, và việc quan trọng nhất là điều ngài đã làm cho anh ta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "\"Vậy hãy nhớ,\" vị ẩn sĩ nói, \"rằng chỉ có một thời khắc là quan trọng: bây giờ! Đó là thời khắc quan trọng nhất, bởi đó là thời khắc duy nhất mà chúng ta có chút quyền năng; và người cần thiết nhất là người mà ngươi đang giao tiếp trong hiện tại, vì không ai có thể biết liệu mình có còn giao tiếp với người nào khác nữa hay không; và việc quan trọng nhất là làm điều lành cho người ấy, bởi chính vì mục đích ấy mà con người được đưa vào cõi đời này.\"",
+      "text_markdown": "\"Vậy hãy nhớ,\" vị ẩn sĩ nói, \"rằng chỉ có một thời khắc là quan trọng: bây giờ! Đó là thời khắc quan trọng nhất, bởi đó là thời khắc duy nhất mà chúng ta có chút quyền năng; và người cần thiết nhất là người mà ngươi đang giao tiếp trong hiện tại, vì không ai có thể biết liệu mình có còn giao tiếp với người nào khác nữa hay không; và việc quan trọng nhất là làm điều lành cho người ấy, bởi chính vì mục đích ấy mà con người được đưa vào cõi đời này.\"",
+      "title": "Ba câu hỏi",
+      "tts": {
+        "text": "\"Vậy hãy nhớ,\" vị ẩn sĩ nói, \"rằng chỉ có một thời khắc là quan trọng: bây giờ! Đó là thời khắc quan trọng nhất, bởi đó là thời khắc duy nhất mà chúng ta có chút quyền năng; và người cần thiết nhất là người mà ngươi đang giao tiếp trong hiện tại, vì không ai có thể biết liệu mình có còn giao tiếp với người nào khác nữa hay không; và việc quan trọng nhất là làm điều lành cho người ấy, bởi chính vì mục đích ấy mà con người được đưa vào cõi đời này.\"",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

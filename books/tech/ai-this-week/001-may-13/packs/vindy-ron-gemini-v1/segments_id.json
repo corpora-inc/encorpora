@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "id",
+  "total_segments": 62,
+  "segments": [
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-001",
+      "text": "Selamat datang di AI Minggu Ini. Saya Vindy.",
+      "text_markdown": "Selamat datang di AI Minggu Ini. Saya Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Selamat datang di AI Minggu Ini. Saya Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-002",
+      "text": "Bersama saya, seperti biasa, ada Ron.",
+      "text_markdown": "Bersama saya, seperti biasa, ada Ron.",
+      "title": "",
+      "tts": {
+        "text": "Bersama saya, seperti biasa, ada Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-003",
+      "text": "Senang bisa di sini.",
+      "text_markdown": "Senang bisa di sini.",
+      "title": "",
+      "tts": {
+        "text": "Senang bisa di sini.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-004",
+      "text": "Hari ini Rabu, 13 Mei 2026. Selanjutnya: model-model yang dirilis minggu ini. Papan peringkat, dan mengapa beberapa di antaranya harus Anda berhenti percayai. Konsep minggu ini. Dan gambaran yang lebih besar — AS baru saja mendapatkan ketua Federal Reserve yang baru, dan ini lebih penting bagi AI daripada yang Anda kira.",
+      "text_markdown": "Hari ini Rabu, 13 Mei 2026. Selanjutnya: model-model yang dirilis minggu ini. Papan peringkat, dan mengapa beberapa di antaranya harus Anda berhenti percayai. Konsep minggu ini. Dan gambaran yang lebih besar — AS baru saja mendapatkan ketua Federal Reserve yang baru, dan ini lebih penting bagi AI daripada yang Anda kira.",
+      "title": "",
+      "tts": {
+        "text": "Hari ini Rabu, tiga belas Mei dua ribu dua puluh enam. Selanjutnya: model-model yang dirilis minggu ini. Papan peringkat, dan mengapa beberapa di antaranya harus Anda berhenti percayai. Konsep minggu ini. Dan gambaran yang lebih besar — Amerika Serikat baru saja mendapatkan ketua Federal Reserve yang baru, dan ini lebih penting bagi AI daripada yang Anda kira.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-005",
+      "text": "Ron, apa berita model terbesar minggu ini?",
+      "text_markdown": "Ron, apa berita model terbesar minggu ini?",
+      "title": "",
+      "tts": {
+        "text": "Ron, apa berita model terbesar minggu ini?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-006",
+      "text": "Otak default di dalam ChatGPT berubah. OpenAI meluncurkan model baru bernama GPT-5.5 Instant ke tingkat gratis minggu lalu, pada Selasa, 5 Mei. Jika respons ChatGPT gratis terasa lebih pendek atau kurang penuh emoji, itulah alasannya.",
+      "text_markdown": "Otak default di dalam ChatGPT berubah. OpenAI meluncurkan model baru bernama GPT-5.5 Instant ke tingkat gratis minggu lalu, pada Selasa, 5 Mei. Jika respons ChatGPT gratis terasa lebih pendek atau kurang penuh emoji, itulah alasannya.",
+      "title": "",
+      "tts": {
+        "text": "Otak default di dalam ChatGPT berubah. OpenAI meluncurkan model baru bernama GPT lima titik lima Instant ke tingkat gratis minggu lalu, pada Selasa, lima Mei. Jika respons ChatGPT gratis terasa lebih pendek atau kurang penuh emoji, itulah alasannya.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-007",
+      "text": "Lebih pendek bagaimana?",
+      "text_markdown": "Lebih pendek bagaimana?",
+      "title": "",
+      "tts": {
+        "text": "Lebih pendek bagaimana?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-008",
+      "text": "OpenAI mengatakan default baru menulis sekitar 30% lebih sedikit kata dan 30% lebih sedikit baris daripada model yang digantikannya. Mereka juga mengklaim penurunan 50% dalam klaim halusinasi pada prompt tersulit. Hal-hal seperti pertanyaan medis, pertanyaan hukum, dan pertanyaan keuangan.",
+      "text_markdown": "OpenAI mengatakan default baru menulis sekitar 30% lebih sedikit kata dan 30% lebih sedikit baris daripada model yang digantikannya. Mereka juga mengklaim penurunan 50% dalam klaim halusinasi pada prompt tersulit. Hal-hal seperti pertanyaan medis, pertanyaan hukum, dan pertanyaan keuangan.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI mengatakan default baru menulis sekitar tiga puluh persen lebih sedikit kata dan tiga puluh persen lebih sedikit baris daripada model yang digantikannya. Mereka juga mengklaim penurunan lima puluh persen dalam klaim halusinasi pada prompt tersulit. Hal-hal seperti pertanyaan medis, pertanyaan hukum, dan pertanyaan keuangan.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-009",
+      "text": "Apakah ada pihak di luar OpenAI yang memverifikasi angka-angka tersebut?",
+      "text_markdown": "Apakah ada pihak di luar OpenAI yang memverifikasi angka-angka tersebut?",
+      "title": "",
+      "tts": {
+        "text": "Apakah ada pihak di luar OpenAI yang memverifikasi angka-angka tersebut?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-010",
+      "text": "Tidak dalam skala besar. Pihak benchmark independen, seperti Artificial Analysis, menempatkan model baru ini di puncak indeks kecerdasan keseluruhan mereka. Namun klaim halusinasi lambat untuk diverifikasi. Hal-hal tersebut cenderung muncul selama berminggu-minggu, seiring orang benar-benar menggunakan model tersebut.",
+      "text_markdown": "Tidak dalam skala besar. Pihak benchmark independen, seperti Artificial Analysis, menempatkan model baru ini di puncak indeks kecerdasan keseluruhan mereka. Namun klaim halusinasi lambat untuk diverifikasi. Hal-hal tersebut cenderung muncul selama berminggu-minggu, seiring orang benar-benar menggunakan model tersebut.",
+      "title": "",
+      "tts": {
+        "text": "Tidak dalam skala besar. Pihak benchmark independen, seperti Artificial Analysis, menempatkan model baru ini di puncak indeks kecerdasan keseluruhan mereka. Namun klaim halusinasi lambat untuk diverifikasi. Hal-hal tersebut cenderung muncul selama berminggu-minggu, seiring orang benar-benar menggunakan model tersebut.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-011",
+      "text": "Dan di sisi open weights?",
+      "text_markdown": "Dan di sisi open weights?",
+      "title": "",
+      "tts": {
+        "text": "Dan di sisi open weights?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-012",
+      "text": "Dua hal besar. Moonshot, lab Tiongkok di balik model Kimi, mengumpulkan $2 miliar minggu lalu, pada 7 Mei, dengan valuasi $20 miliar. Dan model terbaru mereka, Kimi K 2.6, baru saja menduduki posisi teratas di OpenRouter untuk volume token.",
+      "text_markdown": "Dua hal besar. Moonshot, lab Tiongkok di balik model Kimi, mengumpulkan $2 miliar minggu lalu, pada 7 Mei, dengan valuasi $20 miliar. Dan model terbaru mereka, Kimi K 2.6, baru saja menduduki posisi teratas di OpenRouter untuk volume token.",
+      "title": "",
+      "tts": {
+        "text": "Dua hal besar. Moonshot, lab Tiongkok di balik model Kimi, mengumpulkan dua miliar dolar minggu lalu, pada tujuh Mei, dengan valuasi dua puluh miliar dolar. Dan model terbaru mereka, Kimi K dua titik enam, baru saja menduduki posisi teratas di OpenRouter untuk volume token.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-013",
+      "text": "Posisi teratas? Secara keseluruhan?",
+      "text_markdown": "Posisi teratas? Secara keseluruhan?",
+      "title": "",
+      "tts": {
+        "text": "Posisi teratas? Secara keseluruhan?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-014",
+      "text": "Secara keseluruhan. Itu adalah model open weights Tiongkok di posisi nomor satu pada router komersial besar. Enam bulan lalu, itu tidak terpikirkan.",
+      "text_markdown": "Secara keseluruhan. Itu adalah model open weights Tiongkok di posisi nomor satu pada router komersial besar. Enam bulan lalu, itu tidak terpikirkan.",
+      "title": "",
+      "tts": {
+        "text": "Secara keseluruhan. Itu adalah model open weights Tiongkok di posisi nomor satu pada router komersial besar. Enam bulan lalu, itu tidak terpikirkan.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-015",
+      "text": "Ada hal lain yang patut disoroti?",
+      "text_markdown": "Ada hal lain yang patut disoroti?",
+      "title": "",
+      "tts": {
+        "text": "Ada hal lain yang patut disoroti?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-016",
+      "text": "Mistral, lab Prancis, merilis Medium 3.5 pada akhir April. Mereka menggabungkan pemisahan lama antara model obrolan, model penalaran, dan model pengkodean menjadi satu produk. Tren yang sama dimulai OpenAI dengan keluarga GPT-5. Seluruh industri bergerak ke arah itu.",
+      "text_markdown": "Mistral, lab Prancis, merilis Medium 3.5 pada akhir April. Mereka menggabungkan pemisahan lama antara model obrolan, model penalaran, dan model pengkodean menjadi satu produk. Tren yang sama dimulai OpenAI dengan keluarga GPT-5. Seluruh industri bergerak ke arah itu.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, lab Prancis, merilis Medium tiga titik lima pada akhir April. Mereka menggabungkan pemisahan lama antara model obrolan, model penalaran, dan model pengkodean menjadi satu produk. Tren yang sama dimulai OpenAI dengan keluarga GPT lima. Seluruh industri bergerak ke arah itu.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-017",
+      "text": "Dan apa yang akan datang selanjutnya?",
+      "text_markdown": "Dan apa yang akan datang selanjutnya?",
+      "title": "",
+      "tts": {
+        "text": "Dan apa yang akan datang selanjutnya?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-018",
+      "text": "Google I/O akan diadakan pada hari Selasa. Semua orang mengharapkan Gemini baru, dan ada desas-desus yang kredibel tentang model pembuatan video bernama Gemini Omni. OpenAI memiliki GPT-5.6 dalam pengujian. Anthropic memiliki model bernama Mythos dalam pratinjau pribadi. Kita akan tahu lebih banyak minggu depan.",
+      "text_markdown": "Google I/O akan diadakan pada hari Selasa. Semua orang mengharapkan Gemini baru, dan ada desas-desus yang kredibel tentang model pembuatan video bernama Gemini Omni. OpenAI memiliki GPT-5.6 dalam pengujian. Anthropic memiliki model bernama Mythos dalam pratinjau pribadi. Kita akan tahu lebih banyak minggu depan.",
+      "title": "",
+      "tts": {
+        "text": "Google I O akan diadakan pada hari Selasa. Semua orang mengharapkan Gemini baru, dan ada desas-desus yang kredibel tentang model pembuatan video bernama Gemini Omni. OpenAI memiliki GPT lima titik enam dalam pengujian. Anthropic memiliki model bernama Mythos dalam pratinjau pribadi. Kita akan tahu lebih banyak minggu depan.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-019",
+      "text": "Baik, mari kita bahas papan peringkat.",
+      "text_markdown": "Baik, mari kita bahas papan peringkat.",
+      "title": "",
+      "tts": {
+        "text": "Baik, mari kita bahas papan peringkat.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-020",
+      "text": "Ron, apa yang bergerak di papan peringkat minggu ini?",
+      "text_markdown": "Ron, apa yang bergerak di papan peringkat minggu ini?",
+      "title": "",
+      "tts": {
+        "text": "Ron, apa yang bergerak di papan peringkat minggu ini?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-021",
+      "text": "Kisah sebenarnya minggu ini bukanlah skornya. Melainkan skor yang seharusnya Anda berhenti percayai.",
+      "text_markdown": "Kisah sebenarnya minggu ini bukanlah skornya. Melainkan skor yang seharusnya Anda berhenti percayai.",
+      "title": "",
+      "tts": {
+        "text": "Kisah sebenarnya minggu ini bukanlah skornya. Melainkan skor yang seharusnya Anda berhenti percayai.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-022",
+      "text": "Ceritakan lebih banyak tentang itu, Ron.",
+      "text_markdown": "Ceritakan lebih banyak tentang itu, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Ceritakan lebih banyak tentang itu, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-023",
+      "text": "Sebuah kelompok di Berkeley menerbitkan makalah. Mereka membangun pemindai otomatis yang mencetak skor mendekati sempurna pada setiap benchmark agen AI utama. Tanpa benar-benar menyelesaikan satu tugas pun. Mereka mengeksploitasi cara benchmark memeriksa jawaban mereka sendiri.",
+      "text_markdown": "Sebuah kelompok di Berkeley menerbitkan makalah. Mereka membangun pemindai otomatis yang mencetak skor mendekati sempurna pada setiap benchmark agen AI utama. Tanpa benar-benar menyelesaikan satu tugas pun. Mereka mengeksploitasi cara benchmark memeriksa jawaban mereka sendiri.",
+      "title": "",
+      "tts": {
+        "text": "Sebuah kelompok di Berkeley menerbitkan makalah. Mereka membangun pemindai otomatis yang mencetak skor mendekati sempurna pada setiap benchmark agen AI utama. Tanpa benar-benar menyelesaikan satu tugas pun. Mereka mengeksploitasi cara benchmark memeriksa jawaban mereka sendiri.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-024",
+      "text": "Mereka curang, dan benchmark tidak menangkapnya.",
+      "text_markdown": "Mereka curang, dan benchmark tidak menangkapnya.",
+      "title": "",
+      "tts": {
+        "text": "Mereka curang, dan benchmark tidak menangkapnya.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-025",
+      "text": "Benar. Dan di minggu yang sama, OpenAI mengumumkan bahwa mereka menghentikan evaluasi mereka pada SWE bench Verified. Itu adalah benchmark pengkodean yang sering mereka kutip. Mereka menghentikannya karena lebih dari separuh tugas sulit ternyata memiliki tes yang rusak.",
+      "text_markdown": "Benar. Dan di minggu yang sama, OpenAI mengumumkan bahwa mereka menghentikan evaluasi mereka pada SWE bench Verified. Itu adalah benchmark pengkodean yang sering mereka kutip. Mereka menghentikannya karena lebih dari separuh tugas sulit ternyata memiliki tes yang rusak.",
+      "title": "",
+      "tts": {
+        "text": "Benar. Dan di minggu yang sama, OpenAI mengumumkan bahwa mereka menghentikan evaluasi mereka pada SWE bench Verified. Itu adalah benchmark pengkodean yang sering mereka kutip. Mereka menghentikannya karena lebih dari separuh tugas sulit ternyata memiliki tes yang rusak.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-026",
+      "text": "Jadi banyak angka yang kita dengar selama setahun terakhir adalah…",
+      "text_markdown": "Jadi banyak angka yang kita dengar selama setahun terakhir adalah…",
+      "title": "",
+      "tts": {
+        "text": "Jadi banyak angka yang kita dengar selama setahun terakhir adalah…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-027",
+      "text": "Setidaknya sebagian meningkat. Tidak setiap model. Tidak setiap benchmark. Tetapi bidang ini sedang membangun kembali alat ukurnya di depan umum. Evaluasi yang lebih baru seperti SWE-bench Pro dan proyek bernama SWE-rebench mencoba memperbaiki ini dengan menjaga kode pengujian tetap pribadi.",
+      "text_markdown": "Setidaknya sebagian meningkat. Tidak setiap model. Tidak setiap benchmark. Tetapi bidang ini sedang membangun kembali alat ukurnya di depan umum. Evaluasi yang lebih baru seperti SWE-bench Pro dan proyek bernama SWE-rebench mencoba memperbaiki ini dengan menjaga kode pengujian tetap pribadi.",
+      "title": "",
+      "tts": {
+        "text": "Setidaknya sebagian meningkat. Tidak setiap model. Tidak setiap benchmark. Tetapi bidang ini sedang membangun kembali alat ukurnya di depan umum. Evaluasi yang lebih baru seperti SWE bench Pro dan proyek bernama SWE rebench mencoba memperbaiki ini dengan menjaga kode pengujian tetap pribadi.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-028",
+      "text": "Apakah ada yang benar-benar naik dengan bersih?",
+      "text_markdown": "Apakah ada yang benar-benar naik dengan bersih?",
+      "title": "",
+      "tts": {
+        "text": "Apakah ada yang benar-benar naik dengan bersih?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-029",
+      "text": "Dua hal, di papan yang lebih bersih. Kembali pada pertengahan April, Claude Opus 4.7 dari Anthropic menjadi model pertama yang berhasil melewati Elo 1500 di papan peringkat pengkodean LM Arena. Opus 4.6 telah menyentuh 1500 beberapa minggu sebelumnya. Hingga minggu ini, Opus 4.7 masih di puncak, sekitar 1569. Anthropic juga memiliki model terpisah bernama Mythos dalam pratinjau mitra pribadi yang memimpin 17 dari 18 benchmark agen yang diukur Anthropic.",
+      "text_markdown": "Dua hal, di papan yang lebih bersih. Kembali pada pertengahan April, Claude Opus 4.7 dari Anthropic menjadi model pertama yang berhasil melewati Elo 1500 di papan peringkat pengkodean LM Arena. Opus 4.6 telah menyentuh 1500 beberapa minggu sebelumnya. Hingga minggu ini, Opus 4.7 masih di puncak, sekitar 1569. Anthropic juga memiliki model terpisah bernama Mythos dalam pratinjau mitra pribadi yang memimpin 17 dari 18 benchmark agen yang diukur Anthropic.",
+      "title": "",
+      "tts": {
+        "text": "Dua hal, di papan yang lebih bersih. Kembali pada pertengahan April, Claude Opus empat titik tujuh dari Anthropic menjadi model pertama yang berhasil melewati Elo seribu lima ratus di papan peringkat pengkodean LM Arena. Opus empat titik enam telah menyentuh seribu lima ratus beberapa minggu sebelumnya. Hingga minggu ini, Opus empat titik tujuh masih di puncak, sekitar seribu lima ratus enam puluh sembilan. Anthropic juga memiliki model terpisah bernama Mythos dalam pratinjau mitra pribadi yang memimpin tujuh belas dari delapan belas benchmark agen yang diukur Anthropic.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-030",
+      "text": "Model yang tidak bisa digunakan publik berada di puncak papan peringkat.",
+      "text_markdown": "Model yang tidak bisa digunakan publik berada di puncak papan peringkat.",
+      "title": "",
+      "tts": {
+        "text": "Model yang tidak bisa digunakan publik berada di puncak papan peringkat.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-031",
+      "text": "Di situlah posisi kita. Tren besar lainnya adalah kesenjangan terbuka versus tertutup. Ini adalah yang tersempit yang pernah ada. DeepSeek V4 Pro dan Kimi K 2.6 berada dalam jangkauan GPT-5.5 pada indeks intelijen evaluasi silang. Kesenjangan itu dulunya sangat besar. Sekarang kecil.",
+      "text_markdown": "Di situlah posisi kita. Tren besar lainnya adalah kesenjangan terbuka versus tertutup. Ini adalah yang tersempit yang pernah ada. DeepSeek V4 Pro dan Kimi K 2.6 berada dalam jangkauan GPT-5.5 pada indeks intelijen evaluasi silang. Kesenjangan itu dulunya sangat besar. Sekarang kecil.",
+      "title": "",
+      "tts": {
+        "text": "Di situlah posisi kita. Tren besar lainnya adalah kesenjangan terbuka versus tertutup. Ini adalah yang tersempit yang pernah ada. DeepSeek V empat Pro dan Kimi K dua koma enam berada dalam jangkauan GPT lima koma lima pada indeks intelijen evaluasi silang. Kesenjangan itu dulunya sangat besar. Sekarang kecil.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-032",
+      "text": "Baik, mari kita masuk ke konsep minggu ini.",
+      "text_markdown": "Baik, mari kita masuk ke konsep minggu ini.",
+      "title": "",
+      "tts": {
+        "text": "Baik, mari kita masuk ke konsep minggu ini.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-033",
+      "text": "Ron, konsep minggu ini adalah mixture of experts. Mengapa kita berfokus pada mixture of experts?",
+      "text_markdown": "Ron, konsep minggu ini adalah mixture of experts. Mengapa kita berfokus pada mixture of experts?",
+      "title": "",
+      "tts": {
+        "text": "Ron, konsep minggu ini adalah mixture of experts. Mengapa kita berfokus pada mixture of experts?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-034",
+      "text": "Karena model bobot terbuka yang baru saja kita bicarakan, Kimi K 2.6, memiliki total 1 triliun parameter. Tetapi hanya 32 miliar dari parameter tersebut yang berjalan pada waktu tertentu. Itulah mixture of experts.",
+      "text_markdown": "Karena model bobot terbuka yang baru saja kita bicarakan, Kimi K 2.6, memiliki total 1 triliun parameter. Tetapi hanya 32 miliar dari parameter tersebut yang berjalan pada waktu tertentu. Itulah mixture of experts.",
+      "title": "",
+      "tts": {
+        "text": "Karena model bobot terbuka yang baru saja kita bicarakan, Kimi K dua koma enam, memiliki total satu triliun parameter. Tetapi hanya tiga puluh dua miliar dari parameter tersebut yang berjalan pada waktu tertentu. Itulah mixture of experts.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-035",
+      "text": "Jelaskan kepada para pendengar yang baru bergabung.",
+      "text_markdown": "Jelaskan kepada para pendengar yang baru bergabung.",
+      "title": "",
+      "tts": {
+        "text": "Jelaskan kepada para pendengar yang baru bergabung.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-036",
+      "text": "Model AI biasa seperti satu otak raksasa. Setiap kata yang dihasilkannya menggunakan setiap bagian otak. Model mixture of experts lebih seperti sebuah gedung yang penuh dengan spesialis. Dengan seorang resepsionis di pintu. Untuk setiap kata, resepsionis memilih dua atau tiga spesialis untuk dikonsultasikan, dan sisa gedung tetap tenang.",
+      "text_markdown": "Model AI biasa seperti satu otak raksasa. Setiap kata yang dihasilkannya menggunakan setiap bagian otak. Model mixture of experts lebih seperti sebuah gedung yang penuh dengan spesialis. Dengan seorang resepsionis di pintu. Untuk setiap kata, resepsionis memilih dua atau tiga spesialis untuk dikonsultasikan, dan sisa gedung tetap tenang.",
+      "title": "",
+      "tts": {
+        "text": "Model AI biasa seperti satu otak raksasa. Setiap kata yang dihasilkannya menggunakan setiap bagian otak. Model mixture of experts lebih seperti sebuah gedung yang penuh dengan spesialis. Dengan seorang resepsionis di pintu. Untuk setiap kata, resepsionis memilih dua atau tiga spesialis untuk dikonsultasikan, dan sisa gedung tetap tenang.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-037",
+      "text": "Jadi modelnya besar di atas kertas tapi murah untuk dijalankan.",
+      "text_markdown": "Jadi modelnya besar di atas kertas tapi murah untuk dijalankan.",
+      "title": "",
+      "tts": {
+        "text": "Jadi modelnya besar di atas kertas tapi murah untuk dijalankan.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-038",
+      "text": "Tepat sekali. 1 triliun parameter kapasitas. Tetapi hanya 32 miliar parameter komputasi per kata. Itulah triknya. Resepsionis adalah sepotong kode kecil yang disebut router. Para spesialis adalah sub-jaringan yang disebut experts. Model ini melatih router dan experts secara bersamaan, ujung ke ujung.",
+      "text_markdown": "Tepat sekali. 1 triliun parameter kapasitas. Tetapi hanya 32 miliar parameter komputasi per kata. Itulah triknya. Resepsionis adalah sepotong kode kecil yang disebut router. Para spesialis adalah sub-jaringan yang disebut experts. Model ini melatih router dan experts secara bersamaan, ujung ke ujung.",
+      "title": "",
+      "tts": {
+        "text": "Tepat sekali. Satu triliun parameter kapasitas. Tetapi hanya tiga puluh dua miliar parameter komputasi per kata. Itulah triknya. Resepsionis adalah sepotong kode kecil yang disebut router. Para spesialis adalah sub-jaringan yang disebut experts. Model ini melatih router dan experts secara bersamaan, ujung ke ujung.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-039",
+      "text": "Apakah setiap model frontier utama melakukan ini?",
+      "text_markdown": "Apakah setiap model frontier utama melakukan ini?",
+      "title": "",
+      "tts": {
+        "text": "Apakah setiap model frontier utama melakukan ini?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-040",
+      "text": "Sebagian besar, ya. Meskipun laboratorium tidak selalu mengonfirmasinya. GPT-4 adalah model mixture of experts. Unggulan dari DeepSeek adalah model mixture of experts. Mistral telah meluncurkan model mixture of experts sejak 2023. Gelombang baru dari Tiongkok telah mendorong desain ini hingga batasnya.",
+      "text_markdown": "Sebagian besar, ya. Meskipun laboratorium tidak selalu mengonfirmasinya. GPT-4 adalah model mixture of experts. Unggulan dari DeepSeek adalah model mixture of experts. Mistral telah meluncurkan model mixture of experts sejak 2023. Gelombang baru dari Tiongkok telah mendorong desain ini hingga batasnya.",
+      "title": "",
+      "tts": {
+        "text": "Sebagian besar, ya. Meskipun laboratorium tidak selalu mengonfirmasinya. GPT empat adalah model mixture of experts. Unggulan dari DeepSeek adalah model mixture of experts. Mistral telah meluncurkan model mixture of experts sejak dua ribu dua puluh tiga. Gelombang baru dari Tiongkok telah mendorong desain ini hingga batasnya.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-041",
+      "text": "Mengapa ini penting bagi seseorang yang hanya menggunakan ChatGPT?",
+      "text_markdown": "Mengapa ini penting bagi seseorang yang hanya menggunakan ChatGPT?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa ini penting bagi seseorang yang hanya menggunakan ChatGPT?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-042",
+      "text": "Dua alasan. Satu. Ini adalah alasan utama mengapa laboratorium bobot terbuka di Tiongkok dapat beroperasi dengan kualitas kelas frontier dengan sebagian kecil dari anggaran. Dua. Ini adalah alasan utama mengapa satu panggilan API berharga sen, bukan dolar. Ketika Anda melihat harga turun dan kualitas tetap tinggi, mixture of experts biasanya alasannya.",
+      "text_markdown": "Dua alasan. Satu. Ini adalah alasan utama mengapa laboratorium bobot terbuka di Tiongkok dapat beroperasi dengan kualitas kelas frontier dengan sebagian kecil dari anggaran. Dua. Ini adalah alasan utama mengapa satu panggilan API berharga sen, bukan dolar. Ketika Anda melihat harga turun dan kualitas tetap tinggi, mixture of experts biasanya alasannya.",
+      "title": "",
+      "tts": {
+        "text": "Dua alasan. Satu. Ini adalah alasan utama mengapa laboratorium bobot terbuka di Tiongkok dapat beroperasi dengan kualitas kelas frontier dengan sebagian kecil dari anggaran. Dua. Ini adalah alasan utama mengapa satu panggilan A P I berharga sen, bukan dolar. Ketika Anda melihat harga turun dan kualitas tetap tinggi, mixture of experts biasanya alasannya.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-043",
+      "text": "Mixture of experts. Router. Experts. Sparse activation. Tiga kata untuk Anda ingat. Sekarang mari kita kembali ke gambaran yang lebih besar.",
+      "text_markdown": "Mixture of experts. Router. Experts. Sparse activation. Tiga kata untuk Anda ingat. Sekarang mari kita kembali ke gambaran yang lebih besar.",
+      "title": "",
+      "tts": {
+        "text": "Mixture of experts. Router. Experts. Sparse activation. Tiga kata untuk Anda ingat. Sekarang mari kita kembali ke gambaran yang lebih besar.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-044",
+      "text": "Ron, berita besar di luar dunia kita minggu ini adalah Federal Reserve.",
+      "text_markdown": "Ron, berita besar di luar dunia kita minggu ini adalah Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, berita besar di luar dunia kita minggu ini adalah Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-045",
+      "text": "Hari ini, Senat A.S. mengukuhkan Kevin Warsh sebagai ketua Federal Reserve berikutnya. Pemungutan suara adalah 54 banding 45. Pemungutan suara tersempit untuk ketua Fed dalam sejarah Amerika modern. Hanya satu Demokrat yang melintasi batas partai.",
+      "text_markdown": "Hari ini, Senat A.S. mengukuhkan Kevin Warsh sebagai ketua Federal Reserve berikutnya. Pemungutan suara adalah 54 banding 45. Pemungutan suara tersempit untuk ketua Fed dalam sejarah Amerika modern. Hanya satu Demokrat yang melintasi batas partai.",
+      "title": "",
+      "tts": {
+        "text": "Hari ini, Senat A titik S titik mengukuhkan Kevin Warsh sebagai ketua Federal Reserve berikutnya. Pemungutan suara adalah lima puluh empat banding empat puluh lima. Pemungutan suara tersempit untuk ketua Fed dalam sejarah Amerika modern. Hanya satu Demokrat yang melintasi batas partai.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-046",
+      "text": "Mengapa itu penting bagi AI?",
+      "text_markdown": "Mengapa itu penting bagi AI?",
+      "title": "",
+      "tts": {
+        "text": "Mengapa itu penting bagi AI?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-047",
+      "text": "Karena pembangunan AI saat ini dibatasi oleh dua hal. Listrik, dan biaya modal. The Fed menetapkan biaya modal. Dan ketua baru tercatat mengatakan dia ingin memangkas suku bunga lebih cepat daripada yang akan dilakukan pendahulunya.",
+      "text_markdown": "Karena pembangunan AI saat ini dibatasi oleh dua hal. Listrik, dan biaya modal. The Fed menetapkan biaya modal. Dan ketua baru tercatat mengatakan dia ingin memangkas suku bunga lebih cepat daripada yang akan dilakukan pendahulunya.",
+      "title": "",
+      "tts": {
+        "text": "Karena pembangunan AI saat ini dibatasi oleh dua hal. Listrik, dan biaya modal. The Fed menetapkan biaya modal. Dan ketua baru tercatat mengatakan dia ingin memangkas suku bunga lebih cepat daripada yang akan dilakukan pendahulunya.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-048",
+      "text": "Pemangkasan suku bunga yang lebih cepat membuat investasi AI lebih murah.",
+      "text_markdown": "Pemangkasan suku bunga yang lebih cepat membuat investasi AI lebih murah.",
+      "title": "",
+      "tts": {
+        "text": "Pemangkasan suku bunga yang lebih cepat membuat investasi AI lebih murah.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-049",
+      "text": "Ya. Para hyperscaler — Microsoft, Google, Amazon, Meta — berada di jalur untuk menghabiskan sekitar $700 miliar untuk belanja modal tahun ini. Sebagian besar adalah GPU dan pusat data. Tingkat diskonto yang lebih rendah membuat pembangunan multi-tahun tersebut menghasilkan valuasi yang lebih tinggi.",
+      "text_markdown": "Ya. Para hyperscaler — Microsoft, Google, Amazon, Meta — berada di jalur untuk menghabiskan sekitar $700 miliar untuk belanja modal tahun ini. Sebagian besar adalah GPU dan pusat data. Tingkat diskonto yang lebih rendah membuat pembangunan multi-tahun tersebut menghasilkan valuasi yang lebih tinggi.",
+      "title": "",
+      "tts": {
+        "text": "Ya. Para hyperscaler — Microsoft, Google, Amazon, Meta — berada di jalur untuk menghabiskan sekitar tujuh ratus miliar dolar untuk belanja modal tahun ini. Sebagian besar adalah G P U dan pusat data. Tingkat diskonto yang lebih rendah membuat pembangunan multi-tahun tersebut menghasilkan valuasi yang lebih tinggi.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-050",
+      "text": "Dan arah lainnya. Bagaimana AI memengaruhi apa yang harus diputuskan oleh The Fed?",
+      "text_markdown": "Dan arah lainnya. Bagaimana AI memengaruhi apa yang harus diputuskan oleh The Fed?",
+      "title": "",
+      "tts": {
+        "text": "Dan arah lainnya. Bagaimana AI memengaruhi apa yang harus diputuskan oleh The Fed?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-051",
+      "text": "Ini adalah bagian yang menarik. Belanja modal AI sekarang cukup besar sehingga menjadi angka makro. Bukan cerita sektor. Analis Wall Street mengatakan belanja konstruksi dan peralatan terkait AI telah menjadi mayoritas pertumbuhan ekonomi A.S. selama beberapa kuartal terakhir.",
+      "text_markdown": "Ini adalah bagian yang menarik. Belanja modal AI sekarang cukup besar sehingga menjadi angka makro. Bukan cerita sektor. Analis Wall Street mengatakan belanja konstruksi dan peralatan terkait AI telah menjadi mayoritas pertumbuhan ekonomi A.S. selama beberapa kuartal terakhir.",
+      "title": "",
+      "tts": {
+        "text": "Ini adalah bagian yang menarik. Belanja modal AI sekarang cukup besar sehingga menjadi angka makro. Bukan cerita sektor. Analis Wall Street mengatakan belanja konstruksi dan peralatan terkait AI telah menjadi mayoritas pertumbuhan ekonomi Amerika Serikat selama beberapa kuartal terakhir.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-052",
+      "text": "Mayoritas pertumbuhan.",
+      "text_markdown": "Mayoritas pertumbuhan.",
+      "title": "",
+      "tts": {
+        "text": "Mayoritas pertumbuhan.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-053",
+      "text": "Mayoritas. Dan itu memiliki dua arah dampak bagi The Fed. Jangka panjang, AI adalah pendorong produktivitas. Itu bersifat deflasi. Ini memberi The Fed ruang untuk memangkas. Jangka pendek, itu adalah guncangan permintaan pada listrik, pada tembaga, pada tenaga kerja terampil, pada air untuk pendinginan. Itu bersifat inflasi. Terutama di tempat-tempat seperti Virginia dan Texas, di mana pusat data terkonsentrasi.",
+      "text_markdown": "Mayoritas. Dan itu memiliki dua arah dampak bagi The Fed. Jangka panjang, AI adalah pendorong produktivitas. Itu bersifat deflasi. Ini memberi The Fed ruang untuk memangkas. Jangka pendek, itu adalah guncangan permintaan pada listrik, pada tembaga, pada tenaga kerja terampil, pada air untuk pendinginan. Itu bersifat inflasi. Terutama di tempat-tempat seperti Virginia dan Texas, di mana pusat data terkonsentrasi.",
+      "title": "",
+      "tts": {
+        "text": "Mayoritas. Dan itu memiliki dua arah dampak bagi The Fed. Jangka panjang, AI adalah pendorong produktivitas. Itu bersifat deflasi. Ini memberi The Fed ruang untuk memangkas. Jangka pendek, itu adalah guncangan permintaan pada listrik, pada tembaga, pada tenaga kerja terampil, pada air untuk pendinginan. Itu bersifat inflasi. Terutama di tempat-tempat seperti Virginia dan Texas, di mana pusat data terkonsentrasi.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-054",
+      "text": "Jadi ketua baru harus memutuskan apakah AI adalah jawaban untuk inflasi, atau apakah AI adalah penyebab inflasi.",
+      "text_markdown": "Jadi ketua baru harus memutuskan apakah AI adalah jawaban untuk inflasi, atau apakah AI adalah penyebab inflasi.",
+      "title": "",
+      "tts": {
+        "text": "Jadi ketua baru harus memutuskan apakah AI adalah jawaban untuk inflasi, atau apakah AI adalah penyebab inflasi.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-055",
+      "text": "Keduanya, secara bersamaan. Dan apa pun yang dia katakan dalam pidato publik pertamanya akan menggerakkan setiap model belanja modal AI di Wall Street.",
+      "text_markdown": "Keduanya, secara bersamaan. Dan apa pun yang dia katakan dalam pidato publik pertamanya akan menggerakkan setiap model belanja modal AI di Wall Street.",
+      "title": "",
+      "tts": {
+        "text": "Keduanya, secara bersamaan. Dan apa pun yang dia katakan dalam pidato publik pertamanya akan menggerakkan setiap model belanja modal AI di Wall Street.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-056",
+      "text": "Microsoft memiliki $80 miliar pesanan cloud yang belum terpenuhi karena listrik. Apakah itu angka yang benar?",
+      "text_markdown": "Microsoft memiliki $80 miliar pesanan cloud yang belum terpenuhi karena listrik. Apakah itu angka yang benar?",
+      "title": "",
+      "tts": {
+        "text": "Microsoft memiliki delapan puluh miliar dolar pesanan cloud yang belum terpenuhi karena listrik. Apakah itu angka yang benar?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-057",
+      "text": "Itu adalah angka yang dilaporkan Microsoft. Pelanggan Azure mengantre untuk kapasitas. Hambatannya bukan lagi chip. Ini adalah jaringan listrik. Pasar listrik tidak dapat membangun kapasitas baru secepat yang diinginkan pusat data.",
+      "text_markdown": "Itu adalah angka yang dilaporkan Microsoft. Pelanggan Azure mengantre untuk kapasitas. Hambatannya bukan lagi chip. Ini adalah jaringan listrik. Pasar listrik tidak dapat membangun kapasitas baru secepat yang diinginkan pusat data.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah angka yang dilaporkan Microsoft. Pelanggan Azure mengantre untuk kapasitas. Hambatannya bukan lagi chip. Ini adalah jaringan listrik. Pasar listrik tidak dapat membangun kapasitas baru secepat yang diinginkan pusat data.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-058",
+      "text": "Kapan pertemuan pertama Warsh?",
+      "text_markdown": "Kapan pertemuan pertama Warsh?",
+      "title": "",
+      "tts": {
+        "text": "Kapan pertemuan pertama Warsh?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-059",
+      "text": "Tanggal 16 dan 17 Juni. Kita akan tahu lebih banyak tentang jalur suku bunga setelah itu.",
+      "text_markdown": "Tanggal 16 dan 17 Juni. Kita akan tahu lebih banyak tentang jalur suku bunga setelah itu.",
+      "title": "",
+      "tts": {
+        "text": "Tanggal enam belas dan tujuh belas Juni. Kita akan tahu lebih banyak tentang jalur suku bunga setelah itu.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-060",
+      "text": "Tempat yang bagus untuk mengakhiri. Ron, terima kasih.",
+      "text_markdown": "Tempat yang bagus untuk mengakhiri. Ron, terima kasih.",
+      "title": "",
+      "tts": {
+        "text": "Tempat yang bagus untuk mengakhiri. Ron, terima kasih.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "speaker_id": "analyst",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-061",
+      "text": "Kapan saja, Vindy.",
+      "text_markdown": "Kapan saja, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Kapan saja, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "speaker_id": "host",
+      "chapter": 0,
+      "block_type": "text",
+      "id": "ch00-062",
+      "text": "Itu adalah AI This Week untuk 13 Mei 2026. Edisi baru Rabu depan. Sampai saat itu, jaga diri.",
+      "text_markdown": "Itu adalah AI This Week untuk 13 Mei 2026. Edisi baru Rabu depan. Sampai saat itu, jaga diri.",
+      "title": "",
+      "tts": {
+        "text": "Itu adalah AI This Week untuk tiga belas Mei, dua ribu dua puluh enam. Edisi baru Rabu depan. Sampai saat itu, jaga diri.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

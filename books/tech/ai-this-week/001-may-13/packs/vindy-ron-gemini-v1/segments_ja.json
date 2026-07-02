@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "ja",
+  "total_segments": 62,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "AI This Weekへようこそ。私はVindyです。",
+      "text_markdown": "AI This Weekへようこそ。私はVindyです。",
+      "title": "",
+      "tts": {
+        "text": "AI This Weekへようこそ。私はVindyです。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "いつものように、Ronと一緒にお送りします。",
+      "text_markdown": "いつものように、Ronと一緒にお送りします。",
+      "title": "",
+      "tts": {
+        "text": "いつものように、Ronと一緒にお送りします。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "よろしくお願いします。",
+      "text_markdown": "よろしくお願いします。",
+      "title": "",
+      "tts": {
+        "text": "よろしくお願いします。",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "今日は二千二十六年五月十三日、水曜日です。今週出たモデルやリーダーボード、今週のコンセプト、それから大きな話題として、アメリカで連邦準備制度理事会の新しい議長が就任したニュースを見ていきます。",
+      "text_markdown": "今日は二千二十六年五月十三日、水曜日です。今週出たモデルやリーダーボード、今週のコンセプト、それから大きな話題として、アメリカで連邦準備制度理事会の新しい議長が就任したニュースを見ていきます。",
+      "title": "",
+      "tts": {
+        "text": "今日は二千二十六年五月十三日、水曜日です。今週出たモデルやリーダーボード、今週のコンセプト、それから大きな話題として、アメリカで連邦準備制度理事会の新しい議長が就任したニュースを見ていきます。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron、今週最大のモデルニュースは何ですか？",
+      "text_markdown": "Ron、今週最大のモデルニュースは何ですか？",
+      "title": "",
+      "tts": {
+        "text": "Ron、今週最大のモデルニュースは何ですか？",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ChatGPTの内部にあるデフォルトの頭脳が変わりました。OpenAIは先週、5月5日火曜日に、GPT-5.5 Instantという新しいモデルを無料層にロールアウトしました。無料のChatGPTの回答が短くなったり、絵文字が少なくなったりしているのを感じているなら、それが理由です。",
+      "text_markdown": "ChatGPTの内部にあるデフォルトの頭脳が変わりました。OpenAIは先週、5月5日火曜日に、GPT-5.5 Instantという新しいモデルを無料層にロールアウトしました。無料のChatGPTの回答が短くなったり、絵文字が少なくなったりしているのを感じているなら、それが理由です。",
+      "title": "",
+      "tts": {
+        "text": "チャットジーピーティーの内部にあるデフォルトの頭脳が変わりました。オープンエーアイは先週、五月五日火曜日に、ジーピーティー五ポイント五インスタントという新しいモデルを無料層にロールアウトしました。無料のチャットジーピーティーの回答が短くなったり、絵文字が少なくなったりしているのを感じているなら、それが理由です。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "どう短くなったのですか？",
+      "text_markdown": "どう短くなったのですか？",
+      "title": "",
+      "tts": {
+        "text": "どう短くなったのですか？",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAIによると、新しいデフォルトは、交代したモデルより約30%少ない語数と30%少ない行数で書くそうです。また、最も困難なプロンプトでの幻覚的な主張が50%減少したと主張しています。医学的な質問、法的な質問、金融的な質問などです。",
+      "text_markdown": "OpenAIによると、新しいデフォルトは、交代したモデルより約30%少ない語数と30%少ない行数で書くそうです。また、最も困難なプロンプトでの幻覚的な主張が50%減少したと主張しています。医学的な質問、法的な質問、金融的な質問などです。",
+      "title": "",
+      "tts": {
+        "text": "オープンエーアイによると、新しいデフォルトは、交代したモデルより約三十パーセント少ない語数と三十パーセント少ない行数で書くそうです。また、最も困難なプロンプトでの幻覚的な主張が五十パーセント減少したと主張しています。医学的な質問、法的な質問、金融的な質問などです。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "OpenAI以外の誰かがその数字を検証しましたか？",
+      "text_markdown": "OpenAI以外の誰かがその数字を検証しましたか？",
+      "title": "",
+      "tts": {
+        "text": "OpenAI以外の誰かがその数字を検証しましたか？",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "大規模にはまだです。Artificial Analysisのような独立したベンチマーク団体では、新しいモデルが総合知能指数のトップに位置しています。しかし幻覚の主張を検証するのは時間がかかります。それらは通常、人々が実際にモデルを使用するにつれて、数週間かけて表面化するものです。",
+      "text_markdown": "大規模にはまだです。Artificial Analysisのような独立したベンチマーク団体では、新しいモデルが総合知能指数のトップに位置しています。しかし幻覚の主張を検証するのは時間がかかります。それらは通常、人々が実際にモデルを使用するにつれて、数週間かけて表面化するものです。",
+      "title": "",
+      "tts": {
+        "text": "大規模にはまだです。Artificial Analysisのような独立したベンチマーク団体では、新しいモデルが総合知能指数のトップに位置しています。しかし幻覚の主張を検証するのは時間がかかります。それらは通常、人々が実際にモデルを使用するにつれて、数週間かけて表面化するものです。",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "オープンウェイトの方はどうですか？",
+      "text_markdown": "オープンウェイトの方はどうですか？",
+      "title": "",
+      "tts": {
+        "text": "オープンウェイトの方はどうですか？",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "大きなことが2つあります。Kimiモデルの背後にある中国の研究所Moonshotが先週5月7日に、200億ドルの評価額で20億ドルを調達しました。そして彼らの最新モデルであるKimi K 2.6が、OpenRouterでトークン量のトップに立ちました。",
+      "text_markdown": "大きなことが2つあります。Kimiモデルの背後にある中国の研究所Moonshotが先週5月7日に、200億ドルの評価額で20億ドルを調達しました。そして彼らの最新モデルであるKimi K 2.6が、OpenRouterでトークン量のトップに立ちました。",
+      "title": "",
+      "tts": {
+        "text": "大きなことが二つあります。キミモデルの背後にある中国の研究所ムーンショットが先週五月七日に、二百億ドルの評価額で二十億ドルを調達しました。そして彼らの最新モデルであるキミケー二ポイント六が、オープンルーターでトークン量のトップに立ちました。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "トップに？全体で？",
+      "text_markdown": "トップに？全体で？",
+      "title": "",
+      "tts": {
+        "text": "トップに？全体で？",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "全体でです。主要な商用ルーターで中国のオープンウェイトモデルが一位になるなんて、六か月前なら考えられないことでした。",
+      "text_markdown": "全体でです。主要な商用ルーターで中国のオープンウェイトモデルが一位になるなんて、六か月前なら考えられないことでした。",
+      "title": "",
+      "tts": {
+        "text": "全体でです。主要な商用ルーターで中国のオープンウェイトモデルが一位になるなんて、六か月前なら考えられないことでした。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "他に注目すべきことはありますか？",
+      "text_markdown": "他に注目すべきことはありますか？",
+      "title": "",
+      "tts": {
+        "text": "他に注目すべきことはありますか？",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "フランスの研究所Mistralが4月下旬にMedium 3.5をリリースしました。彼らは、チャットモデル、推論モデル、コーディングモデルの従来の分離を一つの製品に統合しています。OpenAIがGPT-5ファミリーで始めたのと同じトレンドです。業界全体がその方向に向かっています。",
+      "text_markdown": "フランスの研究所Mistralが4月下旬にMedium 3.5をリリースしました。彼らは、チャットモデル、推論モデル、コーディングモデルの従来の分離を一つの製品に統合しています。OpenAIがGPT-5ファミリーで始めたのと同じトレンドです。業界全体がその方向に向かっています。",
+      "title": "",
+      "tts": {
+        "text": "フランスの研究所ミストラルが四月下旬にミディアム三ポイント五をリリースしました。彼らは、チャットモデル、推論モデル、コーディングモデルの従来の分離を一つの製品に統合しています。オープンエーアイがジーピーティー五ファミリーで始めたのと同じトレンドです。業界全体がその方向に向かっています。",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "次に来るものは何ですか？",
+      "text_markdown": "次に来るものは何ですか？",
+      "title": "",
+      "tts": {
+        "text": "次に来るものは何ですか？",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Google I/Oが火曜日にあります。皆が新しいGeminiを期待していますし、Gemini Omniと呼ばれるビデオ生成モデルについて信頼できる話があります。OpenAIはGPT-5.6をテスト中です。AnthropicはMythosと呼ばれるモデルをプライベートプレビューで公開しています。来週にはもっと多くのことが分かるでしょう。",
+      "text_markdown": "Google I/Oが火曜日にあります。皆が新しいGeminiを期待していますし、Gemini Omniと呼ばれるビデオ生成モデルについて信頼できる話があります。OpenAIはGPT-5.6をテスト中です。AnthropicはMythosと呼ばれるモデルをプライベートプレビューで公開しています。来週にはもっと多くのことが分かるでしょう。",
+      "title": "",
+      "tts": {
+        "text": "グーグルアイオーが火曜日にあります。皆が新しいジェミニを期待していますし、ジェミニオムニと呼ばれるビデオ生成モデルについて信頼できる話があります。オープンエーアイはジーピーティー五ポイント六をテスト中です。アンソロピックはミソスと呼ばれるモデルをプライベートプレビューで公開しています。来週にはもっと多くのことが分かるでしょう。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "では、リーダーボードに移りましょう。",
+      "text_markdown": "では、リーダーボードに移りましょう。",
+      "title": "",
+      "tts": {
+        "text": "では、リーダーボードに移りましょう。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron、今週ボードで動きがあったのは何ですか？",
+      "text_markdown": "Ron、今週ボードで動きがあったのは何ですか？",
+      "title": "",
+      "tts": {
+        "text": "Ron、今週ボードで動きがあったのは何ですか？",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "今週の本当の話はスコアではありません。信用するのをやめるべきスコアの話です。",
+      "text_markdown": "今週の本当の話はスコアではありません。信用するのをやめるべきスコアの話です。",
+      "title": "",
+      "tts": {
+        "text": "今週の本当の話はスコアではありません。信用するのをやめるべきスコアの話です。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron、それについてもう少し教えてください。",
+      "text_markdown": "Ron、それについてもう少し教えてください。",
+      "title": "",
+      "tts": {
+        "text": "Ron、それについてもう少し教えてください。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Berkeleyのグループが論文を発表しました。彼らは自動化されたスキャナーを構築し、実際に単一のタスクも解決せずに、すべての主要なAIエージェントベンチマークでほぼ完璧なスコアを記録しました。ベンチマークが自分自身の答えをチェックする方法を悪用したのです。",
+      "text_markdown": "Berkeleyのグループが論文を発表しました。彼らは自動化されたスキャナーを構築し、実際に単一のタスクも解決せずに、すべての主要なAIエージェントベンチマークでほぼ完璧なスコアを記録しました。ベンチマークが自分自身の答えをチェックする方法を悪用したのです。",
+      "title": "",
+      "tts": {
+        "text": "Berkeleyのグループが論文を発表しました。彼らは自動化されたスキャナーを構築し、実際に単一のタスクも解決せずに、すべての主要なAIエージェントベンチマークでほぼ完璧なスコアを記録しました。ベンチマークが自分自身の答えをチェックする方法を悪用したのです。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "彼らは不正を働き、ベンチマークはそれを捕らえられなかった。",
+      "text_markdown": "彼らは不正を働き、ベンチマークはそれを捕らえられなかった。",
+      "title": "",
+      "tts": {
+        "text": "彼らは不正を働き、ベンチマークはそれを捕らえられなかった。",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "そうです。そして同じ週に、OpenAIはSWE bench Verifiedでの評価を廃止すると発表しました。これは彼らがいつも引用していたコーディングベンチマークです。困難なタスクの半分以上が壊れたテストであることが判明したため廃止しました。",
+      "text_markdown": "そうです。そして同じ週に、OpenAIはSWE bench Verifiedでの評価を廃止すると発表しました。これは彼らがいつも引用していたコーディングベンチマークです。困難なタスクの半分以上が壊れたテストであることが判明したため廃止しました。",
+      "title": "",
+      "tts": {
+        "text": "そうです。そして同じ週に、OpenAIはSWE bench Verifiedでの評価を廃止すると発表しました。これは彼らがいつも引用していたコーディングベンチマークです。困難なタスクの半分以上が壊れたテストであることが判明したため廃止しました。",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "では、この過去一年間に聞いてきた数字の多くは…",
+      "text_markdown": "では、この過去一年間に聞いてきた数字の多くは…",
+      "title": "",
+      "tts": {
+        "text": "では、この過去一年間に聞いてきた数字の多くは…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "少なくとも部分的に水増しされています。すべてのモデルではありません。すべてのベンチマークでもありません。しかし、この分野は測定テープを公開で再構築しています。SWE-bench ProやSWE-rebenchと呼ばれるプロジェクトなど、より新しい評価では、テストコードを非公開にすることでこれを修正しようとしています。",
+      "text_markdown": "少なくとも部分的に水増しされています。すべてのモデルではありません。すべてのベンチマークでもありません。しかし、この分野は測定テープを公開で再構築しています。SWE-bench ProやSWE-rebenchと呼ばれるプロジェクトなど、より新しい評価では、テストコードを非公開にすることでこれを修正しようとしています。",
+      "title": "",
+      "tts": {
+        "text": "少なくとも部分的に水増しされています。すべてのモデルではありません。すべてのベンチマークでもありません。しかし、この分野は測定テープを公開で再構築しています。エスダブリューイーベンチプロやエスダブリューイーリベンチと呼ばれるプロジェクトなど、より新しい評価では、テストコードを非公開にすることでこれを修正しようとしています。",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "何かきれいに上昇しているものはありますか？",
+      "text_markdown": "何かきれいに上昇しているものはありますか？",
+      "title": "",
+      "tts": {
+        "text": "何かきれいに上昇しているものはありますか？",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "よりクリーンなボードで2つあります。4月中旬に、AnthropicのClaude Opus 4.7が、LM Arenaコーディングリーダーボードで初めてElo 1500をきれいに突破したモデルになりました。Opus 4.6は数週間前に1500に触れていました。今週時点では、Opus 4.7が依然として約1569でトップに立っています。Anthropicにはまた、Mythosと呼ばれる別のモデルがあり、プライベートパートナープレビューで、Anthropicが測定した18のエージェントベンチマークのうち17でリードしています。",
+      "text_markdown": "よりクリーンなボードで2つあります。4月中旬に、AnthropicのClaude Opus 4.7が、LM Arenaコーディングリーダーボードで初めてElo 1500をきれいに突破したモデルになりました。Opus 4.6は数週間前に1500に触れていました。今週時点では、Opus 4.7が依然として約1569でトップに立っています。Anthropicにはまた、Mythosと呼ばれる別のモデルがあり、プライベートパートナープレビューで、Anthropicが測定した18のエージェントベンチマークのうち17でリードしています。",
+      "title": "",
+      "tts": {
+        "text": "よりクリーンなボードで二つあります。四月中旬に、アンソロピックのクロード オーパス四ポイント七が、エルエムアリーナコーディングリーダーボードで初めてイーロー千五百をきれいに突破したモデルになりました。オーパス四ポイント六は数週間前に千五百に触れていました。今週時点では、オーパス四ポイント七が依然として約千五百六十九でトップに立っています。アンソロピックにはまた、ミソスと呼ばれる別のモデルがあり、プライベートパートナープレビューで、アンソロピックが測定した十八のエージェントベンチマークのうち十七でリードしています。",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "一般が使用できないモデルがボードのトップにいる。",
+      "text_markdown": "一般が使用できないモデルがボードのトップにいる。",
+      "title": "",
+      "tts": {
+        "text": "一般が使用できないモデルがボードのトップにいる。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "それが現状です。もう一つの大きなトレンドは、オープンとクローズドのギャップです。これまでで最も狭くなっています。DeepSeek V4 ProとKimi K 2.6は、クロス評価知能指数でGPT-5.5に肉薄しています。そのギャップは以前は大きかったのですが、今は小さくなっています。",
+      "text_markdown": "それが現状です。もう一つの大きなトレンドは、オープンとクローズドのギャップです。これまでで最も狭くなっています。DeepSeek V4 ProとKimi K 2.6は、クロス評価知能指数でGPT-5.5に肉薄しています。そのギャップは以前は大きかったのですが、今は小さくなっています。",
+      "title": "",
+      "tts": {
+        "text": "それが現状です。もう一つの大きなトレンドは、オープンとクローズドのギャップです。これまでで最も狭くなっています。ディープシーク ブイ四プロとキミケー二ポイント六は、クロス評価知能指数でジーピーティー五ポイント五に肉薄しています。そのギャップは以前は大きかったのですが、今は小さくなっています。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "では、今週のコンセプトに入りましょう。",
+      "text_markdown": "では、今週のコンセプトに入りましょう。",
+      "title": "",
+      "tts": {
+        "text": "では、今週のコンセプトに入りましょう。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron、今週のコンセプトはMixture of Expertsです。なぜMixture of Expertsに焦点を当てるのですか？",
+      "text_markdown": "Ron、今週のコンセプトはMixture of Expertsです。なぜMixture of Expertsに焦点を当てるのですか？",
+      "title": "",
+      "tts": {
+        "text": "Ron、今週のコンセプトはMixture of Expertsです。なぜMixture of Expertsに焦点を当てるのですか？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "先ほど話したオープンウェイトモデル、Kimi K 2.6が、総パラメータ数1兆個を持っているからです。しかし、任意の瞬間に実行されるのはそのうち320億個のパラメータだけです。それがMixture of Expertsです。",
+      "text_markdown": "先ほど話したオープンウェイトモデル、Kimi K 2.6が、総パラメータ数1兆個を持っているからです。しかし、任意の瞬間に実行されるのはそのうち320億個のパラメータだけです。それがMixture of Expertsです。",
+      "title": "",
+      "tts": {
+        "text": "先ほど話したオープンウェイトモデル、キミケー二ポイント六が、総パラメータ数一兆個を持っているからです。しかし、任意の瞬間に実行されるのはそのうち三百二十億個のパラメータだけです。それがミクスチャー オブ エキスパーツです。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "視聴者の方々のために説明してください。",
+      "text_markdown": "視聴者の方々のために説明してください。",
+      "title": "",
+      "tts": {
+        "text": "視聴者の方々のために説明してください。",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ふつうのエーアイモデルは、一つの大きな脳のようなものです。言葉ごとに脳全体が働きます。専門家混合モデルは、案内役と専門家がいる建物のようなものです。案内役が言葉ごとに専門家を選びます。",
+      "text_markdown": "ふつうのエーアイモデルは、一つの大きな脳のようなものです。言葉ごとに脳全体が働きます。専門家混合モデルは、案内役と専門家がいる建物のようなものです。案内役が言葉ごとに専門家を選びます。",
+      "title": "",
+      "tts": {
+        "text": "ふつうのエーアイモデルは、一つの大きな脳のようなものです。言葉ごとに脳全体が働きます。専門家混合モデルは、案内役と専門家がいる建物のようなものです。案内役が言葉ごとに専門家を選びます。",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "つまり、モデルは紙の上では巨大だが、実行するのは安い。",
+      "text_markdown": "つまり、モデルは紙の上では巨大だが、実行するのは安い。",
+      "title": "",
+      "tts": {
+        "text": "つまり、モデルは紙の上では巨大だが、実行するのは安い。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "その通りです。1兆パラメータの容量。しかし単語あたり320億パラメータの計算のみ。それがコツです。受付はルーターと呼ばれる小さなコード片です。専門家はエキスパートと呼ばれるサブネットワークです。モデルはルーターとエキスパートを一緒に、エンドツーエンドでトレーニングします。",
+      "text_markdown": "その通りです。1兆パラメータの容量。しかし単語あたり320億パラメータの計算のみ。それがコツです。受付はルーターと呼ばれる小さなコード片です。専門家はエキスパートと呼ばれるサブネットワークです。モデルはルーターとエキスパートを一緒に、エンドツーエンドでトレーニングします。",
+      "title": "",
+      "tts": {
+        "text": "その通りです。一兆パラメータの容量。しかし単語あたり三百二十億パラメータの計算のみ。それがコツです。受付はルーターと呼ばれる小さなコード片です。専門家はエキスパートと呼ばれるサブネットワークです。モデルはルーターとエキスパートを一緒に、エンドツーエンドでトレーニングします。",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "すべての主要なフロンティアモデルがこれをやっているのですか？",
+      "text_markdown": "すべての主要なフロンティアモデルがこれをやっているのですか？",
+      "title": "",
+      "tts": {
+        "text": "すべての主要なフロンティアモデルがこれをやっているのですか？",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ほとんどがそうです。ただし、研究所が常にそれを認めるとは限りません。GPT-4はMixture of Expertsモデルでした。DeepSeekのフラッグシップはMixture of Expertsモデルです。Mistralは2023年からMixture of Expertsモデルをリリースしています。中国からの新しい波がこの設計を限界まで押し上げています。",
+      "text_markdown": "ほとんどがそうです。ただし、研究所が常にそれを認めるとは限りません。GPT-4はMixture of Expertsモデルでした。DeepSeekのフラッグシップはMixture of Expertsモデルです。Mistralは2023年からMixture of Expertsモデルをリリースしています。中国からの新しい波がこの設計を限界まで押し上げています。",
+      "title": "",
+      "tts": {
+        "text": "ほとんどがそうです。ただし、研究所が常にそれを認めるとは限りません。ジーピーティー四はミクスチャー オブ エキスパーツモデルでした。ディープシークのフラッグシップはミクスチャー オブ エキスパーツモデルです。ミストラルは二千二十三年からミクスチャー オブ エキスパーツモデルをリリースしています。中国からの新しい波がこの設計を限界まで押し上げています。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ChatGPTを使うだけの人にとって、なぜそれが重要なのでしょうか？",
+      "text_markdown": "ChatGPTを使うだけの人にとって、なぜそれが重要なのでしょうか？",
+      "title": "",
+      "tts": {
+        "text": "ChatGPTを使うだけの人にとって、なぜそれが重要なのでしょうか？",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "理由は二つです。一つ、中国のオープンウェイト研究所がフロンティア級の品質を予算のほんの一部で実現できます。二つ、エーピーアイ呼び出しを数ドルではなく数セントに抑えられます。",
+      "text_markdown": "理由は二つです。一つ、中国のオープンウェイト研究所がフロンティア級の品質を予算のほんの一部で実現できます。二つ、エーピーアイ呼び出しを数ドルではなく数セントに抑えられます。",
+      "title": "",
+      "tts": {
+        "text": "理由は二つです。一つ、中国のオープンウェイト研究所がフロンティア級の品質を予算のほんの一部で実現できます。二つ、エーピーアイ呼び出しを数ドルではなく数セントに抑えられます。",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Mixture of experts。Router。Experts。Sparse activation。覚えておくべき三つの言葉です。では、より大きな視点に戻りましょう。",
+      "text_markdown": "Mixture of experts。Router。Experts。Sparse activation。覚えておくべき三つの言葉です。では、より大きな視点に戻りましょう。",
+      "title": "",
+      "tts": {
+        "text": "Mixture of experts。Router。Experts。Sparse activation。覚えておくべき三つの言葉です。では、より大きな視点に戻りましょう。",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ロン、今週のAIの世界以外での大きなニュースは連邦準備制度理事会ですね。",
+      "text_markdown": "ロン、今週のAIの世界以外での大きなニュースは連邦準備制度理事会ですね。",
+      "title": "",
+      "tts": {
+        "text": "ロン、今週のAIの世界以外での大きなニュースは連邦準備制度理事会ですね。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "米国上院は今日、ケビン・ワーシュを次の連邦準備制度理事会議長に承認しました。賛成は五十四、反対は四十五。現代のアメリカ史で最も僅差です。民主党からの賛成は一人だけでした。",
+      "text_markdown": "米国上院は今日、ケビン・ワーシュを次の連邦準備制度理事会議長に承認しました。賛成は五十四、反対は四十五。現代のアメリカ史で最も僅差です。民主党からの賛成は一人だけでした。",
+      "title": "",
+      "tts": {
+        "text": "米国上院は今日、ケビン・ワーシュを次の連邦準備制度理事会議長に承認しました。賛成は五十四、反対は四十五。現代のアメリカ史で最も僅差です。民主党からの賛成は一人だけでした。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "それがAIにとってなぜ重要なのでしょうか？",
+      "text_markdown": "それがAIにとってなぜ重要なのでしょうか？",
+      "title": "",
+      "tts": {
+        "text": "それがAIにとってなぜ重要なのでしょうか？",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "今のAI構築は、二つの要因に制約されているからです。電力と資本コストです。FRBが資本コストを決めます。そして新議長は、前任者より速いペースで金利を下げたいと公式に発言しています。",
+      "text_markdown": "今のAI構築は、二つの要因に制約されているからです。電力と資本コストです。FRBが資本コストを決めます。そして新議長は、前任者より速いペースで金利を下げたいと公式に発言しています。",
+      "title": "",
+      "tts": {
+        "text": "今のAI構築は、二つの要因に制約されているからです。電力と資本コストです。FRBが資本コストを決めます。そして新議長は、前任者より速いペースで金利を下げたいと公式に発言しています。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "より速い利下げはAI投資をより安価にします。",
+      "text_markdown": "より速い利下げはAI投資をより安価にします。",
+      "title": "",
+      "tts": {
+        "text": "より速い利下げはAI投資をより安価にします。",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "そうです。ハイパースケーラー — Microsoft、Google、Amazon、Meta — は今年、設備投資に約7000億ドルを費やす予定です。そのほとんどがGPUとデータセンターです。より低い割引率により、これらの複数年にわたる構築計画がより高い評価で採算に合うようになります。",
+      "text_markdown": "そうです。ハイパースケーラー — Microsoft、Google、Amazon、Meta — は今年、設備投資に約7000億ドルを費やす予定です。そのほとんどがGPUとデータセンターです。より低い割引率により、これらの複数年にわたる構築計画がより高い評価で採算に合うようになります。",
+      "title": "",
+      "tts": {
+        "text": "そうです。ハイパースケーラー — Microsoft、Google、Amazon、Meta — は今年、設備投資に約七千億ドルを費やす予定です。そのほとんどがGPUとデータセンターです。より低い割引率により、これらの複数年にわたる構築計画がより高い評価で採算に合うようになります。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "逆の方向では、AIはFRBの決定にどのような影響を与えるのでしょうか？",
+      "text_markdown": "逆の方向では、AIはFRBの決定にどのような影響を与えるのでしょうか？",
+      "title": "",
+      "tts": {
+        "text": "逆の方向では、AIはFRBの決定にどのような影響を与えるのでしょうか？",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "これが興味深い部分です。AI関連の設備投資は、もはやマクロ経済の数字になるほど大きくなっています。セクターの話ではありません。ウォール街のアナリストは、AI関連の建設と設備支出が過去数四半期にわたって米国経済成長の大部分を占めていると言っています。",
+      "text_markdown": "これが興味深い部分です。AI関連の設備投資は、もはやマクロ経済の数字になるほど大きくなっています。セクターの話ではありません。ウォール街のアナリストは、AI関連の建設と設備支出が過去数四半期にわたって米国経済成長の大部分を占めていると言っています。",
+      "title": "",
+      "tts": {
+        "text": "これが興味深い部分です。AI関連の設備投資は、もはやマクロ経済の数字になるほど大きくなっています。セクターの話ではありません。ウォール街のアナリストは、AI関連の建設と設備支出が過去数四半期にわたって米国経済成長の大部分を占めていると言っています。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "成長の大部分を。",
+      "text_markdown": "成長の大部分を。",
+      "title": "",
+      "tts": {
+        "text": "成長の大部分を。",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "大半を占めます。エーアイは長期では利下げの余地を生み、短期では電力や水の需要を押し上げます。",
+      "text_markdown": "大半を占めます。エーアイは長期では利下げの余地を生み、短期では電力や水の需要を押し上げます。",
+      "title": "",
+      "tts": {
+        "text": "大半を占めます。エーアイは長期では利下げの余地を生み、短期では電力や水の需要を押し上げます。",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "つまり新議長は、AIがインフレの解決策なのか、それともAIがインフレの原因なのかを決めなければならないということですね。",
+      "text_markdown": "つまり新議長は、AIがインフレの解決策なのか、それともAIがインフレの原因なのかを決めなければならないということですね。",
+      "title": "",
+      "tts": {
+        "text": "つまり新議長は、AIがインフレの解決策なのか、それともAIがインフレの原因なのかを決めなければならないということですね。",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "両方、同時にです。そして彼が最初の公開スピーチで言うことは、ウォール街のあらゆるAI設備投資モデルを動かすことになるでしょう。",
+      "text_markdown": "両方、同時にです。そして彼が最初の公開スピーチで言うことは、ウォール街のあらゆるAI設備投資モデルを動かすことになるでしょう。",
+      "title": "",
+      "tts": {
+        "text": "両方、同時にです。そして彼が最初の公開スピーチで言うことは、ウォール街のあらゆるAI設備投資モデルを動かすことになるでしょう。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Microsoftは電力不足のため800億ドルの未履行クラウド注文を抱えています。これは正しい数字ですか？",
+      "text_markdown": "Microsoftは電力不足のため800億ドルの未履行クラウド注文を抱えています。これは正しい数字ですか？",
+      "title": "",
+      "tts": {
+        "text": "Microsoftは電力不足のため八百億ドルの未履行クラウド注文を抱えています。これは正しい数字ですか？",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "それはMicrosoftが報告している数字です。Azureの顧客は容量を待って列に並んでいます。ボトルネックはもはやチップではありません。電力網です。電力市場は、データセンターが求める速度では新しい容量を構築できません。",
+      "text_markdown": "それはMicrosoftが報告している数字です。Azureの顧客は容量を待って列に並んでいます。ボトルネックはもはやチップではありません。電力網です。電力市場は、データセンターが求める速度では新しい容量を構築できません。",
+      "title": "",
+      "tts": {
+        "text": "それはMicrosoftが報告している数字です。Azureの顧客は容量を待って列に並んでいます。ボトルネックはもはやチップではありません。電力網です。電力市場は、データセンターが求める速度では新しい容量を構築できません。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ワーシュの最初の会議はいつですか？",
+      "text_markdown": "ワーシュの最初の会議はいつですか？",
+      "title": "",
+      "tts": {
+        "text": "ワーシュの最初の会議はいつですか？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "6月16日と17日です。その後、金利経路についてはるかに多くのことが分かるでしょう。",
+      "text_markdown": "6月16日と17日です。その後、金利経路についてはるかに多くのことが分かるでしょう。",
+      "title": "",
+      "tts": {
+        "text": "六月十六日と十七日です。その後、金利経路についてはるかに多くのことが分かるでしょう。",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "良い締めくくりですね。ロン、ありがとうございました。",
+      "text_markdown": "良い締めくくりですね。ロン、ありがとうございました。",
+      "title": "",
+      "tts": {
+        "text": "良い締めくくりですね。ロン、ありがとうございました。",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "いつでもどうぞ、ヴィンディ。",
+      "text_markdown": "いつでもどうぞ、ヴィンディ。",
+      "title": "",
+      "tts": {
+        "text": "いつでもどうぞ、ヴィンディ。",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "以上、2026年5月13日のAI This Weekでした。次号は来週の水曜日です。それまで、お元気で。",
+      "text_markdown": "以上、2026年5月13日のAI This Weekでした。次号は来週の水曜日です。それまで、お元気で。",
+      "title": "",
+      "tts": {
+        "text": "以上、二千二十六年五月十三日のAI This Weekでした。次号は来週の水曜日です。それまで、お元気で。",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

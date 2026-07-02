@@ -1,0 +1,2266 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_hot_desert",
+  "total_segments": 153,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "De hete woestijn",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De hete woestijn",
+      "text_markdown": "De hete woestijn"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Waar woestijnen liggen",
+      "text_markdown": "Waar woestijnen liggen"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Welkom in de hete woestijn.",
+      "text_markdown": "Welkom in de hete woestijn.",
+      "tts": {
+        "text": "Welkom in de hete woestijn.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit is een van de grote biomen van de wereld.",
+      "text_markdown": "Dit is een van de grote biomen van de wereld.",
+      "tts": {
+        "text": "Dit is een van de grote biomen van de wereld.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "text_markdown": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+      "tts": {
+        "text": "Een bioom is een deel van de Aarde met zijn eigen soort weer, planten en dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hete woestijn is een droge plek.",
+      "text_markdown": "De hete woestijn is een droge plek.",
+      "tts": {
+        "text": "De hete woestijn is een droge plek.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hier valt heel weinig regen.",
+      "text_markdown": "Hier valt heel weinig regen.",
+      "tts": {
+        "text": "Hier valt heel weinig regen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste dagen zijn erg heet, en de meeste nachten zijn koel of koud.",
+      "text_markdown": "De meeste dagen zijn erg heet, en de meeste nachten zijn koel of koud.",
+      "tts": {
+        "text": "De meeste dagen zijn erg heet, en de meeste nachten zijn koel of koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grootste hete woestijn ter wereld is de Sahara, in het noorden van Afrika.",
+      "text_markdown": "De grootste hete woestijn ter wereld is de Sahara, in het noorden van Afrika.",
+      "tts": {
+        "text": "De grootste hete woestijn ter wereld is de Sahara, in het noorden van Afrika.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij strekt zich uit van de Atlantische Oceaan bijna helemaal tot aan de Rode Zee.",
+      "text_markdown": "Hij strekt zich uit van de Atlantische Oceaan bijna helemaal tot aan de Rode Zee.",
+      "tts": {
+        "text": "Hij strekt zich uit van de Atlantische Oceaan bijna helemaal tot aan de Rode Zee.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er liggen grote woestijnen in het midden van Arabië, zoals het Lege Kwartier.",
+      "text_markdown": "Er liggen grote woestijnen in het midden van Arabië, zoals het Lege Kwartier.",
+      "tts": {
+        "text": "Er liggen grote woestijnen in het midden van Arabië, zoals het Lege Kwartier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn hete woestijnen in Noord-Amerika, op plekken zoals het zuidwesten van de Verenigde Staten en het noorden van Mexico.",
+      "text_markdown": "Er zijn hete woestijnen in Noord-Amerika, op plekken zoals het zuidwesten van de Verenigde Staten en het noorden van Mexico.",
+      "tts": {
+        "text": "Er zijn hete woestijnen in Noord Amerika, op plekken zoals het zuidwesten van de Verenigde Staten en het noorden van Mexico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn kleinere woestijnen in Zuid-Amerika, in zuidelijk Afrika, in India en in een groot deel van Australië.",
+      "text_markdown": "Er zijn kleinere woestijnen in Zuid-Amerika, in zuidelijk Afrika, in India en in een groot deel van Australië.",
+      "tts": {
+        "text": "Er zijn kleinere woestijnen in Zuid Amerika, in zuidelijk Afrika, in India en in een groot deel van Australië.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk van deze woestijnen is op zichzelf ontstaan, ver van de andere.",
+      "text_markdown": "Elk van deze woestijnen is op zichzelf ontstaan, ver van de andere.",
+      "tts": {
+        "text": "Elk van deze woestijnen is op zichzelf ontstaan, ver van de andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dus de planten en dieren zijn in elk deel van de wereld anders.",
+      "text_markdown": "Dus de planten en dieren zijn in elk deel van de wereld anders.",
+      "tts": {
+        "text": "Dus de planten en dieren zijn in elk deel van de wereld anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een cactus die je in de ene woestijn ziet, is niet dezelfde als die je in een andere ziet.",
+      "text_markdown": "Een cactus die je in de ene woestijn ziet, is niet dezelfde als die je in een andere ziet.",
+      "tts": {
+        "text": "Een cactus die je in de ene woestijn ziet, is niet dezelfde als die je in een andere ziet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar ze maken allemaal deel uit van hetzelfde bioom.",
+      "text_markdown": "Maar ze maken allemaal deel uit van hetzelfde bioom.",
+      "tts": {
+        "text": "Maar ze maken allemaal deel uit van hetzelfde bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je in een hete woestijn staat, voelt de lucht droog aan.",
+      "text_markdown": "Als je in een hete woestijn staat, voelt de lucht droog aan.",
+      "tts": {
+        "text": "Als je in een hete woestijn staat, voelt de lucht droog aan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De zon brandt sterk op je gezicht.",
+      "text_markdown": "De zon brandt sterk op je gezicht.",
+      "tts": {
+        "text": "De zon brandt sterk op je gezicht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grond is op veel plekken rotsachtig, en op andere zanderig.",
+      "text_markdown": "De grond is op veel plekken rotsachtig, en op andere zanderig.",
+      "tts": {
+        "text": "De grond is op veel plekken rotsachtig, en op andere zanderig.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je kunt heel ver kijken.",
+      "text_markdown": "Je kunt heel ver kijken.",
+      "tts": {
+        "text": "Je kunt heel ver kijken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hemel is eindeloos groot.",
+      "text_markdown": "De hemel is eindeloos groot.",
+      "tts": {
+        "text": "De hemel is eindeloos groot.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Misschien zie je een hele dag lang geen ander mens en geen ander dier.",
+      "text_markdown": "Misschien zie je een hele dag lang geen ander mens en geen ander dier.",
+      "tts": {
+        "text": "Misschien zie je een hele dag lang geen ander mens en geen ander dier.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is de hete woestijn.",
+      "text_markdown": "Dat is de hete woestijn.",
+      "tts": {
+        "text": "Dat is de hete woestijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Waar woestijnen liggen",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een wijd, droog land van zand, rots en brandende zon.",
+      "text_markdown": "Een wijd, droog land van zand, rots en brandende zon.",
+      "tts": {
+        "text": "Een wijd, droog land van zand, rots en brandende zon.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-026",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het weer",
+      "text_markdown": "Het weer"
+    },
+    {
+      "id": "ch03-027",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het weer in de hete woestijn wordt door twee dingen bepaald.",
+      "text_markdown": "Het weer in de hete woestijn wordt door twee dingen bepaald.",
+      "tts": {
+        "text": "Het weer in de hete woestijn wordt door twee dingen bepaald.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er is te veel zon, en er is niet genoeg regen.",
+      "text_markdown": "Er is te veel zon, en er is niet genoeg regen.",
+      "tts": {
+        "text": "Er is te veel zon, en er is niet genoeg regen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In sommige woestijnen regent het maar een paar dagen per jaar.",
+      "text_markdown": "In sommige woestijnen regent het maar een paar dagen per jaar.",
+      "tts": {
+        "text": "In sommige woestijnen regent het maar een paar dagen per jaar.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op andere plekken regent het vele jaren lang helemaal niet.",
+      "text_markdown": "Op andere plekken regent het vele jaren lang helemaal niet.",
+      "tts": {
+        "text": "Op andere plekken regent het vele jaren lang helemaal niet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dagen zijn erg heet.",
+      "text_markdown": "De dagen zijn erg heet.",
+      "tts": {
+        "text": "De dagen zijn erg heet.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Midden op de dag kan de zon het zand zo heet maken dat het je voeten zou verbranden.",
+      "text_markdown": "Midden op de dag kan de zon het zand zo heet maken dat het je voeten zou verbranden.",
+      "tts": {
+        "text": "Midden op de dag kan de zon het zand zo heet maken dat het je voeten zou verbranden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar de nachten zijn heel anders.",
+      "text_markdown": "Maar de nachten zijn heel anders.",
+      "tts": {
+        "text": "Maar de nachten zijn heel anders.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn geen wolken en geen bomen om de warmte vast te houden.",
+      "text_markdown": "Er zijn geen wolken en geen bomen om de warmte vast te houden.",
+      "tts": {
+        "text": "Er zijn geen wolken en geen bomen om de warmte vast te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dus zodra de zon ondergaat, stroomt de warmte de hemel in.",
+      "text_markdown": "Dus zodra de zon ondergaat, stroomt de warmte de hemel in.",
+      "tts": {
+        "text": "Dus zodra de zon ondergaat, stroomt de warmte de hemel in.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tegen het midden van de nacht kan het koel aanvoelen, of zelfs koud.",
+      "text_markdown": "Tegen het midden van de nacht kan het koel aanvoelen, of zelfs koud.",
+      "tts": {
+        "text": "Tegen het midden van de nacht kan het koel aanvoelen, of zelfs koud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de ochtend voelen de rotsen koud aan.",
+      "text_markdown": "In de ochtend voelen de rotsen koud aan.",
+      "tts": {
+        "text": "In de ochtend voelen de rotsen koud aan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan komt de zon op, en begint de hitte opnieuw.",
+      "text_markdown": "Dan komt de zon op, en begint de hitte opnieuw.",
+      "tts": {
+        "text": "Dan komt de zon op, en begint de hitte opnieuw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als de regen wel komt, komt hij vaak in één keer.",
+      "text_markdown": "Als de regen wel komt, komt hij vaak in één keer.",
+      "tts": {
+        "text": "Als de regen wel komt, komt hij vaak in één keer.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een grote storm trekt over, en het water stort een uur lang naar beneden.",
+      "text_markdown": "Een grote storm trekt over, en het water stort een uur lang naar beneden.",
+      "tts": {
+        "text": "Een grote storm trekt over, en het water stort een uur lang naar beneden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De droge rivieren vullen zich, en het water stroomt over het zand.",
+      "text_markdown": "De droge rivieren vullen zich, en het water stroomt over het zand.",
+      "tts": {
+        "text": "De droge rivieren vullen zich, en het water stroomt over het zand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan komt de zon terug, en binnen een dag is het water weer weg.",
+      "text_markdown": "Dan komt de zon terug, en binnen een dag is het water weer weg.",
+      "tts": {
+        "text": "Dan komt de zon terug, en binnen een dag is het water weer weg.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Het weer",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voor de planten en dieren van de woestijn telt elke druppel van dat water.",
+      "text_markdown": "Voor de planten en dieren van de woestijn telt elke druppel van dat water.",
+      "tts": {
+        "text": "Voor de planten en dieren van de woestijn telt elke druppel van dat water.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-044",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Het land en het water",
+      "text_markdown": "Het land en het water"
+    },
+    {
+      "id": "ch04-045",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grootste deel van de hete woestijn bestaat niet uit zand.",
+      "text_markdown": "Het grootste deel van de hete woestijn bestaat niet uit zand.",
+      "tts": {
+        "text": "Het grootste deel van de hete woestijn bestaat niet uit zand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-046",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grootste deel bestaat uit rots, grind en harde droge grond.",
+      "text_markdown": "Het grootste deel bestaat uit rots, grind en harde droge grond.",
+      "tts": {
+        "text": "Het grootste deel bestaat uit rots, grind en harde droge grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Er zijn ook plekken met grote zeeën van duinen.",
+      "text_markdown": "Er zijn ook plekken met grote zeeën van duinen.",
+      "tts": {
+        "text": "Er zijn ook plekken met grote zeeën van duinen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De wind verplaatst de duinen langzaam over het land.",
+      "text_markdown": "De wind verplaatst de duinen langzaam over het land.",
+      "tts": {
+        "text": "De wind verplaatst de duinen langzaam over het land.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een duin kan kleiner zijn dan een huis, of hoger dan een hoog gebouw.",
+      "text_markdown": "Een duin kan kleiner zijn dan een huis, of hoger dan een hoog gebouw.",
+      "tts": {
+        "text": "Een duin kan kleiner zijn dan een huis, of hoger dan een hoog gebouw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken rijzen er bergen op uit de woestijn.",
+      "text_markdown": "Op sommige plekken rijzen er bergen op uit de woestijn.",
+      "tts": {
+        "text": "Op sommige plekken rijzen er bergen op uit de woestijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Wind en zand schuren de rotsen door de jaren heen in vreemde vormen.",
+      "text_markdown": "Wind en zand schuren de rotsen door de jaren heen in vreemde vormen.",
+      "tts": {
+        "text": "Wind en zand schuren de rotsen door de jaren heen in vreemde vormen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Water is het zeldzaamste en kostbaarste in de woestijn.",
+      "text_markdown": "Water is het zeldzaamste en kostbaarste in de woestijn.",
+      "tts": {
+        "text": "Water is het zeldzaamste en kostbaarste in de woestijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste rivieren stromen alleen na een storm, en dan vallen ze droog.",
+      "text_markdown": "De meeste rivieren stromen alleen na een storm, en dan vallen ze droog.",
+      "tts": {
+        "text": "De meeste rivieren stromen alleen na een storm, en dan vallen ze droog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar diep onder het zand kan water in de rotsen rusten.",
+      "text_markdown": "Maar diep onder het zand kan water in de rotsen rusten.",
+      "tts": {
+        "text": "Maar diep onder het zand kan water in de rotsen rusten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op sommige plekken komt dit verborgen water naar de oppervlakte en maakt een klein groen plekje.",
+      "text_markdown": "Op sommige plekken komt dit verborgen water naar de oppervlakte en maakt een klein groen plekje.",
+      "tts": {
+        "text": "Op sommige plekken komt dit verborgen water naar de oppervlakte en maakt een klein groen plekje.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dit heet een oase.",
+      "text_markdown": "Dit heet een oase.",
+      "tts": {
+        "text": "Dit heet een oase.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bij een oase groeien bomen, zingen vogels en stoppen mensen om te drinken.",
+      "text_markdown": "Bij een oase groeien bomen, zingen vogels en stoppen mensen om te drinken.",
+      "tts": {
+        "text": "Bij een oase groeien bomen, zingen vogels en stoppen mensen om te drinken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een oase kan een kleine ring van palmbomen zijn in een uitgestrekte zee van zand.",
+      "text_markdown": "Een oase kan een kleine ring van palmbomen zijn in een uitgestrekte zee van zand.",
+      "tts": {
+        "text": "Een oase kan een kleine ring van palmbomen zijn in een uitgestrekte zee van zand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "Het land en het water",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zonder deze waterplekken zou niemand de grote woestijnen kunnen oversteken.",
+      "text_markdown": "Zonder deze waterplekken zou niemand de grote woestijnen kunnen oversteken.",
+      "tts": {
+        "text": "Zonder deze waterplekken zou niemand de grote woestijnen kunnen oversteken.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-060",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De planten",
+      "text_markdown": "De planten"
+    },
+    {
+      "id": "ch05-061",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De planten van de hete woestijn zijn meesters van het wachten.",
+      "text_markdown": "De planten van de hete woestijn zijn meesters van het wachten.",
+      "tts": {
+        "text": "De planten van de hete woestijn zijn meesters van het wachten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch05-062",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze hebben geleerd hoe ze met bijna geen water kunnen leven.",
+      "text_markdown": "Ze hebben geleerd hoe ze met bijna geen water kunnen leven.",
+      "tts": {
+        "text": "Ze hebben geleerd hoe ze met bijna geen water kunnen leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-063",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige hebben lange wortels die diep in de grond reiken.",
+      "text_markdown": "Sommige hebben lange wortels die diep in de grond reiken.",
+      "tts": {
+        "text": "Sommige hebben lange wortels die diep in de grond reiken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-064",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andere planten hebben brede, ondiepe wortels die zich vlak onder de oppervlakte uitspreiden.",
+      "text_markdown": "Andere planten hebben brede, ondiepe wortels die zich vlak onder de oppervlakte uitspreiden.",
+      "tts": {
+        "text": "Andere planten hebben brede, ondiepe wortels die zich vlak onder de oppervlakte uitspreiden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-065",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na een regenbui zuigen deze wortels elke druppel water op voordat het opdroogt.",
+      "text_markdown": "Na een regenbui zuigen deze wortels elke druppel water op voordat het opdroogt.",
+      "tts": {
+        "text": "Na een regenbui zuigen deze wortels elke druppel water op voordat het opdroogt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-066",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel woestijnplanten slaan water op in hun lichaam voor de lange droge tijd.",
+      "text_markdown": "Veel woestijnplanten slaan water op in hun lichaam voor de lange droge tijd.",
+      "tts": {
+        "text": "Veel woestijnplanten slaan water op in hun lichaam voor de lange droge tijd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun dikke stengels en bladeren kunnen water vasthouden, maanden of zelfs jaren lang.",
+      "text_markdown": "Hun dikke stengels en bladeren kunnen water vasthouden, maanden of zelfs jaren lang.",
+      "tts": {
+        "text": "Hun dikke stengels en bladeren kunnen water vasthouden, maanden of zelfs jaren lang.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de woestijnen van de Amerika's zijn er planten die cactussen heten.",
+      "text_markdown": "In de woestijnen van de Amerika's zijn er planten die cactussen heten.",
+      "tts": {
+        "text": "In de woestijnen van de Amerika's zijn er planten die cactussen heten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cactussen hebben dikke groene stengels vol water, en scherpe stekels in plaats van zachte bladeren.",
+      "text_markdown": "Cactussen hebben dikke groene stengels vol water, en scherpe stekels in plaats van zachte bladeren.",
+      "tts": {
+        "text": "Cactussen hebben dikke groene stengels vol water, en scherpe stekels in plaats van zachte bladeren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De stekels beletten dieren om de planten te eten.",
+      "text_markdown": "De stekels beletten dieren om de planten te eten.",
+      "tts": {
+        "text": "De stekels beletten dieren om de planten te eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De stekels maken ook een beetje schaduw tegen de sterke zon.",
+      "text_markdown": "De stekels maken ook een beetje schaduw tegen de sterke zon.",
+      "tts": {
+        "text": "De stekels maken ook een beetje schaduw tegen de sterke zon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de woestijnen van Afrika en Azië doen andere dikke planten hetzelfde werk.",
+      "text_markdown": "In de woestijnen van Afrika en Azië doen andere dikke planten hetzelfde werk.",
+      "tts": {
+        "text": "In de woestijnen van Afrika en Azië doen andere dikke planten hetzelfde werk.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel woestijnplanten zijn grijs of lichtgroen.",
+      "text_markdown": "Veel woestijnplanten zijn grijs of lichtgroen.",
+      "tts": {
+        "text": "Veel woestijnplanten zijn grijs of lichtgroen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een lichte kleur weerkaatst het zonlicht.",
+      "text_markdown": "Een lichte kleur weerkaatst het zonlicht.",
+      "tts": {
+        "text": "Een lichte kleur weerkaatst het zonlicht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige planten verliezen hun bladeren als het droge seizoen komt.",
+      "text_markdown": "Sommige planten verliezen hun bladeren als het droge seizoen komt.",
+      "tts": {
+        "text": "Sommige planten verliezen hun bladeren als het droge seizoen komt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze blijven leven als kale bruine takjes tot de volgende regen.",
+      "text_markdown": "Ze blijven leven als kale bruine takjes tot de volgende regen.",
+      "tts": {
+        "text": "Ze blijven leven als kale bruine takjes tot de volgende regen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Na een zware regen kan de woestijn van de ene op de andere dag veranderen.",
+      "text_markdown": "Na een zware regen kan de woestijn van de ene op de andere dag veranderen.",
+      "tts": {
+        "text": "Na een zware regen kan de woestijn van de ene op de andere dag veranderen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kleine zaden die jarenlang in de grond hebben gewacht, breken uit in bloei.",
+      "text_markdown": "Kleine zaden die jarenlang in de grond hebben gewacht, breken uit in bloei.",
+      "tts": {
+        "text": "Kleine zaden die jarenlang in de grond hebben gewacht, breken uit in bloei.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een paar weken lang zijn delen van de woestijn bedekt met rode, gele en paarse bloemen.",
+      "text_markdown": "Een paar weken lang zijn delen van de woestijn bedekt met rode, gele en paarse bloemen.",
+      "tts": {
+        "text": "Een paar weken lang zijn delen van de woestijn bedekt met rode, gele en paarse bloemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "De planten",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dan verwelken de bloemen, vallen de zaden, en wacht de woestijn weer.",
+      "text_markdown": "Dan verwelken de bloemen, vallen de zaden, en wacht de woestijn weer.",
+      "tts": {
+        "text": "Dan verwelken de bloemen, vallen de zaden, en wacht de woestijn weer.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-081",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De dieren",
+      "text_markdown": "De dieren"
+    },
+    {
+      "id": "ch06-082",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren van de hete woestijn hebben veel slimme manieren om te overleven.",
+      "text_markdown": "De dieren van de hete woestijn hebben veel slimme manieren om te overleven.",
+      "tts": {
+        "text": "De dieren van de hete woestijn hebben veel slimme manieren om te overleven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-083",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De meeste slapen door het hete midden van de dag heen.",
+      "text_markdown": "De meeste slapen door het hete midden van de dag heen.",
+      "tts": {
+        "text": "De meeste slapen door het hete midden van de dag heen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-084",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze komen tevoorschijn in de koelte van de ochtend, de avond en de nacht.",
+      "text_markdown": "Ze komen tevoorschijn in de koelte van de ochtend, de avond en de nacht.",
+      "tts": {
+        "text": "Ze komen tevoorschijn in de koelte van de ochtend, de avond en de nacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch06-085",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel woestijndieren graven holen in het zand of onder de rotsen.",
+      "text_markdown": "Veel woestijndieren graven holen in het zand of onder de rotsen.",
+      "tts": {
+        "text": "Veel woestijndieren graven holen in het zand of onder de rotsen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-086",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een hol blijft koel als de lucht buiten brandend heet is.",
+      "text_markdown": "Een hol blijft koel als de lucht buiten brandend heet is.",
+      "tts": {
+        "text": "Een hol blijft koel als de lucht buiten brandend heet is.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-087",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een kleine muis kan de hele dag in zijn hol slapen en nooit de hitte voelen.",
+      "text_markdown": "Een kleine muis kan de hele dag in zijn hol slapen en nooit de hitte voelen.",
+      "tts": {
+        "text": "Een kleine muis kan de hele dag in zijn hol slapen en nooit de hitte voelen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-088",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hagedissen komen heel veel voor in de hete woestijn.",
+      "text_markdown": "Hagedissen komen heel veel voor in de hete woestijn.",
+      "tts": {
+        "text": "Hagedissen komen heel veel voor in de hete woestijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-089",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze zitten op warme stenen in de vroege zon.",
+      "text_markdown": "Ze zitten op warme stenen in de vroege zon.",
+      "tts": {
+        "text": "Ze zitten op warme stenen in de vroege zon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-090",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als de dag te heet wordt, glippen ze de schaduw in of onder een rots.",
+      "text_markdown": "Als de dag te heet wordt, glippen ze de schaduw in of onder een rots.",
+      "tts": {
+        "text": "Als de dag te heet wordt, glippen ze de schaduw in of onder een rots.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-091",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Slangen komen ook veel voor.",
+      "text_markdown": "Slangen komen ook veel voor.",
+      "tts": {
+        "text": "Slangen komen ook veel voor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-092",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze glijden over het zand op zoek naar kleine dieren om op te eten.",
+      "text_markdown": "Ze glijden over het zand op zoek naar kleine dieren om op te eten.",
+      "tts": {
+        "text": "Ze glijden over het zand op zoek naar kleine dieren om op te eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-093",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige slangen hebben een bijzondere manier om zijwaarts over heet zand te bewegen om hun lichaam van de grond te houden.",
+      "text_markdown": "Sommige slangen hebben een bijzondere manier om zijwaarts over heet zand te bewegen om hun lichaam van de grond te houden.",
+      "tts": {
+        "text": "Sommige slangen hebben een bijzondere manier om zijwaarts over heet zand te bewegen om hun lichaam van de grond te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Schorpioenen jagen 's nachts, met hun staarten omhoog.",
+      "text_markdown": "Schorpioenen jagen 's nachts, met hun staarten omhoog.",
+      "tts": {
+        "text": "Schorpioenen jagen 's nachts, met hun staarten omhoog.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Spinnen en kevers leven ook in elk deel van de woestijn.",
+      "text_markdown": "Spinnen en kevers leven ook in elk deel van de woestijn.",
+      "tts": {
+        "text": "Spinnen en kevers leven ook in elk deel van de woestijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel woestijnkevers kunnen overleven zonder ooit water te drinken.",
+      "text_markdown": "Veel woestijnkevers kunnen overleven zonder ooit water te drinken.",
+      "tts": {
+        "text": "Veel woestijnkevers kunnen overleven zonder ooit water te drinken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze halen al het water dat ze nodig hebben uit het eten dat ze eten.",
+      "text_markdown": "Ze halen al het water dat ze nodig hebben uit het eten dat ze eten.",
+      "tts": {
+        "text": "Ze halen al het water dat ze nodig hebben uit het eten dat ze eten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het grootste dier van de Afrikaanse en Arabische woestijnen is de kameel.",
+      "text_markdown": "Het grootste dier van de Afrikaanse en Arabische woestijnen is de kameel.",
+      "tts": {
+        "text": "Het grootste dier van de Afrikaanse en Arabische woestijnen is de kameel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een kameel kan in één keer een enorme hoeveelheid water drinken, en daarna vele dagen zonder drinken.",
+      "text_markdown": "Een kameel kan in één keer een enorme hoeveelheid water drinken, en daarna vele dagen zonder drinken.",
+      "tts": {
+        "text": "Een kameel kan in één keer een enorme hoeveelheid water drinken, en daarna vele dagen zonder drinken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zijn brede zachte voeten houden hem ervan af om in het zand weg te zakken.",
+      "text_markdown": "Zijn brede zachte voeten houden hem ervan af om in het zand weg te zakken.",
+      "tts": {
+        "text": "Zijn brede zachte voeten houden hem ervan af om in het zand weg te zakken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de woestijnen van Noord-Amerika jagen vossen en kleine wilde katten 's nachts.",
+      "text_markdown": "In de woestijnen van Noord-Amerika jagen vossen en kleine wilde katten 's nachts.",
+      "tts": {
+        "text": "In de woestijnen van Noord Amerika jagen vossen en kleine wilde katten 's nachts.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Afrika leven kleine vossen met heel grote oren in het zand.",
+      "text_markdown": "In Afrika leven kleine vossen met heel grote oren in het zand.",
+      "tts": {
+        "text": "In Afrika leven kleine vossen met heel grote oren in het zand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grote oren helpen hen om kleine dieren te horen die zich onder de grond bewegen.",
+      "text_markdown": "De grote oren helpen hen om kleine dieren te horen die zich onder de grond bewegen.",
+      "tts": {
+        "text": "De grote oren helpen hen om kleine dieren te horen die zich onder de grond bewegen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De grote oren helpen hen ook om warmte te verliezen in de koelte van de nacht.",
+      "text_markdown": "De grote oren helpen hen ook om warmte te verliezen in de koelte van de nacht.",
+      "tts": {
+        "text": "De grote oren helpen hen ook om warmte te verliezen in de koelte van de nacht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hoog boven zweven gieren en arenden op de warme woestijnlucht.",
+      "text_markdown": "Hoog boven zweven gieren en arenden op de warme woestijnlucht.",
+      "tts": {
+        "text": "Hoog boven zweven gieren en arenden op de warme woestijnlucht.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze letten op elke kleine beweging op de grond.",
+      "text_markdown": "Ze letten op elke kleine beweging op de grond.",
+      "tts": {
+        "text": "Ze letten op elke kleine beweging op de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "De dieren",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Elk dier hier weet hoe het op de koelte moet wachten, hoe het schaduw moet vinden, en hoe het elke slok water moet laten duren.",
+      "text_markdown": "Elk dier hier weet hoe het op de koelte moet wachten, hoe het schaduw moet vinden, en hoe het elke slok water moet laten duren.",
+      "tts": {
+        "text": "Elk dier hier weet hoe het op de koelte moet wachten, hoe het schaduw moet vinden, en hoe het elke slok water moet laten duren.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch07-108",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De mensen",
+      "text_markdown": "De mensen"
+    },
+    {
+      "id": "ch07-109",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mensen wonen al duizenden jaren in de hete woestijn.",
+      "text_markdown": "Mensen wonen al duizenden jaren in de hete woestijn.",
+      "tts": {
+        "text": "Mensen wonen al duizenden jaren in de hete woestijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-110",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze hebben hun eigen manieren gevonden om te leven in een land van zon en zand.",
+      "text_markdown": "Ze hebben hun eigen manieren gevonden om te leven in een land van zon en zand.",
+      "tts": {
+        "text": "Ze hebben hun eigen manieren gevonden om te leven in een land van zon en zand.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-111",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In veel woestijnen reizen families met hun kuddes van de ene plek naar de andere.",
+      "text_markdown": "In veel woestijnen reizen families met hun kuddes van de ene plek naar de andere.",
+      "tts": {
+        "text": "In veel woestijnen reizen families met hun kuddes van de ene plek naar de andere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-112",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In de Sahara en de woestijnen van Arabië houden mensen kuddes kamelen, geiten en schapen.",
+      "text_markdown": "In de Sahara en de woestijnen van Arabië houden mensen kuddes kamelen, geiten en schapen.",
+      "tts": {
+        "text": "In de Sahara en de woestijnen van Arabië houden mensen kuddes kamelen, geiten en schapen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch07-113",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De dieren kunnen lang lopen tussen het drinken van water door.",
+      "text_markdown": "De dieren kunnen lang lopen tussen het drinken van water door.",
+      "tts": {
+        "text": "De dieren kunnen lang lopen tussen het drinken van water door.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-114",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mensen volgen de dieren, en de dieren leiden hen naar voedsel.",
+      "text_markdown": "De mensen volgen de dieren, en de dieren leiden hen naar voedsel.",
+      "tts": {
+        "text": "De mensen volgen de dieren, en de dieren leiden hen naar voedsel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-115",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hun tenten zijn gemaakt van stof, geweven uit het haar van hun dieren.",
+      "text_markdown": "Hun tenten zijn gemaakt van stof, geweven uit het haar van hun dieren.",
+      "tts": {
+        "text": "Hun tenten zijn gemaakt van stof, geweven uit het haar van hun dieren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch07-116",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een tent kan in een uur worden opgezet en in een uur worden afgebroken.",
+      "text_markdown": "Een tent kan in een uur worden opgezet en in een uur worden afgebroken.",
+      "tts": {
+        "text": "Een tent kan in een uur worden opgezet en in een uur worden afgebroken.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch07-117",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij houdt de brandende zon buiten, en laat de koele nachtlucht erdoor.",
+      "text_markdown": "Hij houdt de brandende zon buiten, en laat de koele nachtlucht erdoor.",
+      "tts": {
+        "text": "Hij houdt de brandende zon buiten, en laat de koele nachtlucht erdoor.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-118",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mensen van de woestijn dragen losse, lange kleren.",
+      "text_markdown": "De mensen van de woestijn dragen losse, lange kleren.",
+      "tts": {
+        "text": "De mensen van de woestijn dragen losse, lange kleren.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch07-119",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Lange mouwen en een bedekt hoofd houden het lichaam koel en beschermen het tegen de zon.",
+      "text_markdown": "Lange mouwen en een bedekt hoofd houden het lichaam koel en beschermen het tegen de zon.",
+      "tts": {
+        "text": "Lange mouwen en een bedekt hoofd houden het lichaam koel en beschermen het tegen de zon.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-120",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een helder patroon op de stof helpt een vriend om je van ver te zien.",
+      "text_markdown": "Een helder patroon op de stof helpt een vriend om je van ver te zien.",
+      "tts": {
+        "text": "Een helder patroon op de stof helpt een vriend om je van ver te zien.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-121",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sommige woestijnbewoners wonen in stadjes die rond een oase zijn gebouwd.",
+      "text_markdown": "Sommige woestijnbewoners wonen in stadjes die rond een oase zijn gebouwd.",
+      "tts": {
+        "text": "Sommige woestijnbewoners wonen in stadjes die rond een oase zijn gebouwd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-122",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze kweken dadelpalmen, vruchten en granen in de groene ring rond het water.",
+      "text_markdown": "Ze kweken dadelpalmen, vruchten en granen in de groene ring rond het water.",
+      "tts": {
+        "text": "Ze kweken dadelpalmen, vruchten en granen in de groene ring rond het water.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch07-123",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze hebben geleerd om diepe putten te graven om het verborgen water onder het zand te vinden.",
+      "text_markdown": "Ze hebben geleerd om diepe putten te graven om het verborgen water onder het zand te vinden.",
+      "tts": {
+        "text": "Ze hebben geleerd om diepe putten te graven om het verborgen water onder het zand te vinden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-124",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reizigers van ver komen naar de oase om uit te rusten en hun waterzakken te vullen.",
+      "text_markdown": "Reizigers van ver komen naar de oase om uit te rusten en hun waterzakken te vullen.",
+      "tts": {
+        "text": "Reizigers van ver komen naar de oase om uit te rusten en hun waterzakken te vullen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-125",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De mensen van de woestijn kennen elke ster aan de nachthemel.",
+      "text_markdown": "De mensen van de woestijn kennen elke ster aan de nachthemel.",
+      "tts": {
+        "text": "De mensen van de woestijn kennen elke ster aan de nachthemel.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-126",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze kennen de namen van elke wind die waait.",
+      "text_markdown": "Ze kennen de namen van elke wind die waait.",
+      "tts": {
+        "text": "Ze kennen de namen van elke wind die waait.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze kunnen de sporen van elk dier in het zand lezen.",
+      "text_markdown": "Ze kunnen de sporen van elk dier in het zand lezen.",
+      "tts": {
+        "text": "Ze kunnen de sporen van elk dier in het zand lezen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Deze kennis wordt jaar na jaar van ouders aan kinderen doorgegeven.",
+      "text_markdown": "Deze kennis wordt jaar na jaar van ouders aan kinderen doorgegeven.",
+      "tts": {
+        "text": "Deze kennis wordt jaar na jaar van ouders aan kinderen doorgegeven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "De mensen",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In elke grote woestijn heeft dit soort leven zijn eigen talen, liederen en verhalen.",
+      "text_markdown": "In elke grote woestijn heeft dit soort leven zijn eigen talen, liederen en verhalen.",
+      "tts": {
+        "text": "In elke grote woestijn heeft dit soort leven zijn eigen talen, liederen en verhalen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-130",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "De woestijn vandaag",
+      "text_markdown": "De woestijn vandaag"
+    },
+    {
+      "id": "ch08-131",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De hete woestijn is een mooi en veeleisend bioom.",
+      "text_markdown": "De hete woestijn is een mooi en veeleisend bioom.",
+      "tts": {
+        "text": "De hete woestijn is een mooi en veeleisend bioom.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-132",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij beslaat een groot deel van het land op Aarde.",
+      "text_markdown": "Hij beslaat een groot deel van het land op Aarde.",
+      "tts": {
+        "text": "Hij beslaat een groot deel van het land op Aarde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-133",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De sterke woestijnzon is ook een van onze grootste bronnen van schone energie.",
+      "text_markdown": "De sterke woestijnzon is ook een van onze grootste bronnen van schone energie.",
+      "tts": {
+        "text": "De sterke woestijnzon is ook een van onze grootste bronnen van schone energie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-134",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In veel woestijnen worden grote velden zonnepanelen gebouwd.",
+      "text_markdown": "In veel woestijnen worden grote velden zonnepanelen gebouwd.",
+      "tts": {
+        "text": "In veel woestijnen worden grote velden zonnepanelen gebouwd.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-135",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze maken van de woestijnzon elektriciteit voor verre steden.",
+      "text_markdown": "Ze maken van de woestijnzon elektriciteit voor verre steden.",
+      "tts": {
+        "text": "Ze maken van de woestijnzon elektriciteit voor verre steden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-136",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Maar op sommige plekken zit de woestijn in de problemen.",
+      "text_markdown": "Maar op sommige plekken zit de woestijn in de problemen.",
+      "tts": {
+        "text": "Maar op sommige plekken zit de woestijn in de problemen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch08-137",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In sommige gebieden groeit de woestijn, omdat mensen het water en het gras aan de randen hebben opgebruikt.",
+      "text_markdown": "In sommige gebieden groeit de woestijn, omdat mensen het water en het gras aan de randen hebben opgebruikt.",
+      "tts": {
+        "text": "In sommige gebieden groeit de woestijn, omdat mensen het water en het gras aan de randen hebben opgebruikt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch08-138",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Het gras sterft, de bomen verdwijnen, en het zand komt binnen.",
+      "text_markdown": "Het gras sterft, de bomen verdwijnen, en het zand komt binnen.",
+      "tts": {
+        "text": "Het gras sterft, de bomen verdwijnen, en het zand komt binnen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch08-139",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Op andere plekken gebruiken de stadjes aan de rand van de woestijn te veel van het verborgen water onder de grond.",
+      "text_markdown": "Op andere plekken gebruiken de stadjes aan de rand van de woestijn te veel van het verborgen water onder de grond.",
+      "tts": {
+        "text": "Op andere plekken gebruiken de stadjes aan de rand van de woestijn te veel van het verborgen water onder de grond.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch08-140",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als het diepe water op is, drogen ook de oases op.",
+      "text_markdown": "Als het diepe water op is, drogen ook de oases op.",
+      "tts": {
+        "text": "Als het diepe water op is, drogen ook de oases op.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-141",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Veel groepen over de hele wereld werken eraan om voor de woestijnen te zorgen.",
+      "text_markdown": "Veel groepen over de hele wereld werken eraan om voor de woestijnen te zorgen.",
+      "tts": {
+        "text": "Veel groepen over de hele wereld werken eraan om voor de woestijnen te zorgen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-142",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze planten rijen bomen en grassen om het bewegende zand tegen te houden.",
+      "text_markdown": "Ze planten rijen bomen en grassen om het bewegende zand tegen te houden.",
+      "tts": {
+        "text": "Ze planten rijen bomen en grassen om het bewegende zand tegen te houden.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-143",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze helpen de mensen die in de woestijn wonen om verstandig met water om te gaan.",
+      "text_markdown": "Ze helpen de mensen die in de woestijn wonen om verstandig met water om te gaan.",
+      "tts": {
+        "text": "Ze helpen de mensen die in de woestijn wonen om verstandig met water om te gaan.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-144",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ze bestuderen de woestijnen, zodat we ze beter kunnen begrijpen.",
+      "text_markdown": "Ze bestuderen de woestijnen, zodat we ze beter kunnen begrijpen.",
+      "tts": {
+        "text": "Ze bestuderen de woestijnen, zodat we ze beter kunnen begrijpen.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-145",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een gezonde woestijn zit vol leven dat je niet zou verwachten.",
+      "text_markdown": "Een gezonde woestijn zit vol leven dat je niet zou verwachten.",
+      "tts": {
+        "text": "Een gezonde woestijn zit vol leven dat je niet zou verwachten.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-146",
+      "chapter": 8,
+      "title": "De woestijn vandaag",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hij is onze zorg waard.",
+      "text_markdown": "Hij is onze zorg waard.",
+      "tts": {
+        "text": "Hij is onze zorg waard.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-147",
+      "chapter": 9,
+      "title": "Slot",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Slot",
+      "text_markdown": "Slot"
+    },
+    {
+      "id": "ch09-148",
+      "chapter": 9,
+      "title": "Slot",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dat is de hete woestijn.",
+      "text_markdown": "Dat is de hete woestijn.",
+      "tts": {
+        "text": "Dat is de hete woestijn.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-149",
+      "chapter": 9,
+      "title": "Slot",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Een droge, zonovergoten wereld van zand, rots en geduldig leven.",
+      "text_markdown": "Een droge, zonovergoten wereld van zand, rots en geduldig leven.",
+      "tts": {
+        "text": "Een droge, zonovergoten wereld van zand, rots en geduldig leven.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-150",
+      "chapter": 9,
+      "title": "Slot",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Als je er ooit in staat, sta dan even stil.",
+      "text_markdown": "Als je er ooit in staat, sta dan even stil.",
+      "tts": {
+        "text": "Als je er ooit in staat, sta dan even stil.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-151",
+      "chapter": 9,
+      "title": "Slot",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Luister naar de wind die over de duinen trekt.",
+      "text_markdown": "Luister naar de wind die over de duinen trekt.",
+      "tts": {
+        "text": "Luister naar de wind die over de duinen trekt.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch09-152",
+      "chapter": 9,
+      "title": "Slot",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Voel de hitte van de zon en de koelte van de schaduw.",
+      "text_markdown": "Voel de hitte van de zon en de koelte van de schaduw.",
+      "tts": {
+        "text": "Voel de hitte van de zon en de koelte van de schaduw.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch09-153",
+      "chapter": 9,
+      "title": "Slot",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Je zult het hart van het bioom rondom je horen kloppen.",
+      "text_markdown": "Je zult het hart van het bioom rondom je horen kloppen.",
+      "tts": {
+        "text": "Je zult het hart van het bioom rondom je horen kloppen.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

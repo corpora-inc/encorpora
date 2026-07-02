@@ -1,0 +1,2692 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_motorcycles_history",
+  "language": "tr",
+  "total_segments": 170,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Okuyucuya Bir Not",
+      "text_markdown": "Okuyucuya Bir Not"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, motosikletin hikayesidir.",
+      "text_markdown": "Bu, motosikletin hikayesidir.",
+      "tts": {
+        "text": "Bu, motosikletin hikayesidir.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu gerçek bir hikayedir.",
+      "text_markdown": "Bu gerçek bir hikayedir.",
+      "tts": {
+        "text": "Bu gerçek bir hikayedir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çok eskiden, kimsenin motosikleti yoktu.",
+      "text_markdown": "Çok eskiden, kimsenin motosikleti yoktu.",
+      "tts": {
+        "text": "Çok eskiden, kimsenin motosikleti yoktu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şimdi ise milyonlarcası var.",
+      "text_markdown": "Şimdi ise milyonlarcası var.",
+      "tts": {
+        "text": "Şimdi ise milyonlarcası var.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gürültülü, hızlı ve parlaklar.",
+      "text_markdown": "Gürültülü, hızlı ve parlaklar.",
+      "tts": {
+        "text": "Gürültülü, hızlı ve parlaklar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En baştan başlayacağız.",
+      "text_markdown": "En baştan başlayacağız.",
+      "tts": {
+        "text": "En baştan başlayacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İlk yapımcıyla, ilk sürücülerle ve ilk yarışlarla tanışacağız.",
+      "text_markdown": "İlk yapımcıyla, ilk sürücülerle ve ilk yarışlarla tanışacağız.",
+      "tts": {
+        "text": "İlk yapımcıyla, ilk sürücülerle ve ilk yarışlarla tanışacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonra bugünkü dünyaya bakacağız.",
+      "text_markdown": "Sonra bugünkü dünyaya bakacağız.",
+      "tts": {
+        "text": "Sonra bugünkü dünyaya bakacağız.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "Okuyucuya Bir Not",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sonunda, bu küçük makinenin yolu nasıl sonsuza dek değiştirdiğini öğreneceksin.",
+      "text_markdown": "Sonunda, bu küçük makinenin yolu nasıl sonsuza dek değiştirdiğini öğreneceksin.",
+      "tts": {
+        "text": "Sonunda, bu küçük makinenin yolu nasıl sonsuza dek değiştirdiğini öğreneceksin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "text_markdown": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli"
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motosiklet, motoru olan bir bisiklettir.",
+      "text_markdown": "Motosiklet, motoru olan bir bisiklettir.",
+      "tts": {
+        "text": "Motosiklet, motoru olan bir bisiklettir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motor, tekerlekleri iter.",
+      "text_markdown": "Motor, tekerlekleri iter.",
+      "tts": {
+        "text": "Motor, tekerlekleri iter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sürücü pedal çevirmez.",
+      "text_markdown": "Sürücü pedal çevirmez.",
+      "tts": {
+        "text": "Sürücü pedal çevirmez.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Çok eskiden motosiklet yoktu.",
+      "text_markdown": "Çok eskiden motosiklet yoktu.",
+      "tts": {
+        "text": "Çok eskiden motosiklet yoktu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İnsanlar ata binerdi.",
+      "text_markdown": "İnsanlar ata binerdi.",
+      "tts": {
+        "text": "İnsanlar ata binerdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanlar bisiklete binerdi.",
+      "text_markdown": "İnsanlar bisiklete binerdi.",
+      "tts": {
+        "text": "İnsanlar bisiklete binerdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bisikletin iki tekerleği vardır ve motoru yoktur.",
+      "text_markdown": "Bisikletin iki tekerleği vardır ve motoru yoktur.",
+      "tts": {
+        "text": "Bisikletin iki tekerleği vardır ve motoru yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Pedalları ayaklarınla çevirmen gerekir.",
+      "text_markdown": "Pedalları ayaklarınla çevirmen gerekir.",
+      "tts": {
+        "text": "Pedalları ayaklarınla çevirmen gerekir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1885 yılında, Almanya'da bir adamın aklına büyük bir fikir geldi.",
+      "text_markdown": "1885 yılında, Almanya'da bir adamın aklına büyük bir fikir geldi.",
+      "tts": {
+        "text": "Bin sekiz yüz seksen beş yılında, Almanya'da bir adamın aklına büyük bir fikir geldi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Gottlieb Daimler'di.",
+      "text_markdown": "Adı Gottlieb Daimler'di.",
+      "tts": {
+        "text": "Adı Gottlieb Daimler'di.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Küçük bir benzin motoru aldı ve onu ahşap bir bisikletin üstüne koydu.",
+      "text_markdown": "Küçük bir benzin motoru aldı ve onu ahşap bir bisikletin üstüne koydu.",
+      "tts": {
+        "text": "Küçük bir benzin motoru aldı ve onu ahşap bir bisikletin üstüne koydu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Makinesine Reitwagen adını verdi.",
+      "text_markdown": "Makinesine Reitwagen adını verdi.",
+      "tts": {
+        "text": "Makinesine Rayt Vagen adını verdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu kelime Almancada \"sürüş arabası\" anlamına gelir.",
+      "text_markdown": "Bu kelime Almancada \"sürüş arabası\" anlamına gelir.",
+      "tts": {
+        "text": "Bu kelime Almancada \"sürüş arabası\" anlamına gelir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O, dünyadaki ilk motosikletti.",
+      "text_markdown": "O, dünyadaki ilk motosikletti.",
+      "tts": {
+        "text": "O, dünyadaki ilk motosikletti.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Reitwagen gürültülüydü.",
+      "text_markdown": "Reitwagen gürültülüydü.",
+      "tts": {
+        "text": "Rayt Vagen gürültülüydü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sarsıntılıydı.",
+      "text_markdown": "Sarsıntılıydı.",
+      "tts": {
+        "text": "Sarsıntılıydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sadece tek bir hızı vardı.",
+      "text_markdown": "Sadece tek bir hızı vardı.",
+      "tts": {
+        "text": "Sadece tek bir hızı vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saatte yaklaşık yedi mil gidebiliyordu.",
+      "text_markdown": "Saatte yaklaşık yedi mil gidebiliyordu.",
+      "tts": {
+        "text": "Saatte yaklaşık yedi mil gidebiliyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Bu, bugün bisiklete binen birinden daha yavaş.",
+      "text_markdown": "Bu, bugün bisiklete binen birinden daha yavaş.",
+      "tts": {
+        "text": "Bu, bugün bisiklete binen birinden daha yavaş.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ama atsız hareket edebiliyordu ve pedalsız hareket edebiliyordu.",
+      "text_markdown": "Ama atsız hareket edebiliyordu ve pedalsız hareket edebiliyordu.",
+      "tts": {
+        "text": "Ama atsız hareket edebiliyordu ve pedalsız hareket edebiliyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Bölüm 1 — Vroom Diyen İlk İki Tekerlekli",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motosiklet doğmuştu.",
+      "text_markdown": "Motosiklet doğmuştu.",
+      "tts": {
+        "text": "Motosiklet doğmuştu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 2 — İlk Şirketler",
+      "text_markdown": "Bölüm 2 — İlk Şirketler"
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Daimler'den sonra, başka insanlar da motosiklet yapmak istedi.",
+      "text_markdown": "Daimler'den sonra, başka insanlar da motosiklet yapmak istedi.",
+      "tts": {
+        "text": "Daimler'den sonra, başka insanlar da motosiklet yapmak istedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kısa süre sonra, dünyanın her yerinde küçük atölyeler açıldı.",
+      "text_markdown": "Kısa süre sonra, dünyanın her yerinde küçük atölyeler açıldı.",
+      "tts": {
+        "text": "Kısa süre sonra, dünyanın her yerinde küçük atölyeler açıldı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İngiltere'de Siegfried Bettmann adında bir adam, Triumph adlı bir şirket kurdu.",
+      "text_markdown": "İngiltere'de Siegfried Bettmann adında bir adam, Triumph adlı bir şirket kurdu.",
+      "tts": {
+        "text": "İngiltere'de Siegfried Bettmann adında bir adam, Triumph adlı bir şirket kurdu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İlk Triumph motosikleti 1902 yılında yapıldı.",
+      "text_markdown": "İlk Triumph motosikleti 1902 yılında yapıldı.",
+      "tts": {
+        "text": "İlk Triumph motosikleti bin dokuz yüz iki yılında yapıldı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Amerika'da, William Harley ve Arthur Davidson adında iki arkadaş, ilk motosikletlerini küçük bir ahşap kulübede yaptı.",
+      "text_markdown": "Amerika'da, William Harley ve Arthur Davidson adında iki arkadaş, ilk motosikletlerini küçük bir ahşap kulübede yaptı.",
+      "tts": {
+        "text": "Amerika'da, William Harley ve Arthur Davidson adında iki arkadaş, ilk motosikletlerini küçük bir ahşap kulübede yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Kulübe Milwaukee şehrindeydi.",
+      "text_markdown": "Kulübe Milwaukee şehrindeydi.",
+      "tts": {
+        "text": "Kulübe Milwaukee şehrindeydi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yıl 1903'tü.",
+      "text_markdown": "Yıl 1903'tü.",
+      "tts": {
+        "text": "Yıl, bin dokuz yüz üçtü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Şirkete Harley-Davidson adını verdiler.",
+      "text_markdown": "Şirkete Harley-Davidson adını verdiler.",
+      "tts": {
+        "text": "Şirkete Harley Davidson adını verdiler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Başka bir Amerikan şirketi birkaç yıl önce kurulmuştu.",
+      "text_markdown": "Başka bir Amerikan şirketi birkaç yıl önce kurulmuştu.",
+      "tts": {
+        "text": "Başka bir Amerikan şirketi birkaç yıl önce kurulmuştu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Springfield, Massachusetts'te iki adam, ilk makinelerini 1901 yılında yaptı.",
+      "text_markdown": "Springfield, Massachusetts'te iki adam, ilk makinelerini 1901 yılında yaptı.",
+      "tts": {
+        "text": "Springfield, Massachusetts'te iki adam, ilk makinelerini bin dokuz yüz bir yılında yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ona Indian adını verdiler.",
+      "text_markdown": "Ona Indian adını verdiler.",
+      "tts": {
+        "text": "Ona Indian adını verdiler.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hindistan'da Royal Enfield adlı bir şirket de 1901 yılında motosiklet yapmaya başladı.",
+      "text_markdown": "Hindistan'da Royal Enfield adlı bir şirket de 1901 yılında motosiklet yapmaya başladı.",
+      "tts": {
+        "text": "Hindistan'da Royal Enfield adlı bir şirket de bin dokuz yüz bir yılında motosiklet yapmaya başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bugün, Royal Enfield, hâlâ motosiklet yapan dünyanın en eski motosiklet şirketidir.",
+      "text_markdown": "Bugün, Royal Enfield, hâlâ motosiklet yapan dünyanın en eski motosiklet şirketidir.",
+      "tts": {
+        "text": "Bugün, Royal Enfield, hâlâ motosiklet yapan dünyanın en eski motosiklet şirketidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Almanya'da BMW şirketi, biraz daha geç, 1923 yılında motosiklet yapmaya başladı.",
+      "text_markdown": "Almanya'da BMW şirketi, biraz daha geç, 1923 yılında motosiklet yapmaya başladı.",
+      "tts": {
+        "text": "Almanya'da Be Em Ve şirketi, biraz daha geç, bin dokuz yüz yirmi üç yılında motosiklet yapmaya başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "BMW, Almancada \"Bavyera Motor Fabrikaları\" anlamına gelir.",
+      "text_markdown": "BMW, Almancada \"Bavyera Motor Fabrikaları\" anlamına gelir.",
+      "tts": {
+        "text": "Be Em Ve, Almancada Bavyera Motor Fabrikaları anlamına gelir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1910 yılına gelindiğinde, motosikletler her yerdeydi.",
+      "text_markdown": "1910 yılına gelindiğinde, motosikletler her yerdeydi.",
+      "tts": {
+        "text": "Bin dokuz yüz on yılına gelindiğinde, motosikletler her yerdeydi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Şehir caddelerinde ve kırsal yollardaydılar.",
+      "text_markdown": "Şehir caddelerinde ve kırsal yollardaydılar.",
+      "tts": {
+        "text": "Şehir caddelerinde ve kırsal yollardaydılar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Bölüm 2 — İlk Şirketler",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Motosiklet çağı gerçekten başlamıştı.",
+      "text_markdown": "Motosiklet çağı gerçekten başlamıştı.",
+      "tts": {
+        "text": "Motosiklet çağı gerçekten başlamıştı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "text_markdown": "Bölüm 3 — Motosikletler Savaşa Gidiyor"
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Motosikletler hızlıdır.",
+      "text_markdown": "Motosikletler hızlıdır.",
+      "tts": {
+        "text": "Motosikletler hızlıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Küçük patikalara sığabilirler.",
+      "text_markdown": "Küçük patikalara sığabilirler.",
+      "tts": {
+        "text": "Küçük patikalara sığabilirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kamplar arasında mesaj taşıyabilirler.",
+      "text_markdown": "Kamplar arasında mesaj taşıyabilirler.",
+      "tts": {
+        "text": "Kamplar arasında mesaj taşıyabilirler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bu yüzden savaşlar geldiğinde, ordular motosiklet istedi.",
+      "text_markdown": "Bu yüzden savaşlar geldiğinde, ordular motosiklet istedi.",
+      "tts": {
+        "text": "Bu yüzden savaşlar geldiğinde, ordular motosiklet istedi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birinci Dünya Savaşı 1914'te başladı.",
+      "text_markdown": "Birinci Dünya Savaşı 1914'te başladı.",
+      "tts": {
+        "text": "Birinci Dünya Savaşı bin dokuz yüz on dörtte başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Askerler emirleri taşımak için Triumph motosikletleri kullandı.",
+      "text_markdown": "Askerler emirleri taşımak için Triumph motosikletleri kullandı.",
+      "tts": {
+        "text": "Askerler emirleri taşımak için Triumph motosikletleri kullandı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Triumph Model H güçlü ve sessizdi.",
+      "text_markdown": "Triumph Model H güçlü ve sessizdi.",
+      "tts": {
+        "text": "Triumph Model He güçlü ve sessizdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Atların gidemediği yerlere gidebiliyordu.",
+      "text_markdown": "Atların gidemediği yerlere gidebiliyordu.",
+      "tts": {
+        "text": "Atların gidemediği yerlere gidebiliyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İkinci Dünya Savaşı 1939'da başladı.",
+      "text_markdown": "İkinci Dünya Savaşı 1939'da başladı.",
+      "tts": {
+        "text": "İkinci Dünya Savaşı bin dokuz yüz otuz dokuzda başladı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "O zamana kadar motosikletler daha hızlı ve daha güçlü olmuştu.",
+      "text_markdown": "O zamana kadar motosikletler daha hızlı ve daha güçlü olmuştu.",
+      "tts": {
+        "text": "O zamana kadar motosikletler daha hızlı ve daha güçlü olmuştu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Amerikan askerleri Harley-Davidson WLA'ya bindi.",
+      "text_markdown": "Amerikan askerleri Harley-Davidson WLA'ya bindi.",
+      "tts": {
+        "text": "Amerikan askerleri Harley Davidson Ve Le A'ya bindi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Alman askerleri BMW R75'e bindi.",
+      "text_markdown": "Alman askerleri BMW R75'e bindi.",
+      "tts": {
+        "text": "Alman askerleri Be Em Ve R yetmiş beşe bindi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "R75'in yan tarafında, üçüncü bir tekerleği ve başka bir asker için bir koltuğu olan bir sepet vardı.",
+      "text_markdown": "R75'in yan tarafında, üçüncü bir tekerleği ve başka bir asker için bir koltuğu olan bir sepet vardı.",
+      "tts": {
+        "text": "R yetmiş beşin yan tarafında, üçüncü bir tekerleği ve başka bir asker için bir koltuğu olan bir sepet vardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaştan sonra askerler eve döndü.",
+      "text_markdown": "Savaştan sonra askerler eve döndü.",
+      "tts": {
+        "text": "Savaştan sonra askerler eve döndü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motosikletlerini de yanlarında getirdiler.",
+      "text_markdown": "Motosikletlerini de yanlarında getirdiler.",
+      "tts": {
+        "text": "Motosikletlerini de yanlarında getirdiler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pek çoğu motosiklet sürmeye devam etmek istedi.",
+      "text_markdown": "Pek çoğu motosiklet sürmeye devam etmek istedi.",
+      "tts": {
+        "text": "Pek çoğu motosiklet sürmeye devam etmek istedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Bazıları kendi motosiklet kulüplerini kurdu.",
+      "text_markdown": "Bazıları kendi motosiklet kulüplerini kurdu.",
+      "tts": {
+        "text": "Bazıları kendi motosiklet kulüplerini kurdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Savaşlar motosikleti ünlü yaptı.",
+      "text_markdown": "Savaşlar motosikleti ünlü yaptı.",
+      "tts": {
+        "text": "Savaşlar motosikleti ünlü yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Milyonlarca insan ilk kez bir motosiklet görmüştü.",
+      "text_markdown": "Milyonlarca insan ilk kez bir motosiklet görmüştü.",
+      "tts": {
+        "text": "Milyonlarca insan ilk kez bir motosiklet görmüştü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Bölüm 3 — Motosikletler Savaşa Gidiyor",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pek çoğu kendine bir tane istedi.",
+      "text_markdown": "Pek çoğu kendine bir tane istedi.",
+      "tts": {
+        "text": "Pek çoğu kendine bir tane istedi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 4 — Japonya'nın Yükselişi",
+      "text_markdown": "Bölüm 4 — Japonya'nın Yükselişi"
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İkinci Dünya Savaşı'ndan sonra Japonya fakirdi.",
+      "text_markdown": "İkinci Dünya Savaşı'ndan sonra Japonya fakirdi.",
+      "tts": {
+        "text": "İkinci Dünya Savaşı'ndan sonra Japonya fakirdi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Çoğu otomobil çok pahalıydı.",
+      "text_markdown": "Çoğu otomobil çok pahalıydı.",
+      "tts": {
+        "text": "Çoğu otomobil çok pahalıydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "İnsanların etrafta dolaşmak için küçük ve ucuz bir yola ihtiyacı vardı.",
+      "text_markdown": "İnsanların etrafta dolaşmak için küçük ve ucuz bir yola ihtiyacı vardı.",
+      "tts": {
+        "text": "İnsanların etrafta dolaşmak için küçük ve ucuz bir yola ihtiyacı vardı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Genç bir Japon adam fırsatı gördü.",
+      "text_markdown": "Genç bir Japon adam fırsatı gördü.",
+      "tts": {
+        "text": "Genç bir Japon adam fırsatı gördü.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Adı Soichiro Honda'ydı.",
+      "text_markdown": "Adı Soichiro Honda'ydı.",
+      "tts": {
+        "text": "Adı Soichiro Honda'ydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "1948'de küçük bir şirket kurdu.",
+      "text_markdown": "1948'de küçük bir şirket kurdu.",
+      "tts": {
+        "text": "Bin dokuz yüz kırk sekizde küçük bir şirket kurdu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ona Honda adını verdi.",
+      "text_markdown": "Ona Honda adını verdi.",
+      "tts": {
+        "text": "Ona Honda adını verdi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1958'de Honda, Super Cub adlı küçücük bir motosiklet yaptı.",
+      "text_markdown": "1958'de Honda, Super Cub adlı küçücük bir motosiklet yaptı.",
+      "tts": {
+        "text": "Bin dokuz yüz elli sekizde Honda, Super Cub adlı küçücük bir motosiklet yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Super Cub'a binmek kolaydı.",
+      "text_markdown": "Super Cub'a binmek kolaydı.",
+      "tts": {
+        "text": "Super Cub'a binmek kolaydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tamir etmesi kolaydı.",
+      "text_markdown": "Tamir etmesi kolaydı.",
+      "tts": {
+        "text": "Tamir etmesi kolaydı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p29",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çok, çok ucuzdu.",
+      "text_markdown": "Çok, çok ucuzdu.",
+      "tts": {
+        "text": "Çok, çok ucuzdu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dünyanın her yerinden insanlar Super Cub aldı.",
+      "text_markdown": "Dünyanın her yerinden insanlar Super Cub aldı.",
+      "tts": {
+        "text": "Dünyanın her yerinden insanlar Super Cub aldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bugün, 100 milyondan fazla Super Cub satıldı.",
+      "text_markdown": "Bugün, 100 milyondan fazla Super Cub satıldı.",
+      "tts": {
+        "text": "Bugün, yüz milyondan fazla Super Cub satıldı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "O, tüm zamanların en çok satan motorlu taşıtıdır.",
+      "text_markdown": "O, tüm zamanların en çok satan motorlu taşıtıdır.",
+      "tts": {
+        "text": "O, tüm zamanların en çok satan motorlu taşıtıdır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kısa süre sonra, üç Japon şirketi daha Honda'yı izledi.",
+      "text_markdown": "Kısa süre sonra, üç Japon şirketi daha Honda'yı izledi.",
+      "tts": {
+        "text": "Kısa süre sonra, üç Japon şirketi daha Honda'yı izledi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bunlar Yamaha, Suzuki ve Kawasaki idi.",
+      "text_markdown": "Bunlar Yamaha, Suzuki ve Kawasaki idi.",
+      "tts": {
+        "text": "Bunlar Yamaha, Suzuki ve Kawasaki idi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Honda ile birlikte, onlara Büyük Dörtlü denir.",
+      "text_markdown": "Honda ile birlikte, onlara Büyük Dörtlü denir.",
+      "tts": {
+        "text": "Honda ile birlikte, onlara Büyük Dörtlü denir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Büyük Dörtlü, hızlı, ucuz ve kullanımı kolay motosikletler yaptı.",
+      "text_markdown": "Büyük Dörtlü, hızlı, ucuz ve kullanımı kolay motosikletler yaptı.",
+      "tts": {
+        "text": "Büyük Dörtlü, hızlı, ucuz ve kullanımı kolay motosikletler yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "1960'lı yıllara gelindiğinde, Japon motosikletleri her yerdeydi.",
+      "text_markdown": "1960'lı yıllara gelindiğinde, Japon motosikletleri her yerdeydi.",
+      "tts": {
+        "text": "Altmışlı yıllara gelindiğinde, Japon motosikletleri her yerdeydi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Bölüm 4 — Japonya'nın Yükselişi",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Onlar yolun yeni kralıydı.",
+      "text_markdown": "Onlar yolun yeni kralıydı.",
+      "tts": {
+        "text": "Onlar yolun yeni kralıydı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "text_markdown": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı"
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1960'lı yıllarda sürücüler daha hızlı gitmek istedi.",
+      "text_markdown": "1960'lı yıllarda sürücüler daha hızlı gitmek istedi.",
+      "tts": {
+        "text": "Altmışlı yıllarda sürücüler daha hızlı gitmek istedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Yapımcılar, dünyanın en hızlı motosikletini yapmak için bir yarışa başladı.",
+      "text_markdown": "Yapımcılar, dünyanın en hızlı motosikletini yapmak için bir yarışa başladı.",
+      "tts": {
+        "text": "Yapımcılar, dünyanın en hızlı motosikletini yapmak için bir yarışa başladı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İtalya'da MV Agusta adlı küçük bir şirket, yarış üstüne yarış kazanan güzel kırmızı motosikletler yaptı.",
+      "text_markdown": "İtalya'da MV Agusta adlı küçük bir şirket, yarış üstüne yarış kazanan güzel kırmızı motosikletler yaptı.",
+      "tts": {
+        "text": "İtalya'da Em Ve Agusta adlı küçük bir şirket, yarış üstüne yarış kazanan güzel kırmızı motosikletler yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "İngiltere'de Triumph ve Norton da güçlü makineler yaptı.",
+      "text_markdown": "İngiltere'de Triumph ve Norton da güçlü makineler yaptı.",
+      "tts": {
+        "text": "İngiltere'de Triumph ve Norton da güçlü makineler yaptı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sonra, 1969'da Honda muhteşem bir şey yaptı.",
+      "text_markdown": "Sonra, 1969'da Honda muhteşem bir şey yaptı.",
+      "tts": {
+        "text": "Sonra, bin dokuz yüz altmış dokuzda Honda muhteşem bir şey yaptı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "CB 750 adında bir motosiklet yaptılar.",
+      "text_markdown": "CB 750 adında bir motosiklet yaptılar.",
+      "tts": {
+        "text": "Ce Be yedi yüz elli adında bir motosiklet yaptılar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dört silindiri ve büyük bir motoru vardı.",
+      "text_markdown": "Dört silindiri ve büyük bir motoru vardı.",
+      "tts": {
+        "text": "Dört silindiri ve büyük bir motoru vardı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saatte 120 milden fazla gidebiliyordu.",
+      "text_markdown": "Saatte 120 milden fazla gidebiliyordu.",
+      "tts": {
+        "text": "Saatte yüz yirmi milden fazla gidebiliyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "O, ilk gerçek superbike'tı.",
+      "text_markdown": "O, ilk gerçek superbike'tı.",
+      "tts": {
+        "text": "O, ilk gerçek superbike'tı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "CB 750'den sonra her şirket bir superbike yapmak istedi.",
+      "text_markdown": "CB 750'den sonra her şirket bir superbike yapmak istedi.",
+      "tts": {
+        "text": "Ce Be yedi yüz elliden sonra her şirket bir superbike yapmak istedi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Motosikletler gittikçe daha hızlı oldu.",
+      "text_markdown": "Motosikletler gittikçe daha hızlı oldu.",
+      "tts": {
+        "text": "Motosikletler gittikçe daha hızlı oldu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kısa süre sonra, parlak fairing'leri vardı; bunlar rüzgârı kesen pürüzsüz plastik kabuklardır.",
+      "text_markdown": "Kısa süre sonra, parlak fairing'leri vardı; bunlar rüzgârı kesen pürüzsüz plastik kabuklardır.",
+      "tts": {
+        "text": "Kısa süre sonra, parlak fairing'leri vardı; bunlar rüzgârı kesen pürüzsüz plastik kabuklardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "1990'da, Kawasaki ZX-11 adlı bir Japon motosikleti dünyanın en hızlı motosikleti oldu.",
+      "text_markdown": "1990'da, Kawasaki ZX-11 adlı bir Japon motosikleti dünyanın en hızlı motosikleti oldu.",
+      "tts": {
+        "text": "Bin dokuz yüz doksanda, Kawasaki Ze İks on bir adlı bir Japon motosikleti dünyanın en hızlı motosikleti oldu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saatte neredeyse 175 mil gidebiliyordu.",
+      "text_markdown": "Saatte neredeyse 175 mil gidebiliyordu.",
+      "tts": {
+        "text": "Saatte neredeyse yüz yetmiş beş mil gidebiliyordu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Birkaç yıl sonra, Suzuki Hayabusa daha da hızlı gitti.",
+      "text_markdown": "Birkaç yıl sonra, Suzuki Hayabusa daha da hızlı gitti.",
+      "tts": {
+        "text": "Birkaç yıl sonra, Suzuki Hayabusa daha da hızlı gitti.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-110",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saatte 194 mile ulaştı.",
+      "text_markdown": "Saatte 194 mile ulaştı.",
+      "tts": {
+        "text": "Saatte yüz doksan dört mile ulaştı.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-111",
+      "part": 0,
+      "chapter": 5,
+      "title": "Bölüm 5 — Daha Hızlı, Daha Hızlı, Daha Hızlı",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Bu, bugün yoldaki çoğu otomobilden daha hızlı.",
+      "text_markdown": "Bu, bugün yoldaki çoğu otomobilden daha hızlı.",
+      "tts": {
+        "text": "Bu, bugün yoldaki çoğu otomobilden daha hızlı.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "text_markdown": "Bölüm 6 — Pek Çok Motosiklet Türü"
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün motosikletler pek çok şekilde olabilir.",
+      "text_markdown": "Bugün motosikletler pek çok şekilde olabilir.",
+      "tts": {
+        "text": "Bugün motosikletler pek çok şekilde olabilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Her tür, farklı bir iş için yapılır.",
+      "text_markdown": "Her tür, farklı bir iş için yapılır.",
+      "tts": {
+        "text": "Her tür, farklı bir iş için yapılır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir spor motosiklet, çok hızlı gitmek için yapılır.",
+      "text_markdown": "Bir spor motosiklet, çok hızlı gitmek için yapılır.",
+      "tts": {
+        "text": "Bir spor motosiklet, çok hızlı gitmek için yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hafif ve alçaktır.",
+      "text_markdown": "Hafif ve alçaktır.",
+      "tts": {
+        "text": "Hafif ve alçaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sürücü öne eğilir.",
+      "text_markdown": "Sürücü öne eğilir.",
+      "tts": {
+        "text": "Sürücü öne eğilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Spor motosikletler düz yollar ve yarış pistleri için yapılır.",
+      "text_markdown": "Spor motosikletler düz yollar ve yarış pistleri için yapılır.",
+      "tts": {
+        "text": "Spor motosikletler düz yollar ve yarış pistleri için yapılır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir kros motosikleti, çamur ve toprak için yapılır.",
+      "text_markdown": "Bir kros motosikleti, çamur ve toprak için yapılır.",
+      "tts": {
+        "text": "Bir kros motosikleti, çamur ve toprak için yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Uzun tekerlekleri ve büyük lastikleri vardır.",
+      "text_markdown": "Uzun tekerlekleri ve büyük lastikleri vardır.",
+      "tts": {
+        "text": "Uzun tekerlekleri ve büyük lastikleri vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kros motosikletleri tepelerin üzerinden atlayabilir.",
+      "text_markdown": "Kros motosikletleri tepelerin üzerinden atlayabilir.",
+      "tts": {
+        "text": "Kros motosikletleri tepelerin üzerinden atlayabilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p43",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pek çok genç sürücü, önce kros motosikletinde öğrenir.",
+      "text_markdown": "Pek çok genç sürücü, önce kros motosikletinde öğrenir.",
+      "tts": {
+        "text": "Pek çok genç sürücü, önce kros motosikletinde öğrenir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir cruiser motosikleti uzun ve alçaktır.",
+      "text_markdown": "Bir cruiser motosikleti uzun ve alçaktır.",
+      "tts": {
+        "text": "Bir cruiser motosikleti uzun ve alçaktır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sürücü dik oturur ve yavaş sürer.",
+      "text_markdown": "Sürücü dik oturur ve yavaş sürer.",
+      "tts": {
+        "text": "Sürücü dik oturur ve yavaş sürer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Harley-Davidson cruiser motosikletleriyle ünlüdür.",
+      "text_markdown": "Harley-Davidson cruiser motosikletleriyle ünlüdür.",
+      "tts": {
+        "text": "Harley Davidson cruiser motosikletleriyle ünlüdür.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Indian de öyle.",
+      "text_markdown": "Indian de öyle.",
+      "tts": {
+        "text": "Indian de öyle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir macera motosikleti, uzun yolculuklar için yapılır.",
+      "text_markdown": "Bir macera motosikleti, uzun yolculuklar için yapılır.",
+      "tts": {
+        "text": "Bir macera motosikleti, uzun yolculuklar için yapılır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hem yolda hem toprakta gidebilir.",
+      "text_markdown": "Hem yolda hem toprakta gidebilir.",
+      "tts": {
+        "text": "Hem yolda hem toprakta gidebilir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "BMW GS, ünlü bir macera motosikletidir.",
+      "text_markdown": "BMW GS, ünlü bir macera motosikletidir.",
+      "tts": {
+        "text": "Be Em Ve Ge Se, ünlü bir macera motosikletidir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-130",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "KTM de öyle.",
+      "text_markdown": "KTM de öyle.",
+      "tts": {
+        "text": "Ka Te Em de öyle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-131",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ayrıca chopper motosikletleri, scooter motosikletleri, yarış motosikletleri ve elektrikli motosikletler de vardır.",
+      "text_markdown": "Ayrıca chopper motosikletleri, scooter motosikletleri, yarış motosikletleri ve elektrikli motosikletler de vardır.",
+      "tts": {
+        "text": "Ayrıca chopper motosikletleri, scooter motosikletleri, yarış motosikletleri ve elektrikli motosikletler de vardır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-132",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Neredeyse her tür yol için bir motosiklet vardır.",
+      "text_markdown": "Neredeyse her tür yol için bir motosiklet vardır.",
+      "tts": {
+        "text": "Neredeyse her tür yol için bir motosiklet vardır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-133",
+      "part": 0,
+      "chapter": 6,
+      "title": "Bölüm 6 — Pek Çok Motosiklet Türü",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün dünyanın her ülkesinde bir motosiklet bulabilirsin.",
+      "text_markdown": "Bugün dünyanın her ülkesinde bir motosiklet bulabilirsin.",
+      "tts": {
+        "text": "Bugün dünyanın her ülkesinde bir motosiklet bulabilirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Bölüm 7 — Yeni Bir Yol",
+      "text_markdown": "Bölüm 7 — Yeni Bir Yol"
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bugün, motosikletin yeni bir tür motoru var.",
+      "text_markdown": "Bugün, motosikletin yeni bir tür motoru var.",
+      "tts": {
+        "text": "Bugün, motosikletin yeni bir tür motoru var.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bu, elektrikli motordur.",
+      "text_markdown": "Bu, elektrikli motordur.",
+      "tts": {
+        "text": "Bu, elektrikli motordur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Elektrikli bir motosiklet sessizdir.",
+      "text_markdown": "Elektrikli bir motosiklet sessizdir.",
+      "tts": {
+        "text": "Elektrikli bir motosiklet sessizdir.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Benzine ihtiyacı yoktur.",
+      "text_markdown": "Benzine ihtiyacı yoktur.",
+      "tts": {
+        "text": "Benzine ihtiyacı yoktur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sadece bir telefon gibi prize takılması yeterlidir.",
+      "text_markdown": "Sadece bir telefon gibi prize takılması yeterlidir.",
+      "tts": {
+        "text": "Sadece bir telefon gibi prize takılması yeterlidir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Zero adlı bir şirket, California'da elektrikli motosiklet yapar.",
+      "text_markdown": "Zero adlı bir şirket, California'da elektrikli motosiklet yapar.",
+      "tts": {
+        "text": "Zero adlı bir şirket, California'da elektrikli motosiklet yapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Harley-Davidson, şimdi LiveWire adında elektrikli bir motosiklet yapıyor.",
+      "text_markdown": "Harley-Davidson, şimdi LiveWire adında elektrikli bir motosiklet yapıyor.",
+      "tts": {
+        "text": "Harley Davidson, şimdi Layvvayır adında elektrikli bir motosiklet yapıyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Energica adlı bir İtalyan şirketi elektrikli yarış motosikletleri yapar.",
+      "text_markdown": "Energica adlı bir İtalyan şirketi elektrikli yarış motosikletleri yapar.",
+      "tts": {
+        "text": "Energica adlı bir İtalyan şirketi elektrikli yarış motosikletleri yapar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Çok hızlılar.",
+      "text_markdown": "Çok hızlılar.",
+      "tts": {
+        "text": "Çok hızlılar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İlk motosiklet olan Reitwagen, saatte 7 mil gidebiliyordu.",
+      "text_markdown": "İlk motosiklet olan Reitwagen, saatte 7 mil gidebiliyordu.",
+      "tts": {
+        "text": "İlk motosiklet olan Rayt Vagen, saatte yedi mil gidebiliyordu.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Bugünün elektrikli motosikletleri saatte 200 milden fazla gidebiliyor.",
+      "text_markdown": "Bugünün elektrikli motosikletleri saatte 200 milden fazla gidebiliyor.",
+      "tts": {
+        "text": "Bugünün elektrikli motosikletleri saatte iki yüz milden fazla gidebiliyor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Şimdiye kadar motosikletin hikayesi bu.",
+      "text_markdown": "Şimdiye kadar motosikletin hikayesi bu.",
+      "tts": {
+        "text": "Şimdiye kadar motosikletin hikayesi bu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, büyük hikayeydi.",
+      "text_markdown": "Bu, büyük hikayeydi.",
+      "tts": {
+        "text": "Bu, büyük hikayeydi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sonraki on bir kitap küçük hikayeleri anlatacak.",
+      "text_markdown": "Sonraki on bir kitap küçük hikayeleri anlatacak.",
+      "tts": {
+        "text": "Sonraki on bir kitap küçük hikayeleri anlatacak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her biri motosiklet dünyasının bir parçası hakkındadır.",
+      "text_markdown": "Her biri motosiklet dünyasının bir parçası hakkındadır.",
+      "tts": {
+        "text": "Her biri motosiklet dünyasının bir parçası hakkındadır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "İkinci cilt Harley-Davidson hakkındadır.",
+      "text_markdown": "İkinci cilt Harley-Davidson hakkındadır.",
+      "tts": {
+        "text": "İkinci cilt Harley Davidson hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Üçüncü cilt Honda hakkındadır.",
+      "text_markdown": "Üçüncü cilt Honda hakkındadır.",
+      "tts": {
+        "text": "Üçüncü cilt Honda hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dördüncü cilt İtalya'dan Ducati hakkındadır.",
+      "text_markdown": "Dördüncü cilt İtalya'dan Ducati hakkındadır.",
+      "tts": {
+        "text": "Dördüncü cilt İtalya'dan Ducati hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Beşinci cilt Almanya'dan BMW hakkındadır.",
+      "text_markdown": "Beşinci cilt Almanya'dan BMW hakkındadır.",
+      "tts": {
+        "text": "Beşinci cilt Almanya'dan Be Em Ve hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Altıncı cilt İngiltere'den Triumph hakkındadır.",
+      "text_markdown": "Altıncı cilt İngiltere'den Triumph hakkındadır.",
+      "tts": {
+        "text": "Altıncı cilt İngiltere'den Triumph hakkındadır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-155",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Yedinci cilt kros motosikletleri hakkındadır.",
+      "text_markdown": "Yedinci cilt kros motosikletleri hakkındadır.",
+      "tts": {
+        "text": "Yedinci cilt kros motosikletleri hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-156",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sekizinci cilt spor motosikletler hakkındadır.",
+      "text_markdown": "Sekizinci cilt spor motosikletler hakkındadır.",
+      "tts": {
+        "text": "Sekizinci cilt spor motosikletler hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-157",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Dokuzuncu cilt cruiser ve chopper motosikletleri hakkındadır.",
+      "text_markdown": "Dokuzuncu cilt cruiser ve chopper motosikletleri hakkındadır.",
+      "tts": {
+        "text": "Dokuzuncu cilt cruiser ve chopper motosikletleri hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-158",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Onuncu cilt macera motosikletleri hakkındadır.",
+      "text_markdown": "Onuncu cilt macera motosikletleri hakkındadır.",
+      "tts": {
+        "text": "Onuncu cilt macera motosikletleri hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-159",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "On birinci cilt yarışlar hakkındadır.",
+      "text_markdown": "On birinci cilt yarışlar hakkındadır.",
+      "tts": {
+        "text": "On birinci cilt yarışlar hakkındadır.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-160",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "On ikinci cilt elektrikli motosikletler ve gelecek hakkındadır.",
+      "text_markdown": "On ikinci cilt elektrikli motosikletler ve gelecek hakkındadır.",
+      "tts": {
+        "text": "On ikinci cilt elektrikli motosikletler ve gelecek hakkındadır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-161",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sana en eğlenceli görüneni seç.",
+      "text_markdown": "Sana en eğlenceli görüneni seç.",
+      "tts": {
+        "text": "Sana en eğlenceli görüneni seç.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-162",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bölüm 7 — Yeni Bir Yol",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sonra yolculuğa katıl.",
+      "text_markdown": "Sonra yolculuğa katıl.",
+      "tts": {
+        "text": "Sonra yolculuğa katıl.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-163",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Bu Kitap Hakkında",
+      "text_markdown": "Bu Kitap Hakkında"
+    },
+    {
+      "id": "ch07-164",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bu, Motosikletler serisinin ilk kitabıdır.",
+      "text_markdown": "Bu, Motosikletler serisinin ilk kitabıdır.",
+      "tts": {
+        "text": "Bu, Motosikletler serisinin ilk kitabıdır.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-165",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "August tarafından sesli okunur.",
+      "text_markdown": "August tarafından sesli okunur.",
+      "tts": {
+        "text": "August tarafından sesli okunur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-166",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Her cümle kısa ve nettir, böylece her dilde okuyabilirsin.",
+      "text_markdown": "Her cümle kısa ve nettir, böylece her dilde okuyabilirsin.",
+      "tts": {
+        "text": "Her cümle kısa ve nettir, böylece her dilde okuyabilirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-167",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bir cümlenin başka bir dilde nasıl çıktığını duymak istersen, aynı kitabı o dilde dinle.",
+      "text_markdown": "Bir cümlenin başka bir dilde nasıl çıktığını duymak istersen, aynı kitabı o dilde dinle.",
+      "tts": {
+        "text": "Bir cümlenin başka bir dilde nasıl çıktığını duymak istersen, aynı kitabı o dilde dinle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sayfadaki kelimeler duyduklarınla eşleşecek.",
+      "text_markdown": "Sayfadaki kelimeler duyduklarınla eşleşecek.",
+      "tts": {
+        "text": "Sayfadaki kelimeler duyduklarınla eşleşecek.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Böyle öğrenirsin.",
+      "text_markdown": "Böyle öğrenirsin.",
+      "tts": {
+        "text": "Böyle öğrenirsin.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Bu Kitap Hakkında",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Şimdi git, bir motosiklet bul ve onun vroom dediğini dinle.",
+      "text_markdown": "Şimdi git, bir motosiklet bul ve onun vroom dediğini dinle.",
+      "tts": {
+        "text": "Şimdi git, bir motosiklet bul ve onun vroom dediğini dinle.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    }
+  ]
+}

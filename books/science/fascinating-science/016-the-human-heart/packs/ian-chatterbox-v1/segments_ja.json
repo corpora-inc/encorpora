@@ -1,0 +1,6432 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_science_heart",
+  "language": "ja",
+  "total_segments": 402,
+  "segments": [
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "paragraph_id": "p1",
+      "text": "決して止まらないポンプ",
+      "text_markdown": "決して止まらないポンプ",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "決して止まらないポンプ"
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "paragraph_id": "p2",
+      "text": "あなたの心臓は今、鼓動を打っています。",
+      "text_markdown": "あなたの心臓は今、鼓動を打っています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "あなたの心臓は今、鼓動を打っています。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-003",
+      "paragraph_id": "p2",
+      "text": "眠っているときも鼓動を打っています。",
+      "text_markdown": "眠っているときも鼓動を打っています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "眠っているときも鼓動を打っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "paragraph_id": "p2",
+      "text": "食事をしているときも鼓動を打っています。",
+      "text_markdown": "食事をしているときも鼓動を打っています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "食事をしているときも鼓動を打っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "paragraph_id": "p2",
+      "text": "この文章を読んでいるときも鼓動を打っています。",
+      "text_markdown": "この文章を読んでいるときも鼓動を打っています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "この文章を読んでいるときも鼓動を打っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-006",
+      "paragraph_id": "p2",
+      "text": "あなたの心臓は決して休むことがありません。",
+      "text_markdown": "あなたの心臓は決して休むことがありません。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "あなたの心臓は決して休むことがありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-007",
+      "paragraph_id": "p2",
+      "text": "世界で最も信頼できるポンプです。",
+      "text_markdown": "世界で最も信頼できるポンプです。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "世界で最も信頼できるポンプです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-008",
+      "paragraph_id": "p3",
+      "text": "心臓は胸の中にある筋肉でできた器官です。",
+      "text_markdown": "心臓は胸の中にある筋肉でできた器官です。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心臓は胸の中にある筋肉でできた器官です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-009",
+      "paragraph_id": "p3",
+      "text": "器官とは、特定の役割を持つ体の一部です。",
+      "text_markdown": "器官とは、特定の役割を持つ体の一部です。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "器官とは、特定の役割を持つ体の一部です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-010",
+      "paragraph_id": "p3",
+      "text": "心臓の役割は血液を送り出すことです。",
+      "text_markdown": "心臓の役割は血液を送り出すことです。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心臓の役割は血液を送り出すことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-011",
+      "paragraph_id": "p3",
+      "text": "胸の中央よりやや左側に位置しています。",
+      "text_markdown": "胸の中央よりやや左側に位置しています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "胸の中央よりやや左側に位置しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "paragraph_id": "p3",
+      "text": "大きさはおよそあなたの握りこぶしくらいです。",
+      "text_markdown": "大きさはおよそあなたの握りこぶしくらいです。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "大きさはおよそあなたの握りこぶしくらいです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-013",
+      "paragraph_id": "p4",
+      "text": "心臓は心筋と呼ばれる特別な筋肉でできています。",
+      "text_markdown": "心臓は心筋と呼ばれる特別な筋肉でできています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心臓は心筋と呼ばれる特別な筋肉でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "paragraph_id": "p4",
+      "text": "「心筋」は「心臓に関する」という意味です。心筋は腕や脚の筋肉とは異なります。",
+      "text_markdown": "「心筋」は「心臓に関する」という意味です。心筋は腕や脚の筋肉とは異なります。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "「心筋」は「心臓に関する」という意味です。心筋は腕や脚の筋肉とは異なります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "paragraph_id": "p4",
+      "text": "腕の筋肉は思考でコントロールできます。",
+      "text_markdown": "腕の筋肉は思考でコントロールできます。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "腕の筋肉は思考でコントロールできます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-016",
+      "paragraph_id": "p4",
+      "text": "しかし心筋はコントロールできません。",
+      "text_markdown": "しかし心筋はコントロールできません。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "しかし心筋はコントロールできません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "paragraph_id": "p4",
+      "text": "心筋は勝手に収縮します。",
+      "text_markdown": "心筋は勝手に収縮します。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心筋は勝手に収縮します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-018",
+      "paragraph_id": "p4",
+      "text": "一生の間、毎秒自動的に収縮します。",
+      "text_markdown": "一生の間、毎秒自動的に収縮します。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "一生の間、毎秒自動的に収縮します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "paragraph_id": "p5",
+      "text": "収縮するたびに血液を体中に送り出します。",
+      "text_markdown": "収縮するたびに血液を体中に送り出します。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "収縮するたびに血液を体中に送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-020",
+      "paragraph_id": "p5",
+      "text": "血液は細胞に酸素を運びます。",
+      "text_markdown": "血液は細胞に酸素を運びます。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "血液は細胞に酸素を運びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-021",
+      "paragraph_id": "p5",
+      "text": "酸素は細胞がエネルギーを作るために必要な気体です。",
+      "text_markdown": "酸素は細胞がエネルギーを作るために必要な気体です。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "酸素は細胞がエネルギーを作るために必要な気体です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "paragraph_id": "p5",
+      "text": "酸素がなければ、細胞は数分で死んでしまいます。",
+      "text_markdown": "酸素がなければ、細胞は数分で死んでしまいます。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "酸素がなければ、細胞は数分で死んでしまいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "paragraph_id": "p5",
+      "text": "心臓は酸素が体のすべての部分に届くようにしています。",
+      "text_markdown": "心臓は酸素が体のすべての部分に届くようにしています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心臓は酸素が体のすべての部分に届くようにしています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-024",
+      "paragraph_id": "p6",
+      "text": "心臓は1分間におよそ5リットルの血液を送り出します。",
+      "text_markdown": "心臓は1分間におよそ5リットルの血液を送り出します。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心臓は一分間におよそ五リットルの血液を送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-025",
+      "paragraph_id": "p6",
+      "text": "1リットルはおよそ1クォートです。",
+      "text_markdown": "1リットルはおよそ1クォートです。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "一リットルはおよそ一クォートです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "paragraph_id": "p6",
+      "text": "つまり、あなたの血液全体が約1分間で心臓を一周することになります。",
+      "text_markdown": "つまり、あなたの血液全体が約1分間で心臓を一周することになります。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "つまり、あなたの血液全体が約一分間で心臓を一周することになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "paragraph_id": "p6",
+      "text": "1日で、心臓はおよそ7,500リットルの血液を送り出します。",
+      "text_markdown": "1日で、心臓はおよそ7,500リットルの血液を送り出します。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "一日で、心臓はおよそ七千五百リットルの血液を送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-028",
+      "paragraph_id": "p6",
+      "text": "1年間では、約300万リットルを送り出します。",
+      "text_markdown": "1年間では、約300万リットルを送り出します。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "一年間では、約三百万リットルを送り出します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "paragraph_id": "p7",
+      "text": "人間の心臓は早期に鼓動を始めます。",
+      "text_markdown": "人間の心臓は早期に鼓動を始めます。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "人間の心臓は早期に鼓動を始めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "paragraph_id": "p7",
+      "text": "妊娠後約3～4週間で始まります。",
+      "text_markdown": "妊娠後約3～4週間で始まります。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "妊娠後約三から四週間で始まります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-031",
+      "paragraph_id": "p7",
+      "text": "妊娠とは新しい生命が始まる瞬間です。",
+      "text_markdown": "妊娠とは新しい生命が始まる瞬間です。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "妊娠とは新しい生命が始まる瞬間です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "paragraph_id": "p7",
+      "text": "心臓は最初に形成される器官の一つです。",
+      "text_markdown": "心臓は最初に形成される器官の一つです。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心臓は最初に形成される器官の一つです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "paragraph_id": "p7",
+      "text": "脳が完全に発達する前に鼓動を始めます。",
+      "text_markdown": "脳が完全に発達する前に鼓動を始めます。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "脳が完全に発達する前に鼓動を始めます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-034",
+      "paragraph_id": "p8",
+      "text": "古代の人々は心臓が重要であることを知っていました。",
+      "text_markdown": "古代の人々は心臓が重要であることを知っていました。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "古代の人々は心臓が重要であることを知っていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-035",
+      "paragraph_id": "p8",
+      "text": "エジプト人は心臓が知性の中心だと信じていました。",
+      "text_markdown": "エジプト人は心臓が知性の中心だと信じていました。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "エジプト人は心臓が知性の中心だと信じていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-036",
+      "paragraph_id": "p8",
+      "text": "ギリシア人は心臓と脳のどちらが体をコントロールするかについて議論していました。",
+      "text_markdown": "ギリシア人は心臓と脳のどちらが体をコントロールするかについて議論していました。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "ギリシア人は心臓と脳のどちらが体をコントロールするかについて議論していました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "paragraph_id": "p8",
+      "text": "アリストテレスは心臓が魂の座だと考えていました。",
+      "text_markdown": "アリストテレスは心臓が魂の座だと考えていました。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "アリストテレスは心臓が魂の座だと考えていました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-038",
+      "paragraph_id": "p8",
+      "text": "現在では脳が思考をコントロールすることがわかっています。",
+      "text_markdown": "現在では脳が思考をコントロールすることがわかっています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "現在では脳が思考をコントロールすることがわかっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "paragraph_id": "p8",
+      "text": "しかし心臓は脳を生かし続けています。",
+      "text_markdown": "しかし心臓は脳を生かし続けています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "しかし心臓は脳を生かし続けています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-040",
+      "paragraph_id": "p9",
+      "text": "循環系は体中に血液を運ぶネットワークです。",
+      "text_markdown": "循環系は体中に血液を運ぶネットワークです。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "循環系は体中に血液を運ぶネットワークです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "paragraph_id": "p9",
+      "text": "心臓はこの循環系の中心にあります。",
+      "text_markdown": "心臓はこの循環系の中心にあります。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "心臓はこの循環系の中心にあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-042",
+      "paragraph_id": "p9",
+      "text": "循環（Circulatory）は「circulate（循環する）」という言葉から来ており、これは円を描くように動くという意味です。",
+      "text_markdown": "循環（Circulatory）は「circulate（循環する）」という言葉から来ており、これは円を描くように動くという意味です。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "循環は「めぐる」という言葉から来ており、これは円を描くように動くという意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-043",
+      "paragraph_id": "p9",
+      "text": "血液は心臓を出て、体内を巡り、心臓に戻ってきます。",
+      "text_markdown": "血液は心臓を出て、体内を巡り、心臓に戻ってきます。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "血液は心臓を出て、体内を巡り、心臓に戻ってきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "paragraph_id": "p9",
+      "text": "この循環は決して止まりません。",
+      "text_markdown": "この循環は決して止まりません。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "この循環は決して止まりません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-045",
+      "paragraph_id": "p10",
+      "text": "あなたの心臓は、生まれる前から鼓動し続けています。",
+      "text_markdown": "あなたの心臓は、生まれる前から鼓動し続けています。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "あなたの心臓は、生まれる前から鼓動し続けています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch01-046",
+      "paragraph_id": "p10",
+      "text": "あなたの一生の間に、心臓は何十億回も拍動します。",
+      "text_markdown": "あなたの一生の間に、心臓は何十億回も拍動します。",
+      "title": "決して止まらないポンプ",
+      "tts": {
+        "text": "あなたの一生の間に、心臓は何十億回も拍動します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch02-047",
+      "heading_level": 1,
+      "paragraph_id": "p11",
+      "text": "4つの部屋",
+      "text_markdown": "4つの部屋",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "四つの部屋"
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-048",
+      "paragraph_id": "p12",
+      "text": "人間の心臓には4つの部屋があります。",
+      "text_markdown": "人間の心臓には4つの部屋があります。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "人間の心臓には四つの部屋があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-049",
+      "paragraph_id": "p12",
+      "text": "部屋（chamber）とは、囲まれた空間のことです。",
+      "text_markdown": "部屋（chamber）とは、囲まれた空間のことです。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "部屋とは、囲まれた空間のことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-050",
+      "paragraph_id": "p12",
+      "text": "各部屋は血液を動かす上で特定の役割を果たします。",
+      "text_markdown": "各部屋は血液を動かす上で特定の役割を果たします。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "各部屋は血液を動かす上で特定の役割を果たします。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-051",
+      "paragraph_id": "p13",
+      "text": "上にある2つの部屋は心房と呼ばれます。",
+      "text_markdown": "上にある2つの部屋は心房と呼ばれます。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "上にある二つの部屋は心房と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-052",
+      "paragraph_id": "p13",
+      "text": "1つの場合は心房（atrium）と呼ばれます。",
+      "text_markdown": "1つの場合は心房（atrium）と呼ばれます。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "片方は心房と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-053",
+      "paragraph_id": "p13",
+      "text": "心房はより小さく、より薄い壁でできています。",
+      "text_markdown": "心房はより小さく、より薄い壁でできています。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "心房はより小さく、より薄い壁でできています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-054",
+      "paragraph_id": "p13",
+      "text": "心房は心臓に流れ込む血液を受け取ります。",
+      "text_markdown": "心房は心臓に流れ込む血液を受け取ります。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "心房は心臓に流れ込む血液を受け取ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-055",
+      "paragraph_id": "p13",
+      "text": "心房を受付室だと考えてください。",
+      "text_markdown": "心房を受付室だと考えてください。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "心房を受付室だと考えてください。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-056",
+      "paragraph_id": "p14",
+      "text": "下にある2つの部屋は心室と呼ばれます。",
+      "text_markdown": "下にある2つの部屋は心室と呼ばれます。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "下にある二つの部屋は心室と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-057",
+      "paragraph_id": "p14",
+      "text": "心室はより厚く、より筋肉質な部屋です。",
+      "text_markdown": "心室はより厚く、より筋肉質な部屋です。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "心室はより厚く、より筋肉質な部屋です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-058",
+      "paragraph_id": "p14",
+      "text": "心室は心臓から血液を送り出します。",
+      "text_markdown": "心室は心臓から血液を送り出します。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "心室は心臓から血液を送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-059",
+      "paragraph_id": "p14",
+      "text": "心室が重い仕事をしているのです。",
+      "text_markdown": "心室が重い仕事をしているのです。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "心室が重い仕事をしているのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-060",
+      "paragraph_id": "p15",
+      "text": "右心房は体から血液を受け取ります。",
+      "text_markdown": "右心房は体から血液を受け取ります。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "右心房は体から血液を受け取ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-061",
+      "paragraph_id": "p15",
+      "text": "この血液は既に細胞に酸素を届け終えています。",
+      "text_markdown": "この血液は既に細胞に酸素を届け終えています。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "この血液は既に細胞に酸素を届け終えています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-062",
+      "paragraph_id": "p15",
+      "text": "酸素が少なくなっています。",
+      "text_markdown": "酸素が少なくなっています。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "酸素が少なくなっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-063",
+      "paragraph_id": "p15",
+      "text": "暗い赤色をしています。",
+      "text_markdown": "暗い赤色をしています。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "暗い赤色をしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-064",
+      "paragraph_id": "p15",
+      "text": "血液は2本の大きな静脈を通って右心房に入ります。",
+      "text_markdown": "血液は2本の大きな静脈を通って右心房に入ります。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "血液は二本の大きな静脈を通って右心房に入ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-065",
+      "paragraph_id": "p15",
+      "text": "静脈とは、心臓に向かって血液を運ぶ血管です。",
+      "text_markdown": "静脈とは、心臓に向かって血液を運ぶ血管です。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "静脈とは、心臓に向かって血液を運ぶ血管です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-066",
+      "paragraph_id": "p15",
+      "text": "この2本の静脈は上大静脈と下大静脈です。",
+      "text_markdown": "この2本の静脈は上大静脈と下大静脈です。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "この二本の静脈は上大静脈と下大静脈です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-067",
+      "paragraph_id": "p15",
+      "text": "上（Superior）は上部という意味です。",
+      "text_markdown": "上（Superior）は上部という意味です。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "上は上部という意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 8,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-068",
+      "paragraph_id": "p15",
+      "text": "下（Inferior）は下部という意味です。",
+      "text_markdown": "下（Inferior）は下部という意味です。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "下は下部という意味です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-069",
+      "paragraph_id": "p16",
+      "text": "右心房から、血液は下に流れて右心室に入ります。",
+      "text_markdown": "右心房から、血液は下に流れて右心室に入ります。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "右心房から、血液は下に流れて右心室に入ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-070",
+      "paragraph_id": "p16",
+      "text": "右心室はこの血液を肺に送り出します。",
+      "text_markdown": "右心室はこの血液を肺に送り出します。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "右心室はこの血液を肺に送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-071",
+      "paragraph_id": "p16",
+      "text": "肺で、血液は新鮮な酸素を取り込みます。",
+      "text_markdown": "肺で、血液は新鮮な酸素を取り込みます。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "肺で、血液は新鮮な酸素を取り込みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-072",
+      "paragraph_id": "p16",
+      "text": "また、二酸化炭素を放出します。",
+      "text_markdown": "また、二酸化炭素を放出します。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "また、二酸化炭素を放出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-073",
+      "paragraph_id": "p16",
+      "text": "二酸化炭素は細胞が産生する老廃物のガスです。",
+      "text_markdown": "二酸化炭素は細胞が産生する老廃物のガスです。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "二酸化炭素は細胞が産生する老廃物のガスです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-074",
+      "paragraph_id": "p16",
+      "text": "あなたは呼吸するたびに二酸化炭素を吐き出しています。",
+      "text_markdown": "あなたは呼吸するたびに二酸化炭素を吐き出しています。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "あなたは呼吸するたびに二酸化炭素を吐き出しています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-075",
+      "paragraph_id": "p17",
+      "text": "血液は肺から左心房に戻ってきます。",
+      "text_markdown": "血液は肺から左心房に戻ってきます。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "血液は肺から左心房に戻ってきます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-076",
+      "paragraph_id": "p17",
+      "text": "この血液は今、酸素が豊富な状態です。",
+      "text_markdown": "この血液は今、酸素が豊富な状態です。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "この血液は今、酸素が豊富な状態です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-077",
+      "paragraph_id": "p17",
+      "text": "鮮やかな赤色をしています。",
+      "text_markdown": "鮮やかな赤色をしています。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "鮮やかな赤色をしています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-078",
+      "paragraph_id": "p17",
+      "text": "肺静脈を通って左心房に入ります。",
+      "text_markdown": "肺静脈を通って左心房に入ります。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "肺静脈を通って左心房に入ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-079",
+      "paragraph_id": "p17",
+      "text": "肺の（Pulmonary）は「肺に関連する」という意味です。",
+      "text_markdown": "肺の（Pulmonary）は「肺に関連する」という意味です。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "肺の、は「肺に関連する」という意味です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-080",
+      "paragraph_id": "p18",
+      "text": "左心房から、血液は左心室に流れ込みます。",
+      "text_markdown": "左心房から、血液は左心室に流れ込みます。",
+      "title": "4つの部屋",
+      "tts": {
+        "text": "左心房から、血液は左心室に流れ込みます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-081",
+      "paragraph_id": "p18",
+      "text": "左心室は最も強い心房です。",
+      "text_markdown": "左心室は最も強い心房です。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "左心室は最も強い心房です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-082",
+      "paragraph_id": "p18",
+      "text": "その壁は最も厚いのです。",
+      "text_markdown": "その壁は最も厚いのです。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "その壁は最も厚いのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-083",
+      "paragraph_id": "p18",
+      "text": "左心室は酸素を豊富に含んだ血液を全身に送り出します。",
+      "text_markdown": "左心室は酸素を豊富に含んだ血液を全身に送り出します。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "左心室は酸素を豊富に含んだ血液を全身に送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-084",
+      "paragraph_id": "p18",
+      "text": "つま先から頭のてっぺんまで、血液を押し上げなければなりません。",
+      "text_markdown": "つま先から頭のてっぺんまで、血液を押し上げなければなりません。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "つま先から頭のてっぺんまで、血液を押し上げなければなりません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-085",
+      "paragraph_id": "p18",
+      "text": "これには大きな力が必要です。",
+      "text_markdown": "これには大きな力が必要です。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "これには大きな力が必要です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-086",
+      "paragraph_id": "p19",
+      "text": "心房の間には弁があります。",
+      "text_markdown": "心房の間には弁があります。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "心房の間には弁があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-087",
+      "paragraph_id": "p19",
+      "text": "弁は一方向にだけ開くひだのことです。",
+      "text_markdown": "弁は一方向にだけ開くひだのことです。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "弁は一方向にだけ開くひだのことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-088",
+      "paragraph_id": "p19",
+      "text": "弁は血液が逆流するのを防ぎます。",
+      "text_markdown": "弁は血液が逆流するのを防ぎます。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "弁は血液が逆流するのを防ぎます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-089",
+      "paragraph_id": "p19",
+      "text": "心臓には4つの弁があります。",
+      "text_markdown": "心臓には4つの弁があります。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "心臓には四つの弁があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-090",
+      "paragraph_id": "p19",
+      "text": "三尖弁は右心房と右心室の間にあります。",
+      "text_markdown": "三尖弁は右心房と右心室の間にあります。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "三尖弁は右心房と右心室の間にあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-091",
+      "paragraph_id": "p19",
+      "text": "僧帽弁は左心房と左心室の間にあります。",
+      "text_markdown": "僧帽弁は左心房と左心室の間にあります。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "僧帽弁は左心房と左心室の間にあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-092",
+      "paragraph_id": "p19",
+      "text": "肺動脈弁は右心室の出口を守っています。",
+      "text_markdown": "肺動脈弁は右心室の出口を守っています。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "肺動脈弁は右心室の出口を守っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-093",
+      "paragraph_id": "p19",
+      "text": "大動脈弁は左心室の出口を守っています。",
+      "text_markdown": "大動脈弁は左心室の出口を守っています。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "大動脈弁は左心室の出口を守っています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-094",
+      "paragraph_id": "p20",
+      "text": "弁が閉じると音がします。",
+      "text_markdown": "弁が閉じると音がします。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "弁が閉じると音がします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-095",
+      "paragraph_id": "p20",
+      "text": "医師は聴診器でこの音を聞くことができます。",
+      "text_markdown": "医師は聴診器でこの音を聞くことができます。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "医師は聴診器でこの音を聞くことができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-096",
+      "paragraph_id": "p20",
+      "text": "聴診器は体内の音を聞くための道具です。",
+      "text_markdown": "聴診器は体内の音を聞くための道具です。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "聴診器は体内の音を聞くための道具です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-097",
+      "paragraph_id": "p20",
+      "text": "「ドクン・ドクン」という心拍音は弁が閉じる音から生まれます。",
+      "text_markdown": "「ドクン・ドクン」という心拍音は弁が閉じる音から生まれます。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "「ドクン・ドクン」という心拍音は弁が閉じる音から生まれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-098",
+      "paragraph_id": "p20",
+      "text": "「ドク」は僧帽弁と三尖弁が閉じる音です。",
+      "text_markdown": "「ドク」は僧帽弁と三尖弁が閉じる音です。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "「ドク」は僧帽弁と三尖弁が閉じる音です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-099",
+      "paragraph_id": "p20",
+      "text": "「ン」は大動脈弁と肺動脈弁が閉じる音です。",
+      "text_markdown": "「ン」は大動脈弁と肺動脈弁が閉じる音です。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "「ン」は大動脈弁と肺動脈弁が閉じる音です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-100",
+      "paragraph_id": "p21",
+      "text": "4つの心房。",
+      "text_markdown": "4つの心房。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "四つの心房。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-101",
+      "paragraph_id": "p21",
+      "text": "4つの弁。",
+      "text_markdown": "4つの弁。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "四つの弁。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 2,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch02-102",
+      "paragraph_id": "p21",
+      "text": "一つの目的：血液を流し続けること。",
+      "text_markdown": "一つの目的：血液を流し続けること。",
+      "title": "四つの心房",
+      "tts": {
+        "text": "一つの目的：血液を流し続けること。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch03-103",
+      "heading_level": 1,
+      "paragraph_id": "p22",
+      "text": "血管",
+      "text_markdown": "血管",
+      "title": "血管",
+      "tts": {
+        "text": "血管"
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-104",
+      "paragraph_id": "p23",
+      "text": "血液は体内を自由に流れているわけではありません。",
+      "text_markdown": "血液は体内を自由に流れているわけではありません。",
+      "title": "血管",
+      "tts": {
+        "text": "血液は体内を自由に流れているわけではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-105",
+      "paragraph_id": "p23",
+      "text": "血管と呼ばれる管を通って移動します。",
+      "text_markdown": "血管と呼ばれる管を通って移動します。",
+      "title": "血管",
+      "tts": {
+        "text": "血管と呼ばれる管を通って移動します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-106",
+      "paragraph_id": "p23",
+      "text": "血管は体内のすべての組織に届くネットワークを形成しています。",
+      "text_markdown": "血管は体内のすべての組織に届くネットワークを形成しています。",
+      "title": "血管",
+      "tts": {
+        "text": "血管は体内のすべての組織に届くネットワークを形成しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-107",
+      "paragraph_id": "p23",
+      "text": "すべての血管を端から端まで並べると、約100,000キロメートルになります。",
+      "text_markdown": "すべての血管を端から端まで並べると、約100,000キロメートルになります。",
+      "title": "血管",
+      "tts": {
+        "text": "すべての血管を端から端まで並べると、約十万キロメートルになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-108",
+      "paragraph_id": "p23",
+      "text": "これは地球を2周半できる長さです。",
+      "text_markdown": "これは地球を2周半できる長さです。",
+      "title": "血管",
+      "tts": {
+        "text": "これは地球を二周半できる長さです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-109",
+      "paragraph_id": "p24",
+      "text": "血管には主に3つの種類があります：動脈、静脈、毛細血管です。",
+      "text_markdown": "血管には主に3つの種類があります：動脈、静脈、毛細血管です。",
+      "title": "血管",
+      "tts": {
+        "text": "血管には主に三つの種類があります：動脈、静脈、毛細血管です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-110",
+      "paragraph_id": "p25",
+      "text": "動脈は心臓から血液を運び出します。",
+      "text_markdown": "動脈は心臓から血液を運び出します。",
+      "title": "血管",
+      "tts": {
+        "text": "動脈は心臓から血液を運び出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-111",
+      "paragraph_id": "p25",
+      "text": "覚え方はこうです：「動脈」は心臓から「動き」出すと考えましょう。動脈は酸素を豊富に含んだ血液を組織に運びます。",
+      "text_markdown": "覚え方はこうです：「動脈」は心臓から「動き」出すと考えましょう。動脈は酸素を豊富に含んだ血液を組織に運びます。",
+      "title": "血管",
+      "tts": {
+        "text": "覚え方はこうです：「動脈」は心臓から「動き」出すと考えましょう。動脈は酸素を豊富に含んだ血液を組織に運びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-112",
+      "paragraph_id": "p25",
+      "text": "最も大きな動脈は大動脈です。",
+      "text_markdown": "最も大きな動脈は大動脈です。",
+      "title": "血管",
+      "tts": {
+        "text": "最も大きな動脈は大動脈です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-113",
+      "paragraph_id": "p25",
+      "text": "大動脈は左心室から出ています。",
+      "text_markdown": "大動脈は左心室から出ています。",
+      "title": "血管",
+      "tts": {
+        "text": "大動脈は左心室から出ています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-114",
+      "paragraph_id": "p25",
+      "text": "上向きに弧を描き、胸部と腹部を通って下向きに曲がっています。",
+      "text_markdown": "上向きに弧を描き、胸部と腹部を通って下向きに曲がっています。",
+      "title": "血管",
+      "tts": {
+        "text": "上向きに弧を描き、胸部と腹部を通って下向きに曲がっています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-115",
+      "paragraph_id": "p25",
+      "text": "大動脈から枝が分かれて、体のあらゆる部分へと向かいます。",
+      "text_markdown": "大動脈から枝が分かれて、体のあらゆる部分へと向かいます。",
+      "title": "血管",
+      "tts": {
+        "text": "大動脈から枝が分かれて、体のあらゆる部分へと向かいます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-116",
+      "paragraph_id": "p26",
+      "text": "動脈の壁は厚く弾力性があります。",
+      "text_markdown": "動脈の壁は厚く弾力性があります。",
+      "title": "血管",
+      "tts": {
+        "text": "動脈の壁は厚く弾力性があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-117",
+      "paragraph_id": "p26",
+      "text": "弾力性とは伸び縮みできることを意味します。",
+      "text_markdown": "弾力性とは伸び縮みできることを意味します。",
+      "title": "血管",
+      "tts": {
+        "text": "弾力性とは伸び縮みできることを意味します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-118",
+      "paragraph_id": "p26",
+      "text": "心臓が収縮すると、血液の波が動脈に押し込まれます。",
+      "text_markdown": "心臓が収縮すると、血液の波が動脈に押し込まれます。",
+      "title": "血管",
+      "tts": {
+        "text": "心臓が収縮すると、血液の波が動脈に押し込まれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-119",
+      "paragraph_id": "p26",
+      "text": "動脈壁はこの圧力を吸収するために拡張します。",
+      "text_markdown": "動脈壁はこの圧力を吸収するために拡張します。",
+      "title": "血管",
+      "tts": {
+        "text": "動脈壁はこの圧力を吸収するために拡張します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-120",
+      "paragraph_id": "p26",
+      "text": "そして元に戻り、血液を前に押し出します。",
+      "text_markdown": "そして元に戻り、血液を前に押し出します。",
+      "title": "血管",
+      "tts": {
+        "text": "そして元に戻り、血液を前に押し出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-121",
+      "paragraph_id": "p26",
+      "text": "これが脈拍を作り出します。",
+      "text_markdown": "これが脈拍を作り出します。",
+      "title": "血管",
+      "tts": {
+        "text": "これが脈拍を作り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-122",
+      "paragraph_id": "p26",
+      "text": "脈拍とは、特定の場所で感じることができるリズミカルな拍動です。",
+      "text_markdown": "脈拍とは、特定の場所で感じることができるリズミカルな拍動です。",
+      "title": "血管",
+      "tts": {
+        "text": "脈拍とは、特定の場所で感じることができるリズミカルな拍動です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-123",
+      "paragraph_id": "p26",
+      "text": "手首や首の側面で脈拍を感じることができます。",
+      "text_markdown": "手首や首の側面で脈拍を感じることができます。",
+      "title": "血管",
+      "tts": {
+        "text": "手首や首の側面で脈拍を感じることができます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-124",
+      "paragraph_id": "p27",
+      "text": "静脈は血液を心臓に向かって運び戻します。",
+      "text_markdown": "静脈は血液を心臓に向かって運び戻します。",
+      "title": "血管",
+      "tts": {
+        "text": "静脈は血液を心臓に向かって運び戻します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-125",
+      "paragraph_id": "p27",
+      "text": "ほとんどの静脈は酸素濃度の低い血液を運びます。",
+      "text_markdown": "ほとんどの静脈は酸素濃度の低い血液を運びます。",
+      "title": "血管",
+      "tts": {
+        "text": "ほとんどの静脈は酸素濃度の低い血液を運びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-126",
+      "paragraph_id": "p27",
+      "text": "静脈の壁は動脈の壁よりも薄いです。",
+      "text_markdown": "静脈の壁は動脈の壁よりも薄いです。",
+      "title": "血管",
+      "tts": {
+        "text": "静脈の壁は動脈の壁よりも薄いです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-127",
+      "paragraph_id": "p27",
+      "text": "静脈内の血液はより低い圧力の下で流れます。",
+      "text_markdown": "静脈内の血液はより低い圧力の下で流れます。",
+      "title": "血管",
+      "tts": {
+        "text": "静脈内の血液はより低い圧力の下で流れます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-128",
+      "paragraph_id": "p27",
+      "text": "静脈には内部に小さな弁があります。",
+      "text_markdown": "静脈には内部に小さな弁があります。",
+      "title": "血管",
+      "tts": {
+        "text": "静脈には内部に小さな弁があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-129",
+      "paragraph_id": "p27",
+      "text": "これらの弁は血液が逆流するのを防ぎます。",
+      "text_markdown": "これらの弁は血液が逆流するのを防ぎます。",
+      "title": "血管",
+      "tts": {
+        "text": "これらの弁は血液が逆流するのを防ぎます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-130",
+      "paragraph_id": "p27",
+      "text": "立ち上がると、足の血液は重力に逆らって上向きに流れなければなりません。",
+      "text_markdown": "立ち上がると、足の血液は重力に逆らって上向きに流れなければなりません。",
+      "title": "血管",
+      "tts": {
+        "text": "立ち上がると、足の血液は重力に逆らって上向きに流れなければなりません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-131",
+      "paragraph_id": "p27",
+      "text": "弁は血液を正しい方向に流し続けます。",
+      "text_markdown": "弁は血液を正しい方向に流し続けます。",
+      "title": "血管",
+      "tts": {
+        "text": "弁は血液を正しい方向に流し続けます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-132",
+      "paragraph_id": "p28",
+      "text": "毛細血管は最も小さな血管です。",
+      "text_markdown": "毛細血管は最も小さな血管です。",
+      "title": "血管",
+      "tts": {
+        "text": "毛細血管は最も小さな血管です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-133",
+      "paragraph_id": "p28",
+      "text": "それらは顕微鏡的な大きさです。",
+      "text_markdown": "それらは顕微鏡的な大きさです。",
+      "title": "血管",
+      "tts": {
+        "text": "それらは顕微鏡的な大きさです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-134",
+      "paragraph_id": "p28",
+      "text": "顕微鏡的とは、顕微鏡なしでは見えないほど小さいという意味です。",
+      "text_markdown": "顕微鏡的とは、顕微鏡なしでは見えないほど小さいという意味です。",
+      "title": "血管",
+      "tts": {
+        "text": "顕微鏡的とは、顕微鏡なしでは見えないほど小さいという意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-135",
+      "paragraph_id": "p28",
+      "text": "毛細血管の壁はわずか1細胞の厚さです。",
+      "text_markdown": "毛細血管の壁はわずか1細胞の厚さです。",
+      "title": "血管",
+      "tts": {
+        "text": "毛細血管の壁はわずか一細胞の厚さです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-136",
+      "paragraph_id": "p28",
+      "text": "この薄さが重要です。",
+      "text_markdown": "この薄さが重要です。",
+      "title": "血管",
+      "tts": {
+        "text": "この薄さが重要です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-137",
+      "paragraph_id": "p28",
+      "text": "酸素が毛細血管の壁を通過して、周囲の組織に入ります。",
+      "text_markdown": "酸素が毛細血管の壁を通過して、周囲の組織に入ります。",
+      "title": "血管",
+      "tts": {
+        "text": "酸素が毛細血管の壁を通過して、周囲の組織に入ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-138",
+      "paragraph_id": "p28",
+      "text": "二酸化炭素が組織から毛細血管に移動します。",
+      "text_markdown": "二酸化炭素が組織から毛細血管に移動します。",
+      "title": "血管",
+      "tts": {
+        "text": "二酸化炭素が組織から毛細血管に移動します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-139",
+      "paragraph_id": "p28",
+      "text": "栄養素が外に出ます。",
+      "text_markdown": "栄養素が外に出ます。",
+      "title": "血管",
+      "tts": {
+        "text": "栄養素が外に出ます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 8,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-140",
+      "paragraph_id": "p28",
+      "text": "老廃物が中に入ります。",
+      "text_markdown": "老廃物が中に入ります。",
+      "title": "血管",
+      "tts": {
+        "text": "老廃物が中に入ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 9,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-141",
+      "paragraph_id": "p28",
+      "text": "すべての交換は毛細血管で起こります。",
+      "text_markdown": "すべての交換は毛細血管で起こります。",
+      "title": "血管",
+      "tts": {
+        "text": "すべての交換は毛細血管で起こります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-142",
+      "paragraph_id": "p29",
+      "text": "動脈はより小さな血管である細動脈に分岐します。",
+      "text_markdown": "動脈はより小さな血管である細動脈に分岐します。",
+      "title": "血管",
+      "tts": {
+        "text": "動脈はより小さな血管である細動脈に分岐します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-143",
+      "paragraph_id": "p29",
+      "text": "細動脈は毛細血管に接続します。",
+      "text_markdown": "細動脈は毛細血管に接続します。",
+      "title": "血管",
+      "tts": {
+        "text": "細動脈は毛細血管に接続します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-144",
+      "paragraph_id": "p29",
+      "text": "毛細血管は少し大きな血管である細静脈に合流します。",
+      "text_markdown": "毛細血管は少し大きな血管である細静脈に合流します。",
+      "title": "血管",
+      "tts": {
+        "text": "毛細血管は少し大きな血管である細静脈に合流します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-145",
+      "paragraph_id": "p29",
+      "text": "細静脈は静脈に合流します。",
+      "text_markdown": "細静脈は静脈に合流します。",
+      "title": "血管",
+      "tts": {
+        "text": "細静脈は静脈に合流します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-146",
+      "paragraph_id": "p29",
+      "text": "静脈は血液を心臓に戻します。",
+      "text_markdown": "静脈は血液を心臓に戻します。",
+      "title": "血管",
+      "tts": {
+        "text": "静脈は血液を心臓に戻します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-147",
+      "paragraph_id": "p30",
+      "text": "これは閉じたループです。",
+      "text_markdown": "これは閉じたループです。",
+      "title": "血管",
+      "tts": {
+        "text": "これは閉じたループです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-148",
+      "paragraph_id": "p30",
+      "text": "正常な状態では血液は血管から出ることはありません。",
+      "text_markdown": "正常な状態では血液は血管から出ることはありません。",
+      "title": "血管",
+      "tts": {
+        "text": "正常な状態では血液は血管から出ることはありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-149",
+      "paragraph_id": "p30",
+      "text": "心臓が動脈を通して血液を押し出します。",
+      "text_markdown": "心臓が動脈を通して血液を押し出します。",
+      "title": "血管",
+      "tts": {
+        "text": "心臓が動脈を通して血液を押し出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-150",
+      "paragraph_id": "p30",
+      "text": "毛細血管が交換を行います。",
+      "text_markdown": "毛細血管が交換を行います。",
+      "title": "血管",
+      "tts": {
+        "text": "毛細血管が交換を行います。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 3,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch03-151",
+      "paragraph_id": "p30",
+      "text": "静脈が血液を帰してきます。",
+      "text_markdown": "静脈が血液を帰してきます。",
+      "title": "血管",
+      "tts": {
+        "text": "静脈が血液を帰してきます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch04-152",
+      "heading_level": 1,
+      "paragraph_id": "p31",
+      "text": "心拍",
+      "text_markdown": "心拍",
+      "title": "心拍",
+      "tts": {
+        "text": "心拍"
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-153",
+      "paragraph_id": "p32",
+      "text": "あなたの心臓は1日に約100,000回拍動します。",
+      "text_markdown": "あなたの心臓は1日に約100,000回拍動します。",
+      "title": "心拍",
+      "tts": {
+        "text": "あなたの心臓は一日に約十万回拍動します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-154",
+      "paragraph_id": "p32",
+      "text": "それぞれの拍動は、注意深くタイミングが調整された一連の出来事です。",
+      "text_markdown": "それぞれの拍動は、注意深くタイミングが調整された一連の出来事です。",
+      "title": "心拍",
+      "tts": {
+        "text": "それぞれの拍動は、注意深くタイミングが調整された一連の出来事です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-155",
+      "paragraph_id": "p32",
+      "text": "タイミングは心臓自体の内部で発生する電気信号によって制御されています。",
+      "text_markdown": "タイミングは心臓自体の内部で発生する電気信号によって制御されています。",
+      "title": "心拍",
+      "tts": {
+        "text": "タイミングは心臓自体の内部で発生する電気信号によって制御されています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-156",
+      "paragraph_id": "p33",
+      "text": "心臓の自然なペースメーカーは洞房結節と呼ばれます。",
+      "text_markdown": "心臓の自然なペースメーカーは洞房結節と呼ばれます。",
+      "title": "心拍",
+      "tts": {
+        "text": "心臓の自然なペースメーカーは洞房結節と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-157",
+      "paragraph_id": "p33",
+      "text": "通常、これをSA結節と呼びます。",
+      "text_markdown": "通常、これをSA結節と呼びます。",
+      "title": "心拍",
+      "tts": {
+        "text": "通常、これをエスエー結節と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-158",
+      "paragraph_id": "p33",
+      "text": "それは右心房の壁にある小さな細胞の集まりです。",
+      "text_markdown": "それは右心房の壁にある小さな細胞の集まりです。",
+      "title": "心拍",
+      "tts": {
+        "text": "それは右心房の壁にある小さな細胞の集まりです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-159",
+      "paragraph_id": "p33",
+      "text": "集まりとは、近くにある物事のグループです。",
+      "text_markdown": "集まりとは、近くにある物事のグループです。",
+      "title": "心拍",
+      "tts": {
+        "text": "集まりとは、近くにある物事のグループです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-160",
+      "paragraph_id": "p33",
+      "text": "SA結節は電気インパルスを生成します。",
+      "text_markdown": "SA結節は電気インパルスを生成します。",
+      "title": "心拍",
+      "tts": {
+        "text": "エスエー結節は電気インパルスを生成します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-161",
+      "paragraph_id": "p33",
+      "text": "インパルスとは、突然のエネルギーの爆発です。",
+      "text_markdown": "インパルスとは、突然のエネルギーの爆発です。",
+      "title": "心拍",
+      "tts": {
+        "text": "インパルスとは、突然のエネルギーの爆発です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-162",
+      "paragraph_id": "p33",
+      "text": "これらのインパルスが心拍のペースを決めています。",
+      "text_markdown": "これらのインパルスが心拍のペースを決めています。",
+      "title": "心拍",
+      "tts": {
+        "text": "これらのインパルスが心拍のペースを決めています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-163",
+      "paragraph_id": "p34",
+      "text": "SA結節は安静時の成人で1分間に約60から100回発火します。",
+      "text_markdown": "SA結節は安静時の成人で1分間に約60から100回発火します。",
+      "title": "心拍",
+      "tts": {
+        "text": "洞房結節は安静時の成人で一分間に約六十から百回発火します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-164",
+      "paragraph_id": "p34",
+      "text": "各インパルスは両心房に広がります。",
+      "text_markdown": "各インパルスは両心房に広がります。",
+      "title": "心拍",
+      "tts": {
+        "text": "各インパルスは両心房に広がります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-165",
+      "paragraph_id": "p34",
+      "text": "心房は一緒に収縮します。",
+      "text_markdown": "心房は一緒に収縮します。",
+      "title": "心拍",
+      "tts": {
+        "text": "心房は一緒に収縮します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-166",
+      "paragraph_id": "p34",
+      "text": "心房は血液を心室に押し込みます。",
+      "text_markdown": "心房は血液を心室に押し込みます。",
+      "title": "心拍",
+      "tts": {
+        "text": "心房は血液を心室に押し込みます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-167",
+      "paragraph_id": "p35",
+      "text": "インパルスはその後、房室結節と呼ばれる別の結節に到達します。",
+      "text_markdown": "インパルスはその後、房室結節と呼ばれる別の結節に到達します。",
+      "title": "心拍",
+      "tts": {
+        "text": "インパルスはその後、房室結節と呼ばれる別の結節に到達します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-168",
+      "paragraph_id": "p35",
+      "text": "これをAV結節と呼びます。",
+      "text_markdown": "これをAV結節と呼びます。",
+      "title": "心拍",
+      "tts": {
+        "text": "これをエーブイ結節と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-169",
+      "paragraph_id": "p35",
+      "text": "AV結節は心房と心室の間にあります。",
+      "text_markdown": "AV結節は心房と心室の間にあります。",
+      "title": "心拍",
+      "tts": {
+        "text": "エーブイ結節は心房と心室の間にあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-170",
+      "paragraph_id": "p35",
+      "text": "これは信号を一瞬停止させます。",
+      "text_markdown": "これは信号を一瞬停止させます。",
+      "title": "心拍",
+      "tts": {
+        "text": "これは信号を一瞬停止させます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-171",
+      "paragraph_id": "p35",
+      "text": "この停止は不可欠です。",
+      "text_markdown": "この停止は不可欠です。",
+      "title": "心拍",
+      "tts": {
+        "text": "この停止は不可欠です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-172",
+      "paragraph_id": "p35",
+      "text": "心室が収縮する前に心房が完全に空になる時間を与えるのです。",
+      "text_markdown": "心室が収縮する前に心房が完全に空になる時間を与えるのです。",
+      "title": "心拍",
+      "tts": {
+        "text": "心室が収縮する前に心房が完全に空になる時間を与えるのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-173",
+      "paragraph_id": "p36",
+      "text": "停止の後、信号はヒス束と呼ばれる経路を伝わって下ります。",
+      "text_markdown": "停止の後、信号はヒス束と呼ばれる経路を伝わって下ります。",
+      "title": "心拍",
+      "tts": {
+        "text": "停止の後、信号はヒス束と呼ばれる経路を伝わって下ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-174",
+      "paragraph_id": "p36",
+      "text": "Hisは「ヒス」と発音します。それを発見した科学者ヴィルヘルム・ヒス・ジュニアにちなんで名付けられました。",
+      "text_markdown": "Hisは「ヒス」と発音します。それを発見した科学者ヴィルヘルム・ヒス・ジュニアにちなんで名付けられました。",
+      "title": "心拍",
+      "tts": {
+        "text": "「ヒス」と発音します。それを発見した科学者ヴィルヘルム・ヒス・ジュニアにちなんで名付けられました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-175",
+      "paragraph_id": "p36",
+      "text": "ヒス束は2つの枝に分かれます。",
+      "text_markdown": "ヒス束は2つの枝に分かれます。",
+      "title": "心拍",
+      "tts": {
+        "text": "ヒス束は二つの枝に分かれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-176",
+      "paragraph_id": "p36",
+      "text": "1つの枝は右心室に向かいます。",
+      "text_markdown": "1つの枝は右心室に向かいます。",
+      "title": "心拍",
+      "tts": {
+        "text": "一方の枝は右心室に向かいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-177",
+      "paragraph_id": "p36",
+      "text": "もう一方は左心室に向かいます。",
+      "text_markdown": "もう一方は左心室に向かいます。",
+      "title": "心拍",
+      "tts": {
+        "text": "もう一方は左心室に向かいます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-178",
+      "paragraph_id": "p36",
+      "text": "枝はプルキンエ線維と呼ばれる小さな線維に広がります。",
+      "text_markdown": "枝はプルキンエ線維と呼ばれる小さな線維に広がります。",
+      "title": "心拍",
+      "tts": {
+        "text": "枝はプルキンエ線維と呼ばれる小さな線維に広がります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-179",
+      "paragraph_id": "p36",
+      "text": "これらの線維は両心室の筋細胞に信号を伝えます。",
+      "text_markdown": "これらの線維は両心室の筋細胞に信号を伝えます。",
+      "title": "心拍",
+      "tts": {
+        "text": "これらの線維は両心室の筋細胞に信号を伝えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-180",
+      "paragraph_id": "p36",
+      "text": "心室は力強く同時に収縮します。",
+      "text_markdown": "心室は力強く同時に収縮します。",
+      "title": "心拍",
+      "tts": {
+        "text": "心室は力強く同時に収縮します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-181",
+      "paragraph_id": "p37",
+      "text": "収縮と弛緩の完全な1周期を心周期と呼びます。",
+      "text_markdown": "収縮と弛緩の完全な1周期を心周期と呼びます。",
+      "title": "心拍",
+      "tts": {
+        "text": "収縮と弛緩の完全な一周期を心周期と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-182",
+      "paragraph_id": "p37",
+      "text": "収縮期を収縮期と呼びます。",
+      "text_markdown": "収縮期を収縮期と呼びます。",
+      "title": "心拍",
+      "tts": {
+        "text": "収縮期を収縮期と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-183",
+      "paragraph_id": "p37",
+      "text": "収縮期は「引き締める」という意味のギリシャ語に由来します。弛緩期を拡張期と呼びます。",
+      "text_markdown": "収縮期は「引き締める」という意味のギリシャ語に由来します。弛緩期を拡張期と呼びます。",
+      "title": "心拍",
+      "tts": {
+        "text": "収縮期は「引き締める」という意味のギリシャ語に由来します。弛緩期を拡張期と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-184",
+      "paragraph_id": "p37",
+      "text": "拡張期は「広がる」という意味のギリシャ語に由来します。",
+      "text_markdown": "拡張期は「広がる」という意味のギリシャ語に由来します。",
+      "title": "心拍",
+      "tts": {
+        "text": "拡張期は「広がる」という意味のギリシャ語に由来します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-185",
+      "paragraph_id": "p38",
+      "text": "収縮期の間、心室は収縮して血液を押し出します。",
+      "text_markdown": "収縮期の間、心室は収縮して血液を押し出します。",
+      "title": "心拍",
+      "tts": {
+        "text": "収縮期の間、心室は収縮して血液を押し出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-186",
+      "paragraph_id": "p38",
+      "text": "拡張期の間、心室は弛緩して血液で満たされます。",
+      "text_markdown": "拡張期の間、心室は弛緩して血液で満たされます。",
+      "title": "心拍",
+      "tts": {
+        "text": "拡張期の間、心室は弛緩して血液で満たされます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-187",
+      "paragraph_id": "p38",
+      "text": "この周期は永続的に繰り返されます。",
+      "text_markdown": "この周期は永続的に繰り返されます。",
+      "title": "心拍",
+      "tts": {
+        "text": "この周期は永続的に繰り返されます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-188",
+      "paragraph_id": "p39",
+      "text": "医師は心電図またはECGと呼ばれる機械で心臓の電気活動を測定できます。",
+      "text_markdown": "医師は心電図またはECGと呼ばれる機械で心臓の電気活動を測定できます。",
+      "title": "心拍",
+      "tts": {
+        "text": "医師は心電図またはイーシージーと呼ばれる機械で心臓の電気活動を測定できます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-189",
+      "paragraph_id": "p39",
+      "text": "ECGは電気インパルスを画面上の波として表示します。",
+      "text_markdown": "ECGは電気インパルスを画面上の波として表示します。",
+      "title": "心拍",
+      "tts": {
+        "text": "イーシージーは電気インパルスを画面上の波として表示します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-190",
+      "paragraph_id": "p39",
+      "text": "各波には特定の形があります。",
+      "text_markdown": "各波には特定の形があります。",
+      "title": "心拍",
+      "tts": {
+        "text": "各波には特定の形があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-191",
+      "paragraph_id": "p39",
+      "text": "医師はこれらの形を読み取って心臓が正常に動いているかを確認します。",
+      "text_markdown": "医師はこれらの形を読み取って心臓が正常に動いているかを確認します。",
+      "title": "心拍",
+      "tts": {
+        "text": "医師はこれらの形を読み取って心臓が正常に動いているかを確認します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-192",
+      "paragraph_id": "p40",
+      "text": "不整脈を不整脈と呼びます。",
+      "text_markdown": "不整脈を不整脈と呼びます。",
+      "title": "心拍",
+      "tts": {
+        "text": "不整脈を不整脈と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-193",
+      "paragraph_id": "p40",
+      "text": "不整脈は「リズムがない」という意味です。一部の不整脈は無害です。",
+      "text_markdown": "不整脈は「リズムがない」という意味です。一部の不整脈は無害です。",
+      "title": "心拍",
+      "tts": {
+        "text": "不整脈は「リズムがない」という意味です。一部の不整脈は無害です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-194",
+      "paragraph_id": "p40",
+      "text": "他は危険です。",
+      "text_markdown": "他は危険です。",
+      "title": "心拍",
+      "tts": {
+        "text": "他は危険です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-195",
+      "paragraph_id": "p40",
+      "text": "SA結節が機能しなくなった場合、医師は人工ペースメーカーを埋め込むことができます。",
+      "text_markdown": "SA結節が機能しなくなった場合、医師は人工ペースメーカーを埋め込むことができます。",
+      "title": "心拍",
+      "tts": {
+        "text": "洞房結節が機能しなくなった場合、医師は人工ペースメーカーを埋め込むことができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-196",
+      "paragraph_id": "p40",
+      "text": "この小さな装置は電気信号を送って心臓を規則正しく拍動させ続けます。",
+      "text_markdown": "この小さな装置は電気信号を送って心臓を規則正しく拍動させ続けます。",
+      "title": "心拍",
+      "tts": {
+        "text": "この小さな装置は電気信号を送って心臓を規則正しく拍動させ続けます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-197",
+      "paragraph_id": "p41",
+      "text": "心臓は自分自身のドラマーです。",
+      "text_markdown": "心臓は自分自身のドラマーです。",
+      "title": "心拍",
+      "tts": {
+        "text": "心臓は自分自身のドラマーです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 4,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch04-198",
+      "paragraph_id": "p41",
+      "text": "自分自身のビートを決め、完璧な時間を刻みます。",
+      "text_markdown": "自分自身のビートを決め、完璧な時間を刻みます。",
+      "title": "心拍",
+      "tts": {
+        "text": "自分自身のビートを決め、完璧な時間を刻みます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch05-199",
+      "heading_level": 1,
+      "paragraph_id": "p42",
+      "text": "血圧",
+      "text_markdown": "血圧",
+      "title": "血圧",
+      "tts": {
+        "text": "血圧"
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-200",
+      "paragraph_id": "p43",
+      "text": "血液は流れながら動脈壁を押します。",
+      "text_markdown": "血液は流れながら動脈壁を押します。",
+      "title": "血圧",
+      "tts": {
+        "text": "血液は流れながら動脈壁を押します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-201",
+      "paragraph_id": "p43",
+      "text": "この押し出す力を血圧と呼びます。",
+      "text_markdown": "この押し出す力を血圧と呼びます。",
+      "title": "血圧",
+      "tts": {
+        "text": "この押し出す力を血圧と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-202",
+      "paragraph_id": "p43",
+      "text": "血圧とは、血液が血管の内側を押す力のことです。",
+      "text_markdown": "血圧とは、血液が血管の内側を押す力のことです。",
+      "title": "血圧",
+      "tts": {
+        "text": "血圧とは、血液が血管の内側を押す力のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-203",
+      "paragraph_id": "p44",
+      "text": "血圧は2つの数値で測定されます。",
+      "text_markdown": "血圧は2つの数値で測定されます。",
+      "title": "血圧",
+      "tts": {
+        "text": "血圧は二つの数値で測定されます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-204",
+      "paragraph_id": "p44",
+      "text": "上の数値は収縮期血圧と呼ばれます。",
+      "text_markdown": "上の数値は収縮期血圧と呼ばれます。",
+      "title": "血圧",
+      "tts": {
+        "text": "上の数値は収縮期血圧と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-205",
+      "paragraph_id": "p44",
+      "text": "収縮期血圧は心臓が収縮するときの力です。",
+      "text_markdown": "収縮期血圧は心臓が収縮するときの力です。",
+      "title": "血圧",
+      "tts": {
+        "text": "収縮期血圧は心臓が収縮するときの力です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-206",
+      "paragraph_id": "p44",
+      "text": "これが高い方の数値です。",
+      "text_markdown": "これが高い方の数値です。",
+      "title": "血圧",
+      "tts": {
+        "text": "これが高い方の数値です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-207",
+      "paragraph_id": "p44",
+      "text": "下の数値は拡張期血圧と呼ばれます。",
+      "text_markdown": "下の数値は拡張期血圧と呼ばれます。",
+      "title": "血圧",
+      "tts": {
+        "text": "下の数値は拡張期血圧と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-208",
+      "paragraph_id": "p44",
+      "text": "拡張期血圧は心臓が弛緩するときの力です。",
+      "text_markdown": "拡張期血圧は心臓が弛緩するときの力です。",
+      "title": "血圧",
+      "tts": {
+        "text": "拡張期血圧は心臓が弛緩するときの力です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-209",
+      "paragraph_id": "p44",
+      "text": "これが低い方の数値です。",
+      "text_markdown": "これが低い方の数値です。",
+      "title": "血圧",
+      "tts": {
+        "text": "これが低い方の数値です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-210",
+      "paragraph_id": "p45",
+      "text": "成人の健康な血圧は約120/80です。",
+      "text_markdown": "成人の健康な血圧は約120/80です。",
+      "title": "血圧",
+      "tts": {
+        "text": "成人の健康な血圧は約百二十の八十です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-211",
+      "paragraph_id": "p45",
+      "text": "120/80と表記します。",
+      "text_markdown": "120/80と表記します。",
+      "title": "血圧",
+      "tts": {
+        "text": "百二十分の八十と表記します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-212",
+      "paragraph_id": "p45",
+      "text": "測定単位は水銀柱ミリメートルで、mmHgと表記されます。",
+      "text_markdown": "測定単位は水銀柱ミリメートルで、mmHgと表記されます。",
+      "title": "血圧",
+      "tts": {
+        "text": "測定単位は水銀柱ミリメートルで、エムエムエイチジーと表記されます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-213",
+      "paragraph_id": "p45",
+      "text": "この単位は、水銀柱を使った初期の圧力測定装置に由来します。",
+      "text_markdown": "この単位は、水銀柱を使った初期の圧力測定装置に由来します。",
+      "title": "血圧",
+      "tts": {
+        "text": "この単位は、水銀柱を使った初期の圧力測定装置に由来します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-214",
+      "paragraph_id": "p46",
+      "text": "血圧は血圧計という装置で測定されます。",
+      "text_markdown": "血圧は血圧計という装置で測定されます。",
+      "title": "血圧",
+      "tts": {
+        "text": "血圧は血圧計という装置で測定されます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-215",
+      "paragraph_id": "p46",
+      "text": "これは長い単語です。",
+      "text_markdown": "これは長い単語です。",
+      "title": "血圧",
+      "tts": {
+        "text": "これは長い単語です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-216",
+      "paragraph_id": "p46",
+      "text": "これはギリシャ語の「脈拍」と「測定」を意味する語根から来ています。カフが上腕に巻かれます。",
+      "text_markdown": "これはギリシャ語の「脈拍」と「測定」を意味する語根から来ています。カフが上腕に巻かれます。",
+      "title": "血圧",
+      "tts": {
+        "text": "これはギリシャ語の「脈拍」と「測定」を意味する語根から来ています。カフが上腕に巻かれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-217",
+      "paragraph_id": "p46",
+      "text": "カフが膨らんで動脈を圧迫し閉じます。",
+      "text_markdown": "カフが膨らんで動脈を圧迫し閉じます。",
+      "title": "血圧",
+      "tts": {
+        "text": "カフが膨らんで動脈を圧迫し閉じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-218",
+      "paragraph_id": "p46",
+      "text": "その後カフはゆっくりと空気が抜けます。",
+      "text_markdown": "その後カフはゆっくりと空気が抜けます。",
+      "title": "血圧",
+      "tts": {
+        "text": "その後カフはゆっくりと空気が抜けます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-219",
+      "paragraph_id": "p46",
+      "text": "医師は聴診器で血液が流れる音を聞きます。",
+      "text_markdown": "医師は聴診器で血液が流れる音を聞きます。",
+      "title": "血圧",
+      "tts": {
+        "text": "医師は聴診器で血液が流れる音を聞きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-220",
+      "paragraph_id": "p46",
+      "text": "音が聞こえ始める点が収縮期血圧です。",
+      "text_markdown": "音が聞こえ始める点が収縮期血圧です。",
+      "title": "血圧",
+      "tts": {
+        "text": "音が聞こえ始める点が収縮期血圧です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-221",
+      "paragraph_id": "p46",
+      "text": "音が消える点が拡張期血圧です。",
+      "text_markdown": "音が消える点が拡張期血圧です。",
+      "title": "血圧",
+      "tts": {
+        "text": "音が消える点が拡張期血圧です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-222",
+      "paragraph_id": "p47",
+      "text": "高血圧は高血圧症と呼ばれます。",
+      "text_markdown": "高血圧は高血圧症と呼ばれます。",
+      "title": "血圧",
+      "tts": {
+        "text": "高血圧は高血圧症と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-223",
+      "paragraph_id": "p47",
+      "text": "「ハイパー」は「上」または「過度の」を意味します。「テンション」は圧力を指します。",
+      "text_markdown": "「ハイパー」は「上」または「過度の」を意味します。「テンション」は圧力を指します。",
+      "title": "血圧",
+      "tts": {
+        "text": "「ハイパー」は「上」または「過度の」を意味します。「テンション」は圧力を指します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-224",
+      "paragraph_id": "p47",
+      "text": "高血圧症は血液が動脈壁を強く押しすぎることを意味します。",
+      "text_markdown": "高血圧症は血液が動脈壁を強く押しすぎることを意味します。",
+      "title": "血圧",
+      "tts": {
+        "text": "高血圧症は血液が動脈壁を強く押しすぎることを意味します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-225",
+      "paragraph_id": "p47",
+      "text": "時間が経つと、これが動脈を損傷します。",
+      "text_markdown": "時間が経つと、これが動脈を損傷します。",
+      "title": "血圧",
+      "tts": {
+        "text": "時間が経つと、これが動脈を損傷します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-226",
+      "paragraph_id": "p47",
+      "text": "心臓をより激しく働かせることになります。",
+      "text_markdown": "心臓をより激しく働かせることになります。",
+      "title": "血圧",
+      "tts": {
+        "text": "心臓をより激しく働かせることになります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-227",
+      "paragraph_id": "p47",
+      "text": "心臓発作や脳卒中のリスクを高めます。",
+      "text_markdown": "心臓発作や脳卒中のリスクを高めます。",
+      "title": "血圧",
+      "tts": {
+        "text": "心臓発作や脳卒中のリスクを高めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-228",
+      "paragraph_id": "p47",
+      "text": "心臓発作は心筋の一部への血流が遮断されたときに起こります。",
+      "text_markdown": "心臓発作は心筋の一部への血流が遮断されたときに起こります。",
+      "title": "血圧",
+      "tts": {
+        "text": "心臓発作は心筋の一部への血流が遮断されたときに起こります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-229",
+      "paragraph_id": "p47",
+      "text": "脳卒中は脳の一部への血流が遮断されたときに起こります。",
+      "text_markdown": "脳卒中は脳の一部への血流が遮断されたときに起こります。",
+      "title": "血圧",
+      "tts": {
+        "text": "脳卒中は脳の一部への血流が遮断されたときに起こります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-230",
+      "paragraph_id": "p48",
+      "text": "高血圧症は静かなる殺人者と呼ばれています。",
+      "text_markdown": "高血圧症は静かなる殺人者と呼ばれています。",
+      "title": "血圧",
+      "tts": {
+        "text": "高血圧症は静かなる殺人者と呼ばれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-231",
+      "paragraph_id": "p48",
+      "text": "高血圧の人のほとんどは症状を感じません。",
+      "text_markdown": "高血圧の人のほとんどは症状を感じません。",
+      "title": "血圧",
+      "tts": {
+        "text": "高血圧の人のほとんどは症状を感じません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-232",
+      "paragraph_id": "p48",
+      "text": "自分が高血圧であることを知りません。",
+      "text_markdown": "自分が高血圧であることを知りません。",
+      "title": "血圧",
+      "tts": {
+        "text": "自分が高血圧であることを知りません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-233",
+      "paragraph_id": "p48",
+      "text": "だからこそ定期検診が重要なのです。",
+      "text_markdown": "だからこそ定期検診が重要なのです。",
+      "title": "血圧",
+      "tts": {
+        "text": "だからこそ定期検診が重要なのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-234",
+      "paragraph_id": "p49",
+      "text": "低血圧は低血圧症と呼ばれます。",
+      "text_markdown": "低血圧は低血圧症と呼ばれます。",
+      "title": "血圧",
+      "tts": {
+        "text": "低血圧は低血圧症と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-235",
+      "paragraph_id": "p49",
+      "text": "「ハイポ」は「下」を意味します。低血圧症はめまいや失神を引き起こすことがあります。",
+      "text_markdown": "「ハイポ」は「下」を意味します。低血圧症はめまいや失神を引き起こすことがあります。",
+      "title": "血圧",
+      "tts": {
+        "text": "「ハイポ」は「下」を意味します。低血圧症はめまいや失神を引き起こすことがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-236",
+      "paragraph_id": "p49",
+      "text": "これは体が十分な血流を得ていないことを意味します。",
+      "text_markdown": "これは体が十分な血流を得ていないことを意味します。",
+      "title": "血圧",
+      "tts": {
+        "text": "これは体が十分な血流を得ていないことを意味します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-237",
+      "paragraph_id": "p50",
+      "text": "多くの要因が血圧に影響します。",
+      "text_markdown": "多くの要因が血圧に影響します。",
+      "title": "血圧",
+      "tts": {
+        "text": "多くの要因が血圧に影響します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-238",
+      "paragraph_id": "p50",
+      "text": "塩分は血圧を上げます。",
+      "text_markdown": "塩分は血圧を上げます。",
+      "title": "血圧",
+      "tts": {
+        "text": "塩分は血圧を上げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-239",
+      "paragraph_id": "p50",
+      "text": "運動は一時的に血圧を上げますが、長期的には改善します。",
+      "text_markdown": "運動は一時的に血圧を上げますが、長期的には改善します。",
+      "title": "血圧",
+      "tts": {
+        "text": "運動は一時的に血圧を上げますが、長期的には改善します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-240",
+      "paragraph_id": "p50",
+      "text": "ストレスは血圧を上げます。",
+      "text_markdown": "ストレスは血圧を上げます。",
+      "title": "血圧",
+      "tts": {
+        "text": "ストレスは血圧を上げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-241",
+      "paragraph_id": "p50",
+      "text": "睡眠は血圧を下げます。",
+      "text_markdown": "睡眠は血圧を下げます。",
+      "title": "血圧",
+      "tts": {
+        "text": "睡眠は血圧を下げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-242",
+      "paragraph_id": "p50",
+      "text": "肥満は血圧を上げます。",
+      "text_markdown": "肥満は血圧を上げます。",
+      "title": "血圧",
+      "tts": {
+        "text": "肥満は血圧を上げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-243",
+      "paragraph_id": "p50",
+      "text": "肥満とは、体脂肪が過剰にあることを意味します。",
+      "text_markdown": "肥満とは、体脂肪が過剰にあることを意味します。",
+      "title": "血圧",
+      "tts": {
+        "text": "肥満とは、体脂肪が過剰にあることを意味します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-244",
+      "paragraph_id": "p51",
+      "text": "血圧を健康な範囲に保つことは、心臓、脳、腎臓、そして体内のすべての臓器を守ります。",
+      "text_markdown": "血圧を健康な範囲に保つことは、心臓、脳、腎臓、そして体内のすべての臓器を守ります。",
+      "title": "血圧",
+      "tts": {
+        "text": "血圧を健康な範囲に保つことは、心臓、脳、腎臓、そして体内のすべての臓器を守ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 5,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch05-245",
+      "paragraph_id": "p51",
+      "text": "心拍一回一回の力が重要なのです。",
+      "text_markdown": "心拍一回一回の力が重要なのです。",
+      "title": "血圧",
+      "tts": {
+        "text": "心拍一回一回の力が重要なのです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch06-246",
+      "heading_level": 1,
+      "paragraph_id": "p52",
+      "text": "運動と心臓",
+      "text_markdown": "運動と心臓",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "運動と心臓"
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-247",
+      "paragraph_id": "p53",
+      "text": "運動は心臓を強くします。",
+      "text_markdown": "運動は心臓を強くします。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "運動は心臓を強くします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-248",
+      "paragraph_id": "p53",
+      "text": "心臓は筋肉です。",
+      "text_markdown": "心臓は筋肉です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心臓は筋肉です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-249",
+      "paragraph_id": "p53",
+      "text": "他の筋肉と同じように、使えば使うほど強くなります。",
+      "text_markdown": "他の筋肉と同じように、使えば使うほど強くなります。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "他の筋肉と同じように、使えば使うほど強くなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-250",
+      "paragraph_id": "p53",
+      "text": "定期的な運動は、心臓のためにできる最も良いことの一つです。",
+      "text_markdown": "定期的な運動は、心臓のためにできる最も良いことの一つです。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "定期的な運動は、心臓のためにできる最も良いことの一つです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-251",
+      "paragraph_id": "p54",
+      "text": "運動をすると、筋肉はより多くの酸素を必要とします。",
+      "text_markdown": "運動をすると、筋肉はより多くの酸素を必要とします。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "運動をすると、筋肉はより多くの酸素を必要とします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-252",
+      "paragraph_id": "p54",
+      "text": "筋肉がより激しく働いているからです。",
+      "text_markdown": "筋肉がより激しく働いているからです。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "筋肉がより激しく働いているからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-253",
+      "paragraph_id": "p54",
+      "text": "筋肉はより多くのエネルギーを燃焼しています。",
+      "text_markdown": "筋肉はより多くのエネルギーを燃焼しています。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "筋肉はより多くのエネルギーを燃焼しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-254",
+      "paragraph_id": "p54",
+      "text": "より多くの酸素を運ぶため、心臓はより速く拍動します。",
+      "text_markdown": "より多くの酸素を運ぶため、心臓はより速く拍動します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "より多くの酸素を運ぶため、心臓はより速く拍動します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-255",
+      "paragraph_id": "p54",
+      "text": "心臓はより強く拍動もします。",
+      "text_markdown": "心臓はより強く拍動もします。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心臓はより強く拍動もします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-256",
+      "paragraph_id": "p54",
+      "text": "心臓は収縮のたびにより多くの血液を送り出します。",
+      "text_markdown": "心臓は収縮のたびにより多くの血液を送り出します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心臓は収縮のたびにより多くの血液を送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-257",
+      "paragraph_id": "p54",
+      "text": "心臓が1分間に送り出す血液量を心拍出量と呼びます。",
+      "text_markdown": "心臓が1分間に送り出す血液量を心拍出量と呼びます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心臓が一分間に送り出す血液量を心拍出量と呼びます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-258",
+      "paragraph_id": "p55",
+      "text": "健康な成人の安静時心拍数は1分間に60から100拍です。",
+      "text_markdown": "健康な成人の安静時心拍数は1分間に60から100拍です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "健康な成人の安静時心拍数は一分間に六十から百拍です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-259",
+      "paragraph_id": "p55",
+      "text": "激しい運動中には、心拍数は1分間に150、170、さらには200拍まで上昇することがあります。",
+      "text_markdown": "激しい運動中には、心拍数は1分間に150、170、さらには200拍まで上昇することがあります。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "激しい運動中には、心拍数は一分間に百五十、百七十、さらには二百拍まで上昇することがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-260",
+      "paragraph_id": "p55",
+      "text": "心拍数とは、1分間の心拍の回数です。",
+      "text_markdown": "心拍数とは、1分間の心拍の回数です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心拍数とは、一分間の心拍の回数です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-261",
+      "paragraph_id": "p55",
+      "text": "15秒間脈を数えて4をかけることで測定できます。",
+      "text_markdown": "15秒間脈を数えて4をかけることで測定できます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "十五秒間脈を数えて四をかけることで測定できます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-262",
+      "paragraph_id": "p56",
+      "text": "アスリートは安静時心拍数が低いことがよくあります。",
+      "text_markdown": "アスリートは安静時心拍数が低いことがよくあります。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "アスリートは安静時心拍数が低いことがよくあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-263",
+      "paragraph_id": "p56",
+      "text": "よく訓練された持久力アスリートの安静時心拍数は、1分間に40から50拍かもしれません。",
+      "text_markdown": "よく訓練された持久力アスリートの安静時心拍数は、1分間に40から50拍かもしれません。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "よく訓練された持久力アスリートの安静時心拍数は、一分間に四十から五十拍かもしれません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-264",
+      "paragraph_id": "p56",
+      "text": "これは彼らの心臓がより強いからです。",
+      "text_markdown": "これは彼らの心臓がより強いからです。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "これは彼らの心臓がより強いからです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-265",
+      "paragraph_id": "p56",
+      "text": "より強い心臓は、1拍でより多くの血液を送り出します。",
+      "text_markdown": "より強い心臓は、1拍でより多くの血液を送り出します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "より強い心臓は、一拍でより多くの血液を送り出します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-266",
+      "paragraph_id": "p56",
+      "text": "頻繁に拍動する必要がないのです。",
+      "text_markdown": "頻繁に拍動する必要がないのです。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "頻繁に拍動する必要がないのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-267",
+      "paragraph_id": "p56",
+      "text": "これを1回拍出量と呼びます。",
+      "text_markdown": "これを1回拍出量と呼びます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "これを一回拍出量と呼びます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-268",
+      "paragraph_id": "p56",
+      "text": "1回拍出量とは、1拍で送り出される血液量です。",
+      "text_markdown": "1回拍出量とは、1拍で送り出される血液量です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "一回拍出量とは、一拍で送り出される血液量です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-269",
+      "paragraph_id": "p56",
+      "text": "トレーニングは1回拍出量を増加させます。",
+      "text_markdown": "トレーニングは1回拍出量を増加させます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "トレーニングは一回拍出量を増加させます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-270",
+      "paragraph_id": "p57",
+      "text": "有酸素運動は特に心臓に良いです。",
+      "text_markdown": "有酸素運動は特に心臓に良いです。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "有酸素運動は特に心臓に良いです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-271",
+      "paragraph_id": "p57",
+      "text": "有酸素とは「酸素と共に」を意味します。有酸素運動には、ランニング、水泳、サイクリング、早歩きが含まれます。",
+      "text_markdown": "有酸素とは「酸素と共に」を意味します。有酸素運動には、ランニング、水泳、サイクリング、早歩きが含まれます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "有酸素とは「酸素と共に」を意味します。有酸素運動には、ランニング、水泳、サイクリング、早歩きが含まれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-272",
+      "paragraph_id": "p57",
+      "text": "有酸素運動中は、呼吸数が増加します。",
+      "text_markdown": "有酸素運動中は、呼吸数が増加します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "有酸素運動中は、呼吸数が増加します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-273",
+      "paragraph_id": "p57",
+      "text": "心拍数が増加します。",
+      "text_markdown": "心拍数が増加します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心拍数が増加します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-274",
+      "paragraph_id": "p57",
+      "text": "体は酸素を使って長期間にわたって継続的に燃料を燃焼します。",
+      "text_markdown": "体は酸素を使って長期間にわたって継続的に燃料を燃焼します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "体は酸素を使って長期間にわたって継続的に燃料を燃焼します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-275",
+      "paragraph_id": "p58",
+      "text": "定期的な有酸素運動は安静時血圧を下げます。",
+      "text_markdown": "定期的な有酸素運動は安静時血圧を下げます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "定期的な有酸素運動は安静時血圧を下げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-276",
+      "paragraph_id": "p58",
+      "text": "HDLコレステロールの値を上げます。",
+      "text_markdown": "HDLコレステロールの値を上げます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "高密度リポタンパク質コレステロールの値を上げます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-277",
+      "paragraph_id": "p58",
+      "text": "HDLは高密度リポタンパク質の略です。",
+      "text_markdown": "HDLは高密度リポタンパク質の略です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "エイチディーエルは高密度リポタンパク質の略です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-278",
+      "paragraph_id": "p58",
+      "text": "HDLはしばしば「善玉」コレステロールと呼ばれます。",
+      "text_markdown": "HDLはしばしば「善玉」コレステロールと呼ばれます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "エイチディーエルはしばしば「善玉」コレステロールと呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-279",
+      "paragraph_id": "p58",
+      "text": "HDLは動脈から有害なコレステロールを除去するのを助けます。",
+      "text_markdown": "HDLは動脈から有害なコレステロールを除去するのを助けます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "エイチディーエルは動脈から有害なコレステロールを除去するのを助けます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-280",
+      "paragraph_id": "p58",
+      "text": "コレステロールは血液中のワックス状の物質です。",
+      "text_markdown": "コレステロールは血液中のワックス状の物質です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "コレステロールは血液中のワックス状の物質です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-281",
+      "paragraph_id": "p58",
+      "text": "悪い種類のコレステロールが多すぎると動脈を詰まらせることがあります。",
+      "text_markdown": "悪い種類のコレステロールが多すぎると動脈を詰まらせることがあります。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "悪い種類のコレステロールが多すぎると動脈を詰まらせることがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-282",
+      "paragraph_id": "p59",
+      "text": "運動は血管の壁も強化します。",
+      "text_markdown": "運動は血管の壁も強化します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "運動は血管の壁も強化します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-283",
+      "paragraph_id": "p59",
+      "text": "血管をより柔軟にします。",
+      "text_markdown": "血管をより柔軟にします。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "血管をより柔軟にします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-284",
+      "paragraph_id": "p59",
+      "text": "柔軟な血管は圧力の変化により良く対応できます。",
+      "text_markdown": "柔軟な血管は圧力の変化により良く対応できます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "柔軟な血管は圧力の変化により良く対応できます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-285",
+      "paragraph_id": "p59",
+      "text": "運動は炎症を軽減します。",
+      "text_markdown": "運動は炎症を軽減します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "運動は炎症を軽減します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-286",
+      "paragraph_id": "p59",
+      "text": "炎症とは組織の腫れと刺激のことです。",
+      "text_markdown": "炎症とは組織の腫れと刺激のことです。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "炎症とは組織の腫れと刺激のことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-287",
+      "paragraph_id": "p59",
+      "text": "慢性炎症は時間をかけて動脈を損傷します。",
+      "text_markdown": "慢性炎症は時間をかけて動脈を損傷します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "慢性炎症は時間をかけて動脈を損傷します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-288",
+      "paragraph_id": "p59",
+      "text": "慢性とは長期間続くという意味です。",
+      "text_markdown": "慢性とは長期間続くという意味です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "慢性とは長期間続くという意味です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-289",
+      "paragraph_id": "p60",
+      "text": "運動不足の人は心疾患のリスクが高くなります。",
+      "text_markdown": "運動不足の人は心疾患のリスクが高くなります。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "運動不足の人は心疾患のリスクが高くなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-290",
+      "paragraph_id": "p60",
+      "text": "心疾患は世界的に死因の第1位です。",
+      "text_markdown": "心疾患は世界的に死因の第1位です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心疾患は世界的に死因の第一位です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-291",
+      "paragraph_id": "p60",
+      "text": "適度な運動でも違いが生まれます。",
+      "text_markdown": "適度な運動でも違いが生まれます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "適度な運動でも違いが生まれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-292",
+      "paragraph_id": "p60",
+      "text": "1日30分歩くだけでもリスクを大幅に減らせます。",
+      "text_markdown": "1日30分歩くだけでもリスクを大幅に減らせます。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "一日三十分歩くだけでもリスクを大幅に減らせます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-293",
+      "paragraph_id": "p61",
+      "text": "心臓はあなたの生活のしかたに反応します。",
+      "text_markdown": "心臓はあなたの生活のしかたに反応します。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "心臓はあなたの生活のしかたに反応します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-294",
+      "paragraph_id": "p61",
+      "text": "チャレンジすれば、より強くなります。",
+      "text_markdown": "チャレンジすれば、より強くなります。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "チャレンジすれば、より強くなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-295",
+      "paragraph_id": "p61",
+      "text": "怠れば、弱くなります。",
+      "text_markdown": "怠れば、弱くなります。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "怠れば、弱くなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 6,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch06-296",
+      "paragraph_id": "p61",
+      "text": "一歩一歩が大切です。",
+      "text_markdown": "一歩一歩が大切です。",
+      "title": "運動と心臓",
+      "tts": {
+        "text": "一歩一歩が大切です。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch07-297",
+      "heading_level": 1,
+      "paragraph_id": "p62",
+      "text": "生まれる前の心臓",
+      "text_markdown": "生まれる前の心臓",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "生まれる前の心臓"
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-298",
+      "paragraph_id": "p63",
+      "text": "心臓は最初に発達する臓器の一つです。",
+      "text_markdown": "心臓は最初に発達する臓器の一つです。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "心臓は最初に発達する臓器の一つです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-299",
+      "paragraph_id": "p63",
+      "text": "成長する胚が生存するために血流が必要なので、心臓は早期に形成されます。",
+      "text_markdown": "成長する胚が生存するために血流が必要なので、心臓は早期に形成されます。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "成長する胚が生存するために血流が必要なので、心臓は早期に形成されます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-300",
+      "paragraph_id": "p63",
+      "text": "胚とは発達の最初期段階にある生物のことです。",
+      "text_markdown": "胚とは発達の最初期段階にある生物のことです。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "胚とは発達の最初期段階にある生物のことです。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-301",
+      "paragraph_id": "p64",
+      "text": "受胎から約18〜20日後、心臓細胞が現れ始めます。",
+      "text_markdown": "受胎から約18〜20日後、心臓細胞が現れ始めます。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "受胎から約十八から二十日後、心臓細胞が現れ始めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-302",
+      "paragraph_id": "p64",
+      "text": "それらは単純な管を形成します。",
+      "text_markdown": "それらは単純な管を形成します。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "それらは単純な管を形成します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-303",
+      "paragraph_id": "p64",
+      "text": "この管は22日頃から拍動を始めます。",
+      "text_markdown": "この管は22日頃から拍動を始めます。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "この管は二十二日頃から拍動を始めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-304",
+      "paragraph_id": "p64",
+      "text": "この時点で、胚は米粒よりも小さいのです。",
+      "text_markdown": "この時点で、胚は米粒よりも小さいのです。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "この時点で、胚は米粒よりも小さいのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-305",
+      "paragraph_id": "p64",
+      "text": "拍動する管は小さな体内に体液を送り込みます。",
+      "text_markdown": "拍動する管は小さな体内に体液を送り込みます。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "拍動する管は小さな体内に体液を送り込みます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-306",
+      "paragraph_id": "p65",
+      "text": "その後数週間かけて、管は折れ曲がり、ねじれます。",
+      "text_markdown": "その後数週間かけて、管は折れ曲がり、ねじれます。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "その後数週間かけて、管は折れ曲がり、ねじれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-307",
+      "paragraph_id": "p65",
+      "text": "S字型に曲がります。",
+      "text_markdown": "S字型に曲がります。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "エス字型に曲がります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-308",
+      "paragraph_id": "p65",
+      "text": "心房に分かれます。",
+      "text_markdown": "心房に分かれます。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "心房に分かれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-309",
+      "paragraph_id": "p65",
+      "text": "中隔と呼ばれる壁が心房の間に成長します。",
+      "text_markdown": "中隔と呼ばれる壁が心房の間に成長します。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "中隔と呼ばれる壁が心房の間に成長します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-310",
+      "paragraph_id": "p65",
+      "text": "中隔とは二つの空間を分ける壁のことです。",
+      "text_markdown": "中隔とは二つの空間を分ける壁のことです。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "中隔とは二つの空間を分ける壁のことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-311",
+      "paragraph_id": "p65",
+      "text": "複数形は中隔です。",
+      "text_markdown": "複数形は中隔です。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "複数形は中隔です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-312",
+      "paragraph_id": "p65",
+      "text": "約8週間後には、心臓は4つの明確な心房を持つようになります。",
+      "text_markdown": "約8週間後には、心臓は4つの明確な心房を持つようになります。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "約八週間後には、心臓は四つの明確な心房を持つようになります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-313",
+      "paragraph_id": "p66",
+      "text": "胎児の心臓は生まれた後の心臓とは異なる働きをします。",
+      "text_markdown": "胎児の心臓は生まれた後の心臓とは異なる働きをします。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "胎児の心臓は生まれた後の心臓とは異なる働きをします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-314",
+      "paragraph_id": "p66",
+      "text": "胎児とは発達約8週間後の生まれる前の赤ちゃんのことです。",
+      "text_markdown": "胎児とは発達約8週間後の生まれる前の赤ちゃんのことです。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "胎児とは発達約八週間後の生まれる前の赤ちゃんのことです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-315",
+      "paragraph_id": "p66",
+      "text": "胎児は空気を呼吸しません。",
+      "text_markdown": "胎児は空気を呼吸しません。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "胎児は空気を呼吸しません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-316",
+      "paragraph_id": "p66",
+      "text": "肺は液体で満たされています。",
+      "text_markdown": "肺は液体で満たされています。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "肺は液体で満たされています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-317",
+      "paragraph_id": "p66",
+      "text": "胎盤を通して母親から酸素を受け取ります。",
+      "text_markdown": "胎盤を通して母親から酸素を受け取ります。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "胎盤を通して母親から酸素を受け取ります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-318",
+      "paragraph_id": "p66",
+      "text": "胎盤は胎児を母親の血液供給につなぐ臓器です。",
+      "text_markdown": "胎盤は胎児を母親の血液供給につなぐ臓器です。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "胎盤は胎児を母親の血液供給につなぐ臓器です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-319",
+      "paragraph_id": "p66",
+      "text": "酸素と栄養素は胎盤を通して母親の血液から胎児の血液に移ります。",
+      "text_markdown": "酸素と栄養素は胎盤を通して母親の血液から胎児の血液に移ります。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "酸素と栄養素は胎盤を通して母親の血液から胎児の血液に移ります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-320",
+      "paragraph_id": "p67",
+      "text": "胎児の肺は使われていないため、心臓にはショートカットがあります。",
+      "text_markdown": "胎児の肺は使われていないため、心臓にはショートカットがあります。",
+      "title": "生まれる前の心臓",
+      "tts": {
+        "text": "胎児の肺は使われていないため、心臓にはショートカットがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-321",
+      "paragraph_id": "p67",
+      "text": "右心房と左心房の間には開口部があります。",
+      "text_markdown": "右心房と左心房の間には開口部があります。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "右心房と左心房の間には開口部があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-322",
+      "paragraph_id": "p67",
+      "text": "この開口部は卵円孔と呼ばれています。",
+      "text_markdown": "この開口部は卵円孔と呼ばれています。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "この開口部は卵円孔と呼ばれています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-323",
+      "paragraph_id": "p67",
+      "text": "フォラメンはラテン語で「開口部」を意味します。",
+      "text_markdown": "フォラメンはラテン語で「開口部」を意味します。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "フォラメンはラテン語で「開口部」を意味します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-324",
+      "paragraph_id": "p67",
+      "text": "オヴァーレは「卵形の」を意味します。血液はこの開口部を通って肺を迂回します。",
+      "text_markdown": "オヴァーレは「卵形の」を意味します。血液はこの開口部を通って肺を迂回します。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "オヴァーレは「卵形の」を意味します。血液はこの開口部を通って肺を迂回します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-325",
+      "paragraph_id": "p67",
+      "text": "ほとんどの血液は心臓の左側に直接流れ、そこから体へ送り出されます。",
+      "text_markdown": "ほとんどの血液は心臓の左側に直接流れ、そこから体へ送り出されます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "ほとんどの血液は心臓の左側に直接流れ、そこから体へ送り出されます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-326",
+      "paragraph_id": "p68",
+      "text": "動脈管と呼ばれるもう一つの近道があります。",
+      "text_markdown": "動脈管と呼ばれるもう一つの近道があります。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "動脈管と呼ばれるもう一つの近道があります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-327",
+      "paragraph_id": "p68",
+      "text": "これは肺動脈と大動脈をつなぐ小さな血管です。",
+      "text_markdown": "これは肺動脈と大動脈をつなぐ小さな血管です。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "これは肺動脈と大動脈をつなぐ小さな血管です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-328",
+      "paragraph_id": "p68",
+      "text": "これは血液を肺から逸らします。",
+      "text_markdown": "これは血液を肺から逸らします。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "これは血液を肺から逸らします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-329",
+      "paragraph_id": "p68",
+      "text": "これら二つの近道により、血液はまだ機能していない肺への無駄な旅をすることなく、素早く体に到達することができます。",
+      "text_markdown": "これら二つの近道により、血液はまだ機能していない肺への無駄な旅をすることなく、素早く体に到達することができます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "これら二つの近道により、血液はまだ機能していない肺への無駄な旅をすることなく、素早く体に到達することができます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-330",
+      "paragraph_id": "p69",
+      "text": "誕生の時、すべてが変わります。",
+      "text_markdown": "誕生の時、すべてが変わります。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "誕生の時、すべてが変わります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-331",
+      "paragraph_id": "p69",
+      "text": "赤ちゃんは最初の呼吸をします。",
+      "text_markdown": "赤ちゃんは最初の呼吸をします。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "赤ちゃんは最初の呼吸をします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-332",
+      "paragraph_id": "p69",
+      "text": "肺が膨らみます。",
+      "text_markdown": "肺が膨らみます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "肺が膨らみます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-333",
+      "paragraph_id": "p69",
+      "text": "血液は酸素を取り込むために肺に流れ始めます。",
+      "text_markdown": "血液は酸素を取り込むために肺に流れ始めます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "血液は酸素を取り込むために肺に流れ始めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-334",
+      "paragraph_id": "p69",
+      "text": "卵円孔が閉じます。",
+      "text_markdown": "卵円孔が閉じます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "卵円孔が閉じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-335",
+      "paragraph_id": "p69",
+      "text": "通常は生後1年以内に完全に閉鎖します。",
+      "text_markdown": "通常は生後1年以内に完全に閉鎖します。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "通常は生後一年以内に完全に閉鎖します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-336",
+      "paragraph_id": "p69",
+      "text": "動脈管も閉じます。",
+      "text_markdown": "動脈管も閉じます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "動脈管も閉じます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 7,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-337",
+      "paragraph_id": "p69",
+      "text": "通常は出生後数日以内に閉じます。",
+      "text_markdown": "通常は出生後数日以内に閉じます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "通常は出生後数日以内に閉じます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-338",
+      "paragraph_id": "p70",
+      "text": "時々、これらの構造は適切に閉じないことがあります。",
+      "text_markdown": "時々、これらの構造は適切に閉じないことがあります。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "時々、これらの構造は適切に閉じないことがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-339",
+      "paragraph_id": "p70",
+      "text": "開いたままの卵円孔は開存卵円孔と呼ばれます。",
+      "text_markdown": "開いたままの卵円孔は開存卵円孔と呼ばれます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "開いたままの卵円孔は開存卵円孔と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-340",
+      "paragraph_id": "p70",
+      "text": "パテントは「開いた」を意味します。この状態はよく見られます。",
+      "text_markdown": "パテントは「開いた」を意味します。この状態はよく見られます。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "パテントは「開いた」を意味します。この状態はよく見られます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-341",
+      "paragraph_id": "p70",
+      "text": "約4人に1人がこの状態を持っています。",
+      "text_markdown": "約4人に1人がこの状態を持っています。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "約四人に一人がこの状態を持っています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-342",
+      "paragraph_id": "p70",
+      "text": "ほとんどの人は気づくことがありません。",
+      "text_markdown": "ほとんどの人は気づくことがありません。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "ほとんどの人は気づくことがありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-343",
+      "paragraph_id": "p70",
+      "text": "問題を引き起こすことはめったにありません。",
+      "text_markdown": "問題を引き起こすことはめったにありません。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "問題を引き起こすことはめったにありません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-344",
+      "paragraph_id": "p71",
+      "text": "誕生時の変化は驚くべきものです。",
+      "text_markdown": "誕生時の変化は驚くべきものです。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "誕生時の変化は驚くべきものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 7,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch07-345",
+      "paragraph_id": "p71",
+      "text": "数秒のうちに、心臓は胎児循環から一生使い続ける循環パターンに切り替わります。",
+      "text_markdown": "数秒のうちに、心臓は胎児循環から一生使い続ける循環パターンに切り替わります。",
+      "title": "誕生前の心臓",
+      "tts": {
+        "text": "数秒のうちに、心臓は胎児循環から一生使い続ける循環パターンに切り替わります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "heading",
+      "id": "ch08-346",
+      "heading_level": 1,
+      "paragraph_id": "p72",
+      "text": "一生の鼓動",
+      "text_markdown": "一生の鼓動",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "一生の鼓動"
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-347",
+      "paragraph_id": "p73",
+      "text": "人間の心臓は一生の間に約25億回鼓動します。",
+      "text_markdown": "人間の心臓は一生の間に約25億回鼓動します。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "人間の心臓は一生の間に約二十五億回鼓動します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-348",
+      "paragraph_id": "p73",
+      "text": "その数は驚異的です。",
+      "text_markdown": "その数は驚異的です。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "その数は驚異的です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-349",
+      "paragraph_id": "p73",
+      "text": "世界中のどんな機械ポンプもこの信頼性には及びません。",
+      "text_markdown": "世界中のどんな機械ポンプもこの信頼性には及びません。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "世界中のどんな機械ポンプもこの信頼性には及びません。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-350",
+      "paragraph_id": "p74",
+      "text": "乳児期では、心臓は速く鼓動します。",
+      "text_markdown": "乳児期では、心臓は速く鼓動します。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "乳児期では、心臓は速く鼓動します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-351",
+      "paragraph_id": "p74",
+      "text": "新生児の心拍数は1分間に120から160回です。",
+      "text_markdown": "新生児の心拍数は1分間に120から160回です。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "新生児の心拍数は一分間に百二十から百六十回です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-352",
+      "paragraph_id": "p74",
+      "text": "赤ちゃんは小さいです。",
+      "text_markdown": "赤ちゃんは小さいです。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "赤ちゃんは小さいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-353",
+      "paragraph_id": "p74",
+      "text": "心臓も小さいです。",
+      "text_markdown": "心臓も小さいです。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "心臓も小さいです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-354",
+      "paragraph_id": "p74",
+      "text": "小さな心臓は十分な血液を送り出すためにより速く鼓動しなければなりません。",
+      "text_markdown": "小さな心臓は十分な血液を送り出すためにより速く鼓動しなければなりません。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "小さな心臓は十分な血液を送り出すためにより速く鼓動しなければなりません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-355",
+      "paragraph_id": "p74",
+      "text": "子どもが成長するにつれて、心臓も成長します。",
+      "text_markdown": "子どもが成長するにつれて、心臓も成長します。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "子どもが成長するにつれて、心臓も成長します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-356",
+      "paragraph_id": "p74",
+      "text": "心拍数は徐々に遅くなります。",
+      "text_markdown": "心拍数は徐々に遅くなります。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "心拍数は徐々に遅くなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-357",
+      "paragraph_id": "p75",
+      "text": "成人期までに、安静時心拍数は1分間に60から100回に落ち着きます。",
+      "text_markdown": "成人期までに、安静時心拍数は1分間に60から100回に落ち着きます。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "成人期までに、安静時心拍数は一分間に六十から百回に落ち着きます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-358",
+      "paragraph_id": "p75",
+      "text": "この拍数は何十年間もかなり安定しています。",
+      "text_markdown": "この拍数は何十年間もかなり安定しています。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "この拍数は何十年間もかなり安定しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-359",
+      "paragraph_id": "p75",
+      "text": "老年期には、心臓は少し遅くなることがあります。",
+      "text_markdown": "老年期には、心臓は少し遅くなることがあります。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "老年期には、心臓は少し遅くなることがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-360",
+      "paragraph_id": "p75",
+      "text": "心筋は時間とともに硬くなります。",
+      "text_markdown": "心筋は時間とともに硬くなります。",
+      "title": "一生の鼓動",
+      "tts": {
+        "text": "心筋は時間とともに硬くなります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-361",
+      "paragraph_id": "p75",
+      "text": "弁が厚くなることがあります。",
+      "text_markdown": "弁が厚くなることがあります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "弁が厚くなることがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-362",
+      "paragraph_id": "p75",
+      "text": "電気系統の信頼性が低下することがあります。",
+      "text_markdown": "電気系統の信頼性が低下することがあります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "電気系統の信頼性が低下することがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-363",
+      "paragraph_id": "p75",
+      "text": "しかし心臓は鼓動を続けます。",
+      "text_markdown": "しかし心臓は鼓動を続けます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "しかし心臓は鼓動を続けます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-364",
+      "paragraph_id": "p76",
+      "text": "心疾患はこのリズムを乱すことがあります。",
+      "text_markdown": "心疾患はこのリズムを乱すことがあります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心疾患はこのリズムを乱すことがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-365",
+      "paragraph_id": "p76",
+      "text": "冠動脈疾患が最も一般的な形態です。",
+      "text_markdown": "冠動脈疾患が最も一般的な形態です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "冠動脈疾患が最も一般的な形態です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-366",
+      "paragraph_id": "p76",
+      "text": "冠動脈は心筋そのものに血液を供給する血管です。",
+      "text_markdown": "冠動脈は心筋そのものに血液を供給する血管です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "冠動脈は心筋そのものに血液を供給する血管です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-367",
+      "paragraph_id": "p76",
+      "text": "心臓は機能するために独自の血液供給を必要とします。",
+      "text_markdown": "心臓は機能するために独自の血液供給を必要とします。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心臓は機能するために独自の血液供給を必要とします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-368",
+      "paragraph_id": "p76",
+      "text": "冠動脈疾患は、プラークと呼ばれる脂肪の沈着物がこれらの動脈内に蓄積することで起こります。",
+      "text_markdown": "冠動脈疾患は、プラークと呼ばれる脂肪の沈着物がこれらの動脈内に蓄積することで起こります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "冠動脈疾患は、プラークと呼ばれる脂肪の沈着物がこれらの動脈内に蓄積することで起こります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-369",
+      "paragraph_id": "p76",
+      "text": "プラークは動脈を狭くします。",
+      "text_markdown": "プラークは動脈を狭くします。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "プラークは動脈を狭くします。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-370",
+      "paragraph_id": "p76",
+      "text": "心筋に届く血液が少なくなります。",
+      "text_markdown": "心筋に届く血液が少なくなります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心筋に届く血液が少なくなります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-371",
+      "paragraph_id": "p77",
+      "text": "プラークが破裂すると、血栓が形成されることがあります。",
+      "text_markdown": "プラークが破裂すると、血栓が形成されることがあります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "プラークが破裂すると、血栓が形成されることがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-372",
+      "paragraph_id": "p77",
+      "text": "血栓は血液の固形の塊です。",
+      "text_markdown": "血栓は血液の固形の塊です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "血栓は血液の固形の塊です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-373",
+      "paragraph_id": "p77",
+      "text": "血栓が冠動脈を完全に塞ぐと、心筋の一部が酸素不足になります。",
+      "text_markdown": "血栓が冠動脈を完全に塞ぐと、心筋の一部が酸素不足になります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "血栓が冠動脈を完全に塞ぐと、心筋の一部が酸素不足になります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-374",
+      "paragraph_id": "p77",
+      "text": "その筋組織は死に始めます。",
+      "text_markdown": "その筋組織は死に始めます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "その筋組織は死に始めます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-375",
+      "paragraph_id": "p77",
+      "text": "これが心筋梗塞です。",
+      "text_markdown": "これが心筋梗塞です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "これが心筋梗塞です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-376",
+      "paragraph_id": "p77",
+      "text": "医学用語では心筋梗塞と呼ばれます。",
+      "text_markdown": "医学用語では心筋梗塞と呼ばれます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "医学用語では心筋梗塞と呼ばれます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 6,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-377",
+      "paragraph_id": "p77",
+      "text": "心筋は「心筋に関連する」という意味で、梗塞は「血液不足による組織の死」を意味します。",
+      "text_markdown": "心筋は「心筋に関連する」という意味で、梗塞は「血液不足による組織の死」を意味します。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心筋は「心筋に関連する」という意味で、梗塞は「血液不足による組織の死」を意味します。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-378",
+      "paragraph_id": "p78",
+      "text": "迅速な治療により、心筋梗塞中に心筋を救うことができます。",
+      "text_markdown": "迅速な治療により、心筋梗塞中に心筋を救うことができます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "迅速な治療により、心筋梗塞中に心筋を救うことができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-379",
+      "paragraph_id": "p78",
+      "text": "医師はステントを挿入することがあります。",
+      "text_markdown": "医師はステントを挿入することがあります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "医師はステントを挿入することがあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-380",
+      "paragraph_id": "p78",
+      "text": "ステントは小さなメッシュ状の管です。",
+      "text_markdown": "ステントは小さなメッシュ状の管です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "ステントは小さなメッシュ状の管です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-381",
+      "paragraph_id": "p78",
+      "text": "動脈を開いたままに保ちます。",
+      "text_markdown": "動脈を開いたままに保ちます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "動脈を開いたままに保ちます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-382",
+      "paragraph_id": "p78",
+      "text": "医師はバイパス手術を行うこともあります。",
+      "text_markdown": "医師はバイパス手術を行うこともあります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "医師はバイパス手術を行うこともあります。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-383",
+      "paragraph_id": "p78",
+      "text": "体の他の部分から健康な血管を取り、それを使って閉塞の周りに血液を迂回させます。",
+      "text_markdown": "体の他の部分から健康な血管を取り、それを使って閉塞の周りに血液を迂回させます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "体の他の部分から健康な血管を取り、それを使って閉塞の周りに血液を迂回させます。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-384",
+      "paragraph_id": "p79",
+      "text": "心不全は別の状態です。",
+      "text_markdown": "心不全は別の状態です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心不全は別の状態です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-385",
+      "paragraph_id": "p79",
+      "text": "心不全では、心臓が弱すぎて体の需要を満たすのに十分な血液を送り出せません。",
+      "text_markdown": "心不全では、心臓が弱すぎて体の需要を満たすのに十分な血液を送り出せません。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心不全では、心臓が弱すぎて体の需要を満たすのに十分な血液を送り出せません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-386",
+      "paragraph_id": "p79",
+      "text": "これは心臓が止まったという意味ではありません。",
+      "text_markdown": "これは心臓が止まったという意味ではありません。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "これは心臓が止まったという意味ではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-387",
+      "paragraph_id": "p79",
+      "text": "心臓がついていけないという意味です。",
+      "text_markdown": "心臓がついていけないという意味です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心臓がついていけないという意味です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-388",
+      "paragraph_id": "p79",
+      "text": "肺や脚に体液が溜まることがあります。",
+      "text_markdown": "肺や脚に体液が溜まることがあります。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "肺や脚に体液が溜まることがあります。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-389",
+      "paragraph_id": "p80",
+      "text": "一部の患者にとって、唯一の選択肢は心臓移植です。",
+      "text_markdown": "一部の患者にとって、唯一の選択肢は心臓移植です。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "一部の患者にとって、唯一の選択肢は心臓移植です。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-390",
+      "paragraph_id": "p80",
+      "text": "心臓移植は機能しなくなった心臓をドナーの健康な心臓と置き換えます。",
+      "text_markdown": "心臓移植は機能しなくなった心臓をドナーの健康な心臓と置き換えます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "心臓移植は機能しなくなった心臓をドナーの健康な心臓と置き換えます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-391",
+      "paragraph_id": "p80",
+      "text": "初の成功したヒト心臓移植は1967年、南アフリカでクリスチャン・バーナード医師により行われました。",
+      "text_markdown": "初の成功したヒト心臓移植は1967年、南アフリカでクリスチャン・バーナード医師により行われました。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "初の成功したヒト心臓移植は千九百六十七年、南アフリカでクリスチャン・バーナード医師により行われました。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-392",
+      "paragraph_id": "p80",
+      "text": "現在、毎年数千件の心臓移植が行われています。",
+      "text_markdown": "現在、毎年数千件の心臓移植が行われています。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "現在、毎年数千件の心臓移植が行われています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-393",
+      "paragraph_id": "p81",
+      "text": "科学は人工心臓も作り出しています。",
+      "text_markdown": "科学は人工心臓も作り出しています。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "科学は人工心臓も作り出しています。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-394",
+      "paragraph_id": "p81",
+      "text": "これらの機械装置は、患者が移植を待っている間、血流を維持することができます。",
+      "text_markdown": "これらの機械装置は、患者が移植を待っている間、血流を維持することができます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "これらの機械装置は、患者が移植を待っている間、血流を維持することができます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-395",
+      "paragraph_id": "p81",
+      "text": "まだ永続的な代替品ではありません。",
+      "text_markdown": "まだ永続的な代替品ではありません。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "まだ永続的な代替品ではありません。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-396",
+      "paragraph_id": "p81",
+      "text": "しかし研究は続いています。",
+      "text_markdown": "しかし研究は続いています。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "しかし研究は続いています。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 0,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-397",
+      "paragraph_id": "p82",
+      "text": "あなたの心臓は驚くべきものです。",
+      "text_markdown": "あなたの心臓は驚くべきものです。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "あなたの心臓は驚くべきものです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 1,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-398",
+      "paragraph_id": "p82",
+      "text": "休むことなく働き続けます。",
+      "text_markdown": "休むことなく働き続けます。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "休むことなく働き続けます。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 2,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-399",
+      "paragraph_id": "p82",
+      "text": "あなたの必要に応じて適応します。",
+      "text_markdown": "あなたの必要に応じて適応します。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "あなたの必要に応じて適応します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 3,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-400",
+      "paragraph_id": "p82",
+      "text": "喜び、恐怖、運動、睡眠に反応します。",
+      "text_markdown": "喜び、恐怖、運動、睡眠に反応します。",
+      "title": "生涯にわたる鼓動",
+      "tts": {
+        "text": "喜び、恐怖、運動、睡眠に反応します。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 4,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-401",
+      "paragraph_id": "p82",
+      "text": "それはあなたの生命のエンジンなのです。",
+      "text_markdown": "それはあなたの生命のエンジンなのです。",
+      "title": "一生涯の鼓動",
+      "tts": {
+        "text": "それはあなたの生命のエンジンなのです。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 8,
+      "sentence_index": 5,
+      "part": 0,
+      "block_type": "text",
+      "id": "ch08-402",
+      "paragraph_id": "p82",
+      "text": "心臓を大切にすれば、心臓もあなたを大切にしてくれるでしょう。",
+      "text_markdown": "心臓を大切にすれば、心臓もあなたを大切にしてくれるでしょう。",
+      "title": "一生涯の鼓動",
+      "tts": {
+        "text": "心臓を大切にすれば、心臓もあなたを大切にしてくれるでしょう。",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    }
+  ]
+}

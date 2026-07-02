@@ -1,0 +1,1718 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_21",
+  "language": "zh",
+  "total_segments": 114,
+  "segments": [
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "text": "欢迎收听本周AI。",
+      "text_markdown": "欢迎收听本周AI。",
+      "title": "",
+      "tts": {
+        "text": "欢迎收听本周AI。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "text": "我是Vindy。",
+      "text_markdown": "我是Vindy。",
+      "title": "",
+      "tts": {
+        "text": "我是Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "text": "和我在一起的，一如既往，是Ron。",
+      "text_markdown": "和我在一起的，一如既往，是Ron。",
+      "title": "",
+      "tts": {
+        "text": "和我在一起的，一如既往，是Ron。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "text": "很高兴来到这里，Vindy。",
+      "text_markdown": "很高兴来到这里，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "很高兴来到这里，Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "text": "今天是2026年6月21日，星期日。",
+      "text_markdown": "今天是2026年6月21日，星期日。",
+      "title": "",
+      "tts": {
+        "text": "今天是二零二六年六月二十一日，星期日。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "text": "上周我们谈论了我们自己；今天我们转向另一个方向——直指权力中心。",
+      "text_markdown": "上周我们谈论了我们自己；今天我们转向另一个方向——直指权力中心。",
+      "title": "",
+      "tts": {
+        "text": "上周我们谈论了我们自己；今天我们转向另一个方向——直指权力中心。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "text": "谁控制着AI的部署，谁为建设买单，谁拥有芯片。",
+      "text_markdown": "谁控制着AI的部署，谁为建设买单，谁拥有芯片。",
+      "title": "",
+      "tts": {
+        "text": "谁控制着AI的部署，谁为建设买单，谁拥有芯片。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "text": "接下来——美国商务部上周五将一个美国模型从公众使用中撤下，我们将从这里开始。",
+      "text_markdown": "接下来——美国商务部上周五将一个美国模型从公众使用中撤下，我们将从这里开始。",
+      "title": "",
+      "tts": {
+        "text": "接下来——美国商务部上周五将一个美国模型从公众使用中撤下，我们将从这里开始。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "text": "然后是数据中心的建设，其中公告和实际情况不符。",
+      "text_markdown": "然后是数据中心的建设，其中公告和实际情况不符。",
+      "title": "",
+      "tts": {
+        "text": "然后是数据中心的建设，其中公告和实际情况不符。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "text": "然后是中美比较，用实际的约束条件取代陈词滥调。",
+      "text_markdown": "然后是中美比较，用实际的约束条件取代陈词滥调。",
+      "title": "",
+      "tts": {
+        "text": "然后是中美比较，用实际的约束条件取代陈词滥调。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "text": "以及本周的概念——甲骨文资产负债表上的一行，它几乎说明了一切。",
+      "text_markdown": "以及本周的概念——甲骨文资产负债表上的一行，它几乎说明了一切。",
+      "title": "",
+      "tts": {
+        "text": "以及本周的概念——甲骨文资产负债表上的一行，它几乎说明了一切。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "text": "Ron，我们从Anthropic开始吧。",
+      "text_markdown": "Ron，我们从Anthropic开始吧。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我们从Anthropic开始吧。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "text": "6月12日发生了什么。",
+      "text_markdown": "6月12日发生了什么。",
+      "title": "",
+      "tts": {
+        "text": "六月十二日发生了什么。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-014",
+      "text": "在6月12日星期五东部时间下午5点21分，Anthropic将其两个最新模型——Claude Mythos 5和Claude Fable 5——下线。",
+      "text_markdown": "在6月12日星期五东部时间下午5点21分，Anthropic将其两个最新模型——Claude Mythos 5和Claude Fable 5——下线。",
+      "title": "",
+      "tts": {
+        "text": "在六月十二日星期五东部时间下午五点二十一分，Anthropic将其两个最新模型——Claude Mythos 五和Claude Fable 五——下线。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-015",
+      "text": "不是为了维护，也不是他们主动进行的安全审查。",
+      "text_markdown": "不是为了维护，也不是他们主动进行的安全审查。",
+      "title": "",
+      "tts": {
+        "text": "不是为了维护，也不是他们主动进行的安全审查。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-016",
+      "text": "他们将其下线是因为美国商务部发布了一项指令，理由是出口管制。",
+      "text_markdown": "他们将其下线是因为美国商务部发布了一项指令，理由是出口管制。",
+      "title": "",
+      "tts": {
+        "text": "他们将其下线是因为美国商务部发布了一项指令，理由是出口管制。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "text": "技术原因是什么？",
+      "text_markdown": "技术原因是什么？",
+      "title": "",
+      "tts": {
+        "text": "技术原因是什么？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "text": "据报道，另一家公司演示了一种越狱（jailbreak），其产生的输出被商务部认定为受出口管制。",
+      "text_markdown": "据报道，另一家公司演示了一种越狱（jailbreak），其产生的输出被商务部认定为受出口管制。",
+      "title": "",
+      "tts": {
+        "text": "据报道，另一家公司演示了一种越狱，其产生的输出被商务部认定为受出口管制。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "text": "《财富》杂志报道称，是亚马逊向白宫发出了警报。",
+      "text_markdown": "《财富》杂志报道称，是亚马逊向白宫发出了警报。",
+      "title": "",
+      "tts": {
+        "text": "《财富》杂志报道称，是亚马逊向白宫发出了警报。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-020",
+      "text": "Anthropic是如何回应的？",
+      "text_markdown": "Anthropic是如何回应的？",
+      "title": "",
+      "tts": {
+        "text": "Anthropic是如何回应的？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-021",
+      "text": "Anthropic公开质疑这一理由。",
+      "text_markdown": "Anthropic公开质疑这一理由。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic公开质疑这一理由。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "text": "他们的声明称该越狱——我引用原文——“狭窄、非普遍”，并补充说，同样的输出也可以从其他模型获得，包括OpenAI的GPT-5.5。",
+      "text_markdown": "他们的声明称该越狱——我引用原文——“狭窄、非普遍”，并补充说，同样的输出也可以从其他模型获得，包括OpenAI的GPT-5.5。",
+      "title": "",
+      "tts": {
+        "text": "他们的声明称该越狱——我引用原文——“狭窄、非普遍”，并补充说，同样的输出也可以从其他模型获得，包括OpenAI的GPT五点五。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "text": "他们的总结是：“政府的行动是基于误解。”",
+      "text_markdown": "他们的总结是：“政府的行动是基于误解。”",
+      "title": "",
+      "tts": {
+        "text": "他们的总结是：“政府的行动是基于误解。”",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "text": "对于一家AI实验室来说，这是对美国政府异常直接的异议。",
+      "text_markdown": "对于一家AI实验室来说，这是对美国政府异常直接的异议。",
+      "title": "",
+      "tts": {
+        "text": "对于一家AI实验室来说，这是对美国政府异常直接的异议。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-025",
+      "text": "确实如此，而其背后的结构性事实才是头条新闻。",
+      "text_markdown": "确实如此，而其背后的结构性事实才是头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "确实如此，而其背后的结构性事实才是头条新闻。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "text": "商务部现在可以命令一家私营的美国AI实验室下线一个模型，理由是出口管制，而且该命令在72小时内生效。",
+      "text_markdown": "商务部现在可以命令一家私营的美国AI实验室下线一个模型，理由是出口管制，而且该命令在72小时内生效。",
+      "title": "",
+      "tts": {
+        "text": "商务部现在可以命令一家私营的美国AI实验室下线一个模型，理由是出口管制，而且该命令在七十二小时内生效。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "text": "无论你认为该命令是否正确。",
+      "text_markdown": "无论你认为该命令是否正确。",
+      "title": "",
+      "tts": {
+        "text": "无论你认为该命令是否正确。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "text": "无论你认为该命令是否正确。",
+      "text_markdown": "无论你认为该命令是否正确。",
+      "title": "",
+      "tts": {
+        "text": "无论你认为该命令是否正确。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-029",
+      "text": "重要的是权力本身、速度和先例。",
+      "text_markdown": "重要的是权力本身、速度和先例。",
+      "title": "",
+      "tts": {
+        "text": "重要的是权力本身、速度和先例。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-030",
+      "text": "以及亚马逊在这里扮演的角色。",
+      "text_markdown": "以及亚马逊在这里扮演的角色。",
+      "title": "",
+      "tts": {
+        "text": "以及亚马逊在这里扮演的角色。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "text": "那是值得关注的部分。",
+      "text_markdown": "那是值得关注的部分。",
+      "title": "",
+      "tts": {
+        "text": "那是值得关注的部分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "text": "亚马逊是Anthropic的主要投资者，也通过自身业务在基础模型市场与Anthropic竞争。",
+      "text_markdown": "亚马逊是Anthropic的主要投资者，也通过自身业务在基础模型市场与Anthropic竞争。",
+      "title": "",
+      "tts": {
+        "text": "亚马逊是Anthropic的主要投资者，也通过自身业务在基础模型市场与Anthropic竞争。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "text": "如果竞争对手向政府发出的警告，能在长周末期间让竞争对手的模型下线，那将重塑行业格局。",
+      "text_markdown": "如果竞争对手向政府发出的警告，能在长周末期间让竞争对手的模型下线，那将重塑行业格局。",
+      "title": "",
+      "tts": {
+        "text": "如果竞争对手向政府发出的警告，能在长周末期间让竞争对手的模型下线，那将重塑行业格局。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "text": "我们来看看建设情况。",
+      "text_markdown": "我们来看看建设情况。",
+      "title": "",
+      "tts": {
+        "text": "我们来看看建设情况。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-035",
+      "text": "星门计划——OpenAI、甲骨文、软银的数据中心倡议。",
+      "text_markdown": "星门计划——OpenAI、甲骨文、软银的数据中心倡议。",
+      "title": "",
+      "tts": {
+        "text": "星门计划——OpenAI、甲骨文、软银的数据中心倡议。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-036",
+      "text": "实际数字是多少？",
+      "text_markdown": "实际数字是多少？",
+      "title": "",
+      "tts": {
+        "text": "实际数字是多少？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-037",
+      "text": "星门计划已宣布在美国建设11吉瓦的容量。",
+      "text_markdown": "星门计划已宣布在美国建设11吉瓦的容量。",
+      "title": "",
+      "tts": {
+        "text": "星门计划已宣布在美国建设十一吉瓦的容量。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "text": "截至六月中旬，阿比林德克萨斯州站点的第一阶段约有200兆瓦投入运营。",
+      "text_markdown": "截至六月中旬，阿比林德克萨斯州站点的第一阶段约有200兆瓦投入运营。",
+      "title": "",
+      "tts": {
+        "text": "截至六月中旬，阿比林德克萨斯州站点的第一阶段约有两百兆瓦投入运营。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "text": "宣布了11吉瓦，但只有200兆瓦投入使用。",
+      "text_markdown": "宣布了11吉瓦，但只有200兆瓦投入使用。",
+      "title": "",
+      "tts": {
+        "text": "宣布了十一吉瓦，但只有两百兆瓦投入使用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-040",
+      "text": "这就是全部差距的体现。",
+      "text_markdown": "这就是全部差距的体现。",
+      "title": "",
+      "tts": {
+        "text": "这就是全部差距的体现。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-041",
+      "text": "确实如此，最明显的例子就在新墨西哥州。",
+      "text_markdown": "确实如此，最明显的例子就在新墨西哥州。",
+      "title": "",
+      "tts": {
+        "text": "确实如此，最明显的例子就在新墨西哥州。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-042",
+      "text": "多尼亚安娜县的站点是星门计划最大的单一园区，规划容量为4.5吉瓦。",
+      "text_markdown": "多尼亚安娜县的站点是星门计划最大的单一园区，规划容量为4.5吉瓦。",
+      "title": "",
+      "tts": {
+        "text": "多尼亚安娜县的站点是星门计划最大的单一园区，规划容量为四点五吉瓦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "text": "180亿美元的银团项目融资已到位——来自三井住友、法国巴黎银行、高盛、三菱日联金融集团——此外还有Blue Owl的30亿美元股权投资。",
+      "text_markdown": "180亿美元的银团项目融资已到位——来自三井住友、法国巴黎银行、高盛、三菱日联金融集团——此外还有Blue Owl的30亿美元股权投资。",
+      "title": "",
+      "tts": {
+        "text": "一百八十亿美元的银团项目融资已到位——来自三井住友、法国巴黎银行、高盛、三菱日联金融集团——此外还有Blue Owl的三十亿美元股权投资。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-044",
+      "text": "而实地的建设状况呢？",
+      "text_markdown": "而实地的建设状况呢？",
+      "title": "",
+      "tts": {
+        "text": "而实地的建设状况呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "text": "到目前为止，尚未动工。",
+      "text_markdown": "到目前为止，尚未动工。",
+      "title": "",
+      "tts": {
+        "text": "到目前为止，尚未动工。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-046",
+      "text": "该站点正在等待新墨西哥州环境部门的空气质量许可证，原定于4月22日获批，但在收到超过7000条公众意见后，现已推迟至7月21日。",
+      "text_markdown": "该站点正在等待新墨西哥州环境部门的空气质量许可证，原定于4月22日获批，但在收到超过7000条公众意见后，现已推迟至7月21日。",
+      "title": "",
+      "tts": {
+        "text": "该站点正在等待新墨西哥州环境部门的空气质量许可证，原定于四月二十二日获批，但在收到超过七千条公众意见后，现已推迟至七月二十一日。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-047",
+      "text": "180亿美元已承诺，尚未动工，一个空气质量许可证截止日期。",
+      "text_markdown": "180亿美元已承诺，尚未动工，一个空气质量许可证截止日期。",
+      "title": "",
+      "tts": {
+        "text": "一百八十亿美元已承诺，尚未动工，一个空气质量许可证截止日期。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-048",
+      "text": "如果数字不符，谁将承担损失？",
+      "text_markdown": "如果数字不符，谁将承担损失？",
+      "title": "",
+      "tts": {
+        "text": "如果数字不符，谁将承担损失？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "text": "这就是甲骨文变得有趣的地方。",
+      "text_markdown": "这就是甲骨文变得有趣的地方。",
+      "title": "",
+      "tts": {
+        "text": "这就是甲骨文变得有趣的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-050",
+      "text": "甲骨文的剩余履约义务（Remaining Performance Obligations）——即记录已签约但尚未交付收入的会计科目——在2026财年第三季度达到5530亿美元。",
+      "text_markdown": "甲骨文的剩余履约义务（Remaining Performance Obligations）——即记录已签约但尚未交付收入的会计科目——在2026财年第三季度达到5530亿美元。",
+      "title": "",
+      "tts": {
+        "text": "甲骨文的剩余履约义务（Remaining Performance Obligations）——即记录已签约但尚未交付收入的会计科目——在二零二六财年第三季度达到五千五百三十亿美元。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "text": "这比去年同期增长了325%，其中大部分增长公开与OpenAI和星门计划相关。",
+      "text_markdown": "这比去年同期增长了325%，其中大部分增长公开与OpenAI和星门计划相关。",
+      "title": "",
+      "tts": {
+        "text": "这比去年同期增长了三百二十五百分之，其中大部分增长公开与OpenAI和星门计划相关。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-052",
+      "text": "再看债务方面。",
+      "text_markdown": "再看债务方面。",
+      "title": "",
+      "tts": {
+        "text": "再看债务方面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-053",
+      "text": "截至2月28日，总借款额达到1346亿美元。",
+      "text_markdown": "截至2月28日，总借款额达到1346亿美元。",
+      "title": "",
+      "tts": {
+        "text": "截至二月二十八日，总借款额达到一千三百四十六亿美元。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "text": "甲骨文仅在2月份就筹集了300亿美元——包括投资级债券和强制可转换优先股——并在九个月内发行了430亿美元的新高级票据。",
+      "text_markdown": "甲骨文仅在2月份就筹集了300亿美元——包括投资级债券和强制可转换优先股——并在九个月内发行了430亿美元的新高级票据。",
+      "title": "",
+      "tts": {
+        "text": "甲骨文仅在二月份就筹集了三百亿美元——包括投资级债券和强制可转换优先股——并在九个月内发行了四百三十亿美元的新高级票据。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-055",
+      "text": "总结一下目前的状况。",
+      "text_markdown": "总结一下目前的状况。",
+      "title": "",
+      "tts": {
+        "text": "总结一下目前的状况。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "text": "5530亿美元的承诺，1340亿美元的债务，以及一个承担大部分风险的大客户。",
+      "text_markdown": "5530亿美元的承诺，1340亿美元的债务，以及一个承担大部分风险的大客户。",
+      "title": "",
+      "tts": {
+        "text": "五千五百三十亿美元的承诺，一千三百四十亿美元的债务，以及一个承担大部分风险的大客户。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "text": "这就是建设结构的一句话概括。",
+      "text_markdown": "这就是建设结构的一句话概括。",
+      "title": "",
+      "tts": {
+        "text": "这就是建设结构的一句话概括。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-058",
+      "text": "我们来看看中美对比。",
+      "text_markdown": "我们来看看中美对比。",
+      "title": "",
+      "tts": {
+        "text": "我们来看看美国和中国的对比。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "text": "老生常谈是，中国落后几个月。",
+      "text_markdown": "老生常谈是，中国落后几个月。",
+      "title": "",
+      "tts": {
+        "text": "老生常谈是，中国落后几个月。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-060",
+      "text": "这种老生常谈是错误的，因为它衡量错了东西。",
+      "text_markdown": "这种老生常谈是错误的，因为它衡量错了东西。",
+      "title": "",
+      "tts": {
+        "text": "这种老生常谈是错误的，因为它衡量错了东西。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "text": "6月9日星期一，彭博社报道了国家发展和改革委员会的一份中国计划草案——到2028年，将投入两万亿元人民币（约合两千九百五十亿美元）建设全国人工智能数据中心网络。",
+      "text_markdown": "6月9日星期一，彭博社报道了国家发展和改革委员会的一份中国计划草案——到2028年，将投入两万亿元人民币（约合两千九百五十亿美元）建设全国人工智能数据中心网络。",
+      "title": "",
+      "tts": {
+        "text": "六月九日星期一，彭博社报道了国家发展和改革委员会的一份中国计划草案——到二零二八年，将投入两万亿元人民币（约合两千九百五十亿美元）建设全国人工智能数据中心网络。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "text": "该计划要求百分之八十的芯片国产化，并将由中国移动和中国电信作为统一的互联计算架构进行运营。",
+      "text_markdown": "该计划要求百分之八十的芯片国产化，并将由中国移动和中国电信作为统一的互联计算架构进行运营。",
+      "title": "",
+      "tts": {
+        "text": "该计划要求百分之八十的芯片国产化，并将由中国移动和中国电信作为统一的互联计算架构进行运营。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "text": "那么这个计划的症结在哪里呢？",
+      "text_markdown": "那么这个计划的症结在哪里呢？",
+      "title": "",
+      "tts": {
+        "text": "那么这个计划的症结在哪里呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "text": "两万亿元人民币，百分之八十的国产芯片，2028年截止日期——而症结在于，决定性制约因素不是逻辑芯片，而是高带宽内存。",
+      "text_markdown": "两万亿元人民币，百分之八十的国产芯片，2028年截止日期——而症结在于，决定性制约因素不是逻辑芯片，而是高带宽内存。",
+      "title": "",
+      "tts": {
+        "text": "两万亿元人民币，百分之八十的国产芯片，二零二八年截止日期——而症结在于，决定性制约因素不是逻辑芯片，而是高带宽内存。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-065",
+      "text": "详细解释一下。",
+      "text_markdown": "详细解释一下。",
+      "title": "",
+      "tts": {
+        "text": "详细解释一下。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-066",
+      "text": "每个AI加速器都需要将HBM堆栈固定在逻辑芯片上。",
+      "text_markdown": "每个AI加速器都需要将HBM堆栈固定在逻辑芯片上。",
+      "title": "",
+      "tts": {
+        "text": "每个人工智能加速器都需要将高带宽内存堆栈固定在逻辑芯片上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "text": "没有HBM，芯片就是个摆设。",
+      "text_markdown": "没有HBM，芯片就是个摆设。",
+      "title": "",
+      "tts": {
+        "text": "没有高带宽内存，芯片就是个摆设。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-068",
+      "text": "在出口管制生效之前，中国囤积了大约一千三百万个HBM堆栈——其中一千一百四十万个来自三星。",
+      "text_markdown": "在出口管制生效之前，中国囤积了大约一千三百万个HBM堆栈——其中一千一百四十万个来自三星。",
+      "title": "",
+      "tts": {
+        "text": "在出口管制生效之前，中国囤积了大约一千三百万个高带宽内存堆栈——其中一千一百四十万个来自三星。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "text": "按照华为昇腾910C的封装比例，这些库存大约足够生产一百六十万片芯片。",
+      "text_markdown": "按照华为昇腾910C的封装比例，这些库存大约足够生产一百六十万片芯片。",
+      "title": "",
+      "tts": {
+        "text": "按照华为昇腾九一零C的封装比例，这些库存大约足够生产一百六十万片芯片。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-070",
+      "text": "然后供应就耗尽了。",
+      "text_markdown": "然后供应就耗尽了。",
+      "title": "",
+      "tts": {
+        "text": "然后供应就耗尽了。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "text": "然后供应就耗尽了——一千三百万个HBM堆栈，足够生产一百六十万片芯片，这就是上限。",
+      "text_markdown": "然后供应就耗尽了——一千三百万个HBM堆栈，足够生产一百六十万片芯片，这就是上限。",
+      "title": "",
+      "tts": {
+        "text": "然后供应就耗尽了——一千三百万个高带宽内存堆栈，足够生产一百六十万片芯片，这就是上限。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-072",
+      "text": "长鑫存储（CXMT）的中国国产HBM有望在2026年达到约两百万个堆栈的产量——这可能足够生产二十五万到三十万个加速器。",
+      "text_markdown": "长鑫存储（CXMT）的中国国产HBM有望在2026年达到约两百万个堆栈的产量——这可能足够生产二十五万到三十万个加速器。",
+      "title": "",
+      "tts": {
+        "text": "长鑫存储（CXMT）的中国国产高带宽内存有望在二零二六年达到约两百万个堆栈的产量——这可能足够生产二十五万到三十万个加速器。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-073",
+      "text": "那么华为的芯片计划看起来是怎样的呢？",
+      "text_markdown": "那么华为的芯片计划看起来是怎样的呢？",
+      "title": "",
+      "tts": {
+        "text": "那么华为的芯片计划看起来是怎样的呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-074",
+      "text": "彭博社援引华为的计划称，2026年910C芯片的产量将达到六十万片，而更广泛的昇腾产品线总计将达到一百六十万个芯片晶圆。",
+      "text_markdown": "彭博社援引华为的计划称，2026年910C芯片的产量将达到六十万片，而更广泛的昇腾产品线总计将达到一百六十万个芯片晶圆。",
+      "title": "",
+      "tts": {
+        "text": "彭博社援引华为的计划称，二零二六年九一零C芯片的产量将达到六十万片，而更广泛的昇腾产品线总计将达到一百六十万个芯片晶圆。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "text": "这个数字，六十万，是一个目标，而不是实际出货量。",
+      "text_markdown": "这个数字，六十万，是一个目标，而不是实际出货量。",
+      "title": "",
+      "tts": {
+        "text": "这个数字，六十万，是一个目标，而不是实际出货量。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "text": "另外，在出口管制切断供应之前，华为通过算能（Sophgo）和比特大陆（Bitmain）的空壳公司，积累了超过两百九十万个由台积电制造的昇腾芯片晶圆。",
+      "text_markdown": "另外，在出口管制切断供应之前，华为通过算能（Sophgo）和比特大陆（Bitmain）的空壳公司，积累了超过两百九十万个由台积电制造的昇腾芯片晶圆。",
+      "title": "",
+      "tts": {
+        "text": "另外，在出口管制切断供应之前，华为通过算能（Sophgo）和比特大陆（Bitmain）的空壳公司，积累了超过两百九十万个由台积电制造的昇腾芯片晶圆。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-077",
+      "text": "“出口管制有效”的说法存在一个两百九十万个芯片晶圆的漏洞。",
+      "text_markdown": "“出口管制有效”的说法存在一个两百九十万个芯片晶圆的漏洞。",
+      "title": "",
+      "tts": {
+        "text": "“出口管制有效”的说法存在一个两百九十万个芯片晶圆的漏洞。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-078",
+      "text": "让我们快速过一遍头条新闻。",
+      "text_markdown": "让我们快速过一遍头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "让我们快速过一遍头条新闻。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-079",
+      "text": "本周第一个头条，博通。",
+      "text_markdown": "本周第一个头条，博通。",
+      "title": "",
+      "tts": {
+        "text": "本周第一个头条，博通。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-080",
+      "text": "博通的市值约为两万亿美元。",
+      "text_markdown": "博通的市值约为两万亿美元。",
+      "title": "",
+      "tts": {
+        "text": "博通的市值约为两万亿美元。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-081",
+      "text": "他们的首席执行官陈福阳在6月3日的财报电话会议上重申了2027财年实现一千亿美元人工智能半导体收入的目标，该目标得到了约七百三十亿美元人工智能积压订单以及与Alphabet和Meta签订的延长至2031年的长期协议的支持。",
+      "text_markdown": "他们的首席执行官陈福阳在6月3日的财报电话会议上重申了2027财年实现一千亿美元人工智能半导体收入的目标，该目标得到了约七百三十亿美元人工智能积压订单以及与Alphabet和Meta签订的延长至2031年的长期协议的支持。",
+      "title": "",
+      "tts": {
+        "text": "他们的首席执行官陈福阳在六月三日的财报电话会议上重申了二零二七财年实现一千亿美元人工智能半导体收入的目标，该目标得到了约七百三十亿美元人工智能积压订单以及与Alphabet和Meta签订的延长至二零三一年的长期协议的支持。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "text": "两万亿美元市值，一千亿美元的人工智能收入目标，却几乎没有零售品牌知名度。",
+      "text_markdown": "两万亿美元市值，一千亿美元的人工智能收入目标，却几乎没有零售品牌知名度。",
+      "title": "",
+      "tts": {
+        "text": "两万亿美元市值，一千亿美元的人工智能收入目标，却几乎没有零售品牌知名度。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-083",
+      "text": "本周第二个头条，阿斯麦。",
+      "text_markdown": "本周第二个头条，阿斯麦。",
+      "title": "",
+      "tts": {
+        "text": "本周第二个头条，阿斯麦。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "text": "阿斯麦，这家制造所有尖端逻辑芯片所依赖的光刻机的荷兰公司，以大约三亿七千万美元的价格出售其高数值孔径EUV系统。",
+      "text_markdown": "阿斯麦，这家制造所有尖端逻辑芯片所依赖的光刻机的荷兰公司，以大约三亿七千万美元的价格出售其高数值孔径EUV系统。",
+      "title": "",
+      "tts": {
+        "text": "阿斯麦，这家制造所有尖端逻辑芯片所依赖的光刻机的荷兰公司，以大约三亿七千万美元的价格出售其高数值孔径极紫外系统。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-085",
+      "text": "全球年产能不到二十台。",
+      "text_markdown": "全球年产能不到二十台。",
+      "title": "",
+      "tts": {
+        "text": "全球年产能不到二十台。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "text": "每台三亿七千万美元，每年不到二十台机器，只有一家公司生产——这才是全球芯片供应的真正瓶颈，而不是政策。",
+      "text_markdown": "每台三亿七千万美元，每年不到二十台机器，只有一家公司生产——这才是全球芯片供应的真正瓶颈，而不是政策。",
+      "title": "",
+      "tts": {
+        "text": "每台三亿七千万美元，每年不到二十台机器，只有一家公司生产——这才是全球芯片供应的真正瓶颈，而不是政策。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-087",
+      "text": "本周第三个头条，出口管制。",
+      "text_markdown": "本周第三个头条，出口管制。",
+      "title": "",
+      "tts": {
+        "text": "本周第三个头条，出口管制。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-088",
+      "text": "商务部于2025年5月13日撤销了拜登时代的人工智能扩散规则，直到2026年5月31日才发布新的商务部工业和安全局（BIS）执法澄清。",
+      "text_markdown": "商务部于2025年5月13日撤销了拜登时代的人工智能扩散规则，直到2026年5月31日才发布新的商务部工业和安全局（BIS）执法澄清。",
+      "title": "",
+      "tts": {
+        "text": "商务部于二零二五年五月十三日撤销了拜登时代的人工智能扩散规则，直到二零二六年五月三十一日才发布新的商务部工业和安全局执法澄清。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "text": "那是一个大约一年的窗口期，在此期间许可要求并未被积极执行。",
+      "text_markdown": "那是一个大约一年的窗口期，在此期间许可要求并未被积极执行。",
+      "title": "",
+      "tts": {
+        "text": "那是一个大约一年的窗口期，在此期间许可要求并未被积极执行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-090",
+      "text": "算算日子吧。",
+      "text_markdown": "算算日子吧。",
+      "title": "",
+      "tts": {
+        "text": "算算日子吧。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "text": "关闭一个美国模型需要七十二小时，强制执行一项芯片出口规定需要三百八十天——这种不对称性才是关键。",
+      "text_markdown": "关闭一个美国模型需要七十二小时，强制执行一项芯片出口规定需要三百八十天——这种不对称性才是关键。",
+      "title": "",
+      "tts": {
+        "text": "关闭一个美国模型需要七十二小时，强制执行一项芯片出口规定需要三百八十天——这种不对称性才是关键。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "text": "那三百八十天里，这些芯片都去了哪里？",
+      "text_markdown": "那三百八十天里，这些芯片都去了哪里？",
+      "title": "",
+      "tts": {
+        "text": "那三百八十天里，这些芯片都去了哪里？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "text": "它们大多数都去了东南亚。",
+      "text_markdown": "它们大多数都去了东南亚。",
+      "title": "",
+      "tts": {
+        "text": "它们大多数都去了东南亚。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "text": "司法部在三月下旬解封了起诉书，指控英伟达的H一百和A一百芯片通过马来西亚和新加坡中间商转运。",
+      "text_markdown": "司法部在三月下旬解封了起诉书，指控英伟达的H一百和A一百芯片通过马来西亚和新加坡中间商转运。",
+      "title": "",
+      "tts": {
+        "text": "司法部在三月下旬解封了起诉书，指控英伟达的H一百和A一百芯片通过马来西亚和新加坡中间商转运。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "text": "《财富》杂志在五月公布了加密文本，揭示了物流细节，而美超微则牵涉到一起二十五亿美元的空壳公司案件中。",
+      "text_markdown": "《财富》杂志在五月公布了加密文本，揭示了物流细节，而美超微则牵涉到一起二十五亿美元的空壳公司案件中。",
+      "title": "",
+      "tts": {
+        "text": "《财富》杂志在五月公布了加密文本，揭示了物流细节，而美超微则牵涉到一起二十五亿美元的空壳公司案件中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-096",
+      "text": "据报道，特朗普政府正在起草新的芯片出口限制，专门针对马来西亚和泰国。",
+      "text_markdown": "据报道，特朗普政府正在起草新的芯片出口限制，专门针对马来西亚和泰国。",
+      "title": "",
+      "tts": {
+        "text": "据报道，特朗普政府正在起草新的芯片出口限制，专门针对马来西亚和泰国。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-097",
+      "text": "所以，一句话概括情况。",
+      "text_markdown": "所以，一句话概括情况。",
+      "title": "",
+      "tts": {
+        "text": "所以，一句话概括情况。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "text": "这些芯片不会直接飞往深圳——它们会先飞往槟城和新加坡。",
+      "text_markdown": "这些芯片不会直接飞往深圳——它们会先飞往槟城和新加坡。",
+      "title": "",
+      "tts": {
+        "text": "这些芯片不会直接飞往深圳——它们会先飞往槟城和新加坡。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-099",
+      "text": "本周概念——剩余履约义务。",
+      "text_markdown": "本周概念——剩余履约义务。",
+      "title": "",
+      "tts": {
+        "text": "本周概念——剩余履约义务。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-100",
+      "text": "R.P.O.是一项会计科目，记录了公司已签署但尚未履约的合同的美元价值。",
+      "text_markdown": "R.P.O.是一项会计科目，记录了公司已签署但尚未履约的合同的美元价值。",
+      "title": "",
+      "tts": {
+        "text": "R P O是一项会计科目，记录了公司已签署但尚未履约的合同的美元价值。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "text": "它是前瞻性的——它告诉你的是未来的收入，而不是今天银行里的钱。",
+      "text_markdown": "它是前瞻性的——它告诉你的是未来的收入，而不是今天银行里的钱。",
+      "title": "",
+      "tts": {
+        "text": "它是前瞻性的——它告诉你的是未来的收入，而不是今天银行里的钱。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "text": "那为什么这对甲骨文很重要？",
+      "text_markdown": "那为什么这对甲骨文很重要？",
+      "title": "",
+      "tts": {
+        "text": "那为什么这对甲骨文很重要？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "text": "因为五千五百三十亿美元的R.P.O.，高度集中在一个客户的一个建设上，这意味着甲骨文承诺在未来几年内为这个客户提供大量的计算能力，而这个客户自身的收入模式仍在争议之中。",
+      "text_markdown": "因为五千五百三十亿美元的R.P.O.，高度集中在一个客户的一个建设上，这意味着甲骨文承诺在未来几年内为这个客户提供大量的计算能力，而这个客户自身的收入模式仍在争议之中。",
+      "title": "",
+      "tts": {
+        "text": "因为五千五百三十亿美元的R P O，高度集中在一个客户的一个建设上，这意味着甲骨文承诺在未来几年内为这个客户提供大量的计算能力，而这个客户自身的收入模式仍在争议之中。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "text": "如果这些合同能够履约，甲骨文就达成了十年一遇的大交易。",
+      "text_markdown": "如果这些合同能够履约，甲骨文就达成了十年一遇的大交易。",
+      "title": "",
+      "tts": {
+        "text": "如果这些合同能够履约，甲骨文就达成了十年一遇的大交易。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-105",
+      "text": "如果它们延期——或者被重新谈判——甲骨文将背负债务，而合同却在缩水。",
+      "text_markdown": "如果它们延期——或者被重新谈判——甲骨文将背负债务，而合同却在缩水。",
+      "title": "",
+      "tts": {
+        "text": "如果它们延期——或者被重新谈判——甲骨文将背负债务，而合同却在缩水。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-106",
+      "text": "所以当你看到一份科技文件中出现R.P.O.数字时。",
+      "text_markdown": "所以当你看到一份科技文件中出现R.P.O.数字时。",
+      "title": "",
+      "tts": {
+        "text": "所以当你看到一份科技文件中出现R.P.O.数字时。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-107",
+      "text": "要仔细阅读客户是谁，义务的集中程度如何，以及公司需要发生什么才能真正履行这些义务。",
+      "text_markdown": "要仔细阅读客户是谁，义务的集中程度如何，以及公司需要发生什么才能真正履行这些义务。",
+      "title": "",
+      "tts": {
+        "text": "要仔细阅读客户是谁，义务的集中程度如何，以及公司需要发生什么才能真正履行这些义务。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "text": "R.P.O.就是那些接盘侠出现在脚注的地方。",
+      "text_markdown": "R.P.O.就是那些接盘侠出现在脚注的地方。",
+      "title": "",
+      "tts": {
+        "text": "R P O就是那些接盘侠出现在脚注的地方。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-109",
+      "text": "一个不错的收尾点。",
+      "text_markdown": "一个不错的收尾点。",
+      "title": "",
+      "tts": {
+        "text": "一个不错的收尾点。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-110",
+      "text": "罗恩，谢谢你的总结。",
+      "text_markdown": "罗恩，谢谢你的总结。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，谢谢你的总结。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "text": "随时奉陪，温迪——很高兴来到这里。",
+      "text_markdown": "随时奉陪，温迪——很高兴来到这里。",
+      "title": "",
+      "tts": {
+        "text": "随时奉陪，温迪——很高兴来到这里。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "text": "以上是二零二六年六月二十一日的《本周AI》节目。",
+      "text_markdown": "以上是二零二六年六月二十一日的《本周AI》节目。",
+      "title": "",
+      "tts": {
+        "text": "以上是二零二六年六月二十一日的《本周AI》节目。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-113",
+      "text": "下周，我们将回到开放权重和小型实验室的报道。",
+      "text_markdown": "下周，我们将回到开放权重和小型实验室的报道。",
+      "title": "",
+      "tts": {
+        "text": "下周，我们将回到开放权重和小型实验室的报道。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-114",
+      "text": "下周日再见，保重。",
+      "text_markdown": "下周日再见，保重。",
+      "title": "",
+      "tts": {
+        "text": "下周日再见，保重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

@@ -1,0 +1,938 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai-this-week-2026-05-13",
+  "language": "fi",
+  "total_segments": 62,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tervetuloa AI This Week -ohjelmaan. Olen Vindy.",
+      "text_markdown": "Tervetuloa AI This Week -ohjelmaan. Olen Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Tervetuloa AI This Week -ohjelmaan. Olen Vindy.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kanssani, kuten aina, on Ron.",
+      "text_markdown": "Kanssani, kuten aina, on Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kanssani, kuten aina, on Ron.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Hyvä olla täällä.",
+      "text_markdown": "Hyvä olla täällä.",
+      "title": "",
+      "tts": {
+        "text": "Hyvä olla täällä.",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tänään on keskiviikko, 13. toukokuuta 2026. Tulossa: tällä viikolla julkaistut mallit. Leaderboardit ja miksi joihinkin niistä ei pitäisi enää luottaa. Viikon konseptimme. Ja laajempi kuva – Yhdysvallat sai juuri uuden Federal Reserven johtajan, ja sillä on tekoälylle suurempi merkitys kuin ehkä luuletkaan.",
+      "text_markdown": "Tänään on keskiviikko, 13. toukokuuta 2026. Tulossa: tällä viikolla julkaistut mallit. Leaderboardit ja miksi joihinkin niistä ei pitäisi enää luottaa. Viikon konseptimme. Ja laajempi kuva – Yhdysvallat sai juuri uuden Federal Reserven johtajan, ja sillä on tekoälylle suurempi merkitys kuin ehkä luuletkaan.",
+      "title": "",
+      "tts": {
+        "text": "Tänään on keskiviikko, toukokuun kolmastoista, kaksituhatta kaksikymmentäkuusi. Tulossa: tällä viikolla julkaistut mallit. Leaderboardit ja miksi joihinkin niistä ei pitäisi enää luottaa. Viikon konseptimme. Ja laajempi kuva – Yhdysvallat sai juuri uuden Federal Reserven johtajan, ja sillä on tekoälylle suurempi merkitys kuin ehkä luuletkaan.",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, mikä on suurin malliuutinen tällä viikolla?",
+      "text_markdown": "Ron, mikä on suurin malliuutinen tällä viikolla?",
+      "title": "",
+      "tts": {
+        "text": "Ron, mikä on suurin malliuutinen tällä viikolla?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "ChatGPT:n oletusaivot muuttuivat. OpenAI julkaisi uuden mallin nimeltä GPT-5.5 Instant ilmaiskäyttäjille viime viikolla, tiistaina 5. toukokuuta. Jos ilmainen ChatGPT-vastaus on tuntunut lyhyemmältä tai vähemmän emojitäyteiseltä, se johtuu tästä.",
+      "text_markdown": "ChatGPT:n oletusaivot muuttuivat. OpenAI julkaisi uuden mallin nimeltä GPT-5.5 Instant ilmaiskäyttäjille viime viikolla, tiistaina 5. toukokuuta. Jos ilmainen ChatGPT-vastaus on tuntunut lyhyemmältä tai vähemmän emojitäyteiseltä, se johtuu tästä.",
+      "title": "",
+      "tts": {
+        "text": "ChatGPT:n oletusaivot muuttuivat. OpenAI julkaisi uuden mallin nimeltä GPT viisi piste viisi Instant ilmaiskäyttäjille viime viikolla, tiistaina toukokuun viidentenä. Jos ilmainen ChatGPT-vastaus on tuntunut lyhyemmältä tai vähemmän emojitäyteiseltä, se johtuu tästä.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Miten lyhyempi?",
+      "text_markdown": "Miten lyhyempi?",
+      "title": "",
+      "tts": {
+        "text": "Miten lyhyempi?",
+        "pause_after_ms": 329,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "OpenAI sanoo, että uusi oletusmalli kirjoittaa noin 30 % vähemmän sanoja ja 30 % vähemmän rivejä kuin sen korvaama malli. He väittävät myös 50 %:n pudotusta hallusinoitujen väitteiden määrässä vaikeimmissa kehotteissa. Esimerkiksi lääketieteellisissä, oikeudellisissa ja taloudellisissa kysymyksissä.",
+      "text_markdown": "OpenAI sanoo, että uusi oletusmalli kirjoittaa noin 30 % vähemmän sanoja ja 30 % vähemmän rivejä kuin sen korvaama malli. He väittävät myös 50 %:n pudotusta hallusinoitujen väitteiden määrässä vaikeimmissa kehotteissa. Esimerkiksi lääketieteellisissä, oikeudellisissa ja taloudellisissa kysymyksissä.",
+      "title": "",
+      "tts": {
+        "text": "OpenAI sanoo, että uusi oletusmalli kirjoittaa noin kolmekymmentä prosenttia vähemmän sanoja ja kolmekymmentä prosenttia vähemmän rivejä kuin sen korvaama malli. He väittävät myös viidenkymmenen prosentin pudotusta hallusinoitujen väitteiden määrässä vaikeimmissa kehotteissa. Esimerkiksi lääketieteellisissä, oikeudellisissa ja taloudellisissa kysymyksissä.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Onko kukaan OpenAI:n ulkopuolella vahvistanut noita lukuja?",
+      "text_markdown": "Onko kukaan OpenAI:n ulkopuolella vahvistanut noita lukuja?",
+      "title": "",
+      "tts": {
+        "text": "Onko kukaan OpenAI:n ulkopuolella vahvistanut noita lukuja?",
+        "pause_after_ms": 318,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ei laajasti. Riippumattomat benchmark-asiantuntijat, kuten Artificial Analysis, ovat sijoittaneet uuden mallin yleisen älykkyysindeksinsä kärkeen. Mutta hallusinaatioväitteiden todentaminen on hidasta. Ne tuppaavat nousemaan esiin viikkojen kuluessa, kun ihmiset todella käyttävät mallia.",
+      "text_markdown": "Ei laajasti. Riippumattomat benchmark-asiantuntijat, kuten Artificial Analysis, ovat sijoittaneet uuden mallin yleisen älykkyysindeksinsä kärkeen. Mutta hallusinaatioväitteiden todentaminen on hidasta. Ne tuppaavat nousemaan esiin viikkojen kuluessa, kun ihmiset todella käyttävät mallia.",
+      "title": "",
+      "tts": {
+        "text": "Ei laajasti. Riippumattomat benchmark-asiantuntijat, kuten Artificial Analysis, ovat sijoittaneet uuden mallin yleisen älykkyysindeksinsä kärkeen. Mutta hallusinaatioväitteiden todentaminen on hidasta. Ne tuppaavat nousemaan esiin viikkojen kuluessa, kun ihmiset todella käyttävät mallia.",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Entä avoimen lähdekoodin mallien puolella?",
+      "text_markdown": "Entä avoimen lähdekoodin mallien puolella?",
+      "title": "",
+      "tts": {
+        "text": "Entä avoimen lähdekoodin mallien puolella?",
+        "pause_after_ms": 382,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kaksi suurta asiaa. Moonshot, Kimi-mallin takana oleva kiinalainen laboratorio, keräsi viime viikolla, 7. toukokuuta, 2 miljardia dollaria 20 miljardin dollarin arvostuksella. Ja heidän uusin mallinsa, Kimi K 2.6, nousi juuri OpenRouterin token-volyymin kärkeen.",
+      "text_markdown": "Kaksi suurta asiaa. Moonshot, Kimi-mallin takana oleva kiinalainen laboratorio, keräsi viime viikolla, 7. toukokuuta, 2 miljardia dollaria 20 miljardin dollarin arvostuksella. Ja heidän uusin mallinsa, Kimi K 2.6, nousi juuri OpenRouterin token-volyymin kärkeen.",
+      "title": "",
+      "tts": {
+        "text": "Kaksi suurta asiaa. Moonshot, Kimi-mallin takana oleva kiinalainen laboratorio, keräsi viime viikolla, toukokuun seitsemäntenä, kaksi miljardia dollaria kahdenkymmenen miljardin dollarin arvostuksella. Ja heidän uusin mallinsa, Kimi K kaksi piste kuusi, nousi juuri OpenRouterin token-volyymin kärkeen.",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kärkipaikka? Yleisesti?",
+      "text_markdown": "Kärkipaikka? Yleisesti?",
+      "title": "",
+      "tts": {
+        "text": "Kärkipaikka? Yleisesti?",
+        "pause_after_ms": 323,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Yleisesti. Se on kiinalainen avoimen lähdekoodin malli ykkösenä merkittävällä kaupallisella reitittimellä. Kuusi kuukautta sitten se olisi ollut ajattelematonta.",
+      "text_markdown": "Yleisesti. Se on kiinalainen avoimen lähdekoodin malli ykkösenä merkittävällä kaupallisella reitittimellä. Kuusi kuukautta sitten se olisi ollut ajattelematonta.",
+      "title": "",
+      "tts": {
+        "text": "Yleisesti. Se on kiinalainen avoimen lähdekoodin malli ykkösenä merkittävällä kaupallisella reitittimellä. Kuusi kuukautta sitten se olisi ollut ajattelematonta.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Muuta mainitsemisen arvoista?",
+      "text_markdown": "Muuta mainitsemisen arvoista?",
+      "title": "",
+      "tts": {
+        "text": "Muuta mainitsemisen arvoista?",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mistral, ranskalainen laboratorio, julkaisi Medium 3.5:n huhtikuun lopulla. He yhdistävät vanhan jaon chat-mallin, päättelymallin ja koodausmallin välillä yhdeksi tuotteeksi. Sama trendi, jonka OpenAI aloitti GPT-5-perheen kanssa. Koko ala on siirtymässä siihen suuntaan.",
+      "text_markdown": "Mistral, ranskalainen laboratorio, julkaisi Medium 3.5:n huhtikuun lopulla. He yhdistävät vanhan jaon chat-mallin, päättelymallin ja koodausmallin välillä yhdeksi tuotteeksi. Sama trendi, jonka OpenAI aloitti GPT-5-perheen kanssa. Koko ala on siirtymässä siihen suuntaan.",
+      "title": "",
+      "tts": {
+        "text": "Mistral, ranskalainen laboratorio, julkaisi Medium kolme piste viisi:n huhtikuun lopulla. He yhdistävät vanhan jaon chat-mallin, päättelymallin ja koodausmallin välillä yhdeksi tuotteeksi. Sama trendi, jonka OpenAI aloitti GPT viisi -perheen kanssa. Koko ala on siirtymässä siihen suuntaan.",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja mitä seuraavaksi on tulossa?",
+      "text_markdown": "Ja mitä seuraavaksi on tulossa?",
+      "title": "",
+      "tts": {
+        "text": "Ja mitä seuraavaksi on tulossa?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Google I/O on tiistaina. Kaikki odottavat uutta Geminiä, ja uskottavaa huhua liikkuu videonluontimallista nimeltä Gemini Omni. OpenAI:lla on GPT-5.6 testauksessa. Anthropicilla on Mythos-niminen malli yksityisessä esikatselussa. Tiedämme paljon enemmän ensi viikolla.",
+      "text_markdown": "Google I/O on tiistaina. Kaikki odottavat uutta Geminiä, ja uskottavaa huhua liikkuu videonluontimallista nimeltä Gemini Omni. OpenAI:lla on GPT-5.6 testauksessa. Anthropicilla on Mythos-niminen malli yksityisessä esikatselussa. Tiedämme paljon enemmän ensi viikolla.",
+      "title": "",
+      "tts": {
+        "text": "Google I O on tiistaina. Kaikki odottavat uutta Geminiä, ja uskottavaa huhua liikkuu videonluontimallista nimeltä Gemini Omni. OpenAI:lla on GPT viisi piste kuusi testauksessa. Anthropicilla on Mythos-niminen malli yksityisessä esikatselussa. Tiedämme paljon enemmän ensi viikolla.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Okei, siirrytään leaderboardeihin.",
+      "text_markdown": "Okei, siirrytään leaderboardeihin.",
+      "title": "",
+      "tts": {
+        "text": "Okei, siirrytään leaderboardeihin.",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, mikä liikkuu leaderboardeilla tällä viikolla?",
+      "text_markdown": "Ron, mikä liikkuu leaderboardeilla tällä viikolla?",
+      "title": "",
+      "tts": {
+        "text": "Ron, mikä liikkuu leaderboardeilla tällä viikolla?",
+        "pause_after_ms": 303,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tämän viikon todellinen uutinen eivät ole pisteet. Vaan pisteet, joihin ei pitäisi enää luottaa.",
+      "text_markdown": "Tämän viikon todellinen uutinen eivät ole pisteet. Vaan pisteet, joihin ei pitäisi enää luottaa.",
+      "title": "",
+      "tts": {
+        "text": "Tämän viikon todellinen uutinen eivät ole pisteet. Vaan pisteet, joihin ei pitäisi enää luottaa.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kerro meille siitä hieman lisää, Ron.",
+      "text_markdown": "Kerro meille siitä hieman lisää, Ron.",
+      "title": "",
+      "tts": {
+        "text": "Kerro meille siitä hieman lisää, Ron.",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Berkeleyn ryhmä julkaisi artikkelin. He rakensivat automatisoidun skannerin, joka sai lähes täydelliset pisteet jokaisessa merkittävässä tekoälyagentin benchmarkissa. Ratkaisematta kuitenkaan yhtään tehtävää. He hyödynsivät tapaa, jolla benchmarkit tarkistavat omat vastauksensa.",
+      "text_markdown": "Berkeleyn ryhmä julkaisi artikkelin. He rakensivat automatisoidun skannerin, joka sai lähes täydelliset pisteet jokaisessa merkittävässä tekoälyagentin benchmarkissa. Ratkaisematta kuitenkaan yhtään tehtävää. He hyödynsivät tapaa, jolla benchmarkit tarkistavat omat vastauksensa.",
+      "title": "",
+      "tts": {
+        "text": "Berkeleyn ryhmä julkaisi artikkelin. He rakensivat automatisoidun skannerin, joka sai lähes täydelliset pisteet jokaisessa merkittävässä tekoälyagentin benchmarkissa. Ratkaisematta kuitenkaan yhtään tehtävää. He hyödynsivät tapaa, jolla benchmarkit tarkistavat omat vastauksensa.",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "He huijasivat, eivätkä benchmarkit huomanneet sitä.",
+      "text_markdown": "He huijasivat, eivätkä benchmarkit huomanneet sitä.",
+      "title": "",
+      "tts": {
+        "text": "He huijasivat, eivätkä benchmarkit huomanneet sitä.",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Aivan. Ja samalla viikolla OpenAI ilmoitti luopuvansa SWE bench Verified -arvioinneistaan. Se on koodausbenchmark, johon he viittasivat jatkuvasti. He luopuivat siitä, koska yli puolet vaikeista tehtävistä osoittautui sisältävän rikkinäisiä testejä.",
+      "text_markdown": "Aivan. Ja samalla viikolla OpenAI ilmoitti luopuvansa SWE bench Verified -arvioinneistaan. Se on koodausbenchmark, johon he viittasivat jatkuvasti. He luopuivat siitä, koska yli puolet vaikeista tehtävistä osoittautui sisältävän rikkinäisiä testejä.",
+      "title": "",
+      "tts": {
+        "text": "Aivan. Ja samalla viikolla OpenAI ilmoitti luopuvansa SWE bench Verified -arvioinneistaan. Se on koodausbenchmark, johon he viittasivat jatkuvasti. He luopuivat siitä, koska yli puolet vaikeista tehtävistä osoittautui sisältävän rikkinäisiä testejä.",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Eli monet luvuista, joita olemme kuulleet viimeisen vuoden ajan, ovat…",
+      "text_markdown": "Eli monet luvuista, joita olemme kuulleet viimeisen vuoden ajan, ovat…",
+      "title": "",
+      "tts": {
+        "text": "Eli monet luvuista, joita olemme kuulleet viimeisen vuoden ajan, ovat…",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ainakin osittain paisutettuja. Ei jokainen malli. Ei jokainen benchmark. Mutta ala rakentaa mittanauhaansa uudelleen julkisesti. Uudemmat arvioinnit, kuten SWE-bench Pro ja SWE-rebench-niminen projekti, yrittävät korjata tämän pitämällä testikoodin yksityisenä.",
+      "text_markdown": "Ainakin osittain paisutettuja. Ei jokainen malli. Ei jokainen benchmark. Mutta ala rakentaa mittanauhaansa uudelleen julkisesti. Uudemmat arvioinnit, kuten SWE-bench Pro ja SWE-rebench-niminen projekti, yrittävät korjata tämän pitämällä testikoodin yksityisenä.",
+      "title": "",
+      "tts": {
+        "text": "Ainakin osittain paisutettuja. Ei jokainen malli. Ei jokainen benchmark. Mutta ala rakentaa mittanauhaansa uudelleen julkisesti. Uudemmat arvioinnit, kuten SWE bench Pro ja projekti nimeltä SWE rebench, yrittävät korjata tämän pitämällä testikoodin yksityisenä.",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Onko mikään oikeasti nousemassa puhtaasti?",
+      "text_markdown": "Onko mikään oikeasti nousemassa puhtaasti?",
+      "title": "",
+      "tts": {
+        "text": "Onko mikään oikeasti nousemassa puhtaasti?",
+        "pause_after_ms": 310,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kaksi asiaa, puhtaammilla leaderboardeilla. Huhtikuun puolivälissä Anthropicin Claude Opus 4.7:stä tuli ensimmäinen malli, joka ylitti puhtaasti 1500 Elo-pisteen rajan LM Arena -koodausleaderboardilla. Opus 4.6 oli saavuttanut 1500 pisteen rajan pari viikkoa aiemmin. Tällä viikolla Opus 4.7 on edelleen kärjessä, noin 1569 pisteellä. Anthropicilla on myös erillinen Mythos-niminen malli yksityisessä kumppaniesikatselussa, joka johtaa 17:ää Anthropicin mittaamasta 18 agenttibenchmarkista.",
+      "text_markdown": "Kaksi asiaa, puhtaammilla leaderboardeilla. Huhtikuun puolivälissä Anthropicin Claude Opus 4.7:stä tuli ensimmäinen malli, joka ylitti puhtaasti 1500 Elo-pisteen rajan LM Arena -koodausleaderboardilla. Opus 4.6 oli saavuttanut 1500 pisteen rajan pari viikkoa aiemmin. Tällä viikolla Opus 4.7 on edelleen kärjessä, noin 1569 pisteellä. Anthropicilla on myös erillinen Mythos-niminen malli yksityisessä kumppaniesikatselussa, joka johtaa 17:ää Anthropicin mittaamasta 18 agenttibenchmarkista.",
+      "title": "",
+      "tts": {
+        "text": "Kaksi asiaa, puhtaammilla leaderboardeilla. Huhtikuun puolivälissä Anthropicin Claude Opus neljä piste seitsemän:stä tuli ensimmäinen malli, joka ylitti puhtaasti Ello-pisteen viisitoistasataa rajan LM Arena -koodausleaderboardilla. Opus neljä piste kuusi oli saavuttanut viisitoistasataa pisteen rajan pari viikkoa aiemmin. Tällä viikolla Opus neljä piste seitsemän on edelleen kärjessä, noin viisitoistasataa kuusikymmentäyhdeksän pisteellä. Anthropicilla on myös erillinen Mythos-niminen malli yksityisessä kumppaniesikatselussa, joka johtaa seitsemäätoista Anthropicin mittaamasta kahdeksastatoista agenttibenchmarkista.",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Malli, jota yleisö ei voi käyttää, on leaderboardien kärjessä.",
+      "text_markdown": "Malli, jota yleisö ei voi käyttää, on leaderboardien kärjessä.",
+      "title": "",
+      "tts": {
+        "text": "Malli, jota yleisö ei voi käyttää, on leaderboardien kärjessä.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Siinä missä olemme. Toinen suuri trendi on avoimen ja suljetun välinen kuilu. Se on kapein koskaan. DeepSeek V4 Pro ja Kimi K 2.6 ovat iskuetäisyydellä GPT-5.5:stä ristiarvioinnin älykkyysindeksillä. Tuo kuilu oli ennen valtava. Nyt se on pieni.",
+      "text_markdown": "Siinä missä olemme. Toinen suuri trendi on avoimen ja suljetun välinen kuilu. Se on kapein koskaan. DeepSeek V4 Pro ja Kimi K 2.6 ovat iskuetäisyydellä GPT-5.5:stä ristiarvioinnin älykkyysindeksillä. Tuo kuilu oli ennen valtava. Nyt se on pieni.",
+      "title": "",
+      "tts": {
+        "text": "Siinä missä olemme. Toinen suuri trendi on avoimen ja suljetun välinen kuilu. Se on kapein koskaan. DeepSeek V neljä Pro ja Kimi K kaksi piste kuusi ovat iskuetäisyydellä GPT viisi piste viidestä ristiarvioinnin älykkyysindeksillä. Tuo kuilu oli ennen valtava. Nyt se on pieni.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Okei, siirrytään viikon konseptiin.",
+      "text_markdown": "Okei, siirrytään viikon konseptiin.",
+      "title": "",
+      "tts": {
+        "text": "Okei, siirrytään viikon konseptiin.",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, tämän viikon konsepti on mixture of experts. Miksi keskitymme mixture of expertsiin?",
+      "text_markdown": "Ron, tämän viikon konsepti on mixture of experts. Miksi keskitymme mixture of expertsiin?",
+      "title": "",
+      "tts": {
+        "text": "Ron, tämän viikon konsepti on mixture of experts. Miksi keskitymme mixture of expertsiin?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Koska juuri puhumamme avoimen painon malli, Kimi K 2.6, sisältää yhteensä 1 biljoonan parametria. Mutta vain 32 miljardia näistä parametreista on käynnissä milloin tahansa. Se on mixture of experts.",
+      "text_markdown": "Koska juuri puhumamme avoimen painon malli, Kimi K 2.6, sisältää yhteensä 1 biljoonan parametria. Mutta vain 32 miljardia näistä parametreista on käynnissä milloin tahansa. Se on mixture of experts.",
+      "title": "",
+      "tts": {
+        "text": "Koska juuri puhumamme avoimen painon malli, Kimi K kaksi piste kuusi, sisältää yhteensä yhden biljoonan parametria. Mutta vain kolmekymmentäkaksi miljardia näistä parametreista on käynnissä milloin tahansa. Se on mixture of experts.",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Käy se läpi kuulijoillemme.",
+      "text_markdown": "Käy se läpi kuulijoillemme.",
+      "title": "",
+      "tts": {
+        "text": "Käy se läpi kuulijoillemme.",
+        "pause_after_ms": 545,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tavallinen tekoälymalli on kuin yksi jättimäinen aivo. Jokainen sen tuottama sana käyttää aivojen jokaista osaa. Mixture of experts -malli on enemmän kuin rakennus täynnä asiantuntijoita. Ovenvartijana toimii vastaanottovirkailija. Jokaista sanaa varten vastaanottovirkailija valitsee kaksi tai kolme asiantuntijaa konsultoitavaksi, ja muu rakennus pysyy hiljaa.",
+      "text_markdown": "Tavallinen tekoälymalli on kuin yksi jättimäinen aivo. Jokainen sen tuottama sana käyttää aivojen jokaista osaa. Mixture of experts -malli on enemmän kuin rakennus täynnä asiantuntijoita. Ovenvartijana toimii vastaanottovirkailija. Jokaista sanaa varten vastaanottovirkailija valitsee kaksi tai kolme asiantuntijaa konsultoitavaksi, ja muu rakennus pysyy hiljaa.",
+      "title": "",
+      "tts": {
+        "text": "Tavallinen tekoälymalli on kuin yksi jättimäinen aivo. Jokainen sen tuottama sana käyttää aivojen jokaista osaa. Mixture of experts -malli on enemmän kuin rakennus täynnä asiantuntijoita. Ovenvartijana toimii vastaanottovirkailija. Jokaista sanaa varten vastaanottovirkailija valitsee kaksi tai kolme asiantuntijaa konsultoitavaksi, ja muu rakennus pysyy hiljaa.",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Eli malli on paperilla valtava, mutta halpa käyttää.",
+      "text_markdown": "Eli malli on paperilla valtava, mutta halpa käyttää.",
+      "title": "",
+      "tts": {
+        "text": "Eli malli on paperilla valtava, mutta halpa käyttää.",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Juuri niin. 1 biljoonan parametrin kapasiteetti. Mutta vain 32 miljardin parametrin laskenta per sana. Siinä on juju. Vastaanottovirkailija on pieni koodinpätkä nimeltä router. Asiantuntijat ovat aliverkkoja nimeltä experts. Malli kouluttaa routerin ja expertsit yhdessä, päästä päähän.",
+      "text_markdown": "Juuri niin. 1 biljoonan parametrin kapasiteetti. Mutta vain 32 miljardin parametrin laskenta per sana. Siinä on juju. Vastaanottovirkailija on pieni koodinpätkä nimeltä router. Asiantuntijat ovat aliverkkoja nimeltä experts. Malli kouluttaa routerin ja expertsit yhdessä, päästä päähän.",
+      "title": "",
+      "tts": {
+        "text": "Juuri niin. Yhden biljoonan parametrin kapasiteetti. Mutta vain kolmekymmentäkaksi miljardin parametrin laskenta per sana. Siinä on juju. Vastaanottovirkailija on pieni koodinpätkä nimeltä router. Asiantuntijat ovat aliverkkoja nimeltä experts. Malli kouluttaa routerin ja expertsit yhdessä, päästä päähän.",
+        "pause_after_ms": 596,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tekevätkö kaikki suuret huippumallit näin?",
+      "text_markdown": "Tekevätkö kaikki suuret huippumallit näin?",
+      "title": "",
+      "tts": {
+        "text": "Tekevätkö kaikki suuret huippumallit näin?",
+        "pause_after_ms": 370,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Useimmat niistä, kyllä. Vaikka laboratoriot eivät aina vahvista sitä. GPT-4 oli mixture of experts -malli. DeepSeekin lippulaiva on mixture of experts -malli. Mistral on toimittanut mixture of experts -malleja vuodesta 2023 lähtien. Uusi aalto Kiinasta on vienyt tämän suunnittelun äärirajoille.",
+      "text_markdown": "Useimmat niistä, kyllä. Vaikka laboratoriot eivät aina vahvista sitä. GPT-4 oli mixture of experts -malli. DeepSeekin lippulaiva on mixture of experts -malli. Mistral on toimittanut mixture of experts -malleja vuodesta 2023 lähtien. Uusi aalto Kiinasta on vienyt tämän suunnittelun äärirajoille.",
+      "title": "",
+      "tts": {
+        "text": "Useimmat niistä, kyllä. Vaikka laboratoriot eivät aina vahvista sitä. GPT neljä oli mixture of experts -malli. DeepSeekin lippulaiva on mixture of experts -malli. Mistral on toimittanut mixture of experts -malleja vuodesta kaksituhatta kaksikymmentäkolme lähtien. Uusi aalto Kiinasta on vienyt tämän suunnittelun äärirajoille.",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Miksi sillä on väliä jollekin, joka vain käyttää ChatGPT:tä?",
+      "text_markdown": "Miksi sillä on väliä jollekin, joka vain käyttää ChatGPT:tä?",
+      "title": "",
+      "tts": {
+        "text": "Miksi sillä on väliä jollekin, joka vain käyttää ChatGPT:tä?",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kaksi syytä. Yksi. Se on pääsyy siihen, miksi avoimen painon laboratorio Kiinassa voi toimia huippuluokan laadulla murto-osalla budjetista. Kaksi. Se on pääsyy siihen, miksi yksi API-kutsu maksaa senttejä, ei dollareita. Kun hinnat laskevat ja laatu pysyy korkeana, mixture of experts on yleensä syy siihen.",
+      "text_markdown": "Kaksi syytä. Yksi. Se on pääsyy siihen, miksi avoimen painon laboratorio Kiinassa voi toimia huippuluokan laadulla murto-osalla budjetista. Kaksi. Se on pääsyy siihen, miksi yksi API-kutsu maksaa senttejä, ei dollareita. Kun hinnat laskevat ja laatu pysyy korkeana, mixture of experts on yleensä syy siihen.",
+      "title": "",
+      "tts": {
+        "text": "Kaksi syytä. Yksi. Se on pääsyy siihen, miksi avoimen painon laboratorio Kiinassa voi toimia huippuluokan laadulla murto-osalla budjetista. Kaksi. Se on pääsyy siihen, miksi yksi API-kutsu maksaa senttejä, ei dollareita. Kun hinnat laskevat ja laatu pysyy korkeana, mixture of experts on yleensä syy siihen.",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Mixture of experts. Router. Experts. Sparse activation. Kolme sanaa muistettavaksi. Palataan nyt laajempaan kuvaan.",
+      "text_markdown": "Mixture of experts. Router. Experts. Sparse activation. Kolme sanaa muistettavaksi. Palataan nyt laajempaan kuvaan.",
+      "title": "",
+      "tts": {
+        "text": "Mixture of experts. Router. Experts. Sparse activation. Kolme sanaa muistettavaksi. Palataan nyt laajempaan kuvaan.",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ron, suuri uutinen maailmamme ulkopuolella tällä viikolla on Federal Reserve.",
+      "text_markdown": "Ron, suuri uutinen maailmamme ulkopuolella tällä viikolla on Federal Reserve.",
+      "title": "",
+      "tts": {
+        "text": "Ron, suuri uutinen maailmamme ulkopuolella tällä viikolla on Federal Reserve.",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tänään Yhdysvaltain senaatti vahvisti Kevin Warshin Federal Reserven seuraavaksi puheenjohtajaksi. Äänestys oli 54–45. Kapein äänestystulos Fedin puheenjohtajalle modernissa Amerikan historiassa. Vain yksi demokraatti ylitti puoluerajan.",
+      "text_markdown": "Tänään Yhdysvaltain senaatti vahvisti Kevin Warshin Federal Reserven seuraavaksi puheenjohtajaksi. Äänestys oli 54–45. Kapein äänestystulos Fedin puheenjohtajalle modernissa Amerikan historiassa. Vain yksi demokraatti ylitti puoluerajan.",
+      "title": "",
+      "tts": {
+        "text": "Tänään Yhdysvaltain senaatti vahvisti Kevin Warshin Federal Reserven seuraavaksi puheenjohtajaksi. Äänestys oli viisikymmentäneljä vastaan neljäkymmentäviisi. Kapein äänestystulos Fedin puheenjohtajalle modernissa Amerikan historiassa. Vain yksi demokraatti ylitti puoluerajan.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Miksi sillä on väliä tekoälylle?",
+      "text_markdown": "Miksi sillä on väliä tekoälylle?",
+      "title": "",
+      "tts": {
+        "text": "Miksi sillä on väliä tekoälylle?",
+        "pause_after_ms": 340,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Koska tekoälyn rakentamista rajoittavat tällä hetkellä kaksi asiaa. Sähkö ja pääoman kustannukset. Fed määrittää pääoman kustannukset. Ja uusi puheenjohtaja on julkisesti sanonut haluavansa leikata korkoja nopeammin kuin edeltäjänsä olisi tehnyt.",
+      "text_markdown": "Koska tekoälyn rakentamista rajoittavat tällä hetkellä kaksi asiaa. Sähkö ja pääoman kustannukset. Fed määrittää pääoman kustannukset. Ja uusi puheenjohtaja on julkisesti sanonut haluavansa leikata korkoja nopeammin kuin edeltäjänsä olisi tehnyt.",
+      "title": "",
+      "tts": {
+        "text": "Koska tekoälyn rakentamista rajoittavat tällä hetkellä kaksi asiaa. Sähkö ja pääoman kustannukset. Fed määrittää pääoman kustannukset. Ja uusi puheenjohtaja on julkisesti sanonut haluavansa leikata korkoja nopeammin kuin edeltäjänsä olisi tehnyt.",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Nopeammat koronlaskut tekevät tekoälysijoituksista halvempia.",
+      "text_markdown": "Nopeammat koronlaskut tekevät tekoälysijoituksista halvempia.",
+      "title": "",
+      "tts": {
+        "text": "Nopeammat koronlaskut tekevät tekoälysijoituksista halvempia.",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kyllä. Hyperscalerit – Microsoft, Google, Amazon, Meta – ovat aikeissa käyttää noin 700 miljardia dollaria pääomamenoihin tänä vuonna. Suurin osa siitä on GPU:ita ja datakeskuksia. Alhaisempi diskonttokorko saa nämä monivuotiset rakennushankkeet näyttämään kannattavilta korkeammilla arvostuksilla.",
+      "text_markdown": "Kyllä. Hyperscalerit – Microsoft, Google, Amazon, Meta – ovat aikeissa käyttää noin 700 miljardia dollaria pääomamenoihin tänä vuonna. Suurin osa siitä on GPU:ita ja datakeskuksia. Alhaisempi diskonttokorko saa nämä monivuotiset rakennushankkeet näyttämään kannattavilta korkeammilla arvostuksilla.",
+      "title": "",
+      "tts": {
+        "text": "Kyllä. Hyperscalerit – Microsoft, Google, Amazon, Meta – ovat aikeissa käyttää noin seitsemänsataa miljardia dollaria pääomamenoihin tänä vuonna. Suurin osa siitä on GPU:ita ja datakeskuksia. Alhaisempi diskonttokorko saa nämä monivuotiset rakennushankkeet näyttämään kannattavilta korkeammilla arvostuksilla.",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Ja toiseen suuntaan. Miten tekoäly vaikuttaa siihen, mitä Fedin on päätettävä?",
+      "text_markdown": "Ja toiseen suuntaan. Miten tekoäly vaikuttaa siihen, mitä Fedin on päätettävä?",
+      "title": "",
+      "tts": {
+        "text": "Ja toiseen suuntaan. Miten tekoäly vaikuttaa siihen, mitä Fedin on päätettävä?",
+        "pause_after_ms": 376,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tämä on mielenkiintoinen osa. Tekoälyn pääomamenot ovat nyt niin suuria, että ne ovat makroluku. Ei sektoritarina. Wall Streetin analyytikot sanovat, että tekoälyyn liittyvät rakennus- ja laitemenot ovat muodostaneet suurimman osan Yhdysvaltain talouskasvusta viimeisten useiden vuosineljännesten ajan.",
+      "text_markdown": "Tämä on mielenkiintoinen osa. Tekoälyn pääomamenot ovat nyt niin suuria, että ne ovat makroluku. Ei sektoritarina. Wall Streetin analyytikot sanovat, että tekoälyyn liittyvät rakennus- ja laitemenot ovat muodostaneet suurimman osan Yhdysvaltain talouskasvusta viimeisten useiden vuosineljännesten ajan.",
+      "title": "",
+      "tts": {
+        "text": "Tämä on mielenkiintoinen osa. Tekoälyn pääomamenot ovat nyt niin suuria, että ne ovat makroluku. Ei sektoritarina. Wall Streetin analyytikot sanovat, että tekoälyyn liittyvät rakennus- ja laitemenot ovat muodostaneet suurimman osan Yhdysvaltain talouskasvusta viimeisten useiden vuosineljännesten ajan.",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Suurin osa kasvusta.",
+      "text_markdown": "Suurin osa kasvusta.",
+      "title": "",
+      "tts": {
+        "text": "Suurin osa kasvusta.",
+        "pause_after_ms": 483,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Suurin osa. Ja se vaikuttaa kahteen suuntaan Fedin kannalta. Pitkällä aikavälillä tekoäly on tuottavuuden myötätuuli. Se on deflatorista. Se antaa Fedille tilaa leikata. Lyhyellä aikavälillä se on kysyntäshokki sähkölle, kuparille, ammattitaitoiselle työvoimalle, jäähdytysvedelle. Se on inflatorista. Erityisesti paikoissa kuten Virginia ja Texas, missä datakeskukset ovat keskittyneet.",
+      "text_markdown": "Suurin osa. Ja se vaikuttaa kahteen suuntaan Fedin kannalta. Pitkällä aikavälillä tekoäly on tuottavuuden myötätuuli. Se on deflatorista. Se antaa Fedille tilaa leikata. Lyhyellä aikavälillä se on kysyntäshokki sähkölle, kuparille, ammattitaitoiselle työvoimalle, jäähdytysvedelle. Se on inflatorista. Erityisesti paikoissa kuten Virginia ja Texas, missä datakeskukset ovat keskittyneet.",
+      "title": "",
+      "tts": {
+        "text": "Suurin osa. Ja se vaikuttaa kahteen suuntaan Fedin kannalta. Pitkällä aikavälillä tekoäly on tuottavuuden myötätuuli. Se on deflatorista. Se antaa Fedille tilaa leikata. Lyhyellä aikavälillä se on kysyntäshokki sähkölle, kuparille, ammattitaitoiselle työvoimalle, jäähdytysvedelle. Se on inflatorista. Erityisesti paikoissa kuten Virginia ja Texas, missä datakeskukset ovat keskittyneet.",
+        "pause_after_ms": 588,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Joten uuden puheenjohtajan on päätettävä, onko tekoäly vastaus inflaatioon vai onko tekoäly inflaation syy.",
+      "text_markdown": "Joten uuden puheenjohtajan on päätettävä, onko tekoäly vastaus inflaatioon vai onko tekoäly inflaation syy.",
+      "title": "",
+      "tts": {
+        "text": "Joten uuden puheenjohtajan on päätettävä, onko tekoäly vastaus inflaatioon vai onko tekoäly inflaation syy.",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Molemmat, samanaikaisesti. Ja mitä tahansa hän sanoo ensimmäisissä julkisissa puheissaan, se tulee vaikuttamaan jokaiseen tekoälyn pääomamenomalliin Wall Streetillä.",
+      "text_markdown": "Molemmat, samanaikaisesti. Ja mitä tahansa hän sanoo ensimmäisissä julkisissa puheissaan, se tulee vaikuttamaan jokaiseen tekoälyn pääomamenomalliin Wall Streetillä.",
+      "title": "",
+      "tts": {
+        "text": "Molemmat, samanaikaisesti. Ja mitä tahansa hän sanoo ensimmäisissä julkisissa puheissaan, se tulee vaikuttamaan jokaiseen tekoälyn pääomamenomalliin Wall Streetillä.",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Microsoftilla on 80 miljardin dollarin edestä täyttämättömiä pilvitilauksia sähkön puutteen vuoksi. Onko se oikea luku?",
+      "text_markdown": "Microsoftilla on 80 miljardin dollarin edestä täyttämättömiä pilvitilauksia sähkön puutteen vuoksi. Onko se oikea luku?",
+      "title": "",
+      "tts": {
+        "text": "Microsoftilla on kahdeksankymmenen miljardin dollarin edestä täyttämättömiä pilvitilauksia sähkön puutteen vuoksi. Onko se oikea luku?",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Se on luku, jonka Microsoft on ilmoittanut. Azuren asiakkaat odottavat kapasiteettia. Pullonkaula ei ole enää sirut. Se on sähköverkko. Sähkömarkkinat eivät voi rakentaa uutta kapasiteettia niin nopeasti kuin datakeskukset sitä haluavat.",
+      "text_markdown": "Se on luku, jonka Microsoft on ilmoittanut. Azuren asiakkaat odottavat kapasiteettia. Pullonkaula ei ole enää sirut. Se on sähköverkko. Sähkömarkkinat eivät voi rakentaa uutta kapasiteettia niin nopeasti kuin datakeskukset sitä haluavat.",
+      "title": "",
+      "tts": {
+        "text": "Se on luku, jonka Microsoft on ilmoittanut. Azuren asiakkaat odottavat kapasiteettia. Pullonkaula ei ole enää sirut. Se on sähköverkko. Sähkömarkkinat eivät voi rakentaa uutta kapasiteettia niin nopeasti kuin datakeskukset sitä haluavat.",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Milloin Warshin ensimmäinen kokous on?",
+      "text_markdown": "Milloin Warshin ensimmäinen kokous on?",
+      "title": "",
+      "tts": {
+        "text": "Milloin Warshin ensimmäinen kokous on?",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Kesäkuun 16. ja 17. päivä. Saamme tietää paljon enemmän korkopolusta sen jälkeen.",
+      "text_markdown": "Kesäkuun 16. ja 17. päivä. Saamme tietää paljon enemmän korkopolusta sen jälkeen.",
+      "title": "",
+      "tts": {
+        "text": "Kesäkuun kuudestoista ja seitsemästoista päivä. Saamme tietää paljon enemmän korkopolusta sen jälkeen.",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Hyvä paikka lopettaa. Ron, kiitos.",
+      "text_markdown": "Hyvä paikka lopettaa. Ron, kiitos.",
+      "title": "",
+      "tts": {
+        "text": "Hyvä paikka lopettaa. Ron, kiitos.",
+        "pause_after_ms": 586,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Milloin vain, Vindy.",
+      "text_markdown": "Milloin vain, Vindy.",
+      "title": "",
+      "tts": {
+        "text": "Milloin vain, Vindy.",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "speaker_id": "host",
+      "block_type": "text",
+      "chapter": 0,
+      "text": "Tämä oli AI This Week 13. toukokuuta 2026. Uusi numero ensi keskiviikkona. Siihen asti, pitäkää huolta.",
+      "text_markdown": "Tämä oli AI This Week 13. toukokuuta 2026. Uusi numero ensi keskiviikkona. Siihen asti, pitäkää huolta.",
+      "title": "",
+      "tts": {
+        "text": "Tämä oli AI This Week toukokuun kolmastoista, kaksituhatta kaksikymmentäkuusi. Uusi numero ensi keskiviikkona. Siihen asti, pitäkää huolta.",
+        "pause_after_ms": 1206,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

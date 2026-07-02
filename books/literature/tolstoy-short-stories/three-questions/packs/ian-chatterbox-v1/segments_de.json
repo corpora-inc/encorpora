@@ -1,0 +1,1316 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_tolstoy_three_questions",
+  "language": "de",
+  "total_segments": 82,
+  "segments": [
+    {
+      "chapter": 1,
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "id": "ch01-001",
+      "heading_level": 1,
+      "part": 0,
+      "text": "Drei Fragen",
+      "text_markdown": "Drei Fragen",
+      "title": "Drei Fragen"
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-002",
+      "part": 0,
+      "text": "Ein Zar dachte sich, dass er niemals in irgendetwas scheitern würde, wenn er immer wüsste, welche Zeit für jede Angelegenheit die wichtigste ist, und wenn er wüsste, welche Menschen die nötigsten sind, und vor allem, wenn er immer wüsste, welche von allen Angelegenheiten die wichtigste ist.",
+      "text_markdown": "Ein Zar dachte sich, dass er niemals in irgendetwas scheitern würde, wenn er immer wüsste, welche Zeit für jede Angelegenheit die wichtigste ist, und wenn er wüsste, welche Menschen die nötigsten sind, und vor allem, wenn er immer wüsste, welche von allen Angelegenheiten die wichtigste ist.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Ein Zar dachte sich, dass er niemals in irgendetwas scheitern würde, wenn er immer wüsste, welche Zeit für jede Angelegenheit die wichtigste ist, und wenn er wüsste, welche Menschen die nötigsten sind, und vor allem, wenn er immer wüsste, welche von allen Angelegenheiten die wichtigste ist.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-003",
+      "part": 0,
+      "text": "Und nachdem er dies bedacht hatte, verkündete der Zar in seinem Reich, dass er demjenigen eine große Belohnung geben würde, der ihn lehren könnte, wie man die richtige Zeit für jede Angelegenheit erkennt, wie man weiß, welche Menschen die nötigsten sind, und wie man sich nicht darin irrt, welche Angelegenheit von allen die wichtigste ist.",
+      "text_markdown": "Und nachdem er dies bedacht hatte, verkündete der Zar in seinem Reich, dass er demjenigen eine große Belohnung geben würde, der ihn lehren könnte, wie man die richtige Zeit für jede Angelegenheit erkennt, wie man weiß, welche Menschen die nötigsten sind, und wie man sich nicht darin irrt, welche Angelegenheit von allen die wichtigste ist.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und nachdem er dies bedacht hatte, verkündete der Zar in seinem Reich, dass er demjenigen eine große Belohnung geben würde, der ihn lehren könnte, wie man die richtige Zeit für jede Angelegenheit erkennt, wie man weiß, welche Menschen die nötigsten sind, und wie man sich nicht darin irrt, welche Angelegenheit von allen die wichtigste ist.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-004",
+      "part": 0,
+      "text": "Gelehrte Menschen begannen zum Zaren zu kommen und antworteten auf seine Fragen auf verschiedene Weise.",
+      "text_markdown": "Gelehrte Menschen begannen zum Zaren zu kommen und antworteten auf seine Fragen auf verschiedene Weise.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Gelehrte Menschen begannen zum Zaren zu kommen und antworteten auf seine Fragen auf verschiedene Weise.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-005",
+      "part": 0,
+      "text": "Auf die erste Frage sagten manche, dass man, um die richtige Zeit für jede Angelegenheit zu kennen, im Voraus einen Zeitplan für Tage, Monate und Jahre erstellen und ihn streng befolgen müsse.",
+      "text_markdown": "Auf die erste Frage sagten manche, dass man, um die richtige Zeit für jede Angelegenheit zu kennen, im Voraus einen Zeitplan für Tage, Monate und Jahre erstellen und ihn streng befolgen müsse.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Auf die erste Frage sagten manche, dass man, um die richtige Zeit für jede Angelegenheit zu kennen, im Voraus einen Zeitplan für Tage, Monate und Jahre erstellen und ihn streng befolgen müsse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-006",
+      "part": 0,
+      "text": "Nur dann, sagten sie, würde jede Angelegenheit zu ihrer Zeit getan werden.",
+      "text_markdown": "Nur dann, sagten sie, würde jede Angelegenheit zu ihrer Zeit getan werden.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Nur dann, sagten sie, würde jede Angelegenheit zu ihrer Zeit getan werden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-007",
+      "part": 0,
+      "text": "Andere sagten, dass man im Voraus nicht entscheiden könne, welche Zeit für welche Angelegenheit die richtige sein würde, sondern dass man, ohne sich durch leere Vergnügungen ablenken zu lassen, immer auf alles achten müsse, was geschieht, und dann immer das tun, was nötiger ist.",
+      "text_markdown": "Andere sagten, dass man im Voraus nicht entscheiden könne, welche Zeit für welche Angelegenheit die richtige sein würde, sondern dass man, ohne sich durch leere Vergnügungen ablenken zu lassen, immer auf alles achten müsse, was geschieht, und dann immer das tun, was nötiger ist.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Andere sagten, dass man im Voraus nicht entscheiden könne, welche Zeit für welche Angelegenheit die richtige sein würde, sondern dass man, ohne sich durch leere Vergnügungen ablenken zu lassen, immer auf alles achten müsse, was geschieht, und dann immer das tun, was nötiger ist.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-008",
+      "part": 0,
+      "text": "Die dritten sagten, dass, so aufmerksam der Zar auch auf alles sein möge, was geschieht, ein einzelner Mensch nicht immer richtig über jede Angelegenheit entscheiden könne, wann ihre Zeit sei, sondern dass man den Rat der Weisen brauche und nach ihrem Rat die Zeit für jede Angelegenheit bestimmen müsse.",
+      "text_markdown": "Die dritten sagten, dass, so aufmerksam der Zar auch auf alles sein möge, was geschieht, ein einzelner Mensch nicht immer richtig über jede Angelegenheit entscheiden könne, wann ihre Zeit sei, sondern dass man den Rat der Weisen brauche und nach ihrem Rat die Zeit für jede Angelegenheit bestimmen müsse.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Die dritten sagten, dass, so aufmerksam der Zar auch auf alles sein möge, was geschieht, ein einzelner Mensch nicht immer richtig über jede Angelegenheit entscheiden könne, wann ihre Zeit sei, sondern dass man den Rat der Weisen brauche und nach ihrem Rat die Zeit für jede Angelegenheit bestimmen müsse.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-009",
+      "part": 0,
+      "text": "Die vierten sagten, dass es Angelegenheiten gebe, die sofort entschieden werden müssen, ohne eine Beratung abzuwarten, und dass man, um zu wissen, wann genau sie auftreten, wissen müsse, was voraus liege.",
+      "text_markdown": "Die vierten sagten, dass es Angelegenheiten gebe, die sofort entschieden werden müssen, ohne eine Beratung abzuwarten, und dass man, um zu wissen, wann genau sie auftreten, wissen müsse, was voraus liege.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Die vierten sagten, dass es Angelegenheiten gebe, die sofort entschieden werden müssen, ohne eine Beratung abzuwarten, und dass man, um zu wissen, wann genau sie auftreten, wissen müsse, was voraus liege.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-010",
+      "part": 0,
+      "text": "Und das können nur Zauberer wissen.",
+      "text_markdown": "Und das können nur Zauberer wissen.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und das können nur Zauberer wissen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-011",
+      "part": 0,
+      "text": "Und daher müsse man, um die richtige Zeit für jede Angelegenheit zu kennen, die Zauberer fragen.",
+      "text_markdown": "Und daher müsse man, um die richtige Zeit für jede Angelegenheit zu kennen, die Zauberer fragen.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und daher müsse man, um die richtige Zeit für jede Angelegenheit zu kennen, die Zauberer fragen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-012",
+      "part": 0,
+      "text": "Auf die zweite Frage antworteten sie ebenfalls auf verschiedene Weise.",
+      "text_markdown": "Auf die zweite Frage antworteten sie ebenfalls auf verschiedene Weise.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Auf die zweite Frage antworteten sie ebenfalls auf verschiedene Weise.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-013",
+      "part": 0,
+      "text": "Manche sagten, dass die nötigsten Menschen für den Zaren die Herrscher seien, andere sagten die Priester, die dritten - die Ärzte, die vierten - die Krieger.",
+      "text_markdown": "Manche sagten, dass die nötigsten Menschen für den Zaren die Herrscher seien, andere sagten die Priester, die dritten - die Ärzte, die vierten - die Krieger.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Manche sagten, dass die nötigsten Menschen für den Zaren die Herrscher seien, andere sagten die Priester, die dritten - die Ärzte, die vierten - die Krieger.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-014",
+      "part": 0,
+      "text": "Auf die dritte Frage - welche Angelegenheit die wichtigste sei? - sagten manche, dass das Wichtigste auf der Welt die Wissenschaft sei; andere sagten - das Kriegswesen, die dritten sagten - die Frömmigkeit.",
+      "text_markdown": "Auf die dritte Frage - welche Angelegenheit die wichtigste sei? - sagten manche, dass das Wichtigste auf der Welt die Wissenschaft sei; andere sagten - das Kriegswesen, die dritten sagten - die Frömmigkeit.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Auf die dritte Frage - welche Angelegenheit die wichtigste sei? - sagten manche, dass das Wichtigste auf der Welt die Wissenschaft sei; andere sagten - das Kriegswesen, die dritten sagten - die Frömmigkeit.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.71
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-015",
+      "part": 0,
+      "text": "Alle Antworten waren verschieden, und daher stimmte der Zar keiner einzigen zu und gab niemandem eine Belohnung.",
+      "text_markdown": "Alle Antworten waren verschieden, und daher stimmte der Zar keiner einzigen zu und gab niemandem eine Belohnung.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Alle Antworten waren verschieden, und daher stimmte der Zar keiner einzigen zu und gab niemandem eine Belohnung.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-016",
+      "part": 0,
+      "text": "Um jedoch die Antworten auf seine Fragen besser zu erfahren, beschloss er, einen Einsiedler zu fragen, von dem das Gerücht ging, dass er ein weiser Mann sei.",
+      "text_markdown": "Um jedoch die Antworten auf seine Fragen besser zu erfahren, beschloss er, einen Einsiedler zu fragen, von dem das Gerücht ging, dass er ein weiser Mann sei.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Um jedoch die Antworten auf seine Fragen besser zu erfahren, beschloss er, einen Einsiedler zu fragen, von dem das Gerücht ging, dass er ein weiser Mann sei.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-017",
+      "part": 0,
+      "text": "Der Einsiedler lebte im Wald und verließ ihn niemals.",
+      "text_markdown": "Der Einsiedler lebte im Wald und verließ ihn niemals.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Einsiedler lebte im Wald und verließ ihn niemals.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-018",
+      "part": 0,
+      "text": "Er empfing nur einfache Menschen, und daher kleidete sich der Zar einfach und stieg, bevor er die Behausung des Einsiedlers erreichte, vom Pferd ab und ging allein zu ihm.",
+      "text_markdown": "Er empfing nur einfache Menschen, und daher kleidete sich der Zar einfach und stieg, bevor er die Behausung des Einsiedlers erreichte, vom Pferd ab und ging allein zu ihm.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Er empfing nur einfache Menschen, und daher kleidete sich der Zar einfach und stieg, bevor er die Behausung des Einsiedlers erreichte, vom Pferd ab und ging allein zu ihm.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-019",
+      "part": 0,
+      "text": "Als der Zar sich ihm näherte, grub der Einsiedler vor seiner Hütte Beete um.",
+      "text_markdown": "Als der Zar sich ihm näherte, grub der Einsiedler vor seiner Hütte Beete um.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Als der Zar sich ihm näherte, grub der Einsiedler vor seiner Hütte Beete um.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-020",
+      "part": 0,
+      "text": "Als er den Zaren sah, nickte ihm der Einsiedler zu und grub weiter.",
+      "text_markdown": "Als er den Zaren sah, nickte ihm der Einsiedler zu und grub weiter.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Als er den Zaren sah, nickte ihm der Einsiedler zu und grub weiter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-021",
+      "part": 0,
+      "text": "Der Einsiedler war mager und schwach und keuchte schwer, während er den Spaten in die Erde stieß und kleine Erdklumpen umwarf.",
+      "text_markdown": "Der Einsiedler war mager und schwach und keuchte schwer, während er den Spaten in die Erde stieß und kleine Erdklumpen umwarf.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Einsiedler war mager und schwach und keuchte schwer, während er den Spaten in die Erde stieß und kleine Erdklumpen umwarf.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-022",
+      "part": 0,
+      "text": "Der Zar trat zu ihm und sagte:",
+      "text_markdown": "Der Zar trat zu ihm und sagte:",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar trat zu ihm und sagte:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-023",
+      "part": 0,
+      "text": "— Ich bin zu dir gekommen, weiser Einsiedler, um dich zu bitten, mir auf drei Fragen zu antworten: Welche Zeit muss man beachten und nicht verpassen, um später nicht zu bereuen?",
+      "text_markdown": "— Ich bin zu dir gekommen, weiser Einsiedler, um dich zu bitten, mir auf drei Fragen zu antworten: Welche Zeit muss man beachten und nicht verpassen, um später nicht zu bereuen?",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Ich bin zu dir gekommen, weiser Einsiedler, um dich zu bitten, mir auf drei Fragen zu antworten: Welche Zeit muss man beachten und nicht verpassen, um später nicht zu bereuen?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-024",
+      "part": 0,
+      "text": "Welche Menschen sind die nötigsten?",
+      "text_markdown": "Welche Menschen sind die nötigsten?",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Welche Menschen sind die nötigsten?",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-025",
+      "part": 0,
+      "text": "Und welche Angelegenheit ist die wichtigste?",
+      "text_markdown": "Und welche Angelegenheit ist die wichtigste?",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und welche Angelegenheit ist die wichtigste?",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-026",
+      "part": 0,
+      "text": "Der Einsiedler hörte dem Zaren zu, antwortete aber nichts, sondern spuckte in die Hand und begann wieder zu graben.",
+      "text_markdown": "Der Einsiedler hörte dem Zaren zu, antwortete aber nichts, sondern spuckte in die Hand und begann wieder zu graben.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Einsiedler hörte dem Zaren zu, antwortete aber nichts, sondern spuckte in die Hand und begann wieder zu graben.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-027",
+      "part": 0,
+      "text": "— Du bist müde, — sagte der Zar.",
+      "text_markdown": "— Du bist müde, — sagte der Zar.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Du bist müde, — sagte der Zar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-028",
+      "part": 0,
+      "text": "— Lass mich dir helfen.",
+      "text_markdown": "— Lass mich dir helfen.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Lass mich dir helfen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-029",
+      "part": 0,
+      "text": "— Danke, — sagte der Einsiedler und gab dem Zaren den Spaten und setzte sich auf die Erde.",
+      "text_markdown": "— Danke, — sagte der Einsiedler und gab dem Zaren den Spaten und setzte sich auf die Erde.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Danke, — sagte der Einsiedler und gab dem Zaren den Spaten und setzte sich auf die Erde.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-030",
+      "part": 0,
+      "text": "Nachdem er zwei Beete umgegraben hatte, hielt der Zar inne und wiederholte seine Fragen.",
+      "text_markdown": "Nachdem er zwei Beete umgegraben hatte, hielt der Zar inne und wiederholte seine Fragen.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Nachdem er zwei Beete umgegraben hatte, hielt der Zar inne und wiederholte seine Fragen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-031",
+      "part": 0,
+      "text": "Der Einsiedler antwortete wieder nicht, sondern stand auf und streckte die Hand nach dem Spaten aus:",
+      "text_markdown": "Der Einsiedler antwortete wieder nicht, sondern stand auf und streckte die Hand nach dem Spaten aus:",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Einsiedler antwortete wieder nicht, sondern stand auf und streckte die Hand nach dem Spaten aus:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-032",
+      "part": 0,
+      "text": "— Nun ruh dich aus, lass mich, — sagte er.",
+      "text_markdown": "— Nun ruh dich aus, lass mich, — sagte er.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Nun ruh dich aus, lass mich, — sagte er.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-033",
+      "part": 0,
+      "text": "Aber der Zar gab den Spaten nicht her und grub weiter.",
+      "text_markdown": "Aber der Zar gab den Spaten nicht her und grub weiter.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Aber der Zar gab den Spaten nicht her und grub weiter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-034",
+      "part": 0,
+      "text": "Eine Stunde verging, eine zweite verging.",
+      "text_markdown": "Eine Stunde verging, eine zweite verging.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Eine Stunde verging, eine zweite verging.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-035",
+      "part": 0,
+      "text": "Die Sonne ging hinter den Bäumen unter.",
+      "text_markdown": "Die Sonne ging hinter den Bäumen unter.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Die Sonne ging hinter den Bäumen unter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-036",
+      "part": 0,
+      "text": "Der Zar stieß den Spaten in die Erde und sagte:",
+      "text_markdown": "Der Zar stieß den Spaten in die Erde und sagte:",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar stieß den Spaten in die Erde und sagte:",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-037",
+      "part": 0,
+      "text": "— Ich bin zu dir gekommen, Weiser, um Antwort auf meine Fragen zu erhalten.",
+      "text_markdown": "— Ich bin zu dir gekommen, Weiser, um Antwort auf meine Fragen zu erhalten.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Ich bin zu dir gekommen, Weiser, um Antwort auf meine Fragen zu erhalten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-038",
+      "part": 0,
+      "text": "Wenn du mir nicht antworten kannst, sag es, und ich gehe nach Hause.",
+      "text_markdown": "Wenn du mir nicht antworten kannst, sag es, und ich gehe nach Hause.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Wenn du mir nicht antworten kannst, sag es, und ich gehe nach Hause.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-039",
+      "part": 0,
+      "text": "— Da läuft jemand, — sagte der Einsiedler.",
+      "text_markdown": "— Da läuft jemand, — sagte der Einsiedler.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Da läuft jemand, — sagte der Einsiedler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-040",
+      "part": 0,
+      "text": "— Schauen wir, wer das ist.",
+      "text_markdown": "— Schauen wir, wer das ist.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Schauen wir, wer das ist.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-041",
+      "part": 0,
+      "text": "Der Zar drehte sich um und sah — aus dem Wald lief ein bärtiger Mann.",
+      "text_markdown": "Der Zar drehte sich um und sah — aus dem Wald lief ein bärtiger Mann.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar drehte sich um und sah — aus dem Wald lief ein bärtiger Mann.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-042",
+      "part": 0,
+      "text": "Dieser Mann presste mit den Händen eine Wunde am Bauch, unter den Händen floss Blut hervor.",
+      "text_markdown": "Dieser Mann presste mit den Händen eine Wunde am Bauch, unter den Händen floss Blut hervor.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Dieser Mann presste mit den Händen eine Wunde am Bauch, unter den Händen floss Blut hervor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-043",
+      "part": 0,
+      "text": "Als er zum Zaren gelaufen kam, fiel der Mann bewusstlos zu Boden und lag da, leise stöhnend.",
+      "text_markdown": "Als er zum Zaren gelaufen kam, fiel der Mann bewusstlos zu Boden und lag da, leise stöhnend.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Als er zum Zaren gelaufen kam, fiel der Mann bewusstlos zu Boden und lag da, leise stöhnend.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-044",
+      "part": 0,
+      "text": "Der Zar öffnete zusammen mit dem Einsiedler die Kleider des Mannes und zog sie ihm aus.",
+      "text_markdown": "Der Zar öffnete zusammen mit dem Einsiedler die Kleider des Mannes und zog sie ihm aus.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar öffnete zusammen mit dem Einsiedler die Kleider des Mannes und zog sie ihm aus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-045",
+      "part": 0,
+      "text": "Am Bauch war eine große Wunde.",
+      "text_markdown": "Am Bauch war eine große Wunde.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Am Bauch war eine große Wunde.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-046",
+      "part": 0,
+      "text": "Der Zar wusch, so gut er konnte, die Wunde und verband sie mit seinem Taschentuch und dem Handtuch des Einsiedlers.",
+      "text_markdown": "Der Zar wusch, so gut er konnte, die Wunde und verband sie mit seinem Taschentuch und dem Handtuch des Einsiedlers.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar wusch, so gut er konnte, die Wunde und verband sie mit seinem Taschentuch und dem Handtuch des Einsiedlers.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-047",
+      "part": 0,
+      "text": "Aber das Blut hörte nicht auf zu fließen.",
+      "text_markdown": "Aber das Blut hörte nicht auf zu fließen.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Aber das Blut hörte nicht auf zu fließen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-048",
+      "part": 0,
+      "text": "Der Zar nahm mehrmals den Verband ab und wusch und verband die Wunde von neuem.",
+      "text_markdown": "Der Zar nahm mehrmals den Verband ab und wusch und verband die Wunde von neuem.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar nahm mehrmals den Verband ab und wusch und verband die Wunde von neuem.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-049",
+      "part": 0,
+      "text": "Als endlich das Blut nachließ, kam der Mann zu sich und bat um etwas zu trinken.",
+      "text_markdown": "Als endlich das Blut nachließ, kam der Mann zu sich und bat um etwas zu trinken.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Als endlich das Blut nachließ, kam der Mann zu sich und bat um etwas zu trinken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-050",
+      "part": 0,
+      "text": "Der Zar brachte ihm frisches Wasser und gab ihm zu trinken.",
+      "text_markdown": "Der Zar brachte ihm frisches Wasser und gab ihm zu trinken.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar brachte ihm frisches Wasser und gab ihm zu trinken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-051",
+      "part": 0,
+      "text": "Inzwischen war die Sonne völlig untergegangen, und es wurde kalt.",
+      "text_markdown": "Inzwischen war die Sonne völlig untergegangen, und es wurde kalt.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Inzwischen war die Sonne völlig untergegangen, und es wurde kalt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-052",
+      "part": 0,
+      "text": "Der Zar trug mit Hilfe des Einsiedlers den Verwundeten in die Hütte und legte ihn auf das Bett.",
+      "text_markdown": "Der Zar trug mit Hilfe des Einsiedlers den Verwundeten in die Hütte und legte ihn auf das Bett.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar trug mit Hilfe des Einsiedlers den Verwundeten in die Hütte und legte ihn auf das Bett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-053",
+      "part": 0,
+      "text": "Der Verwundete schloss die Augen und wurde still.",
+      "text_markdown": "Der Verwundete schloss die Augen und wurde still.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Verwundete schloss die Augen und wurde still.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-054",
+      "part": 0,
+      "text": "Der Zar war so müde vom Gehen und Arbeiten, dass er gleich dort, auf der Schwelle, sich hinlegte und einschlief, — er schlief so fest, dass er die ganze kurze Sommernacht durchschlief, und als er am Morgen erwachte, konnte er lange nicht verstehen, wo er war und wer dieser seltsame bärtige Mann war, der auf dem Bett lag und ihn hartnäckig mit glänzenden Augen anblickte.",
+      "text_markdown": "Der Zar war so müde vom Gehen und Arbeiten, dass er gleich dort, auf der Schwelle, sich hinlegte und einschlief, — er schlief so fest, dass er die ganze kurze Sommernacht durchschlief, und als er am Morgen erwachte, konnte er lange nicht verstehen, wo er war und wer dieser seltsame bärtige Mann war, der auf dem Bett lag und ihn hartnäckig mit glänzenden Augen anblickte.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar war so müde vom Gehen und Arbeiten, dass er gleich dort, auf der Schwelle, sich hinlegte und einschlief, — er schlief so fest, dass er die ganze kurze Sommernacht durchschlief, und als er am Morgen erwachte, konnte er lange nicht verstehen, wo er war und wer dieser seltsame bärtige Mann war, der auf dem Bett lag und ihn hartnäckig mit glänzenden Augen anblickte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-055",
+      "part": 0,
+      "text": "— Vergib mir, — sagte der bärtige Mann mit schwacher Stimme, als er sah, dass der Zar erwacht war und ihn anblickte.",
+      "text_markdown": "— Vergib mir, — sagte der bärtige Mann mit schwacher Stimme, als er sah, dass der Zar erwacht war und ihn anblickte.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Vergib mir, — sagte der bärtige Mann mit schwacher Stimme, als er sah, dass der Zar erwacht war und ihn anblickte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-056",
+      "part": 0,
+      "text": "— Ich kenne dich nicht und habe dir nichts zu vergeben, — sagte der Zar.",
+      "text_markdown": "— Ich kenne dich nicht und habe dir nichts zu vergeben, — sagte der Zar.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Ich kenne dich nicht und habe dir nichts zu vergeben, — sagte der Zar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-057",
+      "part": 0,
+      "text": "— Du kennst mich nicht, aber ich kenne dich.",
+      "text_markdown": "— Du kennst mich nicht, aber ich kenne dich.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Du kennst mich nicht, aber ich kenne dich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-058",
+      "part": 0,
+      "text": "Ich bin dein Feind, derselbe, der geschworen hat, sich an dir zu rächen dafür, dass du meinen Bruder hingerichtet und mir mein Gut weggenommen hast.",
+      "text_markdown": "Ich bin dein Feind, derselbe, der geschworen hat, sich an dir zu rächen dafür, dass du meinen Bruder hingerichtet und mir mein Gut weggenommen hast.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Ich bin dein Feind, derselbe, der geschworen hat, sich an dir zu rächen dafür, dass du meinen Bruder hingerichtet und mir mein Gut weggenommen hast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-059",
+      "part": 0,
+      "text": "Ich wusste, dass du allein zum Einsiedler gegangen warst, und beschloss, dich auf dem Rückweg zu töten.",
+      "text_markdown": "Ich wusste, dass du allein zum Einsiedler gegangen warst, und beschloss, dich auf dem Rückweg zu töten.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Ich wusste, dass du allein zum Einsiedler gegangen warst, und beschloss, dich auf dem Rückweg zu töten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-060",
+      "part": 0,
+      "text": "Aber der ganze Tag verging, und du warst immer noch nicht da.",
+      "text_markdown": "Aber der ganze Tag verging, und du warst immer noch nicht da.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Aber der ganze Tag verging, und du warst immer noch nicht da.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-061",
+      "part": 0,
+      "text": "Da verließ ich den Hinterhalt, um dich zu suchen, und stieß auf deine Leibwächter.",
+      "text_markdown": "Da verließ ich den Hinterhalt, um dich zu suchen, und stieß auf deine Leibwächter.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Da verließ ich den Hinterhalt, um dich zu suchen, und stieß auf deine Leibwächter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-062",
+      "part": 0,
+      "text": "Sie erkannten mich und verwundeten mich.",
+      "text_markdown": "Sie erkannten mich und verwundeten mich.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Sie erkannten mich und verwundeten mich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-063",
+      "part": 0,
+      "text": "Ich floh vor ihnen, aber wenn du meine Wunde nicht verbunden hättest, wäre ich gestorben.",
+      "text_markdown": "Ich floh vor ihnen, aber wenn du meine Wunde nicht verbunden hättest, wäre ich gestorben.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Ich floh vor ihnen, aber wenn du meine Wunde nicht verbunden hättest, wäre ich gestorben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "id": "ch01-064",
+      "part": 0,
+      "text": "Ich wollte dich töten, und du hast mir das Leben gerettet.",
+      "text_markdown": "Ich wollte dich töten, und du hast mir das Leben gerettet.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Ich wollte dich töten, und du hast mir das Leben gerettet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "id": "ch01-065",
+      "part": 0,
+      "text": "Nun, wenn ich am Leben bleibe und du es wünschst, werde ich dir dienen wie der treueste Sklave, und dasselbe werde ich meinen Söhnen befehlen.",
+      "text_markdown": "Nun, wenn ich am Leben bleibe und du es wünschst, werde ich dir dienen wie der treueste Sklave, und dasselbe werde ich meinen Söhnen befehlen.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Nun, wenn ich am Leben bleibe und du es wünschst, werde ich dir dienen wie der treueste Sklave, und dasselbe werde ich meinen Söhnen befehlen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p26",
+      "sentence_index": 9,
+      "block_type": "text",
+      "id": "ch01-066",
+      "part": 0,
+      "text": "Vergib mir.",
+      "text_markdown": "Vergib mir.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Vergib mir.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-067",
+      "part": 0,
+      "text": "Der Zar war sehr froh, dass es ihm so leicht gelungen war, sich mit dem Feind zu versöhnen und einen Freund zu gewinnen, und er verzieh ihm und versprach ihm, sein Gut zurückzugeben und seine Ärzte und Diener zu schicken, damit sie sich um ihn kümmerten.",
+      "text_markdown": "Der Zar war sehr froh, dass es ihm so leicht gelungen war, sich mit dem Feind zu versöhnen und einen Freund zu gewinnen, und er verzieh ihm und versprach ihm, sein Gut zurückzugeben und seine Ärzte und Diener zu schicken, damit sie sich um ihn kümmerten.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar war sehr froh, dass es ihm so leicht gelungen war, sich mit dem Feind zu versöhnen und einen Freund zu gewinnen, und er verzieh ihm und versprach ihm, sein Gut zurückzugeben und seine Ärzte und Diener zu schicken, damit sie sich um ihn kümmerten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-068",
+      "part": 0,
+      "text": "Nachdem er sich vom Verwundeten verabschiedet hatte, trat der Zar auf die Veranda und suchte mit den Augen den Einsiedler.",
+      "text_markdown": "Nachdem er sich vom Verwundeten verabschiedet hatte, trat der Zar auf die Veranda und suchte mit den Augen den Einsiedler.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Nachdem er sich vom Verwundeten verabschiedet hatte, trat der Zar auf die Veranda und suchte mit den Augen den Einsiedler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-069",
+      "part": 0,
+      "text": "Bevor er ging, wollte er ihn noch einmal um Antwort auf seine Fragen bitten.",
+      "text_markdown": "Bevor er ging, wollte er ihn noch einmal um Antwort auf seine Fragen bitten.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Bevor er ging, wollte er ihn noch einmal um Antwort auf seine Fragen bitten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-070",
+      "part": 0,
+      "text": "Der Einsiedler war im Hof und kniend säte er Samen in die Beete, die gestern umgegraben worden waren.",
+      "text_markdown": "Der Einsiedler war im Hof und kniend säte er Samen in die Beete, die gestern umgegraben worden waren.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Einsiedler war im Hof und kniend säte er Samen in die Beete, die gestern umgegraben worden waren.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-071",
+      "part": 0,
+      "text": "Der Zar ging zu ihm.",
+      "text_markdown": "Der Zar ging zu ihm.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Der Zar ging zu ihm.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-072",
+      "part": 0,
+      "text": "— Weiser Mann, zum letzten Mal bitte ich dich: beantworte meine Fragen.",
+      "text_markdown": "— Weiser Mann, zum letzten Mal bitte ich dich: beantworte meine Fragen.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Weiser Mann, zum letzten Mal bitte ich dich: beantworte meine Fragen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-073",
+      "part": 0,
+      "text": "— Du hast doch schon die Antwort erhalten, — sagte der Einsiedler, der auf seinen dünnen Beinen hockte und von unten zu dem vor ihm stehenden Zaren aufblickte.",
+      "text_markdown": "— Du hast doch schon die Antwort erhalten, — sagte der Einsiedler, der auf seinen dünnen Beinen hockte und von unten zu dem vor ihm stehenden Zaren aufblickte.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Du hast doch schon die Antwort erhalten, — sagte der Einsiedler, der auf seinen dünnen Beinen hockte und von unten zu dem vor ihm stehenden Zaren aufblickte.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-074",
+      "part": 0,
+      "text": "— Wie habe ich die Antwort erhalten? — fragte der Zar.",
+      "text_markdown": "— Wie habe ich die Antwort erhalten? — fragte der Zar.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Wie habe ich die Antwort erhalten? — fragte der Zar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-075",
+      "part": 0,
+      "text": "— Wie denn? — sagte der Einsiedler.",
+      "text_markdown": "— Wie denn? — sagte der Einsiedler.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Wie denn? — sagte der Einsiedler.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "id": "ch01-076",
+      "part": 0,
+      "text": "— Wenn du gestern kein Mitleid mit mir gehabt und nicht statt meiner diese Beete gegraben hättest, sondern zurückgegangen wärst, hätte dich jener Mann getötet.",
+      "text_markdown": "— Wenn du gestern kein Mitleid mit mir gehabt und nicht statt meiner diese Beete gegraben hättest, sondern zurückgegangen wärst, hätte dich jener Mann getötet.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— Wenn du gestern kein Mitleid mit mir gehabt und nicht statt meiner diese Beete gegraben hättest, sondern zurückgegangen wärst, hätte dich jener Mann getötet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "id": "ch01-077",
+      "part": 0,
+      "text": "Und deshalb war die wichtigste Zeit die, als du die Beete gegraben hast.",
+      "text_markdown": "Und deshalb war die wichtigste Zeit die, als du die Beete gegraben hast.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und deshalb war die wichtigste Zeit die, als du die Beete gegraben hast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "id": "ch01-078",
+      "part": 0,
+      "text": "Und der wichtigste Mensch war ich.",
+      "text_markdown": "Und der wichtigste Mensch war ich.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und der wichtigste Mensch war ich.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "id": "ch01-079",
+      "part": 0,
+      "text": "Und die wichtigste Sache war — mir Gutes zu tun.",
+      "text_markdown": "Und die wichtigste Sache war — mir Gutes zu tun.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und die wichtigste Sache war — mir Gutes zu tun.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "id": "ch01-080",
+      "part": 0,
+      "text": "Und dann, als jener Mann herbeigeeilt kam, war die wichtigste Zeit die, als du dich um ihn gekümmert hast, denn wenn du seine Wunde nicht gewaschen hättest, wäre er gestorben, ohne sich mit dir versöhnt zu haben.",
+      "text_markdown": "Und dann, als jener Mann herbeigeeilt kam, war die wichtigste Zeit die, als du dich um ihn gekümmert hast, denn wenn du seine Wunde nicht gewaschen hättest, wäre er gestorben, ohne sich mit dir versöhnt zu haben.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und dann, als jener Mann herbeigeeilt kam, war die wichtigste Zeit die, als du dich um ihn gekümmert hast, denn wenn du seine Wunde nicht gewaschen hättest, wäre er gestorben, ohne sich mit dir versöhnt zu haben.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p33",
+      "sentence_index": 6,
+      "block_type": "text",
+      "id": "ch01-081",
+      "part": 0,
+      "text": "Und deshalb war der wichtigste Mensch er, und die wichtigste Sache war das, was du ihm getan hast.",
+      "text_markdown": "Und deshalb war der wichtigste Mensch er, und die wichtigste Sache war das, was du ihm getan hast.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "Und deshalb war der wichtigste Mensch er, und die wichtigste Sache war das, was du ihm getan hast.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "chapter": 1,
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "id": "ch01-082",
+      "part": 0,
+      "text": "— So merke dir denn, — sagte der Einsiedler, — dass die wichtigste Zeit nur eine ist: jetzt, — und sie ist die wichtigste, weil wir nur in ihr Macht über uns selbst haben; und der wichtigste Mensch ist der, mit dem du gerade zu tun hast, weil niemand wissen kann, ob er noch einmal mit irgendeinem anderen Menschen zu tun haben wird; und die wichtigste Sache ist — ihm Gutes zu tun, weil der Mensch nur dafür ins Leben gesandt worden ist.",
+      "text_markdown": "— So merke dir denn, — sagte der Einsiedler, — dass die wichtigste Zeit nur eine ist: jetzt, — und sie ist die wichtigste, weil wir nur in ihr Macht über uns selbst haben; und der wichtigste Mensch ist der, mit dem du gerade zu tun hast, weil niemand wissen kann, ob er noch einmal mit irgendeinem anderen Menschen zu tun haben wird; und die wichtigste Sache ist — ihm Gutes zu tun, weil der Mensch nur dafür ins Leben gesandt worden ist.",
+      "title": "Drei Fragen",
+      "tts": {
+        "text": "— So merke dir denn, — sagte der Einsiedler, — dass die wichtigste Zeit nur eine ist: jetzt, — und sie ist die wichtigste, weil wir nur in ihr Macht über uns selbst haben; und der wichtigste Mensch ist der, mit dem du gerade zu tun hast, weil niemand wissen kann, ob er noch einmal mit irgendeinem anderen Menschen zu tun haben wird; und die wichtigste Sache ist — ihm Gutes zu tun, weil der Mensch nur dafür ins Leben gesandt worden ist.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.77
+      }
+    }
+  ]
+}

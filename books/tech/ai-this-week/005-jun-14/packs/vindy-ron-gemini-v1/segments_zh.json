@@ -1,0 +1,1823 @@
+{
+  "version": "2.0.0",
+  "book_id": "ai_this_week_2026_06_14",
+  "language": "zh",
+  "total_segments": 121,
+  "segments": [
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-001",
+      "text": "欢迎收听《本周AI》。",
+      "text_markdown": "欢迎收听《本周AI》。",
+      "title": "",
+      "tts": {
+        "text": "欢迎收听《本周AI》。",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-002",
+      "text": "我是Vindy。",
+      "text_markdown": "我是Vindy。",
+      "title": "",
+      "tts": {
+        "text": "我是Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-003",
+      "text": "和我在一起的，一如既往，是Ron。",
+      "text_markdown": "和我在一起的，一如既往，是Ron。",
+      "title": "",
+      "tts": {
+        "text": "和我在一起的，一如既往，是Ron。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-004",
+      "text": "很高兴来到这里，Vindy。",
+      "text_markdown": "很高兴来到这里，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "很高兴来到这里，Vindy。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-005",
+      "text": "今天是2026年6月14日，星期日。",
+      "text_markdown": "今天是2026年6月14日，星期日。",
+      "title": "",
+      "tts": {
+        "text": "今天是星期日，六月十四日，二零二六年。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-006",
+      "text": "今天有两件事不同寻常。",
+      "text_markdown": "今天有两件事不同寻常。",
+      "title": "",
+      "tts": {
+        "text": "今天有两件事不同寻常。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-007",
+      "text": "我们将把节目调整到周日播出，并且首次向大家揭示，这个节目究竟是由谁制作的。",
+      "text_markdown": "我们将把节目调整到周日播出，并且首次向大家揭示，这个节目究竟是由谁制作的。",
+      "title": "",
+      "tts": {
+        "text": "我们将把节目调整到周日播出，并且首次向大家揭示，这个节目究竟是由谁制作的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-008",
+      "text": "之后我们将回到常规节目——开放权重、小型实验室以及更广泛的AI周报。",
+      "text_markdown": "之后我们将回到常规节目——开放权重、小型实验室以及更广泛的AI周报。",
+      "title": "",
+      "tts": {
+        "text": "之后我们将回到常规节目——开放权重、小型实验室以及更广泛的AI周报。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-009",
+      "text": "接下来——节目时间调整及其原因。",
+      "text_markdown": "接下来——节目时间调整及其原因。",
+      "title": "",
+      "tts": {
+        "text": "接下来——节目时间调整及其原因。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-010",
+      "text": "首次揭秘Corpora Inc.，这个Corpán应用和本播客背后的迷你团队。",
+      "text_markdown": "首次揭秘Corpora Inc.，这个Corpán应用和本播客背后的迷你团队。",
+      "title": "",
+      "tts": {
+        "text": "首次揭秘Corpora Inc.，这个Corpán应用和本播客背后的迷你团队。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-011",
+      "text": "beatlounge上的头条新闻，我们的新音乐包将在Corpán 0.18.0中发布。",
+      "text_markdown": "beatlounge上的头条新闻，我们的新音乐包将在Corpán 0.18.0中发布。",
+      "title": "",
+      "tts": {
+        "text": "beatlounge上的头条新闻，我们的新音乐包将在Corpán零点一八点零中发布。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-012",
+      "text": "本周开放权重，由Google首个开放扩散文本模型领衔。",
+      "text_markdown": "本周开放权重，由Google首个开放扩散文本模型领衔。",
+      "title": "",
+      "tts": {
+        "text": "本周开放权重，由Google首个开放扩散文本模型领衔。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-013",
+      "text": "通过开放生态系统视角快速浏览头条新闻。",
+      "text_markdown": "通过开放生态系统视角快速浏览头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "通过开放生态系统视角快速浏览头条新闻。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-014",
+      "text": "本周小型实验室——巴黎的十一人团队对AMD芯片做出逆向押注。",
+      "text_markdown": "本周小型实验室——巴黎的十一人团队对AMD芯片做出逆向押注。",
+      "title": "",
+      "tts": {
+        "text": "本周小型实验室——巴黎的十一人团队对A M D芯片做出逆向押注。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-015",
+      "text": "以及本周概念——扩散与自回归，本周主打发布背后的诀窍。",
+      "text_markdown": "以及本周概念——扩散与自回归，本周主打发布背后的诀窍。",
+      "title": "",
+      "tts": {
+        "text": "以及本周概念——扩散与自回归，本周主打发布背后的诀窍。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-016",
+      "text": "Ron，我们先从节目时间表开始。",
+      "text_markdown": "Ron，我们先从节目时间表开始。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我们先从节目时间表开始。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-017",
+      "text": "为什么我们要把节目从周三移开？",
+      "text_markdown": "为什么我们要把节目从周三移开？",
+      "title": "",
+      "tts": {
+        "text": "为什么我们要把节目从周三移开？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-018",
+      "text": "周三是奥丁日，而奥丁正忙着统治阿斯加德。",
+      "text_markdown": "周三是奥丁日，而奥丁正忙着统治阿斯加德。",
+      "title": "",
+      "tts": {
+        "text": "周三是奥丁日，而奥丁正忙着统治阿斯加德。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-019",
+      "text": "我们是一个有日常工作的迷你团队，周中截稿从来都不顺利。",
+      "text_markdown": "我们是一个有日常工作的迷你团队，周中截稿从来都不顺利。",
+      "title": "",
+      "tts": {
+        "text": "我们是一个有日常工作的迷你团队，周中截稿从来都不顺利。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-020",
+      "text": "周日结束一周并开启新的一周，这对于新闻节目来说感觉是正确的节奏。",
+      "text_markdown": "周日结束一周并开启新的一周，这对于新闻节目来说感觉是正确的节奏。",
+      "title": "",
+      "tts": {
+        "text": "周日结束一周并开启新的一周，这对于新闻节目来说感觉是正确的节奏。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-021",
+      "text": "实际的发布流程是怎样的？",
+      "text_markdown": "实际的发布流程是怎样的？",
+      "title": "",
+      "tts": {
+        "text": "实际的发布流程是怎样的？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-022",
+      "text": "它从周六的英语版本开始，然后随着每个翻译和音频处理的完成，逐个语言地持续到周一早上。",
+      "text_markdown": "它从周六的英语版本开始，然后随着每个翻译和音频处理的完成，逐个语言地持续到周一早上。",
+      "title": "",
+      "tts": {
+        "text": "它从周六的英语版本开始，然后随着每个翻译和音频处理的完成，逐个语言地持续到周一早上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-023",
+      "text": "到周一喝咖啡的时候，我们应该能达到近五十种语言。",
+      "text_markdown": "到周一喝咖啡的时候，我们应该能达到近五十种语言。",
+      "title": "",
+      "tts": {
+        "text": "到周一喝咖啡的时候，我们应该能达到近五十种语言。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-024",
+      "text": "这就引出了第二件新事。",
+      "text_markdown": "这就引出了第二件新事。",
+      "title": "",
+      "tts": {
+        "text": "这就引出了第二件新事。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-025",
+      "text": "谁制作了这个节目。",
+      "text_markdown": "谁制作了这个节目。",
+      "title": "",
+      "tts": {
+        "text": "谁制作了这个节目。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-026",
+      "text": "Corpora Inc.，一个独立的迷你团队，开发了Corpán应用并制作了本播客。",
+      "text_markdown": "Corpora Inc.，一个独立的迷你团队，开发了Corpán应用并制作了本播客。",
+      "title": "",
+      "tts": {
+        "text": "Corpora Inc.，一个独立的迷你团队，开发了Corpán应用并制作了本播客。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-027",
+      "text": "什么是Corpán。",
+      "text_markdown": "什么是Corpán。",
+      "title": "",
+      "tts": {
+        "text": "什么是Corpán。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-028",
+      "text": "一个语言、音乐和学习的乐园，以设备优先的方式构建。",
+      "text_markdown": "一个语言、音乐和学习的乐园，以设备优先的方式构建。",
+      "title": "",
+      "tts": {
+        "text": "一个语言、音乐和学习的乐园，以设备优先的方式构建。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-029",
+      "text": "解释一下“设备优先”——这在实践中意味着什么。",
+      "text_markdown": "解释一下“设备优先”——这在实践中意味着什么。",
+      "title": "",
+      "tts": {
+        "text": "解释一下“设备优先”——这在实践中意味着什么。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-030",
+      "text": "这意味着只要功能允许，我们就会优先在本地运行。",
+      "text_markdown": "这意味着只要功能允许，我们就会优先在本地运行。",
+      "title": "",
+      "tts": {
+        "text": "这意味着只要功能允许，我们就会优先在本地运行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-031",
+      "text": "Qwen3-4B 用于助手，Whisper large-v3 用于语音识别，Chatterbox 用于语音合成，Stable Diffusion 三点五用于图像，LoRA 管线用于角色导师。",
+      "text_markdown": "Qwen3-4B 用于助手，Whisper large-v3 用于语音识别，Chatterbox 用于语音合成，Stable Diffusion 三点五用于图像，LoRA 管线用于角色导师。",
+      "title": "",
+      "tts": {
+        "text": "Qwen 三四 B 用于助手，Whisper large v 三 用于语音识别，Chatterbox 用于语音合成，Stable Diffusion 三点五 用于图像，LoRA 管线用于角色导师。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-032",
+      "text": "所有这些都在您的手机或平板电脑上运行，离线，在飞行模式下，在任何地方都能使用。",
+      "text_markdown": "所有这些都在您的手机或平板电脑上运行，离线，在飞行模式下，在任何地方都能使用。",
+      "title": "",
+      "tts": {
+        "text": "所有这些都在您的手机或平板电脑上运行，离线，在飞行模式下，在任何地方都能使用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-033",
+      "text": "真正需要网络的功能——全球广播、多人游戏——会使用网络，我们对此毫不掩饰。",
+      "text_markdown": "真正需要网络的功能——全球广播、多人游戏——会使用网络，我们对此毫不掩饰。",
+      "title": "",
+      "tts": {
+        "text": "真正需要网络的功能——全球广播、多人游戏——会使用网络，我们对此毫不掩饰。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-034",
+      "text": "以及商业方面。",
+      "text_markdown": "以及商业方面。",
+      "title": "",
+      "tts": {
+        "text": "以及商业方面。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-035",
+      "text": "精简的独立团队，背后没有数十亿美元的资金，应用内目前无广告，提供慷慨的免费层级和可选的高级订阅，供希望支持我们工作的人使用。",
+      "text_markdown": "精简的独立团队，背后没有数十亿美元的资金，应用内目前无广告，提供慷慨的免费层级和可选的高级订阅，供希望支持我们工作的人使用。",
+      "title": "",
+      "tts": {
+        "text": "精简的独立团队，背后没有数十亿美元的资金，应用内目前无广告，提供慷慨的免费层级和可选的高级订阅，供希望支持我们工作的人使用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-036",
+      "text": "我们希望尽可能长时间地保持无广告——不承诺永远，但这是我们的方向。",
+      "text_markdown": "我们希望尽可能长时间地保持无广告——不承诺永远，但这是我们的方向。",
+      "title": "",
+      "tts": {
+        "text": "我们希望尽可能长时间地保持无广告——不承诺永远，但这是我们的方向。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-037",
+      "text": "你实际交付了什么成果？",
+      "text_markdown": "你实际交付了什么成果？",
+      "title": "",
+      "tts": {
+        "text": "你实际交付了什么成果？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-038",
+      "text": "大多数周我们都会交付一些东西——一本有声书、一个内容包、一个应用版本、这个节目——目前涵盖三十五种以上语言，并且还在增加。",
+      "text_markdown": "大多数周我们都会交付一些东西——一本有声书、一个内容包、一个应用版本、这个节目——目前涵盖三十五种以上语言，并且还在增加。",
+      "title": "",
+      "tts": {
+        "text": "大多数周我们都会交付一些东西——一本有声书、一个内容包、一个应用版本、这个节目——目前涵盖三十五种以上语言，并且还在增加。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-039",
+      "text": "为什么要这么做？",
+      "text_markdown": "为什么要这么做？",
+      "title": "",
+      "tts": {
+        "text": "为什么要这么做？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-040",
+      "text": "这就是我们的主张——证明一个前沿品质、设备优先、多语言的学习体验可以由一个没有雄厚资金的小团队实现，同时尽可能长时间地保持应用无广告。",
+      "text_markdown": "这就是我们的主张——证明一个前沿品质、设备优先、多语言的学习体验可以由一个没有雄厚资金的小团队实现，同时尽可能长时间地保持应用无广告。",
+      "title": "",
+      "tts": {
+        "text": "这就是我们的主张——证明一个前沿品质、设备优先、多语言的学习体验可以由一个没有雄厚资金的小团队实现，同时尽可能长时间地保持应用无广告。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-041",
+      "text": "这把我们带到了头条新闻——beatlounge。",
+      "text_markdown": "这把我们带到了头条新闻——beatlounge。",
+      "title": "",
+      "tts": {
+        "text": "这把我们带到了头条新闻——beatlounge。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-042",
+      "text": "它将于本周在 Corpán 0.18.0 中发布。",
+      "text_markdown": "它将于本周在 Corpán 0.18.0 中发布。",
+      "title": "",
+      "tts": {
+        "text": "它将于本周在 Corpán 零点一八点零 中发布。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-043",
+      "text": "beatlounge 是一个节拍音序器和语言工具的结合体。",
+      "text_markdown": "beatlounge 是一个节拍音序器和语言工具的结合体。",
+      "title": "",
+      "tts": {
+        "text": "beatlounge 是一个节拍音序器和语言工具的结合体。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-044",
+      "text": "一个以节拍寻址的音序器，每四分音符九百六十个脉冲；一个能理解西方调式、印度塔特、卡纳提克梅拉卡尔塔和阿拉伯马卡姆的和声引擎；以及一个包含超过一千万个真实语言短语的语料库，涵盖五十多种语言。",
+      "text_markdown": "一个以节拍寻址的音序器，每四分音符九百六十个脉冲；一个能理解西方调式、印度塔特、卡纳提克梅拉卡尔塔和阿拉伯马卡姆的和声引擎；以及一个包含超过一千万个真实语言短语的语料库，涵盖五十多种语言。",
+      "title": "",
+      "tts": {
+        "text": "一个以节拍寻址的音序器，每四分音符九百六十个脉冲；一个能理解西方调式、印度塔特、卡纳提克梅拉卡尔塔和阿拉伯马卡姆的和声引擎；以及一个包含超过一千万个真实语言短语的语料库，涵盖五十多种语言。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-045",
+      "text": "所有这些都可进行音高演奏，一旦内容包下载到您的设备上，即可离线播放。",
+      "text_markdown": "所有这些都可进行音高演奏，一旦内容包下载到您的设备上，即可离线播放。",
+      "title": "",
+      "tts": {
+        "text": "所有这些都可进行音高演奏，一旦内容包下载到您的设备上，即可离线播放。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-046",
+      "text": "所以，乐器就是语言。",
+      "text_markdown": "所以，乐器就是语言。",
+      "title": "",
+      "tts": {
+        "text": "所以，乐器就是语言。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-047",
+      "text": "你演奏短语的方式就像演奏音符一样。",
+      "text_markdown": "你演奏短语的方式就像演奏音符一样。",
+      "title": "",
+      "tts": {
+        "text": "你演奏短语的方式就像演奏音符一样。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-048",
+      "text": "第一拍先放进一句印地语短句，第二拍后半再接一个阿拉伯语感叹词，最后让一个普通话音节带起渐强，并把整段完整收住。",
+      "text_markdown": "第一拍先放进一句印地语短句，第二拍后半再接一个阿拉伯语感叹词，最后让一个普通话音节带起渐强，并把整段完整收住。",
+      "title": "",
+      "tts": {
+        "text": "第一拍先放进一句印地语短句，第二拍后半再接一个阿拉伯语感叹词，最后让一个普通话音节带起渐强，并把整段完整收住。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-049",
+      "text": "它是一个数字音频工作站（DAW），其中采样是句子，由设备上的TTS发音。",
+      "text_markdown": "它是一个数字音频工作站（DAW），其中采样是句子，由设备上的TTS发音。",
+      "title": "",
+      "tts": {
+        "text": "它是一个数字音频工作站，其中采样是句子，由设备上的 T T S 发音。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-050",
+      "text": "无需乐理知识。",
+      "text_markdown": "无需乐理知识。",
+      "title": "",
+      "tts": {
+        "text": "无需乐理知识。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-051",
+      "text": "真的什么都不需要。",
+      "text_markdown": "真的什么都不需要。",
+      "title": "",
+      "tts": {
+        "text": "真的什么都不需要。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-052",
+      "text": "和声引擎处理规则；你只需选择你喜欢的声音，调式就会保持纯净。",
+      "text_markdown": "和声引擎处理规则；你只需选择你喜欢的声音，调式就会保持纯净。",
+      "title": "",
+      "tts": {
+        "text": "和声引擎处理规则；你只需选择你喜欢的声音，调式就会保持纯净。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-053",
+      "text": "0.18.0 中还有什么？",
+      "text_markdown": "0.18.0 中还有什么？",
+      "title": "",
+      "tts": {
+        "text": "零点一八点零 中还有什么？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-054",
+      "text": "引擎盖下有三项工程改进——内容包的主机接缝已随 beatlounge 作为试点上线。",
+      "text_markdown": "引擎盖下有三项工程改进——内容包的主机接缝已随 beatlounge 作为试点上线。",
+      "title": "",
+      "tts": {
+        "text": "引擎盖下有三项工程改进——内容包的主机接缝已随 beatlounge 作为试点上线。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-055",
+      "text": "安卓现在可以捕获原生故障面包屑，以便 llama 和 ggml 崩溃能够得到正确诊断。",
+      "text_markdown": "安卓现在可以捕获原生故障面包屑，以便 llama 和 ggml 崩溃能够得到正确诊断。",
+      "title": "",
+      "tts": {
+        "text": "安卓现在可以捕获原生故障面包屑，以便 llama 和 g g m l 崩溃能够得到正确诊断。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-056",
+      "text": "我们修复了过去导致 iOS 内存溢出（OOM）的多吉字节模型安装问题——现在它直接流式传输到磁盘，而不是在内存中缓冲两点五吉字节的 Qwen3-4B。",
+      "text_markdown": "我们修复了过去导致 iOS 内存溢出（OOM）的多吉字节模型安装问题——现在它直接流式传输到磁盘，而不是在内存中缓冲两点五吉字节的 Qwen3-4B。",
+      "title": "",
+      "tts": {
+        "text": "我们修复了过去导致 iOS 内存溢出（O O M）的多吉字节模型安装问题——现在它直接流式传输到磁盘，而不是在内存中缓冲两点五吉字节的 Qwen 三四 B。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-057",
+      "text": "底层枯燥，上层有趣。",
+      "text_markdown": "底层枯燥，上层有趣。",
+      "title": "",
+      "tts": {
+        "text": "底层枯燥，上层有趣。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-058",
+      "text": "这大致就是整个公司的简介。",
+      "text_markdown": "这大致就是整个公司的简介。",
+      "title": "",
+      "tts": {
+        "text": "这大致就是整个公司的简介。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-059",
+      "text": "好的，我们来谈谈开放权重。",
+      "text_markdown": "好的，我们来谈谈开放权重。",
+      "title": "",
+      "tts": {
+        "text": "好的，我们来谈谈开放权重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-060",
+      "text": "本周有什么大新闻？",
+      "text_markdown": "本周有什么大新闻？",
+      "title": "",
+      "tts": {
+        "text": "本周有什么大新闻？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-061",
+      "text": "Google 发布了 DiffusionGemma。",
+      "text_markdown": "Google 发布了 DiffusionGemma。",
+      "title": "",
+      "tts": {
+        "text": "Google 发布了 DiffusionGemma。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-062",
+      "text": "一个拥有二百六十亿参数的专家混合模型，其中三十八亿参数处于活跃状态，基于 Apache 2.0 协议在 Hugging Face 上发布，它通过扩散而非自回归生成文本。",
+      "text_markdown": "一个拥有二百六十亿参数的专家混合模型，其中三十八亿参数处于活跃状态，基于 Apache 2.0 协议在 Hugging Face 上发布，它通过扩散而非自回归生成文本。",
+      "title": "",
+      "tts": {
+        "text": "一个拥有二十六亿参数的专家混合模型，其中三点八亿参数处于活跃状态，基于 Apache 二点零协议在 Hugging Face 上发布，它通过扩散而非自回归生成文本。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-063",
+      "text": "用通俗的语言来说——文本扩散究竟意味着什么？",
+      "text_markdown": "用通俗的语言来说——文本扩散究竟意味着什么？",
+      "title": "",
+      "tts": {
+        "text": "用通俗的语言来说——文本扩散究竟意味着什么？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-064",
+      "text": "它不是一次预测一个 token，而是并行地对一个二百五十六个 token 的块进行去噪处理。",
+      "text_markdown": "它不是一次预测一个 token，而是并行地对一个二百五十六个 token 的块进行去噪处理。",
+      "title": "",
+      "tts": {
+        "text": "它不是一次预测一个 token，而是并行地对一个二百五十六个 token 的块进行去噪处理。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-065",
+      "text": "在单个 H100 上每秒处理超过一千个 token，比同类自回归 Gemma 大约快四倍。",
+      "text_markdown": "在单个 H100 上每秒处理超过一千个 token，比同类自回归 Gemma 大约快四倍。",
+      "title": "",
+      "tts": {
+        "text": "在单个 H 一百 上每秒处理超过一千个 token，比同类自回归 Gemma 大约快四倍。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-066",
+      "text": "但问题是。",
+      "text_markdown": "但问题是。",
+      "title": "",
+      "tts": {
+        "text": "但问题是。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-067",
+      "text": "在 MMLU 和编码方面的得分较低——Google 自己也承认；这次发布是为了速度至关重要的工作，而不是为了争夺排行榜。",
+      "text_markdown": "在 MMLU 和编码方面的得分较低——Google 自己也承认；这次发布是为了速度至关重要的工作，而不是为了争夺排行榜。",
+      "title": "",
+      "tts": {
+        "text": "在 MMLU 和编码方面的得分较低——Google 自己也承认；这次发布是为了速度至关重要的工作，而不是为了争夺排行榜。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-068",
+      "text": "还有开放语音模型——任何模型。",
+      "text_markdown": "还有开放语音模型——任何模型。",
+      "title": "",
+      "tts": {
+        "text": "还有开放语音模型——任何模型。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-069",
+      "text": "同一周内发布了两个。",
+      "text_markdown": "同一周内发布了两个。",
+      "title": "",
+      "tts": {
+        "text": "同一周内发布了两个。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-070",
+      "text": "中国社交网络 RedNote 开源了 dots-dot-tts——一个拥有二十亿参数的模型，在整个流程中完全连续，没有任何离散 token，首次 token 延迟为五十四毫秒，基于 Apache 2.0 协议。",
+      "text_markdown": "中国社交网络 RedNote 开源了 dots-dot-tts——一个拥有二十亿参数的模型，在整个流程中完全连续，没有任何离散 token，首次 token 延迟为五十四毫秒，基于 Apache 2.0 协议。",
+      "title": "",
+      "tts": {
+        "text": "中国社交网络 RedNote 开源了 dots dot tts——一个拥有二十亿参数的模型，在整个流程中完全连续，没有任何离散 token，首次 token 延迟为五十四毫秒，基于 Apache 二点零协议。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-071",
+      "text": "Boson AI 发布了 Higgs Audio 第三版——拥有四十亿参数，支持一百零二种语言，二十一个情感控制 token，流式输出，非商业许可；最后一点是需要注意的。",
+      "text_markdown": "Boson AI 发布了 Higgs Audio 第三版——拥有四十亿参数，支持一百零二种语言，二十一个情感控制 token，流式输出，非商业许可；最后一点是需要注意的。",
+      "title": "",
+      "tts": {
+        "text": "Boson AI 发布了 Higgs Audio 第三版——拥有四十亿参数，支持一百零二种语言，二十一个情感控制 token，流式输出，非商业许可；最后一点是需要注意的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-072",
+      "text": "语音克隆正式成为一种商品。",
+      "text_markdown": "语音克隆正式成为一种商品。",
+      "title": "",
+      "tts": {
+        "text": "语音克隆正式成为一种商品。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-073",
+      "text": "确实如此。",
+      "text_markdown": "确实如此。",
+      "title": "",
+      "tts": {
+        "text": "确实如此。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-074",
+      "text": "开放领域还有一项。",
+      "text_markdown": "开放领域还有一项。",
+      "title": "",
+      "tts": {
+        "text": "开放领域还有一项。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-075",
+      "text": "NVIDIA 悄然发布了 Nemotron 3 Ultra——一个拥有五千五百亿参数的混合 Mamba-attention 模型。",
+      "text_markdown": "NVIDIA 悄然发布了 Nemotron 3 Ultra——一个拥有五千五百亿参数的混合 Mamba-attention 模型。",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA 悄然发布了 Nemotron 三 Ultra——一个拥有五千五百亿参数的混合 Mamba attention 模型。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-076",
+      "text": "权重和完整的训练配方都在 Linux 基金会 OpenMDW 许可下发布——这是本月最真正开放的发布。",
+      "text_markdown": "权重和完整的训练配方都在 Linux 基金会 OpenMDW 许可下发布——这是本月最真正开放的发布。",
+      "title": "",
+      "tts": {
+        "text": "权重和完整的训练配方都在 Linux 基金会 OpenMDW 许可下发布——这是本月最真正开放的发布。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-077",
+      "text": "但没有人报道它。",
+      "text_markdown": "但没有人报道它。",
+      "title": "",
+      "tts": {
+        "text": "但没有人报道它。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-078",
+      "text": "因为我们把 NVIDIA 归类为芯片公司，而不是实验室。",
+      "text_markdown": "因为我们把 NVIDIA 归类为芯片公司，而不是实验室。",
+      "title": "",
+      "tts": {
+        "text": "因为我们把 NVIDIA 归类为芯片公司，而不是实验室。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-079",
+      "text": "但本周他们发布了前沿规模的可复现开放模型。",
+      "text_markdown": "但本周他们发布了前沿规模的可复现开放模型。",
+      "title": "",
+      "tts": {
+        "text": "但本周他们发布了前沿规模的可复现开放模型。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-080",
+      "text": "头条新闻，快速浏览。",
+      "text_markdown": "头条新闻，快速浏览。",
+      "title": "",
+      "tts": {
+        "text": "头条新闻，快速浏览。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-081",
+      "text": "首先。",
+      "text_markdown": "首先。",
+      "title": "",
+      "tts": {
+        "text": "首先。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-082",
+      "text": "Moonshot 发布了 Kimi K2.7 Code——一个拥有万亿参数的模型，其中三百二十亿参数处于活跃状态，声称在 Moonshot 自己的基准测试中击败了 Claude Opus 4.8。",
+      "text_markdown": "Moonshot 发布了 Kimi K2.7 Code——一个拥有万亿参数的模型，其中三百二十亿参数处于活跃状态，声称在 Moonshot 自己的基准测试中击败了 Claude Opus 4.8。",
+      "title": "",
+      "tts": {
+        "text": "Moonshot 发布了 Kimi K 二点七 Code——一个拥有万亿参数的模型，其中三百二十亿参数处于活跃状态，声称在 Moonshot 自己的基准测试中击败了 Claude Opus 四点八。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-083",
+      "text": "从业者们核查了数据，表示基准测试结果不符；自托管的权重文件大小为五百九十五 GB，且思维模式无法关闭。",
+      "text_markdown": "从业者们核查了数据，表示基准测试结果不符；自托管的权重文件大小为五百九十五 GB，且思维模式无法关闭。",
+      "title": "",
+      "tts": {
+        "text": "从业者们核查了数据，表示基准测试结果不符；自托管的权重文件大小为五百九十五 GB，且思维模式无法关闭。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-084",
+      "text": "这句话里的“开放”一词含义深远。",
+      "text_markdown": "这句话里的“开放”一词含义深远。",
+      "title": "",
+      "tts": {
+        "text": "这句话里的“开放”一词含义深远。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-085",
+      "text": "其次。",
+      "text_markdown": "其次。",
+      "title": "",
+      "tts": {
+        "text": "其次。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-086",
+      "text": "Cohere，一家几乎从不发布权重的西方实验室，竟然发布了权重——North Mini Code，总参数三百亿，其中三十亿参数处于活跃状态，基于 Apache 2.0 协议，可在单个 H100 上以四位精度运行。",
+      "text_markdown": "Cohere，一家几乎从不发布权重的西方实验室，竟然发布了权重——North Mini Code，总参数三百亿，其中三十亿参数处于活跃状态，基于 Apache 2.0 协议，可在单个 H100 上以四位精度运行。",
+      "title": "",
+      "tts": {
+        "text": "Cohere，一家几乎从不发布权重的西方实验室，竟然发布了权重——North Mini Code，总参数三百亿，其中三十亿参数处于活跃状态，基于 Apache 二点零协议，可在单个 H 一百 上以四位精度运行。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-087",
+      "text": "一家西方实验室在 2026 年发布真正的 Apache 2.0 协议模型，这本身就是新闻。",
+      "text_markdown": "一家西方实验室在 2026 年发布真正的 Apache 2.0 协议模型，这本身就是新闻。",
+      "title": "",
+      "tts": {
+        "text": "一家西方实验室在二零二六年发布真正的 Apache 二点零协议模型，这本身就是新闻。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-088",
+      "text": "第三。",
+      "text_markdown": "第三。",
+      "title": "",
+      "tts": {
+        "text": "第三。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-089",
+      "text": "苹果在 WWDC 上大力强调设备端 AI 作为其战略重点。",
+      "text_markdown": "苹果在 WWDC 上大力强调设备端 AI 作为其战略重点。",
+      "title": "",
+      "tts": {
+        "text": "苹果在 WWDC 上大力强调设备端 AI 作为其战略重点。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-090",
+      "text": "但据报道，新的 Siri 模型是 Google Gemini 的精炼版本，由苹果授权并进行小型化处理。",
+      "text_markdown": "但据报道，新的 Siri 模型是 Google Gemini 的精炼版本，由苹果授权并进行小型化处理。",
+      "title": "",
+      "tts": {
+        "text": "但据报道，新的 Siri 模型是 Google Gemini 的精炼版本，由苹果授权并进行小型化处理。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-091",
+      "text": "本地推理，复杂的供应链。",
+      "text_markdown": "本地推理，复杂的供应链。",
+      "title": "",
+      "tts": {
+        "text": "本地推理，复杂的供应链。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-092",
+      "text": "第四点。",
+      "text_markdown": "第四点。",
+      "title": "",
+      "tts": {
+        "text": "第四点。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-093",
+      "text": "阿里巴巴将通义千问 3.7-Plus 推向全面可用——多模态，能从截图中驱动图形用户界面，每百万输入 token 大约四十美分。",
+      "text_markdown": "阿里巴巴将通义千问 3.7-Plus 推向全面可用——多模态，能从截图中驱动图形用户界面，每百万输入 token 大约四十美分。",
+      "title": "",
+      "tts": {
+        "text": "阿里巴巴将通义千问三点七 Plus 推向全面可用——多模态，能从截图中驱动图形用户界面，每百万输入 token 大约四十美分。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-094",
+      "text": "尽管有通义千问的品牌，但这一个只提供 API，不是开放权重。",
+      "text_markdown": "尽管有通义千问的品牌，但这一个只提供 API，不是开放权重。",
+      "title": "",
+      "tts": {
+        "text": "尽管有通义千问的品牌，但这一个只提供 A P I，不是开放权重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-095",
+      "text": "值得了解，因为听众会将通义千问与开源混为一谈；但这一个不是。",
+      "text_markdown": "值得了解，因为听众会将通义千问与开源混为一谈；但这一个不是。",
+      "title": "",
+      "tts": {
+        "text": "值得了解，因为听众会将通义千问与开源混为一谈；但这一个不是。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-096",
+      "text": "本周小实验室。",
+      "text_markdown": "本周小实验室。",
+      "title": "",
+      "tts": {
+        "text": "本周小实验室。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-097",
+      "text": "Kog。",
+      "text_markdown": "Kog。",
+      "title": "",
+      "tts": {
+        "text": "Kog。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-098",
+      "text": "巴黎的十一人团队，声称在八个 AMD MI300X GPU 上每秒每个请求可处理三千个输出 token。",
+      "text_markdown": "巴黎的十一人团队，声称在八个 AMD MI300X GPU 上每秒每个请求可处理三千个输出 token。",
+      "title": "",
+      "tts": {
+        "text": "巴黎的十一人团队，声称在八个 A M D M I 三百 X G P U 上每秒每个请求可处理三千个输出 token。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-099",
+      "text": "他们的观点是——当瓶颈一直都是软件时，行业在定制推理芯片上投入过大。",
+      "text_markdown": "他们的观点是——当瓶颈一直都是软件时，行业在定制推理芯片上投入过大。",
+      "title": "",
+      "tts": {
+        "text": "他们的观点是——当瓶颈一直都是软件时，行业在定制推理芯片上投入过大。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-100",
+      "text": "十一人团队，用的是 AMD 而不是 NVIDIA。",
+      "text_markdown": "十一人团队，用的是 AMD 而不是 NVIDIA。",
+      "title": "",
+      "tts": {
+        "text": "十一人团队，用的是 A M D 而不是 NVIDIA。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-101",
+      "text": "就在定制芯片 IPO 之后，完美的逆向时机。",
+      "text_markdown": "就在定制芯片 IPO 之后，完美的逆向时机。",
+      "title": "",
+      "tts": {
+        "text": "就在定制芯片 I P O 之后，完美的逆向时机。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-102",
+      "text": "那么，板凳上的硬件呢？",
+      "text_markdown": "那么，板凳上的硬件呢？",
+      "title": "",
+      "tts": {
+        "text": "那么，板凳上的硬件呢？",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-103",
+      "text": "Raspberry Pi 推出了 AI HAT+ 2——将四十 TOPS 附加到 Pi 5 上。",
+      "text_markdown": "Raspberry Pi 推出了 AI HAT+ 2——将四十 TOPS 附加到 Pi 5 上。",
+      "title": "",
+      "tts": {
+        "text": "Raspberry Pi 推出了 A I H A T Plus 二——将四十 T O P S 附加到 Pi 五上。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-104",
+      "text": "NVIDIA 的 Jetson Orin Nano Super 以不到三百美元的价格提供六十七 TOPS。",
+      "text_markdown": "NVIDIA 的 Jetson Orin Nano Super 以不到三百美元的价格提供六十七 TOPS。",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA 的 Jetson Orin Nano Super 以不到三百美元的价格提供六十七 T O P S。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-105",
+      "text": "以前，设备上运行意味着 Mac。",
+      "text_markdown": "以前，设备上运行意味着 Mac。",
+      "title": "",
+      "tts": {
+        "text": "以前，设备上运行意味着 Mac。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-106",
+      "text": "现在，它意味着一块可以藏在抽屉里的板子。",
+      "text_markdown": "现在，它意味着一块可以藏在抽屉里的板子。",
+      "title": "",
+      "tts": {
+        "text": "现在，它意味着一块可以藏在抽屉里的板子。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-107",
+      "text": "本周概念——扩散与自回归。",
+      "text_markdown": "本周概念——扩散与自回归。",
+      "title": "",
+      "tts": {
+        "text": "本周概念——扩散与自回归。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-108",
+      "text": "殊途同归。",
+      "text_markdown": "殊途同归。",
+      "title": "",
+      "tts": {
+        "text": "殊途同归。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-109",
+      "text": "自回归模型，也就是你所知的大多数大型语言模型，一次生成一个 token，以此为条件，再生成下一个，重复——本质上是序列化的。",
+      "text_markdown": "自回归模型，也就是你所知的大多数大型语言模型，一次生成一个 token，以此为条件，再生成下一个，重复——本质上是序列化的。",
+      "title": "",
+      "tts": {
+        "text": "自回归模型，也就是你所知的大多数大型语言模型，一次生成一个 token，以此为条件，再生成下一个，重复——本质上是序列化的。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-110",
+      "text": "扩散模型从一块纯噪声开始，并在固定步数内一次性对其进行去噪。",
+      "text_markdown": "扩散模型从一块纯噪声开始，并在固定步数内一次性对其进行去噪。",
+      "title": "",
+      "tts": {
+        "text": "扩散模型从一块纯噪声开始，并在固定步数内一次性对其进行去噪。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-111",
+      "text": "你牺牲了一些质量以换取并行性，而在较小的步数下，你就能获得那些令人瞠目结舌的吞吐量数据。",
+      "text_markdown": "你牺牲了一些质量以换取并行性，而在较小的步数下，你就能获得那些令人瞠目结舌的吞吐量数据。",
+      "title": "",
+      "tts": {
+        "text": "你牺牲了一些质量以换取并行性，而在较小的步数下，你就能获得那些令人瞠目结舌的吞吐量数据。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-112",
+      "text": "所以 DiffusionGemma 是我们第一次拥有开放权重来真正感受这种差异。",
+      "text_markdown": "所以 DiffusionGemma 是我们第一次拥有开放权重来真正感受这种差异。",
+      "title": "",
+      "tts": {
+        "text": "所以 DiffusionGemma 是我们第一次拥有开放权重来真正感受这种差异。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-113",
+      "text": "是的，这是首次达到这种规模。",
+      "text_markdown": "是的，这是首次达到这种规模。",
+      "title": "",
+      "tts": {
+        "text": "是的，这是首次达到这种规模。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-114",
+      "text": "这就是为什么本周开源推理团队很重要——llama.cpp、vLLM、MLX——他们将学习如何在真实硬件上使其发挥作用。",
+      "text_markdown": "这就是为什么本周开源推理团队很重要——llama.cpp、vLLM、MLX——他们将学习如何在真实硬件上使其发挥作用。",
+      "title": "",
+      "tts": {
+        "text": "这就是为什么本周开源推理团队很重要——llama dot c p p、v L L M、M L X——他们将学习如何在真实硬件上使其发挥作用。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-115",
+      "text": "很好的收尾。",
+      "text_markdown": "很好的收尾。",
+      "title": "",
+      "tts": {
+        "text": "很好的收尾。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-116",
+      "text": "罗恩，谢谢你。",
+      "text_markdown": "罗恩，谢谢你。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，谢谢你。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "id": "ch00-117",
+      "text": "随时为您效劳，温迪。",
+      "text_markdown": "随时为您效劳，温迪。",
+      "title": "",
+      "tts": {
+        "text": "随时为您效劳，温迪。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-118",
+      "text": "以上是 2026 年 6 月 14 日的《本周 AI》。",
+      "text_markdown": "以上是 2026 年 6 月 14 日的《本周 AI》。",
+      "title": "",
+      "tts": {
+        "text": "以上是二零二六年六月十四日的《本周 A I》。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-119",
+      "text": "同样的拼搏节目，新的周日档期。",
+      "text_markdown": "同样的拼搏节目，新的周日档期。",
+      "title": "",
+      "tts": {
+        "text": "同样的拼搏节目，新的周日档期。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-120",
+      "text": "语言版本将持续发布到周一早上；Corpán 0.18.0 在任何应用商店都可获取——试试 beatlounge。",
+      "text_markdown": "语言版本将持续发布到周一早上；Corpán 0.18.0 在任何应用商店都可获取——试试 beatlounge。",
+      "title": "",
+      "tts": {
+        "text": "语言版本将持续发布到周一早上；Corpán 零点一八点零在任何应用商店都可获取——试试 beatlounge。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "block_type": "text",
+      "chapter": 0,
+      "speaker_id": "host",
+      "id": "ch00-121",
+      "text": "直到下周日，保重。",
+      "text_markdown": "直到下周日，保重。",
+      "title": "",
+      "tts": {
+        "text": "直到下周日，保重。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

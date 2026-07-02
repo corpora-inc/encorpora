@@ -1,0 +1,2436 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_train_history",
+  "language": "sv",
+  "total_segments": 154,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ett ord till läsaren",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Ett ord till läsaren",
+      "text_markdown": "Ett ord till läsaren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ett ord till läsaren",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I två hundra år har tåget varit världens väg av järn.",
+      "text_markdown": "I två hundra år har tåget varit världens väg av järn.",
+      "tts": {
+        "text": "I två hundra år har tåget varit världens väg av järn.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ett ord till läsaren",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tåg fraktar människor.",
+      "text_markdown": "Tåg fraktar människor.",
+      "tts": {
+        "text": "Tåg fraktar människor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ett ord till läsaren",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tåg fraktar varor.",
+      "text_markdown": "Tåg fraktar varor.",
+      "tts": {
+        "text": "Tåg fraktar varor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ett ord till läsaren",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ett långt tåg kan bära lika mycket spannmål som en hel stad behöver.",
+      "text_markdown": "Ett långt tåg kan bära lika mycket spannmål som en hel stad behöver.",
+      "tts": {
+        "text": "Ett långt tåg kan bära lika mycket spannmål som en hel stad behöver.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ett ord till läsaren",
+      "paragraph_id": "p2",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ett snabbt tåg kan köra om en bil på motorvägen.",
+      "text_markdown": "Ett snabbt tåg kan köra om en bil på motorvägen.",
+      "tts": {
+        "text": "Ett snabbt tåg kan köra om en bil på motorvägen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "Ett ord till läsaren",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tågets historia börjar i England för nästan två hundra år sedan, med en man, en eld och en kittel med kokande vatten.",
+      "text_markdown": "Tågets historia börjar i England för nästan två hundra år sedan, med en man, en eld och en kittel med kokande vatten.",
+      "tts": {
+        "text": "Tågets historia börjar i England för nästan två hundra år sedan, med en man, en eld och en kittel med kokande vatten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 1 — Det första ångtåget",
+      "text_markdown": "Kapitel 1 — Det första ångtåget"
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett tåg är en rad vagnar som rullar på järnspår.",
+      "text_markdown": "Ett tåg är en rad vagnar som rullar på järnspår.",
+      "tts": {
+        "text": "Ett tåg är en rad vagnar som rullar på järnspår.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det första fordonet är loket.",
+      "text_markdown": "Det första fordonet är loket.",
+      "tts": {
+        "text": "Det första fordonet är loket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det drar alla de andra.",
+      "text_markdown": "Det drar alla de andra.",
+      "tts": {
+        "text": "Det drar alla de andra.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De första tågen drevs av ånga.",
+      "text_markdown": "De första tågen drevs av ånga.",
+      "tts": {
+        "text": "De första tågen drevs av ånga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En ångmaskin eldar med kol för att koka vatten.",
+      "text_markdown": "En ångmaskin eldar med kol för att koka vatten.",
+      "tts": {
+        "text": "En ångmaskin eldar med kol för att koka vatten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den heta ångan pressar kolvar.",
+      "text_markdown": "Den heta ångan pressar kolvar.",
+      "tts": {
+        "text": "Den heta ångan pressar kolvar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Kolvarna vrider hjulen.",
+      "text_markdown": "Kolvarna vrider hjulen.",
+      "tts": {
+        "text": "Kolvarna vrider hjulen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Hjulen rullar på rälsen.",
+      "text_markdown": "Hjulen rullar på rälsen.",
+      "tts": {
+        "text": "Hjulen rullar på rälsen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Berättelsen börjar i England.",
+      "text_markdown": "Berättelsen börjar i England.",
+      "tts": {
+        "text": "Berättelsen börjar i England.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "År 1825 öppnade den första offentliga järnvägen.",
+      "text_markdown": "År 1825 öppnade den första offentliga järnvägen.",
+      "tts": {
+        "text": "År artonhundra tjugofem öppnade den första offentliga järnvägen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den kallades Stockton and Darlington Railway.",
+      "text_markdown": "Den kallades Stockton and Darlington Railway.",
+      "tts": {
+        "text": "Den kallades Ståckton änd Darlington Reilwej.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den fraktade kol från en gruva till floden.",
+      "text_markdown": "Den fraktade kol från en gruva till floden.",
+      "tts": {
+        "text": "Den fraktade kol från en gruva till floden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En man som hette George Stephenson byggde loken.",
+      "text_markdown": "En man som hette George Stephenson byggde loken.",
+      "tts": {
+        "text": "En man som hette Djordj Stevenson byggde loken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Folk kallade honom järnvägens fader.",
+      "text_markdown": "Folk kallade honom järnvägens fader.",
+      "tts": {
+        "text": "Folk kallade honom järnvägens fader.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "År 1829 byggde hans son Robert Stephenson ett berömt lok som kallades Rocket.",
+      "text_markdown": "År 1829 byggde hans son Robert Stephenson ett berömt lok som kallades Rocket.",
+      "tts": {
+        "text": "År artonhundra tjugonio byggde hans son Robbert Stevenson ett berömt lok som kallades Råcket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det vann en tävling om snabbaste tåget.",
+      "text_markdown": "Det vann en tävling om snabbaste tåget.",
+      "tts": {
+        "text": "Det vann en tävling om snabbaste tåget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Rocket kunde köra nästan trettio miles i timmen.",
+      "text_markdown": "Rocket kunde köra nästan trettio miles i timmen.",
+      "tts": {
+        "text": "Råcket kunde köra nästan trettio majls i timmen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det var snabbare än någon häst.",
+      "text_markdown": "Det var snabbare än någon häst.",
+      "tts": {
+        "text": "Det var snabbare än någon häst.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Kapitel 1 — Det första ångtåget",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tågets tidsålder hade börjat.",
+      "text_markdown": "Tågets tidsålder hade börjat.",
+      "tts": {
+        "text": "Tågets tidsålder hade börjat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-028",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 2 — Järnvägen breder ut sig",
+      "text_markdown": "Kapitel 2 — Järnvägen breder ut sig"
+    },
+    {
+      "id": "ch02-029",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Efter Rocket spreds järnvägarna snabbt.",
+      "text_markdown": "Efter Rocket spreds järnvägarna snabbt.",
+      "tts": {
+        "text": "Efter Råcket spreds järnvägarna snabbt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-030",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Storbritannien lade tusentals miles järnvägsspår.",
+      "text_markdown": "Storbritannien lade tusentals miles järnvägsspår.",
+      "tts": {
+        "text": "Storbritannien lade tusentals majls järnvägsspår.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-031",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sedan följde resten av världen efter.",
+      "text_markdown": "Sedan följde resten av världen efter.",
+      "tts": {
+        "text": "Sedan följde resten av världen efter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-032",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "År 1830 öppnade den första stora amerikanska järnvägen.",
+      "text_markdown": "År 1830 öppnade den första stora amerikanska järnvägen.",
+      "tts": {
+        "text": "År artonhundra trettio öppnade den första stora amerikanska järnvägen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-033",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kallades Baltimore and Ohio.",
+      "text_markdown": "Den kallades Baltimore and Ohio.",
+      "tts": {
+        "text": "Den kallades Båltimor änd Ohajo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-034",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p13",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den band ihop staden Baltimore med Ohiofloden.",
+      "text_markdown": "Den band ihop staden Baltimore med Ohiofloden.",
+      "tts": {
+        "text": "Den band ihop staden Baltimore med Ohajo floden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-035",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Frankrike öppnade den första järnvägen 1832.",
+      "text_markdown": "I Frankrike öppnade den första järnvägen 1832.",
+      "tts": {
+        "text": "I Frankrike öppnade den första järnvägen artonhundra trettiotvå.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-036",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den fraktade kol, precis som den brittiska linjen.",
+      "text_markdown": "Den fraktade kol, precis som den brittiska linjen.",
+      "tts": {
+        "text": "Den fraktade kol, precis som den brittiska linjen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-037",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Tyskland öppnade den första långa järnvägen 1839.",
+      "text_markdown": "I Tyskland öppnade den första långa järnvägen 1839.",
+      "tts": {
+        "text": "I Tyskland öppnade den första långa järnvägen artonhundra trettionio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-038",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den gick mellan två städer, Leipzig och Dresden.",
+      "text_markdown": "Den gick mellan två städer, Leipzig och Dresden.",
+      "tts": {
+        "text": "Den gick mellan två städer, Lajptsig och Dresden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-039",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ryssland byggde sin första järnväg 1837.",
+      "text_markdown": "Ryssland byggde sin första järnväg 1837.",
+      "tts": {
+        "text": "Ryssland byggde sin första järnväg artonhundra trettiosju.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-040",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Linjen gick från Sankt Petersburg till en ort i närheten.",
+      "text_markdown": "Linjen gick från Sankt Petersburg till en ort i närheten.",
+      "tts": {
+        "text": "Linjen gick från Sankt Petersburg till en ort i närheten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-041",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Att bygga en järnväg var hårt arbete.",
+      "text_markdown": "Att bygga en järnväg var hårt arbete.",
+      "tts": {
+        "text": "Att bygga en järnväg var hårt arbete.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Män grävde tunnlar genom berg.",
+      "text_markdown": "Män grävde tunnlar genom berg.",
+      "tts": {
+        "text": "Män grävde tunnlar genom berg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De byggde broar över floder.",
+      "text_markdown": "De byggde broar över floder.",
+      "tts": {
+        "text": "De byggde broar över floder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De lade varje skena för hand.",
+      "text_markdown": "De lade varje skena för hand.",
+      "tts": {
+        "text": "De lade varje skena för hand.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Städer växte fram längs linjerna.",
+      "text_markdown": "Städer växte fram längs linjerna.",
+      "tts": {
+        "text": "Städer växte fram längs linjerna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En liten by med en station kunde bli en stad.",
+      "text_markdown": "En liten by med en station kunde bli en stad.",
+      "tts": {
+        "text": "En liten by med en station kunde bli en stad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tåget förde dit människor.",
+      "text_markdown": "Tåget förde dit människor.",
+      "tts": {
+        "text": "Tåget förde dit människor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p18",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tåget förde dit varor.",
+      "text_markdown": "Tåget förde dit varor.",
+      "tts": {
+        "text": "Tåget förde dit varor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Kapitel 2 — Järnvägen breder ut sig",
+      "paragraph_id": "p18",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Tåget förde världen lite närmare.",
+      "text_markdown": "Tåget förde världen lite närmare.",
+      "tts": {
+        "text": "Tåget förde världen lite närmare.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-050",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 3 — De stora linjerna",
+      "text_markdown": "Kapitel 3 — De stora linjerna"
+    },
+    {
+      "id": "ch03-051",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa järnvägar är korta.",
+      "text_markdown": "Vissa järnvägar är korta.",
+      "tts": {
+        "text": "Vissa järnvägar är korta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-052",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vissa är mycket långa.",
+      "text_markdown": "Vissa är mycket långa.",
+      "tts": {
+        "text": "Vissa är mycket långa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-053",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De längsta linjerna korsade hela kontinenter.",
+      "text_markdown": "De längsta linjerna korsade hela kontinenter.",
+      "tts": {
+        "text": "De längsta linjerna korsade hela kontinenter.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-054",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I USA byggde två företag en järnväg tvärs över landet.",
+      "text_markdown": "I USA byggde två företag en järnväg tvärs över landet.",
+      "tts": {
+        "text": "I USA byggde två företag en järnväg tvärs över landet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-055",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det ena började i Kalifornien och arbetade österut.",
+      "text_markdown": "Det ena började i Kalifornien och arbetade österut.",
+      "tts": {
+        "text": "Det ena började i Kalifornien och arbetade österut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-056",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det andra började i Nebraska och arbetade västerut.",
+      "text_markdown": "Det andra började i Nebraska och arbetade västerut.",
+      "tts": {
+        "text": "Det andra började i Nebraska och arbetade västerut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-057",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De möttes på en plats som kallades Promontory Summit, i Utah.",
+      "text_markdown": "De möttes på en plats som kallades Promontory Summit, i Utah.",
+      "tts": {
+        "text": "De möttes på en plats som kallades Pramontori Sammit, i Jutah.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-058",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Detta var år 1869.",
+      "text_markdown": "Detta var år 1869.",
+      "tts": {
+        "text": "Detta var år artonhundra sextionio.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-059",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den sista spiken var gjord av guld.",
+      "text_markdown": "Den sista spiken var gjord av guld.",
+      "tts": {
+        "text": "Den sista spiken var gjord av guld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-060",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Folk kallade den för den gyllene spiken.",
+      "text_markdown": "Folk kallade den för den gyllene spiken.",
+      "tts": {
+        "text": "Folk kallade den för den gyllene spiken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-061",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Linjen kallades den transkontinentala järnvägen.",
+      "text_markdown": "Linjen kallades den transkontinentala järnvägen.",
+      "tts": {
+        "text": "Linjen kallades den transkontinentala järnvägen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-062",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nu kunde man resa med tåg från den ena oceanen till den andra på ungefär en vecka.",
+      "text_markdown": "Nu kunde man resa med tåg från den ena oceanen till den andra på ungefär en vecka.",
+      "tts": {
+        "text": "Nu kunde man resa med tåg från den ena oceanen till den andra på ungefär en vecka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-063",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ryssland byggde en ännu längre linje.",
+      "text_markdown": "Ryssland byggde en ännu längre linje.",
+      "tts": {
+        "text": "Ryssland byggde en ännu längre linje.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-064",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den kallas den transsibiriska järnvägen.",
+      "text_markdown": "Den kallas den transsibiriska järnvägen.",
+      "tts": {
+        "text": "Den kallas den transsibiriska järnvägen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den går från Moskva i väster till Vladivostok i öster.",
+      "text_markdown": "Den går från Moskva i väster till Vladivostok i öster.",
+      "tts": {
+        "text": "Den går från Moskva i väster till Vladivostok i öster.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Linjen blev färdig 1916.",
+      "text_markdown": "Linjen blev färdig 1916.",
+      "tts": {
+        "text": "Linjen blev färdig nittonhundra sexton.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p23",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den är mer än niotusen kilometer lång.",
+      "text_markdown": "Den är mer än niotusen kilometer lång.",
+      "tts": {
+        "text": "Den är mer än niotusen kilometer lång.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p23",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "En hel resa tar ungefär sju dagar.",
+      "text_markdown": "En hel resa tar ungefär sju dagar.",
+      "tts": {
+        "text": "En hel resa tar ungefär sju dagar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Kapitel 3 — De stora linjerna",
+      "paragraph_id": "p23",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Den är fortfarande världens längsta järnväg.",
+      "text_markdown": "Den är fortfarande världens längsta järnväg.",
+      "tts": {
+        "text": "Den är fortfarande världens längsta järnväg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-070",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 4 — Ånga, diesel, el",
+      "text_markdown": "Kapitel 4 — Ånga, diesel, el"
+    },
+    {
+      "id": "ch04-071",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I ungefär hundra år var nästan varje tåg ett ångtåg.",
+      "text_markdown": "I ungefär hundra år var nästan varje tåg ett ångtåg.",
+      "tts": {
+        "text": "I ungefär hundra år var nästan varje tåg ett ångtåg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-072",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ånglok var stora och bullriga.",
+      "text_markdown": "Ånglok var stora och bullriga.",
+      "tts": {
+        "text": "Ånglok var stora och bullriga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-073",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De eldade med kol.",
+      "text_markdown": "De eldade med kol.",
+      "tts": {
+        "text": "De eldade med kol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-074",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "De skickade tjock rök upp i himlen.",
+      "text_markdown": "De skickade tjock rök upp i himlen.",
+      "tts": {
+        "text": "De skickade tjock rök upp i himlen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-075",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan kom dieselloket.",
+      "text_markdown": "Sedan kom dieselloket.",
+      "tts": {
+        "text": "Sedan kom dieselloket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-076",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En dieselmotor bränner olja i stället för kol.",
+      "text_markdown": "En dieselmotor bränner olja i stället för kol.",
+      "tts": {
+        "text": "En dieselmotor bränner olja i stället för kol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-077",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den är mindre och renare.",
+      "text_markdown": "Den är mindre och renare.",
+      "tts": {
+        "text": "Den är mindre och renare.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-078",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Den behöver ingen eld och ingen tank med vatten.",
+      "text_markdown": "Den behöver ingen eld och ingen tank med vatten.",
+      "tts": {
+        "text": "Den behöver ingen eld och ingen tank med vatten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-079",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dieseltåg blev vanliga på nittonhundrafyrtiotalet och nittonhundrafemtiotalet.",
+      "text_markdown": "Dieseltåg blev vanliga på nittonhundrafyrtiotalet och nittonhundrafemtiotalet.",
+      "tts": {
+        "text": "Dieseltåg blev vanliga på nittonhundrafyrtiotalet och nittonhundrafemtiotalet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-080",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sakta men säkert pensionerades de stora ångloken.",
+      "text_markdown": "Sakta men säkert pensionerades de stora ångloken.",
+      "tts": {
+        "text": "Sakta men säkert pensionerades de stora ångloken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-081",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p27",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Några få finns fortfarande kvar på museer och turistlinjer.",
+      "text_markdown": "Några få finns fortfarande kvar på museer och turistlinjer.",
+      "tts": {
+        "text": "Några få finns fortfarande kvar på museer och turistlinjer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-082",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nästa steg var eltåget.",
+      "text_markdown": "Nästa steg var eltåget.",
+      "tts": {
+        "text": "Nästa steg var eltåget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-083",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ett eltåg har ingen motor som bränner bränsle.",
+      "text_markdown": "Ett eltåg har ingen motor som bränner bränsle.",
+      "tts": {
+        "text": "Ett eltåg har ingen motor som bränner bränsle.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-084",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det får kraft från en ledning ovanför spåret eller från en tredje skena bredvid spåret.",
+      "text_markdown": "Det får kraft från en ledning ovanför spåret eller från en tredje skena bredvid spåret.",
+      "tts": {
+        "text": "Det får kraft från en ledning ovanför spåret eller från en tredje skena bredvid spåret.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-085",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Eltåg är tysta och mycket rena.",
+      "text_markdown": "Eltåg är tysta och mycket rena.",
+      "tts": {
+        "text": "Eltåg är tysta och mycket rena.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-086",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De är också mycket starka.",
+      "text_markdown": "De är också mycket starka.",
+      "tts": {
+        "text": "De är också mycket starka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-087",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De flesta tåg i städer och de flesta snabba tåg i dag är elektriska.",
+      "text_markdown": "De flesta tåg i städer och de flesta snabba tåg i dag är elektriska.",
+      "tts": {
+        "text": "De flesta tåg i städer och de flesta snabba tåg i dag är elektriska.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-088",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ånga, diesel, el.",
+      "text_markdown": "Ånga, diesel, el.",
+      "tts": {
+        "text": "Ånga, diesel, el.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Kapitel 4 — Ånga, diesel, el",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tre motorer, tre tidsåldrar.",
+      "text_markdown": "Tre motorer, tre tidsåldrar.",
+      "tts": {
+        "text": "Tre motorer, tre tidsåldrar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-090",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "text_markdown": "Kapitel 5 — Snabbtåg och jakten på fart"
+    },
+    {
+      "id": "ch05-091",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "År 1964 öppnade Japan en helt ny järnväg.",
+      "text_markdown": "År 1964 öppnade Japan en helt ny järnväg.",
+      "tts": {
+        "text": "År nittonhundra sextiofyra öppnade Japan en helt ny järnväg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den gick från Tokyo till Osaka.",
+      "text_markdown": "Den gick från Tokyo till Osaka.",
+      "tts": {
+        "text": "Den gick från Tokyo till Osaka.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-093",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tågen såg ut som långa vita kulor.",
+      "text_markdown": "Tågen såg ut som långa vita kulor.",
+      "tts": {
+        "text": "Tågen såg ut som långa vita kulor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-094",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Folk kallade dem kultåg.",
+      "text_markdown": "Folk kallade dem kultåg.",
+      "tts": {
+        "text": "Folk kallade dem kultåg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-095",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det japanska namnet är Shinkansen.",
+      "text_markdown": "Det japanska namnet är Shinkansen.",
+      "tts": {
+        "text": "Det japanska namnet är Sjinkansen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-096",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "De första kultågen körde i hundratrettio miles i timmen.",
+      "text_markdown": "De första kultågen körde i hundratrettio miles i timmen.",
+      "tts": {
+        "text": "De första kultågen körde i hundratrettio majls i timmen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-097",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det var mycket snabbt för ett tåg år 1964.",
+      "text_markdown": "Det var mycket snabbt för ett tåg år 1964.",
+      "tts": {
+        "text": "Det var mycket snabbt för ett tåg år nittonhundra sextiofyra.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-098",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Linjen öppnade precis i tid till de olympiska spelen i Tokyo.",
+      "text_markdown": "Linjen öppnade precis i tid till de olympiska spelen i Tokyo.",
+      "tts": {
+        "text": "Linjen öppnade precis i tid till de olympiska spelen i Tokyo.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-099",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andra länder följde efter.",
+      "text_markdown": "Andra länder följde efter.",
+      "tts": {
+        "text": "Andra länder följde efter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-100",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Frankrike öppnade sin höghastighetslinje 1981.",
+      "text_markdown": "Frankrike öppnade sin höghastighetslinje 1981.",
+      "tts": {
+        "text": "Frankrike öppnade sin höghastighetslinje nittonhundra åttioett.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-101",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Tågen kallas TGV.",
+      "text_markdown": "Tågen kallas TGV.",
+      "tts": {
+        "text": "Tågen kallas te ge ve.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-102",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tyskland följde efter med ICE.",
+      "text_markdown": "Tyskland följde efter med ICE.",
+      "tts": {
+        "text": "Tyskland följde efter med i se e.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-103",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Italien, Spanien och Korea byggde sina egna höghastighetslinjer.",
+      "text_markdown": "Italien, Spanien och Korea byggde sina egna höghastighetslinjer.",
+      "tts": {
+        "text": "Italien, Spanien och Korea byggde sina egna höghastighetslinjer.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-104",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Kina började sist, men byggde snabbt.",
+      "text_markdown": "Kina började sist, men byggde snabbt.",
+      "tts": {
+        "text": "Kina började sist, men byggde snabbt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-105",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "I dag har Kina världens största höghastighetsnät.",
+      "text_markdown": "I dag har Kina världens största höghastighetsnät.",
+      "tts": {
+        "text": "I dag har Kina världens största höghastighetsnät.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-106",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det finns tiotusentals kilometer spår.",
+      "text_markdown": "Det finns tiotusentals kilometer spår.",
+      "tts": {
+        "text": "Det finns tiotusentals kilometer spår.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-107",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Moderna snabbtåg kan hålla mer än tvåhundra miles i timmen.",
+      "text_markdown": "Moderna snabbtåg kan hålla mer än tvåhundra miles i timmen.",
+      "tts": {
+        "text": "Moderna snabbtåg kan hålla mer än tvåhundra majls i timmen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-108",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De går mjukt, tyst och nästan alltid i tid.",
+      "text_markdown": "De går mjukt, tyst och nästan alltid i tid.",
+      "tts": {
+        "text": "De går mjukt, tyst och nästan alltid i tid.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-109",
+      "part": 0,
+      "chapter": 5,
+      "title": "Kapitel 5 — Snabbtåg och jakten på fart",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "På många resor är de snabbare än att flyga.",
+      "text_markdown": "På många resor är de snabbare än att flyga.",
+      "tts": {
+        "text": "På många resor är de snabbare än att flyga.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-110",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 6 — Många sorters tåg",
+      "text_markdown": "Kapitel 6 — Många sorters tåg"
+    },
+    {
+      "id": "ch06-111",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alla tåg är inte likadana.",
+      "text_markdown": "Alla tåg är inte likadana.",
+      "tts": {
+        "text": "Alla tåg är inte likadana.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det finns många sorters tåg.",
+      "text_markdown": "Det finns många sorters tåg.",
+      "tts": {
+        "text": "Det finns många sorters tåg.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett persontåg fraktar människor.",
+      "text_markdown": "Ett persontåg fraktar människor.",
+      "tts": {
+        "text": "Ett persontåg fraktar människor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det har säten, fönster och ibland en restaurangvagn eller en sovvagn.",
+      "text_markdown": "Det har säten, fönster och ibland en restaurangvagn eller en sovvagn.",
+      "tts": {
+        "text": "Det har säten, fönster och ibland en restaurangvagn eller en sovvagn.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-115",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett godståg fraktar varor.",
+      "text_markdown": "Ett godståg fraktar varor.",
+      "tts": {
+        "text": "Ett godståg fraktar varor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vagnarna kallas godsvagnar.",
+      "text_markdown": "Vagnarna kallas godsvagnar.",
+      "tts": {
+        "text": "Vagnarna kallas godsvagnar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vissa fraktar spannmål.",
+      "text_markdown": "Vissa fraktar spannmål.",
+      "tts": {
+        "text": "Vissa fraktar spannmål.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Vissa fraktar olja.",
+      "text_markdown": "Vissa fraktar olja.",
+      "tts": {
+        "text": "Vissa fraktar olja.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Vissa fraktar hela fraktcontainrar staplade två på höjden.",
+      "text_markdown": "Vissa fraktar hela fraktcontainrar staplade två på höjden.",
+      "tts": {
+        "text": "Vissa fraktar hela fraktcontainrar staplade två på höjden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En tunnelbana är ett tåg under jorden i en stad.",
+      "text_markdown": "En tunnelbana är ett tåg under jorden i en stad.",
+      "tts": {
+        "text": "En tunnelbana är ett tåg under jorden i en stad.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-121",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den första tunnelbanan öppnade i London 1863.",
+      "text_markdown": "Den första tunnelbanan öppnade i London 1863.",
+      "tts": {
+        "text": "Den första tunnelbanan öppnade i London artonhundra sextiotre.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-122",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I dag har stora städer enorma tunnelbanenät under sina gator.",
+      "text_markdown": "I dag har stora städer enorma tunnelbanenät under sina gator.",
+      "tts": {
+        "text": "I dag har stora städer enorma tunnelbanenät under sina gator.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-123",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En spårvagn eller snabbspårväg är ett litet tåg som går på stadens gator.",
+      "text_markdown": "En spårvagn eller snabbspårväg är ett litet tåg som går på stadens gator.",
+      "tts": {
+        "text": "En spårvagn eller snabbspårväg är ett litet tåg som går på stadens gator.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-124",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den delar ofta väg med bilar och bussar.",
+      "text_markdown": "Den delar ofta väg med bilar och bussar.",
+      "tts": {
+        "text": "Den delar ofta väg med bilar och bussar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett bergståg klättrar uppför branta backar.",
+      "text_markdown": "Ett bergståg klättrar uppför branta backar.",
+      "tts": {
+        "text": "Ett bergståg klättrar uppför branta backar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-126",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vissa har en särskild tandad räls i mitten, som kallas kuggstång.",
+      "text_markdown": "Vissa har en särskild tandad räls i mitten, som kallas kuggstång.",
+      "tts": {
+        "text": "Vissa har en särskild tandad räls i mitten, som kallas kuggstång.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-127",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Loket griper tag i kuggstången för att köra upp och komma ner säkert.",
+      "text_markdown": "Loket griper tag i kuggstången för att köra upp och komma ner säkert.",
+      "tts": {
+        "text": "Loket griper tag i kuggstången för att köra upp och komma ner säkert.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-128",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vissa tåg är också turisttåg.",
+      "text_markdown": "Vissa tåg är också turisttåg.",
+      "tts": {
+        "text": "Vissa tåg är också turisttåg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-129",
+      "part": 0,
+      "chapter": 6,
+      "title": "Kapitel 6 — Många sorters tåg",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De går genom skogar och berg, bara för utsiktens skull.",
+      "text_markdown": "De går genom skogar och berg, bara för utsiktens skull.",
+      "tts": {
+        "text": "De går genom skogar och berg, bara för utsiktens skull.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-130",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 7 — Framtiden på rälsen",
+      "text_markdown": "Kapitel 7 — Framtiden på rälsen"
+    },
+    {
+      "id": "ch07-131",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tågets historia är inte slut.",
+      "text_markdown": "Tågets historia är inte slut.",
+      "tts": {
+        "text": "Tågets historia är inte slut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-132",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nya sorters tåg byggs just nu.",
+      "text_markdown": "Nya sorters tåg byggs just nu.",
+      "tts": {
+        "text": "Nya sorters tåg byggs just nu.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det mest fantastiska är maglevtåget.",
+      "text_markdown": "Det mest fantastiska är maglevtåget.",
+      "tts": {
+        "text": "Det mest fantastiska är magglev tåget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-134",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ordet maglev är en förkortning av magnetisk levitation.",
+      "text_markdown": "Ordet maglev är en förkortning av magnetisk levitation.",
+      "tts": {
+        "text": "Ordet magglev är en förkortning av magnetisk levitation.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-135",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ett maglevtåg vidrör inte sitt spår.",
+      "text_markdown": "Ett maglevtåg vidrör inte sitt spår.",
+      "tts": {
+        "text": "Ett magglev tåg vidrör inte sitt spår.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-136",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det svävar på en kudde av magneter.",
+      "text_markdown": "Det svävar på en kudde av magneter.",
+      "tts": {
+        "text": "Det svävar på en kudde av magneter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p47",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Inga hjul snurrar.",
+      "text_markdown": "Inga hjul snurrar.",
+      "tts": {
+        "text": "Inga hjul snurrar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p47",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Det finns ingen friktion.",
+      "text_markdown": "Det finns ingen friktion.",
+      "tts": {
+        "text": "Det finns ingen friktion.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-139",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "År 2004 öppnade en maglevlinje i Shanghai i Kina.",
+      "text_markdown": "År 2004 öppnade en maglevlinje i Shanghai i Kina.",
+      "tts": {
+        "text": "År tvåtusen fyra öppnade en magglev linje i Shanghai i Kina.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-140",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Tåget kan nå mer än tvåhundrafemtio miles i timmen.",
+      "text_markdown": "Tåget kan nå mer än tvåhundrafemtio miles i timmen.",
+      "tts": {
+        "text": "Tåget kan nå mer än tvåhundrafemtio majls i timmen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I Japan har ett maglevtåg för provkörning gått snabbare än trehundrasjuttio miles i timmen.",
+      "text_markdown": "I Japan har ett maglevtåg för provkörning gått snabbare än trehundrasjuttio miles i timmen.",
+      "tts": {
+        "text": "I Japan har ett magglev tåg för provkörning gått snabbare än trehundrasjuttio majls i timmen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-142",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andra ingenjörer arbetar med vätgaståget.",
+      "text_markdown": "Andra ingenjörer arbetar med vätgaståget.",
+      "tts": {
+        "text": "Andra ingenjörer arbetar med vätgaståget.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-143",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ett vätgaståg skapar elektricitet i en liten bränslecell.",
+      "text_markdown": "Ett vätgaståg skapar elektricitet i en liten bränslecell.",
+      "tts": {
+        "text": "Ett vätgaståg skapar elektricitet i en liten bränslecell.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-144",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det enda som kommer ut ur motorn är vattenånga.",
+      "text_markdown": "Det enda som kommer ut ur motorn är vattenånga.",
+      "tts": {
+        "text": "Det enda som kommer ut ur motorn är vattenånga.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-145",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ingen rök.",
+      "text_markdown": "Ingen rök.",
+      "tts": {
+        "text": "Ingen rök.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-146",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Inget kol.",
+      "text_markdown": "Inget kol.",
+      "tts": {
+        "text": "Inget kol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-147",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "De första vätgastågen började gå i Tyskland 2018.",
+      "text_markdown": "De första vätgastågen började gå i Tyskland 2018.",
+      "tts": {
+        "text": "De första vätgastågen började gå i Tyskland tvåtusen arton.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-148",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tåg är mycket gamla.",
+      "text_markdown": "Tåg är mycket gamla.",
+      "tts": {
+        "text": "Tåg är mycket gamla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-149",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "De är också mycket nya.",
+      "text_markdown": "De är också mycket nya.",
+      "tts": {
+        "text": "De är också mycket nya.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-150",
+      "part": 0,
+      "chapter": 7,
+      "title": "Kapitel 7 — Framtiden på rälsen",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Två hundra år efter Rocket är rälsen fortfarande framtiden.",
+      "text_markdown": "Två hundra år efter Rocket är rälsen fortfarande framtiden.",
+      "tts": {
+        "text": "Två hundra år efter Råcket är rälsen fortfarande framtiden.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-151",
+      "part": 0,
+      "chapter": 7,
+      "title": "Järnvägen fortsätter",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Järnvägen fortsätter",
+      "text_markdown": "Järnvägen fortsätter"
+    },
+    {
+      "id": "ch07-152",
+      "part": 0,
+      "chapter": 7,
+      "title": "Järnvägen fortsätter",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Från Rocket till maglevtåget har tåget fört världen framåt i nästan två hundra år.",
+      "text_markdown": "Från Rocket till maglevtåget har tåget fört världen framåt i nästan två hundra år.",
+      "tts": {
+        "text": "Från Råcket till magglev tåget har tåget fört världen framåt i nästan två hundra år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-153",
+      "part": 0,
+      "chapter": 7,
+      "title": "Järnvägen fortsätter",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Nya linjer läggs just nu i öknar, i berg och under städer.",
+      "text_markdown": "Nya linjer läggs just nu i öknar, i berg och under städer.",
+      "tts": {
+        "text": "Nya linjer läggs just nu i öknar, i berg och under städer.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-154",
+      "part": 0,
+      "chapter": 7,
+      "title": "Järnvägen fortsätter",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nästa station ligger alltid någonstans längre fram.",
+      "text_markdown": "Nästa station ligger alltid någonstans längre fram.",
+      "tts": {
+        "text": "Nästa station ligger alltid någonstans längre fram.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

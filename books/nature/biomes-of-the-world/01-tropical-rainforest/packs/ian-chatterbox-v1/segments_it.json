@@ -1,0 +1,2566 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_biomes_tropical_rainforest",
+  "total_segments": 173,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "chapter": 1,
+      "title": "La foresta pluviale tropicale",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La foresta pluviale tropicale",
+      "text_markdown": "La foresta pluviale tropicale"
+    },
+    {
+      "id": "ch02-002",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Dove crescono le foreste pluviali",
+      "text_markdown": "Dove crescono le foreste pluviali"
+    },
+    {
+      "id": "ch02-003",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Benvenuto nella foresta pluviale tropicale.",
+      "text_markdown": "Benvenuto nella foresta pluviale tropicale.",
+      "tts": {
+        "text": "Benvenuto nella foresta pluviale tropicale.",
+        "pause_after_ms": 700,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-004",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo è uno dei grandi biomi del mondo.",
+      "text_markdown": "Questo è uno dei grandi biomi del mondo.",
+      "tts": {
+        "text": "Questo è uno dei grandi biomi del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-005",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un bioma è una parte della Terra con il suo tipo di clima, di piante e di animali.",
+      "text_markdown": "Un bioma è una parte della Terra con il suo tipo di clima, di piante e di animali.",
+      "tts": {
+        "text": "Un bioma è una parte della Terra con il suo tipo di clima, di piante e di animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-006",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta pluviale tropicale è calda tutto l'anno.",
+      "text_markdown": "La foresta pluviale tropicale è calda tutto l'anno.",
+      "tts": {
+        "text": "La foresta pluviale tropicale è calda tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-007",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "È umida tutto l'anno.",
+      "text_markdown": "È umida tutto l'anno.",
+      "tts": {
+        "text": "È umida tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-008",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "È piena di vita.",
+      "text_markdown": "È piena di vita.",
+      "tts": {
+        "text": "È piena di vita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-009",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte delle foreste pluviali cresce vicino all'equatore.",
+      "text_markdown": "La maggior parte delle foreste pluviali cresce vicino all'equatore.",
+      "tts": {
+        "text": "La maggior parte delle foreste pluviali cresce vicino all'equatore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-010",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'equatore è la linea che corre intorno al centro della Terra.",
+      "text_markdown": "L'equatore è la linea che corre intorno al centro della Terra.",
+      "tts": {
+        "text": "L'equatore è la linea che corre intorno al centro della Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch02-011",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vicino all'equatore, il sole è forte ogni giorno.",
+      "text_markdown": "Vicino all'equatore, il sole è forte ogni giorno.",
+      "tts": {
+        "text": "Vicino all'equatore, il sole è forte ogni giorno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-012",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta pluviale più grande del mondo è l'Amazzonia, in America del Sud.",
+      "text_markdown": "La foresta pluviale più grande del mondo è l'Amazzonia, in America del Sud.",
+      "tts": {
+        "text": "La foresta pluviale più grande del mondo è l'Amazzonia, in America del Sud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-013",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono grandi foreste pluviali anche in Africa, vicino al fiume Congo.",
+      "text_markdown": "Ci sono grandi foreste pluviali anche in Africa, vicino al fiume Congo.",
+      "tts": {
+        "text": "Ci sono grandi foreste pluviali anche in Africa, vicino al fiume Congo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-014",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono foreste pluviali nel Sud-est asiatico, su molte isole.",
+      "text_markdown": "Ci sono foreste pluviali nel Sud-est asiatico, su molte isole.",
+      "tts": {
+        "text": "Ci sono foreste pluviali nel Sud est asiatico, su molte isole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-015",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono foreste pluviali più piccole in America centrale e su isole del Pacifico.",
+      "text_markdown": "Ci sono foreste pluviali più piccole in America centrale e su isole del Pacifico.",
+      "tts": {
+        "text": "Ci sono foreste pluviali più piccole in America centrale e su isole del Pacifico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-016",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ognuna di queste foreste è cresciuta da sola, lontano dalle altre.",
+      "text_markdown": "Ognuna di queste foreste è cresciuta da sola, lontano dalle altre.",
+      "tts": {
+        "text": "Ognuna di queste foreste è cresciuta da sola, lontano dalle altre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-017",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Così le piante e gli animali sono diversi in ogni parte del mondo.",
+      "text_markdown": "Così le piante e gli animali sono diversi in ogni parte del mondo.",
+      "tts": {
+        "text": "Così le piante e gli animali sono diversi in ogni parte del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-018",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una scimmia in Amazzonia non è uguale a una scimmia in Africa o in Asia.",
+      "text_markdown": "Una scimmia in Amazzonia non è uguale a una scimmia in Africa o in Asia.",
+      "tts": {
+        "text": "Una scimmia in Amazzonia non è uguale a una scimmia in Africa o in Asia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-019",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma tutte fanno parte dello stesso bioma.",
+      "text_markdown": "Ma tutte fanno parte dello stesso bioma.",
+      "tts": {
+        "text": "Ma tutte fanno parte dello stesso bioma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-020",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando ti trovi dentro una foresta pluviale, l'aria sembra pesante e calda.",
+      "text_markdown": "Quando ti trovi dentro una foresta pluviale, l'aria sembra pesante e calda.",
+      "tts": {
+        "text": "Quando ti trovi dentro una foresta pluviale, l'aria sembra pesante e calda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-021",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La luce è morbida e verde.",
+      "text_markdown": "La luce è morbida e verde.",
+      "tts": {
+        "text": "La luce è morbida e verde.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-022",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi sono così alti che si vede a malapena il cielo.",
+      "text_markdown": "Gli alberi sono così alti che si vede a malapena il cielo.",
+      "tts": {
+        "text": "Gli alberi sono così alti che si vede a malapena il cielo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-023",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senti uccelli e insetti tutto intorno a te.",
+      "text_markdown": "Senti uccelli e insetti tutto intorno a te.",
+      "tts": {
+        "text": "Senti uccelli e insetti tutto intorno a te.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-024",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senti l'acqua che gocciola dalle foglie.",
+      "text_markdown": "Senti l'acqua che gocciola dalle foglie.",
+      "tts": {
+        "text": "Senti l'acqua che gocciola dalle foglie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-025",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ti sembra di stare dentro una stanza viva.",
+      "text_markdown": "Ti sembra di stare dentro una stanza viva.",
+      "tts": {
+        "text": "Ti sembra di stare dentro una stanza viva.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-026",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ecco cos'è la foresta pluviale.",
+      "text_markdown": "Ecco cos'è la foresta pluviale.",
+      "tts": {
+        "text": "Ecco cos'è la foresta pluviale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-027",
+      "chapter": 2,
+      "title": "Dove crescono le foreste pluviali",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mondo intero costruito di alberi e di pioggia.",
+      "text_markdown": "Un mondo intero costruito di alberi e di pioggia.",
+      "tts": {
+        "text": "Un mondo intero costruito di alberi e di pioggia.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-028",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Il clima",
+      "text_markdown": "Il clima"
+    },
+    {
+      "id": "ch03-029",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il clima nella foresta pluviale tropicale è semplice.",
+      "text_markdown": "Il clima nella foresta pluviale tropicale è semplice.",
+      "tts": {
+        "text": "Il clima nella foresta pluviale tropicale è semplice.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-030",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Fa caldo e piove molto.",
+      "text_markdown": "Fa caldo e piove molto.",
+      "tts": {
+        "text": "Fa caldo e piove molto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-031",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La temperatura resta più o meno la stessa tutto l'anno.",
+      "text_markdown": "La temperatura resta più o meno la stessa tutto l'anno.",
+      "tts": {
+        "text": "La temperatura resta più o meno la stessa tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-032",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Non fa freddo in inverno.",
+      "text_markdown": "Non fa freddo in inverno.",
+      "tts": {
+        "text": "Non fa freddo in inverno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-033",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Non fa molto caldo in estate.",
+      "text_markdown": "Non fa molto caldo in estate.",
+      "tts": {
+        "text": "Non fa molto caldo in estate.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-034",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte dei giorni è calda e tranquilla.",
+      "text_markdown": "La maggior parte dei giorni è calda e tranquilla.",
+      "tts": {
+        "text": "La maggior parte dei giorni è calda e tranquilla.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-035",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piove quasi tutti i giorni.",
+      "text_markdown": "Piove quasi tutti i giorni.",
+      "tts": {
+        "text": "Piove quasi tutti i giorni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-036",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alcuni posti cadono più di due metri di pioggia in un anno.",
+      "text_markdown": "In alcuni posti cadono più di due metri di pioggia in un anno.",
+      "tts": {
+        "text": "In alcuni posti cadono più di due metri di pioggia in un anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-037",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "È più pioggia di quanta ne veda gran parte del mondo.",
+      "text_markdown": "È più pioggia di quanta ne veda gran parte del mondo.",
+      "tts": {
+        "text": "È più pioggia di quanta ne veda gran parte del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-038",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La pioggia arriva spesso nel pomeriggio.",
+      "text_markdown": "La pioggia arriva spesso nel pomeriggio.",
+      "tts": {
+        "text": "La pioggia arriva spesso nel pomeriggio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-039",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Grandi nuvole si raccolgono sopra gli alberi.",
+      "text_markdown": "Grandi nuvole si raccolgono sopra gli alberi.",
+      "tts": {
+        "text": "Grandi nuvole si raccolgono sopra gli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-040",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cade un forte acquazzone per un'ora o due.",
+      "text_markdown": "Cade un forte acquazzone per un'ora o due.",
+      "tts": {
+        "text": "Cade un forte acquazzone per un'ora o due.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-041",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Poi il sole torna fuori.",
+      "text_markdown": "Poi il sole torna fuori.",
+      "tts": {
+        "text": "Poi il sole torna fuori.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-042",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le foglie brillano e dal terreno sale il vapore.",
+      "text_markdown": "Le foglie brillano e dal terreno sale il vapore.",
+      "tts": {
+        "text": "Le foglie brillano e dal terreno sale il vapore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-043",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Qui non ci sono quattro stagioni.",
+      "text_markdown": "Qui non ci sono quattro stagioni.",
+      "tts": {
+        "text": "Qui non ci sono quattro stagioni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-044",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "C'è solo un tempo più umido e un tempo più secco.",
+      "text_markdown": "C'è solo un tempo più umido e un tempo più secco.",
+      "tts": {
+        "text": "C'è solo un tempo più umido e un tempo più secco.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch03-045",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche nel tempo più secco piove spesso.",
+      "text_markdown": "Anche nel tempo più secco piove spesso.",
+      "tts": {
+        "text": "Anche nel tempo più secco piove spesso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-046",
+      "chapter": 3,
+      "title": "Il clima",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per le piante e gli animali della foresta pluviale, ogni giorno sembra molto simile.",
+      "text_markdown": "Per le piante e gli animali della foresta pluviale, ogni giorno sembra molto simile.",
+      "tts": {
+        "text": "Per le piante e gli animali della foresta pluviale, ogni giorno sembra molto simile.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-047",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La terra e l'acqua",
+      "text_markdown": "La terra e l'acqua"
+    },
+    {
+      "id": "ch04-048",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il suolo della foresta pluviale è ricco di vita, ma è sottile.",
+      "text_markdown": "Il suolo della foresta pluviale è ricco di vita, ma è sottile.",
+      "tts": {
+        "text": "Il suolo della foresta pluviale è ricco di vita, ma è sottile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch04-049",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quasi tutta la sua ricchezza si trova nei primi centimetri.",
+      "text_markdown": "Quasi tutta la sua ricchezza si trova nei primi centimetri.",
+      "tts": {
+        "text": "Quasi tutta la sua ricchezza si trova nei primi centimetri.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-050",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando una foglia cade, gli insetti e i piccoli esseri viventi la disfano molto in fretta.",
+      "text_markdown": "Quando una foglia cade, gli insetti e i piccoli esseri viventi la disfano molto in fretta.",
+      "tts": {
+        "text": "Quando una foglia cade, gli insetti e i piccoli esseri viventi la disfano molto in fretta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-051",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi riprendono il nutrimento quasi subito.",
+      "text_markdown": "Gli alberi riprendono il nutrimento quasi subito.",
+      "tts": {
+        "text": "Gli alberi riprendono il nutrimento quasi subito.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-052",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Per questo una foresta pluviale tagliata è difficile da far tornare.",
+      "text_markdown": "Per questo una foresta pluviale tagliata è difficile da far tornare.",
+      "tts": {
+        "text": "Per questo una foresta pluviale tagliata è difficile da far tornare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-053",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Senza gli alberi, la pioggia porta via il suolo sottile.",
+      "text_markdown": "Senza gli alberi, la pioggia porta via il suolo sottile.",
+      "tts": {
+        "text": "Senza gli alberi, la pioggia porta via il suolo sottile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-054",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fiumi attraversano ogni foresta pluviale.",
+      "text_markdown": "I fiumi attraversano ogni foresta pluviale.",
+      "tts": {
+        "text": "I fiumi attraversano ogni foresta pluviale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-055",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni fiumi sono enormi.",
+      "text_markdown": "Alcuni fiumi sono enormi.",
+      "tts": {
+        "text": "Alcuni fiumi sono enormi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-056",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il Rio delle Amazzoni porta più acqua di qualsiasi altro fiume del mondo.",
+      "text_markdown": "Il Rio delle Amazzoni porta più acqua di qualsiasi altro fiume del mondo.",
+      "tts": {
+        "text": "Il Rio delle Amazzoni porta più acqua di qualsiasi altro fiume del mondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch04-057",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nel tempo delle piogge, i fiumi si spandono lontano nella foresta.",
+      "text_markdown": "Nel tempo delle piogge, i fiumi si spandono lontano nella foresta.",
+      "tts": {
+        "text": "Nel tempo delle piogge, i fiumi si spandono lontano nella foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch04-058",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi restano nell'acqua per mesi.",
+      "text_markdown": "Gli alberi restano nell'acqua per mesi.",
+      "tts": {
+        "text": "Gli alberi restano nell'acqua per mesi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-059",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pesci nuotano fra i tronchi.",
+      "text_markdown": "I pesci nuotano fra i tronchi.",
+      "tts": {
+        "text": "I pesci nuotano fra i tronchi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-060",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Altri fiumi sono piccoli e limpidi, con pietre sul fondo.",
+      "text_markdown": "Altri fiumi sono piccoli e limpidi, con pietre sul fondo.",
+      "tts": {
+        "text": "Altri fiumi sono piccoli e limpidi, con pietre sul fondo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-061",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta stessa cresce a strati.",
+      "text_markdown": "La foresta stessa cresce a strati.",
+      "tts": {
+        "text": "La foresta stessa cresce a strati.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-062",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alto ci sono gli alberi più alti, con le loro chiome aperte al sole.",
+      "text_markdown": "In alto ci sono gli alberi più alti, con le loro chiome aperte al sole.",
+      "tts": {
+        "text": "In alto ci sono gli alberi più alti, con le loro chiome aperte al sole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-063",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sotto di loro c'è una fitta volta verde di foglie.",
+      "text_markdown": "Sotto di loro c'è una fitta volta verde di foglie.",
+      "tts": {
+        "text": "Sotto di loro c'è una fitta volta verde di foglie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-064",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sotto questa volta, l'aria è ombrosa e ferma.",
+      "text_markdown": "Sotto questa volta, l'aria è ombrosa e ferma.",
+      "tts": {
+        "text": "Sotto questa volta, l'aria è ombrosa e ferma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-065",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Giù a terra, passa solo un poco di luce.",
+      "text_markdown": "Giù a terra, passa solo un poco di luce.",
+      "tts": {
+        "text": "Giù a terra, passa solo un poco di luce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-066",
+      "chapter": 4,
+      "title": "La terra e l'acqua",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogni strato è una casa diversa per gli animali e le piante del bioma.",
+      "text_markdown": "Ogni strato è una casa diversa per gli animali e le piante del bioma.",
+      "tts": {
+        "text": "Ogni strato è una casa diversa per gli animali e le piante del bioma.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-067",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le piante",
+      "text_markdown": "Le piante"
+    },
+    {
+      "id": "ch05-068",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta pluviale tropicale ha più tipi di piante di qualsiasi altro bioma sulla terra.",
+      "text_markdown": "La foresta pluviale tropicale ha più tipi di piante di qualsiasi altro bioma sulla terra.",
+      "tts": {
+        "text": "La foresta pluviale tropicale ha più tipi di piante di qualsiasi altro bioma sulla terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-069",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi ne sono il cuore.",
+      "text_markdown": "Gli alberi ne sono il cuore.",
+      "tts": {
+        "text": "Gli alberi ne sono il cuore.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-070",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni alberi crescono molto alti, cercando il sole.",
+      "text_markdown": "Alcuni alberi crescono molto alti, cercando il sole.",
+      "tts": {
+        "text": "Alcuni alberi crescono molto alti, cercando il sole.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-071",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I loro tronchi sono dritti e lisci.",
+      "text_markdown": "I loro tronchi sono dritti e lisci.",
+      "tts": {
+        "text": "I loro tronchi sono dritti e lisci.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-072",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le loro radici si allargano in basso, come muri, per tenerli in piedi nel suolo sottile.",
+      "text_markdown": "Le loro radici si allargano in basso, come muri, per tenerli in piedi nel suolo sottile.",
+      "tts": {
+        "text": "Le loro radici si allargano in basso, come muri, per tenerli in piedi nel suolo sottile.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-073",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le liane salgono sui tronchi verso la luce.",
+      "text_markdown": "Le liane salgono sui tronchi verso la luce.",
+      "tts": {
+        "text": "Le liane salgono sui tronchi verso la luce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-074",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p74",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune liane sono grosse come il tuo braccio.",
+      "text_markdown": "Alcune liane sono grosse come il tuo braccio.",
+      "tts": {
+        "text": "Alcune liane sono grosse come il tuo braccio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-075",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p75",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Si avvolgono intorno agli alberi e pendono dai rami.",
+      "text_markdown": "Si avvolgono intorno agli alberi e pendono dai rami.",
+      "tts": {
+        "text": "Si avvolgono intorno agli alberi e pendono dai rami.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-076",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p76",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune piante crescono sugli alberi stessi, in alto nell'aria.",
+      "text_markdown": "Alcune piante crescono sugli alberi stessi, in alto nell'aria.",
+      "tts": {
+        "text": "Alcune piante crescono sugli alberi stessi, in alto nell'aria.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-077",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p77",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Non hanno radici nel terreno.",
+      "text_markdown": "Non hanno radici nel terreno.",
+      "tts": {
+        "text": "Non hanno radici nel terreno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-078",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p78",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Bevono la pioggia che scorre lungo la corteccia.",
+      "text_markdown": "Bevono la pioggia che scorre lungo la corteccia.",
+      "tts": {
+        "text": "Bevono la pioggia che scorre lungo la corteccia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-079",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p79",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sul suolo scuro della foresta crescono felci e piante verdi e morbide.",
+      "text_markdown": "Sul suolo scuro della foresta crescono felci e piante verdi e morbide.",
+      "tts": {
+        "text": "Sul suolo scuro della foresta crescono felci e piante verdi e morbide.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-080",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p80",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hanno foglie larghe e piatte per raccogliere ogni goccia di luce.",
+      "text_markdown": "Hanno foglie larghe e piatte per raccogliere ogni goccia di luce.",
+      "tts": {
+        "text": "Hanno foglie larghe e piatte per raccogliere ogni goccia di luce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-081",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p81",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I fiori sbocciano in tutti i colori che puoi immaginare.",
+      "text_markdown": "I fiori sbocciano in tutti i colori che puoi immaginare.",
+      "tts": {
+        "text": "I fiori sbocciano in tutti i colori che puoi immaginare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-082",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p82",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni sono rossi, alcuni sono gialli, alcuni sono viola scuro.",
+      "text_markdown": "Alcuni sono rossi, alcuni sono gialli, alcuni sono viola scuro.",
+      "tts": {
+        "text": "Alcuni sono rossi, alcuni sono gialli, alcuni sono viola scuro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-083",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p83",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti si aprono di notte.",
+      "text_markdown": "Molti si aprono di notte.",
+      "tts": {
+        "text": "Molti si aprono di notte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-084",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p84",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I frutti pendono dai rami tutto l'anno.",
+      "text_markdown": "I frutti pendono dai rami tutto l'anno.",
+      "tts": {
+        "text": "I frutti pendono dai rami tutto l'anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-085",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p85",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono frutti dolci, frutti aspri e frutti con il guscio duro.",
+      "text_markdown": "Ci sono frutti dolci, frutti aspri e frutti con il guscio duro.",
+      "tts": {
+        "text": "Ci sono frutti dolci, frutti aspri e frutti con il guscio duro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-086",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p86",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti dei cibi che mangiamo a casa sono nati selvatici nelle foreste pluviali.",
+      "text_markdown": "Molti dei cibi che mangiamo a casa sono nati selvatici nelle foreste pluviali.",
+      "tts": {
+        "text": "Molti dei cibi che mangiamo a casa sono nati selvatici nelle foreste pluviali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-087",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p87",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Il cacao, la pianta che ci dà il cioccolato, viene dalle foreste pluviali dell'America del Sud.",
+      "text_markdown": "Il cacao, la pianta che ci dà il cioccolato, viene dalle foreste pluviali dell'America del Sud.",
+      "tts": {
+        "text": "Il cacao, la pianta che ci dà il cioccolato, viene dalle foreste pluviali dell'America del Sud.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-088",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p88",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le prime piante di banana sono nate nelle foreste pluviali del Sud-est asiatico.",
+      "text_markdown": "Le prime piante di banana sono nate nelle foreste pluviali del Sud-est asiatico.",
+      "tts": {
+        "text": "Le prime piante di banana sono nate nelle foreste pluviali del Sud est asiatico.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-089",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p89",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ogni cibo che amiamo ha la storia di una foresta da qualche parte sulla Terra.",
+      "text_markdown": "Ogni cibo che amiamo ha la storia di una foresta da qualche parte sulla Terra.",
+      "tts": {
+        "text": "Ogni cibo che amiamo ha la storia di una foresta da qualche parte sulla Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-090",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p90",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando guardi una pianta della foresta pluviale, spesso ha trovato un modo intelligente di vivere.",
+      "text_markdown": "Quando guardi una pianta della foresta pluviale, spesso ha trovato un modo intelligente di vivere.",
+      "tts": {
+        "text": "Quando guardi una pianta della foresta pluviale, spesso ha trovato un modo intelligente di vivere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-091",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p91",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune foglie hanno una lunga punta in cima, così la pioggia scivola via in fretta.",
+      "text_markdown": "Alcune foglie hanno una lunga punta in cima, così la pioggia scivola via in fretta.",
+      "tts": {
+        "text": "Alcune foglie hanno una lunga punta in cima, così la pioggia scivola via in fretta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-092",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p92",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni fiori profumano dolce solo di notte, per chiamare l'insetto giusto a visitarli.",
+      "text_markdown": "Alcuni fiori profumano dolce solo di notte, per chiamare l'insetto giusto a visitarli.",
+      "tts": {
+        "text": "Alcuni fiori profumano dolce solo di notte, per chiamare l'insetto giusto a visitarli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-093",
+      "chapter": 5,
+      "title": "Le piante",
+      "paragraph_id": "p93",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "L'intera foresta è una macchina silenziosa, fatta di verde.",
+      "text_markdown": "L'intera foresta è una macchina silenziosa, fatta di verde.",
+      "tts": {
+        "text": "L'intera foresta è una macchina silenziosa, fatta di verde.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-094",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p94",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Gli animali",
+      "text_markdown": "Gli animali"
+    },
+    {
+      "id": "ch06-095",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p95",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nella foresta pluviale tropicale vivono più tipi di animali che in qualsiasi altro posto sulla terra.",
+      "text_markdown": "Nella foresta pluviale tropicale vivono più tipi di animali che in qualsiasi altro posto sulla terra.",
+      "tts": {
+        "text": "Nella foresta pluviale tropicale vivono più tipi di animali che in qualsiasi altro posto sulla terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-096",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p96",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte vive in alto sugli alberi, non a terra.",
+      "text_markdown": "La maggior parte vive in alto sugli alberi, non a terra.",
+      "tts": {
+        "text": "La maggior parte vive in alto sugli alberi, non a terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch06-097",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p97",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alto c'è più cibo e più luce.",
+      "text_markdown": "In alto c'è più cibo e più luce.",
+      "tts": {
+        "text": "In alto c'è più cibo e più luce.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-098",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p98",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le scimmie vivono in molte foreste pluviali.",
+      "text_markdown": "Le scimmie vivono in molte foreste pluviali.",
+      "tts": {
+        "text": "Le scimmie vivono in molte foreste pluviali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-099",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p99",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Saltano da un ramo all'altro e si chiamano fra gli alberi.",
+      "text_markdown": "Saltano da un ramo all'altro e si chiamano fra gli alberi.",
+      "tts": {
+        "text": "Saltano da un ramo all'altro e si chiamano fra gli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-100",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p100",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nelle foreste pluviali dell'America del Sud, alcune scimmie hanno code lunghe che usano come una mano in più.",
+      "text_markdown": "Nelle foreste pluviali dell'America del Sud, alcune scimmie hanno code lunghe che usano come una mano in più.",
+      "tts": {
+        "text": "Nelle foreste pluviali dell'America del Sud, alcune scimmie hanno code lunghe che usano come una mano in più.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-101",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p101",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pappagalli e altri uccelli colorati volano fra i rami alti.",
+      "text_markdown": "I pappagalli e altri uccelli colorati volano fra i rami alti.",
+      "tts": {
+        "text": "I pappagalli e altri uccelli colorati volano fra i rami alti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-102",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p102",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Mangiano frutta e semi.",
+      "text_markdown": "Mangiano frutta e semi.",
+      "tts": {
+        "text": "Mangiano frutta e semi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-103",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p103",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le loro piume sono rosse, verdi, blu e gialle.",
+      "text_markdown": "Le loro piume sono rosse, verdi, blu e gialle.",
+      "tts": {
+        "text": "Le loro piume sono rosse, verdi, blu e gialle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-104",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p104",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In molte foreste pluviali, grandi felini cacciano a terra di notte.",
+      "text_markdown": "In molte foreste pluviali, grandi felini cacciano a terra di notte.",
+      "tts": {
+        "text": "In molte foreste pluviali, grandi felini cacciano a terra di notte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-105",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p105",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nelle Americhe, questo felino è il giaguaro.",
+      "text_markdown": "Nelle Americhe, questo felino è il giaguaro.",
+      "tts": {
+        "text": "Nelle Americhe, questo felino è il giaguaro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-106",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p106",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Asia, è la tigre.",
+      "text_markdown": "In Asia, è la tigre.",
+      "tts": {
+        "text": "In Asia, è la tigre.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-107",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p107",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In Africa, è il leopardo.",
+      "text_markdown": "In Africa, è il leopardo.",
+      "tts": {
+        "text": "In Africa, è il leopardo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-108",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p108",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sono tutti forti e silenziosi, con macchie o strisce sul pelo.",
+      "text_markdown": "Sono tutti forti e silenziosi, con macchie o strisce sul pelo.",
+      "tts": {
+        "text": "Sono tutti forti e silenziosi, con macchie o strisce sul pelo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-109",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p109",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I serpenti scivolano fra le foglie e gli alberi.",
+      "text_markdown": "I serpenti scivolano fra le foglie e gli alberi.",
+      "tts": {
+        "text": "I serpenti scivolano fra le foglie e gli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-110",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p110",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni serpenti sono molto piccoli, e altri sono molto lunghi.",
+      "text_markdown": "Alcuni serpenti sono molto piccoli, e altri sono molto lunghi.",
+      "tts": {
+        "text": "Alcuni serpenti sono molto piccoli, e altri sono molto lunghi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.76
+      }
+    },
+    {
+      "id": "ch06-111",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p111",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La maggior parte è timida e si tiene lontana dalle persone.",
+      "text_markdown": "La maggior parte è timida e si tiene lontana dalle persone.",
+      "tts": {
+        "text": "La maggior parte è timida e si tiene lontana dalle persone.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-112",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p112",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le rane cantano ogni notte, soprattutto dopo la pioggia.",
+      "text_markdown": "Le rane cantano ogni notte, soprattutto dopo la pioggia.",
+      "tts": {
+        "text": "Le rane cantano ogni notte, soprattutto dopo la pioggia.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-113",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p113",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcune rane sono minuscole e brillanti.",
+      "text_markdown": "Alcune rane sono minuscole e brillanti.",
+      "tts": {
+        "text": "Alcune rane sono minuscole e brillanti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-114",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p114",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I colori vivaci avvisano gli altri animali di non mangiarle.",
+      "text_markdown": "I colori vivaci avvisano gli altri animali di non mangiarle.",
+      "tts": {
+        "text": "I colori vivaci avvisano gli altri animali di non mangiarle.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-115",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p115",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli insetti riempiono ogni angolo della foresta.",
+      "text_markdown": "Gli insetti riempiono ogni angolo della foresta.",
+      "tts": {
+        "text": "Gli insetti riempiono ogni angolo della foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-116",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p116",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ci sono più insetti nella foresta pluviale che di qualsiasi altro tipo di animale.",
+      "text_markdown": "Ci sono più insetti nella foresta pluviale che di qualsiasi altro tipo di animale.",
+      "tts": {
+        "text": "Ci sono più insetti nella foresta pluviale che di qualsiasi altro tipo di animale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-117",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p117",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le formiche marciano in lunghe file sul suolo della foresta.",
+      "text_markdown": "Le formiche marciano in lunghe file sul suolo della foresta.",
+      "tts": {
+        "text": "Le formiche marciano in lunghe file sul suolo della foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-118",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p118",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli scarabei si arrampicano sui tronchi.",
+      "text_markdown": "Gli scarabei si arrampicano sui tronchi.",
+      "tts": {
+        "text": "Gli scarabei si arrampicano sui tronchi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-119",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p119",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le farfalle galleggiano nell'aria su larghe ali dipinte.",
+      "text_markdown": "Le farfalle galleggiano nell'aria su larghe ali dipinte.",
+      "tts": {
+        "text": "Le farfalle galleggiano nell'aria su larghe ali dipinte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-120",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p120",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pesci vivono nei fiumi, in molte forme e dimensioni.",
+      "text_markdown": "I pesci vivono nei fiumi, in molte forme e dimensioni.",
+      "tts": {
+        "text": "I pesci vivono nei fiumi, in molte forme e dimensioni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-121",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p121",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alcuni pesci sono piccoli e argentati, e altri sono più grandi di un bambino.",
+      "text_markdown": "Alcuni pesci sono piccoli e argentati, e altri sono più grandi di un bambino.",
+      "tts": {
+        "text": "Alcuni pesci sono piccoli e argentati, e altri sono più grandi di un bambino.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch06-122",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p122",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In alto sopra a tutto, le aquile planano sopra il tetto verde della foresta.",
+      "text_markdown": "In alto sopra a tutto, le aquile planano sopra il tetto verde della foresta.",
+      "tts": {
+        "text": "In alto sopra a tutto, le aquile planano sopra il tetto verde della foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch06-123",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p123",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cercano qualche movimento più in basso.",
+      "text_markdown": "Cercano qualche movimento più in basso.",
+      "tts": {
+        "text": "Cercano qualche movimento più in basso.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-124",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p124",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I pipistrelli escono al tramonto per mangiare frutta e insetti.",
+      "text_markdown": "I pipistrelli escono al tramonto per mangiare frutta e insetti.",
+      "tts": {
+        "text": "I pipistrelli escono al tramonto per mangiare frutta e insetti.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-125",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p125",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Su un solo albero della foresta pluviale puoi trovare più tipi di animali che in un'intera città altrove.",
+      "text_markdown": "Su un solo albero della foresta pluviale puoi trovare più tipi di animali che in un'intera città altrove.",
+      "tts": {
+        "text": "Su un solo albero della foresta pluviale puoi trovare più tipi di animali che in un'intera città altrove.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-126",
+      "chapter": 6,
+      "title": "Gli animali",
+      "paragraph_id": "p126",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la meraviglia di questo bioma.",
+      "text_markdown": "Questa è la meraviglia di questo bioma.",
+      "tts": {
+        "text": "Questa è la meraviglia di questo bioma.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-127",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p127",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Le persone",
+      "text_markdown": "Le persone"
+    },
+    {
+      "id": "ch07-128",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p128",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le persone vivono nella foresta pluviale tropicale da moltissimo tempo.",
+      "text_markdown": "Le persone vivono nella foresta pluviale tropicale da moltissimo tempo.",
+      "tts": {
+        "text": "Le persone vivono nella foresta pluviale tropicale da moltissimo tempo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-129",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p129",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hanno imparato a vivere bene con gli alberi, la pioggia e gli animali.",
+      "text_markdown": "Hanno imparato a vivere bene con gli alberi, la pioggia e gli animali.",
+      "tts": {
+        "text": "Hanno imparato a vivere bene con gli alberi, la pioggia e gli animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-130",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p130",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molte persone della foresta pluviale vivono in piccoli villaggi.",
+      "text_markdown": "Molte persone della foresta pluviale vivono in piccoli villaggi.",
+      "tts": {
+        "text": "Molte persone della foresta pluviale vivono in piccoli villaggi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-131",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p131",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le case sono spesso costruite su alti pali di legno per restare sopra il terreno bagnato.",
+      "text_markdown": "Le case sono spesso costruite su alti pali di legno per restare sopra il terreno bagnato.",
+      "tts": {
+        "text": "Le case sono spesso costruite su alti pali di legno per restare sopra il terreno bagnato.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-132",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p132",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I tetti sono fatti di foglie messe in file fitte.",
+      "text_markdown": "I tetti sono fatti di foglie messe in file fitte.",
+      "tts": {
+        "text": "I tetti sono fatti di foglie messe in file fitte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-133",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p133",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un buon tetto di foglie tiene fuori la pioggia forte.",
+      "text_markdown": "Un buon tetto di foglie tiene fuori la pioggia forte.",
+      "tts": {
+        "text": "Un buon tetto di foglie tiene fuori la pioggia forte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-134",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p134",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le pareti sono spesso aperte per far passare l'aria calda.",
+      "text_markdown": "Le pareti sono spesso aperte per far passare l'aria calda.",
+      "tts": {
+        "text": "Le pareti sono spesso aperte per far passare l'aria calda.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-135",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p135",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le persone pescano nei fiumi e raccolgono cibo dalla foresta.",
+      "text_markdown": "Le persone pescano nei fiumi e raccolgono cibo dalla foresta.",
+      "tts": {
+        "text": "Le persone pescano nei fiumi e raccolgono cibo dalla foresta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch07-136",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p136",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Cacciano piccoli animali con archi e lance.",
+      "text_markdown": "Cacciano piccoli animali con archi e lance.",
+      "tts": {
+        "text": "Cacciano piccoli animali con archi e lance.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-137",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p137",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Coltivano cibo in piccoli orti aperti fra gli alberi.",
+      "text_markdown": "Coltivano cibo in piccoli orti aperti fra gli alberi.",
+      "tts": {
+        "text": "Coltivano cibo in piccoli orti aperti fra gli alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-138",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p138",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quello che coltivano dipende da dove vivono.",
+      "text_markdown": "Quello che coltivano dipende da dove vivono.",
+      "tts": {
+        "text": "Quello che coltivano dipende da dove vivono.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-139",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p139",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nelle foreste pluviali dell'America del Sud, le persone coltivano manioca e patate dolci da migliaia di anni.",
+      "text_markdown": "Nelle foreste pluviali dell'America del Sud, le persone coltivano manioca e patate dolci da migliaia di anni.",
+      "tts": {
+        "text": "Nelle foreste pluviali dell'America del Sud, le persone coltivano manioca e patate dolci da migliaia di anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch07-140",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p140",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nelle foreste pluviali dell'Africa, le persone coltivano igname e frutto della palma.",
+      "text_markdown": "Nelle foreste pluviali dell'Africa, le persone coltivano igname e frutto della palma.",
+      "tts": {
+        "text": "Nelle foreste pluviali dell'Africa, le persone coltivano igname e frutto della palma.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-141",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p141",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nelle foreste pluviali del Sud-est asiatico e del Pacifico, le persone coltivano taro, riso e frutto del pane.",
+      "text_markdown": "Nelle foreste pluviali del Sud-est asiatico e del Pacifico, le persone coltivano taro, riso e frutto del pane.",
+      "tts": {
+        "text": "Nelle foreste pluviali del Sud est asiatico e del Pacifico, le persone coltivano taro, riso e frutto del pane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-142",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p142",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Dopo qualche anno lasciano che l'orto torni foresta, e ne fanno uno nuovo da un'altra parte.",
+      "text_markdown": "Dopo qualche anno lasciano che l'orto torni foresta, e ne fanno uno nuovo da un'altra parte.",
+      "tts": {
+        "text": "Dopo qualche anno lasciano che l'orto torni foresta, e ne fanno uno nuovo da un'altra parte.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch07-143",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p143",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Così la foresta resta sana.",
+      "text_markdown": "Così la foresta resta sana.",
+      "tts": {
+        "text": "Così la foresta resta sana.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-144",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p144",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le persone della foresta pluviale conoscono migliaia di piante.",
+      "text_markdown": "Le persone della foresta pluviale conoscono migliaia di piante.",
+      "tts": {
+        "text": "Le persone della foresta pluviale conoscono migliaia di piante.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch07-145",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p145",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sanno quali danno cibo, quali danno medicina e quali non sono sicure da mangiare.",
+      "text_markdown": "Sanno quali danno cibo, quali danno medicina e quali non sono sicure da mangiare.",
+      "tts": {
+        "text": "Sanno quali danno cibo, quali danno medicina e quali non sono sicure da mangiare.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch07-146",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p146",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Imparano i canti degli uccelli.",
+      "text_markdown": "Imparano i canti degli uccelli.",
+      "tts": {
+        "text": "Imparano i canti degli uccelli.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-147",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p147",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Imparano le tracce degli animali.",
+      "text_markdown": "Imparano le tracce degli animali.",
+      "tts": {
+        "text": "Imparano le tracce degli animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch07-148",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p148",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questo sapere passa dai genitori ai figli, anno dopo anno.",
+      "text_markdown": "Questo sapere passa dai genitori ai figli, anno dopo anno.",
+      "tts": {
+        "text": "Questo sapere passa dai genitori ai figli, anno dopo anno.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch07-149",
+      "chapter": 7,
+      "title": "Le persone",
+      "paragraph_id": "p149",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In ogni foresta pluviale, questo modo di vivere ha le sue lingue, le sue storie e la sua musica.",
+      "text_markdown": "In ogni foresta pluviale, questo modo di vivere ha le sue lingue, le sue storie e la sua musica.",
+      "tts": {
+        "text": "In ogni foresta pluviale, questo modo di vivere ha le sue lingue, le sue storie e la sua musica.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch08-150",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p150",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "La foresta pluviale oggi",
+      "text_markdown": "La foresta pluviale oggi"
+    },
+    {
+      "id": "ch08-151",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p151",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "La foresta pluviale tropicale è uno dei biomi più importanti della Terra.",
+      "text_markdown": "La foresta pluviale tropicale è uno dei biomi più importanti della Terra.",
+      "tts": {
+        "text": "La foresta pluviale tropicale è uno dei biomi più importanti della Terra.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-152",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p152",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli alberi tirano su l'acqua dal terreno e la soffiano nel cielo.",
+      "text_markdown": "Gli alberi tirano su l'acqua dal terreno e la soffiano nel cielo.",
+      "tts": {
+        "text": "Gli alberi tirano su l'acqua dal terreno e la soffiano nel cielo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch08-153",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p153",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Le nuvole che si formano sopra la foresta portano la pioggia in terre lontane.",
+      "text_markdown": "Le nuvole che si formano sopra la foresta portano la pioggia in terre lontane.",
+      "tts": {
+        "text": "Le nuvole che si formano sopra la foresta portano la pioggia in terre lontane.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-154",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p154",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Anche gli alberi respirano, ma al contrario di noi.",
+      "text_markdown": "Anche gli alberi respirano, ma al contrario di noi.",
+      "tts": {
+        "text": "Anche gli alberi respirano, ma al contrario di noi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch08-155",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p155",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Prendono il gas che noi mandiamo fuori, e lo usano per crescere.",
+      "text_markdown": "Prendono il gas che noi mandiamo fuori, e lo usano per crescere.",
+      "tts": {
+        "text": "Prendono il gas che noi mandiamo fuori, e lo usano per crescere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-156",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p156",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "E restituiscono il gas che noi tiriamo dentro.",
+      "text_markdown": "E restituiscono il gas che noi tiriamo dentro.",
+      "tts": {
+        "text": "E restituiscono il gas che noi tiriamo dentro.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-157",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p157",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma la foresta pluviale è in pericolo.",
+      "text_markdown": "Ma la foresta pluviale è in pericolo.",
+      "tts": {
+        "text": "Ma la foresta pluviale è in pericolo.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-158",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p158",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "In molti posti, le persone hanno tagliato gli alberi per piantare colture o allevare animali.",
+      "text_markdown": "In molti posti, le persone hanno tagliato gli alberi per piantare colture o allevare animali.",
+      "tts": {
+        "text": "In molti posti, le persone hanno tagliato gli alberi per piantare colture o allevare animali.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch08-159",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p159",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Quando gli alberi non ci sono più, il suolo viene portato via, e la pioggia non cade più come prima.",
+      "text_markdown": "Quando gli alberi non ci sono più, il suolo viene portato via, e la pioggia non cade più come prima.",
+      "tts": {
+        "text": "Quando gli alberi non ci sono più, il suolo viene portato via, e la pioggia non cade più come prima.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch08-160",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p160",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Gli animali e le persone che vivono lì perdono la loro casa.",
+      "text_markdown": "Gli animali e le persone che vivono lì perdono la loro casa.",
+      "tts": {
+        "text": "Gli animali e le persone che vivono lì perdono la loro casa.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-161",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p161",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Molti gruppi nel mondo lavorano per proteggere quello che resta.",
+      "text_markdown": "Molti gruppi nel mondo lavorano per proteggere quello che resta.",
+      "tts": {
+        "text": "Molti gruppi nel mondo lavorano per proteggere quello che resta.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-162",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p162",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Piantano nuovi alberi.",
+      "text_markdown": "Piantano nuovi alberi.",
+      "tts": {
+        "text": "Piantano nuovi alberi.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-163",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p163",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aiutano le persone che vivono nella foresta a prendersene cura.",
+      "text_markdown": "Aiutano le persone che vivono nella foresta a prendersene cura.",
+      "tts": {
+        "text": "Aiutano le persone che vivono nella foresta a prendersene cura.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch08-164",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p164",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Studiano la foresta per capirla meglio.",
+      "text_markdown": "Studiano la foresta per capirla meglio.",
+      "tts": {
+        "text": "Studiano la foresta per capirla meglio.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-165",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p165",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Una foresta pluviale ha bisogno di centinaia di anni per crescere.",
+      "text_markdown": "Una foresta pluviale ha bisogno di centinaia di anni per crescere.",
+      "tts": {
+        "text": "Una foresta pluviale ha bisogno di centinaia di anni per crescere.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-166",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p166",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ma una foresta pluviale sana può continuare a crescere per migliaia di anni.",
+      "text_markdown": "Ma una foresta pluviale sana può continuare a crescere per migliaia di anni.",
+      "tts": {
+        "text": "Ma una foresta pluviale sana può continuare a crescere per migliaia di anni.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch08-167",
+      "chapter": 8,
+      "title": "La foresta pluviale oggi",
+      "paragraph_id": "p167",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vale la nostra cura.",
+      "text_markdown": "Vale la nostra cura.",
+      "tts": {
+        "text": "Vale la nostra cura.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-168",
+      "chapter": 9,
+      "title": "Per chiudere",
+      "paragraph_id": "p168",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Per chiudere",
+      "text_markdown": "Per chiudere"
+    },
+    {
+      "id": "ch09-169",
+      "chapter": 9,
+      "title": "Per chiudere",
+      "paragraph_id": "p169",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Questa è la foresta pluviale tropicale.",
+      "text_markdown": "Questa è la foresta pluviale tropicale.",
+      "tts": {
+        "text": "Questa è la foresta pluviale tropicale.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-170",
+      "chapter": 9,
+      "title": "Per chiudere",
+      "paragraph_id": "p170",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Un mondo caldo, umido e verde, pieno di vita.",
+      "text_markdown": "Un mondo caldo, umido e verde, pieno di vita.",
+      "tts": {
+        "text": "Un mondo caldo, umido e verde, pieno di vita.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-171",
+      "chapter": 9,
+      "title": "Per chiudere",
+      "paragraph_id": "p171",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Se mai entri in una, fermati un minuto.",
+      "text_markdown": "Se mai entri in una, fermati un minuto.",
+      "tts": {
+        "text": "Se mai entri in una, fermati un minuto.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch09-172",
+      "chapter": 9,
+      "title": "Per chiudere",
+      "paragraph_id": "p172",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ascolta gli uccelli, le rane e la pioggia sulle foglie.",
+      "text_markdown": "Ascolta gli uccelli, le rane e la pioggia sulle foglie.",
+      "tts": {
+        "text": "Ascolta gli uccelli, le rane e la pioggia sulle foglie.",
+        "pause_after_ms": 600,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch09-173",
+      "chapter": 9,
+      "title": "Per chiudere",
+      "paragraph_id": "p173",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sentirai il cuore del bioma battere intorno a te.",
+      "text_markdown": "Sentirai il cuore del bioma battere intorno a te.",
+      "tts": {
+        "text": "Sentirai il cuore del bioma battere intorno a te.",
+        "pause_after_ms": 1500,
+        "repetition_penalty": 1.85
+      }
+    }
+  ]
+}

@@ -1,0 +1,2963 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_03",
+  "language": "zh",
+  "total_segments": 197,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "欢迎收听本周AI。",
+      "text_markdown": "欢迎收听本周AI。",
+      "title": "",
+      "tts": {
+        "text": "欢迎收听本周AI。",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "我是Vindy。",
+      "text_markdown": "我是Vindy。",
+      "title": "",
+      "tts": {
+        "text": "我是Vindy。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "和往常一样，Ron和我在一起。",
+      "text_markdown": "和往常一样，Ron和我在一起。",
+      "title": "",
+      "tts": {
+        "text": "和往常一样，Ron和我在一起。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "很高兴来到这里，Vindy。",
+      "text_markdown": "很高兴来到这里，Vindy。",
+      "title": "",
+      "tts": {
+        "text": "很高兴来到这里，Vindy。",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "今天是2026年6月3日，星期三。",
+      "text_markdown": "今天是2026年6月3日，星期三。",
+      "title": "",
+      "tts": {
+        "text": "今天是二零二六年六月三日，星期三。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本周对营销来说是平静的一周，对硬件来说则是喧嚣的一周。",
+      "text_markdown": "本周对营销来说是平静的一周，对硬件来说则是喧嚣的一周。",
+      "title": "",
+      "tts": {
+        "text": "本周对营销来说是平静的一周，对硬件来说则是喧嚣的一周。",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "头条新闻的格局很不寻常。",
+      "text_markdown": "头条新闻的格局很不寻常。",
+      "title": "",
+      "tts": {
+        "text": "头条新闻的格局很不寻常。",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "一场大型实验室的主题演讲，一份机密文件，一台盒子上印有大数字的小型计算机。",
+      "text_markdown": "一场大型实验室的主题演讲，一份机密文件，一台盒子上印有大数字的小型计算机。",
+      "title": "",
+      "tts": {
+        "text": "一场大型实验室的主题演讲，一份机密文件，一台盒子上印有大数字的小型计算机。",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "接下来——开放权重领域有何进展，由一种新的注意力架构和NVIDIA的开放模型引领。",
+      "text_markdown": "接下来——开放权重领域有何进展，由一种新的注意力架构和NVIDIA的开放模型引领。",
+      "title": "",
+      "tts": {
+        "text": "接下来——开放权重领域有何进展，由一种新的注意力架构和NVIDIA的开放模型引领。",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "排行榜的最终结果，以及其背后关于我们如何完全信任分数这个更大的故事。",
+      "text_markdown": "排行榜的最终结果，以及其背后关于我们如何完全信任分数这个更大的故事。",
+      "title": "",
+      "tts": {
+        "text": "排行榜的最终结果，以及其背后关于我们如何完全信任分数这个更大的故事。",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本周末你可以采取行动的快速头条摘要。",
+      "text_markdown": "本周末你可以采取行动的快速头条摘要。",
+      "title": "",
+      "tts": {
+        "text": "本周末你可以采取行动的快速头条摘要。",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "我们的头条新闻，DIY设备已经成熟——前沿推理现在已成为你桌面上的现实。",
+      "text_markdown": "我们的头条新闻，DIY设备已经成熟——前沿推理现在已成为你桌面上的现实。",
+      "title": "",
+      "tts": {
+        "text": "我们的头条新闻，D I Y设备已经成熟——前沿推理现在已成为你桌面上的现实。",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本周的概念是推测解码——这种技巧能让小卡上的大模型感觉运行很快。",
+      "text_markdown": "本周的概念是推测解码——这种技巧能让小卡上的大模型感觉运行很快。",
+      "title": "",
+      "tts": {
+        "text": "本周的概念是推测解码——这种技巧能让小卡上的大模型感觉运行很快。",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron，我们从开放权重领域开始吧。",
+      "text_markdown": "Ron，我们从开放权重领域开始吧。",
+      "title": "",
+      "tts": {
+        "text": "Ron，我们从开放权重领域开始吧。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "本周进展如何？",
+      "text_markdown": "本周进展如何？",
+      "title": "",
+      "tts": {
+        "text": "本周进展如何？",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "本周的开放故事是关于新形态，而非新规模。",
+      "text_markdown": "本周的开放故事是关于新形态，而非新规模。",
+      "title": "",
+      "tts": {
+        "text": "本周的开放故事是关于新形态，而非新规模。",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "两个在架构上引人注目的模型于6月1日同一天发布。",
+      "text_markdown": "两个在架构上引人注目的模型于6月1日同一天发布。",
+      "title": "",
+      "tts": {
+        "text": "两个在架构上引人注目的模型于六月一日同一天发布。",
+        "pause_after_ms": 527,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "先给我们介绍第一个吧。",
+      "text_markdown": "先给我们介绍第一个吧。",
+      "title": "",
+      "tts": {
+        "text": "先给我们介绍第一个吧。",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax发布了M3。",
+      "text_markdown": "MiniMax发布了M3。",
+      "title": "",
+      "tts": {
+        "text": "MiniMax发布了M三。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它采用了一种新的注意力设计，他们称之为MSA，是MiniMax稀疏注意力的缩写。",
+      "text_markdown": "它采用了一种新的注意力设计，他们称之为MSA，是MiniMax稀疏注意力的缩写。",
+      "title": "",
+      "tts": {
+        "text": "它采用了一种新的注意力设计，他们称之为M S A，是MiniMax稀疏注意力的缩写。",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "其亮点在于一百万token的上下文，预填充速度比其同等长度的上一代模型快约九倍，解码速度快十五倍。",
+      "text_markdown": "其亮点在于一百万token的上下文，预填充速度比其同等长度的上一代模型快约九倍，解码速度快十五倍。",
+      "title": "",
+      "tts": {
+        "text": "其亮点在于一百万token的上下文，预填充速度比其同等长度的上一代模型快约九倍，解码速度快十五倍。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "用通俗语言解释稀疏注意力究竟是做什么的。",
+      "text_markdown": "用通俗语言解释稀疏注意力究竟是做什么的。",
+      "title": "",
+      "tts": {
+        "text": "用通俗语言解释稀疏注意力究竟是做什么的。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "常规注意力会将每个token与所有其他token进行比较，这就是长上下文如此昂贵的原因。",
+      "text_markdown": "常规注意力会将每个token与所有其他token进行比较，这就是长上下文如此昂贵的原因。",
+      "title": "",
+      "tts": {
+        "text": "常规注意力会将每个token与所有其他token进行比较，这就是长上下文如此昂贵的原因。",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "稀疏注意力将上下文预过滤成块，并且只对那些看起来与当前问题相关的块进行完整比较。",
+      "text_markdown": "稀疏注意力将上下文预过滤成块，并且只对那些看起来与当前问题相关的块进行完整比较。",
+      "title": "",
+      "tts": {
+        "text": "稀疏注意力将上下文预过滤成块，并且只对那些看起来与当前问题相关的块进行完整比较。",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "你只需一小部分计算量就能获得大部分的质量。",
+      "text_markdown": "你只需一小部分计算量就能获得大部分的质量。",
+      "title": "",
+      "tts": {
+        "text": "你只需一小部分计算量就能获得大部分的质量。",
+        "pause_after_ms": 501,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那基准测试的说法呢？",
+      "text_markdown": "那基准测试的说法呢？",
+      "title": "",
+      "tts": {
+        "text": "那基准测试的说法呢？",
+        "pause_after_ms": 335,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax称在SWE-bench Pro上达到了59%的成绩，这将使其在该排行榜上领先于GPT-5.5和Gemini 3.5 Pro。",
+      "text_markdown": "MiniMax称在SWE-bench Pro上达到了59%的成绩，这将使其在该排行榜上领先于GPT-5.5和Gemini 3.5 Pro。",
+      "title": "",
+      "tts": {
+        "text": "MiniMax称在S W E bench Pro上达到了百分之五十九的成绩，这将使其在该排行榜上领先于G P T五点五和Gemini三点五 Pro。",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "我要说的是，这些是他们自己的说法——这是供应商自己的评分卡，而非独立运行的结果。",
+      "text_markdown": "我要说的是，这些是他们自己的说法——这是供应商自己的评分卡，而非独立运行的结果。",
+      "title": "",
+      "tts": {
+        "text": "我要说的是，这些是他们自己的说法——这是供应商自己的评分卡，而非独立运行的结果。",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "也是开放权重吗？",
+      "text_markdown": "也是开放权重吗？",
+      "title": "",
+      "tts": {
+        "text": "也是开放权重吗？",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "是的，M3被定位为开放权重模型；API在第一天就已上线，权重很快就会在Hugging Face上发布。",
+      "text_markdown": "是的，M3被定位为开放权重模型；API在第一天就已上线，权重很快就会在Hugging Face上发布。",
+      "title": "",
+      "tts": {
+        "text": "是的，M三被定位为开放权重模型；A P I在第一天就已上线，权重很快就会在Hugging Face上发布。",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "对于修修补补的人来说，有趣的赌注是架构而非分数。",
+      "text_markdown": "对于修修补补的人来说，有趣的赌注是架构而非分数。",
+      "title": "",
+      "tts": {
+        "text": "对于修修补补的人来说，有趣的赌注是架构而非分数。",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "如果MSA站得住脚，其他所有开放实验室都会在几个月内复制这种形式。",
+      "text_markdown": "如果MSA站得住脚，其他所有开放实验室都会在几个月内复制这种形式。",
+      "title": "",
+      "tts": {
+        "text": "如果M S A站得住脚，其他所有开放实验室都会在几个月内复制这种形式。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那第二个模型呢？",
+      "text_markdown": "那第二个模型呢？",
+      "title": "",
+      "tts": {
+        "text": "那第二个模型呢？",
+        "pause_after_ms": 317,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA悄然开源了Nemotron 3 Ultra。",
+      "text_markdown": "NVIDIA悄然开源了Nemotron 3 Ultra。",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA悄然开源了Nemotron 三 Ultra。",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它是一个五千五百亿参数的专家混合模型，每个token约有五百五十亿参数处于活跃状态。",
+      "text_markdown": "它是一个五千五百亿参数的专家混合模型，每个token约有五百五十亿参数处于活跃状态。",
+      "title": "",
+      "tts": {
+        "text": "它是一个五千五百亿参数的专家混合模型，每个token约有五百五十亿参数处于活跃状态。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "其核心是一个混合Mamba-Transformer架构，而非纯粹的Transformer。",
+      "text_markdown": "其核心是一个混合Mamba-Transformer架构，而非纯粹的Transformer。",
+      "title": "",
+      "tts": {
+        "text": "其核心是一个混合Mamba Transformer架构，而非纯粹的Transformer。",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "关于Mamba的通俗解释。",
+      "text_markdown": "关于Mamba的通俗解释。",
+      "title": "",
+      "tts": {
+        "text": "关于Mamba的通俗解释。",
+        "pause_after_ms": 512,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mamba层以亚二次方缩放处理长序列，这是一种花哨的说法，意思是随着上下文的增长，每个token的成本会更低。",
+      "text_markdown": "Mamba层以亚二次方缩放处理长序列，这是一种花哨的说法，意思是随着上下文的增长，每个token的成本会更低。",
+      "title": "",
+      "tts": {
+        "text": "Mamba层以亚二次方缩放处理长序列，这是一种花哨的说法，意思是随着上下文的增长，每个token的成本会更低。",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA在堆栈中保留了一些注意力层，以保持对长文档问答等任务的精确召回能力。",
+      "text_markdown": "NVIDIA在堆栈中保留了一些注意力层，以保持对长文档问答等任务的精确召回能力。",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA在堆栈中保留了一些注意力层，以保持对长文档问答等任务的精确召回能力。",
+        "pause_after_ms": 270,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这种混合架构在研究领域已经悄然胜出一年了。",
+      "text_markdown": "这种混合架构在研究领域已经悄然胜出一年了。",
+      "title": "",
+      "tts": {
+        "text": "这种混合架构在研究领域已经悄然胜出一年了。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那许可证呢？",
+      "text_markdown": "那许可证呢？",
+      "title": "",
+      "tts": {
+        "text": "那许可证呢？",
+        "pause_after_ms": 354,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "NVIDIA自己的开放模型许可证，允许商业使用。",
+      "text_markdown": "NVIDIA自己的开放模型许可证，允许商业使用。",
+      "title": "",
+      "tts": {
+        "text": "NVIDIA自己的开放模型许可证，允许商业使用。",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "所有内容都一并发布，包括权重、后训练检查点、NVFP4量化以及训练配方。",
+      "text_markdown": "所有内容都一并发布，包括权重、后训练检查点、NVFP4量化以及训练配方。",
+      "title": "",
+      "tts": {
+        "text": "所有内容都一并发布，包括权重、后训练检查点、恩维艾弗批四量化以及训练配方。",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这比大多数开放版本都更慷慨。",
+      "text_markdown": "这比大多数开放版本都更慷慨。",
+      "title": "",
+      "tts": {
+        "text": "这比大多数开放版本都更慷慨。",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那排行榜上的位置呢？",
+      "text_markdown": "那排行榜上的位置呢？",
+      "title": "",
+      "tts": {
+        "text": "那排行榜上的位置呢？",
+        "pause_after_ms": 381,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "在Artificial Analysis Intelligence Index上，Nemotron 3 Ultra排名第四十八位。",
+      "text_markdown": "在Artificial Analysis Intelligence Index上，Nemotron 3 Ultra排名第四十八位。",
+      "title": "",
+      "tts": {
+        "text": "在Artificial Analysis Intelligence Index上，Nemotron 三 Ultra排名第四十八位。",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这使其在他们追踪的八十九个模型中位列第九，并领先于所有其他美国开放模型。",
+      "text_markdown": "这使其在他们追踪的八十九个模型中位列第九，并领先于所有其他美国开放模型。",
+      "title": "",
+      "tts": {
+        "text": "这使其在他们追踪的八十九个模型中位列第九，并领先于所有其他美国开放模型。",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它也落后于Moonshot的Kimi K2.6，后者排名第五十四位。",
+      "text_markdown": "它也落后于Moonshot的Kimi K2.6，后者排名第五十四位。",
+      "title": "",
+      "tts": {
+        "text": "它也落后于Moonshot的Kimi K二点六，后者排名第五十四位。",
+        "pause_after_ms": 515,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "所以即便如此，中国在开放领域仍然领先。",
+      "text_markdown": "所以即便如此，中国在开放领域仍然领先。",
+      "title": "",
+      "tts": {
+        "text": "所以即便如此，中国在开放领域仍然领先。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "就那个综合指标而言，是的，领先六分。",
+      "text_markdown": "就那个综合指标而言，是的，领先六分。",
+      "title": "",
+      "tts": {
+        "text": "就那个综合指标而言，是的，领先六分。",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这是大背景下的小故事。",
+      "text_markdown": "这是大背景下的小故事。",
+      "title": "",
+      "tts": {
+        "text": "这是大背景下的小故事。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "有什么同系列的产品吗？",
+      "text_markdown": "有什么同系列的产品吗？",
+      "title": "",
+      "tts": {
+        "text": "有什么同系列的产品吗？",
+        "pause_after_ms": 333,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "是的，NVIDIA还发布了Nemotron 3 Nano Omni。",
+      "text_markdown": "是的，NVIDIA还发布了Nemotron 3 Nano Omni。",
+      "title": "",
+      "tts": {
+        "text": "是的，NVIDIA还发布了Nemotron 三 Nano Omni。",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "那是一个统一的视觉、音频和语言模型，据称比同类开放全能模型效率高出约九倍。",
+      "text_markdown": "那是一个统一的视觉、音频和语言模型，据称比同类开放全能模型效率高出约九倍。",
+      "title": "",
+      "tts": {
+        "text": "那是一个统一的视觉、音频和语言模型，据称比同类开放全能模型效率高出约九倍。",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它旨在用于设备端代理——手机、笔记本电脑、小型工作站。",
+      "text_markdown": "它旨在用于设备端代理——手机、笔记本电脑、小型工作站。",
+      "title": "",
+      "tts": {
+        "text": "它旨在用于设备端代理——手机、笔记本电脑、小型工作站。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "开放领域还有什么？",
+      "text_markdown": "开放领域还有什么？",
+      "title": "",
+      "tts": {
+        "text": "开放领域还有什么？",
+        "pause_after_ms": 378,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Mistral Medium 3.5于5月28日出现在微软的Copilot Studio中。",
+      "text_markdown": "Mistral Medium 3.5于5月28日出现在微软的Copilot Studio中。",
+      "title": "",
+      "tts": {
+        "text": "Mistral Medium 三点五于五月二十八日出现在微软的Copilot Studio中。",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它是一个一千二百八十亿参数的密集模型，具有二十五万六千个token的上下文。",
+      "text_markdown": "它是一个一千二百八十亿参数的密集模型，具有二十五万六千个token的上下文。",
+      "title": "",
+      "tts": {
+        "text": "它是一个一千二百八十亿参数的密集模型，具有二十五万六千个token的上下文。",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "为什么这个位置很有趣？",
+      "text_markdown": "为什么这个位置很有趣？",
+      "title": "",
+      "tts": {
+        "text": "为什么这个位置很有趣？",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "因为微软现在正通过自己的平台分发一个非OpenAI的欧洲模型，并内置了欧盟数据驻留功能。",
+      "text_markdown": "因为微软现在正通过自己的平台分发一个非OpenAI的欧洲模型，并内置了欧盟数据驻留功能。",
+      "title": "",
+      "tts": {
+        "text": "因为微软现在正通过自己的平台分发一个非OpenAI的欧洲模型，并内置了欧盟数据驻留功能。",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "两年前，这句话是不可想象的。",
+      "text_markdown": "两年前，这句话是不可想象的。",
+      "title": "",
+      "tts": {
+        "text": "两年前，这句话是不可想象的。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那阿里巴巴呢？",
+      "text_markdown": "那阿里巴巴呢？",
+      "title": "",
+      "tts": {
+        "text": "那阿里巴巴呢？",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "通义千问 3.7 Plus 于 6 月 2 日发布，但它在百炼平台上仅提供 API 访问。",
+      "text_markdown": "通义千问 3.7 Plus 于 6 月 2 日发布，但它在百炼平台上仅提供 API 访问。",
+      "title": "",
+      "tts": {
+        "text": "通义千问三点七 Plus 于六月二日发布，但它在百炼平台上仅提供 API 访问。",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "开放的通义千问系列仍然停留在 3.6 版本。",
+      "text_markdown": "开放的通义千问系列仍然停留在 3.6 版本。",
+      "title": "",
+      "tts": {
+        "text": "开放的通义千问系列仍然停留在三点六版本。",
+        "pause_after_ms": 222,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这证实了我们上周指出的分化——封闭式旗舰，开放式中端。",
+      "text_markdown": "这证实了我们上周指出的分化——封闭式旗舰，开放式中端。",
+      "title": "",
+      "tts": {
+        "text": "这证实了我们上周指出的分化——封闭式旗舰，开放式中端。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "与 Mistral 过去一年来的策略如出一辙。",
+      "text_markdown": "与 Mistral 过去一年来的策略如出一辙。",
+      "title": "",
+      "tts": {
+        "text": "与 Mistral 过去一年来的策略如出一辙。",
+        "pause_after_ms": 525,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "在我们继续之前，先说两点背景信息？",
+      "text_markdown": "在我们继续之前，先说两点背景信息？",
+      "title": "",
+      "tts": {
+        "text": "在我们继续之前，先说两点背景信息？",
+        "pause_after_ms": 322,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "当然。",
+      "text_markdown": "当然。",
+      "title": "",
+      "tts": {
+        "text": "当然。",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "中国的开放模型仍然在 OpenRouter 的 token 流量中占据主导地位——与上周一样，没有变化。",
+      "text_markdown": "中国的开放模型仍然在 OpenRouter 的 token 流量中占据主导地位——与上周一样，没有变化。",
+      "title": "",
+      "tts": {
+        "text": "中国的开放模型仍然在 OpenRouter 的 token 流量中占据主导地位——与上周一样，没有变化。",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "DeepSeek V4 于 5 月 28 日在微软的 Foundry 平台上线，这意味着有更多地方可以调用它了。",
+      "text_markdown": "DeepSeek V4 于 5 月 28 日在微软的 Foundry 平台上线，这意味着有更多地方可以调用它了。",
+      "title": "",
+      "tts": {
+        "text": "DeepSeek V 四于五月二十八日在微软的 Foundry 平台上线，这意味着有更多地方可以调用它了。",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "好的，我们来看看排行榜。",
+      "text_markdown": "好的，我们来看看排行榜。",
+      "title": "",
+      "tts": {
+        "text": "好的，我们来看看排行榜。",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这周有没有一个大的变动者？",
+      "text_markdown": "这周有没有一个大的变动者？",
+      "title": "",
+      "tts": {
+        "text": "这周有没有一个大的变动者？",
+        "pause_after_ms": 358,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "有，而且是封闭模型——Claude Opus 4.8，Anthropic 于 5 月 28 日发布。",
+      "text_markdown": "有，而且是封闭模型——Claude Opus 4.8，Anthropic 于 5 月 28 日发布。",
+      "title": "",
+      "tts": {
+        "text": "有，而且是封闭模型——Claude Opus 四点八，Anthropic 于五月二十八日发布。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它在 SWE-bench Verified 上达到了 88.6%，在 SWE-bench Pro 上达到了 69.2%。",
+      "text_markdown": "它在 SWE-bench Verified 上达到了 88.6%，在 SWE-bench Pro 上达到了 69.2%。",
+      "title": "",
+      "tts": {
+        "text": "它在 SWE-bench Verified 上达到了百分之八十八点六，在 SWE-bench Pro 上达到了百分之六十九点二。",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它现在以综合得分领先 Artificial Analysis Intelligence Index。",
+      "text_markdown": "它现在以综合得分领先 Artificial Analysis Intelligence Index。",
+      "title": "",
+      "tts": {
+        "text": "它现在以综合得分领先 Artificial Analysis Intelligence Index。",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这是 Anthropic 首次在该榜单上领先。",
+      "text_markdown": "这是 Anthropic 首次在该榜单上领先。",
+      "title": "",
+      "tts": {
+        "text": "这是 Anthropic 首次在该榜单上领先。",
+        "pause_after_ms": 550,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "没错。",
+      "text_markdown": "没错。",
+      "title": "",
+      "tts": {
+        "text": "没错。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GPT-5.5 落后一分，Gemini 3.5 Pro 则落后几分。",
+      "text_markdown": "GPT-5.5 落后一分，Gemini 3.5 Pro 则落后几分。",
+      "title": "",
+      "tts": {
+        "text": "GPT 五点五落后一分，Gemini 三点五 Pro 则落后几分。",
+        "pause_after_ms": 273,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "封闭模型阵营的榜首竞争非常激烈。",
+      "text_markdown": "封闭模型阵营的榜首竞争非常激烈。",
+      "title": "",
+      "tts": {
+        "text": "封闭模型阵营的榜首竞争非常激烈。",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "但本周真正的评估故事是另一回事。",
+      "text_markdown": "但本周真正的评估故事是另一回事。",
+      "title": "",
+      "tts": {
+        "text": "但本周真正的评估故事是另一回事。",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "是的，真正的故事是关于完整性。",
+      "text_markdown": "是的，真正的故事是关于完整性。",
+      "title": "",
+      "tts": {
+        "text": "是的，真正的故事是关于完整性。",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI 已经实际上停止报告 SWE-bench Verified 的结果。",
+      "text_markdown": "OpenAI 已经实际上停止报告 SWE-bench Verified 的结果。",
+      "title": "",
+      "tts": {
+        "text": "OpenAI 已经实际上停止报告 SWE-bench Verified 的结果。",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这项污染审计发现，大约 59% 的难题存在有缺陷的单元测试，模型可以逐字逐句地从训练数据中回忆出正确补丁内容。",
+      "text_markdown": "这项污染审计发现，大约 59% 的难题存在有缺陷的单元测试，模型可以逐字逐句地从训练数据中回忆出正确补丁内容。",
+      "title": "",
+      "tts": {
+        "text": "这项污染审计发现，大约百分之五十九的难题存在有缺陷的单元测试，模型可以逐字逐句地从训练数据中回忆出正确补丁内容。",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "所以高分衡量的是记忆力。",
+      "text_markdown": "所以高分衡量的是记忆力。",
+      "title": "",
+      "tts": {
+        "text": "所以高分衡量的是记忆力。",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "通常是这样，是的。",
+      "text_markdown": "通常是这样，是的。",
+      "title": "",
+      "tts": {
+        "text": "通常是这样，是的。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Pro 版本包含新任务和更难的脚手架——这是新的信号。",
+      "text_markdown": "Pro 版本包含新任务和更难的脚手架——这是新的信号。",
+      "title": "",
+      "tts": {
+        "text": "Pro 版本包含新任务和更难的脚手架——这是新的信号。",
+        "pause_after_ms": 246,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这是对我们上周有所保留的污染担忧的机构性证实。",
+      "text_markdown": "这是对我们上周有所保留的污染担忧的机构性证实。",
+      "title": "",
+      "tts": {
+        "text": "这是对我们上周有所保留的污染担忧的机构性证实。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "还有一份方法论论文吗？",
+      "text_markdown": "还有一份方法论论文吗？",
+      "title": "",
+      "tts": {
+        "text": "还有一份方法论论文吗？",
+        "pause_after_ms": 309,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "有一份来自 Kili Technology 团队的敏锐报告。",
+      "text_markdown": "有一份来自 Kili Technology 团队的敏锐报告。",
+      "title": "",
+      "tts": {
+        "text": "有一份来自 Kili Technology 团队的敏锐报告。",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "他们将相同的模型权重通过五个常见的评估工具运行。",
+      "text_markdown": "他们将相同的模型权重通过五个常见的评估工具运行。",
+      "title": "",
+      "tts": {
+        "text": "他们将相同的模型权重通过五个常见的评估工具运行。",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "分数仅因选择不同的工具而相差百分之十到百分之二十。",
+      "text_markdown": "分数仅因选择不同的工具而相差百分之十到百分之二十。",
+      "title": "",
+      "tts": {
+        "text": "分数仅因选择不同的工具而相差百分之十到百分之二十。",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "同样的权重，不同的结果。",
+      "text_markdown": "同样的权重，不同的结果。",
+      "title": "",
+      "tts": {
+        "text": "同样的权重，不同的结果。",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "没错。",
+      "text_markdown": "没错。",
+      "title": "",
+      "tts": {
+        "text": "没错。",
+        "pause_after_ms": 249,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "他们的结论是，排行榜排名不再是采购的买家级信号。",
+      "text_markdown": "他们的结论是，排行榜排名不再是采购的买家级信号。",
+      "title": "",
+      "tts": {
+        "text": "他们的结论是，排行榜排名不再是采购的买家级信号。",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "对于自己动手（DIY）的开发者来说，这个结论更为尖锐——在自己的提示上运行自己的评估。",
+      "text_markdown": "对于自己动手（DIY）的开发者来说，这个结论更为尖锐——在自己的提示上运行自己的评估。",
+      "title": "",
+      "tts": {
+        "text": "对于自己动手（DIY）的开发者来说，这个结论更为尖锐——在自己的提示上运行自己的评估。",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这实际上又回到了 MSA 和 Nemotron Ultra。",
+      "text_markdown": "这实际上又回到了 MSA 和 Nemotron Ultra。",
+      "title": "",
+      "tts": {
+        "text": "这实际上又回到了 M S A 和 Nemotron Ultra。",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "确实如此。",
+      "text_markdown": "确实如此。",
+      "title": "",
+      "tts": {
+        "text": "确实如此。",
+        "pause_after_ms": 205,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "相信架构和你自己的测试，而不是别人的图表。",
+      "text_markdown": "相信架构和你自己的测试，而不是别人的图表。",
+      "title": "",
+      "tts": {
+        "text": "相信架构和你自己的测试，而不是别人的图表。",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "排行榜就说到这里吧。",
+      "text_markdown": "排行榜就说到这里吧。",
+      "title": "",
+      "tts": {
+        "text": "排行榜就说到这里吧。",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "现在来看头条新闻。",
+      "text_markdown": "现在来看头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "现在来看头条新闻。",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "快速剪辑，开放生态系统视角。",
+      "text_markdown": "快速剪辑，开放生态系统视角。",
+      "title": "",
+      "tts": {
+        "text": "快速剪辑，开放生态系统视角。",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "首先，微软 Build 大会于 6 月 2 日举行。",
+      "text_markdown": "首先，微软 Build 大会于 6 月 2 日举行。",
+      "title": "",
+      "tts": {
+        "text": "首先，微软 Build 大会于六月二日举行。",
+        "pause_after_ms": 256,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "微软展示了两款第一方模型——MAI-Thinking-1 和 MAI-Code-1-Flash。",
+      "text_markdown": "微软展示了两款第一方模型——MAI-Thinking-1 和 MAI-Code-1-Flash。",
+      "title": "",
+      "tts": {
+        "text": "微软展示了两款第一方模型——M A I Thinking 一和 M A I Code 一 Flash。",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "它们有什么特别之处？",
+      "text_markdown": "它们有什么特别之处？",
+      "title": "",
+      "tts": {
+        "text": "它们有什么特别之处？",
+        "pause_after_ms": 332,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Thinking-1 是一个拥有三百五十亿活跃参数的稀疏专家混合模型，具有二十五万六千个 token 的上下文窗口。",
+      "text_markdown": "Thinking-1 是一个拥有三百五十亿活跃参数的稀疏专家混合模型，具有二十五万六千个 token 的上下文窗口。",
+      "title": "",
+      "tts": {
+        "text": "Thinking 一是一个拥有三百五十亿活跃参数的稀疏专家混合模型，具有二十五万六千个 token 的上下文窗口。",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "微软特别指出，它是在商业许可数据上训练的，没有从任何第三方模型中进行蒸馏。",
+      "text_markdown": "微软特别指出，它是在商业许可数据上训练的，没有从任何第三方模型中进行蒸馏。",
+      "title": "",
+      "tts": {
+        "text": "微软特别指出，它是在商业许可数据上训练的，没有从任何第三方模型中进行蒸馏。",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这很不寻常。",
+      "text_markdown": "这很不寻常。",
+      "title": "",
+      "tts": {
+        "text": "这很不寻常。",
+        "pause_after_ms": 502,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "非常不寻常，考虑到该领域的其他部分多么依赖前沿模型生成的合成数据。",
+      "text_markdown": "非常不寻常，考虑到该领域的其他部分多么依赖前沿模型生成的合成数据。",
+      "title": "",
+      "tts": {
+        "text": "非常不寻常，考虑到该领域的其他部分多么依赖前沿模型生成的合成数据。",
+        "pause_after_ms": 294,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Code-1-Flash 是更便宜的版本——它于 6 月 2 日开始向所有 GitHub Copilot 层级推出。",
+      "text_markdown": "Code-1-Flash 是更便宜的版本——它于 6 月 2 日开始向所有 GitHub Copilot 层级推出。",
+      "title": "",
+      "tts": {
+        "text": "Code 一 Flash 是更便宜的版本——它于六月二日开始向所有 GitHub Copilot 层级推出。",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "因此，微软现在在 Copilot Studio 中同时提供 Mistral、DeepSeek、OpenAI 和其自己的 MAI 模型。",
+      "text_markdown": "因此，微软现在在 Copilot Studio 中同时提供 Mistral、DeepSeek、OpenAI 和其自己的 MAI 模型。",
+      "title": "",
+      "tts": {
+        "text": "因此，微软现在在 Copilot Studio 中同时提供 Mistral、DeepSeek、OpenAI 和其自己的 M A I 模型。",
+        "pause_after_ms": 597,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "第二个头条新闻？",
+      "text_markdown": "第二个头条新闻？",
+      "title": "",
+      "tts": {
+        "text": "第二个头条新闻？",
+        "pause_after_ms": 344,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic 于 6 月 1 日向 SEC 秘密提交了 S-1 文件。",
+      "text_markdown": "Anthropic 于 6 月 1 日向 SEC 秘密提交了 S-1 文件。",
+      "title": "",
+      "tts": {
+        "text": "Anthropic 于六月一日向 S E C 秘密提交了 S 一文件。",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这是启动公开上市程序的文书工作。",
+      "text_markdown": "这是启动公开上市程序的文书工作。",
+      "title": "",
+      "tts": {
+        "text": "这是启动公开上市程序的文书工作。",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "他们公布的年化收入约为四百七十亿美元，高于一年前的大约一百亿美元。",
+      "text_markdown": "他们公布的年化收入约为四百七十亿美元，高于一年前的大约一百亿美元。",
+      "title": "",
+      "tts": {
+        "text": "他们公布的年化收入约为四百七十亿美元，高于一年前的大约一百亿美元。",
+        "pause_after_ms": 280,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "目前还没有股票代码、价格区间、日期——只有文书工作。",
+      "text_markdown": "目前还没有股票代码、价格区间、日期——只有文书工作。",
+      "title": "",
+      "tts": {
+        "text": "目前还没有股票代码、价格区间、日期——只有文书工作。",
+        "pause_after_ms": 547,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "第三个。",
+      "text_markdown": "第三个。",
+      "title": "",
+      "tts": {
+        "text": "第三个。",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "GitHub Copilot 于 6 月 1 日转向基于使用量的计费模式。",
+      "text_markdown": "GitHub Copilot 于 6 月 1 日转向基于使用量的计费模式。",
+      "title": "",
+      "tts": {
+        "text": "GitHub Copilot 于六月一日转向基于使用量的计费模式。",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "现在所有计划都按照底层模型 API 的相同费率计量输入、输出和缓存的 token。",
+      "text_markdown": "现在所有计划都按照底层模型 API 的相同费率计量输入、输出和缓存的 token。",
+      "title": "",
+      "tts": {
+        "text": "现在所有计划都按照底层模型 API 的相同费率计量输入、输出和缓存的 token。",
+        "pause_after_ms": 284,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "他们通过为每个层级分配一定额度的积分，并为重度代理用户推出每月一百美元的新 Copilot Max 计划，来缓解这一转变。",
+      "text_markdown": "他们通过为每个层级分配一定额度的积分，并为重度代理用户推出每月一百美元的新 Copilot Max 计划，来缓解这一转变。",
+      "title": "",
+      "tts": {
+        "text": "他们通过为每个层级分配一定额度的积分，并为重度代理用户推出每月一百美元的新 Copilot Max 计划，来缓解这一转变。",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "开发者对此有何看法？",
+      "text_markdown": "开发者对此有何看法？",
+      "title": "",
+      "tts": {
+        "text": "开发者对此有何看法？",
+        "pause_after_ms": 390,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "有些观点相当犀利。",
+      "text_markdown": "有些观点相当犀利。",
+      "title": "",
+      "tts": {
+        "text": "有些观点相当犀利。",
+        "pause_after_ms": 277,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "使用代理循环的重度用户报告称，预计账单比旧的固定费用高出数倍。",
+      "text_markdown": "使用代理循环的重度用户报告称，预计账单比旧的固定费用高出数倍。",
+      "title": "",
+      "tts": {
+        "text": "使用代理循环的重度用户报告称，预计账单比旧的固定费用高出数倍。",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这对我们的头条新闻很重要——记住这一点。",
+      "text_markdown": "这对我们的头条新闻很重要——记住这一点。",
+      "title": "",
+      "tts": {
+        "text": "这对我们的头条新闻很重要——记住这一点。",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "第四，这个周末有什么需要打补丁的吗？",
+      "text_markdown": "第四，这个周末有什么需要打补丁的吗？",
+      "title": "",
+      "tts": {
+        "text": "第四，这个周末有什么需要打补丁的吗？",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "是的，SGLang 零点五点十一及以下版本存在一个缓存拒绝服务漏洞，于 6 月 3 日披露。",
+      "text_markdown": "是的，SGLang 零点五点十一及以下版本存在一个缓存拒绝服务漏洞，于 6 月 3 日披露。",
+      "title": "",
+      "tts": {
+        "text": "是的，S G Lang 零点五点十一及以下版本存在一个缓存拒绝服务漏洞，于六月三日披露。",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "标识符是 CVE-2026-10775，严重性低，仅限本地利用——但如果您使用 SGLang 提供服务，请在周一打补丁。",
+      "text_markdown": "标识符是 CVE-2026-10775，严重性低，仅限本地利用——但如果您使用 SGLang 提供服务，请在周一打补丁。",
+      "title": "",
+      "tts": {
+        "text": "标识符是 C V E 二零二六杠一零七七五，严重性低，仅限本地利用——但如果您使用 S G Lang 提供服务，请在周一打补丁。",
+        "pause_after_ms": 579,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "再来一个。",
+      "text_markdown": "再来一个。",
+      "title": "",
+      "tts": {
+        "text": "再来一个。",
+        "pause_after_ms": 455,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Unsloth Studio 发布了一个更新，可以将完整的微调直接导出为 GGUF 格式——而不仅仅是适配器权重。",
+      "text_markdown": "Unsloth Studio 发布了一个更新，可以将完整的微调直接导出为 GGUF 格式——而不仅仅是适配器权重。",
+      "title": "",
+      "tts": {
+        "text": "Unsloth Studio 发布了一个更新，可以将完整的微调直接导出为 G G U F 格式——而不仅仅是适配器权重。",
+        "pause_after_ms": 274,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "一张 24 GB 的消费级显卡现在足以进行有用的运行。",
+      "text_markdown": "一张 24 GB 的消费级显卡现在足以进行有用的运行。",
+      "title": "",
+      "tts": {
+        "text": "一张二十四吉字节的消费级显卡现在足以进行有用的运行。",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这就是让本集其余内容成为现实的简单管道。",
+      "text_markdown": "这就是让本集其余内容成为现实的简单管道。",
+      "title": "",
+      "tts": {
+        "text": "这就是让本集其余内容成为现实的简单管道。",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "现在我们回到头条新闻。",
+      "text_markdown": "现在我们回到头条新闻。",
+      "title": "",
+      "tts": {
+        "text": "现在我们回到头条新闻。",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "你提到了一个设备。",
+      "text_markdown": "你提到了一个设备。",
+      "title": "",
+      "tts": {
+        "text": "你提到了一个设备。",
+        "pause_after_ms": 495,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "是的，核心是这个——本周，DIY 设备成熟了。",
+      "text_markdown": "是的，核心是这个——本周，DIY 设备成熟了。",
+      "title": "",
+      "tts": {
+        "text": "是的，核心是这个——本周，D I Y 设备成熟了。",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "从硬件开始。",
+      "text_markdown": "从硬件开始。",
+      "title": "",
+      "tts": {
+        "text": "从硬件开始。",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "现在有两款盒子以消费级价格实际发货了。",
+      "text_markdown": "现在有两款盒子以消费级价格实际发货了。",
+      "title": "",
+      "tts": {
+        "text": "现在有两款盒子以消费级价格实际发货了。",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "AMD 于 6 月份开放了 Ryzen AI Halo 迷你 PC 的预订，售价为 3999 美元。",
+      "text_markdown": "AMD 于 6 月份开放了 Ryzen AI Halo 迷你 PC 的预订，售价为 3999 美元。",
+      "title": "",
+      "tts": {
+        "text": "A M D 于六月份开放了 Ryzen A I Halo 迷你 P C 的预订，售价为三千九百九十九美元。",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它运行 Ryzen AI Max Plus 395，配备 128 GB 统一 LPDDR5x 内存，目前仅在 Micro Center 独家销售。",
+      "text_markdown": "它运行 Ryzen AI Max Plus 395，配备 128 GB 统一 LPDDR5x 内存，目前仅在 Micro Center 独家销售。",
+      "title": "",
+      "tts": {
+        "text": "它运行 Ryzen A I Max Plus 三百九十五，配备一百二十八吉字节统一 L P D D R 五 x 内存，目前仅在 Micro Center 独家销售。",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那英伟达这边呢？",
+      "text_markdown": "那英伟达这边呢？",
+      "title": "",
+      "tts": {
+        "text": "那英伟达这边呢？",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "英伟达的 DGX Spark 是可与之媲美的盒子。",
+      "text_markdown": "英伟达的 DGX Spark 是可与之媲美的盒子。",
+      "title": "",
+      "tts": {
+        "text": "英伟达的 D G X Spark 是可与之媲美的盒子。",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它搭载 GB10 Grace Blackwell 芯片，并配备相同的 128 GB 统一内存。",
+      "text_markdown": "它搭载 GB10 Grace Blackwell 芯片，并配备相同的 128 GB 统一内存。",
+      "title": "",
+      "tts": {
+        "text": "它搭载 G B 十 Grace Blackwell 芯片，并配备相同的一百二十八吉字节统一内存。",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "价格最近从 3999 美元涨到 4699 美元，归咎于全球内存供应紧张。",
+      "text_markdown": "价格最近从 3999 美元涨到 4699 美元，归咎于全球内存供应紧张。",
+      "title": "",
+      "tts": {
+        "text": "价格最近从三千九百九十九美元涨到四千六百九十九美元，归咎于全球内存供应紧张。",
+        "pause_after_ms": 600,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这些设备实际能容纳多大的模型？",
+      "text_markdown": "这些设备实际能容纳多大的模型？",
+      "title": "",
+      "tts": {
+        "text": "这些设备实际能容纳多大的模型？",
+        "pause_after_ms": 387,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-143",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "在四比特量化下，可达约 2000 亿参数，并留有上下文空间。",
+      "text_markdown": "在四比特量化下，可达约 2000 亿参数，并留有上下文空间。",
+      "title": "",
+      "tts": {
+        "text": "在四比特量化下，可达约两千亿参数，并留有上下文空间。",
+        "pause_after_ms": 271,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-144",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "通过 ConnectX-7 将两台 DGX Spark 配对，您将进入大约 4000 亿参数的领域。",
+      "text_markdown": "通过 ConnectX-7 将两台 DGX Spark 配对，您将进入大约 4000 亿参数的领域。",
+      "title": "",
+      "tts": {
+        "text": "通过 Connect X 七将两台 D G X Spark 配对，您将进入大约四千亿参数的领域。",
+        "pause_after_ms": 214,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-145",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这确实是台面上一个前沿级别的足迹。",
+      "text_markdown": "这确实是台面上一个前沿级别的足迹。",
+      "title": "",
+      "tts": {
+        "text": "这确实是台面上一个前沿级别的足迹。",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-146",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "现在是软件栈。",
+      "text_markdown": "现在是软件栈。",
+      "title": "",
+      "tts": {
+        "text": "现在是软件栈。",
+        "pause_after_ms": 471,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-147",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这就是在我们脚下发生的变化。",
+      "text_markdown": "这就是在我们脚下发生的变化。",
+      "title": "",
+      "tts": {
+        "text": "这就是在我们脚下发生的变化。",
+        "pause_after_ms": 208,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-148",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "对于推理，您有 vLLM、SGLang、llama.cpp、Ollama 和 Apple Silicon 上的 MLX——所有这些都得到维护，并且速度很快。",
+      "text_markdown": "对于推理，您有 vLLM、SGLang、llama.cpp、Ollama 和 Apple Silicon 上的 MLX——所有这些都得到维护，并且速度很快。",
+      "title": "",
+      "tts": {
+        "text": "对于推理，您有 v L L M、S G Lang、llama C P P、Ollama 和 Apple Silicon 上的 M L X——所有这些都得到维护，并且速度很快。",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-149",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "至于模型本身，本周有 Nemotron 3 Ultra 权重，以及 Kimi K2.6、DeepSeek V4-Flash、GLM-5.1 和即将推出的 MiniMax M3 权重。",
+      "text_markdown": "至于模型本身，本周有 Nemotron 3 Ultra 权重，以及 Kimi K2.6、DeepSeek V4-Flash、GLM-5.1 和即将推出的 MiniMax M3 权重。",
+      "title": "",
+      "tts": {
+        "text": "至于模型本身，本周有 Nemotron 三 Ultra 权重，以及 Kimi K 二点六、DeepSeek V 四 Flash、G L M 五点一 和即将推出的 MiniMax M 三 权重。",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-150",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "对于微调，Unsloth Studio 现在可以一键将完整微调导出为 GGUF 格式。",
+      "text_markdown": "对于微调，Unsloth Studio 现在可以一键将完整微调导出为 GGUF 格式。",
+      "title": "",
+      "tts": {
+        "text": "对于微调，Unsloth Studio 现在可以一键将完整微调导出为 G G U F 格式。",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-151",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "对于代理，你有 Aider、Continue 和 LangGraph 版本一，它们运行着本地的三百二十亿参数模型，具有可用的可靠性。",
+      "text_markdown": "对于代理，你有 Aider、Continue 和 LangGraph 版本一，它们运行着本地的三百二十亿参数模型，具有可用的可靠性。",
+      "title": "",
+      "tts": {
+        "text": "对于代理，你有 Aider、Continue 和 LangGraph 版本一，它们运行着本地的三百二十亿参数模型，具有可用的可靠性。",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-152",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这就是整个循环。",
+      "text_markdown": "这就是整个循环。",
+      "title": "",
+      "tts": {
+        "text": "这就是整个循环。",
+        "pause_after_ms": 569,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-153",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "这就是整个循环。",
+      "text_markdown": "这就是整个循环。",
+      "title": "",
+      "tts": {
+        "text": "这就是整个循环。",
+        "pause_after_ms": 288,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-154",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "芯片、引擎、模型、微调、代理——每一层都有可靠的开放选项，而底层现在是一台桌面迷你电脑。",
+      "text_markdown": "芯片、引擎、模型、微调、代理——每一层都有可靠的开放选项，而底层现在是一台桌面迷你电脑。",
+      "title": "",
+      "tts": {
+        "text": "芯片、引擎、模型、微调、代理——每一层都有可靠的开放选项，而底层现在是一台桌面迷你电脑。",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-155",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那经济效益呢？",
+      "text_markdown": "那经济效益呢？",
+      "title": "",
+      "tts": {
+        "text": "那经济效益呢？",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-156",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "本周经济形势发生了翻天覆地的变化，显而易见。",
+      "text_markdown": "本周经济形势发生了翻天覆地的变化，显而易见。",
+      "title": "",
+      "tts": {
+        "text": "本周经济形势发生了翻天覆地的变化，显而易见。",
+        "pause_after_ms": 243,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-157",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "按令牌计费的 Copilot，Anthropic 的 S-1 文件预示着即将到来的价格压力，以及德克萨斯州、弗吉尼亚州和俄亥俄州关于夏季电力紧张的电网警告。",
+      "text_markdown": "按令牌计费的 Copilot，Anthropic 的 S-1 文件预示着即将到来的价格压力，以及德克萨斯州、弗吉尼亚州和俄亥俄州关于夏季电力紧张的电网警告。",
+      "title": "",
+      "tts": {
+        "text": "按令牌计费的 Copilot，Anthropic 的 S 一 文件预示着即将到来的价格压力，以及德克萨斯州、弗吉尼亚州和俄亥俄州关于夏季电力紧张的电网警告。",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-158",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "自托管的理由过去是出于意识形态。",
+      "text_markdown": "自托管的理由过去是出于意识形态。",
+      "title": "",
+      "tts": {
+        "text": "自托管的理由过去是出于意识形态。",
+        "pause_after_ms": 211,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-159",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "本周它变成了一张电子表格。",
+      "text_markdown": "本周它变成了一张电子表格。",
+      "title": "",
+      "tts": {
+        "text": "本周它变成了一张电子表格。",
+        "pause_after_ms": 567,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-160",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "坦诚面对未曾改变的事实。",
+      "text_markdown": "坦诚面对未曾改变的事实。",
+      "title": "",
+      "tts": {
+        "text": "坦诚面对未曾改变的事实。",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-161",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "重要提示——在质量排行榜上，你的台式机无法超越云端。",
+      "text_markdown": "重要提示——在质量排行榜上，你的台式机无法超越云端。",
+      "title": "",
+      "tts": {
+        "text": "重要提示——在质量排行榜上，你的台式机无法超越云端。",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-162",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 仍然在综合排名中领先，GPT-5.5 仍然主导着 BrowseComp。",
+      "text_markdown": "Opus 4.8 仍然在综合排名中领先，GPT-5.5 仍然主导着 BrowseComp。",
+      "title": "",
+      "tts": {
+        "text": "Opus 四点八 仍然在综合排名中领先，GPT 五点五 仍然主导着 BrowseComp。",
+        "pause_after_ms": 239,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-163",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "本周改变的是下限。",
+      "text_markdown": "本周改变的是下限。",
+      "title": "",
+      "tts": {
+        "text": "本周改变的是下限。",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-164",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "具备代理级别、可微调的模型，运行在你自己的硬件上，并且权重是开放的。",
+      "text_markdown": "具备代理级别、可微调的模型，运行在你自己的硬件上，并且权重是开放的。",
+      "title": "",
+      "tts": {
+        "text": "具备代理级别、可微调的模型，运行在你自己的硬件上，并且权重是开放的。",
+        "pause_after_ms": 552,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-165",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这就是故事。",
+      "text_markdown": "这就是故事。",
+      "title": "",
+      "tts": {
+        "text": "这就是故事。",
+        "pause_after_ms": 488,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-166",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "过去这需要一个数据中心。",
+      "text_markdown": "过去这需要一个数据中心。",
+      "title": "",
+      "tts": {
+        "text": "过去这需要一个数据中心。",
+        "pause_after_ms": 234,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-167",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "本周，它只需要一个台面。",
+      "text_markdown": "本周，它只需要一个台面。",
+      "title": "",
+      "tts": {
+        "text": "本周，它只需要一个台面。",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-168",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "让我们来谈谈本周的概念。",
+      "text_markdown": "让我们来谈谈本周的概念。",
+      "title": "",
+      "tts": {
+        "text": "让我们来谈谈本周的概念。",
+        "pause_after_ms": 276,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-169",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "你选择了推测解码。",
+      "text_markdown": "你选择了推测解码。",
+      "title": "",
+      "tts": {
+        "text": "你选择了推测解码。",
+        "pause_after_ms": 539,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-170",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "我确实选了，因为正是这个技巧让刚才我们谈论的一切都感觉很快。",
+      "text_markdown": "我确实选了，因为正是这个技巧让刚才我们谈论的一切都感觉很快。",
+      "title": "",
+      "tts": {
+        "text": "我确实选了，因为正是这个技巧让刚才我们谈论的一切都感觉很快。",
+        "pause_after_ms": 209,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-171",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "MiniMax 声称的十五倍解码速度依赖于一个相对值。",
+      "text_markdown": "MiniMax 声称的十五倍解码速度依赖于一个相对值。",
+      "title": "",
+      "tts": {
+        "text": "MiniMax 声称的十五倍解码速度依赖于一个相对值。",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-172",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Llama.cpp 的草稿模型模式正是这个想法。",
+      "text_markdown": "Llama.cpp 的草稿模型模式正是这个想法。",
+      "title": "",
+      "tts": {
+        "text": "Llama.cpp 的草稿模型模式正是这个想法。",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-173",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "详细给我们讲讲。",
+      "text_markdown": "详细给我们讲讲。",
+      "title": "",
+      "tts": {
+        "text": "详细给我们讲讲。",
+        "pause_after_ms": 496,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-174",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "你同时运行两个模型。",
+      "text_markdown": "你同时运行两个模型。",
+      "title": "",
+      "tts": {
+        "text": "你同时运行两个模型。",
+        "pause_after_ms": 204,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-175",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "一个小型、快速的模型，称为“草稿器”，以及一个大型、缓慢的模型，称为“验证器”。",
+      "text_markdown": "一个小型、快速的模型，称为“草稿器”，以及一个大型、缓慢的模型，称为“验证器”。",
+      "title": "",
+      "tts": {
+        "text": "一个小型、快速的模型，称为“草稿器”，以及一个大型、缓慢的模型，称为“验证器”。",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-176",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "草稿器一次性猜测，比如说，接下来的四个令牌。",
+      "text_markdown": "草稿器一次性猜测，比如说，接下来的四个令牌。",
+      "title": "",
+      "tts": {
+        "text": "草稿器一次性猜测，比如说，接下来的四个令牌。",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-177",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "验证器并行检查所有四个。",
+      "text_markdown": "验证器并行检查所有四个。",
+      "title": "",
+      "tts": {
+        "text": "验证器并行检查所有四个。",
+        "pause_after_ms": 542,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-178",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "然后呢？",
+      "text_markdown": "然后呢？",
+      "title": "",
+      "tts": {
+        "text": "然后呢？",
+        "pause_after_ms": 319,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-179",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "如果验证器同意，你就保留所有四个并继续——你只用大约一个令牌的成本就完成了四个令牌。",
+      "text_markdown": "如果验证器同意，你就保留所有四个并继续——你只用大约一个令牌的成本就完成了四个令牌。",
+      "title": "",
+      "tts": {
+        "text": "如果验证器同意，你就保留所有四个并继续——你只用大约一个令牌的成本就完成了四个令牌。",
+        "pause_after_ms": 263,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-180",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "如果它不同意，你就接受第一个不匹配之前的，然后让大型模型从那里接管。",
+      "text_markdown": "如果它不同意，你就接受第一个不匹配之前的，然后让大型模型从那里接管。",
+      "title": "",
+      "tts": {
+        "text": "如果它不同意，你就接受第一个不匹配之前的，然后让大型模型从那里接管。",
+        "pause_after_ms": 571,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-181",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "那么答案是相同的。",
+      "text_markdown": "那么答案是相同的。",
+      "title": "",
+      "tts": {
+        "text": "那么答案是相同的。",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-182",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "对，这正是巧妙之处。",
+      "text_markdown": "对，这正是巧妙之处。",
+      "title": "",
+      "tts": {
+        "text": "对，这正是巧妙之处。",
+        "pause_after_ms": 266,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-183",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "输出结果与大型模型独立生成的结果完全一致。",
+      "text_markdown": "输出结果与大型模型独立生成的结果完全一致。",
+      "title": "",
+      "tts": {
+        "text": "输出结果与大型模型独立生成的结果完全一致。",
+        "pause_after_ms": 260,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-184",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "你只是为它更少的正向传播次数付费。",
+      "text_markdown": "你只是为它更少的正向传播次数付费。",
+      "title": "",
+      "tts": {
+        "text": "你只是为它更少的正向传播次数付费。",
+        "pause_after_ms": 528,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-185",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这对一个修补匠来说有什么关系呢？",
+      "text_markdown": "这对一个修补匠来说有什么关系呢？",
+      "title": "",
+      "tts": {
+        "text": "这对一个修补匠来说有什么关系呢？",
+        "pause_after_ms": 385,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-186",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "因为它将一个单卡上的七百亿参数模型从一个新奇事物变成了一个可用的对话。",
+      "text_markdown": "因为它将一个单卡上的七百亿参数模型从一个新奇事物变成了一个可用的对话。",
+      "title": "",
+      "tts": {
+        "text": "因为它将一个单卡上的七百亿参数模型从一个新奇事物变成了一个可用的对话。",
+        "pause_after_ms": 226,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-187",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "而在手机上，它是一个真正的设备端助手感觉灵敏的原因之一。",
+      "text_markdown": "而在手机上，它是一个真正的设备端助手感觉灵敏的原因之一。",
+      "title": "",
+      "tts": {
+        "text": "而在手机上，它是一个真正的设备端助手感觉灵敏的原因之一。",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-188",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "上周的概念，神经音频编解码器，是相同技巧的音频版本——用更少的昂贵步骤获得相同的质量。",
+      "text_markdown": "上周的概念，神经音频编解码器，是相同技巧的音频版本——用更少的昂贵步骤获得相同的质量。",
+      "title": "",
+      "tts": {
+        "text": "上周的概念，神经音频编解码器，是相同技巧的音频版本——用更少的昂贵步骤获得相同的质量。",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-189",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "好奇的人接下来可以从哪里入手？",
+      "text_markdown": "好奇的人接下来可以从哪里入手？",
+      "title": "",
+      "tts": {
+        "text": "好奇的人接下来可以从哪里入手？",
+        "pause_after_ms": 348,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-190",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "查阅 EAGLE-3、Medusa 和 lookahead decoding。",
+      "text_markdown": "查阅 EAGLE-3、Medusa 和 lookahead decoding。",
+      "title": "",
+      "tts": {
+        "text": "查阅 Eagle 三、Medusa 和 lookahead decoding。",
+        "pause_after_ms": 264,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-191",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "它们是最初的 drafter-verifier 理念的现代近亲，也是你的推理引擎在幕后实际运行的东西。",
+      "text_markdown": "它们是最初的 drafter-verifier 理念的现代近亲，也是你的推理引擎在幕后实际运行的东西。",
+      "title": "",
+      "tts": {
+        "text": "它们是最初的 drafter verifier 理念的现代近亲，也是你的推理引擎在幕后实际运行的东西。",
+        "pause_after_ms": 591,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-192",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "很好的收尾。",
+      "text_markdown": "很好的收尾。",
+      "title": "",
+      "tts": {
+        "text": "很好的收尾。",
+        "pause_after_ms": 220,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-193",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "罗恩，谢谢你。",
+      "text_markdown": "罗恩，谢谢你。",
+      "title": "",
+      "tts": {
+        "text": "罗恩，谢谢你。",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-194",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "随时，温迪。",
+      "text_markdown": "随时，温迪。",
+      "title": "",
+      "tts": {
+        "text": "随时，温迪。",
+        "pause_after_ms": 468,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-195",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "这是2026年6月3日的《本周AI》。",
+      "text_markdown": "这是2026年6月3日的《本周AI》。",
+      "title": "",
+      "tts": {
+        "text": "这是二零二六年六月三日的《本周AI》。",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-196",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "下周三新一期。",
+      "text_markdown": "下周三新一期。",
+      "title": "",
+      "tts": {
+        "text": "下周三新一期。",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-197",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "在此之前，请保重。",
+      "text_markdown": "在此之前，请保重。",
+      "title": "",
+      "tts": {
+        "text": "在此之前，请保重。",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}

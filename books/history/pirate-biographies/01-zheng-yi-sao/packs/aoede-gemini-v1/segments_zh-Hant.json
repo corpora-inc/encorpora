@@ -1,0 +1,4637 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_zheng_yi_sao",
+  "language": "zh-Hant",
+  "total_segments": 310,
+  "segments": [
+    {
+      "sentence_index": 0,
+      "id": "ch00-001",
+      "paragraph_id": "p1",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "致讀者",
+      "text_markdown": "致讀者",
+      "title": "致讀者"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch00-002",
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "這是一個關於有史以來最成功的海盜的真實故事。",
+      "text_markdown": "這是一個關於有史以來最成功的海盜的真實故事。",
+      "title": "致讀者",
+      "tts": {
+        "text": "這是一個關於有史以來最成功的海盜的真實故事。",
+        "pause_after_ms": 2000
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch00-003",
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "她的名字是鄭一嫂，她指揮著世界上有史以來最龐大的海盜艦隊。",
+      "text_markdown": "她的名字是鄭一嫂，她指揮著世界上有史以來最龐大的海盜艦隊。",
+      "title": "致讀者",
+      "tts": {
+        "text": "她的名字是鄭一嫂，她指揮著世界上有史以來最龐大的海盜艦隊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch00-004",
+      "paragraph_id": "p2",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "在她權力鼎盛時期，她所控制的船隻數量比大多數國家擁有的還要多。",
+      "text_markdown": "在她權力鼎盛時期，她所控制的船隻數量比大多數國家擁有的還要多。",
+      "title": "致讀者",
+      "tts": {
+        "text": "在她權力鼎盛時期，她所控制的船隻數量比大多數國家擁有的還要多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch00-005",
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "她並非出身富裕或享有特權。",
+      "text_markdown": "她並非出身富裕或享有特權。",
+      "title": "致讀者",
+      "tts": {
+        "text": "她並非出身富裕或享有特權。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch00-006",
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "她出生於十八世紀末的中國南方，家境貧困。",
+      "text_markdown": "她出生於十八世紀末的中國南方，家境貧困。",
+      "title": "致讀者",
+      "tts": {
+        "text": "她出生於十八世紀末的中國南方，家境貧困。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch00-007",
+      "paragraph_id": "p3",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "她所取得的一切成就，都是透過智慧、冷酷無情以及非凡的組織能力所建立的。",
+      "text_markdown": "她所取得的一切成就，都是透過智慧、冷酷無情以及非凡的組織能力所建立的。",
+      "title": "致讀者",
+      "tts": {
+        "text": "她所取得的一切成就，都是透過智慧、冷酷無情以及非凡的組織能力所建立的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch00-008",
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "這本書講述了一個一無所有的女人如何成為南海無可爭議的統治者的故事。",
+      "text_markdown": "這本書講述了一個一無所有的女人如何成為南海無可爭議的統治者的故事。",
+      "title": "致讀者",
+      "tts": {
+        "text": "這本書講述了一個一無所有的女人如何成為南海無可爭議的統治者的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch00-009",
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "這是一個關於戰爭、貿易、法律和生存的故事。",
+      "text_markdown": "這是一個關於戰爭、貿易、法律和生存的故事。",
+      "title": "致讀者",
+      "tts": {
+        "text": "這是一個關於戰爭、貿易、法律和生存的故事。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch00-010",
+      "paragraph_id": "p4",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "這也是一個關於世界快速變化的故事，當時歐洲列強正深入亞洲。",
+      "text_markdown": "這也是一個關於世界快速變化的故事，當時歐洲列強正深入亞洲。",
+      "title": "致讀者",
+      "tts": {
+        "text": "這也是一個關於世界快速變化的故事，當時歐洲列強正深入亞洲。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch00-011",
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "本書中的每一個事實都來自歷史記載。",
+      "text_markdown": "本書中的每一個事實都來自歷史記載。",
+      "title": "致讀者",
+      "tts": {
+        "text": "本書中的每一個事實都來自歷史記載。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch00-012",
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "如果記載不確定，我們會特別說明。",
+      "text_markdown": "如果記載不確定，我們會特別說明。",
+      "title": "致讀者",
+      "tts": {
+        "text": "如果記載不確定，我們會特別說明。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch00-013",
+      "paragraph_id": "p5",
+      "part": 0,
+      "chapter": 0,
+      "block_type": "text",
+      "text": "如果歷史學家意見不一，我們將呈現現有最有力的證據。",
+      "text_markdown": "如果歷史學家意見不一，我們將呈現現有最有力的證據。",
+      "title": "致讀者",
+      "tts": {
+        "text": "如果歷史學家意見不一，我們將呈現現有最有力的證據。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-014",
+      "paragraph_id": "p6",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "南海的世界",
+      "text_markdown": "南海的世界",
+      "title": "南海的世界"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-015",
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "南海是地球上最繁忙的水道之一。",
+      "text_markdown": "南海是地球上最繁忙的水道之一。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "南海是地球上最繁忙的水道之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-016",
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "它西起越南海岸，東至菲律賓。",
+      "text_markdown": "它西起越南海岸，東至菲律賓。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "它西起越南海岸，東至菲律賓。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-017",
+      "paragraph_id": "p7",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "北臨中國海岸，南接婆羅洲和蘇門答臘島。",
+      "text_markdown": "北臨中國海岸，南接婆羅洲和蘇門答臘島。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "北臨中國海岸，南接婆羅洲和蘇門答臘島。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-018",
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "數千年來，商人一直在這些水域航行。",
+      "text_markdown": "數千年來，商人一直在這些水域航行。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "數千年來，商人一直在這些水域航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-019",
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "中國帆船將絲綢、瓷器和茶葉運往東南亞各港口。",
+      "text_markdown": "中國帆船將絲綢、瓷器和茶葉運往東南亞各港口。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "中國帆船將絲綢、瓷器和茶葉運往東南亞各港口。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-020",
+      "paragraph_id": "p8",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "作為回報，香料、熱帶木材和異國商品則運回中國。",
+      "text_markdown": "作為回報，香料、熱帶木材和異國商品則運回中國。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "作為回報，香料、熱帶木材和異國商品則運回中國。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-021",
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "廣東城，即現在的廣州，位於這項貿易的中心。",
+      "text_markdown": "廣東城，即現在的廣州，位於這項貿易的中心。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "廣東城，即現在的廣州，位於這項貿易的中心。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-022",
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "十八世紀時，廣東城是世界上最富裕的城市之一。",
+      "text_markdown": "十八世紀時，廣東城是世界上最富裕的城市之一。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "十八世紀時，廣東城是世界上最富裕的城市之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-023",
+      "paragraph_id": "p9",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "來自英國、法國、葡萄牙和荷蘭的外國商人，都競相爭奪進入其市場的機會。",
+      "text_markdown": "來自英國、法國、葡萄牙和荷蘭的外國商人，都競相爭奪進入其市場的機會。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "來自英國、法國、葡萄牙和荷蘭的外國商人，都競相爭奪進入其市場的機會。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-024",
+      "paragraph_id": "p10",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "清朝在此期間統治著中國。",
+      "text_markdown": "清朝在此期間統治著中國。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "清朝在此期間統治著中國。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-025",
+      "paragraph_id": "p10",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "清朝皇帝是滿族人，而非漢族人。",
+      "text_markdown": "清朝皇帝是滿族人，而非漢族人。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "清朝皇帝是滿族人，而非漢族人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-026",
+      "paragraph_id": "p10",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "他們於1644年征服了中國，並建立了世界上最大的帝國之一。",
+      "text_markdown": "他們於1644年征服了中國，並建立了世界上最大的帝國之一。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "他們於一六四四年征服了中國，並建立了世界上最大的帝國之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-027",
+      "paragraph_id": "p10",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "然而，到了十八世紀末，清朝開始衰弱。",
+      "text_markdown": "然而，到了十八世紀末，清朝開始衰弱。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "然而，到了十八世紀末，清朝開始衰弱。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-028",
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "腐敗在帝國官僚體系中蔓延。",
+      "text_markdown": "腐敗在帝國官僚體系中蔓延。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "腐敗在帝國官僚體系中蔓延。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-029",
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "稅吏向農民和漁民榨取每一分錢。",
+      "text_markdown": "稅吏向農民和漁民榨取每一分錢。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "稅吏向農民和漁民榨取每一分錢。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-030",
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "貧富差距年復一年地擴大。",
+      "text_markdown": "貧富差距年復一年地擴大。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "貧富差距年復一年地擴大。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-031",
+      "paragraph_id": "p11",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "在沿海省份，許多人生活在赤貧之中。",
+      "text_markdown": "在沿海省份，許多人生活在赤貧之中。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "在沿海省份，許多人生活在赤貧之中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-032",
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "廣東沿海的漁民社區是中國最貧困的地區之一。",
+      "text_markdown": "廣東沿海的漁民社區是中國最貧困的地區之一。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "廣東沿海的漁民社區是中國最貧困的地區之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-033",
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "整家人都住在稱為舢舨的小船上。",
+      "text_markdown": "整家人都住在稱為舢舨的小船上。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "整家人都住在稱為舢舨的小船上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-034",
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "他們生於水上，工作於水上，也死於水上。",
+      "text_markdown": "他們生於水上，工作於水上，也死於水上。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "他們生於水上，工作於水上，也死於水上。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-035",
+      "paragraph_id": "p12",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "帝國政府稱他們為蜑家（Tanka）人，並將他們視為賤民。",
+      "text_markdown": "帝國政府稱他們為蜑家（Tanka）人，並將他們視為賤民。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "帝國政府稱他們為蜑家（Tanka）人，並將他們視為賤民。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-036",
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "許多地區禁止蜑家家庭在陸上居住。",
+      "text_markdown": "許多地區禁止蜑家家庭在陸上居住。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "許多地區禁止蜑家家庭在陸上居住。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-037",
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "他們無法參加能帶來政府職位的科舉考試。",
+      "text_markdown": "他們無法參加能帶來政府職位的科舉考試。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "他們無法參加能帶來政府職位的科舉考試。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-038",
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "他們被法律和習俗排斥在中國主流社會之外。",
+      "text_markdown": "他們被法律和習俗排斥在中國主流社會之外。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "他們被法律和習俗排斥在中國主流社會之外。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-039",
+      "paragraph_id": "p13",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "世世代代以來，他們都沒有通往更好生活的道路。",
+      "text_markdown": "世世代代以來，他們都沒有通往更好生活的道路。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "世世代代以來，他們都沒有通往更好生活的道路。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-040",
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "海盜行為提供了一條替代道路。",
+      "text_markdown": "海盜行為提供了一條替代道路。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "海盜行為提供了一條替代道路。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-041",
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "如果無法透過合法途徑出人頭地，海洋則提供了自己的經濟模式。",
+      "text_markdown": "如果無法透過合法途徑出人頭地，海洋則提供了自己的經濟模式。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "如果無法透過合法途徑出人頭地，海洋則提供了自己的經濟模式。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-042",
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "海盜船隊襲擊商船，勒索漁村，並走私貨物以避開帝國巡邏隊。",
+      "text_markdown": "海盜船隊襲擊商船，勒索漁村，並走私貨物以避開帝國巡邏隊。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "海盜船隊襲擊商船，勒索漁村，並走私貨物以避開帝國巡邏隊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-043",
+      "paragraph_id": "p14",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "對於許多沿海貧民來說，加入海盜團夥是一個理性的經濟決定。",
+      "text_markdown": "對於許多沿海貧民來說，加入海盜團夥是一個理性的經濟決定。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "對於許多沿海貧民來說，加入海盜團夥是一個理性的經濟決定。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-044",
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "華南海域（南海）的水域是海盜活動的理想之地。",
+      "text_markdown": "華南海域（南海）的水域是海盜活動的理想之地。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "華南海域（南海）的水域是海盜活動的理想之地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-045",
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "數千個島嶼、海灣和河口提供了藏身之處。",
+      "text_markdown": "數千個島嶼、海灣和河口提供了藏身之處。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "數千個島嶼、海灣和河口提供了藏身之處。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-046",
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "濃霧和突如其來的風暴使得追捕變得困難。",
+      "text_markdown": "濃霧和突如其來的風暴使得追捕變得困難。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "濃霧和突如其來的風暴使得追捕變得困難。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-047",
+      "paragraph_id": "p15",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "一艘配備熟練船員的快速戎克船，可以在幾分鐘內消失在海岸線中。",
+      "text_markdown": "一艘配備熟練船員的快速戎克船，可以在幾分鐘內消失在海岸線中。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "一艘配備熟練船員的快速戎克船，可以在幾分鐘內消失在海岸線中。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-048",
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "同時，鴉片貿易開始重塑該地區。",
+      "text_markdown": "同時，鴉片貿易開始重塑該地區。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "同時，鴉片貿易開始重塑該地區。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-049",
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "英國商人將大量鴉片從印度運往中國。",
+      "text_markdown": "英國商人將大量鴉片從印度運往中國。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "英國商人將大量鴉片從印度運往中國。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-050",
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "這種毒品在中國是非法的，但利潤巨大，以至於貿易每年都在增長。",
+      "text_markdown": "這種毒品在中國是非法的，但利潤巨大，以至於貿易每年都在增長。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "這種毒品在中國是非法的，但利潤巨大，以至於貿易每年都在增長。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-051",
+      "paragraph_id": "p16",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "走私網絡沿著整個華南海岸延伸。",
+      "text_markdown": "走私網絡沿著整個華南海岸延伸。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "走私網絡沿著整個華南海岸延伸。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-052",
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "這就是孕育了鄭一嫂的世界。",
+      "text_markdown": "這就是孕育了鄭一嫂的世界。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "這就是孕育了鄭一嫂的世界。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-053",
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "一個財富懸殊、貧困交加的世界，僅由一條狹窄的海洋分隔。",
+      "text_markdown": "一個財富懸殊、貧困交加的世界，僅由一條狹窄的海洋分隔。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "一個財富懸殊、貧困交加的世界，僅由一條狹窄的海洋分隔。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-054",
+      "paragraph_id": "p17",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "一個帝國相互競爭，而海洋法則屬於有能力執行它的人的世界。",
+      "text_markdown": "一個帝國相互競爭，而海洋法則屬於有能力執行它的人的世界。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "一個帝國相互競爭，而海洋法則屬於有能力執行它的人的世界。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-055",
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "歐洲列強將中國視為一個有待打開的市場。",
+      "text_markdown": "歐洲列強將中國視為一個有待打開的市場。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "歐洲列強將中國視為一個有待打開的市場。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-056",
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "清朝政府將歐洲人視為需要管理的蠻夷。",
+      "text_markdown": "清朝政府將歐洲人視為需要管理的蠻夷。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "清朝政府將歐洲人視為需要管理的蠻夷。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-057",
+      "paragraph_id": "p18",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "而華南海域（南海）的海盜則從他們之間的混亂中看到了機會。",
+      "text_markdown": "而華南海域（南海）的海盜則從他們之間的混亂中看到了機會。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "而華南海域（南海）的海盜則從他們之間的混亂中看到了機會。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch01-058",
+      "paragraph_id": "p19",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "到一七九〇年，華南海域（南海）的海盜船隊數量已達數百艘。",
+      "text_markdown": "到一七九〇年，華南海域（南海）的海盜船隊數量已達數百艘。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "到一千七百九十年，華南海域（南海）的海盜船隊數量已達數百艘。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch01-059",
+      "paragraph_id": "p19",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "他們並非雜亂無章的罪犯。",
+      "text_markdown": "他們並非雜亂無章的罪犯。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "他們並非雜亂無章的罪犯。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch01-060",
+      "paragraph_id": "p19",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "許多海盜團夥以紀律嚴明的海軍力量運作，擁有等級制度和行為準則。",
+      "text_markdown": "許多海盜團夥以紀律嚴明的海軍力量運作，擁有等級制度和行為準則。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "許多海盜團夥以紀律嚴明的海軍力量運作，擁有等級制度和行為準則。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch01-061",
+      "paragraph_id": "p19",
+      "part": 0,
+      "chapter": 1,
+      "block_type": "text",
+      "text": "這些勢力中最大的一支即將成為歷史上最強大的海盜艦隊。",
+      "text_markdown": "這些勢力中最大的一支即將成為歷史上最強大的海盜艦隊。",
+      "title": "南海的世界",
+      "tts": {
+        "text": "這些勢力中最大的一支即將成為歷史上最強大的海盜艦隊。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-062",
+      "paragraph_id": "p20",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "起源",
+      "text_markdown": "起源",
+      "title": "起源"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-063",
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "這位後來成為鄭一嫂的女子出生於約1775年。",
+      "text_markdown": "這位後來成為鄭一嫂的女子出生於約1775年。",
+      "title": "起源",
+      "tts": {
+        "text": "這位後來成為鄭一嫂的女子出生於約一七七五年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-064",
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "在中文文獻中，她最常被稱為石香姑。",
+      "text_markdown": "在中文文獻中，她最常被稱為石香姑。",
+      "title": "起源",
+      "tts": {
+        "text": "在中文文獻中，她最常被稱為石香姑。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-065",
+      "paragraph_id": "p21",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "鄭一嫂這個名字的意思就是鄭一的妻子。",
+      "text_markdown": "鄭一嫂這個名字的意思就是鄭一的妻子。",
+      "title": "起源",
+      "tts": {
+        "text": "鄭一嫂這個名字的意思就是鄭一的妻子。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-066",
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她出生於廣東省的蜑家船居社區。",
+      "text_markdown": "她出生於廣東省的蜑家船居社區。",
+      "title": "起源",
+      "tts": {
+        "text": "她出生於廣東省的蜑家船居社區。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-067",
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她的家庭很貧窮，就像幾乎所有蜑家家庭一樣。",
+      "text_markdown": "她的家庭很貧窮，就像幾乎所有蜑家家庭一樣。",
+      "title": "起源",
+      "tts": {
+        "text": "她的家庭很貧窮，就像幾乎所有蜑家家庭一樣。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-068",
+      "paragraph_id": "p22",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她早年都在水上度過，學習著海岸的節奏。",
+      "text_markdown": "她早年都在水上度過，學習著海岸的節奏。",
+      "title": "起源",
+      "tts": {
+        "text": "她早年都在水上度過，學習著海岸的節奏。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-069",
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "年輕時，她在廣州港的一艘花船上工作。",
+      "text_markdown": "年輕時，她在廣州港的一艘花船上工作。",
+      "title": "起源",
+      "tts": {
+        "text": "年輕時，她在廣州港的一艘花船上工作。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-070",
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她們服務著來往於這個繁忙港口的船員、商人和漁民。",
+      "text_markdown": "她們服務著來往於這個繁忙港口的船員、商人和漁民。",
+      "title": "起源",
+      "tts": {
+        "text": "她們服務著來往於這個繁忙港口的船員、商人和漁民。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-071",
+      "paragraph_id": "p23",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "這是一份艱難而危險的工作，但它讓她獲得了同階層女性鮮少能接觸到的世界知識。",
+      "text_markdown": "這是一份艱難而危險的工作，但它讓她獲得了同階層女性鮮少能接觸到的世界知識。",
+      "title": "起源",
+      "tts": {
+        "text": "這是一份艱難而危險的工作，但它讓她獲得了同階層女性鮮少能接觸到的世界知識。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-072",
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她學會了快速而準確地識人。",
+      "text_markdown": "她學會了快速而準確地識人。",
+      "title": "起源",
+      "tts": {
+        "text": "她學會了快速而準確地識人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-073",
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她學會了貿易和談判的語言。",
+      "text_markdown": "她學會了貿易和談判的語言。",
+      "title": "起源",
+      "tts": {
+        "text": "她學會了貿易和談判的語言。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-074",
+      "paragraph_id": "p24",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "這些技能將證明比任何人預測的都更有價值。",
+      "text_markdown": "這些技能將證明比任何人預測的都更有價值。",
+      "title": "起源",
+      "tts": {
+        "text": "這些技能將證明比任何人預測的都更有價值。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-075",
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "1798年，一位名叫鄭一的海盜頭目俘獲了她所在的船隻。",
+      "text_markdown": "1798年，一位名叫鄭一的海盜頭目俘獲了她所在的船隻。",
+      "title": "起源",
+      "tts": {
+        "text": "一七九八年，一位名叫鄭一的海盜頭目俘獲了她所在的船隻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-076",
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他出身於一個世代相傳的海盜世家。",
+      "text_markdown": "他出身於一個世代相傳的海盜世家。",
+      "title": "起源",
+      "tts": {
+        "text": "他出身於一個世代相傳的海盜世家。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-077",
+      "paragraph_id": "p25",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他的家族曾支持明朝的殘餘勢力對抗清朝的征服者。",
+      "text_markdown": "他的家族曾支持明朝的殘餘勢力對抗清朝的征服者。",
+      "title": "起源",
+      "tts": {
+        "text": "他的家族曾支持明朝的殘餘勢力對抗清朝的征服者。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-078",
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "鄭一向這位年輕女子求婚。",
+      "text_markdown": "鄭一向這位年輕女子求婚。",
+      "title": "起源",
+      "tts": {
+        "text": "鄭一向這位年輕女子求婚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-079",
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "根據大多數記載，她並沒有簡單地接受。",
+      "text_markdown": "根據大多數記載，她並沒有簡單地接受。",
+      "title": "起源",
+      "tts": {
+        "text": "根據大多數記載，她並沒有簡單地接受。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-080",
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她在同意結婚之前，先談判了他們合作的條款。",
+      "text_markdown": "她在同意結婚之前，先談判了他們合作的條款。",
+      "title": "起源",
+      "tts": {
+        "text": "她在同意結婚之前，先談判了他們合作的條款。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-081",
+      "paragraph_id": "p26",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她要求平等分享他的艦隊，並在指揮決策中擁有平等的發言權。",
+      "text_markdown": "她要求平等分享他的艦隊，並在指揮決策中擁有平等的發言權。",
+      "title": "起源",
+      "tts": {
+        "text": "她要求平等分享他的艦隊，並在指揮決策中擁有平等的發言權。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-082",
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "這在當時是不同尋常的。",
+      "text_markdown": "這在當時是不同尋常的。",
+      "title": "起源",
+      "tts": {
+        "text": "這在當時是不同尋常的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-083",
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "清朝末期的女性幾乎沒有什麼法律權利。",
+      "text_markdown": "清朝末期的女性幾乎沒有什麼法律權利。",
+      "title": "起源",
+      "tts": {
+        "text": "清朝末期的女性幾乎沒有什麼法律權利。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-084",
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "妻子被期望無條件服從丈夫。",
+      "text_markdown": "妻子被期望無條件服從丈夫。",
+      "title": "起源",
+      "tts": {
+        "text": "妻子被期望無條件服從丈夫。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-085",
+      "paragraph_id": "p27",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "但這是海盜的世界，而海盜世界有它自己的規則。",
+      "text_markdown": "但這是海盜的世界，而海盜世界有它自己的規則。",
+      "title": "起源",
+      "tts": {
+        "text": "但這是海盜的世界，而海盜世界有它自己的規則。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-086",
+      "paragraph_id": "p28",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "鄭一同意了她的條件。",
+      "text_markdown": "鄭一同意了她的條件。",
+      "title": "起源",
+      "tts": {
+        "text": "鄭一同意了她的條件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-087",
+      "paragraph_id": "p28",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "歷史學家認為他認可了她的才智和作為領導者的潛力。",
+      "text_markdown": "歷史學家認為他認可了她的才智和作為領導者的潛力。",
+      "title": "起源",
+      "tts": {
+        "text": "歷史學家認為他認可了她的才智和作為領導者的潛力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-088",
+      "paragraph_id": "p28",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他們的婚姻既是個人情誼，也是一項戰略聯盟。",
+      "text_markdown": "他們的婚姻既是個人情誼，也是一項戰略聯盟。",
+      "title": "起源",
+      "tts": {
+        "text": "他們的婚姻既是個人情誼，也是一項戰略聯盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-089",
+      "paragraph_id": "p28",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他們將共同建立前所未有的事業。",
+      "text_markdown": "他們將共同建立前所未有的事業。",
+      "title": "起源",
+      "tts": {
+        "text": "他們將共同建立前所未有的事業。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-090",
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "鄭一有著大膽的願景。",
+      "text_markdown": "鄭一有著大膽的願景。",
+      "title": "起源",
+      "tts": {
+        "text": "鄭一有著大膽的願景。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-091",
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他想將南海零散的海盜艦隊統一成一個聯盟。",
+      "text_markdown": "他想將南海零散的海盜艦隊統一成一個聯盟。",
+      "title": "起源",
+      "tts": {
+        "text": "他想將南海零散的海盜艦隊統一成一個聯盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-092",
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "個別海盜頭目之間一直互相競爭。",
+      "text_markdown": "個別海盜頭目之間一直互相競爭。",
+      "title": "起源",
+      "tts": {
+        "text": "個別海盜頭目之間一直互相競爭。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-093",
+      "paragraph_id": "p29",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "鄭一認為，如果他們合作，力量會強大得多。",
+      "text_markdown": "鄭一認為，如果他們合作，力量會強大得多。",
+      "title": "起源",
+      "tts": {
+        "text": "鄭一認為，如果他們合作，力量會強大得多。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-094",
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "在1798年至1805年間，鄭一不懈努力，締結聯盟。",
+      "text_markdown": "在1798年至1805年間，鄭一不懈努力，締結聯盟。",
+      "title": "起源",
+      "tts": {
+        "text": "在一七九八年至一八〇五年之間，鄭一不懈努力，締結聯盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-095",
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他透過外交和恐嚇的結合，說服敵對的海盜頭目加入他的聯盟。",
+      "text_markdown": "他透過外交和恐嚇的結合，說服敵對的海盜頭目加入他的聯盟。",
+      "title": "起源",
+      "tts": {
+        "text": "他透過外交和恐嚇的結合，說服敵對的海盜頭目加入他的聯盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-096",
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他的妻子深度參與了這些談判。",
+      "text_markdown": "他的妻子深度參與了這些談判。",
+      "title": "起源",
+      "tts": {
+        "text": "他的妻子深度參與了這些談判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-097",
+      "paragraph_id": "p30",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她協助制定了將艦隊凝聚在一起的協議。",
+      "text_markdown": "她協助制定了將艦隊凝聚在一起的協議。",
+      "title": "起源",
+      "tts": {
+        "text": "她協助制定了將艦隊凝聚在一起的協議。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-098",
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "到了1805年，聯盟已告完成。",
+      "text_markdown": "到了1805年，聯盟已告完成。",
+      "title": "起源",
+      "tts": {
+        "text": "到了十八〇五年，聯盟已告完成。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-099",
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "它由六支艦隊組成，每支艦隊都以其旗幟的顏色來識別。",
+      "text_markdown": "它由六支艦隊組成，每支艦隊都以其旗幟的顏色來識別。",
+      "title": "起源",
+      "tts": {
+        "text": "它由六支艦隊組成，每支艦隊都以其旗幟的顏色來識別。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-100",
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "紅旗幫是規模最大、實力最強的。",
+      "text_markdown": "紅旗幫是規模最大、實力最強的。",
+      "title": "起源",
+      "tts": {
+        "text": "紅旗幫是規模最大、實力最強的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-101",
+      "paragraph_id": "p31",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "鄭一親自指揮紅旗幫。",
+      "text_markdown": "鄭一親自指揮紅旗幫。",
+      "title": "起源",
+      "tts": {
+        "text": "鄭一親自指揮紅旗幫。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-102",
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "該聯盟控制著數百艘船隻和數萬名海盜。",
+      "text_markdown": "該聯盟控制著數百艘船隻和數萬名海盜。",
+      "title": "起源",
+      "tts": {
+        "text": "該聯盟控制著數百艘船隻和數萬名海盜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-103",
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "它主宰了整個南海。",
+      "text_markdown": "它主宰了整個南海。",
+      "title": "起源",
+      "tts": {
+        "text": "它主宰了整個南海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-104",
+      "paragraph_id": "p32",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "任何商船若不繳納貢金，就無法通過這些水域，否則將面臨被摧毀的風險。",
+      "text_markdown": "任何商船若不繳納貢金，就無法通過這些水域，否則將面臨被摧毀的風險。",
+      "title": "起源",
+      "tts": {
+        "text": "任何商船若不繳納貢金，就無法通過這些水域，否則將面臨被摧毀的風險。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-105",
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "隨後，在1807年11月，鄭一去世了。",
+      "text_markdown": "隨後，在1807年11月，鄭一去世了。",
+      "title": "起源",
+      "tts": {
+        "text": "隨後，在一八〇七年十一月，鄭一去世了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-106",
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他的死因在歷史學家之間仍有爭議。",
+      "text_markdown": "他的死因在歷史學家之間仍有爭議。",
+      "title": "起源",
+      "tts": {
+        "text": "他的死因在歷史學家之間仍有爭議。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-107",
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "有些記載說他在一場風暴中溺水身亡。",
+      "text_markdown": "有些記載說他在一場風暴中溺水身亡。",
+      "title": "起源",
+      "tts": {
+        "text": "有些記載說他在一場風暴中溺水身亡。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-108",
+      "paragraph_id": "p33",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "其他人則認為他在越南海岸附近的一場戰鬥中喪生。",
+      "text_markdown": "其他人則認為他在越南海岸附近的一場戰鬥中喪生。",
+      "title": "起源",
+      "tts": {
+        "text": "其他人則認為他在越南海岸附近的一場戰鬥中喪生。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-109",
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他的去世為整個聯盟製造了一場危機。",
+      "text_markdown": "他的去世為整個聯盟製造了一場危機。",
+      "title": "起源",
+      "tts": {
+        "text": "他的去世為整個聯盟製造了一場危機。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-110",
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他建立的聯盟是靠他的個人權威維繫的。",
+      "text_markdown": "他建立的聯盟是靠他的個人權威維繫的。",
+      "title": "起源",
+      "tts": {
+        "text": "他建立的聯盟是靠他的個人權威維繫的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-111",
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "沒有強有力的領導者，它將分裂回相互競爭的派系。",
+      "text_markdown": "沒有強有力的領導者，它將分裂回相互競爭的派系。",
+      "title": "起源",
+      "tts": {
+        "text": "沒有強有力的領導者，它將分裂回相互競爭的派系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-112",
+      "paragraph_id": "p34",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他們所建立的一切都岌岌可危。",
+      "text_markdown": "他們所建立的一切都岌岌可危。",
+      "title": "起源",
+      "tts": {
+        "text": "他們所建立的一切都岌岌可危。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch02-113",
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "其他艦隊的頭目預計聯盟將會瓦解。",
+      "text_markdown": "其他艦隊的頭目預計聯盟將會瓦解。",
+      "title": "起源",
+      "tts": {
+        "text": "其他艦隊的頭目預計聯盟將會瓦解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch02-114",
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "他們開始爭奪地位，準備奪取地盤。",
+      "text_markdown": "他們開始爭奪地位，準備奪取地盤。",
+      "title": "起源",
+      "tts": {
+        "text": "他們開始爭奪地位，準備奪取地盤。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch02-115",
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "但他們沒有考慮到鄭一遺孀的野心和能力。",
+      "text_markdown": "但他們沒有考慮到鄭一遺孀的野心和能力。",
+      "title": "起源",
+      "tts": {
+        "text": "但他們沒有考慮到鄭一遺孀的野心和能力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch02-116",
+      "paragraph_id": "p35",
+      "part": 0,
+      "chapter": 2,
+      "block_type": "text",
+      "text": "她無意放棄她曾協助建立的一切。",
+      "text_markdown": "她無意放棄她曾協助建立的一切。",
+      "title": "起源",
+      "tts": {
+        "text": "她無意放棄她曾協助建立的一切。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-117",
+      "paragraph_id": "p36",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "崛起",
+      "text_markdown": "崛起",
+      "title": "崛起"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-118",
+      "paragraph_id": "p37",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "在她丈夫去世後的幾天裡，鄭一嫂以精密的計算迅速行動。",
+      "text_markdown": "在她丈夫去世後的幾天裡，鄭一嫂以精密的計算迅速行動。",
+      "title": "崛起",
+      "tts": {
+        "text": "在她丈夫去世後的幾天裡，鄭一嫂以精密的計算迅速行動。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-119",
+      "paragraph_id": "p37",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她的第一個行動是確保她丈夫最信任的副手張保的忠誠。",
+      "text_markdown": "她的第一個行動是確保她丈夫最信任的副手張保的忠誠。",
+      "title": "崛起",
+      "tts": {
+        "text": "她的第一個行動是確保她丈夫最信任的副手張保的忠誠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-120",
+      "paragraph_id": "p37",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "張保是一名漁夫的兒子，小時候被海盜俘虜。",
+      "text_markdown": "張保是一名漁夫的兒子，小時候被海盜俘虜。",
+      "title": "崛起",
+      "tts": {
+        "text": "張保是一名漁夫的兒子，小時候被海盜俘虜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-121",
+      "paragraph_id": "p37",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "鄭一收養了他，訓練他，並將他培養成一名軍事指揮官。",
+      "text_markdown": "鄭一收養了他，訓練他，並將他培養成一名軍事指揮官。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "鄭一收養了他，訓練他，並將他培養成一名軍事指揮官。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-122",
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "鄭一嫂與張保結成了既是私人關係又是戰略性的聯盟。",
+      "text_markdown": "鄭一嫂與張保結成了既是私人關係又是戰略性的聯盟。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "鄭一嫂與張保結成了既是私人關係又是戰略性的聯盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-123",
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "兩人最終結為夫妻。",
+      "text_markdown": "兩人最終結為夫妻。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "兩人最終結為夫妻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-124",
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "但在最初那幾個關鍵的星期裡，這段夥伴關係關乎生存。",
+      "text_markdown": "但在最初那幾個關鍵的星期裡，這段夥伴關係關乎生存。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "但在最初那幾個關鍵的星期裡，這段夥伴關係關乎生存。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-125",
+      "paragraph_id": "p38",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "他們共同向其他艦隊指揮官展現了統一戰線。",
+      "text_markdown": "他們共同向其他艦隊指揮官展現了統一戰線。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "他們共同向其他艦隊指揮官展現了統一戰線。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-126",
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她召集了六位艦隊首領開會。",
+      "text_markdown": "她召集了六位艦隊首領開會。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "她召集了六位艦隊首領開會。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-127",
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "在那次會議上，她為自己擔任聯盟領導人提出了理由。",
+      "text_markdown": "在那次會議上，她為自己擔任聯盟領導人提出了理由。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "在那次會議上，她為自己擔任聯盟領導人提出了理由。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-128",
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她辯稱，在建立這個聯盟的過程中，她一直是她丈夫的平等夥伴。",
+      "text_markdown": "她辯稱，在建立這個聯盟的過程中，她一直是她丈夫的平等夥伴。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "她辯稱，在建立這個聯盟的過程中，她一直是她丈夫的平等夥伴。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-129",
+      "paragraph_id": "p39",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "船長們一個接一個地同意服從她的指揮。",
+      "text_markdown": "船長們一個接一個地同意服從她的指揮。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "船長們一個接一個地同意服從她的指揮。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-130",
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她的第一個挑戰是對一支七萬人的海盜部隊實施紀律。",
+      "text_markdown": "她的第一個挑戰是對一支七萬人的海盜部隊實施紀律。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "她的第一個挑戰是對一支七萬人的海盜部隊實施紀律。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-131",
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "海盜天生獨立，不信任權威。",
+      "text_markdown": "海盜天生獨立，不信任權威。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "海盜天生獨立，不信任權威。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-132",
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "鄭一嫂明白，一支沒有法律約束的艦隊會自行瓦解。",
+      "text_markdown": "鄭一嫂明白，一支沒有法律約束的艦隊會自行瓦解。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "鄭一嫂明白，一支沒有法律約束的艦隊會自行瓦解。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-133",
+      "paragraph_id": "p40",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她創立了海盜史上最卓越的法典之一。",
+      "text_markdown": "她創立了海盜史上最卓越的法典之一。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "她創立了海盜史上最卓越的法典之一。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-134",
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "這部法典嚴格而具體。",
+      "text_markdown": "這部法典嚴格而具體。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "這部法典嚴格而具體。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-135",
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "任何不服從上級直接命令的海盜都將被斬首。",
+      "text_markdown": "任何不服從上級直接命令的海盜都將被斬首。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "任何不服從上級直接命令的海盜都將被斬首。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-136",
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "擅離職守者處死。",
+      "text_markdown": "擅離職守者處死。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "擅離職守者處死。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-137",
+      "paragraph_id": "p41",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "盜竊公共財物者處死。",
+      "text_markdown": "盜竊公共財物者處死。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "盜竊公共財物者處死。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-138",
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "這部法典還以當時不尋常的方式保護被俘虜的人。",
+      "text_markdown": "這部法典還以當時不尋常的方式保護被俘虜的人。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "這部法典還以當時不尋常的方式保護被俘虜的人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-139",
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "襲擊俘虜的海盜將面臨嚴厲懲罰。",
+      "text_markdown": "襲擊俘虜的海盜將面臨嚴厲懲罰。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "襲擊俘虜的海盜將面臨嚴厲懲罰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-140",
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "如果海盜娶俘虜為妻，他必須對她忠誠。",
+      "text_markdown": "如果海盜娶俘虜為妻，他必須對她忠誠。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "如果海盜娶俘虜為妻，他必須對她忠誠。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-141",
+      "paragraph_id": "p42",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "這些規則並非建議；它們被鐵腕般地貫徹執行。",
+      "text_markdown": "這些規則並非建議；它們被鐵腕般地貫徹執行。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "這些規則並非建議；它們被鐵腕般地貫徹執行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-142",
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "所有戰利品都經過登記，並按照固定制度分配。",
+      "text_markdown": "所有戰利品都經過登記，並按照固定制度分配。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "所有戰利品都經過登記，並按照固定制度分配。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-143",
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "奪取貨物的海盜獲得百分之二十。",
+      "text_markdown": "奪取貨物的海盜獲得百分之二十。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "奪取貨物的海盜獲得百分之二十。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-144",
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "其餘百分之八十則歸入公共基金。",
+      "text_markdown": "其餘百分之八十則歸入公共基金。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "其餘百分之八十則歸入公共基金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-145",
+      "paragraph_id": "p43",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "這個制度防止了摧毀大多數海盜組織的內部紛爭。",
+      "text_markdown": "這個制度防止了摧毀大多數海盜組織的內部紛爭。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "這個制度防止了摧毀大多數海盜組織的內部紛爭。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-146",
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "鄭一嫂還建立了一套複雜的稅收制度。",
+      "text_markdown": "鄭一嫂還建立了一套複雜的稅收制度。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "鄭一嫂還建立了一套複雜的稅收制度。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-147",
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "商船可以通過定期繳費來購買安全通行權。",
+      "text_markdown": "商船可以通過定期繳費來購買安全通行權。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "商船可以通過定期繳費來購買安全通行權。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-148",
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "沿海漁村繳納貢品以換取保護。",
+      "text_markdown": "沿海漁村繳納貢品以換取保護。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "沿海漁村繳納貢品以換取保護。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-149",
+      "paragraph_id": "p44",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "這個制度運作起來就像一個平行政府，收取收入以換取安全。",
+      "text_markdown": "這個制度運作起來就像一個平行政府，收取收入以換取安全。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "這個制度運作起來就像一個平行政府，收取收入以換取安全。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-150",
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "清政府意識到威脅，並派遣海軍鎮壓海盜。",
+      "text_markdown": "清政府意識到威脅，並派遣海軍鎮壓海盜。",
+      "title": "權力崛起",
+      "tts": {
+        "text": "清政府意識到威脅，並派遣海軍鎮壓海盜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-151",
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "1808年，一支龐大的帝國艦隊駛入南海。",
+      "text_markdown": "In 1808, a massive imperial fleet sailed into the South China Sea.",
+      "title": "崛起",
+      "tts": {
+        "text": "一八零八年，一支龐大的帝國艦隊駛入南海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-152",
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "這場戰役對政府來說是一場災難。",
+      "text_markdown": "這場戰役對政府來說是一場災難。",
+      "title": "崛起",
+      "tts": {
+        "text": "這場戰役對政府來說是一場災難。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-153",
+      "paragraph_id": "p45",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "鄭一嫂的部隊擊沉或俘獲了數十艘帝國軍艦。",
+      "text_markdown": "鄭一嫂的部隊擊沉或俘獲了數十艘帝國戰艦。",
+      "title": "崛起",
+      "tts": {
+        "text": "鄭一嫂的部隊擊沉或俘獲了數十艘帝國軍艦。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-154",
+      "paragraph_id": "p46",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "戰敗的將領羞愧難當，最終自殺。",
+      "text_markdown": "這位戰敗的將領羞愧難當，以致自殺。",
+      "title": "崛起",
+      "tts": {
+        "text": "戰敗的將領羞愧難當，最終自殺。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-155",
+      "paragraph_id": "p46",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "帝國朝廷對如此巨大的損失感到震驚。",
+      "text_markdown": "朝廷對損失的規模感到震驚。",
+      "title": "崛起",
+      "tts": {
+        "text": "帝國朝廷對如此巨大的損失感到震驚。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-156",
+      "paragraph_id": "p46",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "他們派出了最好的船隻和最有經驗的指揮官，但卻失敗了。",
+      "text_markdown": "他們派出了最好的船隻和最有經驗的指揮官，但他們卻輸了。",
+      "title": "崛起",
+      "tts": {
+        "text": "他們派出了最好的船隻和最有經驗的指揮官，但卻失敗了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-157",
+      "paragraph_id": "p46",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "海盜現在比政府自己的海軍還要強大。",
+      "text_markdown": "海盜現在比政府自己的海軍更強大。",
+      "title": "崛起",
+      "tts": {
+        "text": "海盜現在比政府自己的海軍還要強大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-158",
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "鄭一嫂毫不留情地擴大她的優勢。",
+      "text_markdown": "鄭一嫂毫不留情地利用她的優勢。",
+      "title": "崛起",
+      "tts": {
+        "text": "鄭一嫂毫不留情地擴大她的優勢。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-159",
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她的艦隊將勢力範圍擴展到整個廣東沿海。",
+      "text_markdown": "她的艦隊沿著整個廣東海岸擴大了其領土。",
+      "title": "崛起",
+      "tts": {
+        "text": "她的艦隊將勢力範圍擴展到整個廣東沿海。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-160",
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她在島嶼和隱蔽的河口建立了基地。",
+      "text_markdown": "她在島嶼上和隱蔽的河口建立了基地。",
+      "title": "崛起",
+      "tts": {
+        "text": "她在島嶼和隱蔽的河口建立了基地。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-161",
+      "paragraph_id": "p47",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她的情報網絡從廣州延伸到越南。",
+      "text_markdown": "她的情報網絡從廣州延伸到越南。",
+      "title": "崛起",
+      "tts": {
+        "text": "她的情報網絡從廣州延伸到越南。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-162",
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "清政府嘗試了一項新策略。",
+      "text_markdown": "清政府嘗試了一項新策略。",
+      "title": "崛起",
+      "tts": {
+        "text": "清政府嘗試了一項新策略。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-163",
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "他們從澳門殖民地僱傭葡萄牙戰艦來對抗海盜。",
+      "text_markdown": "他們僱傭了來自澳門殖民地的葡萄牙戰艦來對抗海盜。",
+      "title": "崛起",
+      "tts": {
+        "text": "他們從澳門殖民地僱傭葡萄牙戰艦來對抗海盜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-164",
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "葡萄牙人擁有現代歐洲大砲和訓練有素的海軍軍官。",
+      "text_markdown": "葡萄牙人擁有現代歐洲大砲和訓練有素的海軍軍官。",
+      "title": "崛起",
+      "tts": {
+        "text": "葡萄牙人擁有現代歐洲大砲和訓練有素的海軍軍官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-165",
+      "paragraph_id": "p48",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "一段時間內，這個聯盟確實給海盜艦隊帶來了巨大壓力。",
+      "text_markdown": "一度，這個聯盟對海盜艦隊施加了真正的壓力。",
+      "title": "崛起",
+      "tts": {
+        "text": "一段時間內，這個聯盟確實給海盜艦隊帶來了巨大壓力。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-166",
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "但鄭一嫂迅速適應了。",
+      "text_markdown": "但鄭一嫂迅速適應了。",
+      "title": "崛起",
+      "tts": {
+        "text": "但鄭一嫂迅速適應了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-167",
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她避免與葡萄牙戰艦正面衝突。",
+      "text_markdown": "她避免了與葡萄牙戰艦直接對抗。",
+      "title": "崛起",
+      "tts": {
+        "text": "她避免與葡萄牙戰艦正面衝突。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-168",
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "相反，她鎖定他們的補給線，並攻擊他們的商業盟友。",
+      "text_markdown": "相反地，她針對他們的補給線並襲擊他們的商業盟友。",
+      "title": "崛起",
+      "tts": {
+        "text": "相反，她鎖定他們的補給線，並攻擊他們的商業盟友。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-169",
+      "paragraph_id": "p49",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "她明白葡萄牙人只會在得到報酬的情況下才會戰鬥。",
+      "text_markdown": "她明白葡萄牙人只會戰鬥，只要他們得到報酬。",
+      "title": "崛起",
+      "tts": {
+        "text": "她明白葡萄牙人只會在得到報酬的情況下才會戰鬥。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch03-170",
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "到1809年，清朝和葡萄牙的聯盟未能擊敗她。",
+      "text_markdown": "到1809年，清朝和葡萄牙的聯盟未能擊敗她。",
+      "title": "崛起",
+      "tts": {
+        "text": "到一八零九年，清朝和葡萄牙的聯盟未能擊敗她。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch03-171",
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "政府耗費了巨額資金，並損失了數十艘船隻。",
+      "text_markdown": "政府花費了巨額資金，並損失了數十艘船隻。",
+      "title": "崛起",
+      "tts": {
+        "text": "政府耗費了巨額資金，並損失了數十艘船隻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch03-172",
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "海盜比以往任何時候都更牢固地控制著海岸。",
+      "text_markdown": "海盜比以往任何時候都更加牢固地控制了海岸。",
+      "title": "崛起",
+      "tts": {
+        "text": "海盜比以往任何時候都更牢固地控制著海岸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch03-173",
+      "paragraph_id": "p50",
+      "part": 0,
+      "chapter": 3,
+      "block_type": "text",
+      "text": "鄭一嫂的海盜聯盟正處於其權力的巔峰。",
+      "text_markdown": "鄭一嫂的聯盟正處於其權力的巔峰。",
+      "title": "崛起",
+      "tts": {
+        "text": "鄭一嫂的海盜聯盟正處於其權力的巔峰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-174",
+      "paragraph_id": "p51",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "At the Height",
+      "text_markdown": "巔峰時期",
+      "title": "巔峰時期"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-175",
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "在其鼎盛時期，這個海盜聯盟指揮著大約1,800艘船隻。",
+      "text_markdown": "在其巔峰時期，海盜聯盟指揮著大約1,800艘船隻。",
+      "title": "巔峰時期",
+      "tts": {
+        "text": "在其鼎盛時期，這個海盜聯盟指揮著大約一千八百艘船隻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-176",
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "這些船隻從小型、快速的突襲船到載有數十門大砲的巨型戰船，種類繁多。",
+      "text_markdown": "這些船隻從小型、快速的突襲船到載有數十門大砲的大型戰船不等。",
+      "title": "巔峰時期",
+      "tts": {
+        "text": "這些船隻從小型、快速的突襲船到載有數十門大砲的巨型戰船，種類繁多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-177",
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "總兵力介於70,000到80,000人之間。",
+      "text_markdown": "總兵力約70,000至80,000人。",
+      "title": "巔峰時期",
+      "tts": {
+        "text": "總兵力介於七萬到八萬人之間。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-178",
+      "paragraph_id": "p52",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "這比當時大多數歐洲國家的海軍規模還要大。",
+      "text_markdown": "這比當時大多數歐洲國家的海軍還要龐大。",
+      "title": "巔峰時期",
+      "tts": {
+        "text": "這比當時大多數歐洲國家的海軍規模還要大。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-179",
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "光是紅旗幫就有600到800艘船隻。",
+      "text_markdown": "單是紅旗幫艦隊就有600到800艘船隻。",
+      "title": "巔峰時期",
+      "tts": {
+        "text": "光是紅旗幫就有六百到八百艘船隻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-180",
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "它是該聯盟中最大的單一艦隊。",
+      "text_markdown": "它是聯盟中最大的單一艦隊。",
+      "title": "巔峰時期",
+      "tts": {
+        "text": "它是該聯盟中最大的單一艦隊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-181",
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "鄭一嫂直接指揮該艦隊，張保則擔任她的首席軍官。",
+      "text_markdown": "鄭一嫂直接指揮該艦隊，張保則擔任她的首席軍官。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "鄭一嫂直接指揮該艦隊，張保則擔任她的首席軍官。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-182",
+      "paragraph_id": "p53",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "其他五支艦隊半獨立運作，但都遵循她的戰略指導。",
+      "text_markdown": "其他五支艦隊半獨立運作，但都遵循她的戰略指導。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "其他五支艦隊半獨立運作，但都遵循她的戰略指導。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-183",
+      "paragraph_id": "p54",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "該聯盟的領土沿著超過 1,000 英里的海岸線延伸。",
+      "text_markdown": "該聯盟的領土沿著超過 1,000 英里的海岸線延伸。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "該聯盟的領土沿著超過一千英里的海岸線延伸。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-184",
+      "paragraph_id": "p54",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "從南方的越南邊境到北方的福建海岸，沒有海盜的允許，任何船隻都無法安全航行。",
+      "text_markdown": "從南方的越南邊境到北方的福建海岸，沒有海盜的允許，任何船隻都無法安全航行。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "從南方的越南邊境到北方的福建海岸，沒有海盜的允許，任何船隻都無法安全航行。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-185",
+      "paragraph_id": "p54",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "即使是強大的英國東印度公司也支付貢金，以避免貨物損失。",
+      "text_markdown": "即使是強大的英國東印度公司也支付貢金，以避免貨物損失。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "即使是強大的英國東印度公司也支付貢金，以避免貨物損失。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-186",
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "海盜船上的生活雖然艱苦，但卻井然有序。",
+      "text_markdown": "海盜船上的生活雖然艱苦，但卻井然有序。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "海盜船上的生活雖然艱苦，但卻井然有序。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-187",
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "每艘船都有清晰的等級制度，從船長到最新招募的成員。",
+      "text_markdown": "每艘船都有清晰的等級制度，從船長到最新招募的成員。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "每艘船都有清晰的等級制度，從船長到最新招募的成員。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-188",
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "餐食是共用的，口糧平均分配。",
+      "text_markdown": "餐食是共用的，口糧平均分配。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "餐食是共用的，口糧平均分配。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-189",
+      "paragraph_id": "p55",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "每位船員根據其等級和職責獲得一份戰利品。",
+      "text_markdown": "每位船員根據其等級和職責獲得一份戰利品。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "每位船員根據其等級和職責獲得一份戰利品。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-190",
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "艦隊中有許多海盜船上有女性服役。",
+      "text_markdown": "艦隊中有許多海盜船上有女性服役。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "艦隊中有許多海盜船上有女性服役。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-191",
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "有些女性在突襲期間與男性並肩作戰。",
+      "text_markdown": "有些女性在突襲期間與男性並肩作戰。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "有些女性在突襲期間與男性並肩作戰。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-192",
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "其他女性則負責管理補給、導航以及船隻之間的通訊。",
+      "text_markdown": "其他女性則負責管理補給、導航以及船隻之間的通訊。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "其他女性則負責管理補給、導航以及船隻之間的通訊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-193",
+      "paragraph_id": "p56",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "海盜世界為女性提供了比主流清朝社會更多的自由。",
+      "text_markdown": "海盜世界為女性提供了比主流清朝社會更多的自由。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "海盜世界為女性提供了比主流清朝社會更多的自由。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-194",
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "艦隊的戰鬥帆船是強大的作戰機器。",
+      "text_markdown": "艦隊的戰鬥帆船是強大的作戰機器。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "艦隊的戰鬥帆船是強大的作戰機器。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-195",
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "一艘大型帆船可以搭載 30 門或更多火砲。",
+      "text_markdown": "一艘大型帆船可以搭載 30 門或更多火砲。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "一艘大型帆船可以搭載三十門或更多火砲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-196",
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "這些船隻建造時採用了加固的船體和高舷，以擊退登船者。",
+      "text_markdown": "這些船隻建造時採用了加固的船體和高舷，以擊退登船者。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "這些船隻建造時採用了加固的船體和高舷，以擊退登船者。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-197",
+      "paragraph_id": "p57",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "它們的平底使其能夠在歐洲深吃水船隻無法進入的淺水沿海地區航行。",
+      "text_markdown": "它們的平底使其能夠在歐洲深吃水船隻無法進入的淺水沿海地區航行。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "它們的平底使其能夠在歐洲深吃水船隻無法進入的淺水沿海地區航行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-198",
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "鄭一嫂的情報網絡是她最厲害的武器之一。",
+      "text_markdown": "鄭一嫂的情報網絡是她最厲害的武器之一。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "鄭一嫂的情報網絡是她最厲害的武器之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-199",
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "她在廣州、澳門以及沿海每個主要港口都有間諜。",
+      "text_markdown": "她在廣州、澳門以及沿海每個主要港口都有間諜。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "她在廣州、澳門以及沿海每個主要港口都有間諜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-200",
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "她知道有價值的貨船何時啟航以及將會走哪條路線。",
+      "text_markdown": "她知道有價值的貨船何時啟航以及將會走哪條路線。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "她知道有價值的貨船何時啟航以及將會走哪條路線。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-201",
+      "paragraph_id": "p58",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "這些情報使她能夠精準打擊，而不是依靠運氣。",
+      "text_markdown": "這些情報使她能夠精準打擊，而不是依靠運氣。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "這些情報使她能夠精準打擊，而不是依靠運氣。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-202",
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "她建立的稅收制度非常複雜。",
+      "text_markdown": "她建立的稅收制度非常複雜。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "她建立的稅收制度非常複雜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-203",
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "不同類型的貨物適用不同的稅率。",
+      "text_markdown": "不同類型的貨物適用不同的稅率。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "不同類型的貨物適用不同的稅率。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-204",
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "絲綢商人比米糧商人支付更多。",
+      "text_markdown": "絲綢商人比米糧商人支付更多。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "絲綢商人比米糧商人支付更多。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-205",
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "走私食鹽者支付更高的費用，因為他們的貨物本身就是非法的。",
+      "text_markdown": "走私食鹽者支付更高的費用，因為他們的貨物本身就是非法的。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "走私食鹽者支付更高的費用，因為他們的貨物本身就是非法的。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch04-206",
+      "paragraph_id": "p59",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "整個系統都經過記錄，並以官僚式的精確性執行。",
+      "text_markdown": "整個系統都經過記錄，並以官僚式的精確性執行。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "整個系統都經過記錄，並以官僚式的精確性執行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-207",
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "沿海村莊與海盜之間關係複雜。",
+      "text_markdown": "沿海村莊與海盜之間關係複雜。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "沿海村莊與海盜之間關係複雜。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-208",
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "許多人對海盜索要的貢金感到不滿。",
+      "text_markdown": "許多人對海盜索要的貢金感到不滿。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "許多人對海盜索要的貢金感到不滿。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-209",
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "但海盜也提供了對抗其他襲擊者和土匪的保護。",
+      "text_markdown": "但海盜也提供了對抗其他襲擊者和土匪的保護。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "但海盜也提供了對抗其他襲擊者和土匪的保護。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-210",
+      "paragraph_id": "p60",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "在某些地區，海盜比帝國政府更可靠。",
+      "text_markdown": "在某些地區，海盜比帝國政府更可靠。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "在某些地區，海盜比帝國政府更可靠。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-211",
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "清廷對其無法控制海洋深感尷尬。",
+      "text_markdown": "清廷對其無法控制海洋深感尷尬。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "清廷對其無法控制海洋深感尷尬。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-212",
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "朝廷官員焦慮地撰寫報告，提及這位海盜女王日益增長的力量。",
+      "text_markdown": "朝廷官員焦慮地撰寫報告，提及這位海盜女王日益增長的力量。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "朝廷官員焦慮地撰寫報告，提及這位海盜女王日益增長的力量。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-213",
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "他們擔心海盜可能與陸上的叛亂團體結盟。",
+      "text_markdown": "他們擔心海盜可能與陸上的叛亂團體結盟。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "他們擔心海盜可能與陸上的叛亂團體結盟。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-214",
+      "paragraph_id": "p61",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "陸海聯合叛亂可能威脅到王朝本身。",
+      "text_markdown": "陸海聯合叛亂可能威脅到王朝本身。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "陸海聯合叛亂可能威脅到王朝本身。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-215",
+      "paragraph_id": "p62",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "英國人密切關注著局勢。",
+      "text_markdown": "英國人密切關注著局勢。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "英國人密切關注著局勢。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-216",
+      "paragraph_id": "p62",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "他們正在中國沿海擴大鴉片貿易。",
+      "text_markdown": "他們正在中國沿海擴大鴉片貿易。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "他們正在中國沿海擴大鴉片貿易。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-217",
+      "paragraph_id": "p62",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "海盜擾亂了這項貿易，使英國商人損失慘重。",
+      "text_markdown": "海盜擾亂了這項貿易，使英國商人損失慘重。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "海盜擾亂了這項貿易，使英國商人損失慘重。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-218",
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "對於在鄭一嫂旗幟下航行的人來說，生活比其他選擇更好。",
+      "text_markdown": "對於在鄭一嫂旗幟下航行的人來說，生活比其他選擇更好。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "對於在鄭一嫂旗幟下航行的人來說，生活比其他選擇更好。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-219",
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "海盜能獲得定期的食物、一份戰利品，以及歸屬感。",
+      "text_markdown": "海盜能獲得定期的食物、一份戰利品，以及歸屬感。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "海盜能獲得定期的食物、一份戰利品，以及歸屬感。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-220",
+      "paragraph_id": "p63",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "蜑家漁民則面臨貧困、鄙視，以及毫無晉升的希望。",
+      "text_markdown": "蜑家漁民則面臨貧困、鄙視，以及毫無晉升的希望。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "蜑家漁民則面臨貧困、鄙視，以及毫無晉升的希望。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch04-221",
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "鄭一嫂以絕對的權威統治著這個社會。",
+      "text_markdown": "鄭一嫂以絕對的權威統治著這個社會。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "鄭一嫂以絕對的權威統治著這個社會。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch04-222",
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "她做出了影響艦隊未來的戰略決策。",
+      "text_markdown": "她做出了影響艦隊未來的戰略決策。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "她做出了影響艦隊未來的戰略決策。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch04-223",
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "她解決了船長之間的糾紛，並執行了法典。",
+      "text_markdown": "她解決了船長之間的糾紛，並執行了法典。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "她解決了船長之間的糾紛，並執行了法典。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch04-224",
+      "paragraph_id": "p64",
+      "part": 0,
+      "chapter": 4,
+      "block_type": "text",
+      "text": "未經她的批准，任何重大行動都不得進行。",
+      "text_markdown": "未經她的批准，任何重大行動都不得進行。",
+      "title": "鼎盛時期",
+      "tts": {
+        "text": "未經她的批准，任何重大行動都不得進行。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-225",
+      "paragraph_id": "p65",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "終章",
+      "text_markdown": "終章",
+      "title": "終章"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-226",
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "到了1810年，聯盟內部開始出現裂痕。",
+      "text_markdown": "到了1810年，聯盟內部開始出現裂痕。",
+      "title": "終章",
+      "tts": {
+        "text": "到了 一八一零 年，聯盟內部開始出現裂痕。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-227",
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "持續的戰事對船隻和船員造成了損耗。",
+      "text_markdown": "持續的戰事對船隻和船員造成了損耗。",
+      "title": "終章",
+      "tts": {
+        "text": "持續的戰事對船隻和船員造成了損耗。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-228",
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "清政府的封鎖擾亂了沿海的補給線。",
+      "text_markdown": "清政府的封鎖擾亂了沿海的補給線。",
+      "title": "終章",
+      "tts": {
+        "text": "清政府的封鎖擾亂了沿海的補給線。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-229",
+      "paragraph_id": "p66",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "艦隊船長之間的內部競爭也變得更加激烈。",
+      "text_markdown": "艦隊船長之間的內部競爭也變得更加激烈。",
+      "title": "終章",
+      "tts": {
+        "text": "艦隊船長之間的內部競爭也變得更加激烈。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-230",
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "最危險的競爭發生在張保與一位名叫郭婆帶的船長之間。",
+      "text_markdown": "最危險的競爭發生在張保與一位名叫郭婆帶的船長之間。",
+      "title": "終章",
+      "tts": {
+        "text": "最危險的競爭發生在張保與一位名叫郭婆帶的船長之間。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-231",
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "郭婆帶指揮著黑旗艦隊，這是聯盟中第二大的艦隊。",
+      "text_markdown": "郭婆帶指揮著黑旗艦隊，這是聯盟中第二大的艦隊。",
+      "title": "終章",
+      "tts": {
+        "text": "郭婆帶指揮著黑旗艦隊，這是聯盟中第二大的艦隊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-232",
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "他不滿於接受張保的命令，進而也不滿於接受鄭一嫂的命令。",
+      "text_markdown": "他不滿於接受張保的命令，進而也不滿於接受鄭一嫂的命令。",
+      "title": "終章",
+      "tts": {
+        "text": "他不滿於接受張保的命令，進而也不滿於接受鄭一嫂的命令。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-233",
+      "paragraph_id": "p67",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "他們之間的緊張關係威脅著將聯盟一分為二。",
+      "text_markdown": "他們之間的緊張關係威脅著將聯盟一分為二。",
+      "title": "終章",
+      "tts": {
+        "text": "他們之間的緊張關係威脅著將聯盟一分為二。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-234",
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "1810年初，郭婆帶做出了關鍵性的決定。",
+      "text_markdown": "1810年初，郭婆帶做出了關鍵性的決定。",
+      "title": "終章",
+      "tts": {
+        "text": "一八一零 年初，郭婆帶做出了關鍵性的決定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-235",
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "他與清政府展開了秘密談判。",
+      "text_markdown": "他與清政府展開了秘密談判。",
+      "title": "終章",
+      "tts": {
+        "text": "他與清政府展開了秘密談判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-236",
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "政府向他提供了全面赦免、軍職任命和一筆現金。",
+      "text_markdown": "政府向他提供了全面赦免、軍職任命和一筆現金。",
+      "title": "終章",
+      "tts": {
+        "text": "政府向他提供了全面赦免、軍職任命和一筆現金。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-237",
+      "paragraph_id": "p68",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "作為交換，他將背叛他以前的盟友。",
+      "text_markdown": "作為交換，他將背叛他以前的盟友。",
+      "title": "終章",
+      "tts": {
+        "text": "作為交換，他將背叛他以前的盟友。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-238",
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "郭婆帶接受了這項交易，並將他的整個艦隊投降給政府。",
+      "text_markdown": "郭婆帶接受了這項交易，並將他的整個艦隊投降給政府。",
+      "title": "終章",
+      "tts": {
+        "text": "郭婆帶接受了這項交易，並將他的整個艦隊投降給政府。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-239",
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "一夜之間，聯盟損失了數百艘船隻和數千名戰士。",
+      "text_markdown": "一夜之間，聯盟損失了數百艘船隻和數千名戰士。",
+      "title": "終章",
+      "tts": {
+        "text": "一夜之間，聯盟損失了數百艘船隻和數千名戰士。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-240",
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "更糟的是，郭婆帶現在擔任政府指揮官，利用他對海盜戰術的了解來對付他們。",
+      "text_markdown": "更糟的是，郭婆帶現在擔任政府指揮官，利用他對海盜戰術的了解來對付他們。",
+      "title": "終章",
+      "tts": {
+        "text": "更糟的是，郭婆帶現在擔任政府指揮官，利用他對海盜戰術的了解來對付他們。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-241",
+      "paragraph_id": "p69",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "權力平衡已發生巨大轉變。",
+      "text_markdown": "權力平衡已發生巨大轉變。",
+      "title": "終章",
+      "tts": {
+        "text": "權力平衡已發生巨大轉變。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-242",
+      "paragraph_id": "p70",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "鄭一嫂以她一貫的清晰思路評估了新的局勢。",
+      "text_markdown": "鄭一嫂以她一貫的清晰思路評估了新的局勢。",
+      "title": "終章",
+      "tts": {
+        "text": "鄭一嫂以她一貫的清晰思路評估了新的局勢。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-243",
+      "paragraph_id": "p70",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "聯盟被削弱了，但並未被摧毀。",
+      "text_markdown": "聯盟被削弱了，但並未被摧毀。",
+      "title": "終章",
+      "tts": {
+        "text": "聯盟被削弱了，但並未被摧毀。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-244",
+      "paragraph_id": "p70",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她仍然指揮著紅旗幫和幾個盟友艦隊。",
+      "text_markdown": "她仍然指揮著紅旗幫和幾個盟友艦隊。",
+      "title": "終章",
+      "tts": {
+        "text": "她仍然指揮著紅旗幫和幾個盟友艦隊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-245",
+      "paragraph_id": "p70",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "但勢頭已經改變，她心知肚明。",
+      "text_markdown": "但勢頭已經改變，她心知肚明。",
+      "title": "終章",
+      "tts": {
+        "text": "但勢頭已經改變，她心知肚明。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-246",
+      "paragraph_id": "p71",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她做出了展現其戰略天賦的決定。",
+      "text_markdown": "她做出了展現其戰略天賦的決定。",
+      "title": "終章",
+      "tts": {
+        "text": "她做出了展現其戰略天賦的決定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-247",
+      "paragraph_id": "p71",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她沒有選擇戰鬥至死，而是選擇在仍保有實力的情況下進行談判。",
+      "text_markdown": "她沒有選擇戰鬥至死，而是選擇在仍保有實力的情況下進行談判。",
+      "title": "終章",
+      "tts": {
+        "text": "她沒有選擇戰鬥至死，而是選擇在仍保有實力的情況下進行談判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-248",
+      "paragraph_id": "p71",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她透過中間人與清政府展開談判。",
+      "text_markdown": "她透過中間人與清政府展開談判。",
+      "title": "終章",
+      "tts": {
+        "text": "她透過中間人與清政府展開談判。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-249",
+      "paragraph_id": "p71",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她的要求大膽而具體。",
+      "text_markdown": "她的要求大膽而具體。",
+      "title": "終章",
+      "tts": {
+        "text": "她的要求大膽而具體。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-250",
+      "paragraph_id": "p72",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她要求為自己和張保仔爭取全面赦免。",
+      "text_markdown": "她要求為自己和張保仔爭取全面赦免。",
+      "title": "終章",
+      "tts": {
+        "text": "她要求為自己和張保仔爭取全面赦免。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-251",
+      "paragraph_id": "p72",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她要求她的海盜們被允許保留他們的個人財富。",
+      "text_markdown": "她要求她的海盜們被允許保留他們的個人財富。",
+      "title": "終章",
+      "tts": {
+        "text": "她要求她的海盜們被允許保留他們的個人財富。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-252",
+      "paragraph_id": "p72",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她要求張保仔在帝國海軍中獲得一個職位。",
+      "text_markdown": "她要求張保仔在帝國海軍中獲得一個職位。",
+      "title": "終章",
+      "tts": {
+        "text": "她要求張保仔在帝國海軍中獲得一個職位。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-253",
+      "paragraph_id": "p72",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她還要求投降的普通海盜免受懲罰。",
+      "text_markdown": "她還要求投降的普通海盜免受懲罰。",
+      "title": "終章",
+      "tts": {
+        "text": "她還要求投降的普通海盜免受懲罰。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-254",
+      "paragraph_id": "p73",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "清政府不願接受如此優厚的條件。",
+      "text_markdown": "清政府不願接受如此優厚的條件。",
+      "title": "終章",
+      "tts": {
+        "text": "清政府不願接受如此優厚的條件。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-255",
+      "paragraph_id": "p73",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "赦免海盜對帝國來說是一種恥辱。",
+      "text_markdown": "赦免海盜對帝國來說是一種恥辱。",
+      "title": "終章",
+      "tts": {
+        "text": "赦免海盜對帝國來說是一種恥辱。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-256",
+      "paragraph_id": "p73",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "但他們曾嘗試武力，卻失敗了。",
+      "text_markdown": "但他們曾嘗試武力，卻失敗了。",
+      "title": "終章",
+      "tts": {
+        "text": "但他們曾嘗試武力，卻失敗了。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-257",
+      "paragraph_id": "p73",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "談判是唯一剩下的選擇。",
+      "text_markdown": "談判是唯一剩下的選擇。",
+      "title": "終章",
+      "tts": {
+        "text": "談判是唯一剩下的選擇。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-258",
+      "paragraph_id": "p74",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "1810年4月，協議最終敲定。",
+      "text_markdown": "1810年4月，協議最終敲定。",
+      "title": "終章",
+      "tts": {
+        "text": "一八一零年四月，協議最終敲定。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-259",
+      "paragraph_id": "p74",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "鄭一嫂將她的艦隊交給了政府。",
+      "text_markdown": "鄭一嫂將她的艦隊交給了政府。",
+      "title": "終章",
+      "tts": {
+        "text": "鄭一嫂將她的艦隊交給了政府。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-260",
+      "paragraph_id": "p74",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "作為交換，她得到了她所要求的一切。",
+      "text_markdown": "作為交換，她得到了她所要求的一切。",
+      "title": "終章",
+      "tts": {
+        "text": "作為交換，她得到了她所要求的一切。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-261",
+      "paragraph_id": "p74",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "張保仔被任命為清朝海軍的一名中尉，指揮20艘船。",
+      "text_markdown": "張保仔被任命為清朝海軍的一名中尉，指揮20艘船。",
+      "title": "終章",
+      "tts": {
+        "text": "張保仔被任命為清朝海軍的一名中尉，指揮二十艘船。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-262",
+      "paragraph_id": "p75",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "海盜們被允許保留一部分船隻。",
+      "text_markdown": "海盜們被允許保留一部分船隻。",
+      "title": "終章",
+      "tts": {
+        "text": "海盜們被允許保留一部分船隻。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-263",
+      "paragraph_id": "p75",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "那些希望回歸平民生活的人可以自由選擇。",
+      "text_markdown": "那些希望回歸平民生活的人可以自由選擇。",
+      "title": "終章",
+      "tts": {
+        "text": "那些希望回歸平民生活的人可以自由選擇。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-264",
+      "paragraph_id": "p75",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "那些希望加入帝國海軍的人受到歡迎。",
+      "text_markdown": "那些希望加入帝國海軍的人受到歡迎。",
+      "title": "終章",
+      "tts": {
+        "text": "那些希望加入帝國海軍的人受到歡迎。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-265",
+      "paragraph_id": "p75",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "這是海盜史上最有利的投降。",
+      "text_markdown": "這是海盜史上最有利的投降。",
+      "title": "終章",
+      "tts": {
+        "text": "這是海盜史上最有利的投降。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-266",
+      "paragraph_id": "p76",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "鄭一嫂作為一位富有的女性從海上隱退。",
+      "text_markdown": "鄭一嫂作為一位富有的女性從海上隱退。",
+      "title": "終章",
+      "tts": {
+        "text": "鄭一嫂作為一位富有的女性從海上隱退。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-267",
+      "paragraph_id": "p76",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她與張保仔定居在廣州。",
+      "text_markdown": "她與張保仔定居在廣州。",
+      "title": "終章",
+      "tts": {
+        "text": "她與張保仔定居在廣州。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-268",
+      "paragraph_id": "p76",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "他們一起開了一家賭場，成為城裡最賺錢的賭場之一。",
+      "text_markdown": "他們一起開了一家賭場，成為城裡最賺錢的賭場之一。",
+      "title": "終章",
+      "tts": {
+        "text": "他們一起開了一家賭場，成為城裡最賺錢的賭場之一。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-269",
+      "paragraph_id": "p76",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她還投資了鹽業貿易，這為她帶來了多年穩定的收入。",
+      "text_markdown": "她還投資了鹽業貿易，這為她帶來了多年穩定的收入。",
+      "title": "終章",
+      "tts": {
+        "text": "她還投資了鹽業貿易，這為她帶來了多年穩定的收入。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-270",
+      "paragraph_id": "p77",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "張保仔在帝國海軍中服役多年，表現出色。",
+      "text_markdown": "張保仔在帝國海軍中服役多年，表現出色。",
+      "title": "終章",
+      "tts": {
+        "text": "張保仔在帝國海軍中服役多年，表現出色。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-271",
+      "paragraph_id": "p77",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "他於1822年去世，當時仍在政府任職。",
+      "text_markdown": "他於1822年去世，當時仍在政府任職。",
+      "title": "結局",
+      "tts": {
+        "text": "他於一八二二年去世，當時仍在政府任職。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-272",
+      "paragraph_id": "p77",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "他的逝世獲得了隆重的軍事榮譽悼念。",
+      "text_markdown": "他的逝世獲得了隆重的軍事榮譽悼念。",
+      "title": "結局",
+      "tts": {
+        "text": "他的逝世獲得了隆重的軍事榮譽悼念。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch05-273",
+      "paragraph_id": "p78",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "鄭一嫂在退出海盜生涯後又活了二十多年。",
+      "text_markdown": "鄭一嫂在退出海盜生涯後又活了二十多年。",
+      "title": "結局",
+      "tts": {
+        "text": "鄭一嫂在退出海盜生涯後又活了二十多年。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch05-274",
+      "paragraph_id": "p78",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她在廣州經營自己的生意並撫養家人。",
+      "text_markdown": "她在廣州經營自己的生意並撫養家人。",
+      "title": "結局",
+      "tts": {
+        "text": "她在廣州經營自己的生意並撫養家人。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch05-275",
+      "paragraph_id": "p78",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她於1844年去世，享年約69歲。",
+      "text_markdown": "她於1844年去世，享年約69歲。",
+      "title": "結局",
+      "tts": {
+        "text": "她於一八四四年去世，享年約六十九歲。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch05-276",
+      "paragraph_id": "p78",
+      "part": 0,
+      "chapter": 5,
+      "block_type": "text",
+      "text": "她在自己的床上安詳離世，家人環繞，作為廣州社會受人尊敬的一員。",
+      "text_markdown": "她在自己的床上安詳離世，家人環繞，作為廣州社會受人尊敬的一員。",
+      "title": "結局",
+      "tts": {
+        "text": "她在自己的床上安詳離世，家人環繞，作為廣州社會受人尊敬的一員。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-277",
+      "paragraph_id": "p79",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "遺產",
+      "text_markdown": "遺產",
+      "title": "遺產"
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-278",
+      "paragraph_id": "p80",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "鄭一嫂的生涯在海盜史上獨一無二。",
+      "text_markdown": "鄭一嫂的生涯在海盜史上獨一無二。",
+      "title": "遺產",
+      "tts": {
+        "text": "鄭一嫂的生涯在海盜史上獨一無二。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-279",
+      "paragraph_id": "p80",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "無論男女，沒有其他海盜曾指揮過規模相當的勢力。",
+      "text_markdown": "無論男女，沒有其他海盜曾指揮過規模相當的勢力。",
+      "title": "遺產",
+      "tts": {
+        "text": "無論男女，沒有其他海盜曾指揮過規模相當的勢力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-280",
+      "paragraph_id": "p80",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "沒有其他海盜建立過如此複雜的法律和治理體系。",
+      "text_markdown": "沒有其他海盜建立過如此複雜的法律和治理體系。",
+      "title": "遺產",
+      "tts": {
+        "text": "沒有其他海盜建立過如此複雜的法律和治理體系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-281",
+      "paragraph_id": "p80",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "也沒有其他海盜能以如此優厚的條件談判退休。",
+      "text_markdown": "也沒有其他海盜能以如此優厚的條件談判退休。",
+      "title": "遺產",
+      "tts": {
+        "text": "也沒有其他海盜能以如此優厚的條件談判退休。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-282",
+      "paragraph_id": "p81",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她的成功挑戰了許多關於女性在歷史中角色的假設。",
+      "text_markdown": "她的成功挑戰了許多關於女性在歷史中角色的假設。",
+      "title": "遺產",
+      "tts": {
+        "text": "她的成功挑戰了許多關於女性在歷史中角色的假設。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-283",
+      "paragraph_id": "p81",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她在一個幾乎不賦予女性任何法律權利的社會中崛起掌權。",
+      "text_markdown": "她在一個幾乎不賦予女性任何法律權利的社會中崛起掌權。",
+      "title": "遺產",
+      "tts": {
+        "text": "她在一個幾乎不賦予女性任何法律權利的社會中崛起掌權。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-284",
+      "paragraph_id": "p81",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "在一個認為女性低人一等的世界裡，她指揮了數萬名男性。",
+      "text_markdown": "在一個認為女性低人一等的世界裡，她指揮了數萬名男性。",
+      "title": "遺產",
+      "tts": {
+        "text": "在一個認為女性低人一等的世界裡，她指揮了數萬名男性。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-285",
+      "paragraph_id": "p81",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她的故事證明了能力無關性別。",
+      "text_markdown": "她的故事證明了能力無關性別。",
+      "title": "遺產",
+      "tts": {
+        "text": "她的故事證明了能力無關性別。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-286",
+      "paragraph_id": "p82",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "歷史學家們一直在爭論她非凡成功的原因。",
+      "text_markdown": "歷史學家們一直在爭論她非凡成功的原因。",
+      "title": "遺產",
+      "tts": {
+        "text": "歷史學家們一直在爭論她非凡成功的原因。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-287",
+      "paragraph_id": "p82",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "有些人強調她的個人特質：她的智慧、她的果斷、她激發忠誠的能力。",
+      "text_markdown": "有些人強調她的個人特質：她的智慧、她的果斷、她激發忠誠的能力。",
+      "title": "遺產",
+      "tts": {
+        "text": "有些人強調她的個人特質：她的智慧、她的果斷、她激發忠誠的能力。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-288",
+      "paragraph_id": "p82",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "另一些人則指出使她崛起成為可能的結構性條件：清朝的衰弱、沿海居民的貧困以及南海的地理環境。",
+      "text_markdown": "另一些人則指出使她崛起成為可能的結構性條件：清朝的衰弱、沿海居民的貧困以及南海的地理環境。",
+      "title": "遺產",
+      "tts": {
+        "text": "另一些人則指出使她崛起成為可能的結構性條件：清朝的衰弱、沿海居民的貧困以及南海的地理環境。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-289",
+      "paragraph_id": "p83",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "事實幾乎肯定包括這兩個因素。",
+      "text_markdown": "事實幾乎肯定包括這兩個因素。",
+      "title": "遺產",
+      "tts": {
+        "text": "事實幾乎肯定包括這兩個因素。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-290",
+      "paragraph_id": "p83",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "如果沒有這些條件，她的才華將無處施展。",
+      "text_markdown": "如果沒有這些條件，她的才華將無處施展。",
+      "title": "遺產",
+      "tts": {
+        "text": "如果沒有這些條件，她的才華將無處施展。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-291",
+      "paragraph_id": "p83",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "如果沒有她的才華，這些條件只會導致混亂。",
+      "text_markdown": "如果沒有她的才華，這些條件只會導致混亂。",
+      "title": "遺產",
+      "tts": {
+        "text": "如果沒有她的才華，這些條件只會導致混亂。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-292",
+      "paragraph_id": "p83",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她是歷史上在正確時刻出現的正確人物。",
+      "text_markdown": "她是歷史上在正確時刻出現的正確人物。",
+      "title": "遺產",
+      "tts": {
+        "text": "她是歷史上在正確時刻出現的正確人物。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-293",
+      "paragraph_id": "p84",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她的法典在她退休後數十年裡影響了海盜的治理。",
+      "text_markdown": "她的法典在她退休後數十年裡影響了海盜的治理。",
+      "title": "遺產",
+      "tts": {
+        "text": "她的法典在她退休後數十年裡影響了海盜的治理。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-294",
+      "paragraph_id": "p84",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "後來南海的海盜首領們也採用了類似的稅收和法律體系。",
+      "text_markdown": "後來南海的海盜首領們也採用了類似的稅收和法律體系。",
+      "title": "遺產",
+      "tts": {
+        "text": "後來南海的海盜首領們也採用了類似的稅收和法律體系。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-295",
+      "paragraph_id": "p84",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她的模式表明，海盜艦隊可以像國家海軍一樣有效地組織起來。",
+      "text_markdown": "她的模式表明，海盜艦隊可以像國家海軍一樣有效地組織起來。",
+      "title": "遺產",
+      "tts": {
+        "text": "她的模式表明，海盜艦隊可以像國家海軍一樣有效地組織起來。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-296",
+      "paragraph_id": "p85",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "在現代，鄭一嫂已成為一個文化偶像。",
+      "text_markdown": "在現代，鄭一嫂已成為一個文化偶像。",
+      "title": "遺產",
+      "tts": {
+        "text": "在現代，鄭一嫂已成為一個文化偶像。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-297",
+      "paragraph_id": "p85",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她的形象出現在世界各地的小說、電影和電子遊戲中。",
+      "text_markdown": "她的形象出現在世界各地的小說、電影和電子遊戲中。",
+      "title": "遺產",
+      "tts": {
+        "text": "她的形象出現在世界各地的小說、電影和電子遊戲中。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-298",
+      "paragraph_id": "p85",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她的故事已被翻譯成數十種語言。",
+      "text_markdown": "她的故事已被翻譯成數十種語言。",
+      "title": "遺產",
+      "tts": {
+        "text": "她的故事已被翻譯成數十種語言。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-299",
+      "paragraph_id": "p86",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "然而，關於她生平的許多細節仍不為人知。",
+      "text_markdown": "然而，關於她生平的許多細節仍不為人知。",
+      "title": "遺產",
+      "tts": {
+        "text": "然而，關於她生平的許多細節仍不為人知。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-300",
+      "paragraph_id": "p86",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "我們無法確切知道她的本名。",
+      "text_markdown": "我們無法確切知道她的本名。",
+      "title": "遺產",
+      "tts": {
+        "text": "我們無法確切知道她的本名。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-301",
+      "paragraph_id": "p86",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "我們沒有任何一張經證實的她的面部圖像。",
+      "text_markdown": "我們沒有任何一張經證實的她的面部圖像。",
+      "title": "遺產",
+      "tts": {
+        "text": "我們沒有任何一張經證實的她的面部圖像。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-302",
+      "paragraph_id": "p86",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "我們所知的大部分內容都來自她的敵人撰寫的官方記錄。",
+      "text_markdown": "我們所知的大部分內容都來自她的敵人撰寫的官方記錄。",
+      "title": "遺產",
+      "tts": {
+        "text": "我們所知的大部分內容都來自她的敵人撰寫的官方記錄。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-303",
+      "paragraph_id": "p87",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "清廷有充分的理由貶低她的成就。",
+      "text_markdown": "清廷有充分的理由貶低她的成就。",
+      "title": "遺產",
+      "tts": {
+        "text": "清廷有充分的理由貶低她的成就。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-304",
+      "paragraph_id": "p87",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "許多官方記錄都淡化了她的作用，或將她的成功歸因於張保。",
+      "text_markdown": "許多官方記錄都淡化了她的作用，或將她的成功歸因於張保。",
+      "title": "遺產",
+      "tts": {
+        "text": "許多官方記錄都淡化了她的作用，或將她的成功歸因於張保。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-305",
+      "paragraph_id": "p87",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "歷史學家必須仔細閱讀這些資料，因為它們是出於政治動機而撰寫的。",
+      "text_markdown": "歷史學家必須仔細閱讀這些資料，因為它們是出於政治動機而撰寫的。",
+      "title": "遺產",
+      "tts": {
+        "text": "歷史學家必須仔細閱讀這些資料，因為它們是出於政治動機而撰寫的。",
+        "pause_after_ms": 800
+      }
+    },
+    {
+      "sentence_index": 0,
+      "id": "ch06-306",
+      "paragraph_id": "p88",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "這些記錄無法掩蓋的是她成就的規模。",
+      "text_markdown": "這些記錄無法掩蓋的是她成就的規模。",
+      "title": "遺產",
+      "tts": {
+        "text": "這些記錄無法掩蓋的是她成就的規模。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 1,
+      "id": "ch06-307",
+      "paragraph_id": "p88",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她建立了有史以來最大的海盜艦隊。",
+      "text_markdown": "她建立了有史以來最大的海盜艦隊。",
+      "title": "遺產",
+      "tts": {
+        "text": "她建立了有史以來最大的海盜艦隊。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 2,
+      "id": "ch06-308",
+      "paragraph_id": "p88",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她擊敗了清帝國和葡萄牙海軍的聯軍。",
+      "text_markdown": "她擊敗了清帝國和葡萄牙海軍的聯軍。",
+      "title": "遺產",
+      "tts": {
+        "text": "她擊敗了清帝國和葡萄牙海軍的聯軍。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 3,
+      "id": "ch06-309",
+      "paragraph_id": "p88",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "她退休時富有、自由且未嘗敗績。",
+      "text_markdown": "她退休時富有、自由且未嘗敗績。",
+      "title": "遺產",
+      "tts": {
+        "text": "她退休時富有、自由且未嘗敗績。",
+        "pause_after_ms": 500
+      }
+    },
+    {
+      "sentence_index": 4,
+      "id": "ch06-310",
+      "paragraph_id": "p88",
+      "part": 0,
+      "chapter": 6,
+      "block_type": "text",
+      "text": "在漫長的海洋歷史中，沒有其他人做到這一點。",
+      "text_markdown": "在漫長的海洋歷史中，沒有其他人做到這一點。",
+      "title": "遺產",
+      "tts": {
+        "text": "在漫長的海洋歷史中，沒有其他人做到這一點。",
+        "pause_after_ms": 800
+      }
+    }
+  ]
+}

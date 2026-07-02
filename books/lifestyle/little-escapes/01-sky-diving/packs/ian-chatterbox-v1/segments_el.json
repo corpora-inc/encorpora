@@ -1,0 +1,5967 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_sky_diving",
+  "total_segments": 374,
+  "segments": [
+    {
+      "id": "ch01-001",
+      "part": 0,
+      "chapter": 1,
+      "title": "Το Κάλεσμα",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Το Κάλεσμα",
+      "text_markdown": "Το Κάλεσμα"
+    },
+    {
+      "id": "ch01-002",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχει μια στιγμή, αμέσως μόλις βγαίνεις από το αεροπλάνο, που θα ήθελα να μπορούσα να σου τη χαρίσω δωρεάν.",
+      "text_markdown": "Υπάρχει μια στιγμή, αμέσως μόλις βγαίνεις από το αεροπλάνο, που θα ήθελα να μπορούσα να σου τη χαρίσω δωρεάν.",
+      "tts": {
+        "text": "Υπάρχει μια στιγμή, αμέσως μόλις βγαίνεις από το αεροπλάνο, που θα ήθελα να μπορούσα να σου τη χαρίσω δωρεάν.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-003",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο κόσμος παύει να είναι κάτι μέσα στο οποίο ζεις.",
+      "text_markdown": "Ο κόσμος παύει να είναι κάτι μέσα στο οποίο ζεις.",
+      "tts": {
+        "text": "Ο κόσμος παύει να είναι κάτι μέσα στο οποίο ζεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-004",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Γίνεται κάτι μέσα από το οποίο πέφτεις.",
+      "text_markdown": "Γίνεται κάτι μέσα από το οποίο πέφτεις.",
+      "tts": {
+        "text": "Γίνεται κάτι μέσα από το οποίο πέφτεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-005",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και για τα πρώτα δευτερόλεπτα, το μυαλό σου δεν προλαβαίνει να συλλάβει αυτό που μόλις έκανε το σώμα σου.",
+      "text_markdown": "Και για τα πρώτα δευτερόλεπτα, το μυαλό σου δεν προλαβαίνει να συλλάβει αυτό που μόλις έκανε το σώμα σου.",
+      "tts": {
+        "text": "Και για τα πρώτα δευτερόλεπτα, το μυαλό σου δεν προλαβαίνει να συλλάβει αυτό που μόλις έκανε το σώμα σου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-006",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι άνθρωποι με ρωτούν γιατί πέφτω.",
+      "text_markdown": "Οι άνθρωποι με ρωτούν γιατί πέφτω.",
+      "tts": {
+        "text": "Οι άνθρωποι με ρωτούν γιατί πέφτω.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-007",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Πάντα περιμένουν να πω ότι είναι το ξέσπασμα της αδρεναλίνης.",
+      "text_markdown": "Πάντα περιμένουν να πω ότι είναι το ξέσπασμα της αδρεναλίνης.",
+      "tts": {
+        "text": "Πάντα περιμένουν να πω ότι είναι το ξέσπασμα της αδρεναλίνης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-008",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Δεν είναι το ξέσπασμα της αδρεναλίνης.",
+      "text_markdown": "Δεν είναι το ξέσπασμα της αδρεναλίνης.",
+      "tts": {
+        "text": "Δεν είναι το ξέσπασμα της αδρεναλίνης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-009",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το ξέσπασμα της αδρεναλίνης είναι αυτό που νιώθεις στις πρώτες πέντε σου πτώσεις.",
+      "text_markdown": "Το ξέσπασμα της αδρεναλίνης είναι αυτό που νιώθεις στις πρώτες πέντε σου πτώσεις.",
+      "tts": {
+        "text": "Το ξέσπασμα της αδρεναλίνης είναι αυτό που νιώθεις στις πρώτες πέντε σου πτώσεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-010",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p3",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Μετά από αυτές, κάτι πιο ήσυχο αναλαμβάνει.",
+      "text_markdown": "Μετά από αυτές, κάτι πιο ήσυχο αναλαμβάνει.",
+      "tts": {
+        "text": "Μετά από αυτές, κάτι πιο ήσυχο αναλαμβάνει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-011",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτό που κυνηγάω είναι η διαύγεια.",
+      "text_markdown": "Αυτό που κυνηγάω είναι η διαύγεια.",
+      "tts": {
+        "text": "Αυτό που κυνηγάω είναι η διαύγεια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-012",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Για εξήντα δευτερόλεπτα μέσα στην ελεύθερη πτώση, το μυαλό σου δεν έχει τίποτε άλλο να κάνει.",
+      "text_markdown": "Για εξήντα δευτερόλεπτα μέσα στην ελεύθερη πτώση, το μυαλό σου δεν έχει τίποτε άλλο να κάνει.",
+      "tts": {
+        "text": "Για εξήντα δευτερόλεπτα μέσα στην ελεύθερη πτώση, το μυαλό σου δεν έχει τίποτε άλλο να κάνει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-013",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Κανένα τηλέφωνο.",
+      "text_markdown": "Κανένα τηλέφωνο.",
+      "tts": {
+        "text": "Κανένα τηλέφωνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-014",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Κανένας λογαριασμός.",
+      "text_markdown": "Κανένας λογαριασμός.",
+      "tts": {
+        "text": "Κανένας λογαριασμός.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-015",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Καμία μικρή έγνοια για το αύριο.",
+      "text_markdown": "Καμία μικρή έγνοια για το αύριο.",
+      "tts": {
+        "text": "Καμία μικρή έγνοια για το αύριο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-016",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Μόνο ο αέρας, η αναπνοή σου, και η αργή καμπύλη της γης από κάτω σου.",
+      "text_markdown": "Μόνο ο αέρας, η αναπνοή σου, και η αργή καμπύλη της γης από κάτω σου.",
+      "tts": {
+        "text": "Μόνο ο αέρας, η αναπνοή σου, και η αργή καμπύλη της γης από κάτω σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-017",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Το μεγαλύτερο μέρος της ζωής είναι θορυβώδες.",
+      "text_markdown": "Το μεγαλύτερο μέρος της ζωής είναι θορυβώδες.",
+      "tts": {
+        "text": "Το μεγαλύτερο μέρος της ζωής είναι θορυβώδες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-018",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p4",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Αυτό το λεπτό δεν είναι.",
+      "text_markdown": "Αυτό το λεπτό δεν είναι.",
+      "tts": {
+        "text": "Αυτό το λεπτό δεν είναι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Οι αλεξιπτωτιστές δεν είναι τρελοί.",
+      "text_markdown": "Οι αλεξιπτωτιστές δεν είναι τρελοί.",
+      "tts": {
+        "text": "Οι αλεξιπτωτιστές δεν είναι τρελοί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι περισσότεροι από εμάς είμαστε ήρεμοι άνθρωποι που βρήκαμε έναν τρόπο να νιώσουμε ήρεμοι πιο γρήγορα.",
+      "text_markdown": "Οι περισσότεροι από εμάς είμαστε ήρεμοι άνθρωποι που βρήκαμε έναν τρόπο να νιώσουμε ήρεμοι πιο γρήγορα.",
+      "tts": {
+        "text": "Οι περισσότεροι από εμάς είμαστε ήρεμοι άνθρωποι που βρήκαμε έναν τρόπο να νιώσουμε ήρεμοι πιο γρήγορα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πηδάμε από αεροπλάνα όπως άλλοι κάνουν διαλογισμό.",
+      "text_markdown": "Πηδάμε από αεροπλάνα όπως άλλοι κάνουν διαλογισμό.",
+      "tts": {
+        "text": "Πηδάμε από αεροπλάνα όπως άλλοι κάνουν διαλογισμό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Καθαρίζει κάτι μέσα μας.",
+      "text_markdown": "Καθαρίζει κάτι μέσα μας.",
+      "tts": {
+        "text": "Καθαρίζει κάτι μέσα μας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p5",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Και μετά, κάθε σαββατοκύριακο, το ξανακαθαρίζει.",
+      "text_markdown": "Και μετά, κάθε σαββατοκύριακο, το ξανακαθαρίζει.",
+      "tts": {
+        "text": "Και μετά, κάθε σαββατοκύριακο, το ξανακαθαρίζει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Την πρώτη φορά που είδα ένα αλεξίπτωτο να ανοίγει πάνω από το κεφάλι μου, έκλαψα μέσα στη ζώνη ασφαλείας.",
+      "text_markdown": "Την πρώτη φορά που είδα ένα αλεξίπτωτο να ανοίγει πάνω από το κεφάλι μου, έκλαψα μέσα στη ζώνη ασφαλείας.",
+      "tts": {
+        "text": "Την πρώτη φορά που είδα ένα αλεξίπτωτο να ανοίγει πάνω από το κεφάλι μου, έκλαψα μέσα στη ζώνη ασφαλείας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Δεν το περίμενα.",
+      "text_markdown": "Δεν το περίμενα.",
+      "tts": {
+        "text": "Δεν το περίμενα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ένας ενήλικας, κρεμασμένος στον ουρανό κάτω από ένα τετράγωνο μαλακού υφάσματος, να κλαίει χωρίς να μπορεί να εξηγήσει τον λόγο.",
+      "text_markdown": "Ένας ενήλικας, κρεμασμένος στον ουρανό κάτω από ένα τετράγωνο μαλακού υφάσματος, να κλαίει χωρίς να μπορεί να εξηγήσει τον λόγο.",
+      "tts": {
+        "text": "Ένας ενήλικας, κρεμασμένος στον ουρανό κάτω από ένα τετράγωνο μαλακού υφάσματος, να κλαίει χωρίς να μπορεί να εξηγήσει τον λόγο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ο εκπαιδευτής μου γέλασε απαλά και με χτύπησε στον ώμο.",
+      "text_markdown": "Ο εκπαιδευτής μου γέλασε απαλά και με χτύπησε στον ώμο.",
+      "tts": {
+        "text": "Ο εκπαιδευτής μου γέλασε απαλά και με χτύπησε στον ώμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το είχε δει πολλές φορές.",
+      "text_markdown": "Το είχε δει πολλές φορές.",
+      "tts": {
+        "text": "Το είχε δει πολλές φορές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p6",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Εκείνη ήταν η στιγμή που κατάλαβα πως θα ξαναέρθω.",
+      "text_markdown": "Εκείνη ήταν η στιγμή που κατάλαβα πως θα ξαναέρθω.",
+      "tts": {
+        "text": "Εκείνη ήταν η στιγμή που κατάλαβα πως θα ξαναέρθω.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η ελεύθερη πτώση με αλεξίπτωτο δεν έχει να κάνει με το να είσαι γενναίος.",
+      "text_markdown": "Η ελεύθερη πτώση με αλεξίπτωτο δεν έχει να κάνει με το να είσαι γενναίος.",
+      "tts": {
+        "text": "Η ελεύθερη πτώση με αλεξίπτωτο δεν έχει να κάνει με το να είσαι γενναίος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Έχει να κάνει με το να βρεις το ένα μέρος όπου το μυαλό σου ησυχάζει.",
+      "text_markdown": "Έχει να κάνει με το να βρεις το ένα μέρος όπου το μυαλό σου ησυχάζει.",
+      "tts": {
+        "text": "Έχει να κάνει με το να βρεις το ένα μέρος όπου το μυαλό σου ησυχάζει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Για κάποιους ανθρώπους, αυτό το μέρος είναι ένα στρωματάκι γιόγκα.",
+      "text_markdown": "Για κάποιους ανθρώπους, αυτό το μέρος είναι ένα στρωματάκι γιόγκα.",
+      "tts": {
+        "text": "Για κάποιους ανθρώπους, αυτό το μέρος είναι ένα στρωματάκι γιόγκα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Για κάποιους, είναι ένα μακρύ τρέξιμο σε έναν άδειο δρόμο.",
+      "text_markdown": "Για κάποιους, είναι ένα μακρύ τρέξιμο σε έναν άδειο δρόμο.",
+      "tts": {
+        "text": "Για κάποιους, είναι ένα μακρύ τρέξιμο σε έναν άδειο δρόμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Για κάποιους, είναι ένα πετονιά ψαρέματος, ή ένα πιάνο, ή μια κουζίνα στις έξι το πρωί.",
+      "text_markdown": "Για κάποιους, είναι ένα πετονιά ψαρέματος, ή ένα πιάνο, ή μια κουζίνα στις έξι το πρωί.",
+      "tts": {
+        "text": "Για κάποιους, είναι ένα πετονιά ψαρέματος, ή ένα πιάνο, ή μια κουζίνα στις έξι το πρωί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p7",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Για μένα, είναι δεκατρείς χιλιάδες πόδια πάνω από το έδαφος, χωρίς να έχω να κάνω τίποτα άλλο εκτός από το να αναπνέω.",
+      "text_markdown": "Για μένα, είναι δεκατρείς χιλιάδες πόδια πάνω από το έδαφος, χωρίς να έχω να κάνω τίποτα άλλο εκτός από το να αναπνέω.",
+      "tts": {
+        "text": "Για μένα, είναι δεκατρείς χιλιάδες πόδια πάνω από το έδαφος, χωρίς να έχω να κάνω τίποτα άλλο εκτός από το να αναπνέω.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτή η έλξη, μόλις τη νιώσεις, είναι δύσκολο να την περιγράψεις σε έναν φίλο πάνω από ένα δείπνο.",
+      "text_markdown": "Αυτή η έλξη, μόλις τη νιώσεις, είναι δύσκολο να την περιγράψεις σε έναν φίλο πάνω από ένα δείπνο.",
+      "tts": {
+        "text": "Αυτή η έλξη, μόλις τη νιώσεις, είναι δύσκολο να την περιγράψεις σε έναν φίλο πάνω από ένα δείπνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Θα προσπαθήσεις, εκείνος θα χαμογελάσει ευγενικά, και εσύ θα τα παρατήσεις.",
+      "text_markdown": "Θα προσπαθήσεις, εκείνος θα χαμογελάσει ευγενικά, και εσύ θα τα παρατήσεις.",
+      "tts": {
+        "text": "Θα προσπαθήσεις, εκείνος θα χαμογελάσει ευγενικά, και εσύ θα τα παρατήσεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.75
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Δεν πειράζει.",
+      "text_markdown": "Δεν πειράζει.",
+      "tts": {
+        "text": "Δεν πειράζει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Δεν άρχισες να πέφτεις για να το εξηγήσεις.",
+      "text_markdown": "Δεν άρχισες να πέφτεις για να το εξηγήσεις.",
+      "tts": {
+        "text": "Δεν άρχισες να πέφτεις για να το εξηγήσεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Άρχισες να πέφτεις γιατί, την πρώτη φορά που το δοκίμασες, κάτι μέσα σου είπε, ω, εδώ είσαι.",
+      "text_markdown": "Άρχισες να πέφτεις γιατί, την πρώτη φορά που το δοκίμασες, κάτι μέσα σου είπε, ω, εδώ είσαι.",
+      "tts": {
+        "text": "Άρχισες να πέφτεις γιατί, την πρώτη φορά που το δοκίμασες, κάτι μέσα σου είπε, ω, εδώ είσαι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έχεις σταθεί ποτέ στην άκρη ενός πολύ ψηλού σημείου και ένιωσες το σώμα σου να γέρνει προς τον ανοιχτό αέρα.",
+      "text_markdown": "Έχεις σταθεί ποτέ στην άκρη ενός πολύ ψηλού σημείου και ένιωσες το σώμα σου να γέρνει προς τον ανοιχτό αέρα.",
+      "tts": {
+        "text": "Έχεις σταθεί ποτέ στην άκρη ενός πολύ ψηλού σημείου και ένιωσες το σώμα σου να γέρνει προς τον ανοιχτό αέρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch01-042",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μόνο λίγο, μόνο για ένα δευτερόλεπτο.",
+      "text_markdown": "Μόνο λίγο, μόνο για ένα δευτερόλεπτο.",
+      "tts": {
+        "text": "Μόνο λίγο, μόνο για ένα δευτερόλεπτο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-043",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αν το έχεις νιώσει, ξέρεις ήδη για τι πράγμα μιλάω.",
+      "text_markdown": "Αν το έχεις νιώσει, ξέρεις ήδη για τι πράγμα μιλάω.",
+      "tts": {
+        "text": "Αν το έχεις νιώσει, ξέρεις ήδη για τι πράγμα μιλάω.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-044",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Η ελεύθερη πτώση με αλεξίπτωτο είναι αυτό που συμβαίνει όταν σταματάς να προσποιείσαι ότι δεν γέρνεις.",
+      "text_markdown": "Η ελεύθερη πτώση με αλεξίπτωτο είναι αυτό που συμβαίνει όταν σταματάς να προσποιείσαι ότι δεν γέρνεις.",
+      "tts": {
+        "text": "Η ελεύθερη πτώση με αλεξίπτωτο είναι αυτό που συμβαίνει όταν σταματάς να προσποιείσαι ότι δεν γέρνεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-045",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p9",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Βγαίνεις, με τη θέλησή σου, στο μέρος που το σώμα σου ρωτούσε σιωπηλά εδώ και χρόνια.",
+      "text_markdown": "Βγαίνεις, με τη θέλησή σου, στο μέρος που το σώμα σου ρωτούσε σιωπηλά εδώ και χρόνια.",
+      "tts": {
+        "text": "Βγαίνεις, με τη θέλησή σου, στο μέρος που το σώμα σου ρωτούσε σιωπηλά εδώ και χρόνια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-046",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και μετά, πολύ γρήγορα, μαθαίνεις πως το έδαφος δεν ήταν ποτέ εκεί που βρισκόταν ο φόβος.",
+      "text_markdown": "Και μετά, πολύ γρήγορα, μαθαίνεις πως το έδαφος δεν ήταν ποτέ εκεί που βρισκόταν ο φόβος.",
+      "tts": {
+        "text": "Και μετά, πολύ γρήγορα, μαθαίνεις πως το έδαφος δεν ήταν ποτέ εκεί που βρισκόταν ο φόβος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch01-047",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο φόβος ήταν στο γέρσιμο.",
+      "text_markdown": "Ο φόβος ήταν στο γέρσιμο.",
+      "tts": {
+        "text": "Ο φόβος ήταν στο γέρσιμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch01-048",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μόλις πέσεις, ο φόβος φεύγει.",
+      "text_markdown": "Μόλις πέσεις, ο φόβος φεύγει.",
+      "tts": {
+        "text": "Μόλις πέσεις, ο φόβος φεύγει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-049",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Αυτό που μένει είναι κάτι σχεδόν σαν σπίτι.",
+      "text_markdown": "Αυτό που μένει είναι κάτι σχεδόν σαν σπίτι.",
+      "tts": {
+        "text": "Αυτό που μένει είναι κάτι σχεδόν σαν σπίτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch01-050",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Η καρδιά σου επιβραδύνεται.",
+      "text_markdown": "Η καρδιά σου επιβραδύνεται.",
+      "tts": {
+        "text": "Η καρδιά σου επιβραδύνεται.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-051",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Η αναπνοή σου βρίσκει έναν ρυθμό που έψαχνε.",
+      "text_markdown": "Η αναπνοή σου βρίσκει έναν ρυθμό που έψαχνε.",
+      "tts": {
+        "text": "Η αναπνοή σου βρίσκει έναν ρυθμό που έψαχνε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-052",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ο αέρας σε κρατάει.",
+      "text_markdown": "Ο αέρας σε κρατάει.",
+      "tts": {
+        "text": "Ο αέρας σε κρατάει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-053",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p10",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Και νιώθεις, ίσως για πρώτη φορά εδώ και πολύ καιρό, πως είσαι ακριβώς εκεί όπου είσαι.",
+      "text_markdown": "Και νιώθεις, ίσως για πρώτη φορά εδώ και πολύ καιρό, πως είσαι ακριβώς εκεί όπου είσαι.",
+      "tts": {
+        "text": "Και νιώθεις, ίσως για πρώτη φορά εδώ και πολύ καιρό, πως είσαι ακριβώς εκεί όπου είσαι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.83
+      }
+    },
+    {
+      "id": "ch01-054",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αυτά θα σου έλεγα, αν με ρωτούσες σε έναν μεγάλο περίπατο.",
+      "text_markdown": "Αυτά θα σου έλεγα, αν με ρωτούσες σε έναν μεγάλο περίπατο.",
+      "tts": {
+        "text": "Αυτά θα σου έλεγα, αν με ρωτούσες σε έναν μεγάλο περίπατο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch01-055",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Γιατί ένας ήρεμος και λογικός άνθρωπος συνεχίζει να πηδάει από εντελώς υγιή αεροπλάνα.",
+      "text_markdown": "Γιατί ένας ήρεμος και λογικός άνθρωπος συνεχίζει να πηδάει από εντελώς υγιή αεροπλάνα.",
+      "tts": {
+        "text": "Γιατί ένας ήρεμος και λογικός άνθρωπος συνεχίζει να πηδάει από εντελώς υγιή αεροπλάνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-056",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Θα σου έλεγα πως είναι το πιο ήσυχο πράγμα που κάνω.",
+      "text_markdown": "Θα σου έλεγα πως είναι το πιο ήσυχο πράγμα που κάνω.",
+      "tts": {
+        "text": "Θα σου έλεγα πως είναι το πιο ήσυχο πράγμα που κάνω.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch01-057",
+      "part": 0,
+      "chapter": 1,
+      "title": "The Hook",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και θα το εννοούσα.",
+      "text_markdown": "Και θα το εννοούσα.",
+      "tts": {
+        "text": "Και θα το εννοούσα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Η Πρώτη Φορά",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Η Πρώτη Φορά",
+      "text_markdown": "Η Πρώτη Φορά"
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άσε με να σε βάλω μέσα στο αεροπλάνο.",
+      "text_markdown": "Άσε με να σε βάλω μέσα στο αεροπλάνο.",
+      "tts": {
+        "text": "Άσε με να σε βάλω μέσα στο αεροπλάνο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθεσαι σε ένα χαμηλό μεταλλικό παγκάκι, δεμένος με ζώνη ασφαλείας στον εκπαιδευτή πίσω σου.",
+      "text_markdown": "Κάθεσαι σε ένα χαμηλό μεταλλικό παγκάκι, δεμένος με ζώνη ασφαλείας στον εκπαιδευτή πίσω σου.",
+      "tts": {
+        "text": "Κάθεσαι σε ένα χαμηλό μεταλλικό παγκάκι, δεμένος με ζώνη ασφαλείας στον εκπαιδευτή πίσω σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το αεροπλάνο ανεβαίνει σε αργούς, νωχελικούς κύκλους.",
+      "text_markdown": "Το αεροπλάνο ανεβαίνει σε αργούς, νωχελικούς κύκλους.",
+      "tts": {
+        "text": "Το αεροπλάνο ανεβαίνει σε αργούς, νωχελικούς κύκλους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το μικρό τετράγωνο παράθυρο δίπλα σου γίνεται όλο και πιο μπλε.",
+      "text_markdown": "Το μικρό τετράγωνο παράθυρο δίπλα σου γίνεται όλο και πιο μπλε.",
+      "tts": {
+        "text": "Το μικρό τετράγωνο παράθυρο δίπλα σου γίνεται όλο και πιο μπλε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Νιώθεις την καρδιά σου στον λαιμό σου, αλλά δεν πανικοβάλλεσαι.",
+      "text_markdown": "Νιώθεις την καρδιά σου στον λαιμό σου, αλλά δεν πανικοβάλλεσαι.",
+      "tts": {
+        "text": "Νιώθεις την καρδιά σου στον λαιμό σου, αλλά δεν πανικοβάλλεσαι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p14",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Είσαι απλώς πολύ, πάρα πολύ ξύπνιος.",
+      "text_markdown": "Είσαι απλώς πολύ, πάρα πολύ ξύπνιος.",
+      "tts": {
+        "text": "Είσαι απλώς πολύ, πάρα πολύ ξύπνιος.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-065",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο εκπαιδευτής σκύβει κοντά στο αυτί σου.",
+      "text_markdown": "Ο εκπαιδευτής σκύβει κοντά στο αυτί σου.",
+      "tts": {
+        "text": "Ο εκπαιδευτής σκύβει κοντά στο αυτί σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-066",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σου λέει, ήρεμα, ότι ό,τι χρειάζεται να κάνεις, θα σου το πει εκείνος όταν έρθει η ώρα.",
+      "text_markdown": "Σου λέει, ήρεμα, ότι ό,τι χρειάζεται να κάνεις, θα σου το πει εκείνος όταν έρθει η ώρα.",
+      "tts": {
+        "text": "Σου λέει, ήρεμα, ότι ό,τι χρειάζεται να κάνεις, θα σου το πει εκείνος όταν έρθει η ώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-067",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Γνέφεις καταφατικά.",
+      "text_markdown": "Γνέφεις καταφατικά.",
+      "tts": {
+        "text": "Γνέφεις καταφατικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-068",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p15",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Έχεις γνέψει τόσες πολλές φορές την τελευταία ώρα που ο λαιμός σου αρχίζει να πονάει.",
+      "text_markdown": "Έχεις γνέψει τόσες πολλές φορές την τελευταία ώρα που ο λαιμός σου αρχίζει να πονάει.",
+      "tts": {
+        "text": "Έχεις γνέψει τόσες πολλές φορές την τελευταία ώρα που ο λαιμός σου αρχίζει να πονάει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-069",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τότε η πόρτα ανοίγει.",
+      "text_markdown": "Τότε η πόρτα ανοίγει.",
+      "tts": {
+        "text": "Τότε η πόρτα ανοίγει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-070",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο αέρας μπαίνει σαν τοίχος, δυνατός και κρύος και ζωντανός, και ξαφνικά το αεροπλάνο μοιάζει πολύ μικρό.",
+      "text_markdown": "Ο αέρας μπαίνει σαν τοίχος, δυνατός και κρύος και ζωντανός, και ξαφνικά το αεροπλάνο μοιάζει πολύ μικρό.",
+      "tts": {
+        "text": "Ο αέρας μπαίνει σαν τοίχος, δυνατός και κρύος και ζωντανός, και ξαφνικά το αεροπλάνο μοιάζει πολύ μικρό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch02-071",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σέρνεσαι ως την άκρη.",
+      "text_markdown": "Σέρνεσαι ως την άκρη.",
+      "tts": {
+        "text": "Σέρνεσαι ως την άκρη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-072",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Τα δάχτυλά σου κρέμονται στο τίποτα.",
+      "text_markdown": "Τα δάχτυλά σου κρέμονται στο τίποτα.",
+      "tts": {
+        "text": "Τα δάχτυλά σου κρέμονται στο τίποτα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-073",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Κοιτάς κάτω, και το έδαφος είναι τόσο μακριά που δεν μοιάζει πια με έδαφος.",
+      "text_markdown": "Κοιτάς κάτω, και το έδαφος είναι τόσο μακριά που δεν μοιάζει πια με έδαφος.",
+      "tts": {
+        "text": "Κοιτάς κάτω, και το έδαφος είναι τόσο μακριά που δεν μοιάζει πια με έδαφος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-074",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Μοιάζει με πάπλωμα.",
+      "text_markdown": "Μοιάζει με πάπλωμα.",
+      "tts": {
+        "text": "Μοιάζει με πάπλωμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-075",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Δρόμοι λεπτοί σαν κλωστές.",
+      "text_markdown": "Δρόμοι λεπτοί σαν κλωστές.",
+      "tts": {
+        "text": "Δρόμοι λεπτοί σαν κλωστές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch02-076",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ένα ποτάμι στο χρώμα του θαμπού ασημιού.",
+      "text_markdown": "Ένα ποτάμι στο χρώμα του θαμπού ασημιού.",
+      "tts": {
+        "text": "Ένα ποτάμι στο χρώμα του θαμπού ασημιού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-077",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p17",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Μικροσκοπικά πράσινα και καφέ χωράφια ραμμένα μεταξύ τους με φράχτες από φυτά.",
+      "text_markdown": "Μικροσκοπικά πράσινα και καφέ χωράφια ραμμένα μεταξύ τους με φράχτες από φυτά.",
+      "tts": {
+        "text": "Μικροσκοπικά πράσινα και καφέ χωράφια ραμμένα μεταξύ τους με φράχτες από φυτά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-078",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο εκπαιδευτής σου μετράει.",
+      "text_markdown": "Ο εκπαιδευτής σου μετράει.",
+      "tts": {
+        "text": "Ο εκπαιδευτής σου μετράει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-079",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Λέει ένα.",
+      "text_markdown": "Λέει ένα.",
+      "tts": {
+        "text": "Λέει ένα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-080",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Λέει δύο.",
+      "text_markdown": "Λέει δύο.",
+      "tts": {
+        "text": "Λέει δύο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-081",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Στα τρία, το αεροπλάνο έχει χαθεί.",
+      "text_markdown": "Στα τρία, το αεροπλάνο έχει χαθεί.",
+      "tts": {
+        "text": "Στα τρία, το αεροπλάνο έχει χαθεί.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-082",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τα πρώτα τρία δευτερόλεπτα είναι τα πιο δύσκολα.",
+      "text_markdown": "Τα πρώτα τρία δευτερόλεπτα είναι τα πιο δύσκολα.",
+      "tts": {
+        "text": "Τα πρώτα τρία δευτερόλεπτα είναι τα πιο δύσκολα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-083",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το σώμα σου πιστεύει πως πέφτει, γιατί όντως πέφτει, και ποτέ κανείς δεν του είχε πει ότι αυτό είναι εντάξει.",
+      "text_markdown": "Το σώμα σου πιστεύει πως πέφτει, γιατί όντως πέφτει, και ποτέ κανείς δεν του είχε πει ότι αυτό είναι εντάξει.",
+      "tts": {
+        "text": "Το σώμα σου πιστεύει πως πέφτει, γιατί όντως πέφτει, και ποτέ κανείς δεν του είχε πει ότι αυτό είναι εντάξει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch02-084",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Βγάζεις έναν ήχο.",
+      "text_markdown": "Βγάζεις έναν ήχο.",
+      "tts": {
+        "text": "Βγάζεις έναν ήχο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-085",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Όλοι βγάζουν έναν ήχο.",
+      "text_markdown": "Όλοι βγάζουν έναν ήχο.",
+      "tts": {
+        "text": "Όλοι βγάζουν έναν ήχο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-086",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p20",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Δεν χρειάζεται να ντρέπεσαι για τον ήχο.",
+      "text_markdown": "Δεν χρειάζεται να ντρέπεσαι για τον ήχο.",
+      "tts": {
+        "text": "Δεν χρειάζεται να ντρέπεσαι για τον ήχο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-087",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τότε συμβαίνει κάτι εξαιρετικό.",
+      "text_markdown": "Τότε συμβαίνει κάτι εξαιρετικό.",
+      "tts": {
+        "text": "Τότε συμβαίνει κάτι εξαιρετικό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-088",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η πτώση σταματάει να μοιάζει με πτώση.",
+      "text_markdown": "Η πτώση σταματάει να μοιάζει με πτώση.",
+      "tts": {
+        "text": "Η πτώση σταματάει να μοιάζει με πτώση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-089",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο αέρας ανεβαίνει για να σε συναντήσει και σε κρατάει, όπως σε κρατάει το νερό όταν επιπλέεις ανάσκελα.",
+      "text_markdown": "Ο αέρας ανεβαίνει για να σε συναντήσει και σε κρατάει, όπως σε κρατάει το νερό όταν επιπλέεις ανάσκελα.",
+      "tts": {
+        "text": "Ο αέρας ανεβαίνει για να σε συναντήσει και σε κρατάει, όπως σε κρατάει το νερό όταν επιπλέεις ανάσκελα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch02-090",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Τα χέρια και τα πόδια σου ανοίγουν χωρίς να τους το ζητήσεις.",
+      "text_markdown": "Τα χέρια και τα πόδια σου ανοίγουν χωρίς να τους το ζητήσεις.",
+      "tts": {
+        "text": "Τα χέρια και τα πόδια σου ανοίγουν χωρίς να τους το ζητήσεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-091",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το πρόσωπό σου το νιώθεις σαν να το τραβούν προς πολλές κατευθύνσεις ταυτόχρονα.",
+      "text_markdown": "Το πρόσωπό σου το νιώθεις σαν να το τραβούν προς πολλές κατευθύνσεις ταυτόχρονα.",
+      "tts": {
+        "text": "Το πρόσωπό σου το νιώθεις σαν να το τραβούν προς πολλές κατευθύνσεις ταυτόχρονα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-092",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Δεν μπορείς να καταλάβεις αν χαμογελάς ή ουρλιάζεις.",
+      "text_markdown": "Δεν μπορείς να καταλάβεις αν χαμογελάς ή ουρλιάζεις.",
+      "tts": {
+        "text": "Δεν μπορείς να καταλάβεις αν χαμογελάς ή ουρλιάζεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch02-093",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p21",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Δεν έχει σημασία.",
+      "text_markdown": "Δεν έχει σημασία.",
+      "tts": {
+        "text": "Δεν έχει σημασία.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-094",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κοιτάς γύρω σου.",
+      "text_markdown": "Κοιτάς γύρω σου.",
+      "tts": {
+        "text": "Κοιτάς γύρω σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-095",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η γη είναι ακόμα πολύ μακριά κάτω σου, αλλά πιο κοντά τώρα, και βλέπεις καλύτερα τα χρώματα.",
+      "text_markdown": "Η γη είναι ακόμα πολύ μακριά κάτω σου, αλλά πιο κοντά τώρα, και βλέπεις καλύτερα τα χρώματα.",
+      "tts": {
+        "text": "Η γη είναι ακόμα πολύ μακριά κάτω σου, αλλά πιο κοντά τώρα, και βλέπεις καλύτερα τα χρώματα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch02-096",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αυτοκίνητα σε έναν αυτοκινητόδρομο, αργά σαν μυρμήγκια.",
+      "text_markdown": "Αυτοκίνητα σε έναν αυτοκινητόδρομο, αργά σαν μυρμήγκια.",
+      "tts": {
+        "text": "Αυτοκίνητα σε έναν αυτοκινητόδρομο, αργά σαν μυρμήγκια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-097",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μια λίμνη, εντελώς ακίνητη.",
+      "text_markdown": "Μια λίμνη, εντελώς ακίνητη.",
+      "tts": {
+        "text": "Μια λίμνη, εντελώς ακίνητη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-098",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p22",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Σκιά σύννεφου που γλιστράει πάνω από ένα δάσος.",
+      "text_markdown": "Σκιά σύννεφου που γλιστράει πάνω από ένα δάσος.",
+      "tts": {
+        "text": "Σκιά σύννεφου που γλιστράει πάνω από ένα δάσος.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-099",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πετάς.",
+      "text_markdown": "Πετάς.",
+      "tts": {
+        "text": "Πετάς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-100",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Όχι μέσα σε αεροπλάνο.",
+      "text_markdown": "Όχι μέσα σε αεροπλάνο.",
+      "tts": {
+        "text": "Όχι μέσα σε αεροπλάνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-101",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Εσύ, το σώμα σου, πετάει.",
+      "text_markdown": "Εσύ, το σώμα σου, πετάει.",
+      "tts": {
+        "text": "Εσύ, το σώμα σου, πετάει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-102",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο εκπαιδευτής σού χτυπάει ελαφρά τον ώμο.",
+      "text_markdown": "Ο εκπαιδευτής σού χτυπάει ελαφρά τον ώμο.",
+      "tts": {
+        "text": "Ο εκπαιδευτής σού χτυπάει ελαφρά τον ώμο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-103",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Τραβάς το σχοινί.",
+      "text_markdown": "Τραβάς το σχοινί.",
+      "tts": {
+        "text": "Τραβάς το σχοινί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-104",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Νιώθεις ένα απαλό τράβηγμα, σαν κάποιος να σε αρπάζει απαλά από την πλάτη του πουκαμίσου.",
+      "text_markdown": "Νιώθεις ένα απαλό τράβηγμα, σαν κάποιος να σε αρπάζει απαλά από την πλάτη του πουκαμίσου.",
+      "tts": {
+        "text": "Νιώθεις ένα απαλό τράβηγμα, σαν κάποιος να σε αρπάζει απαλά από την πλάτη του πουκαμίσου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-105",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μετά ένα δεύτερο τράβηγμα, πιο δυνατό, που σε σηκώνει όρθιο.",
+      "text_markdown": "Μετά ένα δεύτερο τράβηγμα, πιο δυνατό, που σε σηκώνει όρθιο.",
+      "tts": {
+        "text": "Μετά ένα δεύτερο τράβηγμα, πιο δυνατό, που σε σηκώνει όρθιο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-106",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο κόσμος ησυχάζει.",
+      "text_markdown": "Ο κόσμος ησυχάζει.",
+      "tts": {
+        "text": "Ο κόσμος ησυχάζει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-107",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο αέρας έφυγε.",
+      "text_markdown": "Ο αέρας έφυγε.",
+      "tts": {
+        "text": "Ο αέρας έφυγε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-108",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ο βρυχηθμός έφυγε.",
+      "text_markdown": "Ο βρυχηθμός έφυγε.",
+      "tts": {
+        "text": "Ο βρυχηθμός έφυγε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-109",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η πτώση έφυγε.",
+      "text_markdown": "Η πτώση έφυγε.",
+      "tts": {
+        "text": "Η πτώση έφυγε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-110",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Κρέμεσαι τώρα, μέσα σε μια ζώνη ασφαλείας, κάτω από ένα φαρδύ ορθογώνιο υφάσματος.",
+      "text_markdown": "Κρέμεσαι τώρα, μέσα σε μια ζώνη ασφαλείας, κάτω από ένα φαρδύ ορθογώνιο υφάσματος.",
+      "tts": {
+        "text": "Κρέμεσαι τώρα, μέσα σε μια ζώνη ασφαλείας, κάτω από ένα φαρδύ ορθογώνιο υφάσματος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch02-111",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ο ουρανός είναι ξαφνικά πολύ, πάρα πολύ ακίνητος.",
+      "text_markdown": "Ο ουρανός είναι ξαφνικά πολύ, πάρα πολύ ακίνητος.",
+      "tts": {
+        "text": "Ο ουρανός είναι ξαφνικά πολύ, πάρα πολύ ακίνητος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-112",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ακούς το πουλί από κάτω σου.",
+      "text_markdown": "Ακούς το πουλί από κάτω σου.",
+      "tts": {
+        "text": "Ακούς το πουλί από κάτω σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-113",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ακούς τον εαυτό σου να αναπνέει.",
+      "text_markdown": "Ακούς τον εαυτό σου να αναπνέει.",
+      "tts": {
+        "text": "Ακούς τον εαυτό σου να αναπνέει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-114",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Ο εκπαιδευτής σου γελάει στο αυτί σου και σε ρωτάει πώς τα πας.",
+      "text_markdown": "Ο εκπαιδευτής σου γελάει στο αυτί σου και σε ρωτάει πώς τα πας.",
+      "tts": {
+        "text": "Ο εκπαιδευτής σου γελάει στο αυτί σου και σε ρωτάει πώς τα πας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-115",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p26",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Δεν μπορείς να απαντήσεις για μια στιγμή, γιατί κλαις, ή γελάς, ή και τα δύο.",
+      "text_markdown": "Δεν μπορείς να απαντήσεις για μια στιγμή, γιατί κλαις, ή γελάς, ή και τα δύο.",
+      "tts": {
+        "text": "Δεν μπορείς να απαντήσεις για μια στιγμή, γιατί κλαις, ή γελάς, ή και τα δύο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch02-116",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η διαδρομή κάτω από τον θόλο διαρκεί περίπου πέντε λεπτά.",
+      "text_markdown": "Η διαδρομή κάτω από τον θόλο διαρκεί περίπου πέντε λεπτά.",
+      "tts": {
+        "text": "Η διαδρομή κάτω από τον θόλο διαρκεί περίπου πέντε λεπτά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-117",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι τα πέντε πιο γαλήνια λεπτά της ζωής σου.",
+      "text_markdown": "Είναι τα πέντε πιο γαλήνια λεπτά της ζωής σου.",
+      "tts": {
+        "text": "Είναι τα πέντε πιο γαλήνια λεπτά της ζωής σου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch02-118",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν τα πόδια σου αγγίζουν το έδαφος, κάνεις τρία μικρά τρεχαλητά βήματα και σταματάς.",
+      "text_markdown": "Όταν τα πόδια σου αγγίζουν το έδαφος, κάνεις τρία μικρά τρεχαλητά βήματα και σταματάς.",
+      "tts": {
+        "text": "Όταν τα πόδια σου αγγίζουν το έδαφος, κάνεις τρία μικρά τρεχαλητά βήματα και σταματάς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-119",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το γρασίδι είναι ξανά αληθινό.",
+      "text_markdown": "Το γρασίδι είναι ξανά αληθινό.",
+      "tts": {
+        "text": "Το γρασίδι είναι ξανά αληθινό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-120",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο κόσμος είναι ξανά στέρεος.",
+      "text_markdown": "Ο κόσμος είναι ξανά στέρεος.",
+      "tts": {
+        "text": "Ο κόσμος είναι ξανά στέρεος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-121",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Γυρνάς και κοιτάς ψηλά τον ουρανό.",
+      "text_markdown": "Γυρνάς και κοιτάς ψηλά τον ουρανό.",
+      "tts": {
+        "text": "Γυρνάς και κοιτάς ψηλά τον ουρανό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-122",
+      "part": 0,
+      "chapter": 2,
+      "title": "First Time",
+      "paragraph_id": "p28",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Και καταλαβαίνεις, για πρώτη φορά, αυτό που προσπαθούσε να σου πει ο φίλος σου όλα αυτά τα χρόνια.",
+      "text_markdown": "Και καταλαβαίνεις, για πρώτη φορά, αυτό που προσπαθούσε να σου πει ο φίλος σου όλα αυτά τα χρόνια.",
+      "tts": {
+        "text": "Και καταλαβαίνεις, για πρώτη φορά, αυτό που προσπαθούσε να σου πει ο φίλος σου όλα αυτά τα χρόνια.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-123",
+      "part": 0,
+      "chapter": 3,
+      "title": "Πώς Ξεκινάς",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Πώς Ξεκινάς",
+      "text_markdown": "Πώς Ξεκινάς"
+    },
+    {
+      "id": "ch03-124",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Λοιπόν, πώς το κάνεις πραγματικά αυτό, αν αποφασίσεις μια μέρα ότι το θέλεις.",
+      "text_markdown": "Λοιπόν, πώς το κάνεις πραγματικά αυτό, αν αποφασίσεις μια μέρα ότι το θέλεις.",
+      "tts": {
+        "text": "Λοιπόν, πώς το κάνεις πραγματικά αυτό, αν αποφασίσεις μια μέρα ότι το θέλεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-125",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η ειλικρινής απάντηση είναι, πιο εύκολα από όσο νομίζεις.",
+      "text_markdown": "Η ειλικρινής απάντηση είναι, πιο εύκολα από όσο νομίζεις.",
+      "tts": {
+        "text": "Η ειλικρινής απάντηση είναι, πιο εύκολα από όσο νομίζεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-126",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σχεδόν κάθε ζώνη προσγείωσης στον κόσμο θα δεχτεί έναν τελείως αρχάριο το ίδιο πρωί.",
+      "text_markdown": "Σχεδόν κάθε ζώνη προσγείωσης στον κόσμο θα δεχτεί έναν τελείως αρχάριο το ίδιο πρωί.",
+      "tts": {
+        "text": "Σχεδόν κάθε ζώνη προσγείωσης στον κόσμο θα δεχτεί έναν τελείως αρχάριο το ίδιο πρωί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-127",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Σε βάζουν στον ουρανό με μια πτώση τάντεμ, με έναν εκπαιδευτή στην πλάτη σου.",
+      "text_markdown": "Σε βάζουν στον ουρανό με μια πτώση τάντεμ, με έναν εκπαιδευτή στην πλάτη σου.",
+      "tts": {
+        "text": "Σε βάζουν στον ουρανό με μια πτώση τάντεμ, με έναν εκπαιδευτή στην πλάτη σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-128",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Φτάνεις, υπογράφεις τα χαρτιά, βλέπεις ένα σύντομο βίντεο, και γνωρίζεις τον εκπαιδευτή σου.",
+      "text_markdown": "Φτάνεις, υπογράφεις τα χαρτιά, βλέπεις ένα σύντομο βίντεο, και γνωρίζεις τον εκπαιδευτή σου.",
+      "tts": {
+        "text": "Φτάνεις, υπογράφεις τα χαρτιά, βλέπεις ένα σύντομο βίντεο, και γνωρίζεις τον εκπαιδευτή σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-129",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Φοράς μια στολή πτήσης και μια ζώνη ασφαλείας.",
+      "text_markdown": "Φοράς μια στολή πτήσης και μια ζώνη ασφαλείας.",
+      "tts": {
+        "text": "Φοράς μια στολή πτήσης και μια ζώνη ασφαλείας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-130",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ανεβαίνεις στο αεροπλάνο.",
+      "text_markdown": "Ανεβαίνεις στο αεροπλάνο.",
+      "tts": {
+        "text": "Ανεβαίνεις στο αεροπλάνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-131",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p31",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Περίπου είκοσι λεπτά αργότερα, περπατάς πίσω πάνω στο γρασίδι με το μεγαλύτερο χαμόγελο της ζωής σου.",
+      "text_markdown": "Περίπου είκοσι λεπτά αργότερα, περπατάς πίσω πάνω στο γρασίδι με το μεγαλύτερο χαμόγελο της ζωής σου.",
+      "tts": {
+        "text": "Περίπου είκοσι λεπτά αργότερα, περπατάς πίσω πάνω στο γρασίδι με το μεγαλύτερο χαμόγελο της ζωής σου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-132",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Για την πρώτη σου πτώση, δεν χρειάζεται να είσαι γενναίος.",
+      "text_markdown": "Για την πρώτη σου πτώση, δεν χρειάζεται να είσαι γενναίος.",
+      "tts": {
+        "text": "Για την πρώτη σου πτώση, δεν χρειάζεται να είσαι γενναίος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-133",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Χρειάζεται μόνο να είσαι πρόθυμος.",
+      "text_markdown": "Χρειάζεται μόνο να είσαι πρόθυμος.",
+      "tts": {
+        "text": "Χρειάζεται μόνο να είσαι πρόθυμος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-134",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο εκπαιδευτής τα κάνει όλα.",
+      "text_markdown": "Ο εκπαιδευτής τα κάνει όλα.",
+      "tts": {
+        "text": "Ο εκπαιδευτής τα κάνει όλα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-135",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Τραβάει το αλεξίπτωτο.",
+      "text_markdown": "Τραβάει το αλεξίπτωτο.",
+      "tts": {
+        "text": "Τραβάει το αλεξίπτωτο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-136",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Πετάει τον θόλο.",
+      "text_markdown": "Πετάει τον θόλο.",
+      "tts": {
+        "text": "Πετάει τον θόλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-137",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Σε προσγειώνει.",
+      "text_markdown": "Σε προσγειώνει.",
+      "tts": {
+        "text": "Σε προσγειώνει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-138",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p32",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Είσαι στη διαδρομή ως επιβάτης, με την καλύτερη θέση στον κόσμο.",
+      "text_markdown": "Είσαι στη διαδρομή ως επιβάτης, με την καλύτερη θέση στον κόσμο.",
+      "tts": {
+        "text": "Είσαι στη διαδρομή ως επιβάτης, με την καλύτερη θέση στον κόσμο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch03-139",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν μετά από αυτή την πρώτη πτώση σε ενδιαφέρει να πέφτεις μόνος σου, η διαδρομή ονομάζεται Επιταχυνόμενη Ελεύθερη Πτώση.",
+      "text_markdown": "Αν μετά από αυτή την πρώτη πτώση σε ενδιαφέρει να πέφτεις μόνος σου, η διαδρομή ονομάζεται Επιταχυνόμενη Ελεύθερη Πτώση.",
+      "tts": {
+        "text": "Αν μετά από αυτή την πρώτη πτώση σε ενδιαφέρει να πέφτεις μόνος σου, η διαδρομή ονομάζεται Επιταχυνόμενη Ελεύθερη Πτώση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-140",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι ένα πρόγραμμα εκπαίδευσης, που διδάσκεται σε κάθε ζώνη προσγείωσης, και σου μαθαίνει πώς να γίνεις πραγματικός αλεξιπτωτιστής.",
+      "text_markdown": "Είναι ένα πρόγραμμα εκπαίδευσης, που διδάσκεται σε κάθε ζώνη προσγείωσης, και σου μαθαίνει πώς να γίνεις πραγματικός αλεξιπτωτιστής.",
+      "tts": {
+        "text": "Είναι ένα πρόγραμμα εκπαίδευσης, που διδάσκεται σε κάθε ζώνη προσγείωσης, και σου μαθαίνει πώς να γίνεις πραγματικός αλεξιπτωτιστής.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch03-141",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Όχι επιβάτης.",
+      "text_markdown": "Όχι επιβάτης.",
+      "tts": {
+        "text": "Όχι επιβάτης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-142",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Πιλότος του ίδιου σου του σώματος μέσα στον ουρανό.",
+      "text_markdown": "Πιλότος του ίδιου σου του σώματος μέσα στον ουρανό.",
+      "tts": {
+        "text": "Πιλότος του ίδιου σου του σώματος μέσα στον ουρανό.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-143",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το πρώτο επίπεδο του προγράμματος είναι μια μακρά μέρα στην αίθουσα διδασκαλίας.",
+      "text_markdown": "Το πρώτο επίπεδο του προγράμματος είναι μια μακρά μέρα στην αίθουσα διδασκαλίας.",
+      "tts": {
+        "text": "Το πρώτο επίπεδο του προγράμματος είναι μια μακρά μέρα στην αίθουσα διδασκαλίας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-144",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μαθαίνεις πώς να πέφτεις.",
+      "text_markdown": "Μαθαίνεις πώς να πέφτεις.",
+      "tts": {
+        "text": "Μαθαίνεις πώς να πέφτεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-145",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μαθαίνεις πώς να διαβάζεις το υψόμετρό σου.",
+      "text_markdown": "Μαθαίνεις πώς να διαβάζεις το υψόμετρό σου.",
+      "tts": {
+        "text": "Μαθαίνεις πώς να διαβάζεις το υψόμετρό σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-146",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μαθαίνεις τι να κάνεις αν το κύριο αλεξίπτωτό σου δεν ανοίξει.",
+      "text_markdown": "Μαθαίνεις τι να κάνεις αν το κύριο αλεξίπτωτό σου δεν ανοίξει.",
+      "tts": {
+        "text": "Μαθαίνεις τι να κάνεις αν το κύριο αλεξίπτωτό σου δεν ανοίξει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-147",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Η μέρα στην αίθουσα διαρκεί περίπου έξι ή επτά ώρες.",
+      "text_markdown": "Η μέρα στην αίθουσα διαρκεί περίπου έξι ή επτά ώρες.",
+      "tts": {
+        "text": "Η μέρα στην αίθουσα διαρκεί περίπου έξι ή επτά ώρες.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-148",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p34",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Στο τέλος της, ξέρεις περισσότερα για τα αλεξίπτωτα από όσα μαθαίνουν οι περισσότεροι άνθρωποι σε όλη τους τη ζωή.",
+      "text_markdown": "Στο τέλος της, ξέρεις περισσότερα για τα αλεξίπτωτα από όσα μαθαίνουν οι περισσότεροι άνθρωποι σε όλη τους τη ζωή.",
+      "tts": {
+        "text": "Στο τέλος της, ξέρεις περισσότερα για τα αλεξίπτωτα από όσα μαθαίνουν οι περισσότεροι άνθρωποι σε όλη τους τη ζωή.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-149",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Έπειτα έρχεται η πρώτη σου σόλο πτώση.",
+      "text_markdown": "Έπειτα έρχεται η πρώτη σου σόλο πτώση.",
+      "tts": {
+        "text": "Έπειτα έρχεται η πρώτη σου σόλο πτώση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-150",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Δύο εκπαιδευτές πέφτουν μαζί σου, ένας σε κάθε πλευρά, κρατώντας τη ζώνη ασφαλείας σου.",
+      "text_markdown": "Δύο εκπαιδευτές πέφτουν μαζί σου, ένας σε κάθε πλευρά, κρατώντας τη ζώνη ασφαλείας σου.",
+      "tts": {
+        "text": "Δύο εκπαιδευτές πέφτουν μαζί σου, ένας σε κάθε πλευρά, κρατώντας τη ζώνη ασφαλείας σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-151",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Σε αφήνουν στην ελεύθερη πτώση μόλις είσαι σταθερός.",
+      "text_markdown": "Σε αφήνουν στην ελεύθερη πτώση μόλις είσαι σταθερός.",
+      "tts": {
+        "text": "Σε αφήνουν στην ελεύθερη πτώση μόλις είσαι σταθερός.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch03-152",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Τραβάς εσύ ο ίδιος το αλεξίπτωτό σου.",
+      "text_markdown": "Τραβάς εσύ ο ίδιος το αλεξίπτωτό σου.",
+      "tts": {
+        "text": "Τραβάς εσύ ο ίδιος το αλεξίπτωτό σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-153",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Πετάς τον δικό σου θόλο μέχρι το έδαφος.",
+      "text_markdown": "Πετάς τον δικό σου θόλο μέχρι το έδαφος.",
+      "tts": {
+        "text": "Πετάς τον δικό σου θόλο μέχρι το έδαφος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-154",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p35",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Την πρώτη φορά που το κάνεις αυτό, το πρόσωπό σου θα πονάει την επόμενη μέρα από το πόσο δυνατά χαμογέλασες.",
+      "text_markdown": "Την πρώτη φορά που το κάνεις αυτό, το πρόσωπό σου θα πονάει την επόμενη μέρα από το πόσο δυνατά χαμογέλασες.",
+      "tts": {
+        "text": "Την πρώτη φορά που το κάνεις αυτό, το πρόσωπό σου θα πονάει την επόμενη μέρα από το πόσο δυνατά χαμογέλασες.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-155",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το πλήρες πρόγραμμα σε περνάει μέσα από περίπου επτά πτώσεις.",
+      "text_markdown": "Το πλήρες πρόγραμμα σε περνάει μέσα από περίπου επτά πτώσεις.",
+      "tts": {
+        "text": "Το πλήρες πρόγραμμα σε περνάει μέσα από περίπου επτά πτώσεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-156",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Στο τέλος, πέφτεις μόνος σου.",
+      "text_markdown": "Στο τέλος, πέφτεις μόνος σου.",
+      "tts": {
+        "text": "Στο τέλος, πέφτεις μόνος σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-157",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Από εκεί και πέρα, οι αλεξιπτωτιστές συνήθως ολοκληρώνουν τις πρώτες εκατό πτώσεις τους μέσα στον επόμενο χρόνο.",
+      "text_markdown": "Από εκεί και πέρα, οι αλεξιπτωτιστές συνήθως ολοκληρώνουν τις πρώτες εκατό πτώσεις τους μέσα στον επόμενο χρόνο.",
+      "tts": {
+        "text": "Από εκεί και πέρα, οι αλεξιπτωτιστές συνήθως ολοκληρώνουν τις πρώτες εκατό πτώσεις τους μέσα στον επόμενο χρόνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-158",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στην πορεία, μαθαίνουν να πετούν σε σχέση με άλλους που πέφτουν.",
+      "text_markdown": "Στην πορεία, μαθαίνουν να πετούν σε σχέση με άλλους που πέφτουν.",
+      "tts": {
+        "text": "Στην πορεία, μαθαίνουν να πετούν σε σχέση με άλλους που πέφτουν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-159",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Μαθαίνουν να διαπερνούν τον ουρανό.",
+      "text_markdown": "Μαθαίνουν να διαπερνούν τον ουρανό.",
+      "tts": {
+        "text": "Μαθαίνουν να διαπερνούν τον ουρανό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-160",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Μαθαίνουν να διπλώνουν μόνοι τους το αλεξίπτωτό τους.",
+      "text_markdown": "Μαθαίνουν να διπλώνουν μόνοι τους το αλεξίπτωτό τους.",
+      "tts": {
+        "text": "Μαθαίνουν να διπλώνουν μόνοι τους το αλεξίπτωτό τους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-161",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Η κοινότητα είναι μικρή, φιλική και υπομονετική.",
+      "text_markdown": "Η κοινότητα είναι μικρή, φιλική και υπομονετική.",
+      "tts": {
+        "text": "Η κοινότητα είναι μικρή, φιλική και υπομονετική.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-162",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Κανείς σε καμία ζώνη προσγείωσης δεν θα σε κάνει ποτέ να νιώσεις χαζός επειδή είσαι αρχάριος.",
+      "text_markdown": "Κανείς σε καμία ζώνη προσγείωσης δεν θα σε κάνει ποτέ να νιώσεις χαζός επειδή είσαι αρχάριος.",
+      "tts": {
+        "text": "Κανείς σε καμία ζώνη προσγείωσης δεν θα σε κάνει ποτέ να νιώσεις χαζός επειδή είσαι αρχάριος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch03-163",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Όλοι μας υπήρξαμε κάποτε αρχάριοι.",
+      "text_markdown": "Όλοι μας υπήρξαμε κάποτε αρχάριοι.",
+      "tts": {
+        "text": "Όλοι μας υπήρξαμε κάποτε αρχάριοι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-164",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p36",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Οι περισσότεροι από εμάς ακόμα νιώθουμε αρχάριοι.",
+      "text_markdown": "Οι περισσότεροι από εμάς ακόμα νιώθουμε αρχάριοι.",
+      "tts": {
+        "text": "Οι περισσότεροι από εμάς ακόμα νιώθουμε αρχάριοι.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-165",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Τι γίνεται με την ασφάλεια.",
+      "text_markdown": "Τι γίνεται με την ασφάλεια.",
+      "tts": {
+        "text": "Τι γίνεται με την ασφάλεια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-166",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Αυτή είναι η ερώτηση που κάνει κάθε λογικός άνθρωπος, και αξίζει μια πραγματική απάντηση.",
+      "text_markdown": "Αυτή είναι η ερώτηση που κάνει κάθε λογικός άνθρωπος, και αξίζει μια πραγματική απάντηση.",
+      "tts": {
+        "text": "Αυτή είναι η ερώτηση που κάνει κάθε λογικός άνθρωπος, και αξίζει μια πραγματική απάντηση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-167",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η ελεύθερη πτώση με αλεξίπτωτο είναι, στην πραγματικότητα, πολύ ασφαλής.",
+      "text_markdown": "Η ελεύθερη πτώση με αλεξίπτωτο είναι, στην πραγματικότητα, πολύ ασφαλής.",
+      "tts": {
+        "text": "Η ελεύθερη πτώση με αλεξίπτωτο είναι, στην πραγματικότητα, πολύ ασφαλής.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-168",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Όχι τόσο ασφαλής όσο το περπάτημα, αλλά πιο ασφαλής από το να οδηγείς ως τη ζώνη προσγείωσης.",
+      "text_markdown": "Όχι τόσο ασφαλής όσο το περπάτημα, αλλά πιο ασφαλής από το να οδηγείς ως τη ζώνη προσγείωσης.",
+      "tts": {
+        "text": "Όχι τόσο ασφαλής όσο το περπάτημα, αλλά πιο ασφαλής από το να οδηγείς ως τη ζώνη προσγείωσης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-169",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ο εξοπλισμός είναι εξαιρετικός.",
+      "text_markdown": "Ο εξοπλισμός είναι εξαιρετικός.",
+      "tts": {
+        "text": "Ο εξοπλισμός είναι εξαιρετικός.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-170",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Υπάρχει ένα κύριο αλεξίπτωτο και ένα εφεδρικό αλεξίπτωτο, και μια αυτόματη συσκευή που θα ενεργοποιήσει το εφεδρικό αν εσύ δεν μπορέσεις.",
+      "text_markdown": "Υπάρχει ένα κύριο αλεξίπτωτο και ένα εφεδρικό αλεξίπτωτο, και μια αυτόματη συσκευή που θα ενεργοποιήσει το εφεδρικό αν εσύ δεν μπορέσεις.",
+      "tts": {
+        "text": "Υπάρχει ένα κύριο αλεξίπτωτο και ένα εφεδρικό αλεξίπτωτο, και μια αυτόματη συσκευή που θα ενεργοποιήσει το εφεδρικό αν εσύ δεν μπορέσεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch03-171",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Οι ζώνες προσγείωσης λειτουργούν από επαγγελματίες που νοιάζονται για εσένα.",
+      "text_markdown": "Οι ζώνες προσγείωσης λειτουργούν από επαγγελματίες που νοιάζονται για εσένα.",
+      "tts": {
+        "text": "Οι ζώνες προσγείωσης λειτουργούν από επαγγελματίες που νοιάζονται για εσένα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-172",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p37",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Οι εκπαιδευτές νοιάζονται, βαθιά, για κάθε πτώση.",
+      "text_markdown": "Οι εκπαιδευτές νοιάζονται, βαθιά, για κάθε πτώση.",
+      "tts": {
+        "text": "Οι εκπαιδευτές νοιάζονται, βαθιά, για κάθε πτώση.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-173",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πόσο κοστίζει.",
+      "text_markdown": "Πόσο κοστίζει.",
+      "tts": {
+        "text": "Πόσο κοστίζει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-174",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μια πτώση τάντεμ κοστίζει όσο ένα ωραίο δείπνο για δύο.",
+      "text_markdown": "Μια πτώση τάντεμ κοστίζει όσο ένα ωραίο δείπνο για δύο.",
+      "tts": {
+        "text": "Μια πτώση τάντεμ κοστίζει όσο ένα ωραίο δείπνο για δύο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-175",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το πρόγραμμα εκπαίδευσης κοστίζει όσο μια μικρή διακοπή.",
+      "text_markdown": "Το πρόγραμμα εκπαίδευσης κοστίζει όσο μια μικρή διακοπή.",
+      "tts": {
+        "text": "Το πρόγραμμα εκπαίδευσης κοστίζει όσο μια μικρή διακοπή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch03-176",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μετά από αυτό, κάθε πτώση κοστίζει όσο ένα εισιτήριο σινεμά και ένα γεύμα.",
+      "text_markdown": "Μετά από αυτό, κάθε πτώση κοστίζει όσο ένα εισιτήριο σινεμά και ένα γεύμα.",
+      "tts": {
+        "text": "Μετά από αυτό, κάθε πτώση κοστίζει όσο ένα εισιτήριο σινεμά και ένα γεύμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch03-177",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Άνθρωποι με κανονικές δουλειές και κανονικές ζωές το κάνουν αυτό κάθε σαββατοκύριακο.",
+      "text_markdown": "Άνθρωποι με κανονικές δουλειές και κανονικές ζωές το κάνουν αυτό κάθε σαββατοκύριακο.",
+      "tts": {
+        "text": "Άνθρωποι με κανονικές δουλειές και κανονικές ζωές το κάνουν αυτό κάθε σαββατοκύριακο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-178",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Δεν είναι πλούσιοι.",
+      "text_markdown": "Δεν είναι πλούσιοι.",
+      "tts": {
+        "text": "Δεν είναι πλούσιοι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-179",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Δεν είναι ασυνήθιστοι.",
+      "text_markdown": "Δεν είναι ασυνήθιστοι.",
+      "tts": {
+        "text": "Δεν είναι ασυνήθιστοι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-180",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p38",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Έχουν απλώς αποφασίσει πως αυτό είναι το πράγμα που κάνουν.",
+      "text_markdown": "Έχουν απλώς αποφασίσει πως αυτό είναι το πράγμα που κάνουν.",
+      "tts": {
+        "text": "Έχουν απλώς αποφασίσει πως αυτό είναι το πράγμα που κάνουν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch03-181",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν σκέφτεσαι την πρώτη σου πτώση, να η μόνη συμβουλή που έχει σημασία.",
+      "text_markdown": "Αν σκέφτεσαι την πρώτη σου πτώση, να η μόνη συμβουλή που έχει σημασία.",
+      "tts": {
+        "text": "Αν σκέφτεσαι την πρώτη σου πτώση, να η μόνη συμβουλή που έχει σημασία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-182",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Διάλεξε μια ημερομηνία.",
+      "text_markdown": "Διάλεξε μια ημερομηνία.",
+      "tts": {
+        "text": "Διάλεξε μια ημερομηνία.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-183",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Πες το σε έναν φίλο.",
+      "text_markdown": "Πες το σε έναν φίλο.",
+      "tts": {
+        "text": "Πες το σε έναν φίλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-184",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Εμφανίσου.",
+      "text_markdown": "Εμφανίσου.",
+      "tts": {
+        "text": "Εμφανίσου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-185",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το δύσκολο μέρος δεν είναι η πτώση.",
+      "text_markdown": "Το δύσκολο μέρος δεν είναι η πτώση.",
+      "tts": {
+        "text": "Το δύσκολο μέρος δεν είναι η πτώση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch03-186",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Το δύσκολο μέρος είναι η απόφαση.",
+      "text_markdown": "Το δύσκολο μέρος είναι η απόφαση.",
+      "tts": {
+        "text": "Το δύσκολο μέρος είναι η απόφαση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch03-187",
+      "part": 0,
+      "chapter": 3,
+      "title": "Getting Started",
+      "paragraph_id": "p39",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Μόλις αποφασίσεις, ο ουρανός είναι ήδη δικός σου.",
+      "text_markdown": "Μόλις αποφασίσεις, ο ουρανός είναι ήδη δικός σου.",
+      "tts": {
+        "text": "Μόλις αποφασίσεις, ο ουρανός είναι ήδη δικός σου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-188",
+      "part": 0,
+      "chapter": 4,
+      "title": "Η Τέχνη",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Η Τέχνη",
+      "text_markdown": "Η Τέχνη"
+    },
+    {
+      "id": "ch04-189",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Υπάρχει μια τέχνη κρυμμένη μέσα στην πτώση, και είναι το κομμάτι της ελεύθερης πτώσης με αλεξίπτωτο που σε κρατάει για μια ζωή.",
+      "text_markdown": "Υπάρχει μια τέχνη κρυμμένη μέσα στην πτώση, και είναι το κομμάτι της ελεύθερης πτώσης με αλεξίπτωτο που σε κρατάει για μια ζωή.",
+      "tts": {
+        "text": "Υπάρχει μια τέχνη κρυμμένη μέσα στην πτώση, και είναι το κομμάτι της ελεύθερης πτώσης με αλεξίπτωτο που σε κρατάει για μια ζωή.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch04-190",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν παρακολουθείς έναν έμπειρο αλεξιπτωτιστή στην ελεύθερη πτώση, δεν βλέπεις κάποιον να πέφτει.",
+      "text_markdown": "Όταν παρακολουθείς έναν έμπειρο αλεξιπτωτιστή στην ελεύθερη πτώση, δεν βλέπεις κάποιον να πέφτει.",
+      "tts": {
+        "text": "Όταν παρακολουθείς έναν έμπειρο αλεξιπτωτιστή στην ελεύθερη πτώση, δεν βλέπεις κάποιον να πέφτει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-191",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Βλέπεις κάποιον να πετάει.",
+      "text_markdown": "Βλέπεις κάποιον να πετάει.",
+      "tts": {
+        "text": "Βλέπεις κάποιον να πετάει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-192",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Στρέφεται αργά, με τη θέλησή του, με τις άκρες των δαχτύλων του.",
+      "text_markdown": "Στρέφεται αργά, με τη θέλησή του, με τις άκρες των δαχτύλων του.",
+      "tts": {
+        "text": "Στρέφεται αργά, με τη θέλησή του, με τις άκρες των δαχτύλων του.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-193",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Γλιστράει εμπρός μέσα στον ουρανό για μισό μίλι γέρνοντας τους ώμους του δύο ίντσες προς τα μπροστά.",
+      "text_markdown": "Γλιστράει εμπρός μέσα στον ουρανό για μισό μίλι γέρνοντας τους ώμους του δύο ίντσες προς τα μπροστά.",
+      "tts": {
+        "text": "Γλιστράει εμπρός μέσα στον ουρανό για μισό μίλι γέρνοντας τους ώμους του δύο ίντσες προς τα μπροστά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-194",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p42",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Σταματάνε εντελώς, στη μέση της πτώσης, και κρατούν μια ακινησία σχεδόν αδύνατη.",
+      "text_markdown": "Σταματάνε εντελώς, στη μέση της πτώσης, και κρατούν μια ακινησία σχεδόν αδύνατη.",
+      "tts": {
+        "text": "Σταματάνε εντελώς, στη μέση της πτώσης, και κρατούν μια ακινησία σχεδόν αδύνατη.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-195",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το σώμα είναι το αεροπλάνο.",
+      "text_markdown": "Το σώμα είναι το αεροπλάνο.",
+      "tts": {
+        "text": "Το σώμα είναι το αεροπλάνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-196",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Αυτό είναι το πρώτο μυστικό της τέχνης.",
+      "text_markdown": "Αυτό είναι το πρώτο μυστικό της τέχνης.",
+      "tts": {
+        "text": "Αυτό είναι το πρώτο μυστικό της τέχνης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-197",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p43",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μόλις το καταλάβεις αυτό, όλα τα υπόλοιπα ακολουθούν.",
+      "text_markdown": "Μόλις το καταλάβεις αυτό, όλα τα υπόλοιπα ακολουθούν.",
+      "tts": {
+        "text": "Μόλις το καταλάβεις αυτό, όλα τα υπόλοιπα ακολουθούν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-198",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το βασικό σχήμα μιας σταθερής ελεύθερης πτώσης λέγεται καμάρα.",
+      "text_markdown": "Το βασικό σχήμα μιας σταθερής ελεύθερης πτώσης λέγεται καμάρα.",
+      "tts": {
+        "text": "Το βασικό σχήμα μιας σταθερής ελεύθερης πτώσης λέγεται καμάρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-199",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Σπρώχνεις τους γοφούς σου μπροστά και αφήνεις τα χέρια και τα πόδια σου να ακολουθούν πίσω, σαν μπανάνα.",
+      "text_markdown": "Σπρώχνεις τους γοφούς σου μπροστά και αφήνεις τα χέρια και τα πόδια σου να ακολουθούν πίσω, σαν μπανάνα.",
+      "tts": {
+        "text": "Σπρώχνεις τους γοφούς σου μπροστά και αφήνεις τα χέρια και τα πόδια σου να ακολουθούν πίσω, σαν μπανάνα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-200",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η καμάρα είναι αυτή που σε κρατάει με το πρόσωπο προς τη γη χωρίς να χρειάζεται να το σκέφτεσαι.",
+      "text_markdown": "Η καμάρα είναι αυτή που σε κρατάει με το πρόσωπο προς τη γη χωρίς να χρειάζεται να το σκέφτεσαι.",
+      "tts": {
+        "text": "Η καμάρα είναι αυτή που σε κρατάει με το πρόσωπο προς τη γη χωρίς να χρειάζεται να το σκέφτεσαι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch04-201",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι νέοι αλεξιπτωτιστές μαθαίνουν την καμάρα μέσα σε λάκκο με αφρώδες υλικό, μετά σε σήραγγα ανέμου, και μετά στον ουρανό.",
+      "text_markdown": "Οι νέοι αλεξιπτωτιστές μαθαίνουν την καμάρα μέσα σε λάκκο με αφρώδες υλικό, μετά σε σήραγγα ανέμου, και μετά στον ουρανό.",
+      "tts": {
+        "text": "Οι νέοι αλεξιπτωτιστές μαθαίνουν την καμάρα μέσα σε λάκκο με αφρώδες υλικό, μετά σε σήραγγα ανέμου, και μετά στον ουρανό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.78
+      }
+    },
+    {
+      "id": "ch04-202",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p44",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Οι παλιοί αλεξιπτωτιστές ακόμα μιλούν για την καμάρα όπως οι παλιοί δρομείς μιλούν για τη δρασκελιά τους.",
+      "text_markdown": "Οι παλιοί αλεξιπτωτιστές ακόμα μιλούν για την καμάρα όπως οι παλιοί δρομείς μιλούν για τη δρασκελιά τους.",
+      "tts": {
+        "text": "Οι παλιοί αλεξιπτωτιστές ακόμα μιλούν για την καμάρα όπως οι παλιοί δρομείς μιλούν για τη δρασκελιά τους.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.79
+      }
+    },
+    {
+      "id": "ch04-203",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μόλις έχεις σταθερή καμάρα, η υπόλοιπη ελεύθερη πτώση ανοίγει μπροστά σου.",
+      "text_markdown": "Μόλις έχεις σταθερή καμάρα, η υπόλοιπη ελεύθερη πτώση ανοίγει μπροστά σου.",
+      "tts": {
+        "text": "Μόλις έχεις σταθερή καμάρα, η υπόλοιπη ελεύθερη πτώση ανοίγει μπροστά σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-204",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μαθαίνεις να πέφτεις αργά απλώνοντας πλατιά, μετατρέποντας τον εαυτό σου σε χαρταετό.",
+      "text_markdown": "Μαθαίνεις να πέφτεις αργά απλώνοντας πλατιά, μετατρέποντας τον εαυτό σου σε χαρταετό.",
+      "tts": {
+        "text": "Μαθαίνεις να πέφτεις αργά απλώνοντας πλατιά, μετατρέποντας τον εαυτό σου σε χαρταετό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-205",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μαθαίνεις να πέφτεις γρήγορα μαζεύοντας μικρά, μετατρέποντας τον εαυτό σου σε πέτρα.",
+      "text_markdown": "Μαθαίνεις να πέφτεις γρήγορα μαζεύοντας μικρά, μετατρέποντας τον εαυτό σου σε πέτρα.",
+      "tts": {
+        "text": "Μαθαίνεις να πέφτεις γρήγορα μαζεύοντας μικρά, μετατρέποντας τον εαυτό σου σε πέτρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-206",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μαθαίνεις να διαπερνάς τον ουρανό, που είναι το πιο κοντινό πράγμα στο πέταγμα που μπορεί να κάνει ένα ανθρώπινο σώμα.",
+      "text_markdown": "Μαθαίνεις να διαπερνάς τον ουρανό, που είναι το πιο κοντινό πράγμα στο πέταγμα που μπορεί να κάνει ένα ανθρώπινο σώμα.",
+      "tts": {
+        "text": "Μαθαίνεις να διαπερνάς τον ουρανό, που είναι το πιο κοντινό πράγμα στο πέταγμα που μπορεί να κάνει ένα ανθρώπινο σώμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-207",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ένας καλός που διαπερνά τον ουρανό μπορεί να καλύψει το ένα τέταρτο του μιλίου μέσα στον ουρανό σε είκοσι δευτερόλεπτα.",
+      "text_markdown": "Ένας καλός που διαπερνά τον ουρανό μπορεί να καλύψει το ένα τέταρτο του μιλίου μέσα στον ουρανό σε είκοσι δευτερόλεπτα.",
+      "tts": {
+        "text": "Ένας καλός που διαπερνά τον ουρανό μπορεί να καλύψει το ένα τέταρτο του μιλίου μέσα στον ουρανό σε είκοσι δευτερόλεπτα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-208",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p45",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Χέρια ριγμένα προς τα πίσω, σώμα υπό γωνία, να κινείται σαν χάρτινο αεροπλάνο που ξέρει πού πάει.",
+      "text_markdown": "Χέρια ριγμένα προς τα πίσω, σώμα υπό γωνία, να κινείται σαν χάρτινο αεροπλάνο που ξέρει πού πάει.",
+      "tts": {
+        "text": "Χέρια ριγμένα προς τα πίσω, σώμα υπό γωνία, να κινείται σαν χάρτινο αεροπλάνο που ξέρει πού πάει.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-209",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το άλλο μισό της τέχνης είναι ο θόλος.",
+      "text_markdown": "Το άλλο μισό της τέχνης είναι ο θόλος.",
+      "tts": {
+        "text": "Το άλλο μισό της τέχνης είναι ο θόλος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-210",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το αλεξίπτωτο δεν είναι κάτι παθητικό που σε αφήνει να επιπλεύσεις προς τα κάτω.",
+      "text_markdown": "Το αλεξίπτωτο δεν είναι κάτι παθητικό που σε αφήνει να επιπλεύσεις προς τα κάτω.",
+      "tts": {
+        "text": "Το αλεξίπτωτο δεν είναι κάτι παθητικό που σε αφήνει να επιπλεύσεις προς τα κάτω.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-211",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι ένα φτερό, και εσύ το πετάς.",
+      "text_markdown": "Είναι ένα φτερό, και εσύ το πετάς.",
+      "tts": {
+        "text": "Είναι ένα φτερό, και εσύ το πετάς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-212",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Τραβώντας το δεξί κορδόνι ελέγχου χαμηλώνει το δεξί φτερό και σε στρέφει δεξιά.",
+      "text_markdown": "Τραβώντας το δεξί κορδόνι ελέγχου χαμηλώνει το δεξί φτερό και σε στρέφει δεξιά.",
+      "tts": {
+        "text": "Τραβώντας το δεξί κορδόνι ελέγχου χαμηλώνει το δεξί φτερό και σε στρέφει δεξιά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.82
+      }
+    },
+    {
+      "id": "ch04-213",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Τραβώντας και τα δύο ταυτόχρονα σε επιβραδύνει και σου επιτρέπει να προσγειωθείς απαλά.",
+      "text_markdown": "Τραβώντας και τα δύο ταυτόχρονα σε επιβραδύνει και σου επιτρέπει να προσγειωθείς απαλά.",
+      "tts": {
+        "text": "Τραβώντας και τα δύο ταυτόχρονα σε επιβραδύνει και σου επιτρέπει να προσγειωθείς απαλά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-214",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Διαβάζεις τον αέρα, διαλέγεις το σημείο, σχεδιάζεις τη διαδρομή σου.",
+      "text_markdown": "Διαβάζεις τον αέρα, διαλέγεις το σημείο, σχεδιάζεις τη διαδρομή σου.",
+      "tts": {
+        "text": "Διαβάζεις τον αέρα, διαλέγεις το σημείο, σχεδιάζεις τη διαδρομή σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch04-215",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ανοίγεις τον θόλο στο τελευταίο δευτερόλεπτο, ώστε τα πόδια σου να φιλήσουν το έδαφος αντί να το κοπανήσουν.",
+      "text_markdown": "Ανοίγεις τον θόλο στο τελευταίο δευτερόλεπτο, ώστε τα πόδια σου να φιλήσουν το έδαφος αντί να το κοπανήσουν.",
+      "tts": {
+        "text": "Ανοίγεις τον θόλο στο τελευταίο δευτερόλεπτο, ώστε τα πόδια σου να φιλήσουν το έδαφος αντί να το κοπανήσουν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch04-216",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p46",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Όλα αυτά είναι πτήση κάτω από τον θόλο, και αποτελούν δικό τους κομμάτι της εκπαίδευσης.",
+      "text_markdown": "Όλα αυτά είναι πτήση κάτω από τον θόλο, και αποτελούν δικό τους κομμάτι της εκπαίδευσης.",
+      "tts": {
+        "text": "Όλα αυτά είναι πτήση κάτω από τον θόλο, και αποτελούν δικό τους κομμάτι της εκπαίδευσης.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch04-217",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Και μετά υπάρχει το δίπλωμα.",
+      "text_markdown": "Και μετά υπάρχει το δίπλωμα.",
+      "tts": {
+        "text": "Και μετά υπάρχει το δίπλωμα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-218",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Κάθε αλεξιπτωτιστής διπλώνει μόνος του το αλεξίπτωτό του.",
+      "text_markdown": "Κάθε αλεξιπτωτιστής διπλώνει μόνος του το αλεξίπτωτό του.",
+      "tts": {
+        "text": "Κάθε αλεξιπτωτιστής διπλώνει μόνος του το αλεξίπτωτό του.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-219",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε φορά.",
+      "text_markdown": "Κάθε φορά.",
+      "tts": {
+        "text": "Κάθε φορά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-220",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Απλώνεις τον θόλο πάνω σε ένα μακρύ στρωματάκι.",
+      "text_markdown": "Απλώνεις τον θόλο πάνω σε ένα μακρύ στρωματάκι.",
+      "tts": {
+        "text": "Απλώνεις τον θόλο πάνω σε ένα μακρύ στρωματάκι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-221",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Λειαίνεις τις γραμμές.",
+      "text_markdown": "Λειαίνεις τις γραμμές.",
+      "tts": {
+        "text": "Λειαίνεις τις γραμμές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-222",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Διπλώνεις τα κελιά.",
+      "text_markdown": "Διπλώνεις τα κελιά.",
+      "tts": {
+        "text": "Διπλώνεις τα κελιά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-223",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Τυλίγεις το ύφασμα σαν κουκούλι, το βάζεις απαλά στον σάκο, περνάς το χαλινάρι, κλείνεις τη θήκη.",
+      "text_markdown": "Τυλίγεις το ύφασμα σαν κουκούλι, το βάζεις απαλά στον σάκο, περνάς το χαλινάρι, κλείνεις τη θήκη.",
+      "tts": {
+        "text": "Τυλίγεις το ύφασμα σαν κουκούλι, το βάζεις απαλά στον σάκο, περνάς το χαλινάρι, κλείνεις τη θήκη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch04-224",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p48",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Παίρνει περίπου δεκαπέντε λεπτά, και το κάνεις αργά, γιατί η ζωή σου θα εξαρτηθεί από αυτό ακριβώς το κομμάτι ύφασμα.",
+      "text_markdown": "Παίρνει περίπου δεκαπέντε λεπτά, και το κάνεις αργά, γιατί η ζωή σου θα εξαρτηθεί από αυτό ακριβώς το κομμάτι ύφασμα.",
+      "tts": {
+        "text": "Παίρνει περίπου δεκαπέντε λεπτά, και το κάνεις αργά, γιατί η ζωή σου θα εξαρτηθεί από αυτό ακριβώς το κομμάτι ύφασμα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.97
+      }
+    },
+    {
+      "id": "ch04-225",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το δίπλωμα είναι διαλογισμός.",
+      "text_markdown": "Το δίπλωμα είναι διαλογισμός.",
+      "tts": {
+        "text": "Το δίπλωμα είναι διαλογισμός.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-226",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Πολλοί αλεξιπτωτιστές λένε πως είναι το κομμάτι της ημέρας που αγαπούν περισσότερο.",
+      "text_markdown": "Πολλοί αλεξιπτωτιστές λένε πως είναι το κομμάτι της ημέρας που αγαπούν περισσότερο.",
+      "tts": {
+        "text": "Πολλοί αλεξιπτωτιστές λένε πως είναι το κομμάτι της ημέρας που αγαπούν περισσότερο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-227",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Το στρωματάκι, οι γραμμές, το αργό δίπλωμα.",
+      "text_markdown": "Το στρωματάκι, οι γραμμές, το αργό δίπλωμα.",
+      "tts": {
+        "text": "Το στρωματάκι, οι γραμμές, το αργό δίπλωμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.77
+      }
+    },
+    {
+      "id": "ch04-228",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ο ώμος ενός φίλου που διπλώνει δίπλα σου.",
+      "text_markdown": "Ο ώμος ενός φίλου που διπλώνει δίπλα σου.",
+      "tts": {
+        "text": "Ο ώμος ενός φίλου που διπλώνει δίπλα σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-229",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το ραδιόφωνο στη γωνία να παίζει ένα τραγούδι που έχεις ακούσει πάρα πολλές φορές.",
+      "text_markdown": "Το ραδιόφωνο στη γωνία να παίζει ένα τραγούδι που έχεις ακούσει πάρα πολλές φορές.",
+      "tts": {
+        "text": "Το ραδιόφωνο στη γωνία να παίζει ένα τραγούδι που έχεις ακούσει πάρα πολλές φορές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-230",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Δεν υπάρχει βιασύνη στο δίπλωμα.",
+      "text_markdown": "Δεν υπάρχει βιασύνη στο δίπλωμα.",
+      "tts": {
+        "text": "Δεν υπάρχει βιασύνη στο δίπλωμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-231",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p49",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Ο ουρανός δεν νοιάζεται για το πρόγραμμά σου.",
+      "text_markdown": "Ο ουρανός δεν νοιάζεται για το πρόγραμμά σου.",
+      "tts": {
+        "text": "Ο ουρανός δεν νοιάζεται για το πρόγραμμά σου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-232",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η νοοτροπία της τέχνης είναι υπομονή.",
+      "text_markdown": "Η νοοτροπία της τέχνης είναι υπομονή.",
+      "tts": {
+        "text": "Η νοοτροπία της τέχνης είναι υπομονή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch04-233",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είναι ταπεινότητα.",
+      "text_markdown": "Είναι ταπεινότητα.",
+      "tts": {
+        "text": "Είναι ταπεινότητα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-234",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Είναι η προθυμία να αναλύεις κάθε μία πτώση, ακόμη και τις βαρετές.",
+      "text_markdown": "Είναι η προθυμία να αναλύεις κάθε μία πτώση, ακόμη και τις βαρετές.",
+      "tts": {
+        "text": "Είναι η προθυμία να αναλύεις κάθε μία πτώση, ακόμη και τις βαρετές.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch04-235",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στους αλεξιπτωτιστές αρέσει να μιλούν μετά από μια πτώση.",
+      "text_markdown": "Στους αλεξιπτωτιστές αρέσει να μιλούν μετά από μια πτώση.",
+      "tts": {
+        "text": "Στους αλεξιπτωτιστές αρέσει να μιλούν μετά από μια πτώση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-236",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Θα κάτσουν σε ένα τραπέζι πικνίκ και θα περπατήσουν μέσα από κάθε δευτερόλεπτο, στάση σώματος προς στάση σώματος.",
+      "text_markdown": "Θα κάτσουν σε ένα τραπέζι πικνίκ και θα περπατήσουν μέσα από κάθε δευτερόλεπτο, στάση σώματος προς στάση σώματος.",
+      "tts": {
+        "text": "Θα κάτσουν σε ένα τραπέζι πικνίκ και θα περπατήσουν μέσα από κάθε δευτερόλεπτο, στάση σώματος προς στάση σώματος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch04-237",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Τι λειτούργησε.",
+      "text_markdown": "Τι λειτούργησε.",
+      "tts": {
+        "text": "Τι λειτούργησε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-238",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Τι ήταν τσαπατσούλικο.",
+      "text_markdown": "Τι ήταν τσαπατσούλικο.",
+      "tts": {
+        "text": "Τι ήταν τσαπατσούλικο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-239",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p50",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Τι θέλουν να δοκιμάσουν την επόμενη φορά.",
+      "text_markdown": "Τι θέλουν να δοκιμάσουν την επόμενη φορά.",
+      "tts": {
+        "text": "Τι θέλουν να δοκιμάσουν την επόμενη φορά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-240",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Γι’ αυτό μένουν.",
+      "text_markdown": "Γι’ αυτό μένουν.",
+      "tts": {
+        "text": "Γι’ αυτό μένουν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-241",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Όχι επειδή η πτώση είναι συναρπαστική.",
+      "text_markdown": "Όχι επειδή η πτώση είναι συναρπαστική.",
+      "tts": {
+        "text": "Όχι επειδή η πτώση είναι συναρπαστική.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-242",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Η πτώση είναι το εύκολο μέρος.",
+      "text_markdown": "Η πτώση είναι το εύκολο μέρος.",
+      "tts": {
+        "text": "Η πτώση είναι το εύκολο μέρος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch04-243",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μένουν επειδή υπάρχει πάντα κάτι να μάθουν.",
+      "text_markdown": "Μένουν επειδή υπάρχει πάντα κάτι να μάθουν.",
+      "tts": {
+        "text": "Μένουν επειδή υπάρχει πάντα κάτι να μάθουν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-244",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Υπάρχει πάντα ένας φίλος για να το μάθεις μαζί του.",
+      "text_markdown": "Υπάρχει πάντα ένας φίλος για να το μάθεις μαζί του.",
+      "tts": {
+        "text": "Υπάρχει πάντα ένας φίλος για να το μάθεις μαζί του.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-245",
+      "part": 0,
+      "chapter": 4,
+      "title": "The Craft",
+      "paragraph_id": "p51",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Και υπάρχει ένας ουρανός που σε περιμένει το μεσημέρι του αύριο.",
+      "text_markdown": "Και υπάρχει ένας ουρανός που σε περιμένει το μεσημέρι του αύριο.",
+      "tts": {
+        "text": "Και υπάρχει ένας ουρανός που σε περιμένει το μεσημέρι του αύριο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-246",
+      "part": 0,
+      "chapter": 5,
+      "title": "Στιγμές",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Στιγμές",
+      "text_markdown": "Στιγμές"
+    },
+    {
+      "id": "ch05-247",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Άσε με να σου δώσω τρεις.",
+      "text_markdown": "Άσε με να σου δώσω τρεις.",
+      "tts": {
+        "text": "Άσε με να σου δώσω τρεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-248",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η πρώτη είναι μια πτήση στο ηλιοβασίλεμα.",
+      "text_markdown": "Η πρώτη είναι μια πτήση στο ηλιοβασίλεμα.",
+      "tts": {
+        "text": "Η πρώτη είναι μια πτήση στο ηλιοβασίλεμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-249",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Το αεροπλάνο απογειώνεται είκοσι λεπτά πριν δύσει ο ήλιος.",
+      "text_markdown": "Το αεροπλάνο απογειώνεται είκοσι λεπτά πριν δύσει ο ήλιος.",
+      "tts": {
+        "text": "Το αεροπλάνο απογειώνεται είκοσι λεπτά πριν δύσει ο ήλιος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-250",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ανεβαίνεις μέσα από στρώματα πορτοκαλί φωτός, η καμπίνα είναι ζεστή, οι φίλοι σου σιωπηλοί.",
+      "text_markdown": "Ανεβαίνεις μέσα από στρώματα πορτοκαλί φωτός, η καμπίνα είναι ζεστή, οι φίλοι σου σιωπηλοί.",
+      "tts": {
+        "text": "Ανεβαίνεις μέσα από στρώματα πορτοκαλί φωτός, η καμπίνα είναι ζεστή, οι φίλοι σου σιωπηλοί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-251",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Όταν ανοίγει η πόρτα αυτή τη φορά, ο αέρας είναι ροζ.",
+      "text_markdown": "Όταν ανοίγει η πόρτα αυτή τη φορά, ο αέρας είναι ροζ.",
+      "tts": {
+        "text": "Όταν ανοίγει η πόρτα αυτή τη φορά, ο αέρας είναι ροζ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-252",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Η γη από κάτω σου είναι μισή στη σκιά, μισή στο χρυσάφι.",
+      "text_markdown": "Η γη από κάτω σου είναι μισή στη σκιά, μισή στο χρυσάφι.",
+      "tts": {
+        "text": "Η γη από κάτω σου είναι μισή στη σκιά, μισή στο χρυσάφι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-253",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p54",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Βγαίνεις, και για εξήντα δευτερόλεπτα πέφτεις μέσα από το εσωτερικό ενός ηλιοβασιλέματος.",
+      "text_markdown": "Βγαίνεις, και για εξήντα δευτερόλεπτα πέφτεις μέσα από το εσωτερικό ενός ηλιοβασιλέματος.",
+      "tts": {
+        "text": "Βγαίνεις, και για εξήντα δευτερόλεπτα πέφτεις μέσα από το εσωτερικό ενός ηλιοβασιλέματος.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-254",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δεν φαίνεται αληθινό.",
+      "text_markdown": "Δεν φαίνεται αληθινό.",
+      "tts": {
+        "text": "Δεν φαίνεται αληθινό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-255",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Θα δεις χρώματα που δεν ήξερες ότι μπορούσαν να βρουν τα μάτια σου.",
+      "text_markdown": "Θα δεις χρώματα που δεν ήξερες ότι μπορούσαν να βρουν τα μάτια σου.",
+      "tts": {
+        "text": "Θα δεις χρώματα που δεν ήξερες ότι μπορούσαν να βρουν τα μάτια σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-256",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Όταν ανοίξει το αλεξίπτωτό σου, αιωρείσαι πάνω από έναν κόσμο που για λίγο φλέγεται.",
+      "text_markdown": "Όταν ανοίξει το αλεξίπτωτό σου, αιωρείσαι πάνω από έναν κόσμο που για λίγο φλέγεται.",
+      "tts": {
+        "text": "Όταν ανοίξει το αλεξίπτωτό σου, αιωρείσαι πάνω από έναν κόσμο που για λίγο φλέγεται.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-257",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ο αέρας έχει σβήσει στο τίποτα.",
+      "text_markdown": "Ο αέρας έχει σβήσει στο τίποτα.",
+      "tts": {
+        "text": "Ο αέρας έχει σβήσει στο τίποτα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-258",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Η ζώνη προσγείωσης είναι ένα μικροσκοπικό πράσινο τετράγωνο από κάτω σου, με ένα ζεστό φως αναμμένο.",
+      "text_markdown": "Η ζώνη προσγείωσης είναι ένα μικροσκοπικό πράσινο τετράγωνο από κάτω σου, με ένα ζεστό φως αναμμένο.",
+      "tts": {
+        "text": "Η ζώνη προσγείωσης είναι ένα μικροσκοπικό πράσινο τετράγωνο από κάτω σου, με ένα ζεστό φως αναμμένο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-259",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Διαλέγεις έναν αργό κύκλο και αφήνεις τον εαυτό σου να προσγειωθεί τελευταίος, γιατί κανείς δεν θέλει να τελειώσει αυτό το κομμάτι.",
+      "text_markdown": "Διαλέγεις έναν αργό κύκλο και αφήνεις τον εαυτό σου να προσγειωθεί τελευταίος, γιατί κανείς δεν θέλει να τελειώσει αυτό το κομμάτι.",
+      "tts": {
+        "text": "Διαλέγεις έναν αργό κύκλο και αφήνεις τον εαυτό σου να προσγειωθεί τελευταίος, γιατί κανείς δεν θέλει να τελειώσει αυτό το κομμάτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-260",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Όταν τα πόδια σου αγγίξουν το γρασίδι, ο ουρανός είναι μοβ.",
+      "text_markdown": "Όταν τα πόδια σου αγγίξουν το γρασίδι, ο ουρανός είναι μοβ.",
+      "tts": {
+        "text": "Όταν τα πόδια σου αγγίξουν το γρασίδι, ο ουρανός είναι μοβ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-261",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Οι φίλοι σου έρχονται από τις δικές τους προσγειώσεις.",
+      "text_markdown": "Οι φίλοι σου έρχονται από τις δικές τους προσγειώσεις.",
+      "tts": {
+        "text": "Οι φίλοι σου έρχονται από τις δικές τους προσγειώσεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-262",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Ένας από αυτούς απλώς σε κοιτάζει.",
+      "text_markdown": "Ένας από αυτούς απλώς σε κοιτάζει.",
+      "tts": {
+        "text": "Ένας από αυτούς απλώς σε κοιτάζει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-263",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Κουνάτε και οι δύο τα κεφάλια σας.",
+      "text_markdown": "Κουνάτε και οι δύο τα κεφάλια σας.",
+      "tts": {
+        "text": "Κουνάτε και οι δύο τα κεφάλια σας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-264",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p55",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Κανείς από τους δυο σας δεν μπορεί να βρει λέξη.",
+      "text_markdown": "Κανείς από τους δυο σας δεν μπορεί να βρει λέξη.",
+      "tts": {
+        "text": "Κανείς από τους δυο σας δεν μπορεί να βρει λέξη.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-265",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η δεύτερη είναι μια πτώση σχηματισμού.",
+      "text_markdown": "Η δεύτερη είναι μια πτώση σχηματισμού.",
+      "tts": {
+        "text": "Η δεύτερη είναι μια πτώση σχηματισμού.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-266",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Είστε οχτώ στην πτήση.",
+      "text_markdown": "Είστε οχτώ στην πτήση.",
+      "tts": {
+        "text": "Είστε οχτώ στην πτήση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-267",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Κάθεστε στο παγκάκι, με τα κράνη στην αγκαλιά σας, και ο επικεφαλής αλεξιπτωτιστής σχεδιάζει την πτώση σε έναν μικρό λευκό πίνακα.",
+      "text_markdown": "Κάθεστε στο παγκάκι, με τα κράνη στην αγκαλιά σας, και ο επικεφαλής αλεξιπτωτιστής σχεδιάζει την πτώση σε έναν μικρό λευκό πίνακα.",
+      "tts": {
+        "text": "Κάθεστε στο παγκάκι, με τα κράνη στην αγκαλιά σας, και ο επικεφαλής αλεξιπτωτιστής σχεδιάζει την πτώση σε έναν μικρό λευκό πίνακα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.88
+      }
+    },
+    {
+      "id": "ch05-268",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Θα φύγετε από το αεροπλάνο μαζί, σε μάτσο, θα πέσετε μαζί, θα φτιάξετε έναν κύκλο.",
+      "text_markdown": "Θα φύγετε από το αεροπλάνο μαζί, σε μάτσο, θα πέσετε μαζί, θα φτιάξετε έναν κύκλο.",
+      "tts": {
+        "text": "Θα φύγετε από το αεροπλάνο μαζί, σε μάτσο, θα πέσετε μαζί, θα φτιάξετε έναν κύκλο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-269",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Όλοι σας ξέρετε τη θέση σας.",
+      "text_markdown": "Όλοι σας ξέρετε τη θέση σας.",
+      "tts": {
+        "text": "Όλοι σας ξέρετε τη θέση σας.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-270",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Χτυπάτε γροθιές, ελέγχετε ο ένας τον εξοπλισμό του άλλου, γελάτε νευρικά.",
+      "text_markdown": "Χτυπάτε γροθιές, ελέγχετε ο ένας τον εξοπλισμό του άλλου, γελάτε νευρικά.",
+      "tts": {
+        "text": "Χτυπάτε γροθιές, ελέγχετε ο ένας τον εξοπλισμό του άλλου, γελάτε νευρικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-271",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p56",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Οχτώ ενήλικες, φοβισμένοι και ταυτόχρονα κατενθουσιασμένοι, σαν παιδιά σε διανυκτέρευση.",
+      "text_markdown": "Οχτώ ενήλικες, φοβισμένοι και ταυτόχρονα κατενθουσιασμένοι, σαν παιδιά σε διανυκτέρευση.",
+      "tts": {
+        "text": "Οχτώ ενήλικες, φοβισμένοι και ταυτόχρονα κατενθουσιασμένοι, σαν παιδιά σε διανυκτέρευση.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-272",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το αεροπλάνο σταθεροποιείται οριζόντια.",
+      "text_markdown": "Το αεροπλάνο σταθεροποιείται οριζόντια.",
+      "tts": {
+        "text": "Το αεροπλάνο σταθεροποιείται οριζόντια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-273",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η πόρτα ανοίγει.",
+      "text_markdown": "Η πόρτα ανοίγει.",
+      "tts": {
+        "text": "Η πόρτα ανοίγει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-274",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ο επικεφαλής σας βγαίνει, και οι υπόλοιποι ακολουθείτε, με έναν χτύπο καρδιάς διαφορά.",
+      "text_markdown": "Ο επικεφαλής σας βγαίνει, και οι υπόλοιποι ακολουθείτε, με έναν χτύπο καρδιάς διαφορά.",
+      "tts": {
+        "text": "Ο επικεφαλής σας βγαίνει, και οι υπόλοιποι ακολουθείτε, με έναν χτύπο καρδιάς διαφορά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-275",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Στην ελεύθερη πτώση, βρίσκετε ο ένας τον άλλον σχεδόν χωρίς να το σκεφτείτε.",
+      "text_markdown": "Στην ελεύθερη πτώση, βρίσκετε ο ένας τον άλλον σχεδόν χωρίς να το σκεφτείτε.",
+      "tts": {
+        "text": "Στην ελεύθερη πτώση, βρίσκετε ο ένας τον άλλον σχεδόν χωρίς να το σκεφτείτε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-276",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Χέρια συναντούν χέρια.",
+      "text_markdown": "Χέρια συναντούν χέρια.",
+      "tts": {
+        "text": "Χέρια συναντούν χέρια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.73
+      }
+    },
+    {
+      "id": "ch05-277",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ο κύκλος σχηματίζεται.",
+      "text_markdown": "Ο κύκλος σχηματίζεται.",
+      "tts": {
+        "text": "Ο κύκλος σχηματίζεται.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-278",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Για λίγα τέλεια δευτερόλεπτα, οχτώ άνθρωποι κρατούν ο ένας τον άλλον στον ουρανό.",
+      "text_markdown": "Για λίγα τέλεια δευτερόλεπτα, οχτώ άνθρωποι κρατούν ο ένας τον άλλον στον ουρανό.",
+      "tts": {
+        "text": "Για λίγα τέλεια δευτερόλεπτα, οχτώ άνθρωποι κρατούν ο ένας τον άλλον στον ουρανό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-279",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Πέφτοντας με την ίδια ταχύτητα.",
+      "text_markdown": "Πέφτοντας με την ίδια ταχύτητα.",
+      "tts": {
+        "text": "Πέφτοντας με την ίδια ταχύτητα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-280",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Κοιτάζοντας ο ένας τον άλλον στα μάτια.",
+      "text_markdown": "Κοιτάζοντας ο ένας τον άλλον στα μάτια.",
+      "tts": {
+        "text": "Κοιτάζοντας ο ένας τον άλλον στα μάτια.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-281",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Μετά το όργανο υψομέτρου σου λέει πως είναι ώρα.",
+      "text_markdown": "Μετά το όργανο υψομέτρου σου λέει πως είναι ώρα.",
+      "tts": {
+        "text": "Μετά το όργανο υψομέτρου σου λέει πως είναι ώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-282",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Αφήνεις.",
+      "text_markdown": "Αφήνεις.",
+      "tts": {
+        "text": "Αφήνεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-283",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Διαπερνάτε ο καθένας τη δική του πορεία μακριά από τους άλλους, για να δώσετε στα αλεξίπτωτά σας χώρο να ανοίξουν.",
+      "text_markdown": "Διαπερνάτε ο καθένας τη δική του πορεία μακριά από τους άλλους, για να δώσετε στα αλεξίπτωτά σας χώρο να ανοίξουν.",
+      "tts": {
+        "text": "Διαπερνάτε ο καθένας τη δική του πορεία μακριά από τους άλλους, για να δώσετε στα αλεξίπτωτά σας χώρο να ανοίξουν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.94
+      }
+    },
+    {
+      "id": "ch05-284",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p57",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Στο έδαφος, δεν μπορείτε να σταματήσετε να αγκαλιάζεστε.",
+      "text_markdown": "Στο έδαφος, δεν μπορείτε να σταματήσετε να αγκαλιάζεστε.",
+      "tts": {
+        "text": "Στο έδαφος, δεν μπορείτε να σταματήσετε να αγκαλιάζεστε.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-285",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Η τρίτη είναι μια πτώση μετά από μια δύσκολη χρονιά.",
+      "text_markdown": "Η τρίτη είναι μια πτώση μετά από μια δύσκολη χρονιά.",
+      "tts": {
+        "text": "Η τρίτη είναι μια πτώση μετά από μια δύσκολη χρονιά.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-286",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ίσως πέρασες κάτι.",
+      "text_markdown": "Ίσως πέρασες κάτι.",
+      "tts": {
+        "text": "Ίσως πέρασες κάτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-287",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μια κακή σεζόν στη δουλειά.",
+      "text_markdown": "Μια κακή σεζόν στη δουλειά.",
+      "tts": {
+        "text": "Μια κακή σεζόν στη δουλειά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-288",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μια σχέση που τελείωσε.",
+      "text_markdown": "Μια σχέση που τελείωσε.",
+      "tts": {
+        "text": "Μια σχέση που τελείωσε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-289",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Μια απώλεια που έκανε τον συνηθισμένο κόσμο να μοιάζει αραιός και μακρινός.",
+      "text_markdown": "Μια απώλεια που έκανε τον συνηθισμένο κόσμο να μοιάζει αραιός και μακρινός.",
+      "tts": {
+        "text": "Μια απώλεια που έκανε τον συνηθισμένο κόσμο να μοιάζει αραιός και μακρινός.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-290",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Δεν πέφτεις γιατί θέλεις να νιώσεις κάτι.",
+      "text_markdown": "Δεν πέφτεις γιατί θέλεις να νιώσεις κάτι.",
+      "tts": {
+        "text": "Δεν πέφτεις γιατί θέλεις να νιώσεις κάτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch05-291",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p59",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Πέφτεις γιατί δεν έχεις μπορέσει να νιώσεις τίποτα, και θέλεις να ξέρεις αν είσαι ακόμα μέσα σου.",
+      "text_markdown": "Πέφτεις γιατί δεν έχεις μπορέσει να νιώσεις τίποτα, και θέλεις να ξέρεις αν είσαι ακόμα μέσα σου.",
+      "tts": {
+        "text": "Πέφτεις γιατί δεν έχεις μπορέσει να νιώσεις τίποτα, και θέλεις να ξέρεις αν είσαι ακόμα μέσα σου.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch05-292",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το αεροπλάνο ανεβαίνει.",
+      "text_markdown": "Το αεροπλάνο ανεβαίνει.",
+      "tts": {
+        "text": "Το αεροπλάνο ανεβαίνει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-293",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Η πόρτα ανοίγει.",
+      "text_markdown": "Η πόρτα ανοίγει.",
+      "tts": {
+        "text": "Η πόρτα ανοίγει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-294",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Βγαίνεις.",
+      "text_markdown": "Βγαίνεις.",
+      "tts": {
+        "text": "Βγαίνεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-295",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Και σε εκείνα τα πρώτα τρία δευτερόλεπτα, πριν σε πιάσει ο αέρας, κάτι μέσα σου σπάει και ανοίγει.",
+      "text_markdown": "Και σε εκείνα τα πρώτα τρία δευτερόλεπτα, πριν σε πιάσει ο αέρας, κάτι μέσα σου σπάει και ανοίγει.",
+      "tts": {
+        "text": "Και σε εκείνα τα πρώτα τρία δευτερόλεπτα, πριν σε πιάσει ο αέρας, κάτι μέσα σου σπάει και ανοίγει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch05-296",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Δεν σχεδίαζες να κλάψεις.",
+      "text_markdown": "Δεν σχεδίαζες να κλάψεις.",
+      "tts": {
+        "text": "Δεν σχεδίαζες να κλάψεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-297",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Κλαις έτσι κι αλλιώς.",
+      "text_markdown": "Κλαις έτσι κι αλλιώς.",
+      "tts": {
+        "text": "Κλαις έτσι κι αλλιώς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-298",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Η ελεύθερη πτώση κάνει τη δουλειά της.",
+      "text_markdown": "Η ελεύθερη πτώση κάνει τη δουλειά της.",
+      "tts": {
+        "text": "Η ελεύθερη πτώση κάνει τη δουλειά της.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-299",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Εξήντα ατελείωτα δευτερόλεπτα από τίποτα παρά μόνο αέρα και αναπνοή και πτώση.",
+      "text_markdown": "Εξήντα ατελείωτα δευτερόλεπτα από τίποτα παρά μόνο αέρα και αναπνοή και πτώση.",
+      "tts": {
+        "text": "Εξήντα ατελείωτα δευτερόλεπτα από τίποτα παρά μόνο αέρα και αναπνοή και πτώση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.93
+      }
+    },
+    {
+      "id": "ch05-300",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Και κάπου εκεί μέσα, το κομμάτι του εαυτού σου που κρατούσε τα πάντα τελικά τα ακουμπάει κάτω για ένα λεπτό.",
+      "text_markdown": "Και κάπου εκεί μέσα, το κομμάτι του εαυτού σου που κρατούσε τα πάντα τελικά τα ακουμπάει κάτω για ένα λεπτό.",
+      "tts": {
+        "text": "Και κάπου εκεί μέσα, το κομμάτι του εαυτού σου που κρατούσε τα πάντα τελικά τα ακουμπάει κάτω για ένα λεπτό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-301",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Το αλεξίπτωτο ανοίγει.",
+      "text_markdown": "Το αλεξίπτωτο ανοίγει.",
+      "tts": {
+        "text": "Το αλεξίπτωτο ανοίγει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-302",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Ο κόσμος ησυχάζει.",
+      "text_markdown": "Ο κόσμος ησυχάζει.",
+      "tts": {
+        "text": "Ο κόσμος ησυχάζει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-303",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 11,
+      "block_type": "text",
+      "text": "Κρέμεσαι μέσα στη ζώνη ασφαλείας, και κλαις, και γελάς, και ξανακλαίς.",
+      "text_markdown": "Κρέμεσαι μέσα στη ζώνη ασφαλείας, και κλαις, και γελάς, και ξανακλαίς.",
+      "tts": {
+        "text": "Κρέμεσαι μέσα στη ζώνη ασφαλείας, και κλαις, και γελάς, και ξανακλαίς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.68
+      }
+    },
+    {
+      "id": "ch05-304",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 12,
+      "block_type": "text",
+      "text": "Κανείς δεν μπορεί να σε δει.",
+      "text_markdown": "Κανείς δεν μπορεί να σε δει.",
+      "tts": {
+        "text": "Κανείς δεν μπορεί να σε δει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-305",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p60",
+      "sentence_index": 13,
+      "block_type": "text",
+      "text": "Αυτό είναι το νόημα.",
+      "text_markdown": "Αυτό είναι το νόημα.",
+      "tts": {
+        "text": "Αυτό είναι το νόημα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-306",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Όταν προσγειώνεσαι, δεν είσαι φτιαγμένος.",
+      "text_markdown": "Όταν προσγειώνεσαι, δεν είσαι φτιαγμένος.",
+      "tts": {
+        "text": "Όταν προσγειώνεσαι, δεν είσαι φτιαγμένος.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch05-307",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κουβαλάς ακόμα ό,τι κουβάλησες ψηλά.",
+      "text_markdown": "Κουβαλάς ακόμα ό,τι κουβάλησες ψηλά.",
+      "tts": {
+        "text": "Κουβαλάς ακόμα ό,τι κουβάλησες ψηλά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch05-308",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αλλά για μια ολόκληρη ώρα εκεί ψηλά, κάτι μέσα σου θυμήθηκε ακριβώς πώς μπορεί να νιώθεις όταν είσαι ζωντανός.",
+      "text_markdown": "Αλλά για μια ολόκληρη ώρα εκεί ψηλά, κάτι μέσα σου θυμήθηκε ακριβώς πώς μπορεί να νιώθεις όταν είσαι ζωντανός.",
+      "tts": {
+        "text": "Αλλά για μια ολόκληρη ώρα εκεί ψηλά, κάτι μέσα σου θυμήθηκε ακριβώς πώς μπορεί να νιώθεις όταν είσαι ζωντανός.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-309",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Η ελεύθερη πτώση με αλεξίπτωτο δεν έλυσε τη χρονιά σου.",
+      "text_markdown": "Η ελεύθερη πτώση με αλεξίπτωτο δεν έλυσε τη χρονιά σου.",
+      "tts": {
+        "text": "Η ελεύθερη πτώση με αλεξίπτωτο δεν έλυσε τη χρονιά σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-310",
+      "part": 0,
+      "chapter": 5,
+      "title": "Moments",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Απλώς σου την έδωσε πίσω για εξήντα δευτερόλεπτα, σε κομμάτια αρκετά μικρά για να τα κρατήσεις.",
+      "text_markdown": "Απλώς σου την έδωσε πίσω για εξήντα δευτερόλεπτα, σε κομμάτια αρκετά μικρά για να τα κρατήσεις.",
+      "tts": {
+        "text": "Απλώς σου την έδωσε πίσω για εξήντα δευτερόλεπτα, σε κομμάτια αρκετά μικρά για να τα κρατήσεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-311",
+      "part": 0,
+      "chapter": 6,
+      "title": "Γιατί Μένει Μέσα Σου",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Γιατί Μένει Μέσα Σου",
+      "text_markdown": "Γιατί Μένει Μέσα Σου"
+    },
+    {
+      "id": "ch06-312",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Πέφτω εδώ και πολύ καιρό τώρα.",
+      "text_markdown": "Πέφτω εδώ και πολύ καιρό τώρα.",
+      "tts": {
+        "text": "Πέφτω εδώ και πολύ καιρό τώρα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-313",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Αρκετό καιρό ώστε να μη θυμάμαι τον αριθμό.",
+      "text_markdown": "Αρκετό καιρό ώστε να μη θυμάμαι τον αριθμό.",
+      "tts": {
+        "text": "Αρκετό καιρό ώστε να μη θυμάμαι τον αριθμό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-314",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Αρκετό καιρό ώστε η ερώτηση, γιατί το κάνεις ακόμα αυτό, να έχει σταματήσει να σημαίνει κάτι για μένα.",
+      "text_markdown": "Αρκετό καιρό ώστε η ερώτηση, γιατί το κάνεις ακόμα αυτό, να έχει σταματήσει να σημαίνει κάτι για μένα.",
+      "tts": {
+        "text": "Αρκετό καιρό ώστε η ερώτηση, γιατί το κάνεις ακόμα αυτό, να έχει σταματήσει να σημαίνει κάτι για μένα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-315",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Θέλω να σε αφήσω με μερικά πράγματα.",
+      "text_markdown": "Θέλω να σε αφήσω με μερικά πράγματα.",
+      "tts": {
+        "text": "Θέλω να σε αφήσω με μερικά πράγματα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-316",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Το πρώτο είναι πως η ελεύθερη πτώση με αλεξίπτωτο δεν είναι μια φάση.",
+      "text_markdown": "Το πρώτο είναι πως η ελεύθερη πτώση με αλεξίπτωτο δεν είναι μια φάση.",
+      "tts": {
+        "text": "Το πρώτο είναι πως η ελεύθερη πτώση με αλεξίπτωτο δεν είναι μια φάση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-317",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Οι άνθρωποι ανησυχούν, όταν βλέπουν έναν φίλο τους να ασχολείται με αυτό.",
+      "text_markdown": "Οι άνθρωποι ανησυχούν, όταν βλέπουν έναν φίλο τους να ασχολείται με αυτό.",
+      "tts": {
+        "text": "Οι άνθρωποι ανησυχούν, όταν βλέπουν έναν φίλο τους να ασχολείται με αυτό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-318",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ανησυχούν πως είναι μια εξέγερση, ένα θέμα μέσης ηλικίας, ένας τρόπος για να φύγει κάποιος από κάτι.",
+      "text_markdown": "Ανησυχούν πως είναι μια εξέγερση, ένα θέμα μέσης ηλικίας, ένας τρόπος για να φύγει κάποιος από κάτι.",
+      "tts": {
+        "text": "Ανησυχούν πως είναι μια εξέγερση, ένα θέμα μέσης ηλικίας, ένας τρόπος για να φύγει κάποιος από κάτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-319",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Δεν είναι.",
+      "text_markdown": "Δεν είναι.",
+      "tts": {
+        "text": "Δεν είναι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-320",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Οι άνθρωποι που μένουν δεν φεύγουν.",
+      "text_markdown": "Οι άνθρωποι που μένουν δεν φεύγουν.",
+      "tts": {
+        "text": "Οι άνθρωποι που μένουν δεν φεύγουν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-321",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Έχουν, σχεδόν χωρίς να το θέλουν, χτίσει μια μικρή ζωή μέσα στον ουρανό.",
+      "text_markdown": "Έχουν, σχεδόν χωρίς να το θέλουν, χτίσει μια μικρή ζωή μέσα στον ουρανό.",
+      "tts": {
+        "text": "Έχουν, σχεδόν χωρίς να το θέλουν, χτίσει μια μικρή ζωή μέσα στον ουρανό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-322",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Εμφανίζονται τα Σάββατα.",
+      "text_markdown": "Εμφανίζονται τα Σάββατα.",
+      "tts": {
+        "text": "Εμφανίζονται τα Σάββατα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-323",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Διπλώνουν τα αλεξίπτωτά τους.",
+      "text_markdown": "Διπλώνουν τα αλεξίπτωτά τους.",
+      "tts": {
+        "text": "Διπλώνουν τα αλεξίπτωτά τους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-324",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Αγκαλιάζουν τους φίλους τους.",
+      "text_markdown": "Αγκαλιάζουν τους φίλους τους.",
+      "tts": {
+        "text": "Αγκαλιάζουν τους φίλους τους.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-325",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Πάνε σπίτι το ηλιοβασίλεμα, κουρασμένοι με τον καλό τρόπο.",
+      "text_markdown": "Πάνε σπίτι το ηλιοβασίλεμα, κουρασμένοι με τον καλό τρόπο.",
+      "tts": {
+        "text": "Πάνε σπίτι το ηλιοβασίλεμα, κουρασμένοι με τον καλό τρόπο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-326",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p65",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Τη Δευτέρα γυρίζουν στη δουλειά, και είναι αισθητά πιο καλοσυνάτοι από όσο ήταν πριν.",
+      "text_markdown": "Τη Δευτέρα γυρίζουν στη δουλειά, και είναι αισθητά πιο καλοσυνάτοι από όσο ήταν πριν.",
+      "tts": {
+        "text": "Τη Δευτέρα γυρίζουν στη δουλειά, και είναι αισθητά πιο καλοσυνάτοι από όσο ήταν πριν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.86
+      }
+    },
+    {
+      "id": "ch06-327",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ο ουρανός σε αλλάζει, αλλά αργά.",
+      "text_markdown": "Ο ουρανός σε αλλάζει, αλλά αργά.",
+      "tts": {
+        "text": "Ο ουρανός σε αλλάζει, αλλά αργά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-328",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Γίνεσαι πιο παρών.",
+      "text_markdown": "Γίνεσαι πιο παρών.",
+      "tts": {
+        "text": "Γίνεσαι πιο παρών.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-329",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Φοβάσαι λιγότερο τα μικρά πράγματα, γιατί έχεις εξασκηθεί στο να είσαι ειλικρινής με μεγαλύτερα πράγματα.",
+      "text_markdown": "Φοβάσαι λιγότερο τα μικρά πράγματα, γιατί έχεις εξασκηθεί στο να είσαι ειλικρινής με μεγαλύτερα πράγματα.",
+      "tts": {
+        "text": "Φοβάσαι λιγότερο τα μικρά πράγματα, γιατί έχεις εξασκηθεί στο να είσαι ειλικρινής με μεγαλύτερα πράγματα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-330",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Γελάς πιο εύκολα.",
+      "text_markdown": "Γελάς πιο εύκολα.",
+      "tts": {
+        "text": "Γελάς πιο εύκολα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-331",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Λες στους ανθρώπους πως τους αγαπάς πιο συχνά.",
+      "text_markdown": "Λες στους ανθρώπους πως τους αγαπάς πιο συχνά.",
+      "tts": {
+        "text": "Λες στους ανθρώπους πως τους αγαπάς πιο συχνά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-332",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p66",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Έχεις σταθεί σε ένα κατώφλι, δώδεκα χιλιάδες πόδια ψηλά, και θυμήθηκες πως τίποτα δεν είναι δεδομένο.",
+      "text_markdown": "Έχεις σταθεί σε ένα κατώφλι, δώδεκα χιλιάδες πόδια ψηλά, και θυμήθηκες πως τίποτα δεν είναι δεδομένο.",
+      "tts": {
+        "text": "Έχεις σταθεί σε ένα κατώφλι, δώδεκα χιλιάδες πόδια ψηλά, και θυμήθηκες πως τίποτα δεν είναι δεδομένο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-333",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p67",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν βρεθείς ποτέ σε δείπνο με έναν αλεξιπτωτιστή, να τι μπορείς να ρωτήσεις.",
+      "text_markdown": "Αν βρεθείς ποτέ σε δείπνο με έναν αλεξιπτωτιστή, να τι μπορείς να ρωτήσεις.",
+      "tts": {
+        "text": "Αν βρεθείς ποτέ σε δείπνο με έναν αλεξιπτωτιστή, να τι μπορείς να ρωτήσεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.95
+      }
+    },
+    {
+      "id": "ch06-334",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μπορείς να τον ρωτήσεις πώς το ξεκίνησε.",
+      "text_markdown": "Μπορείς να τον ρωτήσεις πώς το ξεκίνησε.",
+      "tts": {
+        "text": "Μπορείς να τον ρωτήσεις πώς το ξεκίνησε.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-335",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Κάθε αλεξιπτωτιστής θυμάται την πρώτη του πτώση με ζωντανές λεπτομέρειες, και θα είναι ευχαριστημένος να σου τη διηγηθεί.",
+      "text_markdown": "Κάθε αλεξιπτωτιστής θυμάται την πρώτη του πτώση με ζωντανές λεπτομέρειες, και θα είναι ευχαριστημένος να σου τη διηγηθεί.",
+      "tts": {
+        "text": "Κάθε αλεξιπτωτιστής θυμάται την πρώτη του πτώση με ζωντανές λεπτομέρειες, και θα είναι ευχαριστημένος να σου τη διηγηθεί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-336",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μπορείς να τον ρωτήσεις πόσες πτώσεις έχει κάνει.",
+      "text_markdown": "Μπορείς να τον ρωτήσεις πόσες πτώσεις έχει κάνει.",
+      "tts": {
+        "text": "Μπορείς να τον ρωτήσεις πόσες πτώσεις έχει κάνει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-337",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ξέρει τον αριθμό, πάνω κάτω, και δεν θα προσποιηθεί πως είναι περισσότερες από όσες είναι.",
+      "text_markdown": "Ξέρει τον αριθμό, πάνω κάτω, και δεν θα προσποιηθεί πως είναι περισσότερες από όσες είναι.",
+      "tts": {
+        "text": "Ξέρει τον αριθμό, πάνω κάτω, και δεν θα προσποιηθεί πως είναι περισσότερες από όσες είναι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.85
+      }
+    },
+    {
+      "id": "ch06-338",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Μπορείς να τον ρωτήσεις ποιο είναι το αγαπημένο του είδος πτώσης.",
+      "text_markdown": "Μπορείς να τον ρωτήσεις ποιο είναι το αγαπημένο του είδος πτώσης.",
+      "tts": {
+        "text": "Μπορείς να τον ρωτήσεις ποιο είναι το αγαπημένο του είδος πτώσης.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-339",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Κάποιοι θα πουν ένα ηλιοβασίλεμα.",
+      "text_markdown": "Κάποιοι θα πουν ένα ηλιοβασίλεμα.",
+      "tts": {
+        "text": "Κάποιοι θα πουν ένα ηλιοβασίλεμα.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-340",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Κάποιοι θα πουν έναν μεγάλο σχηματισμό.",
+      "text_markdown": "Κάποιοι θα πουν έναν μεγάλο σχηματισμό.",
+      "tts": {
+        "text": "Κάποιοι θα πουν έναν μεγάλο σχηματισμό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-341",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p68",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Κάποιοι θα πουν ένα ήσυχο σόλο σε ένα γαλήνιο απόγευμα.",
+      "text_markdown": "Κάποιοι θα πουν ένα ήσυχο σόλο σε ένα γαλήνιο απόγευμα.",
+      "tts": {
+        "text": "Κάποιοι θα πουν ένα ήσυχο σόλο σε ένα γαλήνιο απόγευμα.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.92
+      }
+    },
+    {
+      "id": "ch06-342",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μπορείς να τον ρωτήσεις αν φοβόταν την πρώτη φορά.",
+      "text_markdown": "Μπορείς να τον ρωτήσεις αν φοβόταν την πρώτη φορά.",
+      "tts": {
+        "text": "Μπορείς να τον ρωτήσεις αν φοβόταν την πρώτη φορά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-343",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Φυσικά και φοβόταν.",
+      "text_markdown": "Φυσικά και φοβόταν.",
+      "tts": {
+        "text": "Φυσικά και φοβόταν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-344",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Όλοι φοβούνται.",
+      "text_markdown": "Όλοι φοβούνται.",
+      "tts": {
+        "text": "Όλοι φοβούνται.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-345",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Πιθανότατα θα αναφέρει τον αέρα στην πόρτα, το μέτρημα, και πώς μοιάζει ο κόσμος ακριβώς πριν βγεις.",
+      "text_markdown": "Πιθανότατα θα αναφέρει τον αέρα στην πόρτα, το μέτρημα, και πώς μοιάζει ο κόσμος ακριβώς πριν βγεις.",
+      "tts": {
+        "text": "Πιθανότατα θα αναφέρει τον αέρα στην πόρτα, το μέτρημα, και πώς μοιάζει ο κόσμος ακριβώς πριν βγεις.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.89
+      }
+    },
+    {
+      "id": "ch06-346",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Άκου προσεκτικά.",
+      "text_markdown": "Άκου προσεκτικά.",
+      "tts": {
+        "text": "Άκου προσεκτικά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-347",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p69",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Σου κάνει ένα μικρό δώρο.",
+      "text_markdown": "Σου κάνει ένα μικρό δώρο.",
+      "tts": {
+        "text": "Σου κάνει ένα μικρό δώρο.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-348",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Αν θέλεις να φωτιστεί ένας αλεξιπτωτιστής, ζήτα του να σου περιγράψει τη στιγμή που ανοίγει το αλεξίπτωτο.",
+      "text_markdown": "Αν θέλεις να φωτιστεί ένας αλεξιπτωτιστής, ζήτα του να σου περιγράψει τη στιγμή που ανοίγει το αλεξίπτωτο.",
+      "tts": {
+        "text": "Αν θέλεις να φωτιστεί ένας αλεξιπτωτιστής, ζήτα του να σου περιγράψει τη στιγμή που ανοίγει το αλεξίπτωτο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-349",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Θα κλείσει τα μάτια του για μισό δευτερόλεπτο.",
+      "text_markdown": "Θα κλείσει τα μάτια του για μισό δευτερόλεπτο.",
+      "tts": {
+        "text": "Θα κλείσει τα μάτια του για μισό δευτερόλεπτο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-350",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Μετά θα προσπαθήσει.",
+      "text_markdown": "Μετά θα προσπαθήσει.",
+      "tts": {
+        "text": "Μετά θα προσπαθήσει.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-351",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Θα χρησιμοποιήσει διαφορετική λέξη κάθε φορά.",
+      "text_markdown": "Θα χρησιμοποιήσει διαφορετική λέξη κάθε φορά.",
+      "tts": {
+        "text": "Θα χρησιμοποιήσει διαφορετική λέξη κάθε φορά.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-352",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Ίσως ήσυχη.",
+      "text_markdown": "Ίσως ήσυχη.",
+      "tts": {
+        "text": "Ίσως ήσυχη.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-353",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ίσως απαλή.",
+      "text_markdown": "Ίσως απαλή.",
+      "tts": {
+        "text": "Ίσως απαλή.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-354",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Σαν να ξυπνάς.",
+      "text_markdown": "Σαν να ξυπνάς.",
+      "tts": {
+        "text": "Σαν να ξυπνάς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-355",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Σαν να γυρνάς σπίτι.",
+      "text_markdown": "Σαν να γυρνάς σπίτι.",
+      "tts": {
+        "text": "Σαν να γυρνάς σπίτι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-356",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p70",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Κανείς δεν την περιγράφει με τον ίδιο τρόπο δύο φορές.",
+      "text_markdown": "Κανείς δεν την περιγράφει με τον ίδιο τρόπο δύο φορές.",
+      "tts": {
+        "text": "Κανείς δεν την περιγράφει με τον ίδιο τρόπο δύο φορές.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-357",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Μη φοβάσαι να παραδεχτείς πως δεν έχεις πέσει ποτέ.",
+      "text_markdown": "Μη φοβάσαι να παραδεχτείς πως δεν έχεις πέσει ποτέ.",
+      "tts": {
+        "text": "Μη φοβάσαι να παραδεχτείς πως δεν έχεις πέσει ποτέ.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-358",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Στους αλεξιπτωτιστές αρέσει αυτή η ερώτηση.",
+      "text_markdown": "Στους αλεξιπτωτιστές αρέσει αυτή η ερώτηση.",
+      "tts": {
+        "text": "Στους αλεξιπτωτιστές αρέσει αυτή η ερώτηση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-359",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Στους αλεξιπτωτιστές αρέσει επίσης να σου λένε πως πρέπει να το δοκιμάσεις, και μετά να σου λένε, πολύ σοβαρά, ότι θα έρθουν μαζί σου.",
+      "text_markdown": "Στους αλεξιπτωτιστές αρέσει επίσης να σου λένε πως πρέπει να το δοκιμάσεις, και μετά να σου λένε, πολύ σοβαρά, ότι θα έρθουν μαζί σου.",
+      "tts": {
+        "text": "Στους αλεξιπτωτιστές αρέσει επίσης να σου λένε πως πρέπει να το δοκιμάσεις, και μετά να σου λένε, πολύ σοβαρά, ότι θα έρθουν μαζί σου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.81
+      }
+    },
+    {
+      "id": "ch06-360",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Οι περισσότεροι από εμάς έχουμε φέρει έναν φίλο στην πρώτη του πτώση.",
+      "text_markdown": "Οι περισσότεροι από εμάς έχουμε φέρει έναν φίλο στην πρώτη του πτώση.",
+      "tts": {
+        "text": "Οι περισσότεροι από εμάς έχουμε φέρει έναν φίλο στην πρώτη του πτώση.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-361",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p71",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Είναι μία από τις μεγάλες απολαύσεις του αθλήματος.",
+      "text_markdown": "Είναι μία από τις μεγάλες απολαύσεις του αθλήματος.",
+      "tts": {
+        "text": "Είναι μία από τις μεγάλες απολαύσεις του αθλήματος.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.84
+      }
+    },
+    {
+      "id": "ch06-362",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Δεν υπάρχει κάποιο μεγάλο μάθημα στο τέλος όλων αυτών.",
+      "text_markdown": "Δεν υπάρχει κάποιο μεγάλο μάθημα στο τέλος όλων αυτών.",
+      "tts": {
+        "text": "Δεν υπάρχει κάποιο μεγάλο μάθημα στο τέλος όλων αυτών.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-363",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Μόνο αυτό.",
+      "text_markdown": "Μόνο αυτό.",
+      "tts": {
+        "text": "Μόνο αυτό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-364",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Κάπου στον κόσμο αυτή τη στιγμή, μια μικρή ομάδα ήρεμων και υπομονετικών ανθρώπων περπατούν προς ένα αεροπλάνο.",
+      "text_markdown": "Κάπου στον κόσμο αυτή τη στιγμή, μια μικρή ομάδα ήρεμων και υπομονετικών ανθρώπων περπατούν προς ένα αεροπλάνο.",
+      "tts": {
+        "text": "Κάπου στον κόσμο αυτή τη στιγμή, μια μικρή ομάδα ήρεμων και υπομονετικών ανθρώπων περπατούν προς ένα αεροπλάνο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.96
+      }
+    },
+    {
+      "id": "ch06-365",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Το χωράφι λούζεται από ήλιο.",
+      "text_markdown": "Το χωράφι λούζεται από ήλιο.",
+      "tts": {
+        "text": "Το χωράφι λούζεται από ήλιο.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-366",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Το γρασίδι είναι ζεστό.",
+      "text_markdown": "Το γρασίδι είναι ζεστό.",
+      "tts": {
+        "text": "Το γρασίδι είναι ζεστό.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-367",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Ελέγχουν ο ένας τον εξοπλισμό του άλλου.",
+      "text_markdown": "Ελέγχουν ο ένας τον εξοπλισμό του άλλου.",
+      "tts": {
+        "text": "Ελέγχουν ο ένας τον εξοπλισμό του άλλου.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-368",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Χαμογελούν.",
+      "text_markdown": "Χαμογελούν.",
+      "tts": {
+        "text": "Χαμογελούν.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-369",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p72",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Σε τριάντα λεπτά, θα είναι στον ουρανό, κάνοντας το πιο ήσυχο πράγμα που ξέρουν να κάνουν.",
+      "text_markdown": "Σε τριάντα λεπτά, θα είναι στον ουρανό, κάνοντας το πιο ήσυχο πράγμα που ξέρουν να κάνουν.",
+      "tts": {
+        "text": "Σε τριάντα λεπτά, θα είναι στον ουρανό, κάνοντας το πιο ήσυχο πράγμα που ξέρουν να κάνουν.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.87
+      }
+    },
+    {
+      "id": "ch06-370",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ίσως μια μέρα να είσαι ένας από αυτούς.",
+      "text_markdown": "Ίσως μια μέρα να είσαι ένας από αυτούς.",
+      "tts": {
+        "text": "Ίσως μια μέρα να είσαι ένας από αυτούς.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.91
+      }
+    },
+    {
+      "id": "ch06-371",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Ίσως μια μέρα να μην είσαι.",
+      "text_markdown": "Ίσως μια μέρα να μην είσαι.",
+      "tts": {
+        "text": "Ίσως μια μέρα να μην είσαι.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-372",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Όπως κι αν έχει, ο ουρανός είναι εκεί.",
+      "text_markdown": "Όπως κι αν έχει, ο ουρανός είναι εκεί.",
+      "tts": {
+        "text": "Όπως κι αν έχει, ο ουρανός είναι εκεί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-373",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Ήταν πάντα εκεί.",
+      "text_markdown": "Ήταν πάντα εκεί.",
+      "tts": {
+        "text": "Ήταν πάντα εκεί.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-374",
+      "part": 0,
+      "chapter": 6,
+      "title": "Why It Stays",
+      "paragraph_id": "p73",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Περιμένει, υπομονετικά, σε περίπτωση που ποτέ νιώσεις την ανάγκη να γείρεις.",
+      "text_markdown": "Περιμένει, υπομονετικά, σε περίπτωση που ποτέ νιώσεις την ανάγκη να γείρεις.",
+      "tts": {
+        "text": "Περιμένει, υπομονετικά, σε περίπτωση που ποτέ νιώσεις την ανάγκη να γείρεις.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ]
+}

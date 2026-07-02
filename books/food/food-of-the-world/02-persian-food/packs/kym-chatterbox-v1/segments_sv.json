@@ -1,0 +1,3492 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_persian_food",
+  "total_segments": 220,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p1",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "En hälsning till läsaren",
+      "text_markdown": "En hälsning till läsaren"
+    },
+    {
+      "id": "ch00-002",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Hej.",
+      "text_markdown": "Hej.",
+      "tts": {
+        "text": "Hej.",
+        "pause_after_ms": 2000,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-003",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jag heter Kym.",
+      "text_markdown": "Jag heter Kym.",
+      "tts": {
+        "text": "Jag heter Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-004",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Jag älskar mat.",
+      "text_markdown": "Jag älskar mat.",
+      "tts": {
+        "text": "Jag älskar mat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-005",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p2",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Jag älskar berättelser om mat.",
+      "text_markdown": "Jag älskar berättelser om mat.",
+      "tts": {
+        "text": "Jag älskar berättelser om mat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-006",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det här är en liten bok om en stor matkultur.",
+      "text_markdown": "Det här är en liten bok om en stor matkultur.",
+      "tts": {
+        "text": "Det här är en liten bok om en stor matkultur.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-007",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Maten är persisk mat.",
+      "text_markdown": "Maten är persisk mat.",
+      "tts": {
+        "text": "Maten är persisk mat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-008",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det är maten från Iran.",
+      "text_markdown": "Det är maten från Iran.",
+      "tts": {
+        "text": "Det är maten från Iran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-009",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p3",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det är också maten från ett mycket äldre land som kallades Persien.",
+      "text_markdown": "Det är också maten från ett mycket äldre land som kallades Persien.",
+      "tts": {
+        "text": "Det är också maten från ett mycket äldre land som kallades Persien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-010",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien är en av de äldsta platserna på jorden där människor odlade mat medvetet.",
+      "text_markdown": "Persien är en av de äldsta platserna på jorden där människor odlade mat medvetet.",
+      "tts": {
+        "text": "Persien är en av de äldsta platserna på jorden där människor odlade mat medvetet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-011",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p4",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vete, korn, persika, aprikos, granatäpple, spenat och saffran. Mycket på din tallrik föddes där.",
+      "text_markdown": "Vete, korn, persika, aprikos, granatäpple, spenat och saffran. Mycket på din tallrik föddes där.",
+      "tts": {
+        "text": "Vete, korn, persika, aprikos, granatäpple, spenat och saffran. Mycket på din tallrik föddes där.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-012",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Vi börjar med landet.",
+      "text_markdown": "Vi börjar med landet.",
+      "tts": {
+        "text": "Vi börjar med landet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-013",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Sedan tittar vi på det som växer där.",
+      "text_markdown": "Sedan tittar vi på det som växer där.",
+      "tts": {
+        "text": "Sedan tittar vi på det som växer där.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-014",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sedan tittar vi på riset, brödet, köttet och grytorna.",
+      "text_markdown": "Sedan tittar vi på riset, brödet, köttet och grytorna.",
+      "tts": {
+        "text": "Sedan tittar vi på riset, brödet, köttet och grytorna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch00-015",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p5",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "När vi är klara vet du vad som finns på ett persiskt bord, och du vet var det kommer ifrån.",
+      "text_markdown": "När vi är klara vet du vad som finns på ett persiskt bord, och du vet var det kommer ifrån.",
+      "tts": {
+        "text": "När vi är klara vet du vad som finns på ett persiskt bord, och du vet var det kommer ifrån.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch00-016",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sätt dig ner.",
+      "text_markdown": "Sätt dig ner.",
+      "tts": {
+        "text": "Sätt dig ner.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-017",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Häll upp lite te.",
+      "text_markdown": "Häll upp lite te.",
+      "tts": {
+        "text": "Häll upp lite te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch00-018",
+      "part": 0,
+      "chapter": 0,
+      "title": "A Note for the Reader",
+      "paragraph_id": "p6",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nu börjar vi.",
+      "text_markdown": "Nu börjar vi.",
+      "tts": {
+        "text": "Nu börjar vi.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-019",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p7",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 1: Landet där jordbruket började",
+      "text_markdown": "Kapitel 1: Landet där jordbruket började"
+    },
+    {
+      "id": "ch01-020",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien är ett högt och torrt land.",
+      "text_markdown": "Persien är ett högt och torrt land.",
+      "tts": {
+        "text": "Persien är ett högt och torrt land.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-021",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det ligger mellan Kaspiska havet i norr och Persiska viken i söder.",
+      "text_markdown": "Det ligger mellan Kaspiska havet i norr och Persiska viken i söder.",
+      "tts": {
+        "text": "Det ligger mellan Kaspiska havet i norr och Persiska viken i söder.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-022",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I väster ligger Mesopotamien.",
+      "text_markdown": "I väster ligger Mesopotamien.",
+      "tts": {
+        "text": "I väster ligger Mesopotamien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-023",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "I öster ligger Indien.",
+      "text_markdown": "I öster ligger Indien.",
+      "tts": {
+        "text": "I öster ligger Indien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-024",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p8",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I mitten finns berg och öknar.",
+      "text_markdown": "I mitten finns berg och öknar.",
+      "tts": {
+        "text": "I mitten finns berg och öknar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-025",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Alldeles intill började människor odla vete och korn medvetet för ungefär tio tusen år sedan.",
+      "text_markdown": "Alldeles intill började människor odla vete och korn medvetet för ungefär tio tusen år sedan.",
+      "tts": {
+        "text": "Alldeles intill började människor odla vete och korn medvetet för ungefär tio tusen år sedan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-026",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Där föddes jordbruket.",
+      "text_markdown": "Där föddes jordbruket.",
+      "tts": {
+        "text": "Där föddes jordbruket.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-027",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p9",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persien var en av de första platserna där man lärde sig det.",
+      "text_markdown": "Persien var en av de första platserna där man lärde sig det.",
+      "tts": {
+        "text": "Persien var en av de första platserna där man lärde sig det.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-028",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det långa försprånget syns på varje persisk tallrik.",
+      "text_markdown": "Det långa försprånget syns på varje persisk tallrik.",
+      "tts": {
+        "text": "Det långa försprånget syns på varje persisk tallrik.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-029",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persikan kommer från Persien.",
+      "text_markdown": "Persikan kommer från Persien.",
+      "tts": {
+        "text": "Persikan kommer från Persien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-030",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p10",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Romarna kallade den Persica, den persiska frukten. Vårt ord persika kommer från det namnet.",
+      "text_markdown": "Romarna kallade den Persica, den persiska frukten. Vårt ord persika kommer från det namnet.",
+      "tts": {
+        "text": "Romarna kallade den Persika, den persiska frukten. Vårt ord persika kommer från det namnet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-031",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Aprikosen kommer också därifrån.",
+      "text_markdown": "Aprikosen kommer också därifrån.",
+      "tts": {
+        "text": "Aprikosen kommer också därifrån.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-032",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det gör granatäpplet också.",
+      "text_markdown": "Det gör granatäpplet också.",
+      "tts": {
+        "text": "Det gör granatäpplet också.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-033",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det gör valnöten också.",
+      "text_markdown": "Det gör valnöten också.",
+      "tts": {
+        "text": "Det gör valnöten också.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-034",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det gör surkörsbäret också.",
+      "text_markdown": "Det gör surkörsbäret också.",
+      "tts": {
+        "text": "Det gör surkörsbäret också.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-035",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det gör också en av världens första salladsgrönsaker, spenat.",
+      "text_markdown": "Det gör också en av världens första salladsgrönsaker, spenat.",
+      "tts": {
+        "text": "Det gör också en av världens första salladsgrönsaker, spenat.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-036",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p11",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Det engelska ordet för spenat kommer från det persiska ordet esfanaj.",
+      "text_markdown": "Det engelska ordet för spenat kommer från det persiska ordet esfanaj.",
+      "tts": {
+        "text": "Det engelska ordet för spenat kommer från det persiska ordet esfanadj.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch01-037",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Till och med ordet paradis är ett persiskt ord.",
+      "text_markdown": "Till och med ordet paradis är ett persiskt ord.",
+      "tts": {
+        "text": "Till och med ordet paradis är ett persiskt ord.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-038",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det kommer från pardis, en muromgärdad trädgård.",
+      "text_markdown": "Det kommer från pardis, en muromgärdad trädgård.",
+      "tts": {
+        "text": "Det kommer från pardiss, en muromgärdad trädgård.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-039",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p12",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det första paradiset var en persisk fruktträdgård full av granatäppelträd.",
+      "text_markdown": "Det första paradiset var en persisk fruktträdgård full av granatäppelträd.",
+      "tts": {
+        "text": "Det första paradiset var en persisk fruktträdgård full av granatäppelträd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-040",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "I Persien åt man inte bara väl.",
+      "text_markdown": "I Persien åt man inte bara väl.",
+      "tts": {
+        "text": "I Persien åt man inte bara väl.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch01-041",
+      "part": 0,
+      "chapter": 1,
+      "title": "Chapter 1 — The Land Where Farming Began",
+      "paragraph_id": "p13",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persien lärde världen att äta väl.",
+      "text_markdown": "Persien lärde världen att äta väl.",
+      "tts": {
+        "text": "Persien lärde världen att äta väl.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-042",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p14",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 2: Det inhemska skafferiet",
+      "text_markdown": "Kapitel 2: Det inhemska skafferiet"
+    },
+    {
+      "id": "ch02-043",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Öppna ett persiskt skafferi.",
+      "text_markdown": "Öppna ett persiskt skafferi.",
+      "tts": {
+        "text": "Öppna ett persiskt skafferi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-044",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p15",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Doferna berättar historien.",
+      "text_markdown": "Doferna berättar historien.",
+      "tts": {
+        "text": "Doferna berättar historien.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-045",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den första doften är saffran.",
+      "text_markdown": "Den första doften är saffran.",
+      "tts": {
+        "text": "Den första doften är saffran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-046",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran odlar omkring nittio procent av världens saffran.",
+      "text_markdown": "Iran odlar omkring nittio procent av världens saffran.",
+      "tts": {
+        "text": "Iran odlar omkring nittio procent av världens saffran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-047",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det mesta kommer från en provins som heter Khorasan.",
+      "text_markdown": "Det mesta kommer från en provins som heter Khorasan.",
+      "tts": {
+        "text": "Det mesta kommer från en provins som heter Korasan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-048",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "För att få ett gram plockar en odlare de röda trådarna för hand från omkring två hundra krokusblommor.",
+      "text_markdown": "För att få ett gram plockar en odlare de röda trådarna för hand från omkring två hundra krokusblommor.",
+      "tts": {
+        "text": "För att få ett gram plockar en odlare de röda trådarna för hand från omkring två hundra krokusblommor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-049",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Arbetet görs i kalla höstgryningar.",
+      "text_markdown": "Arbetet görs i kalla höstgryningar.",
+      "tts": {
+        "text": "Arbetet görs i kalla höstgryningar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-050",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Saffran är världens dyraste krydda.",
+      "text_markdown": "Saffran är världens dyraste krydda.",
+      "tts": {
+        "text": "Saffran är världens dyraste krydda.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-051",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p16",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "En nypa gör riset gyllene och vattnet till parfym.",
+      "text_markdown": "En nypa gör riset gyllene och vattnet till parfym.",
+      "tts": {
+        "text": "En nypa gör riset gyllene och vattnet till parfym.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-052",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den andra doften är granatäpple.",
+      "text_markdown": "Den andra doften är granatäpple.",
+      "tts": {
+        "text": "Den andra doften är granatäpple.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-053",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perser har odlat granatäpplen i tusentals år.",
+      "text_markdown": "Perser har odlat granatäpplen i tusentals år.",
+      "tts": {
+        "text": "Perser har odlat granatäpplen i tusentals år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-054",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Frukten är en symbol för kärlek och paradis.",
+      "text_markdown": "Frukten är en symbol för kärlek och paradis.",
+      "tts": {
+        "text": "Frukten är en symbol för kärlek och paradis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch02-055",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Saften pressas till grytor.",
+      "text_markdown": "Saften pressas till grytor.",
+      "tts": {
+        "text": "Saften pressas till grytor.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-056",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p17",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Kärnorna strös över ris och sallader.",
+      "text_markdown": "Kärnorna strös över ris och sallader.",
+      "tts": {
+        "text": "Kärnorna strös över ris och sallader.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-057",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan kommer pistagenötterna.",
+      "text_markdown": "Sedan kommer pistagenötterna.",
+      "tts": {
+        "text": "Sedan kommer pistagenötterna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-058",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Iran har pistagelundar som är tre tusen år gamla.",
+      "text_markdown": "Iran har pistagelundar som är tre tusen år gamla.",
+      "tts": {
+        "text": "Iran har pistagelundar som är tre tusen år gamla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-059",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p18",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Pistagen du äter är ofta en ättling till ett persiskt träd.",
+      "text_markdown": "Pistagen du äter är ofta en ättling till ett persiskt träd.",
+      "tts": {
+        "text": "Pistagen du äter är ofta en ättling till ett persiskt träd.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-060",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Där finns valnötter, surkörsbär, kvitten, meloner och dadlar.",
+      "text_markdown": "Där finns valnötter, surkörsbär, kvitten, meloner och dadlar.",
+      "tts": {
+        "text": "Där finns valnötter, surkörsbär, kvitten, meloner och dadlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-061",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Där finns sumak, en mörkröd och syrlig krydda från en vild buske.",
+      "text_markdown": "Där finns sumak, en mörkröd och syrlig krydda från en vild buske.",
+      "tts": {
+        "text": "Där finns sumak, en mörkröd och syrlig krydda från en vild buske.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch02-062",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Innan citroner fanns överallt gav sumak maten frisk smak.",
+      "text_markdown": "Innan citroner fanns överallt gav sumak maten frisk smak.",
+      "tts": {
+        "text": "Innan citroner fanns överallt gav sumak maten frisk smak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-063",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p19",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det gör den fortfarande.",
+      "text_markdown": "Det gör den fortfarande.",
+      "tts": {
+        "text": "Det gör den fortfarande.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch02-064",
+      "part": 0,
+      "chapter": 2,
+      "title": "Chapter 2 — The Native Pantry",
+      "paragraph_id": "p20",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett persiskt skafferi rymmer halva historien om frukt.",
+      "text_markdown": "Ett persiskt skafferi rymmer halva historien om frukt.",
+      "tts": {
+        "text": "Ett persiskt skafferi rymmer halva historien om frukt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-065",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p21",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 3: Ris, bröd och den heliga skorpan",
+      "text_markdown": "Kapitel 3: Ris, bröd och den heliga skorpan"
+    },
+    {
+      "id": "ch03-066",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ris kom till Persien från Indien för ungefär två tusen fem hundra år sedan.",
+      "text_markdown": "Ris kom till Persien från Indien för ungefär två tusen fem hundra år sedan.",
+      "tts": {
+        "text": "Ris kom till Persien från Indien för ungefär två tusen fem hundra år sedan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-067",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p22",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det blev bordets hjärta.",
+      "text_markdown": "Det blev bordets hjärta.",
+      "tts": {
+        "text": "Det blev bordets hjärta.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-068",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perser lagar ris på två sätt.",
+      "text_markdown": "Perser lagar ris på två sätt.",
+      "tts": {
+        "text": "Perser lagar ris på två sätt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-069",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vanligt ris kallas chelo.",
+      "text_markdown": "Vanligt ris kallas chelo.",
+      "tts": {
+        "text": "Vanligt ris kallas tjelo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-070",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ris blandat med örter, kött eller frukt kallas polo.",
+      "text_markdown": "Ris blandat med örter, kött eller frukt kallas polo.",
+      "tts": {
+        "text": "Ris blandat med örter, kött eller frukt kallas polo.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-071",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p23",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Båda blir långa, lätta och luftiga. Varje korn ligger för sig.",
+      "text_markdown": "Båda blir långa, lätta och luftiga. Varje korn ligger för sig.",
+      "tts": {
+        "text": "Båda blir långa, lätta och luftiga. Varje korn ligger för sig.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-072",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Men magin finns i botten av grytan.",
+      "text_markdown": "Men magin finns i botten av grytan.",
+      "tts": {
+        "text": "Men magin finns i botten av grytan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-073",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det kallas tahdig.",
+      "text_markdown": "Det kallas tahdig.",
+      "tts": {
+        "text": "Det kallas tah digg.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-074",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Kocken lägger ett tunt lager i botten av pannan, ibland saffransris, ibland en skiva potatis, ibland en bit bröd.",
+      "text_markdown": "Kocken lägger ett tunt lager i botten av pannan, ibland saffransris, ibland en skiva potatis, ibland en bit bröd.",
+      "tts": {
+        "text": "Kocken lägger ett tunt lager i botten av pannan, ibland saffransris, ibland en skiva potatis, ibland en bit bröd.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch03-075",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sedan läggs riset ovanpå.",
+      "text_markdown": "Sedan läggs riset ovanpå.",
+      "tts": {
+        "text": "Sedan läggs riset ovanpå.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-076",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sedan kommer locket på, inlindat i en kökshandduk, och ångan gör jobbet.",
+      "text_markdown": "Sedan kommer locket på, inlindat i en kökshandduk, och ångan gör jobbet.",
+      "tts": {
+        "text": "Sedan kommer locket på, inlindat i en kökshandduk, och ångan gör jobbet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-077",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p24",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Efter en timme är lagret i botten gyllene och krispigt.",
+      "text_markdown": "Efter en timme är lagret i botten gyllene och krispigt.",
+      "tts": {
+        "text": "Efter en timme är lagret i botten gyllene och krispigt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-078",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tahdig är helig.",
+      "text_markdown": "Tahdig är helig.",
+      "tts": {
+        "text": "Tah digg är helig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-079",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Familjer slåss om den.",
+      "text_markdown": "Familjer slåss om den.",
+      "tts": {
+        "text": "Familjer slåss om den.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-080",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Iransk tv har hela program om vem som gör den bästa.",
+      "text_markdown": "Iransk tv har hela program om vem som gör den bästa.",
+      "tts": {
+        "text": "Iransk tv har hela program om vem som gör den bästa.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-081",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p25",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En perfekt tahdig kommer ur pannan som en vacker rund skiva.",
+      "text_markdown": "En perfekt tahdig kommer ur pannan som en vacker rund skiva.",
+      "tts": {
+        "text": "En perfekt tah digg kommer ur pannan som en vacker rund skiva.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-082",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan har vi brödet.",
+      "text_markdown": "Sedan har vi brödet.",
+      "tts": {
+        "text": "Sedan har vi brödet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-083",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det mest kända är sangak.",
+      "text_markdown": "Det mest kända är sangak.",
+      "tts": {
+        "text": "Det mest kända är sangack.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-084",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sangak bakas på en bädd av heta stenar, en metod som är fem tusen år gammal.",
+      "text_markdown": "Sangak bakas på en bädd av heta stenar, en metod som är fem tusen år gammal.",
+      "tts": {
+        "text": "Sangack bakas på en bädd av heta stenar, en metod som är fem tusen år gammal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-085",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Stenarna följer fortfarande med ut i brödet.",
+      "text_markdown": "Stenarna följer fortfarande med ut i brödet.",
+      "tts": {
+        "text": "Stenarna följer fortfarande med ut i brödet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch03-086",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p26",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Du plockar bort dem vid bordet.",
+      "text_markdown": "Du plockar bort dem vid bordet.",
+      "tts": {
+        "text": "Du plockar bort dem vid bordet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-087",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andra bröd är barbari, lavash och taftoon.",
+      "text_markdown": "Andra bröd är barbari, lavash och taftoon.",
+      "tts": {
+        "text": "Andra bröd är barbari, lavash och taftoon.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch03-088",
+      "part": 0,
+      "chapter": 3,
+      "title": "Chapter 3 — Rice, Bread, and the Sacred Crust",
+      "paragraph_id": "p27",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En persisk frukost är bröd, te och en mjuk vit ost.",
+      "text_markdown": "En persisk frukost är bröd, te och en mjuk vit ost.",
+      "tts": {
+        "text": "En persisk frukost är bröd, te och en mjuk vit ost.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-089",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p28",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 4: Kebaben och den tålmodiga grytan",
+      "text_markdown": "Kapitel 4: Kebaben och den tålmodiga grytan"
+    },
+    {
+      "id": "ch04-090",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ordet kebab är persiskt.",
+      "text_markdown": "Ordet kebab är persiskt.",
+      "tts": {
+        "text": "Ordet kebab är persiskt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-091",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är kabab, och det betyder kött lagat över eld.",
+      "text_markdown": "Det är kabab, och det betyder kött lagat över eld.",
+      "tts": {
+        "text": "Det är kabab, och det betyder kött lagat över eld.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-092",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p29",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Perser har lagat lamm på långa platta spett i tusentals år.",
+      "text_markdown": "Perser har lagat lamm på långa platta spett i tusentals år.",
+      "tts": {
+        "text": "Perser har lagat lamm på långa platta spett i tusentals år.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-093",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den mest populära kebaben i dag är koobideh.",
+      "text_markdown": "Den mest populära kebaben i dag är koobideh.",
+      "tts": {
+        "text": "Den mest populära kebaben i dag är kobide.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-094",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är malet lamm eller nötkött, blandat med lök och salt, pressat på ett brett platt spett och grillat över kol.",
+      "text_markdown": "Det är malet lamm eller nötkött, blandat med lök och salt, pressat på ett brett platt spett och grillat över kol.",
+      "tts": {
+        "text": "Det är malet lamm eller nötkött, blandat med lök och salt, pressat på ett brett platt spett och grillat över kol.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-095",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den ser uråldrig ut.",
+      "text_markdown": "Den ser uråldrig ut.",
+      "tts": {
+        "text": "Den ser uråldrig ut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-096",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det är den inte.",
+      "text_markdown": "Det är den inte.",
+      "tts": {
+        "text": "Det är den inte.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-097",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Köttkvarnen kom till Iran först sent på artonhundratalet.",
+      "text_markdown": "Köttkvarnen kom till Iran först sent på artonhundratalet.",
+      "tts": {
+        "text": "Köttkvarnen kom till Iran först sent på artonhundratalet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-098",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p30",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Koobideh, den mest persiska av kebaber, är knappt mer än hundra år gammal.",
+      "text_markdown": "Koobideh, den mest persiska av kebaber, är knappt mer än hundra år gammal.",
+      "tts": {
+        "text": "Kobide, den mest persiska av kebaber, är knappt mer än hundra år gammal.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-099",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Äldre kebaber görs av skivat kött.",
+      "text_markdown": "Äldre kebaber görs av skivat kött.",
+      "tts": {
+        "text": "Äldre kebaber görs av skivat kött.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-100",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Joojeh är kyckling i saffran och yoghurt.",
+      "text_markdown": "Joojeh är kyckling i saffran och yoghurt.",
+      "tts": {
+        "text": "Djooje är kyckling i saffran och yoghurt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-101",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Barg är en tunn lammfilé.",
+      "text_markdown": "Barg är en tunn lammfilé.",
+      "tts": {
+        "text": "Barg är en tunn lammfilé.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-102",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p31",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Båda serveras på en bädd av saffransris med en grillad tomat.",
+      "text_markdown": "Båda serveras på en bädd av saffransris med en grillad tomat.",
+      "tts": {
+        "text": "Båda serveras på en bädd av saffransris med en grillad tomat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-103",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu möter du den tålmodiga maten, khoresh, den persiska grytan.",
+      "text_markdown": "Nu möter du den tålmodiga maten, khoresh, den persiska grytan.",
+      "tts": {
+        "text": "Nu möter du den tålmodiga maten, koresh, den persiska grytan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-104",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p32",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "En khoresh får puttra i timmar.",
+      "text_markdown": "En khoresh får puttra i timmar.",
+      "tts": {
+        "text": "En koresh får puttra i timmar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-105",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den mest kända är fesenjan.",
+      "text_markdown": "Den mest kända är fesenjan.",
+      "tts": {
+        "text": "Den mest kända är fessenjan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-106",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är kyckling eller anka som långkokas i en tjock sås av malda valnötter och granatäppeljuice.",
+      "text_markdown": "Det är kyckling eller anka som långkokas i en tjock sås av malda valnötter och granatäppeljuice.",
+      "tts": {
+        "text": "Det är kyckling eller anka som långkokas i en tjock sås av malda valnötter och granatäppeljuice.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-107",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Receptet är ett av de äldsta grytrecept som någonsin har hittats.",
+      "text_markdown": "Receptet är ett av de äldsta grytrecept som någonsin har hittats.",
+      "tts": {
+        "text": "Receptet är ett av de äldsta grytrecept som någonsin har hittats.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-108",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En version av det är skriven på kilskriftstavlor från ruinerna i Persepolis.",
+      "text_markdown": "En version av det är skriven på kilskriftstavlor från ruinerna i Persepolis.",
+      "tts": {
+        "text": "En version av det är skriven på kilskriftstavlor från ruinerna i Persepolis.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch04-109",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det betyder att den är mer än två tusen fem hundra år gammal.",
+      "text_markdown": "Det betyder att den är mer än två tusen fem hundra år gammal.",
+      "tts": {
+        "text": "Det betyder att den är mer än två tusen fem hundra år gammal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-110",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p33",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Folk lagar den fortfarande på samma sätt.",
+      "text_markdown": "Folk lagar den fortfarande på samma sätt.",
+      "tts": {
+        "text": "Folk lagar den fortfarande på samma sätt.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-111",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En annan klassiker är ghormeh sabzi, lamm, kidneybönor och ett berg av färska örter som kokas ihop med torkad lime.",
+      "text_markdown": "En annan klassiker är ghormeh sabzi, lamm, kidneybönor och ett berg av färska örter som kokas ihop med torkad lime.",
+      "tts": {
+        "text": "En annan klassiker är gorme sabsi, lamm, kidneybönor och ett berg av färska örter som kokas ihop med torkad lajm.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch04-112",
+      "part": 0,
+      "chapter": 4,
+      "title": "Chapter 4 — The Kebab and the Patient Stew",
+      "paragraph_id": "p34",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Många iranier kallar den nationalrätten.",
+      "text_markdown": "Många iranier kallar den nationalrätten.",
+      "tts": {
+        "text": "Många iranier kallar den nationalrätten.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-113",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p35",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 5: Yoghurt, te och de äldsta sötsakerna",
+      "text_markdown": "Kapitel 5: Yoghurt, te och de äldsta sötsakerna"
+    },
+    {
+      "id": "ch05-114",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Perser äter yoghurt till nästan allt.",
+      "text_markdown": "Perser äter yoghurt till nästan allt.",
+      "tts": {
+        "text": "Perser äter yoghurt till nästan allt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-115",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Vanlig yoghurt kallas mast.",
+      "text_markdown": "Vanlig yoghurt kallas mast.",
+      "tts": {
+        "text": "Vanlig yoghurt kallas mast.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-116",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Mast med gurka och torkad mynta kallas mast o khiar.",
+      "text_markdown": "Mast med gurka och torkad mynta kallas mast o khiar.",
+      "tts": {
+        "text": "Mast med gurka och torkad mynta kallas mast o kiar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-117",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En salt yoghurtdryck med mynta kallas doogh.",
+      "text_markdown": "En salt yoghurtdryck med mynta kallas doogh.",
+      "tts": {
+        "text": "En salt yoghurtdryck med mynta kallas doog.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-118",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p36",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Det finns också kashk, en kraftig torkad vassle som används i soppor.",
+      "text_markdown": "Det finns också kashk, en kraftig torkad vassle som används i soppor.",
+      "tts": {
+        "text": "Det finns också kask, en kraftig torkad vassle som används i soppor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-119",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Sedan kommer teet.",
+      "text_markdown": "Sedan kommer teet.",
+      "tts": {
+        "text": "Sedan kommer teet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-120",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perser dricker det på morgonen, mitt på dagen och på kvällen, starkt bryggt i en hög tekanna på en samovar.",
+      "text_markdown": "Perser dricker det på morgonen, mitt på dagen och på kvällen, starkt bryggt i en hög tekanna på en samovar.",
+      "tts": {
+        "text": "Perser dricker det på morgonen, mitt på dagen och på kvällen, starkt bryggt i en hög tekanna på en samovar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-121",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Te är så centralt att många blir förvånade när de hör att det kom sent.",
+      "text_markdown": "Te är så centralt att många blir förvånade när de hör att det kom sent.",
+      "tts": {
+        "text": "Te är så centralt att många blir förvånade när de hör att det kom sent.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-122",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Under större delen av Persiens historia var drycken kaffe.",
+      "text_markdown": "Under större delen av Persiens historia var drycken kaffe.",
+      "tts": {
+        "text": "Under större delen av Persiens historia var drycken kaffe.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-123",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Te tog över först sent på artonhundratalet.",
+      "text_markdown": "Te tog över först sent på artonhundratalet.",
+      "tts": {
+        "text": "Te tog över först sent på artonhundratalet.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-124",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p37",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "I dag är Iran ett av länderna som dricker mest te i världen.",
+      "text_markdown": "I dag är Iran ett av länderna som dricker mest te i världen.",
+      "tts": {
+        "text": "I dag är Iran ett av länderna som dricker mest te i världen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-125",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det finns en liten ritual kring det.",
+      "text_markdown": "Det finns en liten ritual kring det.",
+      "tts": {
+        "text": "Det finns en liten ritual kring det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-126",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Du håller en sockerbit mellan tänderna.",
+      "text_markdown": "Du håller en sockerbit mellan tänderna.",
+      "tts": {
+        "text": "Du håller en sockerbit mellan tänderna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-127",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Du sippar teet genom sockerbiten.",
+      "text_markdown": "Du sippar teet genom sockerbiten.",
+      "tts": {
+        "text": "Du sippar teet genom sockerbiten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-128",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Biten smälter lite.",
+      "text_markdown": "Biten smälter lite.",
+      "tts": {
+        "text": "Biten smälter lite.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-129",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p38",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Teet är hett, mörkt och sött när det går ner.",
+      "text_markdown": "Teet är hett, mörkt och sött när det går ner.",
+      "tts": {
+        "text": "Teet är hett, mörkt och sött när det går ner.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-130",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu kommer sötsakerna.",
+      "text_markdown": "Nu kommer sötsakerna.",
+      "tts": {
+        "text": "Nu kommer sötsakerna.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-131",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p39",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Persiska sötsaker är gamla, fylliga och små.",
+      "text_markdown": "Persiska sötsaker är gamla, fylliga och små.",
+      "tts": {
+        "text": "Persiska sötsaker är gamla, fylliga och små.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-132",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den äldsta är faloodeh.",
+      "text_markdown": "Den äldsta är faloodeh.",
+      "tts": {
+        "text": "Den äldsta är falode.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-133",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är tunna risnudlar frysta i rosenvattensirap, serverade med limejuice och pistage.",
+      "text_markdown": "Det är tunna risnudlar frysta i rosenvattensirap, serverade med limejuice och pistage.",
+      "tts": {
+        "text": "Det är tunna risnudlar frysta i rosenvattensirap, serverade med lajmjuice och pistage.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-134",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Persiska författare beskriver den från omkring fyra hundra år före Kristus.",
+      "text_markdown": "Persiska författare beskriver den från omkring fyra hundra år före Kristus.",
+      "tts": {
+        "text": "Persiska författare beskriver den från omkring fyra hundra år före Kristus.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-135",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det gör faloodeh till en av världens äldsta frysta desserter.",
+      "text_markdown": "Det gör faloodeh till en av världens äldsta frysta desserter.",
+      "tts": {
+        "text": "Det gör falode till en av världens äldsta frysta desserter.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-136",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p40",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Den är mer än två tusen år äldre än glass.",
+      "text_markdown": "Den är mer än två tusen år äldre än glass.",
+      "tts": {
+        "text": "Den är mer än två tusen år äldre än glass.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch05-137",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Andra klassiker är baklava från Tabriz, lättare än den turkiska sorten, med valnöt och rosenvatten.",
+      "text_markdown": "Andra klassiker är baklava från Tabriz, lättare än den turkiska sorten, med valnöt och rosenvatten.",
+      "tts": {
+        "text": "Andra klassiker är baklava från Tabriz, lättare än den turkiska sorten, med valnöt och rosenvatten.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-138",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Halva, en tät massa av sesam eller saffran.",
+      "text_markdown": "Halva, en tät massa av sesam eller saffran.",
+      "tts": {
+        "text": "Halva, en tät massa av sesam eller saffran.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-139",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Gaz från Esfahan, en mjuk nougat med pistage.",
+      "text_markdown": "Gaz från Esfahan, en mjuk nougat med pistage.",
+      "tts": {
+        "text": "Gass från Esfa han, en mjuk nougat med pistage.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-140",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Sohan, en spröd gyllene saffranskola.",
+      "text_markdown": "Sohan, en spröd gyllene saffranskola.",
+      "tts": {
+        "text": "Sohan, en spröd gyllene saffranskola.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-141",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p41",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Nokhodchi från Qom, en liten kikärtskaka.",
+      "text_markdown": "Nokhodchi från Qom, en liten kikärtskaka.",
+      "tts": {
+        "text": "Nokhodtji från Kom, en liten kikärtskaka.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch05-142",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Ett litet fat med sötsaker, en kopp te, ett långsamt samtal.",
+      "text_markdown": "Ett litet fat med sötsaker, en kopp te, ett långsamt samtal.",
+      "tts": {
+        "text": "Ett litet fat med sötsaker, en kopp te, ett långsamt samtal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch05-143",
+      "part": 0,
+      "chapter": 5,
+      "title": "Chapter 5 — Yogurt, Tea, and the Oldest Sweets",
+      "paragraph_id": "p42",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är en persisk eftermiddag.",
+      "text_markdown": "Det är en persisk eftermiddag.",
+      "tts": {
+        "text": "Det är en persisk eftermiddag.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-144",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p43",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 6: Vad Persien gav och vad Persien tog",
+      "text_markdown": "Kapitel 6: Vad Persien gav och vad Persien tog"
+    },
+    {
+      "id": "ch06-145",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien låg mitt i den gamla världen.",
+      "text_markdown": "Persien låg mitt i den gamla världen.",
+      "tts": {
+        "text": "Persien låg mitt i den gamla världen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-146",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Karavaner korsade det.",
+      "text_markdown": "Karavaner korsade det.",
+      "tts": {
+        "text": "Karavaner korsade det.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-147",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Imperier steg och föll där.",
+      "text_markdown": "Imperier steg och föll där.",
+      "tts": {
+        "text": "Imperier steg och föll där.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-148",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p44",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Mat färdades också genom det, åt båda håll.",
+      "text_markdown": "Mat färdades också genom det, åt båda håll.",
+      "tts": {
+        "text": "Mat färdades också genom det, åt båda håll.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-149",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Titta på orden.",
+      "text_markdown": "Titta på orden.",
+      "tts": {
+        "text": "Titta på orden.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-150",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Engelskan tog dussintals matord från persiskan.",
+      "text_markdown": "Engelskan tog dussintals matord från persiskan.",
+      "tts": {
+        "text": "Engelskan tog dussintals matord från persiskan.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-151",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Socker, godis, citron, apelsin, jasmin, syren, tulpan, kiosk, sorbet och paradis har alla persiskt ursprung.",
+      "text_markdown": "Socker, godis, citron, apelsin, jasmin, syren, tulpan, kiosk, sorbet och paradis har alla persiskt ursprung.",
+      "tts": {
+        "text": "Socker, godis, citron, apelsin, jasmin, syren, tulpan, kiosk, sorbet och paradis har alla persiskt ursprung.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-152",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p45",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Det gäller också ordet schack matt, från shah mat, kungen är hjälplös. Persien lade ord i munnen på halva världen.",
+      "text_markdown": "Det gäller också ordet schack matt, från shah mat, kungen är hjälplös. Persien lade ord i munnen på halva världen.",
+      "tts": {
+        "text": "Det gäller också ordet schack matt, från scha matt, kungen är hjälplös. Persien lade ord i munnen på halva världen.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-153",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persisk rislagning gick österut.",
+      "text_markdown": "Persisk rislagning gick österut.",
+      "tts": {
+        "text": "Persisk rislagning gick österut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-154",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mogulkejsarna i Indien älskade persisk mat och tog persiska kockar till sitt hov.",
+      "text_markdown": "Mogulkejsarna i Indien älskade persisk mat och tog persiska kockar till sitt hov.",
+      "tts": {
+        "text": "Mogulkejsarna i Indien älskade persisk mat och tog persiska kockar till sitt hov.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-155",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "De kockarna lagade biryani.",
+      "text_markdown": "De kockarna lagade biryani.",
+      "tts": {
+        "text": "De kockarna lagade birjani.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-156",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p46",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Pilaff, den långkorniga kryddade risrätten från Medelhavet till stäpperna i Centralasien, har sina rötter i persisk ristradition.",
+      "text_markdown": "Pilaff, den långkorniga kryddade risrätten från Medelhavet till stäpperna i Centralasien, har sina rötter i persisk ristradition.",
+      "tts": {
+        "text": "Pilaff, den långkorniga kryddade risrätten från Medelhavet till stäpperna i Centralasien, har sina rötter i persisk ristradition.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-157",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persiska frukter färdades västerut.",
+      "text_markdown": "Persiska frukter färdades västerut.",
+      "tts": {
+        "text": "Persiska frukter färdades västerut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-158",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Romarna odlade persikan i Italien eftersom de fick den från Persien.",
+      "text_markdown": "Romarna odlade persikan i Italien eftersom de fick den från Persien.",
+      "tts": {
+        "text": "Romarna odlade persikan i Italien eftersom de fick den från Persien.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-159",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Spenat nådde Europa genom Spanien, förd dit av handelsmän från den persiska världen.",
+      "text_markdown": "Spenat nådde Europa genom Spanien, förd dit av handelsmän från den persiska världen.",
+      "tts": {
+        "text": "Spenat nådde Europa genom Spanien, förd dit av handelsmän från den persiska världen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-160",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p47",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Tulpaner, symbolen för Nederländerna, odlades först i Persien och Turkiet innan de nådde Holland.",
+      "text_markdown": "Tulpaner, symbolen för Nederländerna, odlades först i Persien och Turkiet innan de nådde Holland.",
+      "tts": {
+        "text": "Tulpaner, symbolen för Nederländerna, odlades först i Persien och Turkiet innan de nådde Holland.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-161",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persien tog också emot saker.",
+      "text_markdown": "Persien tog också emot saker.",
+      "tts": {
+        "text": "Persien tog också emot saker.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-162",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Mongolerna, som invaderade under det trettonde århundradet, förde med sig en starkare smak för grillat och rostat kött.",
+      "text_markdown": "Mongolerna, som invaderade under det trettonde århundradet, förde med sig en starkare smak för grillat och rostat kött.",
+      "tts": {
+        "text": "Mongolerna, som invaderade under det trettonde århundradet, förde med sig en starkare smak för grillat och rostat kött.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-163",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Arabiskt jordbruk förde med sig sockerrör, citrus och ris från söder och öster.",
+      "text_markdown": "Arabiskt jordbruk förde med sig sockerrör, citrus och ris från söder och öster.",
+      "tts": {
+        "text": "Arabiskt jordbruk förde med sig sockerrör, citrus och ris från söder och öster.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch06-164",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p48",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Samovaren kom från norr, från Ryssland, under det artonde århundradet.",
+      "text_markdown": "Samovaren kom från norr, från Ryssland, under det artonde århundradet.",
+      "tts": {
+        "text": "Samovaren kom från norr, från Ryssland, under det artonde århundradet.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch06-165",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Den grekiske historikern Herodotos skrev för två tusen fem hundra år sedan att perser firade sina födelsedagar mer praktfullt än någon annan dag på året.",
+      "text_markdown": "Den grekiske historikern Herodotos skrev för två tusen fem hundra år sedan att perser firade sina födelsedagar mer praktfullt än någon annan dag på året.",
+      "tts": {
+        "text": "Den grekiske historikern Herodotos skrev för två tusen fem hundra år sedan att perser firade sina födelsedagar mer praktfullt än någon annan dag på året.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-166",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den dagen, skrev han, dukas bordet rikligare än vanligt.",
+      "text_markdown": "Den dagen, skrev han, dukas bordet rikligare än vanligt.",
+      "tts": {
+        "text": "Den dagen, skrev han, dukas bordet rikligare än vanligt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch06-167",
+      "part": 0,
+      "chapter": 6,
+      "title": "Chapter 6 — What Persia Gave, What Persia Took",
+      "paragraph_id": "p49",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vissa saker har inte förändrats.",
+      "text_markdown": "Vissa saker har inte förändrats.",
+      "tts": {
+        "text": "Vissa saker har inte förändrats.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-168",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p50",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 2,
+      "text": "Kapitel 7: Vid det persiska bordet",
+      "text_markdown": "Kapitel 7: Vid det persiska bordet"
+    },
+    {
+      "id": "ch07-169",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p51",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nu sätter vi oss.",
+      "text_markdown": "Nu sätter vi oss.",
+      "tts": {
+        "text": "Nu sätter vi oss.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-170",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det persiska året börjar vid vårdagjämningen, omkring den tjugoförsta mars.",
+      "text_markdown": "Det persiska året börjar vid vårdagjämningen, omkring den tjugoförsta mars.",
+      "tts": {
+        "text": "Det persiska året börjar vid vårdagjämningen, omkring den tjugoförsta mars.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-171",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Högtiden kallas Nowruz, den nya dagen.",
+      "text_markdown": "Högtiden kallas Nowruz, den nya dagen.",
+      "tts": {
+        "text": "Högtiden kallas Noruz, den nya dagen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-172",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p52",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Det är årets viktigaste högtid.",
+      "text_markdown": "Det är årets viktigaste högtid.",
+      "tts": {
+        "text": "Det är årets viktigaste högtid.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-173",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Varje familj dukar ett särskilt bord som kallas haft-sin.",
+      "text_markdown": "Varje familj dukar ett särskilt bord som kallas haft-sin.",
+      "tts": {
+        "text": "Varje familj dukar ett särskilt bord som kallas haft sin.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-174",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Haft betyder sju.",
+      "text_markdown": "Haft betyder sju.",
+      "tts": {
+        "text": "Haft betyder sju.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-175",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Sin är bokstaven S. På bordet finns sju saker som börjar med S på persiska.",
+      "text_markdown": "Sin är bokstaven S. På bordet finns sju saker som börjar med S på persiska.",
+      "tts": {
+        "text": "Sin är bokstaven S. På bordet finns sju saker som börjar med S på persiska.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-176",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Där finns sib, ett äpple.",
+      "text_markdown": "Där finns sib, ett äpple.",
+      "tts": {
+        "text": "Där finns sib, ett äpple.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-177",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Sekkeh, ett mynt.",
+      "text_markdown": "Sekkeh, ett mynt.",
+      "tts": {
+        "text": "Sekkeh, ett mynt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-178",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Sonbol, en hyacint.",
+      "text_markdown": "Sonbol, en hyacint.",
+      "tts": {
+        "text": "Sonbol, en hyacint.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-179",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 6,
+      "block_type": "text",
+      "text": "Samanu, en söt vetepudding.",
+      "text_markdown": "Samanu, en söt vetepudding.",
+      "tts": {
+        "text": "Samanu, en söt vetepudding.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-180",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 7,
+      "block_type": "text",
+      "text": "Senjed, den torkade frukten från silverbusken.",
+      "text_markdown": "Senjed, den torkade frukten från silverbusken.",
+      "tts": {
+        "text": "Senjed, den torkade frukten från silverbusken.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-181",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 8,
+      "block_type": "text",
+      "text": "Somagh, sumak.",
+      "text_markdown": "Somagh, sumak.",
+      "tts": {
+        "text": "Somag, sumak.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-182",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 9,
+      "block_type": "text",
+      "text": "Serkeh, vinäger.",
+      "text_markdown": "Serkeh, vinäger.",
+      "tts": {
+        "text": "Serkeh, vinäger.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-183",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p53",
+      "sentence_index": 10,
+      "block_type": "text",
+      "text": "Var och en står för något, hälsa, rikedom, skönhet, tålamod, kärlek, den stigande solen, tidens gång.",
+      "text_markdown": "Var och en står för något, hälsa, rikedom, skönhet, tålamod, kärlek, den stigande solen, tidens gång.",
+      "tts": {
+        "text": "Var och en står för något, hälsa, rikedom, skönhet, tålamod, kärlek, den stigande solen, tidens gång.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-184",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Nyårsmåltiden är sabzi polo med mahi.",
+      "text_markdown": "Nyårsmåltiden är sabzi polo med mahi.",
+      "tts": {
+        "text": "Nyårsmåltiden är sabsi polo med mahi.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-185",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det är ris, djupt grönt av hackade färska örter, serverat med vit fisk.",
+      "text_markdown": "Det är ris, djupt grönt av hackade färska örter, serverat med vit fisk.",
+      "tts": {
+        "text": "Det är ris, djupt grönt av hackade färska örter, serverat med vit fisk.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-186",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p54",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Vår på en tallrik.",
+      "text_markdown": "Vår på en tallrik.",
+      "tts": {
+        "text": "Vår på en tallrik.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-187",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En annan klassiker är ash reshteh, en tjock soppa med bönor, örter, stekt lök, kashk och nudlar.",
+      "text_markdown": "En annan klassiker är ash reshteh, en tjock soppa med bönor, örter, stekt lök, kashk och nudlar.",
+      "tts": {
+        "text": "En annan klassiker är ash reshte, en tjock soppa med bönor, örter, stekt lök, kask och nudlar.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-188",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Perser säger att du ska äta den före ett svårt beslut.",
+      "text_markdown": "Perser säger att du ska äta den före ett svårt beslut.",
+      "tts": {
+        "text": "Perser säger att du ska äta den före ett svårt beslut.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-189",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p55",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Nudlarna, säger man, reder ut ödets trådar.",
+      "text_markdown": "Nudlarna, säger man, reder ut ödets trådar.",
+      "tts": {
+        "text": "Nudlarna, säger man, reder ut ödets trådar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-190",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tehuset är också en persisk uppfinning.",
+      "text_markdown": "Tehuset är också en persisk uppfinning.",
+      "tts": {
+        "text": "Tehuset är också en persisk uppfinning.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-191",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Det kallas qahveh-khaneh, bokstavligen kaffehuset, även om drycken nu är te.",
+      "text_markdown": "Det kallas qahveh-khaneh, bokstavligen kaffehuset, även om drycken nu är te.",
+      "tts": {
+        "text": "Det kallas kahve khane, bokstavligen kaffehuset, även om drycken nu är te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-192",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "I fem hundra år har män och kvinnor samlats där för att spela backgammon, lyssna på poesi och gräla om världen.",
+      "text_markdown": "I fem hundra år har män och kvinnor samlats där för att spela backgammon, lyssna på poesi och gräla om världen.",
+      "tts": {
+        "text": "I fem hundra år har män och kvinnor samlats där för att spela backgammon, lyssna på poesi och gräla om världen.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-193",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p56",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Många stora persiska historier berättades först över ett ångande glas te.",
+      "text_markdown": "Många stora persiska historier berättades först över ett ångande glas te.",
+      "tts": {
+        "text": "Många stora persiska historier berättades först över ett ångande glas te.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-194",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "En berömd persisk läkare, Avicenna, som levde för tusen år sedan, lärde att all mat är antingen varm eller kall.",
+      "text_markdown": "En berömd persisk läkare, Avicenna, som levde för tusen år sedan, lärde att all mat är antingen varm eller kall.",
+      "tts": {
+        "text": "En berömd persisk läkare, Avisenna, som levde för tusen år sedan, lärde att all mat är antingen varm eller kall.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-195",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Saffran, valnötter och lamm är varma.",
+      "text_markdown": "Saffran, valnötter och lamm är varma.",
+      "tts": {
+        "text": "Saffran, valnötter och lamm är varma.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-196",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Yoghurt, gurka och vattenmelon är kalla.",
+      "text_markdown": "Yoghurt, gurka och vattenmelon är kalla.",
+      "tts": {
+        "text": "Yoghurt, gurka och vattenmelon är kalla.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 1.9
+      }
+    },
+    {
+      "id": "ch07-197",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "En bra måltid balanserar dem.",
+      "text_markdown": "En bra måltid balanserar dem.",
+      "tts": {
+        "text": "En bra måltid balanserar dem.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-198",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p57",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "I många persiska hem lever den tanken fortfarande vid lunch.",
+      "text_markdown": "I många persiska hem lever den tanken fortfarande vid lunch.",
+      "tts": {
+        "text": "I många persiska hem lever den tanken fortfarande vid lunch.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-199",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Persisk mat är tålmodig.",
+      "text_markdown": "Persisk mat är tålmodig.",
+      "tts": {
+        "text": "Persisk mat är tålmodig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-200",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Den är generös.",
+      "text_markdown": "Den är generös.",
+      "tts": {
+        "text": "Den är generös.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-201",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Den är gammal.",
+      "text_markdown": "Den är gammal.",
+      "tts": {
+        "text": "Den är gammal.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-202",
+      "part": 0,
+      "chapter": 7,
+      "title": "Chapter 7 — At the Persian Table",
+      "paragraph_id": "p58",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Och den lagas fortfarande varje dag på miljontals spisar.",
+      "text_markdown": "Och den lagas fortfarande varje dag på miljontals spisar.",
+      "tts": {
+        "text": "Och den lagas fortfarande varje dag på miljontals spisar.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-203",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p59",
+      "sentence_index": 0,
+      "block_type": "heading",
+      "heading_level": 1,
+      "text": "Hej då",
+      "text_markdown": "Hej då"
+    },
+    {
+      "id": "ch07-204",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p60",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Det var slutet på vår korta tur.",
+      "text_markdown": "Det var slutet på vår korta tur.",
+      "tts": {
+        "text": "Det var slutet på vår korta tur.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-205",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jag hoppas att du lärde dig något.",
+      "text_markdown": "Jag hoppas att du lärde dig något.",
+      "tts": {
+        "text": "Jag hoppas att du lärde dig något.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-206",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Jag hoppas att något på sidan gjorde dig hungrig.",
+      "text_markdown": "Jag hoppas att något på sidan gjorde dig hungrig.",
+      "tts": {
+        "text": "Jag hoppas att något på sidan gjorde dig hungrig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-207",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Saffran och ris.",
+      "text_markdown": "Saffran och ris.",
+      "tts": {
+        "text": "Saffran och ris.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-208",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Granatäpple och valnöt.",
+      "text_markdown": "Granatäpple och valnöt.",
+      "tts": {
+        "text": "Granatäpple och valnöt.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-209",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p61",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "En liten sötsak på ett litet fat.",
+      "text_markdown": "En liten sötsak på ett litet fat.",
+      "tts": {
+        "text": "En liten sötsak på ett litet fat.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 1.8
+      }
+    },
+    {
+      "id": "ch07-210",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Om du kan, hitta en persisk restaurang nära dig.",
+      "text_markdown": "Om du kan, hitta en persisk restaurang nära dig.",
+      "tts": {
+        "text": "Om du kan, hitta en persisk restaurang nära dig.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-211",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Eller öppna en persisk kokbok.",
+      "text_markdown": "Eller öppna en persisk kokbok.",
+      "tts": {
+        "text": "Eller öppna en persisk kokbok.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-212",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Prova en gryta.",
+      "text_markdown": "Prova en gryta.",
+      "tts": {
+        "text": "Prova en gryta.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-213",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 3,
+      "block_type": "text",
+      "text": "Prova en kopp te.",
+      "text_markdown": "Prova en kopp te.",
+      "tts": {
+        "text": "Prova en kopp te.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-214",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 4,
+      "block_type": "text",
+      "text": "Maten har väntat i tusentals år.",
+      "text_markdown": "Maten har väntat i tusentals år.",
+      "tts": {
+        "text": "Maten har väntat i tusentals år.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-215",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p62",
+      "sentence_index": 5,
+      "block_type": "text",
+      "text": "Den kan vänta på dig också.",
+      "text_markdown": "Den kan vänta på dig också.",
+      "tts": {
+        "text": "Den kan vänta på dig också.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-216",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Tack för att du lyssnade.",
+      "text_markdown": "Tack för att du lyssnade.",
+      "tts": {
+        "text": "Tack för att du lyssnade.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-217",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Laga något.",
+      "text_markdown": "Laga något.",
+      "tts": {
+        "text": "Laga något.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-218",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p63",
+      "sentence_index": 2,
+      "block_type": "text",
+      "text": "Ät med människor.",
+      "text_markdown": "Ät med människor.",
+      "tts": {
+        "text": "Ät med människor.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-219",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 0,
+      "block_type": "text",
+      "text": "Jag heter Kym.",
+      "text_markdown": "Jag heter Kym.",
+      "tts": {
+        "text": "Jag heter Kim.",
+        "pause_after_ms": 500,
+        "repetition_penalty": 2.0
+      }
+    },
+    {
+      "id": "ch07-220",
+      "part": 0,
+      "chapter": 7,
+      "title": "Goodbye",
+      "paragraph_id": "p64",
+      "sentence_index": 1,
+      "block_type": "text",
+      "text": "Hej då.",
+      "text_markdown": "Hej då.",
+      "tts": {
+        "text": "Hej då.",
+        "pause_after_ms": 800,
+        "repetition_penalty": 2.0
+      }
+    }
+  ],
+  "language": "sv"
+}

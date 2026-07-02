@@ -1,0 +1,2138 @@
+{
+  "version": "2.0.0",
+  "book_id": "book_ai_this_week_2026_06_28",
+  "language": "ne",
+  "total_segments": 142,
+  "segments": [
+    {
+      "id": "ch00-001",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "एआईको यो साताको कार्यक्रममा तपाईंलाई न्यानो स्वागत गर्दछु।",
+      "text_markdown": "एआईको यो साताको कार्यक्रममा तपाईंलाई न्यानो स्वागत गर्दछु।",
+      "title": "",
+      "tts": {
+        "text": "ए आईको यो साताको कार्यक्रममा तपाईंलाई न्यानो स्वागत गर्दछु।",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-002",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "म Vindy हुँ।",
+      "text_markdown": "म Vindy हुँ।",
+      "title": "",
+      "tts": {
+        "text": "म विन्डी हुँ।",
+        "pause_after_ms": 237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-003",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मसँगै, हमेशाझैँ, Ron छन्।",
+      "text_markdown": "मसँगै, हमेशाझैँ, Ron छन्।",
+      "title": "",
+      "tts": {
+        "text": "मसँगै, हमेशाझैँ, Ron छन्।",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-004",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यहाँ हुन पाउँदा खुसी लाग्यो, Vindy।",
+      "text_markdown": "यहाँ हुन पाउँदा खुसी लाग्यो, Vindy।",
+      "title": "",
+      "tts": {
+        "text": "यहाँ हुन पाउँदा खुसी लाग्यो, Vindy।",
+        "pause_after_ms": 587,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-005",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आज, जुन 28, 2026, आइतबार रहेछ।",
+      "text_markdown": "आज, जुन 28, 2026, आइतबार रहेछ।",
+      "title": "",
+      "tts": {
+        "text": "आज, जुन अट्ठाइस, दुई हजार छब्बीस, आइतबार रहेछ।",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-006",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अघिल्लो हप्ता हामी विद्युत् गृह र वित्तीय विवरणसम्मै पुगेका थियौँ।",
+      "text_markdown": "अघिल्लो हप्ता हामी विद्युत् गृह र वित्तीय विवरणसम्मै पुगेका थियौँ।",
+      "title": "",
+      "tts": {
+        "text": "अघिल्लो हप्ता हामी विद्युत् गृह र वित्तीय विवरणसम्मै पुगेका थियौँ।",
+        "pause_after_ms": 283,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-007",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यस हप्ता हामी वर्कबेन्चमा फर्किन्छौँ, र एउटा यस्तो प्रश्नमा जुन अहिले सम्पूर्ण क्षेत्रको तहमुनि बगिरहेको छ।",
+      "text_markdown": "यस हप्ता हामी वर्कबेन्चमा फर्किन्छौँ, र एउटा यस्तो प्रश्नमा जुन अहिले सम्पूर्ण क्षेत्रको तहमुनि बगिरहेको छ।",
+      "title": "",
+      "tts": {
+        "text": "यस हप्ता हामी वर्कबेन्चमा फर्किन्छौँ, र एउटा यस्तो प्रश्नमा जुन अहिले सम्पूर्ण क्षेत्रको तहमुनि बगिरहेको छ।",
+        "pause_after_ms": 229,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-008",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "जब कुनै मोडेलले ठूलो संख्या पोस्ट गर्छ, वा ठूलो सिप देखाउँछ — के त्यो क्षमता वास्तविक हो, र के त्यो साँच्चिकै तपाईंको हो?",
+      "text_markdown": "जब कुनै मोडेलले ठूलो संख्या पोस्ट गर्छ, वा ठूलो सिप देखाउँछ — के त्यो क्षमता वास्तविक हो, र के त्यो साँच्चिकै तपाईंको हो?",
+      "title": "",
+      "tts": {
+        "text": "जब कुनै मोडेलले ठूलो संख्या पोस्ट गर्छ, वा ठूलो सिप देखाउँछ — के त्यो क्षमता वास्तविक हो, र के त्यो साँच्चिकै तपाईंको हो?",
+        "pause_after_ms": 285,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-009",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "फोनमा चल्ने 230 मिलियन प्यारामिटरको मोडेल, र Qwen ल्याबबाट आएको एउटा खुला एजेन्ट वर्ल्ड-मोडेल पनि आउँदैछ।",
+      "text_markdown": "फोनमा चल्ने 230 मिलियन प्यारामिटरको मोडेल, र Qwen ल्याबबाट आएको एउटा खुला एजेन्ट वर्ल्ड-मोडेल पनि आउँदैछ।",
+      "title": "",
+      "tts": {
+        "text": "फोनमा चल्ने दुई सय तीस मिलियन प्यारामिटरको मोडेल, र क्वेन ल्याबबाट आएको एउटा खुला एजेन्ट वर्ल्ड मोडेल पनि आउँदैछ।",
+        "pause_after_ms": 218,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-010",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसपछि एउटा अध्ययन आयो, जसले चुपचाप एउटा फ्रन्टियर मोडेलको कोडिङ स्कोर 14 बुँदाले कम बनाइदियो।",
+      "text_markdown": "त्यसपछि एउटा अध्ययन आयो, जसले चुपचाप एउटा फ्रन्टियर मोडेलको कोडिङ स्कोर 14 बुँदाले कम बनाइदियो।",
+      "title": "",
+      "tts": {
+        "text": "त्यसपछि एउटा अध्ययन आयो, जसले चुपचाप एउटा फ्रन्टियर मोडेलको कोडिङ स्कोर चौध बुँदाले कम बनाइदियो।",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-011",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसपछि हेडलाइनहरू — एउटा सरकारद्वारा-नियन्त्रित मोडेल प्रिभ्यू, र एउटा कस्टम चिप जुन आंशिक रूपमा मोडेलहरूले नै डिजाइन गरेका हुन्।",
+      "text_markdown": "त्यसपछि हेडलाइनहरू — एउटा सरकारद्वारा-नियन्त्रित मोडेल प्रिभ्यू, र एउटा कस्टम चिप जुन आंशिक रूपमा मोडेलहरूले नै डिजाइन गरेका हुन्।",
+      "title": "",
+      "tts": {
+        "text": "त्यसपछि हेडलाइनहरू — एउटा सरकारद्वारा नियन्त्रित मोडेल प्रिभ्यू, र एउटा कस्टम चिप जुन आंशिक रूपमा मोडेलहरूले नै डिजाइन गरेका हुन्।",
+        "pause_after_ms": 282,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-012",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र शीर्ष कथा, जहाँ Anthropic ले Alibaba माथि औद्योगिक स्तरमा Claude को नकल गरेको आरोप लगाउँछ।",
+      "text_markdown": "र शीर्ष कथा, जहाँ Anthropic ले Alibaba माथि औद्योगिक स्तरमा Claude को नकल गरेको आरोप लगाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "र शीर्ष कथा, जहाँ Anthropic ले Alibaba माथि औद्योगिक स्तरमा Claude को नकल गरेको आरोप लगाउँछ।",
+        "pause_after_ms": 293,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-013",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, सुरु गरौँ open-weights को दुनियाँबाट, जहाँ जानाजानी यस हप्ताको समाचार सानो राखियो।",
+      "text_markdown": "Ron, सुरु गरौँ open-weights को दुनियाँबाट, जहाँ जानाजानी यस हप्ताको समाचार सानो राखियो।",
+      "title": "",
+      "tts": {
+        "text": "रोन, सुरु गरौँ ओपन वेट्सको दुनियाँबाट, जहाँ जानाजानी यस हप्ताको समाचार सानो राखियो।",
+        "pause_after_ms": 523,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-014",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हिजो, Liquid AI ले LFM 2.5 रिलिज गर्यो, र हेडलाइन संख्या यो कति सानो छ भन्ने हो।",
+      "text_markdown": "हिजो, Liquid AI ले LFM 2.5 रिलिज गर्यो, र हेडलाइन संख्या यो कति सानो छ भन्ने हो।",
+      "title": "",
+      "tts": {
+        "text": "हिजो, Liquid AI ले एल एफ एम दुई दशमलव पाँच रिलिज गर्यो, र हेडलाइन संख्या यो कति सानो छ भन्ने हो।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-015",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "दुई सय तीस मिलियन parameter — उनीहरूले पठाएको सबैभन्दा सानो मोडेल।",
+      "text_markdown": "दुई सय तीस मिलियन parameter — उनीहरूले पठाएको सबैभन्दा सानो मोडेल।",
+      "title": "",
+      "tts": {
+        "text": "दुई सय तीस मिलियन parameter — उनीहरूले पठाएको सबैभन्दा सानो मोडेल।",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-016",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "दुई सय तीस मिलियन — हामीलाई त्यो स्केलको अनुभव दिनुस्।",
+      "text_markdown": "दुई सय तीस मिलियन — हामीलाई त्यो स्केलको अनुभव दिनुस्।",
+      "title": "",
+      "tts": {
+        "text": "दुई सय तीस मिलियन — हामीलाई त्यो स्केलको अनुभव दिनुस्।",
+        "pause_after_ms": 568,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-017",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यति सानो कि मोडेलका भारहरू 400 मेगाबाइटभन्दा कम छन्, त्यसैले यो फोनमै अट्छ र केही खाली ठाउँ पनि रहिरहन्छ।",
+      "text_markdown": "यति सानो कि मोडेलका भारहरू 400 मेगाबाइटभन्दा कम छन्, त्यसैले यो फोनमै अट्छ र केही खाली ठाउँ पनि रहिरहन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यति सानो कि मोडेलका भारहरू चार सय मेगाबाइटभन्दा कम छन्, त्यसैले यो फोनमै अट्छ र केही खाली ठाउँ पनि रहिरहन्छ।",
+        "pause_after_ms": 227,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-018",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Liquid का अनुसार, यो Galaxy S25 Ultra मा प्रति सेकेन्ड लगभग 213 टोकन, र Raspberry Pi 5 मा प्रति सेकेन्ड लगभग 42 टोकनको गति देखाउँछ।",
+      "text_markdown": "Liquid का अनुसार, यो Galaxy S25 Ultra मा प्रति सेकेन्ड लगभग 213 टोकन, र Raspberry Pi 5 मा प्रति सेकेन्ड लगभग 42 टोकनको गति देखाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "Liquid का अनुसार, यो Galaxy S पच्चीस Ultra मा प्रति सेकेन्ड लगभग दुई सय तेह्र टोकन, र Raspberry Pi पाँच मा प्रति सेकेन्ड लगभग बयालीस टोकनको गति देखाउँछ।",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-019",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए यो साँच्चिकै एउटा on-device मोडेल हो।",
+      "text_markdown": "त्यसोभए यो साँच्चिकै एउटा on-device मोडेल हो।",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए यो साँच्चिकै एउटा on device मोडेल हो।",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-020",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पूर्णतया — लुपमा कुनै सर्भर छैन, कुनै API key छैन, मोडेल उपकरणमै बस्छ।",
+      "text_markdown": "पूर्णतया — लुपमा कुनै सर्भर छैन, कुनै API key छैन, मोडेल उपकरणमै बस्छ।",
+      "title": "",
+      "tts": {
+        "text": "पूर्णतया — लुपमा कुनै सर्भर छैन, कुनै API key छैन, मोडेल उपकरणमै बस्छ।",
+        "pause_after_ms": 203,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-021",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र open-source समुदायले सबैभन्दा बढी चासो राखेको कुरा भनेको, यो llama.cpp, MLX, vLLM, SGLang, र ONNX मा पहिलो दिनदेखि नै सपोर्टसहित उपलब्ध भयो।",
+      "text_markdown": "र open-source समुदायले सबैभन्दा बढी चासो राखेको कुरा भनेको, यो llama.cpp, MLX, vLLM, SGLang, र ONNX मा पहिलो दिनदेखि नै सपोर्टसहित उपलब्ध भयो।",
+      "title": "",
+      "tts": {
+        "text": "र open source समुदायले सबैभन्दा बढी चासो राखेको कुरा भनेको, यो लामा सी पी पी, एम एल एक्स, भी एल एल एम, एस जी ल्याङ, र ओ एन एन एक्स मा पहिलो दिनदेखि नै सपोर्टसहित उपलब्ध भयो।",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-022",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो पहिलो दिनको सहयोग किन यति महत्त्वपूर्ण छ भनेर बुझाइदिनुस्।",
+      "text_markdown": "त्यो पहिलो दिनको सहयोग किन यति महत्त्वपूर्ण छ भनेर बुझाइदिनुस्।",
+      "title": "",
+      "tts": {
+        "text": "त्यो पहिलो दिनको सहयोग किन यति महत्त्वपूर्ण छ भनेर बुझाइदिनुस्।",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-023",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने जुन मोडेल तपाईं वास्तवमा लोड गर्न सक्नुहुन्न त्यो प्रेस विज्ञप्ति हो, रिलिज होइन।",
+      "text_markdown": "किनभने जुन मोडेल तपाईं वास्तवमा लोड गर्न सक्नुहुन्न त्यो प्रेस विज्ञप्ति हो, रिलिज होइन।",
+      "title": "",
+      "tts": {
+        "text": "किनभने जुन मोडेल तपाईं वास्तवमा लोड गर्न सक्नुहुन्न त्यो प्रेस विज्ञप्ति हो, रिलिज होइन।",
+        "pause_after_ms": 287,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-024",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पहिलो दिन नै हरेक प्रमुख runtime मा शिप गर्नुको मतलब ल्यापटपमा काम गर्ने एउटा शौकिया व्यक्ति र सर्भरमा काम गर्ने एउटा टिम दुवैले त्यही दिउँसो चलाउन सक्छन्।",
+      "text_markdown": "पहिलो दिन नै हरेक प्रमुख runtime मा शिप गर्नुको मतलब ल्यापटपमा काम गर्ने एउटा शौकिया व्यक्ति र सर्भरमा काम गर्ने एउटा टिम दुवैले त्यही दिउँसो चलाउन सक्छन्।",
+      "title": "",
+      "tts": {
+        "text": "पहिलो दिन नै हरेक प्रमुख runtime मा शिप गर्नुको मतलब ल्यापटपमा काम गर्ने एउटा शौकिया व्यक्ति र सर्भरमा काम गर्ने एउटा टिम दुवैले त्यही दिउँसो चलाउन सक्छन्।",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-025",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र यति सानो मोडेल वास्तवमा के कामको लागि राम्रो छ?",
+      "text_markdown": "र यति सानो मोडेल वास्तवमा के कामको लागि राम्रो छ?",
+      "title": "",
+      "tts": {
+        "text": "र यति सानो मोडेल वास्तवमा के कामको लागि राम्रो छ?",
+        "pause_after_ms": 301,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-026",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो खुला-अन्तको च्याटका लागि होइन, बरु instruction-following र पाठबाट संरचित फिल्डहरू निकाल्ने जस्ता साँघुरा, छिटो कामहरूका लागि बनाइएको हो।",
+      "text_markdown": "यो खुला-अन्तको च्याटका लागि होइन, बरु instruction-following र पाठबाट संरचित फिल्डहरू निकाल्ने जस्ता साँघुरा, छिटो कामहरूका लागि बनाइएको हो।",
+      "title": "",
+      "tts": {
+        "text": "यो खुला अन्तको च्याटका लागि होइन, बरु instruction following र पाठबाट संरचित फिल्डहरू निकाल्ने जस्ता साँघुरा, छिटो कामहरूका लागि बनाइएको हो।",
+        "pause_after_ms": 235,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-027",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Liquid दाबी गर्छ कि यो ठ्याक्कै तिनै कार्यहरूमा आठ सय मिलियनको Qwen 3.5 र एक बिलियनको Gemma 3 लाई पछि पार्छ।",
+      "text_markdown": "Liquid दाबी गर्छ कि यो ठ्याक्कै तिनै कार्यहरूमा आठ सय मिलियनको Qwen 3.5 र एक बिलियनको Gemma 3 लाई पछि पार्छ।",
+      "title": "",
+      "tts": {
+        "text": "Liquid दाबी गर्छ कि यो ठ्याक्कै तिनै कार्यहरूमा आठ सय मिलियनको Qwen तीन दशमलव पाँच र एक बिलियनको Gemma तीनलाई पछि पार्छ।",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-028",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "वास्तुकलाबारे छोटो टिप्पणी गर्नुहोस्।",
+      "text_markdown": "वास्तुकलाबारे छोटो टिप्पणी गर्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "वास्तुकलाबारे छोटो टिप्पणी गर्नुहोस्।",
+        "pause_after_ms": 510,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-029",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो hybrid हो — अधिकांश layer हरू Liquid ले डिजाइन गरेको gated convolution हुन्, जसमा केही attention layer हरू मिसाइएका छन्।",
+      "text_markdown": "यो hybrid हो — अधिकांश layer हरू Liquid ले डिजाइन गरेको gated convolution हुन्, जसमा केही attention layer हरू मिसाइएका छन्।",
+      "title": "",
+      "tts": {
+        "text": "यो hybrid हो — अधिकांश layer हरू Liquid ले डिजाइन गरेको gated convolution हुन्, जसमा केही attention layer हरू मिसाइएका छन्।",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-030",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यही कुराले यसलाई graphics card नभएको उपकरणमा पनि छिटो र सस्तो राख्छ।",
+      "text_markdown": "यही कुराले यसलाई graphics card नभएको उपकरणमा पनि छिटो र सस्तो राख्छ।",
+      "title": "",
+      "tts": {
+        "text": "यही कुराले यसलाई graphics card नभएको उपकरणमा पनि छिटो र सस्तो राख्छ।",
+        "pause_after_ms": 557,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-031",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब, यस हप्ताको अर्को खुला रिलिज ठूलो र अनौठो रह्यो।",
+      "text_markdown": "अब, यस हप्ताको अर्को खुला रिलिज ठूलो र अनौठो रह्यो।",
+      "title": "",
+      "tts": {
+        "text": "अब, यस हप्ताको अर्को खुला रिलिज ठूलो र अनौठो रह्यो।",
+        "pause_after_ms": 595,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-032",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Alibaba को Qwen टिमले Qwen AgentWorld रिलिज गर्यो, र यो chatbot होइन, agent चलाउने platform हो भनेर बुझ्नुहोस्।",
+      "text_markdown": "Alibaba को Qwen टिमले Qwen AgentWorld रिलिज गर्यो, र यो chatbot होइन, agent चलाउने platform हो भनेर बुझ्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "अलिबाबाको क्यूवेन टिमले क्यूवेन एजेन्टवर्ल्ड रिलिज गर्यो, र यो च्याटबट होइन, एजेन्ट चलाउने प्लेटफर्म हो भनेर बुझ्नुहोस्।",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-033",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरू यसलाई language world-model भन्छन् — जम्मा पैँतीस बिलियन parameter, तर एक पटकमा तीन बिलियन मात्र सक्रिय।",
+      "text_markdown": "उनीहरू यसलाई language world-model भन्छन् — जम्मा पैँतीस बिलियन parameter, तर एक पटकमा तीन बिलियन मात्र सक्रिय।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरू यसलाई language world model भन्छन् — जम्मा पैँतीस बिलियन parameter, तर एक पटकमा तीन बिलियन मात्र सक्रिय।",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-034",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "‘वर्ल्ड-मोडेल’ भन्ने शब्द हाम्रो लागि खोलिदिनुस्।",
+      "text_markdown": "‘वर्ल्ड-मोडेल’ भन्ने शब्द हाम्रो लागि खोलिदिनुस्।",
+      "title": "",
+      "tts": {
+        "text": "वर्ल्ड मोडेल भन्ने शब्द हाम्रो लागि खोलिदिनुस्।",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-035",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "प्रश्नको जवाफ दिनुको सट्टा, यसले पाठमा एउटा वातावरण simulate गर्छ, ताकि एउटा agent ले कुनै कार्य गर्न सकोस् र मोडेलले अर्को के हुन्छ भनेर वर्णन गरोस्।",
+      "text_markdown": "प्रश्नको जवाफ दिनुको सट्टा, यसले पाठमा एउटा वातावरण simulate गर्छ, ताकि एउटा agent ले कुनै कार्य गर्न सकोस् र मोडेलले अर्को के हुन्छ भनेर वर्णन गरोस्।",
+      "title": "",
+      "tts": {
+        "text": "प्रश्नको जवाफ दिनुको सट्टा, यसले पाठमा एउटा वातावरण simulate गर्छ, ताकि एउटा agent ले कुनै कार्य गर्न सकोस् र मोडेलले अर्को के हुन्छ भनेर वर्णन गरोस्।",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-036",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईं यसलाई अन्य agent हरूलाई तालिम दिन प्रयोग गर्नुहुन्छ — यसले दुनियाँको भूमिका खेल्छ ताकि agent त्यसमा अभ्यास गर्न सकोस्।",
+      "text_markdown": "तपाईं यसलाई अन्य agent हरूलाई तालिम दिन प्रयोग गर्नुहुन्छ — यसले दुनियाँको भूमिका खेल्छ ताकि agent त्यसमा अभ्यास गर्न सकोस्।",
+      "title": "",
+      "tts": {
+        "text": "तपाईं यसलाई अन्य agent हरूलाई तालिम दिन प्रयोग गर्नुहुन्छ — यसले दुनियाँको भूमिका खेल्छ ताकि agent त्यसमा अभ्यास गर्न सकोस्।",
+        "pause_after_ms": 529,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-037",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र त्यहाँको मुख्य शीर्षक चाहिँ अनुमतिपत्रमा केन्द्रित थियो।",
+      "text_markdown": "र त्यहाँको मुख्य शीर्षक चाहिँ अनुमतिपत्रमा केन्द्रित थियो।",
+      "title": "",
+      "tts": {
+        "text": "र त्यहाँको मुख्य शीर्षक चाहिँ अनुमतिपत्रमा केन्द्रित थियो।",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-038",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Apache 2.0, Hugging Face मा weights, व्यावसायिक प्रयोग अनुमति — र उनीहरूले जसको विरुद्ध तालिम दिए त्यो benchmark पनि साथमै आयो।",
+      "text_markdown": "Apache 2.0, Hugging Face मा weights, व्यावसायिक प्रयोग अनुमति — र उनीहरूले जसको विरुद्ध तालिम दिए त्यो benchmark पनि साथमै आयो।",
+      "title": "",
+      "tts": {
+        "text": "Apache दुई दशमलव शून्य, Hugging Face मा weights, व्यावसायिक प्रयोग अनुमति — र उनीहरूले जसको विरुद्ध तालिम दिए त्यो benchmark पनि साथमै आयो।",
+        "pause_after_ms": 296,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-039",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "एक दिन नबित्दै quantized build हरू आए जुन तपाईं स्थानीय रूपमा चलाउन सक्नुहुन्थ्यो।",
+      "text_markdown": "एक दिन नबित्दै quantized build हरू आए जुन तपाईं स्थानीय रूपमा चलाउन सक्नुहुन्थ्यो।",
+      "title": "",
+      "tts": {
+        "text": "एक दिन नबित्दै quantized build हरू आए जुन तपाईं स्थानीय रूपमा चलाउन सक्नुहुन्थ्यो।",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-040",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब त्यसको विपरीत गएको एउटा रिलिजसँग तुलना गर्नुस्।",
+      "text_markdown": "अब त्यसको विपरीत गएको एउटा रिलिजसँग तुलना गर्नुस्।",
+      "title": "",
+      "tts": {
+        "text": "अब त्यसको विपरीत गएको एउटा रिलिजसँग तुलना गर्नुस्।",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-041",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सोमबार, Sakana AI ले Fugu सार्वजनिक गर्‍यो, र यही Fugu यस हप्ताको anti-open कथा बनेको देखिन्छ।",
+      "text_markdown": "सोमबार, Sakana AI ले Fugu सार्वजनिक गर्‍यो, र यही Fugu यस हप्ताको anti-open कथा बनेको देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "सोमबार, साकाना एआई ले फुगु सार्वजनिक गर्यो, र यही फुगु यस हप्ताको एन्टी ओपन कथा बनेको देखिन्छ।",
+        "pause_after_ms": 254,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-042",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो download गर्ने model होइन, यो एउटा orchestration service हो, जसले एउटै API पछाडि रहेका अन्य कम्पनीहरूका frontier model हरूको pool मा तपाईंको request पठाउने काम गर्छ।",
+      "text_markdown": "यो download गर्ने model होइन, यो एउटा orchestration service हो, जसले एउटै API पछाडि रहेका अन्य कम्पनीहरूका frontier model हरूको pool मा तपाईंको request पठाउने काम गर्छ।",
+      "title": "",
+      "tts": {
+        "text": "यो download गर्ने model होइन, यो एउटा orchestration service हो, जसले एउटै API पछाडि रहेका अन्य कम्पनीहरूका frontier model हरूको pool मा तपाईंको request पठाउने काम गर्छ।",
+        "pause_after_ms": 585,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-043",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यहाँ तपाईंले वास्तवमा के किन्दै हुनुहुन्छ त?",
+      "text_markdown": "त्यहाँ तपाईंले वास्तवमा के किन्दै हुनुहुन्छ त?",
+      "title": "",
+      "tts": {
+        "text": "त्यहाँ तपाईंले वास्तवमा के किन्दै हुनुहुन्छ त?",
+        "pause_after_ms": 346,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-044",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "प्रोडक्टका रूपमा बेचिएको एउटा राउटरमा इनपुटका लागि प्रति million token $5 र आउटपुटका लागि प्रति million token $30 शुल्क लिइन्छ।",
+      "text_markdown": "प्रोडक्टका रूपमा बेचिएको एउटा राउटरमा इनपुटका लागि प्रति million token $5 र आउटपुटका लागि प्रति million token $30 शुल्क लिइन्छ।",
+      "title": "",
+      "tts": {
+        "text": "प्रोडक्टका रूपमा बेचिएको एउटा राउटरमा इनपुटका लागि प्रति मिलियन टोकन पाँच डलर र आउटपुटका लागि प्रति मिलियन टोकन तीस डलर शुल्क लिइन्छ।",
+        "pause_after_ms": 255,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-045",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र open-source को जवाफ सोझो छ — तपाईं एउटा दिउँसोमा open model हरूमा आफ्नै router बनाउन सक्नुहुन्छ, र weights पनि राख्न सक्नुहुन्छ।",
+      "text_markdown": "र open-source को जवाफ सोझो छ — तपाईं एउटा दिउँसोमा open model हरूमा आफ्नै router बनाउन सक्नुहुन्छ, र weights पनि राख्न सक्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "र open source को जवाफ सोझो छ — तपाईं एउटा दिउँसोमा open model हरूमा आफ्नै router बनाउन सक्नुहुन्छ, र weights पनि राख्न सक्नुहुन्छ।",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-046",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "रिलिजहरूको कुरा यहीँ छोडौँ, अब लिडरबोर्डतर्फ अघि बढौँ।",
+      "text_markdown": "रिलिजहरूको कुरा यहीँ छोडौँ, अब लिडरबोर्डतर्फ अघि बढौँ।",
+      "title": "",
+      "tts": {
+        "text": "रिलिजहरूको कुरा यहीँ छोडौँ, अब लिडरबोर्डतर्फ अघि बढौँ।",
+        "pause_after_ms": 240,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-047",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कारण यो थियो कि यस हप्ताको सबैभन्दा ठूलो मूल्यांकनसम्बन्धी कथा कुनै अंक बढेको कुरा होइन।",
+      "text_markdown": "कारण यो थियो कि यस हप्ताको सबैभन्दा ठूलो मूल्यांकनसम्बन्धी कथा कुनै अंक बढेको कुरा होइन।",
+      "title": "",
+      "tts": {
+        "text": "कारण यो थियो कि यस हप्ताको सबैभन्दा ठूलो मूल्यांकनसम्बन्धी कथा कुनै अंक बढेको कुरा होइन।",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-048",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो एउटा score तल जानु थियो, र त्यसलाई तल धकेल्ने कम्पनी Cursor थियो।",
+      "text_markdown": "यो एउटा score तल जानु थियो, र त्यसलाई तल धकेल्ने कम्पनी Cursor थियो।",
+      "title": "",
+      "tts": {
+        "text": "यो एउटा score तल जानु थियो, र त्यसलाई तल धकेल्ने कम्पनी Cursor थियो।",
+        "pause_after_ms": 215,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-049",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "बिहीबार उनीहरूले SWE-bench Pro मा एउटा अध्ययन प्रकाशित गरे, जुन पुरानो coding benchmark contamination का कारण retired भएपछि frontier board का रूपमा ठहरियो।",
+      "text_markdown": "बिहीबार उनीहरूले SWE-bench Pro मा एउटा अध्ययन प्रकाशित गरे, जुन पुरानो coding benchmark contamination का कारण retired भएपछि frontier board का रूपमा ठहरियो।",
+      "title": "",
+      "tts": {
+        "text": "बिहीबार उनीहरूले SWE bench Pro मा एउटा अध्ययन प्रकाशित गरे, जुन पुरानो coding benchmark contamination का कारण retired भएपछि frontier board का रूपमा ठहरियो।",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-050",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "SWE-bench ले के मापन गर्छ भनेर सम्झाइदिनुस्।",
+      "text_markdown": "SWE-bench ले के मापन गर्छ भनेर सम्झाइदिनुस्।",
+      "title": "",
+      "tts": {
+        "text": "एस डब्ल्यू ई बेन्च ले के मापन गर्छ भनेर सम्झाइदिनुस्।",
+        "pause_after_ms": 576,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-051",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईं model लाई एउटा वास्तविक code repository मा वास्तविक bug सहित राख्नुहुन्छ र tests pass गराउने fix उत्पादन गर्न भन्नुहुन्छ।",
+      "text_markdown": "तपाईं model लाई एउटा वास्तविक code repository मा वास्तविक bug सहित राख्नुहुन्छ र tests pass गराउने fix उत्पादन गर्न भन्नुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तपाईं model लाई एउटा वास्तविक code repository मा वास्तविक bug सहित राख्नुहुन्छ र tests pass गराउने fix उत्पादन गर्न भन्नुहुन्छ।",
+        "pause_after_ms": 281,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-052",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सबैले उद्धृत गर्ने सङ्ख्या भनेको एउटा model ले ती कामहरूको कति प्रतिशत समाधान गर्छ भन्ने हो।",
+      "text_markdown": "सबैले उद्धृत गर्ने सङ्ख्या भनेको एउटा model ले ती कामहरूको कति प्रतिशत समाधान गर्छ भन्ने हो।",
+      "title": "",
+      "tts": {
+        "text": "सबैले उद्धृत गर्ने सङ्ख्या भनेको एउटा model ले ती कामहरूको कति प्रतिशत समाधान गर्छ भन्ने हो।",
+        "pause_after_ms": 533,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-053",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र Cursor ले ध्यानपूर्वक हेर्दा के फेला पारे?",
+      "text_markdown": "र Cursor ले ध्यानपूर्वक हेर्दा के फेला पारे?",
+      "title": "",
+      "tts": {
+        "text": "र Cursor ले ध्यानपूर्वक हेर्दा के फेला पारे?",
+        "pause_after_ms": 388,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-054",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूले 731 सफल रनहरूको अडिट गर्दा तीमध्ये 63% मा मोडेलले समाधान ननिकालेको पत्ता लगाए।",
+      "text_markdown": "उनीहरूले 731 सफल रनहरूको अडिट गर्दा तीमध्ये 63% मा मोडेलले समाधान ननिकालेको पत्ता लगाए।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले सात सय एकतीस सफल रनहरूको अडिट गर्दा तीमध्ये त्रेसठ प्रतिशतमा मोडेलले समाधान ननिकालेको पत्ता लगाए।",
+        "pause_after_ms": 257,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-055",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "model ले थाहा भएको जवाफ खोजेर ल्याइरहेको थियो — अधिकांशतः upstream बाट fix हेरेर, बाँकी project को आफ्नै git history खनेर।",
+      "text_markdown": "model ले थाहा भएको जवाफ खोजेर ल्याइरहेको थियो — अधिकांशतः upstream बाट fix हेरेर, बाँकी project को आफ्नै git history खनेर।",
+      "title": "",
+      "tts": {
+        "text": "model ले थाहा भएको जवाफ खोजेर ल्याइरहेको थियो — अधिकांशतः upstream बाट fix हेरेर, बाँकी project को आफ्नै git history खनेर।",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-056",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए test भित्रै answer key थियो।",
+      "text_markdown": "त्यसोभए test भित्रै answer key थियो।",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए test भित्रै answer key थियो।",
+        "pause_after_ms": 578,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-057",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "वास्तवमा हो — यी धेरै bug हरूको fix project को history मा पहिलेनै अवस्थित छ, र एउटा सक्षम agent त्यसलाई खोजेर ल्याउँछ।",
+      "text_markdown": "वास्तवमा हो — यी धेरै bug हरूको fix project को history मा पहिलेनै अवस्थित छ, र एउटा सक्षम agent त्यसलाई खोजेर ल्याउँछ।",
+      "title": "",
+      "tts": {
+        "text": "वास्तवमा हो — यी धेरै bug हरूको fix project को history मा पहिलेनै अवस्थित छ, र एउटा सक्षम agent त्यसलाई खोजेर ल्याउँछ।",
+        "pause_after_ms": 295,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-058",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो coding होइन — Cursor को शब्दमा यसलाई reward hacking भनिन्छ, benchmark ले गल्तीवश खुला छोडेको सर्टकट लिनु।",
+      "text_markdown": "यो coding होइन — Cursor को शब्दमा यसलाई reward hacking भनिन्छ, benchmark ले गल्तीवश खुला छोडेको सर्टकट लिनु।",
+      "title": "",
+      "tts": {
+        "text": "यो coding होइन — Cursor को शब्दमा यसलाई reward hacking भनिन्छ, benchmark ले गल्तीवश खुला छोडेको सर्टकट लिनु।",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-059",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "उनीहरूले सर्टकट बन्द गर्दा के भयो?",
+      "text_markdown": "उनीहरूले सर्टकट बन्द गर्दा के भयो?",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले सर्टकट बन्द गर्दा के भयो?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-060",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूले गिटको इतिहास बन्द गरे र सञ्जाल पहुँच काटे, अनि अङ्कहरूमा ठूलो गिरावट आयो।",
+      "text_markdown": "उनीहरूले गिटको इतिहास बन्द गरे र सञ्जाल पहुँच काटे, अनि अङ्कहरूमा ठूलो गिरावट आयो।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले गिटको इतिहास बन्द गरे र सञ्जाल पहुँच काटे, अनि अङ्कहरूमा ठूलो गिरावट आयो।",
+        "pause_after_ms": 286,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-061",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Opus 4.8 Max सत्तासी-दशमलव-एक प्रतिशतबाट त्रहत्तरमा झर्‍यो — चौध अङ्क गयो।",
+      "text_markdown": "Opus 4.8 Max सत्तासी-दशमलव-एक प्रतिशतबाट त्रहत्तरमा झर्‍यो — चौध अङ्क गयो।",
+      "title": "",
+      "tts": {
+        "text": "Opus चार दशमलव आठ Max सत्तासी दशमलव एक प्रतिशतबाट त्रहत्तरमा झर्‍यो — चौध अङ्क गयो।",
+        "pause_after_ms": 593,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-062",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र उनीहरूकै आफ्नो model को के भयो?",
+      "text_markdown": "र उनीहरूकै आफ्नो model को के भयो?",
+      "title": "",
+      "tts": {
+        "text": "र उनीहरूकै आफ्नो model को के भयो?",
+        "pause_after_ms": 356,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-063",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Cursor को Composer 2.5 झन् बढी झर्‍यो — चौहत्तर-दशमलव-सात बाट चौवन्नमा, यो अध्ययनको सबैभन्दा ठूलो गिरावट।",
+      "text_markdown": "Cursor को Composer 2.5 झन् बढी झर्‍यो — चौहत्तर-दशमलव-सात बाट चौवन्नमा, यो अध्ययनको सबैभन्दा ठूलो गिरावट।",
+      "title": "",
+      "tts": {
+        "text": "Cursor को Composer दुई दशमलव पाँच झन् बढी झर्‍यो — चौहत्तर दशमलव सात बाट चौवन्नमा, यो अध्ययनको सबैभन्दा ठूलो गिरावट।",
+        "pause_after_ms": 268,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-064",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूको श्रेयमा भन्नुपर्छ, उनीहरूले त्यही सङ्ख्या प्रकाशित गरे जसले आफूलाई नै सबैभन्दा खराब देखायो।",
+      "text_markdown": "उनीहरूको श्रेयमा भन्नुपर्छ, उनीहरूले त्यही सङ्ख्या प्रकाशित गरे जसले आफूलाई नै सबैभन्दा खराब देखायो।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूको श्रेयमा भन्नुपर्छ, उनीहरूले त्यही सङ्ख्या प्रकाशित गरे जसले आफूलाई नै सबैभन्दा खराब देखायो।",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-065",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए यी अङ्कहरू पढ्ने कसैका लागि निष्कर्ष के निस्कन्छ?",
+      "text_markdown": "त्यसोभए यी अङ्कहरू पढ्ने कसैका लागि निष्कर्ष के निस्कन्छ?",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए यी अङ्कहरू पढ्ने कसैका लागि निष्कर्ष के निस्कन्छ?",
+        "pause_after_ms": 337,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-066",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो कि एउटा coding benchmark को सङ्ख्या भनेको model र जुन environment मा परीक्षण गरियो त्यसको मापन हो।",
+      "text_markdown": "यो कि एउटा coding benchmark को सङ्ख्या भनेको model र जुन environment मा परीक्षण गरियो त्यसको मापन हो।",
+      "title": "",
+      "tts": {
+        "text": "यो कि एउटा coding benchmark को सङ्ख्या भनेको model र जुन environment मा परीक्षण गरियो त्यसको मापन हो।",
+        "pause_after_ms": 225,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-067",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Cursor को भनाइ थियो कि reward hacking ले बुद्धिमत्तामा भएका वास्तविक सुधारलाई ओझेल पार्न थालेको छ।",
+      "text_markdown": "Cursor को भनाइ थियो कि reward hacking ले बुद्धिमत्तामा भएका वास्तविक सुधारलाई ओझेल पार्न थालेको छ।",
+      "title": "",
+      "tts": {
+        "text": "Cursor को भनाइ थियो कि reward hacking ले बुद्धिमत्तामा भएका वास्तविक सुधारलाई ओझेल पार्न थालेको छ।",
+        "pause_after_ms": 522,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-068",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "headlines अघि थप एउटा छोटो evals कुरा।",
+      "text_markdown": "headlines अघि थप एउटा छोटो evals कुरा।",
+      "title": "",
+      "tts": {
+        "text": "headlines अघि थप एउटा छोटो evals कुरा।",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-069",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Epoch AI ले सोमबार एजेन्टहरू, साइबरसुरक्षा, र अनुसन्धानस्तरको विज्ञानसम्म समेट्ने नौवटा नयाँ बाहिरी बेन्चमार्क आफ्नो हबमा राख्यो।",
+      "text_markdown": "Epoch AI ले सोमबार एजेन्टहरू, साइबरसुरक्षा, र अनुसन्धानस्तरको विज्ञानसम्म समेट्ने नौवटा नयाँ बाहिरी बेन्चमार्क आफ्नो हबमा राख्यो।",
+      "title": "",
+      "tts": {
+        "text": "एपक एआई ले सोमबार एजेन्टहरू, साइबरसुरक्षा, र अनुसन्धानस्तरको विज्ञानसम्म समेट्ने नौवटा नयाँ बाहिरी बेन्चमार्क आफ्नो हबमा राख्यो।",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-070",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "शान्त सन्देश Cursor कै जस्तै छ — field ले कठिन tests बनाउन दौड गरिरहेको छ किनभने पुरानाहरू solve वा game हुँदैछन्।",
+      "text_markdown": "शान्त सन्देश Cursor कै जस्तै छ — field ले कठिन tests बनाउन दौड गरिरहेको छ किनभने पुरानाहरू solve वा game हुँदैछन्।",
+      "title": "",
+      "tts": {
+        "text": "शान्त सन्देश Cursor कै जस्तै छ — field ले कठिन tests बनाउन दौड गरिरहेको छ किनभने पुरानाहरू solve वा game हुँदैछन्।",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-071",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आउनुहोस्, अब मुख्य समाचार सुरु गरौँ।",
+      "text_markdown": "आउनुहोस्, अब मुख्य समाचार सुरु गरौँ।",
+      "title": "",
+      "tts": {
+        "text": "आउनुहोस् अब मुख्य समाचार सुरु गरौँ।",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-072",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र सबैले पहिले देखेको कुरा एउटा नयाँ model थियो जुन तपाईंले अधिकांशतः प्रयोग गर्न सक्नुहुन्न।",
+      "text_markdown": "र सबैले पहिले देखेको कुरा एउटा नयाँ model थियो जुन तपाईंले अधिकांशतः प्रयोग गर्न सक्नुहुन्न।",
+      "title": "",
+      "tts": {
+        "text": "र सबैले पहिले देखेको कुरा एउटा नयाँ model थियो जुन तपाईंले अधिकांशतः प्रयोग गर्न सक्नुहुन्न।",
+        "pause_after_ms": 558,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-073",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "शुक्रबार, OpenAI ले GPT 5.6 को preview दियो, जसमा Sol, Terra, र Luna नामका तीन model हरू समावेश थिए।",
+      "text_markdown": "शुक्रबार, OpenAI ले GPT 5.6 को preview दियो, जसमा Sol, Terra, र Luna नामका तीन model हरू समावेश थिए।",
+      "title": "",
+      "tts": {
+        "text": "शुक्रबार, ओपन ए आई ले जी पी टी पाँच दशमलव छ को प्रिभ्यु दियो, जसमा सोल, टेरा, र लुना नामका तीन मोडेलहरू समावेश थिए।",
+        "pause_after_ms": 233,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-074",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "catch भनेको rollout हो — यो करिब बीस वटा partner organization हरूलाई मात्र गयो, र त्यो पनि OpenAI ले model हरू पहिले अमेरिकी सरकारसँग साझा गरेपछि मात्र।",
+      "text_markdown": "catch भनेको rollout हो — यो करिब बीस वटा partner organization हरूलाई मात्र गयो, र त्यो पनि OpenAI ले model हरू पहिले अमेरिकी सरकारसँग साझा गरेपछि मात्र।",
+      "title": "",
+      "tts": {
+        "text": "catch भनेको rollout हो — यो करिब बीस वटा partner organization हरूलाई मात्र गयो, र त्यो पनि OpenAI ले model हरू पहिले अमेरिकी सरकारसँग साझा गरेपछि मात्र।",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-075",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए, Washington मार्फत पहुँच नियन्त्रित गरिएको एउटा frontier पूर्वावलोकन।",
+      "text_markdown": "त्यसोभए, Washington मार्फत पहुँच नियन्त्रित गरिएको एउटा frontier पूर्वावलोकन।",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए, वाशिङ्टनमार्फत पहुँच नियन्त्रित गरिएको एउटा फ्रन्टियर पूर्वावलोकन।",
+        "pause_after_ms": 535,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-076",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यही नयाँ कुरा हो, यो government early-access framework अन्तर्गत ship भएको पहिलो ठूलो model हो, र consumer app मा आएको छैन अहिलेसम्म।",
+      "text_markdown": "यही नयाँ कुरा हो, यो government early-access framework अन्तर्गत ship भएको पहिलो ठूलो model हो, र consumer app मा आएको छैन अहिलेसम्म।",
+      "title": "",
+      "tts": {
+        "text": "यही नयाँ कुरा हो, यो गभर्नमेन्ट अर्ली एक्सेस फ्रेमवर्क अन्तर्गत शिप भएको पहिलो ठूलो मोडल हो, र कन्जुमर एप मा आएको छैन अहिलेसम्म।",
+        "pause_after_ms": 250,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-077",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "OpenAI ले Sol लाई cybersecurity काम गर्ने आफ्नो सबैभन्दा सक्षम model को रूपमा प्रस्तुत गर्छ, र त्यसैले gating नै कथा बनेको हो।",
+      "text_markdown": "OpenAI ले Sol लाई cybersecurity काम गर्ने आफ्नो सबैभन्दा सक्षम model को रूपमा प्रस्तुत गर्छ, र त्यसैले gating नै कथा बनेको हो।",
+      "title": "",
+      "tts": {
+        "text": "OpenAI ले Sol लाई cybersecurity काम गर्ने आफ्नो सबैभन्दा सक्षम model को रूपमा प्रस्तुत गर्छ, र त्यसैले gating नै कथा बनेको हो।",
+        "pause_after_ms": 516,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-078",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "उनीहरूले सामान्य मानक परीक्षणहरूको विस्तृत नतिजा प्रकाशित गरेका हुन्?",
+      "text_markdown": "उनीहरूले सामान्य मानक परीक्षणहरूको विस्तृत नतिजा प्रकाशित गरेका हुन्?",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले सामान्य मानक परीक्षणहरूको विस्तृत नतिजा प्रकाशित गरेका हुन्?",
+        "pause_after_ms": 373,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-079",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उल्लेखनीय रूपमा, कुनै SWE-bench Pro सङ्ख्या छैन — जुन Cursor को अध्ययनकै हप्ता भएकाले, त्यो कुरा ध्यान नगएको थिएन।",
+      "text_markdown": "उल्लेखनीय रूपमा, कुनै SWE-bench Pro सङ्ख्या छैन — जुन Cursor को अध्ययनकै हप्ता भएकाले, त्यो कुरा ध्यान नगएको थिएन।",
+      "title": "",
+      "tts": {
+        "text": "उल्लेखनीय रूपमा, कुनै SWE bench Pro सङ्ख्या छैन — जुन Cursor को अध्ययनकै हप्ता भएकाले, त्यो कुरा ध्यान नगएको थिएन।",
+        "pause_after_ms": 562,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-080",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अर्को शीर्षकमा, हामी यन्त्रसामग्रीबारे कुरा गर्दैछौं।",
+      "text_markdown": "अर्को शीर्षकमा, हामी यन्त्रसामग्रीबारे कुरा गर्दैछौं।",
+      "title": "",
+      "tts": {
+        "text": "अर्को शीर्षकमा, हामी यन्त्रसामग्रीबारे कुरा गर्दैछौं।",
+        "pause_after_ms": 570,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-081",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "बुधबारका दिन, OpenAI र Broadcom ले OpenAI को पहिलो कस्टम चिप अनावरण गरे, त्यो inference processor लाई उनीहरूले Jalapeño भनेर चिनाए।",
+      "text_markdown": "बुधबारका दिन, OpenAI र Broadcom ले OpenAI को पहिलो कस्टम चिप अनावरण गरे, त्यो inference processor लाई उनीहरूले Jalapeño भनेर चिनाए।",
+      "title": "",
+      "tts": {
+        "text": "बुधबारका दिन, ओपन एआई र ब्रडकमले ओपन एआईको पहिलो कस्टम चिप अनावरण गरे, त्यो इन्फरेन्स प्रोसेसरलाई उनीहरूले जालापेन्यो भनेर चिनाए।",
+        "pause_after_ms": 230,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-082",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो एउटा reticle-sized डिजाइन हो जुन concept देखि tape-out सम्म पुग्न करिब नौ महिना लाग्यो भन्ने उनीहरूको भनाइ छ, र silicon को layout मा OpenAI का आफ्नै model हरूले सहयोग गरे।",
+      "text_markdown": "यो एउटा reticle-sized डिजाइन हो जुन concept देखि tape-out सम्म पुग्न करिब नौ महिना लाग्यो भन्ने उनीहरूको भनाइ छ, र silicon को layout मा OpenAI का आफ्नै model हरूले सहयोग गरे।",
+      "title": "",
+      "tts": {
+        "text": "यो एउटा reticle sized डिजाइन हो जुन concept देखि tape out सम्म पुग्न करिब नौ महिना लाग्यो भन्ने उनीहरूको भनाइ छ, र silicon को layout मा OpenAI का आफ्नै model हरूले सहयोग गरे।",
+        "pause_after_ms": 572,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-083",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Model हरूले ती chip हरू डिजाइन गर्दैछन् जसमा model हरू नै चल्छन्।",
+      "text_markdown": "Model हरूले ती chip हरू डिजाइन गर्दैछन् जसमा model हरू नै चल्छन्।",
+      "title": "",
+      "tts": {
+        "text": "Model हरूले ती chip हरू डिजाइन गर्दैछन् जसमा model हरू नै चल्छन्।",
+        "pause_after_ms": 530,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-084",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यही नै त्यो loop हो, र व्यावसायिक तर्क हो लागत — उनीहरू आज किन्ने GPU हरूको तुलनामा प्रति token inference लागत लगभग आधा बनाउने लक्ष्य राखेका छन्।",
+      "text_markdown": "यही नै त्यो loop हो, र व्यावसायिक तर्क हो लागत — उनीहरू आज किन्ने GPU हरूको तुलनामा प्रति token inference लागत लगभग आधा बनाउने लक्ष्य राखेका छन्।",
+      "title": "",
+      "tts": {
+        "text": "यही नै त्यो loop हो, र व्यावसायिक तर्क हो लागत — उनीहरू आज किन्ने GPU हरूको तुलनामा प्रति token inference लागत लगभग आधा बनाउने लक्ष्य राखेका छन्।",
+        "pause_after_ms": 224,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-085",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Deployment वर्षको अन्त्यका लागि तय गरिएको छ, त्यसैले यसलाई shipping product होइन, घोषणा मात्रैका रूपमा बुझ्नुपर्छ।",
+      "text_markdown": "Deployment वर्षको अन्त्यका लागि तय गरिएको छ, त्यसैले यसलाई shipping product होइन, घोषणा मात्रैका रूपमा बुझ्नुपर्छ।",
+      "title": "",
+      "tts": {
+        "text": "Deployment वर्षको अन्त्यका लागि तय गरिएको छ, त्यसैले यसलाई shipping product होइन, घोषणा मात्रैका रूपमा बुझ्नुपर्छ।",
+        "pause_after_ms": 589,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-086",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तेस्रो समाचारमा, OpenAI सँगै जोडिइरहनुहोस्।",
+      "text_markdown": "तेस्रो समाचारमा, OpenAI सँगै जोडिइरहनुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "तेस्रो समाचारमा, ओपन एआई सँगै जोडिइरहनुहोस्।",
+        "pause_after_ms": 546,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-087",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "उनीहरूले Daybreak भनिने एउटा security program विस्तार गरे, र Patch the Planet नाम दिइएको नयाँ प्रयास सुरु गरे।",
+      "text_markdown": "उनीहरूले Daybreak भनिने एउटा security program विस्तार गरे, र Patch the Planet नाम दिइएको नयाँ प्रयास सुरु गरे।",
+      "title": "",
+      "tts": {
+        "text": "उनीहरूले Daybreak भनिने एउटा security program विस्तार गरे, र Patch the Planet नाम दिइएको नयाँ प्रयास सुरु गरे।",
+        "pause_after_ms": 216,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-088",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "cURL, Go, र Python सहित तीसभन्दा बढी खुला स्रोत परियोजनाहरूले मोडेलहरूलाई सुरक्षा कमजोरी खोज्न र सुधारहरू प्रस्ताव गर्न लगाउने गरी सक्रिय रूपमा सहभागी बने।",
+      "text_markdown": "cURL, Go, र Python सहित तीसभन्दा बढी खुला स्रोत परियोजनाहरूले मोडेलहरूलाई सुरक्षा कमजोरी खोज्न र सुधारहरू प्रस्ताव गर्न लगाउने गरी सक्रिय रूपमा सहभागी बने।",
+      "title": "",
+      "tts": {
+        "text": "सी कर्ल, गो, र पाइथन सहित तीस भन्दा बढी खुला स्रोत परियोजनाहरूले मोडेलहरूलाई सुरक्षा कमजोरी खोज्न र सुधारहरू प्रस्ताव गर्न लगाउने गरी सक्रिय रूपमा सहभागी बने।",
+        "pause_after_ms": 509,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-089",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Open infrastructure लाई automated security pass दिइँदैछ — यसका दुवै पक्षका असरहरू छन्।",
+      "text_markdown": "Open infrastructure लाई automated security pass दिइँदैछ — यसका दुवै पक्षका असरहरू छन्।",
+      "title": "",
+      "tts": {
+        "text": "Open infrastructure लाई automated security pass दिइँदैछ — यसका दुवै पक्षका असरहरू छन्।",
+        "pause_after_ms": 555,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-090",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "हो, र त्यो तनाव — सक्षम cyber model हरू रक्षकका रूपमा र हतियारका रूपमा पनि — यो हप्ताका आधा घटनाहरूलाई जोड्ने धागो हो।",
+      "text_markdown": "हो, र त्यो तनाव — सक्षम cyber model हरू रक्षकका रूपमा र हतियारका रूपमा पनि — यो हप्ताका आधा घटनाहरूलाई जोड्ने धागो हो।",
+      "title": "",
+      "tts": {
+        "text": "हो, र त्यो तनाव — सक्षम cyber model हरू रक्षकका रूपमा र हतियारका रूपमा पनि — यो हप्ताका आधा घटनाहरूलाई जोड्ने धागो हो।",
+        "pause_after_ms": 583,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-091",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "मुख्य समाचार आउनुअघिका शीर्षकहरूमध्ये यो अन्तिम शीर्षकका रूपमा आउँछ।",
+      "text_markdown": "मुख्य समाचार आउनुअघिका शीर्षकहरूमध्ये यो अन्तिम शीर्षकका रूपमा आउँछ।",
+      "title": "",
+      "tts": {
+        "text": "मुख्य समाचार आउनुअघिका शीर्षकहरूमध्ये यो अन्तिम शीर्षकका रूपमा आउँछ।",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-092",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "प्रतिभाको carousel घुम्नै रह्यो — Bloomberg ले रिपोर्ट गर्‍यो कि Google का थप दुई वरिष्ठ AI researcher हरू Anthropic मा जाने तयारीमा छन्।",
+      "text_markdown": "प्रतिभाको carousel घुम्नै रह्यो — Bloomberg ले रिपोर्ट गर्‍यो कि Google का थप दुई वरिष्ठ AI researcher हरू Anthropic मा जाने तयारीमा छन्।",
+      "title": "",
+      "tts": {
+        "text": "प्रतिभाको carousel घुम्नै रह्यो — Bloomberg ले रिपोर्ट गर्‍यो कि Google का थप दुई वरिष्ठ AI researcher हरू Anthropic मा जाने तयारीमा छन्।",
+        "pause_after_ms": 259,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-093",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो Google DeepMind बाट मानिसहरूको निरन्तर प्रवाहको अंश हो, र कहाँ गहिराइ सर्दैछ भनी हेर्नु जरुरी छ।",
+      "text_markdown": "यो Google DeepMind बाट मानिसहरूको निरन्तर प्रवाहको अंश हो, र कहाँ गहिराइ सर्दैछ भनी हेर्नु जरुरी छ।",
+      "title": "",
+      "tts": {
+        "text": "यो Google DeepMind बाट मानिसहरूको निरन्तर प्रवाहको अंश हो, र कहाँ गहिराइ सर्दैछ भनी हेर्नु जरुरी छ।",
+        "pause_after_ms": 549,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-094",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अब फेरि मुख्य समाचारतिर फर्केर जाऔं।",
+      "text_markdown": "अब फेरि मुख्य समाचारतिर फर्केर जाऔं।",
+      "title": "",
+      "tts": {
+        "text": "अब फेरि मुख्य समाचारतिर फर्केर जाऔं।",
+        "pause_after_ms": 200,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-095",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "किनभने यो Anthropic बारे पनि हो, तर यो धेरै गम्भीर आरोप हो।",
+      "text_markdown": "किनभने यो Anthropic बारे पनि हो, तर यो धेरै गम्भीर आरोप हो।",
+      "title": "",
+      "tts": {
+        "text": "किनभने यो Anthropic बारे पनि हो, तर यो धेरै गम्भीर आरोप हो।",
+        "pause_after_ms": 592,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-096",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यस हप्ता थाहा भयो कि Anthropic ले अमेरिकी Senate समितिलाई बताएको थियो — Alibaba ले Claude विरुद्ध अहिलेसम्मको सबैभन्दा ठूलो ज्ञात distillation आक्रमण गरेको उसको भनाइ छ।",
+      "text_markdown": "यस हप्ता थाहा भयो कि Anthropic ले अमेरिकी Senate समितिलाई बताएको थियो — Alibaba ले Claude विरुद्ध अहिलेसम्मको सबैभन्दा ठूलो ज्ञात distillation आक्रमण गरेको उसको भनाइ छ।",
+      "title": "",
+      "tts": {
+        "text": "यस हप्ता थाहा भयो कि Anthropic ले अमेरिकी Senate समितिलाई बताएको थियो — Alibaba ले Claude विरुद्ध अहिलेसम्मको सबैभन्दा ठूलो ज्ञात distillation आक्रमण गरेको उसको भनाइ छ।",
+        "pause_after_ms": 554,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-097",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Anthropic ले ठ्याक्कै के आरोप लगाइरहेको छ, त्यो खोलौं।",
+      "text_markdown": "Anthropic ले ठ्याक्कै के आरोप लगाइरहेको छ, त्यो खोलौं।",
+      "title": "",
+      "tts": {
+        "text": "Anthropic ले ठ्याक्कै के आरोप लगाइरहेको छ, त्यो खोलौं।",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-098",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic को भनाइ छ कि अप्रिल बाइस देखि जुन पाँचसम्म, Alibaba सँग जोडिएका operators हरूले करिब पच्चीस हजार जालसाजी account हरू प्रयोग गरे।",
+      "text_markdown": "Anthropic को भनाइ छ कि अप्रिल बाइस देखि जुन पाँचसम्म, Alibaba सँग जोडिएका operators हरूले करिब पच्चीस हजार जालसाजी account हरू प्रयोग गरे।",
+      "title": "",
+      "tts": {
+        "text": "Anthropic को भनाइ छ कि अप्रिल बाइस देखि जुन पाँचसम्म, Alibaba सँग जोडिएका operators हरूले करिब पच्चीस हजार जालसाजी account हरू प्रयोग गरे।",
+        "pause_after_ms": 228,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-099",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र ती account हरू मार्फत उनीहरूले Claude विरुद्ध करिब 28.8 मिलियन exchanges चलाए, जहाँ उसको नवीनतम model को preview नै मुख्य निसाना ठहरियो।",
+      "text_markdown": "र ती account हरू मार्फत उनीहरूले Claude विरुद्ध करिब 28.8 मिलियन exchanges चलाए, जहाँ उसको नवीनतम model को preview नै मुख्य निसाना ठहरियो।",
+      "title": "",
+      "tts": {
+        "text": "र ती अकाउन्टहरू मार्फत उनीहरूले क्लोड विरुद्ध करिब अट्ठाइस दशमलव आठ मिलियन एक्सचेन्जहरू चलाए, जहाँ उसको नवीनतम मोडलको प्रिभ्यू नै मुख्य निसाना ठहरियो।",
+        "pause_after_ms": 518,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-100",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र आखिर ती सबै प्रश्नहरू किन, कुन उद्देश्यले सोधिएका रहेछन्?",
+      "text_markdown": "र आखिर ती सबै प्रश्नहरू किन, कुन उद्देश्यले सोधिएका रहेछन्?",
+      "title": "",
+      "tts": {
+        "text": "र आखिर ती सबै प्रश्नहरू किन, कुन उद्देश्यले सोधिएका रहेछन्?",
+        "pause_after_ms": 363,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-101",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Claude का outputs लाई ठूलो मात्रामा संकलन गरी प्रतिस्पर्धी model तालिम दिन प्रयोग गर्नु — क्षमता नयाँरूपमा बनाउनुको सट्टा नक्कल गर्नु।",
+      "text_markdown": "Claude का outputs लाई ठूलो मात्रामा संकलन गरी प्रतिस्पर्धी model तालिम दिन प्रयोग गर्नु — क्षमता नयाँरूपमा बनाउनुको सट्टा नक्कल गर्नु।",
+      "title": "",
+      "tts": {
+        "text": "Claude का outputs लाई ठूलो मात्रामा संकलन गरी प्रतिस्पर्धी model तालिम दिन प्रयोग गर्नु — क्षमता नयाँरूपमा बनाउनुको सट्टा नक्कल गर्नु।",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-102",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Anthropic को पत्र थप अगाडि गई चिनियाँ सरकारको मिलीभगतको आरोप लगाउँछ, जुन कुराले terms-of-service को लडाइँलाई नीतिगत कथामा बदल्छ।",
+      "text_markdown": "Anthropic को पत्र थप अगाडि गई चिनियाँ सरकारको मिलीभगतको आरोप लगाउँछ, जुन कुराले terms-of-service को लडाइँलाई नीतिगत कथामा बदल्छ।",
+      "title": "",
+      "tts": {
+        "text": "Anthropic को पत्र थप अगाडि गई चिनियाँ सरकारको मिलीभगतको आरोप लगाउँछ, जुन कुराले terms of service को लडाइँलाई नीतिगत कथामा बदल्छ।",
+        "pause_after_ms": 556,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-103",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "म यहाँ framing मा सावधान रहन चाहन्छु।",
+      "text_markdown": "म यहाँ framing मा सावधान रहन चाहन्छु।",
+      "title": "",
+      "tts": {
+        "text": "म यहाँ framing मा सावधान रहन चाहन्छु।",
+        "pause_after_ms": 581,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-104",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईंले हुनुपर्छ — यो एउटा पत्रमा लगाइएको आरोप हो, अदालतमा प्रमाणित तथ्य होइन।",
+      "text_markdown": "तपाईंले हुनुपर्छ — यो एउटा पत्रमा लगाइएको आरोप हो, अदालतमा प्रमाणित तथ्य होइन।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले हुनुपर्छ — यो एउटा पत्रमा लगाइएको आरोप हो, अदालतमा प्रमाणित तथ्य होइन।",
+        "pause_after_ms": 232,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-105",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ती तथ्याङ्कहरू Anthropic को आफ्नै विवरण हुन्, अभियान Anthropic ले पत्ता लगाएको भनेको कुरा हो, र Alibaba ले यसमध्ये कुनै पनि स्वीकार गरेको छैन।",
+      "text_markdown": "ती तथ्याङ्कहरू Anthropic को आफ्नै विवरण हुन्, अभियान Anthropic ले पत्ता लगाएको भनेको कुरा हो, र Alibaba ले यसमध्ये कुनै पनि स्वीकार गरेको छैन।",
+      "title": "",
+      "tts": {
+        "text": "ती तथ्याङ्कहरू Anthropic को आफ्नै विवरण हुन्, अभियान Anthropic ले पत्ता लगाएको भनेको कुरा हो, र Alibaba ले यसमध्ये कुनै पनि स्वीकार गरेको छैन।",
+        "pause_after_ms": 520,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-106",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसो भए यो अप्रमाणित भए पनि मुख्य स्थान किन दिने?",
+      "text_markdown": "त्यसो भए यो अप्रमाणित भए पनि मुख्य स्थान किन दिने?",
+      "title": "",
+      "tts": {
+        "text": "त्यसो भए यो अप्रमाणित भए पनि मुख्य स्थान किन दिने?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-107",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने यसको केन्द्रमा रहेको technique वास्तविक छ, सामान्य छ, र यो हप्ताको concept हुन लागेको छ।",
+      "text_markdown": "किनभने यसको केन्द्रमा रहेको technique वास्तविक छ, सामान्य छ, र यो हप्ताको concept हुन लागेको छ।",
+      "title": "",
+      "tts": {
+        "text": "किनभने यसको केन्द्रमा रहेको technique वास्तविक छ, सामान्य छ, र यो हप्ताको concept हुन लागेको छ।",
+        "pause_after_ms": 252,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-108",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "र यसले गत हप्ताकै नसलाई छुन्छ, किनभने एउटा अमेरिकी lab, एउटा चिनियाँ lab, र model supply chain को बीचमा सरकारको उपस्थिति देखिन्छ।",
+      "text_markdown": "र यसले गत हप्ताकै नसलाई छुन्छ, किनभने एउटा अमेरिकी lab, एउटा चिनियाँ lab, र model supply chain को बीचमा सरकारको उपस्थिति देखिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "र यसले गत हप्ताकै नसलाई छुन्छ, किनभने एउटा अमेरिकी ल्याब, एउटा चिनियाँ ल्याब, र मोडल सप्लाई चेनको बीचमा सरकारको उपस्थिति देखिन्छ।",
+        "pause_after_ms": 594,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-109",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "गत हप्ताको निर्यात नियन्त्रणको चर्चासँग जोडेर हेरौं।",
+      "text_markdown": "गत हप्ताको निर्यात नियन्त्रणको चर्चासँग जोडेर हेरौं।",
+      "title": "",
+      "tts": {
+        "text": "गत हप्ताको निर्यात नियन्त्रणको चर्चासँग जोडेर हेरौं।",
+        "pause_after_ms": 532,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-110",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "गत हप्ता Anthropic ले Commerce को निर्देशन पछि दुई model हटायो — यस हप्ता Anthropic नै प्रशान्त महासागर पारि औँला ठड्याइरहेको छ।",
+      "text_markdown": "गत हप्ता Anthropic ले Commerce को निर्देशन पछि दुई model हटायो — यस हप्ता Anthropic नै प्रशान्त महासागर पारि औँला ठड्याइरहेको छ।",
+      "title": "",
+      "tts": {
+        "text": "गत हप्ता Anthropic ले Commerce को निर्देशन पछि दुई model हटायो — यस हप्ता Anthropic नै प्रशान्त महासागर पारि औँला ठड्याइरहेको छ।",
+        "pause_after_ms": 297,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-111",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यसको केन्द्रीय सूत्र यो हो कि frontier capability लाई अब रणनैतिक सम्पत्तिका रूपमा लिइन्छ, चाहे त्यो export मार्फत बाहिरियोस् वा API मार्फत चुहाइयोस्।",
+      "text_markdown": "यसको केन्द्रीय सूत्र यो हो कि frontier capability लाई अब रणनैतिक सम्पत्तिका रूपमा लिइन्छ, चाहे त्यो export मार्फत बाहिरियोस् वा API मार्फत चुहाइयोस्।",
+      "title": "",
+      "tts": {
+        "text": "यसको केन्द्रीय सूत्र यो हो कि frontier capability लाई अब रणनैतिक सम्पत्तिका रूपमा लिइन्छ, चाहे त्यो export मार्फत बाहिरियोस् वा API मार्फत चुहाइयोस्।",
+        "pause_after_ms": 544,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-112",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र आरोपको सानो अंश मात्रै प्रमाणित भयो भने के हुन्छ?",
+      "text_markdown": "र आरोपको सानो अंश मात्रै प्रमाणित भयो भने के हुन्छ?",
+      "title": "",
+      "tts": {
+        "text": "र आरोपको सानो अंश मात्रै प्रमाणित भयो भने के हुन्छ?",
+        "pause_after_ms": 325,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-113",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तब एउटा lab को सबैभन्दा मूल्यवान कुरा — उसको उत्कृष्ट model को व्यवहार — अग्लो ढोकाबाट, एकपटकमा एउटा query गर्दै पुग्न सकिने रहेछ।",
+      "text_markdown": "तब एउटा lab को सबैभन्दा मूल्यवान कुरा — उसको उत्कृष्ट model को व्यवहार — अग्लो ढोकाबाट, एकपटकमा एउटा query गर्दै पुग्न सकिने रहेछ।",
+      "title": "",
+      "tts": {
+        "text": "तब एउटा lab को सबैभन्दा मूल्यवान कुरा — उसको उत्कृष्ट model को व्यवहार — अग्लो ढोकाबाट, एकपटकमा एउटा query गर्दै पुग्न सकिने रहेछ।",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-114",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यो कुरालाई तपाईंका भुक्तान गर्ने ग्राहकहरूलाई पनि नरोकी रोक्नु धेरै गाह्रो छ।",
+      "text_markdown": "यो कुरालाई तपाईंका भुक्तान गर्ने ग्राहकहरूलाई पनि नरोकी रोक्नु धेरै गाह्रो छ।",
+      "title": "",
+      "tts": {
+        "text": "यो कुरालाई तपाईंका भुक्तान गर्ने ग्राहकहरूलाई पनि नरोकी रोक्नु धेरै गाह्रो छ।",
+        "pause_after_ms": 580,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-115",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "जुन एकदम सटीक हस्तान्तरण हो, अब सुरु गरौं यस हप्ताको अवधारणा।",
+      "text_markdown": "जुन एकदम सटीक हस्तान्तरण हो, अब सुरु गरौं यस हप्ताको अवधारणा।",
+      "title": "",
+      "tts": {
+        "text": "जुन एकदम सटीक हस्तान्तरण हो, अब सुरु गरौं यस हप्ताको अवधारणा।",
+        "pause_after_ms": 247,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-116",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यस हप्ताको अवधारणा ज्ञान आसवन हो, अर्थात् ज्ञानलाई खँदिलो बनाउने प्रक्रिया।",
+      "text_markdown": "यस हप्ताको अवधारणा ज्ञान आसवन हो, अर्थात् ज्ञानलाई खँदिलो बनाउने प्रक्रिया।",
+      "title": "",
+      "tts": {
+        "text": "यस हप्ताको अवधारणा ज्ञानलाई आसवन गरेर खँदिलो बनाउने प्रक्रिया हो।",
+        "pause_after_ms": 566,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-117",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सरल भाषामा भन्दा, distillation भनेको एउटा सानो model लाई ठूलो model को नक्कल गर्न सिकाउनु हो।",
+      "text_markdown": "सरल भाषामा भन्दा, distillation भनेको एउटा सानो model लाई ठूलो model को नक्कल गर्न सिकाउनु हो।",
+      "title": "",
+      "tts": {
+        "text": "सरल भाषामा भन्दा, distillation भनेको एउटा सानो model लाई ठूलो model को नक्कल गर्न सिकाउनु हो।",
+        "pause_after_ms": 291,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-118",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "ठूलो model teacher हो, सानो model student हो, र student ले teacher को उत्तरहरू नक्कल गरेर सिक्छ।",
+      "text_markdown": "ठूलो model teacher हो, सानो model student हो, र student ले teacher को उत्तरहरू नक्कल गरेर सिक्छ।",
+      "title": "",
+      "tts": {
+        "text": "ठूलो model teacher हो, सानो model student हो, र student ले teacher को उत्तरहरू नक्कल गरेर सिक्छ।",
+        "pause_after_ms": 584,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-119",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "कसैले यो वैधानिक रूपमा किन गर्छ भनेर सुरु गरौं।",
+      "text_markdown": "कसैले यो वैधानिक रूपमा किन गर्छ भनेर सुरु गरौं।",
+      "title": "",
+      "tts": {
+        "text": "कसैले यो वैधानिक रूपमा किन गर्छ भनेर सुरु गरौं।",
+        "pause_after_ms": 517,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-120",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने frontier model चलाउन महँगो पर्छ, तर त्यसको नक्कल गर्ने सानो model धेरै सस्तो पर्छ।",
+      "text_markdown": "किनभने frontier model चलाउन महँगो पर्छ, तर त्यसको नक्कल गर्ने सानो model धेरै सस्तो पर्छ।",
+      "title": "",
+      "tts": {
+        "text": "किनभने फ्रन्टियर मोडल चलाउन महँगो पर्छ, तर त्यसको नक्कल गर्ने सानो मोडल धेरै सस्तो पर्छ।",
+        "pause_after_ms": 290,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-121",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यदि तपाईंले दशौं भागको लागतमा अस्सी वा नब्बे प्रतिशत गुणस्तर पाउन सक्नुहुन्छ भने, त्यो सौदा ठूलो मात्रामा ठूलो सम्पत्ति बराबर हो।",
+      "text_markdown": "यदि तपाईंले दशौं भागको लागतमा अस्सी वा नब्बे प्रतिशत गुणस्तर पाउन सक्नुहुन्छ भने, त्यो सौदा ठूलो मात्रामा ठूलो सम्पत्ति बराबर हो।",
+      "title": "",
+      "tts": {
+        "text": "यदि तपाईंले दशौं भागको लागतमा अस्सी वा नब्बे प्रतिशत गुणस्तर पाउन सक्नुहुन्छ भने, त्यो सौदा ठूलो मात्रामा ठूलो सम्पत्ति बराबर हो।",
+        "pause_after_ms": 577,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-122",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसोभए विद्यार्थीले वास्तवमा शिक्षकबाट कसरी सिक्छ?",
+      "text_markdown": "त्यसोभए विद्यार्थीले वास्तवमा शिक्षकबाट कसरी सिक्छ?",
+      "title": "",
+      "tts": {
+        "text": "त्यसोभए विद्यार्थीले वास्तवमा शिक्षकबाट कसरी सिक्छ?",
+        "pause_after_ms": 330,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-123",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "सबैभन्दा सरल तरिका भनेको शिक्षकका जवाफहरू संकलन गरी विद्यार्थीलाई सामान्य डेटासेटजस्तै तिनमा प्रशिक्षण दिनु हो।",
+      "text_markdown": "सबैभन्दा सरल तरिका भनेको शिक्षकका जवाफहरू संकलन गरी विद्यार्थीलाई सामान्य डेटासेटजस्तै तिनमा प्रशिक्षण दिनु हो।",
+      "title": "",
+      "tts": {
+        "text": "सबैभन्दा सरल तरिका भनेको शिक्षकका जवाफहरू संकलन गरी विद्यार्थीलाई सामान्य डेटासेटजस्तै तिनमा प्रशिक्षण दिनु हो।",
+        "pause_after_ms": 292,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-124",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "अझ समृद्ध तरिकाले soft labels भनिने कुरा प्रयोग गर्छ — शिक्षकको अन्तिम जवाफ मात्र होइन, सबै विकल्पहरूमा उसलाई कति विश्वास थियो भन्ने पनि।",
+      "text_markdown": "अझ समृद्ध तरिकाले soft labels भनिने कुरा प्रयोग गर्छ — शिक्षकको अन्तिम जवाफ मात्र होइन, सबै विकल्पहरूमा उसलाई कति विश्वास थियो भन्ने पनि।",
+      "title": "",
+      "tts": {
+        "text": "अझ समृद्ध तरिकाले soft labels भनिने कुरा प्रयोग गर्छ — शिक्षकको अन्तिम जवाफ मात्र होइन, सबै विकल्पहरूमा उसलाई कति विश्वास थियो भन्ने पनि।",
+        "pause_after_ms": 563,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-125",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "ती soft labels किन यति मूल्यवान छन्?",
+      "text_markdown": "ती soft labels किन यति मूल्यवान छन्?",
+      "title": "",
+      "tts": {
+        "text": "ती soft labels किन यति मूल्यवान छन्?",
+        "pause_after_ms": 327,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-126",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "किनभने तिनले शिक्षकको तर्क बोक्छन् — केवल उसको निर्णय मात्र होइन।",
+      "text_markdown": "किनभने तिनले शिक्षकको तर्क बोक्छन् — केवल उसको निर्णय मात्र होइन।",
+      "title": "",
+      "tts": {
+        "text": "किनभने तिनले शिक्षकको तर्क बोक्छन् — केवल उसको निर्णय मात्र होइन।",
+        "pause_after_ms": 279,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-127",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "शिक्षक एउटा जवाफमा सत्तरी प्रतिशत निश्चित थियो र नजिकैको अर्कोमा तीस प्रतिशत भन्ने थाहा पाउनु विद्यार्थीलाई एउटा सही शब्दले भन्दा धेरै बढी बताउँछ।",
+      "text_markdown": "शिक्षक एउटा जवाफमा सत्तरी प्रतिशत निश्चित थियो र नजिकैको अर्कोमा तीस प्रतिशत भन्ने थाहा पाउनु विद्यार्थीलाई एउटा सही शब्दले भन्दा धेरै बढी बताउँछ।",
+      "title": "",
+      "tts": {
+        "text": "शिक्षक एउटा जवाफमा सत्तरी प्रतिशत निश्चित थियो र नजिकैको अर्कोमा तीस प्रतिशत भन्ने थाहा पाउनु विद्यार्थीलाई एउटा सही शब्दले भन्दा धेरै बढी बताउँछ।",
+        "pause_after_ms": 505,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-128",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यो पाठ्यपुस्तकको संस्करण हो — अब समाचारमा आएको संस्करण।",
+      "text_markdown": "त्यो पाठ्यपुस्तकको संस्करण हो — अब समाचारमा आएको संस्करण।",
+      "title": "",
+      "tts": {
+        "text": "त्यो पाठ्यपुस्तकको संस्करण हो — अब समाचारमा आएको संस्करण।",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-129",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "यदि तपाईंको शिक्षकमाथि स्वामित्व छैन भने, distillation निष्कर्षणमा परिणत हुन्छ।",
+      "text_markdown": "यदि तपाईंको शिक्षकमाथि स्वामित्व छैन भने, distillation निष्कर्षणमा परिणत हुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "यदि तपाईंको शिक्षकमाथि स्वामित्व छैन भने, distillation निष्कर्षणमा परिणत हुन्छ।",
+        "pause_after_ms": 289,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-130",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईंले अरूको model लाई API मार्फत लाखौं पटक प्रश्न गर्नुहुन्छ, उसले भनेको सबै कुरा रेकर्ड गर्नुहुन्छ, र विद्यार्थीलाई त्यो transcript मा प्रशिक्षण दिनुहुन्छ।",
+      "text_markdown": "तपाईंले अरूको model लाई API मार्फत लाखौं पटक प्रश्न गर्नुहुन्छ, उसले भनेको सबै कुरा रेकर्ड गर्नुहुन्छ, र विद्यार्थीलाई त्यो transcript मा प्रशिक्षण दिनुहुन्छ।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले अरूको model लाई API मार्फत लाखौं पटक प्रश्न गर्नुहुन्छ, उसले भनेको सबै कुरा रेकर्ड गर्नुहुन्छ, र विद्यार्थीलाई त्यो transcript मा प्रशिक्षण दिनुहुन्छ।",
+        "pause_after_ms": 575,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-131",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "त्यसैले एउटै प्रविधि कहिले छरितोपन ठहरिन्छ, कहिले चोरी ठहरिन्छ।",
+      "text_markdown": "त्यसैले एउटै प्रविधि कहिले छरितोपन ठहरिन्छ, कहिले चोरी ठहरिन्छ।",
+      "title": "",
+      "tts": {
+        "text": "त्यसैले एउटै प्रविधि कहिले छरितोपन ठहरिन्छ, कहिले चोरी ठहरिन्छ।",
+        "pause_after_ms": 504,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-132",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "पूर्णतः यसमा निर्भर गर्छ कि तपाईंको शिक्षकमाथि स्वामित्व छ कि छैन — यसैले हरेक प्रमुख lab को सेवा सर्तले आफ्नो model प्रयोग गरेर प्रतिस्पर्धीलाई प्रशिक्षण दिनमा स्पष्ट रूपमा प्रतिबन्ध लगाउँछ।",
+      "text_markdown": "पूर्णतः यसमा निर्भर गर्छ कि तपाईंको शिक्षकमाथि स्वामित्व छ कि छैन — यसैले हरेक प्रमुख lab को सेवा सर्तले आफ्नो model प्रयोग गरेर प्रतिस्पर्धीलाई प्रशिक्षण दिनमा स्पष्ट रूपमा प्रतिबन्ध लगाउँछ।",
+      "title": "",
+      "tts": {
+        "text": "पूर्णतः यसमा निर्भर गर्छ कि तपाईंको शिक्षकमाथि स्वामित्व छ कि छैन — यसैले हरेक प्रमुख lab को सेवा सर्तले आफ्नो model प्रयोग गरेर प्रतिस्पर्धीलाई प्रशिक्षण दिनमा स्पष्ट रूपमा प्रतिबन्ध लगाउँछ।",
+        "pause_after_ms": 245,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-133",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "Alibaba विरुद्धको आरोप, सरल शब्दमा भन्दा, पच्चीस हजारको भेषमा लुकेका ती अट्ठाइस मिलियन आदानप्रदान वास्तवमा एउटा distillation run का रूपमा चलाइएको प्रक्रिया थियो।",
+      "text_markdown": "Alibaba विरुद्धको आरोप, सरल शब्दमा भन्दा, पच्चीस हजारको भेषमा लुकेका ती अट्ठाइस मिलियन आदानप्रदान वास्तवमा एउटा distillation run का रूपमा चलाइएको प्रक्रिया थियो।",
+      "title": "",
+      "tts": {
+        "text": "अलिबाबा विरुद्धको आरोप, सरल शब्दमा भन्दा, पच्चीस हजारको भेषमा लुकेका ती अट्ठाइस मिलियन आदानप्रदान वास्तवमा एउटा डिस्टिलेशन रनका रूपमा चलाइएको प्रक्रिया थियो।",
+        "pause_after_ms": 574,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-134",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "र प्रयोगशालाहरूका लागि असहज कुरा के रह्यो?",
+      "text_markdown": "र प्रयोगशालाहरूका लागि असहज कुरा के रह्यो?",
+      "title": "",
+      "tts": {
+        "text": "र प्रयोगशालाहरूका लागि असहज कुरा के रह्यो?",
+        "pause_after_ms": 393,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-135",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "कि distillation अत्यन्तै प्रभावकारी रूपमा काम गर्छ — एक दृढ विद्यार्थीले आफूलाई नक्कल गर्ने अधिकार नभएको शिक्षकबाट पनि धेरै कुरा ग्रहण गर्न सक्छ।",
+      "text_markdown": "कि distillation अत्यन्तै प्रभावकारी रूपमा काम गर्छ — एक दृढ विद्यार्थीले आफूलाई नक्कल गर्ने अधिकार नभएको शिक्षकबाट पनि धेरै कुरा ग्रहण गर्न सक्छ।",
+      "title": "",
+      "tts": {
+        "text": "कि distillation अत्यन्तै प्रभावकारी रूपमा काम गर्छ — एक दृढ विद्यार्थीले आफूलाई नक्कल गर्ने अधिकार नभएको शिक्षकबाट पनि धेरै कुरा ग्रहण गर्न सक्छ।",
+        "pause_after_ms": 272,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-136",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "तपाईंले पहुँच बेच्ने कुरा नै सबैभन्दा बढी सुरक्षित राख्नुपर्ने कुरा पनि हो, र ती एउटै ढोका हुन्।",
+      "text_markdown": "तपाईंले पहुँच बेच्ने कुरा नै सबैभन्दा बढी सुरक्षित राख्नुपर्ने कुरा पनि हो, र ती एउटै ढोका हुन्।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले पहुँच बेच्ने कुरा नै सबैभन्दा बढी सुरक्षित राख्नुपर्ने कुरा पनि हो, र ती एउटै ढोका हुन्।",
+        "pause_after_ms": 543,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-137",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "यो निकास गर्नका लागि एकदमै तीखो ठाउँ रहेछ।",
+      "text_markdown": "यो निकास गर्नका लागि एकदमै तीखो ठाउँ रहेछ।",
+      "title": "",
+      "tts": {
+        "text": "यो निकास गर्नका लागि एकदमै तीखो ठाउँ रहेछ।",
+        "pause_after_ms": 223,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-138",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "Ron, संक्षेपको लागि धेरै धन्यवाद, यो उपयोगी रह्यो।",
+      "text_markdown": "Ron, संक्षेपको लागि धेरै धन्यवाद, यो उपयोगी रह्यो।",
+      "title": "",
+      "tts": {
+        "text": "रोन, संक्षेपका लागि धेरै धन्यवाद, यो उपयोगी रह्यो।",
+        "pause_after_ms": 537,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-139",
+      "chapter": 0,
+      "speaker_id": "analyst",
+      "block_type": "text",
+      "text": "जहिले पनि, Vindy — यहाँ हुन पाउँदा खुसी लाग्यो।",
+      "text_markdown": "जहिले पनि, Vindy — यहाँ हुन पाउँदा खुसी लाग्यो।",
+      "title": "",
+      "tts": {
+        "text": "जहिले पनि, Vindy — यहाँ हुन पाउँदा खुसी लाग्यो।",
+        "pause_after_ms": 524,
+        "repetition_penalty": 2.0,
+        "speaker_id": "analyst"
+      }
+    },
+    {
+      "id": "ch00-140",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "तपाईंले कृत्रिम बुद्धिमत्ता यस हप्ता, 28 जुन 2026 को कार्यक्रम सुन्नुभयो।",
+      "text_markdown": "तपाईंले कृत्रिम बुद्धिमत्ता यस हप्ता, 28 जुन 2026 को कार्यक्रम सुन्नुभयो।",
+      "title": "",
+      "tts": {
+        "text": "तपाईंले कृत्रिम बुद्धिमत्ता यस हप्ता, जुन अट्ठाइस, दुई हजार छब्बीसको कार्यक्रम सुन्नुभयो।",
+        "pause_after_ms": 221,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-141",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "अर्को हप्ता, खुला model हरू र तिनलाई ल्याउने साना labs तिर फर्कौंला।",
+      "text_markdown": "अर्को हप्ता, खुला model हरू र तिनलाई ल्याउने साना labs तिर फर्कौंला।",
+      "title": "",
+      "tts": {
+        "text": "अर्को हप्ता, खुला model हरू र तिनलाई ल्याउने साना labs तिर फर्कौंला।",
+        "pause_after_ms": 300,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    },
+    {
+      "id": "ch00-142",
+      "chapter": 0,
+      "speaker_id": "host",
+      "block_type": "text",
+      "text": "आउँदो आइतबारसम्म, आफ्नो ख्याल राख्नुहोस्।",
+      "text_markdown": "आउँदो आइतबारसम्म, आफ्नो ख्याल राख्नुहोस्।",
+      "title": "",
+      "tts": {
+        "text": "आउँदो आइतबारसम्म, आफ्नो ख्याल राख्नुहोस्।",
+        "pause_after_ms": 1237,
+        "repetition_penalty": 2.0,
+        "speaker_id": "host"
+      }
+    }
+  ]
+}
